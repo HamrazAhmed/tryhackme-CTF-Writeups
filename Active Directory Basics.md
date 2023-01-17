@@ -243,3 +243,249 @@ Performance Log Users
 Distributed COM Users
 IIS_IUSRS
 Cryptographic Operators
+Event Log Readers
+Certificate Service DCOM Access
+RDS Remote Access Servers
+RDS Endpoint Servers
+RDS Management Servers
+Hyper-V Administrators
+Access Control Assistance Operators
+Remote Management Users
+Storage Replica Administrators
+Domain Computers
+Domain Controllers
+Schema Admins
+Enterprise Admins
+Cert Publishers
+Domain Admins
+Domain Users
+Domain Guests
+Group Policy Creator Owners
+RAS and IAS Servers
+Server Operators
+Account Operators
+Pre-Windows 2000 Compatible Access
+Incoming Forest Trust Builders
+Windows Authorization Access Group
+Terminal Server License Servers
+Allowed RODC Password Replication Group
+Denied RODC Password Replication Group
+Read-only Domain Controllers
+Enterprise Read-only Domain Controllers
+Cloneable Domain Controllers
+Protected Users
+Key Admins
+Enterprise Key Admins
+DnsAdmins
+DnsUpdateProxy
+```
+Which group has a capital "V" in the group name? *Hyper-V Administrators*
+*or*
+```text
+PS C:\Users\Administrator\Downloads> net localgroup
+
+Aliases for \\DOMAIN-CONTROLL
+
+-------------------------------------------------------------------------------
+*Access Control Assistance Operators
+*Account Operators
+*Administrators
+*Allowed RODC Password Replication Group
+*Backup Operators
+*Cert Publishers
+*Certificate Service DCOM Access
+*Cryptographic Operators
+*Denied RODC Password Replication Group
+*Distributed COM Users
+*DnsAdmins
+*Event Log Readers
+*Guests
+*Hyper-V Administrators
+*IIS_IUSRS
+*Incoming Forest Trust Builders
+*Network Configuration Operators
+*Performance Log Users
+*Performance Monitor Users
+*Pre-Windows 2000 Compatible Access
+*Print Operators
+*RAS and IAS Servers
+*RDS Endpoint Servers
+*RDS Management Servers
+*RDS Remote Access Servers
+*Remote Desktop Users
+*Remote Management Users
+*Replicator
+*Server Operators
+*Storage Replica Administrators
+*Terminal Server License Servers
+*Users
+*Windows Authorization Access Group
+The command completed successfully.
+```
+```text
+PS C:\Users\Administrator\Downloads> Get-NetUser -SPN | ?{$_.memberof -match 'Domain Admins'}
+
+logoncount            : 0
+badpasswordtime       : 12/31/1600 4:00:00 PM
+description           : My password is MYpassword123#
+distinguishedname     : CN=SQL Service,CN=Users,DC=CONTROLLER,DC=local
+objectclass           : {top, person, organizationalPerson, user}
+displayname           : SQL Service
+userprincipalname     : SQLService@CONTROLLER.local
+name                  : SQL Service
+objectsid             : S-1-5-21-849420856-2351964222-986696166-1107
+samaccountname        : SQLService
+lastlogon             : 12/31/1600 4:00:00 PM
+codepage              : 0
+samaccounttype        : 805306368
+whenchanged           : 5/14/2020 3:42:53 AM
+accountexpires        : 9223372036854775807
+countrycode           : 0
+adspath               : LDAP://CN=SQL Service,CN=Users,DC=CONTROLLER,DC=local
+instancetype          : 4
+objectguid            : 1c3f20d7-c383-466a-9a67-92a774650cb8
+sn                    : Service
+lastlogoff            : 12/31/1600 4:00:00 PM
+objectcategory        : CN=Person,CN=Schema,CN=Configuration,DC=CONTROLLER,DC=local
+dscorepropagationdata : {5/14/2020 3:29:56 AM, 1/1/1601 12:00:00 AM}
+serviceprincipalname  : DOMAIN-CONTROLLER/SQLService.CONTROLLER.local:60111
+givenname             : SQL
+admincount            : 1
+memberof              : {CN=Group Policy Creator Owners,OU=Groups,DC=CONTROLLER,DC=local, CN=Domain
+                        Admins,OU=Groups,DC=CONTROLLER,DC=local, CN=Enterprise
+                        Admins,OU=Groups,DC=CONTROLLER,DC=local, CN=Schema Admins,OU=Groups,DC=CONTROLLER,DC=local...}
+whencreated           : 5/14/2020 3:26:57 AM
+badpwdcount           : 0
+cn                    : SQL Service
+useraccountcontrol    : 66048
+usncreated            : 12820
+primarygroupid        : 513
+pwdlastset            : 5/13/2020 8:26:58 PM
+usnchanged            : 12890
+```
+When was the password last set for the SQLService user? *12/31/1600 4:00:00 PM*
+*or*
+```text
+PS C:\Users\Administrator\Downloads> Get-ADUser -identity SQLService -properties *
+
+AccountExpirationDate                :
+accountExpires                       : 9223372036854775807
+AccountLockoutTime                   :
+AccountNotDelegated                  : False
+adminCount                           : 1
+AllowReversiblePasswordEncryption    : False
+AuthenticationPolicy                 : {}
+AuthenticationPolicySilo             : {}
+BadLogonCount                        : 0
+badPasswordTime                      : 0
+badPwdCount                          : 0
+CannotChangePassword                 : False
+CanonicalName                        : CONTROLLER.local/Users/SQL Service
+Certificates                         : {}
+City                                 :
+CN                                   : SQL Service
+codePage                             : 0
+Company                              :
+CompoundIdentitySupported            : {}
+Country                              :
+countryCode                          : 0
+Created                              : 5/13/2020 8:26:57 PM
+createTimeStamp                      : 5/13/2020 8:26:57 PM
+Deleted                              :
+Department                           :
+Description                          : My password is MYpassword123#
+DisplayName                          : SQL Service
+DistinguishedName                    : CN=SQL Service,CN=Users,DC=CONTROLLER,DC=local
+Division                             :
+DoesNotRequirePreAuth                : False
+dSCorePropagationData                : {5/13/2020 8:29:56 PM, 12/31/1600 4:00:00 PM}
+EmailAddress                         :
+EmployeeID                           :
+EmployeeNumber                       :
+Enabled                              : True
+Fax                                  :
+GivenName                            : SQL
+HomeDirectory                        :
+HomedirRequired                      : False
+HomeDrive                            :
+HomePage                             :
+HomePhone                            :
+Initials                             :
+instanceType                         : 4
+isDeleted                            :
+KerberosEncryptionType               : {}
+LastBadPasswordAttempt               :
+LastKnownParent                      :
+lastLogoff                           : 0
+lastLogon                            : 0
+LastLogonDate                        :
+LockedOut                            : False
+logonCount                           : 0
+LogonWorkstations                    :
+Manager                              :
+MemberOf                             : {CN=Group Policy Creator Owners,OU=Groups,DC=CONTROLLER,DC=local, CN=Domain
+                                       Admins,OU=Groups,DC=CONTROLLER,DC=local, CN=Enterprise
+                                       Admins,OU=Groups,DC=CONTROLLER,DC=local, CN=Schema
+                                       Admins,OU=Groups,DC=CONTROLLER,DC=local...}
+MNSLogonAccount                      : False
+MobilePhone                          :
+Modified                             : 5/13/2020 8:42:53 PM
+modifyTimeStamp                      : 5/13/2020 8:42:53 PM
+msDS-User-Account-Control-Computed   : 0
+Name                                 : SQL Service
+nTSecurityDescriptor                 : System.DirectoryServices.ActiveDirectorySecurity
+ObjectCategory                       : CN=Person,CN=Schema,CN=Configuration,DC=CONTROLLER,DC=local
+ObjectClass                          : user
+ObjectGUID                           : 1c3f20d7-c383-466a-9a67-92a774650cb8
+objectSid                            : S-1-5-21-849420856-2351964222-986696166-1107
+Office                               :
+OfficePhone                          :
+Organization                         :
+OtherName                            :
+PasswordExpired                      : False
+PasswordLastSet                      : 5/13/2020 8:26:58 PM
+PasswordNeverExpires                 : True
+PasswordNotRequired                  : False
+POBox                                :
+PostalCode                           :
+PrimaryGroup                         : CN=Domain Users,OU=Groups,DC=CONTROLLER,DC=local
+primaryGroupID                       : 513
+PrincipalsAllowedToDelegateToAccount : {}
+ProfilePath                          :
+ProtectedFromAccidentalDeletion      : False
+pwdLastSet                           : 132339004189467302
+SamAccountName                       : SQLService
+sAMAccountType                       : 805306368
+ScriptPath                           :
+sDRightsEffective                    : 15
+servicePrincipalName                 : {DOMAIN-CONTROLLER/SQLService.CONTROLLER.local:60111}
+ServicePrincipalNames                : {DOMAIN-CONTROLLER/SQLService.CONTROLLER.local:60111}
+SID                                  : S-1-5-21-849420856-2351964222-986696166-1107
+SIDHistory                           : {}
+SmartcardLogonRequired               : False
+sn                                   : Service
+State                                :
+StreetAddress                        :
+Surname                              : Service
+Title                                :
+TrustedForDelegation                 : False
+TrustedToAuthForDelegation           : False
+UseDESKeyOnly                        : False
+userAccountControl                   : 66048
+userCertificate                      : {}
+UserPrincipalName                    : SQLService@CONTROLLER.local
+uSNChanged                           : 12890
+uSNCreated                           : 12820
+whenChanged                          : 5/13/2020 8:42:53 PM
+whenCreated                          : 5/13/2020 8:26:57 PM
+```
+### Conclusion
+We have covered all of the basics of Active Directory that you need to know to understand how it interacts inside of the network. We also got hands-on with Active Directory to see the insides of a domain controller and how it functions. Now that you know the basics, go and find the vulnerabilities inside of these networks and see what makes Active Directory such a big deal to the cybersec community.
+~Cryillic
+
+## Flags / Answers
+- ![|444](https://cdn.dribbble.com/users/350911/screenshots/7137875/media/b74baad635c6df946de90370935133b1.png)
+
+## Notes / Lessons Learned
+[[Network Services 2]]
+
