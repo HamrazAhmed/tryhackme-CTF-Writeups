@@ -326,3 +326,331 @@ optional arguments:
   --version             show program's version number and exit
   -v, --verbose         enable verbose result document (no effect with --json)
   -vv, --vverbose       enable very verbose result document (no effect with --json)
+  -d, --debug           enable debugging output on STDERR
+  -q, --quiet           disable all output but errors
+  --color {auto,always,never}
+                        enable ANSI color codes in results, default: only during interactive session
+  -f {auto,pe,sc32,sc64,freeze}, --format {auto,pe,sc32,sc64,freeze}
+                        select sample format, auto: (default) detect file type automatically, pe: Windows PE file, sc32: 32-bit shellcode, sc64: 64-bit shellcode, freeze: features
+                        previously frozen by capa
+  -b {vivisect,smda}, --backend {vivisect,smda}
+                        select the backend to use
+  -r RULES, --rules RULES
+                        path to rule file or directory, use embedded rules by default
+  -t TAG, --tag TAG     filter on rule meta field values
+  -j, --json            emit JSON instead of text
+
+By default, capa uses a default set of embedded rules.
+You can see the rule set here:
+  https://github.com/fireeye/capa-rules
+
+To provide your own rule set, use the `-r` flag:
+  capa  --rules /path/to/rules  suspicious.exe
+  capa  -r      /path/to/rules  suspicious.exe
+
+examples:
+  identify capabilities in a binary
+    capa suspicious.exe
+
+  identify capabilities in 32-bit shellcode, see `-f` for all supported formats
+    capa -f sc32 shellcode.bin
+
+  report match locations
+    capa -v suspicious.exe
+
+  report all feature match details
+    capa -vv suspicious.exe
+
+  filter rules by meta fields, e.g. rule name or namespace
+    capa -t "create TCP socket" suspicious.exe
+
+FLARE Sun 09/18/2022 18:10:17.58
+C:\Users\Administrator\Desktop>
+```
+We can test drive capa by running it against the binaries in the Desktop\mal directory. Please note that capa might take some time to complete the analysis. An example output is below.
+Capa example
+```shell-session
+C:\Users\Administrator\Desktop>capa mal\1
+loading : 100%|████████████████████████████████████████████████████████████| 485/485 [00:00<00:00, 1552.05     rules/s]
+matching: 100%|██████████████████████████████████████████████████████████████| 288/288 [00:12<00:00, 22.23 functions/s]
++------------------------+------------------------------------------------------------------------------------+
+| md5                    | 6548eec09f4d8bc6514bee3e5452541c                                                   |
+| sha1                   | 7be46c62d975949fdd6777530940cf6435e8cb90                                           |
+| sha256                 | 6ec74cc0a9b5697efd3f4cc4d3a21d9ffe6e0187b770990df8743fbf4f3b2518                   |
+| path                   | mal\1                                                                              |
++------------------------+------------------------------------------------------------------------------------+
+
++------------------------+------------------------------------------------------------------------------------+
+| ATT&CK Tactic          | ATT&CK Technique                                                                   |
+|------------------------+------------------------------------------------------------------------------------|
+| DEFENSE EVASION        | Obfuscated Files or Information::Indicator Removal from Tools [T1027.005]          |
+|                        | Obfuscated Files or Information [T1027]                                            |
+| DISCOVERY              | Application Window Discovery [T1010]                                               |
+|                        | System Information Discovery [T1082]                                               |
+| EXECUTION              | Command and Scripting Interpreter [T1059]                                          |
+|                        | Shared Modules [T1129]                                                             |
++------------------------+------------------------------------------------------------------------------------+
+
++-----------------------------+-------------------------------------------------------------------------------+
+| MBC Objective               | MBC Behavior                                                                  |
+|-----------------------------+-------------------------------------------------------------------------------|
+| ANTI-STATIC ANALYSIS        | Disassembler Evasion::Argument Obfuscation [B0012.001]                        |
+| CRYPTOGRAPHY                | Encrypt Data::RC4 [C0027.009]                                                 |
+|                             | Generate Pseudo-random Sequence::RC4 PRGA [C0021.004]                         |
+| FILE SYSTEM                 | Delete File [C0047]                                                           |
+|                             | Read File [C0051]                                                             |
+|                             | Write File [C0052]                                                            |
+| OPERATING SYSTEM            | Console [C0033]                                                               |
+| PROCESS                     | Allocate Thread Local Storage [C0040]                                         |
+|                             | Set Thread Local Storage Value [C0041]                                        |
+|                             | Terminate Process [C0018]                                                     |
++-----------------------------+-------------------------------------------------------------------------------+
+
++------------------------------------------------------+------------------------------------------------------+
+| CAPABILITY                                           | NAMESPACE                                            |
+|------------------------------------------------------+------------------------------------------------------|
+| contain obfuscated stackstrings                      | anti-analysis/obfuscation/string/stackstring         |
+| encrypt data using RC4 PRGA                          | data-manipulation/encryption/rc4                     |
+| contains PDB path                                    | executable/pe/pdb                                    |
+| contain a resource (.rsrc) section                   | executable/pe/section/rsrc                           |
+| accept command line arguments                        | host-interaction/cli                                 |
+| manipulate console                                   | host-interaction/console                             |
+| query environment variable                           | host-interaction/environment-variable                |
+| delete file                                          | host-interaction/file-system/delete                  |
+| read file                                            | host-interaction/file-system/read                    |
+| write file (2 matches)                               | host-interaction/file-system/write                   |
+| enumerate gui resources                              | host-interaction/gui                                 |
+| get disk information                                 | host-interaction/hardware/storage                    |
+| get hostname                                         | host-interaction/os/hostname                         |
+| get thread local storage value (3 matches)           | host-interaction/process                             |
+| set thread local storage value (2 matches)           | host-interaction/process                             |
+| terminate process (5 matches)                        | host-interaction/process/terminate                   |
+| link function at runtime (8 matches)                 | linking/runtime-linking                              |
+| link many functions at runtime                       | linking/runtime-linking                              |
+| parse PE exports (2 matches)                         | load-code/pe                                         |
+| parse PE header (4 matches)                          | load-code/pe                                         |
++------------------------------------------------------+------------------------------------------------------+
+
+FLARE Sun 09/18/2022 18:34:13.15
+C:\Users\Administrator\Desktop>
+```
+We can see that Capa has mapped the identified capabilities according to the MITRE ATT&CK framework and [Malware Behavior Catalog (MBC)](https://github.com/MBCProject/mbc-markdown). In the last table, we see the capabilities against the matched signatures and the number of signatures that have found a hit against these capabilities. As we might see, it also tells us if there are obfuscated stackstrings in the sample, allowing us to identify if running FLOSS against the sample might be helpful. To find out more information about the sample, we can use the `-v` or the `-vv` operator, which will show us the results in verbose or very verbose mode, identifying addresses where we might find the said capability.
+Now let's use capa to analyse the file Desktop\mal\4 and answer the following questions.
+Answer the questions below
+```text
+C:\Users\Administrator\Desktop>capa mal\4
+loading : 100%|██████████████████████████████████████████████████████████████████| 485/485 [00:00<00:00, 1724.49     rules/s]
+matching: 100%|██████████████████████████████████████████████████████████████| 7123/7123 [02:00<00:00, 58.95 functions/s]
++------------------------+------------------------------------------------------------------------------------+
+| md5                    | 6b9fed8d4830b8e6553bee3e79bc6181                                                   |
+| sha1                   | 5100440948af36c5fcfe56234b54701298f10fde                                           |
+| sha256                 | 7a25f3fb62c078cc6b3f5ac524924a0693a858508b55952d2be3df5aeeb6650d                   |
+| path                   | mal\4                                                                              |
++------------------------+------------------------------------------------------------------------------------+
+
++------------------------+------------------------------------------------------------------------------------+
+| ATT&CK Tactic          | ATT&CK Technique                                                                   |
+|------------------------+------------------------------------------------------------------------------------|
+| COLLECTION             | Input Capture::Keylogging [T1056.001]                                              |
+| DEFENSE EVASION        | File and Directory Permissions Modification [T1222]                                |
+|                        | Hide Artifacts::Hidden Window [T1564.003]                                          |
+|                        | Obfuscated Files or Information::Indicator Removal from Tools [T1027.005]          |
+|                        | Obfuscated Files or Information [T1027]                                            |
+|                        | Virtualization/Sandbox Evasion::System Checks [T1497.001]                          |
+|                        | Virtualization/Sandbox Evasion::User Activity Based Checks [T1497.002]             |
+| DISCOVERY              | Application Window Discovery [T1010]                                               |
+|                        | File and Directory Discovery [T1083]                                               |
+|                        | Process Discovery [T1057]                                                          |
+|                        | Query Registry [T1012]                                                             |
+|                        | System Information Discovery [T1082]                                               |
+| EXECUTION              | Command and Scripting Interpreter [T1059]                                          |
+|                        | Shared Modules [T1129]                                                             |
+| PERSISTENCE            | Boot or Logon Autostart Execution::Registry Run Keys / Startup Folder [T1547.001]  |
++------------------------+------------------------------------------------------------------------------------+
+
++-----------------------------+-------------------------------------------------------------------------------+
+| MBC Objective               | MBC Behavior                                                                  |
+|-----------------------------+-------------------------------------------------------------------------------|
+| ANTI-BEHAVIORAL ANALYSIS    | Debugger Detection::Process Environment Block BeingDebugged [B0001.035]       |
+|                             | Debugger Detection::Process Environment Block NtGlobalFlag [B0001.036]        |
+|                             | Debugger Detection::Software Breakpoints [B0001.025]                          |
+|                             | Virtual Machine Detection::Human User Check [B0009.012]                       |
+|                             | Virtual Machine Detection::Instruction Testing [B0009.029]                    |
+| ANTI-STATIC ANALYSIS        | Disassembler Evasion::Argument Obfuscation [B0012.001]                        |
+| COLLECTION                  | Keylogging::Polling [F0002.002]                                               |
+| COMMUNICATION               | HTTP Communication::Read Header [C0002.014]                                   |
+| DATA                        | Encoding::XOR [C0026.002]                                                     |
+|                             | Non-Cryptographic Hash::MurmurHash [C0030.001]                                |
+| DEFENSE EVASION             | Obfuscated Files or Information::Encoding-Standard Algorithm [E1027.m02]      |
+| FILE SYSTEM                 | Create Directory [C0046]                                                      |
+|                             | Delete File [C0047]                                                           |
+|                             | Get File Attributes [C0049]                                                   |
+|                             | Read File [C0051]                                                             |
+|                             | Set File Attributes [C0050]                                                   |
+|                             | Write File [C0052]                                                            |
+| OPERATING SYSTEM            | Environment Variable::Set Variable [C0034.001]                                |
+|                             | Registry::Create Registry Key [C0036.004]                                     |
+|                             | Registry::Delete Registry Key [C0036.002]                                     |
+|                             | Registry::Delete Registry Value [C0036.007]                                   |
+|                             | Registry::Open Registry Key [C0036.003]                                       |
+|                             | Registry::Query Registry Value [C0036.006]                                    |
+|                             | Registry::Set Registry Key [C0036.001]                                        |
+| PROCESS                     | Allocate Thread Local Storage [C0040]                                         |
+|                             | Create Mutex [C0042]                                                          |
+|                             | Create Process [C0017]                                                        |
+|                             | Create Thread [C0038]                                                         |
+|                             | Resume Thread [C0054]                                                         |
+|                             | Set Thread Local Storage Value [C0041]                                        |
+|                             | Suspend Thread [C0055]                                                        |
+|                             | Terminate Process [C0018]                                                     |
++-----------------------------+-------------------------------------------------------------------------------+
+
++------------------------------------------------------+------------------------------------------------------+
+| CAPABILITY                                           | NAMESPACE                                            |
+|------------------------------------------------------+------------------------------------------------------|
+| check for PEB BeingDebugged flag                     | anti-analysis/anti-debugging/debugger-detection      |
+| check for PEB NtGlobalFlag flag (2 matches)          | anti-analysis/anti-debugging/debugger-detection      |
+| check for software breakpoints (4 matches)           | anti-analysis/anti-debugging/debugger-detection      |
+| check for unmoving mouse cursor                      | anti-analysis/anti-vm/vm-detection                   |
+| execute anti-VM instructions (86 matches)            | anti-analysis/anti-vm/vm-detection                   |
+| contain obfuscated stackstrings (18 matches)         | anti-analysis/obfuscation/string/stackstring         |
+| log keystrokes via polling (2 matches)               | collection/keylog                                    |
+| check HTTP status code                               | communication/http/client                            |
+| encode data using XOR (4 matches)                    | data-manipulation/encoding/xor                       |
+| hash data using murmur3 (3 matches)                  | data-manipulation/hashing/murmur                     |
+| authenticate HMAC                                    | data-manipulation/hmac                               |
+| contains PDB path                                    | executable/pe/pdb                                    |
+| contain a resource (.rsrc) section                   | executable/pe/section/rsrc                           |
+| extract resource via kernel32 functions (4 matches)  | executable/resource                                  |
+| accept command line arguments                        | host-interaction/cli                                 |
+| query environment variable (2 matches)               | host-interaction/environment-variable                |
+| set environment variable                             | host-interaction/environment-variable                |
+| get common file path (3 matches)                     | host-interaction/file-system                         |
+| get file system object information                   | host-interaction/file-system                         |
+| create directory                                     | host-interaction/file-system/create                  |
+| delete file                                          | host-interaction/file-system/delete                  |
+| check if file exists                                 | host-interaction/file-system/exists                  |
+| enumerate files via kernel32 functions (2 matches)   | host-interaction/file-system/files/list              |
+| get file attributes (2 matches)                      | host-interaction/file-system/meta                    |
+| get file size                                        | host-interaction/file-system/meta                    |
+| set file attributes (2 matches)                      | host-interaction/file-system/meta                    |
+| move file                                            | host-interaction/file-system/move                    |
+| read .ini file (2 matches)                           | host-interaction/file-system/read                    |
+| read file (2 matches)                                | host-interaction/file-system/read                    |
+| write file (3 matches)                               | host-interaction/file-system/write                   |
+| enumerate gui resources                              | host-interaction/gui                                 |
+| set application hook (6 matches)                     | host-interaction/gui                                 |
+| hide graphical window                                | host-interaction/gui/window/hide                     |
+| get number of processors (3 matches)                 | host-interaction/hardware/cpu                        |
+| get disk information (3 matches)                     | host-interaction/hardware/storage                    |
+| print debug messages                                 | host-interaction/log/debug/write-event               |
+| create mutex (2 matches)                             | host-interaction/mutex                               |
+| check OS version (2 matches)                         | host-interaction/os/version                          |
+| get process heap flags (7 matches)                   | host-interaction/process                             |
+| get process heap force flags (5 matches)             | host-interaction/process                             |
+| get thread local storage value (7 matches)           | host-interaction/process                             |
+| set thread local storage value (6 matches)           | host-interaction/process                             |
+| create process                                       | host-interaction/process/create                      |
+| terminate process (2 matches)                        | host-interaction/process/terminate                   |
+| query or enumerate registry value (3 matches)        | host-interaction/registry                            |
+| delete registry key                                  | host-interaction/registry/delete                     |
+| delete registry value (2 matches)                    | host-interaction/registry/delete                     |
+| create thread                                        | host-interaction/thread/create                       |
+| resume thread (2 matches)                            | host-interaction/thread/resume                       |
+| suspend thread                                       | host-interaction/thread/suspend                      |
+| access PEB ldr_data                                  | linking/runtime-linking                              |
+| link function at runtime (6 matches)                 | linking/runtime-linking                              |
+| link many functions at runtime                       | linking/runtime-linking                              |
+| parse PE exports                                     | load-code/pe                                         |
+| parse PE header (6 matches)                          | load-code/pe                                         |
+| persist via Run registry key                         | persistence/registry/run                             |
++------------------------------------------------------+------------------------------------------------------+
+
+FLARE Tue 02/14/2023 17:14:55.10
+
+C:\Users\Administrator\Desktop>capa mal\4 -vv > output.txt
+loading : 100%|████████████████████████████████████████████████████████████| 485/485 [00:00<00:00, 1724.19     rules/s]
+matching: 100%|████████████████████████████████████████████████████████████| 7123/7123 [02:00<00:00, 59.13 functions/s]
+
+FLARE Tue 02/14/2023 17:31:28.67
+
+check HTTP status code
+namespace  communication/http/client
+author     moritz.raabe@fireeye.com
+scope      function
+mbc        Communication::HTTP Communication::Read Header [C0002.014]
+examples   54ac78733552a62d1d05ea4ba3fc604bb49fe000d7fc948da45335b726e64d75:0x10001a20
+function @ 0x486921
+  and:
+    or:
+      number: 0x13 = HTTP_QUERY_STATUS_CODE @ 0x486E5A, 0x486EDC
+    subscope:
+      and:
+        or:
+          mnemonic: test @ 0x486F10
+        or:
+          number: 0xC8 = OK @ 0x486F00
+```
+![[Pasted image 20230214203714.png]]
+How many matches for anti-VM execution techniques were identified in the sample?
+*86*
+Does the sample have to capability to suspend or resume a thread? Answer with Y for yes and N for no.
+*Y*
+What MBC behavior is observed against the MBC Objective 'Anti-Static Analysis'?
+*Disassembler Evasion::Argument Obfuscation [B0012.001]*
+At what address is the function that has the capability 'Check HTTP Status Code'?
+Using Powershell will help avoid cutting off the output. Use the -v or -vv flag to get very verbose output and write it into a file. In the file, navigate to 'check HTTP status code' and find the text 'function @ ...........' where the dotted line represents the address.
+*0x486921*
+### Leveraging the PE header
+So far in this room, we have covered techniques that work regardless of the file type of the malware. However, those techniques are a little hit-and-miss, as they don't always provide us with deterministic information about the malware. The PE headers provide a little more deterministic characteristics of the sample, which tells us much more about the sample.
+The programs that we run are generally stored in the executable file format. These files are portable because they can be taken to any system with the same Operating System and dependencies, and they will perform the same task on that system. Therefore, these files are called Portable Executables (PE files). The PE files consist of a sequence of bits stored on the disk. This sequence is in a specific format. The initial bits define the characteristics of the PE file and explain how to read the rest of the data. This initial part of the PE file is called a PE header.
+Several tools in the FLARE VM can help us analyze PE headers. PEStudio is one of them. We already familiarized ourselves with PEStudio in a previous task, so we will just use that in this task as well.
+The PE header contains rich information useful for malware analysis. We will learn about this data in detail in the [Dissecting PE headers](https://tryhackme.com/room/dissectingpeheaders) room. However, we can get the following information from a PE header as an overview.
+A PE file does not contain all of its code to perform all the tasks. It often reuses code from libraries, often provided by Microsoft as part of the Windows Operating System. Often, certain functions from these libraries are imported by the PE file. The PE header contains information about the libraries that a PE file uses and the functions it imports from those libraries. This information is very useful. A malware analyst can look at the libraries and functions that a PE file imports and get a rough idea of the functionality of a malware sample. For example, if a malware sample imports the CreateProcessA function, we can assume that this sample will create a new process.
+Similarly, other functions can provide further information about the sample. However, it must be noticed that we don't know the context in which these functions are called by just looking at the PE headers. We need to dig deeper into that, which we will cover in the upcoming rooms.
+PEStudio has a libraries option in the right pane, which, when selected, shows us the libraries that a PE file will use.
+The functions option just below shows the functions imported from these libraries.
+### Identifying Packed Executables:
+As we have seen so far, static analysis bares a lot of information that can be used against the malware. Malware authors understand this as a problem. Therefore, they often go to great lengths to thwart analysis. One of the ways they can do this is by packing the original sample inside a shell-type code that obfuscates the properties of the actual malware sample. This technique is called packing, and the resultant PE file is called a packed PE file. Packing greatly reduces the effectiveness of some of the malware analysis techniques we have learned about so far. For example, if we try to search for strings in a packed executable, we might not find anything useful because of packing. Similarly, searching for similar samples using ssdeep might return more samples packed with the same packer instead of samples behaviorally similar to the sample of interest. Some signatures might also be evaded due to a malware sample being packed.
+As we will see in the upcoming [Dissecting PE headers](https://tryhackme.com/room/dissectingpeheaders) room, we can identify packed executables by analyzing the PE header of a malware sample. The PE header contains important information such as the number of sections, permissions of different sections, sizes of the sections, etc. This information can give us pointers to help identify if the malware sample is packed and, if so, which type of packer has packed the executable.
+Answer the questions below
+```text
+rpcrt4.dll,x,implicit,1,Remote Procedure Call Runtime
+```
+![[Pasted image 20230214211153.png]]
+Open the sample Desktop\mal\4 in PEstudio. Which library is blacklisted?
+Write the name of the dll file which has a cross mark in front of it in the blacklist column
+*rpcrt4.dll*
+What does this dll do?
+Check the description column of the dll
+*Remote Procedure Call Runtime*
+### Conclusion
+That wraps up our basic static analysis room. So far, we have learned the following:
+-   Lab setup for malware analysis
+-   Searching for strings and obfuscated strings
+-   Fingerprinting malware using hashes and identifying similar samples using imphash and ssdeep
+-   Using signature-based detection like Yara and Capa
+-   Identifying artifacts from the PE header
+You can stick around and find what other tools you find interesting in the room. Let us know what you think about this room on our [Discord channel](https://discord.gg/tryhackme) or [Twitter account](http://twitter.com/realtryhackme). See you around.
+Answer the questions below
+Join the discussion on our social channels.
+Completed
+
+## Flags / Answers
+### Pre-requisites![A picture showing a jigsaw puzzle with an image of bugs moving around](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/6f45eb38237e0adc676c3f2fb9bbe761.png)
+### Virtual Machines:![An image of a person looking like a bomb disposal squad member, trying to put a lock on a ticking bomb. The bomb has binary digits written on it](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/e5b7bcfda17fcd77c2f30d3fff71683e.png)
+### FLARE VM:![An image showing the logo of FLARE VM](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/c5c7241a9184faaabde284b87d473c77.png)
+### REMnux:![An image showing the logo of Remnux VM](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/b28f543ea8d0643096516dbf5a63cced.png)
+- ![An image of a magnifying glass magnifying part of the letters of the word 'MALWARE'](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/0c44ff09fe1baba6fbb800b8e9066805.png)
+- ![An image showing the interface of the tool PEStudio](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/515900e121ff6b875d52b20fbe12c573.png)
+- When analyzing malware, it is often required to identify unique malware and differentiate them from each other. File names can't be used for this purpose as they can be duplicated easily and might be confusing. Also, a file name can be changed easily as well. ![An image of a bug identifying itself using its fingerprint on a fingerprint machine](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/41c2130d2febd90806b5454599d0f9c3.png)Hence, a hash function is used to identify a malware sample uniquely. A hash function takes a file/data of arbitrary length as input and creates a fixed-length unique output based on file contents. This process is irreversible, as you can't recreate the file's contents using the hash. Hash functions have a very low probability (practically zero) of two files having different content but the same hash. A hash remains the same as long as the file's content remains the same. However, even a slight change in content will result in a different hash. It might be noted that the file name is not a part of the content; therefore, changing the file name does not affect the hash of a file.
+- ![A screenshot of PEStudio utility highlighting the imphash of the opened file](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/a6b2943792824c6d9f4af73930aaf927.png)
+- ![A screenshot of abuse.ch website showing different malware samples having the same imphash](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/bd5faa050d85c40c8b79bbb4581ce2eb.png)
+### Signatures:![An image showing a computer display with random numbers and letters being displayed. A magnifying glass is being used to enlarge the display in one place, which spells the word 'MALWARE'](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/88c03f455d1eca955675e40b33cfcd39.png)
+### The PE header:![An image of a bug whose head is being dissected using a scalpel](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/83e849434f20772975b27d9be4c5eb90.png)
+- ![A screenshot of PEStudio utility highlighting the libraries imported by the opened file](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/92c68509a63ef0222bfe5034500c8ff0.png)
+- ![A screenshot of PEStudio utility highlighting the functions called by the opened file](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/4287e575d2ddfdb4acb4b525dca17824.png)
+
+## Notes / Lessons Learned
+[[Introduction to Cryptography]]
+
