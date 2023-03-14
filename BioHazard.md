@@ -231,3 +231,236 @@ mget helmet_key.txt.gpg [anpqy?]?
 229 Entering Extended Passive Mode (|||19082|)
 150 Opening BINARY mode data connection for helmet_key.txt.gpg (121 bytes).
 100% |**************************************|   121        1.78 KiB/s    00:00 ETA
+226 Transfer complete.
+121 bytes received in 00:00 (0.44 KiB/s)
+mget important.txt [anpqy?]? 
+229 Entering Extended Passive Mode (|||50083|)
+150 Opening BINARY mode data connection for important.txt (170 bytes).
+100% |**************************************|   170      779.41 KiB/s    00:00 ETA
+226 Transfer complete.
+170 bytes received in 00:00 (0.82 KiB/s)
+ftp> ls
+229 Entering Extended Passive Mode (|||38894|)
+150 Here comes the directory listing.
+-rw-r--r--    1 0        0            7994 Sep 19  2019 001-key.jpg
+-rw-r--r--    1 0        0            2210 Sep 19  2019 002-key.jpg
+-rw-r--r--    1 0        0            2146 Sep 19  2019 003-key.jpg
+-rw-r--r--    1 0        0             121 Sep 19  2019 helmet_key.txt.gpg
+-rw-r--r--    1 0        0             170 Sep 20  2019 important.txt
+226 Directory send OK.
+ftp> exit
+221 Goodbye.
+```
+Where is the hidden directory mentioned by Barry
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard]
+└─$ ls
+001-key.jpg  002-key.jpg  003-key.jpg  helmet_key.txt.gpg  important.txt
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard]
+└─$ cat important.txt 
+Jill,
+
+I think the helmet key is inside the text file, but I have no clue on decrypting stuff. Also, I come across a /hidden_closet/ door but it was locked.
+
+From,
+Barry
+```
+*/hidden_closet/*
+Password for the encrypted file
+Three picture, three hints: hide, comment and walk away
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard]
+└─$ binwalk 001-key.jpg 002-key.jpg 003-key.jpg 
+
+Scan Time:     2022-09-17 22:40:52
+Target File:   /home/kali/Downloads/biohazard/001-key.jpg
+MD5 Checksum:  076b6a86ba92c75d366f0a18b505dcf8
+Signatures:    411
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JPEG image data, JFIF standard 1.01
+
+Scan Time:     2022-09-17 22:40:52
+Target File:   /home/kali/Downloads/biohazard/002-key.jpg
+MD5 Checksum:  060af11c5617fbc4fba1760f0dd52a0d
+Signatures:    411
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JPEG image data, JFIF standard 1.01
+
+Scan Time:     2022-09-17 22:40:52
+Target File:   /home/kali/Downloads/biohazard/003-key.jpg
+MD5 Checksum:  5c407556b6956ba74cda5ce98f8acf08
+Signatures:    411
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JPEG image data, JFIF standard 1.01
+1930          0x78A           Zip archive data, at least v2.0 to extract, uncompressed size: 14, name: key-003.txt
+2124          0x84C           End of Zip archive, footer length: 22
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard]
+└─$ unzip 003-key.jpg 
+Archive:  003-key.jpg
+warning [003-key.jpg]:  1930 extra bytes at beginning or within zipfile
+  (attempting to process anyway)
+  inflating: key-003.txt
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard]
+└─$ cat key-003.txt  
+3aXRoX3Zqb2x0  key3
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard]
+└─$ strings 001-key.jpg 002-key.jpg 
+JFIF
+
+"*%%*424DD\
+
+"*%%*424DD\
+$3br
+%&'()*456789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz
+        #3R
+&'()*56789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz
+*Pr+6
+)XG0
+QPOu
+^j2]
+~Rpx
+f$n[
+3s3uc]D`A
+*H=E%ij
+J8t8"
+Ro9
+Bri(
+rqZ`
+e=FM
+77*{)
+70_SL
+vg[[fb@8
+1c1DD
+Pj*@
+RsZ:
+`:Wk@
+FUu*
+.!GF
+%FO=jJ
+G#kvaX7VsZ
+nBx"
+ xfN
+SUu-
+|<V{P
+08*r
+QM9b#P
+&?QVRB:V,d
+">?x
+Zz? >}
+o}m$2
+Vm.^
+OSLf
+dnG?
+mZ[@
+i\lc
+iyua:\
+Vp>`}Z
+<',kgp^
+RWIu
+z+DG+M
+k)V*
+*I&#
+,v`/l
+.\c~>n
+APQE
+w)yau$
+'>Y?2
+5KSMl
+?gI6
+Eq5f
+0Q\D
+Mm#E<M
+X.,u8
+:v      x
+>vgvw9f$
+4=.]N
+B^/C
+E,S(h
+AaS,
+b]7&N
+)qcs
+b[yVD# 
+[yqsv
+<),Q
+zM<@
+!d?l
+_Di>"
+!|zU
+O+fI
+JFIF
+5fYmVfZGVzdHJveV9
+
+"*%%*424DD\
+
+"*%%*424DD\
+5Zs5
+az8C
+C%(KH\
+ftkI
+B}-*J
+'ttT
+uJ@2
+!1Aaq
+"2Q 0#Bbr
+l)YWH]E
+}VR7
+p*qJ
+v4NM
+U!.#
+! "AQ
+#2Raq
+?1>o
+I^(h
++M_M
+Z6"=
+,hfb
+Yx$k3
+12Ra
+
+5fYmVfZGVzdHJveV9 key 2
+
+https://futureboy.us/stegano/decode.pl upload key01.png
+
+cGxhbnQ0Ml9jYW key 1
+
+key 1 + key 2 + key 3 = cGxhbnQ0Ml9jYW5fYmVfZGVzdHJveV93aXRoX3Zqb2x0
+
+plant42_can_be_destroy_with_vjolt
+```
+*plant42_can_be_destroy_with_vjolt*
+What is the helmet key flag
+key 1 + key 2 + key 3 is not enough. You need to do something
+![[Pasted image 20220917214959.png]]
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard]
+└─$ gpg -d helmet_key.txt.gpg                
+gpg: AES256.CFB encrypted data
+gpg: encrypted with 1 passphrase
+helmet_key{458493193501d2b94bbab2e727f8db4b}
+```
+*helmet_key{458493193501d2b94bbab2e727f8db4b}*
+### The Revisit
+Done with the puzzle? There are places you have explored before but yet to access.
+![[Pasted image 20220917215239.png]]
+What is the SSH login username
+You missed a room yep study room :)
+enter helmet flag then download
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard]
+└─$ ls
+001-key.jpg  003-key.jpg  helmet_key.txt.gpg  key-003.txt
+002-key.jpg  doom.tar.gz  important.txt
