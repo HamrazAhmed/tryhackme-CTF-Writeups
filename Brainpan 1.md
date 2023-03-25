@@ -14,3 +14,12 @@ All credit to superkojiman - This machine is used here with the explicit permiss
 Not yet,  before exam
 For now Imma do another rooms to enhance my skills !
 Deploy the machine.
+**
+Gain initial access
+**
+Escalate your privileges to root.
+**
+
+## Notes / Lessons Learned
+[[Gatekeeper]]
+
