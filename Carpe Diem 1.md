@@ -522,3 +522,266 @@ rt_sigaction(SIGRT_8, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
 rt_sigaction(SIGRT_8, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
 rt_sigaction(SIGRT_9, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
 rt_sigaction(SIGRT_9, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_10, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_10, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_11, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_11, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_12, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_12, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_13, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_13, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_14, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_14, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_15, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_15, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_16, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_16, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_17, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_17, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_18, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_18, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_19, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_19, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_20, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_20, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_21, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_21, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_22, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_22, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_23, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_23, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_24, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_24, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_25, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_25, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_26, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_26, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_27, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_27, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_28, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_28, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_29, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_29, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_30, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_30, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_31, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_31, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigaction(SIGRT_32, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGRT_32, {sa_handler=0x455780, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x4558b0}, NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, ~[], [], 8) = 0
+clone(child_stack=0xc000048000, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM) = 777750
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, ~[], [], 8) = 0
+clone(child_stack=0xc00004a000, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM) = 777751
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, ~[], [], 8) = 0
+clone(child_stack=0xc000044000, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM) = 777753
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+futex(0xc000012bc8, FUTEX_WAKE_PRIVATE, 1) = 1
+futex(0xc00005a148, FUTEX_WAKE_PRIVATE, 1) = 1
+futex(0xc00005a148, FUTEX_WAKE_PRIVATE, 1) = 1
+readlinkat(AT_FDCWD, "/proc/self/exe", "/home/witty/Downloads/decrypt_li"..., 128) = 41
+fcntl(0, F_GETFL)                       = 0x80002 (flags O_RDWR|O_CLOEXEC)
+futex(0xc00005a148, FUTEX_WAKE_PRIVATE, 1) = 1
+mmap(NULL, 262144, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7feb4d898000
+fcntl(1, F_GETFL)                       = 0x80002 (flags O_RDWR|O_CLOEXEC)
+fcntl(2, F_GETFL)                       = 0x80002 (flags O_RDWR|O_CLOEXEC)
+exit_group(0)                           = ?
++++ exited with 0 +++
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ./decrypt_linux_amd64 -h
+                                                                                              
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ./decrypt_linux_amd64   
+
+void main.main(void)
+
+{
+  ulong *puVar1;
+  long in_FS_OFFSET;
+  
+  while (puVar1 = (ulong *)(*(long *)(in_FS_OFFSET + -8) + 0x10),
+        &stack0x00000000 < (undefined *)*puVar1 || &stack0x00000000 == (undefined *)*puVar1) {
+    runtime.morestack_noctxt();
+  }
+  if (os.Args._8_8_ != 4) {
+    os.Exit(); ---here
+  }
+  if (os.Args._8_8_ < 2) {
+                    /* WARNING: Subroutine does not return */
+    runtime.panicIndex();
+  }
+  if (os.Args._8_8_ < 3) {
+                    /* WARNING: Subroutine does not return */
+    runtime.panicIndex();
+  }
+  if (3 < os.Args._8_8_) {
+    main.decryptFile();
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  runtime.panicIndex();
+}
+
+so 4 args
+
+'Database.carp' 'Database.kbxd' and key  F+lRG6As2e1qBd3/7dPTvcmcluUEjMwkq22K6zBIcP8ZF1LuJLsarUKgmhw+P8oZvBSJUXGiGVcRuHxbnQY8Tg==
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat perm_decrypt.py 
+from itertools import permutations
+import subprocess
+
+arguments = ['Database.carp', 'Database.kbxd', 'F+lRG6As2e1qBd3/7dPTvcmcluUEjMwkq22K6zBIcP8ZF1LuJLsarUKgmhw+P8oZvBSJUXGiGVcRuHxbnQY8Tg==']
+perm = permutations(arguments[1:])
+
+for i in perm:
+    command = ['./decrypt_linux_amd64'] + list(i) + [arguments[0]]
+    output = subprocess.check_output(command, text=True)
+    print(output.strip())
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ file Database.kbxd.decrypt 
+Database.kbxd.decrypt: executable, regular file, no read permission
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ chmod 777 Database.kbxd.decrypt
+                                                                                                                     
+┌──(witty㉿kali)-[~/Downloads]
+└─$ file Database.kbxd.decrypt     
+Database.kbxd.decrypt: Keepass password database 2.x KDBX
+
+Command 'kpcli' not found, but can be installed with:
+sudo apt install kpcli
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ kpcli
+
+KeePass CLI (kpcli) v3.8.1 is ready for operation.
+Type 'help' for a description of available commands.
+Type 'help <command>' for details on individual commands.
+
+kpcli:/> help
+  attach -- Manage attachments: attach <path to entry|entry number>
+autosave -- Autosave functionality
+      cd -- Change directory (path to a group)
+      cl -- Change directory and list entries (cd+ls)
+   clone -- Clone an entry: clone <path to entry> <path to new entry>
+   close -- Close the currently opened database
+     cls -- Clear screen ("clear" command also works)
+    copy -- Copy an entry: copy <path to entry> <path to new entry>
+    edit -- Edit an entry: edit <path to entry|entry number>
+  export -- Export entries to a new KeePass DB (export <file.kdb> [<file.key>])
+    find -- Finds entries by Title
+     get -- Get a value: get <entry path|entry number> <field>
+    help -- Print helpful information
+ history -- Prints the command history
+   icons -- Change group or entry icons in the database
+  import -- Import a password database (import <file> <path> [<file.key>])
+      ls -- Lists items in the pwd or specified paths ("dir" also works)
+   mkdir -- Create a new group (mkdir <group_name>)
+      mv -- Move an item: mv <path to a group|or entries> <path to group>
+     new -- Create a new entry: new <optional path&|title>
+    open -- Open a KeePass database file (open <file.kdb> [<file.key>])
+     otp -- Show one-time password: otp <entry path|number>
+  passwd -- Change the opened database's password
+   purge -- Purges entries in a given group based on criteria.
+    pwck -- Check password quality: pwck <entry|group>
+     pwd -- Print the current working directory
+    quit -- Quit this program (EOF and exit also work)
+  rename -- Rename a group: rename <path to group>
+      rm -- Remove an entry: rm <path to entry|entry number>
+   rmdir -- Delete a group (rmdir <group_name>)
+    save -- Save the database to disk
+  saveas -- Save to a specific filename (saveas <file.kdb> [<file.key>])
+     set -- Set a value: get <entry path|entry number> <field> <val>
+    show -- Show an entry: show [-f] [-a] <entry path|entry number>
+   stats -- Prints statistics about the open KeePass file
+     ver -- Print the version of this program
+    vers -- Same as "ver -v"
+      xo -- Copy one-time password to clipboard: xo <entry path|number>
+      xp -- Copy password to clipboard: xp <entry path|number>
+     xpx -- Copy password to clipboard, with auto-clear: xpx <entry path|number>
+      xu -- Copy username to clipboard: xu <entry path|number>
+      xw -- Copy URL (www) to clipboard: xw <entry path|number>
+      xx -- Clear the clipboard: xx
+
+Type "help <command>" for more detailed help on a command.
+kpcli:/> 
+
+kpcli:/> open Database.kbxd.decrypt
+Provide the master password: *************************
+Error opening file: Couldn't load the file Database.kbxd.decrypt
+
+Error(s) from File::KeePass:
+Missing pass
+
+kpcli:/> exit
+Please consider supporting kpcli development by sponsoring its author:
+https://github.com/sponsors/hightowe
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ keepass2john Database.kbxd.decrypt > master_hash
+
+──(witty㉿kali)-[~/Downloads]
+└─$ cat master_hash 
+Database.kbxd.decrypt:$keepass$*2*60000*0*f7f7a5fe819d52f93c048512f1660ad056d210a2156441f527cfed0aa7d6de7c*033411cd0a2f143a9380ffba621535f8194cd5d9adaea25d40070fb4e9dcddba*ca5f1d64383fe0bafe20943431ba4d66*4de8d6395909815bfff78b55e23e49a2424bf4f5c8a064909c012e18da799e64*d0f87830eecb77648b44353cb03f65c00bb1cf0c49caff97e2cc06769b44e5ac
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt master_hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (KeePass [SHA256 AES 32/64])
+Cost 1 (iteration count) is 60000 for all loaded hashes
+Cost 2 (version) is 2 for all loaded hashes
+Cost 3 (algorithm [0=AES 1=TwoFish 2=ChaCha]) is 0 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+antonella        (Database.kbxd.decrypt)     
+1g 0:00:00:39 DONE () 0.02512g/s 94.87p/s 94.87c/s 94.87C/s tyson1..happydays
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ kpcli                                                       
+
+KeePass CLI (kpcli) v3.8.1 is ready for operation.
+Type 'help' for a description of available commands.
+Type 'help <command>' for details on individual commands.
+
+kpcli:/> open Database.kbxd.decrypt
+Provide the master password: *************************
+kpcli:/> ls
+=== Groups ===
+Database/
+kpcli:/> ls Database/
+=== Groups ===
+eMail/
+General/
+Homebanking/
+Internet/
+Network/
+Recycle Bin/
+Windows/
+=== Entries ===
+0. THM                                                                    
+kpcli:/> show Database/THM -f
+
+ Path: /Database/
+Title: THM
+Uname: root
+ Pass: THM{You_Found_TheFLag_Well_Done!}
+  URL: 
+Notes:
+```
+What is flag 1?
+What is flag 2?
+![[Pasted image 20230711134902.png]]
+
+## Flags / Answers
+- ***THM{So_Far_So_Good_So_What}***
+- ***THM{You_Found_TheFLag_Well_Done!}***
+
+## Notes / Lessons Learned
+[[Sea Surfer]]
+
