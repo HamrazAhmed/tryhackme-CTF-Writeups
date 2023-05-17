@@ -1,0 +1,151 @@
+---
+Explore the core processes within a Windows operating system and understand what is normal behavior. This foundational knowledge will help you identify malicious processes running on an endpoint!
+---
+
+# Core Windows Processes — Writeup
+
+## Overview
+### Core Windows Processes — Writeup
+### Core Windows Processes — Writeup
+![](https://assets.tryhackme.com/additional/windows-processes/windows-processes-banner.png)
+### Introduction
+In this room, we will explore the core processes within a Windows system. This room aims to help you know and understand what normal behavior within a Windows operating system is. This foundational knowledge will help you identify malicious processes running on an endpoint.
+The Windows operating system is clearly the most used in the world (whether people like it or not), and the majority of its users don't fully understand its interworkings. Users are simply content that it works, like anything complex such as a car. It starts, and you can drive from point A to point B. In regards to computers, if they can surf the web, read/answer emails, shop, listen to music, watch movies, etc., then all is well. It took a long time for users to grasp the need for antivirus programs fully. Only when one of their basic everyday computer functions were disrupted is when antivirus mattered. Antivirus was enough, say over 5-7 years ago (rough estimate).
+Time changes everything. Malware and attacks have evolved, and antivirus is no longer enough. As a matter of fact, antivirus has struggled to keep up, and that is solely based on how it's designed to catch 'evil'.
+Today antivirus is just 1 solution within the layered defensive approach.  New security tools, such as EDR (Endpoint Detection and Response), have been created because antivirus cannot catch every malicious binary and processes running on the endpoint.
+But guess what? Even with these new tools, it is still not 100% effective.  Attackers can still bypass the defenses running on the endpoint. This is where we come in. Whether you're a Security Analyst, SOC Analyst, Detection Engineer, Threat Hunter, etc., if one of the tools alerts us of a suspicious binary or process, we must investigate and decide on a course of action.  Knowing what normal behavior with the systems that we have to defend, a Windows system (in this case) is, we can infer if the binary or process is benign or evil.
+If you want to access the virtual machine via [Remote Desktop](https://www.cyberark.com/resources/threat-research-blog/explain-like-i-m-5-remote-desktop-protocol-rdp), use the credentials below.
+Machine IP: 10.10.77.145
+User: administrator
+Password: letmein123!
+![](https://assets.tryhackme.com/additional/win-event-logs/remmina.png)
+Accept the Certificate when prompted, and you should be logged into the remote system now.
+Note: The virtual machine may take up to 3 minutes to load.
+I've read the intro and deployed the attached virtual machine.
+*No answer needed*
+### Task Manager
+Task Manager is a built-in GUI-based Windows utility that allows users to see what is running on the Windows system. It also provides information on resource usage, such as how much CPU and memory are utilized by each process. When a program is not responding, Task Manager is used to end (kill) the process.
+If you're not familiar with Task Manager, we'll go through a brief overview.
+To open Task Manager, right-click the Taskbar. When the new window appears, select Task Manager (as shown below).
+![](https://assets.tryhackme.com/additional/windows-processes/taskmanager.png)
+If you don't have any apps that you explicitly opened, then you should see the same message as shown below.
+![](https://assets.tryhackme.com/additional/windows-processes/taskmanager-2.png)
+Weird. Not seeing much, eh? Within a Windows system, many processes are running. Click on More details.
+![](https://assets.tryhackme.com/additional/windows-processes/taskmanager-3.png)
+Ok, now we're getting somewhere. Notice the 5 tabs within Task Manager. By default, the current tab is Processes.
+Note: If you're running Task Manager on your Windows machine, you might see additional tabs.
+In the above image (or if you're following along within your own Windows system), notice that the processes are categorized: Apps and Background processes. Another category that is not visible in the above image is Windows processes.
+The columns are very minimal. The columns Name, Status, CPU, and Memory, are the only ones visible. To view more columns, right-click on any of the column headers to open more options.
+![](https://assets.tryhackme.com/additional/windows-processes/taskmanager-4.png)
+![](https://assets.tryhackme.com/additional/windows-processes/taskmanager-5.png)
+This looks a little better. Let's briefly go over each column (excluding Name, of course):
+Type - Each process falls into 1 of 3 categories (Apps, Background process, or Windows process).
+Publisher - Think of this column as the name of the author of the program/file.
+PID - This is known as the process identifier number. Windows assigns a unique process identifier each time a program starts. If the same program has multiple processes running, each will have its own unique process identifier (PID).
+Process name - This is the file name of the process. In the above image, the file name for Task Manager is Taskmrg.exe.
+Command line - The full command used to launch the process.
+CPU - The amount of CPU (processing power) used by the process.
+Memory - The amount of physical working memory utilized by the process.
+This is a utility you should be comfortable with using, whether you're troubleshooting or performing analysis on the endpoint.
+Let's move to the Details tab. Within this view are some of the core processes that will be discussed in this room. Sort the PID column so that the PIDs are in ascending order.
+![](https://assets.tryhackme.com/additional/windows-processes/taskmanager-6.png)
+Add some additional columns to see more information about these processes. Good columns to add are Image path name and Command line.
+These 2 columns can quickly alert an analyst on any outliers with a given process. For example, in the below image, PID 384 is paired with a process named svchost.exe, a Windows process, but if the Image path name or Command line is not what it's expected to be, then we can perform a deeper analysis on this process.
+![](https://assets.tryhackme.com/additional/windows-processes/taskmanager-7.png)
+Of course, you can add as many columns as you wish, but it's recommended to add the columns that would be pertinent to your current task.
+Task Manager is a powerful built-in Windows utility but lacks certain important information when analyzing processes, such as parent process information. This is another key column when identifying outliers. Back to svchost.exe, if the parent process for PID 384 is not services.exe, then this will warrant further analysis.
+To further prove this point, where is services.exe?
+![](https://assets.tryhackme.com/additional/windows-processes/taskmanager-8.png)
+Based on the above image, the PID for services.exe is 632. But wait, one of the svchost.exe processes has a PID of 384. How did svchost.exe start before services.exe? Well, it didn't. Task Manager doesn't show a Parent-Child process view. That is where other utilities, such as Process Hacker and Process Explorer, come to the rescue.
+Process Hacker
+![](https://assets.tryhackme.com/additional/windows-processes/processhacker.png)
+Process Explorer
+![](https://assets.tryhackme.com/additional/windows-processes/process-explorer.png)
+Moving forward, I'll use both Process Hacker and Process Explorer instead of Task Manager to obtain information about each of the Windows processes.
+As always, it's encouraged that you inspect and familiarize yourself with all information that is available within Task Manager. It's a built-in utility that is available in every Windows system. You might find yourself in a situation where you can't bring your tools to the fight and rely on the tools that are native to the system.
+Aside from Task Manager, it would be best if you also familiarize yourself with the command-line equivalent of obtaining information about the running processes on a Windows system: `tasklist, Get-Process or ps (PowerShell), and wmic`.
+On to the next task...
+*No answer needed*
+### System
+The first Windows process on the list is System. It was mentioned in a previous section that a PID for any given process is assigned at random, but that is not the case for the System process. The PID for System is always 4. What does this process do exactly?
+The official definition from Windows Internals 6th Edition:
+"The System process (process ID 4) is the home for a special kind of thread that runs only in kernel mode a kernel-mode system thread. System threads have all the attributes and contexts of regular user-mode threads (such as a hardware context, priority, and so on) but are different in that they run only in kernel-mode executing code loaded in system space, whether that is in Ntoskrnl.exe or in any other loaded device driver. In addition, system threads don't have a user process address space and hence must allocate any dynamic storage from operating system memory heaps, such as a paged or nonpaged pool."
+What is user mode? Kernel-mode? Visit the following link ([here](https://docs.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)) to understand each of these.
+Now, what is normal behavior for this process? Let's use Process Explorer and view the properties for System.
+![](https://assets.tryhackme.com/additional/windows-processes/system.png)
+Image Path:  N/A
+Parent Process:  None
+Number of Instances:  One
+User Account:  Local System
+Start Time:  At boot time
+The information is slightly different if we view the System properties using Process Hacker.
+![](https://assets.tryhackme.com/additional/windows-processes/system2.png)
+Image Path: `C:\Windows\system32\ntoskrnl.exe` (NT OS Kernel)
+Parent Process: System Idle Process (0)
+Technically this is correct.  Notice that Process Hacker confirms this is legit '(Verified) Microsoft Windows.
+What is unusual behavior for this process?
+A parent process (aside from System Idle Process (0))
+Multiple instances of System. (Should only be 1 instance)
+A different PID. (Remember that the PID will always be PID 4)
+Not running in Session 0
+What PID should System always be?
+*4*
+### System > smss.exe
+The next process is smss.exe (Session Manager Subsystem). This process, also known as the Windows Session Manager, is responsible for creating new sessions. This is the first user-mode process started by the kernel.
+This process starts the kernel mode and user mode of the Windows subsystem (you can read more about the NT Architecture [here](https://en.wikipedia.org/wiki/Architecture_of_Windows_NT)). This subsystem includes win32k.sys (kernel mode), winsrv.dll (user mode), and csrss.exe (user mode).
+Smss.exe starts csrss.exe (Windows subsystem) and wininit.exe in Session 0, an isolated Windows session for the operating system, and csrss.exe and winlogon.exe for Session 1, which is the user session. The first child instance creates child instances in new sessions. This is done by smss.exe copying itself into the new session and self-terminating. You can read more about this process [here](https://en.wikipedia.org/wiki/Session_Manager_Subsystem).
+Session 0 (csrss.exe & wininit.exe)
+![](https://assets.tryhackme.com/additional/windows-processes/smss-session0-tree.png)
+![](https://assets.tryhackme.com/additional/windows-processes/smss-session0b.png)
+Session 1 (csrss.exe & winlogon.exe)
+![](https://assets.tryhackme.com/additional/windows-processes/smss-session1-tree.png)
+![](https://assets.tryhackme.com/additional/windows-processes/smss-session1b.png)
+Any other subsystem listed in the Required value of `HKLM\System\CurrentControlSet\Control\Session Manager\Subsystems` is also launched.
+![](https://assets.tryhackme.com/additional/windows-processes/smss-registry.png)
+SMSS is also responsible for creating environment variables, virtual memory paging files and starts winlogon.exe (the Windows Logon Manager).
+What is normal?
+![](https://assets.tryhackme.com/additional/windows-processes/smss.png)
+Image Path:  `%SystemRoot%\System32\smss.exe`
+Parent Process:  System
+Number of Instances:  One master instance and child instance per session. The child instance exits after creating the session.
+User Account:  Local System
+Start Time:  Within seconds of boot time for the master instance
+What is unusual?
+A different parent process other than System(4)
+Image path is different from C:\Windows\System32
+More than 1 running process. (children self-terminate and exit after each new session)
+User is not SYSTEM
+Unexpected registry entries for Subsystem
+What other two processes does smss.exe start in Session 1? (answer format: process1, process2) (Adding the Session ID column in Process Hacker might help you, but it's also covered in the Task content in detail.)
+*csrss.exe, winlogon.exe*
+### csrss.exe
+As mentioned in the previous section, csrss.exe (Client Server Runtime Process) is the user-mode side of the Windows subsystem. This process is always running and is critical to system operation. If by chance this process is terminated it will result in system failure. This process is responsible for the Win32 console window and process thread creation and deletion. For each instance csrsrv.dll, basesrv.dll, and winsrv.dll are loaded (along with others).
+This process is also responsible for making the Windows API available to other processes, mapping drive letters, and handling the Windows shutdown process.  You can read more about this process [here](https://en.wikipedia.org/wiki/Client/Server_Runtime_Subsystem).
+Note: Recall that csrss.exe and winlogon.exe are called from smss.exe at startup for Session 1.
+What is normal?
+Session 0 (PID 392)
+![](https://assets.tryhackme.com/additional/windows-processes/csrss-session0.png)
+Session 1 (PID 512)
+![](https://assets.tryhackme.com/additional/windows-processes/csrss-session1.png)
+Notice what is shown for the parent process for these 2 processes. Remember these processes are spawned by smss.exe which self-terminates itself.
+Image Path:  `%SystemRoot%\System32\csrss.exe`
+Parent Process:  Created by an instance of smss.exe
+Number of Instances:  Two or more
+User Account:  Local System
+Start Time:  Within seconds of boot time for the first 2 instances (for Session 0 and 1).  Start times for additional instances occur as new sessions are created, although often only Sessions 0 and 1 are created.
+What is unusual?
+An actual parent process. (smss.exe calls this process and self-terminates)
+Image file path other than C:\Windows\System32
+Subtle misspellings to hide rogue process masquerading as csrss.exe in plain sight
+User is not SYSTEM
+What was the process which had PID 384 and PID 488?
+*smss.exe*
+### wininit.exe
+The Windows Initialization Process, wininit.exe, is responsible for launching services.exe (Service Control Manager), lsass.exe (Local Security Authority), and lsaiso.exe within Session 0. This is another critical Windows process that runs in the background, along with its child processes.
+![](https://assets.tryhackme.com/additional/windows-processes/wininit-tree.png)
+Note: lsaiso.exe is a process associated with Credential Guard and Key Guard. You will only see this process if Credential Guard is enabled.
+What is normal?
+![](https://assets.tryhackme.com/additional/windows-processes/wininit.png)
+Image Path:  `%SystemRoot%\System32\wininit.exe`
+Parent Process:  Created by an instance of smss.exe
+Number of Instances:  One
