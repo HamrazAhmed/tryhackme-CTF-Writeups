@@ -251,3 +251,257 @@ Lens Facing                     : Back
 Image Width                     : 4608
 Image Height                    : 3456
 Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+Aperture                        : 1.7
+Image Size                      : 4608x3456
+Megapixels                      : 15.9
+Scale Factor To 35 mm Equivalent: 5.9
+Shutter Speed                   : 1/220
+Create Date                     : 2022:09:11 12:31:48.728794
+Date/Time Original              : 2022:09:11 12:31:48.728794
+Modify Date                     : 2022:09:11 12:31:48.728794
+Thumbnail Image                 : (Binary data 40889 bytes, use -b option to extract)
+Circle Of Confusion             : 0.005 mm
+Field Of View                   : 71.5 deg
+Focal Length                    : 4.3 mm (35 mm equivalent: 25.0 mm)
+Hyperfocal Distance             : 2.08 m
+Light Value                     : 9.3
+
+or using FTK Imager
+
+https://en.wikipedia.org/wiki/List_of_file_signatures
+
+FF D8 FF E1 .jpg
+```
+![[Pasted image 20230718141113.png]]
+![[Pasted image 20230718141656.png]]
+*.jpg*
+A phone was used to photograph the "hideout". What is the phone's model?
+*ONEPLUS A6013*
+A phone was used to photograph the "warehouse". What is the phone's model?
+![[Pasted image 20230718141316.png]]
+![[Pasted image 20230718141735.png]]
+*Mi 9 Lite*
+Are there any indications that the suspect is involved in other illegal activity? (Y/N)
+One obfuscated file is a zip file, change the file extension and unpack it.
+```text
+https://en.wikipedia.org/wiki/List_of_file_signatures
+
+50 4B 03 04 ZIP
+```
+![[Pasted image 20230718141846.png]]
+![[Pasted image 20230718141932.png]]
+*y*
+Who was the point of contact of Mr William S. McClean in 2022?
+```text
+==========================================================
+
+CSSC Annual Meetup: 09-09 / 9th of September
+Topic: Product Distribution Schedule
+
+==========================================================
+
+Shipment Details:
+- Schedule: 3rd day of every month
+- Products: 0days, Trojans, Ransomware, Backdoors, Rootkits
+
+> Year: 2020
+  - Total Profits: $824,156,789.31
+  - Meetup: 14°32'29.3"N 120°58'43.6"E
+  - PoC: Rodrigo Lopez Cabrerra / 09985675432 / gangmemberone@gmail.com
+
+> Year: 2021
+  - Total Profits: $983,234,654.86
+  - Meetup: 14°35'31.3"N 120°57'22.2"E
+  - PoC: Karl Renato Abelardo / 09124329876 / karlrenatoabelardo@gmail.com
+
+> Year: 2022
+  - Total Profits: $1,092,564,789.23
+  - Meetup: 14°26'25.7"N 120°59'00.8"E
+  - PoC: Karl Renato Abelardo / 09124329876 / karlrenatoabelardo@gmail.com
+
+==========================================================
+
+Underground Community Creds:
+- DarkPool Marketplace: SerpentWhisperer86 / Cr1m$0nSh@d0w$3rp3nt5
+- Menacingly Marketplace: KingCrimson201 / Sh@d0wSerp3nt$C4rt3l
+
+==========================================================
+
+Send email to Mr. DeVentura and Mr. Durr Alessio later.
+
+-----------------------------------------------
+Subject: Task Completed - All Traces Erased
+Message:
+
+Mr. DeVentura, Mr. Durr Alessio,
+
+I am pleased to inform you that the requested task has been successfully executed. You can now rest assured that all tracks with our counter-parties and other institutions have been meticulously cleaned, leaving no traces behind. Please feel free to reach out if you need any further assistance.
+
+Best regards,
+
+William, WSM
+-----------------------------------------------
+
+DarkVault$Pandora=DONOTOPEN!K1ngCr1ms0n!
+```
+*Karl Renato Abelardo*
+A meetup occurred in 2022. What are the GPS coordinates during that time?
+![[Pasted image 20230718142249.png]]
+*14°26'25.7"N 120°59'00.8"E*
+What is the password to extract the contents of pandorasbox.zip?
+*DarkVault$Pandora=DONOTOPEN!K1ngCr1ms0n!*
+From which company did the source code in the pandorasbox directory originate?
+```text
+C:\Users\dfir\AppData\Local\Temp\2\Temp1_operations.zip\operations\pandorasbox.zip\pandorasbox\HFT_Algorithm
+
+#!/usr/bin/python3
+```
+```text
+# ---------------------------------------------------------------------------
+```
+```text
+# Filename: main.py
+```
+```text
+# Author: Perry Parsons
+```
+```text
+# Company: SwiftSpend Financial
+```
+```text
+# Creation Date: November 1, 2005
+```
+```text
+# Modification Date: November 30, 2005
+```
+```text
+# Description: Main entry point for the High-Frequency Trading algorithm.
+```
+```text
+# File Labeling: CONFIDENTIAL AND PROPRIETARY
+```
+```text
+# ---------------------------------------------------------------------------
+
+import threading
+import time
+from config import settings, trading_parameters
+from data.market_data import MarketDataHandler
+from data.historical_data import HistoricalDataHandler
+from execution.execution_handler import ExecutionHandler
+from execution.order_manager import OrderManager
+from models.example_strategy import ExampleStrategy
+from models.risk_management import RiskManagement
+
+def run_trading_loop(strategy, market_data_handler, historical_data_handler, risk_management, order_manager, execution_handler):
+```
+```text
+# Main trading loop
+    while True:
+```
+```text
+# Implement your trading logic here
+```
+```text
+# For example, fetch market data and generate trading signals based on the strategy
+        signal = strategy.generate_signal(market_data_handler)
+        
+        if signal:
+            proposed_order = order_manager.create_order(signal['action'], trading_parameters.TRADE_SIZE)
+```
+```text
+# Check risk and execute the order if it passes the risk management criteria
+            if risk_management.check_risk(proposed_order):
+                execution_handler.execute_order(signal['action'], trading_parameters.TRADE_SIZE)
+
+        time.sleep(1)
+
+if __name__ == "__main__":
+    market_data_handler = MarketDataHandler()
+    historical_data_handler = HistoricalDataHandler()
+    execution_handler = ExecutionHandler()
+    order_manager = OrderManager()
+    strategy = ExampleStrategy()
+    risk_management = RiskManagement()
+```
+```text
+# Connect to IBKR TWS or Gateway
+    market_data_handler.connect(settings.IBKR_HOST, settings.IBKR_PORT, settings.IBKR_CLIENT_ID)
+    historical_data_handler.connect(settings.IBKR_HOST, settings.IBKR_PORT, settings.IBKR_CLIENT_ID + 1)
+    execution_handler.connect(settings.IBKR_HOST, settings.IBKR_PORT, settings.IBKR_CLIENT_ID + 2)
+```
+```text
+# Start the trading loop
+    trading_thread = threading.Thread(target=run_trading_loop, args=(strategy, market_data_handler, historical_data_handler, risk_management, order_manager, execution_handler))
+    trading_thread.start()
+```
+```text
+# Run the message loops for the API connections
+    market_data_handler.run()
+    historical_data_handler.run()
+    execution_handler.run()
+```
+*SwiftSpend Financial*
+In one of the documents that the suspect has yet to sign, who was listed as the beneficiary?
+![[Pasted image 20230718142734.png]]
+*Mr. Giovanni Vittorio DeVentura*
+What is the hidden flag?
+![[Pasted image 20230718142814.png]]
+### Task 8  Post-Analysis of Evidence to Court Proceedings
+If there is reasonable suspicion that the suspect possesses and distributes these materials, the law enforcement agency handling the case must follow these **4 Phases of Investigation**. Additionally, the DFIR First Responder must observe the following steps before, during, and after acquiring digital artefacts and evidence:
+|   |   |
+|---|---|
+|   |   |
+|---|---|
+Answer the questions below
+In which phase is a warrant obtained for search, seizure, and examination of the suspect's computer data due to violations of domestic and international laws?
+*Pre-search*
+In which phase is a forensic analysis performed on the acquired digital evidence requested from various sources?
+*Post-search*
+Which phase involves presenting forensic artefacts and evidence with proper documentation in a court of law?
+*Trial*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/d6713968f4510b8f13466039574decb6.png)
+- |Suspect:<br><br>- William S. McClean (William Super McClean)<br><br>Nationality:<br><br>- British<br><br>Charges Pressed / Accused Crimes:<br><br>- Corporate espionage<br>- Theft of trade secrets|![Law enforcement officer writing down the case details.](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/a9e62254f6d62a745d61a4448dd213e4.png)|
+- |![A DFIR First Responder holding bagged obtained artefacts](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/3a1189ccbd08be24b29e5018ba0b702f.png)|Each department might have unique protocols for acquiring digital artefacts and evidence. However, DFIR First Responders should typically adhere to the following guidelines if there is any computer system at the scene of a crime:<br><br>- Taking an image of the RAM.<br>- Checking for **drive encryption**.<br>- Taking an image of the drive(s).|
+- |Each department might have unique protocols regarding maintaining the chain of custody. However, DFIR First Responders should typically adhere to the following guidelines when handling digital artefacts and evidence before, during, and after collection:<br><br>- **Ensure proper documentation** of any seized materials as evidence (devices/files).<br>- **Hash and copy** obtained files to maintain the integrity of the original.<br>- Do not perform an appropriate shutdown of devices. Pull the power plug from suspect devices instead. This is to avoid data alteration as a proper shutdown may trigger anti-forensic measures.<br>- **Bag, Seal, and Tag the obtained artefacts** before sending them to the Forensics Laboratory.|![A DFIR First Responder handing over Chain of Custody documentation](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/fc8d5a99443ea77fd174d9d35fe5d407.png)|
+- ![Shiny object under the suspect's desk](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/f15398599a0753df59bb6ea25def34f8.png)
+- ![A DFIR First Responder picking up the shiny object which turns out to be a flash drive](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/f4ef6fc0a0314d179989cea608d14c1b.png)
+- ![THM Key Credentials](https://tryhackme-images.s3.amazonaws.com/user-uploads/63588b5ef586912c7d03c4f0/room-content/be629720b11a294819516c1d4e738c92.png)
+- |![FTK Imager Logo](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/cb64e7b1e02c87966c903d9f40ee2a08.png)|FTK Imager is a forensics tool that allows forensic specialists to acquire computer data and perform analysis without affecting the original evidence, preserving its authenticity, integrity, and validity for presentation during a trial in a court of law.|
+- ![Write-Blocking Device with the obtained flash drive plugged in](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/7bbef302d561e22537008c216c695cc2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/37252c1b0e6cec4f601a242f18484fd2.png)
+- ![Adding an evidence item using FTK Imager](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/88ed441cbcafc54ad8b5c8dec6aed905.png)
+- ![Selecting a physical drive as an evidence source](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/cec6c1bc55012367443dce64401ab63e.png)
+- ![Choosing the forensic artefact from the scenario as the evidence source](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/a64bdbce76699e99de5829a6d6a5a9f2.png)
+- ![Detecting EFS Encryption with FTK Imager on the forensic artefact](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/a0ec76d036d3e190af6995b7f58e855d.png)
+- ![Result of Detecting EFS Encryption on the forensic artefact](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/73e789a98a7bbff0e761be604a0236b9.png)
+- ![Creating a frensic disk image with FTK Imager](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/0e7ea55370ea0332c7245ccde32068af.png)
+- ![Selecting a physical drive as an evidence source](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/cec6c1bc55012367443dce64401ab63e.png)
+- ![Choosing the forensic artefact from the scenario as the evidence source for forensic disk imaging](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/a64bdbce76699e99de5829a6d6a5a9f2.png)
+- ![Enabling settings to verify the hash and create a directory list of the forensic disk image](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/38af98abce307957467524499b300d1a.png)
+- ![Entering case details in FTK Imager for the forensic disk image](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/c59a724295ea2b39ccf5f4b77d0da760.png)
+- ![Setting the destination folder to save the forensic disk image](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/f4bf4cba837a3007cacea98f51d57c16.png)
+- ![Starting the creation of a forensic disk image](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/1a178a908a7d958d6e599a6764a5d891.png)
+- ![Creating a Forensic Disk Image with FTK Imager](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/c3b45ce276a4dc72d14ed9bebe35f8fc.png)
+- ![Validating that the hash of the physical drive and the forensic disk image matches](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/2a50cfb87386c1d28892fe874223c4f4.png)
+- ![Adding an evidence item using FTK Imager](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/88ed441cbcafc54ad8b5c8dec6aed905.png)
+- ![Selecting an image file as an evidence source](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/85d9567493ee24ac1f13cfb434a429df.png)
+- ![Choosing the captured forensic disk image as the evidence source](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/6bcf66b86bbb01c667093d5f0ccca15e.png)
+- ![FTK Imager UI when an evidence source has been mounted](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/c08e4d566d3ea219b2d28dbe915f716e.png)
+- ![Recovering deleted files by exporting them](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/d2f97b261a575cd76f84ba75021997c5.png)
+- ![Prompt upon successful export of files](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/da2529c7e7cdf4918269b911ddc8f002.png)
+- ![Navigating to the recovered files using Windows Explorer](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/48d1d5f31a7fa69336a8a52c3efc8092.png)
+- ![Commencing Digital Forensic Analysis at the Forensics Lab](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/4671303c6698961dc2e6becbb618e960.png)
+- ***THM{sCr0LL_sCr0LL_cL1cK_cL1cK_4TT3NT10N_2_D3T41L5_15_CRUC14L!!}***
+- |**Pre-search**<br><br>- Send a request to preserve the data and logs of the suspect to social media networks (subscriber's information, traffic, and content data).<br>- Send a request to preserve the data and logs of the suspect to ISPs (subscriber's information, traffic, and content data).<br>- Obtain a warrant for search, seizure, and examination of the suspect's computer data for violation of domestic and international laws.<br>- Perform an inspection of the suspect's social media accounts and public profiles.|![Court room judge smashing the hammer](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/d261e70b9c317d14c34f6daaa5d3bcd3.png)|
+- |![Lawyers arguing at the courtroom](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/7cc977da5055d34ed19fe07f34a69b32.png)|**Search**<br><br>- By a warrant issued by a court of law, obtain data requested from social media networks and ISPs.<br>- Perform search, seizure, and examination of the suspect's computer data.<br><br>  <br><br>**Post-search**<br><br>- Perform forensic analysis of acquired digital artefacts & evidence.<br><br>  <br><br>**Trial**<br><br>- Present forensic artefacts & evidence together with proper documentation during court proceedings.|
+- ![The End](https://tryhackme-images.s3.amazonaws.com/user-uploads/63da722f2d207d0049da10b1/room-content/d43112342917d7e842f10392db250d11.png)
+
+## Notes / Lessons Learned
+[[Templated]]
+
