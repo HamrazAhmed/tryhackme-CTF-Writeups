@@ -134,3 +134,139 @@ As we can see, the IMAGE_SECTION_HEADER has different sections, namely `.text`,
 - _.data:_ This section contains initialized data of the application. It has READ/WRITE permissions but doesn't have EXECUTE permissions.
 - ._rdata/.idata:_ These sections often contain the import information of the PE file. Import information helps a PE file import functions from other files or Windows API.
 - .ndata: The .ndata section contains uninitialized data.
+- _.reloc:_ This section contains relocation information of the PE file.
+- _.rsrc:_ The resource section contains icons, images, or other resources required for the application UI.
+Now that we know what the different types of sections are commonly found in a PE file, let's see what important information the section headers for each section include:
+- _VirtualAddress:_ This field indicates this section's Relative Virtual Address (RVA) in the memory.
+- _VirtualSize:_ This field indicates the section's size once loaded into the memory.
+- _SizeOfRawData:_ This field represents the section size as stored on the disk before the PE file is loaded in memory.
+- _Characteristics:_ The characteristics field tells us the permissions that the section has. For example, if the section has READ permissions, WRITE permissions or EXECUTE permissions.
+Answer the questions below
+![[Pasted image 20230815205254.png]]
+How many sections does the file Desktop\Samples\zmsuz3pinwl have?
+*7*
+What are the characteristics of the .rsrc section of the file Desktop\Samples\zmsuz3pinwl
+Copy the complete value from pe-tree, including the hex value and the translated value
+*0xe0000040 INITIALIZED_DATA | EXECUTE | READ | WRITE*
+### Task 7  IMAGE_IMPORT_DESCRIPTOR
+PE files don't contain all the code they need to perform their functions. In a Windows Operating System, PE files leverage code from the Windows API to perform many functions. The IMAGE_IMPORT_DESCRIPTOR structure contains information about the different Windows APIs that the PE file loads when executed. This information is handy in identifying the potential activity that a PE file might perform. For example, if a PE file imports CreateFile API, it indicates that it might create a file when executed.
+This is what the IMAGE_IMPORT_DESCRIPTOR looks like in the pe-tree utility.
+Here we can see that the PE file we are looking at imports functions from ADVAPI32.dll, SHELL32.dll, ole32.dll, COMCTL32.dll, and USER32.dll. These files are dynamically linked libraries that export Windows functions or APIs for other PE files. The above screenshot shows that the PE file imports some functions that perform some registry actions. To find more information about what the function does, we can check out Microsoft Documentation. For example, [this link](https://docs.microsoft.com/en-us/windows/win32/api/winreg/nf-winreg-regcreatekeyexw) has details about the RegCreateKeyExW function.
+In the above screenshot, we can see the values OriginalFirstThunk and FirstThunk. The Operating System uses these values to build the Import Address Table (IAT) of the PE file. We will learn more about these values in the coming rooms.
+By studying the import functions of a PE file, we can identify some of the activities that the PE file might perform.
+Take the redline binary from the attached VM as an example. Its IMAGE_IMPORT_DESCRIPTOR imports notable functions such as CreateProcessW, CreateDirectoryW, and WriteFile from kernel32.dll. This implies that this PE file intends to create a process, create a directory, and write some data to a file. Similarly, by studying the rest of the imports, we can potentially identify other activities that a PE file intends to perform.
+Answer the questions below
+The PE file Desktop\Samples\redline imports the function CreateWindowExW. From which dll file does it import this function?
+![[Pasted image 20230815213628.png]]
+*USER32.dll*
+### Task 8  Packing and Identifying packed executables
+Since a PE file's information can be easily extracted using a Hex editor or a tool like pe-tree, it becomes undesirable for people who don't want their code to be reverse-engineered. This is where the packers come in. A packer is a tool to obfuscate the data in a PE file so that it can't be read without unpacking it. In simple words, packers pack the PE file in a layer of obfuscation to avoid reverse engineering and render a PE file's static analysis useless. When the PE file is executed, it runs the unpacking routine to extract the original code and then executes it. Legitimate software developers use packing to address piracy concerns, and malware authors use it to avoid detection. So how do we identify packers?
+### From Section Headers
+In the previous tasks, we learned that commonly, a PE file has a .text section, a .data section, and a .rsrc section, where only the .text section has the execute flag set because it contains the code. Now take the example of the file named zmsuz3pinwl. When we open this file in pe-tree, we find that it has unconventional section names (or no names, in this case).
+We might think this has something to do with the tool we use to analyze the file. Therefore, let's check it using another PE analysis tool called pecheck. The pecheck tool provides the same information we have been gathering from the pe-tree tool, but it is a command-line tool. We navigate to the Desktop\Samples directory in the terminal and give the following command to run the pecheck tool.
+`pecheck zmsuz3pinwl`
+Let's see the information in the PE Sections heading in the output:
+PE Check utility
+```shell-session
+user@machine$ pecheck zmsuz3pinwl
+PE check for 'zmsuz3pinwl':
+Entropy: 7.978052 (Min=0.0, Max=8.0)
+MD5     hash: 1ebb1e268a462d56a389e8e1d06b4945
+SHA-1   hash: 1ecc0b9f380896373e81ed166c34a89bded873b5
+SHA-256 hash: 98c6cf0b129438ec62a628e8431e790b114ba0d82b76e625885ceedef286d6f5
+SHA-512 hash: 6921532b4b5ed9514660eb408dfa5d28998f52aa206013546f9eb66e26861565f852ec7f04c85ae9be89e7721c4f1a5c31d2fae49b0e7fdfd20451191146614a
+ entropy: 7.999788 (Min=0.0, Max=8.0)
+ entropy: 7.961048 (Min=0.0, Max=8.0)
+ entropy: 7.554513 (Min=0.0, Max=8.0)
+.rsrc entropy: 6.938747 (Min=0.0, Max=8.0)
+ entropy: 0.000000 (Min=0.0, Max=8.0)
+.data entropy: 7.866646 (Min=0.0, Max=8.0)
+.adata entropy: 0.000000 (Min=0.0, Max=8.0)
+.
+.
+.
+.
+.
+.
+----------PE Sections----------
+
+[IMAGE_SECTION_HEADER]
+0x1F0      0x0   Name:                          
+0x1F8      0x8   Misc:                          0x3F4000  
+0x1F8      0x8   Misc_PhysicalAddress:          0x3F4000  
+0x1F8      0x8   Misc_VirtualSize:              0x3F4000  
+0x1FC      0xC   VirtualAddress:                0x1000    
+0x200      0x10  SizeOfRawData:                 0xD3400   
+0x204      0x14  PointerToRawData:              0x400     
+0x208      0x18  PointerToRelocations:          0x0       
+0x20C      0x1C  PointerToLinenumbers:          0x0       
+0x210      0x20  NumberOfRelocations:           0x0       
+0x212      0x22  NumberOfLinenumbers:           0x0       
+0x214      0x24  Characteristics:               0xE0000040
+Flags: IMAGE_SCN_CNT_INITIALIZED_DATA, IMAGE_SCN_MEM_EXECUTE, IMAGE_SCN_MEM_READ, IMAGE_SCN_MEM_WRITE
+Entropy: 7.999788 (Min=0.0, Max=8.0)
+MD5     hash: fa9814d3aeb1fbfaa1557bac61136ba7
+SHA-1   hash: 8db955c622c5bea3ec63bd917db9d41ce038c3f7
+SHA-256 hash: 24f922c1cd45811eb5f3ab6f29872cda11db7d2251b7a3f44713627ad3659ac9
+SHA-512 hash: e122e4600ea201058352c97bb7549163a0a5bcfb079630b197fe135ae732e64f5a6daff328f789e7b2285c5f975bce69414e55adba7d59006a1f0280bf64971c
+.
+.
+.
+.
+.
+```
+We see here that the section name is empty, and it is not a glitch in the tool we used to analyze the PE file.
+Another thing that we might notice here is that the Entropy of the .data section and three of the four unnamed sections is higher than seven and is approaching 8. As we discussed in a previous task, higher Entropy represents a higher level of randomness in data. Random data is generally generated when the original data is obfuscated, indicating that these values might indicate a packed executable.
+Apart from the section names, another indicator of a packed executable is the permissions of each section. For the PE file in the above terminal, we can see that the section contains initialized data and has READ, WRITE and EXECUTE permissions. Similarly, some other sections also have READ, WRITE and EXECUTE permissions. This is also not found in the ordinary unpacked PE file, where only the .text section has EXECUTE permissions, as we saw in the redline malware sample.
+Another valuable piece of information from the section headers to identify a packed executable is the SizeOfRawData and Misc_VirtualSize. In a packed executable, the SizeOfRawData will always be significantly smaller than the Misc_VirtualSize in sections with WRITE and EXECUTE permissions. This is because when the PE file unpacks during execution, it writes data to this section, increasing its size in the memory compared to the size on disk, and then executes it.
+### From Import functions:
+The last important indicator of a packed executable we discuss here is its import functions. The redline PE file we analyzed earlier imported lots of functions, indicating the activity it potentially performs. However, for the PE file zmsuz3pinwl, we will see only a handful of imports, especially the GetProcAddress, GetModuleHandleA, and LoadLibraryA. These functions are often some of the only few imports of a packed PE file because these functions provide the functionality to unpack the PE file during runtime.
+Summing up, the following indications point to a packed executable when we look at its PE header data:
+- Unconventional section names
+- EXECUTE permissions for multiple sections
+- High Entropy, approaching 8, for some sections.
+- A significant difference between SizeOfRawData and Misc_VirtualSize of some PE sections
+- Very few import functions
+Answer the questions below
+Which of the files in the attached VM in the directory Desktop\Samples seems to be a packed executable?
+*zmsuz3pinwl*
+### Task 9  Conclusion
+That concludes this room about Dissecting PE headers. In this room, we learned:
+- What is a PE header
+- What are the different parts of the PE header
+- How to read the information from the PE header
+- Identify packed executables using the PE header
+Let us know what you think about this room on our [Discord channel](https://discord.gg/tryhackme) or [Twitter account](http://twitter.com/realtryhackme). See you around.
+Answer the questions below
+Join the discussion in our social channels.
+Question Done
+
+## Flags / Answers
+- ![A PE file as shown by a Hex Editor](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/fccde9cd91c3f9c590f1c295c24c3db7.png)
+- ![A PE file as shown by the pe-tree utility](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/1b5ee018dd56753682a480e83a0789f2.png)
+- In the right pane here, we see some tree-structure dropdown menus. The left pane is just shortcuts to the dropdown menus of the right pane. Some of the important headers that we will discuss in this room are:![Depiction of the structure of a PE file header](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/39c3ef15076edd83f829d6631f746db7.png)
+- ![Remnux search showing wxHexEditor](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/fbd77920a094646aeacded6adbbba39b.png)
+- ![The PE file as seen in a Hex Editor](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/6499c16cb26e5920b8b27a19aaa29941.png)
+- ![The PE file as seen in the pe-tree utility](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/0c8ad5e3ec38bfc8c0e92dceaf839453.png)
+- ![PE file as seen in a Hex Editor, with IMAGE_DOS_HEADER highlighted](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/5a5864011a51bcfc1b363ce611a442e0.png)
+- ![IMAGE_DOS_HEADER as seen in the pe-tree utility](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/6d224a8f8c9c26e4fa55e370c3a72e83.png)
+- ![Hex Editor showing the address of IMAGE_NT_HEADER as highlighted text](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/09c62b15ce903944f53962218d6edb7b.png)
+- ![The DOS-STUB as seen in the pe-tree utility](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/18f747097659d0b3dcb1802e1acf9ed5.png)
+- ![The DOS-STUB highlighted in a Hex Editor](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/3e7684e862ccf5aaf9a4c6ff77902941.png)
+- ![IMAGE_NT_HEADERS as seen in the pe-tree utility](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/48f2264530712e1b95f9c33a045e7280.png)
+- ![Signature field highlighted in the pe-tree utility](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/789c5ae8f388915dba6bb270ea150417.png)
+- ![GO to Offset menu in the Hex Editor](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/2e48d199ce61126eaaa044d92b1e76ce.png)
+- ![The Signature as seen in a Hex Editor, in highlighted text](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/0bc06e3daa1791e1b5eac1508722340f.png)
+- ![The FILE_HEADER as seen in the pe-tree utility](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/cf2ee70d7ee10420c451c498b6f032bd.png)
+- ![The FILE_HEADER as seen in a Hex Editor, in highlighted text](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/bad83e7c23e147df71693bd2495de6fa.png)
+- ![The OPTIONAL_HEADER as seen in the pe-tree utility](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/b817fe43c18f2b3df9e6534bbbc58504.png)
+- ![The start of the OPTIONAL_HEADER as seen in the Hex Editor, in highlighted text](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/3eb8d5f8b3382ac6d6b42d33353a7f9b.png)
+- ![IMAGE_SECTION_HEADER as seen in the pe-tree utility, with .text section also expanded](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/b04d2037e904b5f777b1721d6d55f92a.png)
+- ![IMAGE_IMPORT_DESCRIPTOR as shown using the pe-tree utility](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/7ef95b3a891b858660b13c7fd416490a.png)
+- ![Imports of a PE file as shown in the pe-tree utility, highlighting WriteFile, CreateProcessW and CreateDirectoryW APIs](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/6e0d82a41dd713b7d0ee7156504b607f.png)
+- ![IMAGE_SECTION_HEADERS as seen in the pe-tree utility, showing abnormal sections](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/ae6603f0316ce4c6f7d7c4063f99cd09.png)
+- ![The imports of an executable as seen using the pe-tree utility, showing very less imported functions](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/8b7549ef9f8a18ea2fa1325a9f26da0f.png)
+
+## Notes / Lessons Learned
+[[Crylo]]
+
