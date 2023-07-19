@@ -578,3 +578,584 @@ unix  2      [ ACC ]     STREAM     LISTENING     22841    1/init               
 unix  2      [ ACC ]     STREAM     LISTENING     34677    1027/systemd         /run/user/1005/gnupg/S.gpg-agent.extra
 unix  2      [ ACC ]     STREAM     LISTENING     17305    1/init               @/org/kernel/linux/storage/multipathd
 unix  2      [ ACC ]     STREAM     LISTENING     34678    1027/systemd         /run/user/1005/gnupg/S.gpg-agent.ssh
+unix  2      [ ACC ]     STREAM     LISTENING     17292    1/init               /run/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     34679    1027/systemd         /run/user/1005/gnupg/S.gpg-agent
+unix  2      [ ACC ]     STREAM     LISTENING     34709    1027/systemd         /run/user/1005/pk-debconf-socket
+unix  2      [ ACC ]     STREAM     LISTENING     17294    1/init               /run/systemd/userdb/io.systemd.DynamicUser
+unix  2      [ ACC ]     STREAM     LISTENING     34710    1027/systemd         /run/user/1005/snapd-session-agent.socket
+unix  2      [ ACC ]     STREAM     LISTENING     17303    1/init               /run/lvm/lvmpolld.socket
+unix  2      [ ACC ]     STREAM     LISTENING     17308    1/init               /run/systemd/fsck.progress
+unix  2      [ ACC ]     STREAM     LISTENING     17318    1/init               /run/systemd/journal/stdout
+unix  2      [ ACC ]     STREAM     LISTENING     22823    1/init               /run/dbus/system_bus_socket
+unix  2      [ ACC ]     STREAM     LISTENING     22843    1/init               /run/snapd.socket
+unix  2      [ ACC ]     STREAM     LISTENING     22845    1/init               /run/snapd-snap.socket
+unix  2      [ ACC ]     STREAM     LISTENING     17686    344/systemd-journal  /run/systemd/journal/io.systemd.journal
+unix  2      [ ACC ]     STREAM     LISTENING     22848    1/init               /run/uuidd/request
+unix  2      [ ACC ]     STREAM     LISTENING     26222    595/amazon-ssm-agen  /var/lib/amazon/ssm/ipc/termination
+unix  2      [ ACC ]     STREAM     LISTENING     27681    724/slapd            /var/run/slapd/ldapi
+unix  2      [ ACC ]     STREAM     LISTENING     26221    595/amazon-ssm-agen  /var/lib/amazon/ssm/ipc/health
+unix  2      [ ACC ]     STREAM     LISTENING     22840    1/init               @ISCSIADM_ABSTRACT_NAMESPACE
+user@red-linux-enumeration:~$ sudo netstat -lnp
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:389             0.0.0.0:*               LISTEN      724/slapd           
+tcp        0      0 127.0.0.1:6667          0.0.0.0:*               LISTEN      754/inspircd        
+tcp        0      0 10.10.100.30:53         0.0.0.0:*               LISTEN      616/named           
+tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN      616/named           
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      583/systemd-resolve 
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      671/sshd: /usr/sbin 
+tcp        0      0 127.0.0.1:953           0.0.0.0:*               LISTEN      616/named           
+tcp6       0      0 :::389                  :::*                    LISTEN      724/slapd           
+tcp6       0      0 fe80::8d:99ff:fee9:a:53 :::*                    LISTEN      616/named           
+tcp6       0      0 ::1:53                  :::*                    LISTEN      616/named           
+tcp6       0      0 :::21                   :::*                    LISTEN      648/vsftpd          
+tcp6       0      0 :::22                   :::*                    LISTEN      671/sshd: /usr/sbin 
+tcp6       0      0 ::1:953                 :::*                    LISTEN      616/named           
+udp        0      0 0.0.0.0:37913           0.0.0.0:*                           754/inspircd        
+udp        0      0 10.10.100.30:53         0.0.0.0:*                           616/named           
+udp        0      0 127.0.0.1:53            0.0.0.0:*                           616/named           
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           583/systemd-resolve 
+udp        0      0 10.10.100.30:68         0.0.0.0:*                           580/systemd-network 
+udp        0      0 0.0.0.0:161             0.0.0.0:*                           647/snmpd           
+udp6       0      0 ::1:53                  :::*                                616/named           
+udp6       0      0 fe80::8d:99ff:fee9:a:53 :::*                                616/named           
+udp6       0      0 ::1:161                 :::*                                647/snmpd           
+raw6       0      0 :::58                   :::*                    7           580/systemd-network 
+Active UNIX domain sockets (only servers)
+Proto RefCnt Flags       Type       State         I-Node   PID/Program name     Path
+unix  2      [ ACC ]     STREAM     LISTENING     27743    647/snmpd            /var/agentx/master
+unix  2      [ ACC ]     SEQPACKET  LISTENING     17323    1/init               /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     34667    1027/systemd         /run/user/1005/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     34674    1027/systemd         /run/user/1005/bus
+unix  2      [ ACC ]     STREAM     LISTENING     34675    1027/systemd         /run/user/1005/gnupg/S.dirmngr
+unix  2      [ ACC ]     STREAM     LISTENING     34676    1027/systemd         /run/user/1005/gnupg/S.gpg-agent.browser
+unix  2      [ ACC ]     STREAM     LISTENING     22841    1/init               /var/snap/lxd/common/lxd/unix.socket
+unix  2      [ ACC ]     STREAM     LISTENING     34677    1027/systemd         /run/user/1005/gnupg/S.gpg-agent.extra
+unix  2      [ ACC ]     STREAM     LISTENING     17305    1/init               @/org/kernel/linux/storage/multipathd
+unix  2      [ ACC ]     STREAM     LISTENING     34678    1027/systemd         /run/user/1005/gnupg/S.gpg-agent.ssh
+unix  2      [ ACC ]     STREAM     LISTENING     17292    1/init               /run/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     34679    1027/systemd         /run/user/1005/gnupg/S.gpg-agent
+unix  2      [ ACC ]     STREAM     LISTENING     34709    1027/systemd         /run/user/1005/pk-debconf-socket
+unix  2      [ ACC ]     STREAM     LISTENING     17294    1/init               /run/systemd/userdb/io.systemd.DynamicUser
+unix  2      [ ACC ]     STREAM     LISTENING     34710    1027/systemd         /run/user/1005/snapd-session-agent.socket
+unix  2      [ ACC ]     STREAM     LISTENING     17303    1/init               /run/lvm/lvmpolld.socket
+unix  2      [ ACC ]     STREAM     LISTENING     17308    1/init               /run/systemd/fsck.progress
+unix  2      [ ACC ]     STREAM     LISTENING     17318    1/init               /run/systemd/journal/stdout
+unix  2      [ ACC ]     STREAM     LISTENING     22823    1/init               /run/dbus/system_bus_socket
+unix  2      [ ACC ]     STREAM     LISTENING     22843    1/init               /run/snapd.socket
+unix  2      [ ACC ]     STREAM     LISTENING     22845    1/init               /run/snapd-snap.socket
+unix  2      [ ACC ]     STREAM     LISTENING     17686    344/systemd-journal  /run/systemd/journal/io.systemd.journal
+unix  2      [ ACC ]     STREAM     LISTENING     22848    1/init               /run/uuidd/request
+unix  2      [ ACC ]     STREAM     LISTENING     26222    595/amazon-ssm-agen  /var/lib/amazon/ssm/ipc/termination
+unix  2      [ ACC ]     STREAM     LISTENING     27681    724/slapd            /var/run/slapd/ldapi
+unix  2      [ ACC ]     STREAM     LISTENING     26221    595/amazon-ssm-agen  /var/lib/amazon/ssm/ipc/health
+unix  2      [ ACC ]     STREAM     LISTENING     22840    1/init               @ISCSIADM_ABSTRACT_NAMESPACE
+```
+What is the Linux distribution used in the VM?
+*Ubuntu*
+What is its version number?
+*20.04.4*
+What is the name of the user who last logged in to the system?
+*randa*
+What is the highest listening TCP port number?
+*6667*
+What is the program name of the service listening on it?
+*inspircd*
+There is a script running in the background. Its name starts with THM. What is the name of the script?
+*THM-24765.sh*
+In this task, we assume you have access to cmd on a Microsoft Windows host. You might have gained this access by exploiting a vulnerability and getting a shell or a reverse shell. You may also have installed a backdoor or set up an SSH server on a system you exploited. In all cases, the commands below require cmd to run.
+In this task, we focus on enumerating an MS Windows host. For enumerating MS Active directory, you are encouraged to check the Enumerating Active Directory room. If you are interested in a privilege escalation on an MS Windows host, we recommend the Windows Privesc 2.0 room.
+We recommend that you click "Start AttackBox" and "Start Machine" so that you can experiment and answer the questions at the end of this task.
+System
+One command that can give us detailed information about the system, such as its build number and installed patches, would be systeminfo. In the example below, we can see which hotfixes have been installed.
+```text
+Terminal
+```
+```text
+C:\>systeminfo
+
+Host Name:                 WIN-SERVER-CLI
+OS Name:                   Microsoft Windows Server 2022 Standard
+OS Version:                10.0.20348 N/A Build 20348
+OS Manufacturer:           Microsoft Corporation
+[...]
+Hotfix(s):                 3 Hotfix(s) Installed.
+                           [01]: KB5013630
+                           [02]: KB5013944
+                           [03]: KB5012673
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: Intel(R) 82574L Gigabit Network Connection
+[...]
+```
+You can check installed updates using wmic qfe get Caption, Description. This information will give you an idea of how quickly systems are being patched and updated.
+```text
+Terminal
+```
+```text
+C:\>wmic qfe get Caption, Description
+Caption                                     Description      
+http://support.microsoft.com/?kbid=5013630  Update
+https://support.microsoft.com/help/5013944  Security Update
+                                            Update
+```
+You can check the installed and started Windows services using net start. Expect to get a long list; the output below has been snipped.
+```text
+Terminal
+```
+```text
+C:\>net start
+These Windows services are started:
+
+   Base Filtering Engine
+   Certificate Propagation
+   Client License Service (ClipSVC)
+   COM+ Event System
+   Connected User Experiences and Telemetry
+   CoreMessaging
+   Cryptographic Services
+   DCOM Server Process Launcher
+   DHCP Client
+   DNS Client
+[...]
+   Windows Time
+   Windows Update
+   WinHTTP Web Proxy Auto-Discovery Service
+   Workstation
+
+The command completed successfully.
+```
+If you are only interested in installed apps, you can issue wmic product get name,version,vendor. If you run this command on the attached virtual machine, you will get something similar to the following output.
+```text
+Terminal
+```
+```text
+C:\>wmic product get name,version,vendor
+Name                                                            Vendor                                   Version
+Microsoft Visual C++ 2019 X64 Minimum Runtime - 14.28.29910     Microsoft Corporation                    14.28.29910
+[...]
+Microsoft Visual C++ 2019 X64 Additional Runtime - 14.28.29910  Microsoft Corporation                    14.28.29910
+```
+Users
+To know who you are, you can run whoami; moreover, to know what you are capable of, i.e., your privileges, you can use whoami /priv. An example is shown in the terminal output below.
+```text
+Terminal
+```
+
+## Privilege Escalation
+```text
+C:\>whoami
+win-server-cli\strategos
+
+> whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                            Description                                                        State
+========================================= ================================================================== =======
+SeIncreaseQuotaPrivilege                  Adjust memory quotas for a process                                 Enabled
+SeSecurityPrivilege                       Manage auditing and security log                                   Enabled
+SeTakeOwnershipPrivilege                  Take ownership of files or other objects                           Enabled
+[...]
+```
+Moreover, you can use whoami /groups to know which groups you belong to. The terminal output below shows that this user belongs to the NT AUTHORITY\Local account and member of Administrators group among other groups.
+```text
+Terminal
+```
+```text
+C:\>whoami /groups
+
+GROUP INFORMATION
+-----------------
+
+Group Name                                                    Type             SID          Attributes
+============================================================= ================ ============ ===============================================================
+Everyone                                                      Well-known group S-1-1-0      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Local account and member of Administrators group Well-known group S-1-5-114    Mandatory group, Enabled by default, Enabled group
+BUILTIN\Administrators                                        Alias            S-1-5-32-544 Mandatory group, Enabled by default, Enabled group, Group owner
+[...]
+```
+You can view users by running net user.
+```text
+Terminal
+```
+```text
+C:\>net user
+
+User accounts for \\WIN-SERVER-CLI
+
+-------------------------------------------------------------------------------
+Administrator            DefaultAccount           Guest
+michael                  peter                    strategos
+WDAGUtilityAccount
+The command completed successfully.
+```
+You can discover the available groups using net group if the system is a Windows Domain Controller or net localgroup otherwise, as shown in the terminal below.
+```text
+Terminal
+```
+```text
+C:\>net localgroup
+
+Aliases for \\WIN-SERVER-CLI
+
+-------------------------------------------------------------------------------
+*Access Control Assistance Operators
+*Administrators
+*Backup Operators
+*Certificate Service DCOM Access
+*Cryptographic Operators
+*Device Owners
+[...]
+```
+You can list the users that belong to the local administrators’ group using the command net localgroup administrators.
+```text
+Terminal
+```
+```text
+C:\>net localgroup administrators
+Alias name     administrators
+Comment        Administrators have complete and unrestricted access to the computer/domain
+
+Members
+
+-------------------------------------------------------------------------------
+Administrator
+michael
+peter
+strategos
+The command completed successfully.
+```
+Use net accounts to see the local settings on a machine; moreover, you can use net accounts /domain if the machine belongs to a domain. This command helps learn about password policy, such as minimum password length, maximum password age, and lockout duration.
+Networking
+You can use the ipconfig command to learn about your system network configuration. If you want to know all network-related settings, you can use ipconfig /all. The terminal output below shows the output when using ipconfig. For instance, we could have used ipconfig /all if we wanted to learn the DNS servers.
+```text
+Terminal
+```
+```text
+C:\>ipconfig
+
+Windows IP Configuration
+
+Ethernet adapter Ethernet0:
+
+   Connection-specific DNS Suffix  . : localdomain
+   Link-local IPv6 Address . . . . . : fe80::3dc5:78ef:1274:a740%5
+   IPv4 Address. . . . . . . . . . . : 10.20.30.130
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 10.20.30.2
+```
+On MS Windows, we can use netstat to get various information, such as which ports the system is listening on, which connections are active, and who is using them. In this example, we use the options -a to display all listening ports and active connections. The -b lets us find the binary involved in the connection, while -n is used to avoid resolving IP addresses and port numbers. Finally, -o display the process ID (PID).
+In the partial output shown below, we can see that netstat -abno showed that the server is listening on TCP ports 22, 135, 445 and 3389. The processessshd.exe, RpcSs, and TermService are on ports 22, 135, and 3389, respectively. Moreover, we can see two established connections to the SSH server as indicated by the state ESTABLISHED.
+```text
+Terminal
+```
+```text
+C:\>netstat -abno
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State           PID
+  TCP    0.0.0.0:22             0.0.0.0:0              LISTENING       2016
+ [sshd.exe]
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING       924
+  RpcSs
+ [svchost.exe]
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING       4
+ Can not obtain ownership information
+  TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING       416
+  TermService
+ [svchost.exe]
+[...]
+  TCP    10.20.30.130:22        10.20.30.1:39956       ESTABLISHED     2016
+ [sshd.exe]
+  TCP    10.20.30.130:22        10.20.30.1:39964       ESTABLISHED     2016
+ [sshd.exe]
+[...]
+```
+You might think that you can get an identical result by port scanning the target system; however, this is inaccurate for two reasons. A firewall might be blocking the scanning host from reaching specific network ports. Moreover, port scanning a system generates a considerable amount of traffic, unlike netstat, which makes zero noise.
+Finally, it is worth mentioning that using arp -a helps you discover other systems on the same LAN that recently communicated with your system. ARP stands for Address Resolution Protocol; arp -a shows the current ARP entries, i.e., the physical addresses of the systems on the same LAN that communicated with your system. An example output is shown below. This indicates that these IP addresses have communicated somehow with our system; the communication can be an attempt to connect or even a simple ping. Note that 10.10.255.255 does not represent a system as it is the subnet broadcast address.
+```text
+Terminal
+```
+```text
+C:\>arp -a
+
+Interface: 10.10.204.175 --- 0x4 
+  Internet Address      Physical Address      Type
+  10.10.0.1             02-c8-85-b5-5a-aa     dynamic
+  10.10.16.117          02-f2-42-76-fc-ef     dynamic
+  10.10.122.196         02-48-58-7b-92-e5     dynamic
+  10.10.146.13          02-36-c1-4d-05-f9     dynamic
+  10.10.161.4           02-a8-58-98-1a-d3     dynamic
+  10.10.217.222         02-68-10-dd-be-8d     dynamic
+  10.10.255.255         ff-ff-ff-ff-ff-ff     static
+```
+Start the attached MS Windows Server if you have not done so already, as you need it to answer the questions below. You can connect to the MS Windows VM via SSH from the AttackBox, for example, using ssh user@10.10.217.54 where the login credentials are:
+Username: user
+Password: THM33$$88
+```text
+──(kali㉿kali)-[~]
+└─$ ssh user@10.10.217.54
+The authenticity of host '10.10.217.54 (10.10.217.54)' can't be established.
+ED25519 key fingerprint is SHA256:ZRnnnk1P075zAUKk7gtID87l3K/DCghw6Ai6xaus2m4.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.217.54' (ED25519) to the list of known hosts.
+user@10.10.217.54's password: 
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\user> systeminfo
+
+Host Name:                 RED-WIN-ENUM
+OS Name:                   Microsoft Windows Server 2019 Datacenter       
+OS Version:                10.0.17763 N/A Build 17763
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Server
+OS Build Type:             Multiprocessor Free
+Registered Owner:          EC2
+Registered Organization:   Amazon.com
+Product ID:                00430-00000-00000-AA155
+Original Install Date:     3/17/2021, 2:59:06 PM
+System Boot Time:          9/11/2022, 12:59:23 AM
+System Manufacturer:       Amazon EC2
+System Model:              t3a.small
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: AMD64 Family 23 Model 1 Stepping 2 Authen
+ticAMD ~2200 Mhz
+BIOS Version:              Amazon EC2 1.0, 10/16/2017
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume1
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC) Coordinated Universal Time
+Total Physical Memory:     2,016 MB
+Available Physical Memory: 1,063 MB
+Virtual Memory: Max Size:  2,400 MB
+Virtual Memory: Available: 1,464 MB
+Virtual Memory: In Use:    936 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    WORKGROUP
+Logon Server:              N/A
+Hotfix(s):                 30 Hotfix(s) Installed.
+                           [01]: KB5015731
+                           [02]: KB4470502
+                           [03]: KB4470788
+                           [04]: KB4480056
+                           [05]: KB4486153
+                           [06]: KB4493510
+                           [07]: KB4499728
+                           [08]: KB4504369
+                           [09]: KB4512577
+                           [10]: KB4512937
+                           [11]: KB4521862
+                           [12]: KB4523204
+                           [13]: KB4535680
+                           [14]: KB4539571
+                           [15]: KB4549947
+                           [16]: KB4558997
+                           [17]: KB4562562
+                           [18]: KB4566424
+                           [19]: KB4570332
+                           [20]: KB4577586
+                           [21]: KB4577667
+                           [22]: KB4587735
+                           [23]: KB4589208
+                           [24]: KB4598480
+                           [25]: KB4601393
+                           [26]: KB5000859
+                           [27]: KB5015811
+                           [28]: KB5012675
+                           [29]: KB5014031
+                           [30]: KB5014797
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: Amazon Elastic Network Adapter
+                                 Connection Name: Ethernet 3
+                                 DHCP Enabled:    Yes
+                                 DHCP Server:     10.10.0.1
+                                 IP address(es)
+                                 [01]: 10.10.217.54
+                                 [02]: fe80::1de6:8a9e:8792:4e4f
+Hyper-V Requirements:      A hypervisor has been detected. Features requir
+ed for Hyper-V will not be displayed.
+```
+```text
+PS C:\Users\user> netstat -abno
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State           PID
+
+  TCP    0.0.0.0:22             0.0.0.0:0              LISTENING       205
+2
+ [sshd.exe]
+```
+What is the full OS Name?
+*RED-WIN-ENUM*
+What is the OS Version?
+*10.0.17763*
+How many hotfixes are installed on this MS Windows Server?
+*30*
+What is the lowest TCP port number listening on the system?
+*22*
+What is the name of the program listening on that port?
+*sshd.exe*
+### DNS, SMB, and SNMP
+As we cover enumeration, it is a good idea to touch on DNS, SMB, and SNMP.
+DNS
+We are all familiar with Domain Name System (DNS) queries where we can look up A, AAAA, CName, and TXT records, among others. If you want to brush up on your DNS knowledge, we suggest you visit the DNS in Detail room. If we can get a “copy” of all the records that a DNS server is responsible for answering, we might discover hosts we didn’t know existed.
+One easy way to try DNS zone transfer is via the dig command. If you want to learn more about dig and similar commands, we suggest checking the Passive Reconnaissance room. Depending on the DNS server configuration, DNS zone transfer might be restricted. If it is not restricted, it should be achievable using dig -t AXFR DOMAIN_NAME @DNS_SERVER. The -t AXFR indicates that we are requesting a zone transfer, while @ precedes the DNS_SERVER that we want to query regarding the records related to the specified DOMAIN_NAME.
+SMB
+Server Message Block (SMB) is a communication protocol that provides shared access to files and printers. We can check shared folders using net share. Here is an example of the output. We can see that C:\Internal Files is shared under the name Internal.
+```text
+Terminal
+
+           
+user@TryHackMe$ net share
+
+Share name   Resource                        Remark
+
+-------------------------------------------------------------------------------
+C$           C:\                             Default share
+IPC$                                         Remote IPC
+ADMIN$       C:\Windows                      Remote Admin
+Internal     C:\Internal Files               Internal Documents
+Users        C:\Users
+The command completed successfully.
+```
+SNMP
+Simple Network Management Protocol (SNMP) was designed to help collect information about different devices on the network. It lets you know about various network events, from a server with a faulty disk to a printer out of ink. Consequently, SNMP can hold a trove of information for the attacker. One simple tool to query servers related to SNMP is snmpcheck. You can find it on the AttackBox at the /opt/snmpcheck/ directory; the syntax is quite simple: /opt/snmpcheck/snmpcheck.rb 10.10.217.54 -c COMMUNITY_STRING.
+If you would like to install snmpcheck on your local Linux box, consider the following commands.
+```text
+Terminal
+
+           
+git clone https://gitlab.com/kalilinux/packages/snmpcheck.git
+cd snmpcheck/
+gem install snmp
+chmod +x snmpcheck-1.9.rb
+```
+Ensure that you are running the MS Windows Server machine from Task 4 and answer the following questions.
+```text
+┌──(kali㉿kali)-[~]
+└─$ dig -t AXFR redteam.thm @10.10.217.54
+
+; <<>> DiG 9.18.4-2-Debian <<>> -t AXFR redteam.thm @10.10.217.54
+;; global options: +cmd
+redteam.thm.            3600    IN      SOA     red-win-enum. hostmaster. 5 900 600 86400 3600
+redteam.thm.            3600    IN      NS      red-win-enum.
+first.redteam.thm.      3600    IN      A       10.10.254.1
+flag.redteam.thm.       3600    IN      TXT     "THM{DNS_ZONE}"
+second.redteam.thm.     3600    IN      A       10.10.254.2
+tryhackme.redteam.thm.  3600    IN      CNAME   tryhackme.com.
+redteam.thm.            3600    IN      SOA     red-win-enum. hostmaster. 5 900 600 86400 3600
+;; Query time: 296 msec
+;; SERVER: 10.10.217.54#53(10.10.217.54) (TCP)
+;; WHEN: Sat Sep 10 21:18:54 EDT 2022
+;; XFR size: 7 records (messages 1, bytes 295)
+
+PS C:\Users\user> net share
+
+Share name   Resource                        Remark
+
+--------------------------------------------------------------------------
+-----
+C$           C:\                             Default share
+
+IPC$                                         Remote IPC
+
+ADMIN$       C:\Windows                      Remote Admin
+
+Internal     C:\Internal Files               Internal Documents
+
+THM{829738}  C:\Users\user\Private           Enjoy SMB shares
+
+Users        C:\Users
+The command completed successfully.
+```
+Knowing that the domain name on the MS Windows Server of IP 10.10.217.54 is redteam.thm, use dig to carry out a domain transfer. What is the flag that you get in the records?
+What is the name of the share available over SMB protocol and starts with THM?
+Knowing that the community string used by the SNMP service is public, use snmpcheck to collect information about the MS Windows Server of IP 10.10.217.54. What is the location specified?
+(Consider running /opt/snmpcheck/snmpcheck.rb 10.10.217.54 -c public | more)
+```in attackbox - in my machine not work
+root@ip-10-10-2-200:~# /opt/snmpcheck/snmpcheck.rb 10.10.217.54 -c public | moresnmpcheck.rb v1.9 - SNMP enumerator
+Copyright (c) 2005-2015 by Matteo Cantoni (www.nothink.org)
+
+[+] Try to connect to 10.10.217.54:161 using SNMPv1 and community 'public'
+
+[*] System information:
+
+  Host IP address               : 10.10.217.54
+  Hostname                      : RED-WIN-ENUM
+  Description                   : Hardware: AMD64 Family 23 Model 1 Stepping 2 A
+T/AT COMPATIBLE - Software: Windows Version 6.3 (Build 17763 Multiprocessor Free
+)
+  Contact                       : TryHackMe
+  Location                      : THM{SNMP_SERVICE}
+  Uptime snmp                   : 00:41:12.85
+  Uptime system                 : 00:40:55.41
+  System date                   : 2022-9-11 01:40:36.2
+  Domain                        : WORKGROUP
+
+[*] User accounts:
+
+  jane                
+  sshd                
+--More--
+```
+### More Tools for Windows
+In this room, our focus has been on command-line built-in tools readily available on any modern MS Windows system. We didn’t cover Graphical User Interface (GUI) tools; moreover, we didn’t cover any programs requiring additional downloading and installation steps.
+This task mentions three options that are not built-in command-line tools:
+Sysinternals Suite
+Process Hacker
+GhostPack Seatbelt
+Sysinternals Suite
+The Sysinternals Suite is a group of command-line and GUI utilities and tools that provides information about various aspects related to the Windows system. To give you an idea, we listed a few examples in the table below.
+Utility Name 	Description
+Process Explorer 	Shows the processes along with the open files and registry keys
+Process Monitor 	Monitor the file system, processes, and Registry
+PsList 	Provides information about processes
+PsLoggedOn 	Shows the logged-in users
+Check Sysinternals Utilities Index for a complete list of the utilities. If you want to learn more and experiment with these different utilities, we suggest the Sysinternals room.
+Process Hacker
+Another efficient and reliable MS Windows GUI tool that lets you gather information about running processes is Process Hacker. Process Hacker gives you detailed information regarding running processes and related active network connections; moreover, it gives you deep insight into system resource utilization from CPU and memory to disk and network.
+GhostPack Seatbelt
+[Seatbelt](https://github.com/GhostPack/Seatbelt), part of the GhostPack collection, is a tool written in C#. It is not officially released in binary form; therefore, you are expected to compile it yourself using MS Visual Studio.
+What utility from Sysinternals Suite shows the logged-in users?
+*PsLoggedOn*
+### Conclusion
+The focus of this room was on built-in command-line tools in both Linux and MS Windows systems. Many commands exist in both systems, although the command arguments and resulting output are different. The following tables show the primary Linux and MS Windows commands that we relied on to get more information about the system.
+Linux Command 	Description
+hostname 	shows the system’s hostname
+who 	shows who is logged in
+whoami 	shows the effective username
+w 	shows who is logged in and what they are doing
+last 	shows a listing of the last logged-in users
+ip address show 	shows the network interfaces and addresses
+arp 	shows the ARP cache
+netstat 	prints network connections
+ps 	shows a snapshot of the current processes
+Windows Command 	Description
+systeminfo 	shows OS configuration information, including service pack levels
+whoami 	shows the user name and group information along with the respective security identifiers
+netstat 	shows protocol statistics and current TCP/IP network connections
+net user 	shows the user accounts on the computer
+net localgroup 	shows the local groups on the computer
+arp 	shows the IP-to-Physical address translation tables
+This room focused on post-exploitation enumeration of a Linux or MS Windows machine. For enumeration related to Active Directory, we recommend that you join the Enumerating AD room.
+Congratulations on finishing this room. It is time to continue your journey with the next room in this module.
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/51cfb2e8bf86ff49d820dd45b78ad26c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/bccf63d717b423189ffff7ec926c408e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/0e4c217223af2541ddb04d61ddd9753d.png)
+- ***THM{DNS_ZONE}***
+- ***THM{829738}***
+- ***THM{SNMP_SERVICE}***
+
+## Notes / Lessons Learned
+[[The Lay of the land]]
+
