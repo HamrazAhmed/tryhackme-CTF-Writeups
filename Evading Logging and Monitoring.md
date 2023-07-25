@@ -126,3 +126,132 @@ At step one, we need to obtain the type for the PSEtwLogProvider assembly. The a
 At step two, we are storing a value ($null) from the previous assembly to be used.
 ![[Pasted image 20220917164816.png]]
 At step three, we compile our steps together to overwrite the m_enabled field with the value stored in the previous line.
+![[Pasted image 20220917164829.png]]
+We can compile these steps together and append them to a malicious PowerShell script. Use the PowerShell script provided and experiment with this technique.
+To prove the efficacy of the script, we can execute it and measure the number of returned events from a given command.
+```text
+Before
+
+           
+PS C:\Users\Administrator> Get-WinEvent -FilterHashtable @{ProviderName="Microsoft-Windows-PowerShell"; Id=4104} | Measure | % Count
+7
+PS C:\Users\Administrator> whoami
+Tryhackme\administrator
+PS C:\Users\Administrator> Get-WinEvent -FilterHashtable @{ProviderName="Microsoft-Windows-PowerShell"; Id=4104} | Measure | % Count
+11
+```
+```text
+After
+
+           
+PS C:\Users\Administrator>.\reflection.ps1
+PS C:\Users\Administrator> Get-WinEvent -FilterHashtable @{ProviderName="Microsoft-Windows-PowerShell"; Id=4104} | Measure | % Count
+18
+PS C:\Users\Administrator> whoami
+Tryhackme\administrator
+PS C:\Users\Administrator> Get-WinEvent -FilterHashtable @{ProviderName="Microsoft-Windows-PowerShell"; Id=4104} | Measure | % Count
+18
+```
+In the first terminal, we see four events generated when the whoami command is run. After the script is executed in the second terminal, we see no events generated from running a command. From this comparison, we can also see that the PowerShell script creates seven events; this should be considered when evaluating an approach.
+What reflection assembly is used?
+Found in step 1
+*PSEtwLogProvider*
+What field is overwritten to disable ETW?
+Found in step 3
+*m_enabled *
+### Patching Tracing Functions
+ETW is loaded from the runtime of every new process, commonly originating from the CLR (Common Language Runtime). Within a new process, ETW events are sent from the userland and issued directly from the current process. An attacker can write pre-defined opcodes to an in-memory function of ETW to patch and disable functionality. Before diving into the specific details of this technique, let’s observe what patching may look like at a high level. At its most basic definition, we are trying to force an application to quit or return before reaching the function we want to patch.
+To better understand this concept, we created a basic pseudo function that will perform math operations and then return an integer. If a return is inserted before the original return then the program will not complete the subsequent lines.
+```text
+int x = 1
+int y = 3
+return x + y
+
+// output: 4  
+
+int x = 1
+return  x
+int y = 3
+return x + y
+
+// output: 1
+```
+Adapting this high-level concept to our objective, if we can identify how the return is called in memory we can write it to the function and expect it to run before any other lines. We are expecting that the return is placed at the top because the stack uses a LIFO (Last In First Out) structure. To the right is a brief diagram of how the LIFO structure works. We will expand on how the LIFO structure operates as we dive deeper into this task.
+Now that we understand a little more about the return statements and the LIFO structure, let’s return to how this applies to event tracing. Before writing any code or identifying steps to patch a function, we need to identify a malicious function and possible points that we can return from. Thanks to previous research, we know that from the CLR, ETW is written from the function EtwEventWrite. To identify “patch points” or returns, we can view the disassembly of the function.
+779f2459 33cc		       xor	ecx, esp
+779f245b e8501a0100	   call	ntdll!_security_check_cookie
+779f2460 8be5		       mov	esp, ebp
+779f2462 5d		         pop	ebp
+779f2463 c21400		     ret	14h
+When observing the function, we are looking for an opcode that will return the function or stop the execution of the function. Through research or familiarity with assembly instructions, we can determine that ret 14h will end the function and return to the previous application.
+From IA-32 documentation, “the ret instruction transfers control to the return address located on the stack.”
+In more technical terms, ret will pop the last value placed on the stack. The parameter of ret (14h) will specify the number of bytes or words released once the stack is popped.
+To neuter the function, an attacker can write the opcode bytes of ret14h, c21400 to memory to patch the function.
+To better understand what we are attempting to achieve on the stack we can apply the opcode to our previous LIFO diagram.
+Identical diagram to previous but with assembly included with ret 14h being pushed to the top and being popped out
+Now that we have a basic understanding of the core fundamentals behind the technique let's look at how it’s technically applied.
+At a high level, ETW patching can be broken up into five steps:
+Obtain a handle for EtwEventWrite
+Modify memory permissions of the function
+Write opcode bytes to memory
+Reset memory permissions of the function (optional)
+Flush the instruction cache (optional)
+At step one, we need to obtain a handle for the address of EtwEventWrite. This function is stored within ntdll. We will first load the library using LoadLibrary then obtain the handle using GetProcAddress.
+![[Pasted image 20220917165534.png]]
+At step two, we need to modify the memory permissions of the function to allow us to write to the function. The permission of the function is defined by the flNewProtect parameter; 0x40 enables X, R, or RW access ([memory protection constraints](https://learn.microsoft.com/en-us/windows/win32/memory/memory-protection-constants)).
+![[Pasted image 20220917165605.png]]
+At step three, the function has the permissions we need to write to it, and we have the pre-defined opcode to patch it. Because we are writing to a function and not a process, we can use the infamous Marshal.Copy to write our opcode.
+![[Pasted image 20220917165623.png]]
+At step four, we can begin cleaning our steps to restore memory permissions as they were.
+![[Pasted image 20220917165637.png]]
+At step five, we can ensure the patched function will be executed from the instruction cache.
+![[Pasted image 20220917165651.png]]
+We can compile these steps together and append them to a malicious script or session. Use the C# script provided and experiment with this technique.
+After the opcode is written to memory, we can view the disassembled function again to observe the patch.
+779f23c0 c21400		    ret	14h
+779f23c3 00ec		      add	ah, ch
+779f23c5 83e4f8		    and	esp, 0FFFFFFF8h
+779f23c8 81ece0000000	sub	esp, 0E0h
+In the above disassembly, we see exactly what we depicted in our LIFO diagram (figure 2).
+Once the function is patched in memory, it will always return when EtwEventWrite is called.
+Although this is a beautifully crafted technique, it might not be the best approach depending on your environment since it may restrict more logs than you want for integrity.
+What is the base address for the ETW security check before it is patched?
+Found in the 3rd code block.
+*779f245b*
+What is the non-delimited opcode used to patch ETW for x64 architecture?
+*c21400*
+### Providers via Policy
+ETW has a lot of coverage out of the box, but it will disable some features unless specified because of the amount of logs they can create. These features can be enabled by modifying the GPO (Group Policy Object) settings of their parent policy. Two of the most popular GPO providers provide coverage over PowerShell, including script block logging and module logging.
+Script block logging will log any script blocks executed within a PowerShell session. Introduced in PowerShell v4 and improved in PowerShell v5, the ETW provider has two event IDs it will report.
+Event ID	Purpose
+4103
+Logs command invocation
+4104
+Logs script block execution
+Event ID 4104 is most prevalent to attackers and can expose their scripts if not properly obfuscated or hidden. Below is a shortened example of what a 4104 log may look like.
+```text
+Event ID:4104
+Source:Microsoft-Windows-PowerShell
+Category:Execute a Remote Command
+Log:Microsoft-Windows-PowerShell/Operational
+Message:Creating Scriptblock text (1 of 1):
+Write-Host PowerShellV5ScriptBlockLogging
+
+ScriptBlock ID: 6d90e0bb-e381-4834-8fe2-5e076ad267b3
+Path:
+```
+Module logging is a very verbose provider that will log any modules and data sent from it. Introduced in PowerShell v3, each module within a PowerShell session acts as a provider and logs its own module. Similar to the previous provider, the modules will write events to event ID 4103. Below is an example of what a 4103 log may look like.
+```text
+Event ID:4103
+Source:Microsoft-Windows-PowerShell
+Category:Executing Pipeline
+Log:Microsoft-Windows-PowerShell/Operational
+
+Message:CommandInvocation(Write-Host): "Write-Host"
+ParameterBinding(Write-Host): name="Object"; 
+value="TestPowerShellV5"
+
+Context:
+Severity = Informational
+Host Name = ConsoleHost
+...
