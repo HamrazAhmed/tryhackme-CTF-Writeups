@@ -255,3 +255,132 @@ Context:
 Severity = Informational
 Host Name = ConsoleHost
 ...
+[snip]
+...
+User = DOMAIN\\username
+Connected User =
+Shell ID = Microsoft.PowerShell
+```
+Event ID 4103 is less prevalent to attackers because of the amount of logs created. This can often result in it being treated with less severity or being disabled completely.
+Although attackers have ETW patches available, they may not always be practical or the best approach to evade logging. As an alternative, attackers can target these providers to slowly limit visibility while not being as obvious or noisy as other techniques.
+The general goal of disabling these providers is to limit the visibility of components you require while still making the environment seem untampered.
+How many total events are enabled through script block and module providers?
+*2* Found in the table above.
+What event ID will log script block execution?
+*4104*
+### Group Policy Takeover
+The module logging and script block logging providers are both enabled from a group policy, specifically Administrative Templates -> Windows Components -> Windows PowerShell. As mentioned in task 4, Within a PowerShell session, system assemblies are loaded in the same security context as users. This means an attacker has the same privilege level as the assemblies that cache GPO settings. Using reflection, an attacker can obtain the utility dictionary and modify the group policy for either PowerShell provider.
+At a high-level a group policy takeover can be broken up into three steps:
+Obtain group policy settings from the utility cache.
+Modify generic provider to 0.
+Modify the invocation or module definition.
+We will break down an example PowerShell script to identify each step and explain each in depth below.
+At step one, we must use reflection to obtain the type of System.Management.Automation.Utils and identify the GPO cache field: cachedGroupPolicySettings.
+![[Pasted image 20220917170455.png]]
+At step two, we can leverage the GPO variable to modify either event provider setting to 0. EnableScriptBlockLogging will control 4104 events, limiting the visibility of script execution. Modification can be accomplished by writing to the object or registry directly.
+![[Pasted image 20220917170508.png]]
+At step three, we can repeat the previous step with any other provider settings we want to EnableScriptBlockInvocationLogging will control 4103 events, limiting the visibility of cmdlet and pipeline execution.
+![[Pasted image 20220917170522.png]]
+We can compile these steps together and append them to a malicious PowerShell script. Use the PowerShell script provided and experiment with this technique.
+Note: The core functionality of the script is identical to the above code but slightly modified to comply with PowerShell v.5.1 updates.
+To prove the efficacy of the script, we can execute it and measure the number of returned events from a given command.
+```text
+Before
+
+           
+PS C:\Users\Administrator\Desktop> Get-WinEvent -FilterHashtable @{ProviderName="Microsoft-Windows-PowerShell"; Id=4104} | Measure | % Count
+0
+PS C:\Users\Administrator\Desktop> whoami
+Tryhackme\administrator
+PS C:\Users\Administrator\Desktop> Get-WinEvent -FilterHashtable @{ProviderName="Microsoft-Windows-PowerShell"; Id=4104} | Measure | % Count
+3
+
+        
+
+arrow pointing down
+After
+
+           
+PS C:\Users\Administrator\Desktop> .\gpo-bypass.ps1
+PS C:\Users\Administrator\Desktop> Get-WinEvent -FilterHashtable @{ProviderName="Microsoft-Windows-PowerShell"; Id=4104} | Measure | % Count
+6
+PS C:\Users\Administrator\Desktop> whoami
+Tryhackme\administrator
+PS C:\Users\Administrator\Desktop> Get-WinEvent -FilterHashtable @{ProviderName="Microsoft-Windows-PowerShell"; Id=4104} | Measure | % Count
+6
+
+        
+
+Before
+
+           
+PS C:\Users\Administrator\Desktop> Get-WinEvent -FilterHashtable @{ProviderName="Microsoft-Windows-PowerShell"; Id=4104} | Measure | % Count
+0
+PS C:\Users\Administrator\Desktop> whoami
+Tryhackme\administrator
+PS C:\Users\Administrator\Desktop> Get-WinEvent -FilterHashtable @{ProviderName="Microsoft-Windows-PowerShell"; Id=4104} | Measure | % Count
+3
+
+        
+
+arrow pointing down
+After
+
+           
+PS C:\Users\Administrator\Desktop> .\gpo-bypass.ps1
+PS C:\Users\Administrator\Desktop> Get-WinEvent -FilterHashtable @{ProviderName="Microsoft-Windows-PowerShell"; Id=4104} | Measure | % Count
+6
+PS C:\Users\Administrator\Desktop> whoami
+Tryhackme\administrator
+PS C:\Users\Administrator\Desktop> Get-WinEvent -FilterHashtable @{ProviderName="Microsoft-Windows-PowerShell"; Id=4104} | Measure | % Count
+6
+```
+In the first terminal, we see there are three events generated when the PowerShell script is run. In the second terminal, after the script is executed we see that there are no events generated from running a command.
+What event IDs can be disabled using this technique? (lowest to highest separated by a comma)
+*4103, 4104*
+What provider setting controls 4104 events?
+*EnableScriptBlockInvocationLogging *
+![[Pasted image 20220917171335.png]]
+### Abusing Log Pipeline
+Within PowerShell, each module or snap-in has a setting that anyone can use to modify its logging functionality. From the Microsoft docs, “When the LogPipelineExecutionDetails property value is TRUE ($true), Windows PowerShell writes cmdlet and function execution events in the session to the Windows PowerShell log in Event Viewer.” An attacker can change this value to $false in any PowerShell session to disable a module logging for that specific session. The Microsoft docs even note the ability to disable logging from a user session, “To disable logging, use the same command sequence to set the property value to FALSE ($false).”
+https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_eventlogs?view=powershell-5.1#logging-module-events
+At a high-level the log pipeline technique can be broken up into four steps:
+Obtain the target module.
+Set module execution details to $false.
+Obtain the module snap-in.
+Set snap-in execution details to $false.
+![[Pasted image 20220917171412.png]]
+The script block above can be appended to any PowerShell script or run in a session to disable module logging of currently imported modules.
+What type of logging will this method prevent?
+*module logging*
+What target module will disable logging for all Microsoft utility modules?
+*Microsoft.PowerShell.Utility*
+### Real World Scenario
+In this scenario, you are a red team operator assigned to build an evasive script to disable ETW and execute a compiled binary. In this scenario, environment integrity is crucial, and the blue team is actively monitoring the environment. Your team has informed you that they are primarily concerned with monitoring web traffic; if halted, they will potentially alert your connection. The blue team is also assumed to be searching for suspicious logs; however, they are not forwarding logs. Using the knowledge gained in this room, create a script to execute a binary or command without interference.
+To begin this scenario we need to consider the environment that we are in. We are given the information that they are monitoring web traffic, but how are they accomplishing that? Do they have PowerShell logging enabled? Do they have Sysmon installed? Most of these questions can be answered through manual enumeration or looking for the settings to enable features as discussed in this room.
+With some enumeration, we can identify that PowerShell script block and module logging are enabled. Our best approach to this problem is to disable both GPO settings from the cache for our PowerShell session. This can be accomplished by using the GPO bypass located on the desktop as discussed in Task 8.
+Great! From now on our session is silent, but what about those pesky logs that are generated when the script ran? From the information provided we know that logs are not being forwarded so we can delete any 4104 or 4103 logs that were generated. Because the internet connection is not originating from PowerShell we don't need to worry about it being disturbed in our silent session. To remove the logs, we can use the Event Viewer GUI or Remove-EventLog in PowerShell. PowerShell script block logs are located in Microsoft/Windows/PowerShell/Operational or Microsoft-Windows-PowerShell. You can then select Clear Log under actions in the GUI or run the PowerShell cmdlet to remove the necessary logs.
+At this point, we should have all the parameters met:
+Disable logging where needed
+Maintain environment integrity
+Clean our tracks
+Now we can test our methodology by running the binary "agent.exe". If properly implemented a flag will be returned to the desktop.  If not properly implemented, "Binary leaked, you got caught" will appear, meaning that the binary appeared in the logs at some point, and you failed the scenario.
+Enter the flag obtained from the desktop after executing the binary.
+![[Pasted image 20220917174253.png]]
+### Conclusion
+As mentioned throughout this room, the main goal of evading event detections is to keep the environment as clean and intact as possible while preventing the logging of your session or code.
+We have covered a few notable techniques, most of which are aggressive in their approach. To obtain a proper level of “normal” logs, you will need to modify or combine several of these scripts to manipulate other normal functionality.
+Read the above and continue learning!
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/5f73c10ed1fd5e7b28b2476d4cc6b375.png)
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/a95aa3f7681a19652d249e1c47ae3f35.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/dc8217f5aecbcc08d609c3299756da08.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/fd799172fc4bcea01ddf4b59ecaa4ca3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/52fd846d5fa1e76948ac47d563ad6228.png)
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/d0415cbd986ac6be9cbc79c47c1bb29f.png)
+- ***THM{51l3n7_l1k3_4_5n4k3}***
+
+## Notes / Lessons Learned
+[[Runtime Detection Evasion]]
+
