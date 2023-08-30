@@ -398,3 +398,404 @@ to base64  am9rZXI6aGFubmFo
 ```text
 # eg www.example.com/robots.txt
 ```
+```text
+# AND the joomla folder name MUST be prefixed to all of the
+```
+```text
+# paths.
+```
+```text
+# eg the Disallow rule for the /administrator/ folder MUST
+```
+```text
+# be changed to read
+```
+```text
+# Disallow: /joomla/administrator/
+#
+```
+```text
+# For more information about the robots.txt standard, see:
+```
+```text
+# http://www.robotstxt.org/orig.html
+#
+```
+```text
+# For syntax checking, see:
+```
+```text
+# http://tool.motoricerca.info/robots-checker.phtml
+
+User-agent: *
+Disallow: /administrator/
+Disallow: /bin/
+Disallow: /cache/
+Disallow: /cli/
+Disallow: /components/
+Disallow: /includes/
+Disallow: /installation/
+Disallow: /language/
+Disallow: /layouts/
+Disallow: /libraries/
+Disallow: /logs/
+Disallow: /modules/
+Disallow: /plugins/
+Disallow: /tmp/
+
+┌──(witty㉿kali)-[~]
+└─$ gobuster dir -H "Authorization: Basic am9rZXI6aGFubmFo,Cookie: 5fef75b50575ebea33a28bd1e7087dcb=gq1c2tl4lq49h2rv2p7gfir6j2; 0d073d2ec68ac2f24f859831bbe8843b=1ecph8o40ul8om1nmk81vpd872" -u http://10.10.230.190:8080/ -x bak,old,tar,gz,tgz,zip,7z -w /usr/share/wordlists/dirb/common.txt -t 64
+===============================================================
+Gobuster v3.5
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.230.190:8080/
+[+] Method:                  GET
+[+] Threads:                 64
+[+] Wordlist:                /usr/share/wordlists/dirb/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.5
+[+] Extensions:              tgz,zip,7z,bak,old,tar,gz
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/.hta.7z              (Status: 403) [Size: 280]
+/.hta.zip             (Status: 403) [Size: 280]
+/.hta                 (Status: 403) [Size: 280]
+/.hta.bak             (Status: 403) [Size: 280]
+/.hta.old             (Status: 403) [Size: 280]
+/.hta.tgz             (Status: 403) [Size: 280]
+/.hta.tar             (Status: 403) [Size: 280]
+/.hta.gz              (Status: 403) [Size: 280]
+/.htaccess            (Status: 403) [Size: 280]
+/.htaccess.zip        (Status: 403) [Size: 280]
+/.htaccess.old        (Status: 403) [Size: 280]
+/.htaccess.7z         (Status: 403) [Size: 280]
+/.htaccess.gz         (Status: 403) [Size: 280]
+/.htaccess.tgz        (Status: 403) [Size: 280]
+/.htpasswd            (Status: 403) [Size: 280]
+/.htaccess.tar        (Status: 403) [Size: 280]
+/.htpasswd.7z         (Status: 403) [Size: 280]
+/.htaccess.bak        (Status: 403) [Size: 280]
+/.htpasswd.bak        (Status: 403) [Size: 280]
+/.htpasswd.tar        (Status: 403) [Size: 280]
+/.htpasswd.old        (Status: 403) [Size: 280]
+/.htpasswd.gz         (Status: 403) [Size: 280]
+/.htpasswd.tgz        (Status: 403) [Size: 280]
+/.htpasswd.zip        (Status: 403) [Size: 280]
+/administrator        (Status: 301) [Size: 329] [--> http://10.10.230.190:8080/administrator/]
+/bin                  (Status: 301) [Size: 319] [--> http://10.10.230.190:8080/bin/]
+/cache                (Status: 301) [Size: 321] [--> http://10.10.230.190:8080/cache/]
+Progress: 7428 / 36920 (20.12%)[ERROR]  [!] context deadline exceeded (Client.Timeout or context cancellation while reading body)
+[ERROR]  [!] context deadline exceeded (Client.Timeout or context cancellation while reading body)
+/components           (Status: 301) [Size: 326] [--> http://10.10.230.190:8080/components/]
+/images               (Status: 301) [Size: 322] [--> http://10.10.230.190:8080/images/]
+/includes             (Status: 301) [Size: 324] [--> http://10.10.230.190:8080/includes/]
+/index.php            (Status: 200) [Size: 10949]
+Progress: 16474 / 36920 (44.62%)^C
+[!] Keyboard interrupt detected, terminating.
+
+===============================================================
+ Finished
+===============================================================
+
+let's use feroxbuster or maybe rustbuster
+
+┌──(witty㉿kali)-[~]
+└─$ feroxbuster -H "Authorization: Basic am9rZXI6aGFubmFo,Cookie: 5fef75b50575ebea33a28bd1e7087dcb=gq1c2tl4lq49h2rv2p7gfir6j2; 0d073d2ec68ac2f24f859831bbe8843b=1ecph8o40ul8om1nmk81vpd872" -u http://10.10.230.190:8080/ -x bak,old,tar,gz,tgz,zip,7z -w /usr/share/wordlists/dirb/common.txt -t 64 -q       
+403      GET        9l       28w      280c http://10.10.230.190:8080/.hta
+500      GET        1l        5w       31c http://10.10.230.190:8080/
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htpasswd
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htaccess
+403      GET        9l       28w      280c http://10.10.230.190:8080/.hta.bak
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htpasswd.bak
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htaccess.bak
+403      GET        9l       28w      280c http://10.10.230.190:8080/.hta.old
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htpasswd.old
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htaccess.old
+403      GET        9l       28w      280c http://10.10.230.190:8080/.hta.tar
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htpasswd.tar
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htaccess.tar
+403      GET        9l       28w      280c http://10.10.230.190:8080/.hta.gz
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htpasswd.gz
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htaccess.gz
+403      GET        9l       28w      280c http://10.10.230.190:8080/.hta.tgz
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htpasswd.tgz
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htaccess.tgz
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htpasswd.zip
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htaccess.zip
+403      GET        9l       28w      280c http://10.10.230.190:8080/.hta.zip
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htpasswd.7z
+403      GET        9l       28w      280c http://10.10.230.190:8080/.htaccess.7z
+403      GET        9l       28w      280c http://10.10.230.190:8080/.hta.7z
+301      GET        9l       28w      329c http://10.10.230.190:8080/administrator => http://10.10.230.190:8080/administrator/
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.hta
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htaccess
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htaccess.bak
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htaccess.old
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htaccess.tar
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htaccess.gz
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htaccess.tgz
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htaccess.zip
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htaccess.7z
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htpasswd
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htpasswd.bak
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htpasswd.old
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htpasswd.tar
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htpasswd.gz
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htpasswd.tgz
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htpasswd.zip
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.htpasswd.7z
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.hta.bak
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.hta.old
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.hta.tar
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.hta.gz
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.hta.tgz
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.hta.zip
+403      GET        9l       28w      280c http://10.10.230.190:8080/administrator/.hta.7z
+301      GET        9l       28w      319c http://10.10.230.190:8080/bin => http://10.10.230.190:8080/bin/
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.htaccess
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.htaccess.bak
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.htaccess.old
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.hta
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.htaccess.tar
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.hta.bak
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.htaccess.gz
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.hta.old
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.htaccess.tgz
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.hta.tar
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.htaccess.zip
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.hta.gz
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.htaccess.7z
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.hta.tgz
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.hta.zip
+301      GET        9l       28w      321c http://10.10.230.190:8080/cache => http://10.10.230.190:8080/cache/
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.hta.7z
+403      GET        9l       28w      280c http://10.10.230.190:8080/bin/.htpasswd
+403      GET        9l       28w      280c http://10.10.230.190:8080/cache/.hta
+403      GET        9l       28w      280c http://10.10.230.190:8080/cache/.htaccess
+403      GET        9l       28w      280c http://10.10.230.190:8080/cache/.htpasswd
+200      GET        0l        0w 12133560c http://10.10.230.190:8080/backup
+200      GET        0l        0w 12133560c http://10.10.230.190:8080/backup.zip
+301      GET        9l       28w      326c http://10.10.230.190:8080/components => http://10.10.230.190:8080/components/
+403      GET        9l       28w      280c http://10.10.230.190:8080/components/.htpasswd
+403      GET        9l       28w      280c http://10.10.230.190:8080/components/.htpasswd.bak
+403      GET        9l       28w      280c http://10.10.230.190:8080/components/.htpasswd.old
+🚨 Caught ctrl+c 🚨 saving scan state to ferox-http_10_10_230_190:8080_-1678483133.state ...
+Scanning: http://10.10.230.190:8080/
+Scanning: http://10.10.230.190:8080/administrator/
+Scanning: http://10.10.230.190:8080/bin/
+Scanning: http://10.10.230.190:8080/cache/
+Scanning: http://10.10.230.190:8080/components/
+
+https://github.com/phra/rustbuster
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ chmod +x rustbuster-v3.0.3-x86_64-unknown-linux-gnu
+
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ./rustbuster-v3.0.3-x86_64-unknown-linux-gnu -h
+
+./rustbuster-v3.0.3-x86_64-unknown-linux-gnu: error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo apt-get install libssl1.1
+
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ./rustbuster-v3.0.3-x86_64-unknown-linux-gnu -h
+
+rustbuster 3.0.3
+by phra & ps1dr3x
+DirBuster for rust
+
+USAGE:
+    rustbuster-v3.0.3-x86_64-unknown-linux-gnu [SUBCOMMAND]
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+SUBCOMMANDS:
+    dir      Directories and files enumeration mode
+    dns      A/AAAA entries enumeration mode
+    fuzz     Custom fuzzing enumeration mode
+    help     Prints this message or the help of the given subcommand(s)
+    tilde    IIS 8.3 shortname enumeration mode
+    vhost    Virtual hosts enumeration mode
+
+EXAMPLES:
+    1. Dir mode:
+        rustbuster dir -u http://localhost:3000/ -w examples/wordlist -e php
+    2. Dns mode:
+        rustbuster dns -d google.com -w examples/wordlist
+    3. Vhost mode:
+        rustbuster vhost -u http://localhost:3000/ -w examples/wordlist -d test.local -x "Hello"
+    4. Fuzz mode:
+        rustbuster fuzz -u http://localhost:3000/login \
+            -X POST \
+            -H "Content-Type: application/json" \
+            -b '{"user":"FUZZ","password":"FUZZ","csrf":"CSRFCSRF"}' \
+            -w examples/wordlist \
+            -w /usr/share/seclists/Passwords/Common-Credentials/10-million-password-list-top-10000.txt \
+            -s 200 \
+            --csrf-url "http://localhost:3000/csrf" \
+            --csrf-regex '\{"csrf":"(\w+)"\}'
+    5. Tilde mode:
+        rustbuster tilde -u http://localhost:3000/ -e aspx -X OPTIONS
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ mv rustbuster-v3.0.3-x86_64-unknown-linux-gnu rustbuster 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ./rustbuster dir -H "Authorization: Basic am9rZXI6aGFubmFo,Cookie: 5fef75b50575ebea33a28bd1e7087dcb=gq1c2tl4lq49h2rv2p7gfir6j2; 0d073d2ec68ac2f24f859831bbe8843b=1ecph8o40ul8om1nmk81vpd872" --url http://10.10.230.190:8080/ -e bak,old,tar,gz,tgz,zip,7z --wordlist /usr/share/wordlists/dirb/common.txt -t 64 -s 200
+ WARN  rustbuster::args > Your terminal is 82 cols wide and 13 lines tall
+ WARN  rustbuster::args > Disabling progress bar, minimum cols: 104
+~ rustbuster v3.0.3 ~ by phra & ps1dr3x ~
+
+[?] Started at	: 
+
+GET	200 OK				http://10.10.230.190:8080/backup
+GET	200 OK				http://10.10.230.190:8080/backup.zip
+^C
+
+:)
+
+like rustscan really quickly
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wget -h                              
+GNU Wget 1.21.3, a non-interactive network retriever.
+Usage: wget [OPTION]... [URL]...
+
+Mandatory arguments to long options are mandatory for short options too.
+
+Startup:
+  -V,  --version                   display the version of Wget and exit
+  -h,  --help                      print this help
+  -b,  --background                go to background after startup
+  -e,  --execute=COMMAND           execute a `.wgetrc'-style command
+
+Logging and input file:
+  -o,  --output-file=FILE          log messages to FILE
+  -a,  --append-output=FILE        append messages to FILE
+  -d,  --debug                     print lots of debugging information
+  -q,  --quiet                     quiet (no output)
+  -v,  --verbose                   be verbose (this is the default)
+  -nv, --no-verbose                turn off verboseness, without being quiet
+       --report-speed=TYPE         output bandwidth as TYPE.  TYPE can be bits
+  -i,  --input-file=FILE           download URLs found in local or external FILE
+  -F,  --force-html                treat input file as HTML
+  -B,  --base=URL                  resolves HTML input-file links (-i -F)
+                                     relative to URL
+       --config=FILE               specify config file to use
+       --no-config                 do not read any config file
+       --rejected-log=FILE         log reasons for URL rejection to FILE
+
+Download:
+  -t,  --tries=NUMBER              set number of retries to NUMBER (0 unlimits)
+       --retry-connrefused         retry even if connection is refused
+       --retry-on-http-error=ERRORS    comma-separated list of HTTP errors to retry
+  -O,  --output-document=FILE      write documents to FILE
+  -nc, --no-clobber                skip downloads that would download to
+                                     existing files (overwriting them)
+       --no-netrc                  don't try to obtain credentials from .netrc
+  -c,  --continue                  resume getting a partially-downloaded file
+       --start-pos=OFFSET          start downloading from zero-based position OFFSET
+       --progress=TYPE             select progress gauge type
+       --show-progress             display the progress bar in any verbosity mode
+  -N,  --timestamping              don't re-retrieve files unless newer than
+                                     local
+       --no-if-modified-since      don't use conditional if-modified-since get
+                                     requests in timestamping mode
+       --no-use-server-timestamps  don't set the local file's timestamp by
+                                     the one on the server
+  -S,  --server-response           print server response
+       --spider                    don't download anything
+  -T,  --timeout=SECONDS           set all timeout values to SECONDS
+       --dns-timeout=SECS          set the DNS lookup timeout to SECS
+       --connect-timeout=SECS      set the connect timeout to SECS
+       --read-timeout=SECS         set the read timeout to SECS
+  -w,  --wait=SECONDS              wait SECONDS between retrievals
+                                     (applies if more then 1 URL is to be retrieved)
+       --waitretry=SECONDS         wait 1..SECONDS between retries of a retrieval
+                                     (applies if more then 1 URL is to be retrieved)
+       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs between retrievals
+                                     (applies if more then 1 URL is to be retrieved)
+       --no-proxy                  explicitly turn off proxy
+  -Q,  --quota=NUMBER              set retrieval quota to NUMBER
+       --bind-address=ADDRESS      bind to ADDRESS (hostname or IP) on local host
+       --limit-rate=RATE           limit download rate to RATE
+       --no-dns-cache              disable caching DNS lookups
+       --restrict-file-names=OS    restrict chars in file names to ones OS allows
+       --ignore-case               ignore case when matching files/directories
+  -4,  --inet4-only                connect only to IPv4 addresses
+  -6,  --inet6-only                connect only to IPv6 addresses
+       --prefer-family=FAMILY      connect first to addresses of specified family,
+                                     one of IPv6, IPv4, or none
+       --user=USER                 set both ftp and http user to USER
+       --password=PASS             set both ftp and http password to PASS
+       --ask-password              prompt for passwords
+       --use-askpass=COMMAND       specify credential handler for requesting 
+                                     username and password.  If no COMMAND is 
+                                     specified the WGET_ASKPASS or the SSH_ASKPASS 
+                                     environment variable is used.
+       --no-iri                    turn off IRI support
+       --local-encoding=ENC        use ENC as the local encoding for IRIs
+       --remote-encoding=ENC       use ENC as the default remote encoding
+       --unlink                    remove file before clobber
+       --xattr                     turn on storage of metadata in extended file attributes
+
+Directories:
+  -nd, --no-directories            don't create directories
+  -x,  --force-directories         force creation of directories
+  -nH, --no-host-directories       don't create host directories
+       --protocol-directories      use protocol name in directories
+  -P,  --directory-prefix=PREFIX   save files to PREFIX/..
+       --cut-dirs=NUMBER           ignore NUMBER remote directory components
+
+HTTP options:
+       --http-user=USER            set http user to USER
+       --http-password=PASS        set http password to PASS
+       --no-cache                  disallow server-cached data
+       --default-page=NAME         change the default page name (normally
+                                     this is 'index.html'.)
+  -E,  --adjust-extension          save HTML/CSS documents with proper extensions
+       --ignore-length             ignore 'Content-Length' header field
+       --header=STRING             insert STRING among the headers
+       --compression=TYPE          choose compression, one of auto, gzip and none. (default: none)
+       --max-redirect              maximum redirections allowed per page
+       --proxy-user=USER           set USER as proxy username
+       --proxy-password=PASS       set PASS as proxy password
+       --referer=URL               include 'Referer: URL' header in HTTP request
+       --save-headers              save the HTTP headers to file
+  -U,  --user-agent=AGENT          identify as AGENT instead of Wget/VERSION
+       --no-http-keep-alive        disable HTTP keep-alive (persistent connections)
+       --no-cookies                don't use cookies
+       --load-cookies=FILE         load cookies from FILE before session
+       --save-cookies=FILE         save cookies to FILE after session
+       --keep-session-cookies      load and save session (non-permanent) cookies
+       --post-data=STRING          use the POST method; send STRING as the data
+       --post-file=FILE            use the POST method; send contents of FILE
+       --method=HTTPMethod         use method "HTTPMethod" in the request
+       --body-data=STRING          send STRING as data. --method MUST be set
+       --body-file=FILE            send contents of FILE. --method MUST be set
+       --content-disposition       honor the Content-Disposition header when
+                                     choosing local file names (EXPERIMENTAL)
+       --content-on-error          output the received content on server errors
+       --auth-no-challenge         send Basic HTTP authentication information
+                                     without first waiting for the server's
+                                     challenge
+
+HTTPS (SSL/TLS) options:
+       --secure-protocol=PR        choose secure protocol, one of auto, SSLv2,
+                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2, TLSv1_3 and PFS
+       --https-only                only follow secure HTTPS links
+       --no-check-certificate      don't validate the server's certificate
+       --certificate=FILE          client certificate file
+       --certificate-type=TYPE     client certificate type, PEM or DER
+       --private-key=FILE          private key file
+       --private-key-type=TYPE     private key type, PEM or DER
+       --ca-certificate=FILE       file with the bundle of CAs
