@@ -1204,3 +1204,1210 @@ USERDOMAIN_ROAMINGPROFILE=HACKPARK
 USERNAME=Administrator                                                                                           
 USERPROFILE=C:\Users\Administrator                                                                               
 windir=C:\Windows                                                                                                
+                                                                                                                 
+ [+] INSTALLED SOFTWARE                                                                                          
+   [i] Some weird software? Check for vulnerabilities in unknow software installed                               
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#software                 
+                                                                                                                 
+Amazon                                                                                                           
+Common Files                                                                                                     
+Common Files                                                                                                     
+Internet Explorer                                                                                                
+Internet Explorer                                                                                                
+Microsoft.NET                                                                                                    
+SystemScheduler                                                                                                  
+Windows Mail                                                                                                     
+Windows Mail                                                                                                     
+Windows NT                                                                                                       
+Windows NT                                                                                                       
+WindowsPowerShell                                                                                                
+WindowsPowerShell                                                                                                
+    InstallLocation    REG_SZ    C:\Program Files (x86)\SystemScheduler\                                         
+    InstallLocation    REG_SZ    C:\Program Files (x86)\SystemScheduler\                                         
+                                                                                                                 
+Looking inside HKCU\Software\OpenSSH\Agent\Keys                                                                  
+C:\ProgramData\Amazon\EC2-Windows\Launch\Sysprep\Unattend.xml                                                    
+C:\ProgramData\Amazon\EC2Launch\sysprep\unattend.xml                                                             
+C:\Users\All Users\Amazon\EC2-Windows\Launch\Sysprep\Unattend.xml                                                
+C:\Users\All Users\Amazon\EC2Launch\sysprep\unattend.xml                                                         
+C:\Windows\Panther\setupinfo                                                                                     
+C:\Windows\System32\inetsrv\appcmd.exe                                                                           
+C:\Windows\SysWOW64\inetsrv\appcmd.exe                                                                           
+C:\Windows\WinSxS\amd64_ipamprov-dhcp_31bf3856ad364e35_6.3.9600.16384_none_64e8a179c6f2a167\ScheduledTasks.xml   
+C:\Windows\WinSxS\amd64_ipamprov-dns_31bf3856ad364e35_6.3.9600.16384_none_824aabe06aee1705\ScheduledTasks.xml    
+C:\Windows\WinSxS\amd64_microsoft-windows-d..rvices-domain-files_31bf3856ad364e35_6.3.9600.16384_none_8bc96e4517571480\ntds.dit                                                                                                   
+C:\Windows\WinSxS\amd64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.16384_none_01a7d2cf88c95dc0\appcmd.exe                                                                                                    
+C:\Windows\WinSxS\amd64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.17031_none_01dac51388a3a832\appcmd.exe                                                                                                    
+C:\Windows\WinSxS\amd64_microsoft-windows-webenroll.resources_31bf3856ad364e35_6.3.9600.16384_en-us_7427d216367d8d3f\certnew.cer                                                                                                  
+C:\Windows\WinSxS\wow64_ipamprov-dhcp_31bf3856ad364e35_6.3.9600.16384_none_6f3d4bcbfb536362\ScheduledTasks.xml   
+C:\Windows\WinSxS\wow64_ipamprov-dns_31bf3856ad364e35_6.3.9600.16384_none_8c9f56329f4ed900\ScheduledTasks.xml    
+C:\Windows\WinSxS\wow64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.16384_none_0bfc7d21bd2a1fbb\appcmd.exe                                                                                                    
+C:\Windows\WinSxS\wow64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.17031_none_0c2f6f65bd046a2d\appcmd.exe                                                                                                    
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex190803.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex190804.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex190805.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex201002.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex220927.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC2\u_ex190803.log                                                                   
+C:\inetpub\wwwroot\Web.config                                                                                    
+C:\inetpub\wwwroot\Account\Web.Config                                                                            
+C:\inetpub\wwwroot\admin\Web.Config                                                                              
+C:\inetpub\wwwroot\admin\app\editor\Web.Config                                                                   
+C:\inetpub\wwwroot\setup\Web.config                                                                              
+                                                                                                                 
+---                                                                                                              
+Scan complete.                                                                                                   
+ [+] Remote Desktop Credentials Manager                                                                          
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#remote-desktop-credential-manager                                                                                                         
+                                                                                                                 
+                                                                                                                 
+Looking inside C:\Users\Administrator\AppData\Local\Microsoft\Credentials\                                       
+                                                                                                                 
+                                                                                                                 
+ [+] Unattended files                                                                                            
+                                                                                                                 
+ [+] SAM and SYSTEM backups                                                                                      
+                                                                                                                 
+ [+] McAffee SiteList.xml                                                                                        
+ Volume in drive C has no label.                                                                                 
+ Volume Serial Number is 0E97-C552                                                                               
+ Volume in drive C has no label.                                                                                 
+ Volume Serial Number is 0E97-C552                                                                               
+ Volume in drive C has no label.                                                                                 
+ Volume Serial Number is 0E97-C552                                                                               
+ Volume in drive C has no label.                                                                                 
+ Volume Serial Number is 0E97-C552                                                                               
+                                                                                                                 
+ [+] GPP Password                                                                                                
+                                                                                                                 
+ [+] Cloud Credentials                                                                                           
+                                                                                                                 
+ [+] AppCmd                                                                                                      
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#appcmd-exe               
+C:\Windows\system32\inetsrv\appcmd.exe exists.                                                                   
+                                                                                                                 
+ [+] Files in registry that may contain credentials                                                              
+   [i] Searching specific files that may contains credentials.                                                   
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#credentials-inside-files 
+Looking inside HKCU\Software\ORL\WinVNC3\Password                                                                
+Looking inside HKEY_LOCAL_MACHINE\SOFTWARE\RealVNC\WinVNC4/password                                              
+Looking inside HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\WinLogon                                        
+    DefaultDomainName    REG_SZ                                                                                  
+    DefaultUserName    REG_SZ                                                                                    
+Looking inside HKLM\SYSTEM\CurrentControlSet\Services\SNMP                                                       
+                                                                                                                 
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMP\Parameters                                             
+                                                                                                                 
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\ExtensionAgents                             
+    W3SVC    REG_SZ    Software\Microsoft\W3SVC\CurrentVersion                                                   
+                                                                                                                 
+Looking inside HKCU\Software\TightVNC\Server                                                                     
+Looking inside HKCU\Software\SimonTatham\PuTTY\Sessions                                                          
+Looking inside HKCU\Software\OpenSSH\Agent\Keys                                                                  
+C:\ProgramData\Amazon\EC2-Windows\Launch\Sysprep\Unattend.xml                                                    
+C:\ProgramData\Amazon\EC2Launch\sysprep\unattend.xml                                                             
+C:\Users\All Users\Amazon\EC2-Windows\Launch\Sysprep\Unattend.xml                                                
+C:\Users\All Users\Amazon\EC2Launch\sysprep\unattend.xml                                                         
+C:\Windows\Panther\setupinfo                                                                                     
+C:\Windows\System32\inetsrv\appcmd.exe                                                                           
+C:\Windows\SysWOW64\inetsrv\appcmd.exe                                                                           
+C:\Windows\WinSxS\amd64_ipamprov-dhcp_31bf3856ad364e35_6.3.9600.16384_none_64e8a179c6f2a167\ScheduledTasks.xml   
+C:\Windows\WinSxS\amd64_ipamprov-dns_31bf3856ad364e35_6.3.9600.16384_none_824aabe06aee1705\ScheduledTasks.xml    
+C:\Windows\WinSxS\amd64_microsoft-windows-d..rvices-domain-files_31bf3856ad364e35_6.3.9600.16384_none_8bc96e4517571480\ntds.dit                                                                                                   
+C:\Windows\WinSxS\amd64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.16384_none_01a7d2cf88c95dc0\appcmd.exe                                                                                                    
+C:\Windows\WinSxS\amd64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.17031_none_01dac51388a3a832\appcmd.exe                                                                                                    
+C:\Windows\WinSxS\amd64_microsoft-windows-webenroll.resources_31bf3856ad364e35_6.3.9600.16384_en-us_7427d216367d8d3f\certnew.cer                                                                                                  
+C:\Windows\WinSxS\wow64_ipamprov-dhcp_31bf3856ad364e35_6.3.9600.16384_none_6f3d4bcbfb536362\ScheduledTasks.xml   
+C:\Windows\WinSxS\wow64_ipamprov-dns_31bf3856ad364e35_6.3.9600.16384_none_8c9f56329f4ed900\ScheduledTasks.xml    
+C:\Windows\WinSxS\wow64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.16384_none_0bfc7d21bd2a1fbb\appcmd.exe                                                                                                    
+C:\Windows\WinSxS\wow64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.17031_none_0c2f6f65bd046a2d\appcmd.exe                                                                                                    
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex190803.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex190804.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex190805.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex201002.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex220927.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC2\u_ex190803.log                                                                   
+C:\inetpub\wwwroot\Web.config                                                                                    
+C:\inetpub\wwwroot\Account\Web.Config                                                                            
+C:\inetpub\wwwroot\admin\Web.Config                                                                              
+C:\inetpub\wwwroot\admin\app\editor\Web.Config                                                                   
+C:\inetpub\wwwroot\setup\Web.config                                                                              
+                                                                                                                 
+---                                                                                                              
+Scan complete.                                                                                                   
+User name                    Administrator                                                                       
+Full Name                                                                                                        
+Comment                      Built-in account for administering the computer/domain                              
+User's comment                                                                                                   
+Country/region code          000 (System Default)                                                                
+Account active               Yes                                                                                 
+Account expires              Never                                                                               
+                                                                                                                 
+Password last set            8/3/2019 10:43:23 AM                                                                
+Password expires             9/14/2019 10:43:23 AM                                                               
+Password changeable          8/3/2019 10:43:23 AM                                                                
+Password required            Yes                                                                                 
+User may change password     Yes                                                                                 
+                                                                                                                 
+Workstations allowed         All                                                                                 
+Logon script                                                                                                     
+User profile                                                                                                     
+Home directory                                                                                                   
+Last logon                   9/27/2022 9:48:46 AM                                                                
+                                                                                                                 
+Logon hours allowed          All                                                                                 
+                                                                                                                 
+Local Group Memberships      *Administrators                                                                     
+Global Group memberships     *None                                                                               
+The command completed successfully.                                                                              
+                                                                                                                 
+The request will be processed at a domain controller for domain WORKGROUP.                                       
+                                                                                                                 
+                                                                                                                 
+USER INFORMATION                                                                                                 
+----------------                                                                                                 
+                                                                                                                 
+User Name              SID                                                                                       
+====================== ===========================================                                               
+hackpark\administrator S-1-5-21-141259258-288879770-3894983326-500                                               
+                                                                                                                 
+                                                                                                                 
+GROUP INFORMATION                                                                                                
+-----------------                                                                                                
+                                                                                                                 
+Group Name                                                    Type             SID          Attributes                                                                                                                            
+============================================================= ================ ============ ===============================================================                                                                       
+Everyone                                                      Well-known group S-1-1-0      Mandatory group, Enabled by default, Enabled group                                                                                    
+NT AUTHORITY\Local account and member of Administrators group Well-known group S-1-5-114    Mandatory group, Enabled by default, Enabled group                                                                                    
+BUILTIN\Administrators                                        Alias            S-1-5-32-544 Mandatory group, Enabled by default, Enabled group, Group owner                                                                       
+BUILTIN\Users                                                 Alias            S-1-5-32-545 Mandatory group, Enabled by default, Enabled group                                                                                    
+NT AUTHORITY\INTERACTIVE                                      Well-known group S-1-5-4      Mandatory group, Enabled by default, Enabled group                                                                                    
+CONSOLE LOGON                                                 Well-known group S-1-2-1      Mandatory group, Enabled by default, Enabled group                                                                                    
+NT AUTHORITY\Authenticated Users                              Well-known group S-1-5-11     Mandatory group, Enabled by default, Enabled group                                                                                    
+NT AUTHORITY\This Organization                                Well-known group S-1-5-15     Mandatory group, Enabled by default, Enabled group                                                                                    
+NT AUTHORITY\Local account                                    Well-known group S-1-5-113    Mandatory group, Enabled by default, Enabled group                                                                                    
+LOCAL                                                         Well-known group S-1-2-0      Mandatory group, Enabled by default, Enabled group                                                                                    
+NT AUTHORITY\NTLM Authentication                              Well-known group S-1-5-64-10  Mandatory group, Enabled by default, Enabled group                                                                                    
+Mandatory Label\High Mandatory Level                          Label            S-1-16-12288                                                                                                                                       
+                                                                                                                 
+                                                                                                                 
+PRIVILEGES INFORMATION                                                                                           
+----------------------                                                                                           
+                                                                                                                 
+Privilege Name                  Description                               State                                  
+=============================== ========================================= ========                               
+SeIncreaseQuotaPrivilege        Adjust memory quotas for a process        Enabled                                
+SeSecurityPrivilege             Manage auditing and security log          Disabled                               
+SeTakeOwnershipPrivilege        Take ownership of files or other objects  Enabled                                
+SeLoadDriverPrivilege           Load and unload device drivers            Disabled                               
+SeSystemProfilePrivilege        Profile system performance                Disabled                               
+SeSystemtimePrivilege           Change the system time                    Disabled                               
+SeProfileSingleProcessPrivilege Profile single process                    Disabled                               
+SeIncreaseBasePriorityPrivilege Increase scheduling priority              Disabled                               
+SeCreatePagefilePrivilege       Create a pagefile                         Disabled                               
+SeBackupPrivilege               Back up files and directories             Disabled                               
+SeRestorePrivilege              Restore files and directories             Disabled                               
+SeShutdownPrivilege             Shut down the system                      Disabled                               
+SeDebugPrivilege                Debug programs                            Enabled                                
+SeSystemEnvironmentPrivilege    Modify firmware environment values        Disabled                               
+SeChangeNotifyPrivilege         Bypass traverse checking                  Enabled                                
+SeRemoteShutdownPrivilege       Force shutdown from a remote system       Disabled                               
+SeUndockPrivilege               Remove computer from docking station      Disabled                               
+SeManageVolumePrivilege         Perform volume maintenance tasks          Disabled                               
+SeImpersonatePrivilege          Impersonate a client after authentication Enabled                                
+SeCreateGlobalPrivilege         Create global objects                     Enabled                                
+SeIncreaseWorkingSetPrivilege   Increase a process working set            Disabled                               
+SeTimeZonePrivilege             Change the time zone                      Disabled                               
+SeCreateSymbolicLinkPrivilege   Create symbolic links                     Disabled                               
+                                                                                                                 
+ERROR: Unable to get user claims information.                                                                    
+                                                                                                                 
+ [+] USERS                                                                                                       
+                                                                                                                 
+User accounts for \\HACKPARK                                                                                     
+                                                                                                                 
+-------------------------------------------------------------------------------                                  
+Administrator            Guest                    jeff                                                           
+The command completed successfully.                                                                              
+                                                                                                                 
+                                                                                                                 
+ [+] GROUPS                                                                                                      
+                                                                                                                 
+Aliases for \\HACKPARK                                                                                           
+                                                                                                                 
+-------------------------------------------------------------------------------                                  
+*Access Control Assistance Operators                                                                             
+*Administrators                                                                                                  
+*Backup Operators                                                                                                
+*Certificate Service DCOM Access                                                                                 
+*Cryptographic Operators                                                                                         
+*Distributed COM Users                                                                                           
+*Event Log Readers                                                                                               
+*Guests                                                                                                          
+*Hyper-V Administrators                                                                                          
+*IIS_IUSRS                                                                                                       
+*Network Configuration Operators                                                                                 
+*Performance Log Users                                                                                           
+*Performance Monitor Users                                                                                       
+*Power Users                                                                                                     
+*Print Operators                                                                                                 
+*RDS Endpoint Servers                                                                                            
+*RDS Management Servers                                                                                          
+*RDS Remote Access Servers                                                                                       
+*Remote Desktop Users                                                                                            
+*Remote Management Users                                                                                         
+*Replicator                                                                                                      
+*Users                                                                                                           
+*WinRMRemoteWMIUsers__                                                                                           
+The command completed successfully.                                                                              
+                                                                                                                 
+                                                                                                                 
+ [+] ADMINISTRATORS GROUPS                                                                                       
+Alias name     Administrators                                                                                    
+Comment        Administrators have complete and unrestricted access to the computer/domain                       
+                                                                                                                 
+Members                                                                                                          
+                                                                                                                 
+-------------------------------------------------------------------------------                                  
+Administrator                                                                                                    
+The command completed successfully.                                                                              
+                                                                                                                 
+                                                                                                                 
+ [+] CURRENT LOGGED USERS                                                                                        
+ USERNAME              SESSIONNAME        ID  STATE   IDLE TIME  LOGON TIME                                      
+>administrator         console             1  Active      none   9/27/2022 9:48 AM                               
+                                                                                                                 
+ [+] Kerberos Tickets                                                                                            
+                                                                                                                 
+Current LogonId is 0:0x256d9                                                                                     
+                                                                                                                 
+Cached Tickets: (0)                                                                                              
+                                                                                                                 
+ [+] CURRENT CLIPBOARD                                                                                           
+   [i] Any password inside the clipboard?                                                                        
+                                                                                                                 
+[*] SERVICE VULNERABILITIES                                                                                      
+                                                                                                                 
+ Volume in drive C has no label.                                                                                 
+ Volume Serial Number is 0E97-C552                                                                               
+ Volume in drive C has no label.                                                                                 
+ Volume Serial Number is 0E97-C552                                                                               
+ Volume in drive C has no label.                                                                                 
+ Volume Serial Number is 0E97-C552                                                                               
+ Volume in drive C has no label.                                                                                 
+ Volume Serial Number is 0E97-C552                                                                               
+                                                                                                                 
+ [+] GPP Password                                                                                                
+                                                                                                                 
+ [+] Cloud Credentials                                                                                           
+                                                                                                                 
+ [+] AppCmd                                                                                                      
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#appcmd-exe               
+C:\Windows\system32\inetsrv\appcmd.exe exists.                                                                   
+                                                                                                                 
+ [+] Files in registry that may contain credentials                                                              
+   [i] Searching specific files that may contains credentials.                                                   
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#credentials-inside-files 
+Looking inside HKCU\Software\ORL\WinVNC3\Password                                                                
+Looking inside HKEY_LOCAL_MACHINE\SOFTWARE\RealVNC\WinVNC4/password                                              
+Looking inside HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\WinLogon                                        
+    DefaultDomainName    REG_SZ                                                                                  
+    DefaultUserName    REG_SZ                                                                                    
+Looking inside HKLM\SYSTEM\CurrentControlSet\Services\SNMP                                                       
+                                                                                                                 
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMP\Parameters                                             
+                                                                                                                 
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\ExtensionAgents                             
+    W3SVC    REG_SZ    Software\Microsoft\W3SVC\CurrentVersion                                                   
+                                                                                                                 
+Looking inside HKCU\Software\TightVNC\Server                                                                     
+Looking inside HKCU\Software\SimonTatham\PuTTY\Sessions                                                          
+Looking inside HKCU\Software\OpenSSH\Agent\Keys                                                                  
+C:\ProgramData\Amazon\EC2-Windows\Launch\Sysprep\Unattend.xml                                                    
+C:\ProgramData\Amazon\EC2Launch\sysprep\unattend.xml                                                             
+C:\Users\All Users\Amazon\EC2-Windows\Launch\Sysprep\Unattend.xml                                                
+C:\Users\All Users\Amazon\EC2Launch\sysprep\unattend.xml                                                         
+C:\Windows\Panther\setupinfo                                                                                     
+C:\Windows\System32\inetsrv\appcmd.exe                                                                           
+C:\Windows\SysWOW64\inetsrv\appcmd.exe                                                                           
+C:\Windows\WinSxS\amd64_ipamprov-dhcp_31bf3856ad364e35_6.3.9600.16384_none_64e8a179c6f2a167\ScheduledTasks.xml   
+C:\Windows\WinSxS\amd64_ipamprov-dns_31bf3856ad364e35_6.3.9600.16384_none_824aabe06aee1705\ScheduledTasks.xml    
+C:\Windows\WinSxS\amd64_microsoft-windows-d..rvices-domain-files_31bf3856ad364e35_6.3.9600.16384_none_8bc96e4517571480\ntds.dit                                                                                                   
+C:\Windows\WinSxS\amd64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.16384_none_01a7d2cf88c95dc0\appcmd.exe                                                                                                    
+C:\Windows\WinSxS\amd64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.17031_none_01dac51388a3a832\appcmd.exe                                                                                                    
+C:\Windows\WinSxS\amd64_microsoft-windows-webenroll.resources_31bf3856ad364e35_6.3.9600.16384_en-us_7427d216367d8d3f\certnew.cer                                                                                                  
+C:\Windows\WinSxS\wow64_ipamprov-dhcp_31bf3856ad364e35_6.3.9600.16384_none_6f3d4bcbfb536362\ScheduledTasks.xml   
+C:\Windows\WinSxS\wow64_ipamprov-dns_31bf3856ad364e35_6.3.9600.16384_none_8c9f56329f4ed900\ScheduledTasks.xml    
+C:\Windows\WinSxS\wow64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.16384_none_0bfc7d21bd2a1fbb\appcmd.exe                                                                                                    
+C:\Windows\WinSxS\wow64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.17031_none_0c2f6f65bd046a2d\appcmd.exe                                                                                                    
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex190803.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex190804.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex190805.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex201002.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex220927.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC2\u_ex190803.log                                                                   
+C:\inetpub\wwwroot\Web.config                                                                                    
+C:\inetpub\wwwroot\Account\Web.Config                                                                            
+C:\inetpub\wwwroot\admin\Web.Config                                                                              
+C:\inetpub\wwwroot\admin\app\editor\Web.Config                                                                   
+C:\inetpub\wwwroot\setup\Web.config                                                                              
+                                                                                                                 
+---                                                                                                              
+Scan complete.                                                                                                   
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#services                 
+C:\Program Files\Amazon\EC2Launch\EC2Launch.exe NT AUTHORITY\SYSTEM:(I)(F)                                       
+                                                BUILTIN\Administrators:(I)(F)                                    
+                                                                                                                 
+C:\Program Files\Amazon\SSM\amazon-ssm-agent.exe NT AUTHORITY\SYSTEM:(I)(F)                                      
+                                                 BUILTIN\Administrators:(I)(F)                                   
+                                                                                                                 
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet_state.exe NT SERVICE\TrustedInstaller:(F)                 
+                                                                                                                 
+C:\Program Files\Amazon\XenTools\LiteAgent.exe NT AUTHORITY\SYSTEM:(I)(F)                                        
+                                               BUILTIN\Administrators:(I)(F)                                     
+                                                                                                                 
+C:\Program Files\Amazon\Ec2ConfigService\Ec2Config.exe NT AUTHORITY\SYSTEM:(I)(F)                                
+                                                       BUILTIN\Administrators:(I)(F)                             
+                                                                                                                 
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\SMSvcHost.exe NT SERVICE\TrustedInstaller:(F)                    
+                                                                                                                 
+C:\Windows\SysWow64\perfhost.exe NT SERVICE\TrustedInstaller:(F)                                                 
+                                                                                                                 
+C:\Windows\PSSDNSVC.EXE NT AUTHORITY\SYSTEM:(I)(F)                                                               
+                        BUILTIN\Administrators:(I)(F)                                                            
+                                                                                                                 
+C:\Windows\servicing\TrustedInstaller.exe NT SERVICE\TrustedInstaller:(F)                                        
+                                                                                                                 
+C:\PROGRA~2\SYSTEM~1\WService.exe Everyone:(I)(M)                                                                
+                                  BUILTIN\Administrators:(I)(F)                                                  
+                                                                                                                 
+                                                                                                                 
+ [+] CHECK IF YOU CAN MODIFY ANY SERVICE REGISTRY                                                                
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#services                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\.NETFramework                                
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\1394ohci                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\3ware                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ACPI                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\acpiex                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\acpipagr                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AcpiPmi                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\acpitime                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ADP80XX                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\adsi                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AeLookupSvc                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AFD                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\agp440                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ahcache                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ALG                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AmazonSSMAgent                               
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AmdK8                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AmdPPM                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\amdsata                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\amdsbs                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\amdxata                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AppHostSvc                                   
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AppID                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AppIDSvc                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Appinfo                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AppMgmt                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AppReadiness                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AppXSvc                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\arcsas                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ASP.NET                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ASP.NET_4.0.30319                            
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\aspnet_state                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AsyncMac                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\atapi                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AudioEndpointBuilder                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Audiosrv                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AWSLiteAgent                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\AWSNVMe                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\b06bdrv                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\BasicDisplay                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\BasicRender                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\BattC                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Beep                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\bfadfcoei                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\bfadi                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\BFE                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\BITS                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\bowser                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\BrokerInfrastructure                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Browser                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\bxfcoe                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\bxois                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\cdfs                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\cdrom                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\CertPropSvc                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\cht4vbd                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\CLFS                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\clr_optimization_v4.0.30319_32               
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\clr_optimization_v4.0.30319_64               
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\CmBatt                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\CNG                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\CngHwAssist                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\CompositeBus                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\COMSysApp                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\condrv                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\crypt32                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\CryptSvc                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\DCLocator                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\defragsvc                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\DeviceAssociationService                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\DeviceInstall                                
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Dfsc                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Dhcp                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\disk                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\dmvsc                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Dnscache                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\dot3svc                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\drmkaud                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\DsmSvc                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\DXGKrnl                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\E1G60                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Eaphost                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ebdrv                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Ec2Config                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\EFS                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\elxfcoe                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\elxstor                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ErrDev                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ESENT                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\EventLog                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\EventSystem                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\exfat                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\fastfat                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\fcvsc                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\fdc                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\fdPHost                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\FDResPub                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\FileInfo                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Filetrace                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\flpydisk                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\FltMgr                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\FontCache                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\FsDepends                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Fs_Rec                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\FxPPM                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\gagp30kx                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\gencounter                                   
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\GPIOClx0101                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\HdAudAddService                              
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\HDAudBus                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\HidBatt                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\hidserv                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\HidUsb                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\hkmsvc                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\HpSAMD                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\HTTP                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\hwpolicy                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\hyperkbd                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\HyperVideo                                   
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\i8042prt                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\iaStorAV                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\iaStorV                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ibbus                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\IEEtwCollectorService                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\IKEEXT                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\inetaccs                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\InetInfo                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\intelide                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\intelppm                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\IpFilterDriver                               
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\iphlpsvc                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\IPMIDRV                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\IPNAT                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\isapnp                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\iScsiPrt                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\kbdclass                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\kbdhid                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\kdnic                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\KeyIso                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\KPSSVC                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\KSecDD                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\KSecPkg                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ksthunk                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\KtmRm                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\LanmanServer                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\LanmanWorkstation                            
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ldap                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\lltdio                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\lltdsvc                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\lmhosts                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Lsa                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\LSI_SAS                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\LSI_SAS2                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\LSI_SAS3                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\LSI_SSS                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\LSM                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\luafv                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\megasas                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\megasr                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\mlx4_bus                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MMCSS                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Modem                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\monitor                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\mouclass                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\mouhid                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\mountmgr                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\mpsdrv                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MpsSvc                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\mrxsmb                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\mrxsmb10                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\mrxsmb20                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MsBridge                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MSDTC                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MSDTC                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Msfs                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\mshidkmdf                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\mshidumdf                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\msisadrv                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MSiSCSI                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\msiserver                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MSKSSRV                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MsLbfoProvider                               
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MSPCLOCK                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MSPQM                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MsRPC                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\mssmbios                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MSTEE                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\MTConfig                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Mup                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\mvumis                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\napagent                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NcaSvc                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ndfltr                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NDIS                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NdisCap                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NdisImPlatform                               
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NdisTapi                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Ndisuio                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NdisVirtualBus                               
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NdisWan                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NDISWANLEGACY                                
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NDProxy                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NetBIOS                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NetBT                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Netlogon                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Netman                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\netprofm                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NetTcpPortSharing                            
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\netvsc                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NlaSvc                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Npfs                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\npsvctrig                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\nsi                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\nsiproxy                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\NTDS                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Ntfs                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Null                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\nvraid                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\nvstor                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\nv_agp                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Parport                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\partmgr                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\pci                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\pciide                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\pcmcia                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\pcw                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\pdc                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\PEAUTH                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\PerfDisk                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\PerfHost                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\PerfNet                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\PerfOS                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\PerfProc                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\pla                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\PlugPlay                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\PolicyAgent                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\PortProxy                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Power                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\PptpMiniport                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\PrintNotify                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Processor                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ProfSvc                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Psched                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\PsShutdownSvc                                
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ql2300i                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ql40xx2i                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\qlfcoei                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RasAcd                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RasAgileVpn                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RasAuto                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Rasl2tp                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RasMan                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RasPppoe                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RasSstp                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\rdbss                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RDMANDK                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\rdpbus                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RDPDR                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RDPNP                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RDPUDD                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RdpVideoMiniport                             
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ReFS                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RemoteAccess                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RemoteRegistry                               
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RpcEptMapper                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RpcLocator                                   
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\RSoPProv                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\rspndr                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\s3cap                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\sacdrv                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\sacsvr                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\sbp2port                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SCardSvr                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ScDeviceEnum                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\scfilter                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Schedule                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SCPolicySvc                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\sdbus                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\sdstor                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\secdrv                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\seclogon                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SENS                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SerCx                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SerCx2                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Serenum                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Serial                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\sermouse                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SessionEnv                                   
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\sfloppy                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SharedAccess                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ShellHWDetection                             
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SiSRaid2                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SiSRaid4                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\smbdirect                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\smphost                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SNMP                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SNMPTRAP                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\spaceport                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SpbCx                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Spooler                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\sppsvc                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\srv                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\srv2                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\srvnet                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SSDPSRV                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SstpSvc                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\stexstor                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\storahci                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\storflt                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\stornvme                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\storvsc                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\storvsp                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\svsvc                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\swenum                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\swprv                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SysMain                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\SystemEventsBroker                           
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\TapiSrv                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Tcpip                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\TCPIP6                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\TCPIP6TUNNEL                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\tcpipreg                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\TCPIPTUNNEL                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\tdx                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\terminpt                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\TermService                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Themes                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\THREADORDER                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\TieringEngineService                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\TPM                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\TSDDD                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\TsUsbFlt                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\TsUsbGD                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\tsusbhub                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\tunnel                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\uagp35                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\UALSVC                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\UASPStor                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\UCX01000                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\udfs                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\UEFI                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\UI0Detect                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\uliagpkx                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\umbus                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\UmPass                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\UmRdpService                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\upnphost                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\usbccgp                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\usbehci                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\usbhub                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\USBHUB3                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\usbohci                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\usbprint                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\USBSTOR                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\usbuhci                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\USBXHCI                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\VaultSvc                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vdrvroot                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vds                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\VerifierExt                                  
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vhdmp                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\viaide                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Vid                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vmbus                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\VMBusHID                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vmbusr                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vmicguestinterface                           
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vmicheartbeat                                
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vmickvpexchange                              
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vmicrdv                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vmicshutdown                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vmictimesync                                 
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vmicvss                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\volmgr                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\volmgrx                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\volsnap                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vpci                                         
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vpcivsp                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\vsmraid                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\VSS                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\VSTXRAID                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\W32Time                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\w3logsvc                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\W3SVC                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WacomPen                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Wanarp                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Wanarpv6                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WAS                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Wcmsvc                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WcsPlugInService                             
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Wdf01000                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Wecsvc                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WEPHOSTSVC                                   
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\wercplsupport                                
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WerSvc                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WFPLWFS                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WIMMount                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WindowsScheduler                             
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WinHttpAutoProxySvc                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WinMad                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Winmgmt                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WinNat                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WinRM                                        
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\Winsock                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WinSock2                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WinVerbs                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WmiAcpi                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WmiApRpl                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\wmiApSrv                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\workerdd                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WPDBusEnum                                   
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\ws2ifsl                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WSService                                    
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\wtlmdrv                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\wuauserv                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\WudfPf                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\wudfsvc                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\XEN                                          
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\xenbus                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\xenbus_monitor                               
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\xenfilt                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\xeniface                                     
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\xennet                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\xenvbd                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\xenvif                                       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\xmlprov                                      
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\{35E1B823-1443-4A40-875E-3A1C41494DB7}       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\{51E2531C-2946-4F58-A4BB-072994EB3731}       
+You can modify HKEY_LOCAL_MACHINE\system\currentcontrolset\services\{C7568B63-C424-48B3-AB9B-6D1F004D5AFC}       
+                                                                                                                 
+ [+] UNQUOTED SERVICE PATHS                                                                                      
+   [i] When the path is not quoted (ex: C:\Program files\soft\new folder\exec.exe) Windows will try to execute first 'C:\Program.exe', then 'C:\Program Files\soft\new.exe' and finally 'C:\Program Files\soft\new folder\exec.exe'. Try to create 'C:\Program Files\soft\new.exe'                                                                 
+   [i] The permissions are also checked and filtered using icacls                                                
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#services                 
+aspnet_state                                                                                                     
+ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet_state.exe                                                
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet_state.exe NT SERVICE\TrustedInstaller:(F)                 
+                                                                                                                 
+AWSLiteAgent                                                                                                     
+ C:\Program Files\Amazon\XenTools\LiteAgent.exe                                                                  
+Invalid parameter "Files\Amazon\XenTools\LiteAgent.exe"                                                          
+NetTcpPortSharing                                                                                                
+ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\SMSvcHost.exe                                                   
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\SMSvcHost.exe NT SERVICE\TrustedInstaller:(F)                    
+                                                                                                                 
+PerfHost                                                                                                         
+ C:\Windows\SysWow64\perfhost.exe                                                                                
+C:\Windows\SysWow64\perfhost.exe NT SERVICE\TrustedInstaller:(F)                                                 
+                                                                                                                 
+PsShutdownSvc                                                                                                    
+ C:\Windows\PSSDNSVC.EXE                                                                                         
+C:\Windows\PSSDNSVC.EXE NT AUTHORITY\SYSTEM:(I)(F)                                                               
+                        BUILTIN\Administrators:(I)(F)                                                            
+                                                                                                                 
+TrustedInstaller                                                                                                 
+ C:\Windows\servicing\TrustedInstaller.exe                                                                       
+C:\Windows\servicing\TrustedInstaller.exe NT SERVICE\TrustedInstaller:(F)                                        
+                                                                                                                 
+WindowsScheduler                                                                                                 
+ C:\PROGRA~2\SYSTEM~1\WService.exe                                                                               
+C:\PROGRA~2\SYSTEM~1\WService.exe Everyone:(I)(M)                                                                
+                                  BUILTIN\Administrators:(I)(F)                                                  
+                                                                                                                 
+                                                                                                                 
+[*] DLL HIJACKING in PATHenv variable                                                                            
+   [i] Maybe you can take advantage of modifying/creating some binary in some of the following locations         
+   [i] PATH variable entries permissions - place binary or DLL to execute instead of legitimate                  
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#dll-hijacking            
+C:\Windows\system32 NT SERVICE\TrustedInstaller:(F)                                                              
+                    BUILTIN\Administrators:(M)                                                                   
+                    BUILTIN\Administrators:(OI)(CI)(IO)(F)                                                       
+                                                                                                                 
+C:\Windows NT SERVICE\TrustedInstaller:(F)                                                                       
+           BUILTIN\Administrators:(M)                                                                            
+           BUILTIN\Administrators:(OI)(CI)(IO)(F)                                                                
+                                                                                                                 
+C:\Windows\System32\Wbem NT SERVICE\TrustedInstaller:(F)                                                         
+                         BUILTIN\Administrators:(M)                                                              
+                         BUILTIN\Administrators:(OI)(CI)(IO)(F)                                                  
+                                                                                                                 
+                                                                                                                 
+[*] CREDENTIALS                                                                                                  
+                                                                                                                 
+ [+] WINDOWS VAULT                                                                                               
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#windows-vault            
+                                                                                                                 
+Currently stored credentials:                                                                                    
+                                                                                                                 
+* NONE *                                                                                                         
+                                                                                                                 
+ [+] DPAPI MASTER KEYS                                                                                           
+   [i] Use the Mimikatz 'dpapi::masterkey' module with appropriate arguments (/rpc) to decrypt                   
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#dpapi                    
+                                                                                                                 
+                                                                                                                 
+    Directory: C:\Users\Administrator\AppData\Roaming\Microsoft\Protect                                          
+                                                                                                                 
+                                                                                                                 
+Mode                LastWriteTime     Length Name                                                                
+----                -------------     ------ ----                                                                
+d---s         9/27/2022  11:27 AM            S-1-5-21-141259258-288879770-38949                                  
+                                             83326-500                                                           
+                                                                                                                 
+                                                                                                                 
+ [+] DPAPI MASTER KEYS                                                                                           
+   [i] Use the Mimikatz 'dpapi::cred' module with appropriate /masterkey to decrypt                              
+   [i] You can also extract many DPAPI masterkeys from memory with the Mimikatz 'sekurlsa::dpapi' module         
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#dpapi                    
+                                                                                                                 
+Looking inside C:\Users\Administrator\AppData\Roaming\Microsoft\Credentials\                                     
+                                                                                                                 
+The system cannot find the batch label specified - T_Progress                                                    
+                                                                                                                 
+Looking inside C:\Users\Administrator\AppData\Local\Microsoft\Credentials\                                       
+                                                                                                                 
+                                                                                                                 
+ [+] Unattended files                                                                                            
+                                                                                                                 
+ [+] SAM and SYSTEM backups                                                                                      
+                                                                                                                 
+ [+] McAffee SiteList.xml                                                                                        
+ Volume in drive C has no label.                                                                                 
+ Volume Serial Number is 0E97-C552                                                                               
+ Volume in drive C has no label.                                                                                 
+ Volume Serial Number is 0E97-C552                                                                               
+ Volume in drive C has no label.                                                                                 
+ Volume Serial Number is 0E97-C552                                                                               
+ Volume in drive C has no label.                                                                                 
+ Volume Serial Number is 0E97-C552                                                                               
+                                                                                                                 
+ [+] GPP Password                                                                                                
+                                                                                                                 
+ [+] Cloud Credentials                                                                                           
+                                                                                                                 
+ [+] AppCmd                                                                                                      
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#appcmd-exe               
+C:\Windows\system32\inetsrv\appcmd.exe exists.                                                                   
+                                                                                                                 
+ [+] Files in registry that may contain credentials                                                              
+   [i] Searching specific files that may contains credentials.                                                   
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#credentials-inside-files 
+Looking inside HKCU\Software\ORL\WinVNC3\Password                                                                
+Looking inside HKEY_LOCAL_MACHINE\SOFTWARE\RealVNC\WinVNC4/password                                              
+Looking inside HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\WinLogon                                        
+    DefaultDomainName    REG_SZ                                                                                  
+    DefaultUserName    REG_SZ                                                                                    
+Looking inside HKLM\SYSTEM\CurrentControlSet\Services\SNMP                                                       
+                                                                                                                 
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMP\Parameters                                             
+                                                                                                                 
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\ExtensionAgents                             
+    W3SVC    REG_SZ    Software\Microsoft\W3SVC\CurrentVersion                                                   
+                                                                                                                 
+Looking inside HKCU\Software\TightVNC\Server                                                                     
+Looking inside HKCU\Software\SimonTatham\PuTTY\Sessions                                                          
+Looking inside HKCU\Software\OpenSSH\Agent\Keys                                                                  
+C:\ProgramData\Amazon\EC2-Windows\Launch\Sysprep\Unattend.xml                                                    
+C:\ProgramData\Amazon\EC2Launch\sysprep\unattend.xml                                                             
+C:\Users\All Users\Amazon\EC2-Windows\Launch\Sysprep\Unattend.xml                                                
+C:\Users\All Users\Amazon\EC2Launch\sysprep\unattend.xml                                                         
+C:\Windows\Panther\setupinfo                                                                                     
+C:\Windows\System32\inetsrv\appcmd.exe                                                                           
+C:\Windows\SysWOW64\inetsrv\appcmd.exe                                                                           
+C:\Windows\WinSxS\amd64_ipamprov-dhcp_31bf3856ad364e35_6.3.9600.16384_none_64e8a179c6f2a167\ScheduledTasks.xml   
+C:\Windows\WinSxS\amd64_ipamprov-dns_31bf3856ad364e35_6.3.9600.16384_none_824aabe06aee1705\ScheduledTasks.xml    
+C:\Windows\WinSxS\amd64_microsoft-windows-d..rvices-domain-files_31bf3856ad364e35_6.3.9600.16384_none_8bc96e4517571480\ntds.dit                                                                                                   
+C:\Windows\WinSxS\amd64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.16384_none_01a7d2cf88c95dc0\appcmd.exe                                                                                                    
+C:\Windows\WinSxS\amd64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.17031_none_01dac51388a3a832\appcmd.exe                                                                                                    
+C:\Windows\WinSxS\amd64_microsoft-windows-webenroll.resources_31bf3856ad364e35_6.3.9600.16384_en-us_7427d216367d8d3f\certnew.cer                                                                                                  
+C:\Windows\WinSxS\wow64_ipamprov-dhcp_31bf3856ad364e35_6.3.9600.16384_none_6f3d4bcbfb536362\ScheduledTasks.xml   
+C:\Windows\WinSxS\wow64_ipamprov-dns_31bf3856ad364e35_6.3.9600.16384_none_8c9f56329f4ed900\ScheduledTasks.xml    
+C:\Windows\WinSxS\wow64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.16384_none_0bfc7d21bd2a1fbb\appcmd.exe                                                                                                    
+C:\Windows\WinSxS\wow64_microsoft-windows-iis-sharedlibraries_31bf3856ad364e35_6.3.9600.17031_none_0c2f6f65bd046a2d\appcmd.exe                                                                                                    
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex190803.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex190804.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex190805.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex201002.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC1\u_ex220927.log                                                                   
+C:\inetpub\logs\LogFiles\W3SVC2\u_ex190803.log                                                                   
+C:\inetpub\wwwroot\Web.config                                                                                    
+C:\inetpub\wwwroot\Account\Web.Config                                                                            
+C:\inetpub\wwwroot\admin\Web.Config                                                                              
+C:\inetpub\wwwroot\admin\app\editor\Web.Config                                                                   
+C:\inetpub\wwwroot\setup\Web.config                                                                              
+                                                                                                                 
+---                                                                                                              
+Scan complete.                                                                                                   
+   [i] You can inject 'fake' updates into non-SSL WSUS traffic (WSUXploit)                                       
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#wsus                     
+                                                                                                                 
+ [+] RUNNING PROCESSES                                                                                           
+   [i] Something unexpected is running? Check for vulnerabilities                                                
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#running-processes        
+                                                                                                                 
+Image Name                     PID Services                                                                      
+========================= ======== ============================================                                  
+System Idle Process              0 N/A                                                                           
+System                           4 N/A                                                                           
+smss.exe                       372 N/A                                                                           
+csrss.exe                      524 N/A                                                                           
+csrss.exe                      580 N/A                                                                           
+wininit.exe                    588 N/A                                                                           
+winlogon.exe                   616 N/A                                                                           
+services.exe                   676 N/A                                                                           
+lsass.exe                      684 SamSs                                                                         
+svchost.exe                    740 BrokerInfrastructure, DcomLaunch, LSM,                                        
+                                   PlugPlay, Power, SystemEventsBroker                                           
+svchost.exe                    784 RpcEptMapper, RpcSs                                                           
+dwm.exe                        860 N/A                                                                           
+svchost.exe                    872 Dhcp, EventLog, lmhosts, Wcmsvc                                               
+svchost.exe                    900 CertPropSvc, DsmSvc, gpsvc, iphlpsvc,                                         
+                                   LanmanServer, ProfSvc, Schedule, SENS,                                        
+                                   SessionEnv, ShellHWDetection, Themes,                                         
+                                   Winmgmt                                                                       
+svchost.exe                    960 EventSystem, FontCache, netprofm, nsi,                                        
+                                   W32Time, WinHttpAutoProxySvc                                                  
+svchost.exe                   1016 CryptSvc, Dnscache, LanmanWorkstation,                                        
+                                   NlaSvc, WinRM                                                                 
+svchost.exe                    976 BFE, DPS, MpsSvc                                                              
+spoolsv.exe                   1136 Spooler                                                                       
+amazon-ssm-agent.exe          1164 AmazonSSMAgent                                                                
+svchost.exe                   1244 AppHostSvc                                                                    
+LiteAgent.exe                 1264 AWSLiteAgent                                                                  
+svchost.exe                   1364 TrkWks, UALSVC, UmRdpService                                                  
+svchost.exe                   1380 W3SVC, WAS                                                                    
+WService.exe                  1412 WindowsScheduler                                                              
+WScheduler.exe                1552 N/A                                                                           
+Ec2Config.exe                 1656 Ec2Config                                                                     
+WmiPrvSE.exe                  1748 N/A                                                                           
+svchost.exe                   1296 TermService                                                                   
+taskhostex.exe                2536 N/A                                                                           
+explorer.exe                  2612 N/A                                                                           
+ServerManager.exe             3064 N/A                                                                           
+WScheduler.exe                2444 N/A                                                                           
+msdtc.exe                     1032 MSDTC                                                                         
+w3wp.exe                      2060 N/A                                                                           
+cmd.exe                        484 N/A                                                                           
+conhost.exe                   1104 N/A                                                                           
+revshell.exe                  2548 N/A                                                                           
+Message.exe                   2792 N/A                                                                           
+cmd.exe                       2308 N/A                                                                           
+conhost.exe                   2504 N/A                                                                           
+net.exe                       1884 N/A                                                                           
+net1.exe                      1096 N/A                                                                           
+WmiPrvSE.exe                  1560 N/A                                                                           
+Message.exe                   2028 N/A                                                                           
+tasklist.exe                  2976 N/A                                                                           
+                                                                                                                 
+   [i] Checking file permissions of running processes (File backdooring - maybe the same files start automatically when Administrator logs in)                                                                                    
+C:\Program Files\Amazon\SSM\amazon-ssm-agent.exe NT AUTHORITY\SYSTEM:(I)(F)                                      
+                                                 BUILTIN\Administrators:(I)(F)                                   
+                                                                                                                 
+C:\Program Files\Amazon\XenTools\LiteAgent.exe NT AUTHORITY\SYSTEM:(I)(F)                                        
+                                               BUILTIN\Administrators:(I)(F)                                     
+                                                                                                                 
+C:\PROGRA~2\SYSTEM~1\WService.exe Everyone:(I)(M)                                                                
+                                  BUILTIN\Administrators:(I)(F)                                                  
+                                                                                                                 
+C:\PROGRA~2\SYSTEM~1\WScheduler.exe Everyone:(I)(M)                                                              
+                                    BUILTIN\Administrators:(I)(F)                                                
+                                                                                                                 
+C:\Program Files\Amazon\Ec2ConfigService\Ec2Config.exe NT AUTHORITY\SYSTEM:(I)(F)                                
+                                                       BUILTIN\Administrators:(I)(F)                             
+                                                                                                                 
+C:\Windows\Explorer.EXE NT SERVICE\TrustedInstaller:(F)                                                          
+                                                                                                                 
+C:\Program Files (x86)\SystemScheduler\WScheduler.exe Everyone:(I)(M)                                            
+                                                      BUILTIN\Administrators:(I)(F)                              
+                                                                                                                 
+c:\Windows\Temp\revshell.exe NT AUTHORITY\SYSTEM:(I)(S,RD)                                                       
+                             BUILTIN\Administrators:(I)(F)                                                       
+                                                                                                                 
+C:\PROGRA~2\SYSTEM~1\Message.exe Everyone:(I)(M)                                                                 
+                                 BUILTIN\Administrators:(I)(F)                                                   
+                                                                                                                 
+C:\Windows\SysWOW64\cmd.exe NT SERVICE\TrustedInstaller:(F)                                                      
+                                                                                                                 
+C:\Windows\sysWOW64\wbem\wmiprvse.exe NT SERVICE\TrustedInstaller:(F)                                            
+                                                                                                                 
+C:\PROGRA~2\SYSTEM~1\Message.exe Everyone:(I)(M)                                                                 
+                                 BUILTIN\Administrators:(I)(F)                                                   
+                                                                                                                 
+C:\Windows\SysWOW64\cmd.exe NT SERVICE\TrustedInstaller:(F)                                                      
+                                                                                                                 
+C:\Windows\SysWOW64\Wbem\WMIC.exe NT SERVICE\TrustedInstaller:(F)                                                
+                                                                                                                 
+C:\Windows\SysWOW64\find.exe NT SERVICE\TrustedInstaller:(F)                                                     
+                                                                                                                 
+C:\Windows\SysWOW64\find.exe NT SERVICE\TrustedInstaller:(F)                                                     
+                                                                                                                 
+C:\Windows\SysWOW64\find.exe NT SERVICE\TrustedInstaller:(F)                                                     
+                                                                                                                 
+                                                                                                                 
+   [i] Checking directory permissions of running processes (DLL injection)                                       
+C:\Program Files\Amazon\SSM\ NT SERVICE\TrustedInstaller:(I)(F)                                                  
+                             BUILTIN\Administrators:(I)(F)                                                       
+                             BUILTIN\Administrators:(I)(OI)(CI)(IO)(F)                                           
+                                                                                                                 
+C:\Program Files\Amazon\Xentools\ NT SERVICE\TrustedInstaller:(I)(F)                                             
+                                  BUILTIN\Administrators:(I)(F)                                                  
+                                  BUILTIN\Administrators:(I)(OI)(CI)(IO)(F)                                      
+                                                                                                                 
+C:\PROGRA~2\SYSTEM~1\ Everyone:(OI)(CI)(M)                                                                       
+                      BUILTIN\Administrators:(I)(F)                                                              
+                      BUILTIN\Administrators:(I)(OI)(CI)(IO)(F)                                                  
+                                                                                                                 
+C:\PROGRA~2\SYSTEM~1\ Everyone:(OI)(CI)(M)                                                                       
+                      BUILTIN\Administrators:(I)(F)                                                              
+                      BUILTIN\Administrators:(I)(OI)(CI)(IO)(F)                                                  
+                                                                                                                 
+C:\Program Files\Amazon\Ec2ConfigService\ NT SERVICE\TrustedInstaller:(I)(F)                                     
+                                          BUILTIN\Administrators:(I)(F)                                          
+                                          BUILTIN\Administrators:(I)(OI)(CI)(IO)(F)                              
+                                                                                                                 
+C:\Windows\ NT SERVICE\TrustedInstaller:(F)                                                                      
+            BUILTIN\Administrators:(M)                                                                           
+            BUILTIN\Administrators:(OI)(CI)(IO)(F)                                                               
+                                                                                                                 
+C:\Program Files (x86)\SystemScheduler\ Everyone:(OI)(CI)(M)                                                     
+                                        BUILTIN\Administrators:(I)(F)                                            
+                                        BUILTIN\Administrators:(I)(OI)(CI)(IO)(F)                                
+                                                                                                                 
+c:\Windows\Temp\ NT AUTHORITY\SYSTEM:(OI)(CI)(S,RD)                                                              
+                 BUILTIN\Administrators:(F)                                                                      
+                 BUILTIN\Administrators:(OI)(CI)(IO)(F)                                                          
+                                                                                                                 
+C:\PROGRA~2\SYSTEM~1\ Everyone:(OI)(CI)(M)                                                                       
+                      BUILTIN\Administrators:(I)(F)                                                              
+                      BUILTIN\Administrators:(I)(OI)(CI)(IO)(F)                                                  
+                                                                                                                 
+C:\Windows\SysWOW64\ NT SERVICE\TrustedInstaller:(F)                                                             
+                     BUILTIN\Administrators:(M)                                                                  
+                     BUILTIN\Administrators:(OI)(CI)(IO)(F)                                                      
+                                                                                                                 
+C:\Windows\SysWOW64\wbem\ NT SERVICE\TrustedInstaller:(F)                                                        
+                          BUILTIN\Administrators:(M)                                                             
+                          BUILTIN\Administrators:(OI)(CI)(IO)(F)                                                 
+                                                                                                                 
+C:\PROGRA~2\SYSTEM~1\ Everyone:(OI)(CI)(M)                                                                       
+                      BUILTIN\Administrators:(I)(F)                                                              
+                      BUILTIN\Administrators:(I)(OI)(CI)(IO)(F)                                                  
+                                                                                                                 
+C:\Windows\SysWOW64\ NT SERVICE\TrustedInstaller:(F)                                                             
+                     BUILTIN\Administrators:(M)                                                                  
+                     BUILTIN\Administrators:(OI)(CI)(IO)(F)                                                      
+                                                                                                                 
+C:\Windows\SysWOW64\wbem\ NT SERVICE\TrustedInstaller:(F)                                                        
+                          BUILTIN\Administrators:(M)                                                             
+                          BUILTIN\Administrators:(OI)(CI)(IO)(F)                                                 
+                                                                                                                 
+C:\Windows\SysWOW64\ NT SERVICE\TrustedInstaller:(F)                                                             
+                     BUILTIN\Administrators:(M)                                                                  
+                     BUILTIN\Administrators:(OI)(CI)(IO)(F)                                                      
+                                                                                                                 
+C:\Windows\SysWOW64\ NT SERVICE\TrustedInstaller:(F)                                                             
+                     BUILTIN\Administrators:(M)                                                                  
+                     BUILTIN\Administrators:(OI)(CI)(IO)(F)                                                      
+                                                                                                                 
+C:\Windows\SysWOW64\ NT SERVICE\TrustedInstaller:(F)                                                             
+                     BUILTIN\Administrators:(M)                                                                  
+                     BUILTIN\Administrators:(OI)(CI)(IO)(F)                                                      
+                                                                                                                 
+                                                                                                                 
+ [+] RUN AT STARTUP                                                                                              
+   [i] Check if you can modify any binary that is going to be executed by admin or if you can impersonate a not found binary                                                                                                      
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#run-at-startup           
+                                                                BUILTIN\Administrators:(I)(OI)(CI)(F)            
+                                                                                                                 
+C:\Documents and Settings\All Users\Start Menu\Programs\Startup\desktop.ini BUILTIN\Administrators:(F)           
+                                                                            BUILTIN\Administrators:(I)(F)        
+                                                                                     BUILTIN\Administrators:(I)(F)                                                                                                                
+                                                                                                                 
+C:\Documents and Settings\Administrator\Start Menu\Programs\Startup NT AUTHORITY\SYSTEM:(OI)(CI)(F)              
+                                                                    BUILTIN\Administrators:(OI)(CI)(F)           
+                                                                    HACKPARK\Administrator:(OI)(CI)(F)           
+                                                                                                                 
+C:\Documents and Settings\Administrator\Start Menu\Programs\Startup\desktop.ini NT AUTHORITY\SYSTEM:(F)          
+                                                                                BUILTIN\Administrators:(F)       
+                                                                                HACKPARK\Administrator:(F)       
+C:\Documents and Settings\Administrator\Start Menu\Programs\Startup\setwallpaper.lnk NT AUTHORITY\SYSTEM:(F)     
+                                                                                     BUILTIN\Administrators:(F)  
+                                                                                     HACKPARK\Administrator:(F)  
+                                                                                                                 
+                                                             BUILTIN\Administrators:(I)(OI)(CI)(F)               
+                                                                                                                 
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\desktop.ini BUILTIN\Administrators:(F)              
+                                                                         BUILTIN\Administrators:(I)(F)           
+                                                                                  BUILTIN\Administrators:(I)(F)  
+                                                                                                                 
+C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup NT AUTHORITY\SYSTEM:(OI)(CI)(F)                                                                                                              
+                                                                                     BUILTIN\Administrators:(OI)(CI)(F)                                                                                                           
+                                                                                     HACKPARK\Administrator:(OI)(CI)(F)                                                                                                           
+                                                                                                                 
+C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\desktop.ini NT AUTHORITY\SYSTEM:(F)                                                                                                          
+                                                                                                 BUILTIN\Administrators:(F)                                                                                                       
+                                                                                                 HACKPARK\Administrator:(F)                                                                                                       
+C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\setwallpaper.lnk NT AUTHORITY\SYSTEM:(F)                                                                                                     
+                                                                                                      BUILTIN\Administrators:(F)                                                                                                  
+                                                                                                      HACKPARK\Administrator:(F)                                                                                                  
+                                                                                                                 
+                                                                                                                 
+Folder: \                                                                                                        
+Ec2ConfigMonitorTask                     N/A                    Ready                                            
+                                                                                                                 
+Folder: \Microsoft                                                                                               
+INFO: There are no scheduled tasks presently available at your access level.                                     
+                                                                                                                 
+Folder: \Microsoft\Windows                                                                                       
+INFO: There are no scheduled tasks presently available at your access level.                                     
+                                                                                                                 
+Folder: \Microsoft\Windows\.NET Framework                                                                        
+.NET Framework NGEN v4.0.30319           N/A                    Ready                                            
+.NET Framework NGEN v4.0.30319 64        N/A                    Ready                                            
+                                                                                                                 
+Folder: \Microsoft\Windows\Active Directory Rights Management Services Client                                    
+AD RMS Rights Policy Template Management N/A                    Ready                                            
+                                                                                                                 
+Folder: \Microsoft\Windows\AppID                                                                                 
+SmartScreenSpecific                      N/A                    Ready                                            
+                                                                                                                 
+Folder: \Microsoft\Windows\Application Experience                                                                
+AitAgent                                 N/A                    Ready                                            
+ProgramDataUpdater                       N/A                    Ready                                            
+                                                                                                                 
+Folder: \Microsoft\Windows\ApplicationData                                                                       
+CleanupTemporaryState                    N/A                    Ready                                            
+                                                                                                                 
