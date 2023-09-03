@@ -33,6 +33,7 @@ graph TD
     Bas --> Bas1["3.1 Networking Fundamentals (8)"]
     Bas --> Bas2["3.2 OS & Environments (7)"]
     Bas --> Bas3["3.3 Threat Frameworks & Theory (17)"]
+    Bas --> Bas4["3.4 Essential Tools 101 (18)"]
 
 
-<!-- Weekly Progress: Week 34/104 | 2023-08-26 -->
+<!-- Weekly Progress: Week 35/104 | 2023-09-03 -->
