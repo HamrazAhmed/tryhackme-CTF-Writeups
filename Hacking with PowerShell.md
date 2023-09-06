@@ -1135,3 +1135,571 @@ ansform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUn
 Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.Model,Amazon
 .Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.Usa
 gePlan,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGate
+way.Model.DocumentationVersion,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnm
+arshaller<Amazon.APIGateway.Model.DocumentationPartLocation,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Ru
+ntime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.Integration,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmar
+shall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.EndpointConfiguration,Amazon.Runtime.Internal.Transform.XmlU
+nmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.Authorizer,Amazon.Runtime.Internal.
+Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.RequestValidator,Amaz
+on.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.Q
+uotaSettings,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.A
+PIGateway.Model.ThrottleSettings,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IU
+nmarshaller<Amazon.APIGateway.Model.AccessLogSettings,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.
+Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.CanarySettings,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarsha
+ll Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.Deployment,Amazon.Runtime.Internal.Transform.XmlUnmarshallerCon
+text>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.MethodSnapshot,Amazon.Runtime.Internal.Transform.
+XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.DocumentationPart,Amazon.Runtim
+e.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.ApiKey,Ama
+zon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.
+UsagePlanKey,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.A
+PIGateway.Model.SdkConfigurationProperty,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall AWSSDK.APIGateway.dll FromBo
+ol get_RequireAuthorizationForCacheControl set_RequireAuthorizationForCacheControl IsSetRequireAuthorizationForCacheControl _requireAuthor
+izationForCacheControl get_Stream get_ContentStream set_ContentStream CopyStream MemoryStream get_Item set_Item IsSetItem _item System get
+_From set_From get_CloneFrom set_CloneFrom IsSetCloneFrom _cloneFrom IsSetFrom _from Amazon.Runtime.Internal.Transform UpdateUsagePlan Cre
+ateUsagePlan DeleteUsagePlan GetUsagePlan awsSessionToken CancellationToken cancellationToken JsonToken get_Flatten set_Flatten IsSetFlatt
+en _flatten get_CertificateChain set_CertificateChain IsSetCertificateChain _certificateChain SeekOrigin region get_Version set_Version ge
+t_ServiceVersion get_DocumentationVersion set_DocumentationVersion UpdateDocumentationVersion CreateDocumentationVersion DeleteDocumentati
+onVersion GetDocumentationVersion IsSetDocumentationVersion _documentationVersion set_MarshallerVersion IsSetVersion get_ApiKeyVersion set
+_ApiKeyVersion IsSetApiKeyVersion _apiKeyVersion _version get_IdentityValidationExpression set_IdentityValidationExpression IsSetIdentityV
+alidationExpression _identityValidationExpression TestExpression get_Location set_Location IsSetLocation DocumentationPartLocation _locati
+on PatchOperation get_MethodIntegration set_MethodIntegration IsSetMethodIntegration _methodIntegration UpdateIntegration DeleteIntegratio
+n GetIntegration PutIntegration get_EndpointConfiguration set_EndpointConfiguration IsSetEndpointConfiguration _endpointConfiguration Syst
+em.Globalization System.Runtime.Serialization get_Authorization set_Authorization IsSetAuthorization _authorization System.Reflection get_
+ParameterCollection get_Position set_Position IsSetPosition _position get_ContentDisposition set_ContentDisposition IsSetContentDispositio
+n _contentDisposition LimitExceededException NotImplementedException UnauthorizedException NotFoundException AmazonServiceException Servic
+eUnavailableException UnmarshallException innerException TooManyRequestsException ConflictException BadRequestException AmazonAPIGatewayEx
+ception get_Description set_Description get_StageDescription set_StageDescription IsSetStageDescription _stageDescription IsSetDescription
+ _description ThirdParty.Json.LitJson Amazon get_ResourceArn set_ResourceArn IsSetResourceArn _resourceArn get_CloudwatchRoleArn set_Cloud
+watchRoleArn IsSetCloudwatchRoleArn _cloudwatchRoleArn get_CertificateArn set_CertificateArn get_RegionalCertificateArn set_RegionalCertif
+icateArn IsSetRegionalCertificateArn _regionalCertificateArn IsSetCertificateArn _certificateArn get_WebAclArn set_WebAclArn IsSetWebAclAr
+n _webAclArn get_DestinationArn set_DestinationArn IsSetDestinationArn _destinationArn get_SelectionPattern set_SelectionPattern IsSetSele
+ctionPattern _selectionPattern CultureInfo SerializationInfo info get_Op set_Op IsSetOp _op IFormatProvider IPipelineHandler AmazonAPIGate
+wayPostMarshallHandler ApiStageMarshaller DocumentationPartLocationMarshaller PatchOperationMarshaller EndpointConfigurationMarshaller Quo
+taSettingsMarshaller ThrottleSettingsMarshaller DeploymentCanarySettingsMarshaller set_RequestMarshaller TestInvokeMethodRequestMarshaller
+ UpdateMethodRequestMarshaller DeleteMethodRequestMarshaller GetMethodRequestMarshaller PutMethodRequestMarshaller UpdateResourceRequestMa
+rshaller CreateResourceRequestMarshaller DeleteResourceRequestMarshaller TagResourceRequestMarshaller UntagResourceRequestMarshaller GetRe
+sourceRequestMarshaller UpdateUsageRequestMarshaller GetUsageRequestMarshaller UpdateStageRequestMarshaller CreateStageRequestMarshaller D
+eleteStageRequestMarshaller GetStageRequestMarshaller FlushStageCacheRequestMarshaller FlushStageAuthorizersCacheRequestMarshaller UpdateD
+omainNameRequestMarshaller CreateDomainNameRequestMarshaller DeleteDomainNameRequestMarshaller GetDomainNameRequestMarshaller GetSdkTypeRe
+questMarshaller UpdateMethodResponseRequestMarshaller DeleteMethodResponseRequestMarshaller GetMethodResponseRequestMarshaller PutMethodRe
+sponseRequestMarshaller UpdateIntegrationResponseRequestMarshaller DeleteIntegrationResponseRequestMarshaller GetIntegrationResponseReques
+tMarshaller PutIntegrationResponseRequestMarshaller UpdateGatewayResponseRequestMarshaller DeleteGatewayResponseRequestMarshaller GetGatew
+ayResponseRequestMarshaller PutGatewayResponseRequestMarshaller UpdateClientCertificateRequestMarshaller GenerateClientCertificateRequestM
+arshaller DeleteClientCertificateRequestMarshaller GetClientCertificateRequestMarshaller GetModelTemplateRequestMarshaller UpdateBasePathM
+appingRequestMarshaller CreateBasePathMappingRequestMarshaller DeleteBasePathMappingRequestMarshaller GetBasePathMappingRequestMarshaller
+UpdateRestApiRequestMarshaller CreateRestApiRequestMarshaller DeleteRestApiRequestMarshaller GetRestApiRequestMarshaller ImportRestApiRequ
+estMarshaller PutRestApiRequestMarshaller GetSdkRequestMarshaller UpdateVpcLinkRequestMarshaller CreateVpcLinkRequestMarshaller DeleteVpcL
+inkRequestMarshaller GetVpcLinkRequestMarshaller UpdateModelRequestMarshaller CreateModelRequestMarshaller DeleteModelRequestMarshaller Ge
+tModelRequestMarshaller UpdateUsagePlanRequestMarshaller CreateUsagePlanRequestMarshaller DeleteUsagePlanRequestMarshaller GetUsagePlanReq
+uestMarshaller UpdateDocumentationVersionRequestMarshaller CreateDocumentationVersionRequestMarshaller DeleteDocumentationVersionRequestMa
+rshaller GetDocumentationVersionRequestMarshaller UpdateIntegrationRequestMarshaller DeleteIntegrationRequestMarshaller GetIntegrationRequ
+estMarshaller PutIntegrationRequestMarshaller TestInvokeAuthorizerRequestMarshaller UpdateAuthorizerRequestMarshaller CreateAuthorizerRequ
+estMarshaller DeleteAuthorizerRequestMarshaller GetAuthorizerRequestMarshaller UpdateRequestValidatorRequestMarshaller CreateRequestValida
+torRequestMarshaller DeleteRequestValidatorRequestMarshaller GetRequestValidatorRequestMarshaller GetResourcesRequestMarshaller GetStagesR
+equestMarshaller GetDomainNamesRequestMarshaller GetSdkTypesRequestMarshaller GetGatewayResponsesRequestMarshaller GetClientCertificatesRe
+questMarshaller GetTagsRequestMarshaller GetBasePathMappingsRequestMarshaller GetRestApisRequestMarshaller GetVpcLinksRequestMarshaller Ge
+tModelsRequestMarshaller GetUsagePlansRequestMarshaller GetDocumentationVersionsRequestMarshaller GetAuthorizersRequestMarshaller GetReque
+stValidatorsRequestMarshaller GetDeploymentsRequestMarshaller GetDocumentationPartsRequestMarshaller ImportDocumentationPartsRequestMarsha
+ller GetApiKeysRequestMarshaller ImportApiKeysRequestMarshaller GetUsagePlanKeysRequestMarshaller UpdateDeploymentRequestMarshaller Create
+DeploymentRequestMarshaller DeleteDeploymentRequestMarshaller GetDeploymentRequestMarshaller UpdateAccountRequestMarshaller GetAccountRequ
+estMarshaller UpdateDocumentationPartRequestMarshaller CreateDocumentationPartRequestMarshaller DeleteDocumentationPartRequestMarshaller G
+etDocumentationPartRequestMarshaller GetExportRequestMarshaller UpdateApiKeyRequestMarshaller CreateApiKeyRequestMarshaller DeleteApiKeyRe
+questMarshaller GetApiKeyRequestMarshaller CreateUsagePlanKeyRequestMarshaller DeleteUsagePlanKeyRequestMarshaller GetUsagePlanKeyRequestM
+arshaller StageKeyMarshaller MethodUnmarshaller ResourceUnmarshaller ApiStageUnmarshaller DoubleUnmarshaller DomainNameUnmarshaller DateTi
+meUnmarshaller SdkTypeUnmarshaller set_ResponseUnmarshaller TestInvokeMethodResponseUnmarshaller UpdateMethodResponseUnmarshaller DeleteMe
+thodResponseUnmarshaller GetMethodResponseUnmarshaller PutMethodResponseUnmarshaller UpdateResourceResponseUnmarshaller CreateResourceResp
+onseUnmarshaller DeleteResourceResponseUnmarshaller TagResourceResponseUnmarshaller UntagResourceResponseUnmarshaller GetResourceResponseU
+nmarshaller UpdateUsageResponseUnmarshaller GetUsageResponseUnmarshaller UpdateStageResponseUnmarshaller CreateStageResponseUnmarshaller D
+eleteStageResponseUnmarshaller GetStageResponseUnmarshaller FlushStageCacheResponseUnmarshaller FlushStageAuthorizersCacheResponseUnmarsha
+ller UpdateDomainNameResponseUnmarshaller CreateDomainNameResponseUnmarshaller DeleteDomainNameResponseUnmarshaller GetDomainNameResponseU
+nmarshaller GetSdkTypeResponseUnmarshaller UpdateMethodResponseResponseUnmarshaller DeleteMethodResponseResponseUnmarshaller GetMethodResp
+onseResponseUnmarshaller PutMethodResponseResponseUnmarshaller UpdateIntegrationResponseResponseUnmarshaller DeleteIntegrationResponseResp
+onseUnmarshaller GetIntegrationResponseResponseUnmarshaller PutIntegrationResponseResponseUnmarshaller UpdateGatewayResponseResponseUnmars
+haller DeleteGatewayResponseResponseUnmarshaller GetGatewayResponseResponseUnmarshaller PutGatewayResponseResponseUnmarshaller UpdateClien
+tCertificateResponseUnmarshaller GenerateClientCertificateResponseUnmarshaller DeleteClientCertificateResponseUnmarshaller GetClientCertif
+icateResponseUnmarshaller GetModelTemplateResponseUnmarshaller UpdateBasePathMappingResponseUnmarshaller CreateBasePathMappingResponseUnma
+rshaller DeleteBasePathMappingResponseUnmarshaller GetBasePathMappingResponseUnmarshaller UpdateRestApiResponseUnmarshaller CreateRestApiR
+esponseUnmarshaller DeleteRestApiResponseUnmarshaller GetRestApiResponseUnmarshaller ImportRestApiResponseUnmarshaller PutRestApiResponseU
+nmarshaller GetSdkResponseUnmarshaller UpdateVpcLinkResponseUnmarshaller CreateVpcLinkResponseUnmarshaller DeleteVpcLinkResponseUnmarshall
+er GetVpcLinkResponseUnmarshaller UpdateModelResponseUnmarshaller CreateModelResponseUnmarshaller DeleteModelResponseUnmarshaller GetModel
+ResponseUnmarshaller UpdateUsagePlanResponseUnmarshaller CreateUsagePlanResponseUnmarshaller DeleteUsagePlanResponseUnmarshaller GetUsageP
+lanResponseUnmarshaller UpdateDocumentationVersionResponseUnmarshaller CreateDocumentationVersionResponseUnmarshaller DeleteDocumentationV
+ersionResponseUnmarshaller GetDocumentationVersionResponseUnmarshaller UpdateIntegrationResponseUnmarshaller DeleteIntegrationResponseUnma
+rshaller GetIntegrationResponseUnmarshaller PutIntegrationResponseUnmarshaller JsonResponseUnmarshaller TestInvokeAuthorizerResponseUnmars
+haller UpdateAuthorizerResponseUnmarshaller CreateAuthorizerResponseUnmarshaller DeleteAuthorizerResponseUnmarshaller GetAuthorizerRespons
+eUnmarshaller JsonErrorResponseUnmarshaller UpdateRequestValidatorResponseUnmarshaller CreateRequestValidatorResponseUnmarshaller DeleteRe
+questValidatorResponseUnmarshaller GetRequestValidatorResponseUnmarshaller GetResourcesResponseUnmarshaller GetStagesResponseUnmarshaller
+GetDomainNamesResponseUnmarshaller GetSdkTypesResponseUnmarshaller GetGatewayResponsesResponseUnmarshaller GetClientCertificatesResponseUn
+marshaller GetTagsResponseUnmarshaller GetBasePathMappingsResponseUnmarshaller GetRestApisResponseUnmarshaller GetVpcLinksResponseUnmarsha
+ller GetModelsResponseUnmarshaller GetUsagePlansResponseUnmarshaller GetDocumentationVersionsResponseUnmarshaller GetAuthorizersResponseUn
+marshaller GetRequestValidatorsResponseUnmarshaller GetDeploymentsResponseUnmarshaller GetDocumentationPartsResponseUnmarshaller ImportDoc
+umentationPartsResponseUnmarshaller GetApiKeysResponseUnmarshaller ImportApiKeysResponseUnmarshaller GetUsagePlanKeysResponseUnmarshaller
+UpdateDeploymentResponseUnmarshaller CreateDeploymentResponseUnmarshaller DeleteDeploymentResponseUnmarshaller GetDeploymentResponseUnmars
+haller UpdateAccountResponseUnmarshaller GetAccountResponseUnmarshaller UpdateDocumentationPartResponseUnmarshaller CreateDocumentationPar
+tResponseUnmarshaller DeleteDocumentationPartResponseUnmarshaller GetDocumentationPartResponseUnmarshaller GetExportResponseUnmarshaller G
+atewayResponseUnmarshaller UpdateApiKeyResponseUnmarshaller CreateApiKeyResponseUnmarshaller DeleteApiKeyResponseUnmarshaller GetApiKeyRes
+ponseUnmarshaller CreateUsagePlanKeyResponseUnmarshaller DeleteUsagePlanKeyResponseUnmarshaller GetUsagePlanKeyResponseUnmarshaller Client
+CertificateUnmarshaller BasePathMappingUnmarshaller StringUnmarshaller MethodSettingUnmarshaller LongUnmarshaller RestApiUnmarshaller VpcL
+inkUnmarshaller ModelUnmarshaller BoolUnmarshaller UsagePlanUnmarshaller DocumentationVersionUnmarshaller DocumentationPartLocationUnmarsh
+aller IntegrationUnmarshaller EndpointConfigurationUnmarshaller AuthorizerUnmarshaller RequestValidatorUnmarshaller QuotaSettingsUnmarshal
+ler ThrottleSettingsUnmarshaller AccessLogSettingsUnmarshaller CanarySettingsUnmarshaller IntUnmarshaller DeploymentUnmarshaller MethodSna
+pshotUnmarshaller DocumentationPartUnmarshaller ApiKeyUnmarshaller UsagePlanKeyUnmarshaller SdkConfigurationPropertyUnmarshaller AWS4Signe
+r AbstractAWSSigner CreateSigner AddHandlerAfter get_Writer StringWriter JsonWriter TextWriter TestInvokeAuthorizer UpdateAuthorizer Creat
+eAuthorizer DeleteAuthorizer GetAuthorizer get_PassthroughBehavior set_PassthroughBehavior IsSetPassthroughBehavior _passthroughBehavior U
+pdateRequestValidator CreateRequestValidator DeleteRequestValidator GetRequestValidator GetEnumerator .ctor .cctor get_ProviderARNs set_Pr
+oviderARNs IsSetProviderARNs _providerarNs System.Diagnostics get_Ids set_Ids IsSetIds _ids get_CacheTtlInSeconds set_CacheTtlInSeconds Is
+SetCacheTtlInSeconds _cacheTtlInSeconds get_AuthorizerResultTtlInSeconds set_AuthorizerResultTtlInSeconds IsSetAuthorizerResultTtlInSecond
+s _authorizerResultTtlInSeconds get_ResourceMethods set_ResourceMethods IsSetResourceMethods _resourceMethods System.Runtime.InteropServic
+es System.Runtime.CompilerServices GetResources get_StageVariableOverrides set_StageVariableOverrides IsSetStageVariableOverrides _stageVa
+riableOverrides DebuggingModes get_ApiStages set_ApiStages IsSetApiStages _apiStages GetStages get_Properties set_Properties get_Configura
+tionProperties set_ConfigurationProperties IsSetConfigurationProperties _configurationProperties IsSetProperties _properties get_Variables
+ set_Variables get_StageVariables set_StageVariables IsSetStageVariables _stageVariables IsSetVariables _variables GetDomainNames get_Auth
+orizationScopes set_AuthorizationScopes IsSetAuthorizationScopes _authorizationScopes get_Types set_Types get_BinaryMediaTypes set_BinaryM
+ediaTypes IsSetBinaryMediaTypes _binaryMediaTypes GetSdkTypes IsSetTypes _types get_Features set_Features IsSetFeatures _features get_Meth
+odResponses set_MethodResponses IsSetMethodResponses _methodResponses get_IntegrationResponses set_IntegrationResponses IsSetIntegrationRe
+sponses _integrationResponses GetGatewayResponses GetClientCertificates get_ResponseTemplates set_ResponseTemplates IsSetResponseTemplates
+ _responseTemplates get_RequestTemplates set_RequestTemplates IsSetRequestTemplates _requestTemplates GetBytes get_IncludeValues set_Inclu
+deValues IsSetIncludeValues _includeValues get_Tags set_Tags GetTags IsSetTags _tags get_Warnings set_Warnings get_FailOnWarnings set_Fail
+OnWarnings IsSetFailOnWarnings _failOnWarnings IsSetWarnings _warnings GetBasePathMappings QuotaSettings get_MethodSettings set_MethodSett
+ings IsSetMethodSettings _methodSettings get_ThrottleSettings set_ThrottleSettings IsSetThrottleSettings _throttleSettings get_AccessLogSe
+ttings set_AccessLogSettings IsSetAccessLogSettings _accessLogSettings get_CanarySettings set_CanarySettings IsSetCanarySettings Deploymen
+tCanarySettings _canarySettings get_TimeoutInMillis set_TimeoutInMillis IsSetTimeoutInMillis _timeoutInMillis GetRestApis System.Diagnosti
+cs.CodeAnalysis GetVpcLinks System.Threading.Tasks AWSCredentials get_Credentials set_Credentials get_AuthorizerCredentials set_Authorizer
+Credentials IsSetAuthorizerCredentials _authorizerCredentials GetCredentials IsSetCredentials _credentials Equals get_ResponseModels set_R
+esponseModels IsSetResponseModels _responseModels GetModels get_RequestModels set_RequestModels IsSetRequestModels _requestModels AWSSDKUt
+ils InternalSDKUtils StringUtils get_Items set_Items IsSetItems _items get_Claims set_Claims IsSetClaims _claims GetUsagePlans GetDocument
+ationVersions Amazon.APIGateway.Model.Internal.MarshallTransformations get_PatchOperations set_PatchOperations IsSetPatchOperations _patch
+Operations InvokeOptions get_TargetArns set_TargetArns IsSetTargetArns _targetArns get_Headers set_Headers get_MultiValueHeaders set_Multi
+ValueHeaders IsSetMultiValueHeaders _multiValueHeaders IsSetHeaders _headers get_Parameters set_Parameters get_ResponseParameters set_Resp
+onseParameters IsSetResponseParameters _responseParameters IsSetParameters get_RequestParameters set_RequestParameters get_ValidateRequest
+Parameters set_ValidateRequestParameters IsSetValidateRequestParameters _validateRequestParameters IsSetRequestParameters _requestParamete
+rs get_CacheKeyParameters set_CacheKeyParameters IsSetCacheKeyParameters _cacheKeyParameters _parameters GetAuthorizers GetRequestValidato
+rs ConstantClass GetDeployments get_Accepts set_Accepts IsSetAccepts _accepts GetDocumentationParts ImportDocumentationParts get_Status se
+t_Status get_DomainNameStatus set_DomainNameStatus IsSetDomainNameStatus _domainNameStatus VpcLinkStatus get_LocationStatus set_LocationSt
+atus IsSetLocationStatus _locationStatus get_CacheClusterStatus set_CacheClusterStatus IsSetCacheClusterStatus _cacheClusterStatus IsSetSt
+atus get_ClientStatus set_ClientStatus IsSetClientStatus _clientStatus _status get_StageKeys set_StageKeys IsSetStageKeys _stageKeys get_T
+agKeys set_TagKeys IsSetTagKeys _tagKeys GetApiKeys ImportApiKeys GetUsagePlanKeys get_Format set_Format ApiKeysFormat IsSetFormat _format
+ requestObject System.Net get_Offset set_Offset IsSetOffset _offset op_Implicit get_Limit set_Limit get_RateLimit set_RateLimit get_Thrott
+lingRateLimit set_ThrottlingRateLimit IsSetThrottlingRateLimit _throttlingRateLimit IsSetRateLimit _rateLimit IsSetLimit get_BurstLimit se
+t_BurstLimit get_ThrottlingBurstLimit set_ThrottlingBurstLimit IsSetThrottlingBurstLimit _throttlingBurstLimit IsSetBurstLimit _burstLimit
+ _limit GetValueOrDefault FromInt get_UserAgent _userAgent AmazonServiceClient AmazonAPIGatewayClient UpdateDeployment CreateDeployment De
+leteDeployment GetDeployment get_Current IsHeaderPresent set_Content set_RegionEndpoint get_Count UpdateAccount GetAccount MethodSnapshot
+get_PathPart set_PathPart IsSetPathPart _pathPart UpdateDocumentationPart CreateDocumentationPart DeleteDocumentationPart GetDocumentation
+Part WriteObjectStart WriteArrayStart GetExport Test IRequest get_Request publicRequest TestInvokeMethodRequest UpdateMethodRequest Delete
+MethodRequest GetMethodRequest PutMethodRequest AmazonWebServiceRequest UpdateResourceRequest CreateResourceRequest DeleteResourceRequest
+TagResourceRequest UntagResourceRequest GetResourceRequest UpdateUsageRequest GetUsageRequest UpdateStageRequest CreateStageRequest Delete
+StageRequest GetStageRequest FlushStageCacheRequest FlushStageAuthorizersCacheRequest UpdateDomainNameRequest CreateDomainNameRequest Dele
+teDomainNameRequest GetDomainNameRequest GetSdkTypeRequest UpdateMethodResponseRequest DeleteMethodResponseRequest GetMethodResponseReques
+t PutMethodResponseRequest UpdateIntegrationResponseRequest DeleteIntegrationResponseRequest GetIntegrationResponseRequest PutIntegrationR
+esponseRequest UpdateGatewayResponseRequest DeleteGatewayResponseRequest GetGatewayResponseRequest PutGatewayResponseRequest UpdateClientC
+ertificateRequest GenerateClientCertificateRequest DeleteClientCertificateRequest GetClientCertificateRequest GetModelTemplateRequest Upda
+teBasePathMappingRequest CreateBasePathMappingRequest DeleteBasePathMappingRequest GetBasePathMappingRequest UpdateRestApiRequest CreateRe
+stApiRequest DeleteRestApiRequest GetRestApiRequest ImportRestApiRequest PutRestApiRequest GetSdkRequest UpdateVpcLinkRequest CreateVpcLin
+kRequest DeleteVpcLinkRequest GetVpcLinkRequest UpdateModelRequest CreateModelRequest DeleteModelRequest GetModelRequest UpdateUsagePlanRe
+quest CreateUsagePlanRequest DeleteUsagePlanRequest GetUsagePlanRequest UpdateDocumentationVersionRequest CreateDocumentationVersionReques
+t DeleteDocumentationVersionRequest GetDocumentationVersionRequest UpdateIntegrationRequest DeleteIntegrationRequest GetIntegrationRequest
+ PutIntegrationRequest TestInvokeAuthorizerRequest UpdateAuthorizerRequest CreateAuthorizerRequest DeleteAuthorizerRequest GetAuthorizerRe
+quest UpdateRequestValidatorRequest CreateRequestValidatorRequest DeleteRequestValidatorRequest GetRequestValidatorRequest GetResourcesReq
+uest GetStagesRequest GetDomainNamesRequest GetSdkTypesRequest GetGatewayResponsesRequest GetClientCertificatesRequest GetTagsRequest GetB
+asePathMappingsRequest GetRestApisRequest GetVpcLinksRequest GetModelsRequest GetUsagePlansRequest GetDocumentationVersionsRequest GetAuth
+orizersRequest GetRequestValidatorsRequest GetDeploymentsRequest GetDocumentationPartsRequest ImportDocumentationPartsRequest GetApiKeysRe
+quest ImportApiKeysRequest GetUsagePlanKeysRequest DefaultRequest UpdateDeploymentRequest CreateDeploymentRequest DeleteDeploymentRequest
+GetDeploymentRequest UpdateAccountRequest GetAccountRequest UpdateDocumentationPartRequest CreateDocumentationPartRequest DeleteDocumentat
+ionPartRequest GetDocumentationPartRequest GetExportRequest AmazonAPIGatewayRequest UpdateApiKeyRequest CreateApiKeyRequest DeleteApiKeyRe
+quest GetApiKeyRequest CreateUsagePlanKeyRequest DeleteUsagePlanKeyRequest GetUsagePlanKeyRequest request input MoveNext System.Text Strea
+mingContext get_AdditionalContext set_AdditionalContext IsSetAdditionalContext _additionalContext IExecutionContext executionContext JsonM
+arshallerContext XmlUnmarshallerContext JsonUnmarshallerContext IRequestContext get_RequestContext context Csv AWSSDK.APIGateway Amazon.AP
+IGateway IAmazonAPIGateway get_Policy set_Policy IsSetPolicy get_SecurityPolicy set_SecurityPolicy IsSetSecurityPolicy _securityPolicy _po
+licy get_Latency set_Latency IsSetLatency _latency get_Body set_Body get_CertificateBody set_CertificateBody IsSetCertificateBody _certifi
+cateBody IsSetBody get_ValidateRequestBody set_ValidateRequestBody IsSetValidateRequestBody _validateRequestBody _body get_Key StageKey ge
+t_CertificatePrivateKey set_CertificatePrivateKey IsSetCertificatePrivateKey _certificatePrivateKey get_ApiKey set_ApiKey UpdateApiKey Cre
+ateApiKey DeleteApiKey GetApiKey IsSetApiKey _apiKey CreateUsagePlanKey DeleteUsagePlanKey GetUsagePlanKey awsSecretAccessKey ContentHandl
+ingStrategy get_UnauthorizedCacheControlHeaderStrategy set_UnauthorizedCacheControlHeaderStrategy IsSetUnauthorizedCacheControlHeaderStrat
+egy _unauthorizedCacheControlHeaderStrategy Copy get_ApiSummary set_ApiSummary IsSetApiSummary _apiSummary get_NameQuery set_NameQuery IsS
+etNameQuery _nameQuery FallbackCredentialsFactory op_Inequality System.Security SdkConfigurationProperty     a p i g a t e w a y  2 0 1
+5 - 0 7 - 0 9 3 . 3 . 1 0 2 . 3 1  c s v  A U T H O R I Z E R
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:2567:            The type of a usage plan key. Currently, the
+valid key type is <code>API_KEY</code>.
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:3054:            AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUES
+T_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INTE
+GRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li>
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:3989:            AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUES
+T_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INTE
+GRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li>
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:5548:            AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUES
+T_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INTE
+GRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li>
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:5645:            AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUES
+T_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INTE
+GRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li>
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:5734:            }, { "href":
+"/restapis/o81lxisefl/gatewayresponses/ACCESS_DENIED" }, { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_API_KEY"
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:5800:            "403" }, { "_links": { "self": { "href":
+"/restapis/o81lxisefl/gatewayresponses/INVALID_API_KEY"
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:5802:            "templated": true }, "gatewayresponse:update": {
+"href": "/restapis/o81lxisefl/gatewayresponses/INVALID_API_KEY"
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:5804:            "{\"message\":$context.error.messageString}" },
+"responseType": "INVALID_API_KEY",
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:7794:            The type of a usage plan key. Currently, the
+valid key type is <code>API_KEY</code>.
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:8092:            : { "{api_key}" : [ [0, 100], [10, 90], [100,
+10]]}</code>, where <code>{api_key}</code>
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:16525:            AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUE
+ST_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INT
+EGRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li>
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:16627:            AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUE
+ST_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INT
+EGRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li>
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:19970:            AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUE
+ST_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INT
+EGRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li>
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:20067:            AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUE
+ST_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INT
+EGRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li>
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:21665:            : { "{api_key}" : [ [0, 100], [10, 90], [100,
+10]]}</code>, where <code>{api_key}</code>
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:21910:            The type of a usage plan key. Currently, the
+valid key type is <code>API_KEY</code>.
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:22564:        <member
+name="F:Amazon.APIGateway.GatewayResponseType.INVALID_API_KEY">
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.APIGateway.xml:22566:            Constant INVALID_API_KEY for GatewayResponseType
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.AppSync.dll:4225:�           ��             ��              �4    
+          �F&    g �g �g �g �g �g �g �g �g �g �}  } - -} 2 2} 8 8} > >} D D} J J} P P} V V} \ \
+} b b} h h} n n} t t} z z} � �} � �} � �} � �} � �} � �} � �} � �} � �} � �} � �} � �}
+� �} � �} � �} � �} � �} � �} � �} � �} � �   Nullable`1 Task`1 List`1 IMarshaller`2 IRequestMarshaller`2 IUnma
+rshaller`2 ListUnmarshaller`2 KeyValuePair`2 IDictionary`2 DictionaryUnmarshaller`4 get_UTF8 <Module> AWS_LAMBDA AMAZON_DYNAMODB FAILED NO
+T_APPLICABLE PIPELINE NONE RELATIONAL_DATABASE ACTIVE PROCESSING DELETING AMAZON_ELASTICSEARCH SDL ALL get_AuthTTL set_AuthTTL IsSetAuthTT
+L get_IatTTL set_IatTTL IsSetIatTTL AWS_IAM JSON System.IO HTTP ERROR AMAZON_COGNITO_USER_POOLS SUCCESS OPENID_CONNECT UNIT RDS_HTTP_ENDPO
+INT ALLOW API_KEY DENY get_Schema set_Schema GetIntrospectionSchema IsSetSchema _schema AmazonAppSyncMetadata IServiceMetadata get_Service
+Metadata serviceMetadata mscorlib System.Collections.Generic AWSSDK.AppSync Amazon.AppSync IAmazonAppSync GetIntrospectionSchemaAsync Upda
+teDataSourceAsync CreateDataSourceAsync DeleteDataSourceAsync GetDataSourceAsync TagResourceAsync UntagResourceAsync ListTagsForResourceAs
+ync InvokeAsync UpdateTypeAsync CreateTypeAsync DeleteTypeAsync GetTypeAsync UpdateGraphqlApiAsync CreateGraphqlApiAsync DeleteGraphqlApiA
+sync GetGraphqlApiAsync StartSchemaCreationAsync UpdateFunctionAsync CreateFunctionAsync DeleteFunctionAsync GetFunctionAsync ListResolver
+sByFunctionAsync UpdateResolverAsync CreateResolverAsync DeleteResolverAsync GetResolverAsync ListDataSourcesAsync ListTypesAsync ListGrap
+hqlApisAsync ListFunctionsAsync ListResolversAsync GetSchemaCreationStatusAsync ListApiKeysAsync UpdateApiKeyAsync CreateApiKeyAsync Delet
+eApiKeyAsync get_Id set_Id get_ServiceId get_ApiId set_ApiId IsSetApiId _apiId get_UserPoolId set_UserPoolId IsSetUserPoolId _userPoolId g
+et_FunctionId set_FunctionId IsSetFunctionId _functionId IsSetId get_ClientId set_ClientId IsSetClientId _clientId get_RequestId requestId
+ awsAccessKeyId Read Add _id WriteObjectEnd WriteArrayEnd get_Kind set_Kind ResolverKind IsSetKind _kind set_HttpMethod IAmazonService get
+_Instance GetInstance _instance get_DataSource set_DataSource UpdateDataSource CreateDataSource DeleteDataSource GetDataSource IsSetDataSo
+urce _dataSource TagResource UntagResource AddPathResource ListTagsForResource get_Code errorCode HttpStatusCode statusCode get_Message me
+ssage Invoke IDisposable get_Name set_Name get_FieldName set_FieldName IsSetFieldName _fieldName get_SigningServiceName set_SigningService
+Name IsSetSigningServiceName _signingServiceName set_AuthenticationServiceName get_RegionEndpointServiceName get_DataSourceName set_DataSo
+urceName IsSetDataSourceName _dataSourceName get_TableName set_TableName IsSetTableName _tableName get_TypeName set_TypeName IsSetTypeName
+ _typeName get_DatabaseName set_DatabaseName IsSetDatabaseName _databaseName IsSetName WritePropertyName _name Amazon.Runtime get_Type set
+_Type DataSourceType get_RelationalDatabaseSourceType set_RelationalDatabaseSourceType IsSetRelationalDatabaseSourceType _relationalDataba
+seSourceType UpdateType CreateType DeleteType get_CurrentTokenType get_AuthenticationType set_AuthenticationType IsSetAuthenticationType _
+authenticationType get_AuthorizationType set_AuthorizationType IsSetAuthorizationType _authorizationType ErrorType errorType GetType IsSet
+Type OutputType _type AWSSDK.Core get_InvariantCulture InvokeOptionsBase GetIntrospectionSchemaResponse AmazonWebServiceResponse UpdateDat
+aSourceResponse CreateDataSourceResponse DeleteDataSourceResponse GetDataSourceResponse TagResourceResponse UntagResourceResponse ListTags
+ForResourceResponse UpdateTypeResponse CreateTypeResponse DeleteTypeResponse GetTypeResponse UpdateGraphqlApiResponse CreateGraphqlApiResp
+onse DeleteGraphqlApiResponse GetGraphqlApiResponse StartSchemaCreationResponse UpdateFunctionResponse CreateFunctionResponse DeleteFuncti
+onResponse GetFunctionResponse ListResolversByFunctionResponse UpdateResolverResponse CreateResolverResponse DeleteResolverResponse GetRes
+olverResponse ErrorResponse ListDataSourcesResponse ListTypesResponse ListGraphqlApisResponse ListFunctionsResponse ListResolversResponse
+GetSchemaCreationStatusResponse ListApiKeysResponse UpdateApiKeyResponse CreateApiKeyResponse DeleteApiKeyResponse Dispose get_ResponseMap
+pingTemplate set_ResponseMappingTemplate IsSetResponseMappingTemplate _responseMappingTemplate get_RequestMappingTemplate set_RequestMappi
+ngTemplate IsSetRequestMappingTemplate _requestMappingTemplate Write SuppressMessageAttribute DebuggableAttribute ComVisibleAttribute Asse
+mblyTitleAttribute AssemblyTrademarkAttribute TargetFrameworkAttribute AssemblyFileVersionAttribute AssemblyInformationalVersionAttribute
+AssemblyConfigurationAttribute AssemblyDescriptionAttribute CompilationRelaxationsAttribute AllowPartiallyTrustedCallersAttribute Assembly
+ProductAttribute AssemblyCopyrightAttribute CLSCompliantAttribute AssemblyCompanyAttribute RuntimeCompatibilityAttribute AWSPropertyAttrib
+ute get_Value FindValue get_HasValue value Amazon.Runtime.IAmazonService.get_Config get_LambdaConfig set_LambdaConfig IsSetLambdaConfig _l
+ambdaConfig get_DynamodbConfig set_DynamodbConfig IsSetDynamodbConfig _dynamodbConfig AmazonAppSyncConfig LambdaDataSourceConfig DynamodbD
+ataSourceConfig RelationalDatabaseDataSourceConfig ElasticsearchDataSourceConfig HttpDataSourceConfig get_PipelineConfig set_PipelineConfi
+g IsSetPipelineConfig _pipelineConfig get_RelationalDatabaseConfig set_RelationalDatabaseConfig IsSetRelationalDatabaseConfig _relationalD
+atabaseConfig get_LogConfig set_LogConfig IsSetLogConfig _logConfig get_ElasticsearchConfig set_ElasticsearchConfig IsSetElasticsearchConf
+ig _elasticsearchConfig get_UserPoolConfig set_UserPoolConfig CognitoUserPoolConfig IsSetUserPoolConfig _userPoolConfig get_AwsIamConfig s
+et_AwsIamConfig IsSetAwsIamConfig _awsIamConfig get_AuthorizationConfig set_AuthorizationConfig IsSetAuthorizationConfig _authorizationCon
+fig get_HttpConfig set_HttpConfig IsSetHttpConfig _httpConfig get_OpenIDConnectConfig set_OpenIDConnectConfig IsSetOpenIDConnectConfig _op
+enidConnectConfig IClientConfig clientConfig get_RdsHttpEndpointConfig set_RdsHttpEndpointConfig IsSetRdsHttpEndpointConfig _rdsHttpEndpoi
+ntConfig config System.Threading Encoding System.Runtime.Versioning get_OperationNameMapping FromString ToString BuildUserAgentString set_
+UseQueryString disposing set_ResourcePath ReadAtDepth get_CurrentDepth Amazon.Runtime.Internal.Auth get_GraphqlApi set_GraphqlApi UpdateGr
+aphqlApi CreateGraphqlApi DeleteGraphqlApi GetGraphqlApi IsSetGraphqlApi _graphqlApi Seek Amazon.AppSync.Internal Amazon.Runtime.Internal
+Amazon.Util.Internal Amazon.AppSync.Model get_FieldLogLevel set_FieldLogLevel IsSetFieldLogLevel _fieldLogLevel Amazon.Runtime.Internal.Ut
+il Amazon.Util Marshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.DataSource,Amazon.Runtime.Internal.Transform.
+XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.Type,Amazon.Runtime.Internal.Trans
+form.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.LambdaDataSourceConfig,Amazon
+.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.Dynamo
+dbDataSourceConfig,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Am
+azon.AppSync.Model.RelationalDatabaseDataSourceConfig,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.
+Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.ElasticsearchDataSourceConfig,Amazon.Runtime.Internal.Transform.XmlUnmarshallerConte
+xt>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.HttpDataSourceConfig,Amazon.Runtime.Internal.Transform
+.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.PipelineConfig,Amazon.Runtime.Int
+ernal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.LogConfig,Amazon.R
+untime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.UserPool
+Config,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync
+.Model.CognitoUserPoolConfig,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmar
+shaller<Amazon.AppSync.Model.AwsIamConfig,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Tra
+nsform.IUnmarshaller<Amazon.AppSync.Model.AuthorizationConfig,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.
+Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.OpenIDConnectConfig,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext
+>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.RdsHttpEndpointConfig,Amazon.Runtime.Internal.Transform.
+XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.GraphqlApi,Amazon.Runtime.Internal
+.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.FunctionConfiguration,A
+mazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.AppSync.Model.A
+dditionalAuthenticationProvider,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUn
+marshaller<Amazon.AppSync.Model.Resolver,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Tran
+sform.IUnmarshaller<Amazon.AppSync.Model.ApiKey,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall AWSSDK.AppSync.dll Fr
+omBool _authttl _iatttl get_Stream CopyStream FromMemoryStream set_Item System Amazon.Runtime.Internal.Transform awsSessionToken Cancellat
+ionToken cancellationToken JsonToken get_NextToken set_NextToken IsSetNextToken _nextToken SeekOrigin get_SigningRegion set_SigningRegion
+IsSetSigningRegion _signingRegion get_AwsRegion set_AwsRegion IsSetAwsRegion _awsRegion region get_ServiceVersion get_FunctionVersion set_
+FunctionVersion IsSetFunctionVersion _functionVersion set_MarshallerVersion TestExpression StartSchemaCreation get_FunctionConfiguration s
+et_FunctionConfiguration IsSetFunctionConfiguration _functionConfiguration System.Globalization System.Runtime.Serialization get_DefaultAc
+tion set_DefaultAction IsSetDefaultAction _defaultAction System.Reflection get_ParameterCollection UpdateFunction CreateFunction DeleteFun
+ction GetFunction ListResolversByFunction get_Definition set_Definition IsSetDefinition _definition GraphQLSchemaException AmazonAppSyncEx
+ception ApiLimitExceededException ApiKeyLimitExceededException AccessDeniedException NotImplementedException UnauthorizedException NotFoun
+dException AmazonServiceException InternalFailureException UnmarshallException ConcurrentModificationException innerException ApiKeyValidi
+tyOutOfBoundsException BadRequestException get_Description set_Description IsSetDescription _description ThirdParty.Json.LitJson Amazon ge
+t_Arn set_Arn get_DataSourceArn set_DataSourceArn IsSetDataSourceArn _dataSourceArn get_ResourceArn set_ResourceArn IsSetResourceArn _reso
+urceArn get_ServiceRoleArn set_ServiceRoleArn IsSetServiceRoleArn _serviceRoleArn get_CloudWatchLogsRoleArn set_CloudWatchLogsRoleArn IsSe
+tCloudWatchLogsRoleArn _cloudWatchLogsRoleArn get_AwsSecretStoreArn set_AwsSecretStoreArn IsSetAwsSecretStoreArn _awsSecretStoreArn get_Fu
+nctionArn set_FunctionArn get_LambdaFunctionArn set_LambdaFunctionArn IsSetLambdaFunctionArn _lambdaFunctionArn IsSetFunctionArn _function
+Arn get_ResolverArn set_ResolverArn IsSetResolverArn _resolverArn IsSetArn _arn CultureInfo SerializationInfo info AdditionalAuthenticatio
+nProvider IFormatProvider get_DbClusterIdentifier set_DbClusterIdentifier IsSetDbClusterIdentifier _dbClusterIdentifier LambdaDataSourceCo
+nfigMarshaller DynamodbDataSourceConfigMarshaller RelationalDatabaseDataSourceConfigMarshaller ElasticsearchDataSourceConfigMarshaller Htt
+pDataSourceConfigMarshaller PipelineConfigMarshaller LogConfigMarshaller CognitoUserPoolConfigMarshaller AwsIamConfigMarshaller Authorizat
+ionConfigMarshaller OpenIDConnectConfigMarshaller RdsHttpEndpointConfigMarshaller AdditionalAuthenticationProviderMarshaller set_RequestMa
+rshaller GetIntrospectionSchemaRequestMarshaller UpdateDataSourceRequestMarshaller CreateDataSourceRequestMarshaller DeleteDataSourceReque
+stMarshaller GetDataSourceRequestMarshaller TagResourceRequestMarshaller UntagResourceRequestMarshaller ListTagsForResourceRequestMarshall
+er UpdateTypeRequestMarshaller CreateTypeRequestMarshaller DeleteTypeRequestMarshaller GetTypeRequestMarshaller UpdateGraphqlApiRequestMar
+shaller CreateGraphqlApiRequestMarshaller DeleteGraphqlApiRequestMarshaller GetGraphqlApiRequestMarshaller StartSchemaCreationRequestMarsh
+aller UpdateFunctionRequestMarshaller CreateFunctionRequestMarshaller DeleteFunctionRequestMarshaller GetFunctionRequestMarshaller ListRes
+olversByFunctionRequestMarshaller UpdateResolverRequestMarshaller CreateResolverRequestMarshaller DeleteResolverRequestMarshaller GetResol
+verRequestMarshaller ListDataSourcesRequestMarshaller ListTypesRequestMarshaller ListGraphqlApisRequestMarshaller ListFunctionsRequestMars
+haller ListResolversRequestMarshaller GetSchemaCreationStatusRequestMarshaller ListApiKeysRequestMarshaller UpdateApiKeyRequestMarshaller
+CreateApiKeyRequestMarshaller DeleteApiKeyRequestMarshaller DataSourceUnmarshaller TypeUnmarshaller set_ResponseUnmarshaller GetIntrospect
+ionSchemaResponseUnmarshaller UpdateDataSourceResponseUnmarshaller CreateDataSourceResponseUnmarshaller DeleteDataSourceResponseUnmarshall
+er GetDataSourceResponseUnmarshaller TagResourceResponseUnmarshaller UntagResourceResponseUnmarshaller ListTagsForResourceResponseUnmarsha
+ller UpdateTypeResponseUnmarshaller CreateTypeResponseUnmarshaller DeleteTypeResponseUnmarshaller GetTypeResponseUnmarshaller UpdateGraphq
+lApiResponseUnmarshaller CreateGraphqlApiResponseUnmarshaller DeleteGraphqlApiResponseUnmarshaller GetGraphqlApiResponseUnmarshaller Start
+SchemaCreationResponseUnmarshaller UpdateFunctionResponseUnmarshaller CreateFunctionResponseUnmarshaller DeleteFunctionResponseUnmarshalle
+r GetFunctionResponseUnmarshaller ListResolversByFunctionResponseUnmarshaller JsonResponseUnmarshaller UpdateResolverResponseUnmarshaller
+CreateResolverResponseUnmarshaller DeleteResolverResponseUnmarshaller GetResolverResponseUnmarshaller JsonErrorResponseUnmarshaller ListDa
+taSourcesResponseUnmarshaller ListTypesResponseUnmarshaller ListGraphqlApisResponseUnmarshaller ListFunctionsResponseUnmarshaller ListReso
+lversResponseUnmarshaller GetSchemaCreationStatusResponseUnmarshaller ListApiKeysResponseUnmarshaller UpdateApiKeyResponseUnmarshaller Cre
+ateApiKeyResponseUnmarshaller DeleteApiKeyResponseUnmarshaller LambdaDataSourceConfigUnmarshaller DynamodbDataSourceConfigUnmarshaller Rel
+ationalDatabaseDataSourceConfigUnmarshaller ElasticsearchDataSourceConfigUnmarshaller HttpDataSourceConfigUnmarshaller PipelineConfigUnmar
+shaller LogConfigUnmarshaller CognitoUserPoolConfigUnmarshaller AwsIamConfigUnmarshaller AuthorizationConfigUnmarshaller OpenIDConnectConf
+igUnmarshaller RdsHttpEndpointConfigUnmarshaller StringUnmarshaller LongUnmarshaller GraphqlApiUnmarshaller BoolUnmarshaller FunctionConfi
+gurationUnmarshaller AdditionalAuthenticationProviderUnmarshaller ResolverUnmarshaller ApiKeyUnmarshaller AWS4Signer AbstractAWSSigner Cre
+ateSigner get_Writer StringWriter JsonWriter TextWriter get_Issuer set_Issuer IsSetIssuer _issuer get_Resolver set_Resolver UpdateResolver
+ CreateResolver DeleteResolver GetResolver IsSetResolver _resolver GetEnumerator .ctor .cctor System.Diagnostics System.Runtime.InteropSer
+vices System.Runtime.CompilerServices get_DataSources set_DataSources IsSetDataSources ListDataSources _dataSources DebuggingModes get_Typ
+es set_Types IsSetTypes ListTypes _types get_Expires set_Expires IsSetExpires _expires GetBytes get_IncludeDirectives set_IncludeDirective
+s IsSetIncludeDirectives _includeDirectives get_Tags set_Tags IsSetTags _tags get_GraphqlApis set_GraphqlApis IsSetGraphqlApis ListGraphql
+Apis _graphqlApis get_Uris set_Uris IsSetUris _uris System.Diagnostics.CodeAnalysis System.Threading.Tasks AWSCredentials get_UseCallerCre
+dentials set_UseCallerCredentials IsSetUseCallerCredentials _useCallerCredentials GetCredentials credentials Equals get_Details set_Detail
+s IsSetDetails _details AWSSDKUtils InternalSDKUtils StringUtils Amazon.AppSync.Model.Internal.MarshallTransformations get_Functions set_F
+unctions IsSetFunctions ListFunctions _functions InvokeOptions get_Headers get_AdditionalAuthenticationProviders set_AdditionalAuthenticat
+ionProviders IsSetAdditionalAuthenticationProviders _additionalAuthenticationProviders get_Parameters get_Resolvers set_Resolvers IsSetRes
+olvers ListResolvers _resolvers ConstantClass get_MaxResults set_MaxResults IsSetMaxResults _maxResults get_Status set_Status SchemaStatus
+ GetSchemaCreationStatus IsSetStatus _status get_TagKeys set_TagKeys IsSetTagKeys _tagKeys get_ApiKeys set_ApiKeys IsSetApiKeys ListApiKey
+s _apiKeys get_Format set_Format TypeDefinitionFormat IsSetFormat _format requestObject System.Net op_Implicit GetValueOrDefault FromInt g
+et_UserAgent _userAgent AmazonAppSyncClient AmazonServiceClient get_Current set_Content get_ExcludeVerboseContent set_ExcludeVerboseConten
+t IsSetExcludeVerboseContent _excludeVerboseContent get_Endpoint set_Endpoint set_RegionEndpoint IsSetEndpoint _endpoint get_Count WriteOb
+jectStart WriteArrayStart IRequest GetIntrospectionSchemaRequest publicRequest AmazonAppSyncRequest AmazonWebServiceRequest UpdateDataSour
+ceRequest CreateDataSourceRequest DeleteDataSourceRequest GetDataSourceRequest TagResourceRequest UntagResourceRequest ListTagsForResource
+Request UpdateTypeRequest CreateTypeRequest DeleteTypeRequest GetTypeRequest UpdateGraphqlApiRequest CreateGraphqlApiRequest DeleteGraphql
+ApiRequest GetGraphqlApiRequest StartSchemaCreationRequest UpdateFunctionRequest CreateFunctionRequest DeleteFunctionRequest GetFunctionRe
+quest ListResolversByFunctionRequest UpdateResolverRequest CreateResolverRequest DeleteResolverRequest GetResolverRequest ListDataSourcesR
+equest ListTypesRequest ListGraphqlApisRequest ListFunctionsRequest ListResolversRequest GetSchemaCreationStatusRequest ListApiKeysRequest
+ DefaultRequest UpdateApiKeyRequest CreateApiKeyRequest DeleteApiKeyRequest request input MoveNext System.Text StreamingContext JsonMarsha
+llerContext XmlUnmarshallerContext JsonUnmarshallerContext context get_AppIdClientRegex set_AppIdClientRegex IsSetAppIdClientRegex _appIdC
+lientRegex get_Key get_ApiKey set_ApiKey UpdateApiKey CreateApiKey DeleteApiKey IsSetApiKey _apiKey awsSecretAccessKey FallbackCredentials
+Factory op_Inequality System.Security  a p p s y n c  2 0 1 7 - 0 7 - 2 5 3 . 3 . 1 0 2 . 6  3A M A Z O N _ C O G N I T O _ U S E R _
+P O O L S  A P I _ K E Y  A W S _ I A M  O P E N I D _ C O N N E C T  A M A Z O N _ D Y N A M O D B  )A M A Z O N _ E L A S T I C S E
+A R C H  A W S _ L A M B D A   H T T P         N O N E  'R E L A T I O N A L _ D A T A B A S E  A L L O W     D E N Y  A L L  E R R O R
+
+J S O N  S D L  #R D S _ H T T P _ E N D P O I N T  P I P E L I N E    U N I T
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.AppSync.xml:6047:        <member
+name="F:Amazon.AppSync.AuthenticationType.API_KEY">
+C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.AppSync.xml:6049:            Constant API_KEY for AuthenticationType
+C:\Program Files (x86)\AWS Tools\Deployment Tool\AWSToolkit.Util.dll:10976:              "INVALID_API_KEY",
+C:\Program Files (x86)\AWS Tools\Deployment Tool\AWSToolkit.Util.dll:11941:              "API_KEY"
+C:\Program Files (x86)\AWS Tools\Deployment Tool\AWSToolkit.Util.dll:11943:            "description": "The type of usage plan key.
+Currently, the valid key type is API_KEY."
+C:\Program Files (x86)\AWS Tools\Deployment Tool\AWSToolkit.Util.dll:12751:              "API_KEY",
+C:\Program Files (x86)\AWS Tools\PowerShell\AWSPowerShell\AWSPowerShell.dll-Help.xml:831298: -INVALID_API_KEY
+C:\Program Files (x86)\AWS Tools\PowerShell\AWSPowerShell\AWSPowerShell.dll-Help.xml:831329: -INVALID_API_KEY
+C:\Program Files (x86)\AWS Tools\PowerShell\AWSPowerShell\AWSPowerShell.dll-Help.xml:838913: -INVALID_API_KEY
+C:\Program Files (x86)\AWS Tools\PowerShell\AWSPowerShell\AWSPowerShell.dll-Help.xml:838982: -INVALID_API_KEY
+C:\Program Files (x86)\AWS Tools\PowerShell\AWSPowerShell\AWSPowerShell.dll-Help.xml:842324: -INVALID_API_KEY
+C:\Program Files (x86)\AWS Tools\PowerShell\AWSPowerShell\AWSPowerShell.dll-Help.xml:842386: -INVALID_API_KEY
+C:\Program Files (x86)\AWS Tools\PowerShell\AWSPowerShell\AWSPowerShell.dll-Help.xml:844107: -INVALID_API_KEY
+C:\Program Files (x86)\AWS Tools\PowerShell\AWSPowerShell\AWSPowerShell.dll-Help.xml:844188: -INVALID_API_KEY
+C:\Program Files (x86)\AWS Tools\PowerShell\AWSPowerShell\AWSPowerShellCompleters.psm1:453:            $v = "ACCESS_DENIED","API_CONFIGURA
+TION_ERROR","AUTHORIZER_CONFIGURATION_ERROR","AUTHORIZER_FAILURE","BAD_REQUEST_BODY","BAD_REQUEST_PARAMETERS","DEFAULT_4XX","DEFAULT_5XX",
+"EXPIRED_TOKEN","INTEGRATION_FAILURE","INTEGRATION_TIMEOUT","INVALID_API_KEY","INVALID_SIGNATURE","MISSING_AUTHENTICATION_TOKEN","QUOTA_EX
+CEEDED","REQUEST_TOO_LARGE","RESOURCE_NOT_FOUND","THROTTLED","UNAUTHORIZED","UNSUPPORTED_MEDIA_TYPE"
+C:\Program Files (x86)\AWS Tools\PowerShell\AWSPowerShell\AWSPowerShellCompleters.psm1:829:            $v =
+"AMAZON_COGNITO_USER_POOLS","API_KEY","AWS_IAM","OPENID_CONNECT"
+C:\Program Files (x86)\AWS Tools\PowerShell\AWSPowerShell\AWSSDK.APIGateway.dll:17824:     TLS_1_0 GB_6_1 Nullable`1 List`1 TLS_1_2 GB_58_
+2 IMarshaller`2 IRequestMarshaller`2 IUnmarshaller`2 ListUnmarshaller`2 KeyValuePair`2 IDictionary`2 FAIL_WITH_403 Int64 GB_28_4 Dictionar
+yUnmarshaller`4 GB_0_5 GB_13_5 GB_1_6 GB_237 GB_118 get_UTF8 <Module> QUOTA_EXCEEDED ACCESS_DENIED FAILED THROTTLED UNDOCUMENTED UNAUTHORI
+ZED RESOURCE_NOT_FOUND METHOD RESOURCE EDGE REQUEST_TOO_LARGE NOT_AVAILABLE UNSUPPORTED_MEDIA_TYPE INTEGRATION_FAILURE AUTHORIZER_FAILURE
+INVALID_SIGNATURE RESPONSE PRIVATE PENDING UPDATING DELETING MONTH API MOCK WEEK VPC_LINK REGIONAL MODEL EXPIRED_TOKEN MISSING_AUTHENTICAT
+ION_TOKEN System.IO HTTP SUCCEED_WITH_RESPONSE_HEADER SUCCEED_WITHOUT_RESPONSE_HEADER REQUEST_HEADER PATH_PARAMETER QUERY_PARAMETER AUTHOR
+IZER API_CONFIGURATION_ERROR AUTHORIZER_CONFIGURATION_ERROR COGNITO_USER_POOLS BAD_REQUEST_PARAMETERS CREATE_IN_PROGRESS DELETE_IN_PROGRES
+S FLUSH_IN_PROGRESS AWS INTERNET REQUEST INTEGRATION_TIMEOUT CONVERT_TO_TEXT DEFAULT_4XX DEFAULT_5XX DAY RESPONSE_BODY BAD_REQUEST_BODY IN
+VALID_API_KEY CONVERT_TO_BINARY HTTP_PROXY AWS_PROXY get_Schema set_Schema IsSetSchema _schema get_ResponseData IWebResponseData IServiceM
+etadata get_ServiceMetadata serviceMetadata AmazonAPIGatewayMetadata get_Quota set_Quota IsSetQuota _quota mscorlib get_PercentTraffic set
+_PercentTraffic IsSetPercentTraffic _percentTraffic System.Collections.Generic InvokeSync InvokeAsync get_Id set_Id get_ServiceId get_Reso
+urceId set_ResourceId IsSetResourceId _resourceId get_RegionalHostedZoneId set_RegionalHostedZoneId IsSetRegionalHostedZoneId _regionalHos
+tedZoneId get_DistributionHostedZoneId set_DistributionHostedZoneId IsSetDistributionHostedZoneId _distributionHostedZoneId get_ClientCert
+ificateId set_ClientCertificateId IsSetClientCertificateId _clientCertificateId get_ApiId set_ApiId IsSetApiId get_RestApiId set_RestApiId
+ IsSetRestApiId _restApiId _apiId get_VpcLinkId set_VpcLinkId IsSetVpcLinkId _vpcLinkId get_PrincipalId set_PrincipalId IsSetPrincipalId _
+principalId get_UsagePlanId set_UsagePlanId IsSetUsagePlanId _usagePlanId get_ConnectionId set_ConnectionId IsSetConnectionId _connectionI
+d get_CustomerId set_CustomerId IsSetCustomerId _customerId get_AuthorizerId set_AuthorizerId IsSetAuthorizerId _authorizerId get_RequestV
+alidatorId set_RequestValidatorId IsSetRequestValidatorId _requestValidatorId get_GenerateDistinctId set_GenerateDistinctId IsSetGenerateD
+istinctId _generateDistinctId IsSetId get_DeploymentId set_DeploymentId IsSetDeploymentId _deploymentId get_ParentId set_ParentId IsSetPar
+entId _parentId get_DocumentationPartId set_DocumentationPartId IsSetDocumentationPartId _documentationPartId get_RequestId requestId get_
+KeyId set_KeyId awsAccessKeyId IsSetKeyId _keyId Read Add get_Embed set_Embed IsSetEmbed _embed get_Enabled set_Enabled get_DataTraceEnabl
+ed set_DataTraceEnabled IsSetDataTraceEnabled _dataTraceEnabled get_TracingEnabled set_TracingEnabled IsSetTracingEnabled _tracingEnabled
+get_CachingEnabled set_CachingEnabled IsSetCachingEnabled _cachingEnabled get_CacheClusterEnabled set_CacheClusterEnabled IsSetCacheCluste
+rEnabled _cacheClusterEnabled get_MetricsEnabled set_MetricsEnabled IsSetMetricsEnabled _metricsEnabled IsSetEnabled _enabled get_Required
+ set_Required IsSetRequired get_ApiKeyRequired set_ApiKeyRequired IsSetApiKeyRequired _apiKeyRequired _required get_CacheDataEncrypted set
+_CacheDataEncrypted IsSetCacheDataEncrypted _cacheDataEncrypted _id WriteObjectEnd WriteArrayEnd get_Method set_Method EndTestInvokeMethod
+ BeginTestInvokeMethod EndUpdateMethod BeginUpdateMethod EndDeleteMethod BeginDeleteMethod get_HttpMethod set_HttpMethod get_IntegrationHt
+tpMethod set_IntegrationHttpMethod IsSetIntegrationHttpMethod _integrationHttpMethod IsSetHttpMethod _httpMethod EndGetMethod BeginGetMeth
+od IsSetMethod EndPutMethod BeginPutMethod _method get_Period set_Period IsSetPeriod _period Replace get_CacheNamespace set_CacheNamespace
+ IsSetCacheNamespace _cacheNamespace IAmazonService get_Instance GetInstance _instance get_ApiKeySource set_ApiKeySource IsSetApiKeySource
+ _apiKeySource get_IdentitySource set_IdentitySource IsSetIdentitySource _identitySource AddSubResource EndUpdateResource BeginUpdateResou
+rce EndCreateResource BeginCreateResource EndDeleteResource BeginDeleteResource EndTagResource BeginTagResource EndUntagResource BeginUnta
+gResource AddPathResource EndGetResource BeginGetResource get_Code errorCode get_StatusCode set_StatusCode HttpStatusCode IsSetStatusCode
+_statusCode get_ProductCode set_ProductCode IsSetProductCode _productCode get_Mode set_Mode IsSetMode PutMode _mode EndUpdateUsage BeginUp
+dateUsage EndGetUsage BeginGetUsage get_Message get_StatusMessage set_StatusMessage get_DomainNameStatusMessage set_DomainNameStatusMessag
+e IsSetDomainNameStatusMessage _domainNameStatusMessage IsSetStatusMessage _statusMessage message get_Stage set_Stage EndUpdateStage Begin
+UpdateStage EndCreateStage BeginCreateStage EndDeleteStage BeginDeleteStage ApiStage EndGetStage BeginGetStage IsSetStage _stage Merge get
+_UseStageCache set_UseStageCache IsSetUseStageCache _useStageCache EndFlushStageCache BeginFlushStageCache EndFlushStageAuthorizersCache B
+eginFlushStageAuthorizersCache EndInvoke PreInvoke BeginInvoke IDisposable get_Throttle set_Throttle IsSetThrottle _throttle get_Name set_
+Name set_AuthenticationServiceName get_RegionEndpointServiceName get_StageName set_StageName IsSetStageName _stageName get_CertificateName
+ set_CertificateName get_RegionalCertificateName set_RegionalCertificateName IsSetRegionalCertificateName _regionalCertificateName IsSetCe
+rtificateName _certificateName get_ModelName set_ModelName IsSetModelName _modelName get_DomainName set_DomainName EndUpdateDomainName Beg
+inUpdateDomainName EndCreateDomainName BeginCreateDomainName EndDeleteDomainName BeginDeleteDomainName get_RegionalDomainName set_Regional
+DomainName IsSetRegionalDomainName _regionalDomainName get_DistributionDomainName set_DistributionDomainName IsSetDistributionDomainName _
+distributionDomainName EndGetDomainName BeginGetDomainName IsSetDomainName _domainName get_OperationName set_OperationName IsSetOperationN
+ame _operationName IsSetName get_FriendlyName set_FriendlyName IsSetFriendlyName _friendlyName WritePropertyName _name DateTime Amazon.Run
+time CustomizeRuntimePipeline pipeline get_Type set_Type QuotaPeriodType ApiKeySourceType get_ResponseType set_ResponseType IsSetResponseT
+ype GatewayResponseType _responseType get_AuthType set_AuthType IsSetAuthType _authType get_SdkType set_SdkType EndGetSdkType BeginGetSdkT
+ype IsSetSdkType _sdkType get_CurrentTokenType IntegrationType get_AuthorizationType set_AuthorizationType IsSetAuthorizationType _authori
+zationType get_ConnectionType set_ConnectionType IsSetConnectionType _connectionType AuthorizerType ErrorType errorType LocationStatusType
+ IsSetType get_ContentType set_ContentType IsSetContentType _contentType EndpointType DocumentationPartType get_ExportType set_ExportType
+IsSetExportType _exportType get_KeyType set_KeyType IsSetKeyType _keyType _type AWSSDK.Core get_InvariantCulture InvokeOptionsBase TestInv
+okeMethodResponse EndUpdateMethodResponse BeginUpdateMethodResponse EndDeleteMethodResponse BeginDeleteMethodResponse EndGetMethodResponse
+ BeginGetMethodResponse EndPutMethodResponse BeginPutMethodResponse AmazonWebServiceResponse UpdateResourceResponse CreateResourceResponse
+ DeleteResourceResponse TagResourceResponse UntagResourceResponse GetResourceResponse UpdateUsageResponse GetUsageResponse UpdateStageResp
+onse CreateStageResponse DeleteStageResponse GetStageResponse FlushStageCacheResponse FlushStageAuthorizersCacheResponse UpdateDomainNameR
+esponse CreateDomainNameResponse DeleteDomainNameResponse GetDomainNameResponse GetSdkTypeResponse UpdateMethodResponseResponse DeleteMeth
+odResponseResponse GetMethodResponseResponse PutMethodResponseResponse UpdateIntegrationResponseResponse DeleteIntegrationResponseResponse
+ GetIntegrationResponseResponse PutIntegrationResponseResponse UpdateGatewayResponseResponse DeleteGatewayResponseResponse GetGatewayRespo
+nseResponse PutGatewayResponseResponse UpdateClientCertificateResponse GenerateClientCertificateResponse DeleteClientCertificateResponse G
+etClientCertificateResponse GetModelTemplateResponse UpdateBasePathMappingResponse CreateBasePathMappingResponse DeleteBasePathMappingResp
+onse GetBasePathMappingResponse UpdateRestApiResponse CreateRestApiResponse DeleteRestApiResponse GetRestApiResponse ImportRestApiResponse
+ PutRestApiResponse GetSdkResponse UpdateVpcLinkResponse CreateVpcLinkResponse DeleteVpcLinkResponse GetVpcLinkResponse UpdateModelRespons
+e CreateModelResponse DeleteModelResponse GetModelResponse UpdateUsagePlanResponse CreateUsagePlanResponse DeleteUsagePlanResponse GetUsag
+ePlanResponse UpdateDocumentationVersionResponse CreateDocumentationVersionResponse DeleteDocumentationVersionResponse GetDocumentationVer
+sionResponse EndUpdateIntegrationResponse BeginUpdateIntegrationResponse EndDeleteIntegrationResponse BeginDeleteIntegrationResponse EndGe
+tIntegrationResponse BeginGetIntegrationResponse EndPutIntegrationResponse BeginPutIntegrationResponse TestInvokeAuthorizerResponse Update
+AuthorizerResponse CreateAuthorizerResponse DeleteAuthorizerResponse GetAuthorizerResponse ErrorResponse UpdateRequestValidatorResponse Cr
+eateRequestValidatorResponse DeleteRequestValidatorResponse GetRequestValidatorResponse GetResourcesResponse GetStagesResponse GetDomainNa
+mesResponse GetSdkTypesResponse GetGatewayResponsesResponse GetClientCertificatesResponse GetTagsResponse GetBasePathMappingsResponse GetR
+estApisResponse GetVpcLinksResponse GetModelsResponse GetUsagePlansResponse GetDocumentationVersionsResponse GetAuthorizersResponse GetReq
+uestValidatorsResponse GetDeploymentsResponse GetDocumentationPartsResponse ImportDocumentationPartsResponse GetApiKeysResponse ImportApiK
+eysResponse GetUsagePlanKeysResponse get_DefaultResponse set_DefaultResponse IsSetDefaultResponse _defaultResponse UpdateDeploymentRespons
+e CreateDeploymentResponse DeleteDeploymentResponse GetDeploymentResponse UpdateAccountResponse GetAccountResponse UpdateDocumentationPart
+Response CreateDocumentationPartResponse DeleteDocumentationPartResponse GetDocumentationPartResponse GetExportResponse EndUpdateGatewayRe
+sponse BeginUpdateGatewayResponse EndDeleteGatewayResponse BeginDeleteGatewayResponse EndGetGatewayResponse BeginGetGatewayResponse EndPut
+GatewayResponse BeginPutGatewayResponse UpdateApiKeyResponse CreateApiKeyResponse DeleteApiKeyResponse GetApiKeyResponse CreateUsagePlanKe
+yResponse DeleteUsagePlanKeyResponse GetUsagePlanKeyResponse Dispose get_CertificateUploadDate set_CertificateUploadDate IsSetCertificateU
+ploadDate _certificateUploadDate get_LastUpdatedDate set_LastUpdatedDate IsSetLastUpdatedDate _lastUpdatedDate get_CreatedDate set_Created
+Date IsSetCreatedDate _createdDate get_EndDate set_EndDate IsSetEndDate _endDate get_ExpirationDate set_ExpirationDate IsSetExpirationDate
+ _expirationDate get_StartDate set_StartDate IsSetStartDate _startDate get_PemEncodedCertificate set_PemEncodedCertificate IsSetPemEncoded
+Certificate _pemEncodedCertificate EndUpdateClientCertificate BeginUpdateClientCertificate EndGenerateClientCertificate BeginGenerateClien
+tCertificate EndDeleteClientCertificate BeginDeleteClientCertificate EndGetClientCertificate BeginGetClientCertificate EndGetModelTemplate
+ BeginGetModelTemplate state Write Overwrite SuppressMessageAttribute DebuggableAttribute ComVisibleAttribute AssemblyTitleAttribute Assem
+blyTrademarkAttribute AssemblyFileVersionAttribute AssemblyInformationalVersionAttribute AssemblyConfigurationAttribute AssemblyDescriptio
+nAttribute CompilationRelaxationsAttribute AllowPartiallyTrustedCallersAttribute AssemblyProductAttribute AssemblyCopyrightAttribute CLSCo
+mpliantAttribute AssemblyCompanyAttribute RuntimeCompatibilityAttribute AWSPropertyAttribute get_Value set_Value FindValue get_IncludeValu
+e set_IncludeValue IsSetIncludeValue _includeValue GetHeaderValue get_HasValue IsSetValue get_DefaultValue set_DefaultValue IsSetDefaultVa
+lue _defaultValue _value Move Remove get_MinimumCompressionSize set_MinimumCompressionSize IsSetMinimumCompressionSize _minimumCompression
+Size get_CacheClusterSize set_CacheClusterSize IsSetCacheClusterSize _cacheClusterSize Amazon.Runtime.IAmazonService.get_Config IClientCon
+fig clientConfig AmazonAPIGatewayConfig config Encoding get_ContentHandling set_ContentHandling IsSetContentHandling _contentHandling get_
+OperationNameMapping EndUpdateBasePathMapping BeginUpdateBasePathMapping EndCreateBasePathMapping BeginCreateBasePathMapping EndDeleteBase
+PathMapping BeginDeleteBasePathMapping EndGetBasePathMapping BeginGetBasePathMapping FromString ToString BuildUserAgentString set_UseQuery
+String get_PathWithQueryString set_PathWithQueryString IsSetPathWithQueryString _pathWithQueryString disposing MethodSetting get_Log set_L
+og IsSetLog _log get_Path set_Path set_ResourcePath get_BasePath set_BasePath IsSetBasePath _basePath IsSetPath _path get_Length ReadAtDep
+th get_CurrentDepth Amazon.Runtime.Internal.Auth EndUpdateRestApi BeginUpdateRestApi EndCreateRestApi BeginCreateRestApi EndDeleteRestApi
+BeginDeleteRestApi EndGetRestApi BeginGetRestApi EndImportRestApi BeginImportRestApi EndPutRestApi BeginPutRestApi get_Uri set_Uri get_Aut
+horizerUri set_AuthorizerUri IsSetAuthorizerUri _authorizerUri IsSetUri _uri AsyncCallback callback EndGetSdk BeginGetSdk Seek EndUpdateVp
+cLink BeginUpdateVpcLink EndCreateVpcLink BeginCreateVpcLink EndDeleteVpcLink BeginDeleteVpcLink EndGetVpcLink BeginGetVpcLink Amazon.Runt
+ime.Internal Amazon.Util.Internal Amazon.APIGateway.Internal Amazon.APIGateway.Model EndUpdateModel BeginUpdateModel EndCreateModel BeginC
+reateModel EndDeleteModel BeginDeleteModel EndGetModel BeginGetModel get_LoggingLevel set_LoggingLevel IsSetLoggingLevel _loggingLevel Ama
+zon.Runtime.Internal.Util Amazon.Util Marshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.Method,Amazon.Runti
+me.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.Resource,
+Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Mod
+el.Stage,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGa
+teway.Model.ApiStage,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<
+Amazon.APIGateway.Model.DomainName,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.
+IUnmarshaller<Amazon.APIGateway.Model.SdkType,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal
+.Transform.IUnmarshaller<Amazon.APIGateway.Model.MethodResponse,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazo
+n.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.IntegrationResponse,Amazon.Runtime.Internal.Transform.XmlUnmarshallerCo
+ntext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.GatewayResponse,Amazon.Runtime.Internal.Transfor
+m.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.ClientCertificate,Amazon.Runt
+ime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.BasePath
+Mapping,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGat
+eway.Model.MethodSetting,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshal
+ler<Amazon.APIGateway.Model.RestApi,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform
+.IUnmarshaller<Amazon.APIGateway.Model.VpcLink,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Interna
+l.Transform.IUnmarshaller<Amazon.APIGateway.Model.Model,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtim
+e.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.UsagePlan,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall
+Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.DocumentationVersion,Amazon.Runtime.Internal.Transform.XmlUnmarsha
+llerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.DocumentationPartLocation,Amazon.Runtime.I
+nternal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.Integration,A
+mazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Mode
+l.EndpointConfiguration,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshall
+er<Amazon.APIGateway.Model.Authorizer,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transfo
+rm.IUnmarshaller<Amazon.APIGateway.Model.RequestValidator,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runt
+ime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.QuotaSettings,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmar
+shall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.ThrottleSettings,Amazon.Runtime.Internal.Transform.XmlUnmars
+hallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.AccessLogSettings,Amazon.Runtime.Interna
+l.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.CanarySettings,Amaz
+on.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.D
+eployment,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIG
+ateway.Model.MethodSnapshot,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Internal.Transform.IUnmars
+haller<Amazon.APIGateway.Model.DocumentationPart,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Runtime.Inter
+nal.Transform.IUnmarshaller<Amazon.APIGateway.Model.ApiKey,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmarshall Amazon.Run
+time.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.UsagePlanKey,Amazon.Runtime.Internal.Transform.XmlUnmarshallerContext>.Unmar
+shall Amazon.Runtime.Internal.Transform.IUnmarshaller<Amazon.APIGateway.Model.SdkConfigurationProperty,Amazon.Runtime.Internal.Transform.X
+mlUnmarshallerContext>.Unmarshall AWSSDK.APIGateway.dll FromBool get_RequireAuthorizationForCacheControl set_RequireAuthorizationForCacheC
+ontrol IsSetRequireAuthorizationForCacheControl _requireAuthorizationForCacheControl get_Stream get_ContentStream set_ContentStream CopySt
+ream MemoryStream get_Item set_Item IsSetItem _item System get_From set_From get_CloneFrom set_CloneFrom IsSetCloneFrom _cloneFrom IsSetFr
+om _from Amazon.Runtime.Internal.Transform EndUpdateUsagePlan BeginUpdateUsagePlan EndCreateUsagePlan BeginCreateUsagePlan EndDeleteUsageP
+lan BeginDeleteUsagePlan EndGetUsagePlan BeginGetUsagePlan awsSessionToken JsonToken get_Flatten set_Flatten IsSetFlatten _flatten get_Cer
+tificateChain set_CertificateChain IsSetCertificateChain _certificateChain SeekOrigin region get_Version set_Version get_ServiceVersion ge
+t_DocumentationVersion set_DocumentationVersion EndUpdateDocumentationVersion BeginUpdateDocumentationVersion EndCreateDocumentationVersio
+n BeginCreateDocumentationVersion EndDeleteDocumentationVersion BeginDeleteDocumentationVersion EndGetDocumentationVersion BeginGetDocumen
+tationVersion IsSetDocumentationVersion _documentationVersion set_MarshallerVersion IsSetVersion get_ApiKeyVersion set_ApiKeyVersion IsSet
+ApiKeyVersion _apiKeyVersion _version get_IdentityValidationExpression set_IdentityValidationExpression IsSetIdentityValidationExpression
+_identityValidationExpression TestExpression get_Location set_Location IsSetLocation DocumentationPartLocation _location PatchOperation ge
+t_MethodIntegration set_MethodIntegration IsSetMethodIntegration _methodIntegration EndUpdateIntegration BeginUpdateIntegration EndDeleteI
+ntegration BeginDeleteIntegration EndGetIntegration BeginGetIntegration EndPutIntegration BeginPutIntegration get_EndpointConfiguration se
+t_EndpointConfiguration IsSetEndpointConfiguration _endpointConfiguration System.Globalization System.Runtime.Serialization get_Authorizat
+ion set_Authorization IsSetAuthorization _authorization System.Reflection get_ParameterCollection get_Position set_Position IsSetPosition
+_position get_ContentDisposition set_ContentDisposition IsSetContentDisposition _contentDisposition LimitExceededException NotImplementedE
+xception UnauthorizedException NotFoundException AmazonServiceException ServiceUnavailableException UnmarshallException innerException Too
+ManyRequestsException ConflictException BadRequestException AmazonAPIGatewayException get_Description set_Description get_StageDescription
+ set_StageDescription IsSetStageDescription _stageDescription IsSetDescription _description ThirdParty.Json.LitJson Amazon get_ResourceArn
+ set_ResourceArn IsSetResourceArn _resourceArn get_CloudwatchRoleArn set_CloudwatchRoleArn IsSetCloudwatchRoleArn _cloudwatchRoleArn get_C
+ertificateArn set_CertificateArn get_RegionalCertificateArn set_RegionalCertificateArn IsSetRegionalCertificateArn _regionalCertificateArn
+ IsSetCertificateArn _certificateArn get_WebAclArn set_WebAclArn IsSetWebAclArn _webAclArn get_DestinationArn set_DestinationArn IsSetDest
+inationArn _destinationArn get_SelectionPattern set_SelectionPattern IsSetSelectionPattern _selectionPattern CultureInfo SerializationInfo
+ info get_Op set_Op IsSetOp _op IFormatProvider IPipelineHandler AmazonAPIGatewayPostMarshallHandler ApiStageMarshaller DocumentationPartL
+ocationMarshaller PatchOperationMarshaller EndpointConfigurationMarshaller QuotaSettingsMarshaller ThrottleSettingsMarshaller DeploymentCa
+narySettingsMarshaller set_RequestMarshaller TestInvokeMethodRequestMarshaller UpdateMethodRequestMarshaller DeleteMethodRequestMarshaller
+ GetMethodRequestMarshaller PutMethodRequestMarshaller UpdateResourceRequestMarshaller CreateResourceRequestMarshaller DeleteResourceReque
+stMarshaller TagResourceRequestMarshaller UntagResourceRequestMarshaller GetResourceRequestMarshaller UpdateUsageRequestMarshaller GetUsag
+eRequestMarshaller UpdateStageRequestMarshaller CreateStageRequestMarshaller DeleteStageRequestMarshaller GetStageRequestMarshaller FlushS
+tageCacheRequestMarshaller FlushStageAuthorizersCacheRequestMarshaller UpdateDomainNameRequestMarshaller CreateDomainNameRequestMarshaller
+ DeleteDomainNameRequestMarshaller GetDomainNameRequestMarshaller GetSdkTypeRequestMarshaller UpdateMethodResponseRequestMarshaller Delete
+MethodResponseRequestMarshaller GetMethodResponseRequestMarshaller PutMethodResponseRequestMarshaller UpdateIntegrationResponseRequestMars
+haller DeleteIntegrationResponseRequestMarshaller GetIntegrationResponseRequestMarshaller PutIntegrationResponseRequestMarshaller UpdateGa
+tewayResponseRequestMarshaller DeleteGatewayResponseRequestMarshaller GetGatewayResponseRequestMarshaller PutGatewayResponseRequestMarshal
+ler UpdateClientCertificateRequestMarshaller GenerateClientCertificateRequestMarshaller DeleteClientCertificateRequestMarshaller GetClient
+CertificateRequestMarshaller GetModelTemplateRequestMarshaller UpdateBasePathMappingRequestMarshaller CreateBasePathMappingRequestMarshall
