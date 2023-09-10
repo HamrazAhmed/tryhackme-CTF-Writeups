@@ -467,3 +467,473 @@ password        (success=1 default=ignore)      pam_unix.so use_authtok obscure 
 The lxd Group in Ubuntu
 I figure this wouldn't be a room about hardening if I ignore the fact that for whatever reason, Ubuntu places users (unless otherwise specified) into the lxd group. This group is known to be a point of privilege escalation and should be removed from any user that is a part of it.
 It's so prevalent that Linux-Smart-Enumeration even checks for it. So, just remove it from any user that has it assigned. Using adduser does not add the user to any predefined groups and should probably be used when adding new users.
+LXD, forma abreviada de Linux Container Daemon, es una herramienta de gestión de los contenedores del sistema operativo Linux. Ha sido desarrollado por Canonical, que también produce Ubuntu.
+### ~~~~~ Chapter 1 Quiz ~~~~~
+Summary
+We've gone through quite a bit of material. And to be honest, I could have included more. There's a lot to securing user accounts in Linux. There's lots of ways to do so and lots of things to think of when preparing to secure user accounts. The material included here only accounts for some of the things you can do. But, overall I feel these are the most important things and the things you'd see on a regular basis if you were a system admin that handles Linux machines.
+So take some time to grab a drink, stretch, and re-read some Tasks if you have to. Then let's dive into the questions.
+What group are users automatically added to in Ubuntu?
+*sudo*
+What would be the command to add an existing user, nick, to the sudo group? You're running as root
+*usermod -aG sudo nick*
+What command as a user can we enter to see what we are allowed to execute with sudo?
+*sudo -l*
+```text
+root@harden:/etc# cat sudoers
+#
+```
+```text
+# This file MUST be edited with the 'visudo' command as root.
+#
+```
+```text
+# Please consider adding local content in /etc/sudoers.d/ instead of
+```
+```text
+# directly modifying this file.
+#
+```
+```text
+# See the man page for details on how to write a sudoers file.
+#
+Defaults        env_reset
+Defaults        mail_badpass
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+```
+```text
+# Host alias specification
+```
+```text
+# User alias specification
+```
+```text
+# Cmnd alias specification
+```
+```text
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+```
+```text
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+```
+```text
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+```
+```text
+# See sudoers(5) for more information on "#include" directives:
+
+#includedir /etc/sudoers.d
+```
+```text
+# User alias specification
+User_Alias     ADMINS = spooky, james
+               ADMINS ALL=(ALL) ALL
+
+or sudo visudo
+```
+Where is the sudo policy file stored?
+*/etc/sudoers*
+When in visudo and you see %____, what does the % sign indicate that you are dealing with?
+*group*
+This Alias lets the user assign a name, like "ADMINS" to a group of people
+*User*
+Which Alias allows you to create a set of commands that you can then assign to a User Alias?
+It's abbreviated in visudo, but spell out the whole word
+*Command*
+Emacs es un editor de texto con una gran cantidad de funciones, muy popular entre programadores y usuarios técnicos. GNU Emacs es parte del proyecto GNU y la versión más popular de Emacs con una gran actividad en su desarrollo.
+Yey/Ney - emacs has a shell escape
+*Yey* (all nano, vim, emacs but sudoedit)
+What is the minimum recommended password length set by NIST?
+*8*
+When using the pwhistory module, which file will contain the previous passwords for the user?
+*opasswd*
+What principle states that every user only has enough access to do their daily duties and tasks
+*principle of least privilege*
+### ~~~~~ Chapter 2: Firewall Basics ~~~~~
+Chapter 2: Firewall Basics
+We've covered user account security which is really important. But now let's move into more of the networking side of things with Firewalls.
+A Firewall by Cisco's definition is a "network security device that monitors incoming and outgoing network traffic and decides whether to allow or block specific traffic based on a defined set of security rules" ([Cisco](https://www.cisco.com/c/en/us/products/security/firewalls/what-is-a-firewall.html)). After reading that, you may think that a Firewall can only be a network device. But, a Firewall actually comes in two different flavors:
+Host Based
+Network Based
+Host-Based
+Host-based Firewalls are just what they sound like - host-based. They are installed on host machines and monitor traffic from that host. Microsoft Windows includes Windows Firewall by default on all of its operating systems.
+![](https://i.imgur.com/vft0nl4.png)
+![](https://i.imgur.com/BZtEMvy.png)
+Rules can be configured on the Windows Firewall just like any other. If using a host-based Firewall, system administrators typically will configure the Firewall on the Windows Server which can then act as the Firewall for the entire network.
+Network Based
+A network based Firewall is more likely the type of Firewall that Cisco was referring to in their definition above. This type of Firewall is commonly a piece of hardware that may have two or more network interface cards.
+The network based Firewall is placed on the border of the internal network and the open Internet and all traffic will pass through the Firewall before either entering the private network or leaving to the public Internet. Cisco has model lines such as Firepower that are network-based Firewalls and help protect a company from outside (and inside) threats.
+![](https://www.cisco.com/c/en/us/products/security/firepower-4100-series/index/_jcr_content/Grid/category_atl_8984/layout-category-atl/anchor_info_2299.img.jpg/1588920530844.jpg)
+A Cisco Firepower Firewall from cisco.com﻿
+A Note on Web Application Firewalls
+You may have heard of the term, "Web Application Firewall" (WAF). This type of device is not to be confused with a network-based Firewall. WAFs are commonly placed in the Demilitarized Zone (DMZ) of a network and help protect the web-server from outside and inside threats. However, you should not only rely on a web-application firewall to protect your entire network. Instead, a network-based Firewall should be added on the border of the network as discussed above to add an additional layer of security.
+Summary
+We've briefly gone over the two types of Firewalls.  Since this room is focused on Ubuntu and Linux, we're going to cover Linux's host-based Firewall utility called iptables.
+### iptables
+iptables
+As hackers, you're probably around Linux a lot, right? So you've probably heard of iptables. But did you know that iptables is not actually the name of Linux's Firewall? In fact, iptables is just one way of interacting with netfilter which every Linux distribution comes with.
+Ubuntu actually comes with the Uncomplicated Firewall (ufw), which is an easy to use frontend for iptables. We will go over its uses later on in the room.
+﻿The Four Components of iptables
+iptables actually has 4 different components to it that all come together to give the utility its overall functionality. They are:
+Filter table - offers the basic protection that you'd expect a firewall to provide
+Network Address Translation table - connects the public interwebs to the private networks
+Mangle table - for mangling them packets as they go through the firewall
+Security table - only used by SELinux
+Getting Familiar with iptables Commands
+To start, let's look at what our iptables look like on Ubuntu. We can do this by doing a sudo iptables -L (iptables must be called as root, so sudo is needed here).
+![](https://i.imgur.com/fZoG9r6.png)
+As you can see from the image, we have no rules! Yikes! This means, that all traffic is allowed in and out of this system. Not good. We'll go over how someone would go about fixing that. Let's briefly explain the Chains that we have here.
+INPUT - packets coming into the firewall
+FORWARD - packets routed to another NIC on the network; for packets on the local network that are being forwarded on.
+OUTPUT - packets going out of the firewall
+With that out of the way, and without wanting to overwhelm you, let's jump into the next task and go over some ways to correct this iptable.
+### iptables Configuration
+iptables Configuration
+Now that you've learned what the different Chains are for the Filter table, we can get started on configuring our empty table and add some rules. In security, these rules that are added are commonly called an Access Control List (ACL). These rules determine the traffic that is allowed in and out of our network. In our case, our ACL will only define the rules for our single host. In a real network, a much more robust Firewall would be used (possibly a network-based Firewall) to defend the network. However, a utility such as[ Ansible](https://www.ansible.com/) could be used to distribute host-based Firewall rules to other hosts quickly and easily.
+**Note** ACLs are read by the system from the top down.  Keep that in mind when reading the rules that we will add.
+Adding Basic Rules
+To start, let's add a basic rule that will accept packets from hosts that have initiated connections with our host.
+There are quite a few options to keep track of when configuring your Filter table. You can view them all in the iptables documentation. Any options included in my examples, I'll be sure to explain as best as I can. Let's get started with that first rule.
+https://linux.die.net/man/8/iptables
+```text
+sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+```
+Wow, there's a lot to that one rule. Let's break it down and I promise the others won't be so long.
+-A INPUT: Append to the INPUT Chain
+-m conntrack: Call an iptable module. In this case we're calling conntrack which keeps track of connections. This option permits the use of the following option
+--ctstate ESTABLISHED,RELATED: Available due to the previous flag/option set. Will keep track of connections which are already ESTABLISHED and RELATED. RELATED just means that it's new but part of another already established connection
+-j ACCEPT: The j stands for jump (I don't know why). This option will just ACCEPT the packet and stop processing other rules
+Allowing Traffic Through Specific Ports
+From what I could find while researching, the above command came up quite a few times. Ubuntu gives it as their first example for configuring iptables and the book I read through had it as their first example too. So I figured it was best to include it. But what if we want to allow traffic through specific ports? We can do that too. Let's look at a few ways to do so.
+```text
+sudo iptables -A INPUT -p tcp --dport ssh -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 21 -j ACCEPT
+sudo iptables -A INPUT -p udp --dport 4380 -j ACCEPT
+```
+They all have the same options used but the difference is in what they are allowing through and how they are written to allow those things through. We've already seen the -A INPUT option, so let's go over the -p and --dport options.
+-p {option}: Which connection protocol to use. Only "tcp" or "udp" can be used here
+--dport: Controls the destination port that we want the rule to operate on.
+Notice in the first example that we set our --dport to "ssh". This is valid syntax. However, we could just as well have entered 22 here since 22 is the port that corresponds to SSH. And likewise, in #2, we use port 21 but could have put ftp here since that is the protocol that operates on port 21.
+The last example is just to show that we can use something other than "tcp" with the -p option.
+Of course there are other rules that a system admin would want to add such as allowing all incoming web traffic. This is important for employees so that they are able to surf the internet and get out to research things if needed.
+Blocking Incoming Traffic
+So you've learned how to add rules to the Filter table and allow traffic through but what about blocking traffic? There's two things we want to cover here and those things are:
+How to configure the iptable to block traffic
+How to configure an implicit deny rule
+Learning how to block/drop traffic will give you a good idea on how to do #2 so let's get to it.
+Continuing with our admins of dark, ashu and skidy from the first tasks, let's say they have an SMB Server that they use internally to share files on the THM network. But, they don't want people from the outside to be able to access it or even try to access it. They could add a rule such as the following:
+```text
+sudo iptables -A INPUT -p tcp --dport smb -j DROP
+```
+This line will drop all incoming packets using the TCP connection protocol and bound for the port that SMB is configured on.
+Implicit Deny Rule
+After you've configured all of your rules and you think you're just about done with your iptable...THINK AGAIN! There's actually one more rule that all system admins should apply to their Firewall before considering it complete. This is called the implicit deny rule. Remember the note from the start of this task? If you didn't read it, you should. The implicit deny rule states "if I have not explicitly allowed something through the Firewall, then DENY it implicitly, without hesitation". It is essentially a catch-all for anything else that you don't want to specifically add a rule for. We can make this rule with
+```text
+sudo iptables -A INPUT -j DROP
+```
+This command will add the following line to the iptable
+![](https://i.imgur.com/TwPDiIL.png)
+You can see that any/all protocols coming from anywhere going anywhere on our internal network will be DROPPED. This is the implicit deny rule.
+Brief Note on Allowing Traffic OUT of a Network
+So we've covered how to allow traffic into our network with the INPUT Chain but what about going out? That's what the OUTPUT Chain is for. I won't cover it here but if you want to configure outgoing rules, you would simply change the option for the -A flag.
+Saving Configuration
+Unfortunately, iptables is not saved in memory and needs to be configured each time you reboot your machine. This can be troublesome and annoying for any system admin. Restarting a server is probably an uncommon event but nonetheless, can happen. In order to save iptables configuration, you can enter sudo iptables-save
+Summary
+That was a lot. Hopefully you're learning a lot here. We're going to continue with our discussion on Firewalls in the next task.  There's a different utility for Ubuntu that makes adding firewall rules a lot less complicated and doesn't require saving or runs the risk of losing your changes. You'll see it next.
+```text
+root@harden:/etc# sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+root@harden:/etc# sudo iptables -L
+Chain INPUT (policy DROP)
+target     prot opt source               destination         
+ufw-before-logging-input  all  --  anywhere             anywhere            
+ufw-before-input  all  --  anywhere             anywhere            
+ufw-after-input  all  --  anywhere             anywhere            
+ufw-after-logging-input  all  --  anywhere             anywhere            
+ufw-reject-input  all  --  anywhere             anywhere            
+ufw-track-input  all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+
+Chain FORWARD (policy DROP)
+target     prot opt source               destination         
+ufw-before-logging-forward  all  --  anywhere             anywhere            
+ufw-before-forward  all  --  anywhere             anywhere            
+ufw-after-forward  all  --  anywhere             anywhere            
+ufw-after-logging-forward  all  --  anywhere             anywhere            
+ufw-reject-forward  all  --  anywhere             anywhere            
+ufw-track-forward  all  --  anywhere             anywhere            
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+ufw-before-logging-output  all  --  anywhere             anywhere            
+ufw-before-output  all  --  anywhere             anywhere            
+ufw-after-output  all  --  anywhere             anywhere            
+ufw-after-logging-output  all  --  anywhere             anywhere            
+ufw-reject-output  all  --  anywhere             anywhere            
+ufw-track-output  all  --  anywhere             anywhere            
+
+Chain ufw-after-forward (1 references)
+target     prot opt source               destination         
+
+Chain ufw-after-input (1 references)
+target     prot opt source               destination         
+ufw-skip-to-policy-input  udp  --  anywhere             anywhere             udp dpt:netbios-ns
+ufw-skip-to-policy-input  udp  --  anywhere             anywhere             udp dpt:netbios-dgm
+ufw-skip-to-policy-input  tcp  --  anywhere             anywhere             tcp dpt:netbios-ssn
+ufw-skip-to-policy-input  tcp  --  anywhere             anywhere             tcp dpt:microsoft-ds
+ufw-skip-to-policy-input  udp  --  anywhere             anywhere             udp dpt:bootps
+ufw-skip-to-policy-input  udp  --  anywhere             anywhere             udp dpt:bootpc
+ufw-skip-to-policy-input  all  --  anywhere             anywhere             ADDRTYPE match dst-type BROADCAST
+
+Chain ufw-after-logging-forward (1 references)
+target     prot opt source               destination         
+LOG        all  --  anywhere             anywhere             limit: avg 3/min burst 10 LOG level warning prefix "[UFW BLOCK] "
+
+Chain ufw-after-logging-input (1 references)
+target     prot opt source               destination         
+LOG        all  --  anywhere             anywhere             limit: avg 3/min burst 10 LOG level warning prefix "[UFW BLOCK] "
+
+Chain ufw-after-logging-output (1 references)
+target     prot opt source               destination         
+
+Chain ufw-after-output (1 references)
+target     prot opt source               destination         
+
+Chain ufw-before-forward (1 references)
+target     prot opt source               destination         
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+ACCEPT     icmp --  anywhere             anywhere             icmp destination-unreachable
+ACCEPT     icmp --  anywhere             anywhere             icmp time-exceeded
+ACCEPT     icmp --  anywhere             anywhere             icmp parameter-problem
+ACCEPT     icmp --  anywhere             anywhere             icmp echo-request
+ufw-user-forward  all  --  anywhere             anywhere            
+
+Chain ufw-before-input (1 references)
+target     prot opt source               destination         
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+ufw-logging-deny  all  --  anywhere             anywhere             ctstate INVALID
+DROP       all  --  anywhere             anywhere             ctstate INVALID
+ACCEPT     icmp --  anywhere             anywhere             icmp destination-unreachable
+ACCEPT     icmp --  anywhere             anywhere             icmp time-exceeded
+ACCEPT     icmp --  anywhere             anywhere             icmp parameter-problem
+ACCEPT     icmp --  anywhere             anywhere             icmp echo-request
+ACCEPT     udp  --  anywhere             anywhere             udp spt:bootps dpt:bootpc
+ufw-not-local  all  --  anywhere             anywhere            
+ACCEPT     udp  --  anywhere             224.0.0.251          udp dpt:mdns
+ACCEPT     udp  --  anywhere             239.255.255.250      udp dpt:1900
+ufw-user-input  all  --  anywhere             anywhere            
+
+Chain ufw-before-logging-forward (1 references)
+target     prot opt source               destination         
+
+Chain ufw-before-logging-input (1 references)
+target     prot opt source               destination         
+
+Chain ufw-before-logging-output (1 references)
+target     prot opt source               destination         
+
+Chain ufw-before-output (1 references)
+target     prot opt source               destination         
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+ufw-user-output  all  --  anywhere             anywhere            
+
+Chain ufw-logging-allow (0 references)
+target     prot opt source               destination         
+LOG        all  --  anywhere             anywhere             limit: avg 3/min burst 10 LOG level warning prefix "[UFW ALLOW] "
+
+Chain ufw-logging-deny (2 references)
+target     prot opt source               destination         
+RETURN     all  --  anywhere             anywhere             ctstate INVALID limit: avg 3/min burst 10
+LOG        all  --  anywhere             anywhere             limit: avg 3/min burst 10 LOG level warning prefix "[UFW BLOCK] "
+
+Chain ufw-not-local (1 references)
+target     prot opt source               destination         
+RETURN     all  --  anywhere             anywhere             ADDRTYPE match dst-type LOCAL
+RETURN     all  --  anywhere             anywhere             ADDRTYPE match dst-type MULTICAST
+RETURN     all  --  anywhere             anywhere             ADDRTYPE match dst-type BROADCAST
+ufw-logging-deny  all  --  anywhere             anywhere             limit: avg 3/min burst 10
+DROP       all  --  anywhere             anywhere            
+
+Chain ufw-reject-forward (1 references)
+target     prot opt source               destination         
+
+Chain ufw-reject-input (1 references)
+target     prot opt source               destination         
+
+Chain ufw-reject-output (1 references)
+target     prot opt source               destination         
+
+Chain ufw-skip-to-policy-forward (0 references)
+target     prot opt source               destination         
+DROP       all  --  anywhere             anywhere            
+
+Chain ufw-skip-to-policy-input (7 references)
+target     prot opt source               destination         
+DROP       all  --  anywhere             anywhere            
+
+Chain ufw-skip-to-policy-output (0 references)
+target     prot opt source               destination         
+ACCEPT     all  --  anywhere             anywhere            
+
+Chain ufw-track-forward (1 references)
+target     prot opt source               destination         
+
+Chain ufw-track-input (1 references)
+target     prot opt source               destination         
+
+Chain ufw-track-output (1 references)
+target     prot opt source               destination         
+ACCEPT     tcp  --  anywhere             anywhere             ctstate NEW
+ACCEPT     udp  --  anywhere             anywhere             ctstate NEW
+
+Chain ufw-user-forward (1 references)
+target     prot opt source               destination         
+
+Chain ufw-user-input (1 references)
+target     prot opt source               destination         
+DROP       tcp  --  anywhere             anywhere             tcp dpt:http
+DROP       udp  --  anywhere             anywhere             udp dpt:80
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh
+
+Chain ufw-user-limit (0 references)
+target     prot opt source               destination         
+LOG        all  --  anywhere             anywhere             limit: avg 3/min burst 5 LOG level warning prefix "[UFW LIMIT BLOCK] "
+REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable
+
+Chain ufw-user-limit-accept (0 references)
+target     prot opt source               destination         
+ACCEPT     all  --  anywhere             anywhere            
+
+Chain ufw-user-logging-forward (0 references)
+target     prot opt source               destination         
+
+Chain ufw-user-logging-input (0 references)
+target     prot opt source               destination         
+
+Chain ufw-user-logging-output (0 references)
+target     prot opt source               destination         
+
+Chain ufw-user-output (1 references)
+target     prot opt source               destination         
+root@harden:/etc# sudo iptables -A INPUT -p tcp --dport ssh -j ACCEPT
+root@harden:/etc# sudo iptables -L
+Chain INPUT (policy DROP)
+target     prot opt source               destination         
+ufw-before-logging-input  all  --  anywhere             anywhere            
+ufw-before-input  all  --  anywhere             anywhere            
+ufw-after-input  all  --  anywhere             anywhere            
+ufw-after-logging-input  all  --  anywhere             anywhere            
+ufw-reject-input  all  --  anywhere             anywhere            
+ufw-track-input  all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh
+
+Chain FORWARD (policy DROP)
+target     prot opt source               destination         
+ufw-before-logging-forward  all  --  anywhere             anywhere            
+ufw-before-forward  all  --  anywhere             anywhere            
+ufw-after-forward  all  --  anywhere             anywhere            
+ufw-after-logging-forward  all  --  anywhere             anywhere            
+ufw-reject-forward  all  --  anywhere             anywhere            
+ufw-track-forward  all  --  anywhere             anywhere            
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+ufw-before-logging-output  all  --  anywhere             anywhere            
+ufw-before-output  all  --  anywhere             anywhere            
+ufw-after-output  all  --  anywhere             anywhere            
+ufw-after-logging-output  all  --  anywhere             anywhere            
+ufw-reject-output  all  --  anywhere             anywhere            
+ufw-track-output  all  --  anywhere             anywhere            
+
+Chain ufw-after-forward (1 references)
+target     prot opt source               destination         
+
+Chain ufw-after-input (1 references)
+target     prot opt source               destination         
+ufw-skip-to-policy-input  udp  --  anywhere             anywhere             udp dpt:netbios-ns
+ufw-skip-to-policy-input  udp  --  anywhere             anywhere             udp dpt:netbios-dgm
+ufw-skip-to-policy-input  tcp  --  anywhere             anywhere             tcp dpt:netbios-ssn
+ufw-skip-to-policy-input  tcp  --  anywhere             anywhere             tcp dpt:microsoft-ds
+ufw-skip-to-policy-input  udp  --  anywhere             anywhere             udp dpt:bootps
+ufw-skip-to-policy-input  udp  --  anywhere             anywhere             udp dpt:bootpc
+ufw-skip-to-policy-input  all  --  anywhere             anywhere             ADDRTYPE match dst-type BROADCAST
+
+Chain ufw-after-logging-forward (1 references)
+target     prot opt source               destination         
+LOG        all  --  anywhere             anywhere             limit: avg 3/min burst 10 LOG level warning prefix "[UFW BLOCK] "
+
+Chain ufw-after-logging-input (1 references)
+target     prot opt source               destination         
+LOG        all  --  anywhere             anywhere             limit: avg 3/min burst 10 LOG level warning prefix "[UFW BLOCK] "
+
+Chain ufw-after-logging-output (1 references)
+target     prot opt source               destination         
+
+Chain ufw-after-output (1 references)
+target     prot opt source               destination         
+
+Chain ufw-before-forward (1 references)
+target     prot opt source               destination         
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+ACCEPT     icmp --  anywhere             anywhere             icmp destination-unreachable
+ACCEPT     icmp --  anywhere             anywhere             icmp time-exceeded
+ACCEPT     icmp --  anywhere             anywhere             icmp parameter-problem
+ACCEPT     icmp --  anywhere             anywhere             icmp echo-request
+ufw-user-forward  all  --  anywhere             anywhere            
+
+Chain ufw-before-input (1 references)
+target     prot opt source               destination         
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+ufw-logging-deny  all  --  anywhere             anywhere             ctstate INVALID
+DROP       all  --  anywhere             anywhere             ctstate INVALID
+ACCEPT     icmp --  anywhere             anywhere             icmp destination-unreachable
+ACCEPT     icmp --  anywhere             anywhere             icmp time-exceeded
+ACCEPT     icmp --  anywhere             anywhere             icmp parameter-problem
+ACCEPT     icmp --  anywhere             anywhere             icmp echo-request
+ACCEPT     udp  --  anywhere             anywhere             udp spt:bootps dpt:bootpc
+ufw-not-local  all  --  anywhere             anywhere            
+ACCEPT     udp  --  anywhere             224.0.0.251          udp dpt:mdns
+ACCEPT     udp  --  anywhere             239.255.255.250      udp dpt:1900
+ufw-user-input  all  --  anywhere             anywhere            
+
+Chain ufw-before-logging-forward (1 references)
+target     prot opt source               destination         
+
+Chain ufw-before-logging-input (1 references)
+target     prot opt source               destination         
+
+Chain ufw-before-logging-output (1 references)
+target     prot opt source               destination         
+
+Chain ufw-before-output (1 references)
+target     prot opt source               destination         
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+ufw-user-output  all  --  anywhere             anywhere            
+
+Chain ufw-logging-allow (0 references)
+target     prot opt source               destination         
+LOG        all  --  anywhere             anywhere             limit: avg 3/min burst 10 LOG level warning prefix "[UFW ALLOW] "
+
+Chain ufw-logging-deny (2 references)
+target     prot opt source               destination         
+RETURN     all  --  anywhere             anywhere             ctstate INVALID limit: avg 3/min burst 10
+LOG        all  --  anywhere             anywhere             limit: avg 3/min burst 10 LOG level warning prefix "[UFW BLOCK] "
+
+Chain ufw-not-local (1 references)
+target     prot opt source               destination         
+RETURN     all  --  anywhere             anywhere             ADDRTYPE match dst-type LOCAL
+RETURN     all  --  anywhere             anywhere             ADDRTYPE match dst-type MULTICAST
+RETURN     all  --  anywhere             anywhere             ADDRTYPE match dst-type BROADCAST
+ufw-logging-deny  all  --  anywhere             anywhere             limit: avg 3/min burst 10
+DROP       all  --  anywhere             anywhere            
+
+Chain ufw-reject-forward (1 references)
+target     prot opt source               destination         
+
+Chain ufw-reject-input (1 references)
