@@ -37,6 +37,7 @@ graph TD
     Bas --> Bas5["3.5 Scripting & Security Dev (5)"]
 ```
 
+---
 
 
-<!-- Weekly Progress: Week 38/104 | 2023-09-23 -->
+<!-- Weekly Progress: Week 39/104 | 2023-10-01 -->
