@@ -219,3 +219,225 @@ Domain: `prankglassinebracket.jumpingcrab.com`
 IP Address: `23.22.63.114`
 **Findings:**
 -   Multiple masquerading domains were found associated with the attacker's IPs.
+-   An email of the user `Lillian.rose@po1s0n1vy.com` was also found associated with the attacker's IP address.
+**Deliver Phase:**
+In this phase, we again leveraged online Threat Intel sites to find malware associated with the adversary's IP address, which appeared to be a secondary attack vector if the initial compromise failed.
+**Findings:**
+-   A malware name `MirandaTateScreensaver.scr.exe` was found associated with the adversary.
+-   MD5 of the malware was `c99131e0169171935c5ac32615ed6261`
+Useful!! :)
+
+## Enumeration
+**Reconnaissance Phase
+**
+Reconnaissance is an attempt to discover and collect information about a target. It could be knowledge about the system in use, the web application, employees or location, etc.
+We will start our analysis by examining any reconnaissance attempt against the webserver `imreallynotbatman.com`. From an analyst perspective, where do we first need to look? If we look at the available log sources, we will find some log sources covering the network traffic, which means all the inbound communication towards our web server will be logged into the log source that contains the web traffic. Let's start by searching for the domain in the search head and see which log source includes the traces of our domain.
+**Search Query**: `index=botsv1 imreallynotbatman.com`
+**Search Query explanation:** We are going to look for the event logs in the index "botsv1" which contains the term `imreallynotbatman.com`
+Here we have searched for the term `imreallynotbatman.com` in the index `botsv1`. In the sourcetype field, we saw that the following log sources contain the traces of this search term.
+-   Suricata
+-   stream:http
+-   fortigate_utm
+-   iis
+From the name of these log sources, it is clear what each log source may contain. Every analyst may have a different approach to investigating a scenario. Our first task is to identify the IP address attempting to perform reconnaissance activity on our web server. It would be obvious to look at the web traffic coming into the network. We can start looking into any of the logs mentioned above sources.
+Let us begin looking at the log source **stream:http**, which contains the http traffic logs, and examine the `src_ip` field from the left panel. **Src_ip** field contains the source IP address it finds in the logs.
+**Search Query:** `index=botsv1 imreallynotbatman.com sourcetype=stream:http   `
+**Search Query Explanation:** This query will only look for the term  `imreallynotbatman.com`in the **stream:http** log source.
+**Note:** The important thing to note, if you don't find the field of interest, keep scrolling in the left panel. When you click on a field, it will contain all the values it finds in the logs.
+So far, we have found two IPs in the src_ip field `40.80.148.42` and `23.22.63.114`. The first IP seems to contain a high percentage of the logs as compared to the other IP, which could be the answer. If you want to confirm further, click on each IP one by one, it will be added into the search query, and look at the logs, and you will find the answer.
+To further confirm our suspicion about the IP address **40.80.148.42**, click on the IP and examine the logs. We can look at the interesting fields like User-Agent, Post request, URIs, etc., to see what kind of traffic is coming from this particular IP.
+We have narrowed down the results to only show the logs from the source IP **40.80.148.42**, looked at the fields of interest and found the traces of the domain being probed.
+**Validate the IP that is scanning
+**
+So what do we need to do to validate the scanning attempt? Simple, dig further into the weblogs. Let us narrow down the result, look into the `suricata` logs, and see if any rule is triggered on this communication.
+**Search Query:** `index=botsv1 imreallynotbatman.com src=40.80.148.42 sourcetype=suricata`
+**Search Query Explanation:** This query will show the logs from the suricata log source that are detected/generated from the source IP **40.80.248.42**
+We have narrowed our search on the **src IP** and looked at the source type `suricata` to see what Suricata triggered alerts. In the right panel, we could not find the field of our interest, so we clicked on more fields and searched for the fields that contained the signature alerts information, which is an important point to note.
+Answer the questions below
+One suricata alert highlighted the CVE value associated with the attack attempt. What is the CVE value?
+index=botsv1 imreallynotbatman.com src_ip="40.80.148.42" sourcetype=suricata
+![[Pasted image 20221214192506.png]]
+![[Pasted image 20221214192453.png]]
+https://www.exploit-db.com/exploits/34766
+*CVE-2014-6271*
+What is the CMS our web server is using?
+Content Management System (CMS). These web applications are used to manage content on a website. For example, blogs, news sites, e-commerce sites and more!
+Joomla is the mobile-ready and user-friendly way to build your website. Choose from thousands of features and designs.
+![[Pasted image 20221214193043.png]]
+![[Pasted image 20221214193059.png]]
+*joomla*
+What is the web scanner, the attacker used to perform the scanning attempts?
+![[Pasted image 20221214193402.png]]
+_Acunetix_ is an end-to-end web security scanner that offers a 360 view of an organization's security.
+https://rci-c.com/en/technology/acunetix-vulnerability-scanner/
+https://www.acunetix.com/support/videos/
+*acunetix*
+What is the IP address of the server imreallynotbatman.com?
+Examine stream:http
+index=botsv1 imreallynotbatman.com source="stream:http"
+![[Pasted image 20221214194354.png]]
+![[Pasted image 20221214194338.png]]
+*192.168.250.70*
+
+## Exploitation
+**Exploitation Phase**
+The attacker needs to exploit the vulnerability to gain access to the system/server.
+In this task, we will look at the potential exploitation attempt from the attacker against our web server and see if the attacker got successful in exploiting or not.
+To begin our investigation, let's note the information we have so far:
+-   We found two IP addresses from the reconnaissance phase with sending requests to our server.
+-   One of the IPs `40.80.148.42` was seen attempting to scan the server with IP **192.168.250.70**.
+-   The attacker was using the web scanner Acunetix for the scanning attempt.
+**Count**
+Let's use the following search query to see the number of counts by each source IP against the webserver.
+**Search Query**:`index=botsv1 imreallynotbatman.com sourcetype=stream* | stats count(src_ip) as Requests by src_ip | sort - Requests`
+**Query Explanation:** This query uses the stats function to display the count of the IP addresses in the field src_ip.
+Additionally, we can also create different visualization to show the result. Click on **Visualization → Select Visualization** as shown below.
+Now we will narrow down the result to show requests sent to our web server, which has the IP `192.168.250.70`
+**Search Query:** `index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70"`
+**Query Explanation:** This query will look for all the inbound traffic towards IP **192.168.250.70.**
+The result in the **src_ip** field shows three IP addresses (1 local IP and two remote IPs) that originated the HTTP traffic towards our webserver.
+Another interesting field, **http_method** will give us information about the HTTP Methods observed during these HTTP communications.
+We observed most of the requests coming to our server through the POST request, as shown below.
+To see what kind of traffic is coming through the POST requests, we will narrow down on the field `http_method=POST` as shown below:
+**Search Query:** `index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70" http_method=POST   `
+﻿The result in the **src_ip** field shows two IP addresses sending all the POST requests to our server.
+**Interesting fields:** In the left panel, we can find some interesting fields containing valuable information. Some of the fields are:
+-   src_ip
+-   form_data
+-   http_user_agent
+-   uri
+The term Joomla is associated with the webserver found in a couple of fields like **uri, uri_path, http_referrer**, etc. This means our webserver is using Joomla CMS (Content Management Service) in the backend.
+A little search on the internet for the admin login page of the Joomla CMS will show as -> `/joomla/administrator/index.php`
+It is important because this uri contains the login page to access the web portal therefore we will be examining the traffic coming into this admin panel for a potential brute-force attack.
+Reference: [https://www.joomla.org/administrator/index.php](https://www.joomla.org/administrator/index.php)
+We can narrow down our search to see the requests sent to the login portal using this information.
+**Search query:** `index=botsv1 imreallynotbatman.com sourcetype=stream:http dest_ip="192.168.250.70"  uri="/joomla/administrator/index.php"   `
+**Query Explanation:** We are going to add `uri="/joomla/administrator/index.php"` in the search query to show the traffic coming into this URI.
+`form_data` The field contains the requests sent through the form on the admin panel page, which has a login page. We suspect the attacker may have tried multiple credentials in an attempt to gain access to the admin panel. To confirm, we will dig deep into the values contained within the form_data field, as shown below:
+**Search Query:** `index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70" http_method=POST uri="/joomla/administrator/index.php" | table _time uri src_ip dest_ip form_data`
+**Query Explanation:** We will add this -> `| table _time uri src dest_ip form_data` to create a table containing important fields as shown below:
+If we keep looking at the results, we will find two interesting fields `username` that includes the single username `admin` in all the events and another field `passwd` that contains multiple passwords in it, which shows the attacker from the IP `23.22.63.114` Was trying to guess the password by brute-forcing and attempting numerous passwords.
+The time elapsed between multiple events also suggests that the attacker was using an automated tool as various attempts were observed in a short time.
+**Extracting Username and Passwd Fields using Regex**
+Looking into the logs, we see that these fields are not parsed properly. Let us use **Regex** in the search to extract only these two fields and their values from the logs and display them.
+We can display only the logs that contain the **username** and **passwd** values in the form_data field by adding `form_data=*username*passwd*` in the above search.
+**Search Query:** `index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70" http_method=POST uri="/joomla/administrator/index.php" form_data=*username*passwd* | table _time uri src_ip dest_ip form_data`
+It's time to use Regex **(regular expressions)** to extract all the password values found against the field passwd in the logs. To do so, Splunk has a function called rex. If we type it in the search head, it will show detail and an example of how to use it to extract the values.
+Now, let's use Regex.  **`rex field=form_data "passwd=(?<creds>\w+)"`** To extract the **passwd** values only. This will pick the **form_data** field and extract all the values found with the field. **`creds`**.
+**Search Query:**`index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70" http_method=POST form_data=*username*passwd* | rex field=form_data "passwd=(?<creds>\w+)"  | table src_ip creds`
+We have extracted the passwords being used against the username admin on the admin panel of the webserver. If we examine the fields in the logs, we will find two values against the field`http_user_agent` as shown below:
+The first value clearly shows attacker used a python script to automate the brute force attack against our server. But one request came from a Mozilla browser. WHY? To find the answer to this query, let's slightly change to the about search query and add `http_user_agent` a field in the search head.
+Let's create a table to display key fields and values by appending -> `| table _time src_ip uri http_user_agent creds` in the search query as shown below.
+**Search Query:** `index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70" http_method=POST form_data=*username*passwd* | rex field=form_data "passwd=(?<creds>\w+)" |table _time src_ip uri http_user_agent creds`
+This result clearly shows a continuous brute-force attack attempt from an IP **23.22.63.114** and 1 password attempt **batman** from IP **40.80.148.42** using the Mozilla browser.
+Answer the questions below
+What IP address is likely attempting a brute force password attack against **imreallynotbatman.com**?
+*23.22.63.114*
+What was the URI which got multiple brute force attempts?
+*/joomla/administrator/index.php*
+Against which username was the brute force attempt made?
+*admin*
+What was the correct password for admin access to the content management system running **imreallynotbatman.com**?
+*batman*
+How many unique passwords were attempted in the brute force attempt?
+![[Pasted image 20221214202452.png]]
+*412*
+After finding the correct password, which IP did the attacker use to log in to the admin panel?
+*40.80.148.42*
+### Installation Phase
+Once the attacker has successfully exploited the security of a system, he will try to install a backdoor or an application for persistence or to gain more control of the system. This activity comes under the installation phase.
+In the previous Exploitation phase, we found evidence of the webserver `iamreallynotbatman.com` getting compromised via brute-force attack by the attacker using the python script to automate getting the correct password. The attacker used the IP" for the attack and the IP to log in to the server. This phase will investigate any payload / malicious program uploaded to the server from any attacker's IPs and installed into the compromised server.
+To begin an investigation, we first would narrow down any http traffic coming into our server **192.168.250.70** containing the term ".exe." This query may not lead to the findings, but it's good to start from 1 extension and move ahead.
+**Search Query**: `index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70" *.exe`
+With the search query in place, we are looking for the fields that could have some values of our interest. As we could not find the file name field, we looked at the missing fields and saw a field. `part_filename{}`.
+Observing the interesting fields and values, we can see the field `part_filename{}` contains the two file names. an executable file `3791.exe` and a PHP file `agent.php`
+Next, we need to find if any of these files came from the IP addresses that were found to be associated with the attack earlier.
+Click on the file name; it will be added to the search query, then look for the field c_ip, which seems to represent the client IP.
+**Search Query:**`index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70" "part_filename{}"="3791.exe"`
+**Was this file executed on the server after being uploaded?**
+We have found that file **3791.exe** was uploaded on the server. The question that may come to our mind would be, was this file executed on the server? We need to narrow down our search query to show the logs from the host-centric log sources to answer this question.
+**Search Query:** `index=botsv1 "3791.exe"`
+Following the Host-centric log, sources were found to have traces of the executable 3791. exe.
+-   Sysmon
+-   WinEventlog
+-   fortigate_utm
+For the evidence of execution, we can leverage sysmon and look at the EventCode=1 for program execution.
+Reference: [https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon](https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon)
+**Search Query:** `index=botsv1 "3791.exe" sourcetype="XmlWinEventLog" EventCode=1`
+**Query Explanation:** This query will look for the process Creation logs containing the term **"3791.exe"** in the logs.
+Looking at the output, we can clearly say that this file was executed on the compromised server. We can also look at other host-centric log sources to confirm the result.
+Answer the questions below
+Sysmon also collects the Hash value of the processes being created. What is the MD5 HASH of the program 3791.exe?
+![[Pasted image 20221214210313.png]]
+*AAE3F5A29935E6ABCC2C2754D12A9AF0*
+Looking at the logs, which user executed the program 3791.exe on the server?
+![[Pasted image 20221214210603.png]]
+*NT AUTHORITY\IUSR*
+Search hash on the virustotal. What other name is associated with this file 3791.exe?
+![[Pasted image 20221214210738.png]]
+Some comments a ctf in 2016
+57 6f 77 2e 2e 2e 20 56 65 72 79 20 69 6d 70 72 65 73 73 69 76 65 2e 20 46 69 6e 64 20 42 72 61 64 20 4c 69 6e 64 6f 77 20 61 6e 64 20 63 6f 6c 6c 65 63 74 20 79 6f 75 72 20 66 72 65 65 20 62 65 65 72 21
+Wow... Very impressive. Find Brad Lindow and collect your free beer!
+4e 69 63 65 20 77 6f 72 6b 21 20 54 68 65 20 61 6e 73 77 65 72 20 74 6f 20 71 75 65 73 74 69 6f 6e 20 31 37 20 69 73 20 22 6e 65 72 66 20 77 61 72 22
+Nice work! The answer to question 17 is "nerf war"
+*ab.exe*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/eba84b914807a5cb106c728812a67ac4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/49da8f5f7dc8665793a264cd367b78ce.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/dcc528c218e8dda78504f55f58188575.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/dc5ec747ef4b0f3eada2aac0bb1fa0ed.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/c320e7a1192dd94671fb5048e6a3cf3d.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/11b2317ec891d4b9b9a4c5bdaa594aa6.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/6e4de3d85d3322f76b20c71ea020d0b4.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/ff5428b053d955ddc89da6ff9dc0f81e.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/7ba883b04d37c2eca99362c9bda29454.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/caed557285bfc17702c039120aac1b4f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/d570547792358eed228ca92e06c27af9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/45495b910d4f5ad7ca9215a15166835f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/e9e7ec45af9290353dffb5809e33ac53.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/17ef54b0e1fdf69923e5c30f5650aad1.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/ea62d4ec767a649904b5f5bba9ba1d62.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/83b8b3e58e245701708a7e7ccac8c748.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/1738f09ad30036c48e6849f7f8123e3e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/9c47791d96dbadf8ab0d6a0adf1a9508.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/5ff9ecd4bf13a65356c0f6b9431d90c5.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/594dedebeb2d2d5a7cc6cae8d1ebc226.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/c8f99804c3e8a60170be32c01cdc0857.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/ef2cbed333760fbe7d2fa7c507d2c625.png)
+- **Installation Phase**![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/71f1b879cc4d2bf317b256c79f04ace9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/4097da92bb83bd61cdacec4539c58d67.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/f2206e28fac1af4e5033d1eb7cd7f29d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/e8f2b1f9924e74acaf2224cd7c13f6f6.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/2dd77a76ba3366bf822576b7600d4669.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/0135d57671ea197866054124115cfb4c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/140a87acbf87ae7b9cf62f41dd93acdb.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/47741c5563b7aebe667ec7eafdeaf1b3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/9cdce04d736980734ede35d17bc9d9a7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/d012293c246dcc717ab0c80a7190845b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/da31347a03f68b6e9998e66db946dccb.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/b71e2d7ed8b035a368d34ce02441a105.png)
+- **Command and Control:**![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/4a71af2f4bc28dc73994bac642394a1c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/a2df650b7d76e7cc7a795b8d0b627bfe.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/e5cda837fe7a7cbfa791515b49756f69.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/495918ac13b99ae950a0ac470fa349fc.png)
+- **Weaponization**![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/1bb220f3245456f2cac6c3ae17627c4e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/7ad2296f02b00a73a3ae2e4182fa7cfc.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/c6aa355d30ed9425cd6e923526a03d46.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/2a9dd066e2b6ef2cd55a5e0c04983776.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/87794e9d70b8b0dac729232443427181.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/c6298e96459c32e77675fa64aa09b5e3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/b217030ec313023a8d811ad513a28378.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/0d1024a79200a34705ac77b986782104.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/a306319398fa56470363ca0f41cd814f.png)
+- **Delivery**![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/6d050121b629cb9a57d15a8d809e0c02.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/994b52e66e64ffba61ca57d32ace6a54.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/511a309aacc571f2176931686df681e0.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/c380913c90e52016683cbcfe9174b35e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/8edbbf929731d7718587d3c1adc66648.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/6ef05247bb5c92e91d0a2894f219758a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/7a714d6ca3a44c0c570c45cb2711b660.png)
+
+## Notes / Lessons Learned
+[[ItsyBitsy]]
+
