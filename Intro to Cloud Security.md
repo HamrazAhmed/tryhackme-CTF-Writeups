@@ -165,3 +165,170 @@ IAM Important Terminologies
 To understand IAM, we must be very clear about its important terminologies:
 -   Resources: These are objects within a particular service; these include users, roles, groups & policies.
 -   Identities: Represent certain users permitted and authorised to perform specific roles and actions.
+-   Entities: A subset of resources which are used for authentication purposes. It includes users & roles.
+-   Principals: A person or some application requesting to use Amazon resources after signing in.
+Using Cloud Environment
+We will use examples from Amazon Web Services (AWS) throughout the room. Although the room can be completed with the provided text and image content, the practical exercises require an AWS account. Having an AWS account is optional for this room, but if you are interested, you can visit [this URL](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/) to understand how to create and activate a new AWS account.
+Practical Exercise
+Create an IAM user account with administrative privileges in your AWS account. IAM users with administrative privileges will have complete access to AWS resources. Moreover, it can grant permissions to other users as well.
+-   Login to your AWS account by visiting `console.aws.amazon.com` and navigating “IAM” in the services menu.
+-   Go to “Users” in the navigation pane and click  `Add users`.
+_Click to enlarge the image._
+-   Enter the new username and the user's sign-in name, and Select if you want the user to access AWS Management Console.
+_Click to enlarge the image._
+-   Choose “Next” to go to permissions. Since no group is created, so click on `Create Group`.
+_Click to enlarge the image._
+-   Enter the group name & check `AdministratorAccess` Policy.
+_Click to enlarge the image._
+-   Click `Create Group` and then `Review` to go through the settings. If everything is up to the mark, then click **Create User**.
+_Click to enlarge the image._
+-   The user has been created. Save the essential details such as username, Password, etc.
+Answer the questions below
+Are FaceID and biometric types of Authentication factors (yea/nay)?
+*yea*
+I have completed the practical exercise.
+Completed
+### Security Through Policies
+Another method of ensuring cloud security is through enforcing policies & permissions. Policies are a set of guidelines and controls which attach to identities and make permissions. The cloud infrastructure evaluates the permissions defined in the policy to determine whether the request should be allowed or denied whenever an identity requests any service. In a typical cloud environment, there are the following types of policies:
+-   **Identity-based Policies:** Attached to identities and grant permissions.
+-   **Resource-based Policies:** These are implemented on resources (data & services) and define who is authorised to access that resource.
+-   **Session-based Policies:** These temporary policies allow access to specific resources for a particular time.
+Security through Policies in AWS
+In AWS, policies are implemented by AWS IAM. As we have already covered the features of IAM in the previous task, we will directly see how policies are implemented.
+Practical Exercise
+Consider a scenario where a user wants to access resources during a particular date & time.
+-   Login to your AWS account, Open `IAM` in the services menu and click on `Open Policies`.
+-   Click on Create Policy - AWS IAM provides two approaches to create a policy, i.e. via **JSON & Visual Editor**.
+_Click to enlarge the image._
+-   To define a policy, we first select a service and determine a certain action on a particular resource under a specific condition.
+-   In the above example, we have selected the service RDS and denied all permissions. We can attach the policy with an identity so the user cannot access the RDS service. The primary idea is to have a granular level of access control through policies to restrict or enable access to a specific resource.
+Answer the questions below
+In a cloud environment, can we create a policy to enable Database access for a user at a specific time of the day (yea/nay)?
+By creating and attaching policies to your RDS resources, you can ensure that your database instances and data are secure and only accessible to authorized users and services.
+*yea*
+I have completed the practical exercise.
+Completed
+### Security Through Network Management
+Network security is an essential component of cloud security to protect the infrastructure from intruders. Cloud computing is inherently different from the on-premises model, wherein various approaches, including physical firewalls, protect on-premises deployments. Generally, network security of cloud infrastructure is maintained by following a layered approach:
+-   **Layer 1 – Network Security through Security Groups:** Security groups are the most fundamental aspect of maintaining network security in cloud infrastructure. In simple terms, security groups are a set of “allow rules” that allows specific traffic. Contrary to traditional firewalls, security groups do not have “deny rules”. The absence of any "allow rule" against particular traffic means it is denied. So we can say that security groups operate on the principle of “**deny all unless allowed explicitly**”.
+-   **Layer 2 – Network Security through Network Access Control Lists (NACLs):** The concept of NACL is related to protecting the Virtual Private Cloud (VPC). NACLs are used to create rules to protect specific instances of VPC. NACLs are different from Security Groups in that NACLs contain "deny rules" as well; e.g. we may make a rule to block a particular IP address from accessing the VPC.
+-   **Layer 3 - Vendor Specific Security Solutions:** Cloud computing service providers are also well aware of the inherent weaknesses & cyber-attacks that can target their infrastructure. So they have deployed their specific security solutions. These solutions vary from vendor to vendor, e.g. AWS has DNS Firewall & Network Firewall both.
+Network Security in AWS
+The following components manage network security in AWS:
+-   Security Groups.
+-   Network Access Control List.
+-   DNS Firewall.
+-   Network Firewall
+Practical Exercise
+In this exercise, we will Deny All traffic on Port 22 via NACL through the following steps:
+-   Login to your AWS account & Navigate to VPC in the services menu
+-   Open NACL in the left pane & Click on `Create Network ACL`
+-   Enter basic settings such as name, VPC and tags (optional) and click create network ACL
+-   Select the newly created ACL and Click on `Edit Inbound Rules` under the **Inbound Rules** tab. Now create a “New rule” and configure settings as shown in the figure below:
+The above rule will deny all the traffic at port 22. We can also allowlist/blocklist specific IPs for connecting to any port to limit the attack surface for the intruder.
+Answer the questions below
+Is it a good practice to operate security groups on the principle of “deny all unless allowed explicitly” (yea/nay)?
+*yea*
+I have completed the practical exercise.
+Completed
+### Security Through Storage Management
+As we have studied in Task 2, storage is crucial in cloud computing. Storage security in a cloud environment aims to ensure that data must remain safe while at rest and in transit during the various phases of the data lifecycle. The following approaches provide cloud storage protection:
+-   **Create Geographical Boundaries**: Define geographical regions and set policies permitting data access.
+-   **Set Role-based Authorisation**: Create identities and assign roles to access a particular data set per the rights and privileges.
+-   **Data Encryption**: Almost all cloud service providers allow data encryption at rest. With this approach, server-side encryption is applied to data.
+Important Aspects
+For any storage (file, database, etc.), the following aspects are of utmost importance:
+-   Connection String with database containing hostname, username and password must be used using secure means.
+-   Access security policy.
+-   Data encryption standards.
+-   Physical security measures by the cloud service provider.
+Storage Security in AWS
+The cloud environment provides different types of data repositories to store data. In terms of AWS, we have Relational Database Service (RDS), Simple Storage Service (S3), Redis, etc., to keep and retrieve data. Data security is ensured by applying various policies to database instances per the data sensitivity.
+Practical Exercise
+In this example, we will Create S3 Bucket and enable data encryption at rest.
+-   Login to your AWS account & Navigate to S3 in the services menu.
+-   Click on create bucket & Enter basic information such as bucket name, AWS region, etc. The bucket name must be globally unique; there can’t be two buckets with the same name.
+-   Enable Server Side Encryption and select `Encryption Key Type`. For the demo, we have selected “Amazon S3 managed keys".
+-   Now click, `Create bucket`. Congrats, you have created your first S3 bucket with server-side encryption.
+Answer the questions below
+Encryption of data at rest is unnecessary if we carry out encryption at transit (yea/nay)?
+*nay*
+I have completed the practical exercise.
+Completed
+### Cloud Security - Some Additional Concepts
+Disaster Recovery (DR) & Backup
+Cloud is considered an excellent source for establishing Disaster Recovery and Backup sites. In cloud computing environments, there is a famous terminology known as **Cloud Disaster Recovery (CDR)**, a combination of approaches, tools & techniques that ensures backup data, resources and other applications on cloud infrastructure. In case of any disaster, cloud service providers provide backups of on-premises environments to ensure the regular continuity of business operations. Following are the essential concepts in terms of Disaster & Recovery in cloud computing through the following three approaches:
+-   **Cold DR**: This is the most straightforward approach and inexpensive but has the largest RTO (Recovery Time Objective). It entails storing data and saving images & snapshots of machines. All snapshots must be recovered to resume business operations in a disaster situation.
+-   **Warm DR**: It works on the principle of near real-time synchronisation of actual data and applications with disaster sites. A copy of all data and services is being maintained at the DR setup, hosted on a cloud environment. This data is just being kept as a backup to resume business operations in a disaster scenario. When a disaster occurs, the DR site is configured to resume operations. RTO, in this case, is the time required for configuring the DR site to become operational.
+-   **Hot DR**: It has practically zero RTO but is the most expensive. In this approach, the actual and DR sites work in parallel and share the workload through load balancers. In case of disaster, all workload is shifted to the DR site.
+Security through Monitoring & Logging
+It is accurate to say that monitoring and logging are the hallmarks of maintaining security, and cloud computing is no exception. Nowadays, cloud service providers provide excellent approaches to logging and monitoring. Customers can take advantage of this option to keep an oversight on all the operations of their cloud environment. Following are some generic logging and monitoring approaches in a cloud computing environment:
+-   **Real-time Logging**: Almost all cloud service providers monitor and log all identities and resources.
+-   **Monitoring & Logging of API Calls**: All cloud instances have the provision for recording API calls made to cloud infrastructure. Typical logs include the source IP address of the user or service, time, etc.
+-   **Credential Reports**: Another essential thing that cloud service provider monitors are user accounts logs. Common logged factors include user account, account last used date, password last change data and password last used date, etc.
+**Monitoring & Logging into AWS**
+The following components manage monitoring and logging in AWS:
+-   Identity & Access Management: Basic logging features related to access management, e.g. logs credential reports of user accounts.
+-   CloudTrail: Logs all API calls made to AWS resources.
+-   CloudWatch: Monitors the entire cloud infra and informs about applications status performance changes, ensuring better resource utilisation.
+-   GuardDuty: Ensures continuous monitoring of malicious activity and unauthorised behaviour.
+**Practical Exercise**
+In this exercise, we will generate Credential Report for the AWS account. IAM provides an excellent feature of generating a credential report that lists all users and the status of their credentials, including passwords, Multi-Factor Authentication Status, usage & change history.
+-   Login to your AWS account by visiting `console.aws.amazon.com` & Navigate to `IAM` in the services menu.
+-   In the navigation pane, choose `Credential Report` & click “Download Report” on the next page.
+_Click to enlarge the image._
+-   The report will be downloaded in CSV format and contain various vital fields, such as `password_last_used, password_last_changed, user_creation_time, etc`.
+Updates & Patching
+Updating & patching is an essential parts of the calculus of the entire security paradigm. In cloud computing environments, “Automated & Scheduled Patch Management” ensures that security and other related updates are routinely applied.
+**Patch Management in AWS**
+Patch management in AWS is managed by a component called “Systems Manager”. Patch Management in AWS has the following concepts:
+-   Patch manager ensures automatic & scheduled updating of cloud resources and can be used to update operating systems and applications.
+-   Provides scanning option to scan complete infrastructure regarding missing patches.
+**Practical Exercise**
+In this exercise, we will gain an understanding of AWS Patch Manager.
+-   Log in to your AWS account & Open `Systems Manager` from the services menu.
+-   Open `Patch Manager` in the left window under Node Management and click on `Create Patch Policy`.
+-   There are two types of patching mechanisms, i.e., Patches without a Schedule and Scheduled Patching.
+-   We will enter the configuration name and select options like **scan** or **scan and install patches** immediately. In the next section, we must enter all the necessary details for patching.
+Answer the questions below
+Is it a good practice to keep Disaster Recovery Backups of a server in the same vicinity or data centre (yea/nay)?
+*nay*
+I have completed the practical exercise.
+Completed
+### Conclusion
+In this room, we have briefly touched on significant security aspects of the cloud. The complete ecosystem of cloud security can be summarized into the following categories:
+-   **Security through access management**: Ensure that the right people should perform the right job within the right set of permissions.
+-   **Security through policies**: Set conditions and guidelines under which users & resources can perform specific actions.
+-   **Security through networking**: Ensure that cloud instances remain safe from network-oriented attacks.
+-   **Security through storage management**: Ensure the security of sensitive data stored in cloud storage through various means, including encryption and geographical settings, etc.
+-   Essential concepts like security through logging, Disaster Recovery & Backup, the importance of updates, etc.
+Cloud computing is an emerging field that has gained popularity due to its two distinctive features: pay-as-you-use and on-demand scalability. With these features, usability and acceptance of cloud computing have increased manifold, giving rise to security threats. Fortunately, cloud computing service providers offer robust security features “ready to be deployed” by the customers. These features are not only easy to be deployed but also provide resilient security protection.
+A complete pathway will be designed explicitly to protect cloud infrastructure in upcoming rooms.
+Answer the questions below
+I have completed the room.
+Completed
+
+## Flags / Answers
+- ![image for cloud](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/f04ce2f08624ac4c7973ad4e6e6275cd.png)
+- ![image for cloud data life cycle](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/6ffcd9635986909d32ad621e95827e1c.png)
+- ***THM{CLOUD_11101}***
+- ![image for cloud types](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/0793905dd65076f2f379c5fa59e7afef.png)
+- ![Image for authentication](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/fa212dcaa2ed9400ff34bd738c96f363.png)
+- ![image for add user](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/8967b943f4df9c8b56e595d909cf3eb3.png)
+- ![image for add access type](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/c6ebccd84b5da6072f57346bbac57cb9.png)
+- ![image for add group code](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/08ea9d71e2ceebefa8206b1752a0400b.png)
+- ![image for policy](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/4b0ed147bc5256c6657f2c72828613aa.png)
+- ![image for review user details](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/f410aae3bc377d58fde05ab1f7b08a85.png)
+- ![image for json](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/1af10d5e41969adfbab9726628825bfc.png)
+- ![Image for Step 2](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/0c3983925940fafca5e7f4f56c07d7be.gif)
+- ![images for nacl](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/27a7e6804af7c85aab377dee257e83de.png)
+- ![images for creating vpc](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/5633090f4e814a93ef56daee69300a42.png)
+- ![image for blocking ssh](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/6afd4758b63de391b92954db713f824a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/decdf0e61a8147e0f00220c278ee10a5.png)
+- ![image for credential report](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/ec07297c40b3667a7d9eaaee18069e17.png)
+- ![image for patch management](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/208c9165ddb2c4d01bd9f919e041d85a.png)
+- ![image for patching](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/19ce2492b22d77fc5515181db0f37ca2.png)
+
+## Notes / Lessons Learned
+[[Eavesdropper]]
+
