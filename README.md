@@ -39,6 +39,7 @@ graph TD
 
 ---
 
+## 1. Offensive Security
 
 
-<!-- Weekly Progress: Week 40/104 | 2023-10-08 -->
+<!-- Weekly Progress: Week 41/104 | 2023-10-14 -->
