@@ -140,3 +140,145 @@ A common issue with SAST and DAST tooling is that the tool is simply deployed 
 The first and last point is very important and can be costly if ignored. The initial PoC of the tool should probably occur after hours since it will have to scan through all code. This process can impact the performance of your source code control tool significantly. Imagine this happening just before a big release, and developers cannot stage and push their latest commits.
 Furthermore, as more organisations move to a more agile approach to software development, most repos receive several hundred commits daily. If you introduce a new security gate, even just for a PoC, that scans each merge request for vulnerabilities before approval, this can have a drastic performance cost on your infrastructure and the speed at which developers can perform merge requests.
 When introducing new automated testing tooling, careful consideration should be given to how a PoC should be performed to ensure that no disruptions are caused but also to ensure that the PoC is representative of how the tooling will interact when it is finally integrated. A fine balance to try and achieve!
+Answer the questions below
+```text
+Automated testing is a process of using software to perform tests on a software application automatically, without manual intervention. It helps to catch bugs and ensure that the application behaves as expected. Automated testing can include unit tests, integration tests, and end-to-end tests, and can be run on a schedule or triggered by code changes. The main benefits of automated testing include faster testing, improved accuracy, and the ability to test the application more thoroughly.
+
+There are many tools available for automated testing. Some popular tools for different types of testing include:
+
+-   Unit Testing: JUnit (Java), NUnit (.NET), pytest (Python)
+-   Integration Testing: Jenkins, Travis CI
+-   End-to-end Testing: Selenium, Appium
+-   Functional Testing: TestCafe, Cypress
+-   Performance Testing: Apache JMeter, Gatling
+
+These are just a few examples, and the choice of tool depends on the specific requirements of the project and the technology stack being used.
+```
+What type of tool scans code to look for potential vulnerabilities?
+*SAST*
+What type of tool runs code and injects test cases to look for potential vulnerabilities?
+*DAST*
+Can SAST and DAST be used as a replacement for penetration tests? (Yea,Nay)
+*Nay*
+### Continuous Integration and Delivery
+In modern pipelines, software isn't manually moved between different environments. Instead, an automated process can be followed to compile, build, integrate, and deploy new software features. This process is called CI/CD.
+_Note: The term CI/CD has changed quite a bit in recent years. Initially, the primary focus was just on making sure that development was performed using an Agile approach while delivery of the product still occurred using the waterfall model of only deploying final releases. During this time, it was common for CI/CD to mean Continuous Integration and Continuous Development. However, quickly it was realised that deployment itself could also be made Agile and the acronym changed to mean Continuous Integration and Continuous Deployment, with development now becoming part of the Integration component. Finally, they realised that it is not just the deployment, but all aspects around the delivery of the solution and how we monitor it after delivery and the acronym was again changed to now finally mean Continuous Integration and Continuous Delivery. So you might hear these terms used interchangeably, but they all actually refer to the same thing._
+CI/CD
+Since we are constantly building new features for our system or service, we need to ensure that these features will work with the current application. Instead of waiting until the end of the development cycle when all features will be integrated, we can now continuously integrate new features and test them as they are being developed.
+We can create what is called a CI/CD pipeline. These pipelines usually have the following distinct elements:
+-   Starting Trigger - The action that kicks off the pipeline process. For example, a push request is made to a specific branch.
+-   Building Actions - Actions taken to build both the project and the new feature.
+-   Testing Actions - Actions that will test the project to ensure that the new feature does not interfere with any of the current features of the application.
+-   Deployment Actions - Should a pipeline succeed, the deployment actions detail what should happen with the build. For example, it should then be pushed to the Testing Environment.
+-   Delivery Actions - As CI/CD processes have evolved, the focus is now no longer just on the deployment itself, but all aspects of the delivery of the solution. This includes actions such as monitoring the deployed solution.
+CI/CD pipelines require build-infrastructure to execute the actions of these elements. We usually refer to this infrastructure as build orchestrators and agents. A build orchestrator directs the various agents to perform the actions of the CI/CD pipelines as required.
+These CI/CD pipelines are usually where the largest portion of automation can be found. As such, this is usually the largest attack surface and the biggest chance for misconfigurations to creep in.
+Common Tools
+GitHub and Gitlab provide CI/CD pipeline capabilities and are quite popular to use. GitHub provides build agents, whereas Gitlab provides a Gitlab runner application that can be installed on a host to make it a build agent. For more complex builds, build orchestrator software such as Jenkins can be used. We will explore these tools and their common misconfigurations in later rooms.
+Case Study: A tangle between Dev and Prod
+One common misconfiguration with CI/CD pipelines is using the same build agents for both Development (DEV) and Production (PROD) builds. This creates an interesting problem since most developers will have access to the starting trigger for a DEV build but not a PROD build.
+If one of these developers were compromised, an attacker could leverage their access to cause a malicious DEV build that would compromise the build agent. This would not be a big issue if the build agent was just used for DEV builds. However, since this agent is also used for PROD builds, an attacker could just persist on this build agent until a PROD build is actioned to inject their malicious code into the build, which would allow them to compromise the production build of the application.﻿
+Answer the questions below
+What does CI in CI/CD stand for?
+*Continuous Integration*
+What does CD in CI/CD stand for?
+*Continuous Delivery*
+What do we call the build infrastructure element that controls all builds?
+*build orchestrator*
+What do we call the build infrastructure element that performs the build?
+*build agent*
+### Environments
+Let's zoom in a bit on the pipeline section of Environments. Most pipelines have several environments. Each of these environments has a specific use case, and their security posture often differs. Let's take a look at some of the common ones:
+**Environment**
+**Description**
+**Stability**
+**Security Posture**
+**May it contain customer data?**
+DEV - Development
+The DEV environment is the playground for developers. This environment is the most unstable as developers are continuously pushing new code and testing it. From a security standpoint, this environment has the weakest security. Access control is usually laxer, and developers often have direct access to the infrastructure itself. The likelihood of the development environment being compromised is high, but if there is adequate segregation, the impact of such a compromise should be low.
+Unstable
+Weakest
+No
+UAT - User Acceptance Testing
+The UAT environment is used to test the application or select features before they are pushed to production. These include unit tests that ensure the developed feature behaves as expected. This can (and should) include security tests as well. Although this environment is more stable than DEV, it can often still be fairly unstable. Similarly, certain security hardening controls would have been introduced for UAT, but it is still not as hardened as PreProd or PROD.
+Semi-Stable
+Second Weakest
+No
+PreProd - Pre-Production
+The PreProd environment is used to mimic production without actual customer/user data. This environment is kept stable and used to perform the final tests before the new feature is pushed to production. From a security standpoint, PreProd's security should technically mirror PROD. Although, this is not always the case.
+Stable
+Second Strongest
+No
+PROD - Production
+The PROD environment is the most sensitive. This is the current active environment that serves users or customers. To ensure that our users have the best experience, this environment must be kept stable. No updates should be performed here without proper change management. To enforce this, the security of this environment is the strongest. Only a select few employees or services will have the ability to make changes here. Furthermore, since we may have "malicious" users, the security has to be hardened to prevent outsider threats as well.
+Stable
+Strongest
+Yes
+DR/HA - Disaster Recovery or High Availability
+Depending on the criticality of the system, there may be a DR or HA environment. If the switchover is instantaneous, it is usually called a HA environment. This is often used for critical applications such as Online Banking, where the bank has to pay large penalties if the website goes down. In the event where some (but still small) downtime is allowed, the environment is called a DR environment, meant to be used to recover from a disaster in production. DR and HA environments should be exact mirrors of PROD in both stability and security.
+Stable
+Strongest
+Yes
+Other Notable Environments
+There are some other environments that you may hear about when talking about DevOps.
+**Green and Blue Environments**
+Green and Blue environments are used for a Blue/Green deployment strategy when pushing an update to PROD. Instead of having a single PROD instance, there are two. The Blue environment is running the current application version, and the Green environment is running the newer version. Using a proxy or a router, all traffic can then be switched to the Green environment when the team is ready. However, the Blue environment is kept for some time, meaning that if there are any unforeseen issues with the new version, traffic can just be routed to the Blue environment again. We can think of this as High-Availability backups of PROD during a new deployment to use for a roll-back if something goes wrong, which is faster than having to perform a roll-back of the actual PROD environment.
+**Canary Environments**
+Similar to Green and Blue environments, the goal of Canary environments is to smooth the PROD deployment process. Again two environments are created, and users are gradually moved to the new environment. For example, at the start, 10% of users can be migrated. If the new environment remains stable, another 10% can be migrated until 100% of the users are in the new environment. Again, these are usually classified under PROD environments but are used to reduce the risk associated with a PROD upgrade to limit potential issues and downtime.
+Common Tools
+Environments have changed significantly in modern times. Breakthroughs such as virtualisation and containerisation have changed the landscape. Instead of environments simply being computers, we can now have virtual computers created through tools such as Vagrant or Terraform. We could also move away from hosts entirely to things like containers using Docker or pods using Kubernetes. These tools can make use of processes such as Infrastructure as Code (IaC) to even create software that can create and manage these environments.
+Security Considerations
+As mentioned before, the security considerations become more important the closer the environment is to PROD. The underlying infrastructure of an application also forms part of the attack surface of the actual application. Any vulnerabilities in this infrastructure could allow an attacker to take control of the host and the application. As such, the infrastructure must be hardened against attacks. This hardening process usually requires things like the following:
+-   Removing unnecessary services
+-   Updating the host and applications
+-   Using a firewall to block unused ports
+Case Study - Developer Bypasses in PROD
+One of the common issues that can happen with different environments is that often things that should stay in DEV, don't. Develop bypasses are common in DEV environments for features like the following:
+-   Multi-factor authentication
+-   CAPTCHAs
+-   Password resets
+-   Login portals
+Developer bypasses allow developers to quickly test different application features by bypassing time-consuming features such as MFA prompts. A common example is having a specific One-Time Pin (OTP) code that is always accepted, regardless of the OTP code that is sent by the application.
+However, if there is inadequate sanitisation of these bypasses before the application is moved to the next environment, it could lead to a developer bypass making its way all the way into PROD. That OTP bypass? It could now be leveraged by an attacker to bypass MFA and compromise user accounts.
+This is why environments must be segregated, and similar to quality gates, security gates must be implemented to ensure a clean application is moved to the next environment.
+Answer the questions below
+Which environment usually has the weakest security configuration?
+*DEV*
+Which environment is used to test the application?
+*UAT*
+Which environment is similar to PROD but is used to verify that everything is working before it is pushed to PROD?
+*PreProd*
+What is a common class of vulnerabilities that is discovered in PROD due to insecure code creeping in from DEV?
+Think about who is introducing this vulnerability
+*Developer Bypasses*
+### Challenge
+View SiteOpen the site and build your own pipeline to get your flag. Use what you learned to determine which concerns are valid at which stages of the pipeline!
+Answer the questions below
+What is the flag received after successfully building your pipeline?
+![[Pasted image 20230208162317.png]].
+![[Pasted image 20230208162359.png]]
+![[Pasted image 20230208162427.png]]
+![[Pasted image 20230208162505.png]]
+![[Pasted image 20230208162527.png]]
+![[Pasted image 20230208162551.png]]
+![[Pasted image 20230208162602.png]]
+### Conclusion
+Automation in the pipeline has significantly increased the capability of SDLC processes. It has enabled developers to rapidly create and deploy updates to applications. However, these new automation can also lead to an increased attack surface since an attacker can now indirectly attack the application by compromising its pipeline. Implementing secure automation is therefore needed to ensure that the automated pipeline does not increase the risk of application compromise.
+Throughout the various rooms in this module, we will take a deeper dive into the elements that make up a pipeline and show how security can be applied to each to create a secure, automated pipeline.
+Answer the questions below
+I understand the basic pipeline structure, and I'm ready to do a deep dive into each element!
+Completed
+
+## Flags / Answers
+- ![Pipeline diagram](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/5bf9574f4b8f6bc202123c9476650e58.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/3804e1b22987fc90c27d19e511ead12e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/05428b2c1ae49738813c1644df3a31a3.png)
+- ![Dependencies](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/fc00c5498dde8630a9b4e5f4ebcc308d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/d532d7168eaa7553b54464a6736f42fd.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/678d09b2f788f32a2766556cb4730701.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/0065d23932f564df870affd95f73dd3d.png)
+- ***THM{Pipeline.Automation.Is.Fun}***
+
+## Notes / Lessons Learned
+[[Intro to Containerisation]]
+
