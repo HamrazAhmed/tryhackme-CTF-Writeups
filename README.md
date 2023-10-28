@@ -44,4 +44,5 @@ graph TD
 Offensive security focuses on finding and exploiting vulnerabilities in applications, operating systems, networks, and enterprise domains. Rooms are grouped into 6 specialized subcategories below.
 
 
-<!-- Weekly Progress: Week 42/104 | 2023-10-21 -->
+
+<!-- Weekly Progress: Week 43/104 | 2023-10-28 -->
