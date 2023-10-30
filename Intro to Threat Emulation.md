@@ -129,3 +129,134 @@ Which factor will be considered when analysing whether to use existing or custom
 View Site
 ### 3. Planning the Threat Emulation Engagement
 Since threat emulation involves conducting and mimicking actual cyber attacks, significant problems may ensue if not properly planned and coordinated. The issues may include disclosure of private data, data loss and unplanned system downtime.
+Planning the emulation activities through defining the rules of engagement for the exercise, including communication and approvals, is vital to avert these risks. Planning also involves determining the resources needed for the activity, such as personnel, time, and equipment.
+### **3.1 Threat Emulation Plans**
+Threat Emulation Plans are a collection of resources used to organise and set a step-by-step execution of instructions for adversary behaviours based on a particular set of TTPs. As discussed in the previous tasks, we can find available emulation plans from CTID that capture adversary behaviours based on specific scenarios and step-by-step procedures to execute the emulation using tools.
+A well-defined plan will contain the elements of the threat emulation process as well as the following components:
+- **Engagement Objectives:** We have seen that the objectives are defined at the beginning of the process to understand the need for threat emulation.
+- **Scope:** The departments, users and devices upon which emulation activities are permitted should be defined explicitly.
+- **Schedule:** The dates and times when the activities should occur and when deliverables are due should be defined. This helps avoid conflicts between emulation activities and legitimate business operations.
+- **Rules of Engagement:** The acceptable adversary behaviour to be emulated must be planned and discussed. This also includes mitigation actions for any high-risk TTPs used during the exercise.
+- **Permission to Execute:** Explicit written consent to conduct the emulation activities must be provided by sufficient authority from the organisation. This helps avoid acting out independently and risking legal or criminal problems.
+- **Communication Plan:** The emulation team and organisation stakeholders must have a plan to communicate information concerning the emulation activities. You need to define the timings, communication channels, and any collaboration efforts to be included.
+This step involves carrying out the attack using the TTPs identified in the research phase. This step requires skilled professionals who can accurately replicate the tactics and techniques of the target adversary. The exercise should be conducted controlled and safely, and any issues should be addressed immediately.
+We will not go through a technical implementation of TTPs in this room. However, we shall provide a decent breakdown of the process.
+During the execution of the emulation, some resources would be needed to implement the TTPs. This will be your emulation lab, comprising an attack platform, an analysis platform used to gather forensic details and analyse artefacts and your test systems where the TTPs would be deployed.
+### **4.1. Planning the Deployment**
+As the emulation engineer for VASEPY, we can revisit the Research phase tackled in the previous task, where we identify the TTPs to emulate for FIN7. Let's say we wish to emulate the Initial Access TTPs. We can use ATT&CK to understand the TTPs and map them out using the Navigator. This would be combined with CTI resources, such as [Mandiant's FIN7 Evolution Report](https://www.fireeye.com/blog/threat-research/2017/04/fin7-phishing-lnk.html) and [ESentire FIN7 Report](https://www.esentire.com/security-advisories/notorious-cybercrime-gang-fin7-lands-malware-in-law-firm-using-fake-legal-complaint-against-jack-daniels-owner-brown-forman-inc), outlining how FIN7 used Windows document lures to execute their campaign.
+The lab environment needed for the exercise should be effectively set up, and security teams should know their responsibilities.
+### **4.2. Implementation of TTP**
+This is where the deployment of actual TTPs happens. In our case scenario, an Initial Access payload for FIN7 would be created and obfuscated using an RTF document, delivered through a spear phishing email. The lures used by attackers such as FIN7 tend to be convincing using DOCX and RTF files with malicious Windows Shortcut File (.LNK) embedded. A code snippet demonstrating this execution based on the [CTID FIN7 Emulation plan](https://github.com/center-for-threat-informed-defense/adversary_emulation_library/tree/master/fin7/Emulation_Plan/Scenario_1#step-1---initial-breach-evaluations-step-11) would look as follows:
+Malicious File Execution: T1204.002
+```shell-session
+# Copy 2-list.rtf to <domain_admin> Desktop on hotelmanager.
+sudo smbclient -U '<domain_full>\<domain_admin>' //<hotelmanager_ip>/C$ -c "put fin7/Resources/Step1/SQLRat/2-list.rtf Users\\<domain_admin>.<domain>\\Desktop\\2-list.rtf"
+
+#Provide <domain_admin> password when prompted.
+<domain_admin_password>
+
+#Login to victim workstation as <domain_admin>
+xfreerdp +clipboard /u:"<domain_admin>@<domain_full>" /p:"<domain_admin_password>" /v:<hotelmanager_ip>
+```
+### **4.3. Detections & Mitigations**
+Since emulation is a cross-team and collaborative endeavour, the defence team must find ways to detect and mitigate against emulated TTPs. Depending on the organisational setup, the SOC would use standard cyber security tools to collect, correlate and analyse TTP behaviour and logs for detection. MITRE provides a list of mitigation efforts for the adversarial TTPs, and this can be provided as recommendations and implemented as part of the emulation. In our case, we can look at the [Malicious File T1204.002](https://attack.mitre.org/techniques/T1204/002/) mitigations and detection strategies.
+Click to enlarge image.
+To end the task, answer the questions provided based on what you have learnt. Click the **View Site** button at the top of the task to launch the static site and complete the activity.
+Answer the questions below
+```text
+## Instructions
+
+There are **two** rounds, each round comprising of **three** questions related to a specific attack strategy that is being implemented. You have an option to utilize a **Special Ability Play** that will have more impact and help complete the exercise quicker.
+
+## Assuming you're emulating Carbon Spider, what will you use to achieve Execution Techniques?
+
+https://www.virustotal.com/gui/file/8279ce0eb52a9f5b5ab02322d1bb7cc9cb5b242b7359c3d4d754687069fcb7b8/community
+
+https://www.crowdstrike.com/blog/carbon-spider-embraces-big-game-hunting-part-1/
+
+https://attack.mitre.org/software/S0517/
+
+THM{C4RB0N_$P1D3R_1$_F1N7}
+
+## Assuming you're emulating Reaper, what will you use to achieve Initial Access Techniques?
+
+https://attack.mitre.org/software/S0213/
+
+https://attack.mitre.org/groups/G0067/
+
+https://www2.fireeye.com/rs/848-DID-242/images/rpt_APT37.pdf
+
+THM{3$P1ON4G3_F0R_R34P3R}
+```
+![[Pasted image 20230817204731.png]]
+![[Pasted image 20230817204753.png]]
+![[Pasted image 20230817204847.png]]
+![[Pasted image 20230817205005.png]]
+![[Pasted image 20230817205017.png]]
+![[Pasted image 20230817205124.png]]
+![[Pasted image 20230817205304.png]]
+![[Pasted image 20230817205319.png]]
+![[Pasted image 20230817205336.png]]
+![[Pasted image 20230817204657.png]]
+The emulation plan component determining which activities are to be conducted is known as the?
+*Scope*
+What is flag one obtained after completing the exercise?
+What is flag two obtained after completing the exercise?
+### Task 6  Threat Emulation Process III
+View Site
+### 5. Observe Results
+While going through the emulation engagement, the observing team (typically Blue Team) must identify artefacts that point to the emulation activity. This will be through the analysis of logs, evaluation of event logs and tracking of networking traffic.
+Additionally, like in the case of FIN7, detection rules would be vital to detect the threat. One collection of rules useful for this would be the [YARA rules](https://tryhackme.com/room/yara). Have a look at the rules to detect the [pillowMint.exe](https://github.com/center-for-threat-informed-defense/adversary_emulation_library/blob/master/fin7/yara-rules/pillowmint.txt) malware.
+The output of these results would help to understand if the TTP was successful at its mission, blocked or detected by the security measures available.
+### 6. Document & Report Findings
+Once results have been obtained, the teams must document and report the findings. Documentation provides empirical evidence to demonstrate the cyber security effectiveness of the process.
+Reporting should cover the exercise procedures, as outlined in the emulation plan and what was executed, the impact faced and recommendations that would be offered to avert the threat.
+Answer the questions below
+```text
+https://github.com/center-for-threat-informed-defense/adversary_emulation_library/blob/master/fin7/yara-rules/pillowmint.txt
+
+https://attack.mitre.org/groups/G0125/
+
+https://www.volexity.com/blog//active-exploitation-of-microsoft-exchange-zero-day-vulnerabilities/
+```
+![[Pasted image 20230817205635.png]]
+![[Pasted image 20230817205709.png]]
+![[Pasted image 20230817205807.png]]
+![[Pasted image 20230817205829.png]]
+![[Pasted image 20230817205842.png]]
+![[Pasted image 20230817211945.png]]
+![[Pasted image 20230817212100.png]]
+![[Pasted image 20230817212126.png]]
+![[Pasted image 20230817212144.png]]
+![[Pasted image 20230817212527.png]]
+Click the **View Site** button at the top of the task to launch the static site. What is flag three obtained after completing the exercise?
+What is flag four obtained after completing the exercise?
+### Task 7  Conclusion
+Fantastic work going through the **Introduction to Threat Emulation** room.
+Throughout the room, we have seen how adversary behaviours can be emulated by following a detailed process and formulating a plan.  As the room covered these concepts in theory, you should expect to meet them more practically and technically in future rooms within the module.
+Threat Emulation is commonly viewed as a Red Team concept, yet it is all-rounded and involves every team in the security domain. Knowing how attackers do it simplifies understanding how to defend it, more like learning the moves in a video game.
+Answer the questions below
+Power to Threat Emulation.
+Completed
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/407f155692f2e16814c8ae2e2151b143.png)
+- ![Pyramid of Pain](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/57e50a5493e2e1826bc6c38bddcf205a.png)
+- ![MITRE ATT&CK Framework Matrix](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/805cefe1d44bc2b61cfcbb625ebdeaff.png)
+- ![The image shows the Atomic testing stages to be followed during an emulation planning process.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/01bfe3c6c5ca52e93a0f1ad09411521a.png)
+- ![The flowchart shows the TIBER-EU Framework in action, highlighting the Preparation, Testing and Closure phases.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/b41e0b64b78018f1cfefa93fbf4aefc7.png)
+- ![A bullseye used to represent the function of defining emulation objectives and targets.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/68578a8aff10990ec0cb3331d5920aa0.png)
+### 2. Research Adversary TTPs ![A Knight chess piece used to represent the function of researching the adversary.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/9d5d4cd0ba3ac86a3fa138227922b7c4.png)
+- ![Snippet of the FIN7 Navigator Layer](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/51f3b337c34152a3ffbc3555a85883d5.png)
+- ![Chart showing the TTP Outline for FIN7.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/cbb6a90e29edcaa51069389e164dbb12.png)
+- ![The image of a clipboard and checklist representing the actions of planning an engagement.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/e3d2a526f0bbb46c923ed563e4ca2149.png)
+### 4. Conducting the Emulation![The image of building blocks represents the action of conducting an emulation engagement, similar to construction.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/91159be6c8b4f7c307e86f7edf55e853.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/d616f4308f0e66ecf9242d070081cac5.png)
+- ***THM{C4RB0N_$P1D3R_1$_F1N7}***
+- ***THM{3$P1ON4G3_F0R_R34P3R}***
+- ***THM{D3F3NC3_1N_3MUL4T10N}***
+- ***THM{S3CUR3_4LL_W3B_4553T5}***
+
+## Notes / Lessons Learned
+[[Dissecting PE Headers]]
+
