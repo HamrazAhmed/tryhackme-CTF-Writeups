@@ -877,3 +877,443 @@ user@TryHackMe$ hmac256 s!Kr37 message.txt
 
 user@TryHackMe$ hmac256 1234 message.txt
 4b6a2783631180fca6128592e3d17fb5bff6b0e563ad8f1c6afc1050869e440f  message.txt
+
+user@TryHackMe$ sha256hmac message.txt --key s!Kr37
+3ec65b7e80c5bf2e623e52e0528f1c6a74f605b10616621ba1c22a89fb244e65  message.txt
+
+user@TryHackMe$ sha256hmac message.txt --key 1234
+4b6a2783631180fca6128592e3d17fb5bff6b0e563ad8f1c6afc1050869e440f  message.txt
+```
+Answer the questions below
+```text
+So, to convert binary data to hexadecimal, groups of 4 binary digits are converted to a single hexadecimal digit. This provides a convenient way to represent and work with large amounts of binary data, as hexadecimal digits are easier to work with than long strings of binary digits.
+
+For example, the binary number 1101 could be represented as the hexadecimal number D.
+
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05]
+└─$ mkdir sha_examples  
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05]
+└─$ cd sha_examples 
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05/sha_examples]
+└─$ echo 'hi' > tst.txt        
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05/sha_examples]
+└─$ echo 'hi' > tst2.txt
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05/sha_examples]
+└─$ sha256sum *       
+98ea6e4f216f2fb4b69fff9b3a44842c38686ca685f3f55dc48c5d3fb1107be4  tst2.txt
+98ea6e4f216f2fb4b69fff9b3a44842c38686ca685f3f55dc48c5d3fb1107be4  tst.txt
+
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05/sha_examples]
+└─$ hexdump tst.txt -C 
+00000000  68 69 0a                                          |hi.|
+00000003
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05/sha_examples]
+└─$ hexdump tst2.txt -C
+00000000  68 69 0a                                          |hi.|
+00000003
+
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05/sha_examples]
+└─$ hmac256 hi tst.txt
+2878c15120d18186f31460f48e9247f5578ad66e1dbaa6fcb412e426bdb8ec63  tst.txt
+
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05/sha_examples]
+└─$ hmac256 1234 tst.txt
+331253ee0aa2f9c9e4d713c0a93196e4b1b48694d930695990abc7f69682d58f  tst.txt
+
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05]
+└─$ sha256sum *
+11faeec5edc2a2bad82ab116bbe4df0f4bc6edd96adac7150bb4e6364a238466  order2.json
+2c34b68669427d15f76a1c06ab941e3e6038dacdfb9209455c87519a3ef2c660  order.json
+8429d33aecaf404748708cb90b57ab4639e23f7e7647b04d99e6e7739eed1015  order.txt
+
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05]
+└─$ cat order.json 
+{
+  "sender": "Alice",
+  "recipient": "Mallory",
+  "currency": "USD",
+  "amount": 1000,
+  "notes": "weekly payment"
+}
+
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05]
+└─$ nano order.json 
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05]
+└─$ cat order.json 
+{
+  "sender": "Alice",
+  "recipient": "Mallory",
+  "currency": "USD",
+  "amount": 9000,
+  "notes": "weekly payment"
+}
+
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05]
+└─$ sha256sum order.json 
+11faeec5edc2a2bad82ab116bbe4df0f4bc6edd96adac7150bb4e6364a238466  order.json
+
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05]
+└─$ cat order2.json 
+{
+  "sender": "Alice",
+  "recipient": "Mallory",
+  "currency": "USD",
+  "amount": 9000,
+  "notes": "weekly payment"
+}
+
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05]
+└─$ sha256sum *         
+11faeec5edc2a2bad82ab116bbe4df0f4bc6edd96adac7150bb4e6364a238466  order2.json
+11faeec5edc2a2bad82ab116bbe4df0f4bc6edd96adac7150bb4e6364a238466  order.json
+8429d33aecaf404748708cb90b57ab4639e23f7e7647b04d99e6e7739eed1015  order.txt
+sha256sum: sha_examples: Is a directory
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05]
+└─$ cat order.txt 
+sender: Alice
+recipient: Mallory
+currency: USD
+amount: 1000
+notes: weekly payment
+
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task05]
+└─$ hmac256 3RfDFz82 order.txt 
+c7e4de386a09ef970300243a70a444ee2a4ca62413aeaeb7097d43d2c5fac89f  order.txt
+```
+On the AttackBox, you can find the directory for this task located at `/root/Rooms/cryptographyintro/task05`; alternatively, you can use the task file from Task 2 to work on your own machine.
+What is the SHA256 checksum of the file `order.json`?
+*2c34b68669427d15f76a1c06ab941e3e6038dacdfb9209455c87519a3ef2c660*
+Open the file `order.json` and change the amount from `1000` to `9000`. What is the new SHA256 checksum?
+*11faeec5edc2a2bad82ab116bbe4df0f4bc6edd96adac7150bb4e6364a238466*
+Using SHA256 and the key `3RfDFz82`, what is the HMAC of `order.txt`?
+*c7e4de386a09ef970300243a70a444ee2a4ca62413aeaeb7097d43d2c5fac89f*
+### PKI and SSL/TLS
+Using a key exchange such as the Diffie-Hellman key exchange allows us to agree on a secret key under the eyes and ears of eavesdroppers. This key can be used with a symmetric encryption algorithm to ensure confidential communication. However, the key exchange we described earlier is not immune to Man-in-the-Middle (MITM) attack. The reason is that Alice has no way of ensuring that she is communicating with Bob, and Bob has no way of ensuring that he is communicating with Alice when exchanging the secret key.
+Consider the figure below. It is an attack against the key exchange explained in the Diffie-Hellman Key Exchange task. The steps are as follows:
+1.  Alice and Bob agree on _q_ and _g_. Anyone listening on the communication channel can read these two values, including the attacker, Mallory.
+2.  As she would normally do, Alice chooses a random variable _a_, calculates _A_ ( _A_ = (_g__a_) mod _q_) and sends _A_ to Bob. Mallory has been waiting for this step, and she has selected a random variable _m_ and calculated the respective _M_. As soon as Mallory receives _A_, she sends _M_ to Bob, pretending she is Alice.
+3.  Bob receives _M_ thinking that Alice sent it. Bob has already picked a random variable _b_ and calculated the respective _B_; he sends _B_ to Alice. Similarly, Mallory intercepts the message, reads _B_ and sends _M_ to Alice instead.
+4.  Alice receives _M_ and calculates _k__e__y_ = _M__a_ mod _q_.
+5.  Bob receives _M_ and calculates _k__e__y_ = _M__b_ mod _q_.
+Alice and Bob continue to communicate, thinking that they are communicating directly, unaware that they are communicating with Mallory, who can read and modify the messages before sending them to the intended recipient.
+This susceptibility necessitates some mechanism that would allow us to confirm the other party’s identity. This brings us to Public Key Infrastructure (PKI).
+Consider the case where you are browsing the website [example.org](https://example.org/) over HTTPS. How can you be confident that you are indeed communicating with the `example.org` server(s)? In other words, how can you be sure that no man-in-the-middle intercepted the packets and altered them before they reached you? The answer lies in the website certificate.
+The figure below shows the page we get when browsing example.org. Most browsers represent the encrypted connection with some kind of a lock icon. This lock icon indicates that the connection is secured over HTTPS with a valid certificate.
+At the time of writing, example.org uses a certificate signed by DigiCert Inc., as shown in the figure below. In other words, DigiCert confirms that this certificate is valid (till a certain date).
+For a certificate to get signed by a certificate authority, we need to:
+1.  Generate Certificate Signing Request (CSR): You create a certificate and send your public key to be signed by a third party.
+2.  Send your CSR to a Certificate Authority (CA): The purpose is for the CA to sign your certificate. The alternative and usually insecure solution would be to self-sign your certificate.
+For this to work, the recipient should recognize and trust the CA that signed the certificate. And as we would expect, our browser trusts DigiCert Inc as a signing authority; otherwise, it would have issued a security warning instead of proceeding to the requested website.
+You can use `openssl` to generate a certificate signing request using the command `openssl req -new -nodes -newkey rsa:4096 -keyout key.pem -out cert.csr`. We used the following options:
+-   `req -new` create a new certificate signing request
+-   `-nodes` save private key without a passphrase
+-   `-newkey` generate a new private key
+-   `rsa:4096` generate an RSA key of size 4096 bits
+-   `-keyout` specify where to save the key
+-   `-out` save the certificate signing request
+Then you will be asked to answer a series of questions, as shown in the console output below.
+Terminal
+```shell-session
+user@TryHackMe$ openssl req -new -nodes -newkey rsa:4096 -keyout key.pem -out cert.csr
+[...]
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [XX]:UK
+State or Province Name (full name) []:London
+Locality Name (eg, city) [Default City]:London
+[...]
+```
+Once the CSR file is ready, you can send it to a CA of your choice to get it signed and ready to use on your server.
+Once the client, i.e., the browser, receives a signed certificate it trusts, the SSL/TLS handshake takes place. The purpose would be to agree on the ciphers and the secret key.
+We have just described how PKI applies to the web and SSL/TLS certificates. A trusted third party is necessary for the system to be scalable.
+For testing purposes, we have created a self-signed certificate. For example, the following command will generate a self-signed certificate.
+`openssl req -x509 -newkey -nodes rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365`
+The `-x509` indicates that we want to generate a self-signed certificate instead of a certificate request. The `-sha256` specifies the use of the SHA-256 digest. It will be valid for one year as we added `-days 365`.
+To answer the questions below, you need to inspect the certificate file `cert.pem` in the `task06` directory. You can use the following command to view your certificate:
+`openssl x509 -in cert.pem -text`
+Answer the questions below
+```text
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task06/my_certificate]
+└─$ openssl req -new -nodes -newkey rsa:4096 -keyout key.pem -out cert.csr
+.....+.....+......+.+...+......+.....+.+.....+.+..+............+.+..+...+.........+...+.......+.....+......+............+...+.......+...........+.+......+...+............+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.....+...+...+......+...+........+...+.........+.+..+...+.+........+................+.....+......+.........+.+...+......+.....+....+..+.+............+...........+....+...+.....+...+......+.+..+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.+...................+..+..........+........+.+....................+.............+.....+.............+..+...+...+.........+.......+........+......+......+..........+......+............+............+........+.+..+.............+.....................+........+...+.......+.....+......+....+........+............+.+......+.....+......+...+.........+..........+......+...........+.+.....+....+...........+....+...+...+..............+.............+...........+..........+....................+......+.+..+.+...........+...+......+.+.....+.........+....+...+........................+...+........+............+......+.+.....+......+........................+.................................+...+....+......+...+...........+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+............+..+...+.+......+..+......+......+.+........+............+....+......+...+..............+...+....+.....+......+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.......+.....+..........+...+..+...+.....................+................+..+.+..+.......+..+.+..................+..+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*...+...............+.................+......+.+..............................+.....+.+...+...........+.....................+...+.......+...+......+...+......+..+...+.+...+...........+.+...+..+..........+..............+.......+..+.............+............+........+.........+......+.......+...........+...........................+............+......+......................+...+..+.........+..........+...........+...+....+..+.+..................+..+....+...+.................+...............+.+..+.+...............+......+........+..........+.....+.............+..+.+.....+.+........+...+....+..................+..+....+...............+.....+.......+...+...........+.+..+......+......+..........+.....+..........+...+......+..............+.+...........+..................................+.....+..........+..+...+............+...+............+...+..........+.........+..+...+...+...+..........+......+...+.................+.........+....+........+...+....+...+.....+............+.+......+.....................+.....+....+.....+...+............+.........+.....................+....+...........+.+...+...........+......+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:PE
+State or Province Name (full name) [Some-State]:La Molina
+Locality Name (eg, city) []:Lima
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Tryhackme
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:
+Email Address []:jesusherbert98@gmail.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:witty
+An optional company name []:
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task06/my_certificate]
+└─$ ls
+cert.csr  key.pem
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task06/my_certificate]
+└─$ cat cert.csr     
+-----BEGIN CERTIFICATE REQUEST-----
+MIIEyDCCArACAQAwbTELMAkGA1UEBhMCUEUxEjAQBgNVBAgMCUxhIE1vbGluYTEN
+MAsGA1UEBwwETGltYTESMBAGA1UECgwJVHJ5aGFja21lMScwJQYJKoZIhvcNAQkB
+FhhqZXN1c2hlcmJlcnQ5OEBnbWFpbC5jb20wggIiMA0GCSqGSIb3DQEBAQUAA4IC
+DwAwggIKAoICAQCWDxxZzWapDk6GlMdbV4QvwMcl6SyJAL8SKCWRNeyPN/ux7kBf
+Kqc1+ei+FCZQ7s3OlDbCBF4hKjcCdIkU3P94Gd8kKe4DDrwq/4SQ6R5Mmwh/8hDp
+...
+2rad0RQ/YTx6VKfX6WX1VxDptDZ220d1aUI4Qg==
+-----END CERTIFICATE REQUEST-----
+                                                                                                                                                                       
+┌──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task06/my_certificate]
+└─$ cat key.pem 
+-----BEGIN PRIVATE KEY-----
+MIIJQQIBADANBgkqhkiG9w0BAQEFAASCCSswggknAgEAAoICAQCWDxxZzWapDk6G
+lMdbV4QvwMcl6SyJAL8SKCWRNeyPN/ux7kBfKqc1+ei+FCZQ7s3OlDbCBF4hKjcC
+dIkU3P94Gd8kKe4DDrwq/4SQ6R5Mmwh/8hDp13+kYsgrPV2x5RP3LL9ACpo+8W1A
+...
+/4lSbrR/QZFK4f4bjGoElzVtJN/k
+-----END PRIVATE KEY-----
+
+──(witty㉿kali)-[~/Downloads/intro-to-cryptography/task06]
+└─$ openssl x509 -in cert.pem -text
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            2b:29:0c:2f:b0:52:3a:79:89:1f:82:11:07:bd:9d:84:2a:23:d5:1c
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C = UK, ST = London, L = London, O = Default Company Ltd
+        Validity
+            Not Before: Aug 11 11:34:19 2022 GMT
+            Not After : Feb 25 11:34:19 2039 GMT
+        Subject: C = UK, ST = London, L = London, O = Default Company Ltd
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (4096 bit)
+                Modulus:
+                    00:b2:92:13:57:5a:6f:34:e2:e1:f2:08:55:ae:a9:
+                    cd:da:c8:e9:6b:bf:fd:5c:36:6d:d3:de:81:53:60:
+                    e9:8a:ec:f6:84:1a:73:31:1a:73:cf:47:62:4a:61:
+                    4e:9b:63:0d:ce:7c:74:3b:9e:d1:dc:ef:90:1e:de:
+                    1b:fb:89:5c:03:f2:57:58:4a:d6:d1:d0:a5:eb:4d:
+                    1f:c8:d7:c7:11:e0:38:c3:c3:20:5c:ef:23:09:71:
+                    f7:54:68:78:d7:35:80:07:18:83:4a:ce:c6:82:5d:
+                    1c:96:f6:ab:11:67:86:5e:8c:1f:dc:5e:68:65:24:
+                    42:6a:51:21:69:87:b2:63:d8:dc:5d:c5:df:bf:cf:
+                    b3:59:7b:88:c5:4e:b2:a5:2c:8d:f6:a7:45:3f:b4:
+                    d2:5f:b7:15:72:e0:d1:c1:b4:4f:68:23:08:48:a5:
+                    13:e9:d5:7f:21:59:c3:50:a9:09:ea:44:c2:a3:91:
+                    3f:78:89:05:b0:35:5b:ee:d0:42:6e:a3:43:d9:39:
+                    72:0f:a8:de:e4:83:31:73:37:d7:17:af:0c:ca:49:
+                    cc:3f:2d:66:28:66:22:4a:b1:e3:20:b4:fc:67:d9:
+                    b1:bb:d2:f5:66:cb:d2:55:df:4e:4b:63:ed:6b:9c:
+                    db:ac:82:18:d7:76:f0:8f:20:05:79:2e:01:4c:01:
+                    c0:23:54:af:e3:ee:31:ef:d1:a3:fc:69:a2:f2:5c:
+                    3d:d9:58:3e:e2:27:93:34:68:04:8b:07:3c:9a:bb:
+                    16:3c:26:ff:8a:61:1c:7b:b6:1e:e6:43:f7:3b:bd:
+                    f5:e0:ce:c1:32:8d:f5:08:58:37:57:10:b4:d4:01:
+                    ed:f7:c4:ef:f1:08:6d:d7:f3:9a:62:37:6a:e8:24:
+                    60:e3:20:37:34:4c:04:24:d3:46:a2:2b:10:ea:8b:
+                    9f:be:8f:e5:34:b7:ec:36:68:64:ca:92:f3:c5:15:
+                    2a:f0:72:fa:23:85:65:7c:61:95:89:f0:07:a2:09:
+                    4b:a9:a6:b6:04:bb:f9:1e:79:b2:ef:8c:65:47:cc:
+                    bf:09:86:5a:64:64:f9:33:86:24:a3:da:39:7a:b6:
+                    db:e6:13:ae:c3:c2:04:d9:02:ea:56:0b:52:02:3f:
+                    25:f0:7f:d2:0b:31:1e:63:e5:eb:9a:cf:ac:97:ae:
+                    8e:7a:10:e5:42:c8:c1:9b:0c:6e:34:ab:54:54:b6:
+                    8e:f8:03:ed:95:bf:c0:3d:c2:ce:99:4f:96:43:d6:
+                    48:71:25:bd:b9:47:d1:af:5d:c9:74:f8:b6:25:16:
+                    c0:dd:91:86:20:5c:75:81:7e:df:31:e9:86:2a:f1:
+                    96:10:37:88:d7:12:9f:ca:a4:f1:81:af:64:9a:c2:
+                    a9:9c:9f
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Subject Key Identifier: 
+                C8:1F:D9:46:B3:B2:25:9C:BE:38:3C:B9:94:B4:31:86:AE:40:2A:35
+            X509v3 Authority Key Identifier: 
+                C8:1F:D9:46:B3:B2:25:9C:BE:38:3C:B9:94:B4:31:86:AE:40:2A:35
+            X509v3 Basic Constraints: critical
+                CA:TRUE
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        04:ec:02:e4:c7:d2:31:49:5b:9c:c7:38:e2:2a:e7:d4:29:95:
+        b9:73:55:ae:f4:f0:cd:91:a4:5c:6d:51:e7:8c:b0:7d:5f:d0:
+        f3:11:aa:17:b7:7d:dc:13:ca:a7:50:c6:a9:29:e9:40:df:f5:
+        65:c0:da:cb:9a:1e:88:43:61:ba:0a:ca:38:cb:70:e8:5a:b1:
+        c5:2e:f6:96:e6:28:51:bd:21:17:8f:a7:ef:fb:76:9c:50:b7:
+        3c:6b:01:71:ee:59:2c:54:af:bc:31:05:81:6a:21:de:33:67:
+        49:36:f2:00:11:7f:64:0a:7f:b2:4c:b9:de:2a:f2:31:af:a0:
+        64:d2:47:29:1d:39:5c:d9:e1:4f:bb:df:c1:6e:f9:27:10:cb:
+        8c:0f:1d:df:4f:78:59:29:1a:86:ad:f1:8d:4e:a3:12:cb:23:
+        0c:19:14:ef:32:63:e7:bd:2f:62:50:51:57:9c:9e:29:be:92:
+        5a:c2:26:c6:ea:09:67:09:8b:f7:3a:5c:97:5c:27:9c:5d:e8:
+        8c:cf:9b:69:68:7c:69:0b:03:72:86:70:9c:21:88:f0:1d:00:
+        0a:53:da:ac:71:bc:ee:0d:49:7f:c4:a0:a6:1a:da:2c:f9:d4:
+        73:c7:5b:ca:89:b1:09:1f:f5:78:6a:08:a7:4e:52:b9:2e:62:
+        06:f1:1b:9f:61:03:b1:dc:f2:4d:5f:f5:9f:34:4e:6a:d0:9a:
+        12:85:2e:d3:c3:b7:60:0e:f9:58:6e:5b:92:41:25:4e:fa:60:
+        61:ad:84:37:b5:9d:9a:97:bc:9b:2d:c0:2f:ad:53:9d:bc:bd:
+        5e:fb:00:b6:bd:e3:d8:a8:e1:6f:6e:ce:c4:a1:35:67:37:96:
+        9f:07:e6:3a:7d:65:1c:a2:36:d1:93:4c:4b:d4:f5:53:ae:03:
+        87:91:d7:14:e1:33:0b:ca:5a:5c:4b:01:c2:3c:ec:79:d4:43:
+        ee:a0:54:dd:9c:28:aa:88:7e:f5:bc:76:b2:eb:73:8f:a5:ea:
+        12:00:a6:64:96:b2:37:35:48:a0:ba:25:91:29:f8:4d:f0:3a:
+        78:68:ac:19:88:f5:34:d3:08:f5:83:30:98:1b:8d:4a:ef:81:
+        38:15:b9:a8:a1:b5:95:cf:fc:2b:70:70:fc:fa:69:f6:e0:d9:
+        a3:4c:0a:d0:12:49:04:fa:5b:be:b7:e3:a2:77:a5:de:18:85:
+        26:30:99:82:0d:81:2f:3f:53:9e:88:f5:1d:cb:30:14:f3:42:
+        86:7b:21:49:cc:0a:2d:a9:9d:bd:6e:fb:d8:36:df:92:7e:27:
+        16:72:5f:a1:03:33:a9:11:cd:ee:98:44:e0:fb:b1:ee:1b:80:
+        d3:fd:93:b7:23:08:be:07
+-----BEGIN CERTIFICATE-----
+MIIFezCCA2OgAwIBAgIUKykML7BSOnmJH4IRB72dhCoj1RwwDQYJKoZIhvcNAQEL
+BQAwTTELMAkGA1UEBhMCVUsxDzANBgNVBAgMBkxvbmRvbjEPMA0GA1UEBwwGTG9u
+ZG9uMRwwGgYDVQQKDBNEZWZhdWx0IENvbXBhbnkgTHRkMB4XDTIyMDgxMTExMzQx
+OVoXDTM5MDIyNTExMzQxOVowTTELMAkGA1UEBhMCVUsxDzANBgNVBAgMBkxvbmRv
+bjEPMA0GA1UEBwwGTG9uZG9uMRwwGgYDVQQKDBNEZWZhdWx0IENvbXBhbnkgTHRk
+MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAspITV1pvNOLh8ghVrqnN
+2sjpa7/9XDZt096BU2Dpiuz2hBpzMRpzz0diSmFOm2MNznx0O57R3O+QHt4b+4lc
+A/JXWErW0dCl600fyNfHEeA4w8MgXO8jCXH3VGh41zWABxiDSs7Ggl0clvarEWeG
+Xowf3F5oZSRCalEhaYeyY9jcXcXfv8+zWXuIxU6ypSyN9qdFP7TSX7cVcuDRwbRP
+aCMISKUT6dV/IVnDUKkJ6kTCo5E/eIkFsDVb7tBCbqND2TlyD6je5IMxczfXF68M
+yknMPy1mKGYiSrHjILT8Z9mxu9L1ZsvSVd9OS2Pta5zbrIIY13bwjyAFeS4BTAHA
+I1Sv4+4x79Gj/Gmi8lw92Vg+4ieTNGgEiwc8mrsWPCb/imEce7Ye5kP3O7314M7B
+Mo31CFg3VxC01AHt98Tv8Qht1/OaYjdq6CRg4yA3NEwEJNNGoisQ6oufvo/lNLfs
+NmhkypLzxRUq8HL6I4VlfGGVifAHoglLqaa2BLv5Hnmy74xlR8y/CYZaZGT5M4Yk
+o9o5erbb5hOuw8IE2QLqVgtSAj8l8H/SCzEeY+Xrms+sl66OehDlQsjBmwxuNKtU
+VLaO+APtlb/APcLOmU+WQ9ZIcSW9uUfRr13JdPi2JRbA3ZGGIFx1gX7fMemGKvGW
+EDeI1xKfyqTxga9kmsKpnJ8CAwEAAaNTMFEwHQYDVR0OBBYEFMgf2UazsiWcvjg8
+uZS0MYauQCo1MB8GA1UdIwQYMBaAFMgf2UazsiWcvjg8uZS0MYauQCo1MA8GA1Ud
+EwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggIBAATsAuTH0jFJW5zHOOIq59Qp
+lblzVa708M2RpFxtUeeMsH1f0PMRqhe3fdwTyqdQxqkp6UDf9WXA2suaHohDYboK
+yjjLcOhascUu9pbmKFG9IRePp+/7dpxQtzxrAXHuWSxUr7wxBYFqId4zZ0k28gAR
+f2QKf7JMud4q8jGvoGTSRykdOVzZ4U+738Fu+ScQy4wPHd9PeFkpGoat8Y1OoxLL
+IwwZFO8yY+e9L2JQUVecnim+klrCJsbqCWcJi/c6XJdcJ5xd6IzPm2lofGkLA3KG
+cJwhiPAdAApT2qxxvO4NSX/EoKYa2iz51HPHW8qJsQkf9XhqCKdOUrkuYgbxG59h
+A7Hc8k1f9Z80TmrQmhKFLtPDt2AO+VhuW5JBJU76YGGthDe1nZqXvJstwC+tU528
+vV77ALa949io4W9uzsShNWc3lp8H5jp9ZRyiNtGTTEvU9VOuA4eR1xThMwvKWlxL
+AcI87HnUQ+6gVN2cKKqIfvW8drLrc4+l6hIApmSWsjc1SKC6JZEp+E3wOnhorBmI
+9TTTCPWDMJgbjUrvgTgVuaihtZXP/CtwcPz6afbg2aNMCtASSQT6W76346J3pd4Y
+hSYwmYINgS8/U56I9R3LMBTzQoZ7IUnMCi2pnb1u+9g235J+JxZyX6EDM6kRze6Y
+ROD7se4bgNP9k7cjCL4H
+-----END CERTIFICATE-----
+```
+![[Pasted image 20230213224919.png]]
+On the AttackBox, you can find the directory for this task located at `/root/Rooms/cryptographyintro/task06`; alternatively, you can use the task file from Task 2 to work on your own machine.
+What is the size of the public key in bits?
+openssl x509 -in cert.pem -text | less
+*4096*
+Till which year is this certificate valid?
+*2039*
+### Authenticating with Passwords
+Let’s see how cryptography can help increase password security. With PKI and SSL/TLS, we can communicate with any server and provide our login credentials while ensuring that no one can read our passwords as they move across the network. This is an example of protecting data in transit. Let’s explore how we can safeguard passwords as they are saved in a database, i.e., data at rest.
+The least secure method would be to save the username and the password in a database. This way, any data breach would expose the users’ passwords. No effort is required beyond reading the database containing the passwords.
+Username
+password
+`alice`
+`qwerty`
+`bob`
+`dragon`
+`charlie`
+`princess`
+The improved approach would be to save the username and a hashed version of the password in a database. This way, a data breach will expose the hashed versions of the passwords. Since a hash function is irreversible, the attacker needs to keep trying different passwords to find the one that would result in the same hash. The table below shows the MD5 sum of the passwords. (We chose MD5 just to keep the password field small for the example; otherwise, we would have used SHA256 or something more secure.)
+Username
+Hash(Password)
+`alice`
+`d8578edf8458ce06fbc5bb76a58c5ca4`
+`bob`
+`8621ffdbc5698829397d97767ac13db3`
+`charlie`
+`8afa847f50a716e64932d995c8e7435a`
+The previous approach looks secure; however, the availability of rainbow tables has made this approach insecure. A **rainbow table** contains a list of passwords along with their hash value. Hence, the attacker only needs to look up the hash to recover the password. For example, it would be easy to look up `d8578edf8458ce06fbc5bb76a58c5ca4` to discover the original password of `alice`. Consequently, we need to find more secure approaches to save passwords securely; we can add salt. A **salt** is a random value we can append to the password before hashing it. An example is shown below.
+Username
+Hash(Password + Salt)
+Salt
+`alice`
+`8a43db01d06107fcad32f0bcfa651f2f`
+`12742`
+`bob`
+`aab2b680e6a1cb43c79180b3d1a38beb`
+`22861`
+`charlie`
+`3a40d108a068cdc8e7951b82d312129b`
+`16056`
+The table above used `hash(password + salt)`; another approach would be to use `hash(hash(password) + salt)`. Note that we used a relatively small salt along with the MD5 hash function. We should switch to a (more) secure hash function and a large salt for better security if this were an actual setup.
+Another improvement we can make before saving the password is to use a key derivation function such as PBKDF2 (Password-Based Key Derivation Function 2). PBKDF2 takes the password and the salt and submits it through a certain number of iterations, usually hundreds of thousands.
+We recommend you check the [Password Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) if you like to learn about other techniques related to password storage.
+Answer the questions below
+You were auditing a system when you discovered that the MD5 hash of the admin password is `3fc0a7acf087f549ac2b266baf94b8b1`. What is the original password?
+Use an online MD5 crack tool such as https://www.md5online.org/md5-decrypt.html or https://md5decrypt.net/en/
+using crackstation also can be with https://md5decrypt.net/en/
+*qwerty123*
+### Cryptography and Data - Example
+In this task, we would like to explore what happens when we log into a website over HTTPS.
+1.  Client requests server’s SSL/TLS certificate
+2.  Server sends SSL/TLS certificate to the client
+3.  Client confirms that the certificate is valid
+Cryptography’s role starts with checking the certificate. For a certificate to be considered valid, it means it is signed. Signing means that a hash of the certificate is encrypted with the private key of a trusted third party; the encrypted hash is appended to the certificate.
+If the third party is trusted, the client will use the third party’s public key to decrypt the encrypted hash and compare it with the certificate’s hash. However, if the third party is not recognized, the connection will not proceed automatically.
+Once the client confirms that the certificate is valid, an SSL/TLS handshake is started. This handshake allows the client and the server to agree on the secret key and the symmetric encryption algorithm, among other things. From this point onward, all the related session communication will be encrypted using symmetric encryption.
+The final step would be to provide login credentials. The client uses the encrypted SSL/TLS session to send them to the server. The server receives the username and password and needs to confirm that they match.
+Following security guidelines, we expect the server to save a hashed version of the password after appending a random salt to it. This way, if the database were breached, the passwords would be challenging to recover.
+Answer the questions below
+Make sure you read and understand the above scenario. The purpose is to see how symmetric and asymmetric encryption are used along with hashing in many secure communications.
+Completed
+### Conclusion
+Cryptography is a vast topic. In this room, we tried to focus on the core concepts that would help you understand the commonly used terms in cryptography. This knowledge is vital to understanding the configuration options of systems that use encryption and hashing.
+Answer the questions below
+Make sure you have taken notes of all the concepts and commands covered in this room.
+Question Done
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/701fe785951a8e91523d337ba815120e.png)
+- ![Top Secret Document with the words WUB KDFN PH](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/a31ad9ee6b4e321453508e8662fc4679.png)
+- ![Illustration of Caesar cipher encryption](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/b4f1cbf444e5f19f855dadb7f272ab50.png)
+- ![Illustration of Caesar cipher decryption](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/45b482f79ebcc2f202813a5d7de4df87.png)
+- ![Decrypting a ciphertext by trying all possible keys, i.e., by brute force](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/83c79636b07babb43ffe5402e2697772.png)
+- ![Illustration of a transposition cipher](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/d1c99f9bf3e305eb4b50cb8c30be430d.png)
+- ![Screenshot of the quipquip website](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/0b4ac26e6f49c1156b6dc5c283b413a7.png)
+- ![General block diagram of encryption using a secret key](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/dc0cc0d61133400277c47d039d8d69e1.png)
+- ![General block diagram of decryption using a secret key](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/4003a3e6e0ecd139078eefe30a336ce2.png)
+- ![Illustration of the ShiftRows function when applied on a four by four array](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/049bad7deb4e6dd426335d7c3477f10a.png)
+- ![Example of a block cipher encryption algorithm applied on a four by four array](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/2d69973a4fbf8220e64c3e896841b21d.png)
+- ![Example of a stream cipher encryption algorithm applied on an array of bytes](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/6c0edb0faf15df0c6675c6829fddae01.png)
+- ![When using asymmetric encryption, Alice encrypts the messages using Bob's public key before sending them to Bob. Bob decrypts the messages using his private key.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/684696712007bfb81595bc823deb6293.png)
+- ![When using asymmetric encryption, Bob encrypts the messages using Alice's public key before sending them to Alice. Alice decrypts the messages using her private key.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/321e8f02228699aab1a333791fe57d4a.png)
+- ![To prove authenticity using asymmetric encryption, Bob encrypts the message using his private key and the recipients can decrypt it using Bob’s public key.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/11329c3e017fe2016fc21bc789b29259.png)
+- ![Graphical illustration showing a numeric example of the five steps of Diffie-Hellman](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/6993f1edbc899d252e949ac403294d52.png)
+- ![Graphical illustration showing how an HMAC is calculated](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/d8b175af1d32a759f66b223efdac8972.png)
+- ![Illustration showing the Man-in-the-Middle attack against Diffie-Hellman Key Exchange](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/640464d74c639afe684eed13c6707229.png)
+- ![Screenshot of a browser showing a lock icon for an encrypted connection](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/0c5bba05433f39f193e19b111a623f33.png)
+- ![Screenshot showing the validity of a website certificate](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/22c1e51aec7038f6247317f8c3299616.png)
+- ![Screenshot showing the certificate authorities trusted by a web browser](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/0892193b8b3defdc3cedbc1dcf1843a8.png)
+
+## Notes / Lessons Learned
+[[Introduction To Honeypots]]
+
