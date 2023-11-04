@@ -43,6 +43,7 @@ graph TD
 
 Offensive security focuses on finding and exploiting vulnerabilities in applications, operating systems, networks, and enterprise domains. Rooms are grouped into 6 specialized subcategories below.
 
+### 1.1 Web Application Pentesting & Vulnerability Labs (109 Rooms)
 
 
-<!-- Weekly Progress: Week 43/104 | 2023-10-28 -->
+<!-- Weekly Progress: Week 44/104 | 2023-11-04 -->
