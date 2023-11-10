@@ -46,4 +46,5 @@ Offensive security focuses on finding and exploiting vulnerabilities in applicat
 ### 1.1 Web Application Pentesting & Vulnerability Labs (109 Rooms)
 
 
-<!-- Weekly Progress: Week 44/104 | 2023-11-04 -->
+
+<!-- Weekly Progress: Week 45/104 | 2023-11-10 -->
