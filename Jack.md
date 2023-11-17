@@ -1129,3 +1129,1134 @@ dmesg Not Found
    Tags: [ ubuntu=(14.04|16.04) ]{kernel:4.4.0-(21|22|24|28|31|34|36|38|42|43|45|47|51)-generic}
    Download URL: https://www.exploit-db.com/download/40871
    Comments: CAP_NET_RAW capability is needed OR CONFIG_USER_NS=y needs to be enabled
+
+[+] [CVE-2016-4557] double-fdput()
+
+   Details: https://bugs.chromium.org/p/project-zero/issues/detail?id=808
+   Exposure: probable
+   Tags: [ ubuntu=16.04 ]{kernel:4.4.0-21-generic}
+   Download URL: https://github.com/offensive-security/exploit-database-bin-sploits/raw/master/bin-sploits/39772.zip
+   Comments: CONFIG_BPF_SYSCALL needs to be set && kernel.unprivileged_bpf_disabled != 1
+
+[+] [CVE-2021-3156] sudo Baron Samedit
+
+   Details: https://www.qualys.com/2021/01/26/cve-2021-3156/baron-samedit-heap-based-overflow-sudo.txt
+   Exposure: less probable
+   Tags: mint=19,ubuntu=18|20, debian=10
+   Download URL: https://codeload.github.com/blasty/CVE-2021-3156/zip/main
+
+[+] [CVE-2021-22555] Netfilter heap out-of-bounds write
+
+   Details: https://google.github.io/security-research/pocs/linux/cve-2021-22555/writeup.html
+   Exposure: less probable
+   Tags: ubuntu=20.04{kernel:5.8.0-*}
+   Download URL: https://raw.githubusercontent.com/google/security-research/master/pocs/linux/cve-2021-22555/exploit.c
+   ext-url: https://raw.githubusercontent.com/bcoles/kernel-exploits/master/CVE-2021-22555/exploit.c
+   Comments: ip_tables kernel module must be loaded
+
+[+] [CVE-2019-18634] sudo pwfeedback
+
+   Details: https://dylankatz.com/Analysis-of-CVE-2019-18634/
+   Exposure: less probable
+   Tags: mint=19
+   Download URL: https://github.com/saleemrashid/sudo-cve-2019-18634/raw/master/exploit.c
+   Comments: sudo configuration requires pwfeedback to be enabled.
+
+[+] [CVE-2019-15666] XFRM_UAF
+
+   Details: https://duasynt.com/blog/ubuntu-centos-redhat-privesc
+   Exposure: less probable
+   Download URL: 
+   Comments: CONFIG_USER_NS needs to be enabled; CONFIG_XFRM needs to be enabled
+
+[+] [CVE-2018-1000001] RationalLove
+
+   Details: https://www.halfdog.net/Security/2017/LibcRealpathBufferUnderflow/
+   Exposure: less probable
+   Tags: debian=9{libc6:2.24-11+deb9u1},ubuntu=16.04.3{libc6:2.23-0ubuntu9}
+   Download URL: https://www.halfdog.net/Security/2017/LibcRealpathBufferUnderflow/RationalLove.c
+   Comments: kernel.unprivileged_userns_clone=1 required
+
+[+] [CVE-2017-5618] setuid screen v4.5.0 LPE
+
+   Details: https://seclists.org/oss-sec/2017/q1/184
+   Exposure: less probable
+   Download URL: https://www.exploit-db.com/download/https://www.exploit-db.com/exploits/41154
+
+[+] [CVE-2017-1000366,CVE-2017-1000379] linux_ldso_hwcap_64
+
+   Details: https://www.qualys.com//stack-clash/stack-clash.txt
+   Exposure: less probable
+   Tags: debian=7.7|8.5|9.0,ubuntu=14.04.2|16.04.2|17.04,fedora=22|25,centos=7.3.1611
+   Download URL: https://www.qualys.com//stack-clash/linux_ldso_hwcap_64.c
+   Comments: Uses "Stack Clash" technique, works against most SUID-root binaries
+
+[+] [CVE-2017-1000253] PIE_stack_corruption
+
+   Details: https://www.qualys.com/2017/09/26/linux-pie-cve-2017-1000253/cve-2017-1000253.txt
+   Exposure: less probable
+   Tags: RHEL=6,RHEL=7{kernel:3.10.0-514.21.2|3.10.0-514.26.1}
+   Download URL: https://www.qualys.com/2017/09/26/linux-pie-cve-2017-1000253/cve-2017-1000253.c
+
+[+] [CVE-2016-9793] SO_{SND|RCV}BUFFORCE
+
+   Details: https://github.com/xairy/kernel-exploits/tree/master/CVE-2016-9793
+   Exposure: less probable
+   Download URL: https://raw.githubusercontent.com/xairy/kernel-exploits/master/CVE-2016-9793/poc.c
+   Comments: CAP_NET_ADMIN caps OR CONFIG_USER_NS=y needed. No SMEP/SMAP/KASLR bypass included. Tested in QEMU only
+
+[+] [CVE-2016-2384] usb-midi
+
+   Details: https://xairy.github.io/blog/2016/cve-2016-2384
+   Exposure: less probable
+   Tags: ubuntu=14.04,fedora=22
+   Download URL: https://raw.githubusercontent.com/xairy/kernel-exploits/master/CVE-2016-2384/poc.c
+   Comments: Requires ability to plug in a malicious USB device and to execute a malicious binary as a non-privileged user
+
+[+] [CVE-2016-0728] keyring
+
+   Details: http://perception-point.io/2016/01/14/analysis-and-exploitation-of-a-linux-kernel-vulnerability-cve-2016-0728/
+   Exposure: less probable
+   Download URL: https://www.exploit-db.com/download/40003
+   Comments: Exploit takes about ~30 minutes to run. Exploit is not reliable, see: https://cyseclabs.com/blog/cve-2016-0728-poc-not-working
+
+╔══════════╣ Executing Linux Exploit Suggester 2
+╚ https://github.com/jondonas/linux-exploit-suggester-2
+  [1] af_packet
+      CVE-2016-8655
+      Source: http://www.exploit-db.com/exploits/40871
+  [2] exploit_x
+      CVE-2018-14665
+      Source: http://www.exploit-db.com/exploits/45697
+  [3] get_rekt
+      CVE-2017-16695
+      Source: http://www.exploit-db.com/exploits/45010
+
+╔══════════╣ Protections
+═╣ AppArmor enabled? .............. You do not have enough privilege to read the profile set.
+apparmor module is loaded.
+═╣ grsecurity present? ............ grsecurity Not Found
+═╣ PaX bins present? .............. PaX Not Found
+═╣ Execshield enabled? ............ Execshield Not Found
+═╣ SELinux enabled? ............... sestatus Not Found
+═╣ Is ASLR enabled? ............... Yes
+═╣ Printer? ....................... No
+═╣ Is this a virtual machine? ..... Yes (xen)
+
+                                             ╔═══════════╗
+═════════════════════════════════════════════╣ Container ╠═════════════════════════════════════════════
+                                             ╚═══════════╝
+╔══════════╣ Container related tools present
+/usr/bin/lxc
+╔══════════╣ Container details
+═╣ Is this a container? ........... No
+═╣ Any running containers? ........ No
+
+                          ╔════════════════════════════════════════════════╗
+══════════════════════════╣ Processes, Crons, Timers, Services and Sockets ╠══════════════════════════
+                          ╚════════════════════════════════════════════════╝
+╔══════════╣ Cleaned processes
+╚ Check weird & unexpected proceses run by root: https://book.hacktricks.xyz/linux-hardening/privilege-escalation#processes
+root         1  0.6  0.5  38016  6036 ?        Ss   14:48   0:11 /sbin/init
+root       355  0.0  0.2  28348  2764 ?        Ss   14:49   0:00 /lib/systemd/systemd-journald
+root       397  0.0  0.1  94772  1580 ?        Ss   14:49   0:00 /sbin/lvmetad -f
+root       438  0.0  0.4  44700  4244 ?        Ss   14:49   0:01 /lib/systemd/systemd-udevd
+systemd+   476  0.0  0.2 100324  2504 ?        Ssl  14:49   0:00 /lib/systemd/systemd-timesyncd
+  └─(Caps) 0x0000000002000000=cap_sys_time
+root       721  0.0  0.0  16128   864 ?        Ss   14:49   0:00 /sbin/dhclient -1 -v -pf /run/dhclient.eth0.pid -lf /var/lib/dhcp/dhclient.eth0.leases -I -df /var/lib/dhcp/dhclient6.eth0.leases eth0
+root       865  0.0  0.2  29008  2952 ?        Ss   14:49   0:00 /usr/sbin/cron -f
+daemon[0m     876  0.0  0.2  26044  2244 ?        Ss   14:49   0:00 /usr/sbin/atd -f
+root       879  0.0  0.2  28544  3004 ?        Ss   14:49   0:00 /lib/systemd/systemd-logind
+root       882  5.1  0.3 645336  3428 ?        Ssl  14:49   1:23 /usr/bin/lxcfs /var/lib/lxcfs/
+syslog     890  0.0  0.3 256396  3164 ?        Ssl  14:49   0:00 /usr/sbin/rsyslogd -n
+root       892  0.0  2.4 214272 24956 ?        Ssl  14:49   0:00 /usr/lib/snapd/snapd
+message+   901  0.0  0.3  42932  3928 ?        Ss   14:49   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  └─(Caps) 0x0000000020000000=cap_audit_write
+root       913  0.0  0.6 275768  6204 ?        Ssl  14:49   0:00 /usr/lib/accountsservice/accounts-daemon[0m
+root       918  0.0  0.1   4396  1284 ?        Ss   14:49   0:00 /usr/sbin/acpid
+root       928  0.0  0.0  13372   160 ?        Ss   14:49   0:00 /sbin/mdadm --monitor --pid-file /run/mdadm/monitor.pid --daemon[0mise --scan --syslog
+root       954  0.0  0.6 277180  6152 ?        Ssl  14:49   0:00 /usr/lib/policykit-1/polkitd --no-debug
+root       958  0.0  0.0   5220   152 ?        Ss   14:49   0:00 /sbin/iscsid
+root       959  0.0  0.3   5720  3516 ?        S<Ls 14:49   0:00 /sbin/iscsid
+root      1005  0.0  0.5  65512  5352 ?        Ss   14:49   0:00 /usr/sbin/sshd -D
+jack      1526  0.0  0.3  92804  4008 ?        S    14:50   0:00  |   _ sshd: jack@pts/0
+jack      1527  0.0  0.5  22576  5292 pts/0    Ss+  14:50   0:00  |       _ -bash
+jack      6904  0.0  0.3  92804  3396 ?        S    15:14   0:00      _ sshd: jack@pts/1
+jack      6905  0.0  0.5  22568  5172 pts/1    Ss   15:14   0:00          _ -bash
+jack     20307  0.2  0.2   5408  2548 pts/1    S+   15:16   0:00              _ /bin/sh ./linpeas.sh
+jack     24475  0.0  0.0   5408   996 pts/1    S+   15:16   0:00                  _ /bin/sh ./linpeas.sh
+jack     24479  0.0  0.3  37508  3376 pts/1    R+   15:16   0:00                  |   _ ps fauxwww
+jack     24478  0.0  0.0   5408   996 pts/1    S+   15:16   0:00                  _ /bin/sh ./linpeas.sh
+root      1057  0.0  0.2  15752  2160 ttyS0    Ss+  14:49   0:00 /sbin/agetty --keep-baud 115200 38400 9600 ttyS0 vt220
+root      1060  0.0  0.1  15936  1796 tty1     Ss+  14:49   0:00 /sbin/agetty --noclear tty1 linux
+root      1122  0.0  0.3  21168  3584 ?        S    14:49   0:00 /bin/bash /usr/bin/mysqld_safe
+mysql     1283  0.0  6.7 598116 68240 ?        Sl   14:49   0:01  _ /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --skip-log-error --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock --port=3306
+root      1284  0.0  0.1  26088  1412 ?        S    14:49   0:00  _ logger -t mysqld -p daemon error
+root      1197  0.0  3.4 429088 35344 ?        Ss   14:49   0:00 /usr/sbin/apache2 -k start
+www-data  1353  0.0  3.5 505884 35820 ?        S    14:49   0:00  _ /usr/sbin/apache2 -k start
+www-data  1354  0.0  4.0 508020 40908 ?        S    14:49   0:00  _ /usr/sbin/apache2 -k start
+www-data  1355  0.0  3.5 505884 35772 ?        S    14:49   0:00  _ /usr/sbin/apache2 -k start
+www-data  1356  0.0  3.5 505884 35772 ?        S    14:49   0:00  _ /usr/sbin/apache2 -k start
+www-data  1357  0.0  3.5 505884 35772 ?        S    14:49   0:00  _ /usr/sbin/apache2 -k start
+www-data  1458  0.0  3.5 505884 35772 ?        S    14:50   0:00  _ /usr/sbin/apache2 -k start
+jack      1464  0.0  0.4  45280  4728 ?        Ss   14:50   0:00 /lib/systemd/systemd --user
+jack      1466  0.0  0.2  61468  2156 ?        S    14:50   0:00  _ (sd-pam)
+
+╔══════════╣ Binary processes permissions (non 'root root' and not belonging to current user)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#processes
+
+╔══════════╣ Files opened by processes belonging to other users
+╚ This is usually empty because of the lack of privileges to read other user processes information
+COMMAND     PID   TID             USER   FD      TYPE             DEVICE SIZE/OFF       NODE NAME
+
+╔══════════╣ Processes with credentials in memory (root req)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#credentials-from-process-memory
+gdm-password Not Found
+gnome-keyring-daemon Not Found
+lightdm Not Found
+vsftpd Not Found
+apache2 process found (dump creds from memory as root)
+sshd: process found (dump creds from memory as root)
+
+╔══════════╣ Cron jobs
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#scheduled-cron-jobs
+/usr/bin/crontab
+incrontab Not Found
+-rw-r--r-- 1 root root     722 Apr  5  2016 /etc/crontab
+
+/etc/cron.d:
+total 24
+drwxr-xr-x  2 root root 4096 Jan  9  2020 .
+drwxr-xr-x 96 root root 4096 Jan 13  2020 ..
+-rw-r--r--  1 root root  589 Jul 16  2014 mdadm
+-rw-r--r--  1 root root  670 Jun 22  2017 php
+-rw-r--r--  1 root root  102 Apr  5  2016 .placeholder
+-rw-r--r--  1 root root  191 Jan  8  2020 popularity-contest
+
+/etc/cron.daily:
+total 60
+drwxr-xr-x  2 root root 4096 Jan  9  2020 .
+drwxr-xr-x 96 root root 4096 Jan 13  2020 ..
+-rwxr-xr-x  1 root root  539 Jun 11  2018 apache2
+-rwxr-xr-x  1 root root  376 Mar 31  2016 apport
+-rwxr-xr-x  1 root root 1474 Oct  9  2018 apt-compat
+-rwxr-xr-x  1 root root  355 May 22  2012 bsdmainutils
+-rwxr-xr-x  1 root root 1597 Nov 26  2015 dpkg
+-rwxr-xr-x  1 root root  372 May  5  2015 logrotate
+-rwxr-xr-x  1 root root 1293 Nov  6  2015 man-db
+-rwxr-xr-x  1 root root  539 Jul 16  2014 mdadm
+-rwxr-xr-x  1 root root  435 Nov 18  2014 mlocate
+-rwxr-xr-x  1 root root  249 Nov 12  2015 passwd
+-rw-r--r--  1 root root  102 Apr  5  2016 .placeholder
+-rwxr-xr-x  1 root root 3449 Feb 26  2016 popularity-contest
+-rwxr-xr-x  1 root root  214 Dec  7  2018 update-notifier-common
+
+/etc/cron.hourly:
+total 12
+drwxr-xr-x  2 root root 4096 Jan  8  2020 .
+drwxr-xr-x 96 root root 4096 Jan 13  2020 ..
+-rw-r--r--  1 root root  102 Apr  5  2016 .placeholder
+
+/etc/cron.monthly:
+total 12
+drwxr-xr-x  2 root root 4096 Jan  8  2020 .
+drwxr-xr-x 96 root root 4096 Jan 13  2020 ..
+-rw-r--r--  1 root root  102 Apr  5  2016 .placeholder
+
+/etc/cron.weekly:
+total 24
+drwxr-xr-x  2 root root 4096 Jan  8  2020 .
+drwxr-xr-x 96 root root 4096 Jan 13  2020 ..
+-rwxr-xr-x  1 root root   86 Apr 13  2016 fstrim
+-rwxr-xr-x  1 root root  771 Nov  6  2015 man-db
+-rw-r--r--  1 root root  102 Apr  5  2016 .placeholder
+-rwxr-xr-x  1 root root  211 Dec  7  2018 update-notifier-common
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+
+╔══════════╣ Systemd PATH
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#systemd-path-relative-paths
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+╔══════════╣ Analyzing .service files
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#services
+/etc/systemd/system/multi-user.target.wants/networking.service is executing some relative path
+/etc/systemd/system/network-online.target.wants/networking.service is executing some relative path
+/lib/systemd/system/emergency.service is executing some relative path
+You can't write on systemd PATH
+
+╔══════════╣ System timers
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#timers
+NEXT                         LEFT     LAST                         PASSED    UNIT                         ACTIVATES
+Thu  CST  13h left Wed  CST  27min ago apt-daily.timer              apt-daily.service
+Thu  CST  14h left Wed  CST  27min ago apt-daily-upgrade.timer      apt-daily-upgrade.service
+Thu  CST  23h left Wed  CST  11min ago systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service
+n/a                          n/a      n/a                          n/a       snapd.snap-repair.timer      snapd.snap-repair.service
+n/a                          n/a      n/a                          n/a       ureadahead-stop.timer        ureadahead-stop.service
+
+╔══════════╣ Analyzing .timer files
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#timers
+
+╔══════════╣ Analyzing .socket files
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sockets
+/etc/systemd/system/sockets.target.wants/uuidd.socket is calling this writable listener: /run/uuidd/request
+/lib/systemd/system/dbus.socket is calling this writable listener: /var/run/dbus/system_bus_socket
+/lib/systemd/system/sockets.target.wants/dbus.socket is calling this writable listener: /var/run/dbus/system_bus_socket
+/lib/systemd/system/sockets.target.wants/systemd-journald-dev-log.socket is calling this writable listener: /run/systemd/journal/dev-log
+/lib/systemd/system/sockets.target.wants/systemd-journald.socket is calling this writable listener: /run/systemd/journal/stdout
+/lib/systemd/system/sockets.target.wants/systemd-journald.socket is calling this writable listener: /run/systemd/journal/socket
+/lib/systemd/system/syslog.socket is calling this writable listener: /run/systemd/journal/syslog
+/lib/systemd/system/systemd-bus-proxyd.socket is calling this writable listener: /var/run/dbus/system_bus_socket
+/lib/systemd/system/systemd-journald-dev-log.socket is calling this writable listener: /run/systemd/journal/dev-log
+/lib/systemd/system/systemd-journald.socket is calling this writable listener: /run/systemd/journal/stdout
+/lib/systemd/system/systemd-journald.socket is calling this writable listener: /run/systemd/journal/socket
+/lib/systemd/system/uuidd.socket is calling this writable listener: /run/uuidd/request
+
+╔══════════╣ Unix Sockets Listening
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sockets
+/run/acpid.socket
+  └─(Read Write)
+/run/dbus/system_bus_socket
+  └─(Read Write)
+/run/lvm/lvmetad.socket
+/run/lvm/lvmpolld.socket
+/run/mysqld/mysqld.sock
+  └─(Read Write)
+/run/snapd-snap.socket
+  └─(Read Write)
+/run/snapd.socket
+  └─(Read Write)
+/run/systemd/fsck.progress
+/run/systemd/journal/dev-log
+  └─(Read Write)
+/run/systemd/journal/socket
+  └─(Read Write)
+/run/systemd/journal/stdout
+  └─(Read Write)
+/run/systemd/journal/syslog
+  └─(Read Write)
+/run/systemd/notify
+  └─(Read Write)
+/run/systemd/private
+  └─(Read Write)
+/run/udev/control
+/run/user/1000/systemd/notify
+  └─(Read Write)
+/run/user/1000/systemd/private
+  └─(Read Write)
+/run/uuidd/request
+  └─(Read Write)
+/var/lib/lxd/unix.socket
+/var/run/dbus/system_bus_socket
+  └─(Read Write)
+/var/run/mysqld/mysqld.sock
+  └─(Read Write)
+
+╔══════════╣ D-Bus config files
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#d-bus
+Possible weak user policy found on /etc/dbus-1/system.d/dnsmasq.conf (        <policy user="dnsmasq">)
+Possible weak user policy found on /etc/dbus-1/system.d/org.freedesktop.network1.conf (        <policy user="systemd-network">)
+Possible weak user policy found on /etc/dbus-1/system.d/org.freedesktop.resolve1.conf (        <policy user="systemd-resolve">)
+
+╔══════════╣ D-Bus Service Objects list
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#d-bus
+NAME                                 PID PROCESS         USER             CONNECTION    UNIT                      SESSION    DESCRIPTION        
+:1.0                                 879 systemd-logind  root             :1.0          systemd-logind.service    -          -                  
+:1.1                                   1 systemd         root             :1.1          init.scope                -          -                  
+:1.2                                 913 accounts-daemon[0m root             :1.2          accounts-daemon.service   -          -                  
+:1.3                                 954 polkitd         root             :1.3          polkitd.service           -          -                  
+:1.37                              27044 busctl          jack             :1.37         session-16.scope          16         -                  
+com.ubuntu.LanguageSelector            - -               -                (activatable) -                         -         
+com.ubuntu.SoftwareProperties          - -               -                (activatable) -                         -         
+org.freedesktop.Accounts             913 accounts-daemon[0m root             :1.2          accounts-daemon.service   -          -                  
+org.freedesktop.DBus                 901 dbus-daemon[0m     messagebus       org.freedesktop.DBus dbus.service              -          -                  
+org.freedesktop.PolicyKit1           954 polkitd         root             :1.3          polkitd.service           -          -                  
+org.freedesktop.hostname1              - -               -                (activatable) -                         -         
+org.freedesktop.locale1                - -               -                (activatable) -                         -         
+org.freedesktop.login1               879 systemd-logind  root             :1.0          systemd-logind.service    -          -                  
+org.freedesktop.network1               - -               -                (activatable) -                         -         
+org.freedesktop.resolve1               - -               -                (activatable) -                         -         
+org.freedesktop.systemd1               1 systemd         root             :1.1          init.scope                -          -                  
+org.freedesktop.timedate1              - -               -                (activatable) -                         -         
+
+                                        ╔═════════════════════╗
+════════════════════════════════════════╣ Network Information ╠════════════════════════════════════════
+                                        ╚═════════════════════╝
+╔══════════╣ Hostname, hosts and DNS
+jack
+127.0.0.1	localhost
+127.0.1.1	jack
+
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+nameserver 10.0.0.2
+search eu-west-1.compute.internal
+
+╔══════════╣ Interfaces
+```
+```rb
+# symbolic names for networks, see networks(5) for more information
+link-local 169.254.0.0
+eth0      Link encap:Ethernet  HWaddr 02:7f:4e:0e:6e:a3  
+          inet addr:10.10.12.106  Bcast:10.10.255.255  Mask:255.255.0.0
+          inet6 addr: fe80::7f:4eff:fe0e:6ea3/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:9001  Metric:1
+          RX packets:3554 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:4811 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:989158 (989.1 KB)  TX bytes:1158629 (1.1 MB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:301 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:301 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:23204 (23.2 KB)  TX bytes:23204 (23.2 KB)
+
+╔══════════╣ Active Ports
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#open-ports
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      -               
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -               
+tcp6       0      0 :::80                   :::*                    LISTEN      -               
+tcp6       0      0 :::22                   :::*                    LISTEN      -               
+
+╔══════════╣ Can I sniff with tcpdump?
+No
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Users Information ╠═════════════════════════════════════════
+                                         ╚═══════════════════╝
+╔══════════╣ My user
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#users
+uid=1000(jack) gid=1000(jack) groups=1000(jack),4(adm),24(cdrom),30(dip),46(plugdev),115(lpadmin),116(sambashare),1001(family)
+
+╔══════════╣ Do I have PGP keys?
+/usr/bin/gpg
+netpgpkeys Not Found
+netpgp Not Found
+
+╔══════════╣ Checking 'sudo -l', /etc/sudoers, and /etc/sudoers.d
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+
+╔══════════╣ Checking sudo tokens
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#reusing-sudo-tokens
+ptrace protection is enabled (1)
+gdb wasn't found in PATH, this might still be vulnerable but linpeas won't be able to check it
+
+╔══════════╣ Checking Pkexec policy
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation/interesting-groups-linux-pe#pe-method-2
+
+[Configuration]
+AdminIdentities=unix-user:0
+[Configuration]
+AdminIdentities=unix-group:sudo;unix-group:admin
+
+╔══════════╣ Superusers
+root:x:0:0:root:/root:/bin/bash
+
+╔══════════╣ Users with console
+jack:x:1000:1000:Jack Torrance,,,:/home/jack:/bin/bash
+root:x:0:0:root:/root:/bin/bash
+
+╔══════════╣ All users & groups
+uid=0(root) gid=0(root) groups=0(root)
+uid=1000(jack) gid=1000(jack) groups=1000(jack),4(adm),24(cdrom),30(dip),46(plugdev),115(lpadmin),116(sambashare),1001(family)
+uid=100(systemd-timesync) gid=102(systemd-timesync) groups=102(systemd-timesync)
+uid=101(systemd-network) gid=103(systemd-network) groups=103(systemd-network)
+uid=102(systemd-resolve) gid=104(systemd-resolve) groups=104(systemd-resolve)
+uid=103(systemd-bus-proxy) gid=105(systemd-bus-proxy) groups=105(systemd-bus-proxy)
+uid=104(syslog) gid=108(syslog) groups=108(syslog),4(adm)
+uid=105(_apt) gid=65534(nogroup) groups=65534(nogroup)
+uid=106(lxd) gid=65534(nogroup) groups=65534(nogroup)
+uid=107(messagebus) gid=111(messagebus) groups=111(messagebus)
+uid=108(uuidd) gid=112(uuidd) groups=112(uuidd)
+uid=109(dnsmasq) gid=65534(nogroup) groups=65534(nogroup)
+uid=10(uucp) gid=10(uucp) groups=10(uucp)
+uid=110(sshd) gid=65534(nogroup) groups=65534(nogroup)
+uid=111(mysql) gid=118(mysql) groups=118(mysql)
+uid=13(proxy) gid=13(proxy) groups=13(proxy)
+uid=1(daemon[0m) gid=1(daemon[0m) groups=1(daemon[0m)
+uid=2(bin) gid=2(bin) groups=2(bin)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=34(backup) gid=34(backup) groups=34(backup)
+uid=38(list) gid=38(list) groups=38(list)
+uid=39(irc) gid=39(irc) groups=39(irc)
+uid=3(sys) gid=3(sys) groups=3(sys)
+uid=41(gnats) gid=41(gnats) groups=41(gnats)
+uid=4(sync) gid=65534(nogroup) groups=65534(nogroup)
+uid=5(games) gid=60(games) groups=60(games)
+uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+uid=6(man) gid=12(man) groups=12(man)
+uid=7(lp) gid=7(lp) groups=7(lp)
+uid=8(mail) gid=8(mail) groups=8(mail)
+uid=9(news) gid=9(news) groups=9(news)
+
+╔══════════╣ Login now
+ 15:16:29 up 27 min,  2 users,  load average: 0.25, 0.16, 0.39
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+jack     pts/0    10.8.19.103      14:50   19:25   0.05s  0.05s -bash
+jack     pts/1    10.8.19.103      15:14   13.00s  0.08s  0.00s /bin/sh ./linpeas.sh
+
+╔══════════╣ Last logons
+root     pts/0        Fri Jan 10 18:31:17 2020 - crash                     (00:12)     192.168.1.137
+reboot   system boot  Fri Jan 10 18:29:33 2020   still running                         0.0.0.0
+root     pts/0        Fri Jan 10 15:00:06 2020 - crash                     (03:29)     192.168.1.137
+reboot   system boot  Fri Jan 10 14:57:44 2020   still running                         0.0.0.0
+jack     pts/0        Thu Jan  9 13:23:50 2020 - crash                    (1+01:33)    192.168.1.137
+reboot   system boot  Thu Jan  9 13:22:38 2020   still running                         0.0.0.0
+jack     pts/0        Thu Jan  9 09:57:09 2020 - crash                     (03:25)     192.168.1.137
+reboot   system boot  Wed Jan  8 11:23:36 2020   still running                         0.0.0.0
+
+wtmp begins Wed Jan  8 11:23:36 2020
+
+╔══════════╣ Last time logon each user
+Username         Port     From             Latest
+root             pts/1    10.11.12.223     Mon Nov 16 14:33:47 -0600 2020
+jack             pts/1    10.8.19.103      Wed Jan 18 15:14:56 -0600 2023
+
+╔══════════╣ Do not forget to test 'su' as any other user with shell: without password and with their names as password (I can't do it...)
+
+╔══════════╣ Do not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
+
+                                       ╔══════════════════════╗
+═══════════════════════════════════════╣ Software Information ╠═══════════════════════════════════════
+                                       ╚══════════════════════╝
+╔══════════╣ Useful software
+/usr/bin/base64
+/usr/bin/curl
+/usr/bin/lxc
+/bin/nc
+/bin/netcat
+/usr/bin/perl
+/usr/bin/php
+/bin/ping
+/usr/bin/python
+/usr/bin/python2
+/usr/bin/python2.7
+/usr/bin/python3
+/usr/bin/sudo
+/usr/bin/wget
+
+╔══════════╣ Installed Compilers
+/usr/share/gcc-5
+
+╔══════════╣ MySQL
+mysql  Ver 15.1 Distrib 10.0.38-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2
+MySQL user: mysql
+user'
+
+═╣ MySQL connection using default root/root ........... No
+═╣ MySQL connection using root/toor ................... No
+═╣ MySQL connection using root/NOPASS ................. No
+
+╔══════════╣ Searching mysql credentials and exec
+From '/etc/mysql/mariadb.conf.d/50-server.cnf' Mysql user: user		= mysql
+Found readable /etc/mysql/my.cnf
+[client-server]
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/
+
+╔══════════╣ Analyzing MariaDB Files (limit 70)
+-rw-r--r-- 1 root root 869 Feb  7  2019 /etc/mysql/mariadb.cnf
+[client-server]
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/
+
+-rw------- 1 root root 277 Jan  9  2020 /etc/mysql/debian.cnf
+
+╔══════════╣ Analyzing Apache-Nginx Files (limit 70)
+Apache version: Server version: Apache/2.4.18 (Ubuntu)
+Server built:   2019-10-08T13:31:25
+httpd Not Found
+
+Nginx version: nginx Not Found
+
+./linpeas.sh: 2593: ./linpeas.sh: grep -R -B1 "httpd-php" /etc/apache2 2>/dev/null: not found
+══╣ PHP exec extensions
+drwxr-xr-x 2 root root 4096 Jan 10  2020 /etc/apache2/sites-enabled
+drwxr-xr-x 2 root root 4096 Jan 10  2020 /etc/apache2/sites-enabled
+lrwxrwxrwx 1 root root 34 Jan  9  2020 /etc/apache2/sites-enabled/octobercms.conf -> ../sites-available/octobercms.conf
+lrwxrwxrwx 1 root root 35 Jan 10  2020 /etc/apache2/sites-enabled/000-default.conf -> ../sites-available/000-default.conf
+<VirtualHost *:80>
+	ServerAdmin webmaster@localhost
+	DocumentRoot /var/www/html
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+-rw-r--r-- 1 root root 1332 Jun 11  2018 /etc/apache2/sites-available/000-default.conf
+<VirtualHost *:80>
+	ServerAdmin webmaster@localhost
+	DocumentRoot /var/www/html
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+lrwxrwxrwx 1 root root 35 Jan 10  2020 /etc/apache2/sites-enabled/000-default.conf -> ../sites-available/000-default.conf
+<VirtualHost *:80>
+	ServerAdmin webmaster@localhost
+	DocumentRoot /var/www/html
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+-rw-r--r-- 1 root root 70999 Oct 24  2019 /etc/php/7.0/apache2/php.ini
+allow_url_fopen = On
+allow_url_include = Off
+odbc.allow_persistent = On
+ibase.allow_persistent = 1
+mysqli.allow_persistent = On
+pgsql.allow_persistent = On
+-rw-r--r-- 1 root root 70656 Oct 24  2019 /etc/php/7.0/cli/php.ini
+allow_url_fopen = On
+allow_url_include = Off
+odbc.allow_persistent = On
+ibase.allow_persistent = 1
+mysqli.allow_persistent = On
+pgsql.allow_persistent = On
+
+╔══════════╣ Analyzing Wordpress Files (limit 70)
+-rw-rw---- 1 www-data www-data 3220 Jan 10  2020 /var/www/html/wp-config.php
+
+╔══════════╣ Analyzing Rsync Files (limit 70)
+-rw-r--r-- 1 root root 1044 Sep 30  2013 /usr/share/doc/rsync/examples/rsyncd.conf
+[ftp]
+	comment = public archive
+	path = /var/www/pub
+	use chroot = yes
+	lock file = /var/lock/rsyncd
+	read only = yes
+	list = yes
+	uid = nobody
+	gid = nogroup
+	strict modes = yes
+	ignore errors = no
+	ignore nonreadable = yes
+	transfer logging = no
+	timeout = 600
+	refuse options = checksum dry-run
+	dont compress = *.gz *.tgz *.zip *.z *.rpm *.deb *.iso *.bz2 *.tbz
+
+╔══════════╣ Analyzing Ldap Files (limit 70)
+The password hash is from the {SSHA} to 'structural'
+drwxr-xr-x 2 root root 4096 Jan  8  2020 /etc/ldap
+
+drwxr-xr-x 2 root root 4096 Jan  9  2020 /usr/share/php7.0-ldap/ldap
+
+-rw-r--r-- 1 root root 0 Jan  9  2020 /var/lib/php/modules/7.0/apache2/enabled_by_maint/ldap
+
+-rw-r--r-- 1 root root 0 Jan  9  2020 /var/lib/php/modules/7.0/cli/enabled_by_maint/ldap
+
+-rw-r--r-- 1 root root 0 Jan  9  2020 /var/lib/php/modules/7.0/registry/ldap
+
+╔══════════╣ Searching ssl/ssh files
+╔══════════╣ Analyzing SSH Files (limit 70)
+
+-rw------- 1 jack jack 1675 Jan 10  2020 /home/jack/.ssh/id_rsa
+-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEAxfBR9F9V5G2snv1Xaaxv3VHbFZ2VZRwGyU+ah6komBeaAldr
+8SNK1x0wu/eXjLjrWnVaYOEU2YUrHzn/duB3Wvm8xyA0T8x/WbV2osWaVOafkPSv
+YpV4OdQrdRoS3PEOXRnS+CnOTAgPWo2+xfH1XeldFw9XiYrprTugmwCcYDuBZB3r
+zmWA8sPWjLjs6xzNK26RQQbo9zaxwfEdjZ3an9JngJJ7m0rtF9vKeCRfO1V8sd/t
+1lu96Kqn4FZUTXQFEGfAYupG6b3vpRwqmI6y2VjK5MxlMmEdwP8oxmKR4XRqvSK1
+8m5byz8ZUu1RfB8Ug/pKK9VVbk9QFWbrV4E3FwIDAQABAoIBAEEr0TAOu68MVUu7
+yi4m8mYCb4n8apXx1mIt7YlBLvZ0vuaKdiXdIuUU3VjmOmXA9OzButIvCbhc2kfb
+xrsTSPkRRRCjD9Y+VKfq0XbibOALVvpZNe3VnNIdg3l47kEEtV/+ArJmwV/TP4rn
+JKrz8X/MODRBfubwb+Pzv/uJBfPAzvkokKUp9D2LqNjQEY4w71j0yUl+A0xnkT4i
+L1FbzghdARExy2cJN0RfdDKhy/DfXos7+JHso3ZvXmSx0ivS+HyCblO25Kcmy4Vh
+FZotNk+28iw6DKm1wrgAjj0sdLpB6jW9+M/kSQCovMijPM8h8JNPLNOJMFSKWBH8
+m9US/XECgYEA+AW0bbMVoylAcWGold85Ileyuw/q3HwsDdRrO43uMZvQe8f5TRsd
+Q9SvAEz9T46YErySq33jOPmsGLf02EEiyGggpBiuhi3FmtMa7440qGFig4Q5IVxn
+QuSDUQvxN/uVE+TZxlRPTUeAFPcAI4DAUYbubAcJzvXeAsCPsKbQGw0CgYEAzE42
+H8SUWiCMXBMotEUpn14pGcP4O+hei9j7P1Nupy/F63UtYPvXN4oi75YeLiInUXzU
+S/r3+AxoNafMAy67oQhLKHXs+NOP5aEkVhNDhHFNpWutYPn9aLWUIx1tXbWsaecE
+i7OCxjp0L5lDRVl3TLzXeZmtp0oSAPKNRYmgQbMCgYAvL0aoKA3RwKNV7rJX8OO5
+uN1z4Q9ZavYmm2bbKaFLJs1+/whatvHWWbwBXqRCYmpkBiQRJB36VOV8vmKCUcIA
+Rm8PSPLK7CJP1iGluXQjJIPNaXZE9oNeooKpBJCbie1On5ceuCNuHFAtrOAF4RS1
+beol+yDOks/tzhyICvREcQKBgCHIiRClu/ZPTYZoMKHmkeRleJxnGGQnn4K2hY1K
+KZEByFOQE8nmuwbXE8HUa/cq9J936c8Kl/hvbMf6kDSyhJozOeJd5aqbqT7Kb6zA
+ELkU10cUUB4qGGo5JF7OHeiSAwmcBtdm/qfywIWibUpJaf3JeEQGUn3INMPtV8j4
+4gQbAoGBAKuXPITKuO7SsRfXcwB3MO3iCTLdW7BYnYF1SzVbPBonmcsxlQinvoRg
+2faWmSFAUK6cIys9za3pzOw3FP8W9Q5SGsA9KriSYj6/h7ei9GeJAr3mxlbGnkZN
+ZFqUVe2Jvxq++O6Ub41zUtWINbR5Fxf+kTlJIIwqc6IuzZq+QWXy
+-----END RSA PRIVATE KEY-----
+-rw-r--r-- 1 jack jack 391 Jan 10  2020 /home/jack/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF8FH0X1Xkbaye/VdprG/dUdsVnZVlHAbJT5qHqSiYF5oCV2vxI0rXHTC795eMuOtadVpg4RTZhSsfOf924Hda+bzHIDRPzH9ZtXaixZpU5p+Q9K9ilXg51Ct1GhLc8Q5dGdL4Kc5MCA9ajb7F8fVd6V0XD1eJiumtO6CbAJxgO4FkHevOZYDyw9aMuOzrHM0rbpFBBuj3NrHB8R2Nndqf0meAknubSu0X28p4JF87VXyx3+3WW73oqqfgVlRNdAUQZ8Bi6kbpve+lHCqYjrLZWMrkzGUyYR3A/yjGYpHhdGq9IrXyblvLPxlS7VF8HxSD+kor1VVuT1AVZutXgTcX jack@jack
+-rwxrwxrwx 1 root root 1675 Jan 10  2020 /var/backups/id_rsa
+-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEAxfBR9F9V5G2snv1Xaaxv3VHbFZ2VZRwGyU+ah6komBeaAldr
+8SNK1x0wu/eXjLjrWnVaYOEU2YUrHzn/duB3Wvm8xyA0T8x/WbV2osWaVOafkPSv
+YpV4OdQrdRoS3PEOXRnS+CnOTAgPWo2+xfH1XeldFw9XiYrprTugmwCcYDuBZB3r
+zmWA8sPWjLjs6xzNK26RQQbo9zaxwfEdjZ3an9JngJJ7m0rtF9vKeCRfO1V8sd/t
+1lu96Kqn4FZUTXQFEGfAYupG6b3vpRwqmI6y2VjK5MxlMmEdwP8oxmKR4XRqvSK1
+8m5byz8ZUu1RfB8Ug/pKK9VVbk9QFWbrV4E3FwIDAQABAoIBAEEr0TAOu68MVUu7
+yi4m8mYCb4n8apXx1mIt7YlBLvZ0vuaKdiXdIuUU3VjmOmXA9OzButIvCbhc2kfb
+xrsTSPkRRRCjD9Y+VKfq0XbibOALVvpZNe3VnNIdg3l47kEEtV/+ArJmwV/TP4rn
+JKrz8X/MODRBfubwb+Pzv/uJBfPAzvkokKUp9D2LqNjQEY4w71j0yUl+A0xnkT4i
+L1FbzghdARExy2cJN0RfdDKhy/DfXos7+JHso3ZvXmSx0ivS+HyCblO25Kcmy4Vh
+FZotNk+28iw6DKm1wrgAjj0sdLpB6jW9+M/kSQCovMijPM8h8JNPLNOJMFSKWBH8
+m9US/XECgYEA+AW0bbMVoylAcWGold85Ileyuw/q3HwsDdRrO43uMZvQe8f5TRsd
+Q9SvAEz9T46YErySq33jOPmsGLf02EEiyGggpBiuhi3FmtMa7440qGFig4Q5IVxn
+QuSDUQvxN/uVE+TZxlRPTUeAFPcAI4DAUYbubAcJzvXeAsCPsKbQGw0CgYEAzE42
+H8SUWiCMXBMotEUpn14pGcP4O+hei9j7P1Nupy/F63UtYPvXN4oi75YeLiInUXzU
+S/r3+AxoNafMAy67oQhLKHXs+NOP5aEkVhNDhHFNpWutYPn9aLWUIx1tXbWsaecE
+i7OCxjp0L5lDRVl3TLzXeZmtp0oSAPKNRYmgQbMCgYAvL0aoKA3RwKNV7rJX8OO5
+uN1z4Q9ZavYmm2bbKaFLJs1+/whatvHWWbwBXqRCYmpkBiQRJB36VOV8vmKCUcIA
+Rm8PSPLK7CJP1iGluXQjJIPNaXZE9oNeooKpBJCbie1On5ceuCNuHFAtrOAF4RS1
+beol+yDOks/tzhyICvREcQKBgCHIiRClu/ZPTYZoMKHmkeRleJxnGGQnn4K2hY1K
+KZEByFOQE8nmuwbXE8HUa/cq9J936c8Kl/hvbMf6kDSyhJozOeJd5aqbqT7Kb6zA
+ELkU10cUUB4qGGo5JF7OHeiSAwmcBtdm/qfywIWibUpJaf3JeEQGUn3INMPtV8j4
+4gQbAoGBAKuXPITKuO7SsRfXcwB3MO3iCTLdW7BYnYF1SzVbPBonmcsxlQinvoRg
+2faWmSFAUK6cIys9za3pzOw3FP8W9Q5SGsA9KriSYj6/h7ei9GeJAr3mxlbGnkZN
+ZFqUVe2Jvxq++O6Ub41zUtWINbR5Fxf+kTlJIIwqc6IuzZq+QWXy
+-----END RSA PRIVATE KEY-----
+
+-rw-rw-r-- 1 jack jack 391 Jan 10  2020 /home/jack/.ssh/authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF8FH0X1Xkbaye/VdprG/dUdsVnZVlHAbJT5qHqSiYF5oCV2vxI0rXHTC795eMuOtadVpg4RTZhSsfOf924Hda+bzHIDRPzH9ZtXaixZpU5p+Q9K9ilXg51Ct1GhLc8Q5dGdL4Kc5MCA9ajb7F8fVd6V0XD1eJiumtO6CbAJxgO4FkHevOZYDyw9aMuOzrHM0rbpFBBuj3NrHB8R2Nndqf0meAknubSu0X28p4JF87VXyx3+3WW73oqqfgVlRNdAUQZ8Bi6kbpve+lHCqYjrLZWMrkzGUyYR3A/yjGYpHhdGq9IrXyblvLPxlS7VF8HxSD+kor1VVuT1AVZutXgTcX jack@jack
+
+Port 22
+PermitRootLogin yes
+PubkeyAuthentication yes
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+UsePAM yes
+
+══╣ Possible private SSH keys were found!
+/home/jack/.config/lxc/client.key
+/home/jack/.ssh/id_rsa
+
+══╣ Some certificates were found (out limited):
+/home/jack/.config/lxc/client.crt
+20307PSTORAGE_CERTSBIN
+
+./linpeas.sh: 2779: ./linpeas.sh: gpg-connect-agent: not found
+══╣ Some home ssh config file was found
+/usr/share/doc/openssh-client/examples/sshd_config
+AuthorizedKeysFile	.ssh/authorized_keys
+Subsystem	sftp	/usr/lib/openssh/sftp-server
+
+══╣ /etc/hosts.allow file found, trying to read the rules:
+/etc/hosts.allow
+
+Searching inside /etc/ssh/ssh_config for interesting info
+Host *
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials no
+
+╔══════════╣ Analyzing PAM Auth Files (limit 70)
+drwxr-xr-x 2 root root 4096 Jan  8  2020 /etc/pam.d
+-rw-r--r-- 1 root root 2133 Jan 31  2019 /etc/pam.d/sshd
+
+╔══════════╣ Searching tmux sessions
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#open-shell-sessions
+tmux 2.1
+
+/tmp/tmux-1000
+╔══════════╣ Analyzing Keyring Files (limit 70)
+drwxr-xr-x 2 root root 4096 Jan  8  2020 /usr/share/keyrings
+drwxr-xr-x 2 root root 4096 Jan  8  2020 /var/lib/apt/keyrings
+
+╔══════════╣ Searching uncommon passwd files (splunk)
+passwd file: /etc/pam.d/passwd
+passwd file: /etc/passwd
+passwd file: /usr/share/bash-completion/completions/passwd
+passwd file: /usr/share/lintian/overrides/passwd
+
+╔══════════╣ Analyzing PGP-GPG Files (limit 70)
+/usr/bin/gpg
+netpgpkeys Not Found
+netpgp Not Found
+
+-rw-r--r-- 1 root root 12255 Feb 26  2019 /etc/apt/trusted.gpg
+-rw------- 1 jack jack 0 Jan 18 14:53 /home/jack/.gnupg/pubring.gpg
+-rw------- 1 jack jack 40 Jan 18 14:53 /home/jack/.gnupg/trustdb.gpg
+-rw-r--r-- 1 root root 12335 May 18  2012 /usr/share/keyrings/ubuntu-archive-keyring.gpg
+-rw-r--r-- 1 root root 0 May 18  2012 /usr/share/keyrings/ubuntu-archive-removed-keys.gpg
+-rw-r--r-- 1 root root 2294 Nov 11  2013 /usr/share/keyrings/ubuntu-cloudimage-keyring.gpg
+-rw-r--r-- 1 root root 0 Nov 11  2013 /usr/share/keyrings/ubuntu-cloudimage-keyring-removed.gpg
+-rw-r--r-- 1 root root 2253 Nov  5  2017 /usr/share/keyrings/ubuntu-esm-keyring.gpg
+-rw-r--r-- 1 root root 1139 Nov  5  2017 /usr/share/keyrings/ubuntu-fips-keyring.gpg
+-rw-r--r-- 1 root root 1227 May 18  2012 /usr/share/keyrings/ubuntu-master-keyring.gpg
+-rw-r--r-- 1 root root 2256 Feb 26  2016 /usr/share/popularity-contest/debian-popcon.gpg
+-rw-r--r-- 1 root root 12335 Feb 26  2019 /var/lib/apt/keyrings/ubuntu-archive-keyring.gpg
+
+drwx------ 2 jack jack 4096 Jan 18 14:53 /home/jack/.gnupg
+
+╔══════════╣ Analyzing FTP Files (limit 70)
+
+-rw-r--r-- 1 root root 69 Oct 24  2019 /etc/php/7.0/mods-available/ftp.ini
+-rw-r--r-- 1 root root 69 Oct 24  2019 /usr/share/php7.0-common/common/ftp.ini
+
+╔══════════╣ Analyzing Interesting logs Files (limit 70)
+-rw-r----- 1 root adm 417698 Jan 18 15:16 /var/log/apache2/access.log
+
+-rw-r----- 1 root adm 32020 Jan 18 14:49 /var/log/apache2/error.log
+-rw-rw---- 1 mysql adm 5271 Jan  9  2020 /var/log/mysql/error.log
+
+╔══════════╣ Analyzing Windows Files (limit 70)
+
+lrwxrwxrwx 1 root root 22 Jan  9  2020 /etc/alternatives/my.cnf -> /etc/mysql/mariadb.cnf
+lrwxrwxrwx 1 root root 24 Jan  9  2020 /etc/mysql/my.cnf -> /etc/alternatives/my.cnf
+-rw-r--r-- 1 root root 83 Jan  9  2020 /var/lib/dpkg/alternatives/my.cnf
+
+╔══════════╣ Analyzing Other Interesting Files (limit 70)
+-rw-r--r-- 1 root root 3771 Aug 31  2015 /etc/skel/.bashrc
+-rw-r--r-- 1 jack jack 3771 Jan  8  2020 /home/jack/.bashrc
+
+-rw-r--r-- 1 root root 655 May 16  2017 /etc/skel/.profile
+-rw-r--r-- 1 jack jack 655 Jan  8  2020 /home/jack/.profile
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Interesting Files ╠═════════════════════════════════════════
+                                         ╚═══════════════════╝
+╔══════════╣ SUID - Check easy privesc, exploits and write perms
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+strings Not Found
+-rwsr-sr-x 1 root root 97K Jan 29  2019 /usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwsr-xr-x 1 root root 419K Jan 31  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 39K Jun 14  2017 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+-rwsr-xr-x 1 root root 15K Jan 15  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-- 1 root messagebus 42K Jan 12  2017 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 10K Mar 27  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root 74K May 16  2017 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 134K Jul  4  2017 /usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-x 1 root root 53K May 16  2017 /usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 23K Jan 15  2019 /usr/bin/pkexec  --->  Linux4.10_to_5.1.17(CVE-2019-13272)/rhel_6(CVE-2011-1485)
+-rwsr-xr-x 1 root root 49K May 16  2017 /usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 39K May 16  2017 /usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 40K May 16  2017 /usr/bin/chsh
+-rwsr-sr-x 1 daemon daemon 51K Jan 14  2016 /usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+-rwsr-xr-x 1 root root 33K May 16  2017 /usr/bin/newgidmap
+-rwsr-xr-x 1 root root 33K May 16  2017 /usr/bin/newuidmap
+-rwsr-xr-x 1 root root 31K Jul 12  2016 /bin/fusermount
+-rwsr-xr-x 1 root root 44K May  7  2014 /bin/ping6
+-rwsr-xr-x 1 root root 44K May  7  2014 /bin/ping
+-rwsr-xr-x 1 root root 27K May 16  2018 /bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 139K Jan 28  2017 /bin/ntfs-3g  --->  Debian9/8/7/Ubuntu/Gentoo/others/Ubuntu_Server_16.10_and_others(02-2017)
+-rwsr-xr-x 1 root root 40K May 16  2018 /bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 40K May 16  2017 /bin/su
+
+╔══════════╣ SGID
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+-rwsr-sr-x 1 root root 97K Jan 29  2019 /usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwxr-sr-x 1 root utmp 10K Mar 11  2016 /usr/lib/x86_64-linux-gnu/utempter/utempter
+-rwxr-sr-x 1 root shadow 61K May 16  2017 /usr/bin/chage
+-rwxr-sr-x 1 root crontab 36K Apr  5  2016 /usr/bin/crontab
+-rwxr-sr-x 1 root shadow 23K May 16  2017 /usr/bin/expiry
+-rwxr-sr-x 1 root tty 15K Mar  1  2016 /usr/bin/bsd-write
+-rwxr-sr-x 1 root ssh 351K Jan 31  2019 /usr/bin/ssh-agent
+-rwxr-sr-x 1 root utmp 425K Feb  7  2016 /usr/bin/screen  --->  GNU_Screen_4.5.0
+-rwxr-sr-x 1 root mlocate 39K Nov 18  2014 /usr/bin/mlocate
+-rwsr-sr-x 1 daemon daemon 51K Jan 14  2016 /usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+-rwxr-sr-x 1 root tty 27K May 16  2018 /usr/bin/wall
+-rwxr-sr-x 1 root shadow 35K Apr  9  2018 /sbin/unix_chkpwd
+-rwxr-sr-x 1 root shadow 35K Apr  9  2018 /sbin/pam_extrausers_chkpwd
+
+╔══════════╣ Checking misconfigurations of ld.so
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#ld-so
+/etc/ld.so.conf
+include /etc/ld.so.conf.d/*.conf
+
+/etc/ld.so.conf.d
+  /etc/ld.so.conf.d/libc.conf
+/usr/local/lib
+  /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu
+
+╔══════════╣ Capabilities
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities
+Current capabilities:
+Current: =
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+
+Shell capabilities:
+0x0000000000000000=
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+
+Files with capabilities (limited to 50):
+/usr/bin/systemd-detect-virt = cap_dac_override,cap_sys_ptrace+ep
+/usr/bin/traceroute6.iputils = cap_net_raw+ep
+/usr/bin/mtr = cap_net_raw+ep
+
+╔══════════╣ Files with ACLs (limited to 50)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#acls
+files with acls in searched folders Not Found
+
+╔══════════╣ .sh files in path
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#script-binaries-in-path
+/usr/bin/gettext.sh
+
+╔══════════╣ Unexpected in /opt (usually empty)
+total 12
+drwxr-xr-x  3 root root 4096 Jan 10  2020 .
+drwxr-xr-x 23 root root 4096 Jan  8  2020 ..
+drwxr-xr-x  2 root root 4096 Jan 10  2020 statuscheck
+
+╔══════════╣ Unexpected in root
+/initrd.img
+/vmlinuz
+
+╔══════════╣ Files (scripts) in /etc/profile.d/
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#profiles-files
+total 24
+drwxr-xr-x  2 root root 4096 Jan  8  2020 .
+drwxr-xr-x 96 root root 4096 Jan 13  2020 ..
+-rw-r--r--  1 root root  825 Jan 29  2019 apps-bin-path.sh
+-rw-r--r--  1 root root  663 May 18  2016 bash_completion.sh
+-rw-r--r--  1 root root 1003 Dec 29  2015 cedilla-portuguese.sh
+-rw-r--r--  1 root root 1557 Apr 14  2016 Z97-byobu.sh
+
+╔══════════╣ Permissions in init, init.d, systemd, and rc.d
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#init-init-d-systemd-and-rc-d
+
+═╣ Hashes inside passwd file? ........... No
+═╣ Writable passwd file? ................ No
+═╣ Credentials in fstab/mtab? ........... No
+═╣ Can I read shadow files? ............. No
+═╣ Can I read shadow plists? ............ No
+═╣ Can I write shadow plists? ........... No
+═╣ Can I read opasswd file? ............. No
+═╣ Can I write in network-scripts? ...... No
+═╣ Can I read root folder? .............. No
+
+╔══════════╣ Searching root files in home dirs (limit 30)
+/home/
+/home/jack/reminder.txt
+/root/
+
+╔══════════╣ Searching folders owned by me containing others files on it (limit 100)
+/home/jack
+/sys/fs/cgroup/systemd/user.slice/user-1000.slice/user@1000.service
+/var/lib/lxcfs/cgroup/name=systemd/user.slice/user-1000.slice/user@1000.service
+
+╔══════════╣ Readable files belonging to root and readable by me but not world readable
+-rw-r----- 1 root adm 110390 Jan  9  2020 /var/log/apt/term.log
+-rw-r----- 1 root adm 31 Feb 26  2019 /var/log/dmesg
+-rw-r----- 1 root adm 417698 Jan 18 15:16 /var/log/apache2/access.log
+-rw-r----- 1 root adm 32020 Jan 18 14:49 /var/log/apache2/error.log
+-rw-r----- 1 root adm 0 Jan  9  2020 /var/log/apache2/other_vhosts_access.log
+-rw-r----- 1 root adm 31 Feb 26  2019 /var/log/fsck/checkroot
+-rw-r----- 1 root adm 31 Feb 26  2019 /var/log/fsck/checkfs
+
+╔══════════╣ Modified interesting files in the last 5mins (limit 100)
+/opt/statuscheck/output.log
+/var/log/wtmp
+/var/log/lastlog
+/var/log/auth.log
+/var/log/apache2/access.log
+/var/log/syslog
+
+╔══════════╣ Writable log files (logrotten) (limit 100)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#logrotate-exploitation
+
+╔══════════╣ Files inside /home/jack (limit 20)
+total 44
+drwxr-xr-x 6 jack jack 4096 Jan 18 14:53 .
+drwxr-xr-x 3 root root 4096 Jan  8  2020 ..
+lrwxrwxrwx 1 jack jack    9 Jan 10  2020 .bash_history -> /dev/null
+-rw-r--r-- 1 jack jack  220 Jan  8  2020 .bash_logout
+-rw-r--r-- 1 jack jack 3771 Jan  8  2020 .bashrc
+drwx------ 2 jack jack 4096 Jan  9  2020 .cache
+drwxr-x--- 3 jack jack 4096 Jan 18 14:53 .config
+drwx------ 2 jack jack 4096 Jan 18 14:53 .gnupg
+-rw-r--r-- 1 jack jack  655 Jan  8  2020 .profile
+-rw-r--r-- 1 root root  140 Jan 10  2020 reminder.txt
+drwx------ 2 jack jack 4096 Jan 10  2020 .ssh
+-rw-rw-r-- 1 jack jack   33 Jan 10  2020 user.txt
+
+╔══════════╣ Files inside others home (limit 20)
+
+╔══════════╣ Searching installed mail applications
+
+╔══════════╣ Mails (limit 50)
+
+╔══════════╣ Backup folders
+
+╔══════════╣ Backup files (limited 100)
+-rw-r--r-- 1 root root 190591 Jan 16  2019 /usr/src/linux-headers-4.4.0-142-generic/.config.old
+-rw-r--r-- 1 root root 0 Jan 16  2019 /usr/src/linux-headers-4.4.0-142-generic/include/config/net/team/mode/activebackup.h
+-rw-r--r-- 1 root root 0 Jan 16  2019 /usr/src/linux-headers-4.4.0-142-generic/include/config/wm831x/backup.h
+-rw-r--r-- 1 root root 7867 May  6  2015 /usr/share/doc/telnet/README.telnet.old.gz
+-rw-r--r-- 1 root root 298768 Dec 29  2015 /usr/share/doc/manpages/Changes.old.gz
+-rw-r--r-- 1 root root 11358 Jan  9  2020 /usr/share/info/dir.old
+-rwxr-xr-x 1 root root 226 Apr 14  2016 /usr/share/byobu/desktop/byobu.desktop.old
+-rw-r--r-- 1 root root 665 Apr 16  2016 /usr/share/man/man8/vgcfgbackup.8.gz
+-rw-r--r-- 1 root root 35792 May  8  2018 /usr/lib/open-vm-tools/plugins/vmsvc/libvmbackup.so
+-rw-r--r-- 1 root root 128 Jan  8  2020 /var/lib/sgml-base/supercatalog.old
+-rw-r--r-- 1 root root 9070 Jan 16  2019 /lib/modules/4.4.0-142-generic/kernel/drivers/net/team/team_mode_activebackup.ko
+-rw-r--r-- 1 root root 9038 Jan 16  2019 /lib/modules/4.4.0-142-generic/kernel/drivers/power/wm831x_backup.ko
+-rw-r--r-- 1 root root 610 Jan  8  2020 /etc/xml/catalog.old
+-rw-r--r-- 1 root root 673 Jan  8  2020 /etc/xml/xml-core.xml.old
+
+╔══════════╣ Searching tables inside readable .db/.sql/.sqlite files (limit 100)
+Found /var/lib/mlocate/mlocate.db: regular file, no read permission
+
+╔══════════╣ Web files?(output limit)
+/var/www/:
+total 12K
+drwxr-xr-x  3 root     root     4.0K Jan  9  2020 .
+drwxr-xr-x 14 root     root     4.0K Jan  9  2020 ..
+drwxrwsr-x  5 www-data www-data 4.0K Jan 10  2020 html
+
+/var/www/html:
+total 224K
+drwxrwsr-x  5 www-data www-data 4.0K Jan 10  2020 .
+drwxr-xr-x  3 root     root     4.0K Jan  9  2020 ..
+
+╔══════════╣ All hidden files (not in /sys/ or the ones listed in the previous check) (limit 70)
+-rw-rw-r-- 1 www-data www-data 235 Jan 10  2020 /var/www/html/.htaccess
+-rw-r--r-- 1 root root 0 Jan 18 14:49 /run/network/.ifstate.lock
+-rw-r--r-- 1 jack jack 220 Jan  8  2020 /home/jack/.bash_logout
+-rw------- 1 root root 0 Feb 26  2019 /etc/.pwd.lock
+-rw-r--r-- 1 root root 220 Aug 31  2015 /etc/skel/.bash_logout
+-rw-r--r-- 1 root root 1391 Jan  8  2020 /etc/apparmor.d/cache/.features
+
+╔══════════╣ Readable files inside /tmp, /var/tmp, /private/tmp, /private/var/at/tmp, /private/var/tmp, and backup folders (limit 70)
+-rwxrwxr-x 1 jack jack 777018 Nov  8 12:58 /tmp/linpeas.sh
+-rw-r--r-- 1 root root 11 Jan  8  2020 /var/backups/dpkg.arch.0
+-rw-r--r-- 1 root root 713 Jan  8  2020 /var/backups/apt.extended_states.1.gz
+-rw-r--r-- 1 root root 129487 Jan  8  2020 /var/backups/dpkg.status.1.gz
+-rw-r--r-- 1 root root 129 Jan  8  2020 /var/backups/dpkg.statoverride.1.gz
+-rw-r--r-- 1 root root 437 Jan  8  2020 /var/backups/dpkg.diversions.0
+-rw-r--r-- 1 root root 207 Jan  9  2020 /var/backups/dpkg.statoverride.0
+-rw-r--r-- 1 root root 552673 Jan  9  2020 /var/backups/dpkg.status.0
+-rw-r--r-- 1 root root 43 Jan  8  2020 /var/backups/dpkg.arch.1.gz
+-rw-r--r-- 1 root root 202 Jan  8  2020 /var/backups/dpkg.diversions.1.gz
+-rw-r--r-- 1 root root 9931 Jan  9  2020 /var/backups/apt.extended_states.0
+-rw-r--r-- 1 root root 40960 Jan  9  2020 /var/backups/alternatives.tar.0
+-rwxrwxrwx 1 root root 1675 Jan 10  2020 /var/backups/id_rsa
+
+╔══════════╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+/dev/mqueue
+/dev/shm
+/home/jack
+/run/lock
+/run/user/1000
+/run/user/1000/systemd
+/tmp
+/tmp/.font-unix
+/tmp/.ICE-unix
+/tmp/linpeas.sh
+/tmp/.Test-unix
+/tmp/tmux-1000
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/backups/id_rsa
+/var/crash
+/var/lib/lxcfs/cgroup/memory/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/init.scope/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/accounts-daemon.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/acpid.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/apache2.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/apparmor.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/apport.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/atd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/console-setup.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/cron.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dbus.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dev-disk-byx2duuid-5aa0286cx2deea1x2d44e2x2db918x2d7041334f10a1.swap/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dev-hugepages.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dev-mqueue.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dev-xvda5.swap/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/grub-common.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/ifup@eth0.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/irqbalance.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/iscsid.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/keyboard-setup.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/kmod-static-nodes.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lvm2-lvmetad.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lvm2-monitor.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lxcfs.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lxd-containers.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/mdadm.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/-.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/mysql.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/networking.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/ondemand.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/open-iscsi.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/polkitd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/proc-sys-fs-binfmt_misc.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/rc-local.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/resolvconf.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/rsyslog.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/run-user-1000.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/setvtrgb.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/snapd.seeded.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/snapd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/ssh.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/sys-fs-fuse-connections.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/sys-kernel-debug.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-journald.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-journal-flush.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-logind.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-modules-load.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-random-seed.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-remount-fs.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-sysctl.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-timesyncd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-tmpfiles-setup-dev.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-tmpfiles-setup.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-udevd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-udev-trigger.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-update-utmp.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-user-sessions.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/system-getty.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/system-serialx2dgetty.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/ufw.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/unattended-upgrades.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/var-lib-lxcfs.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/user.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/name=systemd/user.slice/user-1000.slice/user@1000.service
+/var/lib/lxcfs/cgroup/name=systemd/user.slice/user-1000.slice/user@1000.service/cgroup.procs
+/var/lib/lxcfs/cgroup/name=systemd/user.slice/user-1000.slice/user@1000.service/init.scope
+/var/lib/lxcfs/cgroup/name=systemd/user.slice/user-1000.slice/user@1000.service/init.scope/cgroup.clone_children
+/var/lib/lxcfs/cgroup/name=systemd/user.slice/user-1000.slice/user@1000.service/init.scope/cgroup.procs
+/var/lib/lxcfs/cgroup/name=systemd/user.slice/user-1000.slice/user@1000.service/init.scope/notify_on_release
+/var/lib/lxcfs/cgroup/name=systemd/user.slice/user-1000.slice/user@1000.service/init.scope/tasks
+/var/lib/lxcfs/cgroup/name=systemd/user.slice/user-1000.slice/user@1000.service/tasks
+/var/lib/php/sessions
+/var/tmp
+
+╔══════════╣ Interesting GROUP writable files (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+  Group jack:
+/tmp/linpeas.sh
+  Group adm:
+/var/log/mysql/error.log
+  Group family:
+/usr/lib/python2.7/_threading_local.py
+/usr/lib/python2.7/plistlib.pyc
+/usr/lib/python2.7/stringprep.py
+/usr/lib/python2.7/ihooks.pyc
+/usr/lib/python2.7/weakref.py
+#)You_can_write_even_more_files_inside_last_directory
+
+/etc/python2.7/sitecustomize.py
+
+╔══════════╣ Searching passwords in history files
+
+╔══════════╣ Searching passwords in config PHP files
+		$pwd    = trim( wp_unslash( $_POST['pwd'] ) );
+
+╔══════════╣ Searching *password* or *credential* files in home (limit 70)
