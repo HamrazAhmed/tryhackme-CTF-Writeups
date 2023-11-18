@@ -45,6 +45,7 @@ Offensive security focuses on finding and exploiting vulnerabilities in applicat
 
 ### 1.1 Web Application Pentesting & Vulnerability Labs (109 Rooms)
 
+Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Scripting (XSS), Server-Side Request Forgery (SSRF), Template Injections (SSTI), API flaws, and web CMS exploitation.
 
 
-<!-- Weekly Progress: Week 45/104 | 2023-11-10 -->
+<!-- Weekly Progress: Week 46/104 | 2023-11-18 -->
