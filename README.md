@@ -48,4 +48,5 @@ Offensive security focuses on finding and exploiting vulnerabilities in applicat
 Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Scripting (XSS), Server-Side Request Forgery (SSRF), Template Injections (SSTI), API flaws, and web CMS exploitation.
 
 
-<!-- Weekly Progress: Week 46/104 | 2023-11-18 -->
+
+<!-- Weekly Progress: Week 47/104 | 2023-11-25 -->
