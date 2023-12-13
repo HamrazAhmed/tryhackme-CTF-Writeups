@@ -411,3 +411,416 @@ ubuntu       919  0.3  3.0 350720 123564 ?       S    21:51   0:22 /usr/bin/Xtig
 ubuntu      2732  0.0  0.0   3436   656 pts/0    S+   23:25   0:00 grep --color=auto -i Xtigervnc
 ```
 */usr/bin/Xtigervnc*
+Read about the flags used above with the netstat and ps commands in their respective man pages.
+Completed
+### Persistence mechanisms
+Knowing the environment we are investigating, we can then move on to finding out what persistence mechanisms exist on the Linux host under investigation. Persistence mechanisms are ways a program can survive after a system reboot. This helps malware authors retain their access to a system even if the system is rebooted. Let's see how we can identify persistence mechanisms in a Linux host.
+### Cron jobs
+Cron jobs are commands that run periodically after a set amount of time. A Linux host maintains a list of Cron jobs in a file located at `/etc/crontab`. We can read the file using the `cat` utility.
+Cron jobs
+```shell-session
+user@machine$ cat /etc/crontab
+```
+```shell-session
+# /etc/crontab: system-wide crontab
+```
+```shell-session
+# Unlike any other crontab you don't have to run the `crontab'
+```
+```shell-session
+# command to install the new version when you edit this file
+```
+```shell-session
+# and files in /etc/cron.d. These files also have username fields,
+```
+```shell-session
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+```
+```shell-session
+# Example of job definition:
+```
+```shell-session
+# .---------------- minute (0 - 59)
+```
+```shell-session
+# |  .------------- hour (0 - 23)
+```
+```shell-session
+# |  |  .---------- day of month (1 - 31)
+```
+```shell-session
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+```
+```shell-session
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+```
+```shell-session
+# |  |  |  |  |
+```
+```shell-session
+# *  *  *  *  * user-name command to be executed
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+#
+```
+The above terminal output shows the contents of a sample `/etc/crontab` file. As can be seen, the file contains information about the time interval after which the command has to run, the username that runs the command, and the command itself. It can also contain scripts to run, where the script that needs to be run will be placed on the disk, and the command to run it will be added to this file.
+### Service startup
+Like Windows, services can be set up in Linux that will start and run in the background after every system boot. A list of services can be found in the `/etc/init.d` directory. We can check the contents of the directory by using the `ls` utility.
+Service startup
+```shell-session
+user@machine$ ls /etc/init.d/
+acpid       avahi-daemon      cups          hibagent           kmod             networking     pppd-dns                     screen-cleanup     unattended-upgrades
+alsa-utils  bluetooth         cups-browsed  hwclock.sh         lightdm          open-iscsi     procps                       speech-dispatcher  uuidd
+anacron     console-setup.sh  dbus          irqbalance         lvm2             open-vm-tools  pulseaudio-enable-autospawn  spice-vdagent      whoopsie
+apparmor    cron              gdm3          iscsid             lvm2-lvmpolld    openvpn        rsync                        ssh                x11-common
+apport      cryptdisks        grub-common   kerneloops         multipath-tools  plymouth       rsyslog                      udev
+atd         cryptdisks-early  hddtemp       keyboard-setup.sh  network-manager  plymouth-log   saned                        ufw
+```
+### .Bashrc
+When a bash shell is spawned, it runs the commands stored in the `.bashrc` file. This file can be considered as a startup list of actions to be performed. Hence it can prove to be a good place to look for persistence.
+The following terminal shows an example .bashrc file.
+Bashrc
+```shell-session
+user@machine$ cat ~/.bashrc
+```
+```shell-session
+# ~/.bashrc: executed by bash(1) for non-login shells.
+```
+```shell-session
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+```
+```shell-session
+# for examples
+```
+```shell-session
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+```
+```shell-session
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+```
+```shell-session
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+```
+```shell-session
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+```
+```shell-session
+# Add an "alert" alias for long running commands.  Use like so:
+```
+```shell-session
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+```
+```shell-session
+# Alias definitions.
+```
+```shell-session
+# You may want to put all your additions into a separate file like
+```
+```shell-session
+# ~/.bash_aliases, instead of adding them here directly.
+```
+```shell-session
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+```
+```shell-session
+# enable programmable completion features (you don't need to enable
+```
+```shell-session
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+```
+```shell-session
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+```
+System-wide settings are stored in `/etc/bash.bashrc` and `/etc/profile` files, so it is often a good idea to take a look at these files as well.
+Answer the questions below
+In the bashrc file, the size of the history file is defined. What is the size of the history file that is set for the user Ubuntu in the attached machine?
+Check .bashrc for the user ubuntu and look for HISTFILESIZE
+```text
+ubuntu@Linux4n6:~$ more .bashrc
+```
+```text
+# ~/.bashrc: executed by bash(1) for non-login shells.
+```
+```text
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+```
+```text
+# for examples
+```
+```text
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+```
+```text
+# don't put duplicate lines or lines starting with space in the history.
+```
+```text
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+```
+```text
+# append to the history file, don't overwrite it
+shopt -s histappend
+```
+```text
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+```
+*2000*
+### Evidence of Execution
+Knowing what programs have been executed on a host is one of the main purposes of performing forensic analysis. On a Linux host, we can find the evidence of execution from the following sources.
+### Sudo execution history
+All the commands that are run on a Linux host using `sudo` are stored in the auth log. We already learned about the auth log in Task 3. We can use the `grep` utility to filter out only the required information from the auth log.
+Auth logs
+```shell-session
+user@machine$ cat /var/log/auth.log* |grep -i COMMAND|tail
+Mar 29 17:28:58 tryhackme pkexec[1618]: ubuntu: Error executing command as another user: Not authorized [USER=root] [TTY=unknown] [CWD=/home/ubuntu] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+Mar 29 17:49:52 tryhackme sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/cat /etc/sudoers
+Mar 29 17:55:22 tryhackme sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/cat /var/log/btmp
+Mar 29 17:55:39 tryhackme sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/cat /var/log/wtmp
+Mar 29 18:00:54 tryhackme sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/btmp
+Mar 29 18:01:24 tryhackme sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/last -f /var/log/btmp
+Mar 29 18:03:58 tryhackme sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/last -f /var/log/wtmp
+Mar 29 18:05:41 tryhackme sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/last -f /var/log/btmp
+Mar 29 18:07:51 tryhackme sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/last -f /var/log/utmp
+Mar 29 18:08:13 tryhackme sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/last -f /var/run/utmp
+```
+The above terminal shows commands run by the user ubuntu using `sudo`.
+### Bash history
+Any commands other than the ones run using `sudo` are stored in the bash history. Every user's bash history is stored separately in that user's home folder. Therefore, when examining bash history, we need to get the bash_history file from each user's home directory. It is important to examine the bash history from the root user as well, to make note of all the commands run using the root user as well.
+Bash history
+```shell-session
+user@machine$ cat ~/.bash_history 
+cd Downloads/
+ls
+unzip PracticalMalwareAnalysis-Labs-master.zip 
+cd PracticalMalwareAnalysis-Labs-master/
+ls
+cd ..
+ls
+rm -rf sality/
+ls
+mkdir wannacry
+mv Ransomware.WannaCry.zip wannacry/
+cd wannacry/
+unzip Ransomware.WannaCry.zip 
+cd ..
+rm -rf wannacry/
+ls
+mkdir exmatter
+mv 325ecd90ce19dd8d184ffe7dfb01b0dd02a77e9eabcb587f3738bcfbd3f832a1.7z exmatter/
+cd exmatter/
+strings -d 325ecd90ce19dd8d184ffe7dfb01b0dd02a77e9eabcb587f3738bcfbd3f832a1|sort|uniq>str-sorted
+cd ..
+ls
+```
+### Files accessed using vim
+The `Vim` text editor stores logs for opened files in `Vim` in the file named `.viminfo` in the home directory. This file contains command line history, search string history, etc. for the opened files. We can use the `cat` utility to open `.viminfo`.
+Viminfo
+```shell-session
+user@machine$ cat ~/.viminfo
+```
+```shell-session
+# This viminfo file was generated by Vim 8.1.
+```
+```shell-session
+# You may edit it if you're careful!
+```
+```shell-session
+# Viminfo version
+|1,4
+```
+```shell-session
+# Value of 'encoding' when this file was written
+*encoding=utf-8
+```
+```shell-session
+# hlsearch on (H) or off (h):
+~h
+```
+```shell-session
+# Command Line History (newest to oldest):
+:q
+|2,0,1636562413,,"q"
+```
+```shell-session
+# Search String History (newest to oldest):
+```
+```shell-session
+# Expression History (newest to oldest):
+```
+```shell-session
+# Input Line History (newest to oldest):
+```
+```shell-session
+# Debug Line History (newest to oldest):
+```
+```shell-session
+# Registers:
+```
+```shell-session
+# File marks:
+'0  1139  0  ~/Downloads/str
+|4,48,1139,0,1636562413,"~/Downloads/str"
+```
+```shell-session
+# Jumplist (newest first):
+-'  1139  0  ~/Downloads/str
+|4,39,1139,0,1636562413,"~/Downloads/str"
+-'  1  0  ~/Downloads/str
+|4,39,1,0,1636562322,"~/Downloads/str"
+```
+```shell-session
+# History of marks within files (newest to oldest):
+
+> ~/Downloads/str
+	*	1636562410	0
+	"	1139	0
+```
+Answer the questions below
+The user tryhackme used apt-get to install a package. What was the command that was issued?
+Check bash history for user tryhackme
+```text
+ubuntu@Linux4n6:/home$ ls
+tryhackme  ubuntu
+ubuntu@Linux4n6:/home$ cd tryhackme/
+ubuntu@Linux4n6:/home/tryhackme$ ls
+ubuntu@Linux4n6:/home/tryhackme$ cat .bash_history 
+cat: .bash_history: Permission denied
+ubuntu@Linux4n6:/home/tryhackme$ sudo cat .bash_history 
+ls -a /home/tryhackme/
+cd ../tryhackme/
+rm -rf .bash_logout 
+history -w
+ls -a /home/tryhackme/
+cd ../tryhackme/
+rm -rf .bash_logout 
+history -w
+cat .bash_history
+sudo apt-get install apache2
+```
+*sudo apt-get install apache2*
+What was the current working directory when the command to install net-tools was issued?
+Check the auth log, you can grep COMMAND and net-tools. The working directory is denoted by PWD.
+```text
+ubuntu@Linux4n6:/home/tryhackme$ sudo cat /var/log/auth.log* | grep -i "net-tools"
+Apr 17 15:54:52 tryhackme sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/apt-get install net-tools
+```
+*/home/ubuntu*
+### Log files
+One of the most important sources of information on the activity on a Linux host is the log files. These log files maintain a history of activity performed on the host and the amount of logging depends on the logging level defined on the system. Let's take a look at some of the important log sources. Logs are generally found in the `/var/log` directory.
+### Syslog
+The Syslog contains messages that are recorded by the host about system activity. The detail which is recorded in these messages is configurable through the logging level. We can use the `cat` utility to view the Syslog, which can be found in the file `/var/log/syslog`. Since the Syslog is a huge file, it is easier to use `tail`, `head`, `more` or `less` utilities to help make it more readable.
+Syslog
+```shell-session
+user@machine$ cat /var/log/syslog* | head
+Mar 29 00:00:37 tryhackme systemd-resolved[519]: Server returned error NXDOMAIN, mitigating potential DNS violation DVE-2018-0001, retrying transaction with reduced feature level UDP.
+Mar 29 00:00:37 tryhackme rsyslogd: [origin software="rsyslogd" swVersion="8.2001.0" x-pid="635" x-info="https://www.rsyslog.com"] rsyslogd was HUPed
+Mar 29 00:00:37 tryhackme systemd[1]: man-db.service: Succeeded.
+Mar 29 00:00:37 tryhackme systemd[1]: Finished Daily man-db regeneration.
+Mar 29 00:09:01 tryhackme CRON[7713]: (root) CMD (   test -x /etc/cron.daily/popularity-contest && /etc/cron.daily/popularity-contest --crond)
+Mar 29 00:17:01 tryhackme CRON[7726]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Mar 29 00:30:45 tryhackme snapd[2930]: storehelpers.go:721: cannot refresh: snap has no updates available: "amazon-ssm-agent", "core", "core18", "core20", "lxd"
+Mar 29 00:30:45 tryhackme snapd[2930]: autorefresh.go:536: auto-refresh: all snaps are up-to-date
+Mar 29 01:17:01 tryhackme CRON[7817]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Mar 29 01:50:37 tryhackme systemd[1]: Starting Cleanup of Temporary Directories...
+```
+The above terminal shows the system time, system name, the process that sent the log [the process id], and the details of the log. We can see a couple of cron jobs being run here in the logs above, apart from some other activity. We can see an asterisk(*) after the syslog. This is to include rotated logs as well. With the passage of time, the Linux machine rotates older logs into files such as syslog.1, syslog.2 etc, so that the syslog file doesn't become too big. In order to search through all of the syslogs, we use the asterisk(*) wildcard.
+### Auth logs
+We have already discussed the auth logs in the previous tasks. The auth logs contain information about users and authentication-related logs. The below terminal shows a sample of the auth logs.
+Auth logs
+```shell-session
+user@machine$ cat /var/log/auth.log* |head
+Feb 27 13:52:33 ip-10-10-238-44 useradd[392]: new group: name=ubuntu, GID=1000
+Feb 27 13:52:33 ip-10-10-238-44 useradd[392]: new user: name=ubuntu, UID=1000, GID=1000, home=/home/ubuntu, shell=/bin/bash, from=none
+Feb 27 13:52:33 ip-10-10-238-44 useradd[392]: add 'ubuntu' to group 'adm'
+Feb 27 13:52:33 ip-10-10-238-44 useradd[392]: add 'ubuntu' to group 'dialout'
+Feb 27 13:52:33 ip-10-10-238-44 useradd[392]: add 'ubuntu' to group 'cdrom'
+Feb 27 13:52:33 ip-10-10-238-44 useradd[392]: add 'ubuntu' to group 'floppy'
+Feb 27 13:52:33 ip-10-10-238-44 useradd[392]: add 'ubuntu' to group 'sudo'
+Feb 27 13:52:33 ip-10-10-238-44 useradd[392]: add 'ubuntu' to group 'audio'
+Feb 27 13:52:33 ip-10-10-238-44 useradd[392]: add 'ubuntu' to group 'dip'
+Feb 27 13:52:33 ip-10-10-238-44 useradd[392]: add 'ubuntu' to group 'video'
+```
+We can see above that the log stored information about the creation of a new group, a new user, and the addition of the user into different groups.
+### Third-party logs
+Similar to the syslog and authentication logs, the `/var/log/` directory contains logs for third-party applications such as webserver, database, or file share server logs. We can investigate these by looking at the`/var/log/` directory.
+Third-party logs
+```shell-session
+user@machine$ ls /var/log
+Xorg.0.log          apt                    cloud-init.log  dmesg.2.gz      gdm3                    kern.log.1         prime-supported.log  syslog.2.gz
+Xorg.0.log.old      auth.log               cups            dmesg.3.gz      gpu-manager-switch.log  landscape          private              syslog.3.gz
+alternatives.log    auth.log.1             dist-upgrade    dmesg.4.gz      gpu-manager.log         lastlog            samba                syslog.4.gz
+alternatives.log.1  btmp                   dmesg           dpkg.log        hp                      lightdm            speech-dispatcher    syslog.5.gz
+amazon              btmp.1                 dmesg.0         dpkg.log.1      journal                 openvpn            syslog               unattended-upgrades
+apache2             cloud-init-output.log  dmesg.1.gz      fontconfig.log  kern.log                prime-offload.log  syslog.1             wtmp
+```
+As is obvious, we can find the apache logs in the apache2 directory and samba logs in the samba directory.
+Apache logs
+```shell-session
+user@machine$  ls /var/log/apache2/
+access.log  error.log  other_vhosts_access.log
+```
+Similarly, if any database server like MySQL is installed on the system, we can find the logs in this directory.
+Answer the questions below
+Though the machine's current hostname is the one we identified in Task 4. The machine earlier had a different hostname. What was the previous hostname of the machine?
+Check syslog. You can use grep hostname to shortlist the logs of your interest. Check what other hostname was present in the syslogs apart from the current one. You can use syslog* to include syslogs that have been rotated into your search.
+```text
+ubuntu@Linux4n6:/home/tryhackme$ cat /var/log/syslog* | grep -i hostname | head
+Dec 16 21:52:28 Linux4n6 systemd[1]: systemd-hostnamed.service: Succeeded.
+Apr 17 00:01:30 tryhackme dbus-daemon[539]: [system] Successfully activated service 'org.freedesktop.hostname1'
+Apr 17 00:01:30 tryhackme systemd[1]: Started Hostname Service.
+Apr 17 00:01:30 tryhackme NetworkManager[540]: <info>  [1650153690.6203] hostname: hostname: using hostnamed
+Apr 17 00:01:30 tryhackme NetworkManager[540]: <info>  [1650153690.6204] hostname: hostname changed from (none) to "tryhackme"
+```
+*tryhackme*
+### Conclusion
+Well, that's a wrap for this room. That was interesting!!
+If you found it difficult to remember all the forensic artifacts, here is a cheatsheet that you can reference.
+You can stick around and find out what other exciting artifacts you found in the VM. You can let us know what you found interesting in this room using our [Discord channel](https://discord.gg/tryhackme) or [Twitter account](http://twitter.com/realtryhackme).
+
+## Flags / Answers
+### Linux Distributions:![Different Linux Distributions](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/a75df704781c9f5e5fb3a63851e26f9e.png)
+- Let's start by accessing the machine attached to the room. To access the machine, press the "Start Machine" icon, which will open the machine in the split view.![Press the button in the top right corner of the task to start the machine](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/820faae29e0698495f229bdf0d591230.png)
+
+## Notes / Lessons Learned
+[[DFIR An Introduction]]
+
