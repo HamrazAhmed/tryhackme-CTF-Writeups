@@ -49,6 +49,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 
 | Room Name | Difficulty | Focus / Vectors | Writeup Link |
 | :--- | :---: | :--- | :--- |
+| **Agent T** | `Easy` | Web / CTF | [Agent T.md](./Agent%20T.md) |
 
 
-<!-- Weekly Progress: Week 49/104 | 2023-12-10 -->
+<!-- Weekly Progress: Week 50/104 | 2023-12-16 -->
