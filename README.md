@@ -50,6 +50,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | Room Name | Difficulty | Focus / Vectors | Writeup Link |
 | :--- | :---: | :--- | :--- |
 | **Agent T** | `Easy` | Web / CTF | [Agent T.md](./Agent%20T.md) |
+| **Atlassian, CVE-2022-26134** | `Easy` | CVE / Web | [Atlassian, CVE-2022-26134.md](./Atlassian%2C%20CVE-2022-26134.md) |
 
 
-<!-- Weekly Progress: Week 50/104 | 2023-12-16 -->
+<!-- Weekly Progress: Week 51/104 | 2023-12-23 -->
