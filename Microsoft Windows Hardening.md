@@ -135,3 +135,140 @@ Interface: 192.168.231.2 --- 0x5
   224.0.0.2             01-00-5e-00-00-02     static
   224.0.0.22            01-00-5e-00-00-16     static
   224.0.0.251           01-00-5e-00-00-fb     static
+  224.0.0.252           01-00-5e-00-00-fc     static
+  239.255.255.250       01-00-5e-7f-ff-fa     static
+```
+The table contains MAC addresses in the middle and IP addresses in the left.  If the table includes a MAC mapped to two IPs, you are probably susceptible to an ARP poisoning attack.
+To clear the ARP cache and prevent the attack, issue the command arp -d.
+Preventing Remote Access to Machine
+Remote access provides a way to connect to other computers/networks even located at a different geographical location for file sharing and remotely make changes to a workstation. Microsoft has developed a Remote Desktop Protocol (RDP) for connecting with other computers. Hackers have exploited the protocol in the past, like the famous [Blue Keep vulnerability](https://en.wikipedia.org/wiki/BlueKeep), to gain unauthorised access to the target system.
+We must disable remote access (if not required) by going to settings > Remote Desktop. Do not attempt this in VM attached to this room.
+![[Pasted image 20221018220146.png]]
+Open Windows Firewall and click on Monitoring in the left pane - which of the following profiles is active? Domain, Private, Public?
+*Private*
+![[Pasted image 20221018220008.png]]
+![[Pasted image 20221018220023.png]]
+Find the IP address resolved for the website tryhack.me in the Virtual Machine as per the local hosts file.
+*192.168.1.140*
+![[Pasted image 20221018220248.png]]
+Open the command prompt and enter arp -a. What is the Physical address for the IP address 255.255.255.255?
+*ff-ff-ff-ff-ff-ff*
+### Application Management
+Trusted Application Store
+Microsoft Store offers a complete range of applications (games, utilities) and allows downloading non-malicious files through a single click. Malicious actors bind legitimate software with trojans and viruses and upload it on the internet to infect and access the victim's computer. Therefore, downloading applications from the Microsoft Store ensures that the downloaded software is not malicious.
+We can access Microsoft Application Store by typing ms-windows-store in the Run dialogue.
+Safe App Installation
+Only allow installation of applications from the Microsoft Store on your computer.
+Go to Setting > Select Apps and Features and then select The Microsoft Store only.
+Malware Removal through Windows Defender Anti Virus
+Windows Defender Anti Virus is a complete anti-malware program capable of identifying malicious programs and taking remedial measures like quarantine. The program used to have an entire Graphical User Interface; however, Windows 10 and newer versions manage the same through Windows Security Centre. Windows Defender primarily offers four main functionalities:
+Real-time protection - Enables periodic scanning of the computer.
+Browser integration - Enables safe browsing by scanning all downloaded files, etc.
+Application Guard - Allows complete web session sandboxing to block malicious websites or sessions to make changes in the computer.
+Controlled Folder Access - Protect memory areas and folders from unwanted applications.
+You have already learned about this in Windows Fundamentals 3
+Microsoft Office Hardening
+Microsoft Office Suite is one of the most widely used application suites in all sectors, including financial, telecom, education, etc. Malicious actors abuse its functionality through macros, Flash applets, object linking etc., to achieve Remote Code Execution.
+Hardening of Microsoft Office may vary from person to person as legitimate functionality of Microsoft Office is exploited to gain access. For example, disabling macros in a University may be helpful as no one uses it; however, banks cannot disable macros as they heavily rely on complex invoices and formulas through macros.
+The attached VM contains a batch file based on best practices and [Microsoft Attack Surface Reduction Rules](https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/attack-surface-reduction-rules-reference?view=o365-worldwide) for hardening Microsoft Office. To execute the script, right-click on the file office.bat on Desktop and Run as Administrator.
+```text
+Command Prompt - Administrator
+
+           
+harden@tryhackme$ office.bat (Work in Progress)
+Microsoft Office Hardened Successfully.
+```
+AppLocker
+AppLocker is a recently introduced feature that allows users to block specific executables, scripts, and installers from execution through a set of rules. We can easily configure them on a single PC or network through a GUI by the following method:
+Now, we will see how to add a rule through AppLocker to block a file based on its publisher name.
+Browser (MS Edge)
+Microsoft Edge is a built-in browser available on Windows machines based on Chromium, inline with Google Chrome and Brave. The browser often acts as an entry point to a system for further pivoting and lateral movement. It is therefore of utmost importance to block and mitigate critical attacks carried out through a browser that include ransomware, ads, unsigned application downloads and trojans.
+Protecting the Browser through Microsoft Smart Screen
+Microsoft SmartScreen helps to protect you from phishing/malware sites and software when using Microsoft Edge. It helps to make informed decisions for downloads and lets you browse safely in Microsoft Edge by:
+Displaying an alert if you are visiting any suspicious web pages.
+Vetting downloads by checking their hash, signature etc against a malicious software database.
+Protecting against phishing and malicious sites by checking visited websites against a threat intelligence database.
+To turn on the Smart Screen, go to Settings > Windows Security > App and Browser Control > Reputation-based Protection. Scroll down and turn on the SmartScreen option.
+Open Microsoft Edge, go to Settings and then click “Privacy, Search and Services” - Set "Tracking prevention" to Strict to avoid tracking through ads, cookies etc.
+![[Pasted image 20221018223830.png]]
+![[Pasted image 20221018224245.png]]
+Windows Defender Antivirus is configured to exclude a particular extension from scanning. What is the extension?
+*.ps*
+A Word document is received from an unknown email address. It is best practice to open it immediately on your personal computer (yay/nay).
+*nay*
+What is the flag you received after executing the Office Hardening Batch file?
+*{THM_1101110}*
+### Storage Management
+Data Encryption Through BitLocker
+Encryption of the computer is one of the most vital things to which we usually pay little attention. The worst nightmare is that someone gets unfettered access to your devices' data. Encryption ensures that you or someone you share the recovery key with can access the stored content.
+Microsoft, for its business edition of Windows, utilises the encryption tools by BitLocker. Let us have a quick look at how one can ensure to protect the data through BitLocker encryption features available on the Home Editions of Windows 10. You have already read about it here ([Task 8](https://tryhackme.com/room/windowsfundamentals3xzx)).
+Go to Start > Control Panel > System and Security > BitLocker Drive Encryption. You can easily see if the option to BitLocker Drive Encryption is
+A trusted Platform Module chip TPM is one of the basic requirements to support BitLocker device encryption. Keeping the BitLocker recovery key in a secure place (preferably not on the same computer) is imperative. You can read more about BitLocker Recovery [here](https://support.microsoft.com/en-us/windows/finding-your-bitlocker-recovery-key-in-windows-6b71ad27-0b89-ea08-f143-056f5ab347d6).
+Note: The BitLocker feature is not available in the attached VM.
+Windows Sandbox
+To run applications safely, we can use a temporary, isolated, lightweight desktop environment called Windows Sandbox. We can install software inside this safe environment, and this software will not be a part of our host machine, it will remain sandboxed. Once the Windows Sandbox is closed, everything, including files, software, and states will be deleted. We would require Virtualisation enabled on our OS to run this feature. We cannot try this in the attached VM but the steps for enabling the Sandbox feature are as below:
+Click Start > Search for 'Windows Features' and turn it on > Select Sandbox > Click OK to restart
+If you want to close the Sandbox, click the close button, and it will disappear. Opening suspicious files in a Windows Sandbox before blindly executing them in your base OS is recommended.
+Windows Secure Boot
+﻿Secure boot – an advanced security standard - checks that your system is running on trusted hardware and firmware before booting, which ensures that your system boots up safely while preventing unauthorised software access from taking control of your PC, like malware.
+You are already in a secure boot environment if you run a modern PC with Unified Extensible Firmware Interface UEFI (the best replacement for BIOS) or Windows 10. You can check the status of the secure boot by following:
+The incredible thing is that you do not need to enable or install it as it works silently in the background. Windows allows you to disable these features, which is not recommended.  You can enable Secure boot from BIOS settings (if disabled).
+https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot?view=windows-11
+Enable File Backups
+The last option, but certainly not the least important one to prevent losing irreplaceable and critical files is to enable file backups. Despite all the above techniques, if you somehow lose essential data/files, you can recover the loss by restoring it, if you have a file backup option. Creating file backups is the best option to avoid disasters like malware attacks or hardware failure. You can enable the file backup option through  Settings > Update and Security > Backup:-
+Therefore, the most convenient option is enabling it from the 'File History' option - a built-in functionality of Windows 10 and 11.
+![[Pasted image 20221018225515.png]]
+A security engineer has misconfigured the attached VM and stored a BitLocker recovery key in the same computer. Can you read the last six digits of the recovery key?
+Look in the Documents folder.
+*377564*
+How many characters does the BitLocker recovery key have in the attached VM?
+*48*
+![[Pasted image 20221018225400.png]]
+A backup file is placed on the Desktop of the attached VM. What is the extension of that file?
+*.bkf*
+### Updating Windows
+Hackers are continuously bypassing and exploiting Windows' legitimate features. You can see a list of Windows vulnerabilities by following [this](https://www.cvedetails.com/vulnerability-list/vendor_id-26/product_id-32238/Microsoft-Windows-10.html) link. The most critical part of hardening computers is enabling the Windows auto-updates.
+Click Start > Settings > Update & Security > Window Updates.
+This ensures that all the urgent security updates, if any, are installed immediately without causing any delay. It is most important because the quicker you apply the new Windows protection patch, the faster you can fix the potential vulnerabilities – to ensure the security from the latest known threats.
+Remember, users who run the older Windows versions are always at greater risk and vulnerable to new security threats. So, be very careful about this.
+![[Pasted image 20221018230007.png]]
+What is the CVE score for the vulnerability CVE ID CVE-2022-32230?
+Require External Research (Link available in the task).
+*7.8*
+### Cheatsheet for Hardening Windows
+Is your system still at risk of a security breach?
+The bottom line is that hardening is a never-ending process.  You can’t ever say that your job is done and your system is now fully protected; instead, we can try our best. In this regard, we must be active and smart-minded to participate in this continuing process. We must keep in mind [The defender’s dilemma](https://www.rand.org/pubs/research_reports/RR1024.html), which states that breaches are inevitable because defenders have to be right 100% of the time whereas attackers only have to be right once.
+In this room, we have learned how to harden our computers at different levels (Identity, Network, Application & Storage). Below is a quick summary or cheatsheet for guidance during the hardening process:
+You can learn more about hardening Linux and Active Directory in our upcoming rooms. Stay tuned! And keep hardening machines.
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/508f1714a93326335f11c9f9804582a2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/f10675954519d7470106a15273aeaa7f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/3fb4825b43009e27d7217c49d2a54e77.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/4798e8d5fcae725891dd0d917da72a71.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/9a52c8c09ea562fc4003da40cc87a229.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/51fff821ccc3b7e21698a6160df4a96b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/5e5609be5a55c30aa42a27801c5362c4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/e459dd6e94f893a5db56ba8c6d2ced94.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/e159d0daed7b8b8f217cbcd85d10c0b2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/b4364de2e962d48755d37d254dddf0f9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/0825e4e702f7d4c9e0b5c4df81878fe4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/381409d62e6ebaf2c542849dc941f58c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/011d5a2f065508cd740f211aa7a478ad.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/340bfd9d93e9a44e2f244fc1d2d302ea.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/55413d1781c530e53fa175b3e2fadb84.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/adf2295862b9d01aec5d967aaa9c6433.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/7809f59c32041093a48fb49e3dea1891.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/64f6885a19f1ea54250717a3af70efc0.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/79b7490c1617095a385f943342d13176.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/b7e3bb52cc6ea640aa487f6124dcbb72.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/e36ecbbe7b00820e10c38199baa357c5.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/42ad322953f66fdd2d911f331b54a49a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/7e86a928fcad06fc3a30d1e69620fa45.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/c2e8a9441b14db952c6771518efd047f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/ca26fa3afcbabf99ce1d98b0396659c6.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/dbbd403c6b1196904312c7b88f2514f2.png)
+
+## Notes / Lessons Learned
+[[Unified Kill Chain]]
+
