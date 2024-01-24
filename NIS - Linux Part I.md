@@ -1,0 +1,685 @@
+---
+Enhance your Linux knowledge with this beginner friendly room!
+---
+
+# NIS - Linux Part I — Writeup
+
+## Overview
+### NIS - Linux Part I — Writeup
+### NIS - Linux Part I — Writeup
+![|222](https://tryhackme-images.s3.amazonaws.com/room-icons/a60460f94562420191b875ba8e7ddf5b.png)
+In this task, we will be looking back at Linux Fundamentals and a few other topics that seem to cause some trouble around beginners. A requirement for this room is to finish the Linux Fundamentals rooms.
+As it covers all the basic requirements and this is just a follow up to it in order to strengthen the understanding you gained throughout the room. In order to do so.
+Below I will be asking a few questions related to that room, so please, make sure to complete it first :). If you didn't feel free to go through the tasks and come back to this once you finished the room.
+The commands you are allowed to use in this room are:
+cat
+tac
+head
+tail
+xxd
+base64
+find
+grep
+echo
+xargs
+hexeditor
+tar
+gzip
+7zip
+binwalk
+Bear in mind, commands such as cd are not allowed.
+***     The SSH credentials are chad:Infinity121       ***
+What is the user you are logged in to in the first room of Linux Fundamentals Part 1?
+*TryHackMe*
+What badge do you receive when you complete all the Linux Fundamentals rooms?
+*cat linux.txt*
+### ls
+This task should give you a better understanding of the command ls and a few of the switches that the command can take and what are some of the more efficient ones. Below is a screenshot of the help menu, however, feel free to use the man.
+![](https://i.imgur.com/wtqmO0Y.png)
+Hopefully, the above screenshot should help you go through a few of the tasks below, however further research is required. A good thing to know is that ls supports multiple ways of chaining switches. Such as:
+ls -x -y -z
+ls -xyz
+In some cases, you would need to keep evidence of your findings. Below we will start with some basic commands you should be familiar with.
+How do you run the ls command?
+*ls*
+How do you run the ls command to show all the files inside the folder?
+*ls -a*
+How do you run the ls command to not show the current directory and the previous directory in the output? (almost everything)
+*ls -A*
+How do you show the information in a long listing format using ls?
+*ls -l*
+How do you show the size in readable format? e.g. k, Mb, etc
+*ls -h*
+How do you do a recursive ls?
+*ls --recursive*
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ ssh chad@10.10.149.220
+The authenticity of host '10.10.149.220 (10.10.149.220)' can't be established.
+ED25519 key fingerprint is SHA256:uROxrJRt+adg6DuvXJOOtIMDLbXwhBdDlqZ49uxWfuw.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.149.220' (ED25519) to the list of known hosts.
+chad@10.10.149.220's password: 
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-112-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon Sep 26 21:59:40 UTC 2022
+
+  System load:  0.0                Processes:           84
+  Usage of /:   33.0% of 19.56GB   Users logged in:     0
+  Memory usage: 13%                IP address for eth0: 10.10.149.220
+  Swap usage:   0%
+
+0 packages can be updated.
+0 updates are security updates.
+
+Last login: Tue Nov 10 22:36:51 2020 from 10.10.215.254
+chad@flamenco:~$ 
+
+chad@flamenco:~$ ls
+base64.txt  binwalk.png  grep1.txt  gzip.txt.gz  tac.txt   tarball.tar  zip.7z
+bin         cat.txt      grep.txt   head.txt     tail.txt  xxd.txt
+chad@flamenco:~$ pwd
+/home/chad
+```
+How many files did you locate in the home folder of the user?(non-hidden and not inside other folders)
+*13*
+### cat
+The cat command is one of the most common Linux commands that people use, however, in some instances, the cat command cannot be used as it's removed.
+Below is a screenshot of the cat command's help menu.
+![](https://i.imgur.com/lOqBTdk.png)
+But, as we are professionals we know about a few alternatives of going around it:
+The first command we are going to learn about is tac. Yes, cat spelt backwards. It is similar to the command, with the downside of less functionality.
+![](https://i.imgur.com/uy57zbm.png)
+Thus being a good tool to add to your toolbelt when you are limited by your reverse shell.
+Another tool that can be used is head. This is usually used to get the beginning part of a file, however, you can use it to your heart's content and grab as many lines as you want.
+![](https://i.imgur.com/Z0PisaW.png)
+One more tool that can be used to grab the content of a file is tail. This is similar to the head command, however, as the name implies it will grab the last part of a file.
+![](https://i.imgur.com/1v44ORA.png)
+Another useful command is xxd. this can be used to generate a hex dump of the content of a file. Then, if you want you can either just read the text from the right-hand side or convert from hex to ASCII.
+![](https://i.imgur.com/m0Mi60o.png)
+Similar to the above you can use the base64 command to convert the text to base64 and then convert it back to ASCII.
+![](https://i.imgur.com/Qq7UkLg.png)
+```text
+
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ tac ftp_flag.txt 
+THM{321452667098}
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ head ftp_flag.txt 
+THM{321452667098}
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ tail ftp_flag.txt          
+THM{321452667098}
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ xxd ftp_flag.txt 
+00000000: 5448 4d7b 3332 3134 3532 3636 3730 3938  THM{321452667098
+00000010: 7d0a                                     }.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ base64 ftp_flag.txt| base64 --decode
+THM{321452667098}
+```
+```text
+chad@flamenco:~$ tac cat.txt
+THM{11adbee391acdffee901}
+chad@flamenco:~$ cat cat.txt
+THM{11adbee391acdffee901}
+
+chad@flamenco:~$ tac tac.txt
+THM{acab0111aaa687912139}
+
+chad@flamenco:~$ head head.txt
+THM{894abac55f7962abc166}
+
+chad@flamenco:~$ tail tail.txt
+THM{1689acafdd20751acff6}
+
+chad@flamenco:~$ xxd xxd.txt
+00000000: 5448 4d7b 6661 6331 6161 6232 3130 6436  THM{fac1aab210d6
+00000010: 6534 3431 3061 6364 7d0a                 e4410acd}.
+
+chad@flamenco:~$ base64 base64.txt | base64 --decode
+THM{aa462c1b2d44801c0a31}
+```
+What is the content of cat.txt?
+What is the content of tac.txt?
+What is the content of head.txt?
+What is the content of tail.txt?
+What is the content of the xxd.txt?
+What is the content of base64.txt?
+### find
+The find command is one of the most useful commands on a Linux operating system.
+![](https://i.imgur.com/c763tFd.png)
+This command can help us find specific files that match a pattern like:
+find . -name *.txt
+Or we can use it to find files that have a specific extension:
+find / -type f -name "*.bak"
+This simple command will start browsing the machine directory, finding all the files with extension .bak (backup).
+![](https://i.imgur.com/TEw03hT.png)
+But we can also use it to find files that have the SUID or SGID bit set like so:
+find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;
+This command combines permissions 4000 (SUID) and 2000 (SGID)
+![](https://i.imgur.com/XmVTUyN.png)
+```text
+chad@flamenco:~$ find . -type f -name "*.txt"
+./head.txt
+./grep.txt
+./base64.txt
+./tac.txt
+./tail.txt
+./cat.txt
+./grep1.txt
+./xxd.txt
+
+chad@flamenco:~$ find . -type f \( -perm -4000 \) -exec ls -l {} \;
+
+chad@flamenco:~$ find . -perm -4000
+```
+How many .txt files did you find in the current folder?
+*8*
+How many SUID files have you found inside the home folder?
+*0*
+### grep
+grep is a really useful command to grab text from files.
+![](https://i.imgur.com/1WjzMSy.png)
+Let's read through a few examples of grep commands and see how we can use them for our own benefit in a scenario.
+grep "word" file
+![](https://i.imgur.com/gfLmRxB.png)
+Grep not only allows us to check if a certain word exists in the file but also outputs us the context in which the word had appeared. As you can see on the screenshot above, we were able to find an exact match to the word 'if' in the file script.py.
+We can also compare two files with similar names using.
+grep "word" file*
+![](https://i.imgur.com/FLSIDGF.png)
+```text
+chad@flamenco:~$ grep "hacker" grep* -o 
+grep1.txt:hacker
+grep1.txt:hacker
+grep1.txt:hacker
+grep1.txt:hacker
+grep1.txt:hacker
+grep1.txt:hacker
+grep1.txt:hacker
+grep1.txt:hacker
+grep1.txt:hacker
+grep1.txt:hacker
+grep.txt:hacker
+grep.txt:hacker
+grep.txt:hacker
+grep.txt:hacker
+grep.txt:hacker
+```
+How many times does the word "hacker" appear in the grep files? (including variations)
+*15*
+### sudo
+sudo command allows certain users to execute a command as another user, according to settings in the /etc/sudoers file. By default, sudo requires that users authenticate themselves with a password of another user.
+In the real-life scenario, sudo is mostly used to switch to root account and gain an ability to fully interact with the system.
+![](https://i.imgur.com/CN0ckiJ.png)
+sudo -l appears to be the most commonly used switch. It can always tell you which commands are you allowed to run as another user on the following system, and in some cases, can give you a clue to root access.
+
+## Privilege Escalation
+```text
+chad@flamenco:~$ sudo -l
+-rbash: /usr/lib/command-not-found: restricted: cannot specify `/' in command names
+```
+Is the user allowed to run the above command? (Yay/Nay)
+*Nay*
+### chmod
+The chmod command sets the permissions of files or directories.
+![](https://i.imgur.com/Ghyg1lm.png)
+Those permissions are divided between three main characters:
+User
+Group
+Other
+All of them can rather read, write or execute a file. Permission to do so can be granted using chmod.
+It can be done rather using letter notation or numerical values.
+Let's take a look at the following command:
+chmod u=rwx,g=rx,o=rw myfile
+u = user is being giver read, write and execute permission
+g = group can now read and execute
+o = other can read and write
+This long notion can be eliminated by numerical values for permission. There are exactly four of them:
+0 stands for "no permission."
+1 stands for "execute";
+2 stands for "write";
+4 stands for "read".
+Those values can be easily combined by adding them up.
+For example, permission to read, write and execute would be 7 (1 + 2 + 4).
+chmod 777 file
+The following command will grant full file access to everyone on the system. (Those numerical values can be easily calculated using an interactive chmod-calculator).
+chmod command comes in handy with ssh key files (id_rsa). By editing their permissions to 'user read-write only' we can use other people's id_rsa files to connect via ssh.
+chmod 600 id_rsa
+https://chmod-calculator.com/
+### echo
+echo is the most fundamental command found in most operating systems. It used to prints text to standard output, for example, terminal. It is mostly used in bash scripts in order to display output directly to user's console.
+![](https://i.imgur.com/coZ6KbD.png)
+echo can also be used to interact with other system commands and pass some value to them.
+![](https://i.imgur.com/g8qlJV0.png)
+echo also has a small trick which allows to print out any command output to console.
+echo "$( [command] )"
+```text
+chad@flamenco:~$ echo "Hackerman"
+Hackerman
+```
+What command would you use to echo the word "Hackerman" ?
+*echo "Hackerman"*
+### xargs
+xargs command builds and executes command lines from standard input. It allows you to run the same command on a large number of files.
+![](https://i.imgur.com/aeF8ODy.png)
+xargs is often used with the find command, in order to easily interact with its input.
+Let's take a look at the given command:
+find /tmp -name test -type f -print | xargs /bin/rm -f
+On the left side, we can see a command which should technically display all files under a name 'test'. xargs command on the left allows us to execute rm (remove) on those files and easily delete all of them.
+Same can be done with reading all the files under the name 'test'.
+```text
+find / -name *.bak -type f -print | xargs /bin/cat
+```
+How would you read all files with extension .bak using xargs?
+*find / -name *.bak -type f print | xargs /bin/cat*
+### hexeditor
+Hexeditor is an awesome tool designed to read and modify hex of a file, this comes in handy especially when it comes to troubleshooting magic numbers for files such as JPG, WAV and any other types of files. This tool is also helpful when it comes to CTFs and text is hidden inside a file or when the magic number of a file was altered.
+Another tool that is good for this kind of scenarios is called strings but we won't be talking about it in this part of our course.
+![](https://i.imgur.com/qMRgTHV.png)
+For this task, I will be providing you with resources to help you along your journey around challenges you might be facing in which you need the hexeditor tool.
+A few resources I use for tasks that involve analysing files and fixing the magic number I use the following resources:
+https://en.wikipedia.org/wiki/List_of_file_signatures
+https://gist.github.com/leommoore/f9e57ba2aa4bf197ebc5
+https://www.garykessler.net/library/file_sigs.html
+### curl
+The curl command transfers data to or from a network server, using one of the supported protocols (HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, DICT, TELNET, LDAP or FILE). It is designed to work without any user interaction, so could be ideally used in a shell script.
+curl is a huge tool with a lot of switches and possibilities. Let's take a look at some of the most important ones.
+curl http://www.ismycomputeron.com/
+![](https://i.imgur.com/57RQsie.png)
+The most basic command. Fetches data from the website using the HTTP protocol, and display it using standard HTML code. This is essentially the same as "viewing the source" of the webpage.
+The following command will limit the connection speed to 1,234 bytes/second:
+curl --limit-rate 1234B http://www.ismycomputeron.com/
+Another example is saving the output to a file using either:
+-o to save the file under a different name
+curl -o loginpage.html https://tryhackme.com/login
+-O to save the file under the same name:
+curl -O https://tryhackme.com/login
+Or, you might be interested in fetching the headers silently?
+curl -I -s https://tryhackme.com
+```text
+┌──(kali㉿kali)-[~/Downloads/share]
+└─$ curl -I -s https://tryhackme.com                             
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+set-cookie: AWSALB=WSWfgs7HxXokOt/PntZwQSjgAFWLM4io984Vl5hnUc5q3iAGc+HW/ElKdtC/dITJ5JxAIed8pWQwKMwHiEHsNOu8AxICrE07ShU4nh3UOxbOz9XD8OwW2cN3pU5i; Expires=Tue, 04 Oct 2022 01:16:34 GMT; Path=/
+set-cookie: AWSALBCORS=WSWfgs7HxXokOt/PntZwQSjgAFWLM4io984Vl5hnUc5q3iAGc+HW/ElKdtC/dITJ5JxAIed8pWQwKMwHiEHsNOu8AxICrE07ShU4nh3UOxbOz9XD8OwW2cN3pU5i; Expires=Tue, 04 Oct 2022 01:16:34 GMT; Path=/; SameSite=None
+set-cookie: _csrf=hhhahdada; Path=/
+set-cookie: connect.sid=s%3A5pqisyi7sIeY1tsaQtjc_u08oCXdpxbr.APIb755O7Ttk6S5CCrICIgCuF90FykqLsZzfpeFrw%2BU; Path=/; Expires=Tue, 04 Oct 2022 01:16:34 GMT; HttpOnly
+x-powered-by: Express
+cf-cache-status: DYNAMIC
+server: cloudflare
+cf-ray: 7510650a2f1c56b2-LIM
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/share]
+└─$ curl -I -s https://tryhackme.com | grep HTTP
+HTTP/2 200
+```
+How would you grab the headers silently of https://tryhackme.com but grepping only the HTTP status code?
+*curl -I -s https://tryhackme.com | grep HTTP*
+### wget
+The wget command downloads files from HTTP, HTTPS, or FTP connection a network.
+![](https://i.imgur.com/dp9xFVk.png)
+wget http://somewebsite.com/files/images.zip
+![](https://i.imgur.com/hDflpWK.png)
+Adding a -b switch will allow us to run wget in the background and return the terminal to its initial state.
+wget -b http://www.example.org/files/images.zip
+What command would you run to get the flag.txt from https://tryhackme.com/ ?
+*wget https://tryhackme.com/flag.txt*
+```text
+┌──(kali㉿kali)-[~/Downloads/share]
+└─$ wget -r -l =5 https://tryhackme.com
+--2022-09-26 21:23:28--  https://tryhackme.com/
+Resolving tryhackme.com (tryhackme.com)... 172.67.27.10, 104.22.55.228, 104.22.54.228, ...
+Connecting to tryhackme.com (tryhackme.com)|172.67.27.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/index.html’
+
+tryhackme.com/index.html       [ <=>                                  ]  35.34K   202KB/s    in 0.2s    
+
+2022-09-26 21:23:29 (202 KB/s) - ‘tryhackme.com/index.html’ saved [36190]
+
+Loading robots.txt; please ignore errors.
+--2022-09-26 21:23:29--  https://tryhackme.com/robots.txt
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 69 [text/plain]
+Saving to: ‘tryhackme.com/robots.txt’
+
+tryhackme.com/robots.txt   100%[=====================================>]      69  --.-KB/s    in 0s      
+
+2022-09-26 21:23:29 (50.2 MB/s) - ‘tryhackme.com/robots.txt’ saved [69/69]
+
+--2022-09-26 21:23:29--  https://tryhackme.com/assets/pace/pace.js
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 27730 (27K) [application/javascript]
+Saving to: ‘tryhackme.com/assets/pace/pace.js’
+
+tryhackme.com/assets/pace/ 100%[=====================================>]  27.08K  --.-KB/s    in 0.001s  
+
+2022-09-26 21:23:30 (51.7 MB/s) - ‘tryhackme.com/assets/pace/pace.js’ saved [27730/27730]
+
+--2022-09-26 21:23:30--  https://tryhackme.com/assets/pace/themes/green/pace-theme-flash.css
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 2289 (2.2K) [text/css]
+Saving to: ‘tryhackme.com/assets/pace/themes/green/pace-theme-flash.css’
+
+tryhackme.com/assets/pace/ 100%[=====================================>]   2.24K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:30 (57.0 MB/s) - ‘tryhackme.com/assets/pace/themes/green/pace-theme-flash.css’ saved [2289/2289]
+
+--2022-09-26 21:23:30--  https://tryhackme.com/hacktivities
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/hacktivities’
+
+tryhackme.com/hacktivities     [ <=>                                  ]  31.95K  --.-KB/s    in 0.008s  
+
+2022-09-26 21:23:30 (4.13 MB/s) - ‘tryhackme.com/hacktivities’ saved [32720]
+
+--2022-09-26 21:23:30--  https://tryhackme.com/games/koth
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/games/koth’
+
+tryhackme.com/games/koth       [ <=>                                  ]  42.42K   246KB/s    in 0.2s    
+
+2022-09-26 21:23:31 (246 KB/s) - ‘tryhackme.com/games/koth’ saved [43438]
+
+--2022-09-26 21:23:31--  https://tryhackme.com/leaderboards
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/leaderboards’
+
+tryhackme.com/leaderboards     [ <=>                                  ]  33.78K  --.-KB/s    in 0.001s  
+
+2022-09-26 21:23:31 (60.8 MB/s) - ‘tryhackme.com/leaderboards’ saved [34590]
+
+--2022-09-26 21:23:31--  https://tryhackme.com/network/throwback
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/network/throwback’
+
+tryhackme.com/network/thro     [ <=>                                  ]  35.52K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:31 (80.3 MB/s) - ‘tryhackme.com/network/throwback’ saved [36372]
+
+--2022-09-26 21:23:31--  https://tryhackme.com/room/wreath
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/room/wreath’
+
+tryhackme.com/room/wreath      [ <=>                                  ]  53.71K  --.-KB/s    in 0.001s  
+
+2022-09-26 21:23:31 (54.5 MB/s) - ‘tryhackme.com/room/wreath’ saved [55001]
+
+--2022-09-26 21:23:31--  https://tryhackme.com/classrooms
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/classrooms’
+
+tryhackme.com/classrooms       [ <=>                                  ]  51.39K  --.-KB/s    in 0.004s  
+
+2022-09-26 21:23:32 (12.4 MB/s) - ‘tryhackme.com/classrooms’ saved [52623]
+
+--2022-09-26 21:23:32--  https://tryhackme.com/develop-rooms
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/develop-rooms’
+
+tryhackme.com/develop-room     [ <=>                                  ]  21.50K  --.-KB/s    in 0.001s  
+
+2022-09-26 21:23:32 (20.8 MB/s) - ‘tryhackme.com/develop-rooms’ saved [22020]
+
+--2022-09-26 21:23:32--  https://tryhackme.com/business
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/business’
+
+tryhackme.com/business         [ <=>                                  ]  42.90K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:32 (130 MB/s) - ‘tryhackme.com/business’ saved [43927]
+
+--2022-09-26 21:23:32--  https://tryhackme.com/login
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/login’
+
+tryhackme.com/login            [ <=>                                  ]  18.92K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:32 (68.2 MB/s) - ‘tryhackme.com/login’ saved [19377]
+
+--2022-09-26 21:23:32--  https://tryhackme.com/signup
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/signup’
+
+tryhackme.com/signup           [ <=>                                  ]  19.58K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:32 (221 MB/s) - ‘tryhackme.com/signup’ saved [20048]
+
+--2022-09-26 21:23:32--  https://tryhackme.com/img/getting-started/rocketman.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 675773 (660K) [image/png]
+Saving to: ‘tryhackme.com/img/getting-started/rocketman.png’
+
+tryhackme.com/img/getting- 100%[=====================================>] 659.93K   917KB/s    in 0.7s    
+
+2022-09-26 21:23:34 (917 KB/s) - ‘tryhackme.com/img/getting-started/rocketman.png’ saved [675773/675773]
+
+--2022-09-26 21:23:34--  https://tryhackme.com/img/illustrations/waves.svg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 129295 (126K) [image/svg+xml]
+Saving to: ‘tryhackme.com/img/illustrations/waves.svg’
+
+tryhackme.com/img/illustra 100%[=====================================>] 126.26K   364KB/s    in 0.3s    
+
+2022-09-26 21:23:34 (364 KB/s) - ‘tryhackme.com/img/illustrations/waves.svg’ saved [129295/129295]
+
+--2022-09-26 21:23:34--  https://tryhackme.com/img/general/networks.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 218874 (214K) [image/png]
+Saving to: ‘tryhackme.com/img/general/networks.png’
+
+tryhackme.com/img/general/ 100%[=====================================>] 213.74K   399KB/s    in 0.5s    
+
+2022-09-26 21:23:36 (399 KB/s) - ‘tryhackme.com/img/general/networks.png’ saved [218874/218874]
+
+--2022-09-26 21:23:36--  https://tryhackme.com/img/why_subscribe/testimonial_tweets2.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 704520 (688K) [image/png]
+Saving to: ‘tryhackme.com/img/why_subscribe/testimonial_tweets2.png’
+
+tryhackme.com/img/why_subs 100%[=====================================>] 688.01K   900KB/s    in 0.8s    
+
+2022-09-26 21:23:37 (900 KB/s) - ‘tryhackme.com/img/why_subscribe/testimonial_tweets2.png’ saved [704520/704520]
+
+--2022-09-26 21:23:37--  https://tryhackme.com/img/pix.png?ex1=text-1
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 150 [image/png]
+Saving to: ‘tryhackme.com/img/pix.png?ex1=text-1’
+
+tryhackme.com/img/pix.png? 100%[=====================================>]     150  --.-KB/s    in 0s      
+
+2022-09-26 21:23:37 (85.5 MB/s) - ‘tryhackme.com/img/pix.png?ex1=text-1’ saved [150/150]
+
+--2022-09-26 21:23:37--  https://tryhackme.com/resources/newsroom
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/resources/newsroom’
+
+tryhackme.com/resources/ne     [ <=>                                  ]  23.87K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:37 (131 MB/s) - ‘tryhackme.com/resources/newsroom’ saved [24445]
+
+--2022-09-26 21:23:37--  https://tryhackme.com/about
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/about’
+
+tryhackme.com/about            [ <=>                                  ]  26.94K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:38 (144 MB/s) - ‘tryhackme.com/about’ saved [27582]
+
+--2022-09-26 21:23:38--  https://tryhackme.com/resources/blog
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/resources/blog’
+
+tryhackme.com/resources/bl     [ <=>                                  ]  23.87K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:38 (103 MB/s) - ‘tryhackme.com/resources/blog’ saved [24441]
+
+--2022-09-26 21:23:38--  https://tryhackme.com/subscriptions
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/subscriptions’
+
+tryhackme.com/subscription     [ <=>                                  ]  31.06K  --.-KB/s    in 0.006s  
+
+2022-09-26 21:23:38 (5.33 MB/s) - ‘tryhackme.com/subscriptions’ saved [31802]
+
+--2022-09-26 21:23:38--  https://tryhackme.com/cdn-cgi/l/email-protection
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/cdn-cgi/l/email-protection’
+
+tryhackme.com/cdn-cgi/l/em     [ <=>                                  ]   4.58K  --.-KB/s    in 0.001s  
+
+2022-09-26 21:23:38 (8.52 MB/s) - ‘tryhackme.com/cdn-cgi/l/email-protection’ saved [4690]
+
+nofollow attribute found in tryhackme.com/cdn-cgi/l/email-protection. Will not follow any links on this page
+--2022-09-26 21:23:38--  https://tryhackme.com/forum
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: /forum/ [following]
+--2022-09-26 21:23:38--  https://tryhackme.com/forum/
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/forum’
+
+tryhackme.com/forum            [ <=>                                  ]  23.56K  --.-KB/s    in 0.002s  
+
+2022-09-26 21:23:39 (15.2 MB/s) - ‘tryhackme.com/forum’ saved [24128]
+
+--2022-09-26 21:23:39--  https://tryhackme.com/legal/terms-of-use
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/legal/terms-of-use’
+
+tryhackme.com/legal/terms-     [ <=>                                  ]  28.11K  --.-KB/s    in 0.01s   
+
+2022-09-26 21:23:39 (2.76 MB/s) - ‘tryhackme.com/legal/terms-of-use’ saved [28786]
+
+pathconf: Not a directory
+--2022-09-26 21:23:39--  https://tryhackme.com/login/google
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: https://accounts.google.com/o/oauth2/v2/auth?response_type=code&redirect_uri=https%3A%2F%2Ftryhackme.com%2Flogin%2Foauth2%2Fredirect%2Fgoogle&scope=email%20profile&client_id=51725810533-m41mtcp9pg3pac6ijemqd64ut7e579ki.apps.googleusercontent.com [following]
+pathconf: Not a directory
+--2022-09-26 21:23:39--  https://accounts.google.com/o/oauth2/v2/auth?response_type=code&redirect_uri=https%3A%2F%2Ftryhackme.com%2Flogin%2Foauth2%2Fredirect%2Fgoogle&scope=email%20profile&client_id=51725810533-m41mtcp9pg3pac6ijemqd64ut7e579ki.apps.googleusercontent.com
+Resolving accounts.google.com (accounts.google.com)... 142.250.0.84, 2800:3f0:4003:c02::54
+Connecting to accounts.google.com (accounts.google.com)|142.250.0.84|:443... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://accounts.google.com/AccountChooser?oauth=1&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Flegacy%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAMuhUGlyhKnQHW96HTdaRNCFjnpBppUBBISSYTPMkWJ-7pjOe1MWyllj3Fu3V8ovL7pqVYFrM7WQz-DYJZVjtE_K9g1QTw2XCCWjqJT5xEaQGVxZzPpjSoaZ93WDvSxax8jPtCT8VkZ72AozUMeuMgVegTBEwBsOiV0vL7EbDhLf9YFS4ig7gnEIVJLLn7j2QmqXOGM2aMflwhkzQQefVmCy-n0k1N5DhYUzKYiBZbjnQ5DzaFqss5RX8yD0Di0GAGUpb50gbAjivAs5tO8MOR1pCXb8RJtvHfJadskZQltajlSN7eOQYhZurF70lM7qajvIYXfSGCO9UU1HVuFXWLnYDEX-84l7booq0tPPQvhmdgG8-5dy7cJEoTcvzcySUJ5IC1Wx-420BNDzIJhYFlBYeqwMi5-7x5g5s1H3Wmzkv1gJ6DLSlwNuMz_5ij79GwRcw2VblArQ6RxwEmU2B7-sWlhig%26as%3DS1241947396%253A1664241820104027%26client_id%3D51725810533-m41mtcp9pg3pac6ijemqd64ut7e579ki.apps.googleusercontent.com%23 [following]
+pathconf: Not a directory
+--2022-09-26 21:23:40--  https://accounts.google.com/AccountChooser?oauth=1&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Flegacy%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAMuhUGlyhKnQHW96HTdaRNCFjnpBppUBBISSYTPMkWJ-7pjOe1MWyllj3Fu3V8ovL7pqVYFrM7WQz-DYJZVjtE_K9g1QTw2XCCWjqJT5xEaQGVxZzPpjSoaZ93WDvSxax8jPtCT8VkZ72AozUMeuMgVegTBEwBsOiV0vL7EbDhLf9YFS4ig7gnEIVJLLn7j2QmqXOGM2aMflwhkzQQefVmCy-n0k1N5DhYUzKYiBZbjnQ5DzaFqss5RX8yD0Di0GAGUpb50gbAjivAs5tO8MOR1pCXb8RJtvHfJadskZQltajlSN7eOQYhZurF70lM7qajvIYXfSGCO9UU1HVuFXWLnYDEX-84l7booq0tPPQvhmdgG8-5dy7cJEoTcvzcySUJ5IC1Wx-420BNDzIJhYFlBYeqwMi5-7x5g5s1H3Wmzkv1gJ6DLSlwNuMz_5ij79GwRcw2VblArQ6RxwEmU2B7-sWlhig%26as%3DS1241947396%253A1664241820104027%26client_id%3D51725810533-m41mtcp9pg3pac6ijemqd64ut7e579ki.apps.googleusercontent.com%23
+Reusing existing connection to accounts.google.com:443.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Flegacy%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAMuhUGlyhKnQHW96HTdaRNCFjnpBppUBBISSYTPMkWJ-7pjOe1MWyllj3Fu3V8ovL7pqVYFrM7WQz-DYJZVjtE_K9g1QTw2XCCWjqJT5xEaQGVxZzPpjSoaZ93WDvSxax8jPtCT8VkZ72AozUMeuMgVegTBEwBsOiV0vL7EbDhLf9YFS4ig7gnEIVJLLn7j2QmqXOGM2aMflwhkzQQefVmCy-n0k1N5DhYUzKYiBZbjnQ5DzaFqss5RX8yD0Di0GAGUpb50gbAjivAs5tO8MOR1pCXb8RJtvHfJadskZQltajlSN7eOQYhZurF70lM7qajvIYXfSGCO9UU1HVuFXWLnYDEX-84l7booq0tPPQvhmdgG8-5dy7cJEoTcvzcySUJ5IC1Wx-420BNDzIJhYFlBYeqwMi5-7x5g5s1H3Wmzkv1gJ6DLSlwNuMz_5ij79GwRcw2VblArQ6RxwEmU2B7-sWlhig%26as%3DS1241947396%253A1664241820104027%26client_id%3D51725810533-m41mtcp9pg3pac6ijemqd64ut7e579ki.apps.googleusercontent.com%23&sacu=1&oauth=1&rip=1 [following]
+pathconf: Not a directory
+--2022-09-26 21:23:40--  https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Flegacy%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAMuhUGlyhKnQHW96HTdaRNCFjnpBppUBBISSYTPMkWJ-7pjOe1MWyllj3Fu3V8ovL7pqVYFrM7WQz-DYJZVjtE_K9g1QTw2XCCWjqJT5xEaQGVxZzPpjSoaZ93WDvSxax8jPtCT8VkZ72AozUMeuMgVegTBEwBsOiV0vL7EbDhLf9YFS4ig7gnEIVJLLn7j2QmqXOGM2aMflwhkzQQefVmCy-n0k1N5DhYUzKYiBZbjnQ5DzaFqss5RX8yD0Di0GAGUpb50gbAjivAs5tO8MOR1pCXb8RJtvHfJadskZQltajlSN7eOQYhZurF70lM7qajvIYXfSGCO9UU1HVuFXWLnYDEX-84l7booq0tPPQvhmdgG8-5dy7cJEoTcvzcySUJ5IC1Wx-420BNDzIJhYFlBYeqwMi5-7x5g5s1H3Wmzkv1gJ6DLSlwNuMz_5ij79GwRcw2VblArQ6RxwEmU2B7-sWlhig%26as%3DS1241947396%253A1664241820104027%26client_id%3D51725810533-m41mtcp9pg3pac6ijemqd64ut7e579ki.apps.googleusercontent.com%23&sacu=1&oauth=1&rip=1
+Reusing existing connection to accounts.google.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/login/google’
+
+tryhackme.com/login/google     [  <=>                                 ]  92.16K   249KB/s    in 0.4s    
+
+2022-09-26 21:23:41 (249 KB/s) - ‘tryhackme.com/login/google’ saved [94370]
+
+--2022-09-26 21:23:41--  https://tryhackme.com/img/google-logo.png
+Connecting to tryhackme.com (tryhackme.com)|172.67.27.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 592 [image/png]
+Saving to: ‘tryhackme.com/img/google-logo.png’
+
+tryhackme.com/img/google-l 100%[=====================================>]     592  --.-KB/s    in 0s      
+
+2022-09-26 21:23:41 (2.86 MB/s) - ‘tryhackme.com/img/google-logo.png’ saved [592/592]
+
+--2022-09-26 21:23:41--  https://tryhackme.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 1239 (1.2K) [application/javascript]
+Saving to: ‘tryhackme.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js’
+
+tryhackme.com/cdn-cgi/scri 100%[=====================================>]   1.21K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:41 (14.9 MB/s) - ‘tryhackme.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js’ saved [1239/1239]
+
+--2022-09-26 21:23:41--  https://tryhackme.com/img/lifecycle/learn.svg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 8071 (7.9K) [image/svg+xml]
+Saving to: ‘tryhackme.com/img/lifecycle/learn.svg’
+
+tryhackme.com/img/lifecycl 100%[=====================================>]   7.88K  --.-KB/s    in 0.001s  
+
+2022-09-26 21:23:42 (13.8 MB/s) - ‘tryhackme.com/img/lifecycle/learn.svg’ saved [8071/8071]
+
+--2022-09-26 21:23:42--  https://tryhackme.com/img/lifecycle/practice.svg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 8071 (7.9K) [image/svg+xml]
+Saving to: ‘tryhackme.com/img/lifecycle/practice.svg’
+
+tryhackme.com/img/lifecycl 100%[=====================================>]   7.88K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:42 (28.2 MB/s) - ‘tryhackme.com/img/lifecycle/practice.svg’ saved [8071/8071]
+
+--2022-09-26 21:23:42--  https://tryhackme.com/img/lifecycle/none.svg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 7915 (7.7K) [image/svg+xml]
