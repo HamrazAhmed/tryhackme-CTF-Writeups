@@ -683,3 +683,689 @@ tryhackme.com/img/lifecycl 100%[=====================================>]   7.88K 
 Reusing existing connection to tryhackme.com:443.
 HTTP request sent, awaiting response... 200 OK
 Length: 7915 (7.7K) [image/svg+xml]
+Saving to: ‘tryhackme.com/img/lifecycle/none.svg’
+
+tryhackme.com/img/lifecycl 100%[=====================================>]   7.73K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:42 (58.0 MB/s) - ‘tryhackme.com/img/lifecycle/none.svg’ saved [7915/7915]
+
+--2022-09-26 21:23:42--  https://tryhackme.com/profile
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: /login [following]
+--2022-09-26 21:23:43--  https://tryhackme.com/login
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/profile’
+
+tryhackme.com/profile          [ <=>                                  ]  18.92K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:43 (49.1 MB/s) - ‘tryhackme.com/profile’ saved [19377]
+
+--2022-09-26 21:23:43--  https://tryhackme.com/feedback
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: /login [following]
+--2022-09-26 21:23:43--  https://tryhackme.com/login
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/feedback’
+
+tryhackme.com/feedback         [ <=>                                  ]  18.92K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:43 (49.6 MB/s) - ‘tryhackme.com/feedback’ saved [19377]
+
+--2022-09-26 21:23:43--  https://tryhackme.com/why-subscribe
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/why-subscribe’
+
+tryhackme.com/why-subscrib     [ <=>                                  ]  22.80K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:44 (68.3 MB/s) - ‘tryhackme.com/why-subscribe’ saved [23347]
+
+--2022-09-26 21:23:44--  https://tryhackme.com/paths
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/paths’
+
+tryhackme.com/paths            [ <=>                                  ]  20.46K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:44 (105 MB/s) - ‘tryhackme.com/paths’ saved [20951]
+
+--2022-09-26 21:23:44--  https://tryhackme.com/games/$%7BgetOSImage(koth.box.os)%7D
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: /404 [following]
+--2022-09-26 21:23:44--  https://tryhackme.com/404
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 404 Not Found
+2022-09-26 21:23:44 ERROR 404: Not Found.
+
+Warning: wildcards not supported in HTTP.
+--2022-09-26 21:23:44--  https://tryhackme.com/games/$%7BtableData[0].avatar%7D
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: /404 [following]
+--2022-09-26 21:23:44--  https://tryhackme.com/404
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 404 Not Found
+2022-09-26 21:23:45 ERROR 404: Not Found.
+
+Warning: wildcards not supported in HTTP.
+--2022-09-26 21:23:45--  https://tryhackme.com/p/$%7BtableData[0].username%7D
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: /404 [following]
+--2022-09-26 21:23:45--  https://tryhackme.com/404
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 404 Not Found
+2022-09-26 21:23:45 ERROR 404: Not Found.
+
+--2022-09-26 21:23:45--  https://tryhackme.com/games/$%7BgetOSImage(machine.os)%7D
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: /404 [following]
+--2022-09-26 21:23:45--  https://tryhackme.com/404
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 404 Not Found
+2022-09-26 21:23:46 ERROR 404: Not Found.
+
+--2022-09-26 21:23:46--  https://tryhackme.com/img/banners/throwback_clean.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 408970 (399K) [image/png]
+Saving to: ‘tryhackme.com/img/banners/throwback_clean.png’
+
+tryhackme.com/img/banners/ 100%[=====================================>] 399.38K   565KB/s    in 0.7s    
+
+2022-09-26 21:23:47 (565 KB/s) - ‘tryhackme.com/img/banners/throwback_clean.png’ saved [408970/408970]
+
+--2022-09-26 21:23:47--  https://tryhackme.com/img/throwback/throwback.svg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 47506 (46K) [image/svg+xml]
+Saving to: ‘tryhackme.com/img/throwback/throwback.svg’
+
+tryhackme.com/img/throwbac 100%[=====================================>]  46.39K   266KB/s    in 0.2s    
+
+2022-09-26 21:23:48 (266 KB/s) - ‘tryhackme.com/img/throwback/throwback.svg’ saved [47506/47506]
+
+--2022-09-26 21:23:48--  https://tryhackme.com/img/users/timtaylor.jpg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 11813 (12K) [image/jpeg]
+Saving to: ‘tryhackme.com/img/users/timtaylor.jpg’
+
+tryhackme.com/img/users/ti 100%[=====================================>]  11.54K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:48 (59.6 MB/s) - ‘tryhackme.com/img/users/timtaylor.jpg’ saved [11813/11813]
+
+--2022-09-26 21:23:48--  https://tryhackme.com/img/users/Davew.jpg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 15867 (15K) [image/jpeg]
+Saving to: ‘tryhackme.com/img/users/Davew.jpg’
+
+tryhackme.com/img/users/Da 100%[=====================================>]  15.50K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:48 (61.3 MB/s) - ‘tryhackme.com/img/users/Davew.jpg’ saved [15867/15867]
+
+--2022-09-26 21:23:48--  https://tryhackme.com/img/users/themayor.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 64047 (63K) [image/png]
+Saving to: ‘tryhackme.com/img/users/themayor.png’
+
+tryhackme.com/img/users/th 100%[=====================================>]  62.55K   352KB/s    in 0.2s    
+
+2022-09-26 21:23:49 (352 KB/s) - ‘tryhackme.com/img/users/themayor.png’ saved [64047/64047]
+
+--2022-09-26 21:23:49--  https://tryhackme.com/img/users/IamDuco.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 366418 (358K) [image/png]
+Saving to: ‘tryhackme.com/img/users/IamDuco.png’
+
+tryhackme.com/img/users/Ia 100%[=====================================>] 357.83K   700KB/s    in 0.5s    
+
+2022-09-26 21:23:50 (700 KB/s) - ‘tryhackme.com/img/users/IamDuco.png’ saved [366418/366418]
+
+--2022-09-26 21:23:50--  https://tryhackme.com/img/users/ninjajc01.jpg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 62110 (61K) [image/jpeg]
+Saving to: ‘tryhackme.com/img/users/ninjajc01.jpg’
+
+tryhackme.com/img/users/ni 100%[=====================================>]  60.65K   359KB/s    in 0.2s    
+
+2022-09-26 21:23:51 (359 KB/s) - ‘tryhackme.com/img/users/ninjajc01.jpg’ saved [62110/62110]
+
+--2022-09-26 21:23:51--  https://tryhackme.com/img/throwback/throwback_shield.svg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 24838 (24K) [image/svg+xml]
+Saving to: ‘tryhackme.com/img/throwback/throwback_shield.svg’
+
+tryhackme.com/img/throwbac 100%[=====================================>]  24.26K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:51 (98.5 MB/s) - ‘tryhackme.com/img/throwback/throwback_shield.svg’ saved [24838/24838]
+
+--2022-09-26 21:23:51--  https://tryhackme.com/network/$%7Bcreator.avatar%7D
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: /404 [following]
+--2022-09-26 21:23:51--  https://tryhackme.com/404
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 404 Not Found
+2022-09-26 21:23:52 ERROR 404: Not Found.
+
+--2022-09-26 21:23:52--  https://tryhackme.com/p/$%7Bcreator.username%7D
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: /404 [following]
+--2022-09-26 21:23:52--  https://tryhackme.com/404
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 404 Not Found
+2022-09-26 21:23:52 ERROR 404: Not Found.
+
+--2022-09-26 21:23:52--  https://tryhackme.com/socket.io/socket.io.js
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/javascript]
+Saving to: ‘tryhackme.com/socket.io/socket.io.js’
+
+tryhackme.com/socket.io/so     [ <=>                                  ] 105.00K   590KB/s    in 0.2s    
+
+2022-09-26 21:23:53 (590 KB/s) - ‘tryhackme.com/socket.io/socket.io.js’ saved [107516]
+
+--2022-09-26 21:23:53--  https://tryhackme.com/css/utils/network.css
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 832 [text/css]
+Saving to: ‘tryhackme.com/css/utils/network.css’
+
+tryhackme.com/css/utils/ne 100%[=====================================>]     832  --.-KB/s    in 0s      
+
+2022-09-26 21:23:53 (16.8 MB/s) - ‘tryhackme.com/css/utils/network.css’ saved [832/832]
+
+--2022-09-26 21:23:53--  https://tryhackme.com/api/room/manage/clone/wreath
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: /login [following]
+--2022-09-26 21:23:53--  https://tryhackme.com/login
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/api/room/manage/clone/wreath’
+
+tryhackme.com/api/room/man     [ <=>                                  ]  18.92K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:53 (132 MB/s) - ‘tryhackme.com/api/room/manage/clone/wreath’ saved [19377]
+
+--2022-09-26 21:23:53--  https://tryhackme.com/img/tutorials/clipboard.gif
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 58786 (57K) [image/gif]
+Saving to: ‘tryhackme.com/img/tutorials/clipboard.gif’
+
+tryhackme.com/img/tutorial 100%[=====================================>]  57.41K  --.-KB/s    in 0.004s  
+
+2022-09-26 21:23:54 (14.4 MB/s) - ‘tryhackme.com/img/tutorials/clipboard.gif’ saved [58786/58786]
+
+--2022-09-26 21:23:54--  https://tryhackme.com/access
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: /login [following]
+--2022-09-26 21:23:54--  https://tryhackme.com/login
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/access’
+
+tryhackme.com/access           [ <=>                                  ]  18.92K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:54 (102 MB/s) - ‘tryhackme.com/access’ saved [19377]
+
+--2022-09-26 21:23:54--  https://tryhackme.com/img/connect/connect_openvpn_short.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 12609 (12K) [image/png]
+Saving to: ‘tryhackme.com/img/connect/connect_openvpn_short.png’
+
+tryhackme.com/img/connect/ 100%[=====================================>]  12.31K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:54 (25.2 MB/s) - ‘tryhackme.com/img/connect/connect_openvpn_short.png’ saved [12609/12609]
+
+--2022-09-26 21:23:54--  https://tryhackme.com/img/connect/connect_kali_short.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 12303 (12K) [image/png]
+Saving to: ‘tryhackme.com/img/connect/connect_kali_short.png’
+
+tryhackme.com/img/connect/ 100%[=====================================>]  12.01K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:55 (132 MB/s) - ‘tryhackme.com/img/connect/connect_kali_short.png’ saved [12303/12303]
+
+--2022-09-26 21:23:55--  https://tryhackme.com/img/illustrations/tryhackme_connect.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 48823 (48K) [image/png]
+Saving to: ‘tryhackme.com/img/illustrations/tryhackme_connect.png’
+
+tryhackme.com/img/illustra 100%[=====================================>]  47.68K   274KB/s    in 0.2s    
+
+2022-09-26 21:23:55 (274 KB/s) - ‘tryhackme.com/img/illustrations/tryhackme_connect.png’ saved [48823/48823]
+
+--2022-09-26 21:23:55--  https://tryhackme.com/vpn/get-config
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: /login [following]
+--2022-09-26 21:23:56--  https://tryhackme.com/login
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/vpn/get-config’
+
+tryhackme.com/vpn/get-conf     [ <=>                                  ]  18.92K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:56 (41.6 MB/s) - ‘tryhackme.com/vpn/get-config’ saved [19377]
+
+--2022-09-26 21:23:56--  https://tryhackme.com/my-machine
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: /login [following]
+--2022-09-26 21:23:56--  https://tryhackme.com/login
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/my-machine’
+
+tryhackme.com/my-machine       [ <=>                                  ]  18.92K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:56 (55.5 MB/s) - ‘tryhackme.com/my-machine’ saved [19377]
+
+--2022-09-26 21:23:56--  https://tryhackme.com/img/logo/tryhackme_logo.svg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 6313 (6.2K) [image/svg+xml]
+Saving to: ‘tryhackme.com/img/logo/tryhackme_logo.svg’
+
+tryhackme.com/img/logo/try 100%[=====================================>]   6.17K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:56 (178 MB/s) - ‘tryhackme.com/img/logo/tryhackme_logo.svg’ saved [6313/6313]
+
+--2022-09-26 21:23:56--  https://tryhackme.com/room/linux1
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/room/linux1’
+
+tryhackme.com/room/linux1      [ <=>                                  ]  52.50K  --.-KB/s    in 0.001s  
+
+2022-09-26 21:23:57 (59.5 MB/s) - ‘tryhackme.com/room/linux1’ saved [53759]
+
+--2022-09-26 21:23:57--  https://tryhackme.com/module/linux-fundamentals
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/module/linux-fundamentals’
+
+tryhackme.com/module/linux     [ <=>                                  ]  22.93K  --.-KB/s    in 0.001s  
+
+2022-09-26 21:23:57 (35.8 MB/s) - ‘tryhackme.com/module/linux-fundamentals’ saved [23476]
+
+--2022-09-26 21:23:57--  https://tryhackme.com/room/webfundamentals
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://tryhackme.com/room/httpindetail [following]
+--2022-09-26 21:23:57--  https://tryhackme.com/room/httpindetail
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/room/webfundamentals’
+
+tryhackme.com/room/webfund     [ <=>                                  ]  52.22K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:57 (132 MB/s) - ‘tryhackme.com/room/webfundamentals’ saved [53477]
+
+--2022-09-26 21:23:57--  https://tryhackme.com/module/web-hacking-1
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/module/web-hacking-1’
+
+tryhackme.com/module/web-h     [ <=>                                  ]  23.49K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:57 (86.6 MB/s) - ‘tryhackme.com/module/web-hacking-1’ saved [24058]
+
+--2022-09-26 21:23:57--  https://tryhackme.com/room/owasptop10
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/room/owasptop10’
+
+tryhackme.com/room/owaspto     [ <=>                                  ]  51.76K  --.-KB/s    in 0.001s  
+
+2022-09-26 21:23:57 (52.0 MB/s) - ‘tryhackme.com/room/owasptop10’ saved [52999]
+
+--2022-09-26 21:23:57--  https://tryhackme.com/room/introtonetworking
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/room/introtonetworking’
+
+tryhackme.com/room/introto     [ <=>                                  ]  51.68K  --.-KB/s    in 0.002s  
+
+2022-09-26 21:23:58 (29.4 MB/s) - ‘tryhackme.com/room/introtonetworking’ saved [52919]
+
+--2022-09-26 21:23:58--  https://tryhackme.com/room/furthernmap
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/room/furthernmap’
+
+tryhackme.com/room/further     [ <=>                                  ]  51.67K  --.-KB/s    in 0.001s  
+
+2022-09-26 21:23:58 (38.5 MB/s) - ‘tryhackme.com/room/furthernmap’ saved [52906]
+
+--2022-09-26 21:23:58--  https://tryhackme.com/module/intro-to-networking
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/module/intro-to-networking’
+
+tryhackme.com/module/intro     [ <=>                                  ]  22.84K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:58 (129 MB/s) - ‘tryhackme.com/module/intro-to-networking’ saved [23384]
+
+--2022-09-26 21:23:58--  https://tryhackme.com/room/rpmetasploit
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://tryhackme.com/room/metasploitintro [following]
+--2022-09-26 21:23:58--  https://tryhackme.com/room/metasploitintro
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/room/rpmetasploit’
+
+tryhackme.com/room/rpmetas     [ <=>                                  ]  51.71K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:58 (110 MB/s) - ‘tryhackme.com/room/rpmetasploit’ saved [52955]
+
+--2022-09-26 21:23:58--  https://tryhackme.com/room/vulnversity
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/room/vulnversity’
+
+tryhackme.com/room/vulnver     [ <=>                                  ]  53.91K  --.-KB/s    in 0.008s  
+
+2022-09-26 21:23:59 (6.39 MB/s) - ‘tryhackme.com/room/vulnversity’ saved [55202]
+
+--2022-09-26 21:23:59--  https://tryhackme.com/room/basicpentestingjt
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/room/basicpentestingjt’
+
+tryhackme.com/room/basicpe     [ <=>                                  ]  52.24K  --.-KB/s    in 0.001s  
+
+2022-09-26 21:23:59 (35.2 MB/s) - ‘tryhackme.com/room/basicpentestingjt’ saved [53494]
+
+--2022-09-26 21:23:59--  https://tryhackme.com/module/basic-computer-exploitation
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/module/basic-computer-exploitation’
+
+tryhackme.com/module/basic     [ <=>                                  ]  22.90K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:59 (136 MB/s) - ‘tryhackme.com/module/basic-computer-exploitation’ saved [23452]
+
+--2022-09-26 21:23:59--  https://tryhackme.com/module/threat-and-vulnerability-management
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/module/threat-and-vulnerability-management’
+
+tryhackme.com/module/threa     [ <=>                                  ]  23.24K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:59 (60.9 MB/s) - ‘tryhackme.com/module/threat-and-vulnerability-management’ saved [23793]
+
+--2022-09-26 21:23:59--  https://tryhackme.com/module/malware-analysis
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/module/malware-analysis’
+
+tryhackme.com/module/malwa     [ <=>                                  ]  23.08K  --.-KB/s    in 0s      
+
+2022-09-26 21:23:59 (162 MB/s) - ‘tryhackme.com/module/malware-analysis’ saved [23633]
+
+--2022-09-26 21:23:59--  https://tryhackme.com/module/security-operations-and-monitoring
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/module/security-operations-and-monitoring’
+
+tryhackme.com/module/secur     [ <=>                                  ]  23.37K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:00 (46.4 MB/s) - ‘tryhackme.com/module/security-operations-and-monitoring’ saved [23934]
+
+--2022-09-26 21:24:00--  https://tryhackme.com/module/incident-response-and-forensics
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/module/incident-response-and-forensics’
+
+tryhackme.com/module/incid     [ <=>                                  ]  22.89K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:00 (86.3 MB/s) - ‘tryhackme.com/module/incident-response-and-forensics’ saved [23444]
+
+--2022-09-26 21:24:00--  https://tryhackme.com/module/threat-emulation
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/module/threat-emulation’
+
+tryhackme.com/module/threa     [ <=>                                  ]  22.56K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:00 (124 MB/s) - ‘tryhackme.com/module/threat-emulation’ saved [23097]
+
+--2022-09-26 21:24:00--  https://tryhackme.com/img/classrooms/tshirt.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 153549 (150K) [image/png]
+Saving to: ‘tryhackme.com/img/classrooms/tshirt.png’
+
+tryhackme.com/img/classroo 100%[=====================================>] 149.95K   816KB/s    in 0.2s    
+
+2022-09-26 21:24:00 (816 KB/s) - ‘tryhackme.com/img/classrooms/tshirt.png’ saved [153549/153549]
+
+--2022-09-26 21:24:00--  https://tryhackme.com/img/illustrations/tryhackme_book.svg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 14909 (15K) [image/svg+xml]
+Saving to: ‘tryhackme.com/img/illustrations/tryhackme_book.svg’
+
+tryhackme.com/img/illustra 100%[=====================================>]  14.56K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:01 (129 MB/s) - ‘tryhackme.com/img/illustrations/tryhackme_book.svg’ saved [14909/14909]
+
+--2022-09-26 21:24:01--  https://tryhackme.com/img/illustrations/tryhackme_teaching.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 1632953 (1.6M) [image/png]
+Saving to: ‘tryhackme.com/img/illustrations/tryhackme_teaching.png’
+
+tryhackme.com/img/illustra 100%[=====================================>]   1.56M  2.89MB/s    in 0.5s    
+
+2022-09-26 21:24:02 (2.89 MB/s) - ‘tryhackme.com/img/illustrations/tryhackme_teaching.png’ saved [1632953/1632953]
+
+--2022-09-26 21:24:02--  https://tryhackme.com/img/business/business-header.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 28333 (28K) [image/png]
+Saving to: ‘tryhackme.com/img/business/business-header.png’
+
+tryhackme.com/img/business 100%[=====================================>]  27.67K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:02 (181 MB/s) - ‘tryhackme.com/img/business/business-header.png’ saved [28333/28333]
+
+--2022-09-26 21:24:02--  https://tryhackme.com/img/business/comptia.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 38325 (37K) [image/png]
+Saving to: ‘tryhackme.com/img/business/comptia.png’
+
+tryhackme.com/img/business 100%[=====================================>]  37.43K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:03 (158 MB/s) - ‘tryhackme.com/img/business/comptia.png’ saved [38325/38325]
+
+--2022-09-26 21:24:03--  https://tryhackme.com/img/business/kpmg.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 26920 (26K) [image/png]
+Saving to: ‘tryhackme.com/img/business/kpmg.png’
+
+tryhackme.com/img/business 100%[=====================================>]  26.29K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:03 (136 MB/s) - ‘tryhackme.com/img/business/kpmg.png’ saved [26920/26920]
+
+--2022-09-26 21:24:03--  https://tryhackme.com/img/business/olx.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 11512 (11K) [image/png]
+Saving to: ‘tryhackme.com/img/business/olx.png’
+
+tryhackme.com/img/business 100%[=====================================>]  11.24K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:04 (126 MB/s) - ‘tryhackme.com/img/business/olx.png’ saved [11512/11512]
+
+--2022-09-26 21:24:04--  https://tryhackme.com/img/business/travelperk.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 9840 (9.6K) [image/png]
+Saving to: ‘tryhackme.com/img/business/travelperk.png’
+
+tryhackme.com/img/business 100%[=====================================>]   9.61K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:04 (52.8 MB/s) - ‘tryhackme.com/img/business/travelperk.png’ saved [9840/9840]
+
+--2022-09-26 21:24:04--  https://tryhackme.com/img/business/cyberconvoy.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 14583 (14K) [image/png]
+Saving to: ‘tryhackme.com/img/business/cyberconvoy.png’
+
+tryhackme.com/img/business 100%[=====================================>]  14.24K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:04 (118 MB/s) - ‘tryhackme.com/img/business/cyberconvoy.png’ saved [14583/14583]
+
+--2022-09-26 21:24:04--  https://tryhackme.com/img/illustrations/curve.svg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 587 [image/svg+xml]
+Saving to: ‘tryhackme.com/img/illustrations/curve.svg’
+
+tryhackme.com/img/illustra 100%[=====================================>]     587  --.-KB/s    in 0s      
+
+2022-09-26 21:24:05 (6.63 MB/s) - ‘tryhackme.com/img/illustrations/curve.svg’ saved [587/587]
+
+--2022-09-26 21:24:05--  https://tryhackme.com/img/business/koth.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 298348 (291K) [image/png]
+Saving to: ‘tryhackme.com/img/business/koth.png’
+
+tryhackme.com/img/business 100%[=====================================>] 291.36K   511KB/s    in 0.6s    
+
+2022-09-26 21:24:06 (511 KB/s) - ‘tryhackme.com/img/business/koth.png’ saved [298348/298348]
+
+pathconf: Not a directory
+--2022-09-26 21:24:06--  https://tryhackme.com/resources/blog/log4j-threat-mitigation
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/resources/blog/log4j-threat-mitigation’
+
+tryhackme.com/resources/bl     [ <=>                                  ]  33.94K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:06 (80.8 MB/s) - ‘tryhackme.com/resources/blog/log4j-threat-mitigation’ saved [34750]
+
+--2022-09-26 21:24:06--  https://tryhackme.com/resources/blog/how-to-build-a-cyber-culture-in-your-workforce
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/resources/blog/how-to-build-a-cyber-culture-in-your-workforce’
+
+tryhackme.com/resources/bl     [ <=>                                  ]  37.75K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:06 (74.4 MB/s) - ‘tryhackme.com/resources/blog/how-to-build-a-cyber-culture-in-your-workforce’ saved [38655]
+
+--2022-09-26 21:24:06--  https://tryhackme.com/resources/blog/cyber-security-needs-to-be-a-business-priority
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/resources/blog/cyber-security-needs-to-be-a-business-priority’
+
+tryhackme.com/resources/bl     [ <=>                                  ]  33.71K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:07 (101 MB/s) - ‘tryhackme.com/resources/blog/cyber-security-needs-to-be-a-business-priority’ saved [34518]
+
+--2022-09-26 21:24:07--  https://tryhackme.com/forgot
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘tryhackme.com/forgot’
+
+tryhackme.com/forgot           [ <=>                                  ]  19.86K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:07 (103 MB/s) - ‘tryhackme.com/forgot’ saved [20341]
+
+--2022-09-26 21:24:07--  https://tryhackme.com/img/illustrations/ben-ashu-banner-lq.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 475177 (464K) [image/png]
+Saving to: ‘tryhackme.com/img/illustrations/ben-ashu-banner-lq.png’
+
+tryhackme.com/img/illustra 100%[=====================================>] 464.04K   673KB/s    in 0.7s    
+
+2022-09-26 21:24:08 (673 KB/s) - ‘tryhackme.com/img/illustrations/ben-ashu-banner-lq.png’ saved [475177/475177]
+
+--2022-09-26 21:24:08--  https://tryhackme.com/img/events/generic/cyberready2.jpg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 418083 (408K) [image/jpeg]
+Saving to: ‘tryhackme.com/img/events/generic/cyberready2.jpg’
+
+tryhackme.com/img/events/g 100%[=====================================>] 408.28K  2.27MB/s    in 0.2s    
+
+2022-09-26 21:24:09 (2.27 MB/s) - ‘tryhackme.com/img/events/generic/cyberready2.jpg’ saved [418083/418083]
+
+--2022-09-26 21:24:09--  https://tryhackme.com/img/events/generic/cyberready.jpeg
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 484063 (473K) [image/jpeg]
+Saving to: ‘tryhackme.com/img/events/generic/cyberready.jpeg’
+
+tryhackme.com/img/events/g 100%[=====================================>] 472.72K   662KB/s    in 0.7s    
+
+2022-09-26 21:24:10 (662 KB/s) - ‘tryhackme.com/img/events/generic/cyberready.jpeg’ saved [484063/484063]
+
+--2022-09-26 21:24:10--  https://tryhackme.com/img/users/DarkStar7471.png
+Reusing existing connection to tryhackme.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 3079 (3.0K) [image/png]
+Saving to: ‘tryhackme.com/img/users/DarkStar7471.png’
+
+tryhackme.com/img/users/Da 100%[=====================================>]   3.01K  --.-KB/s    in 0s      
+
+2022-09-26 21:24:10 (23.5 MB/s) - ‘tryhackme.com/img/users/DarkStar7471.png’ saved [3079/3079]
+
+--2022-09-26 21:24:10--  https://tryhackme.com/img/users/0day.png
