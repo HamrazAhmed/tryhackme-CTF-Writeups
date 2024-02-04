@@ -56,6 +56,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Bolt** | `Easy` | Web / CMS | [Bolt.md](./Bolt.md) |
 | **Bookstore** | `Easy` | Linux / API CTF | [Bookstore.md](./Bookstore.md) |
 | **Brute Force Heroes** | `Easy` | Authentication | [Brute Force Heroes.md](./Brute%20Force%20Heroes.md) |
+| **Bugged** | `Easy` | IoT / MQTT | [Bugged.md](./Bugged.md) |
 
 
-<!-- Weekly Progress: Week 56/104 | 2024-01-25 -->
+<!-- Weekly Progress: Week 57/104 | 2024-02-04 -->
