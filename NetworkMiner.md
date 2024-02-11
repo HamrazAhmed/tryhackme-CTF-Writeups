@@ -210,3 +210,215 @@ Kerberos hashes
 NTLM hashes
 RDP cookies
 HTTP cookies
+HTTP requests
+IMAP
+FTP
+SMTP
+MS SQL
+The right-click menu is helpful in this part as well. You can easily copy the username and password values.
+Use mx-3.pcap
+What is the total number of frames?
+*460*
+![[Pasted image 20221011114913.png]]
+How many IP addresses use the same MAC address with host 145.253.2.203?
+*2*
+![[Pasted image 20221011115302.png]]
+![[Pasted image 20221011115409.png]]
+How many packets were sent from host 65.208.228.223?
+*72*
+![[Pasted image 20221011120709.png]]
+What is the name of the webserver banner under host 65.208.228.223?
+*Apache*
+![[Pasted image 20221011120750.png]]
+Use mx-4.pcap
+![[Pasted image 20221011120830.png]]
+![[Pasted image 20221011120918.png]]
+What is the extracted username?
+*#B\Administrator*
+What is the extracted password?
+*NTLM Challenge: 136B077D942D9A63 - LAN Manager Response: 000000000000000000000000000000000000000000000000 - NTLM Response: FBFF3C253926907AAAAD670A9037F2A501010000000000000094D71AE38CD60170A8D571127AE49E00000000020004003300420001001E003000310035003600360053002D00570049004E00310036002D004900520004001E0074006800720065006500620065006500730063006F002E0063006F006D0003003E003000310035003600360073002D00770069006E00310036002D00690072002E0074006800720065006500620065006500730063006F002E0063006F006D0005001E0074006800720065006500620065006500730063006F002E0063006F006D00070008000094D71AE38CD601060004000200000008003000300000000000000000000000003000009050B30CECBEBD73F501D6A2B88286851A6E84DDFAE1211D512A6A5A72594D340A001000000000000000000000000000000000000900220063006900660073002F003100370032002E00310036002E00360036002E0033003600000000000000000000000000*
+Files
+The file menu shows extracted files from investigated pcaps. This section provides information on;
+Frame number
+Filename
+Extension
+Size
+Source and destination address
+Source and destination port
+Protocol
+Timestamp
+Reconstructed path
+Details
+Some features (OSINT hash lookup and sample submission) are available only in premium mode. The search bar is available here as well. The right-click menu is helpful in this part as well. You can easily open files and folders and view the file details in-depth.
+Images
+The file menu shows extracted images from investigated pcaps. The right-click menu is helpful in this part as well. You can open files and zoom in & out easily.
+Once you hover over the image, it shows the file's detailed information (source & destination address and file path).
+Parameters
+The file menu shows extracted parameters from investigated pcaps. This section provides information on;
+Parameter name
+Parameter value
+Frame number
+Source and destination host
+Source and destination port
+Timestamp
+Details
+The right-click menu is helpful in this part as well. You can copy the parameters and values easily.
+Keywords
+The file menu shows extracted keywords from investigated pcaps. This section provides information on;
+Frame number
+Timestamp
+Keyword
+Context
+Source and destination host
+source and destination port
+How to filter keywords;
+Add keywords
+Reload case files!
+Note: You can filter multiple keywords in this section; however, you must reload the case files after updating the search keywords. Keyword search investigates all possible data in the processed pcaps.
+Messages
+The messages menu shows extracted emails, chats and messages from investigated pcaps. This section provides information on;
+Frame number
+Source and destination host
+Protocol
+Sender (From)
+Receiver (To)
+Timestamp
+Size
+Once you filter the traffic and get a hit, you will discover additional details like attachments and attributes on the selected message. Note that the search bar is available here as well. The right-click menu is available here. You can use the built-in viewer to investigate overall information and the "open file" option to explore attachments.
+Anomalies
+The anomalies menu shows detected anomalies in the processed pcap. Note that NetworkMiner isn't designated as an IDS. However, developers added some detections for EternalBlue exploit and spoofing attempts.
+Use mx-7 pcap
+What is the name of the Linux distro mentioned in the file associated with frame 63075?
+NetworkMiner 2.7 can help.
+*CentOS*
+![[Pasted image 20221011122514.png]]
+What is the header of the page associated with frame 75942?
+*Password-Ned AB*
+![[Pasted image 20221011123751.png]]
+What is the source address of the image "ads.bmp.2E5F0FD9.bmp"?
+*80.239.178.187*
+![[Pasted image 20221011124004.png]]
+What is the frame number of the possible TLS anomaly?
+*36255*
+![[Pasted image 20221011124125.png]]
+Use mx-9 file
+Look at the messages. Which platform sent a password reset email?
+*facebook*
+![[Pasted image 20221011130220.png]]
+What is the email address of Branson Matheson?
+*branson@sandsite.org*
+![[Pasted image 20221011130319.png]]
+### Version Differences
+﻿Version Differences
+As always, it wouldn't be surprising to see a feature improvement as the version goes up. Unsurprisingly version upgrades provide stability, security fixes and features. Here the feature part is quite tricky. Feature upgrades can represent implementing new features and updating the existing feature (optimisation, alteration or operation mode modification). You can always check the changelog here.
+Since there are some significant differences between the versions, the given VM has both of the major versions (v1.6 and v2.7).
+Of course, as the program version increases, it is expected to increase feature increase and scope. Here are the significant differences between versions 1.6 and 2.7. Here are the differences;
+Mac Address Processing
+NetworkMiner versions after version 2 can process MAC address specific correlation as shown in the picture below. This option will help you identify if there is a MAC Address conflict. This feature is not available before version 2.
+Sent/Received Packet Processing
+NetwrokMiner versions up to version 1.6. can handle packets in much detail. These options will help you investigate the sent/received
+packets in a more detailed format. This feature is not available after version 1.6.
+Frame Processing
+NetworkMiner versions up to version 1.6. can handle frames. This option provides the number of frames and essential details about the frames. This feature is not available after version 1.6.
+Parameter Processing
+NetworkMiner versions after version 2 can handle parameters in a much more extensive form. Therefore version 1.6.xx catches fewer parameters than version 2.
+Cleartext Processing
+NetworkMiner versions up to version 1.6. can handle cleartext data. This option provides all extracted cleartext data in a single tab; it is beneficial to investigate cleartext data about the traffic data. However, it is impossible to match the cleartext data and packets. This feature is not available after version 1.6.
+Which version can detect duplicate MAC addresses?
+*2.7*
+Which version can handle frames?
+*1.6*
+Which version can provide more details on packet details?
+*1.6* (so cannot use in 2.7)
+### Exercises
+Exercises
+You've learned what NetworkMiner is and how to use it. Let's put this into practice!
+Use case1.pcap
+(using 2.7)
+What is the OS name of the host 131.151.37.122?
+*Windows - Windows NT 4*
+![[Pasted image 20221011131419.png]]
+Investigate the hosts 131.151.37.122 and 131.151.32.91.
+How many data bytes were received from host 131.151.32.91 to host 131.151.37.122 through port 1065?
+You can review transferred bytes by investigating the sessions section under the host tab.
+*192*
+![[Pasted image 20221011131636.png]]
+![[Pasted image 20221011131655.png]]
+Investigate the hosts 131.151.37.122 and 131.151.32.21.
+How many data bytes were received from host 131.151.37.122 to host 131.151.32.21 through port 143?
+You can review transferred bytes by investigating the sessions section under the host tab.
+*20769*
+![[Pasted image 20221011131915.png]]
+What is the sequence number of frame 9?
+Using different versions of NM can help you. The attached VM has two NM instances.
+*2AD77400* (maybe 1.6 version)
+![[Pasted image 20221011132211.png]]
+yep doesn't found with version 2.7 so moving into v1.6
+![[Pasted image 20221011132407.png]]
+nice :)
+What is the number of the detected "content types"?
+Parameters can help you.
+*2*
+![[Pasted image 20221011133442.png]]
+Use case2.pcap
+Investigate the files.
+(using 2.7)
+What is the USB product's brand name?
+Investigate the files. No need for external research.
+*asix*
+![[Pasted image 20221011133905.png]]
+What is the name of the phone model?
+Investigate the files and images. No need for external research.
+*Lumia 535*
+![[Pasted image 20221011152828.png]]
+What is the source IP of the fish image?
+*50.22.95.9*
+![[Pasted image 20221011153236.png]]
+What is the password of the "homer.pwned.se@gmx.com"?
+*spring2015*
+![[Pasted image 20221011153359.png]]
+What is the DNS Query of frame 62001?
+*pop.gmx.com*
+![[Pasted image 20221011153507.png]]
+### Conclusion
+Congratulations! You just finished the NetworkMiner room.
+In this room, we covered NetworkMiner, what it is, how it operates, and how to investigate pcap files. As I mentioned in the tasks before, there are a few things to remember about the NetworkMiner;
+Don't use this tool as a primary sniffer.
+Use this tool to overview the traffic, then move forward with Wireshark and tcpdump for a more in-depth investigation.
+If you like this content, make sure you visit the following rooms later on THM;
+Wireshark https://tryhackme.com/room/wireshark
+Snort https://tryhackme.com/room/snort
+Brim https://tryhackme.com/room/brim
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/06fd84e8274b50cbe75e5a401b76eef8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/d4127b0ac1fb94b0c6688a241649a262.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/0f127d2a0a68b47c4b39acebd1361de8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/ce932d37ec0644050013046ccef1257e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/730b42f10b004ab423cabc40c350b35d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/77151efd472783b4f933597eb39ab48b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/9ccc2a883ea966c168a974b3165956e5.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/44074972fae131e273adeee7a340c680.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/f767ec0200938b8ccf2fc986792a17af.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/6c79384af9d5e2aae2587b0bd76a2e85.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/0897d01e900bd9f1fb1b2ec9b54f06eb.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/8632f3f01269b805a1a8a7aeee76c14d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/888d7b45713c75d2eb8a1687d2b16e6b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/d0cb3d76e3dce6139611f8a451edee67.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/77a5139e9cd949c57105bd42aab2d741.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/9a6ad0aa93c7c700736487a1707ef44b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/f07b50304faeb1767c49a9e002622f31.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/ab513599f2a948ad4e4e8f634f2cb6fd.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/3e4dfffef8d0518ffbfe152275aab8c6.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/b7960a4440fd9eb7367b0fc6b2b5ec7b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/d1588f5c22ae8160fe21a766a719241a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/41f7765a30763cc91a99fdd3ea63495c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/ac78e75cdfa166646029ae0d8166a320.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/ce0f46889c838a759888cb5336278fcc.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/b5631ad5ee54c314297b1f343b2f2913.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/e83e0754ec15b0f66ba5f722126b6296.png)
+
+## Notes / Lessons Learned
+[[hoaxshell]]
+[[Wireshark Packet Operations]]
+
