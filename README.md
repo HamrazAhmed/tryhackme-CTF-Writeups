@@ -57,6 +57,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Bookstore** | `Easy` | Linux / API CTF | [Bookstore.md](./Bookstore.md) |
 | **Brute Force Heroes** | `Easy` | Authentication | [Brute Force Heroes.md](./Brute%20Force%20Heroes.md) |
 | **Bugged** | `Easy` | IoT / MQTT | [Bugged.md](./Bugged.md) |
+| **CVE-2019-18634** | `Easy` | Linux PrivEsc | [CVE-2019-18634.md](./CVE-2019-18634.md) |
 
 
-<!-- Weekly Progress: Week 57/104 | 2024-02-04 -->
+<!-- Weekly Progress: Week 58/104 | 2024-02-11 -->
