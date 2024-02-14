@@ -245,3 +245,251 @@ You decided to experiment with a custom TCP scan that has the reset flag set. Wh
 The VM received an update to its firewall ruleset. A new port is now allowed by the firewall. After you make sure that you have terminated the VM from Task 2, start the VM for this task. Launch the AttackBox if you haven't done that already. Once both are ready, open the terminal on the AttackBox and use Nmap to launch an ACK scan against the target VM. How many ports appear unfiltered? *4*
 What is the new port number that appeared? *443*
 Is there any service behind the newly discovered port number? (Y/N) *N* (http://10.10.159.225:443/)
+### Spoofing and Decoys
+In some network setups, you will be able to scan a target system using a spoofed IP address and even a spoofed MAC address. Such a scan is only beneficial in a situation where you can guarantee to capture the response. If you try to scan a target from some random network using a spoofed IP address, chances are you won’t have any response routed to you, and the scan results could be unreliable.
+The following figure shows the attacker launching the command nmap -S SPOOFED_IP 10.10.74.72. Consequently, Nmap will craft all the packets using the provided source IP address SPOOFED_IP. The target machine will respond to the incoming packets sending the replies to the destination IP address SPOOFED_IP. For this scan to work and give accurate results, the attacker needs to monitor the network traffic to analyze the replies.
+In brief, scanning with a spoofed IP address is three steps:
+Attacker sends a packet with a spoofed source IP address to the target machine.
+Target machine replies to the spoofed IP address as the destination.
+Attacker captures the replies to figure out open ports.
+In general, you expect to specify the network interface using -e and to explicitly disable ping scan -Pn. Therefore, instead of nmap -S SPOOFED_IP 10.10.74.72, you will need to issue nmap -e NET_INTERFACE -Pn -S SPOOFED_IP 10.10.74.72 to tell Nmap explicitly which network interface to use and not to expect to receive a ping reply. It is worth repeating that this scan will be useless if the attacker system cannot monitor the network for responses.
+When you are on the same subnet as the target machine, you would be able to spoof your MAC address as well. You can specify the source MAC address using --spoof-mac SPOOFED_MAC. This address spoofing is only possible if the attacker and the target machine are on the same Ethernet (802.3) network or same WiFi (802.11).
+Spoofing only works in a minimal number of cases where certain conditions are met. Therefore, the attacker might resort to using decoys to make it more challenging to be pinpointed. The concept is simple, make the scan appears to be coming from many IP addresses so that the attacker’s IP address would be lost among them. As we see in the figure below, the scan of the target machine will appear to be coming from 3 different sources, and consequently, the replies will go the decoys as well.
+You can launch a decoy scan by specifying a specific or random IP address after -D. For example, nmap -D 10.10.0.1,10.10.0.2,ME 10.10.74.72 will make the scan of 10.10.74.72 appear as coming from the IP addresses 10.10.0.1, 10.10.0.2, and then ME to indicate that your IP address should appear in the third order. Another example command would be nmap -D 10.10.0.1,10.10.0.2,RND,RND,ME 10.10.74.72, where the third and fourth source IP addresses are assigned randomly, while the fifth source is going to be the attacker’s IP address. In other words, each time you execute the latter command, you would expect two new random IP addresses to be the third and fourth decoy sources.
+What do you need to add to the command sudo nmap 10.10.74.72 to make the scan appear as if coming from the source IP address 10.10.10.11 instead of your IP address?
+*-S 10.10.10.11*
+```text
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap -D 10.11.81.220,10.10.10.2,ME 10.10.74.72
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-30 18:28 EDT
+Nmap scan report for 10.10.74.72
+Host is up (0.19s latency).
+Not shown: 984 filtered tcp ports (no-response), 12 filtered tcp ports (host-prohibited)
+PORT    STATE  SERVICE
+22/tcp  open   ssh
+25/tcp  open   smtp
+80/tcp  open   http
+443/tcp closed https
+
+Nmap done: 1 IP address (1 host up) scanned in 10.41 seconds
+```
+What do you need to add to the command sudo nmap 10.10.74.72 to make the scan appear as if coming from the source IP addresses 10.10.20.21 and 10.10.20.28 in addition to your IP address?
+*-D 10.10.20.21,10.10.20.28,ME*
+### Fragmented Packets
+Firewall
+A firewall is a piece of software or hardware that permits packets to pass through or blocks them. It functions based on firewall rules, summarized as blocking all traffic with exceptions or allowing all traffic with exceptions. For instance, you might block all traffic to your server except those coming to your web server. A traditional firewall inspects, at least, the IP header and the transport layer header. A more sophisticated firewall would also try to examine the data carried by the transport layer.
+IDS
+An intrusion detection system (IDS) inspects network packets for select behavioural patterns or specific content signatures. It raises an alert whenever a malicious rule is met. In addition to the IP header and transport layer header, an IDS would inspect the data contents in the transport layer and check if it matches any malicious patterns. How can you make it less likely for a traditional firewall/IDS to detect your Nmap activity? It is not easy to answer this; however, depending on the type of firewall/IDS, you might benefit from dividing the packet into smaller packets.
+Fragmented Packets
+Nmap provides the option -f to fragment packets. Once chosen, the IP data will be divided into 8 bytes or less. Adding another -f (-f -f or -ff) will split the data into 16 byte-fragments instead of 8. You can change the default value by using the --mtu; however, you should always choose a multiple of 8.
+To properly understand fragmentation, we need to look at the IP header in the figure below. It might look complicated at first, but we notice that we know most of its fields. In particular, notice the source address taking 32 bits (4 bytes) on the fourth row, while the destination address is taking another 4 bytes on the fifth row. The data that we will fragment across multiple packets is highlighted in red. To aid in the reassembly on the recipient side, IP uses the identification (ID) and fragment offset, shown on the second row of the figure below.
+Let’s compare running sudo nmap -sS -p80 10.20.30.144 and sudo nmap -sS -p80 -f 10.20.30.144. As you know by now, this will use stealth TCP SYN scan on port 80; however, in the second command, we are requesting Nmap to fragment the IP packets.
+In the first two lines, we can see an ARP query and response. Nmap issued an ARP query because the target is on the same Ethernet. The second two lines show a TCP SYN ping and a reply. The fifth line is the beginning of the port scan; Nmap sends a TCP SYN packet to port 80. In this case, the IP header is 20 bytes, and the TCP header is 24 bytes. Note that the minimum size of the TCP header is 20 bytes.
+With fragmentation requested via -f, the 24 bytes of the TCP header will be divided into multiples of 8 bytes, with the last fragment containing 8 bytes or less of the TCP header. Since 24 is divisible by 8, we got 3 IP fragments; each has 20 bytes of IP header and 8 bytes of TCP header. We can see the three fragments between the fifth and the seventh lines.
+Note that if you added -ff (or -f -f), the fragmentation of the data will be multiples of 16. In other words, the 24 bytes of the TCP header, in this case, would be divided over two IP fragments, the first containing 16 bytes and the second containing 8 bytes of the TCP header.
+On the other hand, if you prefer to increase the size of your packets to make them look innocuous, you can use the option --data-length NUM, where num specifies the number of bytes you want to append to your packets.
+If the TCP segment has a size of 64, and -ff option is being used, how many IP fragments will you get?
+*4* (64/16 bytes = 4 bytes / -f means Fragment IP data into 8 bytes and  --f 16 bytes)
+```text
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap -sS -p80 -ff 10.10.74.72                 
+[sudo] password for kali: 
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-30 18:48 EDT
+Nmap scan report for 10.10.74.72
+Host is up (0.19s latency).
+
+PORT   STATE    SERVICE
+80/tcp filtered http
+
+Nmap done: 1 IP address (1 host up) scanned in 2.40 seconds
+```
+Spoofing the source IP address can be a great approach to scanning stealthily. However, spoofing will only work in specific network setups. It requires you to be in a position where you can monitor the traffic. Considering these limitations, spoofing your IP address can have little use; however, we can give it an upgrade with the idle scan.
+The idle scan, or zombie scan, requires an idle system connected to the network that you can communicate with. Practically, Nmap will make each probe appear as if coming from the idle (zombie) host, then it will check for indicators whether the idle (zombie) host received any response to the spoofed probe. This is accomplished by checking the IP identification (IP ID) value in the IP header. You can run an idle scan using nmap -sI ZOMBIE_IP 10.10.74.72, where ZOMBIE_IP is the IP address of the idle host (zombie).
+The idle (zombie) scan requires the following three steps to discover whether a port is open:
+Trigger the idle host to respond so that you can record the current IP ID on the idle host.
+Send a SYN packet to a TCP port on the target. The packet should be spoofed to appear as if it was coming from the idle host (zombie) IP address.
+Trigger the idle machine again to respond so that you can compare the new IP ID with the one received earlier.
+Let’s explain with figures. In the figure below, we have the attacker system probing an idle machine, a multi-function printer. By sending a SYN/ACK, it responds with an RST packet containing its newly incremented IP ID.
+The attacker will send a SYN packet to the TCP port they want to check on the target machine in the next step. However, this packet will use the idle host (zombie) IP address as the source. Three scenarios would arise. In the first scenario, shown in the figure below, the TCP port is closed; therefore, the target machine responds to the idle host with an RST packet. The idle host does not respond; hence its IP ID is not incremented.
+In the second scenario, as shown below, the TCP port is open, so the target machine responds with a SYN/ACK to the idle host (zombie). The idle host responds to this unexpected packet with an RST packet, thus incrementing its IP ID.
+In the third scenario, the target machine does not respond at all due to firewall rules. This lack of response will lead to the same result as with the closed port; the idle host won’t increase the IP ID.
+For the final step, the attacker sends another SYN/ACK to the idle host. The idle host responds with an RST packet, incrementing the IP ID by one again. The attacker needs to compare the IP ID of the RST packet received in the first step with the IP ID of the RST packet received in this third step. If the difference is 1, it means the port on the target machine was closed or filtered. However, if the difference is 2, it means that the port on the target was open.
+It is worth repeating that this scan is called an idle scan because choosing an idle host is indispensable for the accuracy of the scan. If the “idle host” is busy, all the returned IP IDs would be useless.
+You discovered a rarely-used network printer with the IP address 10.10.5.5, and you decide to use it as a zombie in your idle scan. What argument should you add to your Nmap command?
+*-sI 10.10.5.5*
+### Getting More Details
+You might consider adding --reason if you want Nmap to provide more details regarding its reasoning and conclusions. Consider the two scans below to the system; however, the latter adds --reason.
+Pentester Terminal
+pentester@TryHackMe$ sudo nmap -sS 10.10.252.27
+Starting Nmap 7.60 ( https://nmap.org ) at 2021-08-30 10:39 BST
+Nmap scan report for ip-10-10-252-27.eu-west-1.compute.internal (10.10.252.27)
+Host is up (0.0020s latency).
+Not shown: 994 closed ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+25/tcp  open  smtp
+80/tcp  open  http
+110/tcp open  pop3
+111/tcp open  rpcbind
+143/tcp open  imap
+MAC Address: 02:45:BF:8A:2D:6B (Unknown)
+Nmap done: 1 IP address (1 host up) scanned in 1.60 seconds
+Pentester Terminal
+pentester@TryHackMe$ sudo nmap -sS --reason 10.10.252.27
+Starting Nmap 7.60 ( https://nmap.org ) at 2021-08-30 10:40 BST
+Nmap scan report for ip-10-10-252-27.eu-west-1.compute.internal (10.10.252.27)
+Host is up, received arp-response (0.0020s latency).
+Not shown: 994 closed ports
+Reason: 994 resets
+PORT    STATE SERVICE REASON
+22/tcp  open  ssh     syn-ack ttl 64
+25/tcp  open  smtp    syn-ack ttl 64
+80/tcp  open  http    syn-ack ttl 64
+110/tcp open  pop3    syn-ack ttl 64
+111/tcp open  rpcbind syn-ack ttl 64
+143/tcp open  imap    syn-ack ttl 64
+MAC Address: 02:45:BF:8A:2D:6B (Unknown)
+Nmap done: 1 IP address (1 host up) scanned in 1.59 seconds
+Providing the --reason flag gives us the explicit reason why Nmap concluded that the system is up or a particular port is open. In this console output above, we can see that this system is considered online because Nmap “received arp-response.” On the other hand, we know that the SSH port is deemed to be open because Nmap received a “syn-ack” packet back.
+For more detailed output, you can consider using -v for verbose output or -vv for even more verbosity.
+Pentester Terminal
+pentester@TryHackMe$ sudo nmap -sS -vv 10.10.252.27
+Starting Nmap 7.60 ( https://nmap.org ) at 2021-08-30 10:41 BST
+Initiating ARP Ping Scan at 10:41
+Scanning 10.10.252.27 [1 port]
+Completed ARP Ping Scan at 10:41, 0.22s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 10:41
+Completed Parallel DNS resolution of 1 host. at 10:41, 0.00s elapsed
+Initiating SYN Stealth Scan at 10:41
+Scanning ip-10-10-252-27.eu-west-1.compute.internal (10.10.252.27) [1000 ports]
+Discovered open port 22/tcp on 10.10.252.27
+Discovered open port 25/tcp on 10.10.252.27
+Discovered open port 80/tcp on 10.10.252.27
+Discovered open port 110/tcp on 10.10.252.27
+Discovered open port 111/tcp on 10.10.252.27
+Discovered open port 143/tcp on 10.10.252.27
+Completed SYN Stealth Scan at 10:41, 1.25s elapsed (1000 total ports)
+Nmap scan report for ip-10-10-252-27.eu-west-1.compute.internal (10.10.252.27)
+Host is up, received arp-response (0.0019s latency).
+Scanned at 2021-08-30 10:41:02 BST for 1s
+Not shown: 994 closed ports
+Reason: 994 resets
+PORT    STATE SERVICE REASON
+22/tcp  open  ssh     syn-ack ttl 64
+25/tcp  open  smtp    syn-ack ttl 64
+80/tcp  open  http    syn-ack ttl 64
+110/tcp open  pop3    syn-ack ttl 64
+111/tcp open  rpcbind syn-ack ttl 64
+143/tcp open  imap    syn-ack ttl 64
+MAC Address: 02:45:BF:8A:2D:6B (Unknown)
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 1.59 seconds
+Raw packets sent: 1002 (44.072KB) | Rcvd: 1002 (40.092KB)
+If -vv does not satisfy your curiosity, you can use -d for debugging details or -dd for even more details. You can guarantee that using -d will create an output that extends beyond a single screen.
+```text
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap -sS -F --reason 10.10.64.138     
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-30 19:00 EDT
+Nmap scan report for 10.10.64.138
+Host is up, received echo-reply ttl 63 (0.19s latency).
+Not shown: 94 closed tcp ports (reset)
+PORT    STATE SERVICE REASON
+22/tcp  open  ssh     syn-ack ttl 63
+25/tcp  open  smtp    syn-ack ttl 63
+80/tcp  open  http    syn-ack ttl 63
+110/tcp open  pop3    syn-ack ttl 63
+111/tcp open  rpcbind syn-ack ttl 63
+143/tcp open  imap    syn-ack ttl 63
+
+Nmap done: 1 IP address (1 host up) scanned in 2.37 seconds
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap -sS -F -vv 10.10.64.138
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-30 19:02 EDT
+Initiating Ping Scan at 19:02
+Scanning 10.10.64.138 [4 ports]
+Completed Ping Scan at 19:02, 0.23s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 19:02
+Completed Parallel DNS resolution of 1 host. at 19:02, 0.02s elapsed
+Initiating SYN Stealth Scan at 19:02
+Scanning 10.10.64.138 [100 ports]
+Discovered open port 80/tcp on 10.10.64.138
+Discovered open port 25/tcp on 10.10.64.138
+Discovered open port 111/tcp on 10.10.64.138
+Discovered open port 143/tcp on 10.10.64.138
+Discovered open port 22/tcp on 10.10.64.138
+Discovered open port 110/tcp on 10.10.64.138
+Completed SYN Stealth Scan at 19:02, 0.81s elapsed (100 total ports)
+Nmap scan report for 10.10.64.138
+Host is up, received reset ttl 63 (0.19s latency).
+Scanned at 2022-08-30 19:02:32 EDT for 1s
+Not shown: 94 closed tcp ports (reset)
+PORT    STATE SERVICE REASON
+22/tcp  open  ssh     syn-ack ttl 63
+25/tcp  open  smtp    syn-ack ttl 63
+80/tcp  open  http    syn-ack ttl 63
+110/tcp open  pop3    syn-ack ttl 63
+111/tcp open  rpcbind syn-ack ttl 63
+143/tcp open  imap    syn-ack ttl 63
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 1.23 seconds
+           Raw packets sent: 104 (4.552KB) | Rcvd: 101 (4.064KB)
+```
+Launch the AttackBox if you haven't done so already. After you make sure that you have terminated the VM from Task 4, start the VM for this task. Wait for it to load completely, then open the terminal on the AttackBox and use Nmap with nmap -sS -F --reason 10.10.64.138 to scan the VM. What is the reason provided for the stated port(s) being open? *syn-ack*
+### Summary
+This room covered the following types of scans.
+Port Scan Type 	Example Command
+TCP Null Scan 	sudo nmap -sN 10.10.64.138
+TCP FIN Scan 	sudo nmap -sF 10.10.64.138
+TCP Xmas Scan 	sudo nmap -sX 10.10.64.138
+TCP Maimon Scan 	sudo nmap -sM 10.10.64.138
+TCP ACK Scan 	sudo nmap -sA 10.10.64.138
+TCP Window Scan 	sudo nmap -sW 10.10.64.138
+Custom TCP Scan 	sudo nmap --scanflags URGACKPSHRSTSYNFIN 10.10.64.138
+Spoofed Source IP 	sudo nmap -S SPOOFED_IP 10.10.64.138
+Spoofed MAC Address 	--spoof-mac SPOOFED_MAC
+Decoy Scan 	nmap -D DECOY_IP,ME 10.10.64.138
+Idle (Zombie) Scan 	sudo nmap -sI ZOMBIE_IP 10.10.64.138
+Fragment IP data into 8 bytes 	-f
+Fragment IP data into 16 bytes 	-ff
+Option 	Purpose
+--source-port PORT_NUM
+specify source port number
+--data-length NUM
+append random data to reach given length
+These scan types rely on setting TCP flags in unexpected ways to prompt ports for a reply. Null, FIN, and Xmas scan provoke a response from closed ports, while Maimon, ACK, and Window scans provoke a response from open and closed ports.
+Option 	Purpose
+--reason 	explains how Nmap made its conclusion
+-v 	verbose
+-vv 	very verbose
+-d 	debugging
+-dd 	more details for debugging
+Ensure you have taken note of all the Nmap options explained in this room. Please join the Nmap Post Port Scans room, the last room in this Nmap series.
+*No answer needed*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/23540a5fcd27454892a73ac051d29664.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/04b178a9cf7048c21256988b8b2343e3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/224e01a913a1ce7b0fb2b9290ff5e1c8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/78eb3d6ba158542f2b3223184b032e64.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/74dc07da7351a5a7f258948ec59efccc.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/7d28b756aed3b6eb72faf98d6974776c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/4304eacbc3db1af21657f285bc16ebce.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/8ca5e5e0f6e0a1843cebe11b5b0785b3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/a991831cedbb2761dde1fe66012a7311.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/5118dcb424d429376f09bf2f85db5bce.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/d76c5020f14ac0d66e7ff3812bb0bec3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/45b982d501fd26deb2b381059b16f80c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/754fc455556a424ca83f512665beaf7d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/5e55834e2638ba7ec9e84a0900b68ccb.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/b218f063a77b8b9867cc8e8f409224b4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/953fd599d2afaa8efb36923b02707d2b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/a93e181f0effe000554a8b307448bbb2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/8e28bf940936ddbc2367b193ea3550b8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/2b0de492e2154a30760852e07cebae0e.png)
+
+## Notes / Lessons Learned
+[[Nmap Basic Port Scans]]
+
