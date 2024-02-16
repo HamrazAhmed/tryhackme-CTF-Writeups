@@ -365,3 +365,371 @@ PORT    STATE SERVICE
 |   100024  1          54078/udp   status
 |_  100024  1          55217/tcp6  status
 143/tcp open  imap
+|_imap-capabilities: IDLE LOGIN-REFERRALS post-login more Pre-login IMAP4rev1 OK LOGINDISABLEDA0001 have listed capabilities LITERAL+ SASL-IR ID ENABLE
+
+Nmap done: 1 IP address (1 host up) scanned in 27.52 seconds
+```
+Launch the AttackBox if you haven't already. After you ensure you have terminated the VM from Task 2, start the target machine for this task. On the AttackBox, run Nmap with the default scripts -sC against 10.10.90.55. You will notice that there is a service listening on port 53. What is its full version value? *9.9.5-9+deb8u19-Debian*
+```text
+┌──(kali㉿kali)-[/usr/share/nmap/scripts]
+└─$ sudo nmap -sS --script "http-date" 10.10.90.55
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-30 22:11 EDT
+Nmap scan report for 10.10.90.55
+Host is up (0.18s latency).
+Not shown: 993 closed tcp ports (reset)
+PORT    STATE SERVICE
+22/tcp  open  ssh
+25/tcp  open  smtp
+53/tcp  open  domain
+80/tcp  open  http
+|_http-date: Wed, 31 Aug 2022 02:11:52 GMT; 0s from local time.
+110/tcp open  pop3
+111/tcp open  rpcbind
+143/tcp open  imap
+
+Nmap done: 1 IP address (1 host up) scanned in 3.38 seconds
+```
+```text
+──(kali㉿kali)-[/usr/share/nmap/scripts]
+└─$ sudo nmap -sS --script "ssh2-enum-algos" 10.10.90.55
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-30 22:13 EDT
+Nmap scan report for 10.10.90.55
+Host is up (0.20s latency).
+Not shown: 993 closed tcp ports (reset)
+PORT    STATE SERVICE
+22/tcp  open  ssh
+| ssh2-enum-algos: 
+|   kex_algorithms: (6)
+|       curve25519-sha256@libssh.org
+|       ecdh-sha2-nistp256
+|       ecdh-sha2-nistp384
+|       ecdh-sha2-nistp521
+|       diffie-hellman-group-exchange-sha256
+|       diffie-hellman-group14-sha1
+|   server_host_key_algorithms: (4)
+|       ssh-rsa
+|       ssh-dss
+|       ecdsa-sha2-nistp256
+|       ssh-ed25519
+|   encryption_algorithms: (6)
+|       aes128-ctr
+|       aes192-ctr
+|       aes256-ctr
+|       aes128-gcm@openssh.com
+|       aes256-gcm@openssh.com
+|       chacha20-poly1305@openssh.com
+|   mac_algorithms: (10)
+|       umac-64-etm@openssh.com
+|       umac-128-etm@openssh.com
+|       hmac-sha2-256-etm@openssh.com
+|       hmac-sha2-512-etm@openssh.com
+|       hmac-sha1-etm@openssh.com
+|       umac-64@openssh.com
+|       umac-128@openssh.com
+|       hmac-sha2-256
+|       hmac-sha2-512
+|       hmac-sha1
+|   compression_algorithms: (2)
+|       none
+|_      zlib@openssh.com
+25/tcp  open  smtp
+53/tcp  open  domain
+80/tcp  open  http
+110/tcp open  pop3
+111/tcp open  rpcbind
+143/tcp open  imap
+
+Nmap done: 1 IP address (1 host up) scanned in 3.14 seconds
+```
+Based on its description, the script ssh2-enum-algos “reports the number of algorithms (for encryption, compression, etc.) that the target SSH2 server offers.” What is the name of the key exchange algorithms (kex_algorithms) that relies upon “sha1” and is supported by 10.10.90.55? *diffie-hellman-group14-sha1*
+### Saving the Output
+Whenever you run a Nmap scan, it is only reasonable to save the results in a file. Selecting and adopting a good naming convention for your filenames is also crucial. The number of files can quickly grow and hinder your ability to find a previous scan result. The three main formats are:
+Normal
+Grepable (grepable)
+XML
+There is a fourth one that we cannot recommend:
+Script Kiddie
+Normal
+As the name implies, the normal format is similar to the output you get on the screen when scanning a target. You can save your scan in normal format by using -oN FILENAME; N stands for normal. Here is an example of the result.
+Pentester Terminal
+```text
+pentester@TryHackMe$ cat 10.10.90.55_scan.nmap
+```
+```text
+# Nmap 7.60 scan initiated Fri Sep 10 05:14:19 2021 as: nmap -sS -sV -O -oN 10.10.90.55_scan MACHINE_IP
+Nmap scan report for 10.10.90.55
+Host is up (0.00086s latency).
+Not shown: 994 closed ports
+PORT    STATE SERVICE VERSION
+22/tcp  open  ssh     OpenSSH 6.7p1 Debian 5+deb8u8 (protocol 2.0)
+25/tcp  open  smtp    Postfix smtpd
+80/tcp  open  http    nginx 1.6.2
+110/tcp open  pop3    Dovecot pop3d
+111/tcp open  rpcbind 2-4 (RPC #100000)
+143/tcp open  imap    Dovecot imapd
+MAC Address: 02:A0:E7:B5:B6:C5 (Unknown)
+Device type: general purpose
+Running: Linux 3.X
+OS CPE: cpe:/o:linux:linux_kernel:3.13
+OS details: Linux 3.13
+Network Distance: 1 hop
+Service Info: Host:  debra2.thm.local; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+```
+```text
+# Nmap done at Fri Sep 10 05:14:28 2021 -- 1 IP address (1 host up) scanned in 9.99 seconds
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_nmap]
+└─$ sudo nmap -sS --script "ssh2-enum-algos" 10.10.90.55 -oN NormalMode
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-30 22:17 EDT
+Nmap scan report for 10.10.90.55
+Host is up (0.19s latency).
+Not shown: 993 closed tcp ports (reset)
+PORT    STATE SERVICE
+22/tcp  open  ssh
+| ssh2-enum-algos: 
+|   kex_algorithms: (6)
+|       curve25519-sha256@libssh.org
+|       ecdh-sha2-nistp256
+|       ecdh-sha2-nistp384
+|       ecdh-sha2-nistp521
+|       diffie-hellman-group-exchange-sha256
+|       diffie-hellman-group14-sha1
+|   server_host_key_algorithms: (4)
+|       ssh-rsa
+|       ssh-dss
+|       ecdsa-sha2-nistp256
+|       ssh-ed25519
+|   encryption_algorithms: (6)
+|       aes128-ctr
+|       aes192-ctr
+|       aes256-ctr
+|       aes128-gcm@openssh.com
+|       aes256-gcm@openssh.com
+|       chacha20-poly1305@openssh.com
+|   mac_algorithms: (10)
+|       umac-64-etm@openssh.com
+|       umac-128-etm@openssh.com
+|       hmac-sha2-256-etm@openssh.com
+|       hmac-sha2-512-etm@openssh.com
+|       hmac-sha1-etm@openssh.com
+|       umac-64@openssh.com
+|       umac-128@openssh.com
+|       hmac-sha2-256
+|       hmac-sha2-512
+|       hmac-sha1
+|   compression_algorithms: (2)
+|       none
+|_      zlib@openssh.com
+25/tcp  open  smtp
+53/tcp  open  domain
+80/tcp  open  http
+110/tcp open  pop3
+111/tcp open  rpcbind
+143/tcp open  imap
+
+Nmap done: 1 IP address (1 host up) scanned in 3.27 seconds
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_nmap]
+└─$ ls
+NormalMode
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_nmap]
+└─$ cat NormalMode
+```
+```text
+# Nmap 7.92 scan initiated Tue Aug 30 22:17:37 2022 as: nmap -sS --script ssh2-enum-algos -oN NormalMode 10.10.90.55
+Nmap scan report for 10.10.90.55
+Host is up (0.19s latency).
+Not shown: 993 closed tcp ports (reset)
+PORT    STATE SERVICE
+22/tcp  open  ssh
+| ssh2-enum-algos: 
+|   kex_algorithms: (6)
+|       curve25519-sha256@libssh.org
+|       ecdh-sha2-nistp256
+|       ecdh-sha2-nistp384
+|       ecdh-sha2-nistp521
+|       diffie-hellman-group-exchange-sha256
+|       diffie-hellman-group14-sha1
+|   server_host_key_algorithms: (4)
+|       ssh-rsa
+|       ssh-dss
+|       ecdsa-sha2-nistp256
+|       ssh-ed25519
+|   encryption_algorithms: (6)
+|       aes128-ctr
+|       aes192-ctr
+|       aes256-ctr
+|       aes128-gcm@openssh.com
+|       aes256-gcm@openssh.com
+|       chacha20-poly1305@openssh.com
+|   mac_algorithms: (10)
+|       umac-64-etm@openssh.com
+|       umac-128-etm@openssh.com
+|       hmac-sha2-256-etm@openssh.com
+|       hmac-sha2-512-etm@openssh.com
+|       hmac-sha1-etm@openssh.com
+|       umac-64@openssh.com
+|       umac-128@openssh.com
+|       hmac-sha2-256
+|       hmac-sha2-512
+|       hmac-sha1
+|   compression_algorithms: (2)
+|       none
+|_      zlib@openssh.com
+25/tcp  open  smtp
+53/tcp  open  domain
+80/tcp  open  http
+110/tcp open  pop3
+111/tcp open  rpcbind
+143/tcp open  imap
+```
+```text
+# Nmap done at Tue Aug 30 22:17:40 2022 -- 1 IP address (1 host up) scanned in 3.27 seconds
+```
+Grepable
+The grepable format has its name from the command grep; grep stands for Global Regular Expression Printer. In simple terms, it makes filtering the scan output for specific keywords or terms efficient. You can save the scan result in grepable format using -oG FILENAME. The scan output, displayed above in normal format, is shown in the console below using grepable format. The normal output is 21 lines; however, the grepable output is only 4 lines. The main reason is that Nmap wants to make each line meaningful and complete when the user applies grep. As a result, in grepable output, the lines are so long and are not convenient to read compared to normal output.
+Pentester Terminal
+```text
+pentester@TryHackMe$ cat 10.10.90.55_scan.gnmap
+```
+```text
+# Nmap 7.60 scan initiated Fri Sep 10 05:14:19 2021 as: nmap -sS -sV -O -oG 10.10.90.55_scan MACHINE_IP
+Host: 10.10.90.55	Status: Up
+Host: MACHINE_IP	Ports: 22/open/tcp//ssh//OpenSSH 6.7p1 Debian 5+deb8u8 (protocol 2.0)/, 25/open/tcp//smtp//Postfix smtpd/, 80/open/tcp//http//nginx 1.6.2/, 110/open/tcp//pop3//Dovecot pop3d/, 111/open/tcp//rpcbind//2-4 (RPC #100000)/, 143/open/tcp//imap//Dovecot imapd/	Ignored State: closed (994)	OS: Linux 3.13	Seq Index: 257	IP ID Seq: All zeros
+```
+```text
+# Nmap done at Fri Sep 10 05:14:28 2021 -- 1 IP address (1 host up) scanned in 9.99 seconds
+```
+An example use of grep is grep KEYWORD TEXT_FILE; this command will display all the lines containing the provided keyword. Let’s compare the output of using grep on normal output and grepable output. You will notice that the former does not provide the IP address of the host. Instead, it returned 80/tcp open http nginx 1.6.2, making it very inconvenient if you are sifting through the scan results of multiple systems. However, the latter provides enough information, such as the host’s IP address, in each line to make it complete.
+Pentester Terminal
+```text
+pentester@TryHackMe$ grep http 10.10.90.55_scan.nmap 
+80/tcp  open  http    nginx 1.6.2
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+```
+Pentester Terminal
+```text
+pentester@TryHackMe$ grep http 10.10.90.55_scan.gnmap 
+Host: 10.10.90.55	Ports: 22/open/tcp//ssh//OpenSSH 6.7p1 Debian 5+deb8u8 (protocol 2.0)/, 25/open/tcp//smtp//Postfix smtpd/, 80/open/tcp//http//nginx 1.6.2/, 110/open/tcp//pop3//Dovecot pop3d/, 111/open/tcp//rpcbind//2-4 (RPC #100000)/, 143/open/tcp//imap//Dovecot imapd/	Ignored State: closed (994)	OS: Linux 3.13	Seq Index: 257	IP ID Seq: All zeros
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_nmap]
+└─$ sudo nmap -sS 10.10.90.55 -oG GrepMode                             
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-30 22:21 EDT
+Nmap scan report for 10.10.90.55
+Host is up (0.19s latency).
+Not shown: 993 closed tcp ports (reset)
+PORT    STATE SERVICE
+22/tcp  open  ssh
+25/tcp  open  smtp
+53/tcp  open  domain
+80/tcp  open  http
+110/tcp open  pop3
+111/tcp open  rpcbind
+143/tcp open  imap
+
+Nmap done: 1 IP address (1 host up) scanned in 2.78 seconds
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_nmap]
+└─$ ls
+GrepMode  NormalMode
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_nmap]
+└─$ cat GrepMode
+```
+```text
+# Nmap 7.92 scan initiated Tue Aug 30 22:21:36 2022 as: nmap -sS -oG GrepMode 10.10.90.55
+Host: 10.10.90.55 ()    Status: Up
+Host: 10.10.90.55 ()    Ports: 22/open/tcp//ssh///, 25/open/tcp//smtp///, 53/open/tcp//domain///, 80/open/tcp//http///, 110/open/tcp//pop3///, 111/open/tcp//rpcbind///, 143/open/tcp//imap///      Ignored State: closed (993)
+```
+```text
+# Nmap done at Tue Aug 30 22:21:38 2022 -- 1 IP address (1 host up) scanned in 2.78 seconds
+```
+XML
+The third format is XML. You can save the scan results in XML format using -oX FILENAME. The XML format would be most convenient to process the output in other programs. Conveniently enough, you can save the scan output in all three formats using -oA FILENAME to combine -oN, -oG, and -oX for normal, grepable, and XML.
+Script Kiddie
+A fourth format is script kiddie. You can see that this format is useless if you want to search the output for any interesting keywords or keep the results for future reference. However, you can use it to save the output of the scan nmap -sS 127.0.0.1 -oS FILENAME, display the output filename, and look 31337 in front of friends who are not tech-savvy.
+Pentester Terminal
+```text
+pentester@TryHackMe$ cat 10.10.90.55_scan.kiddie 
+
+$tart!ng nMaP 7.60 ( httpz://nMap.0rG ) at 2021-09-10 05:17 B$T
+Nmap scan rEp0rt f0r |p-10-10-161-170.EU-w3$t-1.C0mputE.intErnaL (10.10.161.170)
+HOSt !s uP (0.00095s LatEncy).
+N0T $H0wn: 994 closed pOrtS
+PoRT    st4Te SeRViC3 VERS1on
+22/tcp  Open  ssH     Op3n$$H 6.7p1 Deb|an 5+dEb8u8 (pr0t0COl 2.0)
+25/tCp  Op3n  SmTp    P0$Tf!x Smtpd
+80/tcp  0p3n  http    Ng1nx 1.6.2
+110/tCP 0pen  pOP3    d0v3coT P0p3D
+111/TcP op3n  RpcbInd 2-4 (RPC #100000)
+143/Tcp opEn  Imap    Dovecot 1mApd
+mAC 4Ddr3sz: 02:40:e7:B5:B6:c5 (Unknown)
+Netw0rk d!stanc3: 1 h0p
+$3rv1c3 InFO: Ho$t:  dEBra2.thM.lOcal; 0s: Linux; cPe: cP3:/0:linux:l|nux_k3rnel
+
+0S and servIc3 D3tEcti0n pErf0rm3d. Plea$e r3p0rt any !nc0RrecT rE$ultz at hTtpz://nmap.0rg/$ubmit/ .
+Nmap d0nE: 1 |P addr3SS (1 hoSt up) $CaNnEd !n 21.80 s3c0Ndz
+```
+```retrieve
+┌──(kali㉿kali)-[~/Downloads/learning_nmap]
+└─$ scp pentester@10.10.216.156:/home/pentester/* .
+The authenticity of host '10.10.216.156 (10.10.216.156)' can't be established.
+ED25519 key fingerprint is SHA256:drgx1ZnW22fT2iGivFuICFNJT4sLkAkVfBzZj59hPF8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.216.156' (ED25519) to the list of known hosts.
+pentester@10.10.216.156's password: 
+scan_172_17_network.gnmap               100%   13KB  23.2KB/s   00:00    
+scan_172_17_network.nmap                100%   17KB  44.4KB/s   00:00
+```
+Terminate the target machine of the previous task and start the target machine for this task. On the AttackBox terminal, issue the command scp pentester@10.10.90.55:/home/pentester/* . to download the Nmap reports in normal and grepable formats from the target virtual machine.
+Note that the username pentester has the password THM17577
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_nmap]
+└─$ grep https scan_172_17_network.gnmap
+Host: 172.17.0.215 ()   Ports: 22/closed/tcp//ssh///, 80/open/tcp//http///, 443/open/tcp//https///        Ignored State: filtered (997)
+Host: 172.17.19.249 ()  Ports: 22/open/tcp//ssh///, 53/open/tcp//domain///, 80/open/tcp//http///, 443/open/tcp//https///  Ignored State: closed (996)
+Host: 172.17.23.240 ()  Ports: 22/closed/tcp//ssh///, 80/open/tcp//http///, 443/open/tcp//https///        Ignored State: filtered (997)
+```
+Check the attached Nmap logs. How many systems are listening on the HTTPS port?
+*3*
+```using grep nmap
+┌──(kali㉿kali)-[~/Downloads/learning_nmap]
+└─$ grep 8089 scan_172_17_network.gnmap
+Host: 172.17.20.147 ()  Ports: 22/open/tcp//ssh///, 8000/open/tcp//http-alt///, 8089/open/tcp//unknown/// Ignored State: closed (997)
+```
+What is the IP address of the system listening on port 8089?
+*172.17.20.147*
+### Summary
+In this room, we learned how to detect the running services and their versions along with the host operating system. We learned how to enable traceroute and we covered selecting one or more scripts to aid in penetration testing. Finally, we covered the different formats to save the scan results for future reference. The table below summarizes the most important options we covered in this room.
+Option 	Meaning
+-sV 	determine service/version info on open ports
+-sV --version-light 	try the most likely probes (2)
+-sV --version-all 	try all available probes (9)
+-O 	detect OS
+--traceroute 	run traceroute to target
+--script=SCRIPTS 	Nmap scripts to run
+-sC or --script=default 	run default scripts
+-A 	equivalent to -sV -O -sC --traceroute
+-oN 	save output in normal format
+-oG 	save output in grepable format
+-oX 	save output in XML format
+-oA 	save output in normal, XML and Grepable formats
+This room concludes the Nmap series of 4 rooms. Ensure you have taken note of all the Nmap options explained in this room and previous ones.
+*No answer needed*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/c9724491cb38c1ebcd83b5b98f13e1d9.png)
+
+## Notes / Lessons Learned
+[[Nmap Advanced Port Scans]]
+
