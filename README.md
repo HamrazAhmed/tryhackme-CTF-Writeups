@@ -59,6 +59,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Bugged** | `Easy` | IoT / MQTT | [Bugged.md](./Bugged.md) |
 | **CVE-2019-18634** | `Easy` | Linux PrivEsc | [CVE-2019-18634.md](./CVE-2019-18634.md) |
 | **CVE-2021-41773** | `Easy` | Apache Path Traversal | [CVE-2021-41773.md](./CVE-2021-41773.md) |
+| **Capture!** | `Easy` | Web / Captcha Bypass | [Capture!.md](./Capture%21.md) |
 
 
-<!-- Weekly Progress: Week 59/104 | 2024-02-17 -->
+<!-- Weekly Progress: Week 60/104 | 2024-02-24 -->
