@@ -217,3 +217,222 @@ string(6269) "#0 C:\xampp\htdocs\mht\vendor\laravel\framework\src\Illuminate\Rou
 #20 C:\xampp\htdocs\mht\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(167): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
 #21 C:\xampp\htdocs\mht\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
 #22 C:\xampp\htdocs\mht\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(167): Illuminate\Foundation\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 C:\xampp\htdocs\mht\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(86): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 C:\xampp\htdocs\mht\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(167): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 C:\xampp\htdocs\mht\vendor\fruitcake\laravel-cors\src\HandleCors.php(38): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 C:\xampp\htdocs\mht\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(167): Fruitcake\Cors\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 C:\xampp\htdocs\mht\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(39): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 C:\xampp\htdocs\mht\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(167): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 C:\xampp\htdocs\mht\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(103): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\xampp\htdocs\mht\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(141): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 C:\xampp\htdocs\mht\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#32 C:\xampp\htdocs\mht\public\index.php(52): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#33 C:\xampp\htdocs\mht\server.php(21): require_once('C:\\xampp\\htdocs...')
+#34 {main}"
+
+Method GET
+
+Endpoint:
+
+http://127.0.0.1/MHT/apirule7/ping_s
+
+Request Body
+
+{
+"success": "false",
+"msg": "Network Server @ 2 - Malfunctioned - Errod ID #1401. Please contact administator at support@mht.com for further queries."
+}
+
+Response 500 (Internal Server Error)
+```
+Is it an excellent approach to show error logs from the stack trace to general visitors (yea/nay)?
+*nay*
+Try to use the API call /apirule7/ping_s in the attached VM.
+Question Done
+What is the HTTP response code?
+*500*
+What is the Error ID number in the HTTP response message?
+*1401*
+**How does it happen?**
+Injection attacks are probably among the oldest API/web-based attacks and are still being carried out by hackers on real-world applications. Injection flaws occur when user input is **not filtered and is directly processed by an API**; thus enabling the attacker to perform unintended API actions without authorisation. An injection may come from [Structure Query Language (SQL)](https://tryhackme.com/room/sqlinjectionlm), operating system (OS) commands, Extensible Markup Language (XML) etc. Nowadays, frameworks offer functionality to protect against this attack through automatic sanitisation of data; however, applications built in custom frameworks like core PHP are still susceptible to such attacks.
+**Likely Impact**
+Injection flaws may lead to **information disclosure, data loss, DoS, and complete account takeover**. The successful injection attacks may also cause the intruders to access the sensitive data or even create new functionality and perform remote code execution.
+Practical Example
+-   Continue to use the Chrome browser and Talend API Tester for debugging in the VM.
+-   A few users of company MHT reported that their account password had changed, and they could not further log in to their original account. Consequently, the dev team found that Bob had developed a vulnerable login API endpoint `/apirule8/user/login_v` that is not filtering user input.
+-   A malicious attacker requires the username of the target, and for the password, they can use the payload `' OR 1=1--'` and get an authorisation key for any account (as shown below).
+-   Bob immediately realised his mistake; he updated the API endpoint to `/apirule8/user/login_s` and used parameterised queries and built-in filters of Laravel to sanitise user input.
+-   As a result, all malicious payloads on username and password parameters were effectively mitigated (as shown below)
+**Mitigation Measures**
+-   Ensure to use a well-known library for client-side input validation.
+-   If a framework is not used, all client-provided data must be validated first and then filtered and sanitised.
+-   Add necessary security rules to the Web Application Firewall (WAF). Most of the time, injection flaws can be mitigated at the network level.
+-   Make use of built-in filters in frameworks like Laravel, Code Ignitor etc., to validate and filter data.
+Answer the questions below
+```json
+Denial of Service (DoS) is an attack on the target's availability to make the target service/system unavailable to legitimate users.
+
+Method POST
+
+Endpoint:
+
+http://127.0.0.1/MHT/apirule8/user/login_v
+
+Add form parameter
+
+username:Text: admin
+password:Text: ' or 1=1--'      (like select * from users where username ='admin' or 1=1--')
+								 -- comment      or 1=1    true   ' close parameter
+
+Request Body
+
+{
+"success": "true",
+"authkey": "oWsZ8vWNuECjCAiZVJHOzsNsNH08zWRZ"
+}
+
+Method Post
+
+Endpoint:
+
+http://127.0.0.1/MHT/apirule8/user/login_s
+
+Add form parameter
+
+username:Text: admin
+password:Text: ' or 1=1--'
+
+Request Body
+
+{
+"success": "false",
+"cause": "IncorrectUsernameOrPassword"
+}
+
+Response 403 (Forbidden)
+```
+Can injection attacks be carried out to extract data from the database (yea/nay)?
+*yea*
+Can injection attacks result in remote code execution (yea/nay)?
+*yea*
+What is the HTTP response code if a user enters an invalid username or password?
+*403*
+﻿**How does it happen?**
+Inappropriate Asset Management refers to a scenario where we have **two versions of an API available in our system**; let's name them APIv1 and APIv2. Everything is wholly switched to APIv2, but the previous version, APIv1, has not been deleted yet. Considering this, one might easily guess that the older version of the API, i.e., APIv1, doesn't have the updated or the latest security features. Plenty of other obsolete features of APIv1 make it possible to find vulnerable scenarios, which may lead to data leakage and server takeover via a shared database amongst API versions.
+It is essentially about not properly tracking API endpoints. The potential reasons could be incomplete API documentation or absence of compliance with the [Software Development Life Cycle](https://tryhackme.com/room/securesdlc). A properly maintained, up-to-date API inventory and proper documentation are more critical than hardware-based security control for an organisation.
+**Likely Impact**
+The older or the **unpatched API versions** can allow the intruders to get unauthorised access to confidential data or even complete control of the system.
+Practical Example
+-   Continue to use the Chrome browser and Talend API Tester for debugging in the VM.
+-   During API development, the company MHT has developed different API versions like v1 and v2. The company ensured to use the latest versions and API calls but forgot to remove the old version from the server.
+-   Consequently, it was found that old API calls like `apirule9/v1/user/login` return more information like balance, address etc., against the user (as shown below).
+-   Bob being the developer of the endpoint, realised that he must immediately deactivate old and unused assets so that users can only access limited and desired information from the new endpoint `/apirul9/v2/user/login` (as shown below)
+**Mitigation Measures**
+-   Access to previously developed sensitive and deprecated API calls must be blocked at the network level.
+-   APIs developed for R&D, QA, production etc., must be segregated and hosted on separate servers.
+-   Ensure documentation of all API aspects, including authentication, redirects, errors, CORS policy, and rate limiting.
+-   Adopt open standards to generate documentation automatically.
+Answer the questions below
+```json
+R&D stands for Research and Development. It refers to the work a company or organization does to develop new products, services, or technologies. This can include researching new ideas, designing prototypes, testing and refining products, and bringing new offerings to market.
+
+QA stands for Quality Assurance. It is the process of verifying that a product, service, or system meets certain quality standards, and that it performs as intended. QA is typically focused on identifying and resolving defects, and ensuring that the final product meets the requirements and specifications set out by the company or organization.
+
+Method POST
+
+Endpoint:
+
+http://127.0.0.1/MHT/apirule9/v1/user/login
+
+Add form parameter
+
+username:Text:alice
+password:Text:##!@#!!
+
+Request Body
+
+{
+"id": 1,
+"username": "alice",
+" Balance": "100",
+"country": "USA"
+}
+
+Method POST
+
+Endpoint:
+
+http://127.0.0.1/MHT/apirule9/v2/user/login
+
+Add form parameter
+
+username:Text:alice
+password:Text:##!@#!!
+
+Request Body
+
+{
+"id": 1,
+"username": "alice"
+}
+```
+Is it good practice to host all APIs on the same server (yea/nay)?
+*nay*
+Make an API call to /apirule9/v1/user/login using the username "**Alice**" and password "**##!@#!!**".
+Completed
+What is the amount of balance associated with user Alice?
+*100*
+What is the country of the user Alice?
+*USA*
+**How does it happen?**
+Insufficient logging & monitoring reflects a scenario when an attacker conducts malicious activity on your server; however, when you try to track the hacker, **there is not enough evidence available due to the absence of logging and monitoring mechanisms**. Several organisations only focus on infrastructure logging like network events or server logging but lack API logging and monitoring. Information like the visitor's IP address, endpoints accessed, input data etc., along with a timestamp, enables the identification of threat attack patterns. If logging mechanisms are not in place, it would be challenging to identify the attacker and their details. Nowadays, the latest web frameworks can automatically log requests at different levels like error, debug, info etc. These errors can be logged in a database or file or even passed to a [SIEM solution](https://tryhackme.com/room/defensivesecurity) for detailed analysis.
+**Likely Impact**
+Inability to identify attacker or hacker behind the attack.
+Practical Example
+-   Continue to use the Chrome browser and Talend API Tester for debugging in the VM.
+-   In the past, the company MHT has been susceptible to multiple attacks, and the exact culprit behind the attacks could not be identified. Therefore, Bob was assigned to make an API endpoint `/apirule10/logging` (GET) that will log users' metadata (IP address, browser version etc.) and save it in the database as well (as shown below).
+-   Later, it was also decided that the same would be forwarded to a SIEM solution for correlation and analysis.
+**Mitigation Measures**
+-   Ensure use of the Security Information and Event Management (SIEM) system for log management.
+-   Keep track of all denied accesses, failed authentication attempts, and input validation errors, using a format imported by SIEM and enough detail to identify the intruder.
+-   Handle logs as sensitive data and ensure their integrity at rest and transit. Moreover, implement custom alerts to detect suspicious activities as well.
+Answer the questions below
+```json
+Method POST
+
+Endpoint:
+
+http://127.0.0.1/MHT/apirule10/logging
+
+Request Body:
+
+{
+"message": "Hi, an abnormal activity has been detected. Your IP address 127.0.0.1 Browser: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Timestamp: 2023-01-25 22:56:48 has been logged"
+}
+
+Response 200 OK
+```
+Should the API logs be publically accessible so that the attacker must know they are being logged (yea/nay)?
+*nay*
+What is the HTTP response code in case of successful logging of user information?
+*200*
+### Conclusion
+Phew. That was simple. It would be correct to say that over **half of OWASP API security's top 10 list is relevant to authorisation and authentication**. Most commonly, API systems are hacked because of failure in authorisation and authentication mechanisms and security misconfigurations.
+In a nutshell, API developers must **safeguard APIs in line with best cyber security practices**. The modules like sign-in, role-based access, user profile setting etc., must be given more importance as malicious actors tend to target known endpoints for gaining access to the system.
+Stay tuned! And keep developing secure APIs.
+
+## Flags / Answers
+- ![Image for RDP](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/2e8676dbcc93a6ac0b3f4a491be2ff06.png)
+- ![Image for Vulnerable Scenario](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/31d541b9eb6d7f67dec8fdb60d07f8af.png)
+- ![Image for secure scenario](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/bfb2c99ce2c72649953967a629cbcc39.png)
+- ![Image for Vulnerable Scenario](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/76b0298b5134ca3c04e4290b15f4e73a.png)
+- ![Image for Secure Scenario](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/9087274b07f2fa5174398b0bb0c69979.png)
+- ![Image for Vulnerable Scenario](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/fb4649a8c9226d5c68d2ece9e1e1246a.png)
+- ![Image for secure scenario](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/496f9d46040c7a3088f710bbe29cfc0a.png)
+- ![Image for secure scenario](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/a3d12beaea5bfdbcab5659d9145b189e.png)
+- ![Image for Secure Scenario](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/38d853bd141ee2e604216640d3af067c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/9112accb6150c21ee9daadff3d5560e7.png)
+
+## Notes / Lessons Learned
+[[Temple]]
+
