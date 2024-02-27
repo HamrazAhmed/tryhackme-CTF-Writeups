@@ -184,3 +184,190 @@ PORT     STATE SERVICE REASON  VERSION
 | DTIzMDQxMTAyNTk0M1oXDTMzMDQwODAyNTk0M1owQDE+MDwGA1UEAww1TXlTUUxf
 | U2VydmVyXzguMC4zMl9BdXRvX0dlbmVyYXRlZF9TZXJ2ZXJfQ2VydGlmaWNhdGUw
 | ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDGcSvk6LihXJHB/vEoHREi
+| qGZcHlwWx9Thj2/BMbGcfuirXFV2hSZTXPdn9+BJ8iPZD1A2l2JNAeWiQajTWuIt
+| CjwobK3vvaq7nrULv+XymliwZuy4ukBYNNC6MU2oowBQUd87OgT3d92tmZDA0gRH
+| 4foH9cK7Fm5DTCICPCpCkJVFYV94mEocVXCQdeuGA4bI1qFKBj50Jc7ydU8UdF26
+| ODTWKpOusIbpi8BMgbUrGubjP7Y0FMD3fzX2GR3XEFtP1zms3OAsJbNEQbewuTZq
+| Up4yob2SRJA3lqfox+6SZ7f5dVul8rZ3gsZ8t1c8fXTzqx1m902CJRxTjXPwiVZF
+| AgMBAAGjEDAOMAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggEBAMZTdDAL
+| sW61/8hd4V8ICWqRbIkOJVsWPMzmRx6yEVfR1b/f6PQ1iZYp+Ss4F4uDz9vtyRXT
+| yZ2AZvDIH3m9sP51eXBX5AlKI4E0f2UmuGPu8ZDlpx+pARGR30ivt/4b3J1iLneC
+| N/WmoBCl6iVw8eO+4InFmKLmLX7H2pa5Qm6AJ+6lzbuGQZSQT+7y5FIep5R7sk8i
+| tRQFYP8k/w7rgzqPbdgf2TW4EirBBc54HvKXgsle1o+6oCJV1iwhSHwt67K2r643
+| YuI+Jw5uu44S/onsPvFN04iDTa/6h1Vx+HAPQ1WNOqX6KLp0gqou8/VEPeMHFjbL
+| gNwqHEol3UNy03k=
+|_-----END CERTIFICATE-----
+| mysql-info: 
+|   Protocol: 10
+|   Version: 8.0.32
+|   Thread ID: 33
+|   Capabilities flags: 65535
+|   Some Capabilities: LongPassword, IgnoreSpaceBeforeParenthesis, SupportsTransactions, LongColumnFlag, Speaks41ProtocolOld, FoundRows, Support41Auth, ODBCClient, InteractiveClient, DontAllowDatabaseTableColumn, SwitchToSSLAfterHandshake, Speaks41ProtocolNew, SupportsLoadDataLocal, IgnoreSigpipes, SupportsCompression, ConnectWithDatabase, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: /\x14vs\x15YAh@HK\x0Ff"*\x15BuB\x02
+|_  Auth Plugin Name: mysql_native_password
+Service Info: Host: 172.18.0.2; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 20.43 seconds
+
+Request:
+POST /functions.php HTTP/1.1
+
+Response:
+HTTP/1.1 200 OK
+
+Date: Mon, 07 Aug 2023 02:28:58 GMT
+
+Server: Apache/2.4.38 (Debian)
+
+X-Powered-By: PHP/8.0.19
+{"status":"success","message":"Login successful","is_admin":"false","first_name":"test","last_name":"test","redirect_link":"dashboard.php?isadmin=false"}
+
+http://10.10.43.212/dashboard.php?isadmin=true 
+
+THM{I_C4n_3xpl01t_B4c}
+```
+What is the type of server that is hosting the web application? This can be found in the response of the request in Burp Suite.
+*Apache*
+What is the name of the parameter in the JSON response from the login request that contains a redirect link?
+*redirect_link*
+What Burp Suite module allows us to capture requests and responses between ourselves and our target?
+*Proxy*
+What is the admin’s email that can be found in the online users’ table?
+*admin@admin.com*
+
+## Exploitation
+In the previous task, we learned that the file `functions.php` returns a JSON response upon login. The response contains a **redirect_link** with a parameter that we can test for access control vulnerabilities.
+To start testing for this vulnerability, we can intercept the HTTP response and copy the value of the **redirect_link** parameter to our address bar.
+Since the application redirects the user to dashboard.php while the JSON response can only be seen by intercepting using a proxy tool, we can try changing the parameter’s value from **“false”** to **“true”** or vice versa.
+Upon changing the value from **false** to **true**, application redirects us to `admin.php`, which is hidden to a normal user by default. Below is the HTTP request that is captured using Burp Suite Proxy.
+Since we have access to admin.php using a low-privilege account, we might as well check for a vertical privilege escalation attack.
+Checking the box in the “Admin access” column of the account you registered and clicking the “Save Changes” button will give us admin privileges. Which in return enables us to revoke the access of other admin users.
+Answer the questions below
+What kind of privilege escalation happened after accessing admin.php?
+*Vertical*
+What parameter allows the attacker to access the admin page?
+*isadmin*
+What is the flag in the admin page?
+### Task 6  Mitigation
+There are several steps that can be taken to mitigate the risk of broken access control vulnerabilities in PHP applications:
+1. **Implement Role-Based Access Control (RBAC)**: Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. By defining roles in an organization and assigning access rights to these roles, you can control what actions a user can perform on a system. The provided code snippet illustrates how you can define roles (such as ‘admin’, ‘editor’, or ‘user’) and the permissions associated with them. The `hasPermission` function checks if a user of a certain role has a specified permission.
+Sample Code
+```php
+// Define roles and permissions
+     $roles = [
+         'admin' => ['create', 'read', 'update', 'delete'],
+         'editor' => ['create', 'read', 'update'],
+         'user' => ['read'],
+     ];
+    
+     // Check user permissions
+     function hasPermission($userRole, $requiredPermission) {
+         global $roles;
+         return in_array($requiredPermission, $roles[$userRole]);
+     }
+    
+     // Example usage
+     if (hasPermission('admin', 'delete')) {
+         // Allow delete operation
+     } else {
+         // Deny delete operation
+     }
+```
+2. **Use Parameterized Queries**: Parameterized queries are a way to protect PHP applications from SQL Injection attacks, where malicious users could potentially gain unauthorized access to your database. By using placeholders instead of directly including user input into the SQL query, you can significantly reduce the risk of SQL Injection attacks. The provided example demonstrates how a query can be made secure using prepared statements, which separates SQL syntax from data and handles user input safely.
+Sample Code
+```php
+// Example of vulnerable query
+     $username = $_POST['username'];
+     $password = $_POST['password'];
+     $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    
+     // Example of secure query using prepared statements
+     $username = $_POST['username'];
+     $password = $_POST['password'];
+     $stmt = $pdo->prepare("SELECT * FROM users WHERE username=? AND password=?");
+     $stmt->execute([$username, $password]);
+     $user = $stmt->fetch();
+```
+3. **Proper Session Management**: Proper session management ensures that authenticated users have timely and appropriate access to resources, thereby reducing the risk of unauthorized access to sensitive information. Session management includes using secure cookies, setting session timeouts, and limiting the number of active sessions a user can have. The code snippet shows how to initialize a session, set session variables and check for session validity by looking at the last activity time.
+Sample Code
+```php
+// Start session
+     session_start();
+    
+     // Set session variables
+     $_SESSION['user_id'] = $user_id;
+     $_SESSION['last_activity'] = time();
+    
+     // Check if session is still valid
+     if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 1800)) {
+         // Session has expired
+         session_unset();
+         session_destroy();
+     }
+```
+4. **Use Secure Coding Practices**: Secure coding practices involve methods to prevent the introduction of security vulnerabilities. Developers should sanitize and validate user input to prevent malicious data from causing harm and avoid using insecure functions or libraries. The given example shows how to sanitize user input using PHP’s `filter_input` function and demonstrates how to securely hash a password using `password_hash` instead of an insecure function like `md5`.
+Sample Code
+```php
+// Validate user input
+     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    
+     // Avoid insecure functions
+     // Example of vulnerable code using md5
+     $password = md5($password);
+     // Example of secure code using password_hash
+     $password = password_hash($password, PASSWORD_DEFAULT);
+```
+Answer the questions below
+Click me to proceed onto the next task.
+Completed
+### Task 7  Conclusion
+Broken access control is a security vulnerability that occurs when a system fails to properly enforce access controls, which can result in unauthorized users gaining access to sensitive information or performing actions they are not authorized to do.
+Horizontal privilege escalation occurs when a user is able to access data or perform actions that they are not authorized to do within their own privilege level. This can be dangerous because it can allow an attacker who has already gained access to the system to move laterally through the network and access additional resources or sensitive data.
+Vertical privilege escalation occurs when a user is able to gain access to data or perform actions that are reserved for users with higher privilege levels, such as system administrators. This can be even more dangerous because it can allow an attacker to gain full control of the system and potentially take over the entire network.
+The impact of these types of privilege escalation can vary depending on the specific system and the level of access that is gained. However, in general, the consequences can include unauthorized access to sensitive information, data loss or theft, disruption of critical systems or services, and even complete network compromise. Therefore, it is important to implement strong access controls and regularly monitor for any signs of unauthorized access or activity.
+Here are some references that you can give to PHP developers to help them implement these mitigation strategies:
+1. [OWASP PHP Configuration Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/PHP_Configuration_Cheat_Sheet.html)
+2. [PHP The Right Way: Security](https://phptherightway.com/#security)
+3. [Secure Coding in PHP](https://www.php.net/manual/en/security.php)
+Answer the questions below
+Click me to finish this room.
+Completed
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/3a87f46cd41d70622dcfa6b10c2a79bb.png)
+- ![Example of Access Control](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/c0163e47202f8fb14d0d9bf407fb65df.png)
+- ![Example of Discretionary Access Control](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/fda89930eb8e0fe0be0bc2b0050df2bb.png)
+- ![Example of Mandatory Access Control](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/680f5f2a359b86e88a01f75509b48976.png)
+- ![Example of Role-based Access Control](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/951b891b22025b3a67b2675361b23415.png)
+- ![Example of Attribute-Based Access Control](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/0057e9b8b5ea7f0e1bed9c33f586163b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/fa3bb36f2fde2bd29aa290ff2610428d.png)
+- ![Example of Insecure direct object references](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/55df42c444edbd2a24f7973b5792b769.png)
+- ![Vulnerable App Preview](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/3b7a393324ba60bf9a7ddf04d60d14fc.png)
+- ![Registration Page](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/1b103a3eb8b3bda9f399da0702de7655.png)
+- ![Login Page](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/34f8072b8919303582352d6a1d914579.png)
+- ![Dashboard Page](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/95f2bd55c06a13d47ab06ee6a8a0b6cd.png)
+- ![Captured HTTP traffic](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/85d5720c06d8e1d993730cbf1a790849.png)
+- ![Redirect link in the address bar](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/ae62caddd97044d2f502fb843a5792aa.png)
+- ![Modified parameter value in the address bar](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/5dd8248de6785f4032080981acd689dc.png)
+- ![Captured HTTP request using Burp Suite Proxy](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/ad005cdf8c587872cf3c1ed1fe6b90b3.png)
+- ![Admin Page Preview](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/c019a5987cac64d81dc2859b13f56bdc.png)
+- ![Admin Page Preview with modified admin access](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ee9d82ebaa78254d39dc7a7/room-content/b8e6cf35af3196314036bfde4dee77b8.png)
+- ***THM{I_C4n_3xpl01t_B4c}***
+
+## Notes / Lessons Learned
+[[Flip]]
+
