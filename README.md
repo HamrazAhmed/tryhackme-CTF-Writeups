@@ -60,6 +60,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **CVE-2019-18634** | `Easy` | Linux PrivEsc | [CVE-2019-18634.md](./CVE-2019-18634.md) |
 | **CVE-2021-41773** | `Easy` | Apache Path Traversal | [CVE-2021-41773.md](./CVE-2021-41773.md) |
 | **Capture!** | `Easy` | Web / Captcha Bypass | [Capture!.md](./Capture%21.md) |
+| **Chill Hack** | `Easy` | Linux CTF | [Chill Hack.md](./Chill%20Hack.md) |
 
 
-<!-- Weekly Progress: Week 60/104 | 2024-02-24 -->
+<!-- Weekly Progress: Week 61/104 | 2024-03-02 -->
