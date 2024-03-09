@@ -61,6 +61,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **CVE-2021-41773** | `Easy` | Apache Path Traversal | [CVE-2021-41773.md](./CVE-2021-41773.md) |
 | **Capture!** | `Easy` | Web / Captcha Bypass | [Capture!.md](./Capture%21.md) |
 | **Chill Hack** | `Easy` | Linux CTF | [Chill Hack.md](./Chill%20Hack.md) |
+| **Chocolate Factory** | `Easy` | Linux CTF | [Chocolate Factory.md](./Chocolate%20Factory.md) |
 
 
-<!-- Weekly Progress: Week 61/104 | 2024-03-02 -->
+<!-- Weekly Progress: Week 62/104 | 2024-03-09 -->
