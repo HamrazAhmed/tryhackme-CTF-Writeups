@@ -400,3 +400,405 @@ http://10.10.220.152/r4nd0m.html
 
  On your way, you decide to stop by an island you can see from your boat in order to get supplies.
 Surprisingly enough, you meet your friend Buggy the Clown there.
+He wants to challenge you to play one of his games. He knows he can't lose, he even promise a Log Pose for Onigashima if you can beat him.
+He even let you decide which game you'd like to play: 
+
+view-source:http://10.10.220.152/buggy_games/brain_teaser.js
+
+document.getElementById('back').textContent = "Log Pose: /0n1g4sh1m4.php"  
+
+document.getElementById('back')
+<div id="back" class="cube_face">
+​
+accessKey: ""
+​
+accessKeyLabel: ""
+​
+align: ""
+​
+assignedSlot: null
+​
+attributes: NamedNodeMap [ id="back", class="cube_face" ]
+​
+baseURI: "http://10.10.220.152/buggy_games/brain_teaser.html"
+​
+childElementCount: 0
+​
+childNodes: NodeList [ #text
+ ]
+​
+children: HTMLCollection { length: 0 }
+​
+classList: DOMTokenList [ "cube_face" ]
+​
+className: "cube_face"
+​
+clientHeight: 200
+​
+clientLeft: 3
+​
+clientTop: 3
+​
+clientWidth: 200
+​
+contentEditable: "inherit"
+​
+dataset: DOMStringMap(0)
+​
+dir: ""
+​
+draggable: false
+​
+enterKeyHint: ""
+​
+firstChild: #text "Log Pose: /0n1g4sh1m4.php"
+​
+firstElementChild: null
+​
+hidden: false
+​
+id: "back"
+​
+innerHTML: "Log Pose: /0n1g4sh1m4.php"
+​
+innerText: "Log Pose: /0n1g4sh1m4.php"
+​
+inputMode: ""
+​
+isConnected: true
+​
+isContentEditable: false
+​
+lang: ""
+​
+lastChild: #text "Log Pose: /0n1g4sh1m4.php"
+​​
+assignedSlot: null
+​​
+baseURI: "http://10.10.220.152/buggy_games/brain_teaser.html"
+​​
+childNodes: NodeList []
+​​
+data: "Log Pose: /0n1g4sh1m4.php"
+​​
+firstChild: null
+​​
+isConnected: true
+​​
+lastChild: null
+​​
+length: 25
+​​
+nextElementSibling: null
+​​
+nextSibling: null
+​​
+nodeName: "#text"
+​​
+nodeType: 3
+​​
+nodeValue: "Log Pose: /0n1g4sh1m4.php"
+​​
+ownerDocument: HTMLDocument http://10.10.220.152/buggy_games/brain_teaser.html
+​​
+parentElement: <div id="back" class="cube_face">​​
+parentNode: <div id="back" class="cube_face">
+​​
+previousElementSibling: null
+​​
+previousSibling: null
+​​
+textContent: "Log Pose: /0n1g4sh1m4.php"
+​​
+wholeText: "Log Pose: /0n1g4sh1m4.php"
+​​
+<prototype>: TextPrototype { splitText: splitText(), wholeText: Getter, assignedSlot: Getter, … }
+​
+lastElementChild: null
+​
+localName: "div"
+​
+namespaceURI: "http://www.w3.org/1999/xhtml"
+​
+nextElementSibling: <div id="right" class="cube_face">​
+nextSibling: #text "\n                "
+​
+nodeName: "DIV"
+​
+nodeType: 1
+​
+nodeValue: null
+​
+nonce: ""
+​
+offsetHeight: 205
+​
+offsetLeft: -103
+​
+offsetParent: <div id="container__animation" style="transform: rotateX(16.42…) rotateY(-26.5711deg);">
+​
+offsetTop: -8
+​
+offsetWidth: 205
+​
+onabort: null
+​
+onanimationcancel: null
+​
+onanimationend: null
+​
+onanimationiteration: null
+​
+onanimationstart: null
+​
+onauxclick: null
+​
+onbeforeinput: null
+​
+onblur: null
+​
+oncanplay: null
+​
+oncanplaythrough: null
+​
+onchange: null
+​
+onclick: null
+​
+onclose: null
+​
+oncontextmenu: null
+​
+oncopy: null
+​
+oncuechange: null
+​
+oncut: null
+​
+ondblclick: null
+​
+ondrag: null
+​
+ondragend: null
+​
+ondragenter: null
+​
+ondragexit: null
+​
+ondragleave: null
+​
+ondragover: null
+​
+ondragstart: null
+​
+ondrop: null
+​
+ondurationchange: null
+​
+onemptied: null
+​
+onended: null
+​
+onerror: null
+​
+onfocus: null
+​
+onformdata: null
+​
+onfullscreenchange: null
+​
+onfullscreenerror: null
+​
+ongotpointercapture: null
+​
+oninput: null
+​
+oninvalid: null
+​
+onkeydown: null
+​
+onkeypress: null
+​
+onkeyup: null
+​
+onload: null
+​
+onloadeddata: null
+​
+onloadedmetadata: null
+​
+onloadend: null
+​
+onloadstart: null
+​
+onlostpointercapture: null
+​
+onmousedown: null
+​
+onmouseenter: null
+​
+onmouseleave: null
+​
+onmousemove: null
+​
+onmouseout: null
+​
+onmouseover: null
+​
+onmouseup: null
+​
+onmozfullscreenchange: null
+​
+onmozfullscreenerror: null
+​
+onpaste: null
+​
+onpause: null
+​
+onplay: null
+​
+onplaying: null
+​
+onpointercancel: null
+​
+onpointerdown: null
+​
+onpointerenter: null
+​
+onpointerleave: null
+​
+onpointermove: null
+​
+onpointerout: null
+​
+onpointerover: null
+​
+onpointerup: null
+​
+onprogress: null
+​
+onratechange: null
+​
+onreset: null
+​
+onresize: null
+​
+onscroll: null
+​
+onsecuritypolicyviolation: null
+​
+onseeked: null
+​
+onseeking: null
+​
+onselect: null
+​
+onselectionchange: null
+​
+onselectstart: null
+​
+onslotchange: null
+​
+onstalled: null
+​
+onsubmit: null
+​
+onsuspend: null
+​
+ontimeupdate: null
+​
+ontoggle: null
+​
+ontransitioncancel: null
+​
+ontransitionend: null
+​
+ontransitionrun: null
+​
+ontransitionstart: null
+​
+onvolumechange: null
+​
+onwaiting: null
+​
+onwebkitanimationend: null
+​
+onwebkitanimationiteration: null
+​
+onwebkitanimationstart: null
+​
+onwebkittransitionend: null
+​
+onwheel: null
+​
+outerHTML: "<div id=\"back\" class=\"cube_face\">Log Pose: /0n1g4sh1m4.php</div>"
+​
+outerText: "Log Pose: /0n1g4sh1m4.php"
+​
+ownerDocument: HTMLDocument http://10.10.220.152/buggy_games/brain_teaser.html
+​
+parentElement: <div id="container__animation" style="transform: rotateX(16.42…) rotateY(-26.5711deg);">​
+parentNode: <div id="container__animation" style="transform: rotateX(16.42…) rotateY(-26.5711deg);">​
+part: DOMTokenList []
+​
+prefix: null
+​
+previousElementSibling: <div id="front" class="cube_face">​
+previousSibling: #text "\n                "
+​
+scrollHeight: 200
+​
+scrollLeft: 0
+​
+scrollLeftMax: 0
+​
+scrollTop: 0
+​
+scrollTopMax: 0
+​
+scrollWidth: 200
+​
+shadowRoot: null
+​
+slot: ""
+​
+spellcheck: false
+​
+style: CSS2Properties(0)
+​
+tabIndex: -1
+​
+tagName: "DIV"
+​
+textContent: "Log Pose: /0n1g4sh1m4.php"
+​
+title: ""
+​
+<prototype>: HTMLDivElementPrototype { align: Getter & Setter, … }
+
+http://10.10.220.152/0n1g4sh1m4.php
+
+You reach the island of Onigashima. This is one of the Kaido's territory, one of the four Emperors, Kaido of the Beasts is renowned as the Strongest Creature in the world.
+It is said that if it is a 1 vs 1, Kaido will prevail.
+Speaking about brute force, Kaido is unbeatable.
+
+Straw Hat Luffy has 2 options: 
+
+download kaido.jpeg
+
+┌──(witty㉿kali)-[~]
+└─$ stegcracker kaido.jpeg /usr/share/wordlists/rockyou.txt
+StegCracker 2.1.0 - (https://github.com/Paradoxis/StegCracker)
+Copyright (c) 2023 - Luke Paris (Paradoxis)
+
+StegCracker has been retired following the release of StegSeek, which 
+will blast through the rockyou.txt wordlist within 1.9 second as opposed 
+to StegCracker which takes ~5 hours.
+
+StegSeek can be found at: https://github.com/RickdeJager/stegseek
+
+Counting lines in wordlist..
+Attacking file 'kaido.jpeg' with wordlist '/usr/share/wordlists/rockyou.txt'..
+Successfully cracked file with password: imabeast
+Tried 106308 passwords
+Your file has been written to: kaido.jpeg.out
