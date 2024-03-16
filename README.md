@@ -62,6 +62,8 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Capture!** | `Easy` | Web / Captcha Bypass | [Capture!.md](./Capture%21.md) |
 | **Chill Hack** | `Easy` | Linux CTF | [Chill Hack.md](./Chill%20Hack.md) |
 | **Chocolate Factory** | `Easy` | Linux CTF | [Chocolate Factory.md](./Chocolate%20Factory.md) |
+| **ColddBox Easy** | `Easy` | WordPress / Linux | [ColddBox Easy.md](./ColddBox%20Easy.md) |
+| **Command Injection** | `Easy` | Web Pentest | [Command Injection.md](./Command%20Injection.md) |
 
 
-<!-- Weekly Progress: Week 62/104 | 2024-03-09 -->
+<!-- Weekly Progress: Week 63/104 | 2024-03-16 -->
