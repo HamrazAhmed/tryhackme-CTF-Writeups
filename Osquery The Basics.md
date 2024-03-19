@@ -924,3 +924,467 @@ osquery> select * from ie_extensions;
 
 osquery> .schema programs
 CREATE TABLE programs(`name` TEXT, `version` TEXT, `install_location` TEXT, `install_source` TEXT, `language` TEXT, `publisher` TEXT, `uninstall_string` TEXT, `install_date` TEXT, `identifying_number` TEXT);
+osquery> select name,install_location from programs where name like %wireshark%;
+Error: near "%": syntax error
+osquery> select name,install_location from programs where name like '%wireshark%';
++------------------------+----------------------------+
+| name                   | install_location           |
++------------------------+----------------------------+
+| Wireshark 3.6.8 64-bit | C:\Program Files\Wireshark |
++------------------------+----------------------------+
+```
+Using Osquery, how many programs are installed on this host?
+*19*
+Using Osquery, what is the description for the user James?
+*Creative Artist*
+When we run the following search query, what is the full SID of the user with RID '1009'?
+Query: select path, key, name from registry where key = 'HKEY_USERS';
+*S-1-5-21-1966530601-3185510712-10604624-1009*
+When we run the following search query, what is the Internet Explorer browser extension installed on this machine?
+Query: select * from ie_extensions;
+*C:\Windows\System32\ieframe.dll*
+After running the following query, what is the full name of the program returned?
+Query: select name,install_location from programs where name LIKE '%wireshark%';
+*Wireshark 3.6.8 64-bit*
+### Challenge and Conclusion
+Now that we have explored various tables, learned how to create search queries, and ask questions from the operating system, it's time for a challenge. Use OSquery to examine the host and answer the following questions.
+```text
+userassist
+
+UserAssist Registry Key tracks when a user executes an application from Windows Explorer.
+
+osquery> .schema userassist
+CREATE TABLE userassist(`path` TEXT, `last_execution_time` BIGINT, `count` INTEGER, `sid` TEXT);
+osquery> select * from userassist;
++-------------------------------------------------------------------------------------+---------------------+-------+----------------------------------------------+
+| path                                                                                | last_execution_time | count | sid                                          |
++-------------------------------------------------------------------------------------+---------------------+-------+----------------------------------------------+
+| UEME_CTLCUACount:ctor                                                               |                     |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\SnippingTool.exe                             | 1666104756          | 14    | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| UEME_CTLSESSION                                                                     |                     |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\mspaint.exe                                  | 1666104756          | 8     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\notepad.exe                                  | 1667582559          | 3     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\cmd.exe                                      | 1666117636          | 3     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| Microsoft.Windows.Explorer                                                          | 1667582545          | 12    | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel | 1667582946          | 3     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| C:\Users\James\Downloads\tools\ChromeSetup.exe                                      | 1666106210          | 1     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {7C5A40EF-A0FB-4BFC-874A-C0F2E0B9FA8E}\Google\Temp\GUM1145.tmp\GoogleUpdate.exe     | 0                   |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {7C5A40EF-A0FB-4BFC-874A-C0F2E0B9FA8E}\Google\Update\GoogleUpdate.exe               | 0                   |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| Chrome                                                                              | 1666117013          | 1     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| Microsoft.Windows.Cortana_cw5n1h2txyewy!CortanaUI                                   | 0                   |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\WindowsPowerShell\v1.0\powershell.exe        | 1669502722          | 7     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| Microsoft.Windows.ControlPanel                                                      | 0                   |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\msiexec.exe                                  | 1666117106          | 2     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| Microsoft.Windows.WindowsInstaller                                                  | 0                   |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy!App                             | 0                   |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {6D809377-6AF0-444B-8957-A3773F02200E}\osquery\osqueryi.exe                         | 1666117204          | 1     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| Microsoft.Windows.SecHealthUI_cw5n1h2txyewy!SecHealthUI                             | 1666117503          | 1     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\SystemPropertiesAdvanced.exe                 | 0                   |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| C:\Users\James\Downloads\tools\Wireshark-win64-3.6.8.exe                            | 1666118161          | 1     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {6D809377-6AF0-444B-8957-A3773F02200E}\Wireshark\npcap-1.60.exe                     | 0                   |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {6D809377-6AF0-444B-8957-A3773F02200E}\Npcap\NPFInstall.exe                         | 0                   |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| C:\Users\James\Downloads\tools\ProtonVPN_win_v2.0.6.exe                             | 1666118971          | 1     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {7C5A40EF-A0FB-4BFC-874A-C0F2E0B9FA8E}\Proton Technologies\ProtonVPN\ProtonVPN.exe  | 0                   |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| C:\Users\James\Documents\DiskWipe.exe                                               | 1666127467          | 2     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\win32calc.exe                                | 0                   |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| Microsoft.AutoGenerated.{923DD477-5846-686B-A659-0FCCD73851A8}                      | 1667582900          | 3     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| Microsoft.Windows.Shell.RunDialog                                                   | 0                   |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {0139D44E-6AFE-49F2-8690-3DAFCAE6FFB8}\StartUp\batstartup.bat                       | 1667582551          | 1     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {F38BF404-1D43-42F2-9305-67DE0B28FC23}\regedit.exe                                  | 1667582840          | 2     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| Microsoft.AutoGenerated.{C1C6F8AC-40A3-0F5C-146F-65A9DC70BBB4}                      | 1667584262          | 1     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| UEME_CTLCUACount:ctor                                                               |                     |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {0139D44E-6AFE-49F2-8690-3DAFCAE6FFB8}\Accessories\Snipping Tool.lnk                | 1666104756          | 14    | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| UEME_CTLSESSION                                                                     |                     |       | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {0139D44E-6AFE-49F2-8690-3DAFCAE6FFB8}\Accessories\Paint.lnk                        | 1666104756          | 8     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {A77F5D77-2E2B-44C3-A6A2-ABA601054A51}\Accessories\Notepad.lnk                      | 1666104756          | 2     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {9E3995AB-1F9C-4F13-B827-48B24B6C7174}\TaskBar\File Explorer.lnk                    | 1666117535          | 4     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {A77F5D77-2E2B-44C3-A6A2-ABA601054A51}\Windows PowerShell\Windows PowerShell.lnk    | 1666126305          | 4     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {A77F5D77-2E2B-44C3-A6A2-ABA601054A51}\System Tools\Command Prompt.lnk              | 1666117636          | 3     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| C:\Users\Public\Desktop\Google Chrome.lnk                                           | 1666117013          | 1     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {9E3995AB-1F9C-4F13-B827-48B24B6C7174}\TaskBar\osquery daemon and shell.lnk         | 1666117204          | 1     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {9E3995AB-1F9C-4F13-B827-48B24B6C7174}\TaskBar\Windows PowerShell.lnk               | 1669502722          | 3     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {0139D44E-6AFE-49F2-8690-3DAFCAE6FFB8}\Administrative Tools\Registry Editor.lnk     | 1667582840          | 2     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {0139D44E-6AFE-49F2-8690-3DAFCAE6FFB8}\System Tools\Task Manager.lnk                | 1667582900          | 1     | S-1-5-21-1966530601-3185510712-10604624-1009 |
+| {0139D44E-6AFE-49F2-8690-3DAFCAE6FFB8}\Administrative Tools\Task Scheduler.lnk      | 1667584262          | 1     | S-1-5-21-1966530601-3185510712-10604624-1009 |
++-------------------------------------------------------------------------------------+---------------------+-------+----------------------------------------------+
+osquery> select * from userassist where path like '%Disk%';
++---------------------------------------+---------------------+-------+----------------------------------------------+
+| path                                  | last_execution_time | count | sid                                          |
++---------------------------------------+---------------------+-------+----------------------------------------------+
+| C:\Users\James\Documents\DiskWipe.exe | 1666127467          | 2     | S-1-5-21-1966530601-3185510712-10604624-1009 |
++---------------------------------------+---------------------+-------+----------------------------------------------+
+
+osquery> select * from programs;
++--------------------------------------------------------------------+---------------+----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----------------------------------------+
+| name                                                               | version       | install_location                                         | install_source                                                                                                                     | language | publisher                                                    | uninstall_string                                                                                                                                          | install_date | identifying_number                     |
++--------------------------------------------------------------------+---------------+----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----------------------------------------+
+| aws-cfn-bootstrap                                                  | 2.0.5         |                                                          | C:\ProgramData\Package Cache\{2C9F7E98-B055-4344-B8E4-58996F4A3B00}v2.0.5\                                                         | 1033     | Amazon Web Services                                          | MsiExec.exe /X{2C9F7E98-B055-4344-B8E4-58996F4A3B00}                                                                                                      | 20210311     | {2C9F7E98-B055-4344-B8E4-58996F4A3B00} |
+| Microsoft Visual C++ 2022 X64 Minimum Runtime - 14.32.31332        | 14.32.31332   |                                                          | C:\ProgramData\Package Cache\{3407B900-37F5-4CC2-B612-5CD5D580A163}v14.32.31332\packages\vcRuntimeMinimum_amd64\                   | 1033     | Microsoft Corporation                                        | MsiExec.exe /I{3407B900-37F5-4CC2-B612-5CD5D580A163}                                                                                                      | 20221018     | {3407B900-37F5-4CC2-B612-5CD5D580A163} |
+| AWS PV Drivers                                                     | 8.3.4         |                                                          | C:\ProgramData\Amazon\SSM\Packages\_arnawsssmpackageawspvdriver_21_66XA4XBKMUL56B6HYCFMNHV3CWSN44PIP4NHKIOMCDJMKGPGJE3A====\8.3.4\ | 1033     | Amazon Web Services                                          | MsiExec.exe /I{90C09D7C-18EB-4853-9F4F-D3040CC23924}                                                                                                      | 20200909     | {90C09D7C-18EB-4853-9F4F-D3040CC23924} |
+| osquery                                                            | 5.5.1         | C:\Program Files\osquery\                                | C:\Users\James\Downloads\                                                                                                          | 1033     | osquery                                                      | MsiExec.exe /I{B55CDE5D-3EC9-4E57-AAD8-2B63BE889B46}                                                                                                      | 20221018     | {B55CDE5D-3EC9-4E57-AAD8-2B63BE889B46} |
+| Amazon SSM Agent                                                   | 3.0.529.0     |                                                          | C:\ProgramData\Package Cache\{C1130551-76E8-44D6-A31D-4A9D5B0817CF}v3.0.529.0\                                                     | 1033     | Amazon Web Services                                          | MsiExec.exe /I{C1130551-76E8-44D6-A31D-4A9D5B0817CF}                                                                                                      | 20210311     | {C1130551-76E8-44D6-A31D-4A9D5B0817CF} |
+| Microsoft Visual C++ 2022 X64 Additional Runtime - 14.32.31332     | 14.32.31332   |                                                          | C:\ProgramData\Package Cache\{F4499EE3-A166-496C-81BB-51D1BCDC70A9}v14.32.31332\packages\vcRuntimeAdditional_amd64\                | 1033     | Microsoft Corporation                                        | MsiExec.exe /I{F4499EE3-A166-496C-81BB-51D1BCDC70A9}                                                                                                      | 20221018     | {F4499EE3-A166-496C-81BB-51D1BCDC70A9} |
+| Google Chrome                                                      | 107.0.5304.88 | C:\Program Files\Google\Chrome\Application               |                                                                                                                                    |          | Google LLC                                                   | "C:\Program Files\Google\Chrome\Application\107.0.5304.88\Installer\setup.exe" --uninstall --channel=stable --system-level --verbose-logging              | 20221104     |                                        |
+| Microsoft Edge Update                                              | 1.3.169.31    |                                                          |                                                                                                                                    |          |                                                              |                                                                                                                                                           |              |                                        |
+| Microsoft Edge WebView2 Runtime                                    | 107.0.1418.26 | C:\Program Files (x86)\Microsoft\EdgeWebView\Application |                                                                                                                                    |          | Microsoft Corporation                                        | "C:\Program Files (x86)\Microsoft\EdgeWebView\Application\107.0.1418.26\Installer\setup.exe" --uninstall --msedgewebview --system-level --verbose-logging | 20221104     |                                        |
+| Npcap                                                              | 1.60          | C:\Program Files\Npcap                                   |                                                                                                                                    |          | Nmap Project                                                 | "C:\Program Files\Npcap\uninstall.exe"                                                                                                                    |              |                                        |
+| ProtonVPN                                                          | 2.0.6         | C:\Program Files (x86)\Proton Technologies\ProtonVPN\    |                                                                                                                                    |          | Proton Technologies AG                                       | msiexec.exe /i {E7AD46A7-6578-45D9-A690-BF58D33BA6B5} AI_UNINSTALLER_CTP=1                                                                                |              |                                        |
+| Wireshark 3.6.8 64-bit                                             | 3.6.8         | C:\Program Files\Wireshark                               |                                                                                                                                    |          | The Wireshark developer community, https://www.wireshark.org | "C:\Program Files\Wireshark\uninstall.exe"                                                                                                                |              |                                        |
+| Microsoft Visual C++ 2015-2022 Redistributable (x64) - 14.32.31332 | 14.32.31332.0 |                                                          |                                                                                                                                    |          | Microsoft Corporation                                        | "C:\ProgramData\Package Cache\{3746f21b-c990-4045-bb33-1cf98cff7a68}\VC_redist.x64.exe"  /uninstall                                                       |              | {3746f21b-c990-4045-bb33-1cf98cff7a68} |
+| Amazon SSM Agent                                                   | 3.0.529.0     |                                                          |                                                                                                                                    |          | Amazon Web Services                                          | "C:\ProgramData\Package Cache\{674c5ef7-9d50-4540-a711-6b82e2469bd0}\AmazonSSMAgentSetup.exe"  /uninstall                                                 |              | {674c5ef7-9d50-4540-a711-6b82e2469bd0} |
+| ProtonVPNTap                                                       | 1.1.4         | C:\Program Files (x86)\Proton Technologies\ProtonVPNTap\ | C:\Users\James\AppData\Local\Temp\{87BDF456-9882-44E6-8FFC-F73B83E42EAD}\3E42EAD\                                                  | 1033     | Proton Technologies AG                                       | MsiExec.exe /X{87BDF456-9882-44E6-8FFC-F73B83E42EAD}                                                                                                      | 20221018     | {87BDF456-9882-44E6-8FFC-F73B83E42EAD} |
+| ProtonVPNTun                                                       | 0.13.1        | C:\Program Files (x86)\Proton Technologies\ProtonVPNTun\ | C:\Users\James\AppData\Local\Temp\{B1EBF050-CC3E-45B0-9DE5-339C6241F3DA}\241F3DA\                                                  | 1033     | Proton Technologies AG                                       | MsiExec.exe /X{B1EBF050-CC3E-45B0-9DE5-339C6241F3DA}                                                                                                      | 20221018     | {B1EBF050-CC3E-45B0-9DE5-339C6241F3DA} |
+| aws-cfn-bootstrap                                                  | 2.0.5         |                                                          |                                                                                                                                    |          | Amazon Web Services                                          | "C:\ProgramData\Package Cache\{ba1812b9-5f2c-4e6a-b720-5cdd8247ad61}\aws-cfn-bootstrap-bundle.exe"  /uninstall                                            |              | {ba1812b9-5f2c-4e6a-b720-5cdd8247ad61} |
+| AWS Tools for Windows                                              | 3.15.1248     |                                                          | C:\ec2amibuild\                                                                                                                    | 1033     | Amazon Web Services Developer Relations                      | MsiExec.exe /I{D08A7BB0-68D1-4A6A-B643-8A399E5CD84A}                                                                                                      | 20210311     | {D08A7BB0-68D1-4A6A-B643-8A399E5CD84A} |
+| ProtonVPN                                                          | 2.0.6         | C:\Program Files (x86)\Proton Technologies\ProtonVPN\    | C:\Users\James\AppData\Local\Temp\{E7AD46A7-6578-45D9-A690-BF58D33BA6B5}\33BA6B5\                                                  | 1033     | Proton Technologies AG                                       | MsiExec.exe /I{E7AD46A7-6578-45D9-A690-BF58D33BA6B5}                                                                                                      | 20221018     | {E7AD46A7-6578-45D9-A690-BF58D33BA6B5} |
++--------------------------------------------------------------------+---------------+----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----------------------------------------+
+osquery> select * from programs where name like '%VPN';
++-----------+---------+-------------------------------------------------------+-----------------------------------------------------------------------------------+----------+------------------------+----------------------------------------------------------------------------+--------------+----------------------------------------+
+| name      | version | install_location                                      | install_source                                                                    | language | publisher              | uninstall_string                                                           | install_date | identifying_number                     |
++-----------+---------+-------------------------------------------------------+-----------------------------------------------------------------------------------+----------+------------------------+----------------------------------------------------------------------------+--------------+----------------------------------------+
+| ProtonVPN | 2.0.6   | C:\Program Files (x86)\Proton Technologies\ProtonVPN\ |                                                                                   |          | Proton Technologies AG | msiexec.exe /i {E7AD46A7-6578-45D9-A690-BF58D33BA6B5} AI_UNINSTALLER_CTP=1 |              |                                        |
+| ProtonVPN | 2.0.6   | C:\Program Files (x86)\Proton Technologies\ProtonVPN\ | C:\Users\James\AppData\Local\Temp\{E7AD46A7-6578-45D9-A690-BF58D33BA6B5}\33BA6B5\ | 1033     | Proton Technologies AG | MsiExec.exe /I{E7AD46A7-6578-45D9-A690-BF58D33BA6B5}                       | 20221018     | {E7AD46A7-6578-45D9-A690-BF58D33BA6B5} |
++-----------+---------+-------------------------------------------------------+-----------------------------------------------------------------------------------+----------+------------------------+----------------------------------------------------------------------------+--------------+----------------------------------------+
+
+osquery> select count(*) from services;
++----------+
+| count(*) |
++----------+
+| 214      |
++----------+
+
+osquery> .schema services
+CREATE TABLE services(`name` TEXT, `service_type` TEXT, `display_name` TEXT, `status` TEXT, `pid` INTEGER, `start_type` TEXT, `win32_exit_code` INTEGER, `service_exit_code` INTEGER, `path` TEXT, `module_path` TEXT, `description` TEXT, `user_account` TEXT);
+
+osquery> select * from services limit 1;
++----------+---------------+------------------------+---------+-----+--------------+-----------------+-------------------+---------------------------------------------------------------------+----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+
+| name     | service_type  | display_name           | status  | pid | start_type   | win32_exit_code | service_exit_code | path                                                                | module_path                      | description                                                                                                                                                             | user_account              |
++----------+---------------+------------------------+---------+-----+--------------+-----------------+-------------------+---------------------------------------------------------------------+----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+
+| AJRouter | SHARE_PROCESS | AllJoyn Router Service | STOPPED | 0   | DEMAND_START | 1077            | 0                 | C:\Windows\system32\svchost.exe -k LocalServiceNetworkRestricted -p | C:\Windows\System32\AJRouter.dll | Routes AllJoyn messages for the local AllJoyn clients. If this service is stopped the AllJoyn clients that do not have their own bundled routers will be unable to run. | NT AUTHORITY\LocalService |
++----------+---------------+------------------------+---------+-----+--------------+-----------------+-------------------+---------------------------------------------------------------------+----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+
+
+osquery> .schema autoexec
+CREATE TABLE autoexec(`path` TEXT, `name` TEXT, `source` TEXT, PRIMARY KEY (`path`)) WITHOUT ROWID;
+
+osquery> select name from autoexec where path like '%.bat';
++----------------+
+| name           |
++----------------+
+| batstartup.bat |
+| batstartup.bat |
++----------------+
+
+osquery> select * from autoexec;
++---------------------------------------------------------------------------------------------------------------+------------------------------------------------+---------------+
+| path                                                                                                          | name                                           | source        |
++---------------------------------------------------------------------------------------------------------------+------------------------------------------------+---------------+
+|                                                                                                               | Local Print Queue                              | drivers       |
+|                                                                                                               | Local Print Queue                              | drivers       |
+|                                                                                                               | Local Print Queue                              | drivers       |
+|                                                                                                               | Generic software device                        | drivers       |
+| C:\Windows\system32\drivers\rdpbus.sys                                                                        | Remote Desktop Device Redirector Bus           | drivers       |
+| C:\Windows\system32\drivers\ec2winutildriver.sys                                                              | EC2 Windows Utility Device                     | drivers       |
+| C:\Windows\system32\driverstore\filerepository\swenum.inf_amd64_31f554b660026323\swenum.sys                   | Plug and Play Software Device Enumerator       | drivers       |
+| C:\Windows\system32\drivers\mssmbios.sys                                                                      | Microsoft System Management BIOS Driver        | drivers       |
+| C:\Windows\system32\drivers\ndisvirtualbus.sys                                                                | NDIS Virtual Network Adapter Enumerator        | drivers       |
+| C:\Windows\system32\driverstore\filerepository\basicrender.inf_amd64_efdc64af60c69a6d\basicrender.sys         | Microsoft Basic Render Driver                  | drivers       |
+|                                                                                                               | ACPI Fixed Feature Button                      | drivers       |
+| C:\Windows\system32\drivers\intelppm.sys                                                                      | Intel Processor                                | drivers       |
+| C:\Windows\system32\drivers\intelppm.sys                                                                      | Intel Processor                                | drivers       |
+|                                                                                                               | High precision event timer                     | drivers       |
+| C:\Windows\system32\drivers\xeniface.sys                                                                      | AWS Interface                                  | drivers       |
+| C:\Windows\system32\drivers\xennet.sys                                                                        | AWS PV Network Device                          | drivers       |
+| C:\Windows\system32\drivers\xenvif.sys                                                                        | AWS PV Network Class                           | drivers       |
+| C:\Windows\system32\drivers\disk.sys                                                                          | Disk drive                                     | drivers       |
+| C:\Windows\system32\drivers\disk.sys                                                                          | Disk drive                                     | drivers       |
+| C:\Windows\system32\drivers\xenvbd.sys                                                                        | AWS PV Storage Host Adapter                    | drivers       |
+| C:\Windows\system32\drivers\xenbus.sys                                                                        |                                                | drivers       |
+| C:\Windows\system32\drivers\monitor.sys                                                                       | Generic Non-PnP Monitor                        | drivers       |
+| C:\Windows\system32\driverstore\filerepository\basicdisplay.inf_amd64_5103ac179273be89\basicdisplay.sys       | Microsoft Basic Display Adapter                | drivers       |
+| C:\Windows\system32\drivers\atapi.sys                                                                         | IDE Channel                                    | drivers       |
+| C:\Windows\system32\drivers\atapi.sys                                                                         | IDE Channel                                    | drivers       |
+| C:\Windows\system32\drivers\intelide.sys                                                                      | Intel(R) 82371SB PCI Bus Master IDE Controller | drivers       |
+| C:\Windows\system32\drivers\serial.sys                                                                        | Communications Port                            | drivers       |
+| C:\Windows\system32\drivers\fdc.sys                                                                           | Standard floppy disk controller                | drivers       |
+| C:\Windows\system32\drivers\i8042prt.sys                                                                      | Standard PS/2 Keyboard                         | drivers       |
+| C:\Windows\system32\drivers\i8042prt.sys                                                                      | PS/2 Compatible Mouse                          | drivers       |
+|                                                                                                               | System speaker                                 | drivers       |
+|                                                                                                               | System CMOS/real time clock                    | drivers       |
+|                                                                                                               | System timer                                   | drivers       |
+|                                                                                                               | Direct memory access controller                | drivers       |
+|                                                                                                               | Programmable interrupt controller              | drivers       |
+|                                                                                                               | Motherboard resources                          | drivers       |
+| C:\Windows\system32\drivers\msisadrv.sys                                                                      | PCI to ISA Bridge                              | drivers       |
+|                                                                                                               | CPU to PCI Bridge                              | drivers       |
+| C:\Windows\system32\drivers\pci.sys                                                                           | PCI Bus                                        | drivers       |
+|                                                                                                               | Motherboard resources                          | drivers       |
+| C:\Windows\system32\drivers\acpi.sys                                                                          | Microsoft ACPI-Compliant System                | drivers       |
+|                                                                                                               | ACPI x64-based PC                              | drivers       |
+| C:\Windows\system32\drivers\terminpt.sys                                                                      | Remote Desktop Mouse Device                    | drivers       |
+| C:\Windows\system32\drivers\terminpt.sys                                                                      | Remote Desktop Keyboard Device                 | drivers       |
+| C:\Windows\system32\drivers\umbus.sys                                                                         | UMBus Enumerator                               | drivers       |
+| C:\Windows\system32\drivers\umbus.sys                                                                         | UMBus Root Bus Enumerator                      | drivers       |
+| C:\Windows\system32\drivers\kdnic.sys                                                                         | Microsoft Kernel Debug Network Adapter         | drivers       |
+| C:\Windows\system32\drivers\spaceport.sys                                                                     | Microsoft Storage Spaces Controller            | drivers       |
+| C:\Windows\system32\drivers\vdrvroot.sys                                                                      | Microsoft Virtual Drive Enumerator             | drivers       |
+| C:\Windows\system32\driverstore\filerepository\compositebus.inf_amd64_e4d35af746093dc3\compositebus.sys       | Composite Bus Enumerator                       | drivers       |
+| C:\Windows\system32\drivers\wintun.sys                                                                        | Wintun Userspace Tunnel                        | drivers       |
+| C:\Windows\system32\drivers\tapprotonvpn.sys                                                                  | TAP-ProtonVPN Windows Adapter V9               | drivers       |
+| C:\Windows\system32\driverstore\filerepository\basicdisplay.inf_amd64_5103ac179273be89\basicdisplay.sys       | Microsoft Basic Display Driver                 | drivers       |
+| C:\Windows\system32\drivers\volume.sys                                                                        | Volume                                         | drivers       |
+| C:\Windows\system32\drivers\volmgr.sys                                                                        | Volume Manager                                 | drivers       |
+|                                                                                                               |                                                | drivers       |
+|                                                                                                               |                                                | drivers       |
+|                                                                                                               |                                                | drivers       |
+| C:\Windows\System32\ieframe.dll                                                                               | Microsoft Url Search Hook                      | ie_extensions |
+| C:\Windows\System32\AJRouter.dll                                                                              | AJRouter                                       | services      |
+|                                                                                                               | ALG                                            | services      |
+|                                                                                                               | AmazonSSMAgent                                 | services      |
+| C:\Windows\System32\appidsvc.dll                                                                              | AppIDSvc                                       | services      |
+| C:\Windows\System32\appinfo.dll                                                                               | Appinfo                                        | services      |
+| C:\Windows\System32\appmgmts.dll                                                                              | AppMgmt                                        | services      |
+|                                                                                                               | AppReadiness                                   | services      |
+|                                                                                                               | AppVClient                                     | services      |
+| C:\Windows\system32\appxdeploymentserver.dll                                                                  | AppXSvc                                        | services      |
+|                                                                                                               | AtomicTestService_CMD                          | services      |
+| C:\Windows\System32\AudioEndpointBuilder.dll                                                                  | AudioEndpointBuilder                           | services      |
+| C:\Windows\System32\Audiosrv.dll                                                                              | Audiosrv                                       | services      |
+|                                                                                                               | AWSLiteAgent                                   | services      |
+| C:\Windows\System32\AxInstSV.dll                                                                              | AxInstSV                                       | services      |
+| C:\Windows\System32\bfe.dll                                                                                   | BFE                                            | services      |
+| C:\Windows\System32\qmgr.dll                                                                                  | BITS                                           | services      |
+| C:\Windows\System32\psmsrv.dll                                                                                | BrokerInfrastructure                           | services      |
+| C:\Windows\System32\BTAGService.dll                                                                           | BTAGService                                    | services      |
+| C:\Windows\System32\BthAvctpSvc.dll                                                                           | BthAvctpSvc                                    | services      |
+| C:\Windows\system32\bthserv.dll                                                                               | bthserv                                        | services      |
+| C:\Windows\system32\CapabilityAccessManager.dll                                                               | camsvc                                         | services      |
+| C:\Windows\System32\CDPSvc.dll                                                                                | CDPSvc                                         | services      |
+| C:\Windows\System32\certprop.dll                                                                              | CertPropSvc                                    | services      |
+|                                                                                                               | cfn-hup                                        | services      |
+| C:\Windows\System32\ClipSVC.dll                                                                               | ClipSVC                                        | services      |
+|                                                                                                               | COMSysApp                                      | services      |
+| C:\Windows\system32\coremessaging.dll                                                                         | CoreMessagingRegistrar                         | services      |
+| C:\Windows\system32\cryptsvc.dll                                                                              | CryptSvc                                       | services      |
+| C:\Windows\System32\cscsvc.dll                                                                                | CscService                                     | services      |
+| C:\Windows\system32\rpcss.dll                                                                                 | DcomLaunch                                     | services      |
+| C:\Windows\System32\defragsvc.dll                                                                             | defragsvc                                      | services      |
+| C:\Windows\system32\das.dll                                                                                   | DeviceAssociationService                       | services      |
+| C:\Windows\system32\umpnpmgr.dll                                                                              | DeviceInstall                                  | services      |
+| C:\Windows\system32\DevQueryBroker.dll                                                                        | DevQueryBroker                                 | services      |
+| C:\Windows\system32\dhcpcore.dll                                                                              | Dhcp                                           | services      |
+|                                                                                                               | diagnosticshub.standardcollector.service       | services      |
+| C:\Windows\system32\diagtrack.dll                                                                             | DiagTrack                                      | services      |
+| C:\Windows\system32\Windows.Internal.Management.dll                                                           | DmEnrollmentSvc                                | services      |
+| C:\Windows\system32\dmwappushsvc.dll                                                                          | dmwappushservice                               | services      |
+| C:\Windows\System32\dnsrslvr.dll                                                                              | Dnscache                                       | services      |
+|                                                                                                               | DoSvc                                          | services      |
+| C:\Windows\System32\dot3svc.dll                                                                               | dot3svc                                        | services      |
+| C:\Windows\system32\dps.dll                                                                                   | DPS                                            | services      |
+| C:\Windows\System32\DeviceSetupManager.dll                                                                    | DsmSvc                                         | services      |
+| C:\Windows\System32\DsSvc.dll                                                                                 | DsSvc                                          | services      |
+| C:\Windows\System32\eapsvc.dll                                                                                | Eaphost                                        | services      |
+|                                                                                                               | edgeupdate                                     | services      |
+|                                                                                                               | edgeupdatem                                    | services      |
+| C:\Windows\system32\efssvc.dll                                                                                | EFS                                            | services      |
+| C:\Windows\System32\embeddedmodesvc.dll                                                                       | embeddedmode                                   | services      |
+| C:\Windows\system32\EnterpriseAppMgmtSvc.dll                                                                  | EntAppSvc                                      | services      |
+|                                                                                                               | EventLog                                       | services      |
+| C:\Windows\system32\es.dll                                                                                    | EventSystem                                    | services      |
+| C:\Windows\system32\fdPHost.dll                                                                               | fdPHost                                        | services      |
+| C:\Windows\system32\fdrespub.dll                                                                              | FDResPub                                       | services      |
+| C:\Windows\system32\FntCache.dll                                                                              | FontCache                                      | services      |
+| C:\Windows\system32\FrameServer.dll                                                                           | FrameServer                                    | services      |
+|                                                                                                               | GoogleChromeElevationService                   | services      |
+| C:\Windows\System32\gpsvc.dll                                                                                 | gpsvc                                          | services      |
+| C:\Windows\System32\GraphicsPerfSvc.dll                                                                       | GraphicsPerfSvc                                | services      |
+|                                                                                                               | gupdate                                        | services      |
+|                                                                                                               | gupdatem                                       | services      |
+| C:\Windows\system32\hidserv.dll                                                                               | hidserv                                        | services      |
+| C:\Windows\System32\hvhostsvc.dll                                                                             | HvHost                                         | services      |
+| C:\Windows\System32\tetheringservice.dll                                                                      | icssvc                                         | services      |
+| C:\Windows\System32\ikeext.dll                                                                                | IKEEXT                                         | services      |
+| C:\Windows\system32\InstallService.dll                                                                        | InstallService                                 | services      |
+| C:\Windows\System32\iphlpsvc.dll                                                                              | iphlpsvc                                       | services      |
+| C:\Windows\system32\keyiso.dll                                                                                | KeyIso                                         | services      |
+| C:\Windows\system32\kpssvc.dll                                                                                | KPSSVC                                         | services      |
+| C:\Windows\system32\msdtckrm.dll                                                                              | KtmRm                                          | services      |
+| C:\Windows\system32\srvsvc.dll                                                                                | LanmanServer                                   | services      |
+| C:\Windows\System32\wkssvc.dll                                                                                | LanmanWorkstation                              | services      |
+| C:\Windows\System32\lfsvc.dll                                                                                 | lfsvc                                          | services      |
+| C:\Windows\system32\LicenseManagerSvc.dll                                                                     | LicenseManager                                 | services      |
+| C:\Windows\System32\lltdsvc.dll                                                                               | lltdsvc                                        | services      |
+|                                                                                                               | lmhosts                                        | services      |
+| C:\Windows\System32\lsm.dll                                                                                   | LSM                                            | services      |
+| C:\Windows\System32\moshost.dll                                                                               | MapsBroker                                     | services      |
+| C:\Windows\system32\mpssvc.dll                                                                                | mpssvc                                         | services      |
+|                                                                                                               | MSDTC                                          | services      |
+| C:\Windows\system32\iscsiexe.dll                                                                              | MSiSCSI                                        | services      |
+|                                                                                                               | msiserver                                      | services      |
+| C:\Windows\System32\ncasvc.dll                                                                                | NcaSvc                                         | services      |
+| C:\Windows\System32\ncbservice.dll                                                                            | NcbService                                     | services      |
+| C:\Windows\system32\netlogon.dll                                                                              | Netlogon                                       | services      |
+| C:\Windows\System32\netman.dll                                                                                | Netman                                         | services      |
+| C:\Windows\System32\netprofmsvc.dll                                                                           | netprofm                                       | services      |
+| C:\Windows\System32\NetSetupSvc.dll                                                                           | NetSetupSvc                                    | services      |
+|                                                                                                               | NetTcpPortSharing                              | services      |
+| C:\Windows\System32\NgcCtnrSvc.dll                                                                            | NgcCtnrSvc                                     | services      |
+| C:\Windows\system32\ngcsvc.dll                                                                                | NgcSvc                                         | services      |
+|                                                                                                               | NlaSvc                                         | services      |
+|                                                                                                               | nsi                                            | services      |
+|                                                                                                               | osqueryd                                       | services      |
+| C:\Windows\System32\pcasvc.dll                                                                                | PcaSvc                                         | services      |
+|                                                                                                               | PerfHost                                       | services      |
+| C:\Windows\System32\PhoneService.dll                                                                          | PhoneSvc                                       | services      |
+| C:\Windows\system32\pla.dll                                                                                   | pla                                            | services      |
+| C:\Windows\system32\umpnpmgr.dll                                                                              | PlugPlay                                       | services      |
+| C:\Windows\System32\ipsecsvc.dll                                                                              | PolicyAgent                                    | services      |
+| C:\Windows\system32\umpo.dll                                                                                  | Power                                          | services      |
+| C:\Windows\system32\spool\drivers\x64\3\PrintConfig.dll                                                       | PrintNotify                                    | services      |
+| C:\Windows\system32\profsvc.dll                                                                               | ProfSvc                                        | services      |
+|                                                                                                               | ProtonVPN Service                              | services      |
+| C:\Windows\system32\PushToInstall.dll                                                                         | PushToInstall                                  | services      |
+| C:\Windows\system32\qwave.dll                                                                                 | QWAVE                                          | services      |
+| C:\Windows\System32\rasauto.dll                                                                               | RasAuto                                        | services      |
+| C:\Windows\System32\rasmans.dll                                                                               | RasMan                                         | services      |
+|                                                                                                               | RemoteAccess                                   | services      |
+| C:\Windows\system32\regsvc.dll                                                                                | RemoteRegistry                                 | services      |
+| C:\Windows\System32\RMapi.dll                                                                                 | RmSvc                                          | services      |
+| C:\Windows\System32\RpcEpMap.dll                                                                              | RpcEptMapper                                   | services      |
+|                                                                                                               | RpcLocator                                     | services      |
+| C:\Windows\system32\rpcss.dll                                                                                 | RpcSs                                          | services      |
+|                                                                                                               | RSoPProv                                       | services      |
+| C:\Windows\system32\sacsvr.dll                                                                                | sacsvr                                         | services      |
+|                                                                                                               | SamSs                                          | services      |
+| C:\Windows\System32\SCardSvr.dll                                                                              | SCardSvr                                       | services      |
+| C:\Windows\System32\ScDeviceEnum.dll                                                                          | ScDeviceEnum                                   | services      |
+| C:\Windows\system32\schedsvc.dll                                                                              | Schedule                                       | services      |
+| C:\Windows\System32\certprop.dll                                                                              | SCPolicySvc                                    | services      |
+| C:\Windows\system32\seclogon.dll                                                                              | seclogon                                       | services      |
+|                                                                                                               | SecurityHealthService                          | services      |
+| C:\Windows\system32\SEMgrSvc.dll                                                                              | SEMgrSvc                                       | services      |
+| C:\Windows\System32\sens.dll                                                                                  | SENS                                           | services      |
+|                                                                                                               | Sense                                          | services      |
+|                                                                                                               | SensorDataService                              | services      |
+| C:\Windows\system32\SensorService.dll                                                                         | SensorService                                  | services      |
+| C:\Windows\system32\sensrsvc.dll                                                                              | SensrSvc                                       | services      |
+|                                                                                                               | SessionEnv                                     | services      |
+|                                                                                                               | SgrmBroker                                     | services      |
+| C:\Windows\System32\ipnathlp.dll                                                                              | SharedAccess                                   | services      |
+| C:\Windows\System32\shsvcs.dll                                                                                | ShellHWDetection                               | services      |
+| C:\Windows\system32\Windows.SharedPC.AccountManager.dll                                                       | shpamsvc                                       | services      |
+| C:\Windows\System32\smphost.dll                                                                               | smphost                                        | services      |
+|                                                                                                               | SNMPTRAP                                       | services      |
+|                                                                                                               | Spooler                                        | services      |
+|                                                                                                               | sppsvc                                         | services      |
+| C:\Windows\System32\ssdpsrv.dll                                                                               | SSDPSRV                                        | services      |
+|                                                                                                               | ssh-agent                                      | services      |
+| C:\Windows\system32\sstpsvc.dll                                                                               | SstpSvc                                        | services      |
+| C:\Windows\system32\windows.staterepository.dll                                                               | StateRepository                                | services      |
+| C:\Windows\System32\wiaservc.dll                                                                              | stisvc                                         | services      |
+| C:\Windows\system32\storsvc.dll                                                                               | StorSvc                                        | services      |
+| C:\Windows\system32\svsvc.dll                                                                                 | svsvc                                          | services      |
+| C:\Windows\System32\swprv.dll                                                                                 | swprv                                          | services      |
+| C:\Windows\system32\sysmain.dll                                                                               | SysMain                                        | services      |
+|                                                                                                               | Sysmon                                         | services      |
+| C:\Windows\System32\SystemEventsBrokerServer.dll                                                              | SystemEventsBroker                             | services      |
+| C:\Windows\System32\TabSvc.dll                                                                                | TabletInputService                             | services      |
+| C:\Windows\System32\tapisrv.dll                                                                               | tapisrv                                        | services      |
+| C:\Windows\System32\termsrv.dll                                                                               | TermService                                    | services      |
+| C:\Windows\system32\themeservice.dll                                                                          | Themes                                         | services      |
+|                                                                                                               | TieringEngineService                           | services      |
+| C:\Windows\System32\TimeBrokerServer.dll                                                                      | TimeBrokerSvc                                  | services      |
+| C:\Windows\System32\TokenBroker.dll                                                                           | TokenBroker                                    | services      |
+| C:\Windows\System32\trkwks.dll                                                                                | TrkWks                                         | services      |
+|                                                                                                               | TrustedInstaller                               | services      |
+| C:\Windows\system32\tzautoupdate.dll                                                                          | tzautoupdate                                   | services      |
+| C:\Windows\System32\ualsvc.dll                                                                                | UALSVC                                         | services      |
+|                                                                                                               | UevAgentService                                | services      |
+| C:\Windows\System32\umrdp.dll                                                                                 | UmRdpService                                   | services      |
+| C:\Windows\System32\upnphost.dll                                                                              | upnphost                                       | services      |
+| C:\Windows\System32\usermgr.dll                                                                               | UserManager                                    | services      |
+| C:\Windows\system32\usocore.dll                                                                               | UsoSvc                                         | services      |
+| C:\Windows\System32\vaultsvc.dll                                                                              | VaultSvc                                       | services      |
+|                                                                                                               | vds                                            | services      |
+| C:\Windows\System32\icsvc.dll                                                                                 | vmicguestinterface                             | services      |
+| C:\Windows\System32\icsvc.dll                                                                                 | vmicheartbeat                                  | services      |
+| C:\Windows\System32\icsvc.dll                                                                                 | vmickvpexchange                                | services      |
+| C:\Windows\System32\icsvcext.dll                                                                              | vmicrdv                                        | services      |
+| C:\Windows\System32\icsvc.dll                                                                                 | vmicshutdown                                   | services      |
+| C:\Windows\System32\icsvc.dll                                                                                 | vmictimesync                                   | services      |
+| C:\Windows\System32\icsvc.dll                                                                                 | vmicvmsession                                  | services      |
+| C:\Windows\System32\icsvcext.dll                                                                              | vmicvss                                        | services      |
+|                                                                                                               | VSS                                            | services      |
+| C:\Windows\system32\w32time.dll                                                                               | W32Time                                        | services      |
+| C:\Windows\System32\WaaSMedicSvc.dll                                                                          | WaaSMedicSvc                                   | services      |
+|                                                                                                               | WalletService                                  | services      |
+| C:\Windows\System32\Windows.WARP.JITService.dll                                                               | WarpJITSvc                                     | services      |
+| C:\Windows\System32\wbiosrvc.dll                                                                              | WbioSrvc                                       | services      |
+| C:\Windows\System32\wcmsvc.dll                                                                                | Wcmsvc                                         | services      |
+| C:\Windows\system32\wdi.dll                                                                                   | WdiServiceHost                                 | services      |
+| C:\Windows\system32\wdi.dll                                                                                   | WdiSystemHost                                  | services      |
+|                                                                                                               | WdNisSvc                                       | services      |
+| C:\Windows\system32\wecsvc.dll                                                                                | Wecsvc                                         | services      |
+| C:\Windows\system32\wephostsvc.dll                                                                            | WEPHOSTSVC                                     | services      |
+| C:\Windows\System32\wercplsupport.dll                                                                         | wercplsupport                                  | services      |
+| C:\Windows\System32\WerSvc.dll                                                                                | WerSvc                                         | services      |
+| C:\Windows\System32\wiarpc.dll                                                                                | WiaRpc                                         | services      |
+|                                                                                                               | WinDefend                                      | services      |
+| C:\Windows\system32\winhttp.dll                                                                               | WinHttpAutoProxySvc                            | services      |
+| C:\Windows\system32\wbem\WMIsvc.dll                                                                           | Winmgmt                                        | services      |
+| C:\Windows\system32\WsmSvc.dll                                                                                | WinRM                                          | services      |
+| C:\Windows\system32\flightsettings.dll                                                                        | wisvc                                          | services      |
+| C:\Windows\system32\wlidsvc.dll                                                                               | wlidsvc                                        | services      |
+|                                                                                                               | wmiApSrv                                       | services      |
+|                                                                                                               | WMPNetworkSvc                                  | services      |
+| C:\Windows\system32\wpdbusenum.dll                                                                            | WPDBusEnum                                     | services      |
+| C:\Windows\system32\WpnService.dll                                                                            | WpnService                                     | services      |
+|                                                                                                               | WSearch                                        | services      |
+| C:\Windows\system32\wuaueng.dll                                                                               | wuauserv                                       | services      |
+|                                                                                                               | CaptureService_80920                           | services      |
+|                                                                                                               | cbdhsvc_80920                                  | services      |
+|                                                                                                               | CDPUserSvc_80920                               | services      |
+|                                                                                                               | ConsentUxUserSvc_80920                         | services      |
+|                                                                                                               | DevicePickerUserSvc_80920                      | services      |
+|                                                                                                               | DevicesFlowUserSvc_80920                       | services      |
+|                                                                                                               | PimIndexMaintenanceSvc_80920                   | services      |
+|                                                                                                               | PrintWorkflowUserSvc_80920                     | services      |
+|                                                                                                               | UnistoreSvc_80920                              | services      |
+|                                                                                                               | UserDataSvc_80920                              | services      |
+|                                                                                                               | WpnUserService_80920                           | services      |
+| C:\Users\Default User\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\RunWallpaperSetupInit.cmd | RunWallpaperSetupInit.cmd                      | startup_items |
+| C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\RunWallpaperSetupInit.cmd      | RunWallpaperSetupInit.cmd                      | startup_items |
+| C:\Windows\system32\SecurityHealthSystray.exe                                                                 | SecurityHealth                                 | startup_items |
+| C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\batstartup.bat                                   | batstartup.bat                                 | startup_items |
+| C:\Users\James\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\batstartup.bat                   | batstartup.bat                                 | startup_items |
+| C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\desktop.ini                                      | desktop.ini                                    | startup_items |
+| C:\Users\James\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\desktop.ini                      | desktop.ini                                    | startup_items |
++---------------------------------------------------------------------------------------------------------------+------------------------------------------------+---------------+
+osquery> select path from autoexec where name='batstartup.bat';
++---------------------------------------------------------------------------------------------+
+| path                                                                                        |
++---------------------------------------------------------------------------------------------+
+| C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\batstartup.bat                 |
+| C:\Users\James\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\batstartup.bat |
++---------------------------------------------------------------------------------------------+
+```
+Which table stores the evidence of process execution in Windows OS?
+*userassist*
+One of the users seems to have executed a program to remove traces from the disk; what is the name of that program?
+*DiskWipe.exe*
+Create a search query to identify the VPN installed on this host. What is name of the software?
+*ProtonVPN*
+How many services are running on this host?
+*214*
+A table autoexec contains the list of executables that are automatically executed on the target machine. There seems to be a batch file that runs automatically. What is the name of that batch file (with the extension .bat)?
+*batstartup.bat*
+What is the full path of the batch file found in the above question? (Last in the List)
+*C:\Users\James\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\batstartup.bat*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/dedcafb2880290b3e404b1d66e9dab9f.png)
+- ![777](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/bffb88b6f01056f786be314da4cad299.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e8dd9a4a45e18443162feab/room-content/ee06ba38daf23aa4cdc7bae4af288a0c.png)
+
+## Notes / Lessons Learned
+[[Splunk Basics]]
+
