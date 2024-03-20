@@ -356,3 +356,361 @@ osquery> select pid, name, path from osquery_info join processes using (pid);
 +------+--------------+----------------------------------------------------+
 ```
 Please refer to the Osquery [documentation](https://osquery.readthedocs.io/en/stable/introduction/sql/) for more information regarding SQL and creating queries specific to Osquery.
+What is the query to show the username field from the users table where the username is 3 characters long and ends with 'en'? (use single quotes in your answer)
+`select username from users where username like '%en';`
+### Using Kolide Fleet
+In this task, we will look at an open-source Osquery Fleet Manager known as [Kolide Fleet](https://github.com/kolide/fleet).
+With Kolide Fleet, instead of using Osquery locally to query an endpoint, you can query multiple endpoints from the Kolide Fleet UI.
+Note: The open-source repo of Kolide Fleet is no longer supported and was retired on November 4th, 2020. A commercial version, known as Kolide K2, is available. You can view more about it [here](https://github.com/kolide/launcher). There is a more recent repo called [fleet](https://github.com/fleetdm/fleet), a fork of the original Kolide Fleet, and as per the creators of Kolide Fleet, "it appears to be the first of many promising forks."
+The attached VM has Kolide Fleet installed and configured thanks to the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about) (WSL).  Steps need to be executed to start Kolide Fleet in the attached VM, though.
+Open an Ubuntu terminal and enter the following commands. (sudo password is tryhackme)
+Command: `sudo redis-server --daemonize yes`
+![](https://assets.tryhackme.com/additional/osquery/kolide_redis_server.png)
+Command: `sudo service mysql start`
+![](https://assets.tryhackme.com/additional/osquery/kolide_mysql_start.png)
+Command:
+```text
+/usr/bin/fleet serve \--mysql_address=127.0.0.1:3306 \--mysql_database=kolide \--mysql_username=root \--mysql_password=tryhackme \--redis_address=127.0.0.1:6379 \--server_cert=/home/tryhackme/server.cert \--server_key=/home/tryhackme/server.key \--auth_jwt_key=JB+wEDR4V3bbhU4OlIMcXpcBQAaZc+4r \--logging_json
+```
+![](https://assets.tryhackme.com/additional/osquery/kolide_server_start.png)
+A text file with the above commands is on the desktop in a file titled kolide-commands.txt.
+Open Google Chrome and navigate to https://127.0.0.1:8080. The credentials to log into Kolide Fleet are below:
+Username: thmosquery
+Password: tryhackme1!
+If all goes well, you should be greeted with the Kolide Fleet UI, similar to the image below.
+![](https://assets.tryhackme.com/additional/osquery/osquery_kolide.png)
+Now it's time to add a host, which will be the actual Windows machine.
+Open the Windows CMD and navigate to `C:\Users\Administrator\Desktop\launcher\windows`.
+From within that directory, run the following command:
+Command: `launcher.exe --hostname=127.0.0.1:8080 --enroll_secret=ENTER-SECRET-KEY --insecure`
+Before executing the above command, you need to replace ENTER-SECRET-KEY with the Osquery Enroll Secret.
+If all goes well, you should see the machine successfully added to the fleet.
+![](https://assets.tryhackme.com/additional/osquery/kolide_agent.png)
+Note: You may need to refresh the page to see the machine added.
+Try to run a query against the new endpoint using the Kolide Fleet UI.
+Click on Query > Create New Query (or click the database icon next to the machine name).
+![](https://assets.tryhackme.com/additional/osquery/kolide_query.png)
+Let's look at a brief overview of the New Query page.
+![](https://assets.tryhackme.com/additional/osquery/kolide_new_query3.png)
+If you wish to save your query, give your query a title.
+This is the SQL command to execute when this query is run.
+A brief description to what is the objective of the query.
+What host, or hosts, to run the query against.
+Save the query for future executions.
+Execute the query.
+You don't have to save the query to run it. You can enter the SQL command, select the host(s), and run the command.
+A few more things to mention about the UI: each column in the returned results is filterable, and information about each table is available.
+![](https://assets.tryhackme.com/additional/osquery/kolide_query_filter2.png)
+The above image shows the query returned 106 results, but the output was filtered to just 1 by filtering on the cmdline column to return the results for 'lsass'.
+![](https://assets.tryhackme.com/additional/osquery/kolide_table_desc2.png)
+At the far right of the UI, there is a convenient Table Documentation which is essentially the schema for each table. The above screenshot shows the schema for the users table.
+Feel free to explore Query Packs at your own leisure. You can read more about this [here](https://osquery.readthedocs.io/en/stable/deployment/configuration/) and [here](https://osquery.readthedocs.io/en/stable/deployment/log-aggregation/).
+```text
+tryhackme@WIN-FG4Q5UQP406:~$ sudo redis-server --daemonize yes
+[sudo] password for tryhackme:
+tryhackme@WIN-FG4Q5UQP406:~$ sudo service mysql start
+ * Starting MySQL database server mysqld                                                                                No directory, logging in with HOME=/
+                                                                                                                 [ OK ]
+tryhackme@WIN-FG4Q5UQP406:~$ /usr/bin/fleet serve \--mysql_address=127.0.0.1:3306 \--mysql_database=kolide \--mysql_username=root \--mysql_password=tryhackme \--redis_address=127.0.0.1:6379 \--server_cert=/home/tryhackme/server.cert \--server_key=/home/tryhackme/server.key \--auth_jwt_key=JB+wEDR4V3bbhU4OlIMcXpcBQAaZc+4r \--logging_json
+{"component":"service","err":null,"level":"info","method":"ListUsers","took":"12.7811ms","ts":"2022-09-05T20:02:25.5627582Z","user":"none"}
+{"address":"0.0.0.0:8080","msg":"listening","transport":"https","ts":"2022-09-05T20:02:25.5645175Z"}
+2022/09/05 13:03:30 http: TLS handshake error from 127.0.0.1:50299: remote error: tls: unknown certificate
+2022/09/05 13:03:38 http: TLS handshake error from 127.0.0.1:50320: remote error: tls: unknown certificate
+{"component":"http","err":"selecting sessions: sql: no rows in result set","ts":"2022-09-05T20:03:39.1877261Z"}
+2022/09/05 13:03:39 http: TLS handshake error from 127.0.0.1:50322: remote error: tls: unknown certificate
+{"component":"service","err":null,"level":"info","method":"SSOSettings","took":"33.064ms","ts":"2022-09-05T20:03:39.2498031Z"}
+{"component":"service","err":null,"level":"info","method":"Login","took":"383.2505ms","ts":"2022-09-05T20:04:02.7686251Z","user":"thmosquery"}
+```
+![[Pasted image 20220905150524.png]]
+What is the Osquery Enroll Secret?
+*k3hFh30bUrU7nAC3DmsCCyb1mT8HoDkt*
+```text
+Microsoft Windows [Version 10.0.17763.737]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\Administrator>cd C:\Users\Administrator\Desktop\launcher\windows
+
+C:\Users\Administrator\Desktop\launcher\windows>launcher.exe --hostname=127.0.0.1:8080 --enroll_secret=k3hFh30bUrU7nAC3DmsCCyb1mT8HoDkt --insecure
+{"caller":"main.go:26","msg":"Launcher starting up","revision":"413a525d969c54a2a955e86e7a568194acfbd05b","severity":"info","ts":"2022-09-05T20:07:10.4298692Z","version":"0.11.10"}
+{"caller":"launcher.go:51","msg":"using default system root directory","path":"C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\2\\launcher-root","severity":"info","ts":"2022-09-05T20:07:10.4318693Z"}
+{"caller":"client_grpc.go:111","cert_pinning":false,"msg":"dialing grpc server","server":"127.0.0.1:8080","severity":"info","tls_secure":false,"transport_secure":true,"ts":"2022-09-05T20:07:10.436869Z"}
+{"build":"413a525d969c54a2a955e86e7a568194acfbd05b","caller":"launcher.go:158","msg":"started kolide launcher","severity":"info","ts":"2022-09-05T20:07:10.4501547Z","version":"0.11.10"}
+{"caller":"query_target_updater.go:21","msg":"query target updater started","severity":"info","ts":"2022-09-05T20:07:10.4507884Z"}
+{"arg0":"osqueryd.exe","args":"osqueryd.exe --pidfile=C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\2\\672112747\\osquery.pid --database_path=C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\2\\672112747\\osquery.db --extensions_socket=\\\\.\\pipe\\kolide-osquery-01GC7M74VJ2QE1QEHPFG6DSTXB --extensions_autoload=C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\2\\672112747\\osquery.autoload --extensions_timeout=10 --config_plugin=kolide_grpc --logger_plugin=kolide_grpc --distributed_plugin=kolide_grpc --disable_distributed=false --distributed_interval=5 --pack_delimiter=: --host_identifier=uuid --force=true --disable_watchdog --utc --verbose --config_refresh=300 --config_accelerated_refresh=30 --allow_unsafe","caller":"runtime.go:558","msg":"launching osqueryd","severity":"info","ts":"2022-09-05T20:07:11.2166753Z"}
+{"caller":"init.cpp:340","component":"osquery","level":"stderr","msg":"I0905 13:07:11.418467  4776 init.cpp:340] osquery initialized [version=4.2.0]","severity":"info","ts":"2022-09-05T20:07:11.4364667Z"}
+{"caller":"system.cpp:362","component":"osquery","level":"stderr","msg":"I0905 13:07:11.419466  4776 system.cpp:362] Writing osqueryd pid (4148) to C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\2\\672112747\\osquery.pid\r\nI0905 13:07:11.421468  4776 extensions.cpp:400] Found autoloadable extension: C:\\Users\\Administrator\\Desktop\\launcher\\windows\\osquery-extension.exe\r\nI0905 13:07:11.422467  4776 rocksdb.cpp:131] Opening RocksDB handle: C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\2\\672112747\\osquery.db","severity":"info","ts":"2022-09-05T20:07:11.4404675Z"}
+{"caller":"interface.cpp:268","component":"osquery","level":"stderr","msg":"I0905 13:07:11.491400  4552 interface.cpp:268] Extension manager service starting: \\\\.\\pipe\\kolide-osquery-01GC7M74VJ2QE1QEHPFG6DSTXB","severity":"info","ts":"2022-09-05T20:07:11.4914002Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"T","severity":"info","ts":"2022-09-05T20:07:11.5679724Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"hrift: Mon Sep  5 13:07:11 2022 Client connected.","severity":"info","ts":"2022-09-05T20:07:11.5679724Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"T","severity":"info","ts":"2022-09-05T20:07:11.5789805Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"hrift: Mon Sep  5 13:07:11 2022 Client connected.","severity":"info","ts":"2022-09-05T20:07:11.5789805Z"}
+{"caller":"interface.cpp:108","component":"osquery","level":"stderr","msg":"I0905 13:07:11.625973  5620 interface.cpp:108] Registering extension (kolide, 25407, version=, sdk=)","severity":"info","ts":"2022-09-05T20:07:11.6569781Z"}
+{"caller":"registry_factory.cpp:106","component":"osquery","level":"stderr","msg":"I0905 13:07:11.625973  5620 registry_factory.cpp:106] Extension 25407 registered config plugin kolide_grpc\r\nI0905 13:07:11.625973  5620 registry_factory.cpp:106] Extension 25407 registered distributed plugin kolide_grpc\r\nI0905 13:07:11.625973  5620 registry_factory.cpp:106] Extension 25407 registered logger plugin kolide_grpc\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_best_practices\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_chrome_login_data_emails\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_chrome_user_profiles\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_email_addresses\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_json\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_keyinfo\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_launcher_autoupdate_config\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_launcher_config\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_launcher_identifier\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_launcher_info\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_onepassword_accounts\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_program_icons\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_slack_config\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_ssh_keys\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_target_membership\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_wmi\r\nI0905 13:07:11.648980  5620 registry_factory.cpp:106] Extension 25407 registered table plugin kolide_xml","severity":"info","ts":"2022-09-05T20:07:11.6589803Z"}
+{"caller":"auto_constructed_tables.cpp:93","component":"osquery","level":"stderr","msg":"I0905 13:07:11.671977  4776 auto_constructed_tables.cpp:93] Removing stale ATC entries","severity":"info","ts":"2022-09-05T20:07:11.6731244Z"}
+{"caller":"watcher.cpp:629","component":"osquery","level":"stderr","msg":"I0905 13:07:11.894138  4540 watcher.cpp:629] Created and monitoring extension child (5496): C:\\Users\\Administrator\\Desktop\\launcher\\windows\\osquery-extension.exe","severity":"info","ts":"2022-09-05T20:07:11.9097643Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"[C:\\Users\\Administrator\\Desktop\\launcher\\windows\\osquery-extension.exe --verbose --socket \\\\.\\pipe\\kolide-osquery-01GC7M74VJ2QE1QEHPFG6DSTXB --timeout 10 --interval 3]","severity":"info","ts":"2022-09-05T20:07:12.067053Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"T","severity":"info","ts":"2022-09-05T20:07:13.1607449Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"hrift: Mon Sep  5 13:07:13 2022 Client connected.","severity":"info","ts":"2022-09-05T20:07:13.1625871Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"Thrift: Mon Sep  5 13:07:13 2022 Client connected.\r\nThrift: Mon Sep  5 13:07:13 2022 TPipe ::GetOverlappedResult errored GLE=errno = 109\r\nThrift: Mon Sep  5 13:07:13 2022 TConnectedClient died: TPipe: GetOverlappedResult failed","severity":"info","ts":"2022-09-05T20:07:13.1636432Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"Thrift: Mon Sep  5 13:07:13 2022 TPipe ::GetOverlappedResult errored GLE=errno = 109\r\nThrift: Mon Sep  5 13:07:13 2022 TConnectedClient died: TPipe: GetOverlappedResult failed","severity":"info","ts":"2022-09-05T20:07:13.1646424Z"}
+{"caller":"extension.go:127","msg":"extension started","severity":"info","ts":"2022-09-05T20:07:13.1822629Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"T","severity":"info","ts":"2022-09-05T20:07:14.2281206Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"hrift: Mon Sep  5 13:07:14 2022 Client connected.","severity":"info","ts":"2022-09-05T20:07:14.2281206Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"T","severity":"info","ts":"2022-09-05T20:07:14.2356767Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"hrift: Mon Sep  5 13:07:14 2022 TPipe ::GetOverlappedResult errored GLE=errno = 109\r\nThrift: Mon Sep  5 13:07:14 2022 Client connected.\r\nThrift: Mon Sep  5 13:07:14 2022 TConnectedClient died: TPi","severity":"info","ts":"2022-09-05T20:07:14.2366991Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"pe: GetOverlappedResult failed\r\nThrift: Mon Sep  5 13:07:14 2022 TPipe ::GetOverlappedResult errored GLE=errno = 109\r\nThrift: Mon Sep  5 13:07:14 2022 TConnectedClient die","severity":"info","ts":"2022-09-05T20:07:14.2376971Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"d: TPipe: GetOverlappedResult failed","severity":"info","ts":"2022-09-05T20:07:14.2386967Z"}
+{"caller":"system.cpp:289","component":"osquery","level":"stderr","msg":"I0905 13:07:16.370159  4776 system.cpp:289] Using host identifier: EC2A2676-862D-E047-8AB3-6F2316829FE1","severity":"info","ts":"2022-09-05T20:07:16.3701602Z"}
+{"caller":"events.cpp:863","component":"osquery","level":"stderr","msg":"I0905 13:07:16.499240  4776 events.cpp:863] Event publisher not enabled: ntfs_event_publisher: NTFS event publisher disabled via configuration","severity":"info","ts":"2022-09-05T20:07:16.4992413Z"}
+{"caller":"events.cpp:784","component":"osquery","level":"stderr","msg":"I0905 13:07:16.502270  4176 events.cpp:784] Starting event publisher run loop: windows_events","severity":"info","ts":"2022-09-05T20:07:16.5022712Z"}
+{"caller":"distributed.cpp:117","component":"osquery","level":"stderr","msg":"I0905 13:07:16.525586  1192 distributed.cpp:117] Executing distributed query: kolide_detail_query_network_interface: select address, mac\r\n                        from interface_details id join interface_addresses ia\r\n                               on ia.interface = id.interface where length(mac) \u003e 0\r\n                               order by (ibytes + obytes) desc","severity":"info","ts":"2022-09-05T20:07:16.5305896Z"}
+{"caller":"interfaces.cpp:101","component":"osquery","level":"stderr","msg":"I0905 13:07:18.501881  1192 interfaces.cpp:101] Failed to retrieve network statistics for interface 5","severity":"info","ts":"2022-09-05T20:07:18.501882Z"}
+{"caller":"interfaces.cpp:101","component":"osquery","level":"stderr","msg":"I0905 13:07:18.562309  1192 interfaces.cpp:101] Failed to retrieve network statistics for interface 1","severity":"info","ts":"2022-09-05T20:07:18.5623101Z"}
+{"caller":"interfaces.cpp:129","component":"osquery","level":"stderr","msg":"I0905 13:07:18.586263  1192 interfaces.cpp:129] Failed to retrieve physical state for interface 1","severity":"info","ts":"2022-09-05T20:07:18.5862647Z"}
+{"caller":"interfaces.cpp:156","component":"osquery","level":"stderr","msg":"I0905 13:07:18.598254  1192 interfaces.cpp:156] Failed to retrieve DHCP and DNS information for interface 1","severity":"info","ts":"2022-09-05T20:07:18.5992561Z"}
+{"caller":"dynamic_table_row.cpp:123","component":"osquery","level":"stderr","msg":"I0905 13:07:18.601253  1192 dynamic_table_row.cpp:123] Error casting ibytes () to BIGINT","severity":"info","ts":"2022-09-05T20:07:18.6012544Z"}
+{"caller":"dynamic_table_row.cpp:123","component":"osquery","level":"stderr","msg":"I0905 13:07:18.601253  1192 dynamic_table_row.cpp:123] Error casting obytes () to BIGINT\r\nI0905 13:07:18.601253  1192 dynamic_table_row.cpp:123] Error casting ibytes () to BIGINT\r\nI0905 13:07:18.601253  1192 dynamic_table_row.cpp:123] Error casting obytes () to BIGINT","severity":"info","ts":"2022-09-05T20:07:18.6022599Z"}
+{"caller":"distributed.cpp:117","component":"osquery","level":"stderr","msg":"I0905 13:07:18.603262  1192 distributed.cpp:117] Executing distributed query: kolide_detail_query_os_version: select * from os_version limit 1","severity":"info","ts":"2022-09-05T20:07:18.6062637Z"}
+{"caller":"dynamic_table_row.cpp:114","component":"osquery","level":"stderr","msg":"I0905 13:07:18.614265  1192 dynamic_table_row.cpp:114] Error casting patch () to INTEGER","severity":"info","ts":"2022-09-05T20:07:18.6142664Z"}
+{"caller":"distributed.cpp:117","component":"osquery","level":"stderr","msg":"I0905 13:07:18.615267  1192 distributed.cpp:117] Executing distributed query: kolide_detail_query_osquery_flags: select name, value from osquery_flags where name in (\"distributed_interval\", \"config_tls_refresh\", \"config_refresh\", \"logger_tls_period\")","severity":"info","ts":"2022-09-05T20:07:18.6162625Z"}
+{"caller":"distributed.cpp:117","component":"osquery","level":"stderr","msg":"I0905 13:07:18.620254  1192 distributed.cpp:117] Executing distributed query: kolide_detail_query_osquery_info: select * from osquery_info limit 1","severity":"info","ts":"2022-09-05T20:07:18.6202549Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"Thrift: Mon Sep  5 13:07:18 2022 Client connected.","severity":"info","ts":"2022-09-05T20:07:18.6202549Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"T","severity":"info","ts":"2022-09-05T20:07:18.6212628Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"hrift: Mon Sep  5 13:07:18 2022 TPipe ::GetOverlappedResult errored GLE=errno = 109\r\nThrift: Mon Sep  5 13:07:18 2022 Client connected.\r\nThrift: Mon Sep  5 13:07:18 2022 TConnectedClient died: TPipe: GetOverlappedResult failed","severity":"info","ts":"2022-09-05T20:07:18.6222641Z"}
+{"caller":"","component":"osquery","level":"stderr","msg":"Thrift: Mon Sep  5 13:07:18 2022 TPipe ::GetOverlappedResult errored GLE=errno = 109\r\nThrift: Mon Sep  5 13:07:18 2022 TConnectedClient died: TPipe: GetOverlappedResult failed","severity":"info","ts":"2022-09-05T20:07:18.6232427Z"}
+{"caller":"distributed.cpp:117","component":"osquery","level":"stderr","msg":"I0905 13:07:18.625265  1192 distributed.cpp:117] Executing distributed query: kolide_detail_query_system_info: select * from system_info limit 1","severity":"info","ts":"2022-09-05T20:07:18.6282176Z"}
+{"caller":"distributed.cpp:117","component":"osquery","level":"stderr","msg":"I0905 13:07:19.680370  1192 distributed.cpp:117] Executing distributed query: kolide_detail_query_uptime: select * from uptime limit 1","severity":"info","ts":"2022-09-05T20:07:19.6803711Z"}
+{"caller":"distributed.cpp:117","component":"osquery","level":"stderr","msg":"I0905 13:07:19.682761  1192 distributed.cpp:117] Executing distributed query: kolide_label_query_6: select 1;","severity":"info","ts":"2022-09-05T20:07:19.682762Z"}
+{"caller":"distributed.cpp:117","component":"osquery","level":"stderr","msg":"I0905 13:07:19.683728  1192 distributed.cpp:117] Executing distributed query: kolide_label_query_9: select 1 from os_version where platform = 'centos' or name like '%centos%'","severity":"info","ts":"2022-09-05T20:07:19.6837291Z"}
+```
+![[Pasted image 20220905150841.png]]
+What is the Osquery version?
+*4.2.0*
+![[Pasted image 20220905151052.png]]
+What is the path for the running osqueryd.exe process?
+`C:\Users\Administrator\Desktop\launcher\windows\osqueryd.exe`
+### Osquery extensions
+Extensions add functionality/features (i.e., additional tables) that are not included in the core Osquery. Anyone can create extensions for Osquery. The official documentation on this subject is [here](https://osquery.readthedocs.io/en/latest/deployment/extensions/).
+If you perform a search, you'll find some interesting ones that can be downloaded and implemented with Osquery with little hassle. Others might require extra steps, such as setting up additional dependencies and compiling the extension before use.
+Below are 2 repos of Osquery extensions that you can play with.
+https://github.com/trailofbits/osquery-extensions
+https://github.com/polylogyx/osq-ext-bin
+The Polylogyx extension is available in the attached VM, and you will load and interact with this extension in the upcoming tasks.
+According to the polylogyx readme, how many 'features' does the plug-in add to the Osquery core?
+*25*
+### Linux and Osquery
+For this exercise, use the Ubuntu terminal and launch Osquery.
+Review the On-Demand YARA scanning [here](https://osquery.readthedocs.io/en/stable/deployment/yara/) to answer some of the questions below.
+```text
+osquery> SELECT * FROM kernel_info;
++-----------------------+------------+---------+--------+
+| version               | arguments  | path    | device |
++-----------------------+------------+---------+--------+
+| 4.4.0-17763-Microsoft | init=/init | /kernel |        |
++-----------------------+------------+---------+--------+
+```
+What is the 'current_value' for kernel.osrelease?
+*4.4.0-17763-Microsoft*
+```text
+osquery> SELECT * FROM users WHERE username="bravo";
++------+------+------------+------------+----------+-------------+-------------+-----------+------+
+| uid  | gid  | uid_signed | gid_signed | username | description | directory   | shell     | uuid |
++------+------+------------+------------+----------+-------------+-------------+-----------+------+
+| 1002 | 1002 | 1002       | 1002       | bravo    | ,,,         | /home/bravo | /bin/bash |      |
++------+------+------------+------------+----------+-------------+-------------+-----------+------+
+```
+What is the uid for the bravo user?
+*1002*
+One of the users performed a 'Binary Padding' attack. What was the target file in the attack? (Binary padding effectively changes the checksum of the file and can also be used to avoid hash-based blocklists and static anti-virus signatures. The padding used is commonly generated by a function to create junk data and then appended to the end or applied to sections of malware.)
+```text
+osquery> select * from shell_history;
++------+------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
+| uid  | time | command                                                                                                                                                                                                                                                                                                      | history_file                  |
++------+------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
+| 1000 | 0    |                                                                                                                                                                                                                                                                                                              | /home/tryhackme/.bash_history |
+| 1000 | 0    | exit                                                                                                                                                                                                                                                                                                         | /home/tryhackme/.bash_history |
+| 1000 | 0    | pwd                                                                                                                                                                                                                                                                                                          | /home/tryhackme/.bash_history |
+| 1000 | 0    | ls                                                                                                                                                                                                                                                                                                           | /home/tryhackme/.bash_history |
+| 1000 | 0    | cp ../charlie/notes .                                                                                                                                                                                                                                                                                        | /home/tryhackme/.bash_history |
+| 1000 | 0    | md5sum notes                                                                                                                                                                                                                                                                                                 | /home/tryhackme/.bash_history |
+| 1000 | 0    | mv notes notsus                                                                                                                                                                                                                                                                                              | /home/tryhackme/.bash_history |
+| 1000 | 0    | dd if=/dev/zero bs=1 count=1 >> notsus                                                                                                                                                                                                                                                                       | /home/tryhackme/.bash_history |
+| 1000 | 0    | md5sum notsus                                                                                                                                                                                                                                                                                                | /home/tryhackme/.bash_history |
+| 1000 | 0    | exit                                                                                                                                                                                                                                                                                                         | /home/tryhackme/.bash_history |
+| 1000 | 0    | sudo redis-server --daemonize yes                                                                                                                                                                                                                                                                            | /home/tryhackme/.bash_history |
+| 1000 | 0    | sudo service mysql start                                                                                                                                                                                                                                                                                     | /home/tryhackme/.bash_history |
+| 1000 | 0    | /usr/bin/fleet serve --mysql_address=127.0.0.1:3306 --mysql_database=kolide --mysql_username=root --mysql_password=tryhackme --redis_address=127.0.0.1:6379 --server_cert=/home/tryhackme/server.cert --server_key=/home/tryhackme/server.key --auth_jwt_key=JB+wEDR4V3bbhU4OlIMcXpcBQAaZc+4r --logging_json | /home/tryhackme/.bash_history |
++------+------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
+```
+*notsus*
+What is the hash value for this file?
+```text
+tryhackme@WIN-FG4Q5UQP406:~$ osqueryi
+W0905 13:36:32.593780   543 interface.cpp:274] Extensions disabled: cannot start extension manager (/home/tryhackme/.osquery/shell.em) (Could not set SO_LINGER: Invalid argument)
+Using a virtual database. Need help, type '.help'
+osquery> .exit
+tryhackme@WIN-FG4Q5UQP406:~$ ls
+fleet  fleet.zip  notsus  server.cert  server.csr  server.key
+tryhackme@WIN-FG4Q5UQP406:~$ md5 notsus
+No command 'md5' found, did you mean:
+ Command 'cd5' from package 'cd5' (universe)
+ Command 'mdu' from package 'mtools' (main)
+ Command 'mdp' from package 'mdp' (universe)
+md5: command not found
+tryhackme@WIN-FG4Q5UQP406:~$ md5sum notsus
+3df6a21c6d0c554719cffa6ee2ae0df7  notsus
+```
+*3df6a21c6d0c554719cffa6ee2ae0df7*
+Check all file hashes in the home directory for each user. One file will not show any hashes. Which file is that?
+```text
+osquery> select path,filename,md5 from file join hash using (path) where path like "/home/%%/%" ;
+W0905 13:42:12.782673   563 filesystem.cpp:134] Cannot read file that exceeds size limit: /home/tryhackme/fleet.zip
++-----------------------------+-------------+----------------------------------+
+| path                        | filename    | md5                              |
++-----------------------------+-------------+----------------------------------+
+| /home/charlie/notes         | notes       | 44d88612fea8a8f36de82e1278abb02f |
+| /home/tryhackme/fleet.zip   | fleet.zip   |                                  |
+| /home/tryhackme/notsus      | notsus      | 3df6a21c6d0c554719cffa6ee2ae0df7 |
+| /home/tryhackme/server.cert | server.cert | 8040c570590caceb9a8f12f63b6a6bd8 |
+| /home/tryhackme/server.csr  | server.csr  | 100c940504d3977dd23bc93b90a127f2 |
+| /home/tryhackme/server.key  | server.key  | 4d058ada6d243cb0929b0e210ba07ed0 |
++-----------------------------+-------------+----------------------------------+
+```
+*fleet.zip*
+There is a file that is categorized as malicious in one of the home directories. Query the Yara table to find this file. Use the sigfile which is saved in '/var/osquery/yara/scanner.yara'. Which file is it?
+```text
+osquery> select * from yara WHERE sigfile='/var/osquery/yara/scanner.yara' and path='/home/charlie/notes';
++---------------------+------------------------------------+-------+-----------+--------------------------------+------------------------------------+------+
+| path                | matches                            | count | sig_group | sigfile                        | strings                            | tags |
++---------------------+------------------------------------+-------+-----------+--------------------------------+------------------------------------+------+
+| /home/charlie/notes | eicar_av_test,eicar_substring_test | 2     |           | /var/osquery/yara/scanner.yara | $eicar_regex:0,$eicar_substring:1b |      |
++---------------------+------------------------------------+-------+-----------+--------------------------------+------------------------------------+------+
+```
+*notes*
+What were the 'matches'?
+*eicar_av_test,eicar_substring_test*
+Scan the file from Q#3 with the same Yara file. What is the entry for 'strings'?
+```text
+osquery> select * from yara WHERE sigfile='/var/osquery/yara/scanner.yara' and path='/home/tryhackme/notsus';
++------------------------+----------------------+-------+-----------+--------------------------------+---------------------+------+
+| path                   | matches              | count | sig_group | sigfile                        | strings             | tags |
++------------------------+----------------------+-------+-----------+--------------------------------+---------------------+------+
+| /home/tryhackme/notsus | eicar_substring_test | 1     |           | /var/osquery/yara/scanner.yara | $eicar_substring:1b |      |
++------------------------+----------------------+-------+-----------+--------------------------------+---------------------+------+
+```
+*$eicar_substring:1b*
+### Windows and Osquery
+For this exercise, use either Kolide Fleet or the Windows CMD/PowerShell.
+Note: For the questions which involve the Polylogyx osq-ext-bin extension, you'll need to interact with Osquery via the command line.
+To load the extension: osqueryi --allow-unsafe --extension "C:\Program Files\osquery\extensions\osq-ext-bin\plgx_win_extension.ext.exe"
+Wait for the command prompt to reflect the phrase Done StartDriver. This will indicate that the extension is fully loaded into the session.
+Tip: If the phrase doesn't appear after a minute or so, hit the ENTER key. It should appear right after.
+Resources for Polylogx osq-ext-bin:
+https://github.com/polylogyx/osq-ext-bin/blob/master/README.md
+https://github.com/polylogyx/osq-ext-bin/tree/master/tables-schema
+What is the description for the Windows Defender Service?
+```text
+osquery> select description from services where name="WinDefend";
++--------------------------------------------------------------------------+
+| description                                                              |
++--------------------------------------------------------------------------+
+| Helps protect users from malware and other potentially unwanted software |
++--------------------------------------------------------------------------+
+```
+*Helps protect users from malware and other potentially unwanted software*
+There is another security agent on the Windows endpoint. What is the name of this agent?
+```text
+osquery> SELECT name,publisher from programs;
++--------------------------------------------------------------------+-----------------------+
+| name                                                               | publisher             |
++--------------------------------------------------------------------+-----------------------+
+| VMware Tools                                                       | VMware, Inc.          |
+| AlienVault Agent                                                   | AlienVault Inc.       |
+| Microsoft Visual C++ 2019 X64 Minimum Runtime - 14.24.28127        | Microsoft Corporation |
+| Microsoft Visual C++ 2019 X64 Additional Runtime - 14.24.28127     | Microsoft Corporation |
+| Amazon SSM Agent                                                   | Amazon Web Services   |
+| Google Chrome                                                      | Google LLC            |
+| Microsoft Visual C++ 2015-2019 Redistributable (x64) - 14.24.28127 | Microsoft Corporation |
+| Microsoft Visual C++ 2019 X86 Minimum Runtime - 14.24.28127        | Microsoft Corporation |
+| Amazon SSM Agent                                                   | Amazon Web Services   |
+| Microsoft Visual C++ 2015-2019 Redistributable (x86) - 14.24.28127 | Microsoft Corporation |
+| Microsoft Visual C++ 2019 X86 Additional Runtime - 14.24.28127     | Microsoft Corporation |
++--------------------------------------------------------------------+-----------------------+
+```
+*AlienVault Agent*
+What is required with win_event_log_data?
+*source*
+How many sources are returned for win_event_log_channels?
+```text
+osquery> select count (*) from win_event_log_channels;
++-----------+
+| count (*) |
++-----------+
+| 1076      |
++-----------+
+```
+*1076*
+What is the schema for win_event_log_data?
+```text
+osquery> .schema win_event_log_data
+CREATE TABLE win_event_log_data(`time` BIGINT, `datetime` TEXT, `source` TEXT, `provider_name` TEXT, `provider_guid` TEXT, `eventid` INTEGER, `task` INTEGER, `level` INTEGER, `keywords` BIGINT, `data` TEXT, `eid` TEXT HIDDEN);
+```
+`CREATE TABLE win_event_log_data(`time` BIGINT, `datetime` TEXT, `source` TEXT, `provider_name` TEXT, `provider_guid` TEXT, `eventid` INTEGER, `task` INTEGER, `level` INTEGER, `keywords` BIGINT, `data` TEXT, `eid` TEXT HIDDEN);`
+The previous file scanned on the Linux endpoint with Yara is on the Windows endpoint.  What date/time was this file first detected? (Answer format: YYYY-MM-DD HH:MM:SS) (https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus)
+```text
+osquery> select * from win_event_log_channels where source like "%defend%";
++------------------------------------------------+
+| source                                         |
++------------------------------------------------+
+| Microsoft-Windows-Windows Defender/Operational |
+| Microsoft-Windows-Windows Defender/WHC         |
++------------------------------------------------+
+
+Then googling the Microsoft Defender page give us the eventid for PUA : 1116
+
+osquery> select datetime from win_event_log_data where source="Microsoft-Windows-Windows Defender/Operational" and eventid="1116";
+
++--------------------------------+
+| datetime                       |
++--------------------------------+
+| 2021-04-01T00:50:44.637359900Z |
+| 2021-04-01T00:51:09.673408800Z |
++--------------------------------+
+```
+`2021-04-01 00:50:44`
+```text
+C:\Users\Administrator>osqueryi --allow-unsafe --extension "C:\Program Files\osquery\extensions\osq-ext-bin\plgx_win_extension.ext.exe"
+Using a [1mvirtual database[0m. Need help, type '.help'
+osquery> Done StartDriver.
+osquery> select * from win_event_log_channels where source like "%sysmon%";
++--------------------------------------+
+| source                               |
++--------------------------------------+
+| Microsoft-Windows-Sysmon/Operational |
++--------------------------------------+
+osquery> select eventid from win_event_log_data where source="Microsoft-Windows-Sysmon/Operational" ORDER BY datetime LIMIT 1;
++---------+
+| eventid |
++---------+
+| 16      |
++---------+
+```
+What is the query to find the first Sysmon event? Select only the event id, order by date/time, and limit the output to only 1 entry.
+*select eventid from win_event_log_data where source="Microsoft-Windows-Sysmon/Operational" ORDER BY datetime LIMIT 1;*
+What is the Sysmon event id?
+*16*
+### Conclusion
+This was a high-level overview of Osquery. This room's goal was to introduce you to this alternate method of interacting with endpoints to extract information. There is more to Osquery than what was covered in this room.
+File Integrity Monitoring: https://osquery.readthedocs.io/en/latest/deployment/file-integrity-monitoring/
+Process Auditing: https://osquery.readthedocs.io/en/latest/deployment/process-auditing/
+Syslog Consumption: https://osquery.readthedocs.io/en/latest/deployment/syslog/
+SIEMs like ELK and Splunk can ingest Osquery logs. If you completed some of the Splunk rooms, specifically Splunk 2 and Splunk 3, you should recall that Osquery logs (osquery:info, osquery:results, and osquery:warning) were part of the various queried sources to extract information. If looking at the log data seemed foreign, now you have a better understanding of the displayed in the results.
+Lastly, look at other community projects for Osquery listed at https://osquery.io/.
+![](https://assets.tryhackme.com/additional/osquery/osquery_comm_projs.png)
+The repo on enterprise threat hunting with [Osquery + MITRE ATT&CK](https://github.com/jesusgavancho/osquery-attck) is definitely worth your attention.
+Leveled up with Osquery!
+*No answer needed*
+
+## Notes / Lessons Learned
+[[Sysmon]]
+
