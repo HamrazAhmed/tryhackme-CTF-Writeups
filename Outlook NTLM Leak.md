@@ -300,3 +300,306 @@ Sendable              : True
 
 [+] HTTP Options:
     Always serving EXE         [OFF]
+    Serving EXE                [OFF]
+    Serving HTML               [OFF]
+    Upstream Proxy             [OFF]
+
+[+] Poisoning Options:
+    Analyze Mode               [OFF]
+    Force WPAD auth            [OFF]
+    Force Basic Auth           [OFF]
+    Force LM downgrade         [OFF]
+    Force ESS downgrade        [OFF]
+
+[+] Generic Options:
+    Responder NIC              [tun0]
+    Responder IP               [10.8.19.103]
+    Responder IPv6             [fe80::9f93:f9df:666d:2625]
+    Challenge set              [random]
+    Don't Respond To Names     ['ISATAP']
+
+[+] Current Session Variables:
+    Responder Machine Name     [WIN-JV9OA8O6PD5]
+    Responder Domain Name      [B3BJ.LOCAL]
+    Responder DCE-RPC Port     [46438]
+
+[+] Listening for events...
+
+[*] Skipping previously captured hash for THM-LAB\Administrator
+```
+Click and continue learning!
+Question Done
+### Detection/Mitigation
+Now that we have gone through the steps to weaponize the `CVE-2023-23397` attack on Outlook, let's talk about a few ways to detect this attack within the network. Each attack leaves patterns or artifacts that could help the detection team identify the threats. It all depends on the network visibility and the log sources that are being collected and providing the much important visibility.
+Here, we will discuss a few ways to detect this attack on the host.
+Sigma Rules
+The following Sigma rule detects Outlook initiating a connection to a WebDav or SMB share, indicating a post-exploitation phase.
+```c
+title: CVE-2023-23397 Exploitation Attempt
+id: 73c59189-6a6d-4b9f-a748-8f6f9bbed75c
+status: experimental
+description: Detects outlook initiating connection to a WebDAV or SMB share, which
+  could be a sign of CVE-2023-23397 exploitation.
+author: Robert Lee @quantum_cookie
+date: 
+references:
+- https://www.trustedsec.com/blog/critical-outlook-vulnerability-in-depth-technical-analysis-and-recommendations-cve-2023-23397/
+tags:
+- attack.credential_access
+- attack.initial_access
+- cve.2023.23397
+logsource:
+  service: security
+  product: windows
+  definition: 'Requirements: SACLs must be enabled for "Query Value" on the registry
+    keys used in this rule'
+detection:
+  selection:
+    EventID:
+    - 4656
+    - 4663
+    ProcessName|endswith: \OUTLOOK.EXE
+    Accesses|contains: Query key value
+    ObjectName|contains|all:
+    - \REGISTRY\MACHINE\SYSTEM
+    - Services\
+    ObjectName|endswith:
+    - WebClient\NetworkProvider
+    - LanmanWorkstation\NetworkProvider
+  condition: selection
+falsepositives:
+- Searchprotocolhost.exe likes to query these registry keys. To avoid false postives,
+  it's better to filter out those events before they reach the SIEM
+level: critical
+```
+This [Sigma Rule](https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_rundll32_webdav_client_susp_execution.yml) looks to detect svchost.exe spawning rundll32.exe with command arguments like `C:\windows\system32\davclnt.dll,DavSetCookie`, which indicates a post-exploitation/exfiltration phase.
+```c
+title: Suspicious WebDav Client Execution
+id: 982e9f2d-1a85-4d5b-aea4-31f5e97c6555
+status: experimental
+description: 'Detects "svchost.exe" spawning "rundll32.exe" with command arguments
+  like C:\windows\system32\davclnt.dll,DavSetCookie. This could be an indicator of
+  exfiltration or use of WebDav to launch code (hosted on WebDav Server) or potentially
+  a sign of exploitation of CVE-2023-23397
+
+  '
+references:
+- https://twitter.com/aceresponder/status/1636116096506818562
+- https://www.mdsec.co.uk/2023/03/exploiting-cve-2023-23397-microsoft-outlook-elevation-of-privilege-vulnerability/
+- https://www.pwndefend.com//the-long-game-persistent-hash-theft/
+author: Nasreddine Bencherchali (Nextron Systems), Florian Roth (Nextron Systems)
+date: 
+tags:
+- attack.exfiltration
+- attack.t1048.003
+- cve.2023.23397
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    ParentImage|endswith: \svchost.exe
+    Image|endswith: \rundll32.exe
+    CommandLine|contains: C:\windows\system32\davclnt.dll,DavSetCookie
+    CommandLine|re: ://\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}
+  filter_local_ips:
+    CommandLine|contains:
+    - ://10.
+    - ://192.168.
+    - ://172.16.
+    - ://172.17.
+    - ://172.18.
+    - ://172.19.
+    - ://172.20.
+    - ://172.21.
+    - ://172.22.
+    - ://172.23.
+    - ://172.24.
+    - ://172.25.
+    - ://172.26.
+    - ://172.27.
+    - ://172.28.
+    - ://172.29.
+    - ://172.30.
+    - ://172.31.
+    - ://127.
+    - ://169.254.
+  condition: selection and not 1 of filter_*
+falsepositives:
+- Unknown
+level: high
+```
+These SIGMA rules can be converted into the detection and monitoring tool to hunt for suspicious log activity within the network. To learn more about SIGMA rules, check this introductory room on [Sigma](https://tryhackme.com/room/sigma).
+Yara Rule
+YARA rule looks for the pattern within the files on disk. The following three community YARA rules can be used to detect the suspicious MSG file on the disk with two properties discussed in the above tasks.
+```c
+rule SUSP_EXPL_Msg_CVE_2023_23397_Mar23 {
+   meta:
+      description = "MSG file with a PidLidReminderFileParameter property, potentially exploiting CVE-2023-23397"
+      author = "delivr.to, modified by Florian Roth, Nils Kuhnert, Arnim Rupp, marcin@ulikowski.pl"
+      date = ""
+      modified = ""
+      score = 60
+      reference = "https://www.mdsec.co.uk/2023/03/exploiting-cve-2023-23397-microsoft-outlook-elevation-of-privilege-vulnerability/"
+      hash = "47fee24586cd2858cfff2dd7a4e76dc95eb44c8506791ccc2d59c837786eafe3"
+      hash = "582442ee950d546744f2fa078adb005853a453e9c7f48c6c770e6322a888c2cf"
+      hash = "6c0087a5cbccb3c776a471774d1df10fe46b0f0eb11db6a32774eb716e1b7909"
+      hash = "7fb7a2394e03cc4a9186237428a87b16f6bf1b66f2724aea1ec6a56904e5bfad"
+      hash = "eedae202980c05697a21a5c995d43e1905c4b25f8ca2fff0c34036bc4fd321fa"
+   strings:
+      /* https://interoperability.blob.core.windows.net/files/MS-OXPROPS/%5bMS-OXPROPS%5d.pdf */
+      /* PSETID_Appointment */
+      $psetid_app = { 02 20 06 00 00 00 00 00 C0 00 00 00 00 00 00 46 }
+      /* PSETID_Meeting */
+      $psetid_meeting = { 90 DA D8 6E 0B 45 1B 10 98 DA 00 AA 00 3F 13 05 }
+      /* PSETID Task */
+      $psetid_task = { 03 20 06 00 00 00 00 00 c0 00 00 00 00 00 00 46 }
+      /* PidLidReminderFileParameter */
+      $rfp = { 1F 85 00 00 }
+      /* \\ UNC path prefix - wide formatted */
+      $u1 = { 00 00 5C 00 5C 00 }
+      /* not MSI */
+      $fp_msi1 = {84 10 0C 00 00 00 00 00 C0 00 00 00 00 00 00 46}
+   condition:
+      uint32be(0) == 0xD0CF11E0
+      and uint32be(4) == 0xA1B11AE1
+      and 1 of ($psetid*)
+      and $rfp
+      and $u1
+      and not 1 of ($fp*)
+}
+```
+```c
+rule EXPL_SUSP_Outlook_CVE_2023_23397_Exfil_IP_Mar23 {
+   meta:
+      description = "Detects suspicious .msg file with a PidLidReminderFileParameter property exploiting CVE-2023-23397 (modified delivr.to rule - more specific = less FPs but limited to exfil using IP addresses, not FQDNs)"
+      author = "delivr.to, Florian Roth, Nils Kuhnert, Arnim Rupp, marcin@ulikowski.pl"
+      date = ""
+      modified = ""
+      score = 75
+      reference = "https://www.mdsec.co.uk/2023/03/exploiting-cve-2023-23397-microsoft-outlook-elevation-of-privilege-vulnerability/"
+      hash = "47fee24586cd2858cfff2dd7a4e76dc95eb44c8506791ccc2d59c837786eafe3"
+      hash = "582442ee950d546744f2fa078adb005853a453e9c7f48c6c770e6322a888c2cf"
+      hash = "6c0087a5cbccb3c776a471774d1df10fe46b0f0eb11db6a32774eb716e1b7909"
+      hash = "7fb7a2394e03cc4a9186237428a87b16f6bf1b66f2724aea1ec6a56904e5bfad"
+      hash = "eedae202980c05697a21a5c995d43e1905c4b25f8ca2fff0c34036bc4fd321fa"
+      hash = "e7a1391dd53f349094c1235760ed0642519fd87baf740839817d47488b9aef02"
+   strings:
+      /* https://interoperability.blob.core.windows.net/files/MS-OXPROPS/%5bMS-OXPROPS%5d.pdf */
+      /* PSETID_Appointment */
+      $psetid_app = { 02 20 06 00 00 00 00 00 C0 00 00 00 00 00 00 46 }
+      /* PSETID_Meeting */
+      $psetid_meeting = { 90 DA D8 6E 0B 45 1B 10 98 DA 00 AA 00 3F 13 05 }
+      /* PSETID Task */
+      $psetid_task = { 03 20 06 00 00 00 00 00 c0 00 00 00 00 00 00 46 }
+      /* PidLidReminderFileParameter */
+      $rfp = { 1F 85 00 00 }
+      /* \\ + IP UNC path prefix - wide formatted */
+      $u1 = { 5C 00 5C 00 (3? 00 2E|3? 00 3? 00 2E|3? 00 3? 00 3? 00 2E) 00 (3? 00 2E|3? 00 3? 00 2E|3? 00 3? 00 3? 00 2E) 00 (3? 00 2E|3? 00 3? 00 2E|3? 00 3? 00 3? 00 2E) 00 (3? 00 3? 00 3? 00|3? 00 3? 00|3? 00) }
+      /* \\ + IP UNC path prefix - regular/ascii formatted for Transport Neutral Encapsulation Format */
+      $u2 = { 00 5C 5C (3? 2E|3? 3? 2E|3? 3? 3? 2E) (3? 2E|3? 3? 2E|3? 3? 3? 2E) (3? 2E|3? 3? 2E|3? 3? 3? 2E) (3? 3? 3?|3? 3?|3?) }
+      /* not MSI */
+      $fp_msi1 = {84 10 0C 00 00 00 00 00 C0 00 00 00 00 00 00 46}
+   condition:
+      (
+         uint16(0) == 0xCFD0 and 1 of ($psetid*)
+         or
+         uint32be(0) == 0x789F3E22
+      )
+      and any of ( $u* )
+      and $rfp
+      and not 1 of ($fp*)
+}
+```
+```c
+rule EXPL_SUSP_Outlook_CVE_2023_23397_SMTP_Mail_Mar23 {
+   meta:
+      author = "Nils Kuhnert"
+      date = ""
+      description = "Detects suspicious *.eml files that include TNEF content that possibly exploits CVE-2023-23397. Lower score than EXPL_SUSP_Outlook_CVE_2023_23397_Exfil_IP_Mar23 as we're only looking for UNC prefix."
+      score = 60
+      reference = "https://twitter.com/wdormann/status/1636491612686622723"
+   strings:
+      // From:
+      $mail1 = { 0A 46 72 6F 6D 3A 20 }
+      // To: 
+      $mail2 = { 0A 54 6F 3A }
+      // Received:
+      $mail3 = { 0A 52 65 63 65 69 76 65 64 3A }
+      // Indicates that attachment is TNEF
+      $tnef1 = "Content-Type: application/ms-tnef" ascii
+      $tnef2 = "\x78\x9f\x3e\x22" base64
+      // Check if it's an IPM.Task
+      $ipm = "IPM.Task" base64
+      // UNC prefix in TNEF
+      $unc = "\x00\x00\x00\x5c\x5c" base64
+   condition:
+      all of them
+}
+```
+YARA is already installed on the machine. The YARA rule file `cve-2023-23397.yar` and the malicious MSG file `appointment.msg` can be found on the Desktop. Open the terminal and run the following command to run the rule against the MSG file.
+Powershell
+```shell-session
+PS C:\USers\Administrator\Desktop> yara64 .\cve-2023-23397.yar.txt .\appointment.msg
+SUSP_EXPL_Msg_CVE_2023_23397_Mar23 .\appointment.msg
+EXPL_SUSP_Outlook_CVE_2023_23397_Exfil_IP_Mar23 .\appointment.msg
+```
+To learn more about YARA and its pattern-matching use, check this introductory room on [YARA](https://tryhackme.com/room/yara).
+Powershell script
+Microsoft has released a PowerShell script [CVE-2023-23397.ps1](https://microsoft.github.io/CSS-Exchange/Security/CVE-2023-23397/)  that will check the Exchange messaging items like Mail, calendar,  and tasks to see if the IOCs related to the CVE-2023-23397 attack are found.  The script can be used to audit and clean the detected items.
+**Note:** This script is not usable in this lab.
+Mitigation
+This vulnerability is being exploited extensively in the wild. Some of the recommended steps as recommended by [Microsoft](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23397) in order to mitigate and avoid this attack are:
+-   Add users to the Protected Users Security Group, which prevents using NTLM as an authentication mechanism.
+-   Block TCP 445/SMB outbound from your network to avoid any post-exploitation connection.
+-   Use the PowerShell script released by Microsoft to scan against the Exchange server to detect any attack attempt.
+-   Disable WebClient service to avoid webdav connection.
+Answer the questions below
+```text
+WebDAV stands for "Web Distributed Authoring and Versioning." It is an extension of the HTTP protocol that allows users to remotely manage files and folders on a web server.
+
+WebDAV is commonly used for collaborative document editing and management, as it allows multiple users to access and edit the same files from different locations. It also supports file versioning, which means that previous versions of a file can be accessed and restored if needed.
+
+WebDAV is supported by many web servers, including Apache, Microsoft IIS, and nginx, as well as many operating systems, including Windows, macOS, and Linux. It can be accessed using various client applications, such as Microsoft Office, macOS Finder, and various third-party file managers.
+
+Some common use cases for WebDAV include:
+
+-   Collaborative document editing: WebDAV can be used to allow multiple users to access and edit the same documents stored on a web server.
+-   Remote file management: WebDAV can be used to manage files and folders on a web server without the need for direct server access.
+-   Content management: WebDAV can be used to manage the content of a website, including creating, modifying, and deleting files and folders.
+
+PS C:\Users\Administrator\Desktop> yara64 .\cve-2023-23397.yar.txt .\appointment.msg
+SUSP_EXPL_Msg_CVE_2023_23397_Mar23 .\appointment.msg
+EXPL_SUSP_Outlook_CVE_2023_23397_Exfil_IP_Mar23 .\appointment.msg
+```
+Click and continue learning!
+Question Done
+### Conclusions
+In this room, we have experimented with how a simple vulnerability could allow an attacker to access authentication material without requiring any interaction from their victim by sending a simple, specially crafted email. NTLM Leaks are nothing new in Windows environments, but having one in such a widespread application as Outlook makes this particularly important.
+While we have used the vulnerability to capture and crack the Net-NTLMv2 hash, the fact that we can trigger an authentication attempt on behalf of the victim also enables other types of relay attacks, where cracking the hash is not even needed.
+As always, the preferred recommendation to avoid falling victim to such an attack is to keep your Outlook installation up to date, as patches are already available from Microsoft.
+Answer the questions below
+Click and continue learning!
+Completed
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/86ec79178d0c8f02cdfbf389578a299a.png)
+- ![THM key](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/5d471dd234b7fc4eb4edea3c934663c1.png)
+- ![Sign in to Office](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/fc8922223ac0a45d38a8673ee559d34e.png)
+- ![Outlook Appointments](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/a62596e7262ef8119a558ee9598ec2ef.png)
+- ![Reminder Sound Configuration](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/471b82a81e0a4b210191dafe1a0a55e1.png)
+- ![Exploiting the Vulnerability](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/c841bc06b6cfd44c8453d21204a9927b.png)
+- ![Creating Appointments](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/856ee9002399b21c3614d03e42d36d76.png)
+- ![Setting up Reminders](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/c8d3358b21a94b6e77e62cac19e5d428.png)
+- ![Attempting to Set UNC Path](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/c58df06376a0bb64fd81ca4bfef030f9.png)
+- ![Reverting to the Default Sound](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/db44d3912977c59120c5bf0fef2dcf96.png)
+- ![OutlookSpy](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/60dfeace2365e8ef434a2161783313f0.png)
+- ![Modifying Email Parameters](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/d234c96f9fb857da332b0d058b703081.png)
+- ![Saving the Appointment](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/859e6a2f69ac2726bf6b400dd4f2bad2.png)
+- ![Appointment Pop-Up](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/d6dbc3af8bd70b13013c63d3d4bb6f10.png)
+- ![Responder Captured Hash](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/6e71d49e828ca32843cf96b66c32b190.png)
+- ![Outlook Warning](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/7a3a747638a701510141be9803cd28c9.png)
+
+## Notes / Lessons Learned
+[[Introduction to Cryptography]]
+
