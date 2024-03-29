@@ -65,6 +65,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **ColddBox Easy** | `Easy` | WordPress / Linux | [ColddBox Easy.md](./ColddBox%20Easy.md) |
 | **Command Injection** | `Easy` | Web Pentest | [Command Injection.md](./Command%20Injection.md) |
 | **Corridor** | `Easy` | Web / IDOR | [Corridor.md](./Corridor.md) |
+| **Couch** | `Easy` | CouchDB Misconfig | [Couch.md](./Couch.md) |
 
 
-<!-- Weekly Progress: Week 64/104 | 2024-03-24 -->
+<!-- Weekly Progress: Week 65/104 | 2024-03-29 -->
