@@ -149,3 +149,155 @@ Let's look at the Strings output.
 Next, let's look at the information from VirusTotal.
 Since the VirusTotal API key is the free community edition, an analyst can manually navigate to VirusTotal and do a file hash search to view more information about this attachment.
 Lastly, any submissions you upload to PhishTool, you can flag as malicious and resolve with notes. Similar to how you would if you were a SOC Analyst.
+The attachment file name and file hashes will be marked as malicious. Next, click on Resolve.
+In the next screen, an analyst can mark the email based on dropdown selections. Refer to the GIF below.
+![](https://assets.tryhackme.com/additional/phishing2/resolve-case.gif)
+Note: I didn't perform further analysis on the domain name or the IP address. Neither did I perform any research regarding the root domain the email originated from. The attachment can further be analyzed by uploading it to a malware sandbox to see what exactly it's doing, which I did not do. Hence the reason why additional Flag artifacts and Classifications codes weren't selected for this malicious email. :)
+To expand on classification codes briefly, not all phishing emails can be categorized as the same. A classification code allows us to tag a case with a specific code, such as Whaling (high-value target). Not all phishing emails will target a high-value target, such as a Chief Financial Officer (CFO).
+Look at the Strings output. What is the name of the EXE file?
+*454326_PDF.exe*
+### Phishing Case 1
+Scenario: You are a Level 1 SOC Analyst. Several suspicious emails have been forwarded to you from other coworkers. You must obtain details from each email for your team to implement the appropriate rules to prevent colleagues from receiving additional spam/phishing emails.
+Task: Use the tools discussed throughout this room (or use your own resources) to help you analyze each email header and email body.
+```text
+┌──(kali㉿kali)-[~]
+└─$ mkdir phishing_examples
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cd phishing_examples
+```
+```text
+┌──(kali㉿kali)-[~/phishing_examples]
+└─$ ls
+```
+```text
+┌──(kali㉿kali)-[~/phishing_examples]
+└─$ pwd                                
+/home/kali/phishing_examples
+```
+
+## Enumeration
+```text
+┌──(kali㉿kali)-[~/phishing_examples]
+└─$ nc -nvlp 4444 > Phish3Case1.eml      
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+Ncat: Connection from 10.10.162.57.
+Ncat: Connection from 10.10.162.57:37680.
+^C
+```
+```text
+┌──(kali㉿kali)-[~/phishing_examples]
+└─$ ls -lah                
+total 68K
+drwxr-xr-x  2 kali kali 4.0K Oct 14 14:12 .
+drwxr-xr-x 55 kali kali 4.0K Oct 14 14:10 ..
+-rw-r--r--  1 kali kali  57K Oct 14 14:13 Phish3Case1.eml
+
+ubuntu@ip-10-10-162-57:~/Desktop$ nc 10.11.81.220 4444 < Phish3Case1.eml 
+ubuntu@ip-10-10-162-57:~/Desktop$ ls -lah
+total 72K
+drwxr-xr-x  3 ubuntu ubuntu 4.0K Dec  7  2021 .
+drwxr-xr-x 21 ubuntu ubuntu 4.0K Oct 14 17:33 ..
+-rw-rw-r--  1 ubuntu ubuntu  57K Dec  7  2021 Phish3Case1.eml
+drwxrwxr-x  3 ubuntu ubuntu 4.0K Jul 27  2021 Tools
+
+open it with thunderbird
+```
+![[Pasted image 20221014131854.png]]
+What brand was this email tailored to impersonate?
+*netflix*
+What is the From email address?
+![[Pasted image 20221014132552.png]]
+*N e t f l i x<JGQ47wazXe1xYVBrkeDg-JOg7ODDQwWdR@JOg7ODDQwWdR-yVkCaBkTNp.gogolecloud.com*
+What is the originating IP? Defang the IP address.
+CyberChef can help you with this.
+![[Pasted image 20221014132329.png]]
+*209[.]85[.]167[.]226*
+From what you can gather, what do you think will be a domain of interest? Defang the domain.
+CyberChef can help you with this.
+![[Pasted image 20221014132221.png]]
+What is the shortened URL? Defang the URL.
+*etekno[.]xyz*
+CyberChef can help you with this.
+*hxxps[://]t[.]co/yuxfZm8KPg?amp*
+**using phishtool**
+![[Pasted image 20221014133831.png]]
+### Phishing Case 2
+Scenario: You are a Level 1 SOC Analyst. Several suspicious emails have been forwarded to you from other coworkers. You must obtain details from each email for your team to implement the appropriate rules to prevent colleagues from receiving additional spam/phishing emails.
+A malicious attachment from a phishing email inspected in the previous Phishing Room was uploaded to Any Run for analysis.
+Task: Investigate the analysis and answer the questions below.
+Link: https://app.any.run/tasks/8bfd4c58-ec0d-4371-bfeb-52a334b69f59
+![[Pasted image 20221014134155.png]]
+What does AnyRun classify this email as?
+*Suspicious activity*
+What is the name of the PDF file?
+*Payment-updateid.pdf*
+![[Pasted image 20221014135004.png]]
+```text
+press text report
+
+https://any.run/report/cc6f1a04b10bcb168aeec8d870b97bd7c20fc161e8310b5bce1af8ed420e2c24/8bfd4c58-ec0d-4371-bfeb-52a334b69f59?_gl=1*1g6zzin*_ga*NjgzNjk4ODY4LjE2NTk0NjQ5NTI.*_ga_53KB74YDZR*MTY2NTc3Mjg3My42LjAuMTY2NTc3Mjg4Ni40Ny4wLjA.&_ga=2.205946577.357482081.1665772874-683698868.1659464952
+
+and this is the link to get sha256 and more info
+```
+What is the SHA 256 hash for the PDF file?
+*CC6F1A04B10BCB168AEEC8D870B97BD7C20FC161E8310B5BCE1AF8ED420E2C24*
+What two IP addresses are classified as malicious? Defang the IP addresses. (answer: IP_ADDR,IP_ADDR)
+CyberChef can help you with this.
+![[Pasted image 20221014135415.png]]
+![[Pasted image 20221014135436.png]]
+![[Pasted image 20221014135455.png]]
+*2[.]16[.]107[.]24,2[.]16[.]107[.]83*
+![[Pasted image 20221014135909.png]]
+What Windows process was flagged as Potentially Bad Traffic?
+*svchost.exe*
+### Phishing Case 3
+Scenario: You are a Level 1 SOC Analyst. Several suspicious emails have been forwarded to you from other coworkers. You must obtain details from each email for your team to implement the appropriate rules to prevent colleagues from receiving additional spam/phishing emails.
+A malicious attachment from a phishing email inspected in the previous Phishing Room was uploaded to Any Run for analysis.
+Task: Investigate the analysis and answer the questions below.
+Link: https://app.any.run/tasks/82d8adc9-38a0-4f0e-a160-48a5e09a6e83
+![[Pasted image 20221014140251.png]]
+![[Pasted image 20221014140329.png]]
+```text
+text report
+
+https://any.run/report/5f94a66e0ce78d17afc2dd27fc17b44b3ffc13ac5f42d3ad6a5dcfb36715f3eb/82d8adc9-38a0-4f0e-a160-48a5e09a6e83?_gl=1*7iitki*_ga*NjgzNjk4ODY4LjE2NTk0NjQ5NTI.*_ga_53KB74YDZR*MTY2NTc3Mjg3My42LjEuMTY2NTc3NDA5Ni4zNi4wLjA.&_ga=2.166689148.357482081.1665772874-683698868.1659464952
+
+MALICIOUS
+
+    Equation Editor starts application (CVE-2017-11882)
+        EQNEDT32.EXE (PID: 1068)
+```
+What is this analysis classified as?
+*Malicious activity*
+What is the name of the Excel file?
+*CBJ200620039539.xlsx*
+What is the SHA 256 hash for the file?
+*5F94A66E0CE78D17AFC2DD27FC17B44B3FFC13AC5F42D3AD6A5DCFB36715F3EB*
+![[Pasted image 20221014181933.png]]
+What domains are listed as malicious? Defang the URLs & submit answers in alphabetical order. (answer: URL1,URL2,URL3)
+*findresults[.]site,biz9holdings[.]com,ww38[.]findresults[.]site*
+What IP addresses are listed as malicious? Defang the IP addresses & submit answers from lowest to highest. (answer: IP1,IP2,IP3)
+*103[.]224[.]182[.]251,204[.]11[.]56[.]48,75[.]2[.]11[.]242*
+What vulnerability does this malicious attachment attempt to exploit?
+*CVE-2017-11882*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/a31606afb772b8f87eebf0ff59f00fce.png)
+- ![|800](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/0dcc25c992ddfdfc60532f6fb9416a70.png)
+- ![|900](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/9665b8957923a892e721a0e02e42ea9f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/94366a297a0abb9b7f680e006c421b45.png)
+- ![|800](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/e5eb24859d263b8d233f52c1502aaed4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/a737376ca1243a926f7a41a765cb7a1e.png)
+- ![|800](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/685f9bb5291973038d55aca7c09ffd1e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/e1f11b62dbd9ed415177bdbc44a13d2d.png)
+- ![|800](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/5c0556b15a803638a2d289915edc8946.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/31728d39e79f36340ab8bcdd740940d6.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/64c5e32e65919e17e352161594fbb627.png)
+
+## Notes / Lessons Learned
+[[HeartBleed]]
+
