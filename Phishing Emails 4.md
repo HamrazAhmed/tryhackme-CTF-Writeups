@@ -107,3 +107,113 @@ https://www.mailersend.com/blog/smtp-codes
 ```text
 ┌──(kali㉿kali)-[~]
 └─$ cd Downloads/PHishing
+```
+
+## Enumeration
+```text
+┌──(kali㉿kali)-[~/Downloads/PHishing]
+└─$ nc -nvlp 4444 > traffic.pcap   
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+Ncat: Connection from 10.10.24.199.
+Ncat: Connection from 10.10.24.199:41134.
+^C
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/PHishing]
+└─$ ls -lah             
+total 888K
+drwxr-xr-x  2 kali kali 4.0K Oct 17 13:16 .
+drwxr-xr-x 66 kali kali 4.0K Oct 17 12:06 ..
+-rw-r--r--  1 kali kali  34K Apr  9  2022 Email1.eml
+-rw-r--r--  1 kali kali 310K Dec 14  2017 Email2.eml
+-rw-r--r--  1 kali kali 115K Oct 13  2021 Email3.eml
+-rw-r--r--  1 kali kali  57K Oct 14 14:13 Phish3Case1.eml
+-rw-r--r--  1 kali kali 354K Oct 17 13:17 traffic.pcap
+
+ubuntu@ip-10-10-24-199:~/Desktop$ nc 10.13.51.212 4444 < traffic.pcap
+ubuntu@ip-10-10-24-199:~/Desktop$ ls -lah
+total 368K
+drwxr-xr-x  3 ubuntu ubuntu 4.0K Jul 27  2021 .
+drwxr-xr-x 21 ubuntu ubuntu 4.0K Oct 17 17:11 ..
+drwxrwxr-x  3 ubuntu ubuntu 4.0K Jul 27  2021 Tools
+-rw-r--r--  1 ubuntu ubuntu 354K Apr 21  2019 traffic.pcap
+```
+What Wireshark filter can you use to narrow down the packet output using SMTP status codes?
+*smtp.response.code*
+![[Pasted image 20221017122323.png]]
+Per the network traffic, what was the message for status code 220? (Do not include the status code (220) in the answer)
+*<domain> Service ready*
+![[Pasted image 20221017122909.png]]
+One packet shows a response that an email was blocked using spamhaus.org. What were the packet number and status code? (no spaces in your answer)
+![[Pasted image 20221017123745.png]]
+*156,553* (No is packet number and info the 1st number is status code)
+Based on the packet from the previous question, what was the message regarding the mailbox?
+Answer is the 2nd part only, without the ".".
+![[Pasted image 20221017124150.png]]
+*mailbox name not allowed*
+What is the status code that will typically precede a SMTP DATA command?
+The server is now waiting for the 'body' of the message.
+*354*
+![[Pasted image 20221017124732.png]]
+### SMTP Traffic Analysis
+In this task, you'll move beyond SMTP codes and analyze trivial SMTP traffic.
+The reference below may assist you with this task:
+https://www.wireshark.org/docs/dfref/i/imf.html
+![[Pasted image 20221017125524.png]]
+What port is the SMTP traffic using?
+*25*
+![[Pasted image 20221017125822.png]]
+How many packets are specifically SMTP?
+*512*
+![[Pasted image 20221017125416.png]]
+What is the source IP address for all the SMTP traffic?
+*10.12.19.101*
+![[Pasted image 20221017130201.png]]
+What is the filename of the third file attachment?
+*attachment.scr*
+![[Pasted image 20221017125930.png]]
+How about the last file attachment?
+*.zip*
+### SMTP and C&C Communication
+Now we'll take a look at how SMTP has been abused by adversaries for C2 (Command and Control) communications.
+MITRE ATT&CK:
+Techinique 1071 > Sub-Technique 3: https://attack.mitre.org/techniques/T1071/003/
+Per MITRE, "Adversaries may communicate using application layer protocols associated with electronic mail delivery to avoid detection/network filtering by blending in with existing traffic. Commands to the remote system, and often the results of those commands, will be embedded within the protocol traffic between the client and server."
+Several notable groups, such as APT 28, APT 32, and Turla, to name a few, have used this technique.
+Recommended mitigation (per MITRE):
+"Network intrusion detection and prevention systems that use network signatures to identify traffic for specific adversary malware can be used to mitigate activity at the network level."
+Detection opportunity (per MITRE):
+"Analyze packet contents to detect application layer protocols that do not follow the expected protocol standards regarding syntax, structure, or any other variable adversaries could leverage to conceal data."
+Note: We will cover Network Intrusion Prevention and Detection in future rooms.
+Per MITRE ATT&CK, which software is associated with using SMTP and POP3 for C2 communications?
+Zebrocy
+Zebrocy is a Trojan that has been used by APT28 since at least November 2015. The malware comes in several programming language variants, including C++, Delphi, AutoIt, C#, VB.NET, and Golang.
+*Zebrocy*
+### Conclusion
+We'll wrap up this room by sharing a phishing incident response playbook. This playbook will give you an idea of what steps should be considered and executed given this scenario.
+A playbook is a defined process that should be followed in a specific situation, in this case, a phishing incident.
+Phishing IR Playbook:
+https://www.incidentresponse.org/playbooks/phishing
+Lastly, the PCAP file used in this room was from Malware Traffic Analysis. You can explore more details about this PCAP or other samples.
+SMTP PCAP Credit:
+https://www.malware-traffic-analysis.net/2018/12/19/index.html
+El Instituto Nacional de Normas y Tecnología (NIST, por sus siglas en inglés) está autorizado en proporcionar servicios de medida, incluyendo servicios de calibración, para organizaciones o personas ubicadas fuera de los Estados Unidos.
+Per the playbook, what framework was used for the IR process?
+*NIST*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/cf22ce3f7772210792332bae5083cd7f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/66c0270a75718fd985664b223e549cde.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/5d9bea5f9fd4e1409d4cb28bfdfea94e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/334dbef5ba955a23b7e84629b85eb26a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/9b94a157faf86848b26093efb30c2126.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/72bc9ea8efe179361c958a951f9db9fb.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/72bc9ea8efe179361c958a951f9db9fb.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/d0b2fc15e23d1466ff98efc98afef61e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/4e01a85a20db9d2890d2b42c4ba1fd43.png)
+
+## Notes / Lessons Learned
+[[Phishing Emails 3]]
+
