@@ -66,6 +66,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Command Injection** | `Easy` | Web Pentest | [Command Injection.md](./Command%20Injection.md) |
 | **Corridor** | `Easy` | Web / IDOR | [Corridor.md](./Corridor.md) |
 | **Couch** | `Easy` | CouchDB Misconfig | [Couch.md](./Couch.md) |
+| **Cross-site Scripting** | `Easy` | Web Fundamentals | [Cross-site Scripting.md](./Cross-site%20Scripting.md) |
 
 
-<!-- Weekly Progress: Week 65/104 | 2024-03-29 -->
+<!-- Weekly Progress: Week 66/104 | 2024-04-07 -->
