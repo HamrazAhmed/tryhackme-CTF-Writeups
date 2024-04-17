@@ -920,3 +920,464 @@ Connection list
            f:49697                   3:b99c:561f:38
                                      9
     tcp6   fe80::898e:c203:b99c:561  fe80::898e:c20  TIME_WAIT    0     0      0/[System Process]
+           f:56873                   3:b99c:561f:13
+                                     5
+    tcp6   fe80::898e:c203:b99c:561  fe80::898e:c20  ESTABLISHED  0     0      3456/dfsrs.exe
+           f:57052                   3:b99c:561f:38
+                                     9
+    tcp6   fe80::898e:c203:b99c:561  fe80::898e:c20  ESTABLISHED  0     0      3456/dfsrs.exe
+           f:57054                   3:b99c:561f:49
+                                     669
+    tcp6   fe80::898e:c203:b99c:561  fe80::898e:c20  ESTABLISHED  0     0      3456/dfsrs.exe
+           f:57055                   3:b99c:561f:38
+                                     9
+    tcp6   fe80::898e:c203:b99c:561  fe80::898e:c20  ESTABLISHED  0     0      828/lsass.exe
+           f:58325                   3:b99c:561f:49
+                                     669
+    udp    0.0.0.0:123               0.0.0.0:*                    0     0      1452/svchost.exe
+    udp    0.0.0.0:389               0.0.0.0:*                    0     0      828/lsass.exe
+    udp    0.0.0.0:3389              0.0.0.0:*                    0     0      1092/svchost.exe
+    udp    0.0.0.0:5353              0.0.0.0:*                    0     0      1580/svchost.exe
+    udp    0.0.0.0:5355              0.0.0.0:*                    0     0      1580/svchost.exe
+    udp    0.0.0.0:51070             0.0.0.0:*                    0     0      3420/dns.exe
+    udp    0.0.0.0:51072             0.0.0.0:*                    0     0      3420/dns.exe
+
+    udp6   ::1:53                    :::*                         0     0      3420/dns.exe
+    udp6   ::1:51069                 :::*                         0     0      3420/dns.exe
+    udp6   fe80::898e:c203:b99c:561  :::*                         0     0      3420/dns.exe
+           f:53
+    udp6   fe80::898e:c203:b99c:561  :::*                         0     0      828/lsass.exe
+           f:88
+    udp6   fe80::898e:c203:b99c:561  :::*                         0     0      828/lsass.exe
+           f:464
+```
+```text
+meterpreter > route
+
+IPv4 network routes
+===================
+
+    Subnet           Netmask          Gateway      Metric  Interface
+    ------           -------          -------      ------  ---------
+    0.0.0.0          0.0.0.0          10.10.0.1    25      7
+    10.10.0.0        255.255.0.0      10.10.66.59  281     7
+    10.10.66.59      255.255.255.255  10.10.66.59  281     7
+    10.10.255.255    255.255.255.255  10.10.66.59  281     7
+    127.0.0.0        255.0.0.0        127.0.0.1    331     1
+    127.0.0.1        255.255.255.255  127.0.0.1    331     1
+    127.255.255.255  255.255.255.255  127.0.0.1    331     1
+    169.254.169.123  255.255.255.255  10.10.0.1    50      7
+    169.254.169.249  255.255.255.255  10.10.0.1    50      7
+    169.254.169.250  255.255.255.255  10.10.0.1    50      7
+    169.254.169.251  255.255.255.255  10.10.0.1    50      7
+    169.254.169.253  255.255.255.255  10.10.0.1    50      7
+    169.254.169.254  255.255.255.255  10.10.0.1    50      7
+    224.0.0.0        240.0.0.0        127.0.0.1    331     1
+    224.0.0.0        240.0.0.0        10.10.66.59  281     7
+    255.255.255.255  255.255.255.255  127.0.0.1    331     1
+    255.255.255.255  255.255.255.255  10.10.66.59  281     7
+
+No IPv6 routes were found.
+```
+```text
+meterpreter > ps
+
+Process List
+============
+
+ PID   PPID  Name               Arch  Session  User                          Path
+ ---   ----  ----               ----  -------  ----                          ----
+ 0     0     [System Process]
+ 4     0     System             x64   0
+ 88    4     Registry           x64   0
+ 412   808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 428   4     smss.exe           x64   0
+ 560   808   svchost.exe        x64   0        NT AUTHORITY\NETWORK SERVICE
+ 596   584   csrss.exe
+ 672   664   csrss.exe
+ 692   584   wininit.exe        x64   0
+ 740   664   winlogon.exe       x64   1        NT AUTHORITY\SYSTEM           C:\Windows\System32\winlogon.e
+                                                                             xe
+ 808   692   services.exe       x64   0
+ 828   692   lsass.exe          x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\lsass.exe
+ 852   3164  GoogleUpdate.exe   x86   0        NT AUTHORITY\SYSTEM           C:\Program Files (x86)\Google\
+                                                                             Update\GoogleUpdate.exe
+ 960   808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 1016  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 1040  740   dwm.exe            x64   1        Window Manager\DWM-1          C:\Windows\System32\dwm.exe
+ 1084  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 1092  808   svchost.exe        x64   0        NT AUTHORITY\NETWORK SERVICE
+ 1176  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 1196  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 1360  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\svchost.ex
+                                                                             e
+ 1368  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\svchost.ex
+                                                                             e
+ 1384  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\svchost.ex
+                                                                             e
+ 1436  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 1444  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 1452  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 1460  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 1468  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 1476  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 1496  852   GoogleCrashHandle  x86   0        NT AUTHORITY\SYSTEM           C:\Program Files (x86)\Google\
+             r.exe                                                           Update\1.3.36.102\GoogleCrashH
+                                                                             andler.exe
+ 1560  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 1572  852   GoogleCrashHandle  x64   0        NT AUTHORITY\SYSTEM           C:\Program Files (x86)\Google\
+             r64.exe                                                         Update\1.3.36.102\GoogleCrashH
+                                                                             andler64.exe
+ 1580  808   svchost.exe        x64   0        NT AUTHORITY\NETWORK SERVICE
+ 1652  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 1684  808   spoolsv.exe        x64   0        NT AUTHORITY\SYSTEM
+ 1728  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 1792  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 1852  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 1888  808   svchost.exe        x64   0        NT AUTHORITY\NETWORK SERVICE
+ 1896  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 1944  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 1984  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 2020  808   SecurityHealthSer  x64   0
+             vice.exe
+ 2056  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 2080  808   svchost.exe        x64   0        NT AUTHORITY\NETWORK SERVICE
+ 2092  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 2128  808   msdtc.exe          x64   0        NT AUTHORITY\NETWORK SERVICE
+ 2136  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 2156  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\svchost.ex
+                                                                             e
+ 2204  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 2228  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 2612  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 2656  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 2736  740   fontdrvhost.exe    x64   1        Font Driver Host\UMFD-1       C:\Windows\System32\fontdrvhos
+                                                                             t.exe
+ 2812  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 2832  692   fontdrvhost.exe    x64   0        Font Driver Host\UMFD-0       C:\Windows\System32\fontdrvhos
+                                                                             t.exe
+ 3080  808   svchost.exe        x64   0        NT AUTHORITY\NETWORK SERVICE
+ 3088  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 3116  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 3172  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\svchost.ex
+                                                                             e
+ 3228  808   svchost.exe        x64   0        NT AUTHORITY\NETWORK SERVICE
+ 3236  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 3276  808   amazon-ssm-agent.  x64   0        NT AUTHORITY\SYSTEM           C:\Program Files\Amazon\SSM\am
+             exe                                                             azon-ssm-agent.exe
+ 3284  808   ismserv.exe        x64   0        NT AUTHORITY\SYSTEM
+ 3308  808   dfssvc.exe         x64   0        NT AUTHORITY\SYSTEM
+ 3316  808   MsMpEng.exe        x64   0
+ 3420  808   dns.exe            x64   0        NT AUTHORITY\SYSTEM
+ 3448  808   Microsoft.ActiveD  x64   0        NT AUTHORITY\SYSTEM
+             irectory.WebServi
+             ces.exe
+ 3456  808   dfsrs.exe          x64   0        NT AUTHORITY\SYSTEM
+ 3464  808   LiteAgent.exe      x64   0        NT AUTHORITY\SYSTEM           C:\Program Files\Amazon\Xentoo
+                                                                             ls\LiteAgent.exe
+ 3484  808   Sysmon.exe         x64   0        NT AUTHORITY\SYSTEM           C:\Windows\Sysmon.exe
+ 3664  412   unsecapp.exe       x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\wbem\unsec
+                                                                             app.exe
+ 3960  2892  rundll32.exe       x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\rundll32.e
+                                                                             xe
+ 4104  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 4496  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 4528  808   svchost.exe        x64   0        NT AUTHORITY\SYSTEM
+ 4564  808   svchost.exe        x64   0        NT AUTHORITY\LOCAL SERVICE
+ 4592  740   LogonUI.exe        x64   1        NT AUTHORITY\SYSTEM           C:\Windows\System32\LogonUI.ex
+                                                                             e
+```
+```text
+meterpreter > show_mount
+
+Mounts / Drives
+===============
+
+Name  Type   Size (Total)  Size (Free)  Mapped to
+----  ----   ------------  -----------  ---------
+C:\   fixed  14.46 GiB     3.21 GiB
+
+Total mounts/drives: 1
+```
+```text
+meterpreter > getlwd
+/root
+```
+```text
+meterpreter > getwd
+C:\Windows\system32
+```
+```text
+meterpreter > checksum md5 'c:\Users\Administrator\Desktop\flag.txt'
+415aa878505c85f197da96735e913c56  c:\Users\Administrator\Desktop\flag.txt
+```
+```text
+meterpreter > checksum sha1 'c:\Users\Administrator\Desktop\flag.txt'
+1efee204f22a548f5162b9da4f7453fbcffac022  c:\Users\Administrator\Desktop\flag.txt
+```
+```text
+meterpreter > rev2self
+```
+```text
+meterpreter > uuid
+[+] UUID: b071f40c768b4e8a/x64=2/windows=1/2022-11-15T21:06:29Z
+```
+```text
+meterpreter > machine_id
+[+] Machine ID: 01f3c728d1f70b69ab53c6c53840e306
+
+after power off machine
+```
+```text
+meterpreter > shell
+....
+```
+What is the flag residing on the Administrator's Desktop?
+### Indicators of Compromise
+![333](https://i.ibb.co/N1F0Jg3/tuxpi-com-1629004433.jpg)
+A Proof of Concept is often a piece of code or an application that is used to demonstrate an idea or theory is possible. Proof of Concepts are often used to demonstrate vulnerabilities
+Let's imagine the worst-case scenario that the THMdepartment was compromised a couple of days after the PoC for PrintNightmare was released, and you are THMdepartment's Threat Hunter. Your company suspects that an attacker used PrintNightmare to access the Domain Controller, and your task is to find evidence or indicators of compromise. So, the next question would be what indicators should you look for in order to detect the PrintNightmare attack?
+https://github.com/cube0x0/CVE-2021-1675
+The attacker would most likely use rpcdump.py to scan for vulnerable hosts. After finding the vulnerable print server, the attacker can then execute the exploit code (similar to the Python script in the previous task), which will load the malicious DLL file to exploit the vulnerability. More specifically, the exploit code will call the pcAddPrinterDriverEx() function from the authenticated user account and load the malicious DLL file in order to exploit the vulnerability. The pcAddPrinterDriverEx() function is used to install a printer driver on the system.
+Sygnia shared some advanced threat hunting tips to detect PrintNightmare. When hunting for PrintNightmare, you should look for the following:
+https://www.sygnia.co/demystifying-the-printnightmare-vulnerability
+Search for the spoolsv.exe process launching rundll32.exe as a child process without any command-line arguments
+Considering the usage of the pcAddPrinterDriverEx() function, you will mostly find the malicious DLL dropped into one of these folders %WINDIR%\system32\spool\drivers\x64\3\ folder along with DLLs that were loaded afterward from %WINDIR%\system32\spool\drivers\x64\3\Old\ (You should proactively monitor the folders for any unusual DLLs)
+Hunt for suspicious spoolsv.exe child processes (cmd.exe, powershell.exe, etc.)
+The attacker might even use Mimikatz to perform the attack, in this case, a print driver named ‘QMS 810’ will be created. This can be detected by logging the registry changes (e.g., Sysmon ID 13).
+Search for DLLs that are part of the proof-of-concept codes that were made public, such as MyExploit.dll, evil.dll, addCube.dll, rev.dll, rev2.dll, main64.dll, mimilib.dll. If they're present on the endpoint, you can find them with Event ID 808 in Microsoft-Windows-PrintService.
+https://www.splunk.com/en_us/blog/security/i-pity-the-spool-detecting-printnightmare-cve-2021-34527.html
+Splunk also did a great job of providing us with some detection search queries:
+Identifies Print Spooler adding a new Printer Driver:
+source="WinEventLog:Microsoft-Windows-PrintService/Operational"
+EventCode=316 category = "Adding a printer driver" Message = "*kernelbase.dll,*" Message = "*UNIDRV.DLL,*" Message = "*.DLL.*"
+| stats count min(_time) as firstTime max(_time) as lastTime by OpCode EventCode ComputerName Message
+Detects spoolsv.exe with a child process of rundll32.exe:
+| tstats count min(_time) as firstTime max(_time) as lastTime from
+datamodel=Endpoint.Processes where
+Processes.parent_process_name=spoolsv.exe
+Processes.process_name=rundll32.exe by Processes.dest Processes.user
+Processes.parent_process Processes.process_name Processes.process
+Processes.process_id Processes.parent_process_id
+Suspicious rundll32.exe instances without any command-line arguments:
+| tstats count FROM datamodel=Endpoint.Processes where
+Processes.process_name=spoolsv.exe by _time Processes.process_id Processes.process_name Processes.dest
+| rename "Processes.*" as *
+| join process_guid _time
+[| tstats count min(_time) as firstTime max(_time) as lastTime FROM datamodel=Endpoint.Filesystem where
+Filesystem.file_path="*\\spool\\drivers\\x64\\*" Filesystem.file_name="*.dll" by _time
+Filesystem.dest Filesystem.file_create_time Filesystem.file_name Filesystem.file_path
+| rename "Filesystem.*" as *
+| fields _time dest file_create_time file_name file_path process_name process_path process]
+| dedup file_create_time
+| table dest file_create_time, file_name, file_path, process_name
+Detects when a new printer plug-in has failed to load:
+source="WinEventLog:Microsoft-Windows-PrintService/Admin" ((ErrorCode="0x45A" (EventCode="808" OR EventCode="4909"))
+OR ("The print spooler failed to load a plug-in module" OR "\\drivers\\x64\\"))
+| stats count min(_time) as firstTime max(_time) as lastTime by OpCode EventCode ComputerName Message
+If you are interested in learning Splunk, refer to the following rooms:
+Splunk 101
+Splunk
+Splunk 2
+Splunk 3
+Provide the first folder path where you would likely find the dropped DLL payload.
+*C:\Windows\System32\spool\drivers\x64\3*
+Provide the function that is used to install printer drivers.
+*pcAddPrinterDriverEx()*
+What tool can the attacker use to scan for vulnerable print servers?
+```text
+┌──(root㉿kali)-[~/home/witty/Desktop/impacket]
+└─# rpcdump.py @10.10.66.59 | egrep 'MS-RPRN|MS-PAR' 
+Protocol: [MS-PAR]: Print System Asynchronous Remote Protocol 
+Protocol: [MS-RPRN]: Print System Remote Protocol
+```
+*rpcdump.py*
+### Detection: Windows Event Logs
+![|333](https://i.ibb.co/WfD09LG/EVENTLOG.png)
+Windows Event Logs are detailed records of security, system, and application notifications created by the Windows operating system. There are some logs that record events related to Print Spooler activity. Still, they might not be enabled by default and need to be configured using Windows Group Policy or Powershell.
+The logs related to Print Spooler Activity are:
+Microsoft-Windows-PrintService/Admin
+Microsoft-Windows-PrintService/Operational
+We can detect the PrintNightmare artifacts by looking at the endpoint events or Windows Event Logs mentioned above.
+You can look for the following Event IDs:
+Microsoft-Windows-PrintService/Operational (Event ID 316) - look for "Printer driver [file] for Windows x64 Version-3 was added or updated. Files:- UNIDRV.DLL, AddUser.dll, AddUser.dll. No user action is required.”
+Microsoft-Windows-PrintService/Admin (Event ID 808) - A security event source has attempted to register (can detect unsigned drivers and malicious DLLs loaded by spoolsv.exe)
+Microsoft-Windows-PrintService/Operational (Event ID 811) - Logs the information regarding failed operations. The event will provide information about the full path of the dropped DLL.
+Microsoft-Windows-SMBClient/Security (Event ID 31017) - This Event ID can also be used to detect unsigned drivers loaded by spoolsv.exe.
+Windows System (Event ID 7031) - Service Stop Operations (This event ID will show you unexpected termination of print spooler service).
+You can also use Sysmon to detect PrintNightmare terror:
+Microsoft-Windows-Sysmon/Operational (Event ID 3) - Network connection (Look for suspicious ports)
+Microsoft-Windows-Sysmon/Operational (Event ID 11) - FileCreate (File creation events are being logged,  you can look for loaded DLLs in the Print Spooler’s driver directory: C:\Windows\System32\spool\drivers\x64\3)
+Microsoft-Windows-Sysmon/Operational (Event IDs 23, 26) - FileDelete (You can hunt for deleted malicious DLLs)
+You are still in the middle of hunting for THMDepartment to determine if the PrintNightmare attack actually took place.
+Armed with all the knowledge above, can you detect the PrintNightmare artifacts in the Event Logs?
+```text
+using event viewer , go to Applications and Services Logs -> Microsoft -> windows -> PrintService
+
+and create a custom viewer (by log Application/Security,Setup,System,Forwarded... accept all and then search the other box in the same By log with Applications and Services Logs -> Microsoft -> windows -> PrintService, is ticked admin and operational)
+
+and filter with event id like 316,808,811,31017,7031
+
+there's 1 log with event ID 808
+The print spooler failed to load a plug-in module C:\Windows\system32\spool\DRIVERS\x64\3\svch0st.dll, error code 0x45A. See the event user data for context information.
+
+There's 1 log more with event ID 7031
+The Print Spooler service terminated unexpectedly.  It has done this 1 time(s).  The following corrective action will be taken in 5000 milliseconds: Restart the service.
+
+Let’s create a new custom view:
+Using the sources Applications and Services Logs -> Microsoft -> windows -> Sysmon.
+and event id 3
+
+save filter to custom view like any name
+
+Network connection detected:
+RuleName: -
+UtcTime: 2021-08-13 17:33:38.098
+ProcessGuid: {9269562d-acf2-6116-3001-000000000b00}
+ProcessId: 7108
+Image: C:\Windows\System32\rundll32.exe
+User: NT AUTHORITY\SYSTEM
+Protocol: tcp
+Initiated: true
+SourceIsIpv6: false
+SourceIp: 10.10.192.122
+SourceHostname: Finance-01.THMdepartment.local
+SourcePort: 53654
+SourcePortName: -
+DestinationIsIpv6: false
+DestinationIp: 10.10.210.100
+DestinationHostname: ip-10-10-210-100.eu-west-1.compute.internal
+DestinationPort: 4747
+DestinationPortName: 
+
+changing from 3 to 11
+
+File created:
+RuleName: DLL
+UtcTime: 2021-08-13 17:33:40.673
+ProcessGuid: {9269562d-a832-6116-3c00-000000000b00}
+ProcessId: 2244
+Image: C:\Windows\System32\spoolsv.exe
+TargetFilename: C:\Windows\System32\spool\drivers\x64\3\New\svch0st.dll
+CreationUtcTime: 2021-08-13 17:33:40.673
+```
+![[Pasted image 20221115174712.png]]
+![[Pasted image 20221115180003.png]]
+![[Pasted image 20221115180532.png]]
+![[Pasted image 20221115181153.png]]
+![[Pasted image 20221115181524.png]]
+![[Pasted image 20221115182321.png]]
+Provide the name of the dropped DLL, including the error code. (no space after the comma)
+You're looking for malicious DLLs loaded by spoolsv.exe.
+*svch0st.dll,0x45A*
+Provide the event log name and the event ID that detected the dropped DLL. (no space after the comma)
+*Microsoft-Windows-PrintService/Admin,808*
+Find the source name and the event ID when the Print Spooler Service stopped unexpectedly and how many times was this event logged? (format: answer,answer,answer)
+*Service Control Manager,7031,1*
+After some threat hunting steps, you are more confident now that it's a PrintNightmare attack. Hunt for the attacker's shell connection. Provide the log name, event ID, and destination port. (format: answer,answer,answer)
+*Microsoft-Windows-Sysmon/Operational,3,4747*
+Oh no! You think you've found the attacker's connection. You need to know the attacker's IP address and the destination hostname in order to terminate the connection.  Provide the attacker's IP address and the hostname. (format: answer,answer)
+*ip-10-10-210-100.eu-west-1.compute.internal*
+A Sysmon FileCreated event was generated and logged. Provide the full path to the dropped DLL and the earliest creation time in UTC.  (format:answer,yyyy-mm-dd hh-mm-ss)
+Check Sysmon Event ID 3 or 11
+*C:\Windows\System32\spool\drivers\x64\3\New\svch0st.dll,2021-08-13 17:33:40.673*
+### Detection: Packet Analysis
+![|333](https://i.ibb.co/wpj95n7/tuxpi-com-1629073907.jpg)
+Packet captures (pcap) play a crucial role in detecting signs of compromise.
+If you are not familiar with Wireshark, no worries. You can learn more about Wireshark and how to analyze the packet captures by joining the Wireshark 101 room. It will be a lot of fun!
+Detecting the PrintNightmare attack, specifically to (CVE-2021-1675 and CVE-2021-34527) by analyzing the network traffic is not as easy as inspecting the artifacts like Windows Event Logs on the victim's machine. The attacker relies on adding a printer driver using DCE/RPC commands RpcAddPrinterDriver or RpcAddPrinterDriverEx.
+https://wiki.wireshark.org/DCE/RPC
+DCE/RPC stands for Distributed Computing Environment/Remote Procedure Calls and is the remote procedure call that establishes APIs and an over-the-network protocol.  But what makes the detection of the attack harder is that there are legitimate uses for RpcAddPrinterDriver or RpcAddPrinterDriverEx commands, so you cannot always rely only on the network traffic analysis to be confident that the PrintNightmare attack occurred in your environment. According to Corelight, it can get even harder to detect, especially if the exploit wraps the DCE/RPC calls in [SMB3 encryption](https://docs.microsoft.com/en-us/windows-server/storage/file-server/smb-security#:~:text=SMB%20Encryption%20provides%20end%2Dto,eavesdropping%20occurrences%20on%20untrusted%20networks.&text=SMB%20Encryption%20can%20be%20configured,where%20data%20traverses%20untrusted%20networks.). To identify the encrypted DCE/RPC calls, you need to somehow decrypt and decode the payloads, which is a time-consuming task.
+[Corelight](https://corelight.com/blog/why-is-printnightmare-hard-to-detect) also released a [Zeek package](https://github.com/corelight/CVE-2021-1675) that detects the printer driver additions over DCE/RPC commands that are not encrypted.
+Attached to this task is a PCAP from a PrintNightmare attack you can download and open in your local Wireshark instance.
+Task: Inspect the PCAP and answer the questions below.
+https://yacin.nadji.us/posts/2021/07/printnightmare-smb3-encryption-and-your-network/
+```text
+using wiresharkt, find .local
+
+Session Id: 0x0000200018000041 Acct:lowprivlarry Domain:WIN-1O0UJBNP9G7.printnightmare.local Host:
+
+find .dll
+
+Search Pattern: letmein.dll
+[Tree: \\10.10.124.236\sharez]
+
+Encrypted SMB3 data
+Data: eb4396d044014b5a79a0cf16c21a993b59bc46d4b209268c161505487f0ab353bf4a992e…
+```
+![[Pasted image 20221115184437.png]]
+![[Pasted image 20221115184827.png]]
+What is the host name of the domain controller?
+*WIN-1O0UJBNP9G7*
+What is the local domain?
+*WIN-1O0UJBNP9G7*
+What user account was utilized to exploit the vulnerability?
+*lowprivlarry*
+What was the malicious DLL used in the exploit?
+*letmein.dll*
+What was the attacker's IP address?
+*10.10.124.236*
+What was the UNC path where the malicious DLL was hosted?
+*\\10.10.124.236\sharez*
+There are encrypted packets in the results. What was the associated protocol?
+*SMB3*
+### Mitigation: Disable Print Spooler
+![|333](https://i.ibb.co/gzg7FxK/DEFENSE.png)
+It was not just a nightmare, and now you are 100% confident that it was a PrintNightmare attack on THMDepartment. You checked the other domain controllers on your network, and it appears that they are clean.
+It is not the end of the world just yet. You can still mitigate or defend against the attack by disabling the Print Spooler on all domain controllers and modify the registry settings (if applicable). How can you do it?
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34527
+Microsoft provided the steps to detect if Print Spooler service is enabled and how to disable them:
+First, you need to determine if the Print Spooler service is running.
+Run the following in Windows PowerShell (Run as administrator):
+Get-Service -Name Spooler
+If Print Spooler is running or if the service is not set to disabled, then select one of the options below to either disable the Print Spooler service or to Disable inbound remote printing through Group Policy.
+Option 1)  Disable the Print Spooler service:
+If disabling the Print Spooler service is appropriate for your environment, use the following PowerShell commands:
+Stop-Service -Name Spooler -Force
+Set-Service -Name Spooler -StartupType Disabled
+NOTE: By disabling the Print Spooler service, you remove the ability to print locally and remotely.
+Option 2)  Disable inbound remote printing through Group Policy:
+The settings via Group Policy can be configured as follows:
+Computer Configuration / Administrative Templates / Printers
+Disable the “Allow Print Spooler to accept client connections” policy to block remote attacks.
+This policy will block the remote attack vector by preventing inbound remote printing operations. The system will no longer operate as a print server, but local printing to a directly attached device will still work.
+Note: Remember that for the group policy to take effect across the domain, or even the local machine, you need to issue a gpupdate /force command.
+For more information, see: Use Group Policy settings to control printers.
+https://docs.microsoft.com/en-us/troubleshoot/windows-server/printing/use-group-policy-to-control-ad-printer
+The [security update](https://docs.microsoft.com/en-us/troubleshoot/windows-server/printing/use-group-policy-to-control-ad-printer) for Windows Server 2012, Windows Server 2016, and Windows 10, Version 1607 have been released by Microsoft on July 7, 2021.
+Additional steps for mitigation besides installing the updates recommended by Microsoft:
+You must confirm that the following registry settings are set to 0 (zero) or are not defined (Note: The mentioned below registry keys do not exist by default, and therefore are already at the secure setting.), also check that your Group Policy settings are correct (see [FAQ](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34527)):
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint
+NoWarningNoElevationOnInstall = 0 (DWORD) or not defined (default setting)
+UpdatePromptSettings = 0 (DWORD) or not defined (default setting)
+Note: Having NoWarningNoElevationOnInstall set to 1 makes your system vulnerable by design.
+Provide two ways to manually disable the Print Spooler Service. (format: answer,answer)
+*powershell, group policy*
+![[Pasted image 20221115185812.png]]
+Where can you disable the Print Spooler Service in Group Policy? (format: no spaces between the forward slashes)
+*Computer Configuration/Administrative Templates/Printers*
+Provide the command in PowerShell to detect if Print Spooler Service is enabled and running.
+```text
+PS C:\Users\User> Get-Service -Name Spooler
+
+Status   Name               DisplayName
+------   ----               -----------
+Running  Spooler            Print Spooler
+```
+*Get-Service -Name Spooler*
+### Conclusion
+![|333](https://i.ibb.co/sFVbzp5/The-End-doodle-drawing-by-hand-on-white-paper.jpg)
+Congratulations! You have reached the final chapter of this room and saved THMdepartment from the "horrors" of PrintNightmare.
+We really hope you enjoyed it and learned some useful defense techniques in order to prevent and respond to the PrintNightmare attack in a timely manner.
+Here are some additional resources for you to learn more about PrintNightmare detections:
+PrintNightmare Network Analysis | JUMPSEC LABS https://labs.jumpsec.com/printnightmare-network-analysis/
+From Lares Labs: Detection & Remediation Information for CVE-2021-1675 & CVE-2021-34527 https://github.com/LaresLLC/CVE-2021-1675
+PrintNightmare (CVE-2021-1675 and CVE 2021-34527) Explained https://www.blumira.com/cve-2021-1675/
+
+## Flags / Answers
+- ![|333](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/54ca28f6a4af72beeb9855a69cb4816a.png)
+- ***THM{SiGBQPMkSvejvmQNEL}***
+
+## Notes / Lessons Learned
+[[Follina MSDT]]
+
