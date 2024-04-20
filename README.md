@@ -68,6 +68,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Couch** | `Easy` | CouchDB Misconfig | [Couch.md](./Couch.md) |
 | **Cross-site Scripting** | `Easy` | Web Fundamentals | [Cross-site Scripting.md](./Cross-site%20Scripting.md) |
 | **Cross-site Scripting-1** | `Easy` | Web Fundamentals | [Cross-site Scripting-1.md](./Cross-site%20Scripting-1.md) |
+| **CyberHeroes** | `Easy` | Web Authentication | [CyberHeroes.md](./CyberHeroes.md) |
 
 
-<!-- Weekly Progress: Week 67/104 | 2024-04-13 -->
+<!-- Weekly Progress: Week 68/104 | 2024-04-20 -->
