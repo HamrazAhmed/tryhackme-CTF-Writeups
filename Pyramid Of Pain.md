@@ -122,3 +122,127 @@ Attackers usually hide the malicious domains under URL Shorteners. A URL Shorten
 ![[Pasted image 20221201225238.png]]
 bit.ly
 goo.gl
+ow.ly
+s.id
+smarturl.it
+tiny.pl
+tinyurl.com
+x.co
+You can see the actual website the shortened link is redirecting you to by appending "+" to it (see the examples below). Type the shortened URL in the address bar of the web browser and add the above characters to see the redirect URL.
+NOTE: The examples of the shortened links below are non-existent.
+![](https://i.ibb.co/rFhwNsw/terminal.png)
+![[Pasted image 20221202104323.png]]
+https://en.wikipedia.org/wiki/List_of_URI_schemes (to make XSS)
+Go to this report on [app.any.run](https://app.any.run/tasks/a66178de-7596-4a05-945d-704dbf6b3b90) and provide the first malicious URL request you are seeing, you will be using this report to answer the remaining questions of this task.
+*craftingalegacy.com*
+![[Pasted image 20221202104911.png]]
+What term refers to an address used to access websites?
+*Domain Name*
+What type of attack uses Unicode characters in the domain name to imitate the a known domain?
+*Punnycode Attack*
+Provide the redirected website for the shortened URL using a preview: https://tinyurl.com/bw7t8p4u
+![[Pasted image 20221202104558.png]]
+*https://tryhackme.com/*
+### Host Artifacts (Annoying)
+Let's take another step up to the yellow zone.
+On this level, the attacker will feel a little more annoyed and frustrated if you can detect the attack. The attacker would need to circle back at this detection level and change his attack tools and methodologies. This is very time-consuming for the attacker, and probably, he will need to spend more resources on his adversary tools.
+Host artifacts are the traces or observables that attackers leave on the system, such as registry values, suspicious process execution, attack patterns or IOCs (Indicators of Compromise), files dropped by malicious applications, or anything exclusive to the current threat.
+Suspicious process execution from Word:
+Suspicious events followed by opening a malicious application:
+The files modified/dropped by the malicious actor:
+What is the suspicious IP the victim machine tried to connect to in the screenshot above?
+*35.214.215.33*
+![[Pasted image 20221202110626.png]]
+Use the tools introduced in task 2 and provide the name of the malware associated with the IP address
+*emotet*
+https://pastebin.com/SgcKe9LK (EMotet IOC)
+Using your OSINT skills, what is the name of the malicious document associated with the dropped binary?
+*G_jugk.exe*
+Use your OSINT skills and provide the name of the malicious document associated with the dropped binary
+Try Google ;)
+https://www.joesandbox.com/analysis/302663/1/html
+![[Pasted image 20221202120426.png]]
+![[Pasted image 20221202120732.png]]
+was really tricky to found it, google it like G_jugk.exe any.run
+then found https://any.run/report/e2d2ebafc33d7c7819f414031215c3669bccdfb255af3cbe0177b2c601b0e0cd/90b76d7b-8df6-43c5-90ec-d4bbcfb4fa19
+![[Pasted image 20221202121627.png]]
+*CMO-100120 CDW-102220.doc*
+### Network Artifacts (Annoying)
+Network Artifacts also belong to the yellow zone in the Pyramid of Pain. This means if you can detect and respond to the threat, the attacker would need more time to go back and change his tactics or modify the tools, which gives you more time to respond and detect the upcoming threats or remediate the existing ones.
+A network artifact can be a user-agent string, C2 information, or URI patterns followed by the HTTP POST requests.An attacker might use a User-Agent string that hasn’t been observed in your environment before or seems out of the ordinary. The User-Agent is defined by [RFC2616](https://datatracker.ietf.org/doc/html/rfc2616#page-145) as the request-header field that contains the information about the user agent originating the request.
+Network artifacts can be detected in Wireshark PCAPs (file that contains the packet data of a network) by using a network protocol analyzer such as [TShark](https://www.wireshark.org/docs/wsug_html_chunked/AppToolstshark.html) or exploring IDS (Intrusion Detection System) logging from a source such as [Snort](https://www.snort.org/).
+HTTP POST requests containing suspicious strings:
+Let's use TShark to filter out the User-Agent strings by using the following command:
+tshark -Y http.request -T fields -e http.host -e http.user_agent -r analysis_file.pcap
+These are the most common User-Agent strings found for the [Emotet Downloader Trojan](https://www.mcafee.com/blogs/other-blogs/mcafee-labs/emotet-downloader-trojan-returns-in-force/)
+If you can detect the custom User-Agent strings that the attacker is using, you might be able to block them, creating more obstacles and making their attempt to compromise the network more annoying.
+What browser uses the User-Agent string shown in the screenshot above?
+Try to search for the User-Agent string "Mozilla/4.0(compatible;MSIE7.0;WindowsNT6.1;Trident/4.0;SLCC2;.NETCLR2.0.50727; .NETCLR3.5.30729;.NETCLR3.0.30729;MediaCenterPC6.0;.NET4.0C;.NET4.0E)" on Google
+Tested with IE8, there is an error message in the lower left corner of the page. Detailed error information User Agent: Mozilla/4.0(compatible;MSIE7.0;WindowsNT6.1;Trident/4.0;SLCC2;.NETCLR2.0.50727;.NETCLR3.5.30729;.NETCLR3.0.30729; MediaCenterPC6.0;.NET4.0C;.NET4.0E) Timestamp: Thu,21Jun2012 11:48:14UTC Message: Missing Object Line: 79 Characters: 13 Code: 0 The line where the error is reported is vara=document.getElementById("limits ").innerHTML;
+https://www.iamivan.net/a/b3VQX0z.html
+*Internet Explorer*
+How many POST requests are in the screenshot from the pcap file?
+*6*
+### Tools (Challenging)
+Congratulations! We have made it to the challenging part for the adversaries!
+At this stage, we have levelled﻿ up our detection capabilities against the artifacts. The attacker would most likely give up trying to break into your network or go back and try to create a new tool that serves the same purpose. It will be a game over for the attackers as they would need to invest some money into building a new tool (if they are capable of doing so), find the tool that has the same potential, or even gets some training to learn how to be proficient in a certain tool.
+Attackers would use the utilities to create malicious macro documents (maldocs) for spearphishing attempts, a backdoor that can be used to establish C2 (Command and Control Infrastructure), any custom .EXE, and .DLL files, payloads, or password crackers. https://www.varonis.com/blog/what-is-c2/
+A Trojan dropped the suspicious "Stealer.exe" in the Temp folder:
+The execution of the suspicious binary:
+Antivirus signatures, detection rules, and YARA rules can be great weapons for you to use against attackers at this stage.
+[MalwareBazaar](https://bazaar.abuse.ch/) and [Malshare](https://malshare.com/) are good resources to provide you with access to the samples, malicious feeds, and YARA results - these all can be very helpful when it comes to threat hunting and incident response.
+For detection rules, [SOC Prime Threat Detection Marketplace](https://tdm.socprime.com/) is a great platform, where security professionals share their detection rules for different kinds of threats including the latest CVE's that are being exploited in the wild by adversaries.
+![[Pasted image 20221202193810.png]]
+Fuzzy hashing is also a strong weapon against the attacker's tools. Fuzzy hashing helps you to perform similarity analysis - match two files with minor differences based on the fuzzy hash values. One of the examples of fuzzy hashing is the usage of SSDeep; on the [SSDeep](https://ssdeep-project.github.io/ssdeep/index.html) official website, you can also find the complete explanation for fuzzy hashing.
+Example of SSDeep from VirusTotal:
+![](https://i.ibb.co/qnyYHtR/ssdeep.png)
+Provide the method used to determine similarity between the files
+*Fuzzy hashing*
+Provide the alternative name for fuzzy hashes without the abbreviation
+Check the SSDeep official webpage
+*context triggered piecewise hashes*
+### TTPs (Tough)
+It is not over yet. But good news, we made it to the final stage or the apex of the Pyramid of Pain!
+TTPs stands for Tactics, Techniques & Procedures. This includes the whole MITRE [ATT&CK Matrix](https://attack.mitre.org/), which means all the steps taken by an adversary to achieve his goal, starting from phishing attempts to persistence and data exfiltration.
+If you can detect and respond to the TTPs quickly, you leave the adversaries almost no chance to fight back. For, example if you could detect a [Pass-the-Hash attack](https://www.beyondtrust.com/resources/glossary/pass-the-hash-pth-attack) using Windows Event Log Monitoring and remediate it, you would be able to find the compromised host very quickly and stop the lateral movement inside your network. At this point, the attacker would have two options:
+Go back, do more research and training, reconfigure their custom tools
+Give up and find another target
+Option 2 definitely sounds less time and resource-consuming.
+Navigate to ATT&CK Matrix webpage. How many techniques fall under the Exfiltration category?
+![[Pasted image 20221202201223.png]]
+*9*
+Chimera is a China-based hacking group that has been active since 2018. What is the name of the commercial, remote access tool they use for C2 beacons and data exfiltration?
+Check MITRE ATT&CK Matrix
+https://attack.mitre.org/groups/G0114/
+![[Pasted image 20221202201357.png]]
+*Cobalt Strike*
+### Practical: The Pyramid of Pain
+Deploy the static site attached to this task and place the prompts into the correct tiers in the pyramid of pain!
+Once you are sure, submit your answer on the static site to retrieve a flag!
+![[Pasted image 20221202201505.png]]
+![[Pasted image 20221202203339.png]]
+hmm some problems (broken question)
+### Conclusion
+Now you have learned the concept of the Pyramid of Pain. Maybe it is time to apply this in practice. Please, navigate to the Static Site to perform the exercise.
+You can pick any APT (Advanced Persistent Threat Groups) as another exercise. A good place to look at would be FireEye Advanced Persistent Threat Groups. When you have determined the APT Group you want to research - find their indicators and ask yourself: " What can I do or what detection rules and approach can I create to detect the adversary's activity?", and "Where does this activity or detection fall on the Pyramid of Pain?”
+As David Blanco states, "the amount of pain you cause an adversary depends on the types of indicators you are able to make use of".
+https://www.fireeye.com/current-threats/apt-groups.html
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/b217b6aa2148826ef0e88ec28c2aa79e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/8e9ad0b23f711036a023a9311dfa0b1d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/86baaabb1df7d710dfc219762c4713e6.png)
+- ![1040](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/efcc44de8368a8cc7d99148f560ae2fd.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/03ad636820590525bdd91e28a04bbec1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/7c4329f6d1d09a739097f818dc42e733.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/6b91c7de5654b7f285991787cb3bb4fe.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/6d742c9c22f99f30e3c8356ef7c36800.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/200da81eca90f66535ccfbc7d09699de.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/a6e36c7601f7b4ec07ce2a102ffb33ab.png)
+- ![999](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/642cac93b8c5b7bf8c82d448cb48c1d1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/20624b49722fd8d0ba062d6206c1d021.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/60c7fac321aca20049602d2b/room-content/8638b80dc730bfc88e37633f648b15e2.png)
+
+## Notes / Lessons Learned
+[[Junior Security Analyst Intro]]
+
