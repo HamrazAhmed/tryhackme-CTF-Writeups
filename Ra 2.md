@@ -644,3 +644,649 @@ PORT      STATE SERVICE             REASON  VERSION
 | fingerprint-strings: 
 |   RPCCheck: 
 |_    <stream:error xmlns:stream="http://etherx.jabber.org/streams"><not-well-formed xmlns="urn:ietf:params:xml:ns:xmpp-streams"/></stream:error></stream:stream>
+5276/tcp  open  ssl/jabber          syn-ack
+| ssl-cert: Subject: commonName=fire.windcorp.thm
+| Subject Alternative Name: DNS:fire.windcorp.thm, DNS:*.fire.windcorp.thm
+| Issuer: commonName=fire.windcorp.thm
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2020-05-01T08:39:00
+| Not valid after:  2025-04-30T08:39:00
+| MD5:   b715542583f3a20f75c8ca2d3353cbb7
+| SHA-1: 97f70772a26be3247ed5bbcb5f357d74798266ae
+| -----BEGIN CERTIFICATE-----
+| MIIDLzCCAhegAwIBAgIIXUFELG7QgAIwDQYJKoZIhvcNAQELBQAwHDEaMBgGA1UE
+| AwwRZmlyZS53aW5kY29ycC50aG0wHhcNMjAwNTAxMDgzOTAwWhcNMjUwNDMwMDgz
+| OTAwWjAcMRowGAYDVQQDDBFmaXJlLndpbmRjb3JwLnRobTCCASIwDQYJKoZIhvcN
+| AQEBBQADggEPADCCAQoCggEBAKLH0/j17RVdD8eXC+0IFovAoql2REjOSf2NpJLK
+| /6fgtx3CA4ftLsj7yOpmj8Oe1gqfWd2EM/zKk+ZmZwQFxLQL93t1OD/za1gyclxr
+| IVbPVWqFoM2BUU9O3yU0VVRGP7xKDHm4bcoNmq9UNurEtFlCNeCC1fcwzfYvKD89
+| X04Rv/6kn1GlQq/iM8PGCLDUf1p1WJcwGT5FUiBa9boTU9llBcGqbodZaBKzPPP8
+| DmvSYF71IKBT8NsVzqiAiO3t/oHgApvUd9BqdbZeN46XORrOhBQV0xUpNVy9L5OE
+| UAD1so3ePTNjpPE5SfTKymT1a8Fiw5kroKODN0nzy50yP3UCAwEAAaN1MHMwMQYD
+| VR0RBCowKIIRZmlyZS53aW5kY29ycC50aG2CEyouZmlyZS53aW5kY29ycC50aG0w
+| HQYDVR0OBBYEFOtMzqgfsY11qewZNfPjiLxnGykGMB8GA1UdIwQYMBaAFOtMzqgf
+| sY11qewZNfPjiLxnGykGMA0GCSqGSIb3DQEBCwUAA4IBAQAHofv0VP+hE+5sg0KR
+| 2x0Xeg4cIXEia0c5cIJ7K7bhfoLOcT7WcMKCLIN3A416PREdkB6Q610uDs8RpezJ
+| II/wBoIp2G0Y87X3Xo5FmNJjl9lGX5fvayen98khPXvZkurHdWdtA4m8pHOdYOrk
+| n8Jth6L/y4L5WlgEGL0x0HK4yvd3iz0VNrc810HugpyfVWeasChhZjgAYXUVlA8k
+| +QxLxyNr/PBfRumQGzw2n3msXxwfHVzaHphy56ph85PcRS35iNqgrtK0fe3Qhpq7
+| v5vQYKlOGq5FI6Mf9ni7S1pXSqF4U9wuqZy4q4tXWAVootmJv1DIgfSMLvXplN9T
+| LucP
+|_-----END CERTIFICATE-----
+|_ssl-date: 2022-12-22T19:31:55+00:00; -2s from scanner time.
+| fingerprint-strings: 
+|   RPCCheck: 
+|_    <stream:error xmlns:stream="http://etherx.jabber.org/streams"><not-well-formed xmlns="urn:ietf:params:xml:ns:xmpp-streams"/></stream:error></stream:stream>
+| xmpp-info: 
+|   STARTTLS Failed
+|   info: 
+|     capabilities: 
+|     unknown: 
+|     errors: 
+|       (timeout)
+|     compression_methods: 
+|     auth_mechanisms: 
+|     xmpp: 
+|_    features: 
+7070/tcp  open  http                syn-ack Jetty 9.4.18.v20190429
+|_http-server-header: Jetty(9.4.18.v20190429)
+|_http-title: Openfire HTTP Binding Service
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+7443/tcp  open  ssl/http            syn-ack Jetty 9.4.18.v20190429
+|_http-title: Openfire HTTP Binding Service
+| ssl-cert: Subject: commonName=fire.windcorp.thm
+| Subject Alternative Name: DNS:fire.windcorp.thm, DNS:*.fire.windcorp.thm
+| Issuer: commonName=fire.windcorp.thm
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2020-05-01T08:39:00
+| Not valid after:  2025-04-30T08:39:00
+| MD5:   b715542583f3a20f75c8ca2d3353cbb7
+| SHA-1: 97f70772a26be3247ed5bbcb5f357d74798266ae
+| -----BEGIN CERTIFICATE-----
+| MIIDLzCCAhegAwIBAgIIXUFELG7QgAIwDQYJKoZIhvcNAQELBQAwHDEaMBgGA1UE
+| AwwRZmlyZS53aW5kY29ycC50aG0wHhcNMjAwNTAxMDgzOTAwWhcNMjUwNDMwMDgz
+| OTAwWjAcMRowGAYDVQQDDBFmaXJlLndpbmRjb3JwLnRobTCCASIwDQYJKoZIhvcN
+| AQEBBQADggEPADCCAQoCggEBAKLH0/j17RVdD8eXC+0IFovAoql2REjOSf2NpJLK
+| /6fgtx3CA4ftLsj7yOpmj8Oe1gqfWd2EM/zKk+ZmZwQFxLQL93t1OD/za1gyclxr
+| IVbPVWqFoM2BUU9O3yU0VVRGP7xKDHm4bcoNmq9UNurEtFlCNeCC1fcwzfYvKD89
+| X04Rv/6kn1GlQq/iM8PGCLDUf1p1WJcwGT5FUiBa9boTU9llBcGqbodZaBKzPPP8
+| DmvSYF71IKBT8NsVzqiAiO3t/oHgApvUd9BqdbZeN46XORrOhBQV0xUpNVy9L5OE
+| UAD1so3ePTNjpPE5SfTKymT1a8Fiw5kroKODN0nzy50yP3UCAwEAAaN1MHMwMQYD
+| VR0RBCowKIIRZmlyZS53aW5kY29ycC50aG2CEyouZmlyZS53aW5kY29ycC50aG0w
+| HQYDVR0OBBYEFOtMzqgfsY11qewZNfPjiLxnGykGMB8GA1UdIwQYMBaAFOtMzqgf
+| sY11qewZNfPjiLxnGykGMA0GCSqGSIb3DQEBCwUAA4IBAQAHofv0VP+hE+5sg0KR
+| 2x0Xeg4cIXEia0c5cIJ7K7bhfoLOcT7WcMKCLIN3A416PREdkB6Q610uDs8RpezJ
+| II/wBoIp2G0Y87X3Xo5FmNJjl9lGX5fvayen98khPXvZkurHdWdtA4m8pHOdYOrk
+| n8Jth6L/y4L5WlgEGL0x0HK4yvd3iz0VNrc810HugpyfVWeasChhZjgAYXUVlA8k
+| +QxLxyNr/PBfRumQGzw2n3msXxwfHVzaHphy56ph85PcRS35iNqgrtK0fe3Qhpq7
+| v5vQYKlOGq5FI6Mf9ni7S1pXSqF4U9wuqZy4q4tXWAVootmJv1DIgfSMLvXplN9T
+| LucP
+|_-----END CERTIFICATE-----
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Jetty(9.4.18.v20190429)
+7777/tcp  open  socks5              syn-ack (No authentication; connection not allowed by ruleset)
+| socks-auth-info: 
+|_  No authentication
+9090/tcp  open  zeus-admin?         syn-ack
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Date: Thu, 22 Dec 2022 19:30:07 GMT
+|     Last-Modified: Fri, 31 Jan 2020 17:54:10 GMT
+|     Content-Type: text/html
+|     Accept-Ranges: bytes
+|     Content-Length: 115
+|     <html>
+|     <head><title></title>
+|     <meta http-equiv="refresh" content="0;URL=index.jsp">
+|     </head>
+|     <body>
+|     </body>
+|     </html>
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Date: Thu, 22 Dec 2022 19:30:16 GMT
+|     Allow: GET,HEAD,POST,OPTIONS
+|   JavaRMI, drda, ibm-db2-das, informix: 
+|     HTTP/1.1 400 Illegal character CNTL=0x0
+|     Content-Type: text/html;charset=iso-8859-1
+|     Content-Length: 69
+|     Connection: close
+|     <h1>Bad Message 400</h1><pre>reason: Illegal character CNTL=0x0</pre>
+|   SqueezeCenter_CLI: 
+|     HTTP/1.1 400 No URI
+|     Content-Type: text/html;charset=iso-8859-1
+|     Content-Length: 49
+|     Connection: close
+|     <h1>Bad Message 400</h1><pre>reason: No URI</pre>
+|   WMSRequest: 
+|     HTTP/1.1 400 Illegal character CNTL=0x1
+|     Content-Type: text/html;charset=iso-8859-1
+|     Content-Length: 69
+|     Connection: close
+|_    <h1>Bad Message 400</h1><pre>reason: Illegal character CNTL=0x1</pre>
+9091/tcp  open  ssl/xmltec-xmlmail? syn-ack
+| ssl-cert: Subject: commonName=fire.windcorp.thm
+| Subject Alternative Name: DNS:fire.windcorp.thm, DNS:*.fire.windcorp.thm
+| Issuer: commonName=fire.windcorp.thm
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2020-05-01T08:39:00
+| Not valid after:  2025-04-30T08:39:00
+| MD5:   b715542583f3a20f75c8ca2d3353cbb7
+| SHA-1: 97f70772a26be3247ed5bbcb5f357d74798266ae
+| -----BEGIN CERTIFICATE-----
+| MIIDLzCCAhegAwIBAgIIXUFELG7QgAIwDQYJKoZIhvcNAQELBQAwHDEaMBgGA1UE
+| AwwRZmlyZS53aW5kY29ycC50aG0wHhcNMjAwNTAxMDgzOTAwWhcNMjUwNDMwMDgz
+| OTAwWjAcMRowGAYDVQQDDBFmaXJlLndpbmRjb3JwLnRobTCCASIwDQYJKoZIhvcN
+| AQEBBQADggEPADCCAQoCggEBAKLH0/j17RVdD8eXC+0IFovAoql2REjOSf2NpJLK
+| /6fgtx3CA4ftLsj7yOpmj8Oe1gqfWd2EM/zKk+ZmZwQFxLQL93t1OD/za1gyclxr
+| IVbPVWqFoM2BUU9O3yU0VVRGP7xKDHm4bcoNmq9UNurEtFlCNeCC1fcwzfYvKD89
+| X04Rv/6kn1GlQq/iM8PGCLDUf1p1WJcwGT5FUiBa9boTU9llBcGqbodZaBKzPPP8
+| DmvSYF71IKBT8NsVzqiAiO3t/oHgApvUd9BqdbZeN46XORrOhBQV0xUpNVy9L5OE
+| UAD1so3ePTNjpPE5SfTKymT1a8Fiw5kroKODN0nzy50yP3UCAwEAAaN1MHMwMQYD
+| VR0RBCowKIIRZmlyZS53aW5kY29ycC50aG2CEyouZmlyZS53aW5kY29ycC50aG0w
+| HQYDVR0OBBYEFOtMzqgfsY11qewZNfPjiLxnGykGMB8GA1UdIwQYMBaAFOtMzqgf
+| sY11qewZNfPjiLxnGykGMA0GCSqGSIb3DQEBCwUAA4IBAQAHofv0VP+hE+5sg0KR
+| 2x0Xeg4cIXEia0c5cIJ7K7bhfoLOcT7WcMKCLIN3A416PREdkB6Q610uDs8RpezJ
+| II/wBoIp2G0Y87X3Xo5FmNJjl9lGX5fvayen98khPXvZkurHdWdtA4m8pHOdYOrk
+| n8Jth6L/y4L5WlgEGL0x0HK4yvd3iz0VNrc810HugpyfVWeasChhZjgAYXUVlA8k
+| +QxLxyNr/PBfRumQGzw2n3msXxwfHVzaHphy56ph85PcRS35iNqgrtK0fe3Qhpq7
+| v5vQYKlOGq5FI6Mf9ni7S1pXSqF4U9wuqZy4q4tXWAVootmJv1DIgfSMLvXplN9T
+| LucP
+|_-----END CERTIFICATE-----
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP: 
+|     HTTP/1.1 400 Illegal character CNTL=0x0
+|     Content-Type: text/html;charset=iso-8859-1
+|     Content-Length: 69
+|     Connection: close
+|     <h1>Bad Message 400</h1><pre>reason: Illegal character CNTL=0x0</pre>
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Date: Thu, 22 Dec 2022 19:30:29 GMT
+|     Last-Modified: Fri, 31 Jan 2020 17:54:10 GMT
+|     Content-Type: text/html
+|     Accept-Ranges: bytes
+|     Content-Length: 115
+|     <html>
+|     <head><title></title>
+|     <meta http-equiv="refresh" content="0;URL=index.jsp">
+|     </head>
+|     <body>
+|     </body>
+|     </html>
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Date: Thu, 22 Dec 2022 19:30:30 GMT
+|     Allow: GET,HEAD,POST,OPTIONS
+|   Help: 
+|     HTTP/1.1 400 No URI
+|     Content-Type: text/html;charset=iso-8859-1
+|     Content-Length: 49
+|     Connection: close
+|     <h1>Bad Message 400</h1><pre>reason: No URI</pre>
+|   RPCCheck: 
+|     HTTP/1.1 400 Illegal character OTEXT=0x80
+|     Content-Type: text/html;charset=iso-8859-1
+|     Content-Length: 71
+|     Connection: close
+|     <h1>Bad Message 400</h1><pre>reason: Illegal character OTEXT=0x80</pre>
+|   RTSPRequest: 
+|     HTTP/1.1 400 Unknown Version
+|     Content-Type: text/html;charset=iso-8859-1
+|     Content-Length: 58
+|     Connection: close
+|     <h1>Bad Message 400</h1><pre>reason: Unknown Version</pre>
+|   SSLSessionReq: 
+|     HTTP/1.1 400 Illegal character CNTL=0x16
+|     Content-Type: text/html;charset=iso-8859-1
+|     Content-Length: 70
+|     Connection: close
+|_    <h1>Bad Message 400</h1><pre>reason: Illegal character CNTL=0x16</pre>
+9389/tcp  open  mc-nmf              syn-ack .NET Message Framing
+49667/tcp open  msrpc               syn-ack Microsoft Windows RPC
+49668/tcp open  ncacn_http          syn-ack Microsoft Windows RPC over HTTP 1.0
+49669/tcp open  msrpc               syn-ack Microsoft Windows RPC
+49670/tcp open  msrpc               syn-ack Microsoft Windows RPC
+49672/tcp open  msrpc               syn-ack Microsoft Windows RPC
+49689/tcp open  msrpc               syn-ack Microsoft Windows RPC
+49703/tcp open  msrpc               syn-ack Microsoft Windows RPC
+7 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5222-TCP:V=7.93%I=7%D=12/22%Time=63A4B04F%P=x86_64-pc-linux-gnu%r(R
+SF:PCCheck,9B,"<stream:error\x20xmlns:stream=\"http://etherx\.jabber\.org/
+SF:streams\"><not-well-formed\x20xmlns=\"urn:ietf:params:xml:ns:xmpp-strea
+SF:ms\"/></stream:error></stream:stream>");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5262-TCP:V=7.93%I=7%D=12/22%Time=63A4B04F%P=x86_64-pc-linux-gnu%r(R
+SF:PCCheck,9B,"<stream:error\x20xmlns:stream=\"http://etherx\.jabber\.org/
+SF:streams\"><not-well-formed\x20xmlns=\"urn:ietf:params:xml:ns:xmpp-strea
+SF:ms\"/></stream:error></stream:stream>");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5263-TCP:V=7.93%T=SSL%I=7%D=12/22%Time=63A4B061%P=x86_64-pc-linux-g
+SF:nu%r(RPCCheck,9B,"<stream:error\x20xmlns:stream=\"http://etherx\.jabber
+SF:\.org/streams\"><not-well-formed\x20xmlns=\"urn:ietf:params:xml:ns:xmpp
+SF:-streams\"/></stream:error></stream:stream>");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5275-TCP:V=7.93%I=7%D=12/22%Time=63A4B055%P=x86_64-pc-linux-gnu%r(R
+SF:PCCheck,9B,"<stream:error\x20xmlns:stream=\"http://etherx\.jabber\.org/
+SF:streams\"><not-well-formed\x20xmlns=\"urn:ietf:params:xml:ns:xmpp-strea
+SF:ms\"/></stream:error></stream:stream>");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5276-TCP:V=7.93%T=SSL%I=7%D=12/22%Time=63A4B067%P=x86_64-pc-linux-g
+SF:nu%r(RPCCheck,9B,"<stream:error\x20xmlns:stream=\"http://etherx\.jabber
+SF:\.org/streams\"><not-well-formed\x20xmlns=\"urn:ietf:params:xml:ns:xmpp
+SF:-streams\"/></stream:error></stream:stream>");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port9090-TCP:V=7.93%I=7%D=12/22%Time=63A4B041%P=x86_64-pc-linux-gnu%r(G
+SF:etRequest,11D,"HTTP/1\.1\x20200\x20OK\r\nDate:\x20Thu,\x2022\x20Dec\x20
+SF:2022\x2019:30:07\x20GMT\r\nLast-Modified:\x20Fri,\x2031\x20Jan\x202020\
+SF:x2017:54:10\x20GMT\r\nContent-Type:\x20text/html\r\nAccept-Ranges:\x20b
+SF:ytes\r\nContent-Length:\x20115\r\n\r\n<html>\n<head><title></title>\n<m
+SF:eta\x20http-equiv=\"refresh\"\x20content=\"0;URL=index\.jsp\">\n</head>
+SF:\n<body>\n</body>\n</html>\n\n")%r(JavaRMI,C3,"HTTP/1\.1\x20400\x20Ille
+SF:gal\x20character\x20CNTL=0x0\r\nContent-Type:\x20text/html;charset=iso-
+SF:8859-1\r\nContent-Length:\x2069\r\nConnection:\x20close\r\n\r\n<h1>Bad\
+SF:x20Message\x20400</h1><pre>reason:\x20Illegal\x20character\x20CNTL=0x0<
+SF:/pre>")%r(WMSRequest,C3,"HTTP/1\.1\x20400\x20Illegal\x20character\x20CN
+SF:TL=0x1\r\nContent-Type:\x20text/html;charset=iso-8859-1\r\nContent-Leng
+SF:th:\x2069\r\nConnection:\x20close\r\n\r\n<h1>Bad\x20Message\x20400</h1>
+SF:<pre>reason:\x20Illegal\x20character\x20CNTL=0x1</pre>")%r(ibm-db2-das,
+SF:C3,"HTTP/1\.1\x20400\x20Illegal\x20character\x20CNTL=0x0\r\nContent-Typ
+SF:e:\x20text/html;charset=iso-8859-1\r\nContent-Length:\x2069\r\nConnecti
+SF:on:\x20close\r\n\r\n<h1>Bad\x20Message\x20400</h1><pre>reason:\x20Illeg
+SF:al\x20character\x20CNTL=0x0</pre>")%r(SqueezeCenter_CLI,9B,"HTTP/1\.1\x
+SF:20400\x20No\x20URI\r\nContent-Type:\x20text/html;charset=iso-8859-1\r\n
+SF:Content-Length:\x2049\r\nConnection:\x20close\r\n\r\n<h1>Bad\x20Message
+SF:\x20400</h1><pre>reason:\x20No\x20URI</pre>")%r(informix,C3,"HTTP/1\.1\
+SF:x20400\x20Illegal\x20character\x20CNTL=0x0\r\nContent-Type:\x20text/htm
+SF:l;charset=iso-8859-1\r\nContent-Length:\x2069\r\nConnection:\x20close\r
+SF:\n\r\n<h1>Bad\x20Message\x20400</h1><pre>reason:\x20Illegal\x20characte
+SF:r\x20CNTL=0x0</pre>")%r(drda,C3,"HTTP/1\.1\x20400\x20Illegal\x20charact
+SF:er\x20CNTL=0x0\r\nContent-Type:\x20text/html;charset=iso-8859-1\r\nCont
+SF:ent-Length:\x2069\r\nConnection:\x20close\r\n\r\n<h1>Bad\x20Message\x20
+SF:400</h1><pre>reason:\x20Illegal\x20character\x20CNTL=0x0</pre>")%r(HTTP
+SF:Options,56,"HTTP/1\.1\x20200\x20OK\r\nDate:\x20Thu,\x2022\x20Dec\x20202
+SF:2\x2019:30:16\x20GMT\r\nAllow:\x20GET,HEAD,POST,OPTIONS\r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port9091-TCP:V=7.93%T=SSL%I=7%D=12/22%Time=63A4B056%P=x86_64-pc-linux-g
+SF:nu%r(GetRequest,11D,"HTTP/1\.1\x20200\x20OK\r\nDate:\x20Thu,\x2022\x20D
+SF:ec\x202022\x2019:30:29\x20GMT\r\nLast-Modified:\x20Fri,\x2031\x20Jan\x2
+SF:02020\x2017:54:10\x20GMT\r\nContent-Type:\x20text/html\r\nAccept-Ranges
+SF::\x20bytes\r\nContent-Length:\x20115\r\n\r\n<html>\n<head><title></titl
+SF:e>\n<meta\x20http-equiv=\"refresh\"\x20content=\"0;URL=index\.jsp\">\n<
+SF:/head>\n<body>\n</body>\n</html>\n\n")%r(HTTPOptions,56,"HTTP/1\.1\x202
+SF:00\x20OK\r\nDate:\x20Thu,\x2022\x20Dec\x202022\x2019:30:30\x20GMT\r\nAl
+SF:low:\x20GET,HEAD,POST,OPTIONS\r\n\r\n")%r(RTSPRequest,AD,"HTTP/1\.1\x20
+SF:400\x20Unknown\x20Version\r\nContent-Type:\x20text/html;charset=iso-885
+SF:9-1\r\nContent-Length:\x2058\r\nConnection:\x20close\r\n\r\n<h1>Bad\x20
+SF:Message\x20400</h1><pre>reason:\x20Unknown\x20Version</pre>")%r(RPCChec
+SF:k,C7,"HTTP/1\.1\x20400\x20Illegal\x20character\x20OTEXT=0x80\r\nContent
+SF:-Type:\x20text/html;charset=iso-8859-1\r\nContent-Length:\x2071\r\nConn
+SF:ection:\x20close\r\n\r\n<h1>Bad\x20Message\x20400</h1><pre>reason:\x20I
+SF:llegal\x20character\x20OTEXT=0x80</pre>")%r(DNSVersionBindReqTCP,C3,"HT
+SF:TP/1\.1\x20400\x20Illegal\x20character\x20CNTL=0x0\r\nContent-Type:\x20
+SF:text/html;charset=iso-8859-1\r\nContent-Length:\x2069\r\nConnection:\x2
+SF:0close\r\n\r\n<h1>Bad\x20Message\x20400</h1><pre>reason:\x20Illegal\x20
+SF:character\x20CNTL=0x0</pre>")%r(DNSStatusRequestTCP,C3,"HTTP/1\.1\x2040
+SF:0\x20Illegal\x20character\x20CNTL=0x0\r\nContent-Type:\x20text/html;cha
+SF:rset=iso-8859-1\r\nContent-Length:\x2069\r\nConnection:\x20close\r\n\r\
+SF:n<h1>Bad\x20Message\x20400</h1><pre>reason:\x20Illegal\x20character\x20
+SF:CNTL=0x0</pre>")%r(Help,9B,"HTTP/1\.1\x20400\x20No\x20URI\r\nContent-Ty
+SF:pe:\x20text/html;charset=iso-8859-1\r\nContent-Length:\x2049\r\nConnect
+SF:ion:\x20close\r\n\r\n<h1>Bad\x20Message\x20400</h1><pre>reason:\x20No\x
+SF:20URI</pre>")%r(SSLSessionReq,C5,"HTTP/1\.1\x20400\x20Illegal\x20charac
+SF:ter\x20CNTL=0x16\r\nContent-Type:\x20text/html;charset=iso-8859-1\r\nCo
+SF:ntent-Length:\x2070\r\nConnection:\x20close\r\n\r\n<h1>Bad\x20Message\x
+SF:20400</h1><pre>reason:\x20Illegal\x20character\x20CNTL=0x16</pre>");
+Service Info: Host: FIRE; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: -1s, deviation: 0s, median: -1s
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 51978/tcp): CLEAN (Timeout)
+|   Check 2 (port 57361/tcp): CLEAN (Timeout)
+|   Check 3 (port 58456/udp): CLEAN (Timeout)
+|   Check 4 (port 10427/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| smb2-security-mode: 
+|   311: 
+|_    Message signing enabled and required
+| smb2-time: 
+|   date: 2022-12-22T19:31:17
+|_  start_date: N/A
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 14:32
+Completed NSE at 14:32, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 14:32
+Completed NSE at 14:32, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 14:32
+Completed NSE at 14:32, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 135.22 seconds
+
+Subject Alternative Name: DNS:fire.windcorp.thm, DNS:selfservice.windcorp.thm, DNS:selfservice.dev.windcorp.thm
+```
+```text
+┌──(kali㉿kali)-[~/threader3000]
+└─$ sudo nano /etc/hosts                
+[sudo] password for kali:
+```
+```text
+┌──(kali㉿kali)-[~/threader3000]
+└─$ cat /etc/hosts | grep "windcorp"
+#10.10.132.73 windcorp.thm
+10.10.219.166 fire.windcorp.thm
+10.10.219.166 selfservice.windcorp.thm
+10.10.219.166 selfservice.dev.windcorp.thm
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ gobuster dir -u https://fire.windcorp.thm -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 64 -k
+===============================================================
+Gobuster v3.3
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     https://fire.windcorp.thm
+[+] Method:                  GET
+[+] Threads:                 64
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.3
+[+] Timeout:                 10s
+===============================================================
+2022/12/22 14:52:52 Starting gobuster in directory enumeration mode
+===============================================================
+/img                  (Status: 301) [Size: 153] [--> https://fire.windcorp.thm/img/]
+/css                  (Status: 301) [Size: 153] [--> https://fire.windcorp.thm/css/]
+/vendor               (Status: 301) [Size: 156] [--> https://fire.windcorp.thm/vendor/]
+/IMG                  (Status: 301) [Size: 153] [--> https://fire.windcorp.thm/IMG/]
+/*checkout*           (Status: 400) [Size: 3420]
+/CSS                  (Status: 301) [Size: 153] [--> https://fire.windcorp.thm/CSS/]
+/Img                  (Status: 301) [Size: 153] [--> https://fire.windcorp.thm/Img/]
+/*docroot*            (Status: 400) [Size: 3420]
+/*                    (Status: 400) [Size: 3420]
+/http%3A%2F%2Fwww     (Status: 400) [Size: 3420]
+/http%3A              (Status: 400) [Size: 3420]
+/q%26a                (Status: 400) [Size: 3420]
+/**http%3a            (Status: 400) [Size: 3420]
+/*http%3A             (Status: 400) [Size: 3420]
+/powershell           (Status: 302) [Size: 165] [--> /powershell/default.aspx?ReturnUrl=%2fpowershell]                                                                                    
+/**http%3A            (Status: 400) [Size: 3420]
+/http%3A%2F%2Fyoutube (Status: 400) [Size: 3420]
+/http%3A%2F%2Fblogs   (Status: 400) [Size: 3420]
+/http%3A%2F%2Fblog    (Status: 400) [Size: 3420]
+Progress: 72309 / 220561 (32.78%)^C
+[!] Keyboard interrupt detected, terminating.
+===============================================================
+2022/12/22 14:57:11 Finished
+===============================================================
+
+/powershell
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ gobuster dir -u https://selfservice.dev.windcorp.thm -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 64 -k 
+===============================================================
+Gobuster v3.3
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     https://selfservice.dev.windcorp.thm
+[+] Method:                  GET
+[+] Threads:                 64
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.3
+[+] Timeout:                 10s
+===============================================================
+2022/12/22 14:57:59 Starting gobuster in directory enumeration mode
+===============================================================
+/backup               (Status: 301) [Size: 167] [--> https://selfservice.dev.windcorp.thm/backup/]                                                                                        
+/Backup               (Status: 301) [Size: 167] [--> https://selfservice.dev.windcorp.thm/Backup/]                                                                                        
+/*checkout*           (Status: 400) [Size: 3420]
+/*docroot*            (Status: 400) [Size: 3420]
+/*                    (Status: 400) [Size: 3420]
+/http%3A%2F%2Fwww     (Status: 400) [Size: 3420]
+Progress: 26439 / 220561 (11.99%)^C
+[!] Keyboard interrupt detected, terminating.
+===============================================================
+2022/12/22 14:59:36 Finished
+===============================================================
+
+/backup 
+
+or using dirsearch
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ dirsearch -u https://fire.windcorp.thm -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -l -t 100 -x 400 
+
+  _|. _ _  _  _  _ _|_    v0.4.2                                                             
+ (_||| _) (/_(_|| (_| )                                                                      
+                                                                                             
+Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 30 | Wordlist size: 220545
+
+Output File: /home/kali/.dirsearch/reports/fire.windcorp.thm/_22-12-22_15-05-55.txt
+
+Error Log: /home/kali/.dirsearch/logs/errors-22-12-22_15-05-55.log
+
+Target: https://fire.windcorp.thm/
+
+[15:05:56] Starting: 
+[15:05:59] 301 -  153B  - /img  ->  https://fire.windcorp.thm/img/         
+[15:06:03] 301 -  153B  - /css  ->  https://fire.windcorp.thm/css/         
+[15:06:12] 301 -  156B  - /vendor  ->  https://fire.windcorp.thm/vendor/   
+[15:06:35] 301 -  153B  - /IMG  ->  https://fire.windcorp.thm/IMG/         
+[15:07:15] 301 -  153B  - /CSS  ->  https://fire.windcorp.thm/CSS/         
+[15:07:19] 301 -  153B  - /Img  ->  https://fire.windcorp.thm/Img/         
+[15:14:00] 302 -  165B  - /powershell  ->  /powershell/default.aspx?ReturnUrl=%2fpowershell
+CTRL+C detected: Pausing threads, please wait...                              
+                                                                            
+Canceled by the user
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ dirsearch -u https://selfservice.dev.windcorp.thm -e -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -l -t 100 -x 400
+
+  _|. _ _  _  _  _ _|_    v0.4.2                                                                                                                                       
+ (_||| _) (/_(_|| (_| )                                                                                                                                                
+                                                                                                                                                                       
+Extensions: -w | HTTP method: GET | Threads: 30 | Wordlist size: 9009
+
+Output File: /home/kali/.dirsearch/reports/selfservice.dev.windcorp.thm/_22-12-22_15-15-28.txt
+
+Error Log: /home/kali/.dirsearch/logs/errors-22-12-22_15-15-28.log
+
+Target: https://selfservice.dev.windcorp.thm/
+
+[15:15:29] Starting: 
+[15:15:31] 403 -  312B  - /%2e%2e//google.com                              
+[15:15:47] 200 -  365B  - /Backup/                                          
+[15:15:51] 403 -    2KB - /Trace.axd                                        
+[15:15:54] 403 -  312B  - /\..\..\..\..\..\..\..\..\..\etc\passwd           
+[15:16:08] 301 -  174B  - /aspnet_client  ->  https://selfservice.dev.windcorp.thm/aspnet_client/
+[15:16:08] 403 -    1KB - /aspnet_client/                                   
+[15:16:09] 301 -  167B  - /backup  ->  https://selfservice.dev.windcorp.thm/backup/
+[15:16:10] 200 -  365B  - /backup/                                          
+[15:16:31] 200 -  106B  - /index.html                                       
+CTRL+C detected: Pausing threads, please wait...                              
+                                                                              
+Canceled by the user
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ cp ../Downloads/cert.pfx cert.pfx
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ ls     
+cert.pfx  PrintSpoofer.exe
+
+Sure! I'd be happy to explain the basics of NS, MX, and TXT records.
+
+An NS (name server) record is a type of resource record in the Domain Name System (DNS) that specifies which DNS server is responsible (i.e., authoritative) for a particular domain. The NS record indicates which DNS server is authoritative for the domain, allowing clients to resolve domain names to IP addresses.
+
+An MX (mail exchange) record is a type of resource record in the DNS that specifies the server responsible for handling email for a particular domain. The MX record indicates the hostname and priority of the server responsible for handling email for the domain.
+
+A TXT (text) record is a type of resource record in the DNS that allows administrators to include arbitrary text in a DNS record. TXT records are often used to hold information such as SPF (Sender Policy Framework) records and DKIM (DomainKeys Identified Mail) keys, which are used to verify the authenticity of email messages.
+
+I hope this helps! Let me know if you have any other questions.
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ dig windcorp.thm -t NS  @10.10.219.166
+
+; <<>> DiG 9.18.8-1-Debian <<>> windcorp.thm -t NS @10.10.219.166
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 52379
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4000
+;; QUESTION SECTION:
+;windcorp.thm.                  IN      NS
+
+;; ANSWER SECTION:
+windcorp.thm.           3600    IN      NS      fire.windcorp.thm.
+
+;; ADDITIONAL SECTION:
+fire.windcorp.thm.      3600    IN      A       10.10.219.166
+fire.windcorp.thm.      3600    IN      A       192.168.112.1
+
+;; Query time: 220 msec
+;; SERVER: 10.10.219.166#53(10.10.219.166) (UDP)
+;; WHEN: Thu Dec 22 15:22:59 EST 2022
+;; MSG SIZE  rcvd: 92
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ dig windcorp.thm -t MX  @10.10.219.166
+
+; <<>> DiG 9.18.8-1-Debian <<>> windcorp.thm -t MX @10.10.219.166
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 51099
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4000
+;; QUESTION SECTION:
+;windcorp.thm.                  IN      MX
+
+;; AUTHORITY SECTION:
+windcorp.thm.           3600    IN      SOA     fire.windcorp.thm. hostmaster.windcorp.thm. 294 900 600 86400 3600
+
+;; Query time: 240 msec
+;; SERVER: 10.10.219.166#53(10.10.219.166) (UDP)
+;; WHEN: Thu Dec 22 15:26:15 EST 2022
+;; MSG SIZE  rcvd: 93
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ dig windcorp.thm -t TXT  @10.10.219.166
+
+; <<>> DiG 9.18.8-1-Debian <<>> windcorp.thm -t TXT @10.10.219.166
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 34387
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4000
+;; QUESTION SECTION:
+;windcorp.thm.                  IN      TXT
+
+;; ANSWER SECTION:
+windcorp.thm.           86400   IN      TXT     "THM{Allowing nonsecure dynamic updates is a significant security vulnerability because updates can be accepted from untrusted sources}"
+
+;; Query time: 208 msec
+;; SERVER: 10.10.219.166#53(10.10.219.166) (UDP)
+;; WHEN: Thu Dec 22 15:26:35 EST 2022
+;; MSG SIZE  rcvd: 188
+
+or
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ dig windcorp.thm any @10.10.219.166
+
+; <<>> DiG 9.18.8-1-Debian <<>> windcorp.thm any @10.10.219.166
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 61275
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4000
+;; QUESTION SECTION:
+;windcorp.thm.                  IN      ANY
+
+;; ANSWER SECTION:
+windcorp.thm.           600     IN      A       10.10.219.166
+windcorp.thm.           3600    IN      NS      fire.windcorp.thm.
+windcorp.thm.           3600    IN      SOA     fire.windcorp.thm. hostmaster.windcorp.thm. 294 900 600 86400 3600
+windcorp.thm.           86400   IN      TXT     "THM{Allowing nonsecure dynamic updates is a significant security vulnerability because updates can be accepted from untrusted sources}"
+
+;; ADDITIONAL SECTION:
+fire.windcorp.thm.      3600    IN      A       192.168.112.1
+fire.windcorp.thm.      3600    IN      A       10.10.219.166
+
+;; Query time: 208 msec
+;; SERVER: 10.10.219.166#53(10.10.219.166) (TCP)
+;; WHEN: Thu Dec 22 15:04:15 EST 2022
+;; MSG SIZE  rcvd: 302
+
+A .pfx file, also known as a PKCS#12 file, is a digital certificate file that contains both the public and private keys, as well as any associated certificate chains. It is typically used to store a certificate and its private key, and it is usually password-protected.
+
+.pfx files are often used in conjunction with Secure Sockets Layer (SSL) or Transport Layer Security (TLS) to secure connections over the internet. They can be used to authenticate a server or client, as well as to encrypt and decrypt data transmitted between them.
+
+I hope this helps! Let me know if you have any other questions.
+```
+
+## Exploitation
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ pfx2john cert.pfx > hash
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ ls
+cert.pfx  hash  PrintSpoofer.exe
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ more hash       
+cert.pfx:$pfxng$256$32$2000$20$0014a87cf000ddc6d1a89ce90d03fb79b986eac7$30820a9c3082065206092
+a864886f70d010701a08206430482063f3082063b30820637060b2a864886f70d010c0a0102a08205413082053d30...
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash                     
+Using default input encoding: UTF-8
+Loaded 1 password hash (pfx, (.pfx, .p12) [PKCS#12 PBE (SHA1/SHA2) 128/128 AVX 4x])
+Cost 1 (iteration count) is 2000 for all loaded hashes
+Cost 2 (mac-type [1:SHA1 224:SHA224 256:SHA256 384:SHA384 512:SHA512]) is 256 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+ganteng          (cert.pfx)     
+1g 0:00:00:00 DONE (2022-12-22 15:29) 4.000g/s 8192p/s 8192c/s 8192C/s clover..lovers1
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+ganteng
+
