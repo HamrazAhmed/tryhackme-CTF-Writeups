@@ -70,6 +70,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Cross-site Scripting-1** | `Easy` | Web Fundamentals | [Cross-site Scripting-1.md](./Cross-site%20Scripting-1.md) |
 | **CyberHeroes** | `Easy` | Web Authentication | [CyberHeroes.md](./CyberHeroes.md) |
 | **Dav** | `Easy` | WebDAV Exploit | [Dav.md](./Dav.md) |
+| **Dirty Pipe** | `Easy` | CVE-2022-0847 Exploit | [Dirty Pipe.md](./Dirty%20Pipe.md) |
 
 
-<!-- Weekly Progress: Week 69/104 | 2024-04-26 -->
+<!-- Weekly Progress: Week 70/104 | 2024-05-04 -->
