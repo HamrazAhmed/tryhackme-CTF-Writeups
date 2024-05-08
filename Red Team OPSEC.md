@@ -1,0 +1,69 @@
+---
+Learn how to apply Operations Security (OPSEC) process for Red Teams.
+---
+
+# Red Team OPSEC — Writeup
+
+## Overview
+### Red Team OPSEC — Writeup
+### Red Team OPSEC — Writeup
+![|222](https://tryhackme-images.s3.amazonaws.com/room-icons/591a82dec0d482e818c0937ac643b02c.png)
+### Introduction
+Operations Security (OPSEC) is a term coined by the United States military. In the field of cybersecurity, let’s start with the definition provided by [NIST](https://csrc.nist.gov/glossary/term/opsec):
+Operations Security (OPSEC) is a term coined by the United States military. In the field of cybersecurity, let’s start with the definition provided by NIST:
+“Systematic and proven process by which potential adversaries can be denied information about capabilities and intentions by identifying, controlling, and protecting generally unclassified evidence of the planning and execution of sensitive activities. The process involves five steps: identification of critical information, analysis of threats, analysis of vulnerabilities, assessment of risks, and application of appropriate countermeasures.”
+Let’s dive into the definition from a red team perspective. As a red team member, your potential adversaries are the blue team and third parties. The blue team is considered an adversary as we are attacking the systems they are hired to monitor and defend.
+Red vs. blue team exercises are common to help an organization understand what threats exist in a given environment and better prepare their blue team if a real malicious attack occurs. As red teamers, even though we are abiding by the law and authorized to attack systems within a defined scope, it does not change the fact that we are acting against the blue team's objectives and trying to circumvent their security controls. The blue team wants to protect their systems, while we want to penetrate them.
+Denying any potential adversary the ability to gather information about our capabilities and intentions is critical to maintaining OPSEC. OPSEC is a process to identify, control and protect any information related to the planning and execution of our activities. Frameworks such as Lockheed Martin's Cyber Kill Chain and MITRE ATT&CK help defenders identify the objectives an adversary is trying to accomplish. MITRE ATT&CK is arguably at the forefront of reporting and classifying adversary tactics, techniques, and procedures (TTPs) and offers a publicly accessible knowledge base as publicly available threat intelligence and incident reporting as its primary data source.
+The OPSEC process has five steps:
+Identify critical information
+Analyse threats
+Analyse vulnerabilities
+Assess risks
+Apply appropriate countermeasures
+If the adversary discovers that you are scanning their network with Nmap (the blue team in our case), they should easily be able to discover the IP address used. For instance, if you use this same IP address to host a phishing site, it won’t be very difficult for the blue team to connect the two events and attribute them to the same actor.
+OPSEC is not a solution or a set of rules; OPSEC is a five-step process to deny adversaries from gaining access to any critical information (defined in Task 2). We will dive into each step and see how we can improve OPSEC as part of our red team operations.
+Aim to memorize the five steps of the OPSEC process as we explain each one in its own task.
+*No answer needed*
+### Critical Information Identification
+What a red teamer considers critical information worth protecting depends on the operation and the assets or tooling used. In this setting, critical information includes, but is not limited to, the red team’s intentions, capabilities, activities, and limitations. Critical information includes any information that, once obtained by the blue team, would hinder or degrade the red team’s mission.
+To identify critical information, the red team needs to use an adversarial approach and ask themselves what information an adversary, the blue team, in this case, would want to know about the mission. If obtained, the adversary will be in a solid position to thwart the red team’s attacks. Therefore, critical information is not necessarily sensitive information; however, it is any information that might jeopardise your plans if leaked to an adversary. The following are some examples:
+Client information that your team has learned. It's unacceptable to share client specific information such as employee names, roles, and infrastructure that your team has discovered. Sharing this type of information should kept on need-to-know basis as it could compromise the integrity of the operation. The Principle of Least Privilege (PoLP) dictates that any entity (user or process) must be able to access only the information necessary to carry out its task. PoLP should be applied in every step taken by the Red Team.
+Red team information, such as identities, activities, plans, capabilities and limitations. The adversary can use such information to be better prepared to face your attacks.
+Tactics, Techniques, and Procedures (TTP) that your team uses in order to emulate an attack.
+OS, cloud hosting provider, or C2 framework utilised by your team. Let’s say that your team uses [Pentoo](https://pentoo.github.io/) for penetration testing, and the defender knows this. Consequently, they can keep an eye for logs exposing the OS as Pentoo. Depending on the target, there is a possibility that other attackers are also using Pentoo to launch their attacks; however, there is no reason to expose your OS if you don’t have to.
+Public IP addresses that your red team will use. If the blue team gains access to this kind of information, they could quickly mitigate the attack by blocking all inbound and outbound traffic to your IP addresses, leaving you to figure out what has happened.
+Domain names that your team has registered. Domain names play a significant role in attacks such as phishing. Likewise, if the blue team figures out the domain names you will be using to launch your attacks, they could simply block or sinkhole your malicious domains to neutralize your attack.
+Hosted websites, such as phishing websites, for adversary emulation.
+Click on View Site and follow through till you get the flag.
+(Please note that some browser extensions, such as NoScript, might prevent the site from loading correctly.)
+(The first statement is not considered critical information because Firefox is a popular browser; however, the second can be regarded as critical information because Lynx is not a common choice. The flag should appear once all five questions are answered correctly.)
+![[Pasted image 20220909000902.png]]
+![[Pasted image 20220909000918.png]]
+### Threat Analysis
+After we identify critical information, we need to analyse threats. Threat analysis refers to identifying potential adversaries and their intentions and capabilities. Adapted from the US [Department of Defense (DoD) Operations Security (OPSEC) Program Manual](https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodm/520502m.pdf), threat analysis aims to answer the following questions:
+Who is the adversary?
+What are the adversary’s goals?
+What tactics, techniques, and procedures does the adversary use?
+What critical information has the adversary obtained, if any?
+(https://www.esd.whs.mil/)
+The task of the red team is to emulate an actual attack so that the blue team discovers its shortcomings, if any, and becomes better prepared to face incoming threats. The blue team’s main objective is to ensure the security of the organization’s network and systems. The intentions of the blue team are clear; they want to keep the red team out of their network. Consequently, considering the task of the red team, the blue team is considered our adversary as each team has conflicting objectives. We should note that the blue team’s capabilities might not always be known at the beginning.
+Malicious third-party players might have different intentions and capabilities and might pause a threat as a result. This party can be someone with humble capabilities scanning the systems randomly looking for low-hanging fruit, such as an unpatched exploitable server, or it can be a capable adversary targeting your company or your client systems. Consequently, the intentions and the capabilities of this third party can make them an adversary as well.
+Adversary 	Intentions 	Capabilities
+Blue Team 	Keep intruders out 	Not always known
+Malicious third-party 	Varies 	Varies
+We consider any adversary with the intent and capability to take actions that would prevent us from completing our operation as a threat:
+threat = adversary + intent + capability
+In other words, an adversary without the intent or capability does not pose a threat for our purposes.
+Try to think of at least one adversary who is not a threat and one who is a threat.
+*No answer needed*
+
+## Exploitation
+After identifying critical information and analysing threats, we can start with the third step: analysing vulnerabilities. This is not to be confused with vulnerabilities related to cybersecurity. An OPSEC vulnerability exists when an adversary can obtain critical information, analyse the findings, and act in a way that would affect your plans.
+To better understand an OPSEC vulnerability as related to red teaming, we'll consider the following scenario. You use Nmap to discover live hosts on a target subnet and find open ports on live hosts. Moreover, you send various phishing emails leading the victim to a phishing webpage you're hosting. Furthermore, you're using the Metasploit framework to attempt to exploit certain software vulnerabilities. These are three separate activities; however, if you use the same IP address(es) to carry out these different activities, this would lead to an OPSEC vulnerability. Once any hostile/malicious activity is detected, the blue team is expected to take action, such as blocking the source IP address(es) temporarily or permanently. Consequently, it would take one source IP address to be blocked for all the other activities use this IP address to fail. In other words, this would block access to the destination IP address used for the phising server, and the source IP address using by Nmap and Metasploit Framework.
+Another example of an OPSEC vulnerability would be an unsecured database that's used to store data received from phishing victims. If the database is not properly secured, it may lead to a malicious third party compromising the operation and could result in data being exfiltrated and used in an attack against your client's network. As a result, instead of helping your client secure their network, you would end up helping expose login names and passwords.
+Lax OPSEC could also result in less sophisticated vulnerabilities. For instance, consider a case where one of your red team members posts on social media revealing your client's name. If the blue team monitors such information, it will trigger them to learn more about your team and your approaches to better prepare against expected penetration attempts.
+Your red team uses THC-Hydra to find the password for a specific login page. Moreover, they are using the Metasploit framework on the same system as THC-Hydra. Would you consider this an OPSEC vulnerability? (Y/N)
+*Y*
+One of the red team members posts a photo of his cat every day. Would this be considered an OPSEC vulnerability? (Y/N)
+*N*
