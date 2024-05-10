@@ -82,3 +82,87 @@ Other open-source and enterprise threat intelligence platforms can aid red teame
 Mandiant Advantage
 Ontic
 CrowdStrike Falcon
+Read the above and use MITRE ATT&CK Navigator to answer the questions below using a Carbanak layer.
+*No answer needed*
+How many Command and Control techniques are employed by Carbanak? (https://mitre-attack.github.io/attack-navigator//#layerURL=https%3A%2F%2Fattack.mitre.org%2Fgroups%2FG0008%2FG0008-enterprise-layer.json)
+*2*
+What signed binary did Carbanak use for defense evasion? *Rundll32*
+What Initial Access technique is employed by Carbanak?  *Valid Accounts*
+### Other Red Team Applications of CTI
+CTI can also be used during engagement execution, emulating the adversary's behavioral characteristics, such as
+C2 Traffic
+User Agents
+Ports, Protocols
+Listener Profiles
+Malware and Tooling
+IOCs
+Behaviors
+The first behavioral use of CTI we will showcase is C2 (Command & Control) traffic manipulation. A red team can use CTI to identify adversaries' traffic and modify their C2 traffic to emulate it.
+An example of a red team modifying C2 traffic based on gathered CTI is malleable profiles. A [malleable profile](https://www.cobaltstrike.com/help-malleable-c2) allows a red team operator to control multiple aspects of a C2's listener traffic.
+Information to be implemented in the profile can be gathered from ISACs and collected IOCs or packet captures, including,
+Host Headers
+POST URIs
+Server Responses and Headers
+The gathered traffic can aid a red team to make their traffic look similar to the targeted adversary to get closer to the goal of adversary emulation.
+The second behavioral use of CTI is analyzing behavior and actions of an adversaries' malware and tools to develop your offensive tooling that emulates similar behaviors or has similar vital indicators.
+An example of this could be an adversary using a custom dropper. The red team can emulate the dropper by,
+Identifying traffic
+Observing syscalls and API calls
+Identifying overall dropper behavior and objective
+Tampering with file signatures and IOCs
+Intelligence and tools gathered from behavioral threat intelligence can aid a red team in preparing the specific tools they will use to action planned TTPs.
+### Creating a Threat Intel Driven Campaign
+A threat-intel-driven campaign will take all knowledge and topics previously covered and combine them to create a well-planned and researched campaign.
+The task flow in this room logically follows the same path you would take as a red team to begin planning a campaign,
+Identify framework and general kill chain
+Determine targeted adversary
+Identify adversary's TTPs and IOCs
+Map gathered threat intelligence to a kill chain or framework
+Draft and maintain needed engagement documentation
+Determine and use needed engagement resources (tools, C2 modification, domains, etc.)
+In this task, we will be walking through a red team's thought process from beginning to end of planning a threat-intel-driven campaign.
+The hardest part of planning a threat-intel-driven campaign can be mapping two different cyber frameworks. To make this process simpler we have provided a basic table comparing the Lockheed Martin Cyber Kill Chain and the MITRE ATT&CK framework.
+Cyber Kill Chain	MITRE ATT&CK
+Recon	Reconnaissance
+Weaponization	Execution
+Delivery	Initial Access
+Exploitation	Initial Access
+Installation	Persistence / Defense Evasion
+Command & Control	Command and Control
+Actions on Objectives	Exfiltration / Impact
+To begin working through this task, download the required resources and launch the static site attached to this task.
+Your team has already decided to use the Lockheed Martin cyber kill chain to emulate APT 41 as the adversary that best fits the client's objectives and scope.
+Answer the questions below
+Open the provided ATT&CK Navigator layer and identify matched TTPs to the cyber kill chain. Once TTPs are identified, map them to the cyber kill chain in the static site.
+To complete the challenge, you must submit one technique name per kill chain section.
+![[Pasted image 20220908233028.png]]
+Once the chain is complete and you have received the flag, submit it below.
+( PowerShell, Spearphishing Attachment, External Remote Services, BITS Jobs, DNS, Keylogging)
+Answer questions below relating to needed engagement resources.
+What web shell is APT 41 known to use?
+*ASPXSpy*
+What LOLBAS (Living Off The Land Binaries and Scripts) tool does APT 41 use to aid in file transfers?
+*certutil*
+What tool does APT 41 use to mine and monitor SMS traffic? *MESSAGETAP*
+### Conclusion
+When planning an engagement, it is essential to note the significance of adversary emulation and how threat intelligence can aid you in identifying adversaries and their behaviors.
+Each red team will have its methodology of collecting and digesting threat intelligence in the real world. This room covered basic ground-level knowledge of varying concepts commonly applied to a red team scenario.
+When planning an engagement, remember that it is crucial to look at scenarios from all perspectives: offensive, defensive, and the adversary's.
+Threat intelligence allows us as the red team to look deeper into an adversary's behavior by using the blue team's methodology to our advantage.
+Read the above and continue learning!
+*No answer needed*
+
+## Flags / Answers
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/1812f8783e06345384aa14be9e043213.png)
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/a621a765e342bc8ea4a36d3e2b132123.png)
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/216499e31d428390fbfe30d14251b7a8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/2d8308f62dea67d142c4c95bbe78b8e5.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/48f311f8dbd9c3de895d2c8cac8e14f1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/ce9424c66a674856de4c97613cbde8c4.png)
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/adab90abe046bb7103326e85cdaaefd3.png)
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/81e64f0adc04572709b847154a5f0d29.png)
+- ***THM{7HR347_1N73L_12_4w35om3}***
+
+## Notes / Lessons Learned
+[[MAL REMnux The Redux]]
+
