@@ -155,3 +155,161 @@ Note: Below, you may follow along with the screenshots and don't have to create 
 Open IOC Editor which was conveniently placed for you in the taskbar next to Redline.
 Note: It may take ~60 seconds for the application to launch.
 Before proceeding,  create the directory which will store the IOC file (IOC Directory).
+Next, create the IOC file.
+Keylogger indicators in IOC Editor:
+![](https://i.ibb.co/02VS0M6/keylogger2.png)
+A brief explanation of the above image:
+The Name of the IOC file is Keylogger, Keylogger.ioc. (this field you can edit)
+The Author is RussianPanda. (this field you can edit)
+GUID, Created, and Modified are fields you can NOT edit, and IOC Editor populates the information.
+Under Description, you can add a summary explaining the purpose of the IOC file.
+The actual IOCs will be added under, you guessed it, Add.
+Here are the values from the image above:
+File Strings - psylog.exe
+File Strings - RIDEV_INPUTSINK
+File MD5 - 791ca706b285b9ae3192a33128e4ecbb
+File Size - 35400
+Refer to the gif below to get an idea of adding specific IOCs to the IOC file.
+Once you select an item you can enter the value for the item directly.
+You can also add it within the Properties.
+All the fields are read-only except for Content and Comment. To add a value to the item enter it under Content.
+Once you enter the value click Save to save it.
+Note: You can right-click on an item for additional options. See below.
+We'll leave that for you to explore on your own.
+Now that we've created and saved the IOC file, let's move on and go back to the IOC Search Collector in the Redline tool.
+Note: If you closed Redline now is the time to relaunch the application. You can close IOC Editor, again, to free up system resources.
+IOC Search Collector will ignore the data that doesn't match an IOC you have gathered. Although, you can always choose to collect additional data. As the Redline User Guide states, the quality of the IOC analysis will depend on the data you have available in the analysis session.
+![](https://i.ibb.co/SwvyRyq/ioc.png)
+To create an IOC Search Collector, click "Browse..." and choose the location of the .ioc file. Redline will automatically detect the .ioc file and place it in the Indicators section, as shown below.
+IOC Search Collector:
+![](https://i.ibb.co/2S2t1sB/keylogger.png)
+Unsupported Search Terms: These terms will not show any successful hits in Redline, which means Redline doesn't recognize specific search terms.
+Supported Search Terms: The terms that Redline will recognize and search for.
+After you are finished reviewing the configured IOCs, click "Next". Now click on "Edit your script" to configure what data will be collected for the analysis. For this example, Keylogger file IOC Search, the following parameters were selected.
+![](https://i.ibb.co/g7JkhPr/keylogger3.png)
+Note: When you configure your own IOC Search, you will choose different settings for your script compared to the settings above.
+When done editing the script, click "OK".
+In the "Save Your Collector To" section, click "Browse" and choose an empty folder where your analysis file will be saved along with the RunRedlineAudit.bat file.
+After executing the .bat file in the same manner as before, let's now wait for the analysis to finish.
+![](https://i.ibb.co/M24R8wV/clock.png)
+After the analysis is finished, you will see the .mans file (AnalysisSession1 in our example). Double-click the file to open it in Redline.
+![](https://i.ibb.co/xhJwX1f/analysis.png)
+If Redline fails to generate the IOC Report automatically, you can manually generate it by clicking "Create a New IOC Report" and importing your .ioc file.
+When the report generation completes, you should see the "Hits". You can expand the list by clicking on the entries in each row.
+![](https://i.ibb.co/bvVVdj5/keyllogger4.png)
+From the screenshot, you can see that there was one hit on "chrome.dll", this is a false positive. Let's review the details below.
+![](https://i.ibb.co/d0RCvdH/hits2.png)
+As you can see, the DLL file matched with the string "RIDEV_INPUTSINK" that we had in our .ioc file. It's important to gather granulated and accurate artifacts to add to your IOC file to avoid false positives.
+The screenshot below is of a file with the most amount of "Hits", which means it is most likely the file we are looking for.
+![](https://i.ibb.co/tzvyS6w/hits3.png)
+You should be ready to answer the questions below using the screenshots provided in the task and perform these similar actions in the upcoming task!
+What is the actual filename of the Keylogger?
+*psylog.exe*
+What filename is the file masquerading as?
+*THM1768.exe*
+Who is the owner of the file?
+( Check the "File Info" section)
+*WIN-2DET5D0NPT\charles*
+What is the file size in bytes?
+(Check the "File Info" section)
+*35400*
+Provide the full path of where the .ioc file was placed after the Redline analysis, include the .ioc filename as well
+(Check the IOC Report screenshot)
+`C:\Users\charles\Documents\keylogger.ioc`
+### IOC Search Collector Analysis
+![](https://i.ibb.co/Mg6tCPC/tuxpi-com-1627795578.jpg)
+Scenario: You are assigned to do a threat hunting task at Osinski Inc. They believe there has been an intrusion, and the malicious actor was using the tool to perform the lateral movement attack, possibly a ["pass-the-hash" attack](https://secureteam.co.uk/articles/information-assurance/what-is-a-pass-the-hash-attack/).
+Task: Can you find the file planted on the victim's computer using IOC Editor and Redline IOC Search Collector?
+So far, you only know the following artifacts for the file:
+File Strings:
+20210513173819Z0w0=
+<?<L<T<g=
+File Size (Bytes):
+834936
+Note: Open Previous Analysis, and use the existing Redline Session found in C:\Users\Administrator\Documents\Analysis\Sessions\AnalysisSession1.
+![[Pasted image 20220907123712.png]]
+(use mandaint to generate ioc and then redline to upload a nd create the ioc a long time )
+Provide the path of the file that matched all the artifacts along with the filename.
+`C:\Users\Administrator\AppData\Local\Temp\8eJv8w2id6IqN85dfC.exe`
+Provide the path where the file is located without including the filename.
+`C:\Users\Administrator\AppData\Local\Temp\`
+Who is the owner of the file?
+( Check the "File Info")
+`BUILTIN\Administrators`
+![[Pasted image 20220907123931.png]]
+Provide the subsystem for the file.
+(Check "PE Info")
+*Windows_CUI*
+Provide the Device Path where the file is located.
+`\Device\HarddiskVolume2`
+![[Pasted image 20220907124415.png]]
+![[Pasted image 20220907124441.png]]
+Provide the hash (SHA-256) for the file.(Use the "Get-FileHash" command in PowerShell) (using virus total md5 then )
+*57492d33b7c0755bb411b22d2dfdfdf088cbbfcd010e30dd8d425d5fe66adff4*
+![[Pasted image 20220907124617.png]]
+The attacker managed to masquerade the real filename. Can you find it having the hash in your arsenal?
+(Check VirusTotal)
+*PSExec.exe*
+### Endpoint Investigation
+![](https://i.ibb.co/SmXd3sK/tuxpi-com-1627849488.jpg)
+Scenario: A Senior Accountant, Charles, is complaining that he cannot access the spreadsheets and other files he has been working on. He also mentioned that his wallpaper got changed with the saying that his files got encrypted. This is not good news!
+Are you ready to perform the memory analysis of the compromised host? You have all the data you need to do some investigation on the victim's machine. Let's go hunting!
+Task:
+Navigate to the folder on your desktop titled Endpoint Investigation.
+Double-click on the AnalysisSession1.mans file. The data will be imported automatically into Redline.
+Analyze the file to answer the questions below.
+Note: Give it up to 10 minutes for all the data import.
+Can you identify the product name of the machine?
+(Check System Information.)
+*Windows 7 Home Basic*
+![[Pasted image 20220907125015.png]]
+Can you find the name of the note left on the Desktop for the "Charles"?
+(Take a look at the NOTEPAD.exe process. )
+*_R_E_A_D___T_H_I_S___AJYG1O_.txt*
+![[Pasted image 20220907125840.png]]
+Find the Windows Defender service; what is the name of its service DLL?
+(Check the Windows Services section.)
+*MpSvc.dll*
+![[Pasted image 20220907130226.png]]
+The user manually downloaded a zip file from the web. Can you find the filename?
+(Check File Download History.)
+*eb5489216d4361f9e3650e6a6332f7ee21b0bc9f3f3a4018c69733949be1d481.zip*
+![[Pasted image 20220907130401.png]]
+Provide the filename of the malicious executable that got dropped on the user's Desktop.
+*Endermanch@Cerber5.exe*
+![[Pasted image 20220907130516.png]]
+![[Pasted image 20220907130601.png]]
+Provide the MD5 hash for the dropped malicious executable.
+*Cerber*  (ransomware q encripta)
+What is the name of the ransomware?
+### Conclusion
+![](https://i.ibb.co/prTssbL/final-thoughts-isolated-words-in-vintage-letterpress-wood-type-printing-blocks.jpg)
+As you have seen, Redline is a powerful tool that can guide you through analyzing the compromised host. You also need to consider that the accuracy of the analysis will depend on what kind of data you want to collect.
+Remember, Redline collects various data for analysis, including running processes, services, files, registry structures, event logs, etc.
+While solving the room tasks, you might have noticed that Timeline can be useful when searching for specific keywords. The Timeline can give you an idea of when the attack started and what following actions the attacker took.
+Here is the reference list for you if you missed it in the previous tasks:
+Redline User Guide: https://www.fireeye.com/content/dam/fireeye-www/services/freeware/ug-redline.pdf
+IOC Editor User Guide: https://www.fireeye.com/content/dam/fireeye-www/services/freeware/ug-ioc-editor.pdf
+Congratulations! Now you have learned a new tool.
+Happy Hunting!
+Read the above.
+*No answer needed*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/021b2784b3b39c0e5817c79815885a15.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/f8ddaa960778e373c108ea2fa3ebe67f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/ef6666436c67665ba44f03f149a89320.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/93f84b334ff930f8fdbb3bb316d010c3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/0d3564554dec83b1e948cf2e78a41b26.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/e38cdd16a6b56e484a6d9a4549c7348b.png)
+- ***THM{600D-C@7cH-My-FR1EnD}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/b26d9e80ac55821643531c3a0436f633.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/01db4361981d214c2692aa10d59961d1.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/81e9ffdb97a2ce98e8b9cec57a2be261.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/5a0e549950f7ca673699d51a2ff14bc9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/9d95abf1f3d62f3fe7d2eb6352b86235.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de58e2bfac4a912bcc7a3e9/room-content/f5173beaf331e84b7672daf6be726092.png)
+
+## Notes / Lessons Learned
+[[Windows Forensics 2]]
+
