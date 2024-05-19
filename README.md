@@ -72,6 +72,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Dav** | `Easy` | WebDAV Exploit | [Dav.md](./Dav.md) |
 | **Dirty Pipe** | `Easy` | CVE-2022-0847 Exploit | [Dirty Pipe.md](./Dirty%20Pipe.md) |
 | **Epoch** | `Easy` | Command Injection | [Epoch.md](./Epoch.md) |
+| **File Inclusion** | `Easy` | LFI / RFI Fundamentals | [File Inclusion.md](./File%20Inclusion.md) |
 
 
-<!-- Weekly Progress: Week 71/104 | 2024-05-11 -->
+<!-- Weekly Progress: Week 72/104 | 2024-05-19 -->
