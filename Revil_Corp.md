@@ -48,3 +48,54 @@ WinRAR2021.exe
 What is the full URL that the user visited to download the malicious binary? (include the binary as well)
 file download history-> http://192.168.75.129:4748/Documents/WinRAR2021.exe
 
+What is the MD5 hash of the binary?
+890a58f200dfff23165df9e1b088e58f
+
+What is the size of the binary in kilobytes?
+164
+
+What is the extension to which the user's files got renamed?
+.t48s39l (passwords.txt.t48s39l)
+
+What is the number of files that got renamed and changed to that extension?
+timeline/deselect all/modified/changed/search .t48s39l -> 48 matches found
+
+What is the full path to the wallpaper that got changed by an attacker, including the image name? 
+C:\Users\John Coleman\AppData\Local\Temp\hk8.bmp (.bmp)
+
+The attacker left a note for the user on the Desktop; provide the name of the note with the extension. 
+t48s39la-readme.txt
+
+The attacker created a folder "Links for United States" under C:\Users\John Coleman\Favorites\ and left a file there. Provide the name of the file. 
+GobiernoUSA.gov.url.t48s39la
+
+There is a hidden file that was created on the user's Desktop that has 0 bytes. Provide the name of the hidden file. 
+d60dff40.lock
+
+The user downloaded a decryptor hoping to decrypt all the files, but he failed. Provide the MD5 hash of the decryptor file. 
+f617af8c0d276682fdf528bb3e72560b
+
+In the ransomware note, the attacker provided a URL that is accessible through the normal browser in order to decrypt one of the encrypted files for free. The user attempted to visit it. Provide the full URL path. 
+http://decryptor.top/644E7C8EFA02FBB7
+
+What are some three names associated with the malware which infected this host? (enter the names in alphabetical order)
+AlienVault -> using hash (related tags)
+REvil
+, 
+Sodinokibi
+, 
+host europe
+, 
+skoruk ua
+, 
+wnet ua
+, 
+Sodin
+, 
+
+**REvil, sodin, Sodinokibi**
+```
+
+## Notes / Lessons Learned
+[[RazorBlack]]
+
