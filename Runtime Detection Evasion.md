@@ -51,3 +51,57 @@ This script contains malicious content and has been blocked by your antivirus so
 AMSI is fully integrated into the following Windows components,
 User Account Control, or UAC
 PowerShell
+Windows Script Host (wscript and cscript)
+JavaScript and VBScript
+Office VBA macros
+As attackers, when targeting the above components, we will need to be mindful of AMSI and its implementations when executing code or abusing components.
+In the next task, we will cover the technical details behind how AMSI works and is instrumented in Windows.
+What response value is assigned to 32768?
+*AMSI_RESULT_DETECTED*
+### AMSI Instrumentation
+The way AMSI is instrumented can be complex, including multiple DLLs and varying execution strategies depending on where it is instrumented. By definition, AMSI is only an interface for other anti-malware products; AMSI will use multiple provider DLLs and API calls depending on what is being executed and at what layer it is being executed.
+AMSI is instrumented from System.Management.Automation.dll, a .NET assembly developed by Windows; From the Microsoft docs, "Assemblies form the fundamental units of deployment, version control, reuse, activation scoping, and security permissions for .NET-based applications." The .NET assembly will instrument other DLLs and API calls depending on the interpreter and whether it is on disk or memory. The below diagram depicts how data is dissected as it flows through the layers and what DLLs/API calls are being instrumented.
+In the above graph data will begin flowing dependent on the interpreter used (PowerShell/VBScript/etc.)  Various API calls and interfaces will be instrumented as the data flows down the model at each layer. It is important to understand the complete model of AMSI, but we can break it down into core components, shown in the diagram below.
+Note: AMSI is only instrumented when loaded from memory when executed from the CLR. It is assumed that if on disk MsMpEng.exe (Windows Defender) is already being instrumented.
+Most of our research and known bypasses are placed in the Win32 API layer, manipulating the [AmsiScanBuffer](https://learn.microsoft.com/en-us/windows/win32/api/amsi/nf-amsi-amsiscanbuffer) API call.
+You may also notice the "Other Applications" interface from AMSI. Third-parties such as AV providers can instrument AMSI from their products. Microsoft documents AMSI functions and the AMSI stream interface.
+We can break down the code for AMSI PowerShell instrumentation to better understand how it is implemented and checks for suspicious content. To find where AMSI is instrumented, we can use InsecurePowerShell maintained by Cobbr. [InsecurePowerShell](https://github.com/PowerShell/PowerShell/compare/master...cobbr:master) is a GitHub fork of PowerShell with security features removed; this means we can look through the compared commits and observe any security features. AMSI is only instrumented in twelve lines of code under src/System.Management.Automation/engine/runtime/CompiledScriptBlock.cs. These twelve lines are shown below.
+![[Pasted image 20220917155215.png]]
+We can take our knowledge of how AMSI is instrumented and research from others to create and use bypasses that abuse and evade AMSI or its utilities.
+Will AMSI be instrumented if the file is only on disk? (Y/N)
+*N*
+### PowerShell Downgrade
+The PowerShell downgrade attack is a very low-hanging fruit that allows attackers to modify the current PowerShell version to remove security features.
+Most PowerShell sessions will start with the most recent PowerShell engine, but attackers can manually change the version with a one-liner. By "downgrading" the PowerShell version to 2.0, you bypass security features since they were not implemented until version 5.0.
+The attack only requires a one-liner to execute in our session. We can launch a new PowerShell process with the flags -Version to specify the version (2).
+```text
+PowerShell -Version 2
+```
+This attack can actively be seen exploited in tools such as Unicorn.
+https://github.com/trustedsec/unicorn
+![[Pasted image 20220917160029.png]]
+Since this attack is such low-hanging fruit and simple in technique, there are a plethora of ways for the blue team to detect and mitigate this attack.
+The two easiest mitigations are removing the PowerShell 2.0 engine from the device and denying access to PowerShell 2.0 via application blocklisting.
+Enter the flag obtained from the desktop after executing the command in cmd.exe.
+![[Pasted image 20220917160620.png]]
+### PowerShell Reflection
+Reflection allows a user or administrator to access and interact with .NET assemblies. From the Microsoft docs, "Assemblies form the fundamental units of deployment, version control, reuse, activation scoping, and security permissions for .NET-based applications." .NET assemblies may seem foreign; however, we can make them more familiar by knowing they take shape in familiar formats such as exe (executable) and dll (dynamic-link library).
+PowerShell reflection can be abused to modify and identify information from valuable DLLs.
+The AMSI utilities for PowerShell are stored in the AMSIUtils .NET assembly located in System.Management.Automation.AmsiUtils.
+Matt Graeber published a one-liner to accomplish the goal of using Reflection to modify and bypass the AMSI utility. This one-line can be seen in the code block below.
+![[Pasted image 20220917160734.png]]
+To explain the code functionality, we will break it down into smaller sections.
+First, the snippet will call the reflection function and specify it wants to use an assembly from [Ref.Assembly] it will then obtain the type of the AMSI utility using GetType.
+![[Pasted image 20220917160748.png]]
+The information collected from the previous section will be forwarded to the next function to obtain a specified field within the assembly using GetField.
+![[Pasted image 20220917160804.png]]
+The assembly and field information will then be forwarded to the next parameter to set the value from $false to $true using SetValue.
+![[Pasted image 20220917160821.png]]
+Once the amsiInitFailed field is set to $true, AMSI will respond with the response code: AMSI_RESULT_NOT_DETECTED = 1
+Read the above and practice leveraging the one-liner on the provided machine.
+To utilize the one-liner, you can run it in the same session as the desired malicious code or prepend it to the malicious code.
+You must already be in a PowerShell session to execute the one-liner
+Enter the flag obtained from the desktop after executing the command.
+![[Pasted image 20220917160947.png]]
+### Patching AMSI
+AMSI is primarily instrumented and loaded from amsi.dll; this can be confirmed from the diagram we observed earlier. This dll can be abused and forced to point to a response code we want. The AmsiScanBuffer function provides us the hooks and functionality we need to access the pointer/buffer for the response code.
