@@ -105,3 +105,57 @@ Enter the flag obtained from the desktop after executing the command.
 ![[Pasted image 20220917160947.png]]
 ### Patching AMSI
 AMSI is primarily instrumented and loaded from amsi.dll; this can be confirmed from the diagram we observed earlier. This dll can be abused and forced to point to a response code we want. The AmsiScanBuffer function provides us the hooks and functionality we need to access the pointer/buffer for the response code.
+AmsiScanBuffer is vulnerable because amsi.dll is loaded into the PowerShell process at startup; our session has the same permission level as the utility.
+AmsiScanBuffer will scan a "buffer" of suspected code and report it to amsi.dll to determine the response. We can control this function and overwrite the buffer with a clean return code. To identify the buffer needed for the return code, we need to do some reverse engineering; luckily, this research and reverse engineering have already been done. We have the exact return code we need to obtain a clean response!
+We will break down a code snippet modified by BC-Security and inspired by Tal Liberman; you can find the original code here. RastaMouse also has a similar bypass written in C# that uses the same technique; you can find the code here.
+At a high-level AMSI patching can be broken up into four steps,
+Obtain handle of amsi.dll
+Get process address of AmsiScanBuffer
+Modify memory protections of AmsiScanBuffer
+Write opcodes to AmsiScanBuffer
+We first need to load in any external libraries or API calls we want to utilize; we will load [GetProcAddress](https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getprocaddress), [GetModuleHandle,](https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandlea) and [VirtualProtect](https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualprotect) from kernel32 using [p/invoke](https://docs.microsoft.com/en-us/dotnet/standard/native-interop/pinvoke).
+![[Pasted image 20220917161228.png]]
+The functions are now defined, but we need to load the API calls using Add-Type. This cmdlet will load the functions with a proper type and namespace that will allow the functions to be called.
+![[Pasted image 20220917161255.png]]
+Now that we can call our API functions, we can identify where amsi.dll is located and how to get to the function. First, we need to identify the process handle of AMSI using GetModuleHandle. The handle will then be used to identify the process address of AmsiScanBuffer using GetProcAddress.
+![[Pasted image 20220917161313.png]]
+Next, we need to modify the memory protection of the AmsiScanBuffer process region. We can specify parameters and the buffer address for VirtualProtect.
+Information on the parameters and their values can be found from the previously mentioned API documentation.
+![[Pasted image 20220917161327.png]]
+We need to specify what we want to overwrite the buffer with; the process to identify this buffer can be found here. Once the buffer is specified, we can use [marshal copy](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.marshal.copy?view=net-6.0) to write to the process.
+![[Pasted image 20220917161403.png]]
+At this stage, we should have an AMSI bypass that works! It should be noted that with most tooling, signatures and detections can and are crafted to detect this script.
+Enter the flag obtained from the desktop after executing the command.
+If the flag does not appear, navigate to the desktop in a command prompt and execute the script again.
+![[Pasted image 20220917162919.png]]
+### Automating for Fun and Profit
+While it is preferred to use the previous methods shown in this room, attackers can use other automated tools to break AMSI signatures or compile a bypass.
+The first automation tool we will look at is [amsi.fail](http://amsi.fail/)
+amsi.fail will compile and generate a PowerShell bypass from a collection of known bypasses. From amsi.fail, "AMSI.fail generates obfuscated PowerShell snippets that break or disable AMSI for the current process. The snippets are randomly selected from a small pool of techniques/variations before obfuscating. Every snippet is obfuscated at runtime/request so that no generated output share the same signatures."
+Below is an example of an obfuscated PowerShell snippet from amsi.fail
+![[Pasted image 20220917163141.png]]
+You can attach this bypass at the beginning of your malicious code as with previous bypasses or run it in the same session before executing malicious code.
+[AMSITrigger](https://github.com/RythmStick/AMSITrigger) allows attackers to automatically identify strings that are flagging signatures to modify and break them. This method of bypassing AMSI is more consistent than others because you are making the file itself clean.
+The syntax for using amsitrigger is relatively straightforward; you need to specify the file or URL and what format to scan the file. Below is an example of running amsitrigger.
+![[Pasted image 20220917163229.png]]
+Signatures are highlighted in red; you can break these signatures by encoding, obfuscating, etc.
+### Conclusion
+Runtime detections and AMSI are only one of many detections and mitigations you can face when employing techniques against a hardened or up-to-date device.
+These bypasses can be used on their own or in a chain with other exploits and techniques to ultimately - evade all the things.
+It is important to keep these tools from this room in your back pocket. You cannot solely rely on them to evade detections, but you can get around and deter a lot of detections using the discussed techniques.
+Read the above and continue learning!
+
+## Flags / Answers
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/432ad7b53c0e37e4d66b3927c34f1e31.png)
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/b066155dd773cbe003eedb5643f46b02.png)
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/29a13a3e9b0d64542dc9951a49ddda14.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/35e16d45ce27145fcdf231fdb8dcb35e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/efca9438e858f0476a4ffd777c36501a.png)
+- ***THM{p0w3r5h3ll_d0wn6r4d3!}***
+- ***THM{r3fl3c7_4ll_7h3_7h1n65}***
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/cabcbaaf44dad4609439369608a51fd9.png)
+- ***THM{p47ch1n6_15n7_ju57_f0r_7h3_600d_6uy5}***
+
+## Notes / Lessons Learned
+[[Signature Evasion]]
+
