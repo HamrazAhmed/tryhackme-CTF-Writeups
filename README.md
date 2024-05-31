@@ -74,6 +74,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Epoch** | `Easy` | Command Injection | [Epoch.md](./Epoch.md) |
 | **File Inclusion** | `Easy` | LFI / RFI Fundamentals | [File Inclusion.md](./File%20Inclusion.md) |
 | **Follina MSDT** | `Easy` | CVE-2022-30190 | [Follina MSDT.md](./Follina%20MSDT.md) |
+| **Gallery** | `Easy` | Linux / Web CMS | [Gallery.md](./Gallery.md) |
 
 
-<!-- Weekly Progress: Week 73/104 | 2024-05-24 -->
+<!-- Weekly Progress: Week 74/104 | 2024-05-31 -->
