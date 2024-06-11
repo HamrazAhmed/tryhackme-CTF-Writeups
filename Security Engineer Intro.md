@@ -141,3 +141,147 @@ Ans: Restrict accessibility of the server only through VPN or internal network
 **Asset Name**
 
 corporate-client-portal  
+OPENSSL THE C_REHASH SCRIPT ALLOWS COMMAND INJECTION (CVE-2022-2068)
+
+  
+**Description**
+
+In addition to the c_rehash shell command injection identified in CVE-2022-1292, further circumstances where the c_rehash script does not properly sanitise shell metacharacters to prevent command injection were found by code review. When the CVE-2022-1292 was fixed, it was not discovered that there were other places in the script where the file names of certificates being hashed were possibly passed to a command executed through the shell. This script is distributed by some operating systems in a manner where it is automatically executed. On such operating systems, an attacker could execute arbitrary commands with the privileges of the script. Use of the c_rehash script is considered obsolete and should be replaced by the OpenSSL rehash command line tool. Fixed in OpenSSL 3.0.4 (Affected 3.0.0,3.0.1,3.0.2,3.0.3). Fixed in OpenSSL 1.1.1p (Affected 1.1.1-1.1.1o). Fixed in OpenSSL 1.0.2zf (Affected 1.0.2-1.0.2ze).
+
+  
+**Recommended Solution**
+
+- Upgrade to OpenSSL version 1.0.2zf
+- Download and apply the upgrade from: [http://ftp.openssl.org/source/openssl1.0.2zf.tar.gz](http://ftp.openssl.org/source/openssl1.0.2zf.tar.gz)
+    
+    Upgrade to version 1.0.2zf of OpenSSL ([http://www.openssl.org](http://www.openssl.org/)). The source code for this release can be downloaded from OpenSSL's website([http://ftp.openssl.org/source/openssl-1.0.2zf.tar.gz](http://ftp.openssl.org/source/openssl-1.0.2zf.tar.gz)). To obtain binaries for your platform, please visit your vendor's site. Please note that many operating system vendors choose to apply the most recent OpenSSL security patches to their distributions without changing the package version to the most recent OpenSSL version number.
+    
+- Upgrade to OpenSSL version 1.1.1p
+- Download and apply the upgrade from: [http://ftp.openssl.org/source/openssl1.1.1p.tar.gz](http://ftp.openssl.org/source/openssl1.1.1p.tar.gz) Upgrade to version 1.1.1p of OpenSSL [(http://www.openssl.org)](http://www.openssl.org/). The source code for this release can be downloaded from OpenSSL's website [(http://ftp.openssl.org/source/openssl-1.1.1p.tar.gz)](http://ftp.openssl.org/source/openssl-1.1.1p.tar.gz). To obtain binaries for your platform, please visit your vendor's site. Please note that many operating system vendors choose to apply the most recent OpenSSL security patches to their distributions without changing the package version to the most recent OpenSSL version number.
+- Upgrade to OpenSSL version 3.0.4 Download and apply the upgrade from: [http://ftp.openssl.org/source/openssl-3.0.4.tar.gz](http://ftp.openssl.org/source/openssl-3.0.4.tar.gz) Upgrade to version 3.0.4 of OpenSSL [(http://www.openssl.org)](http://www.openssl.org/). The source code for this release can be downloaded from OpenSSL's website ([http://ftp.openssl.org/source/openssl-3.0.4.tar.gz](http://ftp.openssl.org/source/openssl-3.0.4.tar.gz)). To obtain binaries for your platform, please visit your vendor's site. Please note that many operating system vendors choose to apply the most recent OpenSSL security patches to their distributions without changing the package version to the most recent OpenSSL version number.
+
+Keep as it is
+
+Patch the vulnerability
+
+Rebuild the server
+
+Ans: Restrict accessibility of the server only through VPN or internal network
+
+#### Vulnerability 3
+
+**Asset Name**
+
+corporate-website-public  
+APACHE HTTPD: MOD_LUA USE OF UNINITIALIZED VALUE OF IN R:PARSEBODY (CVE-2022-22719)
+
+  
+**Description**
+
+A carefully crafted request body can cause a read to a random memory area which could cause the process to crash. This issue affects Apache HTTP Server 2.4.52 and earlier.
+
+  
+**Recommended Solution**
+
+- Apache HTTPD >= 2.4 and < 2.4.53
+- Upgrade to Apache HTTPD version 2.4.53
+- Apache HTTPD version 2.4.53 Download and apply the upgrade from: [http://archive.apache.org/dist/httpd/httpd2.4.53.tar.gz](http://archive.apache.org/dist/httpd/httpd2.4.53.tar.gz)
+- Many platforms and distributions provide pre-built binary packages for Apache HTTP server. These pre-built packages are usually customized and optimized for a particular distribution, therefore we recommend that you use the packages if they are available for your operating system.
+
+Keep as it is
+
+Restrict accessibility of the server only through VPN or internal network
+
+Ans: Patch the vulnerability
+
+Rebuild the server
+
+## Audit observations
+
+**Sender**External Auditor**Subject**External Audit non-compliance report
+
+Hi,  
+External Auditor performed an audit of XYZ Inc. Please find attached some observed non-compliances for your perusal.
+
+## External Audit non-compliance report
+
+Please read the audit non-compliance report and select one of the available mitigation options to mitigate the non-compliances according to the information. Please keep the ease of use, ease of implementation, cost, and improvement in security posture while selecting the answer. Select the answer that best suits the above-mentioned criteria.
+
+### External Audit non-compliance report
+
+#### Observation 1
+
+**Requirements**
+
+All assets of XYZ Inc. should have the latest Operating System security updates installed.
+
+  
+**Observation**
+
+Though most systems had the latest OS security updates, some legacy systems that supported XYZ Inc.’s older hardware didn’t have the latest security updates.
+
+  
+**XYZ Inc. Comments**
+
+These systems are older and installing security updates on them might break the functionality of these systems.
+
+Rebuild the legacy servers so that they don't break with security updates
+
+Install security updates
+
+Ans: Restrict accessibility of the servers to only required usage
+
+Keep as it is
+
+### External Audit non-compliance report
+
+#### Observation 2
+
+**Requirements**
+
+All network communication, user activity,and security device logs shall be aggregated in a single platform (SIEM) and monitored continuously.
+
+  
+**Observation**
+
+XYZ Inc. has some assets in the cloud and others on-prem. It was observed that the cloud assets were not integrated with the SIEM, which is present on-prem.
+
+  
+**XYZ Inc. Comments**
+
+The logs from the cloud are not integrated with the SIEM because this will require enabling internet access to the SIEM, which is not desirable.
+
+Forward cloud logs to SIEM regardless of concerns of XYZ Inc
+
+Keep as it is
+
+Ans: Aggregate cloud logs in a single place. Forward the logs from that place to on-prem network using a restricted tunnel
+
+Rebuild the applications on the cloud to on-prem or vice versa
+
+THM{S3CUR1TY_3NG1N33R5_R0CK}
+```
+What is the flag shown on the completion of the static site?
+### Task 7  Conclusion
+That was a brief introduction to the day-to-day activities of a security engineer. To conclude, we learned that a security engineer:
+- Owns the responsibility of an organization's cyber security.
+- Ensures that the systems and infrastructure of an organization are built securely.
+- Helps maintain this security posture through continuous improvement and changes in the organization's digital assets.
+- Takes on additional roles and responsibilities to help other teams achieve the collective goal of a secure organization.
+Head on to the [Security Principles](https://tryhackme.com/room/securityprinciples) room to learn about the principles that form the foundation of security engineering. Let us know what you found interesting in this room on our [Discord channel](https://discord.gg/tryhackme) or [Twitter account](http://twitter.com/realtryhackme).
+Answer the questions below
+Head over to our social channels for further discussion.
+Completed
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/b514b04ba1f0220f04883994cfc6ea9f.png)
+### The Role of a Security Engineer![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/fbf160facf9498920fa98bbacf3336a9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/28f1276e16598eb550db01ebf0abed64.png)
+### Ensuring Awareness![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/c2378401279a49b88bd5e8c77fc4336e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/8b107a8c1d6abddd851c2709ef8fae5a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/dfe6815c8d2110ff14bb3cfa7a8f5c57.png)
+- ***THM{S3CUR1TY_3NG1N33R5_R0CK}***
+
+## Notes / Lessons Learned
+[[x86 Architecture Overview]]
+
