@@ -3463,3 +3463,1736 @@ System.UnauthorizedAccessException: Attempted to perform an unauthorized operati
    User Id                 :   2025
    Is Enabled              :   True
    User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:14 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   Guest
+   User Id                 :   501
+   Is Enabled              :   False
+   User Type               :   Guest
+   Comment                 :   Built-in account for guest access to the computer/domain
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   1/1/1970 12:00:00 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   HarveyRey
+   User Id                 :   2008
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:12 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   HeidiWat
+   User Id                 :   2019
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:14 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   HerminiaCol
+   User Id                 :   1979
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:08 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   HollyWel
+   User Id                 :   2018
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:13 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   HughFos
+   User Id                 :   1991
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:09 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   IvanRay
+   User Id                 :   2052
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:18 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   JamieGra
+   User Id                 :   2090
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:24 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   JaniceKim
+   User Id                 :   2059
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:19 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   JasonPer
+   User Id                 :   2082
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:23 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   JaydenHun
+   User Id                 :   1982
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:08 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   JillBec
+   User Id                 :   2009
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:12 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   JimmieBar
+   User Id                 :   2066
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:20 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   JimmyPor
+   User Id                 :   2084
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:23 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   JoseByr
+   User Id                 :   2097
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:25 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   JuanitaRam
+   User Id                 :   2088
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:24 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   JulioCra
+   User Id                 :   2081
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:23 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   KayHar
+   User Id                 :   2005
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:11 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   KellyJen
+   User Id                 :   2049
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:18 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   KittyMar
+   User Id                 :   2044
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:17 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   KristinFre
+   User Id                 :   2026
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:15 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   LeahBur
+   User Id                 :   2033
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:16 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   LeahLar
+   User Id                 :   2060
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:19 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   LenaMoo
+   User Id                 :   2075
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:22 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   LesaRog
+   User Id                 :   2092
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:24 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   MaeGut
+   User Id                 :   2071
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:21 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   MarjorieAda
+   User Id                 :   2036
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:16 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   MasonMor
+   User Id                 :   2096
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:25 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   MaxDou
+   User Id                 :   2035
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:16 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   MeghanCha
+   User Id                 :   2023
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:14 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   MeghanHol
+   User Id                 :   1984
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:08 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   MichelleWat
+   User Id                 :   2014
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/2/2023 9:46:46 AM
+   Logons Count            :   22
+   Password Last Set       :   6/15/2020 9:57:14 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   MiriamWar
+   User Id                 :   2053
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:18 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   MyrtleOwe
+   User Id                 :   2041
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/2/2023 9:23:37 AM
+   Logons Count            :   1
+   Password Last Set       :   6/16/2020 11:53:51 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   NatalieArm
+   User Id                 :   2076
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:22 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   NataliePen
+   User Id                 :   2093
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:25 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   NathanielMar
+   User Id                 :   2078
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:22 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   NicholasRam
+   User Id                 :   2067
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:20 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   NormanAnd
+   User Id                 :   2042
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:17 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   NormanTur
+   User Id                 :   2072
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:21 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   One
+   User Id                 :   1001
+   Is Enabled              :   True
+   User Type               :   Administrator
+   Comment                 :
+   Last Logon              :   1/2/2023 6:45:58 AM
+   Logons Count            :   23
+   Password Last Set       :   6/7/2020 6:56:25 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   OwenKel
+   User Id                 :   2064
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:20 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   PamelaGre
+   User Id                 :   2024
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:14 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   PeggyHal
+   User Id                 :   1993
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:10 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   PennyRay
+   User Id                 :   2062
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:20 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   PeytonJam
+   User Id                 :   2007
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:12 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   PhyllisRic
+   User Id                 :   2068
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:21 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   PriscillaNew
+   User Id                 :   2013
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:13 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   RandyGre
+   User Id                 :   1999
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:11 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   ReneeLuc
+   User Id                 :   1992
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:10 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   RickyRee
+   User Id                 :   2010
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:12 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   RobertaPhi
+   User Id                 :   1986
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:09 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   RodneyHen
+   User Id                 :   2057
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:19 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   RogerMey
+   User Id                 :   2061
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:19 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   RosemaryWes
+   User Id                 :   2070
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:21 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   RoseNew
+   User Id                 :   2055
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:19 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   RossPow
+   User Id                 :   2046
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:17 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   RoyMas
+   User Id                 :   2000
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:11 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   RubenSch
+   User Id                 :   1990
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:09 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   SallyHan
+   User Id                 :   2063
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:20 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   SallyOrt
+   User Id                 :   2079
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:22 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   SallySte
+   User Id                 :   2043
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:17 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   SalvadorLee
+   User Id                 :   1983
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:08 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   SethHic
+   User Id                 :   2029
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:15 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   SohamKel
+   User Id                 :   2003
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:11 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   SohamTuc
+   User Id                 :   2034
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:16 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   SophiaBoy
+   User Id                 :   2069
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:21 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   StephanieRey
+   User Id                 :   2028
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:15 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   SusanSta
+   User Id                 :   2011
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:13 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   TammyJoh
+   User Id                 :   2015
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:13 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   ThomasWeb
+   User Id                 :   1980
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:08 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   TomAnd
+   User Id                 :   2077
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:22 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   VeraNic
+   User Id                 :   2074
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:22 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   VivanGar
+   User Id                 :   1995
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:10 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   WadeRey
+   User Id                 :   2054
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:18 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   WalterPal
+   User Id                 :   1988
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:09 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   WayneWoo
+   User Id                 :   2083
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:23 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   WDAGUtilityAccount
+   User Id                 :   504
+   Is Enabled              :   False
+   User Type               :   Guest
+   Comment                 :   A user account managed and used by the system for Windows Defender Application Guard scenarios.
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/7/2020 10:59:51 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   WendyRob
+   User Id                 :   2065
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:20 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   WyattWhe
+   User Id                 :   2022
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:14 AM
+
+   =================================================================================================
+
+   Computer Name           :   SET
+   User Name               :   ZackSul
+   User Id                 :   1998
+   Is Enabled              :   True
+   User Type               :   Guest
+   Comment                 :
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   6/12/2020 11:22:10 AM
+
+   =================================================================================================
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ RDP Sessions
+    SessID    pSessionName   pUserName      pDomainName              State     SourceIP
+    1         Console        MichelleWat    SET                      Active
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Ever logged users
+  [X] Exception: Access denied 
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Home folders found
+    C:\Users\Administrator
+    C:\Users\All Users
+    C:\Users\Default
+    C:\Users\Default User
+    C:\Users\MichelleWat : MichelleWat [AllAccess]
+    C:\Users\MyrtleOwe
+    C:\Users\One
+    C:\Users\Public
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for AutoLogon credentials
+    Some AutoLogon credentials were found
+    DefaultUserName               :  MichelleWat
+    DefaultPassword               :  !!!MICKEYmouse
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Password Policies
+È Check for a possible brute-force 
+    Domain: Builtin
+    SID: S-1-5-32
+    MaxPasswordAge: 42.22:47:31.7437440
+    MinPasswordAge: 00:00:00
+    MinPasswordLength: 0
+    PasswordHistoryLength: 0
+    PasswordProperties: 0
+   =================================================================================================
+
+    Domain: SET
+    SID: S-1-5-21-2146754214-159084425-2869734154
+    MaxPasswordAge: 42.00:00:00
+    MinPasswordAge: 00:00:00
+    MinPasswordLength: 0
+    PasswordHistoryLength: 0
+    PasswordProperties: DOMAIN_PASSWORD_COMPLEX
+   =================================================================================================
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Print Logon Sessions
+
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹ Processes Information ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Vulnerable Leaked Handlers
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/leaked-handle-exploitation
+    Handle: 1092(file)
+    Handle Owner: Pid is 3172(winPEASany_ofs) with owner: MichelleWat
+    Reason: TakeOwnership
+    File Path: \Windows\System32
+    File Owner: NT SERVICE\TrustedInstaller
+   =================================================================================================
+
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹ Services Information ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+  [X] Exception: Cannot open Service Control Manager on computer '.'. This operation might require other privileges.                                                                                                        
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Interesting Services -non Microsoft-
+È Check if you can overwrite some service binary or perform a DLL hijacking, also check for unquoted paths https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#services                        
+  [X] Exception: Access denied 
+    Amazon SSM Agent(Amazon SSM Agent)["C:\Program Files\Amazon\SSM\amazon-ssm-agent.exe"] - Manual
+    Amazon SSM Agent
+   =================================================================================================          
+
+    @arcsas.inf,%arcsas_ServiceName%;Adaptec SAS/SATA-II RAID Storport's Miniport Driver(PMC-Sierra, Inc. - @arcsas.inf,%arcsas_ServiceName%;Adaptec SAS/SATA-II RAID Storport's Miniport Driver)[System32\drivers\arcsas.sys] - Boot                                                                                                     
+   =================================================================================================
+
+    AWS Lite Guest Agent(Amazon Inc. - AWS Lite Guest Agent)[C:\Program Files\Amazon\XenTools\LiteAgent.exe] - Autoload - No quotes and Space detected
+    AWS Lite Guest Agent
+   =================================================================================================          
+
+    @netbvbda.inf,%vbd_srv_desc%;QLogic Network Adapter VBD(QLogic Corporation - @netbvbda.inf,%vbd_srv_desc%;QLogic Network Adapter VBD)[System32\drivers\bxvbda.sys] - Boot
+   =================================================================================================
+
+    @bcmfn2.inf,%bcmfn2.SVCDESC%;bcmfn2 Service(Windows (R) Win 7 DDK provider - @bcmfn2.inf,%bcmfn2.SVCDESC%;bcmfn2 Service)[C:\windows\System32\drivers\bcmfn2.sys] - System
+   =================================================================================================
+
+    @bxfcoe.inf,%BXFCOE.SVCDESC%;QLogic FCoE Offload driver(QLogic Corporation - @bxfcoe.inf,%BXFCOE.SVCDESC%;QLogic FCoE Offload driver)[System32\drivers\bxfcoe.sys] - Boot
+   =================================================================================================
+
+    @bxois.inf,%BXOIS.SVCDESC%;QLogic Offload iSCSI Driver(QLogic Corporation - @bxois.inf,%BXOIS.SVCDESC%;QLogic Offload iSCSI Driver)[System32\drivers\bxois.sys] - Boot
+   =================================================================================================
+
+    @cht4vx64.inf,%cht4vbd.generic%;Chelsio Virtual Bus Driver(Chelsio Communications - @cht4vx64.inf,%cht4vbd.generic%;Chelsio Virtual Bus Driver)[C:\windows\System32\drivers\cht4vx64.sys] - System
+   =================================================================================================
+
+    @net1ix64.inf,%e1iExpress.Service.DispName%;Intel(R) PRO/1000 PCI Express Network Connection Driver I(Intel Corporation - @net1ix64.inf,%e1iExpress.Service.DispName%;Intel(R) PRO/1000 PCI Express Network Connection Driver I)[C:\windows\System32\drivers\e1i63x64.sys] - System
+   =================================================================================================
+
+    @netevbda.inf,%vbd_srv_desc%;QLogic 10 Gigabit Ethernet Adapter VBD(QLogic Corporation - @netevbda.inf,%vbd_srv_desc%;QLogic 10 Gigabit Ethernet Adapter VBD)[System32\drivers\evbda.sys] - Boot
+   =================================================================================================
+
+    @ialpssi_gpio.inf,%iaLPSSi_GPIO.SVCDESC%;Intel(R) Serial IO GPIO Controller Driver(Intel Corporation - @ialpssi_gpio.inf,%iaLPSSi_GPIO.SVCDESC%;Intel(R) Serial IO GPIO Controller Driver)[C:\windows\System32\drivers\iaLPSSi_GPIO.sys] - System                                                                                     
+   =================================================================================================
+
+    @ialpssi_i2c.inf,%iaLPSSi_I2C.SVCDESC%;Intel(R) Serial IO I2C Controller Driver(Intel Corporation - @ialpssi_i2c.inf,%iaLPSSi_I2C.SVCDESC%;Intel(R) Serial IO I2C Controller Driver)[C:\windows\System32\drivers\iaLPSSi_I2C.sys] - System                                                                                            
+   =================================================================================================
+
+    @iastorav.inf,%iaStorAVC.DeviceDesc%;Intel Chipset SATA RAID Controller(Intel Corporation - @iastorav.inf,%iaStorAVC.DeviceDesc%;Intel Chipset SATA RAID Controller)[System32\drivers\iaStorAVC.sys] - Boot
+   =================================================================================================
+
+    @iastorv.inf,%*PNP0600.DeviceDesc%;Intel RAID Controller Windows 7(Intel Corporation - @iastorv.inf,%*PNP0600.DeviceDesc%;Intel RAID Controller Windows 7)[System32\drivers\iaStorV.sys] - Boot
+   =================================================================================================
+
+    @mlx4_bus.inf,%Ibbus.ServiceDesc%;Mellanox InfiniBand Bus/AL (Filter Driver)(Mellanox - @mlx4_bus.inf,%Ibbus.ServiceDesc%;Mellanox InfiniBand Bus/AL (Filter Driver))[C:\windows\System32\drivers\ibbus.sys] - System
+   =================================================================================================
+
+    @mlx4_bus.inf,%MLX4BUS.ServiceDesc%;Mellanox ConnectX Bus Enumerator(Mellanox - @mlx4_bus.inf,%MLX4BUS.ServiceDesc%;Mellanox ConnectX Bus Enumerator)[C:\windows\System32\drivers\mlx4_bus.sys] - System
+   =================================================================================================
+
+    @mlx4_bus.inf,%ndfltr.ServiceDesc%;NetworkDirect Service(Mellanox - @mlx4_bus.inf,%ndfltr.ServiceDesc%;NetworkDirect Service)[C:\windows\System32\drivers\ndfltr.sys] - System
+   =================================================================================================
+
+    PsShutdown(PsShutdown)[C:\windows\PSSDNSVC.EXE] - System
+   =================================================================================================
+
+    @netqevbda.inf,%vbd_srv_desc%;QLogic FastLinQ Ethernet VBD(Cavium, Inc. - @netqevbda.inf,%vbd_srv_desc%;QLogic FastLinQ Ethernet VBD)[System32\drivers\qevbda.sys] - Boot
+   =================================================================================================
+
+    @qefcoe.inf,%QEFCOE.SVCDESC%;QLogic FCoE driver(Cavium, Inc. - @qefcoe.inf,%QEFCOE.SVCDESC%;QLogic FCoE driver)[System32\drivers\qefcoe.sys] - Boot
+   =================================================================================================
+
+    @qeois.inf,%QEOIS.SVCDESC%;QLogic 40G iSCSI Driver(QLogic Corporation - @qeois.inf,%QEOIS.SVCDESC%;QLogic 40G iSCSI Driver)[System32\drivers\qeois.sys] - Boot
+   =================================================================================================
+
+    @ql2300.inf,%ql2300i.DriverDesc%;QLogic Fibre Channel STOR Miniport Inbox Driver (wx64)(QLogic Corporation - @ql2300.inf,%ql2300i.DriverDesc%;QLogic Fibre Channel STOR Miniport Inbox Driver (wx64))[System32\drivers\ql2300i.sys] - Boot                                                                                            
+   =================================================================================================
+
+    @ql40xx2i.inf,%ql40xx2i.DriverDesc%;QLogic iSCSI Miniport Inbox Driver(QLogic Corporation - @ql40xx2i.inf,%ql40xx2i.DriverDesc%;QLogic iSCSI Miniport Inbox Driver)[System32\drivers\ql40xx2i.sys] - Boot
+   =================================================================================================
+
+    @qlfcoei.inf,%qlfcoei.DriverDesc%;QLogic [FCoE] STOR Miniport Inbox Driver (wx64)(QLogic Corporation - @qlfcoei.inf,%qlfcoei.DriverDesc%;QLogic [FCoE] STOR Miniport Inbox Driver (wx64))[System32\drivers\qlfcoei.sys] - Boot
+   =================================================================================================
+
+    OpenSSH Authentication Agent(OpenSSH Authentication Agent)[C:\windows\System32\OpenSSH\ssh-agent.exe] - Manual
+    Agent to hold private keys used for public key authentication.
+   =================================================================================================          
+
+    @usbstor.inf,%USBSTOR.SvcDesc%;USB Mass Storage Driver(@usbstor.inf,%USBSTOR.SvcDesc%;USB Mass Storage Driver)[C:\windows\System32\drivers\USBSTOR.SYS] - System
+   =================================================================================================
+
+    @usbxhci.inf,%PCI\CC_0C0330.DeviceDesc%;USB xHCI Compliant Host Controller(@usbxhci.inf,%PCI\CC_0C0330.DeviceDesc%;USB xHCI Compliant Host Controller)[C:\windows\System32\drivers\USBXHCI.SYS] - System
+   =================================================================================================
+
+    Veeam ONE Agent(Veeam Software AG - Veeam ONE Agent)["C:\Program Files\Veeam\Veeam ONE\Veeam ONE Agent\Veeam.One.Agent.Service.exe" -id=3be6b89b-e6de-4e97-bcd4-5c14e9d97fc1] - Autoload - isDotNet                     
+    Enables remediation actions and communication between Veeam ONE and monitored Veeam Backup & Replication servers.                                                                                                       
+   =================================================================================================          
+
+    @oem2.inf,%loc.vmciServiceDisplayName%;VMware VMCI Bus Driver(VMware, Inc. - @oem2.inf,%loc.vmciServiceDisplayName%;VMware VMCI Bus Driver)[System32\drivers\vmci.sys] - Boot
+   =================================================================================================
+
+    @vstxraid.inf,%Driver.DeviceDesc%;VIA StorX Storage RAID Controller Windows Driver(VIA Corporation - @vstxraid.inf,%Driver.DeviceDesc%;VIA StorX Storage RAID Controller Windows Driver)[System32\drivers\vstxraid.sys] - Boot
+   =================================================================================================
+
+    @%SystemRoot%\System32\drivers\vwifibus.sys,-257(@%SystemRoot%\System32\drivers\vwifibus.sys,-257)[C:\windows\System32\drivers\vwifibus.sys] - System                                                                   
+    @%SystemRoot%\System32\drivers\vwifibus.sys,-258
+   =================================================================================================          
+
+    @mlx4_bus.inf,%WinMad.ServiceDesc%;WinMad Service(Mellanox - @mlx4_bus.inf,%WinMad.ServiceDesc%;WinMad Service)[C:\windows\System32\drivers\winmad.sys] - System
+   =================================================================================================
+
+    @winusb.inf,%WINUSB_SvcName%;WinUsb Driver(@winusb.inf,%WINUSB_SvcName%;WinUsb Driver)[C:\windows\System32\drivers\WinUSB.SYS] - System                                                                                 
+    @winusb.inf,%WINUSB_SvcDesc%;Generic driver for USB devices
+   =================================================================================================          
+
+    @mlx4_bus.inf,%WinVerbs.ServiceDesc%;WinVerbs Service(Mellanox - @mlx4_bus.inf,%WinVerbs.ServiceDesc%;WinVerbs Service)[C:\windows\System32\drivers\winverbs.sys] - System
+   =================================================================================================
+
+    @oem3.inf,%XenBusName%;AWS PV Bus(Amazon Inc. - @oem3.inf,%XenBusName%;AWS PV Bus)[System32\drivers\xenbus.sys] - Boot                                                                                                  
+   =================================================================================================
+
+    @oem3.inf,%XenFiltName%;AWS Bus Filter(Amazon Inc. - @oem3.inf,%XenFiltName%;AWS Bus Filter)[System32\drivers\xenfilt.sys] - Boot                                                                                       
+   =================================================================================================
+
+    @oem4.inf,%XenIfaceDevice.DeviceDesc%;AWS Interface(Amazon Inc. - @oem4.inf,%XenIfaceDevice.DeviceDesc%;AWS Interface)[C:\windows\System32\drivers\xeniface.sys] - System
+   =================================================================================================
+
+    @oem5.inf,%XenNetName%;AWS PV Network Device(Amazon Inc. - @oem5.inf,%XenNetName%;AWS PV Network Device)[C:\windows\System32\drivers\xennet.sys] - System                                                               
+   =================================================================================================
+
+    @oem6.inf,%XenVbdName%;AWS PV Storage Host Adapter(Amazon Inc. - @oem6.inf,%XenVbdName%;AWS PV Storage Host Adapter)[System32\drivers\xenvbd.sys] - Boot
+   =================================================================================================
+
+    @oem7.inf,%XenVifName%;AWS PV Network Class(Amazon Inc. - @oem7.inf,%XenVifName%;AWS PV Network Class)[C:\windows\System32\drivers\xenvif.sys] - System                                                                 
+   =================================================================================================
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Modifiable Services
+È Check if you can modify any service https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#services                                                                                             
+    You cannot modify any service
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking if you can modify any service registry
+È Check if you can modify the registry of a service https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#services-registry-permissions                                                          
+    [-] Looks like you cannot change the registry of any service...
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Checking write permissions in PATH folders (DLL Hijacking)
+È Check for DLL Hijacking in PATH folders https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#dll-hijacking                                                                                    
+    C:\windows\system32
+    C:\windows
+    C:\windows\System32\Wbem
+    C:\windows\System32\WindowsPowerShell\v1.0\
+    C:\windows\System32\OpenSSH\
+    C:\Program Files\Microsoft\Web Platform Installer\
+
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹ Applications Information ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Current Active Window Application
+  [X] Exception: Object reference not set to an instance of an object.
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Installed Applications --Via Program Files/Uninstall registry--
+È Check if you can modify installed software https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#software                                                                                      
+    C:\Program Files\Amazon
+    C:\Program Files\Common Files
+    C:\Program Files\desktop.ini
+    C:\Program Files\internet explorer
+    C:\Program Files\Microsoft
+    C:\Program Files\Uninstall Information
+    C:\Program Files\Veeam
+    C:\Program Files\Windows Defender
+    C:\Program Files\Windows Defender Advanced Threat Protection
+    C:\Program Files\Windows Mail
+    C:\Program Files\Windows Media Player
+    C:\Program Files\Windows Multimedia Platform
+    C:\Program Files\windows nt
+    C:\Program Files\Windows Photo Viewer
+    C:\Program Files\Windows Portable Devices
+    C:\Program Files\Windows Security
+    C:\Program Files\Windows Sidebar
+    C:\Program Files\WindowsApps
+    C:\Program Files\WindowsPowerShell
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Autorun Applications
+È Check if you can modify other users AutoRuns binaries (Note that is normal that you can modify HKCU registry and binaries indicated there) https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/privilege-escalation-with-autorun-binaries                                                                  
+Error getting autoruns from WMIC: System.Management.ManagementException: Access denied
+   at System.Management.ThreadDispatch.Start()                                                                
+   at System.Management.ManagementScope.Initialize()                                                          
+   at System.Management.ManagementObjectSearcher.Initialize()                                                 
+   at System.Management.ManagementObjectSearcher.Get()                                                        
+   at hu.b()                                                                                                  
+
+    RegPath: HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+    Key: SecurityHealth
+    Folder: C:\windows\system32
+    File: C:\windows\system32\SecurityHealthSystray.exe
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+    Key: Common Startup
+    Folder: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup (Unquoted and Space detected)
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
+    Key: Common Startup
+    Folder: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup (Unquoted and Space detected)
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon
+    Key: Userinit
+    Folder: C:\Windows\system32
+    File: C:\Windows\system32\userinit.exe,
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon
+    Key: Shell
+    Folder: None (PATH Injection)
+    File: explorer.exe
+   =================================================================================================
+
+    RegPath: HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot
+    Key: AlternateShell
+    Folder: None (PATH Injection)
+    File: cmd.exe
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Font Drivers
+    Key: Adobe Type Manager
+    Folder: None (PATH Injection)
+    File: atmfd.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Font Drivers
+    Key: Adobe Type Manager
+    Folder: None (PATH Injection)
+    File: atmfd.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: midimapper
+    Folder: None (PATH Injection)
+    File: midimap.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.imaadpcm
+    Folder: None (PATH Injection)
+    File: imaadp32.acm
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.l3acm
+    Folder: C:\Windows\System32
+    File: C:\Windows\System32\l3codeca.acm
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.msadpcm
+    Folder: None (PATH Injection)
+    File: msadp32.acm
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.msg711
+    Folder: None (PATH Injection)
+    File: msg711.acm
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.msgsm610
+    Folder: None (PATH Injection)
+    File: msgsm32.acm
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.i420
+    Folder: None (PATH Injection)
+    File: iyuv_32.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.iyuv
+    Folder: None (PATH Injection)
+    File: iyuv_32.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.mrle
+    Folder: None (PATH Injection)
+    File: msrle32.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.msvc
+    Folder: None (PATH Injection)
+    File: msvidc32.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.uyvy
+    Folder: None (PATH Injection)
+    File: msyuv.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.yuy2
+    Folder: None (PATH Injection)
+    File: msyuv.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.yvu9
+    Folder: None (PATH Injection)
+    File: tsbyuv.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.yvyu
+    Folder: None (PATH Injection)
+    File: msyuv.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: wavemapper
+    Folder: None (PATH Injection)
+    File: msacm32.drv
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: midimapper
+    Folder: None (PATH Injection)
+    File: midimap.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.imaadpcm
+    Folder: None (PATH Injection)
+    File: imaadp32.acm
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.l3acm
+    Folder: C:\Windows\SysWOW64
+    File: C:\Windows\SysWOW64\l3codeca.acm
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.msadpcm
+    Folder: None (PATH Injection)
+    File: msadp32.acm
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.msg711
+    Folder: None (PATH Injection)
+    File: msg711.acm
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.msgsm610
+    Folder: None (PATH Injection)
+    File: msgsm32.acm
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.cvid
+    Folder: None (PATH Injection)
+    File: iccvid.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.i420
+    Folder: None (PATH Injection)
+    File: iyuv_32.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.iyuv
+    Folder: None (PATH Injection)
+    File: iyuv_32.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.mrle
+    Folder: None (PATH Injection)
+    File: msrle32.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.msvc
+    Folder: None (PATH Injection)
+    File: msvidc32.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.uyvy
+    Folder: None (PATH Injection)
+    File: msyuv.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.yuy2
+    Folder: None (PATH Injection)
+    File: msyuv.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.yvu9
+    Folder: None (PATH Injection)
+    File: tsbyuv.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.yvyu
+    Folder: None (PATH Injection)
+    File: msyuv.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: wavemapper
+    Folder: None (PATH Injection)
+    File: msacm32.drv
+   =================================================================================================
+
+    RegPath: HKLM\Software\Classes\htmlfile\shell\open\command
+    Folder: C:\Program Files\Internet Explorer
+    File: C:\Program Files\Internet Explorer\iexplore.exe %1 (Unquoted and Space detected)
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: _wow64cpu
+    Folder: None (PATH Injection)
+    File: wow64cpu.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: _wowarmhw
+    Folder: None (PATH Injection)
+    File: wowarmhw.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: _xtajit
+    Folder: None (PATH Injection)
+    File: xtajit.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: advapi32
+    Folder: None (PATH Injection)
+    File: advapi32.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: clbcatq
+    Folder: None (PATH Injection)
+    File: clbcatq.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: combase
+    Folder: None (PATH Injection)
+    File: combase.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: COMDLG32
+    Folder: None (PATH Injection)
+    File: COMDLG32.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: coml2
+    Folder: None (PATH Injection)
+    File: coml2.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: DifxApi
+    Folder: None (PATH Injection)
+    File: difxapi.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: gdi32
+    Folder: None (PATH Injection)
+    File: gdi32.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: gdiplus
+    Folder: None (PATH Injection)
+    File: gdiplus.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: IMAGEHLP
+    Folder: None (PATH Injection)
+    File: IMAGEHLP.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: IMM32
+    Folder: None (PATH Injection)
+    File: IMM32.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: kernel32
+    Folder: None (PATH Injection)
+    File: kernel32.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: MSCTF
+    Folder: None (PATH Injection)
+    File: MSCTF.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: MSVCRT
+    Folder: None (PATH Injection)
+    File: MSVCRT.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: NORMALIZ
+    Folder: None (PATH Injection)
+    File: NORMALIZ.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: NSI
+    Folder: None (PATH Injection)
+    File: NSI.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: ole32
+    Folder: None (PATH Injection)
+    File: ole32.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: OLEAUT32
+    Folder: None (PATH Injection)
+    File: OLEAUT32.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: PSAPI
+    Folder: None (PATH Injection)
+    File: PSAPI.DLL
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: rpcrt4
+    Folder: None (PATH Injection)
+    File: rpcrt4.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: sechost
+    Folder: None (PATH Injection)
+    File: sechost.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: Setupapi
+    Folder: None (PATH Injection)
+    File: Setupapi.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: SHCORE
+    Folder: None (PATH Injection)
+    File: SHCORE.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: SHELL32
+    Folder: None (PATH Injection)
+    File: SHELL32.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: SHLWAPI
+    Folder: None (PATH Injection)
+    File: SHLWAPI.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: user32
+    Folder: None (PATH Injection)
+    File: user32.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: WLDAP32
+    Folder: None (PATH Injection)
+    File: WLDAP32.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: wow64
+    Folder: None (PATH Injection)
+    File: wow64.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: wow64win
+    Folder: None (PATH Injection)
+    File: wow64win.dll
+   =================================================================================================
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: WS2_32
+    Folder: None (PATH Injection)
+    File: WS2_32.dll
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{2C7339CF-2B09-4501-B3F3-F3508C9228ED}
+    Key: StubPath
+    Folder: \
+    FolderPerms: Users [AppendData/CreateDirectories]
+    File: /UserInstall
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{6BF52A52-394A-11d3-B153-00C04F79FAA6}
+    Key: StubPath
+    Folder: C:\windows\system32
+    File: C:\windows\system32\unregmp2.exe /FirstLogon
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{89820200-ECBD-11cf-8B85-00AA005B4340}
+    Key: StubPath
+    Folder: None (PATH Injection)
+    File: U
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{89820200-ECBD-11cf-8B85-00AA005B4383}
+    Key: StubPath
+    Folder: C:\Windows\System32
+    File: C:\Windows\System32\ie4uinit.exe -UserConfig
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{89B4C1CD-B018-4511-B0A1-5476DBF70820}
+    Key: StubPath
+    Folder: C:\Windows\System32
+    File: C:\Windows\System32\Rundll32.exe C:\Windows\System32\mscories.dll,Install
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{9459C573-B17A-45AE-9F64-1857B5D58CEE}
+    Key: StubPath
+    Folder: C:\Program Files (x86)\Microsoft\Edge\Application\84.0.522.48\Installer
+    File: C:\Program Files (x86)\Microsoft\Edge\Application\84.0.522.48\Installer\setup.exe --configure-user-settings --verbose-logging --system-level (Unquoted and Space detected)
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}
+    Key: StubPath
+    Folder: C:\Windows\System32
+    File: C:\Windows\System32\rundll32.exe C:\Windows\System32\iesetup.dll,IEHardenAdmin
+   =================================================================================================
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}
+    Key: StubPath
+    Folder: C:\Windows\System32
+    File: C:\Windows\System32\rundll32.exe C:\Windows\System32\iesetup.dll,IEHardenUser
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Active Setup\Installed Components\{6BF52A52-394A-11d3-B153-00C04F79FAA6}                                                                                                   
+    Key: StubPath
+    Folder: C:\windows\system32
+    File: C:\windows\system32\unregmp2.exe /FirstLogon
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Active Setup\Installed Components\{89B4C1CD-B018-4511-B0A1-5476DBF70820}                                                                                                   
+    Key: StubPath
+    Folder: C:\Windows\SysWOW64
+    File: C:\Windows\SysWOW64\Rundll32.exe C:\Windows\SysWOW64\mscories.dll,Install
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}                                                                                                   
+    Key: StubPath
+    Folder: C:\Windows\SysWOW64
+    File: C:\Windows\SysWOW64\rundll32.exe C:\Windows\SysWOW64\iesetup.dll,IEHardenAdmin
+   =================================================================================================
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}                                                                                                   
+    Key: StubPath
+    Folder: C:\Windows\SysWOW64
+    File: C:\Windows\SysWOW64\rundll32.exe C:\Windows\SysWOW64\iesetup.dll,IEHardenUser
+   =================================================================================================
+
+    Folder: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup
+    File: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\desktop.ini (Unquoted and Space detected)                                                                                                            
+   =================================================================================================
+
+    Folder: C:\Users\MichelleWat\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+    FolderPerms: MichelleWat [AllAccess]
+    File: C:\Users\MichelleWat\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\desktop.ini (Unquoted and Space detected)                                                                                      
+    FilePerms: MichelleWat [AllAccess]
+   =================================================================================================
+
+    Folder: C:\windows\tasks
