@@ -829,3 +829,835 @@ and find 1 result
     ],
     "winlog.event_id": [
       "1"
+    ],
+    "process.parent.args": [
+      "C:\\Users\\Administrator\\Desktop\\AnyDesk.exe",
+      "/S"
+    ],
+    "event.type": [
+      "start"
+    ],
+    "process.command_line": [
+      "\"C:\\Users\\Administrator\\Desktop\\AnyDesk.exe\" --install \"C:\\Program Files (x86)\\AnyDesk\"  --start-with-win --create-shortcuts --create-taskbar-icon --create-desktop-icon --install-driver:mirror --update-disabled --svc-conf \"C:\\Users\\Administrator\\AppData\\Roaming\\AnyDesk\\service.conf\"  --sys-conf \"C:\\Users\\Administrator\\AppData\\Roaming\\AnyDesk\\system.conf\" "
+    ],
+    "winlog.event_data.Product": [
+      "AnyDesk"
+    ]
+  }
+}
+```
+![[Pasted image 20230117130332.png]]
+What command line tool is used to convert Sigma rules?
+*sigmac*
+At what time was the AnyDesk installation event created? [MMM DD, YYYY @ HH:MM:SS]
+*Jun 28, 2022 @ 22:19:00*
+What version of AnyDesk was installed?
+Look at the available version fields.
+*7.0.10*
+### SecOps Decisions
+Threat and log investigations may flow in different directions depending on factors such as SIEM backends, log sources and process flows established within organisations. Sigma rules are not different; as an analyst, you must make various investigation decisions.
+For example, the Sigmac CLI tool or Uncoder.io would be essential to the detection investigations. You may encounter instances where the tools produce slightly different conversion outputs from the same rule and may not entirely match up with your backend configuration.
+Let us consider converting the [Chmod Suspicious Directory Linux rule](https://github.com/SigmaHQ/sigma/blob/master/rules/linux/process_creation/proc_creation_lnx_susp_chmod_directories.yml) into Elastic Query. Starting with Sigmac, we set our target backend as Elastic Query using the `-t es-qs` option and follow that with selecting our preferred configuration option. After that, set the rule from your directory and  obtain our output which is a query that matches the process using the field names `image` and `commandline`, with options that point to various directory files where it would be suspicious to find the “change mode” `chmod` command being run.
+Sigmac Conversion - Linux Chmod
+```shell-session
+root@THM:~/Rooms/sigma/sigma/tools# python3.9 sigmac -t es-qs -c elk-linux ../rules/linux/process_creation/proc_creation_lnx_susp_chmod_directories.yml
+
+(Image.keyword:*\/chmod AND CommandLine.keyword:(*\/tmp\/* OR *\/.Library\/* OR *\/etc\/* OR *\/opt\/*))
+```
+On the side of using Uncoder.io, the rule conversion produces a query that matches based on the field names **process.executable** and **process.command_line**.
+Uncoder.io Conversion - Linux Chmod
+```shell-session
+(process.executable:*\/chmod AND process.command_line:(*\/tmp\/* OR *\/.Library\/* OR *\/etc\/* OR *\/opt\/*))
+```
+Despite the similarities in the output, you would end up deciding on the best outcome for your configuration and considering any regex used to escape any special characters.
+Answer the questions below
+Read the above.
+```text
+root@ip-10-10-103-84:~/Rooms/sigma/sigma/tools# ls
+build                README.md     sigma_configurations_check
+config               setup.cfg     sigma_similarity
+dist                 setup.py      sigmatools.egg-info
+LICENSE.LGPL.txt     sigma         sigma_uuid
+LONG_DESCRIPTION.md  sigma2attack  tests
+MANIFEST.in          sigma2misp
+merge_sigma          sigmac
+root@ip-10-10-103-84:~/Rooms/sigma/sigma/tools# python3.9 sigmac -t es-qs -c elk-linux ../rules/linux/process_creation/proc_creation_lnx_susp_chmod_directories.yml
+(Image.keyword:*\/chmod AND CommandLine.keyword:(*\/tmp\/* OR *\/.Library\/* OR *\/etc\/* OR *\/opt\/*))
+root@ip-10-10-103-84:~/Rooms/sigma/sigma/tools# cd ..
+root@ip-10-10-103-84:~/Rooms/sigma/sigma# ls
+BREAKING_CHANGES.md         Makefile          rules-placeholder
+CHANGELOG.md                other             rules-unsupported
+_config.yml                 Pipfile           sigma-schema.rx.yml
+contrib                     Pipfile.lock      tests
+images                      README.md         tools
+LICENSE                     rules
+LICENSE.Detection.Rules.md  rules-deprecated
+root@ip-10-10-103-84:~/Rooms/sigma/sigma# cd rules
+root@ip-10-10-103-84:~/Rooms/sigma/sigma/rules# ls
+application  cloud  compliance  linux  macos  network  proxy  web  windows
+root@ip-10-10-103-84:~/Rooms/sigma/sigma/rules# cd linux
+root@ip-10-10-103-84:~/Rooms/sigma/sigma/rules/linux# ls
+auditd   file_create  network_connection  process_creation
+builtin  modsecurity  other
+root@ip-10-10-103-84:~/Rooms/sigma/sigma/rules/linux# cd process_creation/
+root@ip-10-10-103-84:~/Rooms/sigma/sigma/rules/linux/process_creation# ls
+proc_creation_lnx_at_command.yml
+proc_creation_lnx_base64_decode.yml
+proc_creation_lnx_base64_execution.yml
+proc_creation_lnx_base64_shebang_cli.yml
+proc_creation_lnx_bpftrace_unsafe_option_usage.yml
+proc_creation_lnx_cat_sudoers.yml
+proc_creation_lnx_chattr_immutable_removal.yml
+proc_creation_lnx_clear_logs.yml
+proc_creation_lnx_clear_syslog.yml
+proc_creation_lnx_clipboard_collection.yml
+proc_creation_lnx_crontab_removal.yml
+proc_creation_lnx_crypto_mining.yml
+proc_creation_lnx_curl_usage.yml
+proc_creation_lnx_cve_2022_26134_atlassian_confluence.yml
+proc_creation_lnx_cve_2022_33891_spark_shell_command_injection.yml
+proc_creation_lnx_dd_file_overwrite.yml
+proc_creation_lnx_doas_execution.yml
+proc_creation_lnx_file_and_directory_discovery.yml
+proc_creation_lnx_file_deletion.yml
+proc_creation_lnx_install_root_certificate.yml
+proc_creation_lnx_local_account.yml
+proc_creation_lnx_local_groups.yml
+proc_creation_lnx_network_service_scanning.yml
+proc_creation_lnx_nohup.yml
+proc_creation_lnx_omigod_scx_runasprovider_executescript.yml
+proc_creation_lnx_omigod_scx_runasprovider_executeshellcommand.yml
+proc_creation_lnx_process_discovery.yml
+proc_creation_lnx_proxy_connection.yml
+proc_creation_lnx_python_pty_spawn.yml
+proc_creation_lnx_remote_system_discovery.yml
+proc_creation_lnx_schedule_task_job_cron.yml
+proc_creation_lnx_security_software_discovery.yml
+proc_creation_lnx_security_tools_disabling.yml
+proc_creation_lnx_services_stop_and_disable.yml
+proc_creation_lnx_setgid_setuid.yml
+proc_creation_lnx_sudo_cve_2019_14287.yml
+proc_creation_lnx_susp_chmod_directories.yml
+proc_creation_lnx_susp_curl_fileupload.yml
+proc_creation_lnx_susp_curl_useragent.yml
+proc_creation_lnx_susp_history_delete.yml
+proc_creation_lnx_susp_history_recon.yml
+proc_creation_lnx_susp_interactive_bash.yml
+proc_creation_lnx_susp_java_children.yml
+proc_creation_lnx_susp_pipe_shell.yml
+proc_creation_lnx_susp_recon_indicators.yml
+proc_creation_lnx_system_info_discovery.yml
+proc_creation_lnx_system_network_connections_discovery.yml
+proc_creation_lnx_system_network_discovery.yml
+proc_creation_lnx_triple_cross_rootkit_execve_hijack.yml
+proc_creation_lnx_triple_cross_rootkit_install.yml
+proc_creation_lnx_webshell_detection.yml
+root@ip-10-10-103-84:~/Rooms/sigma/sigma/rules/linux/process_creation# cat proc_creation_lnx_susp_chmod_directories.yml
+title: Chmod Suspicious Directory
+id: 6419afd1-3742-47a5-a7e6-b50386cd15f8
+status: experimental
+description: Detects chmod targeting files in abnormal directory paths.
+references:
+    - https://www.intezer.com/blog/malware-analysis/new-backdoor-sysjoker/
+    - https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1222.002/T1222.002.md
+author: 'Christopher Peacock @SecurePeacock, SCYTHE @scythe_io'
+tags:
+    - attack.defense_evasion
+    - attack.t1222.002
+logsource:
+    product: linux
+    category: process_creation
+detection:
+    selection:
+        Image|endswith: '/chmod'
+        CommandLine|contains:
+            - '/tmp/'
+            - '/.Library/'
+            - '/etc/'
+            - '/opt/'
+    condition: selection
+falsepositives:
+    - Admin changing file permissions.
+level: medium
+```
+### Practical Scenario
+It's time to test the knowledge gained about Sigma and its use. In this task, you are expected to write rules based on provided scenarios, convert them to the appropriate SIEM used in the deployed machine and identify any useful information using the queries to help you answer the questions.
+### Scenario
+Your organisation, Aurora, has recently been experiencing unusual activities on some of the machines on the network. Amongst these activities, the IT Manager noted that an unknown entity created some scheduled tasks on one of the machines and that a ransomware activity was also recorded.
+The SOC Manager has approached you to find ways of identifying these activities from the logs collected on the environment. It would be best if you used Sigma rules to set your detection parameters and perform search queries through the Kibana dashboard.
+To complete the task, you will require two Sigma rules processed into ElasticSearch to query for the scheduled task and the ransomware events. Below are tips to construct a good rule for the task:
+-   For the Scheduled Task, understand that it is a **process creation** event.
+-   The rule's detection variables should contain **image and commandline** arguments.
+-   You may choose to exclude **SYSTEM** accounts from the query.
+-   For the ransomware activity, you'll look for a created file ending with **.txt**.
+-   The file creation process would be run via **cmd.exe.**
+-   Change the default time window on Kibana from the default **last 30 days** to **last 1 year** (or ensure it encompasses 2022).
+Answer the questions below
+```yml
+title: #Title of your rule
+id: #Universally Unique Identifier (UUID) Generate one from https://www.uuidgenerator.net
+status: #stage of your rule testing 
+description: #Details about the detection intensions of the rule.
+author: #Who wrote the rule.
+modified: #When was it updated
+logsource:
+  category: #Classification of the log data for detection
+  product: #Source of the log data
+detection:
+  selection:
+    FieldName1: Value #Search identifiers for the detection
+    FieldName2: Value
+  condition: selection #Action to be taken.
+fields: #List of associated fields that are important for the detection
+
+falsepositives: #Any possible false positives that could trigger the rule.
+
+level: medium #Severity level of the detection rule.
+tags: #Associated TTPs from MITRE ATT&CK
+  - attack.credential_access #MITRE Tactic
+  - attack.t1110 #MITRE Technique
+
+https://www.uuidgenerator.net
+https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks
+https://www.nextron-systems.com/2018/02/10/write-sigma-rules/
+https://fourcore.io/blogs/sigma-rules-open-source-threat-hunting-approach
+
+First Sigma Rule
+```
+```yml
+┌──(kali㉿kali)-[~/Downloads]
+└─$ nano Scheduled_Task.yml
+```
+```yml
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cat Scheduled_Task.yml 
+title: Scheduled task
+id: 99229f4b-a114-485f-8728-cb3ecfe92aef
+status: experimental
+description: detect schedule
+author: witty
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    Image: '\schtasks.exe'
+    CommandLine|contains|all:
+      - 'schtasks'
+      - 'create'
+  condition: selection
+
+(process.executable.text:"\schtasks.exe" AND process.command_line.text:*schtasks* AND process.command_line.text:*create*)
+
+{
+  "_index": ".ds-winlogbeat-8.2.3-2022.06.27-000001",
+  "_id": "7lfgrIEB3iMYFrgzW_Q0",
+  "_version": 1,
+  "_score": 1,
+  "_source": {
+    "agent": {
+      "name": "THM_Aurora_Test",
+      "id": "ba6b17a6-3ca3-45a9-b4b2-fc995ab1c73a",
+      "ephemeral_id": "c483a7ab-6222-40f5-af9e-467e53880dac",
+      "type": "winlogbeat",
+      "version": "8.2.3"
+    },
+    "process": {
+      "args": [
+        "SCHTASKS",
+        "/Create",
+        "/SC",
+        "ONCE",
+        "/TN",
+        "spawn",
+        "/TR",
+        "C:\\windows\\system32\\cmd.exe",
+        "/ST",
+        "20:10"
+      ],
+      "parent": {
+        "args": [
+          "cmd.exe",
+          "/c",
+          "SCHTASKS /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10"
+        ],
+        "name": "cmd.exe",
+        "pid": 3264,
+        "args_count": 3,
+        "entity_id": "{c5d2b969-9dc7-62bb-6a03-000000001f01}",
+        "executable": "C:\\Windows\\System32\\cmd.exe",
+        "command_line": "\"cmd.exe\" /c \"SCHTASKS /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10\""
+      },
+      "pe": {
+        "file_version": "10.0.17763.1613 (WinBuild.160101.0800)",
+        "product": "Microsoft® Windows® Operating System",
+        "imphash": "0bf09ee8918142ee8d325d5955aa1cd9",
+        "description": "Task Scheduler Configuration Tool",
+        "original_file_name": "schtasks.exe",
+        "company": "Microsoft Corporation"
+      },
+      "name": "schtasks.exe",
+      "pid": 5864,
+      "working_directory": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\",
+      "args_count": 10,
+      "entity_id": "{c5d2b969-9dc7-62bb-6c03-000000001f01}",
+      "hash": {
+        "sha1": "82aa3192719be60f7d8464be1fec653a50c16f87",
+        "sha256": "4b679ccc4e0e84a9eddc24362ea4a86835597a90d94a1ae0ea905d7bcd9f771c",
+        "md5": "2f6ce97faf2d5eea919e4393bdd416a7"
+      },
+      "executable": "C:\\Windows\\System32\\schtasks.exe",
+      "command_line": "SCHTASKS  /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10"
+    },
+    "winlog": {
+      "computer_name": "THM_Aurora_Test",
+      "process": {
+        "pid": 3528,
+        "thread": {
+          "id": 2908
+        }
+      },
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "event_data": {
+        "Company": "Microsoft Corporation",
+        "Description": "Task Scheduler Configuration Tool",
+        "LogonGuid": "{c5d2b969-7ee7-62b9-4833-170000000000}",
+        "IntegrityLevel": "High",
+        "TerminalSessionId": "2",
+        "ParentUser": "THM_AURORA_TEST\\Administrator",
+        "Product": "Microsoft® Windows® Operating System",
+        "FileVersion": "10.0.17763.1613 (WinBuild.160101.0800)",
+        "LogonId": "0x173348"
+      },
+      "opcode": "Info",
+      "version": 5,
+      "record_id": "14559",
+      "task": "Process Create (rule: ProcessCreate)",
+      "event_id": "1",
+      "provider_guid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "api": "wineventlog",
+      "provider_name": "Microsoft-Windows-Sysmon",
+      "user": {
+        "identifier": "S-1-5-18",
+        "domain": "NT AUTHORITY",
+        "name": "SYSTEM",
+        "type": "User"
+      }
+    },
+    "log": {
+      "level": "information"
+    },
+    "rule": {
+      "name": "technique_id=T1059,technique_name=Command-Line Interface"
+    },
+    "message": "Process Create:\nRuleName: technique_id=T1059,technique_name=Command-Line Interface\nUtcTime: 2022-06-29 00:33:11.426\nProcessGuid: {c5d2b969-9dc7-62bb-6c03-000000001f01}\nProcessId: 5864\nImage: C:\\Windows\\System32\\schtasks.exe\nFileVersion: 10.0.17763.1613 (WinBuild.160101.0800)\nDescription: Task Scheduler Configuration Tool\nProduct: Microsoft® Windows® Operating System\nCompany: Microsoft Corporation\nOriginalFileName: schtasks.exe\nCommandLine: SCHTASKS  /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10\nCurrentDirectory: C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\\nUser: THM_AURORA_TEST\\Administrator\nLogonGuid: {c5d2b969-7ee7-62b9-4833-170000000000}\nLogonId: 0x173348\nTerminalSessionId: 2\nIntegrityLevel: High\nHashes: SHA1=82AA3192719BE60F7D8464BE1FEC653A50C16F87,MD5=2F6CE97FAF2D5EEA919E4393BDD416A7,SHA256=4B679CCC4E0E84A9EDDC24362EA4A86835597A90D94A1AE0EA905D7BCD9F771C,IMPHASH=0BF09EE8918142EE8D325D5955AA1CD9\nParentProcessGuid: {c5d2b969-9dc7-62bb-6a03-000000001f01}\nParentProcessId: 3264\nParentImage: C:\\Windows\\System32\\cmd.exe\nParentCommandLine: \"cmd.exe\" /c \"SCHTASKS /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10\"\nParentUser: THM_AURORA_TEST\\Administrator",
+    "cloud": {
+      "availability_zone": "eu-west-1b",
+      "image": {
+        "id": "ami-0844a966e30ab3c23"
+      },
+      "instance": {
+        "id": "i-0f365e6a14c6c7ae1"
+      },
+      "provider": "aws",
+      "machine": {
+        "type": "t2.medium"
+      },
+      "service": {
+        "name": "EC2"
+      },
+      "region": "eu-west-1",
+      "account": {
+        "id": "739930428441"
+      }
+    },
+    "@timestamp": "2022-06-29T00:33:11.426Z",
+    "ecs": {
+      "version": "1.12.0"
+    },
+    "related": {
+      "user": [
+        "Administrator"
+      ],
+      "hash": [
+        "4b679ccc4e0e84a9eddc24362ea4a86835597a90d94a1ae0ea905d7bcd9f771c",
+        "82aa3192719be60f7d8464be1fec653a50c16f87",
+        "2f6ce97faf2d5eea919e4393bdd416a7",
+        "0bf09ee8918142ee8d325d5955aa1cd9"
+      ]
+    },
+    "host": {
+      "hostname": "THM_Aurora_Test",
+      "os": {
+        "build": "17763.1821",
+        "kernel": "10.0.17763.1821 (WinBuild.160101.0800)",
+        "name": "Windows Server 2019 Datacenter",
+        "type": "windows",
+        "family": "windows",
+        "version": "10.0",
+        "platform": "windows"
+      },
+      "ip": [
+        "fe80::8495:da75:43eb:5822",
+        "10.10.222.40"
+      ],
+      "name": "THM_Aurora_Test",
+      "id": "c5d2b969-b61a-4159-8f78-6391a1c805db",
+      "mac": [
+        "02:23:bb:82:ce:19"
+      ],
+      "architecture": "x86_64"
+    },
+    "event": {
+      "ingested": "2022-06-29T00:33:13.518375473Z",
+      "code": "1",
+      "provider": "Microsoft-Windows-Sysmon",
+      "created": "2022-06-29T00:33:12.492Z",
+      "kind": "event",
+      "module": "sysmon",
+      "action": "Process Create (rule: ProcessCreate)",
+      "type": [
+        "start"
+      ],
+      "category": [
+        "process"
+      ]
+    },
+    "user": {
+      "domain": "THM_AURORA_TEST",
+      "name": "Administrator",
+      "id": "S-1-5-18"
+    }
+  },
+  "fields": {
+    "process.hash.md5": [
+      "2f6ce97faf2d5eea919e4393bdd416a7"
+    ],
+    "event.category": [
+      "process"
+    ],
+    "host.os.name.text": [
+      "Windows Server 2019 Datacenter"
+    ],
+    "process.parent.command_line": [
+      "\"cmd.exe\" /c \"SCHTASKS /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10\""
+    ],
+    "process.parent.name": [
+      "cmd.exe"
+    ],
+    "process.parent.pid": [
+      3264
+    ],
+    "process.hash.sha256": [
+      "4b679ccc4e0e84a9eddc24362ea4a86835597a90d94a1ae0ea905d7bcd9f771c"
+    ],
+    "host.hostname": [
+      "THM_Aurora_Test"
+    ],
+    "host.mac": [
+      "02:23:bb:82:ce:19"
+    ],
+    "winlog.process.pid": [
+      3528
+    ],
+    "host.os.version": [
+      "10.0"
+    ],
+    "agent.name": [
+      "THM_Aurora_Test"
+    ],
+    "winlog.event_data.Company": [
+      "Microsoft Corporation"
+    ],
+    "user.id": [
+      "S-1-5-18"
+    ],
+    "host.os.type": [
+      "windows"
+    ],
+    "cloud.region": [
+      "eu-west-1"
+    ],
+    "agent.hostname": [
+      "THM_Aurora_Test"
+    ],
+    "process.pe.product": [
+      "Microsoft® Windows® Operating System"
+    ],
+    "related.user": [
+      "Administrator"
+    ],
+    "host.architecture": [
+      "x86_64"
+    ],
+    "cloud.provider": [
+      "aws"
+    ],
+    "event.provider": [
+      "Microsoft-Windows-Sysmon"
+    ],
+    "cloud.machine.type": [
+      "t2.medium"
+    ],
+    "winlog.event_data.FileVersion": [
+      "10.0.17763.1613 (WinBuild.160101.0800)"
+    ],
+    "event.code": [
+      "1"
+    ],
+    "agent.id": [
+      "ba6b17a6-3ca3-45a9-b4b2-fc995ab1c73a"
+    ],
+    "winlog.event_data.LogonGuid": [
+      "{c5d2b969-7ee7-62b9-4833-170000000000}"
+    ],
+    "winlog.event_data.Description": [
+      "Task Scheduler Configuration Tool"
+    ],
+    "process.command_line.text": [
+      "SCHTASKS  /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10"
+    ],
+    "winlog.process.thread.id": [
+      2908
+    ],
+    "user.name": [
+      "Administrator"
+    ],
+    "process.working_directory": [
+      "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\"
+    ],
+    "process.entity_id": [
+      "{c5d2b969-9dc7-62bb-6c03-000000001f01}"
+    ],
+    "host.ip": [
+      "fe80::8495:da75:43eb:5822",
+      "10.10.222.40"
+    ],
+    "cloud.instance.id": [
+      "i-0f365e6a14c6c7ae1"
+    ],
+    "agent.type": [
+      "winlogbeat"
+    ],
+    "process.pe.original_file_name": [
+      "schtasks.exe"
+    ],
+    "process.executable.text": [
+      "C:\\Windows\\System32\\schtasks.exe"
+    ],
+    "winlog.api": [
+      "wineventlog"
+    ],
+    "user.domain": [
+      "THM_AURORA_TEST"
+    ],
+    "host.id": [
+      "c5d2b969-b61a-4159-8f78-6391a1c805db"
+    ],
+    "process.pe.file_version": [
+      "10.0.17763.1613 (WinBuild.160101.0800)"
+    ],
+    "process.working_directory.text": [
+      "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\"
+    ],
+    "winlog.user.name": [
+      "SYSTEM"
+    ],
+    "cloud.image.id": [
+      "ami-0844a966e30ab3c23"
+    ],
+    "process.pe.company": [
+      "Microsoft Corporation"
+    ],
+    "event.action": [
+      "Process Create (rule: ProcessCreate)"
+    ],
+    "event.ingested": [
+      "2022-06-29T00:33:13.518Z"
+    ],
+    "@timestamp": [
+      "2022-06-29T00:33:11.426Z"
+    ],
+    "winlog.channel": [
+      "Microsoft-Windows-Sysmon/Operational"
+    ],
+    "cloud.account.id": [
+      "739930428441"
+    ],
+    "host.os.platform": [
+      "windows"
+    ],
+    "winlog.opcode": [
+      "Info"
+    ],
+    "agent.ephemeral_id": [
+      "c483a7ab-6222-40f5-af9e-467e53880dac"
+    ],
+    "winlog.event_data.TerminalSessionId": [
+      "2"
+    ],
+    "process.hash.sha1": [
+      "82aa3192719be60f7d8464be1fec653a50c16f87"
+    ],
+    "user.name.text": [
+      "Administrator"
+    ],
+    "winlog.event_data.LogonId": [
+      "0x173348"
+    ],
+    "process.name.text": [
+      "schtasks.exe"
+    ],
+    "winlog.provider_name": [
+      "Microsoft-Windows-Sysmon"
+    ],
+    "winlog.provider_guid": [
+      "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"
+    ],
+    "related.hash": [
+      "4b679ccc4e0e84a9eddc24362ea4a86835597a90d94a1ae0ea905d7bcd9f771c",
+      "82aa3192719be60f7d8464be1fec653a50c16f87",
+      "2f6ce97faf2d5eea919e4393bdd416a7",
+      "0bf09ee8918142ee8d325d5955aa1cd9"
+    ],
+    "process.pid": [
+      5864
+    ],
+    "winlog.computer_name": [
+      "THM_Aurora_Test"
+    ],
+    "cloud.availability_zone": [
+      "eu-west-1b"
+    ],
+    "process.parent.entity_id": [
+      "{c5d2b969-9dc7-62bb-6a03-000000001f01}"
+    ],
+    "winlog.record_id": [
+      "14559"
+    ],
+    "host.os.name": [
+      "Windows Server 2019 Datacenter"
+    ],
+    "log.level": [
+      "information"
+    ],
+    "host.name": [
+      "THM_Aurora_Test"
+    ],
+    "event.kind": [
+      "event"
+    ],
+    "winlog.version": [
+      5
+    ],
+    "rule.name": [
+      "technique_id=T1059,technique_name=Command-Line Interface"
+    ],
+    "process.parent.args_count": [
+      3
+    ],
+    "process.name": [
+      "schtasks.exe"
+    ],
+    "cloud.service.name": [
+      "EC2"
+    ],
+    "process.parent.executable.text": [
+      "C:\\Windows\\System32\\cmd.exe"
+    ],
+    "ecs.version": [
+      "1.12.0"
+    ],
+    "event.created": [
+      "2022-06-29T00:33:12.492Z"
+    ],
+    "process.pe.description": [
+      "Task Scheduler Configuration Tool"
+    ],
+    "agent.version": [
+      "8.2.3"
+    ],
+    "host.os.family": [
+      "windows"
+    ],
+    "winlog.event_data.ParentUser": [
+      "THM_AURORA_TEST\\Administrator"
+    ],
+    "process.parent.name.text": [
+      "cmd.exe"
+    ],
+    "winlog.user.type": [
+      "User"
+    ],
+    "host.os.build": [
+      "17763.1821"
+    ],
+    "event.module": [
+      "sysmon"
+    ],
+    "host.os.kernel": [
+      "10.0.17763.1821 (WinBuild.160101.0800)"
+    ],
+    "process.executable": [
+      "C:\\Windows\\System32\\schtasks.exe"
+    ],
+    "winlog.user.identifier": [
+      "S-1-5-18"
+    ],
+    "winlog.task": [
+      "Process Create (rule: ProcessCreate)"
+    ],
+    "winlog.user.domain": [
+      "NT AUTHORITY"
+    ],
+    "process.parent.executable": [
+      "C:\\Windows\\System32\\cmd.exe"
+    ],
+    "process.parent.command_line.text": [
+      "\"cmd.exe\" /c \"SCHTASKS /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10\""
+    ],
+    "process.args_count": [
+      10
+    ],
+    "winlog.event_data.IntegrityLevel": [
+      "High"
+    ],
+    "process.args": [
+      "SCHTASKS",
+      "/Create",
+      "/SC",
+      "ONCE",
+      "/TN",
+      "spawn",
+      "/TR",
+      "C:\\windows\\system32\\cmd.exe",
+      "/ST",
+      "20:10"
+    ],
+    "message": [
+      "Process Create:\nRuleName: technique_id=T1059,technique_name=Command-Line Interface\nUtcTime: 2022-06-29 00:33:11.426\nProcessGuid: {c5d2b969-9dc7-62bb-6c03-000000001f01}\nProcessId: 5864\nImage: C:\\Windows\\System32\\schtasks.exe\nFileVersion: 10.0.17763.1613 (WinBuild.160101.0800)\nDescription: Task Scheduler Configuration Tool\nProduct: Microsoft® Windows® Operating System\nCompany: Microsoft Corporation\nOriginalFileName: schtasks.exe\nCommandLine: SCHTASKS  /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10\nCurrentDirectory: C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\\nUser: THM_AURORA_TEST\\Administrator\nLogonGuid: {c5d2b969-7ee7-62b9-4833-170000000000}\nLogonId: 0x173348\nTerminalSessionId: 2\nIntegrityLevel: High\nHashes: SHA1=82AA3192719BE60F7D8464BE1FEC653A50C16F87,MD5=2F6CE97FAF2D5EEA919E4393BDD416A7,SHA256=4B679CCC4E0E84A9EDDC24362EA4A86835597A90D94A1AE0EA905D7BCD9F771C,IMPHASH=0BF09EE8918142EE8D325D5955AA1CD9\nParentProcessGuid: {c5d2b969-9dc7-62bb-6a03-000000001f01}\nParentProcessId: 3264\nParentImage: C:\\Windows\\System32\\cmd.exe\nParentCommandLine: \"cmd.exe\" /c \"SCHTASKS /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10\"\nParentUser: THM_AURORA_TEST\\Administrator"
+    ],
+    "winlog.event_id": [
+      "1"
+    ],
+    "process.parent.args": [
+      "cmd.exe",
+      "/c",
+      "SCHTASKS /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10"
+    ],
+    "process.pe.imphash": [
+      "0bf09ee8918142ee8d325d5955aa1cd9"
+    ],
+    "event.type": [
+      "start"
+    ],
+    "process.command_line": [
+      "SCHTASKS  /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10"
+    ],
+    "winlog.event_data.Product": [
+      "Microsoft® Windows® Operating System"
+    ]
+  }
+}
+
+SCHTASKS /Create /SC ONCE /TN spawn /TR C:\\windows\\system32\\cmd.exe /ST 20:10
+
+https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-create
+
+/tn taskname
+/tr taskrun
+/sc scheduletype
+/st starttime
+
+Second Sigma Rule
+
+https://github.com/SigmaHQ/sigma-specification/blob/main/Taxonomy_specification.md
+```
+```yml
+┌──(kali㉿kali)-[~/Downloads]
+└─$ nano Ransomware_detect.yml
+```
+```yml
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cat Ransomware_detect.yml 
+title: Ransomware detect
+id: 0b9acb09-dfcf-4855-bf54-ae81a7a663ce
+status: experimental
+description: Detect Ransomware
+author: witty
+logsource:
+  category: file_event
+  product: windows
+detection:
+  selection:
+    Image: '\cmd.exe'
+    TargetFilename|endswith: '.txt'    
+  condition: selection
+
+(process.executable.text:"\cmd.exe" AND file.path.text:*.txt)
+
+{
+  "_index": ".ds-winlogbeat-8.2.3-2022.06.27-000001",
+  "_id": "gVcVrYEB3iMYFrgz8PhT",
+  "_version": 1,
+  "_score": 1,
+  "_source": {
+    "agent": {
+      "name": "THM_Aurora_Test",
+      "id": "ba6b17a6-3ca3-45a9-b4b2-fc995ab1c73a",
+      "type": "winlogbeat",
+      "ephemeral_id": "c483a7ab-6222-40f5-af9e-467e53880dac",
+      "version": "8.2.3"
+    },
+    "process": {
+      "name": "cmd.exe",
+      "pid": 4052,
+      "entity_id": "{c5d2b969-ab7f-62bb-9903-000000001f01}",
+      "executable": "C:\\Windows\\SYSTEM32\\cmd.exe"
+    },
+    "winlog": {
+      "computer_name": "THM_Aurora_Test",
+      "process": {
+        "pid": 3528,
+        "thread": {
+          "id": 2908
+        }
+      },
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "event_data": {
+        "CreationUtcTime": "2022-06-29 01:31:43.251"
+      },
+      "opcode": "Info",
+      "version": 2,
+      "record_id": "15427",
+      "task": "File created (rule: FileCreate)",
+      "event_id": "11",
+      "provider_guid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "api": "wineventlog",
+      "provider_name": "Microsoft-Windows-Sysmon",
+      "user": {
+        "identifier": "S-1-5-18",
+        "domain": "NT AUTHORITY",
+        "name": "SYSTEM",
+        "type": "User"
+      }
+    },
+    "log": {
+      "level": "information"
+    },
+    "message": "File created:\nRuleName: -\nUtcTime: 2022-06-29 01:31:43.251\nProcessGuid: {c5d2b969-ab7f-62bb-9903-000000001f01}\nProcessId: 4052\nImage: C:\\Windows\\SYSTEM32\\cmd.exe\nTargetFilename: C:\\Users\\Administrator\\Desktop\\YOUR_FILES.txt\nCreationUtcTime: 2022-06-29 01:31:43.251\nUser: THM_AURORA_TEST\\Administrator",
+    "cloud": {
+      "image": {
+        "id": "ami-0844a966e30ab3c23"
+      },
+      "availability_zone": "eu-west-1b",
+      "instance": {
+        "id": "i-0f365e6a14c6c7ae1"
+      },
+      "provider": "aws",
+      "service": {
+        "name": "EC2"
+      },
+      "machine": {
+        "type": "t2.medium"
+      },
