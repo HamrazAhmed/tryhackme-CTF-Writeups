@@ -76,6 +76,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Follina MSDT** | `Easy` | CVE-2022-30190 | [Follina MSDT.md](./Follina%20MSDT.md) |
 | **Gallery** | `Easy` | Linux / Web CMS | [Gallery.md](./Gallery.md) |
 | **Game Zone** | `Easy` | SQLi / SSH Tunneling | [Game Zone.md](./Game%20Zone.md) |
+| **HeartBleed** | `Easy` | OpenSSL Vulnerability | [HeartBleed.md](./HeartBleed.md) |
 
 
-<!-- Weekly Progress: Week 75/104 | 2024-06-09 -->
+<!-- Weekly Progress: Week 76/104 | 2024-06-16 -->
