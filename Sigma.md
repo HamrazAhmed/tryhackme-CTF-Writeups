@@ -1661,3 +1661,835 @@ detection:
       "machine": {
         "type": "t2.medium"
       },
+      "region": "eu-west-1",
+      "account": {
+        "id": "739930428441"
+      }
+    },
+    "@timestamp": "2022-06-29T01:31:43.251Z",
+    "file": {
+      "path": "C:\\Users\\Administrator\\Desktop\\YOUR_FILES.txt",
+      "extension": "txt",
+      "name": "YOUR_FILES.txt",
+      "directory": "C:\\Users\\Administrator\\Desktop"
+    },
+    "ecs": {
+      "version": "1.12.0"
+    },
+    "related": {
+      "user": [
+        "Administrator"
+      ]
+    },
+    "host": {
+      "hostname": "THM_Aurora_Test",
+      "os": {
+        "build": "17763.1821",
+        "kernel": "10.0.17763.1821 (WinBuild.160101.0800)",
+        "name": "Windows Server 2019 Datacenter",
+        "type": "windows",
+        "family": "windows",
+        "version": "10.0",
+        "platform": "windows"
+      },
+      "ip": [
+        "fe80::8495:da75:43eb:5822",
+        "10.10.222.40"
+      ],
+      "name": "THM_Aurora_Test",
+      "id": "c5d2b969-b61a-4159-8f78-6391a1c805db",
+      "mac": [
+        "02:23:bb:82:ce:19"
+      ],
+      "architecture": "x86_64"
+    },
+    "event": {
+      "ingested": "2022-06-29T01:31:45.105801017Z",
+      "code": "11",
+      "provider": "Microsoft-Windows-Sysmon",
+      "created": "2022-06-29T01:31:44.071Z",
+      "kind": "event",
+      "module": "sysmon",
+      "action": "File created (rule: FileCreate)",
+      "type": [
+        "creation"
+      ],
+      "category": [
+        "file"
+      ]
+    },
+    "user": {
+      "domain": "THM_AURORA_TEST",
+      "name": "Administrator",
+      "id": "S-1-5-18"
+    }
+  },
+  "fields": {
+    "file.path": [
+      "C:\\Users\\Administrator\\Desktop\\YOUR_FILES.txt"
+    ],
+    "event.category": [
+      "file"
+    ],
+    "process.name.text": [
+      "cmd.exe"
+    ],
+    "host.os.name.text": [
+      "Windows Server 2019 Datacenter"
+    ],
+    "winlog.provider_name": [
+      "Microsoft-Windows-Sysmon"
+    ],
+    "winlog.provider_guid": [
+      "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"
+    ],
+    "host.hostname": [
+      "THM_Aurora_Test"
+    ],
+    "process.pid": [
+      4052
+    ],
+    "winlog.computer_name": [
+      "THM_Aurora_Test"
+    ],
+    "host.mac": [
+      "02:23:bb:82:ce:19"
+    ],
+    "winlog.process.pid": [
+      3528
+    ],
+    "cloud.availability_zone": [
+      "eu-west-1b"
+    ],
+    "host.os.version": [
+      "10.0"
+    ],
+    "winlog.record_id": [
+      "15427"
+    ],
+    "host.os.name": [
+      "Windows Server 2019 Datacenter"
+    ],
+    "log.level": [
+      "information"
+    ],
+    "agent.name": [
+      "THM_Aurora_Test"
+    ],
+    "host.name": [
+      "THM_Aurora_Test"
+    ],
+    "event.kind": [
+      "event"
+    ],
+    "winlog.version": [
+      2
+    ],
+    "file.path.text": [
+      "C:\\Users\\Administrator\\Desktop\\YOUR_FILES.txt"
+    ],
+    "user.id": [
+      "S-1-5-18"
+    ],
+    "host.os.type": [
+      "windows"
+    ],
+    "cloud.region": [
+      "eu-west-1"
+    ],
+    "agent.hostname": [
+      "THM_Aurora_Test"
+    ],
+    "related.user": [
+      "Administrator"
+    ],
+    "host.architecture": [
+      "x86_64"
+    ],
+    "process.name": [
+      "cmd.exe"
+    ],
+    "cloud.provider": [
+      "aws"
+    ],
+    "event.provider": [
+      "Microsoft-Windows-Sysmon"
+    ],
+    "cloud.machine.type": [
+      "t2.medium"
+    ],
+    "event.code": [
+      "11"
+    ],
+    "cloud.service.name": [
+      "EC2"
+    ],
+    "agent.id": [
+      "ba6b17a6-3ca3-45a9-b4b2-fc995ab1c73a"
+    ],
+    "ecs.version": [
+      "1.12.0"
+    ],
+    "event.created": [
+      "2022-06-29T01:31:44.071Z"
+    ],
+    "file.extension": [
+      "txt"
+    ],
+    "agent.version": [
+      "8.2.3"
+    ],
+    "host.os.family": [
+      "windows"
+    ],
+    "winlog.process.thread.id": [
+      2908
+    ],
+    "winlog.event_data.CreationUtcTime": [
+      "2022-06-29 01:31:43.251"
+    ],
+    "user.name": [
+      "Administrator"
+    ],
+    "process.entity_id": [
+      "{c5d2b969-ab7f-62bb-9903-000000001f01}"
+    ],
+    "winlog.user.type": [
+      "User"
+    ],
+    "host.os.build": [
+      "17763.1821"
+    ],
+    "host.ip": [
+      "fe80::8495:da75:43eb:5822",
+      "10.10.222.40"
+    ],
+    "cloud.instance.id": [
+      "i-0f365e6a14c6c7ae1"
+    ],
+    "agent.type": [
+      "winlogbeat"
+    ],
+    "process.executable.text": [
+      "C:\\Windows\\SYSTEM32\\cmd.exe"
+    ],
+    "event.module": [
+      "sysmon"
+    ],
+    "host.os.kernel": [
+      "10.0.17763.1821 (WinBuild.160101.0800)"
+    ],
+    "winlog.api": [
+      "wineventlog"
+    ],
+    "user.domain": [
+      "THM_AURORA_TEST"
+    ],
+    "host.id": [
+      "c5d2b969-b61a-4159-8f78-6391a1c805db"
+    ],
+    "process.executable": [
+      "C:\\Windows\\SYSTEM32\\cmd.exe"
+    ],
+    "winlog.user.identifier": [
+      "S-1-5-18"
+    ],
+    "winlog.task": [
+      "File created (rule: FileCreate)"
+    ],
+    "file.directory": [
+      "C:\\Users\\Administrator\\Desktop"
+    ],
+    "winlog.user.domain": [
+      "NT AUTHORITY"
+    ],
+    "file.name": [
+      "YOUR_FILES.txt"
+    ],
+    "message": [
+      "File created:\nRuleName: -\nUtcTime: 2022-06-29 01:31:43.251\nProcessGuid: {c5d2b969-ab7f-62bb-9903-000000001f01}\nProcessId: 4052\nImage: C:\\Windows\\SYSTEM32\\cmd.exe\nTargetFilename: C:\\Users\\Administrator\\Desktop\\YOUR_FILES.txt\nCreationUtcTime: 2022-06-29 01:31:43.251\nUser: THM_AURORA_TEST\\Administrator"
+    ],
+    "winlog.user.name": [
+      "SYSTEM"
+    ],
+    "winlog.event_id": [
+      "11"
+    ],
+    "cloud.image.id": [
+      "ami-0844a966e30ab3c23"
+    ],
+    "event.action": [
+      "File created (rule: FileCreate)"
+    ],
+    "event.ingested": [
+      "2022-06-29T01:31:45.105Z"
+    ],
+    "@timestamp": [
+      "2022-06-29T01:31:43.251Z"
+    ],
+    "winlog.channel": [
+      "Microsoft-Windows-Sysmon/Operational"
+    ],
+    "cloud.account.id": [
+      "739930428441"
+    ],
+    "host.os.platform": [
+      "windows"
+    ],
+    "event.type": [
+      "creation"
+    ],
+    "winlog.opcode": [
+      "Info"
+    ],
+    "agent.ephemeral_id": [
+      "c483a7ab-6222-40f5-af9e-467e53880dac"
+    ],
+    "user.name.text": [
+      "Administrator"
+    ]
+  }
+}
+
+search YOUR_FILES.txt
+
+{
+  "_index": ".ds-winlogbeat-8.2.3-2022.06.27-000001",
+  "_id": "f1cVrYEB3iMYFrgz8PhT",
+  "_version": 1,
+  "_score": 1,
+  "_source": {
+    "agent": {
+      "name": "THM_Aurora_Test",
+      "id": "ba6b17a6-3ca3-45a9-b4b2-fc995ab1c73a",
+      "type": "winlogbeat",
+      "ephemeral_id": "c483a7ab-6222-40f5-af9e-467e53880dac",
+      "version": "8.2.3"
+    },
+    "process": {
+      "args": [
+        "cmd.exe",
+        "/c",
+        "echo T1486 - Purelocker Ransom Note > %%USERPROFILE%%\\Desktop\\YOUR_FILES.txt"
+      ],
+      "parent": {
+        "args": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        ],
+        "name": "powershell.exe",
+        "pid": 5248,
+        "args_count": 1,
+        "entity_id": "{c5d2b969-810a-62b9-0e01-000000001f01}",
+        "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "command_line": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" "
+      },
+      "pe": {
+        "file_version": "10.0.17763.1697 (WinBuild.160101.0800)",
+        "product": "Microsoft® Windows® Operating System",
+        "imphash": "272245e2988e1e430500b852c4fb5e18",
+        "description": "Windows Command Processor",
+        "original_file_name": "Cmd.Exe",
+        "company": "Microsoft Corporation"
+      },
+      "name": "cmd.exe",
+      "pid": 4052,
+      "working_directory": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\",
+      "args_count": 3,
+      "entity_id": "{c5d2b969-ab7f-62bb-9903-000000001f01}",
+      "hash": {
+        "sha1": "ded8fd7f36417f66eb6ada10e0c0d7c0022986e9",
+        "sha256": "bc866cfcdda37e24dc2634dc282c7a0e6f55209da17a8fa105b07414c0e7c527",
+        "md5": "911d039e71583a07320b32bde22f8e22"
+      },
+      "executable": "C:\\Windows\\System32\\cmd.exe",
+      "command_line": "\"cmd.exe\" /c \"echo T1486 - Purelocker Ransom Note > %%USERPROFILE%%\\Desktop\\YOUR_FILES.txt\""
+    },
+    "winlog": {
+      "computer_name": "THM_Aurora_Test",
+      "process": {
+        "pid": 3528,
+        "thread": {
+          "id": 2908
+        }
+      },
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "event_data": {
+        "Company": "Microsoft Corporation",
+        "Description": "Windows Command Processor",
+        "LogonGuid": "{c5d2b969-7ee7-62b9-4833-170000000000}",
+        "IntegrityLevel": "High",
+        "TerminalSessionId": "2",
+        "Product": "Microsoft® Windows® Operating System",
+        "ParentUser": "THM_AURORA_TEST\\Administrator",
+        "FileVersion": "10.0.17763.1697 (WinBuild.160101.0800)",
+        "LogonId": "0x173348"
+      },
+      "opcode": "Info",
+      "version": 5,
+      "record_id": "15425",
+      "event_id": "1",
+      "task": "Process Create (rule: ProcessCreate)",
+      "provider_guid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "api": "wineventlog",
+      "provider_name": "Microsoft-Windows-Sysmon",
+      "user": {
+        "identifier": "S-1-5-18",
+        "domain": "NT AUTHORITY",
+        "name": "SYSTEM",
+        "type": "User"
+      }
+    },
+    "log": {
+      "level": "information"
+    },
+    "rule": {
+      "name": "technique_id=T1059,technique_name=Command-Line Interface"
+    },
+    "message": "Process Create:\nRuleName: technique_id=T1059,technique_name=Command-Line Interface\nUtcTime: 2022-06-29 01:31:43.203\nProcessGuid: {c5d2b969-ab7f-62bb-9903-000000001f01}\nProcessId: 4052\nImage: C:\\Windows\\System32\\cmd.exe\nFileVersion: 10.0.17763.1697 (WinBuild.160101.0800)\nDescription: Windows Command Processor\nProduct: Microsoft® Windows® Operating System\nCompany: Microsoft Corporation\nOriginalFileName: Cmd.Exe\nCommandLine: \"cmd.exe\" /c \"echo T1486 - Purelocker Ransom Note > %%USERPROFILE%%\\Desktop\\YOUR_FILES.txt\"\nCurrentDirectory: C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\\nUser: THM_AURORA_TEST\\Administrator\nLogonGuid: {c5d2b969-7ee7-62b9-4833-170000000000}\nLogonId: 0x173348\nTerminalSessionId: 2\nIntegrityLevel: High\nHashes: SHA1=DED8FD7F36417F66EB6ADA10E0C0D7C0022986E9,MD5=911D039E71583A07320B32BDE22F8E22,SHA256=BC866CFCDDA37E24DC2634DC282C7A0E6F55209DA17A8FA105B07414C0E7C527,IMPHASH=272245E2988E1E430500B852C4FB5E18\nParentProcessGuid: {c5d2b969-810a-62b9-0e01-000000001f01}\nParentProcessId: 5248\nParentImage: C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\nParentCommandLine: \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" \nParentUser: THM_AURORA_TEST\\Administrator",
+    "cloud": {
+      "image": {
+        "id": "ami-0844a966e30ab3c23"
+      },
+      "availability_zone": "eu-west-1b",
+      "instance": {
+        "id": "i-0f365e6a14c6c7ae1"
+      },
+      "provider": "aws",
+      "machine": {
+        "type": "t2.medium"
+      },
+      "service": {
+        "name": "EC2"
+      },
+      "region": "eu-west-1",
+      "account": {
+        "id": "739930428441"
+      }
+    },
+    "@timestamp": "2022-06-29T01:31:43.203Z",
+    "ecs": {
+      "version": "1.12.0"
+    },
+    "related": {
+      "user": [
+        "Administrator"
+      ],
+      "hash": [
+        "bc866cfcdda37e24dc2634dc282c7a0e6f55209da17a8fa105b07414c0e7c527",
+        "ded8fd7f36417f66eb6ada10e0c0d7c0022986e9",
+        "911d039e71583a07320b32bde22f8e22",
+        "272245e2988e1e430500b852c4fb5e18"
+      ]
+    },
+    "host": {
+      "hostname": "THM_Aurora_Test",
+      "os": {
+        "build": "17763.1821",
+        "kernel": "10.0.17763.1821 (WinBuild.160101.0800)",
+        "name": "Windows Server 2019 Datacenter",
+        "type": "windows",
+        "family": "windows",
+        "version": "10.0",
+        "platform": "windows"
+      },
+      "ip": [
+        "fe80::8495:da75:43eb:5822",
+        "10.10.222.40"
+      ],
+      "name": "THM_Aurora_Test",
+      "id": "c5d2b969-b61a-4159-8f78-6391a1c805db",
+      "mac": [
+        "02:23:bb:82:ce:19"
+      ],
+      "architecture": "x86_64"
+    },
+    "event": {
+      "ingested": "2022-06-29T01:31:45.104358079Z",
+      "code": "1",
+      "provider": "Microsoft-Windows-Sysmon",
+      "created": "2022-06-29T01:31:44.071Z",
+      "kind": "event",
+      "module": "sysmon",
+      "action": "Process Create (rule: ProcessCreate)",
+      "type": [
+        "start"
+      ],
+      "category": [
+        "process"
+      ]
+    },
+    "user": {
+      "domain": "THM_AURORA_TEST",
+      "name": "Administrator",
+      "id": "S-1-5-18"
+    }
+  },
+  "fields": {
+    "process.hash.md5": [
+      "911d039e71583a07320b32bde22f8e22"
+    ],
+    "event.category": [
+      "process"
+    ],
+    "host.os.name.text": [
+      "Windows Server 2019 Datacenter"
+    ],
+    "process.parent.command_line": [
+      "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" "
+    ],
+    "process.parent.name": [
+      "powershell.exe"
+    ],
+    "process.parent.pid": [
+      5248
+    ],
+    "process.hash.sha256": [
+      "bc866cfcdda37e24dc2634dc282c7a0e6f55209da17a8fa105b07414c0e7c527"
+    ],
+    "host.hostname": [
+      "THM_Aurora_Test"
+    ],
+    "host.mac": [
+      "02:23:bb:82:ce:19"
+    ],
+    "winlog.process.pid": [
+      3528
+    ],
+    "host.os.version": [
+      "10.0"
+    ],
+    "agent.name": [
+      "THM_Aurora_Test"
+    ],
+    "winlog.event_data.Company": [
+      "Microsoft Corporation"
+    ],
+    "user.id": [
+      "S-1-5-18"
+    ],
+    "host.os.type": [
+      "windows"
+    ],
+    "cloud.region": [
+      "eu-west-1"
+    ],
+    "agent.hostname": [
+      "THM_Aurora_Test"
+    ],
+    "process.pe.product": [
+      "Microsoft® Windows® Operating System"
+    ],
+    "related.user": [
+      "Administrator"
+    ],
+    "host.architecture": [
+      "x86_64"
+    ],
+    "cloud.provider": [
+      "aws"
+    ],
+    "event.provider": [
+      "Microsoft-Windows-Sysmon"
+    ],
+    "cloud.machine.type": [
+      "t2.medium"
+    ],
+    "winlog.event_data.FileVersion": [
+      "10.0.17763.1697 (WinBuild.160101.0800)"
+    ],
+    "event.code": [
+      "1"
+    ],
+    "agent.id": [
+      "ba6b17a6-3ca3-45a9-b4b2-fc995ab1c73a"
+    ],
+    "winlog.event_data.LogonGuid": [
+      "{c5d2b969-7ee7-62b9-4833-170000000000}"
+    ],
+    "winlog.event_data.Description": [
+      "Windows Command Processor"
+    ],
+    "process.command_line.text": [
+      "\"cmd.exe\" /c \"echo T1486 - Purelocker Ransom Note > %%USERPROFILE%%\\Desktop\\YOUR_FILES.txt\""
+    ],
+    "winlog.process.thread.id": [
+      2908
+    ],
+    "user.name": [
+      "Administrator"
+    ],
+    "process.working_directory": [
+      "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\"
+    ],
+    "process.entity_id": [
+      "{c5d2b969-ab7f-62bb-9903-000000001f01}"
+    ],
+    "host.ip": [
+      "fe80::8495:da75:43eb:5822",
+      "10.10.222.40"
+    ],
+    "cloud.instance.id": [
+      "i-0f365e6a14c6c7ae1"
+    ],
+    "agent.type": [
+      "winlogbeat"
+    ],
+    "process.pe.original_file_name": [
+      "Cmd.Exe"
+    ],
+    "process.executable.text": [
+      "C:\\Windows\\System32\\cmd.exe"
+    ],
+    "winlog.api": [
+      "wineventlog"
+    ],
+    "user.domain": [
+      "THM_AURORA_TEST"
+    ],
+    "host.id": [
+      "c5d2b969-b61a-4159-8f78-6391a1c805db"
+    ],
+    "process.pe.file_version": [
+      "10.0.17763.1697 (WinBuild.160101.0800)"
+    ],
+    "process.working_directory.text": [
+      "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\"
+    ],
+    "winlog.user.name": [
+      "SYSTEM"
+    ],
+    "cloud.image.id": [
+      "ami-0844a966e30ab3c23"
+    ],
+    "process.pe.company": [
+      "Microsoft Corporation"
+    ],
+    "event.action": [
+      "Process Create (rule: ProcessCreate)"
+    ],
+    "event.ingested": [
+      "2022-06-29T01:31:45.104Z"
+    ],
+    "@timestamp": [
+      "2022-06-29T01:31:43.203Z"
+    ],
+    "winlog.channel": [
+      "Microsoft-Windows-Sysmon/Operational"
+    ],
+    "cloud.account.id": [
+      "739930428441"
+    ],
+    "host.os.platform": [
+      "windows"
+    ],
+    "winlog.opcode": [
+      "Info"
+    ],
+    "agent.ephemeral_id": [
+      "c483a7ab-6222-40f5-af9e-467e53880dac"
+    ],
+    "winlog.event_data.TerminalSessionId": [
+      "2"
+    ],
+    "process.hash.sha1": [
+      "ded8fd7f36417f66eb6ada10e0c0d7c0022986e9"
+    ],
+    "user.name.text": [
+      "Administrator"
+    ],
+    "winlog.event_data.LogonId": [
+      "0x173348"
+    ],
+    "process.name.text": [
+      "cmd.exe"
+    ],
+    "winlog.provider_name": [
+      "Microsoft-Windows-Sysmon"
+    ],
+    "winlog.provider_guid": [
+      "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"
+    ],
+    "related.hash": [
+      "bc866cfcdda37e24dc2634dc282c7a0e6f55209da17a8fa105b07414c0e7c527",
+      "ded8fd7f36417f66eb6ada10e0c0d7c0022986e9",
+      "911d039e71583a07320b32bde22f8e22",
+      "272245e2988e1e430500b852c4fb5e18"
+    ],
+    "process.pid": [
+      4052
+    ],
+    "winlog.computer_name": [
+      "THM_Aurora_Test"
+    ],
+    "cloud.availability_zone": [
+      "eu-west-1b"
+    ],
+    "process.parent.entity_id": [
+      "{c5d2b969-810a-62b9-0e01-000000001f01}"
+    ],
+    "winlog.record_id": [
+      "15425"
+    ],
+    "host.os.name": [
+      "Windows Server 2019 Datacenter"
+    ],
+    "log.level": [
+      "information"
+    ],
+    "host.name": [
+      "THM_Aurora_Test"
+    ],
+    "event.kind": [
+      "event"
+    ],
+    "winlog.version": [
+      5
+    ],
+    "rule.name": [
+      "technique_id=T1059,technique_name=Command-Line Interface"
+    ],
+    "process.parent.args_count": [
+      1
+    ],
+    "process.name": [
+      "cmd.exe"
+    ],
+    "cloud.service.name": [
+      "EC2"
+    ],
+    "process.parent.executable.text": [
+      "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    ],
+    "ecs.version": [
+      "1.12.0"
+    ],
+    "event.created": [
+      "2022-06-29T01:31:44.071Z"
+    ],
+    "process.pe.description": [
+      "Windows Command Processor"
+    ],
+    "agent.version": [
+      "8.2.3"
+    ],
+    "host.os.family": [
+      "windows"
+    ],
+    "winlog.event_data.ParentUser": [
+      "THM_AURORA_TEST\\Administrator"
+    ],
+    "process.parent.name.text": [
+      "powershell.exe"
+    ],
+    "winlog.user.type": [
+      "User"
+    ],
+    "host.os.build": [
+      "17763.1821"
+    ],
+    "event.module": [
+      "sysmon"
+    ],
+    "host.os.kernel": [
+      "10.0.17763.1821 (WinBuild.160101.0800)"
+    ],
+    "process.executable": [
+      "C:\\Windows\\System32\\cmd.exe"
+    ],
+    "winlog.user.identifier": [
+      "S-1-5-18"
+    ],
+    "winlog.task": [
+      "Process Create (rule: ProcessCreate)"
+    ],
+    "winlog.user.domain": [
+      "NT AUTHORITY"
+    ],
+    "process.parent.executable": [
+      "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    ],
+    "process.parent.command_line.text": [
+      "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" "
+    ],
+    "process.args_count": [
+      3
+    ],
+    "winlog.event_data.IntegrityLevel": [
+      "High"
+    ],
+    "process.args": [
+      "cmd.exe",
+      "/c",
+      "echo T1486 - Purelocker Ransom Note > %%USERPROFILE%%\\Desktop\\YOUR_FILES.txt"
+    ],
+    "message": [
+      "Process Create:\nRuleName: technique_id=T1059,technique_name=Command-Line Interface\nUtcTime: 2022-06-29 01:31:43.203\nProcessGuid: {c5d2b969-ab7f-62bb-9903-000000001f01}\nProcessId: 4052\nImage: C:\\Windows\\System32\\cmd.exe\nFileVersion: 10.0.17763.1697 (WinBuild.160101.0800)\nDescription: Windows Command Processor\nProduct: Microsoft® Windows® Operating System\nCompany: Microsoft Corporation\nOriginalFileName: Cmd.Exe\nCommandLine: \"cmd.exe\" /c \"echo T1486 - Purelocker Ransom Note > %%USERPROFILE%%\\Desktop\\YOUR_FILES.txt\"\nCurrentDirectory: C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\\nUser: THM_AURORA_TEST\\Administrator\nLogonGuid: {c5d2b969-7ee7-62b9-4833-170000000000}\nLogonId: 0x173348\nTerminalSessionId: 2\nIntegrityLevel: High\nHashes: SHA1=DED8FD7F36417F66EB6ADA10E0C0D7C0022986E9,MD5=911D039E71583A07320B32BDE22F8E22,SHA256=BC866CFCDDA37E24DC2634DC282C7A0E6F55209DA17A8FA105B07414C0E7C527,IMPHASH=272245E2988E1E430500B852C4FB5E18\nParentProcessGuid: {c5d2b969-810a-62b9-0e01-000000001f01}\nParentProcessId: 5248\nParentImage: C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\nParentCommandLine: \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" \nParentUser: THM_AURORA_TEST\\Administrator"
+    ],
+    "winlog.event_id": [
+      "1"
+    ],
+    "process.parent.args": [
+      "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    ],
+    "process.pe.imphash": [
+      "272245e2988e1e430500b852c4fb5e18"
+    ],
+    "event.type": [
+      "start"
+    ],
+    "process.command_line": [
+      "\"cmd.exe\" /c \"echo T1486 - Purelocker Ransom Note > %%USERPROFILE%%\\Desktop\\YOUR_FILES.txt\""
+    ],
+    "winlog.event_data.Product": [
+      "Microsoft® Windows® Operating System"
+    ]
+  }
+}
+
+T1486 - Purelocker Ransom Note
+https://www.bleepingcomputer.com/news/security/purelocker-ransomware-can-lock-files-on-windows-linux-and-macos/
+
+https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1486/T1486.md
+
+For example, if the password for the encrypted archive is "password123", the path for the encrypted archive is "C:\myfiles\secrets.7z", the path for the file to be added is "C:\myfiles\sensitive_data.txt", the command would be:
+
+7z a -p"password123" "C:\myfiles\secrets.7z" "C:\myfiles\sensitive_data.txt"
+
+This will add the sensitive_data.txt file to the secrets.7z archive with password "password123"
+
+“Technology alone cannot protect you.”
+```
+![[Pasted image 20230117135248.png]]
+To detect the creation of the scheduled task, what detection value would be appropriate for the Sigma rule?
+Ensure to include the \ in the answer.
+*\schtasks.exe*
+What was the name of the scheduled task created?
+*spawn*
+What time is this task meant to run?
+*20:10*
+To detect ransomware activity, what logsource category would be appropriate for the Sigma rule?
+The Sigma taxonomy provides a list of log source categories.
+*file_event*
+What is the name of the created file?
+*YOUR_FILES.txt*
+What was the event code associated with the activity?
+*11*
+What were the contents of the created ransomware file?
+Search for an event with the filename as part of the command line.
+*T1486 - Purelocker Ransom Note*
+### Conclusion
+Download Task Files
+In this room, we have gone through the use of Sigma for writing threat detections that can be used to raise alerts within a SOC environment. Additionally, we practised applying these rules to an Elastic Stack environment and extracting information for investigations.
+This room covers a small part of the thought process security analysts should go through while developing their detection engineering frameworks. Download the cheatsheet on this task for a quick recap.
+Answer the questions below
+To more learning!
+
+## Flags / Answers
+- ![Analyst Tuning Rules for different SIEM outputs](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/3ca5f3390de82a626b59a4a02ce2ef1d.png)
+- ![Sigma Syntax template](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/9e7c91812a16cd85cccf3671ff8027ee.png)Following the understanding of using YAML for Sigma rules, the syntax defines various mandatory and optional fields that go into every rule. This can be highlighted using the image:
+- ![Image showing intel on the malicious use of AnyDesk.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/8599f0378042bcfa6680158b3f1ff759.png)Administrators rely on remote tools to ensure devices are configured, patched and maintained. However, your SOC Manager just received and shared intel on how AnyDesk, a legitimate remote tool, can be downloaded and installed silently on a user's machine using the file description on the right-hand side. (Source: [TheDFIRReport](https://twitter.com/TheDFIRReport/status/1423361127472377860?s=20&t=mHiJFnlfWH3cO3XdXEQo_Q)). As a SOC analyst, you have been tasked to analyse the intel and write a Sigma rule to detect the installation of AnyDesk on Windows devices.
+- ![Images showing the use of Uncoder.io to convert a Sigma Rule.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/0ac9b68040fceb58d0aef7731575f81b.gif)
+
+## Notes / Lessons Learned
+[[Tactical Detection]]
+
