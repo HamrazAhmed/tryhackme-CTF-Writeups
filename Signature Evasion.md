@@ -251,3 +251,257 @@ C:\Users\Student\Desktop\Tools>.\ThreatCheck.exe -f C:\Users\Student\Desktop\Bin
 [*] Testing 53402 bytes
 [*] Threat found, splitting
 [*] Testing 51945 bytes
+[*] Threat found, splitting
+[*] Testing 51216 bytes
+[*] Threat found, splitting
+[*] Testing 50852 bytes
+[*] Threat found, splitting
+[*] Testing 50670 bytes
+[*] Threat found, splitting
+[*] Testing 50579 bytes
+[*] Threat found, splitting
+[*] Testing 50533 bytes
+[*] Threat found, splitting
+[*] Testing 50510 bytes
+[*] Threat found, splitting
+[*] Testing 50499 bytes
+[*] Threat found, splitting
+[*] Testing 50493 bytes
+[*] No threat found, increasing size
+[*] Testing 62147 bytes
+[*] Threat found, splitting
+[*] Testing 56320 bytes
+[*] Threat found, splitting
+[*] Testing 53406 bytes
+[*] Threat found, splitting
+[*] Testing 51949 bytes
+[*] Threat found, splitting
+[*] Testing 51221 bytes
+[*] Threat found, splitting
+[*] Testing 50857 bytes
+[*] Threat found, splitting
+[*] Testing 50675 bytes
+[*] Threat found, splitting
+[*] Testing 50584 bytes
+[*] Threat found, splitting
+[*] Testing 50538 bytes
+[*] Threat found, splitting
+[*] Testing 50515 bytes
+[*] Threat found, splitting
+[*] Testing 50504 bytes
+[*] Threat found, splitting
+[*] Testing 50498 bytes
+[*] No threat found, increasing size
+[*] Testing 62150 bytes
+[*] Threat found, splitting
+[*] Testing 56324 bytes
+[*] Threat found, splitting
+[*] Testing 53411 bytes
+[*] Threat found, splitting
+[*] Testing 51954 bytes
+[*] Threat found, splitting
+[*] Testing 51226 bytes
+[*] Threat found, splitting
+[*] Testing 50862 bytes
+[*] Threat found, splitting
+[*] Testing 50680 bytes
+[*] Threat found, splitting
+[*] Testing 50589 bytes
+[*] Threat found, splitting
+[*] Testing 50543 bytes
+[*] Threat found, splitting
+[*] Testing 50520 bytes
+[*] Threat found, splitting
+[*] Testing 50509 bytes
+[*] Threat found, splitting
+[*] Testing 50503 bytes
+[*] Threat found, splitting
+[*] Testing 50500 bytes
+[*] Threat found, splitting
+[!] Identified end of bad bytes at offset 0xC544
+00000000   95 CE 77 FF D5 90 E9 09  00 00 00 3C 7E 5F 66 24   ?IwÿO?é····<~_f$
+00000010   8C 09 80 09 31 C0 E9 09  00 00 00 14 4A C5 E1 9B   ?·?·1Aé·····JÅá?
+00000020   26 A5 81 BE 64 FF 30 90  64 89 20 90 E9 09 00 00   &¥?_dÿ0?d? ?é···
+00000030   00 EF 4F E2 4F 7A FE 36  F1 04 FF D3 90 E9 24 FF   ·ïOâOz_6ñ·ÿO?é$ÿ
+00000040   FF FF E8 E4 FE FF FF FC  E8 8F 00 00 00 60 31 D2   ÿÿèä_ÿÿüè?···`1O
+00000050   89 E5 64 8B 52 30 8B 52  0C 8B 52 14 8B 72 28 0F   ?åd?R0?R·?R·?r(·
+00000060   B7 4A 26 31 FF 31 C0 AC  3C 61 7C 02 2C 20 C1 CF   ·J&1ÿ1A¬<a|·, AI
+00000070   0D 01 C7 49 75 EF 52 8B  52 10 57 8B 42 3C 01 D0   ··ÇIuïR?R·W?B<·D
+00000080   8B 40 78 85 C0 74 4C 01  D0 8B 58 20 01 D3 50 8B   ?@x?AtL·D?X ·OP?
+00000090   48 18 85 C9 74 3C 49 8B  34 8B 01 D6 31 FF 31 C0   H·?Ét<I?4?·Ö1ÿ1A
+000000A0   AC C1 CF 0D 01 C7 38 E0  75 F4 03 7D F8 3B 7D 24   ¬AI··Ç8àuô·}o;}$
+000000B0   75 E0 58 8B 58 24 01 D3  66 8B 0C 4B 8B 58 1C 01   uàX?X$·Of?·K?X··
+000000C0   D3 8B 04 8B 01 D0 89 44  24 24 5B 5B 61 59 5A 51   O?·?·D?D$$[[aYZQ
+000000D0   FF E0 58 5F 5A 8B 12 E9  80 FF FF FF 5D 68 33 32   ÿàX_Z?·é?ÿÿÿ]h32
+000000E0   00 00 68 77 73 32 5F 54  68 4C 77 26 07 FF D5 B8   ··hws2_ThLw&·ÿO,
+000000F0   90 01 00 00 29 C4 54 50  68 29 80 6B 00 FF D5 6A   ?···)ÄTPh)?k·ÿOj
+
+[*] Run time: 731.67s
+```
+At what offset was the end of bad bytes for the file?
+*0xC544*
+### Static Code-Based Signatures
+Once we have identified a troublesome signature we need to decide how we want to deal with it. Depending on the strength and type of signature, it may be broken using simple obfuscation as covered in Obfuscation Principles, or it may require specific investigation and remedy. In this task, we aim to provide several solutions to remedy static signatures present in functions.
+The Layered Obfuscation Taxonomy covers the most reliable solutions as part of the Obfuscating Methods and Obfuscating Classes layer.
+Obfuscating methods
+Obfuscation Method
+Purpose
+Method Proxy
+Creates a proxy method or a replacement object
+Method Scattering/Aggregation
+Combine multiple methods into one or scatter a method into several
+Method Clone
+Create replicas of a method and randomly call each
+Obfuscating Classes
+Obfuscation Method
+Purpose
+Class Hierarchy Flattening
+Create proxies for classes using interfaces
+Class Splitting/Coalescing
+Transfer local variables or instruction groups to another class
+Dropping Modifiers
+Remove class modifiers (public, private) and make all members public
+Looking at the above tables, even though they may use specific technical terms or ideas, we can group them into a core set of agnostic methods applicable to any object or data structure.
+The techniques class splitting/coalescing and method scattering/aggregation can be grouped into an overarching concept of splitting or merging any given OOP (Object-Oriented Programming) function.
+Other techniques such as dropping modifiers or method clone can be grouped into an overarching concept of removing or obscuring identifiable information.
+Splitting and Merging Objects
+The methodology required to split or merge objects is very similar to the objective of concatenation as covered in Obfuscation Principles.
+The premise behind this concept is relatively easy, we are looking to create a new object function that can break the signature while maintaining the previous functionality.
+To provide a more concrete example of this, we can use the well-known case study in Covenant present in the GetMessageFormat string. We will first look at how the solution was implemented then break it down and apply it to the obfuscation taxonomy.
+Original String
+Below is the original string that is detected
+![[Pasted image 20220917123836.png]]
+Obfuscated Method
+Below is the new class used to replace and concatenate the string.
+```text
+public static string GetMessageFormat // Format the public method
+{
+    get // Return the property value
+    {
+        var sb = new StringBuilder(@"{{""GUID"":""{0}"","); // Start the built-in concatenation method
+        sb.Append(@"""Type"":{1},"); // Append substrings onto the string
+        sb.Append(@"""Meta"":""{2}"",");
+        sb.Append(@"""IV"":""{3}"",");
+        sb.Append(@"""EncryptedMessage"":""{4}"",");
+        sb.Append(@"""HMAC"":""{5}""}}");
+        return sb.ToString(); // Return the concatenated string to the class
+    }
+}
+
+string MessageFormat = GetMessageFormat
+```
+Recapping this case study, class splitting is used to create a new class for the local variable to concatenate. We will cover how to recognize when to use a specific method later in this task and throughout the practical challenge.
+Removing and Obscuring Identifiable Information
+The core concept behind removing identifiable information is similar to obscuring variable names as covered in Obfuscation Principles. In this task, we are taking it one step further by specifically applying it to identified signatures in any objects including methods and classes.
+An example of this can be found in Mimikatz where an alert is generated for the string wdigest.dll. This can be solved by replacing the string with any random identifier changed throughout all instances of the string. This can be categorized in the obfuscation taxonomy under the method proxy technique.
+This is almost no different than as discussed in Obfuscation Principles; however, it is applied to a specific situation.
+Using the knowledge you have accrued throughout this task, obfuscate the following PowerShell snippet, using AmsiTrigger to visual signatures.
+![[Pasted image 20220917123956.png]]
+Once sufficiently obfuscated, submit the snippet to the webserver at http://10.10.154.253/challenge-1.html. The file name must be saved as challenge-1.ps1. If correctly obfuscated a flag will appear in an alert pop-up
+![[Pasted image 20220917132507.png]]
+![[Pasted image 20220917132555.png]]
+What flag is found after uploading a properly obfuscated snippet?
+### Static Property-Based Signatures
+Various detection engines or analysts may consider different indicators rather than strings or static signatures to contribute to their hypothesis. Signatures can be attached to several file properties, including file hash, entropy, author, name, or other identifiable information to be used individually or in conjunction. These properties are often used in rule sets such as YARA or Sigma.
+Some properties may be easily manipulated, while others can be more difficult, specifically when dealing with pre-compiled closed-source applications.
+This task will discuss manipulating the file hash and entropy of both open-source and closed-source applications.
+Note: several other properties such as PE headers or module properties can be used as indicators. Because these properties often require an agent or other measures to detect, we will not cover them in this room to keep the focus on signatures.
+File Hashes
+A file hash, also known as a checksum, is used to tag/identify a unique file. They are commonly used to verify a file’s authenticity or its known purpose (malicious or not). File hashes are generally arbitrary to modify and are changed due to any modification to the file.
+If we have access to the source for an application, we can modify any arbitrary section of the code and re-compile it to create a new hash. That solution is straightforward, but what if we need a pre-compiled or signed application?
+When dealing with a signed or closed-source application, we must employ bit-flipping.
+Bit-flipping is a common cryptographic attack that will mutate a given application by flipping and testing each possible bit until it finds a viable bit. By flipping one viable bit, it will change the signature and hash of the application while maintaining all functionality.
+We can use a script to create a bit-flipped list by flipping each bit and creating a new mutated variant (~3000 - 200000 variants). Below is an example of a python bit-flipping implementation.
+```text
+import sys
+
+orig = list(open(sys.argv[1], "rb").read())
+
+i = 0
+while i < len(orig):
+	current = list(orig)
+	current[i] = chr(ord(current[i]) ^ 0xde)
+	path = "%d.exe" % i
+	
+	output = "".join(str(e) for e in current)
+	open(path, "wb").write(output)
+	i += 1
+	
+print("done")
+```
+Once the list is created, we must search for intact unique properties of the file. For example, if we are bit-flipping msbuild, we need to use signtool to search for a file with a useable certificate. This will guarantee that the functionality of the file is not broken, and the application will maintain its signed attribution.
+We can leverage a script to loop through the bit-flipped list and verify functional variants. Below is an example of a batch script implementation.
+```text
+FOR /L %%A IN (1,1,10000) DO (
+	signtool verify /v /a flipped\\%%A.exe
+)
+```
+This technique can be very lucrative, although it can take a long time and will only have a limited period until the hash is discovered. Below is a comparison of the original MSBuild application and the bit-flipped variation.
+Image of WinMD5Free showing the hash of Original.exe
+Entropy
+From IBM, Entropy is defined as “the randomness of the data in a file used to determine whether a file contains hidden data or suspicious scripts.” EDRs and other scanners often leverage entropy to identify potential suspicious files or contribute to an overall malicious score.
+Entropy can be problematic for obfuscated scripts, specifically when obscuring identifiable information such as variables or functions.
+To lower entropy, we can replace random identifiers with randomly selected English words. For example, we may change a variable from q234uf to nature.
+To prove the efficacy of changing identifiers, we can observe how the entropy changes using [CyberChef](https://gchq.github.io/CyberChef/#recipe=Entropy('Shannon%20scale')).
+Below is the Shannon entropy scale for a standard English paragraph.
+Shannon entropy: 4.587362034903882
+Below is the Shannon entropy scale for a small script with random identifiers.
+Shannon entropy: 5.341436973971389
+Depending on the EDR employed, a “suspicious” entropy value is ~ greater than 6.8.
+The difference between a random value and English text will become amplified with a larger file and more occurrences.
+Note that entropy will generally never be used alone and only to support a hypothesis. For example, the entropy for the command pskill and the hivenightmare exploit are almost identical.
+To see entropy in action, let’s look at how an EDR would use it to contribute to threat indicators.
+In the white paper, [An Empirical Assessment of Endpoint Detection and Response Systems against Advanced Persistent Threats Attack Vectors](https://www.mdpi.com/2624-800X/1/3/21/pdf), SentinelOne is shown to detect a DLL due to high entropy, specifically through AES encryption.
+Using CyberChef, obtain the Shannon entropy of the file: C:\Users\Student\Desktop\Binaries\shell.exe.
+You can access cyberchef offline via the attackbox, and you can transfer the file using scp.
+```text
+┌──(kali㉿kali)-[~]
+└─$ python3 /usr/share/doc/python3-impacket/examples/smbserver.py -smb2support -username Student -password TryHackMe! public share
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+[*] Config file parsed
+[*] Config file parsed
+[*] Config file parsed
+[*] Incoming connection (10.10.154.253,51064)
+[*] AUTHENTICATE_MESSAGE (OBF-SERVER\Student,OBF-SERVER)
+[*] User OBF-SERVER\Student authenticated successfully
+[*] Student::OBF-SERVER:aaaaaaaaaaaaaaaa:e5c04d5d4658c35d4500736396755c06:01010000000000008064381dc6cad801c07711a75967de3700000000010010005600480063004c0045004d0079006300030010005600480063004c0045004d00790063000200100059007900470061006b006600670066000400100059007900470061006b00660067006600070008008064381dc6cad80106000400020000000800300030000000000000000000000000200000bd51131311655cede53295373024f999983f87e1e30a8698b059f7551e181e260a001000000000000000000000000000000000000900220063006900660073002f00310030002e00310031002e00380031002e003200320030000000000000000000
+[*] Connecting Share(1:IPC$)
+[*] Connecting Share(2:public)
+[*] AUTHENTICATE_MESSAGE (\,OBF-SERVER)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,OBF-SERVER)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,OBF-SERVER)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,OBF-SERVER)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,OBF-SERVER)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,OBF-SERVER)
+[*] Could not authenticate user!
+[*] AUTHENTICATE_MESSAGE (\,OBF-SERVER)
+[*] Could not authenticate user!
+[*] Disconnecting Share(1:IPC$)
+
+C:\Users\Student>copy "C:\Users\Student\Desktop\Binaries\shell.exe" \\10.11.81.220\public\
+        1 file(s) copied.
+```
+![[Pasted image 20220917135253.png]]
+Rounded to three decimal places, what is the Shannon entropy of the file?
+*6.354*
+### Behavioral Signatures
+Obfuscating functions and properties can achieve a lot with minimal modification. Even after breaking static signatures attached to a file, modern engines may still observe the behavior and functionality of the binary. This presents numerous problems for attackers that cannot be solved with simple obfuscation.
+As covered in Introduction to Anti-Virus, modern anti-virus engines will employ two common methods to detect behavior: observing imports and hooking known malicious calls. While imports, as will be covered in this task, can be easily obfuscated or modified with minimal requirements, hooking requires complex techniques out of scope for this room. Because of the prevalence of API calls specifically, observing these functions can be a significant factor in determining if a file is suspicious, along with other behavioral tests/considerations.
+Before diving too deep into rewriting or importing calls, let’s discuss how API calls are traditionally utilized and imported. We will cover C-based languages first and then briefly cover .NET-based languages later in this task.
+API calls and other functions native to an operating system require a pointer to a function address and a structure to utilize them.
+Structures for functions are simple; they are located in import libraries such as kernel32 or ntdll that store function structures and other core information for Windows.
+The most significant issue to function imports is the function addresses. Obtaining a pointer may seem straightforward, although because of ASLR (Address Space Layout Randomization), function addresses are dynamic and must be found.
+Rather than altering code at runtime, the Windows loader windows.h is employed. At runtime, the loader will map all modules to process address space and list all functions from each. That handles the modules, but how are function addresses assigned?
+One of the most critical functions of the Windows loader is the IAT (Import Address Table). The IAT will store function addresses for all imported functions that can assign a pointer for the function.
+The IAT is stored in the PE (Portable Executable) header IMAGE_OPTIONAL_HEADER and is filled by the Windows loader at runtime. The Windows loader obtains the function addresses or, more precisely, thunks from a pointer table, accessed from an API call or thunk table. Check out the Windows Internals room for more information about the PE structure.
+At a glance, an API is assigned a pointer to a thunk as the function address from the Windows loader. To make this a little more tangible, we can observe an example of the PE dump for a function.
+The import table can provide a lot of insight into the functionality of a binary that can be detrimental to an adversary. But how can we prevent our functions from appearing in the IAT if it is required to assign a function address?
