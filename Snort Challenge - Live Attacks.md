@@ -110,3 +110,115 @@ root@ip-10-10-72-206:/etc/snort/rules# cat local.rules
 # LOCAL RULES
 ```
 ```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+drop tcp any any -> any any (msg:"Drop traffic";sid:100001;rev:1;)
+
+root@ip-10-10-72-206:/etc/snort# cat snort.conf | grep "local.rules"
+include $RULE_PATH/local.rules
+
+root@ip-10-10-72-206:/etc/snort/rules# sudo snort -c /etc/snort/snort.conf -q -Q --daq afpacket -i eth0:eth1 -A full
+
+works but thm based seems disconnected
+
+now adding my pass to user ubuntu to use ssh
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ mkpasswd -m sha-512 Password1234
+$6$k8T7DhT1SA37vAlT$KLkbHcBicXx26F.f3/c1KYKdJb1WrFGe/7U6d5ZfZMwvNotaLi5UUmuVOFpvYPGts2EDHqtLzyoPLIAU18DXB.
+
+root@ip-10-10-252-13:/home/ubuntu# nano /etc/shadow
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh ubuntu@10.10.252.13
+The authenticity of host '10.10.252.13 (10.10.252.13)' can't be established.
+ED25519 key fingerprint is SHA256:e6IKCdjCEQ6wEQpUb7A3ZGGbJLGSADMQ4M3GMxQRAY4.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.252.13' (ED25519) to the list of known hosts.
+ubuntu@10.10.252.13's password: 
+Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.8.0-1038-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Wed Dec  7 16:54:53 UTC 2022
+
+  System load:  1.29               Processes:             222
+  Usage of /:   15.5% of 43.56GB   Users logged in:       0
+  Memory usage: 18%                IPv4 address for eth0: 10.10.252.13
+  Swap usage:   0%                 IPv4 address for eth1: 10.234.0.1
+
+214 updates can be applied immediately.
+107 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+/usr/bin/xhost:  unable to open display ""
+
+yep works, i was disconnected because need to stop :)
+
+now in desktop
+
+THM{81b7fef657f8aaa6e4e200d616738254}
+
+root@ip-10-10-252-13:/home/ubuntu# sudo snort -c /etc/snort/snort.conf -q -Q --daq afpacket -i eth0:eth1 -A console
+
+12/07-17:12:01.751941  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.245.36:46686 -> 10.10.140.29:22
+12/07-17:12:01.937416  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.8.19.103:50570 -> 10.10.252.13:22
+12/07-17:12:02.165726  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.245.36:46688 -> 10.10.140.29:22
+12/07-17:12:02.818343  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.140.29:22 -> 10.10.245.36:46674
+12/07-17:12:02.838699  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.245.36:46690 -> 10.10.140.29:22
+12/07-17:12:03.555909  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.245.36:46678 -> 10.10.140.29:22
+12/07-17:12:03.559298  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.245.36:46692 -> 10.10.140.29:22
+12/07-17:12:03.581693  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.140.29:22 -> 10.10.245.36:46838
+12/07-17:12:03.624598  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.245.36:46836 -> 10.10.140.29:22
+12/07-17:12:03.730228  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.245.36:46822 -> 10.10.140.29:22
+12/07-17:12:03.750497  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.245.36:46842 -> 10.10.140.29:22
+12/07-17:12:04.458028  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.245.36:46826 -> 10.10.140.29:22
+12/07-17:12:04.471911  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.245.36:46824 -> 10.10.140.29:22
+12/07-17:12:04.488151  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.245.36:46846 -> 10.10.140.29:22
+12/07-17:12:04.500340  [Drop] [**] [1:100001:1] Drop traffic [**] [Priority: 0] {TCP} 10.10.245.36:46844 -> 10.10.140.29:22
+```
+What is the name of the service under attack?
+*ssh*
+What is the used protocol/port in the attack?
+*tcp/22*
+### Scenario 2 | Reverse-Shell
+Use the attached VM to finish this task.
+[+] THE NARRATOR
+Good Job! Glad to have you in the team!
+[+] J.A.V.A.
+Congratulations sir. It is inspiring watching you work.
+[+] You
+Thanks team. J.A.V.A. can you do a quick scan for me? We haven't investigated the outbound traffic yet.
+[+] J.A.V.A.
+Yes, sir. Outbound traffic investigation has begun.
+[+] THE NARRATOR
+The outbound traffic? Why?
+[+] YOU
+We have stopped some inbound access attempts, so we didn't let the bad guys get in. How about the bad guys who are already inside? Also, no need to mention the insider risks, huh? The dwell time is still around 1-3 months, and I am quite new here, so it is worth checking the outgoing traffic as well.
+[+] J.A.V.A.
+Sir, persistent outbound traffic is detected. Possibly a reverse shell...
+[+] YOU
+You got it!
+[+] J.A.V.A.
+Sir, you need to observe the traffic with Snort and identify the anomaly first. Then you can create a rule to stop the reverse shell. GOOD LUCK!
+Answer the questions below
+First of all, start Snort in sniffer mode and try to figure out the attack source, service and port.
+Then, write an IPS rule and run Snort in IPS mode to stop the brute-force attack. Once you stop the attack properly, you will have the flag on the desktop!
+Here are a few points to remember:
+Create the rule and test it with "-A console" mode.
+Use "-A full" mode and the default log path to stop the attack.
+Write the correct rule and run the Snort in IPS "-A full" mode.
+Block the traffic at least for a minute and then the flag file will appear on your desktop.
