@@ -6384,3 +6384,6390 @@ TCP Options (3) => NOP NOP TS: 929007210 764073119
 
 12/05-20:06:44.772511 10.10.81.86:22 -> 10.8.19.103:48220
 TCP TTL:64 TOS:0x10 ID:26254 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F961F1  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764074143 929007210 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:44.966138 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32479 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F9624D  Win: 0x772  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929008227 764074143 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:45.796512 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26255 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F9624D  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764075167 929008227 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:45.986032 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32480 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F962A9  Win: 0x772  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929009242 764075167 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:46.820506 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26256 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F962A9  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764076191 929009242 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:47.021711 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32481 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F96305  Win: 0x772  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929010260 764076191 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:47.844553 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26257 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F96305  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764077215 929010260 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:48.036859 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32482 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F96361  Win: 0x772  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929011275 764077215 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:48.868520 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26258 IpLen:20 DgmLen:136 DF
+***AP*** Seq: 0x60F96361  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764078239 929011275 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:48.868620 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26259 IpLen:20 DgmLen:88 DF
+***AP*** Seq: 0x60F963B5  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764078240 929011275 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:49.071228 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32483 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F963B5  Win: 0x772  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929012292 764078239 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:49.071229 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32484 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F963D9  Win: 0x772  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929012292 764078240 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:49.892494 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26260 IpLen:20 DgmLen:136 DF
+***AP*** Seq: 0x60F963D9  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764079263 929012292 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:49.892582 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26261 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F9642D  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764079263 929012292 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:50.090614 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32485 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F9642D  Win: 0x772  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929013310 764079263 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:50.092953 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32486 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F96489  Win: 0x772  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929013310 764079263 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:50.916522 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26262 IpLen:20 DgmLen:192 DF
+***AP*** Seq: 0x60F96489  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764080287 929013310 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:51.117344 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32487 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F96515  Win: 0x786  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929014325 764080287 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:51.940566 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26263 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F96515  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764081311 929014325 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:52.137743 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32488 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F96571  Win: 0x786  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929015342 764081311 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:52.964518 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26264 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F96571  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764082335 929015342 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:53.156854 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32489 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F965CD  Win: 0x786  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929016380 764082335 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:53.988537 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26265 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F965CD  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764083359 929016380 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:54.182036 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32490 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F96629  Win: 0x786  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929017426 764083359 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:55.012497 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26266 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F96629  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764084383 929017426 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:55.207058 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32491 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F96685  Win: 0x786  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929018470 764084383 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:56.036508 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26267 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F96685  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764085407 929018470 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:56.232209 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32492 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F966E1  Win: 0x786  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929019510 764085407 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:57.060531 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26268 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F966E1  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764086431 929019510 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:57.267152 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32493 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F9673D  Win: 0x786  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929020545 764086431 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:58.084542 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26269 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F9673D  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764087455 929020545 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:58.282084 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32494 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F96799  Win: 0x786  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929021577 764087455 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:06:59.108513 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26270 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F96799  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764088479 929021577 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:06:59.303349 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32495 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F967F5  Win: 0x786  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929022609 764088479 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:07:00.132637 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26271 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F967F5  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764089504 929022609 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:07:00.325427 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32496 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F96851  Win: 0x786  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929023636 764089504 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:07:01.156602 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26272 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F96851  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764090527 929023636 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-20:07:01.352135 10.8.19.103:48220 -> 10.10.81.86:22
+TCP TTL:63 TOS:0x10 ID:32497 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xDE6CF092  Ack: 0x60F968AD  Win: 0x786  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 929024666 764090527 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-20:07:02.180507 10.10.81.86:22 -> 10.8.19.103:48220
+TCP TTL:64 TOS:0x10 ID:26273 IpLen:20 DgmLen:144 DF
+***AP*** Seq: 0x60F968AD  Ack: 0xDE6CF092  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 764091551 929024666 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.2108 seconds
+Snort processed 77 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:           77
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      12906496
+  Total allocated space (uordblks):      678144
+  Total free space (fordblks):           108288
+  Topmost releasable block (keepcost):   102304
+===============================================================================
+Packet I/O Totals:
+   Received:           77
+   Analyzed:           77 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:           77 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:           77 (100.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:           77 (100.000%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:           37 ( 48.052%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:           77
+===============================================================================
+Snort exiting
+
+root@ip-10-10-81-86:/home/ubuntu/Desktop/Task-Exercises# sudo tcpdump -r snort.log.1670270789 -ntc 10
+reading from file snort.log.1670270789, link-type EN10MB (Ethernet)
+IP 10.10.81.86.22 > 10.8.19.103.48220: Flags [P.], seq 1626954005:1626954065, ack 3731681426, win 468, options [nop,nop,TS val 764058807 ecr 928992682], length 60
+IP 10.10.81.86.22 > 10.8.19.103.48220: Flags [P.], seq 60:632, ack 1, win 468, options [nop,nop,TS val 764058808 ecr 928992682], length 572
+IP 10.8.19.103.48220 > 10.10.81.86.22: Flags [.], ack 4294966988, win 1806, options [nop,nop,TS val 928992898 ecr 764058755], length 0
+IP 10.8.19.103.48220 > 10.10.81.86.22: Flags [.], ack 4294967128, win 1826, options [nop,nop,TS val 928992910 ecr 764058767], length 0
+IP 10.8.19.103.48220 > 10.10.81.86.22: Flags [.], ack 4294967188, win 1826, options [nop,nop,TS val 928992943 ecr 764058781], length 0
+IP 10.8.19.103.48220 > 10.10.81.86.22: Flags [.], ack 0, win 1826, options [nop,nop,TS val 928992943 ecr 764058782], length 0
+IP 10.8.19.103.48220 > 10.10.81.86.22: Flags [.], ack 60, win 1826, options [nop,nop,TS val 928992950 ecr 764058807], length 0
+IP 10.8.19.103.48220 > 10.10.81.86.22: Flags [.], ack 632, win 1846, options [nop,nop,TS val 928992951 ecr 764058808], length 0
+IP 10.10.81.86.22 > 10.8.19.103.48220: Flags [P.], seq 632:828, ack 1, win 468, options [nop,nop,TS val 764059807 ecr 928992951], length 196
+IP 10.10.81.86.22 > 10.8.19.103.48220: Flags [P.], seq 828:1024, ack 1, win 468, options [nop,nop,TS val 764059808 ecr 928992951], length 196
+
+root@ip-10-10-81-86:/home/ubuntu/Desktop/Task-Exercises# sudo tcpdump -r snort.log.1670270789 -ntc 5
+reading from file snort.log.1670270789, link-type EN10MB (Ethernet)
+IP 10.10.81.86.22 > 10.8.19.103.48220: Flags [P.], seq 1626954005:1626954065, ack 3731681426, win 468, options [nop,nop,TS val 764058807 ecr 928992682], length 60
+IP 10.10.81.86.22 > 10.8.19.103.48220: Flags [P.], seq 60:632, ack 1, win 468, options [nop,nop,TS val 764058808 ecr 928992682], length 572
+IP 10.8.19.103.48220 > 10.10.81.86.22: Flags [.], ack 4294966988, win 1806, options [nop,nop,TS val 928992898 ecr 764058755], length 0
+IP 10.8.19.103.48220 > 10.10.81.86.22: Flags [.], ack 4294967128, win 1826, options [nop,nop,TS val 928992910 ecr 764058767], length 0
+IP 10.8.19.103.48220 > 10.10.81.86.22: Flags [.], ack 4294967188, win 1826, options [nop,nop,TS val 928992943 ecr 764058781], length 0
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises# sudo snort -r snort.log.1670274953 -x
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1670274953".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=6884)
+12/05-21:15:53.466091 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54712 IpLen:20 DgmLen:112 DF
+***AP*** Seq: 0xE0703FD1  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193525944 3816246954 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:53.466231 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54713 IpLen:20 DgmLen:136 DF
+***AP*** Seq: 0xE070400D  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193525944 3816246954 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:53.466257 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54714 IpLen:20 DgmLen:448 DF
+***AP*** Seq: 0xE0704061  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193525944 3816246954 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:53.466294 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54715 IpLen:20 DgmLen:216 DF
+***AP*** Seq: 0xE07041ED  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193525944 3816246954 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.573987 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8575 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0703F29  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247159 4193525863 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.623821 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8576 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0703F65  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247206 4193525910 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.624999 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8577 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0703FD1  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247209 4193525912 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.664128 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8578 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE070400D  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247242 4193525944 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.664129 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8579 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0704061  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247242 4193525944 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.664129 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8580 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE07041ED  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247242 4193525944 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.664129 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8581 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0704291  Win: 0x1F4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247242 4193525944 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:53.709713 10.10.52.242:55678 -> 91.189.91.48:443
+TCP TTL:64 TOS:0x0 ID:56607 IpLen:20 DgmLen:60 DF
+******S* Seq: 0x5FB4BE54  Ack: 0x0  Win: 0xF507  TcpLen: 40
+TCP Options (5) => MSS: 8961 SackOK TS: 1868606612 0 NOP WS: 7 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:54.458068 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54716 IpLen:20 DgmLen:248 DF
+***AP*** Seq: 0xE0704291  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193526936 3816247242 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:54.458093 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54717 IpLen:20 DgmLen:296 DF
+***AP*** Seq: 0xE0704355  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193526936 3816247242 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:54.654231 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8582 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0704355  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816248224 4193526936 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:54.654231 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8583 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0704449  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816248224 4193526936 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:54.713834 10.10.52.242:55678 -> 91.189.91.48:443
+TCP TTL:64 TOS:0x0 ID:56608 IpLen:20 DgmLen:60 DF
+******S* Seq: 0x5FB4BE54  Ack: 0x0  Win: 0xF507  TcpLen: 40
+TCP Options (5) => MSS: 8961 SackOK TS: 1868607616 0 NOP WS: 7 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:55.482091 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54718 IpLen:20 DgmLen:192 DF
+***AP*** Seq: 0xE0704449  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193527960 3816248224 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.540 seconds
+Snort processed 18 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:           18
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      12906496
+  Total allocated space (uordblks):      678144
+  Total free space (fordblks):           108288
+  Topmost releasable block (keepcost):   102304
+===============================================================================
+Packet I/O Totals:
+   Received:           18
+   Analyzed:           18 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:           18 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:           18 (100.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:           18 (100.000%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            9 ( 50.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:           18
+===============================================================================
+Snort exiting
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises# sudo snort -r snort.log.1670274953 icmp
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Snort BPF option: icmp
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1670274953".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=6891)
+===============================================================================
+Run time for packet processing was 0.44 seconds
+Snort processed 0 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:            0
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      12906496
+  Total allocated space (uordblks):      679296
+  Total free space (fordblks):           107136
+  Topmost releasable block (keepcost):   99456
+===============================================================================
+Packet I/O Totals:
+   Received:            0
+   Analyzed:            0 (  0.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:            0 (  0.000%)
+       VLAN:            0 (  0.000%)
+        IP4:            0 (  0.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:            0 (  0.000%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:            0
+===============================================================================
+Snort exiting
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises# sudo snort -r snort.log.1670274953 tcp
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Snort BPF option: tcp
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1670274953".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=6898)
+12/05-21:15:53.466091 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54712 IpLen:20 DgmLen:112 DF
+***AP*** Seq: 0xE0703FD1  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193525944 3816246954 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:53.466231 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54713 IpLen:20 DgmLen:136 DF
+***AP*** Seq: 0xE070400D  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193525944 3816246954 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:53.466257 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54714 IpLen:20 DgmLen:448 DF
+***AP*** Seq: 0xE0704061  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193525944 3816246954 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:53.466294 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54715 IpLen:20 DgmLen:216 DF
+***AP*** Seq: 0xE07041ED  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193525944 3816246954 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.573987 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8575 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0703F29  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247159 4193525863 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.623821 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8576 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0703F65  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247206 4193525910 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.624999 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8577 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0703FD1  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247209 4193525912 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.664128 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8578 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE070400D  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247242 4193525944 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.664129 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8579 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0704061  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247242 4193525944 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.664129 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8580 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE07041ED  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247242 4193525944 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.664129 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8581 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0704291  Win: 0x1F4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247242 4193525944 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:53.709713 10.10.52.242:55678 -> 91.189.91.48:443
+TCP TTL:64 TOS:0x0 ID:56607 IpLen:20 DgmLen:60 DF
+******S* Seq: 0x5FB4BE54  Ack: 0x0  Win: 0xF507  TcpLen: 40
+TCP Options (5) => MSS: 8961 SackOK TS: 1868606612 0 NOP WS: 7 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:54.458068 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54716 IpLen:20 DgmLen:248 DF
+***AP*** Seq: 0xE0704291  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193526936 3816247242 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:54.458093 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54717 IpLen:20 DgmLen:296 DF
+***AP*** Seq: 0xE0704355  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193526936 3816247242 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:54.654231 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8582 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0704355  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816248224 4193526936 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:54.654231 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8583 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0704449  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816248224 4193526936 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:54.713834 10.10.52.242:55678 -> 91.189.91.48:443
+TCP TTL:64 TOS:0x0 ID:56608 IpLen:20 DgmLen:60 DF
+******S* Seq: 0x5FB4BE54  Ack: 0x0  Win: 0xF507  TcpLen: 40
+TCP Options (5) => MSS: 8961 SackOK TS: 1868607616 0 NOP WS: 7 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:55.482091 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54718 IpLen:20 DgmLen:192 DF
+***AP*** Seq: 0xE0704449  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193527960 3816248224 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.547 seconds
+Snort processed 18 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:           18
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      12906496
+  Total allocated space (uordblks):      680400
+  Total free space (fordblks):           106032
+  Topmost releasable block (keepcost):   94272
+===============================================================================
+Packet I/O Totals:
+   Received:           18
+   Analyzed:           18 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:           18 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:           18 (100.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:           18 (100.000%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            9 ( 50.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:           18
+===============================================================================
+Snort exiting
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises# sudo snort -r snort.log.1670274953 'udp and port 53'
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Snort BPF option: udp and port 53
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1670274953".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=6906)
+===============================================================================
+Run time for packet processing was 0.42 seconds
+Snort processed 0 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:            0
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      12906496
+  Total allocated space (uordblks):      680416
+  Total free space (fordblks):           106016
+  Topmost releasable block (keepcost):   85984
+===============================================================================
+Packet I/O Totals:
+   Received:            0
+   Analyzed:            0 (  0.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:            0 (  0.000%)
+       VLAN:            0 (  0.000%)
+        IP4:            0 (  0.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:            0 (  0.000%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:            0
+===============================================================================
+Snort exiting
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises# sudo snort -dvr snort.log.1670274953 -n 10
+Exiting after 10 packets
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1670274953".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=6913)
+12/05-21:15:53.466091 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54712 IpLen:20 DgmLen:112 DF
+***AP*** Seq: 0xE0703FD1  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193525944 3816246954 
+1A A4 69 6D BE D8 5E B5 AA 80 94 D8 9C 46 02 A4  ..im..^......F..
+6B 5B 80 D6 5E F3 6F F1 93 5C 61 04 E0 55 A6 45  k[..^.o..\a..U.E
+66 CA B2 1C 43 30 70 AD 84 E1 52 6B D0 10 86 59  f...C0p...Rk...Y
+DF 85 6B 73 E4 76 11 58 77 2D D0 20              ..ks.v.Xw-. 
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:53.466231 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54713 IpLen:20 DgmLen:136 DF
+***AP*** Seq: 0xE070400D  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193525944 3816246954 
+F9 73 C1 09 00 D0 31 75 DD 39 31 90 AB D8 F0 A3  .s....1u.91.....
+EC 76 2F C8 69 E0 84 74 B9 43 0E 4C C9 9A 1B 77  .v/.i..t.C.L...w
+BF C0 88 40 15 1C 1B E9 3C 82 94 CD 02 06 F5 7F  ...@....<.......
+97 7D BF 66 33 9F F7 0A 28 0A 71 36 85 9A E8 FA  .}.f3...(.q6....
+02 A7 C4 77 F2 4D 9B 43 1E 6B C9 B2 B1 1A 58 8E  ...w.M.C.k....X.
+EE 39 E0 37                                      .9.7
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:53.466257 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54714 IpLen:20 DgmLen:448 DF
+***AP*** Seq: 0xE0704061  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193525944 3816246954 
+6A F3 60 0F 0B 01 B6 19 58 50 0D 8F 8A 17 38 ED  j.`.....XP....8.
+6F A8 3B C7 8D 0E C6 69 1C 54 14 DB 62 55 8D 47  o.;....i.T..bU.G
+32 49 C2 B8 1E C1 57 0D C5 24 DD 3F 2E 1A E0 94  2I....W..$.?....
+C8 82 C1 82 8E 74 1C F8 18 3B 41 5A 16 01 BE 90  .....t...;AZ....
+7F 5D 5A 05 AD F7 77 91 53 81 2C 0F B0 F2 C8 2D  .]Z...w.S.,....-
+AE D2 1A 51 91 C4 2E 06 5E E8 DC 1C AA 00 74 4A  ...Q....^.....tJ
+7D D7 1D 1B 7F 1C 2E 18 16 50 50 79 8E 76 CE 19  }........PPy.v..
+02 15 20 0E F1 0C 02 ED 01 9F 2C 08 1C 6A 78 00  .. .......,..jx.
+37 48 22 EE 15 79 04 E0 71 6A 7C 16 BC 02 2D 26  7H"..y..qj|...-&
+C7 00 50 97 45 2D 0E 0D FF 41 30 D6 65 7B 5E 65  ..P.E-...A0.e{^e
+70 F0 41 7B 69 54 4A E2 46 D0 B6 85 C3 54 06 1C  p.A{iTJ.F....T..
+91 D4 95 36 07 B3 98 06 2C AE BA 88 A8 FF 14 20  ...6....,...... 
+9A FD 12 D2 6C B9 63 D3 BE 62 69 D6 9D 11 DD 2D  ....l.c..bi....-
+F1 14 70 2C 06 B3 B1 EE 17 A5 EF 29 E2 70 56 5B  ..p,.......).pV[
+0C 0C 41 A5 1A 49 B4 BA 6B 6B 62 56 36 EA 1C 5C  ..A..I..kkbV6..\
+A6 ED D4 A5 24 00 F8 58 D5 BA CD 5A E3 FF 1B 67  ....$..X...Z...g
+3D BE 79 19 00 CC 54 4D F9 66 5D 7D EC 55 FA E9  =.y...TM.f]}.U..
+14 22 3F FB 6E 40 9C 6E 5E 04 21 7D 1C 8F 2C B0  ."?.n@.n^.!}..,.
+61 D5 5A 78 1D 16 D3 AB FC 3E BE E8 D0 B1 1D CA  a.Zx.....>......
+71 8D 84 00 BB 24 67 D6 D9 6A 88 45 99 F6 71 65  q....$g..j.E..qe
+15 77 D6 64 0C 54 21 20 2D 03 9A F1 F3 78 9A 05  .w.d.T! -....x..
+38 DE 98 EB EA 48 CF 24 7D A8 79 7A 05 43 DE A3  8....H.$}.yz.C..
+30 1A DA 5D 47 26 9E 3A D4 DE 63 B3 02 16 49 33  0..]G&.:..c...I3
+C0 AE 8E 48 A4 2B E2 AF 15 FE 2A 68 31 64 CD 04  ...H.+....*h1d..
+33 E8 42 AE 5A 00 B2 90 66 A2 3B 9F              3.B.Z...f.;.
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+12/05-21:15:53.466294 10.10.52.242:22 -> 10.8.19.103:49618
+TCP TTL:64 TOS:0x10 ID:54715 IpLen:20 DgmLen:216 DF
+***AP*** Seq: 0xE07041ED  Ack: 0xBD7F8804  Win: 0x1D4  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 4193525944 3816246954 
+39 A6 3A B8 0A D0 CC 1C 46 E0 34 07 16 C3 6B 58  9.:.....F.4...kX
+9E 4C 32 AE 7B B4 D4 C4 BB EC CC 61 07 27 1C B7  .L2.{......a.'..
+EA 4D BD 12 34 EA 40 4E B4 F0 8C 86 F2 89 3A B8  .M..4.@N......:.
+98 27 0F CB 1E 9C C3 66 D5 CB 32 E0 B6 5C 89 55  .'.....f..2..\.U
+60 03 39 8D B3 26 50 92 16 8E 82 E8 04 27 C4 52  `.9..&P......'.R
+7A 49 85 A4 97 23 4D 16 24 47 AA 8E 3B 8F A9 D7  zI...#M.$G..;...
+D0 44 68 55 B0 90 75 46 FB 23 F6 D2 AF B3 A7 2F  .DhU..uF.#...../
+71 D0 28 C8 22 2D 74 E6 9B 4B F5 02 38 C3 F9 75  q.(."-t..K..8..u
+23 75 F4 ED B5 71 9B C3 0F B9 D2 A0 69 E5 05 06  #u...q......i...
+C7 0F EC 2F 45 13 D5 38 26 19 53 06 D9 76 14 C7  .../E..8&.S..v..
+80 93 21 5A                                      ..!Z
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.573987 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8575 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0703F29  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247159 4193525863 
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.623821 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8576 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0703F65  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247206 4193525910 
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.624999 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8577 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0703FD1  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247209 4193525912 
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.664128 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8578 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE070400D  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247242 4193525944 
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.664129 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8579 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE0704061  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247242 4193525944 
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/05-21:15:53.664129 10.8.19.103:49618 -> 10.10.52.242:22
+TCP TTL:63 TOS:0x10 ID:8580 IpLen:20 DgmLen:52 DF
+***A**** Seq: 0xBD7F8804  Ack: 0xE07041ED  Win: 0x1F5  TcpLen: 32
+TCP Options (3) => NOP NOP TS: 3816247242 4193525944 
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.461 seconds
+Snort processed 10 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:           10
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      13180928
+  Total allocated space (uordblks):      678144
+  Total free space (fordblks):           108288
+  Topmost releasable block (keepcost):   102304
+===============================================================================
+Packet I/O Totals:
+   Received:           10
+   Analyzed:           10 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:           10 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:           10 (100.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:           10 (100.000%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            4 ( 40.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:           10
+===============================================================================
+Snort exiting
+```
+Investigate the traffic with the default configuration file with ASCII mode.
+sudo snort -dev -K ASCII -l .
+Execute the traffic generator script and choose "TASK-6 Exercise". Wait until the traffic ends, then stop the Snort instance. Now analyse the output summary and answer the question.
+sudo ./traffic-generator.sh
+Now, you should have the logs in the current directory. Navigate to folder "145.254.160.237". What is the source port used to connect port 53?
+You can re-generate the traffic if the expected log is not generated. "sudo ls" can help you! Check the "Logfile Ownership" part in this task to avoid the "permission denied" error.
+![[Pasted image 20221205162718.png]]
+```text
+ubuntu@ip-10-10-52-242:~/Desktop/Task-Exercises$ sudo snort -dev -K ASCII -l .
+Running in packet logging mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Log directory = .
+pcap DAQ configured to passive.
+Acquiring network traffic from "eth0".
+Decoding Ethernet
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=7113)
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+(snort_decoder) WARNING: IP dgm len > captured len
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+^C*** Caught Int-Signal
+WARNING: No preprocessors configured for policy 0.
+===============================================================================
+Run time for packet processing was 45.79621 seconds
+Snort processed 1533 packets.
+Snort ran for 0 days 0 hours 0 minutes 45 seconds
+   Pkts/sec:           34
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      13180928
+  Total allocated space (uordblks):      678528
+  Total free space (fordblks):           107904
+  Topmost releasable block (keepcost):   107040
+===============================================================================
+Packet I/O Totals:
+   Received:         1559
+   Analyzed:         1533 ( 98.332%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:           26 (  1.668%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:         1533 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:         1527 ( 99.609%)
+       Frag:            0 (  0.000%)
+       ICMP:           68 (  4.436%)
+        UDP:            4 (  0.261%)
+        TCP:         1362 ( 88.845%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            6 (  0.391%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:           93 (  6.067%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:           93 (  6.067%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:          530 ( 34.573%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:         1533
+===============================================================================
+Snort exiting
+
+ubuntu@ip-10-10-52-242:~/Desktop/Task-Exercises$ sudo ./traffic-generator.sh
+```
+```text
+# Option “-e” is deprecated and might be removed in a later version of gnome-terminal.
+```
+```text
+# Use “-- ” to terminate the options and put the command line to execute after it.
+
+ubuntu@ip-10-10-52-242:~/Desktop/Task-Exercises$ ls
+10.10.52.242  142.250.187.110  172.67.27.10     Config-Sample   PACKET_NONIP
+10.100.1.202  145.254.160.237  192.168.175.129  Exercise-Files  traffic-generator.sh
+ubuntu@ip-10-10-52-242:~/Desktop/Task-Exercises$ cd 145.254.160.237/
+bash: cd: 145.254.160.237/: Permission denied
+ubuntu@ip-10-10-52-242:~/Desktop/Task-Exercises$ sudo ls
+10.10.52.242  142.250.187.110  172.67.27.10	Config-Sample	PACKET_NONIP
+10.100.1.202  145.254.160.237  192.168.175.129	Exercise-Files	traffic-generator.sh
+
+ubuntu@ip-10-10-52-242:~/Desktop/Task-Exercises$ sudo chown ubuntu -R 145.254.160.237/
+ubuntu@ip-10-10-52-242:~/Desktop/Task-Exercises$ cd 145.254.160.237/
+ubuntu@ip-10-10-52-242:~/Desktop/Task-Exercises/145.254.160.237$ ls
+TCP:3371-80  TCP:3372-80  UDP:3009-53
+```
+*3009*
+Use snort.log.1640048004
+Read the snort.log file with Snort; what is the IP ID of the 10th packet?
+snort -r snort.log.1640048004 -n 10
+-n helps to analyse the "n" number of packets. You can view the IP with sniffing mode parameters -v, -d, -e or -X.
+```text
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises# cd Exercise-Files/
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files# ls
+TASK-5  TASK-6  TASK-7  TASK-8  TASK-9
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files# cd TASK-6
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-6# ls
+snort.log.1640048004
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-6# snort -r snort.log.1640048004 -n 10
+Exiting after 10 packets
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1640048004".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=7165)
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:07.311224 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3905 IpLen:20 DgmLen:48 DF
+******S* Seq: 0x38AFFE13  Ack: 0x0  Win: 0x2238  TcpLen: 28
+TCP Options (4) => MSS: 1460 NOP NOP SackOK 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.222534 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:0 IpLen:20 DgmLen:48 DF
+***A**S* Seq: 0x114C618B  Ack: 0x38AFFE14  Win: 0x16D0  TcpLen: 28
+TCP Options (4) => MSS: 1380 NOP NOP SackOK 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.222534 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3908 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFE14  Ack: 0x114C618C  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.222534 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3909 IpLen:20 DgmLen:519 DF
+***AP*** Seq: 0x38AFFE14  Ack: 0x114C618C  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.783340 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49310 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x114C618C  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.993643 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49311 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C618C  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.123830 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3910 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114C66F0  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.123830 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49312 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C66F0  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.324118 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3911 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114C6C54  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.754737 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49313 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C6C54  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.400 seconds
+Snort processed 10 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:           10
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      12906496
+  Total allocated space (uordblks):      678144
+  Total free space (fordblks):           108288
+  Topmost releasable block (keepcost):   102304
+===============================================================================
+Packet I/O Totals:
+   Received:           10
+   Analyzed:           10 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:           10 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:           10 (100.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:           10 (100.000%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:           10
+===============================================================================
+Snort exiting
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.754737 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49313 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C6C54  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+
+ID:49313
+```
+*49313*
+Read the "snort.log.1640048004" file with Snort; what is the referer of the 4th packet?
+"-X" helps you to display the full packet details.
+```text
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-6# snort -r snort.log.1640048004 -n 4 -X
+Exiting after 4 packets
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1640048004".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=7174)
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:07.311224 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3905 IpLen:20 DgmLen:48 DF
+******S* Seq: 0x38AFFE13  Ack: 0x0  Win: 0x2238  TcpLen: 28
+TCP Options (4) => MSS: 1460 NOP NOP SackOK 
+0x0000: FE FF 20 00 01 00 00 00 01 00 00 00 08 00 45 00  .. ...........E.
+0x0010: 00 30 0F 41 40 00 80 06 91 EB 91 FE A0 ED 41 D0  .0.A@.........A.
+0x0020: E4 DF 0D 2C 00 50 38 AF FE 13 00 00 00 00 70 02  ...,.P8.......p.
+0x0030: 22 38 C3 0C 00 00 02 04 05 B4 01 01 04 02        "8............
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.222534 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:0 IpLen:20 DgmLen:48 DF
+***A**S* Seq: 0x114C618B  Ack: 0x38AFFE14  Win: 0x16D0  TcpLen: 28
+TCP Options (4) => MSS: 1380 NOP NOP SackOK 
+0x0000: 00 00 01 00 00 00 FE FF 20 00 01 00 08 00 45 00  ........ .....E.
+0x0010: 00 30 00 00 40 00 2F 06 F2 2C 41 D0 E4 DF 91 FE  .0..@./..,A.....
+0x0020: A0 ED 00 50 0D 2C 11 4C 61 8B 38 AF FE 14 70 12  ...P.,.La.8...p.
+0x0030: 16 D0 5B DC 00 00 02 04 05 64 01 01 04 02        ..[......d....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.222534 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3908 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFE14  Ack: 0x114C618C  Win: 0x25BC  TcpLen: 20
+0x0000: FE FF 20 00 01 00 00 00 01 00 00 00 08 00 45 00  .. ...........E.
+0x0010: 00 28 0F 44 40 00 80 06 91 F0 91 FE A0 ED 41 D0  .(.D@.........A.
+0x0020: E4 DF 0D 2C 00 50 38 AF FE 14 11 4C 61 8C 50 10  ...,.P8....La.P.
+0x0030: 25 BC 79 64 00 00                                %.yd..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.222534 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3909 IpLen:20 DgmLen:519 DF
+***AP*** Seq: 0x38AFFE14  Ack: 0x114C618C  Win: 0x25BC  TcpLen: 20
+0x0000: FE FF 20 00 01 00 00 00 01 00 00 00 08 00 45 00  .. ...........E.
+0x0010: 02 07 0F 45 40 00 80 06 90 10 91 FE A0 ED 41 D0  ...E@.........A.
+0x0020: E4 DF 0D 2C 00 50 38 AF FE 14 11 4C 61 8C 50 18  ...,.P8....La.P.
+0x0030: 25 BC A9 58 00 00 47 45 54 20 2F 64 6F 77 6E 6C  %..X..GET /downl
+0x0040: 6F 61 64 2E 68 74 6D 6C 20 48 54 54 50 2F 31 2E  oad.html HTTP/1.
+0x0050: 31 0D 0A 48 6F 73 74 3A 20 77 77 77 2E 65 74 68  1..Host: www.eth
+0x0060: 65 72 65 61 6C 2E 63 6F 6D 0D 0A 55 73 65 72 2D  ereal.com..User-
+0x0070: 41 67 65 6E 74 3A 20 4D 6F 7A 69 6C 6C 61 2F 35  Agent: Mozilla/5
+0x0080: 2E 30 20 28 57 69 6E 64 6F 77 73 3B 20 55 3B 20  .0 (Windows; U; 
+0x0090: 57 69 6E 64 6F 77 73 20 4E 54 20 35 2E 31 3B 20  Windows NT 5.1; 
+0x00A0: 65 6E 2D 55 53 3B 20 72 76 3A 31 2E 36 29 20 47  en-US; rv:1.6) G
+0x00B0: 65 63 6B 6F 2F 32 30 30 34 30 31 31 33 0D 0A 41  ecko/20040113..A
+0x00C0: 63 63 65 70 74 3A 20 74 65 78 74 2F 78 6D 6C 2C  ccept: text/xml,
+0x00D0: 61 70 70 6C 69 63 61 74 69 6F 6E 2F 78 6D 6C 2C  application/xml,
+0x00E0: 61 70 70 6C 69 63 61 74 69 6F 6E 2F 78 68 74 6D  application/xhtm
+0x00F0: 6C 2B 78 6D 6C 2C 74 65 78 74 2F 68 74 6D 6C 3B  l+xml,text/html;
+0x0100: 71 3D 30 2E 39 2C 74 65 78 74 2F 70 6C 61 69 6E  q=0.9,text/plain
+0x0110: 3B 71 3D 30 2E 38 2C 69 6D 61 67 65 2F 70 6E 67  ;q=0.8,image/png
+0x0120: 2C 69 6D 61 67 65 2F 6A 70 65 67 2C 69 6D 61 67  ,image/jpeg,imag
+0x0130: 65 2F 67 69 66 3B 71 3D 30 2E 32 2C 2A 2F 2A 3B  e/gif;q=0.2,*/*;
+0x0140: 71 3D 30 2E 31 0D 0A 41 63 63 65 70 74 2D 4C 61  q=0.1..Accept-La
+0x0150: 6E 67 75 61 67 65 3A 20 65 6E 2D 75 73 2C 65 6E  nguage: en-us,en
+0x0160: 3B 71 3D 30 2E 35 0D 0A 41 63 63 65 70 74 2D 45  ;q=0.5..Accept-E
+0x0170: 6E 63 6F 64 69 6E 67 3A 20 67 7A 69 70 2C 64 65  ncoding: gzip,de
+0x0180: 66 6C 61 74 65 0D 0A 41 63 63 65 70 74 2D 43 68  flate..Accept-Ch
+0x0190: 61 72 73 65 74 3A 20 49 53 4F 2D 38 38 35 39 2D  arset: ISO-8859-
+0x01A0: 31 2C 75 74 66 2D 38 3B 71 3D 30 2E 37 2C 2A 3B  1,utf-8;q=0.7,*;
+0x01B0: 71 3D 30 2E 37 0D 0A 4B 65 65 70 2D 41 6C 69 76  q=0.7..Keep-Aliv
+0x01C0: 65 3A 20 33 30 30 0D 0A 43 6F 6E 6E 65 63 74 69  e: 300..Connecti
+0x01D0: 6F 6E 3A 20 6B 65 65 70 2D 61 6C 69 76 65 0D 0A  on: keep-alive..
+0x01E0: 52 65 66 65 72 65 72 3A 20 68 74 74 70 3A 2F 2F  Referer: http://
+0x01F0: 77 77 77 2E 65 74 68 65 72 65 61 6C 2E 63 6F 6D  www.ethereal.com
+0x0200: 2F 64 65 76 65 6C 6F 70 6D 65 6E 74 2E 68 74 6D  /development.htm
+0x0210: 6C 0D 0A 0D 0A                                   l....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.278 seconds
+Snort processed 4 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:            4
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      13213696
+  Total allocated space (uordblks):      678144
+  Total free space (fordblks):           108288
+  Topmost releasable block (keepcost):   102304
+===============================================================================
+Packet I/O Totals:
+   Received:            4
+   Analyzed:            4 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:            4 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:            4 (100.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:            4 (100.000%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:            4
+===============================================================================
+Snort exiting
+
+http://www.ethereal.com/development.html
+```
+*http://www.ethereal.com/development.html*
+Read the "snort.log.1640048004" file with Snort; what is the Ack number of the 8th packet?
+```text
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-6# snort -r snort.log.1640048004 -n 8
+Exiting after 8 packets
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1640048004".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=7182)
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:07.311224 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3905 IpLen:20 DgmLen:48 DF
+******S* Seq: 0x38AFFE13  Ack: 0x0  Win: 0x2238  TcpLen: 28
+TCP Options (4) => MSS: 1460 NOP NOP SackOK 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.222534 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:0 IpLen:20 DgmLen:48 DF
+***A**S* Seq: 0x114C618B  Ack: 0x38AFFE14  Win: 0x16D0  TcpLen: 28
+TCP Options (4) => MSS: 1380 NOP NOP SackOK 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.222534 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3908 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFE14  Ack: 0x114C618C  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.222534 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3909 IpLen:20 DgmLen:519 DF
+***AP*** Seq: 0x38AFFE14  Ack: 0x114C618C  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.783340 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49310 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x114C618C  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.993643 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49311 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C618C  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.123830 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3910 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114C66F0  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.123830 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49312 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C66F0  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.288 seconds
+Snort processed 8 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:            8
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      12906496
+  Total allocated space (uordblks):      678144
+  Total free space (fordblks):           108288
+  Topmost releasable block (keepcost):   102304
+===============================================================================
+Packet I/O Totals:
+   Received:            8
+   Analyzed:            8 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:            8 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:            8 (100.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:            8 (100.000%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:            8
+===============================================================================
+Snort exiting
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.123830 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49312 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C66F0  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+
+ Ack: 0x38AFFFF3
+```
+*0x38AFFFF3*
+Read the "snort.log.1640048004" file with Snort; what is the number of the "TCP port 80" packets?
+BPF filters will help you to filter the log file. 'tcp and port 80'
+```text
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-6# snort -r snort.log.1640048004 'tcp and port 80'
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Snort BPF option: tcp and port 80
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1640048004".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=7190)
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:07.311224 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3905 IpLen:20 DgmLen:48 DF
+******S* Seq: 0x38AFFE13  Ack: 0x0  Win: 0x2238  TcpLen: 28
+TCP Options (4) => MSS: 1460 NOP NOP SackOK 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.222534 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:0 IpLen:20 DgmLen:48 DF
+***A**S* Seq: 0x114C618B  Ack: 0x38AFFE14  Win: 0x16D0  TcpLen: 28
+TCP Options (4) => MSS: 1380 NOP NOP SackOK 
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.222534 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3908 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFE14  Ack: 0x114C618C  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.222534 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3909 IpLen:20 DgmLen:519 DF
+***AP*** Seq: 0x38AFFE14  Ack: 0x114C618C  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.783340 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49310 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x114C618C  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:08.993643 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49311 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C618C  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.123830 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3910 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114C66F0  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.123830 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49312 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C66F0  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.324118 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3911 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114C6C54  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.754737 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49313 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C6C54  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.864896 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49314 IpLen:20 DgmLen:1420 DF
+***AP*** Seq: 0x114C71B8  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.864896 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3912 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114C771C  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:09.945011 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49315 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C771C  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:10.125270 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3914 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114C7C80  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:10.205385 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49316 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C7C80  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:10.295515 145.254.160.237:3371 -> 216.239.59.99:80
+TCP TTL:128 TOS:0x0 ID:3917 IpLen:20 DgmLen:761 DF
+***AP*** Seq: 0x36C21E28  Ack: 0x2E6B5384  Win: 0x2238  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:10.325558 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3918 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114C81E4  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:10.686076 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49317 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C81E4  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:10.806249 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49318 IpLen:20 DgmLen:1420 DF
+***AP*** Seq: 0x114C8748  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:10.806249 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3919 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114C8CAC  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:10.946451 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49319 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C8CAC  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:10.956465 216.239.59.99:80 -> 145.254.160.237:3371
+TCP TTL:55 TOS:0x10 ID:34104 IpLen:20 DgmLen:40
+***A**** Seq: 0x2E6B5384  Ack: 0x36C220F9  Win: 0x7AE4  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:11.126710 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3920 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114C9210  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:11.226854 216.239.59.99:80 -> 145.254.160.237:3371
+TCP TTL:55 TOS:0x10 ID:34254 IpLen:20 DgmLen:1470
+***AP*** Seq: 0x2E6B5384  Ack: 0x36C220F9  Win: 0x7AE4  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:11.266912 216.239.59.99:80 -> 145.254.160.237:3371
+TCP TTL:55 TOS:0x10 ID:34255 IpLen:20 DgmLen:200
+***AP*** Seq: 0x2E6B591A  Ack: 0x36C220F9  Win: 0x7AE4  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:11.266912 145.254.160.237:3371 -> 216.239.59.99:80
+TCP TTL:128 TOS:0x0 ID:3923 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x36C220F9  Ack: 0x2E6B59BA  Win: 0x2238  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:11.417128 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49320 IpLen:20 DgmLen:1420 DF
+***AP*** Seq: 0x114C9210  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:11.527286 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3926 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114C9774  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:11.537300 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49321 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C9774  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:11.667488 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49322 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114C9CD8  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:11.667488 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3927 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114CA23C  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:11.807689 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49323 IpLen:20 DgmLen:1420 DF
+***A**** Seq: 0x114CA23C  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:11.807689 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3928 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114CA7A0  Win: 0x25BC  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:12.088092 216.239.59.99:80 -> 145.254.160.237:3371
+TCP TTL:55 TOS:0x10 ID:36076 IpLen:20 DgmLen:1470
+***AP*** Seq: 0x2E6B5384  Ack: 0x36C220F9  Win: 0x7AE4  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:12.088092 145.254.160.237:3371 -> 216.239.59.99:80
+TCP TTL:128 TOS:0x0 ID:3929 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x36C220F9  Ack: 0x2E6B59BA  Win: 0x2238  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:12.158193 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49324 IpLen:20 DgmLen:464 DF
+***AP*** Seq: 0x114CA7A0  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:12.328438 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3932 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114CA948  Win: 0x2414  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:25.216971 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:49325 IpLen:20 DgmLen:40 DF
+***A***F Seq: 0x114CA948  Ack: 0x38AFFFF3  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:25.216971 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3935 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x38AFFFF3  Ack: 0x114CA949  Win: 0x2414  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:37.374452 145.254.160.237:3372 -> 65.208.228.223:80
+TCP TTL:128 TOS:0x0 ID:3938 IpLen:20 DgmLen:40 DF
+***A***F Seq: 0x38AFFFF3  Ack: 0x114CA949  Win: 0x2414  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+05/13-10:17:37.704928 65.208.228.223:80 -> 145.254.160.237:3372
+TCP TTL:47 TOS:0x0 ID:0 IpLen:20 DgmLen:40 DF
+***A**** Seq: 0x114CA949  Ack: 0x38AFFFF4  Win: 0x1920  TcpLen: 20
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.1041 seconds
+Snort processed 41 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:           41
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      12906496
+  Total allocated space (uordblks):      680416
+  Total free space (fordblks):           106016
+  Topmost releasable block (keepcost):   85984
+===============================================================================
+Packet I/O Totals:
+   Received:           41
+   Analyzed:           41 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:           41 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:           41 (100.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:           41 (100.000%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:           41
+===============================================================================
+Snort exiting
+
+Snort processed 41 packets.
+```
+*41*
+### Operation Mode 3: IDS/IPS
+Snort in IDS/IPS Mode
+Capabilities of Snort are not limited to sniffing and logging the traffic. IDS/IPS mode helps you manage the traffic according to user-defined rules.
+Note that (N)IDS/IPS mode depends on the rules and configuration. TASK-10 summarises the essential paths, files and variables. Also, TASK-3 covers configuration testing. Here, we need to understand the operating logic first, and then we will be going into rules in TASK-9.
+Let's run Snort in IDS/IPS Mode
+NIDS mode parameters are explained in the table below;
+Parameter	Description
+-c
+Defining the configuration file.
+-T	Testing the configuration file.
+-N	Disable logging.
+-D	Background mode.
+-A
+Alert modes;
+full: Full alert mode, providing all possible information about the alert. This one also is the default mode; once you use -A and don't specify any mode, snort uses this mode.
+fast:  Fast mode shows the alert message, timestamp, source and destination IP, along with port numbers.
+console: Provides fast style alerts on the console screen.
+cmg: CMG style, basic header details with payload in hex and text format.
+none: Disabling alerting.
+Let's start using each parameter and see the difference between them. Snort needs active traffic on your interface, so we need to generate traffic to see Snort in action. To do this, use the traffic-generator script and sniff the traffic.
+Once you start running IDS/IPS mode, you need to use rules. As we mentioned earlier, we will use a pre-defined ICMP rule as an example. The defined rule will only generate alerts in any direction of ICMP packet activity.
+alert icmp any any <> any any  (msg: "ICMP Packet Found"; sid: 100001; rev:1;)
+This rule is located in "/etc/snort/rules/local.rules".
+Remember, in this module, we will focus only on the operating modes. The rules are covered in TASK9&10. Snort will create an "alert" file if the traffic flow triggers an alert. One last note; once you start running IPS/IDS mode, the sniffing and logging mode will be semi-passive. However, you can activate the functions using the parameters discussed in previous tasks. (-i, -v, -d, -e, -X, -l, -K ASCII) If you don't remember the purpose of these commands, please revisit TASK4.
+IDS/IPS mode with parameter "-c and -T"
+Start the Snort instance and test the configuration file. sudo snort -c /etc/snort/snort.conf -T  This command will check your configuration file and prompt it if there is any misconfiguratioın in your current setting. You should be familiar with this command if you covered TASK3. If you don't remember the output of this command, please revisit TASK4.
+IDS/IPS mode with parameter "-N"
+Start the Snort instance and disable logging by running the following command: sudo snort -c /etc/snort/snort.conf -N
+Now run the traffic-generator script as sudo and start ICMP/HTTP traffic. This command will disable logging mode. The rest of the other functions will still be available (if activated).
+The command-line output will provide the information requested with the parameters. So, if you activate verbosity (-v) or full packet dump (-X) you will still have the output in the console, but there will be no logs in the log folder.
+IDS/IPS mode with parameter "-D"
+Start the Snort instance in background mode with the following command: sudo snort -c /etc/snort/snort.conf -D
+Now run the traffic-generator script as sudo and start ICMP/HTTP traffic. Once the traffic is generated, snort will start processing the packets and accomplish the given task with additional parameters.
+```text
+running in background mode
+
+           
+user@ubuntu$ sudo snort -c /etc/snort/snort.conf -D
+
+Spawning daemon child...
+My daemon child 2898 lives...
+Daemon parent exiting (0)
+```
+The command-line output will provide the information requested with the parameters. So, if you activate verbosity (-v) or full packet dump (-X) with packet logger mode (-l) you will still have the logs in the logs folder, but there will be no output in the console.
+Once you start the background mode and want to check the corresponding process, you can easily use the "ps" command as shown below;
+```text
+running in background mode
+
+           
+user@ubuntu$ ps -ef | grep snort
+
+root        2898    1706  0 05:53 ?        00:00:00 snort -c /etc/snort/snort.conf -D
+```
+If you want to stop the daemon, you can easily use the "kill" command to stop the process.
+```text
+running in background mode
+
+           
+user@ubuntu$ sudo kill -9 2898
+```
+IDS/IPS mode with parameter "-A"
+Remember that there are several alert modes available in snort;
+console: Provides fast style alerts on the console screen.
+cmg: Provides basic header details with payload in hex and text format.
+full: Full alert mode, providing all possible information about the alert.
+fast: Fast mode, shows the alert message, timestamp, source and destination ıp along with port numbers.
+none: Disabling alerting.
+In this section, only the "console" and "cmg" parameters provide alert information in the console. It is impossible to identify the difference between the rest of the alert modes via terminal. Differences can be identified by looking at generated logs.
+At the end of this section, we will compare the "full", "fast" and "none" modes. Remember that these parameters don't provide console output, so we will continue to identify the differences through log formats.
+IDS/IPS mode with parameter "-A console"
+Console mode provides fast style alerts on the console screen. Start the Snort instance in console alert mode (-A console ) with the following command sudo snort -c /etc/snort/snort.conf -A console
+Now run the traffic-generator script as sudo and start ICMP/HTTP traffic. Once the traffic is generated, snort will start generating alerts according to provided ruleset defined in the configuration file.
+```text
+running in console alert mode
+
+           
+user@ubuntu$ sudo snort -c /etc/snort/snort.conf -A console
+Running in IDS mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Initializing Preprocessors!
+Initializing Plug-ins!
+Parsing Rules file "/etc/snort/snort.conf"
+...
+Commencing packet processing (pid=3743)
+12/12-02:08:27.577495  [**] [1:366:7] ICMP PING *NIX [**] [Classification: Misc activity] [Priority: 3] {ICMP} 192.168.175.129 -> 142.250.187.110
+12/12-02:08:27.577495  [**] [1:10000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 192.168.175.129 -> 142.250.187.110
+12/12-02:08:27.577495  [**] [1:384:5] ICMP PING [**] [Classification: Misc activity] [Priority: 3] {ICMP} 192.168.175.129 -> 142.250.187.110
+12/12-02:08:27.609719  [**] [1:10000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 142.250.187.110 -> 192.168.175.129
+^C*** Caught Int-Signal
+12/12-02:08:29.595898  [**] [1:366:7] ICMP PING *NIX [**] [Classification: Misc activity] [Priority: 3] {ICMP} 192.168.175.129 -> 142.250.187.110
+12/12-02:08:29.595898  [**] [1:10000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 192.168.175.129 -> 142.250.187.110
+12/12-02:08:29.595898  [**] [1:384:5] ICMP PING [**] [Classification: Misc activity] [Priority: 3] {ICMP} 192.168.175.129 -> 142.250.187.110
+===============================================================================
+Run time for packet processing was 26.25844 seconds
+Snort processed 88 packets.
+```
+IDS/IPS mode with parameter "-A cmg"
+Cmg mode provides basic header details with payload in hex and text format. Start the Snort instance in cmg alert mode (-A cmg ) with the following command sudo snort -c /etc/snort/snort.conf -A cmg
+Now run the traffic-generator script as sudo and start ICMP/HTTP traffic. Once the traffic is generated, snort will start generating alerts according to provided ruleset defined in the configuration file.
+```text
+running in cmg alert mode
+
+           
+user@ubuntu$ sudo snort -c /etc/snort/snort.conf -A cmg
+Running in IDS mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Initializing Preprocessors!
+Initializing Plug-ins!
+Parsing Rules file "/etc/snort/snort.conf"
+...
+Commencing packet processing (pid=3743)
+12/12-02:23:56.944351  [**] [1:366:7] ICMP PING *NIX [**] [Classification: Misc activity] [Priority: 3] {ICMP} 192.168.175.129 -> 142.250.187.110
+12/12-02:23:56.944351 00:0C:29:A5:B7:A2 -> 00:50:56:E1:9B:9D type:0x800 len:0x62
+192.168.175.129 -> 142.250.187.110 ICMP TTL:64 TOS:0x0 ID:10393 IpLen:20 DgmLen:84 DF
+Type:8  Code:0  ID:4   Seq:1  ECHO
+BC CD B5 61 00 00 00 00 CE 68 0E 00 00 00 00 00  ...a.....h......
+10 11 12 13 14 15 16 17 18 19 1A 1B 1C 1D 1E 1F  ................
+20 21 22 23 24 25 26 27 28 29 2A 2B 2C 2D 2E 2F   !"#$%&'()*+,-./
+30 31 32 33 34 35 36 37                          01234567
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+```
+Let's compare the console and cmg outputs before moving on to other alarm types. As you can see in the given outputs above, console mode provides basic header and rule information. Cmg mode provides full packet details along with rule information.
+IDS/IPS mode with parameter "-A fast"
+Fast mode provides alert messages, timestamps, and source and destination IP addresses. Remember, there is no console output in this mode. Start the Snort instance in fast alert mode (-A fast ) with the following command sudo snort -c /etc/snort/snort.conf -A fast
+Now run the traffic-generator script as sudo and start ICMP/HTTP traffic. Once the traffic is generated, snort will start generating alerts according to provided ruleset defined in the configuration file.
+```text
+running in fast alert mode
+
+           
+user@ubuntu$ sudo snort -c /etc/snort/snort.conf -A fast
+Running in IDS mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Initializing Preprocessors!
+Initializing Plug-ins!
+Parsing Rules file "/etc/snort/snort.conf"
+...
+Commencing packet processing (pid=3743)
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+```
+Let's check the alarm file;
+As you can see in the given picture above, fast style alerts contain summary information on the action like direction and alert header.
+IDS/IPS mode with parameter "-A full"
+Full alert mode provides all possible information about the alert. Remember, there is no console output in this mode. Start the Snort instance in full alert mode (-A full ) with the following command sudo snort -c /etc/snort/snort.conf -A full
+Now run the traffic-generator script as sudo and start ICMP/HTTP traffic. Once the traffic is generated, snort will start generating alerts according to provided ruleset defined in the configuration file.
+```text
+running in full alert mode
+
+           
+user@ubuntu$ sudo snort -c /etc/snort/snort.conf -A full
+Running in IDS mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Initializing Preprocessors!
+Initializing Plug-ins!
+Parsing Rules file "/etc/snort/snort.conf"
+...
+Commencing packet processing (pid=3744)
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+```
+Let's check the alarm file;
+As you can see in the given picture above, full style alerts contain all possible information on the action.
+IDS/IPS mode with parameter "-A none"
+Disable alerting. This mode doesn't create the alert file. However, it still logs the traffic and creates a log file in binary dump format. Remember, there is no console output in this mode. Start the Snort instance in none alert mode (-A none) with the following command sudo snort -c /etc/snort/snort.conf -A none
+Now run the traffic-generator script as sudo and start ICMP/HTTP traffic. Once the traffic is generated, snort will start generating alerts according to provided ruleset defined in the configuration file.
+```text
+running in none alert mode
+
+           
+user@ubuntu$ sudo snort -c /etc/snort/snort.conf -A none
+Running in IDS mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Initializing Preprocessors!
+Initializing Plug-ins!
+Parsing Rules file "/etc/snort/snort.conf"
+...
+Commencing packet processing (pid=3745)
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+```
+As you can see in the picture below, there is no alert file. Snort only generated the log file.
+IDS/IPS mode: "Using rule file without configuration file"
+It is possible to run the Snort only with rules without a configuration file. Running the Snort in this mode will help you test the user-created rules. However, this mode will provide less performance.
+```text
+user@ubuntu$ sudo snort -c /etc/snort/rules/local.rules -A console
+Running in IDS mode
+
+12/12-12:13:29.167955  [**] [1:10000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 192.168.175.129 -> 142.250.187.110
+12/12-12:13:29.200543  [**] [1:10000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 142.250.187.110 -> 192.168.175.129
+12/12-12:13:30.169785  [**] [1:10000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 192.168.175.129 -> 142.250.187.110
+12/12-12:13:30.201470  [**] [1:10000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 142.250.187.110 -> 192.168.175.129
+12/12-12:13:31.172101  [**] [1:10000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 192.168.175.129 -> 142.250.187.110
+^C*** Caught Int-Signal
+```
+IPS mode and dropping packets
+Snort IPS mode activated with -Q --daq afpacket parameters. You can also activate this mode by editing snort.conf file. However, you don't need to edit snort.conf file in the scope of this room. Review the bonus task or snort manual for further information on daq and advanced configuration settings: -Q --daq afpacket
+Activate the Data Acquisition (DAQ) modules and use the afpacket module to use snort as an IPS: -i eth0:eth1
+Identifying interfaces note that Snort IPS require at least two interfaces to work. Now run the traffic-generator script as sudo and start ICMP/HTTP traffic.
+```text
+running IPS mode
+
+           
+user@ubuntu$ sudo snort -c /etc/snort/snort.conf -q -Q --daq afpacket -i eth0:eth1 -A console
+Running in IPS mode
+
+12/18-07:40:01.527100  [Drop] [**] [1:1000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 192.168.175.131 -> 192.168.175.2
+12/18-07:40:01.552811  [Drop] [**] [1:1000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 172.217.169.142 -> 192.168.1.18
+12/18-07:40:01.566232  [Drop] [**] [1:1000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 192.168.175.131 -> 192.168.175.2
+12/18-07:40:02.517903  [Drop] [**] [1:1000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 192.168.1.18 -> 172.217.169.142
+12/18-07:40:02.550844  [Drop] [**] [1:1000001:0] ICMP Packet found [**] [Priority: 0] {ICMP} 172.217.169.142 -> 192.168.1.18
+^C*** Caught Int-Signal
+```
+As you can see in the picture above, Snort blocked the packets this time. We used the same rule with a different action (drop/reject). Remember, for the scope of this task; our point is the operating mode, not the rule.
+Investigate the traffic with the default configuration file.
+sudo snort -c /etc/snort/snort.conf -A full -l .
+Execute the traffic generator script and choose "TASK-7 Exercise". Wait until the traffic stops, then stop the Snort instance. Now analyse the output summary and answer the question.
+sudo ./traffic-generator.sh
+What is the number of the detected HTTP GET methods?
+Timing is important, you should start the sniffing before the attack and terminate right after the attack. You can read the provided output statistics summary on the console.
+```text
+ubuntu@ip-10-10-52-242:~/Desktop/Task-Exercises$ sudo snort -c /etc/snort/snort.conf -A full -l .
+Running in IDS mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Initializing Preprocessors!
+Initializing Plug-ins!
+Parsing Rules file "/etc/snort/snort.conf"
+PortVar 'HTTP_PORTS' defined :  [ 80:81 311 383 591 593 901 1220 1414 1741 1830 2301 2381 2809 3037 3128 3702 4343 4848 5250 6988 7000:7001 7144:7145 7510 7777 7779 8000 8008 8014 8028 8080 8085 8088 8090 8118 8123 8180:8181 8243 8280 8300 8800 8888 8899 9000 9060 9080 9090:9091 9443 9999 11371 34443:34444 41080 50002 55555 ]
+PortVar 'SHELLCODE_PORTS' defined :  [ 0:79 81:65535 ]
+PortVar 'ORACLE_PORTS' defined :  [ 1024:65535 ]
+PortVar 'SSH_PORTS' defined :  [ 22 ]
+PortVar 'FTP_PORTS' defined :  [ 21 2100 3535 ]
+PortVar 'SIP_PORTS' defined :  [ 5060:5061 5600 ]
+PortVar 'FILE_DATA_PORTS' defined :  [ 80:81 110 143 311 383 591 593 901 1220 1414 1741 1830 2301 2381 2809 3037 3128 3702 4343 4848 5250 6988 7000:7001 7144:7145 7510 7777 7779 8000 8008 8014 8028 8080 8085 8088 8090 8118 8123 8180:8181 8243 8280 8300 8800 8888 8899 9000 9060 9080 9090:9091 9443 9999 11371 34443:34444 41080 50002 55555 ]
+PortVar 'GTP_PORTS' defined :  [ 2123 2152 3386 ]
+Detection:
+   Search-Method = AC-Full-Q
+    Split Any/Any group = enabled
+    Search-Method-Optimizations = enabled
+    Maximum pattern length = 20
+Tagged Packet Limit: 256
+Loading dynamic engine /usr/lib/snort_dynamicengine/libsf_engine.so... done
+Loading all dynamic detection libs from /usr/lib/snort_dynamicrules...
+WARNING: No dynamic libraries found in directory /usr/lib/snort_dynamicrules.
+  Finished Loading all dynamic detection libs from /usr/lib/snort_dynamicrules
+Loading all dynamic preprocessor libs from /usr/lib/snort_dynamicpreprocessor/...
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_ssl_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_sip_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_imap_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_smtp_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_reputation_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_ftptelnet_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_dce2_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_sdf_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_modbus_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_gtp_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_dns_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_dnp3_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_ssh_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_pop_preproc.so... done
+  Finished Loading all dynamic preprocessor libs from /usr/lib/snort_dynamicpreprocessor/
+Log directory = .
+WARNING: ip4 normalizations disabled because not inline.
+WARNING: tcp normalizations disabled because not inline.
+WARNING: icmp4 normalizations disabled because not inline.
+WARNING: ip6 normalizations disabled because not inline.
+WARNING: icmp6 normalizations disabled because not inline.
+Frag3 global config:
+    Max frags: 65536
+    Fragment memory cap: 4194304 bytes
+Frag3 engine config:
+    Bound Address: default
+    Target-based policy: WINDOWS
+    Fragment timeout: 180 seconds
+    Fragment min_ttl:   1
+    Fragment Anomalies: Alert
+    Overlap Limit:     10
+    Min fragment Length:     100
+      Max Expected Streams: 768
+Stream global config:
+    Track TCP sessions: ACTIVE
+    Max TCP sessions: 262144
+    TCP cache pruning timeout: 30 seconds
+    TCP cache nominal timeout: 3600 seconds
+    Memcap (for reassembly packet storage): 8388608
+    Track UDP sessions: ACTIVE
+    Max UDP sessions: 131072
+    UDP cache pruning timeout: 30 seconds
+    UDP cache nominal timeout: 180 seconds
+    Track ICMP sessions: INACTIVE
+    Track IP sessions: INACTIVE
+    Log info if session memory consumption exceeds 1048576
+    Send up to 2 active responses
+    Wait at least 5 seconds between responses
+    Protocol Aware Flushing: ACTIVE
+        Maximum Flush Point: 16000
+Stream TCP Policy config:
+    Bound Address: default
+    Reassembly Policy: WINDOWS
+    Timeout: 180 seconds
+    Limit on TCP Overlaps: 10
+    Maximum number of bytes to queue per session: 1048576
+    Maximum number of segs to queue per session: 2621
+    Options:
+        Require 3-Way Handshake: YES
+        3-Way Handshake Timeout: 180
+        Detect Anomalies: YES
+    Reassembly Ports:
+      21 client (Footprint) 
+      22 client (Footprint) 
+      23 client (Footprint) 
+      25 client (Footprint) 
+      42 client (Footprint) 
+      53 client (Footprint) 
+      79 client (Footprint) 
+      80 client (Footprint) server (Footprint)
+      81 client (Footprint) server (Footprint)
+      109 client (Footprint) 
+      110 client (Footprint) 
+      111 client (Footprint) 
+      113 client (Footprint) 
+      119 client (Footprint) 
+      135 client (Footprint) 
+      136 client (Footprint) 
+      137 client (Footprint) 
+      139 client (Footprint) 
+      143 client (Footprint) 
+      161 client (Footprint) 
+      additional ports configured but not printed.
+Stream UDP Policy config:
+    Timeout: 180 seconds
+HttpInspect Config:
+    GLOBAL CONFIG
+      Detect Proxy Usage:       NO
+      IIS Unicode Map Filename: /etc/snort/unicode.map
+      IIS Unicode Map Codepage: 1252
+      Memcap used for logging URI and Hostname: 150994944
+      Max Gzip Memory: 104857600
+      Max Gzip Sessions: 201649
+      Gzip Compress Depth: 65535
+      Gzip Decompress Depth: 65535
+    DEFAULT SERVER CONFIG:
+      Server profile: All
+      Ports (PAF): 80 81 311 383 591 593 901 1220 1414 1741 1830 2301 2381 2809 3037 3128 3702 4343 4848 5250 6988 7000 7001 7144 7145 7510 7777 7779 8000 8008 8014 8028 8080 8085 8088 8090 8118 8123 8180 8181 8243 8280 8300 8800 8888 8899 9000 9060 9080 9090 9091 9443 9999 11371 34443 34444 41080 50002 55555 
+      Server Flow Depth: 0
+      Client Flow Depth: 0
+      Max Chunk Length: 500000
+      Small Chunk Length Evasion: chunk size <= 10, threshold >= 5 times
+      Max Header Field Length: 750
+      Max Number Header Fields: 100
+      Max Number of WhiteSpaces allowed with header folding: 200
+      Inspect Pipeline Requests: YES
+      URI Discovery Strict Mode: NO
+      Allow Proxy Usage: NO
+      Disable Alerting: NO
+      Oversize Dir Length: 500
+      Only inspect URI: NO
+      Normalize HTTP Headers: NO
+      Inspect HTTP Cookies: YES
+      Inspect HTTP Responses: YES
+      Extract Gzip from responses: YES
+      Decompress response files:   
+      Unlimited decompression of gzip data from responses: YES
+      Normalize Javascripts in HTTP Responses: YES
+      Max Number of WhiteSpaces allowed with Javascript Obfuscation in HTTP responses: 200
+      Normalize HTTP Cookies: NO
+      Enable XFF and True Client IP: NO
+      Log HTTP URI data: NO
+      Log HTTP Hostname data: NO
+      Extended ASCII code support in URI: NO
+      Ascii: YES alert: NO
+      Double Decoding: YES alert: NO
+      %U Encoding: YES alert: YES
+      Bare Byte: YES alert: NO
+      UTF 8: YES alert: NO
+      IIS Unicode: YES alert: NO
+      Multiple Slash: YES alert: NO
+      IIS Backslash: YES alert: NO
+      Directory Traversal: YES alert: NO
+      Web Root Traversal: YES alert: NO
+      Apache WhiteSpace: YES alert: NO
+      IIS Delimiter: YES alert: NO
+      IIS Unicode Map: GLOBAL IIS UNICODE MAP CONFIG
+      Non-RFC Compliant Characters: 0x00 0x01 0x02 0x03 0x04 0x05 0x06 0x07 
+      Whitespace Characters: 0x09 0x0b 0x0c 0x0d 
+rpc_decode arguments:
+    Ports to decode RPC on: 111 32770 32771 32772 32773 32774 32775 32776 32777 32778 32779 
+    alert_fragments: INACTIVE
+    alert_large_fragments: INACTIVE
+    alert_incomplete: INACTIVE
+    alert_multiple_requests: INACTIVE
+FTPTelnet Config:
+    GLOBAL CONFIG
+      Inspection Type: stateful
+      Check for Encrypted Traffic: YES alert: NO
+      Continue to check encrypted data: YES
+    TELNET CONFIG:
+      Ports: 23 
+      Are You There Threshold: 20
+      Normalize: YES
+      Detect Anomalies: YES
+    FTP CONFIG:
+      FTP Server: default
+        Ports (PAF): 21 2100 3535 
+        Check for Telnet Cmds: YES alert: YES
+        Ignore Telnet Cmd Operations: YES alert: YES
+        Ignore open data channels: NO
+      FTP Client: default
+        Check for Bounce Attacks: YES alert: YES
+        Check for Telnet Cmds: YES alert: YES
+        Ignore Telnet Cmd Operations: YES alert: YES
+        Max Response Length: 256
+SMTP Config:
+    Ports: 25 465 587 691 
+    Inspection Type: Stateful
+    Normalize: ATRN AUTH BDAT DATA DEBUG EHLO EMAL ESAM ESND ESOM ETRN EVFY EXPN HELO HELP IDENT MAIL NOOP ONEX QUEU QUIT RCPT RSET SAML SEND STARTTLS SOML TICK TIME TURN TURNME VERB VRFY X-EXPS XADR XAUTH XCIR XEXCH50 XGEN XLICENSE X-LINK2STATE XQUE XSTA XTRN XUSR CHUNKING X-ADAT X-DRCP X-ERCP X-EXCH50 
+    Ignore Data: No
+    Ignore TLS Data: No
+    Ignore SMTP Alerts: No
+    Max Command Line Length: 512
+    Max Specific Command Line Length: 
+       ATRN:255 AUTH:246 BDAT:255 DATA:246 DEBUG:255 
+       EHLO:500 EMAL:255 ESAM:255 ESND:255 ESOM:255 
+       ETRN:246 EVFY:255 EXPN:255 HELO:500 HELP:500 
+       IDENT:255 MAIL:260 NOOP:255 ONEX:246 QUEU:246 
+       QUIT:246 RCPT:300 RSET:246 SAML:246 SEND:246 
+       SIZE:255 STARTTLS:246 SOML:246 TICK:246 TIME:246 
+       TURN:246 TURNME:246 VERB:246 VRFY:255 X-EXPS:246 
+       XADR:246 XAUTH:246 XCIR:246 XEXCH50:246 XGEN:246 
+       XLICENSE:246 X-LINK2STATE:246 XQUE:246 XSTA:246 XTRN:246 
+       XUSR:246 
+    Max Header Line Length: 1000
+    Max Response Line Length: 512
+    X-Link2State Alert: Yes
+    Drop on X-Link2State Alert: No
+    Alert on commands: None
+    Alert on unknown commands: No
+    SMTP Memcap: 838860
+    MIME Max Mem: 838860
+    Base64 Decoding: Enabled
+    Base64 Decoding Depth: Unlimited
+    Quoted-Printable Decoding: Enabled
+    Quoted-Printable Decoding Depth: Unlimited
+    Unix-to-Unix Decoding: Enabled
+    Unix-to-Unix Decoding Depth: Unlimited
+    Non-Encoded MIME attachment Extraction: Enabled
+    Non-Encoded MIME attachment Extraction Depth: Unlimited
+    Log Attachment filename: Enabled
+    Log MAIL FROM Address: Enabled
+    Log RCPT TO Addresses: Enabled
+    Log Email Headers: Enabled
+    Email Hdrs Log Depth: 1464
+SSH config: 
+    Autodetection: ENABLED
+    Challenge-Response Overflow Alert: ENABLED
+    SSH1 CRC32 Alert: ENABLED
+    Server Version String Overflow Alert: ENABLED
+    Protocol Mismatch Alert: ENABLED
+    Bad Message Direction Alert: DISABLED
+    Bad Payload Size Alert: DISABLED
+    Unrecognized Version Alert: DISABLED
+    Max Encrypted Packets: 20  
+    Max Server Version String Length: 100  
+    MaxClientBytes: 19600 (Default) 
+    Ports:
+	22
+DCE/RPC 2 Preprocessor Configuration
+  Global Configuration
+    DCE/RPC Defragmentation: Enabled
+    Memcap: 102400 KB
+    Events: co 
+    SMB Fingerprint policy: Disabled
+  Server Default Configuration
+    Policy: WinXP
+    Detect ports (PAF)
+      SMB: 139 445 
+      TCP: 135 
+      UDP: 135 
+      RPC over HTTP server: 593 
+      RPC over HTTP proxy: None
+    Autodetect ports (PAF)
+      SMB: None
+      TCP: 1025-65535 
+      UDP: 1025-65535 
+      RPC over HTTP server: 1025-65535 
+      RPC over HTTP proxy: None
+    Invalid SMB shares: C$ D$ ADMIN$ 
+    Maximum SMB command chaining: 3 commands
+    SMB file inspection: Disabled
+DNS config: 
+    DNS Client rdata txt Overflow Alert: ACTIVE
+    Obsolete DNS RR Types Alert: INACTIVE
+    Experimental DNS RR Types Alert: INACTIVE
+    Ports: 53
+SSLPP config:
+    Encrypted packets: not inspected
+    Ports:
+      443      465      563      636      989
+      992      993      994      995     7801
+     7802     7900     7901     7902     7903
+     7904     7905     7906     7907     7908
+     7909     7910     7911     7912     7913
+     7914     7915     7916     7917     7918
+     7919     7920
+    Server side data is trusted
+    Maximum SSL Heartbeat length: 0
+Sensitive Data preprocessor config: 
+    Global Alert Threshold: 25
+    Masked Output: DISABLED
+SIP config: 
+    Max number of sessions: 40000  
+    Max number of dialogs in a session: 4 (Default) 
+    Status: ENABLED
+    Ignore media channel: DISABLED
+    Max URI length: 512  
+    Max Call ID length: 80  
+    Max Request name length: 20 (Default) 
+    Max From length: 256 (Default) 
+    Max To length: 256 (Default) 
+    Max Via length: 1024 (Default) 
+    Max Contact length: 512  
+    Max Content length: 2048  
+    Ports:
+	5060	5061	5600
+    Methods:
+	  invite cancel ack bye register options refer subscribe update join info message notify benotify do qauth sprack publish service unsubscribe prack
+IMAP Config:
+    Ports: 143 
+    IMAP Memcap: 838860
+    MIME Max Mem: 838860
+    Base64 Decoding: Enabled
+    Base64 Decoding Depth: Unlimited
+    Quoted-Printable Decoding: Enabled
+    Quoted-Printable Decoding Depth: Unlimited
+    Unix-to-Unix Decoding: Enabled
+    Unix-to-Unix Decoding Depth: Unlimited
+    Non-Encoded MIME attachment Extraction: Enabled
+    Non-Encoded MIME attachment Extraction Depth: Unlimited
+POP Config:
+    Ports: 110 
+    POP Memcap: 838860
+    MIME Max Mem: 838860
+    Base64 Decoding: Enabled
+    Base64 Decoding Depth: Unlimited
+    Quoted-Printable Decoding: Enabled
+    Quoted-Printable Decoding Depth: Unlimited
+    Unix-to-Unix Decoding: Enabled
+    Unix-to-Unix Decoding Depth: Unlimited
+    Non-Encoded MIME attachment Extraction: Enabled
+    Non-Encoded MIME attachment Extraction Depth: Unlimited
+Modbus config: 
+    Ports:
+	502
+DNP3 config: 
+    Memcap: 262144
+    Check Link-Layer CRCs: ENABLED
+    Ports:
+	20000
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
+Initializing rule chains...
+WARNING: /etc/snort/rules/chat.rules(33) threshold (in rule) is deprecated; use detection_filter instead.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(6) GID 1 SID 100000106 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(7) GID 1 SID 100000107 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(8) GID 1 SID 100000108 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(9) GID 1 SID 100000109 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(11) GID 1 SID 100000192 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(12) GID 1 SID 100000193 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(13) GID 1 SID 100000194 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(14) GID 1 SID 100000690 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(15) GID 1 SID 100000691 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(6) GID 1 SID 100000118 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(7) GID 1 SID 100000119 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(9) GID 1 SID 100000228 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(14) GID 1 SID 100000284 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(16) GID 1 SID 100000447 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(18) GID 1 SID 100000692 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(20) GID 1 SID 100000693 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(23) GID 1 SID 100000864 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-iis.rules(7) GID 1 SID 100000138 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-iis.rules(8) GID 1 SID 100000139 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-iis.rules(9) GID 1 SID 100000173 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-iis.rules(10) GID 1 SID 100000174 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(6) GID 1 SID 100000121 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(7) GID 1 SID 100000122 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(8) GID 1 SID 100000129 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(9) GID 1 SID 100000130 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(10) GID 1 SID 100000131 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(12) GID 1 SID 100000132 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(13) GID 1 SID 100000133 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(14) GID 1 SID 100000140 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(15) GID 1 SID 100000141 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(16) GID 1 SID 100000142 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(17) GID 1 SID 100000143 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(18) GID 1 SID 100000144 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(19) GID 1 SID 100000145 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(20) GID 1 SID 100000146 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(22) GID 1 SID 100000148 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(23) GID 1 SID 100000149 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(24) GID 1 SID 100000150 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(25) GID 1 SID 100000177 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(26) GID 1 SID 100000178 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(27) GID 1 SID 100000179 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(28) GID 1 SID 100000184 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(29) GID 1 SID 100000185 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(30) GID 1 SID 100000200 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(31) GID 1 SID 100000209 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(33) GID 1 SID 100000216 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(34) GID 1 SID 100000217 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(35) GID 1 SID 100000225 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(38) GID 1 SID 100000237 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(39) GID 1 SID 100000302 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(40) GID 1 SID 100000303 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(42) GID 1 SID 100000313 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(43) GID 1 SID 100000314 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(49) GID 1 SID 100000317 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(50) GID 1 SID 100000318 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(51) GID 1 SID 100000319 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(52) GID 1 SID 100000320 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(53) GID 1 SID 100000321 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(54) GID 1 SID 100000322 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(55) GID 1 SID 100000323 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(56) GID 1 SID 100000324 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(57) GID 1 SID 100000325 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(58) GID 1 SID 100000326 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(59) GID 1 SID 100000327 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(60) GID 1 SID 100000328 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(61) GID 1 SID 100000329 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(62) GID 1 SID 100000330 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(63) GID 1 SID 100000331 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(64) GID 1 SID 100000332 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(65) GID 1 SID 100000333 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(66) GID 1 SID 100000334 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(67) GID 1 SID 100000335 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(68) GID 1 SID 100000336 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(69) GID 1 SID 100000337 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(70) GID 1 SID 100000338 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(71) GID 1 SID 100000339 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(72) GID 1 SID 100000340 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(73) GID 1 SID 100000341 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(74) GID 1 SID 100000342 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(75) GID 1 SID 100000343 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(76) GID 1 SID 100000344 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(77) GID 1 SID 100000345 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(78) GID 1 SID 100000346 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(79) GID 1 SID 100000347 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(80) GID 1 SID 100000348 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(81) GID 1 SID 100000349 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(82) GID 1 SID 100000350 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(83) GID 1 SID 100000351 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(84) GID 1 SID 100000352 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(85) GID 1 SID 100000353 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(86) GID 1 SID 100000354 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(87) GID 1 SID 100000355 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(88) GID 1 SID 100000356 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(89) GID 1 SID 100000357 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(90) GID 1 SID 100000358 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(91) GID 1 SID 100000359 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(92) GID 1 SID 100000360 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(93) GID 1 SID 100000361 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(94) GID 1 SID 100000362 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(95) GID 1 SID 100000363 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(96) GID 1 SID 100000364 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(97) GID 1 SID 100000365 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(98) GID 1 SID 100000366 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(99) GID 1 SID 100000367 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(100) GID 1 SID 100000368 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(101) GID 1 SID 100000369 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(102) GID 1 SID 100000370 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(103) GID 1 SID 100000371 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(104) GID 1 SID 100000372 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(105) GID 1 SID 100000373 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(106) GID 1 SID 100000374 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(107) GID 1 SID 100000375 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(108) GID 1 SID 100000376 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(109) GID 1 SID 100000377 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(110) GID 1 SID 100000378 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(111) GID 1 SID 100000379 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(112) GID 1 SID 100000380 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(113) GID 1 SID 100000382 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(114) GID 1 SID 100000383 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(115) GID 1 SID 100000384 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(116) GID 1 SID 100000385 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(117) GID 1 SID 100000386 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(119) GID 1 SID 100000387 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(120) GID 1 SID 100000388 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(121) GID 1 SID 100000389 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(122) GID 1 SID 100000390 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(123) GID 1 SID 100000391 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(124) GID 1 SID 100000392 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(125) GID 1 SID 100000393 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(126) GID 1 SID 100000394 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(127) GID 1 SID 100000395 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(128) GID 1 SID 100000396 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(129) GID 1 SID 100000397 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(130) GID 1 SID 100000398 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(131) GID 1 SID 100000399 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(132) GID 1 SID 100000400 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(133) GID 1 SID 100000401 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(134) GID 1 SID 100000402 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(135) GID 1 SID 100000403 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(136) GID 1 SID 100000404 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(137) GID 1 SID 100000405 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(138) GID 1 SID 100000406 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(139) GID 1 SID 100000407 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(140) GID 1 SID 100000408 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(141) GID 1 SID 100000409 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(142) GID 1 SID 100000410 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(143) GID 1 SID 100000411 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(144) GID 1 SID 100000412 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(145) GID 1 SID 100000413 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(146) GID 1 SID 100000414 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(147) GID 1 SID 100000415 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(148) GID 1 SID 100000416 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(149) GID 1 SID 100000417 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(150) GID 1 SID 100000418 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(151) GID 1 SID 100000419 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(152) GID 1 SID 100000420 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(153) GID 1 SID 100000421 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(154) GID 1 SID 100000422 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(155) GID 1 SID 100000423 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(156) GID 1 SID 100000424 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(157) GID 1 SID 100000425 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(158) GID 1 SID 100000426 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(161) GID 1 SID 100000427 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(162) GID 1 SID 100000428 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(163) GID 1 SID 100000429 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(166) GID 1 SID 100000430 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(167) GID 1 SID 100000431 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(168) GID 1 SID 100000432 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(169) GID 1 SID 100000433 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(170) GID 1 SID 100000434 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(171) GID 1 SID 100000435 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(172) GID 1 SID 100000436 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(173) GID 1 SID 100000437 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(174) GID 1 SID 100000438 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(175) GID 1 SID 100000439 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(176) GID 1 SID 100000440 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(177) GID 1 SID 100000441 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(178) GID 1 SID 100000442 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(179) GID 1 SID 100000443 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(180) GID 1 SID 100000444 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(181) GID 1 SID 100000448 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(182) GID 1 SID 100000449 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(183) GID 1 SID 100000450 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(184) GID 1 SID 100000451 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(185) GID 1 SID 100000452 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(186) GID 1 SID 100000453 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(187) GID 1 SID 100000454 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(188) GID 1 SID 100000455 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(189) GID 1 SID 100000456 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(190) GID 1 SID 100000457 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(191) GID 1 SID 100000458 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(192) GID 1 SID 100000459 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(193) GID 1 SID 100000460 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(194) GID 1 SID 100000461 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(195) GID 1 SID 100000462 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(196) GID 1 SID 100000694 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(197) GID 1 SID 100000695 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(198) GID 1 SID 100000696 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(199) GID 1 SID 100000697 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(200) GID 1 SID 100000698 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(201) GID 1 SID 100000699 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(202) GID 1 SID 100000700 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(203) GID 1 SID 100000701 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(204) GID 1 SID 100000702 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(207) GID 1 SID 100000890 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(208) GID 1 SID 100000891 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(211) GID 1 SID 100000895 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(212) GID 1 SID 100000896 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(213) GID 1 SID 100000897 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(214) GID 1 SID 100000898 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(215) GID 1 SID 100000899 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(6) GID 1 SID 100000151 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(7) GID 1 SID 100000186 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(8) GID 1 SID 100000187 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(9) GID 1 SID 100000188 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(10) GID 1 SID 100000195 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(11) GID 1 SID 100000201 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(12) GID 1 SID 100000202 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(13) GID 1 SID 100000203 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(14) GID 1 SID 100000204 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(15) GID 1 SID 100000205 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(16) GID 1 SID 100000206 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(17) GID 1 SID 100000211 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(18) GID 1 SID 100000212 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(19) GID 1 SID 100000213 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(20) GID 1 SID 100000214 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(21) GID 1 SID 100000218 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(22) GID 1 SID 100000220 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(23) GID 1 SID 100000221 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(24) GID 1 SID 100000285 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(25) GID 1 SID 100000286 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(26) GID 1 SID 100000287 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(27) GID 1 SID 100000288 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(28) GID 1 SID 100000289 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(29) GID 1 SID 100000290 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(30) GID 1 SID 100000291 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(31) GID 1 SID 100000292 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(32) GID 1 SID 100000293 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(33) GID 1 SID 100000294 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(34) GID 1 SID 100000295 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(35) GID 1 SID 100000296 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(36) GID 1 SID 100000297 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(37) GID 1 SID 100000298 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(38) GID 1 SID 100000299 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(39) GID 1 SID 100000300 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(40) GID 1 SID 100000304 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(41) GID 1 SID 100000305 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(42) GID 1 SID 100000306 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(43) GID 1 SID 100000307 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(44) GID 1 SID 100000308 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(45) GID 1 SID 100000309 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(46) GID 1 SID 100000445 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(48) GID 1 SID 100000463 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(49) GID 1 SID 100000464 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(50) GID 1 SID 100000465 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(51) GID 1 SID 100000466 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(52) GID 1 SID 100000467 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(53) GID 1 SID 100000468 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(54) GID 1 SID 100000469 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(55) GID 1 SID 100000470 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(56) GID 1 SID 100000471 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(57) GID 1 SID 100000472 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(58) GID 1 SID 100000473 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(59) GID 1 SID 100000474 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(60) GID 1 SID 100000475 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(61) GID 1 SID 100000476 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(62) GID 1 SID 100000477 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(63) GID 1 SID 100000478 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(64) GID 1 SID 100000479 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(65) GID 1 SID 100000480 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(66) GID 1 SID 100000481 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(67) GID 1 SID 100000482 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(68) GID 1 SID 100000483 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(69) GID 1 SID 100000484 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(70) GID 1 SID 100000485 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(71) GID 1 SID 100000486 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(72) GID 1 SID 100000487 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(73) GID 1 SID 100000488 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(74) GID 1 SID 100000489 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(75) GID 1 SID 100000490 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(76) GID 1 SID 100000491 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(77) GID 1 SID 100000492 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(78) GID 1 SID 100000493 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(79) GID 1 SID 100000494 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(80) GID 1 SID 100000495 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(81) GID 1 SID 100000496 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(82) GID 1 SID 100000497 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(83) GID 1 SID 100000498 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(84) GID 1 SID 100000499 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(85) GID 1 SID 100000500 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(86) GID 1 SID 100000501 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(87) GID 1 SID 100000502 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(88) GID 1 SID 100000503 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(89) GID 1 SID 100000504 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(90) GID 1 SID 100000505 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(91) GID 1 SID 100000506 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(92) GID 1 SID 100000507 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(93) GID 1 SID 100000508 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(94) GID 1 SID 100000509 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(95) GID 1 SID 100000510 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(96) GID 1 SID 100000511 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(97) GID 1 SID 100000512 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(98) GID 1 SID 100000513 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(99) GID 1 SID 100000514 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(100) GID 1 SID 100000515 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(101) GID 1 SID 100000516 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(102) GID 1 SID 100000517 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(103) GID 1 SID 100000518 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(104) GID 1 SID 100000519 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(105) GID 1 SID 100000520 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(106) GID 1 SID 100000521 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(107) GID 1 SID 100000522 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(108) GID 1 SID 100000523 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(109) GID 1 SID 100000524 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(110) GID 1 SID 100000525 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(111) GID 1 SID 100000526 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(112) GID 1 SID 100000527 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(113) GID 1 SID 100000528 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(114) GID 1 SID 100000529 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(115) GID 1 SID 100000530 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(116) GID 1 SID 100000531 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(117) GID 1 SID 100000532 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(118) GID 1 SID 100000533 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(119) GID 1 SID 100000534 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(120) GID 1 SID 100000535 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(121) GID 1 SID 100000536 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(122) GID 1 SID 100000537 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(123) GID 1 SID 100000538 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(124) GID 1 SID 100000539 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(125) GID 1 SID 100000540 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(126) GID 1 SID 100000541 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(127) GID 1 SID 100000542 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(128) GID 1 SID 100000543 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(129) GID 1 SID 100000544 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(130) GID 1 SID 100000545 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(131) GID 1 SID 100000546 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(132) GID 1 SID 100000547 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(133) GID 1 SID 100000548 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(134) GID 1 SID 100000549 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(135) GID 1 SID 100000550 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(136) GID 1 SID 100000551 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(137) GID 1 SID 100000552 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(138) GID 1 SID 100000553 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(139) GID 1 SID 100000554 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(140) GID 1 SID 100000555 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(141) GID 1 SID 100000556 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(142) GID 1 SID 100000557 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(143) GID 1 SID 100000558 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(144) GID 1 SID 100000559 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(145) GID 1 SID 100000560 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(146) GID 1 SID 100000561 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(147) GID 1 SID 100000562 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(148) GID 1 SID 100000563 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(149) GID 1 SID 100000564 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(150) GID 1 SID 100000565 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(151) GID 1 SID 100000566 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(152) GID 1 SID 100000567 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(153) GID 1 SID 100000568 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(154) GID 1 SID 100000569 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(155) GID 1 SID 100000570 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(156) GID 1 SID 100000571 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(157) GID 1 SID 100000572 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(158) GID 1 SID 100000573 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(159) GID 1 SID 100000574 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(160) GID 1 SID 100000575 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(161) GID 1 SID 100000576 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(162) GID 1 SID 100000577 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(163) GID 1 SID 100000578 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(164) GID 1 SID 100000579 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(165) GID 1 SID 100000580 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(166) GID 1 SID 100000581 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(167) GID 1 SID 100000582 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(168) GID 1 SID 100000583 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(169) GID 1 SID 100000584 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(170) GID 1 SID 100000585 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(171) GID 1 SID 100000586 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(172) GID 1 SID 100000587 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(173) GID 1 SID 100000588 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(174) GID 1 SID 100000589 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(175) GID 1 SID 100000590 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(176) GID 1 SID 100000591 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(177) GID 1 SID 100000592 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(178) GID 1 SID 100000593 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(179) GID 1 SID 100000594 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(180) GID 1 SID 100000595 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(181) GID 1 SID 100000596 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(182) GID 1 SID 100000597 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(183) GID 1 SID 100000598 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(184) GID 1 SID 100000599 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(185) GID 1 SID 100000600 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(186) GID 1 SID 100000601 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(187) GID 1 SID 100000602 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(188) GID 1 SID 100000603 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(189) GID 1 SID 100000604 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(190) GID 1 SID 100000605 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(191) GID 1 SID 100000606 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(192) GID 1 SID 100000607 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(193) GID 1 SID 100000608 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(194) GID 1 SID 100000609 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(195) GID 1 SID 100000610 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(196) GID 1 SID 100000611 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(197) GID 1 SID 100000612 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(198) GID 1 SID 100000613 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(199) GID 1 SID 100000614 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(200) GID 1 SID 100000615 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(201) GID 1 SID 100000616 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(202) GID 1 SID 100000617 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(203) GID 1 SID 100000618 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(204) GID 1 SID 100000619 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(205) GID 1 SID 100000620 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(206) GID 1 SID 100000621 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(207) GID 1 SID 100000622 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(208) GID 1 SID 100000623 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(209) GID 1 SID 100000624 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(210) GID 1 SID 100000625 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(211) GID 1 SID 100000626 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(212) GID 1 SID 100000627 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(213) GID 1 SID 100000628 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(214) GID 1 SID 100000629 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(215) GID 1 SID 100000630 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(216) GID 1 SID 100000631 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(217) GID 1 SID 100000632 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(218) GID 1 SID 100000633 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(219) GID 1 SID 100000634 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(220) GID 1 SID 100000635 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(221) GID 1 SID 100000636 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(222) GID 1 SID 100000637 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(223) GID 1 SID 100000638 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(224) GID 1 SID 100000639 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(225) GID 1 SID 100000640 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(226) GID 1 SID 100000641 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(227) GID 1 SID 100000642 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(228) GID 1 SID 100000643 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(229) GID 1 SID 100000644 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(230) GID 1 SID 100000645 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(231) GID 1 SID 100000646 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(232) GID 1 SID 100000647 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(233) GID 1 SID 100000648 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(234) GID 1 SID 100000649 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(235) GID 1 SID 100000650 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(236) GID 1 SID 100000651 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(237) GID 1 SID 100000652 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(238) GID 1 SID 100000653 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(239) GID 1 SID 100000654 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(240) GID 1 SID 100000655 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(241) GID 1 SID 100000656 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(242) GID 1 SID 100000657 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(243) GID 1 SID 100000658 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(244) GID 1 SID 100000659 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(245) GID 1 SID 100000660 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(246) GID 1 SID 100000661 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(247) GID 1 SID 100000662 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(248) GID 1 SID 100000663 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(249) GID 1 SID 100000664 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(250) GID 1 SID 100000665 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(251) GID 1 SID 100000666 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(252) GID 1 SID 100000667 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(253) GID 1 SID 100000668 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(254) GID 1 SID 100000669 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(255) GID 1 SID 100000670 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(256) GID 1 SID 100000671 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(257) GID 1 SID 100000672 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(258) GID 1 SID 100000673 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(259) GID 1 SID 100000674 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(260) GID 1 SID 100000675 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(261) GID 1 SID 100000676 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(262) GID 1 SID 100000677 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(263) GID 1 SID 100000678 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(264) GID 1 SID 100000679 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(265) GID 1 SID 100000680 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(266) GID 1 SID 100000681 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(267) GID 1 SID 100000682 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(268) GID 1 SID 100000683 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(270) GID 1 SID 100000703 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(271) GID 1 SID 100000704 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(272) GID 1 SID 100000705 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(273) GID 1 SID 100000706 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(274) GID 1 SID 100000707 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(275) GID 1 SID 100000708 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(276) GID 1 SID 100000709 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(277) GID 1 SID 100000710 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(278) GID 1 SID 100000711 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(279) GID 1 SID 100000712 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(280) GID 1 SID 100000713 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(281) GID 1 SID 100000714 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(282) GID 1 SID 100000715 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(283) GID 1 SID 100000716 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(284) GID 1 SID 100000717 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(285) GID 1 SID 100000718 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(286) GID 1 SID 100000719 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(287) GID 1 SID 100000720 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(288) GID 1 SID 100000721 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(289) GID 1 SID 100000722 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(290) GID 1 SID 100000723 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(291) GID 1 SID 100000724 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(292) GID 1 SID 100000725 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(293) GID 1 SID 100000726 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(294) GID 1 SID 100000727 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(295) GID 1 SID 100000728 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(296) GID 1 SID 100000729 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(297) GID 1 SID 100000730 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(298) GID 1 SID 100000731 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(299) GID 1 SID 100000732 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(300) GID 1 SID 100000733 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(301) GID 1 SID 100000734 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(302) GID 1 SID 100000735 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(303) GID 1 SID 100000736 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(304) GID 1 SID 100000737 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(305) GID 1 SID 100000738 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(306) GID 1 SID 100000739 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(307) GID 1 SID 100000740 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(308) GID 1 SID 100000741 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(309) GID 1 SID 100000742 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(310) GID 1 SID 100000743 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(311) GID 1 SID 100000744 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(312) GID 1 SID 100000745 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(313) GID 1 SID 100000746 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(314) GID 1 SID 100000747 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(315) GID 1 SID 100000748 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(316) GID 1 SID 100000749 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(317) GID 1 SID 100000750 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(318) GID 1 SID 100000751 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(319) GID 1 SID 100000752 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(320) GID 1 SID 100000753 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(321) GID 1 SID 100000754 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(322) GID 1 SID 100000755 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(323) GID 1 SID 100000756 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(324) GID 1 SID 100000757 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(325) GID 1 SID 100000758 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(326) GID 1 SID 100000759 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(327) GID 1 SID 100000760 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(328) GID 1 SID 100000761 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(329) GID 1 SID 100000762 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(330) GID 1 SID 100000763 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(331) GID 1 SID 100000764 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(332) GID 1 SID 100000765 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(333) GID 1 SID 100000766 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(334) GID 1 SID 100000767 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(335) GID 1 SID 100000768 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(336) GID 1 SID 100000769 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(337) GID 1 SID 100000770 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(338) GID 1 SID 100000771 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(339) GID 1 SID 100000772 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(340) GID 1 SID 100000773 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(341) GID 1 SID 100000774 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(342) GID 1 SID 100000775 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(343) GID 1 SID 100000776 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(344) GID 1 SID 100000777 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(345) GID 1 SID 100000778 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(346) GID 1 SID 100000779 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(347) GID 1 SID 100000780 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(348) GID 1 SID 100000781 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(349) GID 1 SID 100000782 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(350) GID 1 SID 100000783 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(351) GID 1 SID 100000784 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(352) GID 1 SID 100000785 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(353) GID 1 SID 100000786 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(354) GID 1 SID 100000787 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(355) GID 1 SID 100000788 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(356) GID 1 SID 100000789 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(357) GID 1 SID 100000790 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(358) GID 1 SID 100000791 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(359) GID 1 SID 100000792 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(360) GID 1 SID 100000793 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(361) GID 1 SID 100000794 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(362) GID 1 SID 100000795 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(363) GID 1 SID 100000796 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(364) GID 1 SID 100000797 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(365) GID 1 SID 100000798 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(366) GID 1 SID 100000799 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(367) GID 1 SID 100000800 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(368) GID 1 SID 100000801 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(369) GID 1 SID 100000802 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(370) GID 1 SID 100000803 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(371) GID 1 SID 100000804 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(372) GID 1 SID 100000805 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(373) GID 1 SID 100000806 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(374) GID 1 SID 100000807 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(375) GID 1 SID 100000808 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(376) GID 1 SID 100000809 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(377) GID 1 SID 100000810 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(378) GID 1 SID 100000811 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(379) GID 1 SID 100000812 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(380) GID 1 SID 100000813 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(381) GID 1 SID 100000814 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(382) GID 1 SID 100000815 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(383) GID 1 SID 100000816 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(384) GID 1 SID 100000817 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(385) GID 1 SID 100000818 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(386) GID 1 SID 100000820 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(387) GID 1 SID 100000821 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(388) GID 1 SID 100000822 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(389) GID 1 SID 100000823 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(390) GID 1 SID 100000824 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(391) GID 1 SID 100000825 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(392) GID 1 SID 100000826 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(393) GID 1 SID 100000827 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(394) GID 1 SID 100000828 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(395) GID 1 SID 100000829 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(396) GID 1 SID 100000830 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(397) GID 1 SID 100000831 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(398) GID 1 SID 100000832 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(399) GID 1 SID 100000833 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(400) GID 1 SID 100000834 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(401) GID 1 SID 100000835 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(402) GID 1 SID 100000836 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(403) GID 1 SID 100000837 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(404) GID 1 SID 100000838 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(405) GID 1 SID 100000839 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(406) GID 1 SID 100000840 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(407) GID 1 SID 100000841 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(408) GID 1 SID 100000842 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(409) GID 1 SID 100000843 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(410) GID 1 SID 100000844 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(411) GID 1 SID 100000845 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(412) GID 1 SID 100000846 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(413) GID 1 SID 100000847 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(414) GID 1 SID 100000849 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(415) GID 1 SID 100000850 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(416) GID 1 SID 100000851 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(417) GID 1 SID 100000852 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(418) GID 1 SID 100000853 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(419) GID 1 SID 100000854 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(420) GID 1 SID 100000855 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(421) GID 1 SID 100000856 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(422) GID 1 SID 100000857 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(423) GID 1 SID 100000858 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(424) GID 1 SID 100000859 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(425) GID 1 SID 100000860 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(426) GID 1 SID 100000861 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(427) GID 1 SID 100000862 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(428) GID 1 SID 100000863 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(431) GID 1 SID 100000865 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(432) GID 1 SID 100000866 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(433) GID 1 SID 100000867 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(434) GID 1 SID 100000868 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(435) GID 1 SID 100000869 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(436) GID 1 SID 100000870 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(437) GID 1 SID 100000871 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(438) GID 1 SID 100000872 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(439) GID 1 SID 100000873 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(441) GID 1 SID 100000882 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(443) GID 1 SID 100000883 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(444) GID 1 SID 100000884 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(445) GID 1 SID 100000885 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(446) GID 1 SID 100000886 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(447) GID 1 SID 100000887 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(448) GID 1 SID 100000888 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(449) GID 1 SID 100000889 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(450) GID 1 SID 100000906 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(451) GID 1 SID 100000907 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(452) GID 1 SID 100000908 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(453) GID 1 SID 100000909 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(454) GID 1 SID 100000910 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(455) GID 1 SID 100000911 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(456) GID 1 SID 100000912 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(457) GID 1 SID 100000913 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(458) GID 1 SID 100000914 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(459) GID 1 SID 100000915 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(460) GID 1 SID 100000916 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(461) GID 1 SID 100000917 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(462) GID 1 SID 100000918 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(463) GID 1 SID 100000919 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(464) GID 1 SID 100000920 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(465) GID 1 SID 100000921 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(466) GID 1 SID 100000922 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(467) GID 1 SID 100000925 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(468) GID 1 SID 100000926 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(469) GID 1 SID 100000929 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(470) GID 1 SID 100000930 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(471) GID 1 SID 100000931 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(472) GID 1 SID 100000932 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(473) GID 1 SID 100000933 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(474) GID 1 SID 100000934 in rule duplicates previous rule. Ignoring old rule.
+
+4151 Snort rules read
+    3477 detection rules
+    0 decoder rules
+    0 preprocessor rules
+3477 Option Chains linked into 271 Chain Headers
+0 Dynamic rules
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++-------------------[Rule Port Counts]---------------------------------------
+|             tcp     udp    icmp      ip
+|     src     151      18       0       0
+|     dst    3306     126       0       0
+|     any     383      48     146      22
+|      nc      27       8      95      20
+|     s+d      12       5       0       0
++----------------------------------------------------------------------------
+
++-----------------------[detection-filter-config]------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[detection-filter-rules]-------------------------------
+| none
+-------------------------------------------------------------------------------
+
++-----------------------[rate-filter-config]-----------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[rate-filter-rules]------------------------------------
+| none
+-------------------------------------------------------------------------------
+
++-----------------------[event-filter-config]----------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[event-filter-global]----------------------------------
+| none
++-----------------------[event-filter-local]-----------------------------------
+| gen-id=1      sig-id=2275       type=Threshold tracking=dst count=5   seconds=60 
+| gen-id=1      sig-id=2924       type=Threshold tracking=dst count=10  seconds=60 
+| gen-id=1      sig-id=3152       type=Threshold tracking=src count=5   seconds=2  
+| gen-id=1      sig-id=2496       type=Both      tracking=dst count=20  seconds=60 
+| gen-id=1      sig-id=2523       type=Both      tracking=dst count=10  seconds=10 
+| gen-id=1      sig-id=1991       type=Limit     tracking=src count=1   seconds=60 
+| gen-id=1      sig-id=3273       type=Threshold tracking=src count=5   seconds=2  
+| gen-id=1      sig-id=2494       type=Both      tracking=dst count=20  seconds=60 
+| gen-id=1      sig-id=2495       type=Both      tracking=dst count=20  seconds=60 
+| gen-id=1      sig-id=2923       type=Threshold tracking=dst count=10  seconds=60 
++-----------------------[suppression]------------------------------------------
+| none
+-------------------------------------------------------------------------------
+Rule application order: activation->dynamic->pass->drop->sdrop->reject->alert->log
+Verifying Preprocessor Configurations!
+WARNING: flowbits key 'ms_sql_seen_dns' is checked but not ever set.
+WARNING: flowbits key 'smb.tree.create.llsrpc' is set but not ever checked.
+33 out of 1024 flowbits in use.
+
+[ Port Based Pattern Matching Memory ]
++- [ Aho-Corasick Summary ] -------------------------------------
+| Storage Format    : Full-Q 
+| Finite Automaton  : DFA
+| Alphabet Size     : 256 Chars
+| Sizeof State      : Variable (1,2,4 bytes)
+| Instances         : 215
+|     1 byte states : 204
+|     2 byte states : 11
+|     4 byte states : 0
+| Characters        : 64982
+| States            : 32135
+| Transitions       : 872051
+| State Density     : 10.6%
+| Patterns          : 5055
+| Match States      : 3855
+| Memory (MB)       : 17.00
+|   Patterns        : 0.51
+|   Match Lists     : 1.02
+|   DFA
+|     1 byte states : 1.02
+|     2 byte states : 14.05
+|     4 byte states : 0.00
++----------------------------------------------------------------
+[ Number of patterns truncated to 20 bytes: 1039 ]
+pcap DAQ configured to passive.
+Acquiring network traffic from "eth0".
+Reload thread starting...
+Reload thread started, thread 0x7f92e1ca4700 (7243)
+Decoding Ethernet
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+           Rules Engine: SF_SNORT_DETECTION_ENGINE  Version 2.4  <Build 1>
+           Preprocessor Object: SF_POP  Version 1.0  <Build 1>
+           Preprocessor Object: SF_SSH  Version 1.1  <Build 3>
+           Preprocessor Object: SF_DNP3  Version 1.1  <Build 1>
+           Preprocessor Object: SF_DNS  Version 1.1  <Build 4>
+           Preprocessor Object: SF_GTP  Version 1.1  <Build 1>
+           Preprocessor Object: SF_MODBUS  Version 1.1  <Build 1>
+           Preprocessor Object: SF_SDF  Version 1.1  <Build 1>
+           Preprocessor Object: SF_DCERPC2  Version 1.0  <Build 3>
+           Preprocessor Object: SF_FTPTELNET  Version 1.2  <Build 13>
+           Preprocessor Object: SF_REPUTATION  Version 1.1  <Build 1>
+           Preprocessor Object: SF_SMTP  Version 1.1  <Build 9>
+           Preprocessor Object: SF_IMAP  Version 1.0  <Build 1>
+           Preprocessor Object: SF_SIP  Version 1.1  <Build 1>
+           Preprocessor Object: SF_SSLPP  Version 1.1  <Build 4>
+Commencing packet processing (pid=7235)
+^C*** Caught Int-Signal
+===============================================================================
+Run time for packet processing was 56.8457 seconds
+Snort processed 1575 packets.
+Snort ran for 0 days 0 hours 0 minutes 56 seconds
+   Pkts/sec:           28
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       44691456
+  Bytes in mapped regions (hblkhd):      13574144
+  Total allocated space (uordblks):      40376656
+  Total free space (fordblks):           4314800
+  Topmost releasable block (keepcost):   78912
+===============================================================================
+Packet I/O Totals:
+   Received:         1627
+   Analyzed:         1575 ( 96.804%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:           52 (  3.196%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:         1580 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:         1574 ( 99.620%)
+       Frag:            0 (  0.000%)
+       ICMP:           68 (  4.304%)
+        UDP:            4 (  0.253%)
+        TCP:         1359 ( 86.013%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            6 (  0.380%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:          143 (  9.051%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:          143 (  9.051%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:          487 ( 30.823%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            4 (  0.253%)
+     S5 G 2:            1 (  0.063%)
+      Total:         1580
+===============================================================================
+Action Stats:
+     Alerts:          170 ( 10.759%)
+     Logged:          170 ( 10.759%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:         1575 ( 96.804%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Frag3 statistics:
+        Total Fragments: 0
+      Frags Reassembled: 0
+               Discards: 0
+          Memory Faults: 0
+               Timeouts: 0
+               Overlaps: 0
+              Anomalies: 0
+                 Alerts: 0
+                  Drops: 0
+     FragTrackers Added: 0
+    FragTrackers Dumped: 0
+FragTrackers Auto Freed: 0
+    Frag Nodes Inserted: 0
+     Frag Nodes Deleted: 0
+===============================================================================
+===============================================================================
+Stream statistics:
+            Total sessions: 9
+              TCP sessions: 7
+              UDP sessions: 2
+             ICMP sessions: 0
+               IP sessions: 0
+                TCP Prunes: 0
+                UDP Prunes: 0
+               ICMP Prunes: 0
+                 IP Prunes: 0
+TCP StreamTrackers Created: 7
+TCP StreamTrackers Deleted: 7
+              TCP Timeouts: 0
+              TCP Overlaps: 0
+       TCP Segments Queued: 414
+     TCP Segments Released: 414
+       TCP Rebuilt Packets: 5
+         TCP Segments Used: 18
+              TCP Discards: 1
+                  TCP Gaps: 0
+      UDP Sessions Created: 2
+      UDP Sessions Deleted: 2
+              UDP Timeouts: 0
+              UDP Discards: 0
+                    Events: 96
+           Internal Events: 0
+           TCP Port Filter
+                  Filtered: 0
+                 Inspected: 0
+                   Tracked: 868
+           UDP Port Filter
+                  Filtered: 0
+                 Inspected: 0
+                   Tracked: 2
+===============================================================================
+HTTP Inspect - encodings (Note: stream-reassembled packets included):
+    POST methods:                         0         
+    GET methods:                          2         
+    HTTP Request Headers extracted:       2         
+    HTTP Request Cookies extracted:       0         
+    Post parameters extracted:            0         
+    HTTP response Headers extracted:      3         
+    HTTP Response Cookies extracted:      0         
+    Unicode:                              0         
+    Double unicode:                       0         
+    Non-ASCII representable:              0         
+    Directory traversals:                 0         
+    Extra slashes ("//"):                 1         
+    Self-referencing paths ("./"):        0         
+    HTTP Response Gzip packets extracted: 1         
+    Gzip Compressed Data Processed:       1272.00   
+    Gzip Decompressed Data Processed:     3608.00   
+    Total packets processed:              420       
+===============================================================================
+SMTP Preprocessor Statistics
+  Total sessions                                    : 0
+  Max concurrent sessions                           : 0
+===============================================================================
+dcerpc2 Preprocessor Statistics
+  Total sessions: 0
+===============================================================================
+===============================================================================
+SIP Preprocessor Statistics
+  Total sessions: 0
+===============================================================================
+Snort exiting
+
+ubuntu@ip-10-10-52-242:~/Desktop/Task-Exercises$ ls
+10.10.52.242  142.250.187.110  172.67.27.10     Config-Sample   PACKET_NONIP
+10.100.1.202  145.254.160.237  192.168.175.129  Exercise-Files  traffic-generator.sh
+ubuntu@ip-10-10-52-242:~/Desktop/Task-Exercises$ sudo ./traffic-generator.sh
+```
+```text
+# Option “-e” is deprecated and might be removed in a later version of gnome-terminal.
+```
+```text
+# Use “-- ” to terminate the options and put the command line to execute after it.
+
+first execute sniff then the traffic generator task 7
+
+  GET methods:                          2
+```
+*2*
+You can practice the rest of the parameters by using the traffic-generator script.
+```text
+practicing
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises# cd /etc/snort
+root@ip-10-10-52-242:/etc/snort# ls
+classification.config  gen-msg.map       rules       snort.debian.conf  threshold.conf
+community-sid-msg.map  reference.config  snort.conf  snortv2.conf       unicode.map
+root@ip-10-10-52-242:/etc/snort# cat snort.conf
+#--------------------------------------------------
+```
+```text
+#   VRT Rule Packages Snort.conf
+#
+```
+```text
+#   For more information visit us at:
+```
+```text
+#     http://www.snort.org                   Snort Website
+```
+```text
+#     http://vrt-blog.snort.org/    Sourcefire VRT Blog
+#
+```
+```text
+#     Mailing list Contact:      snort-sigs@lists.sourceforge.net
+```
+```text
+#     False Positive reports:    fp@sourcefire.com
+```
+```text
+#     Snort bugs:                bugs@snort.org
+#
+```
+```text
+#     Compatible with Snort Versions:
+```
+```text
+#     VERSIONS : 2.9.7.0
+#
+```
+```text
+#     Snort build options:
+```
+```text
+#     OPTIONS : --enable-gre --enable-mpls --enable-targetbased --enable-ppm --enable-perfprofiling --enable-zlib --enable-active-response --enable-normalizer --enable-reload --enable-react --enable-flexresp3
+#
+```
+```text
+#     Additional information:
+```
+```text
+#     This configuration file enables active response, to run snort in
+```
+```text
+#     test mode -T you are required to supply an interface -i <interface>
+```
+```text
+#     or test mode will fail to fully validate the configuration and
+```
+```text
+#     exit with a FATAL error
+#--------------------------------------------------
+
+###################################################
+```
+```text
+# This file contains a sample snort configuration.
+```
+```text
+# You should take the following steps to create your own custom configuration:
+#
+```
+```text
+#  1) Set the network variables.
+```
+```text
+#  2) Configure the decoder
+```
+```text
+#  3) Configure the base detection engine
+```
+```text
+#  4) Configure dynamic loaded libraries
+```
+```text
+#  5) Configure preprocessors
+```
+```text
+#  6) Configure output plugins
+```
+```text
+#  7) Customize your rule set
+```
+```text
+#  8) Customize preprocessor and decoder rule set
+```
+```text
+#  9) Customize shared object rule set
+###################################################
+
+###################################################
+```
+```text
+# Step #1: Set the network variables.  For more information, see README.variables
+###################################################
+```
+```text
+# Setup the network addresses you are protecting
+#
+```
+```text
+# Note to Debian users: this value is overriden when starting
+```
+```text
+# up the Snort daemon through the init.d script by the
+```
+```text
+# value of DEBIAN_SNORT_HOME_NET s defined in the
+```
+```text
+# /etc/snort/snort.debian.conf configuration file
+#
+ipvar HOME_NET any
+```
+```text
+# Set up the external network addresses. Leave as "any" in most situations
+ipvar EXTERNAL_NET any
+```
+```text
+# If HOME_NET is defined as something other than "any", alternative, you can
+```
+```text
+# use this definition if you do not want to detect attacks from your internal
+```
+```text
+# IP addresses:
+#ipvar EXTERNAL_NET !$HOME_NET
+```
+```text
+# List of DNS servers on your network 
+ipvar DNS_SERVERS $HOME_NET
+```
+```text
+# List of SMTP servers on your network
+ipvar SMTP_SERVERS $HOME_NET
+```
+```text
+# List of web servers on your network
+ipvar HTTP_SERVERS $HOME_NET
+```
+```text
+# List of sql servers on your network 
+ipvar SQL_SERVERS $HOME_NET
+```
+```text
+# List of telnet servers on your network
+ipvar TELNET_SERVERS $HOME_NET
+```
+```text
+# List of ssh servers on your network
+ipvar SSH_SERVERS $HOME_NET
+```
+```text
+# List of ftp servers on your network
+ipvar FTP_SERVERS $HOME_NET
+```
+```text
+# List of sip servers on your network
+ipvar SIP_SERVERS $HOME_NET
+```
+```text
+# List of ports you run web servers on
+portvar HTTP_PORTS [80,81,311,383,591,593,901,1220,1414,1741,1830,2301,2381,2809,3037,3128,3702,4343,4848,5250,6988,7000,7001,7144,7145,7510,7777,7779,8000,8008,8014,8028,8080,8085,8088,8090,8118,8123,8180,8181,8243,8280,8300,8800,8888,8899,9000,9060,9080,9090,9091,9443,9999,11371,34443,34444,41080,50002,55555]
+```
+```text
+# List of ports you want to look for SHELLCODE on.
+portvar SHELLCODE_PORTS !80
+```
+```text
+# List of ports you might see oracle attacks on
+portvar ORACLE_PORTS 1024:
+```
+```text
+# List of ports you want to look for SSH connections on:
+portvar SSH_PORTS 22
+```
+```text
+# List of ports you run ftp servers on
+portvar FTP_PORTS [21,2100,3535]
+```
+```text
+# List of ports you run SIP servers on
+portvar SIP_PORTS [5060,5061,5600]
+```
+```text
+# List of file data ports for file inspection
+portvar FILE_DATA_PORTS [$HTTP_PORTS,110,143]
+```
+```text
+# List of GTP ports for GTP preprocessor
+portvar GTP_PORTS [2123,2152,3386]
+```
+```text
+# other variables, these should not be modified
+ipvar AIM_SERVERS [64.12.24.0/23,64.12.28.0/23,64.12.161.0/24,64.12.163.0/24,64.12.200.0/24,205.188.3.0/24,205.188.5.0/24,205.188.7.0/24,205.188.9.0/24,205.188.153.0/24,205.188.179.0/24,205.188.248.0/24]
+```
+```text
+# Path to your rules files (this can be a relative path)
+```
+```text
+# Note for Windows users:  You are advised to make this an absolute path,
+```
+```text
+# such as:  c:\snort\rules
+var RULE_PATH /etc/snort/rules
+var SO_RULE_PATH /etc/snort/so_rules
+var PREPROC_RULE_PATH /etc/snort/preproc_rules
+```
+```text
+# If you are using reputation preprocessor set these
+```
+```text
+# Currently there is a bug with relative paths, they are relative to where snort is
+```
+```text
+# not relative to snort.conf like the above variables
+```
+```text
+# This is completely inconsistent with how other vars work, BUG 89986
+```
+```text
+# Set the absolute path appropriately
+var WHITE_LIST_PATH /etc/snort/rules
+var BLACK_LIST_PATH /etc/snort/rules
+
+###################################################
+```
+```text
+# Step #2: Configure the decoder.  For more information, see README.decode
+###################################################
+```
+```text
+# Stop generic decode events:
+config disable_decode_alerts
+```
+```text
+# Stop Alerts on experimental TCP options
+config disable_tcpopt_experimental_alerts
+```
+```text
+# Stop Alerts on obsolete TCP options
+config disable_tcpopt_obsolete_alerts
+```
+```text
+# Stop Alerts on T/TCP alerts
+config disable_tcpopt_ttcp_alerts
+```
+```text
+# Stop Alerts on all other TCPOption type events:
+config disable_tcpopt_alerts
+```
+```text
+# Stop Alerts on invalid ip options
+config disable_ipopt_alerts
+```
+```text
+# Alert if value in length field (IP, TCP, UDP) is greater th elength of the packet
+```
+```text
+# config enable_decode_oversized_alerts
+```
+```text
+# Same as above, but drop packet if in Inline mode (requires enable_decode_oversized_alerts)
+```
+```text
+# config enable_decode_oversized_drops
+```
+```text
+# Configure IP / TCP checksum mode
+config checksum_mode: all
+```
+```text
+# Configure maximum number of flowbit references.  For more information, see README.flowbits
+```
+```text
+# config flowbits_size: 64
+```
+```text
+# Configure ports to ignore
+```
+```text
+# config ignore_ports: tcp 21 6667:6671 1356
+```
+```text
+# config ignore_ports: udp 1:17 53
+```
+```text
+# Configure active response for non inline operation. For more information, see REAMDE.active
+```
+```text
+# config response: eth0 attempts 2
+```
+```text
+# Configure DAQ related options for inline operation. For more information, see README.daq
+#
+```
+```text
+# config daq: <type>
+```
+```text
+# config daq_dir: <dir>
+```
+```text
+# config daq_mode: <mode>
+```
+```text
+# config daq_var: <var>
+#
+```
+```text
+# <type> ::= pcap | afpacket | dump | nfq | ipq | ipfw
+```
+```text
+# <mode> ::= read-file | passive | inline
+```
+```text
+# <var> ::= arbitrary <name>=<value passed to DAQ
+```
+```text
+# <dir> ::= path as to where to look for DAQ module so's
+```
+```text
+# Configure specific UID and GID to run snort as after dropping privs. For more information see snort -h command line options
+#
+```
+```text
+# config set_gid:
+```
+```text
+# config set_uid:
+```
+```text
+# Configure default snaplen. Snort defaults to MTU of in use interface. For more information see README
+#
+```
+```text
+# config snaplen:
+#
+```
+```text
+# Configure default bpf_file to use for filtering what traffic reaches snort. For more information see snort -h command line options (-F)
+#
+```
+```text
+# config bpf_file:
+#
+```
+```text
+# Configure default log directory for snort to log to.  For more information see snort -h command line options (-l)
+#
+```
+```text
+# config logdir:
+
+###################################################
+```
+```text
+# Step #3: Configure the base detection engine.  For more information, see  README.decode
+###################################################
+```
+```text
+# Configure PCRE match limitations
+config pcre_match_limit: 3500
+config pcre_match_limit_recursion: 1500
+```
+```text
+# Configure the detection engine  See the Snort Manual, Configuring Snort - Includes - Config
+config detection: search-method ac-split search-optimize max-pattern-len 20
+```
+```text
+# Configure the event queue.  For more information, see README.event_queue
+config event_queue: max_queue 8 log 5 order_events content_length
+
+###################################################
+## Configure GTP if it is to be used.
+## For more information, see README.GTP
+####################################################
+```
+```text
+# config enable_gtp
+
+###################################################
+```
+```text
+# Per packet and rule latency enforcement
+```
+```text
+# For more information see README.ppm
+###################################################
+```
+```text
+# Per Packet latency configuration
+#config ppm: max-pkt-time 250, \
+```
+```text
+#   fastpath-expensive-packets, \
+```
+```text
+#   pkt-log
+```
+```text
+# Per Rule latency configuration
+#config ppm: max-rule-time 200, \
+```
+```text
+#   threshold 3, \
+```
+```text
+#   suspend-expensive-rules, \
+```
+```text
+#   suspend-timeout 20, \
+```
+```text
+#   rule-log alert
+
+###################################################
+```
+```text
+# Configure Perf Profiling for debugging
+```
+```text
+# For more information see README.PerfProfiling
+###################################################
+
+#config profile_rules: print all, sort avg_ticks
+#config profile_preprocs: print all, sort avg_ticks
+
+###################################################
+```
+```text
+# Configure protocol aware flushing
+```
+```text
+# For more information see README.stream5
+###################################################
+config paf_max: 16000
+
+###################################################
+```
+```text
+# Step #4: Configure dynamic loaded libraries.
+```
+```text
+# For more information, see Snort Manual, Configuring Snort - Dynamic Modules
+###################################################
+```
+```text
+# path to dynamic preprocessor libraries
+dynamicpreprocessor directory /usr/lib/snort_dynamicpreprocessor/
+```
+```text
+# path to base preprocessor engine
+dynamicengine /usr/lib/snort_dynamicengine/libsf_engine.so
+```
+```text
+# path to dynamic rules libraries
+dynamicdetection directory /usr/lib/snort_dynamicrules
+
+###################################################
+```
+```text
+# Step #5: Configure preprocessors
+```
+```text
+# For more information, see the Snort Manual, Configuring Snort - Preprocessors
+###################################################
+```
+```text
+# GTP Control Channle Preprocessor. For more information, see README.GTP
+```
+```text
+# preprocessor gtp: ports { 2123 3386 2152 }
+```
+```text
+# Inline packet normalization. For more information, see README.normalize
+```
+```text
+# Does nothing in IDS mode
+preprocessor normalize_ip4
+preprocessor normalize_tcp: ips ecn stream
+preprocessor normalize_icmp4
+preprocessor normalize_ip6
+preprocessor normalize_icmp6
+```
+```text
+# Target-based IP defragmentation.  For more inforation, see README.frag3
+preprocessor frag3_global: max_frags 65536
+preprocessor frag3_engine: policy windows detect_anomalies overlap_limit 10 min_fragment_length 100 timeout 180
+```
+```text
+# Target-Based stateful inspection/stream reassembly.  For more inforation, see README.stream5
+preprocessor stream5_global: track_tcp yes, \
+   track_udp yes, \
+   track_icmp no, \ 
+   max_tcp 262144, \
+   max_udp 131072, \
+   max_active_responses 2, \
+   min_response_seconds 5
+preprocessor stream5_tcp: policy windows, detect_anomalies, require_3whs 180, \
+   overlap_limit 10, small_segments 3 bytes 150, timeout 180, \
+    ports client 21 22 23 25 42 53 79 109 110 111 113 119 135 136 137 139 143 \
+        161 445 513 514 587 593 691 1433 1521 1741 2100 3306 6070 6665 6666 6667 6668 6669 \
+        7000 8181 32770 32771 32772 32773 32774 32775 32776 32777 32778 32779, \
+    ports both 80 81 311 383 443 465 563 591 593 636 901 989 992 993 994 995 1220 1414 1830 2301 2381 2809 3037 3128 3702 4343 4848 5250 6988 7907 7000 7001 7144 7145 7510 7802 7777 7779 \
+        7801 7900 7901 7902 7903 7904 7905 7906 7908 7909 7910 7911 7912 7913 7914 7915 7916 \
+        7917 7918 7919 7920 8000 8008 8014 8028 8080 8085 8088 8090 8118 8123 8180 8243 8280 8300 8800 8888 8899 9000 9060 9080 9090 9091 9443 9999 11371 34443 34444 41080 50002 55555
+preprocessor stream5_udp: timeout 180
+```
+```text
+# performance statistics.  For more information, see the Snort Manual, Configuring Snort - Preprocessors - Performance Monitor
+```
+```text
+# preprocessor perfmonitor: time 300 file /var/snort/snort.stats pktcnt 10000
+```
+```text
+# HTTP normalization and anomaly detection.  For more information, see README.http_inspect
+preprocessor http_inspect: global iis_unicode_map unicode.map 1252 compress_depth 65535 decompress_depth 65535 max_gzip_mem 104857600
+preprocessor http_inspect_server: server default \
+    http_methods { GET POST PUT SEARCH MKCOL COPY MOVE LOCK UNLOCK NOTIFY POLL BCOPY BDELETE BMOVE LINK UNLINK OPTIONS HEAD DELETE TRACE TRACK CONNECT SOURCE SUBSCRIBE UNSUBSCRIBE PROPFIND PROPPATCH BPROPFIND BPROPPATCH RPC_CONNECT PROXY_SUCCESS BITS_POST CCM_POST SMS_POST RPC_IN_DATA RPC_OUT_DATA RPC_ECHO_DATA } \
+    chunk_length 500000 \
+    server_flow_depth 0 \
+    client_flow_depth 0 \
+    post_depth 65495 \
+    oversize_dir_length 500 \
+    max_header_length 750 \
+    max_headers 100 \
+    max_spaces 200 \
+    small_chunk_length { 10 5 } \
+    ports { 80 81 311 383 591 593 901 1220 1414 1741 1830 2301 2381 2809 3037 3128 3702 4343 4848 5250 6988 7000 7001 7144 7145 7510 7777 7779 8000 8008 8014 8028 8080 8085 8088 8090 8118 8123 8180 8181 8243 8280 8300 8800 8888 8899 9000 9060 9080 9090 9091 9443 9999 11371 34443 34444 41080 50002 55555 } \
+    non_rfc_char { 0x00 0x01 0x02 0x03 0x04 0x05 0x06 0x07 } \
+    enable_cookie \
+    extended_response_inspection \
+    inspect_gzip \
+    normalize_utf \
+    unlimited_decompress \
+    normalize_javascript \
+    apache_whitespace no \
+    ascii no \
+    bare_byte no \
+    directory no \
+    double_decode no \
+    iis_backslash no \
+    iis_delimiter no \
+    iis_unicode no \
+    multi_slash no \
+    utf_8 no \
+    u_encode yes \
+    webroot no
+```
+```text
+# ONC-RPC normalization and anomaly detection.  For more information, see the Snort Manual, Configuring Snort - Preprocessors - RPC Decode
+preprocessor rpc_decode: 111 32770 32771 32772 32773 32774 32775 32776 32777 32778 32779 no_alert_multiple_requests no_alert_large_fragments no_alert_incomplete
+```
+```text
+# Back Orifice detection.
+preprocessor bo
+```
+```text
+# FTP / Telnet normalization and anomaly detection.  For more information, see README.ftptelnet
+preprocessor ftp_telnet: global inspection_type stateful encrypted_traffic no check_encrypted
+preprocessor ftp_telnet_protocol: telnet \
+    ayt_attack_thresh 20 \
+    normalize ports { 23 } \
+    detect_anomalies
+preprocessor ftp_telnet_protocol: ftp server default \
+    def_max_param_len 100 \
+    ports { 21 2100 3535 } \
+    telnet_cmds yes \
+    ignore_telnet_erase_cmds yes \
+    ftp_cmds { ABOR ACCT ADAT ALLO APPE AUTH CCC CDUP } \
+    ftp_cmds { CEL CLNT CMD CONF CWD DELE ENC EPRT } \
+    ftp_cmds { EPSV ESTA ESTP FEAT HELP LANG LIST LPRT } \
+    ftp_cmds { LPSV MACB MAIL MDTM MIC MKD MLSD MLST } \
+    ftp_cmds { MODE NLST NOOP OPTS PASS PASV PBSZ PORT } \
+    ftp_cmds { PROT PWD QUIT REIN REST RETR RMD RNFR } \
+    ftp_cmds { RNTO SDUP SITE SIZE SMNT STAT STOR STOU } \
+    ftp_cmds { STRU SYST TEST TYPE USER XCUP XCRC XCWD } \
+    ftp_cmds { XMAS XMD5 XMKD XPWD XRCP XRMD XRSQ XSEM } \
+    ftp_cmds { XSEN XSHA1 XSHA256 } \
+    alt_max_param_len 0 { ABOR CCC CDUP ESTA FEAT LPSV NOOP PASV PWD QUIT REIN STOU SYST XCUP XPWD } \
+    alt_max_param_len 200 { ALLO APPE CMD HELP NLST RETR RNFR STOR STOU XMKD } \
+    alt_max_param_len 256 { CWD RNTO } \
+    alt_max_param_len 400 { PORT } \
+    alt_max_param_len 512 { SIZE } \
+    chk_str_fmt { ACCT ADAT ALLO APPE AUTH CEL CLNT CMD } \
+    chk_str_fmt { CONF CWD DELE ENC EPRT EPSV ESTP HELP } \
+    chk_str_fmt { LANG LIST LPRT MACB MAIL MDTM MIC MKD } \
+    chk_str_fmt { MLSD MLST MODE NLST OPTS PASS PBSZ PORT } \
+    chk_str_fmt { PROT REST RETR RMD RNFR RNTO SDUP SITE } \
+    chk_str_fmt { SIZE SMNT STAT STOR STRU TEST TYPE USER } \
+    chk_str_fmt { XCRC XCWD XMAS XMD5 XMKD XRCP XRMD XRSQ } \ 
+    chk_str_fmt { XSEM XSEN XSHA1 XSHA256 } \
+    cmd_validity ALLO < int [ char R int ] > \    
+    cmd_validity EPSV < [ { char 12 | char A char L char L } ] > \
+    cmd_validity MACB < string > \
+    cmd_validity MDTM < [ date nnnnnnnnnnnnnn[.n[n[n]]] ] string > \
+    cmd_validity MODE < char ASBCZ > \
+    cmd_validity PORT < host_port > \
+    cmd_validity PROT < char CSEP > \
+    cmd_validity STRU < char FRPO [ string ] > \    
+    cmd_validity TYPE < { char AE [ char NTC ] | char I | char L [ number ] } >
+preprocessor ftp_telnet_protocol: ftp client default \
+    max_resp_len 256 \
+    bounce yes \
+    ignore_telnet_erase_cmds yes \
+    telnet_cmds yes
+```
+```text
+# SMTP normalization and anomaly detection.  For more information, see README.SMTP
+preprocessor smtp: ports { 25 465 587 691 } \
+    inspection_type stateful \
+    b64_decode_depth 0 \
+    qp_decode_depth 0 \
+    bitenc_decode_depth 0 \
+    uu_decode_depth 0 \
+    log_mailfrom \
+    log_rcptto \
+    log_filename \
+    log_email_hdrs \
+    normalize cmds \
+    normalize_cmds { ATRN AUTH BDAT CHUNKING DATA DEBUG EHLO EMAL ESAM ESND ESOM ETRN EVFY } \
+    normalize_cmds { EXPN HELO HELP IDENT MAIL NOOP ONEX QUEU QUIT RCPT RSET SAML SEND SOML } \
+    normalize_cmds { STARTTLS TICK TIME TURN TURNME VERB VRFY X-ADAT X-DRCP X-ERCP X-EXCH50 } \
+    normalize_cmds { X-EXPS X-LINK2STATE XADR XAUTH XCIR XEXCH50 XGEN XLICENSE XQUE XSTA XTRN XUSR } \
+    max_command_line_len 512 \
+    max_header_line_len 1000 \
+    max_response_line_len 512 \
+    alt_max_command_line_len 260 { MAIL } \
+    alt_max_command_line_len 300 { RCPT } \
+    alt_max_command_line_len 500 { HELP HELO ETRN EHLO } \
+    alt_max_command_line_len 255 { EXPN VRFY ATRN SIZE BDAT DEBUG EMAL ESAM ESND ESOM EVFY IDENT NOOP RSET } \
+    alt_max_command_line_len 246 { SEND SAML SOML AUTH TURN ETRN DATA RSET QUIT ONEX QUEU STARTTLS TICK TIME TURNME VERB X-EXPS X-LINK2STATE XADR XAUTH XCIR XEXCH50 XGEN XLICENSE XQUE XSTA XTRN XUSR } \
+    valid_cmds { ATRN AUTH BDAT CHUNKING DATA DEBUG EHLO EMAL ESAM ESND ESOM ETRN EVFY } \ 
+    valid_cmds { EXPN HELO HELP IDENT MAIL NOOP ONEX QUEU QUIT RCPT RSET SAML SEND SOML } \
+    valid_cmds { STARTTLS TICK TIME TURN TURNME VERB VRFY X-ADAT X-DRCP X-ERCP X-EXCH50 } \
+    valid_cmds { X-EXPS X-LINK2STATE XADR XAUTH XCIR XEXCH50 XGEN XLICENSE XQUE XSTA XTRN XUSR } \
+    xlink2state { enabled }
+```
+```text
+# Portscan detection.  For more information, see README.sfportscan
+```
+```text
+# preprocessor sfportscan: proto  { all } memcap { 10000000 } sense_level { low }
+```
+```text
+# ARP spoof detection.  For more information, see the Snort Manual - Configuring Snort - Preprocessors - ARP Spoof Preprocessor
+```
+```text
+# preprocessor arpspoof
+```
+```text
+# preprocessor arpspoof_detect_host: 192.168.40.1 f0:0f:00:f0:0f:00
+```
+```text
+# SSH anomaly detection.  For more information, see README.ssh
+preprocessor ssh: server_ports { 22 } \
+                  autodetect \
+                  max_client_bytes 19600 \
+                  max_encrypted_packets 20 \
+                  max_server_version_len 100 \
+                  enable_respoverflow enable_ssh1crc32 \
+                  enable_srvoverflow enable_protomismatch
+```
+```text
+# SMB / DCE-RPC normalization and anomaly detection.  For more information, see README.dcerpc2
+preprocessor dcerpc2: memcap 102400, events [co ]
+preprocessor dcerpc2_server: default, policy WinXP, \
+    detect [smb [139,445], tcp 135, udp 135, rpc-over-http-server 593], \
+    autodetect [tcp 1025:, udp 1025:, rpc-over-http-server 1025:], \
+    smb_max_chain 3, smb_invalid_shares ["C$", "D$", "ADMIN$"]
+```
+```text
+# DNS anomaly detection.  For more information, see README.dns
+preprocessor dns: ports { 53 } enable_rdata_overflow
+```
+```text
+# SSL anomaly detection and traffic bypass.  For more information, see README.ssl
+preprocessor ssl: ports { 443 465 563 636 989 992 993 994 995 7801 7802 7900 7901 7902 7903 7904 7905 7906 7907 7908 7909 7910 7911 7912 7913 7914 7915 7916 7917 7918 7919 7920 }, trustservers, noinspect_encrypted
+```
+```text
+# SDF sensitive data preprocessor.  For more information see README.sensitive_data
+preprocessor sensitive_data: alert_threshold 25
+```
+```text
+# SIP Session Initiation Protocol preprocessor.  For more information see README.sip
+preprocessor sip: max_sessions 40000, \
+   ports { 5060 5061 5600 }, \
+   methods { invite \
+             cancel \
+             ack \
+             bye \
+             register \
+             options \
+             refer \
+             subscribe \
+             update \
+             join \
+             info \
+             message \
+             notify \
+             benotify \
+             do \
+             qauth \
+             sprack \
+             publish \
+             service \
+             unsubscribe \
+             prack }, \
+   max_uri_len 512, \
+   max_call_id_len 80, \
+   max_requestName_len 20, \
+   max_from_len 256, \
+   max_to_len 256, \
+   max_via_len 1024, \
+   max_contact_len 512, \
+   max_content_len 2048
+```
+```text
+# IMAP preprocessor.  For more information see README.imap
+preprocessor imap: \
+   ports { 143 } \
+   b64_decode_depth 0 \
+   qp_decode_depth 0 \
+   bitenc_decode_depth 0 \
+   uu_decode_depth 0
+```
+```text
+# POP preprocessor. For more information see README.pop
+preprocessor pop: \
+   ports { 110 } \
+   b64_decode_depth 0 \
+   qp_decode_depth 0 \
+   bitenc_decode_depth 0 \
+   uu_decode_depth 0
+```
+```text
+# Modbus preprocessor. For more information see README.modbus
+preprocessor modbus: ports { 502 }
+```
+```text
+# DNP3 preprocessor. For more information see README.dnp3
+preprocessor dnp3: ports { 20000 } \
+   memcap 262144 \
+   check_crc
+
+#
+```
+```text
+# Note to Debian users: this is disabled since it is an experimental
+```
+```text
+# preprocessor. If you want to use it you have to create the rules files
+```
+```text
+# referenced below in the /etc/snort/rules directory
+#
+```
+```text
+# Reputation preprocessor. For more information see README.reputation
+#preprocessor reputation: \
+```
+```text
+#   memcap 500, \
+```
+```text
+#   priority whitelist, \
+```
+```text
+#   nested_ip inner, \
+```
+```text
+#   whitelist $WHITE_LIST_PATH/white_list.rules, \
+```
+```text
+#   blacklist $BLACK_LIST_PATH/black_list.rules
+
+###################################################
+```
+```text
+# Step #6: Configure output plugins
+```
+```text
+# For more information, see Snort Manual, Configuring Snort - Output Modules
+###################################################
+```
+```text
+# unified2
+```
+```text
+# Recommended for most installs
+```
+```text
+# output unified2: filename merged.log, limit 128, nostamp, mpls_event_types, vlan_event_types
+output unified2: filename snort.log, limit 128, nostamp, mpls_event_types, vlan_event_types
+```
+```text
+# Additional configuration for specific types of installs
+```
+```text
+# output alert_unified2: filename snort.alert, limit 128, nostamp
+```
+```text
+# output log_unified2: filename snort.log, limit 128, nostamp
+```
+```text
+# syslog
+```
+```text
+# output alert_syslog: LOG_AUTH LOG_ALERT
+```
+```text
+# pcap
+```
+```text
+# output log_tcpdump: tcpdump.log
+```
+```text
+# metadata reference data.  do not modify these lines
+include classification.config
+include reference.config
+
+###################################################
+```
+```text
+# Step #7: Customize your rule set
+```
+```text
+# For more information, see Snort Manual, Writing Snort Rules
+#
+```
+```text
+# NOTE: All categories are enabled in this conf file
+###################################################
+```
+```text
+# Note to Debian users: The rules preinstalled in the system
+```
+```text
+# can be *very* out of date. For more information please read
+```
+```text
+# the /usr/share/doc/snort-rules-default/README.Debian file
+
+#
+```
+```text
+# If you install the official VRT Sourcefire rules please review this
+```
+```text
+# configuration file and re-enable (remove the comment in the first line) those
+```
+```text
+# rules files that are available in your system (in the /etc/snort/rules
+```
+```text
+# directory)
+```
+```text
+# site specific rules
+include $RULE_PATH/local.rules
+```
+```text
+# The include files commented below have been disabled
+```
+```text
+# because they are not available in the stock Debian
+```
+```text
+# rules. If you install the Sourcefire VRT please make
+```
+```text
+# sure you re-enable them again:
+
+#include $RULE_PATH/app-detect.rules
+include $RULE_PATH/attack-responses.rules
+include $RULE_PATH/backdoor.rules
+include $RULE_PATH/bad-traffic.rules
+#include $RULE_PATH/blacklist.rules
+#include $RULE_PATH/botnet-cnc.rules
+#include $RULE_PATH/browser-chrome.rules
+#include $RULE_PATH/browser-firefox.rules
+#include $RULE_PATH/browser-ie.rules
+#include $RULE_PATH/browser-other.rules
+#include $RULE_PATH/browser-plugins.rules
+#include $RULE_PATH/browser-webkit.rules
+include $RULE_PATH/chat.rules
+#include $RULE_PATH/content-replace.rules
+include $RULE_PATH/ddos.rules
+include $RULE_PATH/dns.rules
+include $RULE_PATH/dos.rules
+include $RULE_PATH/experimental.rules
+#include $RULE_PATH/exploit-kit.rules
+include $RULE_PATH/exploit.rules
+#include $RULE_PATH/file-executable.rules
+#include $RULE_PATH/file-flash.rules
+#include $RULE_PATH/file-identify.rules
+#include $RULE_PATH/file-image.rules
+#include $RULE_PATH/file-multimedia.rules
+#include $RULE_PATH/file-office.rules
+#include $RULE_PATH/file-other.rules
+#include $RULE_PATH/file-pdf.rules
+include $RULE_PATH/finger.rules
+include $RULE_PATH/ftp.rules
+include $RULE_PATH/icmp-info.rules
+include $RULE_PATH/icmp.rules
+include $RULE_PATH/imap.rules
+#include $RULE_PATH/indicator-compromise.rules
+#include $RULE_PATH/indicator-obfuscation.rules
+#include $RULE_PATH/indicator-shellcode.rules
+include $RULE_PATH/info.rules
+#include $RULE_PATH/malware-backdoor.rules
+#include $RULE_PATH/malware-cnc.rules
+#include $RULE_PATH/malware-other.rules
+#include $RULE_PATH/malware-tools.rules
+include $RULE_PATH/misc.rules
+include $RULE_PATH/multimedia.rules
+include $RULE_PATH/mysql.rules
+include $RULE_PATH/netbios.rules
