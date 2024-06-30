@@ -78,6 +78,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Game Zone** | `Easy` | SQLi / SSH Tunneling | [Game Zone.md](./Game%20Zone.md) |
 | **HeartBleed** | `Easy` | OpenSSL Vulnerability | [HeartBleed.md](./HeartBleed.md) |
 | **IDE** | `Easy` | Web / Linux PrivEsc | [IDE.md](./IDE.md) |
+| **IDOR** | `Easy` | Web Security | [IDOR.md](./IDOR.md) |
 
 
-<!-- Weekly Progress: Week 77/104 | 2024-06-23 -->
+<!-- Weekly Progress: Week 78/104 | 2024-06-30 -->
