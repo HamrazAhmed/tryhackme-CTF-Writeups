@@ -19157,3 +19157,6390 @@ WARNING: /etc/snort/rules/community-web-php.rules(392) GID 1 SID 100000826 in ru
 
 WARNING: /etc/snort/rules/community-web-php.rules(393) GID 1 SID 100000827 in rule duplicates previous rule. Ignoring old rule.
 
+WARNING: /etc/snort/rules/community-web-php.rules(394) GID 1 SID 100000828 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(395) GID 1 SID 100000829 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(396) GID 1 SID 100000830 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(397) GID 1 SID 100000831 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(398) GID 1 SID 100000832 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(399) GID 1 SID 100000833 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(400) GID 1 SID 100000834 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(401) GID 1 SID 100000835 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(402) GID 1 SID 100000836 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(403) GID 1 SID 100000837 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(404) GID 1 SID 100000838 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(405) GID 1 SID 100000839 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(406) GID 1 SID 100000840 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(407) GID 1 SID 100000841 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(408) GID 1 SID 100000842 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(409) GID 1 SID 100000843 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(410) GID 1 SID 100000844 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(411) GID 1 SID 100000845 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(412) GID 1 SID 100000846 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(413) GID 1 SID 100000847 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(414) GID 1 SID 100000849 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(415) GID 1 SID 100000850 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(416) GID 1 SID 100000851 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(417) GID 1 SID 100000852 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(418) GID 1 SID 100000853 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(419) GID 1 SID 100000854 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(420) GID 1 SID 100000855 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(421) GID 1 SID 100000856 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(422) GID 1 SID 100000857 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(423) GID 1 SID 100000858 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(424) GID 1 SID 100000859 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(425) GID 1 SID 100000860 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(426) GID 1 SID 100000861 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(427) GID 1 SID 100000862 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(428) GID 1 SID 100000863 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(431) GID 1 SID 100000865 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(432) GID 1 SID 100000866 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(433) GID 1 SID 100000867 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(434) GID 1 SID 100000868 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(435) GID 1 SID 100000869 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(436) GID 1 SID 100000870 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(437) GID 1 SID 100000871 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(438) GID 1 SID 100000872 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(439) GID 1 SID 100000873 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(441) GID 1 SID 100000882 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(443) GID 1 SID 100000883 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(444) GID 1 SID 100000884 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(445) GID 1 SID 100000885 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(446) GID 1 SID 100000886 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(447) GID 1 SID 100000887 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(448) GID 1 SID 100000888 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(449) GID 1 SID 100000889 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(450) GID 1 SID 100000906 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(451) GID 1 SID 100000907 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(452) GID 1 SID 100000908 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(453) GID 1 SID 100000909 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(454) GID 1 SID 100000910 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(455) GID 1 SID 100000911 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(456) GID 1 SID 100000912 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(457) GID 1 SID 100000913 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(458) GID 1 SID 100000914 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(459) GID 1 SID 100000915 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(460) GID 1 SID 100000916 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(461) GID 1 SID 100000917 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(462) GID 1 SID 100000918 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(463) GID 1 SID 100000919 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(464) GID 1 SID 100000920 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(465) GID 1 SID 100000921 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(466) GID 1 SID 100000922 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(467) GID 1 SID 100000925 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(468) GID 1 SID 100000926 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(469) GID 1 SID 100000929 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(470) GID 1 SID 100000930 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(471) GID 1 SID 100000931 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(472) GID 1 SID 100000932 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(473) GID 1 SID 100000933 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(474) GID 1 SID 100000934 in rule duplicates previous rule. Ignoring old rule.
+
+4151 Snort rules read
+    3477 detection rules
+    0 decoder rules
+    0 preprocessor rules
+3477 Option Chains linked into 271 Chain Headers
+0 Dynamic rules
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++-------------------[Rule Port Counts]---------------------------------------
+|             tcp     udp    icmp      ip
+|     src     151      18       0       0
+|     dst    3306     126       0       0
+|     any     383      48     146      22
+|      nc      27       8      95      20
+|     s+d      12       5       0       0
++----------------------------------------------------------------------------
+
++-----------------------[detection-filter-config]------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[detection-filter-rules]-------------------------------
+| none
+-------------------------------------------------------------------------------
+
++-----------------------[rate-filter-config]-----------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[rate-filter-rules]------------------------------------
+| none
+-------------------------------------------------------------------------------
+
++-----------------------[event-filter-config]----------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[event-filter-global]----------------------------------
+| none
++-----------------------[event-filter-local]-----------------------------------
+| gen-id=1      sig-id=1991       type=Limit     tracking=src count=1   seconds=60 
+| gen-id=1      sig-id=2496       type=Both      tracking=dst count=20  seconds=60 
+| gen-id=1      sig-id=2523       type=Both      tracking=dst count=10  seconds=10 
+| gen-id=1      sig-id=2494       type=Both      tracking=dst count=20  seconds=60 
+| gen-id=1      sig-id=3273       type=Threshold tracking=src count=5   seconds=2  
+| gen-id=1      sig-id=2275       type=Threshold tracking=dst count=5   seconds=60 
+| gen-id=1      sig-id=3152       type=Threshold tracking=src count=5   seconds=2  
+| gen-id=1      sig-id=2495       type=Both      tracking=dst count=20  seconds=60 
+| gen-id=1      sig-id=2923       type=Threshold tracking=dst count=10  seconds=60 
+| gen-id=1      sig-id=2924       type=Threshold tracking=dst count=10  seconds=60 
++-----------------------[suppression]------------------------------------------
+| none
+-------------------------------------------------------------------------------
+Rule application order: activation->dynamic->pass->drop->sdrop->reject->alert->log
+Verifying Preprocessor Configurations!
+WARNING: flowbits key 'ms_sql_seen_dns' is checked but not ever set.
+WARNING: flowbits key 'smb.tree.create.llsrpc' is set but not ever checked.
+33 out of 1024 flowbits in use.
+
+[ Port Based Pattern Matching Memory ]
++- [ Aho-Corasick Summary ] -------------------------------------
+| Storage Format    : Full-Q 
+| Finite Automaton  : DFA
+| Alphabet Size     : 256 Chars
+| Sizeof State      : Variable (1,2,4 bytes)
+| Instances         : 215
+|     1 byte states : 204
+|     2 byte states : 11
+|     4 byte states : 0
+| Characters        : 64982
+| States            : 32135
+| Transitions       : 872051
+| State Density     : 10.6%
+| Patterns          : 5055
+| Match States      : 3855
+| Memory (MB)       : 17.00
+|   Patterns        : 0.51
+|   Match Lists     : 1.02
+|   DFA
+|     1 byte states : 1.02
+|     2 byte states : 14.05
+|     4 byte states : 0.00
++----------------------------------------------------------------
+[ Number of patterns truncated to 20 bytes: 1039 ]
+pcap DAQ configured to read-file.
+Acquiring network traffic from "mx-2.pcap".
+Reload thread starting...
+Reload thread started, thread 0x7f243e6bb700 (7460)
+WARNING: active responses disabled since DAQ can't inject packets.
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+           Rules Engine: SF_SNORT_DETECTION_ENGINE  Version 2.4  <Build 1>
+           Preprocessor Object: SF_POP  Version 1.0  <Build 1>
+           Preprocessor Object: SF_SSH  Version 1.1  <Build 3>
+           Preprocessor Object: SF_DNP3  Version 1.1  <Build 1>
+           Preprocessor Object: SF_DNS  Version 1.1  <Build 4>
+           Preprocessor Object: SF_GTP  Version 1.1  <Build 1>
+           Preprocessor Object: SF_MODBUS  Version 1.1  <Build 1>
+           Preprocessor Object: SF_SDF  Version 1.1  <Build 1>
+           Preprocessor Object: SF_DCERPC2  Version 1.0  <Build 3>
+           Preprocessor Object: SF_FTPTELNET  Version 1.2  <Build 13>
+           Preprocessor Object: SF_REPUTATION  Version 1.1  <Build 1>
+           Preprocessor Object: SF_SMTP  Version 1.1  <Build 9>
+           Preprocessor Object: SF_IMAP  Version 1.0  <Build 1>
+           Preprocessor Object: SF_SIP  Version 1.1  <Build 1>
+           Preprocessor Object: SF_SSLPP  Version 1.1  <Build 4>
+Commencing packet processing (pid=7454)
+===============================================================================
+Run time for packet processing was 1.371 seconds
+Snort processed 230 packets.
+Snort ran for 0 days 0 hours 0 minutes 1 seconds
+   Pkts/sec:          230
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       43958272
+  Bytes in mapped regions (hblkhd):      13574144
+  Total allocated space (uordblks):      40399792
+  Total free space (fordblks):           3558480
+  Topmost releasable block (keepcost):   54960
+===============================================================================
+Packet I/O Totals:
+   Received:          230
+   Analyzed:          230 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:          230 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:          222 ( 96.522%)
+       Frag:            0 (  0.000%)
+       ICMP:          136 ( 59.130%)
+        UDP:            4 (  1.739%)
+        TCP:           82 ( 35.652%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            8 (  3.478%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:          230
+===============================================================================
+Action Stats:
+     Alerts:          340 (147.826%)
+     Logged:          340 (147.826%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:          230 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Frag3 statistics:
+        Total Fragments: 0
+      Frags Reassembled: 0
+               Discards: 0
+          Memory Faults: 0
+               Timeouts: 0
+               Overlaps: 0
+              Anomalies: 0
+                 Alerts: 0
+                  Drops: 0
+     FragTrackers Added: 0
+    FragTrackers Dumped: 0
+FragTrackers Auto Freed: 0
+    Frag Nodes Inserted: 0
+     Frag Nodes Deleted: 0
+===============================================================================
+===============================================================================
+Stream statistics:
+            Total sessions: 3
+              TCP sessions: 2
+              UDP sessions: 1
+             ICMP sessions: 0
+               IP sessions: 0
+                TCP Prunes: 0
+                UDP Prunes: 0
+               ICMP Prunes: 0
+                 IP Prunes: 0
+TCP StreamTrackers Created: 2
+TCP StreamTrackers Deleted: 2
+              TCP Timeouts: 0
+              TCP Overlaps: 0
+       TCP Segments Queued: 18
+     TCP Segments Released: 18
+       TCP Rebuilt Packets: 5
+         TCP Segments Used: 18
+              TCP Discards: 8
+                  TCP Gaps: 0
+      UDP Sessions Created: 1
+      UDP Sessions Deleted: 1
+              UDP Timeouts: 0
+              UDP Discards: 0
+                    Events: 0
+           Internal Events: 0
+           TCP Port Filter
+                  Filtered: 0
+                 Inspected: 0
+                   Tracked: 82
+           UDP Port Filter
+                  Filtered: 0
+                 Inspected: 0
+                   Tracked: 1
+===============================================================================
+HTTP Inspect - encodings (Note: stream-reassembled packets included):
+    POST methods:                         0         
+    GET methods:                          2         
+    HTTP Request Headers extracted:       2         
+    HTTP Request Cookies extracted:       0         
+    Post parameters extracted:            0         
+    HTTP response Headers extracted:      4         
+    HTTP Response Cookies extracted:      0         
+    Unicode:                              0         
+    Double unicode:                       0         
+    Non-ASCII representable:              0         
+    Directory traversals:                 0         
+    Extra slashes ("//"):                 1         
+    Self-referencing paths ("./"):        0         
+    HTTP Response Gzip packets extracted: 1         
+    Gzip Compressed Data Processed:       1272.00   
+    Gzip Decompressed Data Processed:     3608.00   
+    Total packets processed:              30        
+===============================================================================
+SMTP Preprocessor Statistics
+  Total sessions                                    : 0
+  Max concurrent sessions                           : 0
+===============================================================================
+dcerpc2 Preprocessor Statistics
+  Total sessions: 0
+===============================================================================
+===============================================================================
+SIP Preprocessor Statistics
+  Total sessions: 0
+===============================================================================
+Snort exiting
+```
+*340*
+Keep reading the output. What is the number of the detected TCP packets?
+*82*
+Investigate the mx-2.pcap and mx-3.pcap files with the default configuration file.
+sudo snort -c /etc/snort/snort.conf -A full -l . --pcap-list="mx-2.pcap mx-3.pcap"
+What is the number of the generated alerts?
+```text
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-8# sudo snort -c /etc/snort/snort.conf -A full -l . --pcap-list="mx-2.pcap mx-3.pcap"
+Running in IDS mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Initializing Preprocessors!
+Initializing Plug-ins!
+Parsing Rules file "/etc/snort/snort.conf"
+PortVar 'HTTP_PORTS' defined :  [ 80:81 311 383 591 593 901 1220 1414 1741 1830 2301 2381 2809 3037 3128 3702 4343 4848 5250 6988 7000:7001 7144:7145 7510 7777 7779 8000 8008 8014 8028 8080 8085 8088 8090 8118 8123 8180:8181 8243 8280 8300 8800 8888 8899 9000 9060 9080 9090:9091 9443 9999 11371 34443:34444 41080 50002 55555 ]
+PortVar 'SHELLCODE_PORTS' defined :  [ 0:79 81:65535 ]
+PortVar 'ORACLE_PORTS' defined :  [ 1024:65535 ]
+PortVar 'SSH_PORTS' defined :  [ 22 ]
+PortVar 'FTP_PORTS' defined :  [ 21 2100 3535 ]
+PortVar 'SIP_PORTS' defined :  [ 5060:5061 5600 ]
+PortVar 'FILE_DATA_PORTS' defined :  [ 80:81 110 143 311 383 591 593 901 1220 1414 1741 1830 2301 2381 2809 3037 3128 3702 4343 4848 5250 6988 7000:7001 7144:7145 7510 7777 7779 8000 8008 8014 8028 8080 8085 8088 8090 8118 8123 8180:8181 8243 8280 8300 8800 8888 8899 9000 9060 9080 9090:9091 9443 9999 11371 34443:34444 41080 50002 55555 ]
+PortVar 'GTP_PORTS' defined :  [ 2123 2152 3386 ]
+Detection:
+   Search-Method = AC-Full-Q
+    Split Any/Any group = enabled
+    Search-Method-Optimizations = enabled
+    Maximum pattern length = 20
+Tagged Packet Limit: 256
+Loading dynamic engine /usr/lib/snort_dynamicengine/libsf_engine.so... done
+Loading all dynamic detection libs from /usr/lib/snort_dynamicrules...
+WARNING: No dynamic libraries found in directory /usr/lib/snort_dynamicrules.
+  Finished Loading all dynamic detection libs from /usr/lib/snort_dynamicrules
+Loading all dynamic preprocessor libs from /usr/lib/snort_dynamicpreprocessor/...
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_ssl_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_sip_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_imap_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_smtp_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_reputation_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_ftptelnet_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_dce2_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_sdf_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_modbus_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_gtp_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_dns_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_dnp3_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_ssh_preproc.so... done
+  Loading dynamic preprocessor library /usr/lib/snort_dynamicpreprocessor//libsf_pop_preproc.so... done
+  Finished Loading all dynamic preprocessor libs from /usr/lib/snort_dynamicpreprocessor/
+Log directory = .
+WARNING: ip4 normalizations disabled because not inline.
+WARNING: tcp normalizations disabled because not inline.
+WARNING: icmp4 normalizations disabled because not inline.
+WARNING: ip6 normalizations disabled because not inline.
+WARNING: icmp6 normalizations disabled because not inline.
+Frag3 global config:
+    Max frags: 65536
+    Fragment memory cap: 4194304 bytes
+Frag3 engine config:
+    Bound Address: default
+    Target-based policy: WINDOWS
+    Fragment timeout: 180 seconds
+    Fragment min_ttl:   1
+    Fragment Anomalies: Alert
+    Overlap Limit:     10
+    Min fragment Length:     100
+      Max Expected Streams: 768
+Stream global config:
+    Track TCP sessions: ACTIVE
+    Max TCP sessions: 262144
+    TCP cache pruning timeout: 30 seconds
+    TCP cache nominal timeout: 3600 seconds
+    Memcap (for reassembly packet storage): 8388608
+    Track UDP sessions: ACTIVE
+    Max UDP sessions: 131072
+    UDP cache pruning timeout: 30 seconds
+    UDP cache nominal timeout: 180 seconds
+    Track ICMP sessions: INACTIVE
+    Track IP sessions: INACTIVE
+    Log info if session memory consumption exceeds 1048576
+    Send up to 2 active responses
+    Wait at least 5 seconds between responses
+    Protocol Aware Flushing: ACTIVE
+        Maximum Flush Point: 16000
+Stream TCP Policy config:
+    Bound Address: default
+    Reassembly Policy: WINDOWS
+    Timeout: 180 seconds
+    Limit on TCP Overlaps: 10
+    Maximum number of bytes to queue per session: 1048576
+    Maximum number of segs to queue per session: 2621
+    Options:
+        Require 3-Way Handshake: YES
+        3-Way Handshake Timeout: 180
+        Detect Anomalies: YES
+    Reassembly Ports:
+      21 client (Footprint) 
+      22 client (Footprint) 
+      23 client (Footprint) 
+      25 client (Footprint) 
+      42 client (Footprint) 
+      53 client (Footprint) 
+      79 client (Footprint) 
+      80 client (Footprint) server (Footprint)
+      81 client (Footprint) server (Footprint)
+      109 client (Footprint) 
+      110 client (Footprint) 
+      111 client (Footprint) 
+      113 client (Footprint) 
+      119 client (Footprint) 
+      135 client (Footprint) 
+      136 client (Footprint) 
+      137 client (Footprint) 
+      139 client (Footprint) 
+      143 client (Footprint) 
+      161 client (Footprint) 
+      additional ports configured but not printed.
+Stream UDP Policy config:
+    Timeout: 180 seconds
+HttpInspect Config:
+    GLOBAL CONFIG
+      Detect Proxy Usage:       NO
+      IIS Unicode Map Filename: /etc/snort/unicode.map
+      IIS Unicode Map Codepage: 1252
+      Memcap used for logging URI and Hostname: 150994944
+      Max Gzip Memory: 104857600
+      Max Gzip Sessions: 201649
+      Gzip Compress Depth: 65535
+      Gzip Decompress Depth: 65535
+    DEFAULT SERVER CONFIG:
+      Server profile: All
+      Ports (PAF): 80 81 311 383 591 593 901 1220 1414 1741 1830 2301 2381 2809 3037 3128 3702 4343 4848 5250 6988 7000 7001 7144 7145 7510 7777 7779 8000 8008 8014 8028 8080 8085 8088 8090 8118 8123 8180 8181 8243 8280 8300 8800 8888 8899 9000 9060 9080 9090 9091 9443 9999 11371 34443 34444 41080 50002 55555 
+      Server Flow Depth: 0
+      Client Flow Depth: 0
+      Max Chunk Length: 500000
+      Small Chunk Length Evasion: chunk size <= 10, threshold >= 5 times
+      Max Header Field Length: 750
+      Max Number Header Fields: 100
+      Max Number of WhiteSpaces allowed with header folding: 200
+      Inspect Pipeline Requests: YES
+      URI Discovery Strict Mode: NO
+      Allow Proxy Usage: NO
+      Disable Alerting: NO
+      Oversize Dir Length: 500
+      Only inspect URI: NO
+      Normalize HTTP Headers: NO
+      Inspect HTTP Cookies: YES
+      Inspect HTTP Responses: YES
+      Extract Gzip from responses: YES
+      Decompress response files:   
+      Unlimited decompression of gzip data from responses: YES
+      Normalize Javascripts in HTTP Responses: YES
+      Max Number of WhiteSpaces allowed with Javascript Obfuscation in HTTP responses: 200
+      Normalize HTTP Cookies: NO
+      Enable XFF and True Client IP: NO
+      Log HTTP URI data: NO
+      Log HTTP Hostname data: NO
+      Extended ASCII code support in URI: NO
+      Ascii: YES alert: NO
+      Double Decoding: YES alert: NO
+      %U Encoding: YES alert: YES
+      Bare Byte: YES alert: NO
+      UTF 8: YES alert: NO
+      IIS Unicode: YES alert: NO
+      Multiple Slash: YES alert: NO
+      IIS Backslash: YES alert: NO
+      Directory Traversal: YES alert: NO
+      Web Root Traversal: YES alert: NO
+      Apache WhiteSpace: YES alert: NO
+      IIS Delimiter: YES alert: NO
+      IIS Unicode Map: GLOBAL IIS UNICODE MAP CONFIG
+      Non-RFC Compliant Characters: 0x00 0x01 0x02 0x03 0x04 0x05 0x06 0x07 
+      Whitespace Characters: 0x09 0x0b 0x0c 0x0d 
+rpc_decode arguments:
+    Ports to decode RPC on: 111 32770 32771 32772 32773 32774 32775 32776 32777 32778 32779 
+    alert_fragments: INACTIVE
+    alert_large_fragments: INACTIVE
+    alert_incomplete: INACTIVE
+    alert_multiple_requests: INACTIVE
+FTPTelnet Config:
+    GLOBAL CONFIG
+      Inspection Type: stateful
+      Check for Encrypted Traffic: YES alert: NO
+      Continue to check encrypted data: YES
+    TELNET CONFIG:
+      Ports: 23 
+      Are You There Threshold: 20
+      Normalize: YES
+      Detect Anomalies: YES
+    FTP CONFIG:
+      FTP Server: default
+        Ports (PAF): 21 2100 3535 
+        Check for Telnet Cmds: YES alert: YES
+        Ignore Telnet Cmd Operations: YES alert: YES
+        Ignore open data channels: NO
+      FTP Client: default
+        Check for Bounce Attacks: YES alert: YES
+        Check for Telnet Cmds: YES alert: YES
+        Ignore Telnet Cmd Operations: YES alert: YES
+        Max Response Length: 256
+SMTP Config:
+    Ports: 25 465 587 691 
+    Inspection Type: Stateful
+    Normalize: ATRN AUTH BDAT DATA DEBUG EHLO EMAL ESAM ESND ESOM ETRN EVFY EXPN HELO HELP IDENT MAIL NOOP ONEX QUEU QUIT RCPT RSET SAML SEND STARTTLS SOML TICK TIME TURN TURNME VERB VRFY X-EXPS XADR XAUTH XCIR XEXCH50 XGEN XLICENSE X-LINK2STATE XQUE XSTA XTRN XUSR CHUNKING X-ADAT X-DRCP X-ERCP X-EXCH50 
+    Ignore Data: No
+    Ignore TLS Data: No
+    Ignore SMTP Alerts: No
+    Max Command Line Length: 512
+    Max Specific Command Line Length: 
+       ATRN:255 AUTH:246 BDAT:255 DATA:246 DEBUG:255 
+       EHLO:500 EMAL:255 ESAM:255 ESND:255 ESOM:255 
+       ETRN:246 EVFY:255 EXPN:255 HELO:500 HELP:500 
+       IDENT:255 MAIL:260 NOOP:255 ONEX:246 QUEU:246 
+       QUIT:246 RCPT:300 RSET:246 SAML:246 SEND:246 
+       SIZE:255 STARTTLS:246 SOML:246 TICK:246 TIME:246 
+       TURN:246 TURNME:246 VERB:246 VRFY:255 X-EXPS:246 
+       XADR:246 XAUTH:246 XCIR:246 XEXCH50:246 XGEN:246 
+       XLICENSE:246 X-LINK2STATE:246 XQUE:246 XSTA:246 XTRN:246 
+       XUSR:246 
+    Max Header Line Length: 1000
+    Max Response Line Length: 512
+    X-Link2State Alert: Yes
+    Drop on X-Link2State Alert: No
+    Alert on commands: None
+    Alert on unknown commands: No
+    SMTP Memcap: 838860
+    MIME Max Mem: 838860
+    Base64 Decoding: Enabled
+    Base64 Decoding Depth: Unlimited
+    Quoted-Printable Decoding: Enabled
+    Quoted-Printable Decoding Depth: Unlimited
+    Unix-to-Unix Decoding: Enabled
+    Unix-to-Unix Decoding Depth: Unlimited
+    Non-Encoded MIME attachment Extraction: Enabled
+    Non-Encoded MIME attachment Extraction Depth: Unlimited
+    Log Attachment filename: Enabled
+    Log MAIL FROM Address: Enabled
+    Log RCPT TO Addresses: Enabled
+    Log Email Headers: Enabled
+    Email Hdrs Log Depth: 1464
+SSH config: 
+    Autodetection: ENABLED
+    Challenge-Response Overflow Alert: ENABLED
+    SSH1 CRC32 Alert: ENABLED
+    Server Version String Overflow Alert: ENABLED
+    Protocol Mismatch Alert: ENABLED
+    Bad Message Direction Alert: DISABLED
+    Bad Payload Size Alert: DISABLED
+    Unrecognized Version Alert: DISABLED
+    Max Encrypted Packets: 20  
+    Max Server Version String Length: 100  
+    MaxClientBytes: 19600 (Default) 
+    Ports:
+        22
+DCE/RPC 2 Preprocessor Configuration
+  Global Configuration
+    DCE/RPC Defragmentation: Enabled
+    Memcap: 102400 KB
+    Events: co 
+    SMB Fingerprint policy: Disabled
+  Server Default Configuration
+    Policy: WinXP
+    Detect ports (PAF)
+      SMB: 139 445 
+      TCP: 135 
+      UDP: 135 
+      RPC over HTTP server: 593 
+      RPC over HTTP proxy: None
+    Autodetect ports (PAF)
+      SMB: None
+      TCP: 1025-65535 
+      UDP: 1025-65535 
+      RPC over HTTP server: 1025-65535 
+      RPC over HTTP proxy: None
+    Invalid SMB shares: C$ D$ ADMIN$ 
+    Maximum SMB command chaining: 3 commands
+    SMB file inspection: Disabled
+DNS config: 
+    DNS Client rdata txt Overflow Alert: ACTIVE
+    Obsolete DNS RR Types Alert: INACTIVE
+    Experimental DNS RR Types Alert: INACTIVE
+    Ports: 53
+SSLPP config:
+    Encrypted packets: not inspected
+    Ports:
+      443      465      563      636      989
+      992      993      994      995     7801
+     7802     7900     7901     7902     7903
+     7904     7905     7906     7907     7908
+     7909     7910     7911     7912     7913
+     7914     7915     7916     7917     7918
+     7919     7920
+    Server side data is trusted
+    Maximum SSL Heartbeat length: 0
+Sensitive Data preprocessor config: 
+    Global Alert Threshold: 25
+    Masked Output: DISABLED
+SIP config: 
+    Max number of sessions: 40000  
+    Max number of dialogs in a session: 4 (Default) 
+    Status: ENABLED
+    Ignore media channel: DISABLED
+    Max URI length: 512  
+    Max Call ID length: 80  
+    Max Request name length: 20 (Default) 
+    Max From length: 256 (Default) 
+    Max To length: 256 (Default) 
+    Max Via length: 1024 (Default) 
+    Max Contact length: 512  
+    Max Content length: 2048  
+    Ports:
+        5060    5061    5600
+    Methods:
+          invite cancel ack bye register options refer subscribe update join info message notify benotify do qauth sprack publish service unsubscribe prack
+IMAP Config:
+    Ports: 143 
+    IMAP Memcap: 838860
+    MIME Max Mem: 838860
+    Base64 Decoding: Enabled
+    Base64 Decoding Depth: Unlimited
+    Quoted-Printable Decoding: Enabled
+    Quoted-Printable Decoding Depth: Unlimited
+    Unix-to-Unix Decoding: Enabled
+    Unix-to-Unix Decoding Depth: Unlimited
+    Non-Encoded MIME attachment Extraction: Enabled
+    Non-Encoded MIME attachment Extraction Depth: Unlimited
+POP Config:
+    Ports: 110 
+    POP Memcap: 838860
+    MIME Max Mem: 838860
+    Base64 Decoding: Enabled
+    Base64 Decoding Depth: Unlimited
+    Quoted-Printable Decoding: Enabled
+    Quoted-Printable Decoding Depth: Unlimited
+    Unix-to-Unix Decoding: Enabled
+    Unix-to-Unix Decoding Depth: Unlimited
+    Non-Encoded MIME attachment Extraction: Enabled
+    Non-Encoded MIME attachment Extraction Depth: Unlimited
+Modbus config: 
+    Ports:
+        502
+DNP3 config: 
+    Memcap: 262144
+    Check Link-Layer CRCs: ENABLED
+    Ports:
+        20000
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
+Initializing rule chains...
+WARNING: /etc/snort/rules/chat.rules(33) threshold (in rule) is deprecated; use detection_filter instead.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(6) GID 1 SID 100000106 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(7) GID 1 SID 100000107 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(8) GID 1 SID 100000108 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(9) GID 1 SID 100000109 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(11) GID 1 SID 100000192 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(12) GID 1 SID 100000193 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(13) GID 1 SID 100000194 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(14) GID 1 SID 100000690 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-sql-injection.rules(15) GID 1 SID 100000691 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(6) GID 1 SID 100000118 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(7) GID 1 SID 100000119 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(9) GID 1 SID 100000228 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(14) GID 1 SID 100000284 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(16) GID 1 SID 100000447 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(18) GID 1 SID 100000692 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(20) GID 1 SID 100000693 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-client.rules(23) GID 1 SID 100000864 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-iis.rules(7) GID 1 SID 100000138 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-iis.rules(8) GID 1 SID 100000139 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-iis.rules(9) GID 1 SID 100000173 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-iis.rules(10) GID 1 SID 100000174 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(6) GID 1 SID 100000121 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(7) GID 1 SID 100000122 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(8) GID 1 SID 100000129 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(9) GID 1 SID 100000130 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(10) GID 1 SID 100000131 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(12) GID 1 SID 100000132 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(13) GID 1 SID 100000133 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(14) GID 1 SID 100000140 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(15) GID 1 SID 100000141 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(16) GID 1 SID 100000142 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(17) GID 1 SID 100000143 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(18) GID 1 SID 100000144 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(19) GID 1 SID 100000145 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(20) GID 1 SID 100000146 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(22) GID 1 SID 100000148 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(23) GID 1 SID 100000149 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(24) GID 1 SID 100000150 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(25) GID 1 SID 100000177 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(26) GID 1 SID 100000178 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(27) GID 1 SID 100000179 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(28) GID 1 SID 100000184 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(29) GID 1 SID 100000185 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(30) GID 1 SID 100000200 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(31) GID 1 SID 100000209 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(33) GID 1 SID 100000216 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(34) GID 1 SID 100000217 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(35) GID 1 SID 100000225 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(38) GID 1 SID 100000237 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(39) GID 1 SID 100000302 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(40) GID 1 SID 100000303 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(42) GID 1 SID 100000313 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(43) GID 1 SID 100000314 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(49) GID 1 SID 100000317 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(50) GID 1 SID 100000318 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(51) GID 1 SID 100000319 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(52) GID 1 SID 100000320 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(53) GID 1 SID 100000321 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(54) GID 1 SID 100000322 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(55) GID 1 SID 100000323 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(56) GID 1 SID 100000324 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(57) GID 1 SID 100000325 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(58) GID 1 SID 100000326 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(59) GID 1 SID 100000327 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(60) GID 1 SID 100000328 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(61) GID 1 SID 100000329 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(62) GID 1 SID 100000330 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(63) GID 1 SID 100000331 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(64) GID 1 SID 100000332 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(65) GID 1 SID 100000333 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(66) GID 1 SID 100000334 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(67) GID 1 SID 100000335 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(68) GID 1 SID 100000336 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(69) GID 1 SID 100000337 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(70) GID 1 SID 100000338 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(71) GID 1 SID 100000339 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(72) GID 1 SID 100000340 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(73) GID 1 SID 100000341 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(74) GID 1 SID 100000342 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(75) GID 1 SID 100000343 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(76) GID 1 SID 100000344 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(77) GID 1 SID 100000345 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(78) GID 1 SID 100000346 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(79) GID 1 SID 100000347 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(80) GID 1 SID 100000348 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(81) GID 1 SID 100000349 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(82) GID 1 SID 100000350 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(83) GID 1 SID 100000351 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(84) GID 1 SID 100000352 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(85) GID 1 SID 100000353 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(86) GID 1 SID 100000354 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(87) GID 1 SID 100000355 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(88) GID 1 SID 100000356 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(89) GID 1 SID 100000357 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(90) GID 1 SID 100000358 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(91) GID 1 SID 100000359 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(92) GID 1 SID 100000360 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(93) GID 1 SID 100000361 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(94) GID 1 SID 100000362 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(95) GID 1 SID 100000363 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(96) GID 1 SID 100000364 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(97) GID 1 SID 100000365 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(98) GID 1 SID 100000366 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(99) GID 1 SID 100000367 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(100) GID 1 SID 100000368 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(101) GID 1 SID 100000369 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(102) GID 1 SID 100000370 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(103) GID 1 SID 100000371 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(104) GID 1 SID 100000372 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(105) GID 1 SID 100000373 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(106) GID 1 SID 100000374 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(107) GID 1 SID 100000375 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(108) GID 1 SID 100000376 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(109) GID 1 SID 100000377 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(110) GID 1 SID 100000378 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(111) GID 1 SID 100000379 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(112) GID 1 SID 100000380 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(113) GID 1 SID 100000382 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(114) GID 1 SID 100000383 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(115) GID 1 SID 100000384 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(116) GID 1 SID 100000385 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(117) GID 1 SID 100000386 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(119) GID 1 SID 100000387 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(120) GID 1 SID 100000388 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(121) GID 1 SID 100000389 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(122) GID 1 SID 100000390 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(123) GID 1 SID 100000391 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(124) GID 1 SID 100000392 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(125) GID 1 SID 100000393 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(126) GID 1 SID 100000394 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(127) GID 1 SID 100000395 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(128) GID 1 SID 100000396 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(129) GID 1 SID 100000397 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(130) GID 1 SID 100000398 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(131) GID 1 SID 100000399 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(132) GID 1 SID 100000400 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(133) GID 1 SID 100000401 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(134) GID 1 SID 100000402 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(135) GID 1 SID 100000403 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(136) GID 1 SID 100000404 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(137) GID 1 SID 100000405 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(138) GID 1 SID 100000406 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(139) GID 1 SID 100000407 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(140) GID 1 SID 100000408 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(141) GID 1 SID 100000409 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(142) GID 1 SID 100000410 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(143) GID 1 SID 100000411 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(144) GID 1 SID 100000412 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(145) GID 1 SID 100000413 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(146) GID 1 SID 100000414 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(147) GID 1 SID 100000415 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(148) GID 1 SID 100000416 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(149) GID 1 SID 100000417 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(150) GID 1 SID 100000418 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(151) GID 1 SID 100000419 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(152) GID 1 SID 100000420 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(153) GID 1 SID 100000421 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(154) GID 1 SID 100000422 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(155) GID 1 SID 100000423 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(156) GID 1 SID 100000424 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(157) GID 1 SID 100000425 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(158) GID 1 SID 100000426 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(161) GID 1 SID 100000427 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(162) GID 1 SID 100000428 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(163) GID 1 SID 100000429 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(166) GID 1 SID 100000430 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(167) GID 1 SID 100000431 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(168) GID 1 SID 100000432 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(169) GID 1 SID 100000433 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(170) GID 1 SID 100000434 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(171) GID 1 SID 100000435 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(172) GID 1 SID 100000436 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(173) GID 1 SID 100000437 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(174) GID 1 SID 100000438 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(175) GID 1 SID 100000439 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(176) GID 1 SID 100000440 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(177) GID 1 SID 100000441 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(178) GID 1 SID 100000442 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(179) GID 1 SID 100000443 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(180) GID 1 SID 100000444 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(181) GID 1 SID 100000448 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(182) GID 1 SID 100000449 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(183) GID 1 SID 100000450 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(184) GID 1 SID 100000451 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(185) GID 1 SID 100000452 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(186) GID 1 SID 100000453 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(187) GID 1 SID 100000454 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(188) GID 1 SID 100000455 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(189) GID 1 SID 100000456 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(190) GID 1 SID 100000457 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(191) GID 1 SID 100000458 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(192) GID 1 SID 100000459 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(193) GID 1 SID 100000460 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(194) GID 1 SID 100000461 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(195) GID 1 SID 100000462 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(196) GID 1 SID 100000694 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(197) GID 1 SID 100000695 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(198) GID 1 SID 100000696 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(199) GID 1 SID 100000697 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(200) GID 1 SID 100000698 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(201) GID 1 SID 100000699 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(202) GID 1 SID 100000700 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(203) GID 1 SID 100000701 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(204) GID 1 SID 100000702 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(207) GID 1 SID 100000890 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(208) GID 1 SID 100000891 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(211) GID 1 SID 100000895 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(212) GID 1 SID 100000896 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(213) GID 1 SID 100000897 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(214) GID 1 SID 100000898 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-misc.rules(215) GID 1 SID 100000899 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(6) GID 1 SID 100000151 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(7) GID 1 SID 100000186 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(8) GID 1 SID 100000187 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(9) GID 1 SID 100000188 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(10) GID 1 SID 100000195 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(11) GID 1 SID 100000201 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(12) GID 1 SID 100000202 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(13) GID 1 SID 100000203 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(14) GID 1 SID 100000204 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(15) GID 1 SID 100000205 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(16) GID 1 SID 100000206 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(17) GID 1 SID 100000211 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(18) GID 1 SID 100000212 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(19) GID 1 SID 100000213 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(20) GID 1 SID 100000214 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(21) GID 1 SID 100000218 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(22) GID 1 SID 100000220 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(23) GID 1 SID 100000221 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(24) GID 1 SID 100000285 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(25) GID 1 SID 100000286 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(26) GID 1 SID 100000287 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(27) GID 1 SID 100000288 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(28) GID 1 SID 100000289 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(29) GID 1 SID 100000290 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(30) GID 1 SID 100000291 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(31) GID 1 SID 100000292 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(32) GID 1 SID 100000293 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(33) GID 1 SID 100000294 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(34) GID 1 SID 100000295 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(35) GID 1 SID 100000296 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(36) GID 1 SID 100000297 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(37) GID 1 SID 100000298 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(38) GID 1 SID 100000299 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(39) GID 1 SID 100000300 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(40) GID 1 SID 100000304 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(41) GID 1 SID 100000305 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(42) GID 1 SID 100000306 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(43) GID 1 SID 100000307 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(44) GID 1 SID 100000308 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(45) GID 1 SID 100000309 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(46) GID 1 SID 100000445 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(48) GID 1 SID 100000463 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(49) GID 1 SID 100000464 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(50) GID 1 SID 100000465 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(51) GID 1 SID 100000466 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(52) GID 1 SID 100000467 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(53) GID 1 SID 100000468 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(54) GID 1 SID 100000469 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(55) GID 1 SID 100000470 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(56) GID 1 SID 100000471 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(57) GID 1 SID 100000472 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(58) GID 1 SID 100000473 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(59) GID 1 SID 100000474 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(60) GID 1 SID 100000475 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(61) GID 1 SID 100000476 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(62) GID 1 SID 100000477 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(63) GID 1 SID 100000478 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(64) GID 1 SID 100000479 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(65) GID 1 SID 100000480 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(66) GID 1 SID 100000481 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(67) GID 1 SID 100000482 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(68) GID 1 SID 100000483 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(69) GID 1 SID 100000484 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(70) GID 1 SID 100000485 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(71) GID 1 SID 100000486 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(72) GID 1 SID 100000487 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(73) GID 1 SID 100000488 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(74) GID 1 SID 100000489 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(75) GID 1 SID 100000490 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(76) GID 1 SID 100000491 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(77) GID 1 SID 100000492 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(78) GID 1 SID 100000493 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(79) GID 1 SID 100000494 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(80) GID 1 SID 100000495 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(81) GID 1 SID 100000496 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(82) GID 1 SID 100000497 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(83) GID 1 SID 100000498 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(84) GID 1 SID 100000499 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(85) GID 1 SID 100000500 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(86) GID 1 SID 100000501 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(87) GID 1 SID 100000502 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(88) GID 1 SID 100000503 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(89) GID 1 SID 100000504 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(90) GID 1 SID 100000505 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(91) GID 1 SID 100000506 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(92) GID 1 SID 100000507 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(93) GID 1 SID 100000508 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(94) GID 1 SID 100000509 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(95) GID 1 SID 100000510 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(96) GID 1 SID 100000511 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(97) GID 1 SID 100000512 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(98) GID 1 SID 100000513 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(99) GID 1 SID 100000514 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(100) GID 1 SID 100000515 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(101) GID 1 SID 100000516 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(102) GID 1 SID 100000517 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(103) GID 1 SID 100000518 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(104) GID 1 SID 100000519 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(105) GID 1 SID 100000520 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(106) GID 1 SID 100000521 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(107) GID 1 SID 100000522 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(108) GID 1 SID 100000523 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(109) GID 1 SID 100000524 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(110) GID 1 SID 100000525 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(111) GID 1 SID 100000526 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(112) GID 1 SID 100000527 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(113) GID 1 SID 100000528 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(114) GID 1 SID 100000529 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(115) GID 1 SID 100000530 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(116) GID 1 SID 100000531 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(117) GID 1 SID 100000532 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(118) GID 1 SID 100000533 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(119) GID 1 SID 100000534 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(120) GID 1 SID 100000535 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(121) GID 1 SID 100000536 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(122) GID 1 SID 100000537 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(123) GID 1 SID 100000538 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(124) GID 1 SID 100000539 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(125) GID 1 SID 100000540 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(126) GID 1 SID 100000541 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(127) GID 1 SID 100000542 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(128) GID 1 SID 100000543 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(129) GID 1 SID 100000544 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(130) GID 1 SID 100000545 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(131) GID 1 SID 100000546 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(132) GID 1 SID 100000547 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(133) GID 1 SID 100000548 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(134) GID 1 SID 100000549 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(135) GID 1 SID 100000550 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(136) GID 1 SID 100000551 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(137) GID 1 SID 100000552 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(138) GID 1 SID 100000553 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(139) GID 1 SID 100000554 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(140) GID 1 SID 100000555 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(141) GID 1 SID 100000556 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(142) GID 1 SID 100000557 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(143) GID 1 SID 100000558 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(144) GID 1 SID 100000559 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(145) GID 1 SID 100000560 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(146) GID 1 SID 100000561 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(147) GID 1 SID 100000562 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(148) GID 1 SID 100000563 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(149) GID 1 SID 100000564 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(150) GID 1 SID 100000565 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(151) GID 1 SID 100000566 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(152) GID 1 SID 100000567 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(153) GID 1 SID 100000568 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(154) GID 1 SID 100000569 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(155) GID 1 SID 100000570 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(156) GID 1 SID 100000571 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(157) GID 1 SID 100000572 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(158) GID 1 SID 100000573 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(159) GID 1 SID 100000574 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(160) GID 1 SID 100000575 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(161) GID 1 SID 100000576 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(162) GID 1 SID 100000577 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(163) GID 1 SID 100000578 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(164) GID 1 SID 100000579 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(165) GID 1 SID 100000580 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(166) GID 1 SID 100000581 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(167) GID 1 SID 100000582 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(168) GID 1 SID 100000583 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(169) GID 1 SID 100000584 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(170) GID 1 SID 100000585 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(171) GID 1 SID 100000586 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(172) GID 1 SID 100000587 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(173) GID 1 SID 100000588 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(174) GID 1 SID 100000589 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(175) GID 1 SID 100000590 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(176) GID 1 SID 100000591 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(177) GID 1 SID 100000592 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(178) GID 1 SID 100000593 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(179) GID 1 SID 100000594 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(180) GID 1 SID 100000595 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(181) GID 1 SID 100000596 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(182) GID 1 SID 100000597 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(183) GID 1 SID 100000598 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(184) GID 1 SID 100000599 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(185) GID 1 SID 100000600 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(186) GID 1 SID 100000601 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(187) GID 1 SID 100000602 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(188) GID 1 SID 100000603 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(189) GID 1 SID 100000604 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(190) GID 1 SID 100000605 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(191) GID 1 SID 100000606 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(192) GID 1 SID 100000607 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(193) GID 1 SID 100000608 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(194) GID 1 SID 100000609 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(195) GID 1 SID 100000610 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(196) GID 1 SID 100000611 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(197) GID 1 SID 100000612 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(198) GID 1 SID 100000613 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(199) GID 1 SID 100000614 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(200) GID 1 SID 100000615 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(201) GID 1 SID 100000616 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(202) GID 1 SID 100000617 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(203) GID 1 SID 100000618 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(204) GID 1 SID 100000619 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(205) GID 1 SID 100000620 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(206) GID 1 SID 100000621 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(207) GID 1 SID 100000622 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(208) GID 1 SID 100000623 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(209) GID 1 SID 100000624 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(210) GID 1 SID 100000625 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(211) GID 1 SID 100000626 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(212) GID 1 SID 100000627 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(213) GID 1 SID 100000628 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(214) GID 1 SID 100000629 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(215) GID 1 SID 100000630 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(216) GID 1 SID 100000631 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(217) GID 1 SID 100000632 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(218) GID 1 SID 100000633 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(219) GID 1 SID 100000634 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(220) GID 1 SID 100000635 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(221) GID 1 SID 100000636 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(222) GID 1 SID 100000637 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(223) GID 1 SID 100000638 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(224) GID 1 SID 100000639 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(225) GID 1 SID 100000640 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(226) GID 1 SID 100000641 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(227) GID 1 SID 100000642 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(228) GID 1 SID 100000643 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(229) GID 1 SID 100000644 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(230) GID 1 SID 100000645 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(231) GID 1 SID 100000646 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(232) GID 1 SID 100000647 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(233) GID 1 SID 100000648 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(234) GID 1 SID 100000649 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(235) GID 1 SID 100000650 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(236) GID 1 SID 100000651 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(237) GID 1 SID 100000652 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(238) GID 1 SID 100000653 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(239) GID 1 SID 100000654 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(240) GID 1 SID 100000655 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(241) GID 1 SID 100000656 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(242) GID 1 SID 100000657 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(243) GID 1 SID 100000658 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(244) GID 1 SID 100000659 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(245) GID 1 SID 100000660 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(246) GID 1 SID 100000661 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(247) GID 1 SID 100000662 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(248) GID 1 SID 100000663 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(249) GID 1 SID 100000664 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(250) GID 1 SID 100000665 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(251) GID 1 SID 100000666 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(252) GID 1 SID 100000667 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(253) GID 1 SID 100000668 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(254) GID 1 SID 100000669 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(255) GID 1 SID 100000670 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(256) GID 1 SID 100000671 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(257) GID 1 SID 100000672 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(258) GID 1 SID 100000673 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(259) GID 1 SID 100000674 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(260) GID 1 SID 100000675 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(261) GID 1 SID 100000676 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(262) GID 1 SID 100000677 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(263) GID 1 SID 100000678 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(264) GID 1 SID 100000679 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(265) GID 1 SID 100000680 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(266) GID 1 SID 100000681 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(267) GID 1 SID 100000682 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(268) GID 1 SID 100000683 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(270) GID 1 SID 100000703 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(271) GID 1 SID 100000704 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(272) GID 1 SID 100000705 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(273) GID 1 SID 100000706 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(274) GID 1 SID 100000707 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(275) GID 1 SID 100000708 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(276) GID 1 SID 100000709 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(277) GID 1 SID 100000710 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(278) GID 1 SID 100000711 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(279) GID 1 SID 100000712 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(280) GID 1 SID 100000713 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(281) GID 1 SID 100000714 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(282) GID 1 SID 100000715 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(283) GID 1 SID 100000716 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(284) GID 1 SID 100000717 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(285) GID 1 SID 100000718 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(286) GID 1 SID 100000719 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(287) GID 1 SID 100000720 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(288) GID 1 SID 100000721 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(289) GID 1 SID 100000722 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(290) GID 1 SID 100000723 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(291) GID 1 SID 100000724 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(292) GID 1 SID 100000725 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(293) GID 1 SID 100000726 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(294) GID 1 SID 100000727 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(295) GID 1 SID 100000728 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(296) GID 1 SID 100000729 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(297) GID 1 SID 100000730 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(298) GID 1 SID 100000731 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(299) GID 1 SID 100000732 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(300) GID 1 SID 100000733 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(301) GID 1 SID 100000734 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(302) GID 1 SID 100000735 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(303) GID 1 SID 100000736 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(304) GID 1 SID 100000737 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(305) GID 1 SID 100000738 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(306) GID 1 SID 100000739 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(307) GID 1 SID 100000740 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(308) GID 1 SID 100000741 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(309) GID 1 SID 100000742 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(310) GID 1 SID 100000743 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(311) GID 1 SID 100000744 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(312) GID 1 SID 100000745 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(313) GID 1 SID 100000746 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(314) GID 1 SID 100000747 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(315) GID 1 SID 100000748 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(316) GID 1 SID 100000749 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(317) GID 1 SID 100000750 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(318) GID 1 SID 100000751 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(319) GID 1 SID 100000752 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(320) GID 1 SID 100000753 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(321) GID 1 SID 100000754 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(322) GID 1 SID 100000755 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(323) GID 1 SID 100000756 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(324) GID 1 SID 100000757 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(325) GID 1 SID 100000758 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(326) GID 1 SID 100000759 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(327) GID 1 SID 100000760 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(328) GID 1 SID 100000761 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(329) GID 1 SID 100000762 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(330) GID 1 SID 100000763 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(331) GID 1 SID 100000764 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(332) GID 1 SID 100000765 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(333) GID 1 SID 100000766 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(334) GID 1 SID 100000767 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(335) GID 1 SID 100000768 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(336) GID 1 SID 100000769 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(337) GID 1 SID 100000770 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(338) GID 1 SID 100000771 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(339) GID 1 SID 100000772 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(340) GID 1 SID 100000773 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(341) GID 1 SID 100000774 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(342) GID 1 SID 100000775 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(343) GID 1 SID 100000776 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(344) GID 1 SID 100000777 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(345) GID 1 SID 100000778 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(346) GID 1 SID 100000779 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(347) GID 1 SID 100000780 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(348) GID 1 SID 100000781 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(349) GID 1 SID 100000782 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(350) GID 1 SID 100000783 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(351) GID 1 SID 100000784 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(352) GID 1 SID 100000785 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(353) GID 1 SID 100000786 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(354) GID 1 SID 100000787 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(355) GID 1 SID 100000788 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(356) GID 1 SID 100000789 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(357) GID 1 SID 100000790 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(358) GID 1 SID 100000791 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(359) GID 1 SID 100000792 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(360) GID 1 SID 100000793 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(361) GID 1 SID 100000794 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(362) GID 1 SID 100000795 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(363) GID 1 SID 100000796 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(364) GID 1 SID 100000797 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(365) GID 1 SID 100000798 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(366) GID 1 SID 100000799 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(367) GID 1 SID 100000800 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(368) GID 1 SID 100000801 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(369) GID 1 SID 100000802 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(370) GID 1 SID 100000803 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(371) GID 1 SID 100000804 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(372) GID 1 SID 100000805 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(373) GID 1 SID 100000806 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(374) GID 1 SID 100000807 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(375) GID 1 SID 100000808 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(376) GID 1 SID 100000809 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(377) GID 1 SID 100000810 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(378) GID 1 SID 100000811 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(379) GID 1 SID 100000812 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(380) GID 1 SID 100000813 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(381) GID 1 SID 100000814 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(382) GID 1 SID 100000815 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(383) GID 1 SID 100000816 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(384) GID 1 SID 100000817 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(385) GID 1 SID 100000818 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(386) GID 1 SID 100000820 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(387) GID 1 SID 100000821 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(388) GID 1 SID 100000822 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(389) GID 1 SID 100000823 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(390) GID 1 SID 100000824 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(391) GID 1 SID 100000825 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(392) GID 1 SID 100000826 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(393) GID 1 SID 100000827 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(394) GID 1 SID 100000828 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(395) GID 1 SID 100000829 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(396) GID 1 SID 100000830 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(397) GID 1 SID 100000831 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(398) GID 1 SID 100000832 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(399) GID 1 SID 100000833 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(400) GID 1 SID 100000834 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(401) GID 1 SID 100000835 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(402) GID 1 SID 100000836 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(403) GID 1 SID 100000837 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(404) GID 1 SID 100000838 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(405) GID 1 SID 100000839 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(406) GID 1 SID 100000840 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(407) GID 1 SID 100000841 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(408) GID 1 SID 100000842 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(409) GID 1 SID 100000843 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(410) GID 1 SID 100000844 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(411) GID 1 SID 100000845 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(412) GID 1 SID 100000846 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(413) GID 1 SID 100000847 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(414) GID 1 SID 100000849 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(415) GID 1 SID 100000850 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(416) GID 1 SID 100000851 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(417) GID 1 SID 100000852 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(418) GID 1 SID 100000853 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(419) GID 1 SID 100000854 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(420) GID 1 SID 100000855 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(421) GID 1 SID 100000856 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(422) GID 1 SID 100000857 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(423) GID 1 SID 100000858 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(424) GID 1 SID 100000859 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(425) GID 1 SID 100000860 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(426) GID 1 SID 100000861 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(427) GID 1 SID 100000862 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(428) GID 1 SID 100000863 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(431) GID 1 SID 100000865 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(432) GID 1 SID 100000866 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(433) GID 1 SID 100000867 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(434) GID 1 SID 100000868 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(435) GID 1 SID 100000869 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(436) GID 1 SID 100000870 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(437) GID 1 SID 100000871 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(438) GID 1 SID 100000872 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(439) GID 1 SID 100000873 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(441) GID 1 SID 100000882 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(443) GID 1 SID 100000883 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(444) GID 1 SID 100000884 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(445) GID 1 SID 100000885 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(446) GID 1 SID 100000886 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(447) GID 1 SID 100000887 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(448) GID 1 SID 100000888 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(449) GID 1 SID 100000889 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(450) GID 1 SID 100000906 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(451) GID 1 SID 100000907 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(452) GID 1 SID 100000908 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(453) GID 1 SID 100000909 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(454) GID 1 SID 100000910 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(455) GID 1 SID 100000911 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(456) GID 1 SID 100000912 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(457) GID 1 SID 100000913 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(458) GID 1 SID 100000914 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(459) GID 1 SID 100000915 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(460) GID 1 SID 100000916 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(461) GID 1 SID 100000917 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(462) GID 1 SID 100000918 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(463) GID 1 SID 100000919 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(464) GID 1 SID 100000920 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(465) GID 1 SID 100000921 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(466) GID 1 SID 100000922 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(467) GID 1 SID 100000925 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(468) GID 1 SID 100000926 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(469) GID 1 SID 100000929 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(470) GID 1 SID 100000930 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(471) GID 1 SID 100000931 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(472) GID 1 SID 100000932 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(473) GID 1 SID 100000933 in rule duplicates previous rule. Ignoring old rule.
+
+WARNING: /etc/snort/rules/community-web-php.rules(474) GID 1 SID 100000934 in rule duplicates previous rule. Ignoring old rule.
+
+4151 Snort rules read
+    3477 detection rules
+    0 decoder rules
+    0 preprocessor rules
+3477 Option Chains linked into 271 Chain Headers
+0 Dynamic rules
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++-------------------[Rule Port Counts]---------------------------------------
+|             tcp     udp    icmp      ip
+|     src     151      18       0       0
+|     dst    3306     126       0       0
+|     any     383      48     146      22
+|      nc      27       8      95      20
+|     s+d      12       5       0       0
++----------------------------------------------------------------------------
+
++-----------------------[detection-filter-config]------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[detection-filter-rules]-------------------------------
+| none
+-------------------------------------------------------------------------------
+
++-----------------------[rate-filter-config]-----------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[rate-filter-rules]------------------------------------
+| none
+-------------------------------------------------------------------------------
+
++-----------------------[event-filter-config]----------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[event-filter-global]----------------------------------
+| none
++-----------------------[event-filter-local]-----------------------------------
+| gen-id=1      sig-id=3152       type=Threshold tracking=src count=5   seconds=2  
+| gen-id=1      sig-id=3273       type=Threshold tracking=src count=5   seconds=2  
+| gen-id=1      sig-id=2494       type=Both      tracking=dst count=20  seconds=60 
+| gen-id=1      sig-id=2496       type=Both      tracking=dst count=20  seconds=60 
+| gen-id=1      sig-id=2523       type=Both      tracking=dst count=10  seconds=10 
+| gen-id=1      sig-id=2924       type=Threshold tracking=dst count=10  seconds=60 
+| gen-id=1      sig-id=2923       type=Threshold tracking=dst count=10  seconds=60 
+| gen-id=1      sig-id=1991       type=Limit     tracking=src count=1   seconds=60 
+| gen-id=1      sig-id=2275       type=Threshold tracking=dst count=5   seconds=60 
+| gen-id=1      sig-id=2495       type=Both      tracking=dst count=20  seconds=60 
++-----------------------[suppression]------------------------------------------
+| none
+-------------------------------------------------------------------------------
+Rule application order: activation->dynamic->pass->drop->sdrop->reject->alert->log
+Verifying Preprocessor Configurations!
+WARNING: flowbits key 'smb.tree.create.llsrpc' is set but not ever checked.
+WARNING: flowbits key 'ms_sql_seen_dns' is checked but not ever set.
+33 out of 1024 flowbits in use.
+
+[ Port Based Pattern Matching Memory ]
++- [ Aho-Corasick Summary ] -------------------------------------
+| Storage Format    : Full-Q 
+| Finite Automaton  : DFA
+| Alphabet Size     : 256 Chars
+| Sizeof State      : Variable (1,2,4 bytes)
+| Instances         : 215
+|     1 byte states : 204
+|     2 byte states : 11
+|     4 byte states : 0
+| Characters        : 64982
+| States            : 32135
+| Transitions       : 872051
+| State Density     : 10.6%
+| Patterns          : 5055
+| Match States      : 3855
+| Memory (MB)       : 17.00
+|   Patterns        : 0.51
+|   Match Lists     : 1.02
+|   DFA
+|     1 byte states : 1.02
+|     2 byte states : 14.05
+|     4 byte states : 0.00
++----------------------------------------------------------------
+[ Number of patterns truncated to 20 bytes: 1039 ]
+pcap DAQ configured to read-file.
+Acquiring network traffic from "mx-2.pcap".
+Reload thread starting...
+Reload thread started, thread 0x7f2facf1c700 (7470)
+WARNING: active responses disabled since DAQ can't inject packets.
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+           Rules Engine: SF_SNORT_DETECTION_ENGINE  Version 2.4  <Build 1>
+           Preprocessor Object: SF_POP  Version 1.0  <Build 1>
+           Preprocessor Object: SF_SSH  Version 1.1  <Build 3>
+           Preprocessor Object: SF_DNP3  Version 1.1  <Build 1>
+           Preprocessor Object: SF_DNS  Version 1.1  <Build 4>
+           Preprocessor Object: SF_GTP  Version 1.1  <Build 1>
+           Preprocessor Object: SF_MODBUS  Version 1.1  <Build 1>
+           Preprocessor Object: SF_SDF  Version 1.1  <Build 1>
+           Preprocessor Object: SF_DCERPC2  Version 1.0  <Build 3>
+           Preprocessor Object: SF_FTPTELNET  Version 1.2  <Build 13>
+           Preprocessor Object: SF_REPUTATION  Version 1.1  <Build 1>
+           Preprocessor Object: SF_SMTP  Version 1.1  <Build 9>
+           Preprocessor Object: SF_IMAP  Version 1.0  <Build 1>
+           Preprocessor Object: SF_SIP  Version 1.1  <Build 1>
+           Preprocessor Object: SF_SSLPP  Version 1.1  <Build 4>
+Commencing packet processing (pid=7464)
+Acquiring network traffic from "mx-3.pcap".
+===============================================================================
+Run time for packet processing was 2.516 seconds
+Snort processed 690 packets.
+Snort ran for 0 days 0 hours 0 minutes 2 seconds
+   Pkts/sec:          345
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       44220416
+  Bytes in mapped regions (hblkhd):      13574144
+  Total allocated space (uordblks):      40410832
+  Total free space (fordblks):           3809584
+  Topmost releasable block (keepcost):   86736
+===============================================================================
+Packet I/O Totals:
+   Received:          690
+   Analyzed:          690 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:          690 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:          666 ( 96.522%)
+       Frag:            0 (  0.000%)
+       ICMP:          408 ( 59.130%)
+        UDP:           12 (  1.739%)
+        TCP:          246 ( 35.652%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:           24 (  3.478%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:          690
+===============================================================================
+Action Stats:
+     Alerts:         1020 (147.826%)
+     Logged:         1020 (147.826%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:          690 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Frag3 statistics:
+        Total Fragments: 0
+      Frags Reassembled: 0
+               Discards: 0
+          Memory Faults: 0
+               Timeouts: 0
+               Overlaps: 0
+              Anomalies: 0
+                 Alerts: 0
+                  Drops: 0
+     FragTrackers Added: 0
+    FragTrackers Dumped: 0
+FragTrackers Auto Freed: 0
+    Frag Nodes Inserted: 0
+     Frag Nodes Deleted: 0
+===============================================================================
+===============================================================================
+Stream statistics:
+            Total sessions: 6
+              TCP sessions: 4
+              UDP sessions: 2
+             ICMP sessions: 0
+               IP sessions: 0
+                TCP Prunes: 0
+                UDP Prunes: 0
+               ICMP Prunes: 0
+                 IP Prunes: 0
+TCP StreamTrackers Created: 4
+TCP StreamTrackers Deleted: 4
+              TCP Timeouts: 0
+              TCP Overlaps: 0
+       TCP Segments Queued: 36
+     TCP Segments Released: 36
+       TCP Rebuilt Packets: 10
+         TCP Segments Used: 36
+              TCP Discards: 30
+                  TCP Gaps: 0
+      UDP Sessions Created: 2
+      UDP Sessions Deleted: 2
+              UDP Timeouts: 0
+              UDP Discards: 0
+                    Events: 0
+           Internal Events: 0
+           TCP Port Filter
+                  Filtered: 0
+                 Inspected: 0
+                   Tracked: 246
+           UDP Port Filter
+                  Filtered: 0
+                 Inspected: 0
+                   Tracked: 2
+===============================================================================
+HTTP Inspect - encodings (Note: stream-reassembled packets included):
+    POST methods:                         0         
+    GET methods:                          4         
+    HTTP Request Headers extracted:       4         
+    HTTP Request Cookies extracted:       0         
+    Post parameters extracted:            0         
+    HTTP response Headers extracted:      10        
+    HTTP Response Cookies extracted:      0         
+    Unicode:                              0         
+    Double unicode:                       0         
+    Non-ASCII representable:              0         
+    Directory traversals:                 0         
+    Extra slashes ("//"):                 2         
+    Self-referencing paths ("./"):        0         
+    HTTP Response Gzip packets extracted: 2         
+    Gzip Compressed Data Processed:       2544.00   
+    Gzip Decompressed Data Processed:     7216.00   
+    Total packets processed:              72        
+===============================================================================
+SMTP Preprocessor Statistics
+  Total sessions                                    : 0
+  Max concurrent sessions                           : 0
+===============================================================================
+dcerpc2 Preprocessor Statistics
+  Total sessions: 0
+===============================================================================
+===============================================================================
+SIP Preprocessor Statistics
+  Total sessions: 0
+===============================================================================
+Snort exiting
+```
+*1020*
+### Snort Rule Structure
+Let's Learn Snort Rules!
+Understanding the Snort rule format is essential for any blue and purple teamer.  The primary structure of the snort rule is shown below
+Each rule should have a type of action, protocol, source and destination IP, source and destination port and an option. Remember, Snort is in passive mode by default. So most of the time, you will use Snort as an IDS. You will need to start "inline mode" to turn on IPS mode. But before you start playing with inline mode, you should be familiar with Snort features and rules.
+The Snort rule structure is easy to understand but difficult to produce. You should be familiar with rule options and related details to create efficient rules. It is recommended to practice Snort rules and option details for different use cases.
+We will cover the basic rule structure in this room and help you take a step into snort rules. You can always advance your rule creation skills with different rule options by practising different use cases and studying rule option details in depth. We will focus on two actions; "alert"  for IDS mode and "reject" for IPS mode.
+Rules cannot be processed without a header. Rule options are "optional" parts. However, it is almost impossible to detect sophisticated attacks without using the rule options.
+Action
+There are several actions for rules. Make sure you understand the functionality and test it before creating rules for live systems. The most common actions are listed below.
+alert: Generate an alert and log the packet.
+log: Log the packet.
+drop: Block and log the packet.
+reject: Block the packet, log it and terminate the packet session.
+Protocol
+Protocol parameter identifies the type of the protocol that filtered for the rule.
+Note that Snort2 supports only four protocols filters in the rules (IP, TCP, UDP and ICMP). However, you can detect the application flows using port numbers and options. For instance, if you want to detect FTP traffic, you cannot use the FTP keyword in the protocol field but filter the FTP traffic by investigating TCP traffic on port 21.
+IP and Port Numbers
+These parameters identify the source and destination IP addresses and associated port numbers filtered for the rule.
+IP Filtering
+alert icmp 192.168.1.56 any <> any any  (msg: "ICMP Packet Found"; sid: 100001; rev:1;)
+This rule will create alerts for each ICMP packet originating from the 192.168.1.56 IP address.
+Filter an IP range
+alert icmp 192.168.1.0/24 any <> any any  (msg: "ICMP Packet Found"; sid: 100001; rev:1;)
+This rule will create alerts for each ICMP packet originating from the 192.168.1.0/24 subnet.
+Filter multiple IP ranges
+alert icmp [192.168.1.0/24, 10.1.1.0/24] any <> any any  (msg: "ICMP Packet Found"; sid: 100001; rev:1;)
+This rule will create alerts for each ICMP packet originating from the 192.168.1.0/24 and 10.1.1.0/24 subnets.
+Exclude IP addresses/ranges
+"negation operator" is used for excluding specific addresses and ports. Negation operator is indicated with "!"
+alert icmp !192.168.1.0/24 any <> any any  (msg: "ICMP Packet Found"; sid: 100001; rev:1;)
+This rule will create alerts for each ICMP packet not originating from the 192.168.1.0/24 subnet.
+Port Filtering
+alert tcp !192.168.1.0/24 21 <> any any  (msg: "ICMP Packet Found"; sid: 100001; rev:1;)
+This rule will create alerts for each TCP packet originating from port 21.
+Exclude a specific port
+alert tcp !192.168.1.0/24 !21 <> any any  (msg: "ICMP Packet Found"; sid: 100001; rev:1;)
+This rule will create alerts for each TCP packet not originating from port 21.
+Filter a port range (Type 1)
+alert tcp !192.168.1.0/24 1:1024 <> any any  (msg: "ICMP Packet Found"; sid: 100001; rev:1;)
+This rule will create alerts for each TCP packet originating from ports between 1-1024.
+Filter a port range (Type 2)
+alert icmp any :1024 <> any any  (msg: "ICMP Packet Found"; sid: 100001; rev:1;)
+This rule will create alerts for each TCP packet originating from ports less than or equal to 1024.
+Filter a port range (Type 3)
+alert icmp any 1024: <> any any (msg: "ICMP Packet Found"; sid: 100001; rev:1;)
+This rule will create alerts for each TCP packet originating from a source port higher than or equal to 1024.
+Filter a port range (Type 4)
+alert icmp any 80,1024: <> any any (msg: "ICMP Packet Found"; sid: 100001; rev:1;)
+This rule will create alerts for each TCP packet originating from a source port 80 and higher than or equal to 1024.
+Direction
+The direction operator indicates the traffic flow to be filtered by Snort. The left side of the rule shows the source, and the right side shows the destination.
+-> Source to destination flow.
+<> Bidirectional flow
+Note that there is no "<-" operator in Snort.
+There are three main rule options in Snort;
+General Rule Options - Fundamental rule options for Snort.
+Payload Rule Options - Rule options that help to investigate the payload data. These options are helpful to detect specific payload patterns.
+Non-Payload Rule Options - Rule options that focus on non-payload data. These options will help create specific patterns and identify network issues.
+General Rule Options
+Msg	The message field is a basic prompt and quick identifier of the rule. Once the rule is triggered, the message filed will appear in the console or log. Usually, the message part is a one-liner that summarises the event.
+Sid
+Snort rule IDs (SID) come with a pre-defined scope, and each rule must have a SID in a proper format. There are three different scopes for SIDs shown below.
+<100: Reserved rules
+100-999,999: Rules came with the build.
+>=1,000,000: Rules created by user.
+Briefly, the rules we will create should have sid greater than 100.000.000. Another important point is; SIDs should not overlap, and each id must be unique.
+Reference
+Each rule can have additional information or reference to explain the purpose of the rule or threat pattern. That could be a Common Vulnerabilities and Exposures (CVE) id or external information. Having references for the rules will always help analysts during the alert and incident investigation.
+Rev
+Snort rules can be modified and updated for performance and efficiency issues. Rev option help analysts to have the revision information of each rule. Therefore, it will be easy to understand rule improvements. Each rule has its unique rev number, and there is no auto-backup feature on the rule history. Analysts should keep the rule history themselves. Rev option is only an indicator of how many times the rule had revisions.
+alert icmp any any <> any any (msg: "ICMP Packet Found"; sid: 100001; reference:cve,CVE-XXXX; rev:1;)
+Payload Detection Rule Options
+Content
+Payload data. It matches specific payload data by ASCII, HEX or both. It is possible to use this option multiple times in a single rule. However, the more you create specific pattern match features, the more it takes time to investigate a packet.
+Following rules will create an alert for each HTTP packet containing the keyword "GET". This rule option is case sensitive!
+ASCII mode - alert tcp any any <> any 80  (msg: "GET Request Found"; content:"GET"; sid: 100001; rev:1;)
+HEX mode - alert tcp any any <> any 80  (msg: "GET Request Found"; content:"|47 45 54|"; sid: 100001; rev:1;)
+Nocase
+Disabling case sensitivity. Used for enhancing the content searches.
+alert tcp any any <> any 80  (msg: "GET Request Found"; content:"GET"; nocase; sid: 100001; rev:1;)
+Fast_pattern
+Prioritise content search to speed up the payload search operation. By default, Snort uses the biggest content and evaluates it against the rules. "fast_pattern" option helps you select the initial packet match with the specific value for further investigation. This option always works case insensitive and can be used once per rule. Note that this option is required when using multiple "content" options.
+The following rule has two content options, and the fast_pattern option tells to snort to use the first content option (in this case, "GET") for the initial packet match.
+alert tcp any any <> any 80  (msg: "GET Request Found"; content:"GET"; fast_pattern; content:"www";  sid:100001; rev:1;)
+Non-Payload Detection Rule Options
+There are rule options that focus on non-payload data. These options will help create specific patterns and identify network issues.
+ID
+Filtering the IP id field.
+alert tcp any any <> any any (msg: "ID TEST"; id:123456; sid: 100001; rev:1;)
+Flags
+Filtering the TCP flags.
+F - FIN
+S - SYN
+R - RST
+P - PSH
+A - ACK
+U - URG
+alert tcp any any <> any any (msg: "FLAG TEST"; flags:S;  sid: 100001; rev:1;)
+Dsize
+Filtering the packet payload size.
+dsize:min<>max;
+dsize:>100
+dsize:<100
+alert ip any any <> any any (msg: "SEQ TEST"; dsize:100<>300;  sid: 100001; rev:1;)
+Sameip
+Filtering the source and destination IP addresses for duplication.
+alert ip any any <> any any (msg: "SAME-IP TEST";  sameip; sid: 100001; rev:1;)
+Remember, once you create a rule, it is a local rule and should be in your "local.rules" file. This file is located under "/etc/snort/rules/local.rules". A quick reminder on how to edit your local rules is shown below.
+```text
+modifying the local rules
+
+           
+user@ubuntu$ sudo gedit /etc/snort/rules/local.rules
+```
+That is your "local.rules" file.
+Note that there are some default rules activated with snort instance. These rules are deactivated to manage your rules and improve your exercise experience. For further information, please refer to the TASK-10 or Snort manual.
+By this point, we covered the primary structure of the Snort rules. Understanding and practicing the fundamentals is suggested before creating advanced rules and using additional options.
+Wow! We have covered the fundamentals of the Snort rules!   Now, use the attached VM and navigate to the Task-Exercises/Exercise-Files/TASK-9 folder to answer the questions! Note that you can use the following command to create the logs in the current directory: -l .
+http://manual-snort-org.s3-website-us-east-1.amazonaws.com/
+Use "task9.pcap".
+Write a rule to filter IP ID "35369" and run it against the given pcap file. What is the request name of the detected packet? snort -c local.rules -A full -l . -r task9.pcap
+Try to filter different protocols like TCP/UDP/ICMP. id:35369;
+```text
+root@ip-10-10-52-242:/etc/snort/rules# nano /etc/snort/rules/local.rules
+root@ip-10-10-52-242:/etc/snort/rules# cat local.rules
+```
+```text
+# $Id: local.rules,v 1.11 2004/07/23 20:15:44 bmc Exp $
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+alert icmp any any -> any any (msg: "ICMP Packet Found"; sid:1000001; rev:1;)
+alert tcp any any -> any any (msg: "ID TEST";id:35369;sid:1000001; rev:1;)
+alert udp any any -> any any (msg: "ID TEST";id:35369;sid:1000001; rev:1;)
+alert icmp any any -> any any (msg: "ID TEST";id:35369;sid:1000001; rev:1;)
+
+--here--
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# cat local.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+alert tcp any any -> any any (msg: "ID TEST";id:35369;sid:1000001; rev:1;)
+alert udp any any -> any any (msg: "ID TEST";id:35369;sid:1000002; rev:1;)
+alert icmp any any -> any any (msg: "ID TEST";id:35369;sid:1000003; rev:1;)
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# snort -c local.rules -A full -l . -r task9.pcap
+Running in IDS mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Initializing Preprocessors!
+Initializing Plug-ins!
+Parsing Rules file "local.rules"
+Tagged Packet Limit: 256
+Log directory = .
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
+Initializing rule chains...
+3 Snort rules read
+    3 detection rules
+    0 decoder rules
+    0 preprocessor rules
+3 Option Chains linked into 3 Chain Headers
+0 Dynamic rules
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++-------------------[Rule Port Counts]---------------------------------------
+|             tcp     udp    icmp      ip
+|     src       0       0       0       0
+|     dst       0       0       0       0
+|     any       1       1       1       0
+|      nc       1       1       1       0
+|     s+d       0       0       0       0
++----------------------------------------------------------------------------
+
++-----------------------[detection-filter-config]------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[detection-filter-rules]-------------------------------
+| none
+-------------------------------------------------------------------------------
+
++-----------------------[rate-filter-config]-----------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[rate-filter-rules]------------------------------------
+| none
+-------------------------------------------------------------------------------
+
++-----------------------[event-filter-config]----------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[event-filter-global]----------------------------------
++-----------------------[event-filter-local]-----------------------------------
+| none
++-----------------------[suppression]------------------------------------------
+| none
+-------------------------------------------------------------------------------
+Rule application order: activation->dynamic->pass->drop->sdrop->reject->alert->log
+Verifying Preprocessor Configurations!
+
+[ Port Based Pattern Matching Memory ]
+pcap DAQ configured to read-file.
+Acquiring network traffic from "task9.pcap".
+Reload thread starting...
+Reload thread started, thread 0x7fd107e48700 (7689)
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=7683)
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+===============================================================================
+Run time for packet processing was 1.428 seconds
+Snort processed 3900 packets.
+Snort ran for 0 days 0 hours 0 minutes 1 seconds
+   Pkts/sec:         3900
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       2293760
+  Bytes in mapped regions (hblkhd):      17252352
+  Total allocated space (uordblks):      2065712
+  Total free space (fordblks):           228048
+  Topmost releasable block (keepcost):   69152
+===============================================================================
+Packet I/O Totals:
+   Received:         3900
+   Analyzed:         3900 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:         3900 (100.000%)
+       VLAN:         3500 ( 89.744%)
+        IP4:          593 ( 15.205%)
+       Frag:            0 (  0.000%)
+       ICMP:           90 (  2.308%)
+        UDP:          500 ( 12.821%)
+        TCP:            3 (  0.077%)
+        IP6:          763 ( 19.564%)
+    IP6 Ext:          763 ( 19.564%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:           77 (  1.974%)
+       UDP6:          299 (  7.667%)
+       TCP6:          387 (  9.923%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            7 (  0.179%)
+        IPX:            0 (  0.000%)
+   Eth Loop:           42 (  1.077%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:         2495 ( 63.974%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:         3900
+===============================================================================
+Action Stats:
+     Alerts:            1 (  0.026%)
+     Logged:            1 (  0.026%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:         3900 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Snort exiting
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# snort -r snort.log.1670289389 -X
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1670289389".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=7699)
+WARNING: No preprocessors configured for policy 0.
+03/03-20:00:32.042975 192.168.121.2 -> 192.168.120.1
+ICMP TTL:255 TOS:0x0 ID:35369 IpLen:20 DgmLen:40
+Type:13  Code:0  ID: 7  Seq: 6  TIMESTAMP REQUEST
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 08 00 45 00 00 28 8A 29 00 00 FF 01 BF 56 C0 A8  ..E..(.).....V..
+0x0020: 79 02 C0 A8 78 01 0D 00 CF 7C 00 07 00 06 04 4B  y...x....|.....K
+0x0030: 1F 2B 00 00 00 00 00 00 00 00 00 00 00 00 00 00  .+..............
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.133 seconds
+Snort processed 1 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:            1
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      13213696
+  Total allocated space (uordblks):      678144
+  Total free space (fordblks):           108288
+  Topmost releasable block (keepcost):   102304
+===============================================================================
+Packet I/O Totals:
+   Received:            1
+   Analyzed:            1 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:            1 (100.000%)
+       VLAN:            1 (100.000%)
+        IP4:            1 (100.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            1 (100.000%)
+        UDP:            0 (  0.000%)
+        TCP:            0 (  0.000%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:            1
+===============================================================================
+Snort exiting
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# ls
+alert  local.rules  snort.log.1670289389  task9.pcap
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# cat alert
+[**] [1:1000003:1] ID TEST [**]
+[Priority: 0] 
+03/03-20:00:32.042975 192.168.121.2 -> 192.168.120.1
+ICMP TTL:255 TOS:0x0 ID:35369 IpLen:20 DgmLen:40
+Type:13  Code:0  ID: 7  Seq: 6  TIMESTAMP REQUEST
+```
+*TIMESTAMP REQUEST*
+Create a rule to filter packets with Syn flag and run it against the given pcap file. What is the number of detected packets?
+```text
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# rm -r snort.log.1670289389 
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# rm -r alert
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# cat local.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+alert tcp any any <> any any (msg: "FLAG TEST";flags:S; sid:1000004;rev:1;)
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# snort -c local.rules -A full -l . -r task9.pcap
+Running in IDS mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+Initializing Preprocessors!
+Initializing Plug-ins!
+Parsing Rules file "local.rules"
+Tagged Packet Limit: 256
+Log directory = .
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
+Initializing rule chains...
+1 Snort rules read
+    1 detection rules
+    0 decoder rules
+    0 preprocessor rules
+1 Option Chains linked into 1 Chain Headers
+0 Dynamic rules
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++-------------------[Rule Port Counts]---------------------------------------
+|             tcp     udp    icmp      ip
+|     src       0       0       0       0
+|     dst       0       0       0       0
+|     any       1       0       0       0
+|      nc       1       0       0       0
+|     s+d       0       0       0       0
++----------------------------------------------------------------------------
+
++-----------------------[detection-filter-config]------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[detection-filter-rules]-------------------------------
+| none
+-------------------------------------------------------------------------------
+
++-----------------------[rate-filter-config]-----------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[rate-filter-rules]------------------------------------
+| none
+-------------------------------------------------------------------------------
+
++-----------------------[event-filter-config]----------------------------------
+| memory-cap : 1048576 bytes
++-----------------------[event-filter-global]----------------------------------
++-----------------------[event-filter-local]-----------------------------------
+| none
++-----------------------[suppression]------------------------------------------
+| none
+-------------------------------------------------------------------------------
+Rule application order: activation->dynamic->pass->drop->sdrop->reject->alert->log
+Verifying Preprocessor Configurations!
+
+[ Port Based Pattern Matching Memory ]
+pcap DAQ configured to read-file.
+Acquiring network traffic from "task9.pcap".
+Reload thread starting...
+Reload thread started, thread 0x7f10cb093700 (7727)
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=7721)
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# snort -r snort.log.1670290061 -X
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1670290061".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=7739)
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.464106 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x0 ID:0 IpLen:40 DgmLen:80
+******S* Seq: 0xB82637E7  Ack: 0x0  Win: 0x7080  TcpLen: 40
+TCP Options (5) => MSS: 1440 SackOK TS: 166450886 0 NOP WS: 7 
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 60 0F 01 34 00 28 06 3E 20 03 00 51 60 12  ..`..4.(.> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 37 E7 00 00 00 00 A0 02 70 80 0A AB 00 00 02 04  7.......p.......
+0x0050: 05 A0 04 02 08 0A 09 EB D6 C6 00 00 00 00 01 03  ................
+0x0060: 03 07                                            ..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.139 seconds
+Snort processed 1 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:            1
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      13213696
+  Total allocated space (uordblks):      678144
+  Total free space (fordblks):           108288
+  Topmost releasable block (keepcost):   102304
+===============================================================================
+Packet I/O Totals:
+   Received:            1
+   Analyzed:            1 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:            1 (100.000%)
+       VLAN:            1 (100.000%)
+        IP4:            0 (  0.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:            0 (  0.000%)
+        IP6:            1 (100.000%)
+    IP6 Ext:            1 (100.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            1 (100.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:            1
+===============================================================================
+Snort exiting
+```
+*1*
+Clear the previous log and alarm files and deactivate/comment out the old rule.
+Write a rule to filter packets with Push-Ack flags and run it against the given pcap file. What is the number of detected packets?
+```text
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# ls
+alert  local.rules  snort.log.1670290061  task9.pcap
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# rm -r alert
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# rm -r snort.log.1670290061 
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# cat local.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+#alert tcp any any <> any any (msg: "FLAG TEST";flags:S; sid:1000004;rev:1;)
+alert tcp any any <> any any (msg: "FLAG TEST";flags:P; sid:1000005;rev:1;)
+alert tcp any any <> any any (msg: "FLAG TEST";flags:A; sid:1000006;rev:1;)
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# snort -c local.rules -A full -l . -r task9.pcap
+
+WARNING: No preprocessors configured for policy 0.
+WARNING: No preprocessors configured for policy 0.
+===============================================================================
+Run time for packet processing was 1.398 seconds
+Snort processed 3900 packets.
+Snort ran for 0 days 0 hours 0 minutes 1 seconds
+   Pkts/sec:         3900
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       2289664
+  Bytes in mapped regions (hblkhd):      17252352
+  Total allocated space (uordblks):      2062944
+  Total free space (fordblks):           226720
+  Topmost releasable block (keepcost):   66944
+===============================================================================
+Packet I/O Totals:
+   Received:         3900
+   Analyzed:         3900 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:         3900 (100.000%)
+       VLAN:         3500 ( 89.744%)
+        IP4:          593 ( 15.205%)
+       Frag:            0 (  0.000%)
+       ICMP:           90 (  2.308%)
+        UDP:          500 ( 12.821%)
+        TCP:            3 (  0.077%)
+        IP6:          763 ( 19.564%)
+    IP6 Ext:          763 ( 19.564%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:           77 (  1.974%)
+       UDP6:          299 (  7.667%)
+       TCP6:          387 (  9.923%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            7 (  0.179%)
+        IPX:            0 (  0.000%)
+   Eth Loop:           42 (  1.077%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:         2495 ( 63.974%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:         3900
+===============================================================================
+Action Stats:
+     Alerts:          163 (  4.179%)
+     Logged:          163 (  4.179%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:         3900 (100.000%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+Snort exiting
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# ls
+alert  local.rules  snort.log.1670290525  task9.pcap
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# snort -r snort.log.1670290525 -X
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1670290525".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=7764)
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.467112 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82637E8  Ack: 0x3A17905C  Win: 0x7080  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 60 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..`..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 37 E8 3A 17 90 5C 50 10 70 80 88 A8 00 00        7.:..\P.p.....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.468853 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A17905C  Ack: 0xB8263811  Win: 0xFF7  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 90 5C B8 26 38 11 50 10 0F F7 E9 08 00 00        .\.&8.P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.473607 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8263811  Ack: 0x3A17906F  Win: 0x7080  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 60 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..`..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 38 11 3A 17 90 6F 50 10 70 80 88 6C 00 00        8.:..oP.p..l..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.475357 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0xB8263811  Ack: 0x3A17906F  Win: 0x7080  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 60 0F 01 34 02 18 06 3E 20 03 00 51 60 12  ..`..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 38 11 3A 17 90 6F 50 10 70 80 D5 2A 00 00 00 00  8.:..oP.p..*....
+0x0050: 05 34 05 14 69 8A 79 7B E7 BB 54 61 7C 1E BE C8  .4..i.y{..Ta|...
+0x0060: 47 20 4B CA 00 00 00 C4 63 75 72 76 65 32 35 35  G K.....curve255
+0x0070: 31 39 2D 73 68 61 32 35 36 40 6C 69 62 73 73 68  19-sha256@libssh
+0x0080: 2E 6F 72 67 2C 65 63 64 68 2D 73 68 61 32 2D 6E  .org,ecdh-sha2-n
+0x0090: 69 73 74 70 32 35 36 2C 65 63 64 68 2D 73 68 61  istp256,ecdh-sha
+0x00A0: 32 2D 6E 69 73 74 70 33 38 34 2C 65 63 64 68 2D  2-nistp384,ecdh-
+0x00B0: 73 68 61 32 2D 6E 69 73 74 70 35 32 31 2C 64 69  sha2-nistp521,di
+0x00C0: 66 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D 67 72 6F  ffie-hellman-gro
+0x00D0: 75 70 2D 65 78 63 68 61 6E 67 65 2D 73 68 61 32  up-exchange-sha2
+0x00E0: 35 36 2C 64 69 66 66 69 65 2D 68 65 6C 6C 6D 61  56,diffie-hellma
+0x00F0: 6E 2D 67 72 6F 75 70 2D 65 78 63 68 61 6E 67 65  n-group-exchange
+0x0100: 2D 73 68 61 31 2C 64 69 66 66 69 65 2D 68 65 6C  -sha1,diffie-hel
+0x0110: 6C 6D 61 6E 2D 67 72 6F 75 70 31 34 2D 73 68 61  lman-group14-sha
+0x0120: 31 2C 65 78 74 2D 69 6E 66 6F 2D 63 00 00 01 22  1,ext-info-c..."
+0x0130: 73 73 68 2D 72 73 61 2D 63 65 72 74 2D 76 30 31  ssh-rsa-cert-v01
+0x0140: 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 72 73 61  @openssh.com,rsa
+0x0150: 2D 73 68 61 32 2D 35 31 32 2C 72 73 61 2D 73 68  -sha2-512,rsa-sh
+0x0160: 61 32 2D 32 35 36 2C 73 73 68 2D 72 73 61 2C 65  a2-256,ssh-rsa,e
+0x0170: 63 64 73 61 2D 73 68 61 32 2D 6E 69 73 74 70 32  cdsa-sha2-nistp2
+0x0180: 35 36 2D 63 65 72 74 2D 76 30 31 40 6F 70 65 6E  56-cert-v01@open
+0x0190: 73 73 68 2E 63 6F 6D 2C 65 63 64 73 61 2D 73 68  ssh.com,ecdsa-sh
+0x01A0: 61 32 2D 6E 69 73 74 70 33 38 34 2D 63 65 72 74  a2-nistp384-cert
+0x01B0: 2D 76 30 31 40 6F 70 65 6E 73 73 68 2E 63 6F 6D  -v01@openssh.com
+0x01C0: 2C 65 63 64 73 61 2D 73 68 61 32 2D 6E 69 73 74  ,ecdsa-sha2-nist
+0x01D0: 70 35 32 31 2D 63 65 72 74 2D 76 30 31 40 6F 70  p521-cert-v01@op
+0x01E0: 65 6E 73 73 68 2E 63 6F 6D 2C 73 73 68 2D 65 64  enssh.com,ssh-ed
+0x01F0: 32 35 35 31 39 2D 63 65 72 74 2D 76 30 31 40 6F  25519-cert-v01@o
+0x0200: 70 65 6E 73 73 68 2E 63 6F 6D 2C 65 63 64 73 61  penssh.com,ecdsa
+0x0210: 2D 73 68 61 32 2D 6E 69 73 74 70 32 35 36 2C 65  -sha2-nistp256,e
+0x0220: 63 64 73 61 2D 73 68 61 32 2D 6E 69 73 74 70 33  cdsa-sha2-nistp3
+0x0230: 38 34 2C 65 63 64 73 61 2D 73 68 61 32 2D 6E 69  84,ecdsa-sha2-ni
+0x0240: 73 74 70 35 32 31 2C 73 73 68 2D 65 64 32 35 35  stp521,ssh-ed255
+0x0250: 31 39                                            19
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.475480 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0xB8263A15  Ack: 0x3A17906F  Win: 0x7080  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 60 0F 01 34 02 18 06 3E 20 03 00 51 60 12  ..`..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 3A 15 3A 17 90 6F 50 10 70 80 3C CA 00 00 00 00  :.:..oP.p.<.....
+0x0050: 00 96 63 68 61 63 68 61 32 30 2D 70 6F 6C 79 31  ..chacha20-poly1
+0x0060: 33 30 35 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C  305@openssh.com,
+0x0070: 61 65 73 31 32 38 2D 63 74 72 2C 61 65 73 31 39  aes128-ctr,aes19
+0x0080: 32 2D 63 74 72 2C 61 65 73 32 35 36 2D 63 74 72  2-ctr,aes256-ctr
+0x0090: 2C 61 65 73 31 32 38 2D 67 63 6D 40 6F 70 65 6E  ,aes128-gcm@open
+0x00A0: 73 73 68 2E 63 6F 6D 2C 61 65 73 32 35 36 2D 67  ssh.com,aes256-g
+0x00B0: 63 6D 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 61  cm@openssh.com,a
+0x00C0: 65 73 31 32 38 2D 63 62 63 2C 61 65 73 31 39 32  es128-cbc,aes192
+0x00D0: 2D 63 62 63 2C 61 65 73 32 35 36 2D 63 62 63 2C  -cbc,aes256-cbc,
+0x00E0: 33 64 65 73 2D 63 62 63 00 00 00 96 63 68 61 63  3des-cbc....chac
+0x00F0: 68 61 32 30 2D 70 6F 6C 79 31 33 30 35 40 6F 70  ha20-poly1305@op
+0x0100: 65 6E 73 73 68 2E 63 6F 6D 2C 61 65 73 31 32 38  enssh.com,aes128
+0x0110: 2D 63 74 72 2C 61 65 73 31 39 32 2D 63 74 72 2C  -ctr,aes192-ctr,
+0x0120: 61 65 73 32 35 36 2D 63 74 72 2C 61 65 73 31 32  aes256-ctr,aes12
+0x0130: 38 2D 67 63 6D 40 6F 70 65 6E 73 73 68 2E 63 6F  8-gcm@openssh.co
+0x0140: 6D 2C 61 65 73 32 35 36 2D 67 63 6D 40 6F 70 65  m,aes256-gcm@ope
+0x0150: 6E 73 73 68 2E 63 6F 6D 2C 61 65 73 31 32 38 2D  nssh.com,aes128-
+0x0160: 63 62 63 2C 61 65 73 31 39 32 2D 63 62 63 2C 61  cbc,aes192-cbc,a
+0x0170: 65 73 32 35 36 2D 63 62 63 2C 33 64 65 73 2D 63  es256-cbc,3des-c
+0x0180: 62 63 00 00 00 D5 75 6D 61 63 2D 36 34 2D 65 74  bc....umac-64-et
+0x0190: 6D 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 75 6D  m@openssh.com,um
+0x01A0: 61 63 2D 31 32 38 2D 65 74 6D 40 6F 70 65 6E 73  ac-128-etm@opens
+0x01B0: 73 68 2E 63 6F 6D 2C 68 6D 61 63 2D 73 68 61 32  sh.com,hmac-sha2
+0x01C0: 2D 32 35 36 2D 65 74 6D 40 6F 70 65 6E 73 73 68  -256-etm@openssh
+0x01D0: 2E 63 6F 6D 2C 68 6D 61 63 2D 73 68 61 32 2D 35  .com,hmac-sha2-5
+0x01E0: 31 32 2D 65 74 6D 40 6F 70 65 6E 73 73 68 2E 63  12-etm@openssh.c
+0x01F0: 6F 6D 2C 68 6D 61 63 2D 73 68 61 31 2D 65 74 6D  om,hmac-sha1-etm
+0x0200: 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 75 6D 61  @openssh.com,uma
+0x0210: 63 2D 36 34 40 6F 70 65 6E 73 73 68 2E 63 6F 6D  c-64@openssh.com
+0x0220: 2C 75 6D 61 63 2D 31 32 38 40 6F 70 65 6E 73 73  ,umac-128@openss
+0x0230: 68 2E 63 6F 6D 2C 68 6D 61 63 2D 73 68 61 32 2D  h.com,hmac-sha2-
+0x0240: 32 35 36 2C 68 6D 61 63 2D 73 68 61 32 2D 35 31  256,hmac-sha2-51
+0x0250: 32 2C                                            2,
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.477105 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A17906F  Ack: 0xB8263C19  Win: 0xBEF  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 90 6F B8 26 3C 19 50 10 0B EF E8 F5 00 00        .o.&<.P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.478105 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A17906F  Ack: 0xB8263D49  Win: 0xCEC  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 90 6F B8 26 3D 49 50 10 0C EC E6 C8 00 00        .o.&=IP.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.478607 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A17906F  Ack: 0xB8263D49  Win: 0xEF0  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 90 6F B8 26 3D 49 50 10 0E F0 E4 C4 00 00        .o.&=IP.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.484106 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A1791C7  Ack: 0xB8263D61  Win: 0xED8  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 91 C7 B8 26 3D 61 50 10 0E D8 12 AA 00 00 00 00  ...&=aP.........
+0x0050: 02 14 08 1F 00 00 02 01 00 FF FF FF FF FF FF FF  ................
+0x0060: FF C9 0F DA A2 21 68 C2 34 C4 C6 62 8B 80 DC 1C  .....!h.4..b....
+0x0070: D1 29 02 4E 08 8A 67 CC 74 02 0B BE A6 3B 13 9B  .).N..g.t....;..
+0x0080: 22 51 4A 08 79 8E 34 04 DD EF 95 19 B3 CD 3A 43  "QJ.y.4.......:C
+0x0090: 1B 30 2B 0A 6D F2 5F 14 37 4F E1 35 6D 6D 51 C2  .0+.m._.7O.5mmQ.
+0x00A0: 45 E4 85 B5 76 62 5E 7E C6 F4 4C 42 E9 A6 37 ED  E...vb^~..LB..7.
+0x00B0: 6B 0B FF 5C B6 F4 06 B7 ED EE 38 6B FB 5A 89 9F  k..\......8k.Z..
+0x00C0: A5 AE 9F 24 11 7C 4B 1F E6 49 28 66 51 EC E4 5B  ...$.|K..I(fQ..[
+0x00D0: 3D C2 00 7C B8 A1 63 BF 05 98 DA 48 36 1C 55 D3  =..|..c....H6.U.
+0x00E0: 9A 69 16 3F A8 FD 24 CF 5F 83 65 5D 23 DC A3 AD  .i.?..$._.e]#...
+0x00F0: 96 1C 62 F3 56 20 85 52 BB 9E D5 29 07 70 96 96  ..b.V .R...).p..
+0x0100: 6D 67 0C 35 4E 4A BC 98 04 F1 74 6C 08 CA 18 21  mg.5NJ....tl...!
+0x0110: 7C 32 90 5E 46 2E 36 CE 3B E3 9E 77 2C 18 0E 86  |2.^F.6.;..w,...
+0x0120: 03 9B 27 83 A2 EC 07 A2 8F B5 C5 5D F0 6F 4C 52  ..'........].oLR
+0x0130: C9 DE 2B CB F6 95 58 17 18 39 95 49 7C EA 95 6A  ..+...X..9.I|..j
+0x0140: E5 15 D2 26 18 98 FA 05 10 15 72 8E 5A 8A AA C4  ...&......r.Z...
+0x0150: 2D AD 33 17 0D 04 50 7A 33 A8 55 21 AB DF 1C BA  -.3...Pz3.U!....
+0x0160: 64 EC FB 85 04 58 DB EF 0A 8A EA 71 57 5D 06 0C  d....X.....qW]..
+0x0170: 7D B3 97 0F 85 A6 E1 E4 C7 AB F5 AE 8C DB 09 33  }..............3
+0x0180: D7 1E 8C 94 E0 4A 25 61 9D CE E3 D2 26 1A D2 EE  .....J%a....&...
+0x0190: 6B F1 2F FA 06 D9 8A 08 64 D8 76 02 73 3E C8 6A  k./.....d.v.s>.j
+0x01A0: 64 52 1F 2B 18 17 7B 20 0C BB E1 17 57 7A 61 5D  dR.+..{ ....Wza]
+0x01B0: 6C 77 09 88 C0 BA D9 46 E2 08 E2 4F A0 74 E5 AB  lw.....F...O.t..
+0x01C0: 31 43 DB 5B FC E0 FD 10 8E 4B 82 D1 20 A9 21 08  1C.[.....K.. .!.
+0x01D0: 01 1A 72 3C 12 A7 87 E6 D7 88 71 9A 10 BD BA 5B  ..r<......q....[
+0x01E0: 26 99 C3 27 18 6A F4 E2 3C 1A 94 68 34 B6 15 0B  &..'.j..<..h4...
+0x01F0: DA 25 83 E9 CA 2A D4 4C E8 DB BB C2 DB 04 DE 8E  .%...*.L........
+0x0200: F9 2E 8E FC 14 1F BE CA A6 28 7C 59 47 4E 6B C0  .........(|YGNk.
+0x0210: 5D 99 B2 96 4F A0 90 C3 A2 23 3B A1 86 51 5B E7  ]...O....#;..Q[.
+0x0220: ED 1F 61 29 70 CE E2 D7 AF B8 1B DD 76 21 70 48  ..a)p.......v!pH
+0x0230: 1C D0 06 91 27 D5 B0 5A A9 93 B4 EA 98 8D 8F DD  ....'..Z........
+0x0240: C1 86 FF B7 DC 90 A6 C0 8F 4D F4 35 C9 34 06 31  .........M.5.4.1
+0x0250: 99 FF                                            ..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.484731 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8263D61  Ack: 0x3A1793DF  Win: 0x76EC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 60 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..`..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 3D 61 3A 17 93 DF 50 10 76 EC 79 40 00 00        =a:...P.v.y@..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.495614 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0xB8263D61  Ack: 0x3A1793DF  Win: 0x76EC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 60 0F 01 34 02 18 06 3E 20 03 00 51 60 12  ..`..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 3D 61 3A 17 93 DF 50 10 76 EC 5B DF 00 00 00 00  =a:...P.v.[.....
+0x0050: 02 0C 05 20 00 00 02 01 00 A7 CA 09 8F 09 EC E2  ... ............
+0x0060: 66 82 15 0F 72 AA F3 C8 43 75 42 93 E7 B8 3B 3E  f...r...CuB...;>
+0x0070: E9 ED EE 19 9C C6 51 46 64 BF 33 80 E6 18 F1 5F  ......QFd.3...._
+0x0080: A1 AB D7 CE A8 2C E5 58 EC 30 E8 53 66 F2 7E 3A  .....,.X.0.Sf.~:
+0x0090: 2F BB D9 C6 91 EE E1 32 37 46 A6 FD 1D EB 89 2B  /......27F.....+
+0x00A0: C3 29 7B DD 70 1B F8 4D DE 0B 4A 90 24 62 2F 04  .){.p..M..J.$b/.
+0x00B0: 1E 6E 94 8D 74 FD CE 36 D4 1F D7 37 A9 56 BF 4C  .n..t..6...7.V.L
+0x00C0: FB B0 4B F4 8A A6 60 07 18 59 9B 03 6C AE 43 37  ..K...`..Y..l.C7
+0x00D0: C7 D6 01 0F 98 E9 23 B9 5A 6A 39 B3 67 38 B7 CB  ......#.Zj9.g8..
+0x00E0: 96 D8 D1 BF 8E 87 A8 45 C0 40 37 9C 12 78 65 3B  .......E.@7..xe;
+0x00F0: 06 CA BF F4 56 BE 17 A9 14 53 A8 D4 F2 90 8D 42  ....V....S.....B
+0x0100: 8A 54 5F AE 88 5A FF 18 14 F6 4E 28 01 93 7F 26  .T_..Z....N(...&
+0x0110: E9 F2 AA 5A 51 C7 9D 47 3D A2 D6 F8 B3 83 CA DF  ...ZQ..G=.......
+0x0120: AC 1A B4 14 BF 5D ED 4D 22 17 25 E6 93 6A C5 C8  .....].M".%..j..
+0x0130: D9 D2 ED 5E FD F3 6C 1E 85 B1 DB F4 98 4B 2C 77  ...^..l......K,w
+0x0140: 60 26 A8 27 E9 5A E4 08 BD E3 20 E0 18 E5 84 1B  `&.'.Z.... .....
+0x0150: 53 66 03 3E 98 42 6B 52 2A CC 52 DF B5 DE F2 72  Sf.>.BkR*.R....r
+0x0160: 74 CB 9D CF 67 5E 15 4F 56 F6 38 E7 E5 F6 99 A0  t...g^.OV.8.....
+0x0170: AB 3D 66 BD 22 07 8B 3E DD 85 5C 15 81 EA 44 2B  .=f."..>..\...D+
+0x0180: DA 90 E0 06 CA 03 02 49 D0 19 A7 FA C6 DD 03 49  .......I.......I
+0x0190: A6 87 DF 51 CA D6 78 D4 D2 6E B3 88 73 6B B3 91  ...Q..x..n..sk..
+0x01A0: 0B BF 90 4E B2 9D A0 8B 08 60 0C 2A C0 F2 C6 59  ...N.....`.*...Y
+0x01B0: 39 BF 1F 6A 8A 5F D4 6B 25 F4 0A A4 7F 7A D8 E2  9..j._.k%....z..
+0x01C0: 9C BE C9 5E 51 A5 E2 1B 91 FF 0D 1B BA D9 06 22  ...^Q.........."
+0x01D0: 29 B6 2C 44 47 84 1C C8 8E 2A FB AC 23 BD DD 82  ).,DG....*..#...
+0x01E0: 3D AA 42 B6 AB EE 7B D3 E6 EF 1D BB 67 16 3A 72  =.B...{.....g.:r
+0x01F0: B6 46 37 52 50 63 AF F8 23 DF A3 7C 7C 6A 85 E0  .F7RPc..#..||j..
+0x0200: 02 25 61 83 FD CC 2D 0F E5 B9 5E C5 79 0C 5A 03  .%a...-...^.y.Z.
+0x0210: 34 72 F1 DE D4 CD FB EF E2 89 11 A6 72 34 62 6E  4r..........r4bn
+0x0220: 82 9B C1 4B 27 E2 3F B3 7F 91 AC F5 2D 74 5C D5  ...K'.?.....-t\.
+0x0230: D7 9D 40 48 C7 51 F9 6E 11 6B 54 5E AB E7 F0 07  ..@H.Q.n.kT^....
+0x0240: F1 85 B2 C9 86 55 EF 41 47 12 13 ED A6 2D AB 5E  .....U.AG....-.^
+0x0250: 70 71                                            pq
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.699268 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0xB8263D61  Ack: 0x3A1793DF  Win: 0x76EC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 60 0F 01 34 02 18 06 3E 20 03 00 51 60 12  ..`..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 3D 61 3A 17 93 DF 50 10 76 EC 5B DF 00 00 00 00  =a:...P.v.[.....
+0x0050: 02 0C 05 20 00 00 02 01 00 A7 CA 09 8F 09 EC E2  ... ............
+0x0060: 66 82 15 0F 72 AA F3 C8 43 75 42 93 E7 B8 3B 3E  f...r...CuB...;>
+0x0070: E9 ED EE 19 9C C6 51 46 64 BF 33 80 E6 18 F1 5F  ......QFd.3...._
+0x0080: A1 AB D7 CE A8 2C E5 58 EC 30 E8 53 66 F2 7E 3A  .....,.X.0.Sf.~:
+0x0090: 2F BB D9 C6 91 EE E1 32 37 46 A6 FD 1D EB 89 2B  /......27F.....+
+0x00A0: C3 29 7B DD 70 1B F8 4D DE 0B 4A 90 24 62 2F 04  .){.p..M..J.$b/.
+0x00B0: 1E 6E 94 8D 74 FD CE 36 D4 1F D7 37 A9 56 BF 4C  .n..t..6...7.V.L
+0x00C0: FB B0 4B F4 8A A6 60 07 18 59 9B 03 6C AE 43 37  ..K...`..Y..l.C7
+0x00D0: C7 D6 01 0F 98 E9 23 B9 5A 6A 39 B3 67 38 B7 CB  ......#.Zj9.g8..
+0x00E0: 96 D8 D1 BF 8E 87 A8 45 C0 40 37 9C 12 78 65 3B  .......E.@7..xe;
+0x00F0: 06 CA BF F4 56 BE 17 A9 14 53 A8 D4 F2 90 8D 42  ....V....S.....B
+0x0100: 8A 54 5F AE 88 5A FF 18 14 F6 4E 28 01 93 7F 26  .T_..Z....N(...&
+0x0110: E9 F2 AA 5A 51 C7 9D 47 3D A2 D6 F8 B3 83 CA DF  ...ZQ..G=.......
+0x0120: AC 1A B4 14 BF 5D ED 4D 22 17 25 E6 93 6A C5 C8  .....].M".%..j..
+0x0130: D9 D2 ED 5E FD F3 6C 1E 85 B1 DB F4 98 4B 2C 77  ...^..l......K,w
+0x0140: 60 26 A8 27 E9 5A E4 08 BD E3 20 E0 18 E5 84 1B  `&.'.Z.... .....
+0x0150: 53 66 03 3E 98 42 6B 52 2A CC 52 DF B5 DE F2 72  Sf.>.BkR*.R....r
+0x0160: 74 CB 9D CF 67 5E 15 4F 56 F6 38 E7 E5 F6 99 A0  t...g^.OV.8.....
+0x0170: AB 3D 66 BD 22 07 8B 3E DD 85 5C 15 81 EA 44 2B  .=f."..>..\...D+
+0x0180: DA 90 E0 06 CA 03 02 49 D0 19 A7 FA C6 DD 03 49  .......I.......I
+0x0190: A6 87 DF 51 CA D6 78 D4 D2 6E B3 88 73 6B B3 91  ...Q..x..n..sk..
+0x01A0: 0B BF 90 4E B2 9D A0 8B 08 60 0C 2A C0 F2 C6 59  ...N.....`.*...Y
+0x01B0: 39 BF 1F 6A 8A 5F D4 6B 25 F4 0A A4 7F 7A D8 E2  9..j._.k%....z..
+0x01C0: 9C BE C9 5E 51 A5 E2 1B 91 FF 0D 1B BA D9 06 22  ...^Q.........."
+0x01D0: 29 B6 2C 44 47 84 1C C8 8E 2A FB AC 23 BD DD 82  ).,DG....*..#...
+0x01E0: 3D AA 42 B6 AB EE 7B D3 E6 EF 1D BB 67 16 3A 72  =.B...{.....g.:r
+0x01F0: B6 46 37 52 50 63 AF F8 23 DF A3 7C 7C 6A 85 E0  .F7RPc..#..||j..
+0x0200: 02 25 61 83 FD CC 2D 0F E5 B9 5E C5 79 0C 5A 03  .%a...-...^.y.Z.
+0x0210: 34 72 F1 DE D4 CD FB EF E2 89 11 A6 72 34 62 6E  4r..........r4bn
+0x0220: 82 9B C1 4B 27 E2 3F B3 7F 91 AC F5 2D 74 5C D5  ...K'.?.....-t\.
+0x0230: D7 9D 40 48 C7 51 F9 6E 11 6B 54 5E AB E7 F0 07  ..@H.Q.n.kT^....
+0x0240: F1 85 B2 C9 86 55 EF 41 47 12 13 ED A6 2D AB 5E  .....U.AG....-.^
+0x0250: 70 71                                            pq
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.918176 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A1793DF  Ack: 0xB8263F65  Win: 0x1020  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 93 DF B8 26 3F 65 50 10 10 20 DE 08 00 00        ...&?eP.. ....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.919173 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A1793DF  Ack: 0xB8263F71  Win: 0x1014  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 93 DF B8 26 3F 71 50 10 10 14 DE 08 00 00        ...&?qP.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:09.919798 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A1793DF  Ack: 0xB8263F71  Win: 0x1014  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 93 DF B8 26 3F 71 50 10 10 14 DE 08 00 00        ...&?qP.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:11.009848 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A1793DF  Ack: 0xB8263F71  Win: 0x1014  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 93 DF B8 26 3F 71 50 10 10 14 50 2F 00 00 00 00  ...&?qP...P/....
+0x0050: 04 3C 08 21 00 00 01 17 00 00 00 07 73 73 68 2D  .<.!........ssh-
+0x0060: 72 73 61 00 00 00 03 01 00 01 00 00 01 01 00 A9  rsa.............
+0x0070: A7 09 93 C9 FE 16 48 21 E3 32 4C 01 15 67 83 59  ......H!.2L..g.Y
+0x0080: 7A 05 81 36 71 AD 47 12 BE 10 BE 00 C0 EA B6 A7  z..6q.G.........
+0x0090: 22 8B D3 7F 54 96 C0 31 1A 82 FE 4D A1 80 9A FA  "...T..1...M....
+0x00A0: EA 57 3C 13 3B A7 74 F4 52 02 68 A4 F7 DD 73 3E  .W<.;.t.R.h...s>
+0x00B0: 55 73 58 9A 4B 4D 22 1A 83 C3 11 97 46 8B 44 48  UsX.KM".....F.DH
+0x00C0: 3B 79 B0 E7 E1 A4 06 3C DD DD 5D 43 BA 90 12 AF  ;y.....<..]C....
+0x00D0: 5D 90 2D ED 9B E6 E5 B7 CD B8 8F 2C D0 BE A4 14  ].-........,....
+0x00E0: D0 15 08 D2 E8 F8 25 01 B9 31 3F 1E 9B EB C1 58  ......%..1?....X
+0x00F0: 50 C8 8F F1 32 79 16 2B 71 68 90 21 23 EB 2C F9  P...2y.+qh.!#.,.
+0x0100: D1 DE A5 10 6F 94 C7 A8 70 CF F8 E9 AE 67 59 EA  ....o...p....gY.
+0x0110: C1 05 73 31 52 C6 28 B1 27 E3 1A 62 CD 02 5F 37  ..s1R.(.'..b.._7
+0x0120: 19 83 96 56 4D B1 5E 3E BE AB F0 B4 49 E6 23 85  ...VM.^>....I.#.
+0x0130: 0E 3B 2B CC 70 48 B6 BC 9C 53 61 8C 0C BC D2 4F  .;+.pH...Sa....O
+0x0140: 1E C8 EA 4E 90 C5 F1 1E 60 5C 66 EE E7 FD 90 3B  ...N....`\f....;
+0x0150: 5D 4C A0 C5 FA 6A ED 6A 0A 13 8F BE E4 92 A6 5E  ]L...j.j.......^
+0x0160: 9C E9 86 64 44 9F 64 75 BA 81 E0 4A D2 6B DB 00  ...dD.du...J.k..
+0x0170: 00 02 00 16 9F CA 34 A0 8E FE 7A 3E E2 72 AD 95  ......4...z>.r..
+0x0180: DB 2A 6A E7 1A B7 AC 55 12 F5 CF 9E 4D 5B 7F 19  .*j....U....M[..
+0x0190: 63 05 7A 23 DE 77 89 2A 73 44 DD 1D 59 BF F7 55  c.z#.w.*sD..Y..U
+0x01A0: AB 21 14 0A 44 E7 7D A0 CB F1 0E 75 87 94 B1 DD  .!..D.}....u....
+0x01B0: 25 31 79 67 DB AD 7E D9 AF D7 A5 C7 A4 FF 7C 3E  %1yg..~.......|>
+0x01C0: 0B 3D 75 CF 58 07 9A 8D 68 D6 B8 3A 3B 3B D4 37  .=u.X...h..:;;.7
+0x01D0: B7 64 7E 53 00 33 77 AD 06 A1 1A 70 94 83 D6 10  .d~S.3w....p....
+0x01E0: DD 80 BF CE 10 AA EA 84 57 E5 85 DC 42 41 B0 FB  ........W...BA..
+0x01F0: 6A 78 36 34 7A B4 8C 00 F0 84 96 A3 A5 BF 3E 22  jx64z.........>"
+0x0200: D0 EF BC 89 F7 88 55 DB 41 AB 21 05 02 B5 42 21  ......U.A.!...B!
+0x0210: 06 E4 46 84 5B 15 93 6B 58 EF CD B8 E0 20 E2 EB  ..F.[..kX.... ..
+0x0220: B1 7D E9 A0 EE 17 11 71 8D D8 15 6D F3 EE 09 49  .}.....q...m...I
+0x0230: AC 42 99 7A 4A EC FC E7 E1 BC 54 B5 E0 8C E9 03  .B.zJ.....T.....
+0x0240: 72 5B A3 8C 73 FA FD F3 00 AF 7A 57 82 45 F6 CF  r[..s.....zW.E..
+0x0250: 93 3F                                            .?
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:11.010349 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A1795E3  Ack: 0xB8263F71  Win: 0x1014  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 95 E3 B8 26 3F 71 50 10 10 14 88 6C 00 00 2E AC  ...&?qP....l....
+0x0050: AE D6 6E 44 3A ED AD 24 24 2A 32 BB 7F 18 05 CB  ..nD:..$$*2.....
+0x0060: F5 48 9C 67 DC E0 E5 E5 FB CC D8 3F BC 41 61 B1  .H.g.......?.Aa.
+0x0070: F4 F3 8C D2 F4 11 B8 43 0E 10 0D 02 AE 66 A3 AD  .......C.....f..
+0x0080: 34 F3 46 B3 DE F1 22 C9 B5 A3 12 C6 A6 D7 4E 62  4.F...".......Nb
+0x0090: DC C1 5D 5F 58 40 21 F0 DF A1 A8 9C 8E 40 37 35  ..]_X@!......@75
+0x00A0: 1A CC 6B D2 7E F8 57 4D 57 87 1B 66 EB 25 7A D9  ..k.~.WMW..f.%z.
+0x00B0: A0 84 C8 8B 43 8B EE A0 CF 6A 13 1D 31 03 20 BC  ....C....j..1. .
+0x00C0: F9 81 FC E6 5A B4 07 43 84 0F D2 50 40 0C 26 52  ....Z..C...P@.&R
+0x00D0: A1 FA C6 F7 9B AA 28 15 5F 00 0C 61 C8 F9 58 21  ......(._..a..X!
+0x00E0: AE 03 4A 1D A1 AC 0C 8B 3C 68 8A 7A E9 3D 70 BA  ..J.....<h.z.=p.
+0x00F0: 96 49 76 36 A4 CE AA 39 17 79 77 16 29 9A 30 F6  .Iv6...9.yw.).0.
+0x0100: F6 C4 79 8C 46 69 69 94 D3 42 A5 EF 8D 8F 72 CC  ..y.Fii..B....r.
+0x0110: 2C 1A 8F 24 AC 60 4C 8F 72 86 E7 79 D3 F7 1E 2D  ,..$.`L.r..y...-
+0x0120: BB 3B 27 50 B4 DC 36 4F 57 A7 13 85 6D AB CC B2  .;'P..6OW...m...
+0x0130: 14 C4 F4 36 5D 2B 92 4C D3 17 4E 9B E6 27 A1 CF  ...6]+.L..N..'..
+0x0140: 34 BC F5 F3 07 5D A2 5D DC E7 14 33 22 1B 1E EB  4....].]...3"...
+0x0150: 46 47 BC BC 03 EA 59 93 45 48 CD 96 4A 5C 16 32  FG....Y.EH..J\.2
+0x0160: C7 BA AF 13 A2 72 37 01 39 A5 3C 91 C9 52 6A 00  .....r7.9.<..Rj.
+0x0170: 00 01 0F 00 00 00 07 73 73 68 2D 72 73 61 00 00  .......ssh-rsa..
+0x0180: 01 00 57 88 70 E5 F5 EE 02 BA 7D 08 1F 4A 36 26  ..W.p.....}..J6&
+0x0190: 4A 3F B9 43 48 BE 87 EC F0 DC 39 FB 16 5A 50 3F  J?.CH.....9..ZP?
+0x01A0: A3 73 8B A3 B7 A6 94 43 9D 95 05 8A 29 79 63 94  .s.....C....)yc.
+0x01B0: 7A B2 8F 54 CB D1 B5 63 1B 94 4B FD D8 F1 C1 1E  z..T...c..K.....
+0x01C0: 75 EA C9 5E 85 35 7D 5E CA 0A E1 FC 01 25 B4 EA  u..^.5}^.....%..
+0x01D0: 76 F0 C7 A6 1D 68 A4 EE E7 F9 A6 E6 95 1F FB EF  v....h..........
+0x01E0: B2 3A A8 B7 46 44 CC 2E CC C7 E9 3D 25 24 47 A9  .:..FD.....=%$G.
+0x01F0: 35 59 F8 DE FA 74 35 F9 DC B7 7A C9 C1 23 06 7C  5Y...t5...z..#.|
+0x0200: 27 C8 F8 36 6F 2B C3 80 2F D1 A2 7F E0 8B CD D4  '..6o+../.......
+0x0210: 02 F1 67 1D FF D1 F6 4D A5 A9 6E 0A 64 B7 CE 10  ..g....M..n.d...
+0x0220: 78 60 BD BA 83 D5 B6 40 E8 62 37 85 13 E7 5C 1B  x`.....@.b7...\.
+0x0230: AB 83 A2 6E 7C E1 67 A3 57 E1 35 96 DE E0 BA 40  ...n|.g.W.5....@
+0x0240: A3 B4 EE F0 19 CE E1 65 3C A8 D4 F4 D3 63 0B 55  .......e<....c.U
+0x0250: 3E B3                                            >.
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:11.010593 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8263F71  Ack: 0x3A1797E7  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 60 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..`..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 3F 71 3A 17 97 E7 50 10 7E FC 6B 18 00 00        ?q:...P.~.k...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:11.224153 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A17982F  Ack: 0xB8263F81  Win: 0x1004  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 98 2F B8 26 3F 81 50 10 10 04 D9 B8 00 00        ./.&?.P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:11.231878 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A1798B7  Ack: 0xB826416D  Win: 0x1020  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 98 B7 B8 26 41 6D 50 10 10 20 D7 28 00 00        ...&AmP.. .(..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:13.275199 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82641D1  Ack: 0x3A17994F  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 60 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..`..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 41 D1 3A 17 99 4F 50 10 7E FC 67 50 00 00        A.:..OP.~.gP..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:15.196500 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264225  Ack: 0x3A179973  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 60 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..`..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 42 25 3A 17 99 73 50 10 7E FC 66 D8 00 00        B%:..sP.~.f...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:15.201244 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A1799A7  Ack: 0xB8264435  Win: 0x1020  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 99 A7 B8 26 44 35 50 10 10 20 D3 70 00 00        ...&D5P.. .p..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:15.204745 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264435  Ack: 0x3A1799EF  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 44 35 3A 17 99 EF 50 10 7E FC 64 4C 00 00        D5:...P.~.dL..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:15.247127 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264435  Ack: 0x3A179A23  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 44 35 3A 17 9A 23 50 10 7E FC 64 18 00 00        D5:..#P.~.d...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:15.734077 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264469  Ack: 0x3A179A57  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 44 69 3A 17 9A 57 50 10 7E FC 63 B0 00 00        Di:..WP.~.c...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:15.821966 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB826449D  Ack: 0x3A179A8B  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 44 9D 3A 17 9A 8B 50 10 7E FC 63 48 00 00        D.:...P.~.cH..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:15.942362 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82644D1  Ack: 0x3A179ABF  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 44 D1 3A 17 9A BF 50 10 7E FC 62 E0 00 00        D.:...P.~.b...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:16.141640 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264505  Ack: 0x3A179AF3  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 45 05 3A 17 9A F3 50 10 7E FC 62 78 00 00        E.:...P.~.bx..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:16.229657 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264539  Ack: 0x3A179B27  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 45 39 3A 17 9B 27 50 10 7E FC 62 10 00 00        E9:..'P.~.b...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:16.434439 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB826456D  Ack: 0x3A179B6B  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 45 6D 3A 17 9B 6B 50 10 7E FC 61 98 00 00        Em:..kP.~.a...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:16.757737 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82645A1  Ack: 0x3A179B9F  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 45 A1 3A 17 9B 9F 50 10 7E FC 61 30 00 00        E.:...P.~.a0..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:16.829002 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82645D5  Ack: 0x3A179BD3  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 45 D5 3A 17 9B D3 50 10 7E FC 60 C8 00 00        E.:...P.~.`...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:16.902015 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264609  Ack: 0x3A179C07  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 46 09 3A 17 9C 07 50 10 7E FC 60 60 00 00        F.:...P.~.``..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:17.051781 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A179C07  Ack: 0xB826463D  Win: 0x1020  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 9C 07 B8 26 46 3D 50 10 10 20 CF 08 00 00        ...&F=P.. ....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:17.054159 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB826463D  Ack: 0x3A179C3B  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 46 3D 3A 17 9C 3B 50 10 7E FC 5F F8 00 00        F=:..;P.~._...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:17.309072 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264671  Ack: 0x3A179C7F  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 46 71 3A 17 9C 7F 50 10 7E FC 5F 80 00 00        Fq:...P.~._...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:18.413244 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82646A5  Ack: 0x3A179CB3  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 46 A5 3A 17 9C B3 50 10 7E FC 5F 18 00 00        F.:...P.~._...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:18.422496 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82646A5  Ack: 0x3A179D07  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 46 A5 3A 17 9D 07 50 10 7E FC 5E C4 00 00        F.:...P.~.^...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:19.549922 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82646D9  Ack: 0x3A179D3B  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 46 D9 3A 17 9D 3B 50 10 7E FC 5E 5C 00 00        F.:..;P.~.^\..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:19.941982 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB826470D  Ack: 0x3A179D6F  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 47 0D 3A 17 9D 6F 50 10 7E FC 5D F4 00 00        G.:..oP.~.]...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:20.053999 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264741  Ack: 0x3A179DA3  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 47 41 3A 17 9D A3 50 10 7E FC 5D 8C 00 00        GA:...P.~.]...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:20.349794 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264775  Ack: 0x3A179DD7  Win: 0x7EFC  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 47 75 3A 17 9D D7 50 10 7E FC 5D 24 00 00        Gu:...P.~.]$..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:20.358797 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264775  Ack: 0x3A179E5B  Win: 0x8304  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 47 75 3A 17 9E 5B 50 10 83 04 58 98 00 00        Gu:..[P...X...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:21.645245 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82647A9  Ack: 0x3A179E8F  Win: 0x8304  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 47 A9 3A 17 9E 8F 50 10 83 04 58 30 00 00        G.:...P...X0..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:21.774017 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82647DD  Ack: 0x3A179EC3  Win: 0x8304  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 47 DD 3A 17 9E C3 50 10 83 04 57 C8 00 00        G.:...P...W...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:22.237837 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264811  Ack: 0x3A179EF7  Win: 0x8304  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 48 11 3A 17 9E F7 50 10 83 04 57 60 00 00        H.:...P...W`..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:22.492129 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A179EF7  Ack: 0xB8264845  Win: 0x1020  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 9E F7 B8 26 48 45 50 10 10 20 CA 10 00 00        ...&HEP.. ....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:22.494379 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264845  Ack: 0x3A179F2B  Win: 0x8304  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 48 45 3A 17 9F 2B 50 10 83 04 56 F8 00 00        HE:..+P...V...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:22.582141 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264879  Ack: 0x3A179F5F  Win: 0x8304  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 48 79 3A 17 9F 5F 50 10 83 04 56 90 00 00        Hy:.._P...V...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:22.834555 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82648AD  Ack: 0x3A179FA3  Win: 0x8304  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 48 AD 3A 17 9F A3 50 10 83 04 56 18 00 00        H.:...P...V...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:23.486532 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82648E1  Ack: 0x3A179FD7  Win: 0x8304  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 48 E1 3A 17 9F D7 50 10 83 04 55 B0 00 00        H.:...P...U...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:23.504658 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A179FD7  Ack: 0xB82648E1  Win: 0xF84  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: 9F D7 B8 26 48 E1 50 10 0F 84 9B 27 00 00 DB 87  ...&H.P....'....
+0x0050: C1 31 72 98 AD 00 D1 4E 8B 96 F4 C5 97 13 23 F1  .1r....N......#.
+0x0060: EF 52 F0 2C 1D 8E 89 7D 7E D4 4D 0A E5 E6 AA C2  .R.,...}~.M.....
+0x0070: E7 26 8E AC 8D 6B EE 3B 12 DA BA EB 1C 43 3E 33  .&...k.;.....C>3
+0x0080: 69 38 CF 66 BB 69 18 53 48 C0 28 2B 56 5E 93 99  i8.f.i.SH.(+V^..
+0x0090: 3A 2A 28 41 F6 A9 3F FF 7C 99 C6 03 D7 93 B2 54  :*(A..?.|......T
+0x00A0: 4F 87 EF F0 DC 6A BB CE EE 01 30 07 68 16 EA BA  O....j....0.h...
+0x00B0: A1 D7 E5 0D 3D 42 A8 6D 7A 33 0E A6 B0 F6 A8 36  ....=B.mz3.....6
+0x00C0: 9E 09 A8 E6 BE E7 71 81 6B A2 5A 23 B7 B9 55 CB  ......q.k.Z#..U.
+0x00D0: 9E 5A 1B 3F D6 D1 5B A7 DC 8D 37 B2 1F AD D5 C5  .Z.?..[...7.....
+0x00E0: 98 AD 16 AE 36 38 E8 21 1B E9 D6 54 A7 2E 1E 38  ....68.!...T...8
+0x00F0: E2 2D 4D DF F5 DC 5D B4 A5 52 9E 72 C3 0A 27 D0  .-M...]..R.r..'.
+0x0100: 4E 5B 7B 4D 4B 88 62 C9 69 4E 0F 2C 58 53 45 86  N[{MK.b.iN.,XSE.
+0x0110: 1A E8 D5 F6 86 77 16 B0 71 3E 04 19 59 10 66 67  .....w..q>..Y.fg
+0x0120: 5F 3A 13 67 A0 68 7F 4F FF E5 83 72 7C 5A D4 BD  _:.g.h.O...r|Z..
+0x0130: 0E 3E 36 8E 63 D7 FD D7 D6 DF 2B D5 A5 07 43 1F  .>6.c.....+...C.
+0x0140: AA E9 4B FA 6A 5B CF 22 8C 3B 1C B9 76 B6 BC 2D  ..K.j[.".;..v..-
+0x0150: 7C 66 B7 F7 C1 41 F4 4E 4A 7F 2D 2B F3 47 FB F7  |f...A.NJ.-+.G..
+0x0160: EA 84 C1 F7 2F F9 CE 4C CE 08 3A CB CC 41 E7 13  ..../..L..:..A..
+0x0170: BF 42 FA D2 F7 50 5C 56 45 C5 34 FD 04 2E 78 4C  .B...P\VE.4...xL
+0x0180: C6 85 B8 B4 5E D3 B0 97 C8 F6 0B 99 99 B1 C4 BC  ....^...........
+0x0190: 00 9F A3 E1 24 7E E4 F2 1E 89 89 F4 68 06 FD CD  ....$~......h...
+0x01A0: EA 25 83 5D 41 19 C3 89 C5 89 C5 54 53 A3 AC 23  .%.]A......TS..#
+0x01B0: EB 2E 82 6B D8 7E E5 48 E0 0B 3C DB C7 AA 7C B7  ...k.~.H..<...|.
+0x01C0: 72 0F 3F D7 84 CC A7 CB BF FF DD 88 D6 E7 C5 BB  r.?.............
+0x01D0: CF B0 1A 40 ED C8 C7 62 E5 A8 46 F8 80 AF C0 47  ...@...b..F....G
+0x01E0: 61 53 85 E9 ED 49 BD 10 96 B7 D9 0C 30 61 2E 6F  aS...I......0a.o
+0x01F0: E2 00 F8 CB 63 B9 2E 32 1D 29 50 61 B2 54 B9 3D  ....c..2.)Pa.T.=
+0x0200: 53 87 E3 AB 5E 3E 41 9F CC 7F 30 A1 83 EA 38 1F  S...^>A...0...8.
+0x0210: 99 D8 D1 2E 97 38 F2 94 AD 7C 9C 2E 85 E9 DA BB  .....8...|......
+0x0220: 84 02 25 92 A1 EC 7F 2B CC A2 D6 50 E5 E3 53 BF  ..%....+...P..S.
+0x0230: A4 00 A7 8C 46 94 9D 6A 03 04 B9 D2 9C CD 04 65  ....F..j.......e
+0x0240: 2F 3C 26 E2 26 F4 38 6E D8 0E 5E 6C 76 7E 70 56  /<&.&.8n..^lv~pV
+0x0250: 6E 24                                            n$
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:23.505037 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A17A1DB  Ack: 0xB82648E1  Win: 0xF84  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: A1 DB B8 26 48 E1 50 10 0F 84 A7 AE 00 00 81 A1  ...&H.P.........
+0x0050: 89 84 94 57 6B D5 F8 66 A9 5E 0C 62 D5 08 26 16  ...Wk..f.^.b..&.
+0x0060: EC 4E 4A 83 00 3E CD 51 71 7C 93 8B BD B6 D2 43  .NJ..>.Qq|.....C
+0x0070: AD CF D8 34 44 B3 12 0A 8E DB A4 1C AD BE 75 AE  ...4D.........u.
+0x0080: 55 D9 D8 D2 EE 41 C0 14 40 92 D2 F0 92 B1 A9 7F  U....A..@.......
+0x0090: 2D DF 6B 8D AE 60 C7 2B 48 EA 8A 98 2B CD C2 53  -.k..`.+H...+..S
+0x00A0: C1 20 82 CA 48 91 5C 20 73 7B 41 63 FA 6E 98 D9  . ..H.\ s{Ac.n..
+0x00B0: BF 74 2E A6 F2 AE 60 13 93 7C B3 1B CA 16 4D A4  .t....`..|....M.
+0x00C0: 15 80 81 3A 59 2A EC F7 5D F3 C4 84 1A 54 1F 2B  ...:Y*..]....T.+
+0x00D0: A3 CB EF 9B C4 D9 3E 6C 79 A2 6F 5F 97 A3 AA 6D  ......>ly.o_...m
+0x00E0: 80 E7 52 B5 4C BF CF D3 02 88 7B C2 6D 94 36 35  ..R.L.....{.m.65
+0x00F0: 79 B1 84 42 02 74 98 B4 49 7E DD DF A0 EA 8B BF  y..B.t..I~......
+0x0100: 62 C2 7A BB FE 17 41 FC E6 D2 63 9C D1 9F A0 32  b.z...A...c....2
+0x0110: 3D F7 F8 E8 0B B5 CD 1F B7 CF 27 A8 6C 6E 91 78  =.........'.ln.x
+0x0120: 98 FE C7 6E DB 73 B4 72 8B 29 D3 BA 1A 13 D5 AE  ...n.s.r.)......
+0x0130: 5F D2 31 1B 09 65 73 BC 6A 02 6C 52 52 DA 38 92  _.1..es.j.lRR.8.
+0x0140: 42 23 C9 1C D3 3B D8 4D CD 7D 76 DC 7B 18 97 A7  B#...;.M.}v.{...
+0x0150: 45 8C 24 0A 52 5E A4 52 2A AD CE 11 43 7C 40 B3  E.$.R^.R*...C|@.
+0x0160: 1C EB 37 C2 BB FB E3 7A 9A AE C5 45 20 DA 37 50  ..7....z...E .7P
+0x0170: 66 CB 0B CD 9E FF 90 B0 EC A3 58 93 64 04 E1 A5  f.........X.d...
+0x0180: F7 90 82 B2 9A 67 6F B8 69 D2 6B 8C A6 63 46 3D  .....go.i.k..cF=
+0x0190: 7B 4F EB 3D 61 8B 72 B1 18 95 C0 93 50 62 CF 29  {O.=a.r.....Pb.)
+0x01A0: D5 A9 01 62 09 29 85 81 A9 46 6D 27 6C 1E 21 1C  ...b.)...Fm'l.!.
+0x01B0: 10 FB 4B AF 19 A3 C1 39 1A C3 32 B8 84 9E 16 02  ..K....9..2.....
+0x01C0: 5E B5 34 91 37 90 7D 76 EA D6 DC 2D E1 21 92 79  ^.4.7.}v...-.!.y
+0x01D0: CF D5 8C D7 7D C4 2B D2 2B 1A 54 91 02 98 57 B3  ....}.+.+.T...W.
+0x01E0: EB F4 69 16 63 7A BA 78 CD 5B E1 1D 24 A0 06 71  ..i.cz.x.[..$..q
+0x01F0: 81 CB 7C E4 81 D5 13 75 35 B6 97 04 5C E5 CC C3  ..|....u5...\...
+0x0200: 73 D7 2A 97 6F 18 F8 B2 54 5C 58 B1 1E 27 A8 82  s.*.o...T\X..'..
+0x0210: 3E F9 AA 9F 8D 77 4B 42 29 81 29 FE 3E E1 CE F7  >....wKB).).>...
+0x0220: 55 35 BE E0 77 7D AF 61 12 04 1D 90 45 89 02 48  U5..w}.a....E..H
+0x0230: E8 CB 82 AC A3 EC FD BD 10 1B 3B 78 6A 8F 09 A3  ..........;xj...
+0x0240: AC 6D C0 C0 5E C3 C9 07 82 25 F8 47 FB AF C5 91  .m..^....%.G....
+0x0250: D0 56                                            .V
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:23.505039 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82648E1  Ack: 0x3A17A1DB  Win: 0x870C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 48 E1 3A 17 A1 DB 50 10 87 0C 4F A4 00 00        H.:...P...O...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:23.505284 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82648E1  Ack: 0x3A17A3DF  Win: 0x8B14  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 48 E1 3A 17 A3 DF 50 10 8B 14 49 98 00 00        H.:...P...I...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:23.505790 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A17A3DF  Ack: 0xB82648E1  Win: 0xF84  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: A3 DF B8 26 48 E1 50 10 0F 84 92 B2 00 00 10 46  ...&H.P........F
+0x0050: 28 A0 4E 95 31 C4 6D 20 4F 7A 6A E8 47 D1 62 06  (.N.1.m Ozj.G.b.
+0x0060: 7F 25 47 0F 39 11 AE F1 2B 6B 06 9D 8B 23 61 C6  .%G.9...+k...#a.
+0x0070: 22 52 7F 15 2B DE BC 4F DD F2 1A 7A 82 23 E7 96  "R..+..O...z.#..
+0x0080: 80 E0 31 19 81 C3 7A 63 AF 66 73 BB D4 44 31 11  ..1...zc.fs..D1.
+0x0090: 1B 52 E2 CB 53 13 57 91 A6 96 41 35 03 1A 95 BC  .R..S.W...A5....
+0x00A0: 66 E3 6B D1 BD B9 60 C9 3A 61 B8 55 AF E4 F8 EA  f.k...`.:a.U....
+0x00B0: B1 B6 AD 99 AB 53 B9 36 63 D6 32 1B A1 A4 A3 B9  .....S.6c.2.....
+0x00C0: 33 EB DE 48 87 26 FC 9D DE 16 20 AC 5A 97 9D C4  3..H.&.... .Z...
+0x00D0: B3 80 2B 18 AD BF 4D D5 5F 5F 71 DD 09 B2 F8 70  ..+...M.__q....p
+0x00E0: 5E 1C E5 3A 30 72 A9 67 89 15 47 4C 02 C1 BA D1  ^..:0r.g..GL....
+0x00F0: E3 C3 57 F2 39 D0 0E A1 1D B1 A4 F9 AE 84 B9 FC  ..W.9...........
+0x0100: 18 38 AD 7C 50 50 4D 13 79 7C 28 BB FA 27 0C CD  .8.|PPM.y|(..'..
+0x0110: BE 0E EF 2B F7 39 5E F1 6B 38 77 B8 86 E1 A3 34  ...+.9^.k8w....4
+0x0120: B6 EA DE 98 91 47 AC 40 03 3B C8 3A F6 10 9A 71  .....G.@.;.:...q
+0x0130: 9B E5 1E A7 15 B8 BA 7C 87 3E 14 20 8C 1A EF 97  .......|.>. ....
+0x0140: 1D D4 8F 21 49 C0 BC 80 A6 15 A3 D4 5F 30 7F C0  ...!I......._0..
+0x0150: 08 7D F0 85 FE 1A D9 BB 37 D1 E4 30 96 B0 F8 A4  .}......7..0....
+0x0160: A9 1C A7 0D C5 56 12 05 00 69 E7 B7 44 20 F1 7E  .....V...i..D .~
+0x0170: 3B 84 D7 7D EE AE 95 51 77 F9 21 ED 2A 60 AD 95  ;..}...Qw.!.*`..
+0x0180: 02 9F D6 22 5D 12 5F D4 54 1F 10 8A BF 71 7B 67  ..."]._.T....q{g
+0x0190: BD 5F 90 01 62 BF EE 7A 26 EB 46 D8 21 E4 00 9F  ._..b..z&.F.!...
+0x01A0: A0 EA 0E EB E9 E7 EB 4F 6A DA E6 B2 81 CC 39 C0  .......Oj.....9.
+0x01B0: 7E AF 3C 9E DF A8 8F 8E F6 DC FE D9 B3 1A 39 47  ~.<...........9G
+0x01C0: 7C C9 0F 54 38 28 0C D9 C8 C3 8D 66 76 89 26 48  |..T8(.....fv.&H
+0x01D0: 2B 67 46 7B 21 40 7B 23 02 F4 04 99 7A 49 13 7A  +gF{!@{#....zI.z
+0x01E0: 8E 4E A8 87 85 F5 C1 C9 A3 F6 7B 28 11 18 0A 55  .N........{(...U
+0x01F0: F2 C0 3C 0E E0 6F 48 A8 82 68 70 09 56 F2 8C B8  ..<..oH..hp.V...
+0x0200: 91 D8 D5 F2 F1 DC CE ED 5F 55 D6 CE 35 23 ED 52  ........_U..5#.R
+0x0210: 49 19 65 D0 39 DC 53 FE 5D C0 18 84 F9 AB F6 25  I.e.9.S.]......%
+0x0220: B7 B7 22 C9 0C 7E 5C 25 92 B3 03 C3 A1 06 65 67  .."..~\%......eg
+0x0230: F2 31 45 AB C1 D5 31 D9 9B F3 42 19 6B F6 27 0E  .1E...1...B.k.'.
+0x0240: 3E 6F 57 9E F4 06 10 CB 80 3E FB 3F 72 46 74 96  >oW......>.?rFt.
+0x0250: A8 62                                            .b
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:23.506038 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A17A5E3  Ack: 0xB82648E1  Win: 0xF84  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: A5 E3 B8 26 48 E1 50 10 0F 84 AA E1 00 00 55 92  ...&H.P.......U.
+0x0050: 63 CE CD 28 7E 0B 53 C9 9C 51 8D 70 4A 69 6E 0C  c..(~.S..Q.pJin.
+0x0060: EF 7B 98 3E AA 65 C0 E0 97 44 1E E3 14 E5 FD D3  .{.>.e...D......
+0x0070: 29 DE 25 0F D5 FB E1 FE 93 4E AD 17 F1 A9 FD A5  ).%......N......
+0x0080: B5 CF C5 AB D0 98 6F F2 02 5E D7 17 DA 09 2B 78  ......o..^....+x
+0x0090: F7 81 D4 A0 68 33 B1 01 3C A2 7F 20 01 49 F3 81  ....h3..<.. .I..
+0x00A0: DD 79 76 56 54 FE 82 A6 E9 C3 70 70 EB 7C 79 BA  .yvVT.....pp.|y.
+0x00B0: 63 C9 B3 7C 08 1D 47 8D 53 BF 49 85 37 1F 07 0C  c..|..G.S.I.7...
+0x00C0: 8C E7 D4 A2 CD A6 19 3B 5C F1 5A 94 CD 17 39 D0  .......;\.Z...9.
+0x00D0: 9A 57 C1 2B D7 F5 30 92 83 50 56 88 19 70 CC 4B  .W.+..0..PV..p.K
+0x00E0: 4C 36 8F E7 20 63 45 83 84 F6 F1 43 42 12 27 02  L6.. cE....CB.'.
+0x00F0: 91 D5 70 1E CE 21 2D 7D 9F CB 08 17 8E 87 F5 75  ..p..!-}.......u
+0x0100: AA 1D F3 0B 90 ED 1E 3C 0C 2D 3E EF 8D F5 2C 1C  .......<.->...,.
+0x0110: E5 86 58 F2 0D 88 EB E9 4E B2 AD F7 CB 19 BD 5C  ..X.....N......\
+0x0120: 64 8E 28 A1 A5 B8 E3 D5 FA C8 2B B9 70 99 C8 48  d.(.......+.p..H
+0x0130: 92 47 E5 B0 9F CD F7 6D AC F2 09 E0 1A AA 26 DF  .G.....m......&.
+0x0140: 85 FC 0B 0D 04 60 D8 66 51 19 BC 9C 10 B5 F6 F4  .....`.fQ.......
+0x0150: 77 19 79 45 43 98 36 0F D9 CA 52 F6 B1 A1 BE F4  w.yEC.6...R.....
+0x0160: 54 44 72 55 ED 2C BE 36 28 6E 2B B5 E0 E4 DC C6  TDrU.,.6(n+.....
+0x0170: 0F B2 6E 2D 23 D2 46 C3 9D 82 AF 2C 11 75 0E 47  ..n-#.F....,.u.G
+0x0180: C7 02 95 50 79 60 18 18 23 71 3B D8 56 97 68 16  ...Py`..#q;.V.h.
+0x0190: A0 17 15 A9 32 68 86 94 8B 66 B8 E3 B7 99 53 70  ....2h...f....Sp
+0x01A0: C5 56 53 60 43 0A 49 8D 47 F7 CC 36 84 43 7D 57  .VS`C.I.G..6.C}W
+0x01B0: 19 81 23 92 D7 2E AF 4C 2B 6D 43 34 25 F5 75 5E  ..#....L+mC4%.u^
+0x01C0: 43 B1 B3 47 EA E6 E7 A9 AD 70 C3 00 3B 50 1C DA  C..G.....p..;P..
+0x01D0: 11 2E 67 55 21 D1 4A 83 DF E1 DE 32 E3 EC 73 BE  ..gU!.J....2..s.
+0x01E0: 4A 99 CC 85 F4 82 C7 B1 56 B8 1A 77 09 8D E9 28  J.......V..w...(
+0x01F0: 4E 77 A8 83 56 7B 0B F3 7F 80 4B B8 4C 8F 36 11  Nw..V{....K.L.6.
+0x0200: 77 A0 C7 B0 46 23 5B D4 1C 25 E4 C9 31 CF AE C4  w...F#[..%..1...
+0x0210: E6 75 FE C3 85 47 73 AA 8F E5 14 22 38 EA 9E 70  .u...Gs...."8..p
+0x0220: 99 F6 76 35 F2 31 9D D7 6F E5 C5 82 9A 6F 69 E6  ..v5.1..o....oi.
+0x0230: 76 52 68 74 6A 4E 69 3B F2 99 BD C0 05 68 11 A1  vRhtjNi;.....h..
+0x0240: EE 0A 8D AA 06 33 80 3A 21 6F 3D 2B 5C C3 D7 1E  .....3.:!o=+\...
+0x0250: 63 FC                                            c.
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:23.506039 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82648E1  Ack: 0x3A17A5E3  Win: 0x8F1C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 48 E1 3A 17 A5 E3 50 10 8F 1C 43 8C 00 00        H.:...P...C...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:23.506411 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82648E1  Ack: 0x3A17A7E7  Win: 0x9324  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 48 E1 3A 17 A7 E7 50 10 93 24 3D 80 00 00        H.:...P..$=...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:23.507034 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82648E1  Ack: 0x3A17A7EB  Win: 0x9324  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 48 E1 3A 17 A7 EB 50 10 93 24 3D 7C 00 00        H.:...P..$=|..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.362419 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A17A7EB  Ack: 0xB8264915  Win: 0xF50  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: A7 EB B8 26 49 15 50 10 0F 50 E3 22 00 00 15 4E  ...&I.P..P."...N
+0x0050: 34 F7 61 38 9F 89 A9 C8 E0 80 52 E8 AF 4B AF 56  4.a8......R..K.V
+0x0060: 68 8A AB 86 F5 A6 A8 3D 9A 83 93 92 3A 08 7A 45  h......=....:.zE
+0x0070: 37 96 0F 9D BE E8 07 F8 C8 A1 F9 69 2F 39 49 1C  7..........i/9I.
+0x0080: B8 CC A2 3E 95 13 9E A8 C0 27 FA C1 88 86 6D CB  ...>.....'....m.
+0x0090: 45 9A 56 DA AD 4D D2 4B AD ED 59 26 DC 26 E0 15  E.V..M.K..Y&.&..
+0x00A0: 9C B9 F9 9F BE DA 07 C6 7E E8 13 C0 6D 88 37 D6  ........~...m.7.
+0x00B0: 08 BB 43 07 9B 03 EF 26 E5 7F 7D 59 D5 8A 4C 9B  ..C....&..}Y..L.
+0x00C0: 06 FE BD 21 98 3F 91 0B 90 38 6F 6D 15 89 0D D2  ...!.?...8om....
+0x00D0: 91 99 10 07 AB C0 B5 84 3D F9 5D F1 8F E0 8E CB  ........=.].....
+0x00E0: 7B 93 9C 5D B2 1B EB D2 E5 E9 AE 41 8C F1 7A DD  {..].......A..z.
+0x00F0: D2 32 20 30 DA 26 A0 75 F3 81 E0 18 63 DD BA A2  .2 0.&.u....c...
+0x0100: 29 BC 7F 4D FB C7 54 B6 CD 72 3A 88 FF 10 81 01  )..M..T..r:.....
+0x0110: 82 E5 A5 2A 80 79 44 14 2C D0 F3 79 5B 8F 57 13  ...*.yD.,..y[.W.
+0x0120: D0 6F E0 F2 D4 1A B3 E0 D0 1D 11 D4 EE 82 3F 3E  .o............?>
+0x0130: CF 15 E9 D1 8F 69 E8 C7 C6 E0 62 96 AA 44 AE 7B  .....i....b..D.{
+0x0140: 00 87 A3 D2 E0 DD 3B F1 61 BA 2C 7D 4D 00 4C A9  ......;.a.,}M.L.
+0x0150: F3 52 98 07 92 78 DB 55 AB D5 EC E9 9B 23 39 F6  .R...x.U.....#9.
+0x0160: B9 2E B9 5D EC A6 63 9B A4 E1 B5 06 EB 86 77 D2  ...]..c.......w.
+0x0170: FA AD 4D 7E 03 AA 80 BC 8F 1E A3 D7 94 D4 EC 6E  ..M~...........n
+0x0180: 81 E2 F8 56 D5 7D 2F FC 81 C1 57 59 7A 36 8F FB  ...V.}/...WYz6..
+0x0190: 29 97 92 62 70 FA 15 A4 2E 95 29 AA 0E 49 D9 D6  )..bp.....)..I..
+0x01A0: A0 8C 96 E2 09 95 1F F2 30 EE 33 0A 8F 48 5E D0  ........0.3..H^.
+0x01B0: 3E C2 33 F4 9F 31 A5 70 55 51 3B 82 E5 29 DD 80  >.3..1.pUQ;..)..
+0x01C0: 32 A0 92 3E CD 6A 6C CD 3C D7 D3 4C 2C 4F DD 34  2..>.jl.<..L,O.4
+0x01D0: C3 18 1B E0 02 AE E8 F6 17 7C E7 A4 ED 65 4D A0  .........|...eM.
+0x01E0: 46 42 50 61 FD 95 8A 17 DA 85 F0 67 40 60 C0 DF  FBPa.......g@`..
+0x01F0: B7 9B 01 12 49 CF F1 E5 F4 AB 1A 26 8B 52 CF DC  ....I......&.R..
+0x0200: 8B 0A 72 27 86 E6 54 AE 22 6A 3C 59 83 88 15 4F  ..r'..T."j<Y...O
+0x0210: 20 76 34 FD 49 DF 69 1F 26 52 E0 AA DF A2 D0 6B   v4.I.i.&R.....k
+0x0220: C3 4D 7C BB 82 BF 9E 67 4E 43 60 BE 00 E2 89 14  .M|....gNC`.....
+0x0230: 1D D5 FF CA F0 7C 44 D2 2B F5 35 BF E5 0A C3 26  .....|D.+.5....&
+0x0240: 24 9F 81 4C 33 8E 7A 2D 6E 46 E6 6E A9 C7 E6 E8  $..L3.z-nF.n....
+0x0250: 91 89                                            ..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.362667 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A17A9EF  Ack: 0xB8264915  Win: 0xF50  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: A9 EF B8 26 49 15 50 10 0F 50 6B 8C 00 00 FA 02  ...&I.P..Pk.....
+0x0050: CC C0 65 FE FE 1D D5 AA 67 00 6A 0A 94 EF 35 CE  ..e.....g.j...5.
+0x0060: F6 90 3F 11 84 A2 AC 87 28 43 C6 64 DB E4 1E E0  ..?.....(C.d....
+0x0070: E0 EA 62 1C C0 27 D3 D3 FC 89 E4 A6 2B B9 F7 D5  ..b..'......+...
+0x0080: 43 EA F1 88 60 79 C0 4D 06 27 B1 EB 37 30 BA 5B  C...`y.M.'..70.[
+0x0090: A3 BE 4E 5E 22 A0 B1 8B D0 A1 9A 9C 87 4D 39 3E  ..N^"........M9>
+0x00A0: 1A 0B E9 C1 1A C0 DA B8 3D 08 20 7C 87 6A 5D 11  ........=. |.j].
+0x00B0: DD 58 C8 F7 77 6B 87 38 96 D4 38 D6 AB 95 B1 F9  .X..wk.8..8.....
+0x00C0: D9 B2 01 F7 50 EC 87 59 6C 7D 4F 3F 11 A7 8B C8  ....P..Yl}O?....
+0x00D0: 8F A6 89 92 D7 74 03 85 BA B7 96 D4 B0 D4 7D AD  .....t........}.
+0x00E0: 22 5F 3E B9 60 4A FA D1 5E E0 56 CF 45 CE F0 30  "_>.`J..^.V.E..0
+0x00F0: 6C DA 16 DE 39 B9 66 BB B5 1B D6 AC 4A 27 C0 37  l...9.f.....J'.7
+0x0100: C3 A6 EF 31 20 74 BF 23 46 7C A1 55 9E 9F 5A BE  ...1 t.#F|.U..Z.
+0x0110: 31 93 E4 D3 4D 63 38 2C F6 B9 4B DF C6 42 1A 34  1...Mc8,..K..B.4
+0x0120: 8A D1 93 AC E8 8C 8C 32 A7 C2 BD FF B2 33 4A BB  .......2.....3J.
+0x0130: A0 D1 9C 5A DF 9A 62 01 52 78 AB D1 F4 44 27 A6  ...Z..b.Rx...D'.
+0x0140: 5E 72 95 25 6E CE CA A6 95 FC 8C 41 75 3C F0 5D  ^r.%n......Au<.]
+0x0150: 3A 44 3F BD 38 E9 A9 F4 60 FB BA 1D 80 3D 73 4B  :D?.8...`....=sK
+0x0160: 3E A1 4E 0B B5 26 30 5F 12 09 9B A9 5F 6F 08 15  >.N..&0_...._o..
+0x0170: 70 EC 06 FF 21 7F CF 9A 1A 0E 5C 72 37 6C 3C C5  p...!.....\r7l<.
+0x0180: 58 08 FD D9 94 08 71 A4 F1 B1 70 3B 47 FB 43 EF  X.....q...p;G.C.
+0x0190: 44 BD B7 B4 6C D9 EB AC 52 FA D0 89 09 95 DD B8  D...l...R.......
+0x01A0: BD C1 60 07 C9 80 6C 72 81 C0 E0 EA 1C 7D E0 22  ..`...lr.....}."
+0x01B0: 5D 0D 80 54 9A B0 D6 C1 66 D9 33 A1 E3 06 6E 33  ]..T....f.3...n3
+0x01C0: 05 B3 51 16 53 47 E5 B5 AE 74 49 84 D9 3C 63 D5  ..Q.SG...tI..<c.
+0x01D0: 11 C5 D5 E0 AC 0D 55 2A B5 EA E1 A6 FF EC 5D C6  ......U*......].
+0x01E0: 05 8C 32 56 B3 EC 4F 5B 65 DB D1 61 6C 94 3B CD  ..2V..O[e..al.;.
+0x01F0: 97 C6 A8 53 D5 BE 18 77 99 0D 15 37 C3 39 C8 AD  ...S...w...7.9..
+0x0200: 95 4F AB 8C 54 A7 BC 01 2F 2D 7A 7F B1 31 2E 22  .O..T.../-z..1."
+0x0210: 5E D5 63 96 63 D8 29 F7 B8 39 7B C3 AE 75 78 9F  ^.c.c.)..9{..ux.
+0x0220: 7D DC D1 CA 70 F5 32 41 FF F2 1F 52 7D A5 83 07  }...p.2A...R}...
+0x0230: 5A 12 DA C8 E1 25 A4 03 77 26 DD FC 45 2A 88 A6  Z....%..w&..E*..
+0x0240: B8 2D BF 3D B7 6B 19 72 5D 09 AC FE 24 BA 3B 88  .-.=.k.r]...$.;.
+0x0250: 03 F9                                            ..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.362917 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264915  Ack: 0x3A17A9EF  Win: 0x972C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 15 3A 17 A9 EF 50 10 97 2C 37 3C 00 00        I.:...P..,7<..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.363168 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264915  Ack: 0x3A17ABF3  Win: 0x9B34  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 15 3A 17 AB F3 50 10 9B 34 31 30 00 00        I.:...P..410..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.363553 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A17ABF3  Ack: 0xB8264915  Win: 0xF50  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: AB F3 B8 26 49 15 50 10 0F 50 EB C9 00 00 18 71  ...&I.P..P.....q
+0x0050: 69 DD 8B FA 80 30 4A 0F 70 0A D1 C0 41 06 4E 72  i....0J.p...A.Nr
+0x0060: 22 EA E2 9D C8 4A BD 4C 61 2B 67 2C 86 74 85 4E  "....J.La+g,.t.N
+0x0070: AE 9E 59 F3 17 0C A4 2F E4 04 92 30 C7 6B 15 9D  ..Y..../...0.k..
+0x0080: 7F 54 EE 98 85 9C D8 73 C4 5A 91 39 14 9D CA 95  .T.....s.Z.9....
+0x0090: 3A 2F F9 48 CB 87 C8 2C 6B 78 B8 CF D6 C9 6F DA  :/.H...,kx....o.
+0x00A0: 85 7E 74 83 A4 FB 6B 37 C2 71 0A 51 8B 4A 2D 24  .~t...k7.q.Q.J-$
+0x00B0: 6E E9 4D FA 3A 1A 44 F1 5C 4A 62 92 37 0C 22 45  n.M.:.D.\Jb.7."E
+0x00C0: A2 A4 12 61 09 A7 F9 6B 5F E6 CA 78 E2 DD 4D D6  ...a...k_..x..M.
+0x00D0: 3E B4 20 A9 B1 F3 8A 63 19 14 3E 0E 3F 75 04 A2  >. ....c..>.?u..
+0x00E0: 0E 7B 34 36 49 13 C3 E7 7F DE 87 51 FA F4 27 CE  .{46I......Q..'.
+0x00F0: 1E DF 97 CB EC 5A 10 8A 85 98 3A 90 AC 82 2A BD  .....Z....:...*.
+0x0100: 5F D0 88 0D 5E 21 B5 EC B6 2A B3 D8 32 FC 70 E3  _...^!...*..2.p.
+0x0110: B6 71 AE CB 49 20 5A 59 87 27 6B 35 2B 26 7A 7A  .q..I ZY.'k5+&zz
+0x0120: 8C 56 52 1D 33 53 59 B1 D5 6B 52 70 47 77 02 7B  .VR.3SY..kRpGw.{
+0x0130: 5A 9F AB 95 8D B2 A4 E7 50 29 28 C3 AE 14 BE D1  Z.......P)(.....
+0x0140: 11 0F C7 28 28 87 67 8C 5B 53 73 84 4B 18 F6 9F  ...((.g.[Ss.K...
+0x0150: 63 FE 34 D5 B0 58 33 D4 52 F3 CE D6 D1 CF C2 BC  c.4..X3.R.......
+0x0160: 7F A6 F6 14 59 07 00 C2 DE DF 61 7D FB 13 C6 61  ....Y.....a}...a
+0x0170: BB 2B 86 B1 75 05 A6 EC 8D 40 67 B5 9B 65 2E A9  .+..u....@g..e..
+0x0180: EF 5E CD 7E CC 60 92 D7 5F D8 8B BC 61 72 C0 1C  .^.~.`.._...ar..
+0x0190: C0 05 68 8E 6C 70 14 6D 20 11 EA 05 8F 22 06 4F  ..h.lp.m ....".O
+0x01A0: BC 14 8B AC 4E 1B 1A C5 82 49 44 88 96 0A 5D 99  ....N....ID...].
+0x01B0: 1B 2D 6A 28 F1 6E 63 FB FE D7 D8 7F B7 BD E0 5B  .-j(.nc........[
+0x01C0: DE A2 05 94 F5 14 49 C1 0A 75 3A 4A AF 4B D6 47  ......I..u:J.K.G
+0x01D0: 6B 1B 1F B4 CC 1C 59 FA F1 81 6B A3 A4 53 18 0B  k.....Y...k..S..
+0x01E0: 56 79 E5 99 1E 07 24 51 F1 8B DF 43 05 53 34 C1  Vy....$Q...C.S4.
+0x01F0: 59 20 9D A1 F7 62 28 04 4D CB F4 84 5D D1 7D BA  Y ...b(.M...].}.
+0x0200: 72 A9 CE BE CA 34 3C DE A0 BB AC DD 67 8D 14 E4  r....4<.....g...
+0x0210: 44 C2 D6 0F FA 18 28 7F 6D B5 F5 9F E7 40 BF 97  D.....(.m....@..
+0x0220: 25 F4 98 18 A0 87 FC D6 1B D0 B2 73 D5 15 B4 22  %..........s..."
+0x0230: 59 E0 95 C7 B3 EA FD 49 47 E4 24 C1 A7 82 65 B9  Y......IG.$...e.
+0x0240: 80 4F 2F D8 6D B4 A0 07 03 60 F3 E1 CB 3F 81 6A  .O/.m....`...?.j
+0x0250: 83 23                                            .#
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.363921 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A17ADF7  Ack: 0xB8264915  Win: 0xF50  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: AD F7 B8 26 49 15 50 10 0F 50 AF 2B 00 00 E4 C4  ...&I.P..P.+....
+0x0050: 1D DF 06 8A 0B 5D 5C 71 79 E8 AA 51 76 C8 0B A3  .....]\qy..Qv...
+0x0060: 21 47 D7 5E 7C C9 76 1A 2F D9 19 F7 A3 1C 1D 80  !G.^|.v./.......
+0x0070: F4 42 3A 45 8F CF 12 35 99 01 DE 13 1C 56 AD 32  .B:E...5.....V.2
+0x0080: 12 AC 50 7C DE DA E5 A5 AA E5 58 0E 28 70 E8 13  ..P|......X.(p..
+0x0090: 9B 08 C1 3D 22 DF F4 61 79 26 09 A9 2E 59 5B 8C  ...="..ay&...Y[.
+0x00A0: C2 E8 F1 10 24 52 05 25 84 4C 18 E4 91 46 E8 59  ....$R.%.L...F.Y
+0x00B0: 3C EF F0 65 0F B7 2E 57 6C 02 AD CF FD B9 B1 41  <..e...Wl......A
+0x00C0: DD 03 53 B4 F2 4C 8E F3 FB 41 B1 B0 E5 5C 9B 8D  ..S..L...A...\..
+0x00D0: CF B1 E9 EC 0C F2 3B 68 DC 4C 1A 62 43 8D 2F 49  ......;h.L.bC./I
+0x00E0: C2 7B 35 BD 8D D7 9C 69 89 31 FD 89 64 12 81 B6  .{5....i.1..d...
+0x00F0: 48 16 78 5E 4B F2 DA D5 4B 0C 69 7A 15 FA 70 C3  H.x^K...K.iz..p.
+0x0100: 85 64 DA 0E 0B ED DB 2F 50 55 70 4E 0C B1 51 4F  .d...../PUpN..QO
+0x0110: A0 74 14 50 61 BE 5F D7 2A 6D B8 C1 93 56 00 97  .t.Pa._.*m...V..
+0x0120: B5 19 9E A6 1E C9 AB B8 AA B6 A4 D6 44 07 84 B3  ............D...
+0x0130: EE D0 2C 5E 39 08 20 D9 46 F3 4A 54 45 08 B0 D9  ..,^9. .F.JTE...
+0x0140: 2E C5 38 DD BD 4A B0 91 01 17 58 B9 41 DC 9E E8  ..8..J....X.A...
+0x0150: EC A6 F1 69 74 2A C1 9B 32 BB E2 C1 17 37 4C 54  ...it*..2....7LT
+0x0160: D0 23 1A 76 B0 2D 58 16 07 08 55 90 E6 42 B0 82  .#.v.-X...U..B..
+0x0170: 09 03 67 AD E3 53 18 8E 69 25 A3 FB 3B 0B E7 E2  ..g..S..i%..;...
+0x0180: EB 9B FB 82 94 5E 84 95 1F E7 14 6D 6A A6 31 4B  .....^.....mj.1K
+0x0190: 15 1C 2C 3E 2D 0F FD D8 71 90 FF 5C 62 E4 1B 07  ..,>-...q..\b...
+0x01A0: 11 13 EA 5F A6 F5 8A 0D 78 19 56 B3 A5 B9 7E 64  ..._....x.V...~d
+0x01B0: 48 49 0E 50 BC 36 F0 05 A8 DE A4 67 93 FF 01 D7  HI.P.6.....g....
+0x01C0: 2A 9F 22 0A D2 87 0F 64 49 08 61 C6 C1 8D FB 02  *."....dI.a.....
+0x01D0: 8C F6 68 54 6D 84 D3 57 CA 5B B7 CE 19 03 B2 36  ..hTm..W.[.....6
+0x01E0: E5 1E 61 EB B9 11 59 B3 34 43 A2 0F DF BE 1B 3F  ..a...Y.4C.....?
+0x01F0: B8 EE 74 46 6A 49 74 A0 09 EE 06 9D 25 D9 8A C5  ..tFjIt.....%...
+0x0200: AA 88 C7 90 B9 1B 04 87 BC E0 24 FA 30 CD 02 BB  ..........$.0...
+0x0210: 0D BE 45 15 49 35 67 59 38 2D 2B C3 03 FC 43 76  ..E.I5gY8-+...Cv
+0x0220: 39 CB 23 8A F2 E0 91 FE D6 F0 B8 65 39 25 81 53  9.#........e9%.S
+0x0230: 4E E2 1C F3 B0 D1 7E 2E 23 4C 58 5F F3 C5 F9 FD  N.....~.#LX_....
+0x0240: 5F 09 00 33 85 19 AE 97 55 27 62 9B A7 31 A7 5D  _..3....U'b..1.]
+0x0250: 65 19                                            e.
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.363922 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264915  Ack: 0x3A17ADF7  Win: 0x9F3C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 15 3A 17 AD F7 50 10 9F 3C 2B 24 00 00        I.:...P..<+$..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.364417 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264915  Ack: 0x3A17AFFB  Win: 0xA344  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 15 3A 17 AF FB 50 10 A3 44 25 18 00 00        I.:...P..D%...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.365043 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264915  Ack: 0x3A17B07F  Win: 0xA74C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 15 3A 17 B0 7F 50 10 A7 4C 20 8C 00 00        I.:...P..L ...
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.994516 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A17B07F  Ack: 0xB8264949  Win: 0xF1C  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: B0 7F B8 26 49 49 50 10 0F 1C 06 A7 00 00 48 FE  ...&IIP.......H.
+0x0050: 0F AF 9F 1E EE 56 AC FA B8 D0 FE 88 33 F2 67 EE  .....V......3.g.
+0x0060: 77 A8 D2 60 5D DD C0 7F 96 1D 3B 85 9D 0B 4E B0  w..`].....;...N.
+0x0070: 7B 62 0D B0 FB 54 07 6C 56 55 59 1D CC F3 27 E6  {b...T.lVUY...'.
+0x0080: CE C9 5C FE D7 02 51 5C FD 6E F3 A9 7D DB D9 CD  ..\...Q\.n..}...
+0x0090: FF 6A 90 E6 4C B0 B5 85 FB 00 60 8B 70 CE BA BA  .j..L.....`.p...
+0x00A0: AD 14 9D 88 ED 3D DF 1D 2A 2C E7 20 EB 4D DF 73  .....=..*,. .M.s
+0x00B0: 5D 0C C3 5A 54 38 08 36 B0 B3 68 B4 FF D3 B3 F7  ]..ZT8.6..h.....
+0x00C0: D5 DC 9A 48 42 E8 25 A9 55 AB 96 F8 64 75 77 D7  ...HB.%.U...duw.
+0x00D0: 5B BA 25 54 43 6B 58 E3 38 5C 51 DA 5C C9 20 28  [.%TCkX.8\Q.\. (
+0x00E0: CF 5C 54 2A E1 3A 08 A8 F6 83 E8 8F 2C 4C 90 A0  .\T*.:......,L..
+0x00F0: 39 75 C7 36 E9 07 B8 6F 56 65 C5 E9 28 50 A4 FB  9u.6...oVe..(P..
+0x0100: 50 7B 44 65 8F 9F 27 7E 32 57 30 49 16 F1 52 AE  P{De..'~2W0I..R.
+0x0110: D4 6A 92 55 F4 1A 75 35 FE 42 4E 3B 61 28 46 43  .j.U..u5.BN;a(FC
+0x0120: 24 F4 FD A9 3C 9D CB 2F 44 91 1B 1B 19 64 B5 86  $...<../D....d..
+0x0130: E8 CD 1A 07 18 E2 23 63 4F 3B 3A 47 14 CA A1 20  ......#cO;:G... 
+0x0140: 8E 80 47 0A 38 31 BA 93 87 1F 7A DF A0 7B 3B B6  ..G.81....z..{;.
+0x0150: 16 13 80 ED 8A 1E 5F 29 B0 87 97 46 24 F0 78 9B  ......_)...F$.x.
+0x0160: 47 ED E6 DD 26 0D 66 0B 63 8A F3 C3 B7 C1 6A EA  G...&.f.c.....j.
+0x0170: 62 EE 0F 6A 81 6C 28 69 E5 84 4C 5C 5F F1 61 EB  b..j.l(i..L\_.a.
+0x0180: 9B 96 C2 E9 E5 32 C0 64 44 3E 29 29 00 34 38 90  .....2.dD>)).48.
+0x0190: 04 D7 AA 60 04 8E A4 46 48 AA 78 B6 EE C4 81 67  ...`...FH.x....g
+0x01A0: D5 08 8F E3 EB 4B 15 AD B8 CF AE BF E5 87 83 3C  .....K.........<
+0x01B0: DE 27 D8 36 46 3C E4 4F 26 38 13 15 10 46 E5 A6  .'.6F<.O&8...F..
+0x01C0: 19 AC 16 CC 82 DF 39 49 A1 93 B2 17 4D E4 5D 22  ......9I....M.]"
+0x01D0: 49 0B 69 0A 41 4D BB F9 E5 74 B2 71 96 13 8A 68  I.i.AM...t.q...h
+0x01E0: 57 4D D3 21 BF C6 77 0C 57 8F F4 CC 6C B7 35 57  WM.!..w.W...l.5W
+0x01F0: 73 35 72 8B B4 51 43 15 D7 A1 3E 85 F6 F6 09 DA  s5r..QC...>.....
+0x0200: 2E C8 60 D9 D6 38 E6 B3 9B A1 8F 8A F1 D7 7B 64  ..`..8........{d
+0x0210: A6 34 DD F4 1F 88 DE C2 5F C8 6B 6B FD F6 9E 1A  .4......_.kk....
+0x0220: 4F BF AA 61 77 DE 43 72 CC 26 DB 21 50 B2 3A CB  O..aw.Cr.&.!P.:.
+0x0230: A4 EB 17 F5 46 A5 05 89 78 24 CA FA 1A 2B 3E EE  ....F...x$...+>.
+0x0240: 19 09 BE 8D 33 D5 A9 62 1F 54 96 B2 BD 51 16 BB  ....3..b.T...Q..
+0x0250: D3 D4                                            ..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.995025 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A17B283  Ack: 0xB8264949  Win: 0xF1C  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: B2 83 B8 26 49 49 50 10 0F 1C F4 B2 00 00 95 22  ...&IIP........"
+0x0050: E0 28 DA 9D 21 23 5C C7 34 80 80 CC 23 1C 0D FB  .(..!#\.4...#...
+0x0060: 2E 37 13 58 D8 C4 AE B8 C1 F6 C1 6C 32 40 C7 DE  .7.X.......l2@..
+0x0070: 28 6C CC 7F 33 CB 44 00 8B 40 CB 4E DA 25 E4 BC  (l..3.D..@.N.%..
+0x0080: 39 93 25 6C E1 AE 4E B9 C1 BD 5D C7 6A 07 15 35  9.%l..N...].j..5
+0x0090: 72 61 14 24 65 02 5F 12 E5 C2 EA 05 76 E1 09 6B  ra.$e._.....v..k
+0x00A0: E6 71 07 97 D6 00 BF BC 68 45 B7 46 96 C8 79 5A  .q......hE.F..yZ
+0x00B0: 29 5B D3 85 6B 1C 00 19 D9 45 BF DE BB 18 AE 48  )[..k....E.....H
+0x00C0: 0C DD 02 61 B5 E4 C5 1A 8A 88 BD 59 0D 64 2E 36  ...a.......Y.d.6
+0x00D0: 5B 74 9B EE E4 B6 95 76 40 66 58 DC 5A 5B B5 8B  [t.....v@fX.Z[..
+0x00E0: E2 D8 C7 F9 02 3E 46 BC 5F B9 B2 1D EE 2F 7E 2B  .....>F._..../~+
+0x00F0: 5C DD 32 E7 F6 10 36 8C 4C 88 15 C5 68 D1 83 B5  \.2...6.L...h...
+0x0100: 59 F2 E8 9B 39 62 B5 80 86 36 CC CE 45 DE 7A C6  Y...9b...6..E.z.
+0x0110: CC 2F 8F 7E 94 CE 70 E4 B5 AD 21 14 37 05 48 DB  ./.~..p...!.7.H.
+0x0120: 8B 7E 65 EC 0D D0 6B 79 C4 61 0B C5 0C D8 23 FF  .~e...ky.a....#.
+0x0130: 64 02 02 DF 33 F9 37 44 62 80 EB 43 96 92 A8 B7  d...3.7Db..C....
+0x0140: 4B D2 DB A0 12 B0 7C 8D 2F B7 24 21 C1 54 14 3C  K.....|./.$!.T.<
+0x0150: F6 D8 C3 F0 F6 67 86 84 67 EA 86 04 20 A0 BB 02  .....g..g... ...
+0x0160: AC 7D FE 1E CD 89 3A D8 BE B0 34 62 AC BF A8 04  .}....:...4b....
+0x0170: 07 D3 70 18 8B D5 7C 48 95 60 67 2D 63 07 34 FE  ..p...|H.`g-c.4.
+0x0180: C6 4B D2 B9 BF 6B DC CE FC 2F 7B 02 43 A8 C9 BA  .K...k.../{.C...
+0x0190: BC DB 38 8A EE 5F 60 B0 C4 8E FC ED 7F 0B 50 CF  ..8.._`.......P.
+0x01A0: 4C 8D 6F 3A A7 3B B1 06 92 2F 2F EA B1 15 E1 B3  L.o:.;...//.....
+0x01B0: 72 50 BA 23 49 D6 C8 AA A1 CD AF C6 CF 3E 05 77  rP.#I........>.w
+0x01C0: 8B B1 91 C9 6F B6 CC 34 D1 20 11 F1 D3 B1 34 3C  ....o..4. ....4<
+0x01D0: 55 38 1A 94 72 0F 95 ED 5D 8A D7 1D 64 87 A3 0B  U8..r...]...d...
+0x01E0: 16 2E 75 5F 7F 0F 8A 9F 6D 31 14 6C FA 72 F6 63  ..u_....m1.l.r.c
+0x01F0: 9A 66 8A BE 97 08 E7 51 FA 85 54 1B 83 9B 83 26  .f.....Q..T....&
+0x0200: E0 59 E1 1D 18 3D 58 6B 75 FB 5D C6 3F 70 65 3A  .Y...=Xku.].?pe:
+0x0210: DE D9 07 18 85 38 6D 1F D8 B0 70 D7 21 01 9F B1  .....8m...p.!...
+0x0220: 6B CD CA 73 B5 16 13 BF 17 7E 55 F7 6A CC 3E 17  k..s.....~U.j.>.
+0x0230: 7B D5 AB F4 48 B9 2F 32 82 A3 67 F7 41 C9 99 5B  {...H./2..g.A..[
+0x0240: AA 45 0C 5D B3 97 9B 00 7D 36 83 5F B7 83 31 FD  .E.]....}6._..1.
+0x0250: AF 5C                                            .\
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.995026 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264949  Ack: 0x3A17B283  Win: 0xAB54  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 49 3A 17 B2 83 50 10 AB 54 1A 4C 00 00        II:...P..T.L..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.995516 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264949  Ack: 0x3A17B487  Win: 0xAF5C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 49 3A 17 B4 87 50 10 AF 5C 14 40 00 00        II:...P..\.@..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.995891 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A17B487  Ack: 0xB8264949  Win: 0xF1C  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: B4 87 B8 26 49 49 50 10 0F 1C BE E3 00 00 82 7D  ...&IIP........}
+0x0050: 8E 59 AC 95 BC A0 08 DD 18 24 63 5F 19 9B 18 A3  .Y.......$c_....
+0x0060: F8 BB 90 2E 9C AE 65 3E 5A D9 BA 09 37 A2 7E 0D  ......e>Z...7.~.
+0x0070: 85 95 54 04 92 5D 3A 4E CF 79 EA FD E6 AF 93 68  ..T..]:N.y.....h
+0x0080: 08 D4 47 80 BB C4 09 C3 96 A7 70 CC EB 39 8F C7  ..G.......p..9..
+0x0090: D2 37 C8 93 A7 DE 48 DA 96 D7 83 F3 BB 25 59 D4  .7....H......%Y.
+0x00A0: 99 87 FC D7 BF DF 63 63 9B 1B 01 90 A7 02 99 F4  ......cc........
+0x00B0: F0 E5 B9 86 85 FC 3F 45 0E A2 EA AD 7E 6F FC B5  ......?E....~o..
+0x00C0: E5 A7 2B BD 91 7C EA E5 92 B1 59 4A 1D E2 B6 DD  ..+..|....YJ....
+0x00D0: 64 07 29 16 63 AB 45 8C AC 44 4D B1 18 BC BA E9  d.).c.E..DM.....
+0x00E0: A1 25 F1 F8 82 2F 47 73 AF 03 16 0D 21 C7 4B 60  .%.../Gs....!.K`
+0x00F0: FD 41 2C 04 67 7C BD FC 05 C2 D9 88 36 E2 C1 DB  .A,.g|......6...
+0x0100: 1E 09 DF 59 01 4E E5 7F 08 86 70 45 57 6F A6 1A  ...Y.N....pEWo..
+0x0110: 06 5A 8E C7 D1 A3 A0 7A 6D 21 50 17 A2 FA 0F DA  .Z.....zm!P.....
+0x0120: 7E 73 F3 D9 E7 A9 47 D4 C8 65 2C 88 9F EA AC 2C  ~s....G..e,....,
+0x0130: 94 6D AB 8B 7D 90 D4 04 C5 C2 26 99 C6 24 12 74  .m..}.....&..$.t
+0x0140: 49 7B FE 4B 1B B0 9E 84 95 B6 2A 6C 77 DE 7A 01  I{.K......*lw.z.
+0x0150: E9 CB 2D EE 17 55 39 E1 1B F0 18 03 ED 5F D1 9A  ..-..U9......_..
+0x0160: D3 CF 7B C2 83 F3 ED BC B6 42 2A 67 BA 07 E6 D6  ..{......B*g....
+0x0170: 4A AF 62 63 F3 F6 5A 9F 25 75 B4 E6 DE AA 42 9F  J.bc..Z.%u....B.
+0x0180: 5B D8 2F 89 F9 CD D5 5F 37 B9 ED 77 86 09 4B A5  [./...._7..w..K.
+0x0190: 67 0C 9F CB 34 CB CA 7C 55 52 1A 93 CB 73 0A BC  g...4..|UR...s..
+0x01A0: 49 01 FE 44 25 EB 48 0B A4 4E 87 B3 EA 7D E4 67  I..D%.H..N...}.g
+0x01B0: BE 8E 1D 9E 44 D7 34 04 01 06 0D 56 75 AE 86 B1  ....D.4....Vu...
+0x01C0: 07 27 12 CE C3 29 7F 37 FB 49 D6 50 D8 AD 03 34  .'...).7.I.P...4
+0x01D0: 28 63 BC 76 53 FA 43 83 62 E2 7E BA 21 B3 55 C8  (c.vS.C.b.~.!.U.
+0x01E0: FB FD 92 16 89 DB 78 C2 10 23 84 A7 0D 62 E9 31  ......x..#...b.1
+0x01F0: 63 CF F0 26 1C 64 00 83 20 2C 36 5E 31 9A 2B 8A  c..&.d.. ,6^1.+.
+0x0200: 54 A5 77 30 A2 69 67 70 7A CE A5 EE 97 60 5B 03  T.w0.igpz....`[.
+0x0210: F8 2F F6 BD ED BD 2D F2 14 84 A8 F4 5A FC 63 C5  ./....-.....Z.c.
+0x0220: 54 33 70 BA CB D0 84 05 38 99 E1 CC 2C CA DA 62  T3p.....8...,..b
+0x0230: 39 1A 8F 54 1C 1C 1B 2F 54 79 2F 37 88 64 32 FA  9..T.../Ty/7.d2.
+0x0240: C0 72 18 B9 E0 30 53 89 1F B6 1E 52 39 A9 4E 61  .r...0S....R9.Na
+0x0250: E1 21                                            .!
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.996269 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264949  Ack: 0x3A17B68B  Win: 0xB364  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 49 3A 17 B6 8B 50 10 B3 64 0E 34 00 00        II:...P..d.4..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.996271 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:576
+***A**** Seq: 0x3A17B68B  Ack: 0xB8264949  Win: 0xF1C  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 02 18 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: B6 8B B8 26 49 49 50 10 0F 1C 15 A1 00 00 97 9D  ...&IIP.........
+0x0050: 26 21 A9 73 D8 D8 64 D7 78 29 1B 78 EE 28 62 17  &!.s..d.x).x.(b.
+0x0060: 68 C1 F0 03 D8 00 94 E5 45 96 F4 D4 D6 48 D3 54  h.......E....H.T
+0x0070: 68 F8 5A 22 1D 7F 7F 42 2A AE 0E 34 4D CA 08 7B  h.Z"...B*..4M..{
+0x0080: 17 9B 4F EA 82 EE 98 65 B6 A3 46 20 1D A7 AB E0  ..O....e..F ....
+0x0090: 8B 62 94 0D 0E 8C AF BF DF 22 25 7B 01 A7 27 D5  .b......."%{..'.
+0x00A0: C6 74 69 9E 88 6A E0 FD 63 DF F7 2B 92 88 84 C8  .ti..j..c..+....
+0x00B0: 92 70 9C 69 37 99 9E F4 3C D3 DD 81 DD D5 65 7C  .p.i7...<.....e|
+0x00C0: FE 46 66 5D ED 21 72 42 F5 A9 08 BB 7D B2 C9 EF  .Ff].!rB....}...
+0x00D0: A4 8D 64 DC 29 0A 80 39 A7 F8 FC 0F 25 E1 2E 75  ..d.)..9....%..u
+0x00E0: 07 F5 39 DE 2F E9 C1 1F 50 55 B3 C8 62 B8 04 BB  ..9./...PU..b...
+0x00F0: 68 84 40 A8 40 3D 8B 79 CF 4D 46 AD C2 E1 86 E2  h.@.@=.y.MF.....
+0x0100: 22 70 33 FC 70 3B A6 5E 44 D0 86 AF 42 96 21 A7  "p3.p;.^D...B.!.
+0x0110: EE E6 21 E7 3A 2D 8A 0B 4E 23 68 D6 8F 98 DB EE  ..!.:-..N#h.....
+0x0120: 27 73 B5 16 DA 4E 3D AE 59 8B 72 DA 03 43 1E 9C  's...N=.Y.r..C..
+0x0130: 25 53 F7 1B 48 1D D2 21 23 84 60 33 2C 5D CF 1E  %S..H..!#.`3,]..
+0x0140: BF 93 1B 90 68 3A 7E AB 18 B0 C2 8C 61 C1 64 1E  ....h:~.....a.d.
+0x0150: 99 C2 B2 F2 CD 72 7B B0 F4 C8 98 FF BD 64 D4 74  .....r{......d.t
+0x0160: 80 B6 F6 38 6B 39 68 3D 61 5D B8 A2 0A 29 1D 45  ...8k9h=a]...).E
+0x0170: 40 93 E3 BA A9 E9 FF 59 E9 A1 66 D7 60 74 4B D7  @......Y..f.`tK.
+0x0180: 8A 21 E8 B4 4E 75 D1 8A 6C F8 6D 93 16 1F 4C C9  .!..Nu..l.m...L.
+0x0190: 39 EB 72 27 9C 01 97 6D 16 D6 51 D1 FC D9 53 F2  9.r'...m..Q...S.
+0x01A0: 6B 4C 63 28 EA 2B 20 B0 47 BD 76 25 0F E4 D9 4F  kLc(.+ .G.v%...O
+0x01B0: 97 3F 2D B5 7B C8 35 23 BF 88 E6 27 3C 4E 78 7B  .?-.{.5#...'<Nx{
+0x01C0: 90 70 24 E8 F1 F7 D8 82 44 D8 F2 06 9E 3A CE C8  .p$.....D....:..
+0x01D0: 31 61 FF FD 6A 58 B9 E9 B9 8C 4C 4E C1 9E 74 57  1a..jX....LN..tW
+0x01E0: 01 05 7B 0F 40 CB 3A 7C 3D A1 F2 31 AA CA DA CC  ..{.@.:|=..1....
+0x01F0: E2 F8 CE 1C DC 8C 44 0F 76 AF E0 D6 26 4F 6A 14  ......D.v...&Oj.
+0x0200: 22 40 67 93 FD E2 14 68 2A C5 7F 56 D0 4F 50 A0  "@g....h*..V.OP.
+0x0210: 15 2F A5 0D 65 0D 31 63 28 21 2F 19 98 9B 5B 9B  ./..e.1c(!/...[.
+0x0220: 03 7A 9E F0 B3 D4 C6 C1 65 CF 60 22 F8 4D C8 22  .z......e.`".M."
+0x0230: 3D 40 14 93 AF AC 28 53 73 50 E5 38 5E 62 CE 2D  =@....(SsP.8^b.-
+0x0240: D7 18 72 7A 6E B8 0D 8E D9 4A 76 F2 4A 1D 50 F7  ..rzn....Jv.J.P.
+0x0250: 15 32                                            .2
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.996766 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264949  Ack: 0x3A17B88F  Win: 0xB76C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 49 3A 17 B8 8F 50 10 B7 6C 08 28 00 00        II:...P..l.(..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:24.997391 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264949  Ack: 0x3A17B953  Win: 0xBB74  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 49 3A 17 B9 53 50 10 BB 74 03 5C 00 00        II:..SP..t.\..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:25.990670 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB826497D  Ack: 0x3A17BA97  Win: 0xBF7C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 7D 3A 17 BA 97 50 10 BF 7C FD DB 00 00        I}:...P..|....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:27.590170 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82649B1  Ack: 0x3A17BACB  Win: 0xBF7C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 B1 3A 17 BA CB 50 10 BF 7C FD 73 00 00        I.:...P..|.s..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:27.654182 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82649E5  Ack: 0x3A17BAFF  Win: 0xBF7C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 49 E5 3A 17 BA FF 50 10 BF 7C FD 0B 00 00        I.:...P..|....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:27.734066 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264A19  Ack: 0x3A17BB33  Win: 0xBF7C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4A 19 3A 17 BB 33 50 10 BF 7C FC A3 00 00        J.:..3P..|....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:27.907968 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A17BB33  Ack: 0xB8264A4D  Win: 0x1020  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: BB 33 B8 26 4A 4D 50 10 10 20 AB CC 00 00        .3.&JMP.. ....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:27.918225 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264A4D  Ack: 0x3A17BB77  Win: 0xBF7C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4A 4D 3A 17 BB 77 50 10 BF 7C FC 2B 00 00        JM:..wP..|.+..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:28.197263 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264A81  Ack: 0x3A17BBAB  Win: 0xBF7C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4A 81 3A 17 BB AB 50 10 BF 7C FB C3 00 00        J.:...P..|....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:28.206765 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264A81  Ack: 0x3A17BC7F  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4A 81 3A 17 BC 7F 50 10 C3 84 F6 E7 00 00        J.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:28.798106 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264AB5  Ack: 0x3A17BCB3  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4A B5 3A 17 BC B3 50 10 C3 84 F6 7F 00 00        J.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:28.973384 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264AE9  Ack: 0x3A17BCE7  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4A E9 3A 17 BC E7 50 10 C3 84 F6 17 00 00        J.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:29.125407 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264B1D  Ack: 0x3A17BD1B  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4B 1D 3A 17 BD 1B 50 10 C3 84 F5 AF 00 00        K.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:29.253928 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264B51  Ack: 0x3A17BD4F  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4B 51 3A 17 BD 4F 50 10 C3 84 F5 47 00 00        KQ:..OP....G..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:29.413452 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264B85  Ack: 0x3A17BD83  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4B 85 3A 17 BD 83 50 10 C3 84 F4 DF 00 00        K.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:29.726000 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264BB9  Ack: 0x3A17BDB7  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4B B9 3A 17 BD B7 50 10 C3 84 F4 77 00 00        K.:...P....w..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:29.735628 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264BB9  Ack: 0x3A17BDEB  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4B B9 3A 17 BD EB 50 10 C3 84 F4 43 00 00        K.:...P....C..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:30.750161 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264BED  Ack: 0x3A17BE1F  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4B ED 3A 17 BE 1F 50 10 C3 84 F3 DB 00 00        K.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:30.805918 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264C21  Ack: 0x3A17BE53  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4C 21 3A 17 BE 53 50 10 C3 84 F3 73 00 00        L!:..SP....s..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:30.899808 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A17BE53  Ack: 0xB8264C55  Win: 0x1020  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: BE 53 B8 26 4C 55 50 10 10 20 A6 A4 00 00        .S.&LUP.. ....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:30.902186 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264C55  Ack: 0x3A17BE87  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4C 55 3A 17 BE 87 50 10 C3 84 F3 0B 00 00        LU:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:30.965950 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264C89  Ack: 0x3A17BEBB  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4C 89 3A 17 BE BB 50 10 C3 84 F2 A3 00 00        L.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:31.077960 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264CBD  Ack: 0x3A17BEEF  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4C BD 3A 17 BE EF 50 10 C3 84 F2 3B 00 00        L.:...P....;..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:31.189227 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264CF1  Ack: 0x3A17BF23  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4C F1 3A 17 BF 23 50 10 C3 84 F1 D3 00 00        L.:..#P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:31.261239 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264D25  Ack: 0x3A17BF57  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4D 25 3A 17 BF 57 50 10 C3 84 F1 6B 00 00        M%:..WP....k..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:31.486027 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264D59  Ack: 0x3A17BF8B  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4D 59 3A 17 BF 8B 50 10 C3 84 F1 03 00 00        MY:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:31.574038 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264D8D  Ack: 0x3A17BFBF  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4D 8D 3A 17 BF BF 50 10 C3 84 F0 9B 00 00        M.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:31.894086 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264DC1  Ack: 0x3A17BFF3  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4D C1 3A 17 BF F3 50 10 C3 84 F0 33 00 00        M.:...P....3..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:31.998103 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264DF5  Ack: 0x3A17C027  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4D F5 3A 17 C0 27 50 10 C3 84 EF CB 00 00        M.:..'P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:32.078115 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264E29  Ack: 0x3A17C05B  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4E 29 3A 17 C0 5B 50 10 C3 84 EF 63 00 00        N):..[P....c..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:32.251643 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A17C05B  Ack: 0xB8264E5D  Win: 0x1020  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: C0 5B B8 26 4E 5D 50 10 10 20 A2 94 00 00        .[.&N]P.. ....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:32.254143 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264E5D  Ack: 0x3A17C08F  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4E 5D 3A 17 C0 8F 50 10 C3 84 EE FB 00 00        N]:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:32.317403 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264E91  Ack: 0x3A17C0C3  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4E 91 3A 17 C0 C3 50 10 C3 84 EE 93 00 00        N.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:32.365160 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264EC5  Ack: 0x3A17C0F7  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4E C5 3A 17 C0 F7 50 10 C3 84 EE 2B 00 00        N.:...P....+..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:32.445423 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264EF9  Ack: 0x3A17C12B  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4E F9 3A 17 C1 2B 50 10 C3 84 ED C3 00 00        N.:..+P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:32.558065 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264F2D  Ack: 0x3A17C15F  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4F 2D 3A 17 C1 5F 50 10 C3 84 ED 5B 00 00        O-:.._P....[..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:32.613449 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264F61  Ack: 0x3A17C193  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4F 61 3A 17 C1 93 50 10 C3 84 EC F3 00 00        Oa:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:32.693711 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264F95  Ack: 0x3A17C1C7  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4F 95 3A 17 C1 C7 50 10 C3 84 EC 8B 00 00        O.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:32.949751 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264FC9  Ack: 0x3A17C1FB  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4F C9 3A 17 C1 FB 50 10 C3 84 EC 23 00 00        O.:...P....#..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.021512 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8264FFD  Ack: 0x3A17C22F  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 4F FD 3A 17 C2 2F 50 10 C3 84 EB BB 00 00        O.:../P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.141281 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265031  Ack: 0x3A17C263  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 31 3A 17 C2 63 50 10 C3 84 EB 53 00 00        P1:..cP....S..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.219793 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A17C263  Ack: 0xB8265065  Win: 0x1020  TcpLen: 20
+0x0000: 00 1A 6C A1 2B 99 00 1E 7A 79 3F 11 81 00 00 79  ..l.+...zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: C2 63 B8 26 50 65 50 10 10 20 9E 84 00 00        .c.&PeP.. ....
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.222043 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265065  Ack: 0x3A17C297  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 65 3A 17 C2 97 50 10 C3 84 EA EB 00 00        Pe:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.381318 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265099  Ack: 0x3A17C2CB  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 99 3A 17 C2 CB 50 10 C3 84 EA 83 00 00        P.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.383569 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265099  Ack: 0x3A17C31F  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 99 3A 17 C3 1F 50 10 C3 84 EA 2F 00 00        P.:...P..../..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.386069 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265099  Ack: 0x3A17C363  Win: 0xC384  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 99 3A 17 C3 63 50 10 C3 84 E9 EB 00 00        P.:..cP.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.395820 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265099  Ack: 0x3A17C407  Win: 0xC78C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 99 3A 17 C4 07 50 10 C7 8C E5 3F 00 00        P.:...P....?..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.397447 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265099  Ack: 0x3A17C43B  Win: 0xC78C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 99 3A 17 C4 3B 50 10 C7 8C E5 0B 00 00        P.:..;P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.402323 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265099  Ack: 0x3A17C46F  Win: 0xC78C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 99 3A 17 C4 6F 50 10 C7 8C E4 D7 00 00        P.:..oP.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.405572 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265099  Ack: 0x3A17C4A3  Win: 0xC78C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 99 3A 17 C4 A3 50 10 C7 8C E4 A3 00 00        P.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.410073 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265099  Ack: 0x3A17C4D7  Win: 0xC78C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 99 3A 17 C4 D7 50 10 C7 8C E4 6F 00 00        P.:...P....o..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.413573 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265099  Ack: 0x3A17C50B  Win: 0xC78C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 99 3A 17 C5 0B 50 10 C7 8C E4 3B 00 00        P.:...P....;..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.417329 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265099  Ack: 0x3A17C53F  Win: 0xC78C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 99 3A 17 C5 3F 50 10 C7 8C E4 07 00 00        P.:..?P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:33.419199 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265099  Ack: 0x3A17C5C3  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 99 3A 17 C5 C3 50 10 CB 94 DF 7B 00 00        P.:...P....{..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:34.453485 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82650CD  Ack: 0x3A17C5F7  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 50 CD 3A 17 C5 F7 50 10 CB 94 DF 13 00 00        P.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:34.525498 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265101  Ack: 0x3A17C62B  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 51 01 3A 17 C6 2B 50 10 CB 94 DE AB 00 00        Q.:..+P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:34.589256 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265135  Ack: 0x3A17C65F  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 51 35 3A 17 C6 5F 50 10 CB 94 DE 43 00 00        Q5:.._P....C..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:34.701398 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265169  Ack: 0x3A17C693  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 51 69 3A 17 C6 93 50 10 CB 94 DD DB 00 00        Qi:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:34.813290 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB826519D  Ack: 0x3A17C6C7  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 51 9D 3A 17 C6 C7 50 10 CB 94 DD 73 00 00        Q.:...P....s..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:34.949439 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82651D1  Ack: 0x3A17C6FB  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 51 D1 3A 17 C6 FB 50 10 CB 94 DD 0B 00 00        Q.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:35.037076 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265205  Ack: 0x3A17C72F  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 52 05 3A 17 C7 2F 50 10 CB 94 DC A3 00 00        R.:../P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:35.109336 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265239  Ack: 0x3A17C763  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 52 39 3A 17 C7 63 50 10 CB 94 DC 3B 00 00        R9:..cP....;..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:35.163595 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A17C763  Ack: 0xB826526D  Win: 0x1020  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: C7 63 B8 26 52 6D 50 10 10 20 97 7C 00 00        .c.&RmP.. .|..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:35.166095 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB826526D  Ack: 0x3A17C797  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 52 6D 3A 17 C7 97 50 10 CB 94 DB D3 00 00        Rm:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:35.293117 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82652A1  Ack: 0x3A17C7CB  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 52 A1 3A 17 C7 CB 50 10 CB 94 DB 6B 00 00        R.:...P....k..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:35.413884 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82652D5  Ack: 0x3A17C7FF  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 52 D5 3A 17 C7 FF 50 10 CB 94 DB 03 00 00        R.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:35.541405 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265309  Ack: 0x3A17C833  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 53 09 3A 17 C8 33 50 10 CB 94 DA 9B 00 00        S.:..3P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:35.613415 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB826533D  Ack: 0x3A17C867  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 53 3D 3A 17 C8 67 50 10 CB 94 DA 33 00 00        S=:..gP....3..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:35.685426 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265371  Ack: 0x3A17C89B  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 53 71 3A 17 C8 9B 50 10 CB 94 D9 CB 00 00        Sq:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:35.893458 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82653A5  Ack: 0x3A17C8CF  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 53 A5 3A 17 C8 CF 50 10 CB 94 D9 63 00 00        S.:...P....c..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:35.896209 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82653A5  Ack: 0x3A17C923  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 53 A5 3A 17 C9 23 50 10 CB 94 D9 0F 00 00        S.:..#P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:36.629322 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82653D9  Ack: 0x3A17C957  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 53 D9 3A 17 C9 57 50 10 CB 94 D8 A7 00 00        S.:..WP.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:36.730092 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82653D9  Ack: 0x3A17C99B  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 53 D9 3A 17 C9 9B 50 10 CB 94 D8 63 00 00        S.:...P....c..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:38.770656 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82653D9  Ack: 0x3A17C9CF  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 53 D9 3A 17 C9 CF 50 10 CB 94 D8 2F 00 00        S.:...P..../..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:38.799410 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82653D9  Ack: 0x3A17CA03  Win: 0xCB94  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 53 D9 3A 17 CA 03 50 10 CB 94 D7 FB 00 00        S.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:40.140119 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A17CA37  Ack: 0xB826540D  Win: 0xE80  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: CA 37 B8 26 54 0D 50 10 0E 80 94 A8 00 00        .7.&T.P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:40.299769 2003:51:6012:121::2:22 -> 2003:51:6012:110::b15:22:60892
+TCP TTL:255 TOS:0xC0 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0x3A17CA6B  Ack: 0xB8265475  Win: 0x1020  TcpLen: 20
+0x0000: 00 14 69 9E 11 41 00 1E 7A 79 3F 11 81 00 00 79  ..i..A..zy?....y
+0x0010: 86 DD 6C 00 00 00 00 14 06 FF 20 03 00 51 60 12  ..l....... ..Q`.
+0x0020: 01 21 00 00 00 00 00 00 00 02 20 03 00 51 60 12  .!........ ..Q`.
+0x0030: 01 10 00 00 00 00 0B 15 00 22 00 16 ED DC 3A 17  ........."....:.
+0x0040: CA 6B B8 26 54 75 50 10 10 20 92 6C 00 00        .k.&TuP.. .l..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:40.429038 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82654A9  Ack: 0x3A17CA03  Win: 0xCF9C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 54 A9 3A 17 CA 03 50 10 CF 9C D3 23 00 00        T.:...P....#..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:40.432429 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82654A9  Ack: 0x3A17CA37  Win: 0xCF9C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 54 A9 3A 17 CA 37 50 10 CF 9C D2 EF 00 00        T.:..7P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:40.432430 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82654A9  Ack: 0x3A17CA6B  Win: 0xCF9C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 54 A9 3A 17 CA 6B 50 10 CF 9C D2 BB 00 00        T.:..kP.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:40.432540 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82654A9  Ack: 0x3A17CAD3  Win: 0xCF9C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 54 A9 3A 17 CA D3 50 10 CF 9C D2 53 00 00        T.:...P....S..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:40.597439 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82654DD  Ack: 0x3A17CB07  Win: 0xCF9C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 54 DD 3A 17 CB 07 50 10 CF 9C D1 EB 00 00        T.:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:40.697955 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82654DD  Ack: 0x3A17CB4B  Win: 0xCF9C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 54 DD 3A 17 CB 4B 50 10 CF 9C D1 A7 00 00        T.:..KP.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:40.698955 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82654DD  Ack: 0x3A17CB6F  Win: 0xCF9C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 54 DD 3A 17 CB 6F 50 10 CF 9C D1 83 00 00        T.:..oP.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:40.699705 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB82654DD  Ack: 0x3A17CB93  Win: 0xCF9C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 54 DD 3A 17 CB 93 50 10 CF 9C D1 5F 00 00        T.:...P...._..
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-20:02:40.700955 2003:51:6012:110::b15:22:60892 -> 2003:51:6012:121::2:22
+TCP TTL:62 TOS:0x10 ID:0 IpLen:40 DgmLen:60
+***A**** Seq: 0xB8265546  Ack: 0x3A17CB94  Win: 0xCF9C  TcpLen: 20
+0x0000: 00 1E 7A 79 3F 11 00 14 69 9E 11 41 81 00 00 79  ..zy?...i..A...y
+0x0010: 86 DD 61 0F 01 34 00 14 06 3E 20 03 00 51 60 12  ..a..4...> ..Q`.
+0x0020: 01 10 00 00 00 00 0B 15 00 22 20 03 00 51 60 12  ........." ..Q`.
+0x0030: 01 21 00 00 00 00 00 00 00 02 ED DC 00 16 B8 26  .!.............&
+0x0040: 55 46 3A 17 CB 94 50 10 CF 9C D0 F5 00 00        UF:...P.......
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.7026 seconds
+Snort processed 163 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:          163
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      13213696
+  Total allocated space (uordblks):      678144
+  Total free space (fordblks):           108288
+  Topmost releasable block (keepcost):   102304
+===============================================================================
+Packet I/O Totals:
+   Received:          163
+   Analyzed:          163 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:          163 (100.000%)
+       VLAN:          163 (100.000%)
+        IP4:            0 (  0.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:            0 (  0.000%)
+        IP6:          163 (100.000%)
+    IP6 Ext:          163 (100.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:          163 (100.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:          163
+===============================================================================
+Snort exiting
+
+--again cz is not 163--
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# cat local.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+#alert tcp any any <> any any (msg: "FLAG TEST";flags:S; sid:1000004;rev:1;)
+alert tcp any any <> any any (msg: "FLAG TEST";flags:PA; sid:1000005;rev:1;)
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.10183 seconds
+Snort processed 216 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:          216
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      13213696
+  Total allocated space (uordblks):      678144
+  Total free space (fordblks):           108288
+  Topmost releasable block (keepcost):   102304
+===============================================================================
+Packet I/O Totals:
+   Received:          216
+   Analyzed:          216 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:          216 (100.000%)
+       VLAN:          216 (100.000%)
+        IP4:            0 (  0.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            0 (  0.000%)
+        TCP:            0 (  0.000%)
+        IP6:          216 (100.000%)
+    IP6 Ext:          216 (100.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:          216 (100.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:          216
+===============================================================================
+Snort exiting
+
+yep works :) https://paginas.fe.up.pt/~mgi98020/pgr/writing_snort_rules.htm#flags
+
+Push-Ack so Flags:PA
+```
+*216*
+Clear the previous log and alarm files and deactivate/comment out the old rule.
+Create a rule to filter packets with the same source and destination IP and run it against the given pcap file. What is the number of detected packets?
+```text
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# ls
+alert  local.rules  snort.log.1670290876  task9.pcap
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# rm -r alert 
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# rm -r snort.log.1670290876 
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# cat local.rules
+```
+```text
+# ----------------
+```
+```text
+# LOCAL RULES
+```
+```text
+# ----------------
+```
+```text
+# This file intentionally does not come with signatures.  Put your local
+```
+```text
+# additions here.
+#alert tcp any any <> any any (msg: "FLAG TEST";flags:S; sid:1000004;rev:1;)
+#alert tcp any any <> any any (msg: "FLAG TEST";flags:PA; sid:1000005;rev:1;)
+alert tcp any any <> any any (msg: "SAME-IP TEST";  sameip; sid: 100006; rev:1;)
+alert udp any any <> any any (msg: "SAME-IP TEST";  sameip; sid: 100007; rev:1;)
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# snort -c local.rules -A full -l . -r task9.pcap
+
+root@ip-10-10-52-242:/home/ubuntu/Desktop/Task-Exercises/Exercise-Files/TASK-9# snort -r snort.log.1670291393 -X
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+pcap DAQ configured to read-file.
+Acquiring network traffic from "snort.log.1670291393".
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.7.0 GRE (Build 149) 
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using libpcap version 1.9.1 (with TPACKET_V3)
+           Using PCRE version: 8.39 2016-06-14
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=7835)
+WARNING: No preprocessors configured for policy 0.
+03/03-19:59:12.666896 0.0.0.0:68 -> 255.255.255.255:67
+UDP TTL:128 TOS:0x10 ID:0 IpLen:20 DgmLen:328
+Len: 300
+0x0000: FF FF FF FF FF FF 00 21 70 E9 BB 47 81 00 00 1E  .......!p..G....
+0x0010: 08 00 45 10 01 48 00 00 00 00 80 11 39 96 00 00  ..E..H......9...
+0x0020: 00 00 FF FF FF FF 00 44 00 43 01 34 C1 94 01 01  .......D.C.4....
+0x0030: 06 00 5F 51 1E 61 00 08 00 00 00 00 00 00 00 00  .._Q.a..........
+0x0040: 00 00 00 00 00 00 00 00 00 00 00 21 70 E9 BB 47  ...........!p..G
+0x0050: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0060: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0070: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00A0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00B0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00C0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00D0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00E0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00F0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0110: 00 00 00 00 00 00 00 00 00 00 63 82 53 63 35 01  ..........c.Sc5.
+0x0120: 03 32 04 C0 A8 14 0B 0C 0C 4D 69 63 72 6F 6B 6E  .2.......Microkn
+0x0130: 6F 70 70 69 78 37 10 01 1C 02 03 0F 06 77 0C 2C  oppix7.......w.,
+0x0140: 2F 1A 79 F9 21 FC 2A FF 00 00 00 00 00 00 00 00  /.y.!.*.........
+0x0150: 00 00 00 00 00 00 00 00 00 00                    ..........
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-19:59:12.699148 0.0.0.0:68 -> 255.255.255.255:67
+UDP TTL:128 TOS:0x10 ID:0 IpLen:20 DgmLen:328
+Len: 300
+0x0000: FF FF FF FF FF FF 00 21 70 E9 BB 47 81 00 00 1E  .......!p..G....
+0x0010: 08 00 45 10 01 48 00 00 00 00 80 11 39 96 00 00  ..E..H......9...
+0x0020: 00 00 FF FF FF FF 00 44 00 43 01 34 5E 96 01 01  .......D.C.4^...
+0x0030: 06 00 96 A1 04 1E 00 00 00 00 00 00 00 00 00 00  ................
+0x0040: 00 00 00 00 00 00 00 00 00 00 00 21 70 E9 BB 47  ...........!p..G
+0x0050: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0060: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0070: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00A0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00B0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00C0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00D0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00E0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00F0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0110: 00 00 00 00 00 00 00 00 00 00 63 82 53 63 35 01  ..........c.Sc5.
+0x0120: 01 0C 0C 4D 69 63 72 6F 6B 6E 6F 70 70 69 78 37  ...Microknoppix7
+0x0130: 10 01 1C 02 03 0F 06 77 0C 2C 2F 1A 79 F9 21 FC  .......w.,/.y.!.
+0x0140: 2A FF 00 00 00 00 00 00 00 00 00 00 00 00 00 00  *...............
+0x0150: 00 00 00 00 00 00 00 00 00 00                    ..........
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+03/03-19:59:12.715650 0.0.0.0:68 -> 255.255.255.255:67
+UDP TTL:128 TOS:0x10 ID:0 IpLen:20 DgmLen:328
+Len: 300
+0x0000: FF FF FF FF FF FF 00 21 70 E9 BB 47 81 00 00 1E  .......!p..G....
+0x0010: 08 00 45 10 01 48 00 00 00 00 80 11 39 96 00 00  ..E..H......9...
+0x0020: 00 00 FF FF FF FF 00 44 00 43 01 34 F6 70 01 01  .......D.C.4.p..
+0x0030: 06 00 96 A1 04 1E 00 00 00 00 00 00 00 00 00 00  ................
+0x0040: 00 00 00 00 00 00 00 00 00 00 00 21 70 E9 BB 47  ...........!p..G
+0x0050: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0060: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0070: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00A0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00B0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00C0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00D0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00E0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x00F0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+0x0110: 00 00 00 00 00 00 00 00 00 00 63 82 53 63 35 01  ..........c.Sc5.
+0x0120: 03 36 04 C0 A8 1E 01 32 04 C0 A8 1E 0B 0C 0C 4D  .6.....2.......M
+0x0130: 69 63 72 6F 6B 6E 6F 70 70 69 78 37 10 01 1C 02  icroknoppix7....
+0x0140: 03 0F 06 77 0C 2C 2F 1A 79 F9 21 FC 2A FF 00 00  ...w.,/.y.!.*...
+0x0150: 00 00 00 00 00 00 00 00 00 00                    ..........
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/18-21:57:47.100000 192.168.0.1:0 -> 192.168.0.1:0
+TCP TTL:64 TOS:0x0 ID:0 IpLen:20 DgmLen:46 DF
+******** Seq: 0x0  Ack: 0x0  Win: 0xFFFC  TcpLen: 20
+0x0000: 00 00 00 00 00 00 00 00 00 00 00 00 08 00 45 00  ..............E.
+0x0010: 00 2E 00 00 40 00 40 06 B9 77 C0 A8 00 01 C0 A8  ....@.@..w......
+0x0020: 00 01 00 00 00 00 00 00 00 00 00 00 00 00 50 00  ..............P.
+0x0030: FF FC 2E 8F 00 00 00 00 00 00 00 00              ............
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/18-21:57:47.200000 192.168.0.21:0 -> 192.168.0.21:0
+UDP TTL:64 TOS:0x0 ID:0 IpLen:20 DgmLen:46 DF
+Len: 18
+0x0000: 00 00 00 00 00 00 00 00 00 00 00 00 08 00 45 00  ..............E.
+0x0010: 00 2E 00 00 40 00 40 11 B9 44 C0 A8 00 15 C0 A8  ....@.@..D......
+0x0020: 00 15 00 00 00 00 00 1A 7E 3F 00 00 00 00 00 00  ........~?......
+0x0030: 00 00 00 00 00 00 00 00 00 00 00 00              ............
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/18-21:57:47.300000 192.168.0.44:4444 -> 192.168.0.44:4444
+UDP TTL:64 TOS:0x0 ID:0 IpLen:20 DgmLen:46 DF
+Len: 18
+0x0000: 00 00 00 00 00 00 00 00 00 00 00 00 08 00 45 00  ..............E.
+0x0010: 00 2E 00 00 40 00 40 11 B9 16 C0 A8 00 2C C0 A8  ....@.@......,..
+0x0020: 00 2C 11 5C 11 5C 00 1A 5B 59 00 00 00 00 00 00  .,.\.\..[Y......
+0x0030: 00 00 00 00 00 00 00 00 00 00 00 00              ............
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/18-21:57:47.400000 192.168.0.21:0 -> 192.168.0.21:0
+UDP TTL:64 TOS:0x0 ID:0 IpLen:20 DgmLen:46 DF
+Len: 18
+0x0000: 00 00 00 00 00 00 00 00 00 00 00 00 08 00 45 00  ..............E.
+0x0010: 00 2E 00 00 40 00 40 11 B9 44 C0 A8 00 15 C0 A8  ....@.@..D......
+0x0020: 00 15 00 00 00 00 00 1A 7E 3F 00 00 00 00 00 00  ........~?......
+0x0030: 00 00 00 00 00 00 00 00 00 00 00 00              ............
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/18-21:57:47.500000 192.168.0.21:0 -> 192.168.0.21:0
+UDP TTL:64 TOS:0x0 ID:0 IpLen:20 DgmLen:46 DF
+Len: 18
+0x0000: 00 00 00 00 00 00 00 00 00 00 00 00 08 00 45 00  ..............E.
+0x0010: 00 2E 00 00 40 00 40 11 B9 44 C0 A8 00 15 C0 A8  ....@.@..D......
+0x0020: 00 15 00 00 00 00 00 1A 7E 3F 00 00 00 00 00 00  ........~?......
+0x0030: 00 00 00 00 00 00 00 00 00 00 00 00              ............
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/18-21:57:47.600000 192.168.0.11:4444 -> 192.168.0.11:4444
+TCP TTL:64 TOS:0x0 ID:0 IpLen:20 DgmLen:46 DF
+******** Seq: 0x0  Ack: 0x0  Win: 0xFFFC  TcpLen: 20
+0x0000: 00 00 00 00 00 00 00 00 00 00 00 00 08 00 45 00  ..............E.
+0x0010: 00 2E 00 00 40 00 40 06 B9 63 C0 A8 00 0B C0 A8  ....@.@..c......
+0x0020: 00 0B 11 5C 11 5C 00 00 00 00 00 00 00 00 50 00  ...\.\........P.
+0x0030: FF FC 0B C3 00 00 00 00 00 00 00 00              ............
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+WARNING: No preprocessors configured for policy 0.
+12/18-21:57:47.700000 192.168.0.11:0 -> 192.168.0.11:0
+TCP TTL:64 TOS:0x0 ID:0 IpLen:20 DgmLen:46 DF
+******** Seq: 0x0  Ack: 0x0  Win: 0xFFFC  TcpLen: 20
+0x0000: 00 00 00 00 00 00 00 00 00 00 00 00 08 00 45 00  ..............E.
+0x0010: 00 2E 00 00 40 00 40 06 B9 63 C0 A8 00 0B C0 A8  ....@.@..c......
+0x0020: 00 0B 00 00 00 00 00 00 00 00 00 00 00 00 50 00  ..............P.
+0x0030: FF FC 2E 7B 00 00 00 00 00 00 00 00              ...{........
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+===============================================================================
+Run time for packet processing was 0.439 seconds
+Snort processed 10 packets.
+Snort ran for 0 days 0 hours 0 minutes 0 seconds
+   Pkts/sec:           10
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       786432
+  Bytes in mapped regions (hblkhd):      13213696
+  Total allocated space (uordblks):      678144
+  Total free space (fordblks):           108288
+  Topmost releasable block (keepcost):   102304
+===============================================================================
+Packet I/O Totals:
+   Received:           10
+   Analyzed:           10 (100.000%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            0 (  0.000%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:           10 (100.000%)
+       VLAN:            3 ( 30.000%)
+        IP4:           10 (100.000%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:            7 ( 70.000%)
+        TCP:            3 ( 30.000%)
+        IP6:            0 (  0.000%)
+    IP6 Ext:            0 (  0.000%)
+   IP6 Opts:            0 (  0.000%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            0 (  0.000%)
+       UDP6:            0 (  0.000%)
+       TCP6:            0 (  0.000%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            0 (  0.000%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            0 (  0.000%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            0 (  0.000%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            0 (  0.000%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:           10
+===============================================================================
+Snort exiting
+```
+*10*
+Case Example - An analyst modified an existing rule successfully. Which rule option must the analyst change after the implementation?
+```text
+Rev option help analysts to have the revision information of each rule. Therefore, it will be easy to understand rule improvements. Each rule has its unique rev number, and there is no auto-backup feature on the rule history. Analysts should keep the rule history themselves. Rev option is only an indicator of how many times the rule had revisions.
+
+oops I failed I did it rev:1 many times..
+```
+*rev*
+### Snort2 Operation Logic: Points to Remember
+https://www.snort.org/downloads
+Points to Remember
+Main Components of Snort
+Packet Decoder - Packet collector component of Snort. It collects and prepares the packets for pre-processing.
+Pre-processors - A component that arranges and modifies the packets for the detection engine.
+Detection Engine - The primary component that process, dissect and analyse the packets by applying the rules.
+Logging and Alerting - Log and alert generation component.
+Outputs and Plugins - Output integration modules (i.e. alerts to syslog/mysql) and additional plugin (rule management detection plugins) support is done with this component.
+There are three types of rules available for snort
+Community Rules - Free ruleset under the GPLv2. Publicly accessible, no need for registration.
+Registered Rules - Free ruleset (requires registration). This ruleset contains subscriber rules with 30 days delay.
+Subscriber Rules (Paid) - Paid ruleset (requires subscription). This ruleset is the main ruleset and is updated twice a week (Tuesdays and Thursdays).
+You can download and read more on the rules here.
+Note: Once you install Snort2, it automatically creates the required directories and files. However, if you want to use the community or the paid rules, you need to indicate each rule in the snort.conf file.
+Since it is a long, all-in-one configuration file, editing it without causing misconfiguration is troublesome for some users. That is why Snort has several rule updating modules and integration tools. To sum up, never replace your configured Snort configuration files; you must edit your configuration files manually or update your rules with additional tools and modules to not face any fail/crash or lack of feature.
+snort.conf: Main configuration file.
+local.rules: User-generated rules file.
+Let's start with overviewing the main configuration file (snort.conf) sudo gedit /etc/snort/snort.conf
+Navigate to the "Step #1: Set the network variables." section.
+This section manages the scope of the detection and rule paths.
+TAG NAME	INFO	EXAMPLE
+HOME_NET
+That is where we are protecting.
+'any' OR '192.168.1.1/24'
+EXTERNAL_NET
+This field is the external network, so we need to keep it as 'any' or '!$HOME_NET'.
+'any' OR '!$HOME_NET'
+RULE_PATH
+Hardcoded rule path.
+/etc/snort/rules
+SO_RULE_PATH
+These rules come with registered and subscriber rules.
+$RULE_PATH/so_rules
+PREPROC_RULE_PATH
+These rules come with registered and subscriber rules.
+$RULE_PATH/plugin_rules
+Navigate to the "Step #2: Configure the decoder." section.
+In this section, you manage the IPS mode of snort. The single-node installation model IPS model works best with "afpacket" mode. You can enable this mode and run Snort in IPS.
+TAG NAME	INFO	EXAMPLE
+### config daq:	IPS mode selection.	afpacket
+### config daq_mode:	Activating the inline mode	inline
+### config logdir:	Hardcoded default log path.	/var/logs/snort
+Data Acquisition Modules (DAQ) are specific libraries used for packet I/O, bringing flexibility to process packets. It is possible to select DAQ type and mode for different purposes.
+There are six DAQ modules available in Snort;
+Pcap: Default mode, known as Sniffer mode.
+Afpacket: Inline mode, known as IPS mode.
+Ipq: Inline mode on Linux by using Netfilter. It replaces the snort_inline patch.
+Nfq: Inline mode on Linux.
+Ipfw: Inline on OpenBSD and FreeBSD by using divert sockets, with the pf and ipfw firewalls.
+Dump: Testing mode of inline and normalisation.
+The most popular modes are the default (pcap) and inline/IPS (Afpacket).
+Navigate to the "Step #6: Configure output plugins" section.
+This section manages the outputs of the IDS/IPS actions, such as logging and alerting format details. The default action prompts everything in the console application, so configuring this part will help you use the Snort more efficiently.
+Navigate to the "Step #7: Customise your ruleset" section.
+TAG NAME	INFO	EXAMPLE
+### Snort — Writeup
+Hardcoded local and user-generated rules path.	include $RULE_PATH/local.rules
+### include $RULE_PATH/
+Hardcoded default/downloaded rules path.
+include $RULE_PATH/rulename
+Note that "#" is commenting operator. You should uncomment a line to activate it.
+### Conclusion
+In this room, we covered Snort, what it is, how it operates, and how to create and use the rules to investigate threats.
+Understanding and practising the fundamentals is crucial before creating advanced rules and using additional options.
+Do not create complex rules at once; try to add options step by step to notice possible syntax errors or any other problem easily.
+Do not reinvent the wheel; use it or modify/enhance it if there is a smooth rule.
+Take a backup of the configuration files before making any change.
+Never delete a rule that works properly. Comment it if you don't need it.
+Test newly created rules before migrating them to production.
+Now, we invite you to complete the snort challenge room: Snort Challenge - Live Attacks https://tryhackme.com/room/snortchallenges1
+A great way to quickly recall snort rules and commands is to download and refer to the TryHackMe snort cheatsheet.
+https://tryhackme.com/material/deploy (saving my snort cheatsheet)
+```text
+┌──(kali㉿kali)-[~/snort]
+└─$ ls
+hash.txt  passwd.txt  shadow.txt  SnortCheatsheetTryHackMe.pdf  traffic-generator.sh
+```
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/59c7bd2eb0eb64461ad218452aad9a92.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/56e7b4aff9791dd79f280b9e18350499.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/a1f0fbcda5c475ae78da0dbd96267892.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/5550256e1a64efe83b33535f84147ec4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/65940a4ee566f7e9337159d3d7e1cf5f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/a03081f0f71894a24538ae5b2ddb7e26.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/9e7053ce625a25acd795232d94b6b18f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/157fbfefd174cf32af1de4b2e1d09721.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/ffaf2f3d78769c857afa18a87712dd90.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/d0ea7902efe8cdae918e26fa70068358.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/5e8487745a7ee4d3d33e67c2967ebaba.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/a4bd8447760481cd2f6f9762a9620a50.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/c94d825d581eaef1fdc2f9c1ba3cb681.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/c66d9e4fb20937682ee367346a1d0f4b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/cba862ab1b89fe31fe0ac1c356fde8fa.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/50306d75ae941b5a02ac787d265fb149.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/cd4c3186f99950f6896a9c00007d0001.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/8c1f668bbfe2a1017c6c8fb94a35b010.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/fc3650c5dbad35d4a7b7bc606788e809.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/40e476d05bb7806cada61d5c9ce4cfc9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/ce53598c877a0a4c1494223d7b19f466.png)
+
+## Notes / Lessons Learned
+[[Traffic Analysis Essentials]]
+
