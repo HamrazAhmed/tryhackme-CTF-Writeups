@@ -163,3 +163,168 @@ After:
 ![](https://assets.tryhackme.com/additional/splunk-overview/splunk-sysmon-2.png)
 Some of these fields are specific to Sysmon. Refer to the Sysmon room if you are not familiar with Sysmon Event IDs.
 Note: The fields will be different depending on the source/sourcetype.
+Back to our query, we can adjust our query to show events with Event ID 12, RegistryEvent (Object create and delete).
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-sysmon-3.png)
+Fields are case-sensitive. If you attempt to query for EventID in all lowercase, no results will be returned.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-sysmon-4.png)
+You can also search by keywords. Using the same event from above, I'll adjust the query and manually enter 'GoogleUpdate.exe.'
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-sysmon-5.png)
+Unlike fields, keywords are not case-sensitive.
+Instead of manually keying in the keyword, the keyword can also be added by clicking the value you would like to add to the existing query (Add to search) or start a new query (New search).
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-sysmon-6.png)
+In the above image, I clicked on 'GoogleUpdate.exe,' and the options appeared.
+Note: If you click on the icon to the far right for each choice, it will open the query in a new window.
+In the example below, I selected to Add to search.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-sysmon-7.png)
+You can use multiple keywords in your query. Splunk will use an implicit AND operator between each keyword.
+Example: * GoogleUpdate.exe chrome_installer.exe
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-search-binaries.png)
+Note: You can try this query in the THM Splunk instance.
+The above query will search across all the events (according to the timeframe specified) and return all the events with GoogleUpdate.exe AND chrome_installer.exe.
+A keyword doesn't have to be a 'word' necessarily, but it can be a phrase.
+To search for a phrase, you need to surround the phrase with quotes. See the example below.
+Example: * "failed password for sneezy"
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-failed-password.png)
+The above query will return any events that contain the exact phrase.
+Note: You can try this query in the THM Splunk instance. (Make sure you imported tutorialdata.zip into the Splunk instance first)
+Moving along. Let's go back to the Sysmon logs and look at GoogleUpdate.exe again.
+Draw your attention to the Interesting Fields sidebar. This information is useful and can help adjust your query and narrow down your search results even more.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-interesting-fields.png)
+Let's look at RuleName and see what the 8 values are.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-rulename-9.png)
+We can further expand on our query with one of these values.
+Note: If you click on any of the Interesting Fields sidebar values, it will be automatically added to the existing query.
+Another thing to note regarding Interesting Fields. Let's say we would like to see the RuleName appear for each event, just like the host, source, and sourcetype fields (the default fields for every event).
+You can change the value of Selected from No to Yes.  This is visible in the above image. The value in the image is set to No.
+Let's change the value of Selected to Yes for RuleName.
+Before:
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-before-rulename.png)
+After:
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-after-rulename.png)
+The Selected Fields sidebar reflects the change.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-rulename-selected.png)
+Refer to the following Splunk documentation for more information on searching in Splunk.
+https://docs.splunk.com/Documentation/Splunk/8.1.2/SearchTutorial/Aboutthesearchapp
+https://docs.splunk.com/Documentation/Splunk/8.1.2/SearchTutorial/Startsearching
+https://docs.splunk.com/Documentation/Splunk/8.1.2/SearchTutorial/Aboutthetimerangepicker
+https://docs.splunk.com/Documentation/Splunk/8.1.2/SearchTutorial/Usefieldstosearch
+https://docs.splunk.com/Documentation/Splunk/8.1.2/SearchTutorial/Usefieldlookups
+https://docs.splunk.com/Documentation/Splunk/8.1.2/SearchTutorial/Searchwithfieldlookups
+https://docs.splunk.com/Documentation/Splunk/8.1.2/Knowledge/AboutSplunkregularexpressions
+Note: Some of the information in the above links will overlap each other.
+The Splunk Quick Reference Guide has more tips on searching and filtering in Splunk, along with other tips.
+In the next section, we'll look at tools that can help us create Splunk queries to search specific attack patterns.
+![[Pasted image 20220906111952.png]]
+Use Splunk to Search for the phrase 'failed password' using tutorialdata.zip as the source.
+*No answer needed*
+What is the sourcetype?
+*www1/secure*
+In the search result, look at the Patterns tab.
+*No answer needed*
+What is the last username in this tab?
+*myuan*
+![[Pasted image 20220906112111.png]]
+Search for failed password events for this specific username. How many events are returned?
+*16* (in my case 32 cz upload 2 times)
+### Sigma Rules
+Florian Roth created Sigma.
+What is Sigma?
+As per the GitHub [repo](https://github.com/SigmaHQ/sigma), "Sigma is a generic and open signature format that allows you to describe relevant log events in a straightforward manner. The rule format is very flexible, easy to write and applicable to any type of log file. The main purpose of this project is to provide a structured form in which researchers or analysts can describe their once developed detection methods and make them shareable with others."
+Each SIEM has its own structure/format for creating queries. It isn't easy to share SIEM queries with other Security Teams if they don't use your exact SIEM product. For example, you can have a repo of Splunk queries that your team utilizes for threat exposure checks or threat hunting. These queries (or rules) can be created in the Sigma format and shared with teams that don't use Splunk. Sigma rules can be shared along with IOCs and YARA rules as Threat Intelligence.
+Some supported target SIEMs:
+[Splunk](https://www.splunk.com/)
+[Microsoft Defender Advanced Threat Protection](https://www.microsoft.com/en-us/security/business/endpoint-security/microsoft-defender-endpoint)
+[Azure Sentinel](https://azure.microsoft.com/en-us/services/microsoft-sentinel/)
+[ArcSight](https://www.microfocus.com/en-us/cyberres/secops/arcsight-esm)
+[QRadar](https://www.ibm.com/products/qradar-siem)
+Some projects/products that use Sigma:
+[MISP](https://www.misp-project.org/index.html)
+[THOR](https://www.nextron-systems.com/thor/)
+[Joe Sandbox](https://www.joesecurity.org/)
+There also is a Splunk app titled [TA-Sigma-Searches](https://github.com/dstaulcu/TA-Sigma-Searches).
+Sigma rules are written in YAML (YAML Ain't Markup Language).
+As per the website, "[YAML](https://yaml.org/) is a human friendly data serialization standard for all programming languages."
+The Sigma repo has signatures in the rules folder. Sigmac, the Sigma Converter, located in the tools folder, can generate a specific SIEM rule.
+Example: ./sigmac -t splunk -c tools/config/generic/sysmon.yml ./rules/windows/process_creation/win_susp_whoami.yml
+Please refer to the Github repo for more information, examples, install instructions, rules, etc.
+An online version of this tool created by SOC PRIME ([Florian Roth](https://socprime.com/leadership/)) does the conversion work for you. The tool is [Uncoder.io](https://uncoder.io/).
+This online tool is not only for Sigma -> SIEM conversion. It also allows for other conversions. I'll leave you to explore that.
+Let's explore this online tool a bit.
+Near the top, there is a drop-down box. This drop-down will feature Sigma rules we can convert to a Splunk query.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-sigma-1.png)
+Choose some Sigma rules and convert them to Elasticsearch, QRadar, Splunk, etc.
+The Sigma rule for 'User Added to Local Administrators' is converted to a Splunk query in the example below.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-sigma-example2.gif)
+The best way to get familiar and comfortable with Sigma and YAML files is to inspect that repo and look at Sigma rules and create some of your own.
+![[Pasted image 20220906113235.png]]
+Use the Select document feature. What is the Splunk query for 'sigma: APT29'?
+`CommandLine="*-noni -ep bypass $*"`
+![[Pasted image 20220906113706.png]]
+![[Pasted image 20220906113639.png]]
+Use the Github Sigma repo. What is the Splunk query for 'CACTUSTORCH Remote Thread Creation'?
+`source="WinEventLog:*" AND ((SourceImage="*\\System32\\cscript.exe" OR SourceImage="*\\System32\\wscript.exe" OR SourceImage="*\\System32\\mshta.exe" OR SourceImage="*\\winword.exe" OR SourceImage="*\\excel.exe") AND TargetImage="*\\SysWOW64\\*" AND NOT StartModule="*")`
+### Dashboards & Visualizations
+Dashboards are panels displaying different data (visualizations) in one view.
+Visualizations allow us to view data in a visual format, such as a chart (bar or pie, for instance) or as a single value.
+Typically SOCs create a variety of dashboards, and these dashboards are displayed on large screens. Different dashboards can be created, but the dashboards' overall objective is to provide a high-level overview of the environment.
+Circling back to the Windows Event Log room, it was briefly mentioned that in Event Viewer, we could useCreate Custom View . A custom view is a filter to focus on specific data within the log. This concept is similar to a dashboard in a SIEM.
+Note: Dashboards are specific to Apps. If you create a dashboard for the Search app, then the dashboard uses this particular app's context.
+Follow these steps to create a dashboard in the Search app (and enable dark mode).
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-dashboard-example.gif)
+We're tasked to display the top 5 Sysmon Event IDs on the dashboard for the SOC team.
+First, we'll create the search query, pipe to a transform command to filter the top 5 Event IDs,  and examine the results.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-query-dashboard.png)
+After we confirm the query and results, we can look at Visualizations.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-dashboard-visuals.png)
+Please refer to the Splunk documentation on Dashboards and Visualizations to understand the difference between each option here.
+After the visualization is selected, save it as a Dashboard panel.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-dashboard-saveas.png)
+If the dashboard is already created, we can select Existing for Dashboard and select it.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-dashboard-saveas-2.png)
+After successfully saving the Dashboard Panel, you can view the dashboard.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-dashboard-new-2.png)
+If you wish to add the dashboard to your home page, you can click on the ellipsis and select the option.
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-dashboard-ellipsis-2.png)
+Result:
+![]() ![](https://assets.tryhackme.com/additional/splunk-overview/splunk-home-dashboard.png)
+Note:
+Refer to the Splunk documentation on dashboards and visualizations:
+https://docs.splunk.com/Documentation/Splunk/8.1.2/Viz/WebFramework
+https://docs.splunk.com/Documentation/Splunk/8.1.2/Viz/Aboutthismanual
+https://docs.splunk.com/Documentation/Splunk/8.1.2/Viz/CreateDashboards
+https://docs.splunk.com/Documentation/Splunk/8.1.2/Viz/AddPanels
+https://docs.splunk.com/Documentation/Splunk/8.1.2/SearchTutorial/Createnewdashboard
+In the next section, we'll briefly touch on alerts in Splunk.
+![[Pasted image 20220906115058.png]]
+What is the highest EventID?
+*11*
+### Alerts
+Alerts is a feature in Splunk that enables us to monitor and respond to specific events.
+Alerts use a saved search to monitor events in real-time or on a schedule. Alerts will trigger when a specific condition is met to take the defined course of action.
+Let's look at 'The alerting workflow' from the Splunk documentation.
+Search: What do you want to track?
+There is an external IP brute-forcing a web page. We want to be alerted whenever this IP address is actively attacking the infrastructure.
+Alert Type: How often do you want to check for events?
+Since we want to be alerted whenever this IP is active, a real-time alert is what we'll configure.
+Alert trigger conditions and throttling: How often do you want to trigger an alert?
+If 10 failed password events under 1 minute, generate an alert.
+Alert action: What happens when the alert triggers?
+Send an email or send a message in an application using a [webhook](https://docs.splunk.com/Documentation/Splunk/8.1.2/Alert/Webhooks).
+![](https://assets.tryhackme.com/additional/splunk-overview/splunk-alert-1.png)
+In Splunk Free, we can not create alerts. You can experiment with this feature in the 60-day trial of Splunk Enterprise.
+Please reference the Splunk documentation on Alerting here to fully understand the different ways to configure them.
+[Here](https://docs.splunk.com/Documentation/SplunkCloud/8.1.2012/Alert/Alertexamples) is the direct link to Alert examples.
+I have a general understanding on how to create an alert in Splunk.
+*No answer needed*
+### Conclusion
+There is more to Splunk than what was covered in this 101 room.
+Besides developing a good understanding of SPL (Search Process Language), it would be a good idea to level up your regex-fu. This will increase your ability to write complex search queries. Read more about regular expression in the Splunk documentation here.
+Splunk has a free training + certification titled [Splunk Fundamentals 1](https://education.splunk.com/single-subject-courses). This course will cover much that was covered in this room and more.
+When you're ready for more advanced Splunk, head over to the Splunk BOTSv1 and BOTSv2 rooms.
+![|222](https://assets.tryhackme.com/additional/splunk-overview/splunk-bots.png)
+I know the fundamentals of Splunk.
+*No answer needed*
+
+## Notes / Lessons Learned
+[[Osquery]]
+
