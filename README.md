@@ -80,6 +80,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **IDE** | `Easy` | Web / Linux PrivEsc | [IDE.md](./IDE.md) |
 | **IDOR** | `Easy` | Web Security | [IDOR.md](./IDOR.md) |
 | **Ignite** | `Easy` | Fuel CMS Exploit | [Ignite.md](./Ignite.md) |
+| **JPGChat** | `Easy` | Linux / Python Injection | [JPGChat.md](./JPGChat.md) |
 
 
-<!-- Weekly Progress: Week 79/104 | 2024-07-06 -->
+<!-- Weekly Progress: Week 80/104 | 2024-07-13 -->
