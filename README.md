@@ -82,6 +82,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Ignite** | `Easy` | Fuel CMS Exploit | [Ignite.md](./Ignite.md) |
 | **JPGChat** | `Easy` | Linux / Python Injection | [JPGChat.md](./JPGChat.md) |
 | **Jason** | `Easy` | Node.js Deserialization | [Jason.md](./Jason.md) |
+| **LazyAdmin** | `Easy` | SweetRice CMS | [LazyAdmin.md](./LazyAdmin.md) |
 
 
-<!-- Weekly Progress: Week 81/104 | 2024-07-20 -->
+<!-- Weekly Progress: Week 82/104 | 2024-07-27 -->
