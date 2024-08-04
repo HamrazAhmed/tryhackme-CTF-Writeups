@@ -83,6 +83,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **JPGChat** | `Easy` | Linux / Python Injection | [JPGChat.md](./JPGChat.md) |
 | **Jason** | `Easy` | Node.js Deserialization | [Jason.md](./Jason.md) |
 | **LazyAdmin** | `Easy` | SweetRice CMS | [LazyAdmin.md](./LazyAdmin.md) |
+| **MD2PDF** | `Easy` | SSRF / XSS | [MD2PDF.md](./MD2PDF.md) |
 
 
-<!-- Weekly Progress: Week 82/104 | 2024-07-27 -->
+<!-- Weekly Progress: Week 83/104 | 2024-08-04 -->
