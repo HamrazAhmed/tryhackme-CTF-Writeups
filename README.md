@@ -84,6 +84,8 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Jason** | `Easy` | Node.js Deserialization | [Jason.md](./Jason.md) |
 | **LazyAdmin** | `Easy` | SweetRice CMS | [LazyAdmin.md](./LazyAdmin.md) |
 | **MD2PDF** | `Easy` | SSRF / XSS | [MD2PDF.md](./MD2PDF.md) |
+| **Magician** | `Easy` | ImageMagick / Linux CTF | [Magician.md](./Magician.md) |
+| **Mustacchio** | `Easy` | Linux / Web CTF | [Mustacchio.md](./Mustacchio.md) |
 
 
-<!-- Weekly Progress: Week 83/104 | 2024-08-04 -->
+<!-- Weekly Progress: Week 84/104 | 2024-08-10 -->
