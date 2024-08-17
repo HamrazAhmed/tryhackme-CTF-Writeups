@@ -86,6 +86,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **MD2PDF** | `Easy` | SSRF / XSS | [MD2PDF.md](./MD2PDF.md) |
 | **Magician** | `Easy` | ImageMagick / Linux CTF | [Magician.md](./Magician.md) |
 | **Mustacchio** | `Easy` | Linux / Web CTF | [Mustacchio.md](./Mustacchio.md) |
+| **Neighbour** | `Easy` | IDOR Vulnerability | [Neighbour.md](./Neighbour.md) |
 
 
-<!-- Weekly Progress: Week 84/104 | 2024-08-10 -->
+<!-- Weekly Progress: Week 85/104 | 2024-08-17 -->
