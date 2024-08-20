@@ -20,3 +20,26 @@ https://cyberchef.io/#recipe=ROT13(true,true,false,13)ROT47(47)From_Hex('Space')
 It's inside the text, in front of your eyes!
 
 https://330k.github.io/misc_tools/unicode_steganography.html
+like the xssrat challenge :) that I did 4 months ago
+
+Steganography Text: Clear (length: 163)
+
+‌‌‌‌‍﻿‌‌Hmm‌‌‌‌‍‬‌‍‌‌‌‌‍﻿‌﻿‌‌‌‌‍﻿‌﻿‌‌‌‌‍﻿‍﻿‌‌‌‌‍‬﻿﻿‌‌‌‌‍﻿‌‬‌‌‌‌‍‬‍‌‌‌‌‌‌‬‌‌‌‌‌‌‍‬‬‍‌‌‌‌‍﻿‌﻿‌‌‌‌‌‬‌‌‌‌‌‌‍‬‬‌‌‌‌‌‍‬‌‍‌‌‌‌‍‬‬‌‌‌‌‌‍‬‌‍‌‌‌‌‍‬‍‍‌‌‌‌‍﻿‬‬‌‌‌‌‍﻿‌‌‌‌‌‌‍﻿‬‬
+
+decode
+
+password is hahaezpz
+
+unzip and get the flag
+
+You have solved the Impossible Challenge! Here is your flag THM{Zero_Width_Characters_EZPZ}
+```
+Hmm, I'm thinking Steg
+
+## Flags / Answers
+- flag is in the format **THM{}**
+- ***THM{Zero_Width_Characters_EZPZ}***
+
+## Notes / Lessons Learned
+[[Zeno]]
+
