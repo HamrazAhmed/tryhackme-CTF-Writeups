@@ -88,6 +88,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Mustacchio** | `Easy` | Linux / Web CTF | [Mustacchio.md](./Mustacchio.md) |
 | **Neighbour** | `Easy` | IDOR Vulnerability | [Neighbour.md](./Neighbour.md) |
 | **OWASP Top 10 - 2021** | `Easy` | Web Security | [OWASP Top 10 - 2021.md](./OWASP%20Top%2010%20-%202021.md) |
+| **Opacity** | `Easy` | PHP Upload / KeePass | [Opacity.md](./Opacity.md) |
 
 
-<!-- Weekly Progress: Week 86/104 | 2024-08-25 -->
+<!-- Weekly Progress: Week 87/104 | 2024-08-31 -->
