@@ -1,0 +1,309 @@
+# Unattended — Writeup
+
+## Overview
+### Unattended — Writeup
+### Unattended — Writeup
+----
+Use your Windows forensics knowledge to investigate an incident.
+----
+### Introduction
+Start Machine
+### Welcome to the team, kid. I have something for you to get your feet wet.
+### Our client has a newly hired employee who saw a suspicious-looking janitor exiting his office as he was about to return from lunch.
+I want you to investigate if there was user activity while the user was away **between** **12:05 PM to 12:45 PM on the 19th of November 2022**. If there are, figure out what files were accessed and exfiltrated externally.
+You'll be accessing a live system, but use the disk image already exported to the `C:\Users\THM-RFedora\Desktop\kape-results\C` directory for your investigation. The link to the tools that you'll need is in `C:\Users\THM-RFedora\Desktop\tools`
+Finally, I want to remind you that you signed an NDA, so avoid viewing any files classified as top secret. I don't want us to get into trouble.
+### Connecting to the machine
+Start the virtual machine in split-screen view by clicking on the green "Start Machine" button on the upper right section of this task. If the VM is not visible, use the blue "Show Split View" button at the top-right of the page. Alternatively, you can connect to the VM using the credentials below via "Remote Desktop".
+**Username**
+THM-RFedora
+**Password**
+Passw0rd!
+**IP**
+MACHINE_IP
+_**Note:** Once the VM is fully running, please run Registry Explorer immediately, as this tool may take a few minutes to fully start up when executing the program for the first time._
+Answer the questions below
+Connect to the machine and continue to the next task
+Question Done
+### Windows Forensics review
+Download Task Files
+### Pre-requisites
+This room is based on the [Windows Forensics 1](https://tryhackme.com/room/windowsforensics1) and [Windows Forensics 2](https://tryhackme.com/room/windowsforensics2) rooms. A cheat sheet is attached below, which you can also download by clicking on the blue `Download Task Files` button on the right.
+To better understand how to perform forensics quickly and efficiently, consider checking out the [KAPE room](https://tryhackme.com/room/kape).
+Good luck!
+Answer the questions below
+Let's do this!
+Question Done
+### Snooping around
+Initial investigations reveal that someone accessed the user's computer during the previously specified timeframe.
+Whoever this someone is, it is evident they already know what to search for. Hmm. Curious.
+Answer the questions below
+```text
+Open RegistryExplorer tool then load hive NTUSER.DAT 
+
+Windows Explorer Address/Search Bars:
+
+Another way to identify a user's recent activity is by looking at the paths typed in the Windows Explorer address bar or searches performed using the following registry keys, respectively.
+
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths
+
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\WordWheelQuery
+```
+What file type was searched for using the search bar in Windows Explorer?
+Use the RegistryExplorer tool to check the "Windows Explorer Address/Search Bars" task in Windows Forensics 1 room.
+![[Pasted image 20230430155452.png]]
+*.pdf*
+What top-secret keyword was searched for using the search bar in Windows Explorer?
+![[Pasted image 20230430155425.png]]
+*continental*
+### Can't simply open it
+Not surprisingly, they quickly found what they are looking for in a matter of minutes.
+Ha! They seem to have hit a snag! They needed something first before they could continue.
+_**Note:**  W__hen using the Autopsy Tool, you can speed up the load times by only selecting "Recent Activity" when configuring the Ingest settings._
+Answer the questions below
+```text
+using Autopsy tool
+
+select data source type : logical files
+```
+What is the name of the downloaded file to the Downloads folder?
+Use the Autopsy tool to view the "Web Downloads" artifacts.
+![[Pasted image 20230430160648.png]]
+![[Pasted image 20230430161214.png]]
+*7z2201-x64.exe*
+When was the file from the previous question downloaded? (YYYY-MM-DD HH:MM:SS UTC)
+*Date Accessed	 UTC*
+Thanks to the previously downloaded file, a PNG file was opened. When was this file opened? (YYYY-MM-DD HH:MM:SS)
+You can filter by file extension via the Registry Explorer tool.
+![[Pasted image 20230430161737.png]]
+**
+### Sending it outside
+Uh oh. They've hit the jackpot and are now preparing to exfiltrate data outside the network.
+There is no way to do it via USB. So what's their other option?
+Answer the questions below
+```text
+c:\tools>JLECmd.exe -h
+Description:
+  JLECmd version 1.5.0.0
+
+  Author: Eric Zimmerman (saericzimmerman@gmail.com)
+  https://github.com/EricZimmerman/JLECmd
+
+  Examples: JLECmd.exe -f "C:\Temp\f01b4d95cf55d32a.customDestinations-ms" --mp
+          JLECmd.exe -f "C:\Temp\f01b4d95cf55d32a.automaticDestinations-ms" --json "D:\jsonOutput" --jsonpretty
+          JLECmd.exe -d "C:\CustomDestinations" --csv "c:\temp" --html "c:\temp" -q
+          JLECmd.exe -d "C:\Users\e\AppData\Roaming\Microsoft\Windows\Recent" --dt "ddd yyyy MM dd HH:mm:ss.fff"
+
+          Short options (single letter) are prefixed with a single dash. Long commands are prefixed with two dashes
+
+Usage:
+  JLECmd [options]
+
+Options:
+  -f <f>             File to process. Either this or -d is required
+  -d <d>             Directory to recursively process. Either this or -f is required
+
+c:\tools>JLECmd.exe -d C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora
+JLECmd version 1.5.0.0
+
+Author: Eric Zimmerman (saericzimmerman@gmail.com)
+https://github.com/EricZimmerman/JLECmd
+
+Command line: -d C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora
+
+Warning: Administrator privileges not found!
+
+Looking for jump list files in C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora
+
+Found 9 files
+
+Processing C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\12dc1ea8e34b5a6.automaticDestinations-ms
+
+Source file: C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\12dc1ea8e34b5a6.automaticDestinations-ms
+
+--- AppId information ---
+  AppID: 12dc1ea8e34b5a6
+  Description: Microsoft Paint 6.1
+
+--- DestList information ---
+  Expected DestList entries:  1
+  Actual DestList entries:    1
+  DestList version:           4
+
+--- DestList entries ---
+Entry #: 1
+  MRU: 0
+  Path: C:\Program Files (x86)\Windows Media Player\Skins\tophatsecret\continental.png
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:aa:8b:ff:d5:25
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\\\\\
+
+---------- Processed C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\12dc1ea8e34b5a6.automaticDestinations-ms in 0.98806850 seconds ----------
+
+Processing C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\28c8b86deab549a1.automaticDestinations-ms
+
+Source file: C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\28c8b86deab549a1.automaticDestinations-ms
+
+--- AppId information ---
+  AppID: 28c8b86deab549a1
+  Description: Internet Explorer 8.0.7600.16385 / 9
+
+--- DestList information ---
+  Expected DestList entries:  1
+  Actual DestList entries:    1
+  DestList version:           4
+
+--- DestList entries ---
+Entry #: 1
+  MRU: 0
+  Path: C:\Users\THM-RFedora\Desktop\TryHatMe Welcome Letter.pdf
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: thm-windows-bas
+  Mac Address: 02:d1:ff:b2:6b:e9
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\Users\\Desktop\
+
+---------- Processed C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\28c8b86deab549a1.automaticDestinations-ms in 0.02864250 seconds ----------
+
+Processing C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\5d696d521de238c3.automaticDestinations-ms
+
+Source file: C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\5d696d521de238c3.automaticDestinations-ms
+
+--- AppId information ---
+  AppID: 5d696d521de238c3
+  Description: Google Chrome 9.0.597.84 / 12.0.742.100 / 13.0.785.215 / 48.0.2564.116
+
+--- DestList information ---
+  Expected DestList entries:  1
+  Actual DestList entries:    1
+  DestList version:           4
+
+--- DestList entries ---
+Entry #: 1
+  MRU: 0
+  Path: C:\Users\THM-RFedora\Desktop\TryHatMe Welcome Letter.pdf
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: thm-windows-bas
+  Mac Address: 02:d1:ff:b2:6b:e9
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\Users\\Desktop\
+
+---------- Processed C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\5d696d521de238c3.automaticDestinations-ms in 0.02968200 seconds ----------
+
+Processing C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\5f7b5f1e01b83767.automaticDestinations-ms
+
+Source file: C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\5f7b5f1e01b83767.automaticDestinations-ms
+
+--- AppId information ---
+  AppID: 5f7b5f1e01b83767
+  Description: Quick Access
+
+--- DestList information ---
+  Expected DestList entries:  6
+  Actual DestList entries:    6
+  DestList version:           4
+
+--- DestList entries ---
+Entry #: 8
+  MRU: 0
+  Path: C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\NTUSER.DAT
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:0a:e5:8b:3b:33
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\\\\\\\\
+
+Entry #: 7
+  MRU: 1
+  Path: C:\Users\THM-RFedora\Downloads\RegistryExplorer.zip
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:0a:e5:8b:3b:33
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\\\\
+
+Entry #: 6
+  MRU: 2
+  Path: C:\Users\THM-RFedora\Downloads\kape.zip
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:0a:e5:8b:3b:33
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\\\\
+
+Entry #: 4
+  MRU: 3
+  Path: C:\Program Files (x86)\Windows Media Player\Skins\tophatsecret\continental.png
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:aa:8b:ff:d5:25
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\\\\\
+
+Entry #: 3
+  MRU: 4
+  Path: C:\Users\THM-RFedora\Desktop\WelcomeLetter.pdf
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:d1:ff:b2:6b:e9
+  Interaction count: 2
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\Users\\Desktop\
+
+Entry #: 2
+  MRU: 5
+  Path: C:\Users\THM-RFedora\Desktop\Welcome Letter.pdf
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: thm-windows-bas
+  Mac Address: 02:d1:ff:b2:6b:e9
+  Interaction count: 1
+
+--- Lnk information ---
+Error opening C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\5f7b5f1e01b83767.automaticDestinations-ms. Message: Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at JLECmd.Program.ProcessAutoFile(String jlFile, Boolean q, String dt, Boolean fd, Boolean ld, Boolean wd)
+
+Processing C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\9b9cdc69c1c24e2b.automaticDestinations-ms
+
+Source file: C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\9b9cdc69c1c24e2b.automaticDestinations-ms
+
+--- AppId information ---
+  AppID: 9b9cdc69c1c24e2b
+  Description: Notepad 64-bit
+
+--- DestList information ---
