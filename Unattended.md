@@ -307,3 +307,313 @@ Source file: C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppDa
   Description: Notepad 64-bit
 
 --- DestList information ---
+  Expected DestList entries:  1
+  Actual DestList entries:    1
+  DestList version:           4
+
+--- DestList entries ---
+Entry #: 1
+  MRU: 0
+  Path: C:\Users\THM-RFedora\Desktop\launchcode.txt
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:aa:8b:ff:d5:25
+  Interaction count: 2
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\Users\\Desktop\
+
+---------- Processed C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\9b9cdc69c1c24e2b.automaticDestinations-ms in 0.02990890 seconds ----------
+
+Processing C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\abcfe3302b00eeed.automaticDestinations-ms
+
+Source file: C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\abcfe3302b00eeed.automaticDestinations-ms
+
+--- AppId information ---
+  AppID: abcfe3302b00eeed
+  Description: Unknown AppId
+
+--- DestList information ---
+  Expected DestList entries:  0
+  Actual DestList entries:    0
+  DestList version:           0
+
+  There are more items in the Directory (-1) than are contained in the DestList (0). Use --withDir to view/export them
+
+--- DestList entries ---
+
+** There are more items in the Directory (-1) than are contained in the DestList (0). Use --WithDir to view them **
+
+---------- Processed C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\abcfe3302b00eeed.automaticDestinations-ms in 0.01944480 seconds ----------
+
+Processing C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\f01b4d95cf55d32a.automaticDestinations-ms
+
+Source file: C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\f01b4d95cf55d32a.automaticDestinations-ms
+
+--- AppId information ---
+  AppID: f01b4d95cf55d32a
+  Description: Windows Explorer Windows 8.1
+
+--- DestList information ---
+  Expected DestList entries:  11
+  Actual DestList entries:    11
+  DestList version:           4
+
+--- DestList entries ---
+Entry #: 1
+  MRU: 0
+  Path: knownfolder:{754AC886-DF64-4CBA-86B5-F7FBF4FBCEF5} ==> ThisPCDesktopFolder
+  Pinned: True
+  Created on:    
+  Last modified: 
+  Hostname: ec2amaz-s9rllhp
+  Mac Address: 0e:f8:30:d0:72:3f
+  Interaction count: 12
+
+--- Lnk information ---
+  Absolute path: My Computer\Desktop
+
+Entry #: 11
+  MRU: 1
+  Path: C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:0a:e5:8b:3b:33
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\\\\\\\
+
+Entry #: 10
+  MRU: 2
+  Path: C:\Users\THM-RFedora\Downloads\RegistryExplorer\RegistryExplorer
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:0a:e5:8b:3b:33
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\Users\\Downloads\\
+
+Entry #: 9
+  MRU: 3
+  Path: C:\Users\THM-RFedora\Downloads\RegistryExplorer
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:0a:e5:8b:3b:33
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\Users\\Downloads\
+
+Entry #: 8
+  MRU: 4
+  Path: C:\Users\THM-RFedora\Downloads\kape\KAPE
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:0a:e5:8b:3b:33
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\Users\\Downloads\\
+
+Entry #: 7
+  MRU: 5
+  Path: C:\Users\THM-RFedora\Downloads\kape
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:0a:e5:8b:3b:33
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\Users\\Downloads\
+
+Entry #: 5
+  MRU: 6
+  Path: C:\Program Files (x86)\Windows Media Player\Skins\tophatsecret
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: thm-windows-bas
+  Mac Address: 02:d1:ff:b2:6b:e9
+  Interaction count: 3
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\\\\
+
+Entry #: 6
+  MRU: 7
+  Path: C:\Program Files (x86)\Windows Media Player\Skins
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: thm-windows-bas
+  Mac Address: 02:d1:ff:b2:6b:e9
+  Interaction count: 1
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\\\
+
+Entry #: 2
+  MRU: 8
+  Path: knownfolder:{FDD39AD0-238F-46AF-ADB4-6C85480369C7} ==> Documents
+  Pinned: True
+  Created on:    
+  Last modified: 
+  Hostname: ec2amaz-s9rllhp
+  Mac Address: 0e:f8:30:d0:72:3f
+  Interaction count: 4
+
+--- Lnk information ---
+  Absolute path: My Computer\Documents
+
+Entry #: 4
+  MRU: 9
+  Path: knownfolder:{33E28130-4E1E-4676-835A-98395C3BC3BB} ==> Pictures
+  Pinned: True
+  Created on:    
+  Last modified: 
+  Hostname: ec2amaz-s9rllhp
+  Mac Address: 0e:f8:30:d0:72:3f
+  Interaction count: 3
+
+--- Lnk information ---
+  Absolute path: My Computer\Pictures
+
+Entry #: 3
+  MRU: 10
+  Path: knownfolder:{374DE290-123F-4565-9164-39C4925E467B} ==> Downloads
+  Pinned: True
+  Created on:    
+  Last modified: 
+  Hostname: ec2amaz-s9rllhp
+  Mac Address: 0e:f8:30:d0:72:3f
+  Interaction count: 3
+
+--- Lnk information ---
+  Absolute path: My Computer\Downloads
+
+---------- Processed C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\f01b4d95cf55d32a.automaticDestinations-ms in 0.18639720 seconds ----------
+
+Processing C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\f065ac336abcaa3e.automaticDestinations-ms
+
+Source file: C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\f065ac336abcaa3e.automaticDestinations-ms
+
+--- AppId information ---
+  AppID: f065ac336abcaa3e
+  Description: Unknown AppId
+
+--- DestList information ---
+  Expected DestList entries:  1
+  Actual DestList entries:    1
+  DestList version:           4
+
+--- DestList entries ---
+Entry #: 1
+  MRU: 0
+  Path: C:\Users\THM-RFedora\Desktop\WelcomeLetter.pdf
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: thm-windows-bas
+  Mac Address: 02:d1:ff:b2:6b:e9
+  Interaction count: 3
+
+--- Lnk information ---
+  Absolute path: My Computer\C:\Users\\Desktop\
+
+---------- Processed C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\f065ac336abcaa3e.automaticDestinations-ms in 0.05163510 seconds ----------
+
+Processing C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\CustomDestinations\28c8b86deab549a1.customDestinations-ms
+
+Source file: C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\CustomDestinations\28c8b86deab549a1.customDestinations-ms
+
+--- AppId information ---
+AppID: 28c8b86deab549a1, Description: Internet Explorer 8.0.7600.16385 / 9
+--- DestList information ---
+  Entries:  1
+
+  Entry #: 0, lnk count: 3 Rank: 1.4013E-45
+
+--- Lnk #0 information ---
+  Lnk target created:  
+  Lnk target modified: 
+  Lnk target accessed: 
+
+  Absolute path: My Computer\C:\Program Files\\
+
+--- Lnk #1 information ---
+  Lnk target created:  
+  Lnk target modified: 
+  Lnk target accessed: 
+
+  Absolute path: My Computer\C:\Program Files\\
+
+--- Lnk #2 information ---
+  Lnk target created:  
+  Lnk target modified: 
+  Lnk target accessed: 
+
+  Absolute path: My Computer\C:\Program Files\\
+
+---------- Processed C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\CustomDestinations\28c8b86deab549a1.customDestinations-ms in 0.04525510 seconds ----------
+
+Processed 8 out of 9 files in 2.1438 seconds
+
+Failed files
+  C:\Users\THM-RFedora\Desktop\kape-results\C\Users\THM-RFedora\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\5f7b5f1e01b83767.automaticDestinations-ms ==> (Object reference not set to an instance of an object.)
+
+--- DestList entries ---
+Entry #: 1
+  MRU: 0
+  Path: C:\Users\THM-RFedora\Desktop\launchcode.txt
+  Pinned: False
+  Created on:    
+  Last modified: 
+  Hostname: tryhatme-rfedor
+  Mac Address: 02:aa:8b:ff:d5:25
+  Interaction count: 2
+
+using autopsy tool > search web history > keyword search > substring match > pastebin
+
+https://pastebin.com/1FQASAav
+```
+A text file was created in the Desktop folder. How many times was this file opened?
+![[Pasted image 20230430163125.png]]
+*2*
+When was the text file from the previous question last modified? (MM/DD/YYYY HH:MM)
+*11/19/2022 12:12*
+The contents of the file were exfiltrated to pastebin.com. What is the generated URL of the exfiltrated data?
+![[Pasted image 20230430163425.png]]
+*https://pastebin.com/1fqasaav *
+What is the string that was copied to the pastebin URL?
+![[Pasted image 20230430163653.png]]
+*ne7AIRhi3PdESy9RnOrN*
+### Conclusion
+At this point, we already have a good idea of what happened. The malicious threat actor was able to successfully find and exfiltrate data. While we could not determine who this person is, it is clear that they knew what they wanted and how to get it.
+I wonder what's so important that they risked accessing the machine in-person... I guess we'll never know.
+Anyways, you did good, kid. I guess it was too easy for you, huh?
+Answer the questions below
+Let's see if you can handle the next one.
+Question Done
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/63588b5ef586912c7d03c4f0/room-content/c62fc0b6f9d22ed2fddc718004c3d5ea.png)
+- ![123](https://tryhackme-images.s3.amazonaws.com/user-uploads/63588b5ef586912c7d03c4f0/room-content/be629720b11a294819516c1d4e738c92.png)
+- ![Configuring the Ingest setting in Autopsy](https://tryhackme-images.s3.amazonaws.com/user-uploads/63588b5ef586912c7d03c4f0/room-content/fda88f43a1c03a9959249945f061094a.png)
+
+## Notes / Lessons Learned
+[[Olympus]]
+
