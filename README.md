@@ -90,6 +90,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **OWASP Top 10 - 2021** | `Easy` | Web Security | [OWASP Top 10 - 2021.md](./OWASP%20Top%2010%20-%202021.md) |
 | **Opacity** | `Easy` | PHP Upload / KeePass | [Opacity.md](./Opacity.md) |
 | **OverlayFS** | `Easy` | CVE-2021-3493 Exploit | [OverlayFS.md](./OverlayFS.md) |
+| **Overpass** | `Easy` | Broken Auth / Linux CTF | [Overpass.md](./Overpass.md) |
 
 
-<!-- Weekly Progress: Week 88/104 | 2024-09-08 -->
+<!-- Weekly Progress: Week 89/104 | 2024-09-14 -->
