@@ -1968,3 +1968,988 @@ Offset  Base    Size    Name    Path    File output
 0x2471528       0xf8ba8000      0x2000  Beep.SYS        \SystemRoot\System32\Drivers\Beep.SYS  Disabled
 0x2471b20       0xf8d05000      0x1000  Null.SYS        \SystemRoot\System32\Drivers\Null.SYS  Disabled
 0x247aa38       0xf792a000      0x15000 wdmaud.sys      \SystemRoot\system32\drivers\wdmaud.sys        Disabled
+0x2491110       0xf89aa000      0x8000  usbccgp.sys     \SystemRoot\system32\DRIVERS\usbccgp.sys       Disabled
+0x24937c0       0xf7887000      0x2d000 mrxdav.sys      \SystemRoot\system32\DRIVERS\mrxdav.sys        Disabled
+0x24d64a8       0xf7bdf000      0xf000  sysaudio.sys    \SystemRoot\system32\drivers\sysaudio.sys      Disabled
+0x24ee108       0xf883a000      0xf000  usbhub.sys      \SystemRoot\system32\DRIVERS\usbhub.sys        Disabled
+0x24f31d8       0xbf9c3000      0x12000 dxg.sys \SystemRoot\System32\drivers\dxg.sys  Disabled
+0x24fe8c8       0xf82f1000      0x17000 ndiswan.sys     \SystemRoot\system32\DRIVERS\ndiswan.sys       Disabled
+0x24fecf0       0xf87da000      0xb000  raspppoe.sys    \SystemRoot\system32\DRIVERS\raspppoe.sys      Disabled
+0x2503488       0xf82d0000      0x3000  mouhid.sys      \SystemRoot\system32\DRIVERS\mouhid.sys        Disabled
+0x25088f0       0xf7f8f000      0x26000 ipnat.sys       \SystemRoot\system32\DRIVERS\ipnat.sys Disabled
+0x2508cd0       0xf896a000      0x5000  TDI.SYS \SystemRoot\system32\DRIVERS\TDI.SYS  Disabled
+0x2514108       0xf809a000      0x28000 netbt.sys       \SystemRoot\system32\DRIVERS\netbt.sys Disabled
+0x25142d8       0xf80c2000      0x59000 tcpip.sys       \SystemRoot\system32\DRIVERS\tcpip.sys Disabled
+0x2514678       0xf811b000      0x13000 ipsec.sys       \SystemRoot\system32\DRIVERS\ipsec.sys Disabled
+0x2514880       0xf89a2000      0x8000  Npfs.SYS        \SystemRoot\System32\Drivers\Npfs.SYS  Disabled
+0x2514cc8       0xf899a000      0x5000  Msfs.SYS        \SystemRoot\System32\Drivers\Msfs.SYS  Disabled
+0x2539c60       0xf82e0000      0x11000 psched.sys      \SystemRoot\system32\DRIVERS\psched.sys        Disabled
+0x25cb1d8       0xf884a000      0x9000  netbios.sys     \SystemRoot\system32\DRIVERS\netbios.sys       Disabled
+0x25ed008       0xf8ab2000      0x4000  BATTC.SYS       \WINDOWS\system32\DRIVERS\BATTC.SYS    Disabled
+0x25ed860       0xf86ea000      0xb000  agp440.sys      agp440.sys      Disabled
+0x25ed8d0       0xf83e0000      0x1a000 Mup.sys Mup.sys Disabled
+0x25ed938       0xf83fa000      0x2d000 NDIS.sys        NDIS.sys        Disabled
+0x25ed9a0       0xf8427000      0x8d000 Ntfs.sys        Ntfs.sys        Disabled
+0x25eda08       0xf84b4000      0x17000 KSecDD.sys      KSecDD.sys      Disabled
+0x25eda78       0xf84cb000      0x12000 sr.sys  sr.sys  Disabled
+0x25edae0       0xf84dd000      0x20000 fltMgr.sys      fltMgr.sys      Disabled
+0x25edb50       0xf86da000      0xd000  CLASSPNP.SYS    \WINDOWS\system32\DRIVERS\CLASSPNP.SYS Disabled
+0x25edbc0       0xf86ca000      0x9000  disk.sys        disk.sys        Disabled
+0x25edc28       0xf84fd000      0x18000 atapi.sys       atapi.sys       Disabled
+0x25edc90       0xf86ba000      0xd000  VolSnap.sys     VolSnap.sys     Disabled
+0x25edd00       0xf8922000      0x5000  PartMgr.sys     PartMgr.sys     Disabled
+0x25edd70       0xf8515000      0x26000 dmio.sys        dmio.sys        Disabled
+0x25eddd8       0xf8ba0000      0x2000  dmload.sys      dmload.sys      Disabled
+0x25ede48       0xf853b000      0x1f000 ftdisk.sys      ftdisk.sys      Disabled
+0x25edeb8       0xf86aa000      0xb000  MountMgr.sys    MountMgr.sys    Disabled
+0x25edf28       0xf891a000      0x7000  PCIIDEX.SYS     \WINDOWS\system32\DRIVERS\PCIIDEX.SYS  Disabled
+0x25edf98       0xf8b9e000      0x2000  intelide.sys    intelide.sys    Disabled
+0x25fc050       0xf8aae000      0x3000  compbatt.sys    compbatt.sys    Disabled
+0x25fc0c0       0xf869a000      0xa000  isapnp.sys      isapnp.sys      Disabled
+0x25fc130       0xf855a000      0x11000 pci.sys pci.sys Disabled
+0x25fc198       0xf8b9c000      0x2000  WMILIB.SYS      \WINDOWS\system32\DRIVERS\WMILIB.SYS   Disabled
+0x25fc208       0xf856b000      0x2e000 ACPI.sys        ACPI.sys        Disabled
+0x25fc270       0xf8aaa000      0x3000  BOOTVID.dll     \WINDOWS\system32\BOOTVID.dll Disabled
+0x25fc2e0       0xf8b9a000      0x2000  kdcom.dll       \WINDOWS\system32\KDCOM.DLL   Disabled
+0x25fc348       0x806d0000      0x20300 hal.dll \WINDOWS\system32\hal.dll       Disabled
+0x25fc3b0       0x804d7000      0x1f8580        ntoskrnl.exe    \WINDOWS\system32\ntkrnlpa.exe Disabled
+
+thmanalyst@ubuntu:/opt/volatility3$ python3 vol.py -f dump.vmem windows.driverirp
+Volatility 3 Framework 1.0.1
+Progress:  100.00               PDB scanning finished                     
+Offset  Driver Name     IRP     Address Module  Symbol
+```
+### Practical Investigations
+Case 001 - BOB! THIS ISN'T A HORSE!
+Your SOC has informed you that they have gathered a memory dump from a quarantined endpoint thought to have been compromised by a banking trojan masquerading as an Adobe document. Your job is to use your knowledge of threat intelligence and reverse engineering to perform memory forensics on the infected host.
+You have been informed of a suspicious IP in connection to the file that could be helpful. 41.168.5.140
+The memory file is located in /Scenarios/Investigations/Investigation-1.vmem
+Case 002 - That Kind of Hurt my Feelings
+You have been informed that your corporation has been hit with a chain of ransomware that has been hitting corporations internationally. Your team has already retrieved the decryption key and recovered from the attack. Still, your job is to perform post-incident analysis and identify what actors were at play and what occurred on your systems. You have been provided with a raw memory dump from your team to begin your analysis.
+The memory file is located in /Scenarios/Investigations/Investigation-2.raw
+```text
+┌──(kali㉿kali)-[~/volatility/volatility3]
+└─$ python3 vol.py -f Investigation-1.vmem windows.info             
+Volatility 3 Framework 2.4.1
+Progress:  100.00               PDB scanning finished                        
+Variable        Value
+
+Kernel Base     0x804d7000
+DTB     0x2fe000
+Symbols file:///home/kali/volatility/volatility3/volatility3/symbols/windows/ntkrnlpa.pdb/30B5FB31AE7E4ACAABA750AA241FF331-1.json.xz
+Is64Bit False
+IsPAE   True
+layer_name      0 WindowsIntelPAE
+memory_layer    1 FileLayer
+KdDebuggerDataBlock     0x80545ae0
+NTBuildLab      2600.xpsp.080413-2111
+CSDVersion      3
+KdVersionBlock  0x80545ab8
+Major/Minor     15.2600
+MachineType     332
+KeNumberProcessors      1
+SystemTime      2012-07-22 02:45:08
+NtSystemRoot    C:\WINDOWS
+NtProductType   NtProductWinNt
+NtMajorVersion  5
+NtMinorVersion  1
+PE MajorOperatingSystemVersion  5
+PE MinorOperatingSystemVersion  1
+PE Machine      332
+PE TimeDateStamp        Sun Apr 13 18:31:06 2008
+```
+```text
+┌──(kali㉿kali)-[~/volatility/volatility3]
+└─$ python3 vol.py -f Investigation-1.vmem windows.psscan
+Volatility 3 Framework 2.4.1
+Progress:  100.00               PDB scanning finished                        
+PID     PPID    ImageFileName   Offset(V)       Threads Handles SessionId       Wow64 CreateTime       ExitTime        File output
+
+908     652     svchost.exe     0x2029ab8       9       226     0       False   2012-07-22 02:42:33.000000     N/A     Disabled
+664     608     lsass.exe       0x202a3b8       24      330     0       False   2012-07-22 02:42:32.000000     N/A     Disabled
+652     608     services.exe    0x202ab28       16      243     0       False   2012-07-22 02:42:32.000000     N/A     Disabled
+1640    1484    reader_sl.exe   0x207bda0       5       39      0       False   2012-07-22 02:42:36.000000     N/A     Disabled
+1512    652     spoolsv.exe     0x20b17b8       14      113     0       False   2012-07-22 02:42:36.000000     N/A     Disabled
+1588    1004    wuauclt.exe     0x225bda0       5       132     0       False   2012-07-22 02:44:01.000000     N/A     Disabled
+788     652     alg.exe 0x22e8da0       7       104     0       False   2012-07-22 02:43:01.000000     N/A     Disabled
+1484    1464    explorer.exe    0x23dea70       17      415     0       False   2012-07-22 02:42:36.000000     N/A     Disabled
+1056    652     svchost.exe     0x23dfda0       5       60      0       False   2012-07-22 02:42:33.000000     N/A     Disabled
+1136    1004    wuauclt.exe     0x23fcda0       8       173     0       False   2012-07-22 02:43:46.000000     N/A     Disabled
+1220    652     svchost.exe     0x2495650       15      197     0       False   2012-07-22 02:42:35.000000     N/A     Disabled
+608     368     winlogon.exe    0x2498700       23      519     0       False   2012-07-22 02:42:32.000000     N/A     Disabled
+584     368     csrss.exe       0x24a0598       9       326     0       False   2012-07-22 02:42:32.000000     N/A     Disabled
+368     4       smss.exe        0x24f1020       3       19      N/A     False   2012-07-22 02:42:31.000000     N/A     Disabled
+1004    652     svchost.exe     0x25001d0       64      1118    0       False   2012-07-22 02:42:33.000000     N/A     Disabled
+824     652     svchost.exe     0x2511360       20      194     0       False   2012-07-22 02:42:33.000000     N/A     Disabled
+4       0       System  0x25c89c8       53      240     N/A     False   N/A     N/A   Disabled
+
+──(kali㉿kali)-[~/volatility/volatility3]
+└─$ python3 vol.py -f Investigation-1.vmem windows.pstree
+Volatility 3 Framework 2.4.1
+Progress:  100.00               PDB scanning finished                        
+PID     PPID    ImageFileName   Offset(V)       Threads Handles SessionId       Wow64 CreateTime       ExitTime
+
+4       0       System  0x823c89c8      53      240     N/A     False   N/A     N/A
+* 368   4       smss.exe        0x822f1020      3       19      N/A     False   2012-07-22 02:42:31.000000     N/A
+** 584  368     csrss.exe       0x822a0598      9       326     0       False   2012-07-22 02:42:32.000000     N/A
+** 608  368     winlogon.exe    0x82298700      23      519     0       False   2012-07-22 02:42:32.000000     N/A
+*** 664 608     lsass.exe       0x81e2a3b8      24      330     0       False   2012-07-22 02:42:32.000000     N/A
+*** 652 608     services.exe    0x81e2ab28      16      243     0       False   2012-07-22 02:42:32.000000     N/A
+**** 1056       652     svchost.exe     0x821dfda0      5       60      0       False 2012-07-22 02:42:33.000000       N/A
+**** 1220       652     svchost.exe     0x82295650      15      197     0       False 2012-07-22 02:42:35.000000       N/A
+**** 1512       652     spoolsv.exe     0x81eb17b8      14      113     0       False 2012-07-22 02:42:36.000000       N/A
+**** 908        652     svchost.exe     0x81e29ab8      9       226     0       False 2012-07-22 02:42:33.000000       N/A
+**** 1004       652     svchost.exe     0x823001d0      64      1118    0       False 2012-07-22 02:42:33.000000       N/A
+***** 1136      1004    wuauclt.exe     0x821fcda0      8       173     0       False 2012-07-22 02:43:46.000000       N/A
+***** 1588      1004    wuauclt.exe     0x8205bda0      5       132     0       False 2012-07-22 02:44:01.000000       N/A
+**** 788        652     alg.exe 0x820e8da0      7       104     0       False   2012-07-22 02:43:01.000000     N/A
+**** 824        652     svchost.exe     0x82311360      20      194     0       False 2012-07-22 02:42:33.000000       N/A
+1484    1464    explorer.exe    0x821dea70      17      415     0       False   2012-07-22 02:42:36.000000     N/A
+* 1640  1484    reader_sl.exe   0x81e7bda0      5       39      0       False   2012-07-22 02:42:36.000000     N/A
+```
+```text
+┌──(kali㉿kali)-[~/volatility/volatility3]
+└─$ python3 vol.py -f Investigation-1.vmem windows.cmd   
+Volatility 3 Framework 2.4.1
+Progress:  100.00               PDB scanning finished                        
+PID     Process Args
+
+4       System  Required memory at 0x10 is not valid (process exited?)
+368     smss.exe        \SystemRoot\System32\smss.exe
+584     csrss.exe       C:\WINDOWS\system32\csrss.exe ObjectDirectory=\Windows SharedSection=1024,3072,512 Windows=On SubSystemType=Windows ServerDll=basesrv,1 ServerDll=winsrv:UserServerDllInitialization,3 ServerDll=winsrv:ConServerDllInitialization,2 ProfileControl=Off MaxRequestThreads=16
+608     winlogon.exe    winlogon.exe
+652     services.exe    C:\WINDOWS\system32\services.exe
+664     lsass.exe       C:\WINDOWS\system32\lsass.exe
+824     svchost.exe     C:\WINDOWS\system32\svchost -k DcomLaunch
+908     svchost.exe     C:\WINDOWS\system32\svchost -k rpcss
+1004    svchost.exe     C:\WINDOWS\System32\svchost.exe -k netsvcs
+1056    svchost.exe     C:\WINDOWS\system32\svchost.exe -k NetworkService
+1220    svchost.exe     C:\WINDOWS\system32\svchost.exe -k LocalService
+1484    explorer.exe    C:\WINDOWS\Explorer.EXE
+1512    spoolsv.exe     C:\WINDOWS\system32\spoolsv.exe
+1640    reader_sl.exe   "C:\Program Files\Adobe\Reader 9.0\Reader\Reader_sl.exe" 
+788     alg.exe C:\WINDOWS\System32\alg.exe
+1136    wuauclt.exe     "C:\WINDOWS\system32\wuauclt.exe" /RunStoreAsComServer Local\[3ec]SUSDSb81eb56fa3105543beb3109274ef8ec1
+1588    wuauclt.exe     "C:\WINDOWS\system32\wuauclt.exe"
+
+thmanalyst@ubuntu:/opt/volatility3$ sudo su
+[sudo] password for thmanalyst: 
+root@ubuntu:/opt/volatility3# python3 vol.py -f dump.vmem -o /opt/volatility3/ windows.memmap.Memmap --pid 1640 --dump
+Volatility 3 Framework 1.0.1
+Progress:  100.00               PDB scanning finished                     
+Virtual Physical        Size    Offset in File  File output
+
+0x10000 0xbe4f000       0x1000  0x1000  pid.1640.dmp
+0x20000 0xbe10000       0x1000  0x2000  pid.1640.dmp
+0x126000        0xbe2a000       0x1000  0x3000  pid.1640.dmp
+0x127000        0xbde9000       0x1000  0x4000  pid.1640.dmp
+0x128000        0xbde8000       0x1000  0x5000  pid.1640.dmp
+0x129000        0xbde7000       0x1000  0x6000  pid.1640.dmp
+0x12a000        0xbda6000       0x1000  0x7000  pid.1640.dmp
+0x12b000        0xbde5000       0x1000  0x8000  pid.1640.dmp
+0x12c000        0xbda4000       0x1000  0x9000  pid.1640.dmp
+0x12d000        0xbe8c000       0x1000  0xa000  pid.1640.dmp
+0x12e000        0xbd61000       0x1000  0xb000  pid.1640.dmp
+0x12f000        0xbdd2000       0x1000  0xc000  pid.1640.dmp
+0x130000        0xb23a000       0x1000  0xd000  pid.1640.dmp
+0x131000        0xb23b000       0x1000  0xe000  pid.1640.dmp
+0x140000        0xbd70000       0x1000  0xf000  pid.1640.dmp
+0x150000        0xbe17000       0x1000  0x10000 pid.1640.dmp
+0x151000        0xbe18000       0x1000  0x11000 pid.1640.dmp
+0x152000        0xbd9c000       0x1000  0x12000 pid.1640.dmp
+0x153000        0xbdea000       0x1000  0x13000 pid.1640.dmp
+0x154000        0xbe83000       0x1000  0x14000 pid.1640.dmp
+0x155000        0xbe12000       0x1000  0x15000 pid.1640.dmp
+0x156000        0xbf37000       0x1000  0x16000 pid.1640.dmp
+0x157000        0xbf79000       0x1000  0x17000 pid.1640.dmp
+0x158000        0xd824000       0x1000  0x18000 pid.1640.dmp
+0x159000        0xd7a8000       0x1000  0x19000 pid.1640.dmp
+0x15a000        0xd86a000       0x1000  0x1a000 pid.1640.dmp
+0x15b000        0xd7eb000       0x1000  0x1b000 pid.1640.dmp
+0x15c000        0xd82c000       0x1000  0x1c000 pid.1640.dmp
+0x15d000        0xd72d000       0x1000  0x1d000 pid.1640.dmp
+0x15e000        0xd7ee000       0x1000  0x1e000 pid.1640.dmp
+0x15f000        0xd7af000       0x1000  0x1f000 pid.1640.dmp
+0x160000        0xd8f0000       0x1000  0x20000 pid.1640.dmp
+0x161000        0xd831000       0x1000  0x21000 pid.1640.dmp
+0x162000        0xd7b2000       0x1000  0x22000 pid.1640.dmp
+0x163000        0xd7f3000       0x1000  0x23000 pid.1640.dmp
+0x164000        0xd7b4000       0x1000  0x24000 pid.1640.dmp
+0x165000        0xd735000       0x1000  0x25000 pid.1640.dmp
+0x166000        0xd736000       0x1000  0x26000 pid.1640.dmp
+0x167000        0xd6f7000       0x1000  0x27000 pid.1640.dmp
+0x168000        0xd7b8000       0x1000  0x28000 pid.1640.dmp
+0x169000        0xd839000       0x1000  0x29000 pid.1640.dmp
+0x16a000        0xd87a000       0x1000  0x2a000 pid.1640.dmp
+0x16b000        0xd8fb000       0x1000  0x2b000 pid.1640.dmp
+0x16c000        0xd77c000       0x1000  0x2c000 pid.1640.dmp
+0x16d000        0xd7fd000       0x1000  0x2d000 pid.1640.dmp
+0x16e000        0xd7fe000       0x1000  0x2e000 pid.1640.dmp
+
+----
+0xffd06000      0x1e000 0x1000  0x4999000       pid.1640.dmp
+0xffd07000      0x1feff000      0x1000  0x499a000       pid.1640.dmp
+0xffd08000      0x1fef0000      0x1000  0x499b000       pid.1640.dmp
+0xffd09000      0x1fef1000      0x1000  0x499c000       pid.1640.dmp
+0xffd0a000      0x100000        0x1000  0x499d000       pid.1640.dmp
+0xffd0b000      0x1fef0000      0x1000  0x499e000       pid.1640.dmp
+0xffd0c000      0x1fef1000      0x1000  0x499f000       pid.1640.dmp
+0xffdf0000      0x41000 0x1000  0x49a0000       pid.1640.dmp
+0xffdff000      0x40000 0x1000  0x49a1000       pid.1640.dmp
+
+root@ubuntu:/opt/volatility3# ls
+development  dump.vmem    mypy.ini      setup.py     volshell.py
+doc          LICENSE.txt  pid.1640.dmp  volatility3  volshell.spec
+dump.raw     MANIFEST.in  README.md     vol.py       vol.spec
+
+root@ubuntu:/opt/volatility3# strings *.dmp | grep -i "user-agent"
+User-Agent
+User-Agent: Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)
+ cs(User-Agent)
+USER-AGENT:
+User-Agent:
+
+root@ubuntu:/opt/volatility3# strings *.dmp | grep "chase"*chase.com*
+*chase.com*
+*chase.com*
+action="https://mfasa.chase.com/auth/fcc/login" method="post" onsubmit="
+*chaseonline.chase.com/MyAccounts.*
+<!-- BEGIN Global Navigation table --><table cellspacing="0" cellpadding="0" border="0" class="fullwidth" summary="global navigation"><tr><td><a href="http://www.chase.com/" id="siteLogo"><img src="https://chaseonline.chase.com/images//ChaseNew.gif" alt="Chase Online Logo" style="margin: 17px 17px 17px 17px;"/></a></td><td class="globalnav"><a id="homelink" href="JavaScript:document.location.href='http://www.chase.com/';" class="globalnavlinks">Chase.com</a>  </td>
+                <td class="spacerw25"> <iframe name="ifr1" id="ifr1" src="https://www.chase.com/online/Home/images/chaseNewlogo.gif" frameborder="0" width="1px" height="1px" style="display:none"></iframe></td>
+<td class="steptexton" align="center" title="You are on step one of three.  There is at least one page per step.">Instructions<img src="https://chaseonline.chase.com/images//spacer.gif" alt="You are on step one of three.  There is at least one page per step.." width="1" height="1"/></td>
+<td class="steptextoff" align="center" title="Step two of three has not been completed.">Credit Card confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step two of three has not been completed." width="1" height="1"/></td>
+<td class="steptextoff" align="center" title="Step three of three has not been completed.">Identity confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step three of three has not been completed." width="1" height="1"/></td>
+<span class="instrtexthead">Why have I reached this page? <img src="https://chaseonline.chase.com/content/ecpweb/sso/image/lock2.gif" alt="Your information is securely transmitted via https (SSL) 128-bit Encryption" title="Your information is securely transmitted via https (S S L) 128-bit Encryption">  </span><span class="instrtext">We take your security seriously. Please follow this brief two-step process to help us verify your identity and keep your account(s) safe. </span>
+<td class="steptextoff" align="center" title="Step one of three has been completed.">Instructions<img src="https://chaseonline.chase.com/images//spacer.gif" alt="You are on step one of three.  There is at least one page per step.." width="1" height="1"/></td>
+<td class="steptexton" align="center" title="You are on step two of three. There is at least one page per step.">Credit Card confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step two of three has not been completed." width="1" height="1"/></td>
+<td class="steptextoff" align="center" title="Step three of three has not been completed.">Identity confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step three of three has not been completed." width="1" height="1"/></td>
+<span class="instrtexthead">Enter your card information <img src="https://chaseonline.chase.com/content/ecpweb/sso/image/lock2.gif" alt="Your information is securely transmitted via https (SSL) 128-bit Encryption" title="Your information is securely transmitted via https (SSL) 128-bit Encryption">  </span>
+<td class="steptextoff" align="center" title="Step one of three has been completed.">Instructions<img src="https://chaseonline.chase.com/images//spacer.gif" alt="You are on step one of three.  There is at least one page per step.." width="1" height="1"/></td>
+<td class="steptextoff" align="center" title="Step two of three has been completed.">Credit Card confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step two of three has not been completed." width="1" height="1"/></td>
+<td class="steptexton" align="center" title="You are on step three of three. There is at least one page per step.">Identity confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step three of three has not been completed." width="1" height="1"/></td>
+<span class="instrtexthead">Confirm your personality <img src="https://chaseonline.chase.com/content/ecpweb/sso/image/lock2.gif" alt="Your information is securely transmitted via https (S S L) 128-bit Encryption" title="Your information is securely transmitted via https (S S L) 128-bit Encryption">  </span>
+<!--Footer--><table border="0" cellspacing="0" cellpadding="0" class="fullwidth" summary="terms of use link and copyright"><tr><td class="spacerh10" colspan="3"> </td></tr><tr><td style="width:30%; vertical-align:top"> </td><td align="center" width="40%" valign="top"><span class="footertext"><a id="SecurityLink" href="JavaScript:document.location.href='http://www.chase.com//ccp/index.jsp?pg_name=ccpmapp/shared/assets/page/security_measures';" onBlur="window.status='';return true" onMouseOver="window.status='';return true" onFocus="window.status='';return true" onMouseOut="window.status='';return true">Security</a> | <!-- mp_trans_remove_start --><a id="TermsLink" href="JavaScript:document.location.href='http://www.chase.com//ccp/index.jsp?pg_name=ccpmapp/shared/assets/page/terms';" onBlur="window.status='';return true" onMouseOver="window.status='';return true" onFocus="window.status='';return true" onMouseOut="window.status='';return true">Terms of Use</a> <!-- mp_trans_remove_end --><!-- mp_trans_add<a id="TermsLink" href="JavaScript:document.location.href='https://www.chase.com/index.jsp?pg_name=ccpmapp/spanish/resources/page/terms';" onBlur="window.status='';return true" onMouseOver="window.status='';return true" onFocus="window.status='';return true" onMouseOut="window.status='';return true">Terms of Use</a> --></span></td><td style="text-align:center; width:30%; vertical-align:top"> </td></tr></table><div class="printable"><table border="0" cellspacing="0" cellpadding="0" class="fullwidth"><tr><td class="spacerh10"> </td></tr><tr><td align="center" class="footertext"> 
+<iframe name="ifr2" id="ifr2" src="https://www.chase.com/online/Home/images/chaseNewlogo.gif" frameborder="0" width="1px" height="1px" style="display:none"></iframe>
+<form id="ge93Zid02L5" name="ge93Zid02L5" action="https://www.chase.com/online/Home/images/chaseNewlogo.gif" target="ifr2" method="POST">
+                        url:  "https://chaseonline.chase.com/gw/secure/ena",
+*chase.com*
+*chase.com*
+*chase.com*
+*chase.com*
+action="https://mfasa.chase.com/auth/fcc/login" method="post" onsubmit="
+*chaseonline.chase.com/MyAccounts.*
+<!-- BEGIN Global Navigation table --><table cellspacing="0" cellpadding="0" border="0" class="fullwidth" summary="global navigation"><tr><td><a href="http://www.chase.com/" id="siteLogo"><img src="https://chaseonline.chase.com/images//ChaseNew.gif" alt="Chase Online Logo" style="margin: 17px 17px 17px 17px;"/></a></td><td class="globalnav"><a id="homelink" href="JavaScript:document.location.href='http://www.chase.com/';" class="globalnavlinks">Chase.com</a>  </td>
+                <td class="spacerw25"> <iframe name="ifr1" id="ifr1" src="https://www.chase.com/online/Home/images/chaseNewlogo.gif" frameborder="0" width="1px" height="1px" style="display:none"></iframe></td>
+<td class="steptexton" align="center" title="You are on step one of three.  There is at least one page per step.">Instructions<img src="https://chaseonline.chase.com/images//spacer.gif" alt="You are on step one of three.  There is at least one page per step.." width="1" height="1"/></td>
+<td class="steptextoff" align="center" title="Step two of three has not been completed.">Credit Card confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step two of three has not been completed." width="1" height="1"/></td>
+<td class="steptextoff" align="center" title="Step three of three has not been completed.">Identity confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step three of three has not been completed." width="1" height="1"/></td>
+<span class="instrtexthead">Why have I reached this page? <img src="https://chaseonline.chase.com/content/ecpweb/sso/image/lock2.gif" alt="Your information is securely transmitted via https (SSL) 128-bit Encryption" title="Your information is securely transmitted via https (S S L) 128-bit Encryption">  </span><span class="instrtext">We take your security seriously. Please follow this brief two-step process to help us verify your identity and keep your account(s) safe. </span>
+<td class="steptextoff" align="center" title="Step one of three has been completed.">Instructions<img src="https://chaseonline.chase.com/images//spacer.gif" alt="You are on step one of three.  There is at least one page per step.." width="1" height="1"/></td>
+<td class="steptexton" align="center" title="You are on step two of three. There is at least one page per step.">Credit Card confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step two of three has not been completed." width="1" height="1"/></td>
+<td class="steptextoff" align="center" title="Step three of three has not been completed.">Identity confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step three of three has not been completed." width="1" height="1"/></td>
+<span class="instrtexthead">Enter your card information <img src="https://chaseonline.chase.com/content/ecpweb/sso/image/lock2.gif" alt="Your information is securely transmitted via https (SSL) 128-bit Encryption" title="Your information is securely transmitted via https (SSL) 128-bit Encryption">  </span>
+<td class="steptextoff" align="center" title="Step one of three has been completed.">Instructions<img src="https://chaseonline.chase.com/images//spacer.gif" alt="You are on step one of three.  There is at least one page per step.." width="1" height="1"/></td>
+<td class="steptextoff" align="center" title="Step two of three has been completed.">Credit Card confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step two of three has not been completed." width="1" height="1"/></td>
+<td class="steptexton" align="center" title="You are on step three of three. There is at least one page per step.">Identity confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step three of three has not been completed." width="1" height="1"/></td>
+<span class="instrtexthead">Confirm your personality <img src="https://chaseonline.chase.com/content/ecpweb/sso/image/lock2.gif" alt="Your information is securely transmitted via https (S S L) 128-bit Encryption" title="Your information is securely transmitted via https (S S L) 128-bit Encryption">  </span>
+<!--Footer--><table border="0" cellspacing="0" cellpadding="0" class="fullwidth" summary="terms of use link and copyright"><tr><td class="spacerh10" colspan="3"> </td></tr><tr><td style="width:30%; vertical-align:top"> </td><td align="center" width="40%" valign="top"><span class="footertext"><a id="SecurityLink" href="JavaScript:document.location.href='http://www.chase.com//ccp/index.jsp?pg_name=ccpmapp/shared/assets/page/security_measures';" onBlur="window.status='';return true" onMouseOver="window.status='';return true" onFocus="window.status='';return true" onMouseOut="window.status='';return true">Security</a> | <!-- mp_trans_remove_start --><a id="TermsLink" href="JavaScript:document.location.href='http://www.chase.com//ccp/index.jsp?pg_name=ccpmapp/shared/assets/page/terms';" onBlur="window.status='';return true" onMouseOver="window.status='';return true" onFocus="window.status='';return true" onMouseOut="window.status='';return true">Terms of Use</a> <!-- mp_trans_remove_end --><!-- mp_trans_add<a id="TermsLink" href="JavaScript:document.location.href='https://www.chase.com/index.jsp?pg_name=ccpmapp/spanish/resources/page/terms';" onBlur="window.status='';return true" onMouseOver="window.status='';return true" onFocus="window.status='';return true" onMouseOut="window.status='';return true">Terms of Use</a> --></span></td><td style="text-align:center; width:30%; vertical-align:top"> </td></tr></table><div class="printable"><table border="0" cellspacing="0" cellpadding="0" class="fullwidth"><tr><td class="spacerh10"> </td></tr><tr><td align="center" class="footertext"> 
+<iframe name="ifr2" id="ifr2" src="https://www.chase.com/online/Home/images/chaseNewlogo.gif" frameborder="0" width="1px" height="1px" style="display:none"></iframe>
+<form id="ge93Zid02L5" name="ge93Zid02L5" action="https://www.chase.com/online/Home/images/chaseNewlogo.gif" target="ifr2" method="POST">
+                        url:  "https://chaseonline.chase.com/gw/secure/ena",
+*chase.com*
+*chase.com*
+*chase.com*
+action="https://mfasa.chase.com/auth/fcc/login" method="post" onsubmit="
+*chaseonline.chase.com/MyAccounts.*
+<!-- BEGIN Global Navigation table --><table cellspacing="0" cellpadding="0" border="0" class="fullwidth" summary="global navigation"><tr><td><a href="http://www.chase.com/" id="siteLogo"><img src="https://chaseonline.chase.com/images//ChaseNew.gif" alt="Chase Online Logo" style="margin: 17px 17px 17px 17px;"/></a></td><td class="globalnav"><a id="homelink" href="JavaScript:document.location.href='http://www.chase.com/';" class="globalnavlinks">Chase.com</a>  </td>
+                <td class="spacerw25"> <iframe name="ifr1" id="ifr1" src="https://www.chase.com/online/Home/images/chaseNewlogo.gif" frameborder="0" width="1px" height="1px" style="display:none"></iframe></td>
+<td class="steptexton" align="center" title="You are on step one of three.  There is at least one page per step.">Instructions<img src="https://chaseonline.chase.com/images//spacer.gif" alt="You are on step one of three.  There is at least one page per step.." width="1" height="1"/></td>
+<td class="steptextoff" align="center" title="Step two of three has not been completed.">Credit Card confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step two of three has not been completed." width="1" height="1"/></td>
+<td class="steptextoff" align="center" title="Step three of three has not been completed.">Identity confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step three of three has not been completed." width="1" height="1"/></td>
+<span class="instrtexthead">Why have I reached this page? <img src="https://chaseonline.chase.com/content/ecpweb/sso/image/lock2.gif" alt="Your information is securely transmitted via https (SSL) 128-bit Encryption" title="Your information is securely transmitted via https (S S L) 128-bit Encryption">  </span><span class="instrtext">We take your security seriously. Please follow this brief two-step process to help us verify your identity and keep your account(s) safe. </span>
+<td class="steptextoff" align="center" title="Step one of three has been completed.">Instructions<img src="https://chaseonline.chase.com/images//spacer.gif" alt="You are on step one of three.  There is at least one page per step.." width="1" height="1"/></td>
+<td class="steptexton" align="center" title="You are on step two of three. There is at least one page per step.">Credit Card confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step two of three has not been completed." width="1" height="1"/></td>
+<td class="steptextoff" align="center" title="Step three of three has not been completed.">Identity confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step three of three has not been completed." width="1" height="1"/></td>
+<span class="instrtexthead">Enter your card information <img src="https://chaseonline.chase.com/content/ecpweb/sso/image/lock2.gif" alt="Your information is securely transmitted via https (SSL) 128-bit Encryption" title="Your information is securely transmitted via https (SSL) 128-bit Encryption">  </span>
+<td class="steptextoff" align="center" title="Step one of three has been completed.">Instructions<img src="https://chaseonline.chase.com/images//spacer.gif" alt="You are on step one of three.  There is at least one page per step.." width="1" height="1"/></td>
+<td class="steptextoff" align="center" title="Step two of three has been completed.">Credit Card confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step two of three has not been completed." width="1" height="1"/></td>
+<td class="steptexton" align="center" title="You are on step three of three. There is at least one page per step.">Identity confirmation<img src="https://chaseonline.chase.com/images//spacer.gif" alt="Step three of three has not been completed." width="1" height="1"/></td>
+<span class="instrtexthead">Confirm your personality <img src="https://chaseonline.chase.com/content/ecpweb/sso/image/lock2.gif" alt="Your information is securely transmitted via https (S S L) 128-bit Encryption" title="Your information is securely transmitted via https (S S L) 128-bit Encryption">  </span>
+<!--Footer--><table border="0" cellspacing="0" cellpadding="0" class="fullwidth" summary="terms of use link and copyright"><tr><td class="spacerh10" colspan="3"> </td></tr><tr><td style="width:30%; vertical-align:top"> </td><td align="center" width="40%" valign="top"><span class="footertext"><a id="SecurityLink" href="JavaScript:document.location.href='http://www.chase.com//ccp/index.jsp?pg_name=ccpmapp/shared/assets/page/security_measures';" onBlur="window.status='';return true" onMouseOver="window.status='';return true" onFocus="window.status='';return true" onMouseOut="window.status='';return true">Security</a> | <!-- mp_trans_remove_start --><a id="TermsLink" href="JavaScript:document.location.href='http://www.chase.com//ccp/index.jsp?pg_name=ccpmapp/shared/assets/page/terms';" onBlur="window.status='';return true" onMouseOver="window.status='';return true" onFocus="window.status='';return true" onMouseOut="window.status='';return true">Terms of Use</a> <!-- mp_trans_remove_end --><!-- mp_trans_add<a id="TermsLink" href="JavaScript:document.location.href='https://www.chase.com/index.jsp?pg_name=ccpmapp/spanish/resources/page/terms';" onBlur="window.status='';return true" onMouseOver="window.status='';return true" onFocus="window.status='';return true" onMouseOut="window.status='';return true">Terms of Use</a> --></span></td><td style="text-align:center; width:30%; vertical-align:top"> </td></tr></table><div class="printable"><table border="0" cellspacing="0" cellpadding="0" class="fullwidth"><tr><td class="spacerh10"> </td></tr><tr><td align="center" class="footertext"> 
+<iframe name="ifr2" id="ifr2" src="https://www.chase.com/online/Home/images/chaseNewlogo.gif" frameborder="0" width="1px" height="1px" style="display:none"></iframe>
+<form id="ge93Zid02L5" name="ge93Zid02L5" action="https://www.chase.com/online/Home/images/chaseNewlogo.gif" target="ifr2" method="POST">
+                        url:  "https://chaseonline.chase.com/gw/secure/ena",
+
+root@ubuntu:/opt/volatility3# python3 vol.py -f dump.raw windows.psscan                                                                                                
+Volatility 3 Framework 1.0.1                                                                                                                                           
+Progress:  100.00               PDB scanning finished                                                                                                                  
+PID     PPID    ImageFileName   Offset  Threads Handles SessionId       Wow64   CreateTime      ExitTime        File output                                            
+                                                                                                                                                                       
+860     1940    taskdl.exe      0x1f4daf0       0       -       0       False   2017-05-12 21:26:23.000000      2017-05-12 21:26:23.000000      Disabled
+536     1940    taskse.exe      0x1f53d18       0       -       0       False   2017-05-12 21:26:22.000000      2017-05-12 21:26:23.000000      Disabled
+424     1940    @WanaDecryptor@ 0x1f69b50       0       -       0       False   2017-05-12 21:25:52.000000      2017-05-12 21:25:53.000000      Disabled
+1768    1024    wuauclt.exe     0x1f747c0       7       132     0       False   2017-05-12 21:22:52.000000      N/A     Disabled
+576     1940    @WanaDecryptor@ 0x1f8ba58       0       -       0       False   2017-05-12 21:26:22.000000      2017-05-12 21:26:23.000000      Disabled
+260     664     svchost.exe     0x1fb95d8       5       105     0       False   2017-05-12 21:22:18.000000      N/A     Disabled
+740     1940    @WanaDecryptor@ 0x1fde308       2       70      0       False   2017-05-12 21:22:22.000000      N/A     Disabled
+1168    1024    wscntfy.exe     0x1fea8a0       1       37      0       False   2017-05-12 21:22:56.000000      N/A     Disabled
+544     664     alg.exe 0x2010020       6       101     0       False   2017-05-12 21:22:55.000000      N/A     Disabled
+1084    664     svchost.exe     0x203b7a8       6       72      0       False   2017-05-12 21:22:03.000000      N/A     Disabled
+596     348     csrss.exe       0x2161da0       12      352     0       False   2017-05-12 21:22:00.000000      N/A     Disabled
+348     4       smss.exe        0x2169020       3       19      N/A     False   2017-05-12 21:21:55.000000      N/A     Disabled
+620     348     winlogon.exe    0x216e020       23      536     0       False   2017-05-12 21:22:01.000000      N/A     Disabled
+676     620     lsass.exe       0x2191658       23      353     0       False   2017-05-12 21:22:01.000000      N/A     Disabled
+664     620     services.exe    0x21937f0       15      265     0       False   2017-05-12 21:22:01.000000      N/A     Disabled
+1024    664     svchost.exe     0x21af7e8       79      1366    0       False   2017-05-12 21:22:03.000000      N/A     Disabled
+904     664     svchost.exe     0x21b5230       9       227     0       False   2017-05-12 21:22:03.000000      N/A     Disabled
+1152    664     svchost.exe     0x21bea78       10      173     0       False   2017-05-12 21:22:06.000000      N/A     Disabled
+1636    1608    explorer.exe    0x21d9da0       11      331     0       False   2017-05-12 21:22:10.000000      N/A     Disabled
+1484    664     spoolsv.exe     0x21e2da0       14      124     0       False   2017-05-12 21:22:09.000000      N/A     Disabled
+1940    1636    tasksche.exe    0x2218da0       7       51      0       False   2017-05-12 21:22:14.000000      N/A     Disabled
+836     664     svchost.exe     0x221a2c0       19      211     0       False   2017-05-12 21:22:02.000000      N/A     Disabled
+1956    1636    ctfmon.exe      0x2231da0       1       86      0       False   2017-05-12 21:22:14.000000      N/A     Disabled
+4       0       System  0x23c8830       51      244     N/A     False   N/A     N/A     Disabled
+
+root@ubuntu:/opt/volatility3# python3 vol.py -f dump.raw windows.dlllist | grep 740
+1024resssvchost.exe     0x5f740000      0xe000  ncprov.dll      C:\WINDOWS\system32\wbem\ncprov.dll     N/A     Disabled
+740     @WanaDecryptor@ 0x400000        0x3d000 @WanaDecryptor@.exe     C:\Intel\ivecuqmanpnirkt615\@WanaDecryptor@.exe N/A     Disabled
+740     @WanaDecryptor@ 0x7c900000      0xb2000 ntdll.dll       C:\WINDOWS\system32\ntdll.dll   N/A     Disabled
+740     @WanaDecryptor@ 0x7c800000      0xf6000 kernel32.dll    C:\WINDOWS\system32\kernel32.dll        N/A     Disabled
+740     @WanaDecryptor@ 0x73dd0000      0xf2000 MFC42.DLL       C:\WINDOWS\system32\MFC42.DLL   N/A     Disabled
+740     @WanaDecryptor@ 0x77c10000      0x58000 msvcrt.dll      C:\WINDOWS\system32\msvcrt.dll  N/A     Disabled
+740     @WanaDecryptor@ 0x77f10000      0x49000 GDI32.dll       C:\WINDOWS\system32\GDI32.dll   N/A     Disabled
+740     @WanaDecryptor@ 0x7e410000      0x91000 USER32.dll      C:\WINDOWS\system32\USER32.dll  N/A     Disabled
+740     @WanaDecryptor@ 0x77dd0000      0x9b000 ADVAPI32.dll    C:\WINDOWS\system32\ADVAPI32.dll        N/A     Disabled
+740     @WanaDecryptor@ 0x77e70000      0x93000 RPCRT4.dll      C:\WINDOWS\system32\RPCRT4.dll  N/A     Disabled
+740     @WanaDecryptor@ 0x77fe0000      0x11000 Secur32.dll     C:\WINDOWS\system32\Secur32.dll N/A     Disabled
+740     @WanaDecryptor@ 0x7c9c0000      0x818000        SHELL32.dll     C:\WINDOWS\system32\SHELL32.dll N/A     Disabled
+740     @WanaDecryptor@ 0x77f60000      0x76000 SHLWAPI.dll     C:\WINDOWS\system32\SHLWAPI.dll N/A     Disabled
+740     @WanaDecryptor@ 0x773d0000      0x103000        COMCTL32.dll    C:\WINDOWS\WinSxS\X86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202\COMCTL32.dll      N/A     Disabled
+740     @WanaDecryptor@ 0x77120000      0x8b000 OLEAUT32.dll    C:\WINDOWS\system32\OLEAUT32.dll        N/A     Disabled
+740     @WanaDecryptor@ 0x774e0000      0x13e000        ole32.dll       C:\WINDOWS\system32\ole32.dll   N/A     Disabled
+740     @WanaDecryptor@ 0x78130000      0x134000        urlmon.dll      C:\WINDOWS\system32\urlmon.dll  N/A     Disabled
+740     @WanaDecryptor@ 0x3dfd0000      0x1ec000        iertutil.dll    C:\WINDOWS\system32\iertutil.dll        N/A     Disabled
+740     @WanaDecryptor@ 0x76080000      0x65000 MSVCP60.dll     C:\WINDOWS\system32\MSVCP60.dll N/A     Disabled
+740     @WanaDecryptor@ 0x71ab0000      0x17000 WS2_32.dll      C:\WINDOWS\system32\WS2_32.dll  N/A     Disabled
+740     @WanaDecryptor@ 0x71aa0000      0x8000  WS2HELP.dll     C:\WINDOWS\system32\WS2HELP.dll N/A     Disabled
+740     @WanaDecryptor@ 0x3d930000      0xe7000 WININET.dll     C:\WINDOWS\system32\WININET.dll N/A     Disabled
+740     @WanaDecryptor@ 0x340000        0x9000  Normaliz.dll    C:\WINDOWS\system32\Normaliz.dll        N/A     Disabled
+740     @WanaDecryptor@ 0x76390000      0x1d000 IMM32.DLL       C:\WINDOWS\system32\IMM32.DLL   N/A     Disabled
+740     @WanaDecryptor@ 0x629c0000      0x9000  LPK.DLL C:\WINDOWS\system32\LPK.DLL     N/A     Disabled
+740     @WanaDecryptor@ 0x74d90000      0x6b000 USP10.dll       C:\WINDOWS\system32\USP10.dll   N/A     Disabled
+740     @WanaDecryptor@ 0x732e0000      0x5000  RICHED32.DLL    C:\WINDOWS\system32\RICHED32.DLL        N/A     Disabled
+740     @WanaDecryptor@ 0x74e30000      0x6d000 RICHED20.dll    C:\WINDOWS\system32\RICHED20.dll        N/A     Disabled
+740     @WanaDecryptor@ 0x5ad70000      0x38000 uxtheme.dll     C:\WINDOWS\system32\uxtheme.dll N/A     Disabled
+740     @WanaDecryptor@ 0x74720000      0x4c000 MSCTF.dll       C:\WINDOWS\system32\MSCTF.dll   N/A     Disabled
+740     @WanaDecryptor@ 0x755c0000      0x2e000 msctfime.ime    C:\WINDOWS\system32\msctfime.ime        N/A     Disabled
+740     @WanaDecryptor@ 0x769c0000      0xb4000 USERENV.dll     C:\WINDOWS\system32\USERENV.dll N/A     Disabled
+740     @WanaDecryptor@ 0xea0000        0x29000 msls31.dll      C:\WINDOWS\system32\msls31.dll  N/A     Disabled
+
+root@ubuntu:/opt/volatility3# python3 vol.py -f dump.raw windows.pstree
+Volatility 3 Framework 1.0.1
+Progress:  100.00               PDB scanning finished                     
+PID     PPID    ImageFileName   Offset(V)       Threads Handles SessionId       Wow64   CreateTime      ExitTime
+
+4       0       System  0x81fea8a0      51      244     N/A     False   N/A     N/A
+* 348   4       smss.exe        0x81fea8a0      3       19      N/A     False   2017-05-12 21:21:55.000000      N/A
+** 620  348     winlogon.exe    0x81fea8a0      23      536     0       False   2017-05-12 21:22:01.000000      N/A
+*** 664 620     services.exe    0x81fea8a0      15      265     0       False   2017-05-12 21:22:01.000000      N/A
+**** 1024       664     svchost.exe     0x81fea8a0      79      1366    0       False   2017-05-12 21:22:03.000000      N/A
+***** 1768      1024    wuauclt.exe     0x81fea8a0      7       132     0       False   2017-05-12 21:22:52.000000      N/A
+***** 1168      1024    wscntfy.exe     0x81fea8a0      1       37      0       False   2017-05-12 21:22:56.000000      N/A
+**** 1152       664     svchost.exe     0x81fea8a0      10      173     0       False   2017-05-12 21:22:06.000000      N/A
+**** 544        664     alg.exe 0x81fea8a0      6       101     0       False   2017-05-12 21:22:55.000000      N/A
+**** 836        664     svchost.exe     0x81fea8a0      19      211     0       False   2017-05-12 21:22:02.000000      N/A
+**** 260        664     svchost.exe     0x81fea8a0      5       105     0       False   2017-05-12 21:22:18.000000      N/A
+**** 904        664     svchost.exe     0x81fea8a0      9       227     0       False   2017-05-12 21:22:03.000000      N/A
+**** 1484       664     spoolsv.exe     0x81fea8a0      14      124     0       False   2017-05-12 21:22:09.000000      N/A
+**** 1084       664     svchost.exe     0x81fea8a0      6       72      0       False   2017-05-12 21:22:03.000000      N/A
+*** 676 620     lsass.exe       0x81fea8a0      23      353     0       False   2017-05-12 21:22:01.000000      N/A
+** 596  348     csrss.exe       0x81fea8a0      12      352     0       False   2017-05-12 21:22:00.000000      N/A
+1636    1608    explorer.exe    0x81fea8a0      11      331     0       False   2017-05-12 21:22:10.000000      N/A
+* 1956  1636    ctfmon.exe      0x81fea8a0      1       86      0       False   2017-05-12 21:22:14.000000      N/A
+* 1940  1636    tasksche.exe    0x81fea8a0      7       51      0       False   2017-05-12 21:22:14.000000      N/A
+** 740  1940    @WanaDecryptor@ 0x81fea8a0      2       70      0       False   2017-05-12 21:22:22.000000      N/A
+
+Searching @WannaDecryptor@ and find is WannaCry
+
+WannaCry has been a highly prominent outbreak, due in part to the infection of high-profile ... pe.imports("ws2_32.dll", "connect") and
+
+root@ubuntu:/opt/volatility3# python3 vol.py -f dump.raw windows.handles | grep 1940
+596gresscsrss.exe       0x82218da0B scan0x388finProcess 0x1f0fff        csrss.exe Pid 1940
+596     csrss.exe       0x8222eda0      0x390   Thread  0x1f03ff        Tid 1944 Pid 1940
+596     csrss.exe       0x81fdd9f8      0x3f0   Thread  0x1f03ff        Tid 500 Pid 1940
+596     csrss.exe       0x81fdd640      0x400   Thread  0x1f03ff        Tid 504 Pid 1940
+596     csrss.exe       0x81fe72f8      0x458   Thread  0x1f03ff        Tid 472 Pid 1940
+596     csrss.exe       0x81fe3870      0x45c   Thread  0x1f03ff        Tid 468 Pid 1940
+596     csrss.exe       0x81fa9b20      0x470   Thread  0x1f03ff        Tid 488 Pid 1940
+596     csrss.exe       0x81fa5640      0x478   Thread  0x1f03ff        Tid 496 Pid 1940
+676     lsass.exe       0x82218da0      0x4dc   Process 0x478   lsass.exe Pid 1940
+1024    svchost.exe     0x82218da0      0xae8   Process 0x478   svchost.exe Pid 1940
+1024    svchost.exe     0x81f61940      0x1148  IoCompletion    0x1f0003
+1940    tasksche.exe    0xe1005468      0x4     KeyedEvent      0xf0003 CritSecOutOfMemoryEvent
+1940    tasksche.exe    0xe147f350      0x8     Directory       0x3     KnownDlls
+1940    tasksche.exe    0x81fbce00      0xc     File    0x100020        \Device\HarddiskVolume1\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202
+1940    tasksche.exe    0x8217cfa0      0x10    WindowStation   0xf037f WinSta0
+1940    tasksche.exe    0xe15a9d50      0x14    Directory       0xf000f Windows
+1940    tasksche.exe    0xe1b8a450      0x18    Port    0x21f0001
+1940    tasksche.exe    0x82251428      0x1c    Event   0x21f0003
+1940    tasksche.exe    0x82365c80      0x20    Desktop 0xf01ff Default
+1940    tasksche.exe    0x8217cfa0      0x24    WindowStation   0xf037f WinSta0
+1940    tasksche.exe    0x821aa390      0x28    Semaphore       0x100003
+1940    tasksche.exe    0x821aa358      0x2c    Semaphore       0x100003
+1940    tasksche.exe    0xe1a05938      0x30    Key     0x20f003f       MACHINE
+1940    tasksche.exe    0x82233f18      0x34    File    0x100020        \Device\HarddiskVolume1\Intel\ivecuqmanpnirkt615
+1940    tasksche.exe    0xe1a67d48      0x38    Token   0x8
+1940    tasksche.exe    0xe149f908      0x3c    Directory       0x2000f BaseNamedObjects
+1940    tasksche.exe    0x821883e8      0x40    Mutant  0x120001        ShimCacheMutex
+1940    tasksche.exe    0xe16644e0      0x44    Section 0x2     ShimSharedMemory
+1940    tasksche.exe    0x822386a8      0x48    File    0x100001        \Device\KsecDD
+1940    tasksche.exe    0x823d54d0      0x4c    Semaphore       0x1f0003        shell.{A48F1A32-A340-11D1-BC6B-00A0C90312E1}
+1940    tasksche.exe    0x823a0cd0      0x50    File    0x100020        \Device\HarddiskVolume1\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202
+1940    tasksche.exe    0x8224f180      0x54    Mutant  0x1f0001        MsWinZonesCacheCounterMutexA
+1940    tasksche.exe    0x822e3b08      0x58    Mutant  0x1f0001        MsWinZonesCacheCounterMutexA0
+1940    tasksche.exe    0x82234450      0x5c    Event   0x1f0003
+1940    tasksche.exe    0x821dbdd8      0x60    Semaphore       0x100003
+1940    tasksche.exe    0x822398f8      0x64    Semaphore       0x100003
+1940    tasksche.exe    0x8221da98      0x68    Semaphore       0x100003
+1940    tasksche.exe    0x8221d9f0      0x6c    Semaphore       0x100003
+1940    tasksche.exe    0x8221da28      0x70    Semaphore       0x100003
+1940    tasksche.exe    0x820146d8      0x74    Semaphore       0x100003
+1940    tasksche.exe    0x81ff09f0      0x78    Semaphore       0x100003
+1940    tasksche.exe    0x81ff0988      0x7c    Semaphore       0x100003
+1940    tasksche.exe    0x81ff0a58      0x80    Semaphore       0x100003
+1940    tasksche.exe    0x81ff0b90      0x84    Semaphore       0x100003
+1940    tasksche.exe    0x81ff0b28      0x88    Semaphore       0x100003
+1940    tasksche.exe    0x81ff0c60      0x8c    Semaphore       0x100003
+1940    tasksche.exe    0x8225f5d8      0x90    Event   0x1f0003
+1940    tasksche.exe    0x8223b668      0x94    Event   0x1f0003
+1940    tasksche.exe    0x8215c330      0x98    Event   0x1f0003
+1940    tasksche.exe    0x822555f0      0x9c    Event   0x1f0003
+1940    tasksche.exe    0x8222eda0      0xa0    Thread  0x1f03ff        Tid 1944 Pid 1940
+1940    tasksche.exe    0x8219d480      0xa4    IoCompletion    0x1f0003
+1940    tasksche.exe    0x81fe7e88      0xa8    IoCompletion    0x1f0003
+1940    tasksche.exe    0x8219d480      0xac    IoCompletion    0x1f0003
+1940    tasksche.exe    0x81fa9b20      0xb4    Thread  0x1f03ff        Tid 488 Pid 1940
+1940    tasksche.exe    0x81fdd640      0xb8    Thread  0x1f03ff        Tid 504 Pid 1940
+1940    tasksche.exe    0x821dea50      0xc0    Semaphore       0x1f0003        shell.{210A4BA0-3AEA-1069-A2D9-08002B30309D}
+1940    tasksche.exe    0xe1b978d0      0xc4    Key     0x20f003f       USER\S-1-5-21-602162358-764733703-1957994488-1003
+1940    tasksche.exe    0x8219bde0      0xc8    Event   0x1f0003        userenv:  User Profile setup event
+1940    tasksche.exe    0xe1530470      0xd0    Port    0x1f0001
+1940    tasksche.exe    0xe1a45cd8      0xe4    Port    0x1f0001
+1940    tasksche.exe    0xe18c02d0      0xe8    Section 0x4
+
+    windows.filescan.FileScan
+                        Scans for file objects present in a particular windows
+                        memory image.
+
+root@ubuntu:/opt/volatility3# python3 vol.py -f dump.raw windows.filescan
+Volatility 3 Framework 1.0.1
+Progress:  100.00               PDB scanning finished                     
+Offset  Name    Size
+
+0x1f40310       \Endpoint       112
+0x1f65718       \Endpoint       112
+0x1f66cd8       \WINDOWS\system32\wbem\wmipcima.dll     112
+0x1f67198       \WINDOWS\Prefetch\TASKDL.EXE-01687054.pf        112
+0x1f67a70       \WINDOWS\system32\security.dll  112
+0x1f67c68       \boot.ini       112
+0x1f67ef8       \WINDOWS\system32\cfgmgr32.dll  112
+0x1f684d0       \WINDOWS\system32\wbem\framedyn.dll     112
+0x1f686d8       \WINDOWS\system32\wbem\cimwin32.dll     112
+0x1f6a7f0       \WINDOWS\system32\kmddsp.tsp    112
+0x1f6ae20       \$Directory     112
+0x1f6b9b0       \$Directory     112
+0x1f6bbf8       \$Directory     112
+0x1f6bdc8       \PIPE_EVENTROOT\CIMV2SCM EVENT PROVIDER 112
+0x1f6be60       \WINDOWS\win.ini        112
+0x1f6bf90       \$Directory     112
+0x1f6c2a8       \$Directory     112
+0x1f6c3b8       \$Directory     112
+0x1f6cea0       \$Directory     112
+0x1f6d158       \lsass  112
+0x1f6d4a8       \$Directory     112
+0x1f6dba8       \$Directory     112
+0x1f6e188       \$Directory     112
+0x1f6e6a0       \$Directory     112
+0x1f70708       \WINDOWS\system32\rastapi.dll   112
+0x1f71190       \$Directory     112
+0x1f71b88       \WINDOWS\system32\wbem\Logs\wbemess.log 112
+0x1f72f90       \$Directory     112
+0x1f732b0       \WINDOWS\system32\uniplat.dll   112
+0x1f735d8       \$Directory     112
+0x1f753d8       \WINDOWS\system32       112
+0x1f75888       \$Directory     112
+0x1f75ba8       \$Directory     112
+0x1f75df0       \$Directory     112
+0x1f761a8       \$Directory     112
+0x1f76368       \$Directory     112
+0x1f769e0       \$Directory     112
+0x1f76b10       \$Directory     112
+0x1f76e58       \Documents and Settings\All Users\Start Menu\desktop.ini        112
+0x1f76f48       \$Directory     112
+0x1f77028       \Documents and Settings\donny\Start Menu\Programs\Accessories\Accessibility\desktop.ini 112
+0x1f77298       \$Directory     112
+0x1f77728       \$Directory     112
+0x1f7a190       \$Directory     112
+0x1f7a590       \$Directory     112
+0x1f7a990       \$Directory     112
+0x1f7aea0       \$Directory     112
+0x1f7b308       \$Directory     112
+0x1f7b748       \$Directory     112
+0x1f7bbd0       \$Directory     112
+0x1f7d518       \$Directory     112
+0x1f7da18       \Documents and Settings\All Users\Application Data\Microsoft\User Account Pictures\Default Pictures\butterfly.bmp.WNCRY 112
+0x1f7dae0       \$Directory     112
+0x1f7f180       \Documents and Settings\donny\My Documents\My Pictures\Desktop.ini      112
+0x1f7f218       \WINDOWS\system32\rasqec.dll    112
+0x1f7f538       \WINDOWS\WindowsUpdate.log      112
+0x1f80bd8       \$Directory     112
+0x1f81548       \WINDOWS\system32\wbem\framedyn.dll     112
+0x1f83390       \$Directory     112
+0x1f83758       \WINDOWS\Fonts\times.ttf        112
+0x1f840a0       \$Directory     112
+0x1f866b8       \$Directory     112
+0x1f87028       \WINDOWS\system32\c_1258.nls    112
+0x1f871a0       \Intel\ivecuqmanpnirkt615\@WanaDecryptor@.exe   112
+0x1f87c10       \WINDOWS\Fonts\timesbd.ttf      112
+0x1f87f08       \WINDOWS\system32\msls31.dll    112
+0x1f88140       \WINDOWS\system32\c_1257.nls    112
+0x1f885e8       \WINDOWS\system32\c_1256.nls    112
+0x1f88d00       \WINDOWS\system32\c_1254.nls    112
+0x1f8d548       \$Directory     112
+0x1f8f798       \$Directory     112
+0x1f8f9c0       \$Directory     112
+0x1f8fbf8       \$Directory     112
+0x1f90438       \$Directory     112
+0x1f90a38       \$Directory     112
+0x1f90ea0       \$Directory     112
+0x1f92cf0       \$Directory     112
+0x1f92d88       \ROUTER 112
+0x1f95c28       \$Directory     112
+0x1f990d8       \srvsvc 112
+0x1f997c8       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x1f99a18       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x1f99ab0       \trkwks 112
+0x1f99d20       \$Directory     112
+0x1f9a848       \WINDOWS\system32\c_1255.nls    112
+0x1f9aea8       \WINDOWS\system32\c_1253.nls    112
+0x1f9fe18       \lsass  112
+0x1fa1e60       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x1fa1ef8       \winreg 112
+0x1fa1f90       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x1fa2c88       \WINDOWS\WindowsUpdate.log      112
+0x1fa30c0       \$Directory     112
+0x1fa55b0       \$Directory     112
+0x1fa6960       \$Directory     112
+0x1fa6ba8       \$Directory     112
+0x1fa6df0       \$Directory     112
+0x1fa8cc0       \WINDOWS\WinSxS\Manifests\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202.Manifest   112
+0x1fac638       \$Directory     112
+0x1facf28       \$Directory     112
+0x1fb12c0       \{9B365890-165F-11D0-A195-0020AFD156E4} 112
+0x1fb17a8       \Intel\ivecuqmanpnirkt615\@WanaDecryptor@.exe   112
+0x1fb1880       \WINDOWS\Debug\UserMode\userenv.log     112
+0x1fb1a40       \WINDOWS\pchealth\helpctr\BATCH 112
+0x1fb2278       \Intel\ivecuqmanpnirkt615\taskse.exe    112
+0x1fb3d10       \keysvc 112
+0x1fb5620       \WINDOWS\system32\wbem\wmipcima.dll     112
+0x1fb6310       \Documents and Settings\donny\Start Menu\Programs\Startup\desktop.ini   112
+0x1fb7650       \WINDOWS\system32\mfc42.dll     112
+0x1fb78a0       \$Directory     112
+0x1fb7eb8       \keysvc 112
+0x1fb7f50       \DAV RPC SERVICE        112
+0x1fb8350       \srvsvc 112
+0x1fb88c8       \lsass  112
+0x1fba540       \WINDOWS\system32\wbem\Logs\wbemcore.log        112
+0x1fbad10       \47     112
+0x1fbc250       \$Directory     112
+0x1fbce00       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x1fbcef8       \Intel\ivecuqmanpnirkt615\u.wnry        112
+0x1fde628       \WINDOWS\system32\ntlanman.dll  112
+0x1fde6c0       \WINDOWS\system32\netui0.dll    112
+0x1fe4f90       \$Directory     112
+0x1fe5858       \Endpoint       112
+0x1fe5a40       \$Directory     112
+0x1fe5b50       \$Directory     112
+0x1fe65c8       \PIPE_EVENTROOT\CIMV2SCM EVENT PROVIDER 112
+0x1fe6718       \$Directory     112
+0x1fe6b40       \$Directory     112
+0x1fe6d20       \$Directory     112
+0x1fe7c48       \{9B365890-165F-11D0-A195-0020AFD156E4} 112
+0x1fe7d00       \winreg 112
+0x1fe7f90       \{9B365890-165F-11D0-A195-0020AFD156E4} 112
+0x1fe8390       \PCHFaultRepExecPipe    112
+0x1fe8940       \$Directory     112
+0x1fec388       \WINDOWS\system32\c_1251.nls    112
+0x1fec580       \WINDOWS\system32\c_949.nls     112
+0x1fec6b8       \$Directory     112
+0x1fee638       \WINDOWS\system32\wbem\cimwin32.dll     112
+0x1ff7c78       \WINDOWS\system32\h323.tsp      112
+0x1ff7d10       \WINDOWS\system32\ipconf.tsp    112
+0x1ff8bd8       \WINDOWS\system32\security.dll  112
+0x2004650       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x20046e8       \net\NtControlPipe7     112
+0x2005848       \SfcApi 112
+0x2005930       \SfcApi 112
+0x200cd20       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x200d6b0       \WINDOWS\SchedLgU.Txt   112
+0x200df90       \Endpoint       112
+0x20147a8       \WINDOWS\0.log  112
+0x2014a38       \PCHHangRepExecPipe     112
+0x2014b30       \srvsvc 112
+0x201f820       \WINDOWS\system32\mui\041D      112
+0x201f948       \WINDOWS\system32\mui\041b      112
+0x2021820       \WINDOWS\system32\mui\0419      112
+0x2021948       \WINDOWS\system32\mui\0416      112
+0x2022678       \$Directory     112
+0x2022720       \$Directory     112
+0x2022998       \WINDOWS\system32\narrator.exe  112
+0x2025870       \WINDOWS\system32\mui\0415      112
+0x2025998       \WINDOWS\system32\mui\0414      112
+0x2026818       \WINDOWS\system32\mui\0413      112
+0x2026900       \WINDOWS\system32\mui\0412      112
+0x2026998       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x20288d8       \WINDOWS\Help\Tours\mmTour      112
+0x2028998       \WINDOWS\system32\IME\TINTLGNT  112
+0x2029848       \WINDOWS\system32\spool\drivers\color   112
+0x2029970       \WINDOWS\PeerNet        112
+0x202a6b0       \Program Files\Common Files\Microsoft Shared\Speech\1033        112
+0x202a748       \Program Files\Common Files\SpeechEngines\Microsoft     112
+0x202a870       \WINDOWS\system32\wbem\snmp     112
+0x202a998       \WINDOWS\Resources\Themes\Luna\Shell\Metallic   112
+0x202b638       \Program Files\Internet Explorer        112
+0x202b8b0       \Program Files\Common Files\Microsoft Shared\VGX        112
+0x202c938       \Documents and Settings\LocalService\NTUSER.DAT 112
+0x202d848       \Program Files\Common Files\MSSoap\Binaries\Resources\1033      112
+0x202d998       \Program Files\Common Files\MSSoap\Binaries     112
+0x202e820       \WINDOWS\system32\oobe  112
+0x202e948       \Program Files\Outlook Express  112
+0x2030998       \spoolss        112
+0x2031710       \WINDOWS\ime\chsime\applets     112
+0x2031970       \Program Files\Windows NT\Pinball       112
+0x2033748       \WINDOWS\ime\shared\res 112
+0x2033870       \WINDOWS\system32\npp   112
+0x2033998       \WINDOWS\mui    112
+0x20348e8       \net\NtControlPipe5     112
+0x2037718       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x203c918       \WINDOWS\system32       112
+0x203f7b8       \Program Files\Common Files\SpeechEngines\Microsoft\TTS\1033    112
+0x203f8e0       \WINDOWS\system32\Restore       112
+0x2042718       \Documents and Settings\LocalService\Local Settings\Application Data\Microsoft\Windows\UsrClass.dat     112
+0x20456b8       \WINDOWS\Resources\Themes\Luna\Shell\Homestead  112
+0x2045870       \WINDOWS\Resources\Themes\Luna\Shell\NormalColor        112
+0x2045998       \Program Files\Common Files\Microsoft Shared\Speech     112
+0x2084c78       \WINDOWS\system32\hidphone.tsp  112
+0x2084d10       \WINDOWS\system32\h323log.txt   112
+0x20865f0       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x2088ab8       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x2088bf0       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Communications\Wireless Network Setup Wizard.lnk      112
+0x2089978       \$Directory     112
+0x2089bd0       \WINDOWS\system32\magnify.exe   112
+0x208b198       \$Directory     112
+0x208b5d8       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x208c5f8       \WINDOWS\system32\mui\0424      112
+0x208c720       \WINDOWS\system32\mui\041f      112
+0x208d238       \EVENTLOG       112
+0x209db50       \WINDOWS\WinSxS\Policies\x86_policy.6.0.Microsoft.Windows.Common-Controls_6595b64144ccf1df_x-ww_5ddad775\6.0.2600.6028.Policy   112
+0x209dbe8       \Intel\ivecuqmanpnirkt615\00000000.res  112
+0x209ddb0       \WINDOWS\system32\wbem\wmiprvse.exe     112
+0x209de48       \Intel\ivecuqmanpnirkt615\b.wnry        112
+0x209e1c0       \$Directory     112
+0x209e3a0       \$Directory     112
+0x209e580       \$Directory     112
+0x20a0e38       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x215b838       \browser        112
+0x215c230       \WINDOWS\ime\imjp8_1\applets    112
+0x215c418       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x215cad0       \Documents and Settings\donny\Start Menu\Programs\Accessories\desktop.ini       112
+0x215e330       \$Directory     112
+0x215e648       \$Directory     112
+0x2162028       \net\NtControlPipe1     112
+0x2162d50       \$Directory     112
+0x2162df8       \$Directory     112
+0x2162f90       \WINDOWS\system32\wucltui.dll   112
+0x2164698       \$Directory     112
+0x2164740       \$Directory     112
+0x2164ed0       \$Directory     112
+0x2165a80       \$Directory     112
+0x2167f90       \$Directory     112
+0x216a028       \atsvc  112
+0x216a0d0       \epmapper       112
+0x216b038       \$Directory     112
+0x216b310       \WINDOWS\system32\config\system 112
+0x216b3a8       \WINDOWS\system32\config\SECURITY       112
+0x216be98       \$Directory     112
+0x216c270       \WINDOWS\system32\olesvr32.dll  112
+0x216cc68       \WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.23084_x-ww_f3f35550\GdiPlus.dll 112
+0x216cef8       \WINDOWS\system32\url.dll       112
+0x216cf90       \WINDOWS\system32\olethk32.dll  112
+0x2170b38       \Endpoint       112
+0x2172038       \$Directory     112
+0x2172198       \Endpoint       112
+0x2175038       \$Directory     112
+0x2179038       \$Directory     112
+0x2179f90       \$Directory     112
+0x217a028       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x217cef8       \WINDOWS\system32\$winnt$.inf   112
+0x217e028       \scerpc 112
+0x217e138       \scerpc 112
+0x217e378       \$Directory     112
+0x217ef90       \$Directory     112
+0x2180320       \$Directory     112
+0x2183038       \$Directory     112
+0x2184128       \WINDOWS\system32       112
+0x2184318       \$Directory     112
+0x2185320       \$Directory     112
+0x2187f90       \WINDOWS\system32\olecnv32.dll  112
+0x21885d8       \WINDOWS\system32\ndptsp.tsp    112
+0x2189238       \WINDOWS\Tasks  112
+0x218b028       \WINDOWS\system32\dllcache      112
+0x218b690       \net\NtControlPipe6     112
+0x218b848       \WINDOWS\system32\drivers\etc   112
+0x218b8e0       \Documents and Settings\donny\Start Menu\Programs\Accessories\Address Book.lnk  112
+0x218c320       \epmapper       112
+0x218ce08       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x218cf90       \$Directory     112
+0x218de68       \net\NtControlPipe3     112
+0x218e0c8       \Endpoint       112
+0x218ff10       \$Directory     112
+0x2190038       \$Directory     112
+0x2191038       \$Directory     112
+0x2192d78       \$Directory     112
+0x2194840       \$Directory     112
+0x21948d8       \WINDOWS\system32\olecli32.dll  112
+0x2194d00       \$Directory     112
+0x2195038       \$Directory     112
+0x2199418       \WINDOWS\system32\unimdm.tsp    112
+0x219a130       \ntsvcs 112
+0x219be98       \TerminalServer\AutoReconnect   112
+0x219c198       \wkssvc 112
+0x219cee8       \$Directory     112
+0x219d028       \Documents and Settings\All Users\Start Menu\Programs\Games\Minesweeper.lnk     112
+0x219d1c0       \Documents and Settings\LocalService\Cookies\index.dat  112
+0x219d908       \Documents and Settings\All Users\Application Data\Microsoft\User Account Pictures\Default Pictures\chess.bmp.WNCRY     112
+0x219e120       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x219e320       \$Directory     112
+0x219f320       \WINDOWS\system32\hnetwiz.dll   112
+0x219f750       \WINDOWS\system32\ipnathlp.dll  112
+0x219fb70       \Endpoint       112
+0x219fdf0       \$Directory     112
+0x21a0028       \ROUTER 112
+0x21a0848       \net\NtControlPipe11    112
+0x21a2320       \$Directory     112
+0x21a45a8       \$Directory     112
+0x21a5668       \$Directory     112
+0x21a6c68       \pagefile.sys   112
+0x21a6d00       \WINDOWS\system32\wow32.dll     112
+0x21a7500       \$Directory     112
+0x21a75a8       \$Directory     112
+0x21a7f10       \Documents and Settings\NetworkService\NTUSER.DAT       112
+0x21a88d8       \Documents and Settings\NetworkService\ntuser.dat.LOG   112
+0x21a8f90       \winlogonrpc    112
+0x21a98f0       \atsvc  112
+0x21aaef8       \WINDOWS\system32\config\Internet.evt   112
+0x21aaf90       \Program Files\Common Files\Microsoft Shared\web server extensions\40\isapi\_vti_adm    112
+0x21ac5e0       \WINDOWS\system32\mui\0411      112
+0x21adf90       \WINDOWS\repair\setup.log       112
+0x21ae220       \net\NtControlPipe2     112
+0x21aff90       \Documents and Settings\donny\Start Menu\Programs\desktop.ini   112
+0x21b0320       \net\NtControlPipe4     112
+0x21b0f90       \WINDOWS\Prefetch\@WANADECRYPTOR@.EXE-06F053F5.pf       112
+0x21b1e68       \WINDOWS\system32\mui\041a      112
+0x21b1f90       \WINDOWS\system32\mui\0418      112
+0x21b2028       \WINDOWS\system32\mui\0406      112
+0x21b2108       \WINDOWS\system32\mui\0407      112
+0x21b2c48       \WINDOWS\system32\rasppp.dll    112
+0x21b3e90       \WINDOWS\system32\mui\0425      112
+0x21b3f90       \WINDOWS\system32\mui\041e      112
+0x21b6028       \Program Files\xerox\nwwia      112
+0x21b6438       \WINDOWS\system32\mui\0816      112
+0x21b6560       \WINDOWS\system32\mui\0804      112
+0x21b72c0       \net\NtControlPipe2     112
+0x21b7e40       \WINDOWS\system32\mui\0402      112
+0x21b7f68       \WINDOWS\system32\mui\0C0A      112
+0x21b8028       \Endpoint       112
+0x21b8ec0       \net\NtControlPipe0     112
+0x21b9028       \Documents and Settings\LocalService\ntuser.dat.LOG     112
+0x21b9318       \WINDOWS\system32\IME\CINTLGNT  112
+0x21b9748       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x21ba868       \WINDOWS\system32\davclnt.dll   112
+0x21bb028       \Documents and Settings\LocalService\Local Settings\Application Data\Microsoft\Windows\UsrClass.dat.LOG 112
+0x21bc068       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x21be198       \255    112
+0x21bf230       \WINDOWS\system32\Setup 112
+0x21bf318       \WINDOWS\system32\Com   112
+0x21bf758       \Ctx_WinStation_API_service     112
+0x21bfc08       \WINDOWS\ime\imkr6_1\applets    112
+0x21c0dd0       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x21c1198       \WINDOWS\system32       112
+0x21c1318       \Program Files\Internet Explorer\Connection Wizard      112
+0x21c13f0       \WINDOWS\system32\xircom        112
+0x21c1688       \WINDOWS\ime\imkr6_1    112
+0x21c1720       \Program Files\Common Files\Microsoft Shared\MSInfo     112
+0x21c1a98       \Program Files\Common Files\SpeechEngines\Microsoft\Lexicon\1033        112
+0x21c1bc0       \WINDOWS\system32\IME\PINTLGNT  112
+0x21c1c80       \WINDOWS\ime\shared     112
+0x21c21f0       \Program Files\Common Files\System      112
+0x21c2288       \Program Files\Windows NT       112
+0x21c2830       \WINDOWS\srchasst       112
+0x21c28c8       \WINDOWS\ime    112
+0x21c2960       \Program Files\Movie Maker      112
+0x21c29f8       \WINDOWS\Resources\Themes\Luna  112
+0x21c2ad0       \Documents and Settings\NetworkService\Local Settings\Application Data\Microsoft\Windows\UsrClass.dat.LOG       112
+0x21c2ef8       \Program Files\Windows Media Player     112
+0x21c2f90       \Program Files\Common Files\Microsoft Shared\DAO        112
+0x21c3238       \WINDOWS\system32\wbem\wmiprvse.exe     112
+0x21c3610       \WINDOWS\pchealth\UploadLB\Binaries     112
+0x21c3c58       \$Directory     112
+0x21c3d00       \$Directory     112
+0x21c3ea8       \WINDOWS\system32\mui\0427      112
+0x21c3f90       \WINDOWS\system32\mui\0426      112
+0x21c4c58       \$Directory     112
+0x21c4d00       \$Directory     112
+0x21c59a0       \WINDOWS        112
+0x21c5f90       \WINDOWS\system32\wbem\xml      112
+0x21c6028       \WINDOWS\system32\mui\0405      112
+0x21c61c8       \Program Files\Common Files\Microsoft Shared\Triedit    112
+0x21c62f0       \WINDOWS\ime\imjp8_1    112
+0x21c6f90       \WINDOWS\system32\upnp.dll      112
+0x21c7108       \WINDOWS\system32\mui\0404      112
+0x21c72f0       \winlogonrpc    112
+0x21c8320       \winlogonrpc    112
+0x21c8c68       \Documents and Settings\donny   112
+0x21c9c68       \WINDOWS\system32\filemgmt.dll  112
+0x21ca028       \Endpoint       112
+0x21cb198       \WINDOWS\system32       112
+0x21cc870       \Documents and Settings\donny\Start Menu\Programs\Accessories\Tour Windows XP.lnk       112
+0x21cd108       \WINDOWS\system32\mui\0408      112
+0x21cd438       \Documents and Settings\donny\Start Menu\Programs\Accessories\Command Prompt.lnk        112
+0x21cd508       \Program Files\Outlook Express\msimn.exe        112
+0x21cdbc8       \Program Files\Common Files\Microsoft Shared\web server extensions\40\isapi     112
+0x21cdc60       \Program Files\Common Files\Microsoft Shared\web server extensions\40\bin\1033  112
+0x21cde18       \WINDOWS\system32\mui\040b      112
+0x21ce1d0       \WINDOWS\system32\mui\0410      112
+0x21ce2f8       \WINDOWS\system32\mui\040e      112
+0x21ce898       \Program Files\Common Files\Microsoft Shared\web server extensions\40\_vti_bin  112
+0x21ceba0       \Program Files\MSN Gaming Zone\Windows\bckgzm.exe       112
+0x21cf260       \WINDOWS\system32\usmt  112
+0x21cf3f0       \WINDOWS\system32\mui\0401      112
+0x21cf4b0       \Program Files\Windows NT\Accessories   112
+0x21cfb68       \WINDOWS\Debug\PASSWD.LOG       112
+0x21d08d8       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x21d0d00       \Program Files\microsoft frontpage\version3.0\bin       112
+0x21d0dd0       \WINDOWS\system32\wbem\mof      112
+0x21d1028       \Endpoint       112
+0x21d15a8       \Program Files\Common Files\Microsoft Shared\web server extensions\40\bots\vinavbar     112
+0x21d1d60       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x21d2138       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x21d2238       \Program Files\Common Files\Microsoft Shared\web server extensions\40\admisapi\scripts  112
+0x21d26a8       \Program Files\Common Files\Microsoft Shared\web server extensions\40\servsupp  112
+0x21d2740       \WINDOWS\system32\drivers       112
+0x21d2f50       \WINDOWS\Fonts  112
+0x21d3378       \Program Files\Common Files\Microsoft Shared\web server extensions\40\bin       112
+0x21d3410       \WINDOWS\system32\inetsrv       112
+0x21d3850       \Ctx_WinStation_API_service     112
+0x21d3c60       \Program Files\Common Files\Microsoft Shared\web server extensions\40\_vti_bin\_vti_aut 112
+0x21d4028       \Endpoint       112
+0x21d4550       \WINDOWS\SoftwareDistribution\DataStore\Logs\edb.log    112
+0x21d5028       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x21d5198       \WINDOWS\system32\netui1.dll    112
+0x21d6218       \Program Files\Common Files\Microsoft Shared\web server extensions\40\admcgi\scripts    112
+0x21d6318       \WINDOWS\system32\1033  112
+0x21d69d8       \WINDOWS\WinSxS\Manifests\x86_Microsoft.Windows.SystemCompatible_6595b64144ccf1df_5.1.2600.2000_x-ww_bcc9a281.Manifest  112
+0x21d7908       \WINDOWS\WinSxS\Manifests\x86_Microsoft.Windows.Networking.RtcRes_6595b64144ccf1df_5.2.2.3_en_16a24bc0.Manifest 112
+0x21d79a0       \WINDOWS\WinSxS\Manifests\x86_Microsoft.Windows.Networking.RtcDll_6595b64144ccf1df_5.2.2.3_x-ww_d6bd8b95.Manifest       112
+0x21d7e08       \Documents and Settings\All Users\Start Menu\Microsoft Update Catalog.lnk       112
+0x21d7f90       \WINDOWS\system32\es.dll        112
+0x21d8690       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x21d8ac0       \Intel\ivecuqmanpnirkt615\s.wnry        112
+0x21da708       \WINDOWS\system32\OEMINFO.INI   112
+0x21dac68       \WINDOWS\Installer\{20C31435-2A0A-4580-BE8B-AC06FC243CA4}\python_icon.exe       112
+0x21dad60       \WINDOWS\Help   112
+0x21dadf8       \Program Files\Common Files\Microsoft Shared\web server extensions\40\_vti_bin\_vti_adm 112
+0x21db7b0       \WINDOWS\system32       112
+0x21dc028       \Intel\ivecuqmanpnirkt615\taskdl.exe    112
+0x21dc3a8       \Documents and Settings\All Users\Start Menu\Programs\Accessories\System Tools\Character Map.lnk        112
+0x21dc440       \Documents and Settings\donny\Start Menu\Programs\Accessories\Notepad.lnk       112
+0x21dc578       \Documents and Settings\All Users\Start Menu\Programs\Administrative Tools\Local Security Policy.lnk    112
+0x21dc940       \WINDOWS\system32\rcimlby.exe   112
+0x21dc9d8       \WINDOWS\explorer.exe   112
+0x21dcb68       \Endpoint       112
+0x21dce00       \Documents and Settings\donny\Start Menu\Programs\Accessories\Program Compatibility Wizard.lnk  112
+0x21dcf90       \Documents and Settings\NetworkService\Local Settings\Application Data\Microsoft\Windows\UsrClass.dat   112
+0x21dd238       \WINDOWS\system32\davclnt.dll   112
+0x21dd440       \WINDOWS\system32\mfc42.dll     112
+0x21dd4d8       \Documents and Settings\All Users\Start Menu\Programs\desktop.ini       112
+0x21dd6a8       \protected_storage      112
+0x21ddb80       \WINDOWS\system32\wucltui.dll.mui       112
+0x21ddf90       \WINDOWS\system32\taskkill.exe  112
+0x21de828       \WINDOWS\Fonts\arialbd.ttf      112
+0x21df420       \Documents and Settings\donny\Start Menu\Programs\Remote Assistance.lnk 112
+0x21e0988       \WINDOWS\system32\attrib.exe    112
+0x21e0c20       \$Directory     112
+0x21e0d98       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Accessibility\Accessibility Wizard.lnk        112
+0x21e16b0       \Endpoint       112
+0x21e1748       \Documents and Settings\All Users\Start Menu\Programs\Python 2.7\Python Manuals.lnk     112
+0x21e2760       \Documents and Settings\All Users\Start Menu\Programs\Games\Internet Checkers.lnk       112
+0x21e28f8       \WINDOWS\system32\fldrclnr.dll  112
+0x21e2ad8       \WINDOWS\system32\wbem\Repository\FS\INDEX.BTR  112
+0x21e2b70       \WINDOWS\system32\wbem\Repository\FS\OBJECTS.MAP        112
+0x21e5098       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x21e5418       \WINDOWS\system32\rundll32.exe  112
+0x21e55c0       \Winsock2\CatalogChangeListener-400-0   112
+0x21e5be8       \WINDOWS\system32\oembios.bin   112
+0x21e5d20       \$Extend\$ObjId 112
+0x21e7038       \$Directory     112
+0x21e72e0       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x21e7418       \Endpoint       112
+0x21e75a8       \Documents and Settings\LocalService\Local Settings\desktop.ini 112
+0x21e7c68       \spoolss        112
+0x21e7df8       \WINDOWS\system32\config\SysEvent.Evt   112
+0x21e8740       \WINDOWS\system32\config\SecEvent.Evt   112
+0x21e88b0       \Documents and Settings\All Users\Start Menu\Programs\Accessories\System Tools\System Information.lnk   112
+0x21e8980       \Program Files\MSN Gaming Zone\Windows\hrtzzm.exe       112
+0x21e8b38       \WINDOWS\WinSxS 112
+0x21e8f28       \Program Files\Common Files\System\msadc        112
+0x21e9c28       \Endpoint       112
+0x21eaf90       \WINDOWS\system32\els.dll       112
+0x21eb250       \WINDOWS\WinSxS\Policies\x86_policy.5.2.Microsoft.Windows.Networking.Rtcdll_6595b64144ccf1df_x-ww_c7b7206f\5.2.2.3.Policy       112
+0x21eb2e8       \WINDOWS\WinSxS\Policies\x86_policy.5.2.Microsoft.Windows.Networking.Dxmrtp_6595b64144ccf1df_x-ww_362e60dd\5.2.2.3.Policy       112
+0x21eb420       \Program Files\Common Files\Microsoft Shared\MSInfo\msinfo32.exe        112
+0x21ec748       \wkssvc 112
+0x21ec970       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x21ed748       \wkssvc 112
+0x21ed810       \WINDOWS\WinSxS\Manifests\x86_Microsoft.Windows.Networking.Dxmrtp_6595b64144ccf1df_5.2.2.3_x-ww_468466a7.Manifest       112
+0x21ed9e0       \WINDOWS\WinSxS\Manifests\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.23084_x-ww_f3f35550.Manifest  112
+0x21ee698       \WINDOWS\system32\freecell.exe  112
+0x21eeaf0       \WINDOWS\system32\drprov.dll    112
+0x21eef90       \ntsvcs 112
+0x21ef980       \WINDOWS\system32\netshell.dll  112
+0x21efc80       \protected_storage      112
+0x21f02b8       \$Directory     112
+0x21f0b70       \$Directory     112
+0x21f1418       \Documents and Settings\All Users\Start Menu\Programs\Accessories\System Tools\Files and Settings Transfer Wizard.lnk   112
+0x21f1700       \Program Files\Common Files\Microsoft Shared\web server extensions\40\isapi\_vti_aut    112
+0x21f18d8       \WINDOWS\system32\msiexec.exe   112
+0x21f1c88       \Documents and Settings\donny\Start Menu\Programs\Outlook Express.lnk   112
+0x21f1f90       \WINDOWS\SoftwareDistribution\DataStore\DataStore.edb   112
+0x21f2368       \Documents and Settings\LocalService\Local Settings\Temporary Internet Files\Content.IE5\index.dat      112
+0x21f2400       \Documents and Settings\donny\My Documents\desktop.ini  112
+0x21f2910       \$Directory     112
+0x21f2b70       \$Directory     112
+0x21f3870       \Intel\ivecuqmanpnirkt615\tasksche.exe  112
+0x21f3d00       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x21f3d98       \Documents and Settings\donny\Start Menu\Programs\Accessories\Entertainment\Windows Media Player.lnk    112
+0x21f4f90       \Documents and Settings\donny\Start Menu        112
+0x220ea70       \System Volume Information\tracking.log 112
+0x220ec40       \Intel\ivecuqmanpnirkt615\msg\m_turkish.wnry    112
+0x220feb8       \WINDOWS\system32\MSCTF.dll     112
+0x2210278       \WINDOWS\system32\config\software.LOG   112
+0x22109d0       \WINDOWS\AppPatch       112
+0x2210df0       \$Directory     112
+0x2211028       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Communications\Network Connections.lnk        112
+0x22118f8       \WINDOWS\system32\msnsspc.dll   112
+0x2211d20       \WINDOWS\system32\winipsec.dll  112
+0x2211f90       \Documents and Settings\All Users\Start Menu\Programs\Accessories\System Tools\System Restore.lnk       112
+0x2212028       \Intel\ivecuqmanpnirkt615\msg\m_russian.wnry    112
