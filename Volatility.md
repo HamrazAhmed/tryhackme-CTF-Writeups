@@ -2953,3 +2953,988 @@ Offset  Name    Size
 0x2211d20       \WINDOWS\system32\winipsec.dll  112
 0x2211f90       \Documents and Settings\All Users\Start Menu\Programs\Accessories\System Tools\System Restore.lnk       112
 0x2212028       \Intel\ivecuqmanpnirkt615\msg\m_russian.wnry    112
+0x2212668       \WINDOWS\system32\oakley.dll    112
+0x2212a90       \WINDOWS\system32\ipsecsvc.dll  112
+0x2212eb8       \WINDOWS\system32\srvsvc.dll    112
+0x22133b8       \WINDOWS\system32\dhcpcsvc.dll  112
+0x2213c28       \WINDOWS\system32\digest.dll    112
+0x22148f8       \WINDOWS\system32\credssp.dll   112
+0x22159a0       \WINDOWS\WinSxS\Policies\x86_policy.1.0.Microsoft.Windows.GdiPlus_6595b64144ccf1df_x-ww_4e8510ac\1.0.6002.23084.Policy  112
+0x2215c28       \WINDOWS\system32\netlogon.dll  112
+0x2216028       \Documents and Settings\All Users\Start Menu\Programs\Accessories\System Tools\desktop.ini      112
+0x2216510       \WINDOWS\system32\pstorsvc.dll  112
+0x22168f8       \WINDOWS\system32\wdigest.dll   112
+0x2216f28       \WINDOWS\system32\msxml3r.dll   112
+0x2217200       \WINDOWS\system32\wbem  112
+0x2217528       \Intel\ivecuqmanpnirkt615\msg\m_spanish.wnry    112
+0x2217668       \WINDOWS\system32\netmsg.dll    112
+0x2217a90       \WINDOWS\system32\iphlpapi.dll  112
+0x2217cd0       \WINDOWS\system32\rasmans.dll   112
+0x2217f90       \WINDOWS\pchealth\helpctr\binaries\pchsvc.dll   112
+0x2218320       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Entertainment\Volume Control.lnk      112
+0x22184b0       \WINDOWS\system32\netman.dll    112
+0x2218800       \WINDOWS\system32\winspool.drv  112
+0x2218c28       \WINDOWS\system32\schannel.dll  112
+0x22193f0       \$Directory     112
+0x22195a8       \WINDOWS\system32\dmserver.dll  112
+0x22199d0       \WINDOWS\system32\certcli.dll   112
+0x2219b30       \Intel\ivecuqmanpnirkt615\msg\m_slovak.wnry     112
+0x2219df8       \WINDOWS\system32\themeui.dll   112
+0x221aa90       \WINDOWS\system32\msapsspc.dll  112
+0x221aeb8       \WINDOWS\system32\lmhsvc.dll    112
+0x221b3d8       \WINDOWS\system32\uxtheme.dll   112
+0x221b800       \WINDOWS\system32\msacm32.dll   112
+0x221bc28       \WINDOWS\system32\winmm.dll     112
+0x221ceb8       \WINDOWS\system32\msvcrt40.dll  112
+0x221d3d8       \WINDOWS\system32\w32time.dll   112
+0x221dad8       \Documents and Settings\All Users\Start Menu\Programs\Games\Freecell.lnk        112
+0x221dd00       \WINDOWS\system32\es.dll        112
+0x221e4b0       \WINDOWS\system32\scesrv.dll    112
+0x221ed20       \WINDOWS\system32\kerberos.dll  112
+0x221f668       \WINDOWS\AppPatch\AcGenral.dll  112
+0x221fb90       \Documents and Settings\All Users\Start Menu\Programs\Games\Internet Hearts.lnk 112
+0x221fd20       \WINDOWS\system32\dnsrslvr.dll  112
+0x2220668       \WINDOWS\system32\shgina.dll    112
+0x2220a90       \WINDOWS\system32\comres.dll    112
+0x2220e98       \WINDOWS\system32\umpnpmgr.dll  112
+0x22213d8       \WINDOWS\system32\cryptdll.dll  112
+0x2221800       \WINDOWS\system32\samsrv.dll    112
+0x2221c28       \WINDOWS\system32\samlib.dll    112
+0x2222028       \WINDOWS\ime\imkr6_1\dicts      112
+0x22239d0       \WINDOWS\system32\rasapi32.dll  112
+0x2223df8       \WINDOWS\system32\adsldpc.dll   112
+0x22243b8       \WINDOWS\system32\activeds.dll  112
+0x2225128       \WINDOWS\system32\crypt32.dll   112
+0x22259d0       \WINDOWS\system32\mprapi.dll    112
+0x2225df8       \WINDOWS\system32\cryptui.dll   112
+0x2226740       \WINDOWS\system32\rastls.dll    112
+0x2226ab0       \WINDOWS\system32\drivers\fips.sys      112
+0x2226eb8       \WINDOWS\system32\userinit.exe  112
+0x2227128       \WINDOWS\system32\msasn1.dll    112
+0x2227d20       \WINDOWS\system32\powrprof.dll  112
+0x2228668       \WINDOWS\system32\cscui.dll     112
+0x2228eb8       \WINDOWS\system32\atl.dll       112
+0x2229158       \WINDOWS\system 112
+0x2229320       \WINDOWS\system32\ctfmon.exe    112
+0x22293d8       \WINDOWS\system32\logonui.exe   112
+0x2229748       \Intel\ivecuqmanpnirkt615\msg\m_vietnamese.wnry 112
+0x22298d8       \WINDOWS\system32\eappcfg.dll   112
+0x2229c28       \WINDOWS\system32\tspkg.dll     112
+0x222a028       \Endpoint       112
+0x222a4d0       \WINDOWS\system32\mswsock.dll   112
+0x222a8f8       \WINDOWS\system32\rtutils.dll   112
+0x222ad20       \WINDOWS\system32\wlnotify.dll  112
+0x222b220       \WINDOWS\system32\dimsntfy.dll  112
+0x222b648       \WINDOWS\system32\cscdll.dll    112
+0x222ba90       \WINDOWS\system32\oleacc.dll    112
+0x222bc68       \WINDOWS\system32\ega.cpi       112
+0x222beb8       \WINDOWS\system32\msimg32.dll   112
+0x222c320       \Documents and Settings\All Users\Start Menu\Programs\Accessories\System Tools\Backup.lnk       112
+0x222c3d8       \WINDOWS\system32\rasadhlp.dll  112
+0x222c800       \WINDOWS\system32\winrnr.dll    112
+0x222d028       \WINDOWS\system32\muweb.dll     112
+0x222d4b0       \WINDOWS\system32\clbcatq.dll   112
+0x222d8f8       \WINDOWS\system32\wzcsvc.dll    112
+0x222dd20       \WINDOWS\system32\eventlog.dll  112
+0x222e340       \WINDOWS\system32\dbghelp.dll   112
+0x222e800       \WINDOWS\system32\dnsapi.dll    112
+0x222ec08       \WINDOWS\system32\wshtcpip.dll  112
+0x222f028       \Documents and Settings\All Users\Start Menu\Programs\Games\desktop.ini 112
+0x222f4b0       \WINDOWS\system32\dot3api.dll   112
+0x222f8d8       \WINDOWS\system32\hnetcfg.dll   112
+0x222fc10       \Documents and Settings\LocalService\Local Settings\History\History.IE5\index.dat       112
+0x2230668       \WINDOWS\system32\wmi.dll       112
+0x2230ab0       \WINDOWS\system32\eapolqec.dll  112
+0x2230eb8       \WINDOWS\system32\qutil.dll     112
+0x2231158       \WINDOWS\msagent        112
+0x22313d8       \WINDOWS\system32\esent.dll     112
+0x22316b0       \System Volume Information\_restore{915C6505-6DED-4903-B727-F8B5C05262FF}\drivetable.txt        112
+0x2231800       \WINDOWS\system32\xpsp2res.dll  112
+0x2231c28       \WINDOWS\system32\rpcss.dll     112
+0x2232418       \Intel\ivecuqmanpnirkt615\msg\m_swedish.wnry    112
+0x22324d0       \WINDOWS\system32\ntmarta.dll   112
+0x22328f8       \WINDOWS\system32\svchost.exe   112
+0x2232d20       \WINDOWS\system32\scecli.dll    112
+0x2232f28       \Documents and Settings\All Users\Start Menu\Programs\Administrative Tools\Computer Management.lnk      112
+0x2233240       \WINDOWS\system32\wtsapi32.dll  112
+0x2233518       \WINDOWS\system32\wbem\Repository\$WinMgmt.CFG  112
+0x2233668       \WINDOWS\system32\winscard.dll  112
+0x2233d20       \WINDOWS\system32\ntdsapi.dll   112
+0x2233f18       \Intel\ivecuqmanpnirkt615       112
+0x2234028       \WINDOWS\system32\drprov.dll    112
+0x22345c0       \WINDOWS\system32\attrib.exe    112
+0x2234688       \Documents and Settings\All Users\Start Menu\Programs\Games\Spider Solitaire.lnk        112
+0x2234808       \WINDOWS\system32\rundll32.exe  112
+0x2234b68       \WINDOWS\system32\cryptsvc.dll  112
+0x2234f90       \WINDOWS\system32\webclnt.dll   112
+0x22354b0       \WINDOWS\system32\midimap.dll   112
+0x22358d8       \WINDOWS\system32\msacm32.drv   112
+0x2235e00       \Documents and Settings\donny\Local Settings\Temp\24d004a104d4d54034dbcffc2a4b19a11f39008a575aa614ea04703480b1022c.bin  112
+0x2235f90       \WINDOWS\system32\wdmaud.drv    112
+0x2236320       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Internet Browser Choice.lnk   112
+0x22364b0       \WINDOWS\system32\wkssvc.dll    112
+0x22368d8       \WINDOWS\system32\audiosrv.dll  112
+0x2236d78       \WINDOWS\Prefetch\TASKSE.EXE-02A1B304.pf        112
+0x2236f90       \WINDOWS\system32\spoolsv.exe   112
+0x2237158       \WINDOWS\msagent\intl   112
+0x2237320       \WINDOWS\system32\shell32.dll   112
+0x22374b0       \WINDOWS\system32\msidle.dll    112
+0x22378d8       \WINDOWS\system32\schedsvc.dll  112
+0x2238028       \Documents and Settings\donny\NetHood   112
+0x2238758       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x22389d0       \WINDOWS\system32\wbem\wmisvc.dll       112
+0x2238df8       \$Directory     112
+0x2238ef8       \Documents and Settings\All Users\Start Menu\Programs\Accessories\WordPad.lnk   112
+0x2238f90       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Remote Desktop Connection.lnk 112
+0x2239028       \WINDOWS\system32\ulib.dll      112
+0x2239668       \WINDOWS\system32\msv1_0.dll    112
+0x2239f90       \WINDOWS\system32\desk.cpl      112
+0x223a320       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x223a4b0       \WINDOWS\system32\shdocvw.dll   112
+0x223a8d8       \WINDOWS\system32\wzcsapi.dll   112
+0x223ab70       \WINDOWS\system32\rasmans.dll   112
+0x223ad00       \WINDOWS\system32\eappprxy.dll  112
+0x223b028       \System Volume Information\_restore{915C6505-6DED-4903-B727-F8B5C05262FF}\RP3\rp.log    112
+0x223b320       \Documents and Settings\donny\Start Menu\Programs\Accessories\System Tools\Internet Explorer (No Add-ons).lnk   112
+0x223b4d0       \WINDOWS\system32\dpcdll.dll    112
+0x223b9d0       \WINDOWS\system32\vssapi.dll    112
+0x223bad0       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x223bdf8       \WINDOWS\system32\netshell.dll  112
+0x223c478       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Communications\Network Setup Wizard.lnk       112
+0x223c518       \WINDOWS\system32\comres.dll    112
+0x223c5b0       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x223c740       \WINDOWS\system32\tapi32.dll    112
+0x223c8a0       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Communications\HyperTerminal.lnk      112
+0x223cb68       \WINDOWS\system32\rasman.dll    112
+0x223cf90       \WINDOWS\system32\termsrv.dll   112
+0x223d8d8       \WINDOWS\system32\wbem\ncprov.dll       112
+0x223dd00       \WINDOWS\system32\wuapi.dll     112
+0x223e028       \Documents and Settings\donny\Start Menu\Programs\Accessories\Accessibility\On-Screen Keyboard.lnk      112
+0x223e3e8       \$Directory     112
+0x223e5a8       \WINDOWS\system32\onex.dll      112
+0x223e9d0       \WINDOWS\system32\dot3dlg.dll   112
+0x223edf8       \WINDOWS\system32\credui.dll    112
+0x223fb68       \WINDOWS\explorer.exe   112
+0x223ff90       \WINDOWS\system32\raschap.dll   112
+0x22404b0       \WINDOWS\system32\riched20.dll  112
+0x2240800       \WINDOWS\system32\dssenh.dll    112
+0x2240c08       \WINDOWS\system32\wuauclt.exe   112
+0x2240f90       \$Directory     112
+0x22415a8       \WINDOWS\system32\browseui.dll  112
+0x2241708       \DAV RPC SERVICE        112
+0x2241d00       \WINDOWS\system32\wbem\wbemprox.dll     112
+0x2242240       \WINDOWS\system32\msi.dll       112
+0x2242478       \Documents and Settings\donny\Start Menu\Programs\Accessories\Windows Explorer.lnk      112
+0x2242648       \WINDOWS\system32\colbact.dll   112
+0x22428a0       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Paint.lnk     112
+0x2242a90       \WINDOWS\system32\comsvcs.dll   112
+0x2242c10       \Documents and Settings\All Users\Start Menu\Programs\7-Zip\7-Zip Help.lnk      112
+0x2242d40       \Documents and Settings\All Users\Start Menu\Programs\Accessories\System Tools\Disk Defragmenter.lnk    112
+0x2242dd8       \Documents and Settings\donny\Start Menu\desktop.ini    112
+0x2242eb8       \WINDOWS\system32\wbem\wbemcons.dll     112
+0x2243320       \WINDOWS\system32\sysmon.ocx    112
+0x22434b0       \WINDOWS\system32\msutb.dll     112
+0x2243d00       \WINDOWS\system32\actxprxy.dll  112
+0x2244648       \WINDOWS\system32\icaapi.dll    112
+0x2244a70       \WINDOWS\system32\mstlsapi.dll  112
+0x2244bd8       \Endpoint       112
+0x22453d8       \WINDOWS\system32\tcpmon.dll    112
+0x22456e0       \Intel\ivecuqmanpnirkt615       112
+0x2245800       \WINDOWS\system32\wbem\repdrvfs.dll     112
+0x2245d00       \$Directory     112
+0x2246028       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Entertainment\Sound Recorder.lnk      112
+0x22464b0       \WINDOWS\system32\wbem\wmiutils.dll     112
+0x22468f8       \WINDOWS\system32\wbem\wbemsvc.dll      112
+0x2246a88       \Documents and Settings\All Users\Start Menu\Set Program Access and Defaults.lnk        112
+0x2246c68       \$Directory     112
+0x2246d20       \WINDOWS\system32\winhttp.dll   112
+0x2246f90       \trkwks 112
+0x22473f0       \Documents and Settings\donny\Start Menu\Programs\Windows Media Player.lnk      112
+0x2247488       \WINDOWS\system32       112
+0x22475c0       \Program Files\Internet Explorer\IEXPLORE.EXE   112
+0x2247840       \WINDOWS\system32\sndvol32.exe  112
+0x2247a90       \WINDOWS\system32\wuaueng.dll   112
+0x2247ca0       \Documents and Settings\All Users\Start Menu\Programs\Games\Internet Backgammon.lnk     112
+0x2247e70       \WINDOWS\system32\wbem\Repository\FS\INDEX.MAP  112
+0x2247f08       \WINDOWS\system32\wbem\Repository\FS\MAPPING.VER        112
+0x2248028       \WINDOWS\Media\Windows XP Startup.wav   112
+0x2248b08       \WINDOWS\system32\wbem\Repository\FS\MAPPING2.MAP       112
+0x2248ef8       \W32TIME        112
+0x2248f90       \W32TIME        112
+0x22490c0       \WINDOWS\system32\mshearts.exe  112
+0x2249a90       \WINDOWS\system32\wuauserv.dll  112
+0x2249eb8       \WINDOWS\system32\wbem\fastprox.dll     112
+0x224a938       \WINDOWS\system32\c_1250.nls    112
+0x224b4d0       \WINDOWS\system32\cnbjmon.dll   112
+0x224b8f8       \WINDOWS\system32\spoolss.dll   112
+0x224bd00       \WINDOWS\system32\ssdpapi.dll   112
+0x224c028       \Documents and Settings\All Users\Start Menu\Programs\Python 2.7\Python (command line).lnk      112
+0x224c740       \WINDOWS\system32\browser.dll   112
+0x224ce98       \WINDOWS\system32\wups2.dll     112
+0x224d320       \WINDOWS\system32\wsecedit.dll  112
+0x224d3d8       \WINDOWS\system32\wups.dll      112
+0x224d800       \WINDOWS\system32\wbem\wbemess.dll      112
+0x224db70       \PIPE_EVENTROOT\CIMV2SCM EVENT PROVIDER 112
+0x224dc28       \WINDOWS\system32\wbem\wmiprvsd.dll     112
+0x224e4d0       \WINDOWS\system32\mspatcha.dll  112
+0x224e708       \$Directory     112
+0x224e8f8       \WINDOWS\system32\cabinet.dll   112
+0x224ea80       \Documents and Settings\All Users\Start Menu\Programs\Games\Hearts.lnk  112
+0x224eb18       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x224ed40       \WINDOWS\ime\SPTIP.dll  112
+0x224f240       \WINDOWS\system32\sens.dll      112
+0x224f418       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Calculator.lnk        112
+0x224f668       \WINDOWS\system32\trkwks.dll    112
+0x224fa90       \WINDOWS\system32\srsvc.dll     112
+0x224fca8       \WINDOWS\system32\tapisrv.dll   112
+0x224fd68       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x224fe00       \WINDOWS\system32\ntlanman.dll  112
+0x224feb8       \WINDOWS\system32\seclogon.dll  112
+0x22503d8       \WINDOWS\system32\psbase.dll    112
+0x22505b0       \WINDOWS\system32\cleanmgr.exe  112
+0x2250820       \WINDOWS\system32\wscntfy.exe   112
+0x2250c28       \WINDOWS\system32\ctfmon.exe    112
+0x22512c0       \Documents and Settings\All Users\Start Menu\Programs\Accessories\System Tools\Scheduled Tasks.lnk      112
+0x2251840       \Documents and Settings\donny   112
+0x22518d8       \WINDOWS\system32\upnp.dll      112
+0x2251d40       \WINDOWS\system32\alg.exe       112
+0x2251f28       \WINDOWS\system32\winmine.exe   112
+0x22524d0       \WINDOWS\system32\verclsid.exe  112
+0x22528f8       \WINDOWS\system32\resutils.dll  112
+0x2252d20       \WINDOWS\system32\clusapi.dll   112
+0x2253240       \WINDOWS\system32\wbem\wbemcomn.dll     112
+0x22535b0       \WINDOWS\system32\msxml3.dll    112
+0x2253668       \WINDOWS\system32\wbem\esscli.dll       112
+0x2254028       \WINDOWS\WindowsUpdate.log      112
+0x22552f0       \WINDOWS\system32\wbem\Repository\FS\MAPPING1.MAP       112
+0x2255a60       \Documents and Settings\All Users\Start Menu    112
+0x22562d8       \Program Files\MSN Gaming Zone\Windows\Rvsezm.exe       112
+0x2256700       \Documents and Settings\All Users\Start Menu\Programs\Python 2.7\IDLE (Python GUI).lnk  112
+0x2256c88       \Intel\ivecuqmanpnirkt615\t.wnry        112
+0x2257b30       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x2257f90       \net\NtControlPipe8     112
+0x22586a0       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x2258930       \WINDOWS\system32\ersvc.dll     112
+0x2258a68       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Entertainment\desktop.ini     112
+0x2258b88       \WINDOWS\system32\wscsvc.dll    112
+0x2258eb8       \WINDOWS\system32\regsvc.dll    112
+0x2259408       \Program Files\MSN Gaming Zone\Windows\chkrzm.exe       112
+0x2259600       \WINDOWS\system32\ipnathlp.dll  112
+0x2259858       \WINDOWS\system32\localspl.dll  112
+0x2259b88       \WINDOWS\system32\ssdpsrv.dll   112
+0x2259d60       \Program Files\Windows Media Player\wmplayer.exe        112
+0x225a858       \WINDOWS\system32\rsaenh.dll    112
+0x225aba8       \WINDOWS\system32\netcfgx.dll   112
+0x225b390       \WINDOWS\system32\wsock32.dll   112
+0x225b6c0       \WINDOWS\system32\mtxclu.dll    112
+0x225b9f0       \WINDOWS\system32\wbem\wbemcore.dll     112
+0x225bba0       \Python27\DLLs\py.ico   112
+0x225ee10       \Documents and Settings\donny\NTUSER.DAT        112
+0x225ef90       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x225f548       \WINDOWS\system32\wpa.dbl       112
+0x225fb50       \WINDOWS\system32\cfgmgr32.dll  112
+0x2262900       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x2264808       \Program Files\NetMeeting       112
+0x22648a0       \WINDOWS\pchealth\helpctr\binaries      112
+0x2265a40       \WINDOWS\system32\batmeter.dll  112
+0x2277d10       \WINDOWS\system32\hid.dll       112
+0x22783f0       \WINDOWS\system.ini     112
+0x227b780       \WINDOWS\system32\wucltui.dll   112
+0x227e338       \WINDOWS\system32\pjlmon.dll    112
+0x227f950       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Accessibility\desktop.ini     112
+0x227fb28       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x2280478       \Documents and Settings\All Users\Start Menu\Programs\Administrative Tools\Services.lnk 112
+0x2280810       \WINDOWS\system32\moricons.dll  112
+0x2280b60       \Documents and Settings\donny\Start Menu\Programs\Accessories\Accessibility\Utility Manager.lnk 112
+0x2282728       \Documents and Settings\NetworkService\Local Settings\desktop.ini       112
+0x2282ae8       \WINDOWS\system32\rasdlg.dll    112
+0x2282f90       \net\NtControlPipe11    112
+0x2284448       \net\NtControlPipe0     112
+0x2285518       \net\NtControlPipe1     112
+0x2285eb8       \WINDOWS\system32\msprivs.dll   112
+0x22862a0       \WINDOWS\system32\webcheck.dll  112
+0x2286460       \WINDOWS\system32\usbmon.dll    112
+0x2286cc0       \WINDOWS\system32\inetpp.dll    112
+0x2288980       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x228af90       \WINDOWS\system32\vga.dll       112
+0x228f988       \WINDOWS\system32\authz.dll     112
+0x228faf0       \WINDOWS\system32\winlogon.exe  112
+0x228fbe0       \WINDOWS\system32\vga64k.dll    112
+0x228fcd8       \WINDOWS\system32\vga256.dll    112
+0x228fde8       \$Directory     112
+0x2291f38       \WINDOWS\system32\framebuf.dll  112
+0x2292c40       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x229a308       \WINDOWS\system32       112
+0x229ba88       \WINDOWS\system32\nddeapi.dll   112
+0x229e338       \$Directory     112
+0x229ec48       \WINDOWS\system32\winsta.dll    112
+0x229ed70       \WINDOWS\system32\setupapi.dll  112
+0x229f028       \WINDOWS\system32\sfc.dll       112
+0x229f198       \WINDOWS\system32\regapi.dll    112
+0x229f270       \WINDOWS\system32\psapi.dll     112
+0x229fa60       \WINDOWS\system32\netapi32.dll  112
+0x229ff90       \WINDOWS\system32\profmap.dll   112
+0x22a0f90       \WINDOWS\system32\msgina.dll    112
+0x22a1028       \WINDOWS\system32\lsass.exe     112
+0x22a1110       \WINDOWS\system32\MSCTFIME.IME  112
+0x22a1238       \Winsock2\CatalogChangeListener-388-0   112
+0x22a1620       \WINDOWS\system32\kbdus.dll     112
+0x22a1740       \WINDOWS\system32\imm32.dll     112
+0x22a1850       \WINDOWS\system32\ws2help.dll   112
+0x22a32e8       \WINDOWS\system32\ws2_32.dll    112
+0x22a3830       \WINDOWS\system32\wintrust.dll  112
+0x22a4110       \WINDOWS\system32\services.exe  112
+0x22a50e0       \$Directory     112
+0x22a6d20       \Documents and Settings\All Users\Start Menu\Programs\Python 2.7\Module Docs.lnk        112
+0x22a6f28       \Documents and Settings\donny\Start Menu\Programs\Accessories\Synchronize.lnk   112
+0x22a7148       \WINDOWS\system32\notepad.exe   112
+0x22a7340       \WINDOWS\system32\linkinfo.dll  112
+0x22a7568       \WINDOWS\Fonts\framd.ttf        112
+0x22a7b98       \WINDOWS\system32\rasdlg.dll    112
+0x22a7e60       \WINDOWS\system32\inetpp.dll    112
+0x22a8088       \WINDOWS\system32\netrap.dll    112
+0x22a82a8       \WINDOWS\system32\win32spl.dll  112
+0x22a84d8       \WINDOWS\system32\batmeter.dll  112
+0x22a86f8       \WINDOWS\system32\stobject.dll  112
+0x22a8960       \WINDOWS\system32\mlang.dll     112
+0x22a8bb8       \WINDOWS\system32\webcheck.dll  112
+0x22a8f28       \WINDOWS\Media\Windows XP Balloon.wav   112
+0x22a9150       \WINDOWS\system32\usbmon.dll    112
+0x22a9368       \WINDOWS\system32\tcpmon.dll    112
+0x22a9590       \WINDOWS\system32\pjlmon.dll    112
+0x22a9760       \WINDOWS\system32\cnbjmon.dll   112
+0x22a9930       \WINDOWS\system32\localspl.dll  112
+0x22a9be8       \WINDOWS\system32\spoolss.dll   112
+0x22a9e48       \WINDOWS\system32\ssdpsrv.dll   112
+0x22aa350       \WINDOWS\system32\drivers\disdn 112
+0x22aa4e0       \WINDOWS\system32\ssdpapi.dll   112
+0x22aa728       \WINDOWS\system32\tapisrv.dll   112
+0x22aab28       \$Directory     112
+0x22aabc0       \WINDOWS\ime\SPTIP.dll  112
+0x22aaeb0       \WINDOWS\system32\wscntfy.exe   112
+0x22ab1e8       \Documents and Settings\All Users\Start Menu\Programs\Startup\desktop.ini       112
+0x22ab418       \Documents and Settings\All Users\Start Menu\Programs\Accessories\System Tools\Security Center.lnk      112
+0x22ab610       \Documents and Settings\All Users\Start Menu\Programs\Accessories\System Tools\Disk Cleanup.lnk 112
+0x22abb70       \$Directory     112
+0x22abe00       \WINDOWS\SoftwareDistribution\ReportingEvents.log       112
+0x22ac060       \$Directory     112
+0x22ac0f8       \WINDOWS\system32\en-US\ieframe.dll.mui 112
+0x22ac450       \$Directory     112
+0x22ac4e8       \Documents and Settings\All Users\Start Menu\Programs\Python 2.7\Uninstall Python.lnk   112
+0x22ac6e0       \Documents and Settings\All Users\Documents\desktop.ini 112
+0x22ac8d8       \WINDOWS\system32\netcfgx.dll   112
+0x22acb00       \$Directory     112
+0x22acc68       \WINDOWS\system32\alg.exe       112
+0x22aceb8       \WINDOWS\system32\verclsid.exe  112
+0x22ad258       \$Directory     112
+0x22ad2f0       \WINDOWS\system32\calc.exe      112
+0x22ad620       \$Directory     112
+0x22ad6b8       \WINDOWS\system32\ntbackup.exe  112
+0x22ad9e8       \$Directory     112
+0x22ada80       \WINDOWS\system32\sndrec32.exe  112
+0x22adc78       \Documents and Settings\donny\Recent\Desktop.ini        112
+0x22ae028       \Documents and Settings\All Users\Start Menu\Programs\Administrative Tools\Performance.lnk      112
+0x22ae218       \$Directory     112
+0x22ae2b0       \WINDOWS\system32\shimgvw.dll   112
+0x22ae5e0       \$Directory     112
+0x22aea68       \Program Files\Outlook Express\wab.exe  112
+0x22aed98       \$Directory     112
+0x22aee30       \WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.23084_x-ww_f3f35550     112
+0x22af208       \Documents and Settings\donny\My Documents\My Music\Desktop.ini 112
+0x22af400       \WINDOWS\system32\compatUI.dll  112
+0x22af5f8       \WINDOWS\system32\ntshrui.dll   112
+0x22af978       \$Directory     112
+0x22afa10       \WINDOWS\system32\utilman.exe   112
+0x22afbe0       \WINDOWS\system32\taskkill.exe  112
+0x22afdd8       \Documents and Settings\All Users\Start Menu\Programs\Windows Movie Maker.lnk   112
+0x22aff90       \Documents and Settings\donny\Start Menu\Programs\Internet Explorer.lnk 112
+0x22b02b0       \WINDOWS\system32\resutils.dll  112
+0x22b04d8       \WINDOWS\system32\clusapi.dll   112
+0x22b0700       \WINDOWS\system32\wsock32.dll   112
+0x22b0920       \WINDOWS\system32\mtxclu.dll    112
+0x22b0b50       \WINDOWS\system32\colbact.dll   112
+0x22b0d78       \WINDOWS\system32\comsvcs.dll   112
+0x22b1148       \$Directory     112
+0x22b11e0       \WINDOWS\system32\ntlsapi.dll   112
+0x22b1520       \WINDOWS\system32\lz32.dll      112
+0x22b15b8       \WINDOWS\system32\wbem\wbemcons.dll     112
+0x22b17b8       \WINDOWS\system32\msutb.dll     112
+0x22b1af8       \WINDOWS\system32\actxprxy.dll  112
+0x22b1cc8       \WINDOWS\system32\mstlsapi.dll  112
+0x22b1e98       \WINDOWS\system32\icaapi.dll    112
+0x22b2028       \WINDOWS\system32\wuauclt.exe   112
+0x22b20e8       \WINDOWS\system32\termsrv.dll   112
+0x22b2448       \WINDOWS\system32\wbem\ncprov.dll       112
+0x22b2698       \WINDOWS\system32\wuapi.dll     112
+0x22b2a18       \WINDOWS\system32\browser.dll   112
+0x22b2c80       \WINDOWS\system32\dssenh.dll    112
+0x22b3508       \WINDOWS\system32\wups2.dll     112
+0x22b3750       \WINDOWS\system32\wups.dll      112
+0x22b3b78       \WINDOWS\system32\wbem\wbemess.dll      112
+0x22b3d00       \WINDOWS\system32\mui\040D      112
+0x22b3dc0       \WINDOWS\system32\mui\040C      112
+0x22b3f28       \WINDOWS\system32\wbem\wmiprvsd.dll     112
+0x22b4810       \WINDOWS\system32\fldrclnr.dll  112
+0x22b5028       \WINDOWS\system32\cabinet.dll   112
+0x22b52a0       \$Directory     112
+0x22b5338       \WINDOWS\system32\wbem\Repository\FS\OBJECTS.DATA       112
+0x22b5530       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x22b5728       \WINDOWS\system32\wbem\repdrvfs.dll     112
+0x22b5a50       \WINDOWS\system32\wbem\wmiutils.dll     112
+0x22b5c20       \WINDOWS\system32\wbem\wbemsvc.dll      112
+0x22b5e70       \WINDOWS\system32\mspatcha.dll  112
+0x22b6028       \Endpoint       112
+0x22b62d8       \WINDOWS\system32\winhttp.dll   112
+0x22b65f0       \WINDOWS\system32\wuaueng.dll   112
+0x22b6e70       \WINDOWS\system32\wuauserv.dll  112
+0x22b7330       \WINDOWS\system32\wbem\fastprox.dll     112
+0x22b77f8       \WINDOWS\system32\wbem\esscli.dll       112
+0x22b7b38       \WINDOWS\system32\wbem\wbemcore.dll     112
+0x22b7f90       \WINDOWS\system32\wbem\wbemcomn.dll     112
+0x22b8028       \WINDOWS\system32\seclogon.dll  112
+0x22b8280       \WINDOWS\system32\wbem\wbemprox.dll     112
+0x22b84a8       \WINDOWS\system32\msi.dll       112
+0x22b8740       \WINDOWS\system32\wscsvc.dll    112
+0x22b8938       \WINDOWS\system32\trkwks.dll    112
+0x22b8b88       \WINDOWS\system32\srsvc.dll     112
+0x22b8e40       \WINDOWS\system32\sens.dll      112
+0x22b9288       \WINDOWS\system32\regsvc.dll    112
+0x22b94b0       \       112
+0x22b9960       \WINDOWS\system32\psbase.dll    112
+0x22b9b88       \WINDOWS\system32\pstorsvc.dll  112
+0x22b9db0       \WINDOWS\system32\netmsg.dll    112
+0x22b9f90       \WINDOWS\system32\winipsec.dll  112
+0x22ba1f8       \WINDOWS\system32\oakley.dll    112
+0x22ba450       \WINDOWS\system32\ipsecsvc.dll  112
+0x22ba6a8       \WINDOWS\system32\srvsvc.dll    112
+0x22baa88       \$Directory     112
+0x22bab20       \WINDOWS\pchealth\helpctr\binaries\pchsvc.dll   112
+0x22bad60       \WINDOWS\system32\ersvc.dll     112
+0x22baf90       \WINDOWS\system32\dmserver.dll  112
+0x22bb1d0       \WINDOWS\system32\certcli.dll   112
+0x22bb400       \WINDOWS\system32\cryptsvc.dll  112
+0x22bb7f8       \Intel\ivecuqmanpnirkt615\00000000.pky  112
+0x22bb9c8       \Documents and Settings\LocalService\Local Settings\History\History.IE5\index.dat       112
+0x22bbbd8       \Documents and Settings\LocalService\Cookies\index.dat  112
+0x22bbde8       \Documents and Settings\LocalService\Local Settings\Temporary Internet Files\Content.IE5\index.dat      112
+0x22bbf90       \WINDOWS\system32\webclnt.dll   112
+0x22bc200       \net\NtControlPipe8     112
+0x22bc310       \WINDOWS\system32\sfc_os.dll    112
+0x22bc688       \$Directory     112
+0x22bcc50       \WINDOWS\system32\midimap.dll   112
+0x22bce70       \WINDOWS\system32\msacm32.drv   112
+0x22bd0d0       \WINDOWS\system32\mstsc.exe     112
+0x22bd2c8       \WINDOWS\system32\BrowserChoice.exe     112
+0x22bd3d0       \WINDOWS\system32\odbc32.dll    112
+0x22bd610       \WINDOWS\system32\mspaint.exe   112
+0x22bd868       \Topology       112
+0x22bdac8       \WINDOWS\system32\mydocs.dll    112
+0x22bddd0       \{9B365890-165F-11D0-A195-0020AFD156E4} 112
+0x22bdf90       \WINDOWS\system32\accwiz.exe    112
+0x22be268       \{9B365890-165F-11D0-A195-0020AFD156E4} 112
+0x22be500       \WINDOWS\system32\wdmaud.drv    112
+0x22be730       \Documents and Settings\donny\Application Data\Microsoft\Protect\CREDHIST       112
+0x22bea60       \$Directory     112
+0x22beaf8       \Documents and Settings\donny\Application Data\Microsoft\Protect\S-1-5-21-602162358-764733703-1957994488-1003\f6ef8b17-2d2e-43f2-ad8d-55572ca41909    112
+0x22becf0       \WINDOWS\system32\wkssvc.dll    112
+0x22bee00       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202\comctl32.dll 112
+0x22bef28       \WINDOWS\system32\audiosrv.dll  112
+0x22bf038       \$Directory     112
+0x22bf350       \WINDOWS\system32\spoolsv.exe   112
+0x22bf598       \WINDOWS\system32\msidle.dll    112
+0x22bf9a0       \WINDOWS\system32\schedsvc.dll  112
+0x22c0110       \WINDOWS\system32\stdole2.tlb   112
+0x22c02e0       \WINDOWS\system32\vssapi.dll    112
+0x22c05e8       \WINDOWS\system32\wbem\wmisvc.dll       112
+0x22c08d0       \WINDOWS\Fonts\framdit.ttf      112
+0x22c0b00       \WINDOWS\system32\MSIMTF.dll    112
+0x22c0cf8       \WINDOWS\system32\themeui.dll   112
+0x22c1028       \WINDOWS\system32\eappcfg.dll   112
+0x22c10d8       \WINDOWS\system32\desk.cpl      112
+0x22c12a8       \WINDOWS\system32\shdocvw.dll   112
+0x22c16f0       \WINDOWS\system32\browseui.dll  112
+0x22c1808       \$Directory     112
+0x22c1950       \WINDOWS\Resources\Themes\Luna\luna.msstyles    112
+0x22c1bf0       \WINDOWS\system32\wzcsapi.dll   112
+0x22c1e20       \WINDOWS\system32\eappprxy.dll  112
+0x22c2028       \Documents and Settings\donny\Start Menu\Programs\Accessories\Accessibility\Narrator.lnk        112
+0x22c22d8       \WINDOWS\system32\onex.dll      112
+0x22c2508       \WINDOWS\system32\dot3dlg.dll   112
+0x22c26d8       \WINDOWS\system32\credui.dll    112
+0x22c2930       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Communications\New Connection Wizard.lnk      112
+0x22c2d60       \WINDOWS\system32\netman.dll    112
+0x22c3028       \WINDOWS\system32\rasapi32.dll  112
+0x22c34e0       \WINDOWS\system32\raschap.dll   112
+0x22c3740       \WINDOWS\system32\riched20.dll  112
+0x22c3968       \WINDOWS\Fonts\arialbi.ttf      112
+0x22c3bc8       \WINDOWS\system32\tapi32.dll    112
+0x22c3df8       \WINDOWS\system32\rasman.dll    112
+0x22c4240       \WINDOWS\system32\adsldpc.dll   112
+0x22c4480       \WINDOWS\system32\activeds.dll  112
+0x22c46b8       \WINDOWS\system32\mprapi.dll    112
+0x22c48e8       \WINDOWS\system32\cryptui.dll   112
+0x22c4b30       \WINDOWS\system32\rastls.dll    112
+0x22c4d98       \WINDOWS\system32\Microsoft\Protect\S-1-5-18\User\68fa1b6e-57a3-4316-98e3-8fa780aa107b  112
+0x22c4f90       \WINDOWS\Fonts\arial.ttf        112
+0x22c5290       \WINDOWS\system32\userinit.exe  112
+0x22c54d0       \WINDOWS\system32\secupd.dat    112
+0x22c56d0       \WINDOWS\system32\secupd.sig    112
+0x22c58d0       \WINDOWS\system32\oembios.dat   112
+0x22c5ad0       \WINDOWS\system32\oembios.sig   112
+0x22c5cd0       \WINDOWS\system32\dpcdll.dll    112
+0x22c5f90       \WINDOWS\system32\powrprof.dll  112
+0x22c6c80       \WINDOWS\system32\cscui.dll     112
+0x22c6f90       \$Directory     112
+0x22c70e0       \WINDOWS\Web\Wallpaper\Bliss.bmp        112
+0x22c72b0       \Intel\ivecuqmanpnirkt615\msg\m_english.wnry    112
+0x22c74a8       \Documents and Settings\donny\Local Settings\desktop.ini        112
+0x22c75b8       \WINDOWS\system32\shsvcs.dll    112
+0x22c7720       \Documents and Settings\All Users\Start Menu\Windows Catalog.lnk        112
+0x22c7e18       \WINDOWS\system32\shgina.dll    112
+0x22c8190       \$Directory     112
+0x22c8228       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x22c8448       \Documents and Settings\All Users\Start Menu\Programs\Administrative Tools\Data Sources (ODBC).lnk      112
+0x22c8668       \WINDOWS\system32\clbcatq.dll   112
+0x22c8960       \WINDOWS\system32\esent.dll     112
+0x22c8ab8       \Documents and Settings\donny\NTUSER.DAT.LOG    112
+0x22c8e58       \WINDOWS\system32\dot3api.dll   112
+0x22c90b8       \WINDOWS\system32\qutil.dll     112
+0x22c9318       \WINDOWS\system32\atl.dll       112
+0x22c9558       \WINDOWS\system32\eapolqec.dll  112
+0x22c9728       \WINDOWS\system32\wmi.dll       112
+0x22c9930       \WINDOWS\system32\rtutils.dll   112
+0x22c9b60       \WINDOWS\system32\wzcsvc.dll    112
+0x22c9f28       \WINDOWS\system32\lmhsvc.dll    112
+0x22ca028       \WINDOWS\system32\msimg32.dll   112
+0x22ca188       \WINDOWS\system32\oleaccrc.dll  112
+0x22ca578       \WINDOWS\system32\winspool.drv  112
+0x22ca7c0       \WINDOWS\system32\wlnotify.dll  112
+0x22ca990       \WINDOWS\system32\dimsntfy.dll  112
+0x22cabb8       \WINDOWS\system32\cscdll.dll    112
+0x22cadf0       \WINDOWS\system32\oleacc.dll    112
+0x22cb5d8       \WINDOWS\system32\duser.dll     112
+0x22cb968       \WINDOWS\system32\ntkrnlpa.exe  112
+0x22cbb68       \WINDOWS\Fonts\micross.ttf      112
+0x22cbe00       \WINDOWS\system32\logonui.exe.manifest  112
+0x22cbf90       \WINDOWS\system32\logonui.exe   112
+0x22ccad8       \WINDOWS\system32\shimgvw.dll   112
+0x22cd120       \Documents and Settings\donny\Local Settings\Application Data\Microsoft\Windows\UsrClass.dat    112
+0x22cf208       \WINDOWS\system32\dnsrslvr.dll  112
+0x22cf3d8       \net\NtControlPipe6     112
+0x22cf5d0       \WINDOWS\system32\mui\0009      112
+0x22cf6e0       \WINDOWS\system32\odbcint.dll   112
+0x22cf848       \Documents and Settings\donny\Local Settings\Application Data\Microsoft\Windows\UsrClass.dat.LOG        112
+0x22cfbf8       \WINDOWS\system32\dhcpcsvc.dll  112
+0x22cfec0       \WINDOWS\system32       112
+0x22d0740       \$Directory     112
+0x22d07d8       \Program Files\Common Files\System\ado  112
+0x22d09d0       \WINDOWS\system32\rasadhlp.dll  112
+0x22d0be0       \WINDOWS\system32\winrnr.dll    112
+0x22d0e00       \WINDOWS\system32\wshtcpip.dll  112
+0x22d1028       \WINDOWS\system32\config\SysEvent.Evt   112
+0x22d10d8       \WINDOWS\system32\hnetcfg.dll   112
+0x22d12a8       \WINDOWS\system32\mswsock.dll   112
+0x22d1478       \WINDOWS\system32\ntoskrnl.exe  112
+0x22d1678       \Program Files\MSN Gaming Zone\Windows  112
+0x22d1870       \WINDOWS\inf    112
+0x22d1a68       \Program Files\Common Files\System\Ole DB       112
+0x22d1ce0       \net\NtControlPipe5     112
+0x22d2120       \WINDOWS\system32\ncobjapi.dll  112
+0x22d23a8       \WINDOWS\system32\config\SecEvent.Evt   112
+0x22d25a0       \WINDOWS\system32\config\Internet.evt   112
+0x22d28d0       \$Directory     112
+0x22d2968       \WINDOWS\system32\config\AppEvent.Evt   112
+0x22d2b78       \WINDOWS\system32\netevent.dll  112
+0x22d2d80       \WINDOWS\system32\eventlog.dll  112
+0x22d2f28       \Intel\ivecuqmanpnirkt615\tasksche.exe  112
+0x22d3198       \WINDOWS\system32\rpcss.dll     112
+0x22d3548       \WINDOWS\system32\ntmarta.dll   112
+0x22d3780       \WINDOWS\system32\svchost.exe   112
+0x22d39a0       \WINDOWS\system32\scecli.dll    112
+0x22d3bd0       \WINDOWS\system32\wtsapi32.dll  112
+0x22d3da0       \WINDOWS\system32\winscard.dll  112
+0x22d3f90       \WINDOWS\system32\tspkg.dll     112
+0x22d4240       \WINDOWS\system32\rsaenh.dll    112
+0x22d4710       \WINDOWS\system32\wdigest.dll   112
+0x22d48e0       \WINDOWS\system32\w32time.dll   112
+0x22d4bd0       \WINDOWS\system32\netlogon.dll  112
+0x22d4e00       \WINDOWS\system32\iphlpapi.dll  112
+0x22d4f90       \WINDOWS\system32\msv1_0.dll    112
+0x22d5598       \WINDOWS\system32\kerberos.dll  112
+0x22d5850       \WINDOWS\system32\msprivs.dll   112
+0x22d5a50       \WINDOWS\system32\WindowsLogon.manifest 112
+0x22d5c48       \WINDOWS\system32\MSCTF.dll     112
+0x22d61b0       \$Directory     112
+0x22d6440       \WINDOWS\system32\msnsspc.dll   112
+0x22d6610       \WINDOWS\system32\digest.dll    112
+0x22d6878       \WINDOWS\system32\credssp.dll   112
+0x22d6a48       \WINDOWS\system32\schannel.dll  112
+0x22d6c18       \WINDOWS\system32\msvcrt40.dll  112
+0x22d6de8       \WINDOWS\system32\msapsspc.dll  112
+0x22d6f90       \WINDOWS\system32\uxtheme.dll   112
+0x22d71c8       \WINDOWS\system32\msacm32.dll   112
+0x22d7398       \WINDOWS\system32\winmm.dll     112
+0x22d7568       \WINDOWS\AppPatch\AcGenral.dll  112
+0x22d7840       \WINDOWS\system32\cryptdll.dll  112
+0x22d7a78       \WINDOWS\system32\samsrv.dll    112
+0x22d7d58       \WINDOWS\system32\samlib.dll    112
+0x22d7f28       \WINDOWS\system32\dnsapi.dll    112
+0x22d8388       \WINDOWS\system32\ntdsapi.dll   112
+0x22d8558       \WINDOWS\AppPatch\AcAdProc.dll  112
+0x22d8728       \WINDOWS\system32\shimeng.dll   112
+0x22d88f8       \WINDOWS\system32\umpnpmgr.dll  112
+0x22d8ac8       \WINDOWS\system32\scesrv.dll    112
+0x22d8d18       \WINDOWS\system32\msvcp60.dll   112
+0x22d8ec0       \WINDOWS\system32\ncobjapi.dll  112
+0x22d9160       \WINDOWS\system32\lsasrv.dll    112
+0x22d9330       \WINDOWS\system32\lsass.exe     112
+0x22d9748       \WINDOWS\WinSxS\Policies\x86_policy.5.1.Microsoft.Windows.SystemCompatible_6595b64144ccf1df_x-ww_a0111510\5.1.2600.2000.Policy  112
+0x22d9940       \WINDOWS\bootstat.dat   112
+0x22d9b38       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x22d9e68       \$Directory     112
+0x22da2c0       \$Directory     112
+0x22da688       \$Directory     112
+0x22da720       \WINDOWS\system32       112
+0x22da918       \WINDOWS\system32       112
+0x22dab10       \WINDOWS\system32\services.exe  112
+0x22dace0       \WINDOWS\AppPatch\sysmain.sdb   112
+0x22db618       \WINDOWS\system32\sfc_os.dll    112
+0x22db7e8       \WINDOWS\system32\sfc.dll       112
+0x22db9f8       \WINDOWS\system32\shsvcs.dll    112
+0x22dbcf0       \WINDOWS\system32\odbcint.dll   112
+0x22dbf00       \WINDOWS\WindowsShell.Manifest  112
+0x22dc180       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202\comctl32.dll 112
+0x22dc488       \$Directory     112
+0x22dc520       \InitShutdown   112
+0x22dc850       \$Directory     112
+0x22dc8e8       \InitShutdown   112
+0x22dcae0       \WINDOWS\system32\sxs.dll       112
+0x22dcd50       \$Directory     112
+0x22dceb8       \WINDOWS\system32\odbc32.dll    112
+0x22dd168       \WINDOWS\system32\msgina.dll    112
+0x22dd3b8       \WINDOWS\system32       112
+0x22dd520       \WINDOWS\system32\MSCTFIME.IME  112
+0x22dd6f0       \WINDOWS\Fonts\marlett.ttf      112
+0x22dd8c0       \WINDOWS\Fonts\tahoma.ttf       112
+0x22ddb88       \WINDOWS\Fonts\tahomabd.ttf     112
+0x22ddd58       \WINDOWS\Fonts\trebucbd.ttf     112
+0x22ddf28       \WINDOWS\Fonts\serife.fon       112
+0x22de160       \WINDOWS\Fonts\sserife.fon      112
+0x22de380       \WINDOWS\Fonts\coure.fon        112
+0x22de588       \WINDOWS\Fonts\wst_swed.fon     112
+0x22de788       \WINDOWS\Fonts\wst_span.fon     112
+0x22de988       \WINDOWS\Fonts\wst_ital.fon     112
+0x22deb88       \WINDOWS\Fonts\wst_germ.fon     112
+0x22ded58       \WINDOWS\Fonts\wst_fren.fon     112
+0x22def28       \WINDOWS\Fonts\wst_engl.fon     112
+0x22df0e8       \WINDOWS\Fonts\wst_czec.fon     112
+0x22df2b8       \WINDOWS\Fonts\symbole.fon      112
+0x22df4d8       \WINDOWS\Fonts\smalle.fon       112
+0x22df6a8       \WINDOWS\Fonts\modern.fon       112
+0x22df878       \WINDOWS\Fonts\script.fon       112
+0x22dfa80       \WINDOWS\Fonts\roman.fon        112
+0x22dfc90       \WINDOWS\system32\kbdus.dll     112
+0x22e0038       \$Directory     112
+0x22e0278       \WINDOWS\system32\sortkey.nls   112
+0x22e0488       \WINDOWS\system32\imm32.dll     112
+0x22e0658       \WINDOWS\system32\ctype.nls     112
+0x22e0828       \WINDOWS\system32\ws2help.dll   112
+0x22e09f8       \WINDOWS\system32\ws2_32.dll    112
+0x22e0c60       \WINDOWS\system32\wintrust.dll  112
+0x22e0e30       \WINDOWS\system32\winsta.dll    112
+0x22e1278       \WINDOWS\system32\setupapi.dll  112
+0x22e1448       \WINDOWS\system32\regapi.dll    112
+0x22e1680       \WINDOWS\system32\psapi.dll     112
+0x22e1850       \WINDOWS\system32\netapi32.dll  112
+0x22e1b60       \WINDOWS\system32\profmap.dll   112
+0x22e1d30       \WINDOWS\system32\nddeapi.dll   112
+0x22e1f00       \WINDOWS\system32\msasn1.dll    112
+0x22e2118       \WINDOWS\system32\crypt32.dll   112
+0x22e22e8       \WINDOWS\system32\authz.dll     112
+0x22e2520       \WINDOWS\system32\winlogon.exe  112
+0x22e2a80       \WINDOWS\Fonts\cga40woa.fon     112
+0x22e2c78       \WINDOWS\Fonts\cga80woa.fon     112
+0x22e2e70       \WINDOWS\Fonts\ega40woa.fon     112
+0x22e39c8       \net\NtControlPipe7     112
+0x22e3f90       \WINDOWS\system32\win32k.sys    112
+0x22e4298       \WINDOWS\Fonts\ega80woa.fon     112
+0x22e4490       \WINDOWS\Fonts\dosapp.fon       112
+0x22e4858       \WINDOWS\system32\vga64k.dll    112
+0x22e4a28       \WINDOWS\system32\vga256.dll    112
+0x22e4bf8       \WINDOWS\system32\framebuf.dll  112
+0x22e4e00       \WINDOWS\system32\vga.dll       112
+0x22e4f90       \WINDOWS\Fonts\vgafix.fon       112
+0x22e6560       \Documents and Settings\All Users\Start Menu\Programs\Games\Solitaire.lnk       112
+0x22e67e8       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x22e7598       \WINDOWS\Fonts\vgaoem.fon       112
+0x22e8208       \WINDOWS\system32\lz32.dll      112
+0x22e89e8       \WINDOWS\system32\mycomput.dll  112
+0x22e8e00       \Documents and Settings\All Users\Start Menu\Programs\Administrative Tools\desktop.ini  112
+0x22e8f90       \WINDOWS\system32\netrap.dll    112
+0x22e9228       \Documents and Settings\donny\Start Menu\Programs\Accessories\Entertainment\desktop.ini 112
+0x22e92e0       \WINDOWS\system32\ntshrui.dll   112
+0x22e94b8       \Documents and Settings\donny\Local Settings\Application Data\Microsoft\CD Burning      112
+0x22ea158       \WINDOWS\system32\duser.dll     112
+0x22ea310       \Documents and Settings\All Users\Start Menu\Programs\Games\Internet Spades.lnk 112
+0x22eaa90       \WINDOWS\system32\linkinfo.dll  112
+0x22eac68       \Documents and Settings\All Users\Desktop       112
+0x22eaf90       \WINDOWS\system32\mstask.dll    112
+0x22eb408       \browser        112
+0x22eb4a8       \WINDOWS\Registration\R000000000007.clb 112
+0x22eb660       \Documents and Settings\All Users\Start Menu\Programs\Games\Internet Reversi.lnk        112
+0x22eba78       \WINDOWS\system32\charmap.exe   112
+0x22ec358       \Documents and Settings\All Users\Start Menu\Programs\Games\Pinball.lnk 112
+0x22ec718       \Intel\ivecuqmanpnirkt615\c.wnry        112
+0x22ecb80       \Documents and Settings\All Users\Start Menu\Programs\Accessories\Communications\desktop.ini    112
+0x22ecf90       \WINDOWS\system32\drivers\dxg.sys       112
+0x22ed0a8       \WINDOWS\Fonts\vgasys.fon       112
+0x22ed530       \WINDOWS\system32\usp10.dll     112
+0x22ed9c0       \WINDOWS\system32\Restore\rstrui.exe    112
+0x22ee398       \WINDOWS\system32\osk.exe       112
+0x22ee620       \WINDOWS\system32\sxs.dll       112
+0x22ee9a8       \WINDOWS\system32\odbcad32.exe  112
+0x22eeec0       \WINDOWS\system32\lpk.dll       112
+0x22ef0c8       \WINDOWS\system32\FNTCACHE.DAT  112
+0x22ef3e0       \WINDOWS\system32\sorttbls.nls  112
+0x22ef8d8       \WINDOWS\system32\locale.nls    112
+0x22f04b0       \WINDOWS\system32\unicode.nls   112
+0x22f06f8       \Intel\ivecuqmanpnirkt615\msg\m_romanian.wnry   112
+0x22f0840       \WINDOWS\system32\riched32.dll  112
+0x22f08f8       \WINDOWS\AppPatch\AcAdProc.dll  112
+0x22f0b10       \Documents and Settings\All Users\Start Menu\Programs\Accessories\desktop.ini   112
+0x22f0d50       \WINDOWS\system32\winsrv.dll    112
+0x22f0f28       \WINDOWS\system32\spider.exe    112
+0x22f1390       \WINDOWS\system32\basesrv.dll   112
+0x22f1578       \WINDOWS\system32\csrsrv.dll    112
+0x22f18c8       \WINDOWS\system32\csrss.exe     112
+0x22f2028       \$Directory     112
+0x22f2258       \WINDOWS\system32\config\software       112
+0x22f2490       \WINDOWS\system32\config\SECURITY.LOG   112
+0x22f2a38       \WINDOWS\system32       112
+0x22f2b70       \WINDOWS\system32\kernel32.dll  112
+0x22f3028       \WINDOWS\system32\shimeng.dll   112
+0x22f3510       \$Directory     112
+0x22f3cb8       \WINDOWS\system32\msvcp60.dll   112
+0x22f3e58       \WINDOWS\system32\drivers\dxg.sys       112
+0x22f60f8       \WINDOWS\system32\lsasrv.dll    112
+0x22f66a0       \Documents and Settings\donny\Start Menu\Programs\Accessories\Accessibility\Magnifier.lnk       112
+0x22f6738       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x22f6978       \WINDOWS\system32\imagehlp.dll  112
+0x22f6c98       \WINDOWS\system32\gdi32.dll     112
+0x2328270       \WINDOWS\system32\autochk.exe   112
+0x2328308       \$Directory     112
+0x23286e8       \$Mft   112
+0x23287f0       \$Directory     112
+0x2328888       \$Directory     112
+0x2328920       \WINDOWS\system32\ntdll.dll     112
+0x2328b20       \net\NtControlPipe3     112
+0x2328bb8       \WINDOWS\ime\CHTIME\Applets     112
+0x2329450       \WINDOWS\system32\cmd.exe       112
+0x2329638       \WINDOWS\system32\cmd.exe       112
+0x2329aa8       \$Directory     112
+0x2329f28       \WINDOWS\system32\ntvdm.exe     112
+0x232a1a0       \WINDOWS\system32\msvcrt.dll    112
+0x232a370       \$Directory     112
+0x232a530       \Documents and Settings\All Users\Start Menu\Programs\7-Zip\7-Zip File Manager.lnk      112
+0x232a5c8       \Documents and Settings\All Users\Start Menu\Programs\Administrative Tools\Event Viewer.lnk     112
+0x232a820       \WINDOWS\system32\xpsp2res.dll  112
+0x232aa10       \Program Files\Windows NT\hypertrm.exe  112
+0x232acd0       \WINDOWS\system32\olecnv32.dll  112
+0x232b1d0       \$Directory     112
+0x232b5e8       \WINDOWS\system32\wininet.dll   112
+0x232b680       \WINDOWS\system32       112
+0x232bb30       \WINDOWS\system32\config\default.LOG    112
+0x235c3c0       \WINDOWS\AppPatch\drvmain.sdb   112
+0x235cc80       \WINDOWS\system32\win32spl.dll  112
+0x235e950       \$BitMap        112
+0x235ede0       \WINDOWS\system32\secur32.dll   112
+0x235ee78       \WINDOWS\system32\shlwapi.dll   112
+0x235ef90       \$Directory     112
+0x23637d8       \WINDOWS\system32\mpr.dll       112
+0x23644e8       \$Directory     112
+0x2364a50       \WINDOWS\system32\wldap32.dll   112
+0x2364b60       \WINDOWS\system32\mpr.dll       112
+0x2364e98       \WINDOWS\system32\olesvr32.dll  112
+0x2365848       \WINDOWS\system32\win32k.sys    112
+0x2367640       \WINDOWS\system32\shell32.dll   112
+0x2368b98       \$Directory     112
+0x2368cc0       \WINDOWS\system32\oleaut32.dll  112
+0x2368f90       \net\NtControlPipe4     112
+0x236d328       \WINDOWS\system32\userenv.dll   112
+0x236d660       \WINDOWS\system32\ole32.dll     112
+0x236d860       \$MftMirr       112
+0x236de80       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x236df90       \WINDOWS\system32\drivers\etc\hosts     112
+0x236e1b8       \WINDOWS\system32\csrss.exe     112
+0x236e388       \$Directory     112
+0x236ef90       \WINDOWS\system32\wow32.dll     112
+0x23704f8       \$Directory     112
+0x2370888       \WINDOWS\system32\config\default        112
+0x2370c00       \$Directory     112
+0x2370cd0       \WINDOWS\system32\urlmon.dll    112
+0x2370e78       \$Directory     112
+0x2370f90       \WINDOWS\system32\config\system.LOG     112
+0x23711d8       \WINDOWS\system32\wininet.dll   112
+0x23716e8       \$Directory     112
+0x2371820       \WINDOWS\system32\url.dll       112
+0x2371bb8       \WINDOWS\system32\csrsrv.dll    112
+0x2371cd0       \WINDOWS\system32       112
+0x2371e10       \WINDOWS\system32\comdlg32.dll  112
+0x23728b0       \Program Files\Movie Maker\moviemk.exe  112
+0x2372f90       \$Directory     112
+0x2373438       \WINDOWS\system32\comdlg32.dll  112
+0x2373550       \WINDOWS\system32\advapi32.dll  112
+0x2373618       \WINDOWS\system32\sfcfiles.dll  112
+0x2373708       \WINDOWS\system32\lpk.dll       112
+0x2373e90       \WINDOWS\system32\ole32.dll     112
+0x2373f28       \WINDOWS\system32\ntdll.dll     112
+0x23753b0       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x23756b0       \WINDOWS        112
+0x2375d30       \WINDOWS\system32\stobject.dll  112
+0x2377078       \WINDOWS\system32\version.dll   112
+0x2377298       \$Directory     112
+0x23774e0       \WINDOWS\system32\iertutil.dll  112
+0x2377608       \WINDOWS\system32\gdi32.dll     112
+0x2377770       \WINDOWS\system32\msvcrt.dll    112
+0x2377870       \WINDOWS\system32\user32.dll    112
+0x2388178       \WINDOWS\system32\wuaucpl.cpl   112
+0x2388488       \$Directory     112
+0x2388578       \WINDOWS\system32\userenv.dll   112
+0x2388748       \$Directory     112
+0x2388918       \$Mft   112
+0x2389168       \$Directory     112
+0x2389288       \WINDOWS\system32\urlmon.dll    112
+0x23895b0       \$Directory     112
+0x2389f90       \$Directory     112
+0x238a0b8       \WINDOWS\system32\comctl32.dll  112
+0x238a150       \$Directory     112
+0x238ac88       \WINDOWS\system32\ieframe.dll   112
+0x238ae58       \$Directory     112
+0x238b440       \WINDOWS\system32\shlwapi.dll   112
+0x238b4d8       \WINDOWS\system32\wldap32.dll   112
+0x2390178       \WINDOWS\system32\rpcrt4.dll    112
+0x23903b0       \WINDOWS\system32\apphelp.dll   112
+0x23904b0       \WINDOWS\system32\kernel32.dll  112
+0x23906a8       \$Directory     112
+0x2391d30       \WINDOWS\system32\smss.exe      112
+0x2392238       \$Directory     112
+0x2392618       \Program Files\Windows NT\Pinball\PINBALL.EXE   112
+0x23927a0       \WINDOWS\system32\mobsync.exe   112
+0x2392870       \Program Files\7-Zip\7zFM.exe   112
+0x2393370       \WINDOWS\system32\rpcrt4.dll    112
+0x2393518       \$Directory     112
+0x2393d38       \WINDOWS\SoftwareDistribution\DataStore\Logs\tmp.edb    112
+0x23941a8       \WINDOWS\system32\usp10.dll     112
+0x2394c48       \$Directory     112
+0x23952a8       \WINDOWS\system32\iertutil.dll  112
+0x23954b8       \WINDOWS\system32\olecli32.dll  112
+0x23956a8       \WINDOWS\system32\version.dll   112
+0x2395830       \WINDOWS\system32\config\AppEvent.Evt   112
+0x2395bc0       \WINDOWS\system32\user32.dll    112
+0x2395f90       \WINDOWS\system32\olethk32.dll  112
+0x239a3d0       \$Directory     112
+0x239b410       \WINDOWS\system32\comctl32.dll  112
+0x239b5c0       \$Directory     112
+0x239b6d0       \$Directory     112
+0x239b928       \WINDOWS\system32\config\SAM.LOG        112
+0x239bb80       \WINDOWS\system32\config\SAM    112
+0x239c690       \WINDOWS\system32\sfcfiles.dll  112
+0x239c790       \$Directory     112
+0x239f478       \WINDOWS\system32\dfrgres.dll   112
+0x239f6d0       \Documents and Settings\donny\Desktop   112
+0x239f928       \Documents and Settings\donny\PrintHood 112
+0x239fb80       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x239fc78       \$Directory     112
+0x239ff28       \WINDOWS\system32       112
+0x23a0238       \WINDOWS\system32\tourstart.exe 112
+0x23a0370       \WINDOWS\hh.exe 112
+0x23a0788       \Documents and Settings\All Users\Start Menu\Microsoft Update.lnk       112
+0x23a0820       \WINDOWS\system32\msxml3.dll    112
+0x23a0cd0       \WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202      112
+0x23a1aa0       \Program Files\MSN Gaming Zone\Windows\shvlzm.exe       112
+0x23a1c28       \Documents and Settings\donny\Desktop\PIL-1.1.7.win32-py2.7.exe 112
+0x23a2330       \WINDOWS\system32\sol.exe       112
+0x23a2aa0       \WINDOWS\system32\usmt\migwiz.exe       112
+0x23a2bc0       \Documents and Settings\All Users\Start Menu\Programs\Administrative Tools\Component Services.lnk       112
+0x23a2c90       \Program Files\Windows NT\Accessories\wordpad.exe       112
+0x23a72f8       \$Directory     112
+0x23a7458       \WINDOWS\system32\ieframe.dll   112
+0x23a7558       \WINDOWS\system32\advapi32.dll  112
+0x23aa0c0       \WINDOWS\system32\autochk.exe   112
+0x23aa360       \WINDOWS\system32\basesrv.dll   112
+0x23aa668       \WINDOWS\system32\winsrv.dll    112
+0x23aac88       \WINDOWS\system32\apphelp.dll   112
+0x23aadc0       \$Directory     112
+0x23aae58       \WINDOWS\system32\normaliz.dll  112
+0x23cd490       \WINDOWS\system32\mlang.dll     112
+0x23ce268       \WINDOWS\system32\normaliz.dll  112
+0x23ce300       \$Directory     112
+0x23ce698       \WINDOWS\system32\imagehlp.dll  112
+0x23ceb60       \$LogFile       112
+0x23cec88       \$Directory     112
+0x23ced58       \WINDOWS\system32\oleaut32.dll  112
+0x23cee58       \WINDOWS\system32\secur32.dll   112
+0x23cef90       \$Directory     112
+0x23eb8e8       \{9B365890-165F-11D0-A195-0020AFD156E4} 112
+```
+What is the build version of the host machine in Case 001?
+windows.info
+*2600.xpsp.080413-2111*
+At what time was the memory file acquired in Case 001?
+windows.info
+*2012-07-22 02:45:08*
+What process can be considered suspicious in Case 001?
+windows.psscan
+*reader_sl.exe*
+What is the parent process of the suspicious process in Case 001?
+windows.pstree
+*explorer.exe*
+What is the PID of the suspicious process in Case 001?
+windows.cmd
+*1640*
+What is the parent process PID in Case 001?
+windows.cmd
+*1484*
+What user-agent was employed by the adversary in Case 001?
+vol.py -f <dump> -o /dir/to/store_dump/ windows.memmap.Memmap --pid <suspicious PID> --dump Once the dump is stored use, strings *.dmp | grep -i "user-agent"
+*Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)*
+Was Chase Bank one of the suspicious bank domains found in Case 001? (Y/N)
+strings *.dmp | grep "http" or strings *.dmp | grep "chase"
+*Y*
+What suspicious process is running at PID 740 in Case 002?
+windows.psscan
+*@WanaDecryptor@*
+What is the full path of the suspicious binary in PID 740 in Case 002?
+windows.dlllist | grep 740
+*C:\Intel\ivecuqmanpnirkt615\@WanaDecryptor@.exe*
+What is the parent process of PID 740 in Case 002?
+windows.pstree
+*tasksche.exe*
+What is the suspicious parent process PID connected to the decryptor in Case 002?
+The PID for tasksche.exe can be found with windows.pstree (previous question)
+*1940*
+From our current information, what malware is present on the system in Case 002?
+Research the found indicators against white papers and virus total.
+*WannaCry*
+What DLL is loaded by the decryptor used for socket creation in Case 002?
+Research DLLs used by the malware in question.
+*WS2_32.dll*
+What mutex can be found that is a known indicator of the malware in question in Case 002?
+windows.handles | grep 1940
+*MsWinZonesCacheCounterMutexA*
+What plugin could be used to identify all files loaded from the malware working directory in Case 002?
+Review the help menu.
+*windows.filescan*
+### Conclusion
+We have only covered a very thin layer of memory forensics that can go much deeper when analyzing the Windows, Mac, and Linux architecture. If you're looking for a deep dive into memory forensics, I would suggest reading: The Art of Memory Forensics.
+There are also a number of wikis and various community resources that can be used for more information about Volatility techniques found below.
+https://github.com/volatilityfoundation/volatility/wiki
+https://github.com/volatilityfoundation/volatility/wiki/Volatility-Documentation-Projec
+https://digital-forensics.sans.org/media/Poster-2015-Memory-Forensics.pdf
+https://eforensicsmag.com/finding-advanced-malware-using-volatility/
+From this room, as you continue on the SOC Level 1 path, more rooms will contain memory forensics challenges.
+![](https://i.imgur.com/4RqSHR0.png)
+
+## Notes / Lessons Learned
+[[Yara]]
+
