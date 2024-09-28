@@ -92,6 +92,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **OverlayFS** | `Easy` | CVE-2021-3493 Exploit | [OverlayFS.md](./OverlayFS.md) |
 | **Overpass** | `Easy` | Broken Auth / Linux CTF | [Overpass.md](./Overpass.md) |
 | **Polkit_CVE** | `Easy` | CVE-2021-3560 / CVE-2021-4034 | [Polkit_CVE.md](./Polkit_CVE.md) |
+| **Poster** | `Easy` | PostgreSQL Exploitation | [Poster.md](./Poster.md) |
 
 
-<!-- Weekly Progress: Week 90/104 | 2024-09-22 -->
+<!-- Weekly Progress: Week 91/104 | 2024-09-28 -->
