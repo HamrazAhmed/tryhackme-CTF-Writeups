@@ -162,3 +162,168 @@ techgarage.serveeazy.com
 impt.serveeazy.com
 www.mksolutions.serveeazy.com
 nextlevel.serveeazy.com
+www.global.serveeazy.com
+mksolutions.serveeazy.com
+www.mobfixer.serveeazy.com
+gallexy.serveeazy.com
+www.gallexy.serveeazy.com
+mobilecareold.serveeazy.com
+mobfixer.serveeazy.com
+technocure.serveeazy.com
+www.nextlevel.serveeazy.com
+www.hommo.serveeazy.com
+hommo.serveeazy.com
+global.serveeazy.com
+www.hifixold.serveeazy.com
+utsold.serveeazy.com
+shrimobiles.serveeazy.com
+www.technocure.serveeazy.com
+hifixold.serveeazy.com
+www.shrimobiles.serveeazy.com
+www.kms.serveeazy.com
+www.gcmtold.serveeazy.com
+kms.serveeazy.com
+gcmtold.serveeazy.com
+bserveold.serveeazy.com
+www.ifix.serveeazy.com
+ifix.serveeazy.com
+www.brkklold.serveeazy.com
+brkklold.serveeazy.com
+cellcraft.serveeazy.com
+www.cellcraft.serveeazy.com
+extremeold.serveeazy.com
+www.extremeold.serveeazy.com
+texmob.serveeazy.com
+www.texmob.serveeazy.com
+trad.serveeazy.com
+www.trad.serveeazy.com
+www.rdmobileold.serveeazy.com
+www.repairmyphoneold.serveeazy.com
+flash.serveeazy.com
+www.flash.serveeazy.com
+rdmobileold.serveeazy.com
+www.developer.serveeazy.com
+ius.serveeazy.com
+www.ius.serveeazy.com
+britcouaeold.serveeazy.com
+repairmyphoneold.serveeazy.com
+www.mobilehouseold.serveeazy.com
+developer.serveeazy.com
+www.britcouaeold.serveeazy.com
+mobilehouseold.serveeazy.com
+www.shezone.serveeazy.com
+www.mobileguru.serveeazy.com
+mobileguru.serveeazy.com
+shezone.serveeazy.com
+pubgmobiles.serveeazy.com
+skybritco.serveeazy.com
+www.pubgmobiles.serveeazy.com
+www.gallexyold.serveeazy.com
+www.skybritco.serveeazy.com
+gallexyold.serveeazy.com
+5gmobile.serveeazy.com
+rdmobile.serveeazy.com
+www.rdmobile.serveeazy.com
+www.extreme.serveeazy.com
+www.mobilecare.serveeazy.com
+extreme.serveeazy.com
+mobilecare.serveeazy.com
+zonemobiles.serveeazy.com
+www.demo.serveeazy.com
+imac.serveeazy.com
+britcouae.serveeazy.com
+masters.serveeazy.com
+www.britcouae.serveeazy.com
+www.masters.serveeazy.com
+demo.serveeazy.com
+fixst.serveeazy.com
+bserve.serveeazy.com
+www.zonemobiles.serveeazy.com
+www.reunion.serveeazy.com
+reunion.serveeazy.com
+sizzcomm.serveeazy.com
+www.sizzcomm.serveeazy.com
+www.imac.serveeazy.com
+www.hifix.serveeazy.com
+hifix.serveeazy.com
+www.gcmt.serveeazy.com
+www.fixst.serveeazy.com
+www.mobilehouse.serveeazy.com
+gcmt.serveeazy.com
+uts.serveeazy.com
+www.bserve.serveeazy.com
+www.uts.serveeazy.com
+mobilehouse.serveeazy.com
+repairmyphone.serveeazy.com
+www.repairmyphone.serveeazy.com
+www.5gmobile.serveeazy.com
+www.homepulse.serveeazy.com
+magnus.serveeazy.com
+ariesmobilecare.serveeazy.com
+www.brkkl.serveeazy.com
+www.unitell.serveeazy.com
+unitell.serveeazy.com
+www.magnus.serveeazy.com
+www.smartsolutions.serveeazy.com
+www.ariesmobilecare.serveeazy.com
+homepulse.serveeazy.com
+brkkl.serveeazy.com
+mobitron.serveeazy.com
+smartsolutions.serveeazy.com
+www.mobitron.serveeazy.com
+www.getfix.serveeazy.com
+www.krishna.serveeazy.com
+krishna.serveeazy.com
+getfix.serveeazy.com
+cloud.serveeazy.com
+2partscow.top
+influx.qft-iot.com
+mqtt.qft-iot.com
+qft-iot.com
+api.qft-iot.com
+www.cloud.qft-iot.com
+cloud.qft-iot.com
+
+id.resp_h==142.93.211.176
+defanged domain
+2partscow[.]top
+
+was really fun :)
+```
+What was the alert signature for **A Network Trojan was Detected**?
+![[Pasted image 20230414115851.png]]
+*ET MALWARE Likely Evil EXE download from MSXMLHTTP non-exe extension M2*
+What was the alert signature for **Potential Corporate Privacy Violation**?
+*ET POLICY PE EXE or DLL Windows file download HTTP*
+What was the IP to trigger either alert? Enter your answer in a **defanged** format.
+Cyberchef can defang.
+![[Pasted image 20230414120125.png]]
+*185[.]118[.]164[.]8*
+Provide the full URI for the malicious downloaded file. In your answer, **defang** the URI.
+Cyberchef can defang.
+![[Pasted image 20230414120426.png]]
+*awh93dhkylps5ulnq-be[.]com/czwih/fxla[.]php?l=gap1[.]cab*
+What is the name of the payload within the cab file?
+Extract the file from PCAP, get the hash, then hop to VirusTotal
+*draw.dll*
+What is the user-agent associated with this network traffic?
+![[Pasted image 20230414121231.png]]
+*Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/8.0; .NET4.0C; .NET4.0E)*
+What other domains do you see in the network traffic that are labelled as malicious by VirusTotal? Enter the domains **defanged** and in alphabetical order. (**format: domain[.]zzz,domain[.]zzz**)
+Check the Misc Activity alert in Brim. Cyberchef can defang.
+![[Pasted image 20230414121950.png]]
+![[Pasted image 20230414122042.png]]
+*a-zcorner[.]com,knockoutlights[.]com*
+There are IP addresses flagged as **Not Suspicious Traffic**. What are the IP addresses? Enter your answer in numerical order and **defanged**. (format: IPADDR,IPADDR)
+![[Pasted image 20230414124754.png]]
+*64[.]225[.]65[.]166,142[.]93[.]211[.]176*
+For the first IP address flagged as Not Suspicious Traffic. According to VirusTotal, there are several domains associated with this one IP address that was flagged as malicious. What were the domains you spotted in the network traffic associated with this IP address? Enter your answer in a **defanged** format. Enter your answer in alphabetical order, in a defanged format. (**format: domain[.]zzz,domain[.]zzz,etc**)
+![[Pasted image 20230414125352.png]]
+*safebanktest[.]top,tocsicambar[.]xyz,ulcertification[.]xyz*
+Now for the second IP marked as Not Suspicious Traffic. What was the domain you spotted in the network traffic associated with this IP address? Enter your answer in a **defanged** format. (format: domain[.]zzz)
+Brim, Network Miner, or Wireshark
+*2partscow[.]top*
+
+## Notes / Lessons Learned
+[[Warzone 1]]
+
