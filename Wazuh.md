@@ -225,3 +225,231 @@ Configuring the Wazuh Agent's configuration
 </localfile>
 ```
 Looking like so:
+Now, we will need to restart the Wazuh agent. In this instance, I am restarting the operating system just to be sure that these changes have taken place.
+Once this is done, we need to tell the Wazuh Management server to add Sysmon as a rule to visualize these events. This can be done by adding  an XML file to the local rules located in `/var/ossec/etc/rules/local_rules.xml`
+Configuring the Wazuh Server to ingress Ssymon events
+```shell-session
+<group name="sysmon,">
+ <rule id="255000" level="12">
+ <if_group>sysmon_event1</if_group>
+ <field name="sysmon.image">\\powershell.exe||\\.ps1||\\.ps2</field>
+ <description>Sysmon - Event 1: Bad exe: $(sysmon.image)</description>
+ <group>sysmon_event1,powershell_execution,</group>
+ </rule>
+</group>
+```
+You will need to restart the Wazuh Management server for this to apply. Once done, we can refer back to our Wazuh Management server and notice that data has been retrieved from an agent.
+Answer the questions below
+What is the name of the tool that we can use to monitor system events?
+*Sysmon*
+What standard application on Windows do these system events get recorded to?
+*Event Viewer*
+### Collecting Linux Logs with Wazuh
+Capturing logs from a Linux agent is a simple process similar to capturing events from a Windows agent. We will be using Wazuh’s log collector service to create an entry on the agent to instruct what logs should be sent to the Wazuh management server.
+For example, in this task, we will be monitoring the logs of an Apache2 web server. To begin, let’s configure the log collector service on a Linux server running the Wazuh agent.
+Wazuh comes with many rules that enable Wazuh to analyze log files and can be found in `/var/ossec/ruleset/rules`. Some common applications include:
+File Transfer Protocol (FTP) is a protocol designed to help the efficient transfer of files between different and even non-compatible systems. It supports two modes for file transfer: binary and ASCII (text).
+-   Docker
+-   FTP
+-   WordPress
+-   SQL Server
+-   MongoDB
+-   Firewalld
+-   And many, many more (approximately 900).
+However, you can always make your own rules. In this task, Wazuh will digest _Apache2_ logs using the `0250-apache_rules.xml` ruleset.
+This ruleset can analyze apache2 logs for warnings and error messages like so: We will need to insert this into the Wazuh’s agent that is sending logs to the Wazuh management servers configuration file located in `/var/ossec/etc/ossec.conf`:
+Apache2 Log Analysis
+```shell-session
+<!-- Apache2 Log Analysis -->
+  <localfile>
+    <location>/var/log/example.log</location>
+    <log_format>syslog</log_format>
+  </localfile>
+```
+We will now need to restart the Linux agent running the Apache2 service.
+What is the full file path to the rules located on a Wazuh management server?
+*/var/ossec/ruleset/rules*
+### Auditing Commands on Linux with Wazuh
+Wazuh utilises the `auditd` package that can be installed on Wazuh agents running on Debian/Ubuntu and CentOS operating systems. In this task, we will be using `auditd`on a Ubuntu system. `Auditd`monitors the system for certain actions and events and will write this to a log file.
+We can then use the log collector module on a Wazuh agent to read this log file and send it to the Wazuh management server for processing.
+First, we will need to install the `auditd`package and an `auditd`plugin. This may already be installed on your system; however, let’s install it to make sure. Let’s run the command `sudo apt-get install auditd audispd-plugins` and enable this service to run currently as well as on boot.`sudo systemctl enable auditd.service` & `sudo systemctl start auditd.service`
+We will need to configure `auditd`to create a rule for the commands and events that we wish for it to monitor. In this task, we will be telling `auditd`to monitor for any commands executed as root.
+You can extend this to monitor commands such as `tcpdump`, `netcat`, or _catting_ files such as _/etc/passwd_, which are all hallmarks of a breach.
+`Auditd` rules are located in the following directory: `/etc/audit/rules.d/audit.rules`. We will be adding our rules manually.
+For this task, we will need to open this _audit.rules_ file and append our rule ourselves. First, let’s edit the file using`sudo nano /etc/audit/rules.d/audit.rules` and appending `-a exit,always -F arch=64 -F euid=0 -S execve -k audit-wazuh-c`
+Monitoring commands executed as root
+```shell-session
+## First rule - delete all
+-D
+
+## Increase the buffers to survive stress events.
+## Make this bigger for busy systems
+-b 8192
+
+## This determine how long to wait in burst of events
+--backlog_wait_time 0
+
+## Set failure mode to syslog
+-f 1
+
+-a exit,always -F arch=b64 -F euid=0 -S execve -k  audit-wazuh-c
+```
+We will now need to inform audits of this new rule, so let's run this command `sudo auditctl -R /etc/audit/rules.d/audit.rules` to now read the new _audit.rules_ file that we appended to in the previous task.
+Now, let’s configure the system that is running a Wazuh agent that we wish to monitor these events on. We’ll be monitoring a Linux host in this case, so like in our previous tasks, we will need to configure the Wazuh agent to detect this new log file that is generated by `auditd` like so `sudo nano /var/ossec/etc/ossec.conf` and add the `auditd` log like so:
+Configuring the Wazuh agent to add the auditd log as a log file to send to the Wazuh management server
+```shell-session
+<localfile>
+    <location>/var/log/audit/audit.log</location>
+    <log_format>audit</log_format>
+</localfile>
+```
+Answer the questions below
+What application do we use on Linux to monitor events such as command execution?
+*auditd*
+What is the full path & filename for where the aforementioned application stores rules?
+*/etc/audit/rules.d/audit.rules*
+### Wazuh API
+**Using Our Own Client**
+The Wazuh management server features a rich and extensive API to allow the Wazuh management server to be interacted with using the command line. Because the Wazuh management server requires authentication, we must first authenticate our client.
+In this task, we will be using a Linux machine with the `curl` tool installed to interact with the Wazuh management server API. First, we will need to authenticate ourselves by providing a valid set of credentials to the authentication endpoint.
+Once we are authenticated, the Wazuh management server will give us a token (similar to a session) that we will need to provide for any further interaction. We can store this token as an environment variable on our Linux machine like the snippet below:
+(replacing _WAZUH_MANAGEMENT_SERVER_IP_ with the IP address of the Wazuh management server (i.e. 10.10.219.238):
+`TOKEN=$(curl -u : -k -X GET "https://WAZUH_MANAGEMENT_SERVER_IP:55000/security/user/authenticate?raw=true")`
+Let’s confirm that we have authenticated okay and have been given a token by the Wazuh management server:
+`curl -k -X GET "https://10.10.219.238:55000/" -H "Authorization: Bearer $TOKEN"`
+Wazuh API Verify Authentication
+```shell-session
+{
+    "data": {
+        "title": "Wazuh API",
+        "api_version": "4.0.0",
+        "revision": 4000,
+        "license_name": "GPL 2.0",
+        "license_url": "https://github.com/wazuh/wazuh/blob/master/LICENSE",
+        "hostname": "wazuh-master",
+        "timestamp": "2021-10-25T07:05:00+0000"
+    },
+    "error": 0
+}
+```
+We can use the standard HTTP request methods such as `GET/POST/PUT/DELETE` by providing the relevant option after a `-X` i.e. `-X GET`
+`curl -k -X GET "https://10.10.219.238:55000/manager/status?pretty=true" -H "Authorization: Bearer $TOKEN"`
+For example, let’s use the Wazuh API to list some statistics and important information about the Wazuh management server, including what services are being monitored and some general settings about the Wazuh management server:
+`curl -k -X GET "https://10.10.219.238:55000/manager/configuration?pretty=true§ion=global" -H "Authorization: Bearer $TOKEN"`
+Getting information about the Wazuh manager
+```shell-session
+{
+  "data": {
+    "affected_items": [
+      {
+        "wazuh-agentlessd": "running",
+        "wazuh-analysisd": "running",
+        "wazuh-authd": "running",
+        "wazuh-csyslogd": "running",
+        "wazuh-dbd": "stopped",
+        "wazuh-monitord": "running",
+        "wazuh-execd": "running",
+        "wazuh-integratord": "running",
+        "wazuh-logcollector": "running",
+        "wazuh-maild": "running",
+        "wazuh-remoted": "running",
+        "wazuh-reportd": "stopped",
+        "wazuh-syscheckd": "running",
+        "wazuh-clusterd": "running",
+        "wazuh-modulesd": "running",
+        "wazuh-db": "running",
+        "wazuh-apid": "stopped"
+      }
+    ],
+    "total_affected_items": 1,
+    "total_failed_items": 0,
+    "failed_items": []
+  },
+  "message": "Processes status were successfully read in specified node",
+  "error": 0
+}
+```
+Or perhaps, we can use the Wazuh management server’s API to interact with an agent:
+`curl -k -X GET "https://10.10.219.238:55000/agents?pretty=true&offset=1&limit=2&select=status%2Cid%2Cmanager%2Cname%2Cnode_name%2Cversion&status=active" -H "Authorization: Bearer $TOKEN"`
+Using the Wazuh management server’s API to interact with an agent
+```shell-session
+{
+  "data": {
+    "affected_items": [
+      {
+        "node_name": "worker2",
+        "status": "active",
+        "manager": "wazuh-worker2",
+        "version": "Wazuh v3.13.1",
+        "id": "001",
+        "name": "wazuh-agent1"
+      }
+],
+    "total_affected_items": 9,
+    "total_failed_items": 0,
+    "failed_items": []
+  },
+  "message": "All selected agents information was returned",
+  "error": 0
+}
+```
+Using Wazuh's API Console
+Wazuh has a powerful, integrated API console within the Wazuh website to query management servers and agents. Whilst it is not as extensive as using your own environment (where you can create and run scripts using python, for example), it is convenient.
+To find this API console, we need to open the "Tools" category within the Wazuh heading at the top:
+You will be greeted with a few sample queries that you can run. Simply _select_ the line and _press_ the green run arrow to run the query as demonstrated below:
+Reminder, the syntax for running queries uses the same web methods (i.e. GET/PUT/POST) and endpoints (i.e. /manager/info) as you would use with curl. You can view some more options about API endpoints by following Wazuh's detailed API documentation [here](https://documentation.wazuh.com/current/user-manual/api/reference.html)
+![[Pasted image 20221213131147.png]]
+Answer the questions below
+What is the name of the standard Linux tool that we can use to make requests to  the Wazuh management server?
+*curl*
+What HTTP method would we use to retrieve information for a Wazuh management server API?
+*GET*
+What HTTP method would we use to perform an action on a Wazuh management server API?
+*PUT*
+Navigate to Wazuh's API console.
+Completed
+The steps to do so are located within the "Using Wazuh's API Console" heading in this task
+Use the API console to find the Wazuh server's version.
+Note: You will need to add the "**v**" prefix to the number for this answer. For example **v**1.2.3
+GET /manager/info
+![[Pasted image 20221213131912.png]]
+*v4.2.5*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/4c008954c296fe1fbca005637af73ea1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/e072a26a84886784f231585294f763dd.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/561a60f3973c417098e4381bc50f9252.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/5729622f750cdd7185c094ad09ce70f8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/e50f510af70b7cd247e5623cbd5f7e31.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/1907912f601690e47d5e11d031461f4b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/06c4394959f434bffd04a4a6618b576b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/55456a88291bf69e44a15e5a742faf1e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/3a195f897882eee1b3151a3b5b167054.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/8780dc7af8c03529235e8e89bc23ae7c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/ac6454463eb96d632b951035e7599253.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/17572a8abaac35f9e281c54a8b861836.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/b5ecf8381077df9822de51cd6e81f8ff.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/6c2d68f59482de413940f2d11913fae1.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/8a1cf21e3a8fa4d7e42c8395a50973e6.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/e1605655cc49dd89016b1bdc87561561.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/ba0799f89ee450cc9646b169fc1927b1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/8a05b23adeb562db0e3ed27b1ff31dca.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/3b3bca59a5fc8d0de3b06d872838c70d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/a41077ba6bd769954ff3c353ec33b890.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/ea9e6fe95bb44847fc17c4096a1e8fe5.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/c6f7ce784d60c25cfcf58b36fa5be0f0.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/70dbe7115a64426e5648a169173a5d24.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/16f9a29cff90a5c7baefa980922f4066.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/676b0bc423d8692a96cca58f5d86605a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/e3daa0e68fe454de9e61bde5cd87c8a1.gif)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/41d15d504f407acf744fdfdd00b152a9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/2710a93265a303595e8aefadf498f400.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/d5f90046e283c983f1f1ae0a6662c990.png)
+- Which will download the report as a PDF to your machine. A generated security events report looks like so:![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/e6ea3d0724fe2cb241dc3c8a4ba08363.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/b3915d96928cd3999a652155e21a88f2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/cdea39d294694de9ae762e086acc1e81.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/c3e72b11a3b6fc4acae20858c928e28e.png)
+
+## Notes / Lessons Learned
+[[Intro to Endpoint Security]]
+
