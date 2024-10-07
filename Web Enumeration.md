@@ -728,3 +728,369 @@ Interesting Finding(s):
  |
  | Version: 3.5.0 (60% confidence)
  | Found By: Comment (Passive Detection)
+ |  - http://wpscan.thm/, Match: '<meta name="NextGEN" version="3.5.0"'
+
+[+] nextgen-gallery
+ | Location: http://wpscan.thm/wp-content/plugins/nextgen-gallery/
+ | Last Updated: 2022-09-28T18:28:00.000Z
+ | [!] The version is out of date, the latest version is 3.29
+ |
+ | Found By: Comment (Passive Detection)
+ |
+ | Version: 3.5.0 (100% confidence)
+ | Found By: Comment (Passive Detection)
+ |  - http://wpscan.thm/, Match: '<meta name="NextGEN" version="3.5.0"'
+ | Confirmed By:
+ |  Readme - Stable Tag (Aggressive Detection)
+ |   - http://wpscan.thm/wp-content/plugins/nextgen-gallery/readme.txt
+ |  Readme - ChangeLog Section (Aggressive Detection)
+ |   - http://wpscan.thm/wp-content/plugins/nextgen-gallery/readme.txt
+
+[+] Enumerating Config Backups (via Passive and Aggressive Methods)
+ Checking Config Backups - Time: 00:00:00 <> (0 / 137)  0.00%  ETA: ??:??: Checking Config Backups - Time: 00:00:00 <> (1 / 137)  0.72%  ETA: 00:01: Checking Config Backups - Time: 00:00:00 <> (3 / 137)  2.18%  ETA: 00:00: Checking Config Backups - Time: 00:00:00 <> (6 / 137)  4.37%  ETA: 00:00: Checking Config Backups - Time: 00:00:00 <> (10 / 137)  7.29%  ETA: 00:00 Checking Config Backups - Time: 00:00:00 <> (11 / 137)  8.02%  ETA: 00:00 Checking Config Backups - Time: 00:00:00 <> (12 / 137)  8.75%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (16 / 137) 11.67%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (17 / 137) 12.40%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (18 / 137) 13.13%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (21 / 137) 15.32%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (22 / 137) 16.05%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (25 / 137) 18.24%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (26 / 137) 18.97%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (27 / 137) 19.70%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (28 / 137) 20.43%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (30 / 137) 21.89%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (31 / 137) 22.62%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (32 / 137) 23.35%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (33 / 137) 24.08%  ETA: 00:00 Checking Config Backups - Time: 00:00:01 <> (35 / 137) 25.54%  ETA: 00:00 Checking Config Backups - Time: 00:00:02 <> (36 / 137) 26.27%  ETA: 00:00 Checking Config Backups - Time: 00:00:02 <> (37 / 137) 27.00%  ETA: 00:00 Checking Config Backups - Time: 00:00:02 <> (41 / 137) 29.92%  ETA: 00:00 Checking Config Backups - Time: 00:00:02 <> (42 / 137) 30.65%  ETA: 00:00 Checking Config Backups - Time: 00:00:02 <> (45 / 137) 32.84%  ETA: 00:00 Checking Config Backups - Time: 00:00:02 <> (46 / 137) 33.57%  ETA: 00:00 Checking Config Backups - Time: 00:00:02 <> (47 / 137) 34.30%  ETA: 00:00 Checking Config Backups - Time: 00:00:02 <> (48 / 137) 35.03%  ETA: 00:00 Checking Config Backups - Time: 00:00:02 <> (50 / 137) 36.49%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (51 / 137) 37.22%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (52 / 137) 37.95%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (53 / 137) 38.68%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (56 / 137) 40.87%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (57 / 137) 41.60%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (58 / 137) 42.33%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (61 / 137) 44.52%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (62 / 137) 45.25%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (63 / 137) 45.98%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (66 / 137) 48.17%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (67 / 137) 48.90%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (68 / 137) 49.63%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (69 / 137) 50.36%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (70 / 137) 51.09%  ETA: 00:00 Checking Config Backups - Time: 00:00:03 <> (72 / 137) 52.55%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (73 / 137) 53.28%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (74 / 137) 54.01%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (75 / 137) 54.74%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (78 / 137) 56.93%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (79 / 137) 57.66%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (80 / 137) 58.39%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (83 / 137) 60.58%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (84 / 137) 61.31%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (85 / 137) 62.04%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (86 / 137) 62.77%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (88 / 137) 64.23%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (89 / 137) 64.96%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (90 / 137) 65.69%  ETA: 00:00 Checking Config Backups - Time: 00:00:04 <> (93 / 137) 67.88%  ETA: 00:00 Checking Config Backups - Time: 00:00:05 <> (94 / 137) 68.61%  ETA: 00:00 Checking Config Backups - Time: 00:00:05 <> (95 / 137) 69.34%  ETA: 00:00 Checking Config Backups - Time: 00:00:05 <> (98 / 137) 71.53%  ETA: 00:00 Checking Config Backups - Time: 00:00:05 <> (99 / 137) 72.26%  ETA: 00:00 Checking Config Backups - Time: 00:00:05 <> (100 / 137) 72.99%  ETA: 00:0 Checking Config Backups - Time: 00:00:05 <> (102 / 137) 74.45%  ETA: 00:0 Checking Config Backups - Time: 00:00:05 <> (104 / 137) 75.91%  ETA: 00:0 Checking Config Backups - Time: 00:00:05 <> (105 / 137) 76.64%  ETA: 00:0 Checking Config Backups - Time: 00:00:05 <> (106 / 137) 77.37%  ETA: 00:0 Checking Config Backups - Time: 00:00:05 <> (109 / 137) 79.56%  ETA: 00:0 Checking Config Backups - Time: 00:00:05 <> (110 / 137) 80.29%  ETA: 00:0 Checking Config Backups - Time: 00:00:05 <> (111 / 137) 81.02%  ETA: 00:0 Checking Config Backups - Time: 00:00:05 <> (114 / 137) 83.21%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (115 / 137) 83.94%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (116 / 137) 84.67%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (117 / 137) 85.40%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (120 / 137) 87.59%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (121 / 137) 88.32%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (122 / 137) 89.05%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (124 / 137) 90.51%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (125 / 137) 91.24%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (126 / 137) 91.97%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (127 / 137) 92.70%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (130 / 137) 94.89%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (131 / 137) 95.62%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (132 / 137) 96.35%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (135 / 137) 98.54%  ETA: 00:0 Checking Config Backups - Time: 00:00:06 <> (136 / 137) 99.27%  ETA: 00:0 Checking Config Backups - Time: 00:00:07 <> (137 / 137) 100.00% Time: 00:00:07
+
+[i] No Config Backups Found.
+
+[+] Performing password attack on Xmlrpc against 1 user/s
+Trying phreakazoid / 123456789 Time: 00:00:00 <> (0 / 14344392)  0.00%  ETTrying phreakazoid / 123456 Time: 00:00:00 <> (1 / 14344392)  0.00%  ETA: Trying phreakazoid / 12345678 Time: 00:00:00 <> (5 / 14344392)  0.00%  ETATrying phreakazoid / babygirl Time: 00:00:01 <> (10 / 14344392)  0.00%  ETTrying phreakazoid / jessica Time: 00:00:01 <> (15 / 14344392)  0.00%  ETATrying phreakazoid / iloveu Time: 00:00:02 <> (20 / 14344392)  0.00%  ETA:Trying phreakazoid / 000000 Time: 00:00:02 <> (22 / 14344392)  0.00%  ETA:Trying phreakazoid / chocolate Time: 00:00:02 <> (25 / 14344392)  0.00%  ETrying phreakazoid / butterfly Time: 00:00:03 <> (30 / 14344392)  0.00%  ETrying phreakazoid / angel Time: 00:00:03 <> (33 / 14344392)  0.00%  ETA: Trying phreakazoid / 123123 Time: 00:00:03 <> (35 / 14344392)  0.00%  ETA:Trying phreakazoid / football Time: 00:00:04 <> (40 / 14344392)  0.00%  ETTrying phreakazoid / carlos Time: 00:00:04 <> (43 / 14344392)  0.00%  ETA:Trying phreakazoid / hannah Time: 00:00:04 <> (45 / 14344392)  0.00%  ETA:Trying phreakazoid / amanda Time: 00:00:05 <> (50 / 14344392)  0.00%  ETA:Trying phreakazoid / andrew Time: 00:00:05 <> (54 / 14344392)  0.00%  ETA:Trying phreakazoid / tweety Time: 00:00:05 <> (55 / 14344392)  0.00%  ETA:Trying phreakazoid / elizabeth Time: 00:00:06 <> (60 / 14344392)  0.00%  ETrying phreakazoid / charlie Time: 00:00:06 <> (63 / 14344392)  0.00%  ETATrying phreakazoid / barbie Time: 00:00:06 <> (65 / 14344392)  0.00%  ETA:Trying phreakazoid / jasmine Time: 00:00:06 <> (66 / 14344392)  0.00%  ETATrying phreakazoid / teamo Time: 00:00:06 <> (69 / 14344392)  0.00%  ETA: Trying phreakazoid / brandon Time: 00:00:07 <> (70 / 14344392)  0.00%  ETATrying phreakazoid / matthew Time: 00:00:07 <> (75 / 14344392)  0.00%  ETATrying phreakazoid / robert Time: 00:00:07 <> (79 / 14344392)  0.00%  ETA:Trying phreakazoid / 987654321 Time: 00:00:07 <> (80 / 14344392)  0.00%  ETrying phreakazoid / cookie Time: 00:00:08 <> (85 / 14344392)  0.00%  ETA:Trying phreakazoid / softball Time: 00:00:08 <> (90 / 14344392)  0.00%  ETTrying phreakazoid / joseph Time: 00:00:08 <> (92 / 14344392)  0.00%  ETA:Trying phreakazoid / princesa Time: 00:00:09 <> (95 / 14344392)  0.00%  ETTrying phreakazoid / jesus Time: 00:00:09 <> (100 / 14344392)  0.00%  ETA:Trying phreakazoid / alexandra Time: 00:00:09 <> (101 / 14344392)  0.00%  Trying phreakazoid / estrella Time: 00:00:09 <> (103 / 14344392)  0.00%  ETrying phreakazoid / angela Time: 00:00:10 <> (105 / 14344392)  0.00%  ETATrying phreakazoid / beautiful Time: 00:00:10 <> (108 / 14344392)  0.00%  Trying phreakazoid / sakura Time: 00:00:10 <> (110 / 14344392)  0.00%  ETATrying phreakazoid / patrick Time: 00:00:10 <> (112 / 14344392)  0.00%  ETTrying phreakazoid / christian Time: 00:00:11 <> (115 / 14344392)  0.00%  Trying phreakazoid / richard Time: 00:00:11 <> (120 / 14344392)  0.00%  ETTrying phreakazoid / carolina Time: 00:00:12 <> (125 / 14344392)  0.00%  ETrying phreakazoid / diamond Time: 00:00:12 <> (129 / 14344392)  0.00%  ETTrying phreakazoid / orange Time: 00:00:12 <> (130 / 14344392)  0.00%  ETATrying phreakazoid / nathan Time: 00:00:13 <> (135 / 14344392)  0.00%  ETATrying phreakazoid / killer Time: 00:00:13 <> (140 / 14344392)  0.00%  ETATrying phreakazoid / brittany Time: 00:00:14 <> (145 / 14344392)  0.00%  ETrying phreakazoid / george Time: 00:00:14 <> (147 / 14344392)  0.00%  ETATrying phreakazoid / rachel Time: 00:00:14 <> (150 / 14344392)  0.00%  ETATrying phreakazoid / 7777777 Time: 00:00:14 <> (153 / 14344392)  0.00%  ETTrying phreakazoid / dolphin Time: 00:00:14 <> (155 / 14344392)  0.00%  ETTrying phreakazoid / ginger Time: 00:00:15 <> (160 / 14344392)  0.00%  ETATrying phreakazoid / peanut Time: 00:00:15 <> (163 / 14344392)  0.00%  ETATrying phreakazoid / beauty Time: 00:00:15 <> (165 / 14344392)  0.00%  ETATrying phreakazoid / 222222 Time: 00:00:15 <> (169 / 14344392)  0.00%  ETATrying phreakazoid / corazon Time: 00:00:16 <> (170 / 14344392)  0.00%  ETTrying phreakazoid / pokemon Time: 00:00:16 <> (173 / 14344392)  0.00%  ETTrying phreakazoid / pepper Time: 00:00:16 <> (175 / 14344392)  0.00%  ETATrying phreakazoid / rebelde Time: 00:00:17 <> (180 / 14344392)  0.00%  ETTrying phreakazoid / babygurl Time: 00:00:17 <> (185 / 14344392)  0.00%  ETrying phreakazoid / 55555 Time: 00:00:17 <> (187 / 14344392)  0.00%  ETA:Trying phreakazoid / madison Time: 00:00:18 <> (190 / 14344392)  0.00%  ETTrying phreakazoid / mother Time: 00:00:18 <> (193 / 14344392)  0.00%  ETATrying phreakazoid / mahalkita Time: 00:00:18 <> (195 / 14344392)  0.00%  Trying phreakazoid / 123321 Time: 00:00:18 <> (198 / 14344392)  0.00%  ETATrying phreakazoid / maria Time: 00:00:19 <> (200 / 14344392)  0.00%  ETA:Trying phreakazoid / kimberly Time: 00:00:19 <> (205 / 14344392)  0.00%  ETrying phreakazoid / gemini Time: 00:00:20 <> (210 / 14344392)  0.00%  ETATrying phreakazoid / jessie Time: 00:00:20 <> (215 / 14344392)  0.00%  ETATrying phreakazoid / austin Time: 00:00:21 <> (220 / 14344392)  0.00%  ETATrying phreakazoid / andres Time: 00:00:21 <> (225 / 14344392)  0.00%  ETATrying phreakazoid / booboo Time: 00:00:21 <> (229 / 14344392)  0.00%  ETATrying phreakazoid / ronaldo Time: 00:00:21 <> (230 / 14344392)  0.00%  ETTrying phreakazoid / veronica Time: 00:00:22 <> (235 / 14344392)  0.00%  ETrying phreakazoid / chris Time: 00:00:22 <> (239 / 14344392)  0.00%  ETA:Trying phreakazoid / cutie Time: 00:00:22 <> (240 / 14344392)  0.00%  ETA:Trying phreakazoid / friend Time: 00:00:23 <> (245 / 14344392)  0.00%  ETATrying phreakazoid / prince Time: 00:00:23 <> (248 / 14344392)  0.00%  ETATrying phreakazoid / samsung Time: 00:00:23 <> (250 / 14344392)  0.00%  ETTrying phreakazoid / scooby Time: 00:00:24 <> (255 / 14344392)  0.00%  ETATrying phreakazoid / rebecca Time: 00:00:24 <> (260 / 14344392)  0.00%  ETTrying phreakazoid / jackie Time: 00:00:24 <> (264 / 14344392)  0.00%  ETATrying phreakazoid / christopher Time: 00:00:25 <> (265 / 14344392)  0.00%Trying phreakazoid / barcelona Time: 00:00:25 <> (270 / 14344392)  0.00%  Trying phreakazoid / monkey1 Time: 00:00:26 <> (275 / 14344392)  0.00%  ETTrying phreakazoid / cutiepie Time: 00:00:26 <> (279 / 14344392)  0.00%  ETrying phreakazoid / 50cent Time: 00:00:26 <> (280 / 14344392)  0.00%  ETATrying phreakazoid / kitten Time: 00:00:27 <> (285 / 14344392)  0.00%  ETATrying phreakazoid / adidas Time: 00:00:27 <> (289 / 14344392)  0.00%  ETATrying phreakazoid / karen Time: 00:00:27 <> (290 / 14344392)  0.00%  ETA:Trying phreakazoid / mustang Time: 00:00:27 <> (291 / 14344392)  0.00%  ETTrying phreakazoid / 123654 Time: 00:00:28 <> (295 / 14344392)  0.00%  ETATrying phreakazoid / sarah Time: 00:00:28 <> (300 / 14344392)  0.00%  ETA:Trying phreakazoid / denise Time: 00:00:28 <> (300 / 14344392)  0.00%  ETATrying phreakazoid / tigers Time: 00:00:28 <> (305 / 14344392)  0.00%  ETATrying phreakazoid / nicholas Time: 00:00:29 <> (310 / 14344392)  0.00%  ETrying phreakazoid / chrisbrown Time: 00:00:29 <> (315 / 14344392)  0.00% Trying phreakazoid / internet Time: 00:00:30 <> (320 / 14344392)  0.00%  ETrying phreakazoid / smokey Time: 00:00:30 <> (324 / 14344392)  0.00%  ETATrying phreakazoid / dennis Time: 00:00:30 <> (325 / 14344392)  0.00%  ETATrying phreakazoid / lollipop Time: 00:00:31 <> (330 / 14344392)  0.00%  ETrying phreakazoid / asdfgh Time: 00:00:31 <> (333 / 14344392)  0.00%  ETATrying phreakazoid / camila Time: 00:00:31 <> (335 / 14344392)  0.00%  ETATrying phreakazoid / charles Time: 00:00:32 <> (340 / 14344392)  0.00%  ETTrying phreakazoid / midnight Time: 00:00:32 <> (344 / 14344392)  0.00%  ETrying phreakazoid / jordan23 Time: 00:00:32 <> (345 / 14344392)  0.00%  ETrying phreakazoid / vincent Time: 00:00:32 <> (349 / 14344392)  0.00%  ETTrying phreakazoid / andreea Time: 00:00:33 <> (350 / 14344392)  0.00%  ETTrying phreakazoid / rafael Time: 00:00:33 <> (355 / 14344392)  0.00%  ETATrying phreakazoid / icecream Time: 00:00:33 <> (357 / 14344392)  0.00%  ETrying phreakazoid / pookie Time: 00:00:34 <> (360 / 14344392)  0.00%  ETATrying phreakazoid / nirvana Time: 00:00:34 <> (361 / 14344392)  0.00%  ETTrying phreakazoid / benjamin Time: 00:00:34 <> (365 / 14344392)  0.00%  ETrying phreakazoid / brooke Time: 00:00:35 <> (370 / 14344392)  0.00%  ETATrying phreakazoid / metallica Time: 00:00:36 <> (375 / 14344392)  0.00%  Trying phreakazoid / julian Time: 00:00:36 <> (378 / 14344392)  0.00%  ETATrying phreakazoid / jeffrey Time: 00:00:36 <> (380 / 14344392)  0.00%  ETTrying phreakazoid / catherine Time: 00:00:37 <> (385 / 14344392)  0.00%  Trying phreakazoid / fernanda Time: 00:00:37 <> (390 / 14344392)  0.00%  ETrying phreakazoid / smiley Time: 00:00:37 <> (393 / 14344392)  0.00%  ETATrying phreakazoid / jackson Time: 00:00:38 <> (395 / 14344392)  0.00%  ETTrying phreakazoid / ronald Time: 00:00:38 <> (400 / 14344392)  0.00%  ETATrying phreakazoid / asdfghjkl Time: 00:00:39 <> (405 / 14344392)  0.00%  Trying phreakazoid / 88888888 Time: 00:00:39 <> (410 / 14344392)  0.00%  ETrying phreakazoid / gatita Time: 00:00:40 <> (415 / 14344392)  0.00%  ETATrying phreakazoid / sweetheart Time: 00:00:40 <> (420 / 14344392)  0.00% Trying phreakazoid / 246810 Time: 00:00:40 <> (422 / 14344392)  0.00%  ETATrying phreakazoid / leslie Time: 00:00:41 <> (425 / 14344392)  0.00%  ETATrying phreakazoid / popcorn Time: 00:00:41 <> (427 / 14344392)  0.00%  ETTrying phreakazoid / leonardo Time: 00:00:41 <> (430 / 14344392)  0.00%  ETrying phreakazoid / liliana Time: 00:00:42 <> (435 / 14344392)  0.00%  ETTrying phreakazoid / rockon Time: 00:00:42 <> (440 / 14344392)  0.00%  ETATrying phreakazoid / fatima Time: 00:00:43 <> (445 / 14344392)  0.00%  ETATrying phreakazoid / lalala Time: 00:00:43 <> (450 / 14344392)  0.00%  ETATrying phreakazoid / single Time: 00:00:43 <> (454 / 14344392)  0.00%  ETATrying phreakazoid / skittles Time: 00:00:43 <> (455 / 14344392)  0.00%  ETrying phreakazoid / colombia Time: 00:00:43 <> (459 / 14344392)  0.00%  ETrying phreakazoid / teddybear Time: 00:00:44 <> (460 / 14344392)  0.00%  Trying phreakazoid / christina Time: 00:00:44 <> (465 / 14344392)  0.00%  Trying phreakazoid / mahal Time: 00:00:45 <> (470 / 14344392)  0.00%  ETA:Trying phreakazoid / london Time: 00:00:45 <> (475 / 14344392)  0.00%  ETATrying phreakazoid / francisco Time: 00:00:46 <> (480 / 14344392)  0.00%  Trying phreakazoid / natalia Time: 00:00:46 <> (484 / 14344392)  0.00%  ETTrying phreakazoid / smile Time: 00:00:46 <> (485 / 14344392)  0.00%  ETA:Trying phreakazoid / paola Time: 00:00:46 <> (488 / 14344392)  0.00%  ETA:Trying phreakazoid / hahaha Time: 00:00:47 <> (490 / 14344392)  0.00%  ETATrying phreakazoid / snickers Time: 00:00:47 <> (495 / 14344392)  0.00%  ETrying phreakazoid / turtle Time: 00:00:48 <> (500 / 14344392)  0.00%  ETA[SUCCESS] - phreakazoid / linkinpark                                      
+Trying phreakazoid / linkinpark Time: 00:00:48 <> (503 / 14344897)  0.00% Trying phreakazoid / stupid Time: 00:00:48 <> (505 / 14344897)  0.00%  ETA: ??:??:??
+
+[!] Valid Combinations Found:
+ | Username: phreakazoid, Password: linkinpark
+
+[!] No WPScan API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[+] Finished: Mon Oct  3 19:21:37 2022
+[+] Requests Done: 647
+[+] Cached Requests: 39
+[+] Data Sent: 297.169 KB
+[+] Data Received: 347.363 KB
+[+] Memory used: 235.887 MB
+[+] Elapsed time: 00:01:14
+```
+Enumerate the site, what is the name of the theme that is detected as running?
+*twentynineteen*
+WPScan says that this theme is out of date, what does it suggest is the number of the latest version?
+You may need to update your WPScan version. The answer is 2.3
+*2.3*
+Enumerate the site, what is the name of the plugin that WPScan has found?
+You may have to use different aggressive profiles!
+*nextgen-gallery*
+Enumerate the site, what username can WPScan find?
+*phreakazoid*
+Construct a WPScan command to brute-force the site with this username, using the rockyou wordlist as the password list. What is the password to this user?
+If this password attack takes longer than 5 minutes, you are using the wrong username / password list or URL.
+*linkinpark*
+### 3. Introduction to Nikto
+![](https://assets.tryhackme.com/additional/web-enumeration-redux/nikto.png)
+Introduction to Nikto
+Initially released in 2001, Nikto has made leaps and bounds over the years and has proven to be a very popular vulnerability scanner due to being both open-source nature and feature-rich. Nikto is capable of performing an assessment on all types of webservers (and isn't application-specific such as WPScan.). Nikto can be used to discover possible vulnerabilities including:
+Sensitive files
+Outdated servers and programs (i.e. vulnerable web server installs) https://httpd.apache.org/security/vulnerabilities_24.html
+Common server and software misconfigurations (Directory indexing, cgi scripts, x-ss protections)
+Installing Nikto
+Thankfully for us, Nikto comes pre-installed on the latest versions of penetration testing systems such as Kali Linux and Parrot. If you are using an older version of Kali Linux (such as 2019) for example, Nikto is in the apt repository, so can be installed by a simple sudo apt update && sudo apt install nikto
+﻿Installing Nikto on other operating systems such as Ubuntu or Debian involves extra steps. Whilst the TryHackMe AttackBox comes pre-installed with Nikto, you can follow the developer's installation guide for your local environment.
+In the next task, we will explore some common syntax and features of Nikto!
+Let's dive into the world of Nikto
+### 3.1. Nikto Modes
+Basic Scanning
+The most basic scan can be performed by using the -h flag and providing an IP address or domain name as an argument. This scan type will retrieve the headers advertised by the webserver or application (I.e. Apache2, Apache Tomcat, Jenkins or JBoss) and will look for any sensitive files or directories (i.e. login.php, /admin/, etc)
+An example of this is the following: nikto -h vulnerable_ip
+![](https://assets.tryhackme.com/additional/web-enumeration-redux/nikto/basic-scan.png)
+Note a few interesting things are given to us in this example:
+Nikto has identified that the application is Apache Tomcat using the favicon and the presence of "/examples/servlets/index.html" which is the location for the default Apache Tomcat application.
+HTTP Methods "PUT" and "DELETE" can be performed by clients - we may be able to leverage these to exploit the application by uploading or deleting files.
+Scanning Multiple Hosts & Ports
+Nikto is extensive in the sense that we can provide multiple arguments in a way that's similar to tools such as Nmap. In fact, so much so, we can take input directly from an Nmap scan to scan a host range. By scanning a subnet, we can look for hosts across an entire network range. We must instruct Nmap to output a scan into a format that is friendly for Nikto to read using Nmap's  -oG  flags
+For example, we can scan 172.16.0.0/24 (subnet mask 255.255.255.0, resulting in 254 possible hosts) with Nmap (using the default web port of 80) and parse the output to Nikto like so: nmap -p80 172.16.0.0/24 -oG - | nikto -h -
+There are not many circumstances where you would use this other than when you have gained access to a network. A much more common scenario will be scanning multiple ports on one specific host. We can do this by using the -p flag and providing a list of port numbers delimited by a comma - such as the following: nikto -h 10.10.10.1 -p 80,8000,8080
+![](https://assets.tryhackme.com/additional/web-enumeration-redux/nikto/multiple-ports.png)
+Introduction to Plugins
+Plugins further extend the capabilities of Nikto. Using information gathered from our basic scans, we can pick and choose plugins that are appropriate to our target. You can use the --list-plugins flag with Nikto to list the plugins or view the whole list in an easier to read format online.
+https://github.com/sullo/nikto/wiki/Plugin-list
+Some interesting plugins include:
+Plugin Name	Description
+apacheusers	Attempt to enumerate Apache HTTP Authentication Users
+cgi	Look for CGI scripts that we may be able to exploit
+robots	Analyse the robots.txt file which dictates what files/folders we are able to navigate to
+dir_traversal	Attempt to use a directory traversal attack (i.e. LFI) to look for system files such as /etc/passwd on Linux (http://ip_address/application.php?view=../../../../../../../etc/passwd)
+We can specify the plugin we wish to use by using the -Plugin argument and the name of the plugin we wish to use...For example, to use the "apacheuser" plugin, our Nikto scan would look like so: nikto -h 10.10.10.1 -Plugin apacheuser
+![](https://assets.tryhackme.com/additional/web-enumeration-redux/nikto/plugin-scan.png)
+Verbosing our Scan
+We can increase the verbosity of our Nikto scan by providing the following arguments with the -Display flag. Unless specified, the output given by Nikto is not the entire output, as it can sometimes be irrelevant (but that isn't always the case!)
+Argument	Description	Reasons for Use
+1	Show any redirects that are given by the web server. 	Web servers may want to relocate us to a specific file or directory, so we will need to adjust our scan accordingly for this.
+2	Show any cookies received 	Applications often use cookies as a means of storing data. For example, web servers use sessions, where e-commerce sites may store products in your basket as these cookies. Credentials can also be stored in cookies.
+E	Output any errors	This will be useful for debugging if your scan is not returning the results that you expect!
+Tuning Your Scan for Vulnerability Searching
+Nikto has several categories of vulnerabilities that we can specify our scan to enumerate and test for. The following list is not extensive and only include the ones that you may commonly use. We can use the -Tuning flag and provide a value in our Nikto scan:
+Category Name	Description	Tuning Option
+File Upload	Search for anything on the web server that may permit us to upload a file. This could be used to upload a reverse shell for an application to execute.	0
+Misconfigurations / Default Files	Search for common files that are sensitive (and shouldn't be accessible such as configuration files) on the web server.	2
+Information Disclosure
+Gather information about the web server or application (i.e. verison numbers, HTTP headers, or any information that may be useful to leverage in our attack later)	3
+Injection	Search for possible locations in which we can perform some kind of injection attack such as XSS or HTML	4
+Command Execution
+Search for anything that permits us to execute OS commands (such as to spawn a shell)	8
+SQL Injection	Look for applications that have URL parameters that are vulnerable to SQL Injection   	9
+Saving Your Findings
+Rather than working with the output on the terminal, we can instead, just dump it directly into a file for further analysis - making our lives much easier!
+Nikto is capable of putting to a few file formats including:
+Text File
+HTML report
+We can use the -o argument (short for -Output) and provide both a filename and compatible extension. We can specify the format (-f) specifically, but Nikto is smart enough to use the extension we provide in the -o argument to adjust the output accordingly.
+For example, let's scan a web server and output this to "report.html": nikto -h http://ip_address -o report.html
+![](https://assets.tryhackme.com/additional/web-enumeration-redux/nikto/html-command.png)
+![](https://assets.tryhackme.com/additional/web-enumeration-redux/nikto/html-report.png)
+What argument would we use if we wanted to scan port 80 and 8080 on a host?
+Lowest port number to highest!
+*-p 80,8080*
+What argument would we use if we wanted to see any cookies given by the web server?
+*-Display 2*
+### 3.2. Nikto Practical (Deploy #3)
+Deploy the Instance attached to this task. Allow five minutes for it to fully deploy before you begin your Nikto scans!
+Use Nikto to assess the ports on MACHINE_IP to answer the following questions:
+```text
+──(kali㉿kali)-[~]
+└─$ nikto -h 10.10.233.187 -p 80 
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.233.187
++ Target Hostname:    10.10.233.187
++ Target Port:        80
++ Start Time:         2022-10-03 19:46:32 (GMT-4)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.7 (Ubuntu)
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ nikto -h 10.10.233.187 -p 80,8000,8080
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ No web server found on 10.10.233.187:8000
+---------------------------------------------------------------------------
++ Target IP:          10.10.233.187
++ Target Hostname:    10.10.233.187
++ Target Port:        80
++ Start Time:         2022-10-03 19:48:48 (GMT-4)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.7 (Ubuntu)
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Server may leak inodes via ETags, header found with file /, inode: 40e0, size: 5a0311fe9980a, mtime: gzip
++ Multiple index files found: /index.html, /index.xml
++ Apache/2.4.7 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ Allowed HTTP Methods: POST, OPTIONS, GET, HEAD 
++ OSVDB-3092: /sitemap.xml: This gives a nice listing of the site content.
++ OSVDB-3268: /css/: Directory indexing found.
++ OSVDB-3092: /css/: This might be interesting...
++ OSVDB-3268: /images/: Directory indexing found.
++ OSVDB-3233: /icons/README: Apache default file found.
+
+Waiting a long time so
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ nikto -h 10.10.233.187 -p 8080        
+
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.233.187
++ Target Hostname:    10.10.233.187
++ Target Port:        8080
++ Start Time:         2022-10-03 20:13:30 (GMT-4)
+---------------------------------------------------------------------------
++ Server: Apache-Coyote/1.1
++ Retrieved x-powered-by header: Servlet/3.0; JBossAS-6
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ OSVDB-39272: /favicon.ico file identifies this app/server as: JBoss Server
++ Allowed HTTP Methods: GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS 
++ OSVDB-397: HTTP method ('Allow' Header): 'PUT' method could allow clients to save files on the web server.
++ OSVDB-5646: HTTP method ('Allow' Header): 'DELETE' may allow clients to remove files on the web server.
++ Cookie JSESSIONID created without the httponly flag
++
+```
+What is the name & version of the web server that  Nikto has determined running on port 80?
+Provide the full answer from the output
+*Apache/2.4.7*
+There is another web server running on another port. What is the name & version of this web server?
+Ensure you have waited 5 minutes for the Instance to fully deploy
+*Apache-Coyote/1.1*
+What is the name of the Cookie that this JBoss server gives?
+You may have to play around with how Nikto outputs the scan results to you! The answer is looking for the name of the cookie -- not the value
+*JSESSIONID*
+### 4. Conclusion
+Where to go from here (recommended rooms)
+GoBuster:
+OWASP Top 10 (Walkthrough)
+EasyPeasyCTF (Challenge)
+WPScan:
+RPWebScanning (Walkthrough)
+Blog (Challenge)
+Nikto:
+RPWebScanning (Walkthrough)
+OWASP Top 10 (Walkthrough)
+ToolsRUs (Walkthrough)
+EasyCTF (Challenge)
+I'll check these out!!
+
+## Exploitation
+```text
+┌──(kali㉿kali)-[~]
+└─$ curl -s http://10.10.148.19/VIDEO/flag.php    
+thm{n1c3_w0rk}
+```
+There's a flag out there that can be found by directory scanning! Find it!
+You can navigate to the directory or perform a directory scan with the file extension flag on this directory
+```text
+┌──(kali㉿kali)-[~]
+└─$ gobuster vhost -u http://webenum.thm/ -w /usr/share/wordlists/dirb/common.txt -t 64                                  
+===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:          http://webenum.thm/
+[+] Method:       GET
+[+] Threads:      64
+[+] Wordlist:     /usr/share/wordlists/dirb/common.txt
+[+] User Agent:   gobuster/3.1.0
+[+] Timeout:      10s
+===============================================================
+2022/10/03 17:33:46 Starting gobuster in VHOST enumeration mode
+===============================================================
+Found: ~adm.webenum.thm (Status: 400) [Size: 424]
+Found: ~admin.webenum.thm (Status: 400) [Size: 424]
+Found: ~administrator.webenum.thm (Status: 400) [Size: 424]
+Found: ~amanda.webenum.thm (Status: 400) [Size: 424]       
+Found: ~apache.webenum.thm (Status: 400) [Size: 424]       
+Found: ~bin.webenum.thm (Status: 400) [Size: 424]          
+Found: ~guest.webenum.thm (Status: 400) [Size: 424]        
+Found: ~http.webenum.thm (Status: 400) [Size: 424]         
+Found: ~ftp.webenum.thm (Status: 400) [Size: 424]          
+Found: ~httpd.webenum.thm (Status: 400) [Size: 424]        
+Found: ~logs.webenum.thm (Status: 400) [Size: 424]         
+Found: ~lp.webenum.thm (Status: 400) [Size: 424]           
+Found: ~mail.webenum.thm (Status: 400) [Size: 424]         
+Found: ~operator.webenum.thm (Status: 400) [Size: 424]     
+Found: ~sysadmin.webenum.thm (Status: 400) [Size: 424]     
+Found: ~sysadm.webenum.thm (Status: 400) [Size: 424]       
+Found: ~www.webenum.thm (Status: 400) [Size: 424]          
+Found: @.webenum.thm (Status: 400) [Size: 424]             
+Found: ~log.webenum.thm (Status: 400) [Size: 424]          
+Found: ~nobody.webenum.thm (Status: 400) [Size: 424]       
+Found: ~root.webenum.thm (Status: 400) [Size: 424]         
+Found: ~sys.webenum.thm (Status: 400) [Size: 424]          
+Found: ~test.webenum.thm (Status: 400) [Size: 424]         
+Found: ~tmp.webenum.thm (Status: 400) [Size: 424]          
+Found: ~user.webenum.thm (Status: 400) [Size: 424]         
+Found: ~webmaster.webenum.thm (Status: 400) [Size: 424]    
+Found: learning.webenum.thm (Status: 200) [Size: 13245]    
+Found: lost+found.webenum.thm (Status: 400) [Size: 424]    
+Found: products.webenum.thm (Status: 200) [Size: 4941]     
+Found: Products.webenum.thm (Status: 200) [Size: 4941]     
+                                                           
+===============================================================
+2022/10/03 17:34:05 Finished
+===============================================================
+```
+There are some virtual hosts running on this server. What are they?
+Can't find a wordlist to use? Check out SecLists
+*learning, products*
+```text
+┌──(root㉿kali)-[/home/kali]
+└─# echo '10.10.148.19 learning.webenum.thm' >> /etc/hosts
+                                                                          
+┌──(root㉿kali)-[/home/kali]
+└─# echo '10.10.148.19 products.webenum.thm' >> /etc/hosts
+                                                                          
+┌──(root㉿kali)-[/home/kali]
+└─# echo '10.10.148.19 Products.webenum.thm' >> /etc/hosts
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ gobuster dir -u http://learning.webenum.thm/ -w /usr/share/wordlists/dirb/common.txt -t 64 -x.txt
+===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://learning.webenum.thm/
+[+] Method:                  GET
+[+] Threads:                 64
+[+] Wordlist:                /usr/share/wordlists/dirb/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Extensions:              txt
+[+] Timeout:                 10s
+===============================================================
+2022/10/03 17:57:00 Starting gobuster in directory enumeration mode
+===============================================================
+/.hta                 (Status: 403) [Size: 285]
+/.htaccess            (Status: 403) [Size: 285]
+/.htpasswd            (Status: 403) [Size: 285]
+/.hta.txt             (Status: 403) [Size: 285]
+/.htpasswd.txt        (Status: 403) [Size: 285]
+/.htaccess.txt        (Status: 403) [Size: 285]
+/css                  (Status: 301) [Size: 326] [--> http://learning.webenum.thm/css/]
+Progress: 2354 / 9230 (25.50%)                                            Progress: 2562 / 9230 (27.76%)                                            Progress: 2692 / 9230 (29.17%)                                            Progress: 2894 / 9230 (31.35%)                                            Progress: 3074 / 9230 (33.30%)                                            Progress: 3204 / 9230 (34.71%)                                            Progress: 3458 / 9230 (37.46%)                                            Progress: 3586 / 9230 (38.85%)                                            Progress: 3716 / 9230 (40.26%)                                            Progress: 3970 / 9230 (43.01%)                                            /index.html           (Status: 200) [Size: 13245]                                     
+Progress: 4098 / 9230 (44.40%)                                            Progress: 4228 / 9230 (45.81%)                                            Progress: 4482 / 9230 (48.56%)                                            /js                   (Status: 301) [Size: 325] [--> http://learning.webenum.thm/js/] 
+Progress: 4612 / 9230 (49.97%)                                            Progress: 4758 / 9230 (51.55%)                                            Progress: 4994 / 9230 (54.11%)                                            Progress: 5124 / 9230 (55.51%)                                            Progress: 5330 / 9230 (57.75%)                                            Progress: 5506 / 9230 (59.65%)                                            Progress: 5636 / 9230 (61.06%)                                            Progress: 5762 / 9230 (62.43%)                                            Progress: 5918 / 9230 (64.12%)                                            Progress: 6054 / 9230 (65.59%)                                            Progress: 6274 / 9230 (67.97%)                                            Progress: 6438 / 9230 (69.75%)                                            Progress: 6548 / 9230 (70.94%)                                            Progress: 6722 / 9230 (72.83%)                                            Progress: 6912 / 9230 (74.89%)                                            Progress: 7042 / 9230 (76.29%)                                            Progress: 7234 / 9230 (78.37%)                                            Progress: 7404 / 9230 (80.22%)                                            Progress: 7554 / 9230 (81.84%)                                            Progress: 7746 / 9230 (83.92%)                                            Progress: 7938 / 9230 (86.00%)                                            Progress: 8066 / 9230 (87.39%)                                            Progress: 8260 / 9230 (89.49%)                                            Progress: 8450 / 9230 (91.55%)                                            Progress: 8578 / 9230 (92.94%)                                            Progress: 8706 / 9230 (94.32%)                                            Progress: 8814 / 9230 (95.49%)                                            Progress: 8980 / 9230 (97.29%)                                            Progress: 9156 / 9230 (99.20%)                                            Progress: 9228 / 9230 (99.98%)                                                                                                                                  
+===============================================================
+2022/10/03 17:57:29 Finished
+==============================
+
+nothing so
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ gobuster dir -u http://products.webenum.thm/ -w /usr/share/wordlists/dirb/common.txt -t 64 -x.txt
+===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://products.webenum.thm/
+[+] Method:                  GET
+[+] Threads:                 64
+[+] Wordlist:                /usr/share/wordlists/dirb/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Extensions:              txt
+[+] Timeout:                 10s
+===============================================================
+2022/10/03 17:57:39 Starting gobuster in directory enumeration mode
+===============================================================
+/.htpasswd            (Status: 403) [Size: 285]
+/.hta                 (Status: 403) [Size: 285]
+/.htaccess            (Status: 403) [Size: 285]
+/.htpasswd.txt        (Status: 403) [Size: 285]
+/.hta.txt             (Status: 403) [Size: 285]
+/.htaccess.txt        (Status: 403) [Size: 285]
+/css                  (Status: 301) [Size: 326] [--> http://products.webenum.thm/css/]
+Progress: 2338 / 9230 (25.33%)                                            Progress: 2514 / 9230 (27.24%)                                            Progress: 2684 / 9230 (29.08%)                                            Progress: 2810 / 9230 (30.44%)                                            Progress: 2940 / 9230 (31.85%)                                            Progress: 3132 / 9230 (33.93%)                                            Progress: 3322 / 9230 (35.99%)                                            /flag.txt             (Status: 200) [Size: 21]                                        
+Progress: 3452 / 9230 (37.40%)                                            Progress: 3644 / 9230 (39.48%)                                            Progress: 3784 / 9230 (41.00%)                                            Progress: 3964 / 9230 (42.95%)                                            /index.html           (Status: 200) [Size: 4941]                                      
+Progress: 4156 / 9230 (45.03%)                                            Progress: 4304 / 9230 (46.63%)                                            /js                   (Status: 301) [Size: 325] [--> http://products.webenum.thm/js/] 
+Progress: 4478 / 9230 (48.52%)                                            Progress: 4668 / 9230 (50.57%)                                            Progress: 4844 / 9230 (52.48%)                                            Progress: 4990 / 9230 (54.06%)                                            Progress: 5180 / 9230 (56.12%)                                            Progress: 5372 / 9230 (58.20%)                                            Progress: 5502 / 9230 (59.61%)                                            Progress: 5696 / 9230 (61.71%)                                            Progress: 5826 / 9230 (63.12%)                                            Progress: 6014 / 9230 (65.16%)    
+
+http://products.webenum.thm/flag.txt
+
+thm{gobuster_is_fun}
+```
+There's another flag to be found in one of the virtual hosts! Find it!
+Remember, you'll have to perform a dir scan on these vhosts and use the file extension flag. What file format are flags usually stored in?
+
+## Flags / Answers
+- ***thm{n1c3_w0rk}***
+- ***thm{gobuster_is_fun}***
+
+## Notes / Lessons Learned
+[[Avengers Blog]]
+
