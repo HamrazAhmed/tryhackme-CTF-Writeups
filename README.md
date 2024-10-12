@@ -94,6 +94,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Polkit_CVE** | `Easy` | CVE-2021-3560 / CVE-2021-4034 | [Polkit_CVE.md](./Polkit_CVE.md) |
 | **Poster** | `Easy` | PostgreSQL Exploitation | [Poster.md](./Poster.md) |
 | **Pwnkit** | `Easy` | CVE-2021-4034 Exploit | [Pwnkit.md](./Pwnkit.md) |
+| **Res** | `Easy` | Redis Exploitation | [Res.md](./Res.md) |
 
 
-<!-- Weekly Progress: Week 92/104 | 2024-10-06 -->
+<!-- Weekly Progress: Week 93/104 | 2024-10-12 -->
