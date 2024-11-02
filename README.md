@@ -97,6 +97,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Res** | `Easy` | Redis Exploitation | [Res.md](./Res.md) |
 | **Source** | `Easy` | Webmin CVE-2019-15107 | [Source.md](./Source.md) |
 | **Surfer** | `Easy` | SSRF Challenge | [Surfer.md](./Surfer.md) |
+| **TakeOver** | `Easy` | Subdomain Takeover | [TakeOver.md](./TakeOver.md) |
 
 
-<!-- Weekly Progress: Week 95/104 | 2024-10-27 -->
+<!-- Weekly Progress: Week 96/104 | 2024-11-02 -->
