@@ -99,6 +99,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Surfer** | `Easy` | SSRF Challenge | [Surfer.md](./Surfer.md) |
 | **TakeOver** | `Easy` | Subdomain Takeover | [TakeOver.md](./TakeOver.md) |
 | **Templates** | `Easy` | SSTI Fundamentals | [Templates.md](./Templates.md) |
+| **Thompson** | `Easy` | Tomcat Exploitation | [Thompson.md](./Thompson.md) |
 
 
-<!-- Weekly Progress: Week 97/104 | 2024-11-10 -->
+<!-- Weekly Progress: Week 98/104 | 2024-11-16 -->
