@@ -100,6 +100,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **TakeOver** | `Easy` | Subdomain Takeover | [TakeOver.md](./TakeOver.md) |
 | **Templates** | `Easy` | SSTI Fundamentals | [Templates.md](./Templates.md) |
 | **Thompson** | `Easy` | Tomcat Exploitation | [Thompson.md](./Thompson.md) |
+| **Upload Vulnerabilities** | `Easy` | File Upload Bypass | [Upload Vulnerabilities.md](./Upload%20Vulnerabilities.md) |
 
 
-<!-- Weekly Progress: Week 98/104 | 2024-11-16 -->
+<!-- Weekly Progress: Week 99/104 | 2024-11-23 -->
