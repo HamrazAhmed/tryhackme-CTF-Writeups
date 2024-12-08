@@ -102,6 +102,7 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Thompson** | `Easy` | Tomcat Exploitation | [Thompson.md](./Thompson.md) |
 | **Upload Vulnerabilities** | `Easy` | File Upload Bypass | [Upload Vulnerabilities.md](./Upload%20Vulnerabilities.md) |
 | **Vulnerability Capstone** | `Easy` | Capstone Lab | [Vulnerability Capstone.md](./Vulnerability%20Capstone.md) |
+| **WordPress-Cve2021** | `Easy` | WordPress CVE Lab | [WordPress-Cve2021.md](./WordPress-Cve2021.md) |
 
 
-<!-- Weekly Progress: Week 100/104 | 2024-11-30 -->
+<!-- Weekly Progress: Week 101/104 | 2024-12-08 -->
