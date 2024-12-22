@@ -106,4 +106,5 @@ Covers OWASP Top 10 flaws, authentication bypasses, SQL injection, Cross-Site Sc
 | **Biblioteca** | `Medium` | Linux / SQLi | [Biblioteca.md](./Biblioteca.md) |
 
 
-<!-- Weekly Progress: Week 102/104 | 2024-12-15 -->
+
+<!-- Weekly Progress: Week 103/104 | 2024-12-22 -->
