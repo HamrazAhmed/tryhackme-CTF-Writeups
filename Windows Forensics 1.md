@@ -177,3 +177,182 @@ Recent Files:
 Windows maintains a list of recently opened files for each user. As we might have seen when using Windows Explorer, it shows us a list of recently used files. This information is stored in the NTUSER hive and can be found on the following location:
 NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
 Registry Explorer allows us to sort data contained in registry keys quickly. For example, the Recent documents tab arranges the Most Recently Used (MRU) file at the top of the list. Registry Explorer also arranges them so that the Most Recently Used (MRU) file is shown at the top of the list and the older ones later.
+Another interesting piece of information in this registry key is that there are different keys with file extensions, such as .pdf, .jpg, .docx etc. These keys provide us with information about the last used files of a specific file extension. So if we are looking specifically for the last used PDF files, we can look at the following registry key:
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.pdf
+Registry Explorer also lists the Last Opened time of the files. Answer Question # 1 by looking at the above screenshot.
+Registry Explorer allows us to sort data contained in registry keys quickly. For example, the Recent documents tab arranges the Most Recently Used (MRU) file at the top of the list. Registry Explorer also arranges them so that the Most Recently Used (MRU) file is shown at the top of the list and the older ones later.
+Another interesting piece of information in this registry key is that there are different keys with file extensions, such as .pdf, .jpg, .docx etc. These keys provide us with information about the last used files of a specific file extension. So if we are looking specifically for the last used PDF files, we can look at the following registry key:
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.pdf
+Registry Explorer also lists the Last Opened time of the files. Answer Question # 1 by looking at the above screenshot.
+Office Recent Files:
+Similar to the Recent Docs maintained by Windows Explorer, Microsoft Office also maintains a list of recently opened documents. This list is also located in the NTUSER hive. It can be found in the following location:
+NTUSER.DAT\Software\Microsoft\Office\VERSION
+The version number for each Microsoft Office release is different. An example registry key will look like this:
+NTUSER.DAT\Software\Microsoft\Office\15.0\Word
+Here, the 15.0 refers to Office 2013. A list of different Office releases and their version numbers can be found on this link.
+Starting from Office 365, Microsoft now ties the location to the user's live ID. In such a scenario, the recent files can be found at the following location.
+NTUSER.DAT\Software\Microsoft\Office\VERSION\UserMRU\LiveID_####\FileMRU
+In such a scenario, the recent files can be found at the following location. This location also saves the complete path of the most recently used files.
+ShellBags:
+When any user opens a folder, it opens in a specific layout. Users can change this layout according to their preferences. These layouts can be different for different folders. This information about the Windows 'shell' is stored and can identify the Most Recently Used files and folders. Since this setting is different for each user, it is located in the user hives. We can find this information on the following locations:
+USRCLASS.DAT\Local Settings\Software\Microsoft\Windows\Shell\Bags
+USRCLASS.DAT\Local Settings\Software\Microsoft\Windows\Shell\BagMRU
+NTUSER.DAT\Software\Microsoft\Windows\Shell\BagMRU
+NTUSER.DAT\Software\Microsoft\Windows\Shell\Bags
+Registry Explorer doesn't give us much information about ShellBags. However, another tool from Eric Zimmerman's tools called the ShellBag Explorer shows us the information in an easy-to-use format. We just have to point to the hive file we have extracted, and it parses the data and shows us the results. An example is shown below. Take a look and answer Question # 2.
+Open/Save and LastVisited Dialog MRUs:
+When we open or save a file, a dialog box appears asking us where to save or open that file from. It might be noticed that once we open/save a file at a specific location, Windows remembers that location. This implies that we can find out recently used files if we get our hands on this information. We can do so by examining the following registry keys
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\OpenSavePIDlMRU
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\LastVisitedPidlMRU
+This is how Registry Explorer shows this registry key. Take a look to answer Question # 3 and 4.
+Windows Explorer Address/Search Bars:
+Another way to identify a user's recent activity is by looking at the paths typed in the Windows Explorer address bar or searches performed using the following registry keys, respectively.
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\WordWheelQuery
+Here is how the TypedPaths key looks like in Registry Explorer:
+When was EZtools opened? (Format: yyyy-mm-dd hh:mm:ss)
+*2021-12-01 13:00:34*
+At what time was My Computer last interacted with?
+*2021-12-01 13:00:34*
+What is the Absolute Path of the file opened using notepad.exe?
+`C:\Program Files\Amazon\Ec2ConfigService\Settings`
+When was this file opened?
+*2021-11-30 10:56:19*
+### Evidence of Execution
+UserAssist:
+Windows keeps track of applications launched by the user using Windows Explorer for statistical purposes in the User Assist registry keys. These keys contain information about the programs launched, the time of their launch, and the number of times they were executed. However, programs that were run using the command line can't be found in the User Assist keys. The User Assist key is present in the NTUSER hive, mapped to each user's GUID. We can find it at the following location:
+NTUSER.DAT\Software\Microsoft\Windows\Currentversion\Explorer\UserAssist\{GUID}\Count
+Take a look at the below screenshot from Registry Explorer and answer Question #1.
+ShimCache:
+ShimCache is a mechanism used to keep track of application compatibility with the OS and tracks all applications launched on the machine. Its main purpose in Windows is to ensure backward compatibility of applications. It is also called Application Compatibility Cache (AppCompatCache). It is located in the following location in the SYSTEM hive:
+SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache
+ShimCache stores file name, file size, and last modified time of the executables.
+Our goto tool, the Registry Explorer, doesn't parse ShimCache data in a human-readable format, so we go to another tool called AppCompatCache Parser, also a part of Eric Zimmerman's tools. It takes the SYSTEM hive as input, parses the data, and outputs a CSV file that looks like this:
+We can use the following command to run the AppCompatCache Parser Utility:
+AppCompatCacheParser.exe --csv <path to save output> -f <path to SYSTEM hive for data parsing> -c <control set to parse>
+The output can be viewed using EZviewer, another one of Eric Zimmerman's tools.
+AmCache:
+The AmCache hive is an artifact related to ShimCache. This performs a similar function to ShimCache, and stores additional data related to program executions. This data includes execution path, installation, execution and deletion times, and SHA1 hashes of the executed programs. This hive is located in the file system at:
+C:\Windows\appcompat\Programs\Amcache.hve
+Information about the last executed programs can be found at the following location in the hive:
+Amcache.hve\Root\File\{Volume GUID}\
+This is how Registry Explorer parses the AmCache hive:
+BAM/DAM:
+Background Activity Monitor or BAM keeps a tab on the activity of background applications. Similar Desktop Activity Moderator or DAM is a part of Microsoft Windows that optimizes the power consumption of the device. Both of these are a part of the Modern Standby system in Microsoft Windows.
+In the Windows registry, the following locations contain information related to BAM and DAM. This location contains information about last run programs, their full paths, and last execution time.
+SYSTEM\CurrentControlSet\Services\bam\UserSettings\{SID}
+SYSTEM\CurrentControlSet\Services\dam\UserSettings\{SID}
+Below you can see how Registry Explorer parses data from BAM:
+How many times was the File Explorer launched? (Check the Run Counter column )
+*26*
+What is another name for ShimCache?
+*AppCompatCache*
+Which of the artifacts also saves SHA1 hashes of the executed programs?
+*AmCache*
+Which of the artifacts saves the full path of the executed programs?
+*BAM/DAM*
+### External Devices/USB device forensics
+When performing forensics on a machine, often the need arises to identify if any USB or removable drives were attached to the machine. If so, any information related to those devices is important for a forensic investigator. In this task, we will go through the different ways to find information on connected devices and the drives on a system using the registry.
+Device identification:
+The following locations keep track of USB keys plugged into a system. These locations store the vendor id, product id, and version of the USB device plugged in and can be used to identify unique devices. These locations also store the time the devices were plugged into the system.
+SYSTEM\CurrentControlSet\Enum\USBSTOR
+SYSTEM\CurrentControlSet\Enum\USB
+Registry Explorer shows this information in a nice and easy-to-understand way. Take a look at this and answer Questions # 1 and 2.
+First/Last Times:
+Similarly, the following registry key tracks the first time the device was connected, the last time it was connected and the last time the device was removed from the system.
+SYSTEM\CurrentControlSet\Enum\USBSTOR\Ven_Prod_Version\USBSerial#\Properties\{83da6326-97a6-4088-9453-a19231573b29}\####
+In this key, the #### sign can be replaced by the following digits to get the required information:
+Value	Information
+0064	First Connection time
+0066	Last Connection time
+0067	Last removal time
+Although we can check this value manually, as we have seen above, Registry Explorer already parses this data and shows us if we select the USBSTOR key.
+USB device Volume Name:
+The device name of the connected drive can be found at the following location:
+SOFTWARE\Microsoft\Windows Portable Devices\Devices
+We can compare the GUID we see here in this registry key and compare it with the Disk ID we see on keys mentioned in device identification to correlate the names with unique devices. Take a look at these two screenshots and answer Question # 3.
+Combining all of this information, we can create a fair picture of any USB devices that were connected to the machine we're investigating.
+What is the serial number of the device from the manufacturer 'Kingston'?
+*1C6F654E59A3B0C179D366AE&0*
+What is the name of this device?
+*Kingston Data Traveler 2.0 USB Device*
+What is the friendly name of the device from the manufacturer 'Kingston'?
+*USB*
+### Hands-on Challenge
+So, now that we have learned something, let's put it into practice.
+Launch the VM attached with the task. A Windows VM should show up in the right half of your browser window. Please allow a few minutes for the machine to boot. If you don’t see a Desktop, click the Show Split Screen button at the top right of the page.
+The Setup:
+If preferred, use the following credentials to log into the machine:
+Username: THM-4n6
+Password: 123
+Once we log in, we will see two folders on the Desktop named triage and EZtools. The triage folder contains a triage collection collected through KAPE, which has the same directory structure as the parent. This is where our artifacts will be located. The EZtools folder contains Eric Zimmerman's tools, which we will be using to perform our analysis. You will also find RegistryExplorer, EZViewer, and AppCompatCacheParser.exe in the same folder.
+The Challenge:
+﻿Now that we know where the required toolset is, we can start our investigation. We will have to use our knowledge to identify where the different files for the relevant registry hives are located and load them into the tools of our choice. Let's answer the questions below using our knowledge of registry forensics.
+Scenario:
+One of the Desktops in the research lab at Organization X is suspected to have been accessed by someone unauthorized. Although they generally have only one user account per Desktop, there were multiple user accounts observed on this system. It is also suspected that the system was connected to some network drive, and a USB device was connected to the system. The triage data from the system was collected and placed on the attached VM. Can you help Organization X with finding answers to the below questions?
+Note: When loading registry hives in RegistryExplorer, it will caution us that the hives are dirty. This is nothing to be afraid of. We just need to remember the little lesson about transaction logs and point RegistryExplorer to the .LOG1 and .LOG2 files with the same filename as the registry hive. It will automatically integrate the transaction logs and create a 'clean' hive. Once we tell RegistryExplorer where to save the clean hive, we can use that for our analysis and we won't need to load the dirty hives anymore. RegistryExplorer will guide you through this process.
+![[Pasted image 20220906172030.png]]
+How many user created accounts are present on the system?( Check the SAM hive. Accounts with RIDs starting with 10xx are user created accounts)
+*3* (load sam hive into registry explorer found in system32/config)
+![[Pasted image 20220906172432.png]]
+What is the username of the account that has never been logged in?(Check the account that does not have a last logged in time)
+*thm-user2*
+![[Pasted image 20220906172531.png]]
+What's the password hint for the user THM-4n6?(Check the Password Hint column )
+*count*
+![[Pasted image 20220906173058.png]]
+When was the file 'Changelog.txt' accessed?(Format: yyyy-mm-dd hh:mm:ss Check in evidence of file/folder opening)
+*2021-11-24 18:18:48* (/NAT yes join the two logs yes save, `NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt`)
+![[Pasted image 20220906173804.png]]
+What is the complete path from where the python 3.8.2 installer was run? (Check the evidence of execution artifacts)
+`Z:\setups\python-3.8.2.exe`
+(NTUSER.DAT\Software\Microsoft\Windows\Currentversion\Explorer\UserAssist\{GUID}\Count search python)
+![[Pasted image 20220906180222.png]]
+When was the USB device with the friendly name 'USB' last connected? (Format: yyyy-mm-dd hh:mm:ss )
+*2021-11-24 18:40:06* (not found timestamp in software hive in `SOFTWARE\Microsoft\Windows Portable Devices\Devices`   so use SYSTEM hive `SYSTSEM\ROOT\ControlSet001\USBSTOR` )
+### Conclusion
+Phew! Wasn't that interesting!
+We have learned how to gather basic information about a computer and its users, identify which files they used, which programs they ran, and any external devices connected to the system.
+If it was a little harder for you to keep track of all the artifacts, download the cheatsheet on this task.
+You can use the links provided within Task 3 to explore more about the tools we introduced. Furthermore, if you like, you can play around with KAPE, regripper, and EZtools in the VM attached with the room.
+You can learn more about Windows Forensics in our Windows Forensics 2 room, where we cover even more exciting ways to perform forensics on a Windows machine, and the [KAPE room](https://tryhackme.com/room/kape) to understand how to perform forensics in a quick and efficient manner.
+Review the provided resources.
+*No answer needed*
+
+## Flags / Answers
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/fcd87960abbaa7ff06d8df911fe74a6b.jpg)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/9d33389f2fd0445a63e75dce3f6d7a88.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/e14ef3193fce1f4b35c37a96862d71da.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/3ffadf20ebe241040d659958db115c2f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/f3091f38f680b418f89cf79128d1933c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/9ec88ef00c70bf2c854b4c66afbf5470.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/5faf350078f7e7e1d1400f46e11e74a9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/bb82d24f00e15c3d16b352cdec57f256.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/8292e36577413227ec24446ae1c72a35.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/888afb265fa265d771dc02ae8f610dc0.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/414dee2639b9456334c9580aacdc2be1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/70e6fef3920cb9b0443bc1fa9d9fac5d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/1362c5a15d1879a1a5a5a5237a426108.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/f3b34b5e44e98e76034b76fc608a7670.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/bb73d7942a6e30cb96e78926ad36fddb.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/08d5e86bb3a5be6057928a8062cf7de3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/7f0ed33ad442f22ec9475488d6af4421.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/fae511770c0ac57458073992ef221251.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/6745df01d5c2f896795d5d6f481461b7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/5605bfda34393bfcb8c4aee6a5ad771f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/d24056c00af7ef9e77ea25b883cdf06c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/aff5ea8e993f2989f5f8caf94798a3c7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/aff5ea8e993f2989f5f8caf94798a3c7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/666bd5bd3db41b4b6e3f09311f25666a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/e996b8939895b4b5e55e780baa4335e9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/782204163443e8f21ddd14297ba756dd.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/9bd8461865865ac3ff774c8a88d1afd5.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/aad7dc918dbf3b1ab207dd71d03e8c0c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/a569dfdf155c1a26fe3a693c388a44c7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/8a672c6580ab63d757ee5c08c09c924a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/03c87eaaf8458db97ffbddd30a6463e8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/6c9f71cdf4c71afdc19fc8c254a6a3cc.png)
+
+## Notes / Lessons Learned
+[[Splunk 2]]
+
