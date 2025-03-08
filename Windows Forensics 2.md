@@ -590,3 +590,596 @@ Source file: C:\Users\THM-4n6\Desktop\triage\C\Users\THM-4n6\AppData\Roaming\Mic
   Expected DestList entries:  1
   Actual DestList entries: 1
   DestList version: 4
+
+--- DestList entries ---
+Entry #: 1
+  MRU: 0
+  Path: ::{26EE0668-A00A-44D7-9371-BEB064C98683}\5\::{BB06C0E4-D293-4F75-8A90-CB05B6477EEE} ==> Control Panel\5\System
+  Pinned: False
+  Created on: 1582-10-15 00:00:00
+  Last modified: 2021-11-25 04:01:16
+  Hostname:
+  Mac Address:
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: Control Panel\System and Security\System
+
+---------- Processed 'C:\Users\THM-4n6\Desktop\triage\C\Users\THM-4n6\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\7e4dca80246863e3.automaticDestinations-ms' in 0.02485050 seconds ----------
+
+Processing 'C:\Users\THM-4n6\Desktop\triage\C\Users\THM-4n6\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\969252ce11249fdd.automaticDestinations-ms'
+
+Source file: C:\Users\THM-4n6\Desktop\triage\C\Users\THM-4n6\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\969252ce11249fdd.automaticDestinations-ms
+
+--- AppId information ---
+  AppID: 969252ce11249fdd
+  Description: Mozilla Firefox 40.0 / 44.0.2
+
+--- DestList information ---
+  Expected DestList entries:  0
+  Actual DestList entries: 0
+  DestList version: 4
+
+--- DestList entries ---
+
+---------- Processed 'C:\Users\THM-4n6\Desktop\triage\C\Users\THM-4n6\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\969252ce11249fdd.automaticDestinations-ms' in 0.00818510 seconds ----------
+
+Processing 'C:\Users\THM-4n6\Desktop\triage\C\Users\THM-4n6\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\9b9cdc69c1c24e2b.automaticDestinations-ms'
+
+Source file: C:\Users\THM-4n6\Desktop\triage\C\Users\THM-4n6\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\9b9cdc69c1c24e2b.automaticDestinations-ms
+
+--- AppId information ---
+  AppID: 9b9cdc69c1c24e2b
+  Description: Notepad 64-bit
+
+--- DestList information ---
+  Expected DestList entries:  3
+  Actual DestList entries: 3
+  DestList version: 4
+
+--- DestList entries ---
+Entry #: 3
+  MRU: 0
+  Path: C:\Program Files\Amazon\Ec2ConfigService\Settings\WallpaperSettings.xml
+  Pinned: False
+  Created on: 2021-11-30 10:43:53
+  Last modified: 2021-11-30 10:56:20
+  Hostname: ???6
+  Mac Address: 02:0b:fc:70:ed:03
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Program Files\Amazon\Ec2ConfigService\Settings\WallpaperSettings.xml
+
+Entry #: 2
+  MRU: 1
+  Path: C:\Users\THM-4n6\Desktop\KAPE\KAPE\Get-KAPEUpdate.ps1
+  Pinned: False
+  Created on: 2021-11-25 03:22:45
+  Last modified: 2021-11-25 03:42:50
+  Hostname: ???????7
+  Mac Address: 00:1a:7d:da:71:10
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\KAPE\KAPE\Get-KAPEUpdate.ps1
+
+Entry #: 1
+  MRU: 2
+  Path: C:\Users\THM-4n6\Desktop\KAPE\KAPE\ChangeLog.txt
+  Pinned: False
+  Created on: 2021-11-25 03:22:45
+  Last modified: 2021-11-25 03:42:40
+  Hostname: ???????7
+  Mac Address: 00:1a:7d:da:71:10
+  Interaction count: 2
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\KAPE\KAPE\ChangeLog.txt
+
+---------- Processed 'C:\Users\THM-4n6\Desktop\triage\C\Users\THM-4n6\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\9b9cdc69c1c24e2b.automaticDestinations-ms' in 0.04229450 seconds ----------
+
+Processing 'C:\Users\THM-4n6\Desktop\triage\C\Users\THM-4n6\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\f01b4d95cf55d32a.automaticDestinations-ms'
+
+Source file: C:\Users\THM-4n6\Desktop\triage\C\Users\THM-4n6\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\f01b4d95cf55d32a.automaticDestinations-ms
+
+--- AppId information ---
+  AppID: f01b4d95cf55d32a
+  Description: Windows Explorer Windows 8.1
+
+--- DestList information ---
+  Expected DestList entries:  26
+  Actual DestList entries: 26
+  DestList version: 4
+
+--- DestList entries ---
+Entry #: 29
+  MRU: 0
+  Path: C:\Users\THM-4n6\Desktop\EZtools\SDBExplorer
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:02:08
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools\SDBExplorer
+
+Entry #: 28
+  MRU: 1
+  Path: C:\Users\THM-4n6\Desktop\EZtools\RegistryExplorer
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:02:04
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools\RegistryExplorer
+
+Entry #: 27
+  MRU: 2
+  Path: C:\Users\THM-4n6\Desktop\EZtools\ShellBagsExplorer
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:01:59
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools\ShellBagsExplorer
+
+Entry #: 26
+  MRU: 3
+  Path: C:\Users\THM-4n6\Desktop\EZtools\TimelineExplorer
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:01:59
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools\TimelineExplorer
+
+Entry #: 25
+  MRU: 4
+  Path: C:\Users\THM-4n6\Desktop\EZtools\iisGeolocate
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:01:49
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools\iisGeolocate
+
+Entry #: 24
+  MRU: 5
+  Path: C:\Users\THM-4n6\Desktop\EZtools\EvtxExplorer
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:01:49
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools\EvtxExplorer
+
+Entry #: 23
+  MRU: 6
+  Path: C:\Users\THM-4n6\Desktop\EZtools\MFTExplorer
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:01:49
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools\MFTExplorer
+
+Entry #: 22
+  MRU: 7
+  Path: C:\Users\THM-4n6\Desktop\EZtools\SQLECmd
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:01:49
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools\SQLECmd
+
+Entry #: 15
+  MRU: 8
+  Path: C:\Users\THM-4n6\Desktop\EZtools
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:01:49
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 3
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools
+
+Entry #: 21
+  MRU: 9
+  Path: C:\Users\THM-4n6\Desktop\EZtools\JumpListExplorer
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:01:35
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools\JumpListExplorer
+
+Entry #: 20
+  MRU: 10
+  Path: C:\Users\THM-4n6\Desktop\EZtools\Hasher
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:01:35
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools\Hasher
+
+Entry #: 19
+  MRU: 11
+  Path: C:\Users\THM-4n6\Desktop\regripper
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:01:21
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\regripper
+
+Entry #: 1
+  MRU: 12
+  Path: knownfolder:{754AC886-DF64-4CBA-86B5-F7FBF4FBCEF5} ==> ThisPCDesktopFolder
+  Pinned: True
+  Created on: 2021-11-25 03:12:01
+  Last modified: 2021-12-01 13:01:21
+  Hostname: ???????7
+  Mac Address: 00:1a:7d:da:71:10
+  Interaction count: 9
+
+--- Lnk information ---
+
+  Absolute path: My Computer\Desktop
+
+Entry #: 18
+  MRU: 13
+  Path: \\tsclient\D
+  Pinned: False
+  Created on: 1582-10-15 00:00:00
+  Last modified: 2021-12-01 13:01:21
+  Hostname:
+  Mac Address:
+  Interaction count: 1
+
+--- Lnk information ---
+
+  (lnk file not present)
+
+Entry #: 17
+  MRU: 14
+  Path: C:\Users\THM-4n6\Desktop\EZtools\EZViewer
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:01:07
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools\EZViewer
+
+Entry #: 16
+  MRU: 15
+  Path: C:\Users\THM-4n6\Desktop\EZtools\XWFIM
+  Pinned: False
+  Created on: 2021-12-01 12:31:48
+  Last modified: 2021-12-01 13:01:07
+  Hostname: ???6
+  Mac Address: 02:29:03:2c:d6:b1
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\EZtools\XWFIM
+
+Entry #: 14
+  MRU: 16
+  Path: \\tsclient\D\Get-ZimmermanTools-master
+  Pinned: False
+  Created on: 1582-10-15 00:00:00
+  Last modified: 2021-12-01 12:36:13
+  Hostname:
+  Mac Address:
+  Interaction count: 1
+
+--- Lnk information ---
+
+  (lnk file not present)
+
+Entry #: 13
+  MRU: 17
+  Path: C:\Program Files\Amazon\Ec2ConfigService\Settings
+  Pinned: False
+  Created on: 2021-11-30 10:43:53
+  Last modified: 2021-11-30 10:56:20
+  Hostname: ???6
+  Mac Address: 02:0b:fc:70:ed:03
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Program Files\Amazon\Ec2ConfigService\Settings
+
+Entry #: 12
+  MRU: 18
+  Path: C:\Users\THM-4n6\Desktop\KAPE
+  Pinned: False
+  Created on: 2021-11-24 18:19:17
+  Last modified: 2021-11-24 18:26:33
+  Hostname: ???6
+  Mac Address: 00:1a:7d:da:71:10
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\C:\Users\THM-4n6\Desktop\KAPE
+
+Entry #: 10
+  MRU: 19
+  Path: E:\KAPE
+  Pinned: False
+  Created on: 2021-11-25 03:22:45
+  Last modified: 2021-11-25 03:47:57
+  Hostname: ???????7
+  Mac Address: 00:1a:7d:da:71:10
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\E:\KAPE
+
+Entry #: 7
+  MRU: 20
+  Path: Z:\setups
+  Pinned: False
+  Created on: 1582-10-15 00:00:00
+  Last modified: 2021-11-25 03:33:54
+  Hostname:
+  Mac Address:
+  Interaction count: 1
+
+--- Lnk information ---
+
+  Absolute path: My Computer\Z:\setups
+
+Entry #: 2
+  MRU: 21
+  Path: knownfolder:{374DE290-123F-4565-9164-39C4925E467B} ==> Downloads
+  Pinned: True
+  Created on: 2021-11-25 03:12:01
+  Last modified: 2021-11-25 03:16:22
+  Hostname: ???????7
+  Mac Address: 00:1a:7d:da:71:10
+  Interaction count: 3
+
+--- Lnk information ---
+
+  Absolute path: My Computer\Downloads
+
+Entry #: 6
+  MRU: 22
+  Path: knownfolder:{18989B1D-99B5-455B-841C-AB7C74E4DDFC} ==> Videos
+  Pinned: False
+  Created on: 2021-11-25 03:12:01
+  Last modified: 2021-11-25 03:16:22
+  Hostname: ???????7
+  Mac Address: 00:1a:7d:da:71:10
+  Interaction count: 3
+
+--- Lnk information ---
+
+  Absolute path: My Computer\Videos
+
+Entry #: 5
+  MRU: 23
+  Path: knownfolder:{4BD8D571-6D19-48D3-BE97-422220080E43} ==> Music
+  Pinned: False
+  Created on: 2021-11-25 03:12:01
+  Last modified: 2021-11-25 03:16:22
+  Hostname: ???????7
+  Mac Address: 00:1a:7d:da:71:10
+  Interaction count: 3
+
+--- Lnk information ---
+
+  Absolute path: My Computer\Music
+
+Entry #: 4
+  MRU: 24
+  Path: knownfolder:{33E28130-4E1E-4676-835A-98395C3BC3BB} ==> Pictures
+  Pinned: True
+  Created on: 2021-11-25 03:12:01
+  Last modified: 2021-11-25 03:16:22
+  Hostname: ???????7
+  Mac Address: 00:1a:7d:da:71:10
+  Interaction count: 3
+
+--- Lnk information ---
+
+  Absolute path: My Computer\Pictures
+
+Entry #: 3
+  MRU: 25
+  Path: knownfolder:{FDD39AD0-238F-46AF-ADB4-6C85480369C7} ==> Documents
+  Pinned: True
+  Created on: 2021-11-25 03:12:01
+  Last modified: 2021-11-25 03:16:22
+  Hostname: ???????7
+  Mac Address: 00:1a:7d:da:71:10
+  Interaction count: 3
+
+--- Lnk information ---
+
+  Absolute path: My Computer\Documents
+
+---------- Processed 'C:\Users\THM-4n6\Desktop\triage\C\Users\THM-4n6\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\f01b4d95cf55d32a.automaticDestinations-ms' in 0.31934630 seconds ----------
+
+Processed 6 out of 6 files in 0.9539 seconds
+
+AutomaticDestinations CSV output will be saved to 'C:\Users\THM-4n6\Desktop\THM\20220907074125_AutomaticDestinations.csv'
+```
+![[Pasted image 20220906214610.png]]
+What program was used to open C:\Users\THM-4n6\Desktop\KAPE\KAPE\ChangeLog.txt? (Check output of JLECmd.exe. Triage data to be used is from the folder named C:\users\thm-4n6\Desktop\triage\C\.)
+*notepad.exe*
+### File/folder knowledge
+Shortcut Files
+Windows creates a shortcut file for each file opened either locally or remotely. The shortcut files contain information about the first and last opened times of the file and the path of the opened file, along with some other data. Shortcut files can be found in the following locations:
+C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Recent\
+C:\Users\<username>\AppData\Roaming\Microsoft\Office\Recent\
+We can use Eric Zimmerman's LECmd.exe (Lnk Explorer) to parse Shortcut files. When we run the LECmd.exe, we see the following options:
+```text
+Administrator: Command Prompt
+
+           
+user@machine$ LECmd.exe
+
+LECmd version 1.4.0.0
+
+Author: Eric Zimmerman (saericzimmerman@gmail.com)
+https://github.com/EricZimmerman/LECmd
+
+        d               Directory to recursively process. Either this or -f is required
+        f               File to process. Either this or -d is required
+        q               Only show the filename being processed vs all output. Useful to speed up exporting to json and/or csv. Default is FALSE
+
+        r               Only process lnk files pointing to removable drives. Default is FALSE
+        all             Process all files in directory vs. only files matching *.lnk. Default is FALSE
+
+        csv             Directory to save CSV formatted results to. Be sure to include the full path in double quotes
+        csvf            File name to save CSV formatted results to. When present, overrides default name
+
+        xml             Directory to save XML formatted results to. Be sure to include the full path in double quotes
+        html            Directory to save xhtml formatted results to. Be sure to include the full path in double quotes
+        json            Directory to save json representation to. Use --pretty for a more human readable layout
+        pretty          When exporting to json, use a more human readable layout. Default is FALSE
+
+        nid             Suppress Target ID list details from being displayed. Default is FALSE
+        neb             Suppress Extra blocks information from being displayed. Default is FALSE
+
+        dt              The custom date/time format to use when displaying time stamps. See https://goo.gl/CNVq0k for options. Default is: yyyy-MM-dd HH:mm:ss
+        mp              Display higher precision for time stamps. Default is FALSE
+
+Examples: LECmd.exe -f "C:\Temp\foobar.lnk"
+          LECmd.exe -f "C:\Temp\somelink.lnk" --json "D:\jsonOutput" --jsonpretty
+          LECmd.exe -d "C:\Temp" --csv "c:\temp" --html c:\temp --xml c:\temp\xml -q
+          LECmd.exe -f "C:\Temp\some other link.lnk" --nid --neb
+          LECmd.exe -d "C:\Temp" --all
+
+          Short options (single letter) are prefixed with a single dash. Long commands are prefixed with two dashes
+
+Either -f or -d is required. Exiting
+```
+We can use the following command to parse shortcut files using LECmd.exe:
+LECmd.exe -f <path-to-shortcut-files> --csv <path-to-save-csv>
+The creation date of the shortcut file points to the date/time when the file was first opened. The date/time of modification of the shortcut file points to the last time the file was accessed.
+IE/Edge history
+An interesting thing about the IE/Edge browsing history is that it includes files opened in the system as well, whether those files were opened using the browser or not. Hence, a valuable source of information on opened files in a system is the IE/Edge history. We can access the history in the following location:
+C:\Users\<username>\AppData\Local\Microsoft\Windows\WebCache\WebCacheV*.dat
+The files/folders accessed appear with a file:///* prefix in the IE/Edge history. Though several tools can be used to analyze Web cache data, you can use Autopsy to do so in the attached VM. For doing that, select Logical Files as a data source.
+It will then ask you to select the path from which you want files to be analyzed. You can provide the path to the triage folder.
+In the Window where Autopsy asks about ingest modules to process data, check the box in front of 'Recent Activity' and uncheck everything else.
+You will be able to view local files accessed in the Web history option in the left panel.
+This is what it will look like in the right panel.
+As shown above, the 'Data Artifacts' tab displays information about the file accessed.
+Jump Lists
+As we already learned in the last task, Jump Lists create a list of the last opened files. This information can be used to identify both the last executed programs and the last opened files in a system. Remembering from the last task, Jump Lists are present at the following location:
+C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations
+We have already learned about parsing Jump lists in the previous task so we won't go over that again. Let's analyze the triage data available on the following location in the attached VM to answer the questions:
+![[Pasted image 20220906215337.png]]
+C:\Users\THM-4n6\Desktop\triage\C\
+When was the folder C:\Users\THM-4n6\Desktop\regripper last opened?
+*12/1/2021 13:01* (Once you know where to look, JLECmd will give you the date/time info)
+When was the above-mentioned folder first opened?
+*12/1/2021 12:31* (Once you know where to look, JLECmd will give you the date/time info)
+### External Devices/USB device forensics
+Setupapi dev logs for USB devices
+When any new device is attached to a system, information related to the setup of that device is stored in the setupapi.dev.log. This log is present at the following location:
+C:\Windows\inf\setupapi.dev.log
+This log contains the device serial number and the first/last times when the device was connected.
+Here is what it looks like when opened in Notepad.exe. Notice the first line where we can see the device ID and Serial Number.
+Shortcut files
+As we learned in the previous task, shortcut files are created automatically by Windows for files opened locally or remotely. These shortcut files can sometimes provide us with information about connected USB devices. It can provide us with information about the volume name, type, and serial number. Recalling from the previous task, this information can be found at:
+C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Recent\
+C:\Users\<username>\AppData\Roaming\Microsoft\Office\Recent\
+As we have already learned about parsing Shortcut files using Eric Zimmerman's LECmd.exe in a previous task, we will not go over it again.
+Which artifact will tell us the first and last connection times of a removable drive?
+*setupapi.dev.log*
+### Conclusion and Further material
+That wraps up our Windows Forensics 2 room. It's been fun learning how Microsoft Windows logs everything performed on a system.
+If you haven't already, check out the Windows Forensics 1 room for learning about the Windows registry and all the different artifacts it provides us. If you think all of this effort is a little too much and you want some of it automated, you can check out the KAPE room.
+Yayyy!! Completed the room!
+*No answer needed*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/d1eec704594e545538e7f379ab8e8e18.png)
+- ![|333](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/653f59e7c921734c94658f146ce62c34.png)
+- ![|222](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/cb2f6f2c7df04a5a95685ff3619ad752.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/1efa320c87b2f2d564e60bf4c6ec6dc5.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/1411fbe2ad57d4cd474be027c72b3968.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/a60c87484f00a38ce9e5250cb3b85055.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/77d222f83d80c4682301a809fb98999f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/83d738a83fc1dd47e49106508087fab7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/deb3837cf6fd3766b084cc4ecb006650.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/99a0874ffec490f0468910cc2990ec2f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/6aa98fadbab058ee3d760e520198d2f1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/905832f92232c0e982fb84588d5fea1f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/14acd357e9c89b8ce8297b076ed43c02.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/8da15f822b9a82b094d1cd4b80aed83c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/c5d0b8ea02333e7609edf0a727e037dd.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/413c734d28f51bfdba616f9c6c8a9ed8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/2ff14f1bd6b4e92c5e700054e7f68e5c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/4169c85581f1f227a44c12a5da776617.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/61306d87a330ed00419e22e7/room-content/da93720ac86a73115f4eeabd6581a5a7.png)
+
+## Notes / Lessons Learned
+[[Windows Forensics 1]]
+
