@@ -163,3 +163,168 @@ The same analysis techniques for Request packets apply here as well, again the m
 Practical ICMP Packet Analysis
 Now that you understand how an ICMP packet is formed and what it contains, we can begin hands-on practical analysis of ICMP packets. Go to the folder /root/Rooms/Wireshark101 on the AttackBox and double click the task8.pcap file to open it in Wireshark; you can also download the pcap on this task.
 This network capture only has two protocols so it is up to you whether or not you decide to filter the ICMP protocol or not.
+What is the type for packet 4?
+*8*
+What is the type for packet 5?
+*0*
+What is the timestamp for packet 12, only including month day and year?
+note: Wireshark bases it’s time off of your devices time zone, if your answer is wrong try one day more or less.
+*May 30, 2013*
+What is the full data string for packet 18?
+*08090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f3031323334353637* (copy the hexadecimal)
+### TCP Traffic
+TCP Overview
+TCP or Transmission Control Protocol handles the delivery of packets including sequencing and errors. You should already have an understanding of how TCP works, if you need a refresher check out the [IETF TCP Documentation](https://tools.ietf.org/html/rfc793).
+Below you can see a sample of a Nmap scan, scanning port 80 and 443. We can tell that the port is closed due to the RST, ACK packet in red.
+![](https://assets.tryhackme.com/additional/wireshark101/25.png)
+When analyzing TCP packets, Wireshark can be very helpful and color code the packets in order of danger level. If you can't remember the color code go back to Task 3 and refresh on how Wireshark uses colors to match packets.
+TCP can give useful insight into a network when analyzing however it can also be hard to analyze due to the number of packets it sends. This is where you may need to use other tools like RSA NetWitness and NetworkMiner to filter out and further analyze the captures.
+TCP Traffic Overview
+A common thing that you will see when analyzing TCP packets is known as the TCP handshake, which you should already be familiar with. It includes a series of packets: syn, synack, ack; That allows devices to establish a connection.
+![](https://assets.tryhackme.com/additional/wireshark101/26.png)
+Typically when this handshake is out of order or when it includes other packets like an RST packet, something suspicious or wrong is happening in the network. The Nmap scan in the section above is a perfect example of this.
+TCP Packet Analysis
+For analyzing TCP packets we will not go into the details of each individual detail of the packets; however, look at a few of the behaviors and structures that the packets have.
+Below we see packet details for an SYN packet. The main thing that we want to look for when looking at a TCP packet is the sequence number and acknowledgment number.
+![](https://assets.tryhackme.com/additional/wireshark101/27.png)
+In this case, we see that the port was not open because the acknowledgment number is 0.
+Within Wireshark, we can also see the original sequence number by navigating to edit > preferences > protocols > TCP > relative sequence numbers (uncheck boxes).
+![](https://assets.tryhackme.com/additional/wireshark101/28.png)
+![](https://assets.tryhackme.com/additional/wireshark101/29.png)
+### DNS Traffic
+DNS Overview
+DNS or Domain Name Service protocol is used to resolves names with IP addresses. Just like the other protocols, you should be familiar with DNS; however, if you're not you can refresh with the [IETF DNS Documentation](https://www.ietf.org/rfc/rfc1035.txt).
+There are a couple of things outlined below that you should keep in the back of your mind when analyzing DNS packets.
+-   Query-Response
+-   DNS-Servers Only
+-   UDP
+If anyone of these is out of place then the packets should be looked at further and should be considered suspicious.
+Below we can see a packet capture with multiple DNS queries and responses.
+![](https://assets.tryhackme.com/additional/wireshark101/30.png)
+Instantly looking at the packets we can see what they are querying, this can be useful when you have many packets and need to identify suspicious or unusual traffic quickly.
+DNS Traffic Overview
+DNS Query:
+Looking at the below query we really have two bits of information that we can use to analyze the packet. The first bit of information we can look at is where the query is originating from, in this case, it is UDP 53 which means that this packet passes that check, if it was TCP 53 then it should be considered suspicious traffic and needs to analyzed further. We can also look at what it is querying as well, this can be useful with other information to build a story of what happened.
+![](https://assets.tryhackme.com/additional/wireshark101/31.png)
+When analyzing DNS packets you really need to understand your environment and whether or not the traffic would be considered normal within your environment.
+DNS Response:
+Below we see a response packet, it is similar to the query packet, but it includes an answer as well which can be used to verify the query.
+![](https://assets.tryhackme.com/additional/wireshark101/32.png)
+Practical DNS Packet Analysis
+Now that we understand the basics of how DNS traffic looks and interacts. Go to the folder /root/Rooms/Wireshark101 on the AttackBox and double click the task10.pcap file to open it in Wireshark; you can also download the pcap on this task.
+This capture only has two protocols so it is up to you whether or not you decide to filter the ICMP protocol or not.
+What is being queried in packet 1?
+*8.8.8.8.in-addr.arpa* (copy as value)
+What site is being queried in packet 26?
+*www.wireshark.org*
+What is the Transaction ID for packet 26?
+*0x2c58*
+### HTTP Traffic
+HTTP or Hypertext Transfer Protocol is a commonly used port for the world wide web and used by some websites, however, its encrypted counterpart: HTTPS is more common which we will discuss in the next text. HTTP is used to send GET and POST requests to a web server in order to receive things like webpages. Knowing how to analyze HTTP can be helpful to quickly spot things like SQLi, Web Shells, and other web-related attack vectors.
+HTTP Traffic Overview
+You should already have a general understanding of how HTTP works before completing this room; however, if you need a refresher you can read the official paper by the [IETF on HTTP methods](https://www.ietf.org/rfc/rfc2616.txt).
+HTTP is one of the most straight forward protocols for packet analysis, the protocol is straight to the point and does not include any handshakes or prerequisites before communication.
+![](https://assets.tryhackme.com/additional/wireshark101/33.png)
+Above we can see a sample HTTP packet, looking at an HTTP packet we can easily gather information since the data stream is not encrypted like the HTTP counterpart HTTPS. Some of the important information we can gather from the packet is the Request URI, File Data, Server.
+Now that we understand the basic structure of an HTTP packet we can move on to looking at a sample HTTP packet capture to get hands-on with the packets.
+Practical HTTP Packet Analysis
+To get an understanding of the flow of HTTP packets and get hands-on with the packets, we can analyze the http.cap file. Go to the folder /root/Rooms/Wireshark101 on the AttackBox and double click the task11.pcap file to open it in Wireshark; you can also download the pcap on this task.
+![](https://assets.tryhackme.com/additional/wireshark101/34.png)
+After opening the PCAP we can see that this is just a simple HTTP packet capture with a few requests.
+Navigating deeper into the packet capture we can look at the details of one of the HTTP requests for example packet 4.
+![](https://assets.tryhackme.com/additional/wireshark101/35.png)
+From this packet we can identify some very important information like the host, user-agent, requested URI, and response.
+We can use some of Wireshark's built-in features to help digest all of this data and organize it for further future analysis. We can begin by looking at a very useful feature in Wireshark to organize the protocols present in a capture the Protocol Hierarchy. Navigate to Statistics > Protocol Hierarchy.
+![](https://assets.tryhackme.com/additional/wireshark101/36.png)
+This information can be very useful in practical applications like threat hunting to identify discrepancies in packet captures.
+The next feature in Wireshark we will look at is the Export HTTP Object. This feature will allow us to organize all requested URIs in the capture. To use Export HTTP Object navigate to file > Export Objects > HTTP.
+![](https://assets.tryhackme.com/additional/wireshark101/37.png)
+Similar to the Protocol Hierarchy this can be useful to quickly identify possible discrepancies in captures.
+The last feature we will cover in this section of this room is Endpoints. This feature allows the user to organize all endpoints and IPs found within a specific capture. Just like the other features, this can be useful to identify where a discrepancy is originating from. To use the Endpoints feature navigate to Statistics > Endpoints.
+![](https://assets.tryhackme.com/additional/wireshark101/38.png)
+HTTP is not a common protocol to see too much as HTTPS is now more commonly used; however, HTTP is still used often and can be very easy to analyze if given the opportunity.
+What percent of packets originate from Domain Name System?
+*4.7*
+What endpoint ends in .237?
+*145.254.160.237*
+What is the user-agent listed in packet 4?
+*Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.6) Gecko/20040113\r\n*
+Looking at the data stream what is the full request URI from packet 18?
+*https://pagead2.googlesyndication.com/pagead/ads?client=ca-pub-2309191948673629&random=1084443430285&lmt=1082467020&format=468x60_as&output=html&url=http%3A%2F%2Fwww.ethereal.com%2Fdownload.html&color_bg=FFFFFF&color_text=333333&color_link=000000&color_url=666633&color_border=666633*
+What domain name was requested from packet 38?
+*www.ethereal.com*
+Looking at the data stream what is the full request URI from packet 38?*http://www.ethereal.com/download.html*
+### HTTPS Traffic
+HTTPS or Hypertext Transfer Protocol Secure can be one of the most annoying protocols to understand from a packet analysis perspective and can be confusing to understand the steps needed to take in order to analyze HTTPS packets.
+HTTPS Traffic Overview
+Before sending encrypted information the client and server need to agree upon various steps in order to make a secure tunnel.
+1.  Client and server agree on a protocol version
+2.  Client and server select a cryptographic algorithm
+3.  The client and server can authenticate to each other; this step is optional
+4.  Creates a secure tunnel with a public key
+We can begin analyzing HTTPS traffic by looking at packets for the handshake between the client and the server. Below is a Client Hello packet showing the SSLv2 Record Layer, Handshake Type, and SSL Version.
+![](https://assets.tryhackme.com/additional/wireshark101/39.png)
+Below is the Server Hello packet sending similar information as the Client Hello packet however this time it includes session details and SSL certificate information
+![](https://assets.tryhackme.com/additional/wireshark101/40.png)
+Below is the Client Key Exchange packet, this part of the handshake will determine the public key to use to encrypt further messages between the Client and Server.
+![](https://assets.tryhackme.com/additional/wireshark101/41.png)
+In the next packet, the server will confirm the public key and create the secure tunnel, all traffic after this point will be encrypted based on the agreed-upon specifications listed above.
+![](https://assets.tryhackme.com/additional/wireshark101/41.png)
+The traffic between the Client and the Server is now encrypted and you will need the secret key in order to decrypt the data stream being sent between the two hosts.
+![](https://assets.tryhackme.com/additional/wireshark101/42.png)
+Practical HTTPS Packet Analysis
+In order to practice and get hands-on with HTTPS packets, we can analyze the snakeoil2_070531 PCAP and decryption key. Go to the folder /root/Rooms/Wireshark101 on the AttackBox and extract the folder task12.zip; you can also download this on this task.
+We first need to load the PCAP into Wireshark. Navigate to File > Open and select the snakeoil2 PCAP.
+![](https://assets.tryhackme.com/additional/wireshark101/43.png)
+From looking at the above packet capture we can see that all of the requests are encrypted. Looking closer at the packets we can see the HTTPS handshake as well as the encrypted requests themselves. Let's take a closer look at one of the encrypted requests: Packet 11.
+![](https://assets.tryhackme.com/additional/wireshark101/44.png)
+We can confirm from the packet details that the Application Data is encrypted. You can use an RSA key in Wireshark in order to view the data unencrypted. In order to load an RSA key navigate to Edit > Preferences > Protocols > TLS >  [+] . If you are using an older version of Wireshark then this will be SSL instead of TLS. You will need to fill in the various sections on the menu with the following preferences:
+IP Address: 127.0.0.1
+Port: start_tls
+Protocol: http
+Keyfile: RSA key location
+![](https://assets.tryhackme.com/additional/wireshark101/45.png)
+Now that we have an RSA key imported into Wireshark, if we go back to the packet capture we can see that the data stream is now unencrypted.
+![](https://assets.tryhackme.com/additional/wireshark101/46.png)
+We can now see the HTTP requests in unencrypted data streams. Looking further at one of the details of the packet we can see the unencrypted data stream closer.
+![](https://assets.tryhackme.com/additional/wireshark101/47.png)
+Looking at the packet details we can see some very important information such as the request URI and the User-Agent which can be very useful in practical applications of Wireshark such as threat hunting and network administration.
+We can now use other features in order to organize the data stream, like using the export HTTP object feature, to access this feature navigate to File > Export Objects > HTTP
+![](https://assets.tryhackme.com/additional/wireshark101/48.png)
+![[Pasted image 20220826002704.png]]
+![[Pasted image 20220826002522.png]]
+Looking at the data stream what is the full request URI for packet 31?
+*https://localhost/icons/apache_pb.png* (copy as value)
+Looking at the data stream what is the full request URI for packet 50?
+*https://localhost/icons/back.gif*
+What is the User-Agent listed in packet 50?
+*Mozilla/5.0 (X11; U; Linux i686; fr; rv:1.8.0.2) Gecko/20060308 Firefox/1.5.0.2*
+
+## Exploitation
+Zerologon PCAP Overview
+We have gathered PCAP files from a recent Windows Active Directory Exploit called Zerologon or CVE-2020-1472. The scenario within the PCAP file contains a Windows Domain Controller with a private IP of 192.168.100.6 and an attacker with the private IP of 192.168.100.128. Let's walk through the steps of analyzing the PCAP and coming to a hypothesis of the events that happened.
+![](https://assets.tryhackme.com/additional/wireshark101/49.png)
+Identifying the Attacker
+Immediately upon opening the PCAP file we see some things that may be out of the ordinary. First, we see some normal traffic from OpenVPN, ARP, etc. We then start to identify what would be known as unknown protocols in this case DCERPC and EPM.
+Looking at the packets we see that 192.168.100.128 is sending all of the requests, so we can assume that the device is the attacker. We can continue looking at packets coming from this IP to narrow down our hunt.
+Zerologon POC Connection Analysis
+![](https://assets.tryhackme.com/additional/wireshark101/50.png)
+We can set a filter for the src of the IP that we believe to be suspicious. When analyzing PCAPS (Packet capture (PCAP) is a networking practice involving the interception of data packets travelling over a network. Once the packets are captured, they can be stored by IT teams for further analysis. The inspection of these packets allows IT teams to identify issues and solve network problems affecting daily operations. )
+we need to be aware of IOCs or Indicators of Compromise particular exploits may have with them. This is known as Threat Intelligence, which is out of the scope of this room; I recommend that after completing this room if you're interested more then do your own research on the topic. In this case, if we had background knowledge of the Zerologon exploit, we would know that the exploit uses multiple RPC connections, and DCERPC requests to change the machine account password, which could be verified with the PCAP.
+Secretsdump SMB Analysis
+Looking further at the PCAP we can see SMB2/3 traffic and DRSUAPI traffic, again with prior knowledge of the attack we know that it uses secretsdump to dump hashes. Secretsdump abuses SMB2/3 and DRSUAPI to do this, so we can assume that this traffic is secretsdump.
+![](https://assets.tryhackme.com/additional/wireshark101/51.png)
+Each exploit and attack will come with its unique artifacts, in this case, it is clear what happened and the order of events that occurred. Once we have identified the attacker we would need to move on to other steps to identify and isolate as well as report the incident if we were on a Threat Hunting or DFIR team.
+Read the above and analyze the PCAP yourself  to piece together the events that occurred; access the pcap by going to /root/Rooms/Wireshark101 on the AttackBox and double click the task11.pcap file to open it in Wireshark; you can also download it on this task.
+### Conclusion
+Want to learn more? There are multiple courses and certifications that take a deep dive into Wireshark. The first free resource that I would recommend checking out is the Wireshark online documentation. It is very detailed and can help you understand all the nuances that come with learning Wireshark. Along with the written docs they also provide some videos to help you out along the way.
+You can find the Wireshark Documentation, [here](https://www.wireshark.org/docs/).
+![](https://assets.tryhackme.com/additional/wireshark101/52.png)
+If you're looking to get more practice with Wireshark you can check out their [Wireshark Sample Captures](https://wiki.wireshark.org/SampleCaptures). Or if you're looking for a real would Threat Hunting challenge you can check out [Case: 001 PCAP Analysis](https://dfirmadness.com/case-001-pcap-analysis/) by DFIR Madness.
+If you want to continue working on your analysis skills on Tryhackme, check out [Overpass 2 - Hacked](https://tryhackme.com/room/overpass2hacked).
+![|333](https://assets.tryhackme.com/additional/wireshark101/53.png)
+Check out the provided links and keep learning!
+
+## Notes / Lessons Learned
+[[Steel Mountain]]
+
