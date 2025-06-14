@@ -205,3 +205,211 @@ Packet filters have an autocomplete feature to break down protocol details, and 
 Packet filters have a three-colour representation explained below.
 Green	Valid filter
 Red	Invalid filter
+Yellow	Warning filter. This filter works, but it is unreliable, and it is suggested to change it with a valid filter.
+Filter toolbar features are shown below.
+We've covered lots of principles and syntax. Let's put these into practice and start filtering packets in the next task.
+### Packet Filtering | Protocol Filters
+Protocol Filters
+As mentioned in the previous task, Wireshark supports 3000 protocols and allows packet-level investigation by filtering the protocol fields. This task shows the creation and usage of filters against different protocol fields.
+IP Filters
+IP filters help analysts filter the traffic according to the IP level information from the packets (Network layer of the OSI model). This is one of the most commonly used filters in Wireshark. These filters filter network-level information like IP addresses, version, time to live, type of service, flags, and checksum values.
+The common filters are shown in the given table.
+Filter	Description
+ip
+Show all IP packets.
+ip.addr == 10.10.10.111
+Show all packets containing IP address 10.10.10.111.
+ip.addr == 10.10.10.0/24
+Show all packets containing IP addresses from 10.10.10.0/24 subnet.
+ip.src == 10.10.10.111
+Show all packets originated from 10.10.10.111
+ip.dst == 10.10.10.111
+Show all packets sent to 10.10.10.111
+ip.addr vs ip.src/ip.dst	Note: The ip.addr filters the traffic without considering the packet direction. The ip.src/ip.dst filters the packet depending on the packet direction.
+TCP and UDP Filters
+TCP filters help analysts filter the traffic according to protocol-level information from the packets (Transport layer of the OSI model). These filters filter transport protocol level information like source and destination ports, sequence number, acknowledgement number, windows size, timestamps, flags, length and protocol errors.
+Filter
+Description
+Filter	Expression
+tcp.port == 80
+Show all TCP packets with port 80
+udp.port == 53
+Show all UDP packets with port 53
+tcp.srcport == 1234
+Show all TCP packets originating from port 1234
+udp.srcport == 1234
+Show all UDP packets originating from port 1234
+tcp.dstport == 80
+Show all TCP packets sent to port 80
+udp.dstport == 5353
+Show all UDP packets sent to port 5353
+Application Level Protocol Filters | HTTP and DNS
+Application-level protocol filters help analysts filter the traffic according to application protocol level information from the packets (Application layer of the OSI model ). These filters filter application-specific information, like payload and linked data, depending on the protocol type.
+Filter	Description	Filter	Description
+http
+Show all HTTP packets
+dns
+Show all DNS packets
+http.response.code == 200
+Show all packets with HTTP response code "200"
+dns.flags.response == 0
+Show all DNS requests
+http.request.method == "GET"
+Show all HTTP GET requests
+dns.flags.response == 1
+Show all DNS responses
+http.request.method == "POST"
+Show all HTTP POST requests
+dns.qry.type == 1
+Show all DNS "A" records
+Display Filter Expressions
+As mentioned earlier, Wireshark has a built-in option (Display Filter Expression) that stores all supported protocol structures to help analysts create display filters. When an analyst can't recall the required filter for a specific protocol or is unsure about the assignable values for a filter, the Display Filter Expressions menu provides an easy-to-use display filter builder guide. It is available under the "Analyse --> Display Filter Expression" menu.
+It is impossible to memorise all details of the display filters for each protocol. Each protocol can have different fields and can accept various types of values. The Display Filter Expressions menu shows all protocol fields, accepted value types (integer or string) and predefined values (if any). Note that it will take time and require practice to master creating filters and learning the protocol filter fields.
+Note: The first room introduced the "Colouring Rules" (Task-2). Now you know how to create display filters and filter the event of interest. You can use the "View --> Coloring Rules" menu to assign colours to highlight your display filter results.
+What is the number of IP packets?
+*81420*
+![[Pasted image 20221009232456.png]]
+What is the number of packets with a "TTL value less than 10"?
+*66*
+![[Pasted image 20221009232540.png]]
+What is the number of packets which uses "TCP port 4444"?
+*632*
+![[Pasted image 20221009232631.png]]
+What is the number of "HTTP GET" requests sent to port "80"?
+*527* (in my case 526 )
+![[Pasted image 20221009233532.png]]
+What is the number of "type A DNS Queries"?
+*51*
+![[Pasted image 20221009234122.png]]
+### Advanced Filtering
+Advanced Filtering
+So far, you have learned the basics of packet filtering operations. Now it is time to focus on specific packet details for the event of interest. Besides the operators and expressions covered in the previous room, Wireshark has advanced operators and functions. These advanced filtering options help the analyst conduct an in-depth analysis of an event of interest.
+Filter: "contains"
+Filter
+contains
+Type	Comparison Operator
+Description	Search a value inside packets. It is case-sensitive and provides similar functionality to the "Find" option by focusing on a specific field.
+Example	Find all "Apache" servers.
+Workflow	List all HTTP packets where packets' "server" field contains the "Apache" keyword.
+Usage
+http.server contains "Apache"
+Filter: "matches"
+Filter
+matches
+Type	Comparison Operator
+Description	Search a pattern of a regular expression. It is case insensitive, and complex queries have a margin of error.
+Example	Find all .php and .html pages.
+Workflow	List all HTTP packets where packets' "host" fields match keywords ".php" or ".html".
+Usage
+http.host matches "\.(php || html)"
+Filter: "in"
+Filter
+in
+Type	 Set Membership
+Description	Search a value or field inside of a specific scope/range.
+Example	Find all packets that use ports 80, 443 or 8080.
+Workflow	List all TCP packets where packets' "port" fields have values 80, 443 or 8080.
+Usage
+tcp.port in {80 443 8080} (yellow so with warnings solved adding ','     so)
+tcp.port in {80 ,443 ,8000}
+Filter: "upper"
+Filter
+upper
+Type	Function
+Description	Convert a string value to uppercase.
+Example	Find all "APACHE" servers.
+Workflow	Convert all HTTP packets' "server" fields to uppercase and list packets that contain the "APACHE" keyword.
+Usage
+upper(http.server) contains "APACHE"
+Filter: "lower"
+Filter
+lower
+Type	Function
+Description	Convert a string value to lowercase.
+Example	Find all "apache" servers.
+Workflow	Convert all HTTP packets' "server" fields info to lowercase and list packets that contain the "apache" keyword.
+Usage
+lower(http.server) contains "apache"
+so searching: lower(http.server) contains "APACHE" (I'll get 0 results)
+Filter: "string"
+Filter
+string
+Type	Function
+Description	Convert a non-string value to a string.
+Example	Find all frames with odd numbers.
+Workflow	Convert all "frame number" fields to string values, and list frames end with odd values.
+Usage
+string(frame.number) matches "[13579]$"  (will be 1 3 5 7 9 then 11 13 15 17 17 and 21 and so on)
+string(frame.number) matches "[12]$" (in this case 1 2 11 12 21 22 and so on)
+Bookmarks and Filtering Buttons
+We've covered different types of filtering options, operators and functions. It is time to create filters and save them as bookmarks and buttons for later usage. As mentioned in the previous task, the filter toolbar has a filter bookmark section to save user-created filters, which helps analysts re-use favourite/complex filters with a couple of clicks. Similar to bookmarks, you can create filter buttons ready to apply with a single click.
+Creating and using bookmarks.
+Creating and using display filter buttons.
+![[Pasted image 20221010000027.png]]
+Profiles
+Wireshark is a multifunctional tool that helps analysts to accomplish in-depth packet analysis. As we covered during the room, multiple preferences need to be configured to analyse a specific event of interest. It is cumbersome to re-change the configuration for each investigation case, which requires a different set of colouring rules and filtering buttons. This is where Wireshark profiles come into play. You can create multiple profiles for different investigation cases and use them accordingly. You can use the "Edit --> Configuration Profiles" menu or the "lower right bottom of the status bar --> Profile" section to create, modify and change the profile configuration.
+Find all Microsoft IIS servers. What is the number of packets that did not originate from "port 80"?
+"contains" operator can help.
+*21* ((http.server contains "Microsoft-IIS") and !(tcp.port == 80))
+![[Pasted image 20221010002004.png]]
+Find all Microsoft IIS servers. What is the number of packets that have "version 7.5"?
+"matches" operator can help.
+*http.server matches "Microsoft-IIS/7.5"*
+![[Pasted image 20221010002708.png]]
+What is the total number of packets that use ports 3333, 4444 or 9999?
+"in" operator can help.
+*2235* (tcp.port in {3333,4444,9999})
+![[Pasted image 20221010002844.png]]
+What is the number of packets with "even TTL numbers"?
+"string" and "matches" operators can help. Convert the TTL field to string with the "string" operator and filter the "[02468]$" regex value with the "matches" operator to find the even TTL numbers.
+*77289* (string(ip.ttl) matches "[02468]$")
+![[Pasted image 20221010003423.png]]
+Change the profile to "Checksum Control". What is the number of "Bad TCP Checksum" packets?
+This new profile is customised to detect checksum errors. Bad TCP checksums are shown in red and black colours. Use the "Packet List Pane" details or the "Display Filter Expression" menu to create the required filter.
+*34185* tcp.checksum.status=="Bad" just go to colorizing rules and search checksum errors and copy ip to use only for tcp and then go to attack box to work (change to profile Checksum Control)
+![[Pasted image 20221010101148.png]]
+![[Pasted image 20221010101320.png]]
+Use the existing filtering button to filter the traffic. What is the number of displayed packets?
+The button is available in the "Checksum Control" profile.
+*261* ((http.response.code == 200 ) && (http.content_type matches "image(gif||jpeg)"))
+![[Pasted image 20221010100522.png]]
+### Conclusion
+Congratulations!
+You just finished the "Wireshark: Packet Operations" room. In this room, we covered Wireshark statistics, filters, operators and functions.
+Want to learn more? We invite you to complete the Wireshark: Traffic Analysis room to improve your Wireshark skills by investigating suspicious traffic activities.
+Proceed to the next room and keep learning!
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/10f7d168ab59410ddc28a4b1e89fd6d4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/38baec5d1f2fcdf85c0e1e2a78fe3bfe.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/725ea0a97383aeee70ddfae49743cce1.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/c54cc40b174b5ee7540b063ae3b075ed.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/8971957ac8c031276167d110ce187d4e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/f19928be2591fd6aa59550e0a96f7563.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/fb672714d13bf9a40502134193102907.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/5bac23950841825eef688ca87dcd63d6.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/4056095d90ec25260a5538f23649e057.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/25a89e845d7d34586b4b633e8a091ac0.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/0e395ce1c33dc355ca2468b13130fd48.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/6e73622f7521aba567b9c8b049c97284.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/50a3e8a1cce46524f6de3ea14efd99e2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/aa2ca30ccfff2d7eba16d031f0ab1f38.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/98be05db82a2b7a2fd449c2155512f87.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/b929ceb69199b99071fa95ce11d8ca44.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/60dfecd79bea0032d0c838a0ebb39caf.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/86a6359f3fa4935e2b3fd2bc8017e5d7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/4791af17e761134f94113e3c4a2d6a3f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/08c2f3592d0b286f784d14407206bee8.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/fb733f3af660c22a26d44e4087dc38a3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/c7c03c7306f9965b97423f8431a944cb.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/db1cac52cf9ff629c21d104834cb689e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/289b8e6c53ab1adfd894874b7053de75.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/6cb5da0c3d4b10a3f29f15a193b9ab92.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/2f67a74f70e2f1a9acdbeee9bddd31d4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/197e4e319adb4b8a70d7a4ca419bd52f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/95212f1e231477a046950011715208ab.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/9254b0bb582c55723327550a68c9a11e.png)
+
+## Notes / Lessons Learned
+[[Erit Securus I]]
+
