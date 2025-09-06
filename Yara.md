@@ -1132,3 +1132,1138 @@ docs           lokiicon.jpg  loki-upgrader.spec  README.md        tools
 [INFO] New signature file: apt_turla_penquin.yar                                       
 [INFO] New signature file: apt_turla_png_dropper_nov18.yar                             
 [INFO] New signature file: apt_ua_caddywiper.yar                                       
+[INFO] New signature file: apt_ua_hermetic_wiper.yar                                   
+[INFO] New signature file: apt_ua_isaacwiper.yar                                       
+[INFO] New signature file: apt_ua_wiper_whispergate.yar                                
+[INFO] New signature file: apt_uboat_rat.yar                                           
+[INFO] New signature file: apt_unc1151_ua.yar                                          
+[INFO] New signature file: apt_unc2447_sombrat.yar                                     
+[INFO] New signature file: apt_unc2546_dewmode.yar                                     
+[INFO] New signature file: apt_unc3886_virtualpita.yar                                 
+[INFO] New signature file: apt_unit78020_malware.yar                                   
+[INFO] New signature file: apt_uscert_ta17-1117a.yar                                   
+[INFO] New signature file: apt_venom_linux_rootkit.yar                                 
+[INFO] New signature file: apt_volatile_cedar.yar                                      
+[INFO] New signature file: apt_vpnfilter.yar                                           
+[INFO] New signature file: apt_waterbear.yar                                           
+[INFO] New signature file: apt_waterbug.yar                                            
+[INFO] New signature file: apt_webmonitor_rat.yar                                      
+[INFO] New signature file: apt_webshell_chinachopper.yar                               
+[INFO] New signature file: apt_wildneutron.yar                                         
+[INFO] New signature file: apt_wilted_tulip.yar                                        
+[INFO] New signature file: apt_win_plugx.yar                                           
+[INFO] New signature file: apt_winnti.yar                                              
+[INFO] New signature file: apt_winnti_br.yar                                           
+[INFO] New signature file: apt_winnti_burning_umbrella.yar                             
+[INFO] New signature file: apt_winnti_hdroot.yar                                       
+[INFO] New signature file: apt_winnti_linux.yar                                        
+[INFO] New signature file: apt_winnti_ms_report_201701.yar                             
+[INFO] New signature file: apt_woolengoldfish.yar                                      
+[INFO] New signature file: apt_xrat.yar                                                
+[INFO] New signature file: apt_zxshell.yar                                             
+[INFO] New signature file: cn_pentestset_scripts.yar                                   
+[INFO] New signature file: cn_pentestset_tools.yar                                     
+[INFO] New signature file: cn_pentestset_webshells.yar                                 
+[INFO] New signature file: crime_academic_data_centers_camp_may20.yar                  
+[INFO] New signature file: crime_andromeda_jun17.yar                                   
+[INFO] New signature file: crime_antifw_installrex.yar                                 
+[INFO] New signature file: crime_atm_dispenserxfs.yar                                  
+[INFO] New signature file: crime_atm_javadipcash.yar                                   
+[INFO] New signature file: crime_atm_loup.yar                                          
+[INFO] New signature file: crime_atm_xfsadm.yar                                        
+[INFO] New signature file: crime_atm_xfscashncr.yar                                    
+[INFO] New signature file: crime_bad_patch.yar                                         
+[INFO] New signature file: crime_badrabbit.yar                                         
+[INFO] New signature file: crime_bazarbackdoor.yar                                     
+[INFO] New signature file: crime_bernhard_pos.yar                                      
+[INFO] New signature file: crime_bluenoroff_pos.yar                                    
+[INFO] New signature file: crime_buzus_softpulse.yar                                   
+[INFO] New signature file: crime_cmstar.yar                                            
+[INFO] New signature file: crime_cn_campaign_njrat.yar                                 
+[INFO] New signature file: crime_cn_group_btc.yar                                      
+[INFO] New signature file: crime_cobalt_gang_pdf.yar                                   
+[INFO] New signature file: crime_cobaltgang.yar                                        
+[INFO] New signature file: crime_corkow_dll.yar                                        
+[INFO] New signature file: crime_covid_ransom.yar                                      
+[INFO] New signature file: crime_credstealer_generic.yar                               
+[INFO] New signature file: crime_crypto_miner.yar                                      
+[INFO] New signature file: crime_cryptowall_svg.yar                                    
+[INFO] New signature file: crime_dearcry_ransom.yar                                    
+[INFO] New signature file: crime_dexter_trojan.yar                                     
+[INFO] New signature file: crime_dridex_xml.yar                                        
+[INFO] New signature file: crime_emotet.yar                                            
+[INFO] New signature file: crime_enfal.yar                                             
+[INFO] New signature file: crime_envrial.yar                                           
+[INFO] New signature file: crime_eternalrocks.yar                                      
+[INFO] New signature file: crime_evilcorp_dridex_banker.yar                            
+[INFO] New signature file: crime_fareit.yar                                            
+[INFO] New signature file: crime_fireball.yar                                          
+[INFO] New signature file: crime_floxif_flystudio.yar                                  
+[INFO] New signature file: crime_gamaredon.yar                                         
+[INFO] New signature file: crime_goldeneye.yar                                         
+[INFO] New signature file: crime_gozi_crypter.yar                                      
+[INFO] New signature file: crime_guloader.yar                                          
+[INFO] New signature file: crime_h2miner_kinsing.yar                                   
+[INFO] New signature file: crime_hermes_ransom.yar                                     
+[INFO] New signature file: crime_icedid.yar                                            
+[INFO] New signature file: crime_kasper_oct17.yar                                      
+[INFO] New signature file: crime_kins_dropper.yar                                      
+[INFO] New signature file: crime_kr_malware.yar                                        
+[INFO] New signature file: crime_kraken_bot1.yar                                       
+[INFO] New signature file: crime_kriskynote.yar                                        
+[INFO] New signature file: crime_locky.yar                                             
+[INFO] New signature file: crime_loki_bot.yar                                          
+[INFO] New signature file: crime_mal_grandcrab.yar                                     
+[INFO] New signature file: crime_mal_nitol.yar                                         
+[INFO] New signature file: crime_mal_ransom_wadharma.yar                               
+[INFO] New signature file: crime_malumpos.yar                                          
+[INFO] New signature file: crime_malware_generic.yar                                   
+[INFO] New signature file: crime_malware_set_oct16.yar                                 
+[INFO] New signature file: crime_maze_ransomware.yar                                   
+[INFO] New signature file: crime_mikey_trojan.yar                                      
+[INFO] New signature file: crime_mirai.yar                                             
+[INFO] New signature file: crime_mywscript_dropper.yar                                 
+[INFO] New signature file: crime_nansh0u.yar                                           
+[INFO] New signature file: crime_nkminer.yar                                           
+[INFO] New signature file: crime_nopetya_jun17.yar                                     
+[INFO] New signature file: crime_ole_loadswf_cve_2018_4878.yar                         
+[INFO] New signature file: crime_parallax_rat.yar                                      
+[INFO] New signature file: crime_phish_gina_dec15.yar                                  
+[INFO] New signature file: crime_ransom_conti.yar                                      
+[INFO] New signature file: crime_ransom_darkside.yar                                   
+[INFO] New signature file: crime_ransom_generic.yar                                    
+[INFO] New signature file: crime_ransom_germanwiper.yar                                
+[INFO] New signature file: crime_ransom_lockergoga.yar                                 
+[INFO] New signature file: crime_ransom_prolock.yar                                    
+[INFO] New signature file: crime_ransom_ragna_locker.yar                               
+[INFO] New signature file: crime_ransom_revil.yar                                      
+[INFO] New signature file: crime_ransom_robinhood.yar                                  
+[INFO] New signature file: crime_ransom_stealbit_lockbit.yar                           
+[INFO] New signature file: crime_ransom_venus.yar                                      
+[INFO] New signature file: crime_rat_parallax.yar                                      
+[INFO] New signature file: crime_revil_general.yar                                     
+[INFO] New signature file: crime_rombertik_carbongrabber.yar                           
+[INFO] New signature file: crime_ryuk_ransomware.yar                                   
+[INFO] New signature file: crime_shifu_trojan.yar                                      
+[INFO] New signature file: crime_snarasite.yar                                         
+[INFO] New signature file: crime_socgholish.yar                                        
+[INFO] New signature file: crime_stealer_exfil_zip.yar                                 
+[INFO] New signature file: crime_teledoor.yar                                          
+[INFO] New signature file: crime_trickbot.yar                                          
+[INFO] New signature file: crime_upatre_oct15.yar                                      
+[INFO] New signature file: crime_wannacry.yar                                          
+[INFO] New signature file: crime_wsh_rat.yar                                           
+[INFO] New signature file: crime_xbash.yar                                             
+[INFO] New signature file: crime_zeus_panda.yar                                        
+[INFO] New signature file: crime_zloader_maldocs.yar                                   
+[INFO] New signature file: expl_adselfservice_cve_2021_40539.yar                       
+[INFO] New signature file: expl_cve_2021_1647.yar                                      
+[INFO] New signature file: expl_cve_2021_26084_confluence_log.yar                      
+[INFO] New signature file: expl_cve_2021_40444.yar                                     
+[INFO] New signature file: expl_cve_2022_41040_proxynoshell.yar                        
+[INFO] New signature file: expl_log4j_cve_2021_44228.yar                               
+[INFO] New signature file: expl_proxyshell.yar                                         
+[INFO] New signature file: expl_spring4shell.yar                                       
+[INFO] New signature file: exploit_cve_2014_4076.yar                                   
+[INFO] New signature file: exploit_cve_2015_1674.yar                                   
+[INFO] New signature file: exploit_cve_2015_1701.yar                                   
+[INFO] New signature file: exploit_cve_2015_2426.yar                                   
+[INFO] New signature file: exploit_cve_2015_2545.yar                                   
+[INFO] New signature file: exploit_cve_2015_5119.yar                                   
+[INFO] New signature file: exploit_cve_2017_11882.yar                                  
+[INFO] New signature file: exploit_cve_2017_8759.yar                                   
+[INFO] New signature file: exploit_cve_2017_9800.yar                                   
+[INFO] New signature file: exploit_cve_2018_0802.yar                                   
+[INFO] New signature file: exploit_cve_2018_16858.yar                                  
+[INFO] New signature file: exploit_cve_2021_31166.yar                                  
+[INFO] New signature file: exploit_cve_2021_33766_proxytoken.yar                       
+[INFO] New signature file: exploit_cve_2022_22954_vmware_workspace_one.yar             
+[INFO] New signature file: exploit_f5_bigip_cve_2021_22986_log.yar                     
+[INFO] New signature file: exploit_gitlab_cve_2021_22205.yar                           
+[INFO] New signature file: exploit_rtf_ole2link.yar                                    
+[INFO] New signature file: exploit_shitrix.yar                                         
+[INFO] New signature file: exploit_tlb_scripts.yar                                     
+[INFO] New signature file: exploit_uac_elevators.yar                                   
+[INFO] New signature file: gen_Excel4Macro_Sharpshooter.yar                            
+[INFO] New signature file: gen_ace_with_exe.yar                                        
+[INFO] New signature file: gen_anomalies_keyword_combos.yar                            
+[INFO] New signature file: gen_armitage.yar                                            
+[INFO] New signature file: gen_autocad_lsp_malware.yar                                 
+[INFO] New signature file: gen_b374k_extra.yar                                         
+[INFO] New signature file: gen_bad_pdf.yar                                             
+[INFO] New signature file: gen_case_anomalies.yar                                      
+[INFO] New signature file: gen_cert_payloads.yar                                       
+[INFO] New signature file: gen_chaos_payload.yar                                       
+[INFO] New signature file: gen_cmd_script_obfuscated.yar                               
+[INFO] New signature file: gen_cn_hacktool_scripts.yar                                 
+[INFO] New signature file: gen_cn_hacktools.yar                                        
+[INFO] New signature file: gen_cn_webshells.yar                                        
+[INFO] New signature file: gen_cobaltstrike.yar                                        
+[INFO] New signature file: gen_cobaltstrike_by_avast.yar                               
+[INFO] New signature file: gen_crime_bitpaymer.yar                                     
+[INFO] New signature file: gen_crimson_rat.yar                                         
+[INFO] New signature file: gen_crunchrat.yar                                           
+[INFO] New signature file: gen_dde_in_office_docs.yar                                  
+[INFO] New signature file: gen_deviceguard_evasion.yar                                 
+[INFO] New signature file: gen_doc_follina.yar                                         
+[INFO] New signature file: gen_dropper_pdb.yar                                         
+[INFO] New signature file: gen_elf_file_anomalies.yar                                  
+[INFO] New signature file: gen_empire.yar                                              
+[INFO] New signature file: gen_enigma_protector.yar                                    
+[INFO] New signature file: gen_event_mute_hook.yar                                     
+[INFO] New signature file: gen_excel_auto_open_evasion.yar                             
+[INFO] New signature file: gen_excel_xll_addin_suspicious.yar                          
+[INFO] New signature file: gen_excel_xor_obfuscation_velvetsweatshop.yar               
+[INFO] New signature file: gen_exploit_cve_2017_10271_weblogic.yar                     
+[INFO] New signature file: gen_faked_versions.yar                                      
+[INFO] New signature file: gen_file_anomalies.yar                                      
+[INFO] New signature file: gen_fireeye_redteam_tools.yar                               
+[INFO] New signature file: gen_floxif.yar                                              
+[INFO] New signature file: gen_frp_proxy.yar                                           
+[INFO] New signature file: gen_gcti_cobaltstrike.yar                                   
+[INFO] New signature file: gen_gcti_sliver.yar                                         
+[INFO] New signature file: gen_gen_cactustorch.yar                                     
+[INFO] New signature file: gen_github_net_redteam_tools_guids.yar                      
+[INFO] New signature file: gen_github_net_redteam_tools_names.yar                      
+[INFO] New signature file: gen_github_repo_compromise_myjino_ru.yar                    
+[INFO] New signature file: gen_gobfuscate.yar                                          
+[INFO] New signature file: gen_google_anomaly.yar                                      
+[INFO] New signature file: gen_gpp_cpassword.yar                                       
+[INFO] New signature file: gen_hawkeye.yar                                             
+[INFO] New signature file: gen_hktl_koh_tokenstealer.yar                               
+[INFO] New signature file: gen_hktl_roothelper.yar                                     
+[INFO] New signature file: gen_hta_anomalies.yar                                       
+[INFO] New signature file: gen_hunting_susp_rar.yar                                    
+[INFO] New signature file: gen_icon_anomalies.yar                                      
+[INFO] New signature file: gen_impacket_tools.yar                                      
+[INFO] New signature file: gen_invoke_mimikatz.yar                                     
+[INFO] New signature file: gen_invoke_psimage.yar                                      
+[INFO] New signature file: gen_invoke_thehash.yar                                      
+[INFO] New signature file: gen_javascript_powershell.yar                               
+[INFO] New signature file: gen_kerberoast.yar                                          
+[INFO] New signature file: gen_khepri.yar                                              
+[INFO] New signature file: gen_kirbi_mimkatz.yar                                       
+[INFO] New signature file: gen_lnx_malware_indicators.yar                              
+[INFO] New signature file: gen_loaders.yar                                             
+[INFO] New signature file: gen_macro_ShellExecute_action.yar                           
+[INFO] New signature file: gen_macro_builders.yar                                      
+[INFO] New signature file: gen_macro_staroffice_suspicious.yar                         
+[INFO] New signature file: gen_mal_backnet.yar                                         
+[INFO] New signature file: gen_mal_link.yar                                            
+[INFO] New signature file: gen_mal_scripts.yar                                         
+[INFO] New signature file: gen_maldoc.yar                                              
+[INFO] New signature file: gen_malware_MacOS_plist_suspicious.yar                      
+[INFO] New signature file: gen_malware_set_qa.yar                                      
+[INFO] New signature file: gen_merlin_agent.yar                                        
+[INFO] New signature file: gen_metasploit_loader_rsmudge.yar                           
+[INFO] New signature file: gen_metasploit_payloads.yar                                 
+[INFO] New signature file: gen_mimikatz.yar                                            
+[INFO] New signature file: gen_mimikittenz.yar                                         
+[INFO] New signature file: gen_mimipenguin.yar                                         
+[INFO] New signature file: gen_nighthawk_c2.yar                                        
+[INFO] New signature file: gen_nimpackt.yar                                            
+[INFO] New signature file: gen_nopowershell.yar                                        
+[INFO] New signature file: gen_nvidia_leaked_cert.yar                                  
+[INFO] New signature file: gen_osx_backdoor_bella.yar                                  
+[INFO] New signature file: gen_osx_evilosx.yar                                         
+[INFO] New signature file: gen_osx_pyagent_persistence.yar                             
+[INFO] New signature file: gen_p0wnshell.yar                                           
+[INFO] New signature file: gen_phish_attachments.yar                                   
+[INFO] New signature file: gen_pirpi.yar                                               
+[INFO] New signature file: gen_powerkatz.yar                                           
+[INFO] New signature file: gen_powershdll.yar                                          
+[INFO] New signature file: gen_powershell_empire.yar                                   
+[INFO] New signature file: gen_powershell_invocation.yar                               
+[INFO] New signature file: gen_powershell_obfuscation.yar                              
+[INFO] New signature file: gen_powershell_suite.yar                                    
+[INFO] New signature file: gen_powershell_susp.yar                                     
+[INFO] New signature file: gen_powershell_toolkit.yar                                  
+[INFO] New signature file: gen_powersploit_dropper.yar                                 
+[INFO] New signature file: gen_ps1_shellcode.yar                                       
+[INFO] New signature file: gen_ps_empire_eval.yar                                      
+[INFO] New signature file: gen_ps_osiris.yar                                           
+[INFO] New signature file: gen_pua.yar                                                 
+[INFO] New signature file: gen_pupy_rat.yar                                            
+[INFO] New signature file: gen_python_encoded_adware.yar                               
+[INFO] New signature file: gen_python_pty_shell.yar                                    
+[INFO] New signature file: gen_python_pyminifier_encoded_payload.yar                   
+[INFO] New signature file: gen_python_reverse_shell.yara                               
+[INFO] New signature file: gen_rar_exfil.yar                                           
+[INFO] New signature file: gen_rats_malwareconfig.yar                                  
+[INFO] New signature file: gen_recon_indicators.yar                                    
+[INFO] New signature file: gen_redmimicry.yar                                          
+[INFO] New signature file: gen_redsails.yar                                            
+[INFO] New signature file: gen_regsrv32_issue.yar                                      
+[INFO] New signature file: gen_remote_potato0.yar                                      
+[INFO] New signature file: gen_rottenpotato.yar                                        
+[INFO] New signature file: gen_rtf_malver_objects.yar                                  
+[INFO] New signature file: gen_sfx_with_microsoft_copyright.yar                        
+[INFO] New signature file: gen_sharpcat.yar                                            
+[INFO] New signature file: gen_shikataganai.yar                                        
+[INFO] New signature file: gen_sign_anomalies.yar                                      
+[INFO] New signature file: gen_solarwinds_credential_stealer.yar                       
+[INFO] New signature file: gen_susp_bat2exe.yar                                        
+[INFO] New signature file: gen_susp_bat_aux.yar                                        
+[INFO] New signature file: gen_susp_cmd_var_expansion.yar                              
+[INFO] New signature file: gen_susp_hacktool.yar                                       
+[INFO] New signature file: gen_susp_js_obfuscatorio.yar                                
+[INFO] New signature file: gen_susp_lnk.yar                                            
+[INFO] New signature file: gen_susp_lnk_files.yar                                      
+[INFO] New signature file: gen_susp_obfuscation.yar                                    
+[INFO] New signature file: gen_susp_office_dropper.yar                                 
+[INFO] New signature file: gen_susp_ps_jab.yar                                         
+[INFO] New signature file: gen_susp_sfx.yar                                            
+[INFO] New signature file: gen_susp_strings_in_ole.yar                                 
+[INFO] New signature file: gen_susp_wer_files.yar                                      
+[INFO] New signature file: gen_susp_xor.yar                                            
+[INFO] New signature file: gen_suspicious_InPage_dropper.yar                           
+[INFO] New signature file: gen_suspicious_strings.yar                                  
+[INFO] New signature file: gen_sysinternals_anomaly.yar                                
+[INFO] New signature file: gen_tempracer.yar                                           
+[INFO] New signature file: gen_thumbs_cloaking.yar                                     
+[INFO] New signature file: gen_transformed_strings.yar                                 
+[INFO] New signature file: gen_tscookie_rat.yar                                        
+[INFO] New signature file: gen_unicorn_obfuscated_powershell.yar                       
+[INFO] New signature file: gen_unspecified_malware.yar                                 
+[INFO] New signature file: gen_url_persitence.yar                                      
+[INFO] New signature file: gen_url_to_local_exe.yar                                    
+[INFO] New signature file: gen_vhd_anomaly.yar                                         
+[INFO] New signature file: gen_webshells.yar                                           
+[INFO] New signature file: gen_webshells_ext_vars.yar                                  
+[INFO] New signature file: gen_win_privesc.yar                                         
+[INFO] New signature file: gen_winpayloads.yar                                         
+[INFO] New signature file: gen_winshells.yar                                           
+[INFO] New signature file: gen_wmi_implant.yar                                         
+[INFO] New signature file: gen_xor_hunting.yar                                         
+[INFO] New signature file: gen_xored_pe.yar                                            
+[INFO] New signature file: gen_xtreme_rat.yar                                          
+[INFO] New signature file: gen_ysoserial_payloads.yar                                  
+[INFO] New signature file: gen_zoho_rcef_logs.yar                                      
+[INFO] New signature file: general_cloaking.yar                                        
+[INFO] New signature file: general_officemacros.yar                                    
+[INFO] New signature file: generic_anomalies.yar                                       
+[INFO] New signature file: generic_cryptors.yar                                        
+[INFO] New signature file: generic_dumps.yar                                           
+[INFO] New signature file: generic_exe2hex_payload.yar                                 
+[INFO] New signature file: hktl_bruteratel_c4.yar                                      
+[INFO] New signature file: hktl_bruteratel_c4_badger.yar                               
+[INFO] New signature file: mal_avemaria_rat.yar                                        
+[INFO] New signature file: mal_codecov_hack.yar                                        
+[INFO] New signature file: mal_crime_unknown.yar                                       
+[INFO] New signature file: mal_cryp_rat.yar                                            
+[INFO] New signature file: mal_lnx_implant_may22.yar                                   
+[INFO] New signature file: mal_netsha.yar                                              
+[INFO] New signature file: mal_passwordstate_backdoor.yar                              
+[INFO] New signature file: mal_qbot_payloads.yar                                       
+[INFO] New signature file: mal_ransom_lorenz.yar                                       
+[INFO] New signature file: pua_cryptocoin_miner.yar                                    
+[INFO] New signature file: pua_xmrig_monero_miner.yar                                  
+[INFO] New signature file: pup_lightftp.yar                                            
+[INFO] New signature file: spy_equation_fiveeyes.yar                                   
+[INFO] New signature file: spy_querty_fiveeyes.yar                                     
+[INFO] New signature file: spy_regin_fiveeyes.yar                                      
+[INFO] New signature file: thor-hacktools.yar                                          
+[INFO] New signature file: thor-webshells.yar                                          
+[INFO] New signature file: thor_inverse_matches.yar                                    
+[INFO] New signature file: threat_lenovo_superfish.yar                                 
+[INFO] New signature file: vul_backdoor_antitheftweb.yar                               
+[INFO] New signature file: vul_confluence_questions_plugin_cve_2022_26138.yar          
+[INFO] New signature file: vul_cve_2020_0688.yar                                       
+[INFO] New signature file: vul_cve_2020_1938.yar                                       
+[INFO] New signature file: vul_cve_2021_3438_printdriver.yar                           
+[INFO] New signature file: vul_cve_2021_386471_omi.yar                                 
+[INFO] New signature file: vul_dell_bios_upd_driver.yar                                
+[INFO] New signature file: vul_drivecrypt.yar                                          
+[INFO] New signature file: vul_jquery_fileupload_cve_2018_9206.yar                     
+[INFO] New signature file: vul_php_zlib_backdoor.yar                                   
+[INFO] New signature file: vuln_gigabyte_driver.yar                                    
+[INFO] New signature file: vuln_proxynotshell_cve_2022_41040.yar                       
+[INFO] New signature file: webshell_regeorg.yar                                        
+[INFO] New signature file: webshell_xsl_transform.yar                                  
+[INFO] New signature file: yara_mixed_ext_vars.yar                                     
+[INFO] Downloading https://github.com/reversinglabs/reversinglabs-yara-rules/archive/develop.zip ...                                                                          
+[INFO] New signature file: blocklist.yara                                              
+[INFO] New signature file: Win32.Downloader.dlMarlboro.yara                            
+[INFO] New signature file: Win32.Exploit.CVE20200601.yara                              
+[INFO] New signature file: Win32.Infostealer.MultigrainPOS.yara                        
+[INFO] New signature file: Win32.Infostealer.ProjectHookPOS.yara                       
+[INFO] New signature file: Win32.PUA.Domaiq.yara                                       
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Apis.yara                          
+[INFO] New signature file: ByteCode.MSIL.Ransomware.ChupaCabra.yara                    
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Cring.yara                         
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Dusk.yara                          
+[INFO] New signature file: ByteCode.MSIL.Ransomware.EAF.yara                           
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Eternity.yara                      
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Fantom.yara                        
+[INFO] New signature file: ByteCode.MSIL.Ransomware.GhosTEncryptor.yara                
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Ghostbin.yara                      
+[INFO] New signature file: ByteCode.MSIL.Ransomware.GoodWill.yara                      
+[INFO] New signature file: ByteCode.MSIL.Ransomware.HarpoonLocker.yara                 
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Hog.yara                           
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Invert.yara                        
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Janelle.yara                       
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Khonsari.yara                      
+[INFO] New signature file: ByteCode.MSIL.Ransomware.McBurglar.yara                     
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Moisha.yara                        
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Namaste.yara                       
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Oct.yara                           
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Pacman.yara                        
+[INFO] New signature file: ByteCode.MSIL.Ransomware.PoliceRecords.yara                 
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Povlsomware.yara                   
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Retis.yara                         
+[INFO] New signature file: ByteCode.MSIL.Ransomware.TaRRaK.yara                        
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Thanos.yara                        
+[INFO] New signature file: ByteCode.MSIL.Ransomware.TimeCrypt.yara                     
+[INFO] New signature file: ByteCode.MSIL.Ransomware.TimeTime.yara                      
+[INFO] New signature file: ByteCode.MSIL.Ransomware.Venom.yara                         
+[INFO] New signature file: ByteCode.MSIL.Ransomware.WildFire.yara                      
+[INFO] New signature file: ByteCode.MSIL.Ransomware.WormLocker.yara                    
+[INFO] New signature file: ByteCode.MSIL.Ransomware.ZeroLocker.yara                    
+[INFO] New signature file: Bytecode.MSIL.Ransomware.CobraLocker.yara                   
+[INFO] New signature file: Linux.Ransomware.GwisinLocker.yara                          
+[INFO] New signature file: Linux.Ransomware.KillDisk.yara                              
+[INFO] New signature file: Linux.Ransomware.LuckyJoe.yara                              
+[INFO] New signature file: Linux.Ransomware.RedAlert.yara                              
+[INFO] New signature file: Win32.Ransomware.5ss5c.yara                                 
+[INFO] New signature file: Win32.Ransomware.ASN1Encoder.yara                           
+[INFO] New signature file: Win32.Ransomware.Acepy.yara                                 
+[INFO] New signature file: Win32.Ransomware.Afrodita.yara                              
+[INFO] New signature file: Win32.Ransomware.Ako.yara                                   
+[INFO] New signature file: Win32.Ransomware.Alcatraz.yara                              
+[INFO] New signature file: Win32.Ransomware.AnteFrigus.yara                            
+[INFO] New signature file: Win32.Ransomware.Archiveus.yara                             
+[INFO] New signature file: Win32.Ransomware.Armage.yara                                
+[INFO] New signature file: Win32.Ransomware.Atlas.yara                                 
+[INFO] New signature file: Win32.Ransomware.Avaddon.yara                               
+[INFO] New signature file: Win32.Ransomware.AvosLocker.yara                            
+[INFO] New signature file: Win32.Ransomware.BKRansomware.yara                          
+[INFO] New signature file: Win32.Ransomware.Babuk.yara                                 
+[INFO] New signature file: Win32.Ransomware.BadBlock.yara                              
+[INFO] New signature file: Win32.Ransomware.Badbeeteam.yara                            
+[INFO] New signature file: Win32.Ransomware.Balaclava.yara                             
+[INFO] New signature file: Win32.Ransomware.Bam2021.yara                               
+[INFO] New signature file: Win32.Ransomware.BananaCrypt.yara                           
+[INFO] New signature file: Win32.Ransomware.BandarChor.yara                            
+[INFO] New signature file: Win32.Ransomware.BitCrypt.yara                              
+[INFO] New signature file: Win32.Ransomware.BlackBasta.yara                            
+[INFO] New signature file: Win32.Ransomware.BlackCat.yara                              
+[INFO] New signature file: Win32.Ransomware.BlackMoon.yara                             
+[INFO] New signature file: Win32.Ransomware.Blitzkrieg.yara                            
+[INFO] New signature file: Win32.Ransomware.BlueLocker.yara                            
+[INFO] New signature file: Win32.Ransomware.BrainCrypt.yara                            
+[INFO] New signature file: Win32.Ransomware.Buran.yara                                 
+[INFO] New signature file: Win32.Ransomware.ChiChi.yara                                
+[INFO] New signature file: Win32.Ransomware.Cincoo.yara                                
+[INFO] New signature file: Win32.Ransomware.Clop.yara                                  
+[INFO] New signature file: Win32.Ransomware.Conti.yara                                 
+[INFO] New signature file: Win32.Ransomware.Cryakl.yara                                
+[INFO] New signature file: Win32.Ransomware.Crypmic.yara                               
+[INFO] New signature file: Win32.Ransomware.Crypren.yara                               
+[INFO] New signature file: Win32.Ransomware.CryptoBit.yara                             
+[INFO] New signature file: Win32.Ransomware.CryptoFortress.yara                        
+[INFO] New signature file: Win32.Ransomware.CryptoJoker.yara                           
+[INFO] New signature file: Win32.Ransomware.CryptoLocker.yara                          
+[INFO] New signature file: Win32.Ransomware.CryptoWall.yara                            
+[INFO] New signature file: Win32.Ransomware.Crysis.yara                                
+[INFO] New signature file: Win32.Ransomware.Cuba.yara                                  
+[INFO] New signature file: Win32.Ransomware.DMALocker.yara                             
+[INFO] New signature file: Win32.Ransomware.DMR.yara                                   
+[INFO] New signature file: Win32.Ransomware.DarkSide.yara                              
+[INFO] New signature file: Win32.Ransomware.DearCry.yara                               
+[INFO] New signature file: Win32.Ransomware.Defray.yara                                
+[INFO] New signature file: Win32.Ransomware.Delphimorix.yara                           
+[INFO] New signature file: Win32.Ransomware.DenizKizi.yara                             
+[INFO] New signature file: Win32.Ransomware.DesuCrypt.yara                             
+[INFO] New signature file: Win32.Ransomware.Dharma.yara                                
+[INFO] New signature file: Win32.Ransomware.DirtyDecrypt.yara                          
+[INFO] New signature file: Win32.Ransomware.District.yara                              
+[INFO] New signature file: Win32.Ransomware.DogeCrypt.yara                             
+[INFO] New signature file: Win32.Ransomware.Dragon.yara                                
+[INFO] New signature file: Win32.Ransomware.Dualshot.yara                              
+[INFO] New signature file: Win32.Ransomware.Encoded01.yara                             
+[INFO] New signature file: Win32.Ransomware.Erica.yara                                 
+[INFO] New signature file: Win32.Ransomware.FCT.yara                                   
+[INFO] New signature file: Win32.Ransomware.FLKR.yara                                  
+[INFO] New signature file: Win32.Ransomware.FarAttack.yara                             
+[INFO] New signature file: Win32.Ransomware.FenixLocker.yara                           
+[INFO] New signature file: Win32.Ransomware.Ferrlock.yara                              
+[INFO] New signature file: Win32.Ransomware.Flamingo.yara                              
+[INFO] New signature file: Win32.Ransomware.FuxSocy.yara                               
+[INFO] New signature file: Win32.Ransomware.GPGQwerty.yara                             
+[INFO] New signature file: Win32.Ransomware.GandCrab.yara                              
+[INFO] New signature file: Win32.Ransomware.GarrantyDecrypt.yara                       
+[INFO] New signature file: Win32.Ransomware.Gibon.yara                                 
+[INFO] New signature file: Win32.Ransomware.GlobeImposter.yara                         
+[INFO] New signature file: Win32.Ransomware.Gomer.yara                                 
+[INFO] New signature file: Win32.Ransomware.Good.yara                                  
+[INFO] New signature file: Win32.Ransomware.Gpcode.yara                                
+[INFO] New signature file: Win32.Ransomware.GusCrypter.yara                            
+[INFO] New signature file: Win32.Ransomware.HDDCryptor.yara                            
+[INFO] New signature file: Win32.Ransomware.HDMR.yara                                  
+[INFO] New signature file: Win32.Ransomware.HakunaMatata.yara                          
+[INFO] New signature file: Win32.Ransomware.Henry.yara                                 
+[INFO] New signature file: Win32.Ransomware.HentaiOniichan.yara                        
+[INFO] New signature file: Win32.Ransomware.Hermes.yara                                
+[INFO] New signature file: Win32.Ransomware.Horsedeal.yara                             
+[INFO] New signature file: Win32.Ransomware.HowAreYou.yara                             
+[INFO] New signature file: Win32.Ransomware.HydraCrypt.yara                            
+[INFO] New signature file: Win32.Ransomware.IFN643.yara                                
+[INFO] New signature file: Win32.Ransomware.InfoDot.yara                               
+[INFO] New signature file: Win32.Ransomware.JSWorm.yara                                
+[INFO] New signature file: Win32.Ransomware.Jamper.yara                                
+[INFO] New signature file: Win32.Ransomware.Jemd.yara                                  
+[INFO] New signature file: Win32.Ransomware.Jormungand.yara                            
+[INFO] New signature file: Win32.Ransomware.JuicyLemon.yara                            
+[INFO] New signature file: Win32.Ransomware.Kangaroo.yara                              
+[INFO] New signature file: Win32.Ransomware.KawaiiLocker.yara                          
+[INFO] New signature file: Win32.Ransomware.KillDisk.yara                              
+[INFO] New signature file: Win32.Ransomware.Knot.yara                                  
+[INFO] New signature file: Win32.Ransomware.Kovter.yara                                
+[INFO] New signature file: Win32.Ransomware.Koxic.yara                                 
+[INFO] New signature file: Win32.Ransomware.Kraken.yara                                
+[INFO] New signature file: Win32.Ransomware.Ladon.yara                                 
+[INFO] New signature file: Win32.Ransomware.LeChiffre.yara                             
+[INFO] New signature file: Win32.Ransomware.LockBit.yara                               
+[INFO] New signature file: Win32.Ransomware.Lolkek.yara                                
+[INFO] New signature file: Win32.Ransomware.LooCipher.yara                             
+[INFO] New signature file: Win32.Ransomware.Lorenz.yara                                
+[INFO] New signature file: Win32.Ransomware.MRAC.yara                                  
+[INFO] New signature file: Win32.Ransomware.MZP.yara                                   
+[INFO] New signature file: Win32.Ransomware.Mafia.yara                                 
+[INFO] New signature file: Win32.Ransomware.Magniber.yara                              
+[INFO] New signature file: Win32.Ransomware.Major.yara                                 
+[INFO] New signature file: Win32.Ransomware.Makop.yara                                 
+[INFO] New signature file: Win32.Ransomware.Maktub.yara                                
+[INFO] New signature file: Win32.Ransomware.Marlboro.yara                              
+[INFO] New signature file: Win32.Ransomware.MarsJoke.yara                              
+[INFO] New signature file: Win32.Ransomware.Matsnu.yara                                
+[INFO] New signature file: Win32.Ransomware.MedusaLocker.yara                          
+[INFO] New signature file: Win32.Ransomware.Meow.yara                                  
+[INFO] New signature file: Win32.Ransomware.Monalisa.yara                              
+[INFO] New signature file: Win32.Ransomware.Montserrat.yara                            
+[INFO] New signature file: Win32.Ransomware.Motocos.yara                               
+[INFO] New signature file: Win32.Ransomware.MountLocker.yara                           
+[INFO] New signature file: Win32.Ransomware.NB65.yara                                  
+[INFO] New signature file: Win32.Ransomware.NanoLocker.yara                            
+[INFO] New signature file: Win32.Ransomware.Nefilim.yara                               
+[INFO] New signature file: Win32.Ransomware.Nemty.yara                                 
+[INFO] New signature file: Win32.Ransomware.Networm.yara                               
+[INFO] New signature file: Win32.Ransomware.NotPetya.yara                              
+[INFO] New signature file: Win32.Ransomware.Oni.yara                                   
+[INFO] New signature file: Win32.Ransomware.OphionLocker.yara                          
+[INFO] New signature file: Win32.Ransomware.Ouroboros.yara                             
+[INFO] New signature file: Win32.Ransomware.Outsider.yara                              
+[INFO] New signature file: Win32.Ransomware.PXJ.yara                                   
+[INFO] New signature file: Win32.Ransomware.Paradise.yara                              
+[INFO] New signature file: Win32.Ransomware.Pay2Key.yara                               
+[INFO] New signature file: Win32.Ransomware.Petya.yara                                 
+[INFO] New signature file: Win32.Ransomware.Plague17.yara                              
+[INFO] New signature file: Win32.Ransomware.PrincessLocker.yara                        
+[INFO] New signature file: Win32.Ransomware.Prometey.yara                              
+[INFO] New signature file: Win32.Ransomware.RagnarLocker.yara                          
+[INFO] New signature file: Win32.Ransomware.Ragnarok.yara                              
+[INFO] New signature file: Win32.Ransomware.Ransoc.yara                                
+[INFO] New signature file: Win32.Ransomware.RansomPlus.yara                            
+[INFO] New signature file: Win32.Ransomware.Ransomexx.yara                             
+[INFO] New signature file: Win32.Ransomware.Redeemer.yara                              
+[INFO] New signature file: Win32.Ransomware.RegretLocker.yara                          
+[INFO] New signature file: Win32.Ransomware.RetMyData.yara                             
+[INFO] New signature file: Win32.Ransomware.Reveton.yara                               
+[INFO] New signature file: Win32.Ransomware.Revil.yara                                 
+[INFO] New signature file: Win32.Ransomware.Rokku.yara                                 
+[INFO] New signature file: Win32.Ransomware.Ryuk.yara                                  
+[INFO] New signature file: Win32.Ransomware.Sage.yara                                  
+[INFO] New signature file: Win32.Ransomware.Sanwai.yara                                
+[INFO] New signature file: Win32.Ransomware.Sarbloh.yara                               
+[INFO] New signature file: Win32.Ransomware.Satan.yara                                 
+[INFO] New signature file: Win32.Ransomware.Satana.yara                                
+[INFO] New signature file: Win32.Ransomware.Saturn.yara                                
+[INFO] New signature file: Win32.Ransomware.Sepsis.yara                                
+[INFO] New signature file: Win32.Ransomware.Serpent.yara                               
+[INFO] New signature file: Win32.Ransomware.SevenSevenSeven.yara                       
+[INFO] New signature file: Win32.Ransomware.ShadowCryptor.yara                         
+[INFO] New signature file: Win32.Ransomware.Sherminator.yara                           
+[INFO] New signature file: Win32.Ransomware.Sifrelendi.yara                            
+[INFO] New signature file: Win32.Ransomware.Sifreli.yara                               
+[INFO] New signature file: Win32.Ransomware.Sigrun.yara                                
+[INFO] New signature file: Win32.Ransomware.Skystars.yara                              
+[INFO] New signature file: Win32.Ransomware.Spora.yara                                 
+[INFO] New signature file: Win32.Ransomware.TBLocker.yara                              
+[INFO] New signature file: Win32.Ransomware.TargetCompany.yara                         
+[INFO] New signature file: Win32.Ransomware.TechandStrat.yara                          
+[INFO] New signature file: Win32.Ransomware.TeleCrypt.yara                             
+[INFO] New signature file: Win32.Ransomware.Termite.yara                               
+[INFO] New signature file: Win32.Ransomware.Teslacrypt.yara                            
+[INFO] New signature file: Win32.Ransomware.Teslarvng.yara                             
+[INFO] New signature file: Win32.Ransomware.Thanatos.yara                              
+[INFO] New signature file: Win32.Ransomware.TorrentLocker.yara                         
+[INFO] New signature file: Win32.Ransomware.VHDLocker.yara                             
+[INFO] New signature file: Win32.Ransomware.VegaLocker.yara                            
+[INFO] New signature file: Win32.Ransomware.Velso.yara                                 
+[INFO] New signature file: Win32.Ransomware.WannaCry.yara                              
+[INFO] New signature file: Win32.Ransomware.WaspLocker.yara                            
+[INFO] New signature file: Win32.Ransomware.Wastedlocker.yara                          
+[INFO] New signature file: Win32.Ransomware.WinWord64.yara                             
+[INFO] New signature file: Win32.Ransomware.WsIR.yara                                  
+[INFO] New signature file: Win32.Ransomware.Xorist.yara                                
+[INFO] New signature file: Win32.Ransomware.Zeoticus.yara                              
+[INFO] New signature file: Win32.Ransomware.Zeppelin.yara                              
+[INFO] New signature file: Win32.Ransomware.ZeroCrypt.yara                             
+[INFO] New signature file: Win32.Ransomware.Zhen.yara                                  
+[INFO] New signature file: Win32.Ransomware.Zoldon.yara                                
+[INFO] New signature file: Win64.Ransomware.Ako.yara                                   
+[INFO] New signature file: Win64.Ransomware.AntiWar.yara                               
+[INFO] New signature file: Win64.Ransomware.AwesomeScott.yara                          
+[INFO] New signature file: Win64.Ransomware.Curator.yara                               
+[INFO] New signature file: Win64.Ransomware.DST.yara                                   
+[INFO] New signature file: Win64.Ransomware.HermeticRansom.yara                        
+[INFO] New signature file: Win64.Ransomware.HotCoffee.yara                             
+[INFO] New signature file: Win64.Ransomware.Nokoyawa.yara                              
+[INFO] New signature file: Win64.Ransomware.Pandora.yara                               
+[INFO] New signature file: Win64.Ransomware.RedRoman.yara                              
+[INFO] New signature file: Win64.Ransomware.Rook.yara                                  
+[INFO] New signature file: Win64.Ransomware.SeedLocker.yara                            
+[INFO] New signature file: Win64.Ransomware.Seth.yara                                  
+[INFO] New signature file: Win64.Ransomware.Solaso.yara                                
+[INFO] New signature file: Win64.Ransomware.Vovalex.yara                               
+[INFO] New signature file: Win64.Ransomware.WhiteBlackCrypt.yara                       
+[INFO] New signature file: Win64.Ransomware.Wintenzz.yara                              
+[INFO] New signature file: Win32.Trojan.CaddyWiper.yara                                
+[INFO] New signature file: Win32.Trojan.Dridex.yara                                    
+[INFO] New signature file: Win32.Trojan.Emotet.yara                                    
+[INFO] New signature file: Win32.Trojan.HermeticWiper.yara                             
+[INFO] New signature file: Win32.Trojan.IsaacWiper.yara                                
+[INFO] New signature file: Win32.Trojan.TrickBot.yara                                  
+[INFO] New signature file: Linux.Virus.Vit.yara                                        
+[INFO] New signature file: Win32.Virus.Awfull.yara                                     
+[INFO] New signature file: Win32.Virus.Cmay.yara                                       
+[INFO] New signature file: Win32.Virus.DeadCode.yara                                   
+[INFO] New signature file: Win32.Virus.Elerad.yara                                     
+[INFO] New signature file: Win32.Virus.Greenp.yara                                     
+[INFO] New signature file: Win32.Virus.Mocket.yara                                     
+[INFO] New signature file: Win32.Virus.Negt.yara                                       
+[INFO] Update complete                                                                 
+[INFO] Press any key to return ...
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0]
+└─$ ls
+build.bat      loki.exe                           loki-upgrade.log    README.md
+build_sfx.bat  loki.ico                           loki-upgrader.py    requirements.txt
+config         lokiicon.jpg                       loki-upgrader.spec  screens
+docs           loki_kali_2022-11-27_13-41-17.log  Pipfile             signature-base
+lib            loki.py                            plugins             test
+LICENSE        loki.spec                          prepare_push.sh     tools
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0]
+└─$ cd signature-base
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0/signature-base]
+└─$ ls
+iocs  misc  yara
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0/signature-base]
+└─$ cd yara
+```
+```text
+┌──(kali㉿kali)-[~/…/loki/Loki-0.45.0/signature-base/yara]
+└─$ ls
+airbnb_binaryalert.yar
+apt_aa19_024a.yar
+apt_agent_btz.yar
+apt_alienspy_rat.yar
+apt_apt10_redleaves.yar
+apt_apt10.yar
+apt_apt12_malware.yar
+apt_apt15.yar
+apt_apt17_mal_sep17.yar
+apt_apt17_malware.yar
+apt_apt19.yar
+apt_apt27_hyperbro.yar
+apt_apt28_drovorub.yar
+apt_apt28.yar
+apt_apt29_grizzly_steppe.yar
+apt_apt29_nobelium_apr22.yar
+apt_apt29_nobelium_may21.yar
+apt_apt30_backspace.yar
+apt_apt32.yar
+apt_apt34.yar
+apt_apt37_bluelight.yar
+apt_apt37.yar
+apt_apt3_bemstour.yar
+apt_apt41.yar
+apt_apt6_malware.yar
+apt_ar18_165a.yar
+apt_area1_phishing_diplomacy.yar
+apt_aus_parl_compromise.yar
+apt_babyshark.yar
+apt_backdoor_ssh_python.yar
+apt_backdoor_sunburst_fnv1a_experimental.yar
+apt_backspace.yar
+apt_beepservice.yar
+apt_between-hk-and-burma.yar
+apt_bigbang.yar
+apt_bitter.yar
+apt_blackenergy_installer.yar
+apt_blackenergy.yar
+apt_bluetermite_emdivi.yar
+apt_bronze_butler.yar
+apt_buckeye.yar
+apt_candiru.yar
+apt_carbon_paper_turla.yar
+apt_casper.yar
+apt_cheshirecat.yar
+apt_cloudatlas.yar
+apt_cloudduke.yar
+apt_cmstar.yar
+apt_cn_netfilter.yar
+apt_cn_pp_zerot.yar
+apt_cn_reddelta.yar
+apt_cn_twisted_panda.yar
+apt_cobaltstrike_evasive.yar
+apt_cobaltstrike.yar
+apt_codoso.yar
+apt_coreimpact_agent.yar
+apt_danti_svcmondr.yar
+apt_darkcaracal.yar
+apt_darkhydrus.yar
+apt_deeppanda.yar
+apt_derusbi.yar
+apt_dnspionage.yar
+apt_donotteam_ytyframework.yar
+apt_dragonfly.yar
+apt_dtrack.yar
+apt_dubnium.yar
+apt_duqu1_5_modules.yar
+apt_duqu2.yar
+apt_dustman.yar
+apt_emissary.yar
+apt_eqgrp_apr17.yar
+apt_eqgrp.yar
+apt_eternalblue_non_wannacry.yar
+apt_exile_rat.yar
+apt_f5_bigip_expl_payloads.yar
+apt_fakem_backdoor.yar
+apt_fancybear_computrace_agent.yar
+apt_fancybear_dnc.yar
+apt_fancybear_osxagent.yar
+apt_fidelis_phishing_plain_sight.yar
+apt_fin7_backdoor.yar
+apt_fin7.yar
+apt_fin8.yar
+apt_flame2_orchestrator.yar
+apt_foudre.yar
+apt_four_element_sword.yar
+apt_freemilk.yar
+apt_fujinama_rat.yar
+apt_furtim.yar
+apt_fvey_shadowbroker_dec16.yar
+apt_fvey_shadowbroker_jan17.yar
+apt_ghostdragon_gh0st_rat.yar
+apt_glassRAT.yar
+apt_golddragon.yar
+apt_goldenspy.yar
+apt_greenbug.yar
+apt_greyenergy.yar
+apt_grizzlybear_uscert.yar
+apt_hackingteam_rules.yar
+apt_hafnium_log_sigs.yar
+apt_hafnium.yar
+apt_ham_tofu_chches.yar
+apt_hatman.yar
+apt_hellsing_kaspersky.yar
+apt_hiddencobra_bankshot.yar
+apt_hiddencobra_wiper.yar
+apt_hidden_cobra.yar
+apt_hizor_rat.yar
+apt_hkdoor.yar
+apt_iamtheking.yar
+apt_icefog.yar
+apt_indetectables_rat.yar
+apt_industroyer.yar
+apt_inocnation.yar
+apt_irongate.yar
+apt_irontiger_trendmicro.yar
+apt_irontiger.yar
+apt_ism_rat.yar
+apt_kaspersky_duqu2.yar
+apt_ke3chang.yar
+apt_keyboys.yar
+apt_keylogger_cn.yar
+apt_khrat.yar
+apt_korplug_fast.yar
+apt_kwampirs.yar
+apt_laudanum_webshells.yar
+apt_lazarus_applejeus.yar
+apt_lazarus_aug20.yar
+apt_lazarus_dec17.yar
+apt_lazarus_dec20.yar
+apt_lazarus_jan21.yar
+apt_lazarus_jun18.yar
+apt_lazarus_vhd_ransomware.yar
+apt_leviathan.yar
+apt_lnx_kobalos.yar
+apt_lnx_linadoor_rootkit.yar
+apt_lotusblossom_elise.yar
+apt_magichound.yar
+apt_mal_ilo_board_elf.yar
+apt_microcin.yar
+apt_middle_east_talosreport.yar
+apt_miniasp.yar
+apt_minidionis.yar
+apt_mofang.yar
+apt_molerats_jul17.yar
+apt_monsoon.yar
+apt_moonlightmaze.yar
+apt_ms_platinum.yara
+apt_muddywater.yar
+apt_naikon.yar
+apt_nanocore_rat.yar
+apt_nazar.yar
+apt_ncsc_report_04_2018.yar
+apt_netwire_rat.yar
+apt_nk_gen.yar
+apt_nk_goldbackdoor.yar
+apt_nk_inkysquid.yar
+apt_oilrig_chafer_mar18.yar
+apt_oilrig_oct17.yar
+apt_oilrig_rgdoor.yar
+apt_oilrig.yar
+apt_olympic_destroyer.yar
+apt_onhat_proxy.yar
+apt_op_cleaver.yar
+apt_op_cloudhopper.yar
+apt_op_honeybee.yar
+apt_op_shadowhammer.yar
+apt_op_wocao.yar
+apt_passcv.yar
+apt_passthehashtoolkit.yar
+apt_patchwork.yar
+apt_plead_downloader.yar
+apt_plugx.yar
+apt_poisonivy_gen3.yar
+apt_poisonivy.yar
+apt_poseidon_group.yar
+apt_poshspy.yar
+apt_prikormka.yar
+apt_project_m.yar
+apt_project_sauron_extras.yar
+apt_project_sauron.yara
+apt_promethium_neodymium.yar
+apt_pulsesecure.yar
+apt_putterpanda.yar
+apt_quarkspwdump.yar
+apt_quasar_rat.yar
+apt_quasar_vermin.yar
+apt_rancor.yar
+apt_reaver_sunorcal.yar
+apt_rehashed_rat.yar
+apt_revenge_rat.yar
+apt_rocketkitten_keylogger.yar
+apt_rokrat.yar
+apt_royalroad.yar
+apt_ruag.yar
+apt_rwmc_powershell_creddump.yar
+apt_sakula.yar
+apt_sandworm_centreon.yar
+apt_sandworm_cyclops_blink.yar
+apt_sandworm_exim_expl.yar
+apt_saudi_aramco_phish.yar
+apt_scanbox_deeppanda.yar
+apt_scarcruft.yar
+apt_seaduke_unit42.yar
+apt_sednit_delphidownloader.yar
+apt_servantshell.yar
+apt_shadowpad.yar
+apt_shamoon2.yar
+apt_shamoon.yar
+apt_sharptongue.yar
+apt_shellcrew_streamex.yar
+apt_sidewinder.yar
+apt_silence.yar
+apt_skeletonkey.yar
+apt_slingshot.yar
+apt_snaketurla_osx.yar
+apt_snowglobe_babar.yar
+apt_sofacy_cannon.yar
+apt_sofacy_dec15.yar
+apt_sofacy_fysbis.yar
+apt_sofacy_hospitality.yar
+apt_sofacy_jun16.yar
+apt_sofacy_oct17_camp.yar
+apt_sofacy_xtunnel_bundestag.yar
+apt_sofacy.yar
+apt_sofacy_zebrocy.yar
+apt_solarwinds_sunburst.yar
+apt_solarwinds_susp_sunburst.yar
+apt_sphinx_moth.yar
+apt_stealer_cisa_ar22_277a.yar
+apt_stonedrill.yar
+apt_strider.yara
+apt_stuxnet.yar
+apt_stuxshop.yar
+apt_suckfly.yar
+apt_sunspot.yar
+apt_sysscan.yar
+apt_ta17_293A.yar
+apt_ta17_318A.yar
+apt_ta17_318B.yar
+apt_ta18_074A.yar
+apt_ta18_149A.yar
+apt_ta459.yar
+apt_telebots.yar
+apt_terracotta_liudoor.yar
+apt_terracotta.yar
+apt_tetris.yar
+apt_threatgroup_3390.yar
+apt_thrip.yar
+apt_tick_datper.yar
+apt_tick_weaponized_usb.yar
+apt_tidepool.yar
+apt_tophat.yar
+apt_triton_mal_sshdoor.yar
+apt_triton.yar
+apt_turbo_campaign.yar
+apt_turla_gazer.yar
+apt_turla_kazuar.yar
+apt_turla_mosquito.yar
+apt_turla_neuron.yar
+apt_turla_penquin.yar
+apt_turla_png_dropper_nov18.yar
+apt_turla.yar
+apt_ua_caddywiper.yar
+apt_ua_hermetic_wiper.yar
+apt_ua_isaacwiper.yar
+apt_ua_wiper_whispergate.yar
+apt_uboat_rat.yar
+apt_unc1151_ua.yar
+apt_unc2447_sombrat.yar
+apt_unc2546_dewmode.yar
+apt_unc3886_virtualpita.yar
+apt_unit78020_malware.yar
+apt_uscert_ta17-1117a.yar
+apt_venom_linux_rootkit.yar
+apt_volatile_cedar.yar
+apt_vpnfilter.yar
+apt_waterbear.yar
+apt_waterbug.yar
+apt_webmonitor_rat.yar
+apt_webshell_chinachopper.yar
+apt_wildneutron.yar
+apt_wilted_tulip.yar
+apt_winnti_br.yar
+apt_winnti_burning_umbrella.yar
+apt_winnti_hdroot.yar
+apt_winnti_linux.yar
+apt_winnti_ms_report_201701.yar
+apt_winnti.yar
+apt_win_plugx.yar
+apt_woolengoldfish.yar
+apt_xrat.yar
+apt_zxshell.yar
+blocklist.yara
+ByteCode.MSIL.Ransomware.Apis.yara
+ByteCode.MSIL.Ransomware.ChupaCabra.yara
+Bytecode.MSIL.Ransomware.CobraLocker.yara
+ByteCode.MSIL.Ransomware.Cring.yara
+ByteCode.MSIL.Ransomware.Dusk.yara
+ByteCode.MSIL.Ransomware.EAF.yara
+ByteCode.MSIL.Ransomware.Eternity.yara
+ByteCode.MSIL.Ransomware.Fantom.yara
+ByteCode.MSIL.Ransomware.Ghostbin.yara
+ByteCode.MSIL.Ransomware.GhosTEncryptor.yara
+ByteCode.MSIL.Ransomware.GoodWill.yara
+ByteCode.MSIL.Ransomware.HarpoonLocker.yara
+ByteCode.MSIL.Ransomware.Hog.yara
+ByteCode.MSIL.Ransomware.Invert.yara
+ByteCode.MSIL.Ransomware.Janelle.yara
+ByteCode.MSIL.Ransomware.Khonsari.yara
+ByteCode.MSIL.Ransomware.McBurglar.yara
+ByteCode.MSIL.Ransomware.Moisha.yara
+ByteCode.MSIL.Ransomware.Namaste.yara
+ByteCode.MSIL.Ransomware.Oct.yara
+ByteCode.MSIL.Ransomware.Pacman.yara
+ByteCode.MSIL.Ransomware.PoliceRecords.yara
+ByteCode.MSIL.Ransomware.Povlsomware.yara
+ByteCode.MSIL.Ransomware.Retis.yara
+ByteCode.MSIL.Ransomware.TaRRaK.yara
+ByteCode.MSIL.Ransomware.Thanos.yara
+ByteCode.MSIL.Ransomware.TimeCrypt.yara
+ByteCode.MSIL.Ransomware.TimeTime.yara
+ByteCode.MSIL.Ransomware.Venom.yara
+ByteCode.MSIL.Ransomware.WildFire.yara
+ByteCode.MSIL.Ransomware.WormLocker.yara
+ByteCode.MSIL.Ransomware.ZeroLocker.yara
+cn_pentestset_scripts.yar
+cn_pentestset_tools.yar
+cn_pentestset_webshells.yar
+crime_academic_data_centers_camp_may20.yar
+crime_andromeda_jun17.yar
+crime_antifw_installrex.yar
+crime_atm_dispenserxfs.yar
+crime_atm_javadipcash.yar
+crime_atm_loup.yar
+crime_atm_xfsadm.yar
+crime_atm_xfscashncr.yar
+crime_bad_patch.yar
+crime_badrabbit.yar
+crime_bazarbackdoor.yar
+crime_bernhard_pos.yar
+crime_bluenoroff_pos.yar
+crime_buzus_softpulse.yar
+crime_cmstar.yar
+crime_cn_campaign_njrat.yar
+crime_cn_group_btc.yar
+crime_cobalt_gang_pdf.yar
+crime_cobaltgang.yar
+crime_corkow_dll.yar
+crime_covid_ransom.yar
+crime_credstealer_generic.yar
+crime_crypto_miner.yar
+crime_cryptowall_svg.yar
+crime_dearcry_ransom.yar
+crime_dexter_trojan.yar
+crime_dridex_xml.yar
+crime_emotet.yar
+crime_enfal.yar
+crime_envrial.yar
+crime_eternalrocks.yar
+crime_evilcorp_dridex_banker.yar
+crime_fareit.yar
+crime_fireball.yar
+crime_floxif_flystudio.yar
+crime_gamaredon.yar
+crime_goldeneye.yar
+crime_gozi_crypter.yar
+crime_guloader.yar
+crime_h2miner_kinsing.yar
+crime_hermes_ransom.yar
+crime_icedid.yar
+crime_kasper_oct17.yar
+crime_kins_dropper.yar
+crime_kraken_bot1.yar
+crime_kriskynote.yar
+crime_kr_malware.yar
+crime_locky.yar
+crime_loki_bot.yar
+crime_mal_grandcrab.yar
+crime_mal_nitol.yar
+crime_mal_ransom_wadharma.yar
+crime_malumpos.yar
+crime_malware_generic.yar
+crime_malware_set_oct16.yar
+crime_maze_ransomware.yar
+crime_mikey_trojan.yar
+crime_mirai.yar
+crime_mywscript_dropper.yar
+crime_nansh0u.yar
+crime_nkminer.yar
+crime_nopetya_jun17.yar
+crime_ole_loadswf_cve_2018_4878.yar
+crime_parallax_rat.yar
+crime_phish_gina_dec15.yar
+crime_ransom_conti.yar
+crime_ransom_darkside.yar
+crime_ransom_generic.yar
+crime_ransom_germanwiper.yar
+crime_ransom_lockergoga.yar
+crime_ransom_prolock.yar
+crime_ransom_ragna_locker.yar
+crime_ransom_revil.yar
+crime_ransom_robinhood.yar
+crime_ransom_stealbit_lockbit.yar
+crime_ransom_venus.yar
+crime_rat_parallax.yar
+crime_revil_general.yar
+crime_rombertik_carbongrabber.yar
+crime_ryuk_ransomware.yar
+crime_shifu_trojan.yar
+crime_snarasite.yar
+crime_socgholish.yar
+crime_stealer_exfil_zip.yar
+crime_teledoor.yar
+crime_trickbot.yar
+crime_upatre_oct15.yar
+crime_wannacry.yar
+crime_wsh_rat.yar
+crime_xbash.yar
+crime_zeus_panda.yar
+crime_zloader_maldocs.yar
+expl_adselfservice_cve_2021_40539.yar
+expl_cve_2021_1647.yar
+expl_cve_2021_26084_confluence_log.yar
+expl_cve_2021_40444.yar
+expl_cve_2022_41040_proxynoshell.yar
+expl_log4j_cve_2021_44228.yar
+exploit_cve_2014_4076.yar
+exploit_cve_2015_1674.yar
+exploit_cve_2015_1701.yar
+exploit_cve_2015_2426.yar
+exploit_cve_2015_2545.yar
+exploit_cve_2015_5119.yar
+exploit_cve_2017_11882.yar
+exploit_cve_2017_8759.yar
+exploit_cve_2017_9800.yar
+exploit_cve_2018_0802.yar
+exploit_cve_2018_16858.yar
+exploit_cve_2021_31166.yar
+exploit_cve_2021_33766_proxytoken.yar
+exploit_cve_2022_22954_vmware_workspace_one.yar
+exploit_f5_bigip_cve_2021_22986_log.yar
+exploit_gitlab_cve_2021_22205.yar
+exploit_rtf_ole2link.yar
+exploit_shitrix.yar
+exploit_tlb_scripts.yar
+exploit_uac_elevators.yar
+expl_proxyshell.yar
+expl_spring4shell.yar
+gen_ace_with_exe.yar
+gen_anomalies_keyword_combos.yar
+gen_armitage.yar
+gen_autocad_lsp_malware.yar
+gen_b374k_extra.yar
+gen_bad_pdf.yar
+gen_case_anomalies.yar
+gen_cert_payloads.yar
+gen_chaos_payload.yar
+gen_cmd_script_obfuscated.yar
+gen_cn_hacktool_scripts.yar
+gen_cn_hacktools.yar
+gen_cn_webshells.yar
+gen_cobaltstrike_by_avast.yar
+gen_cobaltstrike.yar
+gen_crime_bitpaymer.yar
+gen_crimson_rat.yar
+gen_crunchrat.yar
+gen_dde_in_office_docs.yar
+gen_deviceguard_evasion.yar
+gen_doc_follina.yar
+gen_dropper_pdb.yar
+gen_elf_file_anomalies.yar
+gen_empire.yar
+gen_enigma_protector.yar
+general_cloaking.yar
+general_officemacros.yar
+generic_anomalies.yar
+generic_cryptors.yar
+generic_dumps.yar
+generic_exe2hex_payload.yar
+gen_event_mute_hook.yar
+gen_Excel4Macro_Sharpshooter.yar
+gen_excel_auto_open_evasion.yar
+gen_excel_xll_addin_suspicious.yar
+gen_excel_xor_obfuscation_velvetsweatshop.yar
+gen_exploit_cve_2017_10271_weblogic.yar
+gen_faked_versions.yar
+gen_file_anomalies.yar
+gen_fireeye_redteam_tools.yar
+gen_floxif.yar
+gen_frp_proxy.yar
+gen_gcti_cobaltstrike.yar
+gen_gcti_sliver.yar
+gen_gen_cactustorch.yar
+gen_github_net_redteam_tools_guids.yar
+gen_github_net_redteam_tools_names.yar
