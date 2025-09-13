@@ -2267,3 +2267,1138 @@ gen_gcti_sliver.yar
 gen_gen_cactustorch.yar
 gen_github_net_redteam_tools_guids.yar
 gen_github_net_redteam_tools_names.yar
+gen_github_repo_compromise_myjino_ru.yar
+gen_gobfuscate.yar
+gen_google_anomaly.yar
+gen_gpp_cpassword.yar
+gen_hawkeye.yar
+gen_hktl_koh_tokenstealer.yar
+gen_hktl_roothelper.yar
+gen_hta_anomalies.yar
+gen_hunting_susp_rar.yar
+gen_icon_anomalies.yar
+gen_impacket_tools.yar
+gen_invoke_mimikatz.yar
+gen_invoke_psimage.yar
+gen_invoke_thehash.yar
+gen_javascript_powershell.yar
+gen_kerberoast.yar
+gen_khepri.yar
+gen_kirbi_mimkatz.yar
+gen_lnx_malware_indicators.yar
+gen_loaders.yar
+gen_macro_builders.yar
+gen_macro_ShellExecute_action.yar
+gen_macro_staroffice_suspicious.yar
+gen_mal_backnet.yar
+gen_maldoc.yar
+gen_mal_link.yar
+gen_mal_scripts.yar
+gen_malware_MacOS_plist_suspicious.yar
+gen_malware_set_qa.yar
+gen_merlin_agent.yar
+gen_metasploit_loader_rsmudge.yar
+gen_metasploit_payloads.yar
+gen_mimikatz.yar
+gen_mimikittenz.yar
+gen_mimipenguin.yar
+gen_nighthawk_c2.yar
+gen_nimpackt.yar
+gen_nopowershell.yar
+gen_nvidia_leaked_cert.yar
+gen_osx_backdoor_bella.yar
+gen_osx_evilosx.yar
+gen_osx_pyagent_persistence.yar
+gen_p0wnshell.yar
+gen_phish_attachments.yar
+gen_pirpi.yar
+gen_powerkatz.yar
+gen_powershdll.yar
+gen_powershell_empire.yar
+gen_powershell_invocation.yar
+gen_powershell_obfuscation.yar
+gen_powershell_suite.yar
+gen_powershell_susp.yar
+gen_powershell_toolkit.yar
+gen_powersploit_dropper.yar
+gen_ps1_shellcode.yar
+gen_ps_empire_eval.yar
+gen_ps_osiris.yar
+gen_pua.yar
+gen_pupy_rat.yar
+gen_python_encoded_adware.yar
+gen_python_pty_shell.yar
+gen_python_pyminifier_encoded_payload.yar
+gen_python_reverse_shell.yara
+gen_rar_exfil.yar
+gen_rats_malwareconfig.yar
+gen_recon_indicators.yar
+gen_redmimicry.yar
+gen_redsails.yar
+gen_regsrv32_issue.yar
+gen_remote_potato0.yar
+gen_rottenpotato.yar
+gen_rtf_malver_objects.yar
+gen_sfx_with_microsoft_copyright.yar
+gen_sharpcat.yar
+gen_shikataganai.yar
+gen_sign_anomalies.yar
+gen_solarwinds_credential_stealer.yar
+gen_susp_bat2exe.yar
+gen_susp_bat_aux.yar
+gen_susp_cmd_var_expansion.yar
+gen_susp_hacktool.yar
+gen_suspicious_InPage_dropper.yar
+gen_suspicious_strings.yar
+gen_susp_js_obfuscatorio.yar
+gen_susp_lnk_files.yar
+gen_susp_lnk.yar
+gen_susp_obfuscation.yar
+gen_susp_office_dropper.yar
+gen_susp_ps_jab.yar
+gen_susp_sfx.yar
+gen_susp_strings_in_ole.yar
+gen_susp_wer_files.yar
+gen_susp_xor.yar
+gen_sysinternals_anomaly.yar
+gen_tempracer.yar
+gen_thumbs_cloaking.yar
+gen_transformed_strings.yar
+gen_tscookie_rat.yar
+gen_unicorn_obfuscated_powershell.yar
+gen_unspecified_malware.yar
+gen_url_persitence.yar
+gen_url_to_local_exe.yar
+gen_vhd_anomaly.yar
+gen_webshells_ext_vars.yar
+gen_webshells.yar
+gen_winpayloads.yar
+gen_win_privesc.yar
+gen_winshells.yar
+gen_wmi_implant.yar
+gen_xored_pe.yar
+gen_xor_hunting.yar
+gen_xtreme_rat.yar
+gen_ysoserial_payloads.yar
+gen_zoho_rcef_logs.yar
+hktl_bruteratel_c4_badger.yar
+hktl_bruteratel_c4.yar
+Linux.Ransomware.GwisinLocker.yara
+Linux.Ransomware.KillDisk.yara
+Linux.Ransomware.LuckyJoe.yara
+Linux.Ransomware.RedAlert.yara
+Linux.Virus.Vit.yara
+mal_avemaria_rat.yar
+mal_codecov_hack.yar
+mal_crime_unknown.yar
+mal_cryp_rat.yar
+mal_lnx_implant_may22.yar
+mal_netsha.yar
+mal_passwordstate_backdoor.yar
+mal_qbot_payloads.yar
+mal_ransom_lorenz.yar
+pua_cryptocoin_miner.yar
+pua_xmrig_monero_miner.yar
+pup_lightftp.yar
+spy_equation_fiveeyes.yar
+spy_querty_fiveeyes.yar
+spy_regin_fiveeyes.yar
+thor-hacktools.yar
+thor_inverse_matches.yar
+thor-webshells.yar
+threat_lenovo_superfish.yar
+vul_backdoor_antitheftweb.yar
+vul_confluence_questions_plugin_cve_2022_26138.yar
+vul_cve_2020_0688.yar
+vul_cve_2020_1938.yar
+vul_cve_2021_3438_printdriver.yar
+vul_cve_2021_386471_omi.yar
+vul_dell_bios_upd_driver.yar
+vul_drivecrypt.yar
+vul_jquery_fileupload_cve_2018_9206.yar
+vuln_gigabyte_driver.yar
+vuln_proxynotshell_cve_2022_41040.yar
+vul_php_zlib_backdoor.yar
+webshell_regeorg.yar
+webshell_xsl_transform.yar
+Win32.Downloader.dlMarlboro.yara
+Win32.Exploit.CVE20200601.yara
+Win32.Infostealer.MultigrainPOS.yara
+Win32.Infostealer.ProjectHookPOS.yara
+Win32.PUA.Domaiq.yara
+Win32.Ransomware.5ss5c.yara
+Win32.Ransomware.Acepy.yara
+Win32.Ransomware.Afrodita.yara
+Win32.Ransomware.Ako.yara
+Win32.Ransomware.Alcatraz.yara
+Win32.Ransomware.AnteFrigus.yara
+Win32.Ransomware.Archiveus.yara
+Win32.Ransomware.Armage.yara
+Win32.Ransomware.ASN1Encoder.yara
+Win32.Ransomware.Atlas.yara
+Win32.Ransomware.Avaddon.yara
+Win32.Ransomware.AvosLocker.yara
+Win32.Ransomware.Babuk.yara
+Win32.Ransomware.Badbeeteam.yara
+Win32.Ransomware.BadBlock.yara
+Win32.Ransomware.Balaclava.yara
+Win32.Ransomware.Bam2021.yara
+Win32.Ransomware.BananaCrypt.yara
+Win32.Ransomware.BandarChor.yara
+Win32.Ransomware.BitCrypt.yara
+Win32.Ransomware.BKRansomware.yara
+Win32.Ransomware.BlackBasta.yara
+Win32.Ransomware.BlackCat.yara
+Win32.Ransomware.BlackMoon.yara
+Win32.Ransomware.Blitzkrieg.yara
+Win32.Ransomware.BlueLocker.yara
+Win32.Ransomware.BrainCrypt.yara
+Win32.Ransomware.Buran.yara
+Win32.Ransomware.ChiChi.yara
+Win32.Ransomware.Cincoo.yara
+Win32.Ransomware.Clop.yara
+Win32.Ransomware.Conti.yara
+Win32.Ransomware.Cryakl.yara
+Win32.Ransomware.Crypmic.yara
+Win32.Ransomware.Crypren.yara
+Win32.Ransomware.CryptoBit.yara
+Win32.Ransomware.CryptoFortress.yara
+Win32.Ransomware.CryptoJoker.yara
+Win32.Ransomware.CryptoLocker.yara
+Win32.Ransomware.CryptoWall.yara
+Win32.Ransomware.Crysis.yara
+Win32.Ransomware.Cuba.yara
+Win32.Ransomware.DarkSide.yara
+Win32.Ransomware.DearCry.yara
+Win32.Ransomware.Defray.yara
+Win32.Ransomware.Delphimorix.yara
+Win32.Ransomware.DenizKizi.yara
+Win32.Ransomware.DesuCrypt.yara
+Win32.Ransomware.Dharma.yara
+Win32.Ransomware.DirtyDecrypt.yara
+Win32.Ransomware.District.yara
+Win32.Ransomware.DMALocker.yara
+Win32.Ransomware.DMR.yara
+Win32.Ransomware.DogeCrypt.yara
+Win32.Ransomware.Dragon.yara
+Win32.Ransomware.Dualshot.yara
+Win32.Ransomware.Encoded01.yara
+Win32.Ransomware.Erica.yara
+Win32.Ransomware.FarAttack.yara
+Win32.Ransomware.FCT.yara
+Win32.Ransomware.FenixLocker.yara
+Win32.Ransomware.Ferrlock.yara
+Win32.Ransomware.Flamingo.yara
+Win32.Ransomware.FLKR.yara
+Win32.Ransomware.FuxSocy.yara
+Win32.Ransomware.GandCrab.yara
+Win32.Ransomware.GarrantyDecrypt.yara
+Win32.Ransomware.Gibon.yara
+Win32.Ransomware.GlobeImposter.yara
+Win32.Ransomware.Gomer.yara
+Win32.Ransomware.Good.yara
+Win32.Ransomware.Gpcode.yara
+Win32.Ransomware.GPGQwerty.yara
+Win32.Ransomware.GusCrypter.yara
+Win32.Ransomware.HakunaMatata.yara
+Win32.Ransomware.HDDCryptor.yara
+Win32.Ransomware.HDMR.yara
+Win32.Ransomware.Henry.yara
+Win32.Ransomware.HentaiOniichan.yara
+Win32.Ransomware.Hermes.yara
+Win32.Ransomware.Horsedeal.yara
+Win32.Ransomware.HowAreYou.yara
+Win32.Ransomware.HydraCrypt.yara
+Win32.Ransomware.IFN643.yara
+Win32.Ransomware.InfoDot.yara
+Win32.Ransomware.Jamper.yara
+Win32.Ransomware.Jemd.yara
+Win32.Ransomware.Jormungand.yara
+Win32.Ransomware.JSWorm.yara
+Win32.Ransomware.JuicyLemon.yara
+Win32.Ransomware.Kangaroo.yara
+Win32.Ransomware.KawaiiLocker.yara
+Win32.Ransomware.KillDisk.yara
+Win32.Ransomware.Knot.yara
+Win32.Ransomware.Kovter.yara
+Win32.Ransomware.Koxic.yara
+Win32.Ransomware.Kraken.yara
+Win32.Ransomware.Ladon.yara
+Win32.Ransomware.LeChiffre.yara
+Win32.Ransomware.LockBit.yara
+Win32.Ransomware.Lolkek.yara
+Win32.Ransomware.LooCipher.yara
+Win32.Ransomware.Lorenz.yara
+Win32.Ransomware.Mafia.yara
+Win32.Ransomware.Magniber.yara
+Win32.Ransomware.Major.yara
+Win32.Ransomware.Makop.yara
+Win32.Ransomware.Maktub.yara
+Win32.Ransomware.Marlboro.yara
+Win32.Ransomware.MarsJoke.yara
+Win32.Ransomware.Matsnu.yara
+Win32.Ransomware.MedusaLocker.yara
+Win32.Ransomware.Meow.yara
+Win32.Ransomware.Monalisa.yara
+Win32.Ransomware.Montserrat.yara
+Win32.Ransomware.Motocos.yara
+Win32.Ransomware.MountLocker.yara
+Win32.Ransomware.MRAC.yara
+Win32.Ransomware.MZP.yara
+Win32.Ransomware.NanoLocker.yara
+Win32.Ransomware.NB65.yara
+Win32.Ransomware.Nefilim.yara
+Win32.Ransomware.Nemty.yara
+Win32.Ransomware.Networm.yara
+Win32.Ransomware.NotPetya.yara
+Win32.Ransomware.Oni.yara
+Win32.Ransomware.OphionLocker.yara
+Win32.Ransomware.Ouroboros.yara
+Win32.Ransomware.Outsider.yara
+Win32.Ransomware.Paradise.yara
+Win32.Ransomware.Pay2Key.yara
+Win32.Ransomware.Petya.yara
+Win32.Ransomware.Plague17.yara
+Win32.Ransomware.PrincessLocker.yara
+Win32.Ransomware.Prometey.yara
+Win32.Ransomware.PXJ.yara
+Win32.Ransomware.RagnarLocker.yara
+Win32.Ransomware.Ragnarok.yara
+Win32.Ransomware.Ransoc.yara
+Win32.Ransomware.Ransomexx.yara
+Win32.Ransomware.RansomPlus.yara
+Win32.Ransomware.Redeemer.yara
+Win32.Ransomware.RegretLocker.yara
+Win32.Ransomware.RetMyData.yara
+Win32.Ransomware.Reveton.yara
+Win32.Ransomware.Revil.yara
+Win32.Ransomware.Rokku.yara
+Win32.Ransomware.Ryuk.yara
+Win32.Ransomware.Sage.yara
+Win32.Ransomware.Sanwai.yara
+Win32.Ransomware.Sarbloh.yara
+Win32.Ransomware.Satana.yara
+Win32.Ransomware.Satan.yara
+Win32.Ransomware.Saturn.yara
+Win32.Ransomware.Sepsis.yara
+Win32.Ransomware.Serpent.yara
+Win32.Ransomware.SevenSevenSeven.yara
+Win32.Ransomware.ShadowCryptor.yara
+Win32.Ransomware.Sherminator.yara
+Win32.Ransomware.Sifrelendi.yara
+Win32.Ransomware.Sifreli.yara
+Win32.Ransomware.Sigrun.yara
+Win32.Ransomware.Skystars.yara
+Win32.Ransomware.Spora.yara
+Win32.Ransomware.TargetCompany.yara
+Win32.Ransomware.TBLocker.yara
+Win32.Ransomware.TechandStrat.yara
+Win32.Ransomware.TeleCrypt.yara
+Win32.Ransomware.Termite.yara
+Win32.Ransomware.Teslacrypt.yara
+Win32.Ransomware.Teslarvng.yara
+Win32.Ransomware.Thanatos.yara
+Win32.Ransomware.TorrentLocker.yara
+Win32.Ransomware.VegaLocker.yara
+Win32.Ransomware.Velso.yara
+Win32.Ransomware.VHDLocker.yara
+Win32.Ransomware.WannaCry.yara
+Win32.Ransomware.WaspLocker.yara
+Win32.Ransomware.Wastedlocker.yara
+Win32.Ransomware.WinWord64.yara
+Win32.Ransomware.WsIR.yara
+Win32.Ransomware.Xorist.yara
+Win32.Ransomware.Zeoticus.yara
+Win32.Ransomware.Zeppelin.yara
+Win32.Ransomware.ZeroCrypt.yara
+Win32.Ransomware.Zhen.yara
+Win32.Ransomware.Zoldon.yara
+Win32.Trojan.CaddyWiper.yara
+Win32.Trojan.Dridex.yara
+Win32.Trojan.Emotet.yara
+Win32.Trojan.HermeticWiper.yara
+Win32.Trojan.IsaacWiper.yara
+Win32.Trojan.TrickBot.yara
+Win32.Virus.Awfull.yara
+Win32.Virus.Cmay.yara
+Win32.Virus.DeadCode.yara
+Win32.Virus.Elerad.yara
+Win32.Virus.Greenp.yara
+Win32.Virus.Mocket.yara
+Win32.Virus.Negt.yara
+Win64.Ransomware.Ako.yara
+Win64.Ransomware.AntiWar.yara
+Win64.Ransomware.AwesomeScott.yara
+Win64.Ransomware.Curator.yara
+Win64.Ransomware.DST.yara
+Win64.Ransomware.HermeticRansom.yara
+Win64.Ransomware.HotCoffee.yara
+Win64.Ransomware.Nokoyawa.yara
+Win64.Ransomware.Pandora.yara
+Win64.Ransomware.RedRoman.yara
+Win64.Ransomware.Rook.yara
+Win64.Ransomware.SeedLocker.yara
+Win64.Ransomware.Seth.yara
+Win64.Ransomware.Solaso.yara
+Win64.Ransomware.Vovalex.yara
+Win64.Ransomware.WhiteBlackCrypt.yara
+Win64.Ransomware.Wintenzz.yara
+yara_mixed_ext_vars.yar
+
+getting files
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0/suspicious-files]
+└─$ scp cmnatic@10.10.148.188:/home/cmnatic/suspicious-files/file1/* .
+
+cmnatic@10.10.148.188's password: 
+ind3x.php                                            100%   79KB  82.5KB/s   00:00
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0/suspicious-files]
+└─$ scp cmnatic@10.10.148.188:/home/cmnatic/suspicious-files/file2/* .
+
+cmnatic@10.10.148.188's password: 
+1ndex.php                                            100%  219KB 162.3KB/s   00:01
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0/suspicious-files]
+└─$ ls
+1ndex.php  ind3x.php
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0/suspicious-files]
+└─$ ls                     
+1ndex.php  ind3x.php
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0/suspicious-files]
+└─$ mkdir file1
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0/suspicious-files]
+└─$ mv ind3x.php file1
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0/suspicious-files]
+└─$ mkdir file2
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0/suspicious-files]
+└─$ mv 1ndex.php file2
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0/suspicious-files]
+└─$ ls
+file1  file2
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/loki/Loki-0.45.0/suspicious-files]
+└─$ cd file1
+```
+```text
+┌──(kali㉿kali)-[~/…/loki/Loki-0.45.0/suspicious-files/file1]
+└─$ python ../../loki.py -p .
+
+                                                                                       
+      __   ____  __ ______                                                             
+     / /  / __ \/ //_/  _/                                                             
+    / /__/ /_/ / ,< _/ /                                                               
+   /____/\____/_/|_/___/                                                               
+   YARA and IOC Scanner                                                                
+                                                                                       
+   by Florian Roth, GNU General Public License                                         
+   version 0.44.2 (Python 3 release)                                                   
+                                                                                       
+   DISCLAIMER - USE AT YOUR OWN RISK                                                   
+                                                                                       
+                                                                                       
+                                                                                       
+[NOTICE] Starting Loki Scan VERSION: 0.44.2 SYSTEM: kali TIME: 20221127T19:16:13Z PLATFORM:     PROC:  ARCH: 64bit ELF                                                        
+[INFO] File Name Characteristics initialized with 3549 regex patterns                  
+[INFO] C2 server indicators initialized with 1666 elements                             
+[INFO] Malicious MD5 Hashes initialized with 19235 hashes                              
+[INFO] Malicious SHA1 Hashes initialized with 7450 hashes                              
+[INFO] Malicious SHA256 Hashes initialized with 23304 hashes                           
+[INFO] False Positive Hashes initialized with 30 hashes                                
+[INFO] Processing YARA rules folder /home/kali/Downloads/loki/Loki-0.45.0/signature-base/yara                                                                                 
+[INFO] Initializing all YARA rules at once (composed string of all rule files)         
+[INFO] Initialized 873 Yara rules                                                      
+[NOTICE] Program should be run as 'root' to ensure all access rights to process memory and file objects.                                                                      
+[INFO] Scanning Path . ...                                                             
+[ALERT]                                                                                
+FILE: ./ind3x.php SCORE: 260 TYPE: PHP SIZE: 80992                                     
+FIRST_BYTES: 3c3f7068700a2f2a0a09623337346b20322e320a / <filter object at 0x7f617d46b220>                                                                                     
+MD5: 1606bdac2cb613bf0b8a22690364fbc5                                                  
+SHA1: 9383ed4ee7df17193f7a034c3190ecabc9000f9f                                         
+SHA256: 5479f8cd1375364770df36e5a18262480a8f9d311e8eedb2c2390ecb233852ad CREATED: Sun Nov 27 14:15:39 2022 MODIFIED: Sun Nov 27 14:11:10 2022 ACCESSED: Sun Nov 27 14:16:21 2022                                                                                     
+REASON_1: Yara Rule MATCH: webshell_metaslsoft SUBSCORE: 70                            
+DESCRIPTION: Web Shell - file metaslsoft.php REF: - AUTHOR: Florian Roth               
+MATCHES: Str1: $buff .= "<tr><td><a href=\"?d=".$pwd."\">[ $folder ]</a></td><td>LINK</t                                                                                      
+REASON_2: Yara Rule MATCH: webshell_php_generic SUBSCORE: 70                           
+DESCRIPTION: php webshell having some kind of input and some kind of payload. restricted to small files or big ones inclusing suspicious strings REF: - AUTHOR: Arnim Rupp    
+MATCHES: Str1: <? Str2: <?php Str3: _REQUEST[ Str4: _SERVER["HTTP_ Str5: eval(e Str6: eval($ Str7: eval(" Str8: exec($ Str9: shell_exec($ Str10: pas ... (truncated)          
+[NOTICE] Results: 1 alerts, 0 warnings, 2 notices                                      
+[RESULT] Indicators detected!                                                          
+[RESULT] Loki recommends checking the elements on virustotal.com or Google and triage with a professional tool like THOR https://nextron-systems.com/thor in corporate networks.                                                                                     
+[INFO] Please report false positives via https://github.com/Neo23x0/signature-base     
+[NOTICE] Finished LOKI Scan SYSTEM: kali TIME: 20221127T19:16:21Z                      
+
+cmnatic@thm-yara:~/suspicious-files/file1$ python ../../tools/Loki/loki.py -p .
+                                                                               
+      __   ____  __ ______                                                             
+     / /  / __ \/ //_/  _/                                                             
+    / /__/ /_/ / ,< _/ /                                                               
+   /____/\____/_/|_/___/                                                               
+      ________  _____  ____                                                            
+     /  _/ __ \/ ___/ / __/______ ____  ___  ___ ____                                  
+    _/ // /_/ / /__  _\ \/ __/ _ `/ _ \/ _ \/ -_) __/                                  
+   /___/\____/\___/ /___/\__/\_,_/_//_/_//_/\__/_/                                     
+                                                                                       
+   Copyright by Florian Roth, Released under the GNU General Public License            
+   Version 0.32.1                                                                      
+                                                                                       
+   DISCLAIMER - USE AT YOUR OWN RISK                                                   
+   Please report false positives via https://github.com/Neo23x0/Loki/issues            
+                                                                                       
+                                                                                       
+                                                                                       
+[NOTICE] Starting Loki Scan VERSION: 0.32.1 SYSTEM: thm-yara TIME: 20221127T19:21:00Z PLATFORM:     PROC: x86_64 ARCH: 64bit                                                  
+[NOTICE] Registered plugin PluginWMI                                                   
+[NOTICE] Loaded plugin /home/cmnatic/tools/Loki/plugins/loki-plugin-wmi.py             
+[NOTICE] PE-Sieve successfully initialized BINARY: /home/cmnatic/tools/Loki/tools/pe-sieve64.exe SOURCE: https://github.com/hasherezade/pe-sieve                              
+[INFO] File Name Characteristics initialized with 2841 regex patterns                  
+[INFO] C2 server indicators initialized with 1541 elements                             
+[INFO] Malicious MD5 Hashes initialized with 19034 hashes                              
+[INFO] Malicious SHA1 Hashes initialized with 7159 hashes                              
+[INFO] Malicious SHA256 Hashes initialized with 22841 hashes                           
+[INFO] False Positive Hashes initialized with 30 hashes                                
+[INFO] Processing YARA rules folder /home/cmnatic/tools/Loki/signature-base/yara       
+[INFO] Initializing all YARA rules at once (composed string of all rule files)         
+[INFO] Initialized 653 Yara rules                                                      
+[INFO] Reading private rules from binary ...                                           
+[NOTICE] Program should be run as 'root' to ensure all access rights to process memory and file objects.                                                                      
+[NOTICE] Running plugin PluginWMI                                                      
+[NOTICE] Finished running plugin PluginWMI                                             
+[INFO] Scanning . ...                                                                  
+[WARNING]                                                                              
+FILE: ./ind3x.php SCORE: 70 TYPE: PHP SIZE: 80992                                      
+FIRST_BYTES: 3c3f7068700a2f2a0a09623337346b20322e320a / <?php/*b374k 2.2               
+MD5: 1606bdac2cb613bf0b8a22690364fbc5                                                  
+SHA1: 9383ed4ee7df17193f7a034c3190ecabc9000f9f                                         
+SHA256: 5479f8cd1375364770df36e5a18262480a8f9d311e8eedb2c2390ecb233852ad CREATED: Mon Nov  9 15:15:32 2020 MODIFIED: Mon Nov  9 13:06:56 2020 ACCESSED: Sun Nov 27 19:02:01 2022                                                                                     
+REASON_1: Yara Rule MATCH: webshell_metaslsoft SUBSCORE: 70                            
+DESCRIPTION: Web Shell - file metaslsoft.php REF: -                                    
+MATCHES: Str1: $buff .= "<tr><td><a href=\\"?d=".$pwd."\\">[ $folder ]</a></td><td>LINK</t                                                                                    
+[NOTICE] Results: 0 alerts, 1 warnings, 7 notices                                      
+[RESULT] Suspicious objects detected!                                                  
+[RESULT] Loki recommends a deeper analysis of the suspicious objects.                  
+[INFO] Please report false positives via https://github.com/Neo23x0/signature-base     
+[NOTICE] Finished LOKI Scan SYSTEM: thm-yara TIME: 20221127T19:21:05Z                  
+                                                                                       
+Press Enter to exit ...   
+
+some nice links
+
+https://xss.js.org/#/xss01
+
+https://github.com/tennc/webshell
+
+http://tennc.github.io/page/2/
+
+cmnatic@thm-yara:~/suspicious-files/file2$ python ../../tools/Loki/loki.py -p .
+                                                                               
+      __   ____  __ ______                                                             
+     / /  / __ \/ //_/  _/                                                             
+    / /__/ /_/ / ,< _/ /                                                               
+   /____/\____/_/|_/___/                                                               
+      ________  _____  ____                                                            
+     /  _/ __ \/ ___/ / __/______ ____  ___  ___ ____                                  
+    _/ // /_/ / /__  _\ \/ __/ _ `/ _ \/ _ \/ -_) __/                                  
+   /___/\____/\___/ /___/\__/\_,_/_//_/_//_/\__/_/                                     
+                                                                                       
+   Copyright by Florian Roth, Released under the GNU General Public License            
+   Version 0.32.1                                                                      
+                                                                                       
+   DISCLAIMER - USE AT YOUR OWN RISK                                                   
+   Please report false positives via https://github.com/Neo23x0/Loki/issues            
+                                                                                       
+                                                                                       
+                                                                                       
+[NOTICE] Starting Loki Scan VERSION: 0.32.1 SYSTEM: thm-yara TIME: 20221127T19:54:13Z PLATFORM:     PROC: x86_64 ARCH: 64bit                                                  
+[NOTICE] Registered plugin PluginWMI                                                   
+[NOTICE] Loaded plugin /home/cmnatic/tools/Loki/plugins/loki-plugin-wmi.py             
+[NOTICE] PE-Sieve successfully initialized BINARY: /home/cmnatic/tools/Loki/tools/pe-sieve64.exe SOURCE: https://github.com/hasherezade/pe-sieve                              
+[INFO] File Name Characteristics initialized with 2841 regex patterns                  
+[INFO] C2 server indicators initialized with 1541 elements                             
+[INFO] Malicious MD5 Hashes initialized with 19034 hashes                              
+[INFO] Malicious SHA1 Hashes initialized with 7159 hashes                              
+[INFO] Malicious SHA256 Hashes initialized with 22841 hashes                           
+[INFO] False Positive Hashes initialized with 30 hashes                                
+[INFO] Processing YARA rules folder /home/cmnatic/tools/Loki/signature-base/yara       
+[INFO] Initializing all YARA rules at once (composed string of all rule files)         
+[INFO] Initialized 653 Yara rules                                                      
+[INFO] Reading private rules from binary ...                                           
+[NOTICE] Program should be run as 'root' to ensure all access rights to process memory and file objects.                                                                      
+[NOTICE] Running plugin PluginWMI                                                      
+[NOTICE] Finished running plugin PluginWMI                                             
+[INFO] Scanning . ...                                                                  
+[NOTICE] Results: 0 alerts, 0 warnings, 7 notices                                      
+[RESULT] SYSTEM SEEMS TO BE CLEAN.                                                     
+[INFO] Please report false positives via https://github.com/Neo23x0/signature-base     
+[NOTICE] Finished LOKI Scan SYSTEM: thm-yara TIME: 20221127T19:54:16Z
+```
+```text
+┌──(kali㉿kali)-[~/…/loki/Loki-0.45.0/suspicious-files/file2]
+└─$ head 1ndex.php                                       
+<?php
+/*
+        b374k shell 3.2.3
+        Jayalah Indonesiaku
+        (c)2014
+        https://github.com/b374k/b374k
+
+*/
+```
+Scan file 1. Does Loki detect this file as suspicious/malicious or benign?
+*suspicious*
+What Yara rule did it match on?
+*webshell_metaslsoft*
+What does Loki classify this file as?
+Check description
+*Web Shell*
+Based on the output, what string within the Yara rule did it match on?
+*Str1*
+What is the name and version of this hack tool?
+Check first_bytes
+*b374k 2.2*
+Inspect the actual Yara file that flagged file 1. Within this rule, how many strings are there to flag this file?
+yara/thor-webshells.yar
+*1*
+Scan file 2. Does Loki detect this file as suspicious/malicious or benign?
+*benign*
+Inspect file 2. What is the name and version of this web shell?
+*b374k 3.2.3*
+### Creating Yara rules with yarGen
+Creating Yara rules with yarGen
+From the previous section, we realized that we have a file that Loki didn't flag on. At this point, we are unable to run Loki on other web servers because if file 2 exists in any of the webs servers, it will go undetected.
+We need to create a Yara rule to detect this specific web shell in our environment. Typically this is what is done in the case of an incident, which is an event that affects/impacts the organization in a negative fashion.
+We can manually open the file and attempt to sift through lines upon lines of code to find possible strings that can be used in our newly created Yara rule.
+Let's check how many lines this particular file has. You can run the following: strings <file name> | wc -l.
+```text
+Using wc to count the amount of lines in the file
+
+           
+cmnatic@thm-yara:~/suspicious-files/file2$ strings 1ndex.php | wc -l
+3580
+```
+If you try to go through each string, line by line manually, you should quickly realize that this can be a daunting task.
+```text
+Catting the output of 1ndex.php
+
+           
+if(res=='error'){
+$('.ulProgress'+ulType+i).html('( failed )');
+}
+else{
+$('.ulRes'+ulType+i).html(res);
+}
+loading_stop();
+},
+error: function(){
+loading_stop();
+$('.ulProgress'+ulType+i).html('( failed )');
+$('.ulProgress'+ulType+i).removeClass('ulProgress'+ulType+i);
+$('.ulFilename'+ulType+i).removeClass('ulFilename'+ulType+i);
+}
+});
+}
+
+function ul_go(ulType){
+ulFile = (ulType=='comp')? $('.ulFileComp'):$('.ulFileUrl');
+ulResult = (ulType=='comp')? $('.ulCompResult'):$('.ulUrlResult');
+ulResult.html('');
+
+ulFile.each(function(i){
+if(((ulType=='comp')&&this.files[0])||((ulType=='url')&&(this.value!=''))){
+file = (ulType=='comp')? this.files[0]: this.value;
+filename = (ulType=='comp')? file.name: file.substring(file.lastIndexOf('/')+1);
+
+ulSaveTo = (ulType=='comp')? $('.ulSaveToComp')[i].value:$('.ulSaveToUrl')[i].value;
+ulFilename = (ulType=='comp')? $('.ulFilenameComp')[i].value:$('.ulFilenameUrl')[i].value;
+
+--snippet cropped for brevity--
+```
+Luckily, we can use [yarGen](https://github.com/Neo23x0/yarGen) (yes, another tool created by Florian Roth) to aid us with this task.
+What is yarGen? yarGen is a generator for YARA rules.
+From the README - "The main principle is the creation of yara rules from strings found in malware files while removing all strings that also appear in goodware files. Therefore yarGen includes a big goodware strings and opcode database as ZIP archives that have to be extracted before the first use."
+Navigate to the yarGen directory, which is within tools. If you are running yarGen on your own system, you need to update it first by running the following command: python3 yarGen.py --update.
+This will update the good-opcodes and good-strings DB's from the online repository. This update will take a few minutes.
+Once it has been updated successfully, you'll see the following message at the end of the output.
+```text
+Updating yarGen
+
+           
+cmnatic@thm-yara:~/tools/yarGen$ python3 yarGen.py --update
+------------------------------------------------------------------------
+                   _____
+    __ _____ _____/ ___/__ ___
+   / // / _ `/ __/ (_ / -_) _ \
+   \_, /\_,_/_/  \___/\__/_//_/
+  /___/  Yara Rule Generator
+         Florian Roth, July 2020, Version 0.23.3
+
+  Note: Rules have to be post-processed
+  See this post for details: https://medium.com/@cyb3rops/121d29322282
+------------------------------------------------------------------------
+Downloading good-opcodes-part1.db from https://www.bsk-consulting.de/yargen/good-opcodes-part1.db ...
+```
+To use yarGen to generate a Yara rule for file 2, you can run the following command:
+python3 yarGen.py -m /home/cmnatic/suspicious-files/file2 --excludegood -o /home/cmnatic/suspicious-files/file2.yar
+A brief explanation of the parameters above:
+-m is the path to the files you want to generate rules for
+--excludegood force to exclude all goodware strings (these are strings found in legitimate software and can increase false positives)
+-o location & name you want to output the Yara rule
+If all is well, you should see the following output.
+```text
+Using yarGen to generate a rule for file2
+
+           
+
+           [=] Generated 1 SIMPLE rules.
+           [=] All rules written to /home/cmnatic/suspicious-files/file2.yar
+           [+] yarGen run finished
+```
+Generally, you would examine the Yara rule and remove any strings that you feel might generate false positives. For this exercise, we will leave the generated Yara rule as is and test to see if Yara will flag file 2 or no.
+Note: Another tool created to assist with this is called [yarAnalyzer](https://github.com/Neo23x0/yarAnalyzer/) (you guessed it - created by Florian Roth). We will not examine that tool in this room, but you should read up on it, especially if you decide to start creating your own Yara rules.
+Further Reading on creating Yara rules and using yarGen:
+https://www.bsk-consulting.de/2015/02/16/write-simple-sound-yara-rules/
+https://www.bsk-consulting.de/2015/10/17/how-to-write-simple-but-sound-yara-rules-part-2/
+https://www.bsk-consulting.de/2016/04/15/how-to-write-simple-but-sound-yara-rules-part-3/
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ mkdir yarGen
+```
+```text
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cd yarGen
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/yarGen]
+└─$ git clone https://github.com/Neo23x0/yarGen.git    
+Cloning into 'yarGen'...
+remote: Enumerating objects: 794, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 794 (delta 1), reused 1 (delta 0), pack-reused 788
+Receiving objects: 100% (794/794), 1.15 MiB | 1.91 MiB/s, done.
+Resolving deltas: 100% (359/359), done.
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/yarGen]
+└─$ ls
+yarGen
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/yarGen]
+└─$ cd yarGen
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/yarGen/yarGen]
+└─$ ls
+3rdparty  prepare-release.sh  requirements.txt  tools
+LICENSE   README.md           screens           yarGen.py
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/yarGen/yarGen]
+└─$ pip install -r requirements.txt
+Defaulting to user installation because normal site-packages is not writeable
+Collecting scandir
+  Downloading scandir-1.10.0.tar.gz (33 kB)
+  Preparing metadata (setup.py) ... done
+Requirement already satisfied: pefile in /usr/lib/python3/dist-packages (from -r requirements.txt (line 2)) (2022.5.30)
+Requirement already satisfied: lxml in /usr/lib/python3/dist-packages (from -r requirements.txt (line 3)) (4.9.1)
+Building wheels for collected packages: scandir
+  Building wheel for scandir (setup.py) ... done
+  Created wheel for scandir: filename=scandir-1.10.0-cp310-cp310-linux_x86_64.whl size=11144 sha256=ae543195f8962636b1fdf2cc71070929e738995c589f17a1eb3b713de11aa81b
+  Stored in directory: /home/kali/.cache/pip/wheels/d4/43/07/5543298a8c0e9d6d557c5c46b0175424898b17fa534c66f413
+Successfully built scandir
+Installing collected packages: scandir
+Successfully installed scandir-1.10.0
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/yarGen/yarGen]
+└─$ ls
+3rdparty  prepare-release.sh  requirements.txt  tools
+LICENSE   README.md           screens           yarGen.py
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/yarGen/yarGen]
+└─$ python3 yarGen.py --update     
+------------------------------------------------------------------------
+                   _____            
+    __ _____ _____/ ___/__ ___      
+   / // / _ `/ __/ (_ / -_) _ \     
+   \_, /\_,_/_/  \___/\__/_//_/     
+  /___/  Yara Rule Generator        
+         Florian Roth, July 2020, Version 0.23.3
+   
+  Note: Rules have to be post-processed
+  See this post for details: https://medium.com/@cyb3rops/121d29322282
+------------------------------------------------------------------------
+Downloading good-opcodes-part1.db from https://www.bsk-consulting.de/yargen/good-opcodes-part1.db ...
+Downloading good-opcodes-part2.db from https://www.bsk-consulting.de/yargen/good-opcodes-part2.db ...
+Downloading good-opcodes-part3.db from https://www.bsk-consulting.de/yargen/good-opcodes-part3.db ...
+Downloading good-opcodes-part4.db from https://www.bsk-consulting.de/yargen/good-opcodes-part4.db ...
+Downloading good-opcodes-part5.db from https://www.bsk-consulting.de/yargen/good-opcodes-part5.db ...
+Downloading good-opcodes-part6.db from https://www.bsk-consulting.de/yargen/good-opcodes-part6.db ...
+Downloading good-opcodes-part7.db from https://www.bsk-consulting.de/yargen/good-opcodes-part7.db ...
+Downloading good-opcodes-part8.db from https://www.bsk-consulting.de/yargen/good-opcodes-part8.db ...
+Downloading good-opcodes-part9.db from https://www.bsk-consulting.de/yargen/good-opcodes-part9.db ...
+Downloading good-strings-part1.db from https://www.bsk-consulting.de/yargen/good-strings-part1.db ...
+Downloading good-strings-part2.db from https://www.bsk-consulting.de/yargen/good-strings-part2.db ...
+Downloading good-strings-part3.db from https://www.bsk-consulting.de/yargen/good-strings-part3.db ...
+Downloading good-strings-part4.db from https://www.bsk-consulting.de/yargen/good-strings-part4.db ...
+Downloading good-strings-part5.db from https://www.bsk-consulting.de/yargen/good-strings-part5.db ...
+Downloading good-strings-part6.db from https://www.bsk-consulting.de/yargen/good-strings-part6.db ...
+Downloading good-strings-part7.db from https://www.bsk-consulting.de/yargen/good-strings-part7.db ...
+Downloading good-strings-part8.db from https://www.bsk-consulting.de/yargen/good-strings-part8.db ...
+Downloading good-strings-part9.db from https://www.bsk-consulting.de/yargen/good-strings-part9.db ...
+Downloading good-exports-part1.db from https://www.bsk-consulting.de/yargen/good-exports-part1.db ...
+Downloading good-exports-part2.db from https://www.bsk-consulting.de/yargen/good-exports-part2.db ...
+Downloading good-exports-part3.db from https://www.bsk-consulting.de/yargen/good-exports-part3.db ...
+Downloading good-exports-part4.db from https://www.bsk-consulting.de/yargen/good-exports-part4.db ...
+Downloading good-exports-part5.db from https://www.bsk-consulting.de/yargen/good-exports-part5.db ...
+Downloading good-exports-part6.db from https://www.bsk-consulting.de/yargen/good-exports-part6.db ...
+Downloading good-exports-part7.db from https://www.bsk-consulting.de/yargen/good-exports-part7.db ...
+Downloading good-exports-part8.db from https://www.bsk-consulting.de/yargen/good-exports-part8.db ...
+Downloading good-exports-part9.db from https://www.bsk-consulting.de/yargen/good-exports-part9.db ...
+Downloading good-imphashes-part1.db from https://www.bsk-consulting.de/yargen/good-imphashes-part1.db ...
+Downloading good-imphashes-part2.db from https://www.bsk-consulting.de/yargen/good-imphashes-part2.db ...
+Downloading good-imphashes-part3.db from https://www.bsk-consulting.de/yargen/good-imphashes-part3.db ...
+Downloading good-imphashes-part4.db from https://www.bsk-consulting.de/yargen/good-imphashes-part4.db ...
+Downloading good-imphashes-part5.db from https://www.bsk-consulting.de/yargen/good-imphashes-part5.db ...
+Downloading good-imphashes-part6.db from https://www.bsk-consulting.de/yargen/good-imphashes-part6.db ...
+Downloading good-imphashes-part7.db from https://www.bsk-consulting.de/yargen/good-imphashes-part7.db ...
+Downloading good-imphashes-part8.db from https://www.bsk-consulting.de/yargen/good-imphashes-part8.db ...
+Downloading good-imphashes-part9.db from https://www.bsk-consulting.de/yargen/good-imphashes-part9.db ...
+[+] Updated databases - you can now start creating YARA rules
+
+cmnatic@thm-yara:~/tools/yarGen$ python3 yarGen.py -m /home/cmnatic/suspicious-files/file2 --excludegood -o /home/cmnatic/suspicious-files/file2.yar
+------------------------------------------------------------------------
+                   _____            
+    __ _____ _____/ ___/__ ___      
+   / // / _ `/ __/ (_ / -_) _ \     
+   \_, /\_,_/_/  \___/\__/_//_/     
+  /___/  Yara Rule Generator        
+         Florian Roth, July 2020, Version 0.23.3
+   
+  Note: Rules have to be post-processed
+  See this post for details: https://medium.com/@cyb3rops/121d29322282
+------------------------------------------------------------------------
+[+] Using identifier 'file2'
+[+] Using reference 'https://github.com/Neo23x0/yarGen'
+[+] Using prefix 'file2'
+[+] Processing PEStudio strings ...
+[+] Reading goodware strings from database 'good-strings.db' ...
+    (This could take some time and uses several Gigabytes of RAM depending on your db size)
+[+] Loading ./dbs/good-imphashes-part9.db ...
+[+] Total: 1 / Added 1 entries
+[+] Loading ./dbs/good-exports-part6.db ...
+[+] Total: 8065 / Added 8065 entries
+[+] Loading ./dbs/good-imphashes-part2.db ...
+[+] Total: 1056 / Added 1055 entries
+[+] Loading ./dbs/good-imphashes-part7.db ...
+[+] Total: 4648 / Added 3592 entries
+[+] Loading ./dbs/good-imphashes-part1.db ...
+[+] Total: 6227 / Added 1579 entries
+[+] Loading ./dbs/good-imphashes-part6.db ...
+[+] Total: 6256 / Added 29 entries
+[+] Loading ./dbs/good-exports-part8.db ...
+[+] Total: 22192 / Added 14127 entries
+[+] Loading ./dbs/good-strings-part1.db ...
+[+] Total: 1416757 / Added 1416757 entries
+[+] Loading ./dbs/good-imphashes-part3.db ...
+[+] Total: 10035 / Added 3779 entries
+[+] Loading ./dbs/good-strings-part9.db ...
+[+] Total: 1417513 / Added 756 entries
+[+] Loading ./dbs/good-strings-part8.db ...
+[+] Total: 1699743 / Added 282230 entries
+[+] Loading ./dbs/good-strings-part5.db ...
+[+] Total: 5764251 / Added 4064508 entries
+[+] Loading ./dbs/good-strings-part6.db ...
+[+] Total: 6382068 / Added 617817 entries
+[+] Loading ./dbs/good-strings-part3.db ...
+[+] Total: 9110194 / Added 2728126 entries
+[+] Loading ./dbs/good-exports-part4.db ...
+[+] Total: 110911 / Added 88719 entries
+[+] Loading ./dbs/good-exports-part5.db ...
+[+] Total: 236241 / Added 125330 entries
+[+] Loading ./dbs/good-imphashes-part5.db ...
+[+] Total: 17205 / Added 7170 entries
+[+] Loading ./dbs/good-exports-part3.db ...
+[+] Total: 279926 / Added 43685 entries
+[+] Loading ./dbs/good-strings-part4.db ...
+[+] Total: 10459690 / Added 1349496 entries
+[+] Loading ./dbs/good-exports-part9.db ...
+[+] Total: 279926 / Added 0 entries
+[+] Loading ./dbs/good-exports-part2.db ...
+[+] Total: 322362 / Added 42436 entries
+[+] Loading ./dbs/good-strings-part2.db ...
+[+] Total: 11433382 / Added 973692 entries
+[+] Loading ./dbs/good-exports-part1.db ...
+[+] Total: 381481 / Added 59119 entries
+[+] Loading ./dbs/good-exports-part7.db ...
+[+] Total: 404321 / Added 22840 entries
+[+] Loading ./dbs/good-imphashes-part8.db ...
+[+] Total: 17388 / Added 183 entries
+[+] Loading ./dbs/good-imphashes-part4.db ...
+[+] Total: 19764 / Added 2376 entries
+[+] Loading ./dbs/good-strings-part7.db ...
+[+] Total: 12284943 / Added 851561 entries
+[+] Processing malware files ...
+[+] Processing /home/cmnatic/suspicious-files/file2/1ndex.php ...
+[+] Generating statistical data ...
+[+] Generating Super Rules ... (a lot of foo magic)
+[+] Generating Simple Rules ...
+[-] Applying intelligent filters to string findings ...
+[-] Filtering string set for /home/cmnatic/suspicious-files/file2/1ndex.php ...
+[=] Generated 1 SIMPLE rules.
+[=] All rules written to /home/cmnatic/suspicious-files/file2.yar
+[+] yarGen run finished
+
+cmnatic@thm-yara:~/suspicious-files/file2$ ls
+1ndex.php
+cmnatic@thm-yara:~/suspicious-files/file2$ cd ..
+cmnatic@thm-yara:~/suspicious-files$ ls
+file1  file2  file2.yar
+cmnatic@thm-yara:~/suspicious-files$ yara file2.yar file2/1ndex.php
+_home_cmnatic_suspicious_files_file2_1ndex file2/1ndex.php
+
+cmnatic@thm-yara:~/suspicious-files$ cat file2.yar 
+/*
+   YARA Rule Set
+   Author: yarGen Rule Generator
+   Identifier: file2
+   Reference: https://github.com/Neo23x0/yarGen
+*/
+
+/* Rule Set ----------------------------------------------------------------- */
+
+rule _home_cmnatic_suspicious_files_file2_1ndex {
+   meta:
+      description = "file2 - file 1ndex.php"
+      author = "yarGen Rule Generator"
+      reference = "https://github.com/Neo23x0/yarGen"
+      date = "2022-11-27"
+      hash1 = "53fe44b4753874f079a936325d1fdc9b1691956a29c3aaf8643cdbd49f5984bf"
+   strings:
+      $x1 = "var Zepto=function(){function G(a){return a==null?String(a):z[A.call(a)]||\"object\"}function H(a){return G(a)==\"function\"}fun" ascii
+      $s2 = "$cmd = trim(execute(\"ps -p \".$pid));" fullword ascii
+      $s3 = "return (res = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? (res[1]) : null;" fullword ascii
+      $s4 = "$cmd = execute(\"taskkill /F /PID \".$pid);" fullword ascii
+      $s5 = "$buff = execute(\"wget \".$url.\" -O \".$saveas);" fullword ascii
+      $s6 = "(d=\"0\"+d);dt2=y+m+d;return dt1==dt2?0:dt1<dt2?-1:1},r:function(a,b){for(var c=0,e=a.length-1,g=h;g;){for(var g=j,f=c;f<e;++f)0" ascii
+      $s7 = "$buff = execute(\"curl \".$url.\" -o \".$saveas);" fullword ascii
+      $s8 = "$cmd = execute(\"tasklist /FI \\\"PID eq \".$pid.\"\\\"\");" fullword ascii
+      $s9 = "$cmd = execute(\"kill -9 \".$pid);" fullword ascii
+      $s10 = "execute(\"tar xzf \\\"\".basename($archive).\"\\\" -C \\\"\".$target.\"\\\"\");" fullword ascii
+      $s11 = "execute(\"tar xf \\\"\".basename($archive).\"\\\" -C \\\"\".$target.\"\\\"\");" fullword ascii
+      $s12 = "$body = preg_replace(\"/<a href=\\\"http:\\/\\/www.zend.com\\/(.*?)<\\/a>/\", \"\", $body);" fullword ascii
+      $s13 = "ngs.mimeType||xhr.getResponseHeader(\"content-type\")),result=xhr.responseText;try{dataType==\"script\"?(1,eval)(result):dataTyp" ascii
+      $s14 = "$check = strtolower(execute(\"nodejs -h\"));" fullword ascii
+      $s15 = "$check = strtolower(execute(\"ruby -h\"));" fullword ascii
+      $s16 = "$buff = execute(\"lwp-download \".$url.\" \".$saveas);" fullword ascii
+      $s17 = "$check = strtolower(execute(\"python -h\"));" fullword ascii
+      $s18 = "$check = strtolower(execute(\"java -help\"));" fullword ascii
+      $s19 = "$check = strtolower(execute(\"javac -help\"));" fullword ascii
+      $s20 = "$check = strtolower(execute(\"perl -h\"));" fullword ascii
+   condition:
+      uint16(0) == 0x3f3c and filesize < 700KB and
+      1 of ($x*) and 4 of them
+}
+
+cmnatic@thm-yara:~/tools/Loki/signature-base/yara$ cp /home/cmnatic/suspicious-files/file2.yar file2.yar
+
+cmnatic@thm-yara:~/suspicious-files/file2$ python ../../tools/Loki/loki.py -p .
+                                                                               
+      __   ____  __ ______                                                             
+     / /  / __ \/ //_/  _/                                                             
+    / /__/ /_/ / ,< _/ /                                                               
+   /____/\____/_/|_/___/                                                               
+      ________  _____  ____                                                            
+     /  _/ __ \/ ___/ / __/______ ____  ___  ___ ____                                  
+    _/ // /_/ / /__  _\ \/ __/ _ `/ _ \/ _ \/ -_) __/                                  
+   /___/\____/\___/ /___/\__/\_,_/_//_/_//_/\__/_/                                     
+                                                                                       
+   Copyright by Florian Roth, Released under the GNU General Public License            
+   Version 0.32.1                                                                      
+                                                                                       
+   DISCLAIMER - USE AT YOUR OWN RISK                                                   
+   Please report false positives via https://github.com/Neo23x0/Loki/issues            
+                                                                                       
+                                                                                       
+                                                                                       
+[NOTICE] Starting Loki Scan VERSION: 0.32.1 SYSTEM: thm-yara TIME: 20221127T22:01:48Z PLATFORM:     PROC: x86_64 ARCH: 64bit                                                  
+[NOTICE] Registered plugin PluginWMI                                                   
+[NOTICE] Loaded plugin /home/cmnatic/tools/Loki/plugins/loki-plugin-wmi.py             
+[NOTICE] PE-Sieve successfully initialized BINARY: /home/cmnatic/tools/Loki/tools/pe-sieve64.exe SOURCE: https://github.com/hasherezade/pe-sieve                              
+[INFO] File Name Characteristics initialized with 2841 regex patterns                  
+[INFO] C2 server indicators initialized with 1541 elements                             
+[INFO] Malicious MD5 Hashes initialized with 19034 hashes                              
+[INFO] Malicious SHA1 Hashes initialized with 7159 hashes                              
+[INFO] Malicious SHA256 Hashes initialized with 22841 hashes                           
+[INFO] False Positive Hashes initialized with 30 hashes                                
+[INFO] Processing YARA rules folder /home/cmnatic/tools/Loki/signature-base/yara       
+[INFO] Initializing all YARA rules at once (composed string of all rule files)         
+[INFO] Initialized 654 Yara rules                                                      
+[INFO] Reading private rules from binary ...                                           
+[NOTICE] Program should be run as 'root' to ensure all access rights to process memory and file objects.                                                                      
+[NOTICE] Running plugin PluginWMI                                                      
+[NOTICE] Finished running plugin PluginWMI                                             
+[INFO] Scanning . ...                                                                  
+[WARNING]                                                                              
+FILE: ./1ndex.php SCORE: 70 TYPE: PHP SIZE: 223978                                     
+FIRST_BYTES: 3c3f7068700a2f2a0a09623337346b207368656c / <?php/*b374k shel              
+MD5: c6a7ebafdbe239d65248e2b69b670157                                                  
+SHA1: 3926ab64dcf04e87024011cf39902beac32711da                                         
+SHA256: 53fe44b4753874f079a936325d1fdc9b1691956a29c3aaf8643cdbd49f5984bf CREATED: Mon Nov  9 15:16:03 2020 MODIFIED: Mon Nov  9 13:09:18 2020 ACCESSED: Sun Nov 27 21:52:55 2022                                                                                     
+REASON_1: Yara Rule MATCH: _home_cmnatic_suspicious_files_file2_1ndex SUBSCORE: 70     
+DESCRIPTION: file2 - file 1ndex.php REF: https://github.com/Neo23x0/yarGen             
+MATCHES: Str1: var Zepto=function(){function G(a){return a==null?String(a):z[A.call(a)]||"object"}function H(a){return G(a)=="function"}fun Str2: $c ... (truncated)          
+[NOTICE] Results: 0 alerts, 1 warnings, 7 notices                                      
+[RESULT] Suspicious objects detected!                                                  
+[RESULT] Loki recommends a deeper analysis of the suspicious objects.                  
+[INFO] Please report false positives via https://github.com/Neo23x0/signature-base     
+[NOTICE] Finished LOKI Scan SYSTEM: thm-yara TIME: 20221127T22:01:52Z
+```
+From within the root of the suspicious files directory, what command would you run to test Yara and your Yara rule against file 2?
+Use the same name I called the Yara file to answer this question
+*yara file2.yar file2/1ndex.php*
+Did Yara rule flag file 2? (Yay/Nay)
+*Yay*
+Copy the Yara rule you created into the Loki signatures directory.
+Test the Yara rule with Loki, does it flag file 2? (Yay/Nay)
+*Yay*
+What is the name of the variable for the string that it matched on?
+Look at $x1
+*Zepto*
+Inspect the Yara rule, how many strings were generated?
+*20*
+One of the conditions to match on the Yara rule specifies file size. The file has to be less than what amount?
+*700KB*
+### Valhalla
+Valhalla
+Valhalla is an online Yara feed created and hosted by [Nextron-Systems](https://www.nextron-systems.com/valhalla/) (erm, Florian Roth). By now, you should be aware of the ridiculous amount of time and energy Florian has dedicated to creating these tools for the community. Maybe we should have just called this the Florian Roth room. (lol)
+Per the website, "Valhalla boosts your detection capabilities with the power of thousands of hand-crafted high-quality YARA rules."
+https://valhalla.nextron-systems.com/
+![](https://assets.tryhackme.com/additional/yara/yara13.png)
+From the image above, we should denote that we can conduct searches based on a keyword, tag, ATT&CK technique, sha256, or rule name.
+Note: For more information on ATT&CK, please visit the MITRE room.
+Taking a look at the data provided to us, let's examine the rule in the screenshot below:
+![](https://assets.tryhackme.com/additional/yara/yara14.png)
+We are provided with the name of the rule, a brief description, a reference link for more information about the rule, along with the rule date.
+Feel free to look at some rules to become familiar with the usefulness of Valhalla. The best way to learn the product is by just jumping right in.
+Picking up from our scenario, at this point, you know that the 2 files are related. Even though Loki classified the files are suspicious, you know in your gut that they are malicious. Hence the reason you created a Yara rule using yarGen to detect it on other web servers. But let's further pretend that you are not code-savvy (FYI - not all security professionals know how to code/script or read it). You need to conduct further research regarding these files to receive approval to eradicate these files from the network.
+Time to use Valhalla for some threat intelligence gathering...
+```text
+cmnatic@thm-yara:~/suspicious-files/file1$ python2 ../../tools/Loki/loki.py -p .
+                                                                               
+      __   ____  __ ______                                                             
+     / /  / __ \/ //_/  _/                                                             
+    / /__/ /_/ / ,< _/ /                                                               
+   /____/\____/_/|_/___/                                                               
+      ________  _____  ____                                                            
+     /  _/ __ \/ ___/ / __/______ ____  ___  ___ ____                                  
+    _/ // /_/ / /__  _\ \/ __/ _ `/ _ \/ _ \/ -_) __/                                  
+   /___/\____/\___/ /___/\__/\_,_/_//_/_//_/\__/_/                                     
+                                                                                       
+   Copyright by Florian Roth, Released under the GNU General Public License            
+   Version 0.32.1                                                                      
+                                                                                       
+   DISCLAIMER - USE AT YOUR OWN RISK                                                   
+   Please report false positives via https://github.com/Neo23x0/Loki/issues            
+                                                                                       
+                                                                                       
+                                                                                       
+[NOTICE] Starting Loki Scan VERSION: 0.32.1 SYSTEM: thm-yara TIME: 20221127T22:47:20Z PLATFORM:     PROC: x86_64 ARCH: 64bit                                                  
+[NOTICE] Registered plugin PluginWMI                                                   
+[NOTICE] Loaded plugin /home/cmnatic/tools/Loki/plugins/loki-plugin-wmi.py             
+[NOTICE] PE-Sieve successfully initialized BINARY: /home/cmnatic/tools/Loki/tools/pe-sieve64.exe SOURCE: https://github.com/hasherezade/pe-sieve                              
+[INFO] File Name Characteristics initialized with 2841 regex patterns                  
+[INFO] C2 server indicators initialized with 1541 elements                             
+[INFO] Malicious MD5 Hashes initialized with 19034 hashes                              
+[INFO] Malicious SHA1 Hashes initialized with 7159 hashes                              
+[INFO] Malicious SHA256 Hashes initialized with 22841 hashes                           
+[INFO] False Positive Hashes initialized with 30 hashes                                
+[INFO] Processing YARA rules folder /home/cmnatic/tools/Loki/signature-base/yara       
+[INFO] Initializing all YARA rules at once (composed string of all rule files)         
+[INFO] Initialized 654 Yara rules                                                      
+[INFO] Reading private rules from binary ...                                           
+[NOTICE] Program should be run as 'root' to ensure all access rights to process memory and file objects.                                                                      
+[NOTICE] Running plugin PluginWMI                                                      
+[NOTICE] Finished running plugin PluginWMI                                             
+[INFO] Scanning . ...                                                                  
+[WARNING]                                                                              
+FILE: ./ind3x.php SCORE: 70 TYPE: PHP SIZE: 80992                                      
+FIRST_BYTES: 3c3f7068700a2f2a0a09623337346b20322e320a / <?php/*b374k 2.2               
+MD5: 1606bdac2cb613bf0b8a22690364fbc5                                                  
+SHA1: 9383ed4ee7df17193f7a034c3190ecabc9000f9f                                         
+SHA256: 5479f8cd1375364770df36e5a18262480a8f9d311e8eedb2c2390ecb233852ad CREATED: Mon Nov  9 15:15:32 2020 MODIFIED: Mon Nov  9 13:06:56 2020 ACCESSED: Sun Nov 27 22:47:24 2022                                                                                     
+REASON_1: Yara Rule MATCH: webshell_metaslsoft SUBSCORE: 70                            
+DESCRIPTION: Web Shell - file metaslsoft.php REF: -                                    
+MATCHES: Str1: $buff .= "<tr><td><a href=\\"?d=".$pwd."\\">[ $folder ]</a></td><td>LINK</t                                                                                    
+[NOTICE] Results: 0 alerts, 1 warnings, 7 notices                                      
+[RESULT] Suspicious objects detected!                                                  
+[RESULT] Loki recommends a deeper analysis of the suspicious objects.                  
+[INFO] Please report false positives via https://github.com/Neo23x0/signature-base     
+[NOTICE] Finished LOKI Scan SYSTEM: thm-yara TIME: 20221127T22:47:24Z                  
+                                                                                       
+Press Enter to exit ...                         
+
+SHA256: 5479f8cd1375364770df36e5a18262480a8f9d311e8eedb2c2390ecb233852ad
+Chinese APT Group
+
+C6A7EBAFDBE239D65248E2B69B670157.exe
+
+https://github.com/b374k/b374k
+
+/* JAVASCRIPT AND CSS FILES START */
+$zepto_code = packer_read_file($GLOBALS['packer']['base_dir']."zepto.js");
+```
+![[Pasted image 20221127174955.png]]
+![[Pasted image 20221127175021.png]]
+Enter the SHA256 hash of file 1 into Valhalla. Is this file attributed to an APT group? (Yay/Nay)
+*Yay*
+![[Pasted image 20221127175458.png]]
+Do the same for file 2. What is the name of the first Yara rule to detect file 2?
+*Webshell_b374k_rule1*
+![[Pasted image 20221127175621.png]]
+![[Pasted image 20221127175633.png]]
+Examine the information for file 2 from Virus Total (VT). The Yara Signature Match is from what scanner?
+This information is on the Community tab of the VirusTotal page, and not on the Detection tab.
+*THOR APT Scanner
+![[Pasted image 20221127175744.png]]
+Enter the SHA256 hash of file 2 into Virus Total. Did every AV detect this as malicious? (Yay/Nay)
+*Nay*
+Besides .PHP, what other extension is recorded for this file?
+Look under the "details" tab in Virustotal to find out the extensions for this submission.
+*exe*
+What JavaScript library is used by file 2?
+Go to the Github page and search inside the index.php file
+*Zepto*
+Is this Yara rule in the default Yara file Loki uses to detect these type of hack tools? (Yay/Nay)
+Examine thor-webshell.yar and search for the rule name
+*Nay*
+### Conclusion
+In this room, we explored Yara, how to use Yara, and manually created basic Yara rules. We also explored various open-source tools to hit the ground running that utilizes Yara rules to detect evil on endpoints.
+By going through the room scenario, you should understand the need (as a blue teamer) to know how to create Yara rules effectively if we rely on such tools. Commercial products, even though not perfect, will have a much richer Yara ruleset than an open-source product. Both commercial and open-source will allow you to add Yara rules to expand its capabilities further to detect threats.
+If it is not clear, the reason why file 2 was not detected is that the Yara rule was not in the Yara file used by Loki to detect the hack tool (web shell) even though its the hack tool has been around for years and has even been attributed to at least 1 nation-state. The Yara rule is present in the commercial variant of Loki, which is Thor.
+There is more that can be done with Yara and Yara rules. We encourage you to explore this tool further at your own leisure.
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/7c222bb437b106d862d93ce76117c9e8.png)
+
+## Notes / Lessons Learned
+[[Autopsy]]
+
