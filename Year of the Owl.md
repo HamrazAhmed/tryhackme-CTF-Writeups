@@ -196,3 +196,202 @@ Copyright (c) 2005-2015 by Matteo Cantoni (www.nothink.org)
   In octets                     : 12870444
   Out octets                    : 55973
 
+[*] Network IP:
+
+  Id                    IP Address            Netmask               Broadcast           
+  7                     10.10.220.228         255.255.0.0           1                   
+  1                     127.0.0.1             255.0.0.0             1                   
+
+[*] Routing information:
+
+  Destination           Next hop              Mask                  Metric              
+  0.0.0.0               10.10.0.1             0.0.0.0               25                  
+  10.10.0.0             10.10.220.228         255.255.0.0           281                 
+  10.10.220.228         10.10.220.228         255.255.255.255       281                 
+  10.10.255.255         10.10.220.228         255.255.255.255       281                 
+  127.0.0.0             127.0.0.1             255.0.0.0             331                 
+  127.0.0.1             127.0.0.1             255.255.255.255       331                 
+  127.255.255.255       127.0.0.1             255.255.255.255       331                 
+  169.254.169.123       10.10.0.1             255.255.255.255       50                  
+  169.254.169.249       10.10.0.1             255.255.255.255       50                  
+  169.254.169.250       10.10.0.1             255.255.255.255       50                  
+  169.254.169.251       10.10.0.1             255.255.255.255       50                  
+  169.254.169.253       10.10.0.1             255.255.255.255       50                  
+  169.254.169.254       10.10.0.1             255.255.255.255       50                  
+  224.0.0.0             127.0.0.1             240.0.0.0             331                 
+  255.255.255.255       127.0.0.1             255.255.255.255       331                 
+
+[*] TCP connections and listening ports:
+
+  Local address         Local port            Remote address        Remote port           State               
+  0.0.0.0               80                    0.0.0.0               0                     listen              
+  0.0.0.0               135                   0.0.0.0               0                     listen              
+  0.0.0.0               443                   0.0.0.0               0                     listen              
+  0.0.0.0               445                   0.0.0.0               0                     listen              
+  0.0.0.0               3306                  0.0.0.0               0                     listen              
+  0.0.0.0               3389                  0.0.0.0               0                     listen              
+  0.0.0.0               5985                  0.0.0.0               0                     listen              
+  0.0.0.0               47001                 0.0.0.0               0                     listen              
+  0.0.0.0               49664                 0.0.0.0               0                     listen              
+  0.0.0.0               49665                 0.0.0.0               0                     listen              
+  0.0.0.0               49666                 0.0.0.0               0                     listen              
+  0.0.0.0               49667                 0.0.0.0               0                     listen              
+  0.0.0.0               49668                 0.0.0.0               0                     listen              
+  0.0.0.0               49673                 0.0.0.0               0                     listen              
+  10.10.220.228         139                   0.0.0.0               0                     listen              
+  10.10.220.228         49716                 52.165.165.26         443                   synSent             
+
+[*] Listening UDP ports:
+
+  Local address         Local port          
+  0.0.0.0               123                 
+  0.0.0.0               161                 
+  0.0.0.0               3389                
+  0.0.0.0               5353                
+  0.0.0.0               5355                
+  10.10.220.228         137                 
+  10.10.220.228         138                 
+  127.0.0.1             57116               
+
+[*] Network services:
+
+  Index                 Name                
+  0                     Power               
+  1                     mysql               
+  2                     Server              
+  3                     Themes              
+  4                     SysMain             
+  5                     Apache2.4           
+  6                     IP Helper           
+  7                     DNS Client          
+  8                     DHCP Client         
+  9                     Time Broker         
+  10                    Workstation         
+  11                    SNMP Service        
+  12                    User Manager        
+  13                    Windows Time        
+  14                    CoreMessaging       
+  15                    Plug and Play       
+  16                    Print Spooler       
+  17                    Task Scheduler      
+  18                    Windows Update      
+  19                    Remote Registry     
+  20                    Amazon SSM Agent    
+  21                    CNG Key Isolation   
+  22                    COM+ Event System   
+  23                    Windows Event Log   
+  24                    IPsec Policy Agent  
+  25                    Group Policy Client 
+  26                    RPC Endpoint Mapper 
+  27                    Web Account Manager 
+  28                    AWS Lite Guest Agent
+  29                    Device Setup Manager
+  30                    Network List Service
+  31                    System Events Broker
+  32                    User Profile Service
+  33                    Base Filtering Engine
+  34                    Local Session Manager
+  35                    TCP/IP NetBIOS Helper
+  36                    Cryptographic Services
+  37                    Certificate Propagation
+  38                    Remote Desktop Services
+  39                    Shell Hardware Detection
+  40                    State Repository Service
+  41                    Diagnostic Policy Service
+  42                    Network Connection Broker
+  43                    Security Accounts Manager
+  44                    Windows Defender Firewall
+  45                    Network Location Awareness
+  46                    Windows Connection Manager
+  47                    Windows Font Cache Service
+  48                    Remote Procedure Call (RPC)
+  49                    Update Orchestrator Service
+  50                    User Access Logging Service
+  51                    DCOM Server Process Launcher
+  52                    Remote Desktop Configuration
+  53                    Network Store Interface Service
+  54                    Client License Service (ClipSVC)
+  55                    Distributed Link Tracking Client
+  56                    Capability Access Manager Service
+  57                    System Event Notification Service
+  58                    Connected Devices Platform Service
+  59                    Windows Defender Antivirus Service
+  60                    Windows Management Instrumentation
+  61                    Distributed Transaction Coordinator
+  62                    Microsoft Account Sign-in Assistant
+  63                    Background Tasks Infrastructure Service
+  64                    Connected User Experiences and Telemetry
+  65                    WinHTTP Web Proxy Auto-Discovery Service
+  66                    Windows Push Notifications System Service
+  67                    Windows Remote Management (WS-Management)
+  68                    Remote Desktop Services UserMode Port Redirector
+  69                    Windows Defender Antivirus Network Inspection Service
+
+[*] Processes:
+
+  Id                    Status                Name                  Path                  Parameters          
+  1                     running               System Idle Process                                             
+  4                     running               System                                                          
+  68                    running               Registry                                                        
+  408                   running               smss.exe                                                        
+  488                   running               dwm.exe                                                         
+  524                   running               svchost.exe           C:\Windows\system32\  -k netsvcs -p       
+  568                   running               csrss.exe                                                       
+  636                   running               csrss.exe                                                       
+  688                   running               wininit.exe                                                     
+  700                   running               winlogon.exe                                                    
+  768                   running               services.exe                                                    
+  788                   running               lsass.exe             C:\Windows\system32\                      
+  856                   running               svchost.exe           C:\Windows\System32\  -k termsvcs         
+  888                   running               svchost.exe           C:\Windows\system32\  -k DcomLaunch -p    
+  900                   running               svchost.exe           C:\Windows\System32\  -k LocalSystemNetworkRestricted -p
+  916                   running               fontdrvhost.exe                                                 
+  924                   running               fontdrvhost.exe                                                 
+  984                   running               svchost.exe           C:\Windows\system32\  -k RPCSS -p         
+  1036                  running               svchost.exe           C:\Windows\System32\  -k LocalServiceNetworkRestricted -p
+  1148                  running               MsMpEng.exe                                                     
+  1188                  running               svchost.exe           C:\Windows\system32\  -k LocalService -p  
+  1276                  running               svchost.exe           C:\Windows\System32\  -k NetworkService -p
+  1320                  running               svchost.exe           C:\Windows\system32\  -k LocalServiceNoNetwork -p
+  1368                  running               svchost.exe           C:\Windows\system32\  -k LocalServiceNetworkRestricted -p
+  1392                  running               WmiPrvSE.exe          C:\Windows\system32\wbem\                      
+  1428                  running               LiteAgent.exe         C:\Program Files\Amazon\XenTools\                      
+  1524                  running               svchost.exe           C:\Windows\system32\  -k LocalServiceNoNetworkFirewall -p
+  1668                  running               svchost.exe           C:\Windows\system32\  -k netsvcs          
+  1896                  running               spoolsv.exe           C:\Windows\System32\                      
+  1924                  running               svchost.exe           C:\Windows\System32\  -k utcsvc -p        
+  1972                  running               amazon-ssm-agent.exe  C:\Program Files\Amazon\SSM\                      
+  1976                  running               snmp.exe              C:\Windows\System32\                      
+  2016                  running               svchost.exe           C:\Windows\system32\  -k LocalService     
+  2076                  running               httpd.exe             C:\xampp\apache\bin\  -k runservice       
+  2108                  running               mysqld.exe            C:\xampp\mysql\bin\   --defaults-file=c:\xampp\mysql\bin\my.ini mysql
+  2136                  running               svchost.exe           C:\Windows\System32\  -k smbsvcs          
+  2256                  running               svchost.exe           C:\Windows\system32\  -k NetworkServiceNetworkRestricted -p
+  2460                  running               httpd.exe             C:\xampp\apache\bin\  -d C:/xampp/apache  
+  2836                  running               LogonUI.exe                                 /flags:0x2 /state0:0xa3a50855 /state1:0x41c64e6d
+  2928                  running               CompatTelRunner.exe   C:\Windows\system32\                      
+  3528                  running               svchost.exe           C:\Windows\system32\  -k appmodel -p      
+  3752                  running               svchost.exe                                                     
+  3996                  running               NisSrv.exe                                                      
+  4264                  running               WmiPrvSE.exe          C:\Windows\system32\wbem\                      
+  4332                  running               msdtc.exe             C:\Windows\System32\                      
+  4572                  running               SIHClient.exe                                                   
+  4752                  running               conhost.exe           \??\C:\Windows\system32\  0x4                 
+
+[*] Storage information:
+
+  Description                   : ["C:\\ Label:  Serial Number 7c0c3814"]
+  Device id                     : [#<SNMP::Integer:0x00007f89e3a94268 @value=1>]
+  Filesystem type               : ["unknown"]
+  Device unit                   : [#<SNMP::Integer:0x00007f89e3a9a3e8 @value=4096>]
+  Memory size                   : 19.46 GB
+  Memory used                   : 15.49 GB
+
+  Description                   : ["Virtual Memory"]
+  Device id                     : [#<SNMP::Integer:0x00007f89e3a9d160 @value=2>]
+  Filesystem type               : ["unknown"]
+  Device unit                   : [#<SNMP::Integer:0x00007f89e3dd79c0 @value=65536>]
+  Memory size                   : 3.12 GB
+  Memory used                   : 862.88 MB
+
+  Description                   : ["Physical Memory"]
