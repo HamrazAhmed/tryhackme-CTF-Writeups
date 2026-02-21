@@ -856,3 +856,861 @@ blog.webernetz.net
 blog.webernetz.net
 blog.webernetz.net
 blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+ip.webernetz.net
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ uniq -u zeek_test | wc -l
+1
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ uniq -d zeek_test | wc -l
+1
+
+Si deseas contar solo una de las entradas que se repiten y luego contar la otra entrada única, puedes usar el comando `sort zeek_test | uniq | wc -l`. Esto ordenará las entradas del archivo `zeek_test`, eliminará las entradas duplicadas y luego contará cuántas entradas quedan en total.
+
+Es importante tener en cuenta que el comando `uniq` solo funciona correctamente si las entradas están ordenadas de forma consecutiva. Por lo tanto, es necesario usar el comando `sort` antes de usar `uniq`.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ sort zeek_test | uniq | wc -l
+2
+
+so
+
+root@ip-10-10-201-211:/home/ubuntu/Desktop/Exercise-Files/TASK-3# cat dns.log | zeek-cut query | uniq | wc -l
+2
+
+:)
+
+root@ip-10-10-201-211:/home/ubuntu/Desktop/Exercise-Files/TASK-3# cat conn.log | zeek-cut duration
+0.001263
+0.000505
+0.002007
+0.007001
+0.002503
+0.002487
+0.182281
+0.183525
+26.848411
+31.470888
+33.422941
+0.006755
+38.919292
+8.998396
+-
+0.002746
+0.182530
+9.999806
+8.998406
+57.384652
+-
+-
+0.017002
+0.048754
+7.785955
+0.002747
+0.180026
+9.998803
+2.113827
+8.998898
+0.026505
+0.004370
+168.998982
+0.002623
+0.003750
+0.180025
+-
+0.001252
+9.998804
+10.192086
+-
+-
+-
+-
+-
+-
+-
+0.002512
+0.002749
+0.183527
+0.184153
+37.608581
+0.001001
+0.001122
+0.027877
+-
+0.016002
+0.182027
+0.182652
+0.002498
+0.002626
+0.005747
+0.000558
+31.242600
+0.008248
+0.003744
+62.871527
+0.002289
+63.399855
+36.978736
+43.843556
+53.644578
+319.846921
+0.001502
+329.899861
+309.515828
+300.183120
+0.012496
+307.422751
+331.791038
+304.539681
+305.791751
+300.012100
+332.319364
+59.206449
+325.924370
+76.127078
+
+just looking 
+
+or
+
+root@ip-10-10-201-211:/home/ubuntu/Desktop/Exercise-Files/TASK-3# cat conn.log | zeek-cut duration | sort -nr
+332.319364
+331.791038
+329.899861
+325.924370
+319.846921
+```
+Investigate the sample.pcap file. Investigate the dhcp.log file. What is the available hostname?
+*Microknoppix*
+Investigate the dns.log file. What is the number of unique DNS queries?
+*2*
+Investigate the conn.log file. What is the longest connection duration?
+*332.319364*
+### CLI Kung-Fu Recall: Processing Zeek Logs
+CLI Kung-Fu Recall: Processing Zeek Logs
+Graphical User Interfaces (GUI) are handy and good for accomplishing tasks and processing information quickly. There are multiple advantages of GUIs, especially when processing the information visually. However, when processing massive amounts of data, GUIs are not stable and as effective as the CLI (Command Line Interface) tools.
+The critical point is: What if there is no "function/button/feature" for what you want to find/view/extract?
+Having the power to manipulate the data at the command line is a crucial skill for analysts. Not only in this room but each time you deal with packets, you will need to use command-line tools, Berkeley Packet Filters (BPF) and regular expressions to find/view/extract the data you are looking for. This task provides quick cheat-sheet like information to help you write CLI queries for your event of interest.
+The Berkeley Packet Filter (BPF) is a technology used in certain computer operating systems for programs that need to, among other things, analyze network traffic. BPF supports filtering packets, allowing a userspace process to supply a filter program that specifies which packets it wants to receive.
+```text
+Category
+	Command Purpose and Usage 
+	Category
+	Command Purpose and Usage 
+Basics
+	
+
+View the command history:
+ubuntu@ubuntu$ history
+
+Execute the 10th command in history:
+ubuntu@ubuntu$ !10
+
+Execute the previous command:
+ubuntu@ubuntu$ !!
+	Read File	
+
+Read sample.txt file:
+ubuntu@ubuntu$ cat sample.txt
+
+Read the first 10 lines of the file:
+ubuntu@ubuntu$ head sample.txt
+
+Read the last 10 lines of the file:
+ubuntu@ubuntu$ tail sample.txt
+
+Find
+&
+Filter
+	
+
+Cut the 1st field:
+ubuntu@ubuntu$ cat test.txt | cut -f 1
+
+Cut the 1st column:
+ubuntu@ubuntu$ cat test.txt | cut -c1
+
+Filter specific keywords:
+ubuntu@ubuntu$ cat test.txt | grep 'keywords'
+
+Sort outputs alphabetically:
+ubuntu@ubuntu$ cat test.txt | sort
+
+Sort outputs numerically:
+ubuntu@ubuntu$ cat test.txt | sort -n
+
+Eliminate duplicate lines:
+ubuntu@ubuntu$ cat test.txt | uniq
+
+Count line numbers:
+ubuntu@ubuntu$ cat test.txt | wc -l
+
+Show line numbers
+ubuntu@ubuntu$ cat test.txt | nl
+	Advanced
+	
+
+Print line 11:
+ubuntu@ubuntu$ cat test.txt | sed -n '11p'
+
+Print lines between 10-15:
+ubuntu@ubuntu$ cat test.txt | sed -n '10,15p'
+
+Print lines below 11:
+ubuntu@ubuntu$ cat test.txt | awk 'NR < 11 {print $0}'
+
+Print line 11:
+ubuntu@ubuntu$ cat test.txt | awk 'NR == 11 {print $0}'
+Special	
+Filter specific fields of Zeek logs:
+ubuntu@ubuntu$ cat signatures.log | zeek-cut uid src_addr dst_addr
+Use Case	Description
+
+sort | uniq
+	Remove duplicate values.
+
+sort | uniq -c 
+	Remove duplicates and count the number of occurrences for each value.
+
+sort -nr
+	Sort values numerically and recursively.
+
+rev
+	Reverse string characters.
+
+cut -f 1
+	Cut field 1.
+
+cut -d '.' -f 1-2
+	Split the string on every dot and print keep the first two fields.
+
+grep -v 'test'
+	Display lines that  don't match the "test" string.
+
+grep -v -e 'test1' -e 'test2'
+	Display lines that don't match one or both "test1" and "test2" strings.
+
+file 
+	View file information.
+
+grep -rin Testvalue1 * | column -t | less -S
+	Search the "Testvalue1" string everywhere, organise column spaces and view the output with less.
+```
+```text
+practicing
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ history  
+
+ 2018  sort zeek_test | uniq -u | wc -l
+ 2019  sort zeek_test | uniq | wc -l
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ !2019
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ sort zeek_test | uniq | wc -l
+2
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ !!
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ sort zeek_test | uniq | wc -l
+2
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ head zeek_test 
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ tail zeek_test             
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+ip.webernetz.net
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | cut -d "." -f 1
+blog
+blog
+blog
+blog
+blog
+blog
+blog
+blog
+blog
+blog
+blog
+blog
+blog
+blog
+blog
+ip
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | cut -c1-11
+blog.webern
+blog.webern
+blog.webern
+blog.webern
+blog.webern
+blog.webern
+blog.webern
+blog.webern
+blog.webern
+blog.webern
+blog.webern
+blog.webern
+blog.webern
+blog.webern
+blog.webern
+ip.webernet
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | grep 'ip' 
+ip.webernetz.net
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | sort     
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+ip.webernetz.net
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | sort -n
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+ip.webernetz.net
+2
+111
+1998
+2022
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | uniq   
+blog.webernetz.net
+ip.webernetz.net
+111
+1998
+2022
+2
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | wc -l          
+9
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | uniq | wc -l
+6
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | nl          
+     1  blog.webernetz.net
+     2  blog.webernetz.net
+     3  blog.webernetz.net
+     4  blog.webernetz.net
+     5  ip.webernetz.net
+     6  111
+     7  1998
+     8  2022
+     9  2
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | sed -n "8p"
+2022
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | sed -n "4,8p"
+blog.webernetz.net
+ip.webernetz.net
+111
+1998
+2022
+
+El comando `awk` se utiliza para realizar operaciones de procesamiento de texto en un archivo. En este caso, el comando imprime las primeras diez líneas del archivo `test.txt`
+
+`awk` es el nombre del comando y no tiene una abreviatura conocida. El nombre `awk` proviene de las iniciales de los apellidos de sus creadores: Alfred V. Aho, Peter J. Weinberger y Brian W. Kernighan. Es una herramienta muy útil para el procesamiento de texto y se utiliza ampliamente en sistemas operativos como Linux y Unix.
+
+Donde `NR` es una variable predefinida en `awk` que almacena el número de líneas procesadas hasta el momento, y `$0` se refiere a toda la línea de texto actual. El comando imprime cada línea del archivo `test.txt` mientras se cumpla la condición `NR < 11`, es decir, mientras el número de líneas procesadas sea menor que 11.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | awk 'NR < 11 {print $0}'
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+ip.webernetz.net
+111
+1998
+2022
+2
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | awk 'NR == 5 {print $0}'
+ip.webernetz.net
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ sort zeek_test | uniq -c        
+      1 111
+      1 1998
+      1 2
+      1 2022
+      4 blog.webernetz.net
+      1 ip.webernetz.net
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ sort zeek_test -nr      
+2022
+1998
+111
+2
+ip.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ rev zeek_test    
+ten.ztenrebew.golb
+ten.ztenrebew.golb
+ten.ztenrebew.golb
+ten.ztenrebew.golb
+ten.ztenrebew.pi
+111
+8991
+2202
+2
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | cut -d '.' -f 1-3
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+blog.webernetz.net
+ip.webernetz.net
+111
+1998
+2022
+2
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | cut -d '.' -f 1-2
+blog.webernetz
+blog.webernetz
+blog.webernetz
+blog.webernetz
+ip.webernetz
+111
+1998
+2022
+2
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | grep -v 'webernetz'
+111
+1998
+2022
+2
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ cat zeek_test | grep -v -e 'webernetz' -e '2' 
+111
+1998
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ file zeek_test      
+zeek_test: ASCII text
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ grep -riE "VER LA ip|MAC" /home/kali/Desktop
+/home/kali/Desktop/comandos_mininet:Volcar información sobre todos los nodos:
+/home/kali/Desktop/comandos_mininet:ver la ip del host1 virtual
+/home/kali/Desktop/comandos_mininet:ver la MAC del host1 virtual
+/home/kali/Desktop/comandos_mininet:py h1.MAC()
+
+grep -rin Testvalue1 * | column -t | less -S que es lo que hace?
+
+El comando `grep` se utiliza para buscar un patrón de texto en un archivo o conjunto de archivos. En este caso, el comando busca la cadena de texto "Testvalue1" en todos los archivos del directorio actual y sus subdirectorios.
+
+La sintaxis del comando es la siguiente:
+
+Copy code
+
+`grep -rin Testvalue1 * | column -t | less -S`
+
+El comando incluye varias opciones:
+
+-   `-r`: indica a `grep` que busque recursivamente en todos los subdirectorios del directorio actual.
+-   `-i`: hace que la búsqueda sea insensible a mayúsculas y minúsculas.
+-   `-n`: imprime el número de línea junto a cada resultado.
+
+La salida del comando `grep` se pasa a `column`, que formatea la salida en columnas, lo que la hace más fácil de leer. La salida de `column` se pasa a `less`, que permite navegar por la salida de forma paginada. La opción `-S` de `less` evita que las líneas se envuelvan al llegar al final de la pantalla.
+
+En resumen, el comando busca recursivamente la cadena "Testvalue1" en todos los archivos del directorio actual y sus subdirectorios, imprime el número de línea junto a cada resultado y formatea la salida en columnas para facilitar su lectura. La salida se puede navegar de forma paginada usando `less`.
+```
+```text
+┌──(kali㉿kali)-[~]
+└─$ grep -rin ip.webernetz.net * | column -t | less -S
+
+grep: Downloads/id_rsa: Permission denied
+grep: hackthebox/Responder/certs/responder.key: Permission denied
+zeek_test:5:ip.webernetz.net
+```
+### Zeek Signatures
+Zeek Signatures
+Zeek supports signatures to have rules and event correlations to find noteworthy activities on the network. Zeek signatures use low-level pattern matching and cover conditions similar to Snort rules. Unlike Snort rules, Zeek rules are not the primary event detection point. Zeek has a scripting language and can chain multiple events to find an event of interest. We focus on the signatures in this task, and then we will focus on Zeek scripting in the following tasks.
+Zeek signatures are composed of three logical paths; signature id, conditions and action. The signature breakdown is shown in the table below;
+Signature id	 Unique signature name.
+Conditions
+Header: Filtering the packet headers for specific source and destination addresses, protocol and port numbers.
+Content: Filtering the packet payload for specific value/pattern.
+Action
+Default action: Create the "signatures.log" file in case of a signature match.
+Additional action: Trigger a Zeek script.
+Now let's dig more into the Zeek signatures. The below table provides the most common conditions and filters for the Zeek signatures.
+Condition Field	Available Filters
+Header
+src-ip: Source IP.
+dst-ip: Destination IP.
+src-port: Source port.
+dst-port: Destination port.
+ip-proto: Target protocol. Supported protocols; TCP, UDP, ICMP, ICMP6, IP, IP6
+Content	payload: Packet payload.
+http-request: Decoded HTTP requests.
+http-request-header: Client-side HTTP headers.
+http-request-body: Client-side HTTP request bodys.
+http-reply-header: Server-side HTTP headers.
+http-reply-body: Server-side HTTP request bodys.
+ftp: Command line input of FTP sessions.
+Context	same-ip: Filtering the source and destination addresses for duplication.
+Action	event: Signature match message.
+Comparison
+Operators	==, !=, <, <=, >, >=
+NOTE!	 Filters accept string, numeric and regex values.
+```text
+Run Zeek with signature file
+
+           
+ubuntu@ubuntu$ zeek -C -r sample.pcap -s sample.sig
+```
+Zeek signatures use the ".sig" extension.
+-C: Ignore checksum errors.
+-r: Read pcap file.
+-s: Use signature file.
+Example | Cleartext Submission of Password
+Let's create a simple signature to detect HTTP cleartext passwords.
+View Signature
+```text
+Sample Signature
+
+           
+signature http-password {
+     ip-proto == tcp
+     dst_port == 80
+     payload /.*password.*/
+     event "Cleartext Password Found!"
+}
+```
+```text
+# signature: Signature name.
+```
+```text
+# ip-proto: Filtering TCP connection.
+```
+```text
+# dst-port: Filtering destination port 80.
+```
+```text
+# payload: Filtering the "password" phrase.
+```
+```text
+# event: Signature match message.
+```
+Remember, Zeek signatures support regex. Regex ".*" matches any character zero or more times. The rule will match when a "password" phrase is detected in the packet payload. Once the match occurs, Zeek will generate an alert and create additional log files (signatures.log and notice.log).
+```text
+Signature Usage and Log Analysis
+
+           
+ubuntu@ubuntu$ zeek -C -r http.pcap -s http-password.sig 
+ubuntu@ubuntu$ ls
+clear-logs.sh  conn.log  files.log  http-password.sig  http.log  http.pcap  notice.log  packet_filter.log  signatures.log
+
+ubuntu@ubuntu$ cat notice.log  | zeek-cut id.orig_h id.resp_h msg 
+10.10.57.178	44.228.249.3	10.10.57.178: Cleartext Password Found!
+10.10.57.178	44.228.249.3	10.10.57.178: Cleartext Password Found!
+
+ubuntu@ubuntu$ cat signatures.log | zeek-cut src_addr dest_addr sig_id event_msg 
+10.10.57.178		http-password	10.10.57.178: Cleartext Password Found!
+10.10.57.178		http-password	10.10.57.178: Cleartext Password Found!
+```
+As shown in the above terminal output, the signatures.log and notice.log provide basic details and the signature message. Both of the logs also have the application banner field. So it is possible to know where the signature match occurs. Let's look at the application banner!
+```text
+Log Analysis
+
+           
+ubuntu@ubuntu$ cat signatures.log | zeek-cut sub_msg
+POST /userinfo.php HTTP/1.1\x0d\x0aHost: testphp.vulnweb.com\x0d\x0aUser-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:98.0) Gecko/20100101 Firefox/...
+
+ubuntu@ubuntu$ cat notice.log  | zeek-cut sub
+POST /userinfo.php HTTP/1.1\x0d\x0aHost: testphp.vulnweb.com\x0d\x0aUser-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:98.0) Gecko/20100101 Firefox/...
+```
+We will demonstrate only one log file output to avoid duplication after this point. You can practice discovering the event of interest by analysing notice.log and signatures.log.
+Example | FTP Brute-force
+Let's create another rule to filter FTP traffic. This time, we will use the FTP content filter to investigate command-line inputs of the FTP traffic. The aim is to detect FTP "admin" login attempts. This basic signature will help us identify the admin login attempts and have an idea of possible admin account abuse or compromise events.
+```text
+Sample Signature
+
+           
+signature ftp-admin {
+     ip-proto == tcp
+     ftp /.*USER.*dmin.*/
+     event "FTP Admin Login Attempt!"
+}
+```
+Let's run the Zeek with the signature and investigate the signatures.log and notice.log.
+```text
+FTP Signature
+
+           
+ubuntu@ubuntu$ zeek -C -r ftp.pcap -s ftp-admin.sig
+ubuntu@ubuntu$ cat signatures.log | zeek-cut src_addr dst_addr event_msg sub_msg | sort -r| uniq
+10.234.125.254	10.121.70.151	10.234.125.254: FTP Admin Login Attempt!	USER administrator
+10.234.125.254	10.121.70.151	10.234.125.254: FTP Admin Login Attempt!	USER admin
+```
+Our rule shows us that there are multiple logging attempts with account names containing the "admin" phrase. The output gives us great information to notice if there is a brute-force attempt for an admin account.
+This signature can be considered a case signature. While it is accurate and works fine, we need global signatures to detect the "known threats/anomalies". We will need those case-based signatures for significant and sophistical anomalies like zero-days and insider attacks in the real-life environment. Having individual rules for each case will create dozens of logs and alerts and cause missing the real anomaly. The critical point is logging logically, not logging everything.
+We can improve our signature by not limiting the focus only to an admin account. In that case, we need to know how the FTP protocol works and the default response codes. If you don't know these details, please refer to RFC documentation.
+https://datatracker.ietf.org/doc/html/rfc765
+Let's optimise our rule and make it detect all possible FTP brute-force attempts.
+This signature will create logs for each event containing "FTP 530 response", which allows us to track the login failure events regardless of username.
+```text
+Sample Signature
+
+           
+signature ftp-brute {
+     ip-proto == tcp
+     payload /.*530.*Login.*incorrect.*/
+     event "FTP Brute-force Attempt"
+}
+```
+Zeek signature files can consist of multiple signatures. Therefore we can have one file for each protocol/situation/threat type. Let's demonstrate this feature in our global rule.
+```text
+Sample Signature
+
+           
+signature ftp-username {
+    ip-proto == tcp
+    ftp /.*USER.*/
+    event "FTP Username Input Found!"
+}
+
+signature ftp-brute {
+    ip-proto == tcp
+     payload /.*530.*Login.*incorrect.*/
+    event "FTP Brute-force Attempt!"
+}
+```
+Let's merge both of the signatures in a single file. We will have two different signatures, and they will generate alerts according to match status. The result will show us how we benefit from this action. Again, we will need the "CLI Kung-Fu" skills to extract the event of interest.
+This rule should show us two types of alerts and help us to correlate the events by having "FTP Username Input" and "FTP Brute-force Attempt" event messages. Let's investigate the logs. We're grepping the logs in range 1001-1004 to demonstrate that the first rule matches two different accounts (admin and administrator).
+```text
+FTP Signature
+
+           
+ubuntu@ubuntu$ zeek -C -r ftp.pcap -s ftp-admin.sig
+ubuntu@ubuntu$ cat notice.log | zeek-cut uid id.orig_h id.resp_h msg sub | sort -r| nl | uniq | sed -n '1001,1004p'
+  1001	CeMYiaHA6AkfhSnd	10.234.125.254	10.121.70.151	10.234.125.254: FTP Username Input Found!	USER admin
+  1002	CeMYiaHA6AkfhSnd	10.234.125.254	10.121.70.151	10.121.70.151: FTP Brute-force Attempt!	530 Login incorrect.
+  1003	CeDTDZ2erDNF5w7dyf	10.234.125.254	10.121.70.151	10.234.125.254: FTP Username Input Found!	USER administrator
+  1004	CeDTDZ2erDNF5w7dyf	10.234.125.254	10.121.70.151	10.121.70.151: FTP Brute-force Attempt!	530 Login incorrect.
+```
+Snort Rules in Zeek?
+While Zeek was known as Bro, it supported Snort rules with a script called snort2bro, which converted Snort rules to Bro signatures. However, after the rebranding, workflows between the two platforms have changed. The official Zeek document mentions that the script is no longer supported and is not a part of the Zeek distribution.
+Each exercise has a folder. Ensure you are in the right directory to find the pcap file and accompanying files. Desktop/Exercise-Files/TASK-5
+Investigate the http.pcap file. Create the  HTTP signature shown in the task and investigate the pcap. What is the source IP of the first event?
+You can use signatures.log or notice.log.
+```text
+ubuntu@ip-10-10-51-220:~/Desktop/Exercise-Files/TASK-5/http$ cat http-password.sig 
+signature http-password {
+    ip-proto == tcp
+    dst-port == 80
+    payload /.*password.*/
+    event "Cleartext Password Found!"
+}
+
+ubuntu@ip-10-10-51-220:~/Desktop/Exercise-Files/TASK-5/http$ sudo su
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/http# zeekctl start
+Warning: new zeek version detected (run the zeekctl "deploy" command)
+starting zeek ...
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/http# zeekctl status
+Warning: new zeek version detected (run the zeekctl "deploy" command)
+Name         Type       Host          Status    Pid    Started
+zeek         standalone localhost     running   2564   09 Dec 18:01:29
+
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/http# zeek -C -r http.pcap -s http-password.sig 
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/http# ls
+clear-logs.sh  files.log          http.log   notice.log         signatures.log
+conn.log       http-password.sig  http.pcap  packet_filter.log
+
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/http# cat notice.log | zeek-cut id.orig_h id.resp_h msg
+10.10.57.178	44.228.249.3	10.10.57.178: Cleartext Password Found!
+10.10.57.178	44.228.249.3	10.10.57.178: Cleartext Password Found!
+
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/http# cat signatures.log | zeek-cut src_addr dest_addr sig_id event_msg
+10.10.57.178		http-password	10.10.57.178: Cleartext Password Found!
+10.10.57.178		http-password	10.10.57.178: Cleartext Password Found!
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/http# cat signatures.log | zeek-cut sig_id
+http-password
+http-password
+```
+*10.10.57.178*
+What is the source port of the second event?
+You can use signatures.log or notice.log.
+```text
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/http# cat signatures.log | zeek-cut src_port dest_port sig_id event_msg
+38706		http-password	10.10.57.178: Cleartext Password Found!
+38712		http-password	10.10.57.178: Cleartext Password Found!
+```
+*38712*
+Investigate the conn.log.
+What is the total number of the sent and received packets from source port 38706?
+Sent packets (orig_pkts), received packets (resp_pkts) source port (id.orig_p).
+```text
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/http# cat conn.log  | zeek-cut orig_pkts resp_pkts id.orig_p | grep "38706"
+11	9	38706
+```
+*20*
+Create the global rule shown in the task and investigate the ftp.pcap file.
+Investigate the notice.log. What is the number of unique events?
+uid, sort and uniq will help
+```text
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/ftp# cat ftp-bruteforce.sig 
+signature ftp-username {
+    ip-proto == tcp
+    ftp /.*USER.*/
+    event "FTP Username Input Found!"
+}
+
+signature ftp-brute {
+    ip-proto == tcp
+    payload /.*530.*Login.*incorrect.*/
+    event "FTP Brute-force Attempt!"
+}
+
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/ftp# zeek -C -r ftp.pcap -s ftp-bruteforce.sig 
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/ftp# ls
+clear-logs.sh  ftp-bruteforce.sig  notice.log         signatures.log
+conn.log       ftp.pcap            packet_filter.log  weird.log
+
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/ftp# cat notice.log | zeek-cut uid | sort | uniq | wc -l
+1413
+```
+*1413*
+What is the number of ftp-brute signature matches?
+```text
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/ftp# head notice.log 
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	notice
+#open	2022-12-09-18-19-15
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	fuid	file_mime_type	file_desc	proto	note	msg	sub	src	dst	p	n	peer_descr	actions	email_dest	suppress_for	remote_location.country_code	remote_location.region	remote_location.city	remote_location.latitude	remote_location.longitude
+
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/ftp# tail ftp-bruteforce.sig 
+    event "FTP Username Input Found!"
+}
+
+signature ftp-brute {
+    ip-proto == tcp
+    payload /.*530.*Login.*incorrect.*/
+    event "FTP Brute-force Attempt!"
+}
+
+root@ip-10-10-51-220:/home/ubuntu/Desktop/Exercise-Files/TASK-5/ftp# cat notice.log  | zeek-cut msg | grep -i 'brute' | wc -l
+1410
+```
+*1410*
+### Zeek Scripts | Fundamentals
+Zeek Scripts
+Zeek has its own event-driven scripting language, which is as powerful as high-level languages and allows us to investigate and correlate the detected events. Since it is as capable as high-level programming languages, you will need to spend time on Zeek scripting language in order to become proficient. In this room, we will cover the basics of Zeek scripting to help you understand, modify and create basic scripts. Note that scripts can be used to apply a policy and in this case, they are called policy scripts.
+Zeek has base scripts installed by default, and these are not intended to be modified.
+These scripts are located in
+"/opt/zeek/share/zeek/base".
+User-generated or modified scripts should be located in a specific path.
+These scripts are located in
+"/opt/zeek/share/zeek/site".
+Policy scripts are located in a specific path.
+These scripts are located in
+"/opt/zeek/share/zeek/policy".
+Like Snort, to automatically load/use a script in live sniffing mode, you must identify the script in the Zeek configuration file. You can also use a script for a single run, just like the signatures.
