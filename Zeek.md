@@ -1714,3 +1714,861 @@ Policy scripts are located in a specific path.
 These scripts are located in
 "/opt/zeek/share/zeek/policy".
 Like Snort, to automatically load/use a script in live sniffing mode, you must identify the script in the Zeek configuration file. You can also use a script for a single run, just like the signatures.
+The configuration file is located in
+"/opt/zeek/share/zeek/site/local.zeek".
+Zeek scripts use the ".zeek" extension.
+Do not modify anything under the "zeek/base" directory. User-generated and modified scripts should be in the "zeek/site" directory.
+You can call scripts in live monitoring mode by loading them with the command load @/script/path or load @script-name in local.zeek file.
+Zeek is event-oriented, not packet-oriented! We need to use/write scripts to handle the event of interest.
+```text
+running Zeek with signature
+
+           
+ubuntu@ubuntu$ zeek -C -r sample.pcap -s sample.sig
+```
+GUI vs Scripts
+Have you ever thought about automating tasks in Wireshark, tshark or tcpdump? Zeek provides that chance to us with its scripting power. Let's say we need to extract all available DHCP hostnames from a pcap file. In that case, we have several options like using tcpdump, Wireshark, tshark or Zeek.
+Zeek room - Wireshark hostnameLet's see Wireshark on the stage first. You can have the same information with Wireshark. However, while this information can be extracted using Wireshark is not easy to transfer the data to another tool for processing. Tcpdump and tshark are command-line tools, and it is easy to extract and transfer the data to another tool for processing and correlating.
+```text
+extracting hostnames with tcpdump and tshark
+
+           
+ubuntu@ubuntu$ sudo tcpdump -ntr smallFlows.pcap port 67 or port 68 -e -vv | grep 'Hostname Option' | awk -F: '{print $2}' | sort -nr | uniq | nl
+     1	 "vinlap01"
+     2	 "student01-PC"
+ubuntu@ubuntu$ tshark -V -r smallFlows.pcap -Y "udp.port==67 or udp.port==68" -T fields -e dhcp.option.hostname | nl | awk NF
+     1	student01-PC
+     2	vinlap01
+```
+Now let's see Zeek scripts in action. First, let's look at the components of the Zeek script. Here the first, second and fourth lines are the predefined syntaxes of the scripting language. The only part we created is the third line which tells Zeek to extract DHCP hostnames. Now compare this automation ease with the rest of the methods. Obviously, this four-line script is easier to create and use. While tcpdump and tshark can provide similar results, transferring uncontrolled data through multiple pipelines is not much preferred.
+```text
+Sample Script
+
+           
+event dhcp_message (c: connection, is_orig: bool, msg: DHCP::Msg, options: DHCP::Options)
+{
+print options$host_name;
+}
+```
+Now let's use the Zeek script and see the output.
+```text
+extracting hostnames with tcpdump and tshark
+
+           
+ubuntu@ubuntu$ zeek -C -r smallFlows.pcap dhcp-hostname.zeek 
+student01-PC
+vinlap01
+```
+The provided outputs show that our script works fine and can extract the requested information. This should show why Zeek is helpful in data extraction and correlation. Note that Zeek scripting is a programming language itself, and we are not covering the fundamentals of Zeek scripting. In this room, we will cover the logic of Zeek scripting and how to use Zeek scripts. You can learn and practice the Zeek scripting language by using Zeek's official training platform for free.
+https://try.bro.org/#/?example=hello
+There are multiple options to trigger conditions in Zeek. Zeek can use "Built-In Function" (Bif) and protocols to extract information from traffic data. You can find supported protocols and Bif either by looking in your setup or visiting the Zeek repo. https://docs.zeek.org/en/master/script-reference/scripts.html
+Customized script locations
+/opt/zeek/share/zeek/base/bif
+/opt/zeek/share/zeek/base/bif/plugins
+/opt/zeek/share/zeek/base/protocols
+Each exercise has a folder. Ensure you are in the right directory to find the pcap file and accompanying files. Desktop/Exercise-Files/TASK-6
+Investigate the smallFlows.pcap file. Investigate the dhcp.log file. What is the domain value of the "vinlap01" host?
+```text
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/smallflow# ls
+clear-logs.sh  dhcp-hostname.zeek  smallFlows.pcap
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/smallflow# cat dhcp-hostname.zeek 
+event dhcp_message (c: connection, is_orig: bool, msg: DHCP::Msg, options: DHCP::Options)
+{
+print options$host_name;
+}
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/smallflow# zeekctl start
+Warning: new zeek version detected (run the zeekctl "deploy" command)
+starting zeek ...
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/smallflow# zeekctl status
+Warning: new zeek version detected (run the zeekctl "deploy" command)
+Name         Type       Host          Status    Pid    Started
+zeek         standalone localhost     running   2455   10 Dec 03:58:22
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/smallflow# zeek -C -r smallFlows.pcap dhcp-hostname.zeek 
+student01-PC
+vinlap01
+1295981640.291600 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/smallflow# head dhcp.log 
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	dhcp
+#open	2022-12-10-03-59-05
+#fields	ts	uids	client_addr	server_addr	mac	host_name	client_fqdn	domain	requested_addr	assigned_addr	lease_time	client_message	server_message	msg_types	duration
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/smallflow# cat dhcp.log | zeek-cut host_name domain
+student01-PC	-
+vinlap01	astaro_vineyard
+```
+*astaro_vineyard*
+Investigate the bigFlows.pcap file. Investigate the dhcp.log file. What is the number of identified unique hostnames?
+"sort -nr | uniq" Can help you remove duplicate values.
+```text
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/bigflow# cat dhcp-hostname.zeek 
+event dhcp_message (c: connection, is_orig: bool, msg: DHCP::Msg, options: DHCP::Options)
+{
+print options$host_name;
+}
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/bigflow# zeek -C -r bigFlows.pcap dhcp-hostname.zeek 
+JDT115
+1361916156.616130 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+JDT91
+m30-sqdesk
+m30-sqdesk
+JDT100
+JDT096
+JDT094
+m30-sqdesk
+m30-sqdesk
+m30-sqdesk
+m30-sqdesk
+m30-sqdesk
+JDT134
+JDT120
+m30-sqdesk
+JLT108
+1361916250.897465 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+m30-sqdesk
+JDT094
+JDT107
+JDT096
+m30-sqdesk
+1361916271.899466 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+1361916271.899656 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+1361916276.905344 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+1361916276.905494 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+JDT80
+1361916281.911262 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+1361916281.911400 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+m30-sqdesk
+JDT95
+1361916302.577465 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+m30-sqdesk
+JDT153
+m30-sqdesk
+m30-sqdesk
+JDT91
+JDT094
+m30-sqdesk
+JDT120
+JDT80
+m30-sqdesk
+JDT081
+JDT100
+m30-sqdesk
+JLT108
+1361916377.255226 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+m30-sqdesk
+JDT131
+1361916394.447452 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+JDT95
+1361916402.179910 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+m30-sqdesk
+JDT168
+1361916411.787948 expression error in ./dhcp-hostname.zeek, line 3: field value missing (options$host_name)
+m30-sqdesk
+JDT153
+m30-sqdesk
+JDT096
+JDT123
+m30-sqdesk
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/bigflow# cat dhcp.log | zeek-cut host_name | sort -nr  | uniq | nl
+     1	m30-sqdesk
+     2	JLT108
+     3	JDT95
+     4	JDT91
+     5	JDT80
+     6	JDT168
+     7	JDT153
+     8	JDT134
+     9	JDT131
+    10	JDT123
+    11	JDT120
+    12	JDT115
+    13	JDT107
+    14	JDT100
+    15	JDT096
+    16	JDT094
+    17	JDT081
+    18	-
+```
+*17*
+Investigate the dhcp.log file. What is the identified domain value?
+```text
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/bigflow# cat dhcp.log | zeek-cut domain
+jaalam.net
+```
+*jaalam.net*
+Investigate the dns.log file. What is the number of unique queries?
+You can filter the lines containing "*" and "-" values with "grep -v -e '*' -e '-' ".
+```text
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/bigflow# head dns.log
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	dns
+#open	2022-12-10-04-06-45
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	proto	trans_id	rtt	query	qclass	qclass_name	qtype	qtype_name	rcode	rcode_name	AA	TC	RD	RA	Z	answers	TTLs	rejected
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-6/bigflow# cat dns.log | zeek-cut query | sort -nr | uniq | grep -v -e '*' -e '-'   | wc -l 
+1109
+```
+*1109*
+### Zeek Scripts | Scripts and Signatures
+Scripts 101 | Write Basic Scripts
+Scripts contain operators, types, attributes, declarations and statements, and directives. Let's look at a simple example event called "zeek_init" and "zeek_done". These events work once the Zeek process starts and stops. Note that these events don't have parameters, and some events will require parameters.
+```text
+Sample Script
+
+           
+event zeek_init()
+    {
+     print ("Started Zeek!");
+    }
+event zeek_done()
+    {
+    print ("Stopped Zeek!");
+    }
+```
+```text
+# zeek_init: Do actions once Zeek starts its process.
+```
+```text
+# zeek_done: Do activities once Zeek finishes its process.
+```
+```text
+# print: Prompt a message on the terminal.
+```
+Run Zeek with the script
+```text
+Run Zeek with a script
+
+           
+ubuntu@ubuntu$ zeek -C -r sample.pcap 101.zeek 
+Started Zeek!
+Stopped Zeek!
+```
+The above output shows how the script works and provides messages on the terminal. Zeek will create logs in the working directory separately from the scripts tasks.
+Let's print the packet data to the terminal and see the raw data. In this script, we are requesting details of a connection and extracting them without any filtering or sorting of the data. To accomplish this, we are using the "new_connection" event. This event is automatically generated for each new connection. This script provides bulk information on the terminal. We need to get familiar with Zeek's data structure to reduce the amount of information and focus on the event of interest. To do so, we need to investigate the bulk data.
+```text
+Sample Script
+
+           
+event new_connection(c: connection)
+{
+	print c;
+}
+```
+Run Zeek with the script
+```text
+Run Zeek with a script
+
+           
+ubuntu@ubuntu$ zeek -C -r sample.pcap 102.zeek 
+[id=[orig_h=192.168.121.40, orig_p=123/udp, resp_h=212.227.54.68, resp_p=123/udp], orig=[size=48, state=1, num_pkts=0, num_bytes_ip=0, flow_label=0, l2_addr=00:16:47:df:e7:c1], resp=[size=0, state=0, num_pkts=0, num_bytes_ip=0, flow_label=0, l2_addr=00:00:0c:9f:f0:79], start_time=1488571365.706238, duration=0 secs, service={}, history=D, uid=CajwDY2vSUtLkztAc, tunnel=, vlan=121, inner_vlan=, dpd=, dpd_state=, removal_hooks=, conn=, extract_orig=F, extract_resp=F, thresholds=, dce_rpc=, dce_rpc_state=, dce_rpc_backing=, dhcp=, dnp3=, dns=, dns_state=, ftp=, ftp_data_reuse=F, ssl=, http=, http_state=, irc=, krb=, modbus=, mysql=, ntlm=, ntp=, radius=, rdp=, rfb=, sip=, sip_state=, snmp=, smb_state=, smtp=, smtp_state=, socks=, ssh=, syslog=]
+```
+The above terminal provides bulk data for each connection. This style is not the best usage, and in real life, we will need to filter the information for specific purposes. If you look closely at the output, you can see an ID and field value for each part.
+To filter the event of interest, we will use the primary tag (in this case, it is c --comes from "c: connection"--), id value (id=), and field name. You should notice that the fields are the same as the fields in the log files.
+```text
+Sample Script
+
+           
+event new_connection(c: connection)
+{
+	print ("###########################################################");
+	print ("");
+	print ("New Connection Found!");
+	print ("");
+	print fmt ("Source Host: %s # %s --->", c$id$orig_h, c$id$orig_p);
+	print fmt ("Destination Host: resp: %s # %s <---", c$id$resp_h, c$id$resp_p);
+	print ("");
+}
+```
+```text
+# %s: Identifies string output for the source.
+```
+```text
+# c$id: Source reference field for the identifier.
+```
+Now you have a general idea of running a script and following the provided output on the console. Let's look closer to another script that extracts specific information from packets. The script above creates logs and prompts each source and destination address for each connection.
+Let's see this script in action.
+```text
+Run Zeek with a script
+
+           
+ubuntu@ubuntu$ zeek -C -r sample.pcap 103.zeek 
+###########################################################
+New Connection Found! Source Host: 192.168.121.2 # 58304/udp ---> 
+Destination Host: resp: 192.168.120.22 # 53/udp <--- 
+###########################################################
+```
+The above output shows that we successfully extract specific information from the events. Remember that this script extracts the event of interest (in this example, a new connection), and we still have logs in the working directory. We can always modify and optimise the scripts at any time.
+Scripts 201 | Use Scripts and Signatures Together
+Up to here, we covered the basics of Zeek scripts. Now it is time to use scripts collaboratively with other scripts and signatures to get one step closer to event correlation. Zeek scripts can refer to signatures and other Zeek scripts as well. This flexibility provides a massive advantage in event correlation.
+Let's demonstrate this concept with an example. We will create a script that detects if our previously created "ftp-admin" rule has a hit.
+```text
+Sample Script
+
+           
+event signature_match (state: signature_state, msg: string, data: string)
+{
+if (state$sig_id == "ftp-admin")
+    {
+    print ("Signature hit! --> #FTP-Admin ");
+    }
+}
+```
+This basic script quickly checks if there is a signature hit and provides terminal output to notify us. We are using the "signature_match" event to accomplish this. You can read more about events here. Note that we are looking only for "ftp-admin" signature hits. The signature is shown below.  https://docs.zeek.org/en/master/scripts/base/bif/event.bif.zeek.html?highlight=signature_match
+```text
+Sample Script
+
+           
+signature ftp-admin {
+    ip-proto == tcp
+    ftp /.*USER.*admin.*/
+    event "FTP Username Input Found!"
+}
+```
+Let's see this script in action.
+```text
+Run Zeek with signature and script
+
+           
+ubuntu@ubuntu$ zeek -C -r ftp.pcap -s ftp-admin.sig 201.zeek 
+Signature hit! --> #FTP-Admin Signature hit! --> #FTP-Admin
+Signature hit! --> #FTP-Admin Signature hit! --> #FTP-Admin
+```
+The above output shows that we successfully combined the signature and script. Zeek processed the signature and logs then the script controlled the outputs and provided a terminal output for each rule hit.
+Scripts 202 | Load Local Scripts
+Load all local scripts
+We mentioned that Zeek has base scripts located in "/opt/zeek/share/zeek/base". You can load all local scripts identified in your "local.zeek" file. Note that base scripts cover multiple framework functionalities. You can load all base scripts by easily running the local command.
+```text
+Load local scripts
+
+           
+ubuntu@ubuntu$ zeek -C -r ftp.pcap local 
+ubuntu@ubuntu$ ls
+101.zeek  103.zeek          clear-logs.sh  ftp.pcap            packet_filter.log  stats.log
+102.zeek  capture_loss.log  conn.log       loaded_scripts.log  sample.pcap        weird.log
+```
+The above output demonstrates how to run all base scripts using the "local" command. Look at the above terminal output; Zeek provided additional log files this time. Loaded scripts generated loaded_scripts.log, capture_loss.log, notice.log, stats.log files. Note that, in our instance, 465 scripts loaded and used by using the "local" command. However, Zeek doesn't provide log files for the scripts doesn't have hits or results.
+Load Specific Scripts
+Another way to load scripts is by identifying the script path. In that case, you have the opportunity of loading a specific script or framework. Let's go back to FTP brute-forcing case. We created a script that detects multiple admin login failures in previous steps. Zeek has an FTP brute-force detection script as well. Now let's use the default script and identify the differences.
+```text
+Load local scripts
+
+           
+ubuntu@ubuntu$ zeek -C -r ftp.pcap /opt/zeek/share/zeek/policy/protocols/ftp/detect-bruteforcing.zeek 
+
+ubuntu@ubuntu$ cat notice.log | zeek-cut ts note msg 
+1024380732.223481	FTP::Bruteforcing	10.234.125.254 had 20 failed logins on 1 FTP server in 0m1s
+```
+The above output shows how to load a specific script. This script provides much more information than the one we created. It provides one single line output and a connection summary for the suspicious incident. You can find and read more on the prebuilt scripts and frameworks by visiting Zeek's online book here. https://docs.zeek.org/en/master/frameworks/index.html
+Each exercise has a folder. Ensure you are in the right directory to find the pcap file and accompanying files. Desktop/Exercise-Files/TASK-7
+Go to folder TASK-7/101.
+Investigate the sample.pcap file with 103.zeek script. Investigate the terminal output. What is the number of the detected new connections?
+```text
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/101# ls
+101.zeek  102.zeek  103.zeek  clear-logs.sh  sample.pcap
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/101# cat 101.zeek 
+event zeek_init()
+    {
+     print ("Started Zeek!");
+    }
+event zeek_done()
+    {
+    print ("Stopped Zeek!");
+    }
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/101# cat 102.zeek 
+event new_connection(c: connection)
+{
+	print c;
+}
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/101# cat 103.zeek 
+event new_connection(c: connection)
+{
+	print ("###########################################################");
+	print ("");
+	print ("New Connection Found!");
+	print ("");
+	print fmt ("Source Host: %s # %s --->", c$id$orig_h, c$id$orig_p);
+	print fmt ("Destination Host: resp: %s # %s <---", c$id$resp_h, c$id$resp_p);
+	print ("");
+}
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/101# zeek -C -r sample.pcap 103.zeek 
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/101# cat conn.log | zeek-cut uid | wc -l
+87
+```
+*87*
+Go to folder TASK-7/201.
+Investigate the ftp.pcap file with ftp-admin.sig signature and  201.zeek script. Investigate the signatures.log file. What is the number of signature hits?
+```text
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/201# cat 201.zeek 
+event signature_match (state: signature_state, msg: string, data: string)
+{
+if (state$sig_id == "ftp-admin")
+    {
+    print ("Signature hit! --> #FTP-Admin ");
+    }
+}
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/201# cat ftp-admin.sig 
+signature ftp-admin {
+    ip-proto == tcp
+    ftp /.*USER.*admin.*/
+    event "FTP Username Input Found!"
+}
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/201# zeek -C -r ftp.pcap -s ftp-admin.sig 201.zeek 
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/201# head signatures.log 
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	signatures
+#open	2022-12-10-04-36-37
+#fields	ts	uid	src_addr	src_port	dst_addr	dst_portnote	sig_id	event_msg	sub_msg	sig_count	host_count
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/201# cat signatures.log | zeek-cut uid | wc -l
+1401
+```
+*1401*
+Investigate the signatures.log file. What is the total number of "administrator" username detections?
+```text
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/201# cat signatures.log | zeek-cut sub_msg | grep 'administrator' | wc -l
+731
+```
+*731*
+Investigate the ftp.pcap file with all local scripts, and investigate the loaded_scripts.log file. What is the total number of loaded scripts?
+The "local" command can help.
+```text
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/201# zeek -C -r ftp.pcap local
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/201# head loaded_scripts.log 
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	loaded_scripts
+#open	2022-12-10-04-52-59
+#fields	name
+
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/201# cat loaded_scripts.log | zeek-cut name | wc -l
+498
+```
+*498*
+Go to folder TASK-7/202.
+Investigate the ftp-brute.pcap file with "/opt/zeek/share/zeek/policy/protocols/ftp/detect-bruteforcing.zeek" script. Investigate the notice.log file. What is the total number of brute-force detections?
+```text
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/202# zeek -C -r ftp-brute.pcap /opt/zeek/share/zeek/policy/protocols/ftp/detect-bruteforcing.zeek
+root@ip-10-10-18-177:/home/ubuntu/Desktop/Exercise-Files/TASK-7/202# cat notice.log | zeek-cut msg sub
+10.234.125.254 had 20 failed logins on 1 FTP server in 0m1s	-
+192.168.56.1 had 20 failed logins on 1 FTP server in 0m37s	-
+```
+*2*
+### Zeek Scripts | Frameworks
+Scripts 203 | Load Frameworks
+Zeek has 15+ frameworks that help analysts to discover the different events of interest. In this task, we will cover the common frameworks and functions. You can find and read more on the prebuilt scripts and frameworks by visiting Zeek's online book here. https://docs.zeek.org/en/master/frameworks/index.html
+File Framework | Hashes
+Not all framework functionalities are intended to be used in CLI mode. The majority of them are used in scripting. You can easily see the usage of frameworks in scripts by calling a specific framework as load @ $PATH/base/frameworks/framework-name. Now, let's use a prebuilt function of the file framework and have MD5, SHA1 and SHA256 hashes of the detected files. We will call the "File Analysis" framework's "hash-all-files" script to accomplish this. Before loading the scripts, let's look at how it works.
+```text
+View file framework
+
+           
+ubuntu@ubuntu$ cat hash-demo.zeek
+```
+```text
+# Enable MD5, SHA1 and SHA256 hashing for all files.
+@load /opt/zeek/share/zeek/policy/frameworks/files/hash-all-files.zeek
+```
+The above output shows how frameworks are loaded. In earlier tasks, we mentioned that Zeek highly relies on scripts, and the frameworks depend on scripts. Let's have a closer look at the file hash framework and see the script behind it.
+```text
+View file framework
+
+           
+ubuntu@ubuntu$ cat /opt/zeek/share/zeek/policy/frameworks/files/hash-all-files.zeek
+```
+```text
+# Enable MD5, SHA1 and SHA256 hashing for all files.
+
+@load base/files/hash
+event file_new(f: fa_file)
+	{
+	Files::add_analyzer(f, Files::ANALYZER_MD5);
+	Files::add_analyzer(f, Files::ANALYZER_SHA1);
+	Files::add_analyzer(f, Files::ANALYZER_SHA256);
+	}
+```
+Now let's execute the script and investigate the log file.
+```text
+Grab file hashes
+
+           
+ubuntu@ubuntu$ zeek -C -r case1.pcap hash-demo.zeek
+ubuntu@ubuntu$ zeek -C -r case1.pcap /opt/zeek/share/zeek/policy/frameworks/files/hash-all-files.zeek 
+
+ubuntu@ubuntu$ cat files.log | zeek-cut md5 sha1 sha256
+cd5a4d3fdd5bffc16bf959ef75cf37bc	33bf88d5b82df3723d5863c7d23445e345828904	6137f8db2192e638e13610f75e73b9247c05f4706f0afd1fdb132d86de6b4012
+b5243ec1df7d1d5304189e7db2744128	a66bd2557016377dfb95a87c21180e52b23d2e4e	f808229aa516ba134889f81cd699b8d246d46d796b55e13bee87435889a054fb
+cc28e40b46237ab6d5282199ef78c464	0d5c820002cf93384016bd4a2628dcc5101211f4	749e161661290e8a2d190b1a66469744127bc25bf46e5d0c6f2e835f4b92db18
+```
+Look at the above terminal outputs. Both of the scripts provided the same result. Here the preference is up to the user. Both of the usage formats are true. Prebuilt frameworks are commonly used in scriptings with the "@load" method. Specific scripts are used as practical scripts for particular use cases.
+File Framework | Extract Files
+The file framework can extract the files transferred. Let's see this feature in action!
+```text
+Extract files
+
+           
+ubuntu@ubuntu$ zeek -C -r case1.pcap /opt/zeek/share/zeek/policy/frameworks/files/extract-all-files.zeek
+
+ubuntu@ubuntu$ ls
+101.zeek  102.zeek  103.zeek  case1.pcap  clear-logs.sh  conn.log  dhcp.log  dns.log  extract_files  files.log  ftp.pcap  http.log  packet_filter.log  pe.log
+```
+We successfully extracted files from the pcap. A new folder called "extract_files" is automatically created, and all detected files are located in it. First, we will list the contents of the folder, and then we will use the file command to determine the file type of the extracted files.
+```text
+Investigate files
+
+           
+ubuntu@ubuntu$ ls extract_files | nl
+     1	extract-1561667874.743959-HTTP-Fpgan59p6uvNzLFja
+     2	extract-1561667889.703239-HTTP-FB5o2Hcauv7vpQ8y3
+     3	extract-1561667899.060086-HTTP-FOghls3WpIjKpvXaEl
+
+ubuntu@ubuntu$ cd extract_files
+
+ubuntu@ubuntu$ file *| nl
+     1	extract-1561667874.743959-HTTP-Fpgan59p6uvNzLFja:  ASCII text, with no line terminators
+     2	extract-1561667889.703239-HTTP-FB5o2Hcauv7vpQ8y3:  Composite Document File V2 Document, Little Endian, Os: Windows, Version 6.3, Code page: 1252, Template: Normal.dotm, Last Saved By: Administrator, Revision Number: 2, Name of Creating Application: Microsoft Office Word, Create Time/Date: Thu Jun 27 18:24:00 2019, Last Saved Time/Date: Thu Jun 27 18:24:00 2019, Number of Pages: 1, Number of Words: 0, Number of Characters: 1, Security: 0
+     3	extract-1561667899.060086-HTTP-FOghls3WpIjKpvXaEl: PE32 executable (GUI) Intel 80386, for MS Windows
+```
+Zeek extracted three files. The "file" command shows us one .txt file, one .doc/.docx file and one .exe file. Zeek renames extracted files. The name format consists of four values that come from conn.log and files.log files; default "extract" keyword, timestamp value (ts), protocol (source), and connection id (conn_uids). Let's look at the files.log to understand possible anomalies better and verify the findings. Look at the below output; files.log provides the same results with additional details. Let's focus on the .exe and correlate this finding by searching its connection id (conn_uids).
+The given terminal output shows us that there are three files extracted from the traffic capture. Let's look at the file.log and correlate the findings with the rest of the log files.
+```text
+Investigate files
+
+           
+ubuntu@ubuntu$ cat files.log | zeek-cut fuid conn_uids tx_hosts rx_hosts mime_type extracted | nl
+     1	Fpgan59p6uvNzLFja	CaeNgL1QzYGxxZPwpk	23.63.254.163	10.6.27.102	text/plain	extract-1561667874.743959-HTTP-Fpgan59p6uvNzLFja
+     2	FB5o2Hcauv7vpQ8y3	CCwdoX1SU0fF3BGBCe	107.180.50.162	10.6.27.102	application/msword	extract-1561667889.703239-HTTP-FB5o2Hcauv7vpQ8y3
+     3	FOghls3WpIjKpvXaEl	CZruIO2cqspVhLuAO9	107.180.50.162	10.6.27.102	application/x-dosexec	extract-1561667899.060086-HTTP-FOghls3WpIjKpvXaEl
+
+ubuntu@ubuntu$ grep -rin CZruIO2cqspVhLuAO9 * | column -t | nl | less -S
+#NOTE: The full output is not shown here!. Redo the same actions in the attached VM!
+     1	conn.log:43:1561667898.852600   CZruIO2cqspVhLuAO9  10.6.27.102     49162        107.180.50.162      80    tcp  http        
+     2	files.log:11:1561667899.060086  FOghls3WpIjKpvXaEl  107.180.50.162  10.6.27.102  CZruIO2cqspVhLuAO9  HTTP  0    EXTRACT,PE  
+     3	http.log:11:1561667898.911759   CZruIO2cqspVhLuAO9  10.6.27.102     49162        107.180.50.162      80    1    GET
+```
+The "grep" tool helps us investigate the particular value across all available logs. The above terminal output shows us that the connection id linked with .exe appears in conn.log, files.log, and http.log files. Given example demonstrates how to filter some fields and correlate the findings with the rest of the logs. We've listed the source and destination addresses, file and connection id numbers, MIME types, and file names. Up to now, provided outputs and findings show us that record number three is a .exe file, and other log files provide additional information.
+Notice Framework | Intelligence
+The intelligence framework can work with data feeds to process and correlate events and identify anomalies. The intelligence framework requires a feed to match and create alerts from the network traffic. Let's demonstrate a single user-generated threat intel file and let Zeek use it as the primary intelligence source.
+Intelligence source location: /opt/zeek/intel/zeek_intel.txt
+There are two critical points you should never forget. First, the source file has to be tab-delimited. Second, you can manually update the source and adding extra lines doesn't require any re-deployment. However, if you delete a line from the file, you will need to re-deploy the Zeek instance.
+Let's add the suspicious URL gathered from the case1.pcap file as a source intel and see this feature in action! Before executing the script, let's look at the intelligence file and the script contents.
+```Investigate intel file and script
+ubuntu@ubuntu$ cat /opt/zeek/intel/zeek_intel.txt 
+#fields	indicator	indicator_type	meta.source	meta.desc
+smart-fax.com	Intel::DOMAIN	zeek-intel-test	Zeek-Intelligence-Framework-Test
+
+ubuntu@ubuntu$ cat intelligence-demo.zeek
+```
+```Investigate intel file and script
+# Load intelligence framework!
+@load policy/frameworks/intel/seen
+@load policy/frameworks/intel/do_notice
+redef Intel::read_files += { "/opt/zeek/intel/zeek_intel.txt" };
+```
+The above output shows the contents of the intel file and script contents. There is one intelligence input, and it is focused on a domain name, so when this domain name appears in the network traffic, Zeek will create the "intel.log" file and provide the available details.
+```text
+Investigate intel file and script
+
+           
+ubuntu@ubuntu$ zeek -C -r case1.pcap intelligence-demo.zeek 
+
+ubuntu@ubuntu$ cat intel.log | zeek-cut uid id.orig_h id.resp_h seen.indicator matched
+CZ1jLe2nHENdGQX377	10.6.27.102	10.6.27.1	smart-fax.com	Intel::DOMAIN	
+C044Ot1OxBt8qCk7f2	10.6.27.102	107.180.50.162	smart-fax.com	Intel::DOMAIN
+```
+The above output shows that Zeek detected the listed domain and created the intel.log file. This is one of the easiest ways of using the intelligence framework. You can read more on the intelligence framework here and here. https://docs.zeek.org/en/current/scripts/base/frameworks/intel/main.zeek.html#type-Intel::Type
+https://docs.zeek.org/en/master/frameworks/intel.html
+Each exercise has a folder. Ensure you are in the right directory to find the pcap file and accompanying files. Desktop/Exercise-Files/TASK-8
+Investigate the case1.pcap file with intelligence-demo.zeek script. Investigate the intel.log file. Look at the second finding, where was the intel info found?
+Re-run the Zeek and the script if you don't see the "intel.log" file.
+```text
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# ls
+case1.pcap     file-extract-demo.zeek  intelligence-demo.zeek
+clear-logs.sh  hash-demo.zeek
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# cat intelligence-demo.zeek
+```
+```text
+# Load intelligence framework!
+@load /opt/zeek/share/zeek/policy/frameworks/intel/seen
+@load /opt/zeek/share/zeek/policy/frameworks/intel/do_notice.zeek
+redef Intel::read_files += { "/opt/zeek/intel/zeek_intel.txt" };
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# zeekctl start
+Warning: new zeek version detected (run the zeekctl "deploy" command)
+starting zeek ...
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# zeekctl status
+Warning: new zeek version detected (run the zeekctl "deploy" command)
+Name         Type       Host          Status    Pid    Started
+zeek         standalone localhost     running   7901   10 Dec 15:57:28
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# zeek -C -r case1.pcap intelligence-demo.zeek 
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# ls
+case1.pcap     dns.log                 http.log                pe.log
+clear-logs.sh  file-extract-demo.zeek  intel.log
+conn.log       files.log               intelligence-demo.zeek
+dhcp.log       hash-demo.zeek          packet_filter.log
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# head intel.log 
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	intel
+#open	2022-12-10-15-58-52
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	seen.indicator	seen.indicator_type	seen.where	seen.nodematched	sources	fuid	file_mime_type	file_desc
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# cat intel.log | zeek-cut seen.where
+DNS::IN_REQUEST
+HTTP::IN_HOST_HEADER
+```
+*IN_HOST_HEADER*
+Investigate the http.log file. What is the name of the downloaded .exe file?
+```text
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# head http.log 
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	http
+#open	2022-12-10-15-58-52
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	trans_depth	method	host	uri	referrer	version	user_agent	origin	request_body_len	response_body_len	status_code	status_msg	info_code	info_msg	tags	username	password	proxied	orig_fuids	orig_filenames	orig_mime_types	resp_fuids	resp_filenames	resp_mime_types
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# cat http.log | grep '.exe'
+1561667898.911759	CN6wrh3LuLfROp5t5g	10.6.27.102	49162	107.180.50.162	80	1	GET	smart-fax.com	/knr.exe	-1.1	Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)	-	0	2437120	200	OK-	-	(empty)	-	-	-	-	-	-	FOghls3WpIjKpvXaEl	-	application/x-dosexec
+```
+*knr.exe*
+Investigate the case1.pcap file with hash-demo.zeek script. Investigate the files.log file. What is the MD5 hash of the downloaded .exe file?
+```text
+oot@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# cat hash-demo.zeek
+```
+```text
+# Enable MD5, SHA1 and SHA256 hashing for all files.
+
+@load /opt/zeek/share/zeek/policy/frameworks/files/hash-all-files.zeek
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# zeek -C -r case1.pcap hash-demo.zeek 
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# head files.log
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	files
+#open	2022-12-10-16-07-26
+#fields	ts	fuid	tx_hosts	rx_hosts	conn_uids	source	depth	analyzers	mime_type	filename	duration	local_orig	is_orig	seen_bytes	total_bytes	missing_bytes	overflow_bytes	timedout	parent_fuid	md5	sha1	sha256	extracted	extracted_cutoff	extracted_size
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# cat files.log | zeek-cut mime_type md5 | grep 'x-dosexec'
+application/x-dosexec	cc28e40b46237ab6d5282199ef78c464
+```
+*cc28e40b46237ab6d5282199ef78c464*
+Investigate the case1.pcap file with file-extract-demo.zeek script. Investigate the "extract_files" folder. Review the contents of the text file. What is written in the file?
+```text
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# cat file-extract-demo.zeek
+```
+```text
+# Load file extract framework!
+@load /opt/zeek/share/zeek/policy/frameworks/files/extract-all-files.zeek
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# zeek -C -r case1.pcap file-extract-demo.zeek 
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# ls
+case1.pcap     extract_files           intel.log
+clear-logs.sh  file-extract-demo.zeek  intelligence-demo.zeek
+conn.log       files.log               packet_filter.log
+dhcp.log       hash-demo.zeek          pe.log
+dns.log        http.log
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8# cd extract_files/
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8/extract_files# ls
+extract-1561667874.743959-HTTP-Fpgan59p6uvNzLFja
+extract-1561667889.703239-HTTP-FB5o2Hcauv7vpQ8y3
+extract-1561667899.060086-HTTP-FOghls3WpIjKpvXaEl
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-8/extract_files# cat extract-1561667874.743959-HTTP-Fpgan59p6uvNzLFja 
+Microsoft NCSI
+```
+*Microsoft NCSI*
+### Zeek Scripts | Packages
+Scripts 204 | Package Manager
+Zeek Package Manager helps users install third-party scripts and plugins to extend Zeek functionalities with ease. The package manager is installed with Zeek and available with the zkg command. Users can install, load, remove, update and create packages with the "zkg" tool. You can read more on and view available packages here and here. Please note that you need root privileges to use the "zkg" tool.  https://github.com/zeek/packages    https://packages.zeek.org/
+Basic usage of zkg;
+Command	Description
+zkg install package_path
+Install a package. Example (zkg install zeek/j-gras/zeek-af_packet-plugin).
+zkg install git_url
+Install package. Example (zkg install https://github.com/corelight/ztest).
+zkg list
+List installed package.
+zkg remove
+Remove installed package.
+zkg refresh
+Check version updates for installed packages.
+zkg upgrade
+Update installed packages.
+There are multiple ways of using packages. The first approach is using them as frameworks and calling specific package path/directory per usage. The second and most common approach is calling packages from a script with the "@load" method. The third and final approach to using packages is calling their package names; note that this method works only for packages installed with the "zkg" install method.
+Packages | Cleartext Submission of Password
+Let's install a package first and then demonstrate the usage in different approaches.
+Note: The package is installed in the given VM.
+```text
+Install package with zkg
+
+           
+ubuntu@ubuntu$ zkg install zeek/cybera/zeek-sniffpass
+The following packages will be INSTALLED:
+  zeek/cybera/zeek-sniffpass (master)
+Proceed? [Y/n] Y
+Installing "zeek/cybera/zeek-sniffpass"
+Installed "zeek/cybera/zeek-sniffpass" (master)
+Loaded "zeek/cybera/zeek-sniffpass"
+
+ubuntu@ubuntu$ zkg list
+zeek/cybera/zeek-sniffpass (installed: master) - Sniffpass will alert on cleartext passwords discovered in HTTP POST requests
+```
+The above output shows how to install and list the installed packages. Now we successfully installed a package. As the description mentions on the above terminal, this package creates alerts for cleartext passwords found in HTTP traffic. Let's use this package in three different ways!
+```text
+Execute/load package
+
+           
+### Calling with script
+ubuntu@ubuntu$ zeek -Cr http.pcap sniff-demo.zeek 
+
+### View script contents
+ubuntu@ubuntu$ cat sniff-demo.zeek 
+@load /opt/zeek/share/zeek/site/zeek-sniffpass
+
+### Calling from path
+ubuntu@ubuntu$ zeek -Cr http.pcap /opt/zeek/share/zeek/site/zeek-sniffpass
+
+### Calling with package name
+ubuntu@ubuntu$ zeek -Cr http.pcap zeek-sniffpass
+```
+The above output demonstrates how to execute/load packages against a pcap. You can use the best one for your case. The "zeek-sniffpass" package provides additional information in the notice.log file. Now let's review the logs and discover the obtained data using the specific package.
+```text
+Investigate log files
+
+           
+ubuntu@ubuntu$ cat notice.log | zeek-cut id.orig_h id.resp_h proto note msg
+10.10.57.178	44.228.249.3	tcp	SNIFFPASS::HTTP_POST_Password_Seen	Password found for user BroZeek
+10.10.57.178	44.228.249.3	tcp	SNIFFPASS::HTTP_POST_Password_Seen	Password found for user ZeekBro
+```
+The above output shows that the package found cleartext password submissions, provided notice, and grabbed the usernames. Remember, in TASK-5 we created a signature to do the same action. Now we can do the same activity without using a signature file. This is a simple demonstration of the benefit and flexibility of the Zeek scripts.
+Packages | Geolocation Data
+Let's use another helpful package called "geoip-conn". This package provides geolocation information for the IP addresses in the conn.log file. It depends on "GeoLite2-City.mmdb" database created by MaxMind. This package provides location information for only matched IP addresses from the internal database.
+```text
+Execute/load package
+
+           
+ubuntu@ubuntu$ zeek -Cr case1.pcap geoip-conn
+
+ubuntu@ubuntu$ cat conn.log | zeek-cut uid id.orig_h id.resp_h geo.orig.country_code geo.orig.region geo.orig.city geo.orig.latitude geo.orig.longitude geo.resp.country_code geo.resp.region geo.resp.city                                                  
+Cbk46G2zXi2i73FOU6	10.6.27.102	23.63.254.163	-	-	-	-	-	US	CA	Los Angeles
+```
+Up to now, we've covered what the Zeek packages are and how to use them. There are much more packages and scripts available for Zeek in the wild. You can try ready or third party packages and scripts or learn Zeek scripting language and create new ones.
+Each exercise has a folder. Ensure you are in the right directory to find the pcap file and accompanying files. Desktop/Exercise-Files/TASK-9
+Investigate the http.pcap file with the zeek-sniffpass module. Investigate the notice.log file. Which username has more module hits?
+```text
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-9/cleartext-pass# zkg list
+warning: skipped using package source named "zeek": failed to clone git repo
+zeek/0xxon/zeek-sumstats-counttable (installed: 0.0.4) - Two-dimensional buckets for sumstats (count occurences per $str).
+zeek/brimsec/geoip-conn (installed: master) - Adds additional fields to the conn.log for the data obtained via Zeek's GeoLocation feature (https://docs.zeek.org/en/current/frameworks/geoip.html).
+zeek/corelight/cve-2021-44228 (installed: v0.5.4) - A Zeek package which raises notices for RCE in Log4J (CVE-2021-44228).
+zeek/cybera/zeek-sniffpass (installed: master) - Sniffpass will alert on cleartext passwords discovered in HTTP POST requests
+zeek/sethhall/domain-tld (installed: v1.2.2) - A library for getting the "effective tld" of a domain name.
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-9/cleartext-pass# zeek -Cr http.pcap zeek-sniffpass
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-9/cleartext-pass# ls
+clear-logs.sh  files.log  http.pcap   packet_filter.log
+conn.log       http.log   notice.log
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-9/cleartext-pass# cat notice.log | zeek-cut msg
+Password found for user BroZeek
+Password found for user BroZeek
+Password found for user BroZeek
+Password found for user ZeekBro
+Password found for user ZeekBro
+```
+*BroZeek*
+Investigate the case2.pcap file with geoip-conn module. Investigate the conn.log file. What is the name of the identified City?
+```text
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-9/geoip-conn# ls
+case1.pcap  case2.pcap  clear-logs.sh  sumstats-counttable.zeek
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-9/geoip-conn# zkg list | grep 'geo'
+warning: skipped using package source named "zeek": failed to clone git repo
+zeek/brimsec/geoip-conn (installed: master) - Adds additional fields to the conn.log for the data obtained via Zeek's GeoLocation feature (https://docs.zeek.org/en/current/frameworks/geoip.html).
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-9/geoip-conn# zeek -Cr case2.pcap geoip-conn
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-9/geoip-conn# head conn.log 
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	conn
+#open	2022-12-10-16-45-16
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	proto	service	duration	orig_bytes	resp_bytes	conn_state	local_orig	local_resp	missed_bytes	history	orig_pkts	orig_ip_bytes	resp_pkts	resp_ip_bytes	tunnel_parents	geo.orig.country_code	geo.orig.region	geo.orig.city	geo.orig.latitude	geo.orig.longitudegeo.resp.country_code	geo.resp.region	geo.resp.city	geo.resp.latitude	geo.resp.longitude
+
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-9/geoip-conn# cat conn.log | zeek-cut geo.resp.city
+Chicago
+Chicago
+```
+*Chicago*
+Which IP address is associated with the identified City?
+```text
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-9/geoip-conn# cat conn.log | zeek-cut geo.resp.city id.resp_h
+Chicago	23.77.86.54
+Chicago	23.77.86.54
+```
+*23.77.86.54*
+Investigate the case2.pcap file with sumstats-counttable.zeek script. How many types of status codes are there in the given traffic capture?
+```text
+root@ip-10-10-162-235:/home/ubuntu/Desktop/Exercise-Files/TASK-9/geoip-conn# zeek -Cr case2.pcap sumstats-counttable.zeek 
+Host: 116.203.71.114
+status code: 200, count: 26
+status code: 404, count: 6
+status code: 302, count: 4
+status code: 301, count: 4
+Host: 23.77.86.54
+status code: 301, count: 4
+```
+*4*
+### Conclusion
+Congratulations! You just finished the Zeek room. In this room, we covered Zeek, what it is, how it operates, and how to use it to investigate threats.
+Now, we invite you to complete the Zeek Exercise room: ZeekExercises
+https://tryhackme.com/room/zeekbroexercises
+
+## Flags / Answers
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/c2cc6be2c76d68126e72ee7a03779ea5.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/28e589bb58d154301e8b2f12b1d501d4.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/08f3f924977c891a06827b5838d989bb.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/b94f413787763b1bdefe17c4bfb29782.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/9c44a0b3015dcabaeffb58d5d6422db9.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/93f31d7853edd50e43be99dd791325e7.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/364aa0f61373366b6739d93112688b56.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/a6fb1153dfbd0a96dbf8f593027a9452.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/7adbffdc48f19bfe997772acc318cec3.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/13664d8ab7d9a836c6c4a1c01c7a38f2.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/221d95b8e97b873350c6080b17733009.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/b8a09a41f095c4532bf0a33f10356169.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/7f04a7fc9417676b573a29bbd914f6fa.png)
+
+## Notes / Lessons Learned
+[[Snort Challenge - Live Attacks]]
+
