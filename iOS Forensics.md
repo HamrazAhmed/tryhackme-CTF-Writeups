@@ -115,3 +115,121 @@ On the computer, in my case Windows, this certificate is stored in C:\ProgramDat
 ![](https://i.imgur.com/BDXjSyv.png)
 Where the contents look like so, albeit the screenshot is only a snippet. The certificate within the computer contains the private keys used to encrypt and decrypt against the iPhones public key:
 ![](https://i.imgur.com/NtiIjLM.png)
+A "Juice Jacking" attack involves maliciously created USB chargers or cables (such as the [O.MG Cable](https://shop.hak5.org/products/omg-cable)) to steal data or infect devices. For example, modern buses or trains have USB sockets allowing you to charge your phone. If you were to get the "Trust This Computer" popup from plugging your phone into what you think is direct to electricity, you are in fact plugging into a device that is most likely malicious. This security mechanism prevents an automatic attack and alerts the user to it.
+Trust Certificates Explained
+Trust certificates aren't permanent by design and will eventually require you to re-trust the device. Trust certificates, at an abstract work in the following way:
+iTunes will generate a certificate using the iPhone's unique identifier once data read/write has been allowed by trusting the computer on the iPhone.
+This certificate will be stored on the trusted computer for 30 days. Afterwhich you will need to re-trust the device. However, the certificate that is generated can only be used for 48 hours since the user has last unlocked their iPhone. Let's break this down:
+If the iPhone has been connected to a trusted computer but the iPhone hasn't been unlocked in a week, the certificate won't be used although it is still valid. Once the iPhone is unlocked, the iPhone will automatically allow read/write access by the trusted computer without the "Trust This Computer" popup. However, if you were to connect the iPhone to the trusted computer 6 hours since it was last unlocked, the iPhone will allow read/write access straight away.
+How can We Utilise These Trust Certificates?
+First, we need to understand the backups that iTunes creates. iTunes allows for two types of backups resulting in different amounts of data being backed up onto the computer and ultimately how it should be analysed: "Unencrypted" and "Encrypted"
+![](https://i.imgur.com/rJvdTf3.png)
+Unencrypted backups are simply that - unencrypted. Perfect! We'll have a copy of photos that aren't synced to iCloud, a copy of browsing history and the likes. However, no passwords or health and Homekit data - these are only backed up if the "Encrypted" option is set by the user.
+Remembering that iTunes accesses the iPhone with elevated privileges using lockdown certificates, we can extract data from the iPhone such as the keychain. This keychain includes (but isn't limited) to passwords such as:
+Wi-Fi Passwords
+Internet Account Credentials from " Autofill Password"
+VPN
+Root certificates for applications
+Exchange / Mail credentials
+![](https://i.imgur.com/ozE6wEl.png)
+Suddenly, you have the credentials to the suspect's accounts and the likes.
+I thoroughly encourage you to read this [excellent article](http://farleyforensics.com/2019/04/14/forensic-analysis-of-itunes-backups/) on how iTunes backups can be forensically analysed with relative ease.
+What is the name of a forensics tool that couldn't be used in a court of law, because data could be written to the device being analysed?
+*iFunbox*
+You've found an iPhone with no passcode lock, what acquisition method would you use?
+*Direct Acquisition*
+What is the name of the certificate that gets stored on a computer when it becomes trusted?
+*Trust Certificate*
+### 7. Looking for Loot!
+No matter how privacy-minded you are, our mobile devices are quite literal extensions of our lives, and as such, hold everything someone could ever want to know about us.
+Paying through contactless payments, sending memes via Discord or checking in back home and letting Mum know you're okay; it's all recorded. Where? On your phone!
+Hopefully, you'll come to learn, and through some research of your fruition, that phones store a lot of data. You'll come to see how log files of connections to WiFi cellular towers are the least of concerns in privacy on your phone when you can see the data that can be extracted from such small devices.
+### 8. Analysing iOS Files
+Plists
+Apple, in true Apple fashion, have their own standardisation for files within their file systems. Presenting in the extension of plist, these files are property files who consist of data from anything such as preferences to application settings and data.
+For example, in this example iPhone dump, there is a log file named ResetCounter.plist
+![](https://i.imgur.com/uadh5MR.png)
+When opening the file, we can see it is of the formatting of an XML document. All that's contained within this specific file is the number of times the device has been "Hard Reset". On the iPhone specifically, this counter increments when you force restart the phone by holding down "Home" and "Power Button". Information like this is kept for diagnostics, however, if you think you've bought a new iPhone - it's worth taking a look!
+Whilst this file, in particular, was XML formatted, you may come across some that cannot be opened with a text editor. Take for example com.apple.preferences.datetime.plist:
+![](https://i.imgur.com/mDXJ44u.png)
+We'd need to use a hex editor such as HxD to view the information stored within this plist:
+![](https://i.imgur.com/EFndpH2.png)
+Where we now discover that the data encoded within this plist reveals the timezone of the iPhone, in this case, the device is set to the Europe/London timezone.
+Databases
+Presenting in either the sqlite or db format, Apple uses this file formatting for its traditional purposes: storing data in a structured formatting. For example, all of the iPhones SMS, Contacts (Address Books) and Email is stored within various databases. We'll examine the calendar attached to the iPhone in this case.
+Using a lightweight database browser such as that located on the VM, we can open these files and peruse through data stored across the various tables. When importing the file within DB Browser for SQLite, we can note the structure of the database, namely the tables of interest such as:
+- Attendee
+- Task
+- Event
+Illustrated in the screenshot below:
+![](https://i.imgur.com/FtJjI6b.png)
+With this structure noted, we can then begin reading the data via "Browse Data" and selecting the tables in the dropdown, akin to the screenshot below:
+![](https://i.imgur.com/ixnyIWQ.png)
+### 9. Scenario: Operation JustEncase (Deploy)
+Your crime taskforce has been investigating into the root cause of a recent outbreak of criminal activity. Although you've apprehended a Mr Brandon Hunter, you need to analyse the filesystem dump of his iPhone to find a lead into the gang.
+Although the suspect's phone is locked with a passcode, you have been able to use a recent "Lockdown Certificate" from the suspect's computer, allowing you to create a logical file system dump from an iPhone backup he made recently.
+Good luck, and remember, all you need is your SQL viewer and both hex and text editors of your choice.
+--------------------------------------------------------------------------------------------------------------
+You can either use the In-browser functionality to interact with this VM or alternatively, connect via RDP with the following credentials (ensuring you're connected to the TryHackMe VPN):
+IP Address: MACHINE_IP
+Username: cmnatic
+Password: OpJustEncase!
+![[Pasted image 20221018094051.png]]
+![[Pasted image 20221018093610.png]]
+![[Pasted image 20221018093940.png]]
+![[Pasted image 20221018093957.png]]
+Who was the recepient of the SMS message sent on 23rd of August 2020?
+*Lewis Randall*
+What did the SMS message say?
+*Did you get the goods?*
+![[Pasted image 20221018094255.png]]
+just open with sqlitedb
+![[Pasted image 20221018094237.png]]
+Looking at the address book, what is the first name of the other person in the contacts?
+*Jenny*
+![[Pasted image 20221018094418.png]]
+Following on from Question #3, what is their listed "Organization"
+*Transportation*
+![[Pasted image 20221018095123.png]]
+![[Pasted image 20221018095104.png]]
+Investigate their browsing history, what is the address of the website that they have bookmarked?
+*https://blog.cmnatic.co.uk*
+![[Pasted image 20221018095406.png]]
+nop
+![[Pasted image 20221018103941.png]]
+![[Pasted image 20221018103843.png]]
+The suspected received an email, what is the remote_id of the sender?
+Never rely on extensions alone, even though the file you need doesn't have the sqlite extension, it is indeed a database.
+*51.32.56.12*
+![[Pasted image 20221018104113.png]]
+What is the name of the company on one of the images stored on the suspects phone?
+*TryHackMe*
+![[Pasted image 20221018104203.png]]
+What is the value of the cookie that was left behind?
+### 10. Bonus: You have the loot, but I've got the booty.
+For the purposes of this room, you're analysing an edited logical file system dump from an actual iPhone 6 I have imaged using Cellebrite's UFED Toolkit. Whilst the artefacts of what you've been analysing in OpJustEncase are true in their origin, I have removed about 95% of the actual contents that is imaged for my security/privacy, leaving in place the locations that this data would be placed within if it were to exist.
+![](https://i.imgur.com/VIR05fL.png)
+Although the file system of the iPhone is encrypted because we've been able to perform the level of acquisition we have when imaging, the decryption keys are also made available to us, and in turn, a resemblance of a file system structure, reconstructed below:
+![](https://i.imgur.com/WNFbsxX.png)
+Notably:
+- AddressBook
+- Cookies
+- Safari
+- SMS
+- Voicemail
+For example, opening the AddressBook Database reveals the contacts within the phone and any stored data about them, including phone numbers located within \var\mobile\Library\AddressBook
+![](https://i.imgur.com/cAEhGQn.png)
+Or perhaps counting how many times an application has been launched, as well as the amount of time it's been in the foreground and background for?
+![](https://i.imgur.com/OE3vcLU.png)
+Looks like our friend here is a fan of TryHackMe as well, seeing as this was saved on their photos!
+![](https://i.imgur.com/xsAyYVN.png)
+At least we know they had WiFi wherever they went, with a list of every WiFi hotspot the iPhone discovered and the respective GPS coordinates!
+![](https://i.imgur.com/dhlyzRz.png)
+Data acquired!
+
+## Flags / Answers
+- ***THM{COOKIES!!!}***
+
+## Notes / Lessons Learned
+[[Buffer Overflows]]
+
