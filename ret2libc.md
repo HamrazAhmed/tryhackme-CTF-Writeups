@@ -242,3 +242,247 @@ gdb-peda$ pattern create
 Error: missing argument
 Generate, search, or write a cyclic pattern to memory
 Set "pattern" option for basic/extended pattern type
+Usage:
+    pattern create size [file]
+    pattern offset value
+    pattern search
+    pattern patch address size
+    pattern arg size1 [size2,offset2]
+    pattern env size[,offset]
+
+gdb-peda$ pattern create 100
+'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
+gdb-peda$ r
+Starting program: /home/witty/Downloads/exploit_me 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+Type your name: 
+AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL
+Your name is: AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL
+
+Program received signal SIGSEGV, Segmentation fault.
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+Warning: 'set logging on', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled on'.
+
+[----------------------------------registers-----------------------------------]
+RAX: 0x0 
+RBX: 0x7fffffffde78 --> 0x7fffffffe1d5 ("/home/witty/Downloads/exploit_me")
+RCX: 0x0 
+RDX: 0x0 
+RSI: 0x6022a0 ("Your name is: AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL\n")
+RDI: 0x7fffffffd7f0 --> 0x7ffff7e15e70 (<__funlockfile>:	mov    rdi,QWORD PTR [rdi+0x88])
+RBP: 0x41416e4141244141 ('AA$AAnAA')
+RSP: 0x7fffffffdd68 ("CAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL")
+RIP: 0x400619 (<main+82>:	ret)
+R8 : 0x0 
+R9 : 0x73 ('s')
+R10: 0x0 
+R11: 0x202 
+R12: 0x0 
+R13: 0x7fffffffde88 --> 0x7fffffffe1f6 ("TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873")
+R14: 0x0 
+R15: 0x7ffff7ffd020 --> 0x7ffff7ffe2e0 --> 0x0
+EFLAGS: 0x10206 (carry PARITY adjust zero sign trap INTERRUPT direction overflow)
+[-------------------------------------code-------------------------------------]
+   0x40060e <main+71>:	call   0x4004b0 <printf@plt>
+   0x400613 <main+76>:	mov    eax,0x0
+   0x400618 <main+81>:	leave
+=> 0x400619 <main+82>:	ret
+   0x40061a:	nop    WORD PTR [rax+rax*1+0x0]
+   0x400620 <__libc_csu_init>:	push   r15
+   0x400622 <__libc_csu_init+2>:	push   r14
+   0x400624 <__libc_csu_init+4>:	mov    r15,rdx
+[------------------------------------stack-------------------------------------]
+0000| 0x7fffffffdd68 ("CAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL")
+0008| 0x7fffffffdd70 ("ADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL")
+0016| 0x7fffffffdd78 ("AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL")
+0024| 0x7fffffffdd80 ("0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL")
+0032| 0x7fffffffdd88 ("A1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL")
+0040| 0x7fffffffdd90 ("AA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL")
+0048| 0x7fffffffdd98 ("dAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL")
+0056| 0x7fffffffdda0 ("AeAA4AAJAAfAA5AAKAAgAA6AAL")
+[------------------------------------------------------------------------------]
+Legend: code, data, rodata, value
+Stopped reason: SIGSEGV
+0x0000000000400619 in main ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+──────────────[ REGISTERS / show-flags off / show-compact-regs off ]───────────────
+ RAX  0x0
+*RBX  0x7fffffffde78 —▸ 0x7fffffffe1d5 ◂— '/home/witty/Downloads/exploit_me'
+ RCX  0x0
+ RDX  0x0
+*RDI  0x7fffffffd7f0 —▸ 0x7ffff7e15e70 (funlockfile) ◂— mov rdi, qword ptr [rdi + 0x88]
+*RSI  0x6022a0 ◂— 'Your name is: AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL\n'
+ R8   0x0
+*R9   0x73
+ R10  0x0
+*R11  0x202
+ R12  0x0
+*R13  0x7fffffffde88 —▸ 0x7fffffffe1f6 ◂— 'TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'
+ R14  0x0
+*R15  0x7ffff7ffd020 (_rtld_global) —▸ 0x7ffff7ffe2e0 ◂— 0x0
+*RBP  0x41416e4141244141 ('AA$AAnAA')
+*RSP  0x7fffffffdd68 ◂— 'CAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
+*RIP  0x400619 (main+82) ◂— ret 
+───────────────────────[ DISASM / x86-64 / set emulate on ]────────────────────────
+ ► 0x400619 <main+82>    ret    <0x412841412d414143>
+
+─────────────────────────────────────[ STACK ]─────────────────────────────────────
+00:0000│ rsp 0x7fffffffdd68 ◂— 'CAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
+01:0008│     0x7fffffffdd70 ◂— 'ADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
+02:0010│     0x7fffffffdd78 ◂— 'AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
+03:0018│     0x7fffffffdd80 ◂— '0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
+04:0020│     0x7fffffffdd88 ◂— 'A1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
+05:0028│     0x7fffffffdd90 ◂— 'AA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
+06:0030│     0x7fffffffdd98 ◂— 'dAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
+07:0038│     0x7fffffffdda0 ◂— 'AeAA4AAJAAfAA5AAKAAgAA6AAL'
+───────────────────────────────────[ BACKTRACE ]───────────────────────────────────
+ ► f 0         0x400619 main+82
+   f 1 0x412841412d414143
+   f 2 0x2941413b41414441
+   f 3 0x4141614141454141
+   f 4 0x4162414146414130
+   f 5 0x6341414741413141
+   f 6 0x4141484141324141
+   f 7 0x4149414133414164
+───────────────────────────────────────────────────────────────────────────────────
+gdb-peda$ pattern search
+Registers contain pattern buffer:
+RBP+0 found at offset: 10
+Registers point to pattern buffer:
+[RSP] --> offset 18 - size ~82
+Pattern buffer found at:
+0x006022ae : offset    0 - size  100 ([heap])
+0x006026b0 : offset    0 - size  100 ([heap])
+0x00007fffffffdacf : offset   35 - size   17 ($sp + -0x299 [-167 dwords])
+0x00007fffffffdd56 : offset    0 - size  100 ($sp + -0x12 [-5 dwords])
+References to pattern buffer found at:
+0x00007ffff7f96a98 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007ffff7f96aa0 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007ffff7f96aa8 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007ffff7f96ab0 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007ffff7f96ab8 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007fffffffd998 : 0x00007fffffffdd56 ($sp + -0x3d0 [-244 dwords])
+0x00007fffffffdc98 : 0x00007fffffffdd56 ($sp + -0xd0 [-52 dwords])
+gdb-peda$ pattern search $rsp
+Registers contain pattern buffer:
+RBP+0 found at offset: 10
+Registers point to pattern buffer:
+[RSP] --> offset 18 - size ~82
+Pattern buffer found at:
+0x006022ae : offset    0 - size  100 ([heap])
+0x006026b0 : offset    0 - size  100 ([heap])
+0x00007fffffffdacf : offset   35 - size   17 ($sp + -0x299 [-167 dwords])
+0x00007fffffffdd56 : offset    0 - size  100 ($sp + -0x12 [-5 dwords])
+References to pattern buffer found at:
+0x00007ffff7f96a98 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007ffff7f96aa0 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007ffff7f96aa8 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007ffff7f96ab0 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007ffff7f96ab8 : 0x006026b0 (/usr/lib/x86_64-linux-gnu/libc.so.6)
+0x00007fffffffd998 : 0x00007fffffffdd56 ($sp + -0x3d0 [-244 dwords])
+0x00007fffffffdc98 : 0x00007fffffffdd56 ($sp + -0xd0 [-52 dwords])
+```
+What are the permissions of the exploit_me binary?
+format: xxxxxxxxxx number owner group
+*-rwsrwxr-x 1 root root*
+At which address will exploit_me binary start?
+*0x400000*
+What is the overflow offset that we found in gdb?
+*18*
+### Task 5  ASLR & GOT
+### **Address space layout randomization (ASLR)**
+Address space layout randomization is a technique involved in preventing exploitation of memory by randomly arranging the address space positions of key data areas of processes and the positions of the stack, heap and libraries.
+First of all, we can check if ASLR is turned on in our VM with the command:
+ASLR check
+```shell-session
+andy@ubuntu:~$ cat /proc/sys/kernel/randomize_va_space
+2
+```
+According to [this](https://securityetalii.es//how-effective-is-aslr-on-linux-systems/) article, number 2 means full randomization. This means the ASLR is turned on.
+So how does it affect our binary, you might ask? Didn't I say that our binary isn't affected by ASLR because there is no PIE protection?
+Yes, you're right, it's not affected, but the thing which is being affected is the libc, which is dynamically linked to our binary and is mandatory for our ret2libc attack to work. If you look closer at the ASLR definition again, you can see the word library right at the end, and guess what libc is. Yes, that's right, it's a library.
+But, because of ASLR, we now cannot call the system function because we don't know the address of this function in libc.
+And even if we try to find the address of the system function when we run the program, the next time we run it, it'll be a different address. So how do we bypass this? Before telling you how to do that, let me quickly explain the global offset table.
+### **Global Offset Table (GOT)**
+The global offset table is a section inside a program that holds addresses of dynamically linked functions.
+Most programs don't include every function they use to reduce binary size. Instead, common functions, like those in libc, are "linked" into the program.
+All dynamic libraries are loaded into memory along with the main program at launch; however, functions aren't mapped to their actual code until they're first called.
+But, after these functions are called for the first time, their real addresses are "saved" in the section of the program called .got.plt.
+### **ASLR Bypass**
+So, in theory, we need to leak the address of any function which is in libc and is being used in our binary (so it'll be saved in **.got.plt**). I'll show you how to find these functions later in Ghidra. But how do we leak it?
+We need some function that can print values and can take a pointer as an argument. The perfect functions for this are **puts** and **printf**.
+So what we can do now is to call puts and, as an argument, pass a pointer to any function that's inside **.got.plt**.
+For example: If we call puts and as an argument, we pass the address of the setbuf function inside of .**got.plt** section, then we should have leaked the real address of the sefbuf function inside a libc. And when we have this leak, we can calculate the base address of the libc.
+**Libc base address => Start of the c library in memory**
+And when we have this base address, every time the binary is being run, the address is the same as it would have been when ASLR was turned off,  and from that, we can calculate offsets for every function inside of libc. Or we can even rebase our libc, which I'll talk about in the next task.
+**Note**: If you don't understand this on your first read, don't worry; take your time and read through it slowly. In the next tasks, I'll show you everything in practice so it might come all together once you see it.
+Answer the questions below
+```text
+andy@ubuntu:~$ cat /proc/sys/kernel/randomize_va_space
+2
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ cat /proc/sys/kernel/randomize_va_space
+2
+```
+What is the name of the section of the binary which is important for our leak?
+*.got.plt*
+### Task 6  Examining in the Ghidra
+**Transfer the binary**
+Ghidra is a GUI program, so we cannot run ghidra on an attached VM, but we have to run it on our own machine (or in the AttackBox) instead.
+Before transferring the binary, make sure that your machine uses the same libc as the attached VM; otherwise, you could encounter some problems (you can use `ldd exploit_me` to do that). If you still have problems, I recommend using Kali Linux or the THM AttackBox to review the binary in ghidra.
+Let's start by transferring the **exploit_me** binary to your machine. We can do that with a python3 server.
+In the attached VM run command:
+`python3 -m http.server 4444`
+On your own machine (or in the AttackBox), run the command:
+`wget http://10.10.32.161:4444/exploit_me`
+### **Examine the binary in Ghidra**
+Open the binary in Ghidra and analyze it. If you are ready, let's examine the main function.
+In the middle left is a window called **Symbol Tree,** and there's our main function inside a Functions folder; once you find it, double click on it.
+`Symbol Tree -> Functions -> main`
+Now on the right side of the screen, you should see a decompiled main function that should look like this:
+As you can see, Ghidra does a pretty good job when decompiling small binaries like ours.
+From what we can see, there's an array of chars called local_12 with a size of 10 bytes.
+We know that our overflow offset is a little bigger than that. It's because, in memory between our buffer and instruction pointer, there is other data that we also need to overflow.
+On line 9, you can see that the input we provide to the binary is stored in this buffer. It's done by the gets function, which is dangerous, and you wouldn't use it in a standard program.
+Why is it dangerous? Because this function doesn't regulate the size of the input. This means we can provide input that is 30 bytes long, but our buffer only takes 10. This is why the segmentation fault is occurring. And it's also the reason why we can abuse this binary.
+There's another really interesting thing, and that's the setuid(0) function. It seems like a good day for us as an attacker.
+If you remember well, we found out that our binary had the setuid bit set, but that in itself wouldn't give us a root shell when running the exploit. That's because we aren't specifying the -p switch when passing our "/bin/sh" argument to our system function. In the libc, there is only string "/bin/sh" and not string "/bin/sh -p" which we'd need for that.
+The reason why it's not working without the -p switch is that the real UID of the process isn't matching the effective UID. If you want to read about real, effective and saved UID in Linux, you can click [here](https://www.geeksforgeeks.org/real-effective-and-saved-userid-in-linux/).
+Anyway, this doesn't matter to us because we can escalate privileges with our ret2libc exploit even without the -p switch, thanks to the setuid(0) function inside of the binary.
+### **Finding the leak function**
+Now let's find our leak function.
+In the left upper corner, there's a window called **Program Trees,** where we can see sections of the program. We're interested in the section called **.got.plt** that we discussed earlier.
+`Program Trees -> exploit_me -> .got.plt`
+When you double click on that, you should see which functions are in the **.got.plt** section.
+On the left, you can see an address next to each function, and that address is exactly the one that we'll be passing to the puts function as an argument. As I said in the previous task, we can choose any function from these three (puts, printf, gets); it doesn't matter which function as long as we keep in mind which we've chosen.
+I'll use **gets** as my leak function. Now we have our argument ready, and the only thing we need to do is pass it to the puts function. But how do we call puts?
+We can find **puts** in the procedure linkage table (PLT) and call it from there. I won't be talking about PLT here, but we need to know where to find this PLT section in Ghidra. If you want to learn more about PLT and even some more about GOT, you can watch a fantastic video from LiveOverflow called Global Offset Table (GOT) and Procedure Linkage Table (PLT) on YouTube, which I recommend.
+Now let's look at the **.plt** section.
+`Program Trees -> exploit_me -> .plt`
+The puts function inside the .**plt** section looks like this.
+Now we have everything ready for our exploit!
+Answer the questions below
+```text
+andy@ubuntu:~$ ldd exploit_me
+	linux-vdso.so.1 (0x00007ffcf41e0000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f761394f000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f7613d40000)
+
+setuid(0)" is a function call in the C programming language that is used to set the effective user ID (UID) of the process to the root user (UID 0).
+
+In Unix-like systems, different users have different levels of privilege. The root user, with UID 0, has the highest level of privilege and can perform various administrative tasks and access sensitive system resources that regular users cannot. By using "setuid(0)", a program can temporarily elevate its privileges to that of the root user.
+
+This capability is often used in special circumstances, such as when a program needs to perform administrative tasks, manage system resources, or access protected files or directories that require root privileges. However, it should be used judiciously and with a full understanding of the security implications to avoid potential risks or vulnerabilities.
+```
+What is the name of the function that is under gets in .got.plt?
+*setuid*
+
+## Exploitation
+In this part, we'll create the exploit. Open vim or nano and create a new python script to start things off. If you prefer a different editor over vim or nano (which are installed in the attached VM), you can create this script on your own machine and then transfer it via a python server as we did with our exploit_me binary.
+### Part 1
+Importing the library
